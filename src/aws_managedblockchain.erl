@@ -184,7 +184,7 @@
 
 %% Example:
 %% list_members_output() :: #{
-%%   <<"Members">> => list(member_summary()()),
+%%   <<"Members">> => list(member_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_members_output() :: #{binary() => any()}.
@@ -192,8 +192,8 @@
 
 %% Example:
 %% proposal_actions() :: #{
-%%   <<"Invitations">> => list(invite_action()()),
-%%   <<"Removals">> => list(remove_action()())
+%%   <<"Invitations">> => list(invite_action()),
+%%   <<"Removals">> => list(remove_action())
 %% }
 -type proposal_actions() :: #{binary() => any()}.
 
@@ -309,7 +309,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -379,7 +379,7 @@
 %% Example:
 %% list_proposal_votes_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProposalVotes">> => list(vote_summary()())
+%%   <<"ProposalVotes">> => list(vote_summary())
 %% }
 -type list_proposal_votes_output() :: #{binary() => any()}.
 
@@ -413,7 +413,7 @@
 
 %% Example:
 %% list_networks_output() :: #{
-%%   <<"Networks">> => list(network_summary()()),
+%%   <<"Networks">> => list(network_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_networks_output() :: #{binary() => any()}.
@@ -671,7 +671,7 @@
 
 %% Example:
 %% list_invitations_output() :: #{
-%%   <<"Invitations">> => list(invitation()()),
+%%   <<"Invitations">> => list(invitation()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_invitations_output() :: #{binary() => any()}.
@@ -817,7 +817,7 @@
 %% Example:
 %% list_nodes_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Nodes">> => list(node_summary()())
+%%   <<"Nodes">> => list(node_summary())
 %% }
 -type list_nodes_output() :: #{binary() => any()}.
 
@@ -842,7 +842,7 @@
 
 %% Example:
 %% list_accessors_output() :: #{
-%%   <<"Accessors">> => list(accessor_summary()()),
+%%   <<"Accessors">> => list(accessor_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_accessors_output() :: #{binary() => any()}.
@@ -875,14 +875,14 @@
 %% Example:
 %% list_proposals_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Proposals">> => list(proposal_summary()())
+%%   <<"Proposals">> => list(proposal_summary())
 %% }
 -type list_proposals_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_node_output() :: #{
-%%   <<"Node">> => managedblockchain_node()
+%%   <<"Node">> => node()
 %% }
 -type get_node_output() :: #{binary() => any()}.
 

@@ -80,7 +80,7 @@
 
 %% Example:
 %% get_detector_model_analysis_results_response() :: #{
-%%   <<"analysisResults">> => list(analysis_result()()),
+%%   <<"analysisResults">> => list(analysis_result()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_detector_model_analysis_results_response() :: #{binary() => any()}.
@@ -99,7 +99,7 @@
 %% Example:
 %% analysis_result() :: #{
 %%   <<"level">> => list(any()),
-%%   <<"locations">> => list(analysis_result_location()()),
+%%   <<"locations">> => list(analysis_result_location()),
 %%   <<"message">> => string(),
 %%   <<"type">> => string()
 %% }
@@ -109,7 +109,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -194,7 +194,7 @@
 
 %% Example:
 %% alarm_event_actions() :: #{
-%%   <<"alarmActions">> => list(alarm_action()())
+%%   <<"alarmActions">> => list(alarm_action())
 %% }
 -type alarm_event_actions() :: #{binary() => any()}.
 
@@ -256,7 +256,7 @@
 %% Example:
 %% detector_model_definition() :: #{
 %%   <<"initialStateName">> => string(),
-%%   <<"states">> => list(state()())
+%%   <<"states">> => list(state())
 %% }
 -type detector_model_definition() :: #{binary() => any()}.
 
@@ -324,7 +324,7 @@
 
 %% Example:
 %% list_alarm_models_response() :: #{
-%%   <<"alarmModelSummaries">> => list(alarm_model_summary()()),
+%%   <<"alarmModelSummaries">> => list(alarm_model_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_alarm_models_response() :: #{binary() => any()}.
@@ -340,7 +340,7 @@
 
 %% Example:
 %% on_exit_lifecycle() :: #{
-%%   <<"events">> => list(event()())
+%%   <<"events">> => list(event())
 %% }
 -type on_exit_lifecycle() :: #{binary() => any()}.
 
@@ -388,7 +388,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -450,7 +450,7 @@
 
 %% Example:
 %% list_detector_models_response() :: #{
-%%   <<"detectorModelSummaries">> => list(detector_model_summary()()),
+%%   <<"detectorModelSummaries">> => list(detector_model_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_detector_models_response() :: #{binary() => any()}.
@@ -481,7 +481,7 @@
 %% Example:
 %% sms_configuration() :: #{
 %%   <<"additionalMessage">> => string(),
-%%   <<"recipients">> => list(recipient_detail()()),
+%%   <<"recipients">> => list(recipient_detail()),
 %%   <<"senderId">> => string()
 %% }
 -type sms_configuration() :: #{binary() => any()}.
@@ -499,7 +499,7 @@
 %%   <<"inputDefinition">> := input_definition(),
 %%   <<"inputDescription">> => string(),
 %%   <<"inputName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_input_request() :: #{binary() => any()}.
 
@@ -515,7 +515,7 @@
 %% Example:
 %% list_input_routings_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"routedResources">> => list(routed_resource()())
+%%   <<"routedResources">> => list(routed_resource())
 %% }
 -type list_input_routings_response() :: #{binary() => any()}.
 
@@ -612,8 +612,8 @@
 
 %% Example:
 %% on_input_lifecycle() :: #{
-%%   <<"events">> => list(event()()),
-%%   <<"transitionEvents">> => list(transition_event()())
+%%   <<"events">> => list(event()),
+%%   <<"transitionEvents">> => list(transition_event())
 %% }
 -type on_input_lifecycle() :: #{binary() => any()}.
 
@@ -624,7 +624,7 @@
 
 %% Example:
 %% list_alarm_model_versions_response() :: #{
-%%   <<"alarmModelVersionSummaries">> => list(alarm_model_version_summary()()),
+%%   <<"alarmModelVersionSummaries">> => list(alarm_model_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_alarm_model_versions_response() :: #{binary() => any()}.
@@ -646,7 +646,7 @@
 
 %% Example:
 %% list_detector_model_versions_response() :: #{
-%%   <<"detectorModelVersionSummaries">> => list(detector_model_version_summary()()),
+%%   <<"detectorModelVersionSummaries">> => list(detector_model_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_detector_model_versions_response() :: #{binary() => any()}.
@@ -663,14 +663,14 @@
 %%   <<"key">> => string(),
 %%   <<"roleArn">> := string(),
 %%   <<"severity">> => integer(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_alarm_model_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -692,7 +692,7 @@
 
 %% Example:
 %% input_definition() :: #{
-%%   <<"attributes">> => list(attribute()())
+%%   <<"attributes">> => list(attribute())
 %% }
 -type input_definition() :: #{binary() => any()}.
 
@@ -711,7 +711,7 @@
 
 %% Example:
 %% list_inputs_response() :: #{
-%%   <<"inputSummaries">> => list(input_summary()()),
+%%   <<"inputSummaries">> => list(input_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_inputs_response() :: #{binary() => any()}.
@@ -727,7 +727,7 @@
 
 %% Example:
 %% on_enter_lifecycle() :: #{
-%%   <<"events">> => list(event()())
+%%   <<"events">> => list(event())
 %% }
 -type on_enter_lifecycle() :: #{binary() => any()}.
 
@@ -773,7 +773,7 @@
 
 %% Example:
 %% event() :: #{
-%%   <<"actions">> => list(action()()),
+%%   <<"actions">> => list(action()),
 %%   <<"condition">> => string(),
 %%   <<"eventName">> => string()
 %% }
@@ -854,7 +854,7 @@
 %%   <<"evaluationMethod">> => list(any()),
 %%   <<"key">> => string(),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_detector_model_request() :: #{binary() => any()}.
 
@@ -880,7 +880,7 @@
 
 %% Example:
 %% transition_event() :: #{
-%%   <<"actions">> => list(action()()),
+%%   <<"actions">> => list(action()),
 %%   <<"condition">> => string(),
 %%   <<"eventName">> => string(),
 %%   <<"nextState">> => string()
@@ -905,7 +905,7 @@
 
 %% Example:
 %% email_recipients() :: #{
-%%   <<"to">> => list(recipient_detail()())
+%%   <<"to">> => list(recipient_detail())
 %% }
 -type email_recipients() :: #{binary() => any()}.
 
@@ -919,7 +919,7 @@
 
 %% Example:
 %% alarm_notification() :: #{
-%%   <<"notificationActions">> => list(notification_action()())
+%%   <<"notificationActions">> => list(notification_action())
 %% }
 -type alarm_notification() :: #{binary() => any()}.
 
@@ -982,7 +982,7 @@
 
 %% Example:
 %% logging_options() :: #{
-%%   <<"detectorDebugOptions">> => list(detector_debug_option()()),
+%%   <<"detectorDebugOptions">> => list(detector_debug_option()),
 %%   <<"enabled">> => boolean(),
 %%   <<"level">> => list(any()),
 %%   <<"roleArn">> => string()
@@ -993,8 +993,8 @@
 %% Example:
 %% notification_action() :: #{
 %%   <<"action">> => notification_target_actions(),
-%%   <<"emailConfigurations">> => list(email_configuration()()),
-%%   <<"smsConfigurations">> => list(sms_configuration()())
+%%   <<"emailConfigurations">> => list(email_configuration()),
+%%   <<"smsConfigurations">> => list(sms_configuration())
 %% }
 -type notification_action() :: #{binary() => any()}.
 

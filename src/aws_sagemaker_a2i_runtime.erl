@@ -153,7 +153,7 @@
 
 %% Example:
 %% list_human_loops_response() :: #{
-%%   <<"HumanLoopSummaries">> => list(human_loop_summary()()),
+%%   <<"HumanLoopSummaries">> => list(human_loop_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_human_loops_response() :: #{binary() => any()}.

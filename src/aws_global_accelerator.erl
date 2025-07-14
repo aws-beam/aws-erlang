@@ -225,7 +225,7 @@
 %% Example:
 %% byoip_cidr() :: #{
 %%   <<"Cidr">> => string(),
-%%   <<"Events">> => list(byoip_cidr_event()()),
+%%   <<"Events">> => list(byoip_cidr_event()),
 %%   <<"State">> => list(any())
 %% }
 -type byoip_cidr() :: #{binary() => any()}.
@@ -239,13 +239,13 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_cross_account_attachments_response() :: #{
-%%   <<"CrossAccountAttachments">> => list(attachment()()),
+%%   <<"CrossAccountAttachments">> => list(attachment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cross_account_attachments_response() :: #{binary() => any()}.
@@ -267,7 +267,7 @@
 %%   <<"AcceleratorArn">> := string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"IpAddresses">> => list(string()()),
+%%   <<"IpAddresses">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type update_accelerator_request() :: #{binary() => any()}.
@@ -329,7 +329,7 @@
 %% listener() :: #{
 %%   <<"ClientAffinity">> => list(any()),
 %%   <<"ListenerArn">> => string(),
-%%   <<"PortRanges">> => list(port_range()()),
+%%   <<"PortRanges">> => list(port_range()),
 %%   <<"Protocol">> => list(any())
 %% }
 -type listener() :: #{binary() => any()}.
@@ -355,8 +355,8 @@
 
 %% Example:
 %% custom_routing_endpoint_group() :: #{
-%%   <<"DestinationDescriptions">> => list(custom_routing_destination_description()()),
-%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()()),
+%%   <<"DestinationDescriptions">> => list(custom_routing_destination_description()),
+%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()),
 %%   <<"EndpointGroupArn">> => string(),
 %%   <<"EndpointGroupRegion">> => string()
 %% }
@@ -370,7 +370,7 @@
 
 %% Example:
 %% list_custom_routing_endpoint_groups_response() :: #{
-%%   <<"EndpointGroups">> => list(custom_routing_endpoint_group()()),
+%%   <<"EndpointGroups">> => list(custom_routing_endpoint_group()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_routing_endpoint_groups_response() :: #{binary() => any()}.
@@ -401,15 +401,15 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Principals">> => list(string()()),
-%%   <<"Resources">> => list(resource()())
+%%   <<"Principals">> => list(string()),
+%%   <<"Resources">> => list(resource())
 %% }
 -type attachment() :: #{binary() => any()}.
 
 %% Example:
 %% list_custom_routing_port_mappings_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PortMappings">> => list(port_mapping()())
+%%   <<"PortMappings">> => list(port_mapping())
 %% }
 -type list_custom_routing_port_mappings_response() :: #{binary() => any()}.
 
@@ -477,7 +477,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -485,7 +485,7 @@
 %% create_custom_routing_listener_request() :: #{
 %%   <<"AcceleratorArn">> := string(),
 %%   <<"IdempotencyToken">> := string(),
-%%   <<"PortRanges">> := list(port_range()())
+%%   <<"PortRanges">> := list(port_range())
 %% }
 -type create_custom_routing_listener_request() :: #{binary() => any()}.
 
@@ -498,7 +498,7 @@
 %% Example:
 %% remove_custom_routing_endpoints_request() :: #{
 %%   <<"EndpointGroupArn">> := string(),
-%%   <<"EndpointIds">> := list(string()())
+%%   <<"EndpointIds">> := list(string())
 %% }
 -type remove_custom_routing_endpoints_request() :: #{binary() => any()}.
 
@@ -507,9 +507,9 @@
 %%   <<"Enabled">> => boolean(),
 %%   <<"IdempotencyToken">> := string(),
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"IpAddresses">> => list(string()()),
+%%   <<"IpAddresses">> => list(string()),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_accelerator_request() :: #{binary() => any()}.
 
@@ -528,19 +528,19 @@
 
 %% Example:
 %% list_custom_routing_listeners_response() :: #{
-%%   <<"Listeners">> => list(custom_routing_listener()()),
+%%   <<"Listeners">> => list(custom_routing_listener()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_routing_listeners_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_cross_account_attachment_request() :: #{
-%%   <<"AddPrincipals">> => list(string()()),
-%%   <<"AddResources">> => list(resource()()),
+%%   <<"AddPrincipals">> => list(string()),
+%%   <<"AddResources">> => list(resource()),
 %%   <<"AttachmentArn">> := string(),
 %%   <<"Name">> => string(),
-%%   <<"RemovePrincipals">> => list(string()()),
-%%   <<"RemoveResources">> => list(resource()())
+%%   <<"RemovePrincipals">> => list(string()),
+%%   <<"RemoveResources">> => list(resource())
 %% }
 -type update_cross_account_attachment_request() :: #{binary() => any()}.
 
@@ -559,7 +559,7 @@
 
 %% Example:
 %% add_endpoints_request() :: #{
-%%   <<"EndpointConfigurations">> := list(endpoint_configuration()()),
+%%   <<"EndpointConfigurations">> := list(endpoint_configuration()),
 %%   <<"EndpointGroupArn">> := string()
 %% }
 -type add_endpoints_request() :: #{binary() => any()}.
@@ -628,7 +628,7 @@
 %% Example:
 %% remove_endpoints_request() :: #{
 %%   <<"EndpointGroupArn">> := string(),
-%%   <<"EndpointIdentifiers">> := list(endpoint_identifier()())
+%%   <<"EndpointIdentifiers">> := list(endpoint_identifier())
 %% }
 -type remove_endpoints_request() :: #{binary() => any()}.
 
@@ -652,7 +652,7 @@
 
 %% Example:
 %% list_accelerators_response() :: #{
-%%   <<"Accelerators">> => list(accelerator()()),
+%%   <<"Accelerators">> => list(accelerator()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_accelerators_response() :: #{binary() => any()}.
@@ -680,7 +680,7 @@
 %% Example:
 %% update_custom_routing_listener_request() :: #{
 %%   <<"ListenerArn">> := string(),
-%%   <<"PortRanges">> := list(port_range()())
+%%   <<"PortRanges">> := list(port_range())
 %% }
 -type update_custom_routing_listener_request() :: #{binary() => any()}.
 
@@ -698,7 +698,7 @@
 
 %% Example:
 %% list_custom_routing_port_mappings_by_destination_response() :: #{
-%%   <<"DestinationPortMappings">> => list(destination_port_mapping()()),
+%%   <<"DestinationPortMappings">> => list(destination_port_mapping()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_routing_port_mappings_by_destination_response() :: #{binary() => any()}.
@@ -706,7 +706,7 @@
 %% Example:
 %% custom_routing_listener() :: #{
 %%   <<"ListenerArn">> => string(),
-%%   <<"PortRanges">> => list(port_range()())
+%%   <<"PortRanges">> => list(port_range())
 %% }
 -type custom_routing_listener() :: #{binary() => any()}.
 
@@ -722,14 +722,14 @@
 %% Example:
 %% ip_set() :: #{
 %%   <<"IpAddressFamily">> => list(any()),
-%%   <<"IpAddresses">> => list(string()()),
+%%   <<"IpAddresses">> => list(string()),
 %%   <<"IpFamily">> => string()
 %% }
 -type ip_set() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -740,9 +740,9 @@
 %%   <<"DnsName">> => string(),
 %%   <<"DualStackDnsName">> => string(),
 %%   <<"Enabled">> => boolean(),
-%%   <<"Events">> => list(accelerator_event()()),
+%%   <<"Events">> => list(accelerator_event()),
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"IpSets">> => list(ip_set()()),
+%%   <<"IpSets">> => list(ip_set()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => list(any())
@@ -779,15 +779,15 @@
 %%   <<"Enabled">> => boolean(),
 %%   <<"IdempotencyToken">> := string(),
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"IpAddresses">> => list(string()()),
+%%   <<"IpAddresses">> => list(string()),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_custom_routing_accelerator_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_listeners_response() :: #{
-%%   <<"Listeners">> => list(listener()()),
+%%   <<"Listeners">> => list(listener()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_listeners_response() :: #{binary() => any()}.
@@ -801,8 +801,8 @@
 %% Example:
 %% allow_custom_routing_traffic_request() :: #{
 %%   <<"AllowAllTrafficToEndpoint">> => boolean(),
-%%   <<"DestinationAddresses">> => list(string()()),
-%%   <<"DestinationPorts">> => list(integer()()),
+%%   <<"DestinationAddresses">> => list(string()),
+%%   <<"DestinationPorts">> => list(integer()),
 %%   <<"EndpointGroupArn">> := string(),
 %%   <<"EndpointId">> := string()
 %% }
@@ -811,8 +811,8 @@
 %% Example:
 %% deny_custom_routing_traffic_request() :: #{
 %%   <<"DenyAllTrafficToEndpoint">> => boolean(),
-%%   <<"DestinationAddresses">> => list(string()()),
-%%   <<"DestinationPorts">> => list(integer()()),
+%%   <<"DestinationAddresses">> => list(string()),
+%%   <<"DestinationPorts">> => list(integer()),
 %%   <<"EndpointGroupArn">> := string(),
 %%   <<"EndpointId">> := string()
 %% }
@@ -836,9 +836,9 @@
 %% create_cross_account_attachment_request() :: #{
 %%   <<"IdempotencyToken">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Principals">> => list(string()()),
-%%   <<"Resources">> => list(resource()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Principals">> => list(string()),
+%%   <<"Resources">> => list(resource()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cross_account_attachment_request() :: #{binary() => any()}.
 
@@ -850,7 +850,7 @@
 
 %% Example:
 %% list_cross_account_resources_response() :: #{
-%%   <<"CrossAccountResources">> => list(cross_account_resource()()),
+%%   <<"CrossAccountResources">> => list(cross_account_resource()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cross_account_resources_response() :: #{binary() => any()}.
@@ -885,7 +885,7 @@
 
 %% Example:
 %% add_endpoints_response() :: #{
-%%   <<"EndpointDescriptions">> => list(endpoint_description()()),
+%%   <<"EndpointDescriptions">> => list(endpoint_description()),
 %%   <<"EndpointGroupArn">> => string()
 %% }
 -type add_endpoints_response() :: #{binary() => any()}.
@@ -911,13 +911,13 @@
 
 %% Example:
 %% update_endpoint_group_request() :: #{
-%%   <<"EndpointConfigurations">> => list(endpoint_configuration()()),
+%%   <<"EndpointConfigurations">> => list(endpoint_configuration()),
 %%   <<"EndpointGroupArn">> := string(),
 %%   <<"HealthCheckIntervalSeconds">> => integer(),
 %%   <<"HealthCheckPath">> => string(),
 %%   <<"HealthCheckPort">> => integer(),
 %%   <<"HealthCheckProtocol">> => list(any()),
-%%   <<"PortOverrides">> => list(port_override()()),
+%%   <<"PortOverrides">> => list(port_override()),
 %%   <<"ThresholdCount">> => integer(),
 %%   <<"TrafficDialPercentage">> => float()
 %% }
@@ -928,7 +928,7 @@
 %%   <<"AcceleratorArn">> := string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"IpAddresses">> => list(string()()),
+%%   <<"IpAddresses">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type update_custom_routing_accelerator_request() :: #{binary() => any()}.
@@ -941,7 +941,7 @@
 
 %% Example:
 %% list_endpoint_groups_response() :: #{
-%%   <<"EndpointGroups">> => list(endpoint_group()()),
+%%   <<"EndpointGroups">> => list(endpoint_group()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_endpoint_groups_response() :: #{binary() => any()}.
@@ -962,7 +962,7 @@
 %% update_listener_request() :: #{
 %%   <<"ClientAffinity">> => list(any()),
 %%   <<"ListenerArn">> := string(),
-%%   <<"PortRanges">> => list(port_range()()),
+%%   <<"PortRanges">> => list(port_range()),
 %%   <<"Protocol">> => list(any())
 %% }
 -type update_listener_request() :: #{binary() => any()}.
@@ -1025,14 +1025,14 @@
 
 %% Example:
 %% add_custom_routing_endpoints_request() :: #{
-%%   <<"EndpointConfigurations">> := list(custom_routing_endpoint_configuration()()),
+%%   <<"EndpointConfigurations">> := list(custom_routing_endpoint_configuration()),
 %%   <<"EndpointGroupArn">> := string()
 %% }
 -type add_custom_routing_endpoints_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_byoip_cidrs_response() :: #{
-%%   <<"ByoipCidrs">> => list(byoip_cidr()()),
+%%   <<"ByoipCidrs">> => list(byoip_cidr()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_byoip_cidrs_response() :: #{binary() => any()}.
@@ -1090,7 +1090,7 @@
 
 %% Example:
 %% list_custom_routing_accelerators_response() :: #{
-%%   <<"Accelerators">> => list(custom_routing_accelerator()()),
+%%   <<"Accelerators">> => list(custom_routing_accelerator()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_routing_accelerators_response() :: #{binary() => any()}.
@@ -1102,7 +1102,7 @@
 %%   <<"DnsName">> => string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"IpSets">> => list(ip_set()()),
+%%   <<"IpSets">> => list(ip_set()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => list(any())
@@ -1126,7 +1126,7 @@
 
 %% Example:
 %% add_custom_routing_endpoints_response() :: #{
-%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()()),
+%%   <<"EndpointDescriptions">> => list(custom_routing_endpoint_description()),
 %%   <<"EndpointGroupArn">> => string()
 %% }
 -type add_custom_routing_endpoints_response() :: #{binary() => any()}.
@@ -1148,7 +1148,7 @@
 %% Example:
 %% destination_port_mapping() :: #{
 %%   <<"AcceleratorArn">> => string(),
-%%   <<"AcceleratorSocketAddresses">> => list(socket_address()()),
+%%   <<"AcceleratorSocketAddresses">> => list(socket_address()),
 %%   <<"DestinationSocketAddress">> => socket_address(),
 %%   <<"DestinationTrafficState">> => list(any()),
 %%   <<"EndpointGroupArn">> => string(),
@@ -1160,7 +1160,7 @@
 
 %% Example:
 %% list_cross_account_resource_accounts_response() :: #{
-%%   <<"ResourceOwnerAwsAccountIds">> => list(string()())
+%%   <<"ResourceOwnerAwsAccountIds">> => list(string())
 %% }
 -type list_cross_account_resource_accounts_response() :: #{binary() => any()}.
 
@@ -1197,7 +1197,7 @@
 
 %% Example:
 %% create_custom_routing_endpoint_group_request() :: #{
-%%   <<"DestinationConfigurations">> := list(custom_routing_destination_configuration()()),
+%%   <<"DestinationConfigurations">> := list(custom_routing_destination_configuration()),
 %%   <<"EndpointGroupRegion">> := string(),
 %%   <<"IdempotencyToken">> := string(),
 %%   <<"ListenerArn">> := string()
@@ -1206,14 +1206,14 @@
 
 %% Example:
 %% endpoint_group() :: #{
-%%   <<"EndpointDescriptions">> => list(endpoint_description()()),
+%%   <<"EndpointDescriptions">> => list(endpoint_description()),
 %%   <<"EndpointGroupArn">> => string(),
 %%   <<"EndpointGroupRegion">> => string(),
 %%   <<"HealthCheckIntervalSeconds">> => integer(),
 %%   <<"HealthCheckPath">> => string(),
 %%   <<"HealthCheckPort">> => integer(),
 %%   <<"HealthCheckProtocol">> => list(any()),
-%%   <<"PortOverrides">> => list(port_override()()),
+%%   <<"PortOverrides">> => list(port_override()),
 %%   <<"ThresholdCount">> => integer(),
 %%   <<"TrafficDialPercentage">> => float()
 %% }
@@ -1261,7 +1261,7 @@
 %%   <<"AcceleratorArn">> := string(),
 %%   <<"ClientAffinity">> => list(any()),
 %%   <<"IdempotencyToken">> := string(),
-%%   <<"PortRanges">> := list(port_range()()),
+%%   <<"PortRanges">> := list(port_range()),
 %%   <<"Protocol">> := list(any())
 %% }
 -type create_listener_request() :: #{binary() => any()}.
@@ -1283,7 +1283,7 @@
 
 %% Example:
 %% create_endpoint_group_request() :: #{
-%%   <<"EndpointConfigurations">> => list(endpoint_configuration()()),
+%%   <<"EndpointConfigurations">> => list(endpoint_configuration()),
 %%   <<"EndpointGroupRegion">> := string(),
 %%   <<"HealthCheckIntervalSeconds">> => integer(),
 %%   <<"HealthCheckPath">> => string(),
@@ -1291,7 +1291,7 @@
 %%   <<"HealthCheckProtocol">> => list(any()),
 %%   <<"IdempotencyToken">> := string(),
 %%   <<"ListenerArn">> := string(),
-%%   <<"PortOverrides">> => list(port_override()()),
+%%   <<"PortOverrides">> => list(port_override()),
 %%   <<"ThresholdCount">> => integer(),
 %%   <<"TrafficDialPercentage">> => float()
 %% }

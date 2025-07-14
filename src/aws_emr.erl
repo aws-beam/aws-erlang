@@ -167,7 +167,7 @@
 %% create_persistent_app_ui_input() :: #{
 %%   <<"EMRContainersConfig">> => emr_containers_config(),
 %%   <<"ProfilerType">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetResourceArn">> := string(),
 %%   <<"XReferer">> => string()
 %% }
@@ -235,7 +235,7 @@
 
 %% Example:
 %% list_instance_groups_output() :: #{
-%%   <<"InstanceGroups">> => list(instance_group()()),
+%%   <<"InstanceGroups">> => list(instance_group()),
 %%   <<"Marker">> => string()
 %% }
 -type list_instance_groups_output() :: #{binary() => any()}.
@@ -299,7 +299,7 @@
 
 %% Example:
 %% set_visible_to_all_users_input() :: #{
-%%   <<"JobFlowIds">> := list(string()()),
+%%   <<"JobFlowIds">> := list(string()),
 %%   <<"VisibleToAllUsers">> := boolean()
 %% }
 -type set_visible_to_all_users_input() :: #{binary() => any()}.
@@ -319,7 +319,7 @@
 
 %% Example:
 %% list_instance_fleets_output() :: #{
-%%   <<"InstanceFleets">> => list(instance_fleet()()),
+%%   <<"InstanceFleets">> => list(instance_fleet()),
 %%   <<"Marker">> => string()
 %% }
 -type list_instance_fleets_output() :: #{binary() => any()}.
@@ -333,7 +333,7 @@
 
 %% Example:
 %% script_bootstrap_action_config() :: #{
-%%   <<"Args">> => list(string()()),
+%%   <<"Args">> => list(string()),
 %%   <<"Path">> => string()
 %% }
 -type script_bootstrap_action_config() :: #{binary() => any()}.
@@ -341,7 +341,7 @@
 %% Example:
 %% add_instance_groups_output() :: #{
 %%   <<"ClusterArn">> => string(),
-%%   <<"InstanceGroupIds">> => list(string()()),
+%%   <<"InstanceGroupIds">> => list(string()),
 %%   <<"JobFlowId">> => string()
 %% }
 -type add_instance_groups_output() :: #{binary() => any()}.
@@ -369,7 +369,7 @@
 %% list_steps_input() :: #{
 %%   <<"ClusterId">> := string(),
 %%   <<"Marker">> => string(),
-%%   <<"StepIds">> => list(string()()),
+%%   <<"StepIds">> => list(string()),
 %%   <<"StepStates">> => list(list(any())())
 %% }
 -type list_steps_input() :: #{binary() => any()}.
@@ -396,7 +396,7 @@
 %% Example:
 %% configuration() :: #{
 %%   <<"Classification">> => string(),
-%%   <<"Configurations">> => list(configuration()()),
+%%   <<"Configurations">> => list(configuration()),
 %%   <<"Properties">> => map()
 %% }
 -type configuration() :: #{binary() => any()}.
@@ -411,7 +411,7 @@
 
 %% Example:
 %% supported_product_config() :: #{
-%%   <<"Args">> => list(string()()),
+%%   <<"Args">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type supported_product_config() :: #{binary() => any()}.
@@ -425,7 +425,7 @@
 %% Example:
 %% auto_scaling_policy() :: #{
 %%   <<"Constraints">> => scaling_constraints(),
-%%   <<"Rules">> => list(scaling_rule()())
+%%   <<"Rules">> => list(scaling_rule())
 %% }
 -type auto_scaling_policy() :: #{binary() => any()}.
 
@@ -434,7 +434,7 @@
 %%   <<"Context">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"InstanceFleetType">> => list(any()),
-%%   <<"InstanceTypeSpecifications">> => list(instance_type_specification()()),
+%%   <<"InstanceTypeSpecifications">> => list(instance_type_specification()),
 %%   <<"LaunchSpecifications">> => instance_fleet_provisioning_specifications(),
 %%   <<"Name">> => string(),
 %%   <<"ProvisionedOnDemandCapacity">> => integer(),
@@ -450,7 +450,7 @@
 %% describe_job_flows_input() :: #{
 %%   <<"CreatedAfter">> => non_neg_integer(),
 %%   <<"CreatedBefore">> => non_neg_integer(),
-%%   <<"JobFlowIds">> => list(string()()),
+%%   <<"JobFlowIds">> => list(string()),
 %%   <<"JobFlowStates">> => list(list(any())())
 %% }
 -type describe_job_flows_input() :: #{binary() => any()}.
@@ -465,13 +465,13 @@
 %% Example:
 %% add_tags_input() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_input() :: #{binary() => any()}.
 
 %% Example:
 %% hadoop_step_config() :: #{
-%%   <<"Args">> => list(string()()),
+%%   <<"Args">> => list(string()),
 %%   <<"Jar">> => string(),
 %%   <<"MainClass">> => string(),
 %%   <<"Properties">> => map()
@@ -487,8 +487,8 @@
 
 %% Example:
 %% describe_release_label_output() :: #{
-%%   <<"Applications">> => list(simplified_application()()),
-%%   <<"AvailableOSReleases">> => list(o_s_release()()),
+%%   <<"Applications">> => list(simplified_application()),
+%%   <<"AvailableOSReleases">> => list(o_s_release()),
 %%   <<"NextToken">> => string(),
 %%   <<"ReleaseLabel">> => string()
 %% }
@@ -511,7 +511,7 @@
 %% job_flow_detail() :: #{
 %%   <<"AmiVersion">> => string(),
 %%   <<"AutoScalingRole">> => string(),
-%%   <<"BootstrapActions">> => list(bootstrap_action_detail()()),
+%%   <<"BootstrapActions">> => list(bootstrap_action_detail()),
 %%   <<"ExecutionStatusDetail">> => job_flow_execution_status_detail(),
 %%   <<"Instances">> => job_flow_instances_detail(),
 %%   <<"JobFlowId">> => string(),
@@ -521,8 +521,8 @@
 %%   <<"Name">> => string(),
 %%   <<"ScaleDownBehavior">> => list(any()),
 %%   <<"ServiceRole">> => string(),
-%%   <<"Steps">> => list(step_detail()()),
-%%   <<"SupportedProducts">> => list(string()()),
+%%   <<"Steps">> => list(step_detail()),
+%%   <<"SupportedProducts">> => list(string()),
 %%   <<"VisibleToAllUsers">> => boolean()
 %% }
 -type job_flow_detail() :: #{binary() => any()}.
@@ -535,7 +535,7 @@
 
 %% Example:
 %% list_instances_output() :: #{
-%%   <<"Instances">> => list(instance()()),
+%%   <<"Instances">> => list(instance()),
 %%   <<"Marker">> => string()
 %% }
 -type list_instances_output() :: #{binary() => any()}.
@@ -550,7 +550,7 @@
 
 %% Example:
 %% list_clusters_output() :: #{
-%%   <<"Clusters">> => list(cluster_summary()()),
+%%   <<"Clusters">> => list(cluster_summary()),
 %%   <<"Marker">> => string()
 %% }
 -type list_clusters_output() :: #{binary() => any()}.
@@ -579,7 +579,7 @@
 %%   <<"OutputNotebookURI">> => string(),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type notebook_execution() :: #{binary() => any()}.
 
@@ -639,7 +639,7 @@
 %% Example:
 %% cloud_watch_alarm_definition() :: #{
 %%   <<"ComparisonOperator">> => list(any()),
-%%   <<"Dimensions">> => list(metric_dimension()()),
+%%   <<"Dimensions">> => list(metric_dimension()),
 %%   <<"EvaluationPeriods">> => integer(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
@@ -707,7 +707,7 @@
 
 %% Example:
 %% set_keep_job_flow_alive_when_no_steps_input() :: #{
-%%   <<"JobFlowIds">> := list(string()()),
+%%   <<"JobFlowIds">> := list(string()),
 %%   <<"KeepJobFlowAliveWhenNoSteps">> := boolean()
 %% }
 -type set_keep_job_flow_alive_when_no_steps_input() :: #{binary() => any()}.
@@ -721,7 +721,7 @@
 
 %% Example:
 %% add_job_flow_steps_output() :: #{
-%%   <<"StepIds">> => list(string()())
+%%   <<"StepIds">> => list(string())
 %% }
 -type add_job_flow_steps_output() :: #{binary() => any()}.
 
@@ -735,7 +735,7 @@
 %% Example:
 %% list_notebook_executions_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"NotebookExecutions">> => list(notebook_execution_summary()())
+%%   <<"NotebookExecutions">> => list(notebook_execution_summary())
 %% }
 -type list_notebook_executions_output() :: #{binary() => any()}.
 
@@ -758,7 +758,7 @@
 
 %% Example:
 %% add_instance_groups_input() :: #{
-%%   <<"InstanceGroups">> := list(instance_group_config()()),
+%%   <<"InstanceGroups">> := list(instance_group_config()),
 %%   <<"JobFlowId">> := string()
 %% }
 -type add_instance_groups_input() :: #{binary() => any()}.
@@ -834,15 +834,15 @@
 %%   <<"NormalizedInstanceHours">> => integer(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"RunningAmiVersion">> => string(),
-%%   <<"Configurations">> => list(configuration()()),
+%%   <<"Configurations">> => list(configuration()),
 %%   <<"ReleaseLabel">> => string(),
 %%   <<"LogUri">> => string(),
-%%   <<"Applications">> => list(application()()),
+%%   <<"Applications">> => list(application()),
 %%   <<"UnhealthyNodeReplacement">> => boolean(),
 %%   <<"ClusterArn">> => string(),
 %%   <<"EbsRootVolumeThroughput">> => integer(),
 %%   <<"AutoTerminate">> => boolean(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"MasterPublicDnsName">> => string(),
 %%   <<"ScaleDownBehavior">> => list(any()),
 %%   <<"EbsRootVolumeSize">> => integer(),
@@ -853,7 +853,7 @@
 %%   <<"StepConcurrencyLevel">> => integer(),
 %%   <<"VisibleToAllUsers">> => boolean(),
 %%   <<"InstanceCollectionType">> => list(any()),
-%%   <<"PlacementGroups">> => list(placement_group_config()())
+%%   <<"PlacementGroups">> => list(placement_group_config())
 %% }
 -type cluster() :: #{binary() => any()}.
 
@@ -867,7 +867,7 @@
 %% instance_group_config() :: #{
 %%   <<"AutoScalingPolicy">> => auto_scaling_policy(),
 %%   <<"BidPrice">> => string(),
-%%   <<"Configurations">> => list(configuration()()),
+%%   <<"Configurations">> => list(configuration()),
 %%   <<"CustomAmiId">> => string(),
 %%   <<"EbsConfiguration">> => ebs_configuration(),
 %%   <<"InstanceCount">> => integer(),
@@ -881,14 +881,14 @@
 %% Example:
 %% list_security_configurations_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"SecurityConfigurations">> => list(security_configuration_summary()())
+%%   <<"SecurityConfigurations">> => list(security_configuration_summary())
 %% }
 -type list_security_configurations_output() :: #{binary() => any()}.
 
 %% Example:
 %% auto_scaling_policy_description() :: #{
 %%   <<"Constraints">> => scaling_constraints(),
-%%   <<"Rules">> => list(scaling_rule()()),
+%%   <<"Rules">> => list(scaling_rule()),
 %%   <<"Status">> => auto_scaling_policy_status()
 %% }
 -type auto_scaling_policy_description() :: #{binary() => any()}.
@@ -947,7 +947,7 @@
 %% Example:
 %% list_studio_session_mappings_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"SessionMappings">> => list(session_mapping_summary()())
+%%   <<"SessionMappings">> => list(session_mapping_summary())
 %% }
 -type list_studio_session_mappings_output() :: #{binary() => any()}.
 
@@ -974,7 +974,7 @@
 %% Example:
 %% application() :: #{
 %%   <<"AdditionalInfo">> => map(),
-%%   <<"Args">> => list(string()()),
+%%   <<"Args">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Version">> => string()
 %% }
@@ -995,7 +995,7 @@
 %% Example:
 %% list_supported_instance_types_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"SupportedInstanceTypes">> => list(supported_instance_type()())
+%%   <<"SupportedInstanceTypes">> => list(supported_instance_type())
 %% }
 -type list_supported_instance_types_output() :: #{binary() => any()}.
 
@@ -1010,7 +1010,7 @@
 %% instance_type_config() :: #{
 %%   <<"BidPrice">> => string(),
 %%   <<"BidPriceAsPercentageOfOnDemandPrice">> => float(),
-%%   <<"Configurations">> => list(configuration()()),
+%%   <<"Configurations">> => list(configuration()),
 %%   <<"CustomAmiId">> => string(),
 %%   <<"EbsConfiguration">> => ebs_configuration(),
 %%   <<"InstanceType">> => string(),
@@ -1037,7 +1037,7 @@
 
 %% Example:
 %% describe_job_flows_output() :: #{
-%%   <<"JobFlows">> => list(job_flow_detail()())
+%%   <<"JobFlows">> => list(job_flow_detail())
 %% }
 -type describe_job_flows_output() :: #{binary() => any()}.
 
@@ -1067,7 +1067,7 @@
 
 %% Example:
 %% list_bootstrap_actions_output() :: #{
-%%   <<"BootstrapActions">> => list(command()()),
+%%   <<"BootstrapActions">> => list(command()),
 %%   <<"Marker">> => string()
 %% }
 -type list_bootstrap_actions_output() :: #{binary() => any()}.
@@ -1076,15 +1076,15 @@
 %% instance_group() :: #{
 %%   <<"AutoScalingPolicy">> => auto_scaling_policy_description(),
 %%   <<"BidPrice">> => string(),
-%%   <<"Configurations">> => list(configuration()()),
+%%   <<"Configurations">> => list(configuration()),
 %%   <<"ConfigurationsVersion">> => float(),
 %%   <<"CustomAmiId">> => string(),
-%%   <<"EbsBlockDevices">> => list(ebs_block_device()()),
+%%   <<"EbsBlockDevices">> => list(ebs_block_device()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"Id">> => string(),
 %%   <<"InstanceGroupType">> => list(any()),
 %%   <<"InstanceType">> => string(),
-%%   <<"LastSuccessfullyAppliedConfigurations">> => list(configuration()()),
+%%   <<"LastSuccessfullyAppliedConfigurations">> => list(configuration()),
 %%   <<"LastSuccessfullyAppliedConfigurationsVersion">> => float(),
 %%   <<"Market">> => list(any()),
 %%   <<"Name">> => string(),
@@ -1112,7 +1112,7 @@
 
 %% Example:
 %% ebs_configuration() :: #{
-%%   <<"EbsBlockDeviceConfigs">> => list(ebs_block_device_config()()),
+%%   <<"EbsBlockDeviceConfigs">> => list(ebs_block_device_config()),
 %%   <<"EbsOptimized">> => boolean()
 %% }
 -type ebs_configuration() :: #{binary() => any()}.
@@ -1124,15 +1124,15 @@
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"StudioId">> := string(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type update_studio_input() :: #{binary() => any()}.
 
 %% Example:
 %% instance_resize_policy() :: #{
 %%   <<"InstanceTerminationTimeout">> => integer(),
-%%   <<"InstancesToProtect">> => list(string()()),
-%%   <<"InstancesToTerminate">> => list(string()())
+%%   <<"InstancesToProtect">> => list(string()),
+%%   <<"InstancesToTerminate">> => list(string())
 %% }
 -type instance_resize_policy() :: #{binary() => any()}.
 
@@ -1175,23 +1175,23 @@
 %% Example:
 %% list_studios_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Studios">> => list(studio_summary()())
+%%   <<"Studios">> => list(studio_summary())
 %% }
 -type list_studios_output() :: #{binary() => any()}.
 
 %% Example:
 %% job_flow_instances_config() :: #{
-%%   <<"AdditionalMasterSecurityGroups">> => list(string()()),
-%%   <<"AdditionalSlaveSecurityGroups">> => list(string()()),
+%%   <<"AdditionalMasterSecurityGroups">> => list(string()),
+%%   <<"AdditionalSlaveSecurityGroups">> => list(string()),
 %%   <<"Ec2KeyName">> => string(),
 %%   <<"Ec2SubnetId">> => string(),
-%%   <<"Ec2SubnetIds">> => list(string()()),
+%%   <<"Ec2SubnetIds">> => list(string()),
 %%   <<"EmrManagedMasterSecurityGroup">> => string(),
 %%   <<"EmrManagedSlaveSecurityGroup">> => string(),
 %%   <<"HadoopVersion">> => string(),
 %%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceFleets">> => list(instance_fleet_config()()),
-%%   <<"InstanceGroups">> => list(instance_group_config()()),
+%%   <<"InstanceFleets">> => list(instance_fleet_config()),
+%%   <<"InstanceGroups">> => list(instance_group_config()),
 %%   <<"KeepJobFlowAliveWhenNoSteps">> => boolean(),
 %%   <<"MasterInstanceType">> => string(),
 %%   <<"Placement">> => placement_type(),
@@ -1204,7 +1204,7 @@
 
 %% Example:
 %% cancel_steps_output() :: #{
-%%   <<"CancelStepsInfoList">> => list(cancel_steps_info()())
+%%   <<"CancelStepsInfoList">> => list(cancel_steps_info())
 %% }
 -type cancel_steps_output() :: #{binary() => any()}.
 
@@ -1230,7 +1230,7 @@
 %%   <<"OutputNotebookS3Location">> => output_notebook_s3_location_from_input(),
 %%   <<"RelativePath">> => string(),
 %%   <<"ServiceRole">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_notebook_execution_input() :: #{binary() => any()}.
 
@@ -1268,16 +1268,16 @@
 %% block_public_access_configuration() :: #{
 %%   <<"BlockPublicSecurityGroupRules">> => boolean(),
 %%   <<"Classification">> => string(),
-%%   <<"Configurations">> => list(configuration()()),
-%%   <<"PermittedPublicSecurityGroupRuleRanges">> => list(port_range()()),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"PermittedPublicSecurityGroupRuleRanges">> => list(port_range()),
 %%   <<"Properties">> => map()
 %% }
 -type block_public_access_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% instance_group_modify_config() :: #{
-%%   <<"Configurations">> => list(configuration()()),
-%%   <<"EC2InstanceIdsToTerminate">> => list(string()()),
+%%   <<"Configurations">> => list(configuration()),
+%%   <<"EC2InstanceIdsToTerminate">> => list(string()),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceGroupId">> => string(),
 %%   <<"ReconfigurationType">> => list(any()),
@@ -1330,7 +1330,7 @@
 %% Example:
 %% error_detail() :: #{
 %%   <<"ErrorCode">> => string(),
-%%   <<"ErrorData">> => list(map()()),
+%%   <<"ErrorData">> => list(map()),
 %%   <<"ErrorMessage">> => string()
 %% }
 -type error_detail() :: #{binary() => any()}.
@@ -1383,7 +1383,7 @@
 
 %% Example:
 %% instance() :: #{
-%%   <<"EbsVolumes">> => list(ebs_volume()()),
+%%   <<"EbsVolumes">> => list(ebs_volume()),
 %%   <<"Ec2InstanceId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"InstanceFleetId">> => string(),
@@ -1435,7 +1435,7 @@
 %% cancel_steps_input() :: #{
 %%   <<"ClusterId">> := string(),
 %%   <<"StepCancellationOption">> => list(any()),
-%%   <<"StepIds">> := list(string()())
+%%   <<"StepIds">> := list(string())
 %% }
 -type cancel_steps_input() :: #{binary() => any()}.
 
@@ -1471,10 +1471,10 @@
 
 %% Example:
 %% hadoop_jar_step_config() :: #{
-%%   <<"Args">> => list(string()()),
+%%   <<"Args">> => list(string()),
 %%   <<"Jar">> => string(),
 %%   <<"MainClass">> => string(),
-%%   <<"Properties">> => list(key_value()())
+%%   <<"Properties">> => list(key_value())
 %% }
 -type hadoop_jar_step_config() :: #{binary() => any()}.
 
@@ -1492,13 +1492,13 @@
 %% add_job_flow_steps_input() :: #{
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"JobFlowId">> := string(),
-%%   <<"Steps">> := list(step_config()())
+%%   <<"Steps">> := list(step_config())
 %% }
 -type add_job_flow_steps_input() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_status() :: #{
-%%   <<"ErrorDetails">> => list(error_detail()()),
+%%   <<"ErrorDetails">> => list(error_detail()),
 %%   <<"State">> => list(any()),
 %%   <<"StateChangeReason">> => cluster_state_change_reason(),
 %%   <<"Timeline">> => cluster_timeline()
@@ -1521,13 +1521,13 @@
 %%   <<"PersistentAppUIId">> => string(),
 %%   <<"PersistentAppUIStatus">> => string(),
 %%   <<"PersistentAppUITypeList">> => list(list(any())()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type persistent_app_ui() :: #{binary() => any()}.
 
 %% Example:
 %% set_unhealthy_node_replacement_input() :: #{
-%%   <<"JobFlowIds">> := list(string()()),
+%%   <<"JobFlowIds">> := list(string()),
 %%   <<"UnhealthyNodeReplacement">> := boolean()
 %% }
 -type set_unhealthy_node_replacement_input() :: #{binary() => any()}.
@@ -1535,28 +1535,28 @@
 %% Example:
 %% list_steps_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Steps">> => list(step_summary()())
+%%   <<"Steps">> => list(step_summary())
 %% }
 -type list_steps_output() :: #{binary() => any()}.
 
 %% Example:
 %% terminate_job_flows_input() :: #{
-%%   <<"JobFlowIds">> := list(string()())
+%%   <<"JobFlowIds">> := list(string())
 %% }
 -type terminate_job_flows_input() :: #{binary() => any()}.
 
 %% Example:
 %% ec2_instance_attributes() :: #{
-%%   <<"AdditionalMasterSecurityGroups">> => list(string()()),
-%%   <<"AdditionalSlaveSecurityGroups">> => list(string()()),
+%%   <<"AdditionalMasterSecurityGroups">> => list(string()),
+%%   <<"AdditionalSlaveSecurityGroups">> => list(string()),
 %%   <<"Ec2AvailabilityZone">> => string(),
 %%   <<"Ec2KeyName">> => string(),
 %%   <<"Ec2SubnetId">> => string(),
 %%   <<"EmrManagedMasterSecurityGroup">> => string(),
 %%   <<"EmrManagedSlaveSecurityGroup">> => string(),
 %%   <<"IamInstanceProfile">> => string(),
-%%   <<"RequestedEc2AvailabilityZones">> => list(string()()),
-%%   <<"RequestedEc2SubnetIds">> => list(string()()),
+%%   <<"RequestedEc2AvailabilityZones">> => list(string()),
+%%   <<"RequestedEc2SubnetIds">> => list(string()),
 %%   <<"ServiceAccessSecurityGroup">> => string()
 %% }
 -type ec2_instance_attributes() :: #{binary() => any()}.
@@ -1582,8 +1582,8 @@
 %%   <<"IdpRelayStateParameterName">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"ServiceRole">> := string(),
-%%   <<"SubnetIds">> := list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrustedIdentityPropagationEnabled">> => boolean(),
 %%   <<"UserRole">> => string(),
 %%   <<"VpcId">> := string(),
@@ -1668,7 +1668,7 @@
 %%   <<"Ec2SubnetId">> => string(),
 %%   <<"HadoopVersion">> => string(),
 %%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceGroups">> => list(instance_group_detail()()),
+%%   <<"InstanceGroups">> => list(instance_group_detail()),
 %%   <<"KeepJobFlowAliveWhenNoSteps">> => boolean(),
 %%   <<"MasterInstanceId">> => string(),
 %%   <<"MasterInstanceType">> => string(),
@@ -1709,7 +1709,7 @@
 
 %% Example:
 %% command() :: #{
-%%   <<"Args">> => list(string()()),
+%%   <<"Args">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"ScriptPath">> => string()
 %% }
@@ -1719,7 +1719,7 @@
 %% instance_fleet_config() :: #{
 %%   <<"Context">> => string(),
 %%   <<"InstanceFleetType">> => list(any()),
-%%   <<"InstanceTypeConfigs">> => list(instance_type_config()()),
+%%   <<"InstanceTypeConfigs">> => list(instance_type_config()),
 %%   <<"LaunchSpecifications">> => instance_fleet_provisioning_specifications(),
 %%   <<"Name">> => string(),
 %%   <<"ResizeSpecifications">> => instance_fleet_resizing_specifications(),
@@ -1756,7 +1756,7 @@
 %% instance_fleet_modify_config() :: #{
 %%   <<"Context">> => string(),
 %%   <<"InstanceFleetId">> => string(),
-%%   <<"InstanceTypeConfigs">> => list(instance_type_config()()),
+%%   <<"InstanceTypeConfigs">> => list(instance_type_config()),
 %%   <<"ResizeSpecifications">> => instance_fleet_resizing_specifications(),
 %%   <<"TargetOnDemandCapacity">> => integer(),
 %%   <<"TargetSpotCapacity">> => integer()
@@ -1774,7 +1774,7 @@
 %% Example:
 %% placement_type() :: #{
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"AvailabilityZones">> => list(string()())
+%%   <<"AvailabilityZones">> => list(string())
 %% }
 -type placement_type() :: #{binary() => any()}.
 
@@ -1787,7 +1787,7 @@
 
 %% Example:
 %% set_termination_protection_input() :: #{
-%%   <<"JobFlowIds">> := list(string()()),
+%%   <<"JobFlowIds">> := list(string()),
 %%   <<"TerminationProtected">> := boolean()
 %% }
 -type set_termination_protection_input() :: #{binary() => any()}.
@@ -1802,7 +1802,7 @@
 %% Example:
 %% list_release_labels_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReleaseLabels">> => list(string()())
+%%   <<"ReleaseLabels">> => list(string())
 %% }
 -type list_release_labels_output() :: #{binary() => any()}.
 
@@ -1815,7 +1815,7 @@
 %% Example:
 %% remove_tags_input() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_input() :: #{binary() => any()}.
 
@@ -1833,7 +1833,7 @@
 %% Example:
 %% modify_instance_groups_input() :: #{
 %%   <<"ClusterId">> => string(),
-%%   <<"InstanceGroups">> => list(instance_group_modify_config()())
+%%   <<"InstanceGroups">> => list(instance_group_modify_config())
 %% }
 -type modify_instance_groups_input() :: #{binary() => any()}.
 
@@ -1911,8 +1911,8 @@
 %%   <<"ServiceRole">> => string(),
 %%   <<"StudioArn">> => string(),
 %%   <<"StudioId">> => string(),
-%%   <<"SubnetIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrustedIdentityPropagationEnabled">> => boolean(),
 %%   <<"Url">> => string(),
 %%   <<"UserRole">> => string(),
@@ -1937,9 +1937,9 @@
 %% instance_type_specification() :: #{
 %%   <<"BidPrice">> => string(),
 %%   <<"BidPriceAsPercentageOfOnDemandPrice">> => float(),
-%%   <<"Configurations">> => list(configuration()()),
+%%   <<"Configurations">> => list(configuration()),
 %%   <<"CustomAmiId">> => string(),
-%%   <<"EbsBlockDevices">> => list(ebs_block_device()()),
+%%   <<"EbsBlockDevices">> => list(ebs_block_device()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"InstanceType">> => string(),
 %%   <<"Priority">> => float(),
@@ -1951,11 +1951,11 @@
 %% run_job_flow_input() :: #{
 %%   <<"AdditionalInfo">> => string(),
 %%   <<"AmiVersion">> => string(),
-%%   <<"Applications">> => list(application()()),
+%%   <<"Applications">> => list(application()),
 %%   <<"AutoScalingRole">> => string(),
 %%   <<"AutoTerminationPolicy">> => auto_termination_policy(),
-%%   <<"BootstrapActions">> => list(bootstrap_action_config()()),
-%%   <<"Configurations">> => list(configuration()()),
+%%   <<"BootstrapActions">> => list(bootstrap_action_config()),
+%%   <<"Configurations">> => list(configuration()),
 %%   <<"CustomAmiId">> => string(),
 %%   <<"EbsRootVolumeIops">> => integer(),
 %%   <<"EbsRootVolumeSize">> => integer(),
@@ -1967,18 +1967,18 @@
 %%   <<"LogUri">> => string(),
 %%   <<"ManagedScalingPolicy">> => managed_scaling_policy(),
 %%   <<"Name">> := string(),
-%%   <<"NewSupportedProducts">> => list(supported_product_config()()),
+%%   <<"NewSupportedProducts">> => list(supported_product_config()),
 %%   <<"OSReleaseLabel">> => string(),
-%%   <<"PlacementGroupConfigs">> => list(placement_group_config()()),
+%%   <<"PlacementGroupConfigs">> => list(placement_group_config()),
 %%   <<"ReleaseLabel">> => string(),
 %%   <<"RepoUpgradeOnBoot">> => list(any()),
 %%   <<"ScaleDownBehavior">> => list(any()),
 %%   <<"SecurityConfiguration">> => string(),
 %%   <<"ServiceRole">> => string(),
 %%   <<"StepConcurrencyLevel">> => integer(),
-%%   <<"Steps">> => list(step_config()()),
-%%   <<"SupportedProducts">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Steps">> => list(step_config()),
+%%   <<"SupportedProducts">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VisibleToAllUsers">> => boolean()
 %% }
 -type run_job_flow_input() :: #{binary() => any()}.

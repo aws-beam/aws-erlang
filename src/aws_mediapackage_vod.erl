@@ -113,7 +113,7 @@
 %% describe_asset_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => string(),
-%%   <<"EgressEndpoints">> => list(egress_endpoint()()),
+%%   <<"EgressEndpoints">> => list(egress_endpoint()),
 %%   <<"Id">> => string(),
 %%   <<"PackagingGroupId">> => string(),
 %%   <<"ResourceId">> => string(),
@@ -156,7 +156,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -204,7 +204,7 @@
 %% Example:
 %% cmaf_package() :: #{
 %%   <<"Encryption">> => cmaf_encryption(),
-%%   <<"HlsManifests">> => list(hls_manifest()()),
+%%   <<"HlsManifests">> => list(hls_manifest()),
 %%   <<"IncludeEncoderConfigurationInSegments">> => boolean(),
 %%   <<"SegmentDurationSeconds">> => integer()
 %% }
@@ -257,7 +257,7 @@
 %% speke_key_provider() :: #{
 %%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
 %%   <<"RoleArn">> => string(),
-%%   <<"SystemIds">> => list(string()()),
+%%   <<"SystemIds">> => list(string()),
 %%   <<"Url">> => string()
 %% }
 -type speke_key_provider() :: #{binary() => any()}.
@@ -277,7 +277,7 @@
 %% Example:
 %% hls_package() :: #{
 %%   <<"Encryption">> => hls_encryption(),
-%%   <<"HlsManifests">> => list(hls_manifest()()),
+%%   <<"HlsManifests">> => list(hls_manifest()),
 %%   <<"IncludeDvbSubtitles">> => boolean(),
 %%   <<"SegmentDurationSeconds">> => integer(),
 %%   <<"UseAudioRenditionGroup">> => boolean()
@@ -294,7 +294,7 @@
 
 %% Example:
 %% dash_package() :: #{
-%%   <<"DashManifests">> => list(dash_manifest()()),
+%%   <<"DashManifests">> => list(dash_manifest()),
 %%   <<"Encryption">> => dash_encryption(),
 %%   <<"IncludeEncoderConfigurationInSegments">> => boolean(),
 %%   <<"IncludeIframeOnlyStream">> => boolean(),
@@ -323,7 +323,7 @@
 %% Example:
 %% list_packaging_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PackagingConfigurations">> => list(packaging_configuration()())
+%%   <<"PackagingConfigurations">> => list(packaging_configuration())
 %% }
 -type list_packaging_configurations_response() :: #{binary() => any()}.
 
@@ -437,7 +437,7 @@
 %% create_asset_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => string(),
-%%   <<"EgressEndpoints">> => list(egress_endpoint()()),
+%%   <<"EgressEndpoints">> => list(egress_endpoint()),
 %%   <<"Id">> => string(),
 %%   <<"PackagingGroupId">> => string(),
 %%   <<"ResourceId">> => string(),
@@ -517,7 +517,7 @@
 
 %% Example:
 %% list_assets_response() :: #{
-%%   <<"Assets">> => list(asset_shallow()()),
+%%   <<"Assets">> => list(asset_shallow()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_assets_response() :: #{binary() => any()}.
@@ -530,7 +530,7 @@
 %% Example:
 %% list_packaging_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PackagingGroups">> => list(packaging_group()())
+%%   <<"PackagingGroups">> => list(packaging_group())
 %% }
 -type list_packaging_groups_response() :: #{binary() => any()}.
 
@@ -560,7 +560,7 @@
 %% Example:
 %% mss_package() :: #{
 %%   <<"Encryption">> => mss_encryption(),
-%%   <<"MssManifests">> => list(mss_manifest()()),
+%%   <<"MssManifests">> => list(mss_manifest()),
 %%   <<"SegmentDurationSeconds">> => integer()
 %% }
 -type mss_package() :: #{binary() => any()}.

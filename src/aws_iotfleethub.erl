@@ -131,7 +131,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"applicationSummaries">> => list(application_summary()()),
+%%   <<"applicationSummaries">> => list(application_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.
@@ -175,7 +175,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 

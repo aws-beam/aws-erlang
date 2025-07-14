@@ -56,7 +56,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTags">> := list(resource_tag()())
+%%   <<"ResourceTags">> := list(resource_tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -127,7 +127,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTagKeys">> := list(string()())
+%%   <<"ResourceTagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -153,7 +153,7 @@
 
 %% Example:
 %% list_invoice_units_response() :: #{
-%%   <<"InvoiceUnits">> => list(invoice_unit()()),
+%%   <<"InvoiceUnits">> => list(invoice_unit()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_invoice_units_response() :: #{binary() => any()}.
@@ -204,7 +204,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"ResourceTags">> => list(resource_tag()())
+%%   <<"ResourceTags">> => list(resource_tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -218,7 +218,7 @@
 
 %% Example:
 %% batch_get_invoice_profile_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type batch_get_invoice_profile_request() :: #{binary() => any()}.
 
@@ -241,7 +241,7 @@
 
 %% Example:
 %% discounts_breakdown() :: #{
-%%   <<"Breakdown">> => list(discounts_breakdown_amount()()),
+%%   <<"Breakdown">> => list(discounts_breakdown_amount()),
 %%   <<"TotalAmount">> => string()
 %% }
 -type discounts_breakdown() :: #{binary() => any()}.
@@ -299,13 +299,13 @@
 
 %% Example:
 %% invoice_unit_rule() :: #{
-%%   <<"LinkedAccounts">> => list(string()())
+%%   <<"LinkedAccounts">> => list(string())
 %% }
 -type invoice_unit_rule() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_invoice_profile_response() :: #{
-%%   <<"Profiles">> => list(invoice_profile()())
+%%   <<"Profiles">> => list(invoice_profile())
 %% }
 -type batch_get_invoice_profile_response() :: #{binary() => any()}.
 
@@ -318,7 +318,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any()),
 %%   <<"resourceName">> => string()
@@ -336,7 +336,7 @@
 %%   <<"Description">> => string(),
 %%   <<"InvoiceReceiver">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"Rule">> := invoice_unit_rule(),
 %%   <<"TaxInheritanceDisabled">> => boolean()
 %% }
@@ -368,15 +368,15 @@
 
 %% Example:
 %% filters() :: #{
-%%   <<"Accounts">> => list(string()()),
-%%   <<"InvoiceReceivers">> => list(string()()),
-%%   <<"Names">> => list(string()())
+%%   <<"Accounts">> => list(string()),
+%%   <<"InvoiceReceivers">> => list(string()),
+%%   <<"Names">> => list(string())
 %% }
 -type filters() :: #{binary() => any()}.
 
 %% Example:
 %% list_invoice_summaries_response() :: #{
-%%   <<"InvoiceSummaries">> => list(invoice_summary()()),
+%%   <<"InvoiceSummaries">> => list(invoice_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_invoice_summaries_response() :: #{binary() => any()}.
@@ -389,7 +389,7 @@
 
 %% Example:
 %% fees_breakdown() :: #{
-%%   <<"Breakdown">> => list(fees_breakdown_amount()()),
+%%   <<"Breakdown">> => list(fees_breakdown_amount()),
 %%   <<"TotalAmount">> => string()
 %% }
 -type fees_breakdown() :: #{binary() => any()}.
@@ -424,7 +424,7 @@
 
 %% Example:
 %% taxes_breakdown() :: #{
-%%   <<"Breakdown">> => list(taxes_breakdown_amount()()),
+%%   <<"Breakdown">> => list(taxes_breakdown_amount()),
 %%   <<"TotalAmount">> => string()
 %% }
 -type taxes_breakdown() :: #{binary() => any()}.

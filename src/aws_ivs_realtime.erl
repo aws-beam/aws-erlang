@@ -186,7 +186,7 @@
 %% Example:
 %% list_participant_replicas_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"replicas">> => list(participant_replica()())
+%%   <<"replicas">> => list(participant_replica())
 %% }
 -type list_participant_replicas_response() :: #{binary() => any()}.
 
@@ -244,7 +244,7 @@
 %% Example:
 %% composition() :: #{
 %%   <<"arn">> => string(),
-%%   <<"destinations">> => list(destination()()),
+%%   <<"destinations">> => list(destination()),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"layout">> => layout_configuration(),
 %%   <<"stageArn">> => string(),
@@ -264,7 +264,7 @@
 
 %% Example:
 %% create_stage_response() :: #{
-%%   <<"participantTokens">> => list(participant_token()()),
+%%   <<"participantTokens">> => list(participant_token()),
 %%   <<"stage">> => stage()
 %% }
 -type create_stage_response() :: #{binary() => any()}.
@@ -372,7 +372,7 @@
 
 %% Example:
 %% list_compositions_response() :: #{
-%%   <<"compositions">> => list(composition_summary()()),
+%%   <<"compositions">> => list(composition_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_compositions_response() :: #{binary() => any()}.
@@ -381,7 +381,7 @@
 %% Example:
 %% list_public_keys_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"publicKeys">> => list(public_key_summary()())
+%%   <<"publicKeys">> => list(public_key_summary())
 %% }
 -type list_public_keys_response() :: #{binary() => any()}.
 
@@ -435,7 +435,7 @@
 
 %% Example:
 %% list_ingest_configurations_response() :: #{
-%%   <<"ingestConfigurations">> => list(ingest_configuration_summary()()),
+%%   <<"ingestConfigurations">> => list(ingest_configuration_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_ingest_configurations_response() :: #{binary() => any()}.
@@ -490,7 +490,7 @@
 %% Example:
 %% participant_token_configuration() :: #{
 %%   <<"attributes">> => map(),
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"duration">> => integer(),
 %%   <<"userId">> => string()
 %% }
@@ -517,7 +517,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -561,7 +561,7 @@
 
 %% Example:
 %% start_composition_request() :: #{
-%%   <<"destinations">> := list(destination_configuration()()),
+%%   <<"destinations">> := list(destination_configuration()),
 %%   <<"idempotencyToken">> => string(),
 %%   <<"layout">> => layout_configuration(),
 %%   <<"stageArn">> := string(),
@@ -624,7 +624,7 @@
 %% Example:
 %% list_storage_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"storageConfigurations">> => list(storage_configuration_summary()())
+%%   <<"storageConfigurations">> => list(storage_configuration_summary())
 %% }
 -type list_storage_configurations_response() :: #{binary() => any()}.
 
@@ -677,7 +677,7 @@
 %% Example:
 %% list_participants_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"participants">> => list(participant_summary()())
+%%   <<"participants">> => list(participant_summary())
 %% }
 -type list_participants_response() :: #{binary() => any()}.
 
@@ -780,10 +780,10 @@
 
 %% Example:
 %% s3_destination_configuration() :: #{
-%%   <<"encoderConfigurationArns">> => list(string()()),
+%%   <<"encoderConfigurationArns">> => list(string()),
 %%   <<"recordingConfiguration">> => recording_configuration(),
 %%   <<"storageConfigurationArn">> => string(),
-%%   <<"thumbnailConfigurations">> => list(composition_thumbnail_configuration()())
+%%   <<"thumbnailConfigurations">> => list(composition_thumbnail_configuration())
 %% }
 -type s3_destination_configuration() :: #{binary() => any()}.
 
@@ -811,7 +811,7 @@
 %% Example:
 %% list_stage_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"stageSessions">> => list(stage_session_summary()())
+%%   <<"stageSessions">> => list(stage_session_summary())
 %% }
 -type list_stage_sessions_response() :: #{binary() => any()}.
 
@@ -886,7 +886,7 @@
 %% create_stage_request() :: #{
 %%   <<"autoParticipantRecordingConfiguration">> => auto_participant_recording_configuration(),
 %%   <<"name">> => string(),
-%%   <<"participantTokenConfigurations">> => list(participant_token_configuration()()),
+%%   <<"participantTokenConfigurations">> => list(participant_token_configuration()),
 %%   <<"tags">> => map()
 %% }
 -type create_stage_request() :: #{binary() => any()}.
@@ -917,7 +917,7 @@
 %% Example:
 %% create_participant_token_request() :: #{
 %%   <<"attributes">> => map(),
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"duration">> => integer(),
 %%   <<"stageArn">> := string(),
 %%   <<"userId">> => string()
@@ -954,7 +954,7 @@
 %% Example:
 %% list_stages_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"stages">> := list(stage_summary()())
+%%   <<"stages">> := list(stage_summary())
 %% }
 -type list_stages_response() :: #{binary() => any()}.
 
@@ -975,7 +975,7 @@
 
 %% Example:
 %% list_encoder_configurations_response() :: #{
-%%   <<"encoderConfigurations">> => list(encoder_configuration_summary()()),
+%%   <<"encoderConfigurations">> => list(encoder_configuration_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_encoder_configurations_response() :: #{binary() => any()}.
@@ -1127,7 +1127,7 @@
 %% Example:
 %% participant_token() :: #{
 %%   <<"attributes">> => map(),
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"duration">> => integer(),
 %%   <<"expirationTime">> => non_neg_integer(),
 %%   <<"participantId">> => string(),
@@ -1229,7 +1229,7 @@
 %% Example:
 %% composition_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"destinations">> => list(destination_summary()()),
+%%   <<"destinations">> => list(destination_summary()),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"stageArn">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
@@ -1284,7 +1284,7 @@
 
 %% Example:
 %% list_participant_events_response() :: #{
-%%   <<"events">> => list(event()()),
+%%   <<"events">> => list(event()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_participant_events_response() :: #{binary() => any()}.

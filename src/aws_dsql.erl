@@ -165,7 +165,7 @@
 
 %% Example:
 %% list_clusters_output() :: #{
-%%   <<"clusters">> => list(cluster_summary()()),
+%%   <<"clusters">> => list(cluster_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_clusters_output() :: #{binary() => any()}.
@@ -184,7 +184,7 @@
 
 %% Example:
 %% multi_region_properties() :: #{
-%%   <<"clusters">> => list(string()()),
+%%   <<"clusters">> => list(string()),
 %%   <<"witnessRegion">> => string()
 %% }
 -type multi_region_properties() :: #{binary() => any()}.
@@ -229,7 +229,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -256,7 +256,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }

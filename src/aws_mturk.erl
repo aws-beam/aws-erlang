@@ -104,7 +104,7 @@
 %% notify_workers_request() :: #{
 %%   <<"MessageText">> := string(),
 %%   <<"Subject">> := string(),
-%%   <<"WorkerIds">> := list(string()())
+%%   <<"WorkerIds">> := list(string())
 %% }
 -type notify_workers_request() :: #{binary() => any()}.
 
@@ -112,8 +112,8 @@
 %% qualification_requirement() :: #{
 %%   <<"ActionsGuarded">> => list(any()),
 %%   <<"Comparator">> => list(any()),
-%%   <<"IntegerValues">> => list(integer()()),
-%%   <<"LocaleValues">> => list(locale()()),
+%%   <<"IntegerValues">> => list(integer()),
+%%   <<"LocaleValues">> => list(locale()),
 %%   <<"QualificationTypeId">> => string(),
 %%   <<"RequiredToPreview">> => boolean()
 %% }
@@ -121,7 +121,7 @@
 
 %% Example:
 %% review_policy() :: #{
-%%   <<"Parameters">> => list(policy_parameter()()),
+%%   <<"Parameters">> => list(policy_parameter()),
 %%   <<"PolicyName">> => string()
 %% }
 -type review_policy() :: #{binary() => any()}.
@@ -352,7 +352,7 @@
 
 %% Example:
 %% list_bonus_payments_response() :: #{
-%%   <<"BonusPayments">> => list(bonus_payment()()),
+%%   <<"BonusPayments">> => list(bonus_payment()),
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer()
 %% }
@@ -375,7 +375,7 @@
 
 %% Example:
 %% list_hits_for_qualification_type_response() :: #{
-%%   <<"HITs">> => list(hit()()),
+%%   <<"HITs">> => list(hit()),
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer()
 %% }
@@ -442,7 +442,7 @@
 %% list_worker_blocks_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer(),
-%%   <<"WorkerBlocks">> => list(worker_block()())
+%%   <<"WorkerBlocks">> => list(worker_block())
 %% }
 -type list_worker_blocks_response() :: #{binary() => any()}.
 
@@ -471,7 +471,7 @@
 
 %% Example:
 %% notify_workers_response() :: #{
-%%   <<"NotifyWorkersFailureStatuses">> => list(notify_workers_failure_status()())
+%%   <<"NotifyWorkersFailureStatuses">> => list(notify_workers_failure_status())
 %% }
 -type notify_workers_response() :: #{binary() => any()}.
 
@@ -541,7 +541,7 @@
 %%   <<"NumberOfAssignmentsAvailable">> => integer(),
 %%   <<"NumberOfAssignmentsCompleted">> => integer(),
 %%   <<"NumberOfAssignmentsPending">> => integer(),
-%%   <<"QualificationRequirements">> => list(qualification_requirement()()),
+%%   <<"QualificationRequirements">> => list(qualification_requirement()),
 %%   <<"Question">> => string(),
 %%   <<"RequesterAnnotation">> => string(),
 %%   <<"Reward">> => string(),
@@ -558,8 +558,8 @@
 %% Example:
 %% policy_parameter() :: #{
 %%   <<"Key">> => string(),
-%%   <<"MapEntries">> => list(parameter_map_entry()()),
-%%   <<"Values">> => list(string()())
+%%   <<"MapEntries">> => list(parameter_map_entry()),
+%%   <<"Values">> => list(string())
 %% }
 -type policy_parameter() :: #{binary() => any()}.
 
@@ -598,12 +598,12 @@
 %%   <<"AutoApprovalDelayInSeconds">> => float(),
 %%   <<"Description">> := string(),
 %%   <<"HITLayoutId">> => string(),
-%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()()),
+%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()),
 %%   <<"HITReviewPolicy">> => review_policy(),
 %%   <<"Keywords">> => string(),
 %%   <<"LifetimeInSeconds">> := float(),
 %%   <<"MaxAssignments">> => integer(),
-%%   <<"QualificationRequirements">> => list(qualification_requirement()()),
+%%   <<"QualificationRequirements">> => list(qualification_requirement()),
 %%   <<"Question">> => string(),
 %%   <<"RequesterAnnotation">> => string(),
 %%   <<"Reward">> := string(),
@@ -625,7 +625,7 @@
 %% list_qualification_requests_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer(),
-%%   <<"QualificationRequests">> => list(qualification_request()())
+%%   <<"QualificationRequests">> => list(qualification_request())
 %% }
 -type list_qualification_requests_response() :: #{binary() => any()}.
 
@@ -679,7 +679,7 @@
 %% list_workers_with_qualification_type_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer(),
-%%   <<"Qualifications">> => list(qualification()())
+%%   <<"Qualifications">> => list(qualification())
 %% }
 -type list_workers_with_qualification_type_response() :: #{binary() => any()}.
 
@@ -704,8 +704,8 @@
 
 %% Example:
 %% review_report() :: #{
-%%   <<"ReviewActions">> => list(review_action_detail()()),
-%%   <<"ReviewResults">> => list(review_result_detail()())
+%%   <<"ReviewActions">> => list(review_action_detail()),
+%%   <<"ReviewResults">> => list(review_result_detail())
 %% }
 -type review_report() :: #{binary() => any()}.
 
@@ -717,7 +717,7 @@
 
 %% Example:
 %% list_assignments_for_hit_response() :: #{
-%%   <<"Assignments">> => list(assignment()()),
+%%   <<"Assignments">> => list(assignment()),
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer()
 %% }
@@ -774,7 +774,7 @@
 %% create_hit_with_hit_type_request() :: #{
 %%   <<"AssignmentReviewPolicy">> => review_policy(),
 %%   <<"HITLayoutId">> => string(),
-%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()()),
+%%   <<"HITLayoutParameters">> => list(hit_layout_parameter()),
 %%   <<"HITReviewPolicy">> => review_policy(),
 %%   <<"HITTypeId">> := string(),
 %%   <<"LifetimeInSeconds">> := float(),
@@ -787,7 +787,7 @@
 
 %% Example:
 %% list_hits_response() :: #{
-%%   <<"HITs">> => list(hit()()),
+%%   <<"HITs">> => list(hit()),
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer()
 %% }
@@ -808,7 +808,7 @@
 
 %% Example:
 %% list_reviewable_hits_response() :: #{
-%%   <<"HITs">> => list(hit()()),
+%%   <<"HITs">> => list(hit()),
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer()
 %% }
@@ -851,7 +851,7 @@
 %% Example:
 %% parameter_map_entry() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type parameter_map_entry() :: #{binary() => any()}.
 
@@ -868,7 +868,7 @@
 %% list_qualification_types_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"NumResults">> => integer(),
-%%   <<"QualificationTypes">> => list(qualification_type()())
+%%   <<"QualificationTypes">> => list(qualification_type())
 %% }
 -type list_qualification_types_response() :: #{binary() => any()}.
 
@@ -878,7 +878,7 @@
 %%   <<"AutoApprovalDelayInSeconds">> => float(),
 %%   <<"Description">> := string(),
 %%   <<"Keywords">> => string(),
-%%   <<"QualificationRequirements">> => list(qualification_requirement()()),
+%%   <<"QualificationRequirements">> => list(qualification_requirement()),
 %%   <<"Reward">> := string(),
 %%   <<"Title">> := string()
 %% }

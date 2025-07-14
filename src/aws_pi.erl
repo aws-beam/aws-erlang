@@ -87,7 +87,7 @@
 %%   <<"AuthorizedActions">> => list(list(any())()),
 %%   <<"Identifier">> := string(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"Metrics">> := list(string()()),
+%%   <<"Metrics">> := list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceType">> := list(any())
 %% }
@@ -107,7 +107,7 @@
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"ServiceType">> := list(any()),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -120,14 +120,14 @@
 
 %% Example:
 %% list_available_resource_metrics_response() :: #{
-%%   <<"Metrics">> => list(response_resource_metric()()),
+%%   <<"Metrics">> => list(response_resource_metric()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_available_resource_metrics_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_dimension_key_details_response() :: #{
-%%   <<"Dimensions">> => list(dimension_key_detail()())
+%%   <<"Dimensions">> => list(dimension_key_detail())
 %% }
 -type get_dimension_key_details_response() :: #{binary() => any()}.
 
@@ -143,7 +143,7 @@
 
 %% Example:
 %% metric_key_data_points() :: #{
-%%   <<"DataPoints">> => list(data_point()()),
+%%   <<"DataPoints">> => list(data_point()),
 %%   <<"Key">> => response_resource_metric_key()
 %% }
 -type metric_key_data_points() :: #{binary() => any()}.
@@ -183,7 +183,7 @@
 
 %% Example:
 %% list_available_resource_dimensions_response() :: #{
-%%   <<"MetricDimensions">> => list(metric_dimension_groups()()),
+%%   <<"MetricDimensions">> => list(metric_dimension_groups()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_available_resource_dimensions_response() :: #{binary() => any()}.
@@ -193,7 +193,7 @@
 %%   <<"EndTime">> := non_neg_integer(),
 %%   <<"Identifier">> := string(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"MetricQueries">> := list(metric_query()()),
+%%   <<"MetricQueries">> := list(metric_query()),
 %%   <<"NextToken">> => string(),
 %%   <<"PeriodAlignment">> => list(any()),
 %%   <<"PeriodInSeconds">> => integer(),
@@ -206,7 +206,7 @@
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"ServiceType">> := list(any()),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -215,7 +215,7 @@
 %%   <<"AlignedEndTime">> => non_neg_integer(),
 %%   <<"AlignedStartTime">> => non_neg_integer(),
 %%   <<"Identifier">> => string(),
-%%   <<"MetricList">> => list(metric_key_data_points()()),
+%%   <<"MetricList">> => list(metric_key_data_points()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_resource_metrics_response() :: #{binary() => any()}.
@@ -226,7 +226,7 @@
 %%   <<"Identifier">> := string(),
 %%   <<"ServiceType">> := list(any()),
 %%   <<"StartTime">> := non_neg_integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_performance_analysis_report_request() :: #{binary() => any()}.
 
@@ -271,7 +271,7 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"Identifier">> => string(),
-%%   <<"Insights">> => list(insight()()),
+%%   <<"Insights">> => list(insight()),
 %%   <<"ServiceType">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any())
@@ -285,13 +285,13 @@
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type analysis_report_summary() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -299,7 +299,7 @@
 %% list_available_resource_metrics_request() :: #{
 %%   <<"Identifier">> := string(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"MetricTypes">> := list(string()()),
+%%   <<"MetricTypes">> := list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceType">> := list(any())
 %% }
@@ -307,7 +307,7 @@
 
 %% Example:
 %% dimension_group() :: #{
-%%   <<"Dimensions">> => list(string()()),
+%%   <<"Dimensions">> => list(string()),
 %%   <<"Group">> => string(),
 %%   <<"Limit">> => integer()
 %% }
@@ -331,7 +331,7 @@
 %% dimension_key_description() :: #{
 %%   <<"AdditionalMetrics">> => map(),
 %%   <<"Dimensions">> => map(),
-%%   <<"Partitions">> => list(float()()),
+%%   <<"Partitions">> => list(float()),
 %%   <<"Total">> => float()
 %% }
 -type dimension_key_description() :: #{binary() => any()}.
@@ -341,7 +341,7 @@
 %%   <<"Group">> := string(),
 %%   <<"GroupIdentifier">> := string(),
 %%   <<"Identifier">> := string(),
-%%   <<"RequestedDimensions">> => list(string()()),
+%%   <<"RequestedDimensions">> => list(string()),
 %%   <<"ServiceType">> := list(any())
 %% }
 -type get_dimension_key_details_request() :: #{binary() => any()}.
@@ -401,7 +401,7 @@
 
 %% Example:
 %% describe_dimension_keys_request() :: #{
-%%   <<"AdditionalMetrics">> => list(string()()),
+%%   <<"AdditionalMetrics">> => list(string()),
 %%   <<"EndTime">> := non_neg_integer(),
 %%   <<"Filter">> => map(),
 %%   <<"GroupBy">> := dimension_group(),
@@ -418,7 +418,7 @@
 
 %% Example:
 %% dimension_group_detail() :: #{
-%%   <<"Dimensions">> => list(dimension_detail()()),
+%%   <<"Dimensions">> => list(dimension_detail()),
 %%   <<"Group">> => string()
 %% }
 -type dimension_group_detail() :: #{binary() => any()}.
@@ -427,9 +427,9 @@
 %% describe_dimension_keys_response() :: #{
 %%   <<"AlignedEndTime">> => non_neg_integer(),
 %%   <<"AlignedStartTime">> => non_neg_integer(),
-%%   <<"Keys">> => list(dimension_key_description()()),
+%%   <<"Keys">> => list(dimension_key_description()),
 %%   <<"NextToken">> => string(),
-%%   <<"PartitionKeys">> => list(response_partition_key()())
+%%   <<"PartitionKeys">> => list(response_partition_key())
 %% }
 -type describe_dimension_keys_response() :: #{binary() => any()}.
 
@@ -441,30 +441,30 @@
 
 %% Example:
 %% insight() :: #{
-%%   <<"BaselineData">> => list(data()()),
+%%   <<"BaselineData">> => list(data()),
 %%   <<"Context">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"InsightData">> => list(data()()),
+%%   <<"InsightData">> => list(data()),
 %%   <<"InsightId">> => string(),
 %%   <<"InsightType">> => string(),
-%%   <<"Recommendations">> => list(recommendation()()),
+%%   <<"Recommendations">> => list(recommendation()),
 %%   <<"Severity">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"SupportingInsights">> => list(insight()())
+%%   <<"SupportingInsights">> => list(insight())
 %% }
 -type insight() :: #{binary() => any()}.
 
 %% Example:
 %% list_performance_analysis_reports_response() :: #{
-%%   <<"AnalysisReports">> => list(analysis_report_summary()()),
+%%   <<"AnalysisReports">> => list(analysis_report_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_performance_analysis_reports_response() :: #{binary() => any()}.
 
 %% Example:
 %% metric_dimension_groups() :: #{
-%%   <<"Groups">> => list(dimension_group_detail()()),
+%%   <<"Groups">> => list(dimension_group_detail()),
 %%   <<"Metric">> => string()
 %% }
 -type metric_dimension_groups() :: #{binary() => any()}.

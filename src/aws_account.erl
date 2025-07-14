@@ -210,7 +210,7 @@
 %%   <<"AccountId">> => string(),
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => [string()],
-%%   <<"RegionOptStatusContains">> => list(string()())
+%%   <<"RegionOptStatusContains">> => list(string())
 %% }
 -type list_regions_request() :: #{binary() => any()}.
 
@@ -218,7 +218,7 @@
 %% Example:
 %% list_regions_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"Regions">> => list(region()())
+%%   <<"Regions">> => list(region())
 %% }
 -type list_regions_response() :: #{binary() => any()}.
 
@@ -292,7 +292,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => string()
 %% }

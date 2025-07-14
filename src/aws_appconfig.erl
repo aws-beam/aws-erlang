@@ -302,7 +302,7 @@
 
 %% Example:
 %% applications() :: #{
-%%   <<"Items">> => list(application()()),
+%%   <<"Items">> => list(application()),
 %%   <<"NextToken">> => string()
 %% }
 -type applications() :: #{binary() => any()}.
@@ -363,7 +363,7 @@
 
 %% Example:
 %% extension_associations() :: #{
-%%   <<"Items">> => list(extension_association_summary()()),
+%%   <<"Items">> => list(extension_association_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type extension_associations() :: #{binary() => any()}.
@@ -372,7 +372,7 @@
 %% Example:
 %% deployment() :: #{
 %%   <<"ApplicationId">> => string(),
-%%   <<"AppliedExtensions">> => list(applied_extension()()),
+%%   <<"AppliedExtensions">> => list(applied_extension()),
 %%   <<"CompletedAt">> => non_neg_integer(),
 %%   <<"ConfigurationLocationUri">> => string(),
 %%   <<"ConfigurationName">> => string(),
@@ -383,7 +383,7 @@
 %%   <<"DeploymentStrategyId">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"EnvironmentId">> => string(),
-%%   <<"EventLog">> => list(deployment_event()()),
+%%   <<"EventLog">> => list(deployment_event()),
 %%   <<"FinalBakeTimeInMinutes">> => integer(),
 %%   <<"GrowthFactor">> => float(),
 %%   <<"GrowthType">> => list(any()),
@@ -455,7 +455,7 @@
 %%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RetrievalRoleArn">> => string(),
-%%   <<"Validators">> => list(validator()())
+%%   <<"Validators">> => list(validator())
 %% }
 -type update_configuration_profile_request() :: #{binary() => any()}.
 
@@ -513,7 +513,7 @@
 
 %% Example:
 %% hosted_configuration_versions() :: #{
-%%   <<"Items">> => list(hosted_configuration_version_summary()()),
+%%   <<"Items">> => list(hosted_configuration_version_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type hosted_configuration_versions() :: #{binary() => any()}.
@@ -531,7 +531,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -589,7 +589,7 @@
 %%   <<"ApplicationId">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Monitors">> => list(monitor()()),
+%%   <<"Monitors">> => list(monitor()),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any())
 %% }
@@ -664,7 +664,7 @@
 %%   <<"Name">> => string(),
 %%   <<"RetrievalRoleArn">> => string(),
 %%   <<"Type">> => string(),
-%%   <<"Validators">> => list(validator()())
+%%   <<"Validators">> => list(validator())
 %% }
 -type configuration_profile() :: #{binary() => any()}.
 
@@ -719,7 +719,7 @@
 
 %% Example:
 %% environments() :: #{
-%%   <<"Items">> => list(environment()()),
+%%   <<"Items">> => list(environment()),
 %%   <<"NextToken">> => string()
 %% }
 -type environments() :: #{binary() => any()}.
@@ -735,7 +735,7 @@
 
 %% Example:
 %% deployment_strategies() :: #{
-%%   <<"Items">> => list(deployment_strategy()()),
+%%   <<"Items">> => list(deployment_strategy()),
 %%   <<"NextToken">> => string()
 %% }
 -type deployment_strategies() :: #{binary() => any()}.
@@ -798,7 +798,7 @@
 
 %% Example:
 %% configuration_profiles() :: #{
-%%   <<"Items">> => list(configuration_profile_summary()()),
+%%   <<"Items">> => list(configuration_profile_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type configuration_profiles() :: #{binary() => any()}.
@@ -824,7 +824,7 @@
 
 %% Example:
 %% extensions() :: #{
-%%   <<"Items">> => list(extension_summary()()),
+%%   <<"Items">> => list(extension_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type extensions() :: #{binary() => any()}.
@@ -846,7 +846,7 @@
 %%   <<"RetrievalRoleArn">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Type">> => string(),
-%%   <<"Validators">> => list(validator()())
+%%   <<"Validators">> => list(validator())
 %% }
 -type create_configuration_profile_request() :: #{binary() => any()}.
 
@@ -938,7 +938,7 @@
 %% Example:
 %% create_environment_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Monitors">> => list(monitor()()),
+%%   <<"Monitors">> => list(monitor()),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => map()
 %% }
@@ -947,7 +947,7 @@
 
 %% Example:
 %% deployment_event() :: #{
-%%   <<"ActionInvocations">> => list(action_invocation()()),
+%%   <<"ActionInvocations">> => list(action_invocation()),
 %%   <<"Description">> => string(),
 %%   <<"EventType">> => list(any()),
 %%   <<"OccurredAt">> => non_neg_integer(),
@@ -959,7 +959,7 @@
 %% Example:
 %% update_environment_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Monitors">> => list(monitor()()),
+%%   <<"Monitors">> => list(monitor()),
 %%   <<"Name">> => string()
 %% }
 -type update_environment_request() :: #{binary() => any()}.
@@ -986,7 +986,7 @@
 
 %% Example:
 %% deployments() :: #{
-%%   <<"Items">> => list(deployment_summary()()),
+%%   <<"Items">> => list(deployment_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type deployments() :: #{binary() => any()}.

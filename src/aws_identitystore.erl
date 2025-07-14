@@ -107,7 +107,7 @@
 
 %% Example:
 %% list_group_memberships_for_member_response() :: #{
-%%   <<"GroupMemberships">> := list(group_membership()()),
+%%   <<"GroupMemberships">> := list(group_membership()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_group_memberships_for_member_response() :: #{binary() => any()}.
@@ -130,7 +130,7 @@
 
 %% Example:
 %% is_member_in_groups_request() :: #{
-%%   <<"GroupIds">> := list(string()()),
+%%   <<"GroupIds">> := list(string()),
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"MemberId">> := list()
 %% }
@@ -140,7 +140,7 @@
 %% update_group_request() :: #{
 %%   <<"GroupId">> := string(),
 %%   <<"IdentityStoreId">> := string(),
-%%   <<"Operations">> := list(attribute_operation()())
+%%   <<"Operations">> := list(attribute_operation())
 %% }
 -type update_group_request() :: #{binary() => any()}.
 
@@ -179,7 +179,7 @@
 %% Example:
 %% list_users_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> := list(user()())
+%%   <<"Users">> := list(user())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -224,7 +224,7 @@
 
 %% Example:
 %% is_member_in_groups_response() :: #{
-%%   <<"Results">> := list(group_membership_existence_result()())
+%%   <<"Results">> := list(group_membership_existence_result())
 %% }
 -type is_member_in_groups_response() :: #{binary() => any()}.
 
@@ -267,15 +267,15 @@
 
 %% Example:
 %% describe_user_response() :: #{
-%%   <<"Addresses">> => list(address()()),
+%%   <<"Addresses">> => list(address()),
 %%   <<"DisplayName">> => string(),
-%%   <<"Emails">> => list(email()()),
-%%   <<"ExternalIds">> => list(external_id()()),
+%%   <<"Emails">> => list(email()),
+%%   <<"ExternalIds">> => list(external_id()),
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"Locale">> => string(),
 %%   <<"Name">> => name(),
 %%   <<"NickName">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number()()),
+%%   <<"PhoneNumbers">> => list(phone_number()),
 %%   <<"PreferredLanguage">> => string(),
 %%   <<"ProfileUrl">> => string(),
 %%   <<"Timezone">> => string(),
@@ -324,7 +324,7 @@
 %% Example:
 %% update_user_request() :: #{
 %%   <<"IdentityStoreId">> := string(),
-%%   <<"Operations">> := list(attribute_operation()()),
+%%   <<"Operations">> := list(attribute_operation()),
 %%   <<"UserId">> := string()
 %% }
 -type update_user_request() :: #{binary() => any()}.
@@ -363,7 +363,7 @@
 %% group() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
-%%   <<"ExternalIds">> => list(external_id()()),
+%%   <<"ExternalIds">> => list(external_id()),
 %%   <<"GroupId">> => string(),
 %%   <<"IdentityStoreId">> => string()
 %% }
@@ -371,15 +371,15 @@
 
 %% Example:
 %% user() :: #{
-%%   <<"Addresses">> => list(address()()),
+%%   <<"Addresses">> => list(address()),
 %%   <<"DisplayName">> => string(),
-%%   <<"Emails">> => list(email()()),
-%%   <<"ExternalIds">> => list(external_id()()),
+%%   <<"Emails">> => list(email()),
+%%   <<"ExternalIds">> => list(external_id()),
 %%   <<"IdentityStoreId">> => string(),
 %%   <<"Locale">> => string(),
 %%   <<"Name">> => name(),
 %%   <<"NickName">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number()()),
+%%   <<"PhoneNumbers">> => list(phone_number()),
 %%   <<"PreferredLanguage">> => string(),
 %%   <<"ProfileUrl">> => string(),
 %%   <<"Timezone">> => string(),
@@ -406,7 +406,7 @@
 
 %% Example:
 %% list_users_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -417,7 +417,7 @@
 %% describe_group_response() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
-%%   <<"ExternalIds">> => list(external_id()()),
+%%   <<"ExternalIds">> => list(external_id()),
 %%   <<"GroupId">> := string(),
 %%   <<"IdentityStoreId">> := string()
 %% }
@@ -439,14 +439,14 @@
 
 %% Example:
 %% list_group_memberships_response() :: #{
-%%   <<"GroupMemberships">> := list(group_membership()()),
+%%   <<"GroupMemberships">> := list(group_membership()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_group_memberships_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_groups_response() :: #{
-%%   <<"Groups">> := list(group()()),
+%%   <<"Groups">> := list(group()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_response() :: #{binary() => any()}.
@@ -466,7 +466,7 @@
 
 %% Example:
 %% list_groups_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -509,14 +509,14 @@
 
 %% Example:
 %% create_user_request() :: #{
-%%   <<"Addresses">> => list(address()()),
+%%   <<"Addresses">> => list(address()),
 %%   <<"DisplayName">> => string(),
-%%   <<"Emails">> => list(email()()),
+%%   <<"Emails">> => list(email()),
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"Locale">> => string(),
 %%   <<"Name">> => name(),
 %%   <<"NickName">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number()()),
+%%   <<"PhoneNumbers">> => list(phone_number()),
 %%   <<"PreferredLanguage">> => string(),
 %%   <<"ProfileUrl">> => string(),
 %%   <<"Timezone">> => string(),

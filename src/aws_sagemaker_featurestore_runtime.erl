@@ -58,8 +58,8 @@
 %% Example:
 %% batch_get_record_identifier() :: #{
 %%   <<"FeatureGroupName">> => string(),
-%%   <<"FeatureNames">> => list(string()()),
-%%   <<"RecordIdentifiersValueAsString">> => list(string()())
+%%   <<"FeatureNames">> => list(string()),
+%%   <<"RecordIdentifiersValueAsString">> => list(string())
 %% }
 -type batch_get_record_identifier() :: #{binary() => any()}.
 
@@ -67,16 +67,16 @@
 %% Example:
 %% batch_get_record_request() :: #{
 %%   <<"ExpirationTimeResponse">> => list(any()),
-%%   <<"Identifiers">> := list(batch_get_record_identifier()())
+%%   <<"Identifiers">> := list(batch_get_record_identifier())
 %% }
 -type batch_get_record_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_record_response() :: #{
-%%   <<"Errors">> => list(batch_get_record_error()()),
-%%   <<"Records">> => list(batch_get_record_result_detail()()),
-%%   <<"UnprocessedIdentifiers">> => list(batch_get_record_identifier()())
+%%   <<"Errors">> => list(batch_get_record_error()),
+%%   <<"Records">> => list(batch_get_record_result_detail()),
+%%   <<"UnprocessedIdentifiers">> => list(batch_get_record_identifier())
 %% }
 -type batch_get_record_response() :: #{binary() => any()}.
 
@@ -85,7 +85,7 @@
 %% batch_get_record_result_detail() :: #{
 %%   <<"ExpiresAt">> => string(),
 %%   <<"FeatureGroupName">> => string(),
-%%   <<"Record">> => list(feature_value()()),
+%%   <<"Record">> => list(feature_value()),
 %%   <<"RecordIdentifierValueAsString">> => string()
 %% }
 -type batch_get_record_result_detail() :: #{binary() => any()}.
@@ -105,7 +105,7 @@
 %% feature_value() :: #{
 %%   <<"FeatureName">> => string(),
 %%   <<"ValueAsString">> => string(),
-%%   <<"ValueAsStringList">> => list(string()())
+%%   <<"ValueAsStringList">> => list(string())
 %% }
 -type feature_value() :: #{binary() => any()}.
 
@@ -113,7 +113,7 @@
 %% Example:
 %% get_record_request() :: #{
 %%   <<"ExpirationTimeResponse">> => list(any()),
-%%   <<"FeatureNames">> => list(string()()),
+%%   <<"FeatureNames">> => list(string()),
 %%   <<"RecordIdentifierValueAsString">> := string()
 %% }
 -type get_record_request() :: #{binary() => any()}.
@@ -122,7 +122,7 @@
 %% Example:
 %% get_record_response() :: #{
 %%   <<"ExpiresAt">> => string(),
-%%   <<"Record">> => list(feature_value()())
+%%   <<"Record">> => list(feature_value())
 %% }
 -type get_record_response() :: #{binary() => any()}.
 
@@ -136,7 +136,7 @@
 
 %% Example:
 %% put_record_request() :: #{
-%%   <<"Record">> := list(feature_value()()),
+%%   <<"Record">> := list(feature_value()),
 %%   <<"TargetStores">> => list(list(any())()),
 %%   <<"TtlDuration">> => ttl_duration()
 %% }

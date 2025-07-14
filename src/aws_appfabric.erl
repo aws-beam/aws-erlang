@@ -97,7 +97,7 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -112,7 +112,7 @@
 
 %% Example:
 %% list_ingestions_response() :: #{
-%%   <<"ingestions">> => list(ingestion_summary()()),
+%%   <<"ingestions">> => list(ingestion_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_ingestions_response() :: #{binary() => any()}.
@@ -145,7 +145,7 @@
 %%   <<"app">> := string(),
 %%   <<"clientToken">> => string(),
 %%   <<"ingestionType">> := list(any()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"tenantId">> := string()
 %% }
 -type create_ingestion_request() :: #{binary() => any()}.
@@ -178,7 +178,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"destinationConfiguration">> := list(),
 %%   <<"processingConfiguration">> := list(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_ingestion_destination_request() :: #{binary() => any()}.
 
@@ -203,7 +203,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -234,7 +234,7 @@
 %% create_app_bundle_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"customerManagedKeyIdentifier">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_app_bundle_request() :: #{binary() => any()}.
 
@@ -330,7 +330,7 @@
 
 %% Example:
 %% list_app_bundles_response() :: #{
-%%   <<"appBundleSummaryList">> => list(app_bundle_summary()()),
+%%   <<"appBundleSummaryList">> => list(app_bundle_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_bundles_response() :: #{binary() => any()}.
@@ -388,7 +388,7 @@
 %% Example:
 %% batch_get_user_access_tasks_request() :: #{
 %%   <<"appBundleIdentifier">> := string(),
-%%   <<"taskIdList">> := list(string()())
+%%   <<"taskIdList">> := list(string())
 %% }
 -type batch_get_user_access_tasks_request() :: #{binary() => any()}.
 
@@ -399,7 +399,7 @@
 %%   <<"authType">> := list(any()),
 %%   <<"clientToken">> => string(),
 %%   <<"credential">> := list(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"tenant">> := tenant()
 %% }
 -type create_app_authorization_request() :: #{binary() => any()}.
@@ -417,14 +417,14 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_ingestion_destinations_response() :: #{
-%%   <<"ingestionDestinations">> => list(ingestion_destination_summary()()),
+%%   <<"ingestionDestinations">> => list(ingestion_destination_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_ingestion_destinations_response() :: #{binary() => any()}.
@@ -483,7 +483,7 @@
 
 %% Example:
 %% batch_get_user_access_tasks_response() :: #{
-%%   <<"userAccessResultsList">> => list(user_access_result_item()())
+%%   <<"userAccessResultsList">> => list(user_access_result_item())
 %% }
 -type batch_get_user_access_tasks_response() :: #{binary() => any()}.
 
@@ -542,7 +542,7 @@
 
 %% Example:
 %% list_app_authorizations_response() :: #{
-%%   <<"appAuthorizationSummaryList">> => list(app_authorization_summary()()),
+%%   <<"appAuthorizationSummaryList">> => list(app_authorization_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_app_authorizations_response() :: #{binary() => any()}.
@@ -550,7 +550,7 @@
 
 %% Example:
 %% start_user_access_tasks_response() :: #{
-%%   <<"userAccessTasksList">> => list(user_access_task_item()())
+%%   <<"userAccessTasksList">> => list(user_access_task_item())
 %% }
 -type start_user_access_tasks_response() :: #{binary() => any()}.
 
@@ -587,7 +587,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }

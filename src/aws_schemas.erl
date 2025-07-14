@@ -158,7 +158,7 @@
 %% Example:
 %% list_schema_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SchemaVersions">> => list(schema_version_summary()())
+%%   <<"SchemaVersions">> => list(schema_version_summary())
 %% }
 -type list_schema_versions_response() :: #{binary() => any()}.
 
@@ -202,7 +202,7 @@
 
 %% Example:
 %% get_discovered_schema_request() :: #{
-%%   <<"Events">> := list(string()()),
+%%   <<"Events">> := list(string()),
 %%   <<"Type">> := list(any())
 %% }
 -type get_discovered_schema_request() :: #{binary() => any()}.
@@ -289,7 +289,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -377,7 +377,7 @@
 
 %% Example:
 %% list_discoverers_response() :: #{
-%%   <<"Discoverers">> => list(discoverer_summary()()),
+%%   <<"Discoverers">> => list(discoverer_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_discoverers_response() :: #{binary() => any()}.
@@ -410,7 +410,7 @@
 %%   <<"RegistryName">> => string(),
 %%   <<"SchemaArn">> => string(),
 %%   <<"SchemaName">> => string(),
-%%   <<"SchemaVersions">> => list(search_schema_version_summary()())
+%%   <<"SchemaVersions">> => list(search_schema_version_summary())
 %% }
 -type search_schema_summary() :: #{binary() => any()}.
 
@@ -501,7 +501,7 @@
 %% Example:
 %% list_registries_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Registries">> => list(registry_summary()())
+%%   <<"Registries">> => list(registry_summary())
 %% }
 -type list_registries_response() :: #{binary() => any()}.
 
@@ -518,7 +518,7 @@
 %% Example:
 %% search_schemas_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(search_schema_summary()())
+%%   <<"Schemas">> => list(search_schema_summary())
 %% }
 -type search_schemas_response() :: #{binary() => any()}.
 
@@ -621,7 +621,7 @@
 %% Example:
 %% list_schemas_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(schema_summary()())
+%%   <<"Schemas">> => list(schema_summary())
 %% }
 -type list_schemas_response() :: #{binary() => any()}.
 

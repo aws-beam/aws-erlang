@@ -215,7 +215,7 @@
 %% Example:
 %% describe_stack_resource_drifts_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StackResourceDrifts">> => list(stack_resource_drift()())
+%%   <<"StackResourceDrifts">> => list(stack_resource_drift())
 %% }
 -type describe_stack_resource_drifts_output() :: #{binary() => any()}.
 
@@ -241,7 +241,7 @@
 %% Example:
 %% list_stack_resources_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StackResourceSummaries">> => list(stack_resource_summary()())
+%%   <<"StackResourceSummaries">> => list(stack_resource_summary())
 %% }
 -type list_stack_resources_output() :: #{binary() => any()}.
 
@@ -325,11 +325,11 @@
 
 %% Example:
 %% update_generated_template_input() :: #{
-%%   <<"AddResources">> => list(resource_definition()()),
+%%   <<"AddResources">> => list(resource_definition()),
 %%   <<"GeneratedTemplateName">> := string(),
 %%   <<"NewGeneratedTemplateName">> => string(),
 %%   <<"RefreshAllResources">> => boolean(),
-%%   <<"RemoveResources">> => list(string()()),
+%%   <<"RemoveResources">> => list(string()),
 %%   <<"TemplateConfiguration">> => template_configuration()
 %% }
 -type update_generated_template_input() :: #{binary() => any()}.
@@ -401,12 +401,12 @@
 
 %% Example:
 %% delete_stack_instances_input() :: #{
-%%   <<"Accounts">> => list(string()()),
+%%   <<"Accounts">> => list(string()),
 %%   <<"CallAs">> => list(any()),
 %%   <<"DeploymentTargets">> => deployment_targets(),
 %%   <<"OperationId">> => string(),
 %%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"Regions">> := list(string()()),
+%%   <<"Regions">> := list(string()),
 %%   <<"RetainStacks">> := boolean(),
 %%   <<"StackSetName">> := string()
 %% }
@@ -415,7 +415,7 @@
 %% Example:
 %% list_stacks_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StackSummaries">> => list(stack_summary()())
+%%   <<"StackSummaries">> => list(stack_summary())
 %% }
 -type list_stacks_output() :: #{binary() => any()}.
 
@@ -434,7 +434,7 @@
 
 %% Example:
 %% update_stack_set_input() :: #{
-%%   <<"Accounts">> => list(string()()),
+%%   <<"Accounts">> => list(string()),
 %%   <<"AdministrationRoleARN">> => string(),
 %%   <<"AutoDeployment">> => auto_deployment(),
 %%   <<"CallAs">> => list(any()),
@@ -445,11 +445,11 @@
 %%   <<"ManagedExecution">> => managed_execution(),
 %%   <<"OperationId">> => string(),
 %%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"PermissionModel">> => list(any()),
-%%   <<"Regions">> => list(string()()),
+%%   <<"Regions">> => list(string()),
 %%   <<"StackSetName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateBody">> => string(),
 %%   <<"TemplateURL">> => string(),
 %%   <<"UsePreviousTemplate">> => boolean()
@@ -471,7 +471,7 @@
 
 %% Example:
 %% parameter_constraints() :: #{
-%%   <<"AllowedValues">> => list(string()())
+%%   <<"AllowedValues">> => list(string())
 %% }
 -type parameter_constraints() :: #{binary() => any()}.
 
@@ -527,8 +527,8 @@
 %% create_stack_refactor_input() :: #{
 %%   <<"Description">> => string(),
 %%   <<"EnableStackCreation">> => boolean(),
-%%   <<"ResourceMappings">> => list(resource_mapping()()),
-%%   <<"StackDefinitions">> := list(stack_definition()())
+%%   <<"ResourceMappings">> => list(resource_mapping()),
+%%   <<"StackDefinitions">> := list(stack_definition())
 %% }
 -type create_stack_refactor_input() :: #{binary() => any()}.
 
@@ -618,7 +618,7 @@
 
 %% Example:
 %% warnings() :: #{
-%%   <<"UnrecognizedResourceTypes">> => list(string()())
+%%   <<"UnrecognizedResourceTypes">> => list(string())
 %% }
 -type warnings() :: #{binary() => any()}.
 
@@ -644,7 +644,7 @@
 %% describe_change_set_hooks_output() :: #{
 %%   <<"ChangeSetId">> => string(),
 %%   <<"ChangeSetName">> => string(),
-%%   <<"Hooks">> => list(change_set_hook()()),
+%%   <<"Hooks">> => list(change_set_hook()),
 %%   <<"NextToken">> => string(),
 %%   <<"StackId">> => string(),
 %%   <<"StackName">> => string(),
@@ -663,7 +663,7 @@
 
 %% Example:
 %% list_hook_results_output() :: #{
-%%   <<"HookResults">> => list(hook_result_summary()()),
+%%   <<"HookResults">> => list(hook_result_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"TargetId">> => string(),
 %%   <<"TargetType">> => list(any())
@@ -708,7 +708,7 @@
 %% Example:
 %% list_stack_set_operation_results_input() :: #{
 %%   <<"CallAs">> => list(any()),
-%%   <<"Filters">> => list(operation_result_filter()()),
+%%   <<"Filters">> => list(operation_result_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OperationId">> := string(),
@@ -756,8 +756,8 @@
 %%   <<"PhysicalResourceId">> => string(),
 %%   <<"ResourceIdentifier">> => string(),
 %%   <<"ResourceMapping">> => resource_mapping(),
-%%   <<"TagResources">> => list(tag()()),
-%%   <<"UntagResources">> => list(string()())
+%%   <<"TagResources">> => list(tag()),
+%%   <<"UntagResources">> => list(string())
 %% }
 -type stack_refactor_action() :: #{binary() => any()}.
 
@@ -859,10 +859,10 @@
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"PercentageCompleted">> => float(),
 %%   <<"ResourceScanId">> => string(),
-%%   <<"ResourceTypes">> => list(string()()),
+%%   <<"ResourceTypes">> => list(string()),
 %%   <<"ResourcesRead">> => integer(),
 %%   <<"ResourcesScanned">> => integer(),
-%%   <<"ScanFilters">> => list(scan_filter()()),
+%%   <<"ScanFilters">> => list(scan_filter()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
@@ -900,7 +900,7 @@
 %%   <<"LastDriftCheckTimestamp">> => non_neg_integer(),
 %%   <<"LastOperationId">> => string(),
 %%   <<"OrganizationalUnitId">> => string(),
-%%   <<"ParameterOverrides">> => list(parameter()()),
+%%   <<"ParameterOverrides">> => list(parameter()),
 %%   <<"Region">> => string(),
 %%   <<"StackId">> => string(),
 %%   <<"StackInstanceStatus">> => stack_instance_comprehensive_status(),
@@ -913,14 +913,14 @@
 %% Example:
 %% list_type_versions_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TypeVersionSummaries">> => list(type_version_summary()())
+%%   <<"TypeVersionSummaries">> => list(type_version_summary())
 %% }
 -type list_type_versions_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_stack_events_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StackEvents">> => list(stack_event()())
+%%   <<"StackEvents">> => list(stack_event())
 %% }
 -type describe_stack_events_output() :: #{binary() => any()}.
 
@@ -947,8 +947,8 @@
 %%   <<"CallAs">> => list(any()),
 %%   <<"OperationId">> => string(),
 %%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"OrganizationalUnitIds">> => list(string()()),
-%%   <<"StackIds">> => list(string()()),
+%%   <<"OrganizationalUnitIds">> => list(string()),
+%%   <<"StackIds">> => list(string()),
 %%   <<"StackIdsUrl">> => string(),
 %%   <<"StackSetName">> := string()
 %% }
@@ -1045,9 +1045,9 @@
 %%   <<"DriftInformation">> => stack_drift_information(),
 %%   <<"EnableTerminationProtection">> => boolean(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"NotificationARNs">> => list(string()()),
-%%   <<"Outputs">> => list(output()()),
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"NotificationARNs">> => list(string()),
+%%   <<"Outputs">> => list(output()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"ParentId">> => string(),
 %%   <<"RetainExceptOnCreate">> => boolean(),
 %%   <<"RoleARN">> => string(),
@@ -1057,7 +1057,7 @@
 %%   <<"StackName">> => string(),
 %%   <<"StackStatus">> => list(any()),
 %%   <<"StackStatusReason">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TimeoutInMinutes">> => integer()
 %% }
 -type stack() :: #{binary() => any()}.
@@ -1065,7 +1065,7 @@
 %% Example:
 %% stack_set_auto_deployment_target_summary() :: #{
 %%   <<"OrganizationalUnitId">> => string(),
-%%   <<"Regions">> => list(string()())
+%%   <<"Regions">> => list(string())
 %% }
 -type stack_set_auto_deployment_target_summary() :: #{binary() => any()}.
 
@@ -1085,7 +1085,7 @@
 %%   <<"GeneratedTemplateName">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Progress">> => template_progress(),
-%%   <<"Resources">> => list(resource_detail()()),
+%%   <<"Resources">> => list(resource_detail()),
 %%   <<"StackId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string(),
@@ -1097,15 +1097,15 @@
 %% Example:
 %% list_resource_scan_related_resources_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RelatedResources">> => list(scanned_resource()())
+%%   <<"RelatedResources">> => list(scanned_resource())
 %% }
 -type list_resource_scan_related_resources_output() :: #{binary() => any()}.
 
 %% Example:
 %% batch_describe_type_configurations_output() :: #{
-%%   <<"Errors">> => list(batch_describe_type_configurations_error()()),
-%%   <<"TypeConfigurations">> => list(type_configuration_details()()),
-%%   <<"UnprocessedTypeConfigurations">> => list(type_configuration_identifier()())
+%%   <<"Errors">> => list(batch_describe_type_configurations_error()),
+%%   <<"TypeConfigurations">> => list(type_configuration_details()),
+%%   <<"UnprocessedTypeConfigurations">> => list(type_configuration_identifier())
 %% }
 -type batch_describe_type_configurations_output() :: #{binary() => any()}.
 
@@ -1143,7 +1143,7 @@
 
 %% Example:
 %% scan_filter() :: #{
-%%   <<"Types">> => list(string()())
+%%   <<"Types">> => list(string())
 %% }
 -type scan_filter() :: #{binary() => any()}.
 
@@ -1172,7 +1172,7 @@
 %% Example:
 %% list_type_registrations_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RegistrationTokenList">> => list(string()())
+%%   <<"RegistrationTokenList">> => list(string())
 %% }
 -type list_type_registrations_output() :: #{binary() => any()}.
 
@@ -1256,7 +1256,7 @@
 %% Example:
 %% create_generated_template_input() :: #{
 %%   <<"GeneratedTemplateName">> := string(),
-%%   <<"Resources">> => list(resource_definition()()),
+%%   <<"Resources">> => list(resource_definition()),
 %%   <<"StackName">> => string(),
 %%   <<"TemplateConfiguration">> => template_configuration()
 %% }
@@ -1281,7 +1281,7 @@
 %% Example:
 %% list_stack_refactors_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StackRefactorSummaries">> => list(stack_refactor_summary()())
+%%   <<"StackRefactorSummaries">> => list(stack_refactor_summary())
 %% }
 -type list_stack_refactors_output() :: #{binary() => any()}.
 
@@ -1335,15 +1335,15 @@
 %%   <<"Description">> => string(),
 %%   <<"ImportExistingResources">> => boolean(),
 %%   <<"IncludeNestedStacks">> => boolean(),
-%%   <<"NotificationARNs">> => list(string()()),
+%%   <<"NotificationARNs">> => list(string()),
 %%   <<"OnStackFailure">> => list(any()),
-%%   <<"Parameters">> => list(parameter()()),
-%%   <<"ResourceTypes">> => list(string()()),
-%%   <<"ResourcesToImport">> => list(resource_to_import()()),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"ResourcesToImport">> => list(resource_to_import()),
 %%   <<"RoleARN">> => string(),
 %%   <<"RollbackConfiguration">> => rollback_configuration(),
 %%   <<"StackName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateBody">> => string(),
 %%   <<"TemplateURL">> => string(),
 %%   <<"UsePreviousTemplate">> => boolean()
@@ -1352,13 +1352,13 @@
 
 %% Example:
 %% create_stack_instances_input() :: #{
-%%   <<"Accounts">> => list(string()()),
+%%   <<"Accounts">> => list(string()),
 %%   <<"CallAs">> => list(any()),
 %%   <<"DeploymentTargets">> => deployment_targets(),
 %%   <<"OperationId">> => string(),
 %%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"ParameterOverrides">> => list(parameter()()),
-%%   <<"Regions">> := list(string()()),
+%%   <<"ParameterOverrides">> => list(parameter()),
+%%   <<"Regions">> := list(string()),
 %%   <<"StackSetName">> := string()
 %% }
 -type create_stack_instances_input() :: #{binary() => any()}.
@@ -1377,8 +1377,8 @@
 
 %% Example:
 %% resource_identifier_summary() :: #{
-%%   <<"LogicalResourceIds">> => list(string()()),
-%%   <<"ResourceIdentifiers">> => list(string()()),
+%%   <<"LogicalResourceIds">> => list(string()),
+%%   <<"ResourceIdentifiers">> => list(string()),
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_identifier_summary() :: #{binary() => any()}.
@@ -1425,7 +1425,7 @@
 %%   <<"MaxConcurrentCount">> => integer(),
 %%   <<"MaxConcurrentPercentage">> => integer(),
 %%   <<"RegionConcurrencyType">> => list(any()),
-%%   <<"RegionOrder">> => list(string()())
+%%   <<"RegionOrder">> => list(string())
 %% }
 -type stack_set_operation_preferences() :: #{binary() => any()}.
 
@@ -1439,8 +1439,8 @@
 %% stack_instance_resource_drifts_summary() :: #{
 %%   <<"LogicalResourceId">> => string(),
 %%   <<"PhysicalResourceId">> => string(),
-%%   <<"PhysicalResourceIdContext">> => list(physical_resource_id_context_key_value_pair()()),
-%%   <<"PropertyDifferences">> => list(property_difference()()),
+%%   <<"PhysicalResourceIdContext">> => list(physical_resource_id_context_key_value_pair()),
+%%   <<"PropertyDifferences">> => list(property_difference()),
 %%   <<"ResourceType">> => string(),
 %%   <<"StackId">> => string(),
 %%   <<"StackResourceDriftStatus">> => list(any()),
@@ -1499,9 +1499,9 @@
 %% validate_template_output() :: #{
 %%   <<"Capabilities">> => list(list(any())()),
 %%   <<"CapabilitiesReason">> => string(),
-%%   <<"DeclaredTransforms">> => list(string()()),
+%%   <<"DeclaredTransforms">> => list(string()),
 %%   <<"Description">> => string(),
-%%   <<"Parameters">> => list(template_parameter()())
+%%   <<"Parameters">> => list(template_parameter())
 %% }
 -type validate_template_output() :: #{binary() => any()}.
 
@@ -1516,9 +1516,9 @@
 %%   <<"Capabilities">> => list(list(any())()),
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"DisableRollback">> => boolean(),
-%%   <<"NotificationARNs">> => list(string()()),
-%%   <<"Parameters">> => list(parameter()()),
-%%   <<"ResourceTypes">> => list(string()()),
+%%   <<"NotificationARNs">> => list(string()),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"ResourceTypes">> => list(string()),
 %%   <<"RetainExceptOnCreate">> => boolean(),
 %%   <<"RoleARN">> => string(),
 %%   <<"RollbackConfiguration">> => rollback_configuration(),
@@ -1527,7 +1527,7 @@
 %%   <<"StackPolicyDuringUpdateBody">> => string(),
 %%   <<"StackPolicyDuringUpdateURL">> => string(),
 %%   <<"StackPolicyURL">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateBody">> => string(),
 %%   <<"TemplateURL">> => string(),
 %%   <<"UsePreviousTemplate">> => boolean()
@@ -1543,13 +1543,13 @@
 %% Example:
 %% list_stack_set_operations_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_set_operation_summary()())
+%%   <<"Summaries">> => list(stack_set_operation_summary())
 %% }
 -type list_stack_set_operations_output() :: #{binary() => any()}.
 
 %% Example:
 %% estimate_template_cost_input() :: #{
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"TemplateBody">> => string(),
 %%   <<"TemplateURL">> => string()
 %% }
@@ -1586,16 +1586,16 @@
 %%   <<"Capabilities">> => list(list(any())()),
 %%   <<"ChangeSetId">> => string(),
 %%   <<"ChangeSetName">> => string(),
-%%   <<"Changes">> => list(change()()),
+%%   <<"Changes">> => list(change()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"ExecutionStatus">> => list(any()),
 %%   <<"ImportExistingResources">> => boolean(),
 %%   <<"IncludeNestedStacks">> => boolean(),
 %%   <<"NextToken">> => string(),
-%%   <<"NotificationARNs">> => list(string()()),
+%%   <<"NotificationARNs">> => list(string()),
 %%   <<"OnStackFailure">> => list(any()),
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"ParentChangeSetId">> => string(),
 %%   <<"RollbackConfiguration">> => rollback_configuration(),
 %%   <<"RootChangeSetId">> => string(),
@@ -1603,7 +1603,7 @@
 %%   <<"StackName">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type describe_change_set_output() :: #{binary() => any()}.
 
@@ -1618,7 +1618,7 @@
 %% required_activated_type() :: #{
 %%   <<"OriginalTypeName">> => string(),
 %%   <<"PublisherId">> => string(),
-%%   <<"SupportedMajorVersions">> => list(integer()()),
+%%   <<"SupportedMajorVersions">> => list(integer()),
 %%   <<"TypeNameAlias">> => string()
 %% }
 -type required_activated_type() :: #{binary() => any()}.
@@ -1649,7 +1649,7 @@
 %%   <<"ProvisioningType">> => list(any()),
 %%   <<"PublicVersionNumber">> => string(),
 %%   <<"PublisherId">> => string(),
-%%   <<"RequiredActivatedTypes">> => list(required_activated_type()()),
+%%   <<"RequiredActivatedTypes">> => list(required_activated_type()),
 %%   <<"Schema">> => string(),
 %%   <<"SourceUrl">> => string(),
 %%   <<"TimeCreated">> => non_neg_integer(),
@@ -1691,7 +1691,7 @@
 
 %% Example:
 %% describe_account_limits_output() :: #{
-%%   <<"AccountLimits">> => list(account_limit()()),
+%%   <<"AccountLimits">> => list(account_limit()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_account_limits_output() :: #{binary() => any()}.
@@ -1701,7 +1701,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceScanId">> := string(),
-%%   <<"Resources">> := list(scanned_resource_identifier()())
+%%   <<"Resources">> := list(scanned_resource_identifier())
 %% }
 -type list_resource_scan_related_resources_input() :: #{binary() => any()}.
 
@@ -1755,7 +1755,7 @@
 %% Example:
 %% list_generated_templates_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(template_summary()())
+%%   <<"Summaries">> => list(template_summary())
 %% }
 -type list_generated_templates_output() :: #{binary() => any()}.
 
@@ -1786,7 +1786,7 @@
 %% Example:
 %% list_stack_sets_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_set_summary()())
+%%   <<"Summaries">> => list(stack_set_summary())
 %% }
 -type list_stack_sets_output() :: #{binary() => any()}.
 
@@ -1823,13 +1823,13 @@
 %% Example:
 %% list_resource_scan_resources_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(scanned_resource()())
+%%   <<"Resources">> => list(scanned_resource())
 %% }
 -type list_resource_scan_resources_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_exports_output() :: #{
-%%   <<"Exports">> => list(export()()),
+%%   <<"Exports">> => list(export()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_exports_output() :: #{binary() => any()}.
@@ -1851,7 +1851,7 @@
 %% Example:
 %% list_change_sets_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(change_set_summary()())
+%%   <<"Summaries">> => list(change_set_summary())
 %% }
 -type list_change_sets_output() :: #{binary() => any()}.
 
@@ -1876,7 +1876,7 @@
 %% Example:
 %% list_resource_scans_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceScanSummaries">> => list(resource_scan_summary()())
+%%   <<"ResourceScanSummaries">> => list(resource_scan_summary())
 %% }
 -type list_resource_scans_output() :: #{binary() => any()}.
 
@@ -1941,14 +1941,14 @@
 
 %% Example:
 %% warning_detail() :: #{
-%%   <<"Properties">> => list(warning_property()()),
+%%   <<"Properties">> => list(warning_property()),
 %%   <<"Type">> => list(any())
 %% }
 -type warning_detail() :: #{binary() => any()}.
 
 %% Example:
 %% describe_stack_resources_output() :: #{
-%%   <<"StackResources">> => list(stack_resource()())
+%%   <<"StackResources">> => list(stack_resource())
 %% }
 -type describe_stack_resources_output() :: #{binary() => any()}.
 
@@ -1969,8 +1969,8 @@
 %%   <<"LogicalResourceId">> => string(),
 %%   <<"ModuleInfo">> => module_info(),
 %%   <<"PhysicalResourceId">> => string(),
-%%   <<"PhysicalResourceIdContext">> => list(physical_resource_id_context_key_value_pair()()),
-%%   <<"PropertyDifferences">> => list(property_difference()()),
+%%   <<"PhysicalResourceIdContext">> => list(physical_resource_id_context_key_value_pair()),
+%%   <<"PropertyDifferences">> => list(property_difference()),
 %%   <<"ResourceType">> => string(),
 %%   <<"StackId">> => string(),
 %%   <<"StackResourceDriftStatus">> => list(any()),
@@ -1990,17 +1990,17 @@
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"DisableRollback">> => boolean(),
 %%   <<"EnableTerminationProtection">> => boolean(),
-%%   <<"NotificationARNs">> => list(string()()),
+%%   <<"NotificationARNs">> => list(string()),
 %%   <<"OnFailure">> => list(any()),
-%%   <<"Parameters">> => list(parameter()()),
-%%   <<"ResourceTypes">> => list(string()()),
+%%   <<"Parameters">> => list(parameter()),
+%%   <<"ResourceTypes">> => list(string()),
 %%   <<"RetainExceptOnCreate">> => boolean(),
 %%   <<"RoleARN">> => string(),
 %%   <<"RollbackConfiguration">> => rollback_configuration(),
 %%   <<"StackName">> := string(),
 %%   <<"StackPolicyBody">> => string(),
 %%   <<"StackPolicyURL">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateBody">> => string(),
 %%   <<"TemplateURL">> => string(),
 %%   <<"TimeoutInMinutes">> => integer()
@@ -2075,7 +2075,7 @@
 %% Example:
 %% start_resource_scan_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"ScanFilters">> => list(scan_filter()())
+%%   <<"ScanFilters">> => list(scan_filter())
 %% }
 -type start_resource_scan_input() :: #{binary() => any()}.
 
@@ -2149,16 +2149,16 @@
 %%   <<"Description">> => string(),
 %%   <<"ExecutionRoleName">> => string(),
 %%   <<"ManagedExecution">> => managed_execution(),
-%%   <<"OrganizationalUnitIds">> => list(string()()),
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"OrganizationalUnitIds">> => list(string()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"PermissionModel">> => list(any()),
-%%   <<"Regions">> => list(string()()),
+%%   <<"Regions">> => list(string()),
 %%   <<"StackSetARN">> => string(),
 %%   <<"StackSetDriftDetectionDetails">> => stack_set_drift_detection_details(),
 %%   <<"StackSetId">> => string(),
 %%   <<"StackSetName">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateBody">> => string()
 %% }
 -type stack_set() :: #{binary() => any()}.
@@ -2171,13 +2171,13 @@
 
 %% Example:
 %% update_stack_instances_input() :: #{
-%%   <<"Accounts">> => list(string()()),
+%%   <<"Accounts">> => list(string()),
 %%   <<"CallAs">> => list(any()),
 %%   <<"DeploymentTargets">> => deployment_targets(),
 %%   <<"OperationId">> => string(),
 %%   <<"OperationPreferences">> => stack_set_operation_preferences(),
-%%   <<"ParameterOverrides">> => list(parameter()()),
-%%   <<"Regions">> := list(string()()),
+%%   <<"ParameterOverrides">> => list(parameter()),
+%%   <<"Regions">> := list(string()),
 %%   <<"StackSetName">> := string()
 %% }
 -type update_stack_instances_input() :: #{binary() => any()}.
@@ -2211,7 +2211,7 @@
 %% Example:
 %% list_stack_instances_input() :: #{
 %%   <<"CallAs">> => list(any()),
-%%   <<"Filters">> => list(stack_instance_filter()()),
+%%   <<"Filters">> => list(stack_instance_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StackInstanceAccount">> => string(),
@@ -2250,7 +2250,7 @@
 %% Example:
 %% list_stack_refactor_actions_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StackRefactorActions">> => list(stack_refactor_action()())
+%%   <<"StackRefactorActions">> => list(stack_refactor_action())
 %% }
 -type list_stack_refactor_actions_output() :: #{binary() => any()}.
 
@@ -2268,14 +2268,14 @@
 
 %% Example:
 %% batch_describe_type_configurations_input() :: #{
-%%   <<"TypeConfigurationIdentifiers">> := list(type_configuration_identifier()())
+%%   <<"TypeConfigurationIdentifiers">> := list(type_configuration_identifier())
 %% }
 -type batch_describe_type_configurations_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_types_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TypeSummaries">> => list(type_summary()())
+%%   <<"TypeSummaries">> => list(type_summary())
 %% }
 -type list_types_output() :: #{binary() => any()}.
 
@@ -2298,12 +2298,12 @@
 %% get_template_summary_output() :: #{
 %%   <<"Capabilities">> => list(list(any())()),
 %%   <<"CapabilitiesReason">> => string(),
-%%   <<"DeclaredTransforms">> => list(string()()),
+%%   <<"DeclaredTransforms">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"Metadata">> => string(),
-%%   <<"Parameters">> => list(parameter_declaration()()),
-%%   <<"ResourceIdentifierSummaries">> => list(resource_identifier_summary()()),
-%%   <<"ResourceTypes">> => list(string()()),
+%%   <<"Parameters">> => list(parameter_declaration()),
+%%   <<"ResourceIdentifierSummaries">> => list(resource_identifier_summary()),
+%%   <<"ResourceTypes">> => list(string()),
 %%   <<"Version">> => string(),
 %%   <<"Warnings">> => warnings()
 %% }
@@ -2333,7 +2333,7 @@
 %% Example:
 %% continue_update_rollback_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"ResourcesToSkip">> => list(string()()),
+%%   <<"ResourcesToSkip">> => list(string()),
 %%   <<"RoleARN">> => string(),
 %%   <<"StackName">> := string()
 %% }
@@ -2363,14 +2363,14 @@
 %% Example:
 %% list_stack_instance_resource_drifts_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_instance_resource_drifts_summary()())
+%%   <<"Summaries">> => list(stack_instance_resource_drifts_summary())
 %% }
 -type list_stack_instance_resource_drifts_output() :: #{binary() => any()}.
 
 %% Example:
 %% rollback_configuration() :: #{
 %%   <<"MonitoringTimeInMinutes">> => integer(),
-%%   <<"RollbackTriggers">> => list(rollback_trigger()())
+%%   <<"RollbackTriggers">> => list(rollback_trigger())
 %% }
 -type rollback_configuration() :: #{binary() => any()}.
 
@@ -2391,7 +2391,7 @@
 %% Example:
 %% list_stack_instances_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_instance_summary()())
+%%   <<"Summaries">> => list(stack_instance_summary())
 %% }
 -type list_stack_instances_output() :: #{binary() => any()}.
 
@@ -2407,7 +2407,7 @@
 %% Example:
 %% list_stack_set_operation_results_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_set_operation_result_summary()())
+%%   <<"Summaries">> => list(stack_set_operation_result_summary())
 %% }
 -type list_stack_set_operation_results_output() :: #{binary() => any()}.
 
@@ -2428,11 +2428,11 @@
 %%   <<"Description">> => string(),
 %%   <<"ExecutionRoleName">> => string(),
 %%   <<"ManagedExecution">> => managed_execution(),
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"PermissionModel">> => list(any()),
 %%   <<"StackId">> => string(),
 %%   <<"StackSetName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateBody">> => string(),
 %%   <<"TemplateURL">> => string()
 %% }
@@ -2456,7 +2456,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ExecutionStatus">> => list(any()),
 %%   <<"ExecutionStatusReason">> => string(),
-%%   <<"StackIds">> => list(string()()),
+%%   <<"StackIds">> => list(string()),
 %%   <<"StackRefactorId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
@@ -2489,7 +2489,7 @@
 %%   <<"AfterContext">> => string(),
 %%   <<"BeforeContext">> => string(),
 %%   <<"ChangeSetId">> => string(),
-%%   <<"Details">> => list(resource_change_detail()()),
+%%   <<"Details">> => list(resource_change_detail()),
 %%   <<"LogicalResourceId">> => string(),
 %%   <<"ModuleInfo">> => module_info(),
 %%   <<"PhysicalResourceId">> => string(),
@@ -2503,15 +2503,15 @@
 %% Example:
 %% deployment_targets() :: #{
 %%   <<"AccountFilterType">> => list(any()),
-%%   <<"Accounts">> => list(string()()),
+%%   <<"Accounts">> => list(string()),
 %%   <<"AccountsUrl">> => string(),
-%%   <<"OrganizationalUnitIds">> => list(string()())
+%%   <<"OrganizationalUnitIds">> => list(string())
 %% }
 -type deployment_targets() :: #{binary() => any()}.
 
 %% Example:
 %% detect_stack_drift_input() :: #{
-%%   <<"LogicalResourceIds">> => list(string()()),
+%%   <<"LogicalResourceIds">> => list(string()),
 %%   <<"StackName">> := string()
 %% }
 -type detect_stack_drift_input() :: #{binary() => any()}.
@@ -2581,7 +2581,7 @@
 %% Example:
 %% list_stack_set_auto_deployment_targets_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(stack_set_auto_deployment_target_summary()())
+%%   <<"Summaries">> => list(stack_set_auto_deployment_target_summary())
 %% }
 -type list_stack_set_auto_deployment_targets_output() :: #{binary() => any()}.
 
@@ -2603,7 +2603,7 @@
 %% Example:
 %% describe_stacks_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Stacks">> => list(stack()())
+%%   <<"Stacks">> => list(stack())
 %% }
 -type describe_stacks_output() :: #{binary() => any()}.
 
@@ -2611,7 +2611,7 @@
 %% delete_stack_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"DeletionMode">> => list(any()),
-%%   <<"RetainResources">> => list(string()()),
+%%   <<"RetainResources">> => list(string()),
 %%   <<"RoleARN">> => string(),
 %%   <<"StackName">> := string()
 %% }
@@ -2624,7 +2624,7 @@
 %%   <<"ResourceStatus">> => list(any()),
 %%   <<"ResourceStatusReason">> => string(),
 %%   <<"ResourceType">> => string(),
-%%   <<"Warnings">> => list(warning_detail()())
+%%   <<"Warnings">> => list(warning_detail())
 %% }
 -type resource_detail() :: #{binary() => any()}.
 
@@ -2636,7 +2636,7 @@
 
 %% Example:
 %% list_imports_output() :: #{
-%%   <<"Imports">> => list(string()()),
+%%   <<"Imports">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_imports_output() :: #{binary() => any()}.

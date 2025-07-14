@@ -300,7 +300,7 @@
 %% Example:
 %% query_assistant_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"results">> := list(result_data()())
+%%   <<"results">> := list(result_data())
 %% }
 -type query_assistant_response() :: #{binary() => any()}.
 
@@ -423,9 +423,9 @@
 
 %% Example:
 %% quick_response_search_expression() :: #{
-%%   <<"filters">> => list(quick_response_filter_field()()),
+%%   <<"filters">> => list(quick_response_filter_field()),
 %%   <<"orderOnField">> => quick_response_order_field(),
-%%   <<"queries">> => list(quick_response_query_field()())
+%%   <<"queries">> => list(quick_response_query_field())
 %% }
 -type quick_response_search_expression() :: #{binary() => any()}.
 
@@ -462,7 +462,7 @@
 %% Example:
 %% guardrail_topic_config() :: #{
 %%   <<"definition">> => string(),
-%%   <<"examples">> => list(string()()),
+%%   <<"examples">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"type">> => string()
 %% }
@@ -472,7 +472,7 @@
 %% Example:
 %% app_integrations_configuration() :: #{
 %%   <<"appIntegrationArn">> => string(),
-%%   <<"objectFields">> => list(string()())
+%%   <<"objectFields">> => list(string())
 %% }
 -type app_integrations_configuration() :: #{binary() => any()}.
 
@@ -492,7 +492,7 @@
 
 %% Example:
 %% list_a_i_agent_versions_response() :: #{
-%%   <<"aiAgentVersionSummaries">> => list(a_i_agent_version_summary()()),
+%%   <<"aiAgentVersionSummaries">> => list(a_i_agent_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_a_i_agent_versions_response() :: #{binary() => any()}.
@@ -523,7 +523,7 @@
 
 %% Example:
 %% list_contents_response() :: #{
-%%   <<"contentSummaries">> := list(content_summary()()),
+%%   <<"contentSummaries">> := list(content_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_contents_response() :: #{binary() => any()}.
@@ -541,14 +541,14 @@
 %%   <<"includeNoExistence">> => [boolean()],
 %%   <<"name">> => string(),
 %%   <<"operator">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type quick_response_filter_field() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_messages_response() :: #{
-%%   <<"messages">> => list(message_output()()),
+%%   <<"messages">> => list(message_output()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_messages_response() :: #{binary() => any()}.
@@ -572,7 +572,7 @@
 
 %% Example:
 %% get_next_message_response() :: #{
-%%   <<"conversationSessionData">> => list(runtime_session_data()()),
+%%   <<"conversationSessionData">> => list(runtime_session_data()),
 %%   <<"conversationState">> => conversation_state(),
 %%   <<"nextMessageToken">> => string(),
 %%   <<"requestMessageId">> => string(),
@@ -599,7 +599,7 @@
 
 %% Example:
 %% list_a_i_guardrail_versions_response() :: #{
-%%   <<"aiGuardrailVersionSummaries">> => list(a_i_guardrail_version_summary()()),
+%%   <<"aiGuardrailVersionSummaries">> => list(a_i_guardrail_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_a_i_guardrail_versions_response() :: #{binary() => any()}.
@@ -721,7 +721,7 @@
 %% generative_chunk_data_details() :: #{
 %%   <<"completion">> => string(),
 %%   <<"nextChunkToken">> => string(),
-%%   <<"references">> => list(data_summary()())
+%%   <<"references">> => list(data_summary())
 %% }
 -type generative_chunk_data_details() :: #{binary() => any()}.
 
@@ -735,7 +735,7 @@
 
 %% Example:
 %% list_a_iprompts_response() :: #{
-%%   <<"aiPromptSummaries">> => list(a_iprompt_summary()()),
+%%   <<"aiPromptSummaries">> => list(a_iprompt_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_a_iprompts_response() :: #{binary() => any()}.
@@ -750,8 +750,8 @@
 
 %% Example:
 %% get_recommendations_response() :: #{
-%%   <<"recommendations">> := list(recommendation_data()()),
-%%   <<"triggers">> => list(recommendation_trigger()())
+%%   <<"recommendations">> := list(recommendation_data()),
+%%   <<"triggers">> => list(recommendation_trigger())
 %% }
 -type get_recommendations_response() :: #{binary() => any()}.
 
@@ -839,7 +839,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -861,7 +861,7 @@
 
 %% Example:
 %% create_quick_response_request() :: #{
-%%   <<"channels">> => list(string()()),
+%%   <<"channels">> => list(string()),
 %%   <<"clientToken">> => string(),
 %%   <<"content">> := list(),
 %%   <<"contentType">> => string(),
@@ -920,7 +920,7 @@
 
 %% Example:
 %% search_content_response() :: #{
-%%   <<"contentSummaries">> := list(content_summary()()),
+%%   <<"contentSummaries">> := list(content_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type search_content_response() :: #{binary() => any()}.
@@ -939,7 +939,7 @@
 %%   <<"includeNoExistence">> => [boolean()],
 %%   <<"name">> => string(),
 %%   <<"operator">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type message_template_filter_field() :: #{binary() => any()}.
 
@@ -978,7 +978,7 @@
 
 %% Example:
 %% list_a_i_agents_response() :: #{
-%%   <<"aiAgentSummaries">> => list(a_i_agent_summary()()),
+%%   <<"aiAgentSummaries">> => list(a_i_agent_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_a_i_agents_response() :: #{binary() => any()}.
@@ -986,9 +986,9 @@
 
 %% Example:
 %% message_template_search_expression() :: #{
-%%   <<"filters">> => list(message_template_filter_field()()),
+%%   <<"filters">> => list(message_template_filter_field()),
 %%   <<"orderOnField">> => message_template_order_field(),
-%%   <<"queries">> => list(message_template_query_field()())
+%%   <<"queries">> => list(message_template_query_field())
 %% }
 -type message_template_search_expression() :: #{binary() => any()}.
 
@@ -1065,7 +1065,7 @@
 
 %% Example:
 %% self_service_a_i_agent_configuration() :: #{
-%%   <<"associationConfigurations">> => list(association_configuration()()),
+%%   <<"associationConfigurations">> => list(association_configuration()),
 %%   <<"selfServiceAIGuardrailId">> => string(),
 %%   <<"selfServiceAnswerGenerationAIPromptId">> => string(),
 %%   <<"selfServicePreProcessingAIPromptId">> => string()
@@ -1092,7 +1092,7 @@
 
 %% Example:
 %% hierarchical_chunking_configuration() :: #{
-%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()()),
+%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()),
 %%   <<"overlapTokens">> => [integer()]
 %% }
 -type hierarchical_chunking_configuration() :: #{binary() => any()}.
@@ -1261,7 +1261,7 @@
 
 %% Example:
 %% list_message_template_versions_response() :: #{
-%%   <<"messageTemplateVersionSummaries">> => list(message_template_version_summary()()),
+%%   <<"messageTemplateVersionSummaries">> => list(message_template_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_message_template_versions_response() :: #{binary() => any()}.
@@ -1294,7 +1294,7 @@
 %% Example:
 %% list_quick_responses_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"quickResponseSummaries">> => list(quick_response_summary()())
+%%   <<"quickResponseSummaries">> => list(quick_response_summary())
 %% }
 -type list_quick_responses_response() :: #{binary() => any()}.
 
@@ -1358,7 +1358,7 @@
 %% Example:
 %% knowledge_base_data() :: #{
 %%   <<"description">> => string(),
-%%   <<"ingestionFailureReasons">> => list(string()()),
+%%   <<"ingestionFailureReasons">> => list(string()),
 %%   <<"ingestionStatus">> => string(),
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
@@ -1399,7 +1399,7 @@
 
 %% Example:
 %% document_text() :: #{
-%%   <<"highlights">> => list(highlight()()),
+%%   <<"highlights">> => list(highlight()),
 %%   <<"text">> => string()
 %% }
 -type document_text() :: #{binary() => any()}.
@@ -1419,7 +1419,7 @@
 %%   <<"name">> => string(),
 %%   <<"operator">> => string(),
 %%   <<"priority">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type message_template_query_field() :: #{binary() => any()}.
 
@@ -1465,8 +1465,8 @@
 
 %% Example:
 %% extended_message_template_data() :: #{
-%%   <<"attachments">> => list(message_template_attachment()()),
-%%   <<"attributeTypes">> => list(string()()),
+%%   <<"attachments">> => list(message_template_attachment()),
+%%   <<"attributeTypes">> => list(string()),
 %%   <<"channelSubtype">> => string(),
 %%   <<"content">> => list(),
 %%   <<"createdTime">> => [non_neg_integer()],
@@ -1555,7 +1555,7 @@
 
 %% Example:
 %% url_configuration() :: #{
-%%   <<"seedUrls">> => list(seed_url()())
+%%   <<"seedUrls">> => list(seed_url())
 %% }
 -type url_configuration() :: #{binary() => any()}.
 
@@ -1579,7 +1579,7 @@
 
 %% Example:
 %% conversation_context() :: #{
-%%   <<"selfServiceConversationHistory">> => list(self_service_conversation_history()())
+%%   <<"selfServiceConversationHistory">> => list(self_service_conversation_history())
 %% }
 -type conversation_context() :: #{binary() => any()}.
 
@@ -1607,7 +1607,7 @@
 
 %% Example:
 %% quick_response_summary() :: #{
-%%   <<"channels">> => list(string()()),
+%%   <<"channels">> => list(string()),
 %%   <<"contentType">> => string(),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
@@ -1721,7 +1721,7 @@
 %% Example:
 %% search_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sessionSummaries">> := list(session_summary()())
+%%   <<"sessionSummaries">> := list(session_summary())
 %% }
 -type search_sessions_response() :: #{binary() => any()}.
 
@@ -1742,15 +1742,15 @@
 
 %% Example:
 %% notify_recommendations_received_response() :: #{
-%%   <<"errors">> => list(notify_recommendations_received_error()()),
-%%   <<"recommendationIds">> => list(string()())
+%%   <<"errors">> => list(notify_recommendations_received_error()),
+%%   <<"recommendationIds">> => list(string())
 %% }
 -type notify_recommendations_received_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_quick_response_request() :: #{
-%%   <<"channels">> => list(string()()),
+%%   <<"channels">> => list(string()),
 %%   <<"content">> => list(),
 %%   <<"contentType">> => string(),
 %%   <<"description">> => string(),
@@ -1768,7 +1768,7 @@
 
 %% Example:
 %% quick_response_data() :: #{
-%%   <<"channels">> => list(string()()),
+%%   <<"channels">> => list(string()),
 %%   <<"contentType">> => string(),
 %%   <<"contents">> => quick_response_contents(),
 %%   <<"createdTime">> => [non_neg_integer()],
@@ -1889,7 +1889,7 @@
 
 %% Example:
 %% a_i_guardrail_topic_policy_config() :: #{
-%%   <<"topicsConfig">> => list(guardrail_topic_config()())
+%%   <<"topicsConfig">> => list(guardrail_topic_config())
 %% }
 -type a_i_guardrail_topic_policy_config() :: #{binary() => any()}.
 
@@ -1903,7 +1903,7 @@
 
 %% Example:
 %% search_expression() :: #{
-%%   <<"filters">> => list(filter()())
+%%   <<"filters">> => list(filter())
 %% }
 -type search_expression() :: #{binary() => any()}.
 
@@ -2033,8 +2033,8 @@
 %% Example:
 %% web_crawler_configuration() :: #{
 %%   <<"crawlerLimits">> => web_crawler_limits(),
-%%   <<"exclusionFilters">> => list(string()()),
-%%   <<"inclusionFilters">> => list(string()()),
+%%   <<"exclusionFilters">> => list(string()),
+%%   <<"inclusionFilters">> => list(string()),
 %%   <<"scope">> => string(),
 %%   <<"urlConfiguration">> => url_configuration()
 %% }
@@ -2043,7 +2043,7 @@
 
 %% Example:
 %% list_import_jobs_response() :: #{
-%%   <<"importJobSummaries">> => list(import_job_summary()()),
+%%   <<"importJobSummaries">> => list(import_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_import_jobs_response() :: #{binary() => any()}.
@@ -2096,8 +2096,8 @@
 
 %% Example:
 %% a_i_guardrail_word_policy_config() :: #{
-%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()()),
-%%   <<"wordsConfig">> => list(guardrail_word_config()())
+%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()),
+%%   <<"wordsConfig">> => list(guardrail_word_config())
 %% }
 -type a_i_guardrail_word_policy_config() :: #{binary() => any()}.
 
@@ -2110,7 +2110,7 @@
 %% generative_data_details() :: #{
 %%   <<"completion">> => string(),
 %%   <<"rankingData">> => ranking_data(),
-%%   <<"references">> => list(data_summary()())
+%%   <<"references">> => list(data_summary())
 %% }
 -type generative_data_details() :: #{binary() => any()}.
 
@@ -2118,7 +2118,7 @@
 %% Example:
 %% search_quick_responses_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"results">> => list(quick_response_search_result_data()())
+%%   <<"results">> => list(quick_response_search_result_data())
 %% }
 -type search_quick_responses_response() :: #{binary() => any()}.
 
@@ -2155,7 +2155,7 @@
 
 %% Example:
 %% list_message_templates_response() :: #{
-%%   <<"messageTemplateSummaries">> => list(message_template_summary()()),
+%%   <<"messageTemplateSummaries">> => list(message_template_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_message_templates_response() :: #{binary() => any()}.
@@ -2187,7 +2187,7 @@
 
 %% Example:
 %% a_i_guardrail_contextual_grounding_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config()())
+%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config())
 %% }
 -type a_i_guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
 
@@ -2211,7 +2211,7 @@
 %% manual_search_a_i_agent_configuration() :: #{
 %%   <<"answerGenerationAIGuardrailId">> => string(),
 %%   <<"answerGenerationAIPromptId">> => string(),
-%%   <<"associationConfigurations">> => list(association_configuration()()),
+%%   <<"associationConfigurations">> => list(association_configuration()),
 %%   <<"locale">> => string()
 %% }
 -type manual_search_a_i_agent_configuration() :: #{binary() => any()}.
@@ -2241,8 +2241,8 @@
 
 %% Example:
 %% a_i_guardrail_sensitive_information_policy_config() :: #{
-%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()()),
-%%   <<"regexesConfig">> => list(guardrail_regex_config()())
+%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()),
+%%   <<"regexesConfig">> => list(guardrail_regex_config())
 %% }
 -type a_i_guardrail_sensitive_information_policy_config() :: #{binary() => any()}.
 
@@ -2317,7 +2317,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"overrideKnowledgeBaseSearchType">> => string(),
-%%   <<"queryCondition">> => list(list()()),
+%%   <<"queryCondition">> => list(list()),
 %%   <<"queryInputData">> => list(),
 %%   <<"queryText">> => string(),
 %%   <<"sessionId">> => string()
@@ -2331,9 +2331,9 @@
 
 %% Example:
 %% quick_response_search_result_data() :: #{
-%%   <<"attributesInterpolated">> => list(string()()),
-%%   <<"attributesNotInterpolated">> => list(string()()),
-%%   <<"channels">> => list(string()()),
+%%   <<"attributesInterpolated">> => list(string()),
+%%   <<"attributesNotInterpolated">> => list(string()),
+%%   <<"channels">> => list(string()),
 %%   <<"contentType">> => string(),
 %%   <<"contents">> => quick_response_contents(),
 %%   <<"createdTime">> => [non_neg_integer()],
@@ -2384,7 +2384,7 @@
 
 %% Example:
 %% list_a_i_guardrails_response() :: #{
-%%   <<"aiGuardrailSummaries">> => list(a_i_guardrail_summary()()),
+%%   <<"aiGuardrailSummaries">> => list(a_i_guardrail_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_a_i_guardrails_response() :: #{binary() => any()}.
@@ -2447,7 +2447,7 @@
 %% Example:
 %% search_message_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"results">> => list(message_template_search_result_data()())
+%%   <<"results">> => list(message_template_search_result_data())
 %% }
 -type search_message_templates_response() :: #{binary() => any()}.
 
@@ -2506,7 +2506,7 @@
 
 %% Example:
 %% update_session_data_response() :: #{
-%%   <<"data">> => list(runtime_session_data()()),
+%%   <<"data">> => list(runtime_session_data()),
 %%   <<"namespace">> => string(),
 %%   <<"sessionArn">> => string(),
 %%   <<"sessionId">> => string()
@@ -2541,7 +2541,7 @@
 
 %% Example:
 %% a_i_guardrail_content_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_content_filter_config()())
+%%   <<"filtersConfig">> => list(guardrail_content_filter_config())
 %% }
 -type a_i_guardrail_content_policy_config() :: #{binary() => any()}.
 
@@ -2569,7 +2569,7 @@
 %% recommendation_trigger() :: #{
 %%   <<"data">> => list(),
 %%   <<"id">> => string(),
-%%   <<"recommendationIds">> => list(string()()),
+%%   <<"recommendationIds">> => list(string()),
 %%   <<"source">> => string(),
 %%   <<"type">> => string()
 %% }
@@ -2585,7 +2585,7 @@
 
 %% Example:
 %% notify_recommendations_received_request() :: #{
-%%   <<"recommendationIds">> := list(string()())
+%%   <<"recommendationIds">> := list(string())
 %% }
 -type notify_recommendations_received_request() :: #{binary() => any()}.
 
@@ -2607,7 +2607,7 @@
 
 %% Example:
 %% message_template_data() :: #{
-%%   <<"attributeTypes">> => list(string()()),
+%%   <<"attributeTypes">> => list(string()),
 %%   <<"channelSubtype">> => string(),
 %%   <<"content">> => list(),
 %%   <<"createdTime">> => [non_neg_integer()],
@@ -2630,7 +2630,7 @@
 
 %% Example:
 %% list_knowledge_bases_response() :: #{
-%%   <<"knowledgeBaseSummaries">> := list(knowledge_base_summary()()),
+%%   <<"knowledgeBaseSummaries">> := list(knowledge_base_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_knowledge_bases_response() :: #{binary() => any()}.
@@ -2652,7 +2652,7 @@
 
 %% Example:
 %% list_assistant_associations_response() :: #{
-%%   <<"assistantAssociationSummaries">> := list(assistant_association_summary()()),
+%%   <<"assistantAssociationSummaries">> := list(assistant_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assistant_associations_response() :: #{binary() => any()}.
@@ -2685,8 +2685,8 @@
 
 %% Example:
 %% render_message_template_response() :: #{
-%%   <<"attachments">> => list(message_template_attachment()()),
-%%   <<"attributesNotInterpolated">> => list(string()()),
+%%   <<"attachments">> => list(message_template_attachment()),
+%%   <<"attributesNotInterpolated">> => list(string()),
 %%   <<"content">> => list()
 %% }
 -type render_message_template_response() :: #{binary() => any()}.
@@ -2782,7 +2782,7 @@
 %%   <<"name">> => string(),
 %%   <<"operator">> => string(),
 %%   <<"priority">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type quick_response_query_field() :: #{binary() => any()}.
 
@@ -2808,7 +2808,7 @@
 
 %% Example:
 %% list_a_iprompt_versions_response() :: #{
-%%   <<"aiPromptVersionSummaries">> => list(a_iprompt_version_summary()()),
+%%   <<"aiPromptVersionSummaries">> => list(a_iprompt_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_a_iprompt_versions_response() :: #{binary() => any()}.
@@ -2833,7 +2833,7 @@
 
 %% Example:
 %% list_assistants_response() :: #{
-%%   <<"assistantSummaries">> := list(assistant_summary()()),
+%%   <<"assistantSummaries">> := list(assistant_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assistants_response() :: #{binary() => any()}.
@@ -2891,7 +2891,7 @@
 %% Example:
 %% grouping_configuration() :: #{
 %%   <<"criteria">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type grouping_configuration() :: #{binary() => any()}.
 
@@ -2928,7 +2928,7 @@
 %% answer_recommendation_a_i_agent_configuration() :: #{
 %%   <<"answerGenerationAIGuardrailId">> => string(),
 %%   <<"answerGenerationAIPromptId">> => string(),
-%%   <<"associationConfigurations">> => list(association_configuration()()),
+%%   <<"associationConfigurations">> => list(association_configuration()),
 %%   <<"intentLabelingGenerationAIPromptId">> => string(),
 %%   <<"locale">> => string(),
 %%   <<"queryReformulationAIPromptId">> => string()
@@ -2939,7 +2939,7 @@
 %% Example:
 %% email_message_template_content() :: #{
 %%   <<"body">> => email_message_template_content_body(),
-%%   <<"headers">> => list(email_header()()),
+%%   <<"headers">> => list(email_header()),
 %%   <<"subject">> => string()
 %% }
 -type email_message_template_content() :: #{binary() => any()}.
@@ -2968,7 +2968,7 @@
 
 %% Example:
 %% list_content_associations_response() :: #{
-%%   <<"contentAssociationSummaries">> => list(content_association_summary()()),
+%%   <<"contentAssociationSummaries">> => list(content_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_content_associations_response() :: #{binary() => any()}.
@@ -3012,7 +3012,7 @@
 
 %% Example:
 %% update_session_data_request() :: #{
-%%   <<"data">> := list(runtime_session_data()()),
+%%   <<"data">> := list(runtime_session_data()),
 %%   <<"namespace">> => string()
 %% }
 -type update_session_data_request() :: #{binary() => any()}.

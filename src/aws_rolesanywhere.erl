@@ -106,9 +106,9 @@
 %% Example:
 %% subject_detail() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"credentials">> => list(credential_summary()()),
+%%   <<"credentials">> => list(credential_summary()),
 %%   <<"enabled">> => [boolean()],
-%%   <<"instanceProperties">> => list(instance_property()()),
+%%   <<"instanceProperties">> => list(instance_property()),
 %%   <<"lastSeenAt">> => [non_neg_integer()],
 %%   <<"subjectArn">> => [string()],
 %%   <<"subjectId">> => string(),
@@ -133,7 +133,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -147,7 +147,7 @@
 
 %% Example:
 %% put_notification_settings_request() :: #{
-%%   <<"notificationSettings">> := list(notification_setting()()),
+%%   <<"notificationSettings">> := list(notification_setting()),
 %%   <<"trustAnchorId">> := string()
 %% }
 -type put_notification_settings_request() :: #{binary() => any()}.
@@ -196,7 +196,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -212,14 +212,14 @@
 %% Example:
 %% list_subjects_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"subjects">> => list(subject_summary()())
+%%   <<"subjects">> => list(subject_summary())
 %% }
 -type list_subjects_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_crls_response() :: #{
-%%   <<"crls">> => list(crl_detail()()),
+%%   <<"crls">> => list(crl_detail()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_crls_response() :: #{binary() => any()}.
@@ -262,9 +262,9 @@
 %%   <<"managedPolicyArns">> => list([string()]()),
 %%   <<"name">> := string(),
 %%   <<"requireInstanceProperties">> => [boolean()],
-%%   <<"roleArns">> := list(string()()),
+%%   <<"roleArns">> := list(string()),
 %%   <<"sessionPolicy">> => [string()],
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_profile_request() :: #{binary() => any()}.
 
@@ -288,7 +288,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"name">> => string(),
-%%   <<"notificationSettings">> => list(notification_setting_detail()()),
+%%   <<"notificationSettings">> => list(notification_setting_detail()),
 %%   <<"source">> => source(),
 %%   <<"trustAnchorArn">> => [string()],
 %%   <<"trustAnchorId">> => string(),
@@ -303,7 +303,7 @@
 %%   <<"durationSeconds">> => [integer()],
 %%   <<"managedPolicyArns">> => list([string()]()),
 %%   <<"name">> => string(),
-%%   <<"roleArns">> => list(string()()),
+%%   <<"roleArns">> => list(string()),
 %%   <<"sessionPolicy">> => [string()]
 %% }
 -type update_profile_request() :: #{binary() => any()}.
@@ -320,14 +320,14 @@
 %% Example:
 %% attribute_mapping() :: #{
 %%   <<"certificateField">> => string(),
-%%   <<"mappingRules">> => list(mapping_rule()())
+%%   <<"mappingRules">> => list(mapping_rule())
 %% }
 -type attribute_mapping() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -335,7 +335,7 @@
 %% Example:
 %% profile_detail() :: #{
 %%   <<"acceptRoleSessionName">> => [boolean()],
-%%   <<"attributeMappings">> => list(attribute_mapping()()),
+%%   <<"attributeMappings">> => list(attribute_mapping()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => [string()],
 %%   <<"durationSeconds">> => [integer()],
@@ -345,7 +345,7 @@
 %%   <<"profileArn">> => string(),
 %%   <<"profileId">> => string(),
 %%   <<"requireInstanceProperties">> => [boolean()],
-%%   <<"roleArns">> => list(string()()),
+%%   <<"roleArns">> => list(string()),
 %%   <<"sessionPolicy">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
@@ -402,7 +402,7 @@
 %% Example:
 %% list_profiles_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"profiles">> => list(profile_detail()())
+%%   <<"profiles">> => list(profile_detail())
 %% }
 -type list_profiles_response() :: #{binary() => any()}.
 
@@ -447,7 +447,7 @@
 %%   <<"crlData">> := [binary()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"trustAnchorArn">> := string()
 %% }
 -type import_crl_request() :: #{binary() => any()}.
@@ -468,7 +468,7 @@
 %% Example:
 %% list_trust_anchors_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"trustAnchors">> => list(trust_anchor_detail()())
+%%   <<"trustAnchors">> => list(trust_anchor_detail())
 %% }
 -type list_trust_anchors_response() :: #{binary() => any()}.
 
@@ -485,7 +485,7 @@
 
 %% Example:
 %% reset_notification_settings_request() :: #{
-%%   <<"notificationSettingKeys">> := list(notification_setting_key()()),
+%%   <<"notificationSettingKeys">> := list(notification_setting_key()),
 %%   <<"trustAnchorId">> := string()
 %% }
 -type reset_notification_settings_request() :: #{binary() => any()}.
@@ -495,9 +495,9 @@
 %% create_trust_anchor_request() :: #{
 %%   <<"enabled">> => [boolean()],
 %%   <<"name">> := string(),
-%%   <<"notificationSettings">> => list(notification_setting()()),
+%%   <<"notificationSettings">> => list(notification_setting()),
 %%   <<"source">> := source(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_trust_anchor_request() :: #{binary() => any()}.
 
@@ -530,7 +530,7 @@
 %% Example:
 %% put_attribute_mapping_request() :: #{
 %%   <<"certificateField">> := string(),
-%%   <<"mappingRules">> := list(mapping_rule()())
+%%   <<"mappingRules">> := list(mapping_rule())
 %% }
 -type put_attribute_mapping_request() :: #{binary() => any()}.
 

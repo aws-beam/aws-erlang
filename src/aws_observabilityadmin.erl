@@ -75,7 +75,7 @@
 
 %% Example:
 %% list_resource_telemetry_for_organization_input() :: #{
-%%   <<"AccountIdentifiers">> => list(string()()),
+%%   <<"AccountIdentifiers">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceIdentifierPrefix">> => string(),
@@ -89,7 +89,7 @@
 %% Example:
 %% list_resource_telemetry_for_organization_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TelemetryConfigurations">> => list(telemetry_configuration()())
+%%   <<"TelemetryConfigurations">> => list(telemetry_configuration())
 %% }
 -type list_resource_telemetry_for_organization_output() :: #{binary() => any()}.
 
@@ -109,7 +109,7 @@
 %% Example:
 %% list_resource_telemetry_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TelemetryConfigurations">> => list(telemetry_configuration()())
+%%   <<"TelemetryConfigurations">> => list(telemetry_configuration())
 %% }
 -type list_resource_telemetry_output() :: #{binary() => any()}.
 

@@ -117,20 +117,20 @@
 
 %% Example:
 %% attach_load_balancer_to_subnets_output() :: #{
-%%   <<"Subnets">> => list(string()())
+%%   <<"Subnets">> => list(string())
 %% }
 -type attach_load_balancer_to_subnets_output() :: #{binary() => any()}.
 
 %% Example:
 %% backend_server_description() :: #{
 %%   <<"InstancePort">> => integer(),
-%%   <<"PolicyNames">> => list(string()())
+%%   <<"PolicyNames">> => list(string())
 %% }
 -type backend_server_description() :: #{binary() => any()}.
 
 %% Example:
 %% policy_description() :: #{
-%%   <<"PolicyAttributeDescriptions">> => list(policy_attribute_description()()),
+%%   <<"PolicyAttributeDescriptions">> => list(policy_attribute_description()),
 %%   <<"PolicyName">> => string(),
 %%   <<"PolicyTypeName">> => string()
 %% }
@@ -138,7 +138,7 @@
 
 %% Example:
 %% describe_load_balancer_policy_types_output() :: #{
-%%   <<"PolicyTypeDescriptions">> => list(policy_type_description()())
+%%   <<"PolicyTypeDescriptions">> => list(policy_type_description())
 %% }
 -type describe_load_balancer_policy_types_output() :: #{binary() => any()}.
 
@@ -151,7 +151,7 @@
 
 %% Example:
 %% apply_security_groups_to_load_balancer_output() :: #{
-%%   <<"SecurityGroups">> => list(string()())
+%%   <<"SecurityGroups">> => list(string())
 %% }
 -type apply_security_groups_to_load_balancer_output() :: #{binary() => any()}.
 
@@ -164,7 +164,7 @@
 %% Example:
 %% describe_load_balancer_policies_input() :: #{
 %%   <<"LoadBalancerName">> => string(),
-%%   <<"PolicyNames">> => list(string()())
+%%   <<"PolicyNames">> => list(string())
 %% }
 -type describe_load_balancer_policies_input() :: #{binary() => any()}.
 
@@ -192,7 +192,7 @@
 
 %% Example:
 %% describe_access_points_output() :: #{
-%%   <<"LoadBalancerDescriptions">> => list(load_balancer_description()()),
+%%   <<"LoadBalancerDescriptions">> => list(load_balancer_description()),
 %%   <<"NextMarker">> => string()
 %% }
 -type describe_access_points_output() :: #{binary() => any()}.
@@ -214,7 +214,7 @@
 %% Example:
 %% attach_load_balancer_to_subnets_input() :: #{
 %%   <<"LoadBalancerName">> := string(),
-%%   <<"Subnets">> := list(string()())
+%%   <<"Subnets">> := list(string())
 %% }
 -type attach_load_balancer_to_subnets_input() :: #{binary() => any()}.
 
@@ -226,21 +226,21 @@
 
 %% Example:
 %% load_balancer_description() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"BackendServerDescriptions">> => list(backend_server_description()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"BackendServerDescriptions">> => list(backend_server_description()),
 %%   <<"CanonicalHostedZoneName">> => string(),
 %%   <<"CanonicalHostedZoneNameID">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"DNSName">> => string(),
 %%   <<"HealthCheck">> => health_check(),
-%%   <<"Instances">> => list(instance()()),
-%%   <<"ListenerDescriptions">> => list(listener_description()()),
+%%   <<"Instances">> => list(instance()),
+%%   <<"ListenerDescriptions">> => list(listener_description()),
 %%   <<"LoadBalancerName">> => string(),
 %%   <<"Policies">> => policies(),
 %%   <<"Scheme">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"SourceSecurityGroup">> => source_security_group(),
-%%   <<"Subnets">> => list(string()()),
+%%   <<"Subnets">> => list(string()),
 %%   <<"VPCId">> => string()
 %% }
 -type load_balancer_description() :: #{binary() => any()}.
@@ -254,15 +254,15 @@
 
 %% Example:
 %% add_availability_zones_input() :: #{
-%%   <<"AvailabilityZones">> := list(string()()),
+%%   <<"AvailabilityZones">> := list(string()),
 %%   <<"LoadBalancerName">> := string()
 %% }
 -type add_availability_zones_input() :: #{binary() => any()}.
 
 %% Example:
 %% add_tags_input() :: #{
-%%   <<"LoadBalancerNames">> := list(string()()),
-%%   <<"Tags">> := list(tag()())
+%%   <<"LoadBalancerNames">> := list(string()),
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_input() :: #{binary() => any()}.
 
@@ -302,7 +302,7 @@
 
 %% Example:
 %% describe_end_point_state_input() :: #{
-%%   <<"Instances">> => list(instance()()),
+%%   <<"Instances">> => list(instance()),
 %%   <<"LoadBalancerName">> := string()
 %% }
 -type describe_end_point_state_input() :: #{binary() => any()}.
@@ -354,7 +354,7 @@
 %% Example:
 %% load_balancer_attributes() :: #{
 %%   <<"AccessLog">> => access_log(),
-%%   <<"AdditionalAttributes">> => list(additional_attribute()()),
+%%   <<"AdditionalAttributes">> => list(additional_attribute()),
 %%   <<"ConnectionDraining">> => connection_draining(),
 %%   <<"ConnectionSettings">> => connection_settings(),
 %%   <<"CrossZoneLoadBalancing">> => cross_zone_load_balancing()
@@ -369,13 +369,13 @@
 
 %% Example:
 %% describe_tags_input() :: #{
-%%   <<"LoadBalancerNames">> := list(string()())
+%%   <<"LoadBalancerNames">> := list(string())
 %% }
 -type describe_tags_input() :: #{binary() => any()}.
 
 %% Example:
 %% detach_load_balancer_from_subnets_output() :: #{
-%%   <<"Subnets">> => list(string()())
+%%   <<"Subnets">> => list(string())
 %% }
 -type detach_load_balancer_from_subnets_output() :: #{binary() => any()}.
 
@@ -401,13 +401,13 @@
 %% Example:
 %% tag_description() :: #{
 %%   <<"LoadBalancerName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type tag_description() :: #{binary() => any()}.
 
 %% Example:
 %% deregister_end_points_output() :: #{
-%%   <<"Instances">> => list(instance()())
+%%   <<"Instances">> => list(instance())
 %% }
 -type deregister_end_points_output() :: #{binary() => any()}.
 
@@ -420,20 +420,20 @@
 
 %% Example:
 %% remove_availability_zones_input() :: #{
-%%   <<"AvailabilityZones">> := list(string()()),
+%%   <<"AvailabilityZones">> := list(string()),
 %%   <<"LoadBalancerName">> := string()
 %% }
 -type remove_availability_zones_input() :: #{binary() => any()}.
 
 %% Example:
 %% add_availability_zones_output() :: #{
-%%   <<"AvailabilityZones">> => list(string()())
+%%   <<"AvailabilityZones">> => list(string())
 %% }
 -type add_availability_zones_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_tags_output() :: #{
-%%   <<"TagDescriptions">> => list(tag_description()())
+%%   <<"TagDescriptions">> => list(tag_description())
 %% }
 -type describe_tags_output() :: #{binary() => any()}.
 
@@ -457,20 +457,20 @@
 
 %% Example:
 %% create_access_point_input() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"Listeners">> := list(listener()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Listeners">> := list(listener()),
 %%   <<"LoadBalancerName">> := string(),
 %%   <<"Scheme">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
-%%   <<"Subnets">> => list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_access_point_input() :: #{binary() => any()}.
 
 %% Example:
 %% apply_security_groups_to_load_balancer_input() :: #{
 %%   <<"LoadBalancerName">> := string(),
-%%   <<"SecurityGroups">> := list(string()())
+%%   <<"SecurityGroups">> := list(string())
 %% }
 -type apply_security_groups_to_load_balancer_input() :: #{binary() => any()}.
 
@@ -508,7 +508,7 @@
 
 %% Example:
 %% describe_access_points_input() :: #{
-%%   <<"LoadBalancerNames">> => list(string()()),
+%%   <<"LoadBalancerNames">> => list(string()),
 %%   <<"Marker">> => string(),
 %%   <<"PageSize">> => integer()
 %% }
@@ -516,7 +516,7 @@
 
 %% Example:
 %% describe_account_limits_output() :: #{
-%%   <<"Limits">> => list(limit()()),
+%%   <<"Limits">> => list(limit()),
 %%   <<"NextMarker">> => string()
 %% }
 -type describe_account_limits_output() :: #{binary() => any()}.
@@ -533,21 +533,21 @@
 
 %% Example:
 %% policies() :: #{
-%%   <<"AppCookieStickinessPolicies">> => list(app_cookie_stickiness_policy()()),
-%%   <<"LBCookieStickinessPolicies">> => list(lb_cookie_stickiness_policy()()),
-%%   <<"OtherPolicies">> => list(string()())
+%%   <<"AppCookieStickinessPolicies">> => list(app_cookie_stickiness_policy()),
+%%   <<"LBCookieStickinessPolicies">> => list(lb_cookie_stickiness_policy()),
+%%   <<"OtherPolicies">> => list(string())
 %% }
 -type policies() :: #{binary() => any()}.
 
 %% Example:
 %% describe_load_balancer_policy_types_input() :: #{
-%%   <<"PolicyTypeNames">> => list(string()())
+%%   <<"PolicyTypeNames">> => list(string())
 %% }
 -type describe_load_balancer_policy_types_input() :: #{binary() => any()}.
 
 %% Example:
 %% create_load_balancer_listener_input() :: #{
-%%   <<"Listeners">> := list(listener()()),
+%%   <<"Listeners">> := list(listener()),
 %%   <<"LoadBalancerName">> := string()
 %% }
 -type create_load_balancer_listener_input() :: #{binary() => any()}.
@@ -598,7 +598,7 @@
 %% Example:
 %% detach_load_balancer_from_subnets_input() :: #{
 %%   <<"LoadBalancerName">> := string(),
-%%   <<"Subnets">> := list(string()())
+%%   <<"Subnets">> := list(string())
 %% }
 -type detach_load_balancer_from_subnets_input() :: #{binary() => any()}.
 
@@ -613,7 +613,7 @@
 %% Example:
 %% delete_load_balancer_listener_input() :: #{
 %%   <<"LoadBalancerName">> := string(),
-%%   <<"LoadBalancerPorts">> := list(integer()())
+%%   <<"LoadBalancerPorts">> := list(integer())
 %% }
 -type delete_load_balancer_listener_input() :: #{binary() => any()}.
 
@@ -626,7 +626,7 @@
 
 %% Example:
 %% register_end_points_input() :: #{
-%%   <<"Instances">> := list(instance()()),
+%%   <<"Instances">> := list(instance()),
 %%   <<"LoadBalancerName">> := string()
 %% }
 -type register_end_points_input() :: #{binary() => any()}.
@@ -664,13 +664,13 @@
 
 %% Example:
 %% remove_availability_zones_output() :: #{
-%%   <<"AvailabilityZones">> => list(string()())
+%%   <<"AvailabilityZones">> => list(string())
 %% }
 -type remove_availability_zones_output() :: #{binary() => any()}.
 
 %% Example:
 %% deregister_end_points_input() :: #{
-%%   <<"Instances">> := list(instance()()),
+%%   <<"Instances">> := list(instance()),
 %%   <<"LoadBalancerName">> := string()
 %% }
 -type deregister_end_points_input() :: #{binary() => any()}.
@@ -714,8 +714,8 @@
 
 %% Example:
 %% remove_tags_input() :: #{
-%%   <<"LoadBalancerNames">> := list(string()()),
-%%   <<"Tags">> := list(tag_key_only()())
+%%   <<"LoadBalancerNames">> := list(string()),
+%%   <<"Tags">> := list(tag_key_only())
 %% }
 -type remove_tags_input() :: #{binary() => any()}.
 
@@ -744,27 +744,27 @@
 %% set_load_balancer_policies_for_backend_server_input() :: #{
 %%   <<"InstancePort">> := integer(),
 %%   <<"LoadBalancerName">> := string(),
-%%   <<"PolicyNames">> := list(string()())
+%%   <<"PolicyNames">> := list(string())
 %% }
 -type set_load_balancer_policies_for_backend_server_input() :: #{binary() => any()}.
 
 %% Example:
 %% policy_type_description() :: #{
 %%   <<"Description">> => string(),
-%%   <<"PolicyAttributeTypeDescriptions">> => list(policy_attribute_type_description()()),
+%%   <<"PolicyAttributeTypeDescriptions">> => list(policy_attribute_type_description()),
 %%   <<"PolicyTypeName">> => string()
 %% }
 -type policy_type_description() :: #{binary() => any()}.
 
 %% Example:
 %% describe_load_balancer_policies_output() :: #{
-%%   <<"PolicyDescriptions">> => list(policy_description()())
+%%   <<"PolicyDescriptions">> => list(policy_description())
 %% }
 -type describe_load_balancer_policies_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_end_point_state_output() :: #{
-%%   <<"InstanceStates">> => list(instance_state()())
+%%   <<"InstanceStates">> => list(instance_state())
 %% }
 -type describe_end_point_state_output() :: #{binary() => any()}.
 
@@ -777,7 +777,7 @@
 %% Example:
 %% create_load_balancer_policy_input() :: #{
 %%   <<"LoadBalancerName">> := string(),
-%%   <<"PolicyAttributes">> => list(policy_attribute()()),
+%%   <<"PolicyAttributes">> => list(policy_attribute()),
 %%   <<"PolicyName">> := string(),
 %%   <<"PolicyTypeName">> := string()
 %% }
@@ -803,7 +803,7 @@
 
 %% Example:
 %% register_end_points_output() :: #{
-%%   <<"Instances">> => list(instance()())
+%%   <<"Instances">> => list(instance())
 %% }
 -type register_end_points_output() :: #{binary() => any()}.
 
@@ -823,14 +823,14 @@
 %% set_load_balancer_policies_of_listener_input() :: #{
 %%   <<"LoadBalancerName">> := string(),
 %%   <<"LoadBalancerPort">> := integer(),
-%%   <<"PolicyNames">> := list(string()())
+%%   <<"PolicyNames">> := list(string())
 %% }
 -type set_load_balancer_policies_of_listener_input() :: #{binary() => any()}.
 
 %% Example:
 %% listener_description() :: #{
 %%   <<"Listener">> => listener(),
-%%   <<"PolicyNames">> => list(string()())
+%%   <<"PolicyNames">> => list(string())
 %% }
 -type listener_description() :: #{binary() => any()}.
 

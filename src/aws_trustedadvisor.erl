@@ -56,7 +56,7 @@
 
 %% Example:
 %% list_organization_recommendation_accounts_response() :: #{
-%%   <<"accountRecommendationLifecycleSummaries">> => list(account_recommendation_lifecycle_summary()()),
+%%   <<"accountRecommendationLifecycleSummaries">> => list(account_recommendation_lifecycle_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_organization_recommendation_accounts_response() :: #{binary() => any()}.
@@ -64,7 +64,7 @@
 
 %% Example:
 %% list_checks_response() :: #{
-%%   <<"checkSummaries">> => list(check_summary()()),
+%%   <<"checkSummaries">> => list(check_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_checks_response() :: #{binary() => any()}.
@@ -77,7 +77,7 @@
 %% Example:
 %% organization_recommendation_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"awsServices">> => list(string()()),
+%%   <<"awsServices">> => list(string()),
 %%   <<"checkArn">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"id">> => [string()],
@@ -105,7 +105,7 @@
 
 %% Example:
 %% batch_update_recommendation_resource_exclusion_request() :: #{
-%%   <<"recommendationResourceExclusions">> := list(recommendation_resource_exclusion()())
+%%   <<"recommendationResourceExclusions">> := list(recommendation_resource_exclusion())
 %% }
 -type batch_update_recommendation_resource_exclusion_request() :: #{binary() => any()}.
 
@@ -136,7 +136,7 @@
 %% Example:
 %% list_recommendation_resources_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"recommendationResourceSummaries">> => list(recommendation_resource_summary()())
+%%   <<"recommendationResourceSummaries">> => list(recommendation_resource_summary())
 %% }
 -type list_recommendation_resources_response() :: #{binary() => any()}.
 
@@ -144,7 +144,7 @@
 %% Example:
 %% recommendation() :: #{
 %%   <<"arn">> => string(),
-%%   <<"awsServices">> => list(string()()),
+%%   <<"awsServices">> => list(string()),
 %%   <<"checkArn">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => [string()],
@@ -208,7 +208,7 @@
 %% Example:
 %% list_organization_recommendations_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"organizationRecommendationSummaries">> => list(organization_recommendation_summary()())
+%%   <<"organizationRecommendationSummaries">> => list(organization_recommendation_summary())
 %% }
 -type list_organization_recommendations_response() :: #{binary() => any()}.
 
@@ -224,7 +224,7 @@
 
 %% Example:
 %% batch_update_recommendation_resource_exclusion_response() :: #{
-%%   <<"batchUpdateRecommendationResourceExclusionErrors">> => list(update_recommendation_resource_exclusion_error()())
+%%   <<"batchUpdateRecommendationResourceExclusionErrors">> => list(update_recommendation_resource_exclusion_error())
 %% }
 -type batch_update_recommendation_resource_exclusion_response() :: #{binary() => any()}.
 
@@ -257,7 +257,7 @@
 %% Example:
 %% list_organization_recommendation_resources_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"organizationRecommendationResourceSummaries">> => list(organization_recommendation_resource_summary()())
+%%   <<"organizationRecommendationResourceSummaries">> => list(organization_recommendation_resource_summary())
 %% }
 -type list_organization_recommendation_resources_response() :: #{binary() => any()}.
 
@@ -316,7 +316,7 @@
 %% Example:
 %% check_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"awsServices">> => list(string()()),
+%%   <<"awsServices">> => list(string()),
 %%   <<"description">> => [string()],
 %%   <<"id">> => [string()],
 %%   <<"metadata">> => map(),
@@ -330,7 +330,7 @@
 %% Example:
 %% recommendation_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"awsServices">> => list(string()()),
+%%   <<"awsServices">> => list(string()),
 %%   <<"checkArn">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"id">> => [string()],
@@ -375,7 +375,7 @@
 %% Example:
 %% list_recommendations_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"recommendationSummaries">> => list(recommendation_summary()())
+%%   <<"recommendationSummaries">> => list(recommendation_summary())
 %% }
 -type list_recommendations_response() :: #{binary() => any()}.
 
@@ -398,7 +398,7 @@
 %% Example:
 %% organization_recommendation() :: #{
 %%   <<"arn">> => string(),
-%%   <<"awsServices">> => list(string()()),
+%%   <<"awsServices">> => list(string()),
 %%   <<"checkArn">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => [string()],

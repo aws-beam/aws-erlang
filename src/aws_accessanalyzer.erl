@@ -149,7 +149,7 @@
 %%   <<"accessRole">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"startTime">> => non_neg_integer(),
-%%   <<"trails">> => list(trail()())
+%%   <<"trails">> => list(trail())
 %% }
 -type cloud_trail_details() :: #{binary() => any()}.
 
@@ -200,7 +200,7 @@
 
 %% Example:
 %% analysis_rule() :: #{
-%%   <<"exclusions">> => list(analysis_rule_criteria()())
+%%   <<"exclusions">> => list(analysis_rule_criteria())
 %% }
 -type analysis_rule() :: #{binary() => any()}.
 
@@ -216,7 +216,7 @@
 %% Example:
 %% check_no_public_access_response() :: #{
 %%   <<"message">> => [string()],
-%%   <<"reasons">> => list(reason_summary()()),
+%%   <<"reasons">> => list(reason_summary()),
 %%   <<"result">> => string()
 %% }
 -type check_no_public_access_response() :: #{binary() => any()}.
@@ -244,7 +244,7 @@
 
 %% Example:
 %% list_access_previews_response() :: #{
-%%   <<"accessPreviews">> := list(access_preview_summary()()),
+%%   <<"accessPreviews">> := list(access_preview_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_previews_response() :: #{binary() => any()}.
@@ -289,7 +289,7 @@
 %%   <<"resourceControlPolicyRestriction">> => string(),
 %%   <<"resourceOwnerAccount">> => [string()],
 %%   <<"resourceType">> => string(),
-%%   <<"sources">> => list(finding_source()()),
+%%   <<"sources">> => list(finding_source()),
 %%   <<"status">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -330,7 +330,7 @@
 
 %% Example:
 %% get_findings_statistics_response() :: #{
-%%   <<"findingsStatistics">> => list(list()()),
+%%   <<"findingsStatistics">> => list(list()),
 %%   <<"lastUpdatedAt">> => non_neg_integer()
 %% }
 -type get_findings_statistics_response() :: #{binary() => any()}.
@@ -342,7 +342,7 @@
 %%   <<"error">> => recommendation_error(),
 %%   <<"nextToken">> => string(),
 %%   <<"recommendationType">> => string(),
-%%   <<"recommendedSteps">> => list(list()()),
+%%   <<"recommendedSteps">> => list(list()),
 %%   <<"resourceArn">> => string(),
 %%   <<"startedAt">> => non_neg_integer(),
 %%   <<"status">> => string()
@@ -378,14 +378,14 @@
 %% internal_access_analysis_rule_criteria() :: #{
 %%   <<"accountIds">> => list([string()]()),
 %%   <<"resourceArns">> => list([string()]()),
-%%   <<"resourceTypes">> => list(string()())
+%%   <<"resourceTypes">> => list(string())
 %% }
 -type internal_access_analysis_rule_criteria() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_findings_response() :: #{
-%%   <<"findings">> => list(finding_summary()()),
+%%   <<"findings">> => list(finding_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_response() :: #{binary() => any()}.
@@ -394,7 +394,7 @@
 %% Example:
 %% create_analyzer_request() :: #{
 %%   <<"analyzerName">> => string(),
-%%   <<"archiveRules">> => list(inline_archive_rule()()),
+%%   <<"archiveRules">> => list(inline_archive_rule()),
 %%   <<"clientToken">> => [string()],
 %%   <<"configuration">> => list(),
 %%   <<"tags">> => map(),
@@ -419,7 +419,7 @@
 
 %% Example:
 %% unused_permission_details() :: #{
-%%   <<"actions">> => list(unused_action()()),
+%%   <<"actions">> => list(unused_action()),
 %%   <<"lastAccessed">> => non_neg_integer(),
 %%   <<"serviceNamespace">> => [string()]
 %% }
@@ -484,7 +484,7 @@
 
 %% Example:
 %% list_analyzers_response() :: #{
-%%   <<"analyzers">> => list(analyzer_summary()()),
+%%   <<"analyzers">> => list(analyzer_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_analyzers_response() :: #{binary() => any()}.
@@ -493,7 +493,7 @@
 %% Example:
 %% analysis_rule_criteria() :: #{
 %%   <<"accountIds">> => list([string()]()),
-%%   <<"resourceTags">> => list(map()())
+%%   <<"resourceTags">> => list(map())
 %% }
 -type analysis_rule_criteria() :: #{binary() => any()}.
 
@@ -501,7 +501,7 @@
 %% Example:
 %% check_access_not_granted_response() :: #{
 %%   <<"message">> => [string()],
-%%   <<"reasons">> => list(reason_summary()()),
+%%   <<"reasons">> => list(reason_summary()),
 %%   <<"result">> => string()
 %% }
 -type check_access_not_granted_response() :: #{binary() => any()}.
@@ -572,7 +572,7 @@
 
 %% Example:
 %% list_analyzed_resources_response() :: #{
-%%   <<"analyzedResources">> => list(analyzed_resource_summary()()),
+%%   <<"analyzedResources">> => list(analyzed_resource_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_analyzed_resources_response() :: #{binary() => any()}.
@@ -594,7 +594,7 @@
 %%   <<"resourceControlPolicyRestriction">> => string(),
 %%   <<"resourceOwnerAccount">> => [string()],
 %%   <<"resourceType">> => string(),
-%%   <<"sources">> => list(finding_source()()),
+%%   <<"sources">> => list(finding_source()),
 %%   <<"status">> => string()
 %% }
 -type access_preview_finding() :: #{binary() => any()}.
@@ -663,7 +663,7 @@
 
 %% Example:
 %% internal_access_analysis_rule() :: #{
-%%   <<"inclusions">> => list(internal_access_analysis_rule_criteria()())
+%%   <<"inclusions">> => list(internal_access_analysis_rule_criteria())
 %% }
 -type internal_access_analysis_rule() :: #{binary() => any()}.
 
@@ -699,14 +699,14 @@
 %%   <<"findingType">> => string(),
 %%   <<"issueCode">> => string(),
 %%   <<"learnMoreLink">> => string(),
-%%   <<"locations">> => list(location()())
+%%   <<"locations">> => list(location())
 %% }
 -type validate_policy_finding() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_archive_rules_response() :: #{
-%%   <<"archiveRules">> => list(archive_rule_summary()()),
+%%   <<"archiveRules">> => list(archive_rule_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_archive_rules_response() :: #{binary() => any()}.
@@ -743,7 +743,7 @@
 %%   <<"resourceControlPolicyRestriction">> => string(),
 %%   <<"resourceOwnerAccount">> => [string()],
 %%   <<"resourceType">> => string(),
-%%   <<"sources">> => list(finding_source()()),
+%%   <<"sources">> => list(finding_source()),
 %%   <<"status">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -755,7 +755,7 @@
 %%   <<"constraints">> => kms_grant_constraints(),
 %%   <<"granteePrincipal">> => string(),
 %%   <<"issuingAccount">> => string(),
-%%   <<"operations">> => list(string()()),
+%%   <<"operations">> => list(string()),
 %%   <<"retiringPrincipal">> => string()
 %% }
 -type kms_grant_configuration() :: #{binary() => any()}.
@@ -764,7 +764,7 @@
 %% Example:
 %% check_no_new_access_response() :: #{
 %%   <<"message">> => [string()],
-%%   <<"reasons">> => list(reason_summary()()),
+%%   <<"reasons">> => list(reason_summary()),
 %%   <<"result">> => string()
 %% }
 -type check_no_new_access_response() :: #{binary() => any()}.
@@ -807,14 +807,14 @@
 %%   <<"principalType">> => string(),
 %%   <<"resourceControlPolicyRestriction">> => string(),
 %%   <<"serviceControlPolicyRestriction">> => string(),
-%%   <<"sources">> => list(finding_source()())
+%%   <<"sources">> => list(finding_source())
 %% }
 -type internal_access_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% generated_policy_result() :: #{
-%%   <<"generatedPolicies">> => list(generated_policy()()),
+%%   <<"generatedPolicies">> => list(generated_policy()),
 %%   <<"properties">> => generated_policy_properties()
 %% }
 -type generated_policy_result() :: #{binary() => any()}.
@@ -845,7 +845,7 @@
 
 %% Example:
 %% location() :: #{
-%%   <<"path">> => list(list()()),
+%%   <<"path">> => list(list()),
 %%   <<"span">> => span()
 %% }
 -type location() :: #{binary() => any()}.
@@ -882,7 +882,7 @@
 %% Example:
 %% list_policy_generations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"policyGenerations">> := list(policy_generation()())
+%%   <<"policyGenerations">> := list(policy_generation())
 %% }
 -type list_policy_generations_response() :: #{binary() => any()}.
 
@@ -905,7 +905,7 @@
 
 %% Example:
 %% kms_key_configuration() :: #{
-%%   <<"grants">> => list(kms_grant_configuration()()),
+%%   <<"grants">> => list(kms_grant_configuration()),
 %%   <<"keyPolicies">> => map()
 %% }
 -type kms_key_configuration() :: #{binary() => any()}.
@@ -932,9 +932,9 @@
 
 %% Example:
 %% ebs_snapshot_configuration() :: #{
-%%   <<"groups">> => list(string()()),
+%%   <<"groups">> => list(string()),
 %%   <<"kmsKeyId">> => string(),
-%%   <<"userIds">> => list(string()())
+%%   <<"userIds">> => list(string())
 %% }
 -type ebs_snapshot_configuration() :: #{binary() => any()}.
 
@@ -970,7 +970,7 @@
 
 %% Example:
 %% validate_policy_response() :: #{
-%%   <<"findings">> := list(validate_policy_finding()()),
+%%   <<"findings">> := list(validate_policy_finding()),
 %%   <<"nextToken">> => string()
 %% }
 -type validate_policy_response() :: #{binary() => any()}.
@@ -1007,7 +1007,7 @@
 %%   <<"isPublic">> => [boolean()],
 %%   <<"principal">> => map(),
 %%   <<"resourceControlPolicyRestriction">> => string(),
-%%   <<"sources">> => list(finding_source()())
+%%   <<"sources">> => list(finding_source())
 %% }
 -type external_access_details() :: #{binary() => any()}.
 
@@ -1031,7 +1031,7 @@
 %% cloud_trail_properties() :: #{
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"startTime">> => non_neg_integer(),
-%%   <<"trailProperties">> => list(trail_properties()())
+%%   <<"trailProperties">> => list(trail_properties())
 %% }
 -type cloud_trail_properties() :: #{binary() => any()}.
 
@@ -1122,11 +1122,11 @@
 
 %% Example:
 %% unused_access_findings_statistics() :: #{
-%%   <<"topAccounts">> => list(finding_aggregation_account_details()()),
+%%   <<"topAccounts">> => list(finding_aggregation_account_details()),
 %%   <<"totalActiveFindings">> => [integer()],
 %%   <<"totalArchivedFindings">> => [integer()],
 %%   <<"totalResolvedFindings">> => [integer()],
-%%   <<"unusedAccessTypeStatistics">> => list(unused_access_type_statistics()())
+%%   <<"unusedAccessTypeStatistics">> => list(unused_access_type_statistics())
 %% }
 -type unused_access_findings_statistics() :: #{binary() => any()}.
 
@@ -1134,7 +1134,7 @@
 %% Example:
 %% s3_bucket_configuration() :: #{
 %%   <<"accessPoints">> => map(),
-%%   <<"bucketAclGrants">> => list(s3_bucket_acl_grant_configuration()()),
+%%   <<"bucketAclGrants">> => list(s3_bucket_acl_grant_configuration()),
 %%   <<"bucketPolicy">> => string(),
 %%   <<"bucketPublicAccessBlock">> => s3_public_access_block_configuration()
 %% }
@@ -1143,7 +1143,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
@@ -1158,7 +1158,7 @@
 %% update_findings_request() :: #{
 %%   <<"analyzerArn">> => string(),
 %%   <<"clientToken">> => [string()],
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"resourceArn">> => string(),
 %%   <<"status">> => string()
 %% }
@@ -1199,8 +1199,8 @@
 
 %% Example:
 %% access() :: #{
-%%   <<"actions">> => list(string()()),
-%%   <<"resources">> => list(string()())
+%%   <<"actions">> => list(string()),
+%%   <<"resources">> => list(string())
 %% }
 -type access() :: #{binary() => any()}.
 
@@ -1218,7 +1218,7 @@
 %%   <<"analyzedAt">> => non_neg_integer(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"error">> => [string()],
-%%   <<"findingDetails">> => list(list()()),
+%%   <<"findingDetails">> => list(list()),
 %%   <<"findingType">> => string(),
 %%   <<"id">> => string(),
 %%   <<"nextToken">> => string(),
@@ -1289,7 +1289,7 @@
 
 %% Example:
 %% check_access_not_granted_request() :: #{
-%%   <<"access">> := list(access()()),
+%%   <<"access">> := list(access()),
 %%   <<"policyDocument">> := string(),
 %%   <<"policyType">> := string()
 %% }
@@ -1336,7 +1336,7 @@
 
 %% Example:
 %% list_findings_v2_response() :: #{
-%%   <<"findings">> => list(finding_summary_v2()()),
+%%   <<"findings">> => list(finding_summary_v2()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_v2_response() :: #{binary() => any()}.
@@ -1457,7 +1457,7 @@
 
 %% Example:
 %% list_access_preview_findings_response() :: #{
-%%   <<"findings">> := list(access_preview_finding()()),
+%%   <<"findings">> := list(access_preview_finding()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_preview_findings_response() :: #{binary() => any()}.

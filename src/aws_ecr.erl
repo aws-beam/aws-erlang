@@ -163,7 +163,7 @@
 
 %% Example:
 %% put_registry_scanning_configuration_request() :: #{
-%%   <<"rules">> => list(registry_scanning_rule()()),
+%%   <<"rules">> => list(registry_scanning_rule()),
 %%   <<"scanType">> => list(any())
 %% }
 -type put_registry_scanning_configuration_request() :: #{binary() => any()}.
@@ -203,7 +203,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -296,14 +296,14 @@
 %%   <<"lifecyclePolicy">> => string(),
 %%   <<"prefix">> := string(),
 %%   <<"repositoryPolicy">> => string(),
-%%   <<"resourceTags">> => list(tag()())
+%%   <<"resourceTags">> => list(tag())
 %% }
 -type create_repository_creation_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_images_request() :: #{
 %%   <<"filter">> => describe_images_filter(),
-%%   <<"imageIds">> => list(image_identifier()()),
+%%   <<"imageIds">> => list(image_identifier()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"registryId">> => string(),
@@ -363,8 +363,8 @@
 
 %% Example:
 %% batch_check_layer_availability_response() :: #{
-%%   <<"failures">> => list(layer_failure()()),
-%%   <<"layers">> => list(layer()())
+%%   <<"failures">> => list(layer_failure()),
+%%   <<"layers">> => list(layer())
 %% }
 -type batch_check_layer_availability_response() :: #{binary() => any()}.
 
@@ -390,9 +390,9 @@
 
 %% Example:
 %% image_scan_findings() :: #{
-%%   <<"enhancedFindings">> => list(enhanced_image_scan_finding()()),
+%%   <<"enhancedFindings">> => list(enhanced_image_scan_finding()),
 %%   <<"findingSeverityCounts">> => map(),
-%%   <<"findings">> => list(image_scan_finding()()),
+%%   <<"findings">> => list(image_scan_finding()),
 %%   <<"imageScanCompletedAt">> => non_neg_integer(),
 %%   <<"vulnerabilitySourceUpdatedAt">> => non_neg_integer()
 %% }
@@ -466,7 +466,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -492,14 +492,14 @@
 
 %% Example:
 %% registry_scanning_configuration() :: #{
-%%   <<"rules">> => list(registry_scanning_rule()()),
+%%   <<"rules">> => list(registry_scanning_rule()),
 %%   <<"scanType">> => list(any())
 %% }
 -type registry_scanning_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_images_response() :: #{
-%%   <<"imageDetails">> => list(image_detail()()),
+%%   <<"imageDetails">> => list(image_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_images_response() :: #{binary() => any()}.
@@ -509,7 +509,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"registryId">> => string(),
-%%   <<"repositoryNames">> => list(string()())
+%%   <<"repositoryNames">> => list(string())
 %% }
 -type describe_repositories_request() :: #{binary() => any()}.
 
@@ -532,7 +532,7 @@
 
 %% Example:
 %% complete_layer_upload_request() :: #{
-%%   <<"layerDigests">> := list(string()()),
+%%   <<"layerDigests">> := list(string()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string(),
 %%   <<"uploadId">> := string()
@@ -592,7 +592,7 @@
 %%   <<"lastObservedAt">> => non_neg_integer(),
 %%   <<"packageVulnerabilityDetails">> => package_vulnerability_details(),
 %%   <<"remediation">> => remediation(),
-%%   <<"resources">> => list(resource()()),
+%%   <<"resources">> => list(resource()),
 %%   <<"score">> => float(),
 %%   <<"scoreDetails">> => score_details(),
 %%   <<"severity">> => string(),
@@ -607,7 +607,7 @@
 %% get_lifecycle_policy_preview_response() :: #{
 %%   <<"lifecyclePolicyText">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"previewResults">> => list(lifecycle_policy_preview_result()()),
+%%   <<"previewResults">> => list(lifecycle_policy_preview_result()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> => string(),
 %%   <<"status">> => list(any()),
@@ -638,7 +638,7 @@
 
 %% Example:
 %% batch_delete_image_request() :: #{
-%%   <<"imageIds">> := list(image_identifier()()),
+%%   <<"imageIds">> := list(image_identifier()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
@@ -672,14 +672,14 @@
 %%   <<"lifecyclePolicy">> => string(),
 %%   <<"prefix">> => string(),
 %%   <<"repositoryPolicy">> => string(),
-%%   <<"resourceTags">> => list(tag()()),
+%%   <<"resourceTags">> => list(tag()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type repository_creation_template() :: #{binary() => any()}.
 
 %% Example:
 %% replication_configuration() :: #{
-%%   <<"rules">> => list(replication_rule()())
+%%   <<"rules">> => list(replication_rule())
 %% }
 -type replication_configuration() :: #{binary() => any()}.
 
@@ -761,7 +761,7 @@
 %% Example:
 %% get_lifecycle_policy_preview_request() :: #{
 %%   <<"filter">> => lifecycle_policy_preview_filter(),
-%%   <<"imageIds">> => list(image_identifier()()),
+%%   <<"imageIds">> => list(image_identifier()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"registryId">> => string(),
@@ -824,7 +824,7 @@
 
 %% Example:
 %% cvss_score_details() :: #{
-%%   <<"adjustments">> => list(cvss_score_adjustment()()),
+%%   <<"adjustments">> => list(cvss_score_adjustment()),
 %%   <<"score">> => float(),
 %%   <<"scoreSource">> => string(),
 %%   <<"scoringVector">> => string(),
@@ -860,7 +860,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -892,27 +892,27 @@
 
 %% Example:
 %% batch_get_repository_scanning_configuration_response() :: #{
-%%   <<"failures">> => list(repository_scanning_configuration_failure()()),
-%%   <<"scanningConfigurations">> => list(repository_scanning_configuration()())
+%%   <<"failures">> => list(repository_scanning_configuration_failure()),
+%%   <<"scanningConfigurations">> => list(repository_scanning_configuration())
 %% }
 -type batch_get_repository_scanning_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% registry_scanning_rule() :: #{
-%%   <<"repositoryFilters">> => list(scanning_repository_filter()()),
+%%   <<"repositoryFilters">> => list(scanning_repository_filter()),
 %%   <<"scanFrequency">> => list(any())
 %% }
 -type registry_scanning_rule() :: #{binary() => any()}.
 
 %% Example:
 %% get_authorization_token_response() :: #{
-%%   <<"authorizationData">> => list(authorization_data()())
+%%   <<"authorizationData">> => list(authorization_data())
 %% }
 -type get_authorization_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_authorization_token_request() :: #{
-%%   <<"registryIds">> => list(string()())
+%%   <<"registryIds">> => list(string())
 %% }
 -type get_authorization_token_request() :: #{binary() => any()}.
 
@@ -946,7 +946,7 @@
 
 %% Example:
 %% list_images_response() :: #{
-%%   <<"imageIds">> => list(image_identifier()()),
+%%   <<"imageIds">> => list(image_identifier()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_images_response() :: #{binary() => any()}.
@@ -973,8 +973,8 @@
 
 %% Example:
 %% batch_get_image_request() :: #{
-%%   <<"acceptedMediaTypes">> => list(string()()),
-%%   <<"imageIds">> := list(image_identifier()()),
+%%   <<"acceptedMediaTypes">> => list(string()),
+%%   <<"imageIds">> := list(image_identifier()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
@@ -1003,7 +1003,7 @@
 %%   <<"imageTagMutability">> => list(any()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_repository_request() :: #{binary() => any()}.
 
@@ -1016,7 +1016,7 @@
 
 %% Example:
 %% image_scan_finding() :: #{
-%%   <<"attributes">> => list(attribute()()),
+%%   <<"attributes">> => list(attribute()),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"severity">> => list(any()),
@@ -1094,13 +1094,13 @@
 %% describe_repository_creation_templates_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"registryId">> => string(),
-%%   <<"repositoryCreationTemplates">> => list(repository_creation_template()())
+%%   <<"repositoryCreationTemplates">> => list(repository_creation_template())
 %% }
 -type describe_repository_creation_templates_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_pull_through_cache_rules_request() :: #{
-%%   <<"ecrRepositoryPrefixes">> => list(string()()),
+%%   <<"ecrRepositoryPrefixes">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"registryId">> => string()
@@ -1116,16 +1116,16 @@
 
 %% Example:
 %% package_vulnerability_details() :: #{
-%%   <<"cvss">> => list(cvss_score()()),
-%%   <<"referenceUrls">> => list(string()()),
-%%   <<"relatedVulnerabilities">> => list(string()()),
+%%   <<"cvss">> => list(cvss_score()),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"relatedVulnerabilities">> => list(string()),
 %%   <<"source">> => string(),
 %%   <<"sourceUrl">> => string(),
 %%   <<"vendorCreatedAt">> => non_neg_integer(),
 %%   <<"vendorSeverity">> => string(),
 %%   <<"vendorUpdatedAt">> => non_neg_integer(),
 %%   <<"vulnerabilityId">> => string(),
-%%   <<"vulnerablePackages">> => list(vulnerable_package()())
+%%   <<"vulnerablePackages">> => list(vulnerable_package())
 %% }
 -type package_vulnerability_details() :: #{binary() => any()}.
 
@@ -1140,8 +1140,8 @@
 
 %% Example:
 %% batch_delete_image_response() :: #{
-%%   <<"failures">> => list(image_failure()()),
-%%   <<"imageIds">> => list(image_identifier()())
+%%   <<"failures">> => list(image_failure()),
+%%   <<"imageIds">> => list(image_identifier())
 %% }
 -type batch_delete_image_response() :: #{binary() => any()}.
 
@@ -1189,8 +1189,8 @@
 
 %% Example:
 %% replication_rule() :: #{
-%%   <<"destinations">> => list(replication_destination()()),
-%%   <<"repositoryFilters">> => list(repository_filter()())
+%%   <<"destinations">> => list(replication_destination()),
+%%   <<"repositoryFilters">> => list(repository_filter())
 %% }
 -type replication_rule() :: #{binary() => any()}.
 
@@ -1203,7 +1203,7 @@
 
 %% Example:
 %% repository_scanning_configuration() :: #{
-%%   <<"appliedScanFilters">> => list(scanning_repository_filter()()),
+%%   <<"appliedScanFilters">> => list(scanning_repository_filter()),
 %%   <<"repositoryArn">> => string(),
 %%   <<"repositoryName">> => string(),
 %%   <<"scanFrequency">> => list(any()),
@@ -1249,7 +1249,7 @@
 
 %% Example:
 %% batch_check_layer_availability_request() :: #{
-%%   <<"layerDigests">> := list(string()()),
+%%   <<"layerDigests">> := list(string()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
@@ -1324,7 +1324,7 @@
 %% Example:
 %% describe_repositories_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository()())
+%%   <<"repositories">> => list(repository())
 %% }
 -type describe_repositories_response() :: #{binary() => any()}.
 
@@ -1338,7 +1338,7 @@
 %% Example:
 %% describe_pull_through_cache_rules_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"pullThroughCacheRules">> => list(pull_through_cache_rule()())
+%%   <<"pullThroughCacheRules">> => list(pull_through_cache_rule())
 %% }
 -type describe_pull_through_cache_rules_response() :: #{binary() => any()}.
 
@@ -1358,7 +1358,7 @@
 
 %% Example:
 %% batch_get_repository_scanning_configuration_request() :: #{
-%%   <<"repositoryNames">> := list(string()())
+%%   <<"repositoryNames">> := list(string())
 %% }
 -type batch_get_repository_scanning_configuration_request() :: #{binary() => any()}.
 
@@ -1389,7 +1389,7 @@
 %%   <<"appliedRulePriority">> => integer(),
 %%   <<"imageDigest">> => string(),
 %%   <<"imagePushedAt">> => non_neg_integer(),
-%%   <<"imageTags">> => list(string()())
+%%   <<"imageTags">> => list(string())
 %% }
 -type lifecycle_policy_preview_result() :: #{binary() => any()}.
 
@@ -1406,7 +1406,7 @@
 %%   <<"architecture">> => string(),
 %%   <<"author">> => string(),
 %%   <<"imageHash">> => string(),
-%%   <<"imageTags">> => list(string()()),
+%%   <<"imageTags">> => list(string()),
 %%   <<"inUseCount">> => float(),
 %%   <<"lastInUseAt">> => non_neg_integer(),
 %%   <<"platform">> => string(),
@@ -1428,7 +1428,7 @@
 %% describe_repository_creation_templates_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"prefixes">> => list(string()())
+%%   <<"prefixes">> => list(string())
 %% }
 -type describe_repository_creation_templates_request() :: #{binary() => any()}.
 
@@ -1441,7 +1441,7 @@
 %%   <<"imageScanFindingsSummary">> => image_scan_findings_summary(),
 %%   <<"imageScanStatus">> => image_scan_status(),
 %%   <<"imageSizeInBytes">> => float(),
-%%   <<"imageTags">> => list(string()()),
+%%   <<"imageTags">> => list(string()),
 %%   <<"lastRecordedPullTime">> => non_neg_integer(),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> => string()
@@ -1469,8 +1469,8 @@
 
 %% Example:
 %% batch_get_image_response() :: #{
-%%   <<"failures">> => list(image_failure()()),
-%%   <<"images">> => list(image()())
+%%   <<"failures">> => list(image_failure()),
+%%   <<"images">> => list(image())
 %% }
 -type batch_get_image_response() :: #{binary() => any()}.
 
@@ -1484,7 +1484,7 @@
 %%   <<"lifecyclePolicy">> => string(),
 %%   <<"prefix">> := string(),
 %%   <<"repositoryPolicy">> => string(),
-%%   <<"resourceTags">> => list(tag()())
+%%   <<"resourceTags">> => list(tag())
 %% }
 -type update_repository_creation_template_request() :: #{binary() => any()}.
 
@@ -1505,7 +1505,7 @@
 %% Example:
 %% describe_image_replication_status_response() :: #{
 %%   <<"imageId">> => image_identifier(),
-%%   <<"replicationStatuses">> => list(image_replication_status()()),
+%%   <<"replicationStatuses">> => list(image_replication_status()),
 %%   <<"repositoryName">> => string()
 %% }
 -type describe_image_replication_status_response() :: #{binary() => any()}.

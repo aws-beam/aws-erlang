@@ -131,7 +131,7 @@
 %% Example:
 %% list_routing_controls_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RoutingControls">> => list(routing_control()())
+%%   <<"RoutingControls">> => list(routing_control())
 %% }
 -type list_routing_controls_response() :: #{binary() => any()}.
 
@@ -182,7 +182,7 @@
 %% update_routing_control_state_request() :: #{
 %%   <<"RoutingControlArn">> := string(),
 %%   <<"RoutingControlState">> := list(any()),
-%%   <<"SafetyRulesToOverride">> => list(string()())
+%%   <<"SafetyRulesToOverride">> => list(string())
 %% }
 -type update_routing_control_state_request() :: #{binary() => any()}.
 
@@ -194,8 +194,8 @@
 
 %% Example:
 %% update_routing_control_states_request() :: #{
-%%   <<"SafetyRulesToOverride">> => list(string()()),
-%%   <<"UpdateRoutingControlStateEntries">> := list(update_routing_control_state_entry()())
+%%   <<"SafetyRulesToOverride">> => list(string()),
+%%   <<"UpdateRoutingControlStateEntries">> := list(update_routing_control_state_entry())
 %% }
 -type update_routing_control_states_request() :: #{binary() => any()}.
 
@@ -207,7 +207,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"fields">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }

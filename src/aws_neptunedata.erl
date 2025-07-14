@@ -205,7 +205,7 @@
 %%   <<"format">> => [string()],
 %%   <<"lastEventId">> => map(),
 %%   <<"lastTrxTimestampInMillis">> => [float()],
-%%   <<"records">> => list(propertygraph_record()()),
+%%   <<"records">> => list(propertygraph_record()),
 %%   <<"totalRecords">> => [integer()]
 %% }
 -type get_propertygraph_stream_output() :: #{binary() => any()}.
@@ -325,7 +325,7 @@
 %% get_ml_model_transform_job_output() :: #{
 %%   <<"baseProcessingJob">> => ml_resource_definition(),
 %%   <<"id">> => [string()],
-%%   <<"models">> => list(ml_config_definition()()),
+%%   <<"models">> => list(ml_config_definition()),
 %%   <<"remoteModelTransformJob">> => ml_resource_definition(),
 %%   <<"status">> => [string()]
 %% }
@@ -431,7 +431,7 @@
 %%   <<"format">> => [string()],
 %%   <<"lastEventId">> => map(),
 %%   <<"lastTrxTimestampInMillis">> => [float()],
-%%   <<"records">> => list(sparql_record()()),
+%%   <<"records">> => list(sparql_record()),
 %%   <<"totalRecords">> => [integer()]
 %% }
 -type get_sparql_stream_output() :: #{binary() => any()}.
@@ -774,11 +774,11 @@
 %% Example:
 %% propertygraph_summary() :: #{
 %%   <<"edgeLabels">> => list([string()]()),
-%%   <<"edgeProperties">> => list(map()()),
-%%   <<"edgeStructures">> => list(edge_structure()()),
+%%   <<"edgeProperties">> => list(map()),
+%%   <<"edgeStructures">> => list(edge_structure()),
 %%   <<"nodeLabels">> => list([string()]()),
-%%   <<"nodeProperties">> => list(map()()),
-%%   <<"nodeStructures">> => list(node_structure()()),
+%%   <<"nodeProperties">> => list(map()),
+%%   <<"nodeStructures">> => list(node_structure()),
 %%   <<"numEdgeLabels">> => [float()],
 %%   <<"numEdgeProperties">> => [float()],
 %%   <<"numEdges">> => [float()],
@@ -837,8 +837,8 @@
 %%   <<"numDistinctPredicates">> => [float()],
 %%   <<"numDistinctSubjects">> => [float()],
 %%   <<"numQuads">> => [float()],
-%%   <<"predicates">> => list(map()()),
-%%   <<"subjectStructures">> => list(subject_structure()())
+%%   <<"predicates">> => list(map()),
+%%   <<"subjectStructures">> => list(subject_structure())
 %% }
 -type r_d_f_graph_summary() :: #{binary() => any()}.
 
@@ -902,7 +902,7 @@
 %% Example:
 %% list_gremlin_queries_output() :: #{
 %%   <<"acceptedQueryCount">> => [integer()],
-%%   <<"queries">> => list(gremlin_query_status()()),
+%%   <<"queries">> => list(gremlin_query_status()),
 %%   <<"runningQueryCount">> => [integer()]
 %% }
 -type list_gremlin_queries_output() :: #{binary() => any()}.
@@ -1273,7 +1273,7 @@
 %% Example:
 %% list_open_cypher_queries_output() :: #{
 %%   <<"acceptedQueryCount">> => [integer()],
-%%   <<"queries">> => list(gremlin_query_status()()),
+%%   <<"queries">> => list(gremlin_query_status()),
 %%   <<"runningQueryCount">> => [integer()]
 %% }
 -type list_open_cypher_queries_output() :: #{binary() => any()}.
@@ -1318,7 +1318,7 @@
 %% get_ml_model_training_job_output() :: #{
 %%   <<"hpoJob">> => ml_resource_definition(),
 %%   <<"id">> => [string()],
-%%   <<"mlModels">> => list(ml_config_definition()()),
+%%   <<"mlModels">> => list(ml_config_definition()),
 %%   <<"modelTransformJob">> => ml_resource_definition(),
 %%   <<"processingJob">> => ml_resource_definition(),
 %%   <<"status">> => [string()]

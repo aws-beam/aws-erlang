@@ -61,13 +61,13 @@
 %% Example:
 %% create_investigation_group_input() :: #{
 %%   <<"chatbotNotificationChannel">> => map(),
-%%   <<"crossAccountConfigurations">> => list(cross_account_configuration()()),
+%%   <<"crossAccountConfigurations">> => list(cross_account_configuration()),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"isCloudTrailEventHistoryEnabled">> => [boolean()],
 %%   <<"name">> := string(),
 %%   <<"retentionInDays">> => float(),
 %%   <<"roleArn">> := string(),
-%%   <<"tagKeyBoundaries">> => list(string()()),
+%%   <<"tagKeyBoundaries">> => list(string()),
 %%   <<"tags">> => map()
 %% }
 -type create_investigation_group_input() :: #{binary() => any()}.
@@ -136,7 +136,7 @@
 %%   <<"chatbotNotificationChannel">> => map(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
-%%   <<"crossAccountConfigurations">> => list(cross_account_configuration()()),
+%%   <<"crossAccountConfigurations">> => list(cross_account_configuration()),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"isCloudTrailEventHistoryEnabled">> => [boolean()],
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
@@ -144,7 +144,7 @@
 %%   <<"name">> => string(),
 %%   <<"retentionInDays">> => float(),
 %%   <<"roleArn">> => string(),
-%%   <<"tagKeyBoundaries">> => list(string()())
+%%   <<"tagKeyBoundaries">> => list(string())
 %% }
 -type get_investigation_group_response() :: #{binary() => any()}.
 
@@ -174,7 +174,7 @@
 
 %% Example:
 %% list_investigation_groups_output() :: #{
-%%   <<"investigationGroups">> => list(list_investigation_groups_model()()),
+%%   <<"investigationGroups">> => list(list_investigation_groups_model()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_investigation_groups_output() :: #{binary() => any()}.
@@ -243,7 +243,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -259,11 +259,11 @@
 %% Example:
 %% update_investigation_group_request() :: #{
 %%   <<"chatbotNotificationChannel">> => map(),
-%%   <<"crossAccountConfigurations">> => list(cross_account_configuration()()),
+%%   <<"crossAccountConfigurations">> => list(cross_account_configuration()),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"isCloudTrailEventHistoryEnabled">> => [boolean()],
 %%   <<"roleArn">> => string(),
-%%   <<"tagKeyBoundaries">> => list(string()())
+%%   <<"tagKeyBoundaries">> => list(string())
 %% }
 -type update_investigation_group_request() :: #{binary() => any()}.
 

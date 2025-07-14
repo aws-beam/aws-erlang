@@ -170,8 +170,8 @@
 %%   <<"attributes">> => map(),
 %%   <<"decoderManifestArn">> => string(),
 %%   <<"modelManifestArn">> => string(),
-%%   <<"stateTemplates">> => list(state_template_association()()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"stateTemplates">> => list(state_template_association()),
+%%   <<"tags">> => list(tag()),
 %%   <<"vehicleName">> => string()
 %% }
 -type create_vehicle_request_item() :: #{binary() => any()}.
@@ -246,7 +246,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -268,9 +268,9 @@
 %%   <<"defaultForUnmappedSignals">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"modelManifestArn">> := string(),
-%%   <<"networkInterfaces">> => list(network_interface()()),
-%%   <<"signalDecoders">> => list(signal_decoder()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"networkInterfaces">> => list(network_interface()),
+%%   <<"signalDecoders">> => list(signal_decoder()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_decoder_manifest_request() :: #{binary() => any()}.
 
@@ -307,8 +307,8 @@
 
 %% Example:
 %% list_vehicles_request() :: #{
-%%   <<"attributeNames">> => list(string()()),
-%%   <<"attributeValues">> => list(string()()),
+%%   <<"attributeNames">> => list(string()),
+%%   <<"attributeValues">> => list(string()),
 %%   <<"listResponseScope">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"modelManifestArn">> => string(),
@@ -344,7 +344,7 @@
 
 %% Example:
 %% list_fleets_for_vehicle_response() :: #{
-%%   <<"fleets">> => list(string()()),
+%%   <<"fleets">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleets_for_vehicle_response() :: #{binary() => any()}.
@@ -414,13 +414,13 @@
 %% create_fleet_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"signalCatalogArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_fleet_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_update_vehicle_request() :: #{
-%%   <<"vehicles">> := list(update_vehicle_request_item()())
+%%   <<"vehicles">> := list(update_vehicle_request_item())
 %% }
 -type batch_update_vehicle_request() :: #{binary() => any()}.
 
@@ -432,7 +432,7 @@
 
 %% Example:
 %% import_decoder_manifest_request() :: #{
-%%   <<"networkFileDefinitions">> := list(list()())
+%%   <<"networkFileDefinitions">> := list(list())
 %% }
 -type import_decoder_manifest_request() :: #{binary() => any()}.
 
@@ -535,7 +535,7 @@
 
 %% Example:
 %% list_campaigns_response() :: #{
-%%   <<"campaignSummaries">> => list(campaign_summary()()),
+%%   <<"campaignSummaries">> => list(campaign_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_campaigns_response() :: #{binary() => any()}.
@@ -557,28 +557,28 @@
 %% Example:
 %% import_signal_catalog_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"vss">> => list()
 %% }
 -type import_signal_catalog_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_fleets_response() :: #{
-%%   <<"fleetSummaries">> => list(fleet_summary()()),
+%%   <<"fleetSummaries">> => list(fleet_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleets_response() :: #{binary() => any()}.
 
 %% Example:
 %% batch_create_vehicle_request() :: #{
-%%   <<"vehicles">> := list(create_vehicle_request_item()())
+%%   <<"vehicles">> := list(create_vehicle_request_item())
 %% }
 -type batch_create_vehicle_request() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -606,7 +606,7 @@
 
 %% Example:
 %% signal_fetch_information() :: #{
-%%   <<"actions">> => list(string()()),
+%%   <<"actions">> => list(string()),
 %%   <<"conditionLanguageVersion">> => integer(),
 %%   <<"fullyQualifiedName">> => string(),
 %%   <<"signalFetchConfig">> => list()
@@ -645,7 +645,7 @@
 %% Example:
 %% list_signal_catalog_nodes_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"nodes">> => list(list()())
+%%   <<"nodes">> => list(list())
 %% }
 -type list_signal_catalog_nodes_response() :: #{binary() => any()}.
 
@@ -705,12 +705,12 @@
 %% update_decoder_manifest_request() :: #{
 %%   <<"defaultForUnmappedSignals">> => list(any()),
 %%   <<"description">> => string(),
-%%   <<"networkInterfacesToAdd">> => list(network_interface()()),
-%%   <<"networkInterfacesToRemove">> => list(string()()),
-%%   <<"networkInterfacesToUpdate">> => list(network_interface()()),
-%%   <<"signalDecodersToAdd">> => list(signal_decoder()()),
-%%   <<"signalDecodersToRemove">> => list(string()()),
-%%   <<"signalDecodersToUpdate">> => list(signal_decoder()()),
+%%   <<"networkInterfacesToAdd">> => list(network_interface()),
+%%   <<"networkInterfacesToRemove">> => list(string()),
+%%   <<"networkInterfacesToUpdate">> => list(network_interface()),
+%%   <<"signalDecodersToAdd">> => list(signal_decoder()),
+%%   <<"signalDecodersToRemove">> => list(string()),
+%%   <<"signalDecodersToUpdate">> => list(signal_decoder()),
 %%   <<"status">> => list(any())
 %% }
 -type update_decoder_manifest_request() :: #{binary() => any()}.
@@ -818,27 +818,27 @@
 %% Example:
 %% list_decoder_manifest_signals_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"signalDecoders">> => list(signal_decoder()())
+%%   <<"signalDecoders">> => list(signal_decoder())
 %% }
 -type list_decoder_manifest_signals_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_signal_catalogs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(signal_catalog_summary()())
+%%   <<"summaries">> => list(signal_catalog_summary())
 %% }
 -type list_signal_catalogs_response() :: #{binary() => any()}.
 
 %% Example:
 %% batch_update_vehicle_response() :: #{
-%%   <<"errors">> => list(update_vehicle_error()()),
-%%   <<"vehicles">> => list(update_vehicle_response_item()())
+%%   <<"errors">> => list(update_vehicle_error()),
+%%   <<"vehicles">> => list(update_vehicle_response_item())
 %% }
 -type batch_update_vehicle_response() :: #{binary() => any()}.
 
 %% Example:
 %% actuator() :: #{
-%%   <<"allowedValues">> => list(string()()),
+%%   <<"allowedValues">> => list(string()),
 %%   <<"assignedValue">> => string(),
 %%   <<"comment">> => string(),
 %%   <<"dataType">> => list(any()),
@@ -868,7 +868,7 @@
 %% Example:
 %% list_vehicles_in_fleet_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"vehicles">> => list(string()())
+%%   <<"vehicles">> => list(string())
 %% }
 -type list_vehicles_in_fleet_response() :: #{binary() => any()}.
 
@@ -895,7 +895,7 @@
 %% Example:
 %% list_state_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(state_template_summary()())
+%%   <<"summaries">> => list(state_template_summary())
 %% }
 -type list_state_templates_response() :: #{binary() => any()}.
 
@@ -914,7 +914,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -956,14 +956,14 @@
 %% get_state_template_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"dataExtraDimensions">> => list(string()()),
+%%   <<"dataExtraDimensions">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
 %%   <<"lastModificationTime">> => non_neg_integer(),
-%%   <<"metadataExtraDimensions">> => list(string()()),
+%%   <<"metadataExtraDimensions">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"signalCatalogArn">> => string(),
-%%   <<"stateTemplateProperties">> => list(string()())
+%%   <<"stateTemplateProperties">> => list(string())
 %% }
 -type get_state_template_response() :: #{binary() => any()}.
 
@@ -973,9 +973,9 @@
 %%   <<"attributes">> => map(),
 %%   <<"decoderManifestArn">> => string(),
 %%   <<"modelManifestArn">> => string(),
-%%   <<"stateTemplatesToAdd">> => list(state_template_association()()),
-%%   <<"stateTemplatesToRemove">> => list(string()()),
-%%   <<"stateTemplatesToUpdate">> => list(state_template_association()()),
+%%   <<"stateTemplatesToAdd">> => list(state_template_association()),
+%%   <<"stateTemplatesToRemove">> => list(string()),
+%%   <<"stateTemplatesToUpdate">> => list(state_template_association()),
 %%   <<"vehicleName">> => string()
 %% }
 -type update_vehicle_request_item() :: #{binary() => any()}.
@@ -983,9 +983,9 @@
 %% Example:
 %% create_model_manifest_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"nodes">> := list(string()()),
+%%   <<"nodes">> := list(string()),
 %%   <<"signalCatalogArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_model_manifest_request() :: #{binary() => any()}.
 
@@ -1058,7 +1058,7 @@
 
 %% Example:
 %% invalid_node_exception() :: #{
-%%   <<"invalidNodes">> => list(list()()),
+%%   <<"invalidNodes">> => list(list()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => string()
 %% }
@@ -1081,11 +1081,11 @@
 
 %% Example:
 %% update_state_template_request() :: #{
-%%   <<"dataExtraDimensions">> => list(string()()),
+%%   <<"dataExtraDimensions">> => list(string()),
 %%   <<"description">> => string(),
-%%   <<"metadataExtraDimensions">> => list(string()()),
-%%   <<"stateTemplatePropertiesToAdd">> => list(string()()),
-%%   <<"stateTemplatePropertiesToRemove">> => list(string()())
+%%   <<"metadataExtraDimensions">> => list(string()),
+%%   <<"stateTemplatePropertiesToAdd">> => list(string()),
+%%   <<"stateTemplatePropertiesToRemove">> => list(string())
 %% }
 -type update_state_template_request() :: #{binary() => any()}.
 
@@ -1099,14 +1099,14 @@
 %% Example:
 %% create_signal_catalog_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"nodes">> => list(list()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"nodes">> => list(list()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_signal_catalog_request() :: #{binary() => any()}.
 
 %% Example:
 %% can_dbc_definition() :: #{
-%%   <<"canDbcFiles">> => list(binary()()),
+%%   <<"canDbcFiles">> => list(binary()),
 %%   <<"networkInterface">> => string(),
 %%   <<"signalsMap">> => map()
 %% }
@@ -1146,20 +1146,20 @@
 %% create_campaign_request() :: #{
 %%   <<"collectionScheme">> := list(),
 %%   <<"compression">> => list(any()),
-%%   <<"dataDestinationConfigs">> => list(list()()),
-%%   <<"dataExtraDimensions">> => list(string()()),
-%%   <<"dataPartitions">> => list(data_partition()()),
+%%   <<"dataDestinationConfigs">> => list(list()),
+%%   <<"dataExtraDimensions">> => list(string()),
+%%   <<"dataPartitions">> => list(data_partition()),
 %%   <<"description">> => string(),
 %%   <<"diagnosticsMode">> => list(any()),
 %%   <<"expiryTime">> => non_neg_integer(),
 %%   <<"postTriggerCollectionDuration">> => float(),
 %%   <<"priority">> => integer(),
 %%   <<"signalCatalogArn">> := string(),
-%%   <<"signalsToCollect">> => list(signal_information()()),
-%%   <<"signalsToFetch">> => list(signal_fetch_information()()),
+%%   <<"signalsToCollect">> => list(signal_information()),
+%%   <<"signalsToFetch">> => list(signal_fetch_information()),
 %%   <<"spoolingMode">> => list(any()),
 %%   <<"startTime">> => non_neg_integer(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"targetArn">> := string()
 %% }
 -type create_campaign_request() :: #{binary() => any()}.
@@ -1172,7 +1172,7 @@
 
 %% Example:
 %% get_vehicle_status_response() :: #{
-%%   <<"campaigns">> => list(vehicle_status()()),
+%%   <<"campaigns">> => list(vehicle_status()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_vehicle_status_response() :: #{binary() => any()}.
@@ -1249,7 +1249,7 @@
 %% Example:
 %% list_model_manifests_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(model_manifest_summary()())
+%%   <<"summaries">> => list(model_manifest_summary())
 %% }
 -type list_model_manifests_response() :: #{binary() => any()}.
 
@@ -1268,7 +1268,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }
@@ -1296,7 +1296,7 @@
 
 %% Example:
 %% invalid_signals_exception() :: #{
-%%   <<"invalidSignals">> => list(invalid_signal()()),
+%%   <<"invalidSignals">> => list(invalid_signal()),
 %%   <<"message">> => string()
 %% }
 -type invalid_signals_exception() :: #{binary() => any()}.
@@ -1316,9 +1316,9 @@
 %%   <<"collectionScheme">> => list(),
 %%   <<"compression">> => list(any()),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"dataDestinationConfigs">> => list(list()()),
-%%   <<"dataExtraDimensions">> => list(string()()),
-%%   <<"dataPartitions">> => list(data_partition()()),
+%%   <<"dataDestinationConfigs">> => list(list()),
+%%   <<"dataExtraDimensions">> => list(string()),
+%%   <<"dataPartitions">> => list(data_partition()),
 %%   <<"description">> => string(),
 %%   <<"diagnosticsMode">> => list(any()),
 %%   <<"expiryTime">> => non_neg_integer(),
@@ -1327,8 +1327,8 @@
 %%   <<"postTriggerCollectionDuration">> => float(),
 %%   <<"priority">> => integer(),
 %%   <<"signalCatalogArn">> => string(),
-%%   <<"signalsToCollect">> => list(signal_information()()),
-%%   <<"signalsToFetch">> => list(signal_fetch_information()()),
+%%   <<"signalsToCollect">> => list(signal_information()),
+%%   <<"signalsToFetch">> => list(signal_fetch_information()),
 %%   <<"spoolingMode">> => list(any()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
@@ -1338,7 +1338,7 @@
 
 %% Example:
 %% sensor() :: #{
-%%   <<"allowedValues">> => list(string()()),
+%%   <<"allowedValues">> => list(string()),
 %%   <<"comment">> => string(),
 %%   <<"dataType">> => list(any()),
 %%   <<"deprecationMessage">> => string(),
@@ -1364,15 +1364,15 @@
 %%   <<"attributes">> => map(),
 %%   <<"decoderManifestArn">> => string(),
 %%   <<"modelManifestArn">> => string(),
-%%   <<"stateTemplatesToAdd">> => list(state_template_association()()),
-%%   <<"stateTemplatesToRemove">> => list(string()()),
-%%   <<"stateTemplatesToUpdate">> => list(state_template_association()())
+%%   <<"stateTemplatesToAdd">> => list(state_template_association()),
+%%   <<"stateTemplatesToRemove">> => list(string()),
+%%   <<"stateTemplatesToUpdate">> => list(state_template_association())
 %% }
 -type update_vehicle_request() :: #{binary() => any()}.
 
 %% Example:
 %% attribute() :: #{
-%%   <<"allowedValues">> => list(string()()),
+%%   <<"allowedValues">> => list(string()),
 %%   <<"assignedValue">> => string(),
 %%   <<"comment">> => string(),
 %%   <<"dataType">> => list(any()),
@@ -1389,7 +1389,7 @@
 %% Example:
 %% list_decoder_manifests_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(decoder_manifest_summary()())
+%%   <<"summaries">> => list(decoder_manifest_summary())
 %% }
 -type list_decoder_manifests_response() :: #{binary() => any()}.
 
@@ -1420,9 +1420,9 @@
 %% Example:
 %% update_signal_catalog_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"nodesToAdd">> => list(list()()),
-%%   <<"nodesToRemove">> => list(string()()),
-%%   <<"nodesToUpdate">> => list(list()())
+%%   <<"nodesToAdd">> => list(list()),
+%%   <<"nodesToRemove">> => list(string()),
+%%   <<"nodesToUpdate">> => list(list())
 %% }
 -type update_signal_catalog_request() :: #{binary() => any()}.
 
@@ -1457,7 +1457,7 @@
 %% Example:
 %% list_vehicles_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"vehicleSummaries">> => list(vehicle_summary()())
+%%   <<"vehicleSummaries">> => list(vehicle_summary())
 %% }
 -type list_vehicles_response() :: #{binary() => any()}.
 
@@ -1472,15 +1472,15 @@
 %% Example:
 %% update_campaign_request() :: #{
 %%   <<"action">> := list(any()),
-%%   <<"dataExtraDimensions">> => list(string()()),
+%%   <<"dataExtraDimensions">> => list(string()),
 %%   <<"description">> => string()
 %% }
 -type update_campaign_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_create_vehicle_response() :: #{
-%%   <<"errors">> => list(create_vehicle_error()()),
-%%   <<"vehicles">> => list(create_vehicle_response_item()())
+%%   <<"errors">> => list(create_vehicle_error()),
+%%   <<"vehicles">> => list(create_vehicle_response_item())
 %% }
 -type batch_create_vehicle_response() :: #{binary() => any()}.
 
@@ -1512,7 +1512,7 @@
 
 %% Example:
 %% list_decoder_manifest_network_interfaces_response() :: #{
-%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"networkInterfaces">> => list(network_interface()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_decoder_manifest_network_interfaces_response() :: #{binary() => any()}.
@@ -1589,7 +1589,7 @@
 %% Example:
 %% list_model_manifest_nodes_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"nodes">> => list(list()())
+%%   <<"nodes">> => list(list())
 %% }
 -type list_model_manifest_nodes_response() :: #{binary() => any()}.
 
@@ -1599,8 +1599,8 @@
 %%   <<"attributes">> => map(),
 %%   <<"decoderManifestArn">> := string(),
 %%   <<"modelManifestArn">> := string(),
-%%   <<"stateTemplates">> => list(state_template_association()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"stateTemplates">> => list(state_template_association()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_vehicle_request() :: #{binary() => any()}.
 
@@ -1638,7 +1638,7 @@
 %%   <<"decoderManifestArn">> => string(),
 %%   <<"lastModificationTime">> => non_neg_integer(),
 %%   <<"modelManifestArn">> => string(),
-%%   <<"stateTemplates">> => list(state_template_association()()),
+%%   <<"stateTemplates">> => list(state_template_association()),
 %%   <<"vehicleName">> => string()
 %% }
 -type get_vehicle_response() :: #{binary() => any()}.
@@ -1665,28 +1665,28 @@
 
 %% Example:
 %% decoder_manifest_validation_exception() :: #{
-%%   <<"invalidNetworkInterfaces">> => list(invalid_network_interface()()),
-%%   <<"invalidSignals">> => list(invalid_signal_decoder()()),
+%%   <<"invalidNetworkInterfaces">> => list(invalid_network_interface()),
+%%   <<"invalidSignals">> => list(invalid_signal_decoder()),
 %%   <<"message">> => string()
 %% }
 -type decoder_manifest_validation_exception() :: #{binary() => any()}.
 
 %% Example:
 %% create_state_template_request() :: #{
-%%   <<"dataExtraDimensions">> => list(string()()),
+%%   <<"dataExtraDimensions">> => list(string()),
 %%   <<"description">> => string(),
-%%   <<"metadataExtraDimensions">> => list(string()()),
+%%   <<"metadataExtraDimensions">> => list(string()),
 %%   <<"signalCatalogArn">> := string(),
-%%   <<"stateTemplateProperties">> := list(string()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"stateTemplateProperties">> := list(string()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_state_template_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_model_manifest_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"nodesToAdd">> => list(string()()),
-%%   <<"nodesToRemove">> => list(string()()),
+%%   <<"nodesToAdd">> => list(string()),
+%%   <<"nodesToRemove">> => list(string()),
 %%   <<"status">> => list(any())
 %% }
 -type update_model_manifest_request() :: #{binary() => any()}.

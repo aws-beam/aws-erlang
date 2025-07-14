@@ -28,7 +28,7 @@
 
 %% Example:
 %% get_action_recommendations_response() :: #{
-%%   <<"actionList">> => list(predicted_action()()),
+%%   <<"actionList">> => list(predicted_action()),
 %%   <<"recommendationId">> => string()
 %% }
 -type get_action_recommendations_response() :: #{binary() => any()}.
@@ -40,7 +40,7 @@
 %%   <<"context">> => map(),
 %%   <<"filterArn">> => string(),
 %%   <<"filterValues">> => map(),
-%%   <<"inputList">> := list(string()()),
+%%   <<"inputList">> := list(string()),
 %%   <<"metadataColumns">> => map(),
 %%   <<"userId">> := string()
 %% }
@@ -49,7 +49,7 @@
 
 %% Example:
 %% get_personalized_ranking_response() :: #{
-%%   <<"personalizedRanking">> => list(predicted_item()()),
+%%   <<"personalizedRanking">> => list(predicted_item()),
 %%   <<"recommendationId">> => string()
 %% }
 -type get_personalized_ranking_response() :: #{binary() => any()}.
@@ -64,7 +64,7 @@
 %%   <<"itemId">> => string(),
 %%   <<"metadataColumns">> => map(),
 %%   <<"numResults">> => integer(),
-%%   <<"promotions">> => list(promotion()()),
+%%   <<"promotions">> => list(promotion()),
 %%   <<"recommenderArn">> => string(),
 %%   <<"userId">> => string()
 %% }
@@ -73,7 +73,7 @@
 
 %% Example:
 %% get_recommendations_response() :: #{
-%%   <<"itemList">> => list(predicted_item()()),
+%%   <<"itemList">> => list(predicted_item()),
 %%   <<"recommendationId">> => string()
 %% }
 -type get_recommendations_response() :: #{binary() => any()}.
@@ -99,7 +99,7 @@
 %%   <<"itemId">> => string(),
 %%   <<"metadata">> => map(),
 %%   <<"promotionName">> => string(),
-%%   <<"reason">> => list(string()()),
+%%   <<"reason">> => list(string()),
 %%   <<"score">> => float()
 %% }
 -type predicted_item() :: #{binary() => any()}.

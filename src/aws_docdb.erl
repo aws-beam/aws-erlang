@@ -126,20 +126,20 @@
 
 %% Example:
 %% restore_db_cluster_from_snapshot_message() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DBClusterParameterGroupName">> => string(),
 %%   <<"DBSubnetGroupName">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
 %%   <<"Engine">> := string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"SnapshotIdentifier">> := string(),
 %%   <<"StorageType">> => string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type restore_db_cluster_from_snapshot_message() :: #{binary() => any()}.
 
@@ -163,7 +163,7 @@
 
 %% Example:
 %% event_subscriptions_message() :: #{
-%%   <<"EventSubscriptionsList">> => list(event_subscription()()),
+%%   <<"EventSubscriptionsList">> => list(event_subscription()),
 %%   <<"Marker">> => string()
 %% }
 -type event_subscriptions_message() :: #{binary() => any()}.
@@ -213,7 +213,7 @@
 
 %% Example:
 %% db_cluster_snapshot() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ClusterCreateTime">> => non_neg_integer(),
 %%   <<"DBClusterIdentifier">> => string(),
 %%   <<"DBClusterSnapshotArn">> => string(),
@@ -250,13 +250,13 @@
 %% modify_db_subnet_group_message() :: #{
 %%   <<"DBSubnetGroupDescription">> => string(),
 %%   <<"DBSubnetGroupName">> := string(),
-%%   <<"SubnetIds">> := list(string()())
+%%   <<"SubnetIds">> := list(string())
 %% }
 -type modify_db_subnet_group_message() :: #{binary() => any()}.
 
 %% Example:
 %% db_subnet_group_message() :: #{
-%%   <<"DBSubnetGroups">> => list(db_subnet_group()()),
+%%   <<"DBSubnetGroups">> => list(db_subnet_group()),
 %%   <<"Marker">> => string()
 %% }
 -type db_subnet_group_message() :: #{binary() => any()}.
@@ -264,7 +264,7 @@
 %% Example:
 %% describe_db_cluster_parameters_message() :: #{
 %%   <<"DBClusterParameterGroupName">> := string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"Source">> => string()
@@ -273,14 +273,14 @@
 
 %% Example:
 %% resource_pending_maintenance_actions() :: #{
-%%   <<"PendingMaintenanceActionDetails">> => list(pending_maintenance_action()()),
+%%   <<"PendingMaintenanceActionDetails">> => list(pending_maintenance_action()),
 %%   <<"ResourceIdentifier">> => string()
 %% }
 -type resource_pending_maintenance_actions() :: #{binary() => any()}.
 
 %% Example:
 %% event_categories_map() :: #{
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"SourceType">> => string()
 %% }
 -type event_categories_map() :: #{binary() => any()}.
@@ -312,7 +312,7 @@
 %% Example:
 %% describe_db_instances_message() :: #{
 %%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -329,7 +329,7 @@
 %%   <<"DBClusterParameterGroupName">> := string(),
 %%   <<"DBParameterGroupFamily">> := string(),
 %%   <<"Description">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_db_cluster_parameter_group_message() :: #{binary() => any()}.
 
@@ -342,7 +342,7 @@
 %% Example:
 %% modify_event_subscription_message() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"SnsTopicArn">> => string(),
 %%   <<"SourceType">> => string(),
 %%   <<"SubscriptionName">> := string()
@@ -352,7 +352,7 @@
 %% Example:
 %% copy_db_cluster_parameter_group_message() :: #{
 %%   <<"SourceDBClusterParameterGroupIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetDBClusterParameterGroupDescription">> := string(),
 %%   <<"TargetDBClusterParameterGroupIdentifier">> := string()
 %% }
@@ -360,7 +360,7 @@
 
 %% Example:
 %% describe_pending_maintenance_actions_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"ResourceIdentifier">> => string()
@@ -372,7 +372,7 @@
 %%   <<"DBInstanceClass">> => string(),
 %%   <<"Engine">> := string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"LicenseModel">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
@@ -382,8 +382,8 @@
 
 %% Example:
 %% pending_cloudwatch_logs_exports() :: #{
-%%   <<"LogTypesToDisable">> => list(string()()),
-%%   <<"LogTypesToEnable">> => list(string()())
+%%   <<"LogTypesToDisable">> => list(string()),
+%%   <<"LogTypesToEnable">> => list(string())
 %% }
 -type pending_cloudwatch_logs_exports() :: #{binary() => any()}.
 
@@ -391,7 +391,7 @@
 %% engine_defaults() :: #{
 %%   <<"DBParameterGroupFamily">> => string(),
 %%   <<"Marker">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type engine_defaults() :: #{binary() => any()}.
 
@@ -409,8 +409,8 @@
 
 %% Example:
 %% cloudwatch_logs_export_configuration() :: #{
-%%   <<"DisableLogTypes">> => list(string()()),
-%%   <<"EnableLogTypes">> => list(string()())
+%%   <<"DisableLogTypes">> => list(string()),
+%%   <<"EnableLogTypes">> => list(string())
 %% }
 -type cloudwatch_logs_export_configuration() :: #{binary() => any()}.
 
@@ -444,10 +444,10 @@
 %%   <<"CustSubscriptionId">> => string(),
 %%   <<"CustomerAwsId">> => string(),
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategoriesList">> => list(string()()),
+%%   <<"EventCategoriesList">> => list(string()),
 %%   <<"EventSubscriptionArn">> => string(),
 %%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceIdsList">> => list(string()()),
+%%   <<"SourceIdsList">> => list(string()),
 %%   <<"SourceType">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"SubscriptionCreationTime">> => string()
@@ -458,7 +458,7 @@
 %% global_cluster_member() :: #{
 %%   <<"DBClusterArn">> => string(),
 %%   <<"IsWriter">> => boolean(),
-%%   <<"Readers">> => list(string()())
+%%   <<"Readers">> => list(string())
 %% }
 -type global_cluster_member() :: #{binary() => any()}.
 
@@ -466,8 +466,8 @@
 %% modify_db_cluster_snapshot_attribute_message() :: #{
 %%   <<"AttributeName">> := string(),
 %%   <<"DBClusterSnapshotIdentifier">> := string(),
-%%   <<"ValuesToAdd">> => list(string()()),
-%%   <<"ValuesToRemove">> => list(string()())
+%%   <<"ValuesToAdd">> => list(string()),
+%%   <<"ValuesToRemove">> => list(string())
 %% }
 -type modify_db_cluster_snapshot_attribute_message() :: #{binary() => any()}.
 
@@ -487,7 +487,7 @@
 %% Example:
 %% describe_certificates_message() :: #{
 %%   <<"CertificateIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -498,16 +498,16 @@
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DBSubnetGroupName">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"RestoreToTime">> => non_neg_integer(),
 %%   <<"RestoreType">> => string(),
 %%   <<"SourceDBClusterIdentifier">> := string(),
 %%   <<"StorageType">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UseLatestRestorableTime">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type restore_db_cluster_to_point_in_time_message() :: #{binary() => any()}.
 
@@ -534,7 +534,7 @@
 
 %% Example:
 %% db_cluster_snapshot_message() :: #{
-%%   <<"DBClusterSnapshots">> => list(db_cluster_snapshot()()),
+%%   <<"DBClusterSnapshots">> => list(db_cluster_snapshot()),
 %%   <<"Marker">> => string()
 %% }
 -type db_cluster_snapshot_message() :: #{binary() => any()}.
@@ -547,7 +547,7 @@
 
 %% Example:
 %% list_tags_for_resource_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"ResourceName">> := string()
 %% }
 -type list_tags_for_resource_message() :: #{binary() => any()}.
@@ -556,7 +556,7 @@
 %% describe_db_cluster_snapshots_message() :: #{
 %%   <<"DBClusterIdentifier">> => string(),
 %%   <<"DBClusterSnapshotIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IncludePublic">> => boolean(),
 %%   <<"IncludeShared">> => boolean(),
 %%   <<"Marker">> => string(),
@@ -579,7 +579,7 @@
 %%   <<"PerformanceInsightsKMSKeyId">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"PromotionTier">> => integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_db_instance_message() :: #{binary() => any()}.
 
@@ -628,7 +628,7 @@
 %%   <<"DBInstanceStatus">> => string(),
 %%   <<"DBSubnetGroup">> => db_subnet_group(),
 %%   <<"DbiResourceId">> => string(),
-%%   <<"EnabledCloudwatchLogsExports">> => list(string()()),
+%%   <<"EnabledCloudwatchLogsExports">> => list(string()),
 %%   <<"Endpoint">> => endpoint(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
@@ -642,9 +642,9 @@
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"PromotionTier">> => integer(),
 %%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"StatusInfos">> => list(db_instance_status_info()()),
+%%   <<"StatusInfos">> => list(db_instance_status_info()),
 %%   <<"StorageEncrypted">> => boolean(),
-%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()())
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership())
 %% }
 -type db_instance() :: #{binary() => any()}.
 
@@ -674,7 +674,7 @@
 
 %% Example:
 %% db_cluster_message() :: #{
-%%   <<"DBClusters">> => list(db_cluster()()),
+%%   <<"DBClusters">> => list(db_cluster()),
 %%   <<"Marker">> => string()
 %% }
 -type db_cluster_message() :: #{binary() => any()}.
@@ -703,7 +703,7 @@
 %%   <<"DefaultOnly">> => boolean(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"ListSupportedCharacterSets">> => boolean(),
 %%   <<"ListSupportedTimezones">> => boolean(),
 %%   <<"Marker">> => string(),
@@ -760,12 +760,12 @@
 %% Example:
 %% create_event_subscription_message() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"SnsTopicArn">> := string(),
-%%   <<"SourceIds">> => list(string()()),
+%%   <<"SourceIds">> => list(string()),
 %%   <<"SourceType">> => string(),
 %%   <<"SubscriptionName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_event_subscription_message() :: #{binary() => any()}.
 
@@ -784,13 +784,13 @@
 %% Example:
 %% orderable_db_instance_options_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"OrderableDBInstanceOptions">> => list(orderable_db_instance_option()())
+%%   <<"OrderableDBInstanceOptions">> => list(orderable_db_instance_option())
 %% }
 -type orderable_db_instance_options_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_event_subscriptions_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"SubscriptionName">> => string()
@@ -812,7 +812,7 @@
 %% Example:
 %% db_cluster_snapshot_attribute() :: #{
 %%   <<"AttributeName">> => string(),
-%%   <<"AttributeValues">> => list(string()())
+%%   <<"AttributeValues">> => list(string())
 %% }
 -type db_cluster_snapshot_attribute() :: #{binary() => any()}.
 
@@ -843,7 +843,7 @@
 
 %% Example:
 %% orderable_db_instance_option() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"AvailabilityZones">> => list(availability_zone()),
 %%   <<"DBInstanceClass">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
@@ -855,7 +855,7 @@
 
 %% Example:
 %% db_cluster_parameter_groups_message() :: #{
-%%   <<"DBClusterParameterGroups">> => list(db_cluster_parameter_group()()),
+%%   <<"DBClusterParameterGroups">> => list(db_cluster_parameter_group()),
 %%   <<"Marker">> => string()
 %% }
 -type db_cluster_parameter_groups_message() :: #{binary() => any()}.
@@ -863,7 +863,7 @@
 %% Example:
 %% describe_db_cluster_parameter_groups_message() :: #{
 %%   <<"DBClusterParameterGroupName">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -893,7 +893,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"PreSignedUrl">> => string(),
 %%   <<"SourceDBClusterSnapshotIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetDBClusterSnapshotIdentifier">> := string()
 %% }
 -type copy_db_cluster_snapshot_message() :: #{binary() => any()}.
@@ -906,7 +906,7 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"GlobalClusterArn">> => string(),
 %%   <<"GlobalClusterIdentifier">> => string(),
-%%   <<"GlobalClusterMembers">> => list(global_cluster_member()()),
+%%   <<"GlobalClusterMembers">> => list(global_cluster_member()),
 %%   <<"GlobalClusterResourceId">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"StorageEncrypted">> => boolean()
@@ -928,7 +928,7 @@
 
 %% Example:
 %% certificate_message() :: #{
-%%   <<"Certificates">> => list(certificate()()),
+%%   <<"Certificates">> => list(certificate()),
 %%   <<"Marker">> => string()
 %% }
 -type certificate_message() :: #{binary() => any()}.
@@ -941,7 +941,7 @@
 
 %% Example:
 %% global_clusters_message() :: #{
-%%   <<"GlobalClusters">> => list(global_cluster()()),
+%%   <<"GlobalClusters">> => list(global_cluster()),
 %%   <<"Marker">> => string()
 %% }
 -type global_clusters_message() :: #{binary() => any()}.
@@ -980,7 +980,7 @@
 
 %% Example:
 %% db_engine_version_message() :: #{
-%%   <<"DBEngineVersions">> => list(db_engine_version()()),
+%%   <<"DBEngineVersions">> => list(db_engine_version()),
 %%   <<"Marker">> => string()
 %% }
 -type db_engine_version_message() :: #{binary() => any()}.
@@ -1000,11 +1000,11 @@
 %%   <<"DBParameterGroupFamily">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"ExportableLogTypes">> => list(string()()),
-%%   <<"SupportedCACertificateIdentifiers">> => list(string()()),
+%%   <<"ExportableLogTypes">> => list(string()),
+%%   <<"SupportedCACertificateIdentifiers">> => list(string()),
 %%   <<"SupportsCertificateRotationWithoutRestart">> => boolean(),
 %%   <<"SupportsLogExportsToCloudwatchLogs">> => boolean(),
-%%   <<"ValidUpgradeTarget">> => list(upgrade_target()())
+%%   <<"ValidUpgradeTarget">> => list(upgrade_target())
 %% }
 -type db_engine_version() :: #{binary() => any()}.
 
@@ -1039,7 +1039,7 @@
 %% create_db_cluster_snapshot_message() :: #{
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DBClusterSnapshotIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_db_cluster_snapshot_message() :: #{binary() => any()}.
 
@@ -1052,7 +1052,7 @@
 %% Example:
 %% describe_db_clusters_message() :: #{
 %%   <<"DBClusterIdentifier">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -1068,7 +1068,7 @@
 %% Example:
 %% modify_db_cluster_parameter_group_message() :: #{
 %%   <<"DBClusterParameterGroupName">> := string(),
-%%   <<"Parameters">> := list(parameter()())
+%%   <<"Parameters">> := list(parameter())
 %% }
 -type modify_db_cluster_parameter_group_message() :: #{binary() => any()}.
 
@@ -1080,13 +1080,13 @@
 
 %% Example:
 %% create_db_cluster_message() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"BackupRetentionPeriod">> => integer(),
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DBClusterParameterGroupName">> => string(),
 %%   <<"DBSubnetGroupName">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
-%%   <<"EnableCloudwatchLogsExports">> => list(string()()),
+%%   <<"EnableCloudwatchLogsExports">> => list(string()),
 %%   <<"Engine">> := string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"GlobalClusterIdentifier">> => string(),
@@ -1101,15 +1101,15 @@
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
 %%   <<"StorageType">> => string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type create_db_cluster_message() :: #{binary() => any()}.
 
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -1159,7 +1159,7 @@
 
 %% Example:
 %% events_message() :: #{
-%%   <<"Events">> => list(event()()),
+%%   <<"Events">> => list(event()),
 %%   <<"Marker">> => string()
 %% }
 -type events_message() :: #{binary() => any()}.
@@ -1179,7 +1179,7 @@
 %% Example:
 %% reset_db_cluster_parameter_group_message() :: #{
 %%   <<"DBClusterParameterGroupName">> := string(),
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"ResetAllParameters">> => boolean()
 %% }
 -type reset_db_cluster_parameter_group_message() :: #{binary() => any()}.
@@ -1246,7 +1246,7 @@
 %% Example:
 %% event() :: #{
 %%   <<"Date">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"Message">> => string(),
 %%   <<"SourceArn">> => string(),
 %%   <<"SourceIdentifier">> => string(),
@@ -1262,7 +1262,7 @@
 
 %% Example:
 %% db_instance_message() :: #{
-%%   <<"DBInstances">> => list(db_instance()()),
+%%   <<"DBInstances">> => list(db_instance()),
 %%   <<"Marker">> => string()
 %% }
 -type db_instance_message() :: #{binary() => any()}.
@@ -1270,7 +1270,7 @@
 %% Example:
 %% describe_engine_default_cluster_parameters_message() :: #{
 %%   <<"DBParameterGroupFamily">> := string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -1278,7 +1278,7 @@
 
 %% Example:
 %% tag_list_message() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type tag_list_message() :: #{binary() => any()}.
 
@@ -1287,7 +1287,7 @@
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"Engine">> => string(),
-%%   <<"DBClusterMembers">> => list(db_cluster_member()()),
+%%   <<"DBClusterMembers">> => list(db_cluster_member()),
 %%   <<"ClusterCreateTime">> => non_neg_integer(),
 %%   <<"MasterUserSecret">> => cluster_master_user_secret(),
 %%   <<"DBClusterParameterGroup">> => string(),
@@ -1298,13 +1298,13 @@
 %%   <<"StorageType">> => string(),
 %%   <<"MasterUsername">> => string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"EnabledCloudwatchLogsExports">> => list(string()()),
+%%   <<"EnabledCloudwatchLogsExports">> => list(string()),
 %%   <<"LatestRestorableTime">> => non_neg_integer(),
 %%   <<"CloneGroupId">> => string(),
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ReaderEndpoint">> => string(),
 %%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"AssociatedRoles">> => list(db_cluster_role()()),
+%%   <<"AssociatedRoles">> => list(db_cluster_role()),
 %%   <<"DBClusterArn">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"DbClusterResourceId">> => string(),
@@ -1312,10 +1312,10 @@
 %%   <<"Endpoint">> => string(),
 %%   <<"PercentProgress">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()()),
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()),
 %%   <<"Status">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
-%%   <<"ReadReplicaIdentifiers">> => list(string()()),
+%%   <<"ReadReplicaIdentifiers">> => list(string()),
 %%   <<"MultiAZ">> => boolean(),
 %%   <<"DeletionProtection">> => boolean()
 %% }
@@ -1342,13 +1342,13 @@
 %% Example:
 %% add_tags_to_resource_message() :: #{
 %%   <<"ResourceName">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_to_resource_message() :: #{binary() => any()}.
 
 %% Example:
 %% event_categories_message() :: #{
-%%   <<"EventCategoriesMapList">> => list(event_categories_map()())
+%%   <<"EventCategoriesMapList">> => list(event_categories_map())
 %% }
 -type event_categories_message() :: #{binary() => any()}.
 
@@ -1374,8 +1374,8 @@
 %% create_db_subnet_group_message() :: #{
 %%   <<"DBSubnetGroupDescription">> := string(),
 %%   <<"DBSubnetGroupName">> := string(),
-%%   <<"SubnetIds">> := list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_db_subnet_group_message() :: #{binary() => any()}.
 
@@ -1402,7 +1402,7 @@
 
 %% Example:
 %% describe_global_clusters_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"GlobalClusterIdentifier">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
@@ -1419,8 +1419,8 @@
 %% describe_events_message() :: #{
 %%   <<"Duration">> => integer(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()()),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"SourceIdentifier">> => string(),
@@ -1449,7 +1449,7 @@
 
 %% Example:
 %% db_cluster_snapshot_attributes_result() :: #{
-%%   <<"DBClusterSnapshotAttributes">> => list(db_cluster_snapshot_attribute()()),
+%%   <<"DBClusterSnapshotAttributes">> => list(db_cluster_snapshot_attribute()),
 %%   <<"DBClusterSnapshotIdentifier">> => string()
 %% }
 -type db_cluster_snapshot_attributes_result() :: #{binary() => any()}.
@@ -1498,7 +1498,7 @@
 %% Example:
 %% describe_db_subnet_groups_message() :: #{
 %%   <<"DBSubnetGroupName">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -1516,7 +1516,7 @@
 %%   <<"DBSubnetGroupDescription">> => string(),
 %%   <<"DBSubnetGroupName">> => string(),
 %%   <<"SubnetGroupStatus">> => string(),
-%%   <<"Subnets">> => list(subnet()()),
+%%   <<"Subnets">> => list(subnet()),
 %%   <<"VpcId">> => string()
 %% }
 -type db_subnet_group() :: #{binary() => any()}.
@@ -1558,7 +1558,7 @@
 %% Example:
 %% remove_tags_from_resource_message() :: #{
 %%   <<"ResourceName">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_from_resource_message() :: #{binary() => any()}.
 
@@ -1587,13 +1587,13 @@
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"RotateMasterUserPassword">> => boolean(),
 %%   <<"StorageType">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type modify_db_cluster_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_event_categories_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"SourceType">> => string()
 %% }
 -type describe_event_categories_message() :: #{binary() => any()}.
@@ -1679,7 +1679,7 @@
 %% Example:
 %% db_cluster_parameter_group_details() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type db_cluster_parameter_group_details() :: #{binary() => any()}.
 
@@ -1692,7 +1692,7 @@
 %% Example:
 %% pending_maintenance_actions_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"PendingMaintenanceActions">> => list(resource_pending_maintenance_actions()())
+%%   <<"PendingMaintenanceActions">> => list(resource_pending_maintenance_actions())
 %% }
 -type pending_maintenance_actions_message() :: #{binary() => any()}.
 

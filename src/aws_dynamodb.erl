@@ -155,22 +155,22 @@
 %% Example:
 %% table_description() :: #{
 %%   <<"ArchivalSummary">> => archival_summary(),
-%%   <<"AttributeDefinitions">> => list(attribute_definition()()),
+%%   <<"AttributeDefinitions">> => list(attribute_definition()),
 %%   <<"BillingModeSummary">> => billing_mode_summary(),
 %%   <<"CreationDateTime">> => non_neg_integer(),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
-%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_description()()),
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_description()),
 %%   <<"GlobalTableVersion">> => string(),
-%%   <<"GlobalTableWitnesses">> => list(global_table_witness_description()()),
+%%   <<"GlobalTableWitnesses">> => list(global_table_witness_description()),
 %%   <<"ItemCount">> => float(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"LatestStreamArn">> => string(),
 %%   <<"LatestStreamLabel">> => string(),
-%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_description()()),
+%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_description()),
 %%   <<"MultiRegionConsistency">> => list(any()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
-%%   <<"Replicas">> => list(replica_description()()),
+%%   <<"Replicas">> => list(replica_description()),
 %%   <<"RestoreSummary">> => restore_summary(),
 %%   <<"SSEDescription">> => sse_description(),
 %%   <<"StreamSpecification">> => stream_specification(),
@@ -186,7 +186,7 @@
 
 %% Example:
 %% transact_write_items_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
 %%   <<"ItemCollectionMetrics">> => map()
 %% }
 -type transact_write_items_output() :: #{binary() => any()}.
@@ -195,7 +195,7 @@
 %% replica_settings_description() :: #{
 %%   <<"RegionName">> => string(),
 %%   <<"ReplicaBillingModeSummary">> => billing_mode_summary(),
-%%   <<"ReplicaGlobalSecondaryIndexSettings">> => list(replica_global_secondary_index_settings_description()()),
+%%   <<"ReplicaGlobalSecondaryIndexSettings">> => list(replica_global_secondary_index_settings_description()),
 %%   <<"ReplicaProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
 %%   <<"ReplicaProvisionedReadCapacityUnits">> => float(),
 %%   <<"ReplicaProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
@@ -227,14 +227,14 @@
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"ReturnConsumedCapacity">> => list(any()),
 %%   <<"ReturnItemCollectionMetrics">> => list(any()),
-%%   <<"TransactItems">> := list(transact_write_item()())
+%%   <<"TransactItems">> := list(transact_write_item())
 %% }
 -type transact_write_items_input() :: #{binary() => any()}.
 
 %% Example:
 %% local_secondary_index() :: #{
 %%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"Projection">> => projection()
 %% }
 -type local_secondary_index() :: #{binary() => any()}.
@@ -248,7 +248,7 @@
 %% Example:
 %% local_secondary_index_info() :: #{
 %%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"Projection">> => projection()
 %% }
 -type local_secondary_index_info() :: #{binary() => any()}.
@@ -280,7 +280,7 @@
 
 %% Example:
 %% expected_attribute_value() :: #{
-%%   <<"AttributeValueList">> => list(list()()),
+%%   <<"AttributeValueList">> => list(list()),
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"Exists">> => boolean(),
 %%   <<"Value">> => list()
@@ -289,10 +289,10 @@
 
 %% Example:
 %% keys_and_attributes() :: #{
-%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"AttributesToGet">> => list(string()),
 %%   <<"ConsistentRead">> => boolean(),
 %%   <<"ExpressionAttributeNames">> => map(),
-%%   <<"Keys">> => list(map()()),
+%%   <<"Keys">> => list(map()),
 %%   <<"ProjectionExpression">> => string()
 %% }
 -type keys_and_attributes() :: #{binary() => any()}.
@@ -308,8 +308,8 @@
 
 %% Example:
 %% batch_execute_statement_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
-%%   <<"Responses">> => list(batch_statement_response()())
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
+%%   <<"Responses">> => list(batch_statement_response())
 %% }
 -type batch_execute_statement_output() :: #{binary() => any()}.
 
@@ -340,7 +340,7 @@
 
 %% Example:
 %% create_replication_group_member_action() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()()),
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()),
 %%   <<"KMSMasterKeyId">> => string(),
 %%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
@@ -393,7 +393,7 @@
 %% Example:
 %% create_global_table_input() :: #{
 %%   <<"GlobalTableName">> := string(),
-%%   <<"ReplicationGroup">> := list(replica()())
+%%   <<"ReplicationGroup">> := list(replica())
 %% }
 -type create_global_table_input() :: #{binary() => any()}.
 
@@ -417,13 +417,13 @@
 %% execute_transaction_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"TransactStatements">> := list(parameterized_statement()())
+%%   <<"TransactStatements">> := list(parameterized_statement())
 %% }
 -type execute_transaction_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_global_tables_output() :: #{
-%%   <<"GlobalTables">> => list(global_table()()),
+%%   <<"GlobalTables">> => list(global_table()),
 %%   <<"LastEvaluatedGlobalTableName">> => string()
 %% }
 -type list_global_tables_output() :: #{binary() => any()}.
@@ -484,7 +484,7 @@
 
 %% Example:
 %% replica_auto_scaling_description() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_auto_scaling_description()()),
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_auto_scaling_description()),
 %%   <<"RegionName">> => string(),
 %%   <<"ReplicaProvisionedReadCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
 %%   <<"ReplicaProvisionedWriteCapacityAutoScalingSettings">> => auto_scaling_settings_description(),
@@ -495,7 +495,7 @@
 %% Example:
 %% replica_settings_update() :: #{
 %%   <<"RegionName">> => string(),
-%%   <<"ReplicaGlobalSecondaryIndexSettingsUpdate">> => list(replica_global_secondary_index_settings_update()()),
+%%   <<"ReplicaGlobalSecondaryIndexSettingsUpdate">> => list(replica_global_secondary_index_settings_update()),
 %%   <<"ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
 %%   <<"ReplicaProvisionedReadCapacityUnits">> => float(),
 %%   <<"ReplicaTableClass">> => list(any())
@@ -505,13 +505,13 @@
 %% Example:
 %% global_table() :: #{
 %%   <<"GlobalTableName">> => string(),
-%%   <<"ReplicationGroup">> => list(replica()())
+%%   <<"ReplicationGroup">> => list(replica())
 %% }
 -type global_table() :: #{binary() => any()}.
 
 %% Example:
 %% batch_write_item_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
 %%   <<"ItemCollectionMetrics">> => map(),
 %%   <<"UnprocessedItems">> => map()
 %% }
@@ -519,12 +519,12 @@
 
 %% Example:
 %% create_table_input() :: #{
-%%   <<"AttributeDefinitions">> := list(attribute_definition()()),
+%%   <<"AttributeDefinitions">> := list(attribute_definition()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
-%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()()),
-%%   <<"KeySchema">> := list(key_schema_element()()),
-%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index()()),
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()),
+%%   <<"KeySchema">> := list(key_schema_element()),
+%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"ResourcePolicy">> => string(),
@@ -532,7 +532,7 @@
 %%   <<"StreamSpecification">> => stream_specification(),
 %%   <<"TableClass">> => list(any()),
 %%   <<"TableName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WarmThroughput">> => warm_throughput()
 %% }
 -type create_table_input() :: #{binary() => any()}.
@@ -573,10 +573,10 @@
 
 %% Example:
 %% table_creation_parameters() :: #{
-%%   <<"AttributeDefinitions">> => list(attribute_definition()()),
+%%   <<"AttributeDefinitions">> => list(attribute_definition()),
 %%   <<"BillingMode">> => list(any()),
-%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()()),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"SSESpecification">> => sse_specification(),
@@ -593,7 +593,7 @@
 %% Example:
 %% execute_statement_output() :: #{
 %%   <<"ConsumedCapacity">> => consumed_capacity(),
-%%   <<"Items">> => list(map()()),
+%%   <<"Items">> => list(map()),
 %%   <<"LastEvaluatedKey">> => map(),
 %%   <<"NextToken">> => string()
 %% }
@@ -601,7 +601,7 @@
 
 %% Example:
 %% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()())
+%%   <<"Endpoints">> => list(endpoint())
 %% }
 -type describe_endpoints_response() :: #{binary() => any()}.
 
@@ -632,7 +632,7 @@
 %%   <<"AutoScalingRoleArn">> => string(),
 %%   <<"MaximumUnits">> => float(),
 %%   <<"MinimumUnits">> => float(),
-%%   <<"ScalingPolicies">> => list(auto_scaling_policy_description()())
+%%   <<"ScalingPolicies">> => list(auto_scaling_policy_description())
 %% }
 -type auto_scaling_settings_description() :: #{binary() => any()}.
 
@@ -653,17 +653,17 @@
 %% Example:
 %% update_global_table_settings_input() :: #{
 %%   <<"GlobalTableBillingMode">> => list(any()),
-%%   <<"GlobalTableGlobalSecondaryIndexSettingsUpdate">> => list(global_table_global_secondary_index_settings_update()()),
+%%   <<"GlobalTableGlobalSecondaryIndexSettingsUpdate">> => list(global_table_global_secondary_index_settings_update()),
 %%   <<"GlobalTableName">> := string(),
 %%   <<"GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate">> => auto_scaling_settings_update(),
 %%   <<"GlobalTableProvisionedWriteCapacityUnits">> => float(),
-%%   <<"ReplicaSettingsUpdate">> => list(replica_settings_update()())
+%%   <<"ReplicaSettingsUpdate">> => list(replica_settings_update())
 %% }
 -type update_global_table_settings_input() :: #{binary() => any()}.
 
 %% Example:
 %% scan_input() :: #{
-%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"AttributesToGet">> => list(string()),
 %%   <<"ConditionalOperator">> => list(any()),
 %%   <<"ConsistentRead">> => boolean(),
 %%   <<"ExclusiveStartKey">> => map(),
@@ -717,7 +717,7 @@
 
 %% Example:
 %% transaction_canceled_exception() :: #{
-%%   <<"CancellationReasons">> => list(cancellation_reason()()),
+%%   <<"CancellationReasons">> => list(cancellation_reason()),
 %%   <<"Message">> => string()
 %% }
 -type transaction_canceled_exception() :: #{binary() => any()}.
@@ -755,7 +755,7 @@
 
 %% Example:
 %% parameterized_statement() :: #{
-%%   <<"Parameters">> => list(list()()),
+%%   <<"Parameters">> => list(list()),
 %%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
 %%   <<"Statement">> => string()
 %% }
@@ -764,7 +764,7 @@
 %% Example:
 %% list_tags_of_resource_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_of_resource_output() :: #{binary() => any()}.
 
@@ -772,7 +772,7 @@
 %% query_output() :: #{
 %%   <<"ConsumedCapacity">> => consumed_capacity(),
 %%   <<"Count">> => integer(),
-%%   <<"Items">> => list(map()()),
+%%   <<"Items">> => list(map()),
 %%   <<"LastEvaluatedKey">> => map(),
 %%   <<"ScannedCount">> => integer()
 %% }
@@ -806,7 +806,7 @@
 %% Example:
 %% update_global_table_input() :: #{
 %%   <<"GlobalTableName">> := string(),
-%%   <<"ReplicaUpdates">> := list(replica_update()())
+%%   <<"ReplicaUpdates">> := list(replica_update())
 %% }
 -type update_global_table_input() :: #{binary() => any()}.
 
@@ -815,7 +815,7 @@
 %%   <<"ConsistentRead">> => boolean(),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(list()()),
+%%   <<"Parameters">> => list(list()),
 %%   <<"ReturnConsumedCapacity">> => list(any()),
 %%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
 %%   <<"Statement">> := string()
@@ -846,15 +846,15 @@
 %% Example:
 %% batch_execute_statement_input() :: #{
 %%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"Statements">> := list(batch_statement_request()())
+%%   <<"Statements">> := list(batch_statement_request())
 %% }
 -type batch_execute_statement_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_table_replica_auto_scaling_input() :: #{
-%%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_auto_scaling_update()()),
+%%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_auto_scaling_update()),
 %%   <<"ProvisionedWriteCapacityAutoScalingUpdate">> => auto_scaling_settings_update(),
-%%   <<"ReplicaUpdates">> => list(replica_auto_scaling_update()()),
+%%   <<"ReplicaUpdates">> => list(replica_auto_scaling_update()),
 %%   <<"TableName">> := string()
 %% }
 -type update_table_replica_auto_scaling_input() :: #{binary() => any()}.
@@ -882,7 +882,7 @@
 %% Example:
 %% replica_auto_scaling_update() :: #{
 %%   <<"RegionName">> => string(),
-%%   <<"ReplicaGlobalSecondaryIndexUpdates">> => list(replica_global_secondary_index_auto_scaling_update()()),
+%%   <<"ReplicaGlobalSecondaryIndexUpdates">> => list(replica_global_secondary_index_auto_scaling_update()),
 %%   <<"ReplicaProvisionedReadCapacityAutoScalingUpdate">> => auto_scaling_settings_update()
 %% }
 -type replica_auto_scaling_update() :: #{binary() => any()}.
@@ -902,13 +902,13 @@
 %% Example:
 %% csv_options() :: #{
 %%   <<"Delimiter">> => string(),
-%%   <<"HeaderList">> => list(string()())
+%%   <<"HeaderList">> => list(string())
 %% }
 -type csv_options() :: #{binary() => any()}.
 
 %% Example:
 %% projection() :: #{
-%%   <<"NonKeyAttributes">> => list(string()()),
+%%   <<"NonKeyAttributes">> => list(string()),
 %%   <<"ProjectionType">> => list(any())
 %% }
 -type projection() :: #{binary() => any()}.
@@ -929,7 +929,7 @@
 
 %% Example:
 %% batch_get_item_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
 %%   <<"Responses">> => map(),
 %%   <<"UnprocessedKeys">> => map()
 %% }
@@ -945,7 +945,7 @@
 %% source_table_details() :: #{
 %%   <<"BillingMode">> => list(any()),
 %%   <<"ItemCount">> => float(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"TableArn">> => string(),
@@ -977,7 +977,7 @@
 
 %% Example:
 %% describe_contributor_insights_output() :: #{
-%%   <<"ContributorInsightsRuleList">> => list(string()()),
+%%   <<"ContributorInsightsRuleList">> => list(string()),
 %%   <<"ContributorInsightsStatus">> => list(any()),
 %%   <<"FailureException">> => failure_exception(),
 %%   <<"IndexName">> => string(),
@@ -1050,7 +1050,7 @@
 %% Example:
 %% create_global_secondary_index_action() :: #{
 %%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
@@ -1064,7 +1064,7 @@
 %%   <<"IndexName">> => string(),
 %%   <<"IndexSizeBytes">> => float(),
 %%   <<"ItemCount">> => float(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"Projection">> => projection()
 %% }
 -type local_secondary_index_description() :: #{binary() => any()}.
@@ -1190,20 +1190,20 @@
 %% Example:
 %% item_collection_metrics() :: #{
 %%   <<"ItemCollectionKey">> => map(),
-%%   <<"SizeEstimateRangeGB">> => list(float()())
+%%   <<"SizeEstimateRangeGB">> => list(float())
 %% }
 -type item_collection_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% describe_global_table_settings_output() :: #{
 %%   <<"GlobalTableName">> => string(),
-%%   <<"ReplicaSettings">> => list(replica_settings_description()())
+%%   <<"ReplicaSettings">> => list(replica_settings_description())
 %% }
 -type describe_global_table_settings_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_replication_group_member_action() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()()),
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index()),
 %%   <<"KMSMasterKeyId">> => string(),
 %%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
@@ -1250,8 +1250,8 @@
 
 %% Example:
 %% transact_get_items_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
-%%   <<"Responses">> => list(item_response()())
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
+%%   <<"Responses">> => list(item_response())
 %% }
 -type transact_get_items_output() :: #{binary() => any()}.
 
@@ -1303,7 +1303,7 @@
 
 %% Example:
 %% condition() :: #{
-%%   <<"AttributeValueList">> => list(list()()),
+%%   <<"AttributeValueList">> => list(list()),
 %%   <<"ComparisonOperator">> => list(any())
 %% }
 -type condition() :: #{binary() => any()}.
@@ -1311,7 +1311,7 @@
 %% Example:
 %% transact_get_items_input() :: #{
 %%   <<"ReturnConsumedCapacity">> => list(any()),
-%%   <<"TransactItems">> := list(transact_get_item()())
+%%   <<"TransactItems">> := list(transact_get_item())
 %% }
 -type transact_get_items_input() :: #{binary() => any()}.
 
@@ -1372,7 +1372,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -1400,8 +1400,8 @@
 
 %% Example:
 %% execute_transaction_output() :: #{
-%%   <<"ConsumedCapacity">> => list(consumed_capacity()()),
-%%   <<"Responses">> => list(item_response()())
+%%   <<"ConsumedCapacity">> => list(consumed_capacity()),
+%%   <<"Responses">> => list(item_response())
 %% }
 -type execute_transaction_output() :: #{binary() => any()}.
 
@@ -1455,7 +1455,7 @@
 
 %% Example:
 %% describe_kinesis_streaming_destination_output() :: #{
-%%   <<"KinesisDataStreamDestinations">> => list(kinesis_data_stream_destination()()),
+%%   <<"KinesisDataStreamDestinations">> => list(kinesis_data_stream_destination()),
 %%   <<"TableName">> => string()
 %% }
 -type describe_kinesis_streaming_destination_output() :: #{binary() => any()}.
@@ -1534,7 +1534,7 @@
 
 %% Example:
 %% list_exports_output() :: #{
-%%   <<"ExportSummaries">> => list(export_summary()()),
+%%   <<"ExportSummaries">> => list(export_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_exports_output() :: #{binary() => any()}.
@@ -1584,7 +1584,7 @@
 %%   <<"IndexSizeBytes">> => float(),
 %%   <<"IndexStatus">> => list(any()),
 %%   <<"ItemCount">> => float(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput_description(),
@@ -1595,7 +1595,7 @@
 %% Example:
 %% global_secondary_index_info() :: #{
 %%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput()
@@ -1650,7 +1650,7 @@
 
 %% Example:
 %% query_input() :: #{
-%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"AttributesToGet">> => list(string()),
 %%   <<"ConditionalOperator">> => list(any()),
 %%   <<"ConsistentRead">> => boolean(),
 %%   <<"ExclusiveStartKey">> => map(),
@@ -1699,7 +1699,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1733,7 +1733,7 @@
 %%   <<"GlobalTableArn">> => string(),
 %%   <<"GlobalTableName">> => string(),
 %%   <<"GlobalTableStatus">> => list(any()),
-%%   <<"ReplicationGroup">> => list(replica_description()())
+%%   <<"ReplicationGroup">> => list(replica_description())
 %% }
 -type global_table_description() :: #{binary() => any()}.
 
@@ -1747,7 +1747,7 @@
 %% Example:
 %% global_secondary_index() :: #{
 %%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"Projection">> => projection(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
@@ -1758,8 +1758,8 @@
 %% Example:
 %% restore_table_to_point_in_time_input() :: #{
 %%   <<"BillingModeOverride">> => list(any()),
-%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()()),
-%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()()),
+%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()),
+%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()),
 %%   <<"OnDemandThroughputOverride">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
 %%   <<"RestoreDateTime">> => non_neg_integer(),
@@ -1781,8 +1781,8 @@
 %% restore_table_from_backup_input() :: #{
 %%   <<"BackupArn">> := string(),
 %%   <<"BillingModeOverride">> => list(any()),
-%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()()),
-%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()()),
+%%   <<"GlobalSecondaryIndexOverride">> => list(global_secondary_index()),
+%%   <<"LocalSecondaryIndexOverride">> => list(local_secondary_index()),
 %%   <<"OnDemandThroughputOverride">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput(),
 %%   <<"SSESpecificationOverride">> => sse_specification(),
@@ -1800,8 +1800,8 @@
 
 %% Example:
 %% source_table_feature_details() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_info()()),
-%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_info()()),
+%%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_info()),
+%%   <<"LocalSecondaryIndexes">> => list(local_secondary_index_info()),
 %%   <<"SSEDescription">> => sse_description(),
 %%   <<"StreamDescription">> => stream_specification(),
 %%   <<"TimeToLiveDescription">> => time_to_live_description()
@@ -1835,7 +1835,7 @@
 
 %% Example:
 %% replica_description() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_description()()),
+%%   <<"GlobalSecondaryIndexes">> => list(replica_global_secondary_index_description()),
 %%   <<"KMSMasterKeyId">> => string(),
 %%   <<"OnDemandThroughputOverride">> => on_demand_throughput_override(),
 %%   <<"ProvisionedThroughputOverride">> => provisioned_throughput_override(),
@@ -1853,7 +1853,7 @@
 %% scan_output() :: #{
 %%   <<"ConsumedCapacity">> => consumed_capacity(),
 %%   <<"Count">> => integer(),
-%%   <<"Items">> => list(map()()),
+%%   <<"Items">> => list(map()),
 %%   <<"LastEvaluatedKey">> => map(),
 %%   <<"ScannedCount">> => integer()
 %% }
@@ -1881,7 +1881,7 @@
 
 %% Example:
 %% list_contributor_insights_output() :: #{
-%%   <<"ContributorInsightsSummaries">> => list(contributor_insights_summary()()),
+%%   <<"ContributorInsightsSummaries">> => list(contributor_insights_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contributor_insights_output() :: #{binary() => any()}.
@@ -1937,7 +1937,7 @@
 
 %% Example:
 %% get_item_input() :: #{
-%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"AttributesToGet">> => list(string()),
 %%   <<"ConsistentRead">> => boolean(),
 %%   <<"ExpressionAttributeNames">> => map(),
 %%   <<"Key">> := map(),
@@ -1986,7 +1986,7 @@
 %% Example:
 %% list_tables_output() :: #{
 %%   <<"LastEvaluatedTableName">> => string(),
-%%   <<"TableNames">> => list(string()())
+%%   <<"TableNames">> => list(string())
 %% }
 -type list_tables_output() :: #{binary() => any()}.
 
@@ -2026,7 +2026,7 @@
 %% Example:
 %% update_global_table_settings_output() :: #{
 %%   <<"GlobalTableName">> => string(),
-%%   <<"ReplicaSettings">> => list(replica_settings_description()())
+%%   <<"ReplicaSettings">> => list(replica_settings_description())
 %% }
 -type update_global_table_settings_output() :: #{binary() => any()}.
 
@@ -2082,15 +2082,15 @@
 
 %% Example:
 %% update_table_input() :: #{
-%%   <<"AttributeDefinitions">> => list(attribute_definition()()),
+%%   <<"AttributeDefinitions">> => list(attribute_definition()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
-%%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_update()()),
-%%   <<"GlobalTableWitnessUpdates">> => list(global_table_witness_group_update()()),
+%%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_update()),
+%%   <<"GlobalTableWitnessUpdates">> => list(global_table_witness_group_update()),
 %%   <<"MultiRegionConsistency">> => list(any()),
 %%   <<"OnDemandThroughput">> => on_demand_throughput(),
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
-%%   <<"ReplicaUpdates">> => list(replication_group_update()()),
+%%   <<"ReplicaUpdates">> => list(replication_group_update()),
 %%   <<"SSESpecification">> => sse_specification(),
 %%   <<"StreamSpecification">> => stream_specification(),
 %%   <<"TableClass">> => list(any()),
@@ -2113,7 +2113,7 @@
 %% Example:
 %% batch_statement_request() :: #{
 %%   <<"ConsistentRead">> => boolean(),
-%%   <<"Parameters">> => list(list()()),
+%%   <<"Parameters">> => list(list()),
 %%   <<"ReturnValuesOnConditionCheckFailure">> => list(any()),
 %%   <<"Statement">> => string()
 %% }
@@ -2160,7 +2160,7 @@
 
 %% Example:
 %% list_backups_output() :: #{
-%%   <<"BackupSummaries">> => list(backup_summary()()),
+%%   <<"BackupSummaries">> => list(backup_summary()),
 %%   <<"LastEvaluatedBackupArn">> => string()
 %% }
 -type list_backups_output() :: #{binary() => any()}.
@@ -2235,7 +2235,7 @@
 
 %% Example:
 %% table_auto_scaling_description() :: #{
-%%   <<"Replicas">> => list(replica_auto_scaling_description()()),
+%%   <<"Replicas">> => list(replica_auto_scaling_description()),
 %%   <<"TableName">> => string(),
 %%   <<"TableStatus">> => list(any())
 %% }
@@ -2243,7 +2243,7 @@
 
 %% Example:
 %% list_imports_output() :: #{
-%%   <<"ImportSummaryList">> => list(import_summary()()),
+%%   <<"ImportSummaryList">> => list(import_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_imports_output() :: #{binary() => any()}.

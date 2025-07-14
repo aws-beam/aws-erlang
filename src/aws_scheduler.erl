@@ -87,7 +87,7 @@
 
 %% Example:
 %% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -165,7 +165,7 @@
 %% Example:
 %% list_schedule_groups_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScheduleGroups">> := list(schedule_group_summary()())
+%%   <<"ScheduleGroups">> := list(schedule_group_summary())
 %% }
 -type list_schedule_groups_output() :: #{binary() => any()}.
 
@@ -219,7 +219,7 @@
 
 %% Example:
 %% sage_maker_pipeline_parameters() :: #{
-%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter()())
+%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter())
 %% }
 -type sage_maker_pipeline_parameters() :: #{binary() => any()}.
 
@@ -254,7 +254,7 @@
 
 %% Example:
 %% tag_resource_input() :: #{
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -345,14 +345,14 @@
 %% Example:
 %% list_schedules_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Schedules">> := list(schedule_summary()())
+%%   <<"Schedules">> := list(schedule_summary())
 %% }
 -type list_schedules_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -407,8 +407,8 @@
 %% Example:
 %% aws_vpc_configuration() :: #{
 %%   <<"AssignPublicIp">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
-%%   <<"Subnets">> => list(string()())
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> => list(string())
 %% }
 -type aws_vpc_configuration() :: #{binary() => any()}.
 
@@ -423,7 +423,7 @@
 %% Example:
 %% create_schedule_group_input() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_schedule_group_input() :: #{binary() => any()}.
 
@@ -446,18 +446,18 @@
 
 %% Example:
 %% ecs_parameters() :: #{
-%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
 %%   <<"EnableECSManagedTags">> => boolean(),
 %%   <<"EnableExecuteCommand">> => boolean(),
 %%   <<"Group">> => string(),
 %%   <<"LaunchType">> => string(),
 %%   <<"NetworkConfiguration">> => network_configuration(),
-%%   <<"PlacementConstraints">> => list(placement_constraint()()),
-%%   <<"PlacementStrategy">> => list(placement_strategy()()),
+%%   <<"PlacementConstraints">> => list(placement_constraint()),
+%%   <<"PlacementStrategy">> => list(placement_strategy()),
 %%   <<"PlatformVersion">> => string(),
 %%   <<"PropagateTags">> => string(),
 %%   <<"ReferenceId">> => string(),
-%%   <<"Tags">> => list(map()()),
+%%   <<"Tags">> => list(map()),
 %%   <<"TaskCount">> => integer(),
 %%   <<"TaskDefinitionArn">> => string()
 %% }

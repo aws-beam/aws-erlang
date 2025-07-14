@@ -371,17 +371,17 @@
 
 %% Example:
 %% create_instances_from_snapshot_request() :: #{
-%%   <<"addOns">> => list(add_on_request()()),
+%%   <<"addOns">> => list(add_on_request()),
 %%   <<"attachedDiskMapping">> => map(),
 %%   <<"availabilityZone">> := string(),
 %%   <<"bundleId">> := string(),
-%%   <<"instanceNames">> := list(string()()),
+%%   <<"instanceNames">> := list(string()),
 %%   <<"instanceSnapshotName">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"keyPairName">> => string(),
 %%   <<"restoreDate">> => string(),
 %%   <<"sourceInstanceName">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"useLatestRestorableAutoSnapshot">> => boolean(),
 %%   <<"userData">> => string()
 %% }
@@ -432,7 +432,7 @@
 
 %% Example:
 %% disable_add_on_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type disable_add_on_result() :: #{binary() => any()}.
 
@@ -457,7 +457,7 @@
 
 %% Example:
 %% delete_disk_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_disk_snapshot_result() :: #{binary() => any()}.
 
@@ -498,7 +498,7 @@
 
 %% Example:
 %% get_regions_result() :: #{
-%%   <<"regions">> => list(region()())
+%%   <<"regions">> => list(region())
 %% }
 -type get_regions_result() :: #{binary() => any()}.
 
@@ -553,7 +553,7 @@
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"resourceName">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -566,24 +566,24 @@
 %% Example:
 %% put_instance_public_ports_request() :: #{
 %%   <<"instanceName">> := string(),
-%%   <<"portInfos">> := list(port_info()())
+%%   <<"portInfos">> := list(port_info())
 %% }
 -type put_instance_public_ports_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_export_snapshot_records_result() :: #{
-%%   <<"exportSnapshotRecords">> => list(export_snapshot_record()()),
+%%   <<"exportSnapshotRecords">> => list(export_snapshot_record()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_export_snapshot_records_result() :: #{binary() => any()}.
 
 %% Example:
 %% load_balancer_tls_policy() :: #{
-%%   <<"ciphers">> => list(string()()),
+%%   <<"ciphers">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"isDefault">> => boolean(),
 %%   <<"name">> => string(),
-%%   <<"protocols">> => list(string()())
+%%   <<"protocols">> => list(string())
 %% }
 -type load_balancer_tls_policy() :: #{binary() => any()}.
 
@@ -596,7 +596,7 @@
 
 %% Example:
 %% container() :: #{
-%%   <<"command">> => list(string()()),
+%%   <<"command">> => list(string()),
 %%   <<"environment">> => map(),
 %%   <<"image">> => string(),
 %%   <<"ports">> => map()
@@ -620,13 +620,13 @@
 
 %% Example:
 %% attach_instances_to_load_balancer_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type attach_instances_to_load_balancer_result() :: #{binary() => any()}.
 
 %% Example:
 %% start_instance_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type start_instance_result() :: #{binary() => any()}.
 
@@ -680,7 +680,7 @@
 
 %% Example:
 %% create_instances_from_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_instances_from_snapshot_result() :: #{binary() => any()}.
 
@@ -699,13 +699,13 @@
 
 %% Example:
 %% untag_resource_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type untag_resource_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_instance_port_states_result() :: #{
-%%   <<"portStates">> => list(instance_port_state()())
+%%   <<"portStates">> => list(instance_port_state())
 %% }
 -type get_instance_port_states_result() :: #{binary() => any()}.
 
@@ -745,13 +745,13 @@
 
 %% Example:
 %% detach_instances_from_load_balancer_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type detach_instances_from_load_balancer_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_bucket_bundles_result() :: #{
-%%   <<"bundles">> => list(bucket_bundle()())
+%%   <<"bundles">> => list(bucket_bundle())
 %% }
 -type get_bucket_bundles_result() :: #{binary() => any()}.
 
@@ -766,7 +766,7 @@
 %% Example:
 %% create_certificate_result() :: #{
 %%   <<"certificate">> => certificate_summary(),
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_certificate_result() :: #{binary() => any()}.
 
@@ -784,11 +784,11 @@
 %% Example:
 %% lightsail_distribution() :: #{
 %%   <<"ableToUpdateBundle">> => boolean(),
-%%   <<"alternativeDomainNames">> => list(string()()),
+%%   <<"alternativeDomainNames">> => list(string()),
 %%   <<"arn">> => string(),
 %%   <<"bundleId">> => string(),
 %%   <<"cacheBehaviorSettings">> => cache_settings(),
-%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()()),
+%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
 %%   <<"certificateName">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"defaultCacheBehavior">> => cache_behavior(),
@@ -802,7 +802,7 @@
 %%   <<"resourceType">> => list(any()),
 %%   <<"status">> => string(),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"viewerMinimumTlsProtocolVersion">> => string()
 %% }
 -type lightsail_distribution() :: #{binary() => any()}.
@@ -832,7 +832,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"domainName">> => string(),
-%%   <<"domainValidationRecords">> => list(load_balancer_tls_certificate_domain_validation_record()()),
+%%   <<"domainValidationRecords">> => list(load_balancer_tls_certificate_domain_validation_record()),
 %%   <<"failureReason">> => list(any()),
 %%   <<"isAttached">> => boolean(),
 %%   <<"issuedAt">> => non_neg_integer(),
@@ -851,9 +851,9 @@
 %%   <<"signatureAlgorithm">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"subject">> => string(),
-%%   <<"subjectAlternativeNames">> => list(string()()),
+%%   <<"subjectAlternativeNames">> => list(string()),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type load_balancer_tls_certificate() :: #{binary() => any()}.
 
@@ -878,13 +878,13 @@
 
 %% Example:
 %% create_load_balancer_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_load_balancer_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_instance_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_instance_snapshot_result() :: #{binary() => any()}.
 
@@ -904,13 +904,13 @@
 
 %% Example:
 %% stop_instance_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type stop_instance_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_load_balancer_tls_certificate_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_load_balancer_tls_certificate_result() :: #{binary() => any()}.
 
@@ -919,7 +919,7 @@
 %%   <<"diskName">> => string(),
 %%   <<"diskSnapshotName">> := string(),
 %%   <<"instanceName">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_disk_snapshot_request() :: #{binary() => any()}.
 
@@ -939,7 +939,7 @@
 %%   <<"masterUsername">> => string(),
 %%   <<"name">> => string(),
 %%   <<"parameterApplyStatus">> => string(),
-%%   <<"pendingMaintenanceActions">> => list(pending_maintenance_action()()),
+%%   <<"pendingMaintenanceActions">> => list(pending_maintenance_action()),
 %%   <<"pendingModifiedValues">> => pending_modified_relational_database_values(),
 %%   <<"preferredBackupWindow">> => string(),
 %%   <<"preferredMaintenanceWindow">> => string(),
@@ -950,19 +950,19 @@
 %%   <<"secondaryAvailabilityZone">> => string(),
 %%   <<"state">> => string(),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type relational_database() :: #{binary() => any()}.
 
 %% Example:
 %% stop_g_ui_session_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type stop_g_ui_session_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_instance_snapshots_result() :: #{
-%%   <<"instanceSnapshots">> => list(instance_snapshot()()),
+%%   <<"instanceSnapshots">> => list(instance_snapshot()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_instance_snapshots_result() :: #{binary() => any()}.
@@ -975,7 +975,7 @@
 
 %% Example:
 %% delete_disk_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_disk_result() :: #{binary() => any()}.
 
@@ -1014,7 +1014,7 @@
 %% Example:
 %% get_operations_result() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type get_operations_result() :: #{binary() => any()}.
 
@@ -1057,22 +1057,22 @@
 %%   <<"publicDomainNames">> => map(),
 %%   <<"scale">> := integer(),
 %%   <<"serviceName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_container_service_request() :: #{binary() => any()}.
 
 %% Example:
 %% stop_relational_database_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type stop_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
 %% instance_port_state() :: #{
-%%   <<"cidrListAliases">> => list(string()()),
-%%   <<"cidrs">> => list(string()()),
+%%   <<"cidrListAliases">> => list(string()),
+%%   <<"cidrs">> => list(string()),
 %%   <<"fromPort">> => integer(),
-%%   <<"ipv6Cidrs">> => list(string()()),
+%%   <<"ipv6Cidrs">> => list(string()),
 %%   <<"protocol">> => list(any()),
 %%   <<"state">> => list(any()),
 %%   <<"toPort">> => integer()
@@ -1087,7 +1087,7 @@
 
 %% Example:
 %% get_auto_snapshots_result() :: #{
-%%   <<"autoSnapshots">> => list(auto_snapshot_details()()),
+%%   <<"autoSnapshots">> => list(auto_snapshot_details()),
 %%   <<"resourceName">> => string(),
 %%   <<"resourceType">> => list(any())
 %% }
@@ -1097,7 +1097,7 @@
 %% create_instance_snapshot_request() :: #{
 %%   <<"instanceName">> := string(),
 %%   <<"instanceSnapshotName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_instance_snapshot_request() :: #{binary() => any()}.
 
@@ -1115,7 +1115,7 @@
 
 %% Example:
 %% setup_history() :: #{
-%%   <<"executionDetails">> => list(setup_execution_details()()),
+%%   <<"executionDetails">> => list(setup_execution_details()),
 %%   <<"operationId">> => string(),
 %%   <<"request">> => setup_request(),
 %%   <<"resource">> => setup_history_resource(),
@@ -1144,20 +1144,20 @@
 
 %% Example:
 %% get_container_service_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()()),
+%%   <<"metricData">> => list(metric_datapoint()),
 %%   <<"metricName">> => list(any())
 %% }
 -type get_container_service_metric_data_result() :: #{binary() => any()}.
 
 %% Example:
 %% send_contact_method_verification_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type send_contact_method_verification_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_container_api_metadata_result() :: #{
-%%   <<"metadata">> => list(map()())
+%%   <<"metadata">> => list(map())
 %% }
 -type get_container_api_metadata_result() :: #{binary() => any()}.
 
@@ -1180,13 +1180,13 @@
 %% domain() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"domainEntries">> => list(domain_entry()()),
+%%   <<"domainEntries">> => list(domain_entry()),
 %%   <<"location">> => resource_location(),
 %%   <<"name">> => string(),
 %%   <<"registeredDomainDelegationInfo">> => registered_domain_delegation_info(),
 %%   <<"resourceType">> => list(any()),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type domain() :: #{binary() => any()}.
 
@@ -1213,7 +1213,7 @@
 
 %% Example:
 %% attach_disk_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type attach_disk_result() :: #{binary() => any()}.
 
@@ -1225,13 +1225,13 @@
 
 %% Example:
 %% update_bucket_bundle_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type update_bucket_bundle_result() :: #{binary() => any()}.
 
 %% Example:
 %% reboot_instance_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type reboot_instance_result() :: #{binary() => any()}.
 
@@ -1268,7 +1268,7 @@
 %% Example:
 %% get_buckets_result() :: #{
 %%   <<"accountLevelBpaSync">> => account_level_bpa_sync(),
-%%   <<"buckets">> => list(bucket()()),
+%%   <<"buckets">> => list(bucket()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_buckets_result() :: #{binary() => any()}.
@@ -1281,13 +1281,13 @@
 
 %% Example:
 %% create_relational_database_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
 %% attach_load_balancer_tls_certificate_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type attach_load_balancer_tls_certificate_result() :: #{binary() => any()}.
 
@@ -1308,7 +1308,7 @@
 
 %% Example:
 %% get_load_balancer_tls_certificates_result() :: #{
-%%   <<"tlsCertificates">> => list(load_balancer_tls_certificate()())
+%%   <<"tlsCertificates">> => list(load_balancer_tls_certificate())
 %% }
 -type get_load_balancer_tls_certificates_result() :: #{binary() => any()}.
 
@@ -1323,7 +1323,7 @@
 
 %% Example:
 %% delete_contact_method_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_contact_method_result() :: #{binary() => any()}.
 
@@ -1339,7 +1339,7 @@
 %%   <<"relationalDatabaseBlueprintId">> := string(),
 %%   <<"relationalDatabaseBundleId">> := string(),
 %%   <<"relationalDatabaseName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_relational_database_request() :: #{binary() => any()}.
 
@@ -1347,13 +1347,13 @@
 %% get_relational_database_log_events_result() :: #{
 %%   <<"nextBackwardToken">> => string(),
 %%   <<"nextForwardToken">> => string(),
-%%   <<"resourceLogEvents">> => list(log_event()())
+%%   <<"resourceLogEvents">> => list(log_event())
 %% }
 -type get_relational_database_log_events_result() :: #{binary() => any()}.
 
 %% Example:
 %% renewal_summary() :: #{
-%%   <<"domainValidationRecords">> => list(domain_validation_record()()),
+%%   <<"domainValidationRecords">> => list(domain_validation_record()),
 %%   <<"renewalStatus">> => list(any()),
 %%   <<"renewalStatusReason">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -1364,28 +1364,28 @@
 %% create_distribution_request() :: #{
 %%   <<"bundleId">> := string(),
 %%   <<"cacheBehaviorSettings">> => cache_settings(),
-%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()()),
+%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
 %%   <<"certificateName">> => string(),
 %%   <<"defaultCacheBehavior">> := cache_behavior(),
 %%   <<"distributionName">> := string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"origin">> := input_origin(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"viewerMinimumTlsProtocolVersion">> => list(any())
 %% }
 -type create_distribution_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_instances_request() :: #{
-%%   <<"addOns">> => list(add_on_request()()),
+%%   <<"addOns">> => list(add_on_request()),
 %%   <<"availabilityZone">> := string(),
 %%   <<"blueprintId">> := string(),
 %%   <<"bundleId">> := string(),
 %%   <<"customImageName">> => string(),
-%%   <<"instanceNames">> := list(string()()),
+%%   <<"instanceNames">> := list(string()),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"keyPairName">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"userData">> => string()
 %% }
 -type create_instances_request() :: #{binary() => any()}.
@@ -1408,14 +1408,14 @@
 %% create_certificate_request() :: #{
 %%   <<"certificateName">> := string(),
 %%   <<"domainName">> := string(),
-%%   <<"subjectAlternativeNames">> => list(string()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"subjectAlternativeNames">> => list(string()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_certificate_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_container_service_powers_result() :: #{
-%%   <<"powers">> => list(container_service_power()())
+%%   <<"powers">> => list(container_service_power())
 %% }
 -type get_container_service_powers_result() :: #{binary() => any()}.
 
@@ -1429,7 +1429,7 @@
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"resourceName">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1448,7 +1448,7 @@
 %% Example:
 %% instance_hardware() :: #{
 %%   <<"cpuCount">> => integer(),
-%%   <<"disks">> => list(disk()()),
+%%   <<"disks">> => list(disk()),
 %%   <<"ramSizeInGb">> => float()
 %% }
 -type instance_hardware() :: #{binary() => any()}.
@@ -1467,7 +1467,7 @@
 
 %% Example:
 %% get_bundles_result() :: #{
-%%   <<"bundles">> => list(bundle()()),
+%%   <<"bundles">> => list(bundle()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_bundles_result() :: #{binary() => any()}.
@@ -1499,7 +1499,7 @@
 
 %% Example:
 %% create_relational_database_from_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_relational_database_from_snapshot_result() :: #{binary() => any()}.
 
@@ -1525,7 +1525,7 @@
 
 %% Example:
 %% create_disk_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_disk_snapshot_result() :: #{binary() => any()}.
 
@@ -1551,7 +1551,7 @@
 %% instance_snapshot() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"fromAttachedDisks">> => list(disk()()),
+%%   <<"fromAttachedDisks">> => list(disk()),
 %%   <<"fromBlueprintId">> => string(),
 %%   <<"fromBundleId">> => string(),
 %%   <<"fromInstanceArn">> => string(),
@@ -1564,7 +1564,7 @@
 %%   <<"sizeInGb">> => integer(),
 %%   <<"state">> => list(any()),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type instance_snapshot() :: #{binary() => any()}.
 
@@ -1604,7 +1604,7 @@
 %% auto_snapshot_details() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"date">> => string(),
-%%   <<"fromAttachedDisks">> => list(attached_disk()()),
+%%   <<"fromAttachedDisks">> => list(attached_disk()),
 %%   <<"status">> => list(any())
 %% }
 -type auto_snapshot_details() :: #{binary() => any()}.
@@ -1615,7 +1615,7 @@
 %%   <<"certificateDetail">> => certificate(),
 %%   <<"certificateName">> => string(),
 %%   <<"domainName">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type certificate_summary() :: #{binary() => any()}.
 
@@ -1638,14 +1638,14 @@
 
 %% Example:
 %% create_load_balancer_request() :: #{
-%%   <<"certificateAlternativeNames">> => list(string()()),
+%%   <<"certificateAlternativeNames">> => list(string()),
 %%   <<"certificateDomainName">> => string(),
 %%   <<"certificateName">> => string(),
 %%   <<"healthCheckPath">> => string(),
 %%   <<"instancePort">> := integer(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"loadBalancerName">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"tlsPolicyName">> => string()
 %% }
 -type create_load_balancer_request() :: #{binary() => any()}.
@@ -1666,7 +1666,7 @@
 %%   <<"sizeInGb">> => integer(),
 %%   <<"state">> => string(),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type relational_database_snapshot() :: #{binary() => any()}.
 
@@ -1679,7 +1679,7 @@
 
 %% Example:
 %% set_ip_address_type_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type set_ip_address_type_result() :: #{binary() => any()}.
 
@@ -1699,26 +1699,26 @@
 %% Example:
 %% instance_networking() :: #{
 %%   <<"monthlyTransfer">> => monthly_transfer(),
-%%   <<"ports">> => list(instance_port_info()())
+%%   <<"ports">> => list(instance_port_info())
 %% }
 -type instance_networking() :: #{binary() => any()}.
 
 %% Example:
 %% get_active_names_result() :: #{
-%%   <<"activeNames">> => list(string()()),
+%%   <<"activeNames">> => list(string()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_active_names_result() :: #{binary() => any()}.
 
 %% Example:
 %% reboot_relational_database_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type reboot_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
 %% setup_instance_https_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type setup_instance_https_result() :: #{binary() => any()}.
 
@@ -1766,18 +1766,18 @@
 
 %% Example:
 %% delete_relational_database_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
 %% region() :: #{
-%%   <<"availabilityZones">> => list(availability_zone()()),
+%%   <<"availabilityZones">> => list(availability_zone()),
 %%   <<"continentCode">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"name">> => list(any()),
-%%   <<"relationalDatabaseAvailabilityZones">> => list(availability_zone()())
+%%   <<"relationalDatabaseAvailabilityZones">> => list(availability_zone())
 %% }
 -type region() :: #{binary() => any()}.
 
@@ -1790,7 +1790,7 @@
 
 %% Example:
 %% export_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type export_snapshot_result() :: #{binary() => any()}.
 
@@ -1815,7 +1815,7 @@
 
 %% Example:
 %% detach_static_ip_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type detach_static_ip_result() :: #{binary() => any()}.
 
@@ -1828,7 +1828,7 @@
 
 %% Example:
 %% get_distribution_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()()),
+%%   <<"metricData">> => list(metric_datapoint()),
 %%   <<"metricName">> => list(any())
 %% }
 -type get_distribution_metric_data_result() :: #{binary() => any()}.
@@ -1849,13 +1849,13 @@
 %% Example:
 %% get_load_balancer_tls_policies_result() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"tlsPolicies">> => list(load_balancer_tls_policy()())
+%%   <<"tlsPolicies">> => list(load_balancer_tls_policy())
 %% }
 -type get_load_balancer_tls_policies_result() :: #{binary() => any()}.
 
 %% Example:
 %% resource_budget_estimate() :: #{
-%%   <<"costEstimates">> => list(cost_estimate()()),
+%%   <<"costEstimates">> => list(cost_estimate()),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"resourceName">> => string(),
 %%   <<"resourceType">> => list(any()),
@@ -1865,7 +1865,7 @@
 
 %% Example:
 %% get_relational_database_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()()),
+%%   <<"metricData">> => list(metric_datapoint()),
 %%   <<"metricName">> => list(any())
 %% }
 -type get_relational_database_metric_data_result() :: #{binary() => any()}.
@@ -1878,14 +1878,14 @@
 
 %% Example:
 %% create_disk_from_snapshot_request() :: #{
-%%   <<"addOns">> => list(add_on_request()()),
+%%   <<"addOns">> => list(add_on_request()),
 %%   <<"availabilityZone">> := string(),
 %%   <<"diskName">> := string(),
 %%   <<"diskSnapshotName">> => string(),
 %%   <<"restoreDate">> => string(),
 %%   <<"sizeInGb">> := integer(),
 %%   <<"sourceDiskName">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"useLatestRestorableAutoSnapshot">> => boolean()
 %% }
 -type create_disk_from_snapshot_request() :: #{binary() => any()}.
@@ -1900,13 +1900,13 @@
 %% Example:
 %% create_domain_request() :: #{
 %%   <<"domainName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_domain_request() :: #{binary() => any()}.
 
 %% Example:
 %% test_alarm_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type test_alarm_result() :: #{binary() => any()}.
 
@@ -1918,20 +1918,20 @@
 
 %% Example:
 %% create_cloud_formation_stack_request() :: #{
-%%   <<"instances">> := list(instance_entry()())
+%%   <<"instances">> := list(instance_entry())
 %% }
 -type create_cloud_formation_stack_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_known_host_keys_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_known_host_keys_result() :: #{binary() => any()}.
 
 %% Example:
 %% setup_request() :: #{
 %%   <<"certificateProvider">> => list(any()),
-%%   <<"domainNames">> => list(string()()),
+%%   <<"domainNames">> => list(string()),
 %%   <<"instanceName">> => string()
 %% }
 -type setup_request() :: #{binary() => any()}.
@@ -1957,7 +1957,7 @@
 
 %% Example:
 %% put_alarm_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type put_alarm_result() :: #{binary() => any()}.
 
@@ -1976,7 +1976,7 @@
 %% Example:
 %% update_distribution_request() :: #{
 %%   <<"cacheBehaviorSettings">> => cache_settings(),
-%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()()),
+%%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
 %%   <<"certificateName">> => string(),
 %%   <<"defaultCacheBehavior">> => cache_behavior(),
 %%   <<"distributionName">> := string(),
@@ -2035,14 +2035,14 @@
 %%   <<"scale">> => integer(),
 %%   <<"state">> => list(any()),
 %%   <<"stateDetail">> => container_service_state_detail(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"url">> => string()
 %% }
 -type container_service() :: #{binary() => any()}.
 
 %% Example:
 %% get_relational_database_bundles_result() :: #{
-%%   <<"bundles">> => list(relational_database_bundle()()),
+%%   <<"bundles">> => list(relational_database_bundle()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_relational_database_bundles_result() :: #{binary() => any()}.
@@ -2062,7 +2062,7 @@
 %%   <<"accessLogConfig">> => bucket_access_log_config(),
 %%   <<"accessRules">> => access_rules(),
 %%   <<"bucketName">> := string(),
-%%   <<"readonlyAccessAccounts">> => list(string()()),
+%%   <<"readonlyAccessAccounts">> => list(string()),
 %%   <<"versioning">> => string()
 %% }
 -type update_bucket_request() :: #{binary() => any()}.
@@ -2075,24 +2075,24 @@
 
 %% Example:
 %% create_instance_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_instance_snapshot_result() :: #{binary() => any()}.
 
 %% Example:
 %% attach_instances_to_load_balancer_request() :: #{
-%%   <<"instanceNames">> := list(string()()),
+%%   <<"instanceNames">> := list(string()),
 %%   <<"loadBalancerName">> := string()
 %% }
 -type attach_instances_to_load_balancer_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_disk_request() :: #{
-%%   <<"addOns">> => list(add_on_request()()),
+%%   <<"addOns">> => list(add_on_request()),
 %%   <<"availabilityZone">> := string(),
 %%   <<"diskName">> := string(),
 %%   <<"sizeInGb">> := integer(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_disk_request() :: #{binary() => any()}.
 
@@ -2125,7 +2125,7 @@
 %% create_relational_database_snapshot_request() :: #{
 %%   <<"relationalDatabaseName">> := string(),
 %%   <<"relationalDatabaseSnapshotName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_relational_database_snapshot_request() :: #{binary() => any()}.
 
@@ -2145,7 +2145,7 @@
 
 %% Example:
 %% load_balancer_tls_certificate_renewal_summary() :: #{
-%%   <<"domainValidationOptions">> => list(load_balancer_tls_certificate_domain_validation_option()()),
+%%   <<"domainValidationOptions">> => list(load_balancer_tls_certificate_domain_validation_option()),
 %%   <<"renewalStatus">> => list(any())
 %% }
 -type load_balancer_tls_certificate_renewal_summary() :: #{binary() => any()}.
@@ -2154,7 +2154,7 @@
 %% instance_snapshot_info() :: #{
 %%   <<"fromBlueprintId">> => string(),
 %%   <<"fromBundleId">> => string(),
-%%   <<"fromDiskInfo">> => list(disk_info()())
+%%   <<"fromDiskInfo">> => list(disk_info())
 %% }
 -type instance_snapshot_info() :: #{binary() => any()}.
 
@@ -2169,7 +2169,7 @@
 
 %% Example:
 %% get_cost_estimate_result() :: #{
-%%   <<"resourcesBudgetEstimate">> => list(resource_budget_estimate()())
+%%   <<"resourcesBudgetEstimate">> => list(resource_budget_estimate())
 %% }
 -type get_cost_estimate_result() :: #{binary() => any()}.
 
@@ -2234,7 +2234,7 @@
 
 %% Example:
 %% create_disk_from_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_disk_from_snapshot_result() :: #{binary() => any()}.
 
@@ -2252,14 +2252,14 @@
 
 %% Example:
 %% get_domains_result() :: #{
-%%   <<"domains">> => list(domain()()),
+%%   <<"domains">> => list(domain()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_domains_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_bucket_access_keys_result() :: #{
-%%   <<"accessKeys">> => list(access_key()())
+%%   <<"accessKeys">> => list(access_key())
 %% }
 -type get_bucket_access_keys_result() :: #{binary() => any()}.
 
@@ -2279,13 +2279,13 @@
 %%   <<"sizeInGb">> => integer(),
 %%   <<"state">> => list(any()),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type disk_snapshot() :: #{binary() => any()}.
 
 %% Example:
 %% delete_bucket_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_bucket_result() :: #{binary() => any()}.
 
@@ -2293,10 +2293,10 @@
 %% instance_access_details() :: #{
 %%   <<"certKey">> => string(),
 %%   <<"expiresAt">> => non_neg_integer(),
-%%   <<"hostKeys">> => list(host_key_attributes()()),
+%%   <<"hostKeys">> => list(host_key_attributes()),
 %%   <<"instanceName">> => string(),
 %%   <<"ipAddress">> => string(),
-%%   <<"ipv6Addresses">> => list(string()()),
+%%   <<"ipv6Addresses">> => list(string()),
 %%   <<"password">> => string(),
 %%   <<"passwordData">> => password_data(),
 %%   <<"privateKey">> => string(),
@@ -2307,7 +2307,7 @@
 
 %% Example:
 %% get_key_pairs_result() :: #{
-%%   <<"keyPairs">> => list(key_pair()()),
+%%   <<"keyPairs">> => list(key_pair()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_key_pairs_result() :: #{binary() => any()}.
@@ -2357,13 +2357,13 @@
 
 %% Example:
 %% update_load_balancer_attribute_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type update_load_balancer_attribute_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_bucket_access_key_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_bucket_access_key_result() :: #{binary() => any()}.
 
@@ -2377,7 +2377,7 @@
 
 %% Example:
 %% get_instance_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()()),
+%%   <<"metricData">> => list(metric_datapoint()),
 %%   <<"metricName">> => list(any())
 %% }
 -type get_instance_metric_data_result() :: #{binary() => any()}.
@@ -2411,13 +2411,13 @@
 
 %% Example:
 %% delete_load_balancer_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_load_balancer_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_instances_result() :: #{
-%%   <<"instances">> => list(instance()()),
+%%   <<"instances">> => list(instance()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_instances_result() :: #{binary() => any()}.
@@ -2425,7 +2425,7 @@
 %% Example:
 %% update_bucket_result() :: #{
 %%   <<"bucket">> => bucket(),
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type update_bucket_result() :: #{binary() => any()}.
 
@@ -2450,7 +2450,7 @@
 
 %% Example:
 %% detach_disk_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type detach_disk_result() :: #{binary() => any()}.
 
@@ -2464,7 +2464,7 @@
 
 %% Example:
 %% get_distributions_result() :: #{
-%%   <<"distributions">> => list(lightsail_distribution()()),
+%%   <<"distributions">> => list(lightsail_distribution()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_distributions_result() :: #{binary() => any()}.
@@ -2478,7 +2478,7 @@
 %%   <<"name">> => string(),
 %%   <<"resourceType">> => list(any()),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type key_pair() :: #{binary() => any()}.
 
@@ -2511,7 +2511,7 @@
 %% Example:
 %% create_bucket_result() :: #{
 %%   <<"bucket">> => bucket(),
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_bucket_result() :: #{binary() => any()}.
 
@@ -2529,7 +2529,7 @@
 
 %% Example:
 %% allocate_static_ip_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type allocate_static_ip_result() :: #{binary() => any()}.
 
@@ -2575,7 +2575,7 @@
 
 %% Example:
 %% copy_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type copy_snapshot_result() :: #{binary() => any()}.
 
@@ -2600,7 +2600,7 @@
 %% Example:
 %% setup_instance_https_request() :: #{
 %%   <<"certificateProvider">> := list(any()),
-%%   <<"domainNames">> := list(string()()),
+%%   <<"domainNames">> := list(string()),
 %%   <<"emailAddress">> := string(),
 %%   <<"instanceName">> := string()
 %% }
@@ -2615,13 +2615,13 @@
 
 %% Example:
 %% get_relational_database_log_streams_result() :: #{
-%%   <<"logStreams">> => list(string()())
+%%   <<"logStreams">> => list(string())
 %% }
 -type get_relational_database_log_streams_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_distribution_bundles_result() :: #{
-%%   <<"bundles">> => list(distribution_bundle()())
+%%   <<"bundles">> => list(distribution_bundle())
 %% }
 -type get_distribution_bundles_result() :: #{binary() => any()}.
 
@@ -2635,13 +2635,13 @@
 %% Example:
 %% get_relational_database_snapshots_result() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"relationalDatabaseSnapshots">> => list(relational_database_snapshot()())
+%%   <<"relationalDatabaseSnapshots">> => list(relational_database_snapshot())
 %% }
 -type get_relational_database_snapshots_result() :: #{binary() => any()}.
 
 %% Example:
 %% container_services_list_result() :: #{
-%%   <<"containerServices">> => list(container_service()())
+%%   <<"containerServices">> => list(container_service())
 %% }
 -type container_services_list_result() :: #{binary() => any()}.
 
@@ -2656,7 +2656,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"domainName">> => string(),
-%%   <<"domainValidationRecords">> => list(domain_validation_record()()),
+%%   <<"domainValidationRecords">> => list(domain_validation_record()),
 %%   <<"eligibleToRenew">> => string(),
 %%   <<"inUseResourceCount">> => integer(),
 %%   <<"issuedAt">> => non_neg_integer(),
@@ -2671,9 +2671,9 @@
 %%   <<"revokedAt">> => non_neg_integer(),
 %%   <<"serialNumber">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"subjectAlternativeNames">> => list(string()()),
+%%   <<"subjectAlternativeNames">> => list(string()),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type certificate() :: #{binary() => any()}.
 
@@ -2686,7 +2686,7 @@
 
 %% Example:
 %% enable_add_on_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type enable_add_on_result() :: #{binary() => any()}.
 
@@ -2704,13 +2704,13 @@
 
 %% Example:
 %% update_domain_entry_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type update_domain_entry_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_bucket_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()()),
+%%   <<"metricData">> => list(metric_datapoint()),
 %%   <<"metricName">> => list(any())
 %% }
 -type get_bucket_metric_data_result() :: #{binary() => any()}.
@@ -2732,12 +2732,12 @@
 %%   <<"location">> => resource_location(),
 %%   <<"name">> => string(),
 %%   <<"objectVersioning">> => string(),
-%%   <<"readonlyAccessAccounts">> => list(string()()),
+%%   <<"readonlyAccessAccounts">> => list(string()),
 %%   <<"resourceType">> => string(),
-%%   <<"resourcesReceivingAccess">> => list(resource_receiving_access()()),
+%%   <<"resourcesReceivingAccess">> => list(resource_receiving_access()),
 %%   <<"state">> => bucket_state(),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"url">> => string()
 %% }
 -type bucket() :: #{binary() => any()}.
@@ -2753,7 +2753,7 @@
 %%   <<"bucketName">> := string(),
 %%   <<"bundleId">> := string(),
 %%   <<"enableObjectVersioning">> => boolean(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_bucket_request() :: #{binary() => any()}.
 
@@ -2790,7 +2790,7 @@
 
 %% Example:
 %% instance() :: #{
-%%   <<"addOns">> => list(add_on()()),
+%%   <<"addOns">> => list(add_on()),
 %%   <<"arn">> => string(),
 %%   <<"blueprintId">> => string(),
 %%   <<"blueprintName">> => string(),
@@ -2798,7 +2798,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"hardware">> => instance_hardware(),
 %%   <<"ipAddressType">> => list(any()),
-%%   <<"ipv6Addresses">> => list(string()()),
+%%   <<"ipv6Addresses">> => list(string()),
 %%   <<"isStaticIp">> => boolean(),
 %%   <<"location">> => resource_location(),
 %%   <<"metadataOptions">> => instance_metadata_options(),
@@ -2810,7 +2810,7 @@
 %%   <<"sshKeyName">> => string(),
 %%   <<"state">> => instance_state(),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"username">> => string()
 %% }
 -type instance() :: #{binary() => any()}.
@@ -2843,7 +2843,7 @@
 
 %% Example:
 %% create_instances_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_instances_result() :: #{binary() => any()}.
 
@@ -2870,7 +2870,7 @@
 %% Example:
 %% create_key_pair_request() :: #{
 %%   <<"keyPairName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_key_pair_request() :: #{binary() => any()}.
 
@@ -2893,7 +2893,7 @@
 %% Example:
 %% get_setup_history_result() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"setupHistory">> => list(setup_history()())
+%%   <<"setupHistory">> => list(setup_history())
 %% }
 -type get_setup_history_result() :: #{binary() => any()}.
 
@@ -2915,13 +2915,13 @@
 
 %% Example:
 %% update_relational_database_parameters_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type update_relational_database_parameters_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_instance_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_instance_result() :: #{binary() => any()}.
 
@@ -2933,10 +2933,10 @@
 
 %% Example:
 %% port_info() :: #{
-%%   <<"cidrListAliases">> => list(string()()),
-%%   <<"cidrs">> => list(string()()),
+%%   <<"cidrListAliases">> => list(string()),
+%%   <<"cidrs">> => list(string()),
 %%   <<"fromPort">> => integer(),
-%%   <<"ipv6Cidrs">> => list(string()()),
+%%   <<"ipv6Cidrs">> => list(string()),
 %%   <<"protocol">> => list(any()),
 %%   <<"toPort">> => integer()
 %% }
@@ -2952,7 +2952,7 @@
 
 %% Example:
 %% update_relational_database_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type update_relational_database_result() :: #{binary() => any()}.
 
@@ -2986,7 +2986,7 @@
 
 %% Example:
 %% delete_certificate_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_certificate_result() :: #{binary() => any()}.
 
@@ -3021,18 +3021,18 @@
 %%   <<"dnsName">> => string(),
 %%   <<"healthCheckPath">> => string(),
 %%   <<"httpsRedirectionEnabled">> => boolean(),
-%%   <<"instanceHealthSummary">> => list(instance_health_summary()()),
+%%   <<"instanceHealthSummary">> => list(instance_health_summary()),
 %%   <<"instancePort">> => integer(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"location">> => resource_location(),
 %%   <<"name">> => string(),
 %%   <<"protocol">> => list(any()),
-%%   <<"publicPorts">> => list(integer()()),
+%%   <<"publicPorts">> => list(integer()),
 %%   <<"resourceType">> => list(any()),
 %%   <<"state">> => list(any()),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()()),
-%%   <<"tlsCertificateSummaries">> => list(load_balancer_tls_certificate_summary()()),
+%%   <<"tags">> => list(tag()),
+%%   <<"tlsCertificateSummaries">> => list(load_balancer_tls_certificate_summary()),
 %%   <<"tlsPolicyName">> => string()
 %% }
 -type load_balancer() :: #{binary() => any()}.
@@ -3046,7 +3046,7 @@
 
 %% Example:
 %% disk() :: #{
-%%   <<"addOns">> => list(add_on()()),
+%%   <<"addOns">> => list(add_on()),
 %%   <<"arn">> => string(),
 %%   <<"attachedTo">> => string(),
 %%   <<"attachmentState">> => string(),
@@ -3063,13 +3063,13 @@
 %%   <<"sizeInGb">> => integer(),
 %%   <<"state">> => list(any()),
 %%   <<"supportCode">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type disk() :: #{binary() => any()}.
 
 %% Example:
 %% create_cloud_formation_stack_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_cloud_formation_stack_result() :: #{binary() => any()}.
 
@@ -3081,31 +3081,31 @@
 %%   <<"location">> => resource_location(),
 %%   <<"name">> => string(),
 %%   <<"resourceType">> => list(any()),
-%%   <<"sourceInfo">> => list(cloud_formation_stack_record_source_info()()),
+%%   <<"sourceInfo">> => list(cloud_formation_stack_record_source_info()),
 %%   <<"state">> => list(any())
 %% }
 -type cloud_formation_stack_record() :: #{binary() => any()}.
 
 %% Example:
 %% create_relational_database_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_relational_database_snapshot_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_load_balancer_tls_certificate_request() :: #{
-%%   <<"certificateAlternativeNames">> => list(string()()),
+%%   <<"certificateAlternativeNames">> => list(string()),
 %%   <<"certificateDomainName">> := string(),
 %%   <<"certificateName">> := string(),
 %%   <<"loadBalancerName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_load_balancer_tls_certificate_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_relational_database_parameters_result() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"parameters">> => list(relational_database_parameter()())
+%%   <<"parameters">> => list(relational_database_parameter())
 %% }
 -type get_relational_database_parameters_result() :: #{binary() => any()}.
 
@@ -3162,7 +3162,7 @@
 
 %% Example:
 %% get_alarms_result() :: #{
-%%   <<"alarms">> => list(alarm()()),
+%%   <<"alarms">> => list(alarm()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_alarms_result() :: #{binary() => any()}.
@@ -3180,11 +3180,11 @@
 %%   <<"accessDirection">> => list(any()),
 %%   <<"accessFrom">> => string(),
 %%   <<"accessType">> => list(any()),
-%%   <<"cidrListAliases">> => list(string()()),
-%%   <<"cidrs">> => list(string()()),
+%%   <<"cidrListAliases">> => list(string()),
+%%   <<"cidrs">> => list(string()),
 %%   <<"commonName">> => string(),
 %%   <<"fromPort">> => integer(),
-%%   <<"ipv6Cidrs">> => list(string()()),
+%%   <<"ipv6Cidrs">> => list(string()),
 %%   <<"protocol">> => list(any()),
 %%   <<"toPort">> => integer()
 %% }
@@ -3193,20 +3193,20 @@
 %% Example:
 %% get_relational_database_events_result() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"relationalDatabaseEvents">> => list(relational_database_event()())
+%%   <<"relationalDatabaseEvents">> => list(relational_database_event())
 %% }
 -type get_relational_database_events_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_container_log_result() :: #{
-%%   <<"logEvents">> => list(container_service_log_event()()),
+%%   <<"logEvents">> => list(container_service_log_event()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_container_log_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_load_balancers_result() :: #{
-%%   <<"loadBalancers">> => list(load_balancer()()),
+%%   <<"loadBalancers">> => list(load_balancer()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_load_balancers_result() :: #{binary() => any()}.
@@ -3220,14 +3220,14 @@
 
 %% Example:
 %% get_certificates_result() :: #{
-%%   <<"certificates">> => list(certificate_summary()()),
+%%   <<"certificates">> => list(certificate_summary()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_certificates_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_relational_database_parameters_request() :: #{
-%%   <<"parameters">> := list(relational_database_parameter()()),
+%%   <<"parameters">> := list(relational_database_parameter()),
 %%   <<"relationalDatabaseName">> := string()
 %% }
 -type update_relational_database_parameters_request() :: #{binary() => any()}.
@@ -3258,7 +3258,7 @@
 
 %% Example:
 %% detach_instances_from_load_balancer_request() :: #{
-%%   <<"instanceNames">> := list(string()()),
+%%   <<"instanceNames">> := list(string()),
 %%   <<"loadBalancerName">> := string()
 %% }
 -type detach_instances_from_load_balancer_request() :: #{binary() => any()}.
@@ -3287,7 +3287,7 @@
 
 %% Example:
 %% get_container_images_result() :: #{
-%%   <<"containerImages">> => list(container_image()())
+%%   <<"containerImages">> => list(container_image())
 %% }
 -type get_container_images_result() :: #{binary() => any()}.
 
@@ -3302,7 +3302,7 @@
 %%   <<"failureReason">> => string(),
 %%   <<"percentageComplete">> => integer(),
 %%   <<"resourceName">> => string(),
-%%   <<"sessions">> => list(session()()),
+%%   <<"sessions">> => list(session()),
 %%   <<"status">> => list(any())
 %% }
 -type create_g_ui_session_access_details_result() :: #{binary() => any()}.
@@ -3329,7 +3329,7 @@
 %% get_operations_for_resource_result() :: #{
 %%   <<"nextPageCount">> => string(),
 %%   <<"nextPageToken">> => string(),
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type get_operations_for_resource_result() :: #{binary() => any()}.
 
@@ -3343,13 +3343,13 @@
 %% Example:
 %% create_bucket_access_key_result() :: #{
 %%   <<"accessKey">> => access_key(),
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_bucket_access_key_result() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type tag_resource_result() :: #{binary() => any()}.
 
@@ -3394,7 +3394,7 @@
 %% Example:
 %% get_relational_databases_result() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"relationalDatabases">> => list(relational_database()())
+%%   <<"relationalDatabases">> => list(relational_database())
 %% }
 -type get_relational_databases_result() :: #{binary() => any()}.
 
@@ -3406,7 +3406,7 @@
 
 %% Example:
 %% get_relational_database_blueprints_result() :: #{
-%%   <<"blueprints">> => list(relational_database_blueprint()()),
+%%   <<"blueprints">> => list(relational_database_blueprint()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_relational_database_blueprints_result() :: #{binary() => any()}.
@@ -3422,7 +3422,7 @@
 
 %% Example:
 %% attach_static_ip_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type attach_static_ip_result() :: #{binary() => any()}.
 
@@ -3446,13 +3446,13 @@
 
 %% Example:
 %% start_g_ui_session_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type start_g_ui_session_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_load_balancer_tls_certificate_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_load_balancer_tls_certificate_result() :: #{binary() => any()}.
 
@@ -3479,13 +3479,13 @@
 %% Example:
 %% get_static_ips_result() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"staticIps">> => list(static_ip()())
+%%   <<"staticIps">> => list(static_ip())
 %% }
 -type get_static_ips_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_cloud_formation_stack_records_result() :: #{
-%%   <<"cloudFormationStackRecords">> => list(cloud_formation_stack_record()()),
+%%   <<"cloudFormationStackRecords">> => list(cloud_formation_stack_record()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_cloud_formation_stack_records_result() :: #{binary() => any()}.
@@ -3518,7 +3518,7 @@
 
 %% Example:
 %% get_disks_result() :: #{
-%%   <<"disks">> => list(disk()()),
+%%   <<"disks">> => list(disk()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_disks_result() :: #{binary() => any()}.
@@ -3537,7 +3537,7 @@
 
 %% Example:
 %% get_load_balancer_metric_data_result() :: #{
-%%   <<"metricData">> => list(metric_datapoint()()),
+%%   <<"metricData">> => list(metric_datapoint()),
 %%   <<"metricName">> => list(any())
 %% }
 -type get_load_balancer_metric_data_result() :: #{binary() => any()}.
@@ -3551,7 +3551,7 @@
 
 %% Example:
 %% get_blueprints_result() :: #{
-%%   <<"blueprints">> => list(blueprint()()),
+%%   <<"blueprints">> => list(blueprint()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_blueprints_result() :: #{binary() => any()}.
@@ -3559,7 +3559,7 @@
 %% Example:
 %% query_string_object() :: #{
 %%   <<"option">> => boolean(),
-%%   <<"queryStringsAllowList">> => list(string()())
+%%   <<"queryStringsAllowList">> => list(string())
 %% }
 -type query_string_object() :: #{binary() => any()}.
 
@@ -3710,7 +3710,7 @@
 
 %% Example:
 %% cost_estimate() :: #{
-%%   <<"resultsByTime">> => list(estimate_by_time()()),
+%%   <<"resultsByTime">> => list(estimate_by_time()),
 %%   <<"usageType">> => string()
 %% }
 -type cost_estimate() :: #{binary() => any()}.
@@ -3731,7 +3731,7 @@
 
 %% Example:
 %% get_disk_snapshots_result() :: #{
-%%   <<"diskSnapshots">> => list(disk_snapshot()()),
+%%   <<"diskSnapshots">> => list(disk_snapshot()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type get_disk_snapshots_result() :: #{binary() => any()}.
@@ -3757,7 +3757,7 @@
 %%   <<"relationalDatabaseSnapshotName">> => string(),
 %%   <<"restoreTime">> => non_neg_integer(),
 %%   <<"sourceRelationalDatabaseName">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"useLatestRestorableTime">> => boolean()
 %% }
 -type create_relational_database_from_snapshot_request() :: #{binary() => any()}.
@@ -3780,20 +3780,20 @@
 
 %% Example:
 %% set_resource_access_for_bucket_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type set_resource_access_for_bucket_result() :: #{binary() => any()}.
 
 %% Example:
 %% cookie_object() :: #{
-%%   <<"cookiesAllowList">> => list(string()()),
+%%   <<"cookiesAllowList">> => list(string()),
 %%   <<"option">> => list(any())
 %% }
 -type cookie_object() :: #{binary() => any()}.
 
 %% Example:
 %% delete_auto_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_auto_snapshot_result() :: #{binary() => any()}.
 
@@ -3810,7 +3810,7 @@
 
 %% Example:
 %% delete_alarm_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_alarm_result() :: #{binary() => any()}.
 
@@ -3860,19 +3860,19 @@
 
 %% Example:
 %% create_contact_method_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_contact_method_result() :: #{binary() => any()}.
 
 %% Example:
 %% start_relational_database_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type start_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_relational_database_snapshot_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type delete_relational_database_snapshot_result() :: #{binary() => any()}.
 
@@ -3895,14 +3895,14 @@
 
 %% Example:
 %% create_disk_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type create_disk_result() :: #{binary() => any()}.
 
 %% Example:
 %% relational_database_event() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"eventCategories">> => list(string()()),
+%%   <<"eventCategories">> => list(string()),
 %%   <<"message">> => string(),
 %%   <<"resource">> => string()
 %% }
@@ -3910,13 +3910,13 @@
 
 %% Example:
 %% release_static_ip_result() :: #{
-%%   <<"operations">> => list(operation()())
+%%   <<"operations">> => list(operation())
 %% }
 -type release_static_ip_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_container_service_deployments_result() :: #{
-%%   <<"deployments">> => list(container_service_deployment()())
+%%   <<"deployments">> => list(container_service_deployment())
 %% }
 -type get_container_service_deployments_result() :: #{binary() => any()}.
 
@@ -3950,7 +3950,7 @@
 
 %% Example:
 %% get_contact_methods_result() :: #{
-%%   <<"contactMethods">> => list(contact_method()())
+%%   <<"contactMethods">> => list(contact_method())
 %% }
 -type get_contact_methods_result() :: #{binary() => any()}.
 

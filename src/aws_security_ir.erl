@@ -73,7 +73,7 @@
 %% get_membership_response() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"customerType">> => list(any()),
-%%   <<"incidentResponseTeam">> => list(incident_responder()()),
+%%   <<"incidentResponseTeam">> => list(incident_responder()),
 %%   <<"membershipActivationTimestamp">> => [non_neg_integer()],
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipDeactivationTimestamp">> => [non_neg_integer()],
@@ -81,7 +81,7 @@
 %%   <<"membershipName">> => string(),
 %%   <<"membershipStatus">> => list(any()),
 %%   <<"numberOfAccountsCovered">> => [float()],
-%%   <<"optInFeatures">> => list(opt_in_feature()()),
+%%   <<"optInFeatures">> => list(opt_in_feature()),
 %%   <<"region">> => list(any())
 %% }
 -type get_membership_response() :: #{binary() => any()}.
@@ -160,15 +160,15 @@
 %%   <<"clientToken">> => [string()],
 %%   <<"description">> := string(),
 %%   <<"engagementType">> := list(any()),
-%%   <<"impactedAccounts">> := list(string()()),
-%%   <<"impactedAwsRegions">> => list(impacted_aws_region()()),
-%%   <<"impactedServices">> => list(string()()),
+%%   <<"impactedAccounts">> := list(string()),
+%%   <<"impactedAwsRegions">> => list(impacted_aws_region()),
+%%   <<"impactedServices">> => list(string()),
 %%   <<"reportedIncidentStartDate">> := [non_neg_integer()],
 %%   <<"resolverType">> := list(any()),
 %%   <<"tags">> => map(),
-%%   <<"threatActorIpAddresses">> => list(threat_actor_ip()()),
+%%   <<"threatActorIpAddresses">> => list(threat_actor_ip()),
 %%   <<"title">> := string(),
-%%   <<"watchers">> := list(watcher()())
+%%   <<"watchers">> := list(watcher())
 %% }
 -type create_case_request() :: #{binary() => any()}.
 
@@ -191,7 +191,7 @@
 
 %% Example:
 %% batch_get_member_account_details_request() :: #{
-%%   <<"accountIds">> := list(string()())
+%%   <<"accountIds">> := list(string())
 %% }
 -type batch_get_member_account_details_request() :: #{binary() => any()}.
 
@@ -217,23 +217,23 @@
 %% get_case_response() :: #{
 %%   <<"actualIncidentStartDate">> => [non_neg_integer()],
 %%   <<"caseArn">> => string(),
-%%   <<"caseAttachments">> => list(case_attachment_attributes()()),
+%%   <<"caseAttachments">> => list(case_attachment_attributes()),
 %%   <<"caseStatus">> => list(any()),
 %%   <<"closedDate">> => [non_neg_integer()],
 %%   <<"closureCode">> => list(any()),
 %%   <<"createdDate">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"engagementType">> => list(any()),
-%%   <<"impactedAccounts">> => list(string()()),
-%%   <<"impactedAwsRegions">> => list(impacted_aws_region()()),
-%%   <<"impactedServices">> => list(string()()),
+%%   <<"impactedAccounts">> => list(string()),
+%%   <<"impactedAwsRegions">> => list(impacted_aws_region()),
+%%   <<"impactedServices">> => list(string()),
 %%   <<"lastUpdatedDate">> => [non_neg_integer()],
 %%   <<"pendingAction">> => list(any()),
 %%   <<"reportedIncidentStartDate">> => [non_neg_integer()],
 %%   <<"resolverType">> => list(any()),
-%%   <<"threatActorIpAddresses">> => list(threat_actor_ip()()),
+%%   <<"threatActorIpAddresses">> => list(threat_actor_ip()),
 %%   <<"title">> => string(),
-%%   <<"watchers">> => list(watcher()())
+%%   <<"watchers">> => list(watcher())
 %% }
 -type get_case_response() :: #{binary() => any()}.
 
@@ -247,7 +247,7 @@
 
 %% Example:
 %% list_cases_response() :: #{
-%%   <<"items">> => list(list_cases_item()()),
+%%   <<"items">> => list(list_cases_item()),
 %%   <<"nextToken">> => [string()],
 %%   <<"total">> => [float()]
 %% }
@@ -373,7 +373,7 @@
 
 %% Example:
 %% list_case_edits_response() :: #{
-%%   <<"items">> => list(case_edit_item()()),
+%%   <<"items">> => list(case_edit_item()),
 %%   <<"nextToken">> => [string()],
 %%   <<"total">> => [integer()]
 %% }
@@ -408,9 +408,9 @@
 
 %% Example:
 %% update_membership_request() :: #{
-%%   <<"incidentResponseTeam">> => list(incident_responder()()),
+%%   <<"incidentResponseTeam">> => list(incident_responder()),
 %%   <<"membershipName">> => string(),
-%%   <<"optInFeatures">> => list(opt_in_feature()())
+%%   <<"optInFeatures">> => list(opt_in_feature())
 %% }
 -type update_membership_request() :: #{binary() => any()}.
 
@@ -428,18 +428,18 @@
 %%   <<"actualIncidentStartDate">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"engagementType">> => list(any()),
-%%   <<"impactedAccountsToAdd">> => list(string()()),
-%%   <<"impactedAccountsToDelete">> => list(string()()),
-%%   <<"impactedAwsRegionsToAdd">> => list(impacted_aws_region()()),
-%%   <<"impactedAwsRegionsToDelete">> => list(impacted_aws_region()()),
-%%   <<"impactedServicesToAdd">> => list(string()()),
-%%   <<"impactedServicesToDelete">> => list(string()()),
+%%   <<"impactedAccountsToAdd">> => list(string()),
+%%   <<"impactedAccountsToDelete">> => list(string()),
+%%   <<"impactedAwsRegionsToAdd">> => list(impacted_aws_region()),
+%%   <<"impactedAwsRegionsToDelete">> => list(impacted_aws_region()),
+%%   <<"impactedServicesToAdd">> => list(string()),
+%%   <<"impactedServicesToDelete">> => list(string()),
 %%   <<"reportedIncidentStartDate">> => [non_neg_integer()],
-%%   <<"threatActorIpAddressesToAdd">> => list(threat_actor_ip()()),
-%%   <<"threatActorIpAddressesToDelete">> => list(threat_actor_ip()()),
+%%   <<"threatActorIpAddressesToAdd">> => list(threat_actor_ip()),
+%%   <<"threatActorIpAddressesToDelete">> => list(threat_actor_ip()),
 %%   <<"title">> => string(),
-%%   <<"watchersToAdd">> => list(watcher()()),
-%%   <<"watchersToDelete">> => list(watcher()())
+%%   <<"watchersToAdd">> => list(watcher()),
+%%   <<"watchersToDelete">> => list(watcher())
 %% }
 -type update_case_request() :: #{binary() => any()}.
 
@@ -461,7 +461,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -478,7 +478,7 @@
 
 %% Example:
 %% list_memberships_response() :: #{
-%%   <<"items">> => list(list_membership_item()()),
+%%   <<"items">> => list(list_membership_item()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_memberships_response() :: #{binary() => any()}.
@@ -493,7 +493,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }
@@ -520,8 +520,8 @@
 
 %% Example:
 %% batch_get_member_account_details_response() :: #{
-%%   <<"errors">> => list(get_membership_account_detail_error()()),
-%%   <<"items">> => list(get_membership_account_detail_item()())
+%%   <<"errors">> => list(get_membership_account_detail_error()),
+%%   <<"items">> => list(get_membership_account_detail_item())
 %% }
 -type batch_get_member_account_details_response() :: #{binary() => any()}.
 
@@ -563,9 +563,9 @@
 %% Example:
 %% create_membership_request() :: #{
 %%   <<"clientToken">> => [string()],
-%%   <<"incidentResponseTeam">> := list(incident_responder()()),
+%%   <<"incidentResponseTeam">> := list(incident_responder()),
 %%   <<"membershipName">> := string(),
-%%   <<"optInFeatures">> => list(opt_in_feature()()),
+%%   <<"optInFeatures">> => list(opt_in_feature()),
 %%   <<"tags">> => map()
 %% }
 -type create_membership_request() :: #{binary() => any()}.
@@ -581,7 +581,7 @@
 
 %% Example:
 %% list_comments_response() :: #{
-%%   <<"items">> => list(list_comments_item()()),
+%%   <<"items">> => list(list_comments_item()),
 %%   <<"nextToken">> => [string()],
 %%   <<"total">> => [integer()]
 %% }

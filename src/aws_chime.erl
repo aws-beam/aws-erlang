@@ -246,7 +246,7 @@
 
 %% Example:
 %% batch_delete_phone_number_request() :: #{
-%%   <<"PhoneNumberIds">> := list(string()())
+%%   <<"PhoneNumberIds">> := list(string())
 %% }
 -type batch_delete_phone_number_request() :: #{binary() => any()}.
 
@@ -260,14 +260,14 @@
 
 %% Example:
 %% batch_update_user_response() :: #{
-%%   <<"UserErrors">> => list(user_error()())
+%%   <<"UserErrors">> => list(user_error())
 %% }
 -type batch_update_user_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_create_room_membership_response() :: #{
-%%   <<"Errors">> => list(member_error()())
+%%   <<"Errors">> => list(member_error())
 %% }
 -type batch_create_room_membership_response() :: #{binary() => any()}.
 
@@ -287,7 +287,7 @@
 
 %% Example:
 %% batch_update_phone_number_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
 -type batch_update_phone_number_response() :: #{binary() => any()}.
 
@@ -310,7 +310,7 @@
 %% Example:
 %% list_phone_number_orders_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberOrders">> => list(phone_number_order()())
+%%   <<"PhoneNumberOrders">> => list(phone_number_order())
 %% }
 -type list_phone_number_orders_response() :: #{binary() => any()}.
 
@@ -333,7 +333,7 @@
 
 %% Example:
 %% batch_unsuspend_user_response() :: #{
-%%   <<"UserErrors">> => list(user_error()())
+%%   <<"UserErrors">> => list(user_error())
 %% }
 -type batch_unsuspend_user_response() :: #{binary() => any()}.
 
@@ -341,7 +341,7 @@
 %% Example:
 %% list_room_memberships_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RoomMemberships">> => list(room_membership()())
+%%   <<"RoomMemberships">> => list(room_membership())
 %% }
 -type list_room_memberships_response() :: #{binary() => any()}.
 
@@ -363,7 +363,7 @@
 
 %% Example:
 %% search_available_phone_numbers_response() :: #{
-%%   <<"E164PhoneNumbers">> => list(string()()),
+%%   <<"E164PhoneNumbers">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_available_phone_numbers_response() :: #{binary() => any()}.
@@ -372,7 +372,7 @@
 %% Example:
 %% list_rooms_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Rooms">> => list(room()())
+%%   <<"Rooms">> => list(room())
 %% }
 -type list_rooms_response() :: #{binary() => any()}.
 
@@ -469,7 +469,7 @@
 
 %% Example:
 %% phone_number() :: #{
-%%   <<"Associations">> => list(phone_number_association()()),
+%%   <<"Associations">> => list(phone_number_association()),
 %%   <<"CallingName">> => string(),
 %%   <<"CallingNameStatus">> => list(any()),
 %%   <<"Capabilities">> => phone_number_capabilities(),
@@ -544,7 +544,7 @@
 
 %% Example:
 %% create_phone_number_order_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()()),
+%%   <<"E164PhoneNumbers">> := list(string()),
 %%   <<"ProductType">> := list(any())
 %% }
 -type create_phone_number_order_request() :: #{binary() => any()}.
@@ -582,14 +582,14 @@
 
 %% Example:
 %% list_supported_phone_number_countries_response() :: #{
-%%   <<"PhoneNumberCountries">> => list(phone_number_country()())
+%%   <<"PhoneNumberCountries">> => list(phone_number_country())
 %% }
 -type list_supported_phone_number_countries_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_create_room_membership_request() :: #{
-%%   <<"MembershipItemList">> := list(membership_item()())
+%%   <<"MembershipItemList">> := list(membership_item())
 %% }
 -type batch_create_room_membership_request() :: #{binary() => any()}.
 
@@ -643,7 +643,7 @@
 
 %% Example:
 %% list_accounts_response() :: #{
-%%   <<"Accounts">> => list(account()()),
+%%   <<"Accounts">> => list(account()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_accounts_response() :: #{binary() => any()}.
@@ -666,7 +666,7 @@
 
 %% Example:
 %% batch_delete_phone_number_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
 -type batch_delete_phone_number_response() :: #{binary() => any()}.
 
@@ -712,7 +712,7 @@
 %% Example:
 %% list_users_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -734,7 +734,7 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"DefaultLicense">> => list(any()),
 %%   <<"Name">> => string(),
-%%   <<"SigninDelegateGroups">> => list(signin_delegate_group()()),
+%%   <<"SigninDelegateGroups">> => list(signin_delegate_group()),
 %%   <<"SupportedLicenses">> => list(list(any())())
 %% }
 -type account() :: #{binary() => any()}.
@@ -743,7 +743,7 @@
 %% Example:
 %% phone_number_order() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"OrderedPhoneNumbers">> => list(ordered_phone_number()()),
+%%   <<"OrderedPhoneNumbers">> => list(ordered_phone_number()),
 %%   <<"PhoneNumberOrderId">> => string(),
 %%   <<"ProductType">> => list(any()),
 %%   <<"Status">> => list(any()),
@@ -765,7 +765,7 @@
 
 %% Example:
 %% disassociate_signin_delegate_groups_from_account_request() :: #{
-%%   <<"GroupNames">> := list(string()())
+%%   <<"GroupNames">> := list(string())
 %% }
 -type disassociate_signin_delegate_groups_from_account_request() :: #{binary() => any()}.
 
@@ -872,7 +872,7 @@
 
 %% Example:
 %% invite_users_response() :: #{
-%%   <<"Invites">> => list(invite()())
+%%   <<"Invites">> => list(invite())
 %% }
 -type invite_users_response() :: #{binary() => any()}.
 
@@ -883,7 +883,7 @@
 
 %% Example:
 %% list_bots_response() :: #{
-%%   <<"Bots">> => list(bot()()),
+%%   <<"Bots">> => list(bot()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_bots_response() :: #{binary() => any()}.
@@ -944,7 +944,7 @@
 
 %% Example:
 %% batch_suspend_user_request() :: #{
-%%   <<"UserIdList">> := list(string()())
+%%   <<"UserIdList">> := list(string())
 %% }
 -type batch_suspend_user_request() :: #{binary() => any()}.
 
@@ -997,7 +997,7 @@
 
 %% Example:
 %% batch_unsuspend_user_request() :: #{
-%%   <<"UserIdList">> := list(string()())
+%%   <<"UserIdList">> := list(string())
 %% }
 -type batch_unsuspend_user_request() :: #{binary() => any()}.
 
@@ -1032,7 +1032,7 @@
 
 %% Example:
 %% invite_users_request() :: #{
-%%   <<"UserEmailList">> := list(string()()),
+%%   <<"UserEmailList">> := list(string()),
 %%   <<"UserType">> => list(any())
 %% }
 -type invite_users_request() :: #{binary() => any()}.
@@ -1129,7 +1129,7 @@
 %% Example:
 %% list_phone_numbers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number()())
+%%   <<"PhoneNumbers">> => list(phone_number())
 %% }
 -type list_phone_numbers_response() :: #{binary() => any()}.
 
@@ -1168,7 +1168,7 @@
 
 %% Example:
 %% associate_signin_delegate_groups_with_account_request() :: #{
-%%   <<"SigninDelegateGroups">> := list(signin_delegate_group()())
+%%   <<"SigninDelegateGroups">> := list(signin_delegate_group())
 %% }
 -type associate_signin_delegate_groups_with_account_request() :: #{binary() => any()}.
 
@@ -1276,14 +1276,14 @@
 
 %% Example:
 %% batch_suspend_user_response() :: #{
-%%   <<"UserErrors">> => list(user_error()())
+%%   <<"UserErrors">> => list(user_error())
 %% }
 -type batch_suspend_user_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_update_phone_number_request() :: #{
-%%   <<"UpdatePhoneNumberRequestItems">> := list(update_phone_number_request_item()())
+%%   <<"UpdatePhoneNumberRequestItems">> := list(update_phone_number_request_item())
 %% }
 -type batch_update_phone_number_request() :: #{binary() => any()}.
 
@@ -1357,7 +1357,7 @@
 
 %% Example:
 %% batch_update_user_request() :: #{
-%%   <<"UpdateUserRequestItems">> := list(update_user_request_item()())
+%%   <<"UpdateUserRequestItems">> := list(update_user_request_item())
 %% }
 -type batch_update_user_request() :: #{binary() => any()}.
 

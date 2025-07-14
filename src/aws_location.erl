@@ -150,7 +150,7 @@
 
 %% Example:
 %% list_geofence_collections_response() :: #{
-%%   <<"Entries">> := list(list_geofence_collections_response_entry()()),
+%%   <<"Entries">> := list(list_geofence_collections_response_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_geofence_collections_response() :: #{binary() => any()}.
@@ -184,14 +184,14 @@
 
 %% Example:
 %% batch_update_device_position_response() :: #{
-%%   <<"Errors">> := list(batch_update_device_position_error()())
+%%   <<"Errors">> := list(batch_update_device_position_error())
 %% }
 -type batch_update_device_position_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_device_positions_response() :: #{
-%%   <<"Entries">> := list(list_device_positions_response_entry()()),
+%%   <<"Entries">> := list(list_device_positions_response_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_device_positions_response() :: #{binary() => any()}.
@@ -213,7 +213,7 @@
 
 %% Example:
 %% batch_put_geofence_request() :: #{
-%%   <<"Entries">> := list(batch_put_geofence_request_entry()())
+%%   <<"Entries">> := list(batch_put_geofence_request_entry())
 %% }
 -type batch_put_geofence_request() :: #{binary() => any()}.
 
@@ -258,7 +258,7 @@
 
 %% Example:
 %% batch_delete_geofence_response() :: #{
-%%   <<"Errors">> := list(batch_delete_geofence_error()())
+%%   <<"Errors">> := list(batch_delete_geofence_error())
 %% }
 -type batch_delete_geofence_response() :: #{binary() => any()}.
 
@@ -361,7 +361,7 @@
 
 %% Example:
 %% list_keys_response() :: #{
-%%   <<"Entries">> := list(list_keys_response_entry()()),
+%%   <<"Entries">> := list(list_keys_response_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_keys_response() :: #{binary() => any()}.
@@ -369,7 +369,7 @@
 
 %% Example:
 %% calculate_route_response() :: #{
-%%   <<"Legs">> => list(leg()()),
+%%   <<"Legs">> => list(leg()),
 %%   <<"Summary">> => calculate_route_summary()
 %% }
 -type calculate_route_response() :: #{binary() => any()}.
@@ -398,7 +398,7 @@
 
 %% Example:
 %% search_place_index_for_position_response() :: #{
-%%   <<"Results">> := list(search_for_position_result()()),
+%%   <<"Results">> := list(search_for_position_result()),
 %%   <<"Summary">> := search_place_index_for_position_summary()
 %% }
 -type search_place_index_for_position_response() :: #{binary() => any()}.
@@ -418,7 +418,7 @@
 
 %% Example:
 %% list_trackers_response() :: #{
-%%   <<"Entries">> := list(list_trackers_response_entry()()),
+%%   <<"Entries">> := list(list_trackers_response_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_trackers_response() :: #{binary() => any()}.
@@ -485,9 +485,9 @@
 
 %% Example:
 %% search_for_suggestions_result() :: #{
-%%   <<"Categories">> => list(string()()),
+%%   <<"Categories">> => list(string()),
 %%   <<"PlaceId">> => string(),
-%%   <<"SupplementalCategories">> => list(string()()),
+%%   <<"SupplementalCategories">> => list(string()),
 %%   <<"Text">> => [string()]
 %% }
 -type search_for_suggestions_result() :: #{binary() => any()}.
@@ -502,8 +502,8 @@
 %%   <<"BiasPosition">> => list([float()]()),
 %%   <<"DataSource">> => [string()],
 %%   <<"FilterBBox">> => list([float()]()),
-%%   <<"FilterCategories">> => list(string()()),
-%%   <<"FilterCountries">> => list(string()()),
+%%   <<"FilterCategories">> => list(string()),
+%%   <<"FilterCountries">> => list(string()),
 %%   <<"Language">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"ResultBBox">> => list([float()]()),
@@ -522,14 +522,14 @@
 
 %% Example:
 %% batch_evaluate_geofences_request() :: #{
-%%   <<"DevicePositionUpdates">> := list(device_position_update()())
+%%   <<"DevicePositionUpdates">> := list(device_position_update())
 %% }
 -type batch_evaluate_geofences_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_geofences_response() :: #{
-%%   <<"Entries">> := list(list_geofence_response_entry()()),
+%%   <<"Entries">> := list(list_geofence_response_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_geofences_response() :: #{binary() => any()}.
@@ -692,7 +692,7 @@
 
 %% Example:
 %% search_place_index_for_text_response() :: #{
-%%   <<"Results">> := list(search_for_text_result()()),
+%%   <<"Results">> := list(search_for_text_result()),
 %%   <<"Summary">> := search_place_index_for_text_summary()
 %% }
 -type search_place_index_for_text_response() :: #{binary() => any()}.
@@ -748,7 +748,7 @@
 %%   <<"Ipv4Address">> => [string()],
 %%   <<"Position">> => list([float()]()),
 %%   <<"SampleTime">> => non_neg_integer(),
-%%   <<"WiFiAccessPoints">> => list(wi_fi_access_point()())
+%%   <<"WiFiAccessPoints">> => list(wi_fi_access_point())
 %% }
 -type device_state() :: #{binary() => any()}.
 
@@ -777,7 +777,7 @@
 
 %% Example:
 %% map_configuration_update() :: #{
-%%   <<"CustomLayers">> => list(string()()),
+%%   <<"CustomLayers">> => list(string()),
 %%   <<"PoliticalView">> => string()
 %% }
 -type map_configuration_update() :: #{binary() => any()}.
@@ -810,7 +810,7 @@
 
 %% Example:
 %% batch_get_device_position_request() :: #{
-%%   <<"DeviceIds">> := list(string()())
+%%   <<"DeviceIds">> := list(string())
 %% }
 -type batch_get_device_position_request() :: #{binary() => any()}.
 
@@ -881,8 +881,8 @@
 %% search_place_index_for_text_request() :: #{
 %%   <<"BiasPosition">> => list([float()]()),
 %%   <<"FilterBBox">> => list([float()]()),
-%%   <<"FilterCategories">> => list(string()()),
-%%   <<"FilterCountries">> => list(string()()),
+%%   <<"FilterCategories">> => list(string()),
+%%   <<"FilterCountries">> => list(string()),
 %%   <<"Key">> => string(),
 %%   <<"Language">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -948,8 +948,8 @@
 %%   <<"BiasPosition">> => list([float()]()),
 %%   <<"DataSource">> => [string()],
 %%   <<"FilterBBox">> => list([float()]()),
-%%   <<"FilterCategories">> => list(string()()),
-%%   <<"FilterCountries">> => list(string()()),
+%%   <<"FilterCategories">> => list(string()),
+%%   <<"FilterCountries">> => list(string()),
 %%   <<"Language">> => string(),
 %%   <<"MaxResults">> => [integer()],
 %%   <<"Text">> => string()
@@ -991,7 +991,7 @@
 
 %% Example:
 %% get_device_position_history_response() :: #{
-%%   <<"DevicePositions">> := list(device_position()()),
+%%   <<"DevicePositions">> := list(device_position()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_device_position_history_response() :: #{binary() => any()}.
@@ -999,7 +999,7 @@
 
 %% Example:
 %% batch_evaluate_geofences_response() :: #{
-%%   <<"Errors">> := list(batch_evaluate_geofences_error()())
+%%   <<"Errors">> := list(batch_evaluate_geofences_error())
 %% }
 -type batch_evaluate_geofences_response() :: #{binary() => any()}.
 
@@ -1027,9 +1027,9 @@
 
 %% Example:
 %% api_key_restrictions() :: #{
-%%   <<"AllowActions">> => list(string()()),
-%%   <<"AllowReferers">> => list(string()()),
-%%   <<"AllowResources">> => list(string()())
+%%   <<"AllowActions">> => list(string()),
+%%   <<"AllowReferers">> => list(string()),
+%%   <<"AllowResources">> => list(string())
 %% }
 -type api_key_restrictions() :: #{binary() => any()}.
 
@@ -1052,7 +1052,7 @@
 
 %% Example:
 %% list_place_indexes_response() :: #{
-%%   <<"Entries">> := list(list_place_indexes_response_entry()()),
+%%   <<"Entries">> := list(list_place_indexes_response_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_place_indexes_response() :: #{binary() => any()}.
@@ -1068,7 +1068,7 @@
 
 %% Example:
 %% list_maps_response() :: #{
-%%   <<"Entries">> := list(list_maps_response_entry()()),
+%%   <<"Entries">> := list(list_maps_response_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_maps_response() :: #{binary() => any()}.
@@ -1183,7 +1183,7 @@
 
 %% Example:
 %% calculate_route_matrix_response() :: #{
-%%   <<"RouteMatrix">> => list(list(route_matrix_entry()())()),
+%%   <<"RouteMatrix">> => list(list(route_matrix_entry())()),
 %%   <<"SnappedDeparturePositions">> => list(list([float()]())()),
 %%   <<"SnappedDestinationPositions">> => list(list([float()]())()),
 %%   <<"Summary">> => calculate_route_matrix_summary()
@@ -1220,7 +1220,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"FieldList">> => list(validation_exception_field()()),
+%%   <<"FieldList">> => list(validation_exception_field()),
 %%   <<"Message">> => [string()],
 %%   <<"Reason">> => string()
 %% }
@@ -1233,8 +1233,8 @@
 
 %% Example:
 %% batch_put_geofence_response() :: #{
-%%   <<"Errors">> := list(batch_put_geofence_error()()),
-%%   <<"Successes">> := list(batch_put_geofence_success()())
+%%   <<"Errors">> := list(batch_put_geofence_error()),
+%%   <<"Successes">> := list(batch_put_geofence_success())
 %% }
 -type batch_put_geofence_response() :: #{binary() => any()}.
 
@@ -1256,8 +1256,8 @@
 
 %% Example:
 %% batch_get_device_position_response() :: #{
-%%   <<"DevicePositions">> := list(device_position()()),
-%%   <<"Errors">> := list(batch_get_device_position_error()())
+%%   <<"DevicePositions">> := list(device_position()),
+%%   <<"Errors">> := list(batch_get_device_position_error())
 %% }
 -type batch_get_device_position_response() :: #{binary() => any()}.
 
@@ -1298,7 +1298,7 @@
 
 %% Example:
 %% batch_update_device_position_request() :: #{
-%%   <<"Updates">> := list(device_position_update()())
+%%   <<"Updates">> := list(device_position_update())
 %% }
 -type batch_update_device_position_request() :: #{binary() => any()}.
 
@@ -1320,7 +1320,7 @@
 %%   <<"LocalId">> => lte_local_id(),
 %%   <<"Mcc">> => [integer()],
 %%   <<"Mnc">> => [integer()],
-%%   <<"NetworkMeasurements">> => list(lte_network_measurements()()),
+%%   <<"NetworkMeasurements">> => list(lte_network_measurements()),
 %%   <<"NrCapable">> => [boolean()],
 %%   <<"Rsrp">> => integer(),
 %%   <<"Rsrq">> => float(),
@@ -1332,7 +1332,7 @@
 
 %% Example:
 %% cell_signals() :: #{
-%%   <<"LteCellDetails">> => list(lte_cell_details()())
+%%   <<"LteCellDetails">> => list(lte_cell_details())
 %% }
 -type cell_signals() :: #{binary() => any()}.
 
@@ -1349,7 +1349,7 @@
 
 %% Example:
 %% batch_delete_geofence_request() :: #{
-%%   <<"GeofenceIds">> := list(string()())
+%%   <<"GeofenceIds">> := list(string())
 %% }
 -type batch_delete_geofence_request() :: #{binary() => any()}.
 
@@ -1390,7 +1390,7 @@
 
 %% Example:
 %% map_configuration() :: #{
-%%   <<"CustomLayers">> => list(string()()),
+%%   <<"CustomLayers">> => list(string()),
 %%   <<"PoliticalView">> => string(),
 %%   <<"Style">> => string()
 %% }
@@ -1441,7 +1441,7 @@
 
 %% Example:
 %% list_tracker_consumers_response() :: #{
-%%   <<"ConsumerArns">> := list(string()()),
+%%   <<"ConsumerArns">> := list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_tracker_consumers_response() :: #{binary() => any()}.
@@ -1537,7 +1537,7 @@
 
 %% Example:
 %% list_route_calculators_response() :: #{
-%%   <<"Entries">> := list(list_route_calculators_response_entry()()),
+%%   <<"Entries">> := list(list_route_calculators_response_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_route_calculators_response() :: #{binary() => any()}.
@@ -1588,8 +1588,8 @@
 %% search_place_index_for_suggestions_request() :: #{
 %%   <<"BiasPosition">> => list([float()]()),
 %%   <<"FilterBBox">> => list([float()]()),
-%%   <<"FilterCategories">> => list(string()()),
-%%   <<"FilterCountries">> => list(string()()),
+%%   <<"FilterCategories">> => list(string()),
+%%   <<"FilterCountries">> => list(string()),
 %%   <<"Key">> => string(),
 %%   <<"Language">> => string(),
 %%   <<"MaxResults">> => [integer()],
@@ -1600,7 +1600,7 @@
 
 %% Example:
 %% batch_delete_device_position_history_response() :: #{
-%%   <<"Errors">> := list(batch_delete_device_position_history_error()())
+%%   <<"Errors">> := list(batch_delete_device_position_history_error())
 %% }
 -type batch_delete_device_position_history_response() :: #{binary() => any()}.
 
@@ -1611,7 +1611,7 @@
 
 %% Example:
 %% search_place_index_for_suggestions_response() :: #{
-%%   <<"Results">> := list(search_for_suggestions_result()()),
+%%   <<"Results">> := list(search_for_suggestions_result()),
 %%   <<"Summary">> := search_place_index_for_suggestions_summary()
 %% }
 -type search_place_index_for_suggestions_response() :: #{binary() => any()}.
@@ -1631,7 +1631,7 @@
 %%   <<"EndPosition">> => list([float()]()),
 %%   <<"Geometry">> => leg_geometry(),
 %%   <<"StartPosition">> => list([float()]()),
-%%   <<"Steps">> => list(step()())
+%%   <<"Steps">> => list(step())
 %% }
 -type leg() :: #{binary() => any()}.
 
@@ -1639,7 +1639,7 @@
 %% Example:
 %% place() :: #{
 %%   <<"AddressNumber">> => [string()],
-%%   <<"Categories">> => list(string()()),
+%%   <<"Categories">> => list(string()),
 %%   <<"Country">> => [string()],
 %%   <<"Geometry">> => place_geometry(),
 %%   <<"Interpolated">> => [boolean()],
@@ -1651,7 +1651,7 @@
 %%   <<"Street">> => [string()],
 %%   <<"SubMunicipality">> => [string()],
 %%   <<"SubRegion">> => [string()],
-%%   <<"SupplementalCategories">> => list(string()()),
+%%   <<"SupplementalCategories">> => list(string()),
 %%   <<"TimeZone">> => time_zone(),
 %%   <<"UnitNumber">> => [string()],
 %%   <<"UnitType">> => [string()]
@@ -1751,7 +1751,7 @@
 %% Example:
 %% forecast_geofence_events_response() :: #{
 %%   <<"DistanceUnit">> => string(),
-%%   <<"ForecastedEvents">> => list(forecasted_event()()),
+%%   <<"ForecastedEvents">> => list(forecasted_event()),
 %%   <<"NextToken">> => string(),
 %%   <<"SpeedUnit">> => string()
 %% }
@@ -1760,7 +1760,7 @@
 
 %% Example:
 %% batch_delete_device_position_history_request() :: #{
-%%   <<"DeviceIds">> := list(string()())
+%%   <<"DeviceIds">> := list(string())
 %% }
 -type batch_delete_device_position_history_request() :: #{binary() => any()}.
 

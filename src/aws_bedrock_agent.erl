@@ -174,7 +174,7 @@
 
 %% Example:
 %% validate_flow_definition_response() :: #{
-%%   <<"validations">> => list(flow_validation()())
+%%   <<"validations">> => list(flow_validation())
 %% }
 -type validate_flow_definition_response() :: #{binary() => any()}.
 
@@ -189,7 +189,7 @@
 %% Example:
 %% delete_knowledge_base_documents_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"documentIdentifiers">> := list(document_identifier()())
+%%   <<"documentIdentifiers">> := list(document_identifier())
 %% }
 -type delete_knowledge_base_documents_request() :: #{binary() => any()}.
 
@@ -263,7 +263,7 @@
 %%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()())
+%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item())
 %% }
 -type update_flow_alias_request() :: #{binary() => any()}.
 
@@ -316,7 +316,7 @@
 %% Example:
 %% text_prompt_template_configuration() :: #{
 %%   <<"cachePoint">> => cache_point_block(),
-%%   <<"inputVariables">> => list(prompt_input_variable()()),
+%%   <<"inputVariables">> => list(prompt_input_variable()),
 %%   <<"text">> => string()
 %% }
 -type text_prompt_template_configuration() :: #{binary() => any()}.
@@ -345,7 +345,7 @@
 %%   <<"flowId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type update_flow_alias_response() :: #{binary() => any()}.
@@ -362,8 +362,8 @@
 
 %% Example:
 %% query_generation_context() :: #{
-%%   <<"curatedQueries">> => list(curated_query()()),
-%%   <<"tables">> => list(query_generation_table()())
+%%   <<"curatedQueries">> => list(curated_query()),
+%%   <<"tables">> => list(query_generation_table())
 %% }
 -type query_generation_context() :: #{binary() => any()}.
 
@@ -407,7 +407,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"variants">> => list(prompt_variant()()),
+%%   <<"variants">> => list(prompt_variant()),
 %%   <<"version">> => string()
 %% }
 -type create_prompt_version_response() :: #{binary() => any()}.
@@ -554,7 +554,7 @@
 
 %% Example:
 %% pattern_object_filter_configuration() :: #{
-%%   <<"filters">> => list(pattern_object_filter()())
+%%   <<"filters">> => list(pattern_object_filter())
 %% }
 -type pattern_object_filter_configuration() :: #{binary() => any()}.
 
@@ -562,7 +562,7 @@
 %% Example:
 %% ingest_knowledge_base_documents_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"documents">> := list(knowledge_base_document()())
+%%   <<"documents">> := list(knowledge_base_document())
 %% }
 -type ingest_knowledge_base_documents_request() :: #{binary() => any()}.
 
@@ -607,7 +607,7 @@
 
 %% Example:
 %% list_agents_response() :: #{
-%%   <<"agentSummaries">> => list(agent_summary()()),
+%%   <<"agentSummaries">> => list(agent_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agents_response() :: #{binary() => any()}.
@@ -637,7 +637,7 @@
 %% Example:
 %% custom_transformation_configuration() :: #{
 %%   <<"intermediateStorage">> => intermediate_storage(),
-%%   <<"transformations">> => list(transformation()())
+%%   <<"transformations">> => list(transformation())
 %% }
 -type custom_transformation_configuration() :: #{binary() => any()}.
 
@@ -689,7 +689,7 @@
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"validations">> => list(flow_validation()()),
+%%   <<"validations">> => list(flow_validation()),
 %%   <<"version">> => string()
 %% }
 -type get_flow_response() :: #{binary() => any()}.
@@ -714,7 +714,7 @@
 %% Example:
 %% list_prompts_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"promptSummaries">> => list(prompt_summary()())
+%%   <<"promptSummaries">> => list(prompt_summary())
 %% }
 -type list_prompts_response() :: #{binary() => any()}.
 
@@ -733,7 +733,7 @@
 %%   <<"agentAliasName">> := string(),
 %%   <<"aliasInvocationState">> => list(any()),
 %%   <<"description">> => string(),
-%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()())
+%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item())
 %% }
 -type update_agent_alias_request() :: #{binary() => any()}.
 
@@ -741,7 +741,7 @@
 %% Example:
 %% prompt_override_configuration() :: #{
 %%   <<"overrideLambda">> => string(),
-%%   <<"promptConfigurations">> => list(prompt_configuration()())
+%%   <<"promptConfigurations">> => list(prompt_configuration())
 %% }
 -type prompt_override_configuration() :: #{binary() => any()}.
 
@@ -764,7 +764,7 @@
 
 %% Example:
 %% get_knowledge_base_documents_request() :: #{
-%%   <<"documentIdentifiers">> := list(document_identifier()())
+%%   <<"documentIdentifiers">> := list(document_identifier())
 %% }
 -type get_knowledge_base_documents_request() :: #{binary() => any()}.
 
@@ -772,9 +772,9 @@
 %% Example:
 %% flow_node() :: #{
 %%   <<"configuration">> => list(),
-%%   <<"inputs">> => list(flow_node_input()()),
+%%   <<"inputs">> => list(flow_node_input()),
 %%   <<"name">> => string(),
-%%   <<"outputs">> => list(flow_node_output()()),
+%%   <<"outputs">> => list(flow_node_output()),
 %%   <<"type">> => list(any())
 %% }
 -type flow_node() :: #{binary() => any()}.
@@ -878,8 +878,8 @@
 
 %% Example:
 %% flow_definition() :: #{
-%%   <<"connections">> => list(flow_connection()()),
-%%   <<"nodes">> => list(flow_node()())
+%%   <<"connections">> => list(flow_connection()),
+%%   <<"nodes">> => list(flow_node())
 %% }
 -type flow_definition() :: #{binary() => any()}.
 
@@ -942,7 +942,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"variants">> => list(prompt_variant()()),
+%%   <<"variants">> => list(prompt_variant()),
 %%   <<"version">> => string()
 %% }
 -type update_prompt_response() :: #{binary() => any()}.
@@ -1046,7 +1046,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1112,7 +1112,7 @@
 
 %% Example:
 %% ingest_knowledge_base_documents_response() :: #{
-%%   <<"documentDetails">> => list(knowledge_base_document_detail()())
+%%   <<"documentDetails">> => list(knowledge_base_document_detail())
 %% }
 -type ingest_knowledge_base_documents_response() :: #{binary() => any()}.
 
@@ -1168,7 +1168,7 @@
 %%   <<"flowId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type create_flow_alias_response() :: #{binary() => any()}.
@@ -1229,7 +1229,7 @@
 %% ingestion_job() :: #{
 %%   <<"dataSourceId">> => string(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"ingestionJobId">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"startedAt">> => non_neg_integer(),
@@ -1266,7 +1266,7 @@
 
 %% Example:
 %% hierarchical_chunking_configuration() :: #{
-%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()()),
+%%   <<"levelConfigurations">> => list(hierarchical_chunking_level_configuration()),
 %%   <<"overlapTokens">> => [integer()]
 %% }
 -type hierarchical_chunking_configuration() :: #{binary() => any()}.
@@ -1293,7 +1293,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"variants">> => list(prompt_variant()()),
+%%   <<"variants">> => list(prompt_variant()),
 %%   <<"version">> => string()
 %% }
 -type get_prompt_response() :: #{binary() => any()}.
@@ -1352,7 +1352,7 @@
 
 %% Example:
 %% list_flows_response() :: #{
-%%   <<"flowSummaries">> => list(flow_summary()()),
+%%   <<"flowSummaries">> => list(flow_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_flows_response() :: #{binary() => any()}.
@@ -1403,7 +1403,7 @@
 
 %% Example:
 %% list_agent_aliases_response() :: #{
-%%   <<"agentAliasSummaries">> => list(agent_alias_summary()()),
+%%   <<"agentAliasSummaries">> => list(agent_alias_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_aliases_response() :: #{binary() => any()}.
@@ -1426,7 +1426,7 @@
 %% knowledge_base() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseConfiguration">> => knowledge_base_configuration(),
 %%   <<"knowledgeBaseId">> => string(),
@@ -1441,7 +1441,7 @@
 
 %% Example:
 %% list_flow_versions_response() :: #{
-%%   <<"flowVersionSummaries">> => list(flow_version_summary()()),
+%%   <<"flowVersionSummaries">> => list(flow_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_flow_versions_response() :: #{binary() => any()}.
@@ -1453,7 +1453,7 @@
 %%   <<"concurrencyConfiguration">> => flow_alias_concurrency_configuration(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> := list(flow_alias_routing_configuration_list_item()),
 %%   <<"tags">> => map()
 %% }
 -type create_flow_alias_request() :: #{binary() => any()}.
@@ -1505,7 +1505,7 @@
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map(),
-%%   <<"variants">> => list(prompt_variant()())
+%%   <<"variants">> => list(prompt_variant())
 %% }
 -type create_prompt_request() :: #{binary() => any()}.
 
@@ -1550,8 +1550,8 @@
 
 %% Example:
 %% pattern_object_filter() :: #{
-%%   <<"exclusionFilters">> => list(string()()),
-%%   <<"inclusionFilters">> => list(string()()),
+%%   <<"exclusionFilters">> => list(string()),
+%%   <<"inclusionFilters">> => list(string()),
 %%   <<"objectType">> => string()
 %% }
 -type pattern_object_filter() :: #{binary() => any()}.
@@ -1601,7 +1601,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"variants">> => list(prompt_variant()()),
+%%   <<"variants">> => list(prompt_variant()),
 %%   <<"version">> => string()
 %% }
 -type create_prompt_response() :: #{binary() => any()}.
@@ -1645,7 +1645,7 @@
 
 %% Example:
 %% url_configuration() :: #{
-%%   <<"seedUrls">> => list(seed_url()())
+%%   <<"seedUrls">> => list(seed_url())
 %% }
 -type url_configuration() :: #{binary() => any()}.
 
@@ -1706,7 +1706,7 @@
 
 %% Example:
 %% list_knowledge_base_documents_response() :: #{
-%%   <<"documentDetails">> => list(knowledge_base_document_detail()()),
+%%   <<"documentDetails">> => list(knowledge_base_document_detail()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_knowledge_base_documents_response() :: #{binary() => any()}.
@@ -1789,7 +1789,7 @@
 
 %% Example:
 %% list_agent_knowledge_bases_response() :: #{
-%%   <<"agentKnowledgeBaseSummaries">> => list(agent_knowledge_base_summary()()),
+%%   <<"agentKnowledgeBaseSummaries">> => list(agent_knowledge_base_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_knowledge_bases_response() :: #{binary() => any()}.
@@ -1797,7 +1797,7 @@
 
 %% Example:
 %% list_data_sources_response() :: #{
-%%   <<"dataSourceSummaries">> => list(data_source_summary()()),
+%%   <<"dataSourceSummaries">> => list(data_source_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sources_response() :: #{binary() => any()}.
@@ -1851,7 +1851,7 @@
 %%   <<"customOrchestration">> => custom_orchestration(),
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"foundationModel">> => string(),
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
@@ -1860,7 +1860,7 @@
 %%   <<"orchestrationType">> => list(any()),
 %%   <<"preparedAt">> => non_neg_integer(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
-%%   <<"recommendedActions">> => list(string()()),
+%%   <<"recommendedActions">> => list(string()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent() :: #{binary() => any()}.
@@ -1882,7 +1882,7 @@
 %%   <<"flowId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_flow_alias_response() :: #{binary() => any()}.
@@ -1890,7 +1890,7 @@
 
 %% Example:
 %% list_ingestion_jobs_response() :: #{
-%%   <<"ingestionJobSummaries">> => list(ingestion_job_summary()()),
+%%   <<"ingestionJobSummaries">> => list(ingestion_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_ingestion_jobs_response() :: #{binary() => any()}.
@@ -1905,7 +1905,7 @@
 
 %% Example:
 %% list_ingestion_jobs_request() :: #{
-%%   <<"filters">> => list(ingestion_job_filter()()),
+%%   <<"filters">> => list(ingestion_job_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sortBy">> => ingestion_job_sort_by()
@@ -1921,7 +1921,7 @@
 %%   <<"aliasInvocationState">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_alias_summary() :: #{binary() => any()}.
@@ -2035,7 +2035,7 @@
 %%   <<"flowId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> => list(flow_alias_routing_configuration_list_item()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type flow_alias_summary() :: #{binary() => any()}.
@@ -2136,14 +2136,14 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"customerEncryptionKeyArn">> => string(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"foundationModel">> => string(),
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"instruction">> => string(),
 %%   <<"memoryConfiguration">> => memory_configuration(),
 %%   <<"promptOverrideConfiguration">> => prompt_override_configuration(),
-%%   <<"recommendedActions">> => list(string()()),
+%%   <<"recommendedActions">> => list(string()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"version">> => string()
 %% }
@@ -2207,7 +2207,7 @@
 %% Example:
 %% agent_alias() :: #{
 %%   <<"agentAliasArn">> => string(),
-%%   <<"agentAliasHistoryEvents">> => list(agent_alias_history_event()()),
+%%   <<"agentAliasHistoryEvents">> => list(agent_alias_history_event()),
 %%   <<"agentAliasId">> => string(),
 %%   <<"agentAliasName">> => string(),
 %%   <<"agentAliasStatus">> => list(any()),
@@ -2216,8 +2216,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
-%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()()),
+%%   <<"failureReasons">> => list(string()),
+%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type agent_alias() :: #{binary() => any()}.
@@ -2267,7 +2267,7 @@
 %%   <<"credentialsSecretArn">> => string(),
 %%   <<"domain">> => string(),
 %%   <<"hostType">> => list(any()),
-%%   <<"siteUrls">> => list(string()()),
+%%   <<"siteUrls">> => list(string()),
 %%   <<"tenantId">> => string()
 %% }
 -type share_point_source_configuration() :: #{binary() => any()}.
@@ -2276,8 +2276,8 @@
 %% Example:
 %% web_crawler_configuration() :: #{
 %%   <<"crawlerLimits">> => web_crawler_limits(),
-%%   <<"exclusionFilters">> => list(string()()),
-%%   <<"inclusionFilters">> => list(string()()),
+%%   <<"exclusionFilters">> => list(string()),
+%%   <<"inclusionFilters">> => list(string()),
 %%   <<"scope">> => list(any()),
 %%   <<"userAgent">> => string(),
 %%   <<"userAgentHeader">> => string()
@@ -2313,7 +2313,7 @@
 
 %% Example:
 %% list_agent_action_groups_response() :: #{
-%%   <<"actionGroupSummaries">> => list(action_group_summary()()),
+%%   <<"actionGroupSummaries">> => list(action_group_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_action_groups_response() :: #{binary() => any()}.
@@ -2346,7 +2346,7 @@
 %% ingestion_job_filter() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type ingestion_job_filter() :: #{binary() => any()}.
 
@@ -2438,7 +2438,7 @@
 %%   <<"defaultVariant">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"variants">> => list(prompt_variant()())
+%%   <<"variants">> => list(prompt_variant())
 %% }
 -type update_prompt_request() :: #{binary() => any()}.
 
@@ -2489,7 +2489,7 @@
 %% Example:
 %% tool_configuration() :: #{
 %%   <<"toolChoice">> => list(),
-%%   <<"tools">> => list(list()())
+%%   <<"tools">> => list(list())
 %% }
 -type tool_configuration() :: #{binary() => any()}.
 
@@ -2532,7 +2532,7 @@
 %%   <<"agentAliasName">> := string(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
 %%   <<"tags">> => map()
 %% }
 -type create_agent_alias_request() :: #{binary() => any()}.
@@ -2542,7 +2542,7 @@
 %% metadata_attribute_value() :: #{
 %%   <<"booleanValue">> => [boolean()],
 %%   <<"numberValue">> => float(),
-%%   <<"stringListValue">> => list(string()()),
+%%   <<"stringListValue">> => list(string()),
 %%   <<"stringValue">> => string(),
 %%   <<"type">> => list(any())
 %% }
@@ -2600,16 +2600,16 @@
 
 %% Example:
 %% condition_flow_node_configuration() :: #{
-%%   <<"conditions">> => list(flow_condition()())
+%%   <<"conditions">> => list(flow_condition())
 %% }
 -type condition_flow_node_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% chat_prompt_template_configuration() :: #{
-%%   <<"inputVariables">> => list(prompt_input_variable()()),
-%%   <<"messages">> => list(message()()),
-%%   <<"system">> => list(list()()),
+%%   <<"inputVariables">> => list(prompt_input_variable()),
+%%   <<"messages">> => list(message()),
+%%   <<"system">> => list(list()),
 %%   <<"toolConfiguration">> => tool_configuration()
 %% }
 -type chat_prompt_template_configuration() :: #{binary() => any()}.
@@ -2617,7 +2617,7 @@
 
 %% Example:
 %% list_agent_collaborators_response() :: #{
-%%   <<"agentCollaboratorSummaries">> => list(agent_collaborator_summary()()),
+%%   <<"agentCollaboratorSummaries">> => list(agent_collaborator_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_collaborators_response() :: #{binary() => any()}.
@@ -2662,7 +2662,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
@@ -2682,7 +2682,7 @@
 %% Example:
 %% agent_alias_history_event() :: #{
 %%   <<"endDate">> => non_neg_integer(),
-%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> => list(agent_alias_routing_configuration_list_item()),
 %%   <<"startDate">> => non_neg_integer()
 %% }
 -type agent_alias_history_event() :: #{binary() => any()}.
@@ -2728,7 +2728,7 @@
 
 %% Example:
 %% document_metadata() :: #{
-%%   <<"inlineAttributes">> => list(metadata_attribute()()),
+%%   <<"inlineAttributes">> => list(metadata_attribute()),
 %%   <<"s3Location">> => custom_s3_location(),
 %%   <<"type">> => list(any())
 %% }
@@ -2756,7 +2756,7 @@
 
 %% Example:
 %% list_flow_aliases_response() :: #{
-%%   <<"flowAliasSummaries">> => list(flow_alias_summary()()),
+%%   <<"flowAliasSummaries">> => list(flow_alias_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_flow_aliases_response() :: #{binary() => any()}.
@@ -2867,7 +2867,7 @@
 
 %% Example:
 %% list_knowledge_bases_response() :: #{
-%%   <<"knowledgeBaseSummaries">> => list(knowledge_base_summary()()),
+%%   <<"knowledgeBaseSummaries">> => list(knowledge_base_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_knowledge_bases_response() :: #{binary() => any()}.
@@ -2893,7 +2893,7 @@
 
 %% Example:
 %% get_knowledge_base_documents_response() :: #{
-%%   <<"documentDetails">> => list(knowledge_base_document_detail()())
+%%   <<"documentDetails">> => list(knowledge_base_document_detail())
 %% }
 -type get_knowledge_base_documents_response() :: #{binary() => any()}.
 
@@ -2911,7 +2911,7 @@
 
 %% Example:
 %% list_agent_versions_response() :: #{
-%%   <<"agentVersionSummaries">> => list(agent_version_summary()()),
+%%   <<"agentVersionSummaries">> => list(agent_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_versions_response() :: #{binary() => any()}.
@@ -3059,7 +3059,7 @@
 %%   <<"dataSourceConfiguration">> => data_source_configuration(),
 %%   <<"dataSourceId">> => string(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"name">> => string(),
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
@@ -3102,7 +3102,7 @@
 %% redshift_configuration() :: #{
 %%   <<"queryEngineConfiguration">> => redshift_query_engine_configuration(),
 %%   <<"queryGenerationConfiguration">> => query_generation_configuration(),
-%%   <<"storageConfigurations">> => list(redshift_query_engine_storage_configuration()())
+%%   <<"storageConfigurations">> => list(redshift_query_engine_storage_configuration())
 %% }
 -type redshift_configuration() :: #{binary() => any()}.
 
@@ -3157,7 +3157,7 @@
 
 %% Example:
 %% redshift_query_engine_aws_data_catalog_storage_configuration() :: #{
-%%   <<"tableNames">> => list(string()())
+%%   <<"tableNames">> => list(string())
 %% }
 -type redshift_query_engine_aws_data_catalog_storage_configuration() :: #{binary() => any()}.
 
@@ -3180,7 +3180,7 @@
 
 %% Example:
 %% query_generation_table() :: #{
-%%   <<"columns">> => list(query_generation_column()()),
+%%   <<"columns">> => list(query_generation_column()),
 %%   <<"description">> => string(),
 %%   <<"inclusion">> => list(any()),
 %%   <<"name">> => string()
@@ -3218,7 +3218,7 @@
 
 %% Example:
 %% delete_knowledge_base_documents_response() :: #{
-%%   <<"documentDetails">> => list(knowledge_base_document_detail()())
+%%   <<"documentDetails">> => list(knowledge_base_document_detail())
 %% }
 -type delete_knowledge_base_documents_response() :: #{binary() => any()}.
 
@@ -3257,7 +3257,7 @@
 %% s3_data_source_configuration() :: #{
 %%   <<"bucketArn">> => string(),
 %%   <<"bucketOwnerAccountId">> => string(),
-%%   <<"inclusionPrefixes">> => list(string()())
+%%   <<"inclusionPrefixes">> => list(string())
 %% }
 -type s3_data_source_configuration() :: #{binary() => any()}.
 
@@ -3307,14 +3307,14 @@
 
 %% Example:
 %% supplemental_data_storage_configuration() :: #{
-%%   <<"storageLocations">> => list(supplemental_data_storage_location()())
+%%   <<"storageLocations">> => list(supplemental_data_storage_location())
 %% }
 -type supplemental_data_storage_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% message() :: #{
-%%   <<"content">> => list(list()()),
+%%   <<"content">> => list(list()),
 %%   <<"role">> => list(any())
 %% }
 -type message() :: #{binary() => any()}.
@@ -3325,7 +3325,7 @@
 %%   <<"additionalModelRequestFields">> => [any()],
 %%   <<"genAiResource">> => list(),
 %%   <<"inferenceConfiguration">> => list(),
-%%   <<"metadata">> => list(prompt_metadata_entry()()),
+%%   <<"metadata">> => list(prompt_metadata_entry()),
 %%   <<"modelId">> => string(),
 %%   <<"name">> => string(),
 %%   <<"templateConfiguration">> => list(),

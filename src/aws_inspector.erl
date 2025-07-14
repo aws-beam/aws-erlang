@@ -104,14 +104,14 @@
 
 %% Example:
 %% describe_assessment_templates_request() :: #{
-%%   <<"assessmentTemplateArns">> := list(string()())
+%%   <<"assessmentTemplateArns">> := list(string())
 %% }
 -type describe_assessment_templates_request() :: #{binary() => any()}.
 
 %% Example:
 %% add_attributes_to_findings_request() :: #{
-%%   <<"attributes">> := list(attribute()()),
-%%   <<"findingArns">> := list(string()())
+%%   <<"attributes">> := list(attribute()),
+%%   <<"findingArns">> := list(string())
 %% }
 -type add_attributes_to_findings_request() :: #{binary() => any()}.
 
@@ -124,7 +124,7 @@
 %% Example:
 %% list_event_subscriptions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"subscriptions">> => list(subscription()())
+%%   <<"subscriptions">> => list(subscription())
 %% }
 -type list_event_subscriptions_response() :: #{binary() => any()}.
 
@@ -133,8 +133,8 @@
 %%   <<"assessmentTargetArn">> := string(),
 %%   <<"assessmentTemplateName">> := string(),
 %%   <<"durationInSeconds">> := integer(),
-%%   <<"rulesPackageArns">> := list(string()()),
-%%   <<"userAttributesForFindings">> => list(attribute()())
+%%   <<"rulesPackageArns">> := list(string()),
+%%   <<"userAttributesForFindings">> => list(attribute())
 %% }
 -type create_assessment_template_request() :: #{binary() => any()}.
 
@@ -148,7 +148,7 @@
 
 %% Example:
 %% list_exclusions_response() :: #{
-%%   <<"exclusionArns">> => list(string()()),
+%%   <<"exclusionArns">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_exclusions_response() :: #{binary() => any()}.
@@ -159,10 +159,10 @@
 %%   <<"amiId">> => string(),
 %%   <<"autoScalingGroup">> => string(),
 %%   <<"hostname">> => string(),
-%%   <<"ipv4Addresses">> => list(string()()),
-%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"ipv4Addresses">> => list(string()),
+%%   <<"networkInterfaces">> => list(network_interface()),
 %%   <<"schemaVersion">> => integer(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type asset_attributes() :: #{binary() => any()}.
 
@@ -175,7 +175,7 @@
 
 %% Example:
 %% describe_assessment_targets_response() :: #{
-%%   <<"assessmentTargets">> => list(assessment_target()()),
+%%   <<"assessmentTargets">> => list(assessment_target()),
 %%   <<"failedItems">> => map()
 %% }
 -type describe_assessment_targets_response() :: #{binary() => any()}.
@@ -205,7 +205,7 @@
 %%   <<"completionTimeRange">> => timestamp_range(),
 %%   <<"durationRange">> => duration_range(),
 %%   <<"namePattern">> => string(),
-%%   <<"rulesPackageArns">> => list(string()()),
+%%   <<"rulesPackageArns">> => list(string()),
 %%   <<"startTimeRange">> => timestamp_range(),
 %%   <<"stateChangeTimeRange">> => timestamp_range(),
 %%   <<"states">> => list(list(any())())
@@ -221,8 +221,8 @@
 
 %% Example:
 %% remove_attributes_from_findings_request() :: #{
-%%   <<"attributeKeys">> := list(string()()),
-%%   <<"findingArns">> := list(string()())
+%%   <<"attributeKeys">> := list(string()),
+%%   <<"findingArns">> := list(string())
 %% }
 -type remove_attributes_from_findings_request() :: #{binary() => any()}.
 
@@ -234,14 +234,14 @@
 
 %% Example:
 %% network_interface() :: #{
-%%   <<"ipv6Addresses">> => list(string()()),
+%%   <<"ipv6Addresses">> => list(string()),
 %%   <<"networkInterfaceId">> => string(),
 %%   <<"privateDnsName">> => string(),
 %%   <<"privateIpAddress">> => string(),
-%%   <<"privateIpAddresses">> => list(private_ip()()),
+%%   <<"privateIpAddresses">> => list(private_ip()),
 %%   <<"publicDnsName">> => string(),
 %%   <<"publicIp">> => string(),
-%%   <<"securityGroups">> => list(security_group()()),
+%%   <<"securityGroups">> => list(security_group()),
 %%   <<"subnetId">> => string(),
 %%   <<"vpcId">> => string()
 %% }
@@ -249,7 +249,7 @@
 
 %% Example:
 %% describe_assessment_templates_response() :: #{
-%%   <<"assessmentTemplates">> => list(assessment_template()()),
+%%   <<"assessmentTemplates">> => list(assessment_template()),
 %%   <<"failedItems">> => map()
 %% }
 -type describe_assessment_templates_response() :: #{binary() => any()}.
@@ -267,7 +267,7 @@
 
 %% Example:
 %% list_findings_response() :: #{
-%%   <<"findingArns">> => list(string()()),
+%%   <<"findingArns">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_response() :: #{binary() => any()}.
@@ -286,7 +286,7 @@
 %%   <<"agentId">> => string(),
 %%   <<"assessmentRunArn">> => string(),
 %%   <<"autoScalingGroup">> => string(),
-%%   <<"telemetryMetadata">> => list(telemetry_metadata()())
+%%   <<"telemetryMetadata">> => list(telemetry_metadata())
 %% }
 -type assessment_run_agent() :: #{binary() => any()}.
 
@@ -311,7 +311,7 @@
 
 %% Example:
 %% get_exclusions_preview_response() :: #{
-%%   <<"exclusionPreviews">> => list(exclusion_preview()()),
+%%   <<"exclusionPreviews">> => list(exclusion_preview()),
 %%   <<"nextToken">> => string(),
 %%   <<"previewStatus">> => list(any())
 %% }
@@ -320,10 +320,10 @@
 %% Example:
 %% exclusion() :: #{
 %%   <<"arn">> => string(),
-%%   <<"attributes">> => list(attribute()()),
+%%   <<"attributes">> => list(attribute()),
 %%   <<"description">> => string(),
 %%   <<"recommendation">> => string(),
-%%   <<"scopes">> => list(scope()()),
+%%   <<"scopes">> => list(scope()),
 %%   <<"title">> => string()
 %% }
 -type exclusion() :: #{binary() => any()}.
@@ -337,7 +337,7 @@
 %% Example:
 %% list_rules_packages_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"rulesPackageArns">> => list(string()())
+%%   <<"rulesPackageArns">> => list(string())
 %% }
 -type list_rules_packages_response() :: #{binary() => any()}.
 
@@ -387,14 +387,14 @@
 
 %% Example:
 %% list_assessment_targets_response() :: #{
-%%   <<"assessmentTargetArns">> => list(string()()),
+%%   <<"assessmentTargetArns">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_targets_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_assessment_templates_request() :: #{
-%%   <<"assessmentTargetArns">> => list(string()()),
+%%   <<"assessmentTargetArns">> => list(string()),
 %%   <<"filter">> => assessment_template_filter(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -411,10 +411,10 @@
 
 %% Example:
 %% exclusion_preview() :: #{
-%%   <<"attributes">> => list(attribute()()),
+%%   <<"attributes">> => list(attribute()),
 %%   <<"description">> => string(),
 %%   <<"recommendation">> => string(),
-%%   <<"scopes">> => list(scope()()),
+%%   <<"scopes">> => list(scope()),
 %%   <<"title">> => string()
 %% }
 -type exclusion_preview() :: #{binary() => any()}.
@@ -428,7 +428,7 @@
 
 %% Example:
 %% agents_already_running_assessment_exception() :: #{
-%%   <<"agents">> => list(agent_already_running_assessment()()),
+%%   <<"agents">> => list(agent_already_running_assessment()),
 %%   <<"agentsTruncated">> => boolean(),
 %%   <<"canRetry">> => boolean(),
 %%   <<"message">> => string()
@@ -437,7 +437,7 @@
 
 %% Example:
 %% describe_assessment_targets_request() :: #{
-%%   <<"assessmentTargetArns">> := list(string()())
+%%   <<"assessmentTargetArns">> := list(string())
 %% }
 -type describe_assessment_targets_request() :: #{binary() => any()}.
 
@@ -453,7 +453,7 @@
 
 %% Example:
 %% assessment_run_in_progress_exception() :: #{
-%%   <<"assessmentRunArns">> => list(string()()),
+%%   <<"assessmentRunArns">> => list(string()),
 %%   <<"assessmentRunArnsTruncated">> => boolean(),
 %%   <<"canRetry">> => boolean(),
 %%   <<"message">> => string()
@@ -473,7 +473,7 @@
 %%   <<"arn">> => string(),
 %%   <<"assetAttributes">> => asset_attributes(),
 %%   <<"assetType">> => list(any()),
-%%   <<"attributes">> => list(attribute()()),
+%%   <<"attributes">> => list(attribute()),
 %%   <<"confidence">> => integer(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -487,7 +487,7 @@
 %%   <<"severity">> => list(any()),
 %%   <<"title">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"userAttributes">> => list(attribute()())
+%%   <<"userAttributes">> => list(attribute())
 %% }
 -type finding() :: #{binary() => any()}.
 
@@ -521,20 +521,20 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_assessment_runs_response() :: #{
-%%   <<"assessmentRuns">> => list(assessment_run()()),
+%%   <<"assessmentRuns">> => list(assessment_run()),
 %%   <<"failedItems">> => map()
 %% }
 -type describe_assessment_runs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_findings_request() :: #{
-%%   <<"assessmentRunArns">> => list(string()()),
+%%   <<"assessmentRunArns">> => list(string()),
 %%   <<"filter">> => finding_filter(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -543,7 +543,7 @@
 
 %% Example:
 %% list_assessment_run_agents_response() :: #{
-%%   <<"assessmentRunAgents">> => list(assessment_run_agent()()),
+%%   <<"assessmentRunAgents">> => list(assessment_run_agent()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_run_agents_response() :: #{binary() => any()}.
@@ -551,7 +551,7 @@
 %% Example:
 %% set_tags_for_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type set_tags_for_resource_request() :: #{binary() => any()}.
 
@@ -571,7 +571,7 @@
 
 %% Example:
 %% list_assessment_runs_request() :: #{
-%%   <<"assessmentTemplateArns">> => list(string()()),
+%%   <<"assessmentTemplateArns">> => list(string()),
 %%   <<"filter">> => assessment_run_filter(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -582,7 +582,7 @@
 %% resource_group() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"tags">> => list(resource_group_tag()())
+%%   <<"tags">> => list(resource_group_tag())
 %% }
 -type resource_group() :: #{binary() => any()}.
 
@@ -605,7 +605,7 @@
 %% assessment_template_filter() :: #{
 %%   <<"durationRange">> => duration_range(),
 %%   <<"namePattern">> => string(),
-%%   <<"rulesPackageArns">> => list(string()())
+%%   <<"rulesPackageArns">> => list(string())
 %% }
 -type assessment_template_filter() :: #{binary() => any()}.
 
@@ -618,7 +618,7 @@
 
 %% Example:
 %% preview_agents_response() :: #{
-%%   <<"agentPreviews">> => list(agent_preview()()),
+%%   <<"agentPreviews">> => list(agent_preview()),
 %%   <<"nextToken">> => string()
 %% }
 -type preview_agents_response() :: #{binary() => any()}.
@@ -645,7 +645,7 @@
 %% Example:
 %% describe_rules_packages_request() :: #{
 %%   <<"locale">> => list(any()),
-%%   <<"rulesPackageArns">> := list(string()())
+%%   <<"rulesPackageArns">> := list(string())
 %% }
 -type describe_rules_packages_request() :: #{binary() => any()}.
 
@@ -658,7 +658,7 @@
 
 %% Example:
 %% list_assessment_runs_response() :: #{
-%%   <<"assessmentRunArns">> => list(string()()),
+%%   <<"assessmentRunArns">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_runs_response() :: #{binary() => any()}.
@@ -703,13 +703,13 @@
 
 %% Example:
 %% create_resource_group_request() :: #{
-%%   <<"resourceGroupTags">> := list(resource_group_tag()())
+%%   <<"resourceGroupTags">> := list(resource_group_tag())
 %% }
 -type create_resource_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_exclusions_request() :: #{
-%%   <<"exclusionArns">> := list(string()()),
+%%   <<"exclusionArns">> := list(string()),
 %%   <<"locale">> => list(any())
 %% }
 -type describe_exclusions_request() :: #{binary() => any()}.
@@ -717,20 +717,20 @@
 %% Example:
 %% describe_findings_response() :: #{
 %%   <<"failedItems">> => map(),
-%%   <<"findings">> => list(finding()())
+%%   <<"findings">> => list(finding())
 %% }
 -type describe_findings_response() :: #{binary() => any()}.
 
 %% Example:
 %% finding_filter() :: #{
-%%   <<"agentIds">> => list(string()()),
-%%   <<"attributes">> => list(attribute()()),
-%%   <<"autoScalingGroups">> => list(string()()),
+%%   <<"agentIds">> => list(string()),
+%%   <<"attributes">> => list(attribute()),
+%%   <<"autoScalingGroups">> => list(string()),
 %%   <<"creationTimeRange">> => timestamp_range(),
-%%   <<"ruleNames">> => list(string()()),
-%%   <<"rulesPackageArns">> => list(string()()),
+%%   <<"ruleNames">> => list(string()),
+%%   <<"rulesPackageArns">> => list(string()),
 %%   <<"severities">> => list(list(any())()),
-%%   <<"userAttributes">> => list(attribute()())
+%%   <<"userAttributes">> => list(attribute())
 %% }
 -type finding_filter() :: #{binary() => any()}.
 
@@ -751,8 +751,8 @@
 %%   <<"durationInSeconds">> => integer(),
 %%   <<"lastAssessmentRunArn">> => string(),
 %%   <<"name">> => string(),
-%%   <<"rulesPackageArns">> => list(string()()),
-%%   <<"userAttributesForFindings">> => list(attribute()())
+%%   <<"rulesPackageArns">> => list(string()),
+%%   <<"userAttributesForFindings">> => list(attribute())
 %% }
 -type assessment_template() :: #{binary() => any()}.
 
@@ -779,7 +779,7 @@
 
 %% Example:
 %% subscription() :: #{
-%%   <<"eventSubscriptions">> => list(event_subscription()()),
+%%   <<"eventSubscriptions">> => list(event_subscription()),
 %%   <<"resourceArn">> => string(),
 %%   <<"topicArn">> => string()
 %% }
@@ -788,7 +788,7 @@
 %% Example:
 %% describe_rules_packages_response() :: #{
 %%   <<"failedItems">> => map(),
-%%   <<"rulesPackages">> => list(rules_package()())
+%%   <<"rulesPackages">> => list(rules_package())
 %% }
 -type describe_rules_packages_response() :: #{binary() => any()}.
 
@@ -801,7 +801,7 @@
 %% Example:
 %% describe_resource_groups_response() :: #{
 %%   <<"failedItems">> => map(),
-%%   <<"resourceGroups">> => list(resource_group()())
+%%   <<"resourceGroups">> => list(resource_group())
 %% }
 -type describe_resource_groups_response() :: #{binary() => any()}.
 
@@ -829,13 +829,13 @@
 %%   <<"durationInSeconds">> => integer(),
 %%   <<"findingCounts">> => map(),
 %%   <<"name">> => string(),
-%%   <<"notifications">> => list(assessment_run_notification()()),
-%%   <<"rulesPackageArns">> => list(string()()),
+%%   <<"notifications">> => list(assessment_run_notification()),
+%%   <<"rulesPackageArns">> => list(string()),
 %%   <<"startedAt">> => non_neg_integer(),
 %%   <<"state">> => list(any()),
 %%   <<"stateChangedAt">> => non_neg_integer(),
-%%   <<"stateChanges">> => list(assessment_run_state_change()()),
-%%   <<"userAttributesForFindings">> => list(attribute()())
+%%   <<"stateChanges">> => list(assessment_run_state_change()),
+%%   <<"userAttributesForFindings">> => list(attribute())
 %% }
 -type assessment_run() :: #{binary() => any()}.
 
@@ -857,7 +857,7 @@
 
 %% Example:
 %% list_assessment_templates_response() :: #{
-%%   <<"assessmentTemplateArns">> => list(string()()),
+%%   <<"assessmentTemplateArns">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_templates_response() :: #{binary() => any()}.
@@ -878,7 +878,7 @@
 
 %% Example:
 %% describe_findings_request() :: #{
-%%   <<"findingArns">> := list(string()()),
+%%   <<"findingArns">> := list(string()),
 %%   <<"locale">> => list(any())
 %% }
 -type describe_findings_request() :: #{binary() => any()}.
@@ -892,13 +892,13 @@
 
 %% Example:
 %% get_telemetry_metadata_response() :: #{
-%%   <<"telemetryMetadata">> => list(telemetry_metadata()())
+%%   <<"telemetryMetadata">> => list(telemetry_metadata())
 %% }
 -type get_telemetry_metadata_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_resource_groups_request() :: #{
-%%   <<"resourceGroupArns">> := list(string()())
+%%   <<"resourceGroupArns">> := list(string())
 %% }
 -type describe_resource_groups_request() :: #{binary() => any()}.
 
@@ -938,7 +938,7 @@
 
 %% Example:
 %% describe_assessment_runs_request() :: #{
-%%   <<"assessmentRunArns">> := list(string()())
+%%   <<"assessmentRunArns">> := list(string())
 %% }
 -type describe_assessment_runs_request() :: #{binary() => any()}.
 

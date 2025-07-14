@@ -223,8 +223,8 @@
 
 %% Example:
 %% update_playback_restriction_policy_request() :: #{
-%%   <<"allowedCountries">> => list(string()()),
-%%   <<"allowedOrigins">> => list(string()()),
+%%   <<"allowedCountries">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
 %%   <<"arn">> := string(),
 %%   <<"enableStrictOriginEnforcement">> => boolean(),
 %%   <<"name">> => string()
@@ -329,8 +329,8 @@
 
 %% Example:
 %% playback_restriction_policy() :: #{
-%%   <<"allowedCountries">> => list(string()()),
-%%   <<"allowedOrigins">> => list(string()()),
+%%   <<"allowedCountries">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
 %%   <<"arn">> => string(),
 %%   <<"enableStrictOriginEnforcement">> => boolean(),
 %%   <<"name">> => string(),
@@ -349,7 +349,7 @@
 %% Example:
 %% list_stream_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"streamSessions">> := list(stream_session_summary()())
+%%   <<"streamSessions">> := list(stream_session_summary())
 %% }
 -type list_stream_sessions_response() :: #{binary() => any()}.
 
@@ -379,7 +379,7 @@
 
 %% Example:
 %% list_playback_key_pairs_response() :: #{
-%%   <<"keyPairs">> := list(playback_key_pair_summary()()),
+%%   <<"keyPairs">> := list(playback_key_pair_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_playback_key_pairs_response() :: #{binary() => any()}.
@@ -405,8 +405,8 @@
 
 %% Example:
 %% batch_get_channel_response() :: #{
-%%   <<"channels">> => list(channel()()),
-%%   <<"errors">> => list(batch_error()())
+%%   <<"channels">> => list(channel()),
+%%   <<"errors">> => list(batch_error())
 %% }
 -type batch_get_channel_response() :: #{binary() => any()}.
 
@@ -431,7 +431,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -439,7 +439,7 @@
 %% Example:
 %% list_stream_keys_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"streamKeys">> := list(stream_key_summary()())
+%%   <<"streamKeys">> := list(stream_key_summary())
 %% }
 -type list_stream_keys_response() :: #{binary() => any()}.
 
@@ -473,7 +473,7 @@
 
 %% Example:
 %% batch_start_viewer_session_revocation_request() :: #{
-%%   <<"viewerSessions">> := list(batch_start_viewer_session_revocation_viewer_session()())
+%%   <<"viewerSessions">> := list(batch_start_viewer_session_revocation_viewer_session())
 %% }
 -type batch_start_viewer_session_revocation_request() :: #{binary() => any()}.
 
@@ -510,15 +510,15 @@
 
 %% Example:
 %% batch_get_stream_key_request() :: #{
-%%   <<"arns">> := list(string()())
+%%   <<"arns">> := list(string())
 %% }
 -type batch_get_stream_key_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% playback_restriction_policy_summary() :: #{
-%%   <<"allowedCountries">> => list(string()()),
-%%   <<"allowedOrigins">> => list(string()()),
+%%   <<"allowedCountries">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
 %%   <<"arn">> => string(),
 %%   <<"enableStrictOriginEnforcement">> => boolean(),
 %%   <<"name">> => string(),
@@ -567,7 +567,7 @@
 %% Example:
 %% list_streams_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"streams">> := list(stream_summary()())
+%%   <<"streams">> := list(stream_summary())
 %% }
 -type list_streams_response() :: #{binary() => any()}.
 
@@ -582,7 +582,7 @@
 %% Example:
 %% list_recording_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"recordingConfigurations">> := list(recording_configuration_summary()())
+%%   <<"recordingConfigurations">> := list(recording_configuration_summary())
 %% }
 -type list_recording_configurations_response() :: #{binary() => any()}.
 
@@ -603,14 +603,14 @@
 %%   <<"recordingConfiguration">> => recording_configuration(),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"streamId">> => string(),
-%%   <<"truncatedEvents">> => list(stream_event()())
+%%   <<"truncatedEvents">> => list(stream_event())
 %% }
 -type stream_session() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_channel_request() :: #{
-%%   <<"arns">> := list(string()())
+%%   <<"arns">> := list(string())
 %% }
 -type batch_get_channel_request() :: #{binary() => any()}.
 
@@ -672,7 +672,7 @@
 
 %% Example:
 %% list_channels_response() :: #{
-%%   <<"channels">> := list(channel_summary()()),
+%%   <<"channels">> := list(channel_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
@@ -808,7 +808,7 @@
 %% thumbnail_configuration() :: #{
 %%   <<"recordingMode">> => string(),
 %%   <<"resolution">> => list(any()),
-%%   <<"storage">> => list(string()()),
+%%   <<"storage">> => list(string()),
 %%   <<"targetIntervalSeconds">> => float()
 %% }
 -type thumbnail_configuration() :: #{binary() => any()}.
@@ -844,8 +844,8 @@
 
 %% Example:
 %% ingest_configurations() :: #{
-%%   <<"audioConfigurations">> => list(audio_configuration()()),
-%%   <<"videoConfigurations">> => list(video_configuration()())
+%%   <<"audioConfigurations">> => list(audio_configuration()),
+%%   <<"videoConfigurations">> => list(video_configuration())
 %% }
 -type ingest_configurations() :: #{binary() => any()}.
 
@@ -867,7 +867,7 @@
 %% Example:
 %% list_playback_restriction_policies_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"playbackRestrictionPolicies">> => list(playback_restriction_policy_summary()())
+%%   <<"playbackRestrictionPolicies">> => list(playback_restriction_policy_summary())
 %% }
 -type list_playback_restriction_policies_response() :: #{binary() => any()}.
 
@@ -907,7 +907,7 @@
 
 %% Example:
 %% batch_start_viewer_session_revocation_response() :: #{
-%%   <<"errors">> => list(batch_start_viewer_session_revocation_error()())
+%%   <<"errors">> => list(batch_start_viewer_session_revocation_error())
 %% }
 -type batch_start_viewer_session_revocation_response() :: #{binary() => any()}.
 
@@ -1056,8 +1056,8 @@
 
 %% Example:
 %% create_playback_restriction_policy_request() :: #{
-%%   <<"allowedCountries">> => list(string()()),
-%%   <<"allowedOrigins">> => list(string()()),
+%%   <<"allowedCountries">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
 %%   <<"enableStrictOriginEnforcement">> => boolean(),
 %%   <<"name">> => string(),
 %%   <<"tags">> => map()
@@ -1089,8 +1089,8 @@
 
 %% Example:
 %% batch_get_stream_key_response() :: #{
-%%   <<"errors">> => list(batch_error()()),
-%%   <<"streamKeys">> => list(stream_key()())
+%%   <<"errors">> => list(batch_error()),
+%%   <<"streamKeys">> => list(stream_key())
 %% }
 -type batch_get_stream_key_response() :: #{binary() => any()}.
 

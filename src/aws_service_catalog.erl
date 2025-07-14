@@ -249,7 +249,7 @@
 %%   <<"CopyOptions">> => list(list(any())()),
 %%   <<"IdempotencyToken">> := string(),
 %%   <<"SourceProductArn">> := string(),
-%%   <<"SourceProvisioningArtifactIdentifiers">> => list(map()()),
+%%   <<"SourceProvisioningArtifactIdentifiers">> => list(map()),
 %%   <<"TargetProductId">> => string(),
 %%   <<"TargetProductName">> => string()
 %% }
@@ -285,7 +285,7 @@
 %% Example:
 %% list_provisioning_artifacts_for_service_action_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"ProvisioningArtifactViews">> => list(provisioning_artifact_view()())
+%%   <<"ProvisioningArtifactViews">> => list(provisioning_artifact_view())
 %% }
 -type list_provisioning_artifacts_for_service_action_output() :: #{binary() => any()}.
 
@@ -355,7 +355,7 @@
 %% Example:
 %% parameter_constraints() :: #{
 %%   <<"AllowedPattern">> => string(),
-%%   <<"AllowedValues">> => list(string()()),
+%%   <<"AllowedValues">> => list(string()),
 %%   <<"ConstraintDescription">> => string(),
 %%   <<"MaxLength">> => string(),
 %%   <<"MaxValue">> => string(),
@@ -397,17 +397,17 @@
 
 %% Example:
 %% describe_product_output() :: #{
-%%   <<"Budgets">> => list(budget_detail()()),
-%%   <<"LaunchPaths">> => list(launch_path()()),
+%%   <<"Budgets">> => list(budget_detail()),
+%%   <<"LaunchPaths">> => list(launch_path()),
 %%   <<"ProductViewSummary">> => product_view_summary(),
-%%   <<"ProvisioningArtifacts">> => list(provisioning_artifact()())
+%%   <<"ProvisioningArtifacts">> => list(provisioning_artifact())
 %% }
 -type describe_product_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_provisioned_product_outputs_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"Outputs">> => list(record_output()())
+%%   <<"Outputs">> => list(record_output())
 %% }
 -type get_provisioned_product_outputs_output() :: #{binary() => any()}.
 
@@ -435,13 +435,13 @@
 
 %% Example:
 %% describe_provisioning_parameters_output() :: #{
-%%   <<"ConstraintSummaries">> => list(constraint_summary()()),
-%%   <<"ProvisioningArtifactOutputKeys">> => list(provisioning_artifact_output()()),
-%%   <<"ProvisioningArtifactOutputs">> => list(provisioning_artifact_output()()),
-%%   <<"ProvisioningArtifactParameters">> => list(provisioning_artifact_parameter()()),
+%%   <<"ConstraintSummaries">> => list(constraint_summary()),
+%%   <<"ProvisioningArtifactOutputKeys">> => list(provisioning_artifact_output()),
+%%   <<"ProvisioningArtifactOutputs">> => list(provisioning_artifact_output()),
+%%   <<"ProvisioningArtifactParameters">> => list(provisioning_artifact_parameter()),
 %%   <<"ProvisioningArtifactPreferences">> => provisioning_artifact_preferences(),
-%%   <<"TagOptions">> => list(tag_option_summary()()),
-%%   <<"UsageInstructions">> => list(usage_instruction()())
+%%   <<"TagOptions">> => list(tag_option_summary()),
+%%   <<"UsageInstructions">> => list(usage_instruction())
 %% }
 -type describe_provisioning_parameters_output() :: #{binary() => any()}.
 
@@ -460,7 +460,7 @@
 %% Example:
 %% describe_product_view_output() :: #{
 %%   <<"ProductViewSummary">> => product_view_summary(),
-%%   <<"ProvisioningArtifacts">> => list(provisioning_artifact()())
+%%   <<"ProvisioningArtifacts">> => list(provisioning_artifact())
 %% }
 -type describe_product_view_output() :: #{binary() => any()}.
 
@@ -520,8 +520,8 @@
 
 %% Example:
 %% share_details() :: #{
-%%   <<"ShareErrors">> => list(share_error()()),
-%%   <<"SuccessfulShares">> => list(string()())
+%%   <<"ShareErrors">> => list(share_error()),
+%%   <<"SuccessfulShares">> => list(string())
 %% }
 -type share_details() :: #{binary() => any()}.
 
@@ -570,24 +570,24 @@
 
 %% Example:
 %% describe_portfolio_output() :: #{
-%%   <<"Budgets">> => list(budget_detail()()),
+%%   <<"Budgets">> => list(budget_detail()),
 %%   <<"PortfolioDetail">> => portfolio_detail(),
-%%   <<"TagOptions">> => list(tag_option_detail()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"TagOptions">> => list(tag_option_detail()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type describe_portfolio_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_organization_portfolio_access_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"OrganizationNodes">> => list(organization_node()())
+%%   <<"OrganizationNodes">> => list(organization_node())
 %% }
 -type list_organization_portfolio_access_output() :: #{binary() => any()}.
 
 %% Example:
 %% search_products_as_admin_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"ProductViewDetails">> => list(product_view_detail()())
+%%   <<"ProductViewDetails">> => list(product_view_detail())
 %% }
 -type search_products_as_admin_output() :: #{binary() => any()}.
 
@@ -643,7 +643,7 @@
 %% Example:
 %% batch_disassociate_service_action_from_provisioning_artifact_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"ServiceActionAssociations">> := list(service_action_association()())
+%%   <<"ServiceActionAssociations">> := list(service_action_association())
 %% }
 -type batch_disassociate_service_action_from_provisioning_artifact_input() :: #{binary() => any()}.
 
@@ -685,7 +685,7 @@
 %% Example:
 %% update_portfolio_output() :: #{
 %%   <<"PortfolioDetail">> => portfolio_detail(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type update_portfolio_output() :: #{binary() => any()}.
 
@@ -699,7 +699,7 @@
 %% describe_provisioning_artifact_output() :: #{
 %%   <<"Info">> => map(),
 %%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
-%%   <<"ProvisioningArtifactParameters">> => list(provisioning_artifact_parameter()()),
+%%   <<"ProvisioningArtifactParameters">> => list(provisioning_artifact_parameter()),
 %%   <<"Status">> => list(any())
 %% }
 -type describe_provisioning_artifact_output() :: #{binary() => any()}.
@@ -730,7 +730,7 @@
 %% Example:
 %% list_principals_for_portfolio_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"Principals">> => list(principal()())
+%%   <<"Principals">> => list(principal())
 %% }
 -type list_principals_for_portfolio_output() :: #{binary() => any()}.
 
@@ -750,7 +750,7 @@
 %% Example:
 %% batch_associate_service_action_with_provisioning_artifact_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"ServiceActionAssociations">> := list(service_action_association()())
+%%   <<"ServiceActionAssociations">> := list(service_action_association())
 %% }
 -type batch_associate_service_action_with_provisioning_artifact_input() :: #{binary() => any()}.
 
@@ -789,7 +789,7 @@
 %% Example:
 %% update_product_output() :: #{
 %%   <<"ProductViewDetail">> => product_view_detail(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type update_product_output() :: #{binary() => any()}.
 
@@ -871,9 +871,9 @@
 %%   <<"ProvisionedProductName">> => string(),
 %%   <<"ProvisioningArtifactId">> => string(),
 %%   <<"ProvisioningArtifactName">> => string(),
-%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()()),
+%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()),
 %%   <<"ProvisioningPreferences">> => update_provisioning_preferences(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UpdateToken">> := string()
 %% }
 -type update_provisioned_product_input() :: #{binary() => any()}.
@@ -906,7 +906,7 @@
 %% Example:
 %% list_accepted_portfolio_shares_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"PortfolioDetails">> => list(portfolio_detail()())
+%%   <<"PortfolioDetails">> => list(portfolio_detail())
 %% }
 -type list_accepted_portfolio_shares_output() :: #{binary() => any()}.
 
@@ -931,7 +931,7 @@
 
 %% Example:
 %% list_budgets_for_resource_output() :: #{
-%%   <<"Budgets">> => list(budget_detail()()),
+%%   <<"Budgets">> => list(budget_detail()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_budgets_for_resource_output() :: #{binary() => any()}.
@@ -1020,7 +1020,7 @@
 %%   <<"ProvisioningArtifactName">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string(),
 %%   <<"UserArn">> => string(),
 %%   <<"UserArnSession">> => string()
@@ -1041,14 +1041,14 @@
 
 %% Example:
 %% batch_associate_service_action_with_provisioning_artifact_output() :: #{
-%%   <<"FailedServiceActionAssociations">> => list(failed_service_action_association()())
+%%   <<"FailedServiceActionAssociations">> => list(failed_service_action_association())
 %% }
 -type batch_associate_service_action_with_provisioning_artifact_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_portfolio_output() :: #{
 %%   <<"PortfolioDetail">> => portfolio_detail(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_portfolio_output() :: #{binary() => any()}.
 
@@ -1093,7 +1093,7 @@
 %% Example:
 %% list_portfolios_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"PortfolioDetails">> => list(portfolio_detail()())
+%%   <<"PortfolioDetails">> => list(portfolio_detail())
 %% }
 -type list_portfolios_output() :: #{binary() => any()}.
 
@@ -1101,7 +1101,7 @@
 %% describe_record_output() :: #{
 %%   <<"NextPageToken">> => string(),
 %%   <<"RecordDetail">> => record_detail(),
-%%   <<"RecordOutputs">> => list(record_output()())
+%%   <<"RecordOutputs">> => list(record_output())
 %% }
 -type describe_record_output() :: #{binary() => any()}.
 
@@ -1114,7 +1114,7 @@
 
 %% Example:
 %% describe_provisioned_product_output() :: #{
-%%   <<"CloudWatchDashboards">> => list(cloud_watch_dashboard()()),
+%%   <<"CloudWatchDashboards">> => list(cloud_watch_dashboard()),
 %%   <<"ProvisionedProductDetail">> => provisioned_product_detail()
 %% }
 -type describe_provisioned_product_output() :: #{binary() => any()}.
@@ -1126,7 +1126,7 @@
 %%   <<"DisplayName">> := string(),
 %%   <<"IdempotencyToken">> := string(),
 %%   <<"ProviderName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_portfolio_input() :: #{binary() => any()}.
 
@@ -1140,15 +1140,15 @@
 %% create_provisioned_product_plan_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
 %%   <<"IdempotencyToken">> := string(),
-%%   <<"NotificationArns">> => list(string()()),
+%%   <<"NotificationArns">> => list(string()),
 %%   <<"PathId">> => string(),
 %%   <<"PlanName">> := string(),
 %%   <<"PlanType">> := list(any()),
 %%   <<"ProductId">> := string(),
 %%   <<"ProvisionedProductName">> := string(),
 %%   <<"ProvisioningArtifactId">> := string(),
-%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_provisioned_product_plan_input() :: #{binary() => any()}.
 
@@ -1162,7 +1162,7 @@
 %% Example:
 %% list_provisioned_product_plans_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"ProvisionedProductPlans">> => list(provisioned_product_plan_summary()())
+%%   <<"ProvisionedProductPlans">> => list(provisioned_product_plan_summary())
 %% }
 -type list_provisioned_product_plans_output() :: #{binary() => any()}.
 
@@ -1194,7 +1194,7 @@
 %% Example:
 %% list_service_actions_for_provisioning_artifact_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"ServiceActionSummaries">> => list(service_action_summary()())
+%%   <<"ServiceActionSummaries">> => list(service_action_summary())
 %% }
 -type list_service_actions_for_provisioning_artifact_output() :: #{binary() => any()}.
 
@@ -1210,7 +1210,7 @@
 
 %% Example:
 %% share_error() :: #{
-%%   <<"Accounts">> => list(string()()),
+%%   <<"Accounts">> => list(string()),
 %%   <<"Error">> => string(),
 %%   <<"Message">> => string()
 %% }
@@ -1241,7 +1241,7 @@
 %% Example:
 %% describe_portfolio_shares_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"PortfolioShareDetails">> => list(portfolio_share_detail()())
+%%   <<"PortfolioShareDetails">> => list(portfolio_share_detail())
 %% }
 -type describe_portfolio_shares_output() :: #{binary() => any()}.
 
@@ -1268,7 +1268,7 @@
 %% Example:
 %% provision_product_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"NotificationArns">> => list(string()()),
+%%   <<"NotificationArns">> => list(string()),
 %%   <<"PathId">> => string(),
 %%   <<"PathName">> => string(),
 %%   <<"ProductId">> => string(),
@@ -1277,15 +1277,15 @@
 %%   <<"ProvisionedProductName">> := string(),
 %%   <<"ProvisioningArtifactId">> => string(),
 %%   <<"ProvisioningArtifactName">> => string(),
-%%   <<"ProvisioningParameters">> => list(provisioning_parameter()()),
+%%   <<"ProvisioningParameters">> => list(provisioning_parameter()),
 %%   <<"ProvisioningPreferences">> => provisioning_preferences(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type provision_product_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_launch_paths_output() :: #{
-%%   <<"LaunchPathSummaries">> => list(launch_path_summary()()),
+%%   <<"LaunchPathSummaries">> => list(launch_path_summary()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_launch_paths_output() :: #{binary() => any()}.
@@ -1294,7 +1294,7 @@
 %% describe_provisioned_product_plan_output() :: #{
 %%   <<"NextPageToken">> => string(),
 %%   <<"ProvisionedProductPlanDetails">> => provisioned_product_plan_details(),
-%%   <<"ResourceChanges">> => list(resource_change()())
+%%   <<"ResourceChanges">> => list(resource_change())
 %% }
 -type describe_provisioned_product_plan_output() :: #{binary() => any()}.
 
@@ -1307,7 +1307,7 @@
 %% Example:
 %% list_resources_for_tag_option_output() :: #{
 %%   <<"PageToken">> => string(),
-%%   <<"ResourceDetails">> => list(resource_detail()())
+%%   <<"ResourceDetails">> => list(resource_detail())
 %% }
 -type list_resources_for_tag_option_output() :: #{binary() => any()}.
 
@@ -1331,7 +1331,7 @@
 %% create_product_output() :: #{
 %%   <<"ProductViewDetail">> => product_view_detail(),
 %%   <<"ProvisioningArtifactDetail">> => provisioning_artifact_detail(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_product_output() :: #{binary() => any()}.
 
@@ -1347,7 +1347,7 @@
 
 %% Example:
 %% batch_disassociate_service_action_from_provisioning_artifact_output() :: #{
-%%   <<"FailedServiceActionAssociations">> => list(failed_service_action_association()())
+%%   <<"FailedServiceActionAssociations">> => list(failed_service_action_association())
 %% }
 -type batch_disassociate_service_action_from_provisioning_artifact_output() :: #{binary() => any()}.
 
@@ -1365,7 +1365,7 @@
 %%   <<"SupportDescription">> => string(),
 %%   <<"SupportEmail">> => string(),
 %%   <<"SupportUrl">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_product_input() :: #{binary() => any()}.
 
@@ -1441,13 +1441,13 @@
 %% Example:
 %% list_provisioning_artifacts_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"ProvisioningArtifactDetails">> => list(provisioning_artifact_detail()())
+%%   <<"ProvisioningArtifactDetails">> => list(provisioning_artifact_detail())
 %% }
 -type list_provisioning_artifacts_output() :: #{binary() => any()}.
 
 %% Example:
 %% execution_parameter() :: #{
-%%   <<"DefaultValues">> => list(string()()),
+%%   <<"DefaultValues">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Type">> => string()
 %% }
@@ -1483,13 +1483,13 @@
 
 %% Example:
 %% update_provisioning_preferences() :: #{
-%%   <<"StackSetAccounts">> => list(string()()),
+%%   <<"StackSetAccounts">> => list(string()),
 %%   <<"StackSetFailureToleranceCount">> => integer(),
 %%   <<"StackSetFailureTolerancePercentage">> => integer(),
 %%   <<"StackSetMaxConcurrencyCount">> => integer(),
 %%   <<"StackSetMaxConcurrencyPercentage">> => integer(),
 %%   <<"StackSetOperationType">> => list(any()),
-%%   <<"StackSetRegions">> => list(string()())
+%%   <<"StackSetRegions">> => list(string())
 %% }
 -type update_provisioning_preferences() :: #{binary() => any()}.
 
@@ -1512,7 +1512,7 @@
 %% Example:
 %% list_tag_options_output() :: #{
 %%   <<"PageToken">> => string(),
-%%   <<"TagOptionDetails">> => list(tag_option_detail()())
+%%   <<"TagOptionDetails">> => list(tag_option_detail())
 %% }
 -type list_tag_options_output() :: #{binary() => any()}.
 
@@ -1591,7 +1591,7 @@
 %% notify_update_provisioned_product_engine_workflow_result_input() :: #{
 %%   <<"FailureReason">> => string(),
 %%   <<"IdempotencyToken">> := string(),
-%%   <<"Outputs">> => list(record_output()()),
+%%   <<"Outputs">> => list(record_output()),
 %%   <<"RecordId">> := string(),
 %%   <<"Status">> := list(any()),
 %%   <<"WorkflowToken">> := string()
@@ -1600,7 +1600,7 @@
 
 %% Example:
 %% list_portfolio_access_output() :: #{
-%%   <<"AccountIds">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_portfolio_access_output() :: #{binary() => any()}.
@@ -1639,7 +1639,7 @@
 %% Example:
 %% list_service_actions_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"ServiceActionSummaries">> => list(service_action_summary()())
+%%   <<"ServiceActionSummaries">> => list(service_action_summary())
 %% }
 -type list_service_actions_output() :: #{binary() => any()}.
 
@@ -1661,19 +1661,19 @@
 %% Example:
 %% list_portfolios_for_product_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"PortfolioDetails">> => list(portfolio_detail()())
+%%   <<"PortfolioDetails">> => list(portfolio_detail())
 %% }
 -type list_portfolios_for_product_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_portfolio_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"AddTags">> => list(tag()()),
+%%   <<"AddTags">> => list(tag()),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"Id">> := string(),
 %%   <<"ProviderName">> => string(),
-%%   <<"RemoveTags">> => list(string()())
+%%   <<"RemoveTags">> => list(string())
 %% }
 -type update_portfolio_input() :: #{binary() => any()}.
 
@@ -1697,13 +1697,13 @@
 %% Example:
 %% tag_option_summary() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type tag_option_summary() :: #{binary() => any()}.
 
 %% Example:
 %% list_constraints_for_portfolio_output() :: #{
-%%   <<"ConstraintDetails">> => list(constraint_detail()()),
+%%   <<"ConstraintDetails">> => list(constraint_detail()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_constraints_for_portfolio_output() :: #{binary() => any()}.
@@ -1858,14 +1858,14 @@
 %% search_products_output() :: #{
 %%   <<"NextPageToken">> => string(),
 %%   <<"ProductViewAggregations">> => map(),
-%%   <<"ProductViewSummaries">> => list(product_view_summary()())
+%%   <<"ProductViewSummaries">> => list(product_view_summary())
 %% }
 -type search_products_output() :: #{binary() => any()}.
 
 %% Example:
 %% provisioning_artifact_preferences() :: #{
-%%   <<"StackSetAccounts">> => list(string()()),
-%%   <<"StackSetRegions">> => list(string()())
+%%   <<"StackSetAccounts">> => list(string()),
+%%   <<"StackSetRegions">> => list(string())
 %% }
 -type provisioning_artifact_preferences() :: #{binary() => any()}.
 
@@ -1923,14 +1923,14 @@
 
 %% Example:
 %% describe_service_action_execution_parameters_output() :: #{
-%%   <<"ServiceActionParameters">> => list(execution_parameter()())
+%%   <<"ServiceActionParameters">> => list(execution_parameter())
 %% }
 -type describe_service_action_execution_parameters_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_provisioned_product_outputs_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"OutputKeys">> => list(string()()),
+%%   <<"OutputKeys">> => list(string()),
 %%   <<"PageSize">> => integer(),
 %%   <<"PageToken">> => string(),
 %%   <<"ProvisionedProductId">> => string(),
@@ -1950,7 +1950,7 @@
 %% Example:
 %% search_provisioned_products_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"ProvisionedProducts">> => list(provisioned_product_attribute()()),
+%%   <<"ProvisionedProducts">> => list(provisioned_product_attribute()),
 %%   <<"TotalResultsCount">> => integer()
 %% }
 -type search_provisioned_products_output() :: #{binary() => any()}.
@@ -1973,7 +1973,7 @@
 %% notify_provision_product_engine_workflow_result_input() :: #{
 %%   <<"FailureReason">> => string(),
 %%   <<"IdempotencyToken">> := string(),
-%%   <<"Outputs">> => list(record_output()()),
+%%   <<"Outputs">> => list(record_output()),
 %%   <<"RecordId">> := string(),
 %%   <<"ResourceIdentifier">> => engine_workflow_resource_identifier(),
 %%   <<"Status">> := list(any()),
@@ -1999,9 +1999,9 @@
 %%   <<"ProvisionedProductName">> => string(),
 %%   <<"ProvisionedProductType">> => string(),
 %%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"RecordErrors">> => list(record_error()()),
+%%   <<"RecordErrors">> => list(record_error()),
 %%   <<"RecordId">> => string(),
-%%   <<"RecordTags">> => list(record_tag()()),
+%%   <<"RecordTags">> => list(record_tag()),
 %%   <<"RecordType">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedTime">> => non_neg_integer()
@@ -2055,7 +2055,7 @@
 %% Example:
 %% list_stack_instances_for_provisioned_product_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"StackInstances">> => list(stack_instance()())
+%%   <<"StackInstances">> => list(stack_instance())
 %% }
 -type list_stack_instances_for_provisioned_product_output() :: #{binary() => any()}.
 
@@ -2078,7 +2078,7 @@
 %% Example:
 %% scan_provisioned_products_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"ProvisionedProducts">> => list(provisioned_product_detail()())
+%%   <<"ProvisionedProducts">> => list(provisioned_product_detail())
 %% }
 -type scan_provisioned_products_output() :: #{binary() => any()}.
 
@@ -2121,14 +2121,14 @@
 %% Example:
 %% list_record_history_output() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"RecordDetails">> => list(record_detail()())
+%%   <<"RecordDetails">> => list(record_detail())
 %% }
 -type list_record_history_output() :: #{binary() => any()}.
 
 %% Example:
 %% resource_change() :: #{
 %%   <<"Action">> => list(any()),
-%%   <<"Details">> => list(resource_change_detail()()),
+%%   <<"Details">> => list(resource_change_detail()),
 %%   <<"LogicalResourceId">> => string(),
 %%   <<"PhysicalResourceId">> => string(),
 %%   <<"Replacement">> => list(any()),
@@ -2146,10 +2146,10 @@
 
 %% Example:
 %% launch_path_summary() :: #{
-%%   <<"ConstraintSummaries">> => list(constraint_summary()()),
+%%   <<"ConstraintSummaries">> => list(constraint_summary()),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type launch_path_summary() :: #{binary() => any()}.
 
@@ -2177,24 +2177,24 @@
 
 %% Example:
 %% describe_product_as_admin_output() :: #{
-%%   <<"Budgets">> => list(budget_detail()()),
+%%   <<"Budgets">> => list(budget_detail()),
 %%   <<"ProductViewDetail">> => product_view_detail(),
-%%   <<"ProvisioningArtifactSummaries">> => list(provisioning_artifact_summary()()),
-%%   <<"TagOptions">> => list(tag_option_detail()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"ProvisioningArtifactSummaries">> => list(provisioning_artifact_summary()),
+%%   <<"TagOptions">> => list(tag_option_detail()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type describe_product_as_admin_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_product_input() :: #{
 %%   <<"AcceptLanguage">> => string(),
-%%   <<"AddTags">> => list(tag()()),
+%%   <<"AddTags">> => list(tag()),
 %%   <<"Description">> => string(),
 %%   <<"Distributor">> => string(),
 %%   <<"Id">> := string(),
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => string(),
-%%   <<"RemoveTags">> => list(string()()),
+%%   <<"RemoveTags">> => list(string()),
 %%   <<"SourceConnection">> => source_connection(),
 %%   <<"SupportDescription">> => string(),
 %%   <<"SupportEmail">> => string(),
@@ -2215,7 +2215,7 @@
 %% Example:
 %% provisioned_product_plan_details() :: #{
 %%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"NotificationArns">> => list(string()()),
+%%   <<"NotificationArns">> => list(string()),
 %%   <<"PathId">> => string(),
 %%   <<"PlanId">> => string(),
 %%   <<"PlanName">> => string(),
@@ -2224,10 +2224,10 @@
 %%   <<"ProvisionProductId">> => string(),
 %%   <<"ProvisionProductName">> => string(),
 %%   <<"ProvisioningArtifactId">> => string(),
-%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()()),
+%%   <<"ProvisioningParameters">> => list(update_provisioning_parameter()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UpdatedTime">> => non_neg_integer()
 %% }
 -type provisioned_product_plan_details() :: #{binary() => any()}.
@@ -2244,12 +2244,12 @@
 
 %% Example:
 %% provisioning_preferences() :: #{
-%%   <<"StackSetAccounts">> => list(string()()),
+%%   <<"StackSetAccounts">> => list(string()),
 %%   <<"StackSetFailureToleranceCount">> => integer(),
 %%   <<"StackSetFailureTolerancePercentage">> => integer(),
 %%   <<"StackSetMaxConcurrencyCount">> => integer(),
 %%   <<"StackSetMaxConcurrencyPercentage">> => integer(),
-%%   <<"StackSetRegions">> => list(string()())
+%%   <<"StackSetRegions">> => list(string())
 %% }
 -type provisioning_preferences() :: #{binary() => any()}.
 

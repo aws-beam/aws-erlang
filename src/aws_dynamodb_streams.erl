@@ -56,7 +56,7 @@
 %% Example:
 %% get_records_output() :: #{
 %%   <<"NextShardIterator">> => string(),
-%%   <<"Records">> => list(record()())
+%%   <<"Records">> => list(record())
 %% }
 -type get_records_output() :: #{binary() => any()}.
 
@@ -112,7 +112,7 @@
 %% Example:
 %% list_streams_output() :: #{
 %%   <<"LastEvaluatedStreamArn">> => string(),
-%%   <<"Streams">> => list(stream()())
+%%   <<"Streams">> => list(stream())
 %% }
 -type list_streams_output() :: #{binary() => any()}.
 
@@ -160,9 +160,9 @@
 %% Example:
 %% stream_description() :: #{
 %%   <<"CreationRequestDateTime">> => non_neg_integer(),
-%%   <<"KeySchema">> => list(key_schema_element()()),
+%%   <<"KeySchema">> => list(key_schema_element()),
 %%   <<"LastEvaluatedShardId">> => string(),
-%%   <<"Shards">> => list(shard()()),
+%%   <<"Shards">> => list(shard()),
 %%   <<"StreamArn">> => string(),
 %%   <<"StreamLabel">> => string(),
 %%   <<"StreamStatus">> => list(any()),

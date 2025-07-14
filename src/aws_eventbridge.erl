@@ -187,14 +187,14 @@
 %%   <<"EventSourceName">> => string(),
 %%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_event_bus_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -206,7 +206,7 @@
 
 %% Example:
 %% list_archives_response() :: #{
-%%   <<"Archives">> => list(archive()()),
+%%   <<"Archives">> => list(archive()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_archives_response() :: #{binary() => any()}.
@@ -215,7 +215,7 @@
 %% put_partner_events_request_entry() :: #{
 %%   <<"Detail">> => string(),
 %%   <<"DetailType">> => string(),
-%%   <<"Resources">> => list(string()()),
+%%   <<"Resources">> => list(string()),
 %%   <<"Source">> => string(),
 %%   <<"Time">> => non_neg_integer()
 %% }
@@ -247,7 +247,7 @@
 %% Example:
 %% run_command_target() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type run_command_target() :: #{binary() => any()}.
 
@@ -262,7 +262,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"EndpointId">> => string(),
 %%   <<"EndpointUrl">> => string(),
-%%   <<"EventBuses">> => list(endpoint_event_bus()()),
+%%   <<"EventBuses">> => list(endpoint_event_bus()),
 %%   <<"Name">> => string(),
 %%   <<"ReplicationConfig">> => replication_config(),
 %%   <<"RoleArn">> => string(),
@@ -352,7 +352,7 @@
 
 %% Example:
 %% list_event_sources_response() :: #{
-%%   <<"EventSources">> => list(event_source()()),
+%%   <<"EventSources">> => list(event_source()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_sources_response() :: #{binary() => any()}.
@@ -390,7 +390,7 @@
 
 %% Example:
 %% list_connections_response() :: #{
-%%   <<"Connections">> => list(connection()()),
+%%   <<"Connections">> => list(connection()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connections_response() :: #{binary() => any()}.
@@ -414,14 +414,14 @@
 
 %% Example:
 %% run_command_parameters() :: #{
-%%   <<"RunCommandTargets">> => list(run_command_target()())
+%%   <<"RunCommandTargets">> => list(run_command_target())
 %% }
 -type run_command_parameters() :: #{binary() => any()}.
 
 %% Example:
 %% create_endpoint_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"EventBuses">> := list(endpoint_event_bus()()),
+%%   <<"EventBuses">> := list(endpoint_event_bus()),
 %%   <<"Name">> := string(),
 %%   <<"ReplicationConfig">> => replication_config(),
 %%   <<"RoleArn">> => string(),
@@ -432,7 +432,7 @@
 %% Example:
 %% http_parameters() :: #{
 %%   <<"HeaderParameters">> => map(),
-%%   <<"PathParameterValues">> => list(string()()),
+%%   <<"PathParameterValues">> => list(string()),
 %%   <<"QueryStringParameters">> => map()
 %% }
 -type http_parameters() :: #{binary() => any()}.
@@ -482,7 +482,7 @@
 %% Example:
 %% update_endpoint_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"EventBuses">> => list(endpoint_event_bus()()),
+%%   <<"EventBuses">> => list(endpoint_event_bus()),
 %%   <<"Name">> := string(),
 %%   <<"ReplicationConfig">> => replication_config(),
 %%   <<"RoleArn">> => string(),
@@ -492,7 +492,7 @@
 
 %% Example:
 %% put_events_response() :: #{
-%%   <<"Entries">> => list(put_events_result_entry()()),
+%%   <<"Entries">> => list(put_events_result_entry()),
 %%   <<"FailedEntryCount">> => integer()
 %% }
 -type put_events_response() :: #{binary() => any()}.
@@ -508,7 +508,7 @@
 %%   <<"Detail">> => string(),
 %%   <<"DetailType">> => string(),
 %%   <<"EventBusName">> => string(),
-%%   <<"Resources">> => list(string()()),
+%%   <<"Resources">> => list(string()),
 %%   <<"Source">> => string(),
 %%   <<"Time">> => non_neg_integer(),
 %%   <<"TraceHeader">> => string()
@@ -518,7 +518,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -769,7 +769,7 @@
 %%   <<"DbUser">> => string(),
 %%   <<"SecretManagerArn">> => string(),
 %%   <<"Sql">> => string(),
-%%   <<"Sqls">> => list(string()()),
+%%   <<"Sqls">> => list(string()),
 %%   <<"StatementName">> => string(),
 %%   <<"WithEvent">> => boolean()
 %% }
@@ -818,9 +818,9 @@
 
 %% Example:
 %% connection_http_parameters() :: #{
-%%   <<"BodyParameters">> => list(connection_body_parameter()()),
-%%   <<"HeaderParameters">> => list(connection_header_parameter()()),
-%%   <<"QueryStringParameters">> => list(connection_query_string_parameter()())
+%%   <<"BodyParameters">> => list(connection_body_parameter()),
+%%   <<"HeaderParameters">> => list(connection_header_parameter()),
+%%   <<"QueryStringParameters">> => list(connection_query_string_parameter())
 %% }
 -type connection_http_parameters() :: #{binary() => any()}.
 
@@ -850,7 +850,7 @@
 
 %% Example:
 %% list_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()()),
+%%   <<"Endpoints">> => list(endpoint()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_endpoints_response() :: #{binary() => any()}.
@@ -858,7 +858,7 @@
 %% Example:
 %% put_events_request() :: #{
 %%   <<"EndpointId">> => string(),
-%%   <<"Entries">> := list(put_events_request_entry()())
+%%   <<"Entries">> := list(put_events_request_entry())
 %% }
 -type put_events_request() :: #{binary() => any()}.
 
@@ -890,14 +890,14 @@
 %% Example:
 %% replay_destination() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"FilterArns">> => list(string()())
+%%   <<"FilterArns">> => list(string())
 %% }
 -type replay_destination() :: #{binary() => any()}.
 
 %% Example:
 %% list_replays_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Replays">> => list(replay()())
+%%   <<"Replays">> => list(replay())
 %% }
 -type list_replays_response() :: #{binary() => any()}.
 
@@ -941,13 +941,13 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% sage_maker_pipeline_parameters() :: #{
-%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter()())
+%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter())
 %% }
 -type sage_maker_pipeline_parameters() :: #{binary() => any()}.
 
@@ -993,7 +993,7 @@
 
 %% Example:
 %% list_api_destinations_response() :: #{
-%%   <<"ApiDestinations">> => list(api_destination()()),
+%%   <<"ApiDestinations">> => list(api_destination()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_api_destinations_response() :: #{binary() => any()}.
@@ -1014,7 +1014,7 @@
 
 %% Example:
 %% put_partner_events_response() :: #{
-%%   <<"Entries">> => list(put_partner_events_result_entry()()),
+%%   <<"Entries">> => list(put_partner_events_result_entry()),
 %%   <<"FailedEntryCount">> => integer()
 %% }
 -type put_partner_events_response() :: #{binary() => any()}.
@@ -1072,7 +1072,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EndpointId">> => string(),
 %%   <<"EndpointUrl">> => string(),
-%%   <<"EventBuses">> => list(endpoint_event_bus()()),
+%%   <<"EventBuses">> => list(endpoint_event_bus()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"ReplicationConfig">> => replication_config(),
@@ -1175,7 +1175,7 @@
 %% Example:
 %% list_rules_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Rules">> => list(rule()())
+%%   <<"Rules">> => list(rule())
 %% }
 -type list_rules_response() :: #{binary() => any()}.
 
@@ -1186,7 +1186,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EndpointId">> => string(),
 %%   <<"EndpointUrl">> => string(),
-%%   <<"EventBuses">> => list(endpoint_event_bus()()),
+%%   <<"EventBuses">> => list(endpoint_event_bus()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"ReplicationConfig">> => replication_config(),
@@ -1247,7 +1247,7 @@
 %% remove_targets_request() :: #{
 %%   <<"EventBusName">> => string(),
 %%   <<"Force">> => boolean(),
-%%   <<"Ids">> := list(string()()),
+%%   <<"Ids">> := list(string()),
 %%   <<"Rule">> := string()
 %% }
 -type remove_targets_request() :: #{binary() => any()}.
@@ -1315,14 +1315,14 @@
 %%   <<"RoleArn">> => string(),
 %%   <<"ScheduleExpression">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_rule_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_partner_event_sources_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PartnerEventSources">> => list(partner_event_source()())
+%%   <<"PartnerEventSources">> => list(partner_event_source())
 %% }
 -type list_partner_event_sources_response() :: #{binary() => any()}.
 
@@ -1391,7 +1391,7 @@
 
 %% Example:
 %% remove_targets_response() :: #{
-%%   <<"FailedEntries">> => list(remove_targets_result_entry()()),
+%%   <<"FailedEntries">> => list(remove_targets_result_entry()),
 %%   <<"FailedEntryCount">> => integer()
 %% }
 -type remove_targets_response() :: #{binary() => any()}.
@@ -1413,7 +1413,7 @@
 
 %% Example:
 %% list_event_buses_response() :: #{
-%%   <<"EventBuses">> => list(event_bus()()),
+%%   <<"EventBuses">> => list(event_bus()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_buses_response() :: #{binary() => any()}.
@@ -1440,8 +1440,8 @@
 %% Example:
 %% aws_vpc_configuration() :: #{
 %%   <<"AssignPublicIp">> => list(any()),
-%%   <<"SecurityGroups">> => list(string()()),
-%%   <<"Subnets">> => list(string()())
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> => list(string())
 %% }
 -type aws_vpc_configuration() :: #{binary() => any()}.
 
@@ -1454,7 +1454,7 @@
 %% Example:
 %% create_endpoint_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"EventBuses">> => list(endpoint_event_bus()()),
+%%   <<"EventBuses">> => list(endpoint_event_bus()),
 %%   <<"Name">> => string(),
 %%   <<"ReplicationConfig">> => replication_config(),
 %%   <<"RoleArn">> => string(),
@@ -1480,7 +1480,7 @@
 
 %% Example:
 %% put_partner_events_request() :: #{
-%%   <<"Entries">> := list(put_partner_events_request_entry()())
+%%   <<"Entries">> := list(put_partner_events_request_entry())
 %% }
 -type put_partner_events_request() :: #{binary() => any()}.
 
@@ -1499,7 +1499,7 @@
 %% Example:
 %% list_targets_by_rule_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Targets">> => list(target()())
+%%   <<"Targets">> => list(target())
 %% }
 -type list_targets_by_rule_response() :: #{binary() => any()}.
 
@@ -1577,7 +1577,7 @@
 %% put_targets_request() :: #{
 %%   <<"EventBusName">> => string(),
 %%   <<"Rule">> := string(),
-%%   <<"Targets">> := list(target()())
+%%   <<"Targets">> := list(target())
 %% }
 -type put_targets_request() :: #{binary() => any()}.
 
@@ -1650,14 +1650,14 @@
 %% Example:
 %% list_partner_event_source_accounts_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PartnerEventSourceAccounts">> => list(partner_event_source_account()())
+%%   <<"PartnerEventSourceAccounts">> => list(partner_event_source_account())
 %% }
 -type list_partner_event_source_accounts_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_rule_names_by_target_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RuleNames">> => list(string()())
+%%   <<"RuleNames">> => list(string())
 %% }
 -type list_rule_names_by_target_response() :: #{binary() => any()}.
 
@@ -1687,18 +1687,18 @@
 
 %% Example:
 %% ecs_parameters() :: #{
-%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
 %%   <<"EnableECSManagedTags">> => boolean(),
 %%   <<"EnableExecuteCommand">> => boolean(),
 %%   <<"Group">> => string(),
 %%   <<"LaunchType">> => list(any()),
 %%   <<"NetworkConfiguration">> => network_configuration(),
-%%   <<"PlacementConstraints">> => list(placement_constraint()()),
-%%   <<"PlacementStrategy">> => list(placement_strategy()()),
+%%   <<"PlacementConstraints">> => list(placement_constraint()),
+%%   <<"PlacementStrategy">> => list(placement_strategy()),
 %%   <<"PlatformVersion">> => string(),
 %%   <<"PropagateTags">> => list(any()),
 %%   <<"ReferenceId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TaskCount">> => integer(),
 %%   <<"TaskDefinitionArn">> => string()
 %% }
@@ -1706,7 +1706,7 @@
 
 %% Example:
 %% put_targets_response() :: #{
-%%   <<"FailedEntries">> => list(put_targets_result_entry()()),
+%%   <<"FailedEntries">> => list(put_targets_result_entry()),
 %%   <<"FailedEntryCount">> => integer()
 %% }
 -type put_targets_response() :: #{binary() => any()}.

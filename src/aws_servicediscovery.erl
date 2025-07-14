@@ -123,7 +123,7 @@
 %%   <<"CreatorRequestId">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_http_namespace_request() :: #{binary() => any()}.
 
@@ -136,7 +136,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -202,7 +202,7 @@
 
 %% Example:
 %% list_namespaces_request() :: #{
-%%   <<"Filters">> => list(namespace_filter()()),
+%%   <<"Filters">> => list(namespace_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -243,7 +243,7 @@
 
 %% Example:
 %% get_instances_health_status_request() :: #{
-%%   <<"Instances">> => list(string()()),
+%%   <<"Instances">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceId">> := string()
@@ -270,7 +270,7 @@
 
 %% Example:
 %% discover_instances_response() :: #{
-%%   <<"Instances">> => list(http_instance_summary()()),
+%%   <<"Instances">> => list(http_instance_summary()),
 %%   <<"InstancesRevision">> => float()
 %% }
 -type discover_instances_response() :: #{binary() => any()}.
@@ -314,7 +314,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -348,7 +348,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Properties">> => private_dns_namespace_properties(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Vpc">> := string()
 %% }
 -type create_private_dns_namespace_request() :: #{binary() => any()}.
@@ -374,7 +374,7 @@
 
 %% Example:
 %% list_services_request() :: #{
-%%   <<"Filters">> => list(service_filter()()),
+%%   <<"Filters">> => list(service_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -401,7 +401,7 @@
 
 %% Example:
 %% list_operations_request() :: #{
-%%   <<"Filters">> => list(operation_filter()()),
+%%   <<"Filters">> => list(operation_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -430,7 +430,7 @@
 %% service_filter() :: #{
 %%   <<"Condition">> => list(any()),
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type service_filter() :: #{binary() => any()}.
 
@@ -456,7 +456,7 @@
 %% Example:
 %% list_services_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Services">> => list(service_summary()())
+%%   <<"Services">> => list(service_summary())
 %% }
 -type list_services_response() :: #{binary() => any()}.
 
@@ -503,7 +503,7 @@
 %%   <<"HealthCheckCustomConfig">> => health_check_custom_config(),
 %%   <<"Name">> := string(),
 %%   <<"NamespaceId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => list(any())
 %% }
 -type create_service_request() :: #{binary() => any()}.
@@ -532,7 +532,7 @@
 
 %% Example:
 %% delete_service_attributes_request() :: #{
-%%   <<"Attributes">> := list(string()()),
+%%   <<"Attributes">> := list(string()),
 %%   <<"ServiceId">> := string()
 %% }
 -type delete_service_attributes_request() :: #{binary() => any()}.
@@ -546,7 +546,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -572,7 +572,7 @@
 
 %% Example:
 %% dns_config() :: #{
-%%   <<"DnsRecords">> => list(dns_record()()),
+%%   <<"DnsRecords">> => list(dns_record()),
 %%   <<"NamespaceId">> => string(),
 %%   <<"RoutingPolicy">> => list(any())
 %% }
@@ -596,7 +596,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Properties">> => public_dns_namespace_properties(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_public_dns_namespace_request() :: #{binary() => any()}.
 
@@ -612,7 +612,7 @@
 %% namespace_filter() :: #{
 %%   <<"Condition">> => list(any()),
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type namespace_filter() :: #{binary() => any()}.
 
@@ -625,7 +625,7 @@
 
 %% Example:
 %% list_instances_response() :: #{
-%%   <<"Instances">> => list(instance_summary()()),
+%%   <<"Instances">> => list(instance_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_instances_response() :: #{binary() => any()}.
@@ -660,7 +660,7 @@
 %% Example:
 %% list_operations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Operations">> => list(operation_summary()())
+%%   <<"Operations">> => list(operation_summary())
 %% }
 -type list_operations_response() :: #{binary() => any()}.
 
@@ -739,7 +739,7 @@
 
 %% Example:
 %% list_namespaces_response() :: #{
-%%   <<"Namespaces">> => list(namespace_summary()()),
+%%   <<"Namespaces">> => list(namespace_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_namespaces_response() :: #{binary() => any()}.
@@ -752,7 +752,7 @@
 
 %% Example:
 %% dns_config_change() :: #{
-%%   <<"DnsRecords">> => list(dns_record()())
+%%   <<"DnsRecords">> => list(dns_record())
 %% }
 -type dns_config_change() :: #{binary() => any()}.
 
@@ -844,7 +844,7 @@
 %% operation_filter() :: #{
 %%   <<"Condition">> => list(any()),
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type operation_filter() :: #{binary() => any()}.
 

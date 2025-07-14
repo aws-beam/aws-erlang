@@ -52,7 +52,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_rescore_execution_plan_request() :: #{binary() => any()}.
 
@@ -96,8 +96,8 @@
 %%   <<"Id">> => string(),
 %%   <<"OriginalScore">> => float(),
 %%   <<"Title">> => string(),
-%%   <<"TokenizedBody">> => list(string()()),
-%%   <<"TokenizedTitle">> => list(string()())
+%%   <<"TokenizedBody">> => list(string()),
+%%   <<"TokenizedTitle">> => list(string())
 %% }
 -type document() :: #{binary() => any()}.
 
@@ -117,7 +117,7 @@
 %% Example:
 %% list_rescore_execution_plans_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SummaryItems">> => list(rescore_execution_plan_summary()())
+%%   <<"SummaryItems">> => list(rescore_execution_plan_summary())
 %% }
 -type list_rescore_execution_plans_response() :: #{binary() => any()}.
 
@@ -129,7 +129,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -145,7 +145,7 @@
 
 %% Example:
 %% rescore_request() :: #{
-%%   <<"Documents">> := list(document()()),
+%%   <<"Documents">> := list(document()),
 %%   <<"SearchQuery">> := string()
 %% }
 -type rescore_request() :: #{binary() => any()}.
@@ -153,7 +153,7 @@
 %% Example:
 %% rescore_result() :: #{
 %%   <<"RescoreId">> => string(),
-%%   <<"ResultItems">> => list(rescore_result_item()())
+%%   <<"ResultItems">> => list(rescore_result_item())
 %% }
 -type rescore_result() :: #{binary() => any()}.
 
@@ -192,7 +192,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -211,7 +211,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 

@@ -152,9 +152,9 @@
 %% describe_vpc_connection_response() :: #{
 %%   <<"Authentication">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"State">> => list(any()),
-%%   <<"Subnets">> => list(string()()),
+%%   <<"Subnets">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"TargetClusterArn">> => string(),
 %%   <<"VpcConnectionArn">> => string(),
@@ -201,14 +201,14 @@
 %% Example:
 %% compatible_kafka_version() :: #{
 %%   <<"SourceVersion">> => string(),
-%%   <<"TargetVersions">> => list(string()())
+%%   <<"TargetVersions">> => list(string())
 %% }
 -type compatible_kafka_version() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_compatible_kafka_versions_response() :: #{
-%%   <<"CompatibleKafkaVersions">> => list(compatible_kafka_version()())
+%%   <<"CompatibleKafkaVersions">> => list(compatible_kafka_version())
 %% }
 -type get_compatible_kafka_versions_response() :: #{binary() => any()}.
 
@@ -218,8 +218,8 @@
 %%   <<"CopyAccessControlListsForTopics">> => boolean(),
 %%   <<"CopyTopicConfigurations">> => boolean(),
 %%   <<"DetectAndCopyNewTopics">> => boolean(),
-%%   <<"TopicsToExclude">> => list(string()()),
-%%   <<"TopicsToReplicate">> => list(string()())
+%%   <<"TopicsToExclude">> => list(string()),
+%%   <<"TopicsToReplicate">> => list(string())
 %% }
 -type topic_replication_update() :: #{binary() => any()}.
 
@@ -227,9 +227,9 @@
 %% Example:
 %% create_vpc_connection_response() :: #{
 %%   <<"Authentication">> => string(),
-%%   <<"ClientSubnets">> => list(string()()),
+%%   <<"ClientSubnets">> => list(string()),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"VpcConnectionArn">> => string(),
@@ -275,7 +275,7 @@
 %% Example:
 %% list_vpc_connections_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcConnections">> => list(vpc_connection()())
+%%   <<"VpcConnections">> => list(vpc_connection())
 %% }
 -type list_vpc_connections_response() :: #{binary() => any()}.
 
@@ -401,7 +401,7 @@
 
 %% Example:
 %% list_configurations_response() :: #{
-%%   <<"Configurations">> => list(configuration()()),
+%%   <<"Configurations">> => list(configuration()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configurations_response() :: #{binary() => any()}.
@@ -409,7 +409,7 @@
 
 %% Example:
 %% list_client_vpc_connections_response() :: #{
-%%   <<"ClientVpcConnections">> => list(client_vpc_connection()()),
+%%   <<"ClientVpcConnections">> => list(client_vpc_connection()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_client_vpc_connections_response() :: #{binary() => any()}.
@@ -482,8 +482,8 @@
 
 %% Example:
 %% kafka_cluster_client_vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type kafka_cluster_client_vpc_config() :: #{binary() => any()}.
 
@@ -493,7 +493,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"KafkaVersions">> => list(string()()),
+%%   <<"KafkaVersions">> => list(string()),
 %%   <<"LatestRevision">> => configuration_revision(),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any())
@@ -584,7 +584,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -612,8 +612,8 @@
 %% Example:
 %% create_vpc_connection_request() :: #{
 %%   <<"Authentication">> := string(),
-%%   <<"ClientSubnets">> := list(string()()),
-%%   <<"SecurityGroups">> := list(string()()),
+%%   <<"ClientSubnets">> := list(string()),
+%%   <<"SecurityGroups">> := list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"TargetClusterArn">> := string(),
 %%   <<"VpcId">> := string()
@@ -652,7 +652,7 @@
 
 %% Example:
 %% batch_associate_scram_secret_request() :: #{
-%%   <<"SecretArnList">> := list(string()())
+%%   <<"SecretArnList">> := list(string())
 %% }
 -type batch_associate_scram_secret_request() :: #{binary() => any()}.
 
@@ -660,8 +660,8 @@
 %% Example:
 %% create_replicator_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"KafkaClusters">> := list(kafka_cluster()()),
-%%   <<"ReplicationInfoList">> := list(replication_info()()),
+%%   <<"KafkaClusters">> := list(kafka_cluster()),
+%%   <<"ReplicationInfoList">> := list(replication_info()),
 %%   <<"ReplicatorName">> := string(),
 %%   <<"ServiceExecutionRoleArn">> := string(),
 %%   <<"Tags">> => map()
@@ -675,7 +675,7 @@
 
 %% Example:
 %% list_cluster_operations_response() :: #{
-%%   <<"ClusterOperationInfoList">> => list(cluster_operation_info()()),
+%%   <<"ClusterOperationInfoList">> => list(cluster_operation_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cluster_operations_response() :: #{binary() => any()}.
@@ -691,8 +691,8 @@
 
 %% Example:
 %% consumer_group_replication() :: #{
-%%   <<"ConsumerGroupsToExclude">> => list(string()()),
-%%   <<"ConsumerGroupsToReplicate">> => list(string()()),
+%%   <<"ConsumerGroupsToExclude">> => list(string()),
+%%   <<"ConsumerGroupsToReplicate">> => list(string()),
 %%   <<"DetectAndCopyNewConsumerGroups">> => boolean(),
 %%   <<"SynchroniseConsumerGroupOffsets">> => boolean()
 %% }
@@ -762,8 +762,8 @@
 %%   <<"DetectAndCopyNewTopics">> => boolean(),
 %%   <<"StartingPosition">> => replication_starting_position(),
 %%   <<"TopicNameConfiguration">> => replication_topic_name_configuration(),
-%%   <<"TopicsToExclude">> => list(string()()),
-%%   <<"TopicsToReplicate">> => list(string()())
+%%   <<"TopicsToExclude">> => list(string()),
+%%   <<"TopicsToReplicate">> => list(string())
 %% }
 -type topic_replication() :: #{binary() => any()}.
 
@@ -790,7 +790,7 @@
 
 %% Example:
 %% cluster_operation_v2_provisioned() :: #{
-%%   <<"OperationSteps">> => list(cluster_operation_step()()),
+%%   <<"OperationSteps">> => list(cluster_operation_step()),
 %%   <<"SourceClusterInfo">> => mutable_cluster_info(),
 %%   <<"TargetClusterInfo">> => mutable_cluster_info(),
 %%   <<"VpcConnectionInfo">> => vpc_connection_info()
@@ -839,7 +839,7 @@
 
 %% Example:
 %% tls() :: #{
-%%   <<"CertificateAuthorityArnList">> => list(string()()),
+%%   <<"CertificateAuthorityArnList">> => list(string()),
 %%   <<"Enabled">> => boolean()
 %% }
 -type tls() :: #{binary() => any()}.
@@ -848,19 +848,19 @@
 %% Example:
 %% broker_node_group_info() :: #{
 %%   <<"BrokerAZDistribution">> => list(any()),
-%%   <<"ClientSubnets">> => list(string()()),
+%%   <<"ClientSubnets">> => list(string()),
 %%   <<"ConnectivityInfo">> => connectivity_info(),
 %%   <<"InstanceType">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"StorageInfo">> => storage_info(),
-%%   <<"ZoneIds">> => list(string()())
+%%   <<"ZoneIds">> => list(string())
 %% }
 -type broker_node_group_info() :: #{binary() => any()}.
 
 
 %% Example:
 %% controller_node_info() :: #{
-%%   <<"Endpoints">> => list(string()())
+%%   <<"Endpoints">> => list(string())
 %% }
 -type controller_node_info() :: #{binary() => any()}.
 
@@ -949,7 +949,7 @@
 
 %% Example:
 %% reboot_broker_request() :: #{
-%%   <<"BrokerIds">> := list(string()())
+%%   <<"BrokerIds">> := list(string())
 %% }
 -type reboot_broker_request() :: #{binary() => any()}.
 
@@ -1006,7 +1006,7 @@
 %% Example:
 %% update_broker_storage_request() :: #{
 %%   <<"CurrentVersion">> := string(),
-%%   <<"TargetBrokerEBSVolumeInfo">> := list(broker_ebs_volume_info()())
+%%   <<"TargetBrokerEBSVolumeInfo">> := list(broker_ebs_volume_info())
 %% }
 -type update_broker_storage_request() :: #{binary() => any()}.
 
@@ -1021,7 +1021,7 @@
 
 %% Example:
 %% list_kafka_versions_response() :: #{
-%%   <<"KafkaVersions">> => list(kafka_version()()),
+%%   <<"KafkaVersions">> => list(kafka_version()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_kafka_versions_response() :: #{binary() => any()}.
@@ -1046,8 +1046,8 @@
 
 %% Example:
 %% vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
@@ -1062,7 +1062,7 @@
 
 %% Example:
 %% list_clusters_v2_response() :: #{
-%%   <<"ClusterInfoList">> => list(cluster()()),
+%%   <<"ClusterInfoList">> => list(cluster()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_clusters_v2_response() :: #{binary() => any()}.
@@ -1080,7 +1080,7 @@
 %% Example:
 %% create_configuration_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"KafkaVersions">> => list(string()()),
+%%   <<"KafkaVersions">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"ServerProperties">> := binary()
 %% }
@@ -1112,7 +1112,7 @@
 %% Example:
 %% serverless_request() :: #{
 %%   <<"ClientAuthentication">> => serverless_client_authentication(),
-%%   <<"VpcConfigs">> => list(vpc_config()())
+%%   <<"VpcConfigs">> => list(vpc_config())
 %% }
 -type serverless_request() :: #{binary() => any()}.
 
@@ -1147,7 +1147,7 @@
 
 %% Example:
 %% list_clusters_response() :: #{
-%%   <<"ClusterInfoList">> => list(cluster_info()()),
+%%   <<"ClusterInfoList">> => list(cluster_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_clusters_response() :: #{binary() => any()}.
@@ -1171,7 +1171,7 @@
 %% Example:
 %% list_configuration_revisions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Revisions">> => list(configuration_revision()())
+%%   <<"Revisions">> => list(configuration_revision())
 %% }
 -type list_configuration_revisions_response() :: #{binary() => any()}.
 
@@ -1236,8 +1236,8 @@
 
 %% Example:
 %% consumer_group_replication_update() :: #{
-%%   <<"ConsumerGroupsToExclude">> => list(string()()),
-%%   <<"ConsumerGroupsToReplicate">> => list(string()()),
+%%   <<"ConsumerGroupsToExclude">> => list(string()),
+%%   <<"ConsumerGroupsToReplicate">> => list(string()),
 %%   <<"DetectAndCopyNewConsumerGroups">> => boolean(),
 %%   <<"SynchroniseConsumerGroupOffsets">> => boolean()
 %% }
@@ -1335,7 +1335,7 @@
 %%   <<"ClientSubnet">> => string(),
 %%   <<"ClientVpcIpAddress">> => string(),
 %%   <<"CurrentBrokerSoftwareInfo">> => broker_software_info(),
-%%   <<"Endpoints">> => list(string()())
+%%   <<"Endpoints">> => list(string())
 %% }
 -type broker_node_info() :: #{binary() => any()}.
 
@@ -1344,7 +1344,7 @@
 %% zookeeper_node_info() :: #{
 %%   <<"AttachedENIId">> => string(),
 %%   <<"ClientVpcIpAddress">> => string(),
-%%   <<"Endpoints">> => list(string()()),
+%%   <<"Endpoints">> => list(string()),
 %%   <<"ZookeeperId">> => float(),
 %%   <<"ZookeeperVersion">> => string()
 %% }
@@ -1402,7 +1402,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"KafkaVersions">> => list(string()()),
+%%   <<"KafkaVersions">> => list(string()),
 %%   <<"LatestRevision">> => configuration_revision(),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any())
@@ -1456,7 +1456,7 @@
 
 %% Example:
 %% list_cluster_operations_v2_response() :: #{
-%%   <<"ClusterOperationInfoList">> => list(cluster_operation_v2_summary()()),
+%%   <<"ClusterOperationInfoList">> => list(cluster_operation_v2_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cluster_operations_v2_response() :: #{binary() => any()}.
@@ -1477,7 +1477,7 @@
 %% Example:
 %% list_replicators_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Replicators">> => list(replicator_summary()())
+%%   <<"Replicators">> => list(replicator_summary())
 %% }
 -type list_replicators_response() :: #{binary() => any()}.
 
@@ -1495,8 +1495,8 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CurrentVersion">> => string(),
 %%   <<"IsReplicatorReference">> => boolean(),
-%%   <<"KafkaClusters">> => list(kafka_cluster_description()()),
-%%   <<"ReplicationInfoList">> => list(replication_info_description()()),
+%%   <<"KafkaClusters">> => list(kafka_cluster_description()),
+%%   <<"ReplicationInfoList">> => list(replication_info_description()),
 %%   <<"ReplicatorArn">> => string(),
 %%   <<"ReplicatorDescription">> => string(),
 %%   <<"ReplicatorName">> => string(),
@@ -1555,7 +1555,7 @@
 %%   <<"ErrorInfo">> => error_info(),
 %%   <<"OperationArn">> => string(),
 %%   <<"OperationState">> => string(),
-%%   <<"OperationSteps">> => list(cluster_operation_step()()),
+%%   <<"OperationSteps">> => list(cluster_operation_step()),
 %%   <<"OperationType">> => string(),
 %%   <<"SourceClusterInfo">> => mutable_cluster_info(),
 %%   <<"TargetClusterInfo">> => mutable_cluster_info(),
@@ -1579,7 +1579,7 @@
 %% Example:
 %% batch_disassociate_scram_secret_response() :: #{
 %%   <<"ClusterArn">> => string(),
-%%   <<"UnprocessedScramSecrets">> => list(unprocessed_scram_secret()())
+%%   <<"UnprocessedScramSecrets">> => list(unprocessed_scram_secret())
 %% }
 -type batch_disassociate_scram_secret_response() :: #{binary() => any()}.
 
@@ -1622,7 +1622,7 @@
 %% Example:
 %% mutable_cluster_info() :: #{
 %%   <<"BrokerCountUpdateInfo">> => broker_count_update_info(),
-%%   <<"BrokerEBSVolumeInfo">> => list(broker_ebs_volume_info()()),
+%%   <<"BrokerEBSVolumeInfo">> => list(broker_ebs_volume_info()),
 %%   <<"ClientAuthentication">> => client_authentication(),
 %%   <<"ConfigurationInfo">> => configuration_info(),
 %%   <<"ConnectivityInfo">> => connectivity_info(),
@@ -1650,7 +1650,7 @@
 %% Example:
 %% list_scram_secrets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecretArnList">> => list(string()())
+%%   <<"SecretArnList">> => list(string())
 %% }
 -type list_scram_secrets_response() :: #{binary() => any()}.
 
@@ -1658,7 +1658,7 @@
 %% Example:
 %% batch_associate_scram_secret_response() :: #{
 %%   <<"ClusterArn">> => string(),
-%%   <<"UnprocessedScramSecrets">> => list(unprocessed_scram_secret()())
+%%   <<"UnprocessedScramSecrets">> => list(unprocessed_scram_secret())
 %% }
 -type batch_associate_scram_secret_response() :: #{binary() => any()}.
 
@@ -1687,8 +1687,8 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CurrentVersion">> => string(),
 %%   <<"IsReplicatorReference">> => boolean(),
-%%   <<"KafkaClustersSummary">> => list(kafka_cluster_summary()()),
-%%   <<"ReplicationInfoSummaryList">> => list(replication_info_summary()()),
+%%   <<"KafkaClustersSummary">> => list(kafka_cluster_summary()),
+%%   <<"ReplicationInfoSummaryList">> => list(replication_info_summary()),
 %%   <<"ReplicatorArn">> => string(),
 %%   <<"ReplicatorName">> => string(),
 %%   <<"ReplicatorResourceArn">> => string(),
@@ -1715,7 +1715,7 @@
 
 %% Example:
 %% batch_disassociate_scram_secret_request() :: #{
-%%   <<"SecretArnList">> := list(string()())
+%%   <<"SecretArnList">> := list(string())
 %% }
 -type batch_disassociate_scram_secret_request() :: #{binary() => any()}.
 
@@ -1774,8 +1774,8 @@
 
 %% Example:
 %% broker_count_update_info() :: #{
-%%   <<"CreatedBrokerIds">> => list(float()()),
-%%   <<"DeletedBrokerIds">> => list(float()())
+%%   <<"CreatedBrokerIds">> => list(float()),
+%%   <<"DeletedBrokerIds">> => list(float())
 %% }
 -type broker_count_update_info() :: #{binary() => any()}.
 
@@ -1783,7 +1783,7 @@
 %% Example:
 %% list_nodes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NodeInfoList">> => list(node_info()())
+%%   <<"NodeInfoList">> => list(node_info())
 %% }
 -type list_nodes_response() :: #{binary() => any()}.
 
@@ -1823,7 +1823,7 @@
 %% Example:
 %% serverless() :: #{
 %%   <<"ClientAuthentication">> => serverless_client_authentication(),
-%%   <<"VpcConfigs">> => list(vpc_config()())
+%%   <<"VpcConfigs">> => list(vpc_config())
 %% }
 -type serverless() :: #{binary() => any()}.
 

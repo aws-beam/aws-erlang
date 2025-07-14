@@ -189,7 +189,7 @@
 
 %% Example:
 %% describe_domain_auto_tunes_response() :: #{
-%%   <<"AutoTunes">> => list(auto_tune()()),
+%%   <<"AutoTunes">> => list(auto_tune()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_domain_auto_tunes_response() :: #{binary() => any()}.
@@ -197,7 +197,7 @@
 
 %% Example:
 %% get_compatible_elasticsearch_versions_response() :: #{
-%%   <<"CompatibleElasticsearchVersions">> => list(compatible_versions_map()())
+%%   <<"CompatibleElasticsearchVersions">> => list(compatible_versions_map())
 %% }
 -type get_compatible_elasticsearch_versions_response() :: #{binary() => any()}.
 
@@ -205,14 +205,14 @@
 %% Example:
 %% list_vpc_endpoints_for_domain_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary()())
+%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
 %% }
 -type list_vpc_endpoints_for_domain_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_elasticsearch_domains_request() :: #{
-%%   <<"DomainNames">> := list(string()())
+%%   <<"DomainNames">> := list(string())
 %% }
 -type describe_elasticsearch_domains_request() :: #{binary() => any()}.
 
@@ -236,7 +236,7 @@
 %% Example:
 %% compatible_versions_map() :: #{
 %%   <<"SourceVersion">> => string(),
-%%   <<"TargetVersions">> => list(string()())
+%%   <<"TargetVersions">> => list(string())
 %% }
 -type compatible_versions_map() :: #{binary() => any()}.
 
@@ -257,7 +257,7 @@
 
 %% Example:
 %% describe_outbound_cross_cluster_search_connections_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -356,7 +356,7 @@
 
 %% Example:
 %% describe_vpc_endpoints_request() :: #{
-%%   <<"VpcEndpointIds">> := list(string()())
+%%   <<"VpcEndpointIds">> := list(string())
 %% }
 -type describe_vpc_endpoints_request() :: #{binary() => any()}.
 
@@ -411,16 +411,16 @@
 %% Example:
 %% list_vpc_endpoints_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary()())
+%%   <<"VpcEndpointSummaryList">> => list(vpc_endpoint_summary())
 %% }
 -type list_vpc_endpoints_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% vpc_derived_info() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VPCId">> => string()
 %% }
 -type vpc_derived_info() :: #{binary() => any()}.
@@ -452,7 +452,7 @@
 
 %% Example:
 %% list_tags_response() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_response() :: #{binary() => any()}.
 
@@ -460,7 +460,7 @@
 %% Example:
 %% storage_type_limit() :: #{
 %%   <<"LimitName">> => string(),
-%%   <<"LimitValues">> => list(string()())
+%%   <<"LimitValues">> => list(string())
 %% }
 -type storage_type_limit() :: #{binary() => any()}.
 
@@ -513,7 +513,7 @@
 %% Example:
 %% storage_type() :: #{
 %%   <<"StorageSubTypeName">> => string(),
-%%   <<"StorageTypeLimits">> => list(storage_type_limit()()),
+%%   <<"StorageTypeLimits">> => list(storage_type_limit()),
 %%   <<"StorageTypeName">> => string()
 %% }
 -type storage_type() :: #{binary() => any()}.
@@ -542,7 +542,7 @@
 %%   <<"LogPublishingOptions">> => map(),
 %%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
 %%   <<"SnapshotOptions">> => snapshot_options(),
-%%   <<"TagList">> => list(tag()()),
+%%   <<"TagList">> => list(tag()),
 %%   <<"VPCOptions">> => vpc_options()
 %% }
 -type create_elasticsearch_domain_request() :: #{binary() => any()}.
@@ -551,7 +551,7 @@
 %% Example:
 %% additional_limit() :: #{
 %%   <<"LimitName">> => string(),
-%%   <<"LimitValues">> => list(string()())
+%%   <<"LimitValues">> => list(string())
 %% }
 -type additional_limit() :: #{binary() => any()}.
 
@@ -600,7 +600,7 @@
 
 %% Example:
 %% describe_inbound_cross_cluster_search_connections_response() :: #{
-%%   <<"CrossClusterSearchConnections">> => list(inbound_cross_cluster_search_connection()()),
+%%   <<"CrossClusterSearchConnections">> => list(inbound_cross_cluster_search_connection()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_inbound_cross_cluster_search_connections_response() :: #{binary() => any()}.
@@ -617,7 +617,7 @@
 
 %% Example:
 %% list_packages_for_domain_response() :: #{
-%%   <<"DomainPackageDetailsList">> => list(domain_package_details()()),
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_packages_for_domain_response() :: #{binary() => any()}.
@@ -626,12 +626,12 @@
 %% Example:
 %% change_progress_status_details() :: #{
 %%   <<"ChangeId">> => string(),
-%%   <<"ChangeProgressStages">> => list(change_progress_stage()()),
-%%   <<"CompletedProperties">> => list(string()()),
+%%   <<"ChangeProgressStages">> => list(change_progress_stage()),
+%%   <<"CompletedProperties">> => list(string()),
 %%   <<"ConfigChangeStatus">> => list(any()),
 %%   <<"InitiatedBy">> => list(any()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"PendingProperties">> => list(string()()),
+%%   <<"PendingProperties">> => list(string()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"TotalNumberOfStages">> => integer()
@@ -649,7 +649,7 @@
 %% Example:
 %% add_tags_request() :: #{
 %%   <<"ARN">> := string(),
-%%   <<"TagList">> := list(tag()())
+%%   <<"TagList">> := list(tag())
 %% }
 -type add_tags_request() :: #{binary() => any()}.
 
@@ -657,7 +657,7 @@
 %% Example:
 %% describe_reserved_elasticsearch_instance_offerings_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReservedElasticsearchInstanceOfferings">> => list(reserved_elasticsearch_instance_offering()())
+%%   <<"ReservedElasticsearchInstanceOfferings">> => list(reserved_elasticsearch_instance_offering())
 %% }
 -type describe_reserved_elasticsearch_instance_offerings_response() :: #{binary() => any()}.
 
@@ -665,7 +665,7 @@
 %% Example:
 %% upgrade_history() :: #{
 %%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"StepsList">> => list(upgrade_step_item()()),
+%%   <<"StepsList">> => list(upgrade_step_item()),
 %%   <<"UpgradeName">> => string(),
 %%   <<"UpgradeStatus">> => list(any())
 %% }
@@ -705,7 +705,7 @@
 %% Example:
 %% describe_packages_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PackageDetailsList">> => list(package_details()())
+%%   <<"PackageDetailsList">> => list(package_details())
 %% }
 -type describe_packages_response() :: #{binary() => any()}.
 
@@ -754,8 +754,8 @@
 
 %% Example:
 %% cancel_domain_config_change_response() :: #{
-%%   <<"CancelledChangeIds">> => list(string()()),
-%%   <<"CancelledChangeProperties">> => list(cancelled_change_property()()),
+%%   <<"CancelledChangeIds">> => list(string()),
+%%   <<"CancelledChangeProperties">> => list(cancelled_change_property()),
 %%   <<"DryRun">> => boolean()
 %% }
 -type cancel_domain_config_change_response() :: #{binary() => any()}.
@@ -779,7 +779,7 @@
 %% Example:
 %% get_upgrade_history_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UpgradeHistories">> => list(upgrade_history()())
+%%   <<"UpgradeHistories">> => list(upgrade_history())
 %% }
 -type get_upgrade_history_response() :: #{binary() => any()}.
 
@@ -821,8 +821,8 @@
 
 %% Example:
 %% describe_vpc_endpoints_response() :: #{
-%%   <<"VpcEndpointErrors">> => list(vpc_endpoint_error()()),
-%%   <<"VpcEndpoints">> => list(vpc_endpoint()())
+%%   <<"VpcEndpointErrors">> => list(vpc_endpoint_error()),
+%%   <<"VpcEndpoints">> => list(vpc_endpoint())
 %% }
 -type describe_vpc_endpoints_response() :: #{binary() => any()}.
 
@@ -837,7 +837,7 @@
 %% Example:
 %% describe_packages_filter() :: #{
 %%   <<"Name">> => list(any()),
-%%   <<"Value">> => list(string()())
+%%   <<"Value">> => list(string())
 %% }
 -type describe_packages_filter() :: #{binary() => any()}.
 
@@ -889,7 +889,7 @@
 %% get_package_version_history_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"PackageID">> => string(),
-%%   <<"PackageVersionHistoryList">> => list(package_version_history()())
+%%   <<"PackageVersionHistoryList">> => list(package_version_history())
 %% }
 -type get_package_version_history_response() :: #{binary() => any()}.
 
@@ -967,7 +967,7 @@
 
 %% Example:
 %% list_domain_names_response() :: #{
-%%   <<"DomainNames">> => list(domain_info()())
+%%   <<"DomainNames">> => list(domain_info())
 %% }
 -type list_domain_names_response() :: #{binary() => any()}.
 
@@ -980,7 +980,7 @@
 %%   <<"ElasticsearchInstanceType">> => list(any()),
 %%   <<"FixedPrice">> => float(),
 %%   <<"PaymentOption">> => list(any()),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservationName">> => string(),
 %%   <<"ReservedElasticsearchInstanceId">> => string(),
 %%   <<"ReservedElasticsearchInstanceOfferingId">> => string(),
@@ -1009,7 +1009,7 @@
 %%   <<"ElasticsearchVersion">> => elasticsearch_version_status(),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options_status(),
 %%   <<"LogPublishingOptions">> => log_publishing_options_status(),
-%%   <<"ModifyingProperties">> => list(modifying_properties()()),
+%%   <<"ModifyingProperties">> => list(modifying_properties()),
 %%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options_status(),
 %%   <<"SnapshotOptions">> => snapshot_options_status(),
 %%   <<"VPCOptions">> => vpc_derived_info_status()
@@ -1020,7 +1020,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -1031,7 +1031,7 @@
 
 %% Example:
 %% describe_outbound_cross_cluster_search_connections_response() :: #{
-%%   <<"CrossClusterSearchConnections">> => list(outbound_cross_cluster_search_connection()()),
+%%   <<"CrossClusterSearchConnections">> => list(outbound_cross_cluster_search_connection()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_outbound_cross_cluster_search_connections_response() :: #{binary() => any()}.
@@ -1112,7 +1112,7 @@
 %% Example:
 %% auto_tune_options_input() :: #{
 %%   <<"DesiredState">> => list(any()),
-%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()())
+%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule())
 %% }
 -type auto_tune_options_input() :: #{binary() => any()}.
 
@@ -1324,7 +1324,7 @@
 %% Example:
 %% auto_tune_options() :: #{
 %%   <<"DesiredState">> => list(any()),
-%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()()),
+%%   <<"MaintenanceSchedules">> => list(auto_tune_maintenance_schedule()),
 %%   <<"RollbackOnDisable">> => list(any())
 %% }
 -type auto_tune_options() :: #{binary() => any()}.
@@ -1352,7 +1352,7 @@
 %%   <<"Endpoint">> => string(),
 %%   <<"Endpoints">> => map(),
 %%   <<"LogPublishingOptions">> => map(),
-%%   <<"ModifyingProperties">> => list(modifying_properties()()),
+%%   <<"ModifyingProperties">> => list(modifying_properties()),
 %%   <<"NodeToNodeEncryptionOptions">> => node_to_node_encryption_options(),
 %%   <<"Processing">> => boolean(),
 %%   <<"ServiceSoftwareOptions">> => service_software_options(),
@@ -1404,9 +1404,9 @@
 
 %% Example:
 %% limits() :: #{
-%%   <<"AdditionalLimits">> => list(additional_limit()()),
+%%   <<"AdditionalLimits">> => list(additional_limit()),
 %%   <<"InstanceLimits">> => instance_limits(),
-%%   <<"StorageTypes">> => list(storage_type()())
+%%   <<"StorageTypes">> => list(storage_type())
 %% }
 -type limits() :: #{binary() => any()}.
 
@@ -1428,8 +1428,8 @@
 
 %% Example:
 %% vpc_options() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_options() :: #{binary() => any()}.
 
@@ -1451,7 +1451,7 @@
 
 %% Example:
 %% describe_inbound_cross_cluster_search_connections_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1515,7 +1515,7 @@
 
 %% Example:
 %% list_elasticsearch_versions_response() :: #{
-%%   <<"ElasticsearchVersions">> => list(string()()),
+%%   <<"ElasticsearchVersions">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_elasticsearch_versions_response() :: #{binary() => any()}.
@@ -1539,7 +1539,7 @@
 %% Example:
 %% remove_tags_request() :: #{
 %%   <<"ARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_request() :: #{binary() => any()}.
 
@@ -1561,7 +1561,7 @@
 
 %% Example:
 %% describe_packages_request() :: #{
-%%   <<"Filters">> => list(describe_packages_filter()()),
+%%   <<"Filters">> => list(describe_packages_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1579,7 +1579,7 @@
 
 %% Example:
 %% upgrade_step_item() :: #{
-%%   <<"Issues">> => list(string()()),
+%%   <<"Issues">> => list(string()),
 %%   <<"ProgressPercent">> => float(),
 %%   <<"UpgradeStep">> => list(any()),
 %%   <<"UpgradeStepStatus">> => list(any())
@@ -1623,7 +1623,7 @@
 
 %% Example:
 %% list_vpc_endpoint_access_response() :: #{
-%%   <<"AuthorizedPrincipalList">> => list(authorized_principal()()),
+%%   <<"AuthorizedPrincipalList">> => list(authorized_principal()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_vpc_endpoint_access_response() :: #{binary() => any()}.
@@ -1632,7 +1632,7 @@
 %% Example:
 %% describe_reserved_elasticsearch_instances_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReservedElasticsearchInstances">> => list(reserved_elasticsearch_instance()())
+%%   <<"ReservedElasticsearchInstances">> => list(reserved_elasticsearch_instance())
 %% }
 -type describe_reserved_elasticsearch_instances_response() :: #{binary() => any()}.
 
@@ -1683,7 +1683,7 @@
 
 %% Example:
 %% describe_elasticsearch_domains_response() :: #{
-%%   <<"DomainStatusList">> => list(elasticsearch_domain_status()())
+%%   <<"DomainStatusList">> => list(elasticsearch_domain_status())
 %% }
 -type describe_elasticsearch_domains_response() :: #{binary() => any()}.
 
@@ -1722,7 +1722,7 @@
 
 %% Example:
 %% list_domains_for_package_response() :: #{
-%%   <<"DomainPackageDetailsList">> => list(domain_package_details()()),
+%%   <<"DomainPackageDetailsList">> => list(domain_package_details()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_domains_for_package_response() :: #{binary() => any()}.
@@ -1742,7 +1742,7 @@
 %%   <<"ElasticsearchInstanceType">> => list(any()),
 %%   <<"FixedPrice">> => float(),
 %%   <<"PaymentOption">> => list(any()),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservedElasticsearchInstanceOfferingId">> => string(),
 %%   <<"UsagePrice">> => float()
 %% }

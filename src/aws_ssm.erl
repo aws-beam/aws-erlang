@@ -381,7 +381,7 @@
 %% list_command_invocations_request() :: #{
 %%   <<"CommandId">> => string(),
 %%   <<"Details">> => boolean(),
-%%   <<"Filters">> => list(command_filter()()),
+%%   <<"Filters">> => list(command_filter()),
 %%   <<"InstanceId">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -392,7 +392,7 @@
 %% compliance_string_filter() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type compliance_string_filter() :: #{binary() => any()}.
 
@@ -431,7 +431,7 @@
 %% Example:
 %% list_ops_item_events_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(ops_item_event_summary()())
+%%   <<"Summaries">> => list(ops_item_event_summary())
 %% }
 -type list_ops_item_events_response() :: #{binary() => any()}.
 
@@ -458,7 +458,7 @@
 %% Example:
 %% create_patch_baseline_request() :: #{
 %%   <<"ApprovalRules">> => patch_rule_group(),
-%%   <<"ApprovedPatches">> => list(string()()),
+%%   <<"ApprovedPatches">> => list(string()),
 %%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
 %%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
 %%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
@@ -467,10 +467,10 @@
 %%   <<"GlobalFilters">> => patch_filter_group(),
 %%   <<"Name">> := string(),
 %%   <<"OperatingSystem">> => list(any()),
-%%   <<"RejectedPatches">> => list(string()()),
+%%   <<"RejectedPatches">> => list(string()),
 %%   <<"RejectedPatchesAction">> => list(any()),
-%%   <<"Sources">> => list(patch_source()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Sources">> => list(patch_source()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_patch_baseline_request() :: #{binary() => any()}.
 
@@ -497,7 +497,7 @@
 %% node_filter() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type node_filter() :: #{binary() => any()}.
 
@@ -513,7 +513,7 @@
 %%   <<"Priority">> => integer(),
 %%   <<"Replace">> => boolean(),
 %%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"TaskArn">> => string(),
 %%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
 %%   <<"TaskParameters">> => map(),
@@ -543,8 +543,8 @@
 
 %% Example:
 %% get_parameters_result() :: #{
-%%   <<"InvalidParameters">> => list(string()()),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"InvalidParameters">> => list(string()),
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type get_parameters_result() :: #{binary() => any()}.
 
@@ -590,7 +590,7 @@
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"LastModifiedUser">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Policies">> => list(parameter_inline_policy()()),
+%%   <<"Policies">> => list(parameter_inline_policy()),
 %%   <<"Tier">> => list(any()),
 %%   <<"Type">> => list(any()),
 %%   <<"Version">> => float()
@@ -620,7 +620,7 @@
 %% Example:
 %% describe_available_patches_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Patches">> => list(patch()())
+%%   <<"Patches">> => list(patch())
 %% }
 -type describe_available_patches_result() :: #{binary() => any()}.
 
@@ -633,7 +633,7 @@
 %% Example:
 %% describe_patch_properties_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Properties">> => list(map()())
+%%   <<"Properties">> => list(map())
 %% }
 -type describe_patch_properties_result() :: #{binary() => any()}.
 
@@ -646,7 +646,7 @@
 %% Example:
 %% describe_activations_filter() :: #{
 %%   <<"FilterKey">> => list(any()),
-%%   <<"FilterValues">> => list(string()())
+%%   <<"FilterValues">> => list(string())
 %% }
 -type describe_activations_filter() :: #{binary() => any()}.
 
@@ -660,7 +660,7 @@
 %%   <<"Description">> => string(),
 %%   <<"LastModifiedBy">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Notifications">> => list(ops_item_notification()()),
+%%   <<"Notifications">> => list(ops_item_notification()),
 %%   <<"OperationalData">> => map(),
 %%   <<"OpsItemArn">> => string(),
 %%   <<"OpsItemId">> => string(),
@@ -668,7 +668,7 @@
 %%   <<"PlannedEndTime">> => non_neg_integer(),
 %%   <<"PlannedStartTime">> => non_neg_integer(),
 %%   <<"Priority">> => integer(),
-%%   <<"RelatedOpsItems">> => list(related_ops_item()()),
+%%   <<"RelatedOpsItems">> => list(related_ops_item()),
 %%   <<"Severity">> => string(),
 %%   <<"Source">> => string(),
 %%   <<"Status">> => list(any()),
@@ -691,7 +691,7 @@
 
 %% Example:
 %% start_associations_once_request() :: #{
-%%   <<"AssociationIds">> := list(string()())
+%%   <<"AssociationIds">> := list(string())
 %% }
 -type start_associations_once_request() :: #{binary() => any()}.
 
@@ -737,7 +737,7 @@
 %%   <<"Name">> := string(),
 %%   <<"Overwrite">> => boolean(),
 %%   <<"Policies">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Tier">> => list(any()),
 %%   <<"Type">> => list(any()),
 %%   <<"Value">> := string()
@@ -747,7 +747,7 @@
 %% Example:
 %% instance_property_filter() :: #{
 %%   <<"key">> => list(any()),
-%%   <<"valueSet">> => list(string()())
+%%   <<"valueSet">> => list(string())
 %% }
 -type instance_property_filter() :: #{binary() => any()}.
 
@@ -764,7 +764,7 @@
 
 %% Example:
 %% unlabel_parameter_version_request() :: #{
-%%   <<"Labels">> := list(string()()),
+%%   <<"Labels">> := list(string()),
 %%   <<"Name">> := string(),
 %%   <<"ParameterVersion">> := float()
 %% }
@@ -780,7 +780,7 @@
 %% Example:
 %% list_nodes_summary_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summary">> => list(map()())
+%%   <<"Summary">> => list(map())
 %% }
 -type list_nodes_summary_result() :: #{binary() => any()}.
 
@@ -802,7 +802,7 @@
 
 %% Example:
 %% describe_instance_patch_states_request() :: #{
-%%   <<"InstanceIds">> := list(string()()),
+%%   <<"InstanceIds">> := list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -834,7 +834,7 @@
 %% Example:
 %% step_execution_filter() :: #{
 %%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type step_execution_filter() :: #{binary() => any()}.
 
@@ -846,7 +846,7 @@
 
 %% Example:
 %% inventory_group() :: #{
-%%   <<"Filters">> => list(inventory_filter()()),
+%%   <<"Filters">> => list(inventory_filter()),
 %%   <<"Name">> => string()
 %% }
 -type inventory_group() :: #{binary() => any()}.
@@ -890,7 +890,7 @@
 
 %% Example:
 %% update_ops_metadata_request() :: #{
-%%   <<"KeysToDelete">> => list(string()()),
+%%   <<"KeysToDelete">> => list(string()),
 %%   <<"MetadataToUpdate">> => map(),
 %%   <<"OpsMetadataArn">> := string()
 %% }
@@ -918,7 +918,7 @@
 
 %% Example:
 %% list_resource_compliance_summaries_request() :: #{
-%%   <<"Filters">> => list(compliance_string_filter()()),
+%%   <<"Filters">> => list(compliance_string_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -983,7 +983,7 @@
 %% Example:
 %% ops_metadata_filter() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type ops_metadata_filter() :: #{binary() => any()}.
 
@@ -1051,16 +1051,16 @@
 %% Example:
 %% describe_maintenance_window_targets_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Targets">> => list(maintenance_window_target()())
+%%   <<"Targets">> => list(maintenance_window_target())
 %% }
 -type describe_maintenance_window_targets_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_parameters_request() :: #{
-%%   <<"Filters">> => list(parameters_filter()()),
+%%   <<"Filters">> => list(parameters_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ParameterFilters">> => list(parameter_string_filter()()),
+%%   <<"ParameterFilters">> => list(parameter_string_filter()),
 %%   <<"Shared">> => boolean()
 %% }
 -type describe_parameters_request() :: #{binary() => any()}.
@@ -1082,7 +1082,7 @@
 %% Example:
 %% automation_execution_filter() :: #{
 %%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type automation_execution_filter() :: #{binary() => any()}.
 
@@ -1111,7 +1111,7 @@
 %% Example:
 %% resource_policy_invalid_parameter_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"ParameterNames">> => list(string()())
+%%   <<"ParameterNames">> => list(string())
 %% }
 -type resource_policy_invalid_parameter_exception() :: #{binary() => any()}.
 
@@ -1133,7 +1133,7 @@
 
 %% Example:
 %% describe_maintenance_window_execution_task_invocations_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()()),
+%%   <<"Filters">> => list(maintenance_window_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TaskId">> := string(),
@@ -1156,7 +1156,7 @@
 %% Example:
 %% patch_filter() :: #{
 %%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type patch_filter() :: #{binary() => any()}.
 
@@ -1175,7 +1175,7 @@
 
 %% Example:
 %% document_reviewer_response_source() :: #{
-%%   <<"Comment">> => list(document_review_comment_source()()),
+%%   <<"Comment">> => list(document_review_comment_source()),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"ReviewStatus">> => list(any()),
 %%   <<"Reviewer">> => string(),
@@ -1194,13 +1194,13 @@
 %%   <<"IamRole">> => string(),
 %%   <<"RegistrationLimit">> => integer(),
 %%   <<"RegistrationsCount">> => integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type activation() :: #{binary() => any()}.
 
 %% Example:
 %% describe_available_patches_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()()),
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1209,7 +1209,7 @@
 %% Example:
 %% update_patch_baseline_request() :: #{
 %%   <<"ApprovalRules">> => patch_rule_group(),
-%%   <<"ApprovedPatches">> => list(string()()),
+%%   <<"ApprovedPatches">> => list(string()),
 %%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
 %%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
 %%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
@@ -1217,10 +1217,10 @@
 %%   <<"Description">> => string(),
 %%   <<"GlobalFilters">> => patch_filter_group(),
 %%   <<"Name">> => string(),
-%%   <<"RejectedPatches">> => list(string()()),
+%%   <<"RejectedPatches">> => list(string()),
 %%   <<"RejectedPatchesAction">> => list(any()),
 %%   <<"Replace">> => boolean(),
-%%   <<"Sources">> => list(patch_source()())
+%%   <<"Sources">> => list(patch_source())
 %% }
 -type update_patch_baseline_request() :: #{binary() => any()}.
 
@@ -1237,7 +1237,7 @@
 %% inventory_filter() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type inventory_filter() :: #{binary() => any()}.
 
@@ -1246,7 +1246,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OwnerInformation">> => string(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"WindowId">> => string(),
 %%   <<"WindowTargetId">> => string()
 %% }
@@ -1268,7 +1268,7 @@
 %% add_tags_to_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
 %%   <<"ResourceType">> := list(any()),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_to_resource_request() :: #{binary() => any()}.
 
@@ -1331,7 +1331,7 @@
 
 %% Example:
 %% maintenance_window_task_parameter_value_expression() :: #{
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type maintenance_window_task_parameter_value_expression() :: #{binary() => any()}.
 
@@ -1398,7 +1398,7 @@
 %%   <<"AssociationId">> => string(),
 %%   <<"AssociationName">> => string(),
 %%   <<"AssociationVersion">> => string(),
-%%   <<"CalendarNames">> => list(string()()),
+%%   <<"CalendarNames">> => list(string()),
 %%   <<"ComplianceSeverity">> => list(any()),
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"DocumentVersion">> => string(),
@@ -1411,9 +1411,9 @@
 %%   <<"ScheduleExpression">> => string(),
 %%   <<"ScheduleOffset">> => integer(),
 %%   <<"SyncCompliance">> => list(any()),
-%%   <<"TargetLocations">> => list(target_location()()),
-%%   <<"TargetMaps">> => list(map()()),
-%%   <<"Targets">> => list(target()())
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target())
 %% }
 -type association_version_info() :: #{binary() => any()}.
 
@@ -1436,18 +1436,18 @@
 
 %% Example:
 %% get_ops_summary_request() :: #{
-%%   <<"Aggregators">> => list(ops_aggregator()()),
-%%   <<"Filters">> => list(ops_filter()()),
+%%   <<"Aggregators">> => list(ops_aggregator()),
+%%   <<"Filters">> => list(ops_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResultAttributes">> => list(ops_result_attribute()()),
+%%   <<"ResultAttributes">> => list(ops_result_attribute()),
 %%   <<"SyncName">> => string()
 %% }
 -type get_ops_summary_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_document_request() :: #{
-%%   <<"Attachments">> => list(attachments_source()()),
+%%   <<"Attachments">> => list(attachments_source()),
 %%   <<"Content">> := string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"DocumentFormat">> => list(any()),
@@ -1461,13 +1461,13 @@
 %% Example:
 %% patch_orchestrator_filter() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type patch_orchestrator_filter() :: #{binary() => any()}.
 
 %% Example:
 %% delete_parameters_request() :: #{
-%%   <<"Names">> := list(string()())
+%%   <<"Names">> := list(string())
 %% }
 -type delete_parameters_request() :: #{binary() => any()}.
 
@@ -1475,7 +1475,7 @@
 %% parameter_string_filter() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Option">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type parameter_string_filter() :: #{binary() => any()}.
 
@@ -1499,7 +1499,7 @@
 
 %% Example:
 %% describe_patch_baselines_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()()),
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1507,8 +1507,8 @@
 
 %% Example:
 %% describe_instance_information_request() :: #{
-%%   <<"Filters">> => list(instance_information_string_filter()()),
-%%   <<"InstanceInformationFilterList">> => list(instance_information_filter()()),
+%%   <<"Filters">> => list(instance_information_string_filter()),
+%%   <<"InstanceInformationFilterList">> => list(instance_information_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1525,7 +1525,7 @@
 %%   <<"AwsOrganizationsSource">> => resource_data_sync_aws_organizations_source(),
 %%   <<"EnableAllOpsDataSources">> => boolean(),
 %%   <<"IncludeFutureRegions">> => boolean(),
-%%   <<"SourceRegions">> => list(string()()),
+%%   <<"SourceRegions">> => list(string()),
 %%   <<"SourceType">> => string(),
 %%   <<"State">> => string()
 %% }
@@ -1541,9 +1541,9 @@
 
 %% Example:
 %% inventory_aggregator() :: #{
-%%   <<"Aggregators">> => list(inventory_aggregator()()),
+%%   <<"Aggregators">> => list(inventory_aggregator()),
 %%   <<"Expression">> => string(),
-%%   <<"Groups">> => list(inventory_group()())
+%%   <<"Groups">> => list(inventory_group())
 %% }
 -type inventory_aggregator() :: #{binary() => any()}.
 
@@ -1559,20 +1559,20 @@
 %% instance_patch_state_filter() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type instance_patch_state_filter() :: #{binary() => any()}.
 
 %% Example:
 %% describe_automation_executions_result() :: #{
-%%   <<"AutomationExecutionMetadataList">> => list(automation_execution_metadata()()),
+%%   <<"AutomationExecutionMetadataList">> => list(automation_execution_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_automation_executions_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_ops_metadata_request() :: #{
-%%   <<"Filters">> => list(ops_metadata_filter()()),
+%%   <<"Filters">> => list(ops_metadata_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1580,7 +1580,7 @@
 
 %% Example:
 %% label_parameter_version_request() :: #{
-%%   <<"Labels">> := list(string()()),
+%%   <<"Labels">> := list(string()),
 %%   <<"Name">> := string(),
 %%   <<"ParameterVersion">> => float()
 %% }
@@ -1603,14 +1603,14 @@
 
 %% Example:
 %% create_association_batch_result() :: #{
-%%   <<"Failed">> => list(failed_create_association()()),
-%%   <<"Successful">> => list(association_description()())
+%%   <<"Failed">> => list(failed_create_association()),
+%%   <<"Successful">> => list(association_description())
 %% }
 -type create_association_batch_result() :: #{binary() => any()}.
 
 %% Example:
 %% inventory_item_schema() :: #{
-%%   <<"Attributes">> => list(inventory_item_attribute()()),
+%%   <<"Attributes">> => list(inventory_item_attribute()),
 %%   <<"DisplayName">> => string(),
 %%   <<"TypeName">> => string(),
 %%   <<"Version">> => string()
@@ -1633,7 +1633,7 @@
 
 %% Example:
 %% create_association_batch_request() :: #{
-%%   <<"Entries">> := list(create_association_batch_request_entry()())
+%%   <<"Entries">> := list(create_association_batch_request_entry())
 %% }
 -type create_association_batch_request() :: #{binary() => any()}.
 
@@ -1680,10 +1680,10 @@
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => string(),
 %%   <<"PlatformTypes">> => list(list(any())()),
-%%   <<"Requires">> => list(document_requires()()),
+%%   <<"Requires">> => list(document_requires()),
 %%   <<"ReviewStatus">> => list(any()),
 %%   <<"SchemaVersion">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetType">> => string(),
 %%   <<"VersionName">> => string()
 %% }
@@ -1698,9 +1698,9 @@
 %% Example:
 %% ops_aggregator() :: #{
 %%   <<"AggregatorType">> => string(),
-%%   <<"Aggregators">> => list(ops_aggregator()()),
+%%   <<"Aggregators">> => list(ops_aggregator()),
 %%   <<"AttributeName">> => string(),
-%%   <<"Filters">> => list(ops_filter()()),
+%%   <<"Filters">> => list(ops_filter()),
 %%   <<"TypeName">> => string(),
 %%   <<"Values">> => map()
 %% }
@@ -1723,14 +1723,14 @@
 %% Example:
 %% put_inventory_request() :: #{
 %%   <<"InstanceId">> := string(),
-%%   <<"Items">> := list(inventory_item()())
+%%   <<"Items">> := list(inventory_item())
 %% }
 -type put_inventory_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_resource_compliance_summaries_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceComplianceSummaryItems">> => list(resource_compliance_summary_item()())
+%%   <<"ResourceComplianceSummaryItems">> => list(resource_compliance_summary_item())
 %% }
 -type list_resource_compliance_summaries_result() :: #{binary() => any()}.
 
@@ -1749,7 +1749,7 @@
 %% Example:
 %% list_commands_request() :: #{
 %%   <<"CommandId">> => string(),
-%%   <<"Filters">> => list(command_filter()()),
+%%   <<"Filters">> => list(command_filter()),
 %%   <<"InstanceId">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1758,7 +1758,7 @@
 
 %% Example:
 %% describe_patch_groups_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()()),
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1812,8 +1812,8 @@
 
 %% Example:
 %% delete_parameters_result() :: #{
-%%   <<"DeletedParameters">> => list(string()()),
-%%   <<"InvalidParameters">> => list(string()())
+%%   <<"DeletedParameters">> => list(string()),
+%%   <<"InvalidParameters">> => list(string())
 %% }
 -type delete_parameters_result() :: #{binary() => any()}.
 
@@ -1833,7 +1833,7 @@
 
 %% Example:
 %% list_association_versions_result() :: #{
-%%   <<"AssociationVersions">> => list(association_version_info()()),
+%%   <<"AssociationVersions">> => list(association_version_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_association_versions_result() :: #{binary() => any()}.
@@ -1885,7 +1885,7 @@
 
 %% Example:
 %% get_document_result() :: #{
-%%   <<"AttachmentsContent">> => list(attachment_content()()),
+%%   <<"AttachmentsContent">> => list(attachment_content()),
 %%   <<"Content">> => string(),
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"DisplayName">> => string(),
@@ -1893,7 +1893,7 @@
 %%   <<"DocumentType">> => list(any()),
 %%   <<"DocumentVersion">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Requires">> => list(document_requires()()),
+%%   <<"Requires">> => list(document_requires()),
 %%   <<"ReviewStatus">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusInformation">> => string(),
@@ -1935,20 +1935,20 @@
 %%   <<"MaxErrors">> => string(),
 %%   <<"Mode">> => list(any()),
 %%   <<"Parameters">> => map(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TargetLocations">> => list(target_location()()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetLocations">> => list(target_location()),
 %%   <<"TargetLocationsURL">> => string(),
-%%   <<"TargetMaps">> => list(map()()),
+%%   <<"TargetMaps">> => list(map()),
 %%   <<"TargetParameterName">> => string(),
-%%   <<"Targets">> => list(target()())
+%%   <<"Targets">> => list(target())
 %% }
 -type start_automation_execution_request() :: #{binary() => any()}.
 
 %% Example:
 %% automation_execution_preview() :: #{
-%%   <<"Regions">> => list(string()()),
+%%   <<"Regions">> => list(string()),
 %%   <<"StepPreviews">> => map(),
-%%   <<"TargetPreviews">> => list(target_preview()()),
+%%   <<"TargetPreviews">> => list(target_preview()),
 %%   <<"TotalAccounts">> => integer()
 %% }
 -type automation_execution_preview() :: #{binary() => any()}.
@@ -1956,7 +1956,7 @@
 %% Example:
 %% list_nodes_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Nodes">> => list(ssm_node()())
+%%   <<"Nodes">> => list(node())
 %% }
 -type list_nodes_result() :: #{binary() => any()}.
 
@@ -1970,7 +1970,7 @@
 %% Example:
 %% get_inventory_schema_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(inventory_item_schema()())
+%%   <<"Schemas">> => list(inventory_item_schema())
 %% }
 -type get_inventory_schema_result() :: #{binary() => any()}.
 
@@ -1998,7 +1998,7 @@
 
 %% Example:
 %% describe_instance_patches_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()()),
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
 %%   <<"InstanceId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -2035,7 +2035,7 @@
 
 %% Example:
 %% describe_activations_request() :: #{
-%%   <<"Filters">> => list(describe_activations_filter()()),
+%%   <<"Filters">> => list(describe_activations_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2050,7 +2050,7 @@
 %% Example:
 %% target() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type target() :: #{binary() => any()}.
 
@@ -2078,7 +2078,7 @@
 %% create_ops_metadata_request() :: #{
 %%   <<"Metadata">> => map(),
 %%   <<"ResourceId">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_ops_metadata_request() :: #{binary() => any()}.
 
@@ -2097,24 +2097,24 @@
 %%   <<"ResolvedTargets">> => resolved_targets(),
 %%   <<"TargetParameterName">> => string(),
 %%   <<"StepExecutionsTruncated">> => boolean(),
-%%   <<"TargetLocations">> => list(target_location()()),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()()),
-%%   <<"StepExecutions">> => list(step_execution()()),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
+%%   <<"StepExecutions">> => list(step_execution()),
 %%   <<"ExecutionEndTime">> => non_neg_integer(),
 %%   <<"DocumentName">> => string(),
 %%   <<"ScheduledTime">> => non_neg_integer(),
 %%   <<"AssociationId">> => string(),
 %%   <<"ParentAutomationExecutionId">> => string(),
-%%   <<"Runbooks">> => list(runbook()()),
+%%   <<"Runbooks">> => list(runbook()),
 %%   <<"ProgressCounters">> => progress_counters(),
 %%   <<"ChangeRequestName">> => string(),
 %%   <<"DocumentVersion">> => string(),
 %%   <<"Variables">> => map(),
 %%   <<"AutomationExecutionStatus">> => list(any()),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"AlarmConfiguration">> => alarm_configuration(),
 %%   <<"FailureMessage">> => string(),
-%%   <<"TargetMaps">> => list(map()()),
+%%   <<"TargetMaps">> => list(map()),
 %%   <<"Target">> => string(),
 %%   <<"OpsItemId">> => string(),
 %%   <<"AutomationSubtype">> => list(any()),
@@ -2125,20 +2125,20 @@
 %% Example:
 %% describe_maintenance_window_tasks_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tasks">> => list(maintenance_window_task()())
+%%   <<"Tasks">> => list(maintenance_window_task())
 %% }
 -type describe_maintenance_window_tasks_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_association_execution_targets_result() :: #{
-%%   <<"AssociationExecutionTargets">> => list(association_execution_target()()),
+%%   <<"AssociationExecutionTargets">> => list(association_execution_target()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_association_execution_targets_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_patch_groups_result() :: #{
-%%   <<"Mappings">> => list(patch_group_patch_baseline_mapping()()),
+%%   <<"Mappings">> => list(patch_group_patch_baseline_mapping()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_patch_groups_result() :: #{binary() => any()}.
@@ -2152,7 +2152,7 @@
 %% Example:
 %% describe_maintenance_window_executions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WindowExecutions">> => list(maintenance_window_execution()())
+%%   <<"WindowExecutions">> => list(maintenance_window_execution())
 %% }
 -type describe_maintenance_window_executions_result() :: #{binary() => any()}.
 
@@ -2193,30 +2193,30 @@
 
 %% Example:
 %% document_metadata_response_info() :: #{
-%%   <<"ReviewerResponse">> => list(document_reviewer_response_source()())
+%%   <<"ReviewerResponse">> => list(document_reviewer_response_source())
 %% }
 -type document_metadata_response_info() :: #{binary() => any()}.
 
 %% Example:
 %% start_access_request_request() :: #{
 %%   <<"Reason">> := string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"Targets">> := list(target()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"Targets">> := list(target())
 %% }
 -type start_access_request_request() :: #{binary() => any()}.
 
 %% Example:
 %% baseline_override() :: #{
 %%   <<"ApprovalRules">> => patch_rule_group(),
-%%   <<"ApprovedPatches">> => list(string()()),
+%%   <<"ApprovedPatches">> => list(string()),
 %%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
 %%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
 %%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
 %%   <<"GlobalFilters">> => patch_filter_group(),
 %%   <<"OperatingSystem">> => list(any()),
-%%   <<"RejectedPatches">> => list(string()()),
+%%   <<"RejectedPatches">> => list(string()),
 %%   <<"RejectedPatchesAction">> => list(any()),
-%%   <<"Sources">> => list(patch_source()())
+%%   <<"Sources">> => list(patch_source())
 %% }
 -type baseline_override() :: #{binary() => any()}.
 
@@ -2224,7 +2224,7 @@
 %% get_parameters_by_path_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ParameterFilters">> => list(parameter_string_filter()()),
+%%   <<"ParameterFilters">> => list(parameter_string_filter()),
 %%   <<"Path">> := string(),
 %%   <<"Recursive">> => boolean(),
 %%   <<"WithDecryption">> => boolean()
@@ -2244,27 +2244,27 @@
 %%   <<"MaxConcurrency">> => string(),
 %%   <<"MaxErrors">> => string(),
 %%   <<"Parameters">> => map(),
-%%   <<"TargetLocations">> => list(target_location()()),
-%%   <<"TargetMaps">> => list(map()()),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
 %%   <<"TargetParameterName">> => string(),
-%%   <<"Targets">> => list(target()())
+%%   <<"Targets">> => list(target())
 %% }
 -type runbook() :: #{binary() => any()}.
 
 %% Example:
 %% describe_automation_step_executions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StepExecutions">> => list(step_execution()())
+%%   <<"StepExecutions">> => list(step_execution())
 %% }
 -type describe_automation_step_executions_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_maintenance_window_schedule_request() :: #{
-%%   <<"Filters">> => list(patch_orchestrator_filter()()),
+%%   <<"Filters">> => list(patch_orchestrator_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"WindowId">> => string()
 %% }
 -type describe_maintenance_window_schedule_request() :: #{binary() => any()}.
@@ -2287,7 +2287,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Priority">> => integer(),
 %%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"TaskArn">> := string(),
 %%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
 %%   <<"TaskParameters">> => map(),
@@ -2366,7 +2366,7 @@
 
 %% Example:
 %% describe_maintenance_window_tasks_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()()),
+%%   <<"Filters">> => list(maintenance_window_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"WindowId">> := string()
@@ -2509,8 +2509,8 @@
 
 %% Example:
 %% modify_document_permission_request() :: #{
-%%   <<"AccountIdsToAdd">> => list(string()()),
-%%   <<"AccountIdsToRemove">> => list(string()()),
+%%   <<"AccountIdsToAdd">> => list(string()),
+%%   <<"AccountIdsToRemove">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"PermissionType">> := list(any()),
 %%   <<"SharedDocumentVersion">> => string()
@@ -2526,7 +2526,7 @@
 %% Example:
 %% node_aggregator() :: #{
 %%   <<"AggregatorType">> => list(any()),
-%%   <<"Aggregators">> => list(node_aggregator()()),
+%%   <<"Aggregators">> => list(node_aggregator()),
 %%   <<"AttributeName">> => list(any()),
 %%   <<"TypeName">> => list(any())
 %% }
@@ -2541,7 +2541,7 @@
 %%   <<"DocumentHashType">> => list(any()),
 %%   <<"DocumentName">> := string(),
 %%   <<"DocumentVersion">> => string(),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxConcurrency">> => string(),
 %%   <<"MaxErrors">> => string(),
 %%   <<"NotificationConfig">> => notification_config(),
@@ -2550,7 +2550,7 @@
 %%   <<"OutputS3Region">> => string(),
 %%   <<"Parameters">> => map(),
 %%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"TimeoutSeconds">> => integer()
 %% }
 -type send_command_request() :: #{binary() => any()}.
@@ -2595,7 +2595,7 @@
 %% ops_filter() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type ops_filter() :: #{binary() => any()}.
 
@@ -2622,10 +2622,10 @@
 
 %% Example:
 %% patch() :: #{
-%%   <<"AdvisoryIds">> => list(string()()),
+%%   <<"AdvisoryIds">> => list(string()),
 %%   <<"Arch">> => string(),
-%%   <<"BugzillaIds">> => list(string()()),
-%%   <<"CVEIds">> => list(string()()),
+%%   <<"BugzillaIds">> => list(string()),
+%%   <<"CVEIds">> => list(string()),
 %%   <<"Classification">> => string(),
 %%   <<"ContentUrl">> => string(),
 %%   <<"Description">> => string(),
@@ -2650,7 +2650,7 @@
 
 %% Example:
 %% list_commands_result() :: #{
-%%   <<"Commands">> => list(command()()),
+%%   <<"Commands">> => list(command()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_commands_result() :: #{binary() => any()}.
@@ -2658,14 +2658,14 @@
 %% Example:
 %% get_calendar_state_request() :: #{
 %%   <<"AtTime">> => string(),
-%%   <<"CalendarNames">> := list(string()())
+%%   <<"CalendarNames">> := list(string())
 %% }
 -type get_calendar_state_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_nodes_summary_request() :: #{
-%%   <<"Aggregators">> := list(node_aggregator()()),
-%%   <<"Filters">> => list(node_filter()()),
+%%   <<"Aggregators">> := list(node_aggregator()),
+%%   <<"Filters">> => list(node_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"SyncName">> => string()
@@ -2674,11 +2674,11 @@
 
 %% Example:
 %% get_inventory_request() :: #{
-%%   <<"Aggregators">> => list(inventory_aggregator()()),
-%%   <<"Filters">> => list(inventory_filter()()),
+%%   <<"Aggregators">> => list(inventory_aggregator()),
+%%   <<"Filters">> => list(inventory_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResultAttributes">> => list(result_attribute()())
+%%   <<"ResultAttributes">> => list(result_attribute())
 %% }
 -type get_inventory_request() :: #{binary() => any()}.
 
@@ -2692,7 +2692,7 @@
 
 %% Example:
 %% describe_maintenance_window_execution_tasks_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()()),
+%%   <<"Filters">> => list(maintenance_window_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"WindowExecutionId">> := string()
@@ -2726,7 +2726,7 @@
 %% Example:
 %% get_parameter_history_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter_history()())
+%%   <<"Parameters">> => list(parameter_history())
 %% }
 -type get_parameter_history_result() :: #{binary() => any()}.
 
@@ -2777,21 +2777,21 @@
 %%   <<"ScheduleOffset">> => integer(),
 %%   <<"ScheduleTimezone">> => string(),
 %%   <<"StartDate">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_maintenance_window_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ops_items_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OpsItemSummaries">> => list(ops_item_summary()())
+%%   <<"OpsItemSummaries">> => list(ops_item_summary())
 %% }
 -type describe_ops_items_response() :: #{binary() => any()}.
 
 %% Example:
 %% document_reviews() :: #{
 %%   <<"Action">> => list(any()),
-%%   <<"Comment">> => list(document_review_comment_source()())
+%%   <<"Comment">> => list(document_review_comment_source())
 %% }
 -type document_reviews() :: #{binary() => any()}.
 
@@ -2821,7 +2821,7 @@
 
 %% Example:
 %% describe_instance_patch_states_result() :: #{
-%%   <<"InstancePatchStates">> => list(instance_patch_state()()),
+%%   <<"InstancePatchStates">> => list(instance_patch_state()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_patch_states_result() :: #{binary() => any()}.
@@ -2891,7 +2891,7 @@
 %% Example:
 %% describe_automation_step_executions_request() :: #{
 %%   <<"AutomationExecutionId">> := string(),
-%%   <<"Filters">> => list(step_execution_filter()()),
+%%   <<"Filters">> => list(step_execution_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ReverseOrder">> => boolean()
@@ -2907,7 +2907,7 @@
 
 %% Example:
 %% describe_instance_properties_result() :: #{
-%%   <<"InstanceProperties">> => list(instance_property()()),
+%%   <<"InstanceProperties">> => list(instance_property()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_properties_result() :: #{binary() => any()}.
@@ -2915,7 +2915,7 @@
 %% Example:
 %% parameters_filter() :: #{
 %%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type parameters_filter() :: #{binary() => any()}.
 
@@ -2932,14 +2932,14 @@
 %%   <<"Overview">> => association_overview(),
 %%   <<"ScheduleExpression">> => string(),
 %%   <<"ScheduleOffset">> => integer(),
-%%   <<"TargetMaps">> => list(map()()),
-%%   <<"Targets">> => list(target()())
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target())
 %% }
 -type association() :: #{binary() => any()}.
 
 %% Example:
 %% list_nodes_request() :: #{
-%%   <<"Filters">> => list(node_filter()()),
+%%   <<"Filters">> => list(node_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"SyncName">> => string()
@@ -2958,7 +2958,7 @@
 %% describe_ops_items_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OpsItemFilters">> => list(ops_item_filter()())
+%%   <<"OpsItemFilters">> => list(ops_item_filter())
 %% }
 -type describe_ops_items_request() :: #{binary() => any()}.
 
@@ -2968,14 +2968,14 @@
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusDetails">> => string(),
-%%   <<"TaskIds">> => list(string()()),
+%%   <<"TaskIds">> => list(string()),
 %%   <<"WindowExecutionId">> => string()
 %% }
 -type get_maintenance_window_execution_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_associations_result() :: #{
-%%   <<"Associations">> => list(association()()),
+%%   <<"Associations">> => list(association()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_associations_result() :: #{binary() => any()}.
@@ -3014,14 +3014,14 @@
 %%   <<"ExpirationDate">> => non_neg_integer(),
 %%   <<"IamRole">> := string(),
 %%   <<"RegistrationLimit">> => integer(),
-%%   <<"RegistrationMetadata">> => list(registration_metadata_item()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"RegistrationMetadata">> => list(registration_metadata_item()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_activation_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_parameters_request() :: #{
-%%   <<"Names">> := list(string()()),
+%%   <<"Names">> := list(string()),
 %%   <<"WithDecryption">> => boolean()
 %% }
 -type get_parameters_request() :: #{binary() => any()}.
@@ -3035,7 +3035,7 @@
 %% Example:
 %% inventory_deletion_summary() :: #{
 %%   <<"RemainingCount">> => integer(),
-%%   <<"SummaryItems">> => list(inventory_deletion_summary_item()()),
+%%   <<"SummaryItems">> => list(inventory_deletion_summary_item()),
 %%   <<"TotalCount">> => integer()
 %% }
 -type inventory_deletion_summary() :: #{binary() => any()}.
@@ -3050,7 +3050,7 @@
 %% Example:
 %% describe_maintenance_window_execution_tasks_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WindowExecutionTaskIdentities">> => list(maintenance_window_execution_task_identity()())
+%%   <<"WindowExecutionTaskIdentities">> => list(maintenance_window_execution_task_identity())
 %% }
 -type describe_maintenance_window_execution_tasks_result() :: #{binary() => any()}.
 
@@ -3117,7 +3117,7 @@
 
 %% Example:
 %% describe_maintenance_window_executions_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()()),
+%%   <<"Filters">> => list(maintenance_window_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"WindowId">> := string()
@@ -3137,8 +3137,8 @@
 %%   <<"StatusDetails">> => string(),
 %%   <<"TaskArn">> => string(),
 %%   <<"TaskExecutionId">> => string(),
-%%   <<"TaskParameters">> => list(map()()),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()()),
+%%   <<"TaskParameters">> => list(map()),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
 %%   <<"Type">> => list(any()),
 %%   <<"WindowExecutionId">> => string()
 %% }
@@ -3155,7 +3155,7 @@
 
 %% Example:
 %% patch_rule_group() :: #{
-%%   <<"PatchRules">> => list(patch_rule()())
+%%   <<"PatchRules">> => list(patch_rule())
 %% }
 -type patch_rule_group() :: #{binary() => any()}.
 
@@ -3186,7 +3186,7 @@
 %% Example:
 %% get_patch_baseline_result() :: #{
 %%   <<"ApprovalRules">> => patch_rule_group(),
-%%   <<"ApprovedPatches">> => list(string()()),
+%%   <<"ApprovedPatches">> => list(string()),
 %%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
 %%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
 %%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
@@ -3197,17 +3197,17 @@
 %%   <<"ModifiedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"OperatingSystem">> => list(any()),
-%%   <<"PatchGroups">> => list(string()()),
-%%   <<"RejectedPatches">> => list(string()()),
+%%   <<"PatchGroups">> => list(string()),
+%%   <<"RejectedPatches">> => list(string()),
 %%   <<"RejectedPatchesAction">> => list(any()),
-%%   <<"Sources">> => list(patch_source()())
+%%   <<"Sources">> => list(patch_source())
 %% }
 -type get_patch_baseline_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_documents_request() :: #{
-%%   <<"DocumentFilterList">> => list(document_filter()()),
-%%   <<"Filters">> => list(document_key_values_filter()()),
+%%   <<"DocumentFilterList">> => list(document_filter()),
+%%   <<"Filters">> => list(document_key_values_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3223,25 +3223,25 @@
 %% remove_tags_from_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
 %%   <<"ResourceType">> := list(any()),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_from_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% instance_information_string_filter() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type instance_information_string_filter() :: #{binary() => any()}.
 
 %% Example:
 %% automation_execution_inputs() :: #{
 %%   <<"Parameters">> => map(),
-%%   <<"TargetLocations">> => list(target_location()()),
+%%   <<"TargetLocations">> => list(target_location()),
 %%   <<"TargetLocationsURL">> => string(),
-%%   <<"TargetMaps">> => list(map()()),
+%%   <<"TargetMaps">> => list(map()),
 %%   <<"TargetParameterName">> => string(),
-%%   <<"Targets">> => list(target()())
+%%   <<"Targets">> => list(target())
 %% }
 -type automation_execution_inputs() :: #{binary() => any()}.
 
@@ -3273,7 +3273,7 @@
 %% Example:
 %% get_resource_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Policies">> => list(get_resource_policies_response_entry()())
+%%   <<"Policies">> => list(get_resource_policies_response_entry())
 %% }
 -type get_resource_policies_response() :: #{binary() => any()}.
 
@@ -3288,7 +3288,7 @@
 %%   <<"LastExecutionDate">> => non_neg_integer(),
 %%   <<"ResourceCountByStatus">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()())
+%%   <<"TriggeredAlarms">> => list(alarm_state_information())
 %% }
 -type association_execution() :: #{binary() => any()}.
 
@@ -3314,7 +3314,7 @@
 %% Example:
 %% list_ops_metadata_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OpsMetadataList">> => list(ops_metadata()())
+%%   <<"OpsMetadataList">> => list(ops_metadata())
 %% }
 -type list_ops_metadata_result() :: #{binary() => any()}.
 
@@ -3333,7 +3333,7 @@
 %% Example:
 %% list_resource_data_sync_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceDataSyncItems">> => list(resource_data_sync_item()())
+%%   <<"ResourceDataSyncItems">> => list(resource_data_sync_item())
 %% }
 -type list_resource_data_sync_result() :: #{binary() => any()}.
 
@@ -3359,7 +3359,7 @@
 %% Example:
 %% document_key_values_filter() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type document_key_values_filter() :: #{binary() => any()}.
 
@@ -3373,8 +3373,8 @@
 
 %% Example:
 %% describe_instance_properties_request() :: #{
-%%   <<"FiltersWithOperator">> => list(instance_property_string_filter()()),
-%%   <<"InstancePropertyFilterList">> => list(instance_property_filter()()),
+%%   <<"FiltersWithOperator">> => list(instance_property_string_filter()),
+%%   <<"InstancePropertyFilterList">> => list(instance_property_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3390,7 +3390,7 @@
 
 %% Example:
 %% list_compliance_summaries_request() :: #{
-%%   <<"Filters">> => list(compliance_string_filter()()),
+%%   <<"Filters">> => list(compliance_string_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3404,7 +3404,7 @@
 
 %% Example:
 %% get_ops_summary_result() :: #{
-%%   <<"Entities">> => list(ops_entity()()),
+%%   <<"Entities">> => list(ops_entity()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_ops_summary_result() :: #{binary() => any()}.
@@ -3459,7 +3459,7 @@
 %% Example:
 %% resource_data_sync_aws_organizations_source() :: #{
 %%   <<"OrganizationSourceType">> => string(),
-%%   <<"OrganizationalUnits">> => list(resource_data_sync_organizational_unit()())
+%%   <<"OrganizationalUnits">> => list(resource_data_sync_organizational_unit())
 %% }
 -type resource_data_sync_aws_organizations_source() :: #{binary() => any()}.
 
@@ -3497,7 +3497,7 @@
 %% Example:
 %% cancel_command_request() :: #{
 %%   <<"CommandId">> := string(),
-%%   <<"InstanceIds">> => list(string()())
+%%   <<"InstanceIds">> => list(string())
 %% }
 -type cancel_command_request() :: #{binary() => any()}.
 
@@ -3515,7 +3515,7 @@
 
 %% Example:
 %% describe_instance_patch_states_for_patch_group_request() :: #{
-%%   <<"Filters">> => list(instance_patch_state_filter()()),
+%%   <<"Filters">> => list(instance_patch_state_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"PatchGroup">> := string()
@@ -3596,13 +3596,13 @@
 %% Example:
 %% describe_parameters_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter_metadata()())
+%%   <<"Parameters">> => list(parameter_metadata())
 %% }
 -type describe_parameters_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_result() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
 
@@ -3617,7 +3617,7 @@
 
 %% Example:
 %% describe_automation_executions_request() :: #{
-%%   <<"Filters">> => list(automation_execution_filter()()),
+%%   <<"Filters">> => list(automation_execution_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3644,7 +3644,7 @@
 %% instance_property_string_filter() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type instance_property_string_filter() :: #{binary() => any()}.
 
@@ -3667,7 +3667,7 @@
 
 %% Example:
 %% list_associations_request() :: #{
-%%   <<"AssociationFilterList">> => list(association_filter()()),
+%%   <<"AssociationFilterList">> => list(association_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3675,7 +3675,7 @@
 
 %% Example:
 %% describe_inventory_deletions_result() :: #{
-%%   <<"InventoryDeletions">> => list(inventory_deletion_status_item()()),
+%%   <<"InventoryDeletions">> => list(inventory_deletion_status_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_inventory_deletions_result() :: #{binary() => any()}.
@@ -3689,7 +3689,7 @@
 %% Example:
 %% describe_sessions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(session()())
+%%   <<"Sessions">> => list(session())
 %% }
 -type describe_sessions_response() :: #{binary() => any()}.
 
@@ -3706,7 +3706,7 @@
 %%   <<"ApplyOnlyAtCronInterval">> => boolean(),
 %%   <<"AssociationName">> => string(),
 %%   <<"AutomationTargetParameterName">> => string(),
-%%   <<"CalendarNames">> => list(string()()),
+%%   <<"CalendarNames">> => list(string()),
 %%   <<"ComplianceSeverity">> => list(any()),
 %%   <<"DocumentVersion">> => string(),
 %%   <<"Duration">> => integer(),
@@ -3719,10 +3719,10 @@
 %%   <<"ScheduleExpression">> => string(),
 %%   <<"ScheduleOffset">> => integer(),
 %%   <<"SyncCompliance">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TargetLocations">> => list(target_location()()),
-%%   <<"TargetMaps">> => list(map()()),
-%%   <<"Targets">> => list(target()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target())
 %% }
 -type create_association_request() :: #{binary() => any()}.
 
@@ -3734,7 +3734,7 @@
 
 %% Example:
 %% list_command_invocations_result() :: #{
-%%   <<"CommandInvocations">> => list(command_invocation()()),
+%%   <<"CommandInvocations">> => list(command_invocation()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_command_invocations_result() :: #{binary() => any()}.
@@ -3750,7 +3750,7 @@
 
 %% Example:
 %% label_parameter_version_result() :: #{
-%%   <<"InvalidLabels">> => list(string()()),
+%%   <<"InvalidLabels">> => list(string()),
 %%   <<"ParameterVersion">> => float()
 %% }
 -type label_parameter_version_result() :: #{binary() => any()}.
@@ -3758,10 +3758,10 @@
 %% Example:
 %% document_description() :: #{
 %%   <<"ApprovedVersion">> => string(),
-%%   <<"AttachmentsInformation">> => list(attachment_information()()),
+%%   <<"AttachmentsInformation">> => list(attachment_information()),
 %%   <<"Author">> => string(),
-%%   <<"Category">> => list(string()()),
-%%   <<"CategoryEnum">> => list(string()()),
+%%   <<"Category">> => list(string()),
+%%   <<"CategoryEnum">> => list(string()),
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"DefaultVersion">> => string(),
 %%   <<"Description">> => string(),
@@ -3774,17 +3774,17 @@
 %%   <<"LatestVersion">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => string(),
-%%   <<"Parameters">> => list(document_parameter()()),
+%%   <<"Parameters">> => list(document_parameter()),
 %%   <<"PendingReviewVersion">> => string(),
 %%   <<"PlatformTypes">> => list(list(any())()),
-%%   <<"Requires">> => list(document_requires()()),
-%%   <<"ReviewInformation">> => list(review_information()()),
+%%   <<"Requires">> => list(document_requires()),
+%%   <<"ReviewInformation">> => list(review_information()),
 %%   <<"ReviewStatus">> => list(any()),
 %%   <<"SchemaVersion">> => string(),
 %%   <<"Sha1">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusInformation">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetType">> => string(),
 %%   <<"VersionName">> => string()
 %% }
@@ -3871,7 +3871,7 @@
 %% Example:
 %% describe_maintenance_windows_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WindowIdentities">> => list(maintenance_window_identity()())
+%%   <<"WindowIdentities">> => list(maintenance_window_identity())
 %% }
 -type describe_maintenance_windows_result() :: #{binary() => any()}.
 
@@ -3879,7 +3879,7 @@
 %% describe_association_execution_targets_request() :: #{
 %%   <<"AssociationId">> := string(),
 %%   <<"ExecutionId">> := string(),
-%%   <<"Filters">> => list(association_execution_targets_filter()()),
+%%   <<"Filters">> => list(association_execution_targets_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3893,7 +3893,7 @@
 
 %% Example:
 %% describe_instance_patch_states_for_patch_group_result() :: #{
-%%   <<"InstancePatchStates">> => list(instance_patch_state()()),
+%%   <<"InstancePatchStates">> => list(instance_patch_state()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_patch_states_for_patch_group_result() :: #{binary() => any()}.
@@ -3906,15 +3906,15 @@
 
 %% Example:
 %% target_location() :: #{
-%%   <<"Accounts">> => list(string()()),
-%%   <<"ExcludeAccounts">> => list(string()()),
+%%   <<"Accounts">> => list(string()),
+%%   <<"ExcludeAccounts">> => list(string()),
 %%   <<"ExecutionRoleName">> => string(),
 %%   <<"IncludeChildOrganizationUnits">> => boolean(),
-%%   <<"Regions">> => list(string()()),
+%%   <<"Regions">> => list(string()),
 %%   <<"TargetLocationAlarmConfiguration">> => alarm_configuration(),
 %%   <<"TargetLocationMaxConcurrency">> => string(),
 %%   <<"TargetLocationMaxErrors">> => string(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"TargetsMaxConcurrency">> => string(),
 %%   <<"TargetsMaxErrors">> => string()
 %% }
@@ -3928,7 +3928,7 @@
 
 %% Example:
 %% describe_instance_information_result() :: #{
-%%   <<"InstanceInformationList">> => list(instance_information()()),
+%%   <<"InstanceInformationList">> => list(instance_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_information_result() :: #{binary() => any()}.
@@ -3948,7 +3948,7 @@
 
 %% Example:
 %% list_document_versions_result() :: #{
-%%   <<"DocumentVersions">> => list(document_version_info()()),
+%%   <<"DocumentVersions">> => list(document_version_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_document_versions_result() :: #{binary() => any()}.
@@ -3956,7 +3956,7 @@
 %% Example:
 %% ops_entity_item() :: #{
 %%   <<"CaptureTime">> => string(),
-%%   <<"Content">> => list(map()())
+%%   <<"Content">> => list(map())
 %% }
 -type ops_entity_item() :: #{binary() => any()}.
 
@@ -4017,7 +4017,7 @@
 %% Example:
 %% ops_item_invalid_parameter_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"ParameterNames">> => list(string()())
+%%   <<"ParameterNames">> => list(string())
 %% }
 -type ops_item_invalid_parameter_exception() :: #{binary() => any()}.
 
@@ -4033,7 +4033,7 @@
 %%   <<"Name">> => string(),
 %%   <<"OwnerInformation">> => string(),
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"WindowId">> => string(),
 %%   <<"WindowTargetId">> => string()
 %% }
@@ -4042,7 +4042,7 @@
 %% Example:
 %% describe_maintenance_window_schedule_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScheduledWindowExecutions">> => list(scheduled_window_execution()())
+%%   <<"ScheduledWindowExecutions">> => list(scheduled_window_execution())
 %% }
 -type describe_maintenance_window_schedule_result() :: #{binary() => any()}.
 
@@ -4070,7 +4070,7 @@
 
 %% Example:
 %% describe_effective_patches_for_patch_baseline_result() :: #{
-%%   <<"EffectivePatches">> => list(effective_patch()()),
+%%   <<"EffectivePatches">> => list(effective_patch()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_effective_patches_for_patch_baseline_result() :: #{binary() => any()}.
@@ -4086,14 +4086,14 @@
 %% Example:
 %% list_ops_item_related_items_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Summaries">> => list(ops_item_related_item_summary()())
+%%   <<"Summaries">> => list(ops_item_related_item_summary())
 %% }
 -type list_ops_item_related_items_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_association_executions_request() :: #{
 %%   <<"AssociationId">> := string(),
-%%   <<"Filters">> => list(association_execution_filter()()),
+%%   <<"Filters">> => list(association_execution_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -4129,7 +4129,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Priority">> => integer(),
 %%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"TaskArn">> => string(),
 %%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
 %%   <<"TaskParameters">> => map(),
@@ -4143,7 +4143,7 @@
 %%   <<"AwsOrganizationsSource">> => resource_data_sync_aws_organizations_source(),
 %%   <<"EnableAllOpsDataSources">> => boolean(),
 %%   <<"IncludeFutureRegions">> => boolean(),
-%%   <<"SourceRegions">> => list(string()()),
+%%   <<"SourceRegions">> => list(string()),
 %%   <<"SourceType">> => string()
 %% }
 -type resource_data_sync_source() :: #{binary() => any()}.
@@ -4166,7 +4166,7 @@
 %% ops_item_event_filter() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type ops_item_event_filter() :: #{binary() => any()}.
 
@@ -4210,7 +4210,7 @@
 
 %% Example:
 %% list_compliance_summaries_result() :: #{
-%%   <<"ComplianceSummaryItems">> => list(compliance_summary_item()()),
+%%   <<"ComplianceSummaryItems">> => list(compliance_summary_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_compliance_summaries_result() :: #{binary() => any()}.
@@ -4240,14 +4240,14 @@
 %%   <<"Outputs">> => map(),
 %%   <<"ParentAutomationExecutionId">> => string(),
 %%   <<"ResolvedTargets">> => resolved_targets(),
-%%   <<"Runbooks">> => list(runbook()()),
+%%   <<"Runbooks">> => list(runbook()),
 %%   <<"ScheduledTime">> => non_neg_integer(),
 %%   <<"Target">> => string(),
 %%   <<"TargetLocationsURL">> => string(),
-%%   <<"TargetMaps">> => list(map()()),
+%%   <<"TargetMaps">> => list(map()),
 %%   <<"TargetParameterName">> => string(),
-%%   <<"Targets">> => list(target()()),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()())
+%%   <<"Targets">> => list(target()),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information())
 %% }
 -type automation_execution_metadata() :: #{binary() => any()}.
 
@@ -4259,7 +4259,7 @@
 
 %% Example:
 %% describe_maintenance_window_targets_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()()),
+%%   <<"Filters">> => list(maintenance_window_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"WindowId">> := string()
@@ -4297,7 +4297,7 @@
 %%   <<"Name">> => string(),
 %%   <<"OwnerInformation">> => string(),
 %%   <<"ResourceType">> := list(any()),
-%%   <<"Targets">> := list(target()()),
+%%   <<"Targets">> := list(target()),
 %%   <<"WindowId">> := string()
 %% }
 -type register_target_with_maintenance_window_request() :: #{binary() => any()}.
@@ -4316,7 +4316,7 @@
 
 %% Example:
 %% list_compliance_items_result() :: #{
-%%   <<"ComplianceItems">> => list(compliance_item()()),
+%%   <<"ComplianceItems">> => list(compliance_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_compliance_items_result() :: #{binary() => any()}.
@@ -4358,7 +4358,7 @@
 
 %% Example:
 %% describe_sessions_request() :: #{
-%%   <<"Filters">> => list(session_filter()()),
+%%   <<"Filters">> => list(session_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"State">> := list(any())
@@ -4390,7 +4390,7 @@
 %% command_invocation() :: #{
 %%   <<"CloudWatchOutputConfig">> => cloud_watch_output_config(),
 %%   <<"CommandId">> => string(),
-%%   <<"CommandPlugins">> => list(command_plugin()()),
+%%   <<"CommandPlugins">> => list(command_plugin()),
 %%   <<"Comment">> => string(),
 %%   <<"DocumentName">> => string(),
 %%   <<"DocumentVersion">> => string(),
@@ -4447,13 +4447,13 @@
 %%   <<"Limit">> => integer(),
 %%   <<"LimitType">> => string(),
 %%   <<"Message">> => string(),
-%%   <<"ResourceTypes">> => list(string()())
+%%   <<"ResourceTypes">> => list(string())
 %% }
 -type ops_item_limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
 %% get_inventory_result() :: #{
-%%   <<"Entities">> => list(inventory_result_entity()()),
+%%   <<"Entities">> => list(inventory_result_entity()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_inventory_result() :: #{binary() => any()}.
@@ -4461,7 +4461,7 @@
 %% Example:
 %% list_inventory_entries_result() :: #{
 %%   <<"CaptureTime">> => string(),
-%%   <<"Entries">> => list(map()()),
+%%   <<"Entries">> => list(map()),
 %%   <<"InstanceId">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"SchemaVersion">> => string(),
@@ -4494,14 +4494,14 @@
 %% attachments_source() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type attachments_source() :: #{binary() => any()}.
 
 %% Example:
 %% describe_maintenance_window_execution_task_invocations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WindowExecutionTaskInvocationIdentities">> => list(maintenance_window_execution_task_invocation_identity()())
+%%   <<"WindowExecutionTaskInvocationIdentities">> => list(maintenance_window_execution_task_invocation_identity())
 %% }
 -type describe_maintenance_window_execution_task_invocations_result() :: #{binary() => any()}.
 
@@ -4514,7 +4514,7 @@
 
 %% Example:
 %% describe_activations_result() :: #{
-%%   <<"ActivationList">> => list(activation()()),
+%%   <<"ActivationList">> => list(activation()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_activations_result() :: #{binary() => any()}.
@@ -4611,18 +4611,18 @@
 
 %% Example:
 %% list_compliance_items_request() :: #{
-%%   <<"Filters">> => list(compliance_string_filter()()),
+%%   <<"Filters">> => list(compliance_string_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceIds">> => list(string()()),
-%%   <<"ResourceTypes">> => list(string()())
+%%   <<"ResourceIds">> => list(string()),
+%%   <<"ResourceTypes">> => list(string())
 %% }
 -type list_compliance_items_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_instance_patches_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Patches">> => list(patch_compliance_data()())
+%%   <<"Patches">> => list(patch_compliance_data())
 %% }
 -type describe_instance_patches_result() :: #{binary() => any()}.
 
@@ -4638,7 +4638,7 @@
 %%   <<"DocumentVersion">> => string(),
 %%   <<"ErrorCount">> => integer(),
 %%   <<"ExpiresAfter">> => non_neg_integer(),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxConcurrency">> => string(),
 %%   <<"MaxErrors">> => string(),
 %%   <<"NotificationConfig">> => notification_config(),
@@ -4651,9 +4651,9 @@
 %%   <<"Status">> => list(any()),
 %%   <<"StatusDetails">> => string(),
 %%   <<"TargetCount">> => integer(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"TimeoutSeconds">> => integer(),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()())
+%%   <<"TriggeredAlarms">> => list(alarm_state_information())
 %% }
 -type command() :: #{binary() => any()}.
 
@@ -4663,11 +4663,11 @@
 %%   <<"DataType">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"KeyId">> => string(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"LastModifiedUser">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Policies">> => list(parameter_inline_policy()()),
+%%   <<"Policies">> => list(parameter_inline_policy()),
 %%   <<"Tier">> => list(any()),
 %%   <<"Type">> => list(any()),
 %%   <<"Value">> => string(),
@@ -4710,7 +4710,7 @@
 
 %% Example:
 %% list_ops_item_related_items_request() :: #{
-%%   <<"Filters">> => list(ops_item_related_items_filter()()),
+%%   <<"Filters">> => list(ops_item_related_items_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OpsItemId">> => string()
@@ -4724,16 +4724,16 @@
 %%   <<"ActualStartTime">> => non_neg_integer(),
 %%   <<"Category">> => string(),
 %%   <<"Description">> := string(),
-%%   <<"Notifications">> => list(ops_item_notification()()),
+%%   <<"Notifications">> => list(ops_item_notification()),
 %%   <<"OperationalData">> => map(),
 %%   <<"OpsItemType">> => string(),
 %%   <<"PlannedEndTime">> => non_neg_integer(),
 %%   <<"PlannedStartTime">> => non_neg_integer(),
 %%   <<"Priority">> => integer(),
-%%   <<"RelatedOpsItems">> => list(related_ops_item()()),
+%%   <<"RelatedOpsItems">> => list(related_ops_item()),
 %%   <<"Severity">> => string(),
 %%   <<"Source">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Title">> := string()
 %% }
 -type create_ops_item_request() :: #{binary() => any()}.
@@ -4816,7 +4816,7 @@
 %%   <<"ApplyOnlyAtCronInterval">> => boolean(),
 %%   <<"AssociationName">> => string(),
 %%   <<"AutomationTargetParameterName">> => string(),
-%%   <<"CalendarNames">> => list(string()()),
+%%   <<"CalendarNames">> => list(string()),
 %%   <<"ComplianceSeverity">> => list(any()),
 %%   <<"DocumentVersion">> => string(),
 %%   <<"Duration">> => integer(),
@@ -4829,9 +4829,9 @@
 %%   <<"ScheduleExpression">> => string(),
 %%   <<"ScheduleOffset">> => integer(),
 %%   <<"SyncCompliance">> => list(any()),
-%%   <<"TargetLocations">> => list(target_location()()),
-%%   <<"TargetMaps">> => list(map()()),
-%%   <<"Targets">> => list(target()())
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target())
 %% }
 -type create_association_batch_request_entry() :: #{binary() => any()}.
 
@@ -4862,7 +4862,7 @@
 
 %% Example:
 %% patch_filter_group() :: #{
-%%   <<"PatchFilters">> => list(patch_filter()())
+%%   <<"PatchFilters">> => list(patch_filter())
 %% }
 -type patch_filter_group() :: #{binary() => any()}.
 
@@ -4874,14 +4874,14 @@
 
 %% Example:
 %% resolved_targets() :: #{
-%%   <<"ParameterValues">> => list(string()()),
+%%   <<"ParameterValues">> => list(string()),
 %%   <<"Truncated">> => boolean()
 %% }
 -type resolved_targets() :: #{binary() => any()}.
 
 %% Example:
 %% describe_effective_instance_associations_result() :: #{
-%%   <<"Associations">> => list(instance_association()()),
+%%   <<"Associations">> => list(instance_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_effective_instance_associations_result() :: #{binary() => any()}.
@@ -4917,7 +4917,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Priority">> => integer(),
 %%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"TaskArn">> => string(),
 %%   <<"TaskInvocationParameters">> => maintenance_window_task_invocation_parameters(),
 %%   <<"TaskParameters">> => map(),
@@ -4941,7 +4941,7 @@
 
 %% Example:
 %% describe_instance_associations_status_result() :: #{
-%%   <<"InstanceAssociationStatusInfos">> => list(instance_association_status_info()()),
+%%   <<"InstanceAssociationStatusInfos">> => list(instance_association_status_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_associations_status_result() :: #{binary() => any()}.
@@ -4949,7 +4949,7 @@
 %% Example:
 %% inventory_result_item() :: #{
 %%   <<"CaptureTime">> => string(),
-%%   <<"Content">> => list(map()()),
+%%   <<"Content">> => list(map()),
 %%   <<"ContentHash">> => string(),
 %%   <<"SchemaVersion">> => string(),
 %%   <<"TypeName">> => string()
@@ -5003,10 +5003,10 @@
 %%   <<"StepName">> => string(),
 %%   <<"StepStatus">> => list(any()),
 %%   <<"TargetLocation">> => target_location(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"TimeoutSeconds">> => float(),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()()),
-%%   <<"ValidNextSteps">> => list(string()())
+%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
+%%   <<"ValidNextSteps">> => list(string())
 %% }
 -type step_execution() :: #{binary() => any()}.
 
@@ -5021,7 +5021,7 @@
 
 %% Example:
 %% describe_association_executions_result() :: #{
-%%   <<"AssociationExecutions">> => list(association_execution()()),
+%%   <<"AssociationExecutions">> => list(association_execution()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_association_executions_result() :: #{binary() => any()}.
@@ -5032,7 +5032,7 @@
 %%   <<"Name">> => string(),
 %%   <<"OwnerInformation">> => string(),
 %%   <<"Replace">> => boolean(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"WindowId">> := string(),
 %%   <<"WindowTargetId">> := string()
 %% }
@@ -5054,7 +5054,7 @@
 %%   <<"TaskArn">> => string(),
 %%   <<"TaskExecutionId">> => string(),
 %%   <<"TaskType">> => list(any()),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()()),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information()),
 %%   <<"WindowExecutionId">> => string()
 %% }
 -type maintenance_window_execution_task_identity() :: #{binary() => any()}.
@@ -5086,7 +5086,7 @@
 
 %% Example:
 %% list_documents_result() :: #{
-%%   <<"DocumentIdentifiers">> => list(document_identifier()()),
+%%   <<"DocumentIdentifiers">> => list(document_identifier()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_documents_result() :: #{binary() => any()}.
@@ -5106,7 +5106,7 @@
 
 %% Example:
 %% describe_patch_baselines_result() :: #{
-%%   <<"BaselineIdentities">> => list(patch_baseline_identity()()),
+%%   <<"BaselineIdentities">> => list(patch_baseline_identity()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_patch_baselines_result() :: #{binary() => any()}.
@@ -5119,7 +5119,7 @@
 %%   <<"AssociationName">> => string(),
 %%   <<"AssociationVersion">> => string(),
 %%   <<"AutomationTargetParameterName">> => string(),
-%%   <<"CalendarNames">> => list(string()()),
+%%   <<"CalendarNames">> => list(string()),
 %%   <<"ComplianceSeverity">> => list(any()),
 %%   <<"DocumentVersion">> => string(),
 %%   <<"Duration">> => integer(),
@@ -5131,9 +5131,9 @@
 %%   <<"ScheduleExpression">> => string(),
 %%   <<"ScheduleOffset">> => integer(),
 %%   <<"SyncCompliance">> => list(any()),
-%%   <<"TargetLocations">> => list(target_location()()),
-%%   <<"TargetMaps">> => list(map()()),
-%%   <<"Targets">> => list(target()())
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target())
 %% }
 -type update_association_request() :: #{binary() => any()}.
 
@@ -5142,7 +5142,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceType">> := list(any()),
-%%   <<"Targets">> := list(target()())
+%%   <<"Targets">> := list(target())
 %% }
 -type describe_maintenance_windows_for_target_request() :: #{binary() => any()}.
 
@@ -5155,7 +5155,7 @@
 %% Example:
 %% instance_information_filter() :: #{
 %%   <<"key">> => list(any()),
-%%   <<"valueSet">> => list(string()())
+%%   <<"valueSet">> => list(string())
 %% }
 -type instance_information_filter() :: #{binary() => any()}.
 
@@ -5173,7 +5173,7 @@
 
 %% Example:
 %% describe_maintenance_windows_request() :: #{
-%%   <<"Filters">> => list(maintenance_window_filter()()),
+%%   <<"Filters">> => list(maintenance_window_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -5188,10 +5188,10 @@
 %%   <<"DocumentName">> := string(),
 %%   <<"DocumentVersion">> => string(),
 %%   <<"Parameters">> => map(),
-%%   <<"Runbooks">> := list(runbook()()),
+%%   <<"Runbooks">> := list(runbook()),
 %%   <<"ScheduledEndTime">> => non_neg_integer(),
 %%   <<"ScheduledTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_change_request_execution_request() :: #{binary() => any()}.
 
@@ -5201,15 +5201,15 @@
 %%   <<"ActualStartTime">> => non_neg_integer(),
 %%   <<"Category">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Notifications">> => list(ops_item_notification()()),
+%%   <<"Notifications">> => list(ops_item_notification()),
 %%   <<"OperationalData">> => map(),
-%%   <<"OperationalDataToDelete">> => list(string()()),
+%%   <<"OperationalDataToDelete">> => list(string()),
 %%   <<"OpsItemArn">> => string(),
 %%   <<"OpsItemId">> := string(),
 %%   <<"PlannedEndTime">> => non_neg_integer(),
 %%   <<"PlannedStartTime">> => non_neg_integer(),
 %%   <<"Priority">> => integer(),
-%%   <<"RelatedOpsItems">> => list(related_ops_item()()),
+%%   <<"RelatedOpsItems">> => list(related_ops_item()),
 %%   <<"Severity">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Title">> => string()
@@ -5218,8 +5218,8 @@
 
 %% Example:
 %% unlabel_parameter_version_result() :: #{
-%%   <<"InvalidLabels">> => list(string()()),
-%%   <<"RemovedLabels">> => list(string()())
+%%   <<"InvalidLabels">> => list(string()),
+%%   <<"RemovedLabels">> => list(string())
 %% }
 -type unlabel_parameter_version_result() :: #{binary() => any()}.
 
@@ -5233,7 +5233,7 @@
 %% Example:
 %% inventory_item() :: #{
 %%   <<"CaptureTime">> => string(),
-%%   <<"Content">> => list(map()()),
+%%   <<"Content">> => list(map()),
 %%   <<"ContentHash">> => string(),
 %%   <<"Context">> => map(),
 %%   <<"SchemaVersion">> => string(),
@@ -5263,8 +5263,8 @@
 
 %% Example:
 %% describe_document_permission_response() :: #{
-%%   <<"AccountIds">> => list(string()()),
-%%   <<"AccountSharingInfoList">> => list(account_sharing_info()()),
+%%   <<"AccountIds">> => list(string()),
+%%   <<"AccountSharingInfoList">> => list(account_sharing_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_document_permission_response() :: #{binary() => any()}.
@@ -5273,7 +5273,7 @@
 %% ops_item_related_items_filter() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type ops_item_related_items_filter() :: #{binary() => any()}.
 
@@ -5289,14 +5289,14 @@
 %% ops_item_filter() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type ops_item_filter() :: #{binary() => any()}.
 
 %% Example:
 %% maintenance_window_filter() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type maintenance_window_filter() :: #{binary() => any()}.
 
@@ -5305,7 +5305,7 @@
 %%   <<"ComplianceType">> := string(),
 %%   <<"ExecutionSummary">> := compliance_execution_summary(),
 %%   <<"ItemContentHash">> => string(),
-%%   <<"Items">> := list(compliance_item_entry()()),
+%%   <<"Items">> := list(compliance_item_entry()),
 %%   <<"ResourceId">> := string(),
 %%   <<"ResourceType">> := string(),
 %%   <<"UploadType">> => list(any())
@@ -5321,20 +5321,20 @@
 %% Example:
 %% describe_maintenance_windows_for_target_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WindowIdentities">> => list(maintenance_window_identity_for_target()())
+%%   <<"WindowIdentities">> => list(maintenance_window_identity_for_target())
 %% }
 -type describe_maintenance_windows_for_target_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_parameters_by_path_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type get_parameters_by_path_result() :: #{binary() => any()}.
 
 %% Example:
 %% alarm_configuration() :: #{
-%%   <<"Alarms">> => list(alarm()()),
+%%   <<"Alarms">> => list(alarm()),
 %%   <<"IgnorePollAlarmFailure">> => boolean()
 %% }
 -type alarm_configuration() :: #{binary() => any()}.
@@ -5350,7 +5350,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Priority">> => integer(),
 %%   <<"ServiceRoleArn">> => string(),
-%%   <<"Targets">> => list(target()()),
+%%   <<"Targets">> => list(target()),
 %%   <<"TaskArn">> => string(),
 %%   <<"TaskParameters">> => map(),
 %%   <<"Type">> => list(any()),
@@ -5367,14 +5367,14 @@
 
 %% Example:
 %% create_document_request() :: #{
-%%   <<"Attachments">> => list(attachments_source()()),
+%%   <<"Attachments">> => list(attachments_source()),
 %%   <<"Content">> := string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"DocumentFormat">> => list(any()),
 %%   <<"DocumentType">> => list(any()),
 %%   <<"Name">> := string(),
-%%   <<"Requires">> => list(document_requires()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Requires">> => list(document_requires()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetType">> => string(),
 %%   <<"VersionName">> => string()
 %% }
@@ -5388,7 +5388,7 @@
 %%   <<"AssociationName">> => string(),
 %%   <<"AssociationVersion">> => string(),
 %%   <<"AutomationTargetParameterName">> => string(),
-%%   <<"CalendarNames">> => list(string()()),
+%%   <<"CalendarNames">> => list(string()),
 %%   <<"ComplianceSeverity">> => list(any()),
 %%   <<"Date">> => non_neg_integer(),
 %%   <<"DocumentVersion">> => string(),
@@ -5407,10 +5407,10 @@
 %%   <<"ScheduleOffset">> => integer(),
 %%   <<"Status">> => association_status(),
 %%   <<"SyncCompliance">> => list(any()),
-%%   <<"TargetLocations">> => list(target_location()()),
-%%   <<"TargetMaps">> => list(map()()),
-%%   <<"Targets">> => list(target()()),
-%%   <<"TriggeredAlarms">> => list(alarm_state_information()())
+%%   <<"TargetLocations">> => list(target_location()),
+%%   <<"TargetMaps">> => list(map()),
+%%   <<"Targets">> => list(target()),
+%%   <<"TriggeredAlarms">> => list(alarm_state_information())
 %% }
 -type association_description() :: #{binary() => any()}.
 
@@ -5423,7 +5423,7 @@
 
 %% Example:
 %% list_ops_item_events_request() :: #{
-%%   <<"Filters">> => list(ops_item_event_filter()()),
+%%   <<"Filters">> => list(ops_item_event_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -5432,7 +5432,7 @@
 %% Example:
 %% update_patch_baseline_result() :: #{
 %%   <<"ApprovalRules">> => patch_rule_group(),
-%%   <<"ApprovedPatches">> => list(string()()),
+%%   <<"ApprovedPatches">> => list(string()),
 %%   <<"ApprovedPatchesComplianceLevel">> => list(any()),
 %%   <<"ApprovedPatchesEnableNonSecurity">> => boolean(),
 %%   <<"AvailableSecurityUpdatesComplianceStatus">> => list(any()),
@@ -5443,9 +5443,9 @@
 %%   <<"ModifiedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"OperatingSystem">> => list(any()),
-%%   <<"RejectedPatches">> => list(string()()),
+%%   <<"RejectedPatches">> => list(string()),
 %%   <<"RejectedPatchesAction">> => list(any()),
-%%   <<"Sources">> => list(patch_source()())
+%%   <<"Sources">> => list(patch_source())
 %% }
 -type update_patch_baseline_result() :: #{binary() => any()}.
 
@@ -5461,7 +5461,7 @@
 %% patch_source() :: #{
 %%   <<"Configuration">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Products">> => list(string()())
+%%   <<"Products">> => list(string())
 %% }
 -type patch_source() :: #{binary() => any()}.
 
@@ -5474,7 +5474,7 @@
 
 %% Example:
 %% list_inventory_entries_request() :: #{
-%%   <<"Filters">> => list(inventory_filter()()),
+%%   <<"Filters">> => list(inventory_filter()),
 %%   <<"InstanceId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),

@@ -142,7 +142,7 @@
 
 %% Example:
 %% one_drive_users() :: #{
-%%   <<"OneDriveUserList">> => list(string()()),
+%%   <<"OneDriveUserList">> => list(string()),
 %%   <<"OneDriveUserS3Path">> => s3_path()
 %% }
 -type one_drive_users() :: #{binary() => any()}.
@@ -163,7 +163,7 @@
 
 %% Example:
 %% salesforce_knowledge_article_configuration() :: #{
-%%   <<"CustomKnowledgeArticleTypeConfigurations">> => list(salesforce_custom_knowledge_article_type_configuration()()),
+%%   <<"CustomKnowledgeArticleTypeConfigurations">> => list(salesforce_custom_knowledge_article_type_configuration()),
 %%   <<"IncludedStates">> => list(list(any())()),
 %%   <<"StandardKnowledgeArticleTypeConfiguration">> => salesforce_standard_knowledge_article_type_configuration()
 %% }
@@ -190,8 +190,8 @@
 
 %% Example:
 %% featured_results_item() :: #{
-%%   <<"AdditionalAttributes">> => list(additional_result_attribute()()),
-%%   <<"DocumentAttributes">> => list(document_attribute()()),
+%%   <<"AdditionalAttributes">> => list(additional_result_attribute()),
+%%   <<"DocumentAttributes">> => list(document_attribute()),
 %%   <<"DocumentExcerpt">> => text_with_highlights(),
 %%   <<"DocumentId">> => string(),
 %%   <<"DocumentTitle">> => text_with_highlights(),
@@ -216,7 +216,7 @@
 %% Example:
 %% retrieve_result_item() :: #{
 %%   <<"Content">> => string(),
-%%   <<"DocumentAttributes">> => list(document_attribute()()),
+%%   <<"DocumentAttributes">> => list(document_attribute()),
 %%   <<"DocumentId">> => string(),
 %%   <<"DocumentTitle">> => string(),
 %%   <<"DocumentURI">> => string(),
@@ -227,34 +227,34 @@
 
 %% Example:
 %% box_configuration() :: #{
-%%   <<"CommentFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"CommentFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"CrawlComments">> => boolean(),
 %%   <<"CrawlTasks">> => boolean(),
 %%   <<"CrawlWebLinks">> => boolean(),
 %%   <<"EnterpriseId">> => string(),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"FileFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"InclusionPatterns">> => list(string()()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FileFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
 %%   <<"SecretArn">> => string(),
-%%   <<"TaskFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"TaskFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"UseChangeLog">> => boolean(),
 %%   <<"VpcConfiguration">> => data_source_vpc_configuration(),
-%%   <<"WebLinkFieldMappings">> => list(data_source_to_index_field_mapping()())
+%%   <<"WebLinkFieldMappings">> => list(data_source_to_index_field_mapping())
 %% }
 -type box_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_access_control_configuration_request() :: #{
-%%   <<"AccessControlList">> => list(principal()()),
+%%   <<"AccessControlList">> => list(principal()),
 %%   <<"Description">> => string(),
-%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()()),
+%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
 %%   <<"Id">> := string(),
 %%   <<"IndexId">> := string(),
 %%   <<"Name">> => string()
@@ -263,8 +263,8 @@
 
 %% Example:
 %% data_source_vpc_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type data_source_vpc_configuration() :: #{binary() => any()}.
 
@@ -305,7 +305,7 @@
 
 %% Example:
 %% text_with_highlights() :: #{
-%%   <<"Highlights">> => list(highlight()()),
+%%   <<"Highlights">> => list(highlight()),
 %%   <<"Text">> => string()
 %% }
 -type text_with_highlights() :: #{binary() => any()}.
@@ -329,7 +329,7 @@
 %%   <<"Name">> := string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"Schedule">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> := list(any()),
 %%   <<"VpcConfiguration">> => data_source_vpc_configuration()
 %% }
@@ -345,7 +345,7 @@
 
 %% Example:
 %% site_maps_configuration() :: #{
-%%   <<"SiteMaps">> => list(string()())
+%%   <<"SiteMaps">> => list(string())
 %% }
 -type site_maps_configuration() :: #{binary() => any()}.
 
@@ -374,16 +374,16 @@
 
 %% Example:
 %% content_source_configuration() :: #{
-%%   <<"DataSourceIds">> => list(string()()),
+%%   <<"DataSourceIds">> => list(string()),
 %%   <<"DirectPutContent">> => boolean(),
-%%   <<"FaqIds">> => list(string()())
+%%   <<"FaqIds">> => list(string())
 %% }
 -type content_source_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_thesauri_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ThesaurusSummaryItems">> => list(thesaurus_summary()())
+%%   <<"ThesaurusSummaryItems">> => list(thesaurus_summary())
 %% }
 -type list_thesauri_response() :: #{binary() => any()}.
 
@@ -403,7 +403,7 @@
 
 %% Example:
 %% custom_document_enrichment_configuration() :: #{
-%%   <<"InlineConfigurations">> => list(inline_custom_document_enrichment_configuration()()),
+%%   <<"InlineConfigurations">> => list(inline_custom_document_enrichment_configuration()),
 %%   <<"PostExtractionHookConfiguration">> => hook_configuration(),
 %%   <<"PreExtractionHookConfiguration">> => hook_configuration(),
 %%   <<"RoleArn">> => string()
@@ -412,23 +412,23 @@
 
 %% Example:
 %% git_hub_configuration() :: #{
-%%   <<"ExclusionFileNamePatterns">> => list(string()()),
-%%   <<"ExclusionFileTypePatterns">> => list(string()()),
-%%   <<"ExclusionFolderNamePatterns">> => list(string()()),
-%%   <<"GitHubCommitConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"ExclusionFileNamePatterns">> => list(string()),
+%%   <<"ExclusionFileTypePatterns">> => list(string()),
+%%   <<"ExclusionFolderNamePatterns">> => list(string()),
+%%   <<"GitHubCommitConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"GitHubDocumentCrawlProperties">> => git_hub_document_crawl_properties(),
-%%   <<"GitHubIssueAttachmentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"GitHubIssueCommentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"GitHubIssueDocumentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"GitHubPullRequestCommentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"GitHubPullRequestDocumentAttachmentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"GitHubPullRequestDocumentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"GitHubRepositoryConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"InclusionFileNamePatterns">> => list(string()()),
-%%   <<"InclusionFileTypePatterns">> => list(string()()),
-%%   <<"InclusionFolderNamePatterns">> => list(string()()),
+%%   <<"GitHubIssueAttachmentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"GitHubIssueCommentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"GitHubIssueDocumentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"GitHubPullRequestCommentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"GitHubPullRequestDocumentAttachmentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"GitHubPullRequestDocumentConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"GitHubRepositoryConfigurationFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionFileNamePatterns">> => list(string()),
+%%   <<"InclusionFileTypePatterns">> => list(string()),
+%%   <<"InclusionFolderNamePatterns">> => list(string()),
 %%   <<"OnPremiseConfiguration">> => on_premise_configuration(),
-%%   <<"RepositoryFilter">> => list(string()()),
+%%   <<"RepositoryFilter">> => list(string()),
 %%   <<"SaaSConfiguration">> => saa_s_configuration(),
 %%   <<"SecretArn">> => string(),
 %%   <<"Type">> => list(any()),
@@ -605,7 +605,7 @@
 %% salesforce_standard_knowledge_article_type_configuration() :: #{
 %%   <<"DocumentDataFieldName">> => string(),
 %%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()())
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping())
 %% }
 -type salesforce_standard_knowledge_article_type_configuration() :: #{binary() => any()}.
 
@@ -626,7 +626,7 @@
 %% Example:
 %% salesforce_standard_object_attachment_configuration() :: #{
 %%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()())
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping())
 %% }
 -type salesforce_standard_object_attachment_configuration() :: #{binary() => any()}.
 
@@ -652,7 +652,7 @@
 %% Example:
 %% list_experience_entities_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SummaryItems">> => list(experience_entities_summary()())
+%%   <<"SummaryItems">> => list(experience_entities_summary())
 %% }
 -type list_experience_entities_response() :: #{binary() => any()}.
 
@@ -660,7 +660,7 @@
 %% salesforce_standard_object_configuration() :: #{
 %%   <<"DocumentDataFieldName">> => string(),
 %%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"Name">> => list(any())
 %% }
 -type salesforce_standard_object_configuration() :: #{binary() => any()}.
@@ -684,19 +684,19 @@
 
 %% Example:
 %% query_result() :: #{
-%%   <<"FacetResults">> => list(facet_result()()),
-%%   <<"FeaturedResultsItems">> => list(featured_results_item()()),
+%%   <<"FacetResults">> => list(facet_result()),
+%%   <<"FeaturedResultsItems">> => list(featured_results_item()),
 %%   <<"QueryId">> => string(),
-%%   <<"ResultItems">> => list(query_result_item()()),
-%%   <<"SpellCorrectedQueries">> => list(spell_corrected_query()()),
+%%   <<"ResultItems">> => list(query_result_item()),
+%%   <<"SpellCorrectedQueries">> => list(spell_corrected_query()),
 %%   <<"TotalNumberOfResults">> => integer(),
-%%   <<"Warnings">> => list(warning()())
+%%   <<"Warnings">> => list(warning())
 %% }
 -type query_result() :: #{binary() => any()}.
 
 %% Example:
 %% confluence_attachment_configuration() :: #{
-%%   <<"AttachmentFieldMappings">> => list(confluence_attachment_to_index_field_mapping()()),
+%%   <<"AttachmentFieldMappings">> => list(confluence_attachment_to_index_field_mapping()),
 %%   <<"CrawlAttachments">> => boolean()
 %% }
 -type confluence_attachment_configuration() :: #{binary() => any()}.
@@ -705,12 +705,12 @@
 %% describe_featured_results_set_response() :: #{
 %%   <<"CreationTimestamp">> => float(),
 %%   <<"Description">> => string(),
-%%   <<"FeaturedDocumentsMissing">> => list(featured_document_missing()()),
-%%   <<"FeaturedDocumentsWithMetadata">> => list(featured_document_with_metadata()()),
+%%   <<"FeaturedDocumentsMissing">> => list(featured_document_missing()),
+%%   <<"FeaturedDocumentsWithMetadata">> => list(featured_document_with_metadata()),
 %%   <<"FeaturedResultsSetId">> => string(),
 %%   <<"FeaturedResultsSetName">> => string(),
 %%   <<"LastUpdatedTimestamp">> => float(),
-%%   <<"QueryTexts">> => list(string()()),
+%%   <<"QueryTexts">> => list(string()),
 %%   <<"Status">> => list(any())
 %% }
 -type describe_featured_results_set_response() :: #{binary() => any()}.
@@ -750,7 +750,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -783,7 +783,7 @@
 %% document_attribute_value_count_pair() :: #{
 %%   <<"Count">> => integer(),
 %%   <<"DocumentAttributeValue">> => document_attribute_value(),
-%%   <<"FacetResults">> => list(facet_result()())
+%%   <<"FacetResults">> => list(facet_result())
 %% }
 -type document_attribute_value_count_pair() :: #{binary() => any()}.
 
@@ -792,7 +792,7 @@
 %%   <<"CapacityUnits">> => capacity_units_configuration(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"DocumentMetadataConfigurations">> => list(document_metadata_configuration()()),
+%%   <<"DocumentMetadataConfigurations">> => list(document_metadata_configuration()),
 %%   <<"Edition">> => list(any()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"Id">> => string(),
@@ -804,7 +804,7 @@
 %%   <<"UpdatedAt">> => non_neg_integer(),
 %%   <<"UserContextPolicy">> => list(any()),
 %%   <<"UserGroupResolutionConfiguration">> => user_group_resolution_configuration(),
-%%   <<"UserTokenConfigurations">> => list(user_token_configuration()())
+%%   <<"UserTokenConfigurations">> => list(user_token_configuration())
 %% }
 -type describe_index_response() :: #{binary() => any()}.
 
@@ -816,13 +816,13 @@
 
 %% Example:
 %% table_row() :: #{
-%%   <<"Cells">> => list(table_cell()())
+%%   <<"Cells">> => list(table_cell())
 %% }
 -type table_row() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_entities_from_experience_response() :: #{
-%%   <<"FailedEntityList">> => list(failed_entity()())
+%%   <<"FailedEntityList">> => list(failed_entity())
 %% }
 -type disassociate_entities_from_experience_response() :: #{binary() => any()}.
 
@@ -859,13 +859,13 @@
 %% salesforce_configuration() :: #{
 %%   <<"ChatterFeedConfiguration">> => salesforce_chatter_feed_configuration(),
 %%   <<"CrawlAttachments">> => boolean(),
-%%   <<"ExcludeAttachmentFilePatterns">> => list(string()()),
-%%   <<"IncludeAttachmentFilePatterns">> => list(string()()),
+%%   <<"ExcludeAttachmentFilePatterns">> => list(string()),
+%%   <<"IncludeAttachmentFilePatterns">> => list(string()),
 %%   <<"KnowledgeArticleConfiguration">> => salesforce_knowledge_article_configuration(),
 %%   <<"SecretArn">> => string(),
 %%   <<"ServerUrl">> => string(),
 %%   <<"StandardObjectAttachmentConfiguration">> => salesforce_standard_object_attachment_configuration(),
-%%   <<"StandardObjectConfigurations">> => list(salesforce_standard_object_configuration()())
+%%   <<"StandardObjectConfigurations">> => list(salesforce_standard_object_configuration())
 %% }
 -type salesforce_configuration() :: #{binary() => any()}.
 
@@ -927,8 +927,8 @@
 %%   <<"AttachmentConfiguration">> => confluence_attachment_configuration(),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"BlogConfiguration">> => confluence_blog_configuration(),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"InclusionPatterns">> => list(string()()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"InclusionPatterns">> => list(string()),
 %%   <<"PageConfiguration">> => confluence_page_configuration(),
 %%   <<"ProxyConfiguration">> => proxy_configuration(),
 %%   <<"SecretArn">> => string(),
@@ -967,14 +967,14 @@
 %%   <<"Expand">> => boolean(),
 %%   <<"ExpandConfiguration">> => expand_configuration(),
 %%   <<"MissingAttributeKeyStrategy">> => list(any()),
-%%   <<"SortingConfigurations">> => list(sorting_configuration()())
+%%   <<"SortingConfigurations">> => list(sorting_configuration())
 %% }
 -type collapse_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% experiences_summary() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Endpoints">> => list(experience_endpoint()()),
+%%   <<"Endpoints">> => list(experience_endpoint()),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => list(any())
@@ -1013,12 +1013,12 @@
 %% slack_configuration() :: #{
 %%   <<"CrawlBotMessage">> => boolean(),
 %%   <<"ExcludeArchived">> => boolean(),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"InclusionPatterns">> => list(string()()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
 %%   <<"LookBackPeriod">> => integer(),
-%%   <<"PrivateChannelFilter">> => list(string()()),
-%%   <<"PublicChannelFilter">> => list(string()()),
+%%   <<"PrivateChannelFilter">> => list(string()),
+%%   <<"PublicChannelFilter">> => list(string()),
 %%   <<"SecretArn">> => string(),
 %%   <<"SinceCrawlDate">> => string(),
 %%   <<"SlackEntityList">> => list(list(any())()),
@@ -1112,9 +1112,9 @@
 %% Example:
 %% work_docs_configuration() :: #{
 %%   <<"CrawlComments">> => boolean(),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"InclusionPatterns">> => list(string()()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
 %%   <<"OrganizationId">> => string(),
 %%   <<"UseChangeLog">> => boolean()
 %% }
@@ -1138,7 +1138,7 @@
 %% Example:
 %% attribute_suggestions_describe_config() :: #{
 %%   <<"AttributeSuggestionsMode">> => list(any()),
-%%   <<"SuggestableConfigList">> => list(suggestable_config()())
+%%   <<"SuggestableConfigList">> => list(suggestable_config())
 %% }
 -type attribute_suggestions_describe_config() :: #{binary() => any()}.
 
@@ -1167,8 +1167,8 @@
 %% get_snapshots_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SnapShotTimeFilter">> => time_range(),
-%%   <<"SnapshotsData">> => list(list(string()())()),
-%%   <<"SnapshotsDataHeader">> => list(string()())
+%%   <<"SnapshotsData">> => list(list(string())()),
+%%   <<"SnapshotsDataHeader">> => list(string())
 %% }
 -type get_snapshots_response() :: #{binary() => any()}.
 
@@ -1182,21 +1182,21 @@
 %% salesforce_custom_knowledge_article_type_configuration() :: #{
 %%   <<"DocumentDataFieldName">> => string(),
 %%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"Name">> => string()
 %% }
 -type salesforce_custom_knowledge_article_type_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% batch_delete_document_response() :: #{
-%%   <<"FailedDocuments">> => list(batch_delete_document_response_failed_document()())
+%%   <<"FailedDocuments">> => list(batch_delete_document_response_failed_document())
 %% }
 -type batch_delete_document_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_query_suggestions_response() :: #{
 %%   <<"QuerySuggestionsId">> => string(),
-%%   <<"Suggestions">> => list(suggestion()())
+%%   <<"Suggestions">> => list(suggestion())
 %% }
 -type get_query_suggestions_response() :: #{binary() => any()}.
 
@@ -1215,7 +1215,7 @@
 
 %% Example:
 %% table_excerpt() :: #{
-%%   <<"Rows">> => list(table_row()()),
+%%   <<"Rows">> => list(table_row()),
 %%   <<"TotalNumberOfRows">> => integer()
 %% }
 -type table_excerpt() :: #{binary() => any()}.
@@ -1224,7 +1224,7 @@
 %% salesforce_chatter_feed_configuration() :: #{
 %%   <<"DocumentDataFieldName">> => string(),
 %%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"IncludeFilterTypes">> => list(list(any())())
 %% }
 -type salesforce_chatter_feed_configuration() :: #{binary() => any()}.
@@ -1243,7 +1243,7 @@
 
 %% Example:
 %% featured_results_conflict_exception() :: #{
-%%   <<"ConflictingItems">> => list(conflicting_item()()),
+%%   <<"ConflictingItems">> => list(conflicting_item()),
 %%   <<"Message">> => string()
 %% }
 -type featured_results_conflict_exception() :: #{binary() => any()}.
@@ -1256,7 +1256,7 @@
 %%   <<"Name">> := string(),
 %%   <<"RoleArn">> := string(),
 %%   <<"SourceS3Path">> := s3_path(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_query_suggestions_block_list_request() :: #{binary() => any()}.
 
@@ -1273,11 +1273,11 @@
 %% Example:
 %% update_featured_results_set_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"FeaturedDocuments">> => list(featured_document()()),
+%%   <<"FeaturedDocuments">> => list(featured_document()),
 %%   <<"FeaturedResultsSetId">> := string(),
 %%   <<"FeaturedResultsSetName">> => string(),
 %%   <<"IndexId">> := string(),
-%%   <<"QueryTexts">> => list(string()()),
+%%   <<"QueryTexts">> => list(string()),
 %%   <<"Status">> => list(any())
 %% }
 -type update_featured_results_set_request() :: #{binary() => any()}.
@@ -1293,7 +1293,7 @@
 %% Example:
 %% list_data_sources_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SummaryItems">> => list(data_source_summary()())
+%%   <<"SummaryItems">> => list(data_source_summary())
 %% }
 -type list_data_sources_response() :: #{binary() => any()}.
 
@@ -1306,12 +1306,12 @@
 
 %% Example:
 %% google_drive_configuration() :: #{
-%%   <<"ExcludeMimeTypes">> => list(string()()),
-%%   <<"ExcludeSharedDrives">> => list(string()()),
-%%   <<"ExcludeUserAccounts">> => list(string()()),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"InclusionPatterns">> => list(string()()),
+%%   <<"ExcludeMimeTypes">> => list(string()),
+%%   <<"ExcludeSharedDrives">> => list(string()),
+%%   <<"ExcludeUserAccounts">> => list(string()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
 %%   <<"SecretArn">> => string()
 %% }
 -type google_drive_configuration() :: #{binary() => any()}.
@@ -1324,7 +1324,7 @@
 
 %% Example:
 %% seed_url_configuration() :: #{
-%%   <<"SeedUrls">> => list(string()()),
+%%   <<"SeedUrls">> => list(string()),
 %%   <<"WebCrawlerMode">> => list(any())
 %% }
 -type seed_url_configuration() :: #{binary() => any()}.
@@ -1332,7 +1332,7 @@
 %% Example:
 %% retrieve_result() :: #{
 %%   <<"QueryId">> => string(),
-%%   <<"ResultItems">> => list(retrieve_result_item()())
+%%   <<"ResultItems">> => list(retrieve_result_item())
 %% }
 -type retrieve_result() :: #{binary() => any()}.
 
@@ -1345,13 +1345,13 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_access_control_configurations_response() :: #{
-%%   <<"AccessControlConfigurations">> => list(access_control_configuration_summary()()),
+%%   <<"AccessControlConfigurations">> => list(access_control_configuration_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_access_control_configurations_response() :: #{binary() => any()}.
@@ -1370,14 +1370,14 @@
 %%   <<"CrawlAttachments">> => boolean(),
 %%   <<"DisableLocalGroups">> => boolean(),
 %%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"InclusionPatterns">> => list(string()()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
 %%   <<"ProxyConfiguration">> => proxy_configuration(),
 %%   <<"SecretArn">> => string(),
 %%   <<"SharePointVersion">> => list(any()),
 %%   <<"SslCertificateS3Path">> => s3_path(),
-%%   <<"Urls">> => list(string()()),
+%%   <<"Urls">> => list(string()),
 %%   <<"UseChangeLog">> => boolean(),
 %%   <<"VpcConfiguration">> => data_source_vpc_configuration()
 %% }
@@ -1398,7 +1398,7 @@
 %%   <<"Name">> := string(),
 %%   <<"RoleArn">> := string(),
 %%   <<"SourceS3Path">> := s3_path(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_thesaurus_request() :: #{binary() => any()}.
 
@@ -1420,7 +1420,7 @@
 
 %% Example:
 %% spell_corrected_query() :: #{
-%%   <<"Corrections">> => list(correction()()),
+%%   <<"Corrections">> => list(correction()),
 %%   <<"SuggestedQueryText">> => string()
 %% }
 -type spell_corrected_query() :: #{binary() => any()}.
@@ -1440,7 +1440,7 @@
 
 %% Example:
 %% expanded_result_item() :: #{
-%%   <<"DocumentAttributes">> => list(document_attribute()()),
+%%   <<"DocumentAttributes">> => list(document_attribute()),
 %%   <<"DocumentExcerpt">> => text_with_highlights(),
 %%   <<"DocumentId">> => string(),
 %%   <<"DocumentTitle">> => text_with_highlights(),
@@ -1451,7 +1451,7 @@
 
 %% Example:
 %% list_indices_response() :: #{
-%%   <<"IndexConfigurationSummaryItems">> => list(index_configuration_summary()()),
+%%   <<"IndexConfigurationSummaryItems">> => list(index_configuration_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_indices_response() :: #{binary() => any()}.
@@ -1504,7 +1504,7 @@
 
 %% Example:
 %% batch_delete_featured_results_set_response() :: #{
-%%   <<"Errors">> => list(batch_delete_featured_results_set_error()())
+%%   <<"Errors">> => list(batch_delete_featured_results_set_error())
 %% }
 -type batch_delete_featured_results_set_response() :: #{binary() => any()}.
 
@@ -1530,18 +1530,18 @@
 
 %% Example:
 %% suggestion_text_with_highlights() :: #{
-%%   <<"Highlights">> => list(suggestion_highlight()()),
+%%   <<"Highlights">> => list(suggestion_highlight()),
 %%   <<"Text">> => string()
 %% }
 -type suggestion_text_with_highlights() :: #{binary() => any()}.
 
 %% Example:
 %% fsx_configuration() :: #{
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"FileSystemId">> => string(),
 %%   <<"FileSystemType">> => list(any()),
-%%   <<"InclusionPatterns">> => list(string()()),
+%%   <<"InclusionPatterns">> => list(string()),
 %%   <<"SecretArn">> => string(),
 %%   <<"VpcConfiguration">> => data_source_vpc_configuration()
 %% }
@@ -1563,9 +1563,9 @@
 
 %% Example:
 %% source_document() :: #{
-%%   <<"AdditionalAttributes">> => list(document_attribute()()),
+%%   <<"AdditionalAttributes">> => list(document_attribute()),
 %%   <<"DocumentId">> => string(),
-%%   <<"SuggestionAttributes">> => list(string()())
+%%   <<"SuggestionAttributes">> => list(string())
 %% }
 -type source_document() :: #{binary() => any()}.
 
@@ -1601,16 +1601,16 @@
 %%   <<"CrawlAttachments">> => boolean(),
 %%   <<"DocumentDataFieldName">> => string(),
 %%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"ExcludeAttachmentFilePatterns">> => list(string()()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"IncludeAttachmentFilePatterns">> => list(string()())
+%%   <<"ExcludeAttachmentFilePatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"IncludeAttachmentFilePatterns">> => list(string())
 %% }
 -type service_now_service_catalog_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% attribute_suggestions_update_config() :: #{
 %%   <<"AttributeSuggestionsMode">> => list(any()),
-%%   <<"SuggestableConfigList">> => list(suggestable_config()())
+%%   <<"SuggestableConfigList">> => list(suggestable_config())
 %% }
 -type attribute_suggestions_update_config() :: #{binary() => any()}.
 
@@ -1622,8 +1622,8 @@
 %%   <<"MaxLinksPerPage">> => integer(),
 %%   <<"MaxUrlsPerMinuteCrawlRate">> => integer(),
 %%   <<"ProxyConfiguration">> => proxy_configuration(),
-%%   <<"UrlExclusionPatterns">> => list(string()()),
-%%   <<"UrlInclusionPatterns">> => list(string()()),
+%%   <<"UrlExclusionPatterns">> => list(string()),
+%%   <<"UrlInclusionPatterns">> => list(string()),
 %%   <<"Urls">> => urls()
 %% }
 -type web_crawler_configuration() :: #{binary() => any()}.
@@ -1643,7 +1643,7 @@
 %% Example:
 %% facet_result() :: #{
 %%   <<"DocumentAttributeKey">> => string(),
-%%   <<"DocumentAttributeValueCountPairs">> => list(document_attribute_value_count_pair()()),
+%%   <<"DocumentAttributeValueCountPairs">> => list(document_attribute_value_count_pair()),
 %%   <<"DocumentAttributeValueType">> => list(any())
 %% }
 -type facet_result() :: #{binary() => any()}.
@@ -1651,7 +1651,7 @@
 %% Example:
 %% list_experiences_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SummaryItems">> => list(experiences_summary()())
+%%   <<"SummaryItems">> => list(experiences_summary())
 %% }
 -type list_experiences_response() :: #{binary() => any()}.
 
@@ -1664,7 +1664,7 @@
 %% Example:
 %% batch_delete_document_request() :: #{
 %%   <<"DataSourceSyncJobMetricTarget">> => data_source_sync_job_metric_target(),
-%%   <<"DocumentIdList">> := list(string()()),
+%%   <<"DocumentIdList">> := list(string()),
 %%   <<"IndexId">> := string()
 %% }
 -type batch_delete_document_request() :: #{binary() => any()}.
@@ -1683,7 +1683,7 @@
 
 %% Example:
 %% batch_put_document_response() :: #{
-%%   <<"FailedDocuments">> => list(batch_put_document_response_failed_document()())
+%%   <<"FailedDocuments">> => list(batch_put_document_response_failed_document())
 %% }
 -type batch_put_document_response() :: #{binary() => any()}.
 
@@ -1699,14 +1699,14 @@
 %% Example:
 %% suggestion() :: #{
 %%   <<"Id">> => string(),
-%%   <<"SourceDocuments">> => list(source_document()()),
+%%   <<"SourceDocuments">> => list(source_document()),
 %%   <<"Value">> => suggestion_value()
 %% }
 -type suggestion() :: #{binary() => any()}.
 
 %% Example:
 %% batch_delete_featured_results_set_request() :: #{
-%%   <<"FeaturedResultsSetIds">> := list(string()()),
+%%   <<"FeaturedResultsSetIds">> := list(string()),
 %%   <<"IndexId">> := string()
 %% }
 -type batch_delete_featured_results_set_request() :: #{binary() => any()}.
@@ -1719,10 +1719,10 @@
 %%   <<"Name">> := string(),
 %%   <<"RoleArn">> := string(),
 %%   <<"ServerSideEncryptionConfiguration">> => server_side_encryption_configuration(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserContextPolicy">> => list(any()),
 %%   <<"UserGroupResolutionConfiguration">> => user_group_resolution_configuration(),
-%%   <<"UserTokenConfigurations">> => list(user_token_configuration()())
+%%   <<"UserTokenConfigurations">> => list(user_token_configuration())
 %% }
 -type create_index_request() :: #{binary() => any()}.
 
@@ -1730,29 +1730,29 @@
 %% update_index_request() :: #{
 %%   <<"CapacityUnits">> => capacity_units_configuration(),
 %%   <<"Description">> => string(),
-%%   <<"DocumentMetadataConfigurationUpdates">> => list(document_metadata_configuration()()),
+%%   <<"DocumentMetadataConfigurationUpdates">> => list(document_metadata_configuration()),
 %%   <<"Id">> := string(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"UserContextPolicy">> => list(any()),
 %%   <<"UserGroupResolutionConfiguration">> => user_group_resolution_configuration(),
-%%   <<"UserTokenConfigurations">> => list(user_token_configuration()())
+%%   <<"UserTokenConfigurations">> => list(user_token_configuration())
 %% }
 -type update_index_request() :: #{binary() => any()}.
 
 %% Example:
 %% column_configuration() :: #{
-%%   <<"ChangeDetectingColumns">> => list(string()()),
+%%   <<"ChangeDetectingColumns">> => list(string()),
 %%   <<"DocumentDataColumnName">> => string(),
 %%   <<"DocumentIdColumnName">> => string(),
 %%   <<"DocumentTitleColumnName">> => string(),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()())
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping())
 %% }
 -type column_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% hierarchical_principal() :: #{
-%%   <<"PrincipalList">> => list(principal()())
+%%   <<"PrincipalList">> => list(principal())
 %% }
 -type hierarchical_principal() :: #{binary() => any()}.
 
@@ -1781,10 +1781,10 @@
 %%   <<"CrawlAttachments">> => boolean(),
 %%   <<"DocumentDataFieldName">> => string(),
 %%   <<"DocumentTitleFieldName">> => string(),
-%%   <<"ExcludeAttachmentFilePatterns">> => list(string()()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"ExcludeAttachmentFilePatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"FilterQuery">> => string(),
-%%   <<"IncludeAttachmentFilePatterns">> => list(string()())
+%%   <<"IncludeAttachmentFilePatterns">> => list(string())
 %% }
 -type service_now_knowledge_article_configuration() :: #{binary() => any()}.
 
@@ -1816,7 +1816,7 @@
 %% document_attribute_value() :: #{
 %%   <<"DateValue">> => non_neg_integer(),
 %%   <<"LongValue">> => float(),
-%%   <<"StringListValue">> => list(string()()),
+%%   <<"StringListValue">> => list(string()),
 %%   <<"StringValue">> => string()
 %% }
 -type document_attribute_value() :: #{binary() => any()}.
@@ -1837,7 +1837,7 @@
 %%   <<"Name">> := string(),
 %%   <<"RoleArn">> := string(),
 %%   <<"S3Path">> := s3_path(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_faq_request() :: #{binary() => any()}.
 
@@ -1889,7 +1889,7 @@
 
 %% Example:
 %% disassociate_personas_from_entities_response() :: #{
-%%   <<"FailedEntityList">> => list(failed_entity()())
+%%   <<"FailedEntityList">> => list(failed_entity())
 %% }
 -type disassociate_personas_from_entities_response() :: #{binary() => any()}.
 
@@ -1922,7 +1922,7 @@
 %%   <<"Configuration">> => experience_configuration(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"Endpoints">> => list(experience_endpoint()()),
+%%   <<"Endpoints">> => list(experience_endpoint()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"IndexId">> => string(),
@@ -1935,7 +1935,7 @@
 
 %% Example:
 %% associate_entities_to_experience_request() :: #{
-%%   <<"EntityList">> := list(entity_configuration()()),
+%%   <<"EntityList">> := list(entity_configuration()),
 %%   <<"Id">> := string(),
 %%   <<"IndexId">> := string()
 %% }
@@ -1967,10 +1967,10 @@
 
 %% Example:
 %% describe_access_control_configuration_response() :: #{
-%%   <<"AccessControlList">> => list(principal()()),
+%%   <<"AccessControlList">> => list(principal()),
 %%   <<"Description">> => string(),
 %%   <<"ErrorMessage">> => string(),
-%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()()),
+%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
 %%   <<"Name">> => string()
 %% }
 -type describe_access_control_configuration_response() :: #{binary() => any()}.
@@ -1984,7 +1984,7 @@
 %% Example:
 %% facet() :: #{
 %%   <<"DocumentAttributeKey">> => string(),
-%%   <<"Facets">> => list(facet()()),
+%%   <<"Facets">> => list(facet()),
 %%   <<"MaxResults">> => integer()
 %% }
 -type facet() :: #{binary() => any()}.
@@ -2014,7 +2014,7 @@
 %% Example:
 %% batch_put_document_request() :: #{
 %%   <<"CustomDocumentEnrichmentConfiguration">> => custom_document_enrichment_configuration(),
-%%   <<"Documents">> := list(document()()),
+%%   <<"Documents">> := list(document()),
 %%   <<"IndexId">> := string(),
 %%   <<"RoleArn">> => string()
 %% }
@@ -2036,8 +2036,8 @@
 
 %% Example:
 %% group_members() :: #{
-%%   <<"MemberGroups">> => list(member_group()()),
-%%   <<"MemberUsers">> => list(member_user()()),
+%%   <<"MemberGroups">> => list(member_group()),
+%%   <<"MemberUsers">> => list(member_user()),
 %%   <<"S3PathforGroupMembers">> => s3_path()
 %% }
 -type group_members() :: #{binary() => any()}.
@@ -2069,60 +2069,60 @@
 
 %% Example:
 %% list_data_source_sync_jobs_response() :: #{
-%%   <<"History">> => list(data_source_sync_job()()),
+%%   <<"History">> => list(data_source_sync_job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_source_sync_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% submit_feedback_request() :: #{
-%%   <<"ClickFeedbackItems">> => list(click_feedback()()),
+%%   <<"ClickFeedbackItems">> => list(click_feedback()),
 %%   <<"IndexId">> := string(),
 %%   <<"QueryId">> := string(),
-%%   <<"RelevanceFeedbackItems">> => list(relevance_feedback()())
+%%   <<"RelevanceFeedbackItems">> => list(relevance_feedback())
 %% }
 -type submit_feedback_request() :: #{binary() => any()}.
 
 %% Example:
 %% jira_configuration() :: #{
-%%   <<"AttachmentFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"CommentFieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"InclusionPatterns">> => list(string()()),
-%%   <<"IssueFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"AttachmentFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"CommentFieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"IssueFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"IssueSubEntityFilter">> => list(list(any())()),
-%%   <<"IssueType">> => list(string()()),
+%%   <<"IssueType">> => list(string()),
 %%   <<"JiraAccountUrl">> => string(),
-%%   <<"Project">> => list(string()()),
-%%   <<"ProjectFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"Project">> => list(string()),
+%%   <<"ProjectFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"SecretArn">> => string(),
-%%   <<"Status">> => list(string()()),
+%%   <<"Status">> => list(string()),
 %%   <<"UseChangeLog">> => boolean(),
 %%   <<"VpcConfiguration">> => data_source_vpc_configuration(),
-%%   <<"WorkLogFieldMappings">> => list(data_source_to_index_field_mapping()())
+%%   <<"WorkLogFieldMappings">> => list(data_source_to_index_field_mapping())
 %% }
 -type jira_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% quip_configuration() :: #{
-%%   <<"AttachmentFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"AttachmentFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"CrawlAttachments">> => boolean(),
 %%   <<"CrawlChatRooms">> => boolean(),
 %%   <<"CrawlFileComments">> => boolean(),
 %%   <<"Domain">> => string(),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"FolderIds">> => list(string()()),
-%%   <<"InclusionPatterns">> => list(string()()),
-%%   <<"MessageFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FolderIds">> => list(string()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"MessageFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"SecretArn">> => string(),
-%%   <<"ThreadFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"ThreadFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"VpcConfiguration">> => data_source_vpc_configuration()
 %% }
 -type quip_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_groups_older_than_ordering_id_response() :: #{
-%%   <<"GroupsSummaries">> => list(group_summary()()),
+%%   <<"GroupsSummaries">> => list(group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_older_than_ordering_id_response() :: #{binary() => any()}.
@@ -2131,15 +2131,15 @@
 %% confluence_space_configuration() :: #{
 %%   <<"CrawlArchivedSpaces">> => boolean(),
 %%   <<"CrawlPersonalSpaces">> => boolean(),
-%%   <<"ExcludeSpaces">> => list(string()()),
-%%   <<"IncludeSpaces">> => list(string()()),
-%%   <<"SpaceFieldMappings">> => list(confluence_space_to_index_field_mapping()())
+%%   <<"ExcludeSpaces">> => list(string()),
+%%   <<"IncludeSpaces">> => list(string()),
+%%   <<"SpaceFieldMappings">> => list(confluence_space_to_index_field_mapping())
 %% }
 -type confluence_space_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% associate_personas_to_entities_response() :: #{
-%%   <<"FailedEntityList">> => list(failed_entity()())
+%%   <<"FailedEntityList">> => list(failed_entity())
 %% }
 -type associate_personas_to_entities_response() :: #{binary() => any()}.
 
@@ -2154,7 +2154,7 @@
 
 %% Example:
 %% attribute_filter() :: #{
-%%   <<"AndAllFilters">> => list(attribute_filter()()),
+%%   <<"AndAllFilters">> => list(attribute_filter()),
 %%   <<"ContainsAll">> => document_attribute(),
 %%   <<"ContainsAny">> => document_attribute(),
 %%   <<"EqualsTo">> => document_attribute(),
@@ -2163,7 +2163,7 @@
 %%   <<"LessThan">> => document_attribute(),
 %%   <<"LessThanOrEquals">> => document_attribute(),
 %%   <<"NotFilter">> => attribute_filter(),
-%%   <<"OrAllFilters">> => list(attribute_filter()())
+%%   <<"OrAllFilters">> => list(attribute_filter())
 %% }
 -type attribute_filter() :: #{binary() => any()}.
 
@@ -2182,7 +2182,7 @@
 %% describe_principal_mapping_response() :: #{
 %%   <<"DataSourceId">> => string(),
 %%   <<"GroupId">> => string(),
-%%   <<"GroupOrderingIdSummaries">> => list(group_ordering_id_summary()()),
+%%   <<"GroupOrderingIdSummaries">> => list(group_ordering_id_summary()),
 %%   <<"IndexId">> => string()
 %% }
 -type describe_principal_mapping_response() :: #{binary() => any()}.
@@ -2191,11 +2191,11 @@
 %% featured_results_set() :: #{
 %%   <<"CreationTimestamp">> => float(),
 %%   <<"Description">> => string(),
-%%   <<"FeaturedDocuments">> => list(featured_document()()),
+%%   <<"FeaturedDocuments">> => list(featured_document()),
 %%   <<"FeaturedResultsSetId">> => string(),
 %%   <<"FeaturedResultsSetName">> => string(),
 %%   <<"LastUpdatedTimestamp">> => float(),
-%%   <<"QueryTexts">> => list(string()()),
+%%   <<"QueryTexts">> => list(string()),
 %%   <<"Status">> => list(any())
 %% }
 -type featured_results_set() :: #{binary() => any()}.
@@ -2210,22 +2210,22 @@
 %% Example:
 %% collapsed_result_detail() :: #{
 %%   <<"DocumentAttribute">> => document_attribute(),
-%%   <<"ExpandedResults">> => list(expanded_result_item()())
+%%   <<"ExpandedResults">> => list(expanded_result_item())
 %% }
 -type collapsed_result_detail() :: #{binary() => any()}.
 
 %% Example:
 %% list_query_suggestions_block_lists_response() :: #{
-%%   <<"BlockListSummaryItems">> => list(query_suggestions_block_list_summary()()),
+%%   <<"BlockListSummaryItems">> => list(query_suggestions_block_list_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_query_suggestions_block_lists_response() :: #{binary() => any()}.
 
 %% Example:
 %% attribute_suggestions_get_config() :: #{
-%%   <<"AdditionalResponseAttributes">> => list(string()()),
+%%   <<"AdditionalResponseAttributes">> => list(string()),
 %%   <<"AttributeFilter">> => attribute_filter(),
-%%   <<"SuggestionAttributes">> => list(string()()),
+%%   <<"SuggestionAttributes">> => list(string()),
 %%   <<"UserContext">> => user_context()
 %% }
 -type attribute_suggestions_get_config() :: #{binary() => any()}.
@@ -2234,16 +2234,16 @@
 %% query_request() :: #{
 %%   <<"AttributeFilter">> => attribute_filter(),
 %%   <<"CollapseConfiguration">> => collapse_configuration(),
-%%   <<"DocumentRelevanceOverrideConfigurations">> => list(document_relevance_configuration()()),
-%%   <<"Facets">> => list(facet()()),
+%%   <<"DocumentRelevanceOverrideConfigurations">> => list(document_relevance_configuration()),
+%%   <<"Facets">> => list(facet()),
 %%   <<"IndexId">> := string(),
 %%   <<"PageNumber">> => integer(),
 %%   <<"PageSize">> => integer(),
 %%   <<"QueryResultTypeFilter">> => list(any()),
 %%   <<"QueryText">> => string(),
-%%   <<"RequestedDocumentAttributes">> => list(string()()),
+%%   <<"RequestedDocumentAttributes">> => list(string()),
 %%   <<"SortingConfiguration">> => sorting_configuration(),
-%%   <<"SortingConfigurations">> => list(sorting_configuration()()),
+%%   <<"SortingConfigurations">> => list(sorting_configuration()),
 %%   <<"SpellCorrectionConfiguration">> => spell_correction_configuration(),
 %%   <<"UserContext">> => user_context(),
 %%   <<"VisitorId">> => string()
@@ -2252,8 +2252,8 @@
 
 %% Example:
 %% user_context() :: #{
-%%   <<"DataSourceGroups">> => list(data_source_group()()),
-%%   <<"Groups">> => list(string()()),
+%%   <<"DataSourceGroups">> => list(data_source_group()),
+%%   <<"Groups">> => list(string()),
 %%   <<"Token">> => string(),
 %%   <<"UserId">> => string()
 %% }
@@ -2269,9 +2269,9 @@
 %% Example:
 %% one_drive_configuration() :: #{
 %%   <<"DisableLocalGroups">> => boolean(),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()()),
-%%   <<"InclusionPatterns">> => list(string()()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"FieldMappings">> => list(data_source_to_index_field_mapping()),
+%%   <<"InclusionPatterns">> => list(string()),
 %%   <<"OneDriveUsers">> => one_drive_users(),
 %%   <<"SecretArn">> => string(),
 %%   <<"TenantDomain">> => string()
@@ -2280,9 +2280,9 @@
 
 %% Example:
 %% query_result_item() :: #{
-%%   <<"AdditionalAttributes">> => list(additional_result_attribute()()),
+%%   <<"AdditionalAttributes">> => list(additional_result_attribute()),
 %%   <<"CollapsedResultDetail">> => collapsed_result_detail(),
-%%   <<"DocumentAttributes">> => list(document_attribute()()),
+%%   <<"DocumentAttributes">> => list(document_attribute()),
 %%   <<"DocumentExcerpt">> => text_with_highlights(),
 %%   <<"DocumentId">> => string(),
 %%   <<"DocumentTitle">> => text_with_highlights(),
@@ -2298,7 +2298,7 @@
 
 %% Example:
 %% associate_entities_to_experience_response() :: #{
-%%   <<"FailedEntityList">> => list(failed_entity()())
+%%   <<"FailedEntityList">> => list(failed_entity())
 %% }
 -type associate_entities_to_experience_response() :: #{binary() => any()}.
 
@@ -2310,7 +2310,7 @@
 
 %% Example:
 %% confluence_blog_configuration() :: #{
-%%   <<"BlogFieldMappings">> => list(confluence_blog_to_index_field_mapping()())
+%%   <<"BlogFieldMappings">> => list(confluence_blog_to_index_field_mapping())
 %% }
 -type confluence_blog_configuration() :: #{binary() => any()}.
 
@@ -2345,7 +2345,7 @@
 
 %% Example:
 %% authentication_configuration() :: #{
-%%   <<"BasicAuthentication">> => list(basic_authentication_configuration()())
+%%   <<"BasicAuthentication">> => list(basic_authentication_configuration())
 %% }
 -type authentication_configuration() :: #{binary() => any()}.
 
@@ -2357,38 +2357,38 @@
 
 %% Example:
 %% alfresco_configuration() :: #{
-%%   <<"BlogFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"BlogFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"CrawlComments">> => boolean(),
 %%   <<"CrawlSystemFolders">> => boolean(),
-%%   <<"DocumentLibraryFieldMappings">> => list(data_source_to_index_field_mapping()()),
+%%   <<"DocumentLibraryFieldMappings">> => list(data_source_to_index_field_mapping()),
 %%   <<"EntityFilter">> => list(list(any())()),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"InclusionPatterns">> => list(string()()),
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"InclusionPatterns">> => list(string()),
 %%   <<"SecretArn">> => string(),
 %%   <<"SiteId">> => string(),
 %%   <<"SiteUrl">> => string(),
 %%   <<"SslCertificateS3Path">> => s3_path(),
 %%   <<"VpcConfiguration">> => data_source_vpc_configuration(),
-%%   <<"WikiFieldMappings">> => list(data_source_to_index_field_mapping()())
+%%   <<"WikiFieldMappings">> => list(data_source_to_index_field_mapping())
 %% }
 -type alfresco_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_document_status_response() :: #{
-%%   <<"DocumentStatusList">> => list(status()()),
-%%   <<"Errors">> => list(batch_get_document_status_response_error()())
+%%   <<"DocumentStatusList">> => list(status()),
+%%   <<"Errors">> => list(batch_get_document_status_response_error())
 %% }
 -type batch_get_document_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% confluence_page_configuration() :: #{
-%%   <<"PageFieldMappings">> => list(confluence_page_to_index_field_mapping()())
+%%   <<"PageFieldMappings">> => list(confluence_page_to_index_field_mapping())
 %% }
 -type confluence_page_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_personas_from_entities_request() :: #{
-%%   <<"EntityIds">> := list(string()()),
+%%   <<"EntityIds">> := list(string()),
 %%   <<"Id">> := string(),
 %%   <<"IndexId">> := string()
 %% }
@@ -2415,19 +2415,19 @@
 %% Example:
 %% retrieve_request() :: #{
 %%   <<"AttributeFilter">> => attribute_filter(),
-%%   <<"DocumentRelevanceOverrideConfigurations">> => list(document_relevance_configuration()()),
+%%   <<"DocumentRelevanceOverrideConfigurations">> => list(document_relevance_configuration()),
 %%   <<"IndexId">> := string(),
 %%   <<"PageNumber">> => integer(),
 %%   <<"PageSize">> => integer(),
 %%   <<"QueryText">> := string(),
-%%   <<"RequestedDocumentAttributes">> => list(string()()),
+%%   <<"RequestedDocumentAttributes">> => list(string()),
 %%   <<"UserContext">> => user_context()
 %% }
 -type retrieve_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_featured_results_sets_response() :: #{
-%%   <<"FeaturedResultsSetSummaryItems">> => list(featured_results_set_summary()()),
+%%   <<"FeaturedResultsSetSummaryItems">> => list(featured_results_set_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_featured_results_sets_response() :: #{binary() => any()}.
@@ -2460,10 +2460,10 @@
 
 %% Example:
 %% create_access_control_configuration_request() :: #{
-%%   <<"AccessControlList">> => list(principal()()),
+%%   <<"AccessControlList">> => list(principal()),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()()),
+%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
 %%   <<"IndexId">> := string(),
 %%   <<"Name">> := string()
 %% }
@@ -2471,7 +2471,7 @@
 
 %% Example:
 %% document_info() :: #{
-%%   <<"Attributes">> => list(document_attribute()()),
+%%   <<"Attributes">> => list(document_attribute()),
 %%   <<"DocumentId">> => string()
 %% }
 -type document_info() :: #{binary() => any()}.
@@ -2479,7 +2479,7 @@
 %% Example:
 %% list_entity_personas_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SummaryItems">> => list(personas_summary()())
+%%   <<"SummaryItems">> => list(personas_summary())
 %% }
 -type list_entity_personas_response() :: #{binary() => any()}.
 
@@ -2500,11 +2500,11 @@
 %% Example:
 %% document() :: #{
 %%   <<"AccessControlConfigurationId">> => string(),
-%%   <<"AccessControlList">> => list(principal()()),
-%%   <<"Attributes">> => list(document_attribute()()),
+%%   <<"AccessControlList">> => list(principal()),
+%%   <<"Attributes">> => list(document_attribute()),
 %%   <<"Blob">> => binary(),
 %%   <<"ContentType">> => list(any()),
-%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()()),
+%%   <<"HierarchicalAccessControlList">> => list(hierarchical_principal()),
 %%   <<"Id">> => string(),
 %%   <<"S3Path">> => s3_path(),
 %%   <<"Title">> => string()
@@ -2513,7 +2513,7 @@
 
 %% Example:
 %% list_faqs_response() :: #{
-%%   <<"FaqSummaryItems">> => list(faq_summary()()),
+%%   <<"FaqSummaryItems">> => list(faq_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_faqs_response() :: #{binary() => any()}.
@@ -2531,14 +2531,14 @@
 
 %% Example:
 %% batch_get_document_status_request() :: #{
-%%   <<"DocumentInfoList">> := list(document_info()()),
+%%   <<"DocumentInfoList">> := list(document_info()),
 %%   <<"IndexId">> := string()
 %% }
 -type batch_get_document_status_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_entities_from_experience_request() :: #{
-%%   <<"EntityList">> := list(entity_configuration()()),
+%%   <<"EntityList">> := list(entity_configuration()),
 %%   <<"Id">> := string(),
 %%   <<"IndexId">> := string()
 %% }
@@ -2548,12 +2548,12 @@
 %% create_featured_results_set_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"FeaturedDocuments">> => list(featured_document()()),
+%%   <<"FeaturedDocuments">> => list(featured_document()),
 %%   <<"FeaturedResultsSetName">> := string(),
 %%   <<"IndexId">> := string(),
-%%   <<"QueryTexts">> => list(string()()),
+%%   <<"QueryTexts">> => list(string()),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_featured_results_set_request() :: #{binary() => any()}.
 
@@ -2584,9 +2584,9 @@
 %%   <<"AccessControlListConfiguration">> => access_control_list_configuration(),
 %%   <<"BucketName">> => string(),
 %%   <<"DocumentsMetadataConfiguration">> => documents_metadata_configuration(),
-%%   <<"ExclusionPatterns">> => list(string()()),
-%%   <<"InclusionPatterns">> => list(string()()),
-%%   <<"InclusionPrefixes">> => list(string()())
+%%   <<"ExclusionPatterns">> => list(string()),
+%%   <<"InclusionPatterns">> => list(string()),
+%%   <<"InclusionPrefixes">> => list(string())
 %% }
 -type s3_data_source_configuration() :: #{binary() => any()}.
 
@@ -2608,7 +2608,7 @@
 %% associate_personas_to_entities_request() :: #{
 %%   <<"Id">> := string(),
 %%   <<"IndexId">> := string(),
-%%   <<"Personas">> := list(entity_persona_configuration()())
+%%   <<"Personas">> := list(entity_persona_configuration())
 %% }
 -type associate_personas_to_entities_request() :: #{binary() => any()}.
 

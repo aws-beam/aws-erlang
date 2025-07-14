@@ -419,110 +419,110 @@
 
 %% Example:
 %% aws_security_finding_filters() :: #{
-%%   <<"ResourceContainerImageName">> => list(string_filter()()),
-%%   <<"ResourceAwsEc2InstanceLaunchedAt">> => list(date_filter()()),
-%%   <<"MalwareType">> => list(string_filter()()),
-%%   <<"Confidence">> => list(number_filter()()),
-%%   <<"ResourceId">> => list(string_filter()()),
-%%   <<"ProductName">> => list(string_filter()()),
-%%   <<"ResourceContainerLaunchedAt">> => list(date_filter()()),
-%%   <<"RecordState">> => list(string_filter()()),
-%%   <<"ResourceApplicationArn">> => list(string_filter()()),
-%%   <<"FindingProviderFieldsRelatedFindingsId">> => list(string_filter()()),
-%%   <<"ProcessPid">> => list(number_filter()()),
-%%   <<"ProcessParentPid">> => list(number_filter()()),
-%%   <<"ResourceContainerImageId">> => list(string_filter()()),
-%%   <<"ComplianceSecurityControlParametersName">> => list(string_filter()()),
-%%   <<"ResourceAwsEc2InstanceImageId">> => list(string_filter()()),
-%%   <<"ResourceType">> => list(string_filter()()),
-%%   <<"CompanyName">> => list(string_filter()()),
-%%   <<"NetworkDestinationIpV6">> => list(ip_filter()()),
-%%   <<"AwsAccountId">> => list(string_filter()()),
-%%   <<"ResourceAwsIamAccessKeyCreatedAt">> => list(date_filter()()),
-%%   <<"VulnerabilitiesFixAvailable">> => list(string_filter()()),
-%%   <<"ThreatIntelIndicatorSource">> => list(string_filter()()),
-%%   <<"GeneratorId">> => list(string_filter()()),
-%%   <<"ThreatIntelIndicatorType">> => list(string_filter()()),
-%%   <<"Id">> => list(string_filter()()),
-%%   <<"ResourceAwsEc2InstanceIamInstanceProfileArn">> => list(string_filter()()),
-%%   <<"ComplianceAssociatedStandardsId">> => list(string_filter()()),
-%%   <<"RelatedFindingsId">> => list(string_filter()()),
-%%   <<"NetworkProtocol">> => list(string_filter()()),
-%%   <<"Region">> => list(string_filter()()),
-%%   <<"FindingProviderFieldsCriticality">> => list(number_filter()()),
-%%   <<"ComplianceSecurityControlParametersValue">> => list(string_filter()()),
-%%   <<"ProcessLaunchedAt">> => list(date_filter()()),
-%%   <<"ThreatIntelIndicatorLastObservedAt">> => list(date_filter()()),
-%%   <<"Keyword">> => list(keyword_filter()()),
-%%   <<"ResourceAwsEc2InstanceVpcId">> => list(string_filter()()),
-%%   <<"ProductFields">> => list(map_filter()()),
-%%   <<"NoteUpdatedAt">> => list(date_filter()()),
-%%   <<"FindingProviderFieldsRelatedFindingsProductArn">> => list(string_filter()()),
-%%   <<"MalwareState">> => list(string_filter()()),
-%%   <<"ComplianceStatus">> => list(string_filter()()),
-%%   <<"ProcessTerminatedAt">> => list(date_filter()()),
-%%   <<"ResourceAwsS3BucketOwnerId">> => list(string_filter()()),
-%%   <<"NoteUpdatedBy">> => list(string_filter()()),
-%%   <<"NetworkDirection">> => list(string_filter()()),
-%%   <<"ResourceAwsS3BucketOwnerName">> => list(string_filter()()),
-%%   <<"ResourceAwsIamAccessKeyStatus">> => list(string_filter()()),
-%%   <<"ProcessPath">> => list(string_filter()()),
-%%   <<"WorkflowState">> => list(string_filter()()),
-%%   <<"ThreatIntelIndicatorCategory">> => list(string_filter()()),
-%%   <<"SourceUrl">> => list(string_filter()()),
-%%   <<"Criticality">> => list(number_filter()()),
-%%   <<"FindingProviderFieldsSeverityOriginal">> => list(string_filter()()),
-%%   <<"NetworkSourceDomain">> => list(string_filter()()),
-%%   <<"SeverityNormalized">> => list(number_filter()()),
-%%   <<"ResourceAwsIamUserUserName">> => list(string_filter()()),
-%%   <<"NoteText">> => list(string_filter()()),
-%%   <<"ProcessName">> => list(string_filter()()),
-%%   <<"SeverityLabel">> => list(string_filter()()),
-%%   <<"ResourceAwsEc2InstanceType">> => list(string_filter()()),
-%%   <<"FirstObservedAt">> => list(date_filter()()),
-%%   <<"ResourceApplicationName">> => list(string_filter()()),
-%%   <<"ResourceAwsEc2InstanceIpV4Addresses">> => list(ip_filter()()),
-%%   <<"ResourceAwsIamAccessKeyUserName">> => list(string_filter()()),
-%%   <<"FindingProviderFieldsTypes">> => list(string_filter()()),
-%%   <<"ResourceDetailsOther">> => list(map_filter()()),
-%%   <<"Type">> => list(string_filter()()),
-%%   <<"Sample">> => list(boolean_filter()()),
-%%   <<"RelatedFindingsProductArn">> => list(string_filter()()),
-%%   <<"NetworkDestinationIpV4">> => list(ip_filter()()),
-%%   <<"NetworkDestinationPort">> => list(number_filter()()),
-%%   <<"WorkflowStatus">> => list(string_filter()()),
-%%   <<"Title">> => list(string_filter()()),
-%%   <<"MalwareName">> => list(string_filter()()),
-%%   <<"RecommendationText">> => list(string_filter()()),
-%%   <<"UserDefinedFields">> => list(map_filter()()),
-%%   <<"ProductArn">> => list(string_filter()()),
-%%   <<"ResourceAwsEc2InstanceKeyName">> => list(string_filter()()),
-%%   <<"MalwarePath">> => list(string_filter()()),
-%%   <<"ResourcePartition">> => list(string_filter()()),
-%%   <<"CreatedAt">> => list(date_filter()()),
-%%   <<"AwsAccountName">> => list(string_filter()()),
-%%   <<"ResourceAwsEc2InstanceIpV6Addresses">> => list(ip_filter()()),
-%%   <<"NetworkSourceIpV4">> => list(ip_filter()()),
-%%   <<"VulnerabilitiesExploitAvailable">> => list(string_filter()()),
-%%   <<"ResourceContainerName">> => list(string_filter()()),
-%%   <<"NetworkDestinationDomain">> => list(string_filter()()),
-%%   <<"ResourceTags">> => list(map_filter()()),
-%%   <<"ComplianceSecurityControlId">> => list(string_filter()()),
-%%   <<"ThreatIntelIndicatorValue">> => list(string_filter()()),
-%%   <<"ResourceAwsIamAccessKeyPrincipalName">> => list(string_filter()()),
-%%   <<"UpdatedAt">> => list(date_filter()()),
-%%   <<"FindingProviderFieldsConfidence">> => list(number_filter()()),
-%%   <<"FindingProviderFieldsSeverityLabel">> => list(string_filter()()),
-%%   <<"NetworkSourceMac">> => list(string_filter()()),
-%%   <<"ThreatIntelIndicatorSourceUrl">> => list(string_filter()()),
-%%   <<"NetworkSourcePort">> => list(number_filter()()),
-%%   <<"NetworkSourceIpV6">> => list(ip_filter()()),
-%%   <<"Description">> => list(string_filter()()),
-%%   <<"ResourceAwsEc2InstanceSubnetId">> => list(string_filter()()),
-%%   <<"LastObservedAt">> => list(date_filter()()),
-%%   <<"ResourceRegion">> => list(string_filter()()),
-%%   <<"VerificationState">> => list(string_filter()()),
-%%   <<"SeverityProduct">> => list(number_filter()())
+%%   <<"ResourceContainerImageName">> => list(string_filter()),
+%%   <<"ResourceAwsEc2InstanceLaunchedAt">> => list(date_filter()),
+%%   <<"MalwareType">> => list(string_filter()),
+%%   <<"Confidence">> => list(number_filter()),
+%%   <<"ResourceId">> => list(string_filter()),
+%%   <<"ProductName">> => list(string_filter()),
+%%   <<"ResourceContainerLaunchedAt">> => list(date_filter()),
+%%   <<"RecordState">> => list(string_filter()),
+%%   <<"ResourceApplicationArn">> => list(string_filter()),
+%%   <<"FindingProviderFieldsRelatedFindingsId">> => list(string_filter()),
+%%   <<"ProcessPid">> => list(number_filter()),
+%%   <<"ProcessParentPid">> => list(number_filter()),
+%%   <<"ResourceContainerImageId">> => list(string_filter()),
+%%   <<"ComplianceSecurityControlParametersName">> => list(string_filter()),
+%%   <<"ResourceAwsEc2InstanceImageId">> => list(string_filter()),
+%%   <<"ResourceType">> => list(string_filter()),
+%%   <<"CompanyName">> => list(string_filter()),
+%%   <<"NetworkDestinationIpV6">> => list(ip_filter()),
+%%   <<"AwsAccountId">> => list(string_filter()),
+%%   <<"ResourceAwsIamAccessKeyCreatedAt">> => list(date_filter()),
+%%   <<"VulnerabilitiesFixAvailable">> => list(string_filter()),
+%%   <<"ThreatIntelIndicatorSource">> => list(string_filter()),
+%%   <<"GeneratorId">> => list(string_filter()),
+%%   <<"ThreatIntelIndicatorType">> => list(string_filter()),
+%%   <<"Id">> => list(string_filter()),
+%%   <<"ResourceAwsEc2InstanceIamInstanceProfileArn">> => list(string_filter()),
+%%   <<"ComplianceAssociatedStandardsId">> => list(string_filter()),
+%%   <<"RelatedFindingsId">> => list(string_filter()),
+%%   <<"NetworkProtocol">> => list(string_filter()),
+%%   <<"Region">> => list(string_filter()),
+%%   <<"FindingProviderFieldsCriticality">> => list(number_filter()),
+%%   <<"ComplianceSecurityControlParametersValue">> => list(string_filter()),
+%%   <<"ProcessLaunchedAt">> => list(date_filter()),
+%%   <<"ThreatIntelIndicatorLastObservedAt">> => list(date_filter()),
+%%   <<"Keyword">> => list(keyword_filter()),
+%%   <<"ResourceAwsEc2InstanceVpcId">> => list(string_filter()),
+%%   <<"ProductFields">> => list(map_filter()),
+%%   <<"NoteUpdatedAt">> => list(date_filter()),
+%%   <<"FindingProviderFieldsRelatedFindingsProductArn">> => list(string_filter()),
+%%   <<"MalwareState">> => list(string_filter()),
+%%   <<"ComplianceStatus">> => list(string_filter()),
+%%   <<"ProcessTerminatedAt">> => list(date_filter()),
+%%   <<"ResourceAwsS3BucketOwnerId">> => list(string_filter()),
+%%   <<"NoteUpdatedBy">> => list(string_filter()),
+%%   <<"NetworkDirection">> => list(string_filter()),
+%%   <<"ResourceAwsS3BucketOwnerName">> => list(string_filter()),
+%%   <<"ResourceAwsIamAccessKeyStatus">> => list(string_filter()),
+%%   <<"ProcessPath">> => list(string_filter()),
+%%   <<"WorkflowState">> => list(string_filter()),
+%%   <<"ThreatIntelIndicatorCategory">> => list(string_filter()),
+%%   <<"SourceUrl">> => list(string_filter()),
+%%   <<"Criticality">> => list(number_filter()),
+%%   <<"FindingProviderFieldsSeverityOriginal">> => list(string_filter()),
+%%   <<"NetworkSourceDomain">> => list(string_filter()),
+%%   <<"SeverityNormalized">> => list(number_filter()),
+%%   <<"ResourceAwsIamUserUserName">> => list(string_filter()),
+%%   <<"NoteText">> => list(string_filter()),
+%%   <<"ProcessName">> => list(string_filter()),
+%%   <<"SeverityLabel">> => list(string_filter()),
+%%   <<"ResourceAwsEc2InstanceType">> => list(string_filter()),
+%%   <<"FirstObservedAt">> => list(date_filter()),
+%%   <<"ResourceApplicationName">> => list(string_filter()),
+%%   <<"ResourceAwsEc2InstanceIpV4Addresses">> => list(ip_filter()),
+%%   <<"ResourceAwsIamAccessKeyUserName">> => list(string_filter()),
+%%   <<"FindingProviderFieldsTypes">> => list(string_filter()),
+%%   <<"ResourceDetailsOther">> => list(map_filter()),
+%%   <<"Type">> => list(string_filter()),
+%%   <<"Sample">> => list(boolean_filter()),
+%%   <<"RelatedFindingsProductArn">> => list(string_filter()),
+%%   <<"NetworkDestinationIpV4">> => list(ip_filter()),
+%%   <<"NetworkDestinationPort">> => list(number_filter()),
+%%   <<"WorkflowStatus">> => list(string_filter()),
+%%   <<"Title">> => list(string_filter()),
+%%   <<"MalwareName">> => list(string_filter()),
+%%   <<"RecommendationText">> => list(string_filter()),
+%%   <<"UserDefinedFields">> => list(map_filter()),
+%%   <<"ProductArn">> => list(string_filter()),
+%%   <<"ResourceAwsEc2InstanceKeyName">> => list(string_filter()),
+%%   <<"MalwarePath">> => list(string_filter()),
+%%   <<"ResourcePartition">> => list(string_filter()),
+%%   <<"CreatedAt">> => list(date_filter()),
+%%   <<"AwsAccountName">> => list(string_filter()),
+%%   <<"ResourceAwsEc2InstanceIpV6Addresses">> => list(ip_filter()),
+%%   <<"NetworkSourceIpV4">> => list(ip_filter()),
+%%   <<"VulnerabilitiesExploitAvailable">> => list(string_filter()),
+%%   <<"ResourceContainerName">> => list(string_filter()),
+%%   <<"NetworkDestinationDomain">> => list(string_filter()),
+%%   <<"ResourceTags">> => list(map_filter()),
+%%   <<"ComplianceSecurityControlId">> => list(string_filter()),
+%%   <<"ThreatIntelIndicatorValue">> => list(string_filter()),
+%%   <<"ResourceAwsIamAccessKeyPrincipalName">> => list(string_filter()),
+%%   <<"UpdatedAt">> => list(date_filter()),
+%%   <<"FindingProviderFieldsConfidence">> => list(number_filter()),
+%%   <<"FindingProviderFieldsSeverityLabel">> => list(string_filter()),
+%%   <<"NetworkSourceMac">> => list(string_filter()),
+%%   <<"ThreatIntelIndicatorSourceUrl">> => list(string_filter()),
+%%   <<"NetworkSourcePort">> => list(number_filter()),
+%%   <<"NetworkSourceIpV6">> => list(ip_filter()),
+%%   <<"Description">> => list(string_filter()),
+%%   <<"ResourceAwsEc2InstanceSubnetId">> => list(string_filter()),
+%%   <<"LastObservedAt">> => list(date_filter()),
+%%   <<"ResourceRegion">> => list(string_filter()),
+%%   <<"VerificationState">> => list(string_filter()),
+%%   <<"SeverityProduct">> => list(number_filter())
 %% }
 -type aws_security_finding_filters() :: #{binary() => any()}.
 
@@ -532,7 +532,7 @@
 %%   <<"FindingAggregationRegion">> => string(),
 %%   <<"FindingAggregatorArn">> => string(),
 %%   <<"RegionLinkingMode">> => string(),
-%%   <<"Regions">> => list(string()())
+%%   <<"Regions">> => list(string())
 %% }
 -type get_finding_aggregator_response() :: #{binary() => any()}.
 
@@ -557,7 +557,7 @@
 %% aws_dynamo_db_table_local_secondary_index() :: #{
 %%   <<"IndexArn">> => string(),
 %%   <<"IndexName">> => string(),
-%%   <<"KeySchema">> => list(aws_dynamo_db_table_key_schema()()),
+%%   <<"KeySchema">> => list(aws_dynamo_db_table_key_schema()),
 %%   <<"Projection">> => aws_dynamo_db_table_projection()
 %% }
 -type aws_dynamo_db_table_local_secondary_index() :: #{binary() => any()}.
@@ -583,7 +583,7 @@
 %% rule_group_source() :: #{
 %%   <<"RulesSourceList">> => rule_group_source_list_details(),
 %%   <<"RulesString">> => string(),
-%%   <<"StatefulRules">> => list(rule_group_source_stateful_rules_details()()),
+%%   <<"StatefulRules">> => list(rule_group_source_stateful_rules_details()),
 %%   <<"StatelessRulesAndCustomActions">> => rule_group_source_stateless_rules_and_custom_actions_details()
 %% }
 -type rule_group_source() :: #{binary() => any()}.
@@ -623,8 +623,8 @@
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_linux_parameters_capabilities_details() :: #{
-%%   <<"Add">> => list(string()()),
-%%   <<"Drop">> => list(string()())
+%%   <<"Add">> => list(string()),
+%%   <<"Drop">> => list(string())
 %% }
 -type aws_ecs_task_definition_container_definitions_linux_parameters_capabilities_details() :: #{binary() => any()}.
 
@@ -658,9 +658,9 @@
 %% Example:
 %% aws_route53_hosted_zone_details() :: #{
 %%   <<"HostedZone">> => aws_route53_hosted_zone_object_details(),
-%%   <<"NameServers">> => list(string()()),
+%%   <<"NameServers">> => list(string()),
 %%   <<"QueryLoggingConfig">> => aws_route53_query_logging_config_details(),
-%%   <<"Vpcs">> => list(aws_route53_hosted_zone_vpc_details()())
+%%   <<"Vpcs">> => list(aws_route53_hosted_zone_vpc_details())
 %% }
 -type aws_route53_hosted_zone_details() :: #{binary() => any()}.
 
@@ -678,7 +678,7 @@
 
 %% Example:
 %% integer_list_configuration_options() :: #{
-%%   <<"DefaultValue">> => list(integer()()),
+%%   <<"DefaultValue">> => list(integer()),
 %%   <<"Max">> => integer(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"Min">> => integer()
@@ -696,14 +696,14 @@
 
 %% Example:
 %% aws_iam_user_details() :: #{
-%%   <<"AttachedManagedPolicies">> => list(aws_iam_attached_managed_policy()()),
+%%   <<"AttachedManagedPolicies">> => list(aws_iam_attached_managed_policy()),
 %%   <<"CreateDate">> => string(),
-%%   <<"GroupList">> => list(string()()),
+%%   <<"GroupList">> => list(string()),
 %%   <<"Path">> => string(),
 %%   <<"PermissionsBoundary">> => aws_iam_permissions_boundary(),
 %%   <<"UserId">> => string(),
 %%   <<"UserName">> => string(),
-%%   <<"UserPolicyList">> => list(aws_iam_user_policy()())
+%%   <<"UserPolicyList">> => list(aws_iam_user_policy())
 %% }
 -type aws_iam_user_details() :: #{binary() => any()}.
 
@@ -716,7 +716,7 @@
 %%   <<"LaunchedAt">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Privileged">> => boolean(),
-%%   <<"VolumeMounts">> => list(volume_mount()())
+%%   <<"VolumeMounts">> => list(volume_mount())
 %% }
 -type container_details() :: #{binary() => any()}.
 
@@ -745,8 +745,8 @@
 %%   <<"DbSecurityGroupArn">> => string(),
 %%   <<"DbSecurityGroupDescription">> => string(),
 %%   <<"DbSecurityGroupName">> => string(),
-%%   <<"Ec2SecurityGroups">> => list(aws_rds_db_security_group_ec2_security_group()()),
-%%   <<"IpRanges">> => list(aws_rds_db_security_group_ip_range()()),
+%%   <<"Ec2SecurityGroups">> => list(aws_rds_db_security_group_ec2_security_group()),
+%%   <<"IpRanges">> => list(aws_rds_db_security_group_ip_range()),
 %%   <<"OwnerId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -755,7 +755,7 @@
 
 %% Example:
 %% describe_standards_controls_response() :: #{
-%%   <<"Controls">> => list(standards_control()()),
+%%   <<"Controls">> => list(standards_control()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_standards_controls_response() :: #{binary() => any()}.
@@ -788,7 +788,7 @@
 
 %% Example:
 %% aws_lambda_layer_version_details() :: #{
-%%   <<"CompatibleRuntimes">> => list(string()()),
+%%   <<"CompatibleRuntimes">> => list(string()),
 %%   <<"CreatedDate">> => string(),
 %%   <<"Version">> => float()
 %% }
@@ -813,7 +813,7 @@
 
 %% Example:
 %% decline_invitations_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(result()())
+%%   <<"UnprocessedAccounts">> => list(result())
 %% }
 -type decline_invitations_response() :: #{binary() => any()}.
 
@@ -848,11 +848,11 @@
 
 %% Example:
 %% firewall_policy_details() :: #{
-%%   <<"StatefulRuleGroupReferences">> => list(firewall_policy_stateful_rule_group_references_details()()),
-%%   <<"StatelessCustomActions">> => list(firewall_policy_stateless_custom_actions_details()()),
-%%   <<"StatelessDefaultActions">> => list(string()()),
-%%   <<"StatelessFragmentDefaultActions">> => list(string()()),
-%%   <<"StatelessRuleGroupReferences">> => list(firewall_policy_stateless_rule_group_references_details()())
+%%   <<"StatefulRuleGroupReferences">> => list(firewall_policy_stateful_rule_group_references_details()),
+%%   <<"StatelessCustomActions">> => list(firewall_policy_stateless_custom_actions_details()),
+%%   <<"StatelessDefaultActions">> => list(string()),
+%%   <<"StatelessFragmentDefaultActions">> => list(string()),
+%%   <<"StatelessRuleGroupReferences">> => list(firewall_policy_stateless_rule_group_references_details())
 %% }
 -type firewall_policy_details() :: #{binary() => any()}.
 
@@ -924,17 +924,17 @@
 
 %% Example:
 %% vulnerability() :: #{
-%%   <<"CodeVulnerabilities">> => list(vulnerability_code_vulnerabilities()()),
-%%   <<"Cvss">> => list(cvss()()),
+%%   <<"CodeVulnerabilities">> => list(vulnerability_code_vulnerabilities()),
+%%   <<"Cvss">> => list(cvss()),
 %%   <<"EpssScore">> => float(),
 %%   <<"ExploitAvailable">> => list(any()),
 %%   <<"FixAvailable">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"LastKnownExploitAt">> => string(),
-%%   <<"ReferenceUrls">> => list(string()()),
-%%   <<"RelatedVulnerabilities">> => list(string()()),
+%%   <<"ReferenceUrls">> => list(string()),
+%%   <<"RelatedVulnerabilities">> => list(string()),
 %%   <<"Vendor">> => vulnerability_vendor(),
-%%   <<"VulnerablePackages">> => list(software_package()())
+%%   <<"VulnerablePackages">> => list(software_package())
 %% }
 -type vulnerability() :: #{binary() => any()}.
 
@@ -970,7 +970,7 @@
 
 %% Example:
 %% get_insights_request() :: #{
-%%   <<"InsightArns">> => list(string()()),
+%%   <<"InsightArns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1042,7 +1042,7 @@
 
 %% Example:
 %% aws_redshift_cluster_cluster_parameter_group() :: #{
-%%   <<"ClusterParameterStatusList">> => list(aws_redshift_cluster_cluster_parameter_status()()),
+%%   <<"ClusterParameterStatusList">> => list(aws_redshift_cluster_cluster_parameter_status()),
 %%   <<"ParameterApplyStatus">> => string(),
 %%   <<"ParameterGroupName">> => string()
 %% }
@@ -1074,8 +1074,8 @@
 
 %% Example:
 %% get_members_response() :: #{
-%%   <<"Members">> => list(member()()),
-%%   <<"UnprocessedAccounts">> => list(result()())
+%%   <<"Members">> => list(member()),
+%%   <<"UnprocessedAccounts">> => list(result())
 %% }
 -type get_members_response() :: #{binary() => any()}.
 
@@ -1145,10 +1145,10 @@
 
 %% Example:
 %% sequence() :: #{
-%%   <<"Actors">> => list(actor()()),
-%%   <<"Endpoints">> => list(network_endpoint()()),
-%%   <<"SequenceIndicators">> => list(indicator()()),
-%%   <<"Signals">> => list(signal()()),
+%%   <<"Actors">> => list(actor()),
+%%   <<"Endpoints">> => list(network_endpoint()),
+%%   <<"SequenceIndicators">> => list(indicator()),
+%%   <<"Signals">> => list(signal()),
 %%   <<"Uid">> => string()
 %% }
 -type sequence() :: #{binary() => any()}.
@@ -1163,7 +1163,7 @@
 
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_details() :: #{
-%%   <<"Operands">> => list(aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_operands_details()()),
+%%   <<"Operands">> => list(aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_operands_details()),
 %%   <<"Prefix">> => string(),
 %%   <<"Tag">> => aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_predicate_tag_details(),
 %%   <<"Type">> => string()
@@ -1224,7 +1224,7 @@
 
 %% Example:
 %% batch_update_standards_control_associations_response() :: #{
-%%   <<"UnprocessedAssociationUpdates">> => list(unprocessed_standards_control_association_update()())
+%%   <<"UnprocessedAssociationUpdates">> => list(unprocessed_standards_control_association_update())
 %% }
 -type batch_update_standards_control_associations_response() :: #{binary() => any()}.
 
@@ -1234,7 +1234,7 @@
 %%   <<"AdditionalOccurrences">> => boolean(),
 %%   <<"CustomDataIdentifiers">> => custom_data_identifiers_result(),
 %%   <<"MimeType">> => string(),
-%%   <<"SensitiveData">> => list(sensitive_data_result()()),
+%%   <<"SensitiveData">> => list(sensitive_data_result()),
 %%   <<"SizeClassified">> => float(),
 %%   <<"Status">> => classification_status()
 %% }
@@ -1305,7 +1305,7 @@
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RuleGroupId">> => string(),
-%%   <<"Rules">> => list(aws_waf_regional_rule_group_rules_details()())
+%%   <<"Rules">> => list(aws_waf_regional_rule_group_rules_details())
 %% }
 -type aws_waf_regional_rule_group_details() :: #{binary() => any()}.
 
@@ -1338,9 +1338,9 @@
 %% Example:
 %% aws_auto_scaling_launch_configuration_details() :: #{
 %%   <<"AssociatePublicIpAddress">> => boolean(),
-%%   <<"BlockDeviceMappings">> => list(aws_auto_scaling_launch_configuration_block_device_mappings_details()()),
+%%   <<"BlockDeviceMappings">> => list(aws_auto_scaling_launch_configuration_block_device_mappings_details()),
 %%   <<"ClassicLinkVpcId">> => string(),
-%%   <<"ClassicLinkVpcSecurityGroups">> => list(string()()),
+%%   <<"ClassicLinkVpcSecurityGroups">> => list(string()),
 %%   <<"CreatedTime">> => string(),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"IamInstanceProfile">> => string(),
@@ -1353,7 +1353,7 @@
 %%   <<"MetadataOptions">> => aws_auto_scaling_launch_configuration_metadata_options(),
 %%   <<"PlacementTenancy">> => string(),
 %%   <<"RamdiskId">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"SpotPrice">> => string(),
 %%   <<"UserData">> => string()
 %% }
@@ -1390,7 +1390,7 @@
 %% Example:
 %% sensitive_data_result() :: #{
 %%   <<"Category">> => string(),
-%%   <<"Detections">> => list(sensitive_data_detections()()),
+%%   <<"Detections">> => list(sensitive_data_detections()),
 %%   <<"TotalCount">> => float()
 %% }
 -type sensitive_data_result() :: #{binary() => any()}.
@@ -1474,7 +1474,7 @@
 %%   <<"OptionGroupName">> => string(),
 %%   <<"PercentProgress">> => integer(),
 %%   <<"Port">> => integer(),
-%%   <<"ProcessorFeatures">> => list(aws_rds_db_processor_feature()()),
+%%   <<"ProcessorFeatures">> => list(aws_rds_db_processor_feature()),
 %%   <<"SnapshotCreateTime">> => string(),
 %%   <<"SnapshotType">> => string(),
 %%   <<"SourceDbSnapshotIdentifier">> => string(),
@@ -1490,7 +1490,7 @@
 
 %% Example:
 %% batch_enable_standards_response() :: #{
-%%   <<"StandardsSubscriptions">> => list(standards_subscription()())
+%%   <<"StandardsSubscriptions">> => list(standards_subscription())
 %% }
 -type batch_enable_standards_response() :: #{binary() => any()}.
 
@@ -1505,12 +1505,12 @@
 
 %% Example:
 %% compliance() :: #{
-%%   <<"AssociatedStandards">> => list(associated_standard()()),
-%%   <<"RelatedRequirements">> => list(string()()),
+%%   <<"AssociatedStandards">> => list(associated_standard()),
+%%   <<"RelatedRequirements">> => list(string()),
 %%   <<"SecurityControlId">> => string(),
-%%   <<"SecurityControlParameters">> => list(security_control_parameter()()),
+%%   <<"SecurityControlParameters">> => list(security_control_parameter()),
 %%   <<"Status">> => list(any()),
-%%   <<"StatusReasons">> => list(status_reason()())
+%%   <<"StatusReasons">> => list(status_reason())
 %% }
 -type compliance() :: #{binary() => any()}.
 
@@ -1541,14 +1541,14 @@
 %% Example:
 %% aws_ecs_task_details() :: #{
 %%   <<"ClusterArn">> => string(),
-%%   <<"Containers">> => list(aws_ecs_container_details()()),
+%%   <<"Containers">> => list(aws_ecs_container_details()),
 %%   <<"CreatedAt">> => string(),
 %%   <<"Group">> => string(),
 %%   <<"StartedAt">> => string(),
 %%   <<"StartedBy">> => string(),
 %%   <<"TaskDefinitionArn">> => string(),
 %%   <<"Version">> => string(),
-%%   <<"Volumes">> => list(aws_ecs_task_volume_details()())
+%%   <<"Volumes">> => list(aws_ecs_task_volume_details())
 %% }
 -type aws_ecs_task_details() :: #{binary() => any()}.
 
@@ -1610,44 +1610,44 @@
 
 %% Example:
 %% automation_rules_finding_filters() :: #{
-%%   <<"Confidence">> => list(number_filter()()),
-%%   <<"ResourceId">> => list(string_filter()()),
-%%   <<"ProductName">> => list(string_filter()()),
-%%   <<"RecordState">> => list(string_filter()()),
-%%   <<"ResourceApplicationArn">> => list(string_filter()()),
-%%   <<"ResourceType">> => list(string_filter()()),
-%%   <<"CompanyName">> => list(string_filter()()),
-%%   <<"AwsAccountId">> => list(string_filter()()),
-%%   <<"GeneratorId">> => list(string_filter()()),
-%%   <<"Id">> => list(string_filter()()),
-%%   <<"ComplianceAssociatedStandardsId">> => list(string_filter()()),
-%%   <<"RelatedFindingsId">> => list(string_filter()()),
-%%   <<"NoteUpdatedAt">> => list(date_filter()()),
-%%   <<"ComplianceStatus">> => list(string_filter()()),
-%%   <<"NoteUpdatedBy">> => list(string_filter()()),
-%%   <<"SourceUrl">> => list(string_filter()()),
-%%   <<"Criticality">> => list(number_filter()()),
-%%   <<"NoteText">> => list(string_filter()()),
-%%   <<"SeverityLabel">> => list(string_filter()()),
-%%   <<"FirstObservedAt">> => list(date_filter()()),
-%%   <<"ResourceApplicationName">> => list(string_filter()()),
-%%   <<"ResourceDetailsOther">> => list(map_filter()()),
-%%   <<"Type">> => list(string_filter()()),
-%%   <<"RelatedFindingsProductArn">> => list(string_filter()()),
-%%   <<"WorkflowStatus">> => list(string_filter()()),
-%%   <<"Title">> => list(string_filter()()),
-%%   <<"UserDefinedFields">> => list(map_filter()()),
-%%   <<"ProductArn">> => list(string_filter()()),
-%%   <<"ResourcePartition">> => list(string_filter()()),
-%%   <<"CreatedAt">> => list(date_filter()()),
-%%   <<"AwsAccountName">> => list(string_filter()()),
-%%   <<"ResourceTags">> => list(map_filter()()),
-%%   <<"ComplianceSecurityControlId">> => list(string_filter()()),
-%%   <<"UpdatedAt">> => list(date_filter()()),
-%%   <<"Description">> => list(string_filter()()),
-%%   <<"LastObservedAt">> => list(date_filter()()),
-%%   <<"ResourceRegion">> => list(string_filter()()),
-%%   <<"VerificationState">> => list(string_filter()())
+%%   <<"Confidence">> => list(number_filter()),
+%%   <<"ResourceId">> => list(string_filter()),
+%%   <<"ProductName">> => list(string_filter()),
+%%   <<"RecordState">> => list(string_filter()),
+%%   <<"ResourceApplicationArn">> => list(string_filter()),
+%%   <<"ResourceType">> => list(string_filter()),
+%%   <<"CompanyName">> => list(string_filter()),
+%%   <<"AwsAccountId">> => list(string_filter()),
+%%   <<"GeneratorId">> => list(string_filter()),
+%%   <<"Id">> => list(string_filter()),
+%%   <<"ComplianceAssociatedStandardsId">> => list(string_filter()),
+%%   <<"RelatedFindingsId">> => list(string_filter()),
+%%   <<"NoteUpdatedAt">> => list(date_filter()),
+%%   <<"ComplianceStatus">> => list(string_filter()),
+%%   <<"NoteUpdatedBy">> => list(string_filter()),
+%%   <<"SourceUrl">> => list(string_filter()),
+%%   <<"Criticality">> => list(number_filter()),
+%%   <<"NoteText">> => list(string_filter()),
+%%   <<"SeverityLabel">> => list(string_filter()),
+%%   <<"FirstObservedAt">> => list(date_filter()),
+%%   <<"ResourceApplicationName">> => list(string_filter()),
+%%   <<"ResourceDetailsOther">> => list(map_filter()),
+%%   <<"Type">> => list(string_filter()),
+%%   <<"RelatedFindingsProductArn">> => list(string_filter()),
+%%   <<"WorkflowStatus">> => list(string_filter()),
+%%   <<"Title">> => list(string_filter()),
+%%   <<"UserDefinedFields">> => list(map_filter()),
+%%   <<"ProductArn">> => list(string_filter()),
+%%   <<"ResourcePartition">> => list(string_filter()),
+%%   <<"CreatedAt">> => list(date_filter()),
+%%   <<"AwsAccountName">> => list(string_filter()),
+%%   <<"ResourceTags">> => list(map_filter()),
+%%   <<"ComplianceSecurityControlId">> => list(string_filter()),
+%%   <<"UpdatedAt">> => list(date_filter()),
+%%   <<"Description">> => list(string_filter()),
+%%   <<"LastObservedAt">> => list(date_filter()),
+%%   <<"ResourceRegion">> => list(string_filter()),
+%%   <<"VerificationState">> => list(string_filter())
 %% }
 -type automation_rules_finding_filters() :: #{binary() => any()}.
 
@@ -1670,7 +1670,7 @@
 
 %% Example:
 %% aws_app_sync_graph_ql_api_details() :: #{
-%%   <<"AdditionalAuthenticationProviders">> => list(aws_app_sync_graph_ql_api_additional_authentication_providers_details()()),
+%%   <<"AdditionalAuthenticationProviders">> => list(aws_app_sync_graph_ql_api_additional_authentication_providers_details()),
 %%   <<"ApiId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"AuthenticationType">> => string(),
@@ -1688,30 +1688,30 @@
 
 %% Example:
 %% rule_group_variables_ip_sets_details() :: #{
-%%   <<"Definition">> => list(string()())
+%%   <<"Definition">> => list(string())
 %% }
 -type rule_group_variables_ip_sets_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_update_standards_control_associations_request() :: #{
-%%   <<"StandardsControlAssociationUpdates">> := list(standards_control_association_update()())
+%%   <<"StandardsControlAssociationUpdates">> := list(standards_control_association_update())
 %% }
 -type batch_update_standards_control_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_rds_pending_cloud_watch_logs_exports() :: #{
-%%   <<"LogTypesToDisable">> => list(string()()),
-%%   <<"LogTypesToEnable">> => list(string()())
+%%   <<"LogTypesToDisable">> => list(string()),
+%%   <<"LogTypesToEnable">> => list(string())
 %% }
 -type aws_rds_pending_cloud_watch_logs_exports() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_configuration_policy_associations_response() :: #{
-%%   <<"ConfigurationPolicyAssociations">> => list(configuration_policy_association_summary()()),
-%%   <<"UnprocessedConfigurationPolicyAssociations">> => list(unprocessed_configuration_policy_association()())
+%%   <<"ConfigurationPolicyAssociations">> => list(configuration_policy_association_summary()),
+%%   <<"UnprocessedConfigurationPolicyAssociations">> => list(unprocessed_configuration_policy_association())
 %% }
 -type batch_get_configuration_policy_associations_response() :: #{binary() => any()}.
 
@@ -1729,7 +1729,7 @@
 %%   <<"DomainName">> => string(),
 %%   <<"ResourceRecord">> => aws_certificate_manager_certificate_resource_record(),
 %%   <<"ValidationDomain">> => string(),
-%%   <<"ValidationEmails">> => list(string()()),
+%%   <<"ValidationEmails">> => list(string()),
 %%   <<"ValidationMethod">> => string(),
 %%   <<"ValidationStatus">> => string()
 %% }
@@ -1762,11 +1762,11 @@
 
 %% Example:
 %% aws_iam_group_details() :: #{
-%%   <<"AttachedManagedPolicies">> => list(aws_iam_attached_managed_policy()()),
+%%   <<"AttachedManagedPolicies">> => list(aws_iam_attached_managed_policy()),
 %%   <<"CreateDate">> => string(),
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"GroupPolicyList">> => list(aws_iam_group_policy()()),
+%%   <<"GroupPolicyList">> => list(aws_iam_group_policy()),
 %%   <<"Path">> => string()
 %% }
 -type aws_iam_group_details() :: #{binary() => any()}.
@@ -1822,10 +1822,10 @@
 %%   <<"CustSubscriptionId">> => string(),
 %%   <<"CustomerAwsId">> => string(),
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategoriesList">> => list(string()()),
+%%   <<"EventCategoriesList">> => list(string()),
 %%   <<"EventSubscriptionArn">> => string(),
 %%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceIdsList">> => list(string()()),
+%%   <<"SourceIdsList">> => list(string()),
 %%   <<"SourceType">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"SubscriptionCreationTime">> => string()
@@ -1841,7 +1841,7 @@
 %%   <<"AvailableIpAddressCount">> => integer(),
 %%   <<"CidrBlock">> => string(),
 %%   <<"DefaultForAz">> => boolean(),
-%%   <<"Ipv6CidrBlockAssociationSet">> => list(ipv6_cidr_block_association()()),
+%%   <<"Ipv6CidrBlockAssociationSet">> => list(ipv6_cidr_block_association()),
 %%   <<"MapPublicIpOnLaunch">> => boolean(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => string(),
@@ -1882,8 +1882,8 @@
 %%   <<"Engine">> => string(),
 %%   <<"ClusterCreateTime">> => string(),
 %%   <<"HostedZoneId">> => string(),
-%%   <<"DomainMemberships">> => list(aws_rds_db_domain_membership()()),
-%%   <<"DbClusterOptionGroupMemberships">> => list(aws_rds_db_cluster_option_group_membership()()),
+%%   <<"DomainMemberships">> => list(aws_rds_db_domain_membership()),
+%%   <<"DbClusterOptionGroupMemberships">> => list(aws_rds_db_cluster_option_group_membership()),
 %%   <<"ActivityStreamStatus">> => string(),
 %%   <<"CopyTagsToSnapshot">> => boolean(),
 %%   <<"DbClusterIdentifier">> => string(),
@@ -1894,25 +1894,25 @@
 %%   <<"DbClusterParameterGroup">> => string(),
 %%   <<"MultiAz">> => boolean(),
 %%   <<"IamDatabaseAuthenticationEnabled">> => boolean(),
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ReaderEndpoint">> => string(),
 %%   <<"BackupRetentionPeriod">> => integer(),
-%%   <<"AssociatedRoles">> => list(aws_rds_db_cluster_associated_role()()),
-%%   <<"CustomEndpoints">> => list(string()()),
+%%   <<"AssociatedRoles">> => list(aws_rds_db_cluster_associated_role()),
+%%   <<"CustomEndpoints">> => list(string()),
 %%   <<"DatabaseName">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"DbClusterResourceId">> => string(),
 %%   <<"Endpoint">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"VpcSecurityGroups">> => list(aws_rds_db_instance_vpc_security_group()()),
+%%   <<"VpcSecurityGroups">> => list(aws_rds_db_instance_vpc_security_group()),
 %%   <<"DbSubnetGroup">> => string(),
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"DbClusterMembers">> => list(aws_rds_db_cluster_member()()),
+%%   <<"DbClusterMembers">> => list(aws_rds_db_cluster_member()),
 %%   <<"AllocatedStorage">> => integer(),
 %%   <<"Status">> => string(),
-%%   <<"EnabledCloudWatchLogsExports">> => list(string()()),
+%%   <<"EnabledCloudWatchLogsExports">> => list(string()),
 %%   <<"StorageEncrypted">> => boolean(),
-%%   <<"ReadReplicaIdentifiers">> => list(string()()),
+%%   <<"ReadReplicaIdentifiers">> => list(string()),
 %%   <<"DeletionProtection">> => boolean()
 %% }
 -type aws_rds_db_cluster_details() :: #{binary() => any()}.
@@ -1984,8 +1984,8 @@
 
 %% Example:
 %% batch_update_automation_rules_response() :: #{
-%%   <<"ProcessedAutomationRules">> => list(string()()),
-%%   <<"UnprocessedAutomationRules">> => list(unprocessed_automation_rule()())
+%%   <<"ProcessedAutomationRules">> => list(string()),
+%%   <<"UnprocessedAutomationRules">> => list(unprocessed_automation_rule())
 %% }
 -type batch_update_automation_rules_response() :: #{binary() => any()}.
 
@@ -2022,18 +2022,18 @@
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"DeviceIndex">> => integer(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"InterfaceType">> => string(),
 %%   <<"Ipv4PrefixCount">> => integer(),
-%%   <<"Ipv4Prefixes">> => list(aws_ec2_launch_template_data_network_interface_set_ipv4_prefixes_details()()),
+%%   <<"Ipv4Prefixes">> => list(aws_ec2_launch_template_data_network_interface_set_ipv4_prefixes_details()),
 %%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(aws_ec2_launch_template_data_network_interface_set_ipv6_addresses_details()()),
+%%   <<"Ipv6Addresses">> => list(aws_ec2_launch_template_data_network_interface_set_ipv6_addresses_details()),
 %%   <<"Ipv6PrefixCount">> => integer(),
-%%   <<"Ipv6Prefixes">> => list(aws_ec2_launch_template_data_network_interface_set_ipv6_prefixes_details()()),
+%%   <<"Ipv6Prefixes">> => list(aws_ec2_launch_template_data_network_interface_set_ipv6_prefixes_details()),
 %%   <<"NetworkCardIndex">> => integer(),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(aws_ec2_launch_template_data_network_interface_set_private_ip_addresses_details()()),
+%%   <<"PrivateIpAddresses">> => list(aws_ec2_launch_template_data_network_interface_set_private_ip_addresses_details()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
 %%   <<"SubnetId">> => string()
 %% }
@@ -2088,7 +2088,7 @@
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_health_check_details() :: #{
-%%   <<"Command">> => list(string()()),
+%%   <<"Command">> => list(string()),
 %%   <<"Interval">> => integer(),
 %%   <<"Retries">> => integer(),
 %%   <<"StartPeriod">> => integer(),
@@ -2127,7 +2127,7 @@
 
 %% Example:
 %% list_aggregators_v2_response() :: #{
-%%   <<"AggregatorsV2">> => list(aggregator_v2()()),
+%%   <<"AggregatorsV2">> => list(aggregator_v2()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_aggregators_v2_response() :: #{binary() => any()}.
@@ -2143,7 +2143,7 @@
 
 %% Example:
 %% resources_filters() :: #{
-%%   <<"CompositeFilters">> => list(resources_composite_filter()()),
+%%   <<"CompositeFilters">> => list(resources_composite_filter()),
 %%   <<"CompositeOperator">> => list(any())
 %% }
 -type resources_filters() :: #{binary() => any()}.
@@ -2151,7 +2151,7 @@
 
 %% Example:
 %% batch_disable_standards_response() :: #{
-%%   <<"StandardsSubscriptions">> => list(standards_subscription()())
+%%   <<"StandardsSubscriptions">> => list(standards_subscription())
 %% }
 -type batch_disable_standards_response() :: #{binary() => any()}.
 
@@ -2173,7 +2173,7 @@
 
 %% Example:
 %% aws_cloud_front_distribution_origin_groups() :: #{
-%%   <<"Items">> => list(aws_cloud_front_distribution_origin_group()())
+%%   <<"Items">> => list(aws_cloud_front_distribution_origin_group())
 %% }
 -type aws_cloud_front_distribution_origin_groups() :: #{binary() => any()}.
 
@@ -2188,8 +2188,8 @@
 
 %% Example:
 %% aws_ec2_network_acl_details() :: #{
-%%   <<"Associations">> => list(aws_ec2_network_acl_association()()),
-%%   <<"Entries">> => list(aws_ec2_network_acl_entry()()),
+%%   <<"Associations">> => list(aws_ec2_network_acl_association()),
+%%   <<"Entries">> => list(aws_ec2_network_acl_entry()),
 %%   <<"IsDefault">> => boolean(),
 %%   <<"NetworkAclId">> => string(),
 %%   <<"OwnerId">> => string(),
@@ -2245,7 +2245,7 @@
 %%   <<"IndexSizeBytes">> => float(),
 %%   <<"IndexStatus">> => string(),
 %%   <<"ItemCount">> => integer(),
-%%   <<"KeySchema">> => list(aws_dynamo_db_table_key_schema()()),
+%%   <<"KeySchema">> => list(aws_dynamo_db_table_key_schema()),
 %%   <<"Projection">> => aws_dynamo_db_table_projection(),
 %%   <<"ProvisionedThroughput">> => aws_dynamo_db_table_provisioned_throughput()
 %% }
@@ -2290,16 +2290,16 @@
 %% Example:
 %% aws_ec2_vpc_endpoint_service_details() :: #{
 %%   <<"AcceptanceRequired">> => boolean(),
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"BaseEndpointDnsNames">> => list(string()()),
-%%   <<"GatewayLoadBalancerArns">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"BaseEndpointDnsNames">> => list(string()),
+%%   <<"GatewayLoadBalancerArns">> => list(string()),
 %%   <<"ManagesVpcEndpoints">> => boolean(),
-%%   <<"NetworkLoadBalancerArns">> => list(string()()),
+%%   <<"NetworkLoadBalancerArns">> => list(string()),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"ServiceId">> => string(),
 %%   <<"ServiceName">> => string(),
 %%   <<"ServiceState">> => string(),
-%%   <<"ServiceType">> => list(aws_ec2_vpc_endpoint_service_service_type_details()())
+%%   <<"ServiceType">> => list(aws_ec2_vpc_endpoint_service_service_type_details())
 %% }
 -type aws_ec2_vpc_endpoint_service_details() :: #{binary() => any()}.
 
@@ -2320,9 +2320,9 @@
 %%   <<"Confidence">> => integer(),
 %%   <<"Criticality">> => integer(),
 %%   <<"Note">> => note_update(),
-%%   <<"RelatedFindings">> => list(related_finding()()),
+%%   <<"RelatedFindings">> => list(related_finding()),
 %%   <<"Severity">> => severity_update(),
-%%   <<"Types">> => list(string()()),
+%%   <<"Types">> => list(string()),
 %%   <<"UserDefinedFields">> => map(),
 %%   <<"VerificationState">> => list(any()),
 %%   <<"Workflow">> => workflow_update()
@@ -2408,7 +2408,7 @@
 
 %% Example:
 %% aws_backup_backup_vault_notifications_details() :: #{
-%%   <<"BackupVaultEvents">> => list(string()()),
+%%   <<"BackupVaultEvents">> => list(string()),
 %%   <<"SnsTopicArn">> => string()
 %% }
 -type aws_backup_backup_vault_notifications_details() :: #{binary() => any()}.
@@ -2432,7 +2432,7 @@
 
 %% Example:
 %% describe_action_targets_response() :: #{
-%%   <<"ActionTargets">> => list(action_target()()),
+%%   <<"ActionTargets">> => list(action_target()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_action_targets_response() :: #{binary() => any()}.
@@ -2462,7 +2462,7 @@
 
 %% Example:
 %% aws_s3_bucket_notification_configuration() :: #{
-%%   <<"Configurations">> => list(aws_s3_bucket_notification_configuration_detail()())
+%%   <<"Configurations">> => list(aws_s3_bucket_notification_configuration_detail())
 %% }
 -type aws_s3_bucket_notification_configuration() :: #{binary() => any()}.
 
@@ -2522,8 +2522,8 @@
 %% Example:
 %% rule_group_source_list_details() :: #{
 %%   <<"GeneratedRulesType">> => string(),
-%%   <<"TargetTypes">> => list(string()()),
-%%   <<"Targets">> => list(string()())
+%%   <<"TargetTypes">> => list(string()),
+%%   <<"Targets">> => list(string())
 %% }
 -type rule_group_source_list_details() :: #{binary() => any()}.
 
@@ -2600,7 +2600,7 @@
 %%   <<"Filters">> => aws_security_finding_filters(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => list(sort_criterion()())
+%%   <<"SortCriteria">> => list(sort_criterion())
 %% }
 -type get_findings_request() :: #{binary() => any()}.
 
@@ -2615,7 +2615,7 @@
 
 %% Example:
 %% update_aggregator_v2_request() :: #{
-%%   <<"LinkedRegions">> => list(string()()),
+%%   <<"LinkedRegions">> => list(string()),
 %%   <<"RegionLinkingMode">> := string()
 %% }
 -type update_aggregator_v2_request() :: #{binary() => any()}.
@@ -2640,9 +2640,9 @@
 
 %% Example:
 %% aws_backup_backup_plan_backup_plan_details() :: #{
-%%   <<"AdvancedBackupSettings">> => list(aws_backup_backup_plan_advanced_backup_settings_details()()),
+%%   <<"AdvancedBackupSettings">> => list(aws_backup_backup_plan_advanced_backup_settings_details()),
 %%   <<"BackupPlanName">> => string(),
-%%   <<"BackupPlanRule">> => list(aws_backup_backup_plan_rule_details()())
+%%   <<"BackupPlanRule">> => list(aws_backup_backup_plan_rule_details())
 %% }
 -type aws_backup_backup_plan_backup_plan_details() :: #{binary() => any()}.
 
@@ -2667,7 +2667,7 @@
 %%   <<"Owner">> => string(),
 %%   <<"SqsFailureFeedbackRoleArn">> => string(),
 %%   <<"SqsSuccessFeedbackRoleArn">> => string(),
-%%   <<"Subscription">> => list(aws_sns_topic_subscription()()),
+%%   <<"Subscription">> => list(aws_sns_topic_subscription()),
 %%   <<"TopicName">> => string()
 %% }
 -type aws_sns_topic_details() :: #{binary() => any()}.
@@ -2705,7 +2705,7 @@
 
 %% Example:
 %% update_automation_rule_v2_request() :: #{
-%%   <<"Actions">> => list(automation_rules_action_v2()()),
+%%   <<"Actions">> => list(automation_rules_action_v2()),
 %%   <<"Criteria">> => list(),
 %%   <<"Description">> => string(),
 %%   <<"RuleName">> => string(),
@@ -2738,7 +2738,7 @@
 %%   <<"Id">> => string(),
 %%   <<"MulticastSupport">> => string(),
 %%   <<"PropagationDefaultRouteTableId">> => string(),
-%%   <<"TransitGatewayCidrBlocks">> => list(string()()),
+%%   <<"TransitGatewayCidrBlocks">> => list(string()),
 %%   <<"VpnEcmpSupport">> => string()
 %% }
 -type aws_ec2_transit_gateway_details() :: #{binary() => any()}.
@@ -2769,7 +2769,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -2817,7 +2817,7 @@
 %%   <<"Id">> => string(),
 %%   <<"ManagedbyFirewallManager">> => boolean(),
 %%   <<"Name">> => string(),
-%%   <<"Rules">> => list(aws_wafv2_rules_details()()),
+%%   <<"Rules">> => list(aws_wafv2_rules_details()),
 %%   <<"VisibilityConfig">> => aws_wafv2_visibility_config_details()
 %% }
 -type aws_wafv2_web_acl_details() :: #{binary() => any()}.
@@ -2826,15 +2826,15 @@
 %% Example:
 %% aws_iam_role_details() :: #{
 %%   <<"AssumeRolePolicyDocument">> => string(),
-%%   <<"AttachedManagedPolicies">> => list(aws_iam_attached_managed_policy()()),
+%%   <<"AttachedManagedPolicies">> => list(aws_iam_attached_managed_policy()),
 %%   <<"CreateDate">> => string(),
-%%   <<"InstanceProfileList">> => list(aws_iam_instance_profile()()),
+%%   <<"InstanceProfileList">> => list(aws_iam_instance_profile()),
 %%   <<"MaxSessionDuration">> => integer(),
 %%   <<"Path">> => string(),
 %%   <<"PermissionsBoundary">> => aws_iam_permissions_boundary(),
 %%   <<"RoleId">> => string(),
 %%   <<"RoleName">> => string(),
-%%   <<"RolePolicyList">> => list(aws_iam_role_policy()())
+%%   <<"RolePolicyList">> => list(aws_iam_role_policy())
 %% }
 -type aws_iam_role_details() :: #{binary() => any()}.
 
@@ -2869,7 +2869,7 @@
 
 %% Example:
 %% get_automation_rule_v2_response() :: #{
-%%   <<"Actions">> => list(automation_rules_action_v2()()),
+%%   <<"Actions">> => list(automation_rules_action_v2()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Criteria">> => list(),
 %%   <<"Description">> => string(),
@@ -2910,14 +2910,14 @@
 %% Example:
 %% list_security_control_definitions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityControlDefinitions">> => list(security_control_definition()())
+%%   <<"SecurityControlDefinitions">> => list(security_control_definition())
 %% }
 -type list_security_control_definitions_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_update_automation_rules_request() :: #{
-%%   <<"UpdateAutomationRulesRequestItems">> := list(update_automation_rules_request_item()())
+%%   <<"UpdateAutomationRulesRequestItems">> := list(update_automation_rules_request_item())
 %% }
 -type batch_update_automation_rules_request() :: #{binary() => any()}.
 
@@ -2966,7 +2966,7 @@
 
 %% Example:
 %% delete_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(result()())
+%%   <<"UnprocessedAccounts">> => list(result())
 %% }
 -type delete_members_response() :: #{binary() => any()}.
 
@@ -3000,7 +3000,7 @@
 
 %% Example:
 %% invite_members_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type invite_members_request() :: #{binary() => any()}.
 
@@ -3009,7 +3009,7 @@
 %% insight_results() :: #{
 %%   <<"GroupByAttribute">> => string(),
 %%   <<"InsightArn">> => string(),
-%%   <<"ResultValues">> => list(insight_result_value()())
+%%   <<"ResultValues">> => list(insight_result_value())
 %% }
 -type insight_results() :: #{binary() => any()}.
 
@@ -3028,7 +3028,7 @@
 
 %% Example:
 %% aws_ecs_service_details() :: #{
-%%   <<"CapacityProviderStrategy">> => list(aws_ecs_service_capacity_provider_strategy_details()()),
+%%   <<"CapacityProviderStrategy">> => list(aws_ecs_service_capacity_provider_strategy_details()),
 %%   <<"Cluster">> => string(),
 %%   <<"DeploymentConfiguration">> => aws_ecs_service_deployment_configuration_details(),
 %%   <<"DeploymentController">> => aws_ecs_service_deployment_controller_details(),
@@ -3037,18 +3037,18 @@
 %%   <<"EnableExecuteCommand">> => boolean(),
 %%   <<"HealthCheckGracePeriodSeconds">> => integer(),
 %%   <<"LaunchType">> => string(),
-%%   <<"LoadBalancers">> => list(aws_ecs_service_load_balancers_details()()),
+%%   <<"LoadBalancers">> => list(aws_ecs_service_load_balancers_details()),
 %%   <<"Name">> => string(),
 %%   <<"NetworkConfiguration">> => aws_ecs_service_network_configuration_details(),
-%%   <<"PlacementConstraints">> => list(aws_ecs_service_placement_constraints_details()()),
-%%   <<"PlacementStrategies">> => list(aws_ecs_service_placement_strategies_details()()),
+%%   <<"PlacementConstraints">> => list(aws_ecs_service_placement_constraints_details()),
+%%   <<"PlacementStrategies">> => list(aws_ecs_service_placement_strategies_details()),
 %%   <<"PlatformVersion">> => string(),
 %%   <<"PropagateTags">> => string(),
 %%   <<"Role">> => string(),
 %%   <<"SchedulingStrategy">> => string(),
 %%   <<"ServiceArn">> => string(),
 %%   <<"ServiceName">> => string(),
-%%   <<"ServiceRegistries">> => list(aws_ecs_service_service_registries_details()()),
+%%   <<"ServiceRegistries">> => list(aws_ecs_service_service_registries_details()),
 %%   <<"TaskDefinition">> => string()
 %% }
 -type aws_ecs_service_details() :: #{binary() => any()}.
@@ -3057,7 +3057,7 @@
 %% Example:
 %% describe_standards_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Standards">> => list(standard()())
+%%   <<"Standards">> => list(standard())
 %% }
 -type describe_standards_response() :: #{binary() => any()}.
 
@@ -3082,7 +3082,7 @@
 
 %% Example:
 %% aws_cloud_front_distribution_origin_group_failover_status_codes() :: #{
-%%   <<"Items">> => list(integer()()),
+%%   <<"Items">> => list(integer()),
 %%   <<"Quantity">> => integer()
 %% }
 -type aws_cloud_front_distribution_origin_group_failover_status_codes() :: #{binary() => any()}.
@@ -3090,7 +3090,7 @@
 
 %% Example:
 %% rule_group_source_stateless_rule_definition() :: #{
-%%   <<"Actions">> => list(string()()),
+%%   <<"Actions">> => list(string()),
 %%   <<"MatchAttributes">> => rule_group_source_stateless_rule_match_attributes()
 %% }
 -type rule_group_source_stateless_rule_definition() :: #{binary() => any()}.
@@ -3106,10 +3106,10 @@
 %% Example:
 %% aws_cors_configuration() :: #{
 %%   <<"AllowCredentials">> => boolean(),
-%%   <<"AllowHeaders">> => list(string()()),
-%%   <<"AllowMethods">> => list(string()()),
-%%   <<"AllowOrigins">> => list(string()()),
-%%   <<"ExposeHeaders">> => list(string()()),
+%%   <<"AllowHeaders">> => list(string()),
+%%   <<"AllowMethods">> => list(string()),
+%%   <<"AllowOrigins">> => list(string()),
+%%   <<"ExposeHeaders">> => list(string()),
 %%   <<"MaxAge">> => integer()
 %% }
 -type aws_cors_configuration() :: #{binary() => any()}.
@@ -3118,22 +3118,22 @@
 %% Example:
 %% list_automation_rules_v2_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Rules">> => list(automation_rules_metadata_v2()())
+%%   <<"Rules">> => list(automation_rules_metadata_v2())
 %% }
 -type list_automation_rules_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_cloud_formation_stack_details() :: #{
-%%   <<"Capabilities">> => list(string()()),
+%%   <<"Capabilities">> => list(string()),
 %%   <<"CreationTime">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DisableRollback">> => boolean(),
 %%   <<"DriftInformation">> => aws_cloud_formation_stack_drift_information_details(),
 %%   <<"EnableTerminationProtection">> => boolean(),
 %%   <<"LastUpdatedTime">> => string(),
-%%   <<"NotificationArns">> => list(string()()),
-%%   <<"Outputs">> => list(aws_cloud_formation_stack_outputs_details()()),
+%%   <<"NotificationArns">> => list(string()),
+%%   <<"Outputs">> => list(aws_cloud_formation_stack_outputs_details()),
 %%   <<"RoleArn">> => string(),
 %%   <<"StackId">> => string(),
 %%   <<"StackName">> => string(),
@@ -3203,10 +3203,10 @@
 %%   <<"Filter">> => aws_s3_bucket_bucket_lifecycle_configuration_rules_filter_details(),
 %%   <<"ID">> => string(),
 %%   <<"NoncurrentVersionExpirationInDays">> => integer(),
-%%   <<"NoncurrentVersionTransitions">> => list(aws_s3_bucket_bucket_lifecycle_configuration_rules_noncurrent_version_transitions_details()()),
+%%   <<"NoncurrentVersionTransitions">> => list(aws_s3_bucket_bucket_lifecycle_configuration_rules_noncurrent_version_transitions_details()),
 %%   <<"Prefix">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"Transitions">> => list(aws_s3_bucket_bucket_lifecycle_configuration_rules_transitions_details()())
+%%   <<"Transitions">> => list(aws_s3_bucket_bucket_lifecycle_configuration_rules_transitions_details())
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_rules_details() :: #{binary() => any()}.
 
@@ -3262,7 +3262,7 @@
 
 %% Example:
 %% batch_delete_automation_rules_request() :: #{
-%%   <<"AutomationRulesArns">> := list(string()())
+%%   <<"AutomationRulesArns">> := list(string())
 %% }
 -type batch_delete_automation_rules_request() :: #{binary() => any()}.
 
@@ -3283,7 +3283,7 @@
 %%   <<"DefaultAction">> => string(),
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"RulesList">> => list(aws_waf_regional_web_acl_rules_list_details()()),
+%%   <<"RulesList">> => list(aws_waf_regional_web_acl_rules_list_details()),
 %%   <<"WebAclId">> => string()
 %% }
 -type aws_waf_regional_web_acl_details() :: #{binary() => any()}.
@@ -3291,16 +3291,16 @@
 
 %% Example:
 %% batch_get_standards_control_associations_request() :: #{
-%%   <<"StandardsControlAssociationIds">> := list(standards_control_association_id()())
+%%   <<"StandardsControlAssociationIds">> := list(standards_control_association_id())
 %% }
 -type batch_get_standards_control_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_elasticsearch_domain_vpc_options() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VPCId">> => string()
 %% }
 -type aws_elasticsearch_domain_vpc_options() :: #{binary() => any()}.
@@ -3348,14 +3348,14 @@
 %% Example:
 %% aws_eks_cluster_logging_cluster_logging_details() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"Types">> => list(string()())
+%%   <<"Types">> => list(string())
 %% }
 -type aws_eks_cluster_logging_cluster_logging_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_connectors_v2_response() :: #{
-%%   <<"Connectors">> => list(connector_summary()()),
+%%   <<"Connectors">> => list(connector_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connectors_v2_response() :: #{binary() => any()}.
@@ -3410,9 +3410,9 @@
 %%   <<"EndpointUrl">> => string(),
 %%   <<"EnvironmentArn">> => string(),
 %%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentLinks">> => list(aws_elastic_beanstalk_environment_environment_link()()),
+%%   <<"EnvironmentLinks">> => list(aws_elastic_beanstalk_environment_environment_link()),
 %%   <<"EnvironmentName">> => string(),
-%%   <<"OptionSettings">> => list(aws_elastic_beanstalk_environment_option_setting()()),
+%%   <<"OptionSettings">> => list(aws_elastic_beanstalk_environment_option_setting()),
 %%   <<"PlatformArn">> => string(),
 %%   <<"SolutionStackName">> => string(),
 %%   <<"Status">> => string(),
@@ -3434,7 +3434,7 @@
 %% rule_group_source_stateful_rules_details() :: #{
 %%   <<"Action">> => string(),
 %%   <<"Header">> => rule_group_source_stateful_rules_header_details(),
-%%   <<"RuleOptions">> => list(rule_group_source_stateful_rules_options_details()())
+%%   <<"RuleOptions">> => list(rule_group_source_stateful_rules_options_details())
 %% }
 -type rule_group_source_stateful_rules_details() :: #{binary() => any()}.
 
@@ -3445,7 +3445,7 @@
 
 %% Example:
 %% batch_enable_standards_request() :: #{
-%%   <<"StandardsSubscriptionRequests">> := list(standards_subscription_request()())
+%%   <<"StandardsSubscriptionRequests">> := list(standards_subscription_request())
 %% }
 -type batch_enable_standards_request() :: #{binary() => any()}.
 
@@ -3462,7 +3462,7 @@
 %% Example:
 %% standards_control_association_summary() :: #{
 %%   <<"AssociationStatus">> => list(any()),
-%%   <<"RelatedRequirements">> => list(string()()),
+%%   <<"RelatedRequirements">> => list(string()),
 %%   <<"SecurityControlArn">> => string(),
 %%   <<"SecurityControlId">> => string(),
 %%   <<"StandardsArn">> => string(),
@@ -3484,7 +3484,7 @@
 %% Example:
 %% rule_group_source_stateful_rules_options_details() :: #{
 %%   <<"Keyword">> => string(),
-%%   <<"Settings">> => list(string()())
+%%   <<"Settings">> => list(string())
 %% }
 -type rule_group_source_stateful_rules_options_details() :: #{binary() => any()}.
 
@@ -3517,7 +3517,7 @@
 %%   <<"DbSubnetGroupDescription">> => string(),
 %%   <<"DbSubnetGroupName">> => string(),
 %%   <<"SubnetGroupStatus">> => string(),
-%%   <<"Subnets">> => list(aws_rds_db_subnet_group_subnet()()),
+%%   <<"Subnets">> => list(aws_rds_db_subnet_group_subnet()),
 %%   <<"VpcId">> => string()
 %% }
 -type aws_rds_db_subnet_group() :: #{binary() => any()}.
@@ -3590,19 +3590,19 @@
 %% Example:
 %% aws_ecs_service_network_configuration_aws_vpc_configuration_details() :: #{
 %%   <<"AssignPublicIp">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
-%%   <<"Subnets">> => list(string()())
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> => list(string())
 %% }
 -type aws_ecs_service_network_configuration_aws_vpc_configuration_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% occurrences() :: #{
-%%   <<"Cells">> => list(cell()()),
-%%   <<"LineRanges">> => list(range()()),
-%%   <<"OffsetRanges">> => list(range()()),
-%%   <<"Pages">> => list(page()()),
-%%   <<"Records">> => list(record()())
+%%   <<"Cells">> => list(cell()),
+%%   <<"LineRanges">> => list(range()),
+%%   <<"OffsetRanges">> => list(range()),
+%%   <<"Pages">> => list(page()),
+%%   <<"Records">> => list(record())
 %% }
 -type occurrences() :: #{binary() => any()}.
 
@@ -3611,7 +3611,7 @@
 %% aws_waf_regional_rule_details() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"PredicateList">> => list(aws_waf_regional_rule_predicate_list_details()()),
+%%   <<"PredicateList">> => list(aws_waf_regional_rule_predicate_list_details()),
 %%   <<"RuleId">> => string()
 %% }
 -type aws_waf_regional_rule_details() :: #{binary() => any()}.
@@ -3628,7 +3628,7 @@
 %% aws_waf_web_acl_details() :: #{
 %%   <<"DefaultAction">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Rules">> => list(aws_waf_web_acl_rule()()),
+%%   <<"Rules">> => list(aws_waf_web_acl_rule()),
 %%   <<"WebAclId">> => string()
 %% }
 -type aws_waf_web_acl_details() :: #{binary() => any()}.
@@ -3638,7 +3638,7 @@
 %% update_aggregator_v2_response() :: #{
 %%   <<"AggregationRegion">> => string(),
 %%   <<"AggregatorV2Arn">> => string(),
-%%   <<"LinkedRegions">> => list(string()()),
+%%   <<"LinkedRegions">> => list(string()),
 %%   <<"RegionLinkingMode">> => string()
 %% }
 -type update_aggregator_v2_response() :: #{binary() => any()}.
@@ -3740,7 +3740,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DocumentationVersion">> => string(),
 %%   <<"LastUpdatedDate">> => string(),
-%%   <<"MethodSettings">> => list(aws_api_gateway_method_settings()()),
+%%   <<"MethodSettings">> => list(aws_api_gateway_method_settings()),
 %%   <<"StageName">> => string(),
 %%   <<"TracingEnabled">> => boolean(),
 %%   <<"Variables">> => map(),
@@ -3756,7 +3756,7 @@
 %%   <<"ControlStatusUpdatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DisabledReason">> => string(),
-%%   <<"RelatedRequirements">> => list(string()()),
+%%   <<"RelatedRequirements">> => list(string()),
 %%   <<"RemediationUrl">> => string(),
 %%   <<"SeverityRating">> => list(any()),
 %%   <<"StandardsControlArn">> => string(),
@@ -3777,7 +3777,7 @@
 
 %% Example:
 %% aws_certificate_manager_certificate_renewal_summary() :: #{
-%%   <<"DomainValidationOptions">> => list(aws_certificate_manager_certificate_domain_validation_option()()),
+%%   <<"DomainValidationOptions">> => list(aws_certificate_manager_certificate_domain_validation_option()),
 %%   <<"RenewalStatus">> => string(),
 %%   <<"RenewalStatusReason">> => string(),
 %%   <<"UpdatedAt">> => string()
@@ -3798,7 +3798,7 @@
 
 %% Example:
 %% aws_dynamo_db_table_replica() :: #{
-%%   <<"GlobalSecondaryIndexes">> => list(aws_dynamo_db_table_replica_global_secondary_index()()),
+%%   <<"GlobalSecondaryIndexes">> => list(aws_dynamo_db_table_replica_global_secondary_index()),
 %%   <<"KmsMasterKeyId">> => string(),
 %%   <<"ProvisionedThroughputOverride">> => aws_dynamo_db_table_provisioned_throughput_override(),
 %%   <<"RegionName">> => string(),
@@ -3829,7 +3829,7 @@
 %%   <<"ReplicationInstanceClass">> => string(),
 %%   <<"ReplicationInstanceIdentifier">> => string(),
 %%   <<"ReplicationSubnetGroup">> => aws_dms_replication_instance_replication_subnet_group_details(),
-%%   <<"VpcSecurityGroups">> => list(aws_dms_replication_instance_vpc_security_groups_details()())
+%%   <<"VpcSecurityGroups">> => list(aws_dms_replication_instance_vpc_security_groups_details())
 %% }
 -type aws_dms_replication_instance_details() :: #{binary() => any()}.
 
@@ -3886,8 +3886,8 @@
 
 %% Example:
 %% rule_group_source_stateless_rules_and_custom_actions_details() :: #{
-%%   <<"CustomActions">> => list(rule_group_source_custom_actions_details()()),
-%%   <<"StatelessRules">> => list(rule_group_source_stateless_rules_details()())
+%%   <<"CustomActions">> => list(rule_group_source_custom_actions_details()),
+%%   <<"StatelessRules">> => list(rule_group_source_stateless_rules_details())
 %% }
 -type rule_group_source_stateless_rules_and_custom_actions_details() :: #{binary() => any()}.
 
@@ -3916,15 +3916,15 @@
 %%   <<"CertificateAuthorityArn">> => string(),
 %%   <<"CreatedAt">> => string(),
 %%   <<"DomainName">> => string(),
-%%   <<"DomainValidationOptions">> => list(aws_certificate_manager_certificate_domain_validation_option()()),
-%%   <<"ExtendedKeyUsages">> => list(aws_certificate_manager_certificate_extended_key_usage()()),
+%%   <<"DomainValidationOptions">> => list(aws_certificate_manager_certificate_domain_validation_option()),
+%%   <<"ExtendedKeyUsages">> => list(aws_certificate_manager_certificate_extended_key_usage()),
 %%   <<"FailureReason">> => string(),
 %%   <<"ImportedAt">> => string(),
-%%   <<"InUseBy">> => list(string()()),
+%%   <<"InUseBy">> => list(string()),
 %%   <<"IssuedAt">> => string(),
 %%   <<"Issuer">> => string(),
 %%   <<"KeyAlgorithm">> => string(),
-%%   <<"KeyUsages">> => list(aws_certificate_manager_certificate_key_usage()()),
+%%   <<"KeyUsages">> => list(aws_certificate_manager_certificate_key_usage()),
 %%   <<"NotAfter">> => string(),
 %%   <<"NotBefore">> => string(),
 %%   <<"Options">> => aws_certificate_manager_certificate_options(),
@@ -3934,7 +3934,7 @@
 %%   <<"SignatureAlgorithm">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"Subject">> => string(),
-%%   <<"SubjectAlternativeNames">> => list(string()()),
+%%   <<"SubjectAlternativeNames">> => list(string()),
 %%   <<"Type">> => string()
 %% }
 -type aws_certificate_manager_certificate_details() :: #{binary() => any()}.
@@ -3943,7 +3943,7 @@
 %% Example:
 %% get_enabled_standards_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StandardsSubscriptions">> => list(standards_subscription()())
+%%   <<"StandardsSubscriptions">> => list(standards_subscription())
 %% }
 -type get_enabled_standards_response() :: #{binary() => any()}.
 
@@ -3963,7 +3963,7 @@
 %%   <<"InstanceProfileId">> => string(),
 %%   <<"InstanceProfileName">> => string(),
 %%   <<"Path">> => string(),
-%%   <<"Roles">> => list(aws_iam_instance_profile_role()())
+%%   <<"Roles">> => list(aws_iam_instance_profile_role())
 %% }
 -type aws_iam_instance_profile() :: #{binary() => any()}.
 
@@ -3995,20 +3995,20 @@
 
 %% Example:
 %% resources_composite_filter() :: #{
-%%   <<"DateFilters">> => list(resources_date_filter()()),
-%%   <<"MapFilters">> => list(resources_map_filter()()),
-%%   <<"NumberFilters">> => list(resources_number_filter()()),
+%%   <<"DateFilters">> => list(resources_date_filter()),
+%%   <<"MapFilters">> => list(resources_map_filter()),
+%%   <<"NumberFilters">> => list(resources_number_filter()),
 %%   <<"Operator">> => list(any()),
-%%   <<"StringFilters">> => list(resources_string_filter()())
+%%   <<"StringFilters">> => list(resources_string_filter())
 %% }
 -type resources_composite_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% security_controls_configuration() :: #{
-%%   <<"DisabledSecurityControlIdentifiers">> => list(string()()),
-%%   <<"EnabledSecurityControlIdentifiers">> => list(string()()),
-%%   <<"SecurityControlCustomParameters">> => list(security_control_custom_parameter()())
+%%   <<"DisabledSecurityControlIdentifiers">> => list(string()),
+%%   <<"EnabledSecurityControlIdentifiers">> => list(string()),
+%%   <<"SecurityControlCustomParameters">> => list(security_control_custom_parameter())
 %% }
 -type security_controls_configuration() :: #{binary() => any()}.
 
@@ -4030,14 +4030,14 @@
 
 %% Example:
 %% get_members_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type get_members_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% rule_group_variables_port_sets_details() :: #{
-%%   <<"Definition">> => list(string()())
+%%   <<"Definition">> => list(string())
 %% }
 -type rule_group_variables_port_sets_details() :: #{binary() => any()}.
 
@@ -4052,7 +4052,7 @@
 
 %% Example:
 %% create_members_request() :: #{
-%%   <<"AccountDetails">> := list(account_details()())
+%%   <<"AccountDetails">> := list(account_details())
 %% }
 -type create_members_request() :: #{binary() => any()}.
 
@@ -4066,9 +4066,9 @@
 
 %% Example:
 %% aws_elb_load_balancer_policies() :: #{
-%%   <<"AppCookieStickinessPolicies">> => list(aws_elb_app_cookie_stickiness_policy()()),
-%%   <<"LbCookieStickinessPolicies">> => list(aws_elb_lb_cookie_stickiness_policy()()),
-%%   <<"OtherPolicies">> => list(string()())
+%%   <<"AppCookieStickinessPolicies">> => list(aws_elb_app_cookie_stickiness_policy()),
+%%   <<"LbCookieStickinessPolicies">> => list(aws_elb_lb_cookie_stickiness_policy()),
+%%   <<"OtherPolicies">> => list(string())
 %% }
 -type aws_elb_load_balancer_policies() :: #{binary() => any()}.
 
@@ -4092,7 +4092,7 @@
 
 %% Example:
 %% create_automation_rule_v2_request() :: #{
-%%   <<"Actions">> := list(automation_rules_action_v2()()),
+%%   <<"Actions">> := list(automation_rules_action_v2()),
 %%   <<"ClientToken">> => string(),
 %%   <<"Criteria">> := list(),
 %%   <<"Description">> := string(),
@@ -4170,7 +4170,7 @@
 
 %% Example:
 %% disassociate_members_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type disassociate_members_request() :: #{binary() => any()}.
 
@@ -4188,7 +4188,7 @@
 
 %% Example:
 %% aws_ec2_volume_details() :: #{
-%%   <<"Attachments">> => list(aws_ec2_volume_attachment()()),
+%%   <<"Attachments">> => list(aws_ec2_volume_attachment()),
 %%   <<"CreateTime">> => string(),
 %%   <<"DeviceName">> => string(),
 %%   <<"Encrypted">> => boolean(),
@@ -4205,7 +4205,7 @@
 
 %% Example:
 %% get_findings_response() :: #{
-%%   <<"Findings">> => list(aws_security_finding()()),
+%%   <<"Findings">> => list(aws_security_finding()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_findings_response() :: #{binary() => any()}.
@@ -4224,7 +4224,7 @@
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RuleGroupId">> => string(),
-%%   <<"Rules">> => list(aws_waf_rule_group_rules_details()())
+%%   <<"Rules">> => list(aws_waf_rule_group_rules_details())
 %% }
 -type aws_waf_rule_group_details() :: #{binary() => any()}.
 
@@ -4258,8 +4258,8 @@
 %% aws_ec2_security_group_details() :: #{
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"IpPermissions">> => list(aws_ec2_security_group_ip_permission()()),
-%%   <<"IpPermissionsEgress">> => list(aws_ec2_security_group_ip_permission()()),
+%%   <<"IpPermissions">> => list(aws_ec2_security_group_ip_permission()),
+%%   <<"IpPermissionsEgress">> => list(aws_ec2_security_group_ip_permission()),
 %%   <<"OwnerId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -4269,7 +4269,7 @@
 %% Example:
 %% aws_ecs_container_details() :: #{
 %%   <<"Image">> => string(),
-%%   <<"MountPoints">> => list(aws_mount_point()()),
+%%   <<"MountPoints">> => list(aws_mount_point()),
 %%   <<"Name">> => string(),
 %%   <<"Privileged">> => boolean()
 %% }
@@ -4296,7 +4296,7 @@
 
 %% Example:
 %% vulnerability_code_vulnerabilities() :: #{
-%%   <<"Cwes">> => list(string()()),
+%%   <<"Cwes">> => list(string()),
 %%   <<"FilePath">> => code_vulnerabilities_file_path(),
 %%   <<"SourceArn">> => string()
 %% }
@@ -4343,7 +4343,7 @@
 
 %% Example:
 %% delete_members_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type delete_members_request() :: #{binary() => any()}.
 
@@ -4357,14 +4357,14 @@
 
 %% Example:
 %% invite_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(result()())
+%%   <<"UnprocessedAccounts">> => list(result())
 %% }
 -type invite_members_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_s3_bucket_notification_configuration_s3_key_filter() :: #{
-%%   <<"FilterRules">> => list(aws_s3_bucket_notification_configuration_s3_key_filter_rule()())
+%%   <<"FilterRules">> => list(aws_s3_bucket_notification_configuration_s3_key_filter_rule())
 %% }
 -type aws_s3_bucket_notification_configuration_s3_key_filter() :: #{binary() => any()}.
 
@@ -4398,8 +4398,8 @@
 
 %% Example:
 %% batch_update_findings_v2_response() :: #{
-%%   <<"ProcessedFindings">> => list(batch_update_findings_v2_processed_finding()()),
-%%   <<"UnprocessedFindings">> => list(batch_update_findings_v2_unprocessed_finding()())
+%%   <<"ProcessedFindings">> => list(batch_update_findings_v2_processed_finding()),
+%%   <<"UnprocessedFindings">> => list(batch_update_findings_v2_unprocessed_finding())
 %% }
 -type batch_update_findings_v2_response() :: #{binary() => any()}.
 
@@ -4428,7 +4428,7 @@
 
 %% Example:
 %% automation_rules_metadata_v2() :: #{
-%%   <<"Actions">> => list(automation_rules_action_type_object_v2()()),
+%%   <<"Actions">> => list(automation_rules_action_type_object_v2()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"RuleArn">> => string(),
@@ -4451,18 +4451,18 @@
 
 %% Example:
 %% signal() :: #{
-%%   <<"ActorIds">> => list(string()()),
+%%   <<"ActorIds">> => list(string()),
 %%   <<"Count">> => integer(),
 %%   <<"CreatedAt">> => float(),
-%%   <<"EndpointIds">> => list(string()()),
+%%   <<"EndpointIds">> => list(string()),
 %%   <<"FirstSeenAt">> => float(),
 %%   <<"Id">> => string(),
 %%   <<"LastSeenAt">> => float(),
 %%   <<"Name">> => string(),
 %%   <<"ProductArn">> => string(),
-%%   <<"ResourceIds">> => list(string()()),
+%%   <<"ResourceIds">> => list(string()),
 %%   <<"Severity">> => float(),
-%%   <<"SignalIndicators">> => list(indicator()()),
+%%   <<"SignalIndicators">> => list(indicator()),
 %%   <<"Title">> => string(),
 %%   <<"Type">> => string(),
 %%   <<"UpdatedAt">> => float()
@@ -4490,7 +4490,7 @@
 %% aws_wafv2_custom_response_details() :: #{
 %%   <<"CustomResponseBodyKey">> => string(),
 %%   <<"ResponseCode">> => integer(),
-%%   <<"ResponseHeaders">> => list(aws_wafv2_custom_http_header()())
+%%   <<"ResponseHeaders">> => list(aws_wafv2_custom_http_header())
 %% }
 -type aws_wafv2_custom_response_details() :: #{binary() => any()}.
 
@@ -4537,8 +4537,8 @@
 %% Example:
 %% batch_update_findings_v2_request() :: #{
 %%   <<"Comment">> => string(),
-%%   <<"FindingIdentifiers">> => list(ocsf_finding_identifier()()),
-%%   <<"MetadataUids">> => list(string()()),
+%%   <<"FindingIdentifiers">> => list(ocsf_finding_identifier()),
+%%   <<"MetadataUids">> => list(string()),
 %%   <<"SeverityId">> => integer(),
 %%   <<"StatusId">> => integer()
 %% }
@@ -4547,8 +4547,8 @@
 
 %% Example:
 %% batch_get_automation_rules_response() :: #{
-%%   <<"Rules">> => list(automation_rules_config()()),
-%%   <<"UnprocessedAutomationRules">> => list(unprocessed_automation_rule()())
+%%   <<"Rules">> => list(automation_rules_config()),
+%%   <<"UnprocessedAutomationRules">> => list(unprocessed_automation_rule())
 %% }
 -type batch_get_automation_rules_response() :: #{binary() => any()}.
 
@@ -4563,7 +4563,7 @@
 
 %% Example:
 %% string_list_configuration_options() :: #{
-%%   <<"DefaultValue">> => list(string()()),
+%%   <<"DefaultValue">> => list(string()),
 %%   <<"ExpressionDescription">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"Re2Expression">> => string()
@@ -4583,14 +4583,14 @@
 %% Example:
 %% aws_rds_db_cluster_snapshot_db_cluster_snapshot_attribute() :: #{
 %%   <<"AttributeName">> => string(),
-%%   <<"AttributeValues">> => list(string()())
+%%   <<"AttributeValues">> => list(string())
 %% }
 -type aws_rds_db_cluster_snapshot_db_cluster_snapshot_attribute() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_automation_rules_request() :: #{
-%%   <<"AutomationRulesArns">> := list(string()())
+%%   <<"AutomationRulesArns">> := list(string())
 %% }
 -type batch_get_automation_rules_request() :: #{binary() => any()}.
 
@@ -4643,7 +4643,7 @@
 
 %% Example:
 %% automation_rules_config() :: #{
-%%   <<"Actions">> => list(automation_rules_action()()),
+%%   <<"Actions">> => list(automation_rules_action()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"CreatedBy">> => string(),
 %%   <<"Criteria">> => automation_rules_finding_filters(),
@@ -4669,7 +4669,7 @@
 %% Example:
 %% aws_backup_backup_plan_rule_details() :: #{
 %%   <<"CompletionWindowMinutes">> => float(),
-%%   <<"CopyActions">> => list(aws_backup_backup_plan_rule_copy_actions_details()()),
+%%   <<"CopyActions">> => list(aws_backup_backup_plan_rule_copy_actions_details()),
 %%   <<"EnableContinuousBackup">> => boolean(),
 %%   <<"Lifecycle">> => aws_backup_backup_plan_lifecycle_details(),
 %%   <<"RuleId">> => string(),
@@ -4691,7 +4691,7 @@
 %% Example:
 %% product() :: #{
 %%   <<"ActivationUrl">> => string(),
-%%   <<"Categories">> => list(string()()),
+%%   <<"Categories">> => list(string()),
 %%   <<"CompanyName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"IntegrationTypes">> => list(list(any())()),
@@ -4738,10 +4738,10 @@
 %% Example:
 %% aws_rds_db_cluster_snapshot_details() :: #{
 %%   <<"AllocatedStorage">> => integer(),
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ClusterCreateTime">> => string(),
 %%   <<"DbClusterIdentifier">> => string(),
-%%   <<"DbClusterSnapshotAttributes">> => list(aws_rds_db_cluster_snapshot_db_cluster_snapshot_attribute()()),
+%%   <<"DbClusterSnapshotAttributes">> => list(aws_rds_db_cluster_snapshot_db_cluster_snapshot_attribute()),
 %%   <<"DbClusterSnapshotIdentifier">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
@@ -4863,7 +4863,7 @@
 %% update_finding_aggregator_request() :: #{
 %%   <<"FindingAggregatorArn">> := string(),
 %%   <<"RegionLinkingMode">> := string(),
-%%   <<"Regions">> => list(string()())
+%%   <<"Regions">> => list(string())
 %% }
 -type update_finding_aggregator_request() :: #{binary() => any()}.
 
@@ -4896,7 +4896,7 @@
 
 %% Example:
 %% aws_cloud_front_distribution_origin_ssl_protocols() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type aws_cloud_front_distribution_origin_ssl_protocols() :: #{binary() => any()}.
@@ -4930,7 +4930,7 @@
 
 %% Example:
 %% list_configuration_policy_associations_response() :: #{
-%%   <<"ConfigurationPolicyAssociationSummaries">> => list(configuration_policy_association_summary()()),
+%%   <<"ConfigurationPolicyAssociationSummaries">> => list(configuration_policy_association_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_policy_associations_response() :: #{binary() => any()}.
@@ -4939,7 +4939,7 @@
 %% Example:
 %% aws_ecs_task_definition_container_definitions_linux_parameters_tmpfs_details() :: #{
 %%   <<"ContainerPath">> => string(),
-%%   <<"MountOptions">> => list(string()()),
+%%   <<"MountOptions">> => list(string()),
 %%   <<"Size">> => integer()
 %% }
 -type aws_ecs_task_definition_container_definitions_linux_parameters_tmpfs_details() :: #{binary() => any()}.
@@ -4947,8 +4947,8 @@
 
 %% Example:
 %% aws_sage_maker_notebook_instance_details() :: #{
-%%   <<"AcceleratorTypes">> => list(string()()),
-%%   <<"AdditionalCodeRepositories">> => list(string()()),
+%%   <<"AcceleratorTypes">> => list(string()),
+%%   <<"AdditionalCodeRepositories">> => list(string()),
 %%   <<"DefaultCodeRepository">> => string(),
 %%   <<"DirectInternetAccess">> => string(),
 %%   <<"FailureReason">> => string(),
@@ -4963,7 +4963,7 @@
 %%   <<"PlatformIdentifier">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"RootAccess">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"SubnetId">> => string(),
 %%   <<"Url">> => string(),
 %%   <<"VolumeSizeInGB">> => integer()
@@ -5019,15 +5019,15 @@
 %% Example:
 %% aws_ec2_vpn_connection_options_tunnel_options_details() :: #{
 %%   <<"DpdTimeoutSeconds">> => integer(),
-%%   <<"IkeVersions">> => list(string()()),
+%%   <<"IkeVersions">> => list(string()),
 %%   <<"OutsideIpAddress">> => string(),
-%%   <<"Phase1DhGroupNumbers">> => list(integer()()),
-%%   <<"Phase1EncryptionAlgorithms">> => list(string()()),
-%%   <<"Phase1IntegrityAlgorithms">> => list(string()()),
+%%   <<"Phase1DhGroupNumbers">> => list(integer()),
+%%   <<"Phase1EncryptionAlgorithms">> => list(string()),
+%%   <<"Phase1IntegrityAlgorithms">> => list(string()),
 %%   <<"Phase1LifetimeSeconds">> => integer(),
-%%   <<"Phase2DhGroupNumbers">> => list(integer()()),
-%%   <<"Phase2EncryptionAlgorithms">> => list(string()()),
-%%   <<"Phase2IntegrityAlgorithms">> => list(string()()),
+%%   <<"Phase2DhGroupNumbers">> => list(integer()),
+%%   <<"Phase2EncryptionAlgorithms">> => list(string()),
+%%   <<"Phase2IntegrityAlgorithms">> => list(string()),
 %%   <<"Phase2LifetimeSeconds">> => integer(),
 %%   <<"PreSharedKey">> => string(),
 %%   <<"RekeyFuzzPercentage">> => integer(),
@@ -5055,15 +5055,15 @@
 
 %% Example:
 %% aws_ec2_client_vpn_endpoint_details() :: #{
-%%   <<"AuthenticationOptions">> => list(aws_ec2_client_vpn_endpoint_authentication_options_details()()),
+%%   <<"AuthenticationOptions">> => list(aws_ec2_client_vpn_endpoint_authentication_options_details()),
 %%   <<"ClientCidrBlock">> => string(),
 %%   <<"ClientConnectOptions">> => aws_ec2_client_vpn_endpoint_client_connect_options_details(),
 %%   <<"ClientLoginBannerOptions">> => aws_ec2_client_vpn_endpoint_client_login_banner_options_details(),
 %%   <<"ClientVpnEndpointId">> => string(),
 %%   <<"ConnectionLogOptions">> => aws_ec2_client_vpn_endpoint_connection_log_options_details(),
 %%   <<"Description">> => string(),
-%%   <<"DnsServer">> => list(string()()),
-%%   <<"SecurityGroupIdSet">> => list(string()()),
+%%   <<"DnsServer">> => list(string()),
+%%   <<"SecurityGroupIdSet">> => list(string()),
 %%   <<"SelfServicePortalUrl">> => string(),
 %%   <<"ServerCertificateArn">> => string(),
 %%   <<"SessionTimeoutHours">> => integer(),
@@ -5123,12 +5123,12 @@
 %% Example:
 %% aws_ecs_task_definition_container_definitions_linux_parameters_details() :: #{
 %%   <<"Capabilities">> => aws_ecs_task_definition_container_definitions_linux_parameters_capabilities_details(),
-%%   <<"Devices">> => list(aws_ecs_task_definition_container_definitions_linux_parameters_devices_details()()),
+%%   <<"Devices">> => list(aws_ecs_task_definition_container_definitions_linux_parameters_devices_details()),
 %%   <<"InitProcessEnabled">> => boolean(),
 %%   <<"MaxSwap">> => integer(),
 %%   <<"SharedMemorySize">> => integer(),
 %%   <<"Swappiness">> => integer(),
-%%   <<"Tmpfs">> => list(aws_ecs_task_definition_container_definitions_linux_parameters_tmpfs_details()())
+%%   <<"Tmpfs">> => list(aws_ecs_task_definition_container_definitions_linux_parameters_tmpfs_details())
 %% }
 -type aws_ecs_task_definition_container_definitions_linux_parameters_details() :: #{binary() => any()}.
 
@@ -5136,7 +5136,7 @@
 %% Example:
 %% create_finding_aggregator_request() :: #{
 %%   <<"RegionLinkingMode">> := string(),
-%%   <<"Regions">> => list(string()())
+%%   <<"Regions">> => list(string())
 %% }
 -type create_finding_aggregator_request() :: #{binary() => any()}.
 
@@ -5144,14 +5144,14 @@
 %% Example:
 %% get_finding_history_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Records">> => list(finding_history_record()())
+%%   <<"Records">> => list(finding_history_record())
 %% }
 -type get_finding_history_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_automation_rules_request_item() :: #{
-%%   <<"Actions">> => list(automation_rules_action()()),
+%%   <<"Actions">> => list(automation_rules_action()),
 %%   <<"Criteria">> => automation_rules_finding_filters(),
 %%   <<"Description">> => string(),
 %%   <<"IsTerminal">> => boolean(),
@@ -5209,7 +5209,7 @@
 %% aws_ecs_task_definition_container_definitions_log_configuration_details() :: #{
 %%   <<"LogDriver">> => string(),
 %%   <<"Options">> => map(),
-%%   <<"SecretOptions">> => list(aws_ecs_task_definition_container_definitions_log_configuration_secret_options_details()())
+%%   <<"SecretOptions">> => list(aws_ecs_task_definition_container_definitions_log_configuration_secret_options_details())
 %% }
 -type aws_ecs_task_definition_container_definitions_log_configuration_details() :: #{binary() => any()}.
 
@@ -5234,7 +5234,7 @@
 %% Example:
 %% aws_elb_load_balancer_listener_description() :: #{
 %%   <<"Listener">> => aws_elb_load_balancer_listener(),
-%%   <<"PolicyNames">> => list(string()())
+%%   <<"PolicyNames">> => list(string())
 %% }
 -type aws_elb_load_balancer_listener_description() :: #{binary() => any()}.
 
@@ -5262,11 +5262,11 @@
 %% batch_update_findings_request() :: #{
 %%   <<"Confidence">> => integer(),
 %%   <<"Criticality">> => integer(),
-%%   <<"FindingIdentifiers">> := list(aws_security_finding_identifier()()),
+%%   <<"FindingIdentifiers">> := list(aws_security_finding_identifier()),
 %%   <<"Note">> => note_update(),
-%%   <<"RelatedFindings">> => list(related_finding()()),
+%%   <<"RelatedFindings">> => list(related_finding()),
 %%   <<"Severity">> => severity_update(),
-%%   <<"Types">> => list(string()()),
+%%   <<"Types">> => list(string()),
 %%   <<"UserDefinedFields">> => map(),
 %%   <<"VerificationState">> => list(any()),
 %%   <<"Workflow">> => workflow_update()
@@ -5287,7 +5287,7 @@
 %% Example:
 %% generator_details() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type generator_details() :: #{binary() => any()}.
@@ -5317,7 +5317,7 @@
 
 %% Example:
 %% create_automation_rule_request() :: #{
-%%   <<"Actions">> := list(automation_rules_action()()),
+%%   <<"Actions">> := list(automation_rules_action()),
 %%   <<"Criteria">> := automation_rules_finding_filters(),
 %%   <<"Description">> := string(),
 %%   <<"IsTerminal">> => boolean(),
@@ -5360,7 +5360,7 @@
 
 %% Example:
 %% get_insights_response() :: #{
-%%   <<"Insights">> => list(insight()()),
+%%   <<"Insights">> => list(insight()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_insights_response() :: #{binary() => any()}.
@@ -5385,7 +5385,7 @@
 %% Example:
 %% aws_api_gateway_rest_api_details() :: #{
 %%   <<"ApiKeySource">> => string(),
-%%   <<"BinaryMediaTypes">> => list(string()()),
+%%   <<"BinaryMediaTypes">> => list(string()),
 %%   <<"CreatedDate">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"EndpointConfiguration">> => aws_api_gateway_endpoint_configuration(),
@@ -5429,14 +5429,14 @@
 %%   <<"Filters">> => resources_filters(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => list(sort_criterion()())
+%%   <<"SortCriteria">> => list(sort_criterion())
 %% }
 -type get_resources_v2_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_eks_cluster_logging_details() :: #{
-%%   <<"ClusterLogging">> => list(aws_eks_cluster_logging_cluster_logging_details()())
+%%   <<"ClusterLogging">> => list(aws_eks_cluster_logging_cluster_logging_details())
 %% }
 -type aws_eks_cluster_logging_details() :: #{binary() => any()}.
 
@@ -5454,11 +5454,11 @@
 %% Example:
 %% standards_control_association_detail() :: #{
 %%   <<"AssociationStatus">> => list(any()),
-%%   <<"RelatedRequirements">> => list(string()()),
+%%   <<"RelatedRequirements">> => list(string()),
 %%   <<"SecurityControlArn">> => string(),
 %%   <<"SecurityControlId">> => string(),
 %%   <<"StandardsArn">> => string(),
-%%   <<"StandardsControlArns">> => list(string()()),
+%%   <<"StandardsControlArns">> => list(string()),
 %%   <<"StandardsControlDescription">> => string(),
 %%   <<"StandardsControlTitle">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
@@ -5482,15 +5482,15 @@
 
 %% Example:
 %% decline_invitations_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type decline_invitations_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_code_build_project_vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"Subnets">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Subnets">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type aws_code_build_project_vpc_config() :: #{binary() => any()}.
@@ -5525,7 +5525,7 @@
 
 %% Example:
 %% aws_waf_rate_based_rule_details() :: #{
-%%   <<"MatchPredicates">> => list(aws_waf_rate_based_rule_match_predicate()()),
+%%   <<"MatchPredicates">> => list(aws_waf_rate_based_rule_match_predicate()),
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RateKey">> => string(),
@@ -5593,7 +5593,7 @@
 %% Example:
 %% describe_products_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Products">> => list(product()())
+%%   <<"Products">> => list(product())
 %% }
 -type describe_products_response() :: #{binary() => any()}.
 
@@ -5601,7 +5601,7 @@
 %% Example:
 %% aws_waf_web_acl_rule() :: #{
 %%   <<"Action">> => waf_action(),
-%%   <<"ExcludedRules">> => list(waf_excluded_rule()()),
+%%   <<"ExcludedRules">> => list(waf_excluded_rule()),
 %%   <<"OverrideAction">> => waf_override_action(),
 %%   <<"Priority">> => integer(),
 %%   <<"RuleId">> => string(),
@@ -5622,8 +5622,8 @@
 %% Example:
 %% aws_ec2_vpc_peering_connection_vpc_info_details() :: #{
 %%   <<"CidrBlock">> => string(),
-%%   <<"CidrBlockSet">> => list(vpc_info_cidr_block_set_details()()),
-%%   <<"Ipv6CidrBlockSet">> => list(vpc_info_ipv6_cidr_block_set_details()()),
+%%   <<"CidrBlockSet">> => list(vpc_info_cidr_block_set_details()),
+%%   <<"Ipv6CidrBlockSet">> => list(vpc_info_ipv6_cidr_block_set_details()),
 %%   <<"OwnerId">> => string(),
 %%   <<"PeeringOptions">> => vpc_info_peering_options_details(),
 %%   <<"Region">> => string(),
@@ -5661,11 +5661,11 @@
 %%   <<"Engine">> => string(),
 %%   <<"PromotionTier">> => integer(),
 %%   <<"DBInstanceIdentifier">> => string(),
-%%   <<"DbParameterGroups">> => list(aws_rds_db_parameter_group()()),
+%%   <<"DbParameterGroups">> => list(aws_rds_db_parameter_group()),
 %%   <<"ListenerEndpoint">> => aws_rds_db_instance_endpoint(),
 %%   <<"Iops">> => integer(),
-%%   <<"StatusInfos">> => list(aws_rds_db_status_info()()),
-%%   <<"DomainMemberships">> => list(aws_rds_db_domain_membership()()),
+%%   <<"StatusInfos">> => list(aws_rds_db_status_info()),
+%%   <<"DomainMemberships">> => list(aws_rds_db_domain_membership()),
 %%   <<"DBInstanceClass">> => string(),
 %%   <<"CharacterSetName">> => string(),
 %%   <<"PendingModifiedValues">> => aws_rds_db_pending_modified_values(),
@@ -5686,8 +5686,8 @@
 %%   <<"EnhancedMonitoringResourceArn">> => string(),
 %%   <<"BackupRetentionPeriod">> => integer(),
 %%   <<"LicenseModel">> => string(),
-%%   <<"OptionGroupMemberships">> => list(aws_rds_db_option_group_membership()()),
-%%   <<"AssociatedRoles">> => list(aws_rds_db_instance_associated_role()()),
+%%   <<"OptionGroupMemberships">> => list(aws_rds_db_option_group_membership()),
+%%   <<"AssociatedRoles">> => list(aws_rds_db_instance_associated_role()),
 %%   <<"DbInstancePort">> => integer(),
 %%   <<"ReadReplicaSourceDBInstanceIdentifier">> => string(),
 %%   <<"KmsKeyId">> => string(),
@@ -5696,18 +5696,18 @@
 %%   <<"Endpoint">> => aws_rds_db_instance_endpoint(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"DbInstanceStatus">> => string(),
-%%   <<"ReadReplicaDBClusterIdentifiers">> => list(string()()),
+%%   <<"ReadReplicaDBClusterIdentifiers">> => list(string()),
 %%   <<"InstanceCreateTime">> => string(),
-%%   <<"ProcessorFeatures">> => list(aws_rds_db_processor_feature()()),
-%%   <<"VpcSecurityGroups">> => list(aws_rds_db_instance_vpc_security_group()()),
+%%   <<"ProcessorFeatures">> => list(aws_rds_db_processor_feature()),
+%%   <<"VpcSecurityGroups">> => list(aws_rds_db_instance_vpc_security_group()),
 %%   <<"TdeCredentialArn">> => string(),
 %%   <<"DbSubnetGroup">> => aws_rds_db_subnet_group(),
-%%   <<"DbSecurityGroups">> => list(string()()),
+%%   <<"DbSecurityGroups">> => list(string()),
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
 %%   <<"PerformanceInsightsKmsKeyId">> => string(),
 %%   <<"AllocatedStorage">> => integer(),
-%%   <<"ReadReplicaDBInstanceIdentifiers">> => list(string()()),
-%%   <<"EnabledCloudWatchLogsExports">> => list(string()()),
+%%   <<"ReadReplicaDBInstanceIdentifiers">> => list(string()),
+%%   <<"EnabledCloudWatchLogsExports">> => list(string()),
 %%   <<"MonitoringInterval">> => integer(),
 %%   <<"CACertificateIdentifier">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
@@ -5738,7 +5738,7 @@
 
 %% Example:
 %% delete_invitations_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type delete_invitations_request() :: #{binary() => any()}.
 
@@ -5772,14 +5772,14 @@
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_details() :: #{
 %%   <<"LaunchTemplateSpecification">> => aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_launch_template_specification(),
-%%   <<"Overrides">> => list(aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_overrides_list_details()())
+%%   <<"Overrides">> => list(aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_overrides_list_details())
 %% }
 -type aws_auto_scaling_auto_scaling_group_mixed_instances_policy_launch_template_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_msk_cluster_cluster_info_client_authentication_tls_details() :: #{
-%%   <<"CertificateAuthorityArnList">> => list(string()()),
+%%   <<"CertificateAuthorityArnList">> => list(string()),
 %%   <<"Enabled">> => boolean()
 %% }
 -type aws_msk_cluster_cluster_info_client_authentication_tls_details() :: #{binary() => any()}.
@@ -5840,7 +5840,7 @@
 %% Example:
 %% group_by_result() :: #{
 %%   <<"GroupByField">> => string(),
-%%   <<"GroupByValues">> => list(group_by_value()())
+%%   <<"GroupByValues">> => list(group_by_value())
 %% }
 -type group_by_result() :: #{binary() => any()}.
 
@@ -5848,8 +5848,8 @@
 %% Example:
 %% aws_eks_cluster_resources_vpc_config_details() :: #{
 %%   <<"EndpointPublicAccess">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type aws_eks_cluster_resources_vpc_config_details() :: #{binary() => any()}.
 
@@ -5857,7 +5857,7 @@
 %% Example:
 %% list_enabled_products_for_import_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProductSubscriptions">> => list(string()())
+%%   <<"ProductSubscriptions">> => list(string())
 %% }
 -type list_enabled_products_for_import_response() :: #{binary() => any()}.
 
@@ -5901,7 +5901,7 @@
 %% Example:
 %% aws_efs_access_point_posix_user_details() :: #{
 %%   <<"Gid">> => string(),
-%%   <<"SecondaryGids">> => list(string()()),
+%%   <<"SecondaryGids">> => list(string()),
 %%   <<"Uid">> => string()
 %% }
 -type aws_efs_access_point_posix_user_details() :: #{binary() => any()}.
@@ -5926,7 +5926,7 @@
 
 %% Example:
 %% list_configuration_policies_response() :: #{
-%%   <<"ConfigurationPolicySummaries">> => list(configuration_policy_summary()()),
+%%   <<"ConfigurationPolicySummaries">> => list(configuration_policy_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_policies_response() :: #{binary() => any()}.
@@ -5934,7 +5934,7 @@
 
 %% Example:
 %% aws_amazon_mq_broker_ldap_server_metadata_details() :: #{
-%%   <<"Hosts">> => list(string()()),
+%%   <<"Hosts">> => list(string()),
 %%   <<"RoleBase">> => string(),
 %%   <<"RoleName">> => string(),
 %%   <<"RoleSearchMatching">> => string(),
@@ -5952,9 +5952,9 @@
 %% finding_provider_fields() :: #{
 %%   <<"Confidence">> => integer(),
 %%   <<"Criticality">> => integer(),
-%%   <<"RelatedFindings">> => list(related_finding()()),
+%%   <<"RelatedFindings">> => list(related_finding()),
 %%   <<"Severity">> => finding_provider_severity(),
-%%   <<"Types">> => list(string()())
+%%   <<"Types">> => list(string())
 %% }
 -type finding_provider_fields() :: #{binary() => any()}.
 
@@ -6036,8 +6036,8 @@
 
 %% Example:
 %% batch_update_findings_response() :: #{
-%%   <<"ProcessedFindings">> => list(aws_security_finding_identifier()()),
-%%   <<"UnprocessedFindings">> => list(batch_update_findings_unprocessed_finding()())
+%%   <<"ProcessedFindings">> => list(aws_security_finding_identifier()),
+%%   <<"UnprocessedFindings">> => list(batch_update_findings_unprocessed_finding())
 %% }
 -type batch_update_findings_response() :: #{binary() => any()}.
 
@@ -6052,7 +6052,7 @@
 
 %% Example:
 %% get_finding_statistics_v2_request() :: #{
-%%   <<"GroupByRules">> := list(group_by_rule()()),
+%%   <<"GroupByRules">> := list(group_by_rule()),
 %%   <<"MaxStatisticResults">> => integer(),
 %%   <<"SortOrder">> => list(any())
 %% }
@@ -6113,7 +6113,7 @@
 %%   <<"FindingAggregationRegion">> => string(),
 %%   <<"FindingAggregatorArn">> => string(),
 %%   <<"RegionLinkingMode">> => string(),
-%%   <<"Regions">> => list(string()())
+%%   <<"Regions">> => list(string())
 %% }
 -type create_finding_aggregator_response() :: #{binary() => any()}.
 
@@ -6121,7 +6121,7 @@
 %% Example:
 %% aws_guard_duty_detector_details() :: #{
 %%   <<"DataSources">> => aws_guard_duty_detector_data_sources_details(),
-%%   <<"Features">> => list(aws_guard_duty_detector_features_details()()),
+%%   <<"Features">> => list(aws_guard_duty_detector_features_details()),
 %%   <<"FindingPublishingFrequency">> => string(),
 %%   <<"ServiceRole">> => string(),
 %%   <<"Status">> => string()
@@ -6185,7 +6185,7 @@
 
 %% Example:
 %% delete_invitations_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(result()())
+%%   <<"UnprocessedAccounts">> => list(result())
 %% }
 -type delete_invitations_response() :: #{binary() => any()}.
 
@@ -6193,7 +6193,7 @@
 %% Example:
 %% batch_import_findings_response() :: #{
 %%   <<"FailedCount">> => integer(),
-%%   <<"FailedFindings">> => list(import_findings_error()()),
+%%   <<"FailedFindings">> => list(import_findings_error()),
 %%   <<"SuccessCount">> => integer()
 %% }
 -type batch_import_findings_response() :: #{binary() => any()}.
@@ -6202,7 +6202,7 @@
 %% Example:
 %% port_probe_action() :: #{
 %%   <<"Blocked">> => boolean(),
-%%   <<"PortProbeDetails">> => list(port_probe_detail()())
+%%   <<"PortProbeDetails">> => list(port_probe_detail())
 %% }
 -type port_probe_action() :: #{binary() => any()}.
 
@@ -6243,7 +6243,7 @@
 %% Example:
 %% aws_elb_load_balancer_attributes() :: #{
 %%   <<"AccessLog">> => aws_elb_load_balancer_access_log(),
-%%   <<"AdditionalAttributes">> => list(aws_elb_load_balancer_additional_attribute()()),
+%%   <<"AdditionalAttributes">> => list(aws_elb_load_balancer_additional_attribute()),
 %%   <<"ConnectionDraining">> => aws_elb_load_balancer_connection_draining(),
 %%   <<"ConnectionSettings">> => aws_elb_load_balancer_connection_settings(),
 %%   <<"CrossZoneLoadBalancing">> => aws_elb_load_balancer_cross_zone_load_balancing()
@@ -6295,22 +6295,22 @@
 
 %% Example:
 %% aws_elb_load_balancer_details() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"BackendServerDescriptions">> => list(aws_elb_load_balancer_backend_server_description()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"BackendServerDescriptions">> => list(aws_elb_load_balancer_backend_server_description()),
 %%   <<"CanonicalHostedZoneName">> => string(),
 %%   <<"CanonicalHostedZoneNameID">> => string(),
 %%   <<"CreatedTime">> => string(),
 %%   <<"DnsName">> => string(),
 %%   <<"HealthCheck">> => aws_elb_load_balancer_health_check(),
-%%   <<"Instances">> => list(aws_elb_load_balancer_instance()()),
-%%   <<"ListenerDescriptions">> => list(aws_elb_load_balancer_listener_description()()),
+%%   <<"Instances">> => list(aws_elb_load_balancer_instance()),
+%%   <<"ListenerDescriptions">> => list(aws_elb_load_balancer_listener_description()),
 %%   <<"LoadBalancerAttributes">> => aws_elb_load_balancer_attributes(),
 %%   <<"LoadBalancerName">> => string(),
 %%   <<"Policies">> => aws_elb_load_balancer_policies(),
 %%   <<"Scheme">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"SourceSecurityGroup">> => aws_elb_load_balancer_source_security_group(),
-%%   <<"Subnets">> => list(string()()),
+%%   <<"Subnets">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type aws_elb_load_balancer_details() :: #{binary() => any()}.
@@ -6318,7 +6318,7 @@
 
 %% Example:
 %% threat() :: #{
-%%   <<"FilePaths">> => list(file_paths()()),
+%%   <<"FilePaths">> => list(file_paths()),
 %%   <<"ItemCount">> => integer(),
 %%   <<"Name">> => string(),
 %%   <<"Severity">> => string()
@@ -6362,13 +6362,13 @@
 %% aws_ec2_instance_details() :: #{
 %%   <<"IamInstanceProfileArn">> => string(),
 %%   <<"ImageId">> => string(),
-%%   <<"IpV4Addresses">> => list(string()()),
-%%   <<"IpV6Addresses">> => list(string()()),
+%%   <<"IpV4Addresses">> => list(string()),
+%%   <<"IpV6Addresses">> => list(string()),
 %%   <<"KeyName">> => string(),
 %%   <<"LaunchedAt">> => string(),
 %%   <<"MetadataOptions">> => aws_ec2_instance_metadata_options(),
 %%   <<"Monitoring">> => aws_ec2_instance_monitoring_details(),
-%%   <<"NetworkInterfaces">> => list(aws_ec2_instance_network_interfaces_details()()),
+%%   <<"NetworkInterfaces">> => list(aws_ec2_instance_network_interfaces_details()),
 %%   <<"SubnetId">> => string(),
 %%   <<"Type">> => string(),
 %%   <<"VirtualizationType">> => string(),
@@ -6391,14 +6391,14 @@
 
 %% Example:
 %% batch_import_findings_request() :: #{
-%%   <<"Findings">> := list(aws_security_finding()())
+%%   <<"Findings">> := list(aws_security_finding())
 %% }
 -type batch_import_findings_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_dynamo_db_table_projection() :: #{
-%%   <<"NonKeyAttributes">> => list(string()()),
+%%   <<"NonKeyAttributes">> => list(string()),
 %%   <<"ProjectionType">> => string()
 %% }
 -type aws_dynamo_db_table_projection() :: #{binary() => any()}.
@@ -6418,20 +6418,20 @@
 
 %% Example:
 %% aws_open_search_service_domain_vpc_options_details() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type aws_open_search_service_domain_vpc_options_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% composite_filter() :: #{
-%%   <<"BooleanFilters">> => list(ocsf_boolean_filter()()),
-%%   <<"DateFilters">> => list(ocsf_date_filter()()),
-%%   <<"MapFilters">> => list(ocsf_map_filter()()),
-%%   <<"NumberFilters">> => list(ocsf_number_filter()()),
+%%   <<"BooleanFilters">> => list(ocsf_boolean_filter()),
+%%   <<"DateFilters">> => list(ocsf_date_filter()),
+%%   <<"MapFilters">> => list(ocsf_map_filter()),
+%%   <<"NumberFilters">> => list(ocsf_number_filter()),
 %%   <<"Operator">> => list(any()),
-%%   <<"StringFilters">> => list(ocsf_string_filter()())
+%%   <<"StringFilters">> => list(ocsf_string_filter())
 %% }
 -type composite_filter() :: #{binary() => any()}.
 
@@ -6450,7 +6450,7 @@
 %% Example:
 %% get_resources_v2_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(resource_result()())
+%%   <<"Resources">> => list(resource_result())
 %% }
 -type get_resources_v2_response() :: #{binary() => any()}.
 
@@ -6467,8 +6467,8 @@
 
 %% Example:
 %% batch_get_security_controls_response() :: #{
-%%   <<"SecurityControls">> => list(security_control()()),
-%%   <<"UnprocessedIds">> => list(unprocessed_security_control()())
+%%   <<"SecurityControls">> => list(security_control()),
+%%   <<"UnprocessedIds">> => list(unprocessed_security_control())
 %% }
 -type batch_get_security_controls_response() :: #{binary() => any()}.
 
@@ -6511,41 +6511,41 @@
 
 %% Example:
 %% aws_ecs_task_definition_container_definitions_details() :: #{
-%%   <<"Environment">> => list(aws_ecs_task_definition_container_definitions_environment_details()()),
-%%   <<"PortMappings">> => list(aws_ecs_task_definition_container_definitions_port_mappings_details()()),
+%%   <<"Environment">> => list(aws_ecs_task_definition_container_definitions_environment_details()),
+%%   <<"PortMappings">> => list(aws_ecs_task_definition_container_definitions_port_mappings_details()),
 %%   <<"LinuxParameters">> => aws_ecs_task_definition_container_definitions_linux_parameters_details(),
 %%   <<"Memory">> => integer(),
-%%   <<"DnsSearchDomains">> => list(string()()),
+%%   <<"DnsSearchDomains">> => list(string()),
 %%   <<"HealthCheck">> => aws_ecs_task_definition_container_definitions_health_check_details(),
 %%   <<"StopTimeout">> => integer(),
 %%   <<"Image">> => string(),
-%%   <<"Ulimits">> => list(aws_ecs_task_definition_container_definitions_ulimits_details()()),
+%%   <<"Ulimits">> => list(aws_ecs_task_definition_container_definitions_ulimits_details()),
 %%   <<"RepositoryCredentials">> => aws_ecs_task_definition_container_definitions_repository_credentials_details(),
-%%   <<"Links">> => list(string()()),
+%%   <<"Links">> => list(string()),
 %%   <<"FirelensConfiguration">> => aws_ecs_task_definition_container_definitions_firelens_configuration_details(),
-%%   <<"Command">> => list(string()()),
+%%   <<"Command">> => list(string()),
 %%   <<"Privileged">> => boolean(),
-%%   <<"EntryPoint">> => list(string()()),
-%%   <<"ResourceRequirements">> => list(aws_ecs_task_definition_container_definitions_resource_requirements_details()()),
-%%   <<"Secrets">> => list(aws_ecs_task_definition_container_definitions_secrets_details()()),
+%%   <<"EntryPoint">> => list(string()),
+%%   <<"ResourceRequirements">> => list(aws_ecs_task_definition_container_definitions_resource_requirements_details()),
+%%   <<"Secrets">> => list(aws_ecs_task_definition_container_definitions_secrets_details()),
 %%   <<"DockerLabels">> => map(),
-%%   <<"SystemControls">> => list(aws_ecs_task_definition_container_definitions_system_controls_details()()),
+%%   <<"SystemControls">> => list(aws_ecs_task_definition_container_definitions_system_controls_details()),
 %%   <<"DisableNetworking">> => boolean(),
-%%   <<"ExtraHosts">> => list(aws_ecs_task_definition_container_definitions_extra_hosts_details()()),
-%%   <<"DependsOn">> => list(aws_ecs_task_definition_container_definitions_depends_on_details()()),
-%%   <<"MountPoints">> => list(aws_ecs_task_definition_container_definitions_mount_points_details()()),
-%%   <<"DnsServers">> => list(string()()),
-%%   <<"EnvironmentFiles">> => list(aws_ecs_task_definition_container_definitions_environment_files_details()()),
+%%   <<"ExtraHosts">> => list(aws_ecs_task_definition_container_definitions_extra_hosts_details()),
+%%   <<"DependsOn">> => list(aws_ecs_task_definition_container_definitions_depends_on_details()),
+%%   <<"MountPoints">> => list(aws_ecs_task_definition_container_definitions_mount_points_details()),
+%%   <<"DnsServers">> => list(string()),
+%%   <<"EnvironmentFiles">> => list(aws_ecs_task_definition_container_definitions_environment_files_details()),
 %%   <<"Essential">> => boolean(),
 %%   <<"PseudoTerminal">> => boolean(),
 %%   <<"WorkingDirectory">> => string(),
-%%   <<"DockerSecurityOptions">> => list(string()()),
+%%   <<"DockerSecurityOptions">> => list(string()),
 %%   <<"Cpu">> => integer(),
 %%   <<"User">> => string(),
 %%   <<"MemoryReservation">> => integer(),
 %%   <<"Name">> => string(),
 %%   <<"ReadonlyRootFilesystem">> => boolean(),
-%%   <<"VolumesFrom">> => list(aws_ecs_task_definition_container_definitions_volumes_from_details()()),
+%%   <<"VolumesFrom">> => list(aws_ecs_task_definition_container_definitions_volumes_from_details()),
 %%   <<"Interactive">> => boolean(),
 %%   <<"Hostname">> => string(),
 %%   <<"LogConfiguration">> => aws_ecs_task_definition_container_definitions_log_configuration_details(),
@@ -6603,18 +6603,18 @@
 %% Example:
 %% aws_ec2_launch_template_data_instance_requirements_details() :: #{
 %%   <<"AcceleratorCount">> => aws_ec2_launch_template_data_instance_requirements_accelerator_count_details(),
-%%   <<"AcceleratorManufacturers">> => list(string()()),
-%%   <<"AcceleratorNames">> => list(string()()),
+%%   <<"AcceleratorManufacturers">> => list(string()),
+%%   <<"AcceleratorNames">> => list(string()),
 %%   <<"AcceleratorTotalMemoryMiB">> => aws_ec2_launch_template_data_instance_requirements_accelerator_total_memory_mi_b_details(),
-%%   <<"AcceleratorTypes">> => list(string()()),
+%%   <<"AcceleratorTypes">> => list(string()),
 %%   <<"BareMetal">> => string(),
 %%   <<"BaselineEbsBandwidthMbps">> => aws_ec2_launch_template_data_instance_requirements_baseline_ebs_bandwidth_mbps_details(),
 %%   <<"BurstablePerformance">> => string(),
-%%   <<"CpuManufacturers">> => list(string()()),
-%%   <<"ExcludedInstanceTypes">> => list(string()()),
-%%   <<"InstanceGenerations">> => list(string()()),
+%%   <<"CpuManufacturers">> => list(string()),
+%%   <<"ExcludedInstanceTypes">> => list(string()),
+%%   <<"InstanceGenerations">> => list(string()),
 %%   <<"LocalStorage">> => string(),
-%%   <<"LocalStorageTypes">> => list(string()()),
+%%   <<"LocalStorageTypes">> => list(string()),
 %%   <<"MemoryGiBPerVCpu">> => aws_ec2_launch_template_data_instance_requirements_memory_gi_b_per_v_cpu_details(),
 %%   <<"MemoryMiB">> => aws_ec2_launch_template_data_instance_requirements_memory_mi_b_details(),
 %%   <<"NetworkInterfaceCount">> => aws_ec2_launch_template_data_instance_requirements_network_interface_count_details(),
@@ -6638,7 +6638,7 @@
 
 %% Example:
 %% list_members_response() :: #{
-%%   <<"Members">> => list(member()()),
+%%   <<"Members">> => list(member()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_members_response() :: #{binary() => any()}.
@@ -6657,18 +6657,18 @@
 %% aws_ec2_security_group_ip_permission() :: #{
 %%   <<"FromPort">> => integer(),
 %%   <<"IpProtocol">> => string(),
-%%   <<"IpRanges">> => list(aws_ec2_security_group_ip_range()()),
-%%   <<"Ipv6Ranges">> => list(aws_ec2_security_group_ipv6_range()()),
-%%   <<"PrefixListIds">> => list(aws_ec2_security_group_prefix_list_id()()),
+%%   <<"IpRanges">> => list(aws_ec2_security_group_ip_range()),
+%%   <<"Ipv6Ranges">> => list(aws_ec2_security_group_ipv6_range()),
+%%   <<"PrefixListIds">> => list(aws_ec2_security_group_prefix_list_id()),
 %%   <<"ToPort">> => integer(),
-%%   <<"UserIdGroupPairs">> => list(aws_ec2_security_group_user_id_group_pair()())
+%%   <<"UserIdGroupPairs">> => list(aws_ec2_security_group_user_id_group_pair())
 %% }
 -type aws_ec2_security_group_ip_permission() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_step_function_state_machine_logging_configuration_details() :: #{
-%%   <<"Destinations">> => list(aws_step_function_state_machine_logging_configuration_destinations_details()()),
+%%   <<"Destinations">> => list(aws_step_function_state_machine_logging_configuration_destinations_details()),
 %%   <<"IncludeExecutionData">> => boolean(),
 %%   <<"Level">> => string()
 %% }
@@ -6681,11 +6681,11 @@
 %%   <<"CustomerGatewayConfiguration">> => string(),
 %%   <<"CustomerGatewayId">> => string(),
 %%   <<"Options">> => aws_ec2_vpn_connection_options_details(),
-%%   <<"Routes">> => list(aws_ec2_vpn_connection_routes_details()()),
+%%   <<"Routes">> => list(aws_ec2_vpn_connection_routes_details()),
 %%   <<"State">> => string(),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"Type">> => string(),
-%%   <<"VgwTelemetry">> => list(aws_ec2_vpn_connection_vgw_telemetry_details()()),
+%%   <<"VgwTelemetry">> => list(aws_ec2_vpn_connection_vgw_telemetry_details()),
 %%   <<"VpnConnectionId">> => string(),
 %%   <<"VpnGatewayId">> => string()
 %% }
@@ -6694,7 +6694,7 @@
 
 %% Example:
 %% get_resources_statistics_v2_response() :: #{
-%%   <<"GroupByResults">> => list(group_by_result()())
+%%   <<"GroupByResults">> => list(group_by_result())
 %% }
 -type get_resources_statistics_v2_response() :: #{binary() => any()}.
 
@@ -6727,7 +6727,7 @@
 %% get_enabled_standards_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"StandardsSubscriptionArns">> => list(string()())
+%%   <<"StandardsSubscriptionArns">> => list(string())
 %% }
 -type get_enabled_standards_request() :: #{binary() => any()}.
 
@@ -6739,7 +6739,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"UpdateSource">> => finding_history_update_source(),
 %%   <<"UpdateTime">> => non_neg_integer(),
-%%   <<"Updates">> => list(finding_history_update()())
+%%   <<"Updates">> => list(finding_history_update())
 %% }
 -type finding_history_record() :: #{binary() => any()}.
 
@@ -6769,12 +6769,12 @@
 
 %% Example:
 %% aws_code_build_project_details() :: #{
-%%   <<"Artifacts">> => list(aws_code_build_project_artifacts_details()()),
+%%   <<"Artifacts">> => list(aws_code_build_project_artifacts_details()),
 %%   <<"EncryptionKey">> => string(),
 %%   <<"Environment">> => aws_code_build_project_environment(),
 %%   <<"LogsConfig">> => aws_code_build_project_logs_config_details(),
 %%   <<"Name">> => string(),
-%%   <<"SecondaryArtifacts">> => list(aws_code_build_project_artifacts_details()()),
+%%   <<"SecondaryArtifacts">> => list(aws_code_build_project_artifacts_details()),
 %%   <<"ServiceRole">> => string(),
 %%   <<"Source">> => aws_code_build_project_source(),
 %%   <<"VpcConfig">> => aws_code_build_project_vpc_config()
@@ -6874,7 +6874,7 @@
 %% Example:
 %% describe_products_v2_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProductsV2">> => list(product_v2()())
+%%   <<"ProductsV2">> => list(product_v2())
 %% }
 -type describe_products_v2_response() :: #{binary() => any()}.
 
@@ -6886,7 +6886,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Rules">> => list(aws_wafv2_rules_details()()),
+%%   <<"Rules">> => list(aws_wafv2_rules_details()),
 %%   <<"Scope">> => string(),
 %%   <<"VisibilityConfig">> => aws_wafv2_visibility_config_details()
 %% }
@@ -6920,14 +6920,14 @@
 
 %% Example:
 %% stateless_custom_publish_metric_action() :: #{
-%%   <<"Dimensions">> => list(stateless_custom_publish_metric_action_dimension()())
+%%   <<"Dimensions">> => list(stateless_custom_publish_metric_action_dimension())
 %% }
 -type stateless_custom_publish_metric_action() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_cloud_front_distribution_origins() :: #{
-%%   <<"Items">> => list(aws_cloud_front_distribution_origin_item()())
+%%   <<"Items">> => list(aws_cloud_front_distribution_origin_item())
 %% }
 -type aws_cloud_front_distribution_origins() :: #{binary() => any()}.
 
@@ -6978,7 +6978,7 @@
 %% Example:
 %% aws_s3_bucket_notification_configuration_detail() :: #{
 %%   <<"Destination">> => string(),
-%%   <<"Events">> => list(string()()),
+%%   <<"Events">> => list(string()),
 %%   <<"Filter">> => aws_s3_bucket_notification_configuration_filter(),
 %%   <<"Type">> => string()
 %% }
@@ -7015,7 +7015,7 @@
 
 %% Example:
 %% aws_api_gateway_endpoint_configuration() :: #{
-%%   <<"Types">> => list(string()())
+%%   <<"Types">> => list(string())
 %% }
 -type aws_api_gateway_endpoint_configuration() :: #{binary() => any()}.
 
@@ -7114,7 +7114,7 @@
 %%   <<"FirewallPolicyArn">> => string(),
 %%   <<"FirewallPolicyChangeProtection">> => boolean(),
 %%   <<"SubnetChangeProtection">> => boolean(),
-%%   <<"SubnetMappings">> => list(aws_network_firewall_firewall_subnet_mappings_details()()),
+%%   <<"SubnetMappings">> => list(aws_network_firewall_firewall_subnet_mappings_details()),
 %%   <<"VpcId">> => string()
 %% }
 -type aws_network_firewall_firewall_details() :: #{binary() => any()}.
@@ -7141,19 +7141,19 @@
 %% Example:
 %% list_standards_control_associations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StandardsControlAssociationSummaries">> => list(standards_control_association_summary()())
+%%   <<"StandardsControlAssociationSummaries">> => list(standards_control_association_summary())
 %% }
 -type list_standards_control_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% rule_group_source_stateless_rule_match_attributes() :: #{
-%%   <<"DestinationPorts">> => list(rule_group_source_stateless_rule_match_attributes_destination_ports()()),
-%%   <<"Destinations">> => list(rule_group_source_stateless_rule_match_attributes_destinations()()),
-%%   <<"Protocols">> => list(integer()()),
-%%   <<"SourcePorts">> => list(rule_group_source_stateless_rule_match_attributes_source_ports()()),
-%%   <<"Sources">> => list(rule_group_source_stateless_rule_match_attributes_sources()()),
-%%   <<"TcpFlags">> => list(rule_group_source_stateless_rule_match_attributes_tcp_flags()())
+%%   <<"DestinationPorts">> => list(rule_group_source_stateless_rule_match_attributes_destination_ports()),
+%%   <<"Destinations">> => list(rule_group_source_stateless_rule_match_attributes_destinations()),
+%%   <<"Protocols">> => list(integer()),
+%%   <<"SourcePorts">> => list(rule_group_source_stateless_rule_match_attributes_source_ports()),
+%%   <<"Sources">> => list(rule_group_source_stateless_rule_match_attributes_sources()),
+%%   <<"TcpFlags">> => list(rule_group_source_stateless_rule_match_attributes_tcp_flags())
 %% }
 -type rule_group_source_stateless_rule_match_attributes() :: #{binary() => any()}.
 
@@ -7233,7 +7233,7 @@
 %% aws_redshift_cluster_details() :: #{
 %%   <<"Encrypted">> => boolean(),
 %%   <<"ClusterAvailabilityStatus">> => string(),
-%%   <<"IamRoles">> => list(aws_redshift_cluster_iam_role()()),
+%%   <<"IamRoles">> => list(aws_redshift_cluster_iam_role()),
 %%   <<"HsmStatus">> => aws_redshift_cluster_hsm_status(),
 %%   <<"ClusterCreateTime">> => string(),
 %%   <<"ClusterStatus">> => string(),
@@ -7246,22 +7246,22 @@
 %%   <<"SnapshotScheduleIdentifier">> => string(),
 %%   <<"RestoreStatus">> => aws_redshift_cluster_restore_status(),
 %%   <<"PendingModifiedValues">> => aws_redshift_cluster_pending_modified_values(),
-%%   <<"ClusterNodes">> => list(aws_redshift_cluster_cluster_node()()),
+%%   <<"ClusterNodes">> => list(aws_redshift_cluster_cluster_node()),
 %%   <<"ElasticIpStatus">> => aws_redshift_cluster_elastic_ip_status(),
 %%   <<"ExpectedNextSnapshotScheduleTimeStatus">> => string(),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"MasterUsername">> => string(),
-%%   <<"ClusterSecurityGroups">> => list(aws_redshift_cluster_cluster_security_group()()),
+%%   <<"ClusterSecurityGroups">> => list(aws_redshift_cluster_cluster_security_group()),
 %%   <<"ClusterRevisionNumber">> => string(),
 %%   <<"NodeType">> => string(),
 %%   <<"ElasticResizeNumberOfNodeOptions">> => string(),
 %%   <<"DBName">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"ClusterParameterGroups">> => list(aws_redshift_cluster_cluster_parameter_group()()),
+%%   <<"ClusterParameterGroups">> => list(aws_redshift_cluster_cluster_parameter_group()),
 %%   <<"EnhancedVpcRouting">> => boolean(),
 %%   <<"ClusterSnapshotCopyStatus">> => aws_redshift_cluster_cluster_snapshot_copy_status(),
 %%   <<"MaintenanceTrackName">> => string(),
-%%   <<"PendingActions">> => list(string()()),
+%%   <<"PendingActions">> => list(string()),
 %%   <<"VpcId">> => string(),
 %%   <<"LoggingStatus">> => aws_redshift_cluster_logging_status(),
 %%   <<"ClusterPublicKey">> => string(),
@@ -7271,8 +7271,8 @@
 %%   <<"Endpoint">> => aws_redshift_cluster_endpoint(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"NextMaintenanceWindowStartTime">> => string(),
-%%   <<"VpcSecurityGroups">> => list(aws_redshift_cluster_vpc_security_group()()),
-%%   <<"DeferredMaintenanceWindows">> => list(aws_redshift_cluster_deferred_maintenance_window()()),
+%%   <<"VpcSecurityGroups">> => list(aws_redshift_cluster_vpc_security_group()),
+%%   <<"DeferredMaintenanceWindows">> => list(aws_redshift_cluster_deferred_maintenance_window()),
 %%   <<"AllowVersionUpgrade">> => boolean(),
 %%   <<"ClusterIdentifier">> => string()
 %% }
@@ -7288,7 +7288,7 @@
 
 %% Example:
 %% aws_s3_bucket_server_side_encryption_configuration() :: #{
-%%   <<"Rules">> => list(aws_s3_bucket_server_side_encryption_rule()())
+%%   <<"Rules">> => list(aws_s3_bucket_server_side_encryption_rule())
 %% }
 -type aws_s3_bucket_server_side_encryption_configuration() :: #{binary() => any()}.
 
@@ -7305,7 +7305,7 @@
 %%   <<"Filters">> => ocsf_finding_filters(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => list(sort_criterion()())
+%%   <<"SortCriteria">> => list(sort_criterion())
 %% }
 -type get_findings_v2_request() :: #{binary() => any()}.
 
@@ -7385,7 +7385,7 @@
 
 %% Example:
 %% aws_cloud_front_distribution_cache_behaviors() :: #{
-%%   <<"Items">> => list(aws_cloud_front_distribution_cache_behavior()())
+%%   <<"Items">> => list(aws_cloud_front_distribution_cache_behavior())
 %% }
 -type aws_cloud_front_distribution_cache_behaviors() :: #{binary() => any()}.
 
@@ -7401,7 +7401,7 @@
 %% Example:
 %% security_control_parameter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Value">> => list(string()())
+%%   <<"Value">> => list(string())
 %% }
 -type security_control_parameter() :: #{binary() => any()}.
 
@@ -7455,7 +7455,7 @@
 
 %% Example:
 %% enum_configuration_options() :: #{
-%%   <<"AllowedValues">> => list(string()()),
+%%   <<"AllowedValues">> => list(string()),
 %%   <<"DefaultValue">> => string()
 %% }
 -type enum_configuration_options() :: #{binary() => any()}.
@@ -7472,7 +7472,7 @@
 
 %% Example:
 %% custom_data_identifiers_result() :: #{
-%%   <<"Detections">> => list(custom_data_identifiers_detections()()),
+%%   <<"Detections">> => list(custom_data_identifiers_detections()),
 %%   <<"TotalCount">> => float()
 %% }
 -type custom_data_identifiers_result() :: #{binary() => any()}.
@@ -7511,7 +7511,7 @@
 
 %% Example:
 %% get_finding_statistics_v2_response() :: #{
-%%   <<"GroupByResults">> => list(group_by_result()())
+%%   <<"GroupByResults">> => list(group_by_result())
 %% }
 -type get_finding_statistics_v2_response() :: #{binary() => any()}.
 
@@ -7549,7 +7549,7 @@
 
 %% Example:
 %% get_findings_v2_response() :: #{
-%%   <<"Findings">> => list(any()()),
+%%   <<"Findings">> => list(any()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_findings_v2_response() :: #{binary() => any()}.
@@ -7632,7 +7632,7 @@
 
 %% Example:
 %% list_finding_aggregators_response() :: #{
-%%   <<"FindingAggregators">> => list(finding_aggregator()()),
+%%   <<"FindingAggregators">> => list(finding_aggregator()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_finding_aggregators_response() :: #{binary() => any()}.
@@ -7657,7 +7657,7 @@
 %%   <<"PermissionsBoundaryUsageCount">> => integer(),
 %%   <<"PolicyId">> => string(),
 %%   <<"PolicyName">> => string(),
-%%   <<"PolicyVersionList">> => list(aws_iam_policy_version()()),
+%%   <<"PolicyVersionList">> => list(aws_iam_policy_version()),
 %%   <<"UpdateDate">> => string()
 %% }
 -type aws_iam_policy_details() :: #{binary() => any()}.
@@ -7665,7 +7665,7 @@
 
 %% Example:
 %% batch_get_security_controls_request() :: #{
-%%   <<"SecurityControlIds">> := list(string()())
+%%   <<"SecurityControlIds">> := list(string())
 %% }
 -type batch_get_security_controls_request() :: #{binary() => any()}.
 
@@ -7784,7 +7784,7 @@
 
 %% Example:
 %% ocsf_finding_filters() :: #{
-%%   <<"CompositeFilters">> => list(composite_filter()()),
+%%   <<"CompositeFilters">> => list(composite_filter()),
 %%   <<"CompositeOperator">> => list(any())
 %% }
 -type ocsf_finding_filters() :: #{binary() => any()}.
@@ -7814,7 +7814,7 @@
 
 %% Example:
 %% describe_action_targets_request() :: #{
-%%   <<"ActionTargetArns">> => list(string()()),
+%%   <<"ActionTargetArns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -7837,15 +7837,15 @@
 
 %% Example:
 %% aws_ec2_launch_template_data_details() :: #{
-%%   <<"BlockDeviceMappingSet">> => list(aws_ec2_launch_template_data_block_device_mapping_set_details()()),
+%%   <<"BlockDeviceMappingSet">> => list(aws_ec2_launch_template_data_block_device_mapping_set_details()),
 %%   <<"CapacityReservationSpecification">> => aws_ec2_launch_template_data_capacity_reservation_specification_details(),
 %%   <<"CpuOptions">> => aws_ec2_launch_template_data_cpu_options_details(),
 %%   <<"CreditSpecification">> => aws_ec2_launch_template_data_credit_specification_details(),
 %%   <<"DisableApiStop">> => boolean(),
 %%   <<"DisableApiTermination">> => boolean(),
 %%   <<"EbsOptimized">> => boolean(),
-%%   <<"ElasticGpuSpecificationSet">> => list(aws_ec2_launch_template_data_elastic_gpu_specification_set_details()()),
-%%   <<"ElasticInferenceAcceleratorSet">> => list(aws_ec2_launch_template_data_elastic_inference_accelerator_set_details()()),
+%%   <<"ElasticGpuSpecificationSet">> => list(aws_ec2_launch_template_data_elastic_gpu_specification_set_details()),
+%%   <<"ElasticInferenceAcceleratorSet">> => list(aws_ec2_launch_template_data_elastic_inference_accelerator_set_details()),
 %%   <<"EnclaveOptions">> => aws_ec2_launch_template_data_enclave_options_details(),
 %%   <<"HibernationOptions">> => aws_ec2_launch_template_data_hibernation_options_details(),
 %%   <<"IamInstanceProfile">> => aws_ec2_launch_template_data_iam_instance_profile_details(),
@@ -7856,16 +7856,16 @@
 %%   <<"InstanceType">> => string(),
 %%   <<"KernelId">> => string(),
 %%   <<"KeyName">> => string(),
-%%   <<"LicenseSet">> => list(aws_ec2_launch_template_data_license_set_details()()),
+%%   <<"LicenseSet">> => list(aws_ec2_launch_template_data_license_set_details()),
 %%   <<"MaintenanceOptions">> => aws_ec2_launch_template_data_maintenance_options_details(),
 %%   <<"MetadataOptions">> => aws_ec2_launch_template_data_metadata_options_details(),
 %%   <<"Monitoring">> => aws_ec2_launch_template_data_monitoring_details(),
-%%   <<"NetworkInterfaceSet">> => list(aws_ec2_launch_template_data_network_interface_set_details()()),
+%%   <<"NetworkInterfaceSet">> => list(aws_ec2_launch_template_data_network_interface_set_details()),
 %%   <<"Placement">> => aws_ec2_launch_template_data_placement_details(),
 %%   <<"PrivateDnsNameOptions">> => aws_ec2_launch_template_data_private_dns_name_options_details(),
 %%   <<"RamDiskId">> => string(),
-%%   <<"SecurityGroupIdSet">> => list(string()()),
-%%   <<"SecurityGroupSet">> => list(string()()),
+%%   <<"SecurityGroupIdSet">> => list(string()),
+%%   <<"SecurityGroupSet">> => list(string()),
 %%   <<"UserData">> => string()
 %% }
 -type aws_ec2_launch_template_data_details() :: #{binary() => any()}.
@@ -7950,7 +7950,7 @@
 
 %% Example:
 %% get_resources_statistics_v2_request() :: #{
-%%   <<"GroupByRules">> := list(resource_group_by_rule()()),
+%%   <<"GroupByRules">> := list(resource_group_by_rule()),
 %%   <<"MaxStatisticResults">> => integer(),
 %%   <<"SortOrder">> => list(any())
 %% }
@@ -7994,7 +7994,7 @@
 %% aws_ecs_task_definition_container_definitions_linux_parameters_devices_details() :: #{
 %%   <<"ContainerPath">> => string(),
 %%   <<"HostPath">> => string(),
-%%   <<"Permissions">> => list(string()())
+%%   <<"Permissions">> => list(string())
 %% }
 -type aws_ecs_task_definition_container_definitions_linux_parameters_devices_details() :: #{binary() => any()}.
 
@@ -8040,7 +8040,7 @@
 %% create_aggregator_v2_response() :: #{
 %%   <<"AggregationRegion">> => string(),
 %%   <<"AggregatorV2Arn">> => string(),
-%%   <<"LinkedRegions">> => list(string()()),
+%%   <<"LinkedRegions">> => list(string()),
 %%   <<"RegionLinkingMode">> => string()
 %% }
 -type create_aggregator_v2_response() :: #{binary() => any()}.
@@ -8096,7 +8096,7 @@
 %% Example:
 %% resource_result() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"FindingsSummary">> => list(resource_findings_summary()()),
+%%   <<"FindingsSummary">> => list(resource_findings_summary()),
 %%   <<"Region">> => string(),
 %%   <<"ResourceArn">> => string(),
 %%   <<"ResourceCategory">> => list(any()),
@@ -8105,7 +8105,7 @@
 %%   <<"ResourceDetailCaptureTimeDt">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceName">> => string(),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_result() :: #{binary() => any()}.
@@ -8132,7 +8132,7 @@
 
 %% Example:
 %% aws_s3_bucket_bucket_lifecycle_configuration_details() :: #{
-%%   <<"Rules">> => list(aws_s3_bucket_bucket_lifecycle_configuration_rules_details()())
+%%   <<"Rules">> => list(aws_s3_bucket_bucket_lifecycle_configuration_rules_details())
 %% }
 -type aws_s3_bucket_bucket_lifecycle_configuration_details() :: #{binary() => any()}.
 
@@ -8190,7 +8190,7 @@
 
 %% Example:
 %% cvss() :: #{
-%%   <<"Adjustments">> => list(adjustment()()),
+%%   <<"Adjustments">> => list(adjustment()),
 %%   <<"BaseScore">> => float(),
 %%   <<"BaseVector">> => string(),
 %%   <<"Source">> => string(),
@@ -8212,18 +8212,18 @@
 %%   <<"Confidence">> => integer(),
 %%   <<"ProductName">> => string(),
 %%   <<"RecordState">> => list(any()),
-%%   <<"Malware">> => list(malware()()),
+%%   <<"Malware">> => list(malware()),
 %%   <<"Network">> => network(),
 %%   <<"Detection">> => detection(),
-%%   <<"Vulnerabilities">> => list(vulnerability()()),
+%%   <<"Vulnerabilities">> => list(vulnerability()),
 %%   <<"CompanyName">> => string(),
 %%   <<"AwsAccountId">> => string(),
-%%   <<"RelatedFindings">> => list(related_finding()()),
-%%   <<"Resources">> => list(resource()()),
+%%   <<"RelatedFindings">> => list(related_finding()),
+%%   <<"Resources">> => list(resource()),
 %%   <<"GeneratorId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Region">> => string(),
-%%   <<"ThreatIntelIndicators">> => list(threat_intel_indicator()()),
+%%   <<"ThreatIntelIndicators">> => list(threat_intel_indicator()),
 %%   <<"Process">> => process_details(),
 %%   <<"ProductFields">> => map(),
 %%   <<"Compliance">> => compliance(),
@@ -8238,7 +8238,7 @@
 %%   <<"Remediation">> => remediation(),
 %%   <<"Severity">> => severity(),
 %%   <<"Sample">> => boolean(),
-%%   <<"Threats">> => list(threat()()),
+%%   <<"Threats">> => list(threat()),
 %%   <<"ProcessedAt">> => string(),
 %%   <<"Title">> => string(),
 %%   <<"UserDefinedFields">> => map(),
@@ -8247,9 +8247,9 @@
 %%   <<"Workflow">> => workflow(),
 %%   <<"Action">> => action(),
 %%   <<"CreatedAt">> => string(),
-%%   <<"Types">> => list(string()()),
+%%   <<"Types">> => list(string()),
 %%   <<"AwsAccountName">> => string(),
-%%   <<"NetworkPath">> => list(network_path_component()()),
+%%   <<"NetworkPath">> => list(network_path_component()),
 %%   <<"UpdatedAt">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"LastObservedAt">> => string(),
@@ -8293,14 +8293,14 @@
 
 %% Example:
 %% aws_auto_scaling_auto_scaling_group_details() :: #{
-%%   <<"AvailabilityZones">> => list(aws_auto_scaling_auto_scaling_group_availability_zones_list_details()()),
+%%   <<"AvailabilityZones">> => list(aws_auto_scaling_auto_scaling_group_availability_zones_list_details()),
 %%   <<"CapacityRebalance">> => boolean(),
 %%   <<"CreatedTime">> => string(),
 %%   <<"HealthCheckGracePeriod">> => integer(),
 %%   <<"HealthCheckType">> => string(),
 %%   <<"LaunchConfigurationName">> => string(),
 %%   <<"LaunchTemplate">> => aws_auto_scaling_auto_scaling_group_launch_template_launch_template_specification(),
-%%   <<"LoadBalancerNames">> => list(string()()),
+%%   <<"LoadBalancerNames">> => list(string()),
 %%   <<"MixedInstancesPolicy">> => aws_auto_scaling_auto_scaling_group_mixed_instances_policy_details()
 %% }
 -type aws_auto_scaling_auto_scaling_group_details() :: #{binary() => any()}.
@@ -8361,7 +8361,7 @@
 %% Example:
 %% create_aggregator_v2_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"LinkedRegions">> => list(string()()),
+%%   <<"LinkedRegions">> => list(string()),
 %%   <<"RegionLinkingMode">> := string(),
 %%   <<"Tags">> => map()
 %% }
@@ -8524,7 +8524,7 @@
 %% Example:
 %% aws_ecs_task_definition_proxy_configuration_details() :: #{
 %%   <<"ContainerName">> => string(),
-%%   <<"ProxyConfigurationProperties">> => list(aws_ecs_task_definition_proxy_configuration_proxy_configuration_properties_details()()),
+%%   <<"ProxyConfigurationProperties">> => list(aws_ecs_task_definition_proxy_configuration_proxy_configuration_properties_details()),
 %%   <<"Type">> => string()
 %% }
 -type aws_ecs_task_definition_proxy_configuration_details() :: #{binary() => any()}.
@@ -8542,8 +8542,8 @@
 
 %% Example:
 %% network_path_component_details() :: #{
-%%   <<"Address">> => list(string()()),
-%%   <<"PortRanges">> => list(port_range()())
+%%   <<"Address">> => list(string()),
+%%   <<"PortRanges">> => list(port_range())
 %% }
 -type network_path_component_details() :: #{binary() => any()}.
 
@@ -8569,7 +8569,7 @@
 %% Example:
 %% aws_elb_load_balancer_backend_server_description() :: #{
 %%   <<"InstancePort">> => integer(),
-%%   <<"PolicyNames">> => list(string()())
+%%   <<"PolicyNames">> => list(string())
 %% }
 -type aws_elb_load_balancer_backend_server_description() :: #{binary() => any()}.
 
@@ -8577,12 +8577,12 @@
 %% Example:
 %% aws_ecs_cluster_details() :: #{
 %%   <<"ActiveServicesCount">> => integer(),
-%%   <<"CapacityProviders">> => list(string()()),
+%%   <<"CapacityProviders">> => list(string()),
 %%   <<"ClusterArn">> => string(),
 %%   <<"ClusterName">> => string(),
-%%   <<"ClusterSettings">> => list(aws_ecs_cluster_cluster_settings_details()()),
+%%   <<"ClusterSettings">> => list(aws_ecs_cluster_cluster_settings_details()),
 %%   <<"Configuration">> => aws_ecs_cluster_configuration_details(),
-%%   <<"DefaultCapacityProviderStrategy">> => list(aws_ecs_cluster_default_capacity_provider_strategy_details()()),
+%%   <<"DefaultCapacityProviderStrategy">> => list(aws_ecs_cluster_default_capacity_provider_strategy_details()),
 %%   <<"RegisteredContainerInstancesCount">> => integer(),
 %%   <<"RunningTasksCount">> => integer(),
 %%   <<"Status">> => string()
@@ -8596,21 +8596,21 @@
 
 %% Example:
 %% aws_ecs_task_definition_details() :: #{
-%%   <<"ContainerDefinitions">> => list(aws_ecs_task_definition_container_definitions_details()()),
+%%   <<"ContainerDefinitions">> => list(aws_ecs_task_definition_container_definitions_details()),
 %%   <<"Cpu">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"Family">> => string(),
-%%   <<"InferenceAccelerators">> => list(aws_ecs_task_definition_inference_accelerators_details()()),
+%%   <<"InferenceAccelerators">> => list(aws_ecs_task_definition_inference_accelerators_details()),
 %%   <<"IpcMode">> => string(),
 %%   <<"Memory">> => string(),
 %%   <<"NetworkMode">> => string(),
 %%   <<"PidMode">> => string(),
-%%   <<"PlacementConstraints">> => list(aws_ecs_task_definition_placement_constraints_details()()),
+%%   <<"PlacementConstraints">> => list(aws_ecs_task_definition_placement_constraints_details()),
 %%   <<"ProxyConfiguration">> => aws_ecs_task_definition_proxy_configuration_details(),
-%%   <<"RequiresCompatibilities">> => list(string()()),
+%%   <<"RequiresCompatibilities">> => list(string()),
 %%   <<"Status">> => string(),
 %%   <<"TaskRoleArn">> => string(),
-%%   <<"Volumes">> => list(aws_ecs_task_definition_volumes_details()())
+%%   <<"Volumes">> => list(aws_ecs_task_definition_volumes_details())
 %% }
 -type aws_ecs_task_definition_details() :: #{binary() => any()}.
 
@@ -8643,7 +8643,7 @@
 
 %% Example:
 %% security_hub_policy() :: #{
-%%   <<"EnabledStandardIdentifiers">> => list(string()()),
+%%   <<"EnabledStandardIdentifiers">> => list(string()),
 %%   <<"SecurityControlsConfiguration">> => security_controls_configuration(),
 %%   <<"ServiceEnabled">> => boolean()
 %% }
@@ -8706,7 +8706,7 @@
 %%   <<"Architecture">> => string(),
 %%   <<"ImageDigest">> => string(),
 %%   <<"ImagePublishedAt">> => string(),
-%%   <<"ImageTags">> => list(string()()),
+%%   <<"ImageTags">> => list(string()),
 %%   <<"RegistryId">> => string(),
 %%   <<"RepositoryName">> => string()
 %% }
@@ -8716,12 +8716,12 @@
 %% Example:
 %% aws_ec2_network_interface_details() :: #{
 %%   <<"Attachment">> => aws_ec2_network_interface_attachment(),
-%%   <<"IpV6Addresses">> => list(aws_ec2_network_interface_ip_v6_address_detail()()),
+%%   <<"IpV6Addresses">> => list(aws_ec2_network_interface_ip_v6_address_detail()),
 %%   <<"NetworkInterfaceId">> => string(),
-%%   <<"PrivateIpAddresses">> => list(aws_ec2_network_interface_private_ip_address_detail()()),
+%%   <<"PrivateIpAddresses">> => list(aws_ec2_network_interface_private_ip_address_detail()),
 %%   <<"PublicDnsName">> => string(),
 %%   <<"PublicIp">> => string(),
-%%   <<"SecurityGroups">> => list(aws_ec2_network_interface_security_group()()),
+%%   <<"SecurityGroups">> => list(aws_ec2_network_interface_security_group()),
 %%   <<"SourceDestCheck">> => boolean()
 %% }
 -type aws_ec2_network_interface_details() :: #{binary() => any()}.
@@ -8775,7 +8775,7 @@
 
 %% Example:
 %% aws_wafv2_custom_request_handling_details() :: #{
-%%   <<"InsertHeaders">> => list(aws_wafv2_custom_http_header()())
+%%   <<"InsertHeaders">> => list(aws_wafv2_custom_http_header())
 %% }
 -type aws_wafv2_custom_request_handling_details() :: #{binary() => any()}.
 
@@ -8791,7 +8791,7 @@
 %% aws_waf_rule_details() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"PredicateList">> => list(aws_waf_rule_predicate_list_details()()),
+%%   <<"PredicateList">> => list(aws_waf_rule_predicate_list_details()),
 %%   <<"RuleId">> => string()
 %% }
 -type aws_waf_rule_details() :: #{binary() => any()}.
@@ -8807,7 +8807,7 @@
 
 %% Example:
 %% list_organization_admin_accounts_response() :: #{
-%%   <<"AdminAccounts">> => list(admin_account()()),
+%%   <<"AdminAccounts">> => list(admin_account()),
 %%   <<"Feature">> => list(any()),
 %%   <<"NextToken">> => string()
 %% }
@@ -8817,7 +8817,7 @@
 %% Example:
 %% product_v2() :: #{
 %%   <<"ActivationUrl">> => string(),
-%%   <<"Categories">> => list(string()()),
+%%   <<"Categories">> => list(string()),
 %%   <<"CompanyName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"IntegrationV2Types">> => list(list(any())()),
@@ -8833,7 +8833,7 @@
 
 %% Example:
 %% batch_disable_standards_request() :: #{
-%%   <<"StandardsSubscriptionArns">> := list(string()())
+%%   <<"StandardsSubscriptionArns">> := list(string())
 %% }
 -type batch_disable_standards_request() :: #{binary() => any()}.
 
@@ -8853,7 +8853,7 @@
 
 %% Example:
 %% aws_waf_regional_rate_based_rule_details() :: #{
-%%   <<"MatchPredicates">> => list(aws_waf_regional_rate_based_rule_match_predicate()()),
+%%   <<"MatchPredicates">> => list(aws_waf_regional_rate_based_rule_match_predicate()),
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RateKey">> => string(),
@@ -8868,16 +8868,16 @@
 %%   <<"ErrorDocument">> => string(),
 %%   <<"IndexDocumentSuffix">> => string(),
 %%   <<"RedirectAllRequestsTo">> => aws_s3_bucket_website_configuration_redirect_to(),
-%%   <<"RoutingRules">> => list(aws_s3_bucket_website_configuration_routing_rule()())
+%%   <<"RoutingRules">> => list(aws_s3_bucket_website_configuration_routing_rule())
 %% }
 -type aws_s3_bucket_website_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_ec2_vpc_details() :: #{
-%%   <<"CidrBlockAssociationSet">> => list(cidr_block_association()()),
+%%   <<"CidrBlockAssociationSet">> => list(cidr_block_association()),
 %%   <<"DhcpOptionsId">> => string(),
-%%   <<"Ipv6CidrBlockAssociationSet">> => list(ipv6_cidr_block_association()()),
+%%   <<"Ipv6CidrBlockAssociationSet">> => list(ipv6_cidr_block_association()),
 %%   <<"State">> => string()
 %% }
 -type aws_ec2_vpc_details() :: #{binary() => any()}.
@@ -8885,8 +8885,8 @@
 
 %% Example:
 %% enum_list_configuration_options() :: #{
-%%   <<"AllowedValues">> => list(string()()),
-%%   <<"DefaultValue">> => list(string()()),
+%%   <<"AllowedValues">> => list(string()),
+%%   <<"DefaultValue">> => list(string()),
 %%   <<"MaxItems">> => integer()
 %% }
 -type enum_list_configuration_options() :: #{binary() => any()}.
@@ -8967,7 +8967,7 @@
 %% get_aggregator_v2_response() :: #{
 %%   <<"AggregationRegion">> => string(),
 %%   <<"AggregatorV2Arn">> => string(),
-%%   <<"LinkedRegions">> => list(string()()),
+%%   <<"LinkedRegions">> => list(string()),
 %%   <<"RegionLinkingMode">> => string()
 %% }
 -type get_aggregator_v2_response() :: #{binary() => any()}.
@@ -8975,7 +8975,7 @@
 
 %% Example:
 %% aws_lambda_function_details() :: #{
-%%   <<"Architectures">> => list(string()()),
+%%   <<"Architectures">> => list(string()),
 %%   <<"Code">> => aws_lambda_function_code(),
 %%   <<"CodeSha256">> => string(),
 %%   <<"DeadLetterConfig">> => aws_lambda_function_dead_letter_config(),
@@ -8984,7 +8984,7 @@
 %%   <<"Handler">> => string(),
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"LastModified">> => string(),
-%%   <<"Layers">> => list(aws_lambda_function_layer()()),
+%%   <<"Layers">> => list(aws_lambda_function_layer()),
 %%   <<"MasterArn">> => string(),
 %%   <<"MemorySize">> => integer(),
 %%   <<"PackageType">> => string(),
@@ -9012,7 +9012,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EndpointId">> => string(),
 %%   <<"EndpointUrl">> => string(),
-%%   <<"EventBuses">> => list(aws_events_endpoint_event_buses_details()()),
+%%   <<"EventBuses">> => list(aws_events_endpoint_event_buses_details()),
 %%   <<"Name">> => string(),
 %%   <<"ReplicationConfig">> => aws_events_endpoint_replication_config_details(),
 %%   <<"RoleArn">> => string(),
@@ -9056,15 +9056,15 @@
 
 %% Example:
 %% batch_get_configuration_policy_associations_request() :: #{
-%%   <<"ConfigurationPolicyAssociationIdentifiers">> := list(configuration_policy_association()())
+%%   <<"ConfigurationPolicyAssociationIdentifiers">> := list(configuration_policy_association())
 %% }
 -type batch_get_configuration_policy_associations_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_standards_control_associations_response() :: #{
-%%   <<"StandardsControlAssociationDetails">> => list(standards_control_association_detail()()),
-%%   <<"UnprocessedAssociations">> => list(unprocessed_standards_control_association()())
+%%   <<"StandardsControlAssociationDetails">> => list(standards_control_association_detail()),
+%%   <<"UnprocessedAssociations">> => list(unprocessed_standards_control_association())
 %% }
 -type batch_get_standards_control_associations_response() :: #{binary() => any()}.
 
@@ -9079,8 +9079,8 @@
 
 %% Example:
 %% batch_delete_automation_rules_response() :: #{
-%%   <<"ProcessedAutomationRules">> => list(string()()),
-%%   <<"UnprocessedAutomationRules">> => list(unprocessed_automation_rule()())
+%%   <<"ProcessedAutomationRules">> => list(string()),
+%%   <<"UnprocessedAutomationRules">> => list(unprocessed_automation_rule())
 %% }
 -type batch_delete_automation_rules_response() :: #{binary() => any()}.
 
@@ -9147,19 +9147,19 @@
 
 %% Example:
 %% aws_dynamo_db_table_details() :: #{
-%%   <<"AttributeDefinitions">> => list(aws_dynamo_db_table_attribute_definition()()),
+%%   <<"AttributeDefinitions">> => list(aws_dynamo_db_table_attribute_definition()),
 %%   <<"BillingModeSummary">> => aws_dynamo_db_table_billing_mode_summary(),
 %%   <<"CreationDateTime">> => string(),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
-%%   <<"GlobalSecondaryIndexes">> => list(aws_dynamo_db_table_global_secondary_index()()),
+%%   <<"GlobalSecondaryIndexes">> => list(aws_dynamo_db_table_global_secondary_index()),
 %%   <<"GlobalTableVersion">> => string(),
 %%   <<"ItemCount">> => integer(),
-%%   <<"KeySchema">> => list(aws_dynamo_db_table_key_schema()()),
+%%   <<"KeySchema">> => list(aws_dynamo_db_table_key_schema()),
 %%   <<"LatestStreamArn">> => string(),
 %%   <<"LatestStreamLabel">> => string(),
-%%   <<"LocalSecondaryIndexes">> => list(aws_dynamo_db_table_local_secondary_index()()),
+%%   <<"LocalSecondaryIndexes">> => list(aws_dynamo_db_table_local_secondary_index()),
 %%   <<"ProvisionedThroughput">> => aws_dynamo_db_table_provisioned_throughput(),
-%%   <<"Replicas">> => list(aws_dynamo_db_table_replica()()),
+%%   <<"Replicas">> => list(aws_dynamo_db_table_replica()),
 %%   <<"RestoreSummary">> => aws_dynamo_db_table_restore_summary(),
 %%   <<"SseDescription">> => aws_dynamo_db_table_sse_description(),
 %%   <<"StreamSpecification">> => aws_dynamo_db_table_stream_specification(),
@@ -9190,14 +9190,14 @@
 
 %% Example:
 %% create_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(result()())
+%%   <<"UnprocessedAccounts">> => list(result())
 %% }
 -type create_members_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_automation_rules_response() :: #{
-%%   <<"AutomationRulesMetadata">> => list(automation_rules_metadata()()),
+%%   <<"AutomationRulesMetadata">> => list(automation_rules_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_automation_rules_response() :: #{binary() => any()}.
@@ -9206,7 +9206,7 @@
 %% Example:
 %% aws_code_build_project_environment() :: #{
 %%   <<"Certificate">> => string(),
-%%   <<"EnvironmentVariables">> => list(aws_code_build_project_environment_environment_variables_details()()),
+%%   <<"EnvironmentVariables">> => list(aws_code_build_project_environment_environment_variables_details()),
 %%   <<"ImagePullCredentialsType">> => string(),
 %%   <<"PrivilegedMode">> => boolean(),
 %%   <<"RegistryCredential">> => aws_code_build_project_environment_registry_credential(),
@@ -9238,8 +9238,8 @@
 
 %% Example:
 %% rule_group_source_stateless_rule_match_attributes_tcp_flags() :: #{
-%%   <<"Flags">> => list(string()()),
-%%   <<"Masks">> => list(string()())
+%%   <<"Flags">> => list(string()),
+%%   <<"Masks">> => list(string())
 %% }
 -type rule_group_source_stateless_rule_match_attributes_tcp_flags() :: #{binary() => any()}.
 
@@ -9256,7 +9256,7 @@
 %% Example:
 %% aws_ec2_vpn_connection_options_details() :: #{
 %%   <<"StaticRoutesOnly">> => boolean(),
-%%   <<"TunnelOptions">> => list(aws_ec2_vpn_connection_options_tunnel_options_details()())
+%%   <<"TunnelOptions">> => list(aws_ec2_vpn_connection_options_tunnel_options_details())
 %% }
 -type aws_ec2_vpn_connection_options_details() :: #{binary() => any()}.
 
@@ -9307,14 +9307,14 @@
 
 %% Example:
 %% aws_elbv2_load_balancer_details() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"AvailabilityZones">> => list(availability_zone()),
 %%   <<"CanonicalHostedZoneId">> => string(),
 %%   <<"CreatedTime">> => string(),
 %%   <<"DNSName">> => string(),
 %%   <<"IpAddressType">> => string(),
-%%   <<"LoadBalancerAttributes">> => list(aws_elbv2_load_balancer_attribute()()),
+%%   <<"LoadBalancerAttributes">> => list(aws_elbv2_load_balancer_attribute()),
 %%   <<"Scheme">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"State">> => load_balancer_state(),
 %%   <<"Type">> => string(),
 %%   <<"VpcId">> => string()
@@ -9331,10 +9331,10 @@
 
 %% Example:
 %% aws_ec2_route_table_details() :: #{
-%%   <<"AssociationSet">> => list(association_set_details()()),
+%%   <<"AssociationSet">> => list(association_set_details()),
 %%   <<"OwnerId">> => string(),
-%%   <<"PropagatingVgwSet">> => list(propagating_vgw_set_details()()),
-%%   <<"RouteSet">> => list(route_set_details()()),
+%%   <<"PropagatingVgwSet">> => list(propagating_vgw_set_details()),
+%%   <<"RouteSet">> => list(route_set_details()),
 %%   <<"RouteTableId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -9358,21 +9358,21 @@
 %% Example:
 %% aws_cloud_watch_alarm_details() :: #{
 %%   <<"ActionsEnabled">> => boolean(),
-%%   <<"AlarmActions">> => list(string()()),
+%%   <<"AlarmActions">> => list(string()),
 %%   <<"AlarmArn">> => string(),
 %%   <<"AlarmConfigurationUpdatedTimestamp">> => string(),
 %%   <<"AlarmDescription">> => string(),
 %%   <<"AlarmName">> => string(),
 %%   <<"ComparisonOperator">> => string(),
 %%   <<"DatapointsToAlarm">> => integer(),
-%%   <<"Dimensions">> => list(aws_cloud_watch_alarm_dimensions_details()()),
+%%   <<"Dimensions">> => list(aws_cloud_watch_alarm_dimensions_details()),
 %%   <<"EvaluateLowSampleCountPercentile">> => string(),
 %%   <<"EvaluationPeriods">> => integer(),
 %%   <<"ExtendedStatistic">> => string(),
-%%   <<"InsufficientDataActions">> => list(string()()),
+%%   <<"InsufficientDataActions">> => list(string()),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
-%%   <<"OkActions">> => list(string()()),
+%%   <<"OkActions">> => list(string()),
 %%   <<"Period">> => integer(),
 %%   <<"Statistic">> => string(),
 %%   <<"Threshold">> => float(),
@@ -9452,7 +9452,7 @@
 %%   <<"MultiAZ">> => boolean(),
 %%   <<"PendingCloudWatchLogsExports">> => aws_rds_pending_cloud_watch_logs_exports(),
 %%   <<"Port">> => integer(),
-%%   <<"ProcessorFeatures">> => list(aws_rds_db_processor_feature()()),
+%%   <<"ProcessorFeatures">> => list(aws_rds_db_processor_feature()),
 %%   <<"StorageType">> => string()
 %% }
 -type aws_rds_db_pending_modified_values() :: #{binary() => any()}.
@@ -9469,8 +9469,8 @@
 
 %% Example:
 %% aws_lambda_function_vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type aws_lambda_function_vpc_config() :: #{binary() => any()}.
@@ -9531,10 +9531,10 @@
 %%   <<"Logs">> => aws_amazon_mq_broker_logs_details(),
 %%   <<"MaintenanceWindowStartTime">> => aws_amazon_mq_broker_maintenance_window_start_time_details(),
 %%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"StorageType">> => string(),
-%%   <<"SubnetIds">> => list(string()()),
-%%   <<"Users">> => list(aws_amazon_mq_broker_users_details()())
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Users">> => list(aws_amazon_mq_broker_users_details())
 %% }
 -type aws_amazon_mq_broker_details() :: #{binary() => any()}.
 
@@ -9544,7 +9544,7 @@
 %%   <<"FindingAggregationRegion">> => string(),
 %%   <<"FindingAggregatorArn">> => string(),
 %%   <<"RegionLinkingMode">> => string(),
-%%   <<"Regions">> => list(string()())
+%%   <<"Regions">> => list(string())
 %% }
 -type update_finding_aggregator_response() :: #{binary() => any()}.
 
@@ -9591,7 +9591,7 @@
 
 %% Example:
 %% list_invitations_response() :: #{
-%%   <<"Invitations">> => list(invitation()()),
+%%   <<"Invitations">> => list(invitation()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_invitations_response() :: #{binary() => any()}.
@@ -9626,7 +9626,7 @@
 %%   <<"Key">> => string(),
 %%   <<"Title">> => string(),
 %%   <<"Type">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type indicator() :: #{binary() => any()}.
 

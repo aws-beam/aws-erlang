@@ -251,7 +251,7 @@
 
 %% Example:
 %% describe_operating_systems_response() :: #{
-%%   <<"OperatingSystems">> => list(operating_system()())
+%%   <<"OperatingSystems">> => list(operating_system())
 %% }
 -type describe_operating_systems_response() :: #{binary() => any()}.
 
@@ -261,11 +261,11 @@
 %%   <<"AppSource">> => source(),
 %%   <<"Attributes">> => map(),
 %%   <<"CreatedAt">> => string(),
-%%   <<"DataSources">> => list(data_source()()),
+%%   <<"DataSources">> => list(data_source()),
 %%   <<"Description">> => string(),
-%%   <<"Domains">> => list(string()()),
+%%   <<"Domains">> => list(string()),
 %%   <<"EnableSsl">> => boolean(),
-%%   <<"Environment">> => list(environment_variable()()),
+%%   <<"Environment">> => list(environment_variable()),
 %%   <<"Name">> => string(),
 %%   <<"Shortname">> => string(),
 %%   <<"SslConfiguration">> => ssl_configuration(),
@@ -286,7 +286,7 @@
 
 %% Example:
 %% describe_apps_request() :: #{
-%%   <<"AppIds">> => list(string()()),
+%%   <<"AppIds">> => list(string()),
 %%   <<"StackId">> => string()
 %% }
 -type describe_apps_request() :: #{binary() => any()}.
@@ -328,11 +328,11 @@
 %% create_app_request() :: #{
 %%   <<"AppSource">> => source(),
 %%   <<"Attributes">> => map(),
-%%   <<"DataSources">> => list(data_source()()),
+%%   <<"DataSources">> => list(data_source()),
 %%   <<"Description">> => string(),
-%%   <<"Domains">> => list(string()()),
+%%   <<"Domains">> => list(string()),
 %%   <<"EnableSsl">> => boolean(),
-%%   <<"Environment">> => list(environment_variable()()),
+%%   <<"Environment">> => list(environment_variable()),
 %%   <<"Name">> := string(),
 %%   <<"Shortname">> => string(),
 %%   <<"SslConfiguration">> => ssl_configuration(),
@@ -349,13 +349,13 @@
 
 %% Example:
 %% describe_elastic_ips_result() :: #{
-%%   <<"ElasticIps">> => list(elastic_ip()())
+%%   <<"ElasticIps">> => list(elastic_ip())
 %% }
 -type describe_elastic_ips_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_rds_db_instances_request() :: #{
-%%   <<"RdsDbInstanceArns">> => list(string()()),
+%%   <<"RdsDbInstanceArns">> => list(string()),
 %%   <<"StackId">> := string()
 %% }
 -type describe_rds_db_instances_request() :: #{binary() => any()}.
@@ -371,7 +371,7 @@
 %%   <<"DeploymentId">> => string(),
 %%   <<"Duration">> => integer(),
 %%   <<"IamUserArn">> => string(),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"StackId">> => string(),
 %%   <<"Status">> => string()
 %% }
@@ -448,7 +448,7 @@
 
 %% Example:
 %% describe_raid_arrays_result() :: #{
-%%   <<"RaidArrays">> => list(raid_array()())
+%%   <<"RaidArrays">> => list(raid_array())
 %% }
 -type describe_raid_arrays_result() :: #{binary() => any()}.
 
@@ -462,14 +462,14 @@
 %% Example:
 %% describe_elastic_ips_request() :: #{
 %%   <<"InstanceId">> => string(),
-%%   <<"Ips">> => list(string()()),
+%%   <<"Ips">> => list(string()),
 %%   <<"StackId">> => string()
 %% }
 -type describe_elastic_ips_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_commands_result() :: #{
-%%   <<"Commands">> => list(command()())
+%%   <<"Commands">> => list(command())
 %% }
 -type describe_commands_result() :: #{binary() => any()}.
 
@@ -492,7 +492,7 @@
 %%   <<"InstanceId">> => string(),
 %%   <<"RaidArrayId">> => string(),
 %%   <<"StackId">> => string(),
-%%   <<"VolumeIds">> => list(string()())
+%%   <<"VolumeIds">> => list(string())
 %% }
 -type describe_volumes_request() :: #{binary() => any()}.
 
@@ -516,8 +516,8 @@
 %%   <<"Command">> := deployment_command(),
 %%   <<"Comment">> => string(),
 %%   <<"CustomJson">> => string(),
-%%   <<"InstanceIds">> => list(string()()),
-%%   <<"LayerIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"LayerIds">> => list(string()),
 %%   <<"StackId">> := string()
 %% }
 -type create_deployment_request() :: #{binary() => any()}.
@@ -575,7 +575,7 @@
 
 %% Example:
 %% operating_system() :: #{
-%%   <<"ConfigurationManagers">> => list(operating_system_configuration_manager()()),
+%%   <<"ConfigurationManagers">> => list(operating_system_configuration_manager()),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"ReportedName">> => string(),
@@ -587,7 +587,7 @@
 
 %% Example:
 %% describe_permissions_result() :: #{
-%%   <<"Permissions">> => list(permission()())
+%%   <<"Permissions">> => list(permission())
 %% }
 -type describe_permissions_result() :: #{binary() => any()}.
 
@@ -601,7 +601,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -613,7 +613,7 @@
 
 %% Example:
 %% describe_commands_request() :: #{
-%%   <<"CommandIds">> => list(string()()),
+%%   <<"CommandIds">> => list(string()),
 %%   <<"DeploymentId">> => string(),
 %%   <<"InstanceId">> => string()
 %% }
@@ -681,7 +681,7 @@
 %% Example:
 %% cloud_watch_logs_configuration() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"LogStreams">> => list(cloud_watch_logs_log_stream()())
+%%   <<"LogStreams">> => list(cloud_watch_logs_log_stream())
 %% }
 -type cloud_watch_logs_configuration() :: #{binary() => any()}.
 
@@ -750,27 +750,27 @@
 
 %% Example:
 %% describe_rds_db_instances_result() :: #{
-%%   <<"RdsDbInstances">> => list(rds_db_instance()())
+%%   <<"RdsDbInstances">> => list(rds_db_instance())
 %% }
 -type describe_rds_db_instances_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_elastic_load_balancers_request() :: #{
-%%   <<"LayerIds">> => list(string()()),
+%%   <<"LayerIds">> => list(string()),
 %%   <<"StackId">> => string()
 %% }
 -type describe_elastic_load_balancers_request() :: #{binary() => any()}.
 
 %% Example:
 %% elastic_load_balancer() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"DnsName">> => string(),
-%%   <<"Ec2InstanceIds">> => list(string()()),
+%%   <<"Ec2InstanceIds">> => list(string()),
 %%   <<"ElasticLoadBalancerName">> => string(),
 %%   <<"LayerId">> => string(),
 %%   <<"Region">> => string(),
 %%   <<"StackId">> => string(),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type elastic_load_balancer() :: #{binary() => any()}.
@@ -783,11 +783,11 @@
 
 %% Example:
 %% recipes() :: #{
-%%   <<"Configure">> => list(string()()),
-%%   <<"Deploy">> => list(string()()),
-%%   <<"Setup">> => list(string()()),
-%%   <<"Shutdown">> => list(string()()),
-%%   <<"Undeploy">> => list(string()())
+%%   <<"Configure">> => list(string()),
+%%   <<"Deploy">> => list(string()),
+%%   <<"Setup">> => list(string()),
+%%   <<"Shutdown">> => list(string()),
+%%   <<"Undeploy">> => list(string())
 %% }
 -type recipes() :: #{binary() => any()}.
 
@@ -818,7 +818,7 @@
 
 %% Example:
 %% describe_stacks_request() :: #{
-%%   <<"StackIds">> => list(string()())
+%%   <<"StackIds">> => list(string())
 %% }
 -type describe_stacks_request() :: #{binary() => any()}.
 
@@ -866,7 +866,7 @@
 
 %% Example:
 %% describe_user_profiles_result() :: #{
-%%   <<"UserProfiles">> => list(user_profile()())
+%%   <<"UserProfiles">> => list(user_profile())
 %% }
 -type describe_user_profiles_result() :: #{binary() => any()}.
 
@@ -885,7 +885,7 @@
 %% Example:
 %% assign_instance_request() :: #{
 %%   <<"InstanceId">> := string(),
-%%   <<"LayerIds">> := list(string()())
+%%   <<"LayerIds">> := list(string())
 %% }
 -type assign_instance_request() :: #{binary() => any()}.
 
@@ -897,7 +897,7 @@
 
 %% Example:
 %% describe_load_based_auto_scaling_request() :: #{
-%%   <<"LayerIds">> := list(string()())
+%%   <<"LayerIds">> := list(string())
 %% }
 -type describe_load_based_auto_scaling_request() :: #{binary() => any()}.
 
@@ -912,7 +912,7 @@
 %%   <<"InstallUpdatesOnBoot">> => boolean(),
 %%   <<"InstanceId">> := string(),
 %%   <<"InstanceType">> => string(),
-%%   <<"LayerIds">> => list(string()()),
+%%   <<"LayerIds">> => list(string()),
 %%   <<"Os">> => string(),
 %%   <<"SshKeyName">> => string()
 %% }
@@ -927,7 +927,7 @@
 
 %% Example:
 %% describe_layers_result() :: #{
-%%   <<"Layers">> => list(layer()())
+%%   <<"Layers">> => list(layer())
 %% }
 -type describe_layers_result() :: #{binary() => any()}.
 
@@ -942,20 +942,20 @@
 %%   <<"CustomInstanceProfileArn">> => string(),
 %%   <<"CustomJson">> => string(),
 %%   <<"CustomRecipes">> => recipes(),
-%%   <<"CustomSecurityGroupIds">> => list(string()()),
+%%   <<"CustomSecurityGroupIds">> => list(string()),
 %%   <<"DefaultRecipes">> => recipes(),
-%%   <<"DefaultSecurityGroupNames">> => list(string()()),
+%%   <<"DefaultSecurityGroupNames">> => list(string()),
 %%   <<"EnableAutoHealing">> => boolean(),
 %%   <<"InstallUpdatesOnBoot">> => boolean(),
 %%   <<"LayerId">> => string(),
 %%   <<"LifecycleEventConfiguration">> => lifecycle_event_configuration(),
 %%   <<"Name">> => string(),
-%%   <<"Packages">> => list(string()()),
+%%   <<"Packages">> => list(string()),
 %%   <<"Shortname">> => string(),
 %%   <<"StackId">> => string(),
 %%   <<"Type">> => list(any()),
 %%   <<"UseEbsOptimizedInstances">> => boolean(),
-%%   <<"VolumeConfigurations">> => list(volume_configuration()())
+%%   <<"VolumeConfigurations">> => list(volume_configuration())
 %% }
 -type layer() :: #{binary() => any()}.
 
@@ -973,7 +973,7 @@
 
 %% Example:
 %% describe_instances_request() :: #{
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"LayerId">> => string(),
 %%   <<"StackId">> => string()
 %% }
@@ -989,19 +989,19 @@
 
 %% Example:
 %% describe_user_profiles_request() :: #{
-%%   <<"IamUserArns">> => list(string()())
+%%   <<"IamUserArns">> => list(string())
 %% }
 -type describe_user_profiles_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_elastic_load_balancers_result() :: #{
-%%   <<"ElasticLoadBalancers">> => list(elastic_load_balancer()())
+%%   <<"ElasticLoadBalancers">> => list(elastic_load_balancer())
 %% }
 -type describe_elastic_load_balancers_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_time_based_auto_scaling_request() :: #{
-%%   <<"InstanceIds">> := list(string()())
+%%   <<"InstanceIds">> := list(string())
 %% }
 -type describe_time_based_auto_scaling_request() :: #{binary() => any()}.
 
@@ -1014,7 +1014,7 @@
 
 %% Example:
 %% describe_ecs_clusters_request() :: #{
-%%   <<"EcsClusterArns">> => list(string()()),
+%%   <<"EcsClusterArns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StackId">> => string()
@@ -1053,13 +1053,13 @@
 
 %% Example:
 %% describe_deployments_result() :: #{
-%%   <<"Deployments">> => list(deployment()())
+%%   <<"Deployments">> => list(deployment())
 %% }
 -type describe_deployments_result() :: #{binary() => any()}.
 
 %% Example:
 %% auto_scaling_thresholds() :: #{
-%%   <<"Alarms">> => list(string()()),
+%%   <<"Alarms">> => list(string()),
 %%   <<"CpuThreshold">> => float(),
 %%   <<"IgnoreMetricsTime">> => integer(),
 %%   <<"InstanceCount">> => integer(),
@@ -1078,7 +1078,7 @@
 
 %% Example:
 %% describe_apps_result() :: #{
-%%   <<"Apps">> => list(app()())
+%%   <<"Apps">> => list(app())
 %% }
 -type describe_apps_result() :: #{binary() => any()}.
 
@@ -1091,16 +1091,16 @@
 %%   <<"CustomInstanceProfileArn">> => string(),
 %%   <<"CustomJson">> => string(),
 %%   <<"CustomRecipes">> => recipes(),
-%%   <<"CustomSecurityGroupIds">> => list(string()()),
+%%   <<"CustomSecurityGroupIds">> => list(string()),
 %%   <<"EnableAutoHealing">> => boolean(),
 %%   <<"InstallUpdatesOnBoot">> => boolean(),
 %%   <<"LayerId">> := string(),
 %%   <<"LifecycleEventConfiguration">> => lifecycle_event_configuration(),
 %%   <<"Name">> => string(),
-%%   <<"Packages">> => list(string()()),
+%%   <<"Packages">> => list(string()),
 %%   <<"Shortname">> => string(),
 %%   <<"UseEbsOptimizedInstances">> => boolean(),
-%%   <<"VolumeConfigurations">> => list(volume_configuration()())
+%%   <<"VolumeConfigurations">> => list(volume_configuration())
 %% }
 -type update_layer_request() :: #{binary() => any()}.
 
@@ -1131,14 +1131,14 @@
 %% Example:
 %% describe_service_errors_request() :: #{
 %%   <<"InstanceId">> => string(),
-%%   <<"ServiceErrorIds">> => list(string()()),
+%%   <<"ServiceErrorIds">> => list(string()),
 %%   <<"StackId">> => string()
 %% }
 -type describe_service_errors_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_stacks_result() :: #{
-%%   <<"Stacks">> => list(stack()())
+%%   <<"Stacks">> => list(stack())
 %% }
 -type describe_stacks_result() :: #{binary() => any()}.
 
@@ -1147,7 +1147,7 @@
 %%   <<"AgentVersion">> => string(),
 %%   <<"Attributes">> => map(),
 %%   <<"ChefConfiguration">> => chef_configuration(),
-%%   <<"CloneAppIds">> => list(string()()),
+%%   <<"CloneAppIds">> => list(string()),
 %%   <<"ClonePermissions">> => boolean(),
 %%   <<"ConfigurationManager">> => stack_configuration_manager(),
 %%   <<"CustomCookbooksSource">> => source(),
@@ -1197,12 +1197,12 @@
 %%   <<"Architecture">> => list(any()),
 %%   <<"AutoScalingType">> => list(any()),
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"Hostname">> => string(),
 %%   <<"InstallUpdatesOnBoot">> => boolean(),
 %%   <<"InstanceType">> := string(),
-%%   <<"LayerIds">> := list(string()()),
+%%   <<"LayerIds">> := list(string()),
 %%   <<"Os">> => string(),
 %%   <<"RootDeviceType">> => list(any()),
 %%   <<"SshKeyName">> => string(),
@@ -1215,7 +1215,7 @@
 
 %% Example:
 %% describe_agent_versions_result() :: #{
-%%   <<"AgentVersions">> => list(agent_version()())
+%%   <<"AgentVersions">> => list(agent_version())
 %% }
 -type describe_agent_versions_result() :: #{binary() => any()}.
 
@@ -1235,7 +1235,7 @@
 %%   <<"PublicIp">> => string(),
 %%   <<"Architecture">> => list(any()),
 %%   <<"EbsOptimized">> => boolean(),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"AgentVersion">> => string(),
 %%   <<"AmiId">> => string(),
 %%   <<"PrivateDns">> => string(),
@@ -1256,11 +1256,11 @@
 %%   <<"PublicDns">> => string(),
 %%   <<"PrivateIp">> => string(),
 %%   <<"CreatedAt">> => string(),
-%%   <<"LayerIds">> => list(string()()),
+%%   <<"LayerIds">> => list(string()),
 %%   <<"RootDeviceType">> => list(any()),
 %%   <<"SshHostDsaKeyFingerprint">> => string(),
 %%   <<"EcsContainerInstanceArn">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"InfrastructureClass">> => string(),
 %%   <<"SshKeyName">> => string(),
 %%   <<"InstanceProfileArn">> => string(),
@@ -1330,7 +1330,7 @@
 %% Example:
 %% describe_raid_arrays_request() :: #{
 %%   <<"InstanceId">> => string(),
-%%   <<"RaidArrayIds">> => list(string()()),
+%%   <<"RaidArrayIds">> => list(string()),
 %%   <<"StackId">> => string()
 %% }
 -type describe_raid_arrays_request() :: #{binary() => any()}.
@@ -1344,23 +1344,23 @@
 %%   <<"CustomInstanceProfileArn">> => string(),
 %%   <<"CustomJson">> => string(),
 %%   <<"CustomRecipes">> => recipes(),
-%%   <<"CustomSecurityGroupIds">> => list(string()()),
+%%   <<"CustomSecurityGroupIds">> => list(string()),
 %%   <<"EnableAutoHealing">> => boolean(),
 %%   <<"InstallUpdatesOnBoot">> => boolean(),
 %%   <<"LifecycleEventConfiguration">> => lifecycle_event_configuration(),
 %%   <<"Name">> := string(),
-%%   <<"Packages">> => list(string()()),
+%%   <<"Packages">> => list(string()),
 %%   <<"Shortname">> := string(),
 %%   <<"StackId">> := string(),
 %%   <<"Type">> := list(any()),
 %%   <<"UseEbsOptimizedInstances">> => boolean(),
-%%   <<"VolumeConfigurations">> => list(volume_configuration()())
+%%   <<"VolumeConfigurations">> => list(volume_configuration())
 %% }
 -type create_layer_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ecs_clusters_result() :: #{
-%%   <<"EcsClusters">> => list(ecs_cluster()()),
+%%   <<"EcsClusters">> => list(ecs_cluster()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ecs_clusters_result() :: #{binary() => any()}.
@@ -1379,7 +1379,7 @@
 
 %% Example:
 %% describe_time_based_auto_scaling_result() :: #{
-%%   <<"TimeBasedAutoScalingConfigurations">> => list(time_based_auto_scaling_configuration()())
+%%   <<"TimeBasedAutoScalingConfigurations">> => list(time_based_auto_scaling_configuration())
 %% }
 -type describe_time_based_auto_scaling_result() :: #{binary() => any()}.
 
@@ -1393,7 +1393,7 @@
 
 %% Example:
 %% describe_layers_request() :: #{
-%%   <<"LayerIds">> => list(string()()),
+%%   <<"LayerIds">> => list(string()),
 %%   <<"StackId">> => string()
 %% }
 -type describe_layers_request() :: #{binary() => any()}.
@@ -1409,11 +1409,11 @@
 %%   <<"AppId">> := string(),
 %%   <<"AppSource">> => source(),
 %%   <<"Attributes">> => map(),
-%%   <<"DataSources">> => list(data_source()()),
+%%   <<"DataSources">> => list(data_source()),
 %%   <<"Description">> => string(),
-%%   <<"Domains">> => list(string()()),
+%%   <<"Domains">> => list(string()),
 %%   <<"EnableSsl">> => boolean(),
-%%   <<"Environment">> => list(environment_variable()()),
+%%   <<"Environment">> => list(environment_variable()),
 %%   <<"Name">> => string(),
 %%   <<"SslConfiguration">> => ssl_configuration(),
 %%   <<"Type">> => list(any())
@@ -1455,7 +1455,7 @@
 
 %% Example:
 %% describe_instances_result() :: #{
-%%   <<"Instances">> => list(instance()())
+%%   <<"Instances">> => list(instance())
 %% }
 -type describe_instances_result() :: #{binary() => any()}.
 
@@ -1475,7 +1475,7 @@
 
 %% Example:
 %% describe_load_based_auto_scaling_result() :: #{
-%%   <<"LoadBasedAutoScalingConfigurations">> => list(load_based_auto_scaling_configuration()())
+%%   <<"LoadBasedAutoScalingConfigurations">> => list(load_based_auto_scaling_configuration())
 %% }
 -type describe_load_based_auto_scaling_result() :: #{binary() => any()}.
 
@@ -1514,7 +1514,7 @@
 
 %% Example:
 %% describe_volumes_result() :: #{
-%%   <<"Volumes">> => list(volume()())
+%%   <<"Volumes">> => list(volume())
 %% }
 -type describe_volumes_result() :: #{binary() => any()}.
 
@@ -1606,7 +1606,7 @@
 %% Example:
 %% describe_deployments_request() :: #{
 %%   <<"AppId">> => string(),
-%%   <<"DeploymentIds">> => list(string()()),
+%%   <<"DeploymentIds">> => list(string()),
 %%   <<"StackId">> => string()
 %% }
 -type describe_deployments_request() :: #{binary() => any()}.
@@ -1619,7 +1619,7 @@
 
 %% Example:
 %% describe_service_errors_result() :: #{
-%%   <<"ServiceErrors">> => list(service_error()())
+%%   <<"ServiceErrors">> => list(service_error())
 %% }
 -type describe_service_errors_result() :: #{binary() => any()}.
 

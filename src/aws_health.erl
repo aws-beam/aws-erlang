@@ -113,7 +113,7 @@
 
 %% Example:
 %% describe_events_for_organization_response() :: #{
-%%   <<"events">> => list(organization_event()()),
+%%   <<"events">> => list(organization_event()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_events_for_organization_response() :: #{binary() => any()}.
@@ -134,16 +134,16 @@
 
 %% Example:
 %% organization_event_filter() :: #{
-%%   <<"awsAccountIds">> => list(string()()),
+%%   <<"awsAccountIds">> => list(string()),
 %%   <<"endTime">> => date_time_range(),
-%%   <<"entityArns">> => list(string()()),
-%%   <<"entityValues">> => list(string()()),
+%%   <<"entityArns">> => list(string()),
+%%   <<"entityValues">> => list(string()),
 %%   <<"eventStatusCodes">> => list(list(any())()),
 %%   <<"eventTypeCategories">> => list(list(any())()),
-%%   <<"eventTypeCodes">> => list(string()()),
+%%   <<"eventTypeCodes">> => list(string()),
 %%   <<"lastUpdatedTime">> => date_time_range(),
-%%   <<"regions">> => list(string()()),
-%%   <<"services">> => list(string()()),
+%%   <<"regions">> => list(string()),
+%%   <<"services">> => list(string()),
 %%   <<"startTime">> => date_time_range()
 %% }
 -type organization_event_filter() :: #{binary() => any()}.
@@ -151,13 +151,13 @@
 %% Example:
 %% describe_event_details_for_organization_request() :: #{
 %%   <<"locale">> => string(),
-%%   <<"organizationEventDetailFilters">> := list(event_account_filter()())
+%%   <<"organizationEventDetailFilters">> := list(event_account_filter())
 %% }
 -type describe_event_details_for_organization_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_affected_accounts_for_organization_response() :: #{
-%%   <<"affectedAccounts">> => list(string()()),
+%%   <<"affectedAccounts">> => list(string()),
 %%   <<"eventScopeCode">> => list(any()),
 %%   <<"nextToken">> => string()
 %% }
@@ -185,7 +185,7 @@
 
 %% Example:
 %% describe_entity_aggregates_response() :: #{
-%%   <<"entityAggregates">> => list(entity_aggregate()())
+%%   <<"entityAggregates">> => list(entity_aggregate())
 %% }
 -type describe_entity_aggregates_response() :: #{binary() => any()}.
 
@@ -217,12 +217,12 @@
 
 %% Example:
 %% entity_filter() :: #{
-%%   <<"entityArns">> => list(string()()),
-%%   <<"entityValues">> => list(string()()),
-%%   <<"eventArns">> => list(string()()),
-%%   <<"lastUpdatedTimes">> => list(date_time_range()()),
+%%   <<"entityArns">> => list(string()),
+%%   <<"entityValues">> => list(string()),
+%%   <<"eventArns">> => list(string()),
+%%   <<"lastUpdatedTimes">> => list(date_time_range()),
 %%   <<"statusCodes">> => list(list(any())()),
-%%   <<"tags">> => list(map()())
+%%   <<"tags">> => list(map())
 %% }
 -type entity_filter() :: #{binary() => any()}.
 
@@ -237,15 +237,15 @@
 %%   <<"locale">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"organizationEntityAccountFilters">> => list(entity_account_filter()()),
-%%   <<"organizationEntityFilters">> => list(event_account_filter()())
+%%   <<"organizationEntityAccountFilters">> => list(entity_account_filter()),
+%%   <<"organizationEntityFilters">> => list(event_account_filter())
 %% }
 -type describe_affected_entities_for_organization_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_affected_entities_for_organization_response() :: #{
-%%   <<"entities">> => list(affected_entity()()),
-%%   <<"failedSet">> => list(organization_affected_entities_error_item()()),
+%%   <<"entities">> => list(affected_entity()),
+%%   <<"failedSet">> => list(organization_affected_entities_error_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_affected_entities_for_organization_response() :: #{binary() => any()}.
@@ -259,34 +259,34 @@
 
 %% Example:
 %% describe_entity_aggregates_for_organization_response() :: #{
-%%   <<"organizationEntityAggregates">> => list(organization_entity_aggregate()())
+%%   <<"organizationEntityAggregates">> => list(organization_entity_aggregate())
 %% }
 -type describe_entity_aggregates_for_organization_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_entity_aggregates_for_organization_request() :: #{
-%%   <<"awsAccountIds">> => list(string()()),
-%%   <<"eventArns">> := list(string()())
+%%   <<"awsAccountIds">> => list(string()),
+%%   <<"eventArns">> := list(string())
 %% }
 -type describe_entity_aggregates_for_organization_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_event_details_request() :: #{
-%%   <<"eventArns">> := list(string()()),
+%%   <<"eventArns">> := list(string()),
 %%   <<"locale">> => string()
 %% }
 -type describe_event_details_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_event_types_response() :: #{
-%%   <<"eventTypes">> => list(event_type()()),
+%%   <<"eventTypes">> => list(event_type()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_event_types_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_entity_aggregates_request() :: #{
-%%   <<"eventArns">> => list(string()())
+%%   <<"eventArns">> => list(string())
 %% }
 -type describe_entity_aggregates_request() :: #{binary() => any()}.
 
@@ -300,7 +300,7 @@
 
 %% Example:
 %% describe_affected_entities_response() :: #{
-%%   <<"entities">> => list(affected_entity()()),
+%%   <<"entities">> => list(affected_entity()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_affected_entities_response() :: #{binary() => any()}.
@@ -313,7 +313,7 @@
 
 %% Example:
 %% organization_entity_aggregate() :: #{
-%%   <<"accounts">> => list(account_entity_aggregate()()),
+%%   <<"accounts">> => list(account_entity_aggregate()),
 %%   <<"count">> => integer(),
 %%   <<"eventArn">> => string(),
 %%   <<"statuses">> => map()
@@ -354,19 +354,19 @@
 
 %% Example:
 %% event_filter() :: #{
-%%   <<"availabilityZones">> => list(string()()),
-%%   <<"endTimes">> => list(date_time_range()()),
-%%   <<"entityArns">> => list(string()()),
-%%   <<"entityValues">> => list(string()()),
-%%   <<"eventArns">> => list(string()()),
+%%   <<"availabilityZones">> => list(string()),
+%%   <<"endTimes">> => list(date_time_range()),
+%%   <<"entityArns">> => list(string()),
+%%   <<"entityValues">> => list(string()),
+%%   <<"eventArns">> => list(string()),
 %%   <<"eventStatusCodes">> => list(list(any())()),
 %%   <<"eventTypeCategories">> => list(list(any())()),
-%%   <<"eventTypeCodes">> => list(string()()),
-%%   <<"lastUpdatedTimes">> => list(date_time_range()()),
-%%   <<"regions">> => list(string()()),
-%%   <<"services">> => list(string()()),
-%%   <<"startTimes">> => list(date_time_range()()),
-%%   <<"tags">> => list(map()())
+%%   <<"eventTypeCodes">> => list(string()),
+%%   <<"lastUpdatedTimes">> => list(date_time_range()),
+%%   <<"regions">> => list(string()),
+%%   <<"services">> => list(string()),
+%%   <<"startTimes">> => list(date_time_range()),
+%%   <<"tags">> => list(map())
 %% }
 -type event_filter() :: #{binary() => any()}.
 
@@ -415,7 +415,7 @@
 
 %% Example:
 %% describe_event_aggregates_response() :: #{
-%%   <<"eventAggregates">> => list(event_aggregate()()),
+%%   <<"eventAggregates">> => list(event_aggregate()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_event_aggregates_response() :: #{binary() => any()}.
@@ -429,15 +429,15 @@
 %% Example:
 %% event_type_filter() :: #{
 %%   <<"eventTypeCategories">> => list(list(any())()),
-%%   <<"eventTypeCodes">> => list(string()()),
-%%   <<"services">> => list(string()())
+%%   <<"eventTypeCodes">> => list(string()),
+%%   <<"services">> => list(string())
 %% }
 -type event_type_filter() :: #{binary() => any()}.
 
 %% Example:
 %% describe_event_details_for_organization_response() :: #{
-%%   <<"failedSet">> => list(organization_event_details_error_item()()),
-%%   <<"successfulSet">> => list(organization_event_details()())
+%%   <<"failedSet">> => list(organization_event_details_error_item()),
+%%   <<"successfulSet">> => list(organization_event_details())
 %% }
 -type describe_event_details_for_organization_response() :: #{binary() => any()}.
 
@@ -475,8 +475,8 @@
 
 %% Example:
 %% describe_event_details_response() :: #{
-%%   <<"failedSet">> => list(event_details_error_item()()),
-%%   <<"successfulSet">> => list(event_details()())
+%%   <<"failedSet">> => list(event_details_error_item()),
+%%   <<"successfulSet">> => list(event_details())
 %% }
 -type describe_event_details_response() :: #{binary() => any()}.
 
@@ -497,7 +497,7 @@
 
 %% Example:
 %% describe_events_response() :: #{
-%%   <<"events">> => list(event()()),
+%%   <<"events">> => list(event()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_events_response() :: #{binary() => any()}.

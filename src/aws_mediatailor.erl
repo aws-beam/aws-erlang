@@ -168,7 +168,7 @@
 %% vod_source() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map(),
@@ -203,7 +203,7 @@
 %% update_vod_source_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map(),
@@ -218,10 +218,10 @@
 
 %% Example:
 %% describe_vod_source_response() :: #{
-%%   <<"AdBreakOpportunities">> => list(ad_break_opportunity()()),
+%%   <<"AdBreakOpportunities">> => list(ad_break_opportunity()),
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map(),
@@ -239,7 +239,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"FillerSlate">> => slate_source(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Outputs">> => list(response_output_item()()),
+%%   <<"Outputs">> => list(response_output_item()),
 %%   <<"PlaybackMode">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Tier">> => string(),
@@ -316,7 +316,7 @@
 
 %% Example:
 %% list_prefetch_schedules_response() :: #{
-%%   <<"Items">> => list(prefetch_schedule()()),
+%%   <<"Items">> => list(prefetch_schedule()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_prefetch_schedules_response() :: #{binary() => any()}.
@@ -324,7 +324,7 @@
 
 %% Example:
 %% prefetch_consumption() :: #{
-%%   <<"AvailMatchingCriteria">> => list(avail_matching_criteria()()),
+%%   <<"AvailMatchingCriteria">> => list(avail_matching_criteria()),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
@@ -344,7 +344,7 @@
 
 %% Example:
 %% list_vod_sources_response() :: #{
-%%   <<"Items">> => list(vod_source()()),
+%%   <<"Items">> => list(vod_source()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_vod_sources_response() :: #{binary() => any()}.
@@ -376,7 +376,7 @@
 %%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
 %%   <<"HttpConfiguration">> => http_configuration(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
 %%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map()
 %% }
@@ -402,7 +402,7 @@
 
 %% Example:
 %% get_channel_schedule_response() :: #{
-%%   <<"Items">> => list(schedule_entry()()),
+%%   <<"Items">> => list(schedule_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_channel_schedule_response() :: #{binary() => any()}.
@@ -410,7 +410,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -449,7 +449,7 @@
 
 %% Example:
 %% audience_media() :: #{
-%%   <<"AlternateMedia">> => list(alternate_media()()),
+%%   <<"AlternateMedia">> => list(alternate_media()),
 %%   <<"Audience">> => string()
 %% }
 -type audience_media() :: #{binary() => any()}.
@@ -463,7 +463,7 @@
 %%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
 %%   <<"HttpConfiguration">> => http_configuration(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
 %%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map()
 %% }
@@ -502,9 +502,9 @@
 
 %% Example:
 %% create_program_response() :: #{
-%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"AdBreaks">> => list(ad_break()),
 %%   <<"Arn">> => string(),
-%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"AudienceMedia">> => list(audience_media()),
 %%   <<"ChannelName">> => string(),
 %%   <<"ClipRange">> => clip_range(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -520,7 +520,7 @@
 
 %% Example:
 %% list_live_sources_response() :: #{
-%%   <<"Items">> => list(live_source()()),
+%%   <<"Items">> => list(live_source()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_live_sources_response() :: #{binary() => any()}.
@@ -534,7 +534,7 @@
 %%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
 %%   <<"HttpConfiguration">> => http_configuration(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
 %%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map()
 %% }
@@ -543,7 +543,7 @@
 
 %% Example:
 %% update_live_source_request() :: #{
-%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()())
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration())
 %% }
 -type update_live_source_request() :: #{binary() => any()}.
 
@@ -612,7 +612,7 @@
 
 %% Example:
 %% create_live_source_request() :: #{
-%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()),
 %%   <<"Tags">> => map()
 %% }
 -type create_live_source_request() :: #{binary() => any()}.
@@ -646,7 +646,7 @@
 %%   <<"FillerSlate">> => slate_source(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"LogConfiguration">> := log_configuration_for_channel(),
-%%   <<"Outputs">> => list(response_output_item()()),
+%%   <<"Outputs">> => list(response_output_item()),
 %%   <<"PlaybackMode">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Tier">> => string(),
@@ -668,7 +668,7 @@
 
 %% Example:
 %% alternate_media() :: #{
-%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"AdBreaks">> => list(ad_break()),
 %%   <<"ClipRange">> => clip_range(),
 %%   <<"DurationMillis">> => float(),
 %%   <<"LiveSourceName">> => string(),
@@ -683,7 +683,7 @@
 %% live_source() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"LiveSourceName">> => string(),
 %%   <<"SourceLocationName">> => string(),
@@ -701,7 +701,7 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"LiveSourceName">> => string(),
 %%   <<"ProgramName">> => string(),
-%%   <<"ScheduleAdBreaks">> => list(schedule_ad_break()()),
+%%   <<"ScheduleAdBreaks">> => list(schedule_ad_break()),
 %%   <<"ScheduleEntryType">> => list(any()),
 %%   <<"SourceLocationName">> => string(),
 %%   <<"VodSourceName">> => string()
@@ -713,7 +713,7 @@
 %% create_channel_request() :: #{
 %%   <<"Audiences">> => list([string()]()),
 %%   <<"FillerSlate">> => slate_source(),
-%%   <<"Outputs">> := list(request_output_item()()),
+%%   <<"Outputs">> := list(request_output_item()),
 %%   <<"PlaybackMode">> := list(any()),
 %%   <<"Tags">> => map(),
 %%   <<"Tier">> => list(any()),
@@ -761,7 +761,7 @@
 
 %% Example:
 %% list_channels_response() :: #{
-%%   <<"Items">> => list(channel()()),
+%%   <<"Items">> => list(channel()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
@@ -801,7 +801,7 @@
 %% update_channel_request() :: #{
 %%   <<"Audiences">> => list([string()]()),
 %%   <<"FillerSlate">> => slate_source(),
-%%   <<"Outputs">> := list(request_output_item()()),
+%%   <<"Outputs">> := list(request_output_item()),
 %%   <<"TimeShiftConfiguration">> => time_shift_configuration()
 %% }
 -type update_channel_request() :: #{binary() => any()}.
@@ -825,7 +825,7 @@
 %%   <<"AccessConfiguration">> => access_configuration(),
 %%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
 %%   <<"HttpConfiguration">> := http_configuration(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()())
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration())
 %% }
 -type update_source_location_request() :: #{binary() => any()}.
 
@@ -847,9 +847,9 @@
 
 %% Example:
 %% describe_program_response() :: #{
-%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"AdBreaks">> => list(ad_break()),
 %%   <<"Arn">> => string(),
-%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"AudienceMedia">> => list(audience_media()),
 %%   <<"ChannelName">> => string(),
 %%   <<"ClipRange">> => clip_range(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -865,7 +865,7 @@
 
 %% Example:
 %% ad_break() :: #{
-%%   <<"AdBreakMetadata">> => list(key_value_pair()()),
+%%   <<"AdBreakMetadata">> => list(key_value_pair()),
 %%   <<"MessageType">> => list(any()),
 %%   <<"OffsetMillis">> => float(),
 %%   <<"Slate">> => slate_source(),
@@ -900,8 +900,8 @@
 
 %% Example:
 %% create_program_request() :: #{
-%%   <<"AdBreaks">> => list(ad_break()()),
-%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"AdBreaks">> => list(ad_break()),
+%%   <<"AudienceMedia">> => list(audience_media()),
 %%   <<"LiveSourceName">> => string(),
 %%   <<"ScheduleConfiguration">> := schedule_configuration(),
 %%   <<"SourceLocationName">> := string(),
@@ -941,8 +941,8 @@
 
 %% Example:
 %% update_program_request() :: #{
-%%   <<"AdBreaks">> => list(ad_break()()),
-%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"AdBreaks">> => list(ad_break()),
+%%   <<"AudienceMedia">> => list(audience_media()),
 %%   <<"ScheduleConfiguration">> := update_program_schedule_configuration()
 %% }
 -type update_program_request() :: #{binary() => any()}.
@@ -991,7 +991,7 @@
 %%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
 %%   <<"HttpConfiguration">> => http_configuration(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
 %%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map()
 %% }
@@ -1000,7 +1000,7 @@
 
 %% Example:
 %% time_signal_message() :: #{
-%%   <<"SegmentationDescriptors">> => list(segmentation_descriptor()())
+%%   <<"SegmentationDescriptors">> => list(segmentation_descriptor())
 %% }
 -type time_signal_message() :: #{binary() => any()}.
 
@@ -1021,7 +1021,7 @@
 %% update_live_source_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"LiveSourceName">> => string(),
 %%   <<"SourceLocationName">> => string(),
@@ -1034,7 +1034,7 @@
 %% create_live_source_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"LiveSourceName">> => string(),
 %%   <<"SourceLocationName">> => string(),
@@ -1067,7 +1067,7 @@
 %%   <<"AlertMessage">> => string(),
 %%   <<"Category">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"RelatedResourceArns">> => list(string()()),
+%%   <<"RelatedResourceArns">> => list(string()),
 %%   <<"ResourceArn">> => string()
 %% }
 -type alert() :: #{binary() => any()}.
@@ -1091,7 +1091,7 @@
 %%   <<"FillerSlate">> => slate_source(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"LogConfiguration">> => log_configuration_for_channel(),
-%%   <<"Outputs">> => list(response_output_item()()),
+%%   <<"Outputs">> => list(response_output_item()),
 %%   <<"PlaybackMode">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Tier">> => string()
@@ -1101,7 +1101,7 @@
 
 %% Example:
 %% update_vod_source_request() :: #{
-%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()())
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration())
 %% }
 -type update_vod_source_request() :: #{binary() => any()}.
 
@@ -1134,9 +1134,9 @@
 
 %% Example:
 %% update_program_response() :: #{
-%%   <<"AdBreaks">> => list(ad_break()()),
+%%   <<"AdBreaks">> => list(ad_break()),
 %%   <<"Arn">> => string(),
-%%   <<"AudienceMedia">> => list(audience_media()()),
+%%   <<"AudienceMedia">> => list(audience_media()),
 %%   <<"ChannelName">> => string(),
 %%   <<"ClipRange">> => clip_range(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -1162,7 +1162,7 @@
 
 %% Example:
 %% list_alerts_response() :: #{
-%%   <<"Items">> => list(alert()()),
+%%   <<"Items">> => list(alert()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_alerts_response() :: #{binary() => any()}.
@@ -1189,7 +1189,7 @@
 %% create_vod_source_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"SourceLocationName">> => string(),
 %%   <<"Tags">> => map(),
@@ -1225,7 +1225,7 @@
 
 %% Example:
 %% recurring_consumption() :: #{
-%%   <<"AvailMatchingCriteria">> => list(avail_matching_criteria()()),
+%%   <<"AvailMatchingCriteria">> => list(avail_matching_criteria()),
 %%   <<"RetrievedAdExpirationSeconds">> => integer()
 %% }
 -type recurring_consumption() :: #{binary() => any()}.
@@ -1233,7 +1233,7 @@
 
 %% Example:
 %% create_vod_source_request() :: #{
-%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> := list(http_package_configuration()),
 %%   <<"Tags">> => map()
 %% }
 -type create_vod_source_request() :: #{binary() => any()}.
@@ -1248,7 +1248,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"FillerSlate">> => slate_source(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Outputs">> => list(response_output_item()()),
+%%   <<"Outputs">> => list(response_output_item()),
 %%   <<"PlaybackMode">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Tier">> => string(),
@@ -1292,7 +1292,7 @@
 %% describe_live_source_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()()),
+%%   <<"HttpPackageConfigurations">> => list(http_package_configuration()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"LiveSourceName">> => string(),
 %%   <<"SourceLocationName">> => string(),
@@ -1322,7 +1322,7 @@
 %%   <<"AccessConfiguration">> => access_configuration(),
 %%   <<"DefaultSegmentDeliveryConfiguration">> => default_segment_delivery_configuration(),
 %%   <<"HttpConfiguration">> := http_configuration(),
-%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()()),
+%%   <<"SegmentDeliveryConfigurations">> => list(segment_delivery_configuration()),
 %%   <<"Tags">> => map()
 %% }
 -type create_source_location_request() :: #{binary() => any()}.
@@ -1368,7 +1368,7 @@
 
 %% Example:
 %% list_source_locations_response() :: #{
-%%   <<"Items">> => list(source_location()()),
+%%   <<"Items">> => list(source_location()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_source_locations_response() :: #{binary() => any()}.
@@ -1410,7 +1410,7 @@
 
 %% Example:
 %% list_playback_configurations_response() :: #{
-%%   <<"Items">> => list(playback_configuration()()),
+%%   <<"Items">> => list(playback_configuration()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_playback_configurations_response() :: #{binary() => any()}.

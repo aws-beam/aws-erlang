@@ -334,7 +334,7 @@
 %%   <<"BalancingStrategy">> => list(any()),
 %%   <<"GameServerGroupName">> := string(),
 %%   <<"GameServerProtectionPolicy">> => list(any()),
-%%   <<"InstanceDefinitions">> => list(instance_definition()()),
+%%   <<"InstanceDefinitions">> => list(instance_definition()),
 %%   <<"RoleArn">> => string()
 %% }
 -type update_game_server_group_input() :: #{binary() => any()}.
@@ -380,14 +380,14 @@
 %%   <<"DnsName">> => string(),
 %%   <<"GameSessionArn">> => string(),
 %%   <<"IpAddress">> => string(),
-%%   <<"MatchedPlayerSessions">> => list(matched_player_session()()),
+%%   <<"MatchedPlayerSessions">> => list(matched_player_session()),
 %%   <<"Port">> => integer()
 %% }
 -type game_session_connection_info() :: #{binary() => any()}.
 
 %% Example:
 %% describe_matchmaking_input() :: #{
-%%   <<"TicketIds">> := list(string()())
+%%   <<"TicketIds">> := list(string())
 %% }
 -type describe_matchmaking_input() :: #{binary() => any()}.
 
@@ -404,13 +404,13 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_locations_output() :: #{
-%%   <<"Locations">> => list(location_model()()),
+%%   <<"Locations">> => list(location_model()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_locations_output() :: #{binary() => any()}.
@@ -456,7 +456,7 @@
 
 %% Example:
 %% list_compute_output() :: #{
-%%   <<"ComputeList">> => list(compute()()),
+%%   <<"ComputeList">> => list(compute()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_compute_output() :: #{binary() => any()}.
@@ -470,10 +470,10 @@
 %%   <<"GameServerContainerGroupsPerInstance">> => integer(),
 %%   <<"GameSessionCreationLimitPolicy">> => game_session_creation_limit_policy(),
 %%   <<"InstanceConnectionPortRange">> => connection_port_range(),
-%%   <<"InstanceInboundPermissionAuthorizations">> => list(ip_permission()()),
-%%   <<"InstanceInboundPermissionRevocations">> => list(ip_permission()()),
+%%   <<"InstanceInboundPermissionAuthorizations">> => list(ip_permission()),
+%%   <<"InstanceInboundPermissionRevocations">> => list(ip_permission()),
 %%   <<"LogConfiguration">> => log_configuration(),
-%%   <<"MetricGroups">> => list(string()()),
+%%   <<"MetricGroups">> => list(string()),
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"PerInstanceContainerGroupDefinitionName">> => string(),
 %%   <<"RemoveAttributes">> => list(list(any())())
@@ -482,7 +482,7 @@
 
 %% Example:
 %% priority_configuration() :: #{
-%%   <<"LocationOrder">> => list(string()()),
+%%   <<"LocationOrder">> => list(string()),
 %%   <<"PriorityOrder">> => list(list(any())())
 %% }
 -type priority_configuration() :: #{binary() => any()}.
@@ -503,7 +503,7 @@
 %% Example:
 %% create_location_input() :: #{
 %%   <<"LocationName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_location_input() :: #{binary() => any()}.
 
@@ -552,7 +552,7 @@
 
 %% Example:
 %% priority_configuration_override() :: #{
-%%   <<"LocationOrder">> => list(string()()),
+%%   <<"LocationOrder">> => list(string()),
 %%   <<"PlacementFallbackStrategy">> => list(any())
 %% }
 -type priority_configuration_override() :: #{binary() => any()}.
@@ -565,7 +565,7 @@
 
 %% Example:
 %% list_fleets_output() :: #{
-%%   <<"FleetIds">> => list(string()()),
+%%   <<"FleetIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_fleets_output() :: #{binary() => any()}.
@@ -581,7 +581,7 @@
 %% describe_fleet_location_attributes_output() :: #{
 %%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
-%%   <<"LocationAttributes">> => list(location_attributes()()),
+%%   <<"LocationAttributes">> => list(location_attributes()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_location_attributes_output() :: #{binary() => any()}.
@@ -616,10 +616,10 @@
 %% Example:
 %% game_server_container_definition_input() :: #{
 %%   <<"ContainerName">> => string(),
-%%   <<"DependsOn">> => list(container_dependency()()),
-%%   <<"EnvironmentOverride">> => list(container_environment()()),
+%%   <<"DependsOn">> => list(container_dependency()),
+%%   <<"EnvironmentOverride">> => list(container_environment()),
 %%   <<"ImageUri">> => string(),
-%%   <<"MountPoints">> => list(container_mount_point()()),
+%%   <<"MountPoints">> => list(container_mount_point()),
 %%   <<"PortConfiguration">> => container_port_configuration(),
 %%   <<"ServerSdkVersion">> => string()
 %% }
@@ -651,7 +651,7 @@
 %%   <<"GameServerGroupArn">> => string(),
 %%   <<"GameServerGroupName">> => string(),
 %%   <<"GameServerProtectionPolicy">> => list(any()),
-%%   <<"InstanceDefinitions">> => list(instance_definition()()),
+%%   <<"InstanceDefinitions">> => list(instance_definition()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"RoleArn">> => string(),
 %%   <<"Status">> => list(any()),
@@ -663,13 +663,13 @@
 %% Example:
 %% support_container_definition() :: #{
 %%   <<"ContainerName">> => string(),
-%%   <<"DependsOn">> => list(container_dependency()()),
-%%   <<"EnvironmentOverride">> => list(container_environment()()),
+%%   <<"DependsOn">> => list(container_dependency()),
+%%   <<"EnvironmentOverride">> => list(container_environment()),
 %%   <<"Essential">> => boolean(),
 %%   <<"HealthCheck">> => container_health_check(),
 %%   <<"ImageUri">> => string(),
 %%   <<"MemoryHardLimitMebibytes">> => integer(),
-%%   <<"MountPoints">> => list(container_mount_point()()),
+%%   <<"MountPoints">> => list(container_mount_point()),
 %%   <<"PortConfiguration">> => container_port_configuration(),
 %%   <<"ResolvedImageDigest">> => string(),
 %%   <<"Vcpu">> => float()
@@ -687,7 +687,7 @@
 %% describe_fleet_location_attributes_input() :: #{
 %%   <<"FleetId">> := string(),
 %%   <<"Limit">> => integer(),
-%%   <<"Locations">> => list(string()()),
+%%   <<"Locations">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_location_attributes_input() :: #{binary() => any()}.
@@ -696,7 +696,7 @@
 %% delete_fleet_locations_output() :: #{
 %%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
-%%   <<"LocationStates">> => list(location_state()())
+%%   <<"LocationStates">> => list(location_state())
 %% }
 -type delete_fleet_locations_output() :: #{binary() => any()}.
 
@@ -709,7 +709,7 @@
 
 %% Example:
 %% describe_game_session_queues_output() :: #{
-%%   <<"GameSessionQueues">> => list(game_session_queue()()),
+%%   <<"GameSessionQueues">> => list(game_session_queue()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_game_session_queues_output() :: #{binary() => any()}.
@@ -722,7 +722,7 @@
 
 %% Example:
 %% create_player_sessions_output() :: #{
-%%   <<"PlayerSessions">> => list(player_session()())
+%%   <<"PlayerSessions">> => list(player_session())
 %% }
 -type create_player_sessions_output() :: #{binary() => any()}.
 
@@ -756,7 +756,7 @@
 %%   <<"ComputeArn">> => string(),
 %%   <<"ComputeName">> => string(),
 %%   <<"ComputeStatus">> => list(any()),
-%%   <<"ContainerAttributes">> => list(container_attribute()()),
+%%   <<"ContainerAttributes">> => list(container_attribute()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DnsName">> => string(),
 %%   <<"FleetArn">> => string(),
@@ -803,9 +803,9 @@
 %%   <<"CustomEventData">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"FlexMatchMode">> => list(any()),
-%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameProperties">> => list(game_property()),
 %%   <<"GameSessionData">> => string(),
-%%   <<"GameSessionQueueArns">> => list(string()()),
+%%   <<"GameSessionQueueArns">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NotificationTarget">> => string(),
 %%   <<"RequestTimeoutSeconds">> => integer(),
@@ -822,7 +822,7 @@
 
 %% Example:
 %% describe_vpc_peering_authorizations_output() :: #{
-%%   <<"VpcPeeringAuthorizations">> => list(vpc_peering_authorization()())
+%%   <<"VpcPeeringAuthorizations">> => list(vpc_peering_authorization())
 %% }
 -type describe_vpc_peering_authorizations_output() :: #{binary() => any()}.
 
@@ -851,13 +851,13 @@
 %% runtime_configuration() :: #{
 %%   <<"GameSessionActivationTimeoutSeconds">> => integer(),
 %%   <<"MaxConcurrentGameSessionActivations">> => integer(),
-%%   <<"ServerProcesses">> => list(server_process()())
+%%   <<"ServerProcesses">> => list(server_process())
 %% }
 -type runtime_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_container_group_definitions_output() :: #{
-%%   <<"ContainerGroupDefinitions">> => list(container_group_definition()()),
+%%   <<"ContainerGroupDefinitions">> => list(container_group_definition()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_container_group_definitions_output() :: #{binary() => any()}.
@@ -899,7 +899,7 @@
 %%   <<"AnywhereConfiguration">> => anywhere_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"FleetId">> := string(),
-%%   <<"MetricGroups">> => list(string()()),
+%%   <<"MetricGroups">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"ResourceCreationLimitPolicy">> => resource_creation_limit_policy()
@@ -921,7 +921,7 @@
 
 %% Example:
 %% list_aliases_output() :: #{
-%%   <<"Aliases">> => list(alias()()),
+%%   <<"Aliases">> => list(alias()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_aliases_output() :: #{binary() => any()}.
@@ -953,7 +953,7 @@
 
 %% Example:
 %% describe_vpc_peering_connections_output() :: #{
-%%   <<"VpcPeeringConnections">> => list(vpc_peering_connection()())
+%%   <<"VpcPeeringConnections">> => list(vpc_peering_connection())
 %% }
 -type describe_vpc_peering_connections_output() :: #{binary() => any()}.
 
@@ -1007,7 +1007,7 @@
 %% describe_fleet_port_settings_output() :: #{
 %%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
-%%   <<"InboundPermissions">> => list(ip_permission()()),
+%%   <<"InboundPermissions">> => list(ip_permission()),
 %%   <<"Location">> => string(),
 %%   <<"UpdateStatus">> => list(any())
 %% }
@@ -1062,14 +1062,14 @@
 %% create_matchmaking_rule_set_input() :: #{
 %%   <<"Name">> := string(),
 %%   <<"RuleSetBody">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_matchmaking_rule_set_input() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1116,15 +1116,15 @@
 %% Example:
 %% update_fleet_port_settings_input() :: #{
 %%   <<"FleetId">> := string(),
-%%   <<"InboundPermissionAuthorizations">> => list(ip_permission()()),
-%%   <<"InboundPermissionRevocations">> => list(ip_permission()())
+%%   <<"InboundPermissionAuthorizations">> => list(ip_permission()),
+%%   <<"InboundPermissionRevocations">> => list(ip_permission())
 %% }
 -type update_fleet_port_settings_input() :: #{binary() => any()}.
 
 %% Example:
 %% accept_match_input() :: #{
 %%   <<"AcceptanceType">> := list(any()),
-%%   <<"PlayerIds">> := list(string()()),
+%%   <<"PlayerIds">> := list(string()),
 %%   <<"TicketId">> := string()
 %% }
 -type accept_match_input() :: #{binary() => any()}.
@@ -1179,13 +1179,13 @@
 %% Example:
 %% support_container_definition_input() :: #{
 %%   <<"ContainerName">> => string(),
-%%   <<"DependsOn">> => list(container_dependency()()),
-%%   <<"EnvironmentOverride">> => list(container_environment()()),
+%%   <<"DependsOn">> => list(container_dependency()),
+%%   <<"EnvironmentOverride">> => list(container_environment()),
 %%   <<"Essential">> => boolean(),
 %%   <<"HealthCheck">> => container_health_check(),
 %%   <<"ImageUri">> => string(),
 %%   <<"MemoryHardLimitMebibytes">> => integer(),
-%%   <<"MountPoints">> => list(container_mount_point()()),
+%%   <<"MountPoints">> => list(container_mount_point()),
 %%   <<"PortConfiguration">> => container_port_configuration(),
 %%   <<"Vcpu">> => float()
 %% }
@@ -1201,7 +1201,7 @@
 %% Example:
 %% describe_matchmaking_configurations_input() :: #{
 %%   <<"Limit">> => integer(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"RuleSetName">> => string()
 %% }
@@ -1242,12 +1242,12 @@
 %% Example:
 %% game_session_queue() :: #{
 %%   <<"CustomEventData">> => string(),
-%%   <<"Destinations">> => list(game_session_queue_destination()()),
+%%   <<"Destinations">> => list(game_session_queue_destination()),
 %%   <<"FilterConfiguration">> => filter_configuration(),
 %%   <<"GameSessionQueueArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"NotificationTarget">> => string(),
-%%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()()),
+%%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()),
 %%   <<"PriorityConfiguration">> => priority_configuration(),
 %%   <<"TimeoutInSeconds">> => integer()
 %% }
@@ -1278,7 +1278,7 @@
 
 %% Example:
 %% list_game_server_groups_output() :: #{
-%%   <<"GameServerGroups">> => list(game_server_group()()),
+%%   <<"GameServerGroups">> => list(game_server_group()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_game_server_groups_output() :: #{binary() => any()}.
@@ -1307,7 +1307,7 @@
 
 %% Example:
 %% describe_fleet_utilization_output() :: #{
-%%   <<"FleetUtilization">> => list(fleet_utilization()()),
+%%   <<"FleetUtilization">> => list(fleet_utilization()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_utilization_output() :: #{binary() => any()}.
@@ -1360,7 +1360,7 @@
 %%   <<"OperatingSystem">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string(),
-%%   <<"SupportContainerDefinitions">> => list(support_container_definition()()),
+%%   <<"SupportContainerDefinitions">> => list(support_container_definition()),
 %%   <<"TotalMemoryLimitMebibytes">> => integer(),
 %%   <<"TotalVcpuLimit">> => float(),
 %%   <<"VersionDescription">> => string(),
@@ -1371,11 +1371,11 @@
 %% Example:
 %% update_game_session_queue_input() :: #{
 %%   <<"CustomEventData">> => string(),
-%%   <<"Destinations">> => list(game_session_queue_destination()()),
+%%   <<"Destinations">> => list(game_session_queue_destination()),
 %%   <<"FilterConfiguration">> => filter_configuration(),
 %%   <<"Name">> := string(),
 %%   <<"NotificationTarget">> => string(),
-%%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()()),
+%%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()),
 %%   <<"PriorityConfiguration">> => priority_configuration(),
 %%   <<"TimeoutInSeconds">> => integer()
 %% }
@@ -1389,7 +1389,7 @@
 
 %% Example:
 %% describe_fleet_capacity_input() :: #{
-%%   <<"FleetIds">> => list(string()()),
+%%   <<"FleetIds">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1406,7 +1406,7 @@
 %% get_compute_access_output() :: #{
 %%   <<"ComputeArn">> => string(),
 %%   <<"ComputeName">> => string(),
-%%   <<"ContainerIdentifiers">> => list(container_identifier()()),
+%%   <<"ContainerIdentifiers">> => list(container_identifier()),
 %%   <<"Credentials">> => aws_credentials(),
 %%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
@@ -1417,7 +1417,7 @@
 %% Example:
 %% describe_matchmaking_rule_sets_input() :: #{
 %%   <<"Limit">> => integer(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_matchmaking_rule_sets_input() :: #{binary() => any()}.
@@ -1431,7 +1431,7 @@
 
 %% Example:
 %% describe_game_sessions_output() :: #{
-%%   <<"GameSessions">> => list(game_session()()),
+%%   <<"GameSessions">> => list(game_session()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_game_sessions_output() :: #{binary() => any()}.
@@ -1458,7 +1458,7 @@
 %%   <<"Name">> := string(),
 %%   <<"OperatingSystem">> => list(any()),
 %%   <<"SourceVersionNumber">> => integer(),
-%%   <<"SupportContainerDefinitions">> => list(support_container_definition_input()()),
+%%   <<"SupportContainerDefinitions">> => list(support_container_definition_input()),
 %%   <<"TotalMemoryLimitMebibytes">> => integer(),
 %%   <<"TotalVcpuLimit">> => float(),
 %%   <<"VersionDescription">> => string()
@@ -1473,7 +1473,7 @@
 
 %% Example:
 %% describe_matchmaking_output() :: #{
-%%   <<"TicketList">> => list(matchmaking_ticket()())
+%%   <<"TicketList">> => list(matchmaking_ticket())
 %% }
 -type describe_matchmaking_output() :: #{binary() => any()}.
 
@@ -1485,7 +1485,7 @@
 
 %% Example:
 %% list_fleet_deployments_output() :: #{
-%%   <<"FleetDeployments">> => list(fleet_deployment()()),
+%%   <<"FleetDeployments">> => list(fleet_deployment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_fleet_deployments_output() :: #{binary() => any()}.
@@ -1527,7 +1527,7 @@
 
 %% Example:
 %% container_health_check() :: #{
-%%   <<"Command">> => list(string()()),
+%%   <<"Command">> => list(string()),
 %%   <<"Interval">> => integer(),
 %%   <<"Retries">> => integer(),
 %%   <<"StartPeriod">> => integer(),
@@ -1564,7 +1564,7 @@
 %% Example:
 %% delete_fleet_locations_input() :: #{
 %%   <<"FleetId">> := string(),
-%%   <<"Locations">> := list(string()())
+%%   <<"Locations">> := list(string())
 %% }
 -type delete_fleet_locations_input() :: #{binary() => any()}.
 
@@ -1613,7 +1613,7 @@
 %% Example:
 %% create_fleet_locations_input() :: #{
 %%   <<"FleetId">> := string(),
-%%   <<"Locations">> := list(location_configuration()())
+%%   <<"Locations">> := list(location_configuration())
 %% }
 -type create_fleet_locations_input() :: #{binary() => any()}.
 
@@ -1647,7 +1647,7 @@
 
 %% Example:
 %% filter_configuration() :: #{
-%%   <<"AllowedLocations">> => list(string()())
+%%   <<"AllowedLocations">> => list(string())
 %% }
 -type filter_configuration() :: #{binary() => any()}.
 
@@ -1666,27 +1666,27 @@
 %%   <<"CustomEventData">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"FlexMatchMode">> => list(any()),
-%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameProperties">> => list(game_property()),
 %%   <<"GameSessionData">> => string(),
-%%   <<"GameSessionQueueArns">> => list(string()()),
+%%   <<"GameSessionQueueArns">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"NotificationTarget">> => string(),
 %%   <<"RequestTimeoutSeconds">> := integer(),
 %%   <<"RuleSetName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_matchmaking_configuration_input() :: #{binary() => any()}.
 
 %% Example:
 %% start_game_session_placement_input() :: #{
-%%   <<"DesiredPlayerSessions">> => list(desired_player_session()()),
-%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"DesiredPlayerSessions">> => list(desired_player_session()),
+%%   <<"GameProperties">> => list(game_property()),
 %%   <<"GameSessionData">> => string(),
 %%   <<"GameSessionName">> => string(),
 %%   <<"GameSessionQueueName">> := string(),
 %%   <<"MaximumPlayerSessionCount">> := integer(),
 %%   <<"PlacementId">> := string(),
-%%   <<"PlayerLatencies">> => list(player_latency()()),
+%%   <<"PlayerLatencies">> => list(player_latency()),
 %%   <<"PriorityConfigurationOverride">> => priority_configuration_override()
 %% }
 -type start_game_session_placement_input() :: #{binary() => any()}.
@@ -1699,14 +1699,14 @@
 
 %% Example:
 %% list_container_group_definition_versions_output() :: #{
-%%   <<"ContainerGroupDefinitions">> => list(container_group_definition()()),
+%%   <<"ContainerGroupDefinitions">> => list(container_group_definition()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_container_group_definition_versions_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1714,7 +1714,7 @@
 %% create_fleet_locations_output() :: #{
 %%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
-%%   <<"LocationStates">> => list(location_state()())
+%%   <<"LocationStates">> => list(location_state())
 %% }
 -type create_fleet_locations_output() :: #{binary() => any()}.
 
@@ -1773,7 +1773,7 @@
 %%   <<"N">> => float(),
 %%   <<"S">> => string(),
 %%   <<"SDM">> => map(),
-%%   <<"SL">> => list(string()())
+%%   <<"SL">> => list(string())
 %% }
 -type attribute_value() :: #{binary() => any()}.
 
@@ -1814,13 +1814,13 @@
 %% Example:
 %% describe_player_sessions_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PlayerSessions">> => list(player_session()())
+%%   <<"PlayerSessions">> => list(player_session())
 %% }
 -type describe_player_sessions_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_instances_output() :: #{
-%%   <<"Instances">> => list(instance()()),
+%%   <<"Instances">> => list(instance()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instances_output() :: #{binary() => any()}.
@@ -1836,7 +1836,7 @@
 
 %% Example:
 %% describe_fleet_utilization_input() :: #{
-%%   <<"FleetIds">> => list(string()()),
+%%   <<"FleetIds">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1858,7 +1858,7 @@
 %% Example:
 %% create_fleet_output() :: #{
 %%   <<"FleetAttributes">> => fleet_attributes(),
-%%   <<"LocationStates">> => list(location_state()())
+%%   <<"LocationStates">> => list(location_state())
 %% }
 -type create_fleet_output() :: #{binary() => any()}.
 
@@ -1877,8 +1877,8 @@
 %%   <<"InstanceRoleArn">> => string(),
 %%   <<"InstanceRoleCredentialsProvider">> => list(any()),
 %%   <<"InstanceType">> => list(any()),
-%%   <<"LogPaths">> => list(string()()),
-%%   <<"MetricGroups">> => list(string()()),
+%%   <<"LogPaths">> => list(string()),
+%%   <<"MetricGroups">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"OperatingSystem">> => list(any()),
@@ -1912,8 +1912,8 @@
 %%   <<"GameServerContainerDefinition">> => game_server_container_definition_input(),
 %%   <<"Name">> := string(),
 %%   <<"OperatingSystem">> := list(any()),
-%%   <<"SupportContainerDefinitions">> => list(support_container_definition_input()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SupportContainerDefinitions">> => list(support_container_definition_input()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TotalMemoryLimitMebibytes">> := integer(),
 %%   <<"TotalVcpuLimit">> := float(),
 %%   <<"VersionDescription">> => string()
@@ -1933,7 +1933,7 @@
 
 %% Example:
 %% update_game_session_input() :: #{
-%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameProperties">> => list(game_property()),
 %%   <<"GameSessionId">> := string(),
 %%   <<"MaximumPlayerSessionCount">> => integer(),
 %%   <<"Name">> => string(),
@@ -1949,7 +1949,7 @@
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"EstimatedWaitTime">> => integer(),
 %%   <<"GameSessionConnectionInfo">> => game_session_connection_info(),
-%%   <<"Players">> => list(player()()),
+%%   <<"Players">> => list(player()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string(),
@@ -1981,13 +1981,13 @@
 %% Example:
 %% create_game_session_queue_input() :: #{
 %%   <<"CustomEventData">> => string(),
-%%   <<"Destinations">> => list(game_session_queue_destination()()),
+%%   <<"Destinations">> => list(game_session_queue_destination()),
 %%   <<"FilterConfiguration">> => filter_configuration(),
 %%   <<"Name">> := string(),
 %%   <<"NotificationTarget">> => string(),
-%%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()()),
+%%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()),
 %%   <<"PriorityConfiguration">> => priority_configuration(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TimeoutInSeconds">> => integer()
 %% }
 -type create_game_session_queue_input() :: #{binary() => any()}.
@@ -2042,14 +2042,14 @@
 %%   <<"CertificateConfiguration">> => certificate_configuration(),
 %%   <<"ComputeType">> => list(any()),
 %%   <<"Description">> => string(),
-%%   <<"EC2InboundPermissions">> => list(ip_permission()()),
+%%   <<"EC2InboundPermissions">> => list(ip_permission()),
 %%   <<"EC2InstanceType">> => list(any()),
 %%   <<"FleetType">> => list(any()),
 %%   <<"InstanceRoleArn">> => string(),
 %%   <<"InstanceRoleCredentialsProvider">> => list(any()),
-%%   <<"Locations">> => list(location_configuration()()),
-%%   <<"LogPaths">> => list(string()()),
-%%   <<"MetricGroups">> => list(string()()),
+%%   <<"Locations">> => list(location_configuration()),
+%%   <<"LogPaths">> => list(string()),
+%%   <<"MetricGroups">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"PeerVpcAwsAccountId">> => string(),
@@ -2059,14 +2059,14 @@
 %%   <<"ScriptId">> => string(),
 %%   <<"ServerLaunchParameters">> => string(),
 %%   <<"ServerLaunchPath">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_fleet_input() :: #{binary() => any()}.
 
 %% Example:
 %% start_matchmaking_input() :: #{
 %%   <<"ConfigurationName">> := string(),
-%%   <<"Players">> := list(player()()),
+%%   <<"Players">> := list(player()),
 %%   <<"TicketId">> => string()
 %% }
 -type start_matchmaking_input() :: #{binary() => any()}.
@@ -2121,7 +2121,7 @@
 
 %% Example:
 %% describe_fleet_events_output() :: #{
-%%   <<"Events">> => list(event()()),
+%%   <<"Events">> => list(event()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_events_output() :: #{binary() => any()}.
@@ -2191,14 +2191,14 @@
 %% Example:
 %% describe_game_session_queues_input() :: #{
 %%   <<"Limit">> => integer(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_game_session_queues_input() :: #{binary() => any()}.
 
 %% Example:
 %% search_game_sessions_output() :: #{
-%%   <<"GameSessions">> => list(game_session()()),
+%%   <<"GameSessions">> => list(game_session()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_game_sessions_output() :: #{binary() => any()}.
@@ -2279,9 +2279,9 @@
 %%   <<"CustomEventData">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"FlexMatchMode">> => list(any()),
-%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameProperties">> => list(game_property()),
 %%   <<"GameSessionData">> => string(),
-%%   <<"GameSessionQueueArns">> => list(string()()),
+%%   <<"GameSessionQueueArns">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"NotificationTarget">> => string(),
 %%   <<"RequestTimeoutSeconds">> => integer(),
@@ -2310,7 +2310,7 @@
 %% Example:
 %% list_scripts_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Scripts">> => list(script()())
+%%   <<"Scripts">> => list(script())
 %% }
 -type list_scripts_output() :: #{binary() => any()}.
 
@@ -2358,7 +2358,7 @@
 %% Example:
 %% describe_matchmaking_rule_sets_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RuleSets">> => list(matchmaking_rule_set()())
+%%   <<"RuleSets">> => list(matchmaking_rule_set())
 %% }
 -type describe_matchmaking_rule_sets_output() :: #{binary() => any()}.
 
@@ -2391,7 +2391,7 @@
 
 %% Example:
 %% describe_fleet_attributes_input() :: #{
-%%   <<"FleetIds">> => list(string()()),
+%%   <<"FleetIds">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2408,7 +2408,7 @@
 %%   <<"AliasId">> => string(),
 %%   <<"CreatorId">> => string(),
 %%   <<"FleetId">> => string(),
-%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameProperties">> => list(game_property()),
 %%   <<"GameSessionData">> => string(),
 %%   <<"GameSessionId">> => string(),
 %%   <<"IdempotencyToken">> => string(),
@@ -2448,7 +2448,7 @@
 
 %% Example:
 %% describe_game_server_instances_output() :: #{
-%%   <<"GameServerInstances">> => list(game_server_instance()()),
+%%   <<"GameServerInstances">> => list(game_server_instance()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_game_server_instances_output() :: #{binary() => any()}.
@@ -2466,7 +2466,7 @@
 
 %% Example:
 %% describe_ec2_instance_limits_output() :: #{
-%%   <<"EC2InstanceLimits">> => list(ec2_instance_limit()())
+%%   <<"EC2InstanceLimits">> => list(ec2_instance_limit())
 %% }
 -type describe_ec2_instance_limits_output() :: #{binary() => any()}.
 
@@ -2497,7 +2497,7 @@
 
 %% Example:
 %% describe_fleet_capacity_output() :: #{
-%%   <<"FleetCapacity">> => list(fleet_capacity()()),
+%%   <<"FleetCapacity">> => list(fleet_capacity()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_capacity_output() :: #{binary() => any()}.
@@ -2524,12 +2524,12 @@
 %%   <<"GameServerContainerGroupsPerInstance">> => integer(),
 %%   <<"GameSessionCreationLimitPolicy">> => game_session_creation_limit_policy(),
 %%   <<"InstanceConnectionPortRange">> => connection_port_range(),
-%%   <<"InstanceInboundPermissions">> => list(ip_permission()()),
+%%   <<"InstanceInboundPermissions">> => list(ip_permission()),
 %%   <<"InstanceType">> => string(),
-%%   <<"LocationAttributes">> => list(container_fleet_location_attributes()()),
+%%   <<"LocationAttributes">> => list(container_fleet_location_attributes()),
 %%   <<"LogConfiguration">> => log_configuration(),
 %%   <<"MaximumGameServerContainerGroupsPerInstance">> => integer(),
-%%   <<"MetricGroups">> => list(string()()),
+%%   <<"MetricGroups">> => list(string()),
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"PerInstanceContainerGroupDefinitionArn">> => string(),
 %%   <<"PerInstanceContainerGroupDefinitionName">> => string(),
@@ -2539,7 +2539,7 @@
 
 %% Example:
 %% describe_fleet_attributes_output() :: #{
-%%   <<"FleetAttributes">> => list(fleet_attributes()()),
+%%   <<"FleetAttributes">> => list(fleet_attributes()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_attributes_output() :: #{binary() => any()}.
@@ -2605,7 +2605,7 @@
 
 %% Example:
 %% container_port_configuration() :: #{
-%%   <<"ContainerPortRanges">> => list(container_port_range()())
+%%   <<"ContainerPortRanges">> => list(container_port_range())
 %% }
 -type container_port_configuration() :: #{binary() => any()}.
 
@@ -2643,7 +2643,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"RoutingStrategy">> := routing_strategy(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_alias_input() :: #{binary() => any()}.
 
@@ -2651,7 +2651,7 @@
 %% start_match_backfill_input() :: #{
 %%   <<"ConfigurationName">> := string(),
 %%   <<"GameSessionArn">> => string(),
-%%   <<"Players">> := list(player()()),
+%%   <<"Players">> := list(player()),
 %%   <<"TicketId">> => string()
 %% }
 -type start_match_backfill_input() :: #{binary() => any()}.
@@ -2674,7 +2674,7 @@
 
 %% Example:
 %% list_container_fleets_output() :: #{
-%%   <<"ContainerFleets">> => list(container_fleet()()),
+%%   <<"ContainerFleets">> => list(container_fleet()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_container_fleets_output() :: #{binary() => any()}.
@@ -2711,7 +2711,7 @@
 
 %% Example:
 %% list_game_servers_output() :: #{
-%%   <<"GameServers">> => list(game_server()()),
+%%   <<"GameServers">> => list(game_server()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_game_servers_output() :: #{binary() => any()}.
@@ -2732,7 +2732,7 @@
 %% Example:
 %% describe_scaling_policies_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScalingPolicies">> => list(scaling_policy()())
+%%   <<"ScalingPolicies">> => list(scaling_policy())
 %% }
 -type describe_scaling_policies_output() :: #{binary() => any()}.
 
@@ -2748,7 +2748,7 @@
 %%   <<"OperatingSystem">> => list(any()),
 %%   <<"ServerSdkVersion">> => string(),
 %%   <<"StorageLocation">> => s3_location(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Version">> => string()
 %% }
 -type create_build_input() :: #{binary() => any()}.
@@ -2756,10 +2756,10 @@
 %% Example:
 %% game_server_container_definition() :: #{
 %%   <<"ContainerName">> => string(),
-%%   <<"DependsOn">> => list(container_dependency()()),
-%%   <<"EnvironmentOverride">> => list(container_environment()()),
+%%   <<"DependsOn">> => list(container_dependency()),
+%%   <<"EnvironmentOverride">> => list(container_environment()),
 %%   <<"ImageUri">> => string(),
-%%   <<"MountPoints">> => list(container_mount_point()()),
+%%   <<"MountPoints">> => list(container_mount_point()),
 %%   <<"PortConfiguration">> => container_port_configuration(),
 %%   <<"ResolvedImageDigest">> => string(),
 %%   <<"ServerSdkVersion">> => string()
@@ -2801,7 +2801,7 @@
 
 %% Example:
 %% describe_game_session_details_output() :: #{
-%%   <<"GameSessionDetails">> => list(game_session_detail()()),
+%%   <<"GameSessionDetails">> => list(game_session_detail()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_game_session_details_output() :: #{binary() => any()}.
@@ -2851,13 +2851,13 @@
 %%   <<"BalancingStrategy">> => list(any()),
 %%   <<"GameServerGroupName">> := string(),
 %%   <<"GameServerProtectionPolicy">> => list(any()),
-%%   <<"InstanceDefinitions">> := list(instance_definition()()),
+%%   <<"InstanceDefinitions">> := list(instance_definition()),
 %%   <<"LaunchTemplate">> := launch_template_specification(),
 %%   <<"MaxSize">> := integer(),
 %%   <<"MinSize">> := integer(),
 %%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"VpcSubnets">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSubnets">> => list(string())
 %% }
 -type create_game_server_group_input() :: #{binary() => any()}.
 
@@ -2900,14 +2900,14 @@
 %%   <<"GameServerContainerGroupsPerInstance">> => integer(),
 %%   <<"GameSessionCreationLimitPolicy">> => game_session_creation_limit_policy(),
 %%   <<"InstanceConnectionPortRange">> => connection_port_range(),
-%%   <<"InstanceInboundPermissions">> => list(ip_permission()()),
+%%   <<"InstanceInboundPermissions">> => list(ip_permission()),
 %%   <<"InstanceType">> => string(),
-%%   <<"Locations">> => list(location_configuration()()),
+%%   <<"Locations">> => list(location_configuration()),
 %%   <<"LogConfiguration">> => log_configuration(),
-%%   <<"MetricGroups">> => list(string()()),
+%%   <<"MetricGroups">> => list(string()),
 %%   <<"NewGameSessionProtectionPolicy">> => list(any()),
 %%   <<"PerInstanceContainerGroupDefinitionName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_container_fleet_input() :: #{binary() => any()}.
 
@@ -2925,7 +2925,7 @@
 %% create_player_sessions_input() :: #{
 %%   <<"GameSessionId">> := string(),
 %%   <<"PlayerDataMap">> => map(),
-%%   <<"PlayerIds">> := list(string()())
+%%   <<"PlayerIds">> := list(string())
 %% }
 -type create_player_sessions_input() :: #{binary() => any()}.
 
@@ -2933,7 +2933,7 @@
 %% game_session_placement() :: #{
 %%   <<"DnsName">> => string(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameProperties">> => list(game_property()),
 %%   <<"GameSessionArn">> => string(),
 %%   <<"GameSessionData">> => string(),
 %%   <<"GameSessionId">> => string(),
@@ -2943,9 +2943,9 @@
 %%   <<"IpAddress">> => string(),
 %%   <<"MatchmakerData">> => string(),
 %%   <<"MaximumPlayerSessionCount">> => integer(),
-%%   <<"PlacedPlayerSessions">> => list(placed_player_session()()),
+%%   <<"PlacedPlayerSessions">> => list(placed_player_session()),
 %%   <<"PlacementId">> => string(),
-%%   <<"PlayerLatencies">> => list(player_latency()()),
+%%   <<"PlayerLatencies">> => list(player_latency()),
 %%   <<"Port">> => integer(),
 %%   <<"PriorityConfigurationOverride">> => priority_configuration_override(),
 %%   <<"StartTime">> => non_neg_integer(),
@@ -2961,7 +2961,7 @@
 %%   <<"DnsName">> => string(),
 %%   <<"FleetArn">> => string(),
 %%   <<"FleetId">> => string(),
-%%   <<"GameProperties">> => list(game_property()()),
+%%   <<"GameProperties">> => list(game_property()),
 %%   <<"GameSessionData">> => string(),
 %%   <<"GameSessionId">> => string(),
 %%   <<"IpAddress">> => string(),
@@ -2991,7 +2991,7 @@
 
 %% Example:
 %% list_builds_output() :: #{
-%%   <<"Builds">> => list(build()()),
+%%   <<"Builds">> => list(build()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_builds_output() :: #{binary() => any()}.
@@ -3000,7 +3000,7 @@
 %% create_script_input() :: #{
 %%   <<"Name">> => string(),
 %%   <<"StorageLocation">> => s3_location(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Version">> => string(),
 %%   <<"ZipFile">> => binary()
 %% }
@@ -3033,7 +3033,7 @@
 
 %% Example:
 %% describe_matchmaking_configurations_output() :: #{
-%%   <<"Configurations">> => list(matchmaking_configuration()()),
+%%   <<"Configurations">> => list(matchmaking_configuration()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_matchmaking_configurations_output() :: #{binary() => any()}.
@@ -3056,7 +3056,7 @@
 %% Example:
 %% describe_game_server_instances_input() :: #{
 %%   <<"GameServerGroupName">> := string(),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }

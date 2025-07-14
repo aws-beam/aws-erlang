@@ -154,9 +154,9 @@
 
 %% Example:
 %% hyper_parameter_ranges() :: #{
-%%   <<"categoricalHyperParameterRanges">> => list(categorical_hyper_parameter_range()()),
-%%   <<"continuousHyperParameterRanges">> => list(continuous_hyper_parameter_range()()),
-%%   <<"integerHyperParameterRanges">> => list(integer_hyper_parameter_range()())
+%%   <<"categoricalHyperParameterRanges">> => list(categorical_hyper_parameter_range()),
+%%   <<"continuousHyperParameterRanges">> => list(continuous_hyper_parameter_range()),
+%%   <<"integerHyperParameterRanges">> => list(integer_hyper_parameter_range())
 %% }
 -type hyper_parameter_ranges() :: #{binary() => any()}.
 
@@ -179,7 +179,7 @@
 %% create_event_tracker_request() :: #{
 %%   <<"datasetGroupArn">> := string(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_event_tracker_request() :: #{binary() => any()}.
 
@@ -252,7 +252,7 @@
 %%   <<"numResults">> => integer(),
 %%   <<"roleArn">> := string(),
 %%   <<"solutionVersionArn">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"themeGenerationConfig">> => theme_generation_config()
 %% }
 -type create_batch_inference_job_request() :: #{binary() => any()}.
@@ -272,13 +272,13 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_batch_inference_jobs_response() :: #{
-%%   <<"batchInferenceJobs">> => list(batch_inference_job_summary()()),
+%%   <<"batchInferenceJobs">> => list(batch_inference_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_batch_inference_jobs_response() :: #{binary() => any()}.
@@ -317,7 +317,7 @@
 %% Example:
 %% list_recipes_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"recipes">> => list(recipe_summary()())
+%%   <<"recipes">> => list(recipe_summary())
 %% }
 -type list_recipes_response() :: #{binary() => any()}.
 
@@ -344,7 +344,7 @@
 %%   <<"name">> := string(),
 %%   <<"recipeArn">> := string(),
 %%   <<"recommenderConfig">> => recommender_config(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_recommender_request() :: #{binary() => any()}.
 
@@ -385,7 +385,7 @@
 %% default_categorical_hyper_parameter_range() :: #{
 %%   <<"isTunable">> => boolean(),
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type default_categorical_hyper_parameter_range() :: #{binary() => any()}.
 
@@ -413,7 +413,7 @@
 %%   <<"performHPO">> => boolean(),
 %%   <<"recipeArn">> => string(),
 %%   <<"solutionConfig">> => solution_config(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_solution_request() :: #{binary() => any()}.
 
@@ -549,7 +549,7 @@
 
 %% Example:
 %% list_campaigns_response() :: #{
-%%   <<"campaigns">> => list(campaign_summary()()),
+%%   <<"campaigns">> => list(campaign_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_campaigns_response() :: #{binary() => any()}.
@@ -576,9 +576,9 @@
 
 %% Example:
 %% default_hyper_parameter_ranges() :: #{
-%%   <<"categoricalHyperParameterRanges">> => list(default_categorical_hyper_parameter_range()()),
-%%   <<"continuousHyperParameterRanges">> => list(default_continuous_hyper_parameter_range()()),
-%%   <<"integerHyperParameterRanges">> => list(default_integer_hyper_parameter_range()())
+%%   <<"categoricalHyperParameterRanges">> => list(default_categorical_hyper_parameter_range()),
+%%   <<"continuousHyperParameterRanges">> => list(default_continuous_hyper_parameter_range()),
+%%   <<"integerHyperParameterRanges">> => list(default_integer_hyper_parameter_range())
 %% }
 -type default_hyper_parameter_ranges() :: #{binary() => any()}.
 
@@ -631,7 +631,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -669,7 +669,7 @@
 
 %% Example:
 %% list_data_deletion_jobs_response() :: #{
-%%   <<"dataDeletionJobs">> => list(data_deletion_job_summary()()),
+%%   <<"dataDeletionJobs">> => list(data_deletion_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_deletion_jobs_response() :: #{binary() => any()}.
@@ -688,7 +688,7 @@
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"roleArn">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_dataset_group_request() :: #{binary() => any()}.
 
@@ -745,7 +745,7 @@
 %% Example:
 %% create_metric_attribution_request() :: #{
 %%   <<"datasetGroupArn">> := string(),
-%%   <<"metrics">> := list(metric_attribute()()),
+%%   <<"metrics">> := list(metric_attribute()),
 %%   <<"metricsOutputConfig">> := metric_attribution_output(),
 %%   <<"name">> := string()
 %% }
@@ -930,7 +930,7 @@
 %%   <<"datasetGroupArn">> := string(),
 %%   <<"filterExpression">> := string(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_filter_request() :: #{binary() => any()}.
 
@@ -954,7 +954,7 @@
 %% create_solution_version_request() :: #{
 %%   <<"name">> => string(),
 %%   <<"solutionArn">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"trainingMode">> => list(any())
 %% }
 -type create_solution_version_request() :: #{binary() => any()}.
@@ -1066,7 +1066,7 @@
 
 %% Example:
 %% list_dataset_groups_response() :: #{
-%%   <<"datasetGroups">> => list(dataset_group_summary()()),
+%%   <<"datasetGroups">> => list(dataset_group_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dataset_groups_response() :: #{binary() => any()}.
@@ -1111,7 +1111,7 @@
 
 %% Example:
 %% list_metric_attribution_metrics_response() :: #{
-%%   <<"metrics">> => list(metric_attribute()()),
+%%   <<"metrics">> => list(metric_attribute()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_metric_attribution_metrics_response() :: #{binary() => any()}.
@@ -1143,13 +1143,13 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% events_config() :: #{
-%%   <<"eventParametersList">> => list(event_parameters()())
+%%   <<"eventParametersList">> => list(event_parameters())
 %% }
 -type events_config() :: #{binary() => any()}.
 
@@ -1164,7 +1164,7 @@
 %% Example:
 %% categorical_hyper_parameter_range() :: #{
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type categorical_hyper_parameter_range() :: #{binary() => any()}.
 
@@ -1176,7 +1176,7 @@
 
 %% Example:
 %% list_batch_segment_jobs_response() :: #{
-%%   <<"batchSegmentJobs">> => list(batch_segment_job_summary()()),
+%%   <<"batchSegmentJobs">> => list(batch_segment_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_batch_segment_jobs_response() :: #{binary() => any()}.
@@ -1191,7 +1191,7 @@
 %% Example:
 %% list_solutions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"solutions">> => list(solution_summary()())
+%%   <<"solutions">> => list(solution_summary())
 %% }
 -type list_solutions_response() :: #{binary() => any()}.
 
@@ -1262,7 +1262,7 @@
 %%   <<"datasetGroupArn">> := string(),
 %%   <<"jobName">> := string(),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_data_deletion_job_request() :: #{binary() => any()}.
 
@@ -1304,7 +1304,7 @@
 %% Example:
 %% auto_ml_config() :: #{
 %%   <<"metricName">> => string(),
-%%   <<"recipeList">> => list(string()())
+%%   <<"recipeList">> => list(string())
 %% }
 -type auto_ml_config() :: #{binary() => any()}.
 
@@ -1341,7 +1341,7 @@
 %%   <<"numResults">> => integer(),
 %%   <<"roleArn">> := string(),
 %%   <<"solutionVersionArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_batch_segment_job_request() :: #{binary() => any()}.
 
@@ -1359,7 +1359,7 @@
 
 %% Example:
 %% list_dataset_import_jobs_response() :: #{
-%%   <<"datasetImportJobs">> => list(dataset_import_job_summary()()),
+%%   <<"datasetImportJobs">> => list(dataset_import_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dataset_import_jobs_response() :: #{binary() => any()}.
@@ -1406,13 +1406,13 @@
 %%   <<"minProvisionedTPS">> => integer(),
 %%   <<"name">> := string(),
 %%   <<"solutionVersionArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_campaign_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_dataset_export_jobs_response() :: #{
-%%   <<"datasetExportJobs">> => list(dataset_export_job_summary()()),
+%%   <<"datasetExportJobs">> => list(dataset_export_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dataset_export_jobs_response() :: #{binary() => any()}.
@@ -1465,7 +1465,7 @@
 %% Example:
 %% list_recommenders_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"recommenders">> => list(recommender_summary()())
+%%   <<"recommenders">> => list(recommender_summary())
 %% }
 -type list_recommenders_response() :: #{binary() => any()}.
 
@@ -1514,7 +1514,7 @@
 %%   <<"datasetType">> := string(),
 %%   <<"name">> := string(),
 %%   <<"schemaArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_dataset_request() :: #{binary() => any()}.
 
@@ -1526,14 +1526,14 @@
 
 %% Example:
 %% list_metric_attributions_response() :: #{
-%%   <<"metricAttributions">> => list(metric_attribution_summary()()),
+%%   <<"metricAttributions">> => list(metric_attribution_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_metric_attributions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_event_trackers_response() :: #{
-%%   <<"eventTrackers">> => list(event_tracker_summary()()),
+%%   <<"eventTrackers">> => list(event_tracker_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_event_trackers_response() :: #{binary() => any()}.
@@ -1557,7 +1557,7 @@
 %%   <<"jobName">> := string(),
 %%   <<"publishAttributionMetricsToS3">> => boolean(),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_dataset_import_job_request() :: #{binary() => any()}.
 
@@ -1578,7 +1578,7 @@
 %% Example:
 %% list_solution_versions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"solutionVersions">> => list(solution_version_summary()())
+%%   <<"solutionVersions">> => list(solution_version_summary())
 %% }
 -type list_solution_versions_response() :: #{binary() => any()}.
 
@@ -1606,10 +1606,10 @@
 
 %% Example:
 %% update_metric_attribution_request() :: #{
-%%   <<"addMetrics">> => list(metric_attribute()()),
+%%   <<"addMetrics">> => list(metric_attribute()),
 %%   <<"metricAttributionArn">> => string(),
 %%   <<"metricsOutputConfig">> => metric_attribution_output(),
-%%   <<"removeMetrics">> => list(string()())
+%%   <<"removeMetrics">> => list(string())
 %% }
 -type update_metric_attribution_request() :: #{binary() => any()}.
 
@@ -1695,7 +1695,7 @@
 
 %% Example:
 %% list_datasets_response() :: #{
-%%   <<"datasets">> => list(dataset_summary()()),
+%%   <<"datasets">> => list(dataset_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.
@@ -1762,7 +1762,7 @@
 %% Example:
 %% list_schemas_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"schemas">> => list(dataset_schema_summary()())
+%%   <<"schemas">> => list(dataset_schema_summary())
 %% }
 -type list_schemas_response() :: #{binary() => any()}.
 
@@ -1779,7 +1779,7 @@
 %%   <<"jobName">> := string(),
 %%   <<"jobOutput">> := dataset_export_job_output(),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_dataset_export_job_request() :: #{binary() => any()}.
 
@@ -1808,7 +1808,7 @@
 
 %% Example:
 %% list_filters_response() :: #{
-%%   <<"Filters">> => list(filter_summary()()),
+%%   <<"Filters">> => list(filter_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_filters_response() :: #{binary() => any()}.

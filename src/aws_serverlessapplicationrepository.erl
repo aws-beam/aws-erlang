@@ -85,7 +85,7 @@
 
 %% Example:
 %% list_application_dependencies_response() :: #{
-%%   <<"Dependencies">> => list(application_dependency_summary()()),
+%%   <<"Dependencies">> => list(application_dependency_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_dependencies_response() :: #{binary() => any()}.
@@ -127,7 +127,7 @@
 %% Example:
 %% parameter_definition() :: #{
 %%   <<"AllowedPattern">> => string(),
-%%   <<"AllowedValues">> => list(string()()),
+%%   <<"AllowedValues">> => list(string()),
 %%   <<"ConstraintDescription">> => string(),
 %%   <<"DefaultValue">> => string(),
 %%   <<"Description">> => string(),
@@ -137,7 +137,7 @@
 %%   <<"MinValue">> => integer(),
 %%   <<"Name">> => string(),
 %%   <<"NoEcho">> => boolean(),
-%%   <<"ReferencedByResources">> => list(string()()),
+%%   <<"ReferencedByResources">> => list(string()),
 %%   <<"Type">> => string()
 %% }
 -type parameter_definition() :: #{binary() => any()}.
@@ -157,7 +157,7 @@
 %% create_application_version_response() :: #{
 %%   <<"ApplicationId">> => string(),
 %%   <<"CreationTime">> => string(),
-%%   <<"ParameterDefinitions">> => list(parameter_definition()()),
+%%   <<"ParameterDefinitions">> => list(parameter_definition()),
 %%   <<"RequiredCapabilities">> => list(list(any())()),
 %%   <<"ResourcesSupported">> => boolean(),
 %%   <<"SemanticVersion">> => string(),
@@ -170,7 +170,7 @@
 
 %% Example:
 %% get_application_policy_response() :: #{
-%%   <<"Statements">> => list(application_policy_statement()())
+%%   <<"Statements">> => list(application_policy_statement())
 %% }
 -type get_application_policy_response() :: #{binary() => any()}.
 
@@ -219,7 +219,7 @@
 
 %% Example:
 %% put_application_policy_request() :: #{
-%%   <<"Statements">> := list(application_policy_statement()())
+%%   <<"Statements">> := list(application_policy_statement())
 %% }
 -type put_application_policy_request() :: #{binary() => any()}.
 
@@ -237,7 +237,7 @@
 %%   <<"Author">> := string(),
 %%   <<"Description">> := string(),
 %%   <<"HomePageUrl">> => string(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"LicenseBody">> => string(),
 %%   <<"LicenseUrl">> => string(),
 %%   <<"Name">> := string(),
@@ -274,7 +274,7 @@
 %%   <<"Description">> => string(),
 %%   <<"HomePageUrl">> => string(),
 %%   <<"IsVerifiedAuthor">> => boolean(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"LicenseUrl">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"ReadmeUrl">> => string(),
@@ -298,7 +298,7 @@
 %% version() :: #{
 %%   <<"ApplicationId">> => string(),
 %%   <<"CreationTime">> => string(),
-%%   <<"ParameterDefinitions">> => list(parameter_definition()()),
+%%   <<"ParameterDefinitions">> => list(parameter_definition()),
 %%   <<"RequiredCapabilities">> => list(list(any())()),
 %%   <<"ResourcesSupported">> => boolean(),
 %%   <<"SemanticVersion">> => string(),
@@ -314,7 +314,7 @@
 %%   <<"Author">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"HomePageUrl">> => string(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"ReadmeBody">> => string(),
 %%   <<"ReadmeUrl">> => string()
 %% }
@@ -329,7 +329,7 @@
 %%   <<"Description">> => string(),
 %%   <<"HomePageUrl">> => string(),
 %%   <<"IsVerifiedAuthor">> => boolean(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"LicenseUrl">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"ReadmeUrl">> => string(),
@@ -348,7 +348,7 @@
 %%   <<"Description">> => string(),
 %%   <<"HomePageUrl">> => string(),
 %%   <<"IsVerifiedAuthor">> => boolean(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"LicenseUrl">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"ReadmeUrl">> => string(),
@@ -373,17 +373,17 @@
 
 %% Example:
 %% create_cloud_formation_change_set_request() :: #{
-%%   <<"Capabilities">> => list(string()()),
+%%   <<"Capabilities">> => list(string()),
 %%   <<"ChangeSetName">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"NotificationArns">> => list(string()()),
-%%   <<"ParameterOverrides">> => list(parameter_value()()),
-%%   <<"ResourceTypes">> => list(string()()),
+%%   <<"NotificationArns">> => list(string()),
+%%   <<"ParameterOverrides">> => list(parameter_value()),
+%%   <<"ResourceTypes">> => list(string()),
 %%   <<"RollbackConfiguration">> => rollback_configuration(),
 %%   <<"SemanticVersion">> => string(),
 %%   <<"StackName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateId">> => string()
 %% }
 -type create_cloud_formation_change_set_request() :: #{binary() => any()}.
@@ -399,9 +399,9 @@
 
 %% Example:
 %% application_policy_statement() :: #{
-%%   <<"Actions">> => list(string()()),
-%%   <<"PrincipalOrgIDs">> => list(string()()),
-%%   <<"Principals">> => list(string()()),
+%%   <<"Actions">> => list(string()),
+%%   <<"PrincipalOrgIDs">> => list(string()),
+%%   <<"Principals">> => list(string()),
 %%   <<"StatementId">> => string()
 %% }
 -type application_policy_statement() :: #{binary() => any()}.
@@ -422,7 +422,7 @@
 %%   <<"CreationTime">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"HomePageUrl">> => string(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"SpdxLicenseId">> => string()
 %% }
@@ -438,7 +438,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"Applications">> => list(application_summary()()),
+%%   <<"Applications">> => list(application_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.
@@ -447,7 +447,7 @@
 %% Example:
 %% list_application_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_summary()())
+%%   <<"Versions">> => list(version_summary())
 %% }
 -type list_application_versions_response() :: #{binary() => any()}.
 
@@ -463,7 +463,7 @@
 %% Example:
 %% rollback_configuration() :: #{
 %%   <<"MonitoringTimeInMinutes">> => integer(),
-%%   <<"RollbackTriggers">> => list(rollback_trigger()())
+%%   <<"RollbackTriggers">> => list(rollback_trigger())
 %% }
 -type rollback_configuration() :: #{binary() => any()}.
 
@@ -478,7 +478,7 @@
 
 %% Example:
 %% put_application_policy_response() :: #{
-%%   <<"Statements">> => list(application_policy_statement()())
+%%   <<"Statements">> => list(application_policy_statement())
 %% }
 -type put_application_policy_response() :: #{binary() => any()}.
 

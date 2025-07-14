@@ -113,14 +113,14 @@
 %%   <<"appArn">> => string(),
 %%   <<"appId">> => string(),
 %%   <<"autoBranchCreationConfig">> => auto_branch_creation_config(),
-%%   <<"autoBranchCreationPatterns">> => list(string()()),
+%%   <<"autoBranchCreationPatterns">> => list(string()),
 %%   <<"basicAuthCredentials">> => string(),
 %%   <<"buildSpec">> => string(),
 %%   <<"cacheConfig">> => cache_config(),
 %%   <<"computeRoleArn">> => string(),
 %%   <<"createTime">> => non_neg_integer(),
 %%   <<"customHeaders">> => string(),
-%%   <<"customRules">> => list(custom_rule()()),
+%%   <<"customRules">> => list(custom_rule()),
 %%   <<"defaultDomain">> => string(),
 %%   <<"description">> => string(),
 %%   <<"enableAutoBranchCreation">> => boolean(),
@@ -146,7 +146,7 @@
 %% Example:
 %% branch() :: #{
 %%   <<"activeJobId">> => string(),
-%%   <<"associatedResources">> => list(string()()),
+%%   <<"associatedResources">> => list(string()),
 %%   <<"backend">> => backend(),
 %%   <<"backendEnvironmentArn">> => string(),
 %%   <<"basicAuthCredentials">> => string(),
@@ -155,7 +155,7 @@
 %%   <<"buildSpec">> => string(),
 %%   <<"computeRoleArn">> => string(),
 %%   <<"createTime">> => non_neg_integer(),
-%%   <<"customDomains">> => list(string()()),
+%%   <<"customDomains">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"destinationBranch">> => string(),
 %%   <<"displayName">> => string(),
@@ -224,13 +224,13 @@
 %% create_app_request() :: #{
 %%   <<"accessToken">> => string(),
 %%   <<"autoBranchCreationConfig">> => auto_branch_creation_config(),
-%%   <<"autoBranchCreationPatterns">> => list(string()()),
+%%   <<"autoBranchCreationPatterns">> => list(string()),
 %%   <<"basicAuthCredentials">> => string(),
 %%   <<"buildSpec">> => string(),
 %%   <<"cacheConfig">> => cache_config(),
 %%   <<"computeRoleArn">> => string(),
 %%   <<"customHeaders">> => string(),
-%%   <<"customRules">> => list(custom_rule()()),
+%%   <<"customRules">> => list(custom_rule()),
 %%   <<"description">> => string(),
 %%   <<"enableAutoBranchCreation">> => boolean(),
 %%   <<"enableBasicAuth">> => boolean(),
@@ -283,7 +283,7 @@
 
 %% Example:
 %% list_jobs_result() :: #{
-%%   <<"jobSummaries">> => list(job_summary()()),
+%%   <<"jobSummaries">> => list(job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_jobs_result() :: #{binary() => any()}.
@@ -298,23 +298,23 @@
 
 %% Example:
 %% update_domain_association_request() :: #{
-%%   <<"autoSubDomainCreationPatterns">> => list(string()()),
+%%   <<"autoSubDomainCreationPatterns">> => list(string()),
 %%   <<"autoSubDomainIAMRole">> => string(),
 %%   <<"certificateSettings">> => certificate_settings(),
 %%   <<"enableAutoSubDomain">> => boolean(),
-%%   <<"subDomainSettings">> => list(sub_domain_setting()())
+%%   <<"subDomainSettings">> => list(sub_domain_setting())
 %% }
 -type update_domain_association_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_domain_association_request() :: #{
-%%   <<"autoSubDomainCreationPatterns">> => list(string()()),
+%%   <<"autoSubDomainCreationPatterns">> => list(string()),
 %%   <<"autoSubDomainIAMRole">> => string(),
 %%   <<"certificateSettings">> => certificate_settings(),
 %%   <<"domainName">> := string(),
 %%   <<"enableAutoSubDomain">> => boolean(),
-%%   <<"subDomainSettings">> := list(sub_domain_setting()())
+%%   <<"subDomainSettings">> := list(sub_domain_setting())
 %% }
 -type create_domain_association_request() :: #{binary() => any()}.
 
@@ -370,7 +370,7 @@
 
 %% Example:
 %% list_branches_result() :: #{
-%%   <<"branches">> => list(branch()()),
+%%   <<"branches">> => list(branch()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_branches_result() :: #{binary() => any()}.
@@ -390,14 +390,14 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_backend_environments_result() :: #{
-%%   <<"backendEnvironments">> => list(backend_environment()()),
+%%   <<"backendEnvironments">> => list(backend_environment()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_backend_environments_result() :: #{binary() => any()}.
@@ -409,7 +409,7 @@
 
 %% Example:
 %% list_apps_result() :: #{
-%%   <<"apps">> => list(app()()),
+%%   <<"apps">> => list(app()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_apps_result() :: #{binary() => any()}.
@@ -476,7 +476,7 @@
 
 %% Example:
 %% domain_association() :: #{
-%%   <<"autoSubDomainCreationPatterns">> => list(string()()),
+%%   <<"autoSubDomainCreationPatterns">> => list(string()),
 %%   <<"autoSubDomainIAMRole">> => string(),
 %%   <<"certificate">> => certificate(),
 %%   <<"certificateVerificationDNSRecord">> => string(),
@@ -485,7 +485,7 @@
 %%   <<"domainStatus">> => list(any()),
 %%   <<"enableAutoSubDomain">> => boolean(),
 %%   <<"statusReason">> => string(),
-%%   <<"subDomains">> => list(sub_domain()()),
+%%   <<"subDomains">> => list(sub_domain()),
 %%   <<"updateStatus">> => list(any())
 %% }
 -type domain_association() :: #{binary() => any()}.
@@ -557,7 +557,7 @@
 %% Example:
 %% list_webhooks_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"webhooks">> => list(webhook()())
+%%   <<"webhooks">> => list(webhook())
 %% }
 -type list_webhooks_result() :: #{binary() => any()}.
 
@@ -760,7 +760,7 @@
 
 %% Example:
 %% job() :: #{
-%%   <<"steps">> => list(step()()),
+%%   <<"steps">> => list(step()),
 %%   <<"summary">> => job_summary()
 %% }
 -type job() :: #{binary() => any()}.
@@ -778,13 +778,13 @@
 %% update_app_request() :: #{
 %%   <<"accessToken">> => string(),
 %%   <<"autoBranchCreationConfig">> => auto_branch_creation_config(),
-%%   <<"autoBranchCreationPatterns">> => list(string()()),
+%%   <<"autoBranchCreationPatterns">> => list(string()),
 %%   <<"basicAuthCredentials">> => string(),
 %%   <<"buildSpec">> => string(),
 %%   <<"cacheConfig">> => cache_config(),
 %%   <<"computeRoleArn">> => string(),
 %%   <<"customHeaders">> => string(),
-%%   <<"customRules">> => list(custom_rule()()),
+%%   <<"customRules">> => list(custom_rule()),
 %%   <<"description">> => string(),
 %%   <<"enableAutoBranchCreation">> => boolean(),
 %%   <<"enableBasicAuth">> => boolean(),
@@ -859,7 +859,7 @@
 
 %% Example:
 %% list_artifacts_result() :: #{
-%%   <<"artifacts">> => list(artifact()()),
+%%   <<"artifacts">> => list(artifact()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_artifacts_result() :: #{binary() => any()}.
@@ -956,7 +956,7 @@
 
 %% Example:
 %% list_domain_associations_result() :: #{
-%%   <<"domainAssociations">> => list(domain_association()()),
+%%   <<"domainAssociations">> => list(domain_association()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_domain_associations_result() :: #{binary() => any()}.

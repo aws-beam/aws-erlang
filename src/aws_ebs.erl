@@ -155,7 +155,7 @@
 %% Example:
 %% list_changed_blocks_response() :: #{
 %%   <<"BlockSize">> => integer(),
-%%   <<"ChangedBlocks">> => list(changed_block()()),
+%%   <<"ChangedBlocks">> => list(changed_block()),
 %%   <<"ExpiryTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"VolumeSize">> => float()
@@ -175,7 +175,7 @@
 %% Example:
 %% list_snapshot_blocks_response() :: #{
 %%   <<"BlockSize">> => integer(),
-%%   <<"Blocks">> => list(block()()),
+%%   <<"Blocks">> => list(block()),
 %%   <<"ExpiryTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"VolumeSize">> => float()
@@ -233,7 +233,7 @@
 %%   <<"Encrypted">> => boolean(),
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"ParentSnapshotId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Timeout">> => integer(),
 %%   <<"VolumeSize">> := float()
 %% }
@@ -251,7 +251,7 @@
 %%   <<"SseType">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeSize">> => float()
 %% }
 -type start_snapshot_response() :: #{binary() => any()}.

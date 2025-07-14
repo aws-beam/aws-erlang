@@ -185,8 +185,8 @@
 %% Example:
 %% is_authorized_output() :: #{
 %%   <<"decision">> => list(any()),
-%%   <<"determiningPolicies">> => list(determining_policy_item()()),
-%%   <<"errors">> => list(evaluation_error_item()())
+%%   <<"determiningPolicies">> => list(determining_policy_item()),
+%%   <<"errors">> => list(evaluation_error_item())
 %% }
 -type is_authorized_output() :: #{binary() => any()}.
 
@@ -199,7 +199,7 @@
 
 %% Example:
 %% open_id_connect_identity_token_configuration() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"principalIdClaim">> => string()
 %% }
 -type open_id_connect_identity_token_configuration() :: #{binary() => any()}.
@@ -207,7 +207,7 @@
 %% Example:
 %% list_policy_templates_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"policyTemplates">> => list(policy_template_item()())
+%%   <<"policyTemplates">> => list(policy_template_item())
 %% }
 -type list_policy_templates_output() :: #{binary() => any()}.
 
@@ -241,14 +241,14 @@
 
 %% Example:
 %% open_id_connect_access_token_configuration() :: #{
-%%   <<"audiences">> => list(string()()),
+%%   <<"audiences">> => list(string()),
 %%   <<"principalIdClaim">> => string()
 %% }
 -type open_id_connect_access_token_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% open_id_connect_access_token_configuration_detail() :: #{
-%%   <<"audiences">> => list(string()()),
+%%   <<"audiences">> => list(string()),
 %%   <<"principalIdClaim">> => string()
 %% }
 -type open_id_connect_access_token_configuration_detail() :: #{binary() => any()}.
@@ -307,22 +307,22 @@
 
 %% Example:
 %% batch_get_policy_input() :: #{
-%%   <<"requests">> := list(batch_get_policy_input_item()())
+%%   <<"requests">> := list(batch_get_policy_input_item())
 %% }
 -type batch_get_policy_input() :: #{binary() => any()}.
 
 %% Example:
 %% batch_is_authorized_with_token_output_item() :: #{
 %%   <<"decision">> => list(any()),
-%%   <<"determiningPolicies">> => list(determining_policy_item()()),
-%%   <<"errors">> => list(evaluation_error_item()()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()),
+%%   <<"errors">> => list(evaluation_error_item()),
 %%   <<"request">> => batch_is_authorized_with_token_input_item()
 %% }
 -type batch_is_authorized_with_token_output_item() :: #{binary() => any()}.
 
 %% Example:
 %% policy_item() :: #{
-%%   <<"actions">> => list(action_identifier()()),
+%%   <<"actions">> => list(action_identifier()),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"definition">> => list(),
 %%   <<"effect">> => list(any()),
@@ -388,7 +388,7 @@
 
 %% Example:
 %% batch_is_authorized_output() :: #{
-%%   <<"results">> => list(batch_is_authorized_output_item()())
+%%   <<"results">> => list(batch_is_authorized_output_item())
 %% }
 -type batch_is_authorized_output() :: #{binary() => any()}.
 
@@ -419,7 +419,7 @@
 %% Example:
 %% list_policies_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"policies">> => list(policy_item()())
+%%   <<"policies">> => list(policy_item())
 %% }
 -type list_policies_output() :: #{binary() => any()}.
 
@@ -427,7 +427,7 @@
 %% put_schema_output() :: #{
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"namespaces">> => list(string()()),
+%%   <<"namespaces">> => list(string()),
 %%   <<"policyStoreId">> => string()
 %% }
 -type put_schema_output() :: #{binary() => any()}.
@@ -470,7 +470,7 @@
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
-%%   <<"resources">> => list(resource_conflict()())
+%%   <<"resources">> => list(resource_conflict())
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
@@ -484,7 +484,7 @@
 
 %% Example:
 %% cognito_user_pool_configuration_item() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"groupConfiguration">> => cognito_group_configuration_item(),
 %%   <<"issuer">> => string(),
 %%   <<"userPoolArn">> => string()
@@ -497,7 +497,7 @@
 %%   <<"entities">> => list(),
 %%   <<"identityToken">> => string(),
 %%   <<"policyStoreId">> := string(),
-%%   <<"requests">> := list(batch_is_authorized_with_token_input_item()())
+%%   <<"requests">> := list(batch_is_authorized_with_token_input_item())
 %% }
 -type batch_is_authorized_with_token_input() :: #{binary() => any()}.
 
@@ -521,7 +521,7 @@
 
 %% Example:
 %% list_identity_sources_output() :: #{
-%%   <<"identitySources">> => list(identity_source_item()()),
+%%   <<"identitySources">> => list(identity_source_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_identity_sources_output() :: #{binary() => any()}.
@@ -538,7 +538,7 @@
 
 %% Example:
 %% identity_source_details() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"discoveryUrl">> => string(),
 %%   <<"openIdIssuer">> => list(any()),
 %%   <<"userPoolArn">> => string()
@@ -575,7 +575,7 @@
 %% get_schema_output() :: #{
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
-%%   <<"namespaces">> => list(string()()),
+%%   <<"namespaces">> => list(string()),
 %%   <<"policyStoreId">> => string(),
 %%   <<"schema">> => string()
 %% }
@@ -601,7 +601,7 @@
 
 %% Example:
 %% cognito_user_pool_configuration_detail() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"groupConfiguration">> => cognito_group_configuration_detail(),
 %%   <<"issuer">> => string(),
 %%   <<"userPoolArn">> => string()
@@ -647,7 +647,7 @@
 
 %% Example:
 %% identity_source_item_details() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"discoveryUrl">> => string(),
 %%   <<"openIdIssuer">> => list(any()),
 %%   <<"userPoolArn">> => string()
@@ -682,7 +682,7 @@
 
 %% Example:
 %% update_open_id_connect_identity_token_configuration() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"principalIdClaim">> => string()
 %% }
 -type update_open_id_connect_identity_token_configuration() :: #{binary() => any()}.
@@ -696,7 +696,7 @@
 
 %% Example:
 %% cognito_user_pool_configuration() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"groupConfiguration">> => cognito_group_configuration(),
 %%   <<"userPoolArn">> => string()
 %% }
@@ -744,7 +744,7 @@
 %% batch_is_authorized_input() :: #{
 %%   <<"entities">> => list(),
 %%   <<"policyStoreId">> := string(),
-%%   <<"requests">> := list(batch_is_authorized_input_item()())
+%%   <<"requests">> := list(batch_is_authorized_input_item())
 %% }
 -type batch_is_authorized_input() :: #{binary() => any()}.
 
@@ -758,7 +758,7 @@
 
 %% Example:
 %% update_cognito_user_pool_configuration() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"groupConfiguration">> => update_cognito_group_configuration(),
 %%   <<"userPoolArn">> => string()
 %% }
@@ -776,8 +776,8 @@
 %% Example:
 %% is_authorized_with_token_output() :: #{
 %%   <<"decision">> => list(any()),
-%%   <<"determiningPolicies">> => list(determining_policy_item()()),
-%%   <<"errors">> => list(evaluation_error_item()()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()),
+%%   <<"errors">> => list(evaluation_error_item()),
 %%   <<"principal">> => entity_identifier()
 %% }
 -type is_authorized_with_token_output() :: #{binary() => any()}.
@@ -806,7 +806,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -863,14 +863,14 @@
 
 %% Example:
 %% open_id_connect_access_token_configuration_item() :: #{
-%%   <<"audiences">> => list(string()()),
+%%   <<"audiences">> => list(string()),
 %%   <<"principalIdClaim">> => string()
 %% }
 -type open_id_connect_access_token_configuration_item() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
@@ -894,14 +894,14 @@
 
 %% Example:
 %% batch_get_policy_output() :: #{
-%%   <<"errors">> => list(batch_get_policy_error_item()()),
-%%   <<"results">> => list(batch_get_policy_output_item()())
+%%   <<"errors">> => list(batch_get_policy_error_item()),
+%%   <<"results">> => list(batch_get_policy_output_item())
 %% }
 -type batch_get_policy_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_policy_output() :: #{
-%%   <<"actions">> => list(action_identifier()()),
+%%   <<"actions">> => list(action_identifier()),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"effect">> => list(any()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
@@ -944,7 +944,7 @@
 
 %% Example:
 %% update_open_id_connect_access_token_configuration() :: #{
-%%   <<"audiences">> => list(string()()),
+%%   <<"audiences">> => list(string()),
 %%   <<"principalIdClaim">> => string()
 %% }
 -type update_open_id_connect_access_token_configuration() :: #{binary() => any()}.
@@ -992,13 +992,13 @@
 %% Example:
 %% batch_is_authorized_with_token_output() :: #{
 %%   <<"principal">> => entity_identifier(),
-%%   <<"results">> => list(batch_is_authorized_with_token_output_item()())
+%%   <<"results">> => list(batch_is_authorized_with_token_output_item())
 %% }
 -type batch_is_authorized_with_token_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_identity_sources_input() :: #{
-%%   <<"filters">> => list(identity_source_filter()()),
+%%   <<"filters">> => list(identity_source_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"policyStoreId">> := string()
@@ -1008,15 +1008,15 @@
 %% Example:
 %% batch_is_authorized_output_item() :: #{
 %%   <<"decision">> => list(any()),
-%%   <<"determiningPolicies">> => list(determining_policy_item()()),
-%%   <<"errors">> => list(evaluation_error_item()()),
+%%   <<"determiningPolicies">> => list(determining_policy_item()),
+%%   <<"errors">> => list(evaluation_error_item()),
 %%   <<"request">> => batch_is_authorized_input_item()
 %% }
 -type batch_is_authorized_output_item() :: #{binary() => any()}.
 
 %% Example:
 %% update_policy_output() :: #{
-%%   <<"actions">> => list(action_identifier()()),
+%%   <<"actions">> => list(action_identifier()),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"effect">> => list(any()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
@@ -1052,7 +1052,7 @@
 %% entity_item() :: #{
 %%   <<"attributes">> => map(),
 %%   <<"identifier">> => entity_identifier(),
-%%   <<"parents">> => list(entity_identifier()())
+%%   <<"parents">> => list(entity_identifier())
 %% }
 -type entity_item() :: #{binary() => any()}.
 
@@ -1077,13 +1077,13 @@
 %% Example:
 %% list_policy_stores_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"policyStores">> => list(policy_store_item()())
+%%   <<"policyStores">> => list(policy_store_item())
 %% }
 -type list_policy_stores_output() :: #{binary() => any()}.
 
 %% Example:
 %% open_id_connect_identity_token_configuration_item() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"principalIdClaim">> => string()
 %% }
 -type open_id_connect_identity_token_configuration_item() :: #{binary() => any()}.
@@ -1102,14 +1102,14 @@
 
 %% Example:
 %% open_id_connect_identity_token_configuration_detail() :: #{
-%%   <<"clientIds">> => list(string()()),
+%%   <<"clientIds">> => list(string()),
 %%   <<"principalIdClaim">> => string()
 %% }
 -type open_id_connect_identity_token_configuration_detail() :: #{binary() => any()}.
 
 %% Example:
 %% get_policy_output() :: #{
-%%   <<"actions">> => list(action_identifier()()),
+%%   <<"actions">> => list(action_identifier()),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"definition">> => list(),
 %%   <<"effect">> => list(any()),

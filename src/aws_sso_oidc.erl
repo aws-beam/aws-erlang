@@ -107,7 +107,7 @@
 %%   <<"grantType">> := string(),
 %%   <<"redirectUri">> => string(),
 %%   <<"refreshToken">> => string(),
-%%   <<"scope">> => list(string()())
+%%   <<"scope">> => list(string())
 %% }
 -type create_token_request() :: #{binary() => any()}.
 
@@ -133,7 +133,7 @@
 %%   <<"redirectUri">> => string(),
 %%   <<"refreshToken">> => string(),
 %%   <<"requestedTokenType">> => string(),
-%%   <<"scope">> => list(string()()),
+%%   <<"scope">> => list(string()),
 %%   <<"subjectToken">> => string(),
 %%   <<"subjectTokenType">> => string()
 %% }
@@ -148,7 +148,7 @@
 %%   <<"idToken">> => string(),
 %%   <<"issuedTokenType">> => string(),
 %%   <<"refreshToken">> => string(),
-%%   <<"scope">> => list(string()()),
+%%   <<"scope">> => list(string()),
 %%   <<"tokenType">> => string()
 %% }
 -type create_token_with_iam_response() :: #{binary() => any()}.
@@ -233,10 +233,10 @@
 %%   <<"clientName">> := string(),
 %%   <<"clientType">> := string(),
 %%   <<"entitledApplicationArn">> => string(),
-%%   <<"grantTypes">> => list(string()()),
+%%   <<"grantTypes">> => list(string()),
 %%   <<"issuerUrl">> => string(),
-%%   <<"redirectUris">> => list(string()()),
-%%   <<"scopes">> => list(string()())
+%%   <<"redirectUris">> => list(string()),
+%%   <<"scopes">> => list(string())
 %% }
 -type register_client_request() :: #{binary() => any()}.
 

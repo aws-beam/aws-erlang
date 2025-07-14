@@ -69,7 +69,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -83,7 +83,7 @@
 %% Example:
 %% list_service_quotas_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Quotas">> => list(service_quota()())
+%%   <<"Quotas">> => list(service_quota())
 %% }
 -type list_service_quotas_response() :: #{binary() => any()}.
 
@@ -177,7 +177,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -204,7 +204,7 @@
 %% Example:
 %% list_requested_service_quota_change_history_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RequestedQuotas">> => list(requested_service_quota_change()())
+%%   <<"RequestedQuotas">> => list(requested_service_quota_change())
 %% }
 -type list_requested_service_quota_change_history_response() :: #{binary() => any()}.
 
@@ -266,7 +266,7 @@
 %% Example:
 %% list_aws_default_service_quotas_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Quotas">> => list(service_quota()())
+%%   <<"Quotas">> => list(service_quota())
 %% }
 -type list_aws_default_service_quotas_response() :: #{binary() => any()}.
 
@@ -292,14 +292,14 @@
 %% Example:
 %% list_requested_service_quota_change_history_by_quota_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RequestedQuotas">> => list(requested_service_quota_change()())
+%%   <<"RequestedQuotas">> => list(requested_service_quota_change())
 %% }
 -type list_requested_service_quota_change_history_by_quota_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_services_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Services">> => list(service_info()())
+%%   <<"Services">> => list(service_info())
 %% }
 -type list_services_response() :: #{binary() => any()}.
 
@@ -341,7 +341,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -532,7 +532,7 @@
 %% Example:
 %% list_service_quota_increase_requests_in_template_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceQuotaIncreaseRequestInTemplateList">> => list(service_quota_increase_request_in_template()())
+%%   <<"ServiceQuotaIncreaseRequestInTemplateList">> => list(service_quota_increase_request_in_template())
 %% }
 -type list_service_quota_increase_requests_in_template_response() :: #{binary() => any()}.
 

@@ -190,19 +190,19 @@
 
 %% Example:
 %% batch_apply_update_action_message() :: #{
-%%   <<"CacheClusterIds">> => list(string()()),
-%%   <<"ReplicationGroupIds">> => list(string()()),
+%%   <<"CacheClusterIds">> => list(string()),
+%%   <<"ReplicationGroupIds">> => list(string()),
 %%   <<"ServiceUpdateName">> := string()
 %% }
 -type batch_apply_update_action_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_update_actions_message() :: #{
-%%   <<"CacheClusterIds">> => list(string()()),
+%%   <<"CacheClusterIds">> => list(string()),
 %%   <<"Engine">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"ReplicationGroupIds">> => list(string()()),
+%%   <<"ReplicationGroupIds">> => list(string()),
 %%   <<"ServiceUpdateName">> => string(),
 %%   <<"ServiceUpdateStatus">> => list(list(any())()),
 %%   <<"ServiceUpdateTimeRange">> => time_range_filter(),
@@ -235,7 +235,7 @@
 %%   <<"FixedPrice">> => float(),
 %%   <<"OfferingType">> => string(),
 %%   <<"ProductDescription">> => string(),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservationARN">> => string(),
 %%   <<"ReservedCacheNodeId">> => string(),
 %%   <<"ReservedCacheNodesOfferingId">> => string(),
@@ -303,7 +303,7 @@
 
 %% Example:
 %% cache_security_group_message() :: #{
-%%   <<"CacheSecurityGroups">> => list(cache_security_group()()),
+%%   <<"CacheSecurityGroups">> => list(cache_security_group()),
 %%   <<"Marker">> => string()
 %% }
 -type cache_security_group_message() :: #{binary() => any()}.
@@ -326,14 +326,14 @@
 %% Example:
 %% describe_user_groups_result() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"UserGroups">> => list(user_group()())
+%%   <<"UserGroups">> => list(user_group())
 %% }
 -type describe_user_groups_result() :: #{binary() => any()}.
 
 %% Example:
 %% cache_node_type_specific_parameter() :: #{
 %%   <<"AllowedValues">> => string(),
-%%   <<"CacheNodeTypeSpecificValues">> => list(cache_node_type_specific_value()()),
+%%   <<"CacheNodeTypeSpecificValues">> => list(cache_node_type_specific_value()),
 %%   <<"ChangeType">> => list(any()),
 %%   <<"DataType">> => string(),
 %%   <<"Description">> => string(),
@@ -346,7 +346,7 @@
 
 %% Example:
 %% describe_global_replication_groups_result() :: #{
-%%   <<"GlobalReplicationGroups">> => list(global_replication_group()()),
+%%   <<"GlobalReplicationGroups">> => list(global_replication_group()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_global_replication_groups_result() :: #{binary() => any()}.
@@ -364,18 +364,18 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MajorEngineVersion">> => string(),
 %%   <<"ReaderEndpoint">> => endpoint(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"ServerlessCacheName">> => string(),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"Status">> => string(),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"UserGroupId">> => string()
 %% }
 -type serverless_cache() :: #{binary() => any()}.
 
 %% Example:
 %% cache_parameter_groups_message() :: #{
-%%   <<"CacheParameterGroups">> => list(cache_parameter_group()()),
+%%   <<"CacheParameterGroups">> => list(cache_parameter_group()),
 %%   <<"Marker">> => string()
 %% }
 -type cache_parameter_groups_message() :: #{binary() => any()}.
@@ -400,8 +400,8 @@
 
 %% Example:
 %% allowed_node_type_modifications_message() :: #{
-%%   <<"ScaleDownModifications">> => list(string()()),
-%%   <<"ScaleUpModifications">> => list(string()())
+%%   <<"ScaleDownModifications">> => list(string()),
+%%   <<"ScaleUpModifications">> => list(string())
 %% }
 -type allowed_node_type_modifications_message() :: #{binary() => any()}.
 
@@ -409,10 +409,10 @@
 %% modify_replication_group_shard_configuration_message() :: #{
 %%   <<"ApplyImmediately">> := boolean(),
 %%   <<"NodeGroupCount">> := integer(),
-%%   <<"NodeGroupsToRemove">> => list(string()()),
-%%   <<"NodeGroupsToRetain">> => list(string()()),
+%%   <<"NodeGroupsToRemove">> => list(string()),
+%%   <<"NodeGroupsToRetain">> => list(string()),
 %%   <<"ReplicationGroupId">> := string(),
-%%   <<"ReshardingConfiguration">> => list(resharding_configuration()())
+%%   <<"ReshardingConfiguration">> => list(resharding_configuration())
 %% }
 -type modify_replication_group_shard_configuration_message() :: #{binary() => any()}.
 
@@ -420,8 +420,8 @@
 %% modify_user_group_message() :: #{
 %%   <<"Engine">> => string(),
 %%   <<"UserGroupId">> := string(),
-%%   <<"UserIdsToAdd">> => list(string()()),
-%%   <<"UserIdsToRemove">> => list(string()())
+%%   <<"UserIdsToAdd">> => list(string()),
+%%   <<"UserIdsToRemove">> => list(string())
 %% }
 -type modify_user_group_message() :: #{binary() => any()}.
 
@@ -447,7 +447,7 @@
 %% Example:
 %% reset_cache_parameter_group_message() :: #{
 %%   <<"CacheParameterGroupName">> := string(),
-%%   <<"ParameterNameValues">> => list(parameter_name_value()()),
+%%   <<"ParameterNameValues">> => list(parameter_name_value()),
 %%   <<"ResetAllParameters">> => boolean()
 %% }
 -type reset_cache_parameter_group_message() :: #{binary() => any()}.
@@ -480,11 +480,11 @@
 %%   <<"Engine">> => string(),
 %%   <<"MinimumEngineVersion">> => string(),
 %%   <<"PendingChanges">> => user_group_pending_changes(),
-%%   <<"ReplicationGroups">> => list(string()()),
-%%   <<"ServerlessCaches">> => list(string()()),
+%%   <<"ReplicationGroups">> => list(string()),
+%%   <<"ServerlessCaches">> => list(string()),
 %%   <<"Status">> => string(),
 %%   <<"UserGroupId">> => string(),
-%%   <<"UserIds">> => list(string()())
+%%   <<"UserIds">> => list(string())
 %% }
 -type user_group() :: #{binary() => any()}.
 
@@ -496,10 +496,10 @@
 
 %% Example:
 %% engine_defaults() :: #{
-%%   <<"CacheNodeTypeSpecificParameters">> => list(cache_node_type_specific_parameter()()),
+%%   <<"CacheNodeTypeSpecificParameters">> => list(cache_node_type_specific_parameter()),
 %%   <<"CacheParameterGroupFamily">> => string(),
 %%   <<"Marker">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type engine_defaults() :: #{binary() => any()}.
 
@@ -523,9 +523,9 @@
 
 %% Example:
 %% cache_parameter_group_details() :: #{
-%%   <<"CacheNodeTypeSpecificParameters">> => list(cache_node_type_specific_parameter()()),
+%%   <<"CacheNodeTypeSpecificParameters">> => list(cache_node_type_specific_parameter()),
 %%   <<"Marker">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type cache_parameter_group_details() :: #{binary() => any()}.
 
@@ -575,7 +575,7 @@
 %%   <<"FixedPrice">> => float(),
 %%   <<"OfferingType">> => string(),
 %%   <<"ProductDescription">> => string(),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservedCacheNodesOfferingId">> => string(),
 %%   <<"UsagePrice">> => float()
 %% }
@@ -586,7 +586,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"ServerlessCacheName">> := string(),
 %%   <<"ServerlessCacheSnapshotName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_serverless_cache_snapshot_request() :: #{binary() => any()}.
 
@@ -595,14 +595,14 @@
 %%   <<"ApplyImmediately">> := boolean(),
 %%   <<"GlobalReplicationGroupId">> := string(),
 %%   <<"NodeGroupCount">> := integer(),
-%%   <<"RegionalConfigurations">> => list(regional_configuration()())
+%%   <<"RegionalConfigurations">> => list(regional_configuration())
 %% }
 -type increase_node_groups_in_global_replication_group_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_serverless_caches_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServerlessCaches">> => list(serverless_cache()())
+%%   <<"ServerlessCaches">> => list(serverless_cache())
 %% }
 -type describe_serverless_caches_response() :: #{binary() => any()}.
 
@@ -628,9 +628,9 @@
 %% Example:
 %% create_user_group_message() :: #{
 %%   <<"Engine">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserGroupId">> := string(),
-%%   <<"UserIds">> => list(string()())
+%%   <<"UserIds">> => list(string())
 %% }
 -type create_user_group_message() :: #{binary() => any()}.
 
@@ -674,7 +674,7 @@
 
 %% Example:
 %% cache_parameter_group_status() :: #{
-%%   <<"CacheNodeIdsToReboot">> => list(string()()),
+%%   <<"CacheNodeIdsToReboot">> => list(string()),
 %%   <<"CacheParameterGroupName">> => string(),
 %%   <<"ParameterApplyStatus">> => string()
 %% }
@@ -682,8 +682,8 @@
 
 %% Example:
 %% user_group_pending_changes() :: #{
-%%   <<"UserIdsToAdd">> => list(string()()),
-%%   <<"UserIdsToRemove">> => list(string()())
+%%   <<"UserIdsToAdd">> => list(string()),
+%%   <<"UserIdsToRemove">> => list(string())
 %% }
 -type user_group_pending_changes() :: #{binary() => any()}.
 
@@ -703,7 +703,7 @@
 %% Example:
 %% describe_serverless_cache_snapshots_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServerlessCacheSnapshots">> => list(serverless_cache_snapshot()())
+%%   <<"ServerlessCacheSnapshots">> => list(serverless_cache_snapshot())
 %% }
 -type describe_serverless_cache_snapshots_response() :: #{binary() => any()}.
 
@@ -734,7 +734,7 @@
 %% Example:
 %% node_group() :: #{
 %%   <<"NodeGroupId">> => string(),
-%%   <<"NodeGroupMembers">> => list(node_group_member()()),
+%%   <<"NodeGroupMembers">> => list(node_group_member()),
 %%   <<"PrimaryEndpoint">> => endpoint(),
 %%   <<"ReaderEndpoint">> => endpoint(),
 %%   <<"Slots">> => string(),
@@ -791,8 +791,8 @@
 
 %% Example:
 %% update_action_results_message() :: #{
-%%   <<"ProcessedUpdateActions">> => list(processed_update_action()()),
-%%   <<"UnprocessedUpdateActions">> => list(unprocessed_update_action()())
+%%   <<"ProcessedUpdateActions">> => list(processed_update_action()),
+%%   <<"UnprocessedUpdateActions">> => list(unprocessed_update_action())
 %% }
 -type update_action_results_message() :: #{binary() => any()}.
 
@@ -816,29 +816,29 @@
 %%   <<"CacheClusterId">> := string(),
 %%   <<"CacheNodeType">> => string(),
 %%   <<"CacheParameterGroupName">> => string(),
-%%   <<"CacheSecurityGroupNames">> => list(string()()),
+%%   <<"CacheSecurityGroupNames">> => list(string()),
 %%   <<"CacheSubnetGroupName">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"IpDiscovery">> => list(any()),
-%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration_request()()),
+%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration_request()),
 %%   <<"NetworkType">> => list(any()),
 %%   <<"NotificationTopicArn">> => string(),
 %%   <<"NumCacheNodes">> => integer(),
 %%   <<"OutpostMode">> => list(any()),
 %%   <<"Port">> => integer(),
 %%   <<"PreferredAvailabilityZone">> => string(),
-%%   <<"PreferredAvailabilityZones">> => list(string()()),
+%%   <<"PreferredAvailabilityZones">> => list(string()),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"PreferredOutpostArn">> => string(),
-%%   <<"PreferredOutpostArns">> => list(string()()),
+%%   <<"PreferredOutpostArns">> => list(string()),
 %%   <<"ReplicationGroupId">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SnapshotArns">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SnapshotArns">> => list(string()),
 %%   <<"SnapshotName">> => string(),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"SnapshotWindow">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitEncryptionEnabled">> => boolean()
 %% }
 -type create_cache_cluster_message() :: #{binary() => any()}.
@@ -889,7 +889,7 @@
 %% Example:
 %% reserved_cache_nodes_offering_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReservedCacheNodesOfferings">> => list(reserved_cache_nodes_offering()())
+%%   <<"ReservedCacheNodesOfferings">> => list(reserved_cache_nodes_offering())
 %% }
 -type reserved_cache_nodes_offering_message() :: #{binary() => any()}.
 
@@ -947,8 +947,8 @@
 %% decrease_replica_count_message() :: #{
 %%   <<"ApplyImmediately">> := boolean(),
 %%   <<"NewReplicaCount">> => integer(),
-%%   <<"ReplicaConfiguration">> => list(configure_shard()()),
-%%   <<"ReplicasToRemove">> => list(string()()),
+%%   <<"ReplicaConfiguration">> => list(configure_shard()),
+%%   <<"ReplicasToRemove">> => list(string()),
 %%   <<"ReplicationGroupId">> := string()
 %% }
 -type decrease_replica_count_message() :: #{binary() => any()}.
@@ -1034,7 +1034,7 @@
 %% increase_replica_count_message() :: #{
 %%   <<"ApplyImmediately">> := boolean(),
 %%   <<"NewReplicaCount">> => integer(),
-%%   <<"ReplicaConfiguration">> => list(configure_shard()()),
+%%   <<"ReplicaConfiguration">> => list(configure_shard()),
 %%   <<"ReplicationGroupId">> := string()
 %% }
 -type increase_replica_count_message() :: #{binary() => any()}.
@@ -1053,7 +1053,7 @@
 
 %% Example:
 %% test_migration_message() :: #{
-%%   <<"CustomerNodeEndpointList">> := list(customer_node_endpoint()()),
+%%   <<"CustomerNodeEndpointList">> := list(customer_node_endpoint()),
 %%   <<"ReplicationGroupId">> := string()
 %% }
 -type test_migration_message() :: #{binary() => any()}.
@@ -1061,10 +1061,10 @@
 %% Example:
 %% pending_modified_values() :: #{
 %%   <<"AuthTokenStatus">> => list(any()),
-%%   <<"CacheNodeIdsToRemove">> => list(string()()),
+%%   <<"CacheNodeIdsToRemove">> => list(string()),
 %%   <<"CacheNodeType">> => string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"LogDeliveryConfigurations">> => list(pending_log_delivery_configuration()()),
+%%   <<"LogDeliveryConfigurations">> => list(pending_log_delivery_configuration()),
 %%   <<"NumCacheNodes">> => integer(),
 %%   <<"ScaleConfig">> => scale_config(),
 %%   <<"TransitEncryptionEnabled">> => boolean(),
@@ -1141,7 +1141,7 @@
 %%   <<"ARN">> => string(),
 %%   <<"CacheSecurityGroupName">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"EC2SecurityGroups">> => list(ec2_security_group()()),
+%%   <<"EC2SecurityGroups">> => list(ec2_security_group()),
 %%   <<"OwnerId">> => string()
 %% }
 -type cache_security_group() :: #{binary() => any()}.
@@ -1165,9 +1165,9 @@
 %%   <<"NodeGroupId">> => string(),
 %%   <<"PrimaryAvailabilityZone">> => string(),
 %%   <<"PrimaryOutpostArn">> => string(),
-%%   <<"ReplicaAvailabilityZones">> => list(string()()),
+%%   <<"ReplicaAvailabilityZones">> => list(string()),
 %%   <<"ReplicaCount">> => integer(),
-%%   <<"ReplicaOutpostArns">> => list(string()()),
+%%   <<"ReplicaOutpostArns">> => list(string()),
 %%   <<"Slots">> => string()
 %% }
 -type node_group_configuration() :: #{binary() => any()}.
@@ -1194,7 +1194,7 @@
 %% Example:
 %% reserved_cache_node_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReservedCacheNodes">> => list(reserved_cache_node()())
+%%   <<"ReservedCacheNodes">> => list(reserved_cache_node())
 %% }
 -type reserved_cache_node_message() :: #{binary() => any()}.
 
@@ -1257,8 +1257,8 @@
 
 %% Example:
 %% batch_stop_update_action_message() :: #{
-%%   <<"CacheClusterIds">> => list(string()()),
-%%   <<"ReplicationGroupIds">> => list(string()()),
+%%   <<"CacheClusterIds">> => list(string()),
+%%   <<"ReplicationGroupIds">> => list(string()),
 %%   <<"ServiceUpdateName">> := string()
 %% }
 -type batch_stop_update_action_message() :: #{binary() => any()}.
@@ -1278,12 +1278,12 @@
 %%   <<"AutomaticFailoverEnabled">> => boolean(),
 %%   <<"CacheNodeType">> => string(),
 %%   <<"CacheParameterGroupName">> => string(),
-%%   <<"CacheSecurityGroupNames">> => list(string()()),
+%%   <<"CacheSecurityGroupNames">> => list(string()),
 %%   <<"ClusterMode">> => list(any()),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"IpDiscovery">> => list(any()),
-%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration_request()()),
+%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration_request()),
 %%   <<"MultiAZEnabled">> => boolean(),
 %%   <<"NodeGroupId">> => string(),
 %%   <<"NotificationTopicArn">> => string(),
@@ -1293,14 +1293,14 @@
 %%   <<"RemoveUserGroups">> => boolean(),
 %%   <<"ReplicationGroupDescription">> => string(),
 %%   <<"ReplicationGroupId">> := string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"SnapshotWindow">> => string(),
 %%   <<"SnapshottingClusterId">> => string(),
 %%   <<"TransitEncryptionEnabled">> => boolean(),
 %%   <<"TransitEncryptionMode">> => list(any()),
-%%   <<"UserGroupIdsToAdd">> => list(string()()),
-%%   <<"UserGroupIdsToRemove">> => list(string()())
+%%   <<"UserGroupIdsToAdd">> => list(string()),
+%%   <<"UserGroupIdsToRemove">> => list(string())
 %% }
 -type modify_replication_group_message() :: #{binary() => any()}.
 
@@ -1324,7 +1324,7 @@
 %% Example:
 %% service_updates_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ServiceUpdates">> => list(service_update()())
+%%   <<"ServiceUpdates">> => list(service_update())
 %% }
 -type service_updates_message() :: #{binary() => any()}.
 
@@ -1332,7 +1332,7 @@
 %% copy_snapshot_message() :: #{
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceSnapshotName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetBucket">> => string(),
 %%   <<"TargetSnapshotName">> := string()
 %% }
@@ -1378,7 +1378,7 @@
 %% copy_serverless_cache_snapshot_request() :: #{
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceServerlessCacheSnapshotName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetServerlessCacheSnapshotName">> := string()
 %% }
 -type copy_serverless_cache_snapshot_request() :: #{binary() => any()}.
@@ -1386,7 +1386,7 @@
 %% Example:
 %% reboot_cache_cluster_message() :: #{
 %%   <<"CacheClusterId">> := string(),
-%%   <<"CacheNodeIdsToReboot">> := list(string()())
+%%   <<"CacheNodeIdsToReboot">> := list(string())
 %% }
 -type reboot_cache_cluster_message() :: #{binary() => any()}.
 
@@ -1432,15 +1432,15 @@
 %%   <<"AtRestEncryptionEnabled">> => boolean(),
 %%   <<"ARN">> => string(),
 %%   <<"SnapshotRetentionLimit">> => integer(),
-%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration()()),
+%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration()),
 %%   <<"CacheClusterStatus">> => string(),
 %%   <<"ConfigurationEndpoint">> => endpoint(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"CacheNodeType">> => string(),
-%%   <<"CacheNodes">> => list(cache_node()()),
+%%   <<"CacheNodes">> => list(cache_node()),
 %%   <<"AuthTokenLastModifiedDate">> => non_neg_integer(),
-%%   <<"CacheSecurityGroups">> => list(cache_security_group_membership()()),
-%%   <<"SecurityGroups">> => list(security_group_membership()()),
+%%   <<"CacheSecurityGroups">> => list(cache_security_group_membership()),
+%%   <<"SecurityGroups">> => list(security_group_membership()),
 %%   <<"PreferredOutpostArn">> => string(),
 %%   <<"CacheSubnetGroupName">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
@@ -1461,8 +1461,8 @@
 %%   <<"AuthenticationMode">> => authentication_mode(),
 %%   <<"Engine">> := string(),
 %%   <<"NoPasswordRequired">> => boolean(),
-%%   <<"Passwords">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Passwords">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserId">> := string(),
 %%   <<"UserName">> := string()
 %% }
@@ -1473,7 +1473,7 @@
 %%   <<"ARN">> => string(),
 %%   <<"CacheSubnetGroupDescription">> => string(),
 %%   <<"CacheSubnetGroupName">> => string(),
-%%   <<"Subnets">> => list(subnet()()),
+%%   <<"Subnets">> => list(subnet()),
 %%   <<"SupportedNetworkTypes">> => list(list(any())()),
 %%   <<"VpcId">> => string()
 %% }
@@ -1558,7 +1558,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -1580,12 +1580,12 @@
 %%   <<"GlobalReplicationGroupInfo">> => global_replication_group_info(),
 %%   <<"IpDiscovery">> => list(any()),
 %%   <<"KmsKeyId">> => string(),
-%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration()()),
-%%   <<"MemberClusters">> => list(string()()),
-%%   <<"MemberClustersOutpostArns">> => list(string()()),
+%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration()),
+%%   <<"MemberClusters">> => list(string()),
+%%   <<"MemberClustersOutpostArns">> => list(string()),
 %%   <<"MultiAZ">> => list(any()),
 %%   <<"NetworkType">> => list(any()),
-%%   <<"NodeGroups">> => list(node_group()()),
+%%   <<"NodeGroups">> => list(node_group()),
 %%   <<"PendingModifiedValues">> => replication_group_pending_modified_values(),
 %%   <<"ReplicationGroupCreateTime">> => non_neg_integer(),
 %%   <<"ReplicationGroupId">> => string(),
@@ -1595,7 +1595,7 @@
 %%   <<"Status">> => string(),
 %%   <<"TransitEncryptionEnabled">> => boolean(),
 %%   <<"TransitEncryptionMode">> => list(any()),
-%%   <<"UserGroupIds">> => list(string()())
+%%   <<"UserGroupIds">> => list(string())
 %% }
 -type replication_group() :: #{binary() => any()}.
 
@@ -1613,7 +1613,7 @@
 %%   <<"AuthenticationMode">> => authentication_mode(),
 %%   <<"Engine">> => string(),
 %%   <<"NoPasswordRequired">> => boolean(),
-%%   <<"Passwords">> => list(string()()),
+%%   <<"Passwords">> => list(string()),
 %%   <<"UserId">> := string()
 %% }
 -type modify_user_message() :: #{binary() => any()}.
@@ -1630,7 +1630,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"ReplicationGroupId">> => string(),
 %%   <<"SnapshotName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_snapshot_message() :: #{binary() => any()}.
 
@@ -1656,7 +1656,7 @@
 %% Example:
 %% modify_cache_parameter_group_message() :: #{
 %%   <<"CacheParameterGroupName">> := string(),
-%%   <<"ParameterNameValues">> := list(parameter_name_value()())
+%%   <<"ParameterNameValues">> := list(parameter_name_value())
 %% }
 -type modify_cache_parameter_group_message() :: #{binary() => any()}.
 
@@ -1677,7 +1677,7 @@
 %% modify_cache_subnet_group_message() :: #{
 %%   <<"CacheSubnetGroupDescription">> => string(),
 %%   <<"CacheSubnetGroupName">> := string(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type modify_cache_subnet_group_message() :: #{binary() => any()}.
 
@@ -1692,7 +1692,7 @@
 %%   <<"AuthTokenStatus">> => list(any()),
 %%   <<"AutomaticFailoverStatus">> => list(any()),
 %%   <<"ClusterMode">> => list(any()),
-%%   <<"LogDeliveryConfigurations">> => list(pending_log_delivery_configuration()()),
+%%   <<"LogDeliveryConfigurations">> => list(pending_log_delivery_configuration()),
 %%   <<"PrimaryClusterId">> => string(),
 %%   <<"Resharding">> => resharding_status(),
 %%   <<"TransitEncryptionEnabled">> => boolean(),
@@ -1709,7 +1709,7 @@
 
 %% Example:
 %% events_message() :: #{
-%%   <<"Events">> => list(event()()),
+%%   <<"Events">> => list(event()),
 %%   <<"Marker">> => string()
 %% }
 -type events_message() :: #{binary() => any()}.
@@ -1717,7 +1717,7 @@
 %% Example:
 %% resharding_configuration() :: #{
 %%   <<"NodeGroupId">> => string(),
-%%   <<"PreferredAvailabilityZones">> => list(string()())
+%%   <<"PreferredAvailabilityZones">> => list(string())
 %% }
 -type resharding_configuration() :: #{binary() => any()}.
 
@@ -1732,7 +1732,7 @@
 %%   <<"CacheNodeCount">> => integer(),
 %%   <<"ReservedCacheNodeId">> => string(),
 %%   <<"ReservedCacheNodesOfferingId">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type purchase_reserved_cache_nodes_offering_message() :: #{binary() => any()}.
 
@@ -1800,7 +1800,7 @@
 
 %% Example:
 %% cache_subnet_group_message() :: #{
-%%   <<"CacheSubnetGroups">> => list(cache_subnet_group()()),
+%%   <<"CacheSubnetGroups">> => list(cache_subnet_group()),
 %%   <<"Marker">> => string()
 %% }
 -type cache_subnet_group_message() :: #{binary() => any()}.
@@ -1816,7 +1816,7 @@
 %% Example:
 %% describe_users_result() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type describe_users_result() :: #{binary() => any()}.
 
@@ -1824,8 +1824,8 @@
 %% configure_shard() :: #{
 %%   <<"NewReplicaCount">> => integer(),
 %%   <<"NodeGroupId">> => string(),
-%%   <<"PreferredAvailabilityZones">> => list(string()()),
-%%   <<"PreferredOutpostArns">> => list(string()())
+%%   <<"PreferredAvailabilityZones">> => list(string()),
+%%   <<"PreferredOutpostArns">> => list(string())
 %% }
 -type configure_shard() :: #{binary() => any()}.
 
@@ -1847,10 +1847,10 @@
 %% Example:
 %% update_action() :: #{
 %%   <<"CacheClusterId">> => string(),
-%%   <<"CacheNodeUpdateStatus">> => list(cache_node_update_status()()),
+%%   <<"CacheNodeUpdateStatus">> => list(cache_node_update_status()),
 %%   <<"Engine">> => string(),
 %%   <<"EstimatedUpdateTime">> => string(),
-%%   <<"NodeGroupUpdateStatus">> => list(node_group_update_status()()),
+%%   <<"NodeGroupUpdateStatus">> => list(node_group_update_status()),
 %%   <<"NodesUpdated">> => string(),
 %%   <<"ReplicationGroupId">> => string(),
 %%   <<"ServiceUpdateName">> => string(),
@@ -1869,14 +1869,14 @@
 %% Example:
 %% node_group_update_status() :: #{
 %%   <<"NodeGroupId">> => string(),
-%%   <<"NodeGroupMemberUpdateStatus">> => list(node_group_member_update_status()())
+%%   <<"NodeGroupMemberUpdateStatus">> => list(node_group_member_update_status())
 %% }
 -type node_group_update_status() :: #{binary() => any()}.
 
 %% Example:
 %% update_actions_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"UpdateActions">> => list(update_action()())
+%%   <<"UpdateActions">> => list(update_action())
 %% }
 -type update_actions_message() :: #{binary() => any()}.
 
@@ -1901,7 +1901,7 @@
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
-%%   <<"NodeSnapshots">> => list(node_snapshot()()),
+%%   <<"NodeSnapshots">> => list(node_snapshot()),
 %%   <<"NumCacheNodes">> => integer(),
 %%   <<"NumNodeGroups">> => integer(),
 %%   <<"Port">> => integer(),
@@ -1942,10 +1942,10 @@
 %%   <<"ClusterEnabled">> => boolean(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"GlobalNodeGroups">> => list(global_node_group()()),
+%%   <<"GlobalNodeGroups">> => list(global_node_group()),
 %%   <<"GlobalReplicationGroupDescription">> => string(),
 %%   <<"GlobalReplicationGroupId">> => string(),
-%%   <<"Members">> => list(global_replication_group_member()()),
+%%   <<"Members">> => list(global_replication_group_member()),
 %%   <<"Status">> => string(),
 %%   <<"TransitEncryptionEnabled">> => boolean()
 %% }
@@ -1953,7 +1953,7 @@
 
 %% Example:
 %% tag_list_message() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type tag_list_message() :: #{binary() => any()}.
 
@@ -1967,8 +1967,8 @@
 %% create_cache_subnet_group_message() :: #{
 %%   <<"CacheSubnetGroupDescription">> := string(),
 %%   <<"CacheSubnetGroupName">> := string(),
-%%   <<"SubnetIds">> := list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cache_subnet_group_message() :: #{binary() => any()}.
 
@@ -1993,7 +1993,7 @@
 %% Example:
 %% add_tags_to_resource_message() :: #{
 %%   <<"ResourceName">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_to_resource_message() :: #{binary() => any()}.
 
@@ -2013,14 +2013,14 @@
 %% create_cache_security_group_message() :: #{
 %%   <<"CacheSecurityGroupName">> := string(),
 %%   <<"Description">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cache_security_group_message() :: #{binary() => any()}.
 
 %% Example:
 %% create_replication_group_message() :: #{
 %%   <<"Port">> => integer(),
-%%   <<"NodeGroupConfiguration">> => list(node_group_configuration()()),
+%%   <<"NodeGroupConfiguration">> => list(node_group_configuration()),
 %%   <<"Engine">> => string(),
 %%   <<"GlobalReplicationGroupId">> => string(),
 %%   <<"IpDiscovery">> => list(any()),
@@ -2035,25 +2035,25 @@
 %%   <<"NumNodeGroups">> => integer(),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"ReplicationGroupId">> := string(),
-%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration_request()()),
+%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration_request()),
 %%   <<"ServerlessCacheSnapshotName">> => string(),
 %%   <<"AuthToken">> => string(),
 %%   <<"AutomaticFailoverEnabled">> => boolean(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"CacheNodeType">> => string(),
-%%   <<"UserGroupIds">> => list(string()()),
+%%   <<"UserGroupIds">> => list(string()),
 %%   <<"ReplicasPerNodeGroup">> => integer(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"SnapshotName">> => string(),
 %%   <<"CacheSubnetGroupName">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"MultiAZEnabled">> => boolean(),
-%%   <<"PreferredCacheClusterAZs">> => list(string()()),
-%%   <<"CacheSecurityGroupNames">> => list(string()()),
+%%   <<"PreferredCacheClusterAZs">> => list(string()),
+%%   <<"CacheSecurityGroupNames">> => list(string()),
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
-%%   <<"SnapshotArns">> => list(string()()),
+%%   <<"SnapshotArns">> => list(string()),
 %%   <<"NetworkType">> => list(any()),
 %%   <<"NotificationTopicArn">> => string(),
 %%   <<"TransitEncryptionMode">> => list(any()),
@@ -2093,7 +2093,7 @@
 
 %% Example:
 %% cache_cluster_message() :: #{
-%%   <<"CacheClusters">> => list(cache_cluster()()),
+%%   <<"CacheClusters">> => list(cache_cluster()),
 %%   <<"Marker">> => string()
 %% }
 -type cache_cluster_message() :: #{binary() => any()}.
@@ -2137,14 +2137,14 @@
 %% Example:
 %% describe_snapshots_list_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Snapshots">> => list(snapshot()())
+%%   <<"Snapshots">> => list(snapshot())
 %% }
 -type describe_snapshots_list_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_users_message() :: #{
 %%   <<"Engine">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"UserId">> => string()
@@ -2173,7 +2173,7 @@
 %%   <<"Engine">> => string(),
 %%   <<"MinimumEngineVersion">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"UserGroupIds">> => list(string()()),
+%%   <<"UserGroupIds">> => list(string()),
 %%   <<"UserId">> => string(),
 %%   <<"UserName">> => string()
 %% }
@@ -2184,7 +2184,7 @@
 %%   <<"CacheParameterGroupFamily">> := string(),
 %%   <<"CacheParameterGroupName">> := string(),
 %%   <<"Description">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cache_parameter_group_message() :: #{binary() => any()}.
 
@@ -2219,12 +2219,12 @@
 %%   <<"Engine">> := string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MajorEngineVersion">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"ServerlessCacheName">> := string(),
-%%   <<"SnapshotArnsToRestore">> => list(string()()),
+%%   <<"SnapshotArnsToRestore">> => list(string()),
 %%   <<"SnapshotRetentionLimit">> => integer(),
-%%   <<"SubnetIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserGroupId">> => string()
 %% }
 -type create_serverless_cache_request() :: #{binary() => any()}.
@@ -2267,14 +2267,14 @@
 
 %% Example:
 %% cache_engine_version_message() :: #{
-%%   <<"CacheEngineVersions">> => list(cache_engine_version()()),
+%%   <<"CacheEngineVersions">> => list(cache_engine_version()),
 %%   <<"Marker">> => string()
 %% }
 -type cache_engine_version_message() :: #{binary() => any()}.
 
 %% Example:
 %% authentication_mode() :: #{
-%%   <<"Passwords">> => list(string()()),
+%%   <<"Passwords">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type authentication_mode() :: #{binary() => any()}.
@@ -2293,7 +2293,7 @@
 %%   <<"Engine">> => string(),
 %%   <<"MajorEngineVersion">> => string(),
 %%   <<"RemoveUserGroup">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"ServerlessCacheName">> := string(),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"UserGroupId">> => string()
@@ -2313,7 +2313,7 @@
 %% Example:
 %% remove_tags_from_resource_message() :: #{
 %%   <<"ResourceName">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_from_resource_message() :: #{binary() => any()}.
 
@@ -2364,8 +2364,8 @@
 %% Example:
 %% decrease_node_groups_in_global_replication_group_message() :: #{
 %%   <<"ApplyImmediately">> := boolean(),
-%%   <<"GlobalNodeGroupsToRemove">> => list(string()()),
-%%   <<"GlobalNodeGroupsToRetain">> => list(string()()),
+%%   <<"GlobalNodeGroupsToRemove">> => list(string()),
+%%   <<"GlobalNodeGroupsToRetain">> => list(string()),
 %%   <<"GlobalReplicationGroupId">> := string(),
 %%   <<"NodeGroupCount">> := integer()
 %% }
@@ -2403,8 +2403,8 @@
 
 %% Example:
 %% user_groups_update_status() :: #{
-%%   <<"UserGroupIdsToAdd">> => list(string()()),
-%%   <<"UserGroupIdsToRemove">> => list(string()())
+%%   <<"UserGroupIdsToAdd">> => list(string()),
+%%   <<"UserGroupIdsToRemove">> => list(string())
 %% }
 -type user_groups_update_status() :: #{binary() => any()}.
 
@@ -2433,7 +2433,7 @@
 
 %% Example:
 %% start_migration_message() :: #{
-%%   <<"CustomerNodeEndpointList">> := list(customer_node_endpoint()()),
+%%   <<"CustomerNodeEndpointList">> := list(customer_node_endpoint()),
 %%   <<"ReplicationGroupId">> := string()
 %% }
 -type start_migration_message() :: #{binary() => any()}.
@@ -2465,7 +2465,7 @@
 %% Example:
 %% replication_group_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReplicationGroups">> => list(replication_group()())
+%%   <<"ReplicationGroups">> => list(replication_group())
 %% }
 -type replication_group_message() :: #{binary() => any()}.
 
@@ -2503,21 +2503,21 @@
 %%   <<"AuthTokenUpdateStrategy">> => list(any()),
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
 %%   <<"CacheClusterId">> := string(),
-%%   <<"CacheNodeIdsToRemove">> => list(string()()),
+%%   <<"CacheNodeIdsToRemove">> => list(string()),
 %%   <<"CacheNodeType">> => string(),
 %%   <<"CacheParameterGroupName">> => string(),
-%%   <<"CacheSecurityGroupNames">> => list(string()()),
+%%   <<"CacheSecurityGroupNames">> => list(string()),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"IpDiscovery">> => list(any()),
-%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration_request()()),
-%%   <<"NewAvailabilityZones">> => list(string()()),
+%%   <<"LogDeliveryConfigurations">> => list(log_delivery_configuration_request()),
+%%   <<"NewAvailabilityZones">> => list(string()),
 %%   <<"NotificationTopicArn">> => string(),
 %%   <<"NotificationTopicStatus">> => string(),
 %%   <<"NumCacheNodes">> => integer(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"ScaleConfig">> => scale_config(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"SnapshotWindow">> => string()
 %% }
@@ -2551,7 +2551,7 @@
 %% regional_configuration() :: #{
 %%   <<"ReplicationGroupId">> => string(),
 %%   <<"ReplicationGroupRegion">> => string(),
-%%   <<"ReshardingConfiguration">> => list(resharding_configuration()())
+%%   <<"ReshardingConfiguration">> => list(resharding_configuration())
 %% }
 -type regional_configuration() :: #{binary() => any()}.
 

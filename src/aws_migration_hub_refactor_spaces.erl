@@ -98,7 +98,7 @@
 %% Example:
 %% environment_vpc() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"CidrBlocks">> => list(string()()),
+%%   <<"CidrBlocks">> => list(string()),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"EnvironmentId">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
@@ -191,7 +191,7 @@
 %%   <<"Error">> => error_response(),
 %%   <<"IncludeChildPaths">> => boolean(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Methods">> => list(string()()),
+%%   <<"Methods">> => list(string()),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"PathResourceToId">> => map(),
 %%   <<"RouteId">> => string(),
@@ -260,7 +260,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -298,7 +298,7 @@
 %% Example:
 %% list_services_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceSummaryList">> => list(service_summary()())
+%%   <<"ServiceSummaryList">> => list(service_summary())
 %% }
 -type list_services_response() :: #{binary() => any()}.
 
@@ -461,7 +461,7 @@
 %%   <<"ActivationState">> => string(),
 %%   <<"AppendSourcePath">> => boolean(),
 %%   <<"IncludeChildPaths">> => boolean(),
-%%   <<"Methods">> => list(string()()),
+%%   <<"Methods">> => list(string()),
 %%   <<"SourcePath">> => string()
 %% }
 -type uri_path_route_input() :: #{binary() => any()}.
@@ -525,7 +525,7 @@
 %%   <<"Error">> => error_response(),
 %%   <<"IncludeChildPaths">> => boolean(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"Methods">> => list(string()()),
+%%   <<"Methods">> => list(string()),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"PathResourceToId">> => map(),
 %%   <<"RouteId">> => string(),
@@ -573,14 +573,14 @@
 %% Example:
 %% list_routes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RouteSummaryList">> => list(route_summary()())
+%%   <<"RouteSummaryList">> => list(route_summary())
 %% }
 -type list_routes_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_environment_vpcs_response() :: #{
-%%   <<"EnvironmentVpcList">> => list(environment_vpc()()),
+%%   <<"EnvironmentVpcList">> => list(environment_vpc()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_environment_vpcs_response() :: #{binary() => any()}.
@@ -662,7 +662,7 @@
 
 %% Example:
 %% list_environments_response() :: #{
-%%   <<"EnvironmentSummaryList">> => list(environment_summary()()),
+%%   <<"EnvironmentSummaryList">> => list(environment_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_environments_response() :: #{binary() => any()}.
@@ -694,7 +694,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"ApplicationSummaryList">> => list(application_summary()()),
+%%   <<"ApplicationSummaryList">> => list(application_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.

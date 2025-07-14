@@ -125,14 +125,14 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% delete_tags_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type delete_tags_request() :: #{binary() => any()}.
 
@@ -203,7 +203,7 @@
 %% Example:
 %% describe_replication_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Replications">> => list(replication_configuration_description()())
+%%   <<"Replications">> => list(replication_configuration_description())
 %% }
 -type describe_replication_configurations_response() :: #{binary() => any()}.
 
@@ -231,7 +231,7 @@
 %%   <<"IpAddress">> => string(),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"Ipv6Address">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"SubnetId">> := string()
 %% }
 -type create_mount_target_request() :: #{binary() => any()}.
@@ -239,14 +239,14 @@
 
 %% Example:
 %% put_lifecycle_configuration_request() :: #{
-%%   <<"LifecyclePolicies">> := list(lifecycle_policy()())
+%%   <<"LifecyclePolicies">> := list(lifecycle_policy())
 %% }
 -type put_lifecycle_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -270,7 +270,7 @@
 %% describe_tags_response() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"NextMarker">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type describe_tags_response() :: #{binary() => any()}.
 
@@ -305,7 +305,7 @@
 %% Example:
 %% describe_mount_targets_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MountTargets">> => list(mount_target_description()()),
+%%   <<"MountTargets">> => list(mount_target_description()),
 %%   <<"NextMarker">> => string()
 %% }
 -type describe_mount_targets_response() :: #{binary() => any()}.
@@ -317,7 +317,7 @@
 %%   <<"FileSystemId">> := string(),
 %%   <<"PosixUser">> => posix_user(),
 %%   <<"RootDirectory">> => root_directory(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_access_point_request() :: #{binary() => any()}.
 
@@ -339,7 +339,7 @@
 
 %% Example:
 %% create_tags_request() :: #{
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type create_tags_request() :: #{binary() => any()}.
 
@@ -374,7 +374,7 @@
 %% Example:
 %% posix_user() :: #{
 %%   <<"Gid">> => float(),
-%%   <<"SecondaryGids">> => list(float()()),
+%%   <<"SecondaryGids">> => list(float()),
 %%   <<"Uid">> => float()
 %% }
 -type posix_user() :: #{binary() => any()}.
@@ -436,7 +436,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"PerformanceMode">> => list(any()),
 %%   <<"ProvisionedThroughputInMibps">> => float(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"ThroughputMode">> => list(any())
 %% }
 -type create_file_system_request() :: #{binary() => any()}.
@@ -444,7 +444,7 @@
 
 %% Example:
 %% describe_mount_target_security_groups_response() :: #{
-%%   <<"SecurityGroups">> => list(string()())
+%%   <<"SecurityGroups">> => list(string())
 %% }
 -type describe_mount_target_security_groups_response() :: #{binary() => any()}.
 
@@ -475,7 +475,7 @@
 %%   <<"PerformanceMode">> => list(any()),
 %%   <<"ProvisionedThroughputInMibps">> => float(),
 %%   <<"SizeInBytes">> => file_system_size(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"ThroughputMode">> => list(any())
 %% }
 -type file_system_description() :: #{binary() => any()}.
@@ -499,7 +499,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -530,7 +530,7 @@
 
 %% Example:
 %% modify_mount_target_security_groups_request() :: #{
-%%   <<"SecurityGroups">> => list(string()())
+%%   <<"SecurityGroups">> => list(string())
 %% }
 -type modify_mount_target_security_groups_request() :: #{binary() => any()}.
 
@@ -583,7 +583,7 @@
 %% Example:
 %% replication_configuration_description() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"Destinations">> => list(destination()()),
+%%   <<"Destinations">> => list(destination()),
 %%   <<"OriginalSourceFileSystemArn">> => string(),
 %%   <<"SourceFileSystemArn">> => string(),
 %%   <<"SourceFileSystemId">> => string(),
@@ -616,7 +616,7 @@
 
 %% Example:
 %% create_replication_configuration_request() :: #{
-%%   <<"Destinations">> := list(destination_to_create()())
+%%   <<"Destinations">> := list(destination_to_create())
 %% }
 -type create_replication_configuration_request() :: #{binary() => any()}.
 
@@ -723,7 +723,7 @@
 
 %% Example:
 %% describe_file_systems_response() :: #{
-%%   <<"FileSystems">> => list(file_system_description()()),
+%%   <<"FileSystems">> => list(file_system_description()),
 %%   <<"Marker">> => string(),
 %%   <<"NextMarker">> => string()
 %% }
@@ -789,7 +789,7 @@
 
 %% Example:
 %% describe_access_points_response() :: #{
-%%   <<"AccessPoints">> => list(access_point_description()()),
+%%   <<"AccessPoints">> => list(access_point_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_access_points_response() :: #{binary() => any()}.
@@ -814,7 +814,7 @@
 
 %% Example:
 %% lifecycle_configuration_description() :: #{
-%%   <<"LifecyclePolicies">> => list(lifecycle_policy()())
+%%   <<"LifecyclePolicies">> => list(lifecycle_policy())
 %% }
 -type lifecycle_configuration_description() :: #{binary() => any()}.
 
@@ -830,7 +830,7 @@
 %%   <<"OwnerId">> => string(),
 %%   <<"PosixUser">> => posix_user(),
 %%   <<"RootDirectory">> => root_directory(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type access_point_description() :: #{binary() => any()}.
 

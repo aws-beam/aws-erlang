@@ -99,7 +99,7 @@
 %% Example:
 %% list_simulations_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Simulations">> => list(simulation_metadata()())
+%%   <<"Simulations">> => list(simulation_metadata())
 %% }
 -type list_simulations_output() :: #{binary() => any()}.
 
@@ -116,7 +116,7 @@
 %% Example:
 %% simulation_app_endpoint_info() :: #{
 %%   <<"Address">> => string(),
-%%   <<"IngressPortMappings">> => list(simulation_app_port_mapping()())
+%%   <<"IngressPortMappings">> => list(simulation_app_port_mapping())
 %% }
 -type simulation_app_endpoint_info() :: #{binary() => any()}.
 
@@ -168,7 +168,7 @@
 
 %% Example:
 %% logging_configuration() :: #{
-%%   <<"Destinations">> => list(log_destination()())
+%%   <<"Destinations">> => list(log_destination())
 %% }
 -type logging_configuration() :: #{binary() => any()}.
 
@@ -284,7 +284,7 @@
 
 %% Example:
 %% list_apps_output() :: #{
-%%   <<"Apps">> => list(simulation_app_metadata()()),
+%%   <<"Apps">> => list(simulation_app_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_apps_output() :: #{binary() => any()}.
@@ -296,7 +296,7 @@
 
 %% Example:
 %% launch_overrides() :: #{
-%%   <<"LaunchCommands">> => list(string()())
+%%   <<"LaunchCommands">> => list(string())
 %% }
 -type launch_overrides() :: #{binary() => any()}.
 
@@ -331,7 +331,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"TagKeys">> => list(string()())
+%%   <<"TagKeys">> => list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -399,8 +399,8 @@
 
 %% Example:
 %% live_simulation_state() :: #{
-%%   <<"Clocks">> => list(simulation_clock()()),
-%%   <<"Domains">> => list(domain()())
+%%   <<"Clocks">> => list(simulation_clock()),
+%%   <<"Domains">> => list(domain())
 %% }
 -type live_simulation_state() :: #{binary() => any()}.
 

@@ -81,7 +81,7 @@
 %% describe_services_response() :: #{
 %%   <<"FormatVersion">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"Services">> => list(service()())
+%%   <<"Services">> => list(service())
 %% }
 -type describe_services_response() :: #{binary() => any()}.
 
@@ -110,7 +110,7 @@
 
 %% Example:
 %% get_attribute_values_response() :: #{
-%%   <<"AttributeValues">> => list(attribute_value()()),
+%%   <<"AttributeValues">> => list(attribute_value()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_attribute_values_response() :: #{binary() => any()}.
@@ -130,7 +130,7 @@
 
 %% Example:
 %% get_products_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"FormatVersion">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -142,7 +142,7 @@
 %% get_products_response() :: #{
 %%   <<"FormatVersion">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"PriceList">> => list(string()())
+%%   <<"PriceList">> => list(string())
 %% }
 -type get_products_response() :: #{binary() => any()}.
 
@@ -178,7 +178,7 @@
 %% Example:
 %% list_price_lists_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PriceLists">> => list(price_list()())
+%%   <<"PriceLists">> => list(price_list())
 %% }
 -type list_price_lists_response() :: #{binary() => any()}.
 
@@ -191,7 +191,7 @@
 %% Example:
 %% price_list() :: #{
 %%   <<"CurrencyCode">> => string(),
-%%   <<"FileFormats">> => list(string()()),
+%%   <<"FileFormats">> => list(string()),
 %%   <<"PriceListArn">> => string(),
 %%   <<"RegionCode">> => string()
 %% }
@@ -205,7 +205,7 @@
 
 %% Example:
 %% service() :: #{
-%%   <<"AttributeNames">> => list(string()()),
+%%   <<"AttributeNames">> => list(string()),
 %%   <<"ServiceCode">> => string()
 %% }
 -type service() :: #{binary() => any()}.

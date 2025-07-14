@@ -361,14 +361,14 @@
 %% Example:
 %% list_environment_template_versions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templateVersions">> := list(environment_template_version_summary()())
+%%   <<"templateVersions">> := list(environment_template_version_summary())
 %% }
 -type list_environment_template_versions_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_service_pipeline_provisioned_resources_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"provisionedResources">> := list(provisioned_resource()())
+%%   <<"provisionedResources">> := list(provisioned_resource())
 %% }
 -type list_service_pipeline_provisioned_resources_output() :: #{binary() => any()}.
 
@@ -380,12 +380,12 @@
 
 %% Example:
 %% update_service_template_version_input() :: #{
-%%   <<"compatibleEnvironmentTemplates">> => list(compatible_environment_template_input()()),
+%%   <<"compatibleEnvironmentTemplates">> => list(compatible_environment_template_input()),
 %%   <<"description">> => string(),
 %%   <<"majorVersion">> => string(),
 %%   <<"minorVersion">> => string(),
 %%   <<"status">> => string(),
-%%   <<"supportedComponentSources">> => list(string()()),
+%%   <<"supportedComponentSources">> => list(string()),
 %%   <<"templateName">> => string()
 %% }
 -type update_service_template_version_input() :: #{binary() => any()}.
@@ -470,7 +470,7 @@
 
 %% Example:
 %% repository_sync_attempt() :: #{
-%%   <<"events">> => list(repository_sync_event()()),
+%%   <<"events">> => list(repository_sync_event()),
 %%   <<"startedAt">> => [non_neg_integer()],
 %%   <<"status">> => string()
 %% }
@@ -482,7 +482,7 @@
 %%   <<"name">> := string(),
 %%   <<"serviceName">> := string(),
 %%   <<"spec">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"templateMajorVersion">> => string(),
 %%   <<"templateMinorVersion">> => string()
 %% }
@@ -538,7 +538,7 @@
 %% Example:
 %% list_environment_templates_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templates">> := list(environment_template_summary()())
+%%   <<"templates">> := list(environment_template_summary())
 %% }
 -type list_environment_templates_output() :: #{binary() => any()}.
 
@@ -648,7 +648,7 @@
 %%   <<"protonServiceRoleArn">> => string(),
 %%   <<"provisioningRepository">> => repository_branch_input(),
 %%   <<"spec">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"templateMajorVersion">> := string(),
 %%   <<"templateMinorVersion">> => string(),
 %%   <<"templateName">> := string()
@@ -876,7 +876,7 @@
 %% Example:
 %% list_service_instance_provisioned_resources_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"provisionedResources">> := list(provisioned_resource()())
+%%   <<"provisionedResources">> := list(provisioned_resource())
 %% }
 -type list_service_instance_provisioned_resources_output() :: #{binary() => any()}.
 
@@ -888,7 +888,7 @@
 
 %% Example:
 %% list_environments_input() :: #{
-%%   <<"environmentTemplates">> => list(environment_template_filter()()),
+%%   <<"environmentTemplates">> => list(environment_template_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -911,7 +911,7 @@
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -969,7 +969,7 @@
 
 %% Example:
 %% list_components_output() :: #{
-%%   <<"components">> := list(component_summary()()),
+%%   <<"components">> := list(component_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_components_output() :: #{binary() => any()}.
@@ -1015,7 +1015,7 @@
 %% Example:
 %% service_template_version() :: #{
 %%   <<"arn">> => string(),
-%%   <<"compatibleEnvironmentTemplates">> => list(compatible_environment_template()()),
+%%   <<"compatibleEnvironmentTemplates">> => list(compatible_environment_template()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
@@ -1025,7 +1025,7 @@
 %%   <<"schema">> => string(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string(),
-%%   <<"supportedComponentSources">> => list(string()()),
+%%   <<"supportedComponentSources">> => list(string()),
 %%   <<"templateName">> => string()
 %% }
 -type service_template_version() :: #{binary() => any()}.
@@ -1042,12 +1042,12 @@
 %% Example:
 %% create_service_template_version_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"compatibleEnvironmentTemplates">> := list(compatible_environment_template_input()()),
+%%   <<"compatibleEnvironmentTemplates">> := list(compatible_environment_template_input()),
 %%   <<"description">> => string(),
 %%   <<"majorVersion">> => string(),
 %%   <<"source">> := list(),
-%%   <<"supportedComponentSources">> => list(string()()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"supportedComponentSources">> => list(string()),
+%%   <<"tags">> => list(tag()),
 %%   <<"templateName">> := string()
 %% }
 -type create_service_template_version_input() :: #{binary() => any()}.
@@ -1090,7 +1090,7 @@
 %% Example:
 %% list_environment_outputs_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"outputs">> := list(output()())
+%%   <<"outputs">> := list(output())
 %% }
 -type list_environment_outputs_output() :: #{binary() => any()}.
 
@@ -1113,7 +1113,7 @@
 %%   <<"encryptionKey">> => string(),
 %%   <<"name">> := string(),
 %%   <<"provisioning">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_environment_template_input() :: #{binary() => any()}.
 
@@ -1132,7 +1132,7 @@
 %% Example:
 %% notify_resource_deployment_status_change_input() :: #{
 %%   <<"deploymentId">> => string(),
-%%   <<"outputs">> => list(output()()),
+%%   <<"outputs">> => list(output()),
 %%   <<"resourceArn">> := string(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string()
@@ -1169,7 +1169,7 @@
 
 %% Example:
 %% service_instance_state() :: #{
-%%   <<"lastSuccessfulComponentDeploymentIds">> => list(string()()),
+%%   <<"lastSuccessfulComponentDeploymentIds">> => list(string()),
 %%   <<"lastSuccessfulEnvironmentDeploymentId">> => string(),
 %%   <<"lastSuccessfulServicePipelineDeploymentId">> => string(),
 %%   <<"spec">> => string(),
@@ -1202,7 +1202,7 @@
 %%   <<"serviceInstanceName">> => string(),
 %%   <<"serviceName">> => string(),
 %%   <<"serviceSpec">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"templateFile">> := string()
 %% }
 -type create_component_input() :: #{binary() => any()}.
@@ -1385,7 +1385,7 @@
 
 %% Example:
 %% list_environments_output() :: #{
-%%   <<"environments">> := list(environment_summary()()),
+%%   <<"environments">> := list(environment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_output() :: #{binary() => any()}.
@@ -1415,13 +1415,13 @@
 %% Example:
 %% list_service_instance_outputs_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"outputs">> := list(output()())
+%%   <<"outputs">> := list(output())
 %% }
 -type list_service_instance_outputs_output() :: #{binary() => any()}.
 
 %% Example:
 %% sync_blocker() :: #{
-%%   <<"contexts">> => list(sync_blocker_context()()),
+%%   <<"contexts">> => list(sync_blocker_context()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdReason">> => [string()],
 %%   <<"id">> => [string()],
@@ -1456,7 +1456,7 @@
 %% Example:
 %% list_service_instances_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"serviceInstances">> := list(service_instance_summary()())
+%%   <<"serviceInstances">> := list(service_instance_summary())
 %% }
 -type list_service_instances_output() :: #{binary() => any()}.
 
@@ -1484,7 +1484,7 @@
 %% Example:
 %% list_component_provisioned_resources_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"provisionedResources">> := list(provisioned_resource()())
+%%   <<"provisionedResources">> := list(provisioned_resource())
 %% }
 -type list_component_provisioned_resources_output() :: #{binary() => any()}.
 
@@ -1516,7 +1516,7 @@
 
 %% Example:
 %% list_service_instances_input() :: #{
-%%   <<"filters">> => list(list_service_instances_filter()()),
+%%   <<"filters">> => list(list_service_instances_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"serviceName">> => string(),
@@ -1540,7 +1540,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -1586,7 +1586,7 @@
 %% Example:
 %% list_service_templates_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templates">> := list(service_template_summary()())
+%%   <<"templates">> := list(service_template_summary())
 %% }
 -type list_service_templates_output() :: #{binary() => any()}.
 
@@ -1726,14 +1726,14 @@
 %%   <<"encryptionKey">> => string(),
 %%   <<"name">> := string(),
 %%   <<"pipelineProvisioning">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_service_template_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_environment_provisioned_resources_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"provisionedResources">> := list(provisioned_resource()())
+%%   <<"provisionedResources">> := list(provisioned_resource())
 %% }
 -type list_environment_provisioned_resources_output() :: #{binary() => any()}.
 
@@ -1760,7 +1760,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1798,7 +1798,7 @@
 %% Example:
 %% list_service_template_versions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templateVersions">> := list(service_template_version_summary()())
+%%   <<"templateVersions">> := list(service_template_version_summary())
 %% }
 -type list_service_template_versions_output() :: #{binary() => any()}.
 
@@ -1878,13 +1878,13 @@
 %% Example:
 %% list_service_pipeline_outputs_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"outputs">> := list(output()())
+%%   <<"outputs">> := list(output())
 %% }
 -type list_service_pipeline_outputs_output() :: #{binary() => any()}.
 
 %% Example:
 %% resource_sync_attempt() :: #{
-%%   <<"events">> => list(resource_sync_event()()),
+%%   <<"events">> => list(resource_sync_event()),
 %%   <<"initialRevision">> => revision(),
 %%   <<"startedAt">> => [non_neg_integer()],
 %%   <<"status">> => string(),
@@ -1911,14 +1911,14 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"requestedBy">> := string(),
-%%   <<"statuses">> => list(string()())
+%%   <<"statuses">> => list(string())
 %% }
 -type list_environment_account_connections_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_repositories_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"repositories">> := list(repository_summary()())
+%%   <<"repositories">> := list(repository_summary())
 %% }
 -type list_repositories_output() :: #{binary() => any()}.
 
@@ -1937,7 +1937,7 @@
 %%   <<"environmentName">> := string(),
 %%   <<"managementAccountId">> := string(),
 %%   <<"roleArn">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_environment_account_connection_input() :: #{binary() => any()}.
 
@@ -2005,7 +2005,7 @@
 %% Example:
 %% list_repository_sync_definitions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"syncDefinitions">> := list(repository_sync_definition()())
+%%   <<"syncDefinitions">> := list(repository_sync_definition())
 %% }
 -type list_repository_sync_definitions_output() :: #{binary() => any()}.
 
@@ -2064,7 +2064,7 @@
 
 %% Example:
 %% list_deployments_output() :: #{
-%%   <<"deployments">> => list(deployment_summary()()),
+%%   <<"deployments">> => list(deployment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployments_output() :: #{binary() => any()}.
@@ -2077,7 +2077,7 @@
 %%   <<"repositoryConnectionArn">> => string(),
 %%   <<"repositoryId">> => string(),
 %%   <<"spec">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"templateMajorVersion">> := string(),
 %%   <<"templateMinorVersion">> => string(),
 %%   <<"templateName">> := string()
@@ -2101,7 +2101,7 @@
 %%   <<"encryptionKey">> => string(),
 %%   <<"name">> := string(),
 %%   <<"provider">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_repository_input() :: #{binary() => any()}.
 
@@ -2136,7 +2136,7 @@
 %% Example:
 %% list_component_outputs_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"outputs">> := list(output()())
+%%   <<"outputs">> := list(output())
 %% }
 -type list_component_outputs_output() :: #{binary() => any()}.
 
@@ -2194,7 +2194,7 @@
 %%   <<"description">> => string(),
 %%   <<"majorVersion">> => string(),
 %%   <<"source">> := list(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"templateName">> := string()
 %% }
 -type create_environment_template_version_input() :: #{binary() => any()}.
@@ -2235,7 +2235,7 @@
 %% Example:
 %% list_services_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"services">> := list(service_summary()())
+%%   <<"services">> := list(service_summary())
 %% }
 -type list_services_output() :: #{binary() => any()}.
 
@@ -2295,7 +2295,7 @@
 
 %% Example:
 %% list_environment_account_connections_output() :: #{
-%%   <<"environmentAccountConnections">> := list(environment_account_connection_summary()()),
+%%   <<"environmentAccountConnections">> := list(environment_account_connection_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_account_connections_output() :: #{binary() => any()}.
@@ -2309,7 +2309,7 @@
 
 %% Example:
 %% service_sync_blocker_summary() :: #{
-%%   <<"latestBlockers">> => list(sync_blocker()()),
+%%   <<"latestBlockers">> => list(sync_blocker()),
 %%   <<"serviceInstanceName">> => [string()],
 %%   <<"serviceName">> => [string()]
 %% }

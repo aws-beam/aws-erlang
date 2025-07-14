@@ -101,7 +101,7 @@
 %%   <<"Name">> := string(),
 %%   <<"ProfileId">> := string(),
 %%   <<"ResourceId">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type associate_profile_request() :: #{binary() => any()}.
 
@@ -153,7 +153,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -190,7 +190,7 @@
 %% create_profile_request() :: #{
 %%   <<"ClientToken">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_profile_request() :: #{binary() => any()}.
 
@@ -263,7 +263,7 @@
 %% Example:
 %% list_profile_associations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProfileAssociations">> => list(profile_association()())
+%%   <<"ProfileAssociations">> => list(profile_association())
 %% }
 -type list_profile_associations_response() :: #{binary() => any()}.
 
@@ -275,7 +275,7 @@
 %% Example:
 %% list_profile_resource_associations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProfileResourceAssociations">> => list(profile_resource_association()())
+%%   <<"ProfileResourceAssociations">> => list(profile_resource_association())
 %% }
 -type list_profile_resource_associations_response() :: #{binary() => any()}.
 
@@ -357,7 +357,7 @@
 %% Example:
 %% list_profiles_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProfileSummaries">> => list(profile_summary()())
+%%   <<"ProfileSummaries">> => list(profile_summary())
 %% }
 -type list_profiles_response() :: #{binary() => any()}.
 

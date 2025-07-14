@@ -134,7 +134,7 @@
 
 %% Example:
 %% list_batch_job_executions_request() :: #{
-%%   <<"executionIds">> => list(string()()),
+%%   <<"executionIds">> => list(string()),
 %%   <<"jobName">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -190,7 +190,7 @@
 
 %% Example:
 %% list_data_set_export_history_response() :: #{
-%%   <<"dataSetExportTasks">> => list(data_set_export_task()()),
+%%   <<"dataSetExportTasks">> => list(data_set_export_task()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_set_export_history_response() :: #{binary() => any()}.
@@ -206,7 +206,7 @@
 
 %% Example:
 %% list_data_sets_response() :: #{
-%%   <<"dataSets">> => list(data_set_summary()()),
+%%   <<"dataSets">> => list(data_set_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sets_response() :: #{binary() => any()}.
@@ -271,7 +271,7 @@
 
 %% Example:
 %% list_deployments_response() :: #{
-%%   <<"deployments">> => list(deployment_summary()()),
+%%   <<"deployments">> => list(deployment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployments_response() :: #{binary() => any()}.
@@ -297,7 +297,7 @@
 
 %% Example:
 %% vsam_attributes() :: #{
-%%   <<"alternateKeys">> => list(alternate_key()()),
+%%   <<"alternateKeys">> => list(alternate_key()),
 %%   <<"compressed">> => boolean(),
 %%   <<"encoding">> => [string()],
 %%   <<"format">> => [string()],
@@ -345,7 +345,7 @@
 
 %% Example:
 %% vsam_detail_attributes() :: #{
-%%   <<"alternateKeys">> => list(alternate_key()()),
+%%   <<"alternateKeys">> => list(alternate_key()),
 %%   <<"cacheAtStartup">> => boolean(),
 %%   <<"compressed">> => boolean(),
 %%   <<"encoding">> => string(),
@@ -419,11 +419,11 @@
 %%   <<"pendingMaintenance">> => pending_maintenance(),
 %%   <<"preferredMaintenanceWindow">> => string(),
 %%   <<"publiclyAccessible">> => boolean(),
-%%   <<"securityGroupIds">> := list(string()()),
+%%   <<"securityGroupIds">> := list(string()),
 %%   <<"status">> := string(),
 %%   <<"statusReason">> => [string()],
-%%   <<"storageConfigurations">> => list(list()()),
-%%   <<"subnetIds">> := list(string()()),
+%%   <<"storageConfigurations">> => list(list()),
+%%   <<"subnetIds">> := list(string()),
 %%   <<"tags">> => map(),
 %%   <<"vpcId">> := string()
 %% }
@@ -432,7 +432,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -575,7 +575,7 @@
 %% po_attributes() :: #{
 %%   <<"encoding">> => [string()],
 %%   <<"format">> => [string()],
-%%   <<"memberFileExtensions">> => list(string()())
+%%   <<"memberFileExtensions">> => list(string())
 %% }
 -type po_attributes() :: #{binary() => any()}.
 
@@ -605,7 +605,7 @@
 %% list_environments_request() :: #{
 %%   <<"engineType">> => string(),
 %%   <<"maxResults">> => integer(),
-%%   <<"names">> => list(string()()),
+%%   <<"names">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_request() :: #{binary() => any()}.
@@ -730,7 +730,7 @@
 
 %% Example:
 %% list_batch_job_restart_points_response() :: #{
-%%   <<"batchJobSteps">> => list(job_step()())
+%%   <<"batchJobSteps">> => list(job_step())
 %% }
 -type list_batch_job_restart_points_response() :: #{binary() => any()}.
 
@@ -778,16 +778,16 @@
 %%   <<"kmsKeyId">> => [string()],
 %%   <<"lastStartTime">> => non_neg_integer(),
 %%   <<"latestVersion">> := application_version_summary(),
-%%   <<"listenerArns">> => list(string()()),
-%%   <<"listenerPorts">> => list(integer()()),
+%%   <<"listenerArns">> => list(string()),
+%%   <<"listenerPorts">> => list(integer()),
 %%   <<"loadBalancerDnsName">> => string(),
-%%   <<"logGroups">> => list(log_group_summary()()),
+%%   <<"logGroups">> => list(log_group_summary()),
 %%   <<"name">> := string(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> := string(),
 %%   <<"statusReason">> => [string()],
 %%   <<"tags">> => map(),
-%%   <<"targetGroupArns">> => list(string()())
+%%   <<"targetGroupArns">> => list(string())
 %% }
 -type get_application_response() :: #{binary() => any()}.
 
@@ -796,7 +796,7 @@
 %% list_applications_request() :: #{
 %%   <<"environmentId">> => string(),
 %%   <<"maxResults">> => integer(),
-%%   <<"names">> => list(string()()),
+%%   <<"names">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_applications_request() :: #{binary() => any()}.
@@ -864,7 +864,7 @@
 
 %% Example:
 %% list_batch_job_definitions_response() :: #{
-%%   <<"batchJobDefinitions">> => list(list()()),
+%%   <<"batchJobDefinitions">> => list(list()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_batch_job_definitions_response() :: #{binary() => any()}.
@@ -891,7 +891,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
@@ -943,7 +943,7 @@
 
 %% Example:
 %% list_batch_job_executions_response() :: #{
-%%   <<"batchJobExecutions">> := list(batch_job_execution_summary()()),
+%%   <<"batchJobExecutions">> := list(batch_job_execution_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_batch_job_executions_response() :: #{binary() => any()}.
@@ -959,7 +959,7 @@
 
 %% Example:
 %% list_engine_versions_response() :: #{
-%%   <<"engineVersions">> := list(engine_versions_summary()()),
+%%   <<"engineVersions">> := list(engine_versions_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_engine_versions_response() :: #{binary() => any()}.
@@ -967,7 +967,7 @@
 
 %% Example:
 %% list_environments_response() :: #{
-%%   <<"environments">> => list(environment_summary()()),
+%%   <<"environments">> => list(environment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_response() :: #{binary() => any()}.
@@ -1015,7 +1015,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"applications">> => list(application_summary()()),
+%%   <<"applications">> => list(application_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.
@@ -1023,7 +1023,7 @@
 
 %% Example:
 %% list_application_versions_response() :: #{
-%%   <<"applicationVersions">> => list(application_version_summary()()),
+%%   <<"applicationVersions">> => list(application_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_application_versions_response() :: #{binary() => any()}.
@@ -1042,9 +1042,9 @@
 %%   <<"networkType">> => string(),
 %%   <<"preferredMaintenanceWindow">> => string(),
 %%   <<"publiclyAccessible">> => boolean(),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"storageConfigurations">> => list(list()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"storageConfigurations">> => list(list()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"tags">> => map()
 %% }
 -type create_environment_request() :: #{binary() => any()}.
@@ -1075,7 +1075,7 @@
 
 %% Example:
 %% list_data_set_import_history_response() :: #{
-%%   <<"dataSetImportTasks">> => list(data_set_import_task()()),
+%%   <<"dataSetImportTasks">> => list(data_set_import_task()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_set_import_history_response() :: #{binary() => any()}.

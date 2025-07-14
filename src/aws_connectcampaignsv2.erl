@@ -209,8 +209,8 @@
 
 %% Example:
 %% get_campaign_state_batch_response() :: #{
-%%   <<"failedRequests">> => list(failed_campaign_state_response()()),
-%%   <<"successfulRequests">> => list(successful_campaign_state_response()())
+%%   <<"failedRequests">> => list(failed_campaign_state_response()),
+%%   <<"successfulRequests">> => list(successful_campaign_state_response())
 %% }
 -type get_campaign_state_batch_response() :: #{binary() => any()}.
 
@@ -226,8 +226,8 @@
 
 %% Example:
 %% put_outbound_request_batch_response() :: #{
-%%   <<"failedRequests">> => list(failed_request()()),
-%%   <<"successfulRequests">> => list(successful_request()())
+%%   <<"failedRequests">> => list(failed_request()),
+%%   <<"successfulRequests">> => list(successful_request())
 %% }
 -type put_outbound_request_batch_response() :: #{binary() => any()}.
 
@@ -241,7 +241,7 @@
 
 %% Example:
 %% list_campaigns_response() :: #{
-%%   <<"campaignSummaryList">> => list(campaign_summary()()),
+%%   <<"campaignSummaryList">> => list(campaign_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_campaigns_response() :: #{binary() => any()}.
@@ -268,7 +268,7 @@
 %% Example:
 %% local_time_zone_config() :: #{
 %%   <<"defaultTimeZone">> => string(),
-%%   <<"localTimeZoneDetection">> => list(string()())
+%%   <<"localTimeZoneDetection">> => list(string())
 %% }
 -type local_time_zone_config() :: #{binary() => any()}.
 
@@ -295,7 +295,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -332,8 +332,8 @@
 
 %% Example:
 %% put_profile_outbound_request_batch_response() :: #{
-%%   <<"failedRequests">> => list(failed_profile_outbound_request()()),
-%%   <<"successfulRequests">> => list(successful_profile_outbound_request()())
+%%   <<"failedRequests">> => list(failed_profile_outbound_request()),
+%%   <<"successfulRequests">> => list(successful_profile_outbound_request())
 %% }
 -type put_profile_outbound_request_batch_response() :: #{binary() => any()}.
 
@@ -432,7 +432,7 @@
 
 %% Example:
 %% put_profile_outbound_request_batch_request() :: #{
-%%   <<"profileOutboundRequests">> := list(profile_outbound_request()())
+%%   <<"profileOutboundRequests">> := list(profile_outbound_request())
 %% }
 -type put_profile_outbound_request_batch_request() :: #{binary() => any()}.
 
@@ -476,7 +476,7 @@
 
 %% Example:
 %% get_campaign_state_batch_request() :: #{
-%%   <<"campaignIds">> := list(string()())
+%%   <<"campaignIds">> := list(string())
 %% }
 -type get_campaign_state_batch_request() :: #{binary() => any()}.
 
@@ -494,7 +494,7 @@
 
 %% Example:
 %% list_connect_instance_integrations_response() :: #{
-%%   <<"integrationSummaryList">> => list(list()()),
+%%   <<"integrationSummaryList">> => list(list()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_connect_instance_integrations_response() :: #{binary() => any()}.
@@ -786,7 +786,7 @@
 
 %% Example:
 %% put_outbound_request_batch_request() :: #{
-%%   <<"outboundRequests">> := list(outbound_request()())
+%%   <<"outboundRequests">> := list(outbound_request())
 %% }
 -type put_outbound_request_batch_request() :: #{binary() => any()}.
 
@@ -818,7 +818,7 @@
 %% Example:
 %% campaign_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"channelSubtypes">> => list(string()()),
+%%   <<"channelSubtypes">> => list(string()),
 %%   <<"connectCampaignFlowArn">> => string(),
 %%   <<"connectInstanceId">> => string(),
 %%   <<"id">> => string(),

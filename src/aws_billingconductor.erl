@@ -120,7 +120,7 @@
 %% list_pricing_rules_output() :: #{
 %%   <<"BillingPeriod">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"PricingRules">> => list(pricing_rule_list_element()())
+%%   <<"PricingRules">> => list(pricing_rule_list_element())
 %% }
 -type list_pricing_rules_output() :: #{binary() => any()}.
 
@@ -156,7 +156,7 @@
 %% Example:
 %% update_custom_line_item_charge_details() :: #{
 %%   <<"Flat">> => update_custom_line_item_flat_charge_details(),
-%%   <<"LineItemFilters">> => list(line_item_filter()()),
+%%   <<"LineItemFilters">> => list(line_item_filter()),
 %%   <<"Percentage">> => update_custom_line_item_percentage_charge_details()
 %% }
 -type update_custom_line_item_charge_details() :: #{binary() => any()}.
@@ -165,7 +165,7 @@
 %% Example:
 %% disassociate_pricing_rules_input() :: #{
 %%   <<"Arn">> := string(),
-%%   <<"PricingRuleArns">> := list(string()())
+%%   <<"PricingRuleArns">> := list(string())
 %% }
 -type disassociate_pricing_rules_input() :: #{binary() => any()}.
 
@@ -200,7 +200,7 @@
 %% list_pricing_plans_output() :: #{
 %%   <<"BillingPeriod">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"PricingPlans">> => list(pricing_plan_list_element()())
+%%   <<"PricingPlans">> => list(pricing_plan_list_element())
 %% }
 -type list_pricing_plans_output() :: #{binary() => any()}.
 
@@ -210,7 +210,7 @@
 %%   <<"BillingPeriod">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"PricingPlanArn">> => string(),
-%%   <<"PricingRuleArns">> => list(string()())
+%%   <<"PricingRuleArns">> => list(string())
 %% }
 -type list_pricing_rules_associated_to_pricing_plan_output() :: #{binary() => any()}.
 
@@ -243,7 +243,7 @@
 %% get_billing_group_cost_report_input() :: #{
 %%   <<"Arn">> := string(),
 %%   <<"BillingPeriodRange">> => billing_period_range(),
-%%   <<"GroupBy">> => list(string()()),
+%%   <<"GroupBy">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -253,7 +253,7 @@
 %% Example:
 %% list_custom_line_item_charge_details() :: #{
 %%   <<"Flat">> => list_custom_line_item_flat_charge_details(),
-%%   <<"LineItemFilters">> => list(line_item_filter()()),
+%%   <<"LineItemFilters">> => list(line_item_filter()),
 %%   <<"Percentage">> => list_custom_line_item_percentage_charge_details(),
 %%   <<"Type">> => string()
 %% }
@@ -344,7 +344,7 @@
 %% Example:
 %% custom_line_item_charge_details() :: #{
 %%   <<"Flat">> => custom_line_item_flat_charge_details(),
-%%   <<"LineItemFilters">> => list(line_item_filter()()),
+%%   <<"LineItemFilters">> => list(line_item_filter()),
 %%   <<"Percentage">> => custom_line_item_percentage_charge_details(),
 %%   <<"Type">> => string()
 %% }
@@ -354,7 +354,7 @@
 %% Example:
 %% batch_associate_resources_to_custom_line_item_input() :: #{
 %%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
-%%   <<"ResourceArns">> := list(string()()),
+%%   <<"ResourceArns">> := list(string()),
 %%   <<"TargetArn">> := string()
 %% }
 -type batch_associate_resources_to_custom_line_item_input() :: #{binary() => any()}.
@@ -362,7 +362,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> => list(string()())
+%%   <<"TagKeys">> => list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -379,7 +379,7 @@
 
 %% Example:
 %% list_custom_line_item_versions_output() :: #{
-%%   <<"CustomLineItemVersions">> => list(custom_line_item_version_list_element()()),
+%%   <<"CustomLineItemVersions">> => list(custom_line_item_version_list_element()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_line_item_versions_output() :: #{binary() => any()}.
@@ -388,7 +388,7 @@
 %% Example:
 %% associate_pricing_rules_input() :: #{
 %%   <<"Arn">> := string(),
-%%   <<"PricingRuleArns">> := list(string()())
+%%   <<"PricingRuleArns">> := list(string())
 %% }
 -type associate_pricing_rules_input() :: #{binary() => any()}.
 
@@ -403,7 +403,7 @@
 
 %% Example:
 %% list_custom_line_items_output() :: #{
-%%   <<"CustomLineItems">> => list(custom_line_item_list_element()()),
+%%   <<"CustomLineItems">> => list(custom_line_item_list_element()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_line_items_output() :: #{binary() => any()}.
@@ -438,8 +438,8 @@
 
 %% Example:
 %% batch_disassociate_resources_from_custom_line_item_output() :: #{
-%%   <<"FailedDisassociatedResources">> => list(disassociate_resource_response_element()()),
-%%   <<"SuccessfullyDisassociatedResources">> => list(disassociate_resource_response_element()())
+%%   <<"FailedDisassociatedResources">> => list(disassociate_resource_response_element()),
+%%   <<"SuccessfullyDisassociatedResources">> => list(disassociate_resource_response_element())
 %% }
 -type batch_disassociate_resources_from_custom_line_item_output() :: #{binary() => any()}.
 
@@ -517,7 +517,7 @@
 %% list_pricing_plans_associated_with_pricing_rule_output() :: #{
 %%   <<"BillingPeriod">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"PricingPlanArns">> => list(string()()),
+%%   <<"PricingPlanArns">> => list(string()),
 %%   <<"PricingRuleArn">> => string()
 %% }
 -type list_pricing_plans_associated_with_pricing_rule_output() :: #{binary() => any()}.
@@ -532,7 +532,7 @@
 
 %% Example:
 %% list_billing_groups_output() :: #{
-%%   <<"BillingGroups">> => list(billing_group_list_element()()),
+%%   <<"BillingGroups">> => list(billing_group_list_element()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_billing_groups_output() :: #{binary() => any()}.
@@ -575,7 +575,7 @@
 %% billing_group_cost_report_result_element() :: #{
 %%   <<"AWSCost">> => string(),
 %%   <<"Arn">> => string(),
-%%   <<"Attributes">> => list(attribute()()),
+%%   <<"Attributes">> => list(attribute()),
 %%   <<"Currency">> => string(),
 %%   <<"Margin">> => string(),
 %%   <<"MarginPercentage">> => string(),
@@ -597,7 +597,7 @@
 %% Example:
 %% account_grouping() :: #{
 %%   <<"AutoAssociate">> => [boolean()],
-%%   <<"LinkedAccountIds">> => list(string()())
+%%   <<"LinkedAccountIds">> => list(string())
 %% }
 -type account_grouping() :: #{binary() => any()}.
 
@@ -614,7 +614,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"PricingRuleArns">> => list(string()()),
+%%   <<"PricingRuleArns">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type create_pricing_plan_input() :: #{binary() => any()}.
@@ -622,7 +622,7 @@
 
 %% Example:
 %% list_pricing_plans_filter() :: #{
-%%   <<"Arns">> => list(string()())
+%%   <<"Arns">> => list(string())
 %% }
 -type list_pricing_plans_filter() :: #{binary() => any()}.
 
@@ -652,7 +652,7 @@
 %% Example:
 %% list_resources_associated_to_custom_line_item_output() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedResources">> => list(list_resources_associated_to_custom_line_item_response_element()()),
+%%   <<"AssociatedResources">> => list(list_resources_associated_to_custom_line_item_response_element()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_resources_associated_to_custom_line_item_output() :: #{binary() => any()}.
@@ -660,7 +660,7 @@
 
 %% Example:
 %% list_account_associations_output() :: #{
-%%   <<"LinkedAccounts">> => list(account_associations_list_element()()),
+%%   <<"LinkedAccounts">> => list(account_associations_list_element()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_account_associations_output() :: #{binary() => any()}.
@@ -688,7 +688,7 @@
 %% Example:
 %% list_account_associations_filter() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"AccountIds">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
 %%   <<"Association">> => string()
 %% }
 -type list_account_associations_filter() :: #{binary() => any()}.
@@ -696,14 +696,14 @@
 
 %% Example:
 %% list_billing_group_cost_reports_filter() :: #{
-%%   <<"BillingGroupArns">> => list(string()())
+%%   <<"BillingGroupArns">> => list(string())
 %% }
 -type list_billing_group_cost_reports_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_pricing_rules_filter() :: #{
-%%   <<"Arns">> => list(string()())
+%%   <<"Arns">> => list(string())
 %% }
 -type list_pricing_rules_filter() :: #{binary() => any()}.
 
@@ -754,7 +754,7 @@
 %% line_item_filter() :: #{
 %%   <<"Attribute">> => string(),
 %%   <<"MatchOption">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type line_item_filter() :: #{binary() => any()}.
 
@@ -769,7 +769,7 @@
 
 %% Example:
 %% custom_line_item_percentage_charge_details() :: #{
-%%   <<"AssociatedValues">> => list(string()()),
+%%   <<"AssociatedValues">> => list(string()),
 %%   <<"PercentageValue">> => float()
 %% }
 -type custom_line_item_percentage_charge_details() :: #{binary() => any()}.
@@ -777,17 +777,17 @@
 
 %% Example:
 %% list_billing_groups_filter() :: #{
-%%   <<"Arns">> => list(string()()),
+%%   <<"Arns">> => list(string()),
 %%   <<"AutoAssociate">> => [boolean()],
 %%   <<"PricingPlan">> => string(),
-%%   <<"Statuses">> => list(string()())
+%%   <<"Statuses">> => list(string())
 %% }
 -type list_billing_groups_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% disassociate_accounts_input() :: #{
-%%   <<"AccountIds">> := list(string()()),
+%%   <<"AccountIds">> := list(string()),
 %%   <<"Arn">> := string()
 %% }
 -type disassociate_accounts_input() :: #{binary() => any()}.
@@ -809,7 +809,7 @@
 
 %% Example:
 %% get_billing_group_cost_report_output() :: #{
-%%   <<"BillingGroupCostReportResults">> => list(billing_group_cost_report_result_element()()),
+%%   <<"BillingGroupCostReportResults">> => list(billing_group_cost_report_result_element()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_billing_group_cost_report_output() :: #{binary() => any()}.
@@ -821,10 +821,10 @@
 
 %% Example:
 %% list_custom_line_items_filter() :: #{
-%%   <<"AccountIds">> => list(string()()),
-%%   <<"Arns">> => list(string()()),
-%%   <<"BillingGroups">> => list(string()()),
-%%   <<"Names">> => list(string()())
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Arns">> => list(string()),
+%%   <<"BillingGroups">> => list(string()),
+%%   <<"Names">> => list(string())
 %% }
 -type list_custom_line_items_filter() :: #{binary() => any()}.
 
@@ -853,7 +853,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()()),
+%%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => string()
 %% }
@@ -867,7 +867,7 @@
 %% Example:
 %% batch_disassociate_resources_from_custom_line_item_input() :: #{
 %%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
-%%   <<"ResourceArns">> := list(string()()),
+%%   <<"ResourceArns">> := list(string()),
 %%   <<"TargetArn">> := string()
 %% }
 -type batch_disassociate_resources_from_custom_line_item_input() :: #{binary() => any()}.
@@ -1008,7 +1008,7 @@
 
 %% Example:
 %% associate_accounts_input() :: #{
-%%   <<"AccountIds">> := list(string()()),
+%%   <<"AccountIds">> := list(string()),
 %%   <<"Arn">> := string()
 %% }
 -type associate_accounts_input() :: #{binary() => any()}.
@@ -1091,7 +1091,7 @@
 
 %% Example:
 %% list_billing_group_cost_reports_output() :: #{
-%%   <<"BillingGroupCostReports">> => list(billing_group_cost_report_element()()),
+%%   <<"BillingGroupCostReports">> => list(billing_group_cost_report_element()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_billing_group_cost_reports_output() :: #{binary() => any()}.
@@ -1099,8 +1099,8 @@
 
 %% Example:
 %% batch_associate_resources_to_custom_line_item_output() :: #{
-%%   <<"FailedAssociatedResources">> => list(associate_resource_response_element()()),
-%%   <<"SuccessfullyAssociatedResources">> => list(associate_resource_response_element()())
+%%   <<"FailedAssociatedResources">> => list(associate_resource_response_element()),
+%%   <<"SuccessfullyAssociatedResources">> => list(associate_resource_response_element())
 %% }
 -type batch_associate_resources_to_custom_line_item_output() :: #{binary() => any()}.
 

@@ -305,7 +305,7 @@
 %%   <<"NetworkInterfaceId">> := string(),
 %%   <<"PreserveExistingData">> := boolean(),
 %%   <<"SnapshotId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetName">> := string()
 %% }
 -type create_stored_iscsi_volume_input() :: #{binary() => any()}.
@@ -327,7 +327,7 @@
 %%   <<"Description">> => string(),
 %%   <<"RecurrenceInHours">> := integer(),
 %%   <<"StartAt">> := integer(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeARN">> := string()
 %% }
 -type update_snapshot_schedule_input() :: #{binary() => any()}.
@@ -350,7 +350,7 @@
 %%   <<"GatewayCapacity">> => list(any()),
 %%   <<"GatewayId">> => string(),
 %%   <<"GatewayName">> => string(),
-%%   <<"GatewayNetworkInterfaces">> => list(network_interface()()),
+%%   <<"GatewayNetworkInterfaces">> => list(network_interface()),
 %%   <<"GatewayState">> => string(),
 %%   <<"GatewayTimezone">> => string(),
 %%   <<"GatewayType">> => string(),
@@ -361,7 +361,7 @@
 %%   <<"SoftwareUpdatesEndDate">> => string(),
 %%   <<"SoftwareVersion">> => string(),
 %%   <<"SupportedGatewayCapacities">> => list(list(any())()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VPCEndpoint">> => string()
 %% }
 -type describe_gateway_information_output() :: #{binary() => any()}.
@@ -397,7 +397,7 @@
 %%   <<"CacheHitPercentage">> => float(),
 %%   <<"CacheMissPercentage">> => float(),
 %%   <<"CacheUsedPercentage">> => float(),
-%%   <<"DiskIds">> => list(string()()),
+%%   <<"DiskIds">> => list(string()),
 %%   <<"GatewayARN">> => string()
 %% }
 -type describe_cache_output() :: #{binary() => any()}.
@@ -406,12 +406,12 @@
 %% start_cache_report_input() :: #{
 %%   <<"BucketRegion">> := string(),
 %%   <<"ClientToken">> := string(),
-%%   <<"ExclusionFilters">> => list(cache_report_filter()()),
+%%   <<"ExclusionFilters">> => list(cache_report_filter()),
 %%   <<"FileShareARN">> := string(),
-%%   <<"InclusionFilters">> => list(cache_report_filter()()),
+%%   <<"InclusionFilters">> => list(cache_report_filter()),
 %%   <<"LocationARN">> := string(),
 %%   <<"Role">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VPCEndpointDNSName">> => string()
 %% }
 -type start_cache_report_input() :: #{binary() => any()}.
@@ -424,7 +424,7 @@
 
 %% Example:
 %% describe_file_system_associations_output() :: #{
-%%   <<"FileSystemAssociationInfoList">> => list(file_system_association_info()())
+%%   <<"FileSystemAssociationInfoList">> => list(file_system_association_info())
 %% }
 -type describe_file_system_associations_output() :: #{binary() => any()}.
 
@@ -434,7 +434,7 @@
 %%   <<"KMSEncrypted">> => boolean(),
 %%   <<"KMSKey">> => string(),
 %%   <<"PoolId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TapeBarcode">> := string(),
 %%   <<"TapeSizeInBytes">> := float(),
 %%   <<"Worm">> => boolean()
@@ -463,7 +463,7 @@
 
 %% Example:
 %% join_domain_input() :: #{
-%%   <<"DomainControllers">> => list(string()()),
+%%   <<"DomainControllers">> => list(string()),
 %%   <<"DomainName">> := string(),
 %%   <<"GatewayARN">> := string(),
 %%   <<"OrganizationalUnit">> => string(),
@@ -532,7 +532,7 @@
 %%   <<"GatewayARN">> := string(),
 %%   <<"LocationARN">> := string(),
 %%   <<"Password">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserName">> := string()
 %% }
 -type associate_file_system_input() :: #{binary() => any()}.
@@ -540,7 +540,7 @@
 %% Example:
 %% list_volume_recovery_points_output() :: #{
 %%   <<"GatewayARN">> => string(),
-%%   <<"VolumeRecoveryPointInfos">> => list(volume_recovery_point_info()())
+%%   <<"VolumeRecoveryPointInfos">> => list(volume_recovery_point_info())
 %% }
 -type list_volume_recovery_points_output() :: #{binary() => any()}.
 
@@ -601,7 +601,7 @@
 
 %% Example:
 %% create_tapes_output() :: #{
-%%   <<"TapeARNs">> => list(string()())
+%%   <<"TapeARNs">> => list(string())
 %% }
 -type create_tapes_output() :: #{binary() => any()}.
 
@@ -630,7 +630,7 @@
 
 %% Example:
 %% describe_cached_iscsi_volumes_input() :: #{
-%%   <<"VolumeARNs">> := list(string()())
+%%   <<"VolumeARNs">> := list(string())
 %% }
 -type describe_cached_iscsi_volumes_input() :: #{binary() => any()}.
 
@@ -643,7 +643,7 @@
 
 %% Example:
 %% list_file_system_associations_output() :: #{
-%%   <<"FileSystemAssociationSummaryList">> => list(file_system_association_summary()()),
+%%   <<"FileSystemAssociationSummaryList">> => list(file_system_association_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"NextMarker">> => string()
 %% }
@@ -658,7 +658,7 @@
 %% Example:
 %% list_tape_pools_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"PoolInfos">> => list(pool_info()())
+%%   <<"PoolInfos">> => list(pool_info())
 %% }
 -type list_tape_pools_output() :: #{binary() => any()}.
 
@@ -675,7 +675,7 @@
 %%   <<"GatewayARN">> := string(),
 %%   <<"Limit">> => integer(),
 %%   <<"Marker">> => string(),
-%%   <<"VTLDeviceARNs">> => list(string()())
+%%   <<"VTLDeviceARNs">> => list(string())
 %% }
 -type describe_vtl_devices_input() :: #{binary() => any()}.
 
@@ -714,7 +714,7 @@
 %% Example:
 %% update_smb_file_share_input() :: #{
 %%   <<"AccessBasedEnumeration">> => boolean(),
-%%   <<"AdminUserList">> => list(string()()),
+%%   <<"AdminUserList">> => list(string()),
 %%   <<"AuditDestinationARN">> => string(),
 %%   <<"CacheAttributes">> => cache_attributes(),
 %%   <<"CaseSensitivity">> => list(any()),
@@ -723,7 +723,7 @@
 %%   <<"FileShareARN">> := string(),
 %%   <<"FileShareName">> => string(),
 %%   <<"GuessMIMETypeEnabled">> => boolean(),
-%%   <<"InvalidUserList">> => list(string()()),
+%%   <<"InvalidUserList">> => list(string()),
 %%   <<"KMSEncrypted">> => boolean(),
 %%   <<"KMSKey">> => string(),
 %%   <<"NotificationPolicy">> => string(),
@@ -732,13 +732,13 @@
 %%   <<"ReadOnly">> => boolean(),
 %%   <<"RequesterPays">> => boolean(),
 %%   <<"SMBACLEnabled">> => boolean(),
-%%   <<"ValidUserList">> => list(string()())
+%%   <<"ValidUserList">> => list(string())
 %% }
 -type update_smb_file_share_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_local_disks_output() :: #{
-%%   <<"Disks">> => list(disk()()),
+%%   <<"Disks">> => list(disk()),
 %%   <<"GatewayARN">> => string()
 %% }
 -type list_local_disks_output() :: #{binary() => any()}.
@@ -773,7 +773,7 @@
 %% list_tags_for_resource_output() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"ResourceARN">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -920,7 +920,7 @@
 %% Example:
 %% cache_report_filter() :: #{
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type cache_report_filter() :: #{binary() => any()}.
 
@@ -934,7 +934,7 @@
 %% Example:
 %% add_tags_to_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_to_resource_input() :: #{binary() => any()}.
 
@@ -995,7 +995,7 @@
 %% describe_vtl_devices_output() :: #{
 %%   <<"GatewayARN">> => string(),
 %%   <<"Marker">> => string(),
-%%   <<"VTLDevices">> => list(vtl_device()())
+%%   <<"VTLDevices">> => list(vtl_device())
 %% }
 -type describe_vtl_devices_output() :: #{binary() => any()}.
 
@@ -1004,15 +1004,15 @@
 %%   <<"CacheReportARN">> => string(),
 %%   <<"CacheReportStatus">> => list(any()),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ExclusionFilters">> => list(cache_report_filter()()),
+%%   <<"ExclusionFilters">> => list(cache_report_filter()),
 %%   <<"FileShareARN">> => string(),
-%%   <<"InclusionFilters">> => list(cache_report_filter()()),
+%%   <<"InclusionFilters">> => list(cache_report_filter()),
 %%   <<"LocationARN">> => string(),
 %%   <<"ReportCompletionPercent">> => integer(),
 %%   <<"ReportName">> => string(),
 %%   <<"Role">> => string(),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type cache_report_info() :: #{binary() => any()}.
 
@@ -1037,7 +1037,7 @@
 
 %% Example:
 %% describe_bandwidth_rate_limit_schedule_output() :: #{
-%%   <<"BandwidthRateLimitIntervals">> => list(bandwidth_rate_limit_interval()()),
+%%   <<"BandwidthRateLimitIntervals">> => list(bandwidth_rate_limit_interval()),
 %%   <<"GatewayARN">> => string()
 %% }
 -type describe_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
@@ -1068,7 +1068,7 @@
 
 %% Example:
 %% list_cache_reports_output() :: #{
-%%   <<"CacheReportList">> => list(cache_report_info()()),
+%%   <<"CacheReportList">> => list(cache_report_info()),
 %%   <<"Marker">> => string()
 %% }
 -type list_cache_reports_output() :: #{binary() => any()}.
@@ -1083,14 +1083,14 @@
 
 %% Example:
 %% describe_nfs_file_shares_output() :: #{
-%%   <<"NFSFileShareInfoList">> => list(nfs_file_share_info()())
+%%   <<"NFSFileShareInfoList">> => list(nfs_file_share_info())
 %% }
 -type describe_nfs_file_shares_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_snapshot_input() :: #{
 %%   <<"SnapshotDescription">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeARN">> := string()
 %% }
 -type create_snapshot_input() :: #{binary() => any()}.
@@ -1132,7 +1132,7 @@
 %% bandwidth_rate_limit_interval() :: #{
 %%   <<"AverageDownloadRateLimitInBitsPerSec">> => float(),
 %%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
-%%   <<"DaysOfWeek">> => list(integer()()),
+%%   <<"DaysOfWeek">> => list(integer()),
 %%   <<"EndHourOfDay">> => integer(),
 %%   <<"EndMinuteOfHour">> => integer(),
 %%   <<"StartHourOfDay">> => integer(),
@@ -1142,7 +1142,7 @@
 
 %% Example:
 %% list_gateways_output() :: #{
-%%   <<"Gateways">> => list(gateway_info()()),
+%%   <<"Gateways">> => list(gateway_info()),
 %%   <<"Marker">> => string()
 %% }
 -type list_gateways_output() :: #{binary() => any()}.
@@ -1176,7 +1176,7 @@
 %% Example:
 %% list_tapes_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"TapeInfos">> => list(tape_info()())
+%%   <<"TapeInfos">> => list(tape_info())
 %% }
 -type list_tapes_output() :: #{binary() => any()}.
 
@@ -1190,26 +1190,26 @@
 
 %% Example:
 %% endpoint_network_configuration() :: #{
-%%   <<"IpAddresses">> => list(string()())
+%%   <<"IpAddresses">> => list(string())
 %% }
 -type endpoint_network_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_stored_iscsi_volumes_output() :: #{
-%%   <<"StorediSCSIVolumes">> => list(stored_iscsi_volume()())
+%%   <<"StorediSCSIVolumes">> => list(stored_iscsi_volume())
 %% }
 -type describe_stored_iscsi_volumes_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_volume_initiators_output() :: #{
-%%   <<"Initiators">> => list(string()())
+%%   <<"Initiators">> => list(string())
 %% }
 -type list_volume_initiators_output() :: #{binary() => any()}.
 
 %% Example:
 %% remove_tags_from_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_from_resource_input() :: #{binary() => any()}.
 
@@ -1237,7 +1237,7 @@
 %%   <<"Description">> => string(),
 %%   <<"RecurrenceInHours">> => integer(),
 %%   <<"StartAt">> => integer(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Timezone">> => string(),
 %%   <<"VolumeARN">> => string()
 %% }
@@ -1249,7 +1249,7 @@
 %%   <<"RetentionLockTimeInDays">> => integer(),
 %%   <<"RetentionLockType">> => list(any()),
 %%   <<"StorageClass">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_tape_pool_input() :: #{binary() => any()}.
 
@@ -1269,7 +1269,7 @@
 %% Example:
 %% smb_file_share_info() :: #{
 %%   <<"AccessBasedEnumeration">> => boolean(),
-%%   <<"AdminUserList">> => list(string()()),
+%%   <<"AdminUserList">> => list(string()),
 %%   <<"AuditDestinationARN">> => string(),
 %%   <<"Authentication">> => string(),
 %%   <<"BucketRegion">> => string(),
@@ -1283,7 +1283,7 @@
 %%   <<"FileShareStatus">> => string(),
 %%   <<"GatewayARN">> => string(),
 %%   <<"GuessMIMETypeEnabled">> => boolean(),
-%%   <<"InvalidUserList">> => list(string()()),
+%%   <<"InvalidUserList">> => list(string()),
 %%   <<"KMSEncrypted">> => boolean(),
 %%   <<"KMSKey">> => string(),
 %%   <<"LocationARN">> => string(),
@@ -1295,9 +1295,9 @@
 %%   <<"RequesterPays">> => boolean(),
 %%   <<"Role">> => string(),
 %%   <<"SMBACLEnabled">> => boolean(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VPCEndpointDNSName">> => string(),
-%%   <<"ValidUserList">> => list(string()())
+%%   <<"ValidUserList">> => list(string())
 %% }
 -type smb_file_share_info() :: #{binary() => any()}.
 
@@ -1331,7 +1331,7 @@
 
 %% Example:
 %% list_file_shares_output() :: #{
-%%   <<"FileShareInfoList">> => list(file_share_info()()),
+%%   <<"FileShareInfoList">> => list(file_share_info()),
 %%   <<"Marker">> => string(),
 %%   <<"NextMarker">> => string()
 %% }
@@ -1375,7 +1375,7 @@
 %% Example:
 %% create_snapshot_from_volume_recovery_point_input() :: #{
 %%   <<"SnapshotDescription">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeARN">> := string()
 %% }
 -type create_snapshot_from_volume_recovery_point_input() :: #{binary() => any()}.
@@ -1383,7 +1383,7 @@
 %% Example:
 %% create_smb_file_share_input() :: #{
 %%   <<"AccessBasedEnumeration">> => boolean(),
-%%   <<"AdminUserList">> => list(string()()),
+%%   <<"AdminUserList">> => list(string()),
 %%   <<"AuditDestinationARN">> => string(),
 %%   <<"Authentication">> => string(),
 %%   <<"BucketRegion">> => string(),
@@ -1395,7 +1395,7 @@
 %%   <<"FileShareName">> => string(),
 %%   <<"GatewayARN">> := string(),
 %%   <<"GuessMIMETypeEnabled">> => boolean(),
-%%   <<"InvalidUserList">> => list(string()()),
+%%   <<"InvalidUserList">> => list(string()),
 %%   <<"KMSEncrypted">> => boolean(),
 %%   <<"KMSKey">> => string(),
 %%   <<"LocationARN">> := string(),
@@ -1406,9 +1406,9 @@
 %%   <<"RequesterPays">> => boolean(),
 %%   <<"Role">> := string(),
 %%   <<"SMBACLEnabled">> => boolean(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VPCEndpointDNSName">> => string(),
-%%   <<"ValidUserList">> => list(string()())
+%%   <<"ValidUserList">> => list(string())
 %% }
 -type create_smb_file_share_input() :: #{binary() => any()}.
 
@@ -1441,7 +1441,7 @@
 %% describe_tape_archives_input() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"Marker">> => string(),
-%%   <<"TapeARNs">> => list(string()())
+%%   <<"TapeARNs">> => list(string())
 %% }
 -type describe_tape_archives_input() :: #{binary() => any()}.
 
@@ -1464,13 +1464,13 @@
 
 %% Example:
 %% describe_chap_credentials_output() :: #{
-%%   <<"ChapCredentials">> => list(chap_info()())
+%%   <<"ChapCredentials">> => list(chap_info())
 %% }
 -type describe_chap_credentials_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_smb_file_shares_output() :: #{
-%%   <<"SMBFileShareInfoList">> => list(smb_file_share_info()())
+%%   <<"SMBFileShareInfoList">> => list(smb_file_share_info())
 %% }
 -type describe_smb_file_shares_output() :: #{binary() => any()}.
 
@@ -1504,7 +1504,7 @@
 %%   <<"AuditDestinationARN">> => string(),
 %%   <<"BucketRegion">> => string(),
 %%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"ClientList">> => list(string()()),
+%%   <<"ClientList">> => list(string()),
 %%   <<"ClientToken">> := string(),
 %%   <<"DefaultStorageClass">> => string(),
 %%   <<"EncryptionType">> => list(any()),
@@ -1521,7 +1521,7 @@
 %%   <<"RequesterPays">> => boolean(),
 %%   <<"Role">> := string(),
 %%   <<"Squash">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VPCEndpointDNSName">> => string()
 %% }
 -type create_nfs_file_share_input() :: #{binary() => any()}.
@@ -1556,7 +1556,7 @@
 %%   <<"GatewayARN">> := string(),
 %%   <<"Limit">> => integer(),
 %%   <<"Marker">> => string(),
-%%   <<"TapeARNs">> => list(string()())
+%%   <<"TapeARNs">> => list(string())
 %% }
 -type describe_tapes_input() :: #{binary() => any()}.
 
@@ -1624,13 +1624,13 @@
 
 %% Example:
 %% describe_stored_iscsi_volumes_input() :: #{
-%%   <<"VolumeARNs">> := list(string()())
+%%   <<"VolumeARNs">> := list(string())
 %% }
 -type describe_stored_iscsi_volumes_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_file_system_associations_input() :: #{
-%%   <<"FileSystemAssociationARNList">> := list(string()())
+%%   <<"FileSystemAssociationARNList">> := list(string())
 %% }
 -type describe_file_system_associations_input() :: #{binary() => any()}.
 
@@ -1638,7 +1638,7 @@
 %% disk() :: #{
 %%   <<"DiskAllocationResource">> => string(),
 %%   <<"DiskAllocationType">> => string(),
-%%   <<"DiskAttributeList">> => list(string()()),
+%%   <<"DiskAttributeList">> => list(string()),
 %%   <<"DiskId">> => string(),
 %%   <<"DiskNode">> => string(),
 %%   <<"DiskPath">> => string(),
@@ -1650,19 +1650,19 @@
 %% Example:
 %% describe_tapes_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Tapes">> => list(tape()())
+%%   <<"Tapes">> => list(tape())
 %% }
 -type describe_tapes_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_automatic_tape_creation_policies_output() :: #{
-%%   <<"AutomaticTapeCreationPolicyInfos">> => list(automatic_tape_creation_policy_info()())
+%%   <<"AutomaticTapeCreationPolicyInfos">> => list(automatic_tape_creation_policy_info())
 %% }
 -type list_automatic_tape_creation_policies_output() :: #{binary() => any()}.
 
 %% Example:
 %% add_cache_input() :: #{
-%%   <<"DiskIds">> := list(string()()),
+%%   <<"DiskIds">> := list(string()),
 %%   <<"GatewayARN">> := string()
 %% }
 -type add_cache_input() :: #{binary() => any()}.
@@ -1677,7 +1677,7 @@
 %% list_volumes_output() :: #{
 %%   <<"GatewayARN">> => string(),
 %%   <<"Marker">> => string(),
-%%   <<"VolumeInfos">> => list(volume_info()())
+%%   <<"VolumeInfos">> => list(volume_info())
 %% }
 -type list_volumes_output() :: #{binary() => any()}.
 
@@ -1700,7 +1700,7 @@
 
 %% Example:
 %% add_upload_buffer_input() :: #{
-%%   <<"DiskIds">> := list(string()()),
+%%   <<"DiskIds">> := list(string()),
 %%   <<"GatewayARN">> := string()
 %% }
 -type add_upload_buffer_input() :: #{binary() => any()}.
@@ -1720,7 +1720,7 @@
 
 %% Example:
 %% automatic_tape_creation_policy_info() :: #{
-%%   <<"AutomaticTapeCreationRules">> => list(automatic_tape_creation_rule()()),
+%%   <<"AutomaticTapeCreationRules">> => list(automatic_tape_creation_rule()),
 %%   <<"GatewayARN">> => string()
 %% }
 -type automatic_tape_creation_policy_info() :: #{binary() => any()}.
@@ -1747,7 +1747,7 @@
 
 %% Example:
 %% update_automatic_tape_creation_policy_input() :: #{
-%%   <<"AutomaticTapeCreationRules">> := list(automatic_tape_creation_rule()()),
+%%   <<"AutomaticTapeCreationRules">> := list(automatic_tape_creation_rule()),
 %%   <<"GatewayARN">> := string()
 %% }
 -type update_automatic_tape_creation_policy_input() :: #{binary() => any()}.
@@ -1760,7 +1760,7 @@
 %%   <<"KMSKey">> => string(),
 %%   <<"NumTapesToCreate">> := integer(),
 %%   <<"PoolId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TapeBarcodePrefix">> := string(),
 %%   <<"TapeSizeInBytes">> := float(),
 %%   <<"Worm">> => boolean()
@@ -1778,7 +1778,7 @@
 %%   <<"AuditDestinationARN">> => string(),
 %%   <<"BucketRegion">> => string(),
 %%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"ClientList">> => list(string()()),
+%%   <<"ClientList">> => list(string()),
 %%   <<"DefaultStorageClass">> => string(),
 %%   <<"EncryptionType">> => list(any()),
 %%   <<"FileShareARN">> => string(),
@@ -1798,7 +1798,7 @@
 %%   <<"RequesterPays">> => boolean(),
 %%   <<"Role">> => string(),
 %%   <<"Squash">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VPCEndpointDNSName">> => string()
 %% }
 -type nfs_file_share_info() :: #{binary() => any()}.
@@ -1810,16 +1810,16 @@
 %%   <<"EndpointNetworkConfiguration">> => endpoint_network_configuration(),
 %%   <<"FileSystemAssociationARN">> => string(),
 %%   <<"FileSystemAssociationStatus">> => string(),
-%%   <<"FileSystemAssociationStatusDetails">> => list(file_system_association_status_detail()()),
+%%   <<"FileSystemAssociationStatusDetails">> => list(file_system_association_status_detail()),
 %%   <<"GatewayARN">> => string(),
 %%   <<"LocationARN">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type file_system_association_info() :: #{binary() => any()}.
 
 %% Example:
 %% describe_working_storage_output() :: #{
-%%   <<"DiskIds">> => list(string()()),
+%%   <<"DiskIds">> => list(string()),
 %%   <<"GatewayARN">> => string(),
 %%   <<"WorkingStorageAllocatedInBytes">> => float(),
 %%   <<"WorkingStorageUsedInBytes">> => float()
@@ -1892,14 +1892,14 @@
 %% list_tape_pools_input() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"Marker">> => string(),
-%%   <<"PoolARNs">> => list(string()())
+%%   <<"PoolARNs">> => list(string())
 %% }
 -type list_tape_pools_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_tape_archives_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"TapeArchives">> => list(tape_archive()())
+%%   <<"TapeArchives">> => list(tape_archive())
 %% }
 -type describe_tape_archives_output() :: #{binary() => any()}.
 
@@ -1907,7 +1907,7 @@
 %% update_nfs_file_share_input() :: #{
 %%   <<"AuditDestinationARN">> => string(),
 %%   <<"CacheAttributes">> => cache_attributes(),
-%%   <<"ClientList">> => list(string()()),
+%%   <<"ClientList">> => list(string()),
 %%   <<"DefaultStorageClass">> => string(),
 %%   <<"EncryptionType">> => list(any()),
 %%   <<"FileShareARN">> := string(),
@@ -1939,7 +1939,7 @@
 
 %% Example:
 %% update_bandwidth_rate_limit_schedule_input() :: #{
-%%   <<"BandwidthRateLimitIntervals">> := list(bandwidth_rate_limit_interval()()),
+%%   <<"BandwidthRateLimitIntervals">> := list(bandwidth_rate_limit_interval()),
 %%   <<"GatewayARN">> := string()
 %% }
 -type update_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
@@ -1959,7 +1959,7 @@
 
 %% Example:
 %% smb_local_groups() :: #{
-%%   <<"GatewayAdmins">> => list(string()())
+%%   <<"GatewayAdmins">> => list(string())
 %% }
 -type smb_local_groups() :: #{binary() => any()}.
 
@@ -1977,7 +1977,7 @@
 
 %% Example:
 %% describe_smb_file_shares_input() :: #{
-%%   <<"FileShareARNList">> := list(string()())
+%%   <<"FileShareARNList">> := list(string())
 %% }
 -type describe_smb_file_shares_input() :: #{binary() => any()}.
 
@@ -2003,7 +2003,7 @@
 %% describe_tape_recovery_points_output() :: #{
 %%   <<"GatewayARN">> => string(),
 %%   <<"Marker">> => string(),
-%%   <<"TapeRecoveryPointInfos">> => list(tape_recovery_point_info()())
+%%   <<"TapeRecoveryPointInfos">> => list(tape_recovery_point_info())
 %% }
 -type describe_tape_recovery_points_output() :: #{binary() => any()}.
 
@@ -2040,7 +2040,7 @@
 
 %% Example:
 %% describe_upload_buffer_output() :: #{
-%%   <<"DiskIds">> => list(string()()),
+%%   <<"DiskIds">> => list(string()),
 %%   <<"GatewayARN">> => string(),
 %%   <<"UploadBufferAllocatedInBytes">> => float(),
 %%   <<"UploadBufferUsedInBytes">> => float()
@@ -2051,7 +2051,7 @@
 %% list_tapes_input() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"Marker">> => string(),
-%%   <<"TapeARNs">> => list(string()())
+%%   <<"TapeARNs">> => list(string())
 %% }
 -type list_tapes_input() :: #{binary() => any()}.
 
@@ -2063,20 +2063,20 @@
 %%   <<"GatewayTimezone">> := string(),
 %%   <<"GatewayType">> => string(),
 %%   <<"MediumChangerType">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TapeDriveType">> => string()
 %% }
 -type activate_gateway_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_cached_iscsi_volumes_output() :: #{
-%%   <<"CachediSCSIVolumes">> => list(cached_iscsi_volume()())
+%%   <<"CachediSCSIVolumes">> => list(cached_iscsi_volume())
 %% }
 -type describe_cached_iscsi_volumes_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_nfs_file_shares_input() :: #{
-%%   <<"FileShareARNList">> := list(string()())
+%%   <<"FileShareARNList">> := list(string())
 %% }
 -type describe_nfs_file_shares_input() :: #{binary() => any()}.
 
@@ -2123,7 +2123,7 @@
 %%   <<"NetworkInterfaceId">> := string(),
 %%   <<"SnapshotId">> => string(),
 %%   <<"SourceVolumeARN">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetName">> := string(),
 %%   <<"VolumeSizeInBytes">> := float()
 %% }
@@ -2155,7 +2155,7 @@
 
 %% Example:
 %% add_working_storage_input() :: #{
-%%   <<"DiskIds">> := list(string()()),
+%%   <<"DiskIds">> := list(string()),
 %%   <<"GatewayARN">> := string()
 %% }
 -type add_working_storage_input() :: #{binary() => any()}.
@@ -2169,7 +2169,7 @@
 %% Example:
 %% refresh_cache_input() :: #{
 %%   <<"FileShareARN">> := string(),
-%%   <<"FolderList">> => list(string()()),
+%%   <<"FolderList">> => list(string()),
 %%   <<"Recursive">> => boolean()
 %% }
 -type refresh_cache_input() :: #{binary() => any()}.

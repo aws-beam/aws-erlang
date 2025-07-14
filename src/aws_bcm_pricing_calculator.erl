@@ -126,8 +126,8 @@
 
 %% Example:
 %% batch_update_bill_scenario_commitment_modification_response() :: #{
-%%   <<"errors">> => list(batch_update_bill_scenario_commitment_modification_error()()),
-%%   <<"items">> => list(bill_scenario_commitment_modification_item()())
+%%   <<"errors">> => list(batch_update_bill_scenario_commitment_modification_error()),
+%%   <<"items">> => list(bill_scenario_commitment_modification_item())
 %% }
 -type batch_update_bill_scenario_commitment_modification_response() :: #{binary() => any()}.
 
@@ -141,7 +141,7 @@
 
 %% Example:
 %% list_workload_estimate_usage_response() :: #{
-%%   <<"items">> => list(workload_estimate_usage_item()()),
+%%   <<"items">> => list(workload_estimate_usage_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_workload_estimate_usage_response() :: #{binary() => any()}.
@@ -150,7 +150,7 @@
 %% list_bill_scenarios_request() :: #{
 %%   <<"createdAtFilter">> => filter_timestamp(),
 %%   <<"expiresAtFilter">> => filter_timestamp(),
-%%   <<"filters">> => list(list_bill_scenarios_filter()()),
+%%   <<"filters">> => list(list_bill_scenarios_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -159,7 +159,7 @@
 %% Example:
 %% list_bill_estimate_input_usage_modifications_request() :: #{
 %%   <<"billEstimateId">> := string(),
-%%   <<"filters">> => list(list_usage_filter()()),
+%%   <<"filters">> => list(list_usage_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -187,8 +187,8 @@
 
 %% Example:
 %% batch_update_bill_scenario_usage_modification_response() :: #{
-%%   <<"errors">> => list(batch_update_bill_scenario_usage_modification_error()()),
-%%   <<"items">> => list(bill_scenario_usage_modification_item()())
+%%   <<"errors">> => list(batch_update_bill_scenario_usage_modification_error()),
+%%   <<"items">> => list(bill_scenario_usage_modification_item())
 %% }
 -type batch_update_bill_scenario_usage_modification_response() :: #{binary() => any()}.
 
@@ -256,7 +256,7 @@
 %% Example:
 %% list_bill_estimate_line_items_request() :: #{
 %%   <<"billEstimateId">> := string(),
-%%   <<"filters">> => list(list_bill_estimate_line_items_filter()()),
+%%   <<"filters">> => list(list_bill_estimate_line_items_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -273,7 +273,7 @@
 %% Example:
 %% batch_create_workload_estimate_usage_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"usage">> := list(batch_create_workload_estimate_usage_entry()()),
+%%   <<"usage">> := list(batch_create_workload_estimate_usage_entry()),
 %%   <<"workloadEstimateId">> := string()
 %% }
 -type batch_create_workload_estimate_usage_request() :: #{binary() => any()}.
@@ -291,8 +291,8 @@
 
 %% Example:
 %% batch_create_workload_estimate_usage_response() :: #{
-%%   <<"errors">> => list(batch_create_workload_estimate_usage_error()()),
-%%   <<"items">> => list(batch_create_workload_estimate_usage_item()())
+%%   <<"errors">> => list(batch_create_workload_estimate_usage_error()),
+%%   <<"items">> => list(batch_create_workload_estimate_usage_item())
 %% }
 -type batch_create_workload_estimate_usage_response() :: #{binary() => any()}.
 
@@ -306,7 +306,7 @@
 
 %% Example:
 %% list_workload_estimates_response() :: #{
-%%   <<"items">> => list(workload_estimate_summary()()),
+%%   <<"items">> => list(workload_estimate_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_workload_estimates_response() :: #{binary() => any()}.
@@ -323,7 +323,7 @@
 %% list_bill_estimates_request() :: #{
 %%   <<"createdAtFilter">> => filter_timestamp(),
 %%   <<"expiresAtFilter">> => filter_timestamp(),
-%%   <<"filters">> => list(list_bill_estimates_filter()()),
+%%   <<"filters">> => list(list_bill_estimates_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -344,7 +344,7 @@
 
 %% Example:
 %% list_bill_scenario_commitment_modifications_response() :: #{
-%%   <<"items">> => list(bill_scenario_commitment_modification_item()()),
+%%   <<"items">> => list(bill_scenario_commitment_modification_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bill_scenario_commitment_modifications_response() :: #{binary() => any()}.
@@ -401,7 +401,7 @@
 
 %% Example:
 %% list_bill_scenarios_response() :: #{
-%%   <<"items">> => list(bill_scenario_summary()()),
+%%   <<"items">> => list(bill_scenario_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bill_scenarios_response() :: #{binary() => any()}.
@@ -417,7 +417,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"arn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -429,7 +429,7 @@
 %%   <<"id">> => string(),
 %%   <<"location">> => [string()],
 %%   <<"operation">> => string(),
-%%   <<"quantities">> => list(usage_quantity()()),
+%%   <<"quantities">> => list(usage_quantity()),
 %%   <<"serviceCode">> => string(),
 %%   <<"usageAccountId">> => string(),
 %%   <<"usageType">> => string()
@@ -452,7 +452,7 @@
 %%   <<"id">> => string(),
 %%   <<"location">> => [string()],
 %%   <<"operation">> => string(),
-%%   <<"quantities">> => list(usage_quantity()()),
+%%   <<"quantities">> => list(usage_quantity()),
 %%   <<"serviceCode">> => string(),
 %%   <<"usageAccountId">> => string(),
 %%   <<"usageType">> => string()
@@ -485,8 +485,8 @@
 
 %% Example:
 %% batch_update_workload_estimate_usage_response() :: #{
-%%   <<"errors">> => list(batch_update_workload_estimate_usage_error()()),
-%%   <<"items">> => list(workload_estimate_usage_item()())
+%%   <<"errors">> => list(batch_update_workload_estimate_usage_error()),
+%%   <<"items">> => list(workload_estimate_usage_item())
 %% }
 -type batch_update_workload_estimate_usage_response() :: #{binary() => any()}.
 
@@ -538,7 +538,7 @@
 
 %% Example:
 %% list_bill_estimate_line_items_response() :: #{
-%%   <<"items">> => list(bill_estimate_line_item_summary()()),
+%%   <<"items">> => list(bill_estimate_line_item_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bill_estimate_line_items_response() :: #{binary() => any()}.
@@ -557,7 +557,7 @@
 
 %% Example:
 %% list_workload_estimate_usage_request() :: #{
-%%   <<"filters">> => list(list_usage_filter()()),
+%%   <<"filters">> => list(list_usage_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"workloadEstimateId">> := string()
@@ -671,7 +671,7 @@
 
 %% Example:
 %% list_bill_estimate_input_usage_modifications_response() :: #{
-%%   <<"items">> => list(bill_estimate_input_usage_modification_summary()()),
+%%   <<"items">> => list(bill_estimate_input_usage_modification_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bill_estimate_input_usage_modifications_response() :: #{binary() => any()}.
@@ -685,7 +685,7 @@
 %%   <<"key">> => string(),
 %%   <<"location">> => [string()],
 %%   <<"operation">> => string(),
-%%   <<"quantities">> => list(usage_quantity()()),
+%%   <<"quantities">> => list(usage_quantity()),
 %%   <<"serviceCode">> => string(),
 %%   <<"usageAccountId">> => string(),
 %%   <<"usageType">> => string()
@@ -722,7 +722,7 @@
 
 %% Example:
 %% batch_delete_bill_scenario_usage_modification_response() :: #{
-%%   <<"errors">> => list(batch_delete_bill_scenario_usage_modification_error()())
+%%   <<"errors">> => list(batch_delete_bill_scenario_usage_modification_error())
 %% }
 -type batch_delete_bill_scenario_usage_modification_response() :: #{binary() => any()}.
 
@@ -735,7 +735,7 @@
 
 %% Example:
 %% batch_create_bill_scenario_usage_modification_entry() :: #{
-%%   <<"amounts">> => list(usage_amount()()),
+%%   <<"amounts">> => list(usage_amount()),
 %%   <<"availabilityZone">> => string(),
 %%   <<"group">> => string(),
 %%   <<"historicalUsage">> => historical_usage_entity(),
@@ -757,7 +757,7 @@
 
 %% Example:
 %% batch_update_bill_scenario_usage_modification_entry() :: #{
-%%   <<"amounts">> => list(usage_amount()()),
+%%   <<"amounts">> => list(usage_amount()),
 %%   <<"group">> => string(),
 %%   <<"id">> => string()
 %% }
@@ -774,7 +774,7 @@
 %% list_workload_estimates_request() :: #{
 %%   <<"createdAtFilter">> => filter_timestamp(),
 %%   <<"expiresAtFilter">> => filter_timestamp(),
-%%   <<"filters">> => list(list_workload_estimates_filter()()),
+%%   <<"filters">> => list(list_workload_estimates_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -783,7 +783,7 @@
 %% Example:
 %% batch_delete_bill_scenario_usage_modification_request() :: #{
 %%   <<"billScenarioId">> := string(),
-%%   <<"ids">> := list(string()())
+%%   <<"ids">> := list(string())
 %% }
 -type batch_delete_bill_scenario_usage_modification_request() :: #{binary() => any()}.
 
@@ -796,7 +796,7 @@
 %% Example:
 %% batch_update_bill_scenario_commitment_modification_request() :: #{
 %%   <<"billScenarioId">> := string(),
-%%   <<"commitmentModifications">> := list(batch_update_bill_scenario_commitment_modification_entry()())
+%%   <<"commitmentModifications">> := list(batch_update_bill_scenario_commitment_modification_entry())
 %% }
 -type batch_update_bill_scenario_commitment_modification_request() :: #{binary() => any()}.
 
@@ -830,7 +830,7 @@
 
 %% Example:
 %% batch_update_workload_estimate_usage_request() :: #{
-%%   <<"usage">> := list(batch_update_workload_estimate_usage_entry()()),
+%%   <<"usage">> := list(batch_update_workload_estimate_usage_entry()),
 %%   <<"workloadEstimateId">> := string()
 %% }
 -type batch_update_workload_estimate_usage_request() :: #{binary() => any()}.
@@ -860,14 +860,14 @@
 
 %% Example:
 %% list_bill_scenario_usage_modifications_response() :: #{
-%%   <<"items">> => list(bill_scenario_usage_modification_item()()),
+%%   <<"items">> => list(bill_scenario_usage_modification_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bill_scenario_usage_modifications_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_bill_estimates_response() :: #{
-%%   <<"items">> => list(bill_estimate_summary()()),
+%%   <<"items">> => list(bill_estimate_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bill_estimates_response() :: #{binary() => any()}.
@@ -875,7 +875,7 @@
 %% Example:
 %% batch_update_bill_scenario_usage_modification_request() :: #{
 %%   <<"billScenarioId">> := string(),
-%%   <<"usageModifications">> := list(batch_update_bill_scenario_usage_modification_entry()())
+%%   <<"usageModifications">> := list(batch_update_bill_scenario_usage_modification_entry())
 %% }
 -type batch_update_bill_scenario_usage_modification_request() :: #{binary() => any()}.
 
@@ -894,7 +894,7 @@
 %% Example:
 %% list_bill_scenario_usage_modifications_request() :: #{
 %%   <<"billScenarioId">> := string(),
-%%   <<"filters">> => list(list_usage_filter()()),
+%%   <<"filters">> => list(list_usage_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -902,7 +902,7 @@
 
 %% Example:
 %% list_bill_estimate_input_commitment_modifications_response() :: #{
-%%   <<"items">> => list(bill_estimate_input_commitment_modification_summary()()),
+%%   <<"items">> => list(bill_estimate_input_commitment_modification_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bill_estimate_input_commitment_modifications_response() :: #{binary() => any()}.
@@ -930,8 +930,8 @@
 
 %% Example:
 %% batch_create_bill_scenario_usage_modification_response() :: #{
-%%   <<"errors">> => list(batch_create_bill_scenario_usage_modification_error()()),
-%%   <<"items">> => list(batch_create_bill_scenario_usage_modification_item()())
+%%   <<"errors">> => list(batch_create_bill_scenario_usage_modification_error()),
+%%   <<"items">> => list(batch_create_bill_scenario_usage_modification_item())
 %% }
 -type batch_create_bill_scenario_usage_modification_response() :: #{binary() => any()}.
 
@@ -939,7 +939,7 @@
 %% batch_create_bill_scenario_usage_modification_request() :: #{
 %%   <<"billScenarioId">> := string(),
 %%   <<"clientToken">> => string(),
-%%   <<"usageModifications">> := list(batch_create_bill_scenario_usage_modification_entry()())
+%%   <<"usageModifications">> := list(batch_create_bill_scenario_usage_modification_entry())
 %% }
 -type batch_create_bill_scenario_usage_modification_request() :: #{binary() => any()}.
 
@@ -964,14 +964,14 @@
 
 %% Example:
 %% batch_delete_workload_estimate_usage_request() :: #{
-%%   <<"ids">> := list(string()()),
+%%   <<"ids">> := list(string()),
 %%   <<"workloadEstimateId">> := string()
 %% }
 -type batch_delete_workload_estimate_usage_request() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }
@@ -1019,18 +1019,18 @@
 
 %% Example:
 %% expression() :: #{
-%%   <<"and">> => list(expression()()),
+%%   <<"and">> => list(expression()),
 %%   <<"costCategories">> => expression_filter(),
 %%   <<"dimensions">> => expression_filter(),
 %%   <<"not">> => expression(),
-%%   <<"or">> => list(expression()()),
+%%   <<"or">> => list(expression()),
 %%   <<"tags">> => expression_filter()
 %% }
 -type expression() :: #{binary() => any()}.
 
 %% Example:
 %% batch_delete_workload_estimate_usage_response() :: #{
-%%   <<"errors">> => list(batch_delete_workload_estimate_usage_error()())
+%%   <<"errors">> => list(batch_delete_workload_estimate_usage_error())
 %% }
 -type batch_delete_workload_estimate_usage_response() :: #{binary() => any()}.
 
@@ -1038,7 +1038,7 @@
 %% batch_create_bill_scenario_commitment_modification_request() :: #{
 %%   <<"billScenarioId">> := string(),
 %%   <<"clientToken">> => string(),
-%%   <<"commitmentModifications">> := list(batch_create_bill_scenario_commitment_modification_entry()())
+%%   <<"commitmentModifications">> := list(batch_create_bill_scenario_commitment_modification_entry())
 %% }
 -type batch_create_bill_scenario_commitment_modification_request() :: #{binary() => any()}.
 
@@ -1096,8 +1096,8 @@
 
 %% Example:
 %% batch_create_bill_scenario_commitment_modification_response() :: #{
-%%   <<"errors">> => list(batch_create_bill_scenario_commitment_modification_error()()),
-%%   <<"items">> => list(batch_create_bill_scenario_commitment_modification_item()())
+%%   <<"errors">> => list(batch_create_bill_scenario_commitment_modification_error()),
+%%   <<"items">> => list(batch_create_bill_scenario_commitment_modification_item())
 %% }
 -type batch_create_bill_scenario_commitment_modification_response() :: #{binary() => any()}.
 
@@ -1136,7 +1136,7 @@
 %% Example:
 %% batch_delete_bill_scenario_commitment_modification_request() :: #{
 %%   <<"billScenarioId">> := string(),
-%%   <<"ids">> := list(string()())
+%%   <<"ids">> := list(string())
 %% }
 -type batch_delete_bill_scenario_commitment_modification_request() :: #{binary() => any()}.
 
@@ -1198,13 +1198,13 @@
 
 %% Example:
 %% batch_delete_bill_scenario_commitment_modification_response() :: #{
-%%   <<"errors">> => list(batch_delete_bill_scenario_commitment_modification_error()())
+%%   <<"errors">> => list(batch_delete_bill_scenario_commitment_modification_error())
 %% }
 -type batch_delete_bill_scenario_commitment_modification_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_bill_estimate_commitments_response() :: #{
-%%   <<"items">> => list(bill_estimate_commitment_summary()()),
+%%   <<"items">> => list(bill_estimate_commitment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bill_estimate_commitments_response() :: #{binary() => any()}.

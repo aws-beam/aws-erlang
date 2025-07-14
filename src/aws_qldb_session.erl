@@ -87,7 +87,7 @@
 
 %% Example:
 %% execute_statement_request() :: #{
-%%   <<"Parameters">> => list(value_holder()()),
+%%   <<"Parameters">> => list(value_holder()),
 %%   <<"Statement">> => string(),
 %%   <<"TransactionId">> => string()
 %% }
@@ -145,7 +145,7 @@
 %% Example:
 %% page() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"Values">> => list(value_holder()())
+%%   <<"Values">> => list(value_holder())
 %% }
 -type page() :: #{binary() => any()}.
 

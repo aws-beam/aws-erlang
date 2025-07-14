@@ -108,8 +108,8 @@
 %%   <<"ApplicationId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"ComponentId">> => string(),
-%%   <<"ConnectedComponentArns">> => list(string()()),
-%%   <<"Credentials">> => list(application_credential()()),
+%%   <<"ConnectedComponentArns">> => list(string()),
+%%   <<"Credentials">> => list(application_credential()),
 %%   <<"DatabaseId">> => string(),
 %%   <<"DatabaseName">> => [string()],
 %%   <<"DatabaseType">> => list(any()),
@@ -150,7 +150,7 @@
 %% Example:
 %% list_operations_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Operations">> => list(operation()())
+%%   <<"Operations">> => list(operation())
 %% }
 -type list_operations_output() :: #{binary() => any()}.
 
@@ -190,7 +190,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -198,7 +198,7 @@
 %% Example:
 %% list_operation_events_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OperationEvents">> => list(operation_event()())
+%%   <<"OperationEvents">> => list(operation_event())
 %% }
 -type list_operation_events_output() :: #{binary() => any()}.
 
@@ -216,7 +216,7 @@
 
 %% Example:
 %% list_components_output() :: #{
-%%   <<"Components">> => list(component_summary()()),
+%%   <<"Components">> => list(component_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_components_output() :: #{binary() => any()}.
@@ -254,7 +254,7 @@
 
 %% Example:
 %% list_operation_events_input() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OperationId">> := string()
@@ -264,7 +264,7 @@
 
 %% Example:
 %% list_applications_output() :: #{
-%%   <<"Applications">> => list(application_summary()()),
+%%   <<"Applications">> => list(application_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_applications_output() :: #{binary() => any()}.
@@ -302,7 +302,7 @@
 
 %% Example:
 %% list_applications_input() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -341,14 +341,14 @@
 %% Example:
 %% update_application_settings_output() :: #{
 %%   <<"Message">> => [string()],
-%%   <<"OperationIds">> => list(string()())
+%%   <<"OperationIds">> => list(string())
 %% }
 -type update_application_settings_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_databases_output() :: #{
-%%   <<"Databases">> => list(database_summary()()),
+%%   <<"Databases">> => list(database_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_databases_output() :: #{binary() => any()}.
@@ -359,13 +359,13 @@
 %%   <<"ApplicationId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"AssociatedHost">> => associated_host(),
-%%   <<"ChildComponents">> => list(string()()),
+%%   <<"ChildComponents">> => list(string()),
 %%   <<"ComponentId">> => string(),
 %%   <<"ComponentType">> => list(any()),
 %%   <<"DatabaseConnection">> => database_connection(),
-%%   <<"Databases">> => list(string()()),
+%%   <<"Databases">> => list(string()),
 %%   <<"HdbVersion">> => [string()],
-%%   <<"Hosts">> => list(host()()),
+%%   <<"Hosts">> => list(host()),
 %%   <<"LastUpdated">> => [non_neg_integer()],
 %%   <<"ParentComponent">> => string(),
 %%   <<"PrimaryHost">> => [string()],
@@ -393,8 +393,8 @@
 %% application() :: #{
 %%   <<"AppRegistryArn">> => string(),
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedApplicationArns">> => list(string()()),
-%%   <<"Components">> => list(string()()),
+%%   <<"AssociatedApplicationArns">> => list(string()),
+%%   <<"Components">> => list(string()),
 %%   <<"DiscoveryStatus">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"LastUpdated">> => [non_neg_integer()],
@@ -501,7 +501,7 @@
 %% associated_host() :: #{
 %%   <<"Ec2InstanceId">> => [string()],
 %%   <<"Hostname">> => [string()],
-%%   <<"IpAddresses">> => list(ip_address_member()()),
+%%   <<"IpAddresses">> => list(ip_address_member()),
 %%   <<"OsVersion">> => [string()]
 %% }
 -type associated_host() :: #{binary() => any()}.
@@ -520,8 +520,8 @@
 %% update_application_settings_input() :: #{
 %%   <<"ApplicationId">> := string(),
 %%   <<"Backint">> => backint_config(),
-%%   <<"CredentialsToAddOrUpdate">> => list(application_credential()()),
-%%   <<"CredentialsToRemove">> => list(application_credential()()),
+%%   <<"CredentialsToAddOrUpdate">> => list(application_credential()),
+%%   <<"CredentialsToRemove">> => list(application_credential()),
 %%   <<"DatabaseArn">> => string()
 %% }
 -type update_application_settings_input() :: #{binary() => any()}.
@@ -545,7 +545,7 @@
 %% Example:
 %% list_operations_input() :: #{
 %%   <<"ApplicationId">> := string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -619,10 +619,10 @@
 %% register_application_input() :: #{
 %%   <<"ApplicationId">> := string(),
 %%   <<"ApplicationType">> := list(any()),
-%%   <<"ComponentsInfo">> => list(component_info()()),
-%%   <<"Credentials">> => list(application_credential()()),
+%%   <<"ComponentsInfo">> => list(component_info()),
+%%   <<"Credentials">> => list(application_credential()),
 %%   <<"DatabaseArn">> => string(),
-%%   <<"Instances">> := list(string()()),
+%%   <<"Instances">> := list(string()),
 %%   <<"SapInstanceNumber">> => string(),
 %%   <<"Sid">> => string(),
 %%   <<"Tags">> => map()

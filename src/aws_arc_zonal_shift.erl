@@ -65,7 +65,7 @@
 
 %% Example:
 %% list_managed_resources_response() :: #{
-%%   <<"items">> => list(managed_resource_summary()()),
+%%   <<"items">> => list(managed_resource_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_managed_resources_response() :: #{binary() => any()}.
@@ -75,18 +75,18 @@
 %% get_managed_resource_response() :: #{
 %%   <<"appliedWeights">> => map(),
 %%   <<"arn">> => string(),
-%%   <<"autoshifts">> => list(autoshift_in_resource()()),
+%%   <<"autoshifts">> => list(autoshift_in_resource()),
 %%   <<"name">> => string(),
 %%   <<"practiceRunConfiguration">> => practice_run_configuration(),
 %%   <<"zonalAutoshiftStatus">> => list(any()),
-%%   <<"zonalShifts">> => list(zonal_shift_in_resource()())
+%%   <<"zonalShifts">> => list(zonal_shift_in_resource())
 %% }
 -type get_managed_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_zonal_shifts_response() :: #{
-%%   <<"items">> => list(zonal_shift_summary()()),
+%%   <<"items">> => list(zonal_shift_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_zonal_shifts_response() :: #{binary() => any()}.
@@ -154,12 +154,12 @@
 %% managed_resource_summary() :: #{
 %%   <<"appliedWeights">> => map(),
 %%   <<"arn">> => string(),
-%%   <<"autoshifts">> => list(autoshift_in_resource()()),
-%%   <<"availabilityZones">> => list(string()()),
+%%   <<"autoshifts">> => list(autoshift_in_resource()),
+%%   <<"availabilityZones">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"practiceRunStatus">> => list(any()),
 %%   <<"zonalAutoshiftStatus">> => list(any()),
-%%   <<"zonalShifts">> => list(zonal_shift_in_resource()())
+%%   <<"zonalShifts">> => list(zonal_shift_in_resource())
 %% }
 -type managed_resource_summary() :: #{binary() => any()}.
 
@@ -192,10 +192,10 @@
 
 %% Example:
 %% update_practice_run_configuration_request() :: #{
-%%   <<"blockedDates">> => list(string()()),
-%%   <<"blockedWindows">> => list(string()()),
-%%   <<"blockingAlarms">> => list(control_condition()()),
-%%   <<"outcomeAlarms">> => list(control_condition()())
+%%   <<"blockedDates">> => list(string()),
+%%   <<"blockedWindows">> => list(string()),
+%%   <<"blockingAlarms">> => list(control_condition()),
+%%   <<"outcomeAlarms">> => list(control_condition())
 %% }
 -type update_practice_run_configuration_request() :: #{binary() => any()}.
 
@@ -334,7 +334,7 @@
 
 %% Example:
 %% list_autoshifts_response() :: #{
-%%   <<"items">> => list(autoshift_summary()()),
+%%   <<"items">> => list(autoshift_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_autoshifts_response() :: #{binary() => any()}.
@@ -367,10 +367,10 @@
 
 %% Example:
 %% create_practice_run_configuration_request() :: #{
-%%   <<"blockedDates">> => list(string()()),
-%%   <<"blockedWindows">> => list(string()()),
-%%   <<"blockingAlarms">> => list(control_condition()()),
-%%   <<"outcomeAlarms">> := list(control_condition()()),
+%%   <<"blockedDates">> => list(string()),
+%%   <<"blockedWindows">> => list(string()),
+%%   <<"blockingAlarms">> => list(control_condition()),
+%%   <<"outcomeAlarms">> := list(control_condition()),
 %%   <<"resourceIdentifier">> := string()
 %% }
 -type create_practice_run_configuration_request() :: #{binary() => any()}.
@@ -395,10 +395,10 @@
 
 %% Example:
 %% practice_run_configuration() :: #{
-%%   <<"blockedDates">> => list(string()()),
-%%   <<"blockedWindows">> => list(string()()),
-%%   <<"blockingAlarms">> => list(control_condition()()),
-%%   <<"outcomeAlarms">> => list(control_condition()())
+%%   <<"blockedDates">> => list(string()),
+%%   <<"blockedWindows">> => list(string()),
+%%   <<"blockingAlarms">> => list(control_condition()),
+%%   <<"outcomeAlarms">> => list(control_condition())
 %% }
 -type practice_run_configuration() :: #{binary() => any()}.
 

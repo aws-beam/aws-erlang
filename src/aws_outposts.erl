@@ -159,7 +159,7 @@
 
 %% Example:
 %% list_assets_input() :: #{
-%%   <<"HostIdFilter">> => list(string()()),
+%%   <<"HostIdFilter">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StatusFilter">> => list(list(any())())
@@ -169,10 +169,10 @@
 
 %% Example:
 %% list_asset_instances_input() :: #{
-%%   <<"AccountIdFilter">> => list(string()()),
-%%   <<"AssetIdFilter">> => list(string()()),
+%%   <<"AccountIdFilter">> => list(string()),
+%%   <<"AssetIdFilter">> => list(string()),
 %%   <<"AwsServiceFilter">> => list(list(any())()),
-%%   <<"InstanceTypeFilter">> => list(string()()),
+%%   <<"InstanceTypeFilter">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -196,7 +196,7 @@
 
 %% Example:
 %% list_capacity_tasks_output() :: #{
-%%   <<"CapacityTasks">> => list(capacity_task_summary()()),
+%%   <<"CapacityTasks">> => list(capacity_task_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_capacity_tasks_output() :: #{binary() => any()}.
@@ -212,7 +212,7 @@
 
 %% Example:
 %% get_outpost_supported_instance_types_output() :: #{
-%%   <<"InstanceTypes">> => list(instance_type_item()()),
+%%   <<"InstanceTypes">> => list(instance_type_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_outpost_supported_instance_types_output() :: #{binary() => any()}.
@@ -221,7 +221,7 @@
 %% Example:
 %% line_item_asset_information() :: #{
 %%   <<"AssetId">> => string(),
-%%   <<"MacAddressList">> => list(string()())
+%%   <<"MacAddressList">> => list(string())
 %% }
 -type line_item_asset_information() :: #{binary() => any()}.
 
@@ -229,7 +229,7 @@
 %% Example:
 %% list_orders_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Orders">> => list(order_summary()())
+%%   <<"Orders">> => list(order_summary())
 %% }
 -type list_orders_output() :: #{binary() => any()}.
 
@@ -266,9 +266,9 @@
 
 %% Example:
 %% list_outposts_input() :: #{
-%%   <<"AvailabilityZoneFilter">> => list(string()()),
-%%   <<"AvailabilityZoneIdFilter">> => list(string()()),
-%%   <<"LifeCycleStatusFilter">> => list(string()()),
+%%   <<"AvailabilityZoneFilter">> => list(string()),
+%%   <<"AvailabilityZoneIdFilter">> => list(string()),
+%%   <<"LifeCycleStatusFilter">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -277,7 +277,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -285,11 +285,11 @@
 %% Example:
 %% catalog_item() :: #{
 %%   <<"CatalogItemId">> => string(),
-%%   <<"EC2Capacities">> => list(ec2_capacity()()),
+%%   <<"EC2Capacities">> => list(ec2_capacity()),
 %%   <<"ItemStatus">> => list(any()),
 %%   <<"PowerKva">> => float(),
 %%   <<"SupportedStorage">> => list(list(any())()),
-%%   <<"SupportedUplinkGbps">> => list(integer()()),
+%%   <<"SupportedUplinkGbps">> => list(integer()),
 %%   <<"WeightLbs">> => integer()
 %% }
 -type catalog_item() :: #{binary() => any()}.
@@ -379,7 +379,7 @@
 
 %% Example:
 %% list_asset_instances_output() :: #{
-%%   <<"AssetInstances">> => list(asset_instance()()),
+%%   <<"AssetInstances">> => list(asset_instance()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_asset_instances_output() :: #{binary() => any()}.
@@ -459,16 +459,16 @@
 %% list_sites_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OperatingAddressCityFilter">> => list(string()()),
-%%   <<"OperatingAddressCountryCodeFilter">> => list(string()()),
-%%   <<"OperatingAddressStateOrRegionFilter">> => list(string()())
+%%   <<"OperatingAddressCityFilter">> => list(string()),
+%%   <<"OperatingAddressCountryCodeFilter">> => list(string()),
+%%   <<"OperatingAddressStateOrRegionFilter">> => list(string())
 %% }
 -type list_sites_input() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_blocking_instances_for_capacity_task_output() :: #{
-%%   <<"BlockingInstances">> => list(blocking_instance()()),
+%%   <<"BlockingInstances">> => list(blocking_instance()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_blocking_instances_for_capacity_task_output() :: #{binary() => any()}.
@@ -505,7 +505,7 @@
 
 %% Example:
 %% create_order_input() :: #{
-%%   <<"LineItems">> := list(line_item_request()()),
+%%   <<"LineItems">> := list(line_item_request()),
 %%   <<"OutpostIdentifier">> := string(),
 %%   <<"PaymentOption">> := list(any()),
 %%   <<"PaymentTerm">> => list(any())
@@ -546,7 +546,7 @@
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"OrderId">> => string(),
 %%   <<"OutpostId">> => string(),
-%%   <<"RequestedInstancePools">> => list(instance_type_capacity()()),
+%%   <<"RequestedInstancePools">> => list(instance_type_capacity()),
 %%   <<"TaskActionOnBlockingInstances">> => list(any())
 %% }
 -type start_capacity_task_output() :: #{binary() => any()}.
@@ -555,7 +555,7 @@
 %% Example:
 %% list_sites_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Sites">> => list(site()())
+%%   <<"Sites">> => list(site())
 %% }
 -type list_sites_output() :: #{binary() => any()}.
 
@@ -564,7 +564,7 @@
 %% start_capacity_task_input() :: #{
 %%   <<"AssetId">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstancePools">> := list(instance_type_capacity()()),
+%%   <<"InstancePools">> := list(instance_type_capacity()),
 %%   <<"InstancesToExclude">> => instances_to_exclude(),
 %%   <<"OrderId">> => string(),
 %%   <<"TaskActionOnBlockingInstances">> => list(any())
@@ -574,7 +574,7 @@
 
 %% Example:
 %% order() :: #{
-%%   <<"LineItems">> => list(line_item()()),
+%%   <<"LineItems">> => list(line_item()),
 %%   <<"OrderFulfilledDate">> => non_neg_integer(),
 %%   <<"OrderId">> => string(),
 %%   <<"OrderSubmissionDate">> => non_neg_integer(),
@@ -602,8 +602,8 @@
 %% Example:
 %% compute_attributes() :: #{
 %%   <<"HostId">> => string(),
-%%   <<"InstanceFamilies">> => list(string()()),
-%%   <<"InstanceTypeCapacities">> => list(asset_instance_type_capacity()()),
+%%   <<"InstanceFamilies">> => list(string()),
+%%   <<"InstanceTypeCapacities">> => list(asset_instance_type_capacity()),
 %%   <<"MaxVcpus">> => integer(),
 %%   <<"State">> => list(any())
 %% }
@@ -612,7 +612,7 @@
 
 %% Example:
 %% list_assets_output() :: #{
-%%   <<"Assets">> => list(asset_info()()),
+%%   <<"Assets">> => list(asset_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_assets_output() :: #{binary() => any()}.
@@ -639,7 +639,7 @@
 
 %% Example:
 %% get_outpost_instance_types_output() :: #{
-%%   <<"InstanceTypes">> => list(instance_type_item()()),
+%%   <<"InstanceTypes">> => list(instance_type_item()),
 %%   <<"NextToken">> => string(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"OutpostId">> => string()
@@ -656,8 +656,8 @@
 
 %% Example:
 %% instances_to_exclude() :: #{
-%%   <<"AccountIds">> => list(string()()),
-%%   <<"Instances">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Instances">> => list(string()),
 %%   <<"Services">> => list(list(any())())
 %% }
 -type instances_to_exclude() :: #{binary() => any()}.
@@ -687,7 +687,7 @@
 %% Example:
 %% list_outposts_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Outposts">> => list(outpost()())
+%%   <<"Outposts">> => list(outpost())
 %% }
 -type list_outposts_output() :: #{binary() => any()}.
 
@@ -767,7 +767,7 @@
 
 %% Example:
 %% list_catalog_items_input() :: #{
-%%   <<"EC2FamilyFilter">> => list(string()()),
+%%   <<"EC2FamilyFilter">> => list(string()),
 %%   <<"ItemClassFilter">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -793,7 +793,7 @@
 
 %% Example:
 %% connection_details() :: #{
-%%   <<"AllowedIps">> => list(string()()),
+%%   <<"AllowedIps">> => list(string()),
 %%   <<"ClientPublicKey">> => string(),
 %%   <<"ClientTunnelAddress">> => string(),
 %%   <<"ServerEndpoint">> => string(),
@@ -854,7 +854,7 @@
 
 %% Example:
 %% list_catalog_items_output() :: #{
-%%   <<"CatalogItems">> => list(catalog_item()()),
+%%   <<"CatalogItems">> => list(catalog_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_catalog_items_output() :: #{binary() => any()}.
@@ -880,7 +880,7 @@
 
 %% Example:
 %% line_item() :: #{
-%%   <<"AssetInformationList">> => list(line_item_asset_information()()),
+%%   <<"AssetInformationList">> => list(line_item_asset_information()),
 %%   <<"CatalogItemId">> => string(),
 %%   <<"LineItemId">> => string(),
 %%   <<"PreviousLineItemId">> => string(),
@@ -917,7 +917,7 @@
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"OrderId">> => string(),
 %%   <<"OutpostId">> => string(),
-%%   <<"RequestedInstancePools">> => list(instance_type_capacity()()),
+%%   <<"RequestedInstancePools">> => list(instance_type_capacity()),
 %%   <<"TaskActionOnBlockingInstances">> => list(any())
 %% }
 -type get_capacity_task_output() :: #{binary() => any()}.

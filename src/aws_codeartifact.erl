@@ -421,7 +421,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -429,7 +429,7 @@
 %% Example:
 %% list_package_groups_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"packageGroups">> => list(package_group_summary()())
+%%   <<"packageGroups">> => list(package_group_summary())
 %% }
 -type list_package_groups_result() :: #{binary() => any()}.
 
@@ -444,7 +444,7 @@
 
 %% Example:
 %% list_package_version_assets_result() :: #{
-%%   <<"assets">> => list(asset_summary()()),
+%%   <<"assets">> => list(asset_summary()),
 %%   <<"format">> => list(any()),
 %%   <<"namespace">> => string(),
 %%   <<"nextToken">> => string(),
@@ -462,7 +462,7 @@
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
 %%   <<"packageGroup">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_package_group_request() :: #{binary() => any()}.
 
@@ -495,7 +495,7 @@
 %%   <<"package">> := string(),
 %%   <<"repository">> := string(),
 %%   <<"versionRevisions">> => map(),
-%%   <<"versions">> := list(string()())
+%%   <<"versions">> := list(string())
 %% }
 -type dispose_package_versions_request() :: #{binary() => any()}.
 
@@ -516,7 +516,7 @@
 
 %% Example:
 %% list_allowed_repositories_for_group_result() :: #{
-%%   <<"allowedRepositories">> => list(string()()),
+%%   <<"allowedRepositories">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_allowed_repositories_for_group_result() :: #{binary() => any()}.
@@ -614,7 +614,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -677,7 +677,7 @@
 %%   <<"displayName">> => string(),
 %%   <<"format">> => list(any()),
 %%   <<"homePage">> => string(),
-%%   <<"licenses">> => list(license_info()()),
+%%   <<"licenses">> => list(license_info()),
 %%   <<"namespace">> => string(),
 %%   <<"origin">> => package_version_origin(),
 %%   <<"packageName">> => string(),
@@ -705,7 +705,7 @@
 
 %% Example:
 %% list_package_version_dependencies_result() :: #{
-%%   <<"dependencies">> => list(package_dependency()()),
+%%   <<"dependencies">> => list(package_dependency()),
 %%   <<"format">> => list(any()),
 %%   <<"namespace">> => string(),
 %%   <<"nextToken">> => string(),
@@ -726,7 +726,7 @@
 %% Example:
 %% list_repositories_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository_summary()())
+%%   <<"repositories">> => list(repository_summary())
 %% }
 -type list_repositories_result() :: #{binary() => any()}.
 
@@ -742,7 +742,7 @@
 %% Example:
 %% list_associated_packages_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"packages">> => list(associated_package()())
+%%   <<"packages">> => list(associated_package())
 %% }
 -type list_associated_packages_result() :: #{binary() => any()}.
 
@@ -826,7 +826,7 @@
 %% Example:
 %% list_repositories_in_domain_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository_summary()())
+%%   <<"repositories">> => list(repository_summary())
 %% }
 -type list_repositories_in_domain_result() :: #{binary() => any()}.
 
@@ -835,7 +835,7 @@
 %% create_domain_request() :: #{
 %%   <<"domain">> := string(),
 %%   <<"encryptionKey">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_domain_request() :: #{binary() => any()}.
 
@@ -865,7 +865,7 @@
 %%   <<"namespace">> => string(),
 %%   <<"package">> := string(),
 %%   <<"repository">> := string(),
-%%   <<"versions">> := list(string()())
+%%   <<"versions">> := list(string())
 %% }
 -type delete_package_versions_request() :: #{binary() => any()}.
 
@@ -962,7 +962,7 @@
 
 %% Example:
 %% list_domains_result() :: #{
-%%   <<"domains">> => list(domain_summary()()),
+%%   <<"domains">> => list(domain_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_domains_result() :: #{binary() => any()}.
@@ -970,11 +970,11 @@
 
 %% Example:
 %% update_package_group_origin_configuration_request() :: #{
-%%   <<"addAllowedRepositories">> => list(package_group_allowed_repository()()),
+%%   <<"addAllowedRepositories">> => list(package_group_allowed_repository()),
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
 %%   <<"packageGroup">> := string(),
-%%   <<"removeAllowedRepositories">> => list(package_group_allowed_repository()()),
+%%   <<"removeAllowedRepositories">> => list(package_group_allowed_repository()),
 %%   <<"restrictions">> => map()
 %% }
 -type update_package_group_origin_configuration_request() :: #{binary() => any()}.
@@ -983,7 +983,7 @@
 %% Example:
 %% list_packages_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"packages">> => list(package_summary()())
+%%   <<"packages">> => list(package_summary())
 %% }
 -type list_packages_result() :: #{binary() => any()}.
 
@@ -1116,7 +1116,7 @@
 %% Example:
 %% list_sub_package_groups_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"packageGroups">> => list(package_group_summary()())
+%%   <<"packageGroups">> => list(package_group_summary())
 %% }
 -type list_sub_package_groups_result() :: #{binary() => any()}.
 
@@ -1139,7 +1139,7 @@
 
 %% Example:
 %% list_tags_for_resource_result() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
 
@@ -1157,8 +1157,8 @@
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
 %%   <<"repository">> := string(),
-%%   <<"tags">> => list(tag()()),
-%%   <<"upstreams">> => list(upstream_repository()())
+%%   <<"tags">> => list(tag()),
+%%   <<"upstreams">> => list(upstream_repository())
 %% }
 -type create_repository_request() :: #{binary() => any()}.
 
@@ -1430,7 +1430,7 @@
 %%   <<"namespace">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"package">> => string(),
-%%   <<"versions">> => list(package_version_summary()())
+%%   <<"versions">> => list(package_version_summary())
 %% }
 -type list_package_versions_result() :: #{binary() => any()}.
 
@@ -1457,7 +1457,7 @@
 %%   <<"domain">> := string(),
 %%   <<"domainOwner">> => string(),
 %%   <<"repository">> := string(),
-%%   <<"upstreams">> => list(upstream_repository()())
+%%   <<"upstreams">> => list(upstream_repository())
 %% }
 -type update_repository_request() :: #{binary() => any()}.
 
@@ -1543,9 +1543,9 @@
 %%   <<"description">> => string(),
 %%   <<"domainName">> => string(),
 %%   <<"domainOwner">> => string(),
-%%   <<"externalConnections">> => list(repository_external_connection_info()()),
+%%   <<"externalConnections">> => list(repository_external_connection_info()),
 %%   <<"name">> => string(),
-%%   <<"upstreams">> => list(upstream_repository_info()())
+%%   <<"upstreams">> => list(upstream_repository_info())
 %% }
 -type repository_description() :: #{binary() => any()}.
 
@@ -1602,7 +1602,7 @@
 %%   <<"package">> := string(),
 %%   <<"sourceRepository">> := string(),
 %%   <<"versionRevisions">> => map(),
-%%   <<"versions">> => list(string()())
+%%   <<"versions">> => list(string())
 %% }
 -type copy_package_versions_request() :: #{binary() => any()}.
 
@@ -1618,7 +1618,7 @@
 %%   <<"repository">> := string(),
 %%   <<"targetStatus">> := list(any()),
 %%   <<"versionRevisions">> => map(),
-%%   <<"versions">> := list(string()())
+%%   <<"versions">> := list(string())
 %% }
 -type update_package_versions_status_request() :: #{binary() => any()}.
 

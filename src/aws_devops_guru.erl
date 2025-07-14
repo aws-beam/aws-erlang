@@ -128,8 +128,8 @@
 %% Example:
 %% list_organization_insights_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProactiveInsights">> => list(proactive_organization_insight_summary()()),
-%%   <<"ReactiveInsights">> => list(reactive_organization_insight_summary()())
+%%   <<"ProactiveInsights">> => list(proactive_organization_insight_summary()),
+%%   <<"ReactiveInsights">> => list(reactive_organization_insight_summary())
 %% }
 -type list_organization_insights_response() :: #{binary() => any()}.
 
@@ -192,7 +192,7 @@
 
 %% Example:
 %% performance_insights_metric_dimension_group() :: #{
-%%   <<"Dimensions">> => list(string()()),
+%%   <<"Dimensions">> => list(string()),
 %%   <<"Group">> => string(),
 %%   <<"Limit">> => integer()
 %% }
@@ -222,9 +222,9 @@
 
 %% Example:
 %% describe_organization_overview_request() :: #{
-%%   <<"AccountIds">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
 %%   <<"FromTime">> := non_neg_integer(),
-%%   <<"OrganizationalUnitIds">> => list(string()()),
+%%   <<"OrganizationalUnitIds">> => list(string()),
 %%   <<"ToTime">> => non_neg_integer()
 %% }
 -type describe_organization_overview_request() :: #{binary() => any()}.
@@ -241,7 +241,7 @@
 %% Example:
 %% recommendation_related_event() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Resources">> => list(recommendation_related_event_resource()())
+%%   <<"Resources">> => list(recommendation_related_event_resource())
 %% }
 -type recommendation_related_event() :: #{binary() => any()}.
 
@@ -298,7 +298,7 @@
 
 %% Example:
 %% recommendation_related_anomaly_source_detail() :: #{
-%%   <<"CloudWatchMetrics">> => list(recommendation_related_cloud_watch_metrics_source_detail()())
+%%   <<"CloudWatchMetrics">> => list(recommendation_related_cloud_watch_metrics_source_detail())
 %% }
 -type recommendation_related_anomaly_source_detail() :: #{binary() => any()}.
 
@@ -314,7 +314,7 @@
 %% Example:
 %% proactive_anomaly() :: #{
 %%   <<"AnomalyReportedTimeRange">> => anomaly_reported_time_range(),
-%%   <<"AnomalyResources">> => list(anomaly_resource()()),
+%%   <<"AnomalyResources">> => list(anomaly_resource()),
 %%   <<"AnomalyTimeRange">> => anomaly_time_range(),
 %%   <<"AssociatedInsightId">> => string(),
 %%   <<"Description">> => string(),
@@ -338,8 +338,8 @@
 %% Example:
 %% list_insights_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProactiveInsights">> => list(proactive_insight_summary()()),
-%%   <<"ReactiveInsights">> => list(reactive_insight_summary()())
+%%   <<"ProactiveInsights">> => list(proactive_insight_summary()),
+%%   <<"ReactiveInsights">> => list(reactive_insight_summary())
 %% }
 -type list_insights_response() :: #{binary() => any()}.
 
@@ -397,7 +397,7 @@
 %% anomalous_log_group() :: #{
 %%   <<"ImpactEndTime">> => non_neg_integer(),
 %%   <<"ImpactStartTime">> => non_neg_integer(),
-%%   <<"LogAnomalyShowcases">> => list(log_anomaly_showcase()()),
+%%   <<"LogAnomalyShowcases">> => list(log_anomaly_showcase()),
 %%   <<"LogGroupName">> => string(),
 %%   <<"NumberOfLogLinesScanned">> => integer()
 %% }
@@ -410,7 +410,7 @@
 
 %% Example:
 %% proactive_insight_summary() :: #{
-%%   <<"AssociatedResourceArns">> => list(string()()),
+%%   <<"AssociatedResourceArns">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"InsightTimeRange">> => insight_time_range(),
 %%   <<"Name">> => string(),
@@ -434,7 +434,7 @@
 %% Example:
 %% update_resource_collection_filter() :: #{
 %%   <<"CloudFormation">> => update_cloud_formation_collection_filter(),
-%%   <<"Tags">> => list(update_tag_collection_filter()())
+%%   <<"Tags">> => list(update_tag_collection_filter())
 %% }
 -type update_resource_collection_filter() :: #{binary() => any()}.
 
@@ -488,8 +488,8 @@
 %% Example:
 %% search_insights_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProactiveInsights">> => list(proactive_insight_summary()()),
-%%   <<"ReactiveInsights">> => list(reactive_insight_summary()())
+%%   <<"ProactiveInsights">> => list(proactive_insight_summary()),
+%%   <<"ReactiveInsights">> => list(reactive_insight_summary())
 %% }
 -type search_insights_response() :: #{binary() => any()}.
 
@@ -504,7 +504,7 @@
 %% Example:
 %% cloud_watch_metrics_data_summary() :: #{
 %%   <<"StatusCode">> => list(any()),
-%%   <<"TimestampMetricValuePairList">> => list(timestamp_metric_value_pair()())
+%%   <<"TimestampMetricValuePairList">> => list(timestamp_metric_value_pair())
 %% }
 -type cloud_watch_metrics_data_summary() :: #{binary() => any()}.
 
@@ -512,7 +512,7 @@
 %% Example:
 %% update_tag_collection_filter() :: #{
 %%   <<"AppBoundaryKey">> => string(),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagValues">> => list(string())
 %% }
 -type update_tag_collection_filter() :: #{binary() => any()}.
 
@@ -545,14 +545,14 @@
 %% Example:
 %% tag_collection() :: #{
 %%   <<"AppBoundaryKey">> => string(),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagValues">> => list(string())
 %% }
 -type tag_collection() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_cost_estimation_response() :: #{
-%%   <<"Costs">> => list(service_resource_cost()()),
+%%   <<"Costs">> => list(service_resource_cost()),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceCollection">> => cost_estimation_resource_collection_filter(),
 %%   <<"Status">> => list(any()),
@@ -632,7 +632,7 @@
 
 %% Example:
 %% list_notification_channels_response() :: #{
-%%   <<"Channels">> => list(notification_channel()()),
+%%   <<"Channels">> => list(notification_channel()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_notification_channels_response() :: #{binary() => any()}.
@@ -640,7 +640,7 @@
 
 %% Example:
 %% reactive_insight_summary() :: #{
-%%   <<"AssociatedResourceArns">> => list(string()()),
+%%   <<"AssociatedResourceArns">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"InsightTimeRange">> => insight_time_range(),
 %%   <<"Name">> => string(),
@@ -661,7 +661,7 @@
 
 %% Example:
 %% cloud_formation_cost_estimation_resource_collection_filter() :: #{
-%%   <<"StackNames">> => list(string()())
+%%   <<"StackNames">> => list(string())
 %% }
 -type cloud_formation_cost_estimation_resource_collection_filter() :: #{binary() => any()}.
 
@@ -680,7 +680,7 @@
 
 %% Example:
 %% log_anomaly_showcase() :: #{
-%%   <<"LogAnomalyClasses">> => list(log_anomaly_class()())
+%%   <<"LogAnomalyClasses">> => list(log_anomaly_class())
 %% }
 -type log_anomaly_showcase() :: #{binary() => any()}.
 
@@ -708,10 +708,10 @@
 
 %% Example:
 %% describe_resource_collection_health_response() :: #{
-%%   <<"CloudFormation">> => list(cloud_formation_health()()),
+%%   <<"CloudFormation">> => list(cloud_formation_health()),
 %%   <<"NextToken">> => string(),
-%%   <<"Service">> => list(service_health()()),
-%%   <<"Tags">> => list(tag_health()())
+%%   <<"Service">> => list(service_health()),
+%%   <<"Tags">> => list(tag_health())
 %% }
 -type describe_resource_collection_health_response() :: #{binary() => any()}.
 
@@ -723,8 +723,8 @@
 %%   <<"Link">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Reason">> => string(),
-%%   <<"RelatedAnomalies">> => list(recommendation_related_anomaly()()),
-%%   <<"RelatedEvents">> => list(recommendation_related_event()())
+%%   <<"RelatedAnomalies">> => list(recommendation_related_anomaly()),
+%%   <<"RelatedEvents">> => list(recommendation_related_event())
 %% }
 -type recommendation() :: #{binary() => any()}.
 
@@ -732,7 +732,7 @@
 %% Example:
 %% reactive_anomaly() :: #{
 %%   <<"AnomalyReportedTimeRange">> => anomaly_reported_time_range(),
-%%   <<"AnomalyResources">> => list(anomaly_resource()()),
+%%   <<"AnomalyResources">> => list(anomaly_resource()),
 %%   <<"AnomalyTimeRange">> => anomaly_time_range(),
 %%   <<"AssociatedInsightId">> => string(),
 %%   <<"CausalAnomalyId">> => string(),
@@ -750,7 +750,7 @@
 
 %% Example:
 %% search_organization_insights_request() :: #{
-%%   <<"AccountIds">> := list(string()()),
+%%   <<"AccountIds">> := list(string()),
 %%   <<"Filters">> => search_organization_insights_filters(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -762,7 +762,7 @@
 
 %% Example:
 %% update_cloud_formation_collection_filter() :: #{
-%%   <<"StackNames">> => list(string()())
+%%   <<"StackNames">> => list(string())
 %% }
 -type update_cloud_formation_collection_filter() :: #{binary() => any()}.
 
@@ -788,8 +788,8 @@
 
 %% Example:
 %% anomaly_source_details() :: #{
-%%   <<"CloudWatchMetrics">> => list(cloud_watch_metrics_detail()()),
-%%   <<"PerformanceInsightsMetrics">> => list(performance_insights_metrics_detail()())
+%%   <<"CloudWatchMetrics">> => list(cloud_watch_metrics_detail()),
+%%   <<"PerformanceInsightsMetrics">> => list(performance_insights_metrics_detail())
 %% }
 -type anomaly_source_details() :: #{binary() => any()}.
 
@@ -811,7 +811,7 @@
 
 %% Example:
 %% list_monitored_resources_response() :: #{
-%%   <<"MonitoredResourceIdentifiers">> => list(monitored_resource_identifier()()),
+%%   <<"MonitoredResourceIdentifiers">> => list(monitored_resource_identifier()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_monitored_resources_response() :: #{binary() => any()}.
@@ -831,7 +831,7 @@
 %% Example:
 %% tag_collection_filter() :: #{
 %%   <<"AppBoundaryKey">> => string(),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagValues">> => list(string())
 %% }
 -type tag_collection_filter() :: #{binary() => any()}.
 
@@ -864,7 +864,7 @@
 %% Example:
 %% reactive_anomaly_summary() :: #{
 %%   <<"AnomalyReportedTimeRange">> => anomaly_reported_time_range(),
-%%   <<"AnomalyResources">> => list(anomaly_resource()()),
+%%   <<"AnomalyResources">> => list(anomaly_resource()),
 %%   <<"AnomalyTimeRange">> => anomaly_time_range(),
 %%   <<"AssociatedInsightId">> => string(),
 %%   <<"CausalAnomalyId">> => string(),
@@ -899,7 +899,7 @@
 
 %% Example:
 %% cloud_watch_metrics_detail() :: #{
-%%   <<"Dimensions">> => list(cloud_watch_metrics_dimension()()),
+%%   <<"Dimensions">> => list(cloud_watch_metrics_dimension()),
 %%   <<"MetricDataSummary">> => cloud_watch_metrics_data_summary(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
@@ -913,15 +913,15 @@
 %% Example:
 %% search_organization_insights_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProactiveInsights">> => list(proactive_insight_summary()()),
-%%   <<"ReactiveInsights">> => list(reactive_insight_summary()())
+%%   <<"ProactiveInsights">> => list(proactive_insight_summary()),
+%%   <<"ReactiveInsights">> => list(reactive_insight_summary())
 %% }
 -type search_organization_insights_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% cloud_formation_collection_filter() :: #{
-%%   <<"StackNames">> => list(string()())
+%%   <<"StackNames">> => list(string())
 %% }
 -type cloud_formation_collection_filter() :: #{binary() => any()}.
 
@@ -929,8 +929,8 @@
 %% Example:
 %% recommendation_related_anomaly() :: #{
 %%   <<"AnomalyId">> => string(),
-%%   <<"Resources">> => list(recommendation_related_anomaly_resource()()),
-%%   <<"SourceDetails">> => list(recommendation_related_anomaly_source_detail()())
+%%   <<"Resources">> => list(recommendation_related_anomaly_resource()),
+%%   <<"SourceDetails">> => list(recommendation_related_anomaly_source_detail())
 %% }
 -type recommendation_related_anomaly() :: #{binary() => any()}.
 
@@ -938,7 +938,7 @@
 %% Example:
 %% tag_cost_estimation_resource_collection_filter() :: #{
 %%   <<"AppBoundaryKey">> => string(),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagValues">> => list(string())
 %% }
 -type tag_cost_estimation_resource_collection_filter() :: #{binary() => any()}.
 
@@ -954,7 +954,7 @@
 
 %% Example:
 %% list_events_response() :: #{
-%%   <<"Events">> => list(event()()),
+%%   <<"Events">> => list(event()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_events_response() :: #{binary() => any()}.
@@ -1023,11 +1023,11 @@
 
 %% Example:
 %% describe_organization_resource_collection_health_response() :: #{
-%%   <<"Account">> => list(account_health()()),
-%%   <<"CloudFormation">> => list(cloud_formation_health()()),
+%%   <<"Account">> => list(account_health()),
+%%   <<"CloudFormation">> => list(cloud_formation_health()),
 %%   <<"NextToken">> => string(),
-%%   <<"Service">> => list(service_health()()),
-%%   <<"Tags">> => list(tag_health()())
+%%   <<"Service">> => list(service_health()),
+%%   <<"Tags">> => list(tag_health())
 %% }
 -type describe_organization_resource_collection_health_response() :: #{binary() => any()}.
 
@@ -1068,7 +1068,7 @@
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"ResourceCollection">> => resource_collection(),
-%%   <<"Resources">> => list(event_resource()()),
+%%   <<"Resources">> => list(event_resource()),
 %%   <<"Time">> => non_neg_integer()
 %% }
 -type event() :: #{binary() => any()}.
@@ -1086,18 +1086,18 @@
 %% Example:
 %% resource_collection_filter() :: #{
 %%   <<"CloudFormation">> => cloud_formation_collection_filter(),
-%%   <<"Tags">> => list(tag_collection_filter()())
+%%   <<"Tags">> => list(tag_collection_filter())
 %% }
 -type resource_collection_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_organization_resource_collection_health_request() :: #{
-%%   <<"AccountIds">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OrganizationResourceCollectionType">> := list(any()),
-%%   <<"OrganizationalUnitIds">> => list(string()())
+%%   <<"OrganizationalUnitIds">> => list(string())
 %% }
 -type describe_organization_resource_collection_health_request() :: #{binary() => any()}.
 
@@ -1105,8 +1105,8 @@
 %% Example:
 %% list_anomalies_for_insight_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProactiveAnomalies">> => list(proactive_anomaly_summary()()),
-%%   <<"ReactiveAnomalies">> => list(reactive_anomaly_summary()())
+%%   <<"ProactiveAnomalies">> => list(proactive_anomaly_summary()),
+%%   <<"ReactiveAnomalies">> => list(reactive_anomaly_summary())
 %% }
 -type list_anomalies_for_insight_response() :: #{binary() => any()}.
 
@@ -1124,7 +1124,7 @@
 %% Example:
 %% cost_estimation_resource_collection_filter() :: #{
 %%   <<"CloudFormation">> => cloud_formation_cost_estimation_resource_collection_filter(),
-%%   <<"Tags">> => list(tag_cost_estimation_resource_collection_filter()())
+%%   <<"Tags">> => list(tag_cost_estimation_resource_collection_filter())
 %% }
 -type cost_estimation_resource_collection_filter() :: #{binary() => any()}.
 
@@ -1180,14 +1180,14 @@
 
 %% Example:
 %% cloud_formation_collection() :: #{
-%%   <<"StackNames">> => list(string()())
+%%   <<"StackNames">> => list(string())
 %% }
 -type cloud_formation_collection() :: #{binary() => any()}.
 
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()()),
+%%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
 %% }
@@ -1200,7 +1200,7 @@
 
 %% Example:
 %% list_anomalous_log_groups_response() :: #{
-%%   <<"AnomalousLogGroups">> => list(anomalous_log_group()()),
+%%   <<"AnomalousLogGroups">> => list(anomalous_log_group()),
 %%   <<"InsightId">> => string(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1240,9 +1240,9 @@
 %% performance_insights_metrics_detail() :: #{
 %%   <<"MetricDisplayName">> => string(),
 %%   <<"MetricQuery">> => performance_insights_metric_query(),
-%%   <<"ReferenceData">> => list(performance_insights_reference_data()()),
-%%   <<"StatsAtAnomaly">> => list(performance_insights_stat()()),
-%%   <<"StatsAtBaseline">> => list(performance_insights_stat()()),
+%%   <<"ReferenceData">> => list(performance_insights_reference_data()),
+%%   <<"StatsAtAnomaly">> => list(performance_insights_stat()),
+%%   <<"StatsAtBaseline">> => list(performance_insights_stat()),
 %%   <<"Unit">> => string()
 %% }
 -type performance_insights_metrics_detail() :: #{binary() => any()}.
@@ -1350,10 +1350,10 @@
 
 %% Example:
 %% list_organization_insights_request() :: #{
-%%   <<"AccountIds">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationalUnitIds">> => list(string()()),
+%%   <<"OrganizationalUnitIds">> => list(string()),
 %%   <<"StatusFilter">> := list_insights_status_filter()
 %% }
 -type list_organization_insights_request() :: #{binary() => any()}.
@@ -1380,7 +1380,7 @@
 %% Example:
 %% list_recommendations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Recommendations">> => list(recommendation()())
+%%   <<"Recommendations">> => list(recommendation())
 %% }
 -type list_recommendations_response() :: #{binary() => any()}.
 
@@ -1423,7 +1423,7 @@
 %% Example:
 %% resource_collection() :: #{
 %%   <<"CloudFormation">> => cloud_formation_collection(),
-%%   <<"Tags">> => list(tag_collection()())
+%%   <<"Tags">> => list(tag_collection())
 %% }
 -type resource_collection() :: #{binary() => any()}.
 
@@ -1431,7 +1431,7 @@
 %% Example:
 %% proactive_anomaly_summary() :: #{
 %%   <<"AnomalyReportedTimeRange">> => anomaly_reported_time_range(),
-%%   <<"AnomalyResources">> => list(anomaly_resource()()),
+%%   <<"AnomalyResources">> => list(anomaly_resource()),
 %%   <<"AnomalyTimeRange">> => anomaly_time_range(),
 %%   <<"AssociatedInsightId">> => string(),
 %%   <<"Description">> => string(),
@@ -1469,8 +1469,8 @@
 
 %% Example:
 %% describe_organization_health_request() :: #{
-%%   <<"AccountIds">> => list(string()()),
-%%   <<"OrganizationalUnitIds">> => list(string()())
+%%   <<"AccountIds">> => list(string()),
+%%   <<"OrganizationalUnitIds">> => list(string())
 %% }
 -type describe_organization_health_request() :: #{binary() => any()}.
 

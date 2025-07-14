@@ -87,7 +87,7 @@
 %% Example:
 %% list_permissions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"permissions">> := list(permission_entry()())
+%%   <<"permissions">> := list(permission_entry())
 %% }
 -type list_permissions_response() :: #{binary() => any()}.
 
@@ -101,8 +101,8 @@
 
 %% Example:
 %% vpc_configuration() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
 -type vpc_configuration() :: #{binary() => any()}.
 
@@ -145,8 +145,8 @@
 
 %% Example:
 %% network_access_configuration() :: #{
-%%   <<"prefixListIds">> => list(string()()),
-%%   <<"vpceIds">> => list(string()())
+%%   <<"prefixListIds">> => list(string()),
+%%   <<"vpceIds">> => list(string())
 %% }
 -type network_access_configuration() :: #{binary() => any()}.
 
@@ -171,7 +171,7 @@
 %%   <<"licenseType">> => string(),
 %%   <<"modified">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"notificationDestinations">> => list(string()()),
+%%   <<"notificationDestinations">> => list(string()),
 %%   <<"status">> => string(),
 %%   <<"tags">> => map()
 %% }
@@ -193,7 +193,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -231,7 +231,7 @@
 %% Example:
 %% authentication_description() :: #{
 %%   <<"awsSso">> => aws_sso_authentication(),
-%%   <<"providers">> => list(string()()),
+%%   <<"providers">> => list(string()),
 %%   <<"saml">> => saml_authentication()
 %% }
 -type authentication_description() :: #{binary() => any()}.
@@ -296,7 +296,7 @@
 
 %% Example:
 %% update_workspace_authentication_request() :: #{
-%%   <<"authenticationProviders">> := list(string()()),
+%%   <<"authenticationProviders">> := list(string()),
 %%   <<"samlConfiguration">> => saml_configuration()
 %% }
 -type update_workspace_authentication_request() :: #{binary() => any()}.
@@ -324,7 +324,7 @@
 
 %% Example:
 %% authentication_summary() :: #{
-%%   <<"providers">> => list(string()()),
+%%   <<"providers">> => list(string()),
 %%   <<"samlConfigurationStatus">> => string()
 %% }
 -type authentication_summary() :: #{binary() => any()}.
@@ -390,7 +390,7 @@
 
 %% Example:
 %% list_versions_response() :: #{
-%%   <<"grafanaVersions">> => list(string()()),
+%%   <<"grafanaVersions">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_versions_response() :: #{binary() => any()}.
@@ -400,7 +400,7 @@
 %% list_workspace_service_account_tokens_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"serviceAccountId">> => [string()],
-%%   <<"serviceAccountTokens">> => list(service_account_token_summary()()),
+%%   <<"serviceAccountTokens">> => list(service_account_token_summary()),
 %%   <<"workspaceId">> => string()
 %% }
 -type list_workspace_service_account_tokens_response() :: #{binary() => any()}.
@@ -420,11 +420,11 @@
 %%   <<"removeVpcConfiguration">> => [boolean()],
 %%   <<"stackSetName">> => string(),
 %%   <<"vpcConfiguration">> => vpc_configuration(),
-%%   <<"workspaceDataSources">> => list(string()()),
+%%   <<"workspaceDataSources">> => list(string()),
 %%   <<"workspaceDescription">> => string(),
 %%   <<"workspaceName">> => string(),
-%%   <<"workspaceNotificationDestinations">> => list(string()()),
-%%   <<"workspaceOrganizationalUnits">> => list(string()()),
+%%   <<"workspaceNotificationDestinations">> => list(string()),
+%%   <<"workspaceOrganizationalUnits">> => list(string()),
 %%   <<"workspaceRoleArn">> => string()
 %% }
 -type update_workspace_request() :: #{binary() => any()}.
@@ -446,7 +446,7 @@
 %%   <<"accountAccessType">> => string(),
 %%   <<"authentication">> => authentication_summary(),
 %%   <<"created">> => [non_neg_integer()],
-%%   <<"dataSources">> => list(string()()),
+%%   <<"dataSources">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"endpoint">> => string(),
 %%   <<"freeTrialConsumed">> => [boolean()],
@@ -459,9 +459,9 @@
 %%   <<"modified">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"networkAccessControl">> => network_access_configuration(),
-%%   <<"notificationDestinations">> => list(string()()),
+%%   <<"notificationDestinations">> => list(string()),
 %%   <<"organizationRoleName">> => string(),
-%%   <<"organizationalUnits">> => list(string()()),
+%%   <<"organizationalUnits">> => list(string()),
 %%   <<"permissionType">> => string(),
 %%   <<"stackSetName">> => string(),
 %%   <<"status">> => string(),
@@ -490,7 +490,7 @@
 %% Example:
 %% list_workspaces_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workspaces">> := list(workspace_summary()())
+%%   <<"workspaces">> := list(workspace_summary())
 %% }
 -type list_workspaces_response() :: #{binary() => any()}.
 
@@ -515,7 +515,7 @@
 
 %% Example:
 %% update_permissions_response() :: #{
-%%   <<"errors">> := list(update_error()())
+%%   <<"errors">> := list(update_error())
 %% }
 -type update_permissions_response() :: #{binary() => any()}.
 
@@ -545,7 +545,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
@@ -578,7 +578,7 @@
 %% update_instruction() :: #{
 %%   <<"action">> => string(),
 %%   <<"role">> => string(),
-%%   <<"users">> => list(user()())
+%%   <<"users">> => list(user())
 %% }
 -type update_instruction() :: #{binary() => any()}.
 
@@ -626,8 +626,8 @@
 
 %% Example:
 %% role_values() :: #{
-%%   <<"admin">> => list(string()()),
-%%   <<"editor">> => list(string()())
+%%   <<"admin">> => list(string()),
+%%   <<"editor">> => list(string())
 %% }
 -type role_values() :: #{binary() => any()}.
 
@@ -649,7 +649,7 @@
 
 %% Example:
 %% update_permissions_request() :: #{
-%%   <<"updateInstructionBatch">> := list(update_instruction()())
+%%   <<"updateInstructionBatch">> := list(update_instruction())
 %% }
 -type update_permissions_request() :: #{binary() => any()}.
 
@@ -678,7 +678,7 @@
 %% Example:
 %% list_workspace_service_accounts_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"serviceAccounts">> => list(service_account_summary()()),
+%%   <<"serviceAccounts">> => list(service_account_summary()),
 %%   <<"workspaceId">> => string()
 %% }
 -type list_workspace_service_accounts_response() :: #{binary() => any()}.
@@ -694,7 +694,7 @@
 
 %% Example:
 %% saml_configuration() :: #{
-%%   <<"allowedOrganizations">> => list(string()()),
+%%   <<"allowedOrganizations">> => list(string()),
 %%   <<"assertionAttributes">> => assertion_attributes(),
 %%   <<"idpMetadata">> => list(),
 %%   <<"loginValidityDuration">> => integer(),
@@ -706,7 +706,7 @@
 %% Example:
 %% create_workspace_request() :: #{
 %%   <<"accountAccessType">> := string(),
-%%   <<"authenticationProviders">> := list(string()()),
+%%   <<"authenticationProviders">> := list(string()),
 %%   <<"clientToken">> => string(),
 %%   <<"configuration">> => string(),
 %%   <<"grafanaVersion">> => string(),
@@ -716,11 +716,11 @@
 %%   <<"stackSetName">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"vpcConfiguration">> => vpc_configuration(),
-%%   <<"workspaceDataSources">> => list(string()()),
+%%   <<"workspaceDataSources">> => list(string()),
 %%   <<"workspaceDescription">> => string(),
 %%   <<"workspaceName">> => string(),
-%%   <<"workspaceNotificationDestinations">> => list(string()()),
-%%   <<"workspaceOrganizationalUnits">> => list(string()()),
+%%   <<"workspaceNotificationDestinations">> => list(string()),
+%%   <<"workspaceOrganizationalUnits">> => list(string()),
 %%   <<"workspaceRoleArn">> => string()
 %% }
 -type create_workspace_request() :: #{binary() => any()}.

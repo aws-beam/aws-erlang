@@ -96,14 +96,14 @@
 
 %% Example:
 %% ecs_properties_override() :: #{
-%%   <<"taskProperties">> => list(task_properties_override()())
+%%   <<"taskProperties">> => list(task_properties_override())
 %% }
 -type ecs_properties_override() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_compute_environments_response() :: #{
-%%   <<"computeEnvironments">> => list(compute_environment_detail()()),
+%%   <<"computeEnvironments">> => list(compute_environment_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_compute_environments_response() :: #{binary() => any()}.
@@ -136,7 +136,7 @@
 
 %% Example:
 %% task_properties_override() :: #{
-%%   <<"containers">> => list(task_container_overrides()())
+%%   <<"containers">> => list(task_container_overrides())
 %% }
 -type task_properties_override() :: #{binary() => any()}.
 
@@ -181,7 +181,7 @@
 
 %% Example:
 %% describe_job_definitions_response() :: #{
-%%   <<"jobDefinitions">> => list(job_definition()()),
+%%   <<"jobDefinitions">> => list(job_definition()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_job_definitions_response() :: #{binary() => any()}.
@@ -189,9 +189,9 @@
 
 %% Example:
 %% container_properties() :: #{
-%%   <<"command">> => list(string()()),
+%%   <<"command">> => list(string()),
 %%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"environment">> => list(key_value_pair()),
 %%   <<"ephemeralStorage">> => ephemeral_storage(),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"fargatePlatformConfiguration">> => fargate_platform_configuration(),
@@ -201,18 +201,18 @@
 %%   <<"linuxParameters">> => linux_parameters(),
 %%   <<"logConfiguration">> => log_configuration(),
 %%   <<"memory">> => integer(),
-%%   <<"mountPoints">> => list(mount_point()()),
+%%   <<"mountPoints">> => list(mount_point()),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"privileged">> => boolean(),
 %%   <<"readonlyRootFilesystem">> => boolean(),
 %%   <<"repositoryCredentials">> => repository_credentials(),
-%%   <<"resourceRequirements">> => list(resource_requirement()()),
+%%   <<"resourceRequirements">> => list(resource_requirement()),
 %%   <<"runtimePlatform">> => runtime_platform(),
-%%   <<"secrets">> => list(secret()()),
-%%   <<"ulimits">> => list(ulimit()()),
+%%   <<"secrets">> => list(secret()),
+%%   <<"ulimits">> => list(ulimit()),
 %%   <<"user">> => string(),
 %%   <<"vcpus">> => integer(),
-%%   <<"volumes">> => list(volume()())
+%%   <<"volumes">> => list(volume())
 %% }
 -type container_properties() :: #{binary() => any()}.
 
@@ -284,7 +284,7 @@
 %% Example:
 %% list_jobs_request() :: #{
 %%   <<"arrayJobId">> => string(),
-%%   <<"filters">> => list(key_values_pair()()),
+%%   <<"filters">> => list(key_values_pair()),
 %%   <<"jobQueue">> => string(),
 %%   <<"jobStatus">> => list(any()),
 %%   <<"maxResults">> => integer(),
@@ -336,7 +336,7 @@
 %%   <<"containerOverrides">> => container_overrides(),
 %%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
 %%   <<"eksPropertiesOverride">> => eks_properties_override(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"targetNodes">> => string()
 %% }
 -type node_property_override() :: #{binary() => any()}.
@@ -353,9 +353,9 @@
 
 %% Example:
 %% eks_container_override() :: #{
-%%   <<"args">> => list(string()()),
-%%   <<"command">> => list(string()()),
-%%   <<"env">> => list(eks_container_environment_variable()()),
+%%   <<"args">> => list(string()),
+%%   <<"command">> => list(string()),
+%%   <<"env">> => list(eks_container_environment_variable()),
 %%   <<"image">> => string(),
 %%   <<"name">> => string(),
 %%   <<"resources">> => eks_container_resource_requirements()
@@ -365,7 +365,7 @@
 
 %% Example:
 %% list_jobs_response() :: #{
-%%   <<"jobSummaryList">> => list(job_summary()()),
+%%   <<"jobSummaryList">> => list(job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
@@ -376,7 +376,7 @@
 %%   <<"exitCode">> => integer(),
 %%   <<"logStreamName">> => string(),
 %%   <<"name">> => string(),
-%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"networkInterfaces">> => list(network_interface()),
 %%   <<"reason">> => string()
 %% }
 -type attempt_task_container_details() :: #{binary() => any()}.
@@ -384,7 +384,7 @@
 
 %% Example:
 %% describe_scheduling_policies_response() :: #{
-%%   <<"schedulingPolicies">> => list(scheduling_policy_detail()())
+%%   <<"schedulingPolicies">> => list(scheduling_policy_detail())
 %% }
 -type describe_scheduling_policies_response() :: #{binary() => any()}.
 
@@ -399,10 +399,10 @@
 
 %% Example:
 %% job_queue_detail() :: #{
-%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()()),
+%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
 %%   <<"jobQueueArn">> => string(),
 %%   <<"jobQueueName">> => string(),
-%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()()),
+%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
 %%   <<"priority">> => integer(),
 %%   <<"schedulingPolicyArn">> => string(),
 %%   <<"state">> => list(any()),
@@ -425,7 +425,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -436,7 +436,7 @@
 
 %% Example:
 %% ecs_properties() :: #{
-%%   <<"taskProperties">> => list(ecs_task_properties()())
+%%   <<"taskProperties">> => list(ecs_task_properties())
 %% }
 -type ecs_properties() :: #{binary() => any()}.
 
@@ -453,7 +453,7 @@
 %% Example:
 %% describe_job_definitions_request() :: #{
 %%   <<"jobDefinitionName">> => string(),
-%%   <<"jobDefinitions">> => list(string()()),
+%%   <<"jobDefinitions">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"status">> => string()
@@ -488,7 +488,7 @@
 %% Example:
 %% attempt_ecs_task_details() :: #{
 %%   <<"containerInstanceArn">> => string(),
-%%   <<"containers">> => list(attempt_task_container_details()()),
+%%   <<"containers">> => list(attempt_task_container_details()),
 %%   <<"taskArn">> => string()
 %% }
 -type attempt_ecs_task_details() :: #{binary() => any()}.
@@ -496,19 +496,19 @@
 
 %% Example:
 %% task_container_overrides() :: #{
-%%   <<"command">> => list(string()()),
-%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"command">> => list(string()),
+%%   <<"environment">> => list(key_value_pair()),
 %%   <<"name">> => string(),
-%%   <<"resourceRequirements">> => list(resource_requirement()())
+%%   <<"resourceRequirements">> => list(resource_requirement())
 %% }
 -type task_container_overrides() :: #{binary() => any()}.
 
 
 %% Example:
 %% eks_container_detail() :: #{
-%%   <<"args">> => list(string()()),
-%%   <<"command">> => list(string()()),
-%%   <<"env">> => list(eks_container_environment_variable()()),
+%%   <<"args">> => list(string()),
+%%   <<"command">> => list(string()),
+%%   <<"env">> => list(eks_container_environment_variable()),
 %%   <<"exitCode">> => integer(),
 %%   <<"image">> => string(),
 %%   <<"imagePullPolicy">> => string(),
@@ -516,7 +516,7 @@
 %%   <<"reason">> => string(),
 %%   <<"resources">> => eks_container_resource_requirements(),
 %%   <<"securityContext">> => eks_container_security_context(),
-%%   <<"volumeMounts">> => list(eks_container_volume_mount()())
+%%   <<"volumeMounts">> => list(eks_container_volume_mount())
 %% }
 -type eks_container_detail() :: #{binary() => any()}.
 
@@ -539,7 +539,7 @@
 %% Example:
 %% list_jobs_by_consumable_resource_request() :: #{
 %%   <<"consumableResource">> := string(),
-%%   <<"filters">> => list(key_values_pair()()),
+%%   <<"filters">> => list(key_values_pair()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -567,7 +567,7 @@
 %% Example:
 %% list_scheduling_policies_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"schedulingPolicies">> => list(scheduling_policy_listing_detail()())
+%%   <<"schedulingPolicies">> => list(scheduling_policy_listing_detail())
 %% }
 -type list_scheduling_policies_response() :: #{binary() => any()}.
 
@@ -581,7 +581,7 @@
 
 %% Example:
 %% ecs_task_properties() :: #{
-%%   <<"containers">> => list(task_container_properties()()),
+%%   <<"containers">> => list(task_container_properties()),
 %%   <<"enableExecuteCommand">> => boolean(),
 %%   <<"ephemeralStorage">> => ephemeral_storage(),
 %%   <<"executionRoleArn">> => string(),
@@ -591,16 +591,16 @@
 %%   <<"platformVersion">> => string(),
 %%   <<"runtimePlatform">> => runtime_platform(),
 %%   <<"taskRoleArn">> => string(),
-%%   <<"volumes">> => list(volume()())
+%%   <<"volumes">> => list(volume())
 %% }
 -type ecs_task_properties() :: #{binary() => any()}.
 
 
 %% Example:
 %% task_container_details() :: #{
-%%   <<"command">> => list(string()()),
-%%   <<"dependsOn">> => list(task_container_dependency()()),
-%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"command">> => list(string()),
+%%   <<"dependsOn">> => list(task_container_dependency()),
+%%   <<"environment">> => list(key_value_pair()),
 %%   <<"essential">> => boolean(),
 %%   <<"exitCode">> => integer(),
 %%   <<"firelensConfiguration">> => firelens_configuration(),
@@ -608,16 +608,16 @@
 %%   <<"linuxParameters">> => linux_parameters(),
 %%   <<"logConfiguration">> => log_configuration(),
 %%   <<"logStreamName">> => string(),
-%%   <<"mountPoints">> => list(mount_point()()),
+%%   <<"mountPoints">> => list(mount_point()),
 %%   <<"name">> => string(),
-%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"networkInterfaces">> => list(network_interface()),
 %%   <<"privileged">> => boolean(),
 %%   <<"readonlyRootFilesystem">> => boolean(),
 %%   <<"reason">> => string(),
 %%   <<"repositoryCredentials">> => repository_credentials(),
-%%   <<"resourceRequirements">> => list(resource_requirement()()),
-%%   <<"secrets">> => list(secret()()),
-%%   <<"ulimits">> => list(ulimit()()),
+%%   <<"resourceRequirements">> => list(resource_requirement()),
+%%   <<"secrets">> => list(secret()),
+%%   <<"ulimits">> => list(ulimit()),
 %%   <<"user">> => string()
 %% }
 -type task_container_details() :: #{binary() => any()}.
@@ -663,7 +663,7 @@
 %%   <<"startedAt">> => float(),
 %%   <<"statusReason">> => string(),
 %%   <<"stoppedAt">> => float(),
-%%   <<"taskProperties">> => list(attempt_ecs_task_details()())
+%%   <<"taskProperties">> => list(attempt_ecs_task_details())
 %% }
 -type attempt_detail() :: #{binary() => any()}.
 
@@ -697,7 +697,7 @@
 %%   <<"arrayProperties">> => array_properties(),
 %%   <<"consumableResourcePropertiesOverride">> => consumable_resource_properties(),
 %%   <<"containerOverrides">> => container_overrides(),
-%%   <<"dependsOn">> => list(job_dependency()()),
+%%   <<"dependsOn">> => list(job_dependency()),
 %%   <<"ecsPropertiesOverride">> => ecs_properties_override(),
 %%   <<"eksPropertiesOverride">> => eks_properties_override(),
 %%   <<"jobDefinition">> := string(),
@@ -718,7 +718,7 @@
 %% Example:
 %% key_values_pair() :: #{
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type key_values_pair() :: #{binary() => any()}.
 
@@ -728,7 +728,7 @@
 %%   <<"containerInstanceArn">> => string(),
 %%   <<"exitCode">> => integer(),
 %%   <<"logStreamName">> => string(),
-%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"networkInterfaces">> => list(network_interface()),
 %%   <<"reason">> => string(),
 %%   <<"taskArn">> => string()
 %% }
@@ -737,7 +737,7 @@
 
 %% Example:
 %% list_consumable_resources_response() :: #{
-%%   <<"consumableResources">> => list(consumable_resource_summary()()),
+%%   <<"consumableResources">> => list(consumable_resource_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_consumable_resources_response() :: #{binary() => any()}.
@@ -745,9 +745,9 @@
 
 %% Example:
 %% update_job_queue_request() :: #{
-%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()()),
+%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
 %%   <<"jobQueue">> := string(),
-%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()()),
+%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
 %%   <<"priority">> => integer(),
 %%   <<"schedulingPolicyArn">> => string(),
 %%   <<"state">> => list(any())
@@ -758,7 +758,7 @@
 %% Example:
 %% ecs_task_details() :: #{
 %%   <<"containerInstanceArn">> => string(),
-%%   <<"containers">> => list(task_container_details()()),
+%%   <<"containers">> => list(task_container_details()),
 %%   <<"enableExecuteCommand">> => boolean(),
 %%   <<"ephemeralStorage">> => ephemeral_storage(),
 %%   <<"executionRoleArn">> => string(),
@@ -769,14 +769,14 @@
 %%   <<"runtimePlatform">> => runtime_platform(),
 %%   <<"taskArn">> => string(),
 %%   <<"taskRoleArn">> => string(),
-%%   <<"volumes">> => list(volume()())
+%%   <<"volumes">> => list(volume())
 %% }
 -type ecs_task_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_job_queues_response() :: #{
-%%   <<"jobQueues">> => list(job_queue_detail()()),
+%%   <<"jobQueues">> => list(job_queue_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_job_queues_response() :: #{binary() => any()}.
@@ -810,7 +810,7 @@
 %% fairshare_policy() :: #{
 %%   <<"computeReservation">> => integer(),
 %%   <<"shareDecaySeconds">> => integer(),
-%%   <<"shareDistribution">> => list(share_attributes()())
+%%   <<"shareDistribution">> => list(share_attributes())
 %% }
 -type fairshare_policy() :: #{binary() => any()}.
 
@@ -913,9 +913,9 @@
 
 %% Example:
 %% eks_attempt_detail() :: #{
-%%   <<"containers">> => list(eks_attempt_container_detail()()),
+%%   <<"containers">> => list(eks_attempt_container_detail()),
 %%   <<"eksClusterArn">> => string(),
-%%   <<"initContainers">> => list(eks_attempt_container_detail()()),
+%%   <<"initContainers">> => list(eks_attempt_container_detail()),
 %%   <<"nodeName">> => string(),
 %%   <<"podName">> => string(),
 %%   <<"podNamespace">> => string(),
@@ -969,17 +969,17 @@
 %%   <<"allocationStrategy">> => list(any()),
 %%   <<"bidPercentage">> => integer(),
 %%   <<"desiredvCpus">> => integer(),
-%%   <<"ec2Configuration">> => list(ec2_configuration()()),
+%%   <<"ec2Configuration">> => list(ec2_configuration()),
 %%   <<"ec2KeyPair">> => string(),
 %%   <<"imageId">> => string(),
 %%   <<"instanceRole">> => string(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"launchTemplate">> => launch_template_specification(),
 %%   <<"maxvCpus">> => integer(),
 %%   <<"minvCpus">> => integer(),
 %%   <<"placementGroup">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnets">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnets">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any()),
 %%   <<"updateToLatestImageVersion">> => boolean()
@@ -1018,11 +1018,11 @@
 
 %% Example:
 %% container_overrides() :: #{
-%%   <<"command">> => list(string()()),
-%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"command">> => list(string()),
+%%   <<"environment">> => list(key_value_pair()),
 %%   <<"instanceType">> => string(),
 %%   <<"memory">> => integer(),
-%%   <<"resourceRequirements">> => list(resource_requirement()()),
+%%   <<"resourceRequirements">> => list(resource_requirement()),
 %%   <<"vcpus">> => integer()
 %% }
 -type container_overrides() :: #{binary() => any()}.
@@ -1030,7 +1030,7 @@
 
 %% Example:
 %% front_of_queue_detail() :: #{
-%%   <<"jobs">> => list(front_of_queue_job_summary()()),
+%%   <<"jobs">> => list(front_of_queue_job_summary()),
 %%   <<"lastUpdatedAt">> => float()
 %% }
 -type front_of_queue_detail() :: #{binary() => any()}.
@@ -1049,10 +1049,10 @@
 
 %% Example:
 %% container_detail() :: #{
-%%   <<"command">> => list(string()()),
+%%   <<"command">> => list(string()),
 %%   <<"containerInstanceArn">> => string(),
 %%   <<"enableExecuteCommand">> => boolean(),
-%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"environment">> => list(key_value_pair()),
 %%   <<"ephemeralStorage">> => ephemeral_storage(),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"exitCode">> => integer(),
@@ -1064,21 +1064,21 @@
 %%   <<"logConfiguration">> => log_configuration(),
 %%   <<"logStreamName">> => string(),
 %%   <<"memory">> => integer(),
-%%   <<"mountPoints">> => list(mount_point()()),
+%%   <<"mountPoints">> => list(mount_point()),
 %%   <<"networkConfiguration">> => network_configuration(),
-%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"networkInterfaces">> => list(network_interface()),
 %%   <<"privileged">> => boolean(),
 %%   <<"readonlyRootFilesystem">> => boolean(),
 %%   <<"reason">> => string(),
 %%   <<"repositoryCredentials">> => repository_credentials(),
-%%   <<"resourceRequirements">> => list(resource_requirement()()),
+%%   <<"resourceRequirements">> => list(resource_requirement()),
 %%   <<"runtimePlatform">> => runtime_platform(),
-%%   <<"secrets">> => list(secret()()),
+%%   <<"secrets">> => list(secret()),
 %%   <<"taskArn">> => string(),
-%%   <<"ulimits">> => list(ulimit()()),
+%%   <<"ulimits">> => list(ulimit()),
 %%   <<"user">> => string(),
 %%   <<"vcpus">> => integer(),
-%%   <<"volumes">> => list(volume()())
+%%   <<"volumes">> => list(volume())
 %% }
 -type container_detail() :: #{binary() => any()}.
 
@@ -1113,7 +1113,7 @@
 
 %% Example:
 %% describe_compute_environments_request() :: #{
-%%   <<"computeEnvironments">> => list(string()()),
+%%   <<"computeEnvironments">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1130,7 +1130,7 @@
 
 %% Example:
 %% node_overrides() :: #{
-%%   <<"nodePropertyOverrides">> => list(node_property_override()()),
+%%   <<"nodePropertyOverrides">> => list(node_property_override()),
 %%   <<"numNodes">> => integer()
 %% }
 -type node_overrides() :: #{binary() => any()}.
@@ -1184,7 +1184,7 @@
 %%   <<"container">> => container_properties(),
 %%   <<"ecsProperties">> => ecs_properties(),
 %%   <<"eksProperties">> => eks_properties(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"targetNodes">> => string()
 %% }
 -type node_range_property() :: #{binary() => any()}.
@@ -1210,7 +1210,7 @@
 
 %% Example:
 %% describe_jobs_response() :: #{
-%%   <<"jobs">> => list(job_detail()())
+%%   <<"jobs">> => list(job_detail())
 %% }
 -type describe_jobs_response() :: #{binary() => any()}.
 
@@ -1231,7 +1231,7 @@
 %% launch_template_specification_override() :: #{
 %%   <<"launchTemplateId">> => string(),
 %%   <<"launchTemplateName">> => string(),
-%%   <<"targetInstanceTypes">> => list(string()()),
+%%   <<"targetInstanceTypes">> => list(string()),
 %%   <<"userdataType">> => list(any()),
 %%   <<"version">> => string()
 %% }
@@ -1267,12 +1267,12 @@
 
 %% Example:
 %% linux_parameters() :: #{
-%%   <<"devices">> => list(device()()),
+%%   <<"devices">> => list(device()),
 %%   <<"initProcessEnabled">> => boolean(),
 %%   <<"maxSwap">> => integer(),
 %%   <<"sharedMemorySize">> => integer(),
 %%   <<"swappiness">> => integer(),
-%%   <<"tmpfs">> => list(tmpfs()())
+%%   <<"tmpfs">> => list(tmpfs())
 %% }
 -type linux_parameters() :: #{binary() => any()}.
 
@@ -1313,7 +1313,7 @@
 
 %% Example:
 %% list_jobs_by_consumable_resource_response() :: #{
-%%   <<"jobs">> => list(list_jobs_by_consumable_resource_summary()()),
+%%   <<"jobs">> => list(list_jobs_by_consumable_resource_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_jobs_by_consumable_resource_response() :: #{binary() => any()}.
@@ -1321,15 +1321,15 @@
 
 %% Example:
 %% eks_pod_properties() :: #{
-%%   <<"containers">> => list(eks_container()()),
+%%   <<"containers">> => list(eks_container()),
 %%   <<"dnsPolicy">> => string(),
 %%   <<"hostNetwork">> => boolean(),
-%%   <<"imagePullSecrets">> => list(image_pull_secret()()),
-%%   <<"initContainers">> => list(eks_container()()),
+%%   <<"imagePullSecrets">> => list(image_pull_secret()),
+%%   <<"initContainers">> => list(eks_container()),
 %%   <<"metadata">> => eks_metadata(),
 %%   <<"serviceAccountName">> => string(),
 %%   <<"shareProcessNamespace">> => boolean(),
-%%   <<"volumes">> => list(eks_volume()())
+%%   <<"volumes">> => list(eks_volume())
 %% }
 -type eks_pod_properties() :: #{binary() => any()}.
 
@@ -1352,14 +1352,14 @@
 %% Example:
 %% retry_strategy() :: #{
 %%   <<"attempts">> => integer(),
-%%   <<"evaluateOnExit">> => list(evaluate_on_exit()())
+%%   <<"evaluateOnExit">> => list(evaluate_on_exit())
 %% }
 -type retry_strategy() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_jobs_request() :: #{
-%%   <<"jobs">> := list(string()())
+%%   <<"jobs">> := list(string())
 %% }
 -type describe_jobs_request() :: #{binary() => any()}.
 
@@ -1368,7 +1368,7 @@
 %% launch_template_specification() :: #{
 %%   <<"launchTemplateId">> => string(),
 %%   <<"launchTemplateName">> => string(),
-%%   <<"overrides">> => list(launch_template_specification_override()()),
+%%   <<"overrides">> => list(launch_template_specification_override()),
 %%   <<"userdataType">> => list(any()),
 %%   <<"version">> => string()
 %% }
@@ -1386,7 +1386,7 @@
 
 %% Example:
 %% list_consumable_resources_request() :: #{
-%%   <<"filters">> => list(key_values_pair()()),
+%%   <<"filters">> => list(key_values_pair()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1433,7 +1433,7 @@
 
 %% Example:
 %% describe_job_queues_request() :: #{
-%%   <<"jobQueues">> => list(string()()),
+%%   <<"jobQueues">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1442,15 +1442,15 @@
 
 %% Example:
 %% eks_container() :: #{
-%%   <<"args">> => list(string()()),
-%%   <<"command">> => list(string()()),
-%%   <<"env">> => list(eks_container_environment_variable()()),
+%%   <<"args">> => list(string()),
+%%   <<"command">> => list(string()),
+%%   <<"env">> => list(eks_container_environment_variable()),
 %%   <<"image">> => string(),
 %%   <<"imagePullPolicy">> => string(),
 %%   <<"name">> => string(),
 %%   <<"resources">> => eks_container_resource_requirements(),
 %%   <<"securityContext">> => eks_container_security_context(),
-%%   <<"volumeMounts">> => list(eks_container_volume_mount()())
+%%   <<"volumeMounts">> => list(eks_container_volume_mount())
 %% }
 -type eks_container() :: #{binary() => any()}.
 
@@ -1458,13 +1458,13 @@
 %% Example:
 %% job_detail() :: #{
 %%   <<"arrayProperties">> => array_properties_detail(),
-%%   <<"attempts">> => list(attempt_detail()()),
+%%   <<"attempts">> => list(attempt_detail()),
 %%   <<"consumableResourceProperties">> => consumable_resource_properties(),
 %%   <<"container">> => container_detail(),
 %%   <<"createdAt">> => float(),
-%%   <<"dependsOn">> => list(job_dependency()()),
+%%   <<"dependsOn">> => list(job_dependency()),
 %%   <<"ecsProperties">> => ecs_properties_detail(),
-%%   <<"eksAttempts">> => list(eks_attempt_detail()()),
+%%   <<"eksAttempts">> => list(eks_attempt_detail()),
 %%   <<"eksProperties">> => eks_properties_detail(),
 %%   <<"isCancelled">> => boolean(),
 %%   <<"isTerminated">> => boolean(),
@@ -1502,7 +1502,7 @@
 
 %% Example:
 %% describe_scheduling_policies_request() :: #{
-%%   <<"arns">> := list(string()())
+%%   <<"arns">> := list(string())
 %% }
 -type describe_scheduling_policies_request() :: #{binary() => any()}.
 
@@ -1517,7 +1517,7 @@
 
 %% Example:
 %% ecs_properties_detail() :: #{
-%%   <<"taskProperties">> => list(ecs_task_details()())
+%%   <<"taskProperties">> => list(ecs_task_details())
 %% }
 -type ecs_properties_detail() :: #{binary() => any()}.
 
@@ -1535,9 +1535,9 @@
 
 %% Example:
 %% create_job_queue_request() :: #{
-%%   <<"computeEnvironmentOrder">> := list(compute_environment_order()()),
+%%   <<"computeEnvironmentOrder">> := list(compute_environment_order()),
 %%   <<"jobQueueName">> := string(),
-%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()()),
+%%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
 %%   <<"priority">> := integer(),
 %%   <<"schedulingPolicyArn">> => string(),
 %%   <<"state">> => list(any()),
@@ -1550,7 +1550,7 @@
 %% log_configuration() :: #{
 %%   <<"logDriver">> => list(any()),
 %%   <<"options">> => map(),
-%%   <<"secretOptions">> => list(secret()())
+%%   <<"secretOptions">> => list(secret())
 %% }
 -type log_configuration() :: #{binary() => any()}.
 
@@ -1601,18 +1601,18 @@
 %%   <<"allocationStrategy">> => list(any()),
 %%   <<"bidPercentage">> => integer(),
 %%   <<"desiredvCpus">> => integer(),
-%%   <<"ec2Configuration">> => list(ec2_configuration()()),
+%%   <<"ec2Configuration">> => list(ec2_configuration()),
 %%   <<"ec2KeyPair">> => string(),
 %%   <<"imageId">> => string(),
 %%   <<"instanceRole">> => string(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"launchTemplate">> => launch_template_specification(),
 %%   <<"maxvCpus">> => integer(),
 %%   <<"minvCpus">> => integer(),
 %%   <<"placementGroup">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"spotIamFleetRole">> => string(),
-%%   <<"subnets">> => list(string()()),
+%%   <<"subnets">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any())
 %% }
@@ -1622,7 +1622,7 @@
 %% Example:
 %% node_properties() :: #{
 %%   <<"mainNode">> => integer(),
-%%   <<"nodeRangeProperties">> => list(node_range_property()()),
+%%   <<"nodeRangeProperties">> => list(node_range_property()),
 %%   <<"numNodes">> => integer()
 %% }
 -type node_properties() :: #{binary() => any()}.
@@ -1646,8 +1646,8 @@
 
 %% Example:
 %% eks_pod_properties_override() :: #{
-%%   <<"containers">> => list(eks_container_override()()),
-%%   <<"initContainers">> => list(eks_container_override()()),
+%%   <<"containers">> => list(eks_container_override()),
+%%   <<"initContainers">> => list(eks_container_override()),
 %%   <<"metadata">> => eks_metadata()
 %% }
 -type eks_pod_properties_override() :: #{binary() => any()}.
@@ -1655,7 +1655,7 @@
 
 %% Example:
 %% consumable_resource_properties() :: #{
-%%   <<"consumableResourceList">> => list(consumable_resource_requirement()())
+%%   <<"consumableResourceList">> => list(consumable_resource_requirement())
 %% }
 -type consumable_resource_properties() :: #{binary() => any()}.
 
@@ -1669,17 +1669,17 @@
 
 %% Example:
 %% eks_pod_properties_detail() :: #{
-%%   <<"containers">> => list(eks_container_detail()()),
+%%   <<"containers">> => list(eks_container_detail()),
 %%   <<"dnsPolicy">> => string(),
 %%   <<"hostNetwork">> => boolean(),
-%%   <<"imagePullSecrets">> => list(image_pull_secret()()),
-%%   <<"initContainers">> => list(eks_container_detail()()),
+%%   <<"imagePullSecrets">> => list(image_pull_secret()),
+%%   <<"initContainers">> => list(eks_container_detail()),
 %%   <<"metadata">> => eks_metadata(),
 %%   <<"nodeName">> => string(),
 %%   <<"podName">> => string(),
 %%   <<"serviceAccountName">> => string(),
 %%   <<"shareProcessNamespace">> => boolean(),
-%%   <<"volumes">> => list(eks_volume()())
+%%   <<"volumes">> => list(eks_volume())
 %% }
 -type eks_pod_properties_detail() :: #{binary() => any()}.
 
@@ -1687,7 +1687,7 @@
 %% Example:
 %% tmpfs() :: #{
 %%   <<"containerPath">> => string(),
-%%   <<"mountOptions">> => list(string()()),
+%%   <<"mountOptions">> => list(string()),
 %%   <<"size">> => integer()
 %% }
 -type tmpfs() :: #{binary() => any()}.
@@ -1699,22 +1699,22 @@
 
 %% Example:
 %% task_container_properties() :: #{
-%%   <<"command">> => list(string()()),
-%%   <<"dependsOn">> => list(task_container_dependency()()),
-%%   <<"environment">> => list(key_value_pair()()),
+%%   <<"command">> => list(string()),
+%%   <<"dependsOn">> => list(task_container_dependency()),
+%%   <<"environment">> => list(key_value_pair()),
 %%   <<"essential">> => boolean(),
 %%   <<"firelensConfiguration">> => firelens_configuration(),
 %%   <<"image">> => string(),
 %%   <<"linuxParameters">> => linux_parameters(),
 %%   <<"logConfiguration">> => log_configuration(),
-%%   <<"mountPoints">> => list(mount_point()()),
+%%   <<"mountPoints">> => list(mount_point()),
 %%   <<"name">> => string(),
 %%   <<"privileged">> => boolean(),
 %%   <<"readonlyRootFilesystem">> => boolean(),
 %%   <<"repositoryCredentials">> => repository_credentials(),
-%%   <<"resourceRequirements">> => list(resource_requirement()()),
-%%   <<"secrets">> => list(secret()()),
-%%   <<"ulimits">> => list(ulimit()()),
+%%   <<"resourceRequirements">> => list(resource_requirement()),
+%%   <<"secrets">> => list(secret()),
+%%   <<"ulimits">> => list(ulimit()),
 %%   <<"user">> => string()
 %% }
 -type task_container_properties() :: #{binary() => any()}.

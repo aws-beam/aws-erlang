@@ -43,7 +43,7 @@
 
 %% Example:
 %% http_endpoint_request_configuration() :: #{
-%%   <<"CommonAttributes">> => list(http_endpoint_common_attribute()()),
+%%   <<"CommonAttributes">> => list(http_endpoint_common_attribute()),
 %%   <<"ContentEncoding">> => list(any())
 %% }
 -type http_endpoint_request_configuration() :: #{binary() => any()}.
@@ -111,7 +111,7 @@
 %%   <<"Port">> => integer(),
 %%   <<"SSLMode">> => list(any()),
 %%   <<"SnapshotWatermarkTable">> => string(),
-%%   <<"SurrogateKeys">> => list(string()()),
+%%   <<"SurrogateKeys">> => list(string()),
 %%   <<"Tables">> => database_table_list(),
 %%   <<"Type">> => list(any())
 %% }
@@ -120,8 +120,8 @@
 %% Example:
 %% vpc_configuration() :: #{
 %%   <<"RoleARN">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_configuration() :: #{binary() => any()}.
 
@@ -184,7 +184,7 @@
 %% Example:
 %% list_tags_for_delivery_stream_output() :: #{
 %%   <<"HasMoreTags">> => boolean(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_delivery_stream_output() :: #{binary() => any()}.
 
@@ -218,7 +218,7 @@
 %%   <<"BufferingHints">> => buffering_hints(),
 %%   <<"CatalogConfiguration">> => catalog_configuration(),
 %%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
-%%   <<"DestinationTableConfigurationList">> => list(destination_table_configuration()()),
+%%   <<"DestinationTableConfigurationList">> => list(destination_table_configuration()),
 %%   <<"ProcessingConfiguration">> => processing_configuration(),
 %%   <<"RetryOptions">> => retry_options(),
 %%   <<"RoleARN">> => string(),
@@ -283,15 +283,15 @@
 %%   <<"S3DestinationConfiguration">> => s3_destination_configuration(),
 %%   <<"SnowflakeDestinationConfiguration">> => snowflake_destination_configuration(),
 %%   <<"SplunkDestinationConfiguration">> => splunk_destination_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_delivery_stream_input() :: #{binary() => any()}.
 
 %% Example:
 %% vpc_configuration_description() :: #{
 %%   <<"RoleARN">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type vpc_configuration_description() :: #{binary() => any()}.
@@ -331,7 +331,7 @@
 %% Example:
 %% put_record_batch_input() :: #{
 %%   <<"DeliveryStreamName">> := string(),
-%%   <<"Records">> := list(record()())
+%%   <<"Records">> := list(record())
 %% }
 -type put_record_batch_input() :: #{binary() => any()}.
 
@@ -347,7 +347,7 @@
 
 %% Example:
 %% processor() :: #{
-%%   <<"Parameters">> => list(processor_parameter()()),
+%%   <<"Parameters">> => list(processor_parameter()),
 %%   <<"Type">> => list(any())
 %% }
 -type processor() :: #{binary() => any()}.
@@ -370,7 +370,7 @@
 
 %% Example:
 %% list_delivery_streams_output() :: #{
-%%   <<"DeliveryStreamNames">> => list(string()()),
+%%   <<"DeliveryStreamNames">> => list(string()),
 %%   <<"HasMoreDeliveryStreams">> => boolean()
 %% }
 -type list_delivery_streams_output() :: #{binary() => any()}.
@@ -509,8 +509,8 @@
 
 %% Example:
 %% database_column_list() :: #{
-%%   <<"Exclude">> => list(string()()),
-%%   <<"Include">> => list(string()())
+%%   <<"Exclude">> => list(string()),
+%%   <<"Include">> => list(string())
 %% }
 -type database_column_list() :: #{binary() => any()}.
 
@@ -535,7 +535,7 @@
 %%   <<"BufferingHints">> => buffering_hints(),
 %%   <<"CatalogConfiguration">> => catalog_configuration(),
 %%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
-%%   <<"DestinationTableConfigurationList">> => list(destination_table_configuration()()),
+%%   <<"DestinationTableConfigurationList">> => list(destination_table_configuration()),
 %%   <<"ProcessingConfiguration">> => processing_configuration(),
 %%   <<"RetryOptions">> => retry_options(),
 %%   <<"RoleARN">> => string(),
@@ -564,7 +564,7 @@
 %%   <<"DestinationTableName">> => string(),
 %%   <<"PartitionSpec">> => partition_spec(),
 %%   <<"S3ErrorOutputPrefix">> => string(),
-%%   <<"UniqueKeys">> => list(string()())
+%%   <<"UniqueKeys">> => list(string())
 %% }
 -type destination_table_configuration() :: #{binary() => any()}.
 
@@ -694,7 +694,7 @@
 %% Example:
 %% tag_delivery_stream_input() :: #{
 %%   <<"DeliveryStreamName">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_delivery_stream_input() :: #{binary() => any()}.
 
@@ -709,7 +709,7 @@
 %% Example:
 %% processing_configuration() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"Processors">> => list(processor()())
+%%   <<"Processors">> => list(processor())
 %% }
 -type processing_configuration() :: #{binary() => any()}.
 
@@ -751,7 +751,7 @@
 
 %% Example:
 %% hive_json_ser_de() :: #{
-%%   <<"TimestampFormats">> => list(string()())
+%%   <<"TimestampFormats">> => list(string())
 %% }
 -type hive_json_ser_de() :: #{binary() => any()}.
 
@@ -759,7 +759,7 @@
 %% put_record_batch_output() :: #{
 %%   <<"Encrypted">> => boolean(),
 %%   <<"FailedPutCount">> => integer(),
-%%   <<"RequestResponses">> => list(put_record_batch_response_entry()())
+%%   <<"RequestResponses">> => list(put_record_batch_response_entry())
 %% }
 -type put_record_batch_output() :: #{binary() => any()}.
 
@@ -780,9 +780,9 @@
 %%   <<"Endpoint">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"SSLMode">> => list(any()),
-%%   <<"SnapshotInfo">> => list(database_snapshot_info()()),
+%%   <<"SnapshotInfo">> => list(database_snapshot_info()),
 %%   <<"SnapshotWatermarkTable">> => string(),
-%%   <<"SurrogateKeys">> => list(string()()),
+%%   <<"SurrogateKeys">> => list(string()),
 %%   <<"Tables">> => database_table_list(),
 %%   <<"Type">> => list(any())
 %% }
@@ -848,7 +848,7 @@
 
 %% Example:
 %% partition_spec() :: #{
-%%   <<"Identity">> => list(partition_field()())
+%%   <<"Identity">> => list(partition_field())
 %% }
 -type partition_spec() :: #{binary() => any()}.
 
@@ -918,7 +918,7 @@
 %%   <<"BufferingHints">> => buffering_hints(),
 %%   <<"CatalogConfiguration">> => catalog_configuration(),
 %%   <<"CloudWatchLoggingOptions">> => cloud_watch_logging_options(),
-%%   <<"DestinationTableConfigurationList">> => list(destination_table_configuration()()),
+%%   <<"DestinationTableConfigurationList">> => list(destination_table_configuration()),
 %%   <<"ProcessingConfiguration">> => processing_configuration(),
 %%   <<"RetryOptions">> => retry_options(),
 %%   <<"RoleARN">> => string(),
@@ -937,7 +937,7 @@
 %%   <<"DeliveryStreamName">> => string(),
 %%   <<"DeliveryStreamStatus">> => list(any()),
 %%   <<"DeliveryStreamType">> => list(any()),
-%%   <<"Destinations">> => list(destination_description()()),
+%%   <<"Destinations">> => list(destination_description()),
 %%   <<"FailureDescription">> => failure_description(),
 %%   <<"HasMoreDestinations">> => boolean(),
 %%   <<"LastUpdateTimestamp">> => non_neg_integer(),
@@ -1007,7 +1007,7 @@
 %% Example:
 %% orc_ser_de() :: #{
 %%   <<"BlockSizeBytes">> => integer(),
-%%   <<"BloomFilterColumns">> => list(string()()),
+%%   <<"BloomFilterColumns">> => list(string()),
 %%   <<"BloomFilterFalsePositiveProbability">> => float(),
 %%   <<"Compression">> => list(any()),
 %%   <<"DictionaryKeyThreshold">> => float(),
@@ -1162,15 +1162,15 @@
 
 %% Example:
 %% database_list() :: #{
-%%   <<"Exclude">> => list(string()()),
-%%   <<"Include">> => list(string()())
+%%   <<"Exclude">> => list(string()),
+%%   <<"Include">> => list(string())
 %% }
 -type database_list() :: #{binary() => any()}.
 
 %% Example:
 %% untag_delivery_stream_input() :: #{
 %%   <<"DeliveryStreamName">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_delivery_stream_input() :: #{binary() => any()}.
 
@@ -1268,8 +1268,8 @@
 
 %% Example:
 %% database_table_list() :: #{
-%%   <<"Exclude">> => list(string()()),
-%%   <<"Include">> => list(string()())
+%%   <<"Exclude">> => list(string()),
+%%   <<"Include">> => list(string())
 %% }
 -type database_table_list() :: #{binary() => any()}.
 

@@ -322,7 +322,7 @@
 
 %% Example:
 %% describe_fleet_advisor_databases_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -330,7 +330,7 @@
 
 %% Example:
 %% describe_table_statistics_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"ReplicationTaskArn">> := string()
@@ -425,7 +425,7 @@
 
 %% Example:
 %% describe_endpoints_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -464,7 +464,7 @@
 
 %% Example:
 %% describe_replication_configs_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -472,7 +472,7 @@
 
 %% Example:
 %% resource_pending_maintenance_actions() :: #{
-%%   <<"PendingMaintenanceActionDetails">> => list(pending_maintenance_action()()),
+%%   <<"PendingMaintenanceActionDetails">> => list(pending_maintenance_action()),
 %%   <<"ResourceIdentifier">> => string()
 %% }
 -type resource_pending_maintenance_actions() :: #{binary() => any()}.
@@ -494,7 +494,7 @@
 
 %% Example:
 %% describe_fleet_advisor_collectors_response() :: #{
-%%   <<"Collectors">> => list(collector_response()()),
+%%   <<"Collectors">> => list(collector_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_advisor_collectors_response() :: #{binary() => any()}.
@@ -514,7 +514,7 @@
 %% Example:
 %% describe_metadata_model_imports_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request()())
+%%   <<"Requests">> => list(schema_conversion_request())
 %% }
 -type describe_metadata_model_imports_response() :: #{binary() => any()}.
 
@@ -552,7 +552,7 @@
 %%   <<"NetworkType">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
 %%   <<"SubnetGroupIdentifier">> => string(),
-%%   <<"VpcSecurityGroups">> => list(string()())
+%%   <<"VpcSecurityGroups">> => list(string())
 %% }
 -type instance_profile() :: #{binary() => any()}.
 
@@ -574,9 +574,9 @@
 %%   <<"InstanceProfileIdentifier">> := string(),
 %%   <<"MigrationProjectName">> => string(),
 %%   <<"SchemaConversionApplicationAttributes">> => s_capplication_attributes(),
-%%   <<"SourceDataProviderDescriptors">> := list(data_provider_descriptor_definition()()),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TargetDataProviderDescriptors">> := list(data_provider_descriptor_definition()()),
+%%   <<"SourceDataProviderDescriptors">> := list(data_provider_descriptor_definition()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetDataProviderDescriptors">> := list(data_provider_descriptor_definition()),
 %%   <<"TransformationRules">> => string()
 %% }
 -type create_migration_project_message() :: #{binary() => any()}.
@@ -585,7 +585,7 @@
 %% endpoint_setting() :: #{
 %%   <<"Applicability">> => string(),
 %%   <<"DefaultValue">> => string(),
-%%   <<"EnumValues">> => list(string()()),
+%%   <<"EnumValues">> => list(string()),
 %%   <<"IntValueMax">> => integer(),
 %%   <<"IntValueMin">> => integer(),
 %%   <<"Name">> => string(),
@@ -632,14 +632,14 @@
 
 %% Example:
 %% describe_recommendation_limitations_response() :: #{
-%%   <<"Limitations">> => list(limitation()()),
+%%   <<"Limitations">> => list(limitation()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_recommendation_limitations_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_event_categories_response() :: #{
-%%   <<"EventCategoryGroupList">> => list(event_category_group()())
+%%   <<"EventCategoryGroupList">> => list(event_category_group())
 %% }
 -type describe_event_categories_response() :: #{binary() => any()}.
 
@@ -654,7 +654,7 @@
 
 %% Example:
 %% describe_metadata_model_conversions_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"MigrationProjectIdentifier">> := string()
@@ -677,8 +677,8 @@
 %% create_replication_subnet_group_message() :: #{
 %%   <<"ReplicationSubnetGroupDescription">> := string(),
 %%   <<"ReplicationSubnetGroupIdentifier">> := string(),
-%%   <<"SubnetIds">> := list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_replication_subnet_group_message() :: #{binary() => any()}.
 
@@ -690,13 +690,13 @@
 
 %% Example:
 %% delete_fleet_advisor_databases_request() :: #{
-%%   <<"DatabaseIds">> := list(string()())
+%%   <<"DatabaseIds">> := list(string())
 %% }
 -type delete_fleet_advisor_databases_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fleet_advisor_databases_response() :: #{
-%%   <<"Databases">> => list(database_response()()),
+%%   <<"Databases">> => list(database_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_advisor_databases_response() :: #{binary() => any()}.
@@ -714,7 +714,7 @@
 %% Example:
 %% engine_version() :: #{
 %%   <<"AutoUpgradeDate">> => non_neg_integer(),
-%%   <<"AvailableUpgrades">> => list(string()()),
+%%   <<"AvailableUpgrades">> => list(string()),
 %%   <<"DeprecationDate">> => non_neg_integer(),
 %%   <<"ForceUpgradeDate">> => non_neg_integer(),
 %%   <<"LaunchDate">> => non_neg_integer(),
@@ -734,14 +734,14 @@
 %% describe_replication_table_statistics_response() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"ReplicationConfigArn">> => string(),
-%%   <<"ReplicationTableStatistics">> => list(table_statistics()())
+%%   <<"ReplicationTableStatistics">> => list(table_statistics())
 %% }
 -type describe_replication_table_statistics_response() :: #{binary() => any()}.
 
 %% Example:
 %% modify_event_subscription_message() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"SnsTopicArn">> => string(),
 %%   <<"SourceType">> => string(),
 %%   <<"SubscriptionName">> := string()
@@ -767,7 +767,7 @@
 
 %% Example:
 %% describe_replication_tasks_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"WithoutSettings">> => boolean()
@@ -776,7 +776,7 @@
 
 %% Example:
 %% describe_pending_maintenance_actions_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"ReplicationInstanceArn">> => string()
@@ -811,7 +811,7 @@
 
 %% Example:
 %% describe_metadata_model_exports_to_target_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"MigrationProjectIdentifier">> := string()
@@ -853,14 +853,14 @@
 
 %% Example:
 %% describe_fleet_advisor_lsa_analysis_response() :: #{
-%%   <<"Analysis">> => list(fleet_advisor_lsa_analysis_response()()),
+%%   <<"Analysis">> => list(fleet_advisor_lsa_analysis_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_advisor_lsa_analysis_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fleet_advisor_schema_object_summary_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -885,15 +885,15 @@
 %%   <<"ReplicationInstanceArn">> => string(),
 %%   <<"ReplicationInstanceClass">> => string(),
 %%   <<"ReplicationInstanceIdentifier">> => string(),
-%%   <<"ReplicationInstanceIpv6Addresses">> => list(string()()),
+%%   <<"ReplicationInstanceIpv6Addresses">> => list(string()),
 %%   <<"ReplicationInstancePrivateIpAddress">> => string(),
-%%   <<"ReplicationInstancePrivateIpAddresses">> => list(string()()),
+%%   <<"ReplicationInstancePrivateIpAddresses">> => list(string()),
 %%   <<"ReplicationInstancePublicIpAddress">> => string(),
-%%   <<"ReplicationInstancePublicIpAddresses">> => list(string()()),
+%%   <<"ReplicationInstancePublicIpAddresses">> => list(string()),
 %%   <<"ReplicationInstanceStatus">> => string(),
 %%   <<"ReplicationSubnetGroup">> => replication_subnet_group(),
 %%   <<"SecondaryAvailabilityZone">> => string(),
-%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()())
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership())
 %% }
 -type replication_instance() :: #{binary() => any()}.
 
@@ -916,9 +916,9 @@
 %%   <<"CustSubscriptionId">> => string(),
 %%   <<"CustomerAwsId">> => string(),
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategoriesList">> => list(string()()),
+%%   <<"EventCategoriesList">> => list(string()),
 %%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceIdsList">> => list(string()()),
+%%   <<"SourceIdsList">> => list(string()),
 %%   <<"SourceType">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"SubscriptionCreationTime">> => string()
@@ -945,13 +945,13 @@
 %% describe_replication_task_assessment_results_response() :: #{
 %%   <<"BucketName">> => string(),
 %%   <<"Marker">> => string(),
-%%   <<"ReplicationTaskAssessmentResults">> => list(replication_task_assessment_result()())
+%%   <<"ReplicationTaskAssessmentResults">> => list(replication_task_assessment_result())
 %% }
 -type describe_replication_task_assessment_results_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_data_providers_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -959,7 +959,7 @@
 
 %% Example:
 %% describe_certificates_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -993,7 +993,7 @@
 
 %% Example:
 %% describe_migration_projects_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -1002,7 +1002,7 @@
 %% Example:
 %% describe_metadata_model_conversions_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request()())
+%%   <<"Requests">> => list(schema_conversion_request())
 %% }
 -type describe_metadata_model_conversions_response() :: #{binary() => any()}.
 
@@ -1041,7 +1041,7 @@
 
 %% Example:
 %% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()()),
+%%   <<"Endpoints">> => list(endpoint()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_endpoints_response() :: #{binary() => any()}.
@@ -1049,13 +1049,13 @@
 %% Example:
 %% list_tags_for_resource_message() :: #{
 %%   <<"ResourceArn">> => string(),
-%%   <<"ResourceArnList">> => list(string()())
+%%   <<"ResourceArnList">> => list(string())
 %% }
 -type list_tags_for_resource_message() :: #{binary() => any()}.
 
 %% Example:
 %% database_response() :: #{
-%%   <<"Collectors">> => list(collector_short_info_response()()),
+%%   <<"Collectors">> => list(collector_short_info_response()),
 %%   <<"DatabaseId">> => string(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"IpAddress">> => string(),
@@ -1074,7 +1074,7 @@
 %% Example:
 %% describe_metadata_model_exports_as_script_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request()())
+%%   <<"Requests">> => list(schema_conversion_request())
 %% }
 -type describe_metadata_model_exports_as_script_response() :: #{binary() => any()}.
 
@@ -1114,7 +1114,7 @@
 
 %% Example:
 %% describe_applicable_individual_assessments_response() :: #{
-%%   <<"IndividualAssessmentNames">> => list(string()()),
+%%   <<"IndividualAssessmentNames">> => list(string()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_applicable_individual_assessments_response() :: #{binary() => any()}.
@@ -1155,7 +1155,7 @@
 
 %% Example:
 %% describe_instance_profiles_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -1174,13 +1174,13 @@
 %% Example:
 %% describe_recommendations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Recommendations">> => list(recommendation()())
+%%   <<"Recommendations">> => list(recommendation())
 %% }
 -type describe_recommendations_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fleet_advisor_collectors_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1227,7 +1227,7 @@
 
 %% Example:
 %% describe_extension_pack_associations_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"MigrationProjectIdentifier">> := string()
@@ -1281,8 +1281,8 @@
 %%   <<"NumberOfJobs">> => integer(),
 %%   <<"SelectionRules">> => string(),
 %%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"SourceDataSettings">> => list(source_data_setting()()),
-%%   <<"TargetDataSettings">> => list(target_data_setting()())
+%%   <<"SourceDataSettings">> => list(source_data_setting()),
+%%   <<"TargetDataSettings">> => list(target_data_setting())
 %% }
 -type modify_data_migration_message() :: #{binary() => any()}.
 
@@ -1342,7 +1342,7 @@
 %% Example:
 %% describe_replication_subnet_groups_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReplicationSubnetGroups">> => list(replication_subnet_group()())
+%%   <<"ReplicationSubnetGroups">> => list(replication_subnet_group())
 %% }
 -type describe_replication_subnet_groups_response() :: #{binary() => any()}.
 
@@ -1415,7 +1415,7 @@
 %% modify_replication_subnet_group_message() :: #{
 %%   <<"ReplicationSubnetGroupDescription">> => string(),
 %%   <<"ReplicationSubnetGroupIdentifier">> := string(),
-%%   <<"SubnetIds">> := list(string()())
+%%   <<"SubnetIds">> := list(string())
 %% }
 -type modify_replication_subnet_group_message() :: #{binary() => any()}.
 
@@ -1440,7 +1440,7 @@
 
 %% Example:
 %% describe_connections_response() :: #{
-%%   <<"Connections">> => list(connection()()),
+%%   <<"Connections">> => list(connection()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_connections_response() :: #{binary() => any()}.
@@ -1460,14 +1460,14 @@
 %% Example:
 %% describe_metadata_model_assessments_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request()())
+%%   <<"Requests">> => list(schema_conversion_request())
 %% }
 -type describe_metadata_model_assessments_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_replication_instances_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReplicationInstances">> => list(replication_instance()())
+%%   <<"ReplicationInstances">> => list(replication_instance())
 %% }
 -type describe_replication_instances_response() :: #{binary() => any()}.
 
@@ -1489,7 +1489,7 @@
 %%   <<"ResourceIdentifier">> => string(),
 %%   <<"SourceEndpointArn">> := string(),
 %%   <<"TableMappings">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetEndpointArn">> := string(),
 %%   <<"TaskData">> => string()
 %% }
@@ -1536,12 +1536,12 @@
 %% Example:
 %% create_event_subscription_message() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"SnsTopicArn">> := string(),
-%%   <<"SourceIds">> => list(string()()),
+%%   <<"SourceIds">> => list(string()),
 %%   <<"SourceType">> => string(),
 %%   <<"SubscriptionName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_event_subscription_message() :: #{binary() => any()}.
 
@@ -1554,13 +1554,13 @@
 %% Example:
 %% describe_replication_configs_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReplicationConfigs">> => list(replication_config()())
+%%   <<"ReplicationConfigs">> => list(replication_config())
 %% }
 -type describe_replication_configs_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_event_subscriptions_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"SubscriptionName">> => string()
@@ -1570,7 +1570,7 @@
 %% Example:
 %% describe_schemas_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Schemas">> => list(string()())
+%%   <<"Schemas">> => list(string())
 %% }
 -type describe_schemas_response() :: #{binary() => any()}.
 
@@ -1593,7 +1593,7 @@
 
 %% Example:
 %% describe_data_providers_response() :: #{
-%%   <<"DataProviders">> => list(data_provider()()),
+%%   <<"DataProviders">> => list(data_provider()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_data_providers_response() :: #{binary() => any()}.
@@ -1604,7 +1604,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Engine">> := string(),
 %%   <<"Settings">> := list(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Virtual">> => boolean()
 %% }
 -type create_data_provider_message() :: #{binary() => any()}.
@@ -1632,8 +1632,8 @@
 %%   <<"CdcStartPosition">> => string(),
 %%   <<"CdcStartTime">> => non_neg_integer(),
 %%   <<"CdcStopPosition">> => string(),
-%%   <<"FailureMessages">> => list(string()()),
-%%   <<"PremigrationAssessmentStatuses">> => list(premigration_assessment_status()()),
+%%   <<"FailureMessages">> => list(string()),
+%%   <<"PremigrationAssessmentStatuses">> => list(premigration_assessment_status()),
 %%   <<"ProvisionData">> => provision_data(),
 %%   <<"RecoveryCheckpoint">> => string(),
 %%   <<"ReplicationConfigArn">> => string(),
@@ -1654,7 +1654,7 @@
 
 %% Example:
 %% describe_recommendations_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1716,7 +1716,7 @@
 %% Example:
 %% describe_replication_task_assessment_runs_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReplicationTaskAssessmentRuns">> => list(replication_task_assessment_run()())
+%%   <<"ReplicationTaskAssessmentRuns">> => list(replication_task_assessment_run())
 %% }
 -type describe_replication_task_assessment_runs_response() :: #{binary() => any()}.
 
@@ -1728,7 +1728,7 @@
 
 %% Example:
 %% describe_fleet_advisor_schemas_response() :: #{
-%%   <<"FleetAdvisorSchemas">> => list(schema_response()()),
+%%   <<"FleetAdvisorSchemas">> => list(schema_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_advisor_schemas_response() :: #{binary() => any()}.
@@ -1761,7 +1761,7 @@
 %%   <<"SourceEndpointArn">> := string(),
 %%   <<"SupplementalSettings">> => string(),
 %%   <<"TableMappings">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetEndpointArn">> := string()
 %% }
 -type create_replication_config_message() :: #{binary() => any()}.
@@ -1785,7 +1785,7 @@
 
 %% Example:
 %% event_category_group() :: #{
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"SourceType">> => string()
 %% }
 -type event_category_group() :: #{binary() => any()}.
@@ -1798,7 +1798,7 @@
 
 %% Example:
 %% describe_endpoint_settings_response() :: #{
-%%   <<"EndpointSettings">> => list(endpoint_setting()()),
+%%   <<"EndpointSettings">> => list(endpoint_setting()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_endpoint_settings_response() :: #{binary() => any()}.
@@ -1820,7 +1820,7 @@
 %% Example:
 %% describe_pending_maintenance_actions_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"PendingMaintenanceActions">> => list(resource_pending_maintenance_actions()())
+%%   <<"PendingMaintenanceActions">> => list(resource_pending_maintenance_actions())
 %% }
 -type describe_pending_maintenance_actions_response() :: #{binary() => any()}.
 
@@ -1852,7 +1852,7 @@
 %% Example:
 %% describe_endpoint_types_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"SupportedEndpointTypes">> => list(supported_endpoint_type()())
+%%   <<"SupportedEndpointTypes">> => list(supported_endpoint_type())
 %% }
 -type describe_endpoint_types_response() :: #{binary() => any()}.
 
@@ -1892,7 +1892,7 @@
 %% describe_table_statistics_response() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"ReplicationTaskArn">> => string(),
-%%   <<"TableStatistics">> => list(table_statistics()())
+%%   <<"TableStatistics">> => list(table_statistics())
 %% }
 -type describe_table_statistics_response() :: #{binary() => any()}.
 
@@ -1939,7 +1939,7 @@
 %% Example:
 %% describe_extension_pack_associations_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request()())
+%%   <<"Requests">> => list(schema_conversion_request())
 %% }
 -type describe_extension_pack_associations_response() :: #{binary() => any()}.
 
@@ -1980,7 +1980,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1998,7 +1998,7 @@
 
 %% Example:
 %% describe_replication_instances_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -2006,7 +2006,7 @@
 
 %% Example:
 %% orderable_replication_instance() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"DefaultAllocatedStorage">> => integer(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"IncludedAllocatedStorage">> => integer(),
@@ -2020,7 +2020,7 @@
 
 %% Example:
 %% describe_account_attributes_response() :: #{
-%%   <<"AccountQuotas">> => list(account_quota()()),
+%%   <<"AccountQuotas">> => list(account_quota()),
 %%   <<"UniqueAccountIdentifier">> => string()
 %% }
 -type describe_account_attributes_response() :: #{binary() => any()}.
@@ -2034,7 +2034,7 @@
 
 %% Example:
 %% describe_fleet_advisor_schema_object_summary_response() :: #{
-%%   <<"FleetAdvisorSchemaObjects">> => list(fleet_advisor_schema_object_response()()),
+%%   <<"FleetAdvisorSchemaObjects">> => list(fleet_advisor_schema_object_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_advisor_schema_object_summary_response() :: #{binary() => any()}.
@@ -2054,14 +2054,14 @@
 %%   <<"NetworkType">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
 %%   <<"SubnetGroupIdentifier">> => string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"VpcSecurityGroups">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroups">> => list(string())
 %% }
 -type create_instance_profile_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_metadata_model_assessments_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"MigrationProjectIdentifier">> := string()
@@ -2090,7 +2090,7 @@
 
 %% Example:
 %% describe_metadata_model_exports_as_script_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"MigrationProjectIdentifier">> := string()
@@ -2100,7 +2100,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -2181,7 +2181,7 @@
 
 %% Example:
 %% describe_connections_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -2207,7 +2207,7 @@
 
 %% Example:
 %% describe_replication_task_individual_assessments_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -2216,7 +2216,7 @@
 %% Example:
 %% data_migration() :: #{
 %%   <<"DataMigrationArn">> => string(),
-%%   <<"DataMigrationCidrBlocks">> => list(string()()),
+%%   <<"DataMigrationCidrBlocks">> => list(string()),
 %%   <<"DataMigrationCreateTime">> => non_neg_integer(),
 %%   <<"DataMigrationEndTime">> => non_neg_integer(),
 %%   <<"DataMigrationName">> => string(),
@@ -2227,11 +2227,11 @@
 %%   <<"DataMigrationType">> => list(any()),
 %%   <<"LastFailureMessage">> => string(),
 %%   <<"MigrationProjectArn">> => string(),
-%%   <<"PublicIpAddresses">> => list(string()()),
+%%   <<"PublicIpAddresses">> => list(string()),
 %%   <<"ServiceAccessRoleArn">> => string(),
-%%   <<"SourceDataSettings">> => list(source_data_setting()()),
+%%   <<"SourceDataSettings">> => list(source_data_setting()),
 %%   <<"StopReason">> => string(),
-%%   <<"TargetDataSettings">> => list(target_data_setting()())
+%%   <<"TargetDataSettings">> => list(target_data_setting())
 %% }
 -type data_migration() :: #{binary() => any()}.
 
@@ -2295,7 +2295,7 @@
 %% Example:
 %% describe_replication_task_individual_assessments_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReplicationTaskIndividualAssessments">> => list(replication_task_individual_assessment()())
+%%   <<"ReplicationTaskIndividualAssessments">> => list(replication_task_individual_assessment())
 %% }
 -type describe_replication_task_individual_assessments_response() :: #{binary() => any()}.
 
@@ -2377,8 +2377,8 @@
 %%   <<"ReplicationInstanceIdentifier">> := string(),
 %%   <<"ReplicationSubnetGroupIdentifier">> => string(),
 %%   <<"ResourceIdentifier">> => string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type create_replication_instance_message() :: #{binary() => any()}.
 
@@ -2445,7 +2445,7 @@
 
 %% Example:
 %% describe_replication_table_statistics_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"ReplicationConfigArn">> := string()
@@ -2454,7 +2454,7 @@
 
 %% Example:
 %% describe_event_subscriptions_response() :: #{
-%%   <<"EventSubscriptionsList">> => list(event_subscription()()),
+%%   <<"EventSubscriptionsList">> => list(event_subscription()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_event_subscriptions_response() :: #{binary() => any()}.
@@ -2462,14 +2462,14 @@
 %% Example:
 %% describe_replications_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Replications">> => list(replication()())
+%%   <<"Replications">> => list(replication())
 %% }
 -type describe_replications_response() :: #{binary() => any()}.
 
 %% Example:
 %% event() :: #{
 %%   <<"Date">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"Message">> => string(),
 %%   <<"SourceIdentifier">> => string(),
 %%   <<"SourceType">> => list(any())
@@ -2504,13 +2504,13 @@
 
 %% Example:
 %% delete_fleet_advisor_databases_response() :: #{
-%%   <<"DatabaseIds">> => list(string()())
+%%   <<"DatabaseIds">> => list(string())
 %% }
 -type delete_fleet_advisor_databases_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_recommendation_limitations_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2518,7 +2518,7 @@
 
 %% Example:
 %% describe_data_migrations_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"WithoutSettings">> => boolean(),
@@ -2577,14 +2577,14 @@
 %%   <<"MultiAZ">> => boolean(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"ReplicationSubnetGroupId">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type compute_config() :: #{binary() => any()}.
 
 %% Example:
 %% add_tags_to_resource_message() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_to_resource_message() :: #{binary() => any()}.
 
@@ -2618,7 +2618,7 @@
 %%   <<"UseAlternateFolderForOnline">> => boolean(),
 %%   <<"OraclePathPrefix">> => string(),
 %%   <<"Username">> => string(),
-%%   <<"ExtraArchivedLogDestIds">> => list(integer()()),
+%%   <<"ExtraArchivedLogDestIds">> => list(integer()),
 %%   <<"DirectPathParallelLoad">> => boolean(),
 %%   <<"SecurityDbEncryptionName">> => string(),
 %%   <<"DatabaseName">> => string(),
@@ -2683,7 +2683,7 @@
 
 %% Example:
 %% describe_metadata_model_imports_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"MigrationProjectIdentifier">> := string()
@@ -2719,7 +2719,7 @@
 %% Example:
 %% describe_orderable_replication_instances_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"OrderableReplicationInstances">> => list(orderable_replication_instance()())
+%%   <<"OrderableReplicationInstances">> => list(orderable_replication_instance())
 %% }
 -type describe_orderable_replication_instances_response() :: #{binary() => any()}.
 
@@ -2744,8 +2744,8 @@
 %% describe_events_message() :: #{
 %%   <<"Duration">> => integer(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()()),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"EventCategories">> => list(string()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"SourceIdentifier">> => string(),
@@ -2756,7 +2756,7 @@
 
 %% Example:
 %% describe_endpoint_types_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -2769,8 +2769,8 @@
 %%   <<"MigrationProjectIdentifier">> := string(),
 %%   <<"MigrationProjectName">> => string(),
 %%   <<"SchemaConversionApplicationAttributes">> => s_capplication_attributes(),
-%%   <<"SourceDataProviderDescriptors">> => list(data_provider_descriptor_definition()()),
-%%   <<"TargetDataProviderDescriptors">> => list(data_provider_descriptor_definition()()),
+%%   <<"SourceDataProviderDescriptors">> => list(data_provider_descriptor_definition()),
+%%   <<"TargetDataProviderDescriptors">> => list(data_provider_descriptor_definition()),
 %%   <<"TransformationRules">> => string()
 %% }
 -type modify_migration_project_message() :: #{binary() => any()}.
@@ -2807,7 +2807,7 @@
 
 %% Example:
 %% describe_instance_profiles_response() :: #{
-%%   <<"InstanceProfiles">> => list(instance_profile()()),
+%%   <<"InstanceProfiles">> => list(instance_profile()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_instance_profiles_response() :: #{binary() => any()}.
@@ -2838,9 +2838,9 @@
 %%   <<"NumberOfJobs">> => integer(),
 %%   <<"SelectionRules">> => string(),
 %%   <<"ServiceAccessRoleArn">> := string(),
-%%   <<"SourceDataSettings">> => list(source_data_setting()()),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TargetDataSettings">> => list(target_data_setting()())
+%%   <<"SourceDataSettings">> => list(source_data_setting()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetDataSettings">> => list(target_data_setting())
 %% }
 -type create_data_migration_message() :: #{binary() => any()}.
 
@@ -2849,8 +2849,8 @@
 %%   <<"ReplicationSubnetGroupDescription">> => string(),
 %%   <<"ReplicationSubnetGroupIdentifier">> => string(),
 %%   <<"SubnetGroupStatus">> => string(),
-%%   <<"Subnets">> => list(subnet()()),
-%%   <<"SupportedNetworkTypes">> => list(string()()),
+%%   <<"Subnets">> => list(subnet()),
+%%   <<"SupportedNetworkTypes">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type replication_subnet_group() :: #{binary() => any()}.
@@ -2881,15 +2881,15 @@
 %% Example:
 %% start_replication_task_assessment_run_message() :: #{
 %%   <<"AssessmentRunName">> := string(),
-%%   <<"Exclude">> => list(string()()),
-%%   <<"IncludeOnly">> => list(string()()),
+%%   <<"Exclude">> => list(string()),
+%%   <<"IncludeOnly">> => list(string()),
 %%   <<"ReplicationTaskArn">> := string(),
 %%   <<"ResultEncryptionMode">> => string(),
 %%   <<"ResultKmsKeyArn">> => string(),
 %%   <<"ResultLocationBucket">> := string(),
 %%   <<"ResultLocationFolder">> => string(),
 %%   <<"ServiceAccessRoleArn">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_replication_task_assessment_run_message() :: #{binary() => any()}.
 
@@ -2922,7 +2922,7 @@
 
 %% Example:
 %% describe_data_migrations_response() :: #{
-%%   <<"DataMigrations">> => list(data_migration()()),
+%%   <<"DataMigrations">> => list(data_migration()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_data_migrations_response() :: #{binary() => any()}.
@@ -2930,7 +2930,7 @@
 %% Example:
 %% describe_replication_tasks_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReplicationTasks">> => list(replication_task()())
+%%   <<"ReplicationTasks">> => list(replication_task())
 %% }
 -type describe_replication_tasks_response() :: #{binary() => any()}.
 
@@ -2998,7 +2998,7 @@
 %%   <<"CertificateIdentifier">> := string(),
 %%   <<"CertificatePem">> => string(),
 %%   <<"CertificateWallet">> => binary(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_certificate_message() :: #{binary() => any()}.
 
@@ -3031,7 +3031,7 @@
 %%   <<"NetworkType">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
 %%   <<"SubnetGroupIdentifier">> => string(),
-%%   <<"VpcSecurityGroups">> => list(string()())
+%%   <<"VpcSecurityGroups">> => list(string())
 %% }
 -type modify_instance_profile_message() :: #{binary() => any()}.
 
@@ -3060,7 +3060,7 @@
 %% Example:
 %% describe_migration_projects_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"MigrationProjects">> => list(migration_project()())
+%%   <<"MigrationProjects">> => list(migration_project())
 %% }
 -type describe_migration_projects_response() :: #{binary() => any()}.
 
@@ -3094,7 +3094,7 @@
 %%   <<"ResourceIdentifier">> => string(),
 %%   <<"ExternalTableDefinition">> => string(),
 %%   <<"SslMode">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"S3Settings">> => s3_settings(),
 %%   <<"ElasticsearchSettings">> => elasticsearch_settings(),
 %%   <<"DatabaseName">> => string(),
@@ -3119,7 +3119,7 @@
 %% Example:
 %% remove_tags_from_resource_message() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_from_resource_message() :: #{binary() => any()}.
 
@@ -3172,7 +3172,7 @@
 
 %% Example:
 %% describe_replication_subnet_groups_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -3188,7 +3188,7 @@
 
 %% Example:
 %% describe_event_categories_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"SourceType">> => string()
 %% }
 -type describe_event_categories_message() :: #{binary() => any()}.
@@ -3233,7 +3233,7 @@
 
 %% Example:
 %% batch_start_recommendations_response() :: #{
-%%   <<"ErrorEntries">> => list(batch_start_recommendations_error_entry()())
+%%   <<"ErrorEntries">> => list(batch_start_recommendations_error_entry())
 %% }
 -type batch_start_recommendations_response() :: #{binary() => any()}.
 
@@ -3245,7 +3245,7 @@
 
 %% Example:
 %% describe_replications_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -3255,20 +3255,20 @@
 %% reload_replication_tables_message() :: #{
 %%   <<"ReloadOption">> => list(any()),
 %%   <<"ReplicationConfigArn">> := string(),
-%%   <<"TablesToReload">> := list(table_to_reload()())
+%%   <<"TablesToReload">> := list(table_to_reload())
 %% }
 -type reload_replication_tables_message() :: #{binary() => any()}.
 
 %% Example:
 %% batch_start_recommendations_request() :: #{
-%%   <<"Data">> => list(start_recommendations_request_entry()())
+%%   <<"Data">> => list(start_recommendations_request_entry())
 %% }
 -type batch_start_recommendations_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_metadata_model_exports_to_target_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Requests">> => list(schema_conversion_request()())
+%%   <<"Requests">> => list(schema_conversion_request())
 %% }
 -type describe_metadata_model_exports_to_target_response() :: #{binary() => any()}.
 
@@ -3284,7 +3284,7 @@
 
 %% Example:
 %% describe_engine_versions_response() :: #{
-%%   <<"EngineVersions">> => list(engine_version()()),
+%%   <<"EngineVersions">> => list(engine_version()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_engine_versions_response() :: #{binary() => any()}.
@@ -3309,7 +3309,7 @@
 %%   <<"ReplicationInstanceArn">> := string(),
 %%   <<"ReplicationInstanceClass">> => string(),
 %%   <<"ReplicationInstanceIdentifier">> => string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type modify_replication_instance_message() :: #{binary() => any()}.
 
@@ -3317,7 +3317,7 @@
 %% describe_replication_instance_task_logs_response() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"ReplicationInstanceArn">> => string(),
-%%   <<"ReplicationInstanceTaskLogs">> => list(replication_instance_task_log()())
+%%   <<"ReplicationInstanceTaskLogs">> => list(replication_instance_task_log())
 %% }
 -type describe_replication_instance_task_logs_response() :: #{binary() => any()}.
 
@@ -3329,7 +3329,7 @@
 
 %% Example:
 %% describe_certificates_response() :: #{
-%%   <<"Certificates">> => list(certificate()()),
+%%   <<"Certificates">> => list(certificate()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_certificates_response() :: #{binary() => any()}.
@@ -3386,8 +3386,8 @@
 %%   <<"MigrationProjectCreationTime">> => non_neg_integer(),
 %%   <<"MigrationProjectName">> => string(),
 %%   <<"SchemaConversionApplicationAttributes">> => s_capplication_attributes(),
-%%   <<"SourceDataProviderDescriptors">> => list(data_provider_descriptor()()),
-%%   <<"TargetDataProviderDescriptors">> => list(data_provider_descriptor()()),
+%%   <<"SourceDataProviderDescriptors">> => list(data_provider_descriptor()),
+%%   <<"TargetDataProviderDescriptors">> => list(data_provider_descriptor()),
 %%   <<"TransformationRules">> => string()
 %% }
 -type migration_project() :: #{binary() => any()}.
@@ -3413,7 +3413,7 @@
 
 %% Example:
 %% describe_fleet_advisor_schemas_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3421,7 +3421,7 @@
 
 %% Example:
 %% describe_replication_task_assessment_runs_message() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
 %% }
@@ -3479,7 +3479,7 @@
 
 %% Example:
 %% describe_events_response() :: #{
-%%   <<"Events">> => list(event()()),
+%%   <<"Events">> => list(event()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_events_response() :: #{binary() => any()}.
@@ -3494,7 +3494,7 @@
 %% reload_tables_message() :: #{
 %%   <<"ReloadOption">> => list(any()),
 %%   <<"ReplicationTaskArn">> := string(),
-%%   <<"TablesToReload">> := list(table_to_reload()())
+%%   <<"TablesToReload">> := list(table_to_reload())
 %% }
 -type reload_tables_message() :: #{binary() => any()}.
 

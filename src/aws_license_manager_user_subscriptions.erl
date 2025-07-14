@@ -59,7 +59,7 @@
 
 %% Example:
 %% list_license_server_endpoints_response() :: #{
-%%   <<"LicenseServerEndpoints">> => list(license_server_endpoint()()),
+%%   <<"LicenseServerEndpoints">> => list(license_server_endpoint()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_license_server_endpoints_response() :: #{binary() => any()}.
@@ -85,7 +85,7 @@
 
 %% Example:
 %% list_identity_providers_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()]
 %% }
@@ -102,7 +102,7 @@
 
 %% Example:
 %% list_product_subscriptions_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IdentityProvider">> := list(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()],
@@ -149,8 +149,8 @@
 
 %% Example:
 %% update_settings() :: #{
-%%   <<"AddSubnets">> => list(string()()),
-%%   <<"RemoveSubnets">> => list(string()()),
+%%   <<"AddSubnets">> => list(string()),
+%%   <<"RemoveSubnets">> => list(string()),
 %%   <<"SecurityGroupId">> => string()
 %% }
 -type update_settings() :: #{binary() => any()}.
@@ -166,7 +166,7 @@
 %% Example:
 %% active_directory_settings() :: #{
 %%   <<"DomainCredentialsProvider">> => list(),
-%%   <<"DomainIpv4List">> => list(string()()),
+%%   <<"DomainIpv4List">> => list(string()),
 %%   <<"DomainName">> => [string()],
 %%   <<"DomainNetworkSettings">> => domain_network_settings()
 %% }
@@ -191,7 +191,7 @@
 
 %% Example:
 %% list_user_associations_response() :: #{
-%%   <<"InstanceUserSummaries">> => list(instance_user_summary()()),
+%%   <<"InstanceUserSummaries">> => list(instance_user_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_user_associations_response() :: #{binary() => any()}.
@@ -235,7 +235,7 @@
 %% Example:
 %% settings() :: #{
 %%   <<"SecurityGroupId">> => string(),
-%%   <<"Subnets">> => list(string()())
+%%   <<"Subnets">> => list(string())
 %% }
 -type settings() :: #{binary() => any()}.
 
@@ -304,14 +304,14 @@
 
 %% Example:
 %% domain_network_settings() :: #{
-%%   <<"Subnets">> => list(string()())
+%%   <<"Subnets">> => list(string())
 %% }
 -type domain_network_settings() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_instances_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()]
 %% }
@@ -330,14 +330,14 @@
 %% Example:
 %% list_product_subscriptions_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"ProductUserSummaries">> => list(product_user_summary()())
+%%   <<"ProductUserSummaries">> => list(product_user_summary())
 %% }
 -type list_product_subscriptions_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_instances_response() :: #{
-%%   <<"InstanceSummaries">> => list(instance_summary()()),
+%%   <<"InstanceSummaries">> => list(instance_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_instances_response() :: #{binary() => any()}.
@@ -359,7 +359,7 @@
 
 %% Example:
 %% list_license_server_endpoints_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()]
 %% }
@@ -407,7 +407,7 @@
 %%   <<"LicenseServerEndpointArn">> => string(),
 %%   <<"LicenseServerEndpointId">> => string(),
 %%   <<"LicenseServerEndpointProvisioningStatus">> => string(),
-%%   <<"LicenseServers">> => list(license_server()()),
+%%   <<"LicenseServers">> => list(license_server()),
 %%   <<"ServerEndpoint">> => server_endpoint(),
 %%   <<"ServerType">> => string(),
 %%   <<"StatusMessage">> => [string()]
@@ -432,7 +432,7 @@
 
 %% Example:
 %% list_identity_providers_response() :: #{
-%%   <<"IdentityProviderSummaries">> => list(identity_provider_summary()()),
+%%   <<"IdentityProviderSummaries">> => list(identity_provider_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_identity_providers_response() :: #{binary() => any()}.
@@ -504,7 +504,7 @@
 
 %% Example:
 %% list_user_associations_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IdentityProvider">> := list(),
 %%   <<"InstanceId">> := [string()],
 %%   <<"MaxResults">> => integer(),

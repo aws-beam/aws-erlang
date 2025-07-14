@@ -206,7 +206,7 @@
 %% Example:
 %% organization() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AvailablePolicyTypes">> => list(policy_type_summary()()),
+%%   <<"AvailablePolicyTypes">> => list(policy_type_summary()),
 %%   <<"FeatureSet">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"MasterAccountArn">> => string(),
@@ -259,13 +259,13 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_create_account_status_response() :: #{
-%%   <<"CreateAccountStatuses">> => list(create_account_status()()),
+%%   <<"CreateAccountStatuses">> => list(create_account_status()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_create_account_status_response() :: #{binary() => any()}.
@@ -319,7 +319,7 @@
 %% Example:
 %% list_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Policies">> => list(policy_summary()())
+%%   <<"Policies">> => list(policy_summary())
 %% }
 -type list_policies_response() :: #{binary() => any()}.
 
@@ -332,7 +332,7 @@
 %% Example:
 %% list_roots_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Roots">> => list(root()())
+%%   <<"Roots">> => list(root())
 %% }
 -type list_roots_response() :: #{binary() => any()}.
 
@@ -341,7 +341,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"PolicyTypes">> => list(policy_type_summary()())
+%%   <<"PolicyTypes">> => list(policy_type_summary())
 %% }
 -type root() :: #{binary() => any()}.
 
@@ -370,7 +370,7 @@
 
 %% Example:
 %% list_accounts_for_parent_response() :: #{
-%%   <<"Accounts">> => list(account()()),
+%%   <<"Accounts">> => list(account()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_accounts_for_parent_response() :: #{binary() => any()}.
@@ -378,7 +378,7 @@
 %% Example:
 %% list_organizational_units_for_parent_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationalUnits">> => list(organizational_unit()())
+%%   <<"OrganizationalUnits">> => list(organizational_unit())
 %% }
 -type list_organizational_units_for_parent_response() :: #{binary() => any()}.
 
@@ -393,7 +393,7 @@
 %%   <<"Content">> := string(),
 %%   <<"Description">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> := list(any())
 %% }
 -type create_policy_request() :: #{binary() => any()}.
@@ -453,7 +453,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -482,7 +482,7 @@
 %% create_organizational_unit_request() :: #{
 %%   <<"Name">> := string(),
 %%   <<"ParentId">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_organizational_unit_request() :: #{binary() => any()}.
 
@@ -572,7 +572,7 @@
 %% Example:
 %% list_targets_for_policy_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Targets">> => list(policy_target_summary()())
+%%   <<"Targets">> => list(policy_target_summary())
 %% }
 -type list_targets_for_policy_response() :: #{binary() => any()}.
 
@@ -597,7 +597,7 @@
 
 %% Example:
 %% list_accounts_response() :: #{
-%%   <<"Accounts">> => list(account()()),
+%%   <<"Accounts">> => list(account()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_accounts_response() :: #{binary() => any()}.
@@ -709,7 +709,7 @@
 
 %% Example:
 %% list_handshakes_for_organization_response() :: #{
-%%   <<"Handshakes">> => list(handshake()()),
+%%   <<"Handshakes">> => list(handshake()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_handshakes_for_organization_response() :: #{binary() => any()}.
@@ -736,7 +736,7 @@
 %% Example:
 %% invite_account_to_organization_request() :: #{
 %%   <<"Notes">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Target">> := handshake_party()
 %% }
 -type invite_account_to_organization_request() :: #{binary() => any()}.
@@ -751,7 +751,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -837,7 +837,7 @@
 %%   <<"Email">> := string(),
 %%   <<"IamUserAccessToBilling">> => list(any()),
 %%   <<"RoleName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_account_request() :: #{binary() => any()}.
 
@@ -862,7 +862,7 @@
 
 %% Example:
 %% list_aws_service_access_for_organization_response() :: #{
-%%   <<"EnabledServicePrincipals">> => list(enabled_service_principal()()),
+%%   <<"EnabledServicePrincipals">> => list(enabled_service_principal()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_aws_service_access_for_organization_response() :: #{binary() => any()}.
@@ -880,9 +880,9 @@
 %%   <<"Arn">> => string(),
 %%   <<"ExpirationTimestamp">> => non_neg_integer(),
 %%   <<"Id">> => string(),
-%%   <<"Parties">> => list(handshake_party()()),
+%%   <<"Parties">> => list(handshake_party()),
 %%   <<"RequestedTimestamp">> => non_neg_integer(),
-%%   <<"Resources">> => list(handshake_resource()()),
+%%   <<"Resources">> => list(handshake_resource()),
 %%   <<"State">> => list(any())
 %% }
 -type handshake() :: #{binary() => any()}.
@@ -897,14 +897,14 @@
 %% Example:
 %% put_resource_policy_request() :: #{
 %%   <<"Content">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_policies_for_target_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Policies">> => list(policy_summary()())
+%%   <<"Policies">> => list(policy_summary())
 %% }
 -type list_policies_for_target_response() :: #{binary() => any()}.
 
@@ -986,7 +986,7 @@
 
 %% Example:
 %% list_children_response() :: #{
-%%   <<"Children">> => list(child()()),
+%%   <<"Children">> => list(child()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_children_response() :: #{binary() => any()}.
@@ -1019,7 +1019,7 @@
 
 %% Example:
 %% handshake_resource() :: #{
-%%   <<"Resources">> => list(handshake_resource()()),
+%%   <<"Resources">> => list(handshake_resource()),
 %%   <<"Type">> => list(any()),
 %%   <<"Value">> => string()
 %% }
@@ -1034,7 +1034,7 @@
 %% Example:
 %% list_parents_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Parents">> => list(parent()())
+%%   <<"Parents">> => list(parent())
 %% }
 -type list_parents_response() :: #{binary() => any()}.
 
@@ -1105,14 +1105,14 @@
 
 %% Example:
 %% list_handshakes_for_account_response() :: #{
-%%   <<"Handshakes">> => list(handshake()()),
+%%   <<"Handshakes">> => list(handshake()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_handshakes_for_account_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_delegated_administrators_response() :: #{
-%%   <<"DelegatedAdministrators">> => list(delegated_administrator()()),
+%%   <<"DelegatedAdministrators">> => list(delegated_administrator()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_delegated_administrators_response() :: #{binary() => any()}.
@@ -1156,7 +1156,7 @@
 
 %% Example:
 %% list_delegated_services_for_account_response() :: #{
-%%   <<"DelegatedServices">> => list(delegated_service()()),
+%%   <<"DelegatedServices">> => list(delegated_service()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_delegated_services_for_account_response() :: #{binary() => any()}.
@@ -1219,7 +1219,7 @@
 %%   <<"Email">> := string(),
 %%   <<"IamUserAccessToBilling">> => list(any()),
 %%   <<"RoleName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_gov_cloud_account_request() :: #{binary() => any()}.
 

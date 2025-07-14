@@ -97,7 +97,7 @@
 
 %% Example:
 %% describe_analysis_schemes_response() :: #{
-%%   <<"AnalysisSchemes">> => list(analysis_scheme_status()())
+%%   <<"AnalysisSchemes">> => list(analysis_scheme_status())
 %% }
 -type describe_analysis_schemes_response() :: #{binary() => any()}.
 
@@ -196,7 +196,7 @@
 
 %% Example:
 %% describe_domains_request() :: #{
-%%   <<"DomainNames">> => list(string()())
+%%   <<"DomainNames">> => list(string())
 %% }
 -type describe_domains_request() :: #{binary() => any()}.
 
@@ -264,7 +264,7 @@
 
 %% Example:
 %% describe_suggesters_response() :: #{
-%%   <<"Suggesters">> => list(suggester_status()())
+%%   <<"Suggesters">> => list(suggester_status())
 %% }
 -type describe_suggesters_response() :: #{binary() => any()}.
 
@@ -373,7 +373,7 @@
 
 %% Example:
 %% index_documents_response() :: #{
-%%   <<"FieldNames">> => list(string()())
+%%   <<"FieldNames">> => list(string())
 %% }
 -type index_documents_response() :: #{binary() => any()}.
 
@@ -387,7 +387,7 @@
 %% describe_index_fields_request() :: #{
 %%   <<"Deployed">> => boolean(),
 %%   <<"DomainName">> := string(),
-%%   <<"FieldNames">> => list(string()())
+%%   <<"FieldNames">> => list(string())
 %% }
 -type describe_index_fields_request() :: #{binary() => any()}.
 
@@ -423,7 +423,7 @@
 %% describe_suggesters_request() :: #{
 %%   <<"Deployed">> => boolean(),
 %%   <<"DomainName">> := string(),
-%%   <<"SuggesterNames">> => list(string()())
+%%   <<"SuggesterNames">> => list(string())
 %% }
 -type describe_suggesters_request() :: #{binary() => any()}.
 
@@ -471,7 +471,7 @@
 
 %% Example:
 %% describe_analysis_schemes_request() :: #{
-%%   <<"AnalysisSchemeNames">> => list(string()()),
+%%   <<"AnalysisSchemeNames">> => list(string()),
 %%   <<"Deployed">> => boolean(),
 %%   <<"DomainName">> := string()
 %% }
@@ -515,7 +515,7 @@
 %% describe_expressions_request() :: #{
 %%   <<"Deployed">> => boolean(),
 %%   <<"DomainName">> := string(),
-%%   <<"ExpressionNames">> => list(string()())
+%%   <<"ExpressionNames">> => list(string())
 %% }
 -type describe_expressions_request() :: #{binary() => any()}.
 
@@ -558,7 +558,7 @@
 
 %% Example:
 %% build_suggesters_response() :: #{
-%%   <<"FieldNames">> => list(string()())
+%%   <<"FieldNames">> => list(string())
 %% }
 -type build_suggesters_response() :: #{binary() => any()}.
 
@@ -629,13 +629,13 @@
 
 %% Example:
 %% describe_index_fields_response() :: #{
-%%   <<"IndexFields">> => list(index_field_status()())
+%%   <<"IndexFields">> => list(index_field_status())
 %% }
 -type describe_index_fields_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_domains_response() :: #{
-%%   <<"DomainStatusList">> => list(domain_status()())
+%%   <<"DomainStatusList">> => list(domain_status())
 %% }
 -type describe_domains_response() :: #{binary() => any()}.
 
@@ -655,7 +655,7 @@
 
 %% Example:
 %% describe_expressions_response() :: #{
-%%   <<"Expressions">> => list(expression_status()())
+%%   <<"Expressions">> => list(expression_status())
 %% }
 -type describe_expressions_response() :: #{binary() => any()}.
 

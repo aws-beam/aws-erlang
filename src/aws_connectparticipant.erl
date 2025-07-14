@@ -115,7 +115,7 @@
 
 %% Example:
 %% complete_attachment_upload_request() :: #{
-%%   <<"AttachmentIds">> := list(string()()),
+%%   <<"AttachmentIds">> := list(string()),
 %%   <<"ClientToken">> := string(),
 %%   <<"ConnectionToken">> := string()
 %% }
@@ -142,7 +142,7 @@
 %% Example:
 %% item() :: #{
 %%   <<"AbsoluteTime">> => string(),
-%%   <<"Attachments">> => list(attachment_item()()),
+%%   <<"Attachments">> => list(attachment_item()),
 %%   <<"ContactId">> => string(),
 %%   <<"Content">> => string(),
 %%   <<"ContentType">> => string(),
@@ -167,7 +167,7 @@
 
 %% Example:
 %% view_content() :: #{
-%%   <<"Actions">> => list(string()()),
+%%   <<"Actions">> => list(string()),
 %%   <<"InputSchema">> => string(),
 %%   <<"Template">> => string()
 %% }
@@ -252,7 +252,7 @@
 %% Example:
 %% message_metadata() :: #{
 %%   <<"MessageId">> => string(),
-%%   <<"Receipts">> => list(receipt()())
+%%   <<"Receipts">> => list(receipt())
 %% }
 -type message_metadata() :: #{binary() => any()}.
 
@@ -342,7 +342,7 @@
 %% get_transcript_response() :: #{
 %%   <<"InitialContactId">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"Transcript">> => list(item()())
+%%   <<"Transcript">> => list(item())
 %% }
 -type get_transcript_response() :: #{binary() => any()}.
 

@@ -158,7 +158,7 @@
 %%   <<"Enabled">> => [boolean()],
 %%   <<"KeyCheckValueAlgorithm">> => string(),
 %%   <<"KeyMaterial">> := list(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_key_input() :: #{binary() => any()}.
 
@@ -196,7 +196,7 @@
 
 %% Example:
 %% list_aliases_output() :: #{
-%%   <<"Aliases">> => list(alias()()),
+%%   <<"Aliases">> => list(alias()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_aliases_output() :: #{binary() => any()}.
@@ -239,7 +239,7 @@
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -306,7 +306,7 @@
 %%   <<"Exportable">> := [boolean()],
 %%   <<"KeyAttributes">> := key_attributes(),
 %%   <<"KeyCheckValueAlgorithm">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_key_input() :: #{binary() => any()}.
 
@@ -365,7 +365,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -446,7 +446,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -523,7 +523,7 @@
 
 %% Example:
 %% list_keys_output() :: #{
-%%   <<"Keys">> => list(key_summary()()),
+%%   <<"Keys">> => list(key_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_keys_output() :: #{binary() => any()}.

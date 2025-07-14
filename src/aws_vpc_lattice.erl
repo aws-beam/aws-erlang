@@ -185,7 +185,7 @@
 
 %% Example:
 %% http_match() :: #{
-%%   <<"headerMatches">> => list(header_match()()),
+%%   <<"headerMatches">> => list(header_match()),
 %%   <<"method">> => string(),
 %%   <<"pathMatch">> => path_match()
 %% }
@@ -208,7 +208,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createdBy">> => string(),
 %%   <<"id">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string()
 %% }
 -type update_service_network_vpc_association_response() :: #{binary() => any()}.
@@ -236,7 +236,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createdBy">> => string(),
 %%   <<"id">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string()
 %% }
 -type create_service_network_vpc_association_response() :: #{binary() => any()}.
@@ -257,7 +257,7 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"portRanges">> => list(string()()),
+%%   <<"portRanges">> => list(string()),
 %%   <<"protocol">> => string(),
 %%   <<"resourceConfigurationDefinition">> => list(),
 %%   <<"resourceConfigurationGroupId">> => string(),
@@ -297,7 +297,7 @@
 
 %% Example:
 %% batch_update_rule_request() :: #{
-%%   <<"rules">> := list(rule_update()())
+%%   <<"rules">> := list(rule_update())
 %% }
 -type batch_update_rule_request() :: #{binary() => any()}.
 
@@ -312,7 +312,7 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"serviceArns">> => list(string()()),
+%%   <<"serviceArns">> => list(string()),
 %%   <<"status">> => string(),
 %%   <<"type">> => string()
 %% }
@@ -346,7 +346,7 @@
 
 %% Example:
 %% deregister_targets_request() :: #{
-%%   <<"targets">> := list(target()())
+%%   <<"targets">> := list(target())
 %% }
 -type deregister_targets_request() :: #{binary() => any()}.
 
@@ -381,9 +381,9 @@
 %%   <<"ipAddressType">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type get_resource_gateway_response() :: #{binary() => any()}.
@@ -409,7 +409,7 @@
 
 %% Example:
 %% forward_action() :: #{
-%%   <<"targetGroups">> => list(weighted_target_group()())
+%%   <<"targetGroups">> => list(weighted_target_group())
 %% }
 -type forward_action() :: #{binary() => any()}.
 
@@ -486,7 +486,7 @@
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"portRanges">> => list(string()()),
+%%   <<"portRanges">> => list(string()),
 %%   <<"protocol">> => string(),
 %%   <<"resourceConfigurationDefinition">> => list(),
 %%   <<"resourceConfigurationGroupId">> => string(),
@@ -533,7 +533,7 @@
 
 %% Example:
 %% list_service_network_vpc_endpoint_associations_response() :: #{
-%%   <<"items">> => list(service_network_endpoint_association()()),
+%%   <<"items">> => list(service_network_endpoint_association()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_service_network_vpc_endpoint_associations_response() :: #{binary() => any()}.
@@ -541,7 +541,7 @@
 
 %% Example:
 %% list_service_network_vpc_associations_response() :: #{
-%%   <<"items">> := list(service_network_vpc_association_summary()()),
+%%   <<"items">> := list(service_network_vpc_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_service_network_vpc_associations_response() :: #{binary() => any()}.
@@ -581,8 +581,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"ipAddressType">> => string(),
 %%   <<"name">> := string(),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> := list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> := list(string()),
 %%   <<"tags">> => map(),
 %%   <<"vpcIdentifier">> := string()
 %% }
@@ -618,7 +618,7 @@
 %%   <<"failureMessage">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"serviceNetworkArn">> => string(),
 %%   <<"serviceNetworkId">> => string(),
 %%   <<"serviceNetworkName">> => string(),
@@ -634,7 +634,7 @@
 
 %% Example:
 %% list_access_log_subscriptions_response() :: #{
-%%   <<"items">> := list(access_log_subscription_summary()()),
+%%   <<"items">> := list(access_log_subscription_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_log_subscriptions_response() :: #{binary() => any()}.
@@ -642,7 +642,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -678,7 +678,7 @@
 %%   <<"name">> => string(),
 %%   <<"port">> => integer(),
 %%   <<"protocol">> => string(),
-%%   <<"serviceArns">> => list(string()()),
+%%   <<"serviceArns">> => list(string()),
 %%   <<"status">> => string(),
 %%   <<"type">> => string(),
 %%   <<"vpcIdentifier">> => string()
@@ -706,9 +706,9 @@
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => string(),
 %%   <<"name">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type update_resource_gateway_response() :: #{binary() => any()}.
@@ -746,9 +746,9 @@
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => string(),
 %%   <<"name">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcIdentifier">> => string()
 %% }
 -type create_resource_gateway_response() :: #{binary() => any()}.
@@ -909,9 +909,9 @@
 %%   <<"ipAddressType">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcIdentifier">> => string()
 %% }
 -type resource_gateway_summary() :: #{binary() => any()}.
@@ -935,7 +935,7 @@
 
 %% Example:
 %% list_services_response() :: #{
-%%   <<"items">> => list(service_summary()()),
+%%   <<"items">> => list(service_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_services_response() :: #{binary() => any()}.
@@ -998,7 +998,7 @@
 
 %% Example:
 %% list_resource_gateways_response() :: #{
-%%   <<"items">> => list(resource_gateway_summary()()),
+%%   <<"items">> => list(resource_gateway_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_resource_gateways_response() :: #{binary() => any()}.
@@ -1111,7 +1111,7 @@
 
 %% Example:
 %% list_service_network_resource_associations_response() :: #{
-%%   <<"items">> => list(service_network_resource_association_summary()()),
+%%   <<"items">> => list(service_network_resource_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_service_network_resource_associations_response() :: #{binary() => any()}.
@@ -1139,7 +1139,7 @@
 
 %% Example:
 %% list_listeners_response() :: #{
-%%   <<"items">> := list(listener_summary()()),
+%%   <<"items">> := list(listener_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_listeners_response() :: #{binary() => any()}.
@@ -1147,7 +1147,7 @@
 
 %% Example:
 %% list_target_groups_response() :: #{
-%%   <<"items">> => list(target_group_summary()()),
+%%   <<"items">> => list(target_group_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_target_groups_response() :: #{binary() => any()}.
@@ -1178,7 +1178,7 @@
 
 %% Example:
 %% list_resource_configurations_response() :: #{
-%%   <<"items">> => list(resource_configuration_summary()()),
+%%   <<"items">> => list(resource_configuration_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_resource_configurations_response() :: #{binary() => any()}.
@@ -1221,7 +1221,7 @@
 
 %% Example:
 %% register_targets_request() :: #{
-%%   <<"targets">> := list(target()())
+%%   <<"targets">> := list(target())
 %% }
 -type register_targets_request() :: #{binary() => any()}.
 
@@ -1240,7 +1240,7 @@
 %% list_targets_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"targets">> => list(target()())
+%%   <<"targets">> => list(target())
 %% }
 -type list_targets_request() :: #{binary() => any()}.
 
@@ -1324,7 +1324,7 @@
 
 %% Example:
 %% list_rules_response() :: #{
-%%   <<"items">> := list(rule_summary()()),
+%%   <<"items">> := list(rule_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_rules_response() :: #{binary() => any()}.
@@ -1332,7 +1332,7 @@
 
 %% Example:
 %% update_resource_gateway_request() :: #{
-%%   <<"securityGroupIds">> => list(string()())
+%%   <<"securityGroupIds">> => list(string())
 %% }
 -type update_resource_gateway_request() :: #{binary() => any()}.
 
@@ -1366,7 +1366,7 @@
 
 %% Example:
 %% list_resource_endpoint_associations_response() :: #{
-%%   <<"items">> => list(resource_endpoint_association_summary()()),
+%%   <<"items">> => list(resource_endpoint_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_resource_endpoint_associations_response() :: #{binary() => any()}.
@@ -1374,7 +1374,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
@@ -1440,7 +1440,7 @@
 %%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
 %%   <<"clientToken">> => string(),
 %%   <<"name">> := string(),
-%%   <<"portRanges">> => list(string()()),
+%%   <<"portRanges">> => list(string()),
 %%   <<"protocol">> => string(),
 %%   <<"resourceConfigurationDefinition">> => list(),
 %%   <<"resourceConfigurationGroupIdentifier">> => string(),
@@ -1553,8 +1553,8 @@
 
 %% Example:
 %% register_targets_response() :: #{
-%%   <<"successful">> => list(target()()),
-%%   <<"unsuccessful">> => list(target_failure()())
+%%   <<"successful">> => list(target()),
+%%   <<"unsuccessful">> => list(target_failure())
 %% }
 -type register_targets_response() :: #{binary() => any()}.
 
@@ -1632,7 +1632,7 @@
 
 %% Example:
 %% update_service_network_vpc_association_request() :: #{
-%%   <<"securityGroupIds">> := list(string()())
+%%   <<"securityGroupIds">> := list(string())
 %% }
 -type update_service_network_vpc_association_request() :: #{binary() => any()}.
 
@@ -1648,8 +1648,8 @@
 
 %% Example:
 %% deregister_targets_response() :: #{
-%%   <<"successful">> => list(target()()),
-%%   <<"unsuccessful">> => list(target_failure()())
+%%   <<"successful">> => list(target()),
+%%   <<"unsuccessful">> => list(target_failure())
 %% }
 -type deregister_targets_response() :: #{binary() => any()}.
 
@@ -1681,8 +1681,8 @@
 
 %% Example:
 %% batch_update_rule_response() :: #{
-%%   <<"successful">> => list(rule_update_success()()),
-%%   <<"unsuccessful">> => list(rule_update_failure()())
+%%   <<"successful">> => list(rule_update_success()),
+%%   <<"unsuccessful">> => list(rule_update_failure())
 %% }
 -type batch_update_rule_response() :: #{binary() => any()}.
 
@@ -1697,7 +1697,7 @@
 
 %% Example:
 %% list_targets_response() :: #{
-%%   <<"items">> := list(target_summary()()),
+%%   <<"items">> := list(target_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_targets_response() :: #{binary() => any()}.
@@ -1706,7 +1706,7 @@
 %% Example:
 %% update_resource_configuration_request() :: #{
 %%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
-%%   <<"portRanges">> => list(string()()),
+%%   <<"portRanges">> => list(string()),
 %%   <<"resourceConfigurationDefinition">> => list()
 %% }
 -type update_resource_configuration_request() :: #{binary() => any()}.
@@ -1742,7 +1742,7 @@
 %% Example:
 %% create_service_network_vpc_association_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"serviceNetworkIdentifier">> := string(),
 %%   <<"tags">> => map(),
 %%   <<"vpcIdentifier">> := string()
@@ -1774,7 +1774,7 @@
 
 %% Example:
 %% list_service_networks_response() :: #{
-%%   <<"items">> := list(service_network_summary()()),
+%%   <<"items">> := list(service_network_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_service_networks_response() :: #{binary() => any()}.
@@ -1789,7 +1789,7 @@
 
 %% Example:
 %% list_service_network_service_associations_response() :: #{
-%%   <<"items">> := list(service_network_service_association_summary()()),
+%%   <<"items">> := list(service_network_service_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_service_network_service_associations_response() :: #{binary() => any()}.
@@ -1833,7 +1833,7 @@
 %%   <<"failureReason">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"portRanges">> => list(string()()),
+%%   <<"portRanges">> => list(string()),
 %%   <<"protocol">> => string(),
 %%   <<"resourceConfigurationDefinition">> => list(),
 %%   <<"resourceConfigurationGroupId">> => string(),

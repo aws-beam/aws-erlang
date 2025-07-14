@@ -55,7 +55,7 @@
 
 %% Example:
 %% list_environment_hosts_response() :: #{
-%%   <<"environmentHosts">> => list(host()()),
+%%   <<"environmentHosts">> => list(host()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_hosts_response() :: #{binary() => any()}.
@@ -159,19 +159,19 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% service_access_security_groups() :: #{
-%%   <<"securityGroups">> => list(string()())
+%%   <<"securityGroups">> => list(string())
 %% }
 -type service_access_security_groups() :: #{binary() => any()}.
 
 %% Example:
 %% connectivity_info() :: #{
-%%   <<"privateRouteServerPeerings">> => list(string()())
+%%   <<"privateRouteServerPeerings">> => list(string())
 %% }
 -type connectivity_info() :: #{binary() => any()}.
 
@@ -185,17 +185,17 @@
 
 %% Example:
 %% environment() :: #{
-%%   <<"checks">> => list(check()()),
+%%   <<"checks">> => list(check()),
 %%   <<"connectivityInfo">> => connectivity_info(),
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"credentials">> => list(secret()()),
+%%   <<"credentials">> => list(secret()),
 %%   <<"environmentArn">> => string(),
 %%   <<"environmentId">> => string(),
 %%   <<"environmentName">> => string(),
 %%   <<"environmentState">> => list(any()),
 %%   <<"environmentStatus">> => list(any()),
 %%   <<"kmsKeyId">> => [string()],
-%%   <<"licenseInfo">> => list(license_info()()),
+%%   <<"licenseInfo">> => list(license_info()),
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"serviceAccessSecurityGroups">> => service_access_security_groups(),
 %%   <<"serviceAccessSubnetId">> => string(),
@@ -222,7 +222,7 @@
 
 %% Example:
 %% list_environment_vlans_response() :: #{
-%%   <<"environmentVlans">> => list(vlan()()),
+%%   <<"environmentVlans">> => list(vlan()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_vlans_response() :: #{binary() => any()}.
@@ -274,7 +274,7 @@
 %%   <<"ipAddress">> => string(),
 %%   <<"keyName">> => string(),
 %%   <<"modifiedAt">> => [non_neg_integer()],
-%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"networkInterfaces">> => list(network_interface()),
 %%   <<"placementGroupId">> => string(),
 %%   <<"stateDetails">> => string()
 %% }
@@ -314,7 +314,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }
@@ -335,7 +335,7 @@
 
 %% Example:
 %% list_environments_response() :: #{
-%%   <<"environmentSummaries">> => list(environment_summary()()),
+%%   <<"environmentSummaries">> => list(environment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_response() :: #{binary() => any()}.
@@ -345,10 +345,10 @@
 %%   <<"clientToken">> => string(),
 %%   <<"connectivityInfo">> := connectivity_info(),
 %%   <<"environmentName">> => string(),
-%%   <<"hosts">> := list(host_info_for_create()()),
+%%   <<"hosts">> := list(host_info_for_create()),
 %%   <<"initialVlans">> := initial_vlans(),
 %%   <<"kmsKeyId">> => [string()],
-%%   <<"licenseInfo">> := list(license_info()()),
+%%   <<"licenseInfo">> := list(license_info()),
 %%   <<"serviceAccessSecurityGroups">> => service_access_security_groups(),
 %%   <<"serviceAccessSubnetId">> := string(),
 %%   <<"siteId">> := [string()],

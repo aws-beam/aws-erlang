@@ -1394,10 +1394,10 @@
 %% Example:
 %% describe_traffic_mirror_targets_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficMirrorTargetIds">> => list(string()())
+%%   <<"TrafficMirrorTargetIds">> => list(string())
 %% }
 -type describe_traffic_mirror_targets_request() :: #{binary() => any()}.
 
@@ -1416,24 +1416,24 @@
 %% Example:
 %% describe_transit_gateway_connects_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayAttachmentIds">> => list(string()())
+%%   <<"TransitGatewayAttachmentIds">> => list(string())
 %% }
 -type describe_transit_gateway_connects_request() :: #{binary() => any()}.
 
 %% Example:
 %% verified_access_instance_open_vpn_client_configuration() :: #{
 %%   <<"Config">> => string(),
-%%   <<"Routes">> => list(verified_access_instance_open_vpn_client_configuration_route()())
+%%   <<"Routes">> => list(verified_access_instance_open_vpn_client_configuration_route())
 %% }
 -type verified_access_instance_open_vpn_client_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% describe_transit_gateway_peering_attachments_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayPeeringAttachments">> => list(transit_gateway_peering_attachment()())
+%%   <<"TransitGatewayPeeringAttachments">> => list(transit_gateway_peering_attachment())
 %% }
 -type describe_transit_gateway_peering_attachments_result() :: #{binary() => any()}.
 
@@ -1451,10 +1451,10 @@
 %% stale_ip_permission() :: #{
 %%   <<"FromPort">> => integer(),
 %%   <<"IpProtocol">> => string(),
-%%   <<"IpRanges">> => list(string()()),
-%%   <<"PrefixListIds">> => list(string()()),
+%%   <<"IpRanges">> => list(string()),
+%%   <<"PrefixListIds">> => list(string()),
 %%   <<"ToPort">> => integer(),
-%%   <<"UserIdGroupPairs">> => list(user_id_group_pair()())
+%%   <<"UserIdGroupPairs">> => list(user_id_group_pair())
 %% }
 -type stale_ip_permission() :: #{binary() => any()}.
 
@@ -1480,10 +1480,10 @@
 %% purchase_host_reservation_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CurrencyCode">> => list(any()),
-%%   <<"HostIdSet">> := list(string()()),
+%%   <<"HostIdSet">> := list(string()),
 %%   <<"LimitPrice">> => string(),
 %%   <<"OfferingId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type purchase_host_reservation_request() :: #{binary() => any()}.
 
@@ -1497,7 +1497,7 @@
 %% register_transit_gateway_multicast_group_members_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupIpAddress">> => string(),
-%%   <<"NetworkInterfaceIds">> := list(string()()),
+%%   <<"NetworkInterfaceIds">> := list(string()),
 %%   <<"TransitGatewayMulticastDomainId">> := string()
 %% }
 -type register_transit_gateway_multicast_group_members_request() :: #{binary() => any()}.
@@ -1516,13 +1516,13 @@
 %%   <<"AcceleratorNames">> => list(list(any())()),
 %%   <<"AcceleratorTotalMemoryMiB">> => accelerator_total_memory_mi_b_request(),
 %%   <<"AcceleratorTypes">> => list(list(any())()),
-%%   <<"AllowedInstanceTypes">> => list(string()()),
+%%   <<"AllowedInstanceTypes">> => list(string()),
 %%   <<"BareMetal">> => list(any()),
 %%   <<"BaselineEbsBandwidthMbps">> => baseline_ebs_bandwidth_mbps_request(),
 %%   <<"BaselinePerformanceFactors">> => baseline_performance_factors_request(),
 %%   <<"BurstablePerformance">> => list(any()),
 %%   <<"CpuManufacturers">> => list(list(any())()),
-%%   <<"ExcludedInstanceTypes">> => list(string()()),
+%%   <<"ExcludedInstanceTypes">> => list(string()),
 %%   <<"InstanceGenerations">> => list(list(any())()),
 %%   <<"LocalStorage">> => list(any()),
 %%   <<"LocalStorageTypes">> => list(list(any())()),
@@ -1541,7 +1541,7 @@
 
 %% Example:
 %% describe_network_insights_access_scopes_result() :: #{
-%%   <<"NetworkInsightsAccessScopes">> => list(network_insights_access_scope()()),
+%%   <<"NetworkInsightsAccessScopes">> => list(network_insights_access_scope()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_insights_access_scopes_result() :: #{binary() => any()}.
@@ -1567,8 +1567,8 @@
 
 %% Example:
 %% assign_private_ip_addresses_result() :: #{
-%%   <<"AssignedIpv4Prefixes">> => list(ipv4_prefix_specification()()),
-%%   <<"AssignedPrivateIpAddresses">> => list(assigned_private_ip_address()()),
+%%   <<"AssignedIpv4Prefixes">> => list(ipv4_prefix_specification()),
+%%   <<"AssignedPrivateIpAddresses">> => list(assigned_private_ip_address()),
 %%   <<"NetworkInterfaceId">> => string()
 %% }
 -type assign_private_ip_addresses_result() :: #{binary() => any()}.
@@ -1583,7 +1583,7 @@
 
 %% Example:
 %% inference_accelerator_info() :: #{
-%%   <<"Accelerators">> => list(inference_device_info()()),
+%%   <<"Accelerators">> => list(inference_device_info()),
 %%   <<"TotalInferenceMemoryInMiB">> => integer()
 %% }
 -type inference_accelerator_info() :: #{binary() => any()}.
@@ -1606,7 +1606,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"Options">> => transit_gateway_request_options(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_transit_gateway_request() :: #{binary() => any()}.
 
@@ -1650,9 +1650,9 @@
 %%   <<"AmazonSideAsn">> => float(),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => list(any()),
-%%   <<"VpcAttachments">> => list(vpc_attachment()()),
+%%   <<"VpcAttachments">> => list(vpc_attachment()),
 %%   <<"VpnGatewayId">> => string()
 %% }
 -type vpn_gateway() :: #{binary() => any()}.
@@ -1670,7 +1670,7 @@
 %% create_transit_gateway_connect_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Options">> := create_transit_gateway_connect_request_options(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransportTransitGatewayAttachmentId">> := string()
 %% }
 -type create_transit_gateway_connect_request() :: #{binary() => any()}.
@@ -1696,7 +1696,7 @@
 
 %% Example:
 %% byoip_cidr() :: #{
-%%   <<"AsnAssociations">> => list(asn_association()()),
+%%   <<"AsnAssociations">> => list(asn_association()),
 %%   <<"Cidr">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"NetworkBorderGroup">> => string(),
@@ -1707,13 +1707,13 @@
 
 %% Example:
 %% describe_availability_zones_result() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()())
+%%   <<"AvailabilityZones">> => list(availability_zone())
 %% }
 -type describe_availability_zones_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ipam_resource_discoveries_result() :: #{
-%%   <<"IpamResourceDiscoveries">> => list(ipam_resource_discovery()()),
+%%   <<"IpamResourceDiscoveries">> => list(ipam_resource_discovery()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_resource_discoveries_result() :: #{binary() => any()}.
@@ -1726,7 +1726,7 @@
 
 %% Example:
 %% describe_reserved_instances_listings_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"ReservedInstancesId">> => string(),
 %%   <<"ReservedInstancesListingId">> => string()
 %% }
@@ -1752,7 +1752,7 @@
 %% scheduled_instance_recurrence() :: #{
 %%   <<"Frequency">> => string(),
 %%   <<"Interval">> => integer(),
-%%   <<"OccurrenceDaySet">> => list(integer()()),
+%%   <<"OccurrenceDaySet">> => list(integer()),
 %%   <<"OccurrenceRelativeToEnd">> => boolean(),
 %%   <<"OccurrenceUnit">> => string()
 %% }
@@ -1761,10 +1761,10 @@
 %% Example:
 %% describe_transit_gateway_attachments_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayAttachmentIds">> => list(string()())
+%%   <<"TransitGatewayAttachmentIds">> => list(string())
 %% }
 -type describe_transit_gateway_attachments_request() :: #{binary() => any()}.
 
@@ -1778,7 +1778,7 @@
 %% Example:
 %% describe_snapshot_tier_status_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SnapshotTierStatuses">> => list(snapshot_tier_status()())
+%%   <<"SnapshotTierStatuses">> => list(snapshot_tier_status())
 %% }
 -type describe_snapshot_tier_status_result() :: #{binary() => any()}.
 
@@ -1787,15 +1787,15 @@
 %%   <<"DPDTimeoutAction">> => string(),
 %%   <<"DPDTimeoutSeconds">> => integer(),
 %%   <<"EnableTunnelLifecycleControl">> => boolean(),
-%%   <<"IKEVersions">> => list(i_k_e_versions_request_list_value()()),
+%%   <<"IKEVersions">> => list(i_k_e_versions_request_list_value()),
 %%   <<"LogOptions">> => vpn_tunnel_log_options_specification(),
-%%   <<"Phase1DHGroupNumbers">> => list(phase1_d_h_group_numbers_request_list_value()()),
-%%   <<"Phase1EncryptionAlgorithms">> => list(phase1_encryption_algorithms_request_list_value()()),
-%%   <<"Phase1IntegrityAlgorithms">> => list(phase1_integrity_algorithms_request_list_value()()),
+%%   <<"Phase1DHGroupNumbers">> => list(phase1_d_h_group_numbers_request_list_value()),
+%%   <<"Phase1EncryptionAlgorithms">> => list(phase1_encryption_algorithms_request_list_value()),
+%%   <<"Phase1IntegrityAlgorithms">> => list(phase1_integrity_algorithms_request_list_value()),
 %%   <<"Phase1LifetimeSeconds">> => integer(),
-%%   <<"Phase2DHGroupNumbers">> => list(phase2_d_h_group_numbers_request_list_value()()),
-%%   <<"Phase2EncryptionAlgorithms">> => list(phase2_encryption_algorithms_request_list_value()()),
-%%   <<"Phase2IntegrityAlgorithms">> => list(phase2_integrity_algorithms_request_list_value()()),
+%%   <<"Phase2DHGroupNumbers">> => list(phase2_d_h_group_numbers_request_list_value()),
+%%   <<"Phase2EncryptionAlgorithms">> => list(phase2_encryption_algorithms_request_list_value()),
+%%   <<"Phase2IntegrityAlgorithms">> => list(phase2_integrity_algorithms_request_list_value()),
 %%   <<"Phase2LifetimeSeconds">> => integer(),
 %%   <<"PreSharedKey">> => string(),
 %%   <<"RekeyFuzzPercentage">> => integer(),
@@ -1869,7 +1869,7 @@
 %%   <<"PeerAccountId">> := string(),
 %%   <<"PeerRegion">> := string(),
 %%   <<"PeerTransitGatewayId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransitGatewayId">> := string()
 %% }
 -type create_transit_gateway_peering_attachment_request() :: #{binary() => any()}.
@@ -1890,7 +1890,7 @@
 
 %% Example:
 %% describe_client_vpn_connections_result() :: #{
-%%   <<"Connections">> => list(client_vpn_connection()()),
+%%   <<"Connections">> => list(client_vpn_connection()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_client_vpn_connections_result() :: #{binary() => any()}.
@@ -1927,18 +1927,18 @@
 %%   <<"Attachment">> => instance_network_interface_attachment(),
 %%   <<"ConnectionTrackingConfiguration">> => connection_tracking_specification_response(),
 %%   <<"Description">> => string(),
-%%   <<"Groups">> => list(group_identifier()()),
+%%   <<"Groups">> => list(group_identifier()),
 %%   <<"InterfaceType">> => string(),
-%%   <<"Ipv4Prefixes">> => list(instance_ipv4_prefix()()),
-%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()()),
-%%   <<"Ipv6Prefixes">> => list(instance_ipv6_prefix()()),
+%%   <<"Ipv4Prefixes">> => list(instance_ipv4_prefix()),
+%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()),
+%%   <<"Ipv6Prefixes">> => list(instance_ipv6_prefix()),
 %%   <<"MacAddress">> => string(),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"Operator">> => operator_response(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(instance_private_ip_address()()),
+%%   <<"PrivateIpAddresses">> => list(instance_private_ip_address()),
 %%   <<"SourceDestCheck">> => boolean(),
 %%   <<"Status">> => list(any()),
 %%   <<"SubnetId">> => string(),
@@ -1949,8 +1949,8 @@
 %% Example:
 %% describe_fast_launch_images_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"ImageIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"ImageIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1959,7 +1959,7 @@
 %% Example:
 %% instance_specification() :: #{
 %%   <<"ExcludeBootVolume">> => boolean(),
-%%   <<"ExcludeDataVolumeIds">> => list(string()()),
+%%   <<"ExcludeDataVolumeIds">> => list(string()),
 %%   <<"InstanceId">> => string()
 %% }
 -type instance_specification() :: #{binary() => any()}.
@@ -1988,7 +1988,7 @@
 %%   <<"LocalBgpAsn">> => integer(),
 %%   <<"LocalBgpAsnExtended">> => float(),
 %%   <<"LocalGatewayId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_local_gateway_virtual_interface_group_request() :: #{binary() => any()}.
 
@@ -1997,7 +1997,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"Force">> => boolean(),
 %%   <<"Hibernate">> => boolean(),
-%%   <<"InstanceIds">> := list(string()())
+%%   <<"InstanceIds">> := list(string())
 %% }
 -type stop_instances_request() :: #{binary() => any()}.
 
@@ -2019,13 +2019,13 @@
 %% Example:
 %% describe_route_servers_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RouteServers">> => list(route_server()())
+%%   <<"RouteServers">> => list(route_server())
 %% }
 -type describe_route_servers_result() :: #{binary() => any()}.
 
 %% Example:
 %% unmonitor_instances_result() :: #{
-%%   <<"InstanceMonitorings">> => list(instance_monitoring()())
+%%   <<"InstanceMonitorings">> => list(instance_monitoring())
 %% }
 -type unmonitor_instances_result() :: #{binary() => any()}.
 
@@ -2072,7 +2072,7 @@
 
 %% Example:
 %% describe_capacity_block_status_result() :: #{
-%%   <<"CapacityBlockStatuses">> => list(capacity_block_status()()),
+%%   <<"CapacityBlockStatuses">> => list(capacity_block_status()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_block_status_result() :: #{binary() => any()}.
@@ -2080,7 +2080,7 @@
 %% Example:
 %% describe_transit_gateway_route_tables_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayRouteTables">> => list(transit_gateway_route_table()())
+%%   <<"TransitGatewayRouteTables">> => list(transit_gateway_route_table())
 %% }
 -type describe_transit_gateway_route_tables_result() :: #{binary() => any()}.
 
@@ -2109,7 +2109,7 @@
 
 %% Example:
 %% cpu_performance_factor() :: #{
-%%   <<"References">> => list(performance_factor_reference()())
+%%   <<"References">> => list(performance_factor_reference())
 %% }
 -type cpu_performance_factor() :: #{binary() => any()}.
 
@@ -2135,7 +2135,7 @@
 
 %% Example:
 %% describe_address_transfers_result() :: #{
-%%   <<"AddressTransfers">> => list(address_transfer()()),
+%%   <<"AddressTransfers">> => list(address_transfer()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_address_transfers_result() :: #{binary() => any()}.
@@ -2143,10 +2143,10 @@
 %% Example:
 %% describe_service_link_virtual_interfaces_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceLinkVirtualInterfaceIds">> => list(string()())
+%%   <<"ServiceLinkVirtualInterfaceIds">> => list(string())
 %% }
 -type describe_service_link_virtual_interfaces_request() :: #{binary() => any()}.
 
@@ -2172,7 +2172,7 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"AvailableInstanceCount">> => integer(),
-%%   <<"CapacityAllocations">> => list(capacity_allocation()()),
+%%   <<"CapacityAllocations">> => list(capacity_allocation()),
 %%   <<"CapacityBlockId">> => string(),
 %%   <<"CapacityReservationArn">> => string(),
 %%   <<"CapacityReservationFleetId">> => string(),
@@ -2193,7 +2193,7 @@
 %%   <<"ReservationType">> => list(any()),
 %%   <<"StartDate">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Tenancy">> => list(any()),
 %%   <<"TotalInstanceCount">> => integer(),
 %%   <<"UnusedReservationBillingOwnerId">> => string()
@@ -2206,7 +2206,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceId">> := string(),
 %%   <<"MacCredentials">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_delegate_mac_volume_ownership_task_request() :: #{binary() => any()}.
 
@@ -2235,10 +2235,10 @@
 
 %% Example:
 %% internet_gateway() :: #{
-%%   <<"Attachments">> => list(internet_gateway_attachment()()),
+%%   <<"Attachments">> => list(internet_gateway_attachment()),
 %%   <<"InternetGatewayId">> => string(),
 %%   <<"OwnerId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type internet_gateway() :: #{binary() => any()}.
 
@@ -2258,11 +2258,11 @@
 
 %% Example:
 %% volume_status_item() :: #{
-%%   <<"Actions">> => list(volume_status_action()()),
-%%   <<"AttachmentStatuses">> => list(volume_status_attachment_status()()),
+%%   <<"Actions">> => list(volume_status_action()),
+%%   <<"AttachmentStatuses">> => list(volume_status_attachment_status()),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
-%%   <<"Events">> => list(volume_status_event()()),
+%%   <<"Events">> => list(volume_status_event()),
 %%   <<"OutpostArn">> => string(),
 %%   <<"VolumeId">> => string(),
 %%   <<"VolumeStatus">> => volume_status_info()
@@ -2307,7 +2307,7 @@
 %% Example:
 %% describe_spot_instance_requests_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SpotInstanceRequests">> => list(spot_instance_request()())
+%%   <<"SpotInstanceRequests">> => list(spot_instance_request())
 %% }
 -type describe_spot_instance_requests_result() :: #{binary() => any()}.
 
@@ -2319,12 +2319,12 @@
 
 %% Example:
 %% network_acl() :: #{
-%%   <<"Associations">> => list(network_acl_association()()),
-%%   <<"Entries">> => list(network_acl_entry()()),
+%%   <<"Associations">> => list(network_acl_association()),
+%%   <<"Entries">> => list(network_acl_entry()),
 %%   <<"IsDefault">> => boolean(),
 %%   <<"NetworkAclId">> => string(),
 %%   <<"OwnerId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type network_acl() :: #{binary() => any()}.
@@ -2332,7 +2332,7 @@
 %% Example:
 %% search_transit_gateway_routes_result() :: #{
 %%   <<"AdditionalRoutesAvailable">> => boolean(),
-%%   <<"Routes">> => list(transit_gateway_route()())
+%%   <<"Routes">> => list(transit_gateway_route())
 %% }
 -type search_transit_gateway_routes_result() :: #{binary() => any()}.
 
@@ -2362,7 +2362,7 @@
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceOwnerId">> => string(),
 %%   <<"ResourceRegion">> => string(),
-%%   <<"ResourceTags">> => list(ipam_resource_tag()()),
+%%   <<"ResourceTags">> => list(ipam_resource_tag()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"SampleTime">> => non_neg_integer(),
 %%   <<"SubnetId">> => string(),
@@ -2373,8 +2373,8 @@
 %% Example:
 %% get_subnet_cidr_reservations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SubnetIpv4CidrReservations">> => list(subnet_cidr_reservation()()),
-%%   <<"SubnetIpv6CidrReservations">> => list(subnet_cidr_reservation()())
+%%   <<"SubnetIpv4CidrReservations">> => list(subnet_cidr_reservation()),
+%%   <<"SubnetIpv6CidrReservations">> => list(subnet_cidr_reservation())
 %% }
 -type get_subnet_cidr_reservations_result() :: #{binary() => any()}.
 
@@ -2406,7 +2406,7 @@
 %%   <<"MulticastSupport">> => list(any()),
 %%   <<"PropagationDefaultRouteTableId">> => string(),
 %%   <<"SecurityGroupReferencingSupport">> => list(any()),
-%%   <<"TransitGatewayCidrBlocks">> => list(string()()),
+%%   <<"TransitGatewayCidrBlocks">> => list(string()),
 %%   <<"VpnEcmpSupport">> => list(any())
 %% }
 -type transit_gateway_options() :: #{binary() => any()}.
@@ -2414,7 +2414,7 @@
 %% Example:
 %% describe_managed_prefix_lists_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PrefixLists">> => list(managed_prefix_list()())
+%%   <<"PrefixLists">> => list(managed_prefix_list())
 %% }
 -type describe_managed_prefix_lists_result() :: #{binary() => any()}.
 
@@ -2441,9 +2441,9 @@
 %% Example:
 %% describe_instance_status_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IncludeAllInstances">> => boolean(),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2482,10 +2482,10 @@
 %%   <<"CapacityReservationFleetId">> => string(),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"EndDate">> => non_neg_integer(),
-%%   <<"FleetCapacityReservations">> => list(fleet_capacity_reservation()()),
+%%   <<"FleetCapacityReservations">> => list(fleet_capacity_reservation()),
 %%   <<"InstanceMatchCriteria">> => list(any()),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Tenancy">> => list(any()),
 %%   <<"TotalFulfilledCapacity">> => float(),
 %%   <<"TotalTargetCapacity">> => integer()
@@ -2512,14 +2512,14 @@
 %% Example:
 %% authorize_security_group_egress_result() :: #{
 %%   <<"Return">> => boolean(),
-%%   <<"SecurityGroupRules">> => list(security_group_rule()())
+%%   <<"SecurityGroupRules">> => list(security_group_rule())
 %% }
 -type authorize_security_group_egress_result() :: #{binary() => any()}.
 
 %% Example:
 %% import_instance_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"DiskImages">> => list(disk_image()()),
+%%   <<"DiskImages">> => list(disk_image()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"LaunchSpecification">> => import_instance_launch_specification(),
 %%   <<"Platform">> := list(any())
@@ -2538,7 +2538,7 @@
 
 %% Example:
 %% describe_instance_types_result() :: #{
-%%   <<"InstanceTypes">> => list(instance_type_info()()),
+%%   <<"InstanceTypes">> => list(instance_type_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_types_result() :: #{binary() => any()}.
@@ -2560,8 +2560,8 @@
 %% Example:
 %% describe_egress_only_internet_gateways_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"EgressOnlyInternetGatewayIds">> => list(string()()),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"EgressOnlyInternetGatewayIds">> => list(string()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2602,7 +2602,7 @@
 
 %% Example:
 %% describe_launch_template_versions_result() :: #{
-%%   <<"LaunchTemplateVersions">> => list(launch_template_version()()),
+%%   <<"LaunchTemplateVersions">> => list(launch_template_version()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_launch_template_versions_result() :: #{binary() => any()}.
@@ -2620,8 +2620,8 @@
 %% Example:
 %% delete_tags_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Resources">> := list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Resources">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type delete_tags_request() :: #{binary() => any()}.
 
@@ -2633,7 +2633,7 @@
 
 %% Example:
 %% target_groups_config() :: #{
-%%   <<"TargetGroups">> => list(target_group()())
+%%   <<"TargetGroups">> => list(target_group())
 %% }
 -type target_groups_config() :: #{binary() => any()}.
 
@@ -2656,7 +2656,7 @@
 %% Example:
 %% deregister_instance_tag_attribute_request() :: #{
 %%   <<"IncludeAllTagsOfInstance">> => boolean(),
-%%   <<"InstanceTagKeys">> => list(string()())
+%%   <<"InstanceTagKeys">> => list(string())
 %% }
 -type deregister_instance_tag_attribute_request() :: #{binary() => any()}.
 
@@ -2675,14 +2675,14 @@
 
 %% Example:
 %% delete_queued_reserved_instances_result() :: #{
-%%   <<"FailedQueuedPurchaseDeletions">> => list(failed_queued_purchase_deletion()()),
-%%   <<"SuccessfulQueuedPurchaseDeletions">> => list(successful_queued_purchase_deletion()())
+%%   <<"FailedQueuedPurchaseDeletions">> => list(failed_queued_purchase_deletion()),
+%%   <<"SuccessfulQueuedPurchaseDeletions">> => list(successful_queued_purchase_deletion())
 %% }
 -type delete_queued_reserved_instances_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_local_gateway_virtual_interface_groups_result() :: #{
-%%   <<"LocalGatewayVirtualInterfaceGroups">> => list(local_gateway_virtual_interface_group()()),
+%%   <<"LocalGatewayVirtualInterfaceGroups">> => list(local_gateway_virtual_interface_group()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_local_gateway_virtual_interface_groups_result() :: #{binary() => any()}.
@@ -2697,7 +2697,7 @@
 %% Example:
 %% get_managed_prefix_list_associations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PrefixListAssociations">> => list(prefix_list_association()())
+%%   <<"PrefixListAssociations">> => list(prefix_list_association())
 %% }
 -type get_managed_prefix_list_associations_result() :: #{binary() => any()}.
 
@@ -2707,7 +2707,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"PeerAddress">> := string(),
 %%   <<"RouteServerEndpointId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_route_server_peer_request() :: #{binary() => any()}.
 
@@ -2729,12 +2729,12 @@
 %% Example:
 %% path_component() :: #{
 %%   <<"AclRule">> => analysis_acl_rule(),
-%%   <<"AdditionalDetails">> => list(additional_detail()()),
+%%   <<"AdditionalDetails">> => list(additional_detail()),
 %%   <<"AttachedTo">> => analysis_component(),
 %%   <<"Component">> => analysis_component(),
 %%   <<"DestinationVpc">> => analysis_component(),
 %%   <<"ElasticLoadBalancerListener">> => analysis_component(),
-%%   <<"Explanations">> => list(explanation()()),
+%%   <<"Explanations">> => list(explanation()),
 %%   <<"FirewallStatefulRule">> => firewall_stateful_rule(),
 %%   <<"FirewallStatelessRule">> => firewall_stateless_rule(),
 %%   <<"InboundHeader">> => analysis_packet_header(),
@@ -2769,7 +2769,7 @@
 
 %% Example:
 %% image_attribute() :: #{
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"BootMode">> => attribute_value(),
 %%   <<"DeregistrationProtection">> => attribute_value(),
 %%   <<"Description">> => attribute_value(),
@@ -2777,8 +2777,8 @@
 %%   <<"ImdsSupport">> => attribute_value(),
 %%   <<"KernelId">> => attribute_value(),
 %%   <<"LastLaunchedTime">> => attribute_value(),
-%%   <<"LaunchPermissions">> => list(launch_permission()()),
-%%   <<"ProductCodes">> => list(product_code()()),
+%%   <<"LaunchPermissions">> => list(launch_permission()),
+%%   <<"ProductCodes">> => list(product_code()),
 %%   <<"RamdiskId">> => attribute_value(),
 %%   <<"SriovNetSupport">> => attribute_value(),
 %%   <<"TpmSupport">> => attribute_value(),
@@ -2818,7 +2818,7 @@
 
 %% Example:
 %% get_transit_gateway_multicast_domain_associations_result() :: #{
-%%   <<"MulticastDomainAssociations">> => list(transit_gateway_multicast_domain_association()()),
+%%   <<"MulticastDomainAssociations">> => list(transit_gateway_multicast_domain_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_transit_gateway_multicast_domain_associations_result() :: #{binary() => any()}.
@@ -2842,7 +2842,7 @@
 %%   <<"MostFrequentValue">> => string(),
 %%   <<"NumberOfMatchedAccounts">> => integer(),
 %%   <<"NumberOfUnmatchedAccounts">> => integer(),
-%%   <<"RegionalSummaries">> => list(regional_summary()())
+%%   <<"RegionalSummaries">> => list(regional_summary())
 %% }
 -type attribute_summary() :: #{binary() => any()}.
 
@@ -2898,7 +2898,7 @@
 
 %% Example:
 %% delete_vpc_endpoints_result() :: #{
-%%   <<"Unsuccessful">> => list(unsuccessful_item()())
+%%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type delete_vpc_endpoints_result() :: #{binary() => any()}.
 
@@ -2906,7 +2906,7 @@
 %% create_carrier_gateway_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> := string()
 %% }
 -type create_carrier_gateway_request() :: #{binary() => any()}.
@@ -2914,7 +2914,7 @@
 %% Example:
 %% transit_gateway_multicast_registered_group_sources() :: #{
 %%   <<"GroupIpAddress">> => string(),
-%%   <<"RegisteredNetworkInterfaceIds">> => list(string()()),
+%%   <<"RegisteredNetworkInterfaceIds">> => list(string()),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
 -type transit_gateway_multicast_registered_group_sources() :: #{binary() => any()}.
@@ -2929,7 +2929,7 @@
 %% availability_zone() :: #{
 %%   <<"GroupLongName">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"Messages">> => list(availability_zone_message()()),
+%%   <<"Messages">> => list(availability_zone_message()),
 %%   <<"NetworkBorderGroup">> => string(),
 %%   <<"OptInStatus">> => list(any()),
 %%   <<"ParentZoneId">> => string(),
@@ -2964,7 +2964,7 @@
 
 %% Example:
 %% disassociate_nat_gateway_address_result() :: #{
-%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()()),
+%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()),
 %%   <<"NatGatewayId">> => string()
 %% }
 -type disassociate_nat_gateway_address_result() :: #{binary() => any()}.
@@ -3012,7 +3012,7 @@
 
 %% Example:
 %% describe_addresses_attribute_request() :: #{
-%%   <<"AllocationIds">> => list(string()()),
+%%   <<"AllocationIds">> => list(string()),
 %%   <<"Attribute">> => list(any()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxResults">> => integer(),
@@ -3054,14 +3054,14 @@
 
 %% Example:
 %% volume_status_info() :: #{
-%%   <<"Details">> => list(volume_status_details()()),
+%%   <<"Details">> => list(volume_status_details()),
 %%   <<"Status">> => list(any())
 %% }
 -type volume_status_info() :: #{binary() => any()}.
 
 %% Example:
 %% describe_coip_pools_result() :: #{
-%%   <<"CoipPools">> => list(coip_pool()()),
+%%   <<"CoipPools">> => list(coip_pool()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_coip_pools_result() :: #{binary() => any()}.
@@ -3079,8 +3079,8 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"EffectiveDate">> => non_neg_integer(),
-%%   <<"ModificationResults">> => list(reserved_instances_modification_result()()),
-%%   <<"ReservedInstancesIds">> => list(reserved_instances_id()()),
+%%   <<"ModificationResults">> => list(reserved_instances_modification_result()),
+%%   <<"ReservedInstancesIds">> => list(reserved_instances_id()),
 %%   <<"ReservedInstancesModificationId">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"StatusMessage">> => string(),
@@ -3119,7 +3119,7 @@
 %% create_coip_pool_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"LocalGatewayRouteTableId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_coip_pool_request() :: #{binary() => any()}.
 
@@ -3138,9 +3138,9 @@
 
 %% Example:
 %% describe_capacity_block_status_request() :: #{
-%%   <<"CapacityBlockIds">> => list(string()()),
+%%   <<"CapacityBlockIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3148,9 +3148,9 @@
 
 %% Example:
 %% describe_dhcp_options_request() :: #{
-%%   <<"DhcpOptionsIds">> => list(string()()),
+%%   <<"DhcpOptionsIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3159,15 +3159,15 @@
 %% Example:
 %% describe_vpc_classic_link_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"VpcIds">> => list(string()())
+%%   <<"Filters">> => list(filter()),
+%%   <<"VpcIds">> => list(string())
 %% }
 -type describe_vpc_classic_link_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpcs_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Vpcs">> => list(vpc()())
+%%   <<"Vpcs">> => list(vpc())
 %% }
 -type describe_vpcs_result() :: #{binary() => any()}.
 
@@ -3203,7 +3203,7 @@
 %% Example:
 %% describe_traffic_mirror_filter_rules_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficMirrorFilterRules">> => list(traffic_mirror_filter_rule()())
+%%   <<"TrafficMirrorFilterRules">> => list(traffic_mirror_filter_rule())
 %% }
 -type describe_traffic_mirror_filter_rules_result() :: #{binary() => any()}.
 
@@ -3220,16 +3220,16 @@
 %%   <<"Description">> => string(),
 %%   <<"FpgaImageGlobalId">> => string(),
 %%   <<"FpgaImageId">> => string(),
-%%   <<"InstanceTypes">> => list(string()()),
+%%   <<"InstanceTypes">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"OwnerAlias">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PciId">> => pci_id(),
-%%   <<"ProductCodes">> => list(product_code()()),
+%%   <<"ProductCodes">> => list(product_code()),
 %%   <<"Public">> => boolean(),
 %%   <<"ShellVersion">> => string(),
 %%   <<"State">> => fpga_image_state(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UpdateTime">> => non_neg_integer()
 %% }
 -type fpga_image() :: #{binary() => any()}.
@@ -3240,7 +3240,7 @@
 %%   <<"PeerOwnerId">> => string(),
 %%   <<"PeerRegion">> => string(),
 %%   <<"PeerVpcId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> := string()
 %% }
 -type create_vpc_peering_connection_request() :: #{binary() => any()}.
@@ -3281,7 +3281,7 @@
 %%   <<"Encrypted">> => boolean(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"RoleName">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type import_snapshot_request() :: #{binary() => any()}.
 
@@ -3297,7 +3297,7 @@
 %%   <<"OwnerId">> => string(),
 %%   <<"ResourceDiscoveryStatus">> => list(any()),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type ipam_resource_discovery_association() :: #{binary() => any()}.
 
@@ -3353,9 +3353,9 @@
 %%   <<"LogFormat">> => string(),
 %%   <<"LogGroupName">> => string(),
 %%   <<"MaxAggregationInterval">> => integer(),
-%%   <<"ResourceIds">> := list(string()()),
+%%   <<"ResourceIds">> := list(string()),
 %%   <<"ResourceType">> := list(any()),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TrafficType">> => list(any())
 %% }
 -type create_flow_logs_request() :: #{binary() => any()}.
@@ -3368,7 +3368,7 @@
 
 %% Example:
 %% modify_verified_access_endpoint_cidr_options() :: #{
-%%   <<"PortRanges">> => list(modify_verified_access_endpoint_port_range()())
+%%   <<"PortRanges">> => list(modify_verified_access_endpoint_port_range())
 %% }
 -type modify_verified_access_endpoint_cidr_options() :: #{binary() => any()}.
 
@@ -3395,11 +3395,11 @@
 %%   <<"ImdsSupport">> => attribute_value(),
 %%   <<"LaunchPermission">> => launch_permission_modifications(),
 %%   <<"OperationType">> => list(any()),
-%%   <<"OrganizationArns">> => list(string()()),
-%%   <<"OrganizationalUnitArns">> => list(string()()),
-%%   <<"ProductCodes">> => list(string()()),
-%%   <<"UserGroups">> => list(string()()),
-%%   <<"UserIds">> => list(string()()),
+%%   <<"OrganizationArns">> => list(string()),
+%%   <<"OrganizationalUnitArns">> => list(string()),
+%%   <<"ProductCodes">> => list(string()),
+%%   <<"UserGroups">> => list(string()),
+%%   <<"UserIds">> => list(string()),
 %%   <<"Value">> => string()
 %% }
 -type modify_image_attribute_request() :: #{binary() => any()}.
@@ -3420,19 +3420,19 @@
 %%   <<"DeviceIndex">> => integer(),
 %%   <<"EnaQueueCount">> => integer(),
 %%   <<"EnaSrdSpecification">> => ena_srd_specification_request(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"InterfaceType">> => string(),
 %%   <<"Ipv4PrefixCount">> => integer(),
-%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()()),
+%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()),
 %%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(instance_ipv6_address_request()()),
+%%   <<"Ipv6Addresses">> => list(instance_ipv6_address_request()),
 %%   <<"Ipv6PrefixCount">> => integer(),
-%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()()),
+%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()),
 %%   <<"NetworkCardIndex">> => integer(),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"PrimaryIpv6">> => boolean(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()()),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
 %%   <<"SubnetId">> => string()
 %% }
@@ -3446,7 +3446,7 @@
 
 %% Example:
 %% dns_servers_options_modify_structure() :: #{
-%%   <<"CustomDnsServers">> => list(string()()),
+%%   <<"CustomDnsServers">> => list(string()),
 %%   <<"Enabled">> => boolean()
 %% }
 -type dns_servers_options_modify_structure() :: #{binary() => any()}.
@@ -3454,7 +3454,7 @@
 %% Example:
 %% describe_prefix_lists_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PrefixLists">> => list(prefix_list()())
+%%   <<"PrefixLists">> => list(prefix_list())
 %% }
 -type describe_prefix_lists_result() :: #{binary() => any()}.
 
@@ -3472,7 +3472,7 @@
 
 %% Example:
 %% describe_customer_gateways_result() :: #{
-%%   <<"CustomerGateways">> => list(customer_gateway()())
+%%   <<"CustomerGateways">> => list(customer_gateway())
 %% }
 -type describe_customer_gateways_result() :: #{binary() => any()}.
 
@@ -3507,7 +3507,7 @@
 %%   <<"ResourceName">> => string(),
 %%   <<"ResourceOwnerId">> => string(),
 %%   <<"ResourceRegion">> => string(),
-%%   <<"ResourceTags">> => list(ipam_resource_tag()()),
+%%   <<"ResourceTags">> => list(ipam_resource_tag()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"VpcId">> => string()
 %% }
@@ -3542,8 +3542,8 @@
 %% Example:
 %% revoke_security_group_egress_result() :: #{
 %%   <<"Return">> => boolean(),
-%%   <<"RevokedSecurityGroupRules">> => list(revoked_security_group_rule()()),
-%%   <<"UnknownIpPermissions">> => list(ip_permission()())
+%%   <<"RevokedSecurityGroupRules">> => list(revoked_security_group_rule()),
+%%   <<"UnknownIpPermissions">> => list(ip_permission())
 %% }
 -type revoke_security_group_egress_result() :: #{binary() => any()}.
 
@@ -3572,7 +3572,7 @@
 %% Example:
 %% reboot_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceIds">> := list(string()())
+%%   <<"InstanceIds">> := list(string())
 %% }
 -type reboot_instances_request() :: #{binary() => any()}.
 
@@ -3614,8 +3614,8 @@
 %% Example:
 %% describe_local_gateway_route_table_vpc_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LocalGatewayRouteTableVpcAssociationIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LocalGatewayRouteTableVpcAssociationIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3630,8 +3630,8 @@
 %% Example:
 %% describe_store_image_tasks_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"ImageIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"ImageIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3639,7 +3639,7 @@
 
 %% Example:
 %% modify_vpc_endpoint_connection_notification_request() :: #{
-%%   <<"ConnectionEvents">> => list(string()()),
+%%   <<"ConnectionEvents">> => list(string()),
 %%   <<"ConnectionNotificationArn">> => string(),
 %%   <<"ConnectionNotificationId">> := string(),
 %%   <<"DryRun">> => boolean()
@@ -3649,7 +3649,7 @@
 %% Example:
 %% terminate_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceIds">> := list(string()())
+%%   <<"InstanceIds">> := list(string())
 %% }
 -type terminate_instances_request() :: #{binary() => any()}.
 
@@ -3670,7 +3670,7 @@
 
 %% Example:
 %% access_scope_analysis_finding() :: #{
-%%   <<"FindingComponents">> => list(path_component()()),
+%%   <<"FindingComponents">> => list(path_component()),
 %%   <<"FindingId">> => string(),
 %%   <<"NetworkInsightsAccessScopeAnalysisId">> => string(),
 %%   <<"NetworkInsightsAccessScopeId">> => string()
@@ -3687,10 +3687,10 @@
 %% Example:
 %% describe_scheduled_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ScheduledInstanceIds">> => list(string()()),
+%%   <<"ScheduledInstanceIds">> => list(string()),
 %%   <<"SlotStartTimeRange">> => slot_start_time_range_request()
 %% }
 -type describe_scheduled_instances_request() :: #{binary() => any()}.
@@ -3761,12 +3761,12 @@
 
 %% Example:
 %% route_table() :: #{
-%%   <<"Associations">> => list(route_table_association()()),
+%%   <<"Associations">> => list(route_table_association()),
 %%   <<"OwnerId">> => string(),
-%%   <<"PropagatingVgws">> => list(propagating_vgw()()),
+%%   <<"PropagatingVgws">> => list(propagating_vgw()),
 %%   <<"RouteTableId">> => string(),
-%%   <<"Routes">> => list(route()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Routes">> => list(route()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type route_table() :: #{binary() => any()}.
@@ -3797,12 +3797,12 @@
 %%   <<"AcceptanceRequired">> => boolean(),
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"GatewayLoadBalancerArns">> => list(string()()),
-%%   <<"NetworkLoadBalancerArns">> => list(string()()),
+%%   <<"GatewayLoadBalancerArns">> => list(string()),
+%%   <<"NetworkLoadBalancerArns">> => list(string()),
 %%   <<"PrivateDnsName">> => string(),
-%%   <<"SupportedIpAddressTypes">> => list(string()()),
-%%   <<"SupportedRegions">> => list(string()()),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"SupportedIpAddressTypes">> => list(string()),
+%%   <<"SupportedRegions">> => list(string()),
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_vpc_endpoint_service_configuration_request() :: #{binary() => any()}.
 
@@ -3821,7 +3821,7 @@
 %%   <<"PeerTransitGatewayId">> => string(),
 %%   <<"PeeringAttachmentId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"TransitGatewayRouteTableAnnouncementId">> => string(),
 %%   <<"TransitGatewayRouteTableId">> => string()
@@ -3866,7 +3866,7 @@
 %% Example:
 %% unmonitor_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceIds">> := list(string()())
+%%   <<"InstanceIds">> := list(string())
 %% }
 -type unmonitor_instances_request() :: #{binary() => any()}.
 
@@ -3928,7 +3928,7 @@
 %%   <<"LaunchGroup">> => string(),
 %%   <<"LaunchSpecification">> => request_spot_launch_specification(),
 %%   <<"SpotPrice">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Type">> => list(any()),
 %%   <<"ValidFrom">> => non_neg_integer(),
 %%   <<"ValidUntil">> => non_neg_integer()
@@ -3963,9 +3963,9 @@
 
 %% Example:
 %% describe_trunk_interface_associations_request() :: #{
-%%   <<"AssociationIds">> => list(string()()),
+%%   <<"AssociationIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -4045,7 +4045,7 @@
 
 %% Example:
 %% connection_notification() :: #{
-%%   <<"ConnectionEvents">> => list(string()()),
+%%   <<"ConnectionEvents">> => list(string()),
 %%   <<"ConnectionNotificationArn">> => string(),
 %%   <<"ConnectionNotificationId">> => string(),
 %%   <<"ConnectionNotificationState">> => list(any()),
@@ -4073,7 +4073,7 @@
 
 %% Example:
 %% get_transit_gateway_route_table_associations_result() :: #{
-%%   <<"Associations">> => list(transit_gateway_route_table_association()()),
+%%   <<"Associations">> => list(transit_gateway_route_table_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_transit_gateway_route_table_associations_result() :: #{binary() => any()}.
@@ -4088,22 +4088,22 @@
 %% vpc() :: #{
 %%   <<"BlockPublicAccessStates">> => block_public_access_states(),
 %%   <<"CidrBlock">> => string(),
-%%   <<"CidrBlockAssociationSet">> => list(vpc_cidr_block_association()()),
+%%   <<"CidrBlockAssociationSet">> => list(vpc_cidr_block_association()),
 %%   <<"DhcpOptionsId">> => string(),
 %%   <<"EncryptionControl">> => vpc_encryption_control(),
 %%   <<"InstanceTenancy">> => list(any()),
-%%   <<"Ipv6CidrBlockAssociationSet">> => list(vpc_ipv6_cidr_block_association()()),
+%%   <<"Ipv6CidrBlockAssociationSet">> => list(vpc_ipv6_cidr_block_association()),
 %%   <<"IsDefault">> => boolean(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type vpc() :: #{binary() => any()}.
 
 %% Example:
 %% get_route_server_associations_result() :: #{
-%%   <<"RouteServerAssociations">> => list(route_server_association()())
+%%   <<"RouteServerAssociations">> => list(route_server_association())
 %% }
 -type get_route_server_associations_result() :: #{binary() => any()}.
 
@@ -4122,7 +4122,7 @@
 
 %% Example:
 %% describe_images_result() :: #{
-%%   <<"Images">> => list(image()()),
+%%   <<"Images">> => list(image()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_images_result() :: #{binary() => any()}.
@@ -4158,7 +4158,7 @@
 %%   <<"NotAfter">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TokenName">> => string(),
 %%   <<"TokenValue">> => string()
 %% }
@@ -4183,7 +4183,7 @@
 %% purchase_host_reservation_result() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CurrencyCode">> => list(any()),
-%%   <<"Purchase">> => list(purchase()()),
+%%   <<"Purchase">> => list(purchase()),
 %%   <<"TotalHourlyPrice">> => string(),
 %%   <<"TotalUpfrontPrice">> => string()
 %% }
@@ -4207,7 +4207,7 @@
 %%   <<"OwnerId">> => string(),
 %%   <<"PoolCount">> => integer(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type ipam_scope() :: #{binary() => any()}.
 
@@ -4217,11 +4217,11 @@
 %%   <<"Context">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"ExcessCapacityTerminationPolicy">> => list(any()),
-%%   <<"LaunchTemplateConfigs">> := list(fleet_launch_template_config_request()()),
+%%   <<"LaunchTemplateConfigs">> := list(fleet_launch_template_config_request()),
 %%   <<"OnDemandOptions">> => on_demand_options_request(),
 %%   <<"ReplaceUnhealthyInstances">> => boolean(),
 %%   <<"SpotOptions">> => spot_options_request(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TargetCapacitySpecification">> := target_capacity_specification_request(),
 %%   <<"TerminateInstancesWithExpiration">> => boolean(),
 %%   <<"Type">> => list(any()),
@@ -4240,8 +4240,8 @@
 %% Example:
 %% describe_flow_logs_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filter">> => list(filter()()),
-%%   <<"FlowLogIds">> => list(string()()),
+%%   <<"Filter">> => list(filter()),
+%%   <<"FlowLogIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -4301,7 +4301,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"NatGatewayId">> := string(),
 %%   <<"PrivateIpAddressCount">> => integer(),
-%%   <<"PrivateIpAddresses">> => list(string()())
+%%   <<"PrivateIpAddresses">> => list(string())
 %% }
 -type assign_private_nat_gateway_address_request() :: #{binary() => any()}.
 
@@ -4311,7 +4311,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_ipam_scope_request() :: #{binary() => any()}.
 
@@ -4350,7 +4350,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"Location">> => list(any()),
 %%   <<"OutpostArn">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VolumeId">> := string()
 %% }
 -type create_snapshot_request() :: #{binary() => any()}.
@@ -4359,14 +4359,14 @@
 %% create_transit_gateway_route_table_announcement_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"PeeringAttachmentId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransitGatewayRouteTableId">> := string()
 %% }
 -type create_transit_gateway_route_table_announcement_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_nat_gateway_address_result() :: #{
-%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()()),
+%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()),
 %%   <<"NatGatewayId">> => string()
 %% }
 -type associate_nat_gateway_address_result() :: #{binary() => any()}.
@@ -4386,7 +4386,7 @@
 %%   <<"RouteServerId">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"SubnetId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type route_server_endpoint() :: #{binary() => any()}.
@@ -4441,7 +4441,7 @@
 %% Example:
 %% disassociate_transit_gateway_multicast_domain_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"SubnetIds">> := list(string()()),
+%%   <<"SubnetIds">> := list(string()),
 %%   <<"TransitGatewayAttachmentId">> := string(),
 %%   <<"TransitGatewayMulticastDomainId">> := string()
 %% }
@@ -4457,14 +4457,14 @@
 %%   <<"ImageId">> => string(),
 %%   <<"ImportTaskId">> => string(),
 %%   <<"KmsKeyId">> => string(),
-%%   <<"LicenseSpecifications">> => list(import_image_license_configuration_response()()),
+%%   <<"LicenseSpecifications">> => list(import_image_license_configuration_response()),
 %%   <<"LicenseType">> => string(),
 %%   <<"Platform">> => string(),
 %%   <<"Progress">> => string(),
-%%   <<"SnapshotDetails">> => list(snapshot_detail()()),
+%%   <<"SnapshotDetails">> => list(snapshot_detail()),
 %%   <<"Status">> => string(),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UsageOperation">> => string()
 %% }
 -type import_image_task() :: #{binary() => any()}.
@@ -4513,10 +4513,10 @@
 %% Example:
 %% describe_vpc_endpoints_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointIds">> => list(string()())
+%%   <<"VpcEndpointIds">> => list(string())
 %% }
 -type describe_vpc_endpoints_request() :: #{binary() => any()}.
 
@@ -4544,9 +4544,9 @@
 %% Example:
 %% describe_network_insights_paths_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NetworkInsightsPathIds">> => list(string()()),
+%%   <<"NetworkInsightsPathIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_insights_paths_request() :: #{binary() => any()}.
@@ -4566,7 +4566,7 @@
 %% Example:
 %% get_host_reservation_purchase_preview_result() :: #{
 %%   <<"CurrencyCode">> => list(any()),
-%%   <<"Purchase">> => list(purchase()()),
+%%   <<"Purchase">> => list(purchase()),
 %%   <<"TotalHourlyPrice">> => string(),
 %%   <<"TotalUpfrontPrice">> => string()
 %% }
@@ -4574,7 +4574,7 @@
 
 %% Example:
 %% search_transit_gateway_multicast_groups_result() :: #{
-%%   <<"MulticastGroups">> => list(transit_gateway_multicast_group()()),
+%%   <<"MulticastGroups">> => list(transit_gateway_multicast_group()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_transit_gateway_multicast_groups_result() :: #{binary() => any()}.
@@ -4588,9 +4588,9 @@
 %% Example:
 %% assign_ipv6_addresses_request() :: #{
 %%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(string()()),
+%%   <<"Ipv6Addresses">> => list(string()),
 %%   <<"Ipv6PrefixCount">> => integer(),
-%%   <<"Ipv6Prefixes">> => list(string()()),
+%%   <<"Ipv6Prefixes">> => list(string()),
 %%   <<"NetworkInterfaceId">> := string()
 %% }
 -type assign_ipv6_addresses_request() :: #{binary() => any()}.
@@ -4604,14 +4604,14 @@
 %% Example:
 %% describe_images_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ExecutableUsers">> => list(string()()),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"ImageIds">> => list(string()()),
+%%   <<"ExecutableUsers">> => list(string()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"ImageIds">> => list(string()),
 %%   <<"IncludeDeprecated">> => boolean(),
 %%   <<"IncludeDisabled">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Owners">> => list(string()())
+%%   <<"Owners">> => list(string())
 %% }
 -type describe_images_request() :: #{binary() => any()}.
 
@@ -4636,8 +4636,8 @@
 %%   <<"InstanceEventWindowId">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TimeRanges">> => list(instance_event_window_time_range()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"TimeRanges">> => list(instance_event_window_time_range())
 %% }
 -type instance_event_window() :: #{binary() => any()}.
 
@@ -4662,7 +4662,7 @@
 %%   <<"SnapshotCopyCompletionDurationMinutes">> => float(),
 %%   <<"SourceImageId">> := string(),
 %%   <<"SourceRegion">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type copy_image_request() :: #{binary() => any()}.
 
@@ -4682,14 +4682,14 @@
 %% Example:
 %% describe_security_group_references_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"GroupId">> := list(string()())
+%%   <<"GroupId">> := list(string())
 %% }
 -type describe_security_group_references_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_security_group_vpc_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -4698,7 +4698,7 @@
 %% Example:
 %% describe_security_groups_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityGroups">> => list(security_group()())
+%%   <<"SecurityGroups">> => list(security_group())
 %% }
 -type describe_security_groups_result() :: #{binary() => any()}.
 
@@ -4708,7 +4708,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"ExcessCapacityTerminationPolicy">> => list(any()),
 %%   <<"FleetId">> := string(),
-%%   <<"LaunchTemplateConfigs">> => list(fleet_launch_template_config_request()()),
+%%   <<"LaunchTemplateConfigs">> => list(fleet_launch_template_config_request()),
 %%   <<"TargetCapacitySpecification">> => target_capacity_specification_request()
 %% }
 -type modify_fleet_request() :: #{binary() => any()}.
@@ -4734,7 +4734,7 @@
 %% Example:
 %% describe_transit_gateway_attachments_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayAttachments">> => list(transit_gateway_attachment()())
+%%   <<"TransitGatewayAttachments">> => list(transit_gateway_attachment())
 %% }
 -type describe_transit_gateway_attachments_result() :: #{binary() => any()}.
 
@@ -4745,14 +4745,14 @@
 %%   <<"SpotFleetRequestConfig">> => spot_fleet_request_config_data(),
 %%   <<"SpotFleetRequestId">> => string(),
 %%   <<"SpotFleetRequestState">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type spot_fleet_request_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_store_image_tasks_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StoreImageTaskResults">> => list(store_image_task_result()())
+%%   <<"StoreImageTaskResults">> => list(store_image_task_result())
 %% }
 -type describe_store_image_tasks_result() :: #{binary() => any()}.
 
@@ -4767,7 +4767,7 @@
 
 %% Example:
 %% describe_key_pairs_result() :: #{
-%%   <<"KeyPairs">> => list(key_pair_info()())
+%%   <<"KeyPairs">> => list(key_pair_info())
 %% }
 -type describe_key_pairs_result() :: #{binary() => any()}.
 
@@ -4801,8 +4801,8 @@
 %% Example:
 %% describe_internet_gateways_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"InternetGatewayIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"InternetGatewayIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -4841,9 +4841,9 @@
 
 %% Example:
 %% disable_fast_snapshot_restores_request() :: #{
-%%   <<"AvailabilityZones">> := list(string()()),
+%%   <<"AvailabilityZones">> := list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"SourceSnapshotIds">> := list(string()())
+%%   <<"SourceSnapshotIds">> := list(string())
 %% }
 -type disable_fast_snapshot_restores_request() :: #{binary() => any()}.
 
@@ -4871,7 +4871,7 @@
 %%   <<"PrefixListName">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Version">> => float()
 %% }
 -type managed_prefix_list() :: #{binary() => any()}.
@@ -4892,8 +4892,8 @@
 %% Example:
 %% unassign_ipv6_addresses_result() :: #{
 %%   <<"NetworkInterfaceId">> => string(),
-%%   <<"UnassignedIpv6Addresses">> => list(string()()),
-%%   <<"UnassignedIpv6Prefixes">> => list(string()())
+%%   <<"UnassignedIpv6Addresses">> => list(string()),
+%%   <<"UnassignedIpv6Prefixes">> => list(string())
 %% }
 -type unassign_ipv6_addresses_result() :: #{binary() => any()}.
 
@@ -4916,16 +4916,16 @@
 %%   <<"ClientData">> => client_data(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"DiskContainers">> => list(image_disk_container()()),
+%%   <<"DiskContainers">> => list(image_disk_container()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"Encrypted">> => boolean(),
 %%   <<"Hypervisor">> => string(),
 %%   <<"KmsKeyId">> => string(),
-%%   <<"LicenseSpecifications">> => list(import_image_license_configuration_request()()),
+%%   <<"LicenseSpecifications">> => list(import_image_license_configuration_request()),
 %%   <<"LicenseType">> => string(),
 %%   <<"Platform">> => string(),
 %%   <<"RoleName">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"UsageOperation">> => string()
 %% }
 -type import_image_request() :: #{binary() => any()}.
@@ -4933,17 +4933,17 @@
 %% Example:
 %% delete_vpc_endpoint_service_configurations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ServiceIds">> := list(string()())
+%%   <<"ServiceIds">> := list(string())
 %% }
 -type delete_vpc_endpoint_service_configurations_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_volumes_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VolumeIds">> => list(string()())
+%%   <<"VolumeIds">> => list(string())
 %% }
 -type describe_volumes_request() :: #{binary() => any()}.
 
@@ -4952,7 +4952,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxDrainDurationSeconds">> => integer(),
 %%   <<"NatGatewayId">> := string(),
-%%   <<"PrivateIpAddresses">> := list(string()())
+%%   <<"PrivateIpAddresses">> := list(string())
 %% }
 -type unassign_private_nat_gateway_address_request() :: #{binary() => any()}.
 
@@ -4965,7 +4965,7 @@
 %% Example:
 %% get_transit_gateway_policy_table_entries_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayPolicyTableId">> := string()
@@ -4994,7 +4994,7 @@
 
 %% Example:
 %% get_transit_gateway_policy_table_entries_result() :: #{
-%%   <<"TransitGatewayPolicyTableEntries">> => list(transit_gateway_policy_table_entry()())
+%%   <<"TransitGatewayPolicyTableEntries">> => list(transit_gateway_policy_table_entry())
 %% }
 -type get_transit_gateway_policy_table_entries_result() :: #{binary() => any()}.
 
@@ -5015,20 +5015,20 @@
 
 %% Example:
 %% network_interface() :: #{
-%%   <<"AssociatedSubnets">> => list(string()()),
+%%   <<"AssociatedSubnets">> => list(string()),
 %%   <<"Association">> => network_interface_association(),
 %%   <<"Attachment">> => network_interface_attachment(),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"ConnectionTrackingConfiguration">> => connection_tracking_configuration(),
 %%   <<"DenyAllIgwTraffic">> => boolean(),
 %%   <<"Description">> => string(),
-%%   <<"Groups">> => list(group_identifier()()),
+%%   <<"Groups">> => list(group_identifier()),
 %%   <<"InterfaceType">> => list(any()),
-%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification()()),
+%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification()),
 %%   <<"Ipv6Address">> => string(),
-%%   <<"Ipv6Addresses">> => list(network_interface_ipv6_address()()),
+%%   <<"Ipv6Addresses">> => list(network_interface_ipv6_address()),
 %%   <<"Ipv6Native">> => boolean(),
-%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification()()),
+%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification()),
 %%   <<"MacAddress">> => string(),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"Operator">> => operator_response(),
@@ -5036,7 +5036,7 @@
 %%   <<"OwnerId">> => string(),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(network_interface_private_ip_address()()),
+%%   <<"PrivateIpAddresses">> => list(network_interface_private_ip_address()),
 %%   <<"PublicDnsName">> => string(),
 %%   <<"PublicIpDnsNameOptions">> => public_ip_dns_name_options(),
 %%   <<"RequesterId">> => string(),
@@ -5044,7 +5044,7 @@
 %%   <<"SourceDestCheck">> => boolean(),
 %%   <<"Status">> => list(any()),
 %%   <<"SubnetId">> => string(),
-%%   <<"TagSet">> => list(tag()()),
+%%   <<"TagSet">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type network_interface() :: #{binary() => any()}.
@@ -5060,7 +5060,7 @@
 %% create_local_gateway_route_table_vpc_association_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"LocalGatewayRouteTableId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> := string()
 %% }
 -type create_local_gateway_route_table_vpc_association_request() :: #{binary() => any()}.
@@ -5083,7 +5083,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(string()())
+%%   <<"Resources">> => list(string())
 %% }
 -type describe_principal_id_format_request() :: #{binary() => any()}.
 
@@ -5095,7 +5095,7 @@
 %%   <<"ImportVolume">> => import_volume_task_details(),
 %%   <<"State">> => list(any()),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type conversion_task() :: #{binary() => any()}.
 
@@ -5115,10 +5115,10 @@
 %% Example:
 %% describe_route_server_endpoints_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RouteServerEndpointIds">> => list(string()())
+%%   <<"RouteServerEndpointIds">> => list(string())
 %% }
 -type describe_route_server_endpoints_request() :: #{binary() => any()}.
 
@@ -5144,14 +5144,14 @@
 
 %% Example:
 %% describe_ipam_scopes_result() :: #{
-%%   <<"IpamScopes">> => list(ipam_scope()()),
+%%   <<"IpamScopes">> => list(ipam_scope()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_scopes_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_aws_network_performance_data_result() :: #{
-%%   <<"DataResponses">> => list(data_response()()),
+%%   <<"DataResponses">> => list(data_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_aws_network_performance_data_result() :: #{binary() => any()}.
@@ -5168,7 +5168,7 @@
 %%   <<"DefaultForAz">> => boolean(),
 %%   <<"EnableDns64">> => boolean(),
 %%   <<"EnableLniAtDeviceIndex">> => integer(),
-%%   <<"Ipv6CidrBlockAssociationSet">> => list(subnet_ipv6_cidr_block_association()()),
+%%   <<"Ipv6CidrBlockAssociationSet">> => list(subnet_ipv6_cidr_block_association()),
 %%   <<"Ipv6Native">> => boolean(),
 %%   <<"MapCustomerOwnedIpOnLaunch">> => boolean(),
 %%   <<"MapPublicIpOnLaunch">> => boolean(),
@@ -5178,7 +5178,7 @@
 %%   <<"State">> => list(any()),
 %%   <<"SubnetArn">> => string(),
 %%   <<"SubnetId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -5202,7 +5202,7 @@
 
 %% Example:
 %% describe_nat_gateways_result() :: #{
-%%   <<"NatGateways">> => list(nat_gateway()()),
+%%   <<"NatGateways">> => list(nat_gateway()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_nat_gateways_result() :: #{binary() => any()}.
@@ -5213,7 +5213,7 @@
 %%   <<"MacModificationTaskId">> => string(),
 %%   <<"MacSystemIntegrityProtectionConfig">> => mac_system_integrity_protection_configuration(),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TaskState">> => list(any()),
 %%   <<"TaskType">> => list(any())
 %% }
@@ -5221,7 +5221,7 @@
 
 %% Example:
 %% get_groups_for_capacity_reservation_result() :: #{
-%%   <<"CapacityReservationGroups">> => list(capacity_reservation_group()()),
+%%   <<"CapacityReservationGroups">> => list(capacity_reservation_group()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_groups_for_capacity_reservation_result() :: #{binary() => any()}.
@@ -5267,7 +5267,7 @@
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceOwnerId">> => string(),
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Subnets">> => list(subnet_association()()),
+%%   <<"Subnets">> => list(subnet_association()),
 %%   <<"TransitGatewayAttachmentId">> => string(),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
@@ -5282,7 +5282,7 @@
 
 %% Example:
 %% get_ipam_discovered_resource_cidrs_result() :: #{
-%%   <<"IpamDiscoveredResourceCidrs">> => list(ipam_discovered_resource_cidr()()),
+%%   <<"IpamDiscoveredResourceCidrs">> => list(ipam_discovered_resource_cidr()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_ipam_discovered_resource_cidrs_result() :: #{binary() => any()}.
@@ -5290,10 +5290,10 @@
 %% Example:
 %% describe_moving_addresses_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"PublicIps">> => list(string()())
+%%   <<"PublicIps">> => list(string())
 %% }
 -type describe_moving_addresses_request() :: #{binary() => any()}.
 
@@ -5344,11 +5344,11 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"InstanceTypes">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ProductDescriptions">> => list(string()()),
+%%   <<"ProductDescriptions">> => list(string()),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type describe_spot_price_history_request() :: #{binary() => any()}.
@@ -5369,10 +5369,10 @@
 
 %% Example:
 %% describe_client_vpn_target_networks_request() :: #{
-%%   <<"AssociationIds">> => list(string()()),
+%%   <<"AssociationIds">> => list(string()),
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -5386,13 +5386,13 @@
 %%   <<"RdsDbInstanceArn">> => string(),
 %%   <<"RdsDbProxyArn">> => string(),
 %%   <<"RdsEndpoint">> => string(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type verified_access_endpoint_rds_options() :: #{binary() => any()}.
 
 %% Example:
 %% describe_spot_fleet_instances_response() :: #{
-%%   <<"ActiveInstances">> => list(active_instance()()),
+%%   <<"ActiveInstances">> => list(active_instance()),
 %%   <<"NextToken">> => string(),
 %%   <<"SpotFleetRequestId">> => string()
 %% }
@@ -5420,7 +5420,7 @@
 
 %% Example:
 %% deregister_image_result() :: #{
-%%   <<"DeleteSnapshotResults">> => list(delete_snapshot_return_code()()),
+%%   <<"DeleteSnapshotResults">> => list(delete_snapshot_return_code()),
 %%   <<"Return">> => boolean()
 %% }
 -type deregister_image_result() :: #{binary() => any()}.
@@ -5460,15 +5460,15 @@
 %% Example:
 %% create_flow_logs_result() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"FlowLogIds">> => list(string()()),
-%%   <<"Unsuccessful">> => list(unsuccessful_item()())
+%%   <<"FlowLogIds">> => list(string()),
+%%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type create_flow_logs_result() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_block_status() :: #{
 %%   <<"CapacityBlockId">> => string(),
-%%   <<"CapacityReservationStatuses">> => list(capacity_reservation_status()()),
+%%   <<"CapacityReservationStatuses">> => list(capacity_reservation_status()),
 %%   <<"InterconnectStatus">> => list(any()),
 %%   <<"TotalAvailableCapacity">> => integer(),
 %%   <<"TotalCapacity">> => integer(),
@@ -5493,7 +5493,7 @@
 
 %% Example:
 %% describe_placement_groups_result() :: #{
-%%   <<"PlacementGroups">> => list(placement_group()())
+%%   <<"PlacementGroups">> => list(placement_group())
 %% }
 -type describe_placement_groups_result() :: #{binary() => any()}.
 
@@ -5520,7 +5520,7 @@
 %% Example:
 %% describe_traffic_mirror_filters_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficMirrorFilters">> => list(traffic_mirror_filter()())
+%%   <<"TrafficMirrorFilters">> => list(traffic_mirror_filter())
 %% }
 -type describe_traffic_mirror_filters_result() :: #{binary() => any()}.
 
@@ -5581,7 +5581,7 @@
 %% create_route_table_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> := string()
 %% }
 -type create_route_table_request() :: #{binary() => any()}.
@@ -5619,7 +5619,7 @@
 %%   <<"ClientToken">> := string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"NetworkInsightsAccessScopeId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type start_network_insights_access_scope_analysis_request() :: #{binary() => any()}.
 
@@ -5658,8 +5658,8 @@
 %%   <<"InternetGateway">> => analysis_component(),
 %%   <<"Acl">> => analysis_component(),
 %%   <<"RouteTable">> => analysis_component(),
-%%   <<"Addresses">> => list(string()()),
-%%   <<"Protocols">> => list(string()()),
+%%   <<"Addresses">> => list(string()),
+%%   <<"Protocols">> => list(string()),
 %%   <<"State">> => string(),
 %%   <<"LoadBalancerListenerPort">> => integer(),
 %%   <<"TransitGatewayRouteTableRoute">> => transit_gateway_route_table_route(),
@@ -5671,15 +5671,15 @@
 %%   <<"VpnGateway">> => analysis_component(),
 %%   <<"SubnetRouteTable">> => analysis_component(),
 %%   <<"FirewallStatelessRule">> => firewall_stateless_rule(),
-%%   <<"PortRanges">> => list(port_range()()),
-%%   <<"LoadBalancerTargetGroups">> => list(analysis_component()()),
+%%   <<"PortRanges">> => list(port_range()),
+%%   <<"LoadBalancerTargetGroups">> => list(analysis_component()),
 %%   <<"VpnConnection">> => analysis_component(),
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"SecurityGroups">> => list(analysis_component()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"SecurityGroups">> => list(analysis_component()),
 %%   <<"PacketField">> => string(),
 %%   <<"ElasticLoadBalancerListener">> => analysis_component(),
 %%   <<"VpcPeeringConnection">> => analysis_component(),
-%%   <<"AvailabilityZoneIds">> => list(string()()),
+%%   <<"AvailabilityZoneIds">> => list(string()),
 %%   <<"RouteTableRoute">> => analysis_route_table_route(),
 %%   <<"NatGateway">> => analysis_component(),
 %%   <<"FirewallStatefulRule">> => firewall_stateful_rule(),
@@ -5690,7 +5690,7 @@
 %%   <<"TransitGateway">> => analysis_component(),
 %%   <<"IngressRouteTable">> => analysis_component(),
 %%   <<"Component">> => analysis_component(),
-%%   <<"Cidrs">> => list(string()()),
+%%   <<"Cidrs">> => list(string()),
 %%   <<"Destination">> => analysis_component(),
 %%   <<"SecurityGroupRule">> => analysis_security_group_rule()
 %% }
@@ -5698,7 +5698,7 @@
 
 %% Example:
 %% disassociate_nat_gateway_address_request() :: #{
-%%   <<"AssociationIds">> := list(string()()),
+%%   <<"AssociationIds">> := list(string()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxDrainDurationSeconds">> => integer(),
 %%   <<"NatGatewayId">> := string()
@@ -5714,7 +5714,7 @@
 %%   <<"SpreadLevel">> => list(any()),
 %%   <<"State">> => list(any()),
 %%   <<"Strategy">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type placement_group() :: #{binary() => any()}.
 
@@ -5734,17 +5734,17 @@
 
 %% Example:
 %% delete_vpc_endpoint_connection_notifications_result() :: #{
-%%   <<"Unsuccessful">> => list(unsuccessful_item()())
+%%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type delete_vpc_endpoint_connection_notifications_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_route_servers_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RouteServerIds">> => list(string()())
+%%   <<"RouteServerIds">> => list(string())
 %% }
 -type describe_route_servers_request() :: #{binary() => any()}.
 
@@ -5829,9 +5829,9 @@
 %% Example:
 %% describe_placement_groups_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"GroupIds">> => list(string()()),
-%%   <<"GroupNames">> => list(string()())
+%%   <<"Filters">> => list(filter()),
+%%   <<"GroupIds">> => list(string()),
+%%   <<"GroupNames">> => list(string())
 %% }
 -type describe_placement_groups_request() :: #{binary() => any()}.
 
@@ -5849,7 +5849,7 @@
 
 %% Example:
 %% describe_network_insights_access_scope_analyses_result() :: #{
-%%   <<"NetworkInsightsAccessScopeAnalyses">> => list(network_insights_access_scope_analysis()()),
+%%   <<"NetworkInsightsAccessScopeAnalyses">> => list(network_insights_access_scope_analysis()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_insights_access_scope_analyses_result() :: #{binary() => any()}.
@@ -5860,12 +5860,12 @@
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"DeviceIndex">> => integer(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(scheduled_instances_ipv6_address()()),
+%%   <<"Ipv6Addresses">> => list(scheduled_instances_ipv6_address()),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddressConfigs">> => list(scheduled_instances_private_ip_address_config()()),
+%%   <<"PrivateIpAddressConfigs">> => list(scheduled_instances_private_ip_address_config()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
 %%   <<"SubnetId">> => string()
 %% }
@@ -5909,7 +5909,7 @@
 %%   <<"Description">> := string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupName">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> => string()
 %% }
 -type create_security_group_request() :: #{binary() => any()}.
@@ -5917,7 +5917,7 @@
 %% Example:
 %% describe_vpc_endpoint_connections_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -5932,7 +5932,7 @@
 %% Example:
 %% delete_flow_logs_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"FlowLogIds">> := list(string()())
+%%   <<"FlowLogIds">> := list(string())
 %% }
 -type delete_flow_logs_request() :: #{binary() => any()}.
 
@@ -5955,7 +5955,7 @@
 
 %% Example:
 %% get_network_insights_access_scope_analysis_findings_result() :: #{
-%%   <<"AnalysisFindings">> => list(access_scope_analysis_finding()()),
+%%   <<"AnalysisFindings">> => list(access_scope_analysis_finding()),
 %%   <<"AnalysisStatus">> => list(any()),
 %%   <<"NetworkInsightsAccessScopeAnalysisId">> => string(),
 %%   <<"NextToken">> => string()
@@ -5965,16 +5965,16 @@
 %% Example:
 %% describe_transit_gateway_peering_attachments_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayAttachmentIds">> => list(string()())
+%%   <<"TransitGatewayAttachmentIds">> => list(string())
 %% }
 -type describe_transit_gateway_peering_attachments_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_security_group_references_result() :: #{
-%%   <<"SecurityGroupReferenceSet">> => list(security_group_reference()())
+%%   <<"SecurityGroupReferenceSet">> => list(security_group_reference())
 %% }
 -type describe_security_group_references_result() :: #{binary() => any()}.
 
@@ -6017,16 +6017,16 @@
 
 %% Example:
 %% get_managed_prefix_list_entries_result() :: #{
-%%   <<"Entries">> => list(prefix_list_entry()()),
+%%   <<"Entries">> => list(prefix_list_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_managed_prefix_list_entries_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_reserved_instances_modifications_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"NextToken">> => string(),
-%%   <<"ReservedInstancesModificationIds">> => list(string()())
+%%   <<"ReservedInstancesModificationIds">> => list(string())
 %% }
 -type describe_reserved_instances_modifications_request() :: #{binary() => any()}.
 
@@ -6044,14 +6044,14 @@
 
 %% Example:
 %% describe_hosts_result() :: #{
-%%   <<"Hosts">> => list(host()()),
+%%   <<"Hosts">> => list(host()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_hosts_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_capacity_reservation_billing_requests_result() :: #{
-%%   <<"CapacityReservationBillingRequests">> => list(capacity_reservation_billing_request()()),
+%%   <<"CapacityReservationBillingRequests">> => list(capacity_reservation_billing_request()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_reservation_billing_requests_result() :: #{binary() => any()}.
@@ -6065,7 +6065,7 @@
 %% Example:
 %% transit_gateway_multicast_registered_group_members() :: #{
 %%   <<"GroupIpAddress">> => string(),
-%%   <<"RegisteredNetworkInterfaceIds">> => list(string()()),
+%%   <<"RegisteredNetworkInterfaceIds">> => list(string()),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
 -type transit_gateway_multicast_registered_group_members() :: #{binary() => any()}.
@@ -6113,9 +6113,9 @@
 
 %% Example:
 %% describe_capacity_reservation_billing_requests_request() :: #{
-%%   <<"CapacityReservationIds">> => list(string()()),
+%%   <<"CapacityReservationIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Role">> := list(any())
@@ -6172,25 +6172,25 @@
 
 %% Example:
 %% describe_reserved_instances_listings_result() :: #{
-%%   <<"ReservedInstancesListings">> => list(reserved_instances_listing()())
+%%   <<"ReservedInstancesListings">> => list(reserved_instances_listing())
 %% }
 -type describe_reserved_instances_listings_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_vpc_endpoint_request() :: #{
-%%   <<"AddRouteTableIds">> => list(string()()),
-%%   <<"AddSecurityGroupIds">> => list(string()()),
-%%   <<"AddSubnetIds">> => list(string()()),
+%%   <<"AddRouteTableIds">> => list(string()),
+%%   <<"AddSecurityGroupIds">> => list(string()),
+%%   <<"AddSubnetIds">> => list(string()),
 %%   <<"DnsOptions">> => dns_options_specification(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"PolicyDocument">> => string(),
 %%   <<"PrivateDnsEnabled">> => boolean(),
-%%   <<"RemoveRouteTableIds">> => list(string()()),
-%%   <<"RemoveSecurityGroupIds">> => list(string()()),
-%%   <<"RemoveSubnetIds">> => list(string()()),
+%%   <<"RemoveRouteTableIds">> => list(string()),
+%%   <<"RemoveSecurityGroupIds">> => list(string()),
+%%   <<"RemoveSubnetIds">> => list(string()),
 %%   <<"ResetPolicy">> => boolean(),
-%%   <<"SubnetConfigurations">> => list(subnet_configuration()()),
+%%   <<"SubnetConfigurations">> => list(subnet_configuration()),
 %%   <<"VpcEndpointId">> := string()
 %% }
 -type modify_vpc_endpoint_request() :: #{binary() => any()}.
@@ -6213,7 +6213,7 @@
 
 %% Example:
 %% image_criterion() :: #{
-%%   <<"ImageProviders">> => list(string()())
+%%   <<"ImageProviders">> => list(string())
 %% }
 -type image_criterion() :: #{binary() => any()}.
 
@@ -6229,7 +6229,7 @@
 
 %% Example:
 %% disable_fast_snapshot_restore_error_item() :: #{
-%%   <<"FastSnapshotRestoreStateErrors">> => list(disable_fast_snapshot_restore_state_error_item()()),
+%%   <<"FastSnapshotRestoreStateErrors">> => list(disable_fast_snapshot_restore_state_error_item()),
 %%   <<"SnapshotId">> => string()
 %% }
 -type disable_fast_snapshot_restore_error_item() :: #{binary() => any()}.
@@ -6241,14 +6241,14 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"ReservationType">> := list(any()),
 %%   <<"SubnetId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_subnet_cidr_reservation_request() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_spot_instance_requests_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"SpotInstanceRequestIds">> := list(string()())
+%%   <<"SpotInstanceRequestIds">> := list(string())
 %% }
 -type cancel_spot_instance_requests_request() :: #{binary() => any()}.
 
@@ -6256,14 +6256,14 @@
 %% access_scope_path_request() :: #{
 %%   <<"Destination">> => path_statement_request(),
 %%   <<"Source">> => path_statement_request(),
-%%   <<"ThroughResources">> => list(through_resources_statement_request()())
+%%   <<"ThroughResources">> => list(through_resources_statement_request())
 %% }
 -type access_scope_path_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_reserved_instances_modifications_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReservedInstancesModifications">> => list(reserved_instances_modification()())
+%%   <<"ReservedInstancesModifications">> => list(reserved_instances_modification())
 %% }
 -type describe_reserved_instances_modifications_result() :: #{binary() => any()}.
 
@@ -6273,7 +6273,7 @@
 %%   <<"DefaultAssociationRouteTable">> => boolean(),
 %%   <<"DefaultPropagationRouteTable">> => boolean(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"TransitGatewayRouteTableId">> => string()
 %% }
@@ -6282,7 +6282,7 @@
 %% Example:
 %% get_coip_pool_usage_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"PoolId">> := string()
@@ -6314,7 +6314,7 @@
 %%   <<"AllocationDefaultNetmaskLength">> => integer(),
 %%   <<"AllocationMaxNetmaskLength">> => integer(),
 %%   <<"AllocationMinNetmaskLength">> => integer(),
-%%   <<"AllocationResourceTags">> => list(ipam_resource_tag()()),
+%%   <<"AllocationResourceTags">> => list(ipam_resource_tag()),
 %%   <<"AutoImport">> => boolean(),
 %%   <<"AwsService">> => list(any()),
 %%   <<"Description">> => string(),
@@ -6333,7 +6333,7 @@
 %%   <<"SourceResource">> => ipam_pool_source_resource(),
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type ipam_pool() :: #{binary() => any()}.
 
@@ -6382,7 +6382,7 @@
 %% Example:
 %% describe_stale_security_groups_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StaleSecurityGroupSet">> => list(stale_security_group()())
+%%   <<"StaleSecurityGroupSet">> => list(stale_security_group())
 %% }
 -type describe_stale_security_groups_result() :: #{binary() => any()}.
 
@@ -6409,10 +6409,10 @@
 %% Example:
 %% describe_managed_prefix_lists_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"PrefixListIds">> => list(string()())
+%%   <<"PrefixListIds">> => list(string())
 %% }
 -type describe_managed_prefix_lists_request() :: #{binary() => any()}.
 
@@ -6434,9 +6434,9 @@
 
 %% Example:
 %% classic_link_instance() :: #{
-%%   <<"Groups">> => list(group_identifier()()),
+%%   <<"Groups">> => list(group_identifier()),
 %%   <<"InstanceId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type classic_link_instance() :: #{binary() => any()}.
@@ -6449,8 +6449,8 @@
 
 %% Example:
 %% cancel_spot_fleet_requests_response() :: #{
-%%   <<"SuccessfulFleetRequests">> => list(cancel_spot_fleet_requests_success_item()()),
-%%   <<"UnsuccessfulFleetRequests">> => list(cancel_spot_fleet_requests_error_item()())
+%%   <<"SuccessfulFleetRequests">> => list(cancel_spot_fleet_requests_success_item()),
+%%   <<"UnsuccessfulFleetRequests">> => list(cancel_spot_fleet_requests_error_item())
 %% }
 -type cancel_spot_fleet_requests_response() :: #{binary() => any()}.
 
@@ -6465,8 +6465,8 @@
 %% Example:
 %% describe_vpc_block_public_access_exclusions_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ExclusionIds">> => list(string()()),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"ExclusionIds">> => list(string()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -6475,14 +6475,14 @@
 %% Example:
 %% modify_network_interface_attribute_request() :: #{
 %%   <<"AssociatePublicIpAddress">> => boolean(),
-%%   <<"AssociatedSubnetIds">> => list(string()()),
+%%   <<"AssociatedSubnetIds">> => list(string()),
 %%   <<"Attachment">> => network_interface_attachment_changes(),
 %%   <<"ConnectionTrackingSpecification">> => connection_tracking_specification_request(),
 %%   <<"Description">> => attribute_value(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EnaSrdSpecification">> => ena_srd_specification(),
 %%   <<"EnablePrimaryIpv6">> => boolean(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"NetworkInterfaceId">> := string(),
 %%   <<"SourceDestCheck">> => attribute_boolean_value()
 %% }
@@ -6491,9 +6491,9 @@
 %% Example:
 %% describe_nat_gateways_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filter">> => list(filter()()),
+%%   <<"Filter">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NatGatewayIds">> => list(string()()),
+%%   <<"NatGatewayIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_nat_gateways_request() :: #{binary() => any()}.
@@ -6507,10 +6507,10 @@
 %% Example:
 %% traffic_mirror_filter() :: #{
 %%   <<"Description">> => string(),
-%%   <<"EgressFilterRules">> => list(traffic_mirror_filter_rule()()),
-%%   <<"IngressFilterRules">> => list(traffic_mirror_filter_rule()()),
+%%   <<"EgressFilterRules">> => list(traffic_mirror_filter_rule()),
+%%   <<"IngressFilterRules">> => list(traffic_mirror_filter_rule()),
 %%   <<"NetworkServices">> => list(list(any())()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrafficMirrorFilterId">> => string()
 %% }
 -type traffic_mirror_filter() :: #{binary() => any()}.
@@ -6520,12 +6520,12 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"CapacityBlockId">> => string(),
-%%   <<"CapacityReservationIds">> => list(string()()),
+%%   <<"CapacityReservationIds">> => list(string()),
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"StartDate">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UltraserverType">> => string()
 %% }
 -type capacity_block() :: #{binary() => any()}.
@@ -6534,15 +6534,15 @@
 %% modify_security_group_rules_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupId">> := string(),
-%%   <<"SecurityGroupRules">> := list(security_group_rule_update()())
+%%   <<"SecurityGroupRules">> := list(security_group_rule_update())
 %% }
 -type modify_security_group_rules_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_bundle_tasks_request() :: #{
-%%   <<"BundleIds">> => list(string()()),
+%%   <<"BundleIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()())
+%%   <<"Filters">> => list(filter())
 %% }
 -type describe_bundle_tasks_request() :: #{binary() => any()}.
 
@@ -6564,8 +6564,8 @@
 %% Example:
 %% describe_instance_credit_specifications_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -6584,14 +6584,14 @@
 %%   <<"Ipv6IpamPoolId">> => string(),
 %%   <<"Ipv6NetmaskLength">> => integer(),
 %%   <<"Ipv6Pool">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_vpc_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_replace_root_volume_tasks_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReplaceRootVolumeTasks">> => list(replace_root_volume_task()())
+%%   <<"ReplaceRootVolumeTasks">> => list(replace_root_volume_task())
 %% }
 -type describe_replace_root_volume_tasks_result() :: #{binary() => any()}.
 
@@ -6606,7 +6606,7 @@
 %% get_ipam_discovered_accounts_request() :: #{
 %%   <<"DiscoveryRegion">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IpamResourceDiscoveryId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -6626,19 +6626,19 @@
 %%   <<"Monitoring">> => run_instances_monitoring_enabled(),
 %%   <<"SubnetId">> => string(),
 %%   <<"MinCount">> := integer(),
-%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()()),
-%%   <<"ElasticGpuSpecification">> => list(elastic_gpu_specification()()),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()),
+%%   <<"ElasticGpuSpecification">> => list(elastic_gpu_specification()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"NetworkPerformanceOptions">> => instance_network_performance_options_request(),
 %%   <<"MaintenanceOptions">> => instance_maintenance_options_request(),
-%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()()),
+%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()),
 %%   <<"KernelId">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"DisableApiStop">> => boolean(),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"CreditSpecification">> => credit_specification_request(),
 %%   <<"KeyName">> => string(),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"PrivateDnsNameOptions">> => private_dns_name_options_request(),
 %%   <<"InstanceInitiatedShutdownBehavior">> => list(any()),
 %%   <<"MetadataOptions">> => instance_metadata_options_request(),
@@ -6649,18 +6649,18 @@
 %%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"HibernationOptions">> => hibernation_options_request(),
-%%   <<"LicenseSpecifications">> => list(license_configuration_request()()),
+%%   <<"LicenseSpecifications">> => list(license_configuration_request()),
 %%   <<"RamdiskId">> => string(),
 %%   <<"CpuOptions">> => cpu_options_request(),
 %%   <<"ClientToken">> => string(),
-%%   <<"ElasticInferenceAccelerators">> => list(elastic_inference_accelerator()()),
+%%   <<"ElasticInferenceAccelerators">> => list(elastic_inference_accelerator()),
 %%   <<"IamInstanceProfile">> => iam_instance_profile_specification(),
 %%   <<"UserData">> => string(),
 %%   <<"LaunchTemplate">> => launch_template_specification(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"PrivateIpAddress">> => string(),
 %%   <<"DisableApiTermination">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Ipv6AddressCount">> => integer(),
 %%   <<"Operator">> => operator_request(),
 %%   <<"ImageId">> => string(),
@@ -6676,7 +6676,7 @@
 %%   <<"ElasticGpuState">> => list(any()),
 %%   <<"ElasticGpuType">> => string(),
 %%   <<"InstanceId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type elastic_gpus() :: #{binary() => any()}.
 
@@ -6741,7 +6741,7 @@
 %%   <<"RuleNumber">> => integer(),
 %%   <<"SourceCidrBlock">> => string(),
 %%   <<"SourcePortRange">> => traffic_mirror_port_range(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrafficDirection">> => list(any()),
 %%   <<"TrafficMirrorFilterId">> => string(),
 %%   <<"TrafficMirrorFilterRuleId">> => string()
@@ -6757,7 +6757,7 @@
 
 %% Example:
 %% describe_capacity_reservations_result() :: #{
-%%   <<"CapacityReservations">> => list(capacity_reservation()()),
+%%   <<"CapacityReservations">> => list(capacity_reservation()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_reservations_result() :: #{binary() => any()}.
@@ -6765,7 +6765,7 @@
 %% Example:
 %% describe_fleet_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"FleetId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -6792,14 +6792,14 @@
 %% describe_vpc_classic_link_dns_support_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VpcIds">> => list(string()())
+%%   <<"VpcIds">> => list(string())
 %% }
 -type describe_vpc_classic_link_dns_support_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_ipam_discovered_resource_cidrs_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IpamResourceDiscoveryId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -6841,7 +6841,7 @@
 %% Example:
 %% search_local_gateway_routes_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"LocalGatewayRouteTableId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -6876,7 +6876,7 @@
 %%   <<"GroupName">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceType">> => string(),
-%%   <<"NetworkNodes">> => list(string()()),
+%%   <<"NetworkNodes">> => list(string()),
 %%   <<"ZoneId">> => string()
 %% }
 -type instance_topology() :: #{binary() => any()}.
@@ -6900,7 +6900,7 @@
 %%   <<"SseType">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeId">> => string(),
 %%   <<"VolumeSize">> => integer()
 %% }
@@ -6936,10 +6936,10 @@
 %%   <<"LoadBalancerOptions">> => verified_access_endpoint_load_balancer_options(),
 %%   <<"NetworkInterfaceOptions">> => verified_access_endpoint_eni_options(),
 %%   <<"RdsOptions">> => verified_access_endpoint_rds_options(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SseSpecification">> => verified_access_sse_specification_response(),
 %%   <<"Status">> => verified_access_endpoint_status(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VerifiedAccessEndpointId">> => string(),
 %%   <<"VerifiedAccessGroupId">> => string(),
 %%   <<"VerifiedAccessInstanceId">> => string()
@@ -6967,7 +6967,7 @@
 
 %% Example:
 %% describe_verified_access_instance_logging_configurations_result() :: #{
-%%   <<"LoggingConfigurations">> => list(verified_access_instance_logging_configuration()()),
+%%   <<"LoggingConfigurations">> => list(verified_access_instance_logging_configuration()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_verified_access_instance_logging_configurations_result() :: #{binary() => any()}.
@@ -6975,7 +6975,7 @@
 %% Example:
 %% describe_scheduled_instance_availability_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScheduledInstanceAvailabilitySet">> => list(scheduled_instance_availability()())
+%%   <<"ScheduledInstanceAvailabilitySet">> => list(scheduled_instance_availability())
 %% }
 -type describe_scheduled_instance_availability_result() :: #{binary() => any()}.
 
@@ -7040,7 +7040,7 @@
 %%   <<"ConnectPeerConfiguration">> => transit_gateway_connect_peer_configuration(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayAttachmentId">> => string(),
 %%   <<"TransitGatewayConnectPeerId">> => string()
 %% }
@@ -7054,7 +7054,7 @@
 
 %% Example:
 %% describe_instance_status_result() :: #{
-%%   <<"InstanceStatuses">> => list(instance_status()()),
+%%   <<"InstanceStatuses">> => list(instance_status()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_status_result() :: #{binary() => any()}.
@@ -7063,7 +7063,7 @@
 %% create_verified_access_endpoint_eni_options() :: #{
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"Port">> => integer(),
-%%   <<"PortRanges">> => list(create_verified_access_endpoint_port_range()()),
+%%   <<"PortRanges">> => list(create_verified_access_endpoint_port_range()),
 %%   <<"Protocol">> => list(any())
 %% }
 -type create_verified_access_endpoint_eni_options() :: #{binary() => any()}.
@@ -7078,7 +7078,7 @@
 %%   <<"IpamId">> => string(),
 %%   <<"IpamRegion">> => string(),
 %%   <<"MeteredAccount">> => list(any()),
-%%   <<"OperatingRegions">> => list(ipam_operating_region()()),
+%%   <<"OperatingRegions">> => list(ipam_operating_region()),
 %%   <<"OwnerId">> => string(),
 %%   <<"PrivateDefaultScopeId">> => string(),
 %%   <<"PublicDefaultScopeId">> => string(),
@@ -7086,14 +7086,14 @@
 %%   <<"ScopeCount">> => integer(),
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Tier">> => list(any())
 %% }
 -type ipam() :: #{binary() => any()}.
 
 %% Example:
 %% describe_egress_only_internet_gateways_result() :: #{
-%%   <<"EgressOnlyInternetGateways">> => list(egress_only_internet_gateway()()),
+%%   <<"EgressOnlyInternetGateways">> => list(egress_only_internet_gateway()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_egress_only_internet_gateways_result() :: #{binary() => any()}.
@@ -7101,8 +7101,8 @@
 %% Example:
 %% vpc_peering_connection_vpc_info() :: #{
 %%   <<"CidrBlock">> => string(),
-%%   <<"CidrBlockSet">> => list(cidr_block()()),
-%%   <<"Ipv6CidrBlockSet">> => list(ipv6_cidr_block()()),
+%%   <<"CidrBlockSet">> => list(cidr_block()),
+%%   <<"Ipv6CidrBlockSet">> => list(ipv6_cidr_block()),
 %%   <<"OwnerId">> => string(),
 %%   <<"PeeringOptions">> => vpc_peering_connection_options_description(),
 %%   <<"Region">> => string(),
@@ -7119,14 +7119,14 @@
 %%   <<"ImageId">> => string(),
 %%   <<"ImportTaskId">> => string(),
 %%   <<"KmsKeyId">> => string(),
-%%   <<"LicenseSpecifications">> => list(import_image_license_configuration_response()()),
+%%   <<"LicenseSpecifications">> => list(import_image_license_configuration_response()),
 %%   <<"LicenseType">> => string(),
 %%   <<"Platform">> => string(),
 %%   <<"Progress">> => string(),
-%%   <<"SnapshotDetails">> => list(snapshot_detail()()),
+%%   <<"SnapshotDetails">> => list(snapshot_detail()),
 %%   <<"Status">> => string(),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UsageOperation">> => string()
 %% }
 -type import_image_result() :: #{binary() => any()}.
@@ -7174,8 +7174,8 @@
 
 %% Example:
 %% describe_hosts_request() :: #{
-%%   <<"Filter">> => list(filter()()),
-%%   <<"HostIds">> => list(string()()),
+%%   <<"Filter">> => list(filter()),
+%%   <<"HostIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -7189,7 +7189,7 @@
 %%   <<"GatewayLoadBalancerEndpointId">> => string(),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"NetworkLoadBalancerArn">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_traffic_mirror_target_request() :: #{binary() => any()}.
 
@@ -7198,7 +7198,7 @@
 %%   <<"CapacityBlockOfferingId">> := string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstancePlatform">> := list(any()),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type purchase_capacity_block_request() :: #{binary() => any()}.
 
@@ -7208,7 +7208,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceEventWindowId">> := string(),
 %%   <<"Name">> => string(),
-%%   <<"TimeRanges">> => list(instance_event_window_time_range_request()())
+%%   <<"TimeRanges">> => list(instance_event_window_time_range_request())
 %% }
 -type modify_instance_event_window_request() :: #{binary() => any()}.
 
@@ -7232,7 +7232,7 @@
 
 %% Example:
 %% neuron_info() :: #{
-%%   <<"NeuronDevices">> => list(neuron_device_info()()),
+%%   <<"NeuronDevices">> => list(neuron_device_info()),
 %%   <<"TotalNeuronDeviceMemoryInMiB">> => integer()
 %% }
 -type neuron_info() :: #{binary() => any()}.
@@ -7253,14 +7253,14 @@
 %% Example:
 %% spot_fleet_tag_specification() :: #{
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type spot_fleet_tag_specification() :: #{binary() => any()}.
 
 %% Example:
 %% modify_hosts_result() :: #{
-%%   <<"Successful">> => list(string()()),
-%%   <<"Unsuccessful">> => list(unsuccessful_item()())
+%%   <<"Successful">> => list(string()),
+%%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type modify_hosts_result() :: #{binary() => any()}.
 
@@ -7273,24 +7273,24 @@
 %% Example:
 %% get_vpn_connection_device_types_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpnConnectionDeviceTypes">> => list(vpn_connection_device_type()())
+%%   <<"VpnConnectionDeviceTypes">> => list(vpn_connection_device_type())
 %% }
 -type get_vpn_connection_device_types_result() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_capacity_reservation_fleets_result() :: #{
-%%   <<"FailedFleetCancellations">> => list(failed_capacity_reservation_fleet_cancellation_result()()),
-%%   <<"SuccessfulFleetCancellations">> => list(capacity_reservation_fleet_cancellation_state()())
+%%   <<"FailedFleetCancellations">> => list(failed_capacity_reservation_fleet_cancellation_result()),
+%%   <<"SuccessfulFleetCancellations">> => list(capacity_reservation_fleet_cancellation_state())
 %% }
 -type cancel_capacity_reservation_fleets_result() :: #{binary() => any()}.
 
 %% Example:
 %% analysis_packet_header() :: #{
-%%   <<"DestinationAddresses">> => list(string()()),
-%%   <<"DestinationPortRanges">> => list(port_range()()),
+%%   <<"DestinationAddresses">> => list(string()),
+%%   <<"DestinationPortRanges">> => list(port_range()),
 %%   <<"Protocol">> => string(),
-%%   <<"SourceAddresses">> => list(string()()),
-%%   <<"SourcePortRanges">> => list(port_range()())
+%%   <<"SourceAddresses">> => list(string()),
+%%   <<"SourcePortRanges">> => list(port_range())
 %% }
 -type analysis_packet_header() :: #{binary() => any()}.
 
@@ -7316,7 +7316,7 @@
 %%   <<"InstanceSpecification">> := instance_specification(),
 %%   <<"Location">> => list(any()),
 %%   <<"OutpostArn">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_snapshots_request() :: #{binary() => any()}.
 
@@ -7324,9 +7324,9 @@
 %% assign_private_ip_addresses_request() :: #{
 %%   <<"AllowReassignment">> => boolean(),
 %%   <<"Ipv4PrefixCount">> => integer(),
-%%   <<"Ipv4Prefixes">> => list(string()()),
+%%   <<"Ipv4Prefixes">> => list(string()),
 %%   <<"NetworkInterfaceId">> := string(),
-%%   <<"PrivateIpAddresses">> => list(string()()),
+%%   <<"PrivateIpAddresses">> => list(string()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer()
 %% }
 -type assign_private_ip_addresses_request() :: #{binary() => any()}.
@@ -7344,8 +7344,8 @@
 %% Example:
 %% describe_classic_link_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -7361,7 +7361,7 @@
 
 %% Example:
 %% get_ipam_discovered_public_addresses_result() :: #{
-%%   <<"IpamDiscoveredPublicAddresses">> => list(ipam_discovered_public_address()()),
+%%   <<"IpamDiscoveredPublicAddresses">> => list(ipam_discovered_public_address()),
 %%   <<"NextToken">> => string(),
 %%   <<"OldestSampleTime">> => non_neg_integer()
 %% }
@@ -7378,7 +7378,7 @@
 
 %% Example:
 %% assign_private_nat_gateway_address_result() :: #{
-%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()()),
+%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()),
 %%   <<"NatGatewayId">> => string()
 %% }
 -type assign_private_nat_gateway_address_result() :: #{binary() => any()}.
@@ -7392,10 +7392,10 @@
 %% Example:
 %% describe_transit_gateway_route_table_announcements_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayRouteTableAnnouncementIds">> => list(string()())
+%%   <<"TransitGatewayRouteTableAnnouncementIds">> => list(string())
 %% }
 -type describe_transit_gateway_route_table_announcements_request() :: #{binary() => any()}.
 
@@ -7408,13 +7408,13 @@
 %%   <<"ImageId">> := string(),
 %%   <<"RoleName">> => string(),
 %%   <<"S3ExportLocation">> := export_task_s3_location_request(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type export_image_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_identity_id_format_result() :: #{
-%%   <<"Statuses">> => list(id_format()())
+%%   <<"Statuses">> => list(id_format())
 %% }
 -type describe_identity_id_format_result() :: #{binary() => any()}.
 
@@ -7427,21 +7427,21 @@
 %% Example:
 %% modify_verified_access_endpoint_load_balancer_options() :: #{
 %%   <<"Port">> => integer(),
-%%   <<"PortRanges">> => list(modify_verified_access_endpoint_port_range()()),
+%%   <<"PortRanges">> => list(modify_verified_access_endpoint_port_range()),
 %%   <<"Protocol">> => list(any()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type modify_verified_access_endpoint_load_balancer_options() :: #{binary() => any()}.
 
 %% Example:
 %% modify_managed_prefix_list_request() :: #{
-%%   <<"AddEntries">> => list(add_prefix_list_entry()()),
+%%   <<"AddEntries">> => list(add_prefix_list_entry()),
 %%   <<"CurrentVersion">> => float(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxEntries">> => integer(),
 %%   <<"PrefixListId">> := string(),
 %%   <<"PrefixListName">> => string(),
-%%   <<"RemoveEntries">> => list(remove_prefix_list_entry()())
+%%   <<"RemoveEntries">> => list(remove_prefix_list_entry())
 %% }
 -type modify_managed_prefix_list_request() :: #{binary() => any()}.
 
@@ -7480,8 +7480,8 @@
 
 %% Example:
 %% network_insights_access_scope_content() :: #{
-%%   <<"ExcludePaths">> => list(access_scope_path()()),
-%%   <<"MatchPaths">> => list(access_scope_path()()),
+%%   <<"ExcludePaths">> => list(access_scope_path()),
+%%   <<"MatchPaths">> => list(access_scope_path()),
 %%   <<"NetworkInsightsAccessScopeId">> => string()
 %% }
 -type network_insights_access_scope_content() :: #{binary() => any()}.
@@ -7501,13 +7501,13 @@
 %% Example:
 %% modify_instance_attribute_request() :: #{
 %%   <<"Attribute">> => list(any()),
-%%   <<"BlockDeviceMappings">> => list(instance_block_device_mapping_specification()()),
+%%   <<"BlockDeviceMappings">> => list(instance_block_device_mapping_specification()),
 %%   <<"DisableApiStop">> => attribute_boolean_value(),
 %%   <<"DisableApiTermination">> => attribute_boolean_value(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EbsOptimized">> => attribute_boolean_value(),
 %%   <<"EnaSupport">> => attribute_boolean_value(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"InstanceId">> := string(),
 %%   <<"InstanceInitiatedShutdownBehavior">> => attribute_value(),
 %%   <<"InstanceType">> => attribute_value(),
@@ -7522,7 +7522,7 @@
 
 %% Example:
 %% describe_import_snapshot_tasks_result() :: #{
-%%   <<"ImportSnapshotTasks">> => list(import_snapshot_task()()),
+%%   <<"ImportSnapshotTasks">> => list(import_snapshot_task()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_import_snapshot_tasks_result() :: #{binary() => any()}.
@@ -7546,10 +7546,10 @@
 %% Example:
 %% describe_verified_access_instance_logging_configurations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessInstanceIds">> => list(string()())
+%%   <<"VerifiedAccessInstanceIds">> => list(string())
 %% }
 -type describe_verified_access_instance_logging_configurations_request() :: #{binary() => any()}.
 
@@ -7601,7 +7601,7 @@
 %% Example:
 %% describe_route_server_endpoints_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RouteServerEndpoints">> => list(route_server_endpoint()())
+%%   <<"RouteServerEndpoints">> => list(route_server_endpoint())
 %% }
 -type describe_route_server_endpoints_result() :: #{binary() => any()}.
 
@@ -7615,7 +7615,7 @@
 
 %% Example:
 %% delete_flow_logs_result() :: #{
-%%   <<"Unsuccessful">> => list(unsuccessful_item()())
+%%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type delete_flow_logs_result() :: #{binary() => any()}.
 
@@ -7638,13 +7638,13 @@
 %% Example:
 %% describe_security_group_rules_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityGroupRules">> => list(security_group_rule()())
+%%   <<"SecurityGroupRules">> => list(security_group_rule())
 %% }
 -type describe_security_group_rules_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_moving_addresses_result() :: #{
-%%   <<"MovingAddressStatuses">> => list(moving_address_status()()),
+%%   <<"MovingAddressStatuses">> => list(moving_address_status()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_moving_addresses_result() :: #{binary() => any()}.
@@ -7675,7 +7675,7 @@
 %% Example:
 %% get_subnet_cidr_reservations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"SubnetId">> := string()
@@ -7685,17 +7685,17 @@
 %% Example:
 %% describe_coip_pools_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"PoolIds">> => list(string()())
+%%   <<"PoolIds">> => list(string())
 %% }
 -type describe_coip_pools_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_route_tables_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RouteTables">> => list(route_table()())
+%%   <<"RouteTables">> => list(route_table())
 %% }
 -type describe_route_tables_result() :: #{binary() => any()}.
 
@@ -7716,7 +7716,7 @@
 %% Example:
 %% get_security_groups_for_vpc_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityGroupForVpcs">> => list(security_group_for_vpc()())
+%%   <<"SecurityGroupForVpcs">> => list(security_group_for_vpc())
 %% }
 -type get_security_groups_for_vpc_result() :: #{binary() => any()}.
 
@@ -7744,19 +7744,19 @@
 %%   <<"DeviceIndex">> => integer(),
 %%   <<"EnaQueueCount">> => integer(),
 %%   <<"EnaSrdSpecification">> => launch_template_ena_srd_specification(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"InterfaceType">> => string(),
 %%   <<"Ipv4PrefixCount">> => integer(),
-%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_response()()),
+%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_response()),
 %%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()()),
+%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()),
 %%   <<"Ipv6PrefixCount">> => integer(),
-%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_response()()),
+%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_response()),
 %%   <<"NetworkCardIndex">> => integer(),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"PrimaryIpv6">> => boolean(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()()),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
 %%   <<"SubnetId">> => string()
 %% }
@@ -7801,8 +7801,8 @@
 %% Example:
 %% get_reserved_instances_exchange_quote_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ReservedInstanceIds">> := list(string()()),
-%%   <<"TargetConfigurations">> => list(target_configuration_request()())
+%%   <<"ReservedInstanceIds">> := list(string()),
+%%   <<"TargetConfigurations">> => list(target_configuration_request())
 %% }
 -type get_reserved_instances_exchange_quote_request() :: #{binary() => any()}.
 
@@ -7813,33 +7813,33 @@
 %%   <<"IpamResourceDiscoveryId">> => string(),
 %%   <<"IpamResourceDiscoveryRegion">> => string(),
 %%   <<"IsDefault">> => boolean(),
-%%   <<"OperatingRegions">> => list(ipam_operating_region()()),
-%%   <<"OrganizationalUnitExclusions">> => list(ipam_organizational_unit_exclusion()()),
+%%   <<"OperatingRegions">> => list(ipam_operating_region()),
+%%   <<"OrganizationalUnitExclusions">> => list(ipam_organizational_unit_exclusion()),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type ipam_resource_discovery() :: #{binary() => any()}.
 
 %% Example:
 %% enable_fast_snapshot_restores_request() :: #{
-%%   <<"AvailabilityZones">> := list(string()()),
+%%   <<"AvailabilityZones">> := list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"SourceSnapshotIds">> := list(string()())
+%%   <<"SourceSnapshotIds">> := list(string())
 %% }
 -type enable_fast_snapshot_restores_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vpc_endpoints_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"VpcEndpointIds">> := list(string()())
+%%   <<"VpcEndpointIds">> := list(string())
 %% }
 -type delete_vpc_endpoints_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_transit_gateways_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGateways">> => list(transit_gateway()())
+%%   <<"TransitGateways">> => list(transit_gateway())
 %% }
 -type describe_transit_gateways_result() :: #{binary() => any()}.
 
@@ -7863,7 +7863,7 @@
 %% Example:
 %% describe_principal_id_format_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Principals">> => list(principal_id_format()())
+%%   <<"Principals">> => list(principal_id_format())
 %% }
 -type describe_principal_id_format_result() :: #{binary() => any()}.
 
@@ -7891,7 +7891,7 @@
 %% Example:
 %% describe_spot_price_history_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SpotPriceHistory">> => list(spot_price()())
+%%   <<"SpotPriceHistory">> => list(spot_price())
 %% }
 -type describe_spot_price_history_result() :: #{binary() => any()}.
 
@@ -7903,29 +7903,29 @@
 
 %% Example:
 %% describe_local_gateway_virtual_interfaces_result() :: #{
-%%   <<"LocalGatewayVirtualInterfaces">> => list(local_gateway_virtual_interface()()),
+%%   <<"LocalGatewayVirtualInterfaces">> => list(local_gateway_virtual_interface()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_local_gateway_virtual_interfaces_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_addresses_request() :: #{
-%%   <<"AllocationIds">> => list(string()()),
+%%   <<"AllocationIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"PublicIps">> => list(string()())
+%%   <<"Filters">> => list(filter()),
+%%   <<"PublicIps">> => list(string())
 %% }
 -type describe_addresses_request() :: #{binary() => any()}.
 
 %% Example:
 %% outpost_lag() :: #{
-%%   <<"LocalGatewayVirtualInterfaceIds">> => list(string()()),
+%%   <<"LocalGatewayVirtualInterfaceIds">> => list(string()),
 %%   <<"OutpostArn">> => string(),
 %%   <<"OutpostLagId">> => string(),
 %%   <<"OwnerId">> => string(),
-%%   <<"ServiceLinkVirtualInterfaceIds">> => list(string()()),
+%%   <<"ServiceLinkVirtualInterfaceIds">> => list(string()),
 %%   <<"State">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type outpost_lag() :: #{binary() => any()}.
 
@@ -7939,12 +7939,12 @@
 %%   <<"GatewayAssociationState">> => list(any()),
 %%   <<"Options">> => vpn_connection_options(),
 %%   <<"PreSharedKeyArn">> => string(),
-%%   <<"Routes">> => list(vpn_static_route()()),
+%%   <<"Routes">> => list(vpn_static_route()),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"Type">> => list(any()),
-%%   <<"VgwTelemetry">> => list(vgw_telemetry()()),
+%%   <<"VgwTelemetry">> => list(vgw_telemetry()),
 %%   <<"VpnConnectionId">> => string(),
 %%   <<"VpnGatewayId">> => string()
 %% }
@@ -7964,7 +7964,7 @@
 
 %% Example:
 %% available_capacity() :: #{
-%%   <<"AvailableInstanceCapacity">> => list(instance_capacity()()),
+%%   <<"AvailableInstanceCapacity">> => list(instance_capacity()),
 %%   <<"AvailableVCpus">> => integer()
 %% }
 -type available_capacity() :: #{binary() => any()}.
@@ -7972,7 +7972,7 @@
 %% Example:
 %% get_ipam_pool_cidrs_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IpamPoolId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -7982,10 +7982,10 @@
 %% Example:
 %% describe_spot_instance_requests_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SpotInstanceRequestIds">> => list(string()())
+%%   <<"SpotInstanceRequestIds">> => list(string())
 %% }
 -type describe_spot_instance_requests_request() :: #{binary() => any()}.
 
@@ -7998,7 +7998,7 @@
 %% Example:
 %% launch_template_tag_specification_request() :: #{
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type launch_template_tag_specification_request() :: #{binary() => any()}.
 
@@ -8029,7 +8029,7 @@
 %%   <<"ReplaceRootVolumeTaskId">> => string(),
 %%   <<"SnapshotId">> => string(),
 %%   <<"StartTime">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TaskState">> => list(any())
 %% }
 -type replace_root_volume_task() :: #{binary() => any()}.
@@ -8038,7 +8038,7 @@
 %% target_network() :: #{
 %%   <<"AssociationId">> => string(),
 %%   <<"ClientVpnEndpointId">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"Status">> => association_status(),
 %%   <<"TargetNetworkId">> => string(),
 %%   <<"VpcId">> => string()
@@ -8063,7 +8063,7 @@
 %% Example:
 %% modify_verified_access_endpoint_eni_options() :: #{
 %%   <<"Port">> => integer(),
-%%   <<"PortRanges">> => list(modify_verified_access_endpoint_port_range()()),
+%%   <<"PortRanges">> => list(modify_verified_access_endpoint_port_range()),
 %%   <<"Protocol">> => list(any())
 %% }
 -type modify_verified_access_endpoint_eni_options() :: #{binary() => any()}.
@@ -8094,7 +8094,7 @@
 %% Example:
 %% search_transit_gateway_multicast_groups_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayMulticastDomainId">> := string()
@@ -8106,7 +8106,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"S3Bucket">> := string(),
 %%   <<"S3Prefix">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TargetId">> := string()
 %% }
 -type start_declarative_policies_report_request() :: #{binary() => any()}.
@@ -8129,7 +8129,7 @@
 
 %% Example:
 %% describe_trunk_interface_associations_result() :: #{
-%%   <<"InterfaceAssociations">> => list(trunk_interface_association()()),
+%%   <<"InterfaceAssociations">> => list(trunk_interface_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_trunk_interface_associations_result() :: #{binary() => any()}.
@@ -8137,13 +8137,13 @@
 %% Example:
 %% create_internet_gateway_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_internet_gateway_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_reserved_instances_result() :: #{
-%%   <<"ReservedInstances">> => list(reserved_instances()())
+%%   <<"ReservedInstances">> => list(reserved_instances())
 %% }
 -type describe_reserved_instances_result() :: #{binary() => any()}.
 
@@ -8156,7 +8156,7 @@
 %% Example:
 %% spot_fleet_launch_specification() :: #{
 %%   <<"AddressingType">> => string(),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"IamInstanceProfile">> => iam_instance_profile_specification(),
 %%   <<"ImageId">> => string(),
@@ -8165,13 +8165,13 @@
 %%   <<"KernelId">> => string(),
 %%   <<"KeyName">> => string(),
 %%   <<"Monitoring">> => spot_fleet_monitoring(),
-%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()()),
+%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()),
 %%   <<"Placement">> => spot_placement(),
 %%   <<"RamdiskId">> => string(),
-%%   <<"SecurityGroups">> => list(group_identifier()()),
+%%   <<"SecurityGroups">> => list(group_identifier()),
 %%   <<"SpotPrice">> => string(),
 %%   <<"SubnetId">> => string(),
-%%   <<"TagSpecifications">> => list(spot_fleet_tag_specification()()),
+%%   <<"TagSpecifications">> => list(spot_fleet_tag_specification()),
 %%   <<"UserData">> => string(),
 %%   <<"WeightedCapacity">> => float()
 %% }
@@ -8185,7 +8185,7 @@
 
 %% Example:
 %% describe_client_vpn_authorization_rules_result() :: #{
-%%   <<"AuthorizationRules">> => list(authorization_rule()()),
+%%   <<"AuthorizationRules">> => list(authorization_rule()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_client_vpn_authorization_rules_result() :: #{binary() => any()}.
@@ -8212,7 +8212,7 @@
 
 %% Example:
 %% describe_fleet_instances_result() :: #{
-%%   <<"ActiveInstances">> => list(active_instance()()),
+%%   <<"ActiveInstances">> => list(active_instance()),
 %%   <<"FleetId">> => string(),
 %%   <<"NextToken">> => string()
 %% }
@@ -8241,8 +8241,8 @@
 %% Example:
 %% describe_instance_connect_endpoints_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"InstanceConnectEndpointIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"InstanceConnectEndpointIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -8251,8 +8251,8 @@
 %% Example:
 %% create_tags_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Resources">> := list(string()()),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Resources">> := list(string()),
+%%   <<"Tags">> := list(tag())
 %% }
 -type create_tags_request() :: #{binary() => any()}.
 
@@ -8272,7 +8272,7 @@
 %%   <<"RequesterTgwInfo">> => peering_tgw_info(),
 %%   <<"State">> => list(any()),
 %%   <<"Status">> => peering_attachment_status(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayAttachmentId">> => string()
 %% }
 -type transit_gateway_peering_attachment() :: #{binary() => any()}.
@@ -8282,8 +8282,8 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"IpPermissions">> => list(ip_permission()()),
-%%   <<"SecurityGroupRuleDescriptions">> => list(security_group_rule_description()())
+%%   <<"IpPermissions">> => list(ip_permission()),
+%%   <<"SecurityGroupRuleDescriptions">> => list(security_group_rule_description())
 %% }
 -type update_security_group_rule_descriptions_ingress_request() :: #{binary() => any()}.
 
@@ -8291,7 +8291,7 @@
 %% verified_access_endpoint_eni_options() :: #{
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"Port">> => integer(),
-%%   <<"PortRanges">> => list(verified_access_endpoint_port_range()()),
+%%   <<"PortRanges">> => list(verified_access_endpoint_port_range()),
 %%   <<"Protocol">> => list(any())
 %% }
 -type verified_access_endpoint_eni_options() :: #{binary() => any()}.
@@ -8352,8 +8352,8 @@
 %% describe_regions_request() :: #{
 %%   <<"AllRegions">> => boolean(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"RegionNames">> => list(string()())
+%%   <<"Filters">> => list(filter()),
+%%   <<"RegionNames">> => list(string())
 %% }
 -type describe_regions_request() :: #{binary() => any()}.
 
@@ -8365,14 +8365,14 @@
 
 %% Example:
 %% run_scheduled_instances_result() :: #{
-%%   <<"InstanceIdSet">> => list(string()())
+%%   <<"InstanceIdSet">> => list(string())
 %% }
 -type run_scheduled_instances_result() :: #{binary() => any()}.
 
 %% Example:
 %% request_spot_launch_specification() :: #{
 %%   <<"AddressingType">> => string(),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"IamInstanceProfile">> => iam_instance_profile_specification(),
 %%   <<"ImageId">> => string(),
@@ -8380,11 +8380,11 @@
 %%   <<"KernelId">> => string(),
 %%   <<"KeyName">> => string(),
 %%   <<"Monitoring">> => run_instances_monitoring_enabled(),
-%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()()),
+%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()),
 %%   <<"Placement">> => spot_placement(),
 %%   <<"RamdiskId">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"SubnetId">> => string(),
 %%   <<"UserData">> => string()
 %% }
@@ -8393,10 +8393,10 @@
 %% Example:
 %% describe_verified_access_endpoints_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessEndpointIds">> => list(string()()),
+%%   <<"VerifiedAccessEndpointIds">> => list(string()),
 %%   <<"VerifiedAccessGroupId">> => string(),
 %%   <<"VerifiedAccessInstanceId">> => string()
 %% }
@@ -8413,10 +8413,10 @@
 %% Example:
 %% describe_transit_gateway_policy_tables_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayPolicyTableIds">> => list(string()())
+%%   <<"TransitGatewayPolicyTableIds">> => list(string())
 %% }
 -type describe_transit_gateway_policy_tables_request() :: #{binary() => any()}.
 
@@ -8435,18 +8435,18 @@
 
 %% Example:
 %% instance_attribute() :: #{
-%%   <<"BlockDeviceMappings">> => list(instance_block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"DisableApiStop">> => attribute_boolean_value(),
 %%   <<"DisableApiTermination">> => attribute_boolean_value(),
 %%   <<"EbsOptimized">> => attribute_boolean_value(),
 %%   <<"EnaSupport">> => attribute_boolean_value(),
 %%   <<"EnclaveOptions">> => enclave_options(),
-%%   <<"Groups">> => list(group_identifier()()),
+%%   <<"Groups">> => list(group_identifier()),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceInitiatedShutdownBehavior">> => attribute_value(),
 %%   <<"InstanceType">> => attribute_value(),
 %%   <<"KernelId">> => attribute_value(),
-%%   <<"ProductCodes">> => list(product_code()()),
+%%   <<"ProductCodes">> => list(product_code()),
 %%   <<"RamdiskId">> => attribute_value(),
 %%   <<"RootDeviceName">> => attribute_value(),
 %%   <<"SourceDestCheck">> => attribute_boolean_value(),
@@ -8457,7 +8457,7 @@
 
 %% Example:
 %% describe_instance_credit_specifications_result() :: #{
-%%   <<"InstanceCreditSpecifications">> => list(instance_credit_specification()()),
+%%   <<"InstanceCreditSpecifications">> => list(instance_credit_specification()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_credit_specifications_result() :: #{binary() => any()}.
@@ -8500,21 +8500,21 @@
 %% create_network_acl_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> := string()
 %% }
 -type create_network_acl_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_endpoint_connection_notifications_result() :: #{
-%%   <<"ConnectionNotificationSet">> => list(connection_notification()()),
+%%   <<"ConnectionNotificationSet">> => list(connection_notification()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_vpc_endpoint_connection_notifications_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ipam_pools_result() :: #{
-%%   <<"IpamPools">> => list(ipam_pool()()),
+%%   <<"IpamPools">> => list(ipam_pool()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_pools_result() :: #{binary() => any()}.
@@ -8567,7 +8567,7 @@
 %%   <<"RuleNumber">> := integer(),
 %%   <<"SourceCidrBlock">> := string(),
 %%   <<"SourcePortRange">> => traffic_mirror_port_range_request(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TrafficDirection">> := list(any()),
 %%   <<"TrafficMirrorFilterId">> := string()
 %% }
@@ -8576,9 +8576,9 @@
 %% Example:
 %% describe_network_interfaces_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NetworkInterfaceIds">> => list(string()()),
+%%   <<"NetworkInterfaceIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_interfaces_request() :: #{binary() => any()}.
@@ -8616,7 +8616,7 @@
 %%   <<"AssociatePublicIpAddress">> => boolean(),
 %%   <<"Attachment">> => network_interface_attachment(),
 %%   <<"Description">> => attribute_value(),
-%%   <<"Groups">> => list(group_identifier()()),
+%%   <<"Groups">> => list(group_identifier()),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"SourceDestCheck">> => attribute_boolean_value()
 %% }
@@ -8635,16 +8635,16 @@
 %% Example:
 %% describe_reserved_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"OfferingClass">> => list(any()),
 %%   <<"OfferingType">> => list(any()),
-%%   <<"ReservedInstancesIds">> => list(string()())
+%%   <<"ReservedInstancesIds">> => list(string())
 %% }
 -type describe_reserved_instances_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_bundle_tasks_result() :: #{
-%%   <<"BundleTasks">> => list(bundle_task()())
+%%   <<"BundleTasks">> => list(bundle_task())
 %% }
 -type describe_bundle_tasks_result() :: #{binary() => any()}.
 
@@ -8700,14 +8700,14 @@
 
 %% Example:
 %% describe_vpn_connections_result() :: #{
-%%   <<"VpnConnections">> => list(vpn_connection()())
+%%   <<"VpnConnections">> => list(vpn_connection())
 %% }
 -type describe_vpn_connections_result() :: #{binary() => any()}.
 
 %% Example:
 %% terminate_client_vpn_connections_result() :: #{
 %%   <<"ClientVpnEndpointId">> => string(),
-%%   <<"ConnectionStatuses">> => list(terminate_connection_status()()),
+%%   <<"ConnectionStatuses">> => list(terminate_connection_status()),
 %%   <<"Username">> => string()
 %% }
 -type terminate_client_vpn_connections_result() :: #{binary() => any()}.
@@ -8724,10 +8724,10 @@
 %% Example:
 %% describe_replace_root_volume_tasks_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ReplaceRootVolumeTaskIds">> => list(string()())
+%%   <<"ReplaceRootVolumeTaskIds">> => list(string())
 %% }
 -type describe_replace_root_volume_tasks_request() :: #{binary() => any()}.
 
@@ -8748,7 +8748,7 @@
 %% Example:
 %% vpc_classic_link() :: #{
 %%   <<"ClassicLinkEnabled">> => boolean(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type vpc_classic_link() :: #{binary() => any()}.
@@ -8763,7 +8763,7 @@
 %% Example:
 %% describe_public_ipv4_pools_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PublicIpv4Pools">> => list(public_ipv4_pool()())
+%%   <<"PublicIpv4Pools">> => list(public_ipv4_pool())
 %% }
 -type describe_public_ipv4_pools_result() :: #{binary() => any()}.
 
@@ -8789,7 +8789,7 @@
 %% Example:
 %% delete_queued_reserved_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ReservedInstancesIds">> := list(string()())
+%%   <<"ReservedInstancesIds">> := list(string())
 %% }
 -type delete_queued_reserved_instances_request() :: #{binary() => any()}.
 
@@ -8838,7 +8838,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_ipam_external_resource_verification_token_request() :: #{binary() => any()}.
 
@@ -8852,7 +8852,7 @@
 %% modify_spot_fleet_request_request() :: #{
 %%   <<"Context">> => string(),
 %%   <<"ExcessCapacityTerminationPolicy">> => list(any()),
-%%   <<"LaunchTemplateConfigs">> => list(launch_template_config()()),
+%%   <<"LaunchTemplateConfigs">> => list(launch_template_config()),
 %%   <<"OnDemandTargetCapacity">> => integer(),
 %%   <<"SpotFleetRequestId">> := string(),
 %%   <<"TargetCapacity">> => integer()
@@ -8891,14 +8891,14 @@
 %%   <<"OutpostArn">> => string(),
 %%   <<"PlacementGroupArn">> => string(),
 %%   <<"StartDate">> => non_neg_integer(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Tenancy">> => list(any())
 %% }
 -type create_capacity_reservation_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_network_insights_analyses_result() :: #{
-%%   <<"NetworkInsightsAnalyses">> => list(network_insights_analysis()()),
+%%   <<"NetworkInsightsAnalyses">> => list(network_insights_analysis()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_insights_analyses_result() :: #{binary() => any()}.
@@ -8920,10 +8920,10 @@
 %% Example:
 %% describe_traffic_mirror_sessions_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficMirrorSessionIds">> => list(string()())
+%%   <<"TrafficMirrorSessionIds">> => list(string())
 %% }
 -type describe_traffic_mirror_sessions_request() :: #{binary() => any()}.
 
@@ -8962,7 +8962,7 @@
 
 %% Example:
 %% describe_fleets_instances() :: #{
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LaunchTemplateAndOverrides">> => launch_template_and_overrides_response(),
 %%   <<"Lifecycle">> => list(any()),
@@ -8974,7 +8974,7 @@
 %% accept_address_transfer_request() :: #{
 %%   <<"Address">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type accept_address_transfer_request() :: #{binary() => any()}.
 
@@ -8993,9 +8993,9 @@
 %% Example:
 %% describe_security_groups_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"GroupIds">> => list(string()()),
-%%   <<"GroupNames">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"GroupIds">> => list(string()),
+%%   <<"GroupNames">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -9059,9 +9059,9 @@
 
 %% Example:
 %% describe_capacity_reservations_request() :: #{
-%%   <<"CapacityReservationIds">> => list(string()()),
+%%   <<"CapacityReservationIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -9080,7 +9080,7 @@
 %% Example:
 %% fleet_launch_template_overrides() :: #{
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping_response()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping_response()),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceRequirements">> => instance_requirements(),
 %%   <<"InstanceType">> => list(any()),
@@ -9094,7 +9094,7 @@
 
 %% Example:
 %% describe_spot_fleet_request_history_response() :: #{
-%%   <<"HistoryRecords">> => list(history_record()()),
+%%   <<"HistoryRecords">> => list(history_record()),
 %%   <<"LastEvaluatedTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"SpotFleetRequestId">> => string(),
@@ -9105,7 +9105,7 @@
 %% Example:
 %% describe_transit_gateway_route_table_announcements_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayRouteTableAnnouncements">> => list(transit_gateway_route_table_announcement()())
+%%   <<"TransitGatewayRouteTableAnnouncements">> => list(transit_gateway_route_table_announcement())
 %% }
 -type describe_transit_gateway_route_table_announcements_result() :: #{binary() => any()}.
 
@@ -9119,7 +9119,7 @@
 
 %% Example:
 %% describe_export_tasks_result() :: #{
-%%   <<"ExportTasks">> => list(export_task()())
+%%   <<"ExportTasks">> => list(export_task())
 %% }
 -type describe_export_tasks_result() :: #{binary() => any()}.
 
@@ -9140,7 +9140,7 @@
 %% Example:
 %% describe_vpc_classic_link_dns_support_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Vpcs">> => list(classic_link_dns_support()())
+%%   <<"Vpcs">> => list(classic_link_dns_support())
 %% }
 -type describe_vpc_classic_link_dns_support_result() :: #{binary() => any()}.
 
@@ -9159,7 +9159,7 @@
 
 %% Example:
 %% describe_dhcp_options_result() :: #{
-%%   <<"DhcpOptions">> => list(dhcp_options()()),
+%%   <<"DhcpOptions">> => list(dhcp_options()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_dhcp_options_result() :: #{binary() => any()}.
@@ -9171,13 +9171,13 @@
 %%   <<"PartitionCount">> => integer(),
 %%   <<"SpreadLevel">> => list(any()),
 %%   <<"Strategy">> => list(any()),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_placement_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% modify_transit_gateway_options() :: #{
-%%   <<"AddTransitGatewayCidrBlocks">> => list(string()()),
+%%   <<"AddTransitGatewayCidrBlocks">> => list(string()),
 %%   <<"AmazonSideAsn">> => float(),
 %%   <<"AssociationDefaultRouteTableId">> => string(),
 %%   <<"AutoAcceptSharedAttachments">> => list(any()),
@@ -9185,7 +9185,7 @@
 %%   <<"DefaultRouteTablePropagation">> => list(any()),
 %%   <<"DnsSupport">> => list(any()),
 %%   <<"PropagationDefaultRouteTableId">> => string(),
-%%   <<"RemoveTransitGatewayCidrBlocks">> => list(string()()),
+%%   <<"RemoveTransitGatewayCidrBlocks">> => list(string()),
 %%   <<"SecurityGroupReferencingSupport">> => list(any()),
 %%   <<"VpnEcmpSupport">> => list(any())
 %% }
@@ -9200,7 +9200,7 @@
 
 %% Example:
 %% nitro_tpm_info() :: #{
-%%   <<"SupportedVersions">> => list(string()())
+%%   <<"SupportedVersions">> => list(string())
 %% }
 -type nitro_tpm_info() :: #{binary() => any()}.
 
@@ -9217,11 +9217,11 @@
 %%   <<"ConnectivityType">> => list(any()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"SecondaryAllocationIds">> => list(string()()),
+%%   <<"SecondaryAllocationIds">> => list(string()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
-%%   <<"SecondaryPrivateIpAddresses">> => list(string()()),
+%%   <<"SecondaryPrivateIpAddresses">> => list(string()),
 %%   <<"SubnetId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_nat_gateway_request() :: #{binary() => any()}.
 
@@ -9243,8 +9243,8 @@
 
 %% Example:
 %% describe_export_tasks_request() :: #{
-%%   <<"ExportTaskIds">> => list(string()()),
-%%   <<"Filters">> => list(filter()())
+%%   <<"ExportTaskIds">> => list(string()),
+%%   <<"Filters">> => list(filter())
 %% }
 -type describe_export_tasks_request() :: #{binary() => any()}.
 
@@ -9265,7 +9265,7 @@
 %% access_scope_path() :: #{
 %%   <<"Destination">> => path_statement(),
 %%   <<"Source">> => path_statement(),
-%%   <<"ThroughResources">> => list(through_resources_statement()())
+%%   <<"ThroughResources">> => list(through_resources_statement())
 %% }
 -type access_scope_path() :: #{binary() => any()}.
 
@@ -9291,11 +9291,11 @@
 
 %% Example:
 %% allocate_ipam_pool_cidr_request() :: #{
-%%   <<"AllowedCidrs">> => list(string()()),
+%%   <<"AllowedCidrs">> => list(string()),
 %%   <<"Cidr">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"DisallowedCidrs">> => list(string()()),
+%%   <<"DisallowedCidrs">> => list(string()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamPoolId">> := string(),
 %%   <<"NetmaskLength">> => integer(),
@@ -9306,32 +9306,32 @@
 %% Example:
 %% describe_locked_snapshots_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SnapshotIds">> => list(string()())
+%%   <<"SnapshotIds">> => list(string())
 %% }
 -type describe_locked_snapshots_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_mac_hosts_result() :: #{
-%%   <<"MacHosts">> => list(mac_host()()),
+%%   <<"MacHosts">> => list(mac_host()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_mac_hosts_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_reserved_instances_listing_result() :: #{
-%%   <<"ReservedInstancesListings">> => list(reserved_instances_listing()())
+%%   <<"ReservedInstancesListings">> => list(reserved_instances_listing())
 %% }
 -type create_reserved_instances_listing_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_launch_templates_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LaunchTemplateIds">> => list(string()()),
-%%   <<"LaunchTemplateNames">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LaunchTemplateIds">> => list(string()),
+%%   <<"LaunchTemplateNames">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -9358,14 +9358,14 @@
 
 %% Example:
 %% get_route_server_propagations_result() :: #{
-%%   <<"RouteServerPropagations">> => list(route_server_propagation()())
+%%   <<"RouteServerPropagations">> => list(route_server_propagation())
 %% }
 -type get_route_server_propagations_result() :: #{binary() => any()}.
 
 %% Example:
 %% associate_transit_gateway_multicast_domain_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"SubnetIds">> := list(string()()),
+%%   <<"SubnetIds">> := list(string()),
 %%   <<"TransitGatewayAttachmentId">> := string(),
 %%   <<"TransitGatewayMulticastDomainId">> := string()
 %% }
@@ -9403,8 +9403,8 @@
 
 %% Example:
 %% unassign_ipv6_addresses_request() :: #{
-%%   <<"Ipv6Addresses">> => list(string()()),
-%%   <<"Ipv6Prefixes">> => list(string()()),
+%%   <<"Ipv6Addresses">> => list(string()),
+%%   <<"Ipv6Prefixes">> => list(string()),
 %%   <<"NetworkInterfaceId">> := string()
 %% }
 -type unassign_ipv6_addresses_request() :: #{binary() => any()}.
@@ -9412,16 +9412,16 @@
 %% Example:
 %% describe_transit_gateway_connect_peers_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayConnectPeerIds">> => list(string()())
+%%   <<"TransitGatewayConnectPeerIds">> => list(string())
 %% }
 -type describe_transit_gateway_connect_peers_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_host_reservation_offerings_request() :: #{
-%%   <<"Filter">> => list(filter()()),
+%%   <<"Filter">> => list(filter()),
 %%   <<"MaxDuration">> => integer(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"MinDuration">> => integer(),
@@ -9434,7 +9434,7 @@
 %% get_ipam_discovered_public_addresses_request() :: #{
 %%   <<"AddressRegion">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IpamResourceDiscoveryId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -9443,7 +9443,7 @@
 
 %% Example:
 %% unassign_private_nat_gateway_address_result() :: #{
-%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()()),
+%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()),
 %%   <<"NatGatewayId">> => string()
 %% }
 -type unassign_private_nat_gateway_address_result() :: #{binary() => any()}.
@@ -9476,7 +9476,7 @@
 %%   <<"IpamPoolId">> => string(),
 %%   <<"NetworkBorderGroup">> => string(),
 %%   <<"PublicIpv4Pool">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type allocate_address_request() :: #{binary() => any()}.
 
@@ -9490,14 +9490,14 @@
 
 %% Example:
 %% create_image_request() :: #{
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceId">> := string(),
 %%   <<"Name">> := string(),
 %%   <<"NoReboot">> => boolean(),
 %%   <<"SnapshotLocation">> => list(any()),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_image_request() :: #{binary() => any()}.
 
@@ -9519,10 +9519,10 @@
 %% Example:
 %% describe_volumes_modifications_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VolumeIds">> => list(string()())
+%%   <<"VolumeIds">> => list(string())
 %% }
 -type describe_volumes_modifications_request() :: #{binary() => any()}.
 
@@ -9540,7 +9540,7 @@
 
 %% Example:
 %% describe_capacity_block_extension_offerings_result() :: #{
-%%   <<"CapacityBlockExtensionOfferings">> => list(capacity_block_extension_offering()()),
+%%   <<"CapacityBlockExtensionOfferings">> => list(capacity_block_extension_offering()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_block_extension_offerings_result() :: #{binary() => any()}.
@@ -9548,19 +9548,19 @@
 %% Example:
 %% describe_security_group_rules_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityGroupRuleIds">> => list(string()())
+%%   <<"SecurityGroupRuleIds">> => list(string())
 %% }
 -type describe_security_group_rules_request() :: #{binary() => any()}.
 
 %% Example:
 %% verified_access_endpoint_cidr_options() :: #{
 %%   <<"Cidr">> => string(),
-%%   <<"PortRanges">> => list(verified_access_endpoint_port_range()()),
+%%   <<"PortRanges">> => list(verified_access_endpoint_port_range()),
 %%   <<"Protocol">> => list(any()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type verified_access_endpoint_cidr_options() :: #{binary() => any()}.
 
@@ -9572,14 +9572,14 @@
 
 %% Example:
 %% ipam_public_address_tags() :: #{
-%%   <<"EipTags">> => list(ipam_public_address_tag()())
+%%   <<"EipTags">> => list(ipam_public_address_tag())
 %% }
 -type ipam_public_address_tags() :: #{binary() => any()}.
 
 %% Example:
 %% fleet_launch_template_config() :: #{
 %%   <<"LaunchTemplateSpecification">> => fleet_launch_template_specification(),
-%%   <<"Overrides">> => list(fleet_launch_template_overrides()())
+%%   <<"Overrides">> => list(fleet_launch_template_overrides())
 %% }
 -type fleet_launch_template_config() :: #{binary() => any()}.
 
@@ -9608,7 +9608,7 @@
 
 %% Example:
 %% allocate_hosts_request() :: #{
-%%   <<"AssetIds">> => list(string()()),
+%%   <<"AssetIds">> => list(string()),
 %%   <<"AutoPlacement">> => list(any()),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
@@ -9619,7 +9619,7 @@
 %%   <<"InstanceType">> => string(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"Quantity">> => integer(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type allocate_hosts_request() :: #{binary() => any()}.
 
@@ -9641,7 +9641,7 @@
 %%   <<"OidcOptions">> => oidc_options(),
 %%   <<"PolicyReferenceName">> => string(),
 %%   <<"SseSpecification">> => verified_access_sse_specification_response(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrustProviderType">> => list(any()),
 %%   <<"UserTrustProviderType">> => list(any()),
 %%   <<"VerifiedAccessTrustProviderId">> => string()
@@ -9658,8 +9658,8 @@
 %% Example:
 %% describe_local_gateways_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LocalGatewayIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LocalGatewayIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -9668,8 +9668,8 @@
 %% Example:
 %% describe_ipam_pools_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"IpamPoolIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamPoolIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -9712,24 +9712,24 @@
 %%   <<"SnapshotId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StorageTier">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeId">> => string()
 %% }
 -type snapshot_tier_status() :: #{binary() => any()}.
 
 %% Example:
 %% dhcp_options() :: #{
-%%   <<"DhcpConfigurations">> => list(dhcp_configuration()()),
+%%   <<"DhcpConfigurations">> => list(dhcp_configuration()),
 %%   <<"DhcpOptionsId">> => string(),
 %%   <<"OwnerId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type dhcp_options() :: #{binary() => any()}.
 
 %% Example:
 %% describe_transit_gateway_policy_tables_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayPolicyTables">> => list(transit_gateway_policy_table()())
+%%   <<"TransitGatewayPolicyTables">> => list(transit_gateway_policy_table())
 %% }
 -type describe_transit_gateway_policy_tables_result() :: #{binary() => any()}.
 
@@ -9780,7 +9780,7 @@
 %% Example:
 %% describe_traffic_mirror_targets_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficMirrorTargets">> => list(traffic_mirror_target()())
+%%   <<"TrafficMirrorTargets">> => list(traffic_mirror_target())
 %% }
 -type describe_traffic_mirror_targets_result() :: #{binary() => any()}.
 
@@ -9819,7 +9819,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ImportTaskId">> => string(),
 %%   <<"SnapshotTaskDetail">> => snapshot_task_detail(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_snapshot_result() :: #{binary() => any()}.
 
@@ -9848,7 +9848,7 @@
 
 %% Example:
 %% delete_vpc_endpoint_connection_notifications_request() :: #{
-%%   <<"ConnectionNotificationIds">> := list(string()()),
+%%   <<"ConnectionNotificationIds">> := list(string()),
 %%   <<"DryRun">> => boolean()
 %% }
 -type delete_vpc_endpoint_connection_notifications_request() :: #{binary() => any()}.
@@ -9958,7 +9958,7 @@
 %%   <<"ResourceConfigurationGroupArn">> => string(),
 %%   <<"ServiceNetworkArn">> => string(),
 %%   <<"ServiceNetworkName">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcEndpointId">> => string()
 %% }
 -type vpc_endpoint_association() :: #{binary() => any()}.
@@ -10015,8 +10015,8 @@
 
 %% Example:
 %% resource_statement_request() :: #{
-%%   <<"ResourceTypes">> => list(string()()),
-%%   <<"Resources">> => list(string()())
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"Resources">> => list(string())
 %% }
 -type resource_statement_request() :: #{binary() => any()}.
 
@@ -10084,7 +10084,7 @@
 
 %% Example:
 %% describe_ipam_resource_discovery_associations_result() :: #{
-%%   <<"IpamResourceDiscoveryAssociations">> => list(ipam_resource_discovery_association()()),
+%%   <<"IpamResourceDiscoveryAssociations">> => list(ipam_resource_discovery_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_resource_discovery_associations_result() :: #{binary() => any()}.
@@ -10152,9 +10152,9 @@
 %% coip_pool() :: #{
 %%   <<"LocalGatewayRouteTableId">> => string(),
 %%   <<"PoolArn">> => string(),
-%%   <<"PoolCidrs">> => list(string()()),
+%%   <<"PoolCidrs">> => list(string()),
 %%   <<"PoolId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type coip_pool() :: #{binary() => any()}.
 
@@ -10174,8 +10174,8 @@
 
 %% Example:
 %% delete_fleets_result() :: #{
-%%   <<"SuccessfulFleetDeletions">> => list(delete_fleet_success_item()()),
-%%   <<"UnsuccessfulFleetDeletions">> => list(delete_fleet_error_item()())
+%%   <<"SuccessfulFleetDeletions">> => list(delete_fleet_success_item()),
+%%   <<"UnsuccessfulFleetDeletions">> => list(delete_fleet_error_item())
 %% }
 -type delete_fleets_result() :: #{binary() => any()}.
 
@@ -10225,7 +10225,7 @@
 
 %% Example:
 %% describe_vpc_classic_link_result() :: #{
-%%   <<"Vpcs">> => list(vpc_classic_link()())
+%%   <<"Vpcs">> => list(vpc_classic_link())
 %% }
 -type describe_vpc_classic_link_result() :: #{binary() => any()}.
 
@@ -10286,8 +10286,8 @@
 %%   <<"CronExpression">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"Name">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
-%%   <<"TimeRanges">> => list(instance_event_window_time_range_request()())
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"TimeRanges">> => list(instance_event_window_time_range_request())
 %% }
 -type create_instance_event_window_request() :: #{binary() => any()}.
 
@@ -10310,10 +10310,10 @@
 %% Example:
 %% describe_transit_gateways_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayIds">> => list(string()())
+%%   <<"TransitGatewayIds">> => list(string())
 %% }
 -type describe_transit_gateways_request() :: #{binary() => any()}.
 
@@ -10351,17 +10351,17 @@
 %% Example:
 %% modify_vpc_endpoint_service_configuration_request() :: #{
 %%   <<"AcceptanceRequired">> => boolean(),
-%%   <<"AddGatewayLoadBalancerArns">> => list(string()()),
-%%   <<"AddNetworkLoadBalancerArns">> => list(string()()),
-%%   <<"AddSupportedIpAddressTypes">> => list(string()()),
-%%   <<"AddSupportedRegions">> => list(string()()),
+%%   <<"AddGatewayLoadBalancerArns">> => list(string()),
+%%   <<"AddNetworkLoadBalancerArns">> => list(string()),
+%%   <<"AddSupportedIpAddressTypes">> => list(string()),
+%%   <<"AddSupportedRegions">> => list(string()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"PrivateDnsName">> => string(),
-%%   <<"RemoveGatewayLoadBalancerArns">> => list(string()()),
-%%   <<"RemoveNetworkLoadBalancerArns">> => list(string()()),
+%%   <<"RemoveGatewayLoadBalancerArns">> => list(string()),
+%%   <<"RemoveNetworkLoadBalancerArns">> => list(string()),
 %%   <<"RemovePrivateDnsName">> => boolean(),
-%%   <<"RemoveSupportedIpAddressTypes">> => list(string()()),
-%%   <<"RemoveSupportedRegions">> => list(string()()),
+%%   <<"RemoveSupportedIpAddressTypes">> => list(string()),
+%%   <<"RemoveSupportedRegions">> => list(string()),
 %%   <<"ServiceId">> := string()
 %% }
 -type modify_vpc_endpoint_service_configuration_request() :: #{binary() => any()}.
@@ -10407,12 +10407,12 @@
 %%   <<"OfferingClass">> => list(any()),
 %%   <<"OfferingType">> => list(any()),
 %%   <<"ProductDescription">> => list(any()),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservedInstancesId">> => string(),
 %%   <<"Scope">> => list(any()),
 %%   <<"Start">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UsagePrice">> => float()
 %% }
 -type reserved_instances() :: #{binary() => any()}.
@@ -10423,7 +10423,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamId">> := string(),
 %%   <<"IpamResourceDiscoveryId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type associate_ipam_resource_discovery_request() :: #{binary() => any()}.
 
@@ -10473,14 +10473,14 @@
 %% Example:
 %% mac_host() :: #{
 %%   <<"HostId">> => string(),
-%%   <<"MacOSLatestSupportedVersions">> => list(string()())
+%%   <<"MacOSLatestSupportedVersions">> => list(string())
 %% }
 -type mac_host() :: #{binary() => any()}.
 
 %% Example:
 %% describe_volumes_modifications_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VolumesModifications">> => list(volume_modification()())
+%%   <<"VolumesModifications">> => list(volume_modification())
 %% }
 -type describe_volumes_modifications_result() :: #{binary() => any()}.
 
@@ -10499,7 +10499,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"ObjectKey">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_restore_image_task_request() :: #{binary() => any()}.
 
@@ -10523,17 +10523,17 @@
 %% ip_permission() :: #{
 %%   <<"FromPort">> => integer(),
 %%   <<"IpProtocol">> => string(),
-%%   <<"IpRanges">> => list(ip_range()()),
-%%   <<"Ipv6Ranges">> => list(ipv6_range()()),
-%%   <<"PrefixListIds">> => list(prefix_list_id()()),
+%%   <<"IpRanges">> => list(ip_range()),
+%%   <<"Ipv6Ranges">> => list(ipv6_range()),
+%%   <<"PrefixListIds">> => list(prefix_list_id()),
 %%   <<"ToPort">> => integer(),
-%%   <<"UserIdGroupPairs">> => list(user_id_group_pair()())
+%%   <<"UserIdGroupPairs">> => list(user_id_group_pair())
 %% }
 -type ip_permission() :: #{binary() => any()}.
 
 %% Example:
 %% describe_classic_link_instances_result() :: #{
-%%   <<"Instances">> => list(classic_link_instance()()),
+%%   <<"Instances">> => list(classic_link_instance()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_classic_link_instances_result() :: #{binary() => any()}.
@@ -10555,9 +10555,9 @@
 %% Example:
 %% describe_network_insights_access_scopes_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NetworkInsightsAccessScopeIds">> => list(string()()),
+%%   <<"NetworkInsightsAccessScopeIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_insights_access_scopes_request() :: #{binary() => any()}.
@@ -10573,8 +10573,8 @@
 %% Example:
 %% describe_ipam_resource_discoveries_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"IpamResourceDiscoveryIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamResourceDiscoveryIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -10629,7 +10629,7 @@
 %% create_egress_only_internet_gateway_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> := string()
 %% }
 -type create_egress_only_internet_gateway_request() :: #{binary() => any()}.
@@ -10637,7 +10637,7 @@
 %% Example:
 %% accept_transit_gateway_multicast_domain_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"TransitGatewayAttachmentId">> => string(),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
@@ -10646,7 +10646,7 @@
 %% Example:
 %% describe_spot_fleet_requests_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SpotFleetRequestConfigs">> => list(spot_fleet_request_config()())
+%%   <<"SpotFleetRequestConfigs">> => list(spot_fleet_request_config())
 %% }
 -type describe_spot_fleet_requests_response() :: #{binary() => any()}.
 
@@ -10667,13 +10667,13 @@
 %% Example:
 %% describe_traffic_mirror_sessions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficMirrorSessions">> => list(traffic_mirror_session()())
+%%   <<"TrafficMirrorSessions">> => list(traffic_mirror_session())
 %% }
 -type describe_traffic_mirror_sessions_result() :: #{binary() => any()}.
 
 %% Example:
 %% media_accelerator_info() :: #{
-%%   <<"Accelerators">> => list(media_device_info()()),
+%%   <<"Accelerators">> => list(media_device_info()),
 %%   <<"TotalMediaMemoryInMiB">> => integer()
 %% }
 -type media_accelerator_info() :: #{binary() => any()}.
@@ -10737,15 +10737,15 @@
 
 %% Example:
 %% egress_only_internet_gateway() :: #{
-%%   <<"Attachments">> => list(internet_gateway_attachment()()),
+%%   <<"Attachments">> => list(internet_gateway_attachment()),
 %%   <<"EgressOnlyInternetGatewayId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type egress_only_internet_gateway() :: #{binary() => any()}.
 
 %% Example:
 %% describe_host_reservations_result() :: #{
-%%   <<"HostReservationSet">> => list(host_reservation()()),
+%%   <<"HostReservationSet">> => list(host_reservation()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_host_reservations_result() :: #{binary() => any()}.
@@ -10761,15 +10761,15 @@
 %% Example:
 %% rule_group_rule_options_pair() :: #{
 %%   <<"RuleGroupArn">> => string(),
-%%   <<"RuleOptions">> => list(rule_option()())
+%%   <<"RuleOptions">> => list(rule_option())
 %% }
 -type rule_group_rule_options_pair() :: #{binary() => any()}.
 
 %% Example:
 %% describe_local_gateway_virtual_interface_groups_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LocalGatewayVirtualInterfaceGroupIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LocalGatewayVirtualInterfaceGroupIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -10789,7 +10789,7 @@
 
 %% Example:
 %% describe_addresses_attribute_result() :: #{
-%%   <<"Addresses">> => list(address_attribute()()),
+%%   <<"Addresses">> => list(address_attribute()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_addresses_attribute_result() :: #{binary() => any()}.
@@ -10827,7 +10827,7 @@
 %% Example:
 %% export_transit_gateway_routes_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"S3Bucket">> := string(),
 %%   <<"TransitGatewayRouteTableId">> := string()
 %% }
@@ -10835,16 +10835,16 @@
 
 %% Example:
 %% resource_statement() :: #{
-%%   <<"ResourceTypes">> => list(string()()),
-%%   <<"Resources">> => list(string()())
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"Resources">> => list(string())
 %% }
 -type resource_statement() :: #{binary() => any()}.
 
 %% Example:
 %% describe_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -10873,13 +10873,13 @@
 
 %% Example:
 %% packet_header_statement() :: #{
-%%   <<"DestinationAddresses">> => list(string()()),
-%%   <<"DestinationPorts">> => list(string()()),
-%%   <<"DestinationPrefixLists">> => list(string()()),
+%%   <<"DestinationAddresses">> => list(string()),
+%%   <<"DestinationPorts">> => list(string()),
+%%   <<"DestinationPrefixLists">> => list(string()),
 %%   <<"Protocols">> => list(list(any())()),
-%%   <<"SourceAddresses">> => list(string()()),
-%%   <<"SourcePorts">> => list(string()()),
-%%   <<"SourcePrefixLists">> => list(string()())
+%%   <<"SourceAddresses">> => list(string()),
+%%   <<"SourcePorts">> => list(string()),
+%%   <<"SourcePrefixLists">> => list(string())
 %% }
 -type packet_header_statement() :: #{binary() => any()}.
 
@@ -10903,13 +10903,13 @@
 %%   <<"OutpostArn">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type local_gateway() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpn_gateways_result() :: #{
-%%   <<"VpnGateways">> => list(vpn_gateway()())
+%%   <<"VpnGateways">> => list(vpn_gateway())
 %% }
 -type describe_vpn_gateways_result() :: #{binary() => any()}.
 
@@ -10925,7 +10925,7 @@
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"NetworkInsightsAccessScopeArn">> => string(),
 %%   <<"NetworkInsightsAccessScopeId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UpdatedDate">> => non_neg_integer()
 %% }
 -type network_insights_access_scope() :: #{binary() => any()}.
@@ -10947,7 +10947,7 @@
 %% describe_client_vpn_routes_request() :: #{
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -11001,7 +11001,7 @@
 %% Example:
 %% create_transit_gateway_route_table_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransitGatewayId">> := string()
 %% }
 -type create_transit_gateway_route_table_request() :: #{binary() => any()}.
@@ -11039,7 +11039,7 @@
 %%   <<"Source">> => string(),
 %%   <<"SourceArn">> => string(),
 %%   <<"SourceIp">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type network_insights_path() :: #{binary() => any()}.
 
@@ -11054,7 +11054,7 @@
 %%   <<"DestinationCidrBlock">> => string(),
 %%   <<"PrefixListId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"TransitGatewayAttachments">> => list(transit_gateway_route_attachment()()),
+%%   <<"TransitGatewayAttachments">> => list(transit_gateway_route_attachment()),
 %%   <<"TransitGatewayRouteTableAnnouncementId">> => string(),
 %%   <<"Type">> => list(any())
 %% }
@@ -11070,13 +11070,13 @@
 %% Example:
 %% describe_verified_access_endpoints_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessEndpoints">> => list(verified_access_endpoint()())
+%%   <<"VerifiedAccessEndpoints">> => list(verified_access_endpoint())
 %% }
 -type describe_verified_access_endpoints_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_addresses_result() :: #{
-%%   <<"Addresses">> => list(address()())
+%%   <<"Addresses">> => list(address())
 %% }
 -type describe_addresses_result() :: #{binary() => any()}.
 
@@ -11111,10 +11111,10 @@
 %% Example:
 %% describe_transit_gateway_multicast_domains_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayMulticastDomainIds">> => list(string()())
+%%   <<"TransitGatewayMulticastDomainIds">> => list(string())
 %% }
 -type describe_transit_gateway_multicast_domains_request() :: #{binary() => any()}.
 
@@ -11188,8 +11188,8 @@
 
 %% Example:
 %% reservation() :: #{
-%%   <<"Groups">> => list(group_identifier()()),
-%%   <<"Instances">> => list(instance()()),
+%%   <<"Groups">> => list(group_identifier()),
+%%   <<"Instances">> => list(instance()),
 %%   <<"OwnerId">> => string(),
 %%   <<"RequesterId">> => string(),
 %%   <<"ReservationId">> => string()
@@ -11199,27 +11199,27 @@
 %% Example:
 %% vpc_endpoint() :: #{
 %%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"DnsEntries">> => list(dns_entry()()),
+%%   <<"DnsEntries">> => list(dns_entry()),
 %%   <<"DnsOptions">> => dns_options(),
 %%   <<"FailureReason">> => string(),
-%%   <<"Groups">> => list(security_group_identifier()()),
+%%   <<"Groups">> => list(security_group_identifier()),
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"Ipv4Prefixes">> => list(subnet_ip_prefixes()()),
-%%   <<"Ipv6Prefixes">> => list(subnet_ip_prefixes()()),
+%%   <<"Ipv4Prefixes">> => list(subnet_ip_prefixes()),
+%%   <<"Ipv6Prefixes">> => list(subnet_ip_prefixes()),
 %%   <<"LastError">> => last_error(),
-%%   <<"NetworkInterfaceIds">> => list(string()()),
+%%   <<"NetworkInterfaceIds">> => list(string()),
 %%   <<"OwnerId">> => string(),
 %%   <<"PolicyDocument">> => string(),
 %%   <<"PrivateDnsEnabled">> => boolean(),
 %%   <<"RequesterManaged">> => boolean(),
 %%   <<"ResourceConfigurationArn">> => string(),
-%%   <<"RouteTableIds">> => list(string()()),
+%%   <<"RouteTableIds">> => list(string()),
 %%   <<"ServiceName">> => string(),
 %%   <<"ServiceNetworkArn">> => string(),
 %%   <<"ServiceRegion">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"SubnetIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcEndpointId">> => string(),
 %%   <<"VpcEndpointType">> => list(any()),
 %%   <<"VpcId">> => string()
@@ -11258,17 +11258,17 @@
 %% response_launch_template_data() :: #{
 %%   <<"Placement">> => launch_template_placement(),
 %%   <<"Monitoring">> => launch_templates_monitoring(),
-%%   <<"TagSpecifications">> => list(launch_template_tag_specification()()),
+%%   <<"TagSpecifications">> => list(launch_template_tag_specification()),
 %%   <<"NetworkPerformanceOptions">> => launch_template_network_performance_options(),
 %%   <<"MaintenanceOptions">> => launch_template_instance_maintenance_options(),
-%%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification()()),
+%%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification()),
 %%   <<"KernelId">> => string(),
 %%   <<"RamDiskId">> => string(),
 %%   <<"DisableApiStop">> => boolean(),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"CreditSpecification">> => credit_specification(),
 %%   <<"KeyName">> => string(),
-%%   <<"BlockDeviceMappings">> => list(launch_template_block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(launch_template_block_device_mapping()),
 %%   <<"PrivateDnsNameOptions">> => launch_template_private_dns_name_options(),
 %%   <<"InstanceInitiatedShutdownBehavior">> => list(any()),
 %%   <<"MetadataOptions">> => launch_template_instance_metadata_options(),
@@ -11276,16 +11276,16 @@
 %%   <<"CapacityReservationSpecification">> => launch_template_capacity_reservation_specification_response(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"HibernationOptions">> => launch_template_hibernation_options(),
-%%   <<"ElasticGpuSpecifications">> => list(elastic_gpu_specification_response()()),
-%%   <<"LicenseSpecifications">> => list(launch_template_license_configuration()()),
+%%   <<"ElasticGpuSpecifications">> => list(elastic_gpu_specification_response()),
+%%   <<"LicenseSpecifications">> => list(launch_template_license_configuration()),
 %%   <<"CpuOptions">> => launch_template_cpu_options(),
-%%   <<"ElasticInferenceAccelerators">> => list(launch_template_elastic_inference_accelerator_response()()),
+%%   <<"ElasticInferenceAccelerators">> => list(launch_template_elastic_inference_accelerator_response()),
 %%   <<"IamInstanceProfile">> => launch_template_iam_instance_profile_specification(),
 %%   <<"InstanceRequirements">> => instance_requirements(),
 %%   <<"UserData">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"DisableApiTermination">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Operator">> => operator_response(),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceMarketOptions">> => launch_template_instance_market_options()
@@ -11295,7 +11295,7 @@
 %% Example:
 %% describe_vpc_endpoint_service_configurations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceConfigurations">> => list(service_configuration()())
+%%   <<"ServiceConfigurations">> => list(service_configuration())
 %% }
 -type describe_vpc_endpoint_service_configurations_result() :: #{binary() => any()}.
 
@@ -11320,7 +11320,7 @@
 %% reject_vpc_endpoint_connections_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"ServiceId">> := string(),
-%%   <<"VpcEndpointIds">> := list(string()())
+%%   <<"VpcEndpointIds">> := list(string())
 %% }
 -type reject_vpc_endpoint_connections_request() :: #{binary() => any()}.
 
@@ -11350,7 +11350,7 @@
 %%   <<"LogGroupName">> => string(),
 %%   <<"MaxAggregationInterval">> => integer(),
 %%   <<"ResourceId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrafficType">> => list(any())
 %% }
 -type flow_log() :: #{binary() => any()}.
@@ -11358,17 +11358,17 @@
 %% Example:
 %% describe_transit_gateway_vpc_attachments_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayAttachmentIds">> => list(string()())
+%%   <<"TransitGatewayAttachmentIds">> => list(string())
 %% }
 -type describe_transit_gateway_vpc_attachments_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_verified_access_instances_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessInstances">> => list(verified_access_instance()())
+%%   <<"VerifiedAccessInstances">> => list(verified_access_instance())
 %% }
 -type describe_verified_access_instances_result() :: #{binary() => any()}.
 
@@ -11384,15 +11384,15 @@
 %% Example:
 %% describe_snapshots_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Snapshots">> => list(snapshot()())
+%%   <<"Snapshots">> => list(snapshot())
 %% }
 -type describe_snapshots_result() :: #{binary() => any()}.
 
 %% Example:
 %% instance_event_window_association_target() :: #{
-%%   <<"DedicatedHostIds">> => list(string()()),
-%%   <<"InstanceIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"DedicatedHostIds">> => list(string()),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type instance_event_window_association_target() :: #{binary() => any()}.
 
@@ -11400,8 +11400,8 @@
 %% import_instance_launch_specification() :: #{
 %%   <<"AdditionalInfo">> => string(),
 %%   <<"Architecture">> => list(any()),
-%%   <<"GroupIds">> => list(string()()),
-%%   <<"GroupNames">> => list(string()()),
+%%   <<"GroupIds">> => list(string()),
+%%   <<"GroupNames">> => list(string()),
 %%   <<"InstanceInitiatedShutdownBehavior">> => list(any()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"Monitoring">> => boolean(),
@@ -11428,14 +11428,14 @@
 %%   <<"Reason">> => string(),
 %%   <<"ResourceArn">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type vpc_block_public_access_exclusion() :: #{binary() => any()}.
 
 %% Example:
 %% launch_template_config() :: #{
 %%   <<"LaunchTemplateSpecification">> => fleet_launch_template_specification(),
-%%   <<"Overrides">> => list(launch_template_overrides()())
+%%   <<"Overrides">> => list(launch_template_overrides())
 %% }
 -type launch_template_config() :: #{binary() => any()}.
 
@@ -11468,9 +11468,9 @@
 %%   <<"Marketplace">> => boolean(),
 %%   <<"OfferingClass">> => list(any()),
 %%   <<"OfferingType">> => list(any()),
-%%   <<"PricingDetails">> => list(pricing_detail()()),
+%%   <<"PricingDetails">> => list(pricing_detail()),
 %%   <<"ProductDescription">> => list(any()),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservedInstancesOfferingId">> => string(),
 %%   <<"Scope">> => list(any()),
 %%   <<"UsagePrice">> => float()
@@ -11488,7 +11488,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"LocalGatewayId">> := string(),
 %%   <<"Mode">> => list(any()),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_local_gateway_route_table_request() :: #{binary() => any()}.
 
@@ -11504,11 +11504,11 @@
 %%   <<"Description">> => string(),
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"IpPermissions">> => list(ip_permission()()),
-%%   <<"IpPermissionsEgress">> => list(ip_permission()()),
+%%   <<"IpPermissions">> => list(ip_permission()),
+%%   <<"IpPermissionsEgress">> => list(ip_permission()),
 %%   <<"OwnerId">> => string(),
 %%   <<"SecurityGroupArn">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type security_group() :: #{binary() => any()}.
@@ -11521,7 +11521,7 @@
 
 %% Example:
 %% scheduled_instances_launch_specification() :: #{
-%%   <<"BlockDeviceMappings">> => list(scheduled_instances_block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(scheduled_instances_block_device_mapping()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"IamInstanceProfile">> => scheduled_instances_iam_instance_profile(),
 %%   <<"ImageId">> => string(),
@@ -11529,10 +11529,10 @@
 %%   <<"KernelId">> => string(),
 %%   <<"KeyName">> => string(),
 %%   <<"Monitoring">> => scheduled_instances_monitoring(),
-%%   <<"NetworkInterfaces">> => list(scheduled_instances_network_interface()()),
+%%   <<"NetworkInterfaces">> => list(scheduled_instances_network_interface()),
 %%   <<"Placement">> => scheduled_instances_placement(),
 %%   <<"RamdiskId">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetId">> => string(),
 %%   <<"UserData">> => string()
 %% }
@@ -11556,7 +11556,7 @@
 
 %% Example:
 %% describe_internet_gateways_result() :: #{
-%%   <<"InternetGateways">> => list(internet_gateway()()),
+%%   <<"InternetGateways">> => list(internet_gateway()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_internet_gateways_result() :: #{binary() => any()}.
@@ -11627,14 +11627,14 @@
 %%   <<"PeerAddress">> => string(),
 %%   <<"PeerBgpAsn">> => integer(),
 %%   <<"PeerBgpAsnExtended">> => float(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Vlan">> => integer()
 %% }
 -type local_gateway_virtual_interface() :: #{binary() => any()}.
 
 %% Example:
 %% describe_byoip_cidrs_result() :: #{
-%%   <<"ByoipCidrs">> => list(byoip_cidr()()),
+%%   <<"ByoipCidrs">> => list(byoip_cidr()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_byoip_cidrs_result() :: #{binary() => any()}.
@@ -11647,7 +11647,7 @@
 
 %% Example:
 %% instance_status_summary() :: #{
-%%   <<"Details">> => list(instance_status_details()()),
+%%   <<"Details">> => list(instance_status_details()),
 %%   <<"Status">> => list(any())
 %% }
 -type instance_status_summary() :: #{binary() => any()}.
@@ -11666,7 +11666,7 @@
 
 %% Example:
 %% describe_fast_snapshot_restores_result() :: #{
-%%   <<"FastSnapshotRestores">> => list(describe_fast_snapshot_restore_success_item()()),
+%%   <<"FastSnapshotRestores">> => list(describe_fast_snapshot_restore_success_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fast_snapshot_restores_result() :: #{binary() => any()}.
@@ -11719,14 +11719,14 @@
 %% Example:
 %% list_snapshots_in_recycle_bin_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Snapshots">> => list(snapshot_recycle_bin_info()())
+%%   <<"Snapshots">> => list(snapshot_recycle_bin_info())
 %% }
 -type list_snapshots_in_recycle_bin_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_volume_status_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VolumeStatuses">> => list(volume_status_item()())
+%%   <<"VolumeStatuses">> => list(volume_status_item())
 %% }
 -type describe_volume_status_result() :: #{binary() => any()}.
 
@@ -11784,12 +11784,12 @@
 %%   <<"DeleteTime">> => non_neg_integer(),
 %%   <<"FailureCode">> => string(),
 %%   <<"FailureMessage">> => string(),
-%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()()),
+%%   <<"NatGatewayAddresses">> => list(nat_gateway_address()),
 %%   <<"NatGatewayId">> => string(),
 %%   <<"ProvisionedBandwidth">> => provisioned_bandwidth(),
 %%   <<"State">> => list(any()),
 %%   <<"SubnetId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type nat_gateway() :: #{binary() => any()}.
@@ -11804,7 +11804,7 @@
 %% Example:
 %% get_verified_access_endpoint_targets_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessEndpointTargets">> => list(verified_access_endpoint_target()())
+%%   <<"VerifiedAccessEndpointTargets">> => list(verified_access_endpoint_target())
 %% }
 -type get_verified_access_endpoint_targets_result() :: #{binary() => any()}.
 
@@ -11833,7 +11833,7 @@
 %% Example:
 %% get_transit_gateway_route_table_propagations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayRouteTablePropagations">> => list(transit_gateway_route_table_propagation()())
+%%   <<"TransitGatewayRouteTablePropagations">> => list(transit_gateway_route_table_propagation())
 %% }
 -type get_transit_gateway_route_table_propagations_result() :: #{binary() => any()}.
 
@@ -11869,7 +11869,7 @@
 %% Example:
 %% describe_instance_type_offerings_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"LocationType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -11890,17 +11890,17 @@
 %% Example:
 %% describe_route_server_peers_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RouteServerPeerIds">> => list(string()())
+%%   <<"RouteServerPeerIds">> => list(string())
 %% }
 -type describe_route_server_peers_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_verified_access_trust_providers_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessTrustProviders">> => list(verified_access_trust_provider()())
+%%   <<"VerifiedAccessTrustProviders">> => list(verified_access_trust_provider())
 %% }
 -type describe_verified_access_trust_providers_result() :: #{binary() => any()}.
 
@@ -11928,7 +11928,7 @@
 %% Example:
 %% get_transit_gateway_prefix_list_references_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayPrefixListReferences">> => list(transit_gateway_prefix_list_reference()())
+%%   <<"TransitGatewayPrefixListReferences">> => list(transit_gateway_prefix_list_reference())
 %% }
 -type get_transit_gateway_prefix_list_references_result() :: #{binary() => any()}.
 
@@ -11949,7 +11949,7 @@
 %%   <<"NetworkInterfaceId">> := string(),
 %%   <<"PacketLength">> => integer(),
 %%   <<"SessionNumber">> := integer(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TrafficMirrorFilterId">> := string(),
 %%   <<"TrafficMirrorTargetId">> := string(),
 %%   <<"VirtualNetworkId">> => integer()
@@ -11968,7 +11968,7 @@
 %%   <<"CarrierGatewayId">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type carrier_gateway() :: #{binary() => any()}.
@@ -11981,14 +11981,14 @@
 
 %% Example:
 %% reject_vpc_endpoint_connections_result() :: #{
-%%   <<"Unsuccessful">> => list(unsuccessful_item()())
+%%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type reject_vpc_endpoint_connections_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_scheduled_instances_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScheduledInstanceSet">> => list(scheduled_instance()())
+%%   <<"ScheduledInstanceSet">> => list(scheduled_instance())
 %% }
 -type describe_scheduled_instances_result() :: #{binary() => any()}.
 
@@ -12019,7 +12019,7 @@
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"PublicIpv4PoolId">> => string(),
 %%   <<"SampleTime">> => non_neg_integer(),
-%%   <<"SecurityGroups">> => list(ipam_public_address_security_group()()),
+%%   <<"SecurityGroups">> => list(ipam_public_address_security_group()),
 %%   <<"Service">> => list(any()),
 %%   <<"ServiceResource">> => string(),
 %%   <<"SubnetId">> => string(),
@@ -12041,15 +12041,15 @@
 %%   <<"KeyMaterial">> => string(),
 %%   <<"KeyName">> => string(),
 %%   <<"KeyPairId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type key_pair() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ipam_external_resource_verification_tokens_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"IpamExternalResourceVerificationTokenIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamExternalResourceVerificationTokenIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -12058,24 +12058,24 @@
 %% Example:
 %% describe_vpc_peering_connections_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VpcPeeringConnectionIds">> => list(string()())
+%%   <<"VpcPeeringConnectionIds">> => list(string())
 %% }
 -type describe_vpc_peering_connections_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_transit_gateway_vpc_attachments_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayVpcAttachments">> => list(transit_gateway_vpc_attachment()())
+%%   <<"TransitGatewayVpcAttachments">> => list(transit_gateway_vpc_attachment())
 %% }
 -type describe_transit_gateway_vpc_attachments_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_transit_gateway_attachment_propagations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayAttachmentId">> := string()
@@ -12097,7 +12097,7 @@
 
 %% Example:
 %% delete_vpc_endpoint_service_configurations_result() :: #{
-%%   <<"Unsuccessful">> => list(unsuccessful_item()())
+%%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type delete_vpc_endpoint_service_configurations_result() :: #{binary() => any()}.
 
@@ -12119,7 +12119,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -12132,7 +12132,7 @@
 %%   <<"LocalGatewayVirtualInterfaceGroupId">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type local_gateway_route_table_virtual_interface_group_association() :: #{binary() => any()}.
 
@@ -12182,7 +12182,7 @@
 %% Example:
 %% describe_transit_gateway_connect_peers_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayConnectPeers">> => list(transit_gateway_connect_peer()())
+%%   <<"TransitGatewayConnectPeers">> => list(transit_gateway_connect_peer())
 %% }
 -type describe_transit_gateway_connect_peers_result() :: #{binary() => any()}.
 
@@ -12197,9 +12197,9 @@
 %% create_transit_gateway_connect_peer_request() :: #{
 %%   <<"BgpOptions">> => transit_gateway_connect_request_bgp_options(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"InsideCidrBlocks">> := list(string()()),
+%%   <<"InsideCidrBlocks">> := list(string()),
 %%   <<"PeerAddress">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransitGatewayAddress">> => string(),
 %%   <<"TransitGatewayAttachmentId">> := string()
 %% }
@@ -12213,8 +12213,8 @@
 
 %% Example:
 %% transit_gateway_connect_peer_configuration() :: #{
-%%   <<"BgpConfigurations">> => list(transit_gateway_attachment_bgp_configuration()()),
-%%   <<"InsideCidrBlocks">> => list(string()()),
+%%   <<"BgpConfigurations">> => list(transit_gateway_attachment_bgp_configuration()),
+%%   <<"InsideCidrBlocks">> => list(string()),
 %%   <<"PeerAddress">> => string(),
 %%   <<"Protocol">> => list(any()),
 %%   <<"TransitGatewayAddress">> => string()
@@ -12247,11 +12247,11 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"FromPort">> => integer(),
 %%   <<"GroupId">> := string(),
-%%   <<"IpPermissions">> => list(ip_permission()()),
+%%   <<"IpPermissions">> => list(ip_permission()),
 %%   <<"IpProtocol">> => string(),
 %%   <<"SourceSecurityGroupName">> => string(),
 %%   <<"SourceSecurityGroupOwnerId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"ToPort">> => integer()
 %% }
 -type authorize_security_group_egress_request() :: #{binary() => any()}.
@@ -12259,14 +12259,14 @@
 %% Example:
 %% describe_outpost_lags_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OutpostLags">> => list(outpost_lag()())
+%%   <<"OutpostLags">> => list(outpost_lag())
 %% }
 -type describe_outpost_lags_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_endpoint_connections_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointConnections">> => list(vpc_endpoint_connection()())
+%%   <<"VpcEndpointConnections">> => list(vpc_endpoint_connection())
 %% }
 -type describe_vpc_endpoint_connections_result() :: #{binary() => any()}.
 
@@ -12277,9 +12277,9 @@
 %%   <<"FromPort">> => integer(),
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"IpPermissions">> => list(ip_permission()()),
+%%   <<"IpPermissions">> => list(ip_permission()),
 %%   <<"IpProtocol">> => string(),
-%%   <<"SecurityGroupRuleIds">> => list(string()()),
+%%   <<"SecurityGroupRuleIds">> => list(string()),
 %%   <<"SourceSecurityGroupName">> => string(),
 %%   <<"SourceSecurityGroupOwnerId">> => string(),
 %%   <<"ToPort">> => integer()
@@ -12297,9 +12297,9 @@
 %%   <<"AnalysisStartTimeBegin">> => non_neg_integer(),
 %%   <<"AnalysisStartTimeEnd">> => non_neg_integer(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NetworkInsightsAccessScopeAnalysisIds">> => list(string()()),
+%%   <<"NetworkInsightsAccessScopeAnalysisIds">> => list(string()),
 %%   <<"NetworkInsightsAccessScopeId">> => string(),
 %%   <<"NextToken">> => string()
 %% }
@@ -12308,20 +12308,20 @@
 %% Example:
 %% service_detail() :: #{
 %%   <<"AcceptanceRequired">> => boolean(),
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"BaseEndpointDnsNames">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"BaseEndpointDnsNames">> => list(string()),
 %%   <<"ManagesVpcEndpoints">> => boolean(),
 %%   <<"Owner">> => string(),
 %%   <<"PayerResponsibility">> => list(any()),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"PrivateDnsNameVerificationState">> => list(any()),
-%%   <<"PrivateDnsNames">> => list(private_dns_details()()),
+%%   <<"PrivateDnsNames">> => list(private_dns_details()),
 %%   <<"ServiceId">> => string(),
 %%   <<"ServiceName">> => string(),
 %%   <<"ServiceRegion">> => string(),
-%%   <<"ServiceType">> => list(service_type_detail()()),
+%%   <<"ServiceType">> => list(service_type_detail()),
 %%   <<"SupportedIpAddressTypes">> => list(list(any())()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcEndpointPolicySupported">> => boolean()
 %% }
 -type service_detail() :: #{binary() => any()}.
@@ -12339,7 +12339,7 @@
 %% Example:
 %% describe_transit_gateway_connects_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayConnects">> => list(transit_gateway_connect()())
+%%   <<"TransitGatewayConnects">> => list(transit_gateway_connect())
 %% }
 -type describe_transit_gateway_connects_result() :: #{binary() => any()}.
 
@@ -12367,10 +12367,10 @@
 %% Example:
 %% describe_subnets_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type describe_subnets_request() :: #{binary() => any()}.
 
@@ -12403,9 +12403,9 @@
 
 %% Example:
 %% describe_capacity_reservation_fleets_request() :: #{
-%%   <<"CapacityReservationFleetIds">> => list(string()()),
+%%   <<"CapacityReservationFleetIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -12413,8 +12413,8 @@
 
 %% Example:
 %% assign_ipv6_addresses_result() :: #{
-%%   <<"AssignedIpv6Addresses">> => list(string()()),
-%%   <<"AssignedIpv6Prefixes">> => list(string()()),
+%%   <<"AssignedIpv6Addresses">> => list(string()),
+%%   <<"AssignedIpv6Prefixes">> => list(string()),
 %%   <<"NetworkInterfaceId">> => string()
 %% }
 -type assign_ipv6_addresses_result() :: #{binary() => any()}.
@@ -12429,7 +12429,7 @@
 
 %% Example:
 %% get_coip_pool_usage_result() :: #{
-%%   <<"CoipAddressUsages">> => list(coip_address_usage()()),
+%%   <<"CoipAddressUsages">> => list(coip_address_usage()),
 %%   <<"CoipPoolId">> => string(),
 %%   <<"LocalGatewayRouteTableId">> => string(),
 %%   <<"NextToken">> => string()
@@ -12452,7 +12452,7 @@
 %% Example:
 %% get_transit_gateway_route_table_propagations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayRouteTableId">> := string()
@@ -12490,7 +12490,7 @@
 %% Example:
 %% get_transit_gateway_route_table_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayRouteTableId">> := string()
@@ -12509,15 +12509,15 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"LocalGatewayRouteTableId">> := string(),
 %%   <<"LocalGatewayVirtualInterfaceGroupId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_local_gateway_route_table_virtual_interface_group_association_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_capacity_block_extension_history_request() :: #{
-%%   <<"CapacityReservationIds">> => list(string()()),
+%%   <<"CapacityReservationIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -12538,7 +12538,7 @@
 %%   <<"Ipv6Supported">> => boolean(),
 %%   <<"MaximumNetworkCards">> => integer(),
 %%   <<"MaximumNetworkInterfaces">> => integer(),
-%%   <<"NetworkCards">> => list(network_card_info()()),
+%%   <<"NetworkCards">> => list(network_card_info()),
 %%   <<"NetworkPerformance">> => string()
 %% }
 -type network_info() :: #{binary() => any()}.
@@ -12564,13 +12564,13 @@
 %%   <<"HostProperties">> => host_properties(),
 %%   <<"HostRecovery">> => list(any()),
 %%   <<"HostReservationId">> => string(),
-%%   <<"Instances">> => list(host_instance()()),
+%%   <<"Instances">> => list(host_instance()),
 %%   <<"MemberOfServiceLinkedResourceGroup">> => boolean(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"ReleaseTime">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type host() :: #{binary() => any()}.
 
@@ -12579,7 +12579,7 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IncludeMarketplace">> => boolean(),
 %%   <<"InstanceTenancy">> => list(any()),
 %%   <<"InstanceType">> => list(any()),
@@ -12591,13 +12591,13 @@
 %%   <<"OfferingClass">> => list(any()),
 %%   <<"OfferingType">> => list(any()),
 %%   <<"ProductDescription">> => list(any()),
-%%   <<"ReservedInstancesOfferingIds">> => list(string()())
+%%   <<"ReservedInstancesOfferingIds">> => list(string())
 %% }
 -type describe_reserved_instances_offerings_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_client_vpn_target_networks_result() :: #{
-%%   <<"ClientVpnTargetNetworks">> => list(target_network()()),
+%%   <<"ClientVpnTargetNetworks">> => list(target_network()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_client_vpn_target_networks_result() :: #{binary() => any()}.
@@ -12607,15 +12607,15 @@
 %%   <<"DPDTimeoutAction">> => string(),
 %%   <<"DPDTimeoutSeconds">> => integer(),
 %%   <<"EnableTunnelLifecycleControl">> => boolean(),
-%%   <<"IKEVersions">> => list(i_k_e_versions_request_list_value()()),
+%%   <<"IKEVersions">> => list(i_k_e_versions_request_list_value()),
 %%   <<"LogOptions">> => vpn_tunnel_log_options_specification(),
-%%   <<"Phase1DHGroupNumbers">> => list(phase1_d_h_group_numbers_request_list_value()()),
-%%   <<"Phase1EncryptionAlgorithms">> => list(phase1_encryption_algorithms_request_list_value()()),
-%%   <<"Phase1IntegrityAlgorithms">> => list(phase1_integrity_algorithms_request_list_value()()),
+%%   <<"Phase1DHGroupNumbers">> => list(phase1_d_h_group_numbers_request_list_value()),
+%%   <<"Phase1EncryptionAlgorithms">> => list(phase1_encryption_algorithms_request_list_value()),
+%%   <<"Phase1IntegrityAlgorithms">> => list(phase1_integrity_algorithms_request_list_value()),
 %%   <<"Phase1LifetimeSeconds">> => integer(),
-%%   <<"Phase2DHGroupNumbers">> => list(phase2_d_h_group_numbers_request_list_value()()),
-%%   <<"Phase2EncryptionAlgorithms">> => list(phase2_encryption_algorithms_request_list_value()()),
-%%   <<"Phase2IntegrityAlgorithms">> => list(phase2_integrity_algorithms_request_list_value()()),
+%%   <<"Phase2DHGroupNumbers">> => list(phase2_d_h_group_numbers_request_list_value()),
+%%   <<"Phase2EncryptionAlgorithms">> => list(phase2_encryption_algorithms_request_list_value()),
+%%   <<"Phase2IntegrityAlgorithms">> => list(phase2_integrity_algorithms_request_list_value()),
 %%   <<"Phase2LifetimeSeconds">> => integer(),
 %%   <<"PreSharedKey">> => string(),
 %%   <<"RekeyFuzzPercentage">> => integer(),
@@ -12636,21 +12636,21 @@
 %% Example:
 %% describe_vpc_block_public_access_exclusions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcBlockPublicAccessExclusions">> => list(vpc_block_public_access_exclusion()())
+%%   <<"VpcBlockPublicAccessExclusions">> => list(vpc_block_public_access_exclusion())
 %% }
 -type describe_vpc_block_public_access_exclusions_result() :: #{binary() => any()}.
 
 %% Example:
 %% allocate_hosts_result() :: #{
-%%   <<"HostIds">> => list(string()())
+%%   <<"HostIds">> => list(string())
 %% }
 -type allocate_hosts_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_mac_modification_tasks_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"MacModificationTaskIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MacModificationTaskIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -12659,10 +12659,10 @@
 %% Example:
 %% describe_verified_access_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessInstanceIds">> => list(string()())
+%%   <<"VerifiedAccessInstanceIds">> => list(string())
 %% }
 -type describe_verified_access_instances_request() :: #{binary() => any()}.
 
@@ -12683,7 +12683,7 @@
 
 %% Example:
 %% describe_network_acls_result() :: #{
-%%   <<"NetworkAcls">> => list(network_acl()()),
+%%   <<"NetworkAcls">> => list(network_acl()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_acls_result() :: #{binary() => any()}.
@@ -12706,7 +12706,7 @@
 
 %% Example:
 %% describe_local_gateway_route_table_vpc_associations_result() :: #{
-%%   <<"LocalGatewayRouteTableVpcAssociations">> => list(local_gateway_route_table_vpc_association()()),
+%%   <<"LocalGatewayRouteTableVpcAssociations">> => list(local_gateway_route_table_vpc_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_local_gateway_route_table_vpc_associations_result() :: #{binary() => any()}.
@@ -12720,7 +12720,7 @@
 
 %% Example:
 %% accept_vpc_endpoint_connections_result() :: #{
-%%   <<"Unsuccessful">> => list(unsuccessful_item()())
+%%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type accept_vpc_endpoint_connections_result() :: #{binary() => any()}.
 
@@ -12819,7 +12819,7 @@
 %% Example:
 %% copy_snapshot_result() :: #{
 %%   <<"SnapshotId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type copy_snapshot_result() :: #{binary() => any()}.
 
@@ -12839,8 +12839,8 @@
 %% Example:
 %% describe_vpc_endpoint_services_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceDetails">> => list(service_detail()()),
-%%   <<"ServiceNames">> => list(string()())
+%%   <<"ServiceDetails">> => list(service_detail()),
+%%   <<"ServiceNames">> => list(string())
 %% }
 -type describe_vpc_endpoint_services_result() :: #{binary() => any()}.
 
@@ -12867,15 +12867,15 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpAddress">> => string(),
 %%   <<"PublicIp">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Type">> := list(any())
 %% }
 -type create_customer_gateway_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_mac_hosts_request() :: #{
-%%   <<"Filters">> => list(filter()()),
-%%   <<"HostIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"HostIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -12901,7 +12901,7 @@
 %%   <<"InstanceExportDetails">> => instance_export_details(),
 %%   <<"State">> => list(any()),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type export_task() :: #{binary() => any()}.
 
@@ -12912,8 +12912,8 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"EnablePrivateGua">> => boolean(),
 %%   <<"MeteredAccount">> => list(any()),
-%%   <<"OperatingRegions">> => list(add_ipam_operating_region()()),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"OperatingRegions">> => list(add_ipam_operating_region()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Tier">> => list(any())
 %% }
 -type create_ipam_request() :: #{binary() => any()}.
@@ -12945,7 +12945,7 @@
 %% deregister_transit_gateway_multicast_group_sources_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupIpAddress">> => string(),
-%%   <<"NetworkInterfaceIds">> => list(string()()),
+%%   <<"NetworkInterfaceIds">> => list(string()),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
 -type deregister_transit_gateway_multicast_group_sources_request() :: #{binary() => any()}.
@@ -12959,9 +12959,9 @@
 %% Example:
 %% describe_network_acls_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NetworkAclIds">> => list(string()()),
+%%   <<"NetworkAclIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_acls_request() :: #{binary() => any()}.
@@ -12992,7 +12992,7 @@
 %% create_security_group_result() :: #{
 %%   <<"GroupId">> => string(),
 %%   <<"SecurityGroupArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_security_group_result() :: #{binary() => any()}.
 
@@ -13000,8 +13000,8 @@
 %% create_transit_gateway_vpc_attachment_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Options">> => create_transit_gateway_vpc_attachment_request_options(),
-%%   <<"SubnetIds">> := list(string()()),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransitGatewayId">> := string(),
 %%   <<"VpcId">> := string()
 %% }
@@ -13023,8 +13023,8 @@
 %% Example:
 %% describe_instance_image_metadata_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -13032,7 +13032,7 @@
 
 %% Example:
 %% describe_ipams_result() :: #{
-%%   <<"Ipams">> => list(ipam()()),
+%%   <<"Ipams">> => list(ipam()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipams_result() :: #{binary() => any()}.
@@ -13060,7 +13060,7 @@
 
 %% Example:
 %% describe_flow_logs_result() :: #{
-%%   <<"FlowLogs">> => list(flow_log()()),
+%%   <<"FlowLogs">> => list(flow_log()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_flow_logs_result() :: #{binary() => any()}.
@@ -13070,16 +13070,16 @@
 %%   <<"DpdTimeoutAction">> => string(),
 %%   <<"DpdTimeoutSeconds">> => integer(),
 %%   <<"EnableTunnelLifecycleControl">> => boolean(),
-%%   <<"IkeVersions">> => list(i_k_e_versions_list_value()()),
+%%   <<"IkeVersions">> => list(i_k_e_versions_list_value()),
 %%   <<"LogOptions">> => vpn_tunnel_log_options(),
 %%   <<"OutsideIpAddress">> => string(),
-%%   <<"Phase1DHGroupNumbers">> => list(phase1_d_h_group_numbers_list_value()()),
-%%   <<"Phase1EncryptionAlgorithms">> => list(phase1_encryption_algorithms_list_value()()),
-%%   <<"Phase1IntegrityAlgorithms">> => list(phase1_integrity_algorithms_list_value()()),
+%%   <<"Phase1DHGroupNumbers">> => list(phase1_d_h_group_numbers_list_value()),
+%%   <<"Phase1EncryptionAlgorithms">> => list(phase1_encryption_algorithms_list_value()),
+%%   <<"Phase1IntegrityAlgorithms">> => list(phase1_integrity_algorithms_list_value()),
 %%   <<"Phase1LifetimeSeconds">> => integer(),
-%%   <<"Phase2DHGroupNumbers">> => list(phase2_d_h_group_numbers_list_value()()),
-%%   <<"Phase2EncryptionAlgorithms">> => list(phase2_encryption_algorithms_list_value()()),
-%%   <<"Phase2IntegrityAlgorithms">> => list(phase2_integrity_algorithms_list_value()()),
+%%   <<"Phase2DHGroupNumbers">> => list(phase2_d_h_group_numbers_list_value()),
+%%   <<"Phase2EncryptionAlgorithms">> => list(phase2_encryption_algorithms_list_value()),
+%%   <<"Phase2IntegrityAlgorithms">> => list(phase2_integrity_algorithms_list_value()),
 %%   <<"Phase2LifetimeSeconds">> => integer(),
 %%   <<"PreSharedKey">> => string(),
 %%   <<"RekeyFuzzPercentage">> => integer(),
@@ -13096,8 +13096,8 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"IpPermissions">> => list(ip_permission()()),
-%%   <<"SecurityGroupRuleDescriptions">> => list(security_group_rule_description()())
+%%   <<"IpPermissions">> => list(ip_permission()),
+%%   <<"SecurityGroupRuleDescriptions">> => list(security_group_rule_description())
 %% }
 -type update_security_group_rule_descriptions_egress_request() :: #{binary() => any()}.
 
@@ -13105,7 +13105,7 @@
 %% apply_security_groups_to_client_vpn_target_network_request() :: #{
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"SecurityGroupIds">> := list(string()()),
+%%   <<"SecurityGroupIds">> := list(string()),
 %%   <<"VpcId">> := string()
 %% }
 -type apply_security_groups_to_client_vpn_target_network_request() :: #{binary() => any()}.
@@ -13119,11 +13119,11 @@
 
 %% Example:
 %% route_server_route() :: #{
-%%   <<"AsPaths">> => list(string()()),
+%%   <<"AsPaths">> => list(string()),
 %%   <<"Med">> => integer(),
 %%   <<"NextHopIp">> => string(),
 %%   <<"Prefix">> => string(),
-%%   <<"RouteInstallationDetails">> => list(route_server_route_installation_detail()()),
+%%   <<"RouteInstallationDetails">> => list(route_server_route_installation_detail()),
 %%   <<"RouteServerEndpointId">> => string(),
 %%   <<"RouteServerPeerId">> => string(),
 %%   <<"RouteStatus">> => list(any())
@@ -13133,7 +13133,7 @@
 %% Example:
 %% describe_vpc_endpoint_service_permissions_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceId">> := string()
@@ -13193,7 +13193,7 @@
 %%   <<"AmazonSideAsn">> => float(),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Type">> := list(any())
 %% }
 -type create_vpn_gateway_request() :: #{binary() => any()}.
@@ -13215,7 +13215,7 @@
 %%   <<"StartDate">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WarningMessage">> => string()
 %% }
 -type network_insights_access_scope_analysis() :: #{binary() => any()}.
@@ -13229,8 +13229,8 @@
 
 %% Example:
 %% delete_launch_template_versions_result() :: #{
-%%   <<"SuccessfullyDeletedLaunchTemplateVersions">> => list(delete_launch_template_versions_response_success_item()()),
-%%   <<"UnsuccessfullyDeletedLaunchTemplateVersions">> => list(delete_launch_template_versions_response_error_item()())
+%%   <<"SuccessfullyDeletedLaunchTemplateVersions">> => list(delete_launch_template_versions_response_success_item()),
+%%   <<"UnsuccessfullyDeletedLaunchTemplateVersions">> => list(delete_launch_template_versions_response_error_item())
 %% }
 -type delete_launch_template_versions_result() :: #{binary() => any()}.
 
@@ -13248,21 +13248,21 @@
 %% Example:
 %% describe_volume_attribute_result() :: #{
 %%   <<"AutoEnableIO">> => attribute_boolean_value(),
-%%   <<"ProductCodes">> => list(product_code()()),
+%%   <<"ProductCodes">> => list(product_code()),
 %%   <<"VolumeId">> => string()
 %% }
 -type describe_volume_attribute_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_instance_topology_result() :: #{
-%%   <<"Instances">> => list(instance_topology()()),
+%%   <<"Instances">> => list(instance_topology()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_topology_result() :: #{binary() => any()}.
 
 %% Example:
 %% verified_access_instance_custom_sub_domain() :: #{
-%%   <<"Nameservers">> => list(string()()),
+%%   <<"Nameservers">> => list(string()),
 %%   <<"SubDomain">> => string()
 %% }
 -type verified_access_instance_custom_sub_domain() :: #{binary() => any()}.
@@ -13276,22 +13276,22 @@
 
 %% Example:
 %% describe_fast_launch_images_result() :: #{
-%%   <<"FastLaunchImages">> => list(describe_fast_launch_images_success_item()()),
+%%   <<"FastLaunchImages">> => list(describe_fast_launch_images_success_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fast_launch_images_result() :: #{binary() => any()}.
 
 %% Example:
 %% fpga_info() :: #{
-%%   <<"Fpgas">> => list(fpga_device_info()()),
+%%   <<"Fpgas">> => list(fpga_device_info()),
 %%   <<"TotalFpgaMemoryInMiB">> => integer()
 %% }
 -type fpga_info() :: #{binary() => any()}.
 
 %% Example:
 %% create_volume_permission_modifications() :: #{
-%%   <<"Add">> => list(create_volume_permission()()),
-%%   <<"Remove">> => list(create_volume_permission()())
+%%   <<"Add">> => list(create_volume_permission()),
+%%   <<"Remove">> => list(create_volume_permission())
 %% }
 -type create_volume_permission_modifications() :: #{binary() => any()}.
 
@@ -13318,14 +13318,14 @@
 %%   <<"PolicyDocument">> => string(),
 %%   <<"PrivateDnsEnabled">> => boolean(),
 %%   <<"ResourceConfigurationArn">> => string(),
-%%   <<"RouteTableIds">> => list(string()()),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"RouteTableIds">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"ServiceName">> => string(),
 %%   <<"ServiceNetworkArn">> => string(),
 %%   <<"ServiceRegion">> => string(),
-%%   <<"SubnetConfigurations">> => list(subnet_configuration()()),
-%%   <<"SubnetIds">> => list(string()()),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"SubnetConfigurations">> => list(subnet_configuration()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcEndpointType">> => list(any()),
 %%   <<"VpcId">> := string()
 %% }
@@ -13344,7 +13344,7 @@
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"NetworkLoadBalancerArn">> => string(),
 %%   <<"OwnerId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrafficMirrorTargetId">> => string(),
 %%   <<"Type">> => list(any())
 %% }
@@ -13359,7 +13359,7 @@
 
 %% Example:
 %% describe_capacity_block_extension_history_result() :: #{
-%%   <<"CapacityBlockExtensions">> => list(capacity_block_extension()()),
+%%   <<"CapacityBlockExtensions">> => list(capacity_block_extension()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_block_extension_history_result() :: #{binary() => any()}.
@@ -13373,7 +13373,7 @@
 
 %% Example:
 %% describe_mac_modification_tasks_result() :: #{
-%%   <<"MacModificationTasks">> => list(mac_modification_task()()),
+%%   <<"MacModificationTasks">> => list(mac_modification_task()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_mac_modification_tasks_result() :: #{binary() => any()}.
@@ -13389,14 +13389,14 @@
 %%   <<"S3ExportLocation">> => export_task_s3_location(),
 %%   <<"Status">> => string(),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type export_image_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_endpoint_associations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointAssociations">> => list(vpc_endpoint_association()())
+%%   <<"VpcEndpointAssociations">> => list(vpc_endpoint_association())
 %% }
 -type describe_vpc_endpoint_associations_result() :: #{binary() => any()}.
 
@@ -13420,7 +13420,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceCount">> := integer(),
 %%   <<"SourceCapacityReservationId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_capacity_reservation_by_splitting_request() :: #{binary() => any()}.
 
@@ -13434,12 +13434,12 @@
 %% Example:
 %% vpc_endpoint_connection() :: #{
 %%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"DnsEntries">> => list(dns_entry()()),
-%%   <<"GatewayLoadBalancerArns">> => list(string()()),
+%%   <<"DnsEntries">> => list(dns_entry()),
+%%   <<"GatewayLoadBalancerArns">> => list(string()),
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"NetworkLoadBalancerArns">> => list(string()()),
+%%   <<"NetworkLoadBalancerArns">> => list(string()),
 %%   <<"ServiceId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcEndpointConnectionId">> => string(),
 %%   <<"VpcEndpointId">> => string(),
 %%   <<"VpcEndpointOwner">> => string(),
@@ -13487,13 +13487,13 @@
 %% Example:
 %% get_transit_gateway_attachment_propagations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayAttachmentPropagations">> => list(transit_gateway_attachment_propagation()())
+%%   <<"TransitGatewayAttachmentPropagations">> => list(transit_gateway_attachment_propagation())
 %% }
 -type get_transit_gateway_attachment_propagations_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_client_vpn_endpoints_result() :: #{
-%%   <<"ClientVpnEndpoints">> => list(client_vpn_endpoint()()),
+%%   <<"ClientVpnEndpoints">> => list(client_vpn_endpoint()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_client_vpn_endpoints_result() :: #{binary() => any()}.
@@ -13567,7 +13567,7 @@
 %% Example:
 %% describe_security_group_vpc_associations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityGroupVpcAssociations">> => list(security_group_vpc_association()())
+%%   <<"SecurityGroupVpcAssociations">> => list(security_group_vpc_association())
 %% }
 -type describe_security_group_vpc_associations_result() :: #{binary() => any()}.
 
@@ -13580,7 +13580,7 @@
 %% Example:
 %% describe_fleet_history_result() :: #{
 %%   <<"FleetId">> => string(),
-%%   <<"HistoryRecords">> => list(history_record_entry()()),
+%%   <<"HistoryRecords">> => list(history_record_entry()),
 %%   <<"LastEvaluatedTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StartTime">> => non_neg_integer()
@@ -13614,10 +13614,10 @@
 
 %% Example:
 %% associate_nat_gateway_address_request() :: #{
-%%   <<"AllocationIds">> := list(string()()),
+%%   <<"AllocationIds">> := list(string()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"NatGatewayId">> := string(),
-%%   <<"PrivateIpAddresses">> => list(string()())
+%%   <<"PrivateIpAddresses">> => list(string())
 %% }
 -type associate_nat_gateway_address_request() :: #{binary() => any()}.
 
@@ -13627,7 +13627,7 @@
 %%   <<"PrincipalType">> => list(any()),
 %%   <<"ServiceId">> => string(),
 %%   <<"ServicePermissionId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type allowed_principal() :: #{binary() => any()}.
 
@@ -13638,9 +13638,9 @@
 %%   <<"OutputReservedInstancesWillExpireAt">> => non_neg_integer(),
 %%   <<"PaymentDue">> => string(),
 %%   <<"ReservedInstanceValueRollup">> => reservation_value(),
-%%   <<"ReservedInstanceValueSet">> => list(reserved_instance_reservation_value()()),
+%%   <<"ReservedInstanceValueSet">> => list(reserved_instance_reservation_value()),
 %%   <<"TargetConfigurationValueRollup">> => reservation_value(),
-%%   <<"TargetConfigurationValueSet">> => list(target_reservation_value()()),
+%%   <<"TargetConfigurationValueSet">> => list(target_reservation_value()),
 %%   <<"ValidationFailureReason">> => string()
 %% }
 -type get_reserved_instances_exchange_quote_result() :: #{binary() => any()}.
@@ -13660,7 +13660,7 @@
 %%   <<"ResourceOwnerId">> => string(),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayAttachmentId">> => string(),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"TransitGatewayOwnerId">> => string()
@@ -13670,8 +13670,8 @@
 %% Example:
 %% describe_vpn_connections_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"VpnConnectionIds">> => list(string()())
+%%   <<"Filters">> => list(filter()),
+%%   <<"VpnConnectionIds">> => list(string())
 %% }
 -type describe_vpn_connections_request() :: #{binary() => any()}.
 
@@ -13691,17 +13691,17 @@
 %% request_launch_template_data() :: #{
 %%   <<"Placement">> => launch_template_placement_request(),
 %%   <<"Monitoring">> => launch_templates_monitoring_request(),
-%%   <<"TagSpecifications">> => list(launch_template_tag_specification_request()()),
+%%   <<"TagSpecifications">> => list(launch_template_tag_specification_request()),
 %%   <<"NetworkPerformanceOptions">> => launch_template_network_performance_options_request(),
 %%   <<"MaintenanceOptions">> => launch_template_instance_maintenance_options_request(),
-%%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification_request()()),
+%%   <<"NetworkInterfaces">> => list(launch_template_instance_network_interface_specification_request()),
 %%   <<"KernelId">> => string(),
 %%   <<"RamDiskId">> => string(),
 %%   <<"DisableApiStop">> => boolean(),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"CreditSpecification">> => credit_specification_request(),
 %%   <<"KeyName">> => string(),
-%%   <<"BlockDeviceMappings">> => list(launch_template_block_device_mapping_request()()),
+%%   <<"BlockDeviceMappings">> => list(launch_template_block_device_mapping_request()),
 %%   <<"PrivateDnsNameOptions">> => launch_template_private_dns_name_options_request(),
 %%   <<"InstanceInitiatedShutdownBehavior">> => list(any()),
 %%   <<"MetadataOptions">> => launch_template_instance_metadata_options_request(),
@@ -13709,16 +13709,16 @@
 %%   <<"CapacityReservationSpecification">> => launch_template_capacity_reservation_specification_request(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"HibernationOptions">> => launch_template_hibernation_options_request(),
-%%   <<"ElasticGpuSpecifications">> => list(elastic_gpu_specification()()),
-%%   <<"LicenseSpecifications">> => list(launch_template_license_configuration_request()()),
+%%   <<"ElasticGpuSpecifications">> => list(elastic_gpu_specification()),
+%%   <<"LicenseSpecifications">> => list(launch_template_license_configuration_request()),
 %%   <<"CpuOptions">> => launch_template_cpu_options_request(),
-%%   <<"ElasticInferenceAccelerators">> => list(launch_template_elastic_inference_accelerator()()),
+%%   <<"ElasticInferenceAccelerators">> => list(launch_template_elastic_inference_accelerator()),
 %%   <<"IamInstanceProfile">> => launch_template_iam_instance_profile_specification_request(),
 %%   <<"InstanceRequirements">> => instance_requirements_request(),
 %%   <<"UserData">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"DisableApiTermination">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Operator">> => operator_request(),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceMarketOptions">> => launch_template_instance_market_options_request()
@@ -13727,7 +13727,7 @@
 
 %% Example:
 %% purchase_scheduled_instances_result() :: #{
-%%   <<"ScheduledInstanceSet">> => list(scheduled_instance()())
+%%   <<"ScheduledInstanceSet">> => list(scheduled_instance())
 %% }
 -type purchase_scheduled_instances_result() :: #{binary() => any()}.
 
@@ -13747,7 +13747,7 @@
 %%   <<"KeyFingerprint">> => string(),
 %%   <<"KeyName">> => string(),
 %%   <<"KeyPairId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_key_pair_result() :: #{binary() => any()}.
 
@@ -13774,7 +13774,7 @@
 %%   <<"DisconnectOnSessionTimeout">> => boolean(),
 %%   <<"DnsServers">> => dns_servers_options_modify_structure(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SelfServicePortal">> => list(any()),
 %%   <<"ServerCertificateArn">> => string(),
 %%   <<"SessionTimeoutHours">> => integer(),
@@ -13787,8 +13787,8 @@
 %% Example:
 %% register_image_request() :: #{
 %%   <<"Architecture">> => list(any()),
-%%   <<"BillingProducts">> => list(string()()),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BillingProducts">> => list(string()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"BootMode">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -13800,7 +13800,7 @@
 %%   <<"RamdiskId">> => string(),
 %%   <<"RootDeviceName">> => string(),
 %%   <<"SriovNetSupport">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TpmSupport">> => list(any()),
 %%   <<"UefiData">> => string(),
 %%   <<"VirtualizationType">> => string()
@@ -13822,7 +13822,7 @@
 %% Example:
 %% launch_specification() :: #{
 %%   <<"AddressingType">> => string(),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"IamInstanceProfile">> => iam_instance_profile_specification(),
 %%   <<"ImageId">> => string(),
@@ -13830,10 +13830,10 @@
 %%   <<"KernelId">> => string(),
 %%   <<"KeyName">> => string(),
 %%   <<"Monitoring">> => run_instances_monitoring_enabled(),
-%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()()),
+%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()),
 %%   <<"Placement">> => spot_placement(),
 %%   <<"RamdiskId">> => string(),
-%%   <<"SecurityGroups">> => list(group_identifier()()),
+%%   <<"SecurityGroups">> => list(group_identifier()),
 %%   <<"SubnetId">> => string(),
 %%   <<"UserData">> => string()
 %% }
@@ -13872,8 +13872,8 @@
 %% Example:
 %% describe_local_gateway_virtual_interfaces_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LocalGatewayVirtualInterfaceIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LocalGatewayVirtualInterfaceIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -13885,7 +13885,7 @@
 %%   <<"Options">> => transit_gateway_multicast_domain_options(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"TransitGatewayMulticastDomainArn">> => string(),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
@@ -13901,7 +13901,7 @@
 %%   <<"S3ExportLocation">> => export_task_s3_location(),
 %%   <<"Status">> => string(),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type export_image_task() :: #{binary() => any()}.
 
@@ -13911,7 +13911,7 @@
 %%   <<"BranchInterfaceId">> => string(),
 %%   <<"GreKey">> => integer(),
 %%   <<"InterfaceProtocol">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrunkInterfaceId">> => string(),
 %%   <<"VlanId">> => integer()
 %% }
@@ -13925,7 +13925,7 @@
 
 %% Example:
 %% describe_conversion_tasks_result() :: #{
-%%   <<"ConversionTasks">> => list(conversion_task()())
+%%   <<"ConversionTasks">> => list(conversion_task())
 %% }
 -type describe_conversion_tasks_result() :: #{binary() => any()}.
 
@@ -13954,7 +13954,7 @@
 %% Example:
 %% tag_specification() :: #{
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type tag_specification() :: #{binary() => any()}.
 
@@ -13962,7 +13962,7 @@
 %% get_route_server_routing_database_result() :: #{
 %%   <<"AreRoutesPersisted">> => boolean(),
 %%   <<"NextToken">> => string(),
-%%   <<"Routes">> => list(route_server_route()())
+%%   <<"Routes">> => list(route_server_route())
 %% }
 -type get_route_server_routing_database_result() :: #{binary() => any()}.
 
@@ -13988,14 +13988,14 @@
 
 %% Example:
 %% firewall_stateful_rule() :: #{
-%%   <<"DestinationPorts">> => list(port_range()()),
-%%   <<"Destinations">> => list(string()()),
+%%   <<"DestinationPorts">> => list(port_range()),
+%%   <<"Destinations">> => list(string()),
 %%   <<"Direction">> => string(),
 %%   <<"Protocol">> => string(),
 %%   <<"RuleAction">> => string(),
 %%   <<"RuleGroupArn">> => string(),
-%%   <<"SourcePorts">> => list(port_range()()),
-%%   <<"Sources">> => list(string()())
+%%   <<"SourcePorts">> => list(port_range()),
+%%   <<"Sources">> => list(string())
 %% }
 -type firewall_stateful_rule() :: #{binary() => any()}.
 
@@ -14039,7 +14039,7 @@
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
 %%   <<"StorageTier">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransferType">> => list(any()),
 %%   <<"VolumeId">> => string(),
 %%   <<"VolumeSize">> => integer()
@@ -14062,7 +14062,7 @@
 %%   <<"InputStorageLocation">> := storage_location(),
 %%   <<"LogsStorageLocation">> => storage_location(),
 %%   <<"Name">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_fpga_image_request() :: #{binary() => any()}.
 
@@ -14070,9 +14070,9 @@
 %% describe_availability_zones_request() :: #{
 %%   <<"AllAvailabilityZones">> => boolean(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"ZoneIds">> => list(string()()),
-%%   <<"ZoneNames">> => list(string()())
+%%   <<"Filters">> => list(filter()),
+%%   <<"ZoneIds">> => list(string()),
+%%   <<"ZoneNames">> => list(string())
 %% }
 -type describe_availability_zones_request() :: #{binary() => any()}.
 
@@ -14104,7 +14104,7 @@
 %%   <<"LastLaunchedTime">> => string(),
 %%   <<"DeprecationTime">> => string(),
 %%   <<"Architecture">> => list(any()),
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
 %%   <<"TpmSupport">> => list(any()),
 %%   <<"ImageLocation">> => string(),
 %%   <<"UsageOperation">> => string(),
@@ -14122,7 +14122,7 @@
 %%   <<"SriovNetSupport">> => string(),
 %%   <<"StateReason">> => state_reason(),
 %%   <<"PlatformDetails">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"RootDeviceType">> => list(any()),
 %%   <<"OwnerId">> => string(),
 %%   <<"BootMode">> => list(any()),
@@ -14130,7 +14130,7 @@
 %%   <<"Name">> => string(),
 %%   <<"SourceImageId">> => string(),
 %%   <<"ImdsSupport">> => list(any()),
-%%   <<"ProductCodes">> => list(product_code()()),
+%%   <<"ProductCodes">> => list(product_code()),
 %%   <<"SourceInstanceId">> => string(),
 %%   <<"EnaSupport">> => boolean(),
 %%   <<"Description">> => string(),
@@ -14140,7 +14140,7 @@
 
 %% Example:
 %% describe_capacity_block_offerings_result() :: #{
-%%   <<"CapacityBlockOfferings">> => list(capacity_block_offering()()),
+%%   <<"CapacityBlockOfferings">> => list(capacity_block_offering()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_block_offerings_result() :: #{binary() => any()}.
@@ -14155,16 +14155,16 @@
 %% create_network_insights_access_scope_request() :: #{
 %%   <<"ClientToken">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"ExcludePaths">> => list(access_scope_path_request()()),
-%%   <<"MatchPaths">> => list(access_scope_path_request()()),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"ExcludePaths">> => list(access_scope_path_request()),
+%%   <<"MatchPaths">> => list(access_scope_path_request()),
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_network_insights_access_scope_request() :: #{binary() => any()}.
 
 %% Example:
 %% disable_fast_snapshot_restores_result() :: #{
-%%   <<"Successful">> => list(disable_fast_snapshot_restore_success_item()()),
-%%   <<"Unsuccessful">> => list(disable_fast_snapshot_restore_error_item()())
+%%   <<"Successful">> => list(disable_fast_snapshot_restore_success_item()),
+%%   <<"Unsuccessful">> => list(disable_fast_snapshot_restore_error_item())
 %% }
 -type disable_fast_snapshot_restores_result() :: #{binary() => any()}.
 
@@ -14183,13 +14183,13 @@
 %%   <<"KeyPairId">> => string(),
 %%   <<"KeyType">> => list(any()),
 %%   <<"PublicKey">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type key_pair_info() :: #{binary() => any()}.
 
 %% Example:
 %% describe_address_transfers_request() :: #{
-%%   <<"AllocationIds">> => list(string()()),
+%%   <<"AllocationIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -14270,7 +14270,7 @@
 %% Example:
 %% get_transit_gateway_multicast_domain_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayMulticastDomainId">> := string()
@@ -14284,7 +14284,7 @@
 %%   <<"Options">> => transit_gateway_options(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayArn">> => string(),
 %%   <<"TransitGatewayId">> => string()
 %% }
@@ -14321,15 +14321,15 @@
 
 %% Example:
 %% launch_permission_modifications() :: #{
-%%   <<"Add">> => list(launch_permission()()),
-%%   <<"Remove">> => list(launch_permission()())
+%%   <<"Add">> => list(launch_permission()),
+%%   <<"Remove">> => list(launch_permission())
 %% }
 -type launch_permission_modifications() :: #{binary() => any()}.
 
 %% Example:
 %% client_vpn_endpoint() :: #{
-%%   <<"AssociatedTargetNetworks">> => list(associated_target_network()()),
-%%   <<"AuthenticationOptions">> => list(client_vpn_authentication()()),
+%%   <<"AssociatedTargetNetworks">> => list(associated_target_network()),
+%%   <<"AuthenticationOptions">> => list(client_vpn_authentication()),
 %%   <<"ClientCidrBlock">> => string(),
 %%   <<"ClientConnectOptions">> => client_connect_response_options(),
 %%   <<"ClientLoginBannerOptions">> => client_login_banner_response_options(),
@@ -14341,14 +14341,14 @@
 %%   <<"Description">> => string(),
 %%   <<"DisconnectOnSessionTimeout">> => boolean(),
 %%   <<"DnsName">> => string(),
-%%   <<"DnsServers">> => list(string()()),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"DnsServers">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SelfServicePortalUrl">> => string(),
 %%   <<"ServerCertificateArn">> => string(),
 %%   <<"SessionTimeoutHours">> => integer(),
 %%   <<"SplitTunnel">> => boolean(),
 %%   <<"Status">> => client_vpn_endpoint_status(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransportProtocol">> => list(any()),
 %%   <<"VpcId">> => string(),
 %%   <<"VpnPort">> => integer(),
@@ -14361,10 +14361,10 @@
 %%   <<"Attribute">> => list(any()),
 %%   <<"CreateVolumePermission">> => create_volume_permission_modifications(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"GroupNames">> => list(string()()),
+%%   <<"GroupNames">> => list(string()),
 %%   <<"OperationType">> => list(any()),
 %%   <<"SnapshotId">> := string(),
-%%   <<"UserIds">> => list(string()())
+%%   <<"UserIds">> => list(string())
 %% }
 -type modify_snapshot_attribute_request() :: #{binary() => any()}.
 
@@ -14377,7 +14377,7 @@
 
 %% Example:
 %% list_images_in_recycle_bin_result() :: #{
-%%   <<"Images">> => list(image_recycle_bin_info()()),
+%%   <<"Images">> => list(image_recycle_bin_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_images_in_recycle_bin_result() :: #{binary() => any()}.
@@ -14399,7 +14399,7 @@
 
 %% Example:
 %% get_aws_network_performance_data_request() :: #{
-%%   <<"DataQueries">> => list(data_query()()),
+%%   <<"DataQueries">> => list(data_query()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"MaxResults">> => integer(),
@@ -14410,7 +14410,7 @@
 
 %% Example:
 %% describe_conversion_tasks_request() :: #{
-%%   <<"ConversionTaskIds">> => list(string()()),
+%%   <<"ConversionTaskIds">> => list(string()),
 %%   <<"DryRun">> => boolean()
 %% }
 -type describe_conversion_tasks_request() :: #{binary() => any()}.
@@ -14465,9 +14465,9 @@
 
 %% Example:
 %% create_dhcp_options_request() :: #{
-%%   <<"DhcpConfigurations">> := list(new_dhcp_configuration()()),
+%%   <<"DhcpConfigurations">> := list(new_dhcp_configuration()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_dhcp_options_request() :: #{binary() => any()}.
 
@@ -14490,15 +14490,15 @@
 %%   <<"SubnetId">> => string(),
 %%   <<"NetworkPerformanceOptions">> => instance_network_performance_options(),
 %%   <<"MaintenanceOptions">> => instance_maintenance_options(),
-%%   <<"ElasticGpuAssociations">> => list(elastic_gpu_association()()),
+%%   <<"ElasticGpuAssociations">> => list(elastic_gpu_association()),
 %%   <<"SpotInstanceRequestId">> => string(),
-%%   <<"NetworkInterfaces">> => list(instance_network_interface()()),
+%%   <<"NetworkInterfaces">> => list(instance_network_interface()),
 %%   <<"KernelId">> => string(),
-%%   <<"Licenses">> => list(license_configuration()()),
+%%   <<"Licenses">> => list(license_configuration()),
 %%   <<"Architecture">> => list(any()),
 %%   <<"EbsOptimized">> => boolean(),
 %%   <<"KeyName">> => string(),
-%%   <<"BlockDeviceMappings">> => list(instance_block_device_mapping()()),
+%%   <<"BlockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"PrivateDnsNameOptions">> => private_dns_name_options_response(),
 %%   <<"StateTransitionReason">> => string(),
 %%   <<"MetadataOptions">> => instance_metadata_options_response(),
@@ -14518,7 +14518,7 @@
 %%   <<"CapacityBlockId">> => string(),
 %%   <<"Platform">> => list(any()),
 %%   <<"CapacityReservationId">> => string(),
-%%   <<"ElasticInferenceAcceleratorAssociations">> => list(elastic_inference_accelerator_association()()),
+%%   <<"ElasticInferenceAcceleratorAssociations">> => list(elastic_inference_accelerator_association()),
 %%   <<"RootDeviceName">> => string(),
 %%   <<"RamdiskId">> => string(),
 %%   <<"CpuOptions">> => cpu_options(),
@@ -14529,10 +14529,10 @@
 %%   <<"AmiLaunchIndex">> => integer(),
 %%   <<"StateReason">> => state_reason(),
 %%   <<"PublicDnsName">> => string(),
-%%   <<"SecurityGroups">> => list(group_identifier()()),
+%%   <<"SecurityGroups">> => list(group_identifier()),
 %%   <<"PlatformDetails">> => string(),
 %%   <<"PrivateDnsName">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string(),
 %%   <<"PrivateIpAddress">> => string(),
 %%   <<"RootDeviceType">> => list(any()),
@@ -14541,7 +14541,7 @@
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceLifecycle">> => list(any()),
 %%   <<"LaunchTime">> => non_neg_integer(),
-%%   <<"ProductCodes">> => list(product_code()()),
+%%   <<"ProductCodes">> => list(product_code()),
 %%   <<"EnaSupport">> => boolean(),
 %%   <<"Ipv6Address">> => string()
 %% }
@@ -14556,9 +14556,9 @@
 
 %% Example:
 %% create_fleet_result() :: #{
-%%   <<"Errors">> => list(create_fleet_error()()),
+%%   <<"Errors">> => list(create_fleet_error()),
 %%   <<"FleetId">> => string(),
-%%   <<"Instances">> => list(create_fleet_instance()())
+%%   <<"Instances">> => list(create_fleet_instance())
 %% }
 -type create_fleet_result() :: #{binary() => any()}.
 
@@ -14570,7 +14570,7 @@
 
 %% Example:
 %% volume() :: #{
-%%   <<"Attachments">> => list(volume_attachment()()),
+%%   <<"Attachments">> => list(volume_attachment()),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"Encrypted">> => boolean(),
@@ -14584,7 +14584,7 @@
 %%   <<"SnapshotId">> => string(),
 %%   <<"SseType">> => list(any()),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Throughput">> => integer(),
 %%   <<"VolumeId">> => string(),
 %%   <<"VolumeInitializationRate">> => integer(),
@@ -14597,16 +14597,16 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"PreserveClientIp">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_instance_connect_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_transit_gateway_prefix_list_references_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayRouteTableId">> := string()
@@ -14616,7 +14616,7 @@
 %% Example:
 %% get_ipam_pool_allocations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IpamPoolAllocationId">> => string(),
 %%   <<"IpamPoolId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -14632,9 +14632,9 @@
 %%   <<"LocalGatewayId">> => string(),
 %%   <<"LocalGatewayVirtualInterfaceGroupArn">> => string(),
 %%   <<"LocalGatewayVirtualInterfaceGroupId">> => string(),
-%%   <<"LocalGatewayVirtualInterfaceIds">> => list(string()()),
+%%   <<"LocalGatewayVirtualInterfaceIds">> => list(string()),
 %%   <<"OwnerId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type local_gateway_virtual_interface_group() :: #{binary() => any()}.
 
@@ -14669,10 +14669,10 @@
 %% Example:
 %% describe_verified_access_trust_providers_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessTrustProviderIds">> => list(string()())
+%%   <<"VerifiedAccessTrustProviderIds">> => list(string())
 %% }
 -type describe_verified_access_trust_providers_request() :: #{binary() => any()}.
 
@@ -14687,7 +14687,7 @@
 %% Example:
 %% list_images_in_recycle_bin_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ImageIds">> => list(string()()),
+%%   <<"ImageIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -14696,7 +14696,7 @@
 %% Example:
 %% instance_tag_notification_attribute() :: #{
 %%   <<"IncludeAllTagsOfInstance">> => boolean(),
-%%   <<"InstanceTagKeys">> => list(string()())
+%%   <<"InstanceTagKeys">> => list(string())
 %% }
 -type instance_tag_notification_attribute() :: #{binary() => any()}.
 
@@ -14711,14 +14711,14 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"KeyName">> := string(),
 %%   <<"PublicKeyMaterial">> := binary(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type import_key_pair_request() :: #{binary() => any()}.
 
 %% Example:
 %% search_local_gateway_routes_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Routes">> => list(local_gateway_route()())
+%%   <<"Routes">> => list(local_gateway_route())
 %% }
 -type search_local_gateway_routes_result() :: #{binary() => any()}.
 
@@ -14731,7 +14731,7 @@
 
 %% Example:
 %% describe_carrier_gateways_result() :: #{
-%%   <<"CarrierGateways">> => list(carrier_gateway()()),
+%%   <<"CarrierGateways">> => list(carrier_gateway()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_carrier_gateways_result() :: #{binary() => any()}.
@@ -14745,7 +14745,7 @@
 %%   <<"SnsNotificationsEnabled">> => boolean(),
 %%   <<"SnsTopicArn">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type route_server() :: #{binary() => any()}.
 
@@ -14753,13 +14753,13 @@
 %% reserved_instances_listing() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"InstanceCounts">> => list(instance_count()()),
-%%   <<"PriceSchedules">> => list(price_schedule()()),
+%%   <<"InstanceCounts">> => list(instance_count()),
+%%   <<"PriceSchedules">> => list(price_schedule()),
 %%   <<"ReservedInstancesId">> => string(),
 %%   <<"ReservedInstancesListingId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UpdateDate">> => non_neg_integer()
 %% }
 -type reserved_instances_listing() :: #{binary() => any()}.
@@ -14775,7 +14775,7 @@
 %% Example:
 %% describe_service_link_virtual_interfaces_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceLinkVirtualInterfaces">> => list(service_link_virtual_interface()())
+%%   <<"ServiceLinkVirtualInterfaces">> => list(service_link_virtual_interface())
 %% }
 -type describe_service_link_virtual_interfaces_result() :: #{binary() => any()}.
 
@@ -14812,9 +14812,9 @@
 
 %% Example:
 %% describe_network_interface_permissions_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NetworkInterfacePermissionIds">> => list(string()()),
+%%   <<"NetworkInterfacePermissionIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_interface_permissions_request() :: #{binary() => any()}.
@@ -14837,8 +14837,8 @@
 
 %% Example:
 %% modify_instance_credit_specification_result() :: #{
-%%   <<"SuccessfulInstanceCreditSpecifications">> => list(successful_instance_credit_specification_item()()),
-%%   <<"UnsuccessfulInstanceCreditSpecifications">> => list(unsuccessful_instance_credit_specification_item()())
+%%   <<"SuccessfulInstanceCreditSpecifications">> => list(successful_instance_credit_specification_item()),
+%%   <<"UnsuccessfulInstanceCreditSpecifications">> => list(unsuccessful_instance_credit_specification_item())
 %% }
 -type modify_instance_credit_specification_result() :: #{binary() => any()}.
 
@@ -14847,7 +14847,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ReportIds">> => list(string()())
+%%   <<"ReportIds">> => list(string())
 %% }
 -type describe_declarative_policies_reports_request() :: #{binary() => any()}.
 
@@ -14856,7 +14856,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"LaunchTemplateId">> => string(),
 %%   <<"LaunchTemplateName">> => string(),
-%%   <<"Versions">> := list(string()())
+%%   <<"Versions">> := list(string())
 %% }
 -type delete_launch_template_versions_request() :: #{binary() => any()}.
 
@@ -14870,17 +14870,17 @@
 
 %% Example:
 %% describe_public_ipv4_pools_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"PoolIds">> => list(string()())
+%%   <<"PoolIds">> => list(string())
 %% }
 -type describe_public_ipv4_pools_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_locked_snapshots_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Snapshots">> => list(locked_snapshots_info()())
+%%   <<"Snapshots">> => list(locked_snapshots_info())
 %% }
 -type describe_locked_snapshots_result() :: #{binary() => any()}.
 
@@ -14890,7 +14890,7 @@
 %%   <<"KeyFormat">> => list(any()),
 %%   <<"KeyName">> := string(),
 %%   <<"KeyType">> => list(any()),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_key_pair_request() :: #{binary() => any()}.
 
@@ -14939,26 +14939,26 @@
 
 %% Example:
 %% describe_local_gateways_result() :: #{
-%%   <<"LocalGateways">> => list(local_gateway()()),
+%%   <<"LocalGateways">> => list(local_gateway()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_local_gateways_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_ipam_resource_discovery_request() :: #{
-%%   <<"AddOperatingRegions">> => list(add_ipam_operating_region()()),
-%%   <<"AddOrganizationalUnitExclusions">> => list(add_ipam_organizational_unit_exclusion()()),
+%%   <<"AddOperatingRegions">> => list(add_ipam_operating_region()),
+%%   <<"AddOrganizationalUnitExclusions">> => list(add_ipam_organizational_unit_exclusion()),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamResourceDiscoveryId">> := string(),
-%%   <<"RemoveOperatingRegions">> => list(remove_ipam_operating_region()()),
-%%   <<"RemoveOrganizationalUnitExclusions">> => list(remove_ipam_organizational_unit_exclusion()())
+%%   <<"RemoveOperatingRegions">> => list(remove_ipam_operating_region()),
+%%   <<"RemoveOrganizationalUnitExclusions">> => list(remove_ipam_organizational_unit_exclusion())
 %% }
 -type modify_ipam_resource_discovery_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ipam_byoasn_result() :: #{
-%%   <<"Byoasns">> => list(byoasn()()),
+%%   <<"Byoasns">> => list(byoasn()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_byoasn_result() :: #{binary() => any()}.
@@ -14980,14 +14980,14 @@
 
 %% Example:
 %% validation_warning() :: #{
-%%   <<"Errors">> => list(validation_error()())
+%%   <<"Errors">> => list(validation_error())
 %% }
 -type validation_warning() :: #{binary() => any()}.
 
 %% Example:
 %% register_instance_tag_attribute_request() :: #{
 %%   <<"IncludeAllTagsOfInstance">> => boolean(),
-%%   <<"InstanceTagKeys">> => list(string()())
+%%   <<"InstanceTagKeys">> => list(string())
 %% }
 -type register_instance_tag_attribute_request() :: #{binary() => any()}.
 
@@ -15012,7 +15012,7 @@
 
 %% Example:
 %% deprovision_public_ipv4_pool_cidr_result() :: #{
-%%   <<"DeprovisionedAddresses">> => list(string()()),
+%%   <<"DeprovisionedAddresses">> => list(string()),
 %%   <<"PoolId">> => string()
 %% }
 -type deprovision_public_ipv4_pool_cidr_result() :: #{binary() => any()}.
@@ -15020,7 +15020,7 @@
 %% Example:
 %% search_transit_gateway_routes_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> := list(filter()()),
+%%   <<"Filters">> := list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"TransitGatewayRouteTableId">> := string()
 %% }
@@ -15037,7 +15037,7 @@
 %% describe_client_vpn_authorization_rules_request() :: #{
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -15052,8 +15052,8 @@
 %% Example:
 %% describe_local_gateway_route_table_virtual_interface_group_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -15062,32 +15062,32 @@
 %% Example:
 %% create_verified_access_endpoint_cidr_options() :: #{
 %%   <<"Cidr">> => string(),
-%%   <<"PortRanges">> => list(create_verified_access_endpoint_port_range()()),
+%%   <<"PortRanges">> => list(create_verified_access_endpoint_port_range()),
 %%   <<"Protocol">> => list(any()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type create_verified_access_endpoint_cidr_options() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpcs_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VpcIds">> => list(string()())
+%%   <<"VpcIds">> => list(string())
 %% }
 -type describe_vpcs_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_transit_gateway_policy_table_associations_result() :: #{
-%%   <<"Associations">> => list(transit_gateway_policy_table_association()()),
+%%   <<"Associations">> => list(transit_gateway_policy_table_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_transit_gateway_policy_table_associations_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_import_image_tasks_result() :: #{
-%%   <<"ImportImageTasks">> => list(import_image_task()()),
+%%   <<"ImportImageTasks">> => list(import_image_task()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_import_image_tasks_result() :: #{binary() => any()}.
@@ -15111,7 +15111,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Options">> => transit_gateway_connect_options(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayAttachmentId">> => string(),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"TransportTransitGatewayAttachmentId">> => string()
@@ -15127,7 +15127,7 @@
 
 %% Example:
 %% create_fleet_instance() :: #{
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LaunchTemplateAndOverrides">> => launch_template_and_overrides_response(),
 %%   <<"Lifecycle">> => list(any()),
@@ -15181,7 +15181,7 @@
 %%   <<"OutpostArn">> => string(),
 %%   <<"Size">> => integer(),
 %%   <<"SnapshotId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Throughput">> => integer(),
 %%   <<"VolumeInitializationRate">> => integer(),
 %%   <<"VolumeType">> => list(any())
@@ -15190,7 +15190,7 @@
 
 %% Example:
 %% describe_account_attributes_result() :: #{
-%%   <<"AccountAttributes">> => list(account_attribute()())
+%%   <<"AccountAttributes">> => list(account_attribute())
 %% }
 -type describe_account_attributes_result() :: #{binary() => any()}.
 
@@ -15204,8 +15204,8 @@
 %% Example:
 %% describe_ipam_resource_discovery_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"IpamResourceDiscoveryAssociationIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamResourceDiscoveryAssociationIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -15214,9 +15214,9 @@
 %% Example:
 %% ipv6_pool() :: #{
 %%   <<"Description">> => string(),
-%%   <<"PoolCidrBlocks">> => list(pool_cidr_block()()),
+%%   <<"PoolCidrBlocks">> => list(pool_cidr_block()),
 %%   <<"PoolId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type ipv6_pool() :: #{binary() => any()}.
 
@@ -15251,13 +15251,13 @@
 
 %% Example:
 %% start_network_insights_analysis_request() :: #{
-%%   <<"AdditionalAccounts">> => list(string()()),
+%%   <<"AdditionalAccounts">> => list(string()),
 %%   <<"ClientToken">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"FilterInArns">> => list(string()()),
-%%   <<"FilterOutArns">> => list(string()()),
+%%   <<"FilterInArns">> => list(string()),
+%%   <<"FilterOutArns">> => list(string()),
 %%   <<"NetworkInsightsPathId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type start_network_insights_analysis_request() :: #{binary() => any()}.
 
@@ -15268,11 +15268,11 @@
 %%   <<"FromPort">> => integer(),
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"IpPermissions">> => list(ip_permission()()),
+%%   <<"IpPermissions">> => list(ip_permission()),
 %%   <<"IpProtocol">> => string(),
 %%   <<"SourceSecurityGroupName">> => string(),
 %%   <<"SourceSecurityGroupOwnerId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"ToPort">> => integer()
 %% }
 -type authorize_security_group_ingress_request() :: #{binary() => any()}.
@@ -15286,7 +15286,7 @@
 
 %% Example:
 %% describe_ipv6_pools_result() :: #{
-%%   <<"Ipv6Pools">> => list(ipv6_pool()()),
+%%   <<"Ipv6Pools">> => list(ipv6_pool()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipv6_pools_result() :: #{binary() => any()}.
@@ -15301,10 +15301,10 @@
 %% Example:
 %% describe_route_tables_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RouteTableIds">> => list(string()())
+%%   <<"RouteTableIds">> => list(string())
 %% }
 -type describe_route_tables_request() :: #{binary() => any()}.
 
@@ -15325,9 +15325,9 @@
 
 %% Example:
 %% instance_event_window_disassociation_request() :: #{
-%%   <<"DedicatedHostIds">> => list(string()()),
-%%   <<"InstanceIds">> => list(string()()),
-%%   <<"InstanceTags">> => list(tag()())
+%%   <<"DedicatedHostIds">> => list(string()),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"InstanceTags">> => list(tag())
 %% }
 -type instance_event_window_disassociation_request() :: #{binary() => any()}.
 
@@ -15341,7 +15341,7 @@
 
 %% Example:
 %% describe_local_gateway_route_table_virtual_interface_group_associations_result() :: #{
-%%   <<"LocalGatewayRouteTableVirtualInterfaceGroupAssociations">> => list(local_gateway_route_table_virtual_interface_group_association()()),
+%%   <<"LocalGatewayRouteTableVirtualInterfaceGroupAssociations">> => list(local_gateway_route_table_virtual_interface_group_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_local_gateway_route_table_virtual_interface_group_associations_result() :: #{binary() => any()}.
@@ -15366,7 +15366,7 @@
 %% Example:
 %% attach_classic_link_vpc_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Groups">> := list(string()()),
+%%   <<"Groups">> := list(string()),
 %%   <<"InstanceId">> := string(),
 %%   <<"VpcId">> := string()
 %% }
@@ -15385,13 +15385,13 @@
 %%   <<"AcceleratorNames">> => list(list(any())()),
 %%   <<"AcceleratorTotalMemoryMiB">> => accelerator_total_memory_mi_b(),
 %%   <<"AcceleratorTypes">> => list(list(any())()),
-%%   <<"AllowedInstanceTypes">> => list(string()()),
+%%   <<"AllowedInstanceTypes">> => list(string()),
 %%   <<"BareMetal">> => list(any()),
 %%   <<"BaselineEbsBandwidthMbps">> => baseline_ebs_bandwidth_mbps(),
 %%   <<"BaselinePerformanceFactors">> => baseline_performance_factors(),
 %%   <<"BurstablePerformance">> => list(any()),
 %%   <<"CpuManufacturers">> => list(list(any())()),
-%%   <<"ExcludedInstanceTypes">> => list(string()()),
+%%   <<"ExcludedInstanceTypes">> => list(string()),
 %%   <<"InstanceGenerations">> => list(list(any())()),
 %%   <<"LocalStorage">> => list(any()),
 %%   <<"LocalStorageTypes">> => list(list(any())()),
@@ -15427,18 +15427,18 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Context">> => string(),
 %%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Errors">> => list(describe_fleet_error()()),
+%%   <<"Errors">> => list(describe_fleet_error()),
 %%   <<"ExcessCapacityTerminationPolicy">> => list(any()),
 %%   <<"FleetId">> => string(),
 %%   <<"FleetState">> => list(any()),
 %%   <<"FulfilledCapacity">> => float(),
 %%   <<"FulfilledOnDemandCapacity">> => float(),
-%%   <<"Instances">> => list(describe_fleets_instances()()),
-%%   <<"LaunchTemplateConfigs">> => list(fleet_launch_template_config()()),
+%%   <<"Instances">> => list(describe_fleets_instances()),
+%%   <<"LaunchTemplateConfigs">> => list(fleet_launch_template_config()),
 %%   <<"OnDemandOptions">> => on_demand_options(),
 %%   <<"ReplaceUnhealthyInstances">> => boolean(),
 %%   <<"SpotOptions">> => spot_options(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetCapacitySpecification">> => target_capacity_specification(),
 %%   <<"TerminateInstancesWithExpiration">> => boolean(),
 %%   <<"Type">> => list(any()),
@@ -15457,7 +15457,7 @@
 
 %% Example:
 %% get_allowed_images_settings_result() :: #{
-%%   <<"ImageCriteria">> => list(image_criterion()()),
+%%   <<"ImageCriteria">> => list(image_criterion()),
 %%   <<"ManagedBy">> => list(any()),
 %%   <<"State">> => string()
 %% }
@@ -15467,7 +15467,7 @@
 %% create_reserved_instances_listing_request() :: #{
 %%   <<"ClientToken">> := string(),
 %%   <<"InstanceCount">> := integer(),
-%%   <<"PriceSchedules">> := list(price_schedule_specification()()),
+%%   <<"PriceSchedules">> := list(price_schedule_specification()),
 %%   <<"ReservedInstancesId">> := string()
 %% }
 -type create_reserved_instances_listing_request() :: #{binary() => any()}.
@@ -15484,14 +15484,14 @@
 %%   <<"PresignedUrl">> => string(),
 %%   <<"SourceRegion">> := string(),
 %%   <<"SourceSnapshotId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type copy_snapshot_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_declarative_policies_reports_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Reports">> => list(declarative_policies_report()())
+%%   <<"Reports">> => list(declarative_policies_report())
 %% }
 -type describe_declarative_policies_reports_result() :: #{binary() => any()}.
 
@@ -15506,7 +15506,7 @@
 %% create_transit_gateway_multicast_domain_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Options">> => create_transit_gateway_multicast_domain_request_options(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransitGatewayId">> := string()
 %% }
 -type create_transit_gateway_multicast_domain_request() :: #{binary() => any()}.
@@ -15533,10 +15533,10 @@
 %% Example:
 %% describe_verified_access_groups_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessGroupIds">> => list(string()()),
+%%   <<"VerifiedAccessGroupIds">> => list(string()),
 %%   <<"VerifiedAccessInstanceId">> => string()
 %% }
 -type describe_verified_access_groups_request() :: #{binary() => any()}.
@@ -15546,8 +15546,8 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"OperatingRegions">> => list(add_ipam_operating_region()()),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"OperatingRegions">> => list(add_ipam_operating_region()),
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_ipam_resource_discovery_request() :: #{binary() => any()}.
 
@@ -15582,8 +15582,8 @@
 %%   <<"Description">> => string(),
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"StaleIpPermissions">> => list(stale_ip_permission()()),
-%%   <<"StaleIpPermissionsEgress">> => list(stale_ip_permission()()),
+%%   <<"StaleIpPermissions">> => list(stale_ip_permission()),
+%%   <<"StaleIpPermissionsEgress">> => list(stale_ip_permission()),
 %%   <<"VpcId">> => string()
 %% }
 -type stale_security_group() :: #{binary() => any()}.
@@ -15626,9 +15626,9 @@
 %%   <<"NetworkInterfaceOptions">> => create_verified_access_endpoint_eni_options(),
 %%   <<"PolicyDocument">> => string(),
 %%   <<"RdsOptions">> => create_verified_access_endpoint_rds_options(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SseSpecification">> => verified_access_sse_specification_request(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VerifiedAccessGroupId">> := string()
 %% }
 -type create_verified_access_endpoint_request() :: #{binary() => any()}.
@@ -15651,7 +15651,7 @@
 %% register_transit_gateway_multicast_group_sources_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupIpAddress">> => string(),
-%%   <<"NetworkInterfaceIds">> := list(string()()),
+%%   <<"NetworkInterfaceIds">> := list(string()),
 %%   <<"TransitGatewayMulticastDomainId">> := string()
 %% }
 -type register_transit_gateway_multicast_group_sources_request() :: #{binary() => any()}.
@@ -15665,7 +15665,7 @@
 %% Example:
 %% describe_fast_snapshot_restores_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -15707,7 +15707,7 @@
 %% Example:
 %% fleet_launch_template_config_request() :: #{
 %%   <<"LaunchTemplateSpecification">> => fleet_launch_template_specification_request(),
-%%   <<"Overrides">> => list(fleet_launch_template_overrides_request()())
+%%   <<"Overrides">> => list(fleet_launch_template_overrides_request())
 %% }
 -type fleet_launch_template_config_request() :: #{binary() => any()}.
 
@@ -15758,7 +15758,7 @@
 
 %% Example:
 %% describe_fpga_images_result() :: #{
-%%   <<"FpgaImages">> => list(fpga_image()()),
+%%   <<"FpgaImages">> => list(fpga_image()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fpga_images_result() :: #{binary() => any()}.
@@ -15773,7 +15773,7 @@
 %% modify_instance_credit_specification_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceCreditSpecifications">> := list(instance_credit_specification_request()())
+%%   <<"InstanceCreditSpecifications">> := list(instance_credit_specification_request())
 %% }
 -type modify_instance_credit_specification_request() :: #{binary() => any()}.
 
@@ -15822,9 +15822,9 @@
 %% verified_access_endpoint_load_balancer_options() :: #{
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"Port">> => integer(),
-%%   <<"PortRanges">> => list(verified_access_endpoint_port_range()()),
+%%   <<"PortRanges">> => list(verified_access_endpoint_port_range()),
 %%   <<"Protocol">> => list(any()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type verified_access_endpoint_load_balancer_options() :: #{binary() => any()}.
 
@@ -15842,7 +15842,7 @@
 %% Example:
 %% describe_reserved_instances_offerings_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReservedInstancesOfferings">> => list(reserved_instances_offering()())
+%%   <<"ReservedInstancesOfferings">> => list(reserved_instances_offering())
 %% }
 -type describe_reserved_instances_offerings_result() :: #{binary() => any()}.
 
@@ -15857,11 +15857,11 @@
 %% Example:
 %% describe_vpc_endpoint_services_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceNames">> => list(string()()),
-%%   <<"ServiceRegions">> => list(string()())
+%%   <<"ServiceNames">> => list(string()),
+%%   <<"ServiceRegions">> => list(string())
 %% }
 -type describe_vpc_endpoint_services_request() :: #{binary() => any()}.
 
@@ -15879,7 +15879,7 @@
 
 %% Example:
 %% describe_network_interface_permissions_result() :: #{
-%%   <<"NetworkInterfacePermissions">> => list(network_interface_permission()()),
+%%   <<"NetworkInterfacePermissions">> => list(network_interface_permission()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_interface_permissions_result() :: #{binary() => any()}.
@@ -15892,7 +15892,7 @@
 
 %% Example:
 %% start_instances_result() :: #{
-%%   <<"StartingInstances">> => list(instance_state_change()())
+%%   <<"StartingInstances">> => list(instance_state_change())
 %% }
 -type start_instances_result() :: #{binary() => any()}.
 
@@ -15922,17 +15922,17 @@
 %%   <<"AddressFamily">> := string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Entries">> => list(add_prefix_list_entry()()),
+%%   <<"Entries">> => list(add_prefix_list_entry()),
 %%   <<"MaxEntries">> := integer(),
 %%   <<"PrefixListName">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_managed_prefix_list_request() :: #{binary() => any()}.
 
 %% Example:
 %% enable_fast_snapshot_restores_result() :: #{
-%%   <<"Successful">> => list(enable_fast_snapshot_restore_success_item()()),
-%%   <<"Unsuccessful">> => list(enable_fast_snapshot_restore_error_item()())
+%%   <<"Successful">> => list(enable_fast_snapshot_restore_success_item()),
+%%   <<"Unsuccessful">> => list(enable_fast_snapshot_restore_error_item())
 %% }
 -type enable_fast_snapshot_restores_result() :: #{binary() => any()}.
 
@@ -15950,7 +15950,7 @@
 %%   <<"RouteServerPeerId">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"SubnetId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type route_server_peer() :: #{binary() => any()}.
@@ -15959,7 +15959,7 @@
 %% deregister_transit_gateway_multicast_group_members_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupIpAddress">> => string(),
-%%   <<"NetworkInterfaceIds">> => list(string()()),
+%%   <<"NetworkInterfaceIds">> => list(string()),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
 -type deregister_transit_gateway_multicast_group_members_request() :: #{binary() => any()}.
@@ -15988,8 +15988,8 @@
 %% Example:
 %% describe_ipam_scopes_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"IpamScopeIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamScopeIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -16011,10 +16011,10 @@
 %% Example:
 %% describe_outpost_lags_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OutpostLagIds">> => list(string()())
+%%   <<"OutpostLagIds">> => list(string())
 %% }
 -type describe_outpost_lags_request() :: #{binary() => any()}.
 
@@ -16042,15 +16042,15 @@
 %%   <<"ReservationType">> => list(any()),
 %%   <<"SubnetCidrReservationId">> => string(),
 %%   <<"SubnetId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type subnet_cidr_reservation() :: #{binary() => any()}.
 
 %% Example:
 %% instance_event_window_association_request() :: #{
-%%   <<"DedicatedHostIds">> => list(string()()),
-%%   <<"InstanceIds">> => list(string()()),
-%%   <<"InstanceTags">> => list(tag()())
+%%   <<"DedicatedHostIds">> => list(string()),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"InstanceTags">> => list(tag())
 %% }
 -type instance_event_window_association_request() :: #{binary() => any()}.
 
@@ -16075,8 +16075,8 @@
 
 %% Example:
 %% describe_iam_instance_profile_associations_request() :: #{
-%%   <<"AssociationIds">> => list(string()()),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"AssociationIds">> => list(string()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -16125,10 +16125,10 @@
 %% Example:
 %% describe_ipv6_pools_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"PoolIds">> => list(string()())
+%%   <<"PoolIds">> => list(string())
 %% }
 -type describe_ipv6_pools_request() :: #{binary() => any()}.
 
@@ -16151,7 +16151,7 @@
 %%   <<"Protocol">> := list(any()),
 %%   <<"Source">> := string(),
 %%   <<"SourceIp">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_network_insights_path_request() :: #{binary() => any()}.
 
@@ -16208,7 +16208,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SnapshotIds">> => list(string()())
+%%   <<"SnapshotIds">> => list(string())
 %% }
 -type list_snapshots_in_recycle_bin_request() :: #{binary() => any()}.
 
@@ -16235,8 +16235,8 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"InstanceMatchCriteria">> => list(any()),
-%%   <<"InstanceTypeSpecifications">> := list(reservation_fleet_instance_specification()()),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"InstanceTypeSpecifications">> := list(reservation_fleet_instance_specification()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Tenancy">> => list(any()),
 %%   <<"TotalTargetCapacity">> := integer()
 %% }
@@ -16245,7 +16245,7 @@
 %% Example:
 %% launch_template_tag_specification() :: #{
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type launch_template_tag_specification() :: #{binary() => any()}.
 
@@ -16269,7 +16269,7 @@
 %%   <<"AvailableInstanceCount">> => integer(),
 %%   <<"CapacityReservationId">> => string(),
 %%   <<"InstanceType">> => string(),
-%%   <<"InstanceUsages">> => list(instance_usage()()),
+%%   <<"InstanceUsages">> => list(instance_usage()),
 %%   <<"NextToken">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"TotalInstanceCount">> => integer()
@@ -16284,7 +16284,7 @@
 %%   <<"S3Prefix">> => string(),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetId">> => string()
 %% }
 -type declarative_policies_report() :: #{binary() => any()}.
@@ -16315,7 +16315,7 @@
 %% Example:
 %% create_vpc_endpoint_connection_notification_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"ConnectionEvents">> := list(string()()),
+%%   <<"ConnectionEvents">> := list(string()),
 %%   <<"ConnectionNotificationArn">> := string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"ServiceId">> => string(),
@@ -16348,7 +16348,7 @@
 %%   <<"MacCredentials">> => string(),
 %%   <<"MacSystemIntegrityProtectionConfiguration">> => mac_system_integrity_protection_configuration_request(),
 %%   <<"MacSystemIntegrityProtectionStatus">> := list(any()),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_mac_system_integrity_protection_modification_task_request() :: #{binary() => any()}.
 
@@ -16358,7 +16358,7 @@
 %%   <<"AllocationDefaultNetmaskLength">> => integer(),
 %%   <<"AllocationMaxNetmaskLength">> => integer(),
 %%   <<"AllocationMinNetmaskLength">> => integer(),
-%%   <<"AllocationResourceTags">> => list(request_ipam_resource_tag()()),
+%%   <<"AllocationResourceTags">> => list(request_ipam_resource_tag()),
 %%   <<"AutoImport">> => boolean(),
 %%   <<"AwsService">> => list(any()),
 %%   <<"ClientToken">> => string(),
@@ -16370,13 +16370,13 @@
 %%   <<"PubliclyAdvertisable">> => boolean(),
 %%   <<"SourceIpamPoolId">> => string(),
 %%   <<"SourceResource">> => ipam_pool_source_resource_request(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_ipam_pool_request() :: #{binary() => any()}.
 
 %% Example:
 %% prefix_list() :: #{
-%%   <<"Cidrs">> => list(string()()),
+%%   <<"Cidrs">> => list(string()),
 %%   <<"PrefixListId">> => string(),
 %%   <<"PrefixListName">> => string()
 %% }
@@ -16448,7 +16448,7 @@
 %%   <<"LaunchTemplateId">> => string(),
 %%   <<"LaunchTemplateName">> => string(),
 %%   <<"Operator">> => operator_response(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type launch_template() :: #{binary() => any()}.
 
@@ -16463,7 +16463,7 @@
 %%   <<"Description">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"Platform">> => list(any()),
-%%   <<"Volumes">> => list(import_instance_volume_detail_item()())
+%%   <<"Volumes">> => list(import_instance_volume_detail_item())
 %% }
 -type import_instance_task_details() :: #{binary() => any()}.
 
@@ -16493,31 +16493,31 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EnablePrimaryIpv6">> => boolean(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"InterfaceType">> => list(any()),
 %%   <<"Ipv4PrefixCount">> => integer(),
-%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()()),
+%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()),
 %%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()()),
+%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()),
 %%   <<"Ipv6PrefixCount">> => integer(),
-%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()()),
+%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()),
 %%   <<"Operator">> => operator_request(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()()),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
 %%   <<"SubnetId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_network_interface_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fpga_images_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"FpgaImageIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"FpgaImageIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Owners">> => list(string()())
+%%   <<"Owners">> => list(string())
 %% }
 -type describe_fpga_images_request() :: #{binary() => any()}.
 
@@ -16552,7 +16552,7 @@
 %% describe_client_vpn_connections_request() :: #{
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -16583,7 +16583,7 @@
 %% Example:
 %% account_attribute() :: #{
 %%   <<"AttributeName">> => string(),
-%%   <<"AttributeValues">> => list(account_attribute_value()())
+%%   <<"AttributeValues">> => list(account_attribute_value())
 %% }
 -type account_attribute() :: #{binary() => any()}.
 
@@ -16596,7 +16596,7 @@
 %% Example:
 %% describe_route_server_peers_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RouteServerPeers">> => list(route_server_peer()())
+%%   <<"RouteServerPeers">> => list(route_server_peer())
 %% }
 -type describe_route_server_peers_result() :: #{binary() => any()}.
 
@@ -16625,7 +16625,7 @@
 %% Example:
 %% describe_launch_template_versions_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"LaunchTemplateId">> => string(),
 %%   <<"LaunchTemplateName">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -16633,7 +16633,7 @@
 %%   <<"MinVersion">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"ResolveAlias">> => boolean(),
-%%   <<"Versions">> => list(string()())
+%%   <<"Versions">> => list(string())
 %% }
 -type describe_launch_template_versions_request() :: #{binary() => any()}.
 
@@ -16657,9 +16657,9 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"FromPort">> => integer(),
 %%   <<"GroupId">> := string(),
-%%   <<"IpPermissions">> => list(ip_permission()()),
+%%   <<"IpPermissions">> => list(ip_permission()),
 %%   <<"IpProtocol">> => string(),
-%%   <<"SecurityGroupRuleIds">> => list(string()()),
+%%   <<"SecurityGroupRuleIds">> => list(string()),
 %%   <<"SourceSecurityGroupName">> => string(),
 %%   <<"SourceSecurityGroupOwnerId">> => string(),
 %%   <<"ToPort">> => integer()
@@ -16669,7 +16669,7 @@
 %% Example:
 %% describe_aws_network_performance_metric_subscriptions_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -16678,8 +16678,8 @@
 %% Example:
 %% modify_reserved_instances_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"ReservedInstancesIds">> := list(string()()),
-%%   <<"TargetConfigurations">> := list(reserved_instances_configuration()())
+%%   <<"ReservedInstancesIds">> := list(string()),
+%%   <<"TargetConfigurations">> := list(reserved_instances_configuration())
 %% }
 -type modify_reserved_instances_request() :: #{binary() => any()}.
 
@@ -16700,15 +16700,15 @@
 %% start_instances_request() :: #{
 %%   <<"AdditionalInfo">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceIds">> := list(string()())
+%%   <<"InstanceIds">> := list(string())
 %% }
 -type start_instances_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_carrier_gateways_request() :: #{
-%%   <<"CarrierGatewayIds">> => list(string()()),
+%%   <<"CarrierGatewayIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -16716,13 +16716,13 @@
 
 %% Example:
 %% create_snapshots_result() :: #{
-%%   <<"Snapshots">> => list(snapshot_info()())
+%%   <<"Snapshots">> => list(snapshot_info())
 %% }
 -type create_snapshots_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_associated_enclave_certificate_iam_roles_result() :: #{
-%%   <<"AssociatedRoles">> => list(associated_role()())
+%%   <<"AssociatedRoles">> => list(associated_role())
 %% }
 -type get_associated_enclave_certificate_iam_roles_result() :: #{binary() => any()}.
 
@@ -16734,7 +16734,7 @@
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceId">> := string(),
 %%   <<"SnapshotId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VolumeInitializationRate">> => float()
 %% }
 -type create_replace_root_volume_task_request() :: #{binary() => any()}.
@@ -16752,14 +16752,14 @@
 
 %% Example:
 %% get_ipam_pool_allocations_result() :: #{
-%%   <<"IpamPoolAllocations">> => list(ipam_pool_allocation()()),
+%%   <<"IpamPoolAllocations">> => list(ipam_pool_allocation()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_ipam_pool_allocations_result() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_multicast_deregistered_group_sources() :: #{
-%%   <<"DeregisteredNetworkInterfaceIds">> => list(string()()),
+%%   <<"DeregisteredNetworkInterfaceIds">> => list(string()),
 %%   <<"GroupIpAddress">> => string(),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
@@ -16767,7 +16767,7 @@
 
 %% Example:
 %% describe_instance_type_offerings_result() :: #{
-%%   <<"InstanceTypeOfferings">> => list(instance_type_offering()()),
+%%   <<"InstanceTypeOfferings">> => list(instance_type_offering()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_type_offerings_result() :: #{binary() => any()}.
@@ -16795,13 +16795,13 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"RouteServerId">> := string(),
 %%   <<"SubnetId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_route_server_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
 %% enable_fast_snapshot_restore_error_item() :: #{
-%%   <<"FastSnapshotRestoreStateErrors">> => list(enable_fast_snapshot_restore_state_error_item()()),
+%%   <<"FastSnapshotRestoreStateErrors">> => list(enable_fast_snapshot_restore_state_error_item()),
 %%   <<"SnapshotId">> => string()
 %% }
 -type enable_fast_snapshot_restore_error_item() :: #{binary() => any()}.
@@ -16810,9 +16810,9 @@
 %% fpga_image_attribute() :: #{
 %%   <<"Description">> => string(),
 %%   <<"FpgaImageId">> => string(),
-%%   <<"LoadPermissions">> => list(load_permission()()),
+%%   <<"LoadPermissions">> => list(load_permission()),
 %%   <<"Name">> => string(),
-%%   <<"ProductCodes">> => list(product_code()())
+%%   <<"ProductCodes">> => list(product_code())
 %% }
 -type fpga_image_attribute() :: #{binary() => any()}.
 
@@ -16845,14 +16845,14 @@
 
 %% Example:
 %% describe_instance_connect_endpoints_result() :: #{
-%%   <<"InstanceConnectEndpoints">> => list(ec2_instance_connect_endpoint()()),
+%%   <<"InstanceConnectEndpoints">> => list(ec2_instance_connect_endpoint()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_connect_endpoints_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_launch_templates_result() :: #{
-%%   <<"LaunchTemplates">> => list(launch_template()()),
+%%   <<"LaunchTemplates">> => list(launch_template()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_launch_templates_result() :: #{binary() => any()}.
@@ -16879,8 +16879,8 @@
 %% Example:
 %% describe_ipams_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"IpamIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -16910,7 +16910,7 @@
 %% Example:
 %% describe_instances_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Reservations">> => list(reservation()())
+%%   <<"Reservations">> => list(reservation())
 %% }
 -type describe_instances_result() :: #{binary() => any()}.
 
@@ -16918,7 +16918,7 @@
 %% describe_vpc_endpoint_connection_notifications_request() :: #{
 %%   <<"ConnectionNotificationId">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -16940,8 +16940,8 @@
 %% Example:
 %% describe_elastic_gpus_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ElasticGpuIds">> => list(string()()),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"ElasticGpuIds">> => list(string()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -16969,12 +16969,12 @@
 %% Example:
 %% describe_snapshots_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OwnerIds">> => list(string()()),
-%%   <<"RestorableByUserIds">> => list(string()()),
-%%   <<"SnapshotIds">> => list(string()())
+%%   <<"OwnerIds">> => list(string()),
+%%   <<"RestorableByUserIds">> => list(string()),
+%%   <<"SnapshotIds">> => list(string())
 %% }
 -type describe_snapshots_request() :: #{binary() => any()}.
 
@@ -16994,13 +16994,13 @@
 %% Example:
 %% dhcp_configuration() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(attribute_value()())
+%%   <<"Values">> => list(attribute_value())
 %% }
 -type dhcp_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% classic_load_balancers_config() :: #{
-%%   <<"ClassicLoadBalancers">> => list(classic_load_balancer()())
+%%   <<"ClassicLoadBalancers">> => list(classic_load_balancer())
 %% }
 -type classic_load_balancers_config() :: #{binary() => any()}.
 
@@ -17070,7 +17070,7 @@
 %% Example:
 %% describe_host_reservation_offerings_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OfferingSet">> => list(host_offering()())
+%%   <<"OfferingSet">> => list(host_offering())
 %% }
 -type describe_host_reservation_offerings_result() :: #{binary() => any()}.
 
@@ -17115,8 +17115,8 @@
 %% Example:
 %% describe_vpn_gateways_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"VpnGatewayIds">> => list(string()())
+%%   <<"Filters">> => list(filter()),
+%%   <<"VpnGatewayIds">> => list(string())
 %% }
 -type describe_vpn_gateways_request() :: #{binary() => any()}.
 
@@ -17129,8 +17129,8 @@
 %% Example:
 %% describe_export_image_tasks_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ExportImageTaskIds">> => list(string()()),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"ExportImageTaskIds">> => list(string()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -17138,13 +17138,13 @@
 
 %% Example:
 %% modify_ipam_request() :: #{
-%%   <<"AddOperatingRegions">> => list(add_ipam_operating_region()()),
+%%   <<"AddOperatingRegions">> => list(add_ipam_operating_region()),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EnablePrivateGua">> => boolean(),
 %%   <<"IpamId">> := string(),
 %%   <<"MeteredAccount">> => list(any()),
-%%   <<"RemoveOperatingRegions">> => list(remove_ipam_operating_region()()),
+%%   <<"RemoveOperatingRegions">> => list(remove_ipam_operating_region()),
 %%   <<"Tier">> => list(any())
 %% }
 -type modify_ipam_request() :: #{binary() => any()}.
@@ -17159,14 +17159,14 @@
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => string(),
 %%   <<"StateReason">> => state_reason(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type local_gateway_route_table() :: #{binary() => any()}.
 
 %% Example:
 %% describe_snapshot_tier_status_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -17174,14 +17174,14 @@
 
 %% Example:
 %% describe_capacity_reservation_fleets_result() :: #{
-%%   <<"CapacityReservationFleets">> => list(capacity_reservation_fleet()()),
+%%   <<"CapacityReservationFleets">> => list(capacity_reservation_fleet()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_reservation_fleets_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_endpoint_service_permissions_result() :: #{
-%%   <<"AllowedPrincipals">> => list(allowed_principal()()),
+%%   <<"AllowedPrincipals">> => list(allowed_principal()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_vpc_endpoint_service_permissions_result() :: #{binary() => any()}.
@@ -17189,7 +17189,7 @@
 %% Example:
 %% get_spot_placement_scores_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SpotPlacementScores">> => list(spot_placement_score()())
+%%   <<"SpotPlacementScores">> => list(spot_placement_score())
 %% }
 -type get_spot_placement_scores_result() :: #{binary() => any()}.
 
@@ -17203,11 +17203,11 @@
 %% Example:
 %% describe_traffic_mirror_filter_rules_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TrafficMirrorFilterId">> => string(),
-%%   <<"TrafficMirrorFilterRuleIds">> => list(string()())
+%%   <<"TrafficMirrorFilterRuleIds">> => list(string())
 %% }
 -type describe_traffic_mirror_filter_rules_request() :: #{binary() => any()}.
 
@@ -17266,7 +17266,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ImportTaskId">> => string(),
 %%   <<"SnapshotTaskDetail">> => snapshot_task_detail(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_snapshot_task() :: #{binary() => any()}.
 
@@ -17285,7 +17285,7 @@
 
 %% Example:
 %% cpu_performance_factor_request() :: #{
-%%   <<"References">> => list(performance_factor_reference_request()())
+%%   <<"References">> => list(performance_factor_reference_request())
 %% }
 -type cpu_performance_factor_request() :: #{binary() => any()}.
 
@@ -17298,7 +17298,7 @@
 %% Example:
 %% reject_transit_gateway_multicast_domain_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"TransitGatewayAttachmentId">> => string(),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
@@ -17343,7 +17343,7 @@
 %% Example:
 %% get_ipam_resource_cidrs_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IpamPoolId">> => string(),
 %%   <<"IpamScopeId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -17364,7 +17364,7 @@
 %%   <<"PeerAddress">> := string(),
 %%   <<"PeerBgpAsn">> => integer(),
 %%   <<"PeerBgpAsnExtended">> => float(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Vlan">> := integer()
 %% }
 -type create_local_gateway_virtual_interface_request() :: #{binary() => any()}.
@@ -17393,7 +17393,7 @@
 %% Example:
 %% describe_subnets_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Subnets">> => list(subnet()())
+%%   <<"Subnets">> => list(subnet())
 %% }
 -type describe_subnets_result() :: #{binary() => any()}.
 
@@ -17406,10 +17406,10 @@
 %% Example:
 %% describe_prefix_lists_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"PrefixListIds">> => list(string()())
+%%   <<"PrefixListIds">> => list(string())
 %% }
 -type describe_prefix_lists_request() :: #{binary() => any()}.
 
@@ -17423,9 +17423,9 @@
 %% Example:
 %% describe_instance_topology_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"GroupNames">> => list(string()()),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"GroupNames">> => list(string()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -17467,9 +17467,9 @@
 %% public_ipv4_pool() :: #{
 %%   <<"Description">> => string(),
 %%   <<"NetworkBorderGroup">> => string(),
-%%   <<"PoolAddressRanges">> => list(public_ipv4_pool_range()()),
+%%   <<"PoolAddressRanges">> => list(public_ipv4_pool_range()),
 %%   <<"PoolId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TotalAddressCount">> => integer(),
 %%   <<"TotalAvailableAddressCount">> => integer()
 %% }
@@ -17479,10 +17479,10 @@
 %% additional_detail() :: #{
 %%   <<"AdditionalDetailType">> => string(),
 %%   <<"Component">> => analysis_component(),
-%%   <<"LoadBalancers">> => list(analysis_component()()),
-%%   <<"RuleGroupRuleOptionsPairs">> => list(rule_group_rule_options_pair()()),
-%%   <<"RuleGroupTypePairs">> => list(rule_group_type_pair()()),
-%%   <<"RuleOptions">> => list(rule_option()()),
+%%   <<"LoadBalancers">> => list(analysis_component()),
+%%   <<"RuleGroupRuleOptionsPairs">> => list(rule_group_rule_options_pair()),
+%%   <<"RuleGroupTypePairs">> => list(rule_group_type_pair()),
+%%   <<"RuleOptions">> => list(rule_option()),
 %%   <<"ServiceName">> => string(),
 %%   <<"VpcEndpointService">> => analysis_component()
 %% }
@@ -17520,7 +17520,7 @@
 
 %% Example:
 %% describe_instance_event_windows_result() :: #{
-%%   <<"InstanceEventWindows">> => list(instance_event_window()()),
+%%   <<"InstanceEventWindows">> => list(instance_event_window()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_event_windows_result() :: #{binary() => any()}.
@@ -17561,15 +17561,15 @@
 
 %% Example:
 %% describe_customer_gateways_request() :: #{
-%%   <<"CustomerGatewayIds">> => list(string()()),
+%%   <<"CustomerGatewayIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()())
+%%   <<"Filters">> => list(filter())
 %% }
 -type describe_customer_gateways_request() :: #{binary() => any()}.
 
 %% Example:
 %% apply_security_groups_to_client_vpn_target_network_result() :: #{
-%%   <<"SecurityGroupIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string())
 %% }
 -type apply_security_groups_to_client_vpn_target_network_result() :: #{binary() => any()}.
 
@@ -17583,7 +17583,7 @@
 %% Example:
 %% describe_aws_network_performance_metric_subscriptions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Subscriptions">> => list(subscription()())
+%%   <<"Subscriptions">> => list(subscription())
 %% }
 -type describe_aws_network_performance_metric_subscriptions_result() :: #{binary() => any()}.
 
@@ -17598,13 +17598,13 @@
 %%   <<"StaticRoutesOnly">> => boolean(),
 %%   <<"TransportTransitGatewayAttachmentId">> => string(),
 %%   <<"TunnelInsideIpVersion">> => list(any()),
-%%   <<"TunnelOptions">> => list(tunnel_option()())
+%%   <<"TunnelOptions">> => list(tunnel_option())
 %% }
 -type vpn_connection_options() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fleets_result() :: #{
-%%   <<"Fleets">> => list(fleet_data()()),
+%%   <<"Fleets">> => list(fleet_data()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleets_result() :: #{binary() => any()}.
@@ -17622,7 +17622,7 @@
 
 %% Example:
 %% describe_export_image_tasks_result() :: #{
-%%   <<"ExportImageTasks">> => list(export_image_task()()),
+%%   <<"ExportImageTasks">> => list(export_image_task()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_export_image_tasks_result() :: #{binary() => any()}.
@@ -17642,10 +17642,10 @@
 %% Example:
 %% describe_volume_status_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VolumeIds">> => list(string()())
+%%   <<"VolumeIds">> => list(string())
 %% }
 -type describe_volume_status_request() :: #{binary() => any()}.
 
@@ -17664,29 +17664,29 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"PolicyDocument">> => string(),
 %%   <<"SseSpecification">> => verified_access_sse_specification_request(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VerifiedAccessInstanceId">> := string()
 %% }
 -type create_verified_access_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% network_insights_analysis() :: #{
-%%   <<"AdditionalAccounts">> => list(string()()),
-%%   <<"AlternatePathHints">> => list(alternate_path_hint()()),
-%%   <<"Explanations">> => list(explanation()()),
-%%   <<"FilterInArns">> => list(string()()),
-%%   <<"FilterOutArns">> => list(string()()),
-%%   <<"ForwardPathComponents">> => list(path_component()()),
+%%   <<"AdditionalAccounts">> => list(string()),
+%%   <<"AlternatePathHints">> => list(alternate_path_hint()),
+%%   <<"Explanations">> => list(explanation()),
+%%   <<"FilterInArns">> => list(string()),
+%%   <<"FilterOutArns">> => list(string()),
+%%   <<"ForwardPathComponents">> => list(path_component()),
 %%   <<"NetworkInsightsAnalysisArn">> => string(),
 %%   <<"NetworkInsightsAnalysisId">> => string(),
 %%   <<"NetworkInsightsPathId">> => string(),
 %%   <<"NetworkPathFound">> => boolean(),
-%%   <<"ReturnPathComponents">> => list(path_component()()),
+%%   <<"ReturnPathComponents">> => list(path_component()),
 %%   <<"StartDate">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string(),
-%%   <<"SuggestedAccounts">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SuggestedAccounts">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WarningMessage">> => string()
 %% }
 -type network_insights_analysis() :: #{binary() => any()}.
@@ -17700,8 +17700,8 @@
 %% Example:
 %% describe_import_snapshot_tasks_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"ImportTaskIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"ImportTaskIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -17715,7 +17715,7 @@
 %%   <<"PersistRoutes">> => list(any()),
 %%   <<"PersistRoutesDuration">> => float(),
 %%   <<"SnsNotificationsEnabled">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_route_server_request() :: #{binary() => any()}.
 
@@ -17728,7 +17728,7 @@
 
 %% Example:
 %% release_hosts_request() :: #{
-%%   <<"HostIds">> := list(string()())
+%%   <<"HostIds">> := list(string())
 %% }
 -type release_hosts_request() :: #{binary() => any()}.
 
@@ -17756,7 +17756,7 @@
 %% Example:
 %% describe_volumes_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Volumes">> => list(volume()())
+%%   <<"Volumes">> => list(volume())
 %% }
 -type describe_volumes_result() :: #{binary() => any()}.
 
@@ -17783,7 +17783,7 @@
 %% Example:
 %% describe_tags_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag_description()())
+%%   <<"Tags">> => list(tag_description())
 %% }
 -type describe_tags_result() :: #{binary() => any()}.
 
@@ -17791,7 +17791,7 @@
 %% instance_status() :: #{
 %%   <<"AttachedEbsStatus">> => ebs_status_summary(),
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"Events">> => list(instance_status_event()()),
+%%   <<"Events">> => list(instance_status_event()),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceState">> => instance_state(),
 %%   <<"InstanceStatus">> => instance_status_summary(),
@@ -17817,17 +17817,17 @@
 %% Example:
 %% describe_transit_gateway_route_tables_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayRouteTableIds">> => list(string()())
+%%   <<"TransitGatewayRouteTableIds">> => list(string())
 %% }
 -type describe_transit_gateway_route_tables_request() :: #{binary() => any()}.
 
 %% Example:
 %% principal_id_format() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Statuses">> => list(id_format()())
+%%   <<"Statuses">> => list(id_format())
 %% }
 -type principal_id_format() :: #{binary() => any()}.
 
@@ -17840,7 +17840,7 @@
 
 %% Example:
 %% get_ipam_resource_cidrs_result() :: #{
-%%   <<"IpamResourceCidrs">> => list(ipam_resource_cidr()()),
+%%   <<"IpamResourceCidrs">> => list(ipam_resource_cidr()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_ipam_resource_cidrs_result() :: #{binary() => any()}.
@@ -17864,10 +17864,10 @@
 
 %% Example:
 %% modify_transit_gateway_vpc_attachment_request() :: #{
-%%   <<"AddSubnetIds">> => list(string()()),
+%%   <<"AddSubnetIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"Options">> => modify_transit_gateway_vpc_attachment_request_options(),
-%%   <<"RemoveSubnetIds">> => list(string()()),
+%%   <<"RemoveSubnetIds">> => list(string()),
 %%   <<"TransitGatewayAttachmentId">> := string()
 %% }
 -type modify_transit_gateway_vpc_attachment_request() :: #{binary() => any()}.
@@ -17881,7 +17881,7 @@
 
 %% Example:
 %% cancel_capacity_reservation_fleets_request() :: #{
-%%   <<"CapacityReservationFleetIds">> := list(string()()),
+%%   <<"CapacityReservationFleetIds">> := list(string()),
 %%   <<"DryRun">> => boolean()
 %% }
 -type cancel_capacity_reservation_fleets_request() :: #{binary() => any()}.
@@ -17896,13 +17896,13 @@
 %% accept_vpc_endpoint_connections_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"ServiceId">> := string(),
-%%   <<"VpcEndpointIds">> := list(string()())
+%%   <<"VpcEndpointIds">> := list(string())
 %% }
 -type accept_vpc_endpoint_connections_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_aggregate_id_format_result() :: #{
-%%   <<"Statuses">> => list(id_format()()),
+%%   <<"Statuses">> => list(id_format()),
 %%   <<"UseLongIdsAggregated">> => boolean()
 %% }
 -type describe_aggregate_id_format_result() :: #{binary() => any()}.
@@ -17924,7 +17924,7 @@
 
 %% Example:
 %% describe_regions_result() :: #{
-%%   <<"Regions">> => list(region()())
+%%   <<"Regions">> => list(region())
 %% }
 -type describe_regions_result() :: #{binary() => any()}.
 
@@ -17967,8 +17967,8 @@
 
 %% Example:
 %% describe_host_reservations_request() :: #{
-%%   <<"Filter">> => list(filter()()),
-%%   <<"HostReservationIdSet">> => list(string()()),
+%%   <<"Filter">> => list(filter()),
+%%   <<"HostReservationIdSet">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -17977,7 +17977,7 @@
 %% Example:
 %% create_transit_gateway_policy_table_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransitGatewayId">> := string()
 %% }
 -type create_transit_gateway_policy_table_request() :: #{binary() => any()}.
@@ -17985,17 +17985,17 @@
 %% Example:
 %% describe_traffic_mirror_filters_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficMirrorFilterIds">> => list(string()())
+%%   <<"TrafficMirrorFilterIds">> => list(string())
 %% }
 -type describe_traffic_mirror_filters_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_tags_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -18022,15 +18022,15 @@
 %% Example:
 %% revoke_security_group_ingress_result() :: #{
 %%   <<"Return">> => boolean(),
-%%   <<"RevokedSecurityGroupRules">> => list(revoked_security_group_rule()()),
-%%   <<"UnknownIpPermissions">> => list(ip_permission()())
+%%   <<"RevokedSecurityGroupRules">> => list(revoked_security_group_rule()),
+%%   <<"UnknownIpPermissions">> => list(ip_permission())
 %% }
 -type revoke_security_group_ingress_result() :: #{binary() => any()}.
 
 %% Example:
 %% fleet_launch_template_overrides_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"BlockDeviceMappings">> => list(fleet_block_device_mapping_request()()),
+%%   <<"BlockDeviceMappings">> => list(fleet_block_device_mapping_request()),
 %%   <<"ImageId">> => string(),
 %%   <<"InstanceRequirements">> => instance_requirements_request(),
 %%   <<"InstanceType">> => list(any()),
@@ -18101,14 +18101,14 @@
 
 %% Example:
 %% get_host_reservation_purchase_preview_request() :: #{
-%%   <<"HostIdSet">> := list(string()()),
+%%   <<"HostIdSet">> := list(string()),
 %%   <<"OfferingId">> := string()
 %% }
 -type get_host_reservation_purchase_preview_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_elastic_gpus_result() :: #{
-%%   <<"ElasticGpuSet">> => list(elastic_gpus()()),
+%%   <<"ElasticGpuSet">> => list(elastic_gpus()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -18116,7 +18116,7 @@
 
 %% Example:
 %% describe_capacity_blocks_result() :: #{
-%%   <<"CapacityBlocks">> => list(capacity_block()()),
+%%   <<"CapacityBlocks">> => list(capacity_block()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_blocks_result() :: #{binary() => any()}.
@@ -18125,9 +18125,9 @@
 %% create_verified_access_endpoint_load_balancer_options() :: #{
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"Port">> => integer(),
-%%   <<"PortRanges">> => list(create_verified_access_endpoint_port_range()()),
+%%   <<"PortRanges">> => list(create_verified_access_endpoint_port_range()),
 %%   <<"Protocol">> => list(any()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type create_verified_access_endpoint_load_balancer_options() :: #{binary() => any()}.
 
@@ -18152,7 +18152,7 @@
 
 %% Example:
 %% request_spot_instances_result() :: #{
-%%   <<"SpotInstanceRequests">> => list(spot_instance_request()())
+%%   <<"SpotInstanceRequests">> => list(spot_instance_request())
 %% }
 -type request_spot_instances_result() :: #{binary() => any()}.
 
@@ -18177,7 +18177,7 @@
 
 %% Example:
 %% purchase_capacity_block_result() :: #{
-%%   <<"CapacityBlocks">> => list(capacity_block()()),
+%%   <<"CapacityBlocks">> => list(capacity_block()),
 %%   <<"CapacityReservation">> => capacity_reservation()
 %% }
 -type purchase_capacity_block_result() :: #{binary() => any()}.
@@ -18191,7 +18191,7 @@
 %%   <<"DnsSupport">> => list(any()),
 %%   <<"MulticastSupport">> => list(any()),
 %%   <<"SecurityGroupReferencingSupport">> => list(any()),
-%%   <<"TransitGatewayCidrBlocks">> => list(string()()),
+%%   <<"TransitGatewayCidrBlocks">> => list(string()),
 %%   <<"VpnEcmpSupport">> => list(any())
 %% }
 -type transit_gateway_request_options() :: #{binary() => any()}.
@@ -18208,7 +18208,7 @@
 %%   <<"EgressPackets">> => string(),
 %%   <<"IngressBytes">> => string(),
 %%   <<"IngressPackets">> => string(),
-%%   <<"PostureComplianceStatuses">> => list(string()()),
+%%   <<"PostureComplianceStatuses">> => list(string()),
 %%   <<"Status">> => client_vpn_connection_status(),
 %%   <<"Timestamp">> => string(),
 %%   <<"Username">> => string()
@@ -18230,10 +18230,10 @@
 %% Example:
 %% describe_vpc_endpoint_service_configurations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceIds">> => list(string()())
+%%   <<"ServiceIds">> => list(string())
 %% }
 -type describe_vpc_endpoint_service_configurations_request() :: #{binary() => any()}.
 
@@ -18247,10 +18247,10 @@
 %% get_spot_placement_scores_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceRequirementsWithMetadata">> => instance_requirements_with_metadata_request(),
-%%   <<"InstanceTypes">> => list(string()()),
+%%   <<"InstanceTypes">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RegionNames">> => list(string()()),
+%%   <<"RegionNames">> => list(string()),
 %%   <<"SingleAvailabilityZone">> => boolean(),
 %%   <<"TargetCapacity">> := integer(),
 %%   <<"TargetCapacityUnitType">> => list(any())
@@ -18260,8 +18260,8 @@
 %% Example:
 %% describe_import_image_tasks_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"ImportTaskIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"ImportTaskIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -18270,7 +18270,7 @@
 %% Example:
 %% describe_client_vpn_routes_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Routes">> => list(client_vpn_route()())
+%%   <<"Routes">> => list(client_vpn_route())
 %% }
 -type describe_client_vpn_routes_result() :: #{binary() => any()}.
 
@@ -18283,13 +18283,13 @@
 
 %% Example:
 %% packet_header_statement_request() :: #{
-%%   <<"DestinationAddresses">> => list(string()()),
-%%   <<"DestinationPorts">> => list(string()()),
-%%   <<"DestinationPrefixLists">> => list(string()()),
+%%   <<"DestinationAddresses">> => list(string()),
+%%   <<"DestinationPorts">> => list(string()),
+%%   <<"DestinationPrefixLists">> => list(string()),
 %%   <<"Protocols">> => list(list(any())()),
-%%   <<"SourceAddresses">> => list(string()()),
-%%   <<"SourcePorts">> => list(string()()),
-%%   <<"SourcePrefixLists">> => list(string()())
+%%   <<"SourceAddresses">> => list(string()),
+%%   <<"SourcePorts">> => list(string()),
+%%   <<"SourcePrefixLists">> => list(string())
 %% }
 -type packet_header_statement_request() :: #{binary() => any()}.
 
@@ -18315,7 +18315,7 @@
 %%   <<"ExpirationTime">> => non_neg_integer(),
 %%   <<"RequesterVpcInfo">> => vpc_peering_connection_vpc_info(),
 %%   <<"Status">> => vpc_peering_connection_state_reason(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcPeeringConnectionId">> => string()
 %% }
 -type vpc_peering_connection() :: #{binary() => any()}.
@@ -18349,7 +18349,7 @@
 %%   <<"Bucket">> := string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"ImageId">> := string(),
-%%   <<"S3ObjectTags">> => list(s3_object_tag()())
+%%   <<"S3ObjectTags">> => list(s3_object_tag())
 %% }
 -type create_store_image_task_request() :: #{binary() => any()}.
 
@@ -18376,8 +18376,8 @@
 
 %% Example:
 %% release_hosts_result() :: #{
-%%   <<"Successful">> => list(string()()),
-%%   <<"Unsuccessful">> => list(unsuccessful_item()())
+%%   <<"Successful">> => list(string()),
+%%   <<"Unsuccessful">> => list(unsuccessful_item())
 %% }
 -type release_hosts_result() :: #{binary() => any()}.
 
@@ -18400,7 +18400,7 @@
 %% create_public_ipv4_pool_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"NetworkBorderGroup">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_public_ipv4_pool_request() :: #{binary() => any()}.
 
@@ -18410,7 +18410,7 @@
 %%   <<"CurrencyCode">> => list(any()),
 %%   <<"Duration">> => integer(),
 %%   <<"End">> => non_neg_integer(),
-%%   <<"HostIdSet">> => list(string()()),
+%%   <<"HostIdSet">> => list(string()),
 %%   <<"HostReservationId">> => string(),
 %%   <<"HourlyPrice">> => string(),
 %%   <<"InstanceFamily">> => string(),
@@ -18418,7 +18418,7 @@
 %%   <<"PaymentOption">> => list(any()),
 %%   <<"Start">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UpfrontPrice">> => string()
 %% }
 -type host_reservation() :: #{binary() => any()}.
@@ -18426,10 +18426,10 @@
 %% Example:
 %% describe_key_pairs_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IncludePublicKey">> => boolean(),
-%%   <<"KeyNames">> => list(string()()),
-%%   <<"KeyPairIds">> => list(string()())
+%%   <<"KeyNames">> => list(string()),
+%%   <<"KeyPairIds">> => list(string())
 %% }
 -type describe_key_pairs_request() :: #{binary() => any()}.
 
@@ -18462,7 +18462,7 @@
 
 %% Example:
 %% get_ipam_address_history_result() :: #{
-%%   <<"HistoryRecords">> => list(ipam_address_history_record()()),
+%%   <<"HistoryRecords">> => list(ipam_address_history_record()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_ipam_address_history_result() :: #{binary() => any()}.
@@ -18494,7 +18494,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Instances">> := list(string()()),
+%%   <<"Instances">> := list(string()),
 %%   <<"ReasonCodes">> := list(list(any())()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> := list(any())
@@ -18511,7 +18511,7 @@
 %%   <<"Operator">> => operator_response(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => instance_state(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"ZoneId">> => string()
 %% }
 -type instance_image_metadata() :: #{binary() => any()}.
@@ -18526,7 +18526,7 @@
 
 %% Example:
 %% integrate_services() :: #{
-%%   <<"AthenaIntegrations">> => list(athena_integration()())
+%%   <<"AthenaIntegrations">> => list(athena_integration())
 %% }
 -type integrate_services() :: #{binary() => any()}.
 
@@ -18548,7 +18548,7 @@
 %%   <<"OidcOptions">> => create_verified_access_trust_provider_oidc_options(),
 %%   <<"PolicyReferenceName">> := string(),
 %%   <<"SseSpecification">> => verified_access_sse_specification_request(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TrustProviderType">> := list(any()),
 %%   <<"UserTrustProviderType">> => list(any())
 %% }
@@ -18571,7 +18571,7 @@
 %%   <<"PublicIpv4Pool">> => string(),
 %%   <<"ServiceManaged">> => list(any()),
 %%   <<"SubnetId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type address() :: #{binary() => any()}.
 
@@ -18607,7 +18607,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_traffic_mirror_filter_request() :: #{binary() => any()}.
 
@@ -18626,7 +18626,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SpotFleetRequestIds">> => list(string()())
+%%   <<"SpotFleetRequestIds">> => list(string())
 %% }
 -type describe_spot_fleet_requests_request() :: #{binary() => any()}.
 
@@ -18639,7 +18639,7 @@
 %%   <<"DeviceName">> => string(),
 %%   <<"IpAddress">> => string(),
 %%   <<"State">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string()
 %% }
 -type customer_gateway() :: #{binary() => any()}.
@@ -18652,7 +18652,7 @@
 
 %% Example:
 %% get_declarative_policies_report_summary_result() :: #{
-%%   <<"AttributeSummaries">> => list(attribute_summary()()),
+%%   <<"AttributeSummaries">> => list(attribute_summary()),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"NumberOfAccounts">> => integer(),
 %%   <<"NumberOfFailedAccounts">> => integer(),
@@ -18693,8 +18693,8 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Options">> => transit_gateway_vpc_attachment_options(),
 %%   <<"State">> => list(any()),
-%%   <<"SubnetIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayAttachmentId">> => string(),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"VpcId">> => string(),
@@ -18724,8 +18724,8 @@
 
 %% Example:
 %% describe_snapshot_attribute_result() :: #{
-%%   <<"CreateVolumePermissions">> => list(create_volume_permission()()),
-%%   <<"ProductCodes">> => list(product_code()()),
+%%   <<"CreateVolumePermissions">> => list(create_volume_permission()),
+%%   <<"ProductCodes">> => list(product_code()),
 %%   <<"SnapshotId">> => string()
 %% }
 -type describe_snapshot_attribute_result() :: #{binary() => any()}.
@@ -18740,7 +18740,7 @@
 %% Example:
 %% describe_transit_gateway_multicast_domains_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayMulticastDomains">> => list(transit_gateway_multicast_domain()())
+%%   <<"TransitGatewayMulticastDomains">> => list(transit_gateway_multicast_domain())
 %% }
 -type describe_transit_gateway_multicast_domains_result() :: #{binary() => any()}.
 
@@ -18752,7 +18752,7 @@
 %%   <<"LastUpdatedTime">> => string(),
 %%   <<"Owner">> => string(),
 %%   <<"SseSpecification">> => verified_access_sse_specification_response(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VerifiedAccessGroupArn">> => string(),
 %%   <<"VerifiedAccessGroupId">> => string(),
 %%   <<"VerifiedAccessInstanceId">> => string()
@@ -18762,7 +18762,7 @@
 %% Example:
 %% cancel_spot_fleet_requests_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"SpotFleetRequestIds">> := list(string()()),
+%%   <<"SpotFleetRequestIds">> := list(string()),
 %%   <<"TerminateInstances">> := boolean()
 %% }
 -type cancel_spot_fleet_requests_request() :: #{binary() => any()}.
@@ -18817,7 +18817,7 @@
 
 %% Example:
 %% ebs_status_summary() :: #{
-%%   <<"Details">> => list(ebs_status_details()()),
+%%   <<"Details">> => list(ebs_status_details()),
 %%   <<"Status">> => list(any())
 %% }
 -type ebs_status_summary() :: #{binary() => any()}.
@@ -18833,7 +18833,7 @@
 
 %% Example:
 %% instance_storage_info() :: #{
-%%   <<"Disks">> => list(disk_info()()),
+%%   <<"Disks">> => list(disk_info()),
 %%   <<"EncryptionSupport">> => list(any()),
 %%   <<"NvmeSupport">> => list(any()),
 %%   <<"TotalSizeInGB">> => float()
@@ -18842,7 +18842,7 @@
 
 %% Example:
 %% describe_iam_instance_profile_associations_result() :: #{
-%%   <<"IamInstanceProfileAssociations">> => list(iam_instance_profile_association()()),
+%%   <<"IamInstanceProfileAssociations">> => list(iam_instance_profile_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_iam_instance_profile_associations_result() :: #{binary() => any()}.
@@ -18856,7 +18856,7 @@
 
 %% Example:
 %% describe_local_gateway_route_tables_result() :: #{
-%%   <<"LocalGatewayRouteTables">> => list(local_gateway_route_table()()),
+%%   <<"LocalGatewayRouteTables">> => list(local_gateway_route_table()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_local_gateway_route_tables_result() :: #{binary() => any()}.
@@ -18871,13 +18871,13 @@
 
 %% Example:
 %% stop_instances_result() :: #{
-%%   <<"StoppingInstances">> => list(instance_state_change()())
+%%   <<"StoppingInstances">> => list(instance_state_change())
 %% }
 -type stop_instances_result() :: #{binary() => any()}.
 
 %% Example:
 %% image_criterion_request() :: #{
-%%   <<"ImageProviders">> => list(string()())
+%%   <<"ImageProviders">> => list(string())
 %% }
 -type image_criterion_request() :: #{binary() => any()}.
 
@@ -18909,7 +18909,7 @@
 
 %% Example:
 %% describe_network_interfaces_result() :: #{
-%%   <<"NetworkInterfaces">> => list(network_interface()()),
+%%   <<"NetworkInterfaces">> => list(network_interface()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_interfaces_result() :: #{binary() => any()}.
@@ -18924,8 +18924,8 @@
 %%   <<"IamFleetRole">> => string(),
 %%   <<"InstanceInterruptionBehavior">> => list(any()),
 %%   <<"InstancePoolsToUseCount">> => integer(),
-%%   <<"LaunchSpecifications">> => list(spot_fleet_launch_specification()()),
-%%   <<"LaunchTemplateConfigs">> => list(launch_template_config()()),
+%%   <<"LaunchSpecifications">> => list(spot_fleet_launch_specification()),
+%%   <<"LaunchTemplateConfigs">> => list(launch_template_config()),
 %%   <<"LoadBalancersConfig">> => load_balancers_config(),
 %%   <<"OnDemandAllocationStrategy">> => list(any()),
 %%   <<"OnDemandFulfilledCapacity">> => float(),
@@ -18935,7 +18935,7 @@
 %%   <<"SpotMaintenanceStrategies">> => spot_maintenance_strategies(),
 %%   <<"SpotMaxTotalPrice">> => string(),
 %%   <<"SpotPrice">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TargetCapacity">> => integer(),
 %%   <<"TargetCapacityUnitType">> => list(any()),
 %%   <<"TerminateInstancesWithExpiration">> => boolean(),
@@ -18955,7 +18955,7 @@
 
 %% Example:
 %% modify_ipam_pool_request() :: #{
-%%   <<"AddAllocationResourceTags">> => list(request_ipam_resource_tag()()),
+%%   <<"AddAllocationResourceTags">> => list(request_ipam_resource_tag()),
 %%   <<"AllocationDefaultNetmaskLength">> => integer(),
 %%   <<"AllocationMaxNetmaskLength">> => integer(),
 %%   <<"AllocationMinNetmaskLength">> => integer(),
@@ -18964,7 +18964,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"IpamPoolId">> := string(),
-%%   <<"RemoveAllocationResourceTags">> => list(request_ipam_resource_tag()())
+%%   <<"RemoveAllocationResourceTags">> => list(request_ipam_resource_tag())
 %% }
 -type modify_ipam_pool_request() :: #{binary() => any()}.
 
@@ -18975,7 +18975,7 @@
 %%   <<"OwnerId">> => string(),
 %%   <<"PacketLength">> => integer(),
 %%   <<"SessionNumber">> => integer(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrafficMirrorFilterId">> => string(),
 %%   <<"TrafficMirrorSessionId">> => string(),
 %%   <<"TrafficMirrorTargetId">> => string(),
@@ -18985,7 +18985,7 @@
 
 %% Example:
 %% describe_instance_image_metadata_result() :: #{
-%%   <<"InstanceImageMetadata">> => list(instance_image_metadata()()),
+%%   <<"InstanceImageMetadata">> => list(instance_image_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_instance_image_metadata_result() :: #{binary() => any()}.
@@ -18993,14 +18993,14 @@
 %% Example:
 %% delete_fleets_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"FleetIds">> := list(string()()),
+%%   <<"FleetIds">> := list(string()),
 %%   <<"TerminateInstances">> := boolean()
 %% }
 -type delete_fleets_request() :: #{binary() => any()}.
 
 %% Example:
 %% terminate_instances_result() :: #{
-%%   <<"TerminatingInstances">> => list(instance_state_change()())
+%%   <<"TerminatingInstances">> => list(instance_state_change())
 %% }
 -type terminate_instances_result() :: #{binary() => any()}.
 
@@ -19027,7 +19027,7 @@
 
 %% Example:
 %% modify_vpc_endpoint_service_permissions_result() :: #{
-%%   <<"AddedPrincipals">> => list(added_principal()()),
+%%   <<"AddedPrincipals">> => list(added_principal()),
 %%   <<"ReturnValue">> => boolean()
 %% }
 -type modify_vpc_endpoint_service_permissions_result() :: #{binary() => any()}.
@@ -19043,7 +19043,7 @@
 %% transit_gateway_policy_table() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"TransitGatewayPolicyTableId">> => string()
 %% }
@@ -19052,16 +19052,16 @@
 %% Example:
 %% accept_reserved_instances_exchange_quote_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ReservedInstanceIds">> := list(string()()),
-%%   <<"TargetConfigurations">> => list(target_configuration_request()())
+%%   <<"ReservedInstanceIds">> := list(string()),
+%%   <<"TargetConfigurations">> => list(target_configuration_request())
 %% }
 -type accept_reserved_instances_exchange_quote_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_local_gateway_route_tables_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LocalGatewayRouteTableIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LocalGatewayRouteTableIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -19077,7 +19077,7 @@
 %% Example:
 %% describe_instance_types_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"InstanceTypes">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -19087,7 +19087,7 @@
 %% Example:
 %% export_verified_access_instance_client_configuration_result() :: #{
 %%   <<"DeviceTrustProviders">> => list(list(any())()),
-%%   <<"OpenVpnConfigurations">> => list(verified_access_instance_open_vpn_client_configuration()()),
+%%   <<"OpenVpnConfigurations">> => list(verified_access_instance_open_vpn_client_configuration()),
 %%   <<"Region">> => string(),
 %%   <<"UserTrustProvider">> => verified_access_instance_user_trust_provider_client_configuration(),
 %%   <<"VerifiedAccessInstanceId">> => string(),
@@ -19133,7 +19133,7 @@
 
 %% Example:
 %% create_client_vpn_endpoint_request() :: #{
-%%   <<"AuthenticationOptions">> := list(client_vpn_authentication_request()()),
+%%   <<"AuthenticationOptions">> := list(client_vpn_authentication_request()),
 %%   <<"ClientCidrBlock">> := string(),
 %%   <<"ClientConnectOptions">> => client_connect_options(),
 %%   <<"ClientLoginBannerOptions">> => client_login_banner_options(),
@@ -19142,14 +19142,14 @@
 %%   <<"ConnectionLogOptions">> := connection_log_options(),
 %%   <<"Description">> => string(),
 %%   <<"DisconnectOnSessionTimeout">> => boolean(),
-%%   <<"DnsServers">> => list(string()()),
+%%   <<"DnsServers">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SelfServicePortal">> => list(any()),
 %%   <<"ServerCertificateArn">> := string(),
 %%   <<"SessionTimeoutHours">> => integer(),
 %%   <<"SplitTunnel">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransportProtocol">> => list(any()),
 %%   <<"VpcId">> => string(),
 %%   <<"VpnPort">> => integer()
@@ -19200,7 +19200,7 @@
 %%   <<"LaunchTemplateData">> := request_launch_template_data(),
 %%   <<"LaunchTemplateName">> := string(),
 %%   <<"Operator">> => operator_request(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VersionDescription">> => string()
 %% }
 -type create_launch_template_request() :: #{binary() => any()}.
@@ -19216,13 +19216,13 @@
 %%   <<"StaticRoutesOnly">> => boolean(),
 %%   <<"TransportTransitGatewayAttachmentId">> => string(),
 %%   <<"TunnelInsideIpVersion">> => list(any()),
-%%   <<"TunnelOptions">> => list(vpn_tunnel_options_specification()())
+%%   <<"TunnelOptions">> => list(vpn_tunnel_options_specification())
 %% }
 -type vpn_connection_options_specification() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_multicast_deregistered_group_members() :: #{
-%%   <<"DeregisteredNetworkInterfaceIds">> => list(string()()),
+%%   <<"DeregisteredNetworkInterfaceIds">> => list(string()),
 %%   <<"GroupIpAddress">> => string(),
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
@@ -19231,7 +19231,7 @@
 %% Example:
 %% authorize_security_group_ingress_result() :: #{
 %%   <<"Return">> => boolean(),
-%%   <<"SecurityGroupRules">> => list(security_group_rule()())
+%%   <<"SecurityGroupRules">> => list(security_group_rule())
 %% }
 -type authorize_security_group_ingress_result() :: #{binary() => any()}.
 
@@ -19242,7 +19242,7 @@
 %%   <<"GroupName">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PrimaryVpcId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type security_group_for_vpc() :: #{binary() => any()}.
 
@@ -19254,9 +19254,9 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"InstanceMatchCriteria">> => list(any()),
-%%   <<"InstanceTypeSpecifications">> => list(fleet_capacity_reservation()()),
+%%   <<"InstanceTypeSpecifications">> => list(fleet_capacity_reservation()),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Tenancy">> => list(any()),
 %%   <<"TotalFulfilledCapacity">> => float(),
 %%   <<"TotalTargetCapacity">> => integer()
@@ -19265,7 +19265,7 @@
 
 %% Example:
 %% get_ipam_discovered_accounts_result() :: #{
-%%   <<"IpamDiscoveredAccounts">> => list(ipam_discovered_account()()),
+%%   <<"IpamDiscoveredAccounts">> => list(ipam_discovered_account()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_ipam_discovered_accounts_result() :: #{binary() => any()}.
@@ -19308,14 +19308,14 @@
 
 %% Example:
 %% firewall_stateless_rule() :: #{
-%%   <<"DestinationPorts">> => list(port_range()()),
-%%   <<"Destinations">> => list(string()()),
+%%   <<"DestinationPorts">> => list(port_range()),
+%%   <<"Destinations">> => list(string()),
 %%   <<"Priority">> => integer(),
-%%   <<"Protocols">> => list(integer()()),
+%%   <<"Protocols">> => list(integer()),
 %%   <<"RuleAction">> => string(),
 %%   <<"RuleGroupArn">> => string(),
-%%   <<"SourcePorts">> => list(port_range()()),
-%%   <<"Sources">> => list(string()())
+%%   <<"SourcePorts">> => list(port_range()),
+%%   <<"Sources">> => list(string())
 %% }
 -type firewall_stateless_rule() :: #{binary() => any()}.
 
@@ -19337,7 +19337,7 @@
 
 %% Example:
 %% get_ipam_pool_cidrs_result() :: #{
-%%   <<"IpamPoolCidrs">> => list(ipam_pool_cidr()()),
+%%   <<"IpamPoolCidrs">> => list(ipam_pool_cidr()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_ipam_pool_cidrs_result() :: #{binary() => any()}.
@@ -19372,7 +19372,7 @@
 %% Example:
 %% describe_scheduled_instance_availability_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"FirstSlotStartTimeRange">> := slot_date_time_range_request(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"MaxSlotDurationInHours">> => integer(),
@@ -19393,13 +19393,13 @@
 %% Example:
 %% replace_image_criteria_in_allowed_images_settings_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"ImageCriteria">> => list(image_criterion_request()())
+%%   <<"ImageCriteria">> => list(image_criterion_request())
 %% }
 -type replace_image_criteria_in_allowed_images_settings_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_network_insights_paths_result() :: #{
-%%   <<"NetworkInsightsPaths">> => list(network_insights_path()()),
+%%   <<"NetworkInsightsPaths">> => list(network_insights_path()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_network_insights_paths_result() :: #{binary() => any()}.
@@ -19410,7 +19410,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"Options">> => vpn_connection_options_specification(),
 %%   <<"PreSharedKeyStorage">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"Type">> := string(),
 %%   <<"VpnGatewayId">> => string()
@@ -19474,7 +19474,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ExportToS3Task">> := export_to_s3_task_specification(),
 %%   <<"InstanceId">> := string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"TargetEnvironment">> := list(any())
 %% }
 -type create_instance_export_task_request() :: #{binary() => any()}.
@@ -19535,7 +19535,7 @@
 %%   <<"PeerBgpAsn">> => float(),
 %%   <<"ServiceLinkVirtualInterfaceArn">> => string(),
 %%   <<"ServiceLinkVirtualInterfaceId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Vlan">> => integer()
 %% }
 -type service_link_virtual_interface() :: #{binary() => any()}.
@@ -19548,7 +19548,7 @@
 %%   <<"LocalGatewayRouteTableVpcAssociationId">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type local_gateway_route_table_vpc_association() :: #{binary() => any()}.
@@ -19564,7 +19564,7 @@
 %% scheduled_instance_recurrence_request() :: #{
 %%   <<"Frequency">> => string(),
 %%   <<"Interval">> => integer(),
-%%   <<"OccurrenceDays">> => list(integer()()),
+%%   <<"OccurrenceDays">> => list(integer()),
 %%   <<"OccurrenceRelativeToEnd">> => boolean(),
 %%   <<"OccurrenceUnit">> => string()
 %% }
@@ -19592,7 +19592,7 @@
 %%   <<"ReferencedGroupInfo">> => referenced_security_group(),
 %%   <<"SecurityGroupRuleArn">> => string(),
 %%   <<"SecurityGroupRuleId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"ToPort">> => integer()
 %% }
 -type security_group_rule() :: #{binary() => any()}.
@@ -19600,8 +19600,8 @@
 %% Example:
 %% describe_fleets_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"FleetIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"FleetIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -19610,15 +19610,15 @@
 %% Example:
 %% describe_verified_access_groups_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedAccessGroups">> => list(verified_access_group()())
+%%   <<"VerifiedAccessGroups">> => list(verified_access_group())
 %% }
 -type describe_verified_access_groups_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_vpc_endpoint_service_permissions_request() :: #{
-%%   <<"AddAllowedPrincipals">> => list(string()()),
+%%   <<"AddAllowedPrincipals">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"RemoveAllowedPrincipals">> => list(string()()),
+%%   <<"RemoveAllowedPrincipals">> => list(string()),
 %%   <<"ServiceId">> := string()
 %% }
 -type modify_vpc_endpoint_service_permissions_request() :: #{binary() => any()}.
@@ -19668,8 +19668,8 @@
 %% Example:
 %% describe_instance_event_windows_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
-%%   <<"InstanceEventWindowIds">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"InstanceEventWindowIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -19715,8 +19715,8 @@
 
 %% Example:
 %% load_permission_modifications() :: #{
-%%   <<"Add">> => list(load_permission_request()()),
-%%   <<"Remove">> => list(load_permission_request()())
+%%   <<"Add">> => list(load_permission_request()),
+%%   <<"Remove">> => list(load_permission_request())
 %% }
 -type load_permission_modifications() :: #{binary() => any()}.
 
@@ -19729,7 +19729,7 @@
 
 %% Example:
 %% subnet_ip_prefixes() :: #{
-%%   <<"IpPrefixes">> => list(string()()),
+%%   <<"IpPrefixes">> => list(string()),
 %%   <<"SubnetId">> => string()
 %% }
 -type subnet_ip_prefixes() :: #{binary() => any()}.
@@ -19737,7 +19737,7 @@
 %% Example:
 %% rule_option() :: #{
 %%   <<"Keyword">> => string(),
-%%   <<"Settings">> => list(string()())
+%%   <<"Settings">> => list(string())
 %% }
 -type rule_option() :: #{binary() => any()}.
 
@@ -19750,9 +19750,9 @@
 
 %% Example:
 %% describe_client_vpn_endpoints_request() :: #{
-%%   <<"ClientVpnEndpointIds">> => list(string()()),
+%%   <<"ClientVpnEndpointIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -19761,7 +19761,7 @@
 %% Example:
 %% monitor_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceIds">> := list(string()())
+%%   <<"InstanceIds">> := list(string())
 %% }
 -type monitor_instances_request() :: #{binary() => any()}.
 
@@ -19834,7 +19834,7 @@
 %%   <<"SpotPrice">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Status">> => spot_instance_status(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => list(any()),
 %%   <<"ValidFrom">> => non_neg_integer(),
 %%   <<"ValidUntil">> => non_neg_integer()
@@ -19860,13 +19860,13 @@
 %% purchase_scheduled_instances_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"PurchaseRequests">> := list(purchase_request()())
+%%   <<"PurchaseRequests">> := list(purchase_request())
 %% }
 -type purchase_scheduled_instances_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ipam_external_resource_verification_tokens_result() :: #{
-%%   <<"IpamExternalResourceVerificationTokens">> => list(ipam_external_resource_verification_token()()),
+%%   <<"IpamExternalResourceVerificationTokens">> => list(ipam_external_resource_verification_token()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_external_resource_verification_tokens_result() :: #{binary() => any()}.
@@ -19887,13 +19887,13 @@
 
 %% Example:
 %% cancel_spot_instance_requests_result() :: #{
-%%   <<"CancelledSpotInstanceRequests">> => list(cancelled_spot_instance_request()())
+%%   <<"CancelledSpotInstanceRequests">> => list(cancelled_spot_instance_request())
 %% }
 -type cancel_spot_instance_requests_result() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_reserved_instances_listing_result() :: #{
-%%   <<"ReservedInstancesListings">> => list(reserved_instances_listing()())
+%%   <<"ReservedInstancesListings">> => list(reserved_instances_listing())
 %% }
 -type cancel_reserved_instances_listing_result() :: #{binary() => any()}.
 
@@ -19937,11 +19937,11 @@
 %% Example:
 %% service_configuration() :: #{
 %%   <<"AcceptanceRequired">> => boolean(),
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"BaseEndpointDnsNames">> => list(string()()),
-%%   <<"GatewayLoadBalancerArns">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"BaseEndpointDnsNames">> => list(string()),
+%%   <<"GatewayLoadBalancerArns">> => list(string()),
 %%   <<"ManagesVpcEndpoints">> => boolean(),
-%%   <<"NetworkLoadBalancerArns">> => list(string()()),
+%%   <<"NetworkLoadBalancerArns">> => list(string()),
 %%   <<"PayerResponsibility">> => list(any()),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"PrivateDnsNameConfiguration">> => private_dns_name_configuration(),
@@ -19949,10 +19949,10 @@
 %%   <<"ServiceId">> => string(),
 %%   <<"ServiceName">> => string(),
 %%   <<"ServiceState">> => list(any()),
-%%   <<"ServiceType">> => list(service_type_detail()()),
+%%   <<"ServiceType">> => list(service_type_detail()),
 %%   <<"SupportedIpAddressTypes">> => list(list(any())()),
-%%   <<"SupportedRegions">> => list(supported_region_detail()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"SupportedRegions">> => list(supported_region_detail()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type service_configuration() :: #{binary() => any()}.
 
@@ -19973,7 +19973,7 @@
 %% Example:
 %% modify_hosts_request() :: #{
 %%   <<"AutoPlacement">> => list(any()),
-%%   <<"HostIds">> := list(string()()),
+%%   <<"HostIds">> := list(string()),
 %%   <<"HostMaintenance">> => list(any()),
 %%   <<"HostRecovery">> => list(any()),
 %%   <<"InstanceFamily">> => string(),
@@ -19991,7 +19991,7 @@
 %% Example:
 %% describe_vpc_endpoints_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcEndpoints">> => list(vpc_endpoint()())
+%%   <<"VpcEndpoints">> => list(vpc_endpoint())
 %% }
 -type describe_vpc_endpoints_result() :: #{binary() => any()}.
 
@@ -20008,9 +20008,9 @@
 %%   <<"Description">> => string(),
 %%   <<"FipsEnabled">> => boolean(),
 %%   <<"LastUpdatedTime">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VerifiedAccessInstanceId">> => string(),
-%%   <<"VerifiedAccessTrustProviders">> => list(verified_access_trust_provider_condensed()())
+%%   <<"VerifiedAccessTrustProviders">> => list(verified_access_trust_provider_condensed())
 %% }
 -type verified_access_instance() :: #{binary() => any()}.
 
@@ -20053,14 +20053,14 @@
 %%   <<"Ipv6Native">> => boolean(),
 %%   <<"Ipv6NetmaskLength">> => integer(),
 %%   <<"OutpostArn">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> := string()
 %% }
 -type create_subnet_request() :: #{binary() => any()}.
 
 %% Example:
 %% monitor_instances_result() :: #{
-%%   <<"InstanceMonitorings">> => list(instance_monitoring()())
+%%   <<"InstanceMonitorings">> => list(instance_monitoring())
 %% }
 -type monitor_instances_result() :: #{binary() => any()}.
 
@@ -20070,7 +20070,7 @@
 %%   <<"ResourceExclusions">> => vpc_encryption_control_exclusions(),
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcEncryptionControlId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -20091,14 +20091,14 @@
 %%   <<"FipsDnsName">> => string(),
 %%   <<"InstanceConnectEndpointArn">> => string(),
 %%   <<"InstanceConnectEndpointId">> => string(),
-%%   <<"NetworkInterfaceIds">> => list(string()()),
+%%   <<"NetworkInterfaceIds">> => list(string()),
 %%   <<"OwnerId">> => string(),
 %%   <<"PreserveClientIp">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
 %%   <<"SubnetId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type ec2_instance_connect_endpoint() :: #{binary() => any()}.
@@ -20122,7 +20122,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"InternetGatewayExclusionMode">> := list(any()),
 %%   <<"SubnetId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> => string()
 %% }
 -type create_vpc_block_public_access_exclusion_request() :: #{binary() => any()}.
@@ -20159,14 +20159,14 @@
 %% Example:
 %% describe_vpc_peering_connections_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcPeeringConnections">> => list(vpc_peering_connection()())
+%%   <<"VpcPeeringConnections">> => list(vpc_peering_connection())
 %% }
 -type describe_vpc_peering_connections_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_security_groups_for_vpc_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"VpcId">> := string()
@@ -20194,14 +20194,14 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"FIPSEnabled">> => boolean(),
-%%   <<"TagSpecifications">> => list(tag_specification()())
+%%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_verified_access_instance_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_transit_gateway_policy_table_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TransitGatewayPolicyTableId">> := string()
@@ -20220,7 +20220,7 @@
 
 %% Example:
 %% get_associated_ipv6_pool_cidrs_result() :: #{
-%%   <<"Ipv6CidrAssociations">> => list(ipv6_cidr_association()()),
+%%   <<"Ipv6CidrAssociations">> => list(ipv6_cidr_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_associated_ipv6_pool_cidrs_result() :: #{binary() => any()}.
@@ -20263,10 +20263,10 @@
 %% Example:
 %% describe_vpc_endpoint_associations_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointIds">> => list(string()())
+%%   <<"VpcEndpointIds">> => list(string())
 %% }
 -type describe_vpc_endpoint_associations_request() :: #{binary() => any()}.
 
@@ -20278,7 +20278,7 @@
 %%   <<"RdsDbInstanceArn">> => string(),
 %%   <<"RdsDbProxyArn">> => string(),
 %%   <<"RdsEndpoint">> => string(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type create_verified_access_endpoint_rds_options() :: #{binary() => any()}.
 
@@ -20299,19 +20299,19 @@
 %%   <<"DeviceIndex">> => integer(),
 %%   <<"EnaQueueCount">> => integer(),
 %%   <<"EnaSrdSpecification">> => ena_srd_specification_request(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"InterfaceType">> => string(),
 %%   <<"Ipv4PrefixCount">> => integer(),
-%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()()),
+%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()),
 %%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()()),
+%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()),
 %%   <<"Ipv6PrefixCount">> => integer(),
-%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()()),
+%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()),
 %%   <<"NetworkCardIndex">> => integer(),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"PrimaryIpv6">> => boolean(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()()),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
 %%   <<"SubnetId">> => string()
 %% }
@@ -20326,7 +20326,7 @@
 %% Example:
 %% get_route_server_routing_database_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"RouteServerId">> := string()
@@ -20343,15 +20343,15 @@
 
 %% Example:
 %% describe_id_format_result() :: #{
-%%   <<"Statuses">> => list(id_format()())
+%%   <<"Statuses">> => list(id_format())
 %% }
 -type describe_id_format_result() :: #{binary() => any()}.
 
 %% Example:
 %% unassign_private_ip_addresses_request() :: #{
-%%   <<"Ipv4Prefixes">> => list(string()()),
+%%   <<"Ipv4Prefixes">> => list(string()),
 %%   <<"NetworkInterfaceId">> := string(),
-%%   <<"PrivateIpAddresses">> => list(string()())
+%%   <<"PrivateIpAddresses">> => list(string())
 %% }
 -type unassign_private_ip_addresses_request() :: #{binary() => any()}.
 
@@ -20363,7 +20363,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"MultiRegion">> => boolean(),
 %%   <<"NetworkBorderGroup">> => string(),
-%%   <<"PoolTagSpecifications">> => list(tag_specification()()),
+%%   <<"PoolTagSpecifications">> => list(tag_specification()),
 %%   <<"PubliclyAdvertisable">> => boolean()
 %% }
 -type provision_byoip_cidr_request() :: #{binary() => any()}.
@@ -20384,9 +20384,9 @@
 %%   <<"LoadPermission">> => load_permission_modifications(),
 %%   <<"Name">> => string(),
 %%   <<"OperationType">> => list(any()),
-%%   <<"ProductCodes">> => list(string()()),
-%%   <<"UserGroups">> => list(string()()),
-%%   <<"UserIds">> => list(string()())
+%%   <<"ProductCodes">> => list(string()),
+%%   <<"UserGroups">> => list(string()),
+%%   <<"UserIds">> => list(string())
 %% }
 -type modify_fpga_image_attribute_request() :: #{binary() => any()}.
 
@@ -20395,7 +20395,7 @@
 %%   <<"Destination">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Metric">> => list(any()),
-%%   <<"MetricPoints">> => list(metric_point()()),
+%%   <<"MetricPoints">> => list(metric_point()),
 %%   <<"Period">> => list(any()),
 %%   <<"Source">> => string(),
 %%   <<"Statistic">> => list(any())
@@ -20404,9 +20404,9 @@
 
 %% Example:
 %% describe_capacity_blocks_request() :: #{
-%%   <<"CapacityBlockIds">> => list(string()()),
+%%   <<"CapacityBlockIds">> => list(string()),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -20443,14 +20443,14 @@
 %%   <<"DefaultCores">> => integer(),
 %%   <<"DefaultThreadsPerCore">> => integer(),
 %%   <<"DefaultVCpus">> => integer(),
-%%   <<"ValidCores">> => list(integer()()),
-%%   <<"ValidThreadsPerCore">> => list(integer()())
+%%   <<"ValidCores">> => list(integer()),
+%%   <<"ValidThreadsPerCore">> => list(integer())
 %% }
 -type v_cpu_info() :: #{binary() => any()}.
 
 %% Example:
 %% get_instance_types_from_instance_requirements_result() :: #{
-%%   <<"InstanceTypes">> => list(instance_type_info_from_instance_requirements()()),
+%%   <<"InstanceTypes">> => list(instance_type_info_from_instance_requirements()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_instance_types_from_instance_requirements_result() :: #{binary() => any()}.
@@ -20473,9 +20473,9 @@
 %%   <<"AnalysisEndTime">> => non_neg_integer(),
 %%   <<"AnalysisStartTime">> => non_neg_integer(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"NetworkInsightsAnalysisIds">> => list(string()()),
+%%   <<"NetworkInsightsAnalysisIds">> => list(string()),
 %%   <<"NetworkInsightsPathId">> => string(),
 %%   <<"NextToken">> => string()
 %% }
@@ -20484,13 +20484,13 @@
 %% Example:
 %% new_dhcp_configuration() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type new_dhcp_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% gpu_info() :: #{
-%%   <<"Gpus">> => list(gpu_device_info()()),
+%%   <<"Gpus">> => list(gpu_device_info()),
 %%   <<"TotalGpuMemoryInMiB">> => integer()
 %% }
 -type gpu_info() :: #{binary() => any()}.
@@ -20504,7 +20504,7 @@
 
 %% Example:
 %% purchase_capacity_block_extension_result() :: #{
-%%   <<"CapacityBlockExtensions">> => list(capacity_block_extension()())
+%%   <<"CapacityBlockExtensions">> => list(capacity_block_extension())
 %% }
 -type purchase_capacity_block_extension_result() :: #{binary() => any()}.
 
@@ -20524,7 +20524,7 @@
 %% purchase() :: #{
 %%   <<"CurrencyCode">> => list(any()),
 %%   <<"Duration">> => integer(),
-%%   <<"HostIdSet">> => list(string()()),
+%%   <<"HostIdSet">> => list(string()),
 %%   <<"HostReservationId">> => string(),
 %%   <<"HourlyPrice">> => string(),
 %%   <<"InstanceFamily">> => string(),
@@ -20551,7 +20551,7 @@
 %% modify_verified_access_endpoint_rds_options() :: #{
 %%   <<"Port">> => integer(),
 %%   <<"RdsEndpoint">> => string(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type modify_verified_access_endpoint_rds_options() :: #{binary() => any()}.
 

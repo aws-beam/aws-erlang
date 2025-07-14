@@ -77,7 +77,7 @@
 
 %% Example:
 %% put_audit_events_request() :: #{
-%%   <<"auditEvents">> := list(audit_event()()),
+%%   <<"auditEvents">> := list(audit_event()),
 %%   <<"channelArn">> := string(),
 %%   <<"externalId">> => string()
 %% }
@@ -86,8 +86,8 @@
 
 %% Example:
 %% put_audit_events_response() :: #{
-%%   <<"failed">> := list(result_error_entry()()),
-%%   <<"successful">> := list(audit_event_result_entry()())
+%%   <<"failed">> := list(result_error_entry()),
+%%   <<"successful">> := list(audit_event_result_entry())
 %% }
 -type put_audit_events_response() :: #{binary() => any()}.
 

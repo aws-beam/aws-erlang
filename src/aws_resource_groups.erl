@@ -105,14 +105,14 @@
 %% Example:
 %% resource_filter() :: #{
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type resource_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_tag_sync_tasks_input() :: #{
-%%   <<"Filters">> => list(list_tag_sync_tasks_filter()()),
+%%   <<"Filters">> => list(list_tag_sync_tasks_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -141,7 +141,7 @@
 
 %% Example:
 %% create_group_input() :: #{
-%%   <<"Configuration">> => list(group_configuration_item()()),
+%%   <<"Configuration">> => list(group_configuration_item()),
 %%   <<"Criticality">> => integer(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
@@ -170,7 +170,7 @@
 %% Example:
 %% list_grouping_statuses_output() :: #{
 %%   <<"Group">> => string(),
-%%   <<"GroupingStatuses">> => list(grouping_statuses_item()()),
+%%   <<"GroupingStatuses">> => list(grouping_statuses_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_grouping_statuses_output() :: #{binary() => any()}.
@@ -285,7 +285,7 @@
 
 %% Example:
 %% untag_input() :: #{
-%%   <<"Keys">> := list(string()())
+%%   <<"Keys">> := list(string())
 %% }
 -type untag_input() :: #{binary() => any()}.
 
@@ -299,7 +299,7 @@
 
 %% Example:
 %% put_group_configuration_input() :: #{
-%%   <<"Configuration">> => list(group_configuration_item()()),
+%%   <<"Configuration">> => list(group_configuration_item()),
 %%   <<"Group">> => string()
 %% }
 -type put_group_configuration_input() :: #{binary() => any()}.
@@ -307,8 +307,8 @@
 
 %% Example:
 %% list_groups_output() :: #{
-%%   <<"GroupIdentifiers">> => list(group_identifier()()),
-%%   <<"Groups">> => list(group()()),
+%%   <<"GroupIdentifiers">> => list(group_identifier()),
+%%   <<"Groups">> => list(group()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_output() :: #{binary() => any()}.
@@ -345,9 +345,9 @@
 
 %% Example:
 %% group_resources_output() :: #{
-%%   <<"Failed">> => list(failed_resource()()),
-%%   <<"Pending">> => list(pending_resource()()),
-%%   <<"Succeeded">> => list(string()())
+%%   <<"Failed">> => list(failed_resource()),
+%%   <<"Pending">> => list(pending_resource()),
+%%   <<"Succeeded">> => list(string())
 %% }
 -type group_resources_output() :: #{binary() => any()}.
 
@@ -362,7 +362,7 @@
 
 %% Example:
 %% list_grouping_statuses_input() :: #{
-%%   <<"Filters">> => list(list_grouping_statuses_filter()()),
+%%   <<"Filters">> => list(list_grouping_statuses_filter()),
 %%   <<"Group">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -373,7 +373,7 @@
 %% Example:
 %% group_configuration_parameter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type group_configuration_parameter() :: #{binary() => any()}.
 
@@ -390,9 +390,9 @@
 
 %% Example:
 %% ungroup_resources_output() :: #{
-%%   <<"Failed">> => list(failed_resource()()),
-%%   <<"Pending">> => list(pending_resource()()),
-%%   <<"Succeeded">> => list(string()())
+%%   <<"Failed">> => list(failed_resource()),
+%%   <<"Pending">> => list(pending_resource()),
+%%   <<"Succeeded">> => list(string())
 %% }
 -type ungroup_resources_output() :: #{binary() => any()}.
 
@@ -432,7 +432,7 @@
 %% Example:
 %% group_filter() :: #{
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type group_filter() :: #{binary() => any()}.
 
@@ -440,7 +440,7 @@
 %% Example:
 %% group_resources_input() :: #{
 %%   <<"Group">> := string(),
-%%   <<"ResourceArns">> := list(string()())
+%%   <<"ResourceArns">> := list(string())
 %% }
 -type group_resources_input() :: #{binary() => any()}.
 
@@ -448,8 +448,8 @@
 %% Example:
 %% search_resources_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"QueryErrors">> => list(query_error()()),
-%%   <<"ResourceIdentifiers">> => list(resource_identifier()())
+%%   <<"QueryErrors">> => list(query_error()),
+%%   <<"ResourceIdentifiers">> => list(resource_identifier())
 %% }
 -type search_resources_output() :: #{binary() => any()}.
 
@@ -457,9 +457,9 @@
 %% Example:
 %% list_group_resources_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"QueryErrors">> => list(query_error()()),
-%%   <<"ResourceIdentifiers">> => list(resource_identifier()()),
-%%   <<"Resources">> => list(list_group_resources_item()())
+%%   <<"QueryErrors">> => list(query_error()),
+%%   <<"ResourceIdentifiers">> => list(resource_identifier()),
+%%   <<"Resources">> => list(list_group_resources_item())
 %% }
 -type list_group_resources_output() :: #{binary() => any()}.
 
@@ -527,7 +527,7 @@
 
 %% Example:
 %% list_group_resources_input() :: #{
-%%   <<"Filters">> => list(resource_filter()()),
+%%   <<"Filters">> => list(resource_filter()),
 %%   <<"Group">> => string(),
 %%   <<"GroupName">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -610,14 +610,14 @@
 %% Example:
 %% ungroup_resources_input() :: #{
 %%   <<"Group">> := string(),
-%%   <<"ResourceArns">> := list(string()())
+%%   <<"ResourceArns">> := list(string())
 %% }
 -type ungroup_resources_input() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_groups_input() :: #{
-%%   <<"Filters">> => list(group_filter()()),
+%%   <<"Filters">> => list(group_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -627,7 +627,7 @@
 %% Example:
 %% list_grouping_statuses_filter() :: #{
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type list_grouping_statuses_filter() :: #{binary() => any()}.
 
@@ -635,7 +635,7 @@
 %% Example:
 %% untag_output() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Keys">> => list(string()())
+%%   <<"Keys">> => list(string())
 %% }
 -type untag_output() :: #{binary() => any()}.
 
@@ -665,9 +665,9 @@
 
 %% Example:
 %% group_configuration() :: #{
-%%   <<"Configuration">> => list(group_configuration_item()()),
+%%   <<"Configuration">> => list(group_configuration_item()),
 %%   <<"FailureReason">> => string(),
-%%   <<"ProposedConfiguration">> => list(group_configuration_item()()),
+%%   <<"ProposedConfiguration">> => list(group_configuration_item()),
 %%   <<"Status">> => list(any())
 %% }
 -type group_configuration() :: #{binary() => any()}.
@@ -684,7 +684,7 @@
 %% Example:
 %% list_tag_sync_tasks_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TagSyncTasks">> => list(tag_sync_task_item()())
+%%   <<"TagSyncTasks">> => list(tag_sync_task_item())
 %% }
 -type list_tag_sync_tasks_output() :: #{binary() => any()}.
 
@@ -695,7 +695,7 @@
 
 %% Example:
 %% group_configuration_item() :: #{
-%%   <<"Parameters">> => list(group_configuration_parameter()()),
+%%   <<"Parameters">> => list(group_configuration_parameter()),
 %%   <<"Type">> => string()
 %% }
 -type group_configuration_item() :: #{binary() => any()}.

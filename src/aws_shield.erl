@@ -93,7 +93,7 @@
 %% Example:
 %% update_protection_group_request() :: #{
 %%   <<"Aggregation">> := list(any()),
-%%   <<"Members">> => list(string()()),
+%%   <<"Members">> => list(string()),
 %%   <<"Pattern">> := list(any()),
 %%   <<"ProtectionGroupId">> := string(),
 %%   <<"ResourceType">> => list(any())
@@ -109,14 +109,14 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_resources_in_protection_group_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceArns">> => list(string()())
+%%   <<"ResourceArns">> => list(string())
 %% }
 -type list_resources_in_protection_group_response() :: #{binary() => any()}.
 
@@ -146,7 +146,7 @@
 
 %% Example:
 %% update_emergency_contact_settings_request() :: #{
-%%   <<"EmergencyContactList">> => list(emergency_contact()())
+%%   <<"EmergencyContactList">> => list(emergency_contact())
 %% }
 -type update_emergency_contact_settings_request() :: #{binary() => any()}.
 
@@ -176,8 +176,8 @@
 
 %% Example:
 %% inclusion_protection_filters() :: #{
-%%   <<"ProtectionNames">> => list(string()()),
-%%   <<"ResourceArns">> => list(string()()),
+%%   <<"ProtectionNames">> => list(string()),
+%%   <<"ResourceArns">> => list(string()),
 %%   <<"ResourceTypes">> => list(list(any())())
 %% }
 -type inclusion_protection_filters() :: #{binary() => any()}.
@@ -206,14 +206,14 @@
 %%   <<"EndTime">> => time_range(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceArns">> => list(string()()),
+%%   <<"ResourceArns">> => list(string()),
 %%   <<"StartTime">> => time_range()
 %% }
 -type list_attacks_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_emergency_contact_settings_response() :: #{
-%%   <<"EmergencyContactList">> => list(emergency_contact()())
+%%   <<"EmergencyContactList">> => list(emergency_contact())
 %% }
 -type describe_emergency_contact_settings_response() :: #{binary() => any()}.
 
@@ -244,14 +244,14 @@
 
 %% Example:
 %% protection_limits() :: #{
-%%   <<"ProtectedResourceTypeLimits">> => list(limit()())
+%%   <<"ProtectedResourceTypeLimits">> => list(limit())
 %% }
 -type protection_limits() :: #{binary() => any()}.
 
 %% Example:
 %% list_protections_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Protections">> => list(protection()())
+%%   <<"Protections">> => list(protection())
 %% }
 -type list_protections_response() :: #{binary() => any()}.
 
@@ -265,7 +265,7 @@
 %% Example:
 %% protection_group() :: #{
 %%   <<"Aggregation">> => list(any()),
-%%   <<"Members">> => list(string()()),
+%%   <<"Members">> => list(string()),
 %%   <<"Pattern">> => list(any()),
 %%   <<"ProtectionGroupArn">> => string(),
 %%   <<"ProtectionGroupId">> => string(),
@@ -283,7 +283,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -302,7 +302,7 @@
 %% Example:
 %% list_protection_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProtectionGroups">> => list(protection_group()())
+%%   <<"ProtectionGroups">> => list(protection_group())
 %% }
 -type list_protection_groups_response() :: #{binary() => any()}.
 
@@ -320,14 +320,14 @@
 
 %% Example:
 %% attack_detail() :: #{
-%%   <<"AttackCounters">> => list(summarized_counter()()),
+%%   <<"AttackCounters">> => list(summarized_counter()),
 %%   <<"AttackId">> => string(),
-%%   <<"AttackProperties">> => list(attack_property()()),
+%%   <<"AttackProperties">> => list(attack_property()),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Mitigations">> => list(mitigation()()),
+%%   <<"Mitigations">> => list(mitigation()),
 %%   <<"ResourceArn">> => string(),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"SubResources">> => list(sub_resource_summary()())
+%%   <<"SubResources">> => list(sub_resource_summary())
 %% }
 -type attack_detail() :: #{binary() => any()}.
 
@@ -386,7 +386,7 @@
 %% Example:
 %% protection() :: #{
 %%   <<"ApplicationLayerAutomaticResponseConfiguration">> => application_layer_automatic_response_configuration(),
-%%   <<"HealthCheckIds">> => list(string()()),
+%%   <<"HealthCheckIds">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"ProtectionArn">> => string(),
@@ -396,7 +396,7 @@
 
 %% Example:
 %% list_attacks_response() :: #{
-%%   <<"AttackSummaries">> => list(attack_summary()()),
+%%   <<"AttackSummaries">> => list(attack_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_attacks_response() :: #{binary() => any()}.
@@ -417,7 +417,7 @@
 
 %% Example:
 %% describe_attack_statistics_response() :: #{
-%%   <<"DataItems">> => list(attack_statistics_data_item()()),
+%%   <<"DataItems">> => list(attack_statistics_data_item()),
 %%   <<"TimeRange">> => time_range()
 %% }
 -type describe_attack_statistics_response() :: #{binary() => any()}.
@@ -431,11 +431,11 @@
 %% Example:
 %% create_protection_group_request() :: #{
 %%   <<"Aggregation">> := list(any()),
-%%   <<"Members">> => list(string()()),
+%%   <<"Members">> => list(string()),
 %%   <<"Pattern">> := list(any()),
 %%   <<"ProtectionGroupId">> := string(),
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_protection_group_request() :: #{binary() => any()}.
 
@@ -455,7 +455,7 @@
 %% inclusion_protection_group_filters() :: #{
 %%   <<"Aggregations">> => list(list(any())()),
 %%   <<"Patterns">> => list(list(any())()),
-%%   <<"ProtectionGroupIds">> => list(string()()),
+%%   <<"ProtectionGroupIds">> => list(string()),
 %%   <<"ResourceTypes">> => list(list(any())())
 %% }
 -type inclusion_protection_group_filters() :: #{binary() => any()}.
@@ -469,7 +469,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -524,7 +524,7 @@
 
 %% Example:
 %% associate_proactive_engagement_details_request() :: #{
-%%   <<"EmergencyContactList">> := list(emergency_contact()())
+%%   <<"EmergencyContactList">> := list(emergency_contact())
 %% }
 -type associate_proactive_engagement_details_request() :: #{binary() => any()}.
 
@@ -536,8 +536,8 @@
 
 %% Example:
 %% sub_resource_summary() :: #{
-%%   <<"AttackVectors">> => list(summarized_attack_vector()()),
-%%   <<"Counters">> => list(summarized_counter()()),
+%%   <<"AttackVectors">> => list(summarized_attack_vector()),
+%%   <<"Counters">> => list(summarized_counter()),
 %%   <<"Id">> => string(),
 %%   <<"Type">> => list(any())
 %% }
@@ -570,7 +570,7 @@
 %% Example:
 %% attack_summary() :: #{
 %%   <<"AttackId">> => string(),
-%%   <<"AttackVectors">> => list(attack_vector_description()()),
+%%   <<"AttackVectors">> => list(attack_vector_description()),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"ResourceArn">> => string(),
 %%   <<"StartTime">> => non_neg_integer()
@@ -598,7 +598,7 @@
 
 %% Example:
 %% summarized_attack_vector() :: #{
-%%   <<"VectorCounters">> => list(summarized_counter()()),
+%%   <<"VectorCounters">> => list(summarized_counter()),
 %%   <<"VectorType">> => string()
 %% }
 -type summarized_attack_vector() :: #{binary() => any()}.
@@ -617,7 +617,7 @@
 
 %% Example:
 %% invalid_parameter_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"fields">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }
@@ -639,7 +639,7 @@
 %% attack_property() :: #{
 %%   <<"AttackLayer">> => list(any()),
 %%   <<"AttackPropertyIdentifier">> => list(any()),
-%%   <<"TopContributors">> => list(contributor()()),
+%%   <<"TopContributors">> => list(contributor()),
 %%   <<"Total">> => float(),
 %%   <<"Unit">> => list(any())
 %% }
@@ -693,7 +693,7 @@
 %% subscription() :: #{
 %%   <<"AutoRenew">> => list(any()),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Limits">> => list(limit()()),
+%%   <<"Limits">> => list(limit()),
 %%   <<"ProactiveEngagementStatus">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"SubscriptionArn">> => string(),
@@ -749,7 +749,7 @@
 
 %% Example:
 %% describe_drt_access_response() :: #{
-%%   <<"LogBucketList">> => list(string()()),
+%%   <<"LogBucketList">> => list(string()),
 %%   <<"RoleArn">> => string()
 %% }
 -type describe_drt_access_response() :: #{binary() => any()}.
@@ -862,7 +862,7 @@
 %% create_protection_request() :: #{
 %%   <<"Name">> := string(),
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_protection_request() :: #{binary() => any()}.
 

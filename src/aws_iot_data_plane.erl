@@ -122,7 +122,7 @@
 %% Example:
 %% list_named_shadows_for_thing_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"results">> => list(string()()),
+%%   <<"results">> => list(string()),
 %%   <<"timestamp">> => float()
 %% }
 -type list_named_shadows_for_thing_response() :: #{binary() => any()}.
@@ -139,7 +139,7 @@
 %% Example:
 %% list_retained_messages_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"retainedTopics">> => list(retained_message_summary()())
+%%   <<"retainedTopics">> => list(retained_message_summary())
 %% }
 -type list_retained_messages_response() :: #{binary() => any()}.
 

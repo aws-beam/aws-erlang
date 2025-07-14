@@ -116,7 +116,7 @@
 
 %% Example:
 %% custom_domain() :: #{
-%%   <<"CertificateValidationRecords">> => list(certificate_validation_record()()),
+%%   <<"CertificateValidationRecords">> => list(certificate_validation_record()),
 %%   <<"DomainName">> => string(),
 %%   <<"EnableWWWSubdomain">> => boolean(),
 %%   <<"Status">> => list(any())
@@ -132,7 +132,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -145,7 +145,7 @@
 %% Example:
 %% list_observability_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ObservabilityConfigurationSummaryList">> => list(observability_configuration_summary()())
+%%   <<"ObservabilityConfigurationSummaryList">> => list(observability_configuration_summary())
 %% }
 -type list_observability_configurations_response() :: #{binary() => any()}.
 
@@ -166,7 +166,7 @@
 %% Example:
 %% create_observability_configuration_request() :: #{
 %%   <<"ObservabilityConfigurationName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TraceConfiguration">> => trace_configuration()
 %% }
 -type create_observability_configuration_request() :: #{binary() => any()}.
@@ -244,7 +244,7 @@
 
 %% Example:
 %% list_connections_response() :: #{
-%%   <<"ConnectionSummaryList">> => list(connection_summary()()),
+%%   <<"ConnectionSummaryList">> => list(connection_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connections_response() :: #{binary() => any()}.
@@ -280,9 +280,9 @@
 %% vpc_connector() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DeletedAt">> => non_neg_integer(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"Status">> => list(any()),
-%%   <<"Subnets">> => list(string()()),
+%%   <<"Subnets">> => list(string()),
 %%   <<"VpcConnectorArn">> => string(),
 %%   <<"VpcConnectorName">> => string(),
 %%   <<"VpcConnectorRevision">> => integer()
@@ -318,7 +318,7 @@
 %% Example:
 %% list_vpc_connectors_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcConnectors">> => list(vpc_connector()())
+%%   <<"VpcConnectors">> => list(vpc_connector())
 %% }
 -type list_vpc_connectors_response() :: #{binary() => any()}.
 
@@ -349,7 +349,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -392,7 +392,7 @@
 %% create_vpc_ingress_connection_request() :: #{
 %%   <<"IngressVpcConfiguration">> := ingress_vpc_configuration(),
 %%   <<"ServiceArn">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcIngressConnectionName">> := string()
 %% }
 -type create_vpc_ingress_connection_request() :: #{binary() => any()}.
@@ -428,7 +428,7 @@
 %% Example:
 %% list_services_for_auto_scaling_configuration_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceArnList">> => list(string()())
+%%   <<"ServiceArnList">> => list(string())
 %% }
 -type list_services_for_auto_scaling_configuration_response() :: #{binary() => any()}.
 
@@ -495,9 +495,9 @@
 
 %% Example:
 %% create_vpc_connector_request() :: #{
-%%   <<"SecurityGroups">> => list(string()()),
-%%   <<"Subnets">> := list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> := list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcConnectorName">> := string()
 %% }
 -type create_vpc_connector_request() :: #{binary() => any()}.
@@ -548,7 +548,7 @@
 %% Example:
 %% list_services_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceSummaryList">> => list(service_summary()())
+%%   <<"ServiceSummaryList">> => list(service_summary())
 %% }
 -type list_services_response() :: #{binary() => any()}.
 
@@ -586,7 +586,7 @@
 %%   <<"ObservabilityConfiguration">> => service_observability_configuration(),
 %%   <<"ServiceName">> := string(),
 %%   <<"SourceConfiguration">> := source_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_service_request() :: #{binary() => any()}.
 
@@ -628,7 +628,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -723,7 +723,7 @@
 
 %% Example:
 %% list_auto_scaling_configurations_response() :: #{
-%%   <<"AutoScalingConfigurationSummaryList">> => list(auto_scaling_configuration_summary()()),
+%%   <<"AutoScalingConfigurationSummaryList">> => list(auto_scaling_configuration_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_auto_scaling_configurations_response() :: #{binary() => any()}.
@@ -739,7 +739,7 @@
 %% Example:
 %% list_operations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OperationSummaryList">> => list(operation_summary()())
+%%   <<"OperationSummaryList">> => list(operation_summary())
 %% }
 -type list_operations_response() :: #{binary() => any()}.
 
@@ -819,7 +819,7 @@
 %%   <<"MaxConcurrency">> => integer(),
 %%   <<"MaxSize">> => integer(),
 %%   <<"MinSize">> => integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_auto_scaling_configuration_request() :: #{binary() => any()}.
 
@@ -900,7 +900,7 @@
 %% Example:
 %% list_vpc_ingress_connections_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcIngressConnectionSummaryList">> => list(vpc_ingress_connection_summary()())
+%%   <<"VpcIngressConnectionSummaryList">> => list(vpc_ingress_connection_summary())
 %% }
 -type list_vpc_ingress_connections_response() :: #{binary() => any()}.
 
@@ -908,7 +908,7 @@
 %% create_connection_request() :: #{
 %%   <<"ConnectionName">> := string(),
 %%   <<"ProviderType">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_connection_request() :: #{binary() => any()}.
 
@@ -917,7 +917,7 @@
 %%   <<"CustomDomain">> => custom_domain(),
 %%   <<"DNSTarget">> => string(),
 %%   <<"ServiceArn">> => string(),
-%%   <<"VpcDNSTargets">> => list(vpc_dns_target()())
+%%   <<"VpcDNSTargets">> => list(vpc_dns_target())
 %% }
 -type associate_custom_domain_response() :: #{binary() => any()}.
 
@@ -953,7 +953,7 @@
 %%   <<"CustomDomain">> => custom_domain(),
 %%   <<"DNSTarget">> => string(),
 %%   <<"ServiceArn">> => string(),
-%%   <<"VpcDNSTargets">> => list(vpc_dns_target()())
+%%   <<"VpcDNSTargets">> => list(vpc_dns_target())
 %% }
 -type disassociate_custom_domain_response() :: #{binary() => any()}.
 
@@ -977,11 +977,11 @@
 
 %% Example:
 %% describe_custom_domains_response() :: #{
-%%   <<"CustomDomains">> => list(custom_domain()()),
+%%   <<"CustomDomains">> => list(custom_domain()),
 %%   <<"DNSTarget">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceArn">> => string(),
-%%   <<"VpcDNSTargets">> => list(vpc_dns_target()())
+%%   <<"VpcDNSTargets">> => list(vpc_dns_target())
 %% }
 -type describe_custom_domains_response() :: #{binary() => any()}.
 

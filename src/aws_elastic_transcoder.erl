@@ -63,7 +63,7 @@
 %% Example:
 %% list_pipelines_response() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"Pipelines">> => list(pipeline()())
+%%   <<"Pipelines">> => list(pipeline())
 %% }
 -type list_pipelines_response() :: #{binary() => any()}.
 
@@ -73,7 +73,7 @@
 %%   <<"Format">> => string(),
 %%   <<"HlsContentProtection">> => hls_content_protection(),
 %%   <<"Name">> => string(),
-%%   <<"OutputKeys">> => list(string()()),
+%%   <<"OutputKeys">> => list(string()),
 %%   <<"PlayReadyDrm">> => play_ready_drm()
 %% }
 -type create_job_playlist() :: #{binary() => any()}.
@@ -82,7 +82,7 @@
 %% Example:
 %% update_pipeline_response() :: #{
 %%   <<"Pipeline">> => pipeline(),
-%%   <<"Warnings">> => list(warning()())
+%%   <<"Warnings">> => list(warning())
 %% }
 -type update_pipeline_response() :: #{binary() => any()}.
 
@@ -116,8 +116,8 @@
 
 %% Example:
 %% captions() :: #{
-%%   <<"CaptionFormats">> => list(caption_format()()),
-%%   <<"CaptionSources">> => list(caption_source()()),
+%%   <<"CaptionFormats">> => list(caption_format()),
+%%   <<"CaptionSources">> => list(caption_source()),
 %%   <<"MergePolicy">> => string()
 %% }
 -type captions() :: #{binary() => any()}.
@@ -141,7 +141,7 @@
 %% Example:
 %% create_pipeline_response() :: #{
 %%   <<"Pipeline">> => pipeline(),
-%%   <<"Warnings">> => list(warning()())
+%%   <<"Warnings">> => list(warning())
 %% }
 -type create_pipeline_response() :: #{binary() => any()}.
 
@@ -151,14 +151,14 @@
 %%   <<"InputBucket">> := string(),
 %%   <<"OutputBucket">> := string(),
 %%   <<"Role">> := string(),
-%%   <<"Topics">> := list(string()())
+%%   <<"Topics">> := list(string())
 %% }
 -type test_role_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% input_captions() :: #{
-%%   <<"CaptionSources">> => list(caption_source()()),
+%%   <<"CaptionSources">> => list(caption_source()),
 %%   <<"MergePolicy">> => string()
 %% }
 -type input_captions() :: #{binary() => any()}.
@@ -167,7 +167,7 @@
 %% Example:
 %% read_pipeline_response() :: #{
 %%   <<"Pipeline">> => pipeline(),
-%%   <<"Warnings">> => list(warning()())
+%%   <<"Warnings">> => list(warning())
 %% }
 -type read_pipeline_response() :: #{binary() => any()}.
 
@@ -202,7 +202,7 @@
 
 %% Example:
 %% list_jobs_by_pipeline_response() :: #{
-%%   <<"Jobs">> => list(job()()),
+%%   <<"Jobs">> => list(job()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_jobs_by_pipeline_response() :: #{binary() => any()}.
@@ -211,12 +211,12 @@
 %% Example:
 %% create_job_request() :: #{
 %%   <<"Input">> => job_input(),
-%%   <<"Inputs">> => list(job_input()()),
+%%   <<"Inputs">> => list(job_input()),
 %%   <<"Output">> => create_job_output(),
 %%   <<"OutputKeyPrefix">> => string(),
-%%   <<"Outputs">> => list(create_job_output()()),
+%%   <<"Outputs">> => list(create_job_output()),
 %%   <<"PipelineId">> := string(),
-%%   <<"Playlists">> => list(create_job_playlist()()),
+%%   <<"Playlists">> => list(create_job_playlist()),
 %%   <<"UserMetadata">> => map()
 %% }
 -type create_job_request() :: #{binary() => any()}.
@@ -241,7 +241,7 @@
 %%   <<"AlbumArt">> => job_album_art(),
 %%   <<"AppliedColorSpaceConversion">> => string(),
 %%   <<"Captions">> => captions(),
-%%   <<"Composition">> => list(clip()()),
+%%   <<"Composition">> => list(clip()),
 %%   <<"Duration">> => float(),
 %%   <<"DurationMillis">> => float(),
 %%   <<"Encryption">> => encryption(),
@@ -257,7 +257,7 @@
 %%   <<"StatusDetail">> => string(),
 %%   <<"ThumbnailEncryption">> => encryption(),
 %%   <<"ThumbnailPattern">> => string(),
-%%   <<"Watermarks">> => list(job_watermark()()),
+%%   <<"Watermarks">> => list(job_watermark()),
 %%   <<"Width">> => integer()
 %% }
 -type job_output() :: #{binary() => any()}.
@@ -353,7 +353,7 @@
 
 %% Example:
 %% list_jobs_by_status_response() :: #{
-%%   <<"Jobs">> => list(job()()),
+%%   <<"Jobs">> => list(job()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_jobs_by_status_response() :: #{binary() => any()}.
@@ -375,7 +375,7 @@
 %%   <<"PaddingPolicy">> => string(),
 %%   <<"Resolution">> => string(),
 %%   <<"SizingPolicy">> => string(),
-%%   <<"Watermarks">> => list(preset_watermark()())
+%%   <<"Watermarks">> => list(preset_watermark())
 %% }
 -type video_parameters() :: #{binary() => any()}.
 
@@ -401,7 +401,7 @@
 %% Example:
 %% pipeline_output_config() :: #{
 %%   <<"Bucket">> => string(),
-%%   <<"Permissions">> => list(permission()()),
+%%   <<"Permissions">> => list(permission()),
 %%   <<"StorageClass">> => string()
 %% }
 -type pipeline_output_config() :: #{binary() => any()}.
@@ -429,7 +429,7 @@
 %% Example:
 %% list_presets_response() :: #{
 %%   <<"NextPageToken">> => string(),
-%%   <<"Presets">> => list(preset()())
+%%   <<"Presets">> => list(preset())
 %% }
 -type list_presets_response() :: #{binary() => any()}.
 
@@ -536,7 +536,7 @@
 
 %% Example:
 %% job_album_art() :: #{
-%%   <<"Artwork">> => list(artwork()()),
+%%   <<"Artwork">> => list(artwork()),
 %%   <<"MergePolicy">> => string()
 %% }
 -type job_album_art() :: #{binary() => any()}.
@@ -563,12 +563,12 @@
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Input">> => job_input(),
-%%   <<"Inputs">> => list(job_input()()),
+%%   <<"Inputs">> => list(job_input()),
 %%   <<"Output">> => job_output(),
 %%   <<"OutputKeyPrefix">> => string(),
-%%   <<"Outputs">> => list(job_output()()),
+%%   <<"Outputs">> => list(job_output()),
 %%   <<"PipelineId">> => string(),
-%%   <<"Playlists">> => list(playlist()()),
+%%   <<"Playlists">> => list(playlist()),
 %%   <<"Status">> => string(),
 %%   <<"Timing">> => timing(),
 %%   <<"UserMetadata">> => map()
@@ -639,7 +639,7 @@
 %% create_job_output() :: #{
 %%   <<"AlbumArt">> => job_album_art(),
 %%   <<"Captions">> => captions(),
-%%   <<"Composition">> => list(clip()()),
+%%   <<"Composition">> => list(clip()),
 %%   <<"Encryption">> => encryption(),
 %%   <<"Key">> => string(),
 %%   <<"PresetId">> => string(),
@@ -647,7 +647,7 @@
 %%   <<"SegmentDuration">> => string(),
 %%   <<"ThumbnailEncryption">> => encryption(),
 %%   <<"ThumbnailPattern">> => string(),
-%%   <<"Watermarks">> => list(job_watermark()())
+%%   <<"Watermarks">> => list(job_watermark())
 %% }
 -type create_job_output() :: #{binary() => any()}.
 
@@ -669,7 +669,7 @@
 %%   <<"Format">> => string(),
 %%   <<"HlsContentProtection">> => hls_content_protection(),
 %%   <<"Name">> => string(),
-%%   <<"OutputKeys">> => list(string()()),
+%%   <<"OutputKeys">> => list(string()),
 %%   <<"PlayReadyDrm">> => play_ready_drm(),
 %%   <<"Status">> => string(),
 %%   <<"StatusDetail">> => string()
@@ -698,7 +698,7 @@
 
 %% Example:
 %% test_role_response() :: #{
-%%   <<"Messages">> => list(string()()),
+%%   <<"Messages">> => list(string()),
 %%   <<"Success">> => string()
 %% }
 -type test_role_response() :: #{binary() => any()}.
@@ -714,7 +714,7 @@
 
 %% Example:
 %% permission() :: #{
-%%   <<"Access">> => list(string()()),
+%%   <<"Access">> => list(string()),
 %%   <<"Grantee">> => string(),
 %%   <<"GranteeType">> => string()
 %% }

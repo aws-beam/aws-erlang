@@ -204,7 +204,7 @@
 
 %% Example:
 %% list_resource_profile_artifacts_response() :: #{
-%%   <<"artifacts">> => list(resource_profile_artifact()()),
+%%   <<"artifacts">> => list(resource_profile_artifact()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_resource_profile_artifacts_response() :: #{binary() => any()}.
@@ -306,7 +306,7 @@
 
 %% Example:
 %% get_usage_statistics_request() :: #{
-%%   <<"filterBy">> => list(usage_statistics_filter()()),
+%%   <<"filterBy">> => list(usage_statistics_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sortBy">> => usage_statistics_sort_by(),
@@ -332,10 +332,10 @@
 
 %% Example:
 %% describe_classification_job_response() :: #{
-%%   <<"allowListIds">> => list(string()()),
+%%   <<"allowListIds">> => list(string()),
 %%   <<"clientToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"customDataIdentifierIds">> => list(string()()),
+%%   <<"customDataIdentifierIds">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"initialRun">> => boolean(),
 %%   <<"jobArn">> => string(),
@@ -344,7 +344,7 @@
 %%   <<"jobType">> => list(any()),
 %%   <<"lastRunErrorStatus">> => last_run_error_status(),
 %%   <<"lastRunTime">> => non_neg_integer(),
-%%   <<"managedDataIdentifierIds">> => list(string()()),
+%%   <<"managedDataIdentifierIds">> => list(string()),
 %%   <<"managedDataIdentifierSelector">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"s3JobDefinition">> => s3_job_definition(),
@@ -361,7 +361,7 @@
 %% usage_statistics_filter() :: #{
 %%   <<"comparator">> => list(any()),
 %%   <<"key">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type usage_statistics_filter() :: #{binary() => any()}.
 
@@ -405,7 +405,7 @@
 
 %% Example:
 %% decline_invitations_response() :: #{
-%%   <<"unprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"unprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type decline_invitations_response() :: #{binary() => any()}.
 
@@ -422,7 +422,7 @@
 %% Example:
 %% s3_bucket_definition_for_job() :: #{
 %%   <<"accountId">> => string(),
-%%   <<"buckets">> => list(string()())
+%%   <<"buckets">> => list(string())
 %% }
 -type s3_bucket_definition_for_job() :: #{binary() => any()}.
 
@@ -439,7 +439,7 @@
 %% list_jobs_filter_term() :: #{
 %%   <<"comparator">> => list(any()),
 %%   <<"key">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type list_jobs_filter_term() :: #{binary() => any()}.
 
@@ -506,7 +506,7 @@
 
 %% Example:
 %% s3_classification_scope_exclusion() :: #{
-%%   <<"bucketNames">> => list(string()())
+%%   <<"bucketNames">> => list(string())
 %% }
 -type s3_classification_scope_exclusion() :: #{binary() => any()}.
 
@@ -537,7 +537,7 @@
 %%   <<"additionalOccurrences">> => boolean(),
 %%   <<"customDataIdentifiers">> => custom_data_identifiers(),
 %%   <<"mimeType">> => string(),
-%%   <<"sensitiveData">> => list(sensitive_data_item()()),
+%%   <<"sensitiveData">> => list(sensitive_data_item()),
 %%   <<"sizeClassified">> => float(),
 %%   <<"status">> => classification_result_status()
 %% }
@@ -599,12 +599,12 @@
 
 %% Example:
 %% bucket_criteria_additional_properties() :: #{
-%%   <<"eq">> => list(string()()),
+%%   <<"eq">> => list(string()),
 %%   <<"gt">> => float(),
 %%   <<"gte">> => float(),
 %%   <<"lt">> => float(),
 %%   <<"lte">> => float(),
-%%   <<"neq">> => list(string()()),
+%%   <<"neq">> => list(string()),
 %%   <<"prefix">> => string()
 %% }
 -type bucket_criteria_additional_properties() :: #{binary() => any()}.
@@ -650,7 +650,7 @@
 %%   <<"sharedAccess">> => list(any()),
 %%   <<"sizeInBytes">> => float(),
 %%   <<"sizeInBytesCompressed">> => float(),
-%%   <<"tags">> => list(key_value_pair()()),
+%%   <<"tags">> => list(key_value_pair()),
 %%   <<"unclassifiableObjectCount">> => object_level_statistics(),
 %%   <<"unclassifiableObjectSizeInBytes">> => object_level_statistics(),
 %%   <<"versioning">> => boolean()
@@ -660,7 +660,7 @@
 
 %% Example:
 %% batch_get_custom_data_identifiers_request() :: #{
-%%   <<"ids">> => list(string()())
+%%   <<"ids">> => list(string())
 %% }
 -type batch_get_custom_data_identifiers_request() :: #{binary() => any()}.
 
@@ -669,7 +669,7 @@
 %% tag_scope_term() :: #{
 %%   <<"comparator">> => list(any()),
 %%   <<"key">> => string(),
-%%   <<"tagValues">> => list(tag_value_pair()()),
+%%   <<"tagValues">> => list(tag_value_pair()),
 %%   <<"target">> => list(any())
 %% }
 -type tag_scope_term() :: #{binary() => any()}.
@@ -732,7 +732,7 @@
 
 %% Example:
 %% list_custom_data_identifiers_response() :: #{
-%%   <<"items">> => list(custom_data_identifier_summary()()),
+%%   <<"items">> => list(custom_data_identifier_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_data_identifiers_response() :: #{binary() => any()}.
@@ -748,14 +748,14 @@
 
 %% Example:
 %% batch_update_automated_discovery_accounts_request() :: #{
-%%   <<"accounts">> => list(automated_discovery_account_update()())
+%%   <<"accounts">> => list(automated_discovery_account_update())
 %% }
 -type batch_update_automated_discovery_accounts_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% sensitivity_inspection_template_excludes() :: #{
-%%   <<"managedDataIdentifierIds">> => list(string()())
+%%   <<"managedDataIdentifierIds">> => list(string())
 %% }
 -type sensitivity_inspection_template_excludes() :: #{binary() => any()}.
 
@@ -772,7 +772,7 @@
 %%   <<"serverSideEncryption">> => server_side_encryption(),
 %%   <<"size">> => float(),
 %%   <<"storageClass">> => list(any()),
-%%   <<"tags">> => list(key_value_pair()()),
+%%   <<"tags">> => list(key_value_pair()),
 %%   <<"versionId">> => string()
 %% }
 -type s3_object() :: #{binary() => any()}.
@@ -780,7 +780,7 @@
 
 %% Example:
 %% list_findings_response() :: #{
-%%   <<"findingIds">> => list(string()()),
+%%   <<"findingIds">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_response() :: #{binary() => any()}.
@@ -843,7 +843,7 @@
 
 %% Example:
 %% get_findings_request() :: #{
-%%   <<"findingIds">> := list(string()()),
+%%   <<"findingIds">> := list(string()),
 %%   <<"sortCriteria">> => sort_criteria()
 %% }
 -type get_findings_request() :: #{binary() => any()}.
@@ -858,7 +858,7 @@
 
 %% Example:
 %% criteria_block_for_job() :: #{
-%%   <<"and">> => list(criteria_for_job()())
+%%   <<"and">> => list(criteria_for_job())
 %% }
 -type criteria_block_for_job() :: #{binary() => any()}.
 
@@ -883,7 +883,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -903,7 +903,7 @@
 
 %% Example:
 %% list_resource_profile_detections_response() :: #{
-%%   <<"detections">> => list(detection()()),
+%%   <<"detections">> => list(detection()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_resource_profile_detections_response() :: #{binary() => any()}.
@@ -1071,7 +1071,7 @@
 
 %% Example:
 %% search_resources_response() :: #{
-%%   <<"matchingResources">> => list(matching_resource()()),
+%%   <<"matchingResources">> => list(matching_resource()),
 %%   <<"nextToken">> => string()
 %% }
 -type search_resources_response() :: #{binary() => any()}.
@@ -1112,15 +1112,15 @@
 %% simple_scope_term() :: #{
 %%   <<"comparator">> => list(any()),
 %%   <<"key">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type simple_scope_term() :: #{binary() => any()}.
 
 
 %% Example:
 %% test_custom_data_identifier_request() :: #{
-%%   <<"ignoreWords">> => list(string()()),
-%%   <<"keywords">> => list(string()()),
+%%   <<"ignoreWords">> => list(string()),
+%%   <<"keywords">> => list(string()),
 %%   <<"maximumMatchDistance">> => integer(),
 %%   <<"regex">> := string(),
 %%   <<"sampleText">> := string()
@@ -1130,7 +1130,7 @@
 
 %% Example:
 %% list_automated_discovery_accounts_response() :: #{
-%%   <<"items">> => list(automated_discovery_account()()),
+%%   <<"items">> => list(automated_discovery_account()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_automated_discovery_accounts_response() :: #{binary() => any()}.
@@ -1147,7 +1147,7 @@
 %% Example:
 %% job_summary() :: #{
 %%   <<"bucketCriteria">> => s3_bucket_criteria_for_job(),
-%%   <<"bucketDefinitions">> => list(s3_bucket_definition_for_job()()),
+%%   <<"bucketDefinitions">> => list(s3_bucket_definition_for_job()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"jobId">> => string(),
 %%   <<"jobStatus">> => list(any()),
@@ -1161,7 +1161,7 @@
 
 %% Example:
 %% list_automated_discovery_accounts_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1176,12 +1176,12 @@
 %% create_custom_data_identifier_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"ignoreWords">> => list(string()()),
-%%   <<"keywords">> => list(string()()),
+%%   <<"ignoreWords">> => list(string()),
+%%   <<"keywords">> => list(string()),
 %%   <<"maximumMatchDistance">> => integer(),
 %%   <<"name">> := string(),
 %%   <<"regex">> := string(),
-%%   <<"severityLevels">> => list(severity_level()()),
+%%   <<"severityLevels">> => list(severity_level()),
 %%   <<"tags">> => map()
 %% }
 -type create_custom_data_identifier_request() :: #{binary() => any()}.
@@ -1189,11 +1189,11 @@
 
 %% Example:
 %% occurrences() :: #{
-%%   <<"cells">> => list(cell()()),
-%%   <<"lineRanges">> => list(range()()),
-%%   <<"offsetRanges">> => list(range()()),
-%%   <<"pages">> => list(page()()),
-%%   <<"records">> => list(record()())
+%%   <<"cells">> => list(cell()),
+%%   <<"lineRanges">> => list(range()),
+%%   <<"offsetRanges">> => list(range()),
+%%   <<"pages">> => list(page()),
+%%   <<"records">> => list(record())
 %% }
 -type occurrences() :: #{binary() => any()}.
 
@@ -1231,7 +1231,7 @@
 
 %% Example:
 %% list_findings_filters_response() :: #{
-%%   <<"findingsFilterListItems">> => list(findings_filter_list_item()()),
+%%   <<"findingsFilterListItems">> => list(findings_filter_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_filters_response() :: #{binary() => any()}.
@@ -1304,7 +1304,7 @@
 %% Example:
 %% search_resources_tag_criterion() :: #{
 %%   <<"comparator">> => list(any()),
-%%   <<"tagValues">> => list(search_resources_tag_criterion_pair()())
+%%   <<"tagValues">> => list(search_resources_tag_criterion_pair())
 %% }
 -type search_resources_tag_criterion() :: #{binary() => any()}.
 
@@ -1322,7 +1322,7 @@
 %%   <<"name">> => string(),
 %%   <<"owner">> => s3_bucket_owner(),
 %%   <<"publicAccess">> => bucket_public_access(),
-%%   <<"tags">> => list(key_value_pair()())
+%%   <<"tags">> => list(key_value_pair())
 %% }
 -type s3_bucket() :: #{binary() => any()}.
 
@@ -1404,14 +1404,14 @@
 %% Example:
 %% update_resource_profile_detections_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"suppressDataIdentifiers">> => list(suppress_data_identifier()())
+%%   <<"suppressDataIdentifiers">> => list(suppress_data_identifier())
 %% }
 -type update_resource_profile_detections_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_findings_response() :: #{
-%%   <<"findings">> => list(finding()())
+%%   <<"findings">> => list(finding())
 %% }
 -type get_findings_response() :: #{binary() => any()}.
 
@@ -1469,8 +1469,8 @@
 
 %% Example:
 %% list_jobs_filter_criteria() :: #{
-%%   <<"excludes">> => list(list_jobs_filter_term()()),
-%%   <<"includes">> => list(list_jobs_filter_term()())
+%%   <<"excludes">> => list(list_jobs_filter_term()),
+%%   <<"includes">> => list(list_jobs_filter_term())
 %% }
 -type list_jobs_filter_criteria() :: #{binary() => any()}.
 
@@ -1523,7 +1523,7 @@
 
 %% Example:
 %% list_managed_data_identifiers_response() :: #{
-%%   <<"items">> => list(managed_data_identifier_summary()()),
+%%   <<"items">> => list(managed_data_identifier_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_data_identifiers_response() :: #{binary() => any()}.
@@ -1650,7 +1650,7 @@
 
 %% Example:
 %% describe_buckets_response() :: #{
-%%   <<"buckets">> => list(bucket_metadata()()),
+%%   <<"buckets">> => list(bucket_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_buckets_response() :: #{binary() => any()}.
@@ -1701,7 +1701,7 @@
 
 %% Example:
 %% get_finding_statistics_response() :: #{
-%%   <<"countsByGroup">> => list(group_count()())
+%%   <<"countsByGroup">> => list(group_count())
 %% }
 -type get_finding_statistics_response() :: #{binary() => any()}.
 
@@ -1727,7 +1727,7 @@
 
 %% Example:
 %% s3_classification_scope_exclusion_update() :: #{
-%%   <<"bucketNames">> => list(string()()),
+%%   <<"bucketNames">> => list(string()),
 %%   <<"operation">> => list(any())
 %% }
 -type s3_classification_scope_exclusion_update() :: #{binary() => any()}.
@@ -1770,7 +1770,7 @@
 
 %% Example:
 %% decline_invitations_request() :: #{
-%%   <<"accountIds">> := list(string()())
+%%   <<"accountIds">> := list(string())
 %% }
 -type decline_invitations_request() :: #{binary() => any()}.
 
@@ -1778,7 +1778,7 @@
 %% Example:
 %% sensitive_data_item() :: #{
 %%   <<"category">> => list(any()),
-%%   <<"detections">> => list(default_detection()()),
+%%   <<"detections">> => list(default_detection()),
 %%   <<"totalCount">> => float()
 %% }
 -type sensitive_data_item() :: #{binary() => any()}.
@@ -1863,7 +1863,7 @@
 
 %% Example:
 %% delete_invitations_request() :: #{
-%%   <<"accountIds">> := list(string()())
+%%   <<"accountIds">> := list(string())
 %% }
 -type delete_invitations_request() :: #{binary() => any()}.
 
@@ -1923,9 +1923,9 @@
 
 %% Example:
 %% sensitivity_inspection_template_includes() :: #{
-%%   <<"allowListIds">> => list(string()()),
-%%   <<"customDataIdentifierIds">> => list(string()()),
-%%   <<"managedDataIdentifierIds">> => list(string()())
+%%   <<"allowListIds">> => list(string()),
+%%   <<"customDataIdentifierIds">> => list(string()),
+%%   <<"managedDataIdentifierIds">> => list(string())
 %% }
 -type sensitivity_inspection_template_includes() :: #{binary() => any()}.
 
@@ -1951,7 +1951,7 @@
 
 %% Example:
 %% delete_invitations_response() :: #{
-%%   <<"unprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"unprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type delete_invitations_response() :: #{binary() => any()}.
 
@@ -1974,8 +1974,8 @@
 
 %% Example:
 %% batch_get_custom_data_identifiers_response() :: #{
-%%   <<"customDataIdentifiers">> => list(batch_get_custom_data_identifier_summary()()),
-%%   <<"notFoundIdentifierIds">> => list(string()())
+%%   <<"customDataIdentifiers">> => list(batch_get_custom_data_identifier_summary()),
+%%   <<"notFoundIdentifierIds">> => list(string())
 %% }
 -type batch_get_custom_data_identifiers_response() :: #{binary() => any()}.
 
@@ -2080,7 +2080,7 @@
 
 %% Example:
 %% list_members_response() :: #{
-%%   <<"members">> => list(member()()),
+%%   <<"members">> => list(member()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_members_response() :: #{binary() => any()}.
@@ -2130,7 +2130,7 @@
 
 %% Example:
 %% search_resources_criteria_block() :: #{
-%%   <<"and">> => list(search_resources_criteria()())
+%%   <<"and">> => list(search_resources_criteria())
 %% }
 -type search_resources_criteria_block() :: #{binary() => any()}.
 
@@ -2170,7 +2170,7 @@
 %% Example:
 %% s3_job_definition() :: #{
 %%   <<"bucketCriteria">> => s3_bucket_criteria_for_job(),
-%%   <<"bucketDefinitions">> => list(s3_bucket_definition_for_job()()),
+%%   <<"bucketDefinitions">> => list(s3_bucket_definition_for_job()),
 %%   <<"scoping">> => scoping()
 %% }
 -type s3_job_definition() :: #{binary() => any()}.
@@ -2258,7 +2258,7 @@
 %% replication_details() :: #{
 %%   <<"replicated">> => boolean(),
 %%   <<"replicatedExternally">> => boolean(),
-%%   <<"replicationAccounts">> => list(string()())
+%%   <<"replicationAccounts">> => list(string())
 %% }
 -type replication_details() :: #{binary() => any()}.
 
@@ -2278,7 +2278,7 @@
 %% Example:
 %% get_usage_totals_response() :: #{
 %%   <<"timeRange">> => list(any()),
-%%   <<"usageTotals">> => list(usage_total()())
+%%   <<"usageTotals">> => list(usage_total())
 %% }
 -type get_usage_totals_response() :: #{binary() => any()}.
 
@@ -2341,7 +2341,7 @@
 %% search_resources_simple_criterion() :: #{
 %%   <<"comparator">> => list(any()),
 %%   <<"key">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type search_resources_simple_criterion() :: #{binary() => any()}.
 
@@ -2349,7 +2349,7 @@
 %% Example:
 %% tag_criterion_for_job() :: #{
 %%   <<"comparator">> => list(any()),
-%%   <<"tagValues">> => list(tag_criterion_pair_for_job()())
+%%   <<"tagValues">> => list(tag_criterion_pair_for_job())
 %% }
 -type tag_criterion_for_job() :: #{binary() => any()}.
 
@@ -2363,13 +2363,13 @@
 
 %% Example:
 %% criterion_additional_properties() :: #{
-%%   <<"eq">> => list(string()()),
-%%   <<"eqExactMatch">> => list(string()()),
+%%   <<"eq">> => list(string()),
+%%   <<"eqExactMatch">> => list(string()),
 %%   <<"gt">> => float(),
 %%   <<"gte">> => float(),
 %%   <<"lt">> => float(),
 %%   <<"lte">> => float(),
-%%   <<"neq">> => list(string()())
+%%   <<"neq">> => list(string())
 %% }
 -type criterion_additional_properties() :: #{binary() => any()}.
 
@@ -2411,14 +2411,14 @@
 
 %% Example:
 %% batch_update_automated_discovery_accounts_response() :: #{
-%%   <<"errors">> => list(automated_discovery_account_update_error()())
+%%   <<"errors">> => list(automated_discovery_account_update_error())
 %% }
 -type batch_update_automated_discovery_accounts_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_classification_scopes_response() :: #{
-%%   <<"classificationScopes">> => list(classification_scope_summary()()),
+%%   <<"classificationScopes">> => list(classification_scope_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_classification_scopes_response() :: #{binary() => any()}.
@@ -2443,7 +2443,7 @@
 
 %% Example:
 %% create_invitations_response() :: #{
-%%   <<"unprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"unprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type create_invitations_response() :: #{binary() => any()}.
 
@@ -2493,7 +2493,7 @@
 
 %% Example:
 %% list_organization_admin_accounts_response() :: #{
-%%   <<"adminAccounts">> => list(admin_account()()),
+%%   <<"adminAccounts">> => list(admin_account()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_organization_admin_accounts_response() :: #{binary() => any()}.
@@ -2501,7 +2501,7 @@
 
 %% Example:
 %% list_allow_lists_response() :: #{
-%%   <<"allowLists">> => list(allow_list_summary()()),
+%%   <<"allowLists">> => list(allow_list_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_allow_lists_response() :: #{binary() => any()}.
@@ -2540,12 +2540,12 @@
 %%   <<"deleted">> => boolean(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
-%%   <<"ignoreWords">> => list(string()()),
-%%   <<"keywords">> => list(string()()),
+%%   <<"ignoreWords">> => list(string()),
+%%   <<"keywords">> => list(string()),
 %%   <<"maximumMatchDistance">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"regex">> => string(),
-%%   <<"severityLevels">> => list(severity_level()()),
+%%   <<"severityLevels">> => list(severity_level()),
 %%   <<"tags">> => map()
 %% }
 -type get_custom_data_identifier_response() :: #{binary() => any()}.
@@ -2554,14 +2554,14 @@
 %% Example:
 %% list_sensitivity_inspection_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sensitivityInspectionTemplates">> => list(sensitivity_inspection_templates_entry()())
+%%   <<"sensitivityInspectionTemplates">> => list(sensitivity_inspection_templates_entry())
 %% }
 -type list_sensitivity_inspection_templates_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% custom_data_identifiers() :: #{
-%%   <<"detections">> => list(custom_detection()()),
+%%   <<"detections">> => list(custom_detection()),
 %%   <<"totalCount">> => float()
 %% }
 -type custom_data_identifiers() :: #{binary() => any()}.
@@ -2584,7 +2584,7 @@
 %%   <<"accountId">> => string(),
 %%   <<"automatedDiscoveryFreeTrialStartDate">> => non_neg_integer(),
 %%   <<"freeTrialStartDate">> => non_neg_integer(),
-%%   <<"usage">> => list(usage_by_account()())
+%%   <<"usage">> => list(usage_by_account())
 %% }
 -type usage_record() :: #{binary() => any()}.
 
@@ -2602,7 +2602,7 @@
 
 %% Example:
 %% job_scoping_block() :: #{
-%%   <<"and">> => list(job_scope_term()())
+%%   <<"and">> => list(job_scope_term())
 %% }
 -type job_scoping_block() :: #{binary() => any()}.
 
@@ -2653,13 +2653,13 @@
 
 %% Example:
 %% create_classification_job_request() :: #{
-%%   <<"allowListIds">> => list(string()()),
+%%   <<"allowListIds">> => list(string()),
 %%   <<"clientToken">> := string(),
-%%   <<"customDataIdentifierIds">> => list(string()()),
+%%   <<"customDataIdentifierIds">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"initialRun">> => boolean(),
 %%   <<"jobType">> := list(any()),
-%%   <<"managedDataIdentifierIds">> => list(string()()),
+%%   <<"managedDataIdentifierIds">> => list(string()),
 %%   <<"managedDataIdentifierSelector">> => list(any()),
 %%   <<"name">> := string(),
 %%   <<"s3JobDefinition">> := s3_job_definition(),
@@ -2684,7 +2684,7 @@
 %% simple_criterion_for_job() :: #{
 %%   <<"comparator">> => list(any()),
 %%   <<"key">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type simple_criterion_for_job() :: #{binary() => any()}.
 
@@ -2714,7 +2714,7 @@
 %% Example:
 %% get_usage_statistics_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"records">> => list(usage_record()()),
+%%   <<"records">> => list(usage_record()),
 %%   <<"timeRange">> => list(any())
 %% }
 -type get_usage_statistics_response() :: #{binary() => any()}.
@@ -2722,7 +2722,7 @@
 
 %% Example:
 %% create_invitations_request() :: #{
-%%   <<"accountIds">> := list(string()()),
+%%   <<"accountIds">> := list(string()),
 %%   <<"disableEmailNotification">> => boolean(),
 %%   <<"message">> => string()
 %% }
@@ -2746,7 +2746,7 @@
 
 %% Example:
 %% list_classification_jobs_response() :: #{
-%%   <<"items">> => list(job_summary()()),
+%%   <<"items">> => list(job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_classification_jobs_response() :: #{binary() => any()}.
@@ -2754,7 +2754,7 @@
 
 %% Example:
 %% list_invitations_response() :: #{
-%%   <<"invitations">> => list(invitation()()),
+%%   <<"invitations">> => list(invitation()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_invitations_response() :: #{binary() => any()}.

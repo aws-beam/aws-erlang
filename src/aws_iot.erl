@@ -695,7 +695,7 @@
 
 %% Example:
 %% get_buckets_aggregation_response() :: #{
-%%   <<"buckets">> => list(bucket()()),
+%%   <<"buckets">> => list(bucket()),
 %%   <<"totalCount">> => integer()
 %% }
 -type get_buckets_aggregation_response() :: #{binary() => any()}.
@@ -719,7 +719,7 @@
 %% Example:
 %% list_sbom_validation_results_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"validationResultSummaries">> => list(sbom_validation_result_summary()())
+%%   <<"validationResultSummaries">> => list(sbom_validation_result_summary())
 %% }
 -type list_sbom_validation_results_response() :: #{binary() => any()}.
 
@@ -765,7 +765,7 @@
 %% list_thing_registration_task_reports_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"reportType">> => list(any()),
-%%   <<"resourceLinks">> => list(string()())
+%%   <<"resourceLinks">> => list(string())
 %% }
 -type list_thing_registration_task_reports_response() :: #{binary() => any()}.
 
@@ -783,7 +783,7 @@
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"mandatoryParameters">> => list(command_parameter()()),
+%%   <<"mandatoryParameters">> => list(command_parameter()),
 %%   <<"namespace">> => list(any()),
 %%   <<"payload">> => command_payload(),
 %%   <<"pendingDeletion">> => boolean(),
@@ -824,7 +824,7 @@
 %% Example:
 %% list_provisioning_template_versions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"versions">> => list(provisioning_template_version_summary()())
+%%   <<"versions">> => list(provisioning_template_version_summary())
 %% }
 -type list_provisioning_template_versions_response() :: #{binary() => any()}.
 
@@ -869,7 +869,7 @@
 
 %% Example:
 %% topic_rule() :: #{
-%%   <<"actions">> => list(action()()),
+%%   <<"actions">> => list(action()),
 %%   <<"awsIotSqlVersion">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -955,7 +955,7 @@
 
 %% Example:
 %% list_policy_versions_response() :: #{
-%%   <<"policyVersions">> => list(policy_version()())
+%%   <<"policyVersions">> => list(policy_version())
 %% }
 -type list_policy_versions_response() :: #{binary() => any()}.
 
@@ -963,7 +963,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -1011,8 +1011,8 @@
 
 %% Example:
 %% thing_group_indexing_configuration() :: #{
-%%   <<"customFields">> => list(field()()),
-%%   <<"managedFields">> => list(field()()),
+%%   <<"customFields">> => list(field()),
+%%   <<"managedFields">> => list(field()),
 %%   <<"thingGroupIndexingMode">> => list(any())
 %% }
 -type thing_group_indexing_configuration() :: #{binary() => any()}.
@@ -1069,7 +1069,7 @@
 %% detect_mitigation_actions_task_target() :: #{
 %%   <<"behaviorName">> => string(),
 %%   <<"securityProfileName">> => string(),
-%%   <<"violationIds">> => list(string()())
+%%   <<"violationIds">> => list(string())
 %% }
 -type detect_mitigation_actions_task_target() :: #{binary() => any()}.
 
@@ -1101,7 +1101,7 @@
 %% Example:
 %% list_principal_things_v2_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"principalThingObjects">> => list(principal_thing_object()())
+%%   <<"principalThingObjects">> => list(principal_thing_object())
 %% }
 -type list_principal_things_v2_response() :: #{binary() => any()}.
 
@@ -1130,7 +1130,7 @@
 %%   <<"domainType">> => list(any()),
 %%   <<"lastStatusChangeDate">> => non_neg_integer(),
 %%   <<"serverCertificateConfig">> => server_certificate_config(),
-%%   <<"serverCertificates">> => list(server_certificate_summary()()),
+%%   <<"serverCertificates">> => list(server_certificate_summary()),
 %%   <<"serviceType">> => list(any()),
 %%   <<"tlsConfig">> => tls_config()
 %% }
@@ -1190,7 +1190,7 @@
 %% Example:
 %% list_topic_rules_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"rules">> => list(topic_rule_list_item()())
+%%   <<"rules">> => list(topic_rule_list_item())
 %% }
 -type list_topic_rules_response() :: #{binary() => any()}.
 
@@ -1213,7 +1213,7 @@
 %%   <<"nonCompliantResource">> => non_compliant_resource(),
 %%   <<"reasonForNonCompliance">> => string(),
 %%   <<"reasonForNonComplianceCode">> => string(),
-%%   <<"relatedResources">> => list(related_resource()()),
+%%   <<"relatedResources">> => list(related_resource()),
 %%   <<"severity">> => list(any()),
 %%   <<"taskId">> => string(),
 %%   <<"taskStartTime">> => non_neg_integer()
@@ -1306,7 +1306,7 @@
 
 %% Example:
 %% test_authorization_response() :: #{
-%%   <<"authResults">> => list(auth_result()())
+%%   <<"authResults">> => list(auth_result())
 %% }
 -type test_authorization_response() :: #{binary() => any()}.
 
@@ -1337,7 +1337,7 @@
 
 %% Example:
 %% list_commands_response() :: #{
-%%   <<"commands">> => list(command_summary()()),
+%%   <<"commands">> => list(command_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_commands_response() :: #{binary() => any()}.
@@ -1384,7 +1384,7 @@
 %% Example:
 %% list_policies_response() :: #{
 %%   <<"nextMarker">> => string(),
-%%   <<"policies">> => list(policy()())
+%%   <<"policies">> => list(policy())
 %% }
 -type list_policies_response() :: #{binary() => any()}.
 
@@ -1403,7 +1403,7 @@
 
 %% Example:
 %% get_percentiles_response() :: #{
-%%   <<"percentiles">> => list(percent_pair()())
+%%   <<"percentiles">> => list(percent_pair())
 %% }
 -type get_percentiles_response() :: #{binary() => any()}.
 
@@ -1470,7 +1470,7 @@
 
 %% Example:
 %% list_topic_rule_destinations_response() :: #{
-%%   <<"destinationSummaries">> => list(topic_rule_destination_summary()()),
+%%   <<"destinationSummaries">> => list(topic_rule_destination_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_topic_rule_destinations_response() :: #{binary() => any()}.
@@ -1479,7 +1479,7 @@
 %% Example:
 %% list_detect_mitigation_actions_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(detect_mitigation_actions_task_summary()())
+%%   <<"tasks">> => list(detect_mitigation_actions_task_summary())
 %% }
 -type list_detect_mitigation_actions_tasks_response() :: #{binary() => any()}.
 
@@ -1578,7 +1578,7 @@
 
 %% Example:
 %% mqtt5_configuration() :: #{
-%%   <<"propagatingAttributes">> => list(propagating_attribute()())
+%%   <<"propagatingAttributes">> => list(propagating_attribute())
 %% }
 -type mqtt5_configuration() :: #{binary() => any()}.
 
@@ -1648,10 +1648,10 @@
 
 %% Example:
 %% describe_security_profile_response() :: #{
-%%   <<"additionalMetricsToRetain">> => list(string()()),
-%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()()),
+%%   <<"additionalMetricsToRetain">> => list(string()),
+%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
 %%   <<"alertTargets">> => map(),
-%%   <<"behaviors">> => list(behavior()()),
+%%   <<"behaviors">> => list(behavior()),
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"lastModifiedDate">> => non_neg_integer(),
 %%   <<"metricsExportConfig">> => metrics_export_config(),
@@ -1698,7 +1698,7 @@
 %%   <<"accountDefaultForOperations">> := list(list(any())()),
 %%   <<"clientToken">> => string(),
 %%   <<"lambdaFunctionArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_certificate_provider_request() :: #{binary() => any()}.
 
@@ -1720,7 +1720,7 @@
 
 %% Example:
 %% list_audit_findings_response() :: #{
-%%   <<"findings">> => list(audit_finding()()),
+%%   <<"findings">> => list(audit_finding()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_audit_findings_response() :: #{binary() => any()}.
@@ -1729,17 +1729,17 @@
 %% Example:
 %% list_attached_policies_response() :: #{
 %%   <<"nextMarker">> => string(),
-%%   <<"policies">> => list(policy()())
+%%   <<"policies">> => list(policy())
 %% }
 -type list_attached_policies_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% thing_indexing_configuration() :: #{
-%%   <<"customFields">> => list(field()()),
+%%   <<"customFields">> => list(field()),
 %%   <<"deviceDefenderIndexingMode">> => list(any()),
 %%   <<"filter">> => indexing_filter(),
-%%   <<"managedFields">> => list(field()()),
+%%   <<"managedFields">> => list(field()),
 %%   <<"namedShadowIndexingMode">> => list(any()),
 %%   <<"thingConnectivityIndexingMode">> => list(any()),
 %%   <<"thingIndexingMode">> => list(any())
@@ -1749,10 +1749,10 @@
 
 %% Example:
 %% update_security_profile_request() :: #{
-%%   <<"additionalMetricsToRetain">> => list(string()()),
-%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()()),
+%%   <<"additionalMetricsToRetain">> => list(string()),
+%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
 %%   <<"alertTargets">> => map(),
-%%   <<"behaviors">> => list(behavior()()),
+%%   <<"behaviors">> => list(behavior()),
 %%   <<"deleteAdditionalMetricsToRetain">> => boolean(),
 %%   <<"deleteAlertTargets">> => boolean(),
 %%   <<"deleteBehaviors">> => boolean(),
@@ -1773,7 +1773,7 @@
 %%   <<"period">> := integer(),
 %%   <<"queryString">> := string(),
 %%   <<"queryVersion">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"unit">> => list(any())
 %% }
 -type create_fleet_metric_request() :: #{binary() => any()}.
@@ -1852,14 +1852,14 @@
 %%   <<"entryId">> => string(),
 %%   <<"propertyAlias">> => string(),
 %%   <<"propertyId">> => string(),
-%%   <<"propertyValues">> => list(asset_property_value()())
+%%   <<"propertyValues">> => list(asset_property_value())
 %% }
 -type put_asset_property_value_entry() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_effective_policies_response() :: #{
-%%   <<"effectivePolicies">> => list(effective_policy()())
+%%   <<"effectivePolicies">> => list(effective_policy())
 %% }
 -type get_effective_policies_response() :: #{binary() => any()}.
 
@@ -1876,7 +1876,7 @@
 %% Example:
 %% list_policy_principals_response() :: #{
 %%   <<"nextMarker">> => string(),
-%%   <<"principals">> => list(string()())
+%%   <<"principals">> => list(string())
 %% }
 -type list_policy_principals_response() :: #{binary() => any()}.
 
@@ -1890,7 +1890,7 @@
 
 %% Example:
 %% list_domain_configurations_response() :: #{
-%%   <<"domainConfigurations">> => list(domain_configuration_summary()()),
+%%   <<"domainConfigurations">> => list(domain_configuration_summary()),
 %%   <<"nextMarker">> => string()
 %% }
 -type list_domain_configurations_response() :: #{binary() => any()}.
@@ -1899,7 +1899,7 @@
 %% Example:
 %% create_policy_request() :: #{
 %%   <<"policyDocument">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_policy_request() :: #{binary() => any()}.
 
@@ -1953,7 +1953,7 @@
 
 %% Example:
 %% list_fleet_metrics_response() :: #{
-%%   <<"fleetMetrics">> => list(fleet_metric_name_and_arn()()),
+%%   <<"fleetMetrics">> => list(fleet_metric_name_and_arn()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleet_metrics_response() :: #{binary() => any()}.
@@ -1981,7 +1981,7 @@
 
 %% Example:
 %% list_ca_certificates_response() :: #{
-%%   <<"certificates">> => list(ca_certificate()()),
+%%   <<"certificates">> => list(ca_certificate()),
 %%   <<"nextMarker">> => string()
 %% }
 -type list_ca_certificates_response() :: #{binary() => any()}.
@@ -2038,7 +2038,7 @@
 %% Example:
 %% add_things_to_thing_group_params() :: #{
 %%   <<"overrideDynamicGroups">> => boolean(),
-%%   <<"thingGroupNames">> => list(string()())
+%%   <<"thingGroupNames">> => list(string())
 %% }
 -type add_things_to_thing_group_params() :: #{binary() => any()}.
 
@@ -2054,7 +2054,7 @@
 %% Example:
 %% list_things_in_thing_group_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"things">> => list(string()())
+%%   <<"things">> => list(string())
 %% }
 -type list_things_in_thing_group_response() :: #{binary() => any()}.
 
@@ -2110,7 +2110,7 @@
 
 %% Example:
 %% list_jobs_response() :: #{
-%%   <<"jobs">> => list(job_summary()()),
+%%   <<"jobs">> => list(job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
@@ -2119,7 +2119,7 @@
 %% Example:
 %% list_security_profiles_for_target_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"securityProfileTargetMappings">> => list(security_profile_target_mapping()())
+%%   <<"securityProfileTargetMappings">> => list(security_profile_target_mapping())
 %% }
 -type list_security_profiles_for_target_response() :: #{binary() => any()}.
 
@@ -2128,7 +2128,7 @@
 %% create_job_request() :: #{
 %%   <<"abortConfig">> => abort_config(),
 %%   <<"description">> => string(),
-%%   <<"destinationPackageVersions">> => list(string()()),
+%%   <<"destinationPackageVersions">> => list(string()),
 %%   <<"document">> => string(),
 %%   <<"documentParameters">> => map(),
 %%   <<"documentSource">> => string(),
@@ -2138,9 +2138,9 @@
 %%   <<"namespaceId">> => string(),
 %%   <<"presignedUrlConfig">> => presigned_url_config(),
 %%   <<"schedulingConfig">> => scheduling_config(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"targetSelection">> => list(any()),
-%%   <<"targets">> := list(string()()),
+%%   <<"targets">> := list(string()),
 %%   <<"timeoutConfig">> => timeout_config()
 %% }
 -type create_job_request() :: #{binary() => any()}.
@@ -2173,7 +2173,7 @@
 %%   <<"messageExpiry">> => string(),
 %%   <<"payloadFormatIndicator">> => string(),
 %%   <<"responseTopic">> => string(),
-%%   <<"userProperties">> => list(user_property()())
+%%   <<"userProperties">> => list(user_property())
 %% }
 -type mqtt_headers() :: #{binary() => any()}.
 
@@ -2199,7 +2199,7 @@
 %% Example:
 %% list_provisioning_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templates">> => list(provisioning_template_summary()())
+%%   <<"templates">> => list(provisioning_template_summary())
 %% }
 -type list_provisioning_templates_response() :: #{binary() => any()}.
 
@@ -2237,7 +2237,7 @@
 %% associate_targets_with_job_request() :: #{
 %%   <<"comment">> => string(),
 %%   <<"namespaceId">> => string(),
-%%   <<"targets">> := list(string()())
+%%   <<"targets">> := list(string())
 %% }
 -type associate_targets_with_job_request() :: #{binary() => any()}.
 
@@ -2304,7 +2304,7 @@
 %%   <<"dayOfMonth">> => string(),
 %%   <<"dayOfWeek">> => list(any()),
 %%   <<"frequency">> => list(any()),
-%%   <<"targetCheckNames">> => list(string()())
+%%   <<"targetCheckNames">> => list(string())
 %% }
 -type update_scheduled_audit_request() :: #{binary() => any()}.
 
@@ -2312,7 +2312,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -2357,7 +2357,7 @@
 %% Example:
 %% timestream_action() :: #{
 %%   <<"databaseName">> => string(),
-%%   <<"dimensions">> => list(timestream_dimension()()),
+%%   <<"dimensions">> => list(timestream_dimension()),
 %%   <<"roleArn">> => string(),
 %%   <<"tableName">> => string(),
 %%   <<"timestamp">> => timestream_timestamp()
@@ -2397,7 +2397,7 @@
 %%   <<"enableCachingForHttp">> => boolean(),
 %%   <<"signingDisabled">> => boolean(),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"tokenKeyName">> => string(),
 %%   <<"tokenSigningPublicKeys">> => map()
 %% }
@@ -2456,12 +2456,12 @@
 %%   <<"awsJobPresignedUrlConfig">> => aws_job_presigned_url_config(),
 %%   <<"awsJobTimeoutConfig">> => aws_job_timeout_config(),
 %%   <<"description">> => string(),
-%%   <<"files">> := list(ota_update_file()()),
+%%   <<"files">> := list(ota_update_file()),
 %%   <<"protocols">> => list(list(any())()),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"targetSelection">> => list(any()),
-%%   <<"targets">> := list(string()())
+%%   <<"targets">> := list(string())
 %% }
 -type create_ota_update_request() :: #{binary() => any()}.
 
@@ -2478,7 +2478,7 @@
 %% create_role_alias_request() :: #{
 %%   <<"credentialDurationSeconds">> => integer(),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_role_alias_request() :: #{binary() => any()}.
 
@@ -2589,7 +2589,7 @@
 %% Example:
 %% create_billing_group_request() :: #{
 %%   <<"billingGroupProperties">> => billing_group_properties(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_billing_group_request() :: #{binary() => any()}.
 
@@ -2666,7 +2666,7 @@
 
 %% Example:
 %% start_detect_mitigation_actions_task_request() :: #{
-%%   <<"actions">> := list(string()()),
+%%   <<"actions">> := list(string()),
 %%   <<"clientRequestToken">> := string(),
 %%   <<"includeOnlyActiveViolations">> => boolean(),
 %%   <<"includeSuppressedAlerts">> => boolean(),
@@ -2710,7 +2710,7 @@
 %% get_percentiles_request() :: #{
 %%   <<"aggregationField">> => string(),
 %%   <<"indexName">> => string(),
-%%   <<"percents">> => list(float()()),
+%%   <<"percents">> => list(float()),
 %%   <<"queryString">> := string(),
 %%   <<"queryVersion">> => string()
 %% }
@@ -2773,7 +2773,7 @@
 %%   <<"numberOfRemovedThings">> => integer(),
 %%   <<"numberOfSucceededThings">> => integer(),
 %%   <<"numberOfTimedOutThings">> => integer(),
-%%   <<"processingTargets">> => list(string()())
+%%   <<"processingTargets">> => list(string())
 %% }
 -type job_process_details() :: #{binary() => any()}.
 
@@ -2805,8 +2805,8 @@
 
 %% Example:
 %% indexing_filter() :: #{
-%%   <<"geoLocations">> => list(geo_location_target()()),
-%%   <<"namedShadowNames">> => list(string()())
+%%   <<"geoLocations">> => list(geo_location_target()),
+%%   <<"namedShadowNames">> => list(string())
 %% }
 -type indexing_filter() :: #{binary() => any()}.
 
@@ -2850,9 +2850,9 @@
 %% Example:
 %% create_stream_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"files">> := list(stream_file()()),
+%%   <<"files">> := list(stream_file()),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_stream_request() :: #{binary() => any()}.
 
@@ -2871,7 +2871,7 @@
 
 %% Example:
 %% list_v2_logging_levels_response() :: #{
-%%   <<"logTargetConfigurations">> => list(log_target_configuration()()),
+%%   <<"logTargetConfigurations">> => list(log_target_configuration()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_v2_logging_levels_response() :: #{binary() => any()}.
@@ -2909,8 +2909,8 @@
 %%   <<"dayOfMonth">> => string(),
 %%   <<"dayOfWeek">> => list(any()),
 %%   <<"frequency">> := list(any()),
-%%   <<"tags">> => list(tag()()),
-%%   <<"targetCheckNames">> := list(string()())
+%%   <<"tags">> => list(tag()),
+%%   <<"targetCheckNames">> := list(string())
 %% }
 -type create_scheduled_audit_request() :: #{binary() => any()}.
 
@@ -2949,7 +2949,7 @@
 
 %% Example:
 %% list_active_violations_response() :: #{
-%%   <<"activeViolations">> => list(active_violation()()),
+%%   <<"activeViolations">> => list(active_violation()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_active_violations_response() :: #{binary() => any()}.
@@ -2971,11 +2971,11 @@
 %% create_command_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"mandatoryParameters">> => list(command_parameter()()),
+%%   <<"mandatoryParameters">> => list(command_parameter()),
 %%   <<"namespace">> => list(any()),
 %%   <<"payload">> => command_payload(),
 %%   <<"roleArn">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_command_request() :: #{binary() => any()}.
 
@@ -2998,7 +2998,7 @@
 %% Example:
 %% list_targets_for_policy_response() :: #{
 %%   <<"nextMarker">> => string(),
-%%   <<"targets">> => list(string()())
+%%   <<"targets">> => list(string())
 %% }
 -type list_targets_for_policy_response() :: #{binary() => any()}.
 
@@ -3117,13 +3117,13 @@
 
 %% Example:
 %% create_security_profile_request() :: #{
-%%   <<"additionalMetricsToRetain">> => list(string()()),
-%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()()),
+%%   <<"additionalMetricsToRetain">> => list(string()),
+%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
 %%   <<"alertTargets">> => map(),
-%%   <<"behaviors">> => list(behavior()()),
+%%   <<"behaviors">> => list(behavior()),
 %%   <<"metricsExportConfig">> => metrics_export_config(),
 %%   <<"securityProfileDescription">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_security_profile_request() :: #{binary() => any()}.
 
@@ -3156,7 +3156,7 @@
 %% Example:
 %% list_things_in_billing_group_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"things">> => list(string()())
+%%   <<"things">> => list(string())
 %% }
 -type list_things_in_billing_group_response() :: #{binary() => any()}.
 
@@ -3376,7 +3376,7 @@
 %% Example:
 %% create_thing_group_request() :: #{
 %%   <<"parentGroupName">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"thingGroupProperties">> => thing_group_properties()
 %% }
 -type create_thing_group_request() :: #{binary() => any()}.
@@ -3385,7 +3385,7 @@
 %% Example:
 %% list_scheduled_audits_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"scheduledAudits">> => list(scheduled_audit_metadata()())
+%%   <<"scheduledAudits">> => list(scheduled_audit_metadata())
 %% }
 -type list_scheduled_audits_response() :: #{binary() => any()}.
 
@@ -3405,7 +3405,7 @@
 %% Example:
 %% list_thing_types_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"thingTypes">> => list(thing_type_definition()())
+%%   <<"thingTypes">> => list(thing_type_definition())
 %% }
 -type list_thing_types_response() :: #{binary() => any()}.
 
@@ -3413,7 +3413,7 @@
 %% Example:
 %% list_security_profiles_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"securityProfileIdentifiers">> => list(security_profile_identifier()())
+%%   <<"securityProfileIdentifiers">> => list(security_profile_identifier())
 %% }
 -type list_security_profiles_response() :: #{binary() => any()}.
 
@@ -3421,7 +3421,7 @@
 %% Example:
 %% list_streams_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"streams">> => list(stream_summary()())
+%%   <<"streams">> => list(stream_summary())
 %% }
 -type list_streams_response() :: #{binary() => any()}.
 
@@ -3433,7 +3433,7 @@
 %%   <<"certificateMode">> => list(any()),
 %%   <<"registrationConfig">> => registration_config(),
 %%   <<"setAsActive">> => boolean(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"verificationCertificate">> => string()
 %% }
 -type register_ca_certificate_request() :: #{binary() => any()}.
@@ -3532,7 +3532,7 @@
 %% Example:
 %% list_principal_things_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"things">> => list(string()())
+%%   <<"things">> => list(string())
 %% }
 -type list_principal_things_response() :: #{binary() => any()}.
 
@@ -3589,7 +3589,7 @@
 
 %% Example:
 %% abort_config() :: #{
-%%   <<"criteriaList">> => list(abort_criteria()())
+%%   <<"criteriaList">> => list(abort_criteria())
 %% }
 -type abort_config() :: #{binary() => any()}.
 
@@ -3604,7 +3604,7 @@
 
 %% Example:
 %% list_metric_values_response() :: #{
-%%   <<"metricDatumList">> => list(metric_datum()()),
+%%   <<"metricDatumList">> => list(metric_datum()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_metric_values_response() :: #{binary() => any()}.
@@ -3634,14 +3634,14 @@
 
 %% Example:
 %% allowed() :: #{
-%%   <<"policies">> => list(policy()())
+%%   <<"policies">> => list(policy())
 %% }
 -type allowed() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_dimension_request() :: #{
-%%   <<"stringValues">> := list(string()())
+%%   <<"stringValues">> := list(string())
 %% }
 -type update_dimension_request() :: #{binary() => any()}.
 
@@ -3720,7 +3720,7 @@
 
 %% Example:
 %% list_job_executions_for_job_response() :: #{
-%%   <<"executionSummaries">> => list(job_execution_summary_for_job()()),
+%%   <<"executionSummaries">> => list(job_execution_summary_for_job()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_executions_for_job_response() :: #{binary() => any()}.
@@ -3753,7 +3753,7 @@
 
 %% Example:
 %% list_certificate_providers_response() :: #{
-%%   <<"certificateProviders">> => list(certificate_provider_summary()()),
+%%   <<"certificateProviders">> => list(certificate_provider_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_certificate_providers_response() :: #{binary() => any()}.
@@ -3820,7 +3820,7 @@
 
 %% Example:
 %% aws_job_abort_config() :: #{
-%%   <<"abortCriteriaList">> => list(aws_job_abort_criteria()())
+%%   <<"abortCriteriaList">> => list(aws_job_abort_criteria())
 %% }
 -type aws_job_abort_config() :: #{binary() => any()}.
 
@@ -3835,7 +3835,7 @@
 %% Example:
 %% managed_job_template_summary() :: #{
 %%   <<"description">> => string(),
-%%   <<"environments">> => list(string()()),
+%%   <<"environments">> => list(string()),
 %%   <<"templateArn">> => string(),
 %%   <<"templateName">> => string(),
 %%   <<"templateVersion">> => string()
@@ -3877,7 +3877,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -3891,7 +3891,7 @@
 %%   <<"indexName">> => string(),
 %%   <<"queryString">> := string(),
 %%   <<"queryVersion">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"thingGroupProperties">> => thing_group_properties()
 %% }
 -type create_dynamic_thing_group_request() :: #{binary() => any()}.
@@ -3929,7 +3929,7 @@
 %% Example:
 %% auth_info() :: #{
 %%   <<"actionType">> => list(any()),
-%%   <<"resources">> => list(string()())
+%%   <<"resources">> => list(string())
 %% }
 -type auth_info() :: #{binary() => any()}.
 
@@ -3943,14 +3943,14 @@
 %%   <<"abortConfig">> => abort_config(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"destinationPackageVersions">> => list(string()()),
+%%   <<"destinationPackageVersions">> => list(string()),
 %%   <<"document">> => string(),
 %%   <<"documentSource">> => string(),
 %%   <<"jobExecutionsRetryConfig">> => job_executions_retry_config(),
 %%   <<"jobExecutionsRolloutConfig">> => job_executions_rollout_config(),
 %%   <<"jobTemplateArn">> => string(),
 %%   <<"jobTemplateId">> => string(),
-%%   <<"maintenanceWindows">> => list(maintenance_window()()),
+%%   <<"maintenanceWindows">> => list(maintenance_window()),
 %%   <<"presignedUrlConfig">> => presigned_url_config(),
 %%   <<"timeoutConfig">> => timeout_config()
 %% }
@@ -4060,7 +4060,7 @@
 %% Example:
 %% list_audit_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(audit_task_metadata()())
+%%   <<"tasks">> => list(audit_task_metadata())
 %% }
 -type list_audit_tasks_response() :: #{binary() => any()}.
 
@@ -4140,7 +4140,7 @@
 
 %% Example:
 %% list_indices_response() :: #{
-%%   <<"indexNames">> => list(string()()),
+%%   <<"indexNames">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_indices_response() :: #{binary() => any()}.
@@ -4178,7 +4178,7 @@
 
 %% Example:
 %% job_executions_retry_config() :: #{
-%%   <<"criteriaList">> => list(retry_criteria()())
+%%   <<"criteriaList">> => list(retry_criteria())
 %% }
 -type job_executions_retry_config() :: #{binary() => any()}.
 
@@ -4187,7 +4187,7 @@
 %% kafka_action() :: #{
 %%   <<"clientProperties">> => map(),
 %%   <<"destinationArn">> => string(),
-%%   <<"headers">> => list(kafka_action_header()()),
+%%   <<"headers">> => list(kafka_action_header()),
 %%   <<"key">> => string(),
 %%   <<"partition">> => string(),
 %%   <<"topic">> => string()
@@ -4306,7 +4306,7 @@
 %% Example:
 %% update_stream_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"files">> => list(stream_file()()),
+%%   <<"files">> => list(stream_file()),
 %%   <<"roleArn">> => string()
 %% }
 -type update_stream_request() :: #{binary() => any()}.
@@ -4394,7 +4394,7 @@
 %% create_mitigation_action_request() :: #{
 %%   <<"actionParams">> := mitigation_action_params(),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_mitigation_action_request() :: #{binary() => any()}.
 
@@ -4438,8 +4438,8 @@
 %% Example:
 %% search_index_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"thingGroups">> => list(thing_group_document()()),
-%%   <<"things">> => list(thing_document()())
+%%   <<"thingGroups">> => list(thing_group_document()),
+%%   <<"things">> => list(thing_document())
 %% }
 -type search_index_response() :: #{binary() => any()}.
 
@@ -4506,7 +4506,7 @@
 %% thing_group_metadata() :: #{
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"parentGroupName">> => string(),
-%%   <<"rootToParentThingGroups">> => list(group_name_and_arn()())
+%%   <<"rootToParentThingGroups">> => list(group_name_and_arn())
 %% }
 -type thing_group_metadata() :: #{binary() => any()}.
 
@@ -4555,7 +4555,7 @@
 %% Example:
 %% list_ota_updates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"otaUpdates">> => list(ota_update_summary()())
+%%   <<"otaUpdates">> => list(ota_update_summary())
 %% }
 -type list_ota_updates_response() :: #{binary() => any()}.
 
@@ -4719,7 +4719,7 @@
 %% Example:
 %% list_things_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"things">> => list(thing_attribute()())
+%%   <<"things">> => list(thing_attribute())
 %% }
 -type list_things_response() :: #{binary() => any()}.
 
@@ -4768,7 +4768,7 @@
 %%   <<"clientRequestToken">> := string(),
 %%   <<"displayName">> => string(),
 %%   <<"metricType">> := list(any()),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_custom_metric_request() :: #{binary() => any()}.
 
@@ -4783,7 +4783,7 @@
 %% Example:
 %% list_thing_groups_for_thing_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"thingGroups">> => list(group_name_and_arn()())
+%%   <<"thingGroups">> => list(group_name_and_arn())
 %% }
 -type list_thing_groups_for_thing_response() :: #{binary() => any()}.
 
@@ -4851,7 +4851,7 @@
 %% Example:
 %% list_violation_events_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"violationEvents">> => list(violation_event()())
+%%   <<"violationEvents">> => list(violation_event())
 %% }
 -type list_violation_events_response() :: #{binary() => any()}.
 
@@ -4887,7 +4887,7 @@
 
 %% Example:
 %% list_authorizers_response() :: #{
-%%   <<"authorizers">> => list(authorizer_summary()()),
+%%   <<"authorizers">> => list(authorizer_summary()),
 %%   <<"nextMarker">> => string()
 %% }
 -type list_authorizers_response() :: #{binary() => any()}.
@@ -4904,7 +4904,7 @@
 
 %% Example:
 %% list_job_executions_for_thing_response() :: #{
-%%   <<"executionSummaries">> => list(job_execution_summary_for_thing()()),
+%%   <<"executionSummaries">> => list(job_execution_summary_for_thing()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_executions_for_thing_response() :: #{binary() => any()}.
@@ -4943,7 +4943,7 @@
 
 %% Example:
 %% detect_mitigation_actions_task_summary() :: #{
-%%   <<"actionsDefinition">> => list(mitigation_action()()),
+%%   <<"actionsDefinition">> => list(mitigation_action()),
 %%   <<"onlyActiveViolationsIncluded">> => boolean(),
 %%   <<"suppressedAlertsIncluded">> => boolean(),
 %%   <<"target">> => detect_mitigation_actions_task_target(),
@@ -4981,7 +4981,7 @@
 %% Example:
 %% list_thing_registration_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"taskIds">> => list(string()())
+%%   <<"taskIds">> => list(string())
 %% }
 -type list_thing_registration_tasks_response() :: #{binary() => any()}.
 
@@ -4996,7 +4996,7 @@
 %% Example:
 %% thing_group_document() :: #{
 %%   <<"attributes">> => map(),
-%%   <<"parentGroupNames">> => list(string()()),
+%%   <<"parentGroupNames">> => list(string()),
 %%   <<"thingGroupDescription">> => string(),
 %%   <<"thingGroupId">> => string(),
 %%   <<"thingGroupName">> => string()
@@ -5008,15 +5008,15 @@
 %% create_job_template_request() :: #{
 %%   <<"abortConfig">> => abort_config(),
 %%   <<"description">> := string(),
-%%   <<"destinationPackageVersions">> => list(string()()),
+%%   <<"destinationPackageVersions">> => list(string()),
 %%   <<"document">> => string(),
 %%   <<"documentSource">> => string(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobExecutionsRetryConfig">> => job_executions_retry_config(),
 %%   <<"jobExecutionsRolloutConfig">> => job_executions_rollout_config(),
-%%   <<"maintenanceWindows">> => list(maintenance_window()()),
+%%   <<"maintenanceWindows">> => list(maintenance_window()),
 %%   <<"presignedUrlConfig">> => presigned_url_config(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"timeoutConfig">> => timeout_config()
 %% }
 -type create_job_template_request() :: #{binary() => any()}.
@@ -5076,7 +5076,7 @@
 %%   <<"connectivity">> => thing_connectivity(),
 %%   <<"deviceDefender">> => string(),
 %%   <<"shadow">> => string(),
-%%   <<"thingGroupNames">> => list(string()()),
+%%   <<"thingGroupNames">> => list(string()),
 %%   <<"thingId">> => string(),
 %%   <<"thingName">> => string(),
 %%   <<"thingTypeName">> => string()
@@ -5105,7 +5105,7 @@
 %% Example:
 %% list_related_resources_for_audit_finding_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"relatedResources">> => list(related_resource()())
+%%   <<"relatedResources">> => list(related_resource())
 %% }
 -type list_related_resources_for_audit_finding_response() :: #{binary() => any()}.
 
@@ -5251,7 +5251,7 @@
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"lastModifiedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"stringValues">> => list(string()()),
+%%   <<"stringValues">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type update_dimension_response() :: #{binary() => any()}.
@@ -5260,7 +5260,7 @@
 %% Example:
 %% list_audit_mitigation_actions_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(audit_mitigation_actions_task_metadata()())
+%%   <<"tasks">> => list(audit_mitigation_actions_task_metadata())
 %% }
 -type list_audit_mitigation_actions_tasks_response() :: #{binary() => any()}.
 
@@ -5293,8 +5293,8 @@
 %% Example:
 %% update_thing_groups_for_thing_request() :: #{
 %%   <<"overrideDynamicGroups">> => boolean(),
-%%   <<"thingGroupsToAdd">> => list(string()()),
-%%   <<"thingGroupsToRemove">> => list(string()()),
+%%   <<"thingGroupsToAdd">> => list(string()),
+%%   <<"thingGroupsToRemove">> => list(string()),
 %%   <<"thingName">> => string()
 %% }
 -type update_thing_groups_for_thing_request() :: #{binary() => any()}.
@@ -5303,7 +5303,7 @@
 %% Example:
 %% list_thing_groups_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"thingGroups">> => list(group_name_and_arn()())
+%%   <<"thingGroups">> => list(group_name_and_arn())
 %% }
 -type list_thing_groups_response() :: #{binary() => any()}.
 
@@ -5333,7 +5333,7 @@
 %% Example:
 %% list_principal_policies_response() :: #{
 %%   <<"nextMarker">> => string(),
-%%   <<"policies">> => list(policy()())
+%%   <<"policies">> => list(policy())
 %% }
 -type list_principal_policies_response() :: #{binary() => any()}.
 
@@ -5398,7 +5398,7 @@
 
 %% Example:
 %% list_dimensions_response() :: #{
-%%   <<"dimensionNames">> => list(string()()),
+%%   <<"dimensionNames">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dimensions_response() :: #{binary() => any()}.
@@ -5442,7 +5442,7 @@
 
 %% Example:
 %% describe_audit_mitigation_actions_task_response() :: #{
-%%   <<"actionsDefinition">> => list(mitigation_action()()),
+%%   <<"actionsDefinition">> => list(mitigation_action()),
 %%   <<"auditCheckToActionsMapping">> => map(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"startTime">> => non_neg_integer(),
@@ -5487,12 +5487,12 @@
 
 %% Example:
 %% metric_value() :: #{
-%%   <<"cidrs">> => list(string()()),
+%%   <<"cidrs">> => list(string()),
 %%   <<"count">> => float(),
 %%   <<"number">> => float(),
-%%   <<"numbers">> => list(float()()),
-%%   <<"ports">> => list(integer()()),
-%%   <<"strings">> => list(string()())
+%%   <<"numbers">> => list(float()),
+%%   <<"ports">> => list(integer()),
+%%   <<"strings">> => list(string())
 %% }
 -type metric_value() :: #{binary() => any()}.
 
@@ -5501,7 +5501,7 @@
 %% http_action() :: #{
 %%   <<"auth">> => http_authorization(),
 %%   <<"confirmationUrl">> => string(),
-%%   <<"headers">> => list(http_action_header()()),
+%%   <<"headers">> => list(http_action_header()),
 %%   <<"url">> => string()
 %% }
 -type http_action() :: #{binary() => any()}.
@@ -5529,7 +5529,7 @@
 %% Example:
 %% validate_security_profile_behaviors_response() :: #{
 %%   <<"valid">> => boolean(),
-%%   <<"validationErrors">> => list(validation_error()())
+%%   <<"validationErrors">> => list(validation_error())
 %% }
 -type validate_security_profile_behaviors_response() :: #{binary() => any()}.
 
@@ -5610,14 +5610,14 @@
 %% Example:
 %% list_thing_principals_v2_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"thingPrincipalObjects">> => list(thing_principal_object()())
+%%   <<"thingPrincipalObjects">> => list(thing_principal_object())
 %% }
 -type list_thing_principals_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_audit_mitigation_actions_executions_response() :: #{
-%%   <<"actionsExecutions">> => list(audit_mitigation_action_execution_metadata()()),
+%%   <<"actionsExecutions">> => list(audit_mitigation_action_execution_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_audit_mitigation_actions_executions_response() :: #{binary() => any()}.
@@ -5630,7 +5630,7 @@
 %%   <<"completedAt">> => non_neg_integer(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"destinationPackageVersions">> => list(string()()),
+%%   <<"destinationPackageVersions">> => list(string()),
 %%   <<"documentParameters">> => map(),
 %%   <<"forceCanceled">> => boolean(),
 %%   <<"isConcurrent">> => boolean(),
@@ -5644,11 +5644,11 @@
 %%   <<"namespaceId">> => string(),
 %%   <<"presignedUrlConfig">> => presigned_url_config(),
 %%   <<"reasonCode">> => string(),
-%%   <<"scheduledJobRollouts">> => list(scheduled_job_rollout()()),
+%%   <<"scheduledJobRollouts">> => list(scheduled_job_rollout()),
 %%   <<"schedulingConfig">> => scheduling_config(),
 %%   <<"status">> => list(any()),
 %%   <<"targetSelection">> => list(any()),
-%%   <<"targets">> => list(string()()),
+%%   <<"targets">> => list(string()),
 %%   <<"timeoutConfig">> => timeout_config()
 %% }
 -type job() :: #{binary() => any()}.
@@ -5706,7 +5706,7 @@
 %% Example:
 %% list_thing_principals_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"principals">> => list(string()())
+%%   <<"principals">> => list(string())
 %% }
 -type list_thing_principals_response() :: #{binary() => any()}.
 
@@ -5819,12 +5819,12 @@
 %%   <<"errorInfo">> => error_info(),
 %%   <<"lastModifiedDate">> => non_neg_integer(),
 %%   <<"otaUpdateArn">> => string(),
-%%   <<"otaUpdateFiles">> => list(ota_update_file()()),
+%%   <<"otaUpdateFiles">> => list(ota_update_file()),
 %%   <<"otaUpdateId">> => string(),
 %%   <<"otaUpdateStatus">> => list(any()),
 %%   <<"protocols">> => list(list(any())()),
 %%   <<"targetSelection">> => list(any()),
-%%   <<"targets">> => list(string()())
+%%   <<"targets">> => list(string())
 %% }
 -type ota_update_info() :: #{binary() => any()}.
 
@@ -5832,7 +5832,7 @@
 %% Example:
 %% get_behavior_model_training_summaries_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(behavior_model_training_summary()())
+%%   <<"summaries">> => list(behavior_model_training_summary())
 %% }
 -type get_behavior_model_training_summaries_response() :: #{binary() => any()}.
 
@@ -5872,7 +5872,7 @@
 %% scheduling_config() :: #{
 %%   <<"endBehavior">> => list(any()),
 %%   <<"endTime">> => string(),
-%%   <<"maintenanceWindows">> => list(maintenance_window()()),
+%%   <<"maintenanceWindows">> => list(maintenance_window()),
 %%   <<"startTime">> => string()
 %% }
 -type scheduling_config() :: #{binary() => any()}.
@@ -5915,7 +5915,7 @@
 %%   <<"enabled">> => boolean(),
 %%   <<"preProvisioningHook">> => provisioning_hook(),
 %%   <<"provisioningRoleArn">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"templateBody">> := string(),
 %%   <<"templateName">> := string(),
 %%   <<"type">> => list(any())
@@ -5955,7 +5955,7 @@
 
 %% Example:
 %% validate_security_profile_behaviors_request() :: #{
-%%   <<"behaviors">> := list(behavior()())
+%%   <<"behaviors">> := list(behavior())
 %% }
 -type validate_security_profile_behaviors_request() :: #{binary() => any()}.
 
@@ -5989,7 +5989,7 @@
 %% Example:
 %% list_role_aliases_response() :: #{
 %%   <<"nextMarker">> => string(),
-%%   <<"roleAliases">> => list(string()())
+%%   <<"roleAliases">> => list(string())
 %% }
 -type list_role_aliases_response() :: #{binary() => any()}.
 
@@ -6007,7 +6007,7 @@
 %% Example:
 %% list_audit_suppressions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"suppressions">> => list(audit_suppression()())
+%%   <<"suppressions">> => list(audit_suppression())
 %% }
 -type list_audit_suppressions_response() :: #{binary() => any()}.
 
@@ -6047,7 +6047,7 @@
 
 %% Example:
 %% implicit_deny() :: #{
-%%   <<"policies">> => list(policy()())
+%%   <<"policies">> => list(policy())
 %% }
 -type implicit_deny() :: #{binary() => any()}.
 
@@ -6059,8 +6059,8 @@
 %% Example:
 %% vpc_destination_summary() :: #{
 %%   <<"roleArn">> => string(),
-%%   <<"securityGroups">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_destination_summary() :: #{binary() => any()}.
@@ -6089,7 +6089,7 @@
 
 %% Example:
 %% iot_site_wise_action() :: #{
-%%   <<"putAssetPropertyValueEntries">> => list(put_asset_property_value_entry()()),
+%%   <<"putAssetPropertyValueEntries">> => list(put_asset_property_value_entry()),
 %%   <<"roleArn">> => string()
 %% }
 -type iot_site_wise_action() :: #{binary() => any()}.
@@ -6109,7 +6109,7 @@
 %%   <<"frequency">> => list(any()),
 %%   <<"scheduledAuditArn">> => string(),
 %%   <<"scheduledAuditName">> => string(),
-%%   <<"targetCheckNames">> => list(string()())
+%%   <<"targetCheckNames">> => list(string())
 %% }
 -type describe_scheduled_audit_response() :: #{binary() => any()}.
 
@@ -6120,7 +6120,7 @@
 
 %% Example:
 %% list_billing_groups_response() :: #{
-%%   <<"billingGroups">> => list(group_name_and_arn()()),
+%%   <<"billingGroups">> => list(group_name_and_arn()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_billing_groups_response() :: #{binary() => any()}.
@@ -6172,7 +6172,7 @@
 
 %% Example:
 %% list_command_executions_response() :: #{
-%%   <<"commandExecutions">> => list(command_execution_summary()()),
+%%   <<"commandExecutions">> => list(command_execution_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_command_executions_response() :: #{binary() => any()}.
@@ -6186,7 +6186,7 @@
 %% test_invoke_authorizer_response() :: #{
 %%   <<"disconnectAfterInSeconds">> => integer(),
 %%   <<"isAuthenticated">> => boolean(),
-%%   <<"policyDocuments">> => list(string()()),
+%%   <<"policyDocuments">> => list(string()),
 %%   <<"principalId">> => string(),
 %%   <<"refreshAfterInSeconds">> => integer()
 %% }
@@ -6289,7 +6289,7 @@
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"lastModifiedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"stringValues">> => list(string()()),
+%%   <<"stringValues">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type describe_dimension_response() :: #{binary() => any()}.
@@ -6340,7 +6340,7 @@
 
 %% Example:
 %% list_detect_mitigation_actions_executions_response() :: #{
-%%   <<"actionsExecutions">> => list(detect_mitigation_action_execution()()),
+%%   <<"actionsExecutions">> => list(detect_mitigation_action_execution()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_detect_mitigation_actions_executions_response() :: #{binary() => any()}.
@@ -6348,7 +6348,7 @@
 
 %% Example:
 %% list_job_templates_response() :: #{
-%%   <<"jobTemplates">> => list(job_template_summary()()),
+%%   <<"jobTemplates">> => list(job_template_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_templates_response() :: #{binary() => any()}.
@@ -6381,7 +6381,7 @@
 %% stream_info() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"files">> => list(stream_file()()),
+%%   <<"files">> => list(stream_file()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"roleArn">> => string(),
 %%   <<"streamArn">> => string(),
@@ -6393,7 +6393,7 @@
 
 %% Example:
 %% topic_rule_payload() :: #{
-%%   <<"actions">> => list(action()()),
+%%   <<"actions">> => list(action()),
 %%   <<"awsIotSqlVersion">> => string(),
 %%   <<"description">> => string(),
 %%   <<"errorAction">> => action(),
@@ -6409,7 +6409,7 @@
 
 %% Example:
 %% explicit_deny() :: #{
-%%   <<"policies">> => list(policy()())
+%%   <<"policies">> => list(policy())
 %% }
 -type explicit_deny() :: #{binary() => any()}.
 
@@ -6435,7 +6435,7 @@
 
 %% Example:
 %% list_mitigation_actions_response() :: #{
-%%   <<"actionIdentifiers">> => list(mitigation_action_identifier()()),
+%%   <<"actionIdentifiers">> => list(mitigation_action_identifier()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_mitigation_actions_response() :: #{binary() => any()}.
@@ -6477,14 +6477,14 @@
 %% Example:
 %% list_outgoing_certificates_response() :: #{
 %%   <<"nextMarker">> => string(),
-%%   <<"outgoingCertificates">> => list(outgoing_certificate()())
+%%   <<"outgoingCertificates">> => list(outgoing_certificate())
 %% }
 -type list_outgoing_certificates_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_custom_metrics_response() :: #{
-%%   <<"metricNames">> => list(string()()),
+%%   <<"metricNames">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_metrics_response() :: #{binary() => any()}.
@@ -6493,8 +6493,8 @@
 %% Example:
 %% create_dimension_request() :: #{
 %%   <<"clientRequestToken">> := string(),
-%%   <<"stringValues">> := list(string()()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"stringValues">> := list(string()),
+%%   <<"tags">> => list(tag()),
 %%   <<"type">> := list(any())
 %% }
 -type create_dimension_request() :: #{binary() => any()}.
@@ -6546,7 +6546,7 @@
 %% audit_mitigation_actions_task_target() :: #{
 %%   <<"auditCheckToReasonCodeFilter">> => map(),
 %%   <<"auditTaskId">> => string(),
-%%   <<"findingIds">> => list(string()())
+%%   <<"findingIds">> => list(string())
 %% }
 -type audit_mitigation_actions_task_target() :: #{binary() => any()}.
 
@@ -6583,8 +6583,8 @@
 %% Example:
 %% vpc_destination_configuration() :: #{
 %%   <<"roleArn">> => string(),
-%%   <<"securityGroups">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_destination_configuration() :: #{binary() => any()}.
@@ -6660,10 +6660,10 @@
 %%   <<"authorizerConfig">> => authorizer_config(),
 %%   <<"clientCertificateConfig">> => client_certificate_config(),
 %%   <<"domainName">> => string(),
-%%   <<"serverCertificateArns">> => list(string()()),
+%%   <<"serverCertificateArns">> => list(string()),
 %%   <<"serverCertificateConfig">> => server_certificate_config(),
 %%   <<"serviceType">> => list(any()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"tlsConfig">> => tls_config(),
 %%   <<"validationCertificateArn">> => string()
 %% }
@@ -6676,10 +6676,10 @@
 
 %% Example:
 %% update_security_profile_response() :: #{
-%%   <<"additionalMetricsToRetain">> => list(string()()),
-%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()()),
+%%   <<"additionalMetricsToRetain">> => list(string()),
+%%   <<"additionalMetricsToRetainV2">> => list(metric_to_retain()),
 %%   <<"alertTargets">> => map(),
-%%   <<"behaviors">> => list(behavior()()),
+%%   <<"behaviors">> => list(behavior()),
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"lastModifiedDate">> => non_neg_integer(),
 %%   <<"metricsExportConfig">> => metrics_export_config(),
@@ -6728,7 +6728,7 @@
 
 %% Example:
 %% list_managed_job_templates_response() :: #{
-%%   <<"managedJobTemplates">> => list(managed_job_template_summary()()),
+%%   <<"managedJobTemplates">> => list(managed_job_template_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_job_templates_response() :: #{binary() => any()}.
@@ -6783,7 +6783,7 @@
 
 %% Example:
 %% start_on_demand_audit_task_request() :: #{
-%%   <<"targetCheckNames">> := list(string()())
+%%   <<"targetCheckNames">> := list(string())
 %% }
 -type start_on_demand_audit_task_request() :: #{binary() => any()}.
 
@@ -6810,7 +6810,7 @@
 %% Example:
 %% list_packages_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"packageSummaries">> => list(package_summary()())
+%%   <<"packageSummaries">> => list(package_summary())
 %% }
 -type list_packages_response() :: #{binary() => any()}.
 
@@ -6868,7 +6868,7 @@
 %% Example:
 %% list_targets_for_security_profile_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"securityProfileTargets">> => list(security_profile_target()())
+%%   <<"securityProfileTargets">> => list(security_profile_target())
 %% }
 -type list_targets_for_security_profile_response() :: #{binary() => any()}.
 
@@ -6911,7 +6911,7 @@
 
 %% Example:
 %% list_certificates_by_ca_response() :: #{
-%%   <<"certificates">> => list(certificate()()),
+%%   <<"certificates">> => list(certificate()),
 %%   <<"nextMarker">> => string()
 %% }
 -type list_certificates_by_ca_response() :: #{binary() => any()}.
@@ -6920,7 +6920,7 @@
 %% Example:
 %% thing_type_properties() :: #{
 %%   <<"mqtt5Configuration">> => mqtt5_configuration(),
-%%   <<"searchableAttributes">> => list(string()()),
+%%   <<"searchableAttributes">> => list(string()),
 %%   <<"thingTypeDescription">> => string()
 %% }
 -type thing_type_properties() :: #{binary() => any()}.
@@ -6952,7 +6952,7 @@
 %%   <<"authDecision">> => list(any()),
 %%   <<"authInfo">> => auth_info(),
 %%   <<"denied">> => denied(),
-%%   <<"missingContextValues">> => list(string()())
+%%   <<"missingContextValues">> => list(string())
 %% }
 -type auth_result() :: #{binary() => any()}.
 
@@ -6971,7 +6971,7 @@
 
 %% Example:
 %% list_certificates_response() :: #{
-%%   <<"certificates">> => list(certificate()()),
+%%   <<"certificates">> => list(certificate()),
 %%   <<"nextMarker">> => string()
 %% }
 -type list_certificates_response() :: #{binary() => any()}.
@@ -6989,11 +6989,11 @@
 
 %% Example:
 %% test_authorization_request() :: #{
-%%   <<"authInfos">> := list(auth_info()()),
+%%   <<"authInfos">> := list(auth_info()),
 %%   <<"clientId">> => string(),
 %%   <<"cognitoIdentityPoolId">> => string(),
-%%   <<"policyNamesToAdd">> => list(string()()),
-%%   <<"policyNamesToSkip">> => list(string()()),
+%%   <<"policyNamesToAdd">> => list(string()),
+%%   <<"policyNamesToSkip">> => list(string()),
 %%   <<"principal">> => string()
 %% }
 -type test_authorization_request() :: #{binary() => any()}.
@@ -7021,7 +7021,7 @@
 %% Example:
 %% aggregation_type() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type aggregation_type() :: #{binary() => any()}.
 
@@ -7042,8 +7042,8 @@
 %% describe_managed_job_template_response() :: #{
 %%   <<"description">> => string(),
 %%   <<"document">> => string(),
-%%   <<"documentParameters">> => list(document_parameter()()),
-%%   <<"environments">> => list(string()()),
+%%   <<"documentParameters">> => list(document_parameter()),
+%%   <<"environments">> => list(string()),
 %%   <<"templateArn">> => string(),
 %%   <<"templateName">> => string(),
 %%   <<"templateVersion">> => string()
@@ -7053,7 +7053,7 @@
 
 %% Example:
 %% create_thing_type_request() :: #{
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"thingTypeProperties">> => thing_type_properties()
 %% }
 -type create_thing_type_request() :: #{binary() => any()}.
@@ -7085,7 +7085,7 @@
 %% Example:
 %% list_package_versions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"packageVersionSummaries">> => list(package_version_summary()())
+%%   <<"packageVersionSummaries">> => list(package_version_summary())
 %% }
 -type list_package_versions_response() :: #{binary() => any()}.
 
@@ -7165,8 +7165,8 @@
 %% Example:
 %% vpc_destination_properties() :: #{
 %%   <<"roleArn">> => string(),
-%%   <<"securityGroups">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_destination_properties() :: #{binary() => any()}.

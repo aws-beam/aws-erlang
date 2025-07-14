@@ -118,14 +118,14 @@
 %%   <<"CurrentFirewallSubnetRouteTable">> => string(),
 %%   <<"CurrentInternetGatewayRouteTable">> => string(),
 %%   <<"FirewallSubnetId">> => string(),
-%%   <<"FirewallSubnetRoutes">> => list(route()()),
+%%   <<"FirewallSubnetRoutes">> => list(route()),
 %%   <<"InternetGatewayId">> => string(),
-%%   <<"InternetGatewayRoutes">> => list(route()()),
+%%   <<"InternetGatewayRoutes">> => list(route()),
 %%   <<"RouteTableId">> => string(),
 %%   <<"SubnetAvailabilityZone">> => string(),
 %%   <<"SubnetAvailabilityZoneId">> => string(),
 %%   <<"SubnetId">> => string(),
-%%   <<"ViolatingRoutes">> => list(route()()),
+%%   <<"ViolatingRoutes">> => list(route()),
 %%   <<"VpcId">> => string()
 %% }
 -type route_has_out_of_scope_endpoint_violation() :: #{binary() => any()}.
@@ -153,10 +153,10 @@
 
 %% Example:
 %% network_acl_entry_set() :: #{
-%%   <<"FirstEntries">> => list(network_acl_entry()()),
+%%   <<"FirstEntries">> => list(network_acl_entry()),
 %%   <<"ForceRemediateForFirstEntries">> => boolean(),
 %%   <<"ForceRemediateForLastEntries">> => boolean(),
-%%   <<"LastEntries">> => list(network_acl_entry()())
+%%   <<"LastEntries">> => list(network_acl_entry())
 %% }
 -type network_acl_entry_set() :: #{binary() => any()}.
 
@@ -170,13 +170,13 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagList">> := list(tag()())
+%%   <<"TagList">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_apps_lists_response() :: #{
-%%   <<"AppsLists">> => list(apps_list_data_summary()()),
+%%   <<"AppsLists">> => list(apps_list_data_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_apps_lists_response() :: #{binary() => any()}.
@@ -193,7 +193,7 @@
 
 %% Example:
 %% batch_disassociate_resource_response() :: #{
-%%   <<"FailedItems">> => list(failed_item()()),
+%%   <<"FailedItems">> => list(failed_item()),
 %%   <<"ResourceSetIdentifier">> => string()
 %% }
 -type batch_disassociate_resource_response() :: #{binary() => any()}.
@@ -203,13 +203,13 @@
 %%   <<"ListArn">> => string(),
 %%   <<"ListId">> => string(),
 %%   <<"ListName">> => string(),
-%%   <<"ProtocolsList">> => list(string()())
+%%   <<"ProtocolsList">> => list(string())
 %% }
 -type protocols_list_data_summary() :: #{binary() => any()}.
 
 %% Example:
 %% batch_associate_resource_request() :: #{
-%%   <<"Items">> := list(string()()),
+%%   <<"Items">> := list(string()),
 %%   <<"ResourceSetIdentifier">> := string()
 %% }
 -type batch_associate_resource_request() :: #{binary() => any()}.
@@ -252,7 +252,7 @@
 %% Example:
 %% list_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PolicyList">> => list(policy_summary()())
+%%   <<"PolicyList">> => list(policy_summary())
 %% }
 -type list_policies_response() :: #{binary() => any()}.
 
@@ -279,7 +279,7 @@
 %% Example:
 %% invalid_network_acl_entries_violation() :: #{
 %%   <<"CurrentAssociatedNetworkAcl">> => string(),
-%%   <<"EntryViolations">> => list(entry_violation()()),
+%%   <<"EntryViolations">> => list(entry_violation()),
 %%   <<"Subnet">> => string(),
 %%   <<"SubnetAvailabilityZone">> => string(),
 %%   <<"Vpc">> => string()
@@ -314,7 +314,7 @@
 
 %% Example:
 %% list_member_accounts_response() :: #{
-%%   <<"MemberAccounts">> => list(string()()),
+%%   <<"MemberAccounts">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_member_accounts_response() :: #{binary() => any()}.
@@ -361,7 +361,7 @@
 
 %% Example:
 %% list_resource_set_resources_response() :: #{
-%%   <<"Items">> => list(resource()()),
+%%   <<"Items">> => list(resource()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_resource_set_resources_response() :: #{binary() => any()}.
@@ -370,7 +370,7 @@
 %% network_firewall_unexpected_gateway_routes_violation() :: #{
 %%   <<"GatewayId">> => string(),
 %%   <<"RouteTableId">> => string(),
-%%   <<"ViolatingRoutes">> => list(route()()),
+%%   <<"ViolatingRoutes">> => list(route()),
 %%   <<"VpcId">> => string()
 %% }
 -type network_firewall_unexpected_gateway_routes_violation() :: #{binary() => any()}.
@@ -455,15 +455,15 @@
 %% network_firewall_invalid_route_configuration_violation() :: #{
 %%   <<"ActualFirewallEndpoint">> => string(),
 %%   <<"ActualFirewallSubnetId">> => string(),
-%%   <<"ActualFirewallSubnetRoutes">> => list(route()()),
-%%   <<"ActualInternetGatewayRoutes">> => list(route()()),
-%%   <<"AffectedSubnets">> => list(string()()),
+%%   <<"ActualFirewallSubnetRoutes">> => list(route()),
+%%   <<"ActualInternetGatewayRoutes">> => list(route()),
+%%   <<"AffectedSubnets">> => list(string()),
 %%   <<"CurrentFirewallSubnetRouteTable">> => string(),
 %%   <<"CurrentInternetGatewayRouteTable">> => string(),
 %%   <<"ExpectedFirewallEndpoint">> => string(),
 %%   <<"ExpectedFirewallSubnetId">> => string(),
-%%   <<"ExpectedFirewallSubnetRoutes">> => list(expected_route()()),
-%%   <<"ExpectedInternetGatewayRoutes">> => list(expected_route()()),
+%%   <<"ExpectedFirewallSubnetRoutes">> => list(expected_route()),
+%%   <<"ExpectedInternetGatewayRoutes">> => list(expected_route()),
 %%   <<"InternetGatewayId">> => string(),
 %%   <<"IsRouteTableUsedInDifferentAZ">> => boolean(),
 %%   <<"RouteTableId">> => string(),
@@ -481,13 +481,13 @@
 
 %% Example:
 %% network_firewall_policy_description() :: #{
-%%   <<"StatefulDefaultActions">> => list(string()()),
+%%   <<"StatefulDefaultActions">> => list(string()),
 %%   <<"StatefulEngineOptions">> => stateful_engine_options(),
-%%   <<"StatefulRuleGroups">> => list(stateful_rule_group()()),
-%%   <<"StatelessCustomActions">> => list(string()()),
-%%   <<"StatelessDefaultActions">> => list(string()()),
-%%   <<"StatelessFragmentDefaultActions">> => list(string()()),
-%%   <<"StatelessRuleGroups">> => list(stateless_rule_group()())
+%%   <<"StatefulRuleGroups">> => list(stateful_rule_group()),
+%%   <<"StatelessCustomActions">> => list(string()),
+%%   <<"StatelessDefaultActions">> => list(string()),
+%%   <<"StatelessFragmentDefaultActions">> => list(string()),
+%%   <<"StatelessRuleGroups">> => list(stateless_rule_group())
 %% }
 -type network_firewall_policy_description() :: #{binary() => any()}.
 
@@ -496,7 +496,7 @@
 %%   <<"FirewallEndpoint">> => string(),
 %%   <<"FirewallSubnetId">> => string(),
 %%   <<"RouteTableId">> => string(),
-%%   <<"ViolatingRoutes">> => list(route()()),
+%%   <<"ViolatingRoutes">> => list(route()),
 %%   <<"VpcId">> => string()
 %% }
 -type network_firewall_unexpected_firewall_routes_violation() :: #{binary() => any()}.
@@ -514,16 +514,16 @@
 %%   <<"PolicyId">> => string(),
 %%   <<"ResourceDescription">> => string(),
 %%   <<"ResourceId">> => string(),
-%%   <<"ResourceTags">> => list(tag()()),
+%%   <<"ResourceTags">> => list(tag()),
 %%   <<"ResourceType">> => string(),
-%%   <<"ResourceViolations">> => list(resource_violation()())
+%%   <<"ResourceViolations">> => list(resource_violation())
 %% }
 -type violation_detail() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -539,7 +539,7 @@
 %% Example:
 %% list_protocols_lists_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProtocolsLists">> => list(protocols_list_data_summary()())
+%%   <<"ProtocolsLists">> => list(protocols_list_data_summary())
 %% }
 -type list_protocols_lists_response() :: #{binary() => any()}.
 
@@ -565,7 +565,7 @@
 
 %% Example:
 %% apps_list_data() :: #{
-%%   <<"AppsList">> => list(app()()),
+%%   <<"AppsList">> => list(app()),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"LastUpdateTime">> => non_neg_integer(),
 %%   <<"ListId">> => string(),
@@ -584,7 +584,7 @@
 %% Example:
 %% put_protocols_list_request() :: #{
 %%   <<"ProtocolsList">> := protocols_list_data(),
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type put_protocols_list_request() :: #{binary() => any()}.
 
@@ -592,7 +592,7 @@
 %% delete_network_acl_entries_action() :: #{
 %%   <<"Description">> => string(),
 %%   <<"FMSCanRemediate">> => boolean(),
-%%   <<"NetworkAclEntriesToBeDeleted">> => list(entry_description()()),
+%%   <<"NetworkAclEntriesToBeDeleted">> => list(entry_description()),
 %%   <<"NetworkAclId">> => action_target()
 %% }
 -type delete_network_acl_entries_action() :: #{binary() => any()}.
@@ -623,7 +623,7 @@
 
 %% Example:
 %% list_discovered_resources_response() :: #{
-%%   <<"Items">> => list(discovered_resource()()),
+%%   <<"Items">> => list(discovered_resource()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_discovered_resources_response() :: #{binary() => any()}.
@@ -650,20 +650,20 @@
 
 %% Example:
 %% network_firewall_internet_traffic_not_inspected_violation() :: #{
-%%   <<"ActualFirewallSubnetRoutes">> => list(route()()),
-%%   <<"ActualInternetGatewayRoutes">> => list(route()()),
+%%   <<"ActualFirewallSubnetRoutes">> => list(route()),
+%%   <<"ActualInternetGatewayRoutes">> => list(route()),
 %%   <<"CurrentFirewallSubnetRouteTable">> => string(),
 %%   <<"CurrentInternetGatewayRouteTable">> => string(),
 %%   <<"ExpectedFirewallEndpoint">> => string(),
-%%   <<"ExpectedFirewallSubnetRoutes">> => list(expected_route()()),
-%%   <<"ExpectedInternetGatewayRoutes">> => list(expected_route()()),
+%%   <<"ExpectedFirewallSubnetRoutes">> => list(expected_route()),
+%%   <<"ExpectedInternetGatewayRoutes">> => list(expected_route()),
 %%   <<"FirewallSubnetId">> => string(),
 %%   <<"InternetGatewayId">> => string(),
 %%   <<"IsRouteTableUsedInDifferentAZ">> => boolean(),
 %%   <<"RouteTableId">> => string(),
 %%   <<"SubnetAvailabilityZone">> => string(),
 %%   <<"SubnetId">> => string(),
-%%   <<"ViolatingRoutes">> => list(route()()),
+%%   <<"ViolatingRoutes">> => list(route()),
 %%   <<"VpcId">> => string()
 %% }
 -type network_firewall_internet_traffic_not_inspected_violation() :: #{binary() => any()}.
@@ -679,7 +679,7 @@
 
 %% Example:
 %% apps_list_data_summary() :: #{
-%%   <<"AppsList">> => list(app()()),
+%%   <<"AppsList">> => list(app()),
 %%   <<"ListArn">> => string(),
 %%   <<"ListId">> => string(),
 %%   <<"ListName">> => string()
@@ -726,7 +726,7 @@
 %% Example:
 %% region_scope() :: #{
 %%   <<"AllRegionsEnabled">> => boolean(),
-%%   <<"Regions">> => list(string()())
+%%   <<"Regions">> => list(string())
 %% }
 -type region_scope() :: #{binary() => any()}.
 
@@ -758,7 +758,7 @@
 %% dns_rule_group_priority_conflict_violation() :: #{
 %%   <<"ConflictingPolicyId">> => string(),
 %%   <<"ConflictingPriority">> => integer(),
-%%   <<"UnavailablePriorities">> => list(integer()()),
+%%   <<"UnavailablePriorities">> => list(integer()),
 %%   <<"ViolationTarget">> => string(),
 %%   <<"ViolationTargetDescription">> => string()
 %% }
@@ -817,7 +817,7 @@
 %% Example:
 %% entry_violation() :: #{
 %%   <<"ActualEvaluationOrder">> => string(),
-%%   <<"EntriesWithConflicts">> => list(entry_description()()),
+%%   <<"EntriesWithConflicts">> => list(entry_description()),
 %%   <<"EntryAtExpectedEvaluationOrder">> => entry_description(),
 %%   <<"EntryViolationReasons">> => list(list(any())()),
 %%   <<"ExpectedEntry">> => entry_description(),
@@ -828,7 +828,7 @@
 %% Example:
 %% partial_match() :: #{
 %%   <<"Reference">> => string(),
-%%   <<"TargetViolationReasons">> => list(string()())
+%%   <<"TargetViolationReasons">> => list(string())
 %% }
 -type partial_match() :: #{binary() => any()}.
 
@@ -836,7 +836,7 @@
 %% possible_remediation_action() :: #{
 %%   <<"Description">> => string(),
 %%   <<"IsDefaultAction">> => boolean(),
-%%   <<"OrderedRemediationActions">> => list(remediation_action_with_order()())
+%%   <<"OrderedRemediationActions">> => list(remediation_action_with_order())
 %% }
 -type possible_remediation_action() :: #{binary() => any()}.
 
@@ -858,13 +858,13 @@
 %% Example:
 %% put_apps_list_request() :: #{
 %%   <<"AppsList">> := apps_list_data(),
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type put_apps_list_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_admins_managing_account_response() :: #{
-%%   <<"AdminAccounts">> => list(string()()),
+%%   <<"AdminAccounts">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_admins_managing_account_response() :: #{binary() => any()}.
@@ -886,7 +886,7 @@
 %% Example:
 %% list_discovered_resources_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"MemberAccountIds">> := list(string()()),
+%%   <<"MemberAccountIds">> := list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceType">> := string()
 %% }
@@ -905,7 +905,7 @@
 %% organizational_unit_scope() :: #{
 %%   <<"AllOrganizationalUnitsEnabled">> => boolean(),
 %%   <<"ExcludeSpecifiedOrganizationalUnits">> => boolean(),
-%%   <<"OrganizationalUnits">> => list(string()())
+%%   <<"OrganizationalUnits">> => list(string())
 %% }
 -type organizational_unit_scope() :: #{binary() => any()}.
 
@@ -913,7 +913,7 @@
 %% create_network_acl_entries_action() :: #{
 %%   <<"Description">> => string(),
 %%   <<"FMSCanRemediate">> => boolean(),
-%%   <<"NetworkAclEntriesToBeCreated">> => list(entry_description()()),
+%%   <<"NetworkAclEntriesToBeCreated">> => list(entry_description()),
 %%   <<"NetworkAclId">> => action_target()
 %% }
 -type create_network_acl_entries_action() :: #{binary() => any()}.
@@ -934,13 +934,13 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% batch_disassociate_resource_request() :: #{
-%%   <<"Items">> := list(string()()),
+%%   <<"Items">> := list(string()),
 %%   <<"ResourceSetIdentifier">> := string()
 %% }
 -type batch_disassociate_resource_request() :: #{binary() => any()}.
@@ -971,14 +971,14 @@
 
 %% Example:
 %% possible_remediation_actions() :: #{
-%%   <<"Actions">> => list(possible_remediation_action()()),
+%%   <<"Actions">> => list(possible_remediation_action()),
 %%   <<"Description">> => string()
 %% }
 -type possible_remediation_actions() :: #{binary() => any()}.
 
 %% Example:
 %% policy_compliance_status() :: #{
-%%   <<"EvaluationResults">> => list(evaluation_result()()),
+%%   <<"EvaluationResults">> => list(evaluation_result()),
 %%   <<"IssueInfoMap">> => map(),
 %%   <<"LastUpdated">> => non_neg_integer(),
 %%   <<"MemberAccount">> => string(),
@@ -1022,7 +1022,7 @@
 
 %% Example:
 %% aws_ec2_instance_violation() :: #{
-%%   <<"AwsEc2NetworkInterfaceViolations">> => list(aws_ec2_network_interface_violation()()),
+%%   <<"AwsEc2NetworkInterfaceViolations">> => list(aws_ec2_network_interface_violation()),
 %%   <<"ViolationTarget">> => string()
 %% }
 -type aws_ec2_instance_violation() :: #{binary() => any()}.
@@ -1061,7 +1061,7 @@
 %% Example:
 %% list_resource_sets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceSets">> => list(resource_set_summary()())
+%%   <<"ResourceSets">> => list(resource_set_summary())
 %% }
 -type list_resource_sets_response() :: #{binary() => any()}.
 
@@ -1120,19 +1120,19 @@
 %%   <<"PolicyStatus">> => list(any()),
 %%   <<"PolicyUpdateToken">> => string(),
 %%   <<"RemediationEnabled">> => boolean(),
-%%   <<"ResourceSetIds">> => list(string()()),
+%%   <<"ResourceSetIds">> => list(string()),
 %%   <<"ResourceTagLogicalOperator">> => list(any()),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> => string(),
-%%   <<"ResourceTypeList">> => list(string()()),
+%%   <<"ResourceTypeList">> => list(string()),
 %%   <<"SecurityServicePolicyData">> => security_service_policy_data()
 %% }
 -type policy() :: #{binary() => any()}.
 
 %% Example:
 %% aws_vpc_security_group_violation() :: #{
-%%   <<"PartialMatches">> => list(partial_match()()),
-%%   <<"PossibleSecurityGroupRemediationActions">> => list(security_group_remediation_action()()),
+%%   <<"PartialMatches">> => list(partial_match()),
+%%   <<"PossibleSecurityGroupRemediationActions">> => list(security_group_remediation_action()),
 %%   <<"ViolationTarget">> => string(),
 %%   <<"ViolationTargetDescription">> => string()
 %% }
@@ -1141,7 +1141,7 @@
 %% Example:
 %% list_third_party_firewall_firewall_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ThirdPartyFirewallFirewallPolicies">> => list(third_party_firewall_firewall_policy()())
+%%   <<"ThirdPartyFirewallFirewallPolicies">> => list(third_party_firewall_firewall_policy())
 %% }
 -type list_third_party_firewall_firewall_policies_response() :: #{binary() => any()}.
 
@@ -1166,7 +1166,7 @@
 %%   <<"LastUpdateTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"ResourceSetStatus">> => list(any()),
-%%   <<"ResourceTypeList">> => list(string()()),
+%%   <<"ResourceTypeList">> => list(string()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type resource_set() :: #{binary() => any()}.
@@ -1189,14 +1189,14 @@
 %%   <<"ListName">> => string(),
 %%   <<"ListUpdateToken">> => string(),
 %%   <<"PreviousProtocolsList">> => map(),
-%%   <<"ProtocolsList">> => list(string()())
+%%   <<"ProtocolsList">> => list(string())
 %% }
 -type protocols_list_data() :: #{binary() => any()}.
 
 %% Example:
 %% network_firewall_black_hole_route_detected_violation() :: #{
 %%   <<"RouteTableId">> => string(),
-%%   <<"ViolatingRoutes">> => list(route()()),
+%%   <<"ViolatingRoutes">> => list(route()),
 %%   <<"ViolationTarget">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -1244,8 +1244,8 @@
 
 %% Example:
 %% expected_route() :: #{
-%%   <<"AllowedTargets">> => list(string()()),
-%%   <<"ContributingSubnets">> => list(string()()),
+%%   <<"AllowedTargets">> => list(string()),
+%%   <<"ContributingSubnets">> => list(string()),
 %%   <<"IpV4Cidr">> => string(),
 %%   <<"IpV6Cidr">> => string(),
 %%   <<"PrefixListId">> => string(),
@@ -1271,7 +1271,7 @@
 
 %% Example:
 %% web_acl_has_out_of_scope_resources_violation() :: #{
-%%   <<"OutOfScopeResourceList">> => list(string()()),
+%%   <<"OutOfScopeResourceList">> => list(string()),
 %%   <<"WebACLArn">> => string()
 %% }
 -type web_acl_has_out_of_scope_resources_violation() :: #{binary() => any()}.
@@ -1284,7 +1284,7 @@
 %%   <<"MemberAccount">> => string(),
 %%   <<"PolicyId">> => string(),
 %%   <<"PolicyOwner">> => string(),
-%%   <<"Violators">> => list(compliance_violator()())
+%%   <<"Violators">> => list(compliance_violator())
 %% }
 -type policy_compliance_detail() :: #{binary() => any()}.
 
@@ -1324,7 +1324,7 @@
 
 %% Example:
 %% aws_ec2_network_interface_violation() :: #{
-%%   <<"ViolatingSecurityGroups">> => list(string()()),
+%%   <<"ViolatingSecurityGroups">> => list(string()),
 %%   <<"ViolationTarget">> => string()
 %% }
 -type aws_ec2_network_interface_violation() :: #{binary() => any()}.
@@ -1337,7 +1337,7 @@
 
 %% Example:
 %% batch_associate_resource_response() :: #{
-%%   <<"FailedItems">> => list(failed_item()()),
+%%   <<"FailedItems">> => list(failed_item()),
 %%   <<"ResourceSetIdentifier">> => string()
 %% }
 -type batch_associate_resource_response() :: #{binary() => any()}.
@@ -1362,7 +1362,7 @@
 
 %% Example:
 %% account_scope() :: #{
-%%   <<"Accounts">> => list(string()()),
+%%   <<"Accounts">> => list(string()),
 %%   <<"AllAccountsEnabled">> => boolean(),
 %%   <<"ExcludeSpecifiedAccounts">> => boolean()
 %% }
@@ -1391,7 +1391,7 @@
 %% Example:
 %% put_policy_request() :: #{
 %%   <<"Policy">> := policy(),
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type put_policy_request() :: #{binary() => any()}.
 
@@ -1406,7 +1406,7 @@
 %% Example:
 %% put_resource_set_request() :: #{
 %%   <<"ResourceSet">> := resource_set(),
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type put_resource_set_request() :: #{binary() => any()}.
 
@@ -1443,7 +1443,7 @@
 
 %% Example:
 %% list_admin_accounts_for_organization_response() :: #{
-%%   <<"AdminAccounts">> => list(admin_account_summary()()),
+%%   <<"AdminAccounts">> => list(admin_account_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_admin_accounts_for_organization_response() :: #{binary() => any()}.
@@ -1465,7 +1465,7 @@
 
 %% Example:
 %% network_firewall_missing_expected_routes_violation() :: #{
-%%   <<"ExpectedRoutes">> => list(expected_route()()),
+%%   <<"ExpectedRoutes">> => list(expected_route()),
 %%   <<"ViolationTarget">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -1502,7 +1502,7 @@
 %% Example:
 %% list_compliance_status_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PolicyComplianceStatusList">> => list(policy_compliance_status()())
+%%   <<"PolicyComplianceStatusList">> => list(policy_compliance_status())
 %% }
 -type list_compliance_status_response() :: #{binary() => any()}.
 

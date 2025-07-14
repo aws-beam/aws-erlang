@@ -313,15 +313,15 @@
 
 %% Example:
 %% update_stage_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_stage_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% api_key_ids() :: #{
-%%   <<"ids">> => list(string()()),
-%%   <<"warnings">> => list(string()())
+%%   <<"ids">> => list(string()),
+%%   <<"warnings">> => list(string())
 %% }
 -type api_key_ids() :: #{binary() => any()}.
 
@@ -330,7 +330,7 @@
 %% endpoint_configuration() :: #{
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"types">> => list(list(any())()),
-%%   <<"vpcEndpointIds">> => list(string()())
+%%   <<"vpcEndpointIds">> => list(string())
 %% }
 -type endpoint_configuration() :: #{binary() => any()}.
 
@@ -433,7 +433,7 @@
 %%   <<"identitySource">> => string(),
 %%   <<"identityValidationExpression">> => string(),
 %%   <<"name">> => string(),
-%%   <<"providerARNs">> => list(string()()),
+%%   <<"providerARNs">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type authorizer() :: #{binary() => any()}.
@@ -497,7 +497,7 @@
 
 %% Example:
 %% update_resource_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_resource_request() :: #{binary() => any()}.
 
@@ -514,7 +514,7 @@
 
 %% Example:
 %% integration() :: #{
-%%   <<"cacheKeyParameters">> => list(string()()),
+%%   <<"cacheKeyParameters">> => list(string()),
 %%   <<"cacheNamespace">> => string(),
 %%   <<"connectionId">> => string(),
 %%   <<"connectionType">> => list(any()),
@@ -575,7 +575,7 @@
 
 %% Example:
 %% update_client_certificate_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_client_certificate_request() :: #{binary() => any()}.
 
@@ -598,7 +598,7 @@
 %% mutual_tls_authentication() :: #{
 %%   <<"truststoreUri">> => string(),
 %%   <<"truststoreVersion">> => string(),
-%%   <<"truststoreWarnings">> => list(string()())
+%%   <<"truststoreWarnings">> => list(string())
 %% }
 -type mutual_tls_authentication() :: #{binary() => any()}.
 
@@ -643,7 +643,7 @@
 
 %% Example:
 %% documentation_versions() :: #{
-%%   <<"items">> => list(documentation_version()()),
+%%   <<"items">> => list(documentation_version()),
 %%   <<"position">> => string()
 %% }
 -type documentation_versions() :: #{binary() => any()}.
@@ -651,14 +651,14 @@
 
 %% Example:
 %% update_api_key_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_api_key_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% vpc_links() :: #{
-%%   <<"items">> => list(vpc_link()()),
+%%   <<"items">> => list(vpc_link()),
 %%   <<"position">> => string()
 %% }
 -type vpc_links() :: #{binary() => any()}.
@@ -670,7 +670,7 @@
 
 %% Example:
 %% usage_plans() :: #{
-%%   <<"items">> => list(usage_plan()()),
+%%   <<"items">> => list(usage_plan()),
 %%   <<"position">> => string()
 %% }
 -type usage_plans() :: #{binary() => any()}.
@@ -713,7 +713,7 @@
 
 %% Example:
 %% put_integration_request() :: #{
-%%   <<"cacheKeyParameters">> => list(string()()),
+%%   <<"cacheKeyParameters">> => list(string()),
 %%   <<"cacheNamespace">> => string(),
 %%   <<"connectionId">> => string(),
 %%   <<"connectionType">> => list(any()),
@@ -737,14 +737,14 @@
 
 %% Example:
 %% update_request_validator_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_request_validator_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_model_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_model_request() :: #{binary() => any()}.
 
@@ -773,14 +773,14 @@
 %% Example:
 %% update_base_path_mapping_request() :: #{
 %%   <<"domainNameId">> => string(),
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_base_path_mapping_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% usage_plan_keys() :: #{
-%%   <<"items">> => list(usage_plan_key()()),
+%%   <<"items">> => list(usage_plan_key()),
 %%   <<"position">> => string()
 %% }
 -type usage_plan_keys() :: #{binary() => any()}.
@@ -788,7 +788,7 @@
 
 %% Example:
 %% sdk_type() :: #{
-%%   <<"configurationProperties">> => list(sdk_configuration_property()()),
+%%   <<"configurationProperties">> => list(sdk_configuration_property()),
 %%   <<"description">> => string(),
 %%   <<"friendlyName">> => string(),
 %%   <<"id">> => string()
@@ -804,21 +804,21 @@
 %%   <<"status">> => list(any()),
 %%   <<"statusMessage">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"targetArns">> => list(string()())
+%%   <<"targetArns">> => list(string())
 %% }
 -type vpc_link() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_documentation_part_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_documentation_part_request() :: #{binary() => any()}.
 
@@ -863,7 +863,7 @@
 %%   <<"identitySource">> => string(),
 %%   <<"identityValidationExpression">> => string(),
 %%   <<"name">> := string(),
-%%   <<"providerARNs">> => list(string()()),
+%%   <<"providerARNs">> => list(string()),
 %%   <<"type">> := list(any())
 %% }
 -type create_authorizer_request() :: #{binary() => any()}.
@@ -879,7 +879,7 @@
 
 %% Example:
 %% stages() :: #{
-%%   <<"item">> => list(stage()())
+%%   <<"item">> => list(stage())
 %% }
 -type stages() :: #{binary() => any()}.
 
@@ -895,7 +895,7 @@
 
 %% Example:
 %% update_gateway_response_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_gateway_response_request() :: #{binary() => any()}.
 
@@ -913,7 +913,7 @@
 
 %% Example:
 %% gateway_responses() :: #{
-%%   <<"items">> => list(gateway_response()()),
+%%   <<"items">> => list(gateway_response()),
 %%   <<"position">> => string()
 %% }
 -type gateway_responses() :: #{binary() => any()}.
@@ -929,14 +929,14 @@
 
 %% Example:
 %% update_method_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_method_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% client_certificates() :: #{
-%%   <<"items">> => list(client_certificate()()),
+%%   <<"items">> => list(client_certificate()),
 %%   <<"position">> => string()
 %% }
 -type client_certificates() :: #{binary() => any()}.
@@ -948,7 +948,7 @@
 
 %% Example:
 %% domain_names() :: #{
-%%   <<"items">> => list(domain_name()()),
+%%   <<"items">> => list(domain_name()),
 %%   <<"position">> => string()
 %% }
 -type domain_names() :: #{binary() => any()}.
@@ -956,7 +956,7 @@
 
 %% Example:
 %% resources() :: #{
-%%   <<"items">> => list(resource()()),
+%%   <<"items">> => list(resource()),
 %%   <<"position">> => string()
 %% }
 -type resources() :: #{binary() => any()}.
@@ -1007,7 +1007,7 @@
 %% Example:
 %% rest_api() :: #{
 %%   <<"apiKeySource">> => list(any()),
-%%   <<"binaryMediaTypes">> => list(string()()),
+%%   <<"binaryMediaTypes">> => list(string()),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"disableExecuteApiEndpoint">> => boolean(),
@@ -1019,7 +1019,7 @@
 %%   <<"rootResourceId">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"version">> => string(),
-%%   <<"warnings">> => list(string()())
+%%   <<"warnings">> => list(string())
 %% }
 -type rest_api() :: #{binary() => any()}.
 
@@ -1034,7 +1034,7 @@
 
 %% Example:
 %% get_resources_request() :: #{
-%%   <<"embed">> => list(string()()),
+%%   <<"embed">> => list(string()),
 %%   <<"limit">> => integer(),
 %%   <<"position">> => string()
 %% }
@@ -1098,7 +1098,7 @@
 
 %% Example:
 %% base_path_mappings() :: #{
-%%   <<"items">> => list(base_path_mapping()()),
+%%   <<"items">> => list(base_path_mapping()),
 %%   <<"position">> => string()
 %% }
 -type base_path_mappings() :: #{binary() => any()}.
@@ -1106,7 +1106,7 @@
 
 %% Example:
 %% get_deployment_request() :: #{
-%%   <<"embed">> => list(string()())
+%%   <<"embed">> => list(string())
 %% }
 -type get_deployment_request() :: #{binary() => any()}.
 
@@ -1116,7 +1116,7 @@
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map(),
-%%   <<"targetArns">> := list(string()())
+%%   <<"targetArns">> := list(string())
 %% }
 -type create_vpc_link_request() :: #{binary() => any()}.
 
@@ -1148,7 +1148,7 @@
 %% account() :: #{
 %%   <<"apiKeyVersion">> => string(),
 %%   <<"cloudwatchRoleArn">> => string(),
-%%   <<"features">> => list(string()()),
+%%   <<"features">> => list(string()),
 %%   <<"throttleSettings">> => throttle_settings()
 %% }
 -type account() :: #{binary() => any()}.
@@ -1184,7 +1184,7 @@
 
 %% Example:
 %% update_usage_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_usage_request() :: #{binary() => any()}.
 
@@ -1203,7 +1203,7 @@
 
 %% Example:
 %% update_integration_response_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_integration_response_request() :: #{binary() => any()}.
 
@@ -1221,14 +1221,14 @@
 
 %% Example:
 %% update_rest_api_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_rest_api_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_integration_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_integration_request() :: #{binary() => any()}.
 
@@ -1236,7 +1236,7 @@
 %% Example:
 %% put_method_request() :: #{
 %%   <<"apiKeyRequired">> => boolean(),
-%%   <<"authorizationScopes">> => list(string()()),
+%%   <<"authorizationScopes">> => list(string()),
 %%   <<"authorizationType">> := string(),
 %%   <<"authorizerId">> => string(),
 %%   <<"operationName">> => string(),
@@ -1257,14 +1257,14 @@
 %% Example:
 %% update_domain_name_request() :: #{
 %%   <<"domainNameId">> => string(),
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_domain_name_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% rest_apis() :: #{
-%%   <<"items">> => list(rest_api()()),
+%%   <<"items">> => list(rest_api()),
 %%   <<"position">> => string()
 %% }
 -type rest_apis() :: #{binary() => any()}.
@@ -1277,7 +1277,7 @@
 %%   <<"enabled">> => boolean(),
 %%   <<"generateDistinctId">> => boolean(),
 %%   <<"name">> => string(),
-%%   <<"stageKeys">> => list(stage_key()()),
+%%   <<"stageKeys">> => list(stage_key()),
 %%   <<"tags">> => map(),
 %%   <<"value">> => string()
 %% }
@@ -1286,14 +1286,14 @@
 
 %% Example:
 %% update_account_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_account_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% domain_name_access_associations() :: #{
-%%   <<"items">> => list(domain_name_access_association()()),
+%%   <<"items">> => list(domain_name_access_association()),
 %%   <<"position">> => string()
 %% }
 -type domain_name_access_associations() :: #{binary() => any()}.
@@ -1345,7 +1345,7 @@
 
 %% Example:
 %% update_method_response_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_method_response_request() :: #{binary() => any()}.
 
@@ -1391,7 +1391,7 @@
 
 %% Example:
 %% get_resource_request() :: #{
-%%   <<"embed">> => list(string()())
+%%   <<"embed">> => list(string())
 %% }
 -type get_resource_request() :: #{binary() => any()}.
 
@@ -1477,9 +1477,9 @@
 
 %% Example:
 %% api_keys() :: #{
-%%   <<"items">> => list(api_key()()),
+%%   <<"items">> => list(api_key()),
 %%   <<"position">> => string(),
-%%   <<"warnings">> => list(string()())
+%%   <<"warnings">> => list(string())
 %% }
 -type api_keys() :: #{binary() => any()}.
 
@@ -1513,7 +1513,7 @@
 
 %% Example:
 %% update_vpc_link_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_vpc_link_request() :: #{binary() => any()}.
 
@@ -1524,7 +1524,7 @@
 
 %% Example:
 %% usage_plan() :: #{
-%%   <<"apiStages">> => list(api_stage()()),
+%%   <<"apiStages">> => list(api_stage()),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -1545,14 +1545,14 @@
 
 %% Example:
 %% update_usage_plan_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_usage_plan_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% sdk_types() :: #{
-%%   <<"items">> => list(sdk_type()())
+%%   <<"items">> => list(sdk_type())
 %% }
 -type sdk_types() :: #{binary() => any()}.
 
@@ -1591,7 +1591,7 @@
 
 %% Example:
 %% create_usage_plan_request() :: #{
-%%   <<"apiStages">> => list(api_stage()()),
+%%   <<"apiStages">> => list(api_stage()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"quota">> => quota_settings(),
@@ -1640,7 +1640,7 @@
 
 %% Example:
 %% request_validators() :: #{
-%%   <<"items">> => list(request_validator()()),
+%%   <<"items">> => list(request_validator()),
 %%   <<"position">> => string()
 %% }
 -type request_validators() :: #{binary() => any()}.
@@ -1656,7 +1656,7 @@
 
 %% Example:
 %% models() :: #{
-%%   <<"items">> => list(model()()),
+%%   <<"items">> => list(model()),
 %%   <<"position">> => string()
 %% }
 -type models() :: #{binary() => any()}.
@@ -1678,7 +1678,7 @@
 
 %% Example:
 %% documentation_parts() :: #{
-%%   <<"items">> => list(documentation_part()()),
+%%   <<"items">> => list(documentation_part()),
 %%   <<"position">> => string()
 %% }
 -type documentation_parts() :: #{binary() => any()}.
@@ -1710,8 +1710,8 @@
 
 %% Example:
 %% documentation_part_ids() :: #{
-%%   <<"ids">> => list(string()()),
-%%   <<"warnings">> => list(string()())
+%%   <<"ids">> => list(string()),
+%%   <<"warnings">> => list(string())
 %% }
 -type documentation_part_ids() :: #{binary() => any()}.
 
@@ -1723,7 +1723,7 @@
 %% Example:
 %% method() :: #{
 %%   <<"apiKeyRequired">> => boolean(),
-%%   <<"authorizationScopes">> => list(string()()),
+%%   <<"authorizationScopes">> => list(string()),
 %%   <<"authorizationType">> => string(),
 %%   <<"authorizerId">> => string(),
 %%   <<"httpMethod">> => string(),
@@ -1773,7 +1773,7 @@
 
 %% Example:
 %% authorizers() :: #{
-%%   <<"items">> => list(authorizer()()),
+%%   <<"items">> => list(authorizer()),
 %%   <<"position">> => string()
 %% }
 -type authorizers() :: #{binary() => any()}.
@@ -1801,7 +1801,7 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"stageKeys">> => list(string()()),
+%%   <<"stageKeys">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"value">> => string()
 %% }
@@ -1862,7 +1862,7 @@
 
 %% Example:
 %% deployments() :: #{
-%%   <<"items">> => list(deployment()()),
+%%   <<"items">> => list(deployment()),
 %%   <<"position">> => string()
 %% }
 -type deployments() :: #{binary() => any()}.
@@ -1870,14 +1870,14 @@
 
 %% Example:
 %% update_documentation_version_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_documentation_version_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_deployment_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_deployment_request() :: #{binary() => any()}.
 
@@ -1939,7 +1939,7 @@
 
 %% Example:
 %% update_authorizer_request() :: #{
-%%   <<"patchOperations">> => list(patch_operation()())
+%%   <<"patchOperations">> => list(patch_operation())
 %% }
 -type update_authorizer_request() :: #{binary() => any()}.
 
@@ -1956,7 +1956,7 @@
 %% Example:
 %% create_rest_api_request() :: #{
 %%   <<"apiKeySource">> => list(any()),
-%%   <<"binaryMediaTypes">> => list(string()()),
+%%   <<"binaryMediaTypes">> => list(string()),
 %%   <<"cloneFrom">> => string(),
 %%   <<"description">> => string(),
 %%   <<"disableExecuteApiEndpoint">> => boolean(),

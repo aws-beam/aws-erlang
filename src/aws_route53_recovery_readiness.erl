@@ -108,7 +108,7 @@
 %% create_resource_set_request() :: #{
 %%   <<"ResourceSetName">> := string(),
 %%   <<"ResourceSetType">> := string(),
-%%   <<"Resources">> := list(resource()()),
+%%   <<"Resources">> := list(resource()),
 %%   <<"Tags">> => map()
 %% }
 -type create_resource_set_request() :: #{binary() => any()}.
@@ -116,7 +116,7 @@
 
 %% Example:
 %% get_recovery_group_response() :: #{
-%%   <<"Cells">> => list(string()()),
+%%   <<"Cells">> => list(string()),
 %%   <<"RecoveryGroupArn">> => string(),
 %%   <<"RecoveryGroupName">> => string(),
 %%   <<"Tags">> => map()
@@ -128,8 +128,8 @@
 %% create_cell_response() :: #{
 %%   <<"CellArn">> => string(),
 %%   <<"CellName">> => string(),
-%%   <<"Cells">> => list(string()()),
-%%   <<"ParentReadinessScopes">> => list(string()()),
+%%   <<"Cells">> => list(string()),
+%%   <<"ParentReadinessScopes">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type create_cell_response() :: #{binary() => any()}.
@@ -172,7 +172,7 @@
 
 %% Example:
 %% list_cells_response() :: #{
-%%   <<"Cells">> => list(cell_output()()),
+%%   <<"Cells">> => list(cell_output()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cells_response() :: #{binary() => any()}.
@@ -191,7 +191,7 @@
 
 %% Example:
 %% recovery_group_output() :: #{
-%%   <<"Cells">> => list(string()()),
+%%   <<"Cells">> => list(string()),
 %%   <<"RecoveryGroupArn">> => string(),
 %%   <<"RecoveryGroupName">> => string(),
 %%   <<"Tags">> => map()
@@ -212,7 +212,7 @@
 %%   <<"ResourceSetArn">> => string(),
 %%   <<"ResourceSetName">> => string(),
 %%   <<"ResourceSetType">> => string(),
-%%   <<"Resources">> => list(resource()()),
+%%   <<"Resources">> => list(resource()),
 %%   <<"Tags">> => map()
 %% }
 -type resource_set_output() :: #{binary() => any()}.
@@ -229,21 +229,21 @@
 %% get_recovery_group_readiness_summary_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Readiness">> => list(any()),
-%%   <<"ReadinessChecks">> => list(readiness_check_summary()())
+%%   <<"ReadinessChecks">> => list(readiness_check_summary())
 %% }
 -type get_recovery_group_readiness_summary_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_recovery_group_response() :: #{
-%%   <<"Cells">> => list(string()()),
+%%   <<"Cells">> => list(string()),
 %%   <<"RecoveryGroupArn">> => string(),
 %%   <<"RecoveryGroupName">> => string(),
 %%   <<"Tags">> => map()
@@ -294,7 +294,7 @@
 %% get_cell_readiness_summary_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Readiness">> => list(any()),
-%%   <<"ReadinessChecks">> => list(readiness_check_summary()())
+%%   <<"ReadinessChecks">> => list(readiness_check_summary())
 %% }
 -type get_cell_readiness_summary_response() :: #{binary() => any()}.
 
@@ -321,7 +321,7 @@
 %% Example:
 %% list_readiness_checks_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReadinessChecks">> => list(readiness_check_output()())
+%%   <<"ReadinessChecks">> => list(readiness_check_output())
 %% }
 -type list_readiness_checks_response() :: #{binary() => any()}.
 
@@ -358,17 +358,17 @@
 
 %% Example:
 %% get_readiness_check_status_response() :: #{
-%%   <<"Messages">> => list(message()()),
+%%   <<"Messages">> => list(message()),
 %%   <<"NextToken">> => string(),
 %%   <<"Readiness">> => list(any()),
-%%   <<"Resources">> => list(resource_result()())
+%%   <<"Resources">> => list(resource_result())
 %% }
 -type get_readiness_check_status_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_recovery_group_request() :: #{
-%%   <<"Cells">> := list(string()())
+%%   <<"Cells">> := list(string())
 %% }
 -type update_recovery_group_request() :: #{binary() => any()}.
 
@@ -384,7 +384,7 @@
 %% get_architecture_recommendations_response() :: #{
 %%   <<"LastAuditTimestamp">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Recommendations">> => list(recommendation()())
+%%   <<"Recommendations">> => list(recommendation())
 %% }
 -type get_architecture_recommendations_response() :: #{binary() => any()}.
 
@@ -409,7 +409,7 @@
 
 %% Example:
 %% list_cross_account_authorizations_response() :: #{
-%%   <<"CrossAccountAuthorizations">> => list(string()()),
+%%   <<"CrossAccountAuthorizations">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cross_account_authorizations_response() :: #{binary() => any()}.
@@ -423,8 +423,8 @@
 %% update_cell_response() :: #{
 %%   <<"CellArn">> => string(),
 %%   <<"CellName">> => string(),
-%%   <<"Cells">> => list(string()()),
-%%   <<"ParentReadinessScopes">> => list(string()()),
+%%   <<"Cells">> => list(string()),
+%%   <<"ParentReadinessScopes">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type update_cell_response() :: #{binary() => any()}.
@@ -445,7 +445,7 @@
 %%   <<"ResourceSetArn">> => string(),
 %%   <<"ResourceSetName">> => string(),
 %%   <<"ResourceSetType">> => string(),
-%%   <<"Resources">> => list(resource()()),
+%%   <<"Resources">> => list(resource()),
 %%   <<"Tags">> => map()
 %% }
 -type create_resource_set_response() :: #{binary() => any()}.
@@ -482,7 +482,7 @@
 %%   <<"ResourceSetArn">> => string(),
 %%   <<"ResourceSetName">> => string(),
 %%   <<"ResourceSetType">> => string(),
-%%   <<"Resources">> => list(resource()()),
+%%   <<"Resources">> => list(resource()),
 %%   <<"Tags">> => map()
 %% }
 -type get_resource_set_response() :: #{binary() => any()}.
@@ -491,7 +491,7 @@
 %% Example:
 %% list_resource_sets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceSets">> => list(resource_set_output()())
+%%   <<"ResourceSets">> => list(resource_set_output())
 %% }
 -type list_resource_sets_response() :: #{binary() => any()}.
 
@@ -519,7 +519,7 @@
 %% get_readiness_check_resource_status_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Readiness">> => list(any()),
-%%   <<"Rules">> => list(rule_result()())
+%%   <<"Rules">> => list(rule_result())
 %% }
 -type get_readiness_check_resource_status_response() :: #{binary() => any()}.
 
@@ -528,8 +528,8 @@
 %% get_cell_response() :: #{
 %%   <<"CellArn">> => string(),
 %%   <<"CellName">> => string(),
-%%   <<"Cells">> => list(string()()),
-%%   <<"ParentReadinessScopes">> => list(string()()),
+%%   <<"Cells">> => list(string()),
+%%   <<"ParentReadinessScopes">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type get_cell_response() :: #{binary() => any()}.
@@ -545,7 +545,7 @@
 %% Example:
 %% list_rules_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Rules">> => list(list_rules_output()())
+%%   <<"Rules">> => list(list_rules_output())
 %% }
 -type list_rules_response() :: #{binary() => any()}.
 
@@ -557,14 +557,14 @@
 %% Example:
 %% update_resource_set_request() :: #{
 %%   <<"ResourceSetType">> := string(),
-%%   <<"Resources">> := list(resource()())
+%%   <<"Resources">> := list(resource())
 %% }
 -type update_resource_set_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_recovery_group_response() :: #{
-%%   <<"Cells">> => list(string()()),
+%%   <<"Cells">> => list(string()),
 %%   <<"RecoveryGroupArn">> => string(),
 %%   <<"RecoveryGroupName">> => string(),
 %%   <<"Tags">> => map()
@@ -575,7 +575,7 @@
 %% Example:
 %% rule_result() :: #{
 %%   <<"LastCheckedTimestamp">> => non_neg_integer(),
-%%   <<"Messages">> => list(message()()),
+%%   <<"Messages">> => list(message()),
 %%   <<"Readiness">> => list(any()),
 %%   <<"RuleId">> => string()
 %% }
@@ -632,8 +632,8 @@
 %% cell_output() :: #{
 %%   <<"CellArn">> => string(),
 %%   <<"CellName">> => string(),
-%%   <<"Cells">> => list(string()()),
-%%   <<"ParentReadinessScopes">> => list(string()()),
+%%   <<"Cells">> => list(string()),
+%%   <<"ParentReadinessScopes">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type cell_output() :: #{binary() => any()}.
@@ -641,7 +641,7 @@
 
 %% Example:
 %% create_recovery_group_request() :: #{
-%%   <<"Cells">> => list(string()()),
+%%   <<"Cells">> => list(string()),
 %%   <<"RecoveryGroupName">> := string(),
 %%   <<"Tags">> => map()
 %% }
@@ -651,7 +651,7 @@
 %% Example:
 %% create_cell_request() :: #{
 %%   <<"CellName">> := string(),
-%%   <<"Cells">> => list(string()()),
+%%   <<"Cells">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type create_cell_request() :: #{binary() => any()}.
@@ -659,7 +659,7 @@
 
 %% Example:
 %% update_cell_request() :: #{
-%%   <<"Cells">> := list(string()())
+%%   <<"Cells">> := list(string())
 %% }
 -type update_cell_request() :: #{binary() => any()}.
 
@@ -687,7 +687,7 @@
 %%   <<"ResourceSetArn">> => string(),
 %%   <<"ResourceSetName">> => string(),
 %%   <<"ResourceSetType">> => string(),
-%%   <<"Resources">> => list(resource()()),
+%%   <<"Resources">> => list(resource()),
 %%   <<"Tags">> => map()
 %% }
 -type update_resource_set_response() :: #{binary() => any()}.
@@ -704,7 +704,7 @@
 %% Example:
 %% list_recovery_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RecoveryGroups">> => list(recovery_group_output()())
+%%   <<"RecoveryGroups">> => list(recovery_group_output())
 %% }
 -type list_recovery_groups_response() :: #{binary() => any()}.
 
@@ -720,7 +720,7 @@
 %% resource() :: #{
 %%   <<"ComponentId">> => string(),
 %%   <<"DnsTargetResource">> => dns_target_resource(),
-%%   <<"ReadinessScopes">> => list(string()()),
+%%   <<"ReadinessScopes">> => list(string()),
 %%   <<"ResourceArn">> => string()
 %% }
 -type resource() :: #{binary() => any()}.

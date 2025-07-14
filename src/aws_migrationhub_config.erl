@@ -87,7 +87,7 @@
 
 %% Example:
 %% describe_home_region_controls_result() :: #{
-%%   <<"HomeRegionControls">> => list(home_region_control()()),
+%%   <<"HomeRegionControls">> => list(home_region_control()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_home_region_controls_result() :: #{binary() => any()}.

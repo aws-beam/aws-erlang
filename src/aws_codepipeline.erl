@@ -294,8 +294,8 @@
 
 %% Example:
 %% git_branch_filter_criteria() :: #{
-%%   <<"excludes">> => list(string()()),
-%%   <<"includes">> => list(string()())
+%%   <<"excludes">> => list(string()),
+%%   <<"includes">> => list(string())
 %% }
 -type git_branch_filter_criteria() :: #{binary() => any()}.
 
@@ -316,7 +316,7 @@
 
 %% Example:
 %% list_action_executions_output() :: #{
-%%   <<"actionExecutionDetails">> => list(action_execution_detail()()),
+%%   <<"actionExecutionDetails">> => list(action_execution_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_action_executions_output() :: #{binary() => any()}.
@@ -362,7 +362,7 @@
 %%   <<"errorCode">> => string(),
 %%   <<"errorMessage">> => string(),
 %%   <<"lastTriggered">> => non_neg_integer(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"url">> => string()
 %% }
 -type list_webhook_item() :: #{binary() => any()}.
@@ -375,23 +375,23 @@
 %%   <<"name">> => string(),
 %%   <<"pipelineType">> => list(any()),
 %%   <<"roleArn">> => string(),
-%%   <<"stages">> => list(stage_declaration()()),
-%%   <<"triggers">> => list(pipeline_trigger_declaration()()),
-%%   <<"variables">> => list(pipeline_variable_declaration()()),
+%%   <<"stages">> => list(stage_declaration()),
+%%   <<"triggers">> => list(pipeline_trigger_declaration()),
+%%   <<"variables">> => list(pipeline_variable_declaration()),
 %%   <<"version">> => integer()
 %% }
 -type pipeline_declaration() :: #{binary() => any()}.
 
 %% Example:
 %% output_artifact() :: #{
-%%   <<"files">> => list(string()()),
+%%   <<"files">> => list(string()),
 %%   <<"name">> => string()
 %% }
 -type output_artifact() :: #{binary() => any()}.
 
 %% Example:
 %% action_type_permissions() :: #{
-%%   <<"allowedAccounts">> => list(string()())
+%%   <<"allowedAccounts">> => list(string())
 %% }
 -type action_type_permissions() :: #{binary() => any()}.
 
@@ -411,7 +411,7 @@
 %% Example:
 %% create_pipeline_output() :: #{
 %%   <<"pipeline">> => pipeline_declaration(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_pipeline_output() :: #{binary() => any()}.
 
@@ -532,7 +532,7 @@
 %%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"pipelineExecutionId">> => string(),
 %%   <<"rollbackMetadata">> => pipeline_rollback_metadata(),
-%%   <<"sourceRevisions">> => list(source_revision()()),
+%%   <<"sourceRevisions">> => list(source_revision()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
 %%   <<"statusSummary">> => string(),
@@ -570,7 +570,7 @@
 
 %% Example:
 %% pipeline_execution() :: #{
-%%   <<"artifactRevisions">> => list(artifact_revision()()),
+%%   <<"artifactRevisions">> => list(artifact_revision()),
 %%   <<"executionMode">> => list(any()),
 %%   <<"executionType">> => list(any()),
 %%   <<"pipelineExecutionId">> => string(),
@@ -580,7 +580,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"statusSummary">> => string(),
 %%   <<"trigger">> => execution_trigger(),
-%%   <<"variables">> => list(resolved_pipeline_variable()())
+%%   <<"variables">> => list(resolved_pipeline_variable())
 %% }
 -type pipeline_execution() :: #{binary() => any()}.
 
@@ -607,7 +607,7 @@
 
 %% Example:
 %% list_rule_types_output() :: #{
-%%   <<"ruleTypes">> => list(rule_type()())
+%%   <<"ruleTypes">> => list(rule_type())
 %% }
 -type list_rule_types_output() :: #{binary() => any()}.
 
@@ -634,7 +634,7 @@
 
 %% Example:
 %% failure_conditions() :: #{
-%%   <<"conditions">> => list(condition()()),
+%%   <<"conditions">> => list(condition()),
 %%   <<"result">> => list(any()),
 %%   <<"retryConfiguration">> => retry_configuration()
 %% }
@@ -686,8 +686,8 @@
 %%   <<"artifactCredentials">> => aws_session_credentials(),
 %%   <<"continuationToken">> => string(),
 %%   <<"encryptionKey">> => encryption_key(),
-%%   <<"inputArtifacts">> => list(artifact()()),
-%%   <<"outputArtifacts">> => list(artifact()()),
+%%   <<"inputArtifacts">> => list(artifact()),
+%%   <<"outputArtifacts">> => list(artifact()),
 %%   <<"pipelineContext">> => pipeline_context()
 %% }
 -type third_party_job_data() :: #{binary() => any()}.
@@ -695,7 +695,7 @@
 %% Example:
 %% list_webhooks_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"webhooks">> => list(list_webhook_item()())
+%%   <<"webhooks">> => list(list_webhook_item())
 %% }
 -type list_webhooks_output() :: #{binary() => any()}.
 
@@ -725,14 +725,14 @@
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_deploy_action_execution_targets_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"targets">> => list(deploy_action_execution_target()())
+%%   <<"targets">> => list(deploy_action_execution_target())
 %% }
 -type list_deploy_action_execution_targets_output() :: #{binary() => any()}.
 
@@ -779,7 +779,7 @@
 %% rule_type() :: #{
 %%   <<"id">> => rule_type_id(),
 %%   <<"inputArtifactDetails">> => artifact_details(),
-%%   <<"ruleConfigurationProperties">> => list(rule_configuration_property()()),
+%%   <<"ruleConfigurationProperties">> => list(rule_configuration_property()),
 %%   <<"settings">> => rule_type_settings()
 %% }
 -type rule_type() :: #{binary() => any()}.
@@ -832,8 +832,8 @@
 %%   <<"artifactCredentials">> => aws_session_credentials(),
 %%   <<"continuationToken">> => string(),
 %%   <<"encryptionKey">> => encryption_key(),
-%%   <<"inputArtifacts">> => list(artifact()()),
-%%   <<"outputArtifacts">> => list(artifact()()),
+%%   <<"inputArtifacts">> => list(artifact()),
+%%   <<"outputArtifacts">> => list(artifact()),
 %%   <<"pipelineContext">> => pipeline_context()
 %% }
 -type job_data() :: #{binary() => any()}.
@@ -841,7 +841,7 @@
 %% Example:
 %% condition_state() :: #{
 %%   <<"latestExecution">> => condition_execution(),
-%%   <<"ruleStates">> => list(rule_state()())
+%%   <<"ruleStates">> => list(rule_state())
 %% }
 -type condition_state() :: #{binary() => any()}.
 
@@ -865,15 +865,15 @@
 
 %% Example:
 %% git_file_path_filter_criteria() :: #{
-%%   <<"excludes">> => list(string()()),
-%%   <<"includes">> => list(string()())
+%%   <<"excludes">> => list(string()),
+%%   <<"includes">> => list(string())
 %% }
 -type git_file_path_filter_criteria() :: #{binary() => any()}.
 
 %% Example:
 %% job_worker_executor_configuration() :: #{
-%%   <<"pollingAccounts">> => list(string()()),
-%%   <<"pollingServicePrincipals">> => list(string()())
+%%   <<"pollingAccounts">> => list(string()),
+%%   <<"pollingServicePrincipals">> => list(string())
 %% }
 -type job_worker_executor_configuration() :: #{binary() => any()}.
 
@@ -902,7 +902,7 @@
 %% Example:
 %% create_pipeline_input() :: #{
 %%   <<"pipeline">> := pipeline_declaration(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_pipeline_input() :: #{binary() => any()}.
 
@@ -916,14 +916,14 @@
 %% Example:
 %% action_declaration() :: #{
 %%   <<"actionTypeId">> => action_type_id(),
-%%   <<"commands">> => list(string()()),
+%%   <<"commands">> => list(string()),
 %%   <<"configuration">> => map(),
-%%   <<"environmentVariables">> => list(environment_variable()()),
-%%   <<"inputArtifacts">> => list(input_artifact()()),
+%%   <<"environmentVariables">> => list(environment_variable()),
+%%   <<"inputArtifacts">> => list(input_artifact()),
 %%   <<"name">> => string(),
 %%   <<"namespace">> => string(),
-%%   <<"outputArtifacts">> => list(output_artifact()()),
-%%   <<"outputVariables">> => list(string()()),
+%%   <<"outputArtifacts">> => list(output_artifact()),
+%%   <<"outputVariables">> => list(string()),
 %%   <<"region">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"runOrder">> => integer(),
@@ -957,7 +957,7 @@
 
 %% Example:
 %% put_webhook_input() :: #{
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"webhook">> := webhook_definition()
 %% }
 -type put_webhook_input() :: #{binary() => any()}.
@@ -1056,7 +1056,7 @@
 %% Example:
 %% action_execution_output() :: #{
 %%   <<"executionResult">> => action_execution_result(),
-%%   <<"outputArtifacts">> => list(artifact_detail()()),
+%%   <<"outputArtifacts">> => list(artifact_detail()),
 %%   <<"outputVariables">> => map()
 %% }
 -type action_execution_output() :: #{binary() => any()}.
@@ -1086,7 +1086,7 @@
 %% Example:
 %% list_pipeline_executions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"pipelineExecutionSummaries">> => list(pipeline_execution_summary()())
+%%   <<"pipelineExecutionSummaries">> => list(pipeline_execution_summary())
 %% }
 -type list_pipeline_executions_output() :: #{binary() => any()}.
 
@@ -1140,15 +1140,15 @@
 
 %% Example:
 %% git_configuration() :: #{
-%%   <<"pullRequest">> => list(git_pull_request_filter()()),
-%%   <<"push">> => list(git_push_filter()()),
+%%   <<"pullRequest">> => list(git_pull_request_filter()),
+%%   <<"push">> => list(git_push_filter()),
 %%   <<"sourceActionName">> => string()
 %% }
 -type git_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_action_types_output() :: #{
-%%   <<"actionTypes">> => list(action_type()()),
+%%   <<"actionTypes">> => list(action_type()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_action_types_output() :: #{binary() => any()}.
@@ -1166,7 +1166,7 @@
 %% webhook_definition() :: #{
 %%   <<"authentication">> => list(any()),
 %%   <<"authenticationConfiguration">> => webhook_auth_configuration(),
-%%   <<"filters">> => list(webhook_filter_rule()()),
+%%   <<"filters">> => list(webhook_filter_rule()),
 %%   <<"name">> => string(),
 %%   <<"targetAction">> => string(),
 %%   <<"targetPipeline">> => string()
@@ -1176,7 +1176,7 @@
 %% Example:
 %% condition() :: #{
 %%   <<"result">> => list(any()),
-%%   <<"rules">> => list(rule_declaration()())
+%%   <<"rules">> => list(rule_declaration())
 %% }
 -type condition() :: #{binary() => any()}.
 
@@ -1204,7 +1204,7 @@
 %%   <<"created">> => non_neg_integer(),
 %%   <<"pipelineName">> => string(),
 %%   <<"pipelineVersion">> => integer(),
-%%   <<"stageStates">> => list(stage_state()()),
+%%   <<"stageStates">> => list(stage_state()),
 %%   <<"updated">> => non_neg_integer()
 %% }
 -type get_pipeline_state_output() :: #{binary() => any()}.
@@ -1221,7 +1221,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -1249,7 +1249,7 @@
 %% Example:
 %% deploy_action_execution_target() :: #{
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"events">> => list(deploy_target_event()()),
+%%   <<"events">> => list(deploy_target_event()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => string(),
 %%   <<"targetId">> => string(),
@@ -1267,8 +1267,8 @@
 
 %% Example:
 %% git_tag_filter_criteria() :: #{
-%%   <<"excludes">> => list(string()()),
-%%   <<"includes">> => list(string()())
+%%   <<"excludes">> => list(string()),
+%%   <<"includes">> => list(string())
 %% }
 -type git_tag_filter_criteria() :: #{binary() => any()}.
 
@@ -1288,9 +1288,9 @@
 
 %% Example:
 %% rule_declaration() :: #{
-%%   <<"commands">> => list(string()()),
+%%   <<"commands">> => list(string()),
 %%   <<"configuration">> => map(),
-%%   <<"inputArtifacts">> => list(input_artifact()()),
+%%   <<"inputArtifacts">> => list(input_artifact()),
 %%   <<"name">> => string(),
 %%   <<"region">> => string(),
 %%   <<"roleArn">> => string(),
@@ -1301,14 +1301,14 @@
 
 %% Example:
 %% poll_for_jobs_output() :: #{
-%%   <<"jobs">> => list(job()())
+%%   <<"jobs">> => list(job())
 %% }
 -type poll_for_jobs_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_rule_executions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"ruleExecutionDetails">> => list(rule_execution_detail()())
+%%   <<"ruleExecutionDetails">> => list(rule_execution_detail())
 %% }
 -type list_rule_executions_output() :: #{binary() => any()}.
 
@@ -1347,7 +1347,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1388,8 +1388,8 @@
 %% start_pipeline_execution_input() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"name">> := string(),
-%%   <<"sourceRevisions">> => list(source_revision_override()()),
-%%   <<"variables">> => list(pipeline_variable()())
+%%   <<"sourceRevisions">> => list(source_revision_override()),
+%%   <<"variables">> => list(pipeline_variable())
 %% }
 -type start_pipeline_execution_input() :: #{binary() => any()}.
 
@@ -1424,7 +1424,7 @@
 %% Example:
 %% target_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type target_filter() :: #{binary() => any()}.
 
@@ -1486,7 +1486,7 @@
 %% Example:
 %% create_custom_action_type_output() :: #{
 %%   <<"actionType">> => action_type(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_custom_action_type_output() :: #{binary() => any()}.
 
@@ -1514,7 +1514,7 @@
 
 %% Example:
 %% poll_for_third_party_jobs_output() :: #{
-%%   <<"jobs">> => list(third_party_job()())
+%%   <<"jobs">> => list(third_party_job())
 %% }
 -type poll_for_third_party_jobs_output() :: #{binary() => any()}.
 
@@ -1531,7 +1531,7 @@
 %% action_execution_input() :: #{
 %%   <<"actionTypeId">> => action_type_id(),
 %%   <<"configuration">> => map(),
-%%   <<"inputArtifacts">> => list(artifact_detail()()),
+%%   <<"inputArtifacts">> => list(artifact_detail()),
 %%   <<"namespace">> => string(),
 %%   <<"region">> => string(),
 %%   <<"resolvedConfiguration">> => map(),
@@ -1620,7 +1620,7 @@
 %% Example:
 %% list_pipelines_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"pipelines">> => list(pipeline_summary()())
+%%   <<"pipelines">> => list(pipeline_summary())
 %% }
 -type list_pipelines_output() :: #{binary() => any()}.
 
@@ -1654,9 +1654,9 @@
 
 %% Example:
 %% stage_declaration() :: #{
-%%   <<"actions">> => list(action_declaration()()),
+%%   <<"actions">> => list(action_declaration()),
 %%   <<"beforeEntry">> => before_entry_conditions(),
-%%   <<"blockers">> => list(blocker_declaration()()),
+%%   <<"blockers">> => list(blocker_declaration()),
 %%   <<"name">> => string(),
 %%   <<"onFailure">> => failure_conditions(),
 %%   <<"onSuccess">> => success_conditions()
@@ -1666,12 +1666,12 @@
 %% Example:
 %% create_custom_action_type_input() :: #{
 %%   <<"category">> := list(any()),
-%%   <<"configurationProperties">> => list(action_configuration_property()()),
+%%   <<"configurationProperties">> => list(action_configuration_property()),
 %%   <<"inputArtifactDetails">> := artifact_details(),
 %%   <<"outputArtifactDetails">> := artifact_details(),
 %%   <<"provider">> := string(),
 %%   <<"settings">> => action_type_settings(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"version">> := string()
 %% }
 -type create_custom_action_type_input() :: #{binary() => any()}.
@@ -1684,7 +1684,7 @@
 
 %% Example:
 %% stage_condition_state() :: #{
-%%   <<"conditionStates">> => list(condition_state()()),
+%%   <<"conditionStates">> => list(condition_state()),
 %%   <<"latestExecution">> => stage_conditions_execution()
 %% }
 -type stage_condition_state() :: #{binary() => any()}.
@@ -1722,7 +1722,7 @@
 %% Example:
 %% list_deploy_action_execution_targets_input() :: #{
 %%   <<"actionExecutionId">> := string(),
-%%   <<"filters">> => list(target_filter()()),
+%%   <<"filters">> => list(target_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"pipelineName">> => string()
@@ -1731,7 +1731,7 @@
 
 %% Example:
 %% before_entry_conditions() :: #{
-%%   <<"conditions">> => list(condition()())
+%%   <<"conditions">> => list(condition())
 %% }
 -type before_entry_conditions() :: #{binary() => any()}.
 
@@ -1744,10 +1744,10 @@
 
 %% Example:
 %% stage_state() :: #{
-%%   <<"actionStates">> => list(action_state()()),
+%%   <<"actionStates">> => list(action_state()),
 %%   <<"beforeEntryConditionState">> => stage_condition_state(),
 %%   <<"inboundExecution">> => stage_execution(),
-%%   <<"inboundExecutions">> => list(stage_execution()()),
+%%   <<"inboundExecutions">> => list(stage_execution()),
 %%   <<"inboundTransitionState">> => transition_state(),
 %%   <<"latestExecution">> => stage_execution(),
 %%   <<"onFailureConditionState">> => stage_condition_state(),
@@ -1936,7 +1936,7 @@
 %% Example:
 %% rule_execution_input() :: #{
 %%   <<"configuration">> => map(),
-%%   <<"inputArtifacts">> => list(artifact_detail()()),
+%%   <<"inputArtifacts">> => list(artifact_detail()),
 %%   <<"region">> => string(),
 %%   <<"resolvedConfiguration">> => map(),
 %%   <<"roleArn">> => string(),
@@ -1960,7 +1960,7 @@
 %%   <<"inputArtifactDetails">> => action_type_artifact_details(),
 %%   <<"outputArtifactDetails">> => action_type_artifact_details(),
 %%   <<"permissions">> => action_type_permissions(),
-%%   <<"properties">> => list(action_type_property()()),
+%%   <<"properties">> => list(action_type_property()),
 %%   <<"urls">> => action_type_urls()
 %% }
 -type action_type_declaration() :: #{binary() => any()}.
@@ -1973,7 +1973,7 @@
 
 %% Example:
 %% action_type() :: #{
-%%   <<"actionConfigurationProperties">> => list(action_configuration_property()()),
+%%   <<"actionConfigurationProperties">> => list(action_configuration_property()),
 %%   <<"id">> => action_type_id(),
 %%   <<"inputArtifactDetails">> => artifact_details(),
 %%   <<"outputArtifactDetails">> => artifact_details(),
@@ -2019,7 +2019,7 @@
 
 %% Example:
 %% success_conditions() :: #{
-%%   <<"conditions">> => list(condition()())
+%%   <<"conditions">> => list(condition())
 %% }
 -type success_conditions() :: #{binary() => any()}.
 

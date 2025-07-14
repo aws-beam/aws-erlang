@@ -94,7 +94,7 @@
 
 %% Example:
 %% list_graph_snapshots_output() :: #{
-%%   <<"graphSnapshots">> => list(graph_snapshot_summary()()),
+%%   <<"graphSnapshots">> => list(graph_snapshot_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_graph_snapshots_output() :: #{binary() => any()}.
@@ -138,7 +138,7 @@
 %% Example:
 %% create_private_graph_endpoint_output() :: #{
 %%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcEndpointId">> => string(),
 %%   <<"vpcId">> => string()
 %% }
@@ -255,7 +255,7 @@
 %% Example:
 %% delete_private_graph_endpoint_output() :: #{
 %%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcEndpointId">> => string(),
 %%   <<"vpcId">> => string()
 %% }
@@ -301,7 +301,7 @@
 %% Example:
 %% list_export_tasks_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(export_task_summary()())
+%%   <<"tasks">> => list(export_task_summary())
 %% }
 -type list_export_tasks_output() :: #{binary() => any()}.
 
@@ -347,7 +347,7 @@
 
 %% Example:
 %% list_queries_output() :: #{
-%%   <<"queries">> => list(query_summary()())
+%%   <<"queries">> => list(query_summary())
 %% }
 -type list_queries_output() :: #{binary() => any()}.
 
@@ -424,9 +424,9 @@
 
 %% Example:
 %% create_private_graph_endpoint_input() :: #{
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string(),
-%%   <<"vpcSecurityGroupIds">> => list(string()())
+%%   <<"vpcSecurityGroupIds">> => list(string())
 %% }
 -type create_private_graph_endpoint_input() :: #{binary() => any()}.
 
@@ -440,7 +440,7 @@
 
 %% Example:
 %% list_graphs_output() :: #{
-%%   <<"graphs">> => list(graph_summary()()),
+%%   <<"graphs">> => list(graph_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_graphs_output() :: #{binary() => any()}.
@@ -564,11 +564,11 @@
 %% Example:
 %% graph_data_summary() :: #{
 %%   <<"edgeLabels">> => list([string()]()),
-%%   <<"edgeProperties">> => list(map()()),
-%%   <<"edgeStructures">> => list(edge_structure()()),
+%%   <<"edgeProperties">> => list(map()),
+%%   <<"edgeStructures">> => list(edge_structure()),
 %%   <<"nodeLabels">> => list([string()]()),
-%%   <<"nodeProperties">> => list(map()()),
-%%   <<"nodeStructures">> => list(node_structure()()),
+%%   <<"nodeProperties">> => list(map()),
+%%   <<"nodeStructures">> => list(node_structure()),
 %%   <<"numEdgeLabels">> => [float()],
 %%   <<"numEdgeProperties">> => [float()],
 %%   <<"numEdges">> => [float()],
@@ -670,7 +670,7 @@
 %% Example:
 %% get_private_graph_endpoint_output() :: #{
 %%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcEndpointId">> => string(),
 %%   <<"vpcId">> => string()
 %% }
@@ -773,7 +773,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -859,7 +859,7 @@
 %% Example:
 %% list_import_tasks_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(import_task_summary()())
+%%   <<"tasks">> => list(import_task_summary())
 %% }
 -type list_import_tasks_output() :: #{binary() => any()}.
 
@@ -891,7 +891,7 @@
 %% Example:
 %% list_private_graph_endpoints_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"privateGraphEndpoints">> => list(private_graph_endpoint_summary()())
+%%   <<"privateGraphEndpoints">> => list(private_graph_endpoint_summary())
 %% }
 -type list_private_graph_endpoints_output() :: #{binary() => any()}.
 
@@ -916,7 +916,7 @@
 %% Example:
 %% private_graph_endpoint_summary() :: #{
 %%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcEndpointId">> => string(),
 %%   <<"vpcId">> => string()
 %% }

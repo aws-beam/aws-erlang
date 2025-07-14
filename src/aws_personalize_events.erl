@@ -38,7 +38,7 @@
 %%   <<"actionId">> => string(),
 %%   <<"eventId">> => string(),
 %%   <<"eventType">> => string(),
-%%   <<"impression">> => list(string()()),
+%%   <<"impression">> => list(string()),
 %%   <<"properties">> => string(),
 %%   <<"recommendationId">> => string(),
 %%   <<"sessionId">> => string(),
@@ -53,7 +53,7 @@
 %%   <<"eventId">> => string(),
 %%   <<"eventType">> => string(),
 %%   <<"eventValue">> => float(),
-%%   <<"impression">> => list(string()()),
+%%   <<"impression">> => list(string()),
 %%   <<"itemId">> => string(),
 %%   <<"metricAttribution">> => metric_attribution(),
 %%   <<"properties">> => string(),
@@ -87,7 +87,7 @@
 
 %% Example:
 %% put_action_interactions_request() :: #{
-%%   <<"actionInteractions">> := list(action_interaction()()),
+%%   <<"actionInteractions">> := list(action_interaction()),
 %%   <<"trackingId">> := string()
 %% }
 -type put_action_interactions_request() :: #{binary() => any()}.
@@ -95,7 +95,7 @@
 
 %% Example:
 %% put_actions_request() :: #{
-%%   <<"actions">> := list(action()()),
+%%   <<"actions">> := list(action()),
 %%   <<"datasetArn">> := string()
 %% }
 -type put_actions_request() :: #{binary() => any()}.
@@ -103,7 +103,7 @@
 
 %% Example:
 %% put_events_request() :: #{
-%%   <<"eventList">> := list(event()()),
+%%   <<"eventList">> := list(event()),
 %%   <<"sessionId">> := string(),
 %%   <<"trackingId">> := string(),
 %%   <<"userId">> => string()
@@ -114,7 +114,7 @@
 %% Example:
 %% put_items_request() :: #{
 %%   <<"datasetArn">> := string(),
-%%   <<"items">> := list(item()())
+%%   <<"items">> := list(item())
 %% }
 -type put_items_request() :: #{binary() => any()}.
 
@@ -122,7 +122,7 @@
 %% Example:
 %% put_users_request() :: #{
 %%   <<"datasetArn">> := string(),
-%%   <<"users">> := list(user()())
+%%   <<"users">> := list(user())
 %% }
 -type put_users_request() :: #{binary() => any()}.
 

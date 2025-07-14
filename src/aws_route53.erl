@@ -263,7 +263,7 @@
 %% delegation_set() :: #{
 %%   <<"CallerReference">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"NameServers">> => list(string()())
+%%   <<"NameServers">> => list(string())
 %% }
 -type delegation_set() :: #{binary() => any()}.
 
@@ -331,7 +331,7 @@
 
 %% Example:
 %% list_hosted_zones_by_vpc_response() :: #{
-%%   <<"HostedZoneSummaries">> => list(hosted_zone_summary()()),
+%%   <<"HostedZoneSummaries">> => list(hosted_zone_summary()),
 %%   <<"MaxItems">> => [integer()],
 %%   <<"NextToken">> => string()
 %% }
@@ -368,7 +368,7 @@
 %% Example:
 %% cloud_watch_alarm_configuration() :: #{
 %%   <<"ComparisonOperator">> => list(any()),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"EvaluationPeriods">> => integer(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
@@ -411,7 +411,7 @@
 %% Example:
 %% invalid_change_batch() :: #{
 %%   <<"message">> => string(),
-%%   <<"messages">> => list(string()())
+%%   <<"messages">> => list(string())
 %% }
 -type invalid_change_batch() :: #{binary() => any()}.
 
@@ -462,7 +462,7 @@
 %%   <<"MaxItems">> => [integer()],
 %%   <<"TrafficPolicyInstanceNameMarker">> => string(),
 %%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
-%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance()())
+%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance())
 %% }
 -type list_traffic_policy_instances_by_policy_response() :: #{binary() => any()}.
 
@@ -527,7 +527,7 @@
 %%   <<"MultiValueAnswer">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"Region">> => list(any()),
-%%   <<"ResourceRecords">> => list(resource_record()()),
+%%   <<"ResourceRecords">> => list(resource_record()),
 %%   <<"SetIdentifier">> => string(),
 %%   <<"TTL">> => float(),
 %%   <<"TrafficPolicyInstanceId">> => string(),
@@ -635,14 +635,14 @@
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"MaxItems">> => [integer()],
 %%   <<"TrafficPolicyIdMarker">> => string(),
-%%   <<"TrafficPolicySummaries">> => list(traffic_policy_summary()())
+%%   <<"TrafficPolicySummaries">> => list(traffic_policy_summary())
 %% }
 -type list_traffic_policies_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_reusable_delegation_sets_response() :: #{
-%%   <<"DelegationSets">> => list(delegation_set()()),
+%%   <<"DelegationSets">> => list(delegation_set()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()],
@@ -708,7 +708,7 @@
 
 %% Example:
 %% change_batch() :: #{
-%%   <<"Changes">> => list(change()()),
+%%   <<"Changes">> => list(change()),
 %%   <<"Comment">> => string()
 %% }
 -type change_batch() :: #{binary() => any()}.
@@ -771,8 +771,8 @@
 
 %% Example:
 %% change_tags_for_resource_request() :: #{
-%%   <<"AddTags">> => list(tag()()),
-%%   <<"RemoveTagKeys">> => list(string()())
+%%   <<"AddTags">> => list(tag()),
+%%   <<"RemoveTagKeys">> => list(string())
 %% }
 -type change_tags_for_resource_request() :: #{binary() => any()}.
 
@@ -787,7 +787,7 @@
 %% Example:
 %% list_query_logging_configs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"QueryLoggingConfigs">> => list(query_logging_config()())
+%%   <<"QueryLoggingConfigs">> => list(query_logging_config())
 %% }
 -type list_query_logging_configs_response() :: #{binary() => any()}.
 
@@ -844,7 +844,7 @@
 
 %% Example:
 %% list_tags_for_resources_response() :: #{
-%%   <<"ResourceTagSets">> => list(resource_tag_set()())
+%%   <<"ResourceTagSets">> => list(resource_tag_set())
 %% }
 -type list_tags_for_resources_response() :: #{binary() => any()}.
 
@@ -855,7 +855,7 @@
 
 %% Example:
 %% list_geo_locations_response() :: #{
-%%   <<"GeoLocationDetailsList">> => list(geo_location_details()()),
+%%   <<"GeoLocationDetailsList">> => list(geo_location_details()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"MaxItems">> => [integer()],
 %%   <<"NextContinentCode">> => string(),
@@ -916,7 +916,7 @@
 %% Example:
 %% cidr_collection_change() :: #{
 %%   <<"Action">> => list(any()),
-%%   <<"CidrList">> => list(string()()),
+%%   <<"CidrList">> => list(string()),
 %%   <<"LocationName">> => string()
 %% }
 -type cidr_collection_change() :: #{binary() => any()}.
@@ -924,14 +924,14 @@
 
 %% Example:
 %% get_health_check_last_failure_reason_response() :: #{
-%%   <<"HealthCheckObservations">> => list(health_check_observation()())
+%%   <<"HealthCheckObservations">> => list(health_check_observation())
 %% }
 -type get_health_check_last_failure_reason_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_checker_ip_ranges_response() :: #{
-%%   <<"CheckerIpRanges">> => list(string()())
+%%   <<"CheckerIpRanges">> => list(string())
 %% }
 -type get_checker_ip_ranges_response() :: #{binary() => any()}.
 
@@ -943,7 +943,7 @@
 %%   <<"MaxItems">> => [integer()],
 %%   <<"TrafficPolicyInstanceNameMarker">> => string(),
 %%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
-%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance()())
+%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance())
 %% }
 -type list_traffic_policy_instances_response() :: #{binary() => any()}.
 
@@ -1021,7 +1021,7 @@
 
 %% Example:
 %% list_cidr_blocks_response() :: #{
-%%   <<"CidrBlocks">> => list(cidr_block_summary()()),
+%%   <<"CidrBlocks">> => list(cidr_block_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cidr_blocks_response() :: #{binary() => any()}.
@@ -1085,7 +1085,7 @@
 
 %% Example:
 %% list_cidr_collections_response() :: #{
-%%   <<"CidrCollections">> => list(collection_summary()()),
+%%   <<"CidrCollections">> => list(collection_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cidr_collections_response() :: #{binary() => any()}.
@@ -1097,7 +1097,7 @@
 
 %% Example:
 %% list_health_checks_response() :: #{
-%%   <<"HealthChecks">> => list(health_check()()),
+%%   <<"HealthChecks">> => list(health_check()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()],
@@ -1118,7 +1118,7 @@
 %% get_hosted_zone_response() :: #{
 %%   <<"DelegationSet">> => delegation_set(),
 %%   <<"HostedZone">> => hosted_zone(),
-%%   <<"VPCs">> => list(vpc()())
+%%   <<"VPCs">> => list(vpc())
 %% }
 -type get_hosted_zone_response() :: #{binary() => any()}.
 
@@ -1192,7 +1192,7 @@
 %% resource_tag_set() :: #{
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type resource_tag_set() :: #{binary() => any()}.
 
@@ -1287,7 +1287,7 @@
 %% list_hosted_zones_by_name_response() :: #{
 %%   <<"DNSName">> => string(),
 %%   <<"HostedZoneId">> => string(),
-%%   <<"HostedZones">> => list(hosted_zone()()),
+%%   <<"HostedZones">> => list(hosted_zone()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"MaxItems">> => [integer()],
 %%   <<"NextDNSName">> => string(),
@@ -1310,7 +1310,7 @@
 
 %% Example:
 %% list_hosted_zones_response() :: #{
-%%   <<"HostedZones">> => list(hosted_zone()()),
+%%   <<"HostedZones">> => list(hosted_zone()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => [integer()],
@@ -1413,7 +1413,7 @@
 %% Example:
 %% update_health_check_request() :: #{
 %%   <<"AlarmIdentifier">> => alarm_identifier(),
-%%   <<"ChildHealthChecks">> => list(string()()),
+%%   <<"ChildHealthChecks">> => list(string()),
 %%   <<"Disabled">> => boolean(),
 %%   <<"EnableSNI">> => boolean(),
 %%   <<"FailureThreshold">> => integer(),
@@ -1496,7 +1496,7 @@
 %% list_vpc_association_authorizations_response() :: #{
 %%   <<"HostedZoneId">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"VPCs">> => list(vpc()())
+%%   <<"VPCs">> => list(vpc())
 %% }
 -type list_vpc_association_authorizations_response() :: #{binary() => any()}.
 
@@ -1515,7 +1515,7 @@
 %%   <<"MaxItems">> => [integer()],
 %%   <<"TrafficPolicyInstanceNameMarker">> => string(),
 %%   <<"TrafficPolicyInstanceTypeMarker">> => list(any()),
-%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance()())
+%%   <<"TrafficPolicyInstances">> => list(traffic_policy_instance())
 %% }
 -type list_traffic_policy_instances_by_hosted_zone_response() :: #{binary() => any()}.
 
@@ -1599,7 +1599,7 @@
 
 %% Example:
 %% get_dns_sec_response() :: #{
-%%   <<"KeySigningKeys">> => list(key_signing_key()()),
+%%   <<"KeySigningKeys">> => list(key_signing_key()),
 %%   <<"Status">> => dns_sec_status()
 %% }
 -type get_dns_sec_response() :: #{binary() => any()}.
@@ -1627,14 +1627,14 @@
 
 %% Example:
 %% list_tags_for_resources_request() :: #{
-%%   <<"ResourceIds">> := list(string()())
+%%   <<"ResourceIds">> := list(string())
 %% }
 -type list_tags_for_resources_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_cidr_locations_response() :: #{
-%%   <<"CidrLocations">> => list(location_summary()()),
+%%   <<"CidrLocations">> => list(location_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cidr_locations_response() :: #{binary() => any()}.
@@ -1703,7 +1703,7 @@
 %% Example:
 %% health_check_config() :: #{
 %%   <<"AlarmIdentifier">> => alarm_identifier(),
-%%   <<"ChildHealthChecks">> => list(string()()),
+%%   <<"ChildHealthChecks">> => list(string()),
 %%   <<"Disabled">> => boolean(),
 %%   <<"EnableSNI">> => boolean(),
 %%   <<"FailureThreshold">> => integer(),
@@ -1766,7 +1766,7 @@
 %% list_traffic_policy_versions_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"MaxItems">> => [integer()],
-%%   <<"TrafficPolicies">> => list(traffic_policy()()),
+%%   <<"TrafficPolicies">> => list(traffic_policy()),
 %%   <<"TrafficPolicyVersionMarker">> => string()
 %% }
 -type list_traffic_policy_versions_response() :: #{binary() => any()}.
@@ -1988,7 +1988,7 @@
 
 %% Example:
 %% get_health_check_status_response() :: #{
-%%   <<"HealthCheckObservations">> => list(health_check_observation()())
+%%   <<"HealthCheckObservations">> => list(health_check_observation())
 %% }
 -type get_health_check_status_response() :: #{binary() => any()}.
 
@@ -2000,7 +2000,7 @@
 %%   <<"NextRecordIdentifier">> => string(),
 %%   <<"NextRecordName">> => string(),
 %%   <<"NextRecordType">> => list(any()),
-%%   <<"ResourceRecordSets">> => list(resource_record_set()())
+%%   <<"ResourceRecordSets">> => list(resource_record_set())
 %% }
 -type list_resource_record_sets_response() :: #{binary() => any()}.
 
@@ -2088,7 +2088,7 @@
 %% test_dns_answer_response() :: #{
 %%   <<"Nameserver">> => string(),
 %%   <<"Protocol">> => string(),
-%%   <<"RecordData">> => list(string()()),
+%%   <<"RecordData">> => list(string()),
 %%   <<"RecordName">> => string(),
 %%   <<"RecordType">> => list(any()),
 %%   <<"ResponseCode">> => string()
@@ -2132,7 +2132,7 @@
 
 %% Example:
 %% change_cidr_collection_request() :: #{
-%%   <<"Changes">> := list(cidr_collection_change()()),
+%%   <<"Changes">> := list(cidr_collection_change()),
 %%   <<"CollectionVersion">> => float()
 %% }
 -type change_cidr_collection_request() :: #{binary() => any()}.

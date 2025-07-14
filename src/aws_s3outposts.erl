@@ -70,7 +70,7 @@
 %%   <<"CustomerOwnedIpv4Pool">> => string(),
 %%   <<"EndpointArn">> => string(),
 %%   <<"FailedReason">> => failed_reason(),
-%%   <<"NetworkInterfaces">> => list(network_interface()()),
+%%   <<"NetworkInterfaces">> => list(network_interface()),
 %%   <<"OutpostsId">> => string(),
 %%   <<"SecurityGroupId">> => string(),
 %%   <<"Status">> => list(any()),
@@ -105,7 +105,7 @@
 
 %% Example:
 %% list_endpoints_result() :: #{
-%%   <<"Endpoints">> => list(endpoint()()),
+%%   <<"Endpoints">> => list(endpoint()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_endpoints_result() :: #{binary() => any()}.
@@ -122,7 +122,7 @@
 %% Example:
 %% list_outposts_with_s3_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Outposts">> => list(outpost()())
+%%   <<"Outposts">> => list(outpost())
 %% }
 -type list_outposts_with_s3_result() :: #{binary() => any()}.
 
@@ -138,7 +138,7 @@
 
 %% Example:
 %% list_shared_endpoints_result() :: #{
-%%   <<"Endpoints">> => list(endpoint()()),
+%%   <<"Endpoints">> => list(endpoint()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_shared_endpoints_result() :: #{binary() => any()}.

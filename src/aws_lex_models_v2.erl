@@ -332,7 +332,7 @@
 %% Example:
 %% list_bot_locales_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botLocaleSummaries">> => list(bot_locale_summary()()),
+%%   <<"botLocaleSummaries">> => list(bot_locale_summary()),
 %%   <<"botVersion">> => string(),
 %%   <<"nextToken">> => string()
 %% }
@@ -376,7 +376,7 @@
 %%   <<"parentSlotTypeSignature">> => string(),
 %%   <<"slotTypeId">> => string(),
 %%   <<"slotTypeName">> => string(),
-%%   <<"slotTypeValues">> => list(slot_type_value()()),
+%%   <<"slotTypeValues">> => list(slot_type_value()),
 %%   <<"valueSelectionSetting">> => slot_value_selection_setting()
 %% }
 -type update_slot_type_response() :: #{binary() => any()}.
@@ -417,7 +417,7 @@
 %% intent_level_slot_resolution_test_result_item() :: #{
 %%   <<"intentName">> => string(),
 %%   <<"multiTurnConversation">> => boolean(),
-%%   <<"slotResolutionResults">> => list(slot_resolution_test_result_item()())
+%%   <<"slotResolutionResults">> => list(slot_resolution_test_result_item())
 %% }
 -type intent_level_slot_resolution_test_result_item() :: #{binary() => any()}.
 
@@ -432,10 +432,10 @@
 
 %% Example:
 %% analytics_utterance_result() :: #{
-%%   <<"attributeResults">> => list(analytics_utterance_attribute_result()()),
-%%   <<"binKeys">> => list(analytics_bin_key()()),
-%%   <<"groupByKeys">> => list(analytics_utterance_group_by_key()()),
-%%   <<"metricsResults">> => list(analytics_utterance_metric_result()())
+%%   <<"attributeResults">> => list(analytics_utterance_attribute_result()),
+%%   <<"binKeys">> => list(analytics_bin_key()),
+%%   <<"groupByKeys">> => list(analytics_utterance_group_by_key()),
+%%   <<"metricsResults">> => list(analytics_utterance_metric_result())
 %% }
 -type analytics_utterance_result() :: #{binary() => any()}.
 
@@ -464,7 +464,7 @@
 %% Example:
 %% list_bot_version_replicas_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botVersionReplicaSummaries">> => list(bot_version_replica_summary()()),
+%%   <<"botVersionReplicaSummaries">> => list(bot_version_replica_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"replicaRegion">> => string(),
 %%   <<"sourceRegion">> => string()
@@ -476,8 +476,8 @@
 %% conversation_level_test_result_item() :: #{
 %%   <<"conversationId">> => string(),
 %%   <<"endToEndResult">> => list(any()),
-%%   <<"intentClassificationResults">> => list(conversation_level_intent_classification_result_item()()),
-%%   <<"slotResolutionResults">> => list(conversation_level_slot_resolution_result_item()()),
+%%   <<"intentClassificationResults">> => list(conversation_level_intent_classification_result_item()),
+%%   <<"slotResolutionResults">> => list(conversation_level_slot_resolution_result_item()),
 %%   <<"speechTranscriptionResult">> => list(any())
 %% }
 -type conversation_level_test_result_item() :: #{binary() => any()}.
@@ -542,17 +542,17 @@
 %%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
 %%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
 %%   <<"initialResponseSetting">> => initial_response_setting(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
 %%   <<"intentName">> := string(),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string(),
 %%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
-%%   <<"sampleUtterances">> => list(sample_utterance()()),
-%%   <<"slotPriorities">> => list(slot_priority()())
+%%   <<"sampleUtterances">> => list(sample_utterance()),
+%%   <<"slotPriorities">> => list(slot_priority())
 %% }
 -type update_intent_request() :: #{binary() => any()}.
 
@@ -608,7 +608,7 @@
 %% fulfillment_update_response_specification() :: #{
 %%   <<"allowInterrupt">> => boolean(),
 %%   <<"frequencyInSeconds">> => integer(),
-%%   <<"messageGroups">> => list(message_group()())
+%%   <<"messageGroups">> => list(message_group())
 %% }
 -type fulfillment_update_response_specification() :: #{binary() => any()}.
 
@@ -642,7 +642,7 @@
 %% Example:
 %% describe_bot_version_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botMembers">> => list(bot_member()()),
+%%   <<"botMembers">> => list(bot_member()),
 %%   <<"botName">> => string(),
 %%   <<"botStatus">> => list(any()),
 %%   <<"botType">> => list(any()),
@@ -650,9 +650,9 @@
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"dataPrivacy">> => data_privacy(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"parentBotNetworks">> => list(parent_bot_network()()),
+%%   <<"parentBotNetworks">> => list(parent_bot_network()),
 %%   <<"roleArn">> => string()
 %% }
 -type describe_bot_version_response() :: #{binary() => any()}.
@@ -674,7 +674,7 @@
 %% describe_test_execution_response() :: #{
 %%   <<"apiMode">> => list(any()),
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"target">> => test_execution_target(),
 %%   <<"testExecutionId">> => string(),
@@ -690,7 +690,7 @@
 %% list_intents_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"intentSummaries">> => list(intent_summary()()),
+%%   <<"intentSummaries">> => list(intent_summary()),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string()
 %% }
@@ -701,7 +701,7 @@
 %% analytics_utterance_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type analytics_utterance_filter() :: #{binary() => any()}.
 
@@ -738,12 +738,12 @@
 
 %% Example:
 %% list_intent_stage_metrics_request() :: #{
-%%   <<"binBy">> => list(analytics_bin_by_specification()()),
+%%   <<"binBy">> => list(analytics_bin_by_specification()),
 %%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_intent_stage_filter()()),
-%%   <<"groupBy">> => list(analytics_intent_stage_group_by_specification()()),
+%%   <<"filters">> => list(analytics_intent_stage_filter()),
+%%   <<"groupBy">> => list(analytics_intent_stage_group_by_specification()),
 %%   <<"maxResults">> => integer(),
-%%   <<"metrics">> := list(analytics_intent_stage_metric()()),
+%%   <<"metrics">> := list(analytics_intent_stage_metric()),
 %%   <<"nextToken">> => string(),
 %%   <<"startDateTime">> := non_neg_integer()
 %% }
@@ -753,7 +753,7 @@
 %% Example:
 %% message_group() :: #{
 %%   <<"message">> => message(),
-%%   <<"variations">> => list(message()())
+%%   <<"variations">> => list(message())
 %% }
 -type message_group() :: #{binary() => any()}.
 
@@ -763,7 +763,7 @@
 %%   <<"botId">> => string(),
 %%   <<"botReplicaStatus">> => list(any()),
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"replicaRegion">> => string(),
 %%   <<"sourceRegion">> => string()
 %% }
@@ -777,7 +777,7 @@
 %%   <<"botVersion">> => string(),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"summaryList">> => list(recommended_intent_summary()())
+%%   <<"summaryList">> => list(recommended_intent_summary())
 %% }
 -type list_recommended_intents_response() :: #{binary() => any()}.
 
@@ -845,7 +845,7 @@
 %%   <<"botVersion">> => string(),
 %%   <<"intentId">> => string(),
 %%   <<"localeId">> => string(),
-%%   <<"sampleUtterances">> => list(sample_utterance()())
+%%   <<"sampleUtterances">> => list(sample_utterance())
 %% }
 -type generate_bot_element_response() :: #{binary() => any()}.
 
@@ -861,7 +861,7 @@
 
 %% Example:
 %% path_format() :: #{
-%%   <<"objectPrefixes">> => list(string()())
+%%   <<"objectPrefixes">> => list(string())
 %% }
 -type path_format() :: #{binary() => any()}.
 
@@ -899,7 +899,7 @@
 %%   <<"domainEndpoint">> => string(),
 %%   <<"exactResponse">> => boolean(),
 %%   <<"exactResponseFields">> => exact_response_fields(),
-%%   <<"includeFields">> => list(string()()),
+%%   <<"includeFields">> => list(string()),
 %%   <<"indexName">> => string()
 %% }
 -type opensearch_configuration() :: #{binary() => any()}.
@@ -1049,15 +1049,15 @@
 %% analytics_path_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type analytics_path_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% test_set_discrepancy_errors() :: #{
-%%   <<"intentDiscrepancies">> => list(test_set_intent_discrepancy_item()()),
-%%   <<"slotDiscrepancies">> => list(test_set_slot_discrepancy_item()())
+%%   <<"intentDiscrepancies">> => list(test_set_intent_discrepancy_item()),
+%%   <<"slotDiscrepancies">> => list(test_set_slot_discrepancy_item())
 %% }
 -type test_set_discrepancy_errors() :: #{binary() => any()}.
 
@@ -1074,7 +1074,7 @@
 %% export_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type export_filter() :: #{binary() => any()}.
 
@@ -1088,7 +1088,7 @@
 
 %% Example:
 %% overall_test_results() :: #{
-%%   <<"items">> => list(overall_test_result_item()())
+%%   <<"items">> => list(overall_test_result_item())
 %% }
 -type overall_test_results() :: #{binary() => any()}.
 
@@ -1201,7 +1201,7 @@
 %% prompt_specification() :: #{
 %%   <<"allowInterrupt">> => boolean(),
 %%   <<"maxRetries">> => integer(),
-%%   <<"messageGroups">> => list(message_group()()),
+%%   <<"messageGroups">> => list(message_group()),
 %%   <<"messageSelectionStrategy">> => list(any()),
 %%   <<"promptAttemptsSpecification">> => map()
 %% }
@@ -1210,7 +1210,7 @@
 
 %% Example:
 %% batch_create_custom_vocabulary_item_request() :: #{
-%%   <<"customVocabularyItemList">> := list(new_custom_vocabulary_item()())
+%%   <<"customVocabularyItemList">> := list(new_custom_vocabulary_item())
 %% }
 -type batch_create_custom_vocabulary_item_request() :: #{binary() => any()}.
 
@@ -1227,7 +1227,7 @@
 %% fulfillment_start_response_specification() :: #{
 %%   <<"allowInterrupt">> => boolean(),
 %%   <<"delayInSeconds">> => integer(),
-%%   <<"messageGroups">> => list(message_group()())
+%%   <<"messageGroups">> => list(message_group())
 %% }
 -type fulfillment_start_response_specification() :: #{binary() => any()}.
 
@@ -1257,7 +1257,7 @@
 %%   <<"aggregationDuration">> := utterance_aggregation_duration(),
 %%   <<"botAliasId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"filters">> => list(aggregated_utterances_filter()()),
+%%   <<"filters">> => list(aggregated_utterances_filter()),
 %%   <<"localeId">> := string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -1269,7 +1269,7 @@
 %% Example:
 %% associated_transcript_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type associated_transcript_filter() :: #{binary() => any()}.
 
@@ -1289,7 +1289,7 @@
 
 %% Example:
 %% search_associated_transcripts_request() :: #{
-%%   <<"filters">> := list(associated_transcript_filter()()),
+%%   <<"filters">> := list(associated_transcript_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextIndex">> => integer(),
 %%   <<"searchOrder">> => list(any())
@@ -1312,11 +1312,11 @@
 %% Example:
 %% intent_summary() :: #{
 %%   <<"description">> => string(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentId">> => string(),
 %%   <<"intentName">> => string(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string()
 %% }
 -type intent_summary() :: #{binary() => any()}.
@@ -1340,7 +1340,7 @@
 
 %% Example:
 %% list_intents_request() :: #{
-%%   <<"filters">> => list(intent_filter()()),
+%%   <<"filters">> => list(intent_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sortBy">> => intent_sort_by()
@@ -1359,7 +1359,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1442,7 +1442,7 @@
 
 %% Example:
 %% image_response_card() :: #{
-%%   <<"buttons">> => list(button()()),
+%%   <<"buttons">> => list(button()),
 %%   <<"imageUrl">> => string(),
 %%   <<"subtitle">> => string(),
 %%   <<"title">> => string()
@@ -1462,7 +1462,7 @@
 %% list_exports_request() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"filters">> => list(export_filter()()),
+%%   <<"filters">> => list(export_filter()),
 %%   <<"localeId">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -1474,7 +1474,7 @@
 %% Example:
 %% list_test_set_records_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testSetRecords">> => list(test_set_turn_record()())
+%%   <<"testSetRecords">> => list(test_set_turn_record())
 %% }
 -type list_test_set_records_response() :: #{binary() => any()}.
 
@@ -1491,7 +1491,7 @@
 %% Example:
 %% list_intent_paths_request() :: #{
 %%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_path_filter()()),
+%%   <<"filters">> => list(analytics_path_filter()),
 %%   <<"intentPath">> := string(),
 %%   <<"startDateTime">> := non_neg_integer()
 %% }
@@ -1518,7 +1518,7 @@
 %% list_intent_metrics_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"results">> => list(analytics_intent_result()())
+%%   <<"results">> => list(analytics_intent_result())
 %% }
 -type list_intent_metrics_response() :: #{binary() => any()}.
 
@@ -1535,7 +1535,7 @@
 
 %% Example:
 %% batch_update_custom_vocabulary_item_request() :: #{
-%%   <<"customVocabularyItemList">> := list(custom_vocabulary_item()())
+%%   <<"customVocabularyItemList">> := list(custom_vocabulary_item())
 %% }
 -type batch_update_custom_vocabulary_item_request() :: #{binary() => any()}.
 
@@ -1544,7 +1544,7 @@
 %% describe_test_set_generation_response() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"generationDataSource">> => test_set_generation_data_source(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"roleArn">> => string(),
@@ -1591,7 +1591,7 @@
 
 %% Example:
 %% search_associated_transcripts_response() :: #{
-%%   <<"associatedTranscripts">> => list(associated_transcript()()),
+%%   <<"associatedTranscripts">> => list(associated_transcript()),
 %%   <<"botId">> => string(),
 %%   <<"botRecommendationId">> => string(),
 %%   <<"botVersion">> => string(),
@@ -1607,7 +1607,7 @@
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"generatedBotLocaleUrl">> => string(),
 %%   <<"generationId">> => string(),
 %%   <<"generationInputPrompt">> => string(),
@@ -1670,7 +1670,7 @@
 %% list_imports_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"importSummaries">> => list(import_summary()()),
+%%   <<"importSummaries">> => list(import_summary()),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1700,7 +1700,7 @@
 %%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
 %%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
 %%   <<"initialResponseSetting">> => initial_response_setting(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
 %%   <<"intentId">> => string(),
@@ -1708,12 +1708,12 @@
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"localeId">> => string(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string(),
 %%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
-%%   <<"sampleUtterances">> => list(sample_utterance()()),
-%%   <<"slotPriorities">> => list(slot_priority()())
+%%   <<"sampleUtterances">> => list(sample_utterance()),
+%%   <<"slotPriorities">> => list(slot_priority())
 %% }
 -type update_intent_response() :: #{binary() => any()}.
 
@@ -1737,7 +1737,7 @@
 %%   <<"botVersion">> => string(),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"slotTypeSummaries">> => list(slot_type_summary()())
+%%   <<"slotTypeSummaries">> => list(slot_type_summary())
 %% }
 -type list_slot_types_response() :: #{binary() => any()}.
 
@@ -1770,7 +1770,7 @@
 
 %% Example:
 %% intent_level_slot_resolution_test_results() :: #{
-%%   <<"items">> => list(intent_level_slot_resolution_test_result_item()())
+%%   <<"items">> => list(intent_level_slot_resolution_test_result_item())
 %% }
 -type intent_level_slot_resolution_test_results() :: #{binary() => any()}.
 
@@ -1871,7 +1871,7 @@
 %% list_session_analytics_data_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"sessions">> => list(session_specification()())
+%%   <<"sessions">> => list(session_specification())
 %% }
 -type list_session_analytics_data_response() :: #{binary() => any()}.
 
@@ -1907,7 +1907,7 @@
 
 %% Example:
 %% list_bots_request() :: #{
-%%   <<"filters">> => list(bot_filter()()),
+%%   <<"filters">> => list(bot_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sortBy">> => bot_sort_by()
@@ -1964,14 +1964,14 @@
 %%   <<"intentId">> => string(),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"slotSummaries">> => list(slot_summary()())
+%%   <<"slotSummaries">> => list(slot_summary())
 %% }
 -type list_slots_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_intent_paths_response() :: #{
-%%   <<"nodeSummaries">> => list(analytics_intent_node_summary()())
+%%   <<"nodeSummaries">> => list(analytics_intent_node_summary())
 %% }
 -type list_intent_paths_response() :: #{binary() => any()}.
 
@@ -2021,12 +2021,12 @@
 
 %% Example:
 %% list_intent_metrics_request() :: #{
-%%   <<"binBy">> => list(analytics_bin_by_specification()()),
+%%   <<"binBy">> => list(analytics_bin_by_specification()),
 %%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_intent_filter()()),
-%%   <<"groupBy">> => list(analytics_intent_group_by_specification()()),
+%%   <<"filters">> => list(analytics_intent_filter()),
+%%   <<"groupBy">> => list(analytics_intent_group_by_specification()),
 %%   <<"maxResults">> => integer(),
-%%   <<"metrics">> := list(analytics_intent_metric()()),
+%%   <<"metrics">> := list(analytics_intent_metric()),
 %%   <<"nextToken">> => string(),
 %%   <<"startDateTime">> := non_neg_integer()
 %% }
@@ -2061,7 +2061,7 @@
 %% Example:
 %% describe_bot_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botMembers">> => list(bot_member()()),
+%%   <<"botMembers">> => list(bot_member()),
 %%   <<"botName">> => string(),
 %%   <<"botStatus">> => list(any()),
 %%   <<"botType">> => list(any()),
@@ -2069,7 +2069,7 @@
 %%   <<"dataPrivacy">> => data_privacy(),
 %%   <<"description">> => string(),
 %%   <<"errorLogSettings">> => error_log_settings(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"roleArn">> => string()
@@ -2081,7 +2081,7 @@
 %% analytics_intent_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type analytics_intent_filter() :: #{binary() => any()}.
 
@@ -2115,7 +2115,7 @@
 
 %% Example:
 %% utterance_level_test_results() :: #{
-%%   <<"items">> => list(utterance_level_test_result_item()())
+%%   <<"items">> => list(utterance_level_test_result_item())
 %% }
 -type utterance_level_test_results() :: #{binary() => any()}.
 
@@ -2129,7 +2129,7 @@
 %%   <<"conversationEndState">> => list(any()),
 %%   <<"conversationEndTime">> => non_neg_integer(),
 %%   <<"conversationStartTime">> => non_neg_integer(),
-%%   <<"invokedIntentSamples">> => list(invoked_intent_sample()()),
+%%   <<"invokedIntentSamples">> => list(invoked_intent_sample()),
 %%   <<"localeId">> => string(),
 %%   <<"mode">> => list(any()),
 %%   <<"numberOfTurns">> => float(),
@@ -2164,7 +2164,7 @@
 %%   <<"botVersion">> => string(),
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"encryptionSetting">> => encryption_setting(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"localeId">> => string(),
 %%   <<"transcriptSourceSetting">> => transcript_source_setting()
@@ -2220,11 +2220,11 @@
 
 %% Example:
 %% create_resource_policy_statement_request() :: #{
-%%   <<"action">> := list(string()()),
+%%   <<"action">> := list(string()),
 %%   <<"condition">> => map(),
 %%   <<"effect">> := list(any()),
 %%   <<"expectedRevisionId">> => string(),
-%%   <<"principal">> := list(principal()()),
+%%   <<"principal">> := list(principal()),
 %%   <<"statementId">> := string()
 %% }
 -type create_resource_policy_statement_request() :: #{binary() => any()}.
@@ -2232,7 +2232,7 @@
 
 %% Example:
 %% input_session_state_specification() :: #{
-%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"activeContexts">> => list(active_context()),
 %%   <<"runtimeHints">> => runtime_hints(),
 %%   <<"sessionAttributes">> => map()
 %% }
@@ -2245,16 +2245,16 @@
 %%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
 %%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
 %%   <<"initialResponseSetting">> => initial_response_setting(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
 %%   <<"intentName">> := string(),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string(),
 %%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
-%%   <<"sampleUtterances">> => list(sample_utterance()())
+%%   <<"sampleUtterances">> => list(sample_utterance())
 %% }
 -type create_intent_request() :: #{binary() => any()}.
 
@@ -2262,7 +2262,7 @@
 %% Example:
 %% response_specification() :: #{
 %%   <<"allowInterrupt">> => boolean(),
-%%   <<"messageGroups">> => list(message_group()())
+%%   <<"messageGroups">> => list(message_group())
 %% }
 -type response_specification() :: #{binary() => any()}.
 
@@ -2282,7 +2282,7 @@
 %% Example:
 %% describe_import_response() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"importId">> => string(),
 %%   <<"importStatus">> => list(any()),
 %%   <<"importedResourceId">> => string(),
@@ -2310,7 +2310,7 @@
 %% bot_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type bot_filter() :: #{binary() => any()}.
 
@@ -2338,7 +2338,7 @@
 %% bot_replica_summary() :: #{
 %%   <<"botReplicaStatus">> => list(any()),
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"replicaRegion">> => string()
 %% }
 -type bot_replica_summary() :: #{binary() => any()}.
@@ -2355,14 +2355,14 @@
 %% Example:
 %% slot_type_value() :: #{
 %%   <<"sampleValue">> => sample_value(),
-%%   <<"synonyms">> => list(sample_value()())
+%%   <<"synonyms">> => list(sample_value())
 %% }
 -type slot_type_value() :: #{binary() => any()}.
 
 
 %% Example:
 %% conversation_level_test_results() :: #{
-%%   <<"items">> => list(conversation_level_test_result_item()())
+%%   <<"items">> => list(conversation_level_test_result_item())
 %% }
 -type conversation_level_test_results() :: #{binary() => any()}.
 
@@ -2389,7 +2389,7 @@
 %% slot_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type slot_filter() :: #{binary() => any()}.
 
@@ -2412,7 +2412,7 @@
 %% list_intent_stage_metrics_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"results">> => list(analytics_intent_stage_result()())
+%%   <<"results">> => list(analytics_intent_stage_result())
 %% }
 -type list_intent_stage_metrics_response() :: #{binary() => any()}.
 
@@ -2429,7 +2429,7 @@
 %% slot_value_override() :: #{
 %%   <<"shape">> => list(any()),
 %%   <<"value">> => slot_value(),
-%%   <<"values">> => list(slot_value_override()())
+%%   <<"values">> => list(slot_value_override())
 %% }
 -type slot_value_override() :: #{binary() => any()}.
 
@@ -2438,19 +2438,19 @@
 %% analytics_intent_stage_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type analytics_intent_stage_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_session_metrics_request() :: #{
-%%   <<"binBy">> => list(analytics_bin_by_specification()()),
+%%   <<"binBy">> => list(analytics_bin_by_specification()),
 %%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_session_filter()()),
-%%   <<"groupBy">> => list(analytics_session_group_by_specification()()),
+%%   <<"filters">> => list(analytics_session_filter()),
+%%   <<"groupBy">> => list(analytics_session_group_by_specification()),
 %%   <<"maxResults">> => integer(),
-%%   <<"metrics">> := list(analytics_session_metric()()),
+%%   <<"metrics">> := list(analytics_session_metric()),
 %%   <<"nextToken">> => string(),
 %%   <<"startDateTime">> := non_neg_integer()
 %% }
@@ -2494,7 +2494,7 @@
 %% sub_slot_value_elicitation_setting() :: #{
 %%   <<"defaultValueSpecification">> => slot_default_value_specification(),
 %%   <<"promptSpecification">> => prompt_specification(),
-%%   <<"sampleUtterances">> => list(sample_utterance()()),
+%%   <<"sampleUtterances">> => list(sample_utterance()),
 %%   <<"waitAndContinueSpecification">> => wait_and_continue_specification()
 %% }
 -type sub_slot_value_elicitation_setting() :: #{binary() => any()}.
@@ -2502,9 +2502,9 @@
 
 %% Example:
 %% analytics_session_result() :: #{
-%%   <<"binKeys">> => list(analytics_bin_key()()),
-%%   <<"groupByKeys">> => list(analytics_session_group_by_key()()),
-%%   <<"metricsResults">> => list(analytics_session_metric_result()())
+%%   <<"binKeys">> => list(analytics_bin_key()),
+%%   <<"groupByKeys">> => list(analytics_session_group_by_key()),
+%%   <<"metricsResults">> => list(analytics_session_metric_result())
 %% }
 -type analytics_session_result() :: #{binary() => any()}.
 
@@ -2520,9 +2520,9 @@
 
 %% Example:
 %% analytics_intent_result() :: #{
-%%   <<"binKeys">> => list(analytics_bin_key()()),
-%%   <<"groupByKeys">> => list(analytics_intent_group_by_key()()),
-%%   <<"metricsResults">> => list(analytics_intent_metric_result()())
+%%   <<"binKeys">> => list(analytics_bin_key()),
+%%   <<"groupByKeys">> => list(analytics_intent_group_by_key()),
+%%   <<"metricsResults">> => list(analytics_intent_metric_result())
 %% }
 -type analytics_intent_result() :: #{binary() => any()}.
 
@@ -2546,7 +2546,7 @@
 
 %% Example:
 %% slot_default_value_specification() :: #{
-%%   <<"defaultValueList">> => list(slot_default_value()())
+%%   <<"defaultValueList">> => list(slot_default_value())
 %% }
 -type slot_default_value_specification() :: #{binary() => any()}.
 
@@ -2632,7 +2632,7 @@
 %% intent_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type intent_filter() :: #{binary() => any()}.
 
@@ -2698,7 +2698,7 @@
 %%   <<"parentSlotTypeSignature">> => string(),
 %%   <<"slotTypeId">> => string(),
 %%   <<"slotTypeName">> => string(),
-%%   <<"slotTypeValues">> => list(slot_type_value()()),
+%%   <<"slotTypeValues">> => list(slot_type_value()),
 %%   <<"valueSelectionSetting">> => slot_value_selection_setting()
 %% }
 -type create_slot_type_response() :: #{binary() => any()}.
@@ -2721,7 +2721,7 @@
 %%   <<"botVersion">> => string(),
 %%   <<"botVersionReplicationStatus">> => list(any()),
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()())
+%%   <<"failureReasons">> => list(string())
 %% }
 -type bot_version_replica_summary() :: #{binary() => any()}.
 
@@ -2760,7 +2760,7 @@
 
 %% Example:
 %% list_slots_request() :: #{
-%%   <<"filters">> => list(slot_filter()()),
+%%   <<"filters">> => list(slot_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sortBy">> => slot_sort_by()
@@ -2770,7 +2770,7 @@
 
 %% Example:
 %% list_built_in_slot_types_response() :: #{
-%%   <<"builtInSlotTypeSummaries">> => list(built_in_slot_type_summary()()),
+%%   <<"builtInSlotTypeSummaries">> => list(built_in_slot_type_summary()),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string()
 %% }
@@ -2795,7 +2795,7 @@
 
 %% Example:
 %% list_bot_aliases_response() :: #{
-%%   <<"botAliasSummaries">> => list(bot_alias_summary()()),
+%%   <<"botAliasSummaries">> => list(bot_alias_summary()),
 %%   <<"botId">> => string(),
 %%   <<"nextToken">> => string()
 %% }
@@ -2812,7 +2812,7 @@
 
 %% Example:
 %% list_aggregated_utterances_response() :: #{
-%%   <<"aggregatedUtterancesSummaries">> => list(aggregated_utterances_summary()()),
+%%   <<"aggregatedUtterancesSummaries">> => list(aggregated_utterances_summary()),
 %%   <<"aggregationDuration">> => utterance_aggregation_duration(),
 %%   <<"aggregationLastRefreshedDateTime">> => non_neg_integer(),
 %%   <<"aggregationWindowEndTime">> => non_neg_integer(),
@@ -2833,7 +2833,7 @@
 %%   <<"externalSourceSetting">> => external_source_setting(),
 %%   <<"parentSlotTypeSignature">> => string(),
 %%   <<"slotTypeName">> := string(),
-%%   <<"slotTypeValues">> => list(slot_type_value()()),
+%%   <<"slotTypeValues">> => list(slot_type_value()),
 %%   <<"valueSelectionSetting">> => slot_value_selection_setting()
 %% }
 -type update_slot_type_request() :: #{binary() => any()}.
@@ -2928,7 +2928,7 @@
 %% slot_value_elicitation_setting() :: #{
 %%   <<"defaultValueSpecification">> => slot_default_value_specification(),
 %%   <<"promptSpecification">> => prompt_specification(),
-%%   <<"sampleUtterances">> => list(sample_utterance()()),
+%%   <<"sampleUtterances">> => list(sample_utterance()),
 %%   <<"slotCaptureSetting">> => slot_capture_setting(),
 %%   <<"slotConstraint">> => list(any()),
 %%   <<"slotResolutionSetting">> => slot_resolution_setting(),
@@ -2972,7 +2972,7 @@
 
 %% Example:
 %% list_bot_alias_replicas_response() :: #{
-%%   <<"botAliasReplicaSummaries">> => list(bot_alias_replica_summary()()),
+%%   <<"botAliasReplicaSummaries">> => list(bot_alias_replica_summary()),
 %%   <<"botId">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"replicaRegion">> => string(),
@@ -3006,7 +3006,7 @@
 %% analytics_session_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type analytics_session_filter() :: #{binary() => any()}.
 
@@ -3021,7 +3021,7 @@
 
 %% Example:
 %% batch_delete_custom_vocabulary_item_request() :: #{
-%%   <<"customVocabularyItemList">> := list(custom_vocabulary_entry_id()())
+%%   <<"customVocabularyItemList">> := list(custom_vocabulary_entry_id())
 %% }
 -type batch_delete_custom_vocabulary_item_request() :: #{binary() => any()}.
 
@@ -3054,7 +3054,7 @@
 
 %% Example:
 %% intent_classification_test_results() :: #{
-%%   <<"items">> => list(intent_classification_test_result_item()())
+%%   <<"items">> => list(intent_classification_test_result_item())
 %% }
 -type intent_classification_test_results() :: #{binary() => any()}.
 
@@ -3088,7 +3088,7 @@
 
 %% Example:
 %% list_bots_response() :: #{
-%%   <<"botSummaries">> => list(bot_summary()()),
+%%   <<"botSummaries">> => list(bot_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bots_response() :: #{binary() => any()}.
@@ -3097,7 +3097,7 @@
 %% Example:
 %% list_bot_versions_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botVersionSummaries">> => list(bot_version_summary()()),
+%%   <<"botVersionSummaries">> => list(bot_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bot_versions_response() :: #{binary() => any()}.
@@ -3105,7 +3105,7 @@
 
 %% Example:
 %% composite_slot_type_setting() :: #{
-%%   <<"subSlots">> => list(sub_slot_type_composition()())
+%%   <<"subSlots">> => list(sub_slot_type_composition())
 %% }
 -type composite_slot_type_setting() :: #{binary() => any()}.
 
@@ -3176,7 +3176,7 @@
 %%   <<"parentSlotTypeSignature">> => string(),
 %%   <<"slotTypeId">> => string(),
 %%   <<"slotTypeName">> => string(),
-%%   <<"slotTypeValues">> => list(slot_type_value()()),
+%%   <<"slotTypeValues">> => list(slot_type_value()),
 %%   <<"valueSelectionSetting">> => slot_value_selection_setting()
 %% }
 -type describe_slot_type_response() :: #{binary() => any()}.
@@ -3184,7 +3184,7 @@
 
 %% Example:
 %% list_bot_locales_request() :: #{
-%%   <<"filters">> => list(bot_locale_filter()()),
+%%   <<"filters">> => list(bot_locale_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sortBy">> => bot_locale_sort_by()
@@ -3196,7 +3196,7 @@
 %% slot_type_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type slot_type_filter() :: #{binary() => any()}.
 
@@ -3226,7 +3226,7 @@
 %%   <<"externalSourceSetting">> => external_source_setting(),
 %%   <<"parentSlotTypeSignature">> => string(),
 %%   <<"slotTypeName">> := string(),
-%%   <<"slotTypeValues">> => list(slot_type_value()()),
+%%   <<"slotTypeValues">> => list(slot_type_value()),
 %%   <<"valueSelectionSetting">> => slot_value_selection_setting()
 %% }
 -type create_slot_type_request() :: #{binary() => any()}.
@@ -3245,8 +3245,8 @@
 
 %% Example:
 %% conversation_log_settings() :: #{
-%%   <<"audioLogSettings">> => list(audio_log_setting()()),
-%%   <<"textLogSettings">> => list(text_log_setting()())
+%%   <<"audioLogSettings">> => list(audio_log_setting()),
+%%   <<"textLogSettings">> => list(text_log_setting())
 %% }
 -type conversation_log_settings() :: #{binary() => any()}.
 
@@ -3267,9 +3267,9 @@
 %% batch_update_custom_vocabulary_item_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"errors">> => list(failed_custom_vocabulary_item()()),
+%%   <<"errors">> => list(failed_custom_vocabulary_item()),
 %%   <<"localeId">> => string(),
-%%   <<"resources">> => list(custom_vocabulary_item()())
+%%   <<"resources">> => list(custom_vocabulary_item())
 %% }
 -type batch_update_custom_vocabulary_item_response() :: #{binary() => any()}.
 
@@ -3285,7 +3285,7 @@
 %% Example:
 %% describe_test_set_discrepancy_report_response() :: #{
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"lastUpdatedDataTime">> => non_neg_integer(),
 %%   <<"target">> => test_set_discrepancy_report_resource_target(),
 %%   <<"testSetDiscrepancyRawOutputUrl">> => string(),
@@ -3301,9 +3301,9 @@
 %% batch_create_custom_vocabulary_item_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"errors">> => list(failed_custom_vocabulary_item()()),
+%%   <<"errors">> => list(failed_custom_vocabulary_item()),
 %%   <<"localeId">> => string(),
-%%   <<"resources">> => list(custom_vocabulary_item()())
+%%   <<"resources">> => list(custom_vocabulary_item())
 %% }
 -type batch_create_custom_vocabulary_item_response() :: #{binary() => any()}.
 
@@ -3338,7 +3338,7 @@
 %% import_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type import_filter() :: #{binary() => any()}.
 
@@ -3415,9 +3415,9 @@
 
 %% Example:
 %% analytics_intent_stage_result() :: #{
-%%   <<"binKeys">> => list(analytics_bin_key()()),
-%%   <<"groupByKeys">> => list(analytics_intent_stage_group_by_key()()),
-%%   <<"metricsResults">> => list(analytics_intent_stage_metric_result()())
+%%   <<"binKeys">> => list(analytics_bin_key()),
+%%   <<"groupByKeys">> => list(analytics_intent_stage_group_by_key()),
+%%   <<"metricsResults">> => list(analytics_intent_stage_metric_result())
 %% }
 -type analytics_intent_stage_result() :: #{binary() => any()}.
 
@@ -3444,7 +3444,7 @@
 %% list_utterance_analytics_data_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"utterances">> => list(utterance_specification()())
+%%   <<"utterances">> => list(utterance_specification())
 %% }
 -type list_utterance_analytics_data_response() :: #{binary() => any()}.
 
@@ -3481,7 +3481,7 @@
 
 %% Example:
 %% update_bot_request() :: #{
-%%   <<"botMembers">> => list(bot_member()()),
+%%   <<"botMembers">> => list(bot_member()),
 %%   <<"botName">> := string(),
 %%   <<"botType">> => list(any()),
 %%   <<"dataPrivacy">> := data_privacy(),
@@ -3512,7 +3512,7 @@
 %% Example:
 %% conditional_specification() :: #{
 %%   <<"active">> => boolean(),
-%%   <<"conditionalBranches">> => list(conditional_branch()()),
+%%   <<"conditionalBranches">> => list(conditional_branch()),
 %%   <<"defaultBranch">> => default_conditional_branch()
 %% }
 -type conditional_specification() :: #{binary() => any()}.
@@ -3529,7 +3529,7 @@
 %% list_bot_resource_generations_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"generationSummaries">> => list(generation_summary()()),
+%%   <<"generationSummaries">> => list(generation_summary()),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string()
 %% }
@@ -3569,7 +3569,7 @@
 
 %% Example:
 %% describe_bot_alias_response() :: #{
-%%   <<"botAliasHistoryEvents">> => list(bot_alias_history_event()()),
+%%   <<"botAliasHistoryEvents">> => list(bot_alias_history_event()),
 %%   <<"botAliasId">> => string(),
 %%   <<"botAliasLocaleSettings">> => map(),
 %%   <<"botAliasName">> => string(),
@@ -3580,7 +3580,7 @@
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
-%%   <<"parentBotNetworks">> => list(parent_bot_network()()),
+%%   <<"parentBotNetworks">> => list(parent_bot_network()),
 %%   <<"sentimentAnalysisSettings">> => sentiment_analysis_settings()
 %% }
 -type describe_bot_alias_response() :: #{binary() => any()}.
@@ -3590,9 +3590,9 @@
 %% batch_delete_custom_vocabulary_item_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"errors">> => list(failed_custom_vocabulary_item()()),
+%%   <<"errors">> => list(failed_custom_vocabulary_item()),
 %%   <<"localeId">> => string(),
-%%   <<"resources">> => list(custom_vocabulary_item()())
+%%   <<"resources">> => list(custom_vocabulary_item())
 %% }
 -type batch_delete_custom_vocabulary_item_response() :: #{binary() => any()}.
 
@@ -3607,7 +3607,7 @@
 %% Example:
 %% list_bot_replicas_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botReplicaSummaries">> => list(bot_replica_summary()()),
+%%   <<"botReplicaSummaries">> => list(bot_replica_summary()),
 %%   <<"sourceRegion">> => string()
 %% }
 -type list_bot_replicas_response() :: #{binary() => any()}.
@@ -3634,7 +3634,7 @@
 
 %% Example:
 %% list_built_in_intents_response() :: #{
-%%   <<"builtInIntentSummaries">> => list(built_in_intent_summary()()),
+%%   <<"builtInIntentSummaries">> => list(built_in_intent_summary()),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string()
 %% }
@@ -3652,12 +3652,12 @@
 %% Example:
 %% describe_bot_locale_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botLocaleHistoryEvents">> => list(bot_locale_history_event()()),
+%%   <<"botLocaleHistoryEvents">> => list(bot_locale_history_event()),
 %%   <<"botLocaleStatus">> => list(any()),
 %%   <<"botVersion">> => string(),
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"generativeAISettings">> => generative_a_i_settings(),
 %%   <<"intentsCount">> => integer(),
 %%   <<"lastBuildSubmittedDateTime">> => non_neg_integer(),
@@ -3665,7 +3665,7 @@
 %%   <<"localeId">> => string(),
 %%   <<"localeName">> => string(),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
-%%   <<"recommendedActions">> => list(string()()),
+%%   <<"recommendedActions">> => list(string()),
 %%   <<"slotTypesCount">> => integer(),
 %%   <<"voiceSettings">> => voice_settings()
 %% }
@@ -3684,7 +3684,7 @@
 %% aggregated_utterances_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type aggregated_utterances_filter() :: #{binary() => any()}.
 
@@ -3698,18 +3698,18 @@
 %%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
 %%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
 %%   <<"initialResponseSetting">> => initial_response_setting(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
 %%   <<"intentId">> => string(),
 %%   <<"intentName">> => string(),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"localeId">> => string(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string(),
 %%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
-%%   <<"sampleUtterances">> => list(sample_utterance()())
+%%   <<"sampleUtterances">> => list(sample_utterance())
 %% }
 -type create_intent_response() :: #{binary() => any()}.
 
@@ -3749,14 +3749,14 @@
 %% Example:
 %% list_test_executions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testExecutions">> => list(test_execution_summary()())
+%%   <<"testExecutions">> => list(test_execution_summary())
 %% }
 -type list_test_executions_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_bot_request() :: #{
-%%   <<"botMembers">> => list(bot_member()()),
+%%   <<"botMembers">> => list(bot_member()),
 %%   <<"botName">> := string(),
 %%   <<"botTags">> => map(),
 %%   <<"botType">> => list(any()),
@@ -3774,7 +3774,7 @@
 %% list_imports_request() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"filters">> => list(import_filter()()),
+%%   <<"filters">> => list(import_filter()),
 %%   <<"localeId">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -3814,7 +3814,7 @@
 %% Example:
 %% list_utterance_analytics_data_request() :: #{
 %%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_utterance_filter()()),
+%%   <<"filters">> => list(analytics_utterance_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sortBy">> => utterance_data_sort_by(),
@@ -3868,7 +3868,7 @@
 %%   <<"audioVoiceDurationMillis">> => float(),
 %%   <<"botAliasId">> => string(),
 %%   <<"botResponseAudioVoiceId">> => string(),
-%%   <<"botResponses">> => list(utterance_bot_response()()),
+%%   <<"botResponses">> => list(utterance_bot_response()),
 %%   <<"botVersion">> => string(),
 %%   <<"channel">> => string(),
 %%   <<"conversationEndTime">> => non_neg_integer(),
@@ -3915,7 +3915,7 @@
 %% Example:
 %% create_bot_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botMembers">> => list(bot_member()()),
+%%   <<"botMembers">> => list(bot_member()),
 %%   <<"botName">> => string(),
 %%   <<"botStatus">> => list(any()),
 %%   <<"botTags">> => map(),
@@ -3948,14 +3948,14 @@
 %% bot_locale_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type bot_locale_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% runtime_hint_details() :: #{
-%%   <<"runtimeHintValues">> => list(runtime_hint_value()()),
+%%   <<"runtimeHintValues">> => list(runtime_hint_value()),
 %%   <<"subSlotHints">> => map()
 %% }
 -type runtime_hint_details() :: #{binary() => any()}.
@@ -4071,7 +4071,7 @@
 %% Example:
 %% list_bot_recommendations_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botRecommendationSummaries">> => list(bot_recommendation_summary()()),
+%%   <<"botRecommendationSummaries">> => list(bot_recommendation_summary()),
 %%   <<"botVersion">> => string(),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string()
@@ -4092,7 +4092,7 @@
 %% Example:
 %% list_test_sets_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testSets">> => list(test_set_summary()())
+%%   <<"testSets">> => list(test_set_summary())
 %% }
 -type list_test_sets_response() :: #{binary() => any()}.
 
@@ -4109,7 +4109,7 @@
 
 %% Example:
 %% user_turn_output_specification() :: #{
-%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"activeContexts">> => list(active_context()),
 %%   <<"intent">> => user_turn_intent_output(),
 %%   <<"transcript">> => string()
 %% }
@@ -4139,7 +4139,7 @@
 %% user_turn_slot_output() :: #{
 %%   <<"subSlots">> => map(),
 %%   <<"value">> => string(),
-%%   <<"values">> => list(user_turn_slot_output()())
+%%   <<"values">> => list(user_turn_slot_output())
 %% }
 -type user_turn_slot_output() :: #{binary() => any()}.
 
@@ -4231,7 +4231,7 @@
 %% list_utterance_metrics_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"results">> => list(analytics_utterance_result()())
+%%   <<"results">> => list(analytics_utterance_result())
 %% }
 -type list_utterance_metrics_response() :: #{binary() => any()}.
 
@@ -4264,13 +4264,13 @@
 %%   <<"botVersion">> => string(),
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"generativeAISettings">> => generative_a_i_settings(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"localeId">> => string(),
 %%   <<"localeName">> => string(),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
-%%   <<"recommendedActions">> => list(string()()),
+%%   <<"recommendedActions">> => list(string()),
 %%   <<"voiceSettings">> => voice_settings()
 %% }
 -type update_bot_locale_response() :: #{binary() => any()}.
@@ -4278,13 +4278,13 @@
 
 %% Example:
 %% list_utterance_metrics_request() :: #{
-%%   <<"attributes">> => list(analytics_utterance_attribute()()),
-%%   <<"binBy">> => list(analytics_bin_by_specification()()),
+%%   <<"attributes">> => list(analytics_utterance_attribute()),
+%%   <<"binBy">> => list(analytics_bin_by_specification()),
 %%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_utterance_filter()()),
-%%   <<"groupBy">> => list(analytics_utterance_group_by_specification()()),
+%%   <<"filters">> => list(analytics_utterance_filter()),
+%%   <<"groupBy">> => list(analytics_utterance_group_by_specification()),
 %%   <<"maxResults">> => integer(),
-%%   <<"metrics">> := list(analytics_utterance_metric()()),
+%%   <<"metrics">> := list(analytics_utterance_metric()),
 %%   <<"nextToken">> => string(),
 %%   <<"startDateTime">> := non_neg_integer()
 %% }
@@ -4319,7 +4319,7 @@
 %% list_session_metrics_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"results">> => list(analytics_session_result()())
+%%   <<"results">> => list(analytics_session_result())
 %% }
 -type list_session_metrics_response() :: #{binary() => any()}.
 
@@ -4328,7 +4328,7 @@
 %% still_waiting_response_specification() :: #{
 %%   <<"allowInterrupt">> => boolean(),
 %%   <<"frequencyInSeconds">> => integer(),
-%%   <<"messageGroups">> => list(message_group()()),
+%%   <<"messageGroups">> => list(message_group()),
 %%   <<"timeoutInSeconds">> => integer()
 %% }
 -type still_waiting_response_specification() :: #{binary() => any()}.
@@ -4347,7 +4347,7 @@
 %%   <<"botAliasReplicationStatus">> => list(any()),
 %%   <<"botVersion">> => string(),
 %%   <<"creationDateTime">> => non_neg_integer(),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer()
 %% }
 -type bot_alias_replica_summary() :: #{binary() => any()}.
@@ -4355,7 +4355,7 @@
 
 %% Example:
 %% list_slot_types_request() :: #{
-%%   <<"filters">> => list(slot_type_filter()()),
+%%   <<"filters">> => list(slot_type_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sortBy">> => slot_type_sort_by()
@@ -4376,7 +4376,7 @@
 %% Example:
 %% update_bot_response() :: #{
 %%   <<"botId">> => string(),
-%%   <<"botMembers">> => list(bot_member()()),
+%%   <<"botMembers">> => list(bot_member()),
 %%   <<"botName">> => string(),
 %%   <<"botStatus">> => list(any()),
 %%   <<"botType">> => list(any()),
@@ -4401,7 +4401,7 @@
 %%   <<"downloadUrl">> => string(),
 %%   <<"exportId">> => string(),
 %%   <<"exportStatus">> => list(any()),
-%%   <<"failureReasons">> => list(string()()),
+%%   <<"failureReasons">> => list(string()),
 %%   <<"fileFormat">> => list(any()),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"resourceSpecification">> => export_resource_specification()
@@ -4430,7 +4430,7 @@
 %% Example:
 %% list_session_analytics_data_request() :: #{
 %%   <<"endDateTime">> := non_neg_integer(),
-%%   <<"filters">> => list(analytics_session_filter()()),
+%%   <<"filters">> => list(analytics_session_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sortBy">> => session_data_sort_by(),
@@ -4482,7 +4482,7 @@
 %%   <<"dialogCodeHook">> => dialog_code_hook_settings(),
 %%   <<"fulfillmentCodeHook">> => fulfillment_code_hook_settings(),
 %%   <<"initialResponseSetting">> => initial_response_setting(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"intentClosingSetting">> => intent_closing_setting(),
 %%   <<"intentConfirmationSetting">> => intent_confirmation_setting(),
 %%   <<"intentId">> => string(),
@@ -4490,12 +4490,12 @@
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"lastUpdatedDateTime">> => non_neg_integer(),
 %%   <<"localeId">> => string(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string(),
 %%   <<"qInConnectIntentConfiguration">> => q_in_connect_intent_configuration(),
 %%   <<"qnAIntentConfiguration">> => qn_a_intent_configuration(),
-%%   <<"sampleUtterances">> => list(sample_utterance()()),
-%%   <<"slotPriorities">> => list(slot_priority()())
+%%   <<"sampleUtterances">> => list(sample_utterance()),
+%%   <<"slotPriorities">> => list(slot_priority())
 %% }
 -type describe_intent_response() :: #{binary() => any()}.
 
@@ -4554,7 +4554,7 @@
 %% list_exports_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"exportSummaries">> => list(export_summary()()),
+%%   <<"exportSummaries">> => list(export_summary()),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string()
 %% }
@@ -4573,7 +4573,7 @@
 %% list_custom_vocabulary_items_response() :: #{
 %%   <<"botId">> => string(),
 %%   <<"botVersion">> => string(),
-%%   <<"customVocabularyItems">> => list(custom_vocabulary_item()()),
+%%   <<"customVocabularyItems">> => list(custom_vocabulary_item()),
 %%   <<"localeId">> => string(),
 %%   <<"nextToken">> => string()
 %% }

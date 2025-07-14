@@ -58,7 +58,7 @@
 
 %% Example:
 %% get_records_output() :: #{
-%%   <<"changeRecords">> => list(record()()),
+%%   <<"changeRecords">> => list(record()),
 %%   <<"nextShardIterator">> => string()
 %% }
 -type get_records_output() :: #{binary() => any()}.
@@ -92,7 +92,7 @@
 %%   <<"creationRequestDateTime">> => non_neg_integer(),
 %%   <<"keyspaceName">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"shards">> => list(shard()()),
+%%   <<"shards">> => list(shard()),
 %%   <<"streamArn">> => string(),
 %%   <<"streamLabel">> => [string()],
 %%   <<"streamStatus">> => list(any()),
@@ -149,7 +149,7 @@
 %% Example:
 %% list_streams_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"streams">> => list(stream()())
+%%   <<"streams">> => list(stream())
 %% }
 -type list_streams_output() :: #{binary() => any()}.
 
@@ -181,7 +181,7 @@
 
 %% Example:
 %% shard() :: #{
-%%   <<"parentShardIds">> => list(string()()),
+%%   <<"parentShardIds">> => list(string()),
 %%   <<"sequenceNumberRange">> => sequence_number_range(),
 %%   <<"shardId">> => string()
 %% }

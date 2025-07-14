@@ -188,7 +188,7 @@
 
 %% Example:
 %% data_source_introspection_model_index() :: #{
-%%   <<"fields">> => list(string()()),
+%%   <<"fields">> => list(string()),
 %%   <<"name">> => string()
 %% }
 -type data_source_introspection_model_index() :: #{binary() => any()}.
@@ -224,7 +224,7 @@
 %% evaluate_code_response() :: #{
 %%   <<"error">> => evaluate_code_error_detail(),
 %%   <<"evaluationResult">> => string(),
-%%   <<"logs">> => list(string()()),
+%%   <<"logs">> => list(string()),
 %%   <<"outErrors">> => string(),
 %%   <<"stash">> => string()
 %% }
@@ -280,7 +280,7 @@
 
 %% Example:
 %% list_api_keys_response() :: #{
-%%   <<"apiKeys">> => list(api_key()()),
+%%   <<"apiKeys">> => list(api_key()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_api_keys_response() :: #{binary() => any()}.
@@ -295,7 +295,7 @@
 
 %% Example:
 %% evaluate_code_error_detail() :: #{
-%%   <<"codeErrors">> => list(code_error()()),
+%%   <<"codeErrors">> => list(code_error()),
 %%   <<"message">> => string()
 %% }
 -type evaluate_code_error_detail() :: #{binary() => any()}.
@@ -311,14 +311,14 @@
 %% Example:
 %% list_source_api_associations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sourceApiAssociationSummaries">> => list(source_api_association_summary()())
+%%   <<"sourceApiAssociationSummaries">> => list(source_api_association_summary())
 %% }
 -type list_source_api_associations_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_functions_response() :: #{
-%%   <<"functions">> => list(function_configuration()()),
+%%   <<"functions">> => list(function_configuration()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_functions_response() :: #{binary() => any()}.
@@ -327,7 +327,7 @@
 %% Example:
 %% list_types_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"types">> => list(type()())
+%%   <<"types">> => list(type())
 %% }
 -type list_types_response() :: #{binary() => any()}.
 
@@ -400,7 +400,7 @@
 
 %% Example:
 %% list_graphql_apis_response() :: #{
-%%   <<"graphqlApis">> => list(graphql_api()()),
+%%   <<"graphqlApis">> => list(graphql_api()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_graphql_apis_response() :: #{binary() => any()}.
@@ -571,15 +571,15 @@
 %% update_channel_namespace_request() :: #{
 %%   <<"codeHandlers">> => string(),
 %%   <<"handlerConfigs">> => handler_configs(),
-%%   <<"publishAuthModes">> => list(auth_mode()()),
-%%   <<"subscribeAuthModes">> => list(auth_mode()())
+%%   <<"publishAuthModes">> => list(auth_mode()),
+%%   <<"subscribeAuthModes">> => list(auth_mode())
 %% }
 -type update_channel_namespace_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -621,7 +621,7 @@
 
 %% Example:
 %% list_apis_response() :: #{
-%%   <<"apis">> => list(api()()),
+%%   <<"apis">> => list(api()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_apis_response() :: #{binary() => any()}.
@@ -649,7 +649,7 @@
 %% evaluate_mapping_template_response() :: #{
 %%   <<"error">> => error_detail(),
 %%   <<"evaluationResult">> => string(),
-%%   <<"logs">> => list(string()()),
+%%   <<"logs">> => list(string()),
 %%   <<"outErrors">> => string(),
 %%   <<"stash">> => string()
 %% }
@@ -659,7 +659,7 @@
 %% Example:
 %% list_resolvers_by_function_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resolvers">> => list(resolver()())
+%%   <<"resolvers">> => list(resolver())
 %% }
 -type list_resolvers_by_function_response() :: #{binary() => any()}.
 
@@ -710,7 +710,7 @@
 
 %% Example:
 %% graphql_api() :: #{
-%%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()()),
+%%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()),
 %%   <<"apiId">> => string(),
 %%   <<"apiType">> => list(any()),
 %%   <<"arn">> => string(),
@@ -751,7 +751,7 @@
 
 %% Example:
 %% caching_config() :: #{
-%%   <<"cachingKeys">> => list(string()()),
+%%   <<"cachingKeys">> => list(string()),
 %%   <<"ttl">> => float()
 %% }
 -type caching_config() :: #{binary() => any()}.
@@ -792,8 +792,8 @@
 %%   <<"codeHandlers">> => string(),
 %%   <<"handlerConfigs">> => handler_configs(),
 %%   <<"name">> := string(),
-%%   <<"publishAuthModes">> => list(auth_mode()()),
-%%   <<"subscribeAuthModes">> => list(auth_mode()()),
+%%   <<"publishAuthModes">> => list(auth_mode()),
+%%   <<"subscribeAuthModes">> => list(auth_mode()),
 %%   <<"tags">> => map()
 %% }
 -type create_channel_namespace_request() :: #{binary() => any()}.
@@ -933,7 +933,7 @@
 %% Example:
 %% list_resolvers_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resolvers">> => list(resolver()())
+%%   <<"resolvers">> => list(resolver())
 %% }
 -type list_resolvers_response() :: #{binary() => any()}.
 
@@ -1013,7 +1013,7 @@
 
 %% Example:
 %% list_data_sources_response() :: #{
-%%   <<"dataSources">> => list(data_source()()),
+%%   <<"dataSources">> => list(data_source()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sources_response() :: #{binary() => any()}.
@@ -1111,7 +1111,7 @@
 
 %% Example:
 %% list_domain_names_response() :: #{
-%%   <<"domainNameConfigs">> => list(domain_name_config()()),
+%%   <<"domainNameConfigs">> => list(domain_name_config()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_domain_names_response() :: #{binary() => any()}.
@@ -1134,7 +1134,7 @@
 
 %% Example:
 %% pipeline_config() :: #{
-%%   <<"functions">> => list(string()())
+%%   <<"functions">> => list(string())
 %% }
 -type pipeline_config() :: #{binary() => any()}.
 
@@ -1173,10 +1173,10 @@
 
 %% Example:
 %% event_config() :: #{
-%%   <<"authProviders">> => list(auth_provider()()),
-%%   <<"connectionAuthModes">> => list(auth_mode()()),
-%%   <<"defaultPublishAuthModes">> => list(auth_mode()()),
-%%   <<"defaultSubscribeAuthModes">> => list(auth_mode()()),
+%%   <<"authProviders">> => list(auth_provider()),
+%%   <<"connectionAuthModes">> => list(auth_mode()),
+%%   <<"defaultPublishAuthModes">> => list(auth_mode()),
+%%   <<"defaultSubscribeAuthModes">> => list(auth_mode()),
 %%   <<"logConfig">> => event_log_config()
 %% }
 -type event_config() :: #{binary() => any()}.
@@ -1296,8 +1296,8 @@
 %%   <<"handlerConfigs">> => handler_configs(),
 %%   <<"lastModified">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"publishAuthModes">> => list(auth_mode()()),
-%%   <<"subscribeAuthModes">> => list(auth_mode()()),
+%%   <<"publishAuthModes">> => list(auth_mode()),
+%%   <<"subscribeAuthModes">> => list(auth_mode()),
 %%   <<"tags">> => map()
 %% }
 -type channel_namespace() :: #{binary() => any()}.
@@ -1416,7 +1416,7 @@
 %% Example:
 %% list_types_by_association_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"types">> => list(type()())
+%%   <<"types">> => list(type())
 %% }
 -type list_types_by_association_response() :: #{binary() => any()}.
 
@@ -1441,7 +1441,7 @@
 
 %% Example:
 %% list_channel_namespaces_response() :: #{
-%%   <<"channelNamespaces">> => list(channel_namespace()()),
+%%   <<"channelNamespaces">> => list(channel_namespace()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_channel_namespaces_response() :: #{binary() => any()}.
@@ -1572,8 +1572,8 @@
 
 %% Example:
 %% data_source_introspection_model() :: #{
-%%   <<"fields">> => list(data_source_introspection_model_field()()),
-%%   <<"indexes">> => list(data_source_introspection_model_index()()),
+%%   <<"fields">> => list(data_source_introspection_model_field()),
+%%   <<"indexes">> => list(data_source_introspection_model_index()),
 %%   <<"name">> => string(),
 %%   <<"primaryKey">> => data_source_introspection_model_index(),
 %%   <<"sdl">> => string()
@@ -1613,7 +1613,7 @@
 
 %% Example:
 %% data_source_introspection_result() :: #{
-%%   <<"models">> => list(data_source_introspection_model()()),
+%%   <<"models">> => list(data_source_introspection_model()),
 %%   <<"nextToken">> => string()
 %% }
 -type data_source_introspection_result() :: #{binary() => any()}.
@@ -1709,7 +1709,7 @@
 
 %% Example:
 %% update_graphql_api_request() :: #{
-%%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()()),
+%%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()),
 %%   <<"authenticationType">> := list(any()),
 %%   <<"enhancedMetricsConfig">> => enhanced_metrics_config(),
 %%   <<"introspectionConfig">> => list(any()),
@@ -1767,7 +1767,7 @@
 
 %% Example:
 %% bad_request_detail() :: #{
-%%   <<"codeErrors">> => list(code_error()())
+%%   <<"codeErrors">> => list(code_error())
 %% }
 -type bad_request_detail() :: #{binary() => any()}.
 
@@ -1825,14 +1825,14 @@
 %%   <<"kind">> => string(),
 %%   <<"name">> => string(),
 %%   <<"type">> => data_source_introspection_model_field_type(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type data_source_introspection_model_field_type() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_graphql_api_request() :: #{
-%%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()()),
+%%   <<"additionalAuthenticationProviders">> => list(additional_authentication_provider()),
 %%   <<"apiType">> => list(any()),
 %%   <<"authenticationType">> := list(any()),
 %%   <<"enhancedMetricsConfig">> => enhanced_metrics_config(),

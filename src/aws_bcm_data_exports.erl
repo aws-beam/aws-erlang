@@ -42,7 +42,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTags">> := list(resource_tag()())
+%%   <<"ResourceTags">> := list(resource_tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -65,7 +65,7 @@
 %% Example:
 %% create_export_request() :: #{
 %%   <<"Export">> := export(),
-%%   <<"ResourceTags">> => list(resource_tag()())
+%%   <<"ResourceTags">> => list(resource_tag())
 %% }
 -type create_export_request() :: #{binary() => any()}.
 
@@ -87,7 +87,7 @@
 %% Example:
 %% get_table_response() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Schema">> => list(column()()),
+%%   <<"Schema">> => list(column()),
 %%   <<"TableName">> => string(),
 %%   <<"TableProperties">> => map()
 %% }
@@ -102,7 +102,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTagKeys">> := list(string()())
+%%   <<"ResourceTagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -140,13 +140,13 @@
 %% Example:
 %% list_tables_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tables">> => list(table()())
+%%   <<"Tables">> => list(table())
 %% }
 -type list_tables_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_executions_response() :: #{
-%%   <<"Executions">> => list(execution_reference()()),
+%%   <<"Executions">> => list(execution_reference()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_executions_response() :: #{binary() => any()}.
@@ -172,7 +172,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceTags">> => list(resource_tag()())
+%%   <<"ResourceTags">> => list(resource_tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -252,7 +252,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()()),
+%%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
 %% }
@@ -280,7 +280,7 @@
 %%   <<"DefaultValue">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"ValidValues">> => list(string()())
+%%   <<"ValidValues">> => list(string())
 %% }
 -type table_property_description() :: #{binary() => any()}.
 
@@ -330,7 +330,7 @@
 %% table() :: #{
 %%   <<"Description">> => string(),
 %%   <<"TableName">> => string(),
-%%   <<"TableProperties">> => list(table_property_description()())
+%%   <<"TableProperties">> => list(table_property_description())
 %% }
 -type table() :: #{binary() => any()}.
 
@@ -362,7 +362,7 @@
 
 %% Example:
 %% list_exports_response() :: #{
-%%   <<"Exports">> => list(export_reference()()),
+%%   <<"Exports">> => list(export_reference()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_exports_response() :: #{binary() => any()}.

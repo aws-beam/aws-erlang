@@ -175,7 +175,7 @@
 
 %% Example:
 %% update_network_configuration_input() :: #{
-%%   <<"SecurityGroupIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string())
 %% }
 -type update_network_configuration_input() :: #{binary() => any()}.
 
@@ -208,7 +208,7 @@
 
 %% Example:
 %% metric_datum() :: #{
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricName">> => [string()],
 %%   <<"StatisticValues">> => statistic_set(),
 %%   <<"Timestamp">> => [non_neg_integer()],
@@ -289,7 +289,7 @@
 
 %% Example:
 %% list_environments_output() :: #{
-%%   <<"Environments">> := list(string()()),
+%%   <<"Environments">> := list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_environments_output() :: #{binary() => any()}.
@@ -377,8 +377,8 @@
 
 %% Example:
 %% network_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type network_configuration() :: #{binary() => any()}.
 
@@ -392,7 +392,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -444,7 +444,7 @@
 
 %% Example:
 %% publish_metrics_input() :: #{
-%%   <<"MetricData">> => list(metric_datum()())
+%%   <<"MetricData">> => list(metric_datum())
 %% }
 -type publish_metrics_input() :: #{binary() => any()}.
 

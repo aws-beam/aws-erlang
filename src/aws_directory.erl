@@ -181,7 +181,7 @@
 
 %% Example:
 %% list_certificates_result() :: #{
-%%   <<"CertificatesInfo">> => list(certificate_info()()),
+%%   <<"CertificatesInfo">> => list(certificate_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_certificates_result() :: #{binary() => any()}.
@@ -248,7 +248,7 @@
 %%   <<"Password">> := string(),
 %%   <<"ShortName">> => string(),
 %%   <<"Size">> := list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcSettings">> => directory_vpc_settings()
 %% }
 -type create_directory_request() :: #{binary() => any()}.
@@ -277,13 +277,13 @@
 %% Example:
 %% describe_event_topics_request() :: #{
 %%   <<"DirectoryId">> => string(),
-%%   <<"TopicNames">> => list(string()())
+%%   <<"TopicNames">> => list(string())
 %% }
 -type describe_event_topics_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ldaps_settings_result() :: #{
-%%   <<"LDAPSSettingsInfo">> => list(ldaps_setting_info()()),
+%%   <<"LDAPSSettingsInfo">> => list(ldaps_setting_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ldaps_settings_result() :: #{binary() => any()}.
@@ -291,7 +291,7 @@
 %% Example:
 %% update_conditional_forwarder_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"DnsIpAddrs">> := list(string()()),
+%%   <<"DnsIpAddrs">> := list(string()),
 %%   <<"RemoteDomainName">> := string()
 %% }
 -type update_conditional_forwarder_request() :: #{binary() => any()}.
@@ -359,7 +359,7 @@
 
 %% Example:
 %% create_trust_request() :: #{
-%%   <<"ConditionalForwarderIpAddrs">> => list(string()()),
+%%   <<"ConditionalForwarderIpAddrs">> => list(string()),
 %%   <<"DirectoryId">> := string(),
 %%   <<"RemoteDomainName">> := string(),
 %%   <<"SelectiveAuth">> => list(any()),
@@ -445,7 +445,7 @@
 %% Example:
 %% create_conditional_forwarder_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"DnsIpAddrs">> := list(string()()),
+%%   <<"DnsIpAddrs">> := list(string()),
 %%   <<"RemoteDomainName">> := string()
 %% }
 -type create_conditional_forwarder_request() :: #{binary() => any()}.
@@ -559,7 +559,7 @@
 
 %% Example:
 %% computer() :: #{
-%%   <<"ComputerAttributes">> => list(attribute()()),
+%%   <<"ComputerAttributes">> => list(attribute()),
 %%   <<"ComputerId">> => string(),
 %%   <<"ComputerName">> => string()
 %% }
@@ -587,7 +587,7 @@
 %% Example:
 %% list_schema_extensions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SchemaExtensionsInfo">> => list(schema_extension_info()())
+%%   <<"SchemaExtensionsInfo">> => list(schema_extension_info())
 %% }
 -type list_schema_extensions_result() :: #{binary() => any()}.
 
@@ -600,7 +600,7 @@
 %% Example:
 %% add_tags_to_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_to_resource_request() :: #{binary() => any()}.
 
@@ -653,7 +653,7 @@
 %% Example:
 %% describe_update_directory_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UpdateActivities">> => list(update_info_entry()())
+%%   <<"UpdateActivities">> => list(update_info_entry())
 %% }
 -type describe_update_directory_result() :: #{binary() => any()}.
 
@@ -679,7 +679,7 @@
 %% Example:
 %% describe_trusts_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Trusts">> => list(trust()())
+%%   <<"Trusts">> => list(trust())
 %% }
 -type describe_trusts_result() :: #{binary() => any()}.
 
@@ -721,7 +721,7 @@
 %% owner_directory_description() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"DirectoryId">> => string(),
-%%   <<"DnsIpAddrs">> => list(string()()),
+%%   <<"DnsIpAddrs">> => list(string()),
 %%   <<"RadiusSettings">> => radius_settings(),
 %%   <<"RadiusStatus">> => list(any()),
 %%   <<"VpcSettings">> => directory_vpc_settings_description()
@@ -736,7 +736,7 @@
 
 %% Example:
 %% describe_directories_request() :: #{
-%%   <<"DirectoryIds">> => list(string()()),
+%%   <<"DirectoryIds">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -822,7 +822,7 @@
 %%   <<"DisplayLabel">> => string(),
 %%   <<"RadiusPort">> => integer(),
 %%   <<"RadiusRetries">> => integer(),
-%%   <<"RadiusServers">> => list(string()()),
+%%   <<"RadiusServers">> => list(string()),
 %%   <<"RadiusTimeout">> => integer(),
 %%   <<"SharedSecret">> => string(),
 %%   <<"UseSameUsername">> => boolean()
@@ -844,7 +844,7 @@
 
 %% Example:
 %% describe_event_topics_result() :: #{
-%%   <<"EventTopics">> => list(event_topic()())
+%%   <<"EventTopics">> => list(event_topic())
 %% }
 -type describe_event_topics_result() :: #{binary() => any()}.
 
@@ -914,7 +914,7 @@
 
 %% Example:
 %% directory_vpc_settings() :: #{
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type directory_vpc_settings() :: #{binary() => any()}.
@@ -961,35 +961,35 @@
 %%   <<"Password">> := string(),
 %%   <<"ShortName">> => string(),
 %%   <<"Size">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type connect_directory_request() :: #{binary() => any()}.
 
 %% Example:
 %% directory_vpc_settings_description() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"SecurityGroupId">> => string(),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type directory_vpc_settings_description() :: #{binary() => any()}.
 
 %% Example:
 %% describe_conditional_forwarders_result() :: #{
-%%   <<"ConditionalForwarders">> => list(conditional_forwarder()())
+%%   <<"ConditionalForwarders">> => list(conditional_forwarder())
 %% }
 -type describe_conditional_forwarders_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_shared_directories_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SharedDirectories">> => list(shared_directory()())
+%%   <<"SharedDirectories">> => list(shared_directory())
 %% }
 -type describe_shared_directories_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_client_authentication_settings_result() :: #{
-%%   <<"ClientAuthenticationSettingsInfo">> => list(client_authentication_setting_info()()),
+%%   <<"ClientAuthenticationSettingsInfo">> => list(client_authentication_setting_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_client_authentication_settings_result() :: #{binary() => any()}.
@@ -1015,7 +1015,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DesiredNumberOfDomainControllers">> => integer(),
 %%   <<"DirectoryId">> => string(),
-%%   <<"DnsIpAddrs">> => list(string()()),
+%%   <<"DnsIpAddrs">> => list(string()),
 %%   <<"Edition">> => list(any()),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -1067,14 +1067,14 @@
 %% Example:
 %% add_ip_routes_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"IpRoutes">> := list(ip_route()()),
+%%   <<"IpRoutes">> := list(ip_route()),
 %%   <<"UpdateSecurityGroupForDirectoryControllers">> => boolean()
 %% }
 -type add_ip_routes_request() :: #{binary() => any()}.
 
 %% Example:
 %% conditional_forwarder() :: #{
-%%   <<"DnsIpAddrs">> => list(string()()),
+%%   <<"DnsIpAddrs">> => list(string()),
 %%   <<"RemoteDomainName">> => string(),
 %%   <<"ReplicationScope">> => list(any())
 %% }
@@ -1089,7 +1089,7 @@
 %% Example:
 %% update_settings_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"Settings">> := list(setting()())
+%%   <<"Settings">> := list(setting())
 %% }
 -type update_settings_request() :: #{binary() => any()}.
 
@@ -1111,13 +1111,13 @@
 %% Example:
 %% describe_snapshots_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Snapshots">> => list(snapshot()())
+%%   <<"Snapshots">> => list(snapshot())
 %% }
 -type describe_snapshots_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_directories_result() :: #{
-%%   <<"DirectoryDescriptions">> => list(directory_description()()),
+%%   <<"DirectoryDescriptions">> => list(directory_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_directories_result() :: #{binary() => any()}.
@@ -1131,7 +1131,7 @@
 
 %% Example:
 %% describe_domain_controllers_result() :: #{
-%%   <<"DomainControllers">> => list(domain_controller()()),
+%%   <<"DomainControllers">> => list(domain_controller()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_domain_controllers_result() :: #{binary() => any()}.
@@ -1139,7 +1139,7 @@
 %% Example:
 %% remove_tags_from_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_from_resource_request() :: #{binary() => any()}.
 
@@ -1199,7 +1199,7 @@
 %% Example:
 %% describe_conditional_forwarders_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"RemoteDomainNames">> => list(string()())
+%%   <<"RemoteDomainNames">> => list(string())
 %% }
 -type describe_conditional_forwarders_request() :: #{binary() => any()}.
 
@@ -1208,7 +1208,7 @@
 %%   <<"DirectoryId">> => string(),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TrustIds">> => list(string()())
+%%   <<"TrustIds">> => list(string())
 %% }
 -type describe_trusts_request() :: #{binary() => any()}.
 
@@ -1252,7 +1252,7 @@
 %% Example:
 %% list_tags_for_resource_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
 
@@ -1291,7 +1291,7 @@
 
 %% Example:
 %% list_ip_routes_result() :: #{
-%%   <<"IpRoutesInfo">> => list(ip_route_info()()),
+%%   <<"IpRoutesInfo">> => list(ip_route_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_ip_routes_result() :: #{binary() => any()}.
@@ -1344,7 +1344,7 @@
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OwnerDirectoryId">> := string(),
-%%   <<"SharedDirectoryIds">> => list(string()())
+%%   <<"SharedDirectoryIds">> => list(string())
 %% }
 -type describe_shared_directories_request() :: #{binary() => any()}.
 
@@ -1404,7 +1404,7 @@
 
 %% Example:
 %% list_log_subscriptions_result() :: #{
-%%   <<"LogSubscriptions">> => list(log_subscription()()),
+%%   <<"LogSubscriptions">> => list(log_subscription()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_log_subscriptions_result() :: #{binary() => any()}.
@@ -1447,7 +1447,7 @@
 %% describe_settings_result() :: #{
 %%   <<"DirectoryId">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"SettingEntries">> => list(setting_entry()())
+%%   <<"SettingEntries">> => list(setting_entry())
 %% }
 -type describe_settings_result() :: #{binary() => any()}.
 
@@ -1460,7 +1460,7 @@
 
 %% Example:
 %% remove_ip_routes_request() :: #{
-%%   <<"CidrIps">> := list(string()()),
+%%   <<"CidrIps">> := list(string()),
 %%   <<"DirectoryId">> := string()
 %% }
 -type remove_ip_routes_request() :: #{binary() => any()}.
@@ -1491,7 +1491,7 @@
 %%   <<"DirectoryId">> => string(),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SnapshotIds">> => list(string()())
+%%   <<"SnapshotIds">> => list(string())
 %% }
 -type describe_snapshots_request() :: #{binary() => any()}.
 
@@ -1559,11 +1559,11 @@
 
 %% Example:
 %% directory_connect_settings_description() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"ConnectIps">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"ConnectIps">> => list(string()),
 %%   <<"CustomerUserName">> => string(),
 %%   <<"SecurityGroupId">> => string(),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type directory_connect_settings_description() :: #{binary() => any()}.
@@ -1604,7 +1604,7 @@
 %%   <<"Name">> := string(),
 %%   <<"Password">> := string(),
 %%   <<"ShortName">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcSettings">> := directory_vpc_settings()
 %% }
 -type create_microsoft_ad_request() :: #{binary() => any()}.
@@ -1612,7 +1612,7 @@
 %% Example:
 %% describe_regions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RegionsDescription">> => list(region_description()())
+%%   <<"RegionsDescription">> => list(region_description())
 %% }
 -type describe_regions_result() :: #{binary() => any()}.
 
@@ -1647,7 +1647,7 @@
 
 %% Example:
 %% regions_info() :: #{
-%%   <<"AdditionalRegions">> => list(string()()),
+%%   <<"AdditionalRegions">> => list(string()),
 %%   <<"PrimaryRegion">> => string()
 %% }
 -type regions_info() :: #{binary() => any()}.
@@ -1675,7 +1675,7 @@
 
 %% Example:
 %% create_computer_request() :: #{
-%%   <<"ComputerAttributes">> => list(attribute()()),
+%%   <<"ComputerAttributes">> => list(attribute()),
 %%   <<"ComputerName">> := string(),
 %%   <<"DirectoryId">> := string(),
 %%   <<"OrganizationalUnitDistinguishedName">> => string(),
@@ -1707,9 +1707,9 @@
 
 %% Example:
 %% directory_connect_settings() :: #{
-%%   <<"CustomerDnsIps">> => list(string()()),
+%%   <<"CustomerDnsIps">> => list(string()),
 %%   <<"CustomerUserName">> => string(),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type directory_connect_settings() :: #{binary() => any()}.
@@ -1731,7 +1731,7 @@
 %% Example:
 %% describe_domain_controllers_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"DomainControllerIds">> => list(string()()),
+%%   <<"DomainControllerIds">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }

@@ -62,7 +62,7 @@
 
 %% Example:
 %% list_application_states_request() :: #{
-%%   <<"ApplicationIds">> => list(string()()),
+%%   <<"ApplicationIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -103,7 +103,7 @@
 
 %% Example:
 %% list_migration_tasks_result() :: #{
-%%   <<"MigrationTaskSummaryList">> => list(migration_task_summary()()),
+%%   <<"MigrationTaskSummaryList">> => list(migration_task_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_migration_tasks_result() :: #{binary() => any()}.
@@ -125,14 +125,14 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"MigrationTaskName">> := string(),
 %%   <<"ProgressUpdateStream">> := string(),
-%%   <<"ResourceAttributeList">> := list(resource_attribute()())
+%%   <<"ResourceAttributeList">> := list(resource_attribute())
 %% }
 -type put_resource_attributes_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_progress_update_streams_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProgressUpdateStreamSummaryList">> => list(progress_update_stream_summary()())
+%%   <<"ProgressUpdateStreamSummaryList">> => list(progress_update_stream_summary())
 %% }
 -type list_progress_update_streams_result() :: #{binary() => any()}.
 
@@ -158,7 +158,7 @@
 %% Example:
 %% list_source_resources_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SourceResourceList">> => list(source_resource()())
+%%   <<"SourceResourceList">> => list(source_resource())
 %% }
 -type list_source_resources_result() :: #{binary() => any()}.
 
@@ -198,7 +198,7 @@
 
 %% Example:
 %% list_application_states_result() :: #{
-%%   <<"ApplicationStateList">> => list(application_state()()),
+%%   <<"ApplicationStateList">> => list(application_state()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_states_result() :: #{binary() => any()}.
@@ -259,7 +259,7 @@
 
 %% Example:
 %% list_created_artifacts_result() :: #{
-%%   <<"CreatedArtifactList">> => list(created_artifact()()),
+%%   <<"CreatedArtifactList">> => list(created_artifact()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_created_artifacts_result() :: #{binary() => any()}.
@@ -308,7 +308,7 @@
 
 %% Example:
 %% list_migration_task_updates_result() :: #{
-%%   <<"MigrationTaskUpdateList">> => list(migration_task_update()()),
+%%   <<"MigrationTaskUpdateList">> => list(migration_task_update()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_migration_task_updates_result() :: #{binary() => any()}.
@@ -468,7 +468,7 @@
 
 %% Example:
 %% list_discovered_resources_result() :: #{
-%%   <<"DiscoveredResourceList">> => list(discovered_resource()()),
+%%   <<"DiscoveredResourceList">> => list(discovered_resource()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_discovered_resources_result() :: #{binary() => any()}.
@@ -506,7 +506,7 @@
 %% migration_task() :: #{
 %%   <<"MigrationTaskName">> => string(),
 %%   <<"ProgressUpdateStream">> => string(),
-%%   <<"ResourceAttributeList">> => list(resource_attribute()()),
+%%   <<"ResourceAttributeList">> => list(resource_attribute()),
 %%   <<"Task">> => task(),
 %%   <<"UpdateDateTime">> => non_neg_integer()
 %% }

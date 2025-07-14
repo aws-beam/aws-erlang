@@ -187,7 +187,7 @@
 %%   <<"message">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string(),
-%%   <<"workflowExecutions">> => list(workflow_execution_metadata()())
+%%   <<"workflowExecutions">> => list(workflow_execution_metadata())
 %% }
 -type list_workflow_executions_response() :: #{binary() => any()}.
 
@@ -202,14 +202,14 @@
 %% Example:
 %% list_workflow_build_versions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workflowSummaryList">> => list(workflow_summary()())
+%%   <<"workflowSummaryList">> => list(workflow_summary())
 %% }
 -type list_workflow_build_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_distribution_configurations_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -254,7 +254,7 @@
 
 %% Example:
 %% list_image_pipeline_images_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"imagePipelineArn">> := string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -301,7 +301,7 @@
 
 %% Example:
 %% component_parameter_detail() :: #{
-%%   <<"defaultValue">> => list(string()()),
+%%   <<"defaultValue">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"type">> => string()
@@ -332,7 +332,7 @@
 %%   <<"message">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string(),
-%%   <<"steps">> => list(workflow_step_metadata()()),
+%%   <<"steps">> => list(workflow_step_metadata()),
 %%   <<"workflowBuildVersionArn">> => string(),
 %%   <<"workflowExecutionId">> => string()
 %% }
@@ -350,7 +350,7 @@
 
 %% Example:
 %% container() :: #{
-%%   <<"imageUris">> => list(string()()),
+%%   <<"imageUris">> => list(string()),
 %%   <<"region">> => string()
 %% }
 -type container() :: #{binary() => any()}.
@@ -372,7 +372,7 @@
 %%   <<"dateUpdated">> => string(),
 %%   <<"description">> => string(),
 %%   <<"instanceProfileName">> => string(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
@@ -383,7 +383,7 @@
 
 %% Example:
 %% list_image_recipes_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"owner">> => list(any())
@@ -406,7 +406,7 @@
 
 %% Example:
 %% list_image_pipelines_response() :: #{
-%%   <<"imagePipelineList">> => list(image_pipeline()()),
+%%   <<"imagePipelineList">> => list(image_pipeline()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -433,7 +433,7 @@
 %% Example:
 %% list_waiting_workflow_steps_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"steps">> => list(workflow_step_execution()())
+%%   <<"steps">> => list(workflow_step_execution())
 %% }
 -type list_waiting_workflow_steps_response() :: #{binary() => any()}.
 
@@ -444,7 +444,7 @@
 %%   <<"description">> => string(),
 %%   <<"executionRole">> := string(),
 %%   <<"lifecyclePolicyArn">> := string(),
-%%   <<"policyDetails">> := list(lifecycle_policy_detail()()),
+%%   <<"policyDetails">> := list(lifecycle_policy_detail()),
 %%   <<"resourceSelection">> := lifecycle_policy_resource_selection(),
 %%   <<"resourceType">> := list(any()),
 %%   <<"status">> => list(any())
@@ -523,7 +523,7 @@
 %%   <<"lifecycleExecutionId">> => string(),
 %%   <<"lifecycleExecutionState">> => lifecycle_execution_state(),
 %%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(lifecycle_execution_resource()())
+%%   <<"resources">> => list(lifecycle_execution_resource())
 %% }
 -type list_lifecycle_execution_resources_response() :: #{binary() => any()}.
 
@@ -564,7 +564,7 @@
 %%   <<"schedule">> => schedule(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"workflows">> => list(workflow_configuration()())
+%%   <<"workflows">> => list(workflow_configuration())
 %% }
 -type image_pipeline() :: #{binary() => any()}.
 
@@ -578,7 +578,7 @@
 
 %% Example:
 %% workflow_parameter_detail() :: #{
-%%   <<"defaultValue">> => list(string()()),
+%%   <<"defaultValue">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"type">> => string()
@@ -684,7 +684,7 @@
 
 %% Example:
 %% list_lifecycle_policies_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -714,13 +714,13 @@
 %%   <<"description">> => string(),
 %%   <<"instanceMetadataOptions">> => instance_metadata_options(),
 %%   <<"instanceProfileName">> := string(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"keyPair">> => string(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> := string(),
 %%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"snsTopicArn">> => string(),
 %%   <<"subnetId">> => string(),
 %%   <<"tags">> => map(),
@@ -749,7 +749,7 @@
 
 %% Example:
 %% ecr_configuration() :: #{
-%%   <<"containerTags">> => list(string()()),
+%%   <<"containerTags">> => list(string()),
 %%   <<"repositoryName">> => string()
 %% }
 -type ecr_configuration() :: #{binary() => any()}.
@@ -773,7 +773,7 @@
 %% Example:
 %% image_scan_findings_filter() :: #{
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type image_scan_findings_filter() :: #{binary() => any()}.
 
@@ -781,9 +781,9 @@
 %% Example:
 %% create_image_recipe_request() :: #{
 %%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
-%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()()),
+%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"clientToken">> := string(),
-%%   <<"components">> := list(component_configuration()()),
+%%   <<"components">> := list(component_configuration()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"parentImage">> := string(),
@@ -803,7 +803,7 @@
 
 %% Example:
 %% list_container_recipes_response() :: #{
-%%   <<"containerRecipeSummaryList">> => list(container_recipe_summary()()),
+%%   <<"containerRecipeSummaryList">> => list(container_recipe_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -828,7 +828,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -879,7 +879,7 @@
 %%   <<"platform">> => list(any()),
 %%   <<"publisher">> => string(),
 %%   <<"state">> => component_state(),
-%%   <<"supportedOsVersions">> => list(string()()),
+%%   <<"supportedOsVersions">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any()),
 %%   <<"version">> => string()
@@ -899,7 +899,7 @@
 %% create_distribution_configuration_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"description">> => string(),
-%%   <<"distributions">> := list(distribution()()),
+%%   <<"distributions">> := list(distribution()),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -1022,7 +1022,7 @@
 %% Example:
 %% workflow_parameter() :: #{
 %%   <<"name">> => string(),
-%%   <<"value">> => list(string()())
+%%   <<"value">> => list(string())
 %% }
 -type workflow_parameter() :: #{binary() => any()}.
 
@@ -1049,7 +1049,7 @@
 
 %% Example:
 %% list_distribution_configurations_response() :: #{
-%%   <<"distributionConfigurationSummaryList">> => list(distribution_configuration_summary()()),
+%%   <<"distributionConfigurationSummaryList">> => list(distribution_configuration_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -1092,10 +1092,10 @@
 %%   <<"accountId">> => string(),
 %%   <<"action">> => lifecycle_execution_resource_action(),
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"imageUris">> => list(string()()),
+%%   <<"imageUris">> => list(string()),
 %%   <<"region">> => string(),
 %%   <<"resourceId">> => string(),
-%%   <<"snapshots">> => list(lifecycle_execution_snapshot_resource()()),
+%%   <<"snapshots">> => list(lifecycle_execution_snapshot_resource()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"state">> => lifecycle_execution_resource_state()
 %% }
@@ -1179,12 +1179,12 @@
 %%   <<"infrastructureConfigurationArn">> := string(),
 %%   <<"instanceMetadataOptions">> => instance_metadata_options(),
 %%   <<"instanceProfileName">> := string(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"keyPair">> => string(),
 %%   <<"logging">> => logging(),
 %%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"snsTopicArn">> => string(),
 %%   <<"subnetId">> => string(),
 %%   <<"terminateInstanceOnFailure">> => boolean()
@@ -1195,7 +1195,7 @@
 %% Example:
 %% list_components_request() :: #{
 %%   <<"byName">> => boolean(),
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"owner">> => list(any())
@@ -1239,7 +1239,7 @@
 %% Example:
 %% create_container_recipe_request() :: #{
 %%   <<"clientToken">> := string(),
-%%   <<"components">> := list(component_configuration()()),
+%%   <<"components">> := list(component_configuration()),
 %%   <<"containerType">> := list(any()),
 %%   <<"description">> => string(),
 %%   <<"dockerfileTemplateData">> => string(),
@@ -1293,7 +1293,7 @@
 %%   <<"imageTestsConfiguration">> => image_tests_configuration(),
 %%   <<"infrastructureConfigurationArn">> := string(),
 %%   <<"tags">> => map(),
-%%   <<"workflows">> => list(workflow_configuration()())
+%%   <<"workflows">> => list(workflow_configuration())
 %% }
 -type create_image_request() :: #{binary() => any()}.
 
@@ -1315,7 +1315,7 @@
 
 %% Example:
 %% list_lifecycle_policies_response() :: #{
-%%   <<"lifecyclePolicySummaryList">> => list(lifecycle_policy_summary()()),
+%%   <<"lifecyclePolicySummaryList">> => list(lifecycle_policy_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_lifecycle_policies_response() :: #{binary() => any()}.
@@ -1324,7 +1324,7 @@
 %% Example:
 %% list_images_request() :: #{
 %%   <<"byName">> => boolean(),
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"includeDeprecated">> => boolean(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -1345,12 +1345,12 @@
 %%   <<"name">> => string(),
 %%   <<"obfuscate">> => boolean(),
 %%   <<"owner">> => string(),
-%%   <<"parameters">> => list(component_parameter_detail()()),
+%%   <<"parameters">> => list(component_parameter_detail()),
 %%   <<"platform">> => list(any()),
-%%   <<"productCodes">> => list(product_code_list_item()()),
+%%   <<"productCodes">> => list(product_code_list_item()),
 %%   <<"publisher">> => string(),
 %%   <<"state">> => component_state(),
-%%   <<"supportedOsVersions">> => list(string()()),
+%%   <<"supportedOsVersions">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any()),
 %%   <<"version">> => string()
@@ -1409,7 +1409,7 @@
 %% Example:
 %% list_workflows_request() :: #{
 %%   <<"byName">> => boolean(),
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"owner">> => list(any())
@@ -1430,7 +1430,7 @@
 %%   <<"dateCreated">> => string(),
 %%   <<"dateUpdated">> => string(),
 %%   <<"description">> => string(),
-%%   <<"distributions">> => list(distribution()()),
+%%   <<"distributions">> => list(distribution()),
 %%   <<"name">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"timeoutMinutes">> => integer()
@@ -1465,7 +1465,7 @@
 %%   <<"kmsKeyId">> => string(),
 %%   <<"name">> => string(),
 %%   <<"owner">> => string(),
-%%   <<"parameters">> => list(workflow_parameter_detail()()),
+%%   <<"parameters">> => list(workflow_parameter_detail()),
 %%   <<"state">> => workflow_state(),
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any()),
@@ -1476,7 +1476,7 @@
 
 %% Example:
 %% cvss_score_details() :: #{
-%%   <<"adjustments">> => list(cvss_score_adjustment()()),
+%%   <<"adjustments">> => list(cvss_score_adjustment()),
 %%   <<"cvssSource">> => string(),
 %%   <<"score">> => float(),
 %%   <<"scoreSource">> => string(),
@@ -1488,7 +1488,7 @@
 
 %% Example:
 %% list_image_pipelines_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1499,19 +1499,19 @@
 %% distribution() :: #{
 %%   <<"amiDistributionConfiguration">> => ami_distribution_configuration(),
 %%   <<"containerDistributionConfiguration">> => container_distribution_configuration(),
-%%   <<"fastLaunchConfigurations">> => list(fast_launch_configuration()()),
-%%   <<"launchTemplateConfigurations">> => list(launch_template_configuration()()),
-%%   <<"licenseConfigurationArns">> => list(string()()),
+%%   <<"fastLaunchConfigurations">> => list(fast_launch_configuration()),
+%%   <<"launchTemplateConfigurations">> => list(launch_template_configuration()),
+%%   <<"licenseConfigurationArns">> => list(string()),
 %%   <<"region">> => string(),
 %%   <<"s3ExportConfiguration">> => s3_export_configuration(),
-%%   <<"ssmParameterConfigurations">> => list(ssm_parameter_configuration()())
+%%   <<"ssmParameterConfigurations">> => list(ssm_parameter_configuration())
 %% }
 -type distribution() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_image_scan_findings_response() :: #{
-%%   <<"findings">> => list(image_scan_finding()()),
+%%   <<"findings">> => list(image_scan_finding()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -1558,7 +1558,7 @@
 %%   <<"name">> := string(),
 %%   <<"platform">> := list(any()),
 %%   <<"semanticVersion">> := string(),
-%%   <<"supportedOsVersions">> => list(string()()),
+%%   <<"supportedOsVersions">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"uri">> => string()
 %% }
@@ -1586,7 +1586,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"description">> => string(),
 %%   <<"distributionConfigurationArn">> := string(),
-%%   <<"distributions">> := list(distribution()())
+%%   <<"distributions">> := list(distribution())
 %% }
 -type update_distribution_configuration_request() :: #{binary() => any()}.
 
@@ -1623,7 +1623,7 @@
 
 %% Example:
 %% list_infrastructure_configurations_response() :: #{
-%%   <<"infrastructureConfigurationSummaryList">> => list(infrastructure_configuration_summary()()),
+%%   <<"infrastructureConfigurationSummaryList">> => list(infrastructure_configuration_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -1675,9 +1675,9 @@
 %%   <<"name">> => string(),
 %%   <<"owner">> => string(),
 %%   <<"platform">> => list(any()),
-%%   <<"productCodes">> => list(product_code_list_item()()),
+%%   <<"productCodes">> => list(product_code_list_item()),
 %%   <<"status">> => list(any()),
-%%   <<"supportedOsVersions">> => list(string()()),
+%%   <<"supportedOsVersions">> => list(string()),
 %%   <<"type">> => list(any()),
 %%   <<"version">> => string()
 %% }
@@ -1732,7 +1732,7 @@
 %%   <<"schedule">> => schedule(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"workflows">> => list(workflow_configuration()())
+%%   <<"workflows">> => list(workflow_configuration())
 %% }
 -type create_image_pipeline_request() :: #{binary() => any()}.
 
@@ -1750,7 +1750,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -1784,7 +1784,7 @@
 
 %% Example:
 %% list_images_response() :: #{
-%%   <<"imageVersionList">> => list(image_version()()),
+%%   <<"imageVersionList">> => list(image_version()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -1793,7 +1793,7 @@
 
 %% Example:
 %% list_lifecycle_executions_response() :: #{
-%%   <<"lifecycleExecutions">> => list(lifecycle_execution()()),
+%%   <<"lifecycleExecutions">> => list(lifecycle_execution()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_lifecycle_executions_response() :: #{binary() => any()}.
@@ -1801,7 +1801,7 @@
 
 %% Example:
 %% list_component_build_versions_response() :: #{
-%%   <<"componentSummaryList">> => list(component_summary()()),
+%%   <<"componentSummaryList">> => list(component_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -1810,7 +1810,7 @@
 
 %% Example:
 %% list_image_packages_response() :: #{
-%%   <<"imagePackageList">> => list(image_package()()),
+%%   <<"imagePackageList">> => list(image_package()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -1843,7 +1843,7 @@
 
 %% Example:
 %% list_container_recipes_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"owner">> => list(any())
@@ -1853,7 +1853,7 @@
 
 %% Example:
 %% list_image_build_versions_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"imageVersionArn">> := string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1902,8 +1902,8 @@
 %% image_recipe() :: #{
 %%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
 %%   <<"arn">> => string(),
-%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()()),
-%%   <<"components">> => list(component_configuration()()),
+%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
+%%   <<"components">> => list(component_configuration()),
 %%   <<"dateCreated">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
@@ -1934,7 +1934,7 @@
 %%   <<"description">> => string(),
 %%   <<"executionRole">> => string(),
 %%   <<"name">> => string(),
-%%   <<"policyDetails">> => list(lifecycle_policy_detail()()),
+%%   <<"policyDetails">> => list(lifecycle_policy_detail()),
 %%   <<"resourceSelection">> => lifecycle_policy_resource_selection(),
 %%   <<"resourceType">> => list(any()),
 %%   <<"status">> => list(any()),
@@ -1982,7 +1982,7 @@
 
 %% Example:
 %% list_image_scan_findings_request() :: #{
-%%   <<"filters">> => list(image_scan_findings_filter()()),
+%%   <<"filters">> => list(image_scan_findings_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1991,7 +1991,7 @@
 
 %% Example:
 %% lifecycle_policy_resource_selection() :: #{
-%%   <<"recipes">> => list(lifecycle_policy_resource_selection_recipe()()),
+%%   <<"recipes">> => list(lifecycle_policy_resource_selection_recipe()),
 %%   <<"tagMap">> => map()
 %% }
 -type lifecycle_policy_resource_selection() :: #{binary() => any()}.
@@ -2059,8 +2059,8 @@
 
 %% Example:
 %% output_resources() :: #{
-%%   <<"amis">> => list(ami()()),
-%%   <<"containers">> => list(container()())
+%%   <<"amis">> => list(ami()),
+%%   <<"containers">> => list(container())
 %% }
 -type output_resources() :: #{binary() => any()}.
 
@@ -2101,7 +2101,7 @@
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any()),
 %%   <<"version">> => string(),
-%%   <<"workflows">> => list(workflow_configuration()())
+%%   <<"workflows">> => list(workflow_configuration())
 %% }
 -type image() :: #{binary() => any()}.
 
@@ -2147,16 +2147,16 @@
 
 %% Example:
 %% package_vulnerability_details() :: #{
-%%   <<"cvss">> => list(cvss_score()()),
-%%   <<"referenceUrls">> => list(string()()),
-%%   <<"relatedVulnerabilities">> => list(string()()),
+%%   <<"cvss">> => list(cvss_score()),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"relatedVulnerabilities">> => list(string()),
 %%   <<"source">> => string(),
 %%   <<"sourceUrl">> => string(),
 %%   <<"vendorCreatedAt">> => non_neg_integer(),
 %%   <<"vendorSeverity">> => string(),
 %%   <<"vendorUpdatedAt">> => non_neg_integer(),
 %%   <<"vulnerabilityId">> => string(),
-%%   <<"vulnerablePackages">> => list(vulnerable_package()())
+%%   <<"vulnerablePackages">> => list(vulnerable_package())
 %% }
 -type package_vulnerability_details() :: #{binary() => any()}.
 
@@ -2243,7 +2243,7 @@
 %%   <<"aggregationType">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string(),
-%%   <<"responses">> => list(image_scan_finding_aggregation()())
+%%   <<"responses">> => list(image_scan_finding_aggregation())
 %% }
 -type list_image_scan_finding_aggregations_response() :: #{binary() => any()}.
 
@@ -2283,7 +2283,7 @@
 %%   <<"kmsKeyId">> => string(),
 %%   <<"launchPermission">> => launch_permission_configuration(),
 %%   <<"name">> => string(),
-%%   <<"targetAccountIds">> => list(string()())
+%%   <<"targetAccountIds">> => list(string())
 %% }
 -type ami_distribution_configuration() :: #{binary() => any()}.
 
@@ -2291,14 +2291,14 @@
 %% Example:
 %% component_configuration() :: #{
 %%   <<"componentArn">> => string(),
-%%   <<"parameters">> => list(component_parameter()())
+%%   <<"parameters">> => list(component_parameter())
 %% }
 -type component_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% instance_configuration() :: #{
-%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()()),
+%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"image">> => string()
 %% }
 -type instance_configuration() :: #{binary() => any()}.
@@ -2315,7 +2315,7 @@
 
 %% Example:
 %% container_distribution_configuration() :: #{
-%%   <<"containerTags">> => list(string()()),
+%%   <<"containerTags">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"targetRepository">> => target_container_repository()
 %% }
@@ -2361,7 +2361,7 @@
 %% Example:
 %% container_recipe() :: #{
 %%   <<"arn">> => string(),
-%%   <<"components">> => list(component_configuration()()),
+%%   <<"components">> => list(component_configuration()),
 %%   <<"containerType">> => list(any()),
 %%   <<"dateCreated">> => string(),
 %%   <<"description">> => string(),
@@ -2387,7 +2387,7 @@
 %%   <<"description">> => string(),
 %%   <<"executionRole">> := string(),
 %%   <<"name">> := string(),
-%%   <<"policyDetails">> := list(lifecycle_policy_detail()()),
+%%   <<"policyDetails">> := list(lifecycle_policy_detail()),
 %%   <<"resourceSelection">> := lifecycle_policy_resource_selection(),
 %%   <<"resourceType">> := list(any()),
 %%   <<"status">> => list(any()),
@@ -2441,7 +2441,7 @@
 
 %% Example:
 %% list_components_response() :: #{
-%%   <<"componentVersionList">> => list(component_version()()),
+%%   <<"componentVersionList">> => list(component_version()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -2475,7 +2475,7 @@
 
 %% Example:
 %% list_image_build_versions_response() :: #{
-%%   <<"imageSummaryList">> => list(image_summary()()),
+%%   <<"imageSummaryList">> => list(image_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -2497,7 +2497,7 @@
 %%   <<"infrastructureConfigurationArn">> := string(),
 %%   <<"schedule">> => schedule(),
 %%   <<"status">> => list(any()),
-%%   <<"workflows">> => list(workflow_configuration()())
+%%   <<"workflows">> => list(workflow_configuration())
 %% }
 -type update_image_pipeline_request() :: #{binary() => any()}.
 
@@ -2532,7 +2532,7 @@
 %% workflow_configuration() :: #{
 %%   <<"onFailure">> => list(any()),
 %%   <<"parallelGroup">> => string(),
-%%   <<"parameters">> => list(workflow_parameter()()),
+%%   <<"parameters">> => list(workflow_parameter()),
 %%   <<"workflowArn">> => string()
 %% }
 -type workflow_configuration() :: #{binary() => any()}.
@@ -2564,7 +2564,7 @@
 
 %% Example:
 %% list_infrastructure_configurations_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -2602,7 +2602,7 @@
 
 %% Example:
 %% list_image_recipes_response() :: #{
-%%   <<"imageRecipeSummaryList">> => list(image_recipe_summary()()),
+%%   <<"imageRecipeSummaryList">> => list(image_recipe_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }
@@ -2628,8 +2628,8 @@
 %% lifecycle_policy_detail_exclusion_rules_amis() :: #{
 %%   <<"isPublic">> => boolean(),
 %%   <<"lastLaunched">> => lifecycle_policy_detail_exclusion_rules_amis_last_launched(),
-%%   <<"regions">> => list(string()()),
-%%   <<"sharedAccounts">> => list(string()()),
+%%   <<"regions">> => list(string()),
+%%   <<"sharedAccounts">> => list(string()),
 %%   <<"tagMap">> => map()
 %% }
 -type lifecycle_policy_detail_exclusion_rules_amis() :: #{binary() => any()}.
@@ -2652,13 +2652,13 @@
 %%   <<"description">> => string(),
 %%   <<"instanceMetadataOptions">> => instance_metadata_options(),
 %%   <<"instanceProfileName">> => string(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"keyPair">> => string(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> => string(),
 %%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"snsTopicArn">> => string(),
 %%   <<"subnetId">> => string(),
 %%   <<"tags">> => map(),
@@ -2677,7 +2677,7 @@
 %% Example:
 %% list_workflows_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workflowVersionList">> => list(workflow_version()())
+%%   <<"workflowVersionList">> => list(workflow_version())
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
 
@@ -2717,7 +2717,7 @@
 %% Example:
 %% component_parameter() :: #{
 %%   <<"name">> => string(),
-%%   <<"value">> => list(string()())
+%%   <<"value">> => list(string())
 %% }
 -type component_parameter() :: #{binary() => any()}.
 
@@ -2745,7 +2745,7 @@
 %%   <<"dateUpdated">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"regions">> => list(string()()),
+%%   <<"regions">> => list(string()),
 %%   <<"tags">> => map()
 %% }
 -type distribution_configuration_summary() :: #{binary() => any()}.
@@ -2753,10 +2753,10 @@
 
 %% Example:
 %% launch_permission_configuration() :: #{
-%%   <<"organizationArns">> => list(string()()),
-%%   <<"organizationalUnitArns">> => list(string()()),
-%%   <<"userGroups">> => list(string()()),
-%%   <<"userIds">> => list(string()())
+%%   <<"organizationArns">> => list(string()),
+%%   <<"organizationalUnitArns">> => list(string()),
+%%   <<"userGroups">> => list(string()),
+%%   <<"userIds">> => list(string())
 %% }
 -type launch_permission_configuration() :: #{binary() => any()}.
 
@@ -2770,7 +2770,7 @@
 
 %% Example:
 %% list_image_pipeline_images_response() :: #{
-%%   <<"imageSummaryList">> => list(image_summary()()),
+%%   <<"imageSummaryList">> => list(image_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"requestId">> => string()
 %% }

@@ -102,7 +102,7 @@
 %% Example:
 %% list_report_definitions_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reportDefinitions">> => list(report_definition()())
+%%   <<"reportDefinitions">> => list(report_definition())
 %% }
 -type list_report_definitions_result() :: #{binary() => any()}.
 

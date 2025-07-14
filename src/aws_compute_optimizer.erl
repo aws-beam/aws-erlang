@@ -97,23 +97,23 @@
 
 %% Example:
 %% get_license_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
-%%   <<"filters">> => list(license_recommendation_filter()()),
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(license_recommendation_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"resourceArns">> => list(string()())
+%%   <<"resourceArns">> => list(string())
 %% }
 -type get_license_recommendations_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_ec2_recommendation_projected_metrics_response() :: #{
-%%   <<"recommendedOptionProjectedMetrics">> => list(recommended_option_projected_metric()())
+%%   <<"recommendedOptionProjectedMetrics">> => list(recommended_option_projected_metric())
 %% }
 -type get_ec2_recommendation_projected_metrics_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_recommendation_summaries_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -139,16 +139,16 @@
 %%   <<"idle">> => list(any()),
 %%   <<"instanceFinding">> => list(any()),
 %%   <<"instanceFindingReasonCodes">> => list(list(any())()),
-%%   <<"instanceRecommendationOptions">> => list(rds_db_instance_recommendation_option()()),
+%%   <<"instanceRecommendationOptions">> => list(rds_db_instance_recommendation_option()),
 %%   <<"lastRefreshTimestamp">> => non_neg_integer(),
 %%   <<"lookbackPeriodInDays">> => float(),
 %%   <<"promotionTier">> => integer(),
 %%   <<"resourceArn">> => string(),
 %%   <<"storageFinding">> => list(any()),
 %%   <<"storageFindingReasonCodes">> => list(list(any())()),
-%%   <<"storageRecommendationOptions">> => list(rds_db_storage_recommendation_option()()),
-%%   <<"tags">> => list(tag()()),
-%%   <<"utilizationMetrics">> => list(rds_db_utilization_metric()())
+%%   <<"storageRecommendationOptions">> => list(rds_db_storage_recommendation_option()),
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(rds_db_utilization_metric())
 %% }
 -type rds_db_recommendation() :: #{binary() => any()}.
 
@@ -159,7 +159,7 @@
 %%   <<"licenseModel">> => list(any()),
 %%   <<"licenseName">> => list(any()),
 %%   <<"licenseVersion">> => string(),
-%%   <<"metricsSource">> => list(metric_source()()),
+%%   <<"metricsSource">> => list(metric_source()),
 %%   <<"numberOfCores">> => integer(),
 %%   <<"operatingSystem">> => string()
 %% }
@@ -192,8 +192,8 @@
 %%   <<"resourceType">> => list(any()),
 %%   <<"savingsOpportunity">> => idle_savings_opportunity(),
 %%   <<"savingsOpportunityAfterDiscounts">> => idle_savings_opportunity_after_discounts(),
-%%   <<"tags">> => list(tag()()),
-%%   <<"utilizationMetrics">> => list(idle_utilization_metric()())
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(idle_utilization_metric())
 %% }
 -type idle_recommendation() :: #{binary() => any()}.
 
@@ -233,8 +233,8 @@
 
 %% Example:
 %% describe_recommendation_export_jobs_request() :: #{
-%%   <<"filters">> => list(job_filter()()),
-%%   <<"jobIds">> => list(string()()),
+%%   <<"filters">> => list(job_filter()),
+%%   <<"jobIds">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -248,9 +248,9 @@
 
 %% Example:
 %% get_lambda_function_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
-%%   <<"filters">> => list(lambda_function_recommendation_filter()()),
-%%   <<"functionArns">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(lambda_function_recommendation_filter()),
+%%   <<"functionArns">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -258,9 +258,9 @@
 
 %% Example:
 %% get_ebs_volume_recommendations_response() :: #{
-%%   <<"errors">> => list(get_recommendation_error()()),
+%%   <<"errors">> => list(get_recommendation_error()),
 %%   <<"nextToken">> => string(),
-%%   <<"volumeRecommendations">> => list(volume_recommendation()())
+%%   <<"volumeRecommendations">> => list(volume_recommendation())
 %% }
 -type get_ebs_volume_recommendations_response() :: #{binary() => any()}.
 
@@ -276,10 +276,10 @@
 %%   <<"functionVersion">> => string(),
 %%   <<"lastRefreshTimestamp">> => non_neg_integer(),
 %%   <<"lookbackPeriodInDays">> => float(),
-%%   <<"memorySizeRecommendationOptions">> => list(lambda_function_memory_recommendation_option()()),
+%%   <<"memorySizeRecommendationOptions">> => list(lambda_function_memory_recommendation_option()),
 %%   <<"numberOfInvocations">> => float(),
-%%   <<"tags">> => list(tag()()),
-%%   <<"utilizationMetrics">> => list(lambda_function_utilization_metric()())
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(lambda_function_utilization_metric())
 %% }
 -type lambda_function_recommendation() :: #{binary() => any()}.
 
@@ -310,7 +310,7 @@
 
 %% Example:
 %% get_enrollment_statuses_for_organization_request() :: #{
-%%   <<"filters">> => list(enrollment_filter()()),
+%%   <<"filters">> => list(enrollment_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -335,24 +335,24 @@
 %%   <<"enhancedInfrastructureMetrics">> => list(any()),
 %%   <<"externalMetricsPreference">> => external_metrics_preference(),
 %%   <<"lookBackPeriod">> => list(any()),
-%%   <<"preferredResources">> => list(effective_preferred_resource()()),
-%%   <<"utilizationPreferences">> => list(utilization_preference()())
+%%   <<"preferredResources">> => list(effective_preferred_resource()),
+%%   <<"utilizationPreferences">> => list(utilization_preference())
 %% }
 -type get_effective_recommendation_preferences_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_recommendation_preferences_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"recommendationPreferencesDetails">> => list(recommendation_preferences_detail()())
+%%   <<"recommendationPreferencesDetails">> => list(recommendation_preferences_detail())
 %% }
 -type get_recommendation_preferences_response() :: #{binary() => any()}.
 
 %% Example:
 %% e_c_s_service_recommendation_option() :: #{
-%%   <<"containerRecommendations">> => list(container_recommendation()()),
+%%   <<"containerRecommendations">> => list(container_recommendation()),
 %%   <<"cpu">> => integer(),
 %%   <<"memory">> => integer(),
-%%   <<"projectedUtilizationMetrics">> => list(e_c_s_service_projected_utilization_metric()()),
+%%   <<"projectedUtilizationMetrics">> => list(e_c_s_service_projected_utilization_metric()),
 %%   <<"savingsOpportunity">> => savings_opportunity(),
 %%   <<"savingsOpportunityAfterDiscounts">> => e_c_s_savings_opportunity_after_discounts()
 %% }
@@ -384,11 +384,11 @@
 %%   <<"externalMetricsPreference">> => external_metrics_preference(),
 %%   <<"inferredWorkloadTypes">> => list(any()),
 %%   <<"lookBackPeriod">> => list(any()),
-%%   <<"preferredResources">> => list(effective_preferred_resource()()),
+%%   <<"preferredResources">> => list(effective_preferred_resource()),
 %%   <<"resourceType">> => list(any()),
 %%   <<"savingsEstimationMode">> => list(any()),
 %%   <<"scope">> => scope(),
-%%   <<"utilizationPreferences">> => list(utilization_preference()())
+%%   <<"utilizationPreferences">> => list(utilization_preference())
 %% }
 -type recommendation_preferences_detail() :: #{binary() => any()}.
 
@@ -418,7 +418,7 @@
 %% Example:
 %% describe_recommendation_export_jobs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"recommendationExportJobs">> => list(recommendation_export_job()())
+%%   <<"recommendationExportJobs">> => list(recommendation_export_job())
 %% }
 -type describe_recommendation_export_jobs_response() :: #{binary() => any()}.
 
@@ -432,7 +432,7 @@
 %% Example:
 %% get_recommendation_summaries_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"recommendationSummaries">> => list(recommendation_summary()())
+%%   <<"recommendationSummaries">> => list(recommendation_summary())
 %% }
 -type get_recommendation_summaries_response() :: #{binary() => any()}.
 
@@ -451,8 +451,8 @@
 
 %% Example:
 %% get_e_c_s_service_recommendations_response() :: #{
-%%   <<"ecsServiceRecommendations">> => list(e_c_s_service_recommendation()()),
-%%   <<"errors">> => list(get_recommendation_error()()),
+%%   <<"ecsServiceRecommendations">> => list(e_c_s_service_recommendation()),
+%%   <<"errors">> => list(get_recommendation_error()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_e_c_s_service_recommendations_response() :: #{binary() => any()}.
@@ -488,7 +488,7 @@
 %% Example:
 %% lambda_function_memory_recommendation_option() :: #{
 %%   <<"memorySize">> => integer(),
-%%   <<"projectedUtilizationMetrics">> => list(lambda_function_memory_projected_metric()()),
+%%   <<"projectedUtilizationMetrics">> => list(lambda_function_memory_projected_metric()),
 %%   <<"rank">> => integer(),
 %%   <<"savingsOpportunity">> => savings_opportunity(),
 %%   <<"savingsOpportunityAfterDiscounts">> => lambda_savings_opportunity_after_discounts()
@@ -505,24 +505,24 @@
 %% Example:
 %% job_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type job_filter() :: #{binary() => any()}.
 
 %% Example:
 %% rds_database_projected_metric() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"timestamps">> => list(non_neg_integer()()),
-%%   <<"values">> => list(float()())
+%%   <<"timestamps">> => list(non_neg_integer()),
+%%   <<"values">> => list(float())
 %% }
 -type rds_database_projected_metric() :: #{binary() => any()}.
 
 %% Example:
 %% export_lambda_function_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"fieldsToExport">> => list(list(any())()),
 %%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(lambda_function_recommendation_filter()()),
+%%   <<"filters">> => list(lambda_function_recommendation_filter()),
 %%   <<"includeMemberAccounts">> => boolean(),
 %%   <<"s3DestinationConfig">> := s3_destination_config()
 %% }
@@ -530,7 +530,7 @@
 
 %% Example:
 %% get_enrollment_statuses_for_organization_response() :: #{
-%%   <<"accountEnrollmentStatuses">> => list(account_enrollment_status()()),
+%%   <<"accountEnrollmentStatuses">> => list(account_enrollment_status()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_enrollment_statuses_for_organization_response() :: #{binary() => any()}.
@@ -549,10 +549,10 @@
 
 %% Example:
 %% export_e_c_s_service_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"fieldsToExport">> => list(list(any())()),
 %%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(e_c_s_service_recommendation_filter()()),
+%%   <<"filters">> => list(e_c_s_service_recommendation_filter()),
 %%   <<"includeMemberAccounts">> => boolean(),
 %%   <<"s3DestinationConfig">> := s3_destination_config()
 %% }
@@ -567,16 +567,16 @@
 
 %% Example:
 %% get_idle_recommendations_response() :: #{
-%%   <<"errors">> => list(idle_recommendation_error()()),
-%%   <<"idleRecommendations">> => list(idle_recommendation()()),
+%%   <<"errors">> => list(idle_recommendation_error()),
+%%   <<"idleRecommendations">> => list(idle_recommendation()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_idle_recommendations_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_ec2_instance_recommendations_response() :: #{
-%%   <<"errors">> => list(get_recommendation_error()()),
-%%   <<"instanceRecommendations">> => list(instance_recommendation()()),
+%%   <<"errors">> => list(get_recommendation_error()),
+%%   <<"instanceRecommendations">> => list(instance_recommendation()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_ec2_instance_recommendations_response() :: #{binary() => any()}.
@@ -603,7 +603,7 @@
 %% Example:
 %% idle_recommendation_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type idle_recommendation_filter() :: #{binary() => any()}.
 
@@ -623,7 +623,7 @@
 
 %% Example:
 %% get_e_c_s_service_recommendation_projected_metrics_response() :: #{
-%%   <<"recommendedOptionProjectedMetrics">> => list(e_c_s_service_recommended_option_projected_metric()())
+%%   <<"recommendedOptionProjectedMetrics">> => list(e_c_s_service_recommended_option_projected_metric())
 %% }
 -type get_e_c_s_service_recommendation_projected_metrics_response() :: #{binary() => any()}.
 
@@ -655,22 +655,22 @@
 %%   <<"externalMetricsPreference">> => external_metrics_preference(),
 %%   <<"inferredWorkloadTypes">> => list(any()),
 %%   <<"lookBackPeriod">> => list(any()),
-%%   <<"preferredResources">> => list(preferred_resource()()),
+%%   <<"preferredResources">> => list(preferred_resource()),
 %%   <<"resourceType">> := list(any()),
 %%   <<"savingsEstimationMode">> => list(any()),
 %%   <<"scope">> => scope(),
-%%   <<"utilizationPreferences">> => list(utilization_preference()())
+%%   <<"utilizationPreferences">> => list(utilization_preference())
 %% }
 -type put_recommendation_preferences_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_rds_database_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
-%%   <<"filters">> => list(rds_db_recommendation_filter()()),
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(rds_db_recommendation_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"recommendationPreferences">> => recommendation_preferences(),
-%%   <<"resourceArns">> => list(string()())
+%%   <<"resourceArns">> => list(string())
 %% }
 -type get_rds_database_recommendations_request() :: #{binary() => any()}.
 
@@ -682,10 +682,10 @@
 
 %% Example:
 %% export_idle_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"fieldsToExport">> => list(list(any())()),
 %%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(idle_recommendation_filter()()),
+%%   <<"filters">> => list(idle_recommendation_filter()),
 %%   <<"includeMemberAccounts">> => boolean(),
 %%   <<"s3DestinationConfig">> := s3_destination_config()
 %% }
@@ -717,19 +717,19 @@
 %%   <<"finding">> => list(any()),
 %%   <<"lastRefreshTimestamp">> => non_neg_integer(),
 %%   <<"lookBackPeriodInDays">> => float(),
-%%   <<"tags">> => list(tag()()),
-%%   <<"utilizationMetrics">> => list(ebs_utilization_metric()()),
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(ebs_utilization_metric()),
 %%   <<"volumeArn">> => string(),
-%%   <<"volumeRecommendationOptions">> => list(volume_recommendation_option()())
+%%   <<"volumeRecommendationOptions">> => list(volume_recommendation_option())
 %% }
 -type volume_recommendation() :: #{binary() => any()}.
 
 %% Example:
 %% export_license_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"fieldsToExport">> => list(list(any())()),
 %%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(license_recommendation_filter()()),
+%%   <<"filters">> => list(license_recommendation_filter()),
 %%   <<"includeMemberAccounts">> => boolean(),
 %%   <<"s3DestinationConfig">> := s3_destination_config()
 %% }
@@ -768,11 +768,11 @@
 
 %% Example:
 %% get_ebs_volume_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
-%%   <<"filters">> => list(ebs_filter()()),
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(ebs_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"volumeArns">> => list(string()())
+%%   <<"volumeArns">> => list(string())
 %% }
 -type get_ebs_volume_recommendations_request() :: #{binary() => any()}.
 
@@ -785,10 +785,10 @@
 
 %% Example:
 %% export_auto_scaling_group_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"fieldsToExport">> => list(list(any())()),
 %%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"includeMemberAccounts">> => boolean(),
 %%   <<"recommendationPreferences">> => recommendation_preferences(),
 %%   <<"s3DestinationConfig">> := s3_destination_config()
@@ -797,11 +797,11 @@
 
 %% Example:
 %% get_e_c_s_service_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
-%%   <<"filters">> => list(e_c_s_service_recommendation_filter()()),
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(e_c_s_service_recommendation_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"serviceArns">> => list(string()())
+%%   <<"serviceArns">> => list(string())
 %% }
 -type get_e_c_s_service_recommendations_request() :: #{binary() => any()}.
 
@@ -842,10 +842,10 @@
 %%   <<"instanceState">> => list(any()),
 %%   <<"lastRefreshTimestamp">> => non_neg_integer(),
 %%   <<"lookBackPeriodInDays">> => float(),
-%%   <<"recommendationOptions">> => list(instance_recommendation_option()()),
-%%   <<"recommendationSources">> => list(recommendation_source()()),
-%%   <<"tags">> => list(tag()()),
-%%   <<"utilizationMetrics">> => list(utilization_metric()())
+%%   <<"recommendationOptions">> => list(instance_recommendation_option()),
+%%   <<"recommendationSources">> => list(recommendation_source()),
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(utilization_metric())
 %% }
 -type instance_recommendation() :: #{binary() => any()}.
 
@@ -867,7 +867,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -926,8 +926,8 @@
 %%   <<"inferredWorkloadTypes">> => list(list(any())()),
 %%   <<"lastRefreshTimestamp">> => non_neg_integer(),
 %%   <<"lookBackPeriodInDays">> => float(),
-%%   <<"recommendationOptions">> => list(auto_scaling_group_recommendation_option()()),
-%%   <<"utilizationMetrics">> => list(utilization_metric()())
+%%   <<"recommendationOptions">> => list(auto_scaling_group_recommendation_option()),
+%%   <<"utilizationMetrics">> => list(utilization_metric())
 %% }
 -type auto_scaling_group_recommendation() :: #{binary() => any()}.
 
@@ -938,10 +938,10 @@
 %%   <<"finding">> => list(any()),
 %%   <<"findingReasonCodes">> => list(list(any())()),
 %%   <<"lastRefreshTimestamp">> => non_neg_integer(),
-%%   <<"licenseRecommendationOptions">> => list(license_recommendation_option()()),
+%%   <<"licenseRecommendationOptions">> => list(license_recommendation_option()),
 %%   <<"lookbackPeriodInDays">> => float(),
 %%   <<"resourceArn">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type license_recommendation() :: #{binary() => any()}.
 
@@ -954,9 +954,9 @@
 
 %% Example:
 %% get_ec2_instance_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
-%%   <<"filters">> => list(filter()()),
-%%   <<"instanceArns">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(filter()),
+%%   <<"instanceArns">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"recommendationPreferences">> => recommendation_preferences()
@@ -1002,20 +1002,20 @@
 
 %% Example:
 %% get_idle_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
-%%   <<"filters">> => list(idle_recommendation_filter()()),
+%%   <<"accountIds">> => list(string()),
+%%   <<"filters">> => list(idle_recommendation_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"orderBy">> => order_by(),
-%%   <<"resourceArns">> => list(string()())
+%%   <<"resourceArns">> => list(string())
 %% }
 -type get_idle_recommendations_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_auto_scaling_group_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
-%%   <<"autoScalingGroupArns">> => list(string()()),
-%%   <<"filters">> => list(filter()()),
+%%   <<"accountIds">> => list(string()),
+%%   <<"autoScalingGroupArns">> => list(string()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"recommendationPreferences">> => recommendation_preferences()
@@ -1037,7 +1037,7 @@
 %%   <<"migrationEffort">> => list(any()),
 %%   <<"performanceRisk">> => float(),
 %%   <<"platformDifferences">> => list(list(any())()),
-%%   <<"projectedUtilizationMetrics">> => list(utilization_metric()()),
+%%   <<"projectedUtilizationMetrics">> => list(utilization_metric()),
 %%   <<"rank">> => integer(),
 %%   <<"savingsOpportunity">> => savings_opportunity(),
 %%   <<"savingsOpportunityAfterDiscounts">> => instance_savings_opportunity_after_discounts()
@@ -1056,17 +1056,17 @@
 
 %% Example:
 %% e_c_s_service_projected_metric() :: #{
-%%   <<"lowerBoundValues">> => list(float()()),
+%%   <<"lowerBoundValues">> => list(float()),
 %%   <<"name">> => list(any()),
-%%   <<"timestamps">> => list(non_neg_integer()()),
-%%   <<"upperBoundValues">> => list(float()())
+%%   <<"timestamps">> => list(non_neg_integer()),
+%%   <<"upperBoundValues">> => list(float())
 %% }
 -type e_c_s_service_projected_metric() :: #{binary() => any()}.
 
 %% Example:
 %% enrollment_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type enrollment_filter() :: #{binary() => any()}.
 
@@ -1079,14 +1079,14 @@
 %% Example:
 %% e_c_s_service_recommendation_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type e_c_s_service_recommendation_filter() :: #{binary() => any()}.
 
 %% Example:
 %% get_license_recommendations_response() :: #{
-%%   <<"errors">> => list(get_recommendation_error()()),
-%%   <<"licenseRecommendations">> => list(license_recommendation()()),
+%%   <<"errors">> => list(get_recommendation_error()),
+%%   <<"licenseRecommendations">> => list(license_recommendation()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_license_recommendations_response() :: #{binary() => any()}.
@@ -1094,13 +1094,13 @@
 %% Example:
 %% license_recommendation_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type license_recommendation_filter() :: #{binary() => any()}.
 
 %% Example:
 %% e_c_s_service_recommended_option_projected_metric() :: #{
-%%   <<"projectedMetrics">> => list(e_c_s_service_projected_metric()()),
+%%   <<"projectedMetrics">> => list(e_c_s_service_projected_metric()),
 %%   <<"recommendedCpuUnits">> => integer(),
 %%   <<"recommendedMemorySize">> => integer()
 %% }
@@ -1108,7 +1108,7 @@
 
 %% Example:
 %% rds_database_recommended_option_projected_metric() :: #{
-%%   <<"projectedMetrics">> => list(rds_database_projected_metric()()),
+%%   <<"projectedMetrics">> => list(rds_database_projected_metric()),
 %%   <<"rank">> => integer(),
 %%   <<"recommendedDBInstanceClass">> => string()
 %% }
@@ -1129,10 +1129,10 @@
 
 %% Example:
 %% export_ebs_volume_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"fieldsToExport">> => list(list(any())()),
 %%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(ebs_filter()()),
+%%   <<"filters">> => list(ebs_filter()),
 %%   <<"includeMemberAccounts">> => boolean(),
 %%   <<"s3DestinationConfig">> := s3_destination_config()
 %% }
@@ -1147,8 +1147,8 @@
 
 %% Example:
 %% get_auto_scaling_group_recommendations_response() :: #{
-%%   <<"autoScalingGroupRecommendations">> => list(auto_scaling_group_recommendation()()),
-%%   <<"errors">> => list(get_recommendation_error()()),
+%%   <<"autoScalingGroupRecommendations">> => list(auto_scaling_group_recommendation()),
+%%   <<"errors">> => list(get_recommendation_error()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_auto_scaling_group_recommendations_response() :: #{binary() => any()}.
@@ -1179,9 +1179,9 @@
 
 %% Example:
 %% effective_preferred_resource() :: #{
-%%   <<"effectiveIncludeList">> => list(string()()),
-%%   <<"excludeList">> => list(string()()),
-%%   <<"includeList">> => list(string()()),
+%%   <<"effectiveIncludeList">> => list(string()),
+%%   <<"excludeList">> => list(string()),
+%%   <<"includeList">> => list(string()),
 %%   <<"name">> => list(any())
 %% }
 -type effective_preferred_resource() :: #{binary() => any()}.
@@ -1232,8 +1232,8 @@
 %% Example:
 %% projected_metric() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"timestamps">> => list(non_neg_integer()()),
-%%   <<"values">> => list(float()())
+%%   <<"timestamps">> => list(non_neg_integer()),
+%%   <<"values">> => list(float())
 %% }
 -type projected_metric() :: #{binary() => any()}.
 
@@ -1273,9 +1273,9 @@
 %%   <<"externalMetricsPreference">> => external_metrics_preference(),
 %%   <<"inferredWorkloadTypes">> => list(any()),
 %%   <<"lookBackPeriod">> => list(any()),
-%%   <<"preferredResources">> => list(effective_preferred_resource()()),
+%%   <<"preferredResources">> => list(effective_preferred_resource()),
 %%   <<"savingsEstimationMode">> => instance_savings_estimation_mode(),
-%%   <<"utilizationPreferences">> => list(utilization_preference()())
+%%   <<"utilizationPreferences">> => list(utilization_preference())
 %% }
 -type effective_recommendation_preferences() :: #{binary() => any()}.
 
@@ -1291,15 +1291,15 @@
 %%   <<"launchType">> => list(any()),
 %%   <<"lookbackPeriodInDays">> => float(),
 %%   <<"serviceArn">> => string(),
-%%   <<"serviceRecommendationOptions">> => list(e_c_s_service_recommendation_option()()),
-%%   <<"tags">> => list(tag()()),
-%%   <<"utilizationMetrics">> => list(e_c_s_service_utilization_metric()())
+%%   <<"serviceRecommendationOptions">> => list(e_c_s_service_recommendation_option()),
+%%   <<"tags">> => list(tag()),
+%%   <<"utilizationMetrics">> => list(e_c_s_service_utilization_metric())
 %% }
 -type e_c_s_service_recommendation() :: #{binary() => any()}.
 
 %% Example:
 %% get_lambda_function_recommendations_response() :: #{
-%%   <<"lambdaFunctionRecommendations">> => list(lambda_function_recommendation()()),
+%%   <<"lambdaFunctionRecommendations">> => list(lambda_function_recommendation()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_lambda_function_recommendations_response() :: #{binary() => any()}.
@@ -1322,11 +1322,11 @@
 %%   <<"aggregatedSavingsOpportunity">> => savings_opportunity(),
 %%   <<"currentPerformanceRiskRatings">> => current_performance_risk_ratings(),
 %%   <<"idleSavingsOpportunity">> => savings_opportunity(),
-%%   <<"idleSummaries">> => list(idle_summary()()),
-%%   <<"inferredWorkloadSavings">> => list(inferred_workload_saving()()),
+%%   <<"idleSummaries">> => list(idle_summary()),
+%%   <<"inferredWorkloadSavings">> => list(inferred_workload_saving()),
 %%   <<"recommendationResourceType">> => list(any()),
 %%   <<"savingsOpportunity">> => savings_opportunity(),
-%%   <<"summaries">> => list(summary()())
+%%   <<"summaries">> => list(summary())
 %% }
 -type recommendation_summary() :: #{binary() => any()}.
 
@@ -1338,7 +1338,7 @@
 %%   <<"instanceType">> => string(),
 %%   <<"maxSize">> => integer(),
 %%   <<"minSize">> => integer(),
-%%   <<"mixedInstanceTypes">> => list(string()()),
+%%   <<"mixedInstanceTypes">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type auto_scaling_group_configuration() :: #{binary() => any()}.
@@ -1349,7 +1349,7 @@
 %%   <<"instanceGpuInfo">> => gpu_info(),
 %%   <<"migrationEffort">> => list(any()),
 %%   <<"performanceRisk">> => float(),
-%%   <<"projectedUtilizationMetrics">> => list(utilization_metric()()),
+%%   <<"projectedUtilizationMetrics">> => list(utilization_metric()),
 %%   <<"rank">> => integer(),
 %%   <<"savingsOpportunity">> => savings_opportunity(),
 %%   <<"savingsOpportunityAfterDiscounts">> => auto_scaling_group_savings_opportunity_after_discounts()
@@ -1359,7 +1359,7 @@
 %% Example:
 %% lambda_function_recommendation_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type lambda_function_recommendation_filter() :: #{binary() => any()}.
 
@@ -1374,7 +1374,7 @@
 %% rds_db_instance_recommendation_option() :: #{
 %%   <<"dbInstanceClass">> => string(),
 %%   <<"performanceRisk">> => float(),
-%%   <<"projectedUtilizationMetrics">> => list(rds_db_utilization_metric()()),
+%%   <<"projectedUtilizationMetrics">> => list(rds_db_utilization_metric()),
 %%   <<"rank">> => integer(),
 %%   <<"savingsOpportunity">> => savings_opportunity(),
 %%   <<"savingsOpportunityAfterDiscounts">> => rds_instance_savings_opportunity_after_discounts()
@@ -1392,16 +1392,16 @@
 %% Example:
 %% rds_db_recommendation_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type rds_db_recommendation_filter() :: #{binary() => any()}.
 
 %% Example:
 %% export_rds_database_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"fieldsToExport">> => list(list(any())()),
 %%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(rds_db_recommendation_filter()()),
+%%   <<"filters">> => list(rds_db_recommendation_filter()),
 %%   <<"includeMemberAccounts">> => boolean(),
 %%   <<"recommendationPreferences">> => recommendation_preferences(),
 %%   <<"s3DestinationConfig">> := s3_destination_config()
@@ -1411,7 +1411,7 @@
 %% Example:
 %% ebs_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type ebs_filter() :: #{binary() => any()}.
 
@@ -1442,7 +1442,7 @@
 
 %% Example:
 %% recommended_option_projected_metric() :: #{
-%%   <<"projectedMetrics">> => list(projected_metric()()),
+%%   <<"projectedMetrics">> => list(projected_metric()),
 %%   <<"rank">> => integer(),
 %%   <<"recommendedInstanceType">> => string()
 %% }
@@ -1477,23 +1477,23 @@
 %% Example:
 %% summary() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"reasonCodeSummaries">> => list(reason_code_summary()()),
+%%   <<"reasonCodeSummaries">> => list(reason_code_summary()),
 %%   <<"value">> => float()
 %% }
 -type summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_rds_database_recommendation_projected_metrics_response() :: #{
-%%   <<"recommendedOptionProjectedMetrics">> => list(rds_database_recommended_option_projected_metric()())
+%%   <<"recommendedOptionProjectedMetrics">> => list(rds_database_recommended_option_projected_metric())
 %% }
 -type get_rds_database_recommendation_projected_metrics_response() :: #{binary() => any()}.
 
 %% Example:
 %% export_ec2_instance_recommendations_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"fieldsToExport">> => list(list(any())()),
 %%   <<"fileFormat">> => list(any()),
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"includeMemberAccounts">> => boolean(),
 %%   <<"recommendationPreferences">> => recommendation_preferences(),
 %%   <<"s3DestinationConfig">> := s3_destination_config()
@@ -1522,8 +1522,8 @@
 
 %% Example:
 %% preferred_resource() :: #{
-%%   <<"excludeList">> => list(string()()),
-%%   <<"includeList">> => list(string()()),
+%%   <<"excludeList">> => list(string()),
+%%   <<"includeList">> => list(string()),
 %%   <<"name">> => list(any())
 %% }
 -type preferred_resource() :: #{binary() => any()}.
@@ -1531,7 +1531,7 @@
 %% Example:
 %% service_configuration() :: #{
 %%   <<"autoScalingConfiguration">> => list(any()),
-%%   <<"containerConfigurations">> => list(container_configuration()()),
+%%   <<"containerConfigurations">> => list(container_configuration()),
 %%   <<"cpu">> => integer(),
 %%   <<"memory">> => integer(),
 %%   <<"taskDefinitionArn">> => string()
@@ -1540,15 +1540,15 @@
 
 %% Example:
 %% get_rds_database_recommendations_response() :: #{
-%%   <<"errors">> => list(get_recommendation_error()()),
+%%   <<"errors">> => list(get_recommendation_error()),
 %%   <<"nextToken">> => string(),
-%%   <<"rdsDBRecommendations">> => list(rds_db_recommendation()())
+%%   <<"rdsDBRecommendations">> => list(rds_db_recommendation())
 %% }
 -type get_rds_database_recommendations_response() :: #{binary() => any()}.
 
 %% Example:
 %% gpu_info() :: #{
-%%   <<"gpus">> => list(gpu()())
+%%   <<"gpus">> => list(gpu())
 %% }
 -type gpu_info() :: #{binary() => any()}.
 

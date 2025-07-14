@@ -151,7 +151,7 @@
 
 %% Example:
 %% list_configs_response() :: #{
-%%   <<"configList">> => list(config_list_item()()),
+%%   <<"configList">> => list(config_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configs_response() :: #{binary() => any()}.
@@ -217,7 +217,7 @@
 %% describe_contact_response() :: #{
 %%   <<"contactId">> => string(),
 %%   <<"contactStatus">> => list(any()),
-%%   <<"dataflowList">> => list(dataflow_detail()()),
+%%   <<"dataflowList">> => list(dataflow_detail()),
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"errorMessage">> => [string()],
 %%   <<"groundStation">> => [string()],
@@ -390,7 +390,7 @@
 %% agent_details() :: #{
 %%   <<"agentCpuCores">> => list([integer()]()),
 %%   <<"agentVersion">> => string(),
-%%   <<"componentVersions">> => list(component_version()()),
+%%   <<"componentVersions">> => list(component_version()),
 %%   <<"instanceId">> => string(),
 %%   <<"instanceType">> => string(),
 %%   <<"reservedCpuCores">> => list([integer()]())
@@ -419,7 +419,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> => list(string()())
+%%   <<"tagKeys">> => list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -441,7 +441,7 @@
 
 %% Example:
 %% list_dataflow_endpoint_groups_response() :: #{
-%%   <<"dataflowEndpointGroupList">> => list(dataflow_endpoint_list_item()()),
+%%   <<"dataflowEndpointGroupList">> => list(dataflow_endpoint_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dataflow_endpoint_groups_response() :: #{binary() => any()}.
@@ -450,7 +450,7 @@
 %% Example:
 %% satellite_list_item() :: #{
 %%   <<"currentEphemeris">> => ephemeris_meta_data(),
-%%   <<"groundStations">> => list(string()()),
+%%   <<"groundStations">> => list(string()),
 %%   <<"noradSatelliteID">> => integer(),
 %%   <<"satelliteArn">> => string(),
 %%   <<"satelliteId">> => string()
@@ -507,7 +507,7 @@
 
 %% Example:
 %% list_mission_profiles_response() :: #{
-%%   <<"missionProfileList">> => list(mission_profile_list_item()()),
+%%   <<"missionProfileList">> => list(mission_profile_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_mission_profiles_response() :: #{binary() => any()}.
@@ -587,7 +587,7 @@
 %% Example:
 %% update_agent_status_request() :: #{
 %%   <<"aggregateStatus">> := aggregate_status(),
-%%   <<"componentStatuses">> := list(component_status_data()()),
+%%   <<"componentStatuses">> := list(component_status_data()),
 %%   <<"taskId">> := string()
 %% }
 -type update_agent_status_request() :: #{binary() => any()}.
@@ -599,7 +599,7 @@
 %%   <<"contactPrePassDurationSeconds">> => integer(),
 %%   <<"dataflowEndpointGroupArn">> => string(),
 %%   <<"dataflowEndpointGroupId">> => string(),
-%%   <<"endpointsDetails">> => list(endpoint_details()()),
+%%   <<"endpointsDetails">> => list(endpoint_details()),
 %%   <<"tags">> => map()
 %% }
 -type get_dataflow_endpoint_group_response() :: #{binary() => any()}.
@@ -681,7 +681,7 @@
 %% Example:
 %% component_version() :: #{
 %%   <<"componentType">> => string(),
-%%   <<"versions">> => list(string()())
+%%   <<"versions">> => list(string())
 %% }
 -type component_version() :: #{binary() => any()}.
 
@@ -697,7 +697,7 @@
 
 %% Example:
 %% list_ephemerides_response() :: #{
-%%   <<"ephemerides">> => list(ephemeris_item()()),
+%%   <<"ephemerides">> => list(ephemeris_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_ephemerides_response() :: #{binary() => any()}.
@@ -763,7 +763,7 @@
 
 %% Example:
 %% list_contacts_response() :: #{
-%%   <<"contactList">> => list(contact_data()()),
+%%   <<"contactList">> => list(contact_data()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_contacts_response() :: #{binary() => any()}.
@@ -792,7 +792,7 @@
 %% Example:
 %% get_satellite_response() :: #{
 %%   <<"currentEphemeris">> => ephemeris_meta_data(),
-%%   <<"groundStations">> => list(string()()),
+%%   <<"groundStations">> => list(string()),
 %%   <<"noradSatelliteID">> => integer(),
 %%   <<"satelliteArn">> => string(),
 %%   <<"satelliteId">> => string()
@@ -807,7 +807,7 @@
 %% Example:
 %% list_satellites_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"satellites">> => list(satellite_list_item()())
+%%   <<"satellites">> => list(satellite_list_item())
 %% }
 -type list_satellites_response() :: #{binary() => any()}.
 
@@ -833,7 +833,7 @@
 %% Example:
 %% t_l_e_ephemeris() :: #{
 %%   <<"s3Object">> => s3_object(),
-%%   <<"tleData">> => list(t_l_e_data()())
+%%   <<"tleData">> => list(t_l_e_data())
 %% }
 -type t_l_e_ephemeris() :: #{binary() => any()}.
 
@@ -925,7 +925,7 @@
 
 %% Example:
 %% list_ground_stations_response() :: #{
-%%   <<"groundStationList">> => list(ground_station_data()()),
+%%   <<"groundStationList">> => list(ground_station_data()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_ground_stations_response() :: #{binary() => any()}.
@@ -935,7 +935,7 @@
 %% get_mission_profile_response() :: #{
 %%   <<"contactPostPassDurationSeconds">> => integer(),
 %%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"dataflowEdges">> => list(list(string()())()),
+%%   <<"dataflowEdges">> => list(list(string())()),
 %%   <<"minimumViableContactDurationSeconds">> => integer(),
 %%   <<"missionProfileArn">> => string(),
 %%   <<"missionProfileId">> => string(),
@@ -959,9 +959,9 @@
 
 %% Example:
 %% discovery_data() :: #{
-%%   <<"capabilityArns">> => list(string()()),
-%%   <<"privateIpAddresses">> => list(string()()),
-%%   <<"publicIpAddresses">> => list(string()())
+%%   <<"capabilityArns">> => list(string()),
+%%   <<"privateIpAddresses">> => list(string()),
+%%   <<"publicIpAddresses">> => list(string())
 %% }
 -type discovery_data() :: #{binary() => any()}.
 
@@ -994,7 +994,7 @@
 %% create_dataflow_endpoint_group_request() :: #{
 %%   <<"contactPostPassDurationSeconds">> => integer(),
 %%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"endpointDetails">> => list(endpoint_details()()),
+%%   <<"endpointDetails">> => list(endpoint_details()),
 %%   <<"tags">> => map()
 %% }
 -type create_dataflow_endpoint_group_request() :: #{binary() => any()}.
@@ -1020,7 +1020,7 @@
 %% create_mission_profile_request() :: #{
 %%   <<"contactPostPassDurationSeconds">> => integer(),
 %%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"dataflowEdges">> => list(list(string()())()),
+%%   <<"dataflowEdges">> => list(list(string())()),
 %%   <<"minimumViableContactDurationSeconds">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"streamsKmsKey">> => list(),
@@ -1035,7 +1035,7 @@
 %% update_mission_profile_request() :: #{
 %%   <<"contactPostPassDurationSeconds">> => integer(),
 %%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"dataflowEdges">> => list(list(string()())()),
+%%   <<"dataflowEdges">> => list(list(string())()),
 %%   <<"minimumViableContactDurationSeconds">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"streamsKmsKey">> => list(),

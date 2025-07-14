@@ -156,7 +156,7 @@
 
 %% Example:
 %% repository_sync_attempt() :: #{
-%%   <<"Events">> => list(repository_sync_event()()),
+%%   <<"Events">> => list(repository_sync_event()),
 %%   <<"StartedAt">> => non_neg_integer(),
 %%   <<"Status">> => list(any())
 %% }
@@ -176,8 +176,8 @@
 
 %% Example:
 %% vpc_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"TlsCertificate">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -189,14 +189,14 @@
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"OwnerId">> := string(),
 %%   <<"RepositoryName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_repository_link_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_sync_configurations_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SyncConfigurations">> => list(sync_configuration()())
+%%   <<"SyncConfigurations">> => list(sync_configuration())
 %% }
 -type list_sync_configurations_output() :: #{binary() => any()}.
 
@@ -237,7 +237,7 @@
 
 %% Example:
 %% sync_blocker_summary() :: #{
-%%   <<"LatestBlockers">> => list(sync_blocker()()),
+%%   <<"LatestBlockers">> => list(sync_blocker()),
 %%   <<"ParentResourceName">> => string(),
 %%   <<"ResourceName">> => string()
 %% }
@@ -245,7 +245,7 @@
 
 %% Example:
 %% list_connections_output() :: #{
-%%   <<"Connections">> => list(connection()()),
+%%   <<"Connections">> => list(connection()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connections_output() :: #{binary() => any()}.
@@ -259,7 +259,7 @@
 %% Example:
 %% create_connection_output() :: #{
 %%   <<"ConnectionArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_connection_output() :: #{binary() => any()}.
 
@@ -286,7 +286,7 @@
 %% Example:
 %% create_host_output() :: #{
 %%   <<"HostArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_host_output() :: #{binary() => any()}.
 
@@ -305,7 +305,7 @@
 
 %% Example:
 %% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -328,7 +328,7 @@
 %% Example:
 %% list_repository_links_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RepositoryLinks">> => list(repository_link_info()())
+%%   <<"RepositoryLinks">> => list(repository_link_info())
 %% }
 -type list_repository_links_output() :: #{binary() => any()}.
 
@@ -437,7 +437,7 @@
 
 %% Example:
 %% sync_blocker() :: #{
-%%   <<"Contexts">> => list(sync_blocker_context()()),
+%%   <<"Contexts">> => list(sync_blocker_context()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"CreatedReason">> => string(),
 %%   <<"Id">> => string(),
@@ -465,7 +465,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -490,7 +490,7 @@
 
 %% Example:
 %% list_hosts_output() :: #{
-%%   <<"Hosts">> => list(host()()),
+%%   <<"Hosts">> => list(host()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_hosts_output() :: #{binary() => any()}.
@@ -538,7 +538,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -575,7 +575,7 @@
 
 %% Example:
 %% resource_sync_attempt() :: #{
-%%   <<"Events">> => list(resource_sync_event()()),
+%%   <<"Events">> => list(resource_sync_event()),
 %%   <<"InitialRevision">> => revision(),
 %%   <<"StartedAt">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
@@ -622,7 +622,7 @@
 %%   <<"Name">> := string(),
 %%   <<"ProviderEndpoint">> := string(),
 %%   <<"ProviderType">> := list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcConfiguration">> => vpc_configuration()
 %% }
 -type create_host_input() :: #{binary() => any()}.
@@ -630,7 +630,7 @@
 %% Example:
 %% list_repository_sync_definitions_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RepositorySyncDefinitions">> => list(repository_sync_definition()())
+%%   <<"RepositorySyncDefinitions">> => list(repository_sync_definition())
 %% }
 -type list_repository_sync_definitions_output() :: #{binary() => any()}.
 
@@ -698,7 +698,7 @@
 %%   <<"ConnectionName">> := string(),
 %%   <<"HostArn">> => string(),
 %%   <<"ProviderType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_connection_input() :: #{binary() => any()}.
 

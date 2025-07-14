@@ -323,13 +323,13 @@
 %%   <<"alias">> => [string()],
 %%   <<"creatorId">> => [string()],
 %%   <<"id">> => string(),
-%%   <<"ides">> => list(ide()()),
+%%   <<"ides">> => list(ide()),
 %%   <<"inactivityTimeoutMinutes">> => integer(),
 %%   <<"instanceType">> => string(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
 %%   <<"persistentStorage">> => persistent_storage(),
 %%   <<"projectName">> => string(),
-%%   <<"repositories">> => list(dev_environment_repository_summary()()),
+%%   <<"repositories">> => list(dev_environment_repository_summary()),
 %%   <<"spaceName">> => string(),
 %%   <<"status">> => string(),
 %%   <<"statusReason">> => string(),
@@ -464,7 +464,7 @@
 %%   <<"alias">> => [string()],
 %%   <<"clientToken">> => string(),
 %%   <<"id">> => string(),
-%%   <<"ides">> => list(ide_configuration()()),
+%%   <<"ides">> => list(ide_configuration()),
 %%   <<"inactivityTimeoutMinutes">> => integer(),
 %%   <<"instanceType">> => string(),
 %%   <<"projectName">> => string(),
@@ -475,7 +475,7 @@
 
 %% Example:
 %% list_dev_environment_sessions_response() :: #{
-%%   <<"items">> => list(dev_environment_session_summary()()),
+%%   <<"items">> => list(dev_environment_session_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_dev_environment_sessions_response() :: #{binary() => any()}.
@@ -562,13 +562,13 @@
 %%   <<"alias">> => [string()],
 %%   <<"creatorId">> => [string()],
 %%   <<"id">> => string(),
-%%   <<"ides">> => list(ide()()),
+%%   <<"ides">> => list(ide()),
 %%   <<"inactivityTimeoutMinutes">> => integer(),
 %%   <<"instanceType">> => string(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
 %%   <<"persistentStorage">> => persistent_storage(),
 %%   <<"projectName">> => string(),
-%%   <<"repositories">> => list(dev_environment_repository_summary()()),
+%%   <<"repositories">> => list(dev_environment_repository_summary()),
 %%   <<"spaceName">> => string(),
 %%   <<"status">> => string(),
 %%   <<"statusReason">> => string(),
@@ -581,14 +581,14 @@
 %% list_workflows_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
-%%   <<"sortBy">> => list(workflow_sort_criteria()())
+%%   <<"sortBy">> => list(workflow_sort_criteria())
 %% }
 -type list_workflows_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_projects_response() :: #{
-%%   <<"items">> => list(project_summary()()),
+%%   <<"items">> => list(project_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_projects_response() :: #{binary() => any()}.
@@ -618,7 +618,7 @@
 %% update_dev_environment_request() :: #{
 %%   <<"alias">> => [string()],
 %%   <<"clientToken">> => string(),
-%%   <<"ides">> => list(ide_configuration()()),
+%%   <<"ides">> => list(ide_configuration()),
 %%   <<"inactivityTimeoutMinutes">> => integer(),
 %%   <<"instanceType">> => string()
 %% }
@@ -640,11 +640,11 @@
 %% create_dev_environment_request() :: #{
 %%   <<"alias">> => [string()],
 %%   <<"clientToken">> => string(),
-%%   <<"ides">> => list(ide_configuration()()),
+%%   <<"ides">> => list(ide_configuration()),
 %%   <<"inactivityTimeoutMinutes">> => integer(),
 %%   <<"instanceType">> := string(),
 %%   <<"persistentStorage">> := persistent_storage_configuration(),
-%%   <<"repositories">> => list(repository_input()()),
+%%   <<"repositories">> => list(repository_input()),
 %%   <<"vpcConnectionName">> => string()
 %% }
 -type create_dev_environment_request() :: #{binary() => any()}.
@@ -687,7 +687,7 @@
 
 %% Example:
 %% list_source_repository_branches_response() :: #{
-%%   <<"items">> => list(list_source_repository_branches_item()()),
+%%   <<"items">> => list(list_source_repository_branches_item()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_source_repository_branches_response() :: #{binary() => any()}.
@@ -706,7 +706,7 @@
 %% list_workflow_runs_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
-%%   <<"sortBy">> => list(workflow_run_sort_criteria()()),
+%%   <<"sortBy">> => list(workflow_run_sort_criteria()),
 %%   <<"workflowId">> => string()
 %% }
 -type list_workflow_runs_request() :: #{binary() => any()}.
@@ -733,7 +733,7 @@
 
 %% Example:
 %% start_dev_environment_request() :: #{
-%%   <<"ides">> => list(ide_configuration()()),
+%%   <<"ides">> => list(ide_configuration()),
 %%   <<"inactivityTimeoutMinutes">> => integer(),
 %%   <<"instanceType">> => string()
 %% }
@@ -814,7 +814,7 @@
 
 %% Example:
 %% list_dev_environments_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
 %%   <<"projectName">> => string()
@@ -857,7 +857,7 @@
 
 %% Example:
 %% list_workflow_runs_response() :: #{
-%%   <<"items">> => list(workflow_run_summary()()),
+%%   <<"items">> => list(workflow_run_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_workflow_runs_response() :: #{binary() => any()}.
@@ -879,7 +879,7 @@
 
 %% Example:
 %% list_event_logs_response() :: #{
-%%   <<"items">> => list(event_log_entry()()),
+%%   <<"items">> => list(event_log_entry()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_event_logs_response() :: #{binary() => any()}.
@@ -909,7 +909,7 @@
 
 %% Example:
 %% list_spaces_response() :: #{
-%%   <<"items">> => list(space_summary()()),
+%%   <<"items">> => list(space_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_spaces_response() :: #{binary() => any()}.
@@ -947,7 +947,7 @@
 
 %% Example:
 %% list_dev_environments_response() :: #{
-%%   <<"items">> => list(dev_environment_summary()()),
+%%   <<"items">> => list(dev_environment_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_dev_environments_response() :: #{binary() => any()}.
@@ -965,7 +965,7 @@
 
 %% Example:
 %% list_projects_request() :: #{
-%%   <<"filters">> => list(project_list_filter()()),
+%%   <<"filters">> => list(project_list_filter()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -1042,7 +1042,7 @@
 
 %% Example:
 %% list_workflows_response() :: #{
-%%   <<"items">> => list(workflow_summary()()),
+%%   <<"items">> => list(workflow_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
@@ -1057,7 +1057,7 @@
 %%   <<"spaceName">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => string(),
-%%   <<"statusReasons">> => list(workflow_run_status_reason()()),
+%%   <<"statusReasons">> => list(workflow_run_status_reason()),
 %%   <<"workflowId">> => string()
 %% }
 -type get_workflow_run_response() :: #{binary() => any()}.
@@ -1069,7 +1069,7 @@
 
 %% Example:
 %% list_source_repositories_response() :: #{
-%%   <<"items">> => list(list_source_repositories_item()()),
+%%   <<"items">> => list(list_source_repositories_item()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_source_repositories_response() :: #{binary() => any()}.
@@ -1082,7 +1082,7 @@
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => string(),
-%%   <<"statusReasons">> => list(workflow_run_status_reason()()),
+%%   <<"statusReasons">> => list(workflow_run_status_reason()),
 %%   <<"workflowId">> => string(),
 %%   <<"workflowName">> => [string()]
 %% }
@@ -1099,7 +1099,7 @@
 
 %% Example:
 %% list_access_tokens_response() :: #{
-%%   <<"items">> => list(access_token_summary()()),
+%%   <<"items">> => list(access_token_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_access_tokens_response() :: #{binary() => any()}.

@@ -203,7 +203,7 @@
 %% namespace_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
-%%   <<"namespace">> => list(string()()),
+%%   <<"namespace">> => list(string()),
 %%   <<"namespaceId">> => string(),
 %%   <<"ownerAccountId">> => string(),
 %%   <<"tableBucketId">> => string()
@@ -216,7 +216,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"namespace">> => list(string()()),
+%%   <<"namespace">> => list(string()),
 %%   <<"namespaceId">> => string(),
 %%   <<"tableARN">> => string(),
 %%   <<"tableBucketId">> => string(),
@@ -247,7 +247,7 @@
 %% update_table_metadata_location_response() :: #{
 %%   <<"metadataLocation">> => string(),
 %%   <<"name">> => string(),
-%%   <<"namespace">> => list(string()()),
+%%   <<"namespace">> => list(string()),
 %%   <<"tableARN">> => string(),
 %%   <<"versionToken">> => string()
 %% }
@@ -274,7 +274,7 @@
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"modifiedBy">> => string(),
 %%   <<"name">> => string(),
-%%   <<"namespace">> => list(string()()),
+%%   <<"namespace">> => list(string()),
 %%   <<"namespaceId">> => string(),
 %%   <<"ownerAccountId">> => string(),
 %%   <<"tableARN">> => string(),
@@ -325,7 +325,7 @@
 %% get_namespace_response() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
-%%   <<"namespace">> => list(string()()),
+%%   <<"namespace">> => list(string()),
 %%   <<"namespaceId">> => string(),
 %%   <<"ownerAccountId">> => string(),
 %%   <<"tableBucketId">> => string()
@@ -335,7 +335,7 @@
 
 %% Example:
 %% create_namespace_request() :: #{
-%%   <<"namespace">> := list(string()())
+%%   <<"namespace">> := list(string())
 %% }
 -type create_namespace_request() :: #{binary() => any()}.
 
@@ -357,7 +357,7 @@
 %% Example:
 %% list_tables_response() :: #{
 %%   <<"continuationToken">> => string(),
-%%   <<"tables">> => list(table_summary()())
+%%   <<"tables">> => list(table_summary())
 %% }
 -type list_tables_response() :: #{binary() => any()}.
 
@@ -454,7 +454,7 @@
 %% Example:
 %% list_table_buckets_response() :: #{
 %%   <<"continuationToken">> => string(),
-%%   <<"tableBuckets">> => list(table_bucket_summary()())
+%%   <<"tableBuckets">> => list(table_bucket_summary())
 %% }
 -type list_table_buckets_response() :: #{binary() => any()}.
 
@@ -477,7 +477,7 @@
 
 %% Example:
 %% create_namespace_response() :: #{
-%%   <<"namespace">> => list(string()()),
+%%   <<"namespace">> => list(string()),
 %%   <<"tableBucketARN">> => string()
 %% }
 -type create_namespace_response() :: #{binary() => any()}.
@@ -518,7 +518,7 @@
 %% Example:
 %% list_namespaces_response() :: #{
 %%   <<"continuationToken">> => string(),
-%%   <<"namespaces">> => list(namespace_summary()())
+%%   <<"namespaces">> => list(namespace_summary())
 %% }
 -type list_namespaces_response() :: #{binary() => any()}.
 
@@ -538,7 +538,7 @@
 
 %% Example:
 %% iceberg_schema() :: #{
-%%   <<"fields">> => list(schema_field()())
+%%   <<"fields">> => list(schema_field())
 %% }
 -type iceberg_schema() :: #{binary() => any()}.
 

@@ -126,7 +126,7 @@
 
 %% Example:
 %% list_job_run_attempts_response() :: #{
-%%   <<"jobRunAttempts">> => list(job_run_attempt_summary()()),
+%%   <<"jobRunAttempts">> => list(job_run_attempt_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_run_attempts_response() :: #{binary() => any()}.
@@ -215,7 +215,7 @@
 %%   <<"maxResults">> => [integer()],
 %%   <<"mode">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"states">> => list(string()())
+%%   <<"states">> => list(string())
 %% }
 -type list_job_runs_request() :: #{binary() => any()}.
 
@@ -232,7 +232,7 @@
 %% Example:
 %% configuration() :: #{
 %%   <<"classification">> => string(),
-%%   <<"configurations">> => list(configuration()()),
+%%   <<"configurations">> => list(configuration()),
 %%   <<"properties">> => map()
 %% }
 -type configuration() :: #{binary() => any()}.
@@ -271,7 +271,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -308,7 +308,7 @@
 %% Example:
 %% job_run_execution_iam_policy() :: #{
 %%   <<"policy">> => string(),
-%%   <<"policyArns">> => list(string()())
+%%   <<"policyArns">> => list(string())
 %% }
 -type job_run_execution_iam_policy() :: #{binary() => any()}.
 
@@ -316,7 +316,7 @@
 %% Example:
 %% spark_submit() :: #{
 %%   <<"entryPoint">> => string(),
-%%   <<"entryPointArguments">> => list(string()()),
+%%   <<"entryPointArguments">> => list(string()),
 %%   <<"sparkSubmitParameters">> => string()
 %% }
 -type spark_submit() :: #{binary() => any()}.
@@ -380,7 +380,7 @@
 
 %% Example:
 %% list_job_runs_response() :: #{
-%%   <<"jobRuns">> := list(job_run_summary()()),
+%%   <<"jobRuns">> := list(job_run_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_runs_response() :: #{binary() => any()}.
@@ -403,7 +403,7 @@
 %%   <<"name">> => string(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"releaseLabel">> => string(),
-%%   <<"runtimeConfiguration">> => list(configuration()()),
+%%   <<"runtimeConfiguration">> => list(configuration()),
 %%   <<"schedulerConfiguration">> => scheduler_configuration(),
 %%   <<"state">> => string(),
 %%   <<"stateDetails">> => string(),
@@ -437,7 +437,7 @@
 %%   <<"name">> => string(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"releaseLabel">> := string(),
-%%   <<"runtimeConfiguration">> => list(configuration()()),
+%%   <<"runtimeConfiguration">> => list(configuration()),
 %%   <<"schedulerConfiguration">> => scheduler_configuration(),
 %%   <<"tags">> => map(),
 %%   <<"type">> := string(),
@@ -501,7 +501,7 @@
 %%   <<"monitoringConfiguration">> => monitoring_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"releaseLabel">> => string(),
-%%   <<"runtimeConfiguration">> => list(configuration()()),
+%%   <<"runtimeConfiguration">> => list(configuration()),
 %%   <<"schedulerConfiguration">> => scheduler_configuration(),
 %%   <<"workerTypeSpecifications">> => map()
 %% }
@@ -561,15 +561,15 @@
 %% list_applications_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
-%%   <<"states">> => list(string()())
+%%   <<"states">> => list(string())
 %% }
 -type list_applications_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% network_configuration() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
 -type network_configuration() :: #{binary() => any()}.
 
@@ -620,7 +620,7 @@
 
 %% Example:
 %% configuration_overrides() :: #{
-%%   <<"applicationConfiguration">> => list(configuration()()),
+%%   <<"applicationConfiguration">> => list(configuration()),
 %%   <<"monitoringConfiguration">> => monitoring_configuration()
 %% }
 -type configuration_overrides() :: #{binary() => any()}.
@@ -644,7 +644,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"applications">> := list(application_summary()()),
+%%   <<"applications">> := list(application_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.

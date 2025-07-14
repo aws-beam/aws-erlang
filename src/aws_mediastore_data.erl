@@ -107,7 +107,7 @@
 
 %% Example:
 %% list_items_response() :: #{
-%%   <<"Items">> => list(item()()),
+%%   <<"Items">> => list(item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_items_response() :: #{binary() => any()}.

@@ -197,7 +197,7 @@
 %%   <<"description">> => string(),
 %%   <<"maxDevices">> => integer(),
 %%   <<"name">> => string(),
-%%   <<"rules">> => list(rule()()),
+%%   <<"rules">> => list(rule()),
 %%   <<"type">> => list(any())
 %% }
 -type device_pool() :: #{binary() => any()}.
@@ -212,7 +212,7 @@
 %% create_remote_access_session_configuration() :: #{
 %%   <<"billingMethod">> => list(any()),
 %%   <<"deviceProxy">> => device_proxy(),
-%%   <<"vpceConfigurationArns">> => list(string()())
+%%   <<"vpceConfigurationArns">> => list(string())
 %% }
 -type create_remote_access_session_configuration() :: #{binary() => any()}.
 
@@ -236,7 +236,7 @@
 %% Example:
 %% list_tests_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tests">> => list(test()())
+%%   <<"tests">> => list(test())
 %% }
 -type list_tests_result() :: #{binary() => any()}.
 
@@ -253,7 +253,7 @@
 %%   <<"maxDevices">> => integer(),
 %%   <<"name">> := string(),
 %%   <<"projectArn">> := string(),
-%%   <<"rules">> := list(rule()())
+%%   <<"rules">> := list(rule())
 %% }
 -type create_device_pool_request() :: #{binary() => any()}.
 
@@ -272,7 +272,7 @@
 %% Example:
 %% list_devices_request() :: #{
 %%   <<"arn">> => string(),
-%%   <<"filters">> => list(device_filter()()),
+%%   <<"filters">> => list(device_filter()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_devices_request() :: #{binary() => any()}.
@@ -280,7 +280,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -305,7 +305,7 @@
 %% instance_profile() :: #{
 %%   <<"arn">> => string(),
 %%   <<"description">> => string(),
-%%   <<"excludeAppPackagesFromCleanup">> => list(string()()),
+%%   <<"excludeAppPackagesFromCleanup">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"packageCleanup">> => boolean(),
 %%   <<"rebootAfterUse">> => boolean()
@@ -379,7 +379,7 @@
 
 %% Example:
 %% list_jobs_result() :: #{
-%%   <<"jobs">> => list(job()()),
+%%   <<"jobs">> => list(job()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_jobs_result() :: #{binary() => any()}.
@@ -433,7 +433,7 @@
 
 %% Example:
 %% list_network_profiles_result() :: #{
-%%   <<"networkProfiles">> => list(network_profile()()),
+%%   <<"networkProfiles">> => list(network_profile()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_network_profiles_result() :: #{binary() => any()}.
@@ -447,7 +447,7 @@
 %% Example:
 %% list_offering_promotions_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"offeringPromotions">> => list(offering_promotion()())
+%%   <<"offeringPromotions">> => list(offering_promotion())
 %% }
 -type list_offering_promotions_result() :: #{binary() => any()}.
 
@@ -473,7 +473,7 @@
 
 %% Example:
 %% list_devices_result() :: #{
-%%   <<"devices">> => list(device()()),
+%%   <<"devices">> => list(device()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_devices_result() :: #{binary() => any()}.
@@ -486,7 +486,7 @@
 
 %% Example:
 %% device_selection_configuration() :: #{
-%%   <<"filters">> => list(device_filter()()),
+%%   <<"filters">> => list(device_filter()),
 %%   <<"maxDevices">> => integer()
 %% }
 -type device_selection_configuration() :: #{binary() => any()}.
@@ -551,7 +551,7 @@
 %% Example:
 %% update_device_instance_request() :: #{
 %%   <<"arn">> := string(),
-%%   <<"labels">> => list(string()()),
+%%   <<"labels">> => list(string()),
 %%   <<"profileArn">> => string()
 %% }
 -type update_device_instance_request() :: #{binary() => any()}.
@@ -657,7 +657,7 @@
 
 %% Example:
 %% list_instance_profiles_result() :: #{
-%%   <<"instanceProfiles">> => list(instance_profile()()),
+%%   <<"instanceProfiles">> => list(instance_profile()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_instance_profiles_result() :: #{binary() => any()}.
@@ -677,7 +677,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -711,8 +711,8 @@
 
 %% Example:
 %% test_grid_vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type test_grid_vpc_config() :: #{binary() => any()}.
@@ -757,7 +757,7 @@
 
 %% Example:
 %% schedule_run_configuration() :: #{
-%%   <<"auxiliaryApps">> => list(string()()),
+%%   <<"auxiliaryApps">> => list(string()),
 %%   <<"billingMethod">> => list(any()),
 %%   <<"customerArtifactPaths">> => customer_artifact_paths(),
 %%   <<"deviceProxy">> => device_proxy(),
@@ -766,14 +766,14 @@
 %%   <<"location">> => location(),
 %%   <<"networkProfileArn">> => string(),
 %%   <<"radios">> => radios(),
-%%   <<"vpceConfigurationArns">> => list(string()())
+%%   <<"vpceConfigurationArns">> => list(string())
 %% }
 -type schedule_run_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_instance_profile_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"excludeAppPackagesFromCleanup">> => list(string()()),
+%%   <<"excludeAppPackagesFromCleanup">> => list(string()),
 %%   <<"name">> := string(),
 %%   <<"packageCleanup">> => boolean(),
 %%   <<"rebootAfterUse">> => boolean()
@@ -791,7 +791,7 @@
 %% Example:
 %% unique_problem() :: #{
 %%   <<"message">> => string(),
-%%   <<"problems">> => list(problem()())
+%%   <<"problems">> => list(problem())
 %% }
 -type unique_problem() :: #{binary() => any()}.
 
@@ -903,7 +903,7 @@
 %% Example:
 %% list_samples_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"samples">> => list(sample()())
+%%   <<"samples">> => list(sample())
 %% }
 -type list_samples_result() :: #{binary() => any()}.
 
@@ -916,7 +916,7 @@
 %% Example:
 %% list_test_grid_projects_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testGridProjects">> => list(test_grid_project()())
+%%   <<"testGridProjects">> => list(test_grid_project())
 %% }
 -type list_test_grid_projects_result() :: #{binary() => any()}.
 
@@ -936,7 +936,7 @@
 %% Example:
 %% list_offering_transactions_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"offeringTransactions">> => list(offering_transaction()())
+%%   <<"offeringTransactions">> => list(offering_transaction())
 %% }
 -type list_offering_transactions_result() :: #{binary() => any()}.
 
@@ -968,8 +968,8 @@
 
 %% Example:
 %% get_device_pool_compatibility_result() :: #{
-%%   <<"compatibleDevices">> => list(device_pool_compatibility_result()()),
-%%   <<"incompatibleDevices">> => list(device_pool_compatibility_result()())
+%%   <<"compatibleDevices">> => list(device_pool_compatibility_result()),
+%%   <<"incompatibleDevices">> => list(device_pool_compatibility_result())
 %% }
 -type get_device_pool_compatibility_result() :: #{binary() => any()}.
 
@@ -1044,7 +1044,7 @@
 
 %% Example:
 %% list_device_instances_result() :: #{
-%%   <<"deviceInstances">> => list(device_instance()()),
+%%   <<"deviceInstances">> => list(device_instance()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_device_instances_result() :: #{binary() => any()}.
@@ -1052,7 +1052,7 @@
 %% Example:
 %% list_runs_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"runs">> => list(run()())
+%%   <<"runs">> => list(run())
 %% }
 -type list_runs_result() :: #{binary() => any()}.
 
@@ -1089,21 +1089,21 @@
 %%   <<"description">> => string(),
 %%   <<"maxDevices">> => integer(),
 %%   <<"name">> => string(),
-%%   <<"rules">> => list(rule()())
+%%   <<"rules">> => list(rule())
 %% }
 -type update_device_pool_request() :: #{binary() => any()}.
 
 %% Example:
 %% vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_test_grid_session_artifacts_result() :: #{
-%%   <<"artifacts">> => list(test_grid_session_artifact()()),
+%%   <<"artifacts">> => list(test_grid_session_artifact()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_test_grid_session_artifacts_result() :: #{binary() => any()}.
@@ -1116,7 +1116,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1207,7 +1207,7 @@
 %% device_pool_compatibility_result() :: #{
 %%   <<"compatible">> => boolean(),
 %%   <<"device">> => device(),
-%%   <<"incompatibilityMessages">> => list(incompatibility_message()())
+%%   <<"incompatibilityMessages">> => list(incompatibility_message())
 %% }
 -type device_pool_compatibility_result() :: #{binary() => any()}.
 
@@ -1219,7 +1219,7 @@
 
 %% Example:
 %% device_selection_result() :: #{
-%%   <<"filters">> => list(device_filter()()),
+%%   <<"filters">> => list(device_filter()),
 %%   <<"matchedDevicesCount">> => integer(),
 %%   <<"maxDevices">> => integer()
 %% }
@@ -1377,15 +1377,15 @@
 %% Example:
 %% list_test_grid_sessions_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testGridSessions">> => list(test_grid_session()())
+%%   <<"testGridSessions">> => list(test_grid_session())
 %% }
 -type list_test_grid_sessions_result() :: #{binary() => any()}.
 
 %% Example:
 %% customer_artifact_paths() :: #{
-%%   <<"androidPaths">> => list(string()()),
-%%   <<"deviceHostPaths">> => list(string()()),
-%%   <<"iosPaths">> => list(string()())
+%%   <<"androidPaths">> => list(string()),
+%%   <<"deviceHostPaths">> => list(string()),
+%%   <<"iosPaths">> => list(string())
 %% }
 -type customer_artifact_paths() :: #{binary() => any()}.
 
@@ -1394,7 +1394,7 @@
 %%   <<"arn">> => string(),
 %%   <<"deviceArn">> => string(),
 %%   <<"instanceProfile">> => instance_profile(),
-%%   <<"labels">> => list(string()()),
+%%   <<"labels">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"udid">> => string()
 %% }
@@ -1545,7 +1545,7 @@
 %% Example:
 %% list_vpce_configurations_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"vpceConfigurations">> => list(vpce_configuration()())
+%%   <<"vpceConfigurations">> => list(vpce_configuration())
 %% }
 -type list_vpce_configurations_result() :: #{binary() => any()}.
 
@@ -1581,7 +1581,7 @@
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
 %%   <<"platform">> => list(any()),
-%%   <<"recurringCharges">> => list(recurring_charge()()),
+%%   <<"recurringCharges">> => list(recurring_charge()),
 %%   <<"type">> => list(any())
 %% }
 -type offering() :: #{binary() => any()}.
@@ -1611,7 +1611,7 @@
 %% update_instance_profile_request() :: #{
 %%   <<"arn">> := string(),
 %%   <<"description">> => string(),
-%%   <<"excludeAppPackagesFromCleanup">> => list(string()()),
+%%   <<"excludeAppPackagesFromCleanup">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"packageCleanup">> => boolean(),
 %%   <<"rebootAfterUse">> => boolean()
@@ -1633,7 +1633,7 @@
 
 %% Example:
 %% list_device_pools_result() :: #{
-%%   <<"devicePools">> => list(device_pool()()),
+%%   <<"devicePools">> => list(device_pool()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_device_pools_result() :: #{binary() => any()}.
@@ -1641,7 +1641,7 @@
 %% Example:
 %% list_suites_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"suites">> => list(suite()())
+%%   <<"suites">> => list(suite())
 %% }
 -type list_suites_result() :: #{binary() => any()}.
 
@@ -1677,7 +1677,7 @@
 
 %% Example:
 %% list_artifacts_result() :: #{
-%%   <<"artifacts">> => list(artifact()()),
+%%   <<"artifacts">> => list(artifact()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_artifacts_result() :: #{binary() => any()}.
@@ -1693,7 +1693,7 @@
 %%   <<"formFactor">> => list(any()),
 %%   <<"heapSize">> => float(),
 %%   <<"image">> => string(),
-%%   <<"instances">> => list(device_instance()()),
+%%   <<"instances">> => list(device_instance()),
 %%   <<"manufacturer">> => string(),
 %%   <<"memory">> => float(),
 %%   <<"model">> => string(),
@@ -1711,7 +1711,7 @@
 %% Example:
 %% list_projects_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"projects">> => list(project()())
+%%   <<"projects">> => list(project())
 %% }
 -type list_projects_result() :: #{binary() => any()}.
 
@@ -1724,7 +1724,7 @@
 %% Example:
 %% list_remote_access_sessions_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"remoteAccessSessions">> => list(remote_access_session()())
+%%   <<"remoteAccessSessions">> => list(remote_access_session())
 %% }
 -type list_remote_access_sessions_result() :: #{binary() => any()}.
 
@@ -1744,13 +1744,13 @@
 %% Example:
 %% list_offerings_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"offerings">> => list(offering()())
+%%   <<"offerings">> => list(offering())
 %% }
 -type list_offerings_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_test_grid_session_actions_result() :: #{
-%%   <<"actions">> => list(test_grid_session_action()()),
+%%   <<"actions">> => list(test_grid_session_action()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_test_grid_session_actions_result() :: #{binary() => any()}.
@@ -1791,7 +1791,7 @@
 %% device_filter() :: #{
 %%   <<"attribute">> => list(any()),
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type device_filter() :: #{binary() => any()}.
 
@@ -1811,7 +1811,7 @@
 %% Example:
 %% list_uploads_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"uploads">> => list(upload()())
+%%   <<"uploads">> => list(upload())
 %% }
 -type list_uploads_result() :: #{binary() => any()}.
 

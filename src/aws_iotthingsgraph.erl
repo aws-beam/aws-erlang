@@ -112,14 +112,14 @@
 %% Example:
 %% search_flow_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(flow_template_summary()())
+%%   <<"summaries">> => list(flow_template_summary())
 %% }
 -type search_flow_templates_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -132,7 +132,7 @@
 %% Example:
 %% search_things_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"things">> => list(thing()())
+%%   <<"things">> => list(thing())
 %% }
 -type search_things_response() :: #{binary() => any()}.
 
@@ -168,7 +168,7 @@
 %% Example:
 %% system_instance_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"value">> => list(string()())
+%%   <<"value">> => list(string())
 %% }
 -type system_instance_filter() :: #{binary() => any()}.
 
@@ -207,7 +207,7 @@
 %% Example:
 %% entity_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"value">> => list(string()())
+%%   <<"value">> => list(string())
 %% }
 -type entity_filter() :: #{binary() => any()}.
 
@@ -222,7 +222,7 @@
 %% Example:
 %% get_upload_status_response() :: #{
 %%   <<"createdDate">> => non_neg_integer(),
-%%   <<"failureReason">> => list(string()()),
+%%   <<"failureReason">> => list(string()),
 %%   <<"namespaceArn">> => string(),
 %%   <<"namespaceName">> => string(),
 %%   <<"namespaceVersion">> => float(),
@@ -247,14 +247,14 @@
 
 %% Example:
 %% get_entities_request() :: #{
-%%   <<"ids">> := list(string()()),
+%%   <<"ids">> := list(string()),
 %%   <<"namespaceVersion">> => float()
 %% }
 -type get_entities_request() :: #{binary() => any()}.
 
 %% Example:
 %% search_entities_response() :: #{
-%%   <<"descriptions">> => list(entity_description()()),
+%%   <<"descriptions">> => list(entity_description()),
 %%   <<"nextToken">> => string()
 %% }
 -type search_entities_response() :: #{binary() => any()}.
@@ -267,7 +267,7 @@
 
 %% Example:
 %% get_entities_response() :: #{
-%%   <<"descriptions">> => list(entity_description()())
+%%   <<"descriptions">> => list(entity_description())
 %% }
 -type get_entities_response() :: #{binary() => any()}.
 
@@ -298,7 +298,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -322,7 +322,7 @@
 %%   <<"greengrassGroupName">> => string(),
 %%   <<"metricsConfiguration">> => metrics_configuration(),
 %%   <<"s3BucketName">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"target">> := list(any())
 %% }
 -type create_system_instance_request() :: #{binary() => any()}.
@@ -341,7 +341,7 @@
 
 %% Example:
 %% search_system_templates_request() :: #{
-%%   <<"filters">> => list(system_template_filter()()),
+%%   <<"filters">> => list(system_template_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -350,7 +350,7 @@
 %% Example:
 %% search_flow_executions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(flow_execution_summary()())
+%%   <<"summaries">> => list(flow_execution_summary())
 %% }
 -type search_flow_executions_response() :: #{binary() => any()}.
 
@@ -432,7 +432,7 @@
 
 %% Example:
 %% search_system_instances_request() :: #{
-%%   <<"filters">> => list(system_instance_filter()()),
+%%   <<"filters">> => list(system_instance_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -440,7 +440,7 @@
 
 %% Example:
 %% search_flow_templates_request() :: #{
-%%   <<"filters">> => list(flow_template_filter()()),
+%%   <<"filters">> => list(flow_template_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -472,7 +472,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -506,7 +506,7 @@
 %% Example:
 %% get_flow_template_revisions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(flow_template_summary()())
+%%   <<"summaries">> => list(flow_template_summary())
 %% }
 -type get_flow_template_revisions_response() :: #{binary() => any()}.
 
@@ -528,7 +528,7 @@
 %% Example:
 %% search_entities_request() :: #{
 %%   <<"entityTypes">> := list(list(any())()),
-%%   <<"filters">> => list(entity_filter()()),
+%%   <<"filters">> => list(entity_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"namespaceVersion">> => float(),
 %%   <<"nextToken">> => string()
@@ -552,7 +552,7 @@
 %% Example:
 %% search_system_instances_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(system_instance_summary()())
+%%   <<"summaries">> => list(system_instance_summary())
 %% }
 -type search_system_instances_response() :: #{binary() => any()}.
 
@@ -599,7 +599,7 @@
 %%   <<"metricsConfiguration">> => metrics_configuration(),
 %%   <<"s3BucketName">> => string(),
 %%   <<"summary">> => system_instance_summary(),
-%%   <<"validatedDependencyRevisions">> => list(dependency_revision()()),
+%%   <<"validatedDependencyRevisions">> => list(dependency_revision()),
 %%   <<"validatedNamespaceVersion">> => float()
 %% }
 -type system_instance_description() :: #{binary() => any()}.
@@ -641,7 +641,7 @@
 %% Example:
 %% system_template_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"value">> => list(string()())
+%%   <<"value">> => list(string())
 %% }
 -type system_template_filter() :: #{binary() => any()}.
 
@@ -654,7 +654,7 @@
 %% Example:
 %% search_system_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(system_template_summary()())
+%%   <<"summaries">> => list(system_template_summary())
 %% }
 -type search_system_templates_response() :: #{binary() => any()}.
 
@@ -673,7 +673,7 @@
 %% Example:
 %% get_system_template_revisions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(system_template_summary()())
+%%   <<"summaries">> => list(system_template_summary())
 %% }
 -type get_system_template_revisions_response() :: #{binary() => any()}.
 
@@ -707,7 +707,7 @@
 
 %% Example:
 %% list_flow_execution_messages_response() :: #{
-%%   <<"messages">> => list(flow_execution_message()()),
+%%   <<"messages">> => list(flow_execution_message()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_flow_execution_messages_response() :: #{binary() => any()}.
@@ -745,7 +745,7 @@
 %% Example:
 %% flow_template_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"value">> => list(string()())
+%%   <<"value">> => list(string())
 %% }
 -type flow_template_filter() :: #{binary() => any()}.
 

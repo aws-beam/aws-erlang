@@ -77,7 +77,7 @@
 %% Example:
 %% user_pending_changes() :: #{
 %%   <<"ConsoleAccess">> => boolean(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"PendingChange">> => list(any())
 %% }
 -type user_pending_changes() :: #{binary() => any()}.
@@ -111,7 +111,7 @@
 %%   <<"PendingEngineVersion">> => string(),
 %%   <<"PendingAuthenticationStrategy">> => list(any()),
 %%   <<"DataReplicationMode">> => list(any()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"EncryptionOptions">> => encryption_options(),
 %%   <<"DeploymentMode">> => list(any()),
 %%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
@@ -122,19 +122,19 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"Configurations">> => configurations(),
 %%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"Users">> => list(user_summary()()),
-%%   <<"SecurityGroups">> => list(string()()),
-%%   <<"PendingSecurityGroups">> => list(string()()),
+%%   <<"Users">> => list(user_summary()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"PendingSecurityGroups">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"PendingHostInstanceType">> => string(),
 %%   <<"PendingLdapServerMetadata">> => ldap_server_metadata_output(),
-%%   <<"ActionsRequired">> => list(action_required()()),
+%%   <<"ActionsRequired">> => list(action_required()),
 %%   <<"BrokerId">> => string(),
 %%   <<"AutoMinorVersionUpgrade">> => boolean(),
 %%   <<"BrokerName">> => string(),
 %%   <<"EngineType">> => list(any()),
 %%   <<"HostInstanceType">> => string(),
-%%   <<"BrokerInstances">> => list(broker_instance()())
+%%   <<"BrokerInstances">> => list(broker_instance())
 %% }
 -type describe_broker_response() :: #{binary() => any()}.
 
@@ -148,7 +148,7 @@
 
 %% Example:
 %% delete_tags_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type delete_tags_request() :: #{binary() => any()}.
 
@@ -186,11 +186,11 @@
 %%   <<"Logs">> => logs(),
 %%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
 %%   <<"PubliclyAccessible">> := boolean(),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"StorageType">> => list(any()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"Tags">> => map(),
-%%   <<"Users">> := list(user()())
+%%   <<"Users">> := list(user())
 %% }
 -type create_broker_request() :: #{binary() => any()}.
 
@@ -205,7 +205,7 @@
 
 %% Example:
 %% describe_broker_engine_types_response() :: #{
-%%   <<"BrokerEngineTypes">> => list(broker_engine_type()()),
+%%   <<"BrokerEngineTypes">> => list(broker_engine_type()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -241,7 +241,7 @@
 
 %% Example:
 %% list_configurations_response() :: #{
-%%   <<"Configurations">> => list(configuration()()),
+%%   <<"Configurations">> => list(configuration()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -338,7 +338,7 @@
 
 %% Example:
 %% list_brokers_response() :: #{
-%%   <<"BrokerSummaries">> => list(broker_summary()()),
+%%   <<"BrokerSummaries">> => list(broker_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_brokers_response() :: #{binary() => any()}.
@@ -385,7 +385,7 @@
 %%   <<"BrokerId">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user_summary()())
+%%   <<"Users">> => list(user_summary())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -428,7 +428,7 @@
 %%   <<"ConfigurationId">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Revisions">> => list(configuration_revision()())
+%%   <<"Revisions">> => list(configuration_revision())
 %% }
 -type list_configuration_revisions_response() :: #{binary() => any()}.
 
@@ -451,7 +451,7 @@
 
 %% Example:
 %% ldap_server_metadata_input() :: #{
-%%   <<"Hosts">> => list(string()()),
+%%   <<"Hosts">> => list(string()),
 %%   <<"RoleBase">> => string(),
 %%   <<"RoleName">> => string(),
 %%   <<"RoleSearchMatching">> => string(),
@@ -492,7 +492,7 @@
 %%   <<"Id">> => string(),
 %%   <<"LatestRevision">> => configuration_revision(),
 %%   <<"Name">> => string(),
-%%   <<"Warnings">> => list(sanitization_warning()())
+%%   <<"Warnings">> => list(sanitization_warning())
 %% }
 -type update_configuration_response() :: #{binary() => any()}.
 
@@ -500,7 +500,7 @@
 %% Example:
 %% broker_engine_type() :: #{
 %%   <<"EngineType">> => list(any()),
-%%   <<"EngineVersions">> => list(engine_version()())
+%%   <<"EngineVersions">> => list(engine_version())
 %% }
 -type broker_engine_type() :: #{binary() => any()}.
 
@@ -519,7 +519,7 @@
 %% describe_user_response() :: #{
 %%   <<"BrokerId">> => string(),
 %%   <<"ConsoleAccess">> => boolean(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"Pending">> => user_pending_changes(),
 %%   <<"ReplicationUser">> => boolean(),
 %%   <<"Username">> => string()
@@ -529,7 +529,7 @@
 
 %% Example:
 %% ldap_server_metadata_output() :: #{
-%%   <<"Hosts">> => list(string()()),
+%%   <<"Hosts">> => list(string()),
 %%   <<"RoleBase">> => string(),
 %%   <<"RoleName">> => string(),
 %%   <<"RoleSearchMatching">> => string(),
@@ -546,7 +546,7 @@
 %% Example:
 %% broker_instance() :: #{
 %%   <<"ConsoleURL">> => string(),
-%%   <<"Endpoints">> => list(string()()),
+%%   <<"Endpoints">> => list(string()),
 %%   <<"IpAddress">> => string()
 %% }
 -type broker_instance() :: #{binary() => any()}.
@@ -584,7 +584,7 @@
 %% Example:
 %% update_user_request() :: #{
 %%   <<"ConsoleAccess">> => boolean(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"Password">> => string(),
 %%   <<"ReplicationUser">> => boolean()
 %% }
@@ -602,7 +602,7 @@
 %% Example:
 %% user() :: #{
 %%   <<"ConsoleAccess">> => boolean(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"Password">> => string(),
 %%   <<"ReplicationUser">> => boolean(),
 %%   <<"Username">> => string()
@@ -635,12 +635,12 @@
 
 %% Example:
 %% broker_instance_option() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"AvailabilityZones">> => list(availability_zone()),
 %%   <<"EngineType">> => list(any()),
 %%   <<"HostInstanceType">> => string(),
 %%   <<"StorageType">> => list(any()),
 %%   <<"SupportedDeploymentModes">> => list(list(any())()),
-%%   <<"SupportedEngineVersions">> => list(string()())
+%%   <<"SupportedEngineVersions">> => list(string())
 %% }
 -type broker_instance_option() :: #{binary() => any()}.
 
@@ -680,7 +680,7 @@
 %%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
 %%   <<"PendingDataReplicationMetadata">> => data_replication_metadata_output(),
 %%   <<"PendingDataReplicationMode">> => list(any()),
-%%   <<"SecurityGroups">> => list(string()())
+%%   <<"SecurityGroups">> => list(string())
 %% }
 -type update_broker_response() :: #{binary() => any()}.
 
@@ -696,7 +696,7 @@
 %% Example:
 %% configurations() :: #{
 %%   <<"Current">> => configuration_id(),
-%%   <<"History">> => list(configuration_id()()),
+%%   <<"History">> => list(configuration_id()),
 %%   <<"Pending">> => configuration_id()
 %% }
 -type configurations() :: #{binary() => any()}.
@@ -717,7 +717,7 @@
 
 %% Example:
 %% describe_broker_instance_options_response() :: #{
-%%   <<"BrokerInstanceOptions">> => list(broker_instance_option()()),
+%%   <<"BrokerInstanceOptions">> => list(broker_instance_option()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -735,7 +735,7 @@
 %%   <<"LdapServerMetadata">> => ldap_server_metadata_input(),
 %%   <<"Logs">> => logs(),
 %%   <<"MaintenanceWindowStartTime">> => weekly_start_time(),
-%%   <<"SecurityGroups">> => list(string()())
+%%   <<"SecurityGroups">> => list(string())
 %% }
 -type update_broker_request() :: #{binary() => any()}.
 
@@ -771,7 +771,7 @@
 %% Example:
 %% create_user_request() :: #{
 %%   <<"ConsoleAccess">> => boolean(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"Password">> := string(),
 %%   <<"ReplicationUser">> => boolean()
 %% }

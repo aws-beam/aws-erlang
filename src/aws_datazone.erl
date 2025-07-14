@@ -421,7 +421,7 @@
 
 %% Example:
 %% list_project_profiles_output() :: #{
-%%   <<"items">> => list(project_profile_summary()()),
+%%   <<"items">> => list(project_profile_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_project_profiles_output() :: #{binary() => any()}.
@@ -429,7 +429,7 @@
 
 %% Example:
 %% metadata_form_enforcement_detail() :: #{
-%%   <<"requiredMetadataForms">> => list(metadata_form_reference()())
+%%   <<"requiredMetadataForms">> => list(metadata_form_reference())
 %% }
 -type metadata_form_enforcement_detail() :: #{binary() => any()}.
 
@@ -470,8 +470,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"externalIdentifier">> => string(),
-%%   <<"formsInput">> => list(form_input()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"formsInput">> => list(form_input()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> := string(),
 %%   <<"owningProjectIdentifier">> := string(),
 %%   <<"predictionConfiguration">> => prediction_configuration(),
@@ -483,7 +483,7 @@
 
 %% Example:
 %% search_user_profiles_output() :: #{
-%%   <<"items">> => list(user_profile_summary()()),
+%%   <<"items">> => list(user_profile_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type search_user_profiles_output() :: #{binary() => any()}.
@@ -499,7 +499,7 @@
 %%   <<"externalIdentifier">> => string(),
 %%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
 %%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"identifier">> => string(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
@@ -529,8 +529,8 @@
 %%   <<"dataProductId">> => string(),
 %%   <<"dataProductRevision">> => string(),
 %%   <<"forms">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
-%%   <<"items">> => list(listing_summary()()),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"items">> => list(listing_summary()),
 %%   <<"owningProjectId">> => string()
 %% }
 -type data_product_listing() :: #{binary() => any()}.
@@ -555,7 +555,7 @@
 
 %% Example:
 %% listing_summary_item() :: #{
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
 %%   <<"listingId">> => string(),
 %%   <<"listingRevision">> => string()
 %% }
@@ -612,7 +612,7 @@
 
 %% Example:
 %% list_environment_blueprint_configurations_output() :: #{
-%%   <<"items">> => list(environment_blueprint_configuration_item()()),
+%%   <<"items">> => list(environment_blueprint_configuration_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_blueprint_configurations_output() :: #{binary() => any()}.
@@ -620,7 +620,7 @@
 
 %% Example:
 %% list_data_source_runs_output() :: #{
-%%   <<"items">> => list(data_source_run_summary()()),
+%%   <<"items">> => list(data_source_run_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_source_runs_output() :: #{binary() => any()}.
@@ -631,14 +631,14 @@
 %%   <<"dataAccessRole">> => [string()],
 %%   <<"redshiftCredentialConfiguration">> => redshift_credential_configuration(),
 %%   <<"redshiftStorage">> => list(),
-%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
 %% }
 -type redshift_run_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_asset_filters_output() :: #{
-%%   <<"items">> => list(asset_filter_summary()()),
+%%   <<"items">> => list(asset_filter_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_filters_output() :: #{binary() => any()}.
@@ -707,7 +707,7 @@
 
 %% Example:
 %% list_project_memberships_output() :: #{
-%%   <<"members">> => list(project_member()()),
+%%   <<"members">> => list(project_member()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_project_memberships_output() :: #{binary() => any()}.
@@ -719,7 +719,7 @@
 %%   <<"awsAccountRegion">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"name">> => string(),
-%%   <<"userParameters">> => list(environment_parameter()())
+%%   <<"userParameters">> => list(environment_parameter())
 %% }
 -type update_environment_profile_input() :: #{binary() => any()}.
 
@@ -730,8 +730,8 @@
 
 %% Example:
 %% update_subscription_target_output() :: #{
-%%   <<"applicableAssetTypes">> => list(string()()),
-%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"applicableAssetTypes">> => list(string()),
+%%   <<"authorizedPrincipals">> => list(string()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -741,7 +741,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
-%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()()),
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
 %%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
@@ -772,7 +772,7 @@
 
 %% Example:
 %% list_job_runs_output() :: #{
-%%   <<"items">> => list(job_run_summary()()),
+%%   <<"items">> => list(job_run_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_runs_output() :: #{binary() => any()}.
@@ -788,7 +788,7 @@
 
 %% Example:
 %% list_policy_grants_output() :: #{
-%%   <<"grantList">> => list(policy_grant_member()()),
+%%   <<"grantList">> => list(policy_grant_member()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_policy_grants_output() :: #{binary() => any()}.
@@ -863,8 +863,8 @@
 
 %% Example:
 %% environment_configuration_parameters_details() :: #{
-%%   <<"parameterOverrides">> => list(environment_configuration_parameter()()),
-%%   <<"resolvedParameters">> => list(environment_configuration_parameter()()),
+%%   <<"parameterOverrides">> => list(environment_configuration_parameter()),
+%%   <<"resolvedParameters">> => list(environment_configuration_parameter()),
 %%   <<"ssmPath">> => string()
 %% }
 -type environment_configuration_parameters_details() :: #{binary() => any()}.
@@ -884,7 +884,7 @@
 %%   <<"deploymentType">> => list(any()),
 %%   <<"failureReason">> => environment_error(),
 %%   <<"isDeploymentComplete">> => [boolean()],
-%%   <<"messages">> => list(string()())
+%%   <<"messages">> => list(string())
 %% }
 -type deployment() :: #{binary() => any()}.
 
@@ -898,21 +898,21 @@
 %%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"environmentActions">> => list(configurable_environment_action()()),
+%%   <<"environmentActions">> => list(configurable_environment_action()),
 %%   <<"environmentBlueprintId">> => string(),
 %%   <<"environmentConfigurationId">> => string(),
 %%   <<"environmentProfileId">> => string(),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"lastDeployment">> => deployment(),
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
-%%   <<"provisionedResources">> => list(resource()()),
+%%   <<"provisionedResources">> => list(resource()),
 %%   <<"provisioningProperties">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter()())
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
 -type get_environment_output() :: #{binary() => any()}.
 
@@ -922,10 +922,10 @@
 %%   <<"description">> => string(),
 %%   <<"domainUnitId">> => string(),
 %%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"projectProfileVersion">> => [string()],
-%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
+%%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type update_project_input() :: #{binary() => any()}.
 
@@ -956,7 +956,7 @@
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
-%%   <<"failureReasons">> => list(project_deletion_error()()),
+%%   <<"failureReasons">> => list(project_deletion_error()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"projectStatus">> => list(any()),
@@ -1039,7 +1039,7 @@
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -1076,10 +1076,10 @@
 %%   <<"environmentBlueprintIdentifier">> => [string()],
 %%   <<"environmentConfigurationId">> => [string()],
 %%   <<"environmentProfileIdentifier">> := string(),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> := [string()],
 %%   <<"projectIdentifier">> := string(),
-%%   <<"userParameters">> => list(environment_parameter()())
+%%   <<"userParameters">> => list(environment_parameter())
 %% }
 -type create_environment_input() :: #{binary() => any()}.
 
@@ -1105,15 +1105,15 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter()())
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
 -type update_environment_profile_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% term_relations() :: #{
-%%   <<"classifies">> => list(string()()),
-%%   <<"isA">> => list(string()())
+%%   <<"classifies">> => list(string()),
+%%   <<"isA">> => list(string())
 %% }
 -type term_relations() :: #{binary() => any()}.
 
@@ -1136,7 +1136,7 @@
 
 %% Example:
 %% list_time_series_data_points_output() :: #{
-%%   <<"items">> => list(time_series_data_point_summary_form_output()()),
+%%   <<"items">> => list(time_series_data_point_summary_form_output()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_time_series_data_points_output() :: #{binary() => any()}.
@@ -1146,9 +1146,9 @@
 %% create_data_product_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"formsInput">> => list(form_input()()),
-%%   <<"glossaryTerms">> => list(string()()),
-%%   <<"items">> => list(data_product_item()()),
+%%   <<"formsInput">> => list(form_input()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"items">> => list(data_product_item()),
 %%   <<"name">> := string(),
 %%   <<"owningProjectIdentifier">> := string()
 %% }
@@ -1191,8 +1191,8 @@
 
 %% Example:
 %% create_subscription_target_output() :: #{
-%%   <<"applicableAssetTypes">> => list(string()()),
-%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"applicableAssetTypes">> => list(string()),
+%%   <<"authorizedPrincipals">> => list(string()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -1202,7 +1202,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
-%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()()),
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
 %%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
@@ -1230,10 +1230,10 @@
 %% Example:
 %% create_subscription_request_input() :: #{
 %%   <<"clientToken">> => [string()],
-%%   <<"metadataForms">> => list(form_input()()),
+%%   <<"metadataForms">> => list(form_input()),
 %%   <<"requestReason">> := string(),
-%%   <<"subscribedListings">> := list(subscribed_listing_input()()),
-%%   <<"subscribedPrincipals">> := list(list()())
+%%   <<"subscribedListings">> := list(subscribed_listing_input()),
+%%   <<"subscribedPrincipals">> := list(list())
 %% }
 -type create_subscription_request_input() :: #{binary() => any()}.
 
@@ -1253,10 +1253,10 @@
 %%   <<"domainId">> => string(),
 %%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
 %%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"items">> => list(data_product_item()()),
+%%   <<"items">> => list(data_product_item()),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"revision">> => string(),
@@ -1267,7 +1267,7 @@
 
 %% Example:
 %% create_data_source_input() :: #{
-%%   <<"assetFormsInput">> => list(form_input()()),
+%%   <<"assetFormsInput">> => list(form_input()),
 %%   <<"clientToken">> => [string()],
 %%   <<"configuration">> => list(),
 %%   <<"connectionIdentifier">> => [string()],
@@ -1302,7 +1302,7 @@
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -1372,7 +1372,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"owningProjectIdentifier">> => string(),
-%%   <<"searchIn">> => list(search_in_item()()),
+%%   <<"searchIn">> => list(search_in_item()),
 %%   <<"searchScope">> := list(any()),
 %%   <<"searchText">> => string(),
 %%   <<"sort">> => search_sort()
@@ -1398,15 +1398,15 @@
 %%   <<"externalIdentifier">> => string(),
 %%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
 %%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()()),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
 %%   <<"listing">> => asset_listing_details(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"predictionConfiguration">> => prediction_configuration(),
-%%   <<"readOnlyFormsOutput">> => list(form_output()()),
+%%   <<"readOnlyFormsOutput">> => list(form_output()),
 %%   <<"revision">> => string(),
 %%   <<"typeIdentifier">> => string(),
 %%   <<"typeRevision">> => string()
@@ -1416,7 +1416,7 @@
 
 %% Example:
 %% list_subscription_grants_output() :: #{
-%%   <<"items">> => list(subscription_grant_summary()()),
+%%   <<"items">> => list(subscription_grant_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_subscription_grants_output() :: #{binary() => any()}.
@@ -1426,7 +1426,7 @@
 %% environment_configuration_user_parameter() :: #{
 %%   <<"environmentConfigurationName">> => string(),
 %%   <<"environmentId">> => string(),
-%%   <<"environmentParameters">> => list(environment_parameter()())
+%%   <<"environmentParameters">> => list(environment_parameter())
 %% }
 -type environment_configuration_user_parameter() :: #{binary() => any()}.
 
@@ -1492,7 +1492,7 @@
 
 %% Example:
 %% list_connections_output() :: #{
-%%   <<"items">> => list(connection_summary()()),
+%%   <<"items">> => list(connection_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_connections_output() :: #{binary() => any()}.
@@ -1517,10 +1517,10 @@
 %%   <<"domainId">> => string(),
 %%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
 %%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"items">> => list(data_product_item()()),
+%%   <<"items">> => list(data_product_item()),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"revision">> => string(),
@@ -1577,8 +1577,8 @@
 %% create_asset_revision_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"formsInput">> => list(form_input()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"formsInput">> => list(form_input()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> := string(),
 %%   <<"predictionConfiguration">> => prediction_configuration(),
 %%   <<"typeRevision">> => string()
@@ -1614,7 +1614,7 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"lastUpdatedBy">> => string(),
 %%   <<"name">> => string(),
-%%   <<"owners">> => list(list()()),
+%%   <<"owners">> => list(list()),
 %%   <<"parentDomainUnitId">> => string()
 %% }
 -type update_domain_unit_output() :: #{binary() => any()}.
@@ -1629,7 +1629,7 @@
 
 %% Example:
 %% redshift_self_grant_status_output() :: #{
-%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail()())
+%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail())
 %% }
 -type redshift_self_grant_status_output() :: #{binary() => any()}.
 
@@ -1642,14 +1642,14 @@
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
 %%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
-%%   <<"failureReasons">> => list(project_deletion_error()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"failureReasons">> => list(project_deletion_error()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"projectProfileId">> => string(),
 %%   <<"projectStatus">> => list(any()),
-%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
+%%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type create_project_output() :: #{binary() => any()}.
 
@@ -1660,8 +1660,8 @@
 
 %% Example:
 %% subscription_target_summary() :: #{
-%%   <<"applicableAssetTypes">> => list(string()()),
-%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"applicableAssetTypes">> => list(string()),
+%%   <<"authorizedPrincipals">> => list(string()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -1671,7 +1671,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
-%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()()),
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
 %%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
@@ -1704,7 +1704,7 @@
 %%   <<"managed">> := [boolean()],
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"searchIn">> => list(search_in_item()()),
+%%   <<"searchIn">> => list(search_in_item()),
 %%   <<"searchScope">> := list(any()),
 %%   <<"searchText">> => string(),
 %%   <<"sort">> => search_sort()
@@ -1720,7 +1720,7 @@
 %%   <<"domainUnitId">> => string(),
 %%   <<"environmentId">> => string(),
 %%   <<"name">> => string(),
-%%   <<"physicalEndpoints">> => list(physical_endpoint()()),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()),
 %%   <<"projectId">> => string(),
 %%   <<"props">> => list(),
 %%   <<"type">> => list(any())
@@ -1781,7 +1781,7 @@
 %% Example:
 %% post_time_series_data_points_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"forms">> := list(time_series_data_point_form_input()())
+%%   <<"forms">> := list(time_series_data_point_form_input())
 %% }
 -type post_time_series_data_points_input() :: #{binary() => any()}.
 
@@ -1804,7 +1804,7 @@
 
 %% Example:
 %% subscription_grant_summary() :: #{
-%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"assets">> => list(subscribed_asset()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -1830,7 +1830,7 @@
 %% update_project_profile_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"domainUnitIdentifier">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any())
 %% }
@@ -1839,7 +1839,7 @@
 
 %% Example:
 %% get_data_source_output() :: #{
-%%   <<"assetFormsOutput">> => list(form_output()()),
+%%   <<"assetFormsOutput">> => list(form_output()),
 %%   <<"configuration">> => list(),
 %%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
@@ -1870,9 +1870,9 @@
 %% create_data_product_revision_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"formsInput">> => list(form_input()()),
-%%   <<"glossaryTerms">> => list(string()()),
-%%   <<"items">> => list(data_product_item()()),
+%%   <<"formsInput">> => list(form_input()),
+%%   <<"glossaryTerms">> => list(string()),
+%%   <<"items">> => list(data_product_item()),
 %%   <<"name">> := string()
 %% }
 -type create_data_product_revision_input() :: #{binary() => any()}.
@@ -1977,7 +1977,7 @@
 
 %% Example:
 %% list_environment_actions_output() :: #{
-%%   <<"items">> => list(environment_action_summary()()),
+%%   <<"items">> => list(environment_action_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_actions_output() :: #{binary() => any()}.
@@ -1995,9 +1995,9 @@
 
 %% Example:
 %% asset_item_additional_attributes() :: #{
-%%   <<"formsOutput">> => list(form_output()()),
-%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()()),
-%%   <<"readOnlyFormsOutput">> => list(form_output()())
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
+%%   <<"readOnlyFormsOutput">> => list(form_output())
 %% }
 -type asset_item_additional_attributes() :: #{binary() => any()}.
 
@@ -2014,11 +2014,11 @@
 %% environment_blueprint_configuration_item() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainId">> => string(),
-%%   <<"enabledRegions">> => list(string()()),
+%%   <<"enabledRegions">> => list(string()),
 %%   <<"environmentBlueprintId">> => string(),
 %%   <<"environmentRolePermissionBoundary">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
-%%   <<"provisioningConfigurations">> => list(list()()),
+%%   <<"provisioningConfigurations">> => list(list()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -2037,7 +2037,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -2118,7 +2118,7 @@
 
 %% Example:
 %% list_data_source_run_activities_output() :: #{
-%%   <<"items">> => list(data_source_run_activity()()),
+%%   <<"items">> => list(data_source_run_activity()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_source_run_activities_output() :: #{binary() => any()}.
@@ -2134,7 +2134,7 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"lastUpdatedBy">> => string(),
 %%   <<"name">> => string(),
-%%   <<"owners">> => list(list()()),
+%%   <<"owners">> => list(list()),
 %%   <<"parentDomainUnitId">> => string()
 %% }
 -type get_domain_unit_output() :: #{binary() => any()}.
@@ -2367,11 +2367,11 @@
 %% put_environment_blueprint_configuration_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainId">> => string(),
-%%   <<"enabledRegions">> => list(string()()),
+%%   <<"enabledRegions">> => list(string()),
 %%   <<"environmentBlueprintId">> => string(),
 %%   <<"environmentRolePermissionBoundary">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
-%%   <<"provisioningConfigurations">> => list(list()()),
+%%   <<"provisioningConfigurations">> => list(list()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -2381,7 +2381,7 @@
 
 %% Example:
 %% create_subscription_grant_input() :: #{
-%%   <<"assetTargetNames">> => list(asset_target_name_map()()),
+%%   <<"assetTargetNames">> => list(asset_target_name_map()),
 %%   <<"clientToken">> => [string()],
 %%   <<"environmentIdentifier">> := string(),
 %%   <<"grantedEntity">> := list(),
@@ -2398,7 +2398,7 @@
 %%   <<"environmentBlueprintIdentifier">> := string(),
 %%   <<"name">> := string(),
 %%   <<"projectIdentifier">> := string(),
-%%   <<"userParameters">> => list(environment_parameter()())
+%%   <<"userParameters">> => list(environment_parameter())
 %% }
 -type create_environment_profile_input() :: #{binary() => any()}.
 
@@ -2412,21 +2412,21 @@
 %%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"environmentActions">> => list(configurable_environment_action()()),
+%%   <<"environmentActions">> => list(configurable_environment_action()),
 %%   <<"environmentBlueprintId">> => string(),
 %%   <<"environmentConfigurationId">> => string(),
 %%   <<"environmentProfileId">> => string(),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"lastDeployment">> => deployment(),
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
-%%   <<"provisionedResources">> => list(resource()()),
+%%   <<"provisionedResources">> => list(resource()),
 %%   <<"provisioningProperties">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter()())
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
 -type create_environment_output() :: #{binary() => any()}.
 
@@ -2449,7 +2449,7 @@
 %% Example:
 %% reject_predictions_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"rejectChoices">> => list(reject_choice()()),
+%%   <<"rejectChoices">> => list(reject_choice()),
 %%   <<"rejectRule">> => reject_rule(),
 %%   <<"revision">> => string()
 %% }
@@ -2469,7 +2469,7 @@
 
 %% Example:
 %% search_output() :: #{
-%%   <<"items">> => list(list()()),
+%%   <<"items">> => list(list()),
 %%   <<"nextToken">> => string(),
 %%   <<"totalMatchCount">> => [integer()]
 %% }
@@ -2563,13 +2563,13 @@
 
 %% Example:
 %% create_subscription_target_input() :: #{
-%%   <<"applicableAssetTypes">> := list(string()()),
-%%   <<"authorizedPrincipals">> := list(string()()),
+%%   <<"applicableAssetTypes">> := list(string()),
+%%   <<"authorizedPrincipals">> := list(string()),
 %%   <<"clientToken">> => [string()],
 %%   <<"manageAccessRole">> := string(),
 %%   <<"name">> := string(),
 %%   <<"provider">> => [string()],
-%%   <<"subscriptionTargetConfig">> := list(subscription_target_form()()),
+%%   <<"subscriptionTargetConfig">> := list(subscription_target_form()),
 %%   <<"type">> := [string()]
 %% }
 -type create_subscription_target_input() :: #{binary() => any()}.
@@ -2577,7 +2577,7 @@
 
 %% Example:
 %% update_data_source_input() :: #{
-%%   <<"assetFormsInput">> => list(form_input()()),
+%%   <<"assetFormsInput">> => list(form_input()),
 %%   <<"configuration">> => list(),
 %%   <<"description">> => string(),
 %%   <<"enableSetting">> => list(any()),
@@ -2615,8 +2615,8 @@
 %%   <<"assetType">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"forms">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
-%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()()),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()),
 %%   <<"owningProjectId">> => string()
 %% }
 -type asset_listing() :: #{binary() => any()}.
@@ -2675,7 +2675,7 @@
 %% Example:
 %% projects_for_rule() :: #{
 %%   <<"selectionMode">> => list(any()),
-%%   <<"specificProjects">> => list(string()())
+%%   <<"specificProjects">> => list(string())
 %% }
 -type projects_for_rule() :: #{binary() => any()}.
 
@@ -2750,7 +2750,7 @@
 
 %% Example:
 %% list_domains_output() :: #{
-%%   <<"items">> => list(domain_summary()()),
+%%   <<"items">> => list(domain_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_domains_output() :: #{binary() => any()}.
@@ -2765,21 +2765,21 @@
 %%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"environmentActions">> => list(configurable_environment_action()()),
+%%   <<"environmentActions">> => list(configurable_environment_action()),
 %%   <<"environmentBlueprintId">> => string(),
 %%   <<"environmentConfigurationId">> => string(),
 %%   <<"environmentProfileId">> => string(),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"lastDeployment">> => deployment(),
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
-%%   <<"provisionedResources">> => list(resource()()),
+%%   <<"provisionedResources">> => list(resource()),
 %%   <<"provisioningProperties">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter()())
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
 -type update_environment_output() :: #{binary() => any()}.
 
@@ -2794,7 +2794,7 @@
 
 %% Example:
 %% create_data_source_output() :: #{
-%%   <<"assetFormsOutput">> => list(form_output()()),
+%%   <<"assetFormsOutput">> => list(form_output()),
 %%   <<"configuration">> => list(),
 %%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
@@ -2844,11 +2844,11 @@
 
 %% Example:
 %% subscribed_product_listing() :: #{
-%%   <<"assetListings">> => list(asset_in_data_product_listing_item()()),
+%%   <<"assetListings">> => list(asset_in_data_product_listing_item()),
 %%   <<"description">> => [string()],
 %%   <<"entityId">> => string(),
 %%   <<"entityRevision">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
 %%   <<"name">> => [string()]
 %% }
 -type subscribed_product_listing() :: #{binary() => any()}.
@@ -2873,7 +2873,7 @@
 
 %% Example:
 %% delete_data_source_output() :: #{
-%%   <<"assetFormsOutput">> => list(form_output()()),
+%%   <<"assetFormsOutput">> => list(form_output()),
 %%   <<"configuration">> => list(),
 %%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
@@ -2916,7 +2916,7 @@
 %%   <<"environmentId">> => string(),
 %%   <<"environmentUserRole">> => [string()],
 %%   <<"name">> => string(),
-%%   <<"physicalEndpoints">> => list(physical_endpoint()()),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()),
 %%   <<"projectId">> => string(),
 %%   <<"props">> => list(),
 %%   <<"type">> => list(any())
@@ -2943,7 +2943,7 @@
 %% Example:
 %% asset_listing_item_additional_attributes() :: #{
 %%   <<"forms">> => string(),
-%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()())
+%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output())
 %% }
 -type asset_listing_item_additional_attributes() :: #{binary() => any()}.
 
@@ -2974,7 +2974,7 @@
 
 %% Example:
 %% list_lineage_events_output() :: #{
-%%   <<"items">> => list(lineage_event_summary()()),
+%%   <<"items">> => list(lineage_event_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_lineage_events_output() :: #{binary() => any()}.
@@ -2989,7 +2989,7 @@
 
 %% Example:
 %% list_projects_output() :: #{
-%%   <<"items">> => list(project_summary()()),
+%%   <<"items">> => list(project_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_projects_output() :: #{binary() => any()}.
@@ -3050,12 +3050,12 @@
 %%   <<"domainId">> => string(),
 %%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"metadataForms">> => list(form_output()()),
+%%   <<"metadataForms">> => list(form_output()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()()),
-%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -3081,7 +3081,7 @@
 %% Example:
 %% configurable_environment_action() :: #{
 %%   <<"auth">> => list(any()),
-%%   <<"parameters">> => list(configurable_action_parameter()()),
+%%   <<"parameters">> => list(configurable_action_parameter()),
 %%   <<"type">> => [string()]
 %% }
 -type configurable_environment_action() :: #{binary() => any()}.
@@ -3110,7 +3110,7 @@
 
 %% Example:
 %% search_listings_output() :: #{
-%%   <<"items">> => list(list()()),
+%%   <<"items">> => list(list()),
 %%   <<"nextToken">> => string(),
 %%   <<"totalMatchCount">> => [integer()]
 %% }
@@ -3174,7 +3174,7 @@
 
 %% Example:
 %% list_environments_output() :: #{
-%%   <<"items">> => list(environment_summary()()),
+%%   <<"items">> => list(environment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_output() :: #{binary() => any()}.
@@ -3200,7 +3200,7 @@
 
 %% Example:
 %% update_subscription_grant_status_output() :: #{
-%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"assets">> => list(subscribed_asset()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -3219,9 +3219,9 @@
 %% update_environment_input() :: #{
 %%   <<"blueprintVersion">> => [string()],
 %%   <<"description">> => [string()],
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> => [string()],
-%%   <<"userParameters">> => list(environment_parameter()())
+%%   <<"userParameters">> => list(environment_parameter())
 %% }
 -type update_environment_input() :: #{binary() => any()}.
 
@@ -3334,7 +3334,7 @@
 %%   <<"autoImportDataQualityResult">> => [boolean()],
 %%   <<"catalogName">> => [string()],
 %%   <<"dataAccessRole">> => [string()],
-%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
 %% }
 -type glue_run_configuration_input() :: #{binary() => any()}.
 
@@ -3348,7 +3348,7 @@
 
 %% Example:
 %% list_data_product_revisions_output() :: #{
-%%   <<"items">> => list(data_product_revision()()),
+%%   <<"items">> => list(data_product_revision()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_product_revisions_output() :: #{binary() => any()}.
@@ -3415,7 +3415,7 @@
 
 %% Example:
 %% create_subscription_grant_output() :: #{
-%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"assets">> => list(subscribed_asset()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -3468,7 +3468,7 @@
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"imports">> => list(import()()),
+%%   <<"imports">> => list(import()),
 %%   <<"model">> => list(),
 %%   <<"name">> => string(),
 %%   <<"originDomainId">> => string(),
@@ -3501,7 +3501,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter()())
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
 -type get_environment_profile_output() :: #{binary() => any()}.
 
@@ -3541,10 +3541,10 @@
 %%   <<"domainId">> => string(),
 %%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
 %%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"items">> => list(data_product_item()()),
+%%   <<"items">> => list(data_product_item()),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"revision">> => string(),
@@ -3566,7 +3566,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter()())
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
 -type create_environment_profile_output() :: #{binary() => any()}.
 
@@ -3577,7 +3577,7 @@
 %%   <<"filters">> => list(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"searchIn">> => list(search_in_item()()),
+%%   <<"searchIn">> => list(search_in_item()),
 %%   <<"searchText">> => [string()],
 %%   <<"sort">> => search_sort()
 %% }
@@ -3698,8 +3698,8 @@
 
 %% Example:
 %% get_subscription_target_output() :: #{
-%%   <<"applicableAssetTypes">> => list(string()()),
-%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"applicableAssetTypes">> => list(string()),
+%%   <<"authorizedPrincipals">> => list(string()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -3709,7 +3709,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectId">> => string(),
 %%   <<"provider">> => [string()],
-%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()()),
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()),
 %%   <<"type">> => [string()],
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
@@ -3726,15 +3726,15 @@
 %%   <<"externalIdentifier">> => string(),
 %%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
 %%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()()),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
 %%   <<"listing">> => asset_listing_details(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"predictionConfiguration">> => prediction_configuration(),
-%%   <<"readOnlyFormsOutput">> => list(form_output()()),
+%%   <<"readOnlyFormsOutput">> => list(form_output()),
 %%   <<"revision">> => string(),
 %%   <<"typeIdentifier">> => string(),
 %%   <<"typeRevision">> => string()
@@ -3775,14 +3775,14 @@
 
 %% Example:
 %% create_domain_unit_output() :: #{
-%%   <<"ancestorDomainUnitIds">> => list(string()()),
+%%   <<"ancestorDomainUnitIds">> => list(string()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"owners">> => list(list()()),
+%%   <<"owners">> => list(list()),
 %%   <<"parentDomainUnitId">> => string()
 %% }
 -type create_domain_unit_output() :: #{binary() => any()}.
@@ -3796,7 +3796,7 @@
 %%   <<"domainId">> => string(),
 %%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
 %%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string()
@@ -3839,7 +3839,7 @@
 
 %% Example:
 %% update_data_source_output() :: #{
-%%   <<"assetFormsOutput">> => list(form_output()()),
+%%   <<"assetFormsOutput">> => list(form_output()),
 %%   <<"configuration">> => list(),
 %%   <<"connectionId">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
@@ -3870,10 +3870,10 @@
 %% create_project_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"domainUnitId">> => string(),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> := string(),
 %%   <<"projectProfileId">> => string(),
-%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
+%%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type create_project_input() :: #{binary() => any()}.
 
@@ -3881,12 +3881,12 @@
 %% Example:
 %% list_rules_input() :: #{
 %%   <<"action">> => list(any()),
-%%   <<"assetTypes">> => list(string()()),
+%%   <<"assetTypes">> => list(string()),
 %%   <<"dataProduct">> => [boolean()],
 %%   <<"includeCascaded">> => [boolean()],
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
-%%   <<"projectIds">> => list(string()()),
+%%   <<"projectIds">> => list(string()),
 %%   <<"ruleType">> => list(any())
 %% }
 -type list_rules_input() :: #{binary() => any()}.
@@ -3901,13 +3901,13 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"provider">> => [string()],
 %%   <<"provisioningProperties">> => list(),
 %%   <<"updatedAt">> => [non_neg_integer()],
-%%   <<"userParameters">> => list(custom_parameter()())
+%%   <<"userParameters">> => list(custom_parameter())
 %% }
 -type get_environment_blueprint_output() :: #{binary() => any()}.
 
@@ -3925,7 +3925,7 @@
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
-%%   <<"imports">> => list(import()()),
+%%   <<"imports">> => list(import()),
 %%   <<"model">> => list(),
 %%   <<"name">> => string(),
 %%   <<"originDomainId">> => string(),
@@ -4021,11 +4021,11 @@
 %% get_environment_blueprint_configuration_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainId">> => string(),
-%%   <<"enabledRegions">> => list(string()()),
+%%   <<"enabledRegions">> => list(string()),
 %%   <<"environmentBlueprintId">> => string(),
 %%   <<"environmentRolePermissionBoundary">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
-%%   <<"provisioningConfigurations">> => list(list()()),
+%%   <<"provisioningConfigurations">> => list(list()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -4054,7 +4054,7 @@
 
 %% Example:
 %% listing_summary() :: #{
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
 %%   <<"listingId">> => string(),
 %%   <<"listingRevision">> => string()
 %% }
@@ -4113,7 +4113,7 @@
 %% Example:
 %% accepted_asset_scope() :: #{
 %%   <<"assetId">> => string(),
-%%   <<"filterIds">> => list(string()())
+%%   <<"filterIds">> => list(string())
 %% }
 -type accepted_asset_scope() :: #{binary() => any()}.
 
@@ -4159,7 +4159,7 @@
 
 %% Example:
 %% list_subscription_targets_output() :: #{
-%%   <<"items">> => list(subscription_target_summary()()),
+%%   <<"items">> => list(subscription_target_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_subscription_targets_output() :: #{binary() => any()}.
@@ -4174,7 +4174,7 @@
 %%   <<"availabilityZone">> => [string()],
 %%   <<"securityGroupIdList">> => list([string()]()),
 %%   <<"subnetId">> => string(),
-%%   <<"subnetIdList">> => list(string()())
+%%   <<"subnetIdList">> => list(string())
 %% }
 -type physical_connection_requirements() :: #{binary() => any()}.
 
@@ -4217,7 +4217,7 @@
 %%   <<"entityId">> => string(),
 %%   <<"entityRevision">> => string(),
 %%   <<"entityType">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
 %%   <<"listingCreatedBy">> => string(),
 %%   <<"listingId">> => string(),
 %%   <<"listingRevision">> => string(),
@@ -4248,7 +4248,7 @@
 
 %% Example:
 %% list_environment_blueprints_output() :: #{
-%%   <<"items">> => list(environment_blueprint_summary()()),
+%%   <<"items">> => list(environment_blueprint_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_blueprints_output() :: #{binary() => any()}.
@@ -4286,7 +4286,7 @@
 %% Example:
 %% list_notifications_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"notifications">> => list(notification_output()())
+%%   <<"notifications">> => list(notification_output())
 %% }
 -type list_notifications_output() :: #{binary() => any()}.
 
@@ -4316,21 +4316,21 @@
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
 %%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
-%%   <<"failureReasons">> => list(project_deletion_error()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"failureReasons">> => list(project_deletion_error()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"projectProfileId">> => string(),
 %%   <<"projectStatus">> => list(any()),
-%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
+%%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type update_project_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% data_product_item() :: #{
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"identifier">> => string(),
 %%   <<"itemType">> => list(any()),
 %%   <<"revision">> => string()
@@ -4369,7 +4369,7 @@
 %% Example:
 %% list_lineage_node_history_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"nodes">> => list(lineage_node_summary()())
+%%   <<"nodes">> => list(lineage_node_summary())
 %% }
 -type list_lineage_node_history_output() :: #{binary() => any()}.
 
@@ -4461,7 +4461,7 @@
 
 %% Example:
 %% accept_predictions_input() :: #{
-%%   <<"acceptChoices">> => list(accept_choice()()),
+%%   <<"acceptChoices">> => list(accept_choice()),
 %%   <<"acceptRule">> => accept_rule(),
 %%   <<"clientToken">> => string(),
 %%   <<"revision">> => string()
@@ -4472,7 +4472,7 @@
 %% Example:
 %% list_entity_owners_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"owners">> => list(list()())
+%%   <<"owners">> => list(list())
 %% }
 -type list_entity_owners_output() :: #{binary() => any()}.
 
@@ -4513,12 +4513,12 @@
 %%   <<"domainId">> => string(),
 %%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"metadataFormsSummary">> => list(metadata_form_summary()()),
+%%   <<"metadataFormsSummary">> => list(metadata_form_summary()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()()),
-%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -4541,7 +4541,7 @@
 %%   <<"entityRevision">> => string(),
 %%   <<"entityType">> => string(),
 %%   <<"forms">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()())
+%%   <<"glossaryTerms">> => list(detailed_glossary_term())
 %% }
 -type subscribed_asset_listing() :: #{binary() => any()}.
 
@@ -4553,7 +4553,7 @@
 %%   <<"domainUnitId">> => string(),
 %%   <<"environmentId">> => string(),
 %%   <<"name">> => string(),
-%%   <<"physicalEndpoints">> => list(physical_endpoint()()),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()),
 %%   <<"projectId">> => string(),
 %%   <<"props">> => list(),
 %%   <<"type">> => list(any())
@@ -4610,7 +4610,7 @@
 %% Example:
 %% relational_filter_configuration() :: #{
 %%   <<"databaseName">> => [string()],
-%%   <<"filterExpressions">> => list(filter_expression()()),
+%%   <<"filterExpressions">> => list(filter_expression()),
 %%   <<"schemaName">> => [string()]
 %% }
 -type relational_filter_configuration() :: #{binary() => any()}.
@@ -4643,12 +4643,12 @@
 %%   <<"domainId">> => string(),
 %%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"metadataForms">> => list(form_output()()),
+%%   <<"metadataForms">> => list(form_output()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()()),
-%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -4663,12 +4663,12 @@
 %%   <<"domainId">> => string(),
 %%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"metadataForms">> => list(form_output()()),
+%%   <<"metadataForms">> => list(form_output()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()()),
-%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -4677,7 +4677,7 @@
 
 %% Example:
 %% list_rules_output() :: #{
-%%   <<"items">> => list(rule_summary()()),
+%%   <<"items">> => list(rule_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_rules_output() :: #{binary() => any()}.
@@ -4710,7 +4710,7 @@
 
 %% Example:
 %% list_domain_units_for_parent_output() :: #{
-%%   <<"items">> => list(domain_unit_summary()()),
+%%   <<"items">> => list(domain_unit_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_domain_units_for_parent_output() :: #{binary() => any()}.
@@ -4766,14 +4766,14 @@
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
 %%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
-%%   <<"failureReasons">> => list(project_deletion_error()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"failureReasons">> => list(project_deletion_error()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"projectProfileId">> => string(),
 %%   <<"projectStatus">> => list(any()),
-%%   <<"userParameters">> => list(environment_configuration_user_parameter()())
+%%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type get_project_output() :: #{binary() => any()}.
 
@@ -4827,7 +4827,7 @@
 
 %% Example:
 %% list_environment_profiles_output() :: #{
-%%   <<"items">> => list(environment_profile_summary()()),
+%%   <<"items">> => list(environment_profile_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environment_profiles_output() :: #{binary() => any()}.
@@ -4899,9 +4899,9 @@
 %% Example:
 %% open_lineage_run_event_summary() :: #{
 %%   <<"eventType">> => list(any()),
-%%   <<"inputs">> => list(name_identifier()()),
+%%   <<"inputs">> => list(name_identifier()),
 %%   <<"job">> => name_identifier(),
-%%   <<"outputs">> => list(name_identifier()()),
+%%   <<"outputs">> => list(name_identifier()),
 %%   <<"runId">> => [string()]
 %% }
 -type open_lineage_run_event_summary() :: #{binary() => any()}.
@@ -4929,7 +4929,7 @@
 
 %% Example:
 %% list_metadata_generation_runs_output() :: #{
-%%   <<"items">> => list(metadata_generation_run_item()()),
+%%   <<"items">> => list(metadata_generation_run_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_metadata_generation_runs_output() :: #{binary() => any()}.
@@ -4998,7 +4998,7 @@
 %% create_project_profile_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"domainUnitIdentifier">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
 %%   <<"name">> := string(),
 %%   <<"status">> => list(any())
 %% }
@@ -5047,14 +5047,14 @@
 %%   <<"domainId">> => string(),
 %%   <<"entityId">> => string(),
 %%   <<"entityType">> => list(any()),
-%%   <<"forms">> => list(time_series_data_point_form_output()())
+%%   <<"forms">> => list(time_series_data_point_form_output())
 %% }
 -type post_time_series_data_points_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_subscription_grant_output() :: #{
-%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"assets">> => list(subscribed_asset()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -5096,7 +5096,7 @@
 %%   <<"catalogName">> => [string()],
 %%   <<"dataAccessRole">> => [string()],
 %%   <<"region">> => [string()],
-%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
 %% }
 -type glue_run_configuration_output() :: #{binary() => any()}.
 
@@ -5215,7 +5215,7 @@
 %% asset_scope() :: #{
 %%   <<"assetId">> => string(),
 %%   <<"errorMessage">> => [string()],
-%%   <<"filterIds">> => list(string()()),
+%%   <<"filterIds">> => list(string()),
 %%   <<"status">> => [string()]
 %% }
 -type asset_scope() :: #{binary() => any()}.
@@ -5238,14 +5238,14 @@
 %% Example:
 %% asset_types_for_rule() :: #{
 %%   <<"selectionMode">> => list(any()),
-%%   <<"specificAssetTypes">> => list(string()())
+%%   <<"specificAssetTypes">> => list(string())
 %% }
 -type asset_types_for_rule() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_asset_revisions_output() :: #{
-%%   <<"items">> => list(asset_revision()()),
+%%   <<"items">> => list(asset_revision()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_revisions_output() :: #{binary() => any()}.
@@ -5359,9 +5359,9 @@
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"domainId">> => string(),
-%%   <<"downstreamNodes">> => list(lineage_node_reference()()),
+%%   <<"downstreamNodes">> => list(lineage_node_reference()),
 %%   <<"eventTimestamp">> => [non_neg_integer()],
-%%   <<"formsOutput">> => list(form_output()()),
+%%   <<"formsOutput">> => list(form_output()),
 %%   <<"id">> => string(),
 %%   <<"name">> => [string()],
 %%   <<"sourceIdentifier">> => [string()],
@@ -5369,7 +5369,7 @@
 %%   <<"typeRevision">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string(),
-%%   <<"upstreamNodes">> => list(lineage_node_reference()())
+%%   <<"upstreamNodes">> => list(lineage_node_reference())
 %% }
 -type get_lineage_node_output() :: #{binary() => any()}.
 
@@ -5396,7 +5396,7 @@
 %%   <<"description">> => string(),
 %%   <<"domainId">> => string(),
 %%   <<"domainUnitId">> => string(),
-%%   <<"environmentConfigurations">> => list(environment_configuration()()),
+%%   <<"environmentConfigurations">> => list(environment_configuration()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -5413,12 +5413,12 @@
 %%   <<"domainId">> => string(),
 %%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"metadataForms">> => list(form_output()()),
+%%   <<"metadataForms">> => list(form_output()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()()),
-%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -5474,7 +5474,7 @@
 
 %% Example:
 %% glue_self_grant_status_output() :: #{
-%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail()())
+%%   <<"selfGrantStatusDetails">> => list(self_grant_status_detail())
 %% }
 -type glue_self_grant_status_output() :: #{binary() => any()}.
 
@@ -5493,7 +5493,7 @@
 
 %% Example:
 %% list_data_sources_output() :: #{
-%%   <<"items">> => list(data_source_summary()()),
+%%   <<"items">> => list(data_source_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sources_output() :: #{binary() => any()}.
@@ -5519,14 +5519,14 @@
 %%   <<"externalIdentifier">> => string(),
 %%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
 %%   <<"firstRevisionCreatedBy">> => string(),
-%%   <<"formsOutput">> => list(form_output()()),
-%%   <<"glossaryTerms">> => list(string()()),
+%%   <<"formsOutput">> => list(form_output()),
+%%   <<"glossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()()),
+%%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
 %%   <<"listing">> => asset_listing_details(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
-%%   <<"readOnlyFormsOutput">> => list(form_output()()),
+%%   <<"readOnlyFormsOutput">> => list(form_output()),
 %%   <<"revision">> => string(),
 %%   <<"typeIdentifier">> => string(),
 %%   <<"typeRevision">> => string()
@@ -5552,7 +5552,7 @@
 
 %% Example:
 %% search_types_output() :: #{
-%%   <<"items">> => list(list()()),
+%%   <<"items">> => list(list()),
 %%   <<"nextToken">> => string(),
 %%   <<"totalMatchCount">> => [integer()]
 %% }
@@ -5614,12 +5614,12 @@
 %%   <<"domainId">> => string(),
 %%   <<"existingSubscriptionId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"metadataForms">> => list(form_output()()),
+%%   <<"metadataForms">> => list(form_output()),
 %%   <<"requestReason">> => string(),
 %%   <<"reviewerId">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"subscribedListings">> => list(subscribed_listing()()),
-%%   <<"subscribedPrincipals">> => list(list()()),
+%%   <<"subscribedListings">> => list(subscribed_listing()),
+%%   <<"subscribedPrincipals">> => list(list()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -5635,7 +5635,7 @@
 
 %% Example:
 %% accept_subscription_request_input() :: #{
-%%   <<"assetScopes">> => list(accepted_asset_scope()()),
+%%   <<"assetScopes">> => list(accepted_asset_scope()),
 %%   <<"decisionComment">> => string()
 %% }
 -type accept_subscription_request_input() :: #{binary() => any()}.
@@ -5647,7 +5647,7 @@
 
 %% Example:
 %% list_subscription_requests_output() :: #{
-%%   <<"items">> => list(subscription_request_summary()()),
+%%   <<"items">> => list(subscription_request_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_subscription_requests_output() :: #{binary() => any()}.
@@ -5706,7 +5706,7 @@
 %%   <<"domainUnitId">> => string(),
 %%   <<"environmentId">> => string(),
 %%   <<"name">> => string(),
-%%   <<"physicalEndpoints">> => list(physical_endpoint()()),
+%%   <<"physicalEndpoints">> => list(physical_endpoint()),
 %%   <<"projectId">> => string(),
 %%   <<"props">> => list(),
 %%   <<"type">> => list(any())
@@ -5716,7 +5716,7 @@
 
 %% Example:
 %% search_group_profiles_output() :: #{
-%%   <<"items">> => list(group_profile_summary()()),
+%%   <<"items">> => list(group_profile_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type search_group_profiles_output() :: #{binary() => any()}.
@@ -5724,7 +5724,7 @@
 
 %% Example:
 %% list_subscriptions_output() :: #{
-%%   <<"items">> => list(subscription_summary()()),
+%%   <<"items">> => list(subscription_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_subscriptions_output() :: #{binary() => any()}.
@@ -5732,12 +5732,12 @@
 
 %% Example:
 %% update_subscription_target_input() :: #{
-%%   <<"applicableAssetTypes">> => list(string()()),
-%%   <<"authorizedPrincipals">> => list(string()()),
+%%   <<"applicableAssetTypes">> => list(string()),
+%%   <<"authorizedPrincipals">> => list(string()),
 %%   <<"manageAccessRole">> => string(),
 %%   <<"name">> => string(),
 %%   <<"provider">> => [string()],
-%%   <<"subscriptionTargetConfig">> => list(subscription_target_form()())
+%%   <<"subscriptionTargetConfig">> => list(subscription_target_form())
 %% }
 -type update_subscription_target_input() :: #{binary() => any()}.
 
@@ -5764,7 +5764,7 @@
 
 %% Example:
 %% delete_subscription_grant_output() :: #{
-%%   <<"assets">> => list(subscribed_asset()()),
+%%   <<"assets">> => list(subscribed_asset()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -5781,7 +5781,7 @@
 
 %% Example:
 %% lake_formation_configuration() :: #{
-%%   <<"locationRegistrationExcludeS3Locations">> => list(string()()),
+%%   <<"locationRegistrationExcludeS3Locations">> => list(string()),
 %%   <<"locationRegistrationRole">> => string()
 %% }
 -type lake_formation_configuration() :: #{binary() => any()}.
@@ -5855,17 +5855,17 @@
 %%   <<"redshiftCredentialConfiguration">> => redshift_credential_configuration(),
 %%   <<"redshiftStorage">> => list(),
 %%   <<"region">> => [string()],
-%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration()())
+%%   <<"relationalFilterConfigurations">> => list(relational_filter_configuration())
 %% }
 -type redshift_run_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% put_environment_blueprint_configuration_input() :: #{
-%%   <<"enabledRegions">> := list(string()()),
+%%   <<"enabledRegions">> := list(string()),
 %%   <<"environmentRolePermissionBoundary">> => string(),
 %%   <<"manageAccessRoleArn">> => string(),
-%%   <<"provisioningConfigurations">> => list(list()()),
+%%   <<"provisioningConfigurations">> => list(list()),
 %%   <<"provisioningRoleArn">> => string(),
 %%   <<"regionalParameters">> => map()
 %% }
@@ -5879,8 +5879,8 @@
 %%   <<"description">> => string(),
 %%   <<"entityId">> => string(),
 %%   <<"entityRevision">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term()()),
-%%   <<"items">> => list(listing_summary_item()()),
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"items">> => list(listing_summary_item()),
 %%   <<"listingCreatedBy">> => string(),
 %%   <<"listingId">> => string(),
 %%   <<"listingRevision">> => string(),

@@ -192,7 +192,7 @@
 %% Example:
 %% update_endpoint_access_request() :: #{
 %%   <<"endpointName">> := [string()],
-%%   <<"vpcSecurityGroupIds">> => list(string()())
+%%   <<"vpcSecurityGroupIds">> => list(string())
 %% }
 -type update_endpoint_access_request() :: #{binary() => any()}.
 
@@ -205,7 +205,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -307,7 +307,7 @@
 
 %% Example:
 %% list_managed_workgroups_response() :: #{
-%%   <<"managedWorkgroups">> => list(managed_workgroup_list_item()()),
+%%   <<"managedWorkgroups">> => list(managed_workgroup_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_workgroups_response() :: #{binary() => any()}.
@@ -317,7 +317,7 @@
 %%   <<"namespaceName">> := [string()],
 %%   <<"retentionPeriod">> => [integer()],
 %%   <<"snapshotName">> := [string()],
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_snapshot_request() :: #{binary() => any()}.
 
@@ -462,14 +462,14 @@
 %% Example:
 %% list_table_restore_status_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tableRestoreStatuses">> => list(table_restore_status()())
+%%   <<"tableRestoreStatuses">> => list(table_restore_status())
 %% }
 -type list_table_restore_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -483,8 +483,8 @@
 %% create_endpoint_access_request() :: #{
 %%   <<"endpointName">> := [string()],
 %%   <<"ownerAccount">> => string(),
-%%   <<"subnetIds">> := list(string()()),
-%%   <<"vpcSecurityGroupIds">> => list(string()()),
+%%   <<"subnetIds">> := list(string()),
+%%   <<"vpcSecurityGroupIds">> => list(string()),
 %%   <<"workgroupName">> := [string()]
 %% }
 -type create_endpoint_access_request() :: #{binary() => any()}.
@@ -563,7 +563,7 @@
 %% Example:
 %% serverless_track() :: #{
 %%   <<"trackName">> => string(),
-%%   <<"updateTargets">> => list(update_target()()),
+%%   <<"updateTargets">> => list(update_target()),
 %%   <<"workgroupVersion">> => [string()]
 %% }
 -type serverless_track() :: #{binary() => any()}.
@@ -601,13 +601,13 @@
 %%   <<"adminUsername">> => string(),
 %%   <<"dbName">> => [string()],
 %%   <<"defaultIamRoleArn">> => [string()],
-%%   <<"iamRoles">> => list(string()()),
+%%   <<"iamRoles">> => list(string()),
 %%   <<"kmsKeyId">> => [string()],
-%%   <<"logExports">> => list(string()()),
+%%   <<"logExports">> => list(string()),
 %%   <<"manageAdminPassword">> => [boolean()],
 %%   <<"namespaceName">> := string(),
 %%   <<"redshiftIdcApplicationArn">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_namespace_request() :: #{binary() => any()}.
 
@@ -633,7 +633,7 @@
 
 %% Example:
 %% list_endpoint_access_response() :: #{
-%%   <<"endpoints">> => list(endpoint_access()()),
+%%   <<"endpoints">> => list(endpoint_access()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_endpoint_access_response() :: #{binary() => any()}.
@@ -654,7 +654,7 @@
 %% Example:
 %% workgroup() :: #{
 %%   <<"baseCapacity">> => [integer()],
-%%   <<"configParameters">> => list(config_parameter()()),
+%%   <<"configParameters">> => list(config_parameter()),
 %%   <<"creationDate">> => [non_neg_integer()],
 %%   <<"crossAccountVpcs">> => list([string()]()),
 %%   <<"customDomainCertificateArn">> => string(),
@@ -670,9 +670,9 @@
 %%   <<"port">> => [integer()],
 %%   <<"pricePerformanceTarget">> => performance_target(),
 %%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"trackName">> => string(),
 %%   <<"workgroupArn">> => [string()],
 %%   <<"workgroupId">> => [string()],
@@ -691,14 +691,14 @@
 %% Example:
 %% list_usage_limits_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"usageLimits">> => list(usage_limit()())
+%%   <<"usageLimits">> => list(usage_limit())
 %% }
 -type list_usage_limits_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_snapshots_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"snapshots">> => list(snapshot()())
+%%   <<"snapshots">> => list(snapshot())
 %% }
 -type list_snapshots_response() :: #{binary() => any()}.
 
@@ -713,7 +713,7 @@
 %%   <<"recoveryPointId">> := [string()],
 %%   <<"retentionPeriod">> => [integer()],
 %%   <<"snapshotName">> := [string()],
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type convert_recovery_point_to_snapshot_request() :: #{binary() => any()}.
 
@@ -739,14 +739,14 @@
 %% Example:
 %% list_recovery_points_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"recoveryPoints">> => list(recovery_point()())
+%%   <<"recoveryPoints">> => list(recovery_point())
 %% }
 -type list_recovery_points_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_scheduled_actions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"scheduledActions">> => list(scheduled_action_association()())
+%%   <<"scheduledActions">> => list(scheduled_action_association())
 %% }
 -type list_scheduled_actions_response() :: #{binary() => any()}.
 
@@ -798,7 +798,7 @@
 %%   <<"namespaceName">> => string(),
 %%   <<"retentionPeriod">> => [integer()],
 %%   <<"snapshotNamePrefix">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_snapshot_schedule_action_parameters() :: #{binary() => any()}.
 
@@ -813,7 +813,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -837,7 +837,7 @@
 
 %% Example:
 %% vpc_endpoint() :: #{
-%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"networkInterfaces">> => list(network_interface()),
 %%   <<"vpcEndpointId">> => [string()],
 %%   <<"vpcId">> => [string()]
 %% }
@@ -893,7 +893,7 @@
 %% Example:
 %% create_workgroup_request() :: #{
 %%   <<"baseCapacity">> => [integer()],
-%%   <<"configParameters">> => list(config_parameter()()),
+%%   <<"configParameters">> => list(config_parameter()),
 %%   <<"enhancedVpcRouting">> => [boolean()],
 %%   <<"ipAddressType">> => string(),
 %%   <<"maxCapacity">> => [integer()],
@@ -901,9 +901,9 @@
 %%   <<"port">> => [integer()],
 %%   <<"pricePerformanceTarget">> => performance_target(),
 %%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tags">> => list(tag()),
 %%   <<"trackName">> => string(),
 %%   <<"workgroupName">> := string()
 %% }
@@ -957,7 +957,7 @@
 %% endpoint() :: #{
 %%   <<"address">> => [string()],
 %%   <<"port">> => [integer()],
-%%   <<"vpcEndpoints">> => list(vpc_endpoint()())
+%%   <<"vpcEndpoints">> => list(vpc_endpoint())
 %% }
 -type endpoint() :: #{binary() => any()}.
 
@@ -986,7 +986,7 @@
 %% Example:
 %% list_reservation_offerings_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reservationOfferingsList">> => list(reservation_offering()())
+%%   <<"reservationOfferingsList">> => list(reservation_offering())
 %% }
 -type list_reservation_offerings_response() :: #{binary() => any()}.
 
@@ -1040,7 +1040,7 @@
 
 %% Example:
 %% list_custom_domain_associations_response() :: #{
-%%   <<"associations">> => list(association()()),
+%%   <<"associations">> => list(association()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_domain_associations_response() :: #{binary() => any()}.
@@ -1078,7 +1078,7 @@
 %% Example:
 %% list_reservations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reservationsList">> => list(reservation()())
+%%   <<"reservationsList">> => list(reservation())
 %% }
 -type list_reservations_response() :: #{binary() => any()}.
 
@@ -1201,7 +1201,7 @@
 
 %% Example:
 %% list_namespaces_response() :: #{
-%%   <<"namespaces">> => list(namespace()()),
+%%   <<"namespaces">> => list(namespace()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_namespaces_response() :: #{binary() => any()}.
@@ -1233,9 +1233,9 @@
 %%   <<"adminUserPassword">> => string(),
 %%   <<"adminUsername">> => string(),
 %%   <<"defaultIamRoleArn">> => [string()],
-%%   <<"iamRoles">> => list(string()()),
+%%   <<"iamRoles">> => list(string()),
 %%   <<"kmsKeyId">> => [string()],
-%%   <<"logExports">> => list(string()()),
+%%   <<"logExports">> => list(string()),
 %%   <<"manageAdminPassword">> => [boolean()],
 %%   <<"namespaceName">> := string()
 %% }
@@ -1264,7 +1264,7 @@
 %% Example:
 %% list_snapshot_copy_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"snapshotCopyConfigurations">> => list(snapshot_copy_configuration()())
+%%   <<"snapshotCopyConfigurations">> => list(snapshot_copy_configuration())
 %% }
 -type list_snapshot_copy_configurations_response() :: #{binary() => any()}.
 
@@ -1295,15 +1295,15 @@
 %% Example:
 %% update_workgroup_request() :: #{
 %%   <<"baseCapacity">> => [integer()],
-%%   <<"configParameters">> => list(config_parameter()()),
+%%   <<"configParameters">> => list(config_parameter()),
 %%   <<"enhancedVpcRouting">> => [boolean()],
 %%   <<"ipAddressType">> => string(),
 %%   <<"maxCapacity">> => [integer()],
 %%   <<"port">> => [integer()],
 %%   <<"pricePerformanceTarget">> => performance_target(),
 %%   <<"publiclyAccessible">> => [boolean()],
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"trackName">> => string(),
 %%   <<"workgroupName">> := string()
 %% }
@@ -1329,9 +1329,9 @@
 %%   <<"endpointName">> => [string()],
 %%   <<"endpointStatus">> => [string()],
 %%   <<"port">> => [integer()],
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcEndpoint">> => vpc_endpoint(),
-%%   <<"vpcSecurityGroups">> => list(vpc_security_group_membership()()),
+%%   <<"vpcSecurityGroups">> => list(vpc_security_group_membership()),
 %%   <<"workgroupName">> => [string()]
 %% }
 -type endpoint_access() :: #{binary() => any()}.
@@ -1352,7 +1352,7 @@
 %% Example:
 %% list_tracks_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tracks">> => list(serverless_track()())
+%%   <<"tracks">> => list(serverless_track())
 %% }
 -type list_tracks_response() :: #{binary() => any()}.
 
@@ -1364,9 +1364,9 @@
 %%   <<"creationDate">> => [non_neg_integer()],
 %%   <<"dbName">> => [string()],
 %%   <<"defaultIamRoleArn">> => [string()],
-%%   <<"iamRoles">> => list(string()()),
+%%   <<"iamRoles">> => list(string()),
 %%   <<"kmsKeyId">> => [string()],
-%%   <<"logExports">> => list(string()()),
+%%   <<"logExports">> => list(string()),
 %%   <<"namespaceArn">> => [string()],
 %%   <<"namespaceId">> => [string()],
 %%   <<"namespaceName">> => string(),
@@ -1401,7 +1401,7 @@
 %% Example:
 %% list_workgroups_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"workgroups">> => list(workgroup()())
+%%   <<"workgroups">> => list(workgroup())
 %% }
 -type list_workgroups_response() :: #{binary() => any()}.
 

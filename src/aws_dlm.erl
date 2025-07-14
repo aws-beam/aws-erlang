@@ -68,7 +68,7 @@
 %% update_lifecycle_policy_request() :: #{
 %%   <<"CopyTags">> => boolean(),
 %%   <<"CreateInterval">> => integer(),
-%%   <<"CrossRegionCopyTargets">> => list(cross_region_copy_target()()),
+%%   <<"CrossRegionCopyTargets">> => list(cross_region_copy_target()),
 %%   <<"Description">> => string(),
 %%   <<"Exclusions">> => exclusions(),
 %%   <<"ExecutionRoleArn">> => string(),
@@ -118,11 +118,11 @@
 %% Example:
 %% get_lifecycle_policies_request() :: #{
 %%   <<"DefaultPolicyType">> => list(any()),
-%%   <<"PolicyIds">> => list(string()()),
+%%   <<"PolicyIds">> => list(string()),
 %%   <<"ResourceTypes">> => list(list(any())()),
 %%   <<"State">> => list(any()),
-%%   <<"TagsToAdd">> => list(string()()),
-%%   <<"TargetTags">> => list(string()())
+%%   <<"TagsToAdd">> => list(string()),
+%%   <<"TargetTags">> => list(string())
 %% }
 -type get_lifecycle_policies_request() :: #{binary() => any()}.
 
@@ -131,14 +131,14 @@
 %% event_parameters() :: #{
 %%   <<"DescriptionRegex">> => string(),
 %%   <<"EventType">> => list(any()),
-%%   <<"SnapshotOwner">> => list(string()())
+%%   <<"SnapshotOwner">> => list(string())
 %% }
 -type event_parameters() :: #{binary() => any()}.
 
 
 %% Example:
 %% fast_restore_rule() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"Count">> => integer(),
 %%   <<"Interval">> => integer(),
 %%   <<"IntervalUnit">> => list(any())
@@ -148,7 +148,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -156,7 +156,7 @@
 %% Example:
 %% parameters() :: #{
 %%   <<"ExcludeBootVolume">> => boolean(),
-%%   <<"ExcludeDataVolumeTags">> => list(tag()()),
+%%   <<"ExcludeDataVolumeTags">> => list(tag()),
 %%   <<"NoReboot">> => boolean()
 %% }
 -type parameters() :: #{binary() => any()}.
@@ -178,7 +178,7 @@
 %% resource_not_found_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string(),
-%%   <<"ResourceIds">> => list(string()()),
+%%   <<"ResourceIds">> => list(string()),
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
@@ -216,8 +216,8 @@
 %% invalid_request_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string(),
-%%   <<"MutuallyExclusiveParameters">> => list(string()()),
-%%   <<"RequiredParameters">> => list(string()())
+%%   <<"MutuallyExclusiveParameters">> => list(string()),
+%%   <<"RequiredParameters">> => list(string())
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
@@ -232,8 +232,8 @@
 %% Example:
 %% exclusions() :: #{
 %%   <<"ExcludeBootVolumes">> => boolean(),
-%%   <<"ExcludeTags">> => list(tag()()),
-%%   <<"ExcludeVolumeTypes">> => list(string()())
+%%   <<"ExcludeTags">> => list(tag()),
+%%   <<"ExcludeVolumeTypes">> => list(string())
 %% }
 -type exclusions() :: #{binary() => any()}.
 
@@ -247,7 +247,7 @@
 
 %% Example:
 %% get_lifecycle_policies_response() :: #{
-%%   <<"Policies">> => list(lifecycle_policy_summary()())
+%%   <<"Policies">> => list(lifecycle_policy_summary())
 %% }
 -type get_lifecycle_policies_response() :: #{binary() => any()}.
 
@@ -309,14 +309,14 @@
 %%   <<"ArchiveRule">> => archive_rule(),
 %%   <<"CopyTags">> => boolean(),
 %%   <<"CreateRule">> => create_rule(),
-%%   <<"CrossRegionCopyRules">> => list(cross_region_copy_rule()()),
+%%   <<"CrossRegionCopyRules">> => list(cross_region_copy_rule()),
 %%   <<"DeprecateRule">> => deprecate_rule(),
 %%   <<"FastRestoreRule">> => fast_restore_rule(),
 %%   <<"Name">> => string(),
 %%   <<"RetainRule">> => retain_rule(),
-%%   <<"ShareRules">> => list(share_rule()()),
-%%   <<"TagsToAdd">> => list(tag()()),
-%%   <<"VariableTags">> => list(tag()())
+%%   <<"ShareRules">> => list(share_rule()),
+%%   <<"TagsToAdd">> => list(tag()),
+%%   <<"VariableTags">> => list(tag())
 %% }
 -type schedule() :: #{binary() => any()}.
 
@@ -327,7 +327,7 @@
 
 %% Example:
 %% action() :: #{
-%%   <<"CrossRegionCopy">> => list(cross_region_copy_action()()),
+%%   <<"CrossRegionCopy">> => list(cross_region_copy_action()),
 %%   <<"Name">> => string()
 %% }
 -type action() :: #{binary() => any()}.
@@ -339,8 +339,8 @@
 %%   <<"Interval">> => integer(),
 %%   <<"IntervalUnit">> => list(any()),
 %%   <<"Location">> => list(any()),
-%%   <<"Scripts">> => list(script()()),
-%%   <<"Times">> => list(string()())
+%%   <<"Scripts">> => list(script()),
+%%   <<"Times">> => list(string())
 %% }
 -type create_rule() :: #{binary() => any()}.
 
@@ -378,7 +378,7 @@
 %% create_lifecycle_policy_request() :: #{
 %%   <<"CopyTags">> => boolean(),
 %%   <<"CreateInterval">> => integer(),
-%%   <<"CrossRegionCopyTargets">> => list(cross_region_copy_target()()),
+%%   <<"CrossRegionCopyTargets">> => list(cross_region_copy_target()),
 %%   <<"DefaultPolicy">> => list(any()),
 %%   <<"Description">> := string(),
 %%   <<"Exclusions">> => exclusions(),
@@ -415,10 +415,10 @@
 
 %% Example:
 %% policy_details() :: #{
-%%   <<"Actions">> => list(action()()),
+%%   <<"Actions">> => list(action()),
 %%   <<"CopyTags">> => boolean(),
 %%   <<"CreateInterval">> => integer(),
-%%   <<"CrossRegionCopyTargets">> => list(cross_region_copy_target()()),
+%%   <<"CrossRegionCopyTargets">> => list(cross_region_copy_target()),
 %%   <<"EventSource">> => event_source(),
 %%   <<"Exclusions">> => exclusions(),
 %%   <<"ExtendDeletion">> => boolean(),
@@ -429,15 +429,15 @@
 %%   <<"ResourceType">> => list(any()),
 %%   <<"ResourceTypes">> => list(list(any())()),
 %%   <<"RetainInterval">> => integer(),
-%%   <<"Schedules">> => list(schedule()()),
-%%   <<"TargetTags">> => list(tag()())
+%%   <<"Schedules">> => list(schedule()),
+%%   <<"TargetTags">> => list(tag())
 %% }
 -type policy_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% share_rule() :: #{
-%%   <<"TargetAccounts">> => list(string()()),
+%%   <<"TargetAccounts">> => list(string()),
 %%   <<"UnshareInterval">> => integer(),
 %%   <<"UnshareIntervalUnit">> => list(any())
 %% }

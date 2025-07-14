@@ -195,7 +195,7 @@
 %%   <<"TerminationProtectionEnabled">> => boolean(),
 %%   <<"Type">> => list(any()),
 %%   <<"UpdatedTimestamp">> => non_neg_integer(),
-%%   <<"Widgets">> => list(widget()())
+%%   <<"Widgets">> => list(widget())
 %% }
 -type update_dashboard_response() :: #{binary() => any()}.
 
@@ -210,7 +210,7 @@
 %%   <<"DashboardId">> := string(),
 %%   <<"RefreshSchedule">> => refresh_schedule(),
 %%   <<"TerminationProtectionEnabled">> => boolean(),
-%%   <<"Widgets">> => list(request_widget()())
+%%   <<"Widgets">> => list(request_widget())
 %% }
 -type update_dashboard_request() :: #{binary() => any()}.
 
@@ -317,10 +317,10 @@
 %% Example:
 %% create_channel_response() :: #{
 %%   <<"ChannelArn">> => string(),
-%%   <<"Destinations">> => list(destination()()),
+%%   <<"Destinations">> => list(destination()),
 %%   <<"Name">> => string(),
 %%   <<"Source">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_channel_response() :: #{binary() => any()}.
 
@@ -347,7 +347,7 @@
 %% get_query_results_response() :: #{
 %%   <<"ErrorMessage">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"QueryResultRows">> => list(list(map()())()),
+%%   <<"QueryResultRows">> => list(list(map())()),
 %%   <<"QueryStatistics">> => query_statistics(),
 %%   <<"QueryStatus">> => list(any())
 %% }
@@ -386,7 +386,7 @@
 %% Example:
 %% get_import_response() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Destinations">> => list(string()()),
+%%   <<"Destinations">> => list(string()),
 %%   <<"EndEventTime">> => non_neg_integer(),
 %%   <<"ImportId">> => string(),
 %%   <<"ImportSource">> => import_source(),
@@ -406,7 +406,7 @@
 %% Example:
 %% list_public_keys_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PublicKeyList">> => list(public_key()())
+%%   <<"PublicKeyList">> => list(public_key())
 %% }
 -type list_public_keys_response() :: #{binary() => any()}.
 
@@ -457,14 +457,14 @@
 %%   <<"S3BucketName">> := string(),
 %%   <<"S3KeyPrefix">> => string(),
 %%   <<"SnsTopicName">> => string(),
-%%   <<"TagsList">> => list(tag()())
+%%   <<"TagsList">> => list(tag())
 %% }
 -type create_trail_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_trails_request() :: #{
 %%   <<"includeShadowTrails">> => boolean(),
-%%   <<"trailNameList">> => list(string()())
+%%   <<"trailNameList">> => list(string())
 %% }
 -type describe_trails_request() :: #{binary() => any()}.
 
@@ -494,7 +494,7 @@
 
 %% Example:
 %% lookup_events_response() :: #{
-%%   <<"Events">> => list(event()()),
+%%   <<"Events">> => list(event()),
 %%   <<"NextToken">> => string()
 %% }
 -type lookup_events_response() :: #{binary() => any()}.
@@ -507,7 +507,7 @@
 
 %% Example:
 %% update_event_data_store_response() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"EventDataStoreArn">> => string(),
@@ -550,7 +550,7 @@
 %% Example:
 %% list_tags_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceTagList">> => list(resource_tag()())
+%%   <<"ResourceTagList">> => list(resource_tag())
 %% }
 -type list_tags_response() :: #{binary() => any()}.
 
@@ -623,7 +623,7 @@
 %%   <<"DeliveryS3Uri">> => string(),
 %%   <<"EventDataStoreOwnerAccountId">> => string(),
 %%   <<"QueryAlias">> => string(),
-%%   <<"QueryParameters">> => list(string()()),
+%%   <<"QueryParameters">> => list(string()),
 %%   <<"QueryStatement">> => string()
 %% }
 -type start_query_request() :: #{binary() => any()}.
@@ -645,7 +645,7 @@
 %% Example:
 %% imports_list_item() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Destinations">> => list(string()()),
+%%   <<"Destinations">> => list(string()),
 %%   <<"ImportId">> => string(),
 %%   <<"ImportStatus">> => list(any()),
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
@@ -673,7 +673,7 @@
 %% Example:
 %% list_queries_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Queries">> => list(query()())
+%%   <<"Queries">> => list(query())
 %% }
 -type list_queries_response() :: #{binary() => any()}.
 
@@ -690,8 +690,8 @@
 %%   <<"EventSource">> => string(),
 %%   <<"InsightType">> => list(any()),
 %%   <<"NextToken">> => string(),
-%%   <<"Timestamps">> => list(non_neg_integer()()),
-%%   <<"Values">> => list(float()())
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
 %% }
 -type list_insights_metric_data_response() :: #{binary() => any()}.
 
@@ -742,7 +742,7 @@
 
 %% Example:
 %% advanced_event_selector() :: #{
-%%   <<"FieldSelectors">> => list(advanced_field_selector()()),
+%%   <<"FieldSelectors">> => list(advanced_field_selector()),
 %%   <<"Name">> => string()
 %% }
 -type advanced_event_selector() :: #{binary() => any()}.
@@ -757,14 +757,14 @@
 
 %% Example:
 %% list_imports_response() :: #{
-%%   <<"Imports">> => list(imports_list_item()()),
+%%   <<"Imports">> => list(imports_list_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_imports_response() :: #{binary() => any()}.
 
 %% Example:
 %% restore_event_data_store_response() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"EventDataStoreArn">> => string(),
@@ -787,7 +787,7 @@
 
 %% Example:
 %% put_event_configuration_response() :: #{
-%%   <<"ContextKeySelectors">> => list(context_key_selector()()),
+%%   <<"ContextKeySelectors">> => list(context_key_selector()),
 %%   <<"EventDataStoreArn">> => string(),
 %%   <<"MaxEventSize">> => list(any())
 %% }
@@ -802,7 +802,7 @@
 %% Example:
 %% add_tags_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"TagsList">> := list(tag()())
+%%   <<"TagsList">> := list(tag())
 %% }
 -type add_tags_request() :: #{binary() => any()}.
 
@@ -820,7 +820,7 @@
 
 %% Example:
 %% put_event_configuration_request() :: #{
-%%   <<"ContextKeySelectors">> := list(context_key_selector()()),
+%%   <<"ContextKeySelectors">> := list(context_key_selector()),
 %%   <<"EventDataStore">> => string(),
 %%   <<"MaxEventSize">> := list(any())
 %% }
@@ -896,7 +896,7 @@
 
 %% Example:
 %% request_widget() :: #{
-%%   <<"QueryParameters">> => list(string()()),
+%%   <<"QueryParameters">> => list(string()),
 %%   <<"QueryStatement">> => string(),
 %%   <<"ViewProperties">> => map()
 %% }
@@ -934,8 +934,8 @@
 
 %% Example:
 %% event_selector() :: #{
-%%   <<"DataResources">> => list(data_resource()()),
-%%   <<"ExcludeManagementEventSources">> => list(string()()),
+%%   <<"DataResources">> => list(data_resource()),
+%%   <<"ExcludeManagementEventSources">> => list(string()),
 %%   <<"IncludeManagementEvents">> => boolean(),
 %%   <<"ReadWriteType">> => list(any())
 %% }
@@ -974,7 +974,7 @@
 
 %% Example:
 %% create_event_data_store_response() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"EventDataStoreArn">> => string(),
@@ -984,7 +984,7 @@
 %%   <<"OrganizationEnabled">> => boolean(),
 %%   <<"RetentionPeriod">> => integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"TagsList">> => list(tag()()),
+%%   <<"TagsList">> => list(tag()),
 %%   <<"TerminationProtectionEnabled">> => boolean(),
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
@@ -992,7 +992,7 @@
 
 %% Example:
 %% update_event_data_store_request() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"EventDataStore">> := string(),
 %%   <<"KmsKeyId">> => string(),
@@ -1046,7 +1046,7 @@
 
 %% Example:
 %% create_event_data_store_request() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MultiRegionEnabled">> => boolean(),
@@ -1054,24 +1054,24 @@
 %%   <<"OrganizationEnabled">> => boolean(),
 %%   <<"RetentionPeriod">> => integer(),
 %%   <<"StartIngestion">> => boolean(),
-%%   <<"TagsList">> => list(tag()()),
+%%   <<"TagsList">> => list(tag()),
 %%   <<"TerminationProtectionEnabled">> => boolean()
 %% }
 -type create_event_data_store_request() :: #{binary() => any()}.
 
 %% Example:
 %% generate_query_request() :: #{
-%%   <<"EventDataStores">> := list(string()()),
+%%   <<"EventDataStores">> := list(string()),
 %%   <<"Prompt">> := string()
 %% }
 -type generate_query_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_channel_request() :: #{
-%%   <<"Destinations">> := list(destination()()),
+%%   <<"Destinations">> := list(destination()),
 %%   <<"Name">> := string(),
 %%   <<"Source">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_channel_request() :: #{binary() => any()}.
 
@@ -1083,7 +1083,7 @@
 
 %% Example:
 %% get_event_data_store_response() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"EventDataStoreArn">> => string(),
@@ -1093,7 +1093,7 @@
 %%   <<"MultiRegionEnabled">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"OrganizationEnabled">> => boolean(),
-%%   <<"PartitionKeys">> => list(partition_key()()),
+%%   <<"PartitionKeys">> => list(partition_key()),
 %%   <<"RetentionPeriod">> => integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"TerminationProtectionEnabled">> => boolean(),
@@ -1174,7 +1174,7 @@
 
 %% Example:
 %% list_channels_response() :: #{
-%%   <<"Channels">> => list(channel()()),
+%%   <<"Channels">> => list(channel()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
@@ -1209,7 +1209,7 @@
 %% Example:
 %% update_channel_request() :: #{
 %%   <<"Channel">> := string(),
-%%   <<"Destinations">> => list(destination()()),
+%%   <<"Destinations">> => list(destination()),
 %%   <<"Name">> => string()
 %% }
 -type update_channel_request() :: #{binary() => any()}.
@@ -1233,7 +1233,7 @@
 %%   <<"TerminationProtectionEnabled">> => boolean(),
 %%   <<"Type">> => list(any()),
 %%   <<"UpdatedTimestamp">> => non_neg_integer(),
-%%   <<"Widgets">> => list(widget()())
+%%   <<"Widgets">> => list(widget())
 %% }
 -type get_dashboard_response() :: #{binary() => any()}.
 
@@ -1277,7 +1277,7 @@
 
 %% Example:
 %% list_import_failures_response() :: #{
-%%   <<"Failures">> => list(import_failure_list_item()()),
+%%   <<"Failures">> => list(import_failure_list_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_import_failures_response() :: #{binary() => any()}.
@@ -1293,10 +1293,10 @@
 %%   <<"DashboardArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RefreshSchedule">> => refresh_schedule(),
-%%   <<"TagsList">> => list(tag()()),
+%%   <<"TagsList">> => list(tag()),
 %%   <<"TerminationProtectionEnabled">> => boolean(),
 %%   <<"Type">> => list(any()),
-%%   <<"Widgets">> => list(widget()())
+%%   <<"Widgets">> => list(widget())
 %% }
 -type create_dashboard_response() :: #{binary() => any()}.
 
@@ -1309,7 +1309,7 @@
 %% Example:
 %% resource_tag() :: #{
 %%   <<"ResourceId">> => string(),
-%%   <<"TagsList">> => list(tag()())
+%%   <<"TagsList">> => list(tag())
 %% }
 -type resource_tag() :: #{binary() => any()}.
 
@@ -1328,7 +1328,7 @@
 %%   <<"EventSource">> => string(),
 %%   <<"EventTime">> => non_neg_integer(),
 %%   <<"ReadOnly">> => string(),
-%%   <<"Resources">> => list(resource()()),
+%%   <<"Resources">> => list(resource()),
 %%   <<"Username">> => string()
 %% }
 -type event() :: #{binary() => any()}.
@@ -1369,7 +1369,7 @@
 %% Example:
 %% get_insight_selectors_response() :: #{
 %%   <<"EventDataStoreArn">> => string(),
-%%   <<"InsightSelectors">> => list(insight_selector()()),
+%%   <<"InsightSelectors">> => list(insight_selector()),
 %%   <<"InsightsDestination">> => string(),
 %%   <<"TrailARN">> => string()
 %% }
@@ -1377,7 +1377,7 @@
 
 %% Example:
 %% get_event_configuration_response() :: #{
-%%   <<"ContextKeySelectors">> => list(context_key_selector()()),
+%%   <<"ContextKeySelectors">> => list(context_key_selector()),
 %%   <<"EventDataStoreArn">> => string(),
 %%   <<"MaxEventSize">> => list(any())
 %% }
@@ -1386,7 +1386,7 @@
 %% Example:
 %% put_insight_selectors_response() :: #{
 %%   <<"EventDataStoreArn">> => string(),
-%%   <<"InsightSelectors">> => list(insight_selector()()),
+%%   <<"InsightSelectors">> => list(insight_selector()),
 %%   <<"InsightsDestination">> => string(),
 %%   <<"TrailARN">> => string()
 %% }
@@ -1414,7 +1414,7 @@
 %% Example:
 %% stop_import_response() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Destinations">> => list(string()()),
+%%   <<"Destinations">> => list(string()),
 %%   <<"EndEventTime">> => non_neg_integer(),
 %%   <<"ImportId">> => string(),
 %%   <<"ImportSource">> => import_source(),
@@ -1482,13 +1482,13 @@
 %% Example:
 %% search_sample_queries_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SearchResults">> => list(search_sample_queries_search_result()())
+%%   <<"SearchResults">> => list(search_sample_queries_search_result())
 %% }
 -type search_sample_queries_response() :: #{binary() => any()}.
 
 %% Example:
 %% event_data_store() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"EventDataStoreArn">> => string(),
 %%   <<"MultiRegionEnabled">> => boolean(),
@@ -1509,8 +1509,8 @@
 
 %% Example:
 %% put_event_selectors_response() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
-%%   <<"EventSelectors">> => list(event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
+%%   <<"EventSelectors">> => list(event_selector()),
 %%   <<"TrailARN">> => string()
 %% }
 -type put_event_selectors_response() :: #{binary() => any()}.
@@ -1526,7 +1526,7 @@
 %% lookup_events_request() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"EventCategory">> => list(any()),
-%%   <<"LookupAttributes">> => list(lookup_attribute()()),
+%%   <<"LookupAttributes">> => list(lookup_attribute()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StartTime">> => non_neg_integer()
@@ -1581,9 +1581,9 @@
 %% create_dashboard_request() :: #{
 %%   <<"Name">> := string(),
 %%   <<"RefreshSchedule">> => refresh_schedule(),
-%%   <<"TagsList">> => list(tag()()),
+%%   <<"TagsList">> => list(tag()),
 %%   <<"TerminationProtectionEnabled">> => boolean(),
-%%   <<"Widgets">> => list(request_widget()())
+%%   <<"Widgets">> => list(request_widget())
 %% }
 -type create_dashboard_request() :: #{binary() => any()}.
 
@@ -1599,7 +1599,7 @@
 %% Example:
 %% put_insight_selectors_request() :: #{
 %%   <<"EventDataStore">> => string(),
-%%   <<"InsightSelectors">> := list(insight_selector()()),
+%%   <<"InsightSelectors">> := list(insight_selector()),
 %%   <<"InsightsDestination">> => string(),
 %%   <<"TrailName">> => string()
 %% }
@@ -1607,19 +1607,19 @@
 
 %% Example:
 %% advanced_field_selector() :: #{
-%%   <<"EndsWith">> => list(string()()),
-%%   <<"Equals">> => list(string()()),
+%%   <<"EndsWith">> => list(string()),
+%%   <<"Equals">> => list(string()),
 %%   <<"Field">> => string(),
-%%   <<"NotEndsWith">> => list(string()()),
-%%   <<"NotEquals">> => list(string()()),
-%%   <<"NotStartsWith">> => list(string()()),
-%%   <<"StartsWith">> => list(string()())
+%%   <<"NotEndsWith">> => list(string()),
+%%   <<"NotEquals">> => list(string()),
+%%   <<"NotStartsWith">> => list(string()),
+%%   <<"StartsWith">> => list(string())
 %% }
 -type advanced_field_selector() :: #{binary() => any()}.
 
 %% Example:
 %% list_event_data_stores_response() :: #{
-%%   <<"EventDataStores">> => list(event_data_store()()),
+%%   <<"EventDataStores">> => list(event_data_store()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_data_stores_response() :: #{binary() => any()}.
@@ -1635,14 +1635,14 @@
 %% Example:
 %% list_trails_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Trails">> => list(trail_info()())
+%%   <<"Trails">> => list(trail_info())
 %% }
 -type list_trails_response() :: #{binary() => any()}.
 
 %% Example:
 %% widget() :: #{
 %%   <<"QueryAlias">> => string(),
-%%   <<"QueryParameters">> => list(string()()),
+%%   <<"QueryParameters">> => list(string()),
 %%   <<"QueryStatement">> => string(),
 %%   <<"ViewProperties">> => map()
 %% }
@@ -1651,7 +1651,7 @@
 %% Example:
 %% data_resource() :: #{
 %%   <<"Type">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type data_resource() :: #{binary() => any()}.
 
@@ -1677,7 +1677,7 @@
 
 %% Example:
 %% source_config() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
 %%   <<"ApplyToAllRegions">> => boolean()
 %% }
 -type source_config() :: #{binary() => any()}.
@@ -1685,7 +1685,7 @@
 %% Example:
 %% get_channel_response() :: #{
 %%   <<"ChannelArn">> => string(),
-%%   <<"Destinations">> => list(destination()()),
+%%   <<"Destinations">> => list(destination()),
 %%   <<"IngestionStatus">> => ingestion_status(),
 %%   <<"Name">> => string(),
 %%   <<"Source">> => string(),
@@ -1701,8 +1701,8 @@
 
 %% Example:
 %% put_event_selectors_request() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
-%%   <<"EventSelectors">> => list(event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
+%%   <<"EventSelectors">> => list(event_selector()),
 %%   <<"TrailName">> := string()
 %% }
 -type put_event_selectors_request() :: #{binary() => any()}.
@@ -1797,7 +1797,7 @@
 %% Example:
 %% update_channel_response() :: #{
 %%   <<"ChannelArn">> => string(),
-%%   <<"Destinations">> => list(destination()()),
+%%   <<"Destinations">> => list(destination()),
 %%   <<"Name">> => string(),
 %%   <<"Source">> => string()
 %% }
@@ -1818,7 +1818,7 @@
 %% Example:
 %% remove_tags_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"TagsList">> := list(tag()())
+%%   <<"TagsList">> := list(tag())
 %% }
 -type remove_tags_request() :: #{binary() => any()}.
 
@@ -1831,13 +1831,13 @@
 %% Example:
 %% list_tags_request() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceIdList">> := list(string()())
+%%   <<"ResourceIdList">> := list(string())
 %% }
 -type list_tags_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_dashboards_response() :: #{
-%%   <<"Dashboards">> => list(dashboard_detail()()),
+%%   <<"Dashboards">> => list(dashboard_detail()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dashboards_response() :: #{binary() => any()}.
@@ -1912,14 +1912,14 @@
 
 %% Example:
 %% context_key_selector() :: #{
-%%   <<"Equals">> => list(string()()),
+%%   <<"Equals">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type context_key_selector() :: #{binary() => any()}.
 
 %% Example:
 %% start_import_request() :: #{
-%%   <<"Destinations">> => list(string()()),
+%%   <<"Destinations">> => list(string()),
 %%   <<"EndEventTime">> => non_neg_integer(),
 %%   <<"ImportId">> => string(),
 %%   <<"ImportSource">> => import_source(),
@@ -1930,7 +1930,7 @@
 %% Example:
 %% start_import_response() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Destinations">> => list(string()()),
+%%   <<"Destinations">> => list(string()),
 %%   <<"EndEventTime">> => non_neg_integer(),
 %%   <<"ImportId">> => string(),
 %%   <<"ImportSource">> => import_source(),
@@ -1942,8 +1942,8 @@
 
 %% Example:
 %% get_event_selectors_response() :: #{
-%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()()),
-%%   <<"EventSelectors">> => list(event_selector()()),
+%%   <<"AdvancedEventSelectors">> => list(advanced_event_selector()),
+%%   <<"EventSelectors">> => list(event_selector()),
 %%   <<"TrailARN">> => string()
 %% }
 -type get_event_selectors_response() :: #{binary() => any()}.
@@ -1968,7 +1968,7 @@
 
 %% Example:
 %% describe_trails_response() :: #{
-%%   <<"trailList">> => list(trail()())
+%%   <<"trailList">> => list(trail())
 %% }
 -type describe_trails_response() :: #{binary() => any()}.
 

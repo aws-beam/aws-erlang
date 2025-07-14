@@ -121,7 +121,7 @@
 %% Example:
 %% create_anomaly_monitor_request() :: #{
 %%   <<"AnomalyMonitor">> := anomaly_monitor(),
-%%   <<"ResourceTags">> => list(resource_tag()())
+%%   <<"ResourceTags">> => list(resource_tag())
 %% }
 -type create_anomaly_monitor_request() :: #{binary() => any()}.
 
@@ -149,7 +149,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"TagKeys">> => list(string()()),
+%%   <<"TagKeys">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type list_cost_allocation_tags_request() :: #{binary() => any()}.
@@ -188,7 +188,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTags">> := list(resource_tag()())
+%%   <<"ResourceTags">> := list(resource_tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -202,7 +202,7 @@
 %% Example:
 %% get_savings_plans_utilization_details_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SavingsPlansUtilizationDetails">> => list(savings_plans_utilization_detail()()),
+%%   <<"SavingsPlansUtilizationDetails">> => list(savings_plans_utilization_detail()),
 %%   <<"TimePeriod">> => date_interval(),
 %%   <<"Total">> => savings_plans_utilization_aggregates()
 %% }
@@ -210,16 +210,16 @@
 
 %% Example:
 %% get_cost_and_usage_response() :: #{
-%%   <<"DimensionValueAttributes">> => list(dimension_values_with_attributes()()),
-%%   <<"GroupDefinitions">> => list(group_definition()()),
+%%   <<"DimensionValueAttributes">> => list(dimension_values_with_attributes()),
+%%   <<"GroupDefinitions">> => list(group_definition()),
 %%   <<"NextPageToken">> => string(),
-%%   <<"ResultsByTime">> => list(result_by_time()())
+%%   <<"ResultsByTime">> => list(result_by_time())
 %% }
 -type get_cost_and_usage_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_anomaly_subscriptions_response() :: #{
-%%   <<"AnomalySubscriptions">> => list(anomaly_subscription()()),
+%%   <<"AnomalySubscriptions">> => list(anomaly_subscription()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type get_anomaly_subscriptions_response() :: #{binary() => any()}.
@@ -232,7 +232,7 @@
 
 %% Example:
 %% coverage_by_time() :: #{
-%%   <<"Groups">> => list(reservation_coverage_group()()),
+%%   <<"Groups">> => list(reservation_coverage_group()),
 %%   <<"TimePeriod">> => date_interval(),
 %%   <<"Total">> => coverage()
 %% }
@@ -251,7 +251,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextPageToken">> => string(),
 %%   <<"SearchString">> => string(),
-%%   <<"SortBy">> => list(sort_definition()()),
+%%   <<"SortBy">> => list(sort_definition()),
 %%   <<"TagKey">> => string(),
 %%   <<"TimePeriod">> := date_interval()
 %% }
@@ -262,8 +262,8 @@
 %%   <<"BillingViewArn">> => string(),
 %%   <<"Filter">> := expression(),
 %%   <<"Granularity">> := list(any()),
-%%   <<"GroupBy">> => list(group_definition()()),
-%%   <<"Metrics">> => list(string()()),
+%%   <<"GroupBy">> => list(group_definition()),
+%%   <<"Metrics">> => list(string()),
 %%   <<"NextPageToken">> => string(),
 %%   <<"TimePeriod">> := date_interval()
 %% }
@@ -272,7 +272,7 @@
 %% Example:
 %% create_anomaly_subscription_request() :: #{
 %%   <<"AnomalySubscription">> := anomaly_subscription(),
-%%   <<"ResourceTags">> => list(resource_tag()())
+%%   <<"ResourceTags">> => list(resource_tag())
 %% }
 -type create_anomaly_subscription_request() :: #{binary() => any()}.
 
@@ -299,8 +299,8 @@
 %% anomaly_subscription() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"Frequency">> => list(any()),
-%%   <<"MonitorArnList">> => list(string()()),
-%%   <<"Subscribers">> => list(subscriber()()),
+%%   <<"MonitorArnList">> => list(string()),
+%%   <<"Subscribers">> => list(subscriber()),
 %%   <<"SubscriptionArn">> => string(),
 %%   <<"SubscriptionName">> => string(),
 %%   <<"Threshold">> => float(),
@@ -310,7 +310,7 @@
 
 %% Example:
 %% get_anomaly_monitors_response() :: #{
-%%   <<"AnomalyMonitors">> => list(anomaly_monitor()()),
+%%   <<"AnomalyMonitors">> => list(anomaly_monitor()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type get_anomaly_monitors_response() :: #{binary() => any()}.
@@ -329,7 +329,7 @@
 
 %% Example:
 %% get_cost_forecast_response() :: #{
-%%   <<"ForecastResultsByTime">> => list(forecast_result()()),
+%%   <<"ForecastResultsByTime">> => list(forecast_result()),
 %%   <<"Total">> => metric_value()
 %% }
 -type get_cost_forecast_response() :: #{binary() => any()}.
@@ -348,19 +348,19 @@
 %%   <<"DefaultValue">> => string(),
 %%   <<"EffectiveStart">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"RuleVersion">> := list(any()),
-%%   <<"Rules">> := list(cost_category_rule()()),
-%%   <<"SplitChargeRules">> => list(cost_category_split_charge_rule()())
+%%   <<"Rules">> := list(cost_category_rule()),
+%%   <<"SplitChargeRules">> => list(cost_category_split_charge_rule())
 %% }
 -type create_cost_category_definition_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_cost_and_usage_with_resources_response() :: #{
-%%   <<"DimensionValueAttributes">> => list(dimension_values_with_attributes()()),
-%%   <<"GroupDefinitions">> => list(group_definition()()),
+%%   <<"DimensionValueAttributes">> => list(dimension_values_with_attributes()),
+%%   <<"GroupDefinitions">> => list(group_definition()),
 %%   <<"NextPageToken">> => string(),
-%%   <<"ResultsByTime">> => list(result_by_time()())
+%%   <<"ResultsByTime">> => list(result_by_time())
 %% }
 -type get_cost_and_usage_with_resources_response() :: #{binary() => any()}.
 
@@ -389,7 +389,7 @@
 
 %% Example:
 %% get_cost_comparison_drivers_response() :: #{
-%%   <<"CostComparisonDrivers">> => list(cost_comparison_driver()()),
+%%   <<"CostComparisonDrivers">> => list(cost_comparison_driver()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type get_cost_comparison_drivers_response() :: #{binary() => any()}.
@@ -398,7 +398,7 @@
 %% tag_values() :: #{
 %%   <<"Key">> => string(),
 %%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type tag_values() :: #{binary() => any()}.
 
@@ -426,7 +426,7 @@
 %%   <<"InstanceFamily">> => string(),
 %%   <<"LatestUsageTimestamp">> => string(),
 %%   <<"LookbackPeriodInDays">> => list(any()),
-%%   <<"MetricsOverLookbackPeriod">> => list(recommendation_detail_hourly_metrics()()),
+%%   <<"MetricsOverLookbackPeriod">> => list(recommendation_detail_hourly_metrics()),
 %%   <<"OfferingId">> => string(),
 %%   <<"PaymentOption">> => list(any()),
 %%   <<"Region">> => string(),
@@ -486,7 +486,7 @@
 
 %% Example:
 %% utilization_by_time() :: #{
-%%   <<"Groups">> => list(reservation_utilization_group()()),
+%%   <<"Groups">> => list(reservation_utilization_group()),
 %%   <<"TimePeriod">> => date_interval(),
 %%   <<"Total">> => reservation_aggregates()
 %% }
@@ -522,7 +522,7 @@
 
 %% Example:
 %% list_cost_category_definitions_response() :: #{
-%%   <<"CostCategoryReferences">> => list(cost_category_reference()()),
+%%   <<"CostCategoryReferences">> => list(cost_category_reference()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cost_category_definitions_response() :: #{binary() => any()}.
@@ -531,9 +531,9 @@
 %% get_reservation_coverage_request() :: #{
 %%   <<"Filter">> => expression(),
 %%   <<"Granularity">> => list(any()),
-%%   <<"GroupBy">> => list(group_definition()()),
+%%   <<"GroupBy">> => list(group_definition()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"Metrics">> => list(string()()),
+%%   <<"Metrics">> => list(string()),
 %%   <<"NextPageToken">> => string(),
 %%   <<"SortBy">> => sort_definition(),
 %%   <<"TimePeriod">> := date_interval()
@@ -562,7 +562,7 @@
 %% Example:
 %% cost_category_split_charge_rule_parameter() :: #{
 %%   <<"Type">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type cost_category_split_charge_rule_parameter() :: #{binary() => any()}.
 
@@ -619,7 +619,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"ResourceTagKeys">> := list(string()())
+%%   <<"ResourceTagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -663,7 +663,7 @@
 %%   <<"HourlyCommitmentToPurchase">> => string(),
 %%   <<"LatestUsageTimestamp">> => string(),
 %%   <<"LookbackPeriodInHours">> => string(),
-%%   <<"MetricsOverLookbackPeriod">> => list(recommendation_detail_hourly_metrics()()),
+%%   <<"MetricsOverLookbackPeriod">> => list(recommendation_detail_hourly_metrics()),
 %%   <<"UpfrontCost">> => string()
 %% }
 -type savings_plans_purchase_analysis_details() :: #{binary() => any()}.
@@ -703,7 +703,7 @@
 %% get_reservation_utilization_response() :: #{
 %%   <<"NextPageToken">> => string(),
 %%   <<"Total">> => reservation_aggregates(),
-%%   <<"UtilizationsByTime">> => list(utilization_by_time()())
+%%   <<"UtilizationsByTime">> => list(utilization_by_time())
 %% }
 -type get_reservation_utilization_response() :: #{binary() => any()}.
 
@@ -717,7 +717,7 @@
 
 %% Example:
 %% cost_comparison_driver() :: #{
-%%   <<"CostDrivers">> => list(cost_driver()()),
+%%   <<"CostDrivers">> => list(cost_driver()),
 %%   <<"CostSelector">> => expression(),
 %%   <<"Metrics">> => map()
 %% }
@@ -759,8 +759,8 @@
 %% Example:
 %% update_anomaly_subscription_request() :: #{
 %%   <<"Frequency">> => list(any()),
-%%   <<"MonitorArnList">> => list(string()()),
-%%   <<"Subscribers">> => list(subscriber()()),
+%%   <<"MonitorArnList">> => list(string()),
+%%   <<"Subscribers">> => list(subscriber()),
 %%   <<"SubscriptionArn">> := string(),
 %%   <<"SubscriptionName">> => string(),
 %%   <<"Threshold">> => float(),
@@ -795,9 +795,9 @@
 %% get_savings_plans_coverage_request() :: #{
 %%   <<"Filter">> => expression(),
 %%   <<"Granularity">> => list(any()),
-%%   <<"GroupBy">> => list(group_definition()()),
+%%   <<"GroupBy">> => list(group_definition()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"Metrics">> => list(string()()),
+%%   <<"Metrics">> => list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"SortBy">> => sort_definition(),
 %%   <<"TimePeriod">> := date_interval()
@@ -830,7 +830,7 @@
 %% dimension_values() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type dimension_values() :: #{binary() => any()}.
 
@@ -865,7 +865,7 @@
 
 %% Example:
 %% get_reservation_coverage_response() :: #{
-%%   <<"CoveragesByTime">> => list(coverage_by_time()()),
+%%   <<"CoveragesByTime">> => list(coverage_by_time()),
 %%   <<"NextPageToken">> => string(),
 %%   <<"Total">> => coverage()
 %% }
@@ -874,9 +874,9 @@
 %% Example:
 %% cost_category_split_charge_rule() :: #{
 %%   <<"Method">> => list(any()),
-%%   <<"Parameters">> => list(cost_category_split_charge_rule_parameter()()),
+%%   <<"Parameters">> => list(cost_category_split_charge_rule_parameter()),
 %%   <<"Source">> => string(),
-%%   <<"Targets">> => list(string()())
+%%   <<"Targets">> => list(string())
 %% }
 -type cost_category_split_charge_rule() :: #{binary() => any()}.
 
@@ -891,7 +891,7 @@
 %%   <<"GenerationStatus">> => list(any()),
 %%   <<"NextPageToken">> => string(),
 %%   <<"PageSize">> => integer(),
-%%   <<"RecommendationIds">> => list(string()())
+%%   <<"RecommendationIds">> => list(string())
 %% }
 -type list_savings_plans_purchase_recommendation_generation_request() :: #{binary() => any()}.
 
@@ -900,8 +900,8 @@
 %%   <<"BillingViewArn">> => string(),
 %%   <<"Filter">> => expression(),
 %%   <<"Granularity">> := list(any()),
-%%   <<"GroupBy">> => list(group_definition()()),
-%%   <<"Metrics">> := list(string()()),
+%%   <<"GroupBy">> => list(group_definition()),
+%%   <<"Metrics">> := list(string()),
 %%   <<"NextPageToken">> => string(),
 %%   <<"TimePeriod">> := date_interval()
 %% }
@@ -909,7 +909,7 @@
 
 %% Example:
 %% get_usage_forecast_response() :: #{
-%%   <<"ForecastResultsByTime">> => list(forecast_result()()),
+%%   <<"ForecastResultsByTime">> => list(forecast_result()),
 %%   <<"Total">> => metric_value()
 %% }
 -type get_usage_forecast_response() :: #{binary() => any()}.
@@ -993,7 +993,7 @@
 
 %% Example:
 %% get_dimension_values_response() :: #{
-%%   <<"DimensionValues">> => list(dimension_values_with_attributes()()),
+%%   <<"DimensionValues">> => list(dimension_values_with_attributes()),
 %%   <<"NextPageToken">> => string(),
 %%   <<"ReturnSize">> => integer(),
 %%   <<"TotalSize">> => integer()
@@ -1008,8 +1008,8 @@
 %%   <<"EffectiveStart">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"NumberOfRules">> => integer(),
-%%   <<"ProcessingStatus">> => list(cost_category_processing_status()()),
-%%   <<"Values">> => list(string()())
+%%   <<"ProcessingStatus">> => list(cost_category_processing_status()),
+%%   <<"Values">> => list(string())
 %% }
 -type cost_category_reference() :: #{binary() => any()}.
 
@@ -1030,7 +1030,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"MonitorArn">> => string(),
 %%   <<"NextPageToken">> => string(),
-%%   <<"SubscriptionArnList">> => list(string()())
+%%   <<"SubscriptionArnList">> => list(string())
 %% }
 -type get_anomaly_subscriptions_request() :: #{binary() => any()}.
 
@@ -1045,7 +1045,7 @@
 %% get_tags_response() :: #{
 %%   <<"NextPageToken">> => string(),
 %%   <<"ReturnSize">> => integer(),
-%%   <<"Tags">> => list(string()()),
+%%   <<"Tags">> => list(string()),
 %%   <<"TotalSize">> => integer()
 %% }
 -type get_tags_response() :: #{binary() => any()}.
@@ -1100,14 +1100,14 @@
 
 %% Example:
 %% list_commitment_purchase_analyses_response() :: #{
-%%   <<"AnalysisSummaryList">> => list(analysis_summary()()),
+%%   <<"AnalysisSummaryList">> => list(analysis_summary()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_commitment_purchase_analyses_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"ResourceTags">> => list(resource_tag()())
+%%   <<"ResourceTags">> => list(resource_tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1131,7 +1131,7 @@
 %% Example:
 %% result_by_time() :: #{
 %%   <<"Estimated">> => boolean(),
-%%   <<"Groups">> => list(group()()),
+%%   <<"Groups">> => list(group()),
 %%   <<"TimePeriod">> => date_interval(),
 %%   <<"Total">> => map()
 %% }
@@ -1157,7 +1157,7 @@
 %%   <<"BillingViewArn">> => string(),
 %%   <<"ComparisonTimePeriod">> := date_interval(),
 %%   <<"Filter">> => expression(),
-%%   <<"GroupBy">> => list(group_definition()()),
+%%   <<"GroupBy">> => list(group_definition()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"MetricForComparison">> := string(),
 %%   <<"NextPageToken">> => string()
@@ -1166,7 +1166,7 @@
 
 %% Example:
 %% update_cost_allocation_tags_status_request() :: #{
-%%   <<"CostAllocationTagsStatus">> := list(cost_allocation_tag_status_entry()())
+%%   <<"CostAllocationTagsStatus">> := list(cost_allocation_tag_status_entry())
 %% }
 -type update_cost_allocation_tags_status_request() :: #{binary() => any()}.
 
@@ -1213,8 +1213,8 @@
 %%   <<"DefaultValue">> => string(),
 %%   <<"EffectiveStart">> => string(),
 %%   <<"RuleVersion">> := list(any()),
-%%   <<"Rules">> := list(cost_category_rule()()),
-%%   <<"SplitChargeRules">> => list(cost_category_split_charge_rule()())
+%%   <<"Rules">> := list(cost_category_rule()),
+%%   <<"SplitChargeRules">> => list(cost_category_split_charge_rule())
 %% }
 -type update_cost_category_definition_request() :: #{binary() => any()}.
 
@@ -1281,7 +1281,7 @@
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceUtilization">> => resource_utilization(),
 %%   <<"SavingsPlansCoveredHoursInLookbackPeriod">> => string(),
-%%   <<"Tags">> => list(tag_values()()),
+%%   <<"Tags">> => list(tag_values()),
 %%   <<"TotalRunningHoursInLookbackPeriod">> => string()
 %% }
 -type current_instance() :: #{binary() => any()}.
@@ -1335,7 +1335,7 @@
 %%   <<"Feedback">> => list(any()),
 %%   <<"Impact">> => impact(),
 %%   <<"MonitorArn">> => string(),
-%%   <<"RootCauses">> => list(root_cause()())
+%%   <<"RootCauses">> => list(root_cause())
 %% }
 -type anomaly() :: #{binary() => any()}.
 
@@ -1365,7 +1365,7 @@
 %% Example:
 %% get_savings_plans_coverage_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SavingsPlansCoverages">> => list(savings_plans_coverage()())
+%%   <<"SavingsPlansCoverages">> => list(savings_plans_coverage())
 %% }
 -type get_savings_plans_coverage_response() :: #{binary() => any()}.
 
@@ -1380,7 +1380,7 @@
 %% cost_category_values() :: #{
 %%   <<"Key">> => string(),
 %%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type cost_category_values() :: #{binary() => any()}.
 
@@ -1392,13 +1392,13 @@
 
 %% Example:
 %% modify_recommendation_detail() :: #{
-%%   <<"TargetInstances">> => list(target_instance()())
+%%   <<"TargetInstances">> => list(target_instance())
 %% }
 -type modify_recommendation_detail() :: #{binary() => any()}.
 
 %% Example:
 %% update_cost_allocation_tags_status_response() :: #{
-%%   <<"Errors">> => list(update_cost_allocation_tags_status_error()())
+%%   <<"Errors">> => list(update_cost_allocation_tags_status_error())
 %% }
 -type update_cost_allocation_tags_status_response() :: #{binary() => any()}.
 
@@ -1407,7 +1407,7 @@
 %%   <<"AccountScope">> => list(any()),
 %%   <<"LookbackPeriodInDays">> => list(any()),
 %%   <<"PaymentOption">> => list(any()),
-%%   <<"RecommendationDetails">> => list(reservation_purchase_recommendation_detail()()),
+%%   <<"RecommendationDetails">> => list(reservation_purchase_recommendation_detail()),
 %%   <<"RecommendationSummary">> => reservation_purchase_recommendation_summary(),
 %%   <<"ServiceSpecification">> => service_specification(),
 %%   <<"TermInYears">> => list(any())
@@ -1438,7 +1438,7 @@
 %% get_approximate_usage_records_request() :: #{
 %%   <<"ApproximationDimension">> := list(any()),
 %%   <<"Granularity">> := list(any()),
-%%   <<"Services">> => list(string()())
+%%   <<"Services">> => list(string())
 %% }
 -type get_approximate_usage_records_request() :: #{binary() => any()}.
 
@@ -1458,21 +1458,21 @@
 %% Example:
 %% get_anomaly_monitors_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"MonitorArnList">> => list(string()()),
+%%   <<"MonitorArnList">> => list(string()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type get_anomaly_monitors_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_anomalies_response() :: #{
-%%   <<"Anomalies">> => list(anomaly()()),
+%%   <<"Anomalies">> => list(anomaly()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type get_anomalies_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_cost_and_usage_comparisons_response() :: #{
-%%   <<"CostAndUsageComparisons">> => list(cost_and_usage_comparison()()),
+%%   <<"CostAndUsageComparisons">> => list(cost_and_usage_comparison()),
 %%   <<"NextPageToken">> => string(),
 %%   <<"TotalCostAndUsage">> => map()
 %% }
@@ -1546,7 +1546,7 @@
 
 %% Example:
 %% group() :: #{
-%%   <<"Keys">> => list(string()()),
+%%   <<"Keys">> => list(string()),
 %%   <<"Metrics">> => map()
 %% }
 -type group() :: #{binary() => any()}.
@@ -1572,11 +1572,11 @@
 
 %% Example:
 %% expression() :: #{
-%%   <<"And">> => list(expression()()),
+%%   <<"And">> => list(expression()),
 %%   <<"CostCategories">> => cost_category_values(),
 %%   <<"Dimensions">> => dimension_values(),
 %%   <<"Not">> => expression(),
-%%   <<"Or">> => list(expression()()),
+%%   <<"Or">> => list(expression()),
 %%   <<"Tags">> => tag_values()
 %% }
 -type expression() :: #{binary() => any()}.
@@ -1601,7 +1601,7 @@
 
 %% Example:
 %% list_cost_allocation_tags_response() :: #{
-%%   <<"CostAllocationTags">> => list(cost_allocation_tag()()),
+%%   <<"CostAllocationTags">> => list(cost_allocation_tag()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cost_allocation_tags_response() :: #{binary() => any()}.
@@ -1613,10 +1613,10 @@
 %%   <<"EffectiveEnd">> => string(),
 %%   <<"EffectiveStart">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"ProcessingStatus">> => list(cost_category_processing_status()()),
+%%   <<"ProcessingStatus">> => list(cost_category_processing_status()),
 %%   <<"RuleVersion">> => list(any()),
-%%   <<"Rules">> => list(cost_category_rule()()),
-%%   <<"SplitChargeRules">> => list(cost_category_split_charge_rule()())
+%%   <<"Rules">> => list(cost_category_rule()),
+%%   <<"SplitChargeRules">> => list(cost_category_split_charge_rule())
 %% }
 -type cost_category() :: #{binary() => any()}.
 
@@ -1628,7 +1628,7 @@
 
 %% Example:
 %% list_cost_allocation_tag_backfill_history_response() :: #{
-%%   <<"BackfillRequests">> => list(cost_allocation_tag_backfill_request()()),
+%%   <<"BackfillRequests">> => list(cost_allocation_tag_backfill_request()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cost_allocation_tag_backfill_history_response() :: #{binary() => any()}.
@@ -1671,7 +1671,7 @@
 
 %% Example:
 %% list_commitment_purchase_analyses_request() :: #{
-%%   <<"AnalysisIds">> => list(string()()),
+%%   <<"AnalysisIds">> => list(string()),
 %%   <<"AnalysisStatus">> => list(any()),
 %%   <<"NextPageToken">> => string(),
 %%   <<"PageSize">> => integer()
@@ -1684,8 +1684,8 @@
 %%   <<"AccountScope">> => list(any()),
 %%   <<"AnalysisType">> => list(any()),
 %%   <<"LookBackTimePeriod">> => date_interval(),
-%%   <<"SavingsPlansToAdd">> => list(savings_plans()()),
-%%   <<"SavingsPlansToExclude">> => list(string()())
+%%   <<"SavingsPlansToAdd">> => list(savings_plans()),
+%%   <<"SavingsPlansToExclude">> => list(string())
 %% }
 -type savings_plans_purchase_analysis_configuration() :: #{binary() => any()}.
 
@@ -1693,7 +1693,7 @@
 %% get_reservation_purchase_recommendation_response() :: #{
 %%   <<"Metadata">> => reservation_purchase_recommendation_metadata(),
 %%   <<"NextPageToken">> => string(),
-%%   <<"Recommendations">> => list(reservation_purchase_recommendation()())
+%%   <<"Recommendations">> => list(reservation_purchase_recommendation())
 %% }
 -type get_reservation_purchase_recommendation_response() :: #{binary() => any()}.
 
@@ -1710,7 +1710,7 @@
 %% get_reservation_utilization_request() :: #{
 %%   <<"Filter">> => expression(),
 %%   <<"Granularity">> => list(any()),
-%%   <<"GroupBy">> => list(group_definition()()),
+%%   <<"GroupBy">> => list(group_definition()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextPageToken">> => string(),
 %%   <<"SortBy">> => sort_definition(),
@@ -1732,7 +1732,7 @@
 %%   <<"BillingViewArn">> => string(),
 %%   <<"ComparisonTimePeriod">> := date_interval(),
 %%   <<"Filter">> => expression(),
-%%   <<"GroupBy">> => list(group_definition()()),
+%%   <<"GroupBy">> => list(group_definition()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"MetricForComparison">> := string(),
 %%   <<"NextPageToken">> => string()
@@ -1776,7 +1776,7 @@
 
 %% Example:
 %% get_savings_plans_utilization_response() :: #{
-%%   <<"SavingsPlansUtilizationsByTime">> => list(savings_plans_utilization_by_time()()),
+%%   <<"SavingsPlansUtilizationsByTime">> => list(savings_plans_utilization_by_time()),
 %%   <<"Total">> => savings_plans_utilization_aggregates()
 %% }
 -type get_savings_plans_utilization_response() :: #{binary() => any()}.
@@ -1792,7 +1792,7 @@
 %%   <<"Configuration">> => rightsizing_recommendation_configuration(),
 %%   <<"Metadata">> => rightsizing_recommendation_metadata(),
 %%   <<"NextPageToken">> => string(),
-%%   <<"RightsizingRecommendations">> => list(rightsizing_recommendation()()),
+%%   <<"RightsizingRecommendations">> => list(rightsizing_recommendation()),
 %%   <<"Summary">> => rightsizing_recommendation_summary()
 %% }
 -type get_rightsizing_recommendation_response() :: #{binary() => any()}.
@@ -1806,7 +1806,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextPageToken">> => string(),
 %%   <<"SearchString">> => string(),
-%%   <<"SortBy">> => list(sort_definition()()),
+%%   <<"SortBy">> => list(sort_definition()),
 %%   <<"TimePeriod">> := date_interval()
 %% }
 -type get_dimension_values_request() :: #{binary() => any()}.
@@ -1816,7 +1816,7 @@
 %%   <<"AccountScope">> => list(any()),
 %%   <<"LookbackPeriodInDays">> => list(any()),
 %%   <<"PaymentOption">> => list(any()),
-%%   <<"SavingsPlansPurchaseRecommendationDetails">> => list(savings_plans_purchase_recommendation_detail()()),
+%%   <<"SavingsPlansPurchaseRecommendationDetails">> => list(savings_plans_purchase_recommendation_detail()),
 %%   <<"SavingsPlansPurchaseRecommendationSummary">> => savings_plans_purchase_recommendation_summary(),
 %%   <<"SavingsPlansType">> => list(any()),
 %%   <<"TermInYears">> => list(any())
@@ -1880,7 +1880,7 @@
 
 %% Example:
 %% list_savings_plans_purchase_recommendation_generation_response() :: #{
-%%   <<"GenerationSummaryList">> => list(generation_summary()()),
+%%   <<"GenerationSummaryList">> => list(generation_summary()),
 %%   <<"NextPageToken">> => string()
 %% }
 -type list_savings_plans_purchase_recommendation_generation_response() :: #{binary() => any()}.
@@ -1893,7 +1893,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextPageToken">> => string(),
 %%   <<"SearchString">> => string(),
-%%   <<"SortBy">> => list(sort_definition()()),
+%%   <<"SortBy">> => list(sort_definition()),
 %%   <<"TimePeriod">> := date_interval()
 %% }
 -type get_cost_categories_request() :: #{binary() => any()}.
@@ -1949,8 +1949,8 @@
 
 %% Example:
 %% get_cost_categories_response() :: #{
-%%   <<"CostCategoryNames">> => list(string()()),
-%%   <<"CostCategoryValues">> => list(string()()),
+%%   <<"CostCategoryNames">> => list(string()),
+%%   <<"CostCategoryValues">> => list(string()),
 %%   <<"NextPageToken">> => string(),
 %%   <<"ReturnSize">> => integer(),
 %%   <<"TotalSize">> => integer()

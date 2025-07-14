@@ -107,7 +107,7 @@
 
 %% Example:
 %% create_node_from_template_job_request() :: #{
-%%   <<"JobTags">> => list(job_resource_tags()()),
+%%   <<"JobTags">> => list(job_resource_tags()),
 %%   <<"NodeDescription">> => string(),
 %%   <<"NodeName">> := string(),
 %%   <<"OutputPackageName">> := string(),
@@ -163,7 +163,7 @@
 %% create_package_import_job_request() :: #{
 %%   <<"ClientToken">> := string(),
 %%   <<"InputConfig">> := package_import_job_input_config(),
-%%   <<"JobTags">> => list(job_resource_tags()()),
+%%   <<"JobTags">> => list(job_resource_tags()),
 %%   <<"JobType">> := string(),
 %%   <<"OutputConfig">> := package_import_job_output_config()
 %% }
@@ -214,7 +214,7 @@
 %% Example:
 %% list_node_from_template_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NodeFromTemplateJobs">> := list(node_from_template_job()())
+%%   <<"NodeFromTemplateJobs">> := list(node_from_template_job())
 %% }
 -type list_node_from_template_jobs_response() :: #{binary() => any()}.
 
@@ -264,7 +264,7 @@
 %% Example:
 %% list_package_import_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PackageImportJobs">> := list(package_import_job()())
+%%   <<"PackageImportJobs">> := list(package_import_job())
 %% }
 -type list_package_import_jobs_response() :: #{binary() => any()}.
 
@@ -303,7 +303,7 @@
 %%   <<"HealthStatus">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"RuntimeContextStates">> => list(reported_runtime_context_state()()),
+%%   <<"RuntimeContextStates">> => list(reported_runtime_context_state()),
 %%   <<"RuntimeRoleArn">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"StatusDescription">> => string(),
@@ -314,7 +314,7 @@
 
 %% Example:
 %% create_job_for_devices_response() :: #{
-%%   <<"Jobs">> := list(job()())
+%%   <<"Jobs">> := list(job())
 %% }
 -type create_job_for_devices_response() :: #{binary() => any()}.
 
@@ -364,10 +364,10 @@
 %%   <<"CreatedTime">> := non_neg_integer(),
 %%   <<"PackageId">> := string(),
 %%   <<"PackageName">> := string(),
-%%   <<"ReadAccessPrincipalArns">> => list(string()()),
+%%   <<"ReadAccessPrincipalArns">> => list(string()),
 %%   <<"StorageLocation">> := storage_location(),
 %%   <<"Tags">> := map(),
-%%   <<"WriteAccessPrincipalArns">> => list(string()())
+%%   <<"WriteAccessPrincipalArns">> => list(string())
 %% }
 -type describe_package_response() :: #{binary() => any()}.
 
@@ -409,7 +409,7 @@
 
 %% Example:
 %% list_application_instances_response() :: #{
-%%   <<"ApplicationInstances">> => list(application_instance()()),
+%%   <<"ApplicationInstances">> => list(application_instance()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_instances_response() :: #{binary() => any()}.
@@ -417,7 +417,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -521,7 +521,7 @@
 
 %% Example:
 %% conflict_exception() :: #{
-%%   <<"ErrorArguments">> => list(conflict_exception_error_argument()()),
+%%   <<"ErrorArguments">> => list(conflict_exception_error_argument()),
 %%   <<"ErrorId">> => string(),
 %%   <<"Message">> => string(),
 %%   <<"ResourceId">> => string(),
@@ -592,7 +592,7 @@
 %%   <<"Description">> => string(),
 %%   <<"HealthStatus">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"RuntimeContextStates">> => list(reported_runtime_context_state()()),
+%%   <<"RuntimeContextStates">> => list(reported_runtime_context_state()),
 %%   <<"Status">> => string(),
 %%   <<"StatusDescription">> => string(),
 %%   <<"Tags">> => map()
@@ -633,15 +633,15 @@
 
 %% Example:
 %% ntp_payload() :: #{
-%%   <<"NtpServers">> => list(string()())
+%%   <<"NtpServers">> => list(string())
 %% }
 -type ntp_payload() :: #{binary() => any()}.
 
 
 %% Example:
 %% node_interface() :: #{
-%%   <<"Inputs">> => list(node_input_port()()),
-%%   <<"Outputs">> => list(node_output_port()())
+%%   <<"Inputs">> => list(node_input_port()),
+%%   <<"Outputs">> => list(node_output_port())
 %% }
 -type node_interface() :: #{binary() => any()}.
 
@@ -649,7 +649,7 @@
 %% Example:
 %% static_ip_connection_info() :: #{
 %%   <<"DefaultGateway">> => string(),
-%%   <<"Dns">> => list(string()()),
+%%   <<"Dns">> => list(string()),
 %%   <<"IpAddress">> => string(),
 %%   <<"Mask">> => string()
 %% }
@@ -698,7 +698,7 @@
 
 %% Example:
 %% list_devices_response() :: #{
-%%   <<"Devices">> := list(device()()),
+%%   <<"Devices">> := list(device()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_devices_response() :: #{binary() => any()}.
@@ -733,7 +733,7 @@
 %% describe_node_from_template_job_response() :: #{
 %%   <<"CreatedTime">> := non_neg_integer(),
 %%   <<"JobId">> := string(),
-%%   <<"JobTags">> => list(job_resource_tags()()),
+%%   <<"JobTags">> => list(job_resource_tags()),
 %%   <<"LastUpdatedTime">> := non_neg_integer(),
 %%   <<"NodeDescription">> => string(),
 %%   <<"NodeName">> := string(),
@@ -803,7 +803,7 @@
 
 %% Example:
 %% list_devices_jobs_response() :: #{
-%%   <<"DeviceJobs">> => list(device_job()()),
+%%   <<"DeviceJobs">> => list(device_job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_devices_jobs_response() :: #{binary() => any()}.
@@ -847,7 +847,7 @@
 %%   <<"CreatedTime">> := non_neg_integer(),
 %%   <<"InputConfig">> := package_import_job_input_config(),
 %%   <<"JobId">> := string(),
-%%   <<"JobTags">> => list(job_resource_tags()()),
+%%   <<"JobTags">> => list(job_resource_tags()),
 %%   <<"JobType">> := string(),
 %%   <<"LastUpdatedTime">> := non_neg_integer(),
 %%   <<"Output">> := package_import_job_output(),
@@ -875,7 +875,7 @@
 
 %% Example:
 %% signal_application_instance_node_instances_request() :: #{
-%%   <<"NodeSignals">> := list(node_signal()())
+%%   <<"NodeSignals">> := list(node_signal())
 %% }
 -type signal_application_instance_node_instances_request() :: #{binary() => any()}.
 
@@ -897,9 +897,9 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"ErrorArguments">> => list(validation_exception_error_argument()()),
+%%   <<"ErrorArguments">> => list(validation_exception_error_argument()),
 %%   <<"ErrorId">> => string(),
-%%   <<"Fields">> => list(validation_exception_field()()),
+%%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => string()
 %% }
@@ -929,7 +929,7 @@
 %% Example:
 %% list_application_instance_dependencies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PackageObjects">> => list(package_object()())
+%%   <<"PackageObjects">> => list(package_object())
 %% }
 -type list_application_instance_dependencies_response() :: #{binary() => any()}.
 
@@ -1012,7 +1012,7 @@
 
 %% Example:
 %% create_job_for_devices_request() :: #{
-%%   <<"DeviceIds">> := list(string()()),
+%%   <<"DeviceIds">> := list(string()),
 %%   <<"DeviceJobConfig">> => device_job_config(),
 %%   <<"JobType">> := string()
 %% }
@@ -1030,7 +1030,7 @@
 %% Example:
 %% list_application_instance_node_instances_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NodeInstances">> => list(node_instance()())
+%%   <<"NodeInstances">> => list(node_instance())
 %% }
 -type list_application_instance_node_instances_response() :: #{binary() => any()}.
 
@@ -1038,7 +1038,7 @@
 %% Example:
 %% list_packages_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Packages">> => list(package_list_item()())
+%%   <<"Packages">> => list(package_list_item())
 %% }
 -type list_packages_response() :: #{binary() => any()}.
 
@@ -1050,7 +1050,7 @@
 %% Example:
 %% list_nodes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Nodes">> => list(panorama_node()())
+%%   <<"Nodes">> => list(node())
 %% }
 -type list_nodes_response() :: #{binary() => any()}.
 
@@ -1095,7 +1095,7 @@
 
 %% Example:
 %% describe_device_response() :: #{
-%%   <<"AlternateSoftwares">> => list(alternate_software_metadata()()),
+%%   <<"AlternateSoftwares">> => list(alternate_software_metadata()),
 %%   <<"Arn">> => string(),
 %%   <<"Brand">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),

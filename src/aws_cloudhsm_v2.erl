@@ -65,7 +65,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"TagList">> := list(tag()())
+%%   <<"TagList">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -103,7 +103,7 @@
 %% Example:
 %% list_tags_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_response() :: #{binary() => any()}.
 
@@ -122,7 +122,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"TagKeyList">> := list(string()())
+%%   <<"TagKeyList">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -179,8 +179,8 @@
 %%   <<"Mode">> => list(any()),
 %%   <<"NetworkType">> => list(any()),
 %%   <<"SourceBackupId">> => string(),
-%%   <<"SubnetIds">> := list(string()()),
-%%   <<"TagList">> => list(tag()())
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"TagList">> => list(tag())
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
 
@@ -210,7 +210,7 @@
 %%   <<"CreateTimestamp">> => non_neg_integer(),
 %%   <<"HsmType">> => string(),
 %%   <<"HsmTypeRollbackExpiration">> => non_neg_integer(),
-%%   <<"Hsms">> => list(hsm()()),
+%%   <<"Hsms">> => list(hsm()),
 %%   <<"Mode">> => list(any()),
 %%   <<"NetworkType">> => list(any()),
 %%   <<"PreCoPassword">> => string(),
@@ -219,7 +219,7 @@
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
 %%   <<"SubnetMapping">> => map(),
-%%   <<"TagList">> => list(tag()()),
+%%   <<"TagList">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type cluster() :: #{binary() => any()}.
@@ -242,7 +242,7 @@
 %% copy_backup_to_region_request() :: #{
 %%   <<"BackupId">> := string(),
 %%   <<"DestinationRegion">> := string(),
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type copy_backup_to_region_request() :: #{binary() => any()}.
 
@@ -281,7 +281,7 @@
 %%   <<"SourceBackup">> => string(),
 %%   <<"SourceCluster">> => string(),
 %%   <<"SourceRegion">> => string(),
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type backup() :: #{binary() => any()}.
 
@@ -340,7 +340,7 @@
 
 %% Example:
 %% describe_clusters_response() :: #{
-%%   <<"Clusters">> => list(cluster()()),
+%%   <<"Clusters">> => list(cluster()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_clusters_response() :: #{binary() => any()}.
@@ -390,7 +390,7 @@
 
 %% Example:
 %% describe_backups_response() :: #{
-%%   <<"Backups">> => list(backup()()),
+%%   <<"Backups">> => list(backup()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_backups_response() :: #{binary() => any()}.

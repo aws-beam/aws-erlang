@@ -209,7 +209,7 @@
 %%   <<"ProfileArn">> => string(),
 %%   <<"ProfileDescription">> => string(),
 %%   <<"ProfileName">> => string(),
-%%   <<"ProfileQuestions">> => list(profile_question()()),
+%%   <<"ProfileQuestions">> => list(profile_question()),
 %%   <<"ProfileVersion">> => string(),
 %%   <<"ShareInvitationId">> => string(),
 %%   <<"Tags">> => map(),
@@ -224,7 +224,7 @@
 %%   <<"IsApplicable">> => boolean(),
 %%   <<"Notes">> => string(),
 %%   <<"Reason">> => list(any()),
-%%   <<"SelectedChoices">> => list(string()())
+%%   <<"SelectedChoices">> => list(string())
 %% }
 -type update_answer_input() :: #{binary() => any()}.
 
@@ -233,11 +233,11 @@
 %% profile_question() :: #{
 %%   <<"MaxSelectedChoices">> => integer(),
 %%   <<"MinSelectedChoices">> => integer(),
-%%   <<"QuestionChoices">> => list(profile_choice()()),
+%%   <<"QuestionChoices">> => list(profile_choice()),
 %%   <<"QuestionDescription">> => string(),
 %%   <<"QuestionId">> => string(),
 %%   <<"QuestionTitle">> => string(),
-%%   <<"SelectedChoiceIds">> => list(string()())
+%%   <<"SelectedChoiceIds">> => list(string())
 %% }
 -type profile_question() :: #{binary() => any()}.
 
@@ -253,7 +253,7 @@
 
 %% Example:
 %% list_lenses_output() :: #{
-%%   <<"LensSummaries">> => list(lens_summary()()),
+%%   <<"LensSummaries">> => list(lens_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lenses_output() :: #{binary() => any()}.
@@ -268,7 +268,7 @@
 
 %% Example:
 %% question_metric() :: #{
-%%   <<"BestPractices">> => list(best_practice()()),
+%%   <<"BestPractices">> => list(best_practice()),
 %%   <<"QuestionId">> => string(),
 %%   <<"Risk">> => list(any())
 %% }
@@ -293,9 +293,9 @@
 %%   <<"LensVersion">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"Notes">> => string(),
-%%   <<"PillarReviewSummaries">> => list(pillar_review_summary()()),
+%%   <<"PillarReviewSummaries">> => list(pillar_review_summary()),
 %%   <<"PrioritizedRiskCounts">> => map(),
-%%   <<"Profiles">> => list(workload_profile()()),
+%%   <<"Profiles">> => list(workload_profile()),
 %%   <<"RiskCounts">> => map(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
@@ -327,10 +327,10 @@
 %% Example:
 %% workload_summary() :: #{
 %%   <<"ImprovementStatus">> => list(any()),
-%%   <<"Lenses">> => list(string()()),
+%%   <<"Lenses">> => list(string()),
 %%   <<"Owner">> => string(),
 %%   <<"PrioritizedRiskCounts">> => map(),
-%%   <<"Profiles">> => list(workload_profile()()),
+%%   <<"Profiles">> => list(workload_profile()),
 %%   <<"RiskCounts">> => map(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
 %%   <<"WorkloadArn">> => string(),
@@ -342,7 +342,7 @@
 
 %% Example:
 %% list_lens_review_improvements_output() :: #{
-%%   <<"ImprovementSummaries">> => list(improvement_summary()()),
+%%   <<"ImprovementSummaries">> => list(improvement_summary()),
 %%   <<"LensAlias">> => string(),
 %%   <<"LensArn">> => string(),
 %%   <<"MilestoneNumber">> => integer(),
@@ -402,14 +402,14 @@
 
 %% Example:
 %% jira_selected_question_configuration() :: #{
-%%   <<"SelectedPillars">> => list(selected_pillar()())
+%%   <<"SelectedPillars">> => list(selected_pillar())
 %% }
 -type jira_selected_question_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_check_details_output() :: #{
-%%   <<"CheckDetails">> => list(check_detail()()),
+%%   <<"CheckDetails">> => list(check_detail()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_check_details_output() :: #{binary() => any()}.
@@ -417,7 +417,7 @@
 
 %% Example:
 %% associate_profiles_input() :: #{
-%%   <<"ProfileArns">> := list(string()())
+%%   <<"ProfileArns">> := list(string())
 %% }
 -type associate_profiles_input() :: #{binary() => any()}.
 
@@ -532,7 +532,7 @@
 
 %% Example:
 %% list_lens_shares_output() :: #{
-%%   <<"LensShareSummaries">> => list(lens_share_summary()()),
+%%   <<"LensShareSummaries">> => list(lens_share_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lens_shares_output() :: #{binary() => any()}.
@@ -578,7 +578,7 @@
 
 %% Example:
 %% list_milestones_output() :: #{
-%%   <<"MilestoneSummaries">> => list(milestone_summary()()),
+%%   <<"MilestoneSummaries">> => list(milestone_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"WorkloadId">> => string()
 %% }
@@ -630,7 +630,7 @@
 %% Example:
 %% profile_question_update() :: #{
 %%   <<"QuestionId">> => string(),
-%%   <<"SelectedChoiceIds">> => list(string()())
+%%   <<"SelectedChoiceIds">> => list(string())
 %% }
 -type profile_question_update() :: #{binary() => any()}.
 
@@ -645,7 +645,7 @@
 %% Example:
 %% list_profile_shares_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProfileShareSummaries">> => list(profile_share_summary()())
+%%   <<"ProfileShareSummaries">> => list(profile_share_summary())
 %% }
 -type list_profile_shares_output() :: #{binary() => any()}.
 
@@ -668,7 +668,7 @@
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"ProfileDescription">> := string(),
 %%   <<"ProfileName">> := string(),
-%%   <<"ProfileQuestions">> := list(profile_question_update()()),
+%%   <<"ProfileQuestions">> := list(profile_question_update()),
 %%   <<"Tags">> => map()
 %% }
 -type create_profile_input() :: #{binary() => any()}.
@@ -684,7 +684,7 @@
 %% Example:
 %% list_profiles_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProfileSummaries">> => list(profile_summary()())
+%%   <<"ProfileSummaries">> => list(profile_summary())
 %% }
 -type list_profiles_output() :: #{binary() => any()}.
 
@@ -708,7 +708,7 @@
 
 %% Example:
 %% associate_lenses_input() :: #{
-%%   <<"LensAliases">> := list(string()())
+%%   <<"LensAliases">> := list(string())
 %% }
 -type associate_lenses_input() :: #{binary() => any()}.
 
@@ -732,7 +732,7 @@
 %%   <<"LensStatus">> => list(any()),
 %%   <<"LensVersion">> => string(),
 %%   <<"PrioritizedRiskCounts">> => map(),
-%%   <<"Profiles">> => list(workload_profile()()),
+%%   <<"Profiles">> => list(workload_profile()),
 %%   <<"RiskCounts">> => map(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
@@ -743,7 +743,7 @@
 %% list_template_shares_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"TemplateArn">> => string(),
-%%   <<"TemplateShareSummaries">> => list(template_share_summary()())
+%%   <<"TemplateShareSummaries">> => list(template_share_summary())
 %% }
 -type list_template_shares_output() :: #{binary() => any()}.
 
@@ -758,8 +758,8 @@
 %% Example:
 %% update_review_template_input() :: #{
 %%   <<"Description">> => string(),
-%%   <<"LensesToAssociate">> => list(string()()),
-%%   <<"LensesToDisassociate">> => list(string()()),
+%%   <<"LensesToAssociate">> => list(string()),
+%%   <<"LensesToDisassociate">> => list(string()),
 %%   <<"Notes">> => string(),
 %%   <<"TemplateName">> => string()
 %% }
@@ -804,7 +804,7 @@
 
 %% Example:
 %% consolidated_report_metric() :: #{
-%%   <<"Lenses">> => list(lens_metric()()),
+%%   <<"Lenses">> => list(lens_metric()),
 %%   <<"LensesAppliedCount">> => integer(),
 %%   <<"MetricType">> => list(any()),
 %%   <<"RiskCounts">> => map(),
@@ -845,7 +845,7 @@
 %% create_review_template_input() :: #{
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"Description">> := string(),
-%%   <<"Lenses">> := list(string()()),
+%%   <<"Lenses">> := list(string()),
 %%   <<"Notes">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"TemplateName">> := string()
@@ -871,7 +871,7 @@
 
 %% Example:
 %% disassociate_profiles_input() :: #{
-%%   <<"ProfileArns">> := list(string()())
+%%   <<"ProfileArns">> := list(string())
 %% }
 -type disassociate_profiles_input() :: #{binary() => any()}.
 
@@ -887,7 +887,7 @@
 
 %% Example:
 %% list_review_template_answers_output() :: #{
-%%   <<"AnswerSummaries">> => list(review_template_answer_summary()()),
+%%   <<"AnswerSummaries">> => list(review_template_answer_summary()),
 %%   <<"LensAlias">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"TemplateArn">> => string()
@@ -897,10 +897,10 @@
 
 %% Example:
 %% workload() :: #{
-%%   <<"AccountIds">> => list(string()()),
-%%   <<"Applications">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Applications">> => list(string()),
 %%   <<"ArchitecturalDesign">> => string(),
-%%   <<"AwsRegions">> => list(string()()),
+%%   <<"AwsRegions">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"DiscoveryConfig">> => workload_discovery_config(),
 %%   <<"Environment">> => list(any()),
@@ -909,13 +909,13 @@
 %%   <<"IndustryType">> => string(),
 %%   <<"IsReviewOwnerUpdateAcknowledged">> => boolean(),
 %%   <<"JiraConfiguration">> => workload_jira_configuration_output(),
-%%   <<"Lenses">> => list(string()()),
-%%   <<"NonAwsRegions">> => list(string()()),
+%%   <<"Lenses">> => list(string()),
+%%   <<"NonAwsRegions">> => list(string()),
 %%   <<"Notes">> => string(),
 %%   <<"Owner">> => string(),
-%%   <<"PillarPriorities">> => list(string()()),
+%%   <<"PillarPriorities">> => list(string()),
 %%   <<"PrioritizedRiskCounts">> => map(),
-%%   <<"Profiles">> => list(workload_profile()()),
+%%   <<"Profiles">> => list(workload_profile()),
 %%   <<"ReviewOwner">> => string(),
 %%   <<"ReviewRestrictionDate">> => non_neg_integer(),
 %%   <<"RiskCounts">> => map(),
@@ -961,7 +961,7 @@
 %% Example:
 %% review_template_summary() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Lenses">> => list(string()()),
+%%   <<"Lenses">> => list(string()),
 %%   <<"Owner">> => string(),
 %%   <<"TemplateArn">> => string(),
 %%   <<"TemplateName">> => string(),
@@ -973,8 +973,8 @@
 
 %% Example:
 %% answer() :: #{
-%%   <<"ChoiceAnswers">> => list(choice_answer()()),
-%%   <<"Choices">> => list(choice()()),
+%%   <<"ChoiceAnswers">> => list(choice_answer()),
+%%   <<"Choices">> => list(choice()),
 %%   <<"HelpfulResourceDisplayText">> => string(),
 %%   <<"HelpfulResourceUrl">> => string(),
 %%   <<"ImprovementPlanUrl">> => string(),
@@ -987,7 +987,7 @@
 %%   <<"QuestionTitle">> => string(),
 %%   <<"Reason">> => list(any()),
 %%   <<"Risk">> => list(any()),
-%%   <<"SelectedChoices">> => list(string()())
+%%   <<"SelectedChoices">> => list(string())
 %% }
 -type answer() :: #{binary() => any()}.
 
@@ -995,15 +995,15 @@
 %% Example:
 %% review_template_answer_summary() :: #{
 %%   <<"AnswerStatus">> => list(any()),
-%%   <<"ChoiceAnswerSummaries">> => list(choice_answer_summary()()),
-%%   <<"Choices">> => list(choice()()),
+%%   <<"ChoiceAnswerSummaries">> => list(choice_answer_summary()),
+%%   <<"Choices">> => list(choice()),
 %%   <<"IsApplicable">> => boolean(),
 %%   <<"PillarId">> => string(),
 %%   <<"QuestionId">> => string(),
 %%   <<"QuestionTitle">> => string(),
 %%   <<"QuestionType">> => list(any()),
 %%   <<"Reason">> => list(any()),
-%%   <<"SelectedChoices">> => list(string()())
+%%   <<"SelectedChoices">> => list(string())
 %% }
 -type review_template_answer_summary() :: #{binary() => any()}.
 
@@ -1069,7 +1069,7 @@
 %% Example:
 %% list_review_templates_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReviewTemplates">> => list(review_template_summary()())
+%%   <<"ReviewTemplates">> => list(review_template_summary())
 %% }
 -type list_review_templates_output() :: #{binary() => any()}.
 
@@ -1125,7 +1125,7 @@
 %%   <<"LensVersion">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"Notes">> => string(),
-%%   <<"PillarReviewSummaries">> => list(review_template_pillar_review_summary()()),
+%%   <<"PillarReviewSummaries">> => list(review_template_pillar_review_summary()),
 %%   <<"QuestionCounts">> => map(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
@@ -1174,7 +1174,7 @@
 %% Example:
 %% review_template() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Lenses">> => list(string()()),
+%%   <<"Lenses">> => list(string()),
 %%   <<"Notes">> => string(),
 %%   <<"Owner">> => string(),
 %%   <<"QuestionCounts">> => map(),
@@ -1192,7 +1192,7 @@
 %% list_workload_shares_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"WorkloadId">> => string(),
-%%   <<"WorkloadShareSummaries">> => list(workload_share_summary()())
+%%   <<"WorkloadShareSummaries">> => list(workload_share_summary())
 %% }
 -type list_workload_shares_output() :: #{binary() => any()}.
 
@@ -1208,7 +1208,7 @@
 
 %% Example:
 %% choice() :: #{
-%%   <<"AdditionalResources">> => list(additional_resources()()),
+%%   <<"AdditionalResources">> => list(additional_resources()),
 %%   <<"ChoiceId">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"HelpfulResource">> => choice_content(),
@@ -1241,7 +1241,7 @@
 %%   <<"IsApplicable">> => boolean(),
 %%   <<"Notes">> => string(),
 %%   <<"Reason">> => list(any()),
-%%   <<"SelectedChoices">> => list(string()())
+%%   <<"SelectedChoices">> => list(string())
 %% }
 -type update_review_template_answer_input() :: #{binary() => any()}.
 
@@ -1249,7 +1249,7 @@
 %% Example:
 %% pillar_metric() :: #{
 %%   <<"PillarId">> => string(),
-%%   <<"Questions">> => list(question_metric()()),
+%%   <<"Questions">> => list(question_metric()),
 %%   <<"RiskCounts">> => map()
 %% }
 -type pillar_metric() :: #{binary() => any()}.
@@ -1338,7 +1338,7 @@
 %%   <<"DifferenceStatus">> => list(any()),
 %%   <<"PillarId">> => string(),
 %%   <<"PillarName">> => string(),
-%%   <<"QuestionDifferences">> => list(question_difference()())
+%%   <<"QuestionDifferences">> => list(question_difference())
 %% }
 -type pillar_difference() :: #{binary() => any()}.
 
@@ -1346,7 +1346,7 @@
 %% Example:
 %% lens_metric() :: #{
 %%   <<"LensArn">> => string(),
-%%   <<"Pillars">> => list(pillar_metric()()),
+%%   <<"Pillars">> => list(pillar_metric()),
 %%   <<"RiskCounts">> => map()
 %% }
 -type lens_metric() :: #{binary() => any()}.
@@ -1372,7 +1372,7 @@
 %% Example:
 %% list_share_invitations_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ShareInvitationSummaries">> => list(share_invitation_summary()())
+%%   <<"ShareInvitationSummaries">> => list(share_invitation_summary())
 %% }
 -type list_share_invitations_output() :: #{binary() => any()}.
 
@@ -1380,7 +1380,7 @@
 %% Example:
 %% selected_pillar() :: #{
 %%   <<"PillarId">> => string(),
-%%   <<"SelectedQuestionIds">> => list(string()())
+%%   <<"SelectedQuestionIds">> => list(string())
 %% }
 -type selected_pillar() :: #{binary() => any()}.
 
@@ -1409,7 +1409,7 @@
 
 %% Example:
 %% additional_resources() :: #{
-%%   <<"Content">> => list(choice_content()()),
+%%   <<"Content">> => list(choice_content()),
 %%   <<"Type">> => list(any())
 %% }
 -type additional_resources() :: #{binary() => any()}.
@@ -1418,7 +1418,7 @@
 %% Example:
 %% list_notifications_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NotificationSummaries">> => list(notification_summary()())
+%%   <<"NotificationSummaries">> => list(notification_summary())
 %% }
 -type list_notifications_output() :: #{binary() => any()}.
 
@@ -1437,7 +1437,7 @@
 %% profile_template() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"TemplateName">> => string(),
-%%   <<"TemplateQuestions">> => list(profile_template_question()()),
+%%   <<"TemplateQuestions">> => list(profile_template_question()),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type profile_template() :: #{binary() => any()}.
@@ -1469,7 +1469,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1503,7 +1503,7 @@
 %% Example:
 %% list_workloads_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WorkloadSummaries">> => list(workload_summary()())
+%%   <<"WorkloadSummaries">> => list(workload_summary())
 %% }
 -type list_workloads_output() :: #{binary() => any()}.
 
@@ -1529,7 +1529,7 @@
 %% Example:
 %% list_profile_notifications_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NotificationSummaries">> => list(profile_notification_summary()())
+%%   <<"NotificationSummaries">> => list(profile_notification_summary())
 %% }
 -type list_profile_notifications_output() :: #{binary() => any()}.
 
@@ -1537,7 +1537,7 @@
 %% Example:
 %% improvement_summary() :: #{
 %%   <<"ImprovementPlanUrl">> => string(),
-%%   <<"ImprovementPlans">> => list(choice_improvement_plan()()),
+%%   <<"ImprovementPlans">> => list(choice_improvement_plan()),
 %%   <<"JiraConfiguration">> => jira_configuration(),
 %%   <<"PillarId">> => string(),
 %%   <<"QuestionId">> => string(),
@@ -1549,7 +1549,7 @@
 
 %% Example:
 %% list_lens_reviews_output() :: #{
-%%   <<"LensReviewSummaries">> => list(lens_review_summary()()),
+%%   <<"LensReviewSummaries">> => list(lens_review_summary()),
 %%   <<"MilestoneNumber">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"WorkloadId">> => string()
@@ -1559,7 +1559,7 @@
 
 %% Example:
 %% disassociate_lenses_input() :: #{
-%%   <<"LensAliases">> := list(string()())
+%%   <<"LensAliases">> := list(string())
 %% }
 -type disassociate_lenses_input() :: #{binary() => any()}.
 
@@ -1601,7 +1601,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()()),
+%%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
 %% }
@@ -1630,10 +1630,10 @@
 
 %% Example:
 %% create_workload_input() :: #{
-%%   <<"AccountIds">> => list(string()()),
-%%   <<"Applications">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Applications">> => list(string()),
 %%   <<"ArchitecturalDesign">> => string(),
-%%   <<"AwsRegions">> => list(string()()),
+%%   <<"AwsRegions">> => list(string()),
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"Description">> := string(),
 %%   <<"DiscoveryConfig">> => workload_discovery_config(),
@@ -1641,13 +1641,13 @@
 %%   <<"Industry">> => string(),
 %%   <<"IndustryType">> => string(),
 %%   <<"JiraConfiguration">> => workload_jira_configuration_input(),
-%%   <<"Lenses">> := list(string()()),
-%%   <<"NonAwsRegions">> => list(string()()),
+%%   <<"Lenses">> := list(string()),
+%%   <<"NonAwsRegions">> => list(string()),
 %%   <<"Notes">> => string(),
-%%   <<"PillarPriorities">> => list(string()()),
-%%   <<"ProfileArns">> => list(string()()),
+%%   <<"PillarPriorities">> => list(string()),
+%%   <<"ProfileArns">> => list(string()),
 %%   <<"ReviewOwner">> => string(),
-%%   <<"ReviewTemplateArns">> => list(string()()),
+%%   <<"ReviewTemplateArns">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"WorkloadName">> := string()
 %% }
@@ -1731,7 +1731,7 @@
 %% Example:
 %% get_consolidated_report_output() :: #{
 %%   <<"Base64String">> => string(),
-%%   <<"Metrics">> => list(consolidated_report_metric()()),
+%%   <<"Metrics">> => list(consolidated_report_metric()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_consolidated_report_output() :: #{binary() => any()}.
@@ -1813,7 +1813,7 @@
 
 %% Example:
 %% version_differences() :: #{
-%%   <<"PillarDifferences">> => list(pillar_difference()())
+%%   <<"PillarDifferences">> => list(pillar_difference())
 %% }
 -type version_differences() :: #{binary() => any()}.
 
@@ -1831,7 +1831,7 @@
 
 %% Example:
 %% list_check_summaries_output() :: #{
-%%   <<"CheckSummaries">> => list(check_summary()()),
+%%   <<"CheckSummaries">> => list(check_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_check_summaries_output() :: #{binary() => any()}.
@@ -1855,7 +1855,7 @@
 
 %% Example:
 %% list_answers_output() :: #{
-%%   <<"AnswerSummaries">> => list(answer_summary()()),
+%%   <<"AnswerSummaries">> => list(answer_summary()),
 %%   <<"LensAlias">> => string(),
 %%   <<"LensArn">> => string(),
 %%   <<"MilestoneNumber">> => integer(),
@@ -1923,10 +1923,10 @@
 
 %% Example:
 %% update_workload_input() :: #{
-%%   <<"AccountIds">> => list(string()()),
-%%   <<"Applications">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
+%%   <<"Applications">> => list(string()),
 %%   <<"ArchitecturalDesign">> => string(),
-%%   <<"AwsRegions">> => list(string()()),
+%%   <<"AwsRegions">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"DiscoveryConfig">> => workload_discovery_config(),
 %%   <<"Environment">> => list(any()),
@@ -1935,9 +1935,9 @@
 %%   <<"IndustryType">> => string(),
 %%   <<"IsReviewOwnerUpdateAcknowledged">> => boolean(),
 %%   <<"JiraConfiguration">> => workload_jira_configuration_input(),
-%%   <<"NonAwsRegions">> => list(string()()),
+%%   <<"NonAwsRegions">> => list(string()),
 %%   <<"Notes">> => string(),
-%%   <<"PillarPriorities">> => list(string()()),
+%%   <<"PillarPriorities">> => list(string()),
 %%   <<"ReviewOwner">> => string(),
 %%   <<"WorkloadName">> => string()
 %% }
@@ -1962,7 +1962,7 @@
 %% profile_template_question() :: #{
 %%   <<"MaxSelectedChoices">> => integer(),
 %%   <<"MinSelectedChoices">> => integer(),
-%%   <<"QuestionChoices">> => list(profile_template_choice()()),
+%%   <<"QuestionChoices">> => list(profile_template_choice()),
 %%   <<"QuestionDescription">> => string(),
 %%   <<"QuestionId">> => string(),
 %%   <<"QuestionTitle">> => string()
@@ -1973,8 +1973,8 @@
 %% Example:
 %% review_template_answer() :: #{
 %%   <<"AnswerStatus">> => list(any()),
-%%   <<"ChoiceAnswers">> => list(choice_answer()()),
-%%   <<"Choices">> => list(choice()()),
+%%   <<"ChoiceAnswers">> => list(choice_answer()),
+%%   <<"Choices">> => list(choice()),
 %%   <<"HelpfulResourceDisplayText">> => string(),
 %%   <<"HelpfulResourceUrl">> => string(),
 %%   <<"ImprovementPlanUrl">> => string(),
@@ -1985,7 +1985,7 @@
 %%   <<"QuestionId">> => string(),
 %%   <<"QuestionTitle">> => string(),
 %%   <<"Reason">> => list(any()),
-%%   <<"SelectedChoices">> => list(string()())
+%%   <<"SelectedChoices">> => list(string())
 %% }
 -type review_template_answer() :: #{binary() => any()}.
 
@@ -1993,7 +1993,7 @@
 %% Example:
 %% update_profile_input() :: #{
 %%   <<"ProfileDescription">> => string(),
-%%   <<"ProfileQuestions">> => list(profile_question_update()())
+%%   <<"ProfileQuestions">> => list(profile_question_update())
 %% }
 -type update_profile_input() :: #{binary() => any()}.
 
@@ -2020,8 +2020,8 @@
 
 %% Example:
 %% answer_summary() :: #{
-%%   <<"ChoiceAnswerSummaries">> => list(choice_answer_summary()()),
-%%   <<"Choices">> => list(choice()()),
+%%   <<"ChoiceAnswerSummaries">> => list(choice_answer_summary()),
+%%   <<"Choices">> => list(choice()),
 %%   <<"IsApplicable">> => boolean(),
 %%   <<"JiraConfiguration">> => jira_configuration(),
 %%   <<"PillarId">> => string(),
@@ -2030,7 +2030,7 @@
 %%   <<"QuestionType">> => list(any()),
 %%   <<"Reason">> => list(any()),
 %%   <<"Risk">> => list(any()),
-%%   <<"SelectedChoices">> => list(string()())
+%%   <<"SelectedChoices">> => list(string())
 %% }
 -type answer_summary() :: #{binary() => any()}.
 

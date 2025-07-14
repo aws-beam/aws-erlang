@@ -109,7 +109,7 @@
 
 %% Example:
 %% list_models_response() :: #{
-%%   <<"Models">> => list(model_metadata()()),
+%%   <<"Models">> => list(model_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_models_response() :: #{binary() => any()}.
@@ -117,7 +117,7 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -125,7 +125,7 @@
 %% Example:
 %% project_description() :: #{
 %%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"Datasets">> => list(dataset_metadata()()),
+%%   <<"Datasets">> => list(dataset_metadata()),
 %%   <<"ProjectArn">> => string(),
 %%   <<"ProjectName">> => string()
 %% }
@@ -227,7 +227,7 @@
 %%   <<"Description">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"OutputConfig">> := output_config(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_model_request() :: #{binary() => any()}.
 
@@ -238,7 +238,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -352,7 +352,7 @@
 %% Example:
 %% list_projects_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Projects">> => list(project_metadata()())
+%%   <<"Projects">> => list(project_metadata())
 %% }
 -type list_projects_response() :: #{binary() => any()}.
 
@@ -372,7 +372,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -396,7 +396,7 @@
 
 %% Example:
 %% detect_anomaly_result() :: #{
-%%   <<"Anomalies">> => list(anomaly()()),
+%%   <<"Anomalies">> => list(anomaly()),
 %%   <<"AnomalyMask">> => binary(),
 %%   <<"Confidence">> => float(),
 %%   <<"IsAnomalous">> => boolean(),
@@ -443,7 +443,7 @@
 
 %% Example:
 %% list_model_packaging_jobs_response() :: #{
-%%   <<"ModelPackagingJobs">> => list(model_packaging_job_metadata()()),
+%%   <<"ModelPackagingJobs">> => list(model_packaging_job_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_model_packaging_jobs_response() :: #{binary() => any()}.
@@ -608,7 +608,7 @@
 %%   <<"ComponentName">> => string(),
 %%   <<"ComponentVersion">> => string(),
 %%   <<"S3OutputLocation">> => s3_location(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetDevice">> => list(any()),
 %%   <<"TargetPlatform">> => target_platform()
 %% }
@@ -683,7 +683,7 @@
 
 %% Example:
 %% list_dataset_entries_response() :: #{
-%%   <<"DatasetEntries">> => list(string()()),
+%%   <<"DatasetEntries">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dataset_entries_response() :: #{binary() => any()}.

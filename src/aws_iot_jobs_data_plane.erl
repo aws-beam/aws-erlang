@@ -108,8 +108,8 @@
 
 %% Example:
 %% get_pending_job_executions_response() :: #{
-%%   <<"inProgressJobs">> => list(job_execution_summary()()),
-%%   <<"queuedJobs">> => list(job_execution_summary()())
+%%   <<"inProgressJobs">> => list(job_execution_summary()),
+%%   <<"queuedJobs">> => list(job_execution_summary())
 %% }
 -type get_pending_job_executions_response() :: #{binary() => any()}.
 

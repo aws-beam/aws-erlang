@@ -254,7 +254,7 @@
 
 %% Example:
 %% describe_configuration_recorder_status_response() :: #{
-%%   <<"ConfigurationRecordersStatus">> => list(configuration_recorder_status()())
+%%   <<"ConfigurationRecordersStatus">> => list(configuration_recorder_status())
 %% }
 -type describe_configuration_recorder_status_response() :: #{binary() => any()}.
 
@@ -331,7 +331,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -349,7 +349,7 @@
 
 %% Example:
 %% get_aggregate_conformance_pack_compliance_summary_response() :: #{
-%%   <<"AggregateConformancePackComplianceSummaries">> => list(aggregate_conformance_pack_compliance_summary()()),
+%%   <<"AggregateConformancePackComplianceSummaries">> => list(aggregate_conformance_pack_compliance_summary()),
 %%   <<"GroupByKey">> => string(),
 %%   <<"NextToken">> => string()
 %% }
@@ -357,7 +357,7 @@
 
 %% Example:
 %% get_compliance_details_by_resource_response() :: #{
-%%   <<"EvaluationResults">> => list(evaluation_result()()),
+%%   <<"EvaluationResults">> => list(evaluation_result()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_compliance_details_by_resource_response() :: #{binary() => any()}.
@@ -377,7 +377,7 @@
 %% Example:
 %% get_aggregate_discovered_resource_counts_response() :: #{
 %%   <<"GroupByKey">> => string(),
-%%   <<"GroupedResourceCounts">> => list(grouped_resource_count()()),
+%%   <<"GroupedResourceCounts">> => list(grouped_resource_count()),
 %%   <<"NextToken">> => string(),
 %%   <<"TotalDiscoveredResources">> => float()
 %% }
@@ -392,7 +392,7 @@
 %% Example:
 %% put_service_linked_configuration_recorder_request() :: #{
 %%   <<"ServicePrincipal">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_service_linked_configuration_recorder_request() :: #{binary() => any()}.
 
@@ -410,7 +410,7 @@
 
 %% Example:
 %% describe_config_rule_evaluation_status_request() :: #{
-%%   <<"ConfigRuleNames">> => list(string()()),
+%%   <<"ConfigRuleNames">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -458,7 +458,7 @@
 %%   <<"ConfigRuleState">> => list(any()),
 %%   <<"CreatedBy">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"EvaluationModes">> => list(evaluation_mode_configuration()()),
+%%   <<"EvaluationModes">> => list(evaluation_mode_configuration()),
 %%   <<"InputParameters">> => string(),
 %%   <<"MaximumExecutionFrequency">> => list(any()),
 %%   <<"Scope">> => scope(),
@@ -475,7 +475,7 @@
 %% Example:
 %% put_config_rule_request() :: #{
 %%   <<"ConfigRule">> := config_rule(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_config_rule_request() :: #{binary() => any()}.
 
@@ -494,13 +494,13 @@
 %% Example:
 %% describe_retention_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RetentionConfigurations">> => list(retention_configuration()())
+%%   <<"RetentionConfigurations">> => list(retention_configuration())
 %% }
 -type describe_retention_configurations_response() :: #{binary() => any()}.
 
 %% Example:
 %% configuration_aggregator() :: #{
-%%   <<"AccountAggregationSources">> => list(account_aggregation_source()()),
+%%   <<"AccountAggregationSources">> => list(account_aggregation_source()),
 %%   <<"AggregatorFilters">> => aggregator_filters(),
 %%   <<"ConfigurationAggregatorArn">> => string(),
 %%   <<"ConfigurationAggregatorName">> => string(),
@@ -574,7 +574,7 @@
 
 %% Example:
 %% get_conformance_pack_compliance_summary_response() :: #{
-%%   <<"ConformancePackComplianceSummaryList">> => list(conformance_pack_compliance_summary()()),
+%%   <<"ConformancePackComplianceSummaryList">> => list(conformance_pack_compliance_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_conformance_pack_compliance_summary_response() :: #{binary() => any()}.
@@ -596,7 +596,7 @@
 
 %% Example:
 %% delete_remediation_exceptions_response() :: #{
-%%   <<"FailedBatches">> => list(failed_delete_remediation_exceptions_batch()())
+%%   <<"FailedBatches">> => list(failed_delete_remediation_exceptions_batch())
 %% }
 -type delete_remediation_exceptions_response() :: #{binary() => any()}.
 
@@ -609,7 +609,7 @@
 %% Example:
 %% describe_compliance_by_config_rule_request() :: #{
 %%   <<"ComplianceTypes">> => list(list(any())()),
-%%   <<"ConfigRuleNames">> => list(string()()),
+%%   <<"ConfigRuleNames">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_compliance_by_config_rule_request() :: #{binary() => any()}.
@@ -617,26 +617,26 @@
 %% Example:
 %% describe_organization_config_rules_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConfigRules">> => list(organization_config_rule()())
+%%   <<"OrganizationConfigRules">> => list(organization_config_rule())
 %% }
 -type describe_organization_config_rules_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_remediation_exceptions_request() :: #{
 %%   <<"ConfigRuleName">> := string(),
-%%   <<"ResourceKeys">> := list(remediation_exception_resource_key()())
+%%   <<"ResourceKeys">> := list(remediation_exception_resource_key())
 %% }
 -type delete_remediation_exceptions_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_remediation_configurations_request() :: #{
-%%   <<"RemediationConfigurations">> := list(remediation_configuration()())
+%%   <<"RemediationConfigurations">> := list(remediation_configuration())
 %% }
 -type put_remediation_configurations_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_remediation_configurations_request() :: #{
-%%   <<"ConfigRuleNames">> := list(string()())
+%%   <<"ConfigRuleNames">> := list(string())
 %% }
 -type describe_remediation_configurations_request() :: #{binary() => any()}.
 
@@ -648,7 +648,7 @@
 
 %% Example:
 %% get_aggregate_compliance_details_by_config_rule_response() :: #{
-%%   <<"AggregateEvaluationResults">> => list(aggregate_evaluation_result()()),
+%%   <<"AggregateEvaluationResults">> => list(aggregate_evaluation_result()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_aggregate_compliance_details_by_config_rule_response() :: #{binary() => any()}.
@@ -684,7 +684,7 @@
 
 %% Example:
 %% describe_delivery_channels_request() :: #{
-%%   <<"DeliveryChannelNames">> => list(string()())
+%%   <<"DeliveryChannelNames">> => list(string())
 %% }
 -type describe_delivery_channels_request() :: #{binary() => any()}.
 
@@ -722,7 +722,7 @@
 
 %% Example:
 %% list_configuration_recorders_response() :: #{
-%%   <<"ConfigurationRecorderSummaries">> => list(configuration_recorder_summary()()),
+%%   <<"ConfigurationRecorderSummaries">> => list(configuration_recorder_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_recorders_response() :: #{binary() => any()}.
@@ -736,14 +736,14 @@
 
 %% Example:
 %% describe_remediation_configurations_response() :: #{
-%%   <<"RemediationConfigurations">> => list(remediation_configuration()())
+%%   <<"RemediationConfigurations">> => list(remediation_configuration())
 %% }
 -type describe_remediation_configurations_response() :: #{binary() => any()}.
 
 %% Example:
 %% recording_mode() :: #{
 %%   <<"recordingFrequency">> => list(any()),
-%%   <<"recordingModeOverrides">> => list(recording_mode_override()())
+%%   <<"recordingModeOverrides">> => list(recording_mode_override())
 %% }
 -type recording_mode() :: #{binary() => any()}.
 
@@ -756,13 +756,13 @@
 %% Example:
 %% list_resource_evaluations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceEvaluations">> => list(resource_evaluation()())
+%%   <<"ResourceEvaluations">> => list(resource_evaluation())
 %% }
 -type list_resource_evaluations_response() :: #{binary() => any()}.
 
 %% Example:
 %% failed_remediation_exception_batch() :: #{
-%%   <<"FailedItems">> => list(remediation_exception()()),
+%%   <<"FailedItems">> => list(remediation_exception()),
 %%   <<"FailureMessage">> => string()
 %% }
 -type failed_remediation_exception_batch() :: #{binary() => any()}.
@@ -775,7 +775,7 @@
 
 %% Example:
 %% get_compliance_details_by_config_rule_response() :: #{
-%%   <<"EvaluationResults">> => list(evaluation_result()()),
+%%   <<"EvaluationResults">> => list(evaluation_result()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_compliance_details_by_config_rule_response() :: #{binary() => any()}.
@@ -804,7 +804,7 @@
 %% Example:
 %% describe_organization_conformance_packs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConformancePacks">> => list(organization_conformance_pack()())
+%%   <<"OrganizationConformancePacks">> => list(organization_conformance_pack())
 %% }
 -type describe_organization_conformance_packs_response() :: #{binary() => any()}.
 
@@ -825,14 +825,14 @@
 
 %% Example:
 %% describe_compliance_by_config_rule_response() :: #{
-%%   <<"ComplianceByConfigRules">> => list(compliance_by_config_rule()()),
+%%   <<"ComplianceByConfigRules">> => list(compliance_by_config_rule()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_compliance_by_config_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_evaluations_request() :: #{
-%%   <<"Evaluations">> => list(evaluation()()),
+%%   <<"Evaluations">> => list(evaluation()),
 %%   <<"ResultToken">> := string(),
 %%   <<"TestMode">> => boolean()
 %% }
@@ -846,7 +846,7 @@
 
 %% Example:
 %% describe_config_rules_response() :: #{
-%%   <<"ConfigRules">> => list(config_rule()()),
+%%   <<"ConfigRules">> => list(config_rule()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_config_rules_response() :: #{binary() => any()}.
@@ -866,13 +866,13 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_conformance_pack_compliance_summary_request() :: #{
-%%   <<"ConformancePackNames">> := list(string()()),
+%%   <<"ConformancePackNames">> := list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -902,7 +902,7 @@
 
 %% Example:
 %% get_aggregate_config_rule_compliance_summary_response() :: #{
-%%   <<"AggregateComplianceCounts">> => list(aggregate_compliance_count()()),
+%%   <<"AggregateComplianceCounts">> => list(aggregate_compliance_count()),
 %%   <<"GroupByKey">> => string(),
 %%   <<"NextToken">> => string()
 %% }
@@ -917,7 +917,7 @@
 
 %% Example:
 %% get_compliance_summary_by_resource_type_response() :: #{
-%%   <<"ComplianceSummariesByResourceType">> => list(compliance_summary_by_resource_type()())
+%%   <<"ComplianceSummariesByResourceType">> => list(compliance_summary_by_resource_type())
 %% }
 -type get_compliance_summary_by_resource_type_response() :: #{binary() => any()}.
 
@@ -933,14 +933,14 @@
 
 %% Example:
 %% batch_get_aggregate_resource_config_response() :: #{
-%%   <<"BaseConfigurationItems">> => list(base_configuration_item()()),
-%%   <<"UnprocessedResourceIdentifiers">> => list(aggregate_resource_identifier()())
+%%   <<"BaseConfigurationItems">> => list(base_configuration_item()),
+%%   <<"UnprocessedResourceIdentifiers">> => list(aggregate_resource_identifier())
 %% }
 -type batch_get_aggregate_resource_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_conformance_pack_status_response() :: #{
-%%   <<"ConformancePackStatusDetails">> => list(conformance_pack_status_detail()()),
+%%   <<"ConformancePackStatusDetails">> => list(conformance_pack_status_detail()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_conformance_pack_status_response() :: #{binary() => any()}.
@@ -955,13 +955,13 @@
 %% select_resource_config_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"QueryInfo">> => query_info(),
-%%   <<"Results">> => list(string()())
+%%   <<"Results">> => list(string())
 %% }
 -type select_resource_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_resource_config_history_response() :: #{
-%%   <<"configurationItems">> => list(configuration_item()()),
+%%   <<"configurationItems">> => list(configuration_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_resource_config_history_response() :: #{binary() => any()}.
@@ -1000,13 +1000,13 @@
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"ResourceKey">> => resource_key(),
 %%   <<"State">> => list(any()),
-%%   <<"StepDetails">> => list(remediation_execution_step()())
+%%   <<"StepDetails">> => list(remediation_execution_step())
 %% }
 -type remediation_execution_status() :: #{binary() => any()}.
 
 %% Example:
 %% describe_delivery_channels_response() :: #{
-%%   <<"DeliveryChannels">> => list(delivery_channel()())
+%%   <<"DeliveryChannels">> => list(delivery_channel())
 %% }
 -type describe_delivery_channels_response() :: #{binary() => any()}.
 
@@ -1025,7 +1025,7 @@
 %% Example:
 %% organization_aggregation_source() :: #{
 %%   <<"AllAwsRegions">> => boolean(),
-%%   <<"AwsRegions">> => list(string()()),
+%%   <<"AwsRegions">> => list(string()),
 %%   <<"RoleArn">> => string()
 %% }
 -type organization_aggregation_source() :: #{binary() => any()}.
@@ -1036,7 +1036,7 @@
 %%   <<"InputParameters">> => string(),
 %%   <<"MaximumExecutionFrequency">> => list(any()),
 %%   <<"ResourceIdScope">> => string(),
-%%   <<"ResourceTypesScope">> => list(string()()),
+%%   <<"ResourceTypesScope">> => list(string()),
 %%   <<"RuleIdentifier">> => string(),
 %%   <<"TagKeyScope">> => string(),
 %%   <<"TagValueScope">> => string()
@@ -1055,7 +1055,7 @@
 %% Example:
 %% list_discovered_resources_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resourceIdentifiers">> => list(resource_identifier()())
+%%   <<"resourceIdentifiers">> => list(resource_identifier())
 %% }
 -type list_discovered_resources_response() :: #{binary() => any()}.
 
@@ -1067,7 +1067,7 @@
 
 %% Example:
 %% describe_delivery_channel_status_request() :: #{
-%%   <<"DeliveryChannelNames">> => list(string()())
+%%   <<"DeliveryChannelNames">> => list(string())
 %% }
 -type describe_delivery_channel_status_request() :: #{binary() => any()}.
 
@@ -1075,27 +1075,27 @@
 %% describe_organization_config_rules_request() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConfigRuleNames">> => list(string()())
+%%   <<"OrganizationConfigRuleNames">> => list(string())
 %% }
 -type describe_organization_config_rules_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_organization_config_rule_detailed_status_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConfigRuleDetailedStatus">> => list(member_account_status()())
+%%   <<"OrganizationConfigRuleDetailedStatus">> => list(member_account_status())
 %% }
 -type get_organization_config_rule_detailed_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_compliance_by_resource_response() :: #{
-%%   <<"ComplianceByResources">> => list(compliance_by_resource()()),
+%%   <<"ComplianceByResources">> => list(compliance_by_resource()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_compliance_by_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_remediation_configurations_response() :: #{
-%%   <<"FailedBatches">> => list(failed_remediation_batch()())
+%%   <<"FailedBatches">> => list(failed_remediation_batch())
 %% }
 -type put_remediation_configurations_response() :: #{binary() => any()}.
 
@@ -1174,7 +1174,7 @@
 %% describe_organization_config_rule_statuses_request() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConfigRuleNames">> => list(string()())
+%%   <<"OrganizationConfigRuleNames">> => list(string())
 %% }
 -type describe_organization_config_rule_statuses_request() :: #{binary() => any()}.
 
@@ -1183,14 +1183,14 @@
 %%   <<"ConfigRuleName">> := string(),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceKeys">> => list(resource_key()())
+%%   <<"ResourceKeys">> => list(resource_key())
 %% }
 -type describe_remediation_execution_status_request() :: #{binary() => any()}.
 
 %% Example:
 %% aggregator_filter_resource_type() :: #{
 %%   <<"Type">> => list(any()),
-%%   <<"Value">> => list(string()())
+%%   <<"Value">> => list(string())
 %% }
 -type aggregator_filter_resource_type() :: #{binary() => any()}.
 
@@ -1198,7 +1198,7 @@
 %% conformance_pack_detail() :: #{
 %%   <<"ConformancePackArn">> => string(),
 %%   <<"ConformancePackId">> => string(),
-%%   <<"ConformancePackInputParameters">> => list(conformance_pack_input_parameter()()),
+%%   <<"ConformancePackInputParameters">> => list(conformance_pack_input_parameter()),
 %%   <<"ConformancePackName">> => string(),
 %%   <<"CreatedBy">> => string(),
 %%   <<"DeliveryS3Bucket">> => string(),
@@ -1210,7 +1210,7 @@
 
 %% Example:
 %% put_conformance_pack_request() :: #{
-%%   <<"ConformancePackInputParameters">> => list(conformance_pack_input_parameter()()),
+%%   <<"ConformancePackInputParameters">> => list(conformance_pack_input_parameter()),
 %%   <<"ConformancePackName">> := string(),
 %%   <<"DeliveryS3Bucket">> => string(),
 %%   <<"DeliveryS3KeyPrefix">> => string(),
@@ -1248,7 +1248,7 @@
 %% Example:
 %% describe_configuration_recorder_status_request() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ConfigurationRecorderNames">> => list(string()()),
+%%   <<"ConfigurationRecorderNames">> => list(string()),
 %%   <<"ServicePrincipal">> => string()
 %% }
 -type describe_configuration_recorder_status_request() :: #{binary() => any()}.
@@ -1305,16 +1305,16 @@
 
 %% Example:
 %% account_aggregation_source() :: #{
-%%   <<"AccountIds">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
 %%   <<"AllAwsRegions">> => boolean(),
-%%   <<"AwsRegions">> => list(string()())
+%%   <<"AwsRegions">> => list(string())
 %% }
 -type account_aggregation_source() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_resource_config_response() :: #{
-%%   <<"baseConfigurationItems">> => list(base_configuration_item()()),
-%%   <<"unprocessedResourceKeys">> => list(resource_key()())
+%%   <<"baseConfigurationItems">> => list(base_configuration_item()),
+%%   <<"unprocessedResourceKeys">> => list(resource_key())
 %% }
 -type batch_get_resource_config_response() :: #{binary() => any()}.
 
@@ -1328,7 +1328,7 @@
 
 %% Example:
 %% describe_configuration_aggregators_request() :: #{
-%%   <<"ConfigurationAggregatorNames">> => list(string()()),
+%%   <<"ConfigurationAggregatorNames">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1347,8 +1347,8 @@
 %% Example:
 %% conformance_pack_evaluation_filters() :: #{
 %%   <<"ComplianceType">> => list(any()),
-%%   <<"ConfigRuleNames">> => list(string()()),
-%%   <<"ResourceIds">> => list(string()()),
+%%   <<"ConfigRuleNames">> => list(string()),
+%%   <<"ResourceIds">> => list(string()),
 %%   <<"ResourceType">> => string()
 %% }
 -type conformance_pack_evaluation_filters() :: #{binary() => any()}.
@@ -1362,14 +1362,14 @@
 
 %% Example:
 %% start_remediation_execution_response() :: #{
-%%   <<"FailedItems">> => list(resource_key()()),
+%%   <<"FailedItems">> => list(resource_key()),
 %%   <<"FailureMessage">> => string()
 %% }
 -type start_remediation_execution_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_aggregate_compliance_by_config_rules_response() :: #{
-%%   <<"AggregateComplianceByConfigRules">> => list(aggregate_compliance_by_config_rule()()),
+%%   <<"AggregateComplianceByConfigRules">> => list(aggregate_compliance_by_config_rule()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_aggregate_compliance_by_config_rules_response() :: #{binary() => any()}.
@@ -1433,7 +1433,7 @@
 %% Example:
 %% describe_organization_conformance_pack_statuses_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConformancePackStatuses">> => list(organization_conformance_pack_status()())
+%%   <<"OrganizationConformancePackStatuses">> => list(organization_conformance_pack_status())
 %% }
 -type describe_organization_conformance_pack_statuses_response() :: #{binary() => any()}.
 
@@ -1470,7 +1470,7 @@
 
 %% Example:
 %% describe_configuration_aggregators_response() :: #{
-%%   <<"ConfigurationAggregators">> => list(configuration_aggregator()()),
+%%   <<"ConfigurationAggregators">> => list(configuration_aggregator()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_configuration_aggregators_response() :: #{binary() => any()}.
@@ -1488,14 +1488,14 @@
 %% Example:
 %% conformance_pack_compliance_filters() :: #{
 %%   <<"ComplianceType">> => list(any()),
-%%   <<"ConfigRuleNames">> => list(string()())
+%%   <<"ConfigRuleNames">> => list(string())
 %% }
 -type conformance_pack_compliance_filters() :: #{binary() => any()}.
 
 %% Example:
 %% start_remediation_execution_request() :: #{
 %%   <<"ConfigRuleName">> := string(),
-%%   <<"ResourceKeys">> := list(resource_key()())
+%%   <<"ResourceKeys">> := list(resource_key())
 %% }
 -type start_remediation_execution_request() :: #{binary() => any()}.
 
@@ -1504,7 +1504,7 @@
 %%   <<"includeDeletedResources">> => boolean(),
 %%   <<"limit">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"resourceIds">> => list(string()()),
+%%   <<"resourceIds">> => list(string()),
 %%   <<"resourceName">> => string(),
 %%   <<"resourceType">> := list(any())
 %% }
@@ -1513,7 +1513,7 @@
 %% Example:
 %% list_aggregate_discovered_resources_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceIdentifiers">> => list(aggregate_resource_identifier()())
+%%   <<"ResourceIdentifiers">> => list(aggregate_resource_identifier())
 %% }
 -type list_aggregate_discovered_resources_response() :: #{binary() => any()}.
 
@@ -1527,7 +1527,7 @@
 %% conformance_pack_rule_compliance() :: #{
 %%   <<"ComplianceType">> => list(any()),
 %%   <<"ConfigRuleName">> => string(),
-%%   <<"Controls">> => list(string()())
+%%   <<"Controls">> => list(string())
 %% }
 -type conformance_pack_rule_compliance() :: #{binary() => any()}.
 
@@ -1573,7 +1573,7 @@
 
 %% Example:
 %% describe_aggregate_compliance_by_conformance_packs_response() :: #{
-%%   <<"AggregateComplianceByConformancePacks">> => list(aggregate_compliance_by_conformance_pack()()),
+%%   <<"AggregateComplianceByConformancePacks">> => list(aggregate_compliance_by_conformance_pack()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_aggregate_compliance_by_conformance_packs_response() :: #{binary() => any()}.
@@ -1587,20 +1587,20 @@
 
 %% Example:
 %% put_remediation_exceptions_response() :: #{
-%%   <<"FailedBatches">> => list(failed_remediation_exception_batch()())
+%%   <<"FailedBatches">> => list(failed_remediation_exception_batch())
 %% }
 -type put_remediation_exceptions_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_config_rules_evaluation_request() :: #{
-%%   <<"ConfigRuleNames">> => list(string()())
+%%   <<"ConfigRuleNames">> => list(string())
 %% }
 -type start_config_rules_evaluation_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1628,7 +1628,7 @@
 %% Example:
 %% describe_configuration_recorders_request() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ConfigurationRecorderNames">> => list(string()()),
+%%   <<"ConfigurationRecorderNames">> => list(string()),
 %%   <<"ServicePrincipal">> => string()
 %% }
 -type describe_configuration_recorders_request() :: #{binary() => any()}.
@@ -1676,14 +1676,14 @@
 %% Example:
 %% aggregator_filter_service_principal() :: #{
 %%   <<"Type">> => list(any()),
-%%   <<"Value">> => list(string()())
+%%   <<"Value">> => list(string())
 %% }
 -type aggregator_filter_service_principal() :: #{binary() => any()}.
 
 %% Example:
 %% describe_remediation_exceptions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RemediationExceptions">> => list(remediation_exception()())
+%%   <<"RemediationExceptions">> => list(remediation_exception())
 %% }
 -type describe_remediation_exceptions_response() :: #{binary() => any()}.
 
@@ -1737,7 +1737,7 @@
 
 %% Example:
 %% describe_conformance_pack_status_request() :: #{
-%%   <<"ConformancePackNames">> => list(string()()),
+%%   <<"ConformancePackNames">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1755,11 +1755,11 @@
 
 %% Example:
 %% put_configuration_aggregator_request() :: #{
-%%   <<"AccountAggregationSources">> => list(account_aggregation_source()()),
+%%   <<"AccountAggregationSources">> => list(account_aggregation_source()),
 %%   <<"AggregatorFilters">> => aggregator_filters(),
 %%   <<"ConfigurationAggregatorName">> := string(),
 %%   <<"OrganizationAggregationSource">> => organization_aggregation_source(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_configuration_aggregator_request() :: #{binary() => any()}.
 
@@ -1803,7 +1803,7 @@
 
 %% Example:
 %% describe_aggregation_authorizations_response() :: #{
-%%   <<"AggregationAuthorizations">> => list(aggregation_authorization()()),
+%%   <<"AggregationAuthorizations">> => list(aggregation_authorization()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_aggregation_authorizations_response() :: #{binary() => any()}.
@@ -1829,7 +1829,7 @@
 %% source() :: #{
 %%   <<"CustomPolicyDetails">> => custom_policy_details(),
 %%   <<"Owner">> => list(any()),
-%%   <<"SourceDetails">> => list(source_detail()()),
+%%   <<"SourceDetails">> => list(source_detail()),
 %%   <<"SourceIdentifier">> => string()
 %% }
 -type source() :: #{binary() => any()}.
@@ -1852,7 +1852,7 @@
 %% Example:
 %% scope() :: #{
 %%   <<"ComplianceResourceId">> => string(),
-%%   <<"ComplianceResourceTypes">> => list(string()()),
+%%   <<"ComplianceResourceTypes">> => list(string()),
 %%   <<"TagKey">> => string(),
 %%   <<"TagValue">> => string()
 %% }
@@ -1868,7 +1868,7 @@
 %% Example:
 %% configuration_recorder_filter() :: #{
 %%   <<"filterName">> => list(any()),
-%%   <<"filterValue">> => list(string()())
+%%   <<"filterValue">> => list(string())
 %% }
 -type configuration_recorder_filter() :: #{binary() => any()}.
 
@@ -1889,7 +1889,7 @@
 %% Example:
 %% put_stored_query_request() :: #{
 %%   <<"StoredQuery">> := stored_query(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_stored_query_request() :: #{binary() => any()}.
 
@@ -1897,13 +1897,13 @@
 %% get_discovered_resource_counts_request() :: #{
 %%   <<"limit">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"resourceTypes">> => list(string()())
+%%   <<"resourceTypes">> => list(string())
 %% }
 -type get_discovered_resource_counts_request() :: #{binary() => any()}.
 
 %% Example:
 %% put_evaluations_response() :: #{
-%%   <<"FailedEvaluations">> => list(evaluation()())
+%%   <<"FailedEvaluations">> => list(evaluation())
 %% }
 -type put_evaluations_response() :: #{binary() => any()}.
 
@@ -1915,7 +1915,7 @@
 
 %% Example:
 %% failed_delete_remediation_exceptions_batch() :: #{
-%%   <<"FailedItems">> => list(remediation_exception_resource_key()()),
+%%   <<"FailedItems">> => list(remediation_exception_resource_key()),
 %%   <<"FailureMessage">> => string()
 %% }
 -type failed_delete_remediation_exceptions_batch() :: #{binary() => any()}.
@@ -1942,7 +1942,7 @@
 %% put_aggregation_authorization_request() :: #{
 %%   <<"AuthorizedAccountId">> := string(),
 %%   <<"AuthorizedAwsRegion">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_aggregation_authorization_request() :: #{binary() => any()}.
 
@@ -1978,13 +1978,13 @@
 %% Example:
 %% get_organization_conformance_pack_detailed_status_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConformancePackDetailedStatuses">> => list(organization_conformance_pack_detailed_status()())
+%%   <<"OrganizationConformancePackDetailedStatuses">> => list(organization_conformance_pack_detailed_status())
 %% }
 -type get_organization_conformance_pack_detailed_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_conformance_packs_request() :: #{
-%%   <<"ConformancePackNames">> => list(string()()),
+%%   <<"ConformancePackNames">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1992,7 +1992,7 @@
 
 %% Example:
 %% get_compliance_summary_by_resource_type_request() :: #{
-%%   <<"ResourceTypes">> => list(string()())
+%%   <<"ResourceTypes">> => list(string())
 %% }
 -type get_compliance_summary_by_resource_type_request() :: #{binary() => any()}.
 
@@ -2025,20 +2025,20 @@
 
 %% Example:
 %% conformance_pack_compliance_scores_filters() :: #{
-%%   <<"ConformancePackNames">> => list(string()())
+%%   <<"ConformancePackNames">> => list(string())
 %% }
 -type conformance_pack_compliance_scores_filters() :: #{binary() => any()}.
 
 %% Example:
 %% failed_remediation_batch() :: #{
-%%   <<"FailedItems">> => list(remediation_configuration()()),
+%%   <<"FailedItems">> => list(remediation_configuration()),
 %%   <<"FailureMessage">> => string()
 %% }
 -type failed_remediation_batch() :: #{binary() => any()}.
 
 %% Example:
 %% put_organization_config_rule_request() :: #{
-%%   <<"ExcludedAccounts">> => list(string()()),
+%%   <<"ExcludedAccounts">> => list(string()),
 %%   <<"OrganizationConfigRuleName">> := string(),
 %%   <<"OrganizationCustomPolicyRuleMetadata">> => organization_custom_policy_rule_metadata(),
 %%   <<"OrganizationCustomRuleMetadata">> => organization_custom_rule_metadata(),
@@ -2059,7 +2059,7 @@
 %% Example:
 %% list_stored_queries_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StoredQueryMetadata">> => list(stored_query_metadata()())
+%%   <<"StoredQueryMetadata">> => list(stored_query_metadata())
 %% }
 -type list_stored_queries_response() :: #{binary() => any()}.
 
@@ -2073,7 +2073,7 @@
 %% Example:
 %% get_discovered_resource_counts_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resourceCounts">> => list(resource_count()()),
+%%   <<"resourceCounts">> => list(resource_count()),
 %%   <<"totalDiscoveredResources">> => float()
 %% }
 -type get_discovered_resource_counts_response() :: #{binary() => any()}.
@@ -2154,7 +2154,7 @@
 %% Example:
 %% describe_retention_configurations_request() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RetentionConfigurationNames">> => list(string()())
+%%   <<"RetentionConfigurationNames">> => list(string())
 %% }
 -type describe_retention_configurations_request() :: #{binary() => any()}.
 
@@ -2188,7 +2188,7 @@
 %%   <<"MaximumExecutionFrequency">> => list(any()),
 %%   <<"OrganizationConfigRuleTriggerTypes">> => list(list(any())()),
 %%   <<"ResourceIdScope">> => string(),
-%%   <<"ResourceTypesScope">> => list(string()()),
+%%   <<"ResourceTypesScope">> => list(string()),
 %%   <<"TagKeyScope">> => string(),
 %%   <<"TagValueScope">> => string()
 %% }
@@ -2196,7 +2196,7 @@
 
 %% Example:
 %% describe_configuration_recorders_response() :: #{
-%%   <<"ConfigurationRecorders">> => list(configuration_recorder()())
+%%   <<"ConfigurationRecorders">> => list(configuration_recorder())
 %% }
 -type describe_configuration_recorders_response() :: #{binary() => any()}.
 
@@ -2228,7 +2228,7 @@
 
 %% Example:
 %% describe_config_rules_request() :: #{
-%%   <<"ConfigRuleNames">> => list(string()()),
+%%   <<"ConfigRuleNames">> => list(string()),
 %%   <<"Filters">> => describe_config_rules_filters(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2236,7 +2236,7 @@
 
 %% Example:
 %% batch_get_resource_config_request() :: #{
-%%   <<"resourceKeys">> := list(resource_key()())
+%%   <<"resourceKeys">> := list(resource_key())
 %% }
 -type batch_get_resource_config_request() :: #{binary() => any()}.
 
@@ -2251,7 +2251,7 @@
 
 %% Example:
 %% describe_configuration_aggregator_sources_status_response() :: #{
-%%   <<"AggregatedSourceStatusList">> => list(aggregated_source_status()()),
+%%   <<"AggregatedSourceStatusList">> => list(aggregated_source_status()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_configuration_aggregator_sources_status_response() :: #{binary() => any()}.
@@ -2301,20 +2301,20 @@
 
 %% Example:
 %% describe_delivery_channel_status_response() :: #{
-%%   <<"DeliveryChannelsStatus">> => list(delivery_channel_status()())
+%%   <<"DeliveryChannelsStatus">> => list(delivery_channel_status())
 %% }
 -type describe_delivery_channel_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_remediation_execution_status_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RemediationExecutionStatuses">> => list(remediation_execution_status()())
+%%   <<"RemediationExecutionStatuses">> => list(remediation_execution_status())
 %% }
 -type describe_remediation_execution_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% organization_custom_policy_rule_metadata() :: #{
-%%   <<"DebugLogDeliveryAccounts">> => list(string()()),
+%%   <<"DebugLogDeliveryAccounts">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"InputParameters">> => string(),
 %%   <<"MaximumExecutionFrequency">> => list(any()),
@@ -2322,7 +2322,7 @@
 %%   <<"PolicyRuntime">> => string(),
 %%   <<"PolicyText">> => string(),
 %%   <<"ResourceIdScope">> => string(),
-%%   <<"ResourceTypesScope">> => list(string()()),
+%%   <<"ResourceTypesScope">> => list(string()),
 %%   <<"TagKeyScope">> => string(),
 %%   <<"TagValueScope">> => string()
 %% }
@@ -2398,7 +2398,7 @@
 %%   <<"ConfigRuleName">> := string(),
 %%   <<"ExpirationTime">> => non_neg_integer(),
 %%   <<"Message">> => string(),
-%%   <<"ResourceKeys">> := list(remediation_exception_resource_key()())
+%%   <<"ResourceKeys">> := list(remediation_exception_resource_key())
 %% }
 -type put_remediation_exceptions_request() :: #{binary() => any()}.
 
@@ -2418,7 +2418,7 @@
 %% Example:
 %% get_conformance_pack_compliance_details_response() :: #{
 %%   <<"ConformancePackName">> => string(),
-%%   <<"ConformancePackRuleEvaluationResults">> => list(conformance_pack_evaluation_result()()),
+%%   <<"ConformancePackRuleEvaluationResults">> => list(conformance_pack_evaluation_result()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_conformance_pack_compliance_details_response() :: #{binary() => any()}.
@@ -2436,10 +2436,10 @@
 
 %% Example:
 %% put_organization_conformance_pack_request() :: #{
-%%   <<"ConformancePackInputParameters">> => list(conformance_pack_input_parameter()()),
+%%   <<"ConformancePackInputParameters">> => list(conformance_pack_input_parameter()),
 %%   <<"DeliveryS3Bucket">> => string(),
 %%   <<"DeliveryS3KeyPrefix">> => string(),
-%%   <<"ExcludedAccounts">> => list(string()()),
+%%   <<"ExcludedAccounts">> => list(string()),
 %%   <<"OrganizationConformancePackName">> := string(),
 %%   <<"TemplateBody">> => string(),
 %%   <<"TemplateS3Uri">> => string()
@@ -2450,7 +2450,7 @@
 %% describe_organization_conformance_pack_statuses_request() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConformancePackNames">> => list(string()())
+%%   <<"OrganizationConformancePackNames">> => list(string())
 %% }
 -type describe_organization_conformance_pack_statuses_request() :: #{binary() => any()}.
 
@@ -2487,7 +2487,7 @@
 %% Example:
 %% describe_organization_config_rule_statuses_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConfigRuleStatuses">> => list(organization_config_rule_status()())
+%%   <<"OrganizationConfigRuleStatuses">> => list(organization_config_rule_status())
 %% }
 -type describe_organization_config_rule_statuses_response() :: #{binary() => any()}.
 
@@ -2527,8 +2527,8 @@
 %%   <<"configurationItemStatus">> => list(any()),
 %%   <<"configurationStateId">> => string(),
 %%   <<"recordingFrequency">> => list(any()),
-%%   <<"relatedEvents">> => list(string()()),
-%%   <<"relationships">> => list(relationship()()),
+%%   <<"relatedEvents">> => list(string()),
+%%   <<"relationships">> => list(relationship()),
 %%   <<"resourceCreationTime">> => non_neg_integer(),
 %%   <<"resourceId">> => string(),
 %%   <<"resourceName">> => string(),
@@ -2549,14 +2549,14 @@
 
 %% Example:
 %% describe_config_rule_evaluation_status_response() :: #{
-%%   <<"ConfigRulesEvaluationStatus">> => list(config_rule_evaluation_status()()),
+%%   <<"ConfigRulesEvaluationStatus">> => list(config_rule_evaluation_status()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_config_rule_evaluation_status_response() :: #{binary() => any()}.
 
 %% Example:
 %% organization_config_rule() :: #{
-%%   <<"ExcludedAccounts">> => list(string()()),
+%%   <<"ExcludedAccounts">> => list(string()),
 %%   <<"LastUpdateTime">> => non_neg_integer(),
 %%   <<"OrganizationConfigRuleArn">> => string(),
 %%   <<"OrganizationConfigRuleName">> => string(),
@@ -2574,7 +2574,7 @@
 
 %% Example:
 %% list_conformance_pack_compliance_scores_response() :: #{
-%%   <<"ConformancePackComplianceScores">> => list(conformance_pack_compliance_score()()),
+%%   <<"ConformancePackComplianceScores">> => list(conformance_pack_compliance_score()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_conformance_pack_compliance_scores_response() :: #{binary() => any()}.
@@ -2582,13 +2582,13 @@
 %% Example:
 %% describe_pending_aggregation_requests_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PendingAggregationRequests">> => list(pending_aggregation_request()())
+%%   <<"PendingAggregationRequests">> => list(pending_aggregation_request())
 %% }
 -type describe_pending_aggregation_requests_response() :: #{binary() => any()}.
 
 %% Example:
 %% static_value() :: #{
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type static_value() :: #{binary() => any()}.
 
@@ -2609,33 +2609,33 @@
 %%   <<"ConfigRuleName">> := string(),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceKeys">> => list(remediation_exception_resource_key()())
+%%   <<"ResourceKeys">> => list(remediation_exception_resource_key())
 %% }
 -type describe_remediation_exceptions_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_aggregate_resource_config_request() :: #{
 %%   <<"ConfigurationAggregatorName">> := string(),
-%%   <<"ResourceIdentifiers">> := list(aggregate_resource_identifier()())
+%%   <<"ResourceIdentifiers">> := list(aggregate_resource_identifier())
 %% }
 -type batch_get_aggregate_resource_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_conformance_packs_response() :: #{
-%%   <<"ConformancePackDetails">> => list(conformance_pack_detail()()),
+%%   <<"ConformancePackDetails">> => list(conformance_pack_detail()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_conformance_packs_response() :: #{binary() => any()}.
 
 %% Example:
 %% query_info() :: #{
-%%   <<"SelectFields">> => list(field_info()())
+%%   <<"SelectFields">> => list(field_info())
 %% }
 -type query_info() :: #{binary() => any()}.
 
 %% Example:
 %% list_configuration_recorders_request() :: #{
-%%   <<"Filters">> => list(configuration_recorder_filter()()),
+%%   <<"Filters">> => list(configuration_recorder_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2724,10 +2724,10 @@
 
 %% Example:
 %% organization_conformance_pack() :: #{
-%%   <<"ConformancePackInputParameters">> => list(conformance_pack_input_parameter()()),
+%%   <<"ConformancePackInputParameters">> => list(conformance_pack_input_parameter()),
 %%   <<"DeliveryS3Bucket">> => string(),
 %%   <<"DeliveryS3KeyPrefix">> => string(),
-%%   <<"ExcludedAccounts">> => list(string()()),
+%%   <<"ExcludedAccounts">> => list(string()),
 %%   <<"LastUpdateTime">> => non_neg_integer(),
 %%   <<"OrganizationConformancePackArn">> => string(),
 %%   <<"OrganizationConformancePackName">> => string()
@@ -2738,7 +2738,7 @@
 %% describe_organization_conformance_packs_request() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationConformancePackNames">> => list(string()())
+%%   <<"OrganizationConformancePackNames">> => list(string())
 %% }
 -type describe_organization_conformance_packs_request() :: #{binary() => any()}.
 
@@ -2797,7 +2797,7 @@
 %% select_aggregate_resource_config_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"QueryInfo">> => query_info(),
-%%   <<"Results">> => list(string()())
+%%   <<"Results">> => list(string())
 %% }
 -type select_aggregate_resource_config_response() :: #{binary() => any()}.
 
@@ -2826,7 +2826,7 @@
 %% Example:
 %% describe_conformance_pack_compliance_response() :: #{
 %%   <<"ConformancePackName">> => string(),
-%%   <<"ConformancePackRuleComplianceList">> => list(conformance_pack_rule_compliance()()),
+%%   <<"ConformancePackRuleComplianceList">> => list(conformance_pack_rule_compliance()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_conformance_pack_compliance_response() :: #{binary() => any()}.
@@ -2834,7 +2834,7 @@
 %% Example:
 %% put_configuration_recorder_request() :: #{
 %%   <<"ConfigurationRecorder">> := configuration_recorder(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_configuration_recorder_request() :: #{binary() => any()}.
 
@@ -2853,14 +2853,14 @@
 
 %% Example:
 %% organization_custom_policy_rule_metadata_no_policy() :: #{
-%%   <<"DebugLogDeliveryAccounts">> => list(string()()),
+%%   <<"DebugLogDeliveryAccounts">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"InputParameters">> => string(),
 %%   <<"MaximumExecutionFrequency">> => list(any()),
 %%   <<"OrganizationConfigRuleTriggerTypes">> => list(list(any())()),
 %%   <<"PolicyRuntime">> => string(),
 %%   <<"ResourceIdScope">> => string(),
-%%   <<"ResourceTypesScope">> => list(string()()),
+%%   <<"ResourceTypesScope">> => list(string()),
 %%   <<"TagKeyScope">> => string(),
 %%   <<"TagValueScope">> => string()
 %% }

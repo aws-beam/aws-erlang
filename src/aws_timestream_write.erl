@@ -99,11 +99,11 @@
 
 %% Example:
 %% record() :: #{
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MeasureName">> => string(),
 %%   <<"MeasureValue">> => string(),
 %%   <<"MeasureValueType">> => list(any()),
-%%   <<"MeasureValues">> => list(measure_value()()),
+%%   <<"MeasureValues">> => list(measure_value()),
 %%   <<"Time">> => string(),
 %%   <<"TimeUnit">> => list(any()),
 %%   <<"Version">> => float()
@@ -113,7 +113,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -247,7 +247,7 @@
 
 %% Example:
 %% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()())
+%%   <<"Endpoints">> => list(endpoint())
 %% }
 -type describe_endpoints_response() :: #{binary() => any()}.
 
@@ -258,7 +258,7 @@
 %%   <<"RetentionProperties">> => retention_properties(),
 %%   <<"Schema">> => schema(),
 %%   <<"TableName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_table_request() :: #{binary() => any()}.
 
@@ -271,7 +271,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -328,7 +328,7 @@
 %% Example:
 %% list_tables_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tables">> => list(table()())
+%%   <<"Tables">> => list(table())
 %% }
 -type list_tables_response() :: #{binary() => any()}.
 
@@ -377,13 +377,13 @@
 
 %% Example:
 %% schema() :: #{
-%%   <<"CompositePartitionKey">> => list(partition_key()())
+%%   <<"CompositePartitionKey">> => list(partition_key())
 %% }
 -type schema() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -423,7 +423,7 @@
 
 %% Example:
 %% list_batch_load_tasks_response() :: #{
-%%   <<"BatchLoadTasks">> => list(batch_load_task()()),
+%%   <<"BatchLoadTasks">> => list(batch_load_task()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_batch_load_tasks_response() :: #{binary() => any()}.
@@ -432,14 +432,14 @@
 %% write_records_request() :: #{
 %%   <<"CommonAttributes">> => record(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"Records">> := list(record()()),
+%%   <<"Records">> := list(record()),
 %%   <<"TableName">> := string()
 %% }
 -type write_records_request() :: #{binary() => any()}.
 
 %% Example:
 %% multi_measure_mappings() :: #{
-%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()()),
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
 %%   <<"TargetMultiMeasureName">> => string()
 %% }
 -type multi_measure_mappings() :: #{binary() => any()}.
@@ -506,9 +506,9 @@
 
 %% Example:
 %% data_model() :: #{
-%%   <<"DimensionMappings">> => list(dimension_mapping()()),
+%%   <<"DimensionMappings">> => list(dimension_mapping()),
 %%   <<"MeasureNameColumn">> => string(),
-%%   <<"MixedMeasureMappings">> => list(mixed_measure_mapping()()),
+%%   <<"MixedMeasureMappings">> => list(mixed_measure_mapping()),
 %%   <<"MultiMeasureMappings">> => multi_measure_mappings(),
 %%   <<"TimeColumn">> => string(),
 %%   <<"TimeUnit">> => list(any())
@@ -519,7 +519,7 @@
 %% mixed_measure_mapping() :: #{
 %%   <<"MeasureName">> => string(),
 %%   <<"MeasureValueType">> => list(any()),
-%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()()),
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
 %%   <<"SourceColumn">> => string(),
 %%   <<"TargetMeasureName">> => string()
 %% }
@@ -575,13 +575,13 @@
 %% Example:
 %% rejected_records_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"RejectedRecords">> => list(rejected_record()())
+%%   <<"RejectedRecords">> => list(rejected_record())
 %% }
 -type rejected_records_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_databases_response() :: #{
-%%   <<"Databases">> => list(database()()),
+%%   <<"Databases">> => list(database()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_databases_response() :: #{binary() => any()}.
@@ -596,7 +596,7 @@
 %% create_database_request() :: #{
 %%   <<"DatabaseName">> := string(),
 %%   <<"KmsKeyId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_database_request() :: #{binary() => any()}.
 

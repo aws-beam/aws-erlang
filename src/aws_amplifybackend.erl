@@ -145,7 +145,7 @@
 
 %% Example:
 %% backend_api_resource_config() :: #{
-%%   <<"AdditionalAuthTypes">> => list(backend_api_auth_type()()),
+%%   <<"AdditionalAuthTypes">> => list(backend_api_auth_type()),
 %%   <<"ApiName">> => string(),
 %%   <<"ConflictResolution">> => backend_api_conflict_resolution(),
 %%   <<"DefaultAuthType">> => backend_api_auth_type(),
@@ -260,8 +260,8 @@
 %%   <<"DomainPrefix">> => string(),
 %%   <<"OAuthGrantType">> => list(any()),
 %%   <<"OAuthScopes">> => list(list(any())()),
-%%   <<"RedirectSignInURIs">> => list(string()()),
-%%   <<"RedirectSignOutURIs">> => list(string()()),
+%%   <<"RedirectSignInURIs">> => list(string()),
+%%   <<"RedirectSignOutURIs">> => list(string()),
 %%   <<"SocialProviderSettings">> => social_provider_settings()
 %% }
 -type update_backend_auth_o_auth_config() :: #{binary() => any()}.
@@ -330,7 +330,7 @@
 
 %% Example:
 %% list_s3_buckets_response() :: #{
-%%   <<"Buckets">> => list(s3_bucket_info()()),
+%%   <<"Buckets">> => list(s3_bucket_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_s3_buckets_response() :: #{binary() => any()}.
@@ -394,7 +394,7 @@
 
 %% Example:
 %% list_backend_jobs_response() :: #{
-%%   <<"Jobs">> => list(backend_job_resp_obj()()),
+%%   <<"Jobs">> => list(backend_job_resp_obj()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backend_jobs_response() :: #{binary() => any()}.
@@ -728,7 +728,7 @@
 %%   <<"AmplifyMetaConfig">> => string(),
 %%   <<"AppId">> => string(),
 %%   <<"AppName">> => string(),
-%%   <<"BackendEnvironmentList">> => list(string()()),
+%%   <<"BackendEnvironmentList">> => list(string()),
 %%   <<"BackendEnvironmentName">> => string(),
 %%   <<"Error">> => string()
 %% }
@@ -800,8 +800,8 @@
 %%   <<"DomainPrefix">> => string(),
 %%   <<"OAuthGrantType">> => list(any()),
 %%   <<"OAuthScopes">> => list(list(any())()),
-%%   <<"RedirectSignInURIs">> => list(string()()),
-%%   <<"RedirectSignOutURIs">> => list(string()()),
+%%   <<"RedirectSignInURIs">> => list(string()),
+%%   <<"RedirectSignOutURIs">> => list(string()),
 %%   <<"SocialProviderSettings">> => social_provider_settings()
 %% }
 -type create_backend_auth_o_auth_config() :: #{binary() => any()}.

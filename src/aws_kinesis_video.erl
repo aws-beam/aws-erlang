@@ -89,7 +89,7 @@
 %%   <<"ChannelName">> := string(),
 %%   <<"ChannelType">> => list(any()),
 %%   <<"SingleMasterConfiguration">> => single_master_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_signaling_channel_input() :: #{binary() => any()}.
 
@@ -176,7 +176,7 @@
 
 %% Example:
 %% list_signaling_channels_output() :: #{
-%%   <<"ChannelInfoList">> => list(channel_info()()),
+%%   <<"ChannelInfoList">> => list(channel_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_signaling_channels_output() :: #{binary() => any()}.
@@ -222,7 +222,7 @@
 
 %% Example:
 %% get_signaling_channel_endpoint_output() :: #{
-%%   <<"ResourceEndpointList">> => list(resource_endpoint_list_item()())
+%%   <<"ResourceEndpointList">> => list(resource_endpoint_list_item())
 %% }
 -type get_signaling_channel_endpoint_output() :: #{binary() => any()}.
 
@@ -263,7 +263,7 @@
 %% Example:
 %% list_streams_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StreamInfoList">> => list(stream_info()())
+%%   <<"StreamInfoList">> => list(stream_info())
 %% }
 -type list_streams_output() :: #{binary() => any()}.
 
@@ -327,7 +327,7 @@
 
 %% Example:
 %% describe_mapped_resource_configuration_output() :: #{
-%%   <<"MappedResourceConfigurationList">> => list(mapped_resource_configuration_list_item()()),
+%%   <<"MappedResourceConfigurationList">> => list(mapped_resource_configuration_list_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_mapped_resource_configuration_output() :: #{binary() => any()}.
@@ -439,7 +439,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -472,7 +472,7 @@
 
 %% Example:
 %% list_edge_agent_configurations_output() :: #{
-%%   <<"EdgeConfigs">> => list(list_edge_agent_configurations_edge_config()()),
+%%   <<"EdgeConfigs">> => list(list_edge_agent_configurations_edge_config()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_edge_agent_configurations_output() :: #{binary() => any()}.
@@ -600,7 +600,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeyList">> := list(string()())
+%%   <<"TagKeyList">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -839,7 +839,7 @@
 %% untag_stream_input() :: #{
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamName">> => string(),
-%%   <<"TagKeyList">> := list(string()())
+%%   <<"TagKeyList">> := list(string())
 %% }
 -type untag_stream_input() :: #{binary() => any()}.
 

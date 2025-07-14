@@ -107,14 +107,14 @@
 
 %% Example:
 %% list_access_policies_response() :: #{
-%%   <<"accessPolicySummaries">> => list(access_policy_summary()()),
+%%   <<"accessPolicySummaries">> => list(access_policy_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_access_policies_response() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_lifecycle_policy_request() :: #{
-%%   <<"identifiers">> := list(lifecycle_policy_identifier()())
+%%   <<"identifiers">> := list(lifecycle_policy_identifier())
 %% }
 -type batch_get_lifecycle_policy_request() :: #{binary() => any()}.
 
@@ -129,7 +129,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -191,8 +191,8 @@
 
 %% Example:
 %% batch_get_collection_response() :: #{
-%%   <<"collectionDetails">> => list(collection_detail()()),
-%%   <<"collectionErrorDetails">> => list(collection_error_detail()())
+%%   <<"collectionDetails">> => list(collection_detail()),
+%%   <<"collectionErrorDetails">> => list(collection_error_detail())
 %% }
 -type batch_get_collection_response() :: #{binary() => any()}.
 
@@ -204,8 +204,8 @@
 
 %% Example:
 %% batch_get_lifecycle_policy_response() :: #{
-%%   <<"lifecyclePolicyDetails">> => list(lifecycle_policy_detail()()),
-%%   <<"lifecyclePolicyErrorDetails">> => list(lifecycle_policy_error_detail()())
+%%   <<"lifecyclePolicyDetails">> => list(lifecycle_policy_detail()),
+%%   <<"lifecyclePolicyErrorDetails">> => list(lifecycle_policy_error_detail())
 %% }
 -type batch_get_lifecycle_policy_response() :: #{binary() => any()}.
 
@@ -267,7 +267,7 @@
 %% Example:
 %% list_vpc_endpoints_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"vpcEndpointSummaries">> => list(vpc_endpoint_summary()())
+%%   <<"vpcEndpointSummaries">> => list(vpc_endpoint_summary())
 %% }
 -type list_vpc_endpoints_response() :: #{binary() => any()}.
 
@@ -315,7 +315,7 @@
 %% list_lifecycle_policies_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
-%%   <<"resources">> => list(string()()),
+%%   <<"resources">> => list(string()),
 %%   <<"type">> := string()
 %% }
 -type list_lifecycle_policies_request() :: #{binary() => any()}.
@@ -324,7 +324,7 @@
 %% list_access_policies_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
-%%   <<"resource">> => list(string()()),
+%%   <<"resource">> => list(string()),
 %%   <<"type">> := string()
 %% }
 -type list_access_policies_request() :: #{binary() => any()}.
@@ -361,19 +361,19 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_vpc_endpoint_request() :: #{
-%%   <<"ids">> := list(string()())
+%%   <<"ids">> := list(string())
 %% }
 -type batch_get_vpc_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_collections_response() :: #{
-%%   <<"collectionSummaries">> => list(collection_summary()()),
+%%   <<"collectionSummaries">> => list(collection_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_collections_response() :: #{binary() => any()}.
@@ -438,9 +438,9 @@
 %%   <<"failureMessage">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_endpoint_detail() :: #{binary() => any()}.
@@ -496,7 +496,7 @@
 
 %% Example:
 %% batch_get_effective_lifecycle_policy_request() :: #{
-%%   <<"resourceIdentifiers">> := list(lifecycle_policy_resource_identifier()())
+%%   <<"resourceIdentifiers">> := list(lifecycle_policy_resource_identifier())
 %% }
 -type batch_get_effective_lifecycle_policy_request() :: #{binary() => any()}.
 
@@ -568,7 +568,7 @@
 
 %% Example:
 %% list_lifecycle_policies_response() :: #{
-%%   <<"lifecyclePolicySummaries">> => list(lifecycle_policy_summary()()),
+%%   <<"lifecyclePolicySummaries">> => list(lifecycle_policy_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_lifecycle_policies_response() :: #{binary() => any()}.
@@ -621,7 +621,7 @@
 %%   <<"description">> => [string()],
 %%   <<"name">> := string(),
 %%   <<"standbyReplicas">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"type">> => string()
 %% }
 -type create_collection_request() :: #{binary() => any()}.
@@ -634,7 +634,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -689,8 +689,8 @@
 
 %% Example:
 %% batch_get_collection_request() :: #{
-%%   <<"ids">> => list(string()()),
-%%   <<"names">> => list(string()())
+%%   <<"ids">> => list(string()),
+%%   <<"names">> => list(string())
 %% }
 -type batch_get_collection_request() :: #{binary() => any()}.
 
@@ -698,8 +698,8 @@
 %% create_vpc_endpoint_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"name">> := string(),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> := list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> := list(string()),
 %%   <<"vpcId">> := string()
 %% }
 -type create_vpc_endpoint_request() :: #{binary() => any()}.
@@ -725,7 +725,7 @@
 %% Example:
 %% list_security_configs_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"securityConfigSummaries">> => list(security_config_summary()())
+%%   <<"securityConfigSummaries">> => list(security_config_summary())
 %% }
 -type list_security_configs_response() :: #{binary() => any()}.
 
@@ -745,7 +745,7 @@
 %% list_security_policies_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
-%%   <<"resource">> => list(string()()),
+%%   <<"resource">> => list(string()),
 %%   <<"type">> := string()
 %% }
 -type list_security_policies_request() :: #{binary() => any()}.
@@ -753,7 +753,7 @@
 %% Example:
 %% list_security_policies_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"securityPolicySummaries">> => list(security_policy_summary()())
+%%   <<"securityPolicySummaries">> => list(security_policy_summary())
 %% }
 -type list_security_policies_response() :: #{binary() => any()}.
 
@@ -824,8 +824,8 @@
 
 %% Example:
 %% batch_get_effective_lifecycle_policy_response() :: #{
-%%   <<"effectiveLifecyclePolicyDetails">> => list(effective_lifecycle_policy_detail()()),
-%%   <<"effectiveLifecyclePolicyErrorDetails">> => list(effective_lifecycle_policy_error_detail()())
+%%   <<"effectiveLifecyclePolicyDetails">> => list(effective_lifecycle_policy_detail()),
+%%   <<"effectiveLifecyclePolicyErrorDetails">> => list(effective_lifecycle_policy_error_detail())
 %% }
 -type batch_get_effective_lifecycle_policy_response() :: #{binary() => any()}.
 
@@ -834,9 +834,9 @@
 %%   <<"id">> => string(),
 %%   <<"lastModifiedDate">> => [float()],
 %%   <<"name">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"subnetIds">> => list(string())
 %% }
 -type update_vpc_endpoint_detail() :: #{binary() => any()}.
 
@@ -889,8 +889,8 @@
 
 %% Example:
 %% batch_get_vpc_endpoint_response() :: #{
-%%   <<"vpcEndpointDetails">> => list(vpc_endpoint_detail()()),
-%%   <<"vpcEndpointErrorDetails">> => list(vpc_endpoint_error_detail()())
+%%   <<"vpcEndpointDetails">> => list(vpc_endpoint_detail()),
+%%   <<"vpcEndpointErrorDetails">> => list(vpc_endpoint_error_detail())
 %% }
 -type batch_get_vpc_endpoint_response() :: #{binary() => any()}.
 
@@ -929,12 +929,12 @@
 
 %% Example:
 %% update_vpc_endpoint_request() :: #{
-%%   <<"addSecurityGroupIds">> => list(string()()),
-%%   <<"addSubnetIds">> => list(string()()),
+%%   <<"addSecurityGroupIds">> => list(string()),
+%%   <<"addSubnetIds">> => list(string()),
 %%   <<"clientToken">> => string(),
 %%   <<"id">> := string(),
-%%   <<"removeSecurityGroupIds">> => list(string()()),
-%%   <<"removeSubnetIds">> => list(string()())
+%%   <<"removeSecurityGroupIds">> => list(string()),
+%%   <<"removeSubnetIds">> => list(string())
 %% }
 -type update_vpc_endpoint_request() :: #{binary() => any()}.
 

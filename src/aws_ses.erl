@@ -184,7 +184,7 @@
 %% Example:
 %% list_receipt_rule_sets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RuleSets">> => list(receipt_rule_set_metadata()())
+%%   <<"RuleSets">> => list(receipt_rule_set_metadata())
 %% }
 -type list_receipt_rule_sets_response() :: #{binary() => any()}.
 
@@ -326,7 +326,7 @@
 %% Example:
 %% identity_dkim_attributes() :: #{
 %%   <<"DkimEnabled">> => boolean(),
-%%   <<"DkimTokens">> => list(string()()),
+%%   <<"DkimTokens">> => list(string()),
 %%   <<"DkimVerificationStatus">> => list(any())
 %% }
 -type identity_dkim_attributes() :: #{binary() => any()}.
@@ -340,7 +340,7 @@
 
 %% Example:
 %% verify_domain_dkim_response() :: #{
-%%   <<"DkimTokens">> => list(string()())
+%%   <<"DkimTokens">> => list(string())
 %% }
 -type verify_domain_dkim_response() :: #{binary() => any()}.
 
@@ -386,13 +386,13 @@
 %% Example:
 %% describe_receipt_rule_set_response() :: #{
 %%   <<"Metadata">> => receipt_rule_set_metadata(),
-%%   <<"Rules">> => list(receipt_rule()())
+%%   <<"Rules">> => list(receipt_rule())
 %% }
 -type describe_receipt_rule_set_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_receipt_filters_response() :: #{
-%%   <<"Filters">> => list(receipt_filter()())
+%%   <<"Filters">> => list(receipt_filter())
 %% }
 -type list_receipt_filters_response() :: #{binary() => any()}.
 
@@ -410,13 +410,13 @@
 %% Example:
 %% send_raw_email_request() :: #{
 %%   <<"ConfigurationSetName">> => string(),
-%%   <<"Destinations">> => list(string()()),
+%%   <<"Destinations">> => list(string()),
 %%   <<"FromArn">> => string(),
 %%   <<"RawMessage">> := raw_message(),
 %%   <<"ReturnPathArn">> => string(),
 %%   <<"Source">> => string(),
 %%   <<"SourceArn">> => string(),
-%%   <<"Tags">> => list(message_tag()())
+%%   <<"Tags">> => list(message_tag())
 %% }
 -type send_raw_email_request() :: #{binary() => any()}.
 
@@ -429,7 +429,7 @@
 
 %% Example:
 %% get_identity_mail_from_domain_attributes_request() :: #{
-%%   <<"Identities">> := list(string()())
+%%   <<"Identities">> := list(string())
 %% }
 -type get_identity_mail_from_domain_attributes_request() :: #{binary() => any()}.
 
@@ -462,7 +462,7 @@
 %% describe_configuration_set_response() :: #{
 %%   <<"ConfigurationSet">> => configuration_set(),
 %%   <<"DeliveryOptions">> => delivery_options(),
-%%   <<"EventDestinations">> => list(event_destination()()),
+%%   <<"EventDestinations">> => list(event_destination()),
 %%   <<"ReputationOptions">> => reputation_options(),
 %%   <<"TrackingOptions">> => tracking_options()
 %% }
@@ -471,7 +471,7 @@
 %% Example:
 %% describe_active_receipt_rule_set_response() :: #{
 %%   <<"Metadata">> => receipt_rule_set_metadata(),
-%%   <<"Rules">> => list(receipt_rule()())
+%%   <<"Rules">> => list(receipt_rule())
 %% }
 -type describe_active_receipt_rule_set_response() :: #{binary() => any()}.
 
@@ -483,7 +483,7 @@
 
 %% Example:
 %% get_identity_verification_attributes_request() :: #{
-%%   <<"Identities">> := list(string()())
+%%   <<"Identities">> := list(string())
 %% }
 -type get_identity_verification_attributes_request() :: #{binary() => any()}.
 
@@ -556,7 +556,7 @@
 
 %% Example:
 %% reorder_receipt_rule_set_request() :: #{
-%%   <<"RuleNames">> := list(string()()),
+%%   <<"RuleNames">> := list(string()),
 %%   <<"RuleSetName">> := string()
 %% }
 -type reorder_receipt_rule_set_request() :: #{binary() => any()}.
@@ -614,7 +614,7 @@
 
 %% Example:
 %% cloud_watch_destination() :: #{
-%%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration()())
+%%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration())
 %% }
 -type cloud_watch_destination() :: #{binary() => any()}.
 
@@ -639,7 +639,7 @@
 
 %% Example:
 %% get_identity_notification_attributes_request() :: #{
-%%   <<"Identities">> := list(string()())
+%%   <<"Identities">> := list(string())
 %% }
 -type get_identity_notification_attributes_request() :: #{binary() => any()}.
 
@@ -677,7 +677,7 @@
 %% Example:
 %% message_dsn() :: #{
 %%   <<"ArrivalDate">> => non_neg_integer(),
-%%   <<"ExtensionFields">> => list(extension_field()()),
+%%   <<"ExtensionFields">> => list(extension_field()),
 %%   <<"ReportingMta">> => string()
 %% }
 -type message_dsn() :: #{binary() => any()}.
@@ -809,7 +809,7 @@
 %% Example:
 %% get_identity_policies_request() :: #{
 %%   <<"Identity">> := string(),
-%%   <<"PolicyNames">> := list(string()())
+%%   <<"PolicyNames">> := list(string())
 %% }
 -type get_identity_policies_request() :: #{binary() => any()}.
 
@@ -938,7 +938,7 @@
 
 %% Example:
 %% list_configuration_sets_response() :: #{
-%%   <<"ConfigurationSets">> => list(configuration_set()()),
+%%   <<"ConfigurationSets">> => list(configuration_set()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_sets_response() :: #{binary() => any()}.
@@ -1002,14 +1002,14 @@
 
 %% Example:
 %% list_custom_verification_email_templates_response() :: #{
-%%   <<"CustomVerificationEmailTemplates">> => list(custom_verification_email_template()()),
+%%   <<"CustomVerificationEmailTemplates">> => list(custom_verification_email_template()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_verification_email_templates_response() :: #{binary() => any()}.
 
 %% Example:
 %% send_bulk_templated_email_response() :: #{
-%%   <<"Status">> => list(bulk_email_destination_status()())
+%%   <<"Status">> => list(bulk_email_destination_status())
 %% }
 -type send_bulk_templated_email_response() :: #{binary() => any()}.
 
@@ -1066,10 +1066,10 @@
 %% Example:
 %% send_bulk_templated_email_request() :: #{
 %%   <<"ConfigurationSetName">> => string(),
-%%   <<"DefaultTags">> => list(message_tag()()),
+%%   <<"DefaultTags">> => list(message_tag()),
 %%   <<"DefaultTemplateData">> := string(),
-%%   <<"Destinations">> := list(bulk_email_destination()()),
-%%   <<"ReplyToAddresses">> => list(string()()),
+%%   <<"Destinations">> := list(bulk_email_destination()),
+%%   <<"ReplyToAddresses">> => list(string()),
 %%   <<"ReturnPath">> => string(),
 %%   <<"ReturnPathArn">> => string(),
 %%   <<"Source">> := string(),
@@ -1135,12 +1135,12 @@
 %% send_templated_email_request() :: #{
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"Destination">> := destination(),
-%%   <<"ReplyToAddresses">> => list(string()()),
+%%   <<"ReplyToAddresses">> => list(string()),
 %%   <<"ReturnPath">> => string(),
 %%   <<"ReturnPathArn">> => string(),
 %%   <<"Source">> := string(),
 %%   <<"SourceArn">> => string(),
-%%   <<"Tags">> => list(message_tag()()),
+%%   <<"Tags">> => list(message_tag()),
 %%   <<"Template">> := string(),
 %%   <<"TemplateArn">> => string(),
 %%   <<"TemplateData">> := string()
@@ -1163,10 +1163,10 @@
 
 %% Example:
 %% receipt_rule() :: #{
-%%   <<"Actions">> => list(receipt_action()()),
+%%   <<"Actions">> => list(receipt_action()),
 %%   <<"Enabled">> => boolean(),
 %%   <<"Name">> => string(),
-%%   <<"Recipients">> => list(string()()),
+%%   <<"Recipients">> => list(string()),
 %%   <<"ScanEnabled">> => boolean(),
 %%   <<"TlsPolicy">> => list(any())
 %% }
@@ -1236,7 +1236,7 @@
 %% Example:
 %% list_templates_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TemplatesMetadata">> => list(template_metadata()())
+%%   <<"TemplatesMetadata">> => list(template_metadata())
 %% }
 -type list_templates_response() :: #{binary() => any()}.
 
@@ -1306,9 +1306,9 @@
 
 %% Example:
 %% destination() :: #{
-%%   <<"BccAddresses">> => list(string()()),
-%%   <<"CcAddresses">> => list(string()()),
-%%   <<"ToAddresses">> => list(string()())
+%%   <<"BccAddresses">> => list(string()),
+%%   <<"CcAddresses">> => list(string()),
+%%   <<"ToAddresses">> => list(string())
 %% }
 -type destination() :: #{binary() => any()}.
 
@@ -1362,7 +1362,7 @@
 %% send_bounce_request() :: #{
 %%   <<"BounceSender">> := string(),
 %%   <<"BounceSenderArn">> => string(),
-%%   <<"BouncedRecipientInfoList">> := list(bounced_recipient_info()()),
+%%   <<"BouncedRecipientInfoList">> := list(bounced_recipient_info()),
 %%   <<"Explanation">> => string(),
 %%   <<"MessageDsn">> => message_dsn(),
 %%   <<"OriginalMessageId">> := string()
@@ -1371,7 +1371,7 @@
 
 %% Example:
 %% list_identities_response() :: #{
-%%   <<"Identities">> => list(string()()),
+%%   <<"Identities">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_identities_response() :: #{binary() => any()}.
@@ -1386,7 +1386,7 @@
 %% recipient_dsn_fields() :: #{
 %%   <<"Action">> => list(any()),
 %%   <<"DiagnosticCode">> => string(),
-%%   <<"ExtensionFields">> => list(extension_field()()),
+%%   <<"ExtensionFields">> => list(extension_field()),
 %%   <<"FinalRecipient">> => string(),
 %%   <<"LastAttemptDate">> => non_neg_integer(),
 %%   <<"RemoteMta">> => string(),
@@ -1431,14 +1431,14 @@
 %% Example:
 %% bulk_email_destination() :: #{
 %%   <<"Destination">> => destination(),
-%%   <<"ReplacementTags">> => list(message_tag()()),
+%%   <<"ReplacementTags">> => list(message_tag()),
 %%   <<"ReplacementTemplateData">> => string()
 %% }
 -type bulk_email_destination() :: #{binary() => any()}.
 
 %% Example:
 %% list_identity_policies_response() :: #{
-%%   <<"PolicyNames">> => list(string()())
+%%   <<"PolicyNames">> => list(string())
 %% }
 -type list_identity_policies_response() :: #{binary() => any()}.
 
@@ -1482,12 +1482,12 @@
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"Destination">> := destination(),
 %%   <<"Message">> := message(),
-%%   <<"ReplyToAddresses">> => list(string()()),
+%%   <<"ReplyToAddresses">> => list(string()),
 %%   <<"ReturnPath">> => string(),
 %%   <<"ReturnPathArn">> => string(),
 %%   <<"Source">> := string(),
 %%   <<"SourceArn">> => string(),
-%%   <<"Tags">> => list(message_tag()())
+%%   <<"Tags">> => list(message_tag())
 %% }
 -type send_email_request() :: #{binary() => any()}.
 
@@ -1499,13 +1499,13 @@
 
 %% Example:
 %% list_verified_email_addresses_response() :: #{
-%%   <<"VerifiedEmailAddresses">> => list(string()())
+%%   <<"VerifiedEmailAddresses">> => list(string())
 %% }
 -type list_verified_email_addresses_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_send_statistics_response() :: #{
-%%   <<"SendDataPoints">> => list(send_data_point()())
+%%   <<"SendDataPoints">> => list(send_data_point())
 %% }
 -type get_send_statistics_response() :: #{binary() => any()}.
 
@@ -1618,7 +1618,7 @@
 
 %% Example:
 %% get_identity_dkim_attributes_request() :: #{
-%%   <<"Identities">> := list(string()())
+%%   <<"Identities">> := list(string())
 %% }
 -type get_identity_dkim_attributes_request() :: #{binary() => any()}.
 

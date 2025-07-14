@@ -97,7 +97,7 @@
 %% Example:
 %% list_permissions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Permissions">> => list(permission()())
+%%   <<"Permissions">> => list(permission())
 %% }
 -type list_permissions_response() :: #{binary() => any()}.
 
@@ -131,7 +131,7 @@
 %%   <<"IdempotencyToken">> => string(),
 %%   <<"KeyStorageSecurityStandard">> => list(any()),
 %%   <<"RevocationConfiguration">> => revocation_configuration(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UsageMode">> => list(any())
 %% }
 -type create_certificate_authority_request() :: #{binary() => any()}.
@@ -151,7 +151,7 @@
 %% Example:
 %% csr_extensions() :: #{
 %%   <<"KeyUsage">> => key_usage(),
-%%   <<"SubjectInformationAccess">> => list(access_description()())
+%%   <<"SubjectInformationAccess">> => list(access_description())
 %% }
 -type csr_extensions() :: #{binary() => any()}.
 
@@ -192,7 +192,7 @@
 %% Example:
 %% list_tags_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_response() :: #{binary() => any()}.
 
@@ -222,7 +222,7 @@
 %% a_s_n1_subject() :: #{
 %%   <<"CommonName">> => string(),
 %%   <<"Country">> => string(),
-%%   <<"CustomAttributes">> => list(custom_attribute()()),
+%%   <<"CustomAttributes">> => list(custom_attribute()),
 %%   <<"DistinguishedNameQualifier">> => string(),
 %%   <<"GenerationQualifier">> => string(),
 %%   <<"GivenName">> => string(),
@@ -331,7 +331,7 @@
 %% Example:
 %% policy_information() :: #{
 %%   <<"CertPolicyId">> => string(),
-%%   <<"PolicyQualifiers">> => list(policy_qualifier_info()())
+%%   <<"PolicyQualifiers">> => list(policy_qualifier_info())
 %% }
 -type policy_information() :: #{binary() => any()}.
 
@@ -479,11 +479,11 @@
 
 %% Example:
 %% extensions() :: #{
-%%   <<"CertificatePolicies">> => list(policy_information()()),
-%%   <<"CustomExtensions">> => list(custom_extension()()),
-%%   <<"ExtendedKeyUsage">> => list(extended_key_usage()()),
+%%   <<"CertificatePolicies">> => list(policy_information()),
+%%   <<"CustomExtensions">> => list(custom_extension()),
+%%   <<"ExtendedKeyUsage">> => list(extended_key_usage()),
 %%   <<"KeyUsage">> => key_usage(),
-%%   <<"SubjectAlternativeNames">> => list(general_name()())
+%%   <<"SubjectAlternativeNames">> => list(general_name())
 %% }
 -type extensions() :: #{binary() => any()}.
 
@@ -502,7 +502,7 @@
 
 %% Example:
 %% list_certificate_authorities_response() :: #{
-%%   <<"CertificateAuthorities">> => list(certificate_authority()()),
+%%   <<"CertificateAuthorities">> => list(certificate_authority()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_certificate_authorities_response() :: #{binary() => any()}.
@@ -516,7 +516,7 @@
 %% Example:
 %% untag_certificate_authority_request() :: #{
 %%   <<"CertificateAuthorityArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type untag_certificate_authority_request() :: #{binary() => any()}.
 
@@ -568,7 +568,7 @@
 %% Example:
 %% tag_certificate_authority_request() :: #{
 %%   <<"CertificateAuthorityArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_certificate_authority_request() :: #{binary() => any()}.
 

@@ -144,7 +144,7 @@
 
 %% Example:
 %% list_deployment_events_output() :: #{
-%%   <<"deploymentEvents">> => list(deployment_event_data_summary()()),
+%%   <<"deploymentEvents">> => list(deployment_event_data_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployment_events_output() :: #{binary() => any()}.
@@ -160,7 +160,7 @@
 %% Example:
 %% list_workload_deployment_patterns_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workloadDeploymentPatterns">> => list(workload_deployment_pattern_data_summary()())
+%%   <<"workloadDeploymentPatterns">> => list(workload_deployment_pattern_data_summary())
 %% }
 -type list_workload_deployment_patterns_output() :: #{binary() => any()}.
 
@@ -205,7 +205,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -233,7 +233,7 @@
 %% Example:
 %% list_workloads_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workloads">> => list(workload_data_summary()())
+%%   <<"workloads">> => list(workload_data_summary())
 %% }
 -type list_workloads_output() :: #{binary() => any()}.
 
@@ -264,8 +264,8 @@
 
 %% Example:
 %% deployment_specifications_field() :: #{
-%%   <<"allowedValues">> => list(string()()),
-%%   <<"conditionals">> => list(deployment_conditional_field()()),
+%%   <<"allowedValues">> => list(string()),
+%%   <<"conditionals">> => list(deployment_conditional_field()),
 %%   <<"description">> => [string()],
 %%   <<"name">> => [string()],
 %%   <<"required">> => [string()]
@@ -301,7 +301,7 @@
 
 %% Example:
 %% list_deployments_output() :: #{
-%%   <<"deployments">> => list(deployment_data_summary()()),
+%%   <<"deployments">> => list(deployment_data_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployments_output() :: #{binary() => any()}.
@@ -316,7 +316,7 @@
 
 %% Example:
 %% list_deployments_input() :: #{
-%%   <<"filters">> => list(deployment_filter()()),
+%%   <<"filters">> => list(deployment_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -345,7 +345,7 @@
 %%   <<"deploymentPatternName">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"displayName">> => [string()],
-%%   <<"specifications">> => list(deployment_specifications_field()()),
+%%   <<"specifications">> => list(deployment_specifications_field()),
 %%   <<"status">> => list(any()),
 %%   <<"statusMessage">> => [string()],
 %%   <<"workloadName">> => string(),

@@ -243,7 +243,7 @@
 
 %% Example:
 %% list_anomalies_response() :: #{
-%%   <<"anomalies">> => list(anomaly()()),
+%%   <<"anomalies">> => list(anomaly()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_anomalies_response() :: #{binary() => any()}.
@@ -258,7 +258,7 @@
 
 %% Example:
 %% trim_string() :: #{
-%%   <<"withKeys">> => list(string()())
+%%   <<"withKeys">> => list(string())
 %% }
 -type trim_string() :: #{binary() => any()}.
 
@@ -277,7 +277,7 @@
 %%   <<"deliverySourceName">> => string(),
 %%   <<"fieldDelimiter">> => string(),
 %%   <<"id">> => string(),
-%%   <<"recordFields">> => list(string()()),
+%%   <<"recordFields">> => list(string()),
 %%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration(),
 %%   <<"tags">> => map()
 %% }
@@ -304,11 +304,11 @@
 
 %% Example:
 %% describe_log_groups_request() :: #{
-%%   <<"accountIdentifiers">> => list(string()()),
+%%   <<"accountIdentifiers">> => list(string()),
 %%   <<"includeLinkedAccounts">> => boolean(),
 %%   <<"limit">> => integer(),
 %%   <<"logGroupClass">> => list(any()),
-%%   <<"logGroupIdentifiers">> => list(string()()),
+%%   <<"logGroupIdentifiers">> => list(string()),
 %%   <<"logGroupNamePattern">> => string(),
 %%   <<"logGroupNamePrefix">> => string(),
 %%   <<"nextToken">> => string()
@@ -323,7 +323,7 @@
 
 %% Example:
 %% copy_value() :: #{
-%%   <<"entries">> => list(copy_value_entry()())
+%%   <<"entries">> => list(copy_value_entry())
 %% }
 -type copy_value() :: #{binary() => any()}.
 
@@ -392,14 +392,14 @@
 
 %% Example:
 %% list_log_groups_for_query_response() :: #{
-%%   <<"logGroupIdentifiers">> => list(string()()),
+%%   <<"logGroupIdentifiers">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_log_groups_for_query_response() :: #{binary() => any()}.
 
 %% Example:
 %% type_converter() :: #{
-%%   <<"entries">> => list(type_converter_entry()())
+%%   <<"entries">> => list(type_converter_entry())
 %% }
 -type type_converter() :: #{binary() => any()}.
 
@@ -426,16 +426,16 @@
 
 %% Example:
 %% filter_log_events_response() :: #{
-%%   <<"events">> => list(filtered_log_event()()),
+%%   <<"events">> => list(filtered_log_event()),
 %%   <<"nextToken">> => string(),
-%%   <<"searchedLogStreams">> => list(searched_log_stream()())
+%%   <<"searchedLogStreams">> => list(searched_log_stream())
 %% }
 -type filter_log_events_response() :: #{binary() => any()}.
 
 %% Example:
 %% open_search_resource_config() :: #{
 %%   <<"applicationArn">> => string(),
-%%   <<"dashboardViewerPrincipals">> => list(string()()),
+%%   <<"dashboardViewerPrincipals">> => list(string()),
 %%   <<"dataSourceRoleArn">> => string(),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"retentionDays">> => integer()
@@ -455,7 +455,7 @@
 %% get_query_results_response() :: #{
 %%   <<"encryptionKey">> => string(),
 %%   <<"queryLanguage">> => list(any()),
-%%   <<"results">> => list(list(result_field()())()),
+%%   <<"results">> => list(list(result_field())()),
 %%   <<"statistics">> => query_statistics(),
 %%   <<"status">> => list(any())
 %% }
@@ -523,14 +523,14 @@
 %% Example:
 %% describe_queries_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"queries">> => list(query_info()())
+%%   <<"queries">> => list(query_info())
 %% }
 -type describe_queries_response() :: #{binary() => any()}.
 
 %% Example:
 %% put_log_events_request() :: #{
 %%   <<"entity">> => entity(),
-%%   <<"logEvents">> := list(input_log_event()()),
+%%   <<"logEvents">> := list(input_log_event()),
 %%   <<"logGroupName">> := string(),
 %%   <<"logStreamName">> := string(),
 %%   <<"sequenceToken">> => string()
@@ -576,7 +576,7 @@
 
 %% Example:
 %% substitute_string() :: #{
-%%   <<"entries">> => list(substitute_string_entry()())
+%%   <<"entries">> => list(substitute_string_entry())
 %% }
 -type substitute_string() :: #{binary() => any()}.
 
@@ -638,7 +638,7 @@
 
 %% Example:
 %% describe_export_tasks_response() :: #{
-%%   <<"exportTasks">> => list(export_task()()),
+%%   <<"exportTasks">> => list(export_task()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_export_tasks_response() :: #{binary() => any()}.
@@ -646,9 +646,9 @@
 %% Example:
 %% live_tail_session_start() :: #{
 %%   <<"logEventFilterPattern">> => string(),
-%%   <<"logGroupIdentifiers">> => list(string()()),
-%%   <<"logStreamNamePrefixes">> => list(string()()),
-%%   <<"logStreamNames">> => list(string()()),
+%%   <<"logGroupIdentifiers">> => list(string()),
+%%   <<"logStreamNamePrefixes">> => list(string()),
+%%   <<"logStreamNames">> => list(string()),
 %%   <<"requestId">> => string(),
 %%   <<"sessionId">> => string()
 %% }
@@ -675,7 +675,7 @@
 
 %% Example:
 %% list_log_groups_response() :: #{
-%%   <<"logGroups">> => list(log_group_summary()()),
+%%   <<"logGroups">> => list(log_group_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_log_groups_response() :: #{binary() => any()}.
@@ -696,7 +696,7 @@
 
 %% Example:
 %% describe_account_policies_response() :: #{
-%%   <<"accountPolicies">> => list(account_policy()()),
+%%   <<"accountPolicies">> => list(account_policy()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_account_policies_response() :: #{binary() => any()}.
@@ -735,9 +735,9 @@
 %% start_query_request() :: #{
 %%   <<"endTime">> := float(),
 %%   <<"limit">> => integer(),
-%%   <<"logGroupIdentifiers">> => list(string()()),
+%%   <<"logGroupIdentifiers">> => list(string()),
 %%   <<"logGroupName">> => string(),
-%%   <<"logGroupNames">> => list(string()()),
+%%   <<"logGroupNames">> => list(string()),
 %%   <<"queryLanguage">> => list(any()),
 %%   <<"queryString">> := string(),
 %%   <<"startTime">> := float()
@@ -759,7 +759,7 @@
 
 %% Example:
 %% get_log_group_fields_response() :: #{
-%%   <<"logGroupFields">> => list(log_group_field()())
+%%   <<"logGroupFields">> => list(log_group_field())
 %% }
 -type get_log_group_fields_response() :: #{binary() => any()}.
 
@@ -847,7 +847,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -860,10 +860,10 @@
 %% Example:
 %% configuration_template() :: #{
 %%   <<"allowedActionForAllowVendedLogsDeliveryForResource">> => string(),
-%%   <<"allowedFieldDelimiters">> => list(string()()),
-%%   <<"allowedFields">> => list(record_field()()),
+%%   <<"allowedFieldDelimiters">> => list(string()),
+%%   <<"allowedFields">> => list(record_field()),
 %%   <<"allowedOutputFormats">> => list(list(any())()),
-%%   <<"allowedSuffixPathFields">> => list(string()()),
+%%   <<"allowedSuffixPathFields">> => list(string()),
 %%   <<"defaultDeliveryConfigValues">> => configuration_template_delivery_config_values(),
 %%   <<"deliveryDestinationType">> => list(any()),
 %%   <<"logType">> => string(),
@@ -881,7 +881,7 @@
 
 %% Example:
 %% describe_destinations_response() :: #{
-%%   <<"destinations">> => list(destination()()),
+%%   <<"destinations">> => list(destination()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_destinations_response() :: #{binary() => any()}.
@@ -889,7 +889,7 @@
 %% Example:
 %% live_tail_session_update() :: #{
 %%   <<"sessionMetadata">> => live_tail_session_metadata(),
-%%   <<"sessionResults">> => list(live_tail_session_log_event()())
+%%   <<"sessionResults">> => list(live_tail_session_log_event())
 %% }
 -type live_tail_session_update() :: #{binary() => any()}.
 
@@ -898,7 +898,7 @@
 %%   <<"creationTime">> => float(),
 %%   <<"lastModifiedTime">> => float(),
 %%   <<"logGroupIdentifier">> => string(),
-%%   <<"transformerConfig">> => list(processor()())
+%%   <<"transformerConfig">> => list(processor())
 %% }
 -type get_transformer_response() :: #{binary() => any()}.
 
@@ -919,7 +919,7 @@
 
 %% Example:
 %% list_log_groups_request() :: #{
-%%   <<"accountIdentifiers">> => list(string()()),
+%%   <<"accountIdentifiers">> => list(string()),
 %%   <<"includeLinkedAccounts">> => boolean(),
 %%   <<"limit">> => integer(),
 %%   <<"logGroupClass">> => list(any()),
@@ -945,7 +945,7 @@
 %% Example:
 %% describe_query_definitions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"queryDefinitions">> => list(query_definition()())
+%%   <<"queryDefinitions">> => list(query_definition())
 %% }
 -type describe_query_definitions_response() :: #{binary() => any()}.
 
@@ -983,7 +983,7 @@
 
 %% Example:
 %% lower_case_string() :: #{
-%%   <<"withKeys">> => list(string()())
+%%   <<"withKeys">> => list(string())
 %% }
 -type lower_case_string() :: #{binary() => any()}.
 
@@ -1051,14 +1051,14 @@
 
 %% Example:
 %% describe_index_policies_request() :: #{
-%%   <<"logGroupIdentifiers">> := list(string()()),
+%%   <<"logGroupIdentifiers">> := list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_index_policies_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_field_indexes_request() :: #{
-%%   <<"logGroupIdentifiers">> := list(string()()),
+%%   <<"logGroupIdentifiers">> := list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_field_indexes_request() :: #{binary() => any()}.
@@ -1109,7 +1109,7 @@
 %%   <<"filterPattern">> => string(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"lastModifiedTimeStamp">> => float(),
-%%   <<"logGroupArnList">> => list(string()())
+%%   <<"logGroupArnList">> => list(string())
 %% }
 -type get_log_anomaly_detector_response() :: #{binary() => any()}.
 
@@ -1121,7 +1121,7 @@
 
 %% Example:
 %% describe_log_streams_response() :: #{
-%%   <<"logStreams">> => list(log_stream()()),
+%%   <<"logStreams">> => list(log_stream()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_log_streams_response() :: #{binary() => any()}.
@@ -1183,7 +1183,7 @@
 
 %% Example:
 %% test_transformer_response() :: #{
-%%   <<"transformedLogs">> => list(transformed_log_record()())
+%%   <<"transformedLogs">> => list(transformed_log_record())
 %% }
 -type test_transformer_response() :: #{binary() => any()}.
 
@@ -1202,14 +1202,14 @@
 
 %% Example:
 %% describe_delivery_destinations_response() :: #{
-%%   <<"deliveryDestinations">> => list(delivery_destination()()),
+%%   <<"deliveryDestinations">> => list(delivery_destination()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_delivery_destinations_response() :: #{binary() => any()}.
 
 %% Example:
 %% csv() :: #{
-%%   <<"columns">> => list(string()()),
+%%   <<"columns">> => list(string()),
 %%   <<"delimiter">> => string(),
 %%   <<"quoteCharacter">> => string(),
 %%   <<"source">> => string()
@@ -1289,7 +1289,7 @@
 
 %% Example:
 %% describe_field_indexes_response() :: #{
-%%   <<"fieldIndexes">> => list(field_index()()),
+%%   <<"fieldIndexes">> => list(field_index()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_field_indexes_response() :: #{binary() => any()}.
@@ -1311,7 +1311,7 @@
 %% Example:
 %% put_transformer_request() :: #{
 %%   <<"logGroupIdentifier">> := string(),
-%%   <<"transformerConfig">> := list(processor()())
+%%   <<"transformerConfig">> := list(processor())
 %% }
 -type put_transformer_request() :: #{binary() => any()}.
 
@@ -1340,7 +1340,7 @@
 %%   <<"filterName">> := string(),
 %%   <<"filterPattern">> := string(),
 %%   <<"logGroupName">> := string(),
-%%   <<"metricTransformations">> := list(metric_transformation()())
+%%   <<"metricTransformations">> := list(metric_transformation())
 %% }
 -type put_metric_filter_request() :: #{binary() => any()}.
 
@@ -1352,7 +1352,7 @@
 
 %% Example:
 %% describe_index_policies_response() :: #{
-%%   <<"indexPolicies">> => list(index_policy()()),
+%%   <<"indexPolicies">> => list(index_policy()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_index_policies_response() :: #{binary() => any()}.
@@ -1366,7 +1366,7 @@
 %%   <<"logGroupIdentifier">> => string(),
 %%   <<"logGroupName">> => string(),
 %%   <<"logStreamNamePrefix">> => string(),
-%%   <<"logStreamNames">> => list(string()()),
+%%   <<"logStreamNames">> => list(string()),
 %%   <<"nextToken">> => string(),
 %%   <<"startTime">> => float(),
 %%   <<"unmask">> => boolean()
@@ -1375,7 +1375,7 @@
 
 %% Example:
 %% describe_deliveries_response() :: #{
-%%   <<"deliveries">> => list(delivery()()),
+%%   <<"deliveries">> => list(delivery()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_deliveries_response() :: #{binary() => any()}.
@@ -1428,21 +1428,21 @@
 
 %% Example:
 %% describe_log_groups_response() :: #{
-%%   <<"logGroups">> => list(log_group()()),
+%%   <<"logGroups">> => list(log_group()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_log_groups_response() :: #{binary() => any()}.
 
 %% Example:
 %% upper_case_string() :: #{
-%%   <<"withKeys">> => list(string()())
+%%   <<"withKeys">> => list(string())
 %% }
 -type upper_case_string() :: #{binary() => any()}.
 
 %% Example:
 %% untag_log_group_request() :: #{
 %%   <<"logGroupName">> := string(),
-%%   <<"tags">> := list(string()())
+%%   <<"tags">> := list(string())
 %% }
 -type untag_log_group_request() :: #{binary() => any()}.
 
@@ -1460,7 +1460,7 @@
 
 %% Example:
 %% describe_delivery_sources_response() :: #{
-%%   <<"deliverySources">> => list(delivery_source()()),
+%%   <<"deliverySources">> => list(delivery_source()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_delivery_sources_response() :: #{binary() => any()}.
@@ -1528,7 +1528,7 @@
 %%   <<"evaluationFrequency">> => list(any()),
 %%   <<"filterPattern">> => string(),
 %%   <<"kmsKeyId">> => string(),
-%%   <<"logGroupArnList">> := list(string()()),
+%%   <<"logGroupArnList">> := list(string()),
 %%   <<"tags">> => map()
 %% }
 -type create_log_anomaly_detector_request() :: #{binary() => any()}.
@@ -1543,7 +1543,7 @@
 %% update_delivery_configuration_request() :: #{
 %%   <<"fieldDelimiter">> => string(),
 %%   <<"id">> := string(),
-%%   <<"recordFields">> => list(string()()),
+%%   <<"recordFields">> => list(string()),
 %%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration()
 %% }
 -type update_delivery_configuration_request() :: #{binary() => any()}.
@@ -1559,7 +1559,7 @@
 %% Example:
 %% put_query_definition_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"logGroupNames">> => list(string()()),
+%%   <<"logGroupNames">> => list(string()),
 %%   <<"name">> := string(),
 %%   <<"queryDefinitionId">> => string(),
 %%   <<"queryLanguage">> => list(any()),
@@ -1616,12 +1616,12 @@
 %%   <<"histogram">> => map(),
 %%   <<"isPatternLevelSuppression">> => boolean(),
 %%   <<"lastSeen">> => float(),
-%%   <<"logGroupArnList">> => list(string()()),
-%%   <<"logSamples">> => list(log_event()()),
+%%   <<"logGroupArnList">> => list(string()),
+%%   <<"logSamples">> => list(log_event()),
 %%   <<"patternId">> => string(),
 %%   <<"patternRegex">> => string(),
 %%   <<"patternString">> => string(),
-%%   <<"patternTokens">> => list(pattern_token()()),
+%%   <<"patternTokens">> => list(pattern_token()),
 %%   <<"priority">> => string(),
 %%   <<"state">> => list(any()),
 %%   <<"suppressed">> => boolean(),
@@ -1654,7 +1654,7 @@
 
 %% Example:
 %% rename_keys() :: #{
-%%   <<"entries">> => list(rename_key_entry()())
+%%   <<"entries">> => list(rename_key_entry())
 %% }
 -type rename_keys() :: #{binary() => any()}.
 
@@ -1667,9 +1667,9 @@
 %% Example:
 %% start_live_tail_request() :: #{
 %%   <<"logEventFilterPattern">> => string(),
-%%   <<"logGroupIdentifiers">> := list(string()()),
-%%   <<"logStreamNamePrefixes">> => list(string()()),
-%%   <<"logStreamNames">> => list(string()())
+%%   <<"logGroupIdentifiers">> := list(string()),
+%%   <<"logStreamNamePrefixes">> => list(string()),
+%%   <<"logStreamNames">> => list(string())
 %% }
 -type start_live_tail_request() :: #{binary() => any()}.
 
@@ -1765,7 +1765,7 @@
 
 %% Example:
 %% add_keys() :: #{
-%%   <<"entries">> => list(add_key_entry()())
+%%   <<"entries">> => list(add_key_entry())
 %% }
 -type add_keys() :: #{binary() => any()}.
 
@@ -1785,7 +1785,7 @@
 
 %% Example:
 %% get_log_events_response() :: #{
-%%   <<"events">> => list(output_log_event()()),
+%%   <<"events">> => list(output_log_event()),
 %%   <<"nextBackwardToken">> => string(),
 %%   <<"nextForwardToken">> => string()
 %% }
@@ -1808,7 +1808,7 @@
 
 %% Example:
 %% describe_account_policies_request() :: #{
-%%   <<"accountIdentifiers">> => list(string()()),
+%%   <<"accountIdentifiers">> => list(string()),
 %%   <<"nextToken">> => string(),
 %%   <<"policyName">> => string(),
 %%   <<"policyType">> := list(any())
@@ -1822,7 +1822,7 @@
 %%   <<"filterName">> => string(),
 %%   <<"filterPattern">> => string(),
 %%   <<"logGroupName">> => string(),
-%%   <<"metricTransformations">> => list(metric_transformation()())
+%%   <<"metricTransformations">> => list(metric_transformation())
 %% }
 -type metric_filter() :: #{binary() => any()}.
 
@@ -1933,7 +1933,7 @@
 %% Example:
 %% date_time_converter() :: #{
 %%   <<"locale">> => string(),
-%%   <<"matchPatterns">> => list(string()()),
+%%   <<"matchPatterns">> => list(string()),
 %%   <<"source">> => string(),
 %%   <<"sourceTimezone">> => string(),
 %%   <<"target">> => string(),
@@ -1958,14 +1958,14 @@
 %% Example:
 %% describe_resource_policies_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resourcePolicies">> => list(resource_policy()())
+%%   <<"resourcePolicies">> => list(resource_policy())
 %% }
 -type describe_resource_policies_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_subscription_filters_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"subscriptionFilters">> => list(subscription_filter()())
+%%   <<"subscriptionFilters">> => list(subscription_filter())
 %% }
 -type describe_subscription_filters_response() :: #{binary() => any()}.
 
@@ -2000,7 +2000,7 @@
 %%   <<"arn">> => string(),
 %%   <<"logType">> => string(),
 %%   <<"name">> => string(),
-%%   <<"resourceArns">> => list(string()()),
+%%   <<"resourceArns">> => list(string()),
 %%   <<"service">> => string(),
 %%   <<"tags">> => map()
 %% }
@@ -2023,20 +2023,20 @@
 %%   <<"filterPattern">> => string(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"lastModifiedTimeStamp">> => float(),
-%%   <<"logGroupArnList">> => list(string()())
+%%   <<"logGroupArnList">> => list(string())
 %% }
 -type anomaly_detector() :: #{binary() => any()}.
 
 %% Example:
 %% test_transformer_request() :: #{
-%%   <<"logEventMessages">> := list(string()()),
-%%   <<"transformerConfig">> := list(processor()())
+%%   <<"logEventMessages">> := list(string()),
+%%   <<"transformerConfig">> := list(processor())
 %% }
 -type test_transformer_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_log_anomaly_detectors_response() :: #{
-%%   <<"anomalyDetectors">> => list(anomaly_detector()()),
+%%   <<"anomalyDetectors">> => list(anomaly_detector()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_log_anomaly_detectors_response() :: #{binary() => any()}.
@@ -2067,7 +2067,7 @@
 
 %% Example:
 %% describe_configuration_templates_response() :: #{
-%%   <<"configurationTemplates">> => list(configuration_template()()),
+%%   <<"configurationTemplates">> => list(configuration_template()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_configuration_templates_response() :: #{binary() => any()}.
@@ -2089,13 +2089,13 @@
 
 %% Example:
 %% test_metric_filter_response() :: #{
-%%   <<"matches">> => list(metric_filter_match_record()())
+%%   <<"matches">> => list(metric_filter_match_record())
 %% }
 -type test_metric_filter_response() :: #{binary() => any()}.
 
 %% Example:
 %% move_keys() :: #{
-%%   <<"entries">> => list(move_key_entry()())
+%%   <<"entries">> => list(move_key_entry())
 %% }
 -type move_keys() :: #{binary() => any()}.
 
@@ -2118,7 +2118,7 @@
 %% Example:
 %% query_definition() :: #{
 %%   <<"lastModified">> => float(),
-%%   <<"logGroupNames">> => list(string()()),
+%%   <<"logGroupNames">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"queryDefinitionId">> => string(),
 %%   <<"queryLanguage">> => list(any()),
@@ -2128,7 +2128,7 @@
 
 %% Example:
 %% delete_keys() :: #{
-%%   <<"withKeys">> => list(string()())
+%%   <<"withKeys">> => list(string())
 %% }
 -type delete_keys() :: #{binary() => any()}.
 
@@ -2150,7 +2150,7 @@
 %%   <<"deliveryDestinationArn">> := string(),
 %%   <<"deliverySourceName">> := string(),
 %%   <<"fieldDelimiter">> => string(),
-%%   <<"recordFields">> => list(string()()),
+%%   <<"recordFields">> => list(string()),
 %%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration(),
 %%   <<"tags">> => map()
 %% }
@@ -2172,7 +2172,7 @@
 %% Example:
 %% test_metric_filter_request() :: #{
 %%   <<"filterPattern">> := string(),
-%%   <<"logEventMessages">> := list(string()())
+%%   <<"logEventMessages">> := list(string())
 %% }
 -type test_metric_filter_request() :: #{binary() => any()}.
 
@@ -2196,7 +2196,7 @@
 %% Example:
 %% configuration_template_delivery_config_values() :: #{
 %%   <<"fieldDelimiter">> => string(),
-%%   <<"recordFields">> => list(string()()),
+%%   <<"recordFields">> => list(string()),
 %%   <<"s3DeliveryConfiguration">> => s3_delivery_configuration()
 %% }
 -type configuration_template_delivery_config_values() :: #{binary() => any()}.
@@ -2216,7 +2216,7 @@
 
 %% Example:
 %% split_string() :: #{
-%%   <<"entries">> => list(split_string_entry()())
+%%   <<"entries">> => list(split_string_entry())
 %% }
 -type split_string() :: #{binary() => any()}.
 
@@ -2237,16 +2237,16 @@
 %% describe_configuration_templates_request() :: #{
 %%   <<"deliveryDestinationTypes">> => list(list(any())()),
 %%   <<"limit">> => integer(),
-%%   <<"logTypes">> => list(string()()),
+%%   <<"logTypes">> => list(string()),
 %%   <<"nextToken">> => string(),
-%%   <<"resourceTypes">> => list(string()()),
+%%   <<"resourceTypes">> => list(string()),
 %%   <<"service">> => string()
 %% }
 -type describe_configuration_templates_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_metric_filters_response() :: #{
-%%   <<"metricFilters">> => list(metric_filter()()),
+%%   <<"metricFilters">> => list(metric_filter()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_metric_filters_response() :: #{binary() => any()}.
@@ -2270,7 +2270,7 @@
 
 %% Example:
 %% list_integrations_response() :: #{
-%%   <<"integrationSummaries">> => list(integration_summary()())
+%%   <<"integrationSummaries">> => list(integration_summary())
 %% }
 -type list_integrations_response() :: #{binary() => any()}.
 

@@ -95,7 +95,7 @@
 %% unlink_identity_input() :: #{
 %%   <<"IdentityId">> := string(),
 %%   <<"Logins">> := map(),
-%%   <<"LoginsToRemove">> := list(string()())
+%%   <<"LoginsToRemove">> := list(string())
 %% }
 -type unlink_identity_input() :: #{binary() => any()}.
 
@@ -128,13 +128,13 @@
 %% identity_pool() :: #{
 %%   <<"AllowClassicFlow">> => boolean(),
 %%   <<"AllowUnauthenticatedIdentities">> => boolean(),
-%%   <<"CognitoIdentityProviders">> => list(cognito_identity_provider()()),
+%%   <<"CognitoIdentityProviders">> => list(cognito_identity_provider()),
 %%   <<"DeveloperProviderName">> => string(),
 %%   <<"IdentityPoolId">> => string(),
 %%   <<"IdentityPoolName">> => string(),
 %%   <<"IdentityPoolTags">> => map(),
-%%   <<"OpenIdConnectProviderARNs">> => list(string()()),
-%%   <<"SamlProviderARNs">> => list(string()()),
+%%   <<"OpenIdConnectProviderARNs">> => list(string()),
+%%   <<"SamlProviderARNs">> => list(string()),
 %%   <<"SupportedLoginProviders">> => map()
 %% }
 -type identity_pool() :: #{binary() => any()}.
@@ -171,7 +171,7 @@
 
 %% Example:
 %% delete_identities_response() :: #{
-%%   <<"UnprocessedIdentityIds">> => list(unprocessed_identity_id()())
+%%   <<"UnprocessedIdentityIds">> => list(unprocessed_identity_id())
 %% }
 -type delete_identities_response() :: #{binary() => any()}.
 
@@ -192,7 +192,7 @@
 
 %% Example:
 %% lookup_developer_identity_response() :: #{
-%%   <<"DeveloperUserIdentifierList">> => list(string()()),
+%%   <<"DeveloperUserIdentifierList">> => list(string()),
 %%   <<"IdentityId">> => string(),
 %%   <<"NextToken">> => string()
 %% }
@@ -224,13 +224,13 @@
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"IdentityId">> => string(),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"Logins">> => list(string()())
+%%   <<"Logins">> => list(string())
 %% }
 -type identity_description() :: #{binary() => any()}.
 
 %% Example:
 %% list_identity_pools_response() :: #{
-%%   <<"IdentityPools">> => list(identity_pool_short_description()()),
+%%   <<"IdentityPools">> => list(identity_pool_short_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_identity_pools_response() :: #{binary() => any()}.
@@ -260,7 +260,7 @@
 
 %% Example:
 %% rules_configuration_type() :: #{
-%%   <<"Rules">> => list(mapping_rule()())
+%%   <<"Rules">> => list(mapping_rule())
 %% }
 -type rules_configuration_type() :: #{binary() => any()}.
 
@@ -281,7 +281,7 @@
 
 %% Example:
 %% delete_identities_input() :: #{
-%%   <<"IdentityIdsToDelete">> := list(string()())
+%%   <<"IdentityIdsToDelete">> := list(string())
 %% }
 -type delete_identities_input() :: #{binary() => any()}.
 
@@ -372,12 +372,12 @@
 %% create_identity_pool_input() :: #{
 %%   <<"AllowClassicFlow">> => boolean(),
 %%   <<"AllowUnauthenticatedIdentities">> := boolean(),
-%%   <<"CognitoIdentityProviders">> => list(cognito_identity_provider()()),
+%%   <<"CognitoIdentityProviders">> => list(cognito_identity_provider()),
 %%   <<"DeveloperProviderName">> => string(),
 %%   <<"IdentityPoolName">> := string(),
 %%   <<"IdentityPoolTags">> => map(),
-%%   <<"OpenIdConnectProviderARNs">> => list(string()()),
-%%   <<"SamlProviderARNs">> => list(string()()),
+%%   <<"OpenIdConnectProviderARNs">> => list(string()),
+%%   <<"SamlProviderARNs">> => list(string()),
 %%   <<"SupportedLoginProviders">> => map()
 %% }
 -type create_identity_pool_input() :: #{binary() => any()}.
@@ -397,7 +397,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -449,7 +449,7 @@
 
 %% Example:
 %% list_identities_response() :: #{
-%%   <<"Identities">> => list(identity_description()()),
+%%   <<"Identities">> => list(identity_description()),
 %%   <<"IdentityPoolId">> => string(),
 %%   <<"NextToken">> => string()
 %% }

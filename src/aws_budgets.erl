@@ -116,20 +116,20 @@
 %% expression_dimension_values() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type expression_dimension_values() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"ResourceTags">> := list(resource_tag()())
+%%   <<"ResourceTags">> := list(resource_tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_budgets_response() :: #{
-%%   <<"Budgets">> => list(budget()()),
+%%   <<"Budgets">> => list(budget()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_budgets_response() :: #{binary() => any()}.
@@ -198,7 +198,7 @@
 %% tag_values() :: #{
 %%   <<"Key">> => string(),
 %%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type tag_values() :: #{binary() => any()}.
 
@@ -218,7 +218,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"ResourceTagKeys">> := list(string()())
+%%   <<"ResourceTagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -232,7 +232,7 @@
 %%   <<"Definition">> => definition(),
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"NotificationType">> => list(any()),
-%%   <<"Subscribers">> => list(subscriber()())
+%%   <<"Subscribers">> => list(subscriber())
 %% }
 -type update_budget_action_request() :: #{binary() => any()}.
 
@@ -268,7 +268,7 @@
 
 %% Example:
 %% describe_budget_actions_for_budget_response() :: #{
-%%   <<"Actions">> => list(action()()),
+%%   <<"Actions">> => list(action()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_budget_actions_for_budget_response() :: #{binary() => any()}.
@@ -304,13 +304,13 @@
 %% Example:
 %% describe_subscribers_for_notification_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Subscribers">> => list(subscriber()())
+%%   <<"Subscribers">> => list(subscriber())
 %% }
 -type describe_subscribers_for_notification_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_budget_notifications_for_account_response() :: #{
-%%   <<"BudgetNotificationsForAccount">> => list(budget_notifications_for_account()()),
+%%   <<"BudgetNotificationsForAccount">> => list(budget_notifications_for_account()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_budget_notifications_for_account_response() :: #{binary() => any()}.
@@ -344,7 +344,7 @@
 %% Example:
 %% scp_action_definition() :: #{
 %%   <<"PolicyId">> => string(),
-%%   <<"TargetIds">> => list(string()())
+%%   <<"TargetIds">> => list(string())
 %% }
 -type scp_action_definition() :: #{binary() => any()}.
 
@@ -373,7 +373,7 @@
 %% Example:
 %% ssm_action_definition() :: #{
 %%   <<"ActionSubType">> => list(any()),
-%%   <<"InstanceIds">> => list(string()()),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"Region">> => string()
 %% }
 -type ssm_action_definition() :: #{binary() => any()}.
@@ -386,7 +386,7 @@
 
 %% Example:
 %% describe_budget_action_histories_response() :: #{
-%%   <<"ActionHistories">> => list(action_history()()),
+%%   <<"ActionHistories">> => list(action_history()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_budget_action_histories_response() :: #{binary() => any()}.
@@ -421,7 +421,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"ResourceTags">> => list(resource_tag()())
+%%   <<"ResourceTags">> => list(resource_tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -436,7 +436,7 @@
 %% Example:
 %% notification_with_subscribers() :: #{
 %%   <<"Notification">> => notification(),
-%%   <<"Subscribers">> => list(subscriber()())
+%%   <<"Subscribers">> => list(subscriber())
 %% }
 -type notification_with_subscribers() :: #{binary() => any()}.
 
@@ -457,8 +457,8 @@
 %%   <<"Definition">> := definition(),
 %%   <<"ExecutionRoleArn">> := string(),
 %%   <<"NotificationType">> := list(any()),
-%%   <<"ResourceTags">> => list(resource_tag()()),
-%%   <<"Subscribers">> := list(subscriber()())
+%%   <<"ResourceTags">> => list(resource_tag()),
+%%   <<"Subscribers">> := list(subscriber())
 %% }
 -type create_budget_action_request() :: #{binary() => any()}.
 
@@ -505,7 +505,7 @@
 
 %% Example:
 %% describe_budget_actions_for_account_response() :: #{
-%%   <<"Actions">> => list(action()()),
+%%   <<"Actions">> => list(action()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_budget_actions_for_account_response() :: #{binary() => any()}.
@@ -521,7 +521,7 @@
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"NotificationType">> => list(any()),
 %%   <<"Status">> => list(any()),
-%%   <<"Subscribers">> => list(subscriber()())
+%%   <<"Subscribers">> => list(subscriber())
 %% }
 -type action() :: #{binary() => any()}.
 
@@ -529,7 +529,7 @@
 %% cost_category_values() :: #{
 %%   <<"Key">> => string(),
 %%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type cost_category_values() :: #{binary() => any()}.
 
@@ -580,8 +580,8 @@
 %% create_budget_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"Budget">> := budget(),
-%%   <<"NotificationsWithSubscribers">> => list(notification_with_subscribers()()),
-%%   <<"ResourceTags">> => list(resource_tag()())
+%%   <<"NotificationsWithSubscribers">> => list(notification_with_subscribers()),
+%%   <<"ResourceTags">> => list(resource_tag())
 %% }
 -type create_budget_request() :: #{binary() => any()}.
 
@@ -621,7 +621,7 @@
 %% Example:
 %% describe_notifications_for_budget_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Notifications">> => list(notification()())
+%%   <<"Notifications">> => list(notification())
 %% }
 -type describe_notifications_for_budget_response() :: #{binary() => any()}.
 
@@ -649,11 +649,11 @@
 
 %% Example:
 %% expression() :: #{
-%%   <<"And">> => list(expression()()),
+%%   <<"And">> => list(expression()),
 %%   <<"CostCategories">> => cost_category_values(),
 %%   <<"Dimensions">> => expression_dimension_values(),
 %%   <<"Not">> => expression(),
-%%   <<"Or">> => list(expression()()),
+%%   <<"Or">> => list(expression()),
 %%   <<"Tags">> => tag_values()
 %% }
 -type expression() :: #{binary() => any()}.
@@ -689,7 +689,7 @@
 %% budget_performance_history() :: #{
 %%   <<"BudgetName">> => string(),
 %%   <<"BudgetType">> => list(any()),
-%%   <<"BudgetedAndActualAmountsList">> => list(budgeted_and_actual_amounts()()),
+%%   <<"BudgetedAndActualAmountsList">> => list(budgeted_and_actual_amounts()),
 %%   <<"CostFilters">> => map(),
 %%   <<"CostTypes">> => cost_types(),
 %%   <<"TimeUnit">> => list(any())
@@ -722,10 +722,10 @@
 
 %% Example:
 %% iam_action_definition() :: #{
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"PolicyArn">> => string(),
-%%   <<"Roles">> => list(string()()),
-%%   <<"Users">> => list(string()())
+%%   <<"Roles">> => list(string()),
+%%   <<"Users">> => list(string())
 %% }
 -type iam_action_definition() :: #{binary() => any()}.
 
@@ -746,7 +746,7 @@
 %% Example:
 %% budget_notifications_for_account() :: #{
 %%   <<"BudgetName">> => string(),
-%%   <<"Notifications">> => list(notification()())
+%%   <<"Notifications">> => list(notification())
 %% }
 -type budget_notifications_for_account() :: #{binary() => any()}.
 
@@ -761,7 +761,7 @@
 %%   <<"AccountId">> := string(),
 %%   <<"BudgetName">> := string(),
 %%   <<"Notification">> := notification(),
-%%   <<"Subscribers">> := list(subscriber()())
+%%   <<"Subscribers">> := list(subscriber())
 %% }
 -type create_notification_request() :: #{binary() => any()}.
 

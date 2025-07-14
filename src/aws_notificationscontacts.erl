@@ -123,7 +123,7 @@
 
 %% Example:
 %% list_email_contacts_response() :: #{
-%%   <<"emailContacts">> => list(email_contact()()),
+%%   <<"emailContacts">> => list(email_contact()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_email_contacts_response() :: #{binary() => any()}.
@@ -191,7 +191,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -202,7 +202,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }

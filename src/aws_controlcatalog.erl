@@ -56,14 +56,14 @@
 
 %% Example:
 %% common_control_filter() :: #{
-%%   <<"Objectives">> => list(objective_resource_filter()())
+%%   <<"Objectives">> => list(objective_resource_filter())
 %% }
 -type common_control_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_control_mappings_response() :: #{
-%%   <<"ControlMappings">> => list(control_mapping()()),
+%%   <<"ControlMappings">> => list(control_mapping()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_control_mappings_response() :: #{binary() => any()}.
@@ -83,7 +83,7 @@
 %% Example:
 %% list_objectives_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Objectives">> => list(objective_summary()())
+%%   <<"Objectives">> => list(objective_summary())
 %% }
 -type list_objectives_response() :: #{binary() => any()}.
 
@@ -109,8 +109,8 @@
 
 %% Example:
 %% control_mapping_filter() :: #{
-%%   <<"CommonControlArns">> => list(string()()),
-%%   <<"ControlArns">> => list(string()()),
+%%   <<"CommonControlArns">> => list(string()),
+%%   <<"ControlArns">> => list(string()),
 %%   <<"MappingTypes">> => list(list(any())())
 %% }
 -type control_mapping_filter() :: #{binary() => any()}.
@@ -118,7 +118,7 @@
 
 %% Example:
 %% list_controls_response() :: #{
-%%   <<"Controls">> => list(control_summary()()),
+%%   <<"Controls">> => list(control_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_controls_response() :: #{binary() => any()}.
@@ -142,7 +142,7 @@
 
 %% Example:
 %% list_domains_response() :: #{
-%%   <<"Domains">> => list(domain_summary()()),
+%%   <<"Domains">> => list(domain_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_domains_response() :: #{binary() => any()}.
@@ -166,12 +166,12 @@
 
 %% Example:
 %% control_summary() :: #{
-%%   <<"Aliases">> => list(string()()),
+%%   <<"Aliases">> => list(string()),
 %%   <<"Arn">> => string(),
 %%   <<"Behavior">> => list(any()),
 %%   <<"CreateTime">> => [non_neg_integer()],
 %%   <<"Description">> => [string()],
-%%   <<"GovernedResources">> => list(string()()),
+%%   <<"GovernedResources">> => list(string()),
 %%   <<"Implementation">> => implementation_summary(),
 %%   <<"Name">> => [string()],
 %%   <<"Severity">> => list(any())
@@ -189,7 +189,7 @@
 
 %% Example:
 %% list_common_controls_response() :: #{
-%%   <<"CommonControls">> => list(common_control_summary()()),
+%%   <<"CommonControls">> => list(common_control_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_common_controls_response() :: #{binary() => any()}.
@@ -212,7 +212,7 @@
 
 %% Example:
 %% region_configuration() :: #{
-%%   <<"DeployableRegions">> => list(string()()),
+%%   <<"DeployableRegions">> => list(string()),
 %%   <<"Scope">> => list(any())
 %% }
 -type region_configuration() :: #{binary() => any()}.
@@ -244,7 +244,7 @@
 
 %% Example:
 %% objective_filter() :: #{
-%%   <<"Domains">> => list(domain_resource_filter()())
+%%   <<"Domains">> => list(domain_resource_filter())
 %% }
 -type objective_filter() :: #{binary() => any()}.
 
@@ -281,8 +281,8 @@
 
 %% Example:
 %% implementation_filter() :: #{
-%%   <<"Identifiers">> => list(string()()),
-%%   <<"Types">> => list(string()())
+%%   <<"Identifiers">> => list(string()),
+%%   <<"Types">> => list(string())
 %% }
 -type implementation_filter() :: #{binary() => any()}.
 
@@ -296,15 +296,15 @@
 
 %% Example:
 %% get_control_response() :: #{
-%%   <<"Aliases">> => list(string()()),
+%%   <<"Aliases">> => list(string()),
 %%   <<"Arn">> => string(),
 %%   <<"Behavior">> => list(any()),
 %%   <<"CreateTime">> => [non_neg_integer()],
 %%   <<"Description">> => [string()],
-%%   <<"GovernedResources">> => list(string()()),
+%%   <<"GovernedResources">> => list(string()),
 %%   <<"Implementation">> => implementation_details(),
 %%   <<"Name">> => [string()],
-%%   <<"Parameters">> => list(control_parameter()()),
+%%   <<"Parameters">> => list(control_parameter()),
 %%   <<"RegionConfiguration">> => region_configuration(),
 %%   <<"Severity">> => list(any())
 %% }

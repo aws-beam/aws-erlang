@@ -318,7 +318,7 @@
 
 %% Example:
 %% grpc_route_match() :: #{
-%%   <<"metadata">> => list(grpc_route_metadata()()),
+%%   <<"metadata">> => list(grpc_route_metadata()),
 %%   <<"methodName">> => string(),
 %%   <<"port">> => integer(),
 %%   <<"serviceName">> => string()
@@ -347,7 +347,7 @@
 
 %% Example:
 %% tls_validation_context_acm_trust() :: #{
-%%   <<"certificateAuthorityArns">> => list(string()())
+%%   <<"certificateAuthorityArns">> => list(string())
 %% }
 -type tls_validation_context_acm_trust() :: #{binary() => any()}.
 
@@ -366,7 +366,7 @@
 %%   <<"meshOwner">> => string(),
 %%   <<"routeName">> => string(),
 %%   <<"spec">> => route_spec(),
-%%   <<"tags">> => list(tag_ref()())
+%%   <<"tags">> => list(tag_ref())
 %% }
 -type create_route_input() :: #{binary() => any()}.
 
@@ -394,7 +394,7 @@
 
 %% Example:
 %% tcp_route_action() :: #{
-%%   <<"weightedTargets">> => list(weighted_target()())
+%%   <<"weightedTargets">> => list(weighted_target())
 %% }
 -type tcp_route_action() :: #{binary() => any()}.
 
@@ -456,7 +456,7 @@
 %% Example:
 %% list_routes_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"routes">> => list(route_ref()())
+%%   <<"routes">> => list(route_ref())
 %% }
 -type list_routes_output() :: #{binary() => any()}.
 
@@ -478,10 +478,10 @@
 
 %% Example:
 %% http_retry_policy() :: #{
-%%   <<"httpRetryEvents">> => list(string()()),
+%%   <<"httpRetryEvents">> => list(string()),
 %%   <<"maxRetries">> => float(),
 %%   <<"perRetryTimeout">> => duration(),
-%%   <<"tcpRetryEvents">> => list(string()())
+%%   <<"tcpRetryEvents">> => list(string())
 %% }
 -type http_retry_policy() :: #{binary() => any()}.
 
@@ -489,7 +489,7 @@
 %% Example:
 %% virtual_gateway_spec() :: #{
 %%   <<"backendDefaults">> => virtual_gateway_backend_defaults(),
-%%   <<"listeners">> => list(virtual_gateway_listener()()),
+%%   <<"listeners">> => list(virtual_gateway_listener()),
 %%   <<"logging">> => virtual_gateway_logging()
 %% }
 -type virtual_gateway_spec() :: #{binary() => any()}.
@@ -526,7 +526,7 @@
 
 %% Example:
 %% aws_cloud_map_service_discovery() :: #{
-%%   <<"attributes">> => list(aws_cloud_map_instance_attribute()()),
+%%   <<"attributes">> => list(aws_cloud_map_instance_attribute()),
 %%   <<"ipPreference">> => string(),
 %%   <<"namespaceName">> => string(),
 %%   <<"serviceName">> => string()
@@ -568,7 +568,7 @@
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"tags">> => list(tag_ref()())
+%%   <<"tags">> => list(tag_ref())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -616,7 +616,7 @@
 %% Example:
 %% list_virtual_nodes_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"virtualNodes">> => list(virtual_node_ref()())
+%%   <<"virtualNodes">> => list(virtual_node_ref())
 %% }
 -type list_virtual_nodes_output() :: #{binary() => any()}.
 
@@ -645,7 +645,7 @@
 
 %% Example:
 %% list_meshes_output() :: #{
-%%   <<"meshes">> => list(mesh_ref()()),
+%%   <<"meshes">> => list(mesh_ref()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_meshes_output() :: #{binary() => any()}.
@@ -813,7 +813,7 @@
 %%   <<"clientToken">> => [string()],
 %%   <<"meshOwner">> => string(),
 %%   <<"spec">> => virtual_router_spec(),
-%%   <<"tags">> => list(tag_ref()()),
+%%   <<"tags">> => list(tag_ref()),
 %%   <<"virtualRouterName">> => string()
 %% }
 -type create_virtual_router_input() :: #{binary() => any()}.
@@ -835,7 +835,7 @@
 
 %% Example:
 %% subject_alternative_name_matchers() :: #{
-%%   <<"exact">> => list(string()())
+%%   <<"exact">> => list(string())
 %% }
 -type subject_alternative_name_matchers() :: #{binary() => any()}.
 
@@ -850,7 +850,7 @@
 %% Example:
 %% list_virtual_gateways_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"virtualGateways">> := list(virtual_gateway_ref()())
+%%   <<"virtualGateways">> := list(virtual_gateway_ref())
 %% }
 -type list_virtual_gateways_output() :: #{binary() => any()}.
 
@@ -1005,7 +1005,7 @@
 %%   <<"clientToken">> => [string()],
 %%   <<"meshOwner">> => string(),
 %%   <<"spec">> => virtual_node_spec(),
-%%   <<"tags">> => list(tag_ref()()),
+%%   <<"tags">> => list(tag_ref()),
 %%   <<"virtualNodeName">> => string()
 %% }
 -type create_virtual_node_input() :: #{binary() => any()}.
@@ -1013,7 +1013,7 @@
 
 %% Example:
 %% virtual_router_spec() :: #{
-%%   <<"listeners">> => list(virtual_router_listener()())
+%%   <<"listeners">> => list(virtual_router_listener())
 %% }
 -type virtual_router_spec() :: #{binary() => any()}.
 
@@ -1039,7 +1039,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"resourceArn">> => string(),
-%%   <<"tags">> => list(tag_ref()())
+%%   <<"tags">> => list(tag_ref())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -1063,7 +1063,7 @@
 %%   <<"clientToken">> => [string()],
 %%   <<"meshOwner">> => string(),
 %%   <<"spec">> => virtual_service_spec(),
-%%   <<"tags">> => list(tag_ref()()),
+%%   <<"tags">> => list(tag_ref()),
 %%   <<"virtualServiceName">> => string()
 %% }
 -type create_virtual_service_input() :: #{binary() => any()}.
@@ -1072,14 +1072,14 @@
 %% Example:
 %% list_virtual_routers_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"virtualRouters">> => list(virtual_router_ref()())
+%%   <<"virtualRouters">> => list(virtual_router_ref())
 %% }
 -type list_virtual_routers_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% grpc_route_action() :: #{
-%%   <<"weightedTargets">> => list(weighted_target()())
+%%   <<"weightedTargets">> => list(weighted_target())
 %% }
 -type grpc_route_action() :: #{binary() => any()}.
 
@@ -1094,7 +1094,7 @@
 %% Example:
 %% list_virtual_services_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"virtualServices">> => list(virtual_service_ref()())
+%%   <<"virtualServices">> => list(virtual_service_ref())
 %% }
 -type list_virtual_services_output() :: #{binary() => any()}.
 
@@ -1149,7 +1149,7 @@
 
 %% Example:
 %% http_route_action() :: #{
-%%   <<"weightedTargets">> => list(weighted_target()())
+%%   <<"weightedTargets">> => list(weighted_target())
 %% }
 -type http_route_action() :: #{binary() => any()}.
 
@@ -1229,7 +1229,7 @@
 %% virtual_gateway_client_policy_tls() :: #{
 %%   <<"certificate">> => list(),
 %%   <<"enforce">> => [boolean()],
-%%   <<"ports">> => list(integer()()),
+%%   <<"ports">> => list(integer()),
 %%   <<"validation">> => virtual_gateway_tls_validation_context()
 %% }
 -type virtual_gateway_client_policy_tls() :: #{binary() => any()}.
@@ -1264,7 +1264,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"resourceArn">> => string(),
-%%   <<"tagKeys">> => list(string()())
+%%   <<"tagKeys">> => list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1324,8 +1324,8 @@
 %% Example:
 %% virtual_node_spec() :: #{
 %%   <<"backendDefaults">> => backend_defaults(),
-%%   <<"backends">> => list(list()()),
-%%   <<"listeners">> => list(listener()()),
+%%   <<"backends">> => list(list()),
+%%   <<"listeners">> => list(listener()),
 %%   <<"logging">> => logging(),
 %%   <<"serviceDiscovery">> => list()
 %% }
@@ -1421,7 +1421,7 @@
 %% Example:
 %% grpc_gateway_route_match() :: #{
 %%   <<"hostname">> => gateway_route_hostname_match(),
-%%   <<"metadata">> => list(grpc_gateway_route_metadata()()),
+%%   <<"metadata">> => list(grpc_gateway_route_metadata()),
 %%   <<"port">> => integer(),
 %%   <<"serviceName">> => string()
 %% }
@@ -1439,7 +1439,7 @@
 %% client_policy_tls() :: #{
 %%   <<"certificate">> => list(),
 %%   <<"enforce">> => [boolean()],
-%%   <<"ports">> => list(integer()()),
+%%   <<"ports">> => list(integer()),
 %%   <<"validation">> => tls_validation_context()
 %% }
 -type client_policy_tls() :: #{binary() => any()}.
@@ -1460,7 +1460,7 @@
 %%   <<"gatewayRouteName">> := string(),
 %%   <<"meshOwner">> => string(),
 %%   <<"spec">> := gateway_route_spec(),
-%%   <<"tags">> => list(tag_ref()())
+%%   <<"tags">> => list(tag_ref())
 %% }
 -type create_gateway_route_input() :: #{binary() => any()}.
 
@@ -1496,7 +1496,7 @@
 
 %% Example:
 %% list_gateway_routes_output() :: #{
-%%   <<"gatewayRoutes">> := list(gateway_route_ref()()),
+%%   <<"gatewayRoutes">> := list(gateway_route_ref()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_gateway_routes_output() :: #{binary() => any()}.
@@ -1550,7 +1550,7 @@
 %%   <<"clientToken">> => [string()],
 %%   <<"meshOwner">> => string(),
 %%   <<"spec">> := virtual_gateway_spec(),
-%%   <<"tags">> => list(tag_ref()()),
+%%   <<"tags">> => list(tag_ref()),
 %%   <<"virtualGatewayName">> := string()
 %% }
 -type create_virtual_gateway_input() :: #{binary() => any()}.
@@ -1601,7 +1601,7 @@
 
 %% Example:
 %% virtual_gateway_tls_validation_context_acm_trust() :: #{
-%%   <<"certificateAuthorityArns">> => list(string()())
+%%   <<"certificateAuthorityArns">> => list(string())
 %% }
 -type virtual_gateway_tls_validation_context_acm_trust() :: #{binary() => any()}.
 
@@ -1623,11 +1623,11 @@
 
 %% Example:
 %% grpc_retry_policy() :: #{
-%%   <<"grpcRetryEvents">> => list(string()()),
-%%   <<"httpRetryEvents">> => list(string()()),
+%%   <<"grpcRetryEvents">> => list(string()),
+%%   <<"httpRetryEvents">> => list(string()),
 %%   <<"maxRetries">> => float(),
 %%   <<"perRetryTimeout">> => duration(),
-%%   <<"tcpRetryEvents">> => list(string()())
+%%   <<"tcpRetryEvents">> => list(string())
 %% }
 -type grpc_retry_policy() :: #{binary() => any()}.
 
@@ -1652,12 +1652,12 @@
 
 %% Example:
 %% http_route_match() :: #{
-%%   <<"headers">> => list(http_route_header()()),
+%%   <<"headers">> => list(http_route_header()),
 %%   <<"method">> => string(),
 %%   <<"path">> => http_path_match(),
 %%   <<"port">> => integer(),
 %%   <<"prefix">> => [string()],
-%%   <<"queryParameters">> => list(http_query_parameter()()),
+%%   <<"queryParameters">> => list(http_query_parameter()),
 %%   <<"scheme">> => string()
 %% }
 -type http_route_match() :: #{binary() => any()}.
@@ -1765,13 +1765,13 @@
 
 %% Example:
 %% http_gateway_route_match() :: #{
-%%   <<"headers">> => list(http_gateway_route_header()()),
+%%   <<"headers">> => list(http_gateway_route_header()),
 %%   <<"hostname">> => gateway_route_hostname_match(),
 %%   <<"method">> => string(),
 %%   <<"path">> => http_path_match(),
 %%   <<"port">> => integer(),
 %%   <<"prefix">> => [string()],
-%%   <<"queryParameters">> => list(http_query_parameter()())
+%%   <<"queryParameters">> => list(http_query_parameter())
 %% }
 -type http_gateway_route_match() :: #{binary() => any()}.
 
@@ -1843,7 +1843,7 @@
 %%   <<"clientToken">> => [string()],
 %%   <<"meshName">> => string(),
 %%   <<"spec">> => mesh_spec(),
-%%   <<"tags">> => list(tag_ref()())
+%%   <<"tags">> => list(tag_ref())
 %% }
 -type create_mesh_input() :: #{binary() => any()}.
 

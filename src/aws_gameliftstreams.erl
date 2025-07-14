@@ -111,7 +111,7 @@
 
 %% Example:
 %% disassociate_applications_input() :: #{
-%%   <<"ApplicationIdentifiers">> := list(string()())
+%%   <<"ApplicationIdentifiers">> := list(string())
 %% }
 -type disassociate_applications_input() :: #{binary() => any()}.
 
@@ -129,7 +129,7 @@
 
 %% Example:
 %% list_stream_sessions_output() :: #{
-%%   <<"Items">> => list(stream_session_summary()()),
+%%   <<"Items">> => list(stream_session_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_stream_sessions_output() :: #{binary() => any()}.
@@ -141,7 +141,7 @@
 
 %% Example:
 %% associate_applications_input() :: #{
-%%   <<"ApplicationIdentifiers">> := list(string()())
+%%   <<"ApplicationIdentifiers">> := list(string())
 %% }
 -type associate_applications_input() :: #{binary() => any()}.
 
@@ -174,7 +174,7 @@
 
 %% Example:
 %% list_stream_sessions_by_account_output() :: #{
-%%   <<"Items">> => list(stream_session_summary()()),
+%%   <<"Items">> => list(stream_session_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_stream_sessions_by_account_output() :: #{binary() => any()}.
@@ -183,16 +183,16 @@
 %% Example:
 %% create_application_output() :: #{
 %%   <<"ApplicationLogOutputUri">> => string(),
-%%   <<"ApplicationLogPaths">> => list(string()()),
+%%   <<"ApplicationLogPaths">> => list(string()),
 %%   <<"ApplicationSourceUri">> => string(),
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedStreamGroups">> => list(string()()),
+%%   <<"AssociatedStreamGroups">> => list(string()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"ExecutablePath">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"ReplicationStatuses">> => list(replication_status()()),
+%%   <<"ReplicationStatuses">> => list(replication_status()),
 %%   <<"RuntimeEnvironment">> => runtime_environment(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => list(any())
@@ -211,13 +211,13 @@
 %% Example:
 %% create_stream_group_output() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedApplications">> => list(string()()),
+%%   <<"AssociatedApplications">> => list(string()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"DefaultApplication">> => default_application(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"LocationStates">> => list(location_state()()),
+%%   <<"LocationStates">> => list(location_state()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => list(any()),
 %%   <<"StreamClass">> => list(any())
@@ -227,7 +227,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -264,7 +264,7 @@
 
 %% Example:
 %% associate_applications_output() :: #{
-%%   <<"ApplicationArns">> => list(string()()),
+%%   <<"ApplicationArns">> => list(string()),
 %%   <<"Arn">> => string()
 %% }
 -type associate_applications_output() :: #{binary() => any()}.
@@ -272,7 +272,7 @@
 
 %% Example:
 %% list_applications_output() :: #{
-%%   <<"Items">> => list(application_summary()()),
+%%   <<"Items">> => list(application_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_applications_output() :: #{binary() => any()}.
@@ -314,7 +314,7 @@
 %% Example:
 %% create_application_input() :: #{
 %%   <<"ApplicationLogOutputUri">> => string(),
-%%   <<"ApplicationLogPaths">> => list(string()()),
+%%   <<"ApplicationLogPaths">> => list(string()),
 %%   <<"ApplicationSourceUri">> := string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> := string(),
@@ -346,7 +346,7 @@
 
 %% Example:
 %% disassociate_applications_output() :: #{
-%%   <<"ApplicationArns">> => list(string()()),
+%%   <<"ApplicationArns">> => list(string()),
 %%   <<"Arn">> => string()
 %% }
 -type disassociate_applications_output() :: #{binary() => any()}.
@@ -362,7 +362,7 @@
 %% Example:
 %% add_stream_group_locations_output() :: #{
 %%   <<"Identifier">> => string(),
-%%   <<"Locations">> => list(location_state()())
+%%   <<"Locations">> => list(location_state())
 %% }
 -type add_stream_group_locations_output() :: #{binary() => any()}.
 
@@ -375,7 +375,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectionTimeoutSeconds">> => integer(),
 %%   <<"Description">> => string(),
-%%   <<"Locations">> => list(string()()),
+%%   <<"Locations">> => list(string()),
 %%   <<"Protocol">> := list(any()),
 %%   <<"SessionLengthSeconds">> => integer(),
 %%   <<"SignalRequest">> := string(),
@@ -387,7 +387,7 @@
 %% Example:
 %% update_stream_group_input() :: #{
 %%   <<"Description">> => string(),
-%%   <<"LocationConfigurations">> => list(location_configuration()())
+%%   <<"LocationConfigurations">> => list(location_configuration())
 %% }
 -type update_stream_group_input() :: #{binary() => any()}.
 
@@ -411,16 +411,16 @@
 %% Example:
 %% get_application_output() :: #{
 %%   <<"ApplicationLogOutputUri">> => string(),
-%%   <<"ApplicationLogPaths">> => list(string()()),
+%%   <<"ApplicationLogPaths">> => list(string()),
 %%   <<"ApplicationSourceUri">> => string(),
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedStreamGroups">> => list(string()()),
+%%   <<"AssociatedStreamGroups">> => list(string()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"ExecutablePath">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"ReplicationStatuses">> => list(replication_status()()),
+%%   <<"ReplicationStatuses">> => list(replication_status()),
 %%   <<"RuntimeEnvironment">> => runtime_environment(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => list(any())
@@ -447,7 +447,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"DefaultApplicationIdentifier">> => string(),
 %%   <<"Description">> := string(),
-%%   <<"LocationConfigurations">> => list(location_configuration()()),
+%%   <<"LocationConfigurations">> => list(location_configuration()),
 %%   <<"StreamClass">> := list(any()),
 %%   <<"Tags">> => map()
 %% }
@@ -494,13 +494,13 @@
 %% Example:
 %% get_stream_group_output() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedApplications">> => list(string()()),
+%%   <<"AssociatedApplications">> => list(string()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"DefaultApplication">> => default_application(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"LocationStates">> => list(location_state()()),
+%%   <<"LocationStates">> => list(location_state()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => list(any()),
 %%   <<"StreamClass">> => list(any())
@@ -542,7 +542,7 @@
 %% Example:
 %% update_application_input() :: #{
 %%   <<"ApplicationLogOutputUri">> => string(),
-%%   <<"ApplicationLogPaths">> => list(string()()),
+%%   <<"ApplicationLogPaths">> => list(string()),
 %%   <<"Description">> => string()
 %% }
 -type update_application_input() :: #{binary() => any()}.
@@ -550,7 +550,7 @@
 
 %% Example:
 %% add_stream_group_locations_input() :: #{
-%%   <<"LocationConfigurations">> := list(location_configuration()())
+%%   <<"LocationConfigurations">> := list(location_configuration())
 %% }
 -type add_stream_group_locations_input() :: #{binary() => any()}.
 
@@ -558,13 +558,13 @@
 %% Example:
 %% update_stream_group_output() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedApplications">> => list(string()()),
+%%   <<"AssociatedApplications">> => list(string()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"DefaultApplication">> => default_application(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"LocationStates">> => list(location_state()()),
+%%   <<"LocationStates">> => list(location_state()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => list(any()),
 %%   <<"StreamClass">> => list(any())
@@ -581,7 +581,7 @@
 
 %% Example:
 %% list_stream_groups_output() :: #{
-%%   <<"Items">> => list(stream_group_summary()()),
+%%   <<"Items">> => list(stream_group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_stream_groups_output() :: #{binary() => any()}.
@@ -634,16 +634,16 @@
 %% Example:
 %% update_application_output() :: #{
 %%   <<"ApplicationLogOutputUri">> => string(),
-%%   <<"ApplicationLogPaths">> => list(string()()),
+%%   <<"ApplicationLogPaths">> => list(string()),
 %%   <<"ApplicationSourceUri">> => string(),
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedStreamGroups">> => list(string()()),
+%%   <<"AssociatedStreamGroups">> => list(string()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"ExecutablePath">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
-%%   <<"ReplicationStatuses">> => list(replication_status()()),
+%%   <<"ReplicationStatuses">> => list(replication_status()),
 %%   <<"RuntimeEnvironment">> => runtime_environment(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => list(any())

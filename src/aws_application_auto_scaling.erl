@@ -148,7 +148,7 @@
 %% describe_scaling_policies_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"PolicyNames">> => list(string()()),
+%%   <<"PolicyNames">> => list(string()),
 %%   <<"ResourceId">> => string(),
 %%   <<"ScalableDimension">> => list(any()),
 %%   <<"ServiceNamespace">> := list(any())
@@ -202,7 +202,7 @@
 %% Example:
 %% get_predictive_scaling_forecast_response() :: #{
 %%   <<"CapacityForecast">> => capacity_forecast(),
-%%   <<"LoadForecast">> => list(load_forecast()()),
+%%   <<"LoadForecast">> => list(load_forecast()),
 %%   <<"UpdateTime">> => non_neg_integer()
 %% }
 -type get_predictive_scaling_forecast_response() :: #{binary() => any()}.
@@ -217,7 +217,7 @@
 
 %% Example:
 %% scaling_policy() :: #{
-%%   <<"Alarms">> => list(alarm()()),
+%%   <<"Alarms">> => list(alarm()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"PolicyARN">> => string(),
 %%   <<"PolicyName">> => string(),
@@ -240,7 +240,7 @@
 %% Example:
 %% describe_scheduled_actions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScheduledActions">> => list(scheduled_action()())
+%%   <<"ScheduledActions">> => list(scheduled_action())
 %% }
 -type describe_scheduled_actions_response() :: #{binary() => any()}.
 
@@ -250,7 +250,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ScalableDimension">> => list(any()),
-%%   <<"ScheduledActionNames">> => list(string()()),
+%%   <<"ScheduledActionNames">> => list(string()),
 %%   <<"ServiceNamespace">> := list(any())
 %% }
 -type describe_scheduled_actions_request() :: #{binary() => any()}.
@@ -258,7 +258,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -271,9 +271,9 @@
 
 %% Example:
 %% customized_metric_specification() :: #{
-%%   <<"Dimensions">> => list(metric_dimension()()),
+%%   <<"Dimensions">> => list(metric_dimension()),
 %%   <<"MetricName">> => string(),
-%%   <<"Metrics">> => list(target_tracking_metric_data_query()()),
+%%   <<"Metrics">> => list(target_tracking_metric_data_query()),
 %%   <<"Namespace">> => string(),
 %%   <<"Statistic">> => list(any()),
 %%   <<"Unit">> => string()
@@ -283,7 +283,7 @@
 %% Example:
 %% describe_scaling_activities_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScalingActivities">> => list(scaling_activity()())
+%%   <<"ScalingActivities">> => list(scaling_activity())
 %% }
 -type describe_scaling_activities_response() :: #{binary() => any()}.
 
@@ -305,8 +305,8 @@
 %% Example:
 %% load_forecast() :: #{
 %%   <<"MetricSpecification">> => predictive_scaling_metric_specification(),
-%%   <<"Timestamps">> => list(non_neg_integer()()),
-%%   <<"Values">> => list(float()())
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
 %% }
 -type load_forecast() :: #{binary() => any()}.
 
@@ -354,7 +354,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Details">> => string(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NotScaledReasons">> => list(not_scaled_reason()()),
+%%   <<"NotScaledReasons">> => list(not_scaled_reason()),
 %%   <<"ResourceId">> => string(),
 %%   <<"ScalableDimension">> => list(any()),
 %%   <<"ServiceNamespace">> => list(any()),
@@ -389,7 +389,7 @@
 %%   <<"Cooldown">> => integer(),
 %%   <<"MetricAggregationType">> => list(any()),
 %%   <<"MinAdjustmentMagnitude">> => integer(),
-%%   <<"StepAdjustments">> => list(step_adjustment()())
+%%   <<"StepAdjustments">> => list(step_adjustment())
 %% }
 -type step_scaling_policy_configuration() :: #{binary() => any()}.
 
@@ -406,7 +406,7 @@
 
 %% Example:
 %% target_tracking_metric() :: #{
-%%   <<"Dimensions">> => list(target_tracking_metric_dimension()()),
+%%   <<"Dimensions">> => list(target_tracking_metric_dimension()),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string()
 %% }
@@ -421,13 +421,13 @@
 
 %% Example:
 %% predictive_scaling_customized_metric_specification() :: #{
-%%   <<"MetricDataQueries">> => list(predictive_scaling_metric_data_query()())
+%%   <<"MetricDataQueries">> => list(predictive_scaling_metric_data_query())
 %% }
 -type predictive_scaling_customized_metric_specification() :: #{binary() => any()}.
 
 %% Example:
 %% put_scaling_policy_response() :: #{
-%%   <<"Alarms">> => list(alarm()()),
+%%   <<"Alarms">> => list(alarm()),
 %%   <<"PolicyARN">> => string()
 %% }
 -type put_scaling_policy_response() :: #{binary() => any()}.
@@ -453,7 +453,7 @@
 %% describe_scalable_targets_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceIds">> => list(string()()),
+%%   <<"ResourceIds">> => list(string()),
 %%   <<"ScalableDimension">> => list(any()),
 %%   <<"ServiceNamespace">> := list(any())
 %% }
@@ -462,7 +462,7 @@
 %% Example:
 %% describe_scaling_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScalingPolicies">> => list(scaling_policy()())
+%%   <<"ScalingPolicies">> => list(scaling_policy())
 %% }
 -type describe_scaling_policies_response() :: #{binary() => any()}.
 
@@ -533,7 +533,7 @@
 %% predictive_scaling_policy_configuration() :: #{
 %%   <<"MaxCapacityBreachBehavior">> => list(any()),
 %%   <<"MaxCapacityBuffer">> => integer(),
-%%   <<"MetricSpecifications">> => list(predictive_scaling_metric_specification()()),
+%%   <<"MetricSpecifications">> => list(predictive_scaling_metric_specification()),
 %%   <<"Mode">> => list(any()),
 %%   <<"SchedulingBufferTime">> => integer()
 %% }
@@ -609,7 +609,7 @@
 %% Example:
 %% describe_scalable_targets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScalableTargets">> => list(scalable_target()())
+%%   <<"ScalableTargets">> => list(scalable_target())
 %% }
 -type describe_scalable_targets_response() :: #{binary() => any()}.
 
@@ -625,8 +625,8 @@
 
 %% Example:
 %% capacity_forecast() :: #{
-%%   <<"Timestamps">> => list(non_neg_integer()()),
-%%   <<"Values">> => list(float()())
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
 %% }
 -type capacity_forecast() :: #{binary() => any()}.
 
@@ -641,7 +641,7 @@
 
 %% Example:
 %% predictive_scaling_metric() :: #{
-%%   <<"Dimensions">> => list(predictive_scaling_metric_dimension()()),
+%%   <<"Dimensions">> => list(predictive_scaling_metric_dimension()),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string()
 %% }

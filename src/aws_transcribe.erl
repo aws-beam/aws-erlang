@@ -116,7 +116,7 @@
 %% list_vocabularies_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Vocabularies">> => list(vocabulary_info()())
+%%   <<"Vocabularies">> => list(vocabulary_info())
 %% }
 -type list_vocabularies_response() :: #{binary() => any()}.
 
@@ -150,7 +150,7 @@
 %%   <<"IdentifyMultipleLanguages">> => boolean(),
 %%   <<"JobExecutionSettings">> => job_execution_settings(),
 %%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageCodes">> => list(language_code_item()()),
+%%   <<"LanguageCodes">> => list(language_code_item()),
 %%   <<"LanguageIdSettings">> => map(),
 %%   <<"LanguageOptions">> => list(list(any())()),
 %%   <<"Media">> => media(),
@@ -160,8 +160,8 @@
 %%   <<"Settings">> => settings(),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Subtitles">> => subtitles_output(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"ToxicityDetection">> => list(toxicity_detection_settings()()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ToxicityDetection">> => list(toxicity_detection_settings()),
 %%   <<"Transcript">> => transcript(),
 %%   <<"TranscriptionJobName">> => string(),
 %%   <<"TranscriptionJobStatus">> => list(any())
@@ -210,15 +210,15 @@
 %% create_vocabulary_filter_request() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VocabularyFilterFileUri">> => string(),
-%%   <<"Words">> => list(string()())
+%%   <<"Words">> => list(string())
 %% }
 -type create_vocabulary_filter_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -236,7 +236,7 @@
 
 %% Example:
 %% list_medical_transcription_jobs_response() :: #{
-%%   <<"MedicalTranscriptionJobSummaries">> => list(medical_transcription_job_summary()()),
+%%   <<"MedicalTranscriptionJobSummaries">> => list(medical_transcription_job_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"Status">> => list(any())
 %% }
@@ -351,7 +351,7 @@
 %% update_vocabulary_filter_request() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
 %%   <<"VocabularyFilterFileUri">> => string(),
-%%   <<"Words">> => list(string()())
+%%   <<"Words">> => list(string())
 %% }
 -type update_vocabulary_filter_request() :: #{binary() => any()}.
 
@@ -377,11 +377,11 @@
 %%   <<"IdentifyLanguage">> => boolean(),
 %%   <<"IdentifyMultipleLanguages">> => boolean(),
 %%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageCodes">> => list(language_code_item()()),
+%%   <<"LanguageCodes">> => list(language_code_item()),
 %%   <<"ModelSettings">> => model_settings(),
 %%   <<"OutputLocationType">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"ToxicityDetection">> => list(toxicity_detection_settings()()),
+%%   <<"ToxicityDetection">> => list(toxicity_detection_settings()),
 %%   <<"TranscriptionJobName">> => string(),
 %%   <<"TranscriptionJobStatus">> => list(any())
 %% }
@@ -401,7 +401,7 @@
 %%   <<"CallAnalyticsJobDetails">> => call_analytics_job_details(),
 %%   <<"CallAnalyticsJobName">> => string(),
 %%   <<"CallAnalyticsJobStatus">> => list(any()),
-%%   <<"ChannelDefinitions">> => list(channel_definition()()),
+%%   <<"ChannelDefinitions">> => list(channel_definition()),
 %%   <<"CompletionTime">> => non_neg_integer(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DataAccessRoleArn">> => string(),
@@ -413,7 +413,7 @@
 %%   <<"MediaSampleRateHertz">> => integer(),
 %%   <<"Settings">> => call_analytics_job_settings(),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Transcript">> => transcript()
 %% }
 -type call_analytics_job() :: #{binary() => any()}.
@@ -443,19 +443,19 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% call_analytics_job_details() :: #{
-%%   <<"Skipped">> => list(call_analytics_skipped_feature()())
+%%   <<"Skipped">> => list(call_analytics_skipped_feature())
 %% }
 -type call_analytics_job_details() :: #{binary() => any()}.
 
 %% Example:
 %% list_medical_scribe_jobs_response() :: #{
-%%   <<"MedicalScribeJobSummaries">> => list(medical_scribe_job_summary()()),
+%%   <<"MedicalScribeJobSummaries">> => list(medical_scribe_job_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"Status">> => list(any())
 %% }
@@ -471,7 +471,7 @@
 %% update_vocabulary_request() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"Phrases">> => list(string()()),
+%%   <<"Phrases">> => list(string()),
 %%   <<"VocabularyFileUri">> => string()
 %% }
 -type update_vocabulary_request() :: #{binary() => any()}.
@@ -482,7 +482,7 @@
 %%   <<"Negate">> => boolean(),
 %%   <<"ParticipantRole">> => list(any()),
 %%   <<"RelativeTimeRange">> => relative_time_range(),
-%%   <<"Targets">> => list(string()()),
+%%   <<"Targets">> => list(string()),
 %%   <<"TranscriptFilterType">> => list(any())
 %% }
 -type transcript_filter() :: #{binary() => any()}.
@@ -491,8 +491,8 @@
 %% create_vocabulary_request() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"Phrases">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Phrases">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VocabularyFileUri">> => string()
 %% }
 -type create_vocabulary_request() :: #{binary() => any()}.
@@ -508,13 +508,13 @@
 %%   <<"BaseModelName">> := list(any()),
 %%   <<"InputDataConfig">> := input_data_config(),
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_language_model_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_call_analytics_categories_response() :: #{
-%%   <<"Categories">> => list(category_properties()()),
+%%   <<"Categories">> => list(category_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_call_analytics_categories_response() :: #{binary() => any()}.
@@ -536,13 +536,13 @@
 
 %% Example:
 %% start_call_analytics_job_request() :: #{
-%%   <<"ChannelDefinitions">> => list(channel_definition()()),
+%%   <<"ChannelDefinitions">> => list(channel_definition()),
 %%   <<"DataAccessRoleArn">> => string(),
 %%   <<"Media">> := media(),
 %%   <<"OutputEncryptionKMSKeyId">> => string(),
 %%   <<"OutputLocation">> => string(),
 %%   <<"Settings">> => call_analytics_job_settings(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_call_analytics_job_request() :: #{binary() => any()}.
 
@@ -574,7 +574,7 @@
 %%   <<"Settings">> => medical_transcription_setting(),
 %%   <<"Specialty">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Transcript">> => medical_transcript(),
 %%   <<"TranscriptionJobStatus">> => list(any()),
 %%   <<"Type">> => list(any())
@@ -587,8 +587,8 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"InputType">> => list(any()),
 %%   <<"LastUpdateTime">> => non_neg_integer(),
-%%   <<"Rules">> => list(list()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Rules">> => list(list()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type category_properties() :: #{binary() => any()}.
 
@@ -703,7 +703,7 @@
 %% list_medical_vocabularies_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Vocabularies">> => list(vocabulary_info()())
+%%   <<"Vocabularies">> => list(vocabulary_info())
 %% }
 -type list_medical_vocabularies_response() :: #{binary() => any()}.
 
@@ -730,20 +730,20 @@
 %% list_transcription_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"TranscriptionJobSummaries">> => list(transcription_job_summary()())
+%%   <<"TranscriptionJobSummaries">> => list(transcription_job_summary())
 %% }
 -type list_transcription_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% medical_scribe_job() :: #{
-%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()()),
+%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
 %%   <<"CompletionTime">> => non_neg_integer(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DataAccessRoleArn">> => string(),
@@ -755,7 +755,7 @@
 %%   <<"MedicalScribeOutput">> => medical_scribe_output(),
 %%   <<"Settings">> => medical_scribe_settings(),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type medical_scribe_job() :: #{binary() => any()}.
 
@@ -812,7 +812,7 @@
 %% Example:
 %% update_call_analytics_category_request() :: #{
 %%   <<"InputType">> => list(any()),
-%%   <<"Rules">> := list(list()())
+%%   <<"Rules">> := list(list())
 %% }
 -type update_call_analytics_category_request() :: #{binary() => any()}.
 
@@ -829,7 +829,7 @@
 %%   <<"OutputKey">> => string(),
 %%   <<"Settings">> => medical_transcription_setting(),
 %%   <<"Specialty">> := list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> := list(any())
 %% }
 -type start_medical_transcription_job_request() :: #{binary() => any()}.
@@ -842,7 +842,7 @@
 
 %% Example:
 %% list_call_analytics_jobs_response() :: #{
-%%   <<"CallAnalyticsJobSummaries">> => list(call_analytics_job_summary()()),
+%%   <<"CallAnalyticsJobSummaries">> => list(call_analytics_job_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"Status">> => list(any())
 %% }
@@ -863,7 +863,7 @@
 
 %% Example:
 %% list_language_models_response() :: #{
-%%   <<"Models">> => list(language_model()()),
+%%   <<"Models">> => list(language_model()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_language_models_response() :: #{binary() => any()}.
@@ -972,14 +972,14 @@
 
 %% Example:
 %% start_medical_scribe_job_request() :: #{
-%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()()),
+%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
 %%   <<"DataAccessRoleArn">> := string(),
 %%   <<"KMSEncryptionContext">> => map(),
 %%   <<"Media">> := media(),
 %%   <<"OutputBucketName">> := string(),
 %%   <<"OutputEncryptionKMSKeyId">> => string(),
 %%   <<"Settings">> := medical_scribe_settings(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_medical_scribe_job_request() :: #{binary() => any()}.
 
@@ -1039,7 +1039,7 @@
 %% Example:
 %% list_vocabulary_filters_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VocabularyFilters">> => list(vocabulary_filter_info()())
+%%   <<"VocabularyFilters">> => list(vocabulary_filter_info())
 %% }
 -type list_vocabulary_filters_response() :: #{binary() => any()}.
 
@@ -1094,7 +1094,7 @@
 %% Example:
 %% create_medical_vocabulary_request() :: #{
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VocabularyFileUri">> := string()
 %% }
 -type create_medical_vocabulary_request() :: #{binary() => any()}.
@@ -1143,8 +1143,8 @@
 %%   <<"OutputKey">> => string(),
 %%   <<"Settings">> => settings(),
 %%   <<"Subtitles">> => subtitles(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"ToxicityDetection">> => list(toxicity_detection_settings()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"ToxicityDetection">> => list(toxicity_detection_settings())
 %% }
 -type start_transcription_job_request() :: #{binary() => any()}.
 
@@ -1157,8 +1157,8 @@
 %% Example:
 %% create_call_analytics_category_request() :: #{
 %%   <<"InputType">> => list(any()),
-%%   <<"Rules">> := list(list()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Rules">> := list(list()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_call_analytics_category_request() :: #{binary() => any()}.
 
@@ -1185,7 +1185,7 @@
 %% subtitles_output() :: #{
 %%   <<"Formats">> => list(list(any())()),
 %%   <<"OutputStartIndex">> => integer(),
-%%   <<"SubtitleFileUris">> => list(string()())
+%%   <<"SubtitleFileUris">> => list(string())
 %% }
 -type subtitles_output() :: #{binary() => any()}.
 

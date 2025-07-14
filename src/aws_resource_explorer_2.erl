@@ -123,8 +123,8 @@
 
 %% Example:
 %% batch_get_view_output() :: #{
-%%   <<"Errors">> => list(batch_get_view_error()()),
-%%   <<"Views">> => list(view()())
+%%   <<"Errors">> => list(batch_get_view_error()),
+%%   <<"Views">> => list(view())
 %% }
 -type batch_get_view_output() :: #{binary() => any()}.
 
@@ -145,7 +145,7 @@
 
 %% Example:
 %% list_indexes_for_members_input() :: #{
-%%   <<"AccountIdList">> := list(string()()),
+%%   <<"AccountIdList">> := list(string()),
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => [string()]
 %% }
@@ -172,7 +172,7 @@
 %% Example:
 %% view() :: #{
 %%   <<"Filters">> => search_filter(),
-%%   <<"IncludedProperties">> => list(included_property()()),
+%%   <<"IncludedProperties">> => list(included_property()),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
 %%   <<"Owner">> => [string()],
 %%   <<"Scope">> => [string()],
@@ -266,7 +266,7 @@
 %% search_output() :: #{
 %%   <<"Count">> => resource_count(),
 %%   <<"NextToken">> => [string()],
-%%   <<"Resources">> => list(resource()()),
+%%   <<"Resources">> => list(resource()),
 %%   <<"ViewArn">> => [string()]
 %% }
 -type search_output() :: #{binary() => any()}.
@@ -314,7 +314,7 @@
 
 %% Example:
 %% list_indexes_for_members_output() :: #{
-%%   <<"Indexes">> => list(member_index()()),
+%%   <<"Indexes">> => list(member_index()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_indexes_for_members_output() :: #{binary() => any()}.
@@ -340,7 +340,7 @@
 %% Example:
 %% update_view_input() :: #{
 %%   <<"Filters">> => search_filter(),
-%%   <<"IncludedProperties">> => list(included_property()()),
+%%   <<"IncludedProperties">> => list(included_property()),
 %%   <<"ViewArn">> := [string()]
 %% }
 -type update_view_input() :: #{binary() => any()}.
@@ -456,7 +456,7 @@
 %% create_view_input() :: #{
 %%   <<"ClientToken">> => [string()],
 %%   <<"Filters">> => search_filter(),
-%%   <<"IncludedProperties">> => list(included_property()()),
+%%   <<"IncludedProperties">> => list(included_property()),
 %%   <<"Scope">> => [string()],
 %%   <<"Tags">> => map(),
 %%   <<"ViewName">> := string()
@@ -473,7 +473,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"FieldList">> => list(validation_exception_field()()),
+%%   <<"FieldList">> => list(validation_exception_field()),
 %%   <<"Message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
@@ -525,7 +525,7 @@
 
 %% Example:
 %% list_indexes_output() :: #{
-%%   <<"Indexes">> => list(index()()),
+%%   <<"Indexes">> => list(index()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_indexes_output() :: #{binary() => any()}.
@@ -542,7 +542,7 @@
 %% Example:
 %% list_supported_resource_types_output() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"ResourceTypes">> => list(supported_resource_type()())
+%%   <<"ResourceTypes">> => list(supported_resource_type())
 %% }
 -type list_supported_resource_types_output() :: #{binary() => any()}.
 
@@ -585,7 +585,7 @@
 %% Example:
 %% list_resources_output() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"Resources">> => list(resource()()),
+%%   <<"Resources">> => list(resource()),
 %%   <<"ViewArn">> => [string()]
 %% }
 -type list_resources_output() :: #{binary() => any()}.
@@ -594,7 +594,7 @@
 %% Example:
 %% managed_view() :: #{
 %%   <<"Filters">> => search_filter(),
-%%   <<"IncludedProperties">> => list(included_property()()),
+%%   <<"IncludedProperties">> => list(included_property()),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
 %%   <<"ManagedViewArn">> => [string()],
 %%   <<"ManagedViewName">> => [string()],
@@ -612,7 +612,7 @@
 %%   <<"Arn">> => [string()],
 %%   <<"LastReportedAt">> => [non_neg_integer()],
 %%   <<"OwningAccountId">> => [string()],
-%%   <<"Properties">> => list(resource_property()()),
+%%   <<"Properties">> => list(resource_property()),
 %%   <<"Region">> => [string()],
 %%   <<"ResourceType">> => [string()],
 %%   <<"Service">> => [string()]

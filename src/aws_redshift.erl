@@ -341,7 +341,7 @@
 %% describe_scheduled_actions_message() :: #{
 %%   <<"Active">> => boolean(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"Filters">> => list(scheduled_action_filter()()),
+%%   <<"Filters">> => list(scheduled_action_filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"ScheduledActionName">> => string(),
@@ -358,7 +358,7 @@
 
 %% Example:
 %% event_subscriptions_message() :: #{
-%%   <<"EventSubscriptionsList">> => list(event_subscription()()),
+%%   <<"EventSubscriptionsList">> => list(event_subscription()),
 %%   <<"Marker">> => string()
 %% }
 -type event_subscriptions_message() :: #{binary() => any()}.
@@ -438,7 +438,7 @@
 
 %% Example:
 %% endpoint_access_list() :: #{
-%%   <<"EndpointAccessList">> => list(endpoint_access()()),
+%%   <<"EndpointAccessList">> => list(endpoint_access()),
 %%   <<"Marker">> => string()
 %% }
 -type endpoint_access_list() :: #{binary() => any()}.
@@ -474,13 +474,13 @@
 %% Example:
 %% list_recommendations_result() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Recommendations">> => list(recommendation()())
+%%   <<"Recommendations">> => list(recommendation())
 %% }
 -type list_recommendations_result() :: #{binary() => any()}.
 
 %% Example:
 %% event_categories_map() :: #{
-%%   <<"Events">> => list(event_info_map()()),
+%%   <<"Events">> => list(event_info_map()),
 %%   <<"SourceType">> => string()
 %% }
 -type event_categories_map() :: #{binary() => any()}.
@@ -491,8 +491,8 @@
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"ScheduleIdentifier">> => string(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_snapshot_schedules_message() :: #{binary() => any()}.
 
@@ -527,8 +527,8 @@
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"ParameterGroupName">> => string(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_cluster_parameter_groups_message() :: #{binary() => any()}.
 
@@ -543,7 +543,7 @@
 %%   <<"ClusterIdentifier">> := string(),
 %%   <<"ManualSnapshotRetentionPeriod">> => integer(),
 %%   <<"SnapshotIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cluster_snapshot_message() :: #{binary() => any()}.
 
@@ -556,7 +556,7 @@
 %% Example:
 %% get_reserved_node_exchange_offerings_output_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReservedNodeOfferings">> => list(reserved_node_offering()())
+%%   <<"ReservedNodeOfferings">> => list(reserved_node_offering())
 %% }
 -type get_reserved_node_exchange_offerings_output_message() :: #{binary() => any()}.
 
@@ -575,7 +575,7 @@
 %% Example:
 %% inbound_integration() :: #{
 %%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Errors">> => list(integration_error()()),
+%%   <<"Errors">> => list(integration_error()),
 %%   <<"IntegrationArn">> => string(),
 %%   <<"SourceArn">> => string(),
 %%   <<"Status">> => list(any()),
@@ -592,7 +592,7 @@
 %% Example:
 %% availability_zone() :: #{
 %%   <<"Name">> => string(),
-%%   <<"SupportedPlatforms">> => list(supported_platform()())
+%%   <<"SupportedPlatforms">> => list(supported_platform())
 %% }
 -type availability_zone() :: #{binary() => any()}.
 
@@ -631,8 +631,8 @@
 %%   <<"ClusterSecurityGroupName">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_cluster_security_groups_message() :: #{binary() => any()}.
 
@@ -641,8 +641,8 @@
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"SnapshotCopyGrantName">> => string(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_snapshot_copy_grants_message() :: #{binary() => any()}.
 
@@ -650,10 +650,10 @@
 %% create_snapshot_schedule_message() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"NextInvocations">> => integer(),
-%%   <<"ScheduleDefinitions">> => list(string()()),
+%%   <<"ScheduleDefinitions">> => list(string()),
 %%   <<"ScheduleDescription">> => string(),
 %%   <<"ScheduleIdentifier">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_snapshot_schedule_message() :: #{binary() => any()}.
 
@@ -690,13 +690,13 @@
 %%   <<"AdditionalEncryptionContext">> => map(),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"Errors">> => list(integration_error()()),
+%%   <<"Errors">> => list(integration_error()),
 %%   <<"IntegrationArn">> => string(),
 %%   <<"IntegrationName">> => string(),
 %%   <<"KMSKeyId">> => string(),
 %%   <<"SourceArn">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetArn">> => string()
 %% }
 -type integration() :: #{binary() => any()}.
@@ -704,24 +704,24 @@
 %% Example:
 %% create_tags_message() :: #{
 %%   <<"ResourceName">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type create_tags_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_integrations_filter() :: #{
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type describe_integrations_filter() :: #{binary() => any()}.
 
 %% Example:
 %% modify_event_subscription_message() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"Severity">> => string(),
 %%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceIds">> => list(string()()),
+%%   <<"SourceIds">> => list(string()),
 %%   <<"SourceType">> => string(),
 %%   <<"SubscriptionName">> := string()
 %% }
@@ -741,7 +741,7 @@
 %%   <<"HsmConfigurationIdentifier">> => string(),
 %%   <<"HsmIpAddress">> => string(),
 %%   <<"HsmPartitionName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type hsm_configuration() :: #{binary() => any()}.
 
@@ -754,7 +754,7 @@
 %% Example:
 %% scheduled_action_filter() :: #{
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type scheduled_action_filter() :: #{binary() => any()}.
 
@@ -772,12 +772,12 @@
 
 %% Example:
 %% modify_redshift_idc_application_message() :: #{
-%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()()),
+%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"IdcDisplayName">> => string(),
 %%   <<"IdentityNamespace">> => string(),
 %%   <<"RedshiftIdcApplicationArn">> := string(),
-%%   <<"ServiceIntegrations">> => list(list()())
+%%   <<"ServiceIntegrations">> => list(list())
 %% }
 -type modify_redshift_idc_application_message() :: #{binary() => any()}.
 
@@ -822,9 +822,9 @@
 %%   <<"ClusterSubnetGroupName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"SubnetGroupStatus">> => string(),
-%%   <<"Subnets">> => list(subnet()()),
-%%   <<"SupportedClusterIpAddressTypes">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Subnets">> => list(subnet()),
+%%   <<"SupportedClusterIpAddressTypes">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type cluster_subnet_group() :: #{binary() => any()}.
@@ -840,14 +840,14 @@
 %%   <<"CustSubscriptionId">> => string(),
 %%   <<"CustomerAwsId">> => string(),
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategoriesList">> => list(string()()),
+%%   <<"EventCategoriesList">> => list(string()),
 %%   <<"Severity">> => string(),
 %%   <<"SnsTopicArn">> => string(),
-%%   <<"SourceIdsList">> => list(string()()),
+%%   <<"SourceIdsList">> => list(string()),
 %%   <<"SourceType">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"SubscriptionCreationTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type event_subscription() :: #{binary() => any()}.
 
@@ -856,7 +856,7 @@
 %%   <<"EC2SecurityGroupName">> => string(),
 %%   <<"EC2SecurityGroupOwnerId">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type ec2_security_group() :: #{binary() => any()}.
 
@@ -910,7 +910,7 @@
 %% Example:
 %% modify_endpoint_access_message() :: #{
 %%   <<"EndpointName">> := string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type modify_endpoint_access_message() :: #{binary() => any()}.
 
@@ -963,7 +963,7 @@
 %% Example:
 %% delete_tags_message() :: #{
 %%   <<"ResourceName">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type delete_tags_message() :: #{binary() => any()}.
 
@@ -1001,10 +1001,10 @@
 
 %% Example:
 %% modify_cluster_iam_roles_message() :: #{
-%%   <<"AddIamRoles">> => list(string()()),
+%%   <<"AddIamRoles">> => list(string()),
 %%   <<"ClusterIdentifier">> := string(),
 %%   <<"DefaultIamRoleArn">> => string(),
-%%   <<"RemoveIamRoles">> => list(string()())
+%%   <<"RemoveIamRoles">> => list(string())
 %% }
 -type modify_cluster_iam_roles_message() :: #{binary() => any()}.
 
@@ -1065,7 +1065,7 @@
 %%   <<"Description">> := string(),
 %%   <<"ParameterGroupFamily">> := string(),
 %%   <<"ParameterGroupName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cluster_parameter_group_message() :: #{binary() => any()}.
 
@@ -1090,7 +1090,7 @@
 
 %% Example:
 %% describe_data_shares_for_consumer_result() :: #{
-%%   <<"DataShares">> => list(data_share()()),
+%%   <<"DataShares">> => list(data_share()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_data_shares_for_consumer_result() :: #{binary() => any()}.
@@ -1128,7 +1128,7 @@
 
 %% Example:
 %% describe_data_shares_result() :: #{
-%%   <<"DataShares">> => list(data_share()()),
+%%   <<"DataShares">> => list(data_share()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_data_shares_result() :: #{binary() => any()}.
@@ -1142,7 +1142,7 @@
 %% Example:
 %% endpoint_authorization() :: #{
 %%   <<"AllowedAllVPCs">> => boolean(),
-%%   <<"AllowedVPCs">> => list(string()()),
+%%   <<"AllowedVPCs">> => list(string()),
 %%   <<"AuthorizeTime">> => non_neg_integer(),
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"ClusterStatus">> => string(),
@@ -1220,7 +1220,7 @@
 %% create_cluster_security_group_message() :: #{
 %%   <<"ClusterSecurityGroupName">> := string(),
 %%   <<"Description">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cluster_security_group_message() :: #{binary() => any()}.
 
@@ -1235,8 +1235,8 @@
 %%   <<"HsmConfigurationIdentifier">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_hsm_configurations_message() :: #{binary() => any()}.
 
@@ -1297,7 +1297,7 @@
 %% Example:
 %% reserved_nodes_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReservedNodes">> => list(reserved_node()())
+%%   <<"ReservedNodes">> => list(reserved_node())
 %% }
 -type reserved_nodes_message() :: #{binary() => any()}.
 
@@ -1320,8 +1320,8 @@
 %%   <<"ClusterSubnetGroupName">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_cluster_subnet_groups_message() :: #{binary() => any()}.
 
@@ -1332,7 +1332,7 @@
 %%   <<"FixedPrice">> => float(),
 %%   <<"NodeType">> => string(),
 %%   <<"OfferingType">> => string(),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservedNodeOfferingId">> => string(),
 %%   <<"ReservedNodeOfferingType">> => list(any()),
 %%   <<"UsagePrice">> => float()
@@ -1347,7 +1347,7 @@
 
 %% Example:
 %% modify_snapshot_schedule_message() :: #{
-%%   <<"ScheduleDefinitions">> := list(string()()),
+%%   <<"ScheduleDefinitions">> := list(string()),
 %%   <<"ScheduleIdentifier">> := string()
 %% }
 -type modify_snapshot_schedule_message() :: #{binary() => any()}.
@@ -1369,13 +1369,13 @@
 %% authorize_endpoint_access_message() :: #{
 %%   <<"Account">> := string(),
 %%   <<"ClusterIdentifier">> => string(),
-%%   <<"VpcIds">> => list(string()())
+%%   <<"VpcIds">> => list(string())
 %% }
 -type authorize_endpoint_access_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_account_attributes_message() :: #{
-%%   <<"AttributeNames">> => list(string()())
+%%   <<"AttributeNames">> => list(string())
 %% }
 -type describe_account_attributes_message() :: #{binary() => any()}.
 
@@ -1465,13 +1465,13 @@
 %% Example:
 %% create_event_subscription_message() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"Severity">> => string(),
 %%   <<"SnsTopicArn">> := string(),
-%%   <<"SourceIds">> => list(string()()),
+%%   <<"SourceIds">> => list(string()),
 %%   <<"SourceType">> => string(),
 %%   <<"SubscriptionName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_event_subscription_message() :: #{binary() => any()}.
 
@@ -1487,7 +1487,7 @@
 %% create_snapshot_copy_grant_message() :: #{
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SnapshotCopyGrantName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_snapshot_copy_grant_message() :: #{binary() => any()}.
 
@@ -1502,7 +1502,7 @@
 
 %% Example:
 %% endpoint_authorization_list() :: #{
-%%   <<"EndpointAuthorizationList">> => list(endpoint_authorization()()),
+%%   <<"EndpointAuthorizationList">> => list(endpoint_authorization()),
 %%   <<"Marker">> => string()
 %% }
 -type endpoint_authorization_list() :: #{binary() => any()}.
@@ -1528,7 +1528,7 @@
 %% Example:
 %% orderable_cluster_options_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"OrderableClusterOptions">> => list(orderable_cluster_option()())
+%%   <<"OrderableClusterOptions">> => list(orderable_cluster_option())
 %% }
 -type orderable_cluster_options_message() :: #{binary() => any()}.
 
@@ -1537,14 +1537,14 @@
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"SubscriptionName">> => string(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_event_subscriptions_message() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_parameter_group_status() :: #{
-%%   <<"ClusterParameterStatusList">> => list(cluster_parameter_status()()),
+%%   <<"ClusterParameterStatusList">> => list(cluster_parameter_status()),
 %%   <<"ParameterApplyStatus">> => string(),
 %%   <<"ParameterGroupName">> => string()
 %% }
@@ -1564,7 +1564,7 @@
 
 %% Example:
 %% register_namespace_input_message() :: #{
-%%   <<"ConsumerIdentifiers">> := list(string()()),
+%%   <<"ConsumerIdentifiers">> := list(string()),
 %%   <<"NamespaceIdentifier">> := list()
 %% }
 -type register_namespace_input_message() :: #{binary() => any()}.
@@ -1593,7 +1593,7 @@
 %% Example:
 %% snapshot_copy_grant_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"SnapshotCopyGrants">> => list(snapshot_copy_grant()())
+%%   <<"SnapshotCopyGrants">> => list(snapshot_copy_grant())
 %% }
 -type snapshot_copy_grant_message() :: #{binary() => any()}.
 
@@ -1625,8 +1625,8 @@
 %%   <<"MaxRecords">> => integer(),
 %%   <<"ResourceName">> => string(),
 %%   <<"ResourceType">> => string(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_tags_message() :: #{binary() => any()}.
 
@@ -1671,7 +1671,7 @@
 
 %% Example:
 %% orderable_cluster_option() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"AvailabilityZones">> => list(availability_zone()),
 %%   <<"ClusterType">> => string(),
 %%   <<"ClusterVersion">> => string(),
 %%   <<"NodeType">> => string()
@@ -1686,7 +1686,7 @@
 
 %% Example:
 %% event_info_map() :: #{
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"EventDescription">> => string(),
 %%   <<"EventId">> => string(),
 %%   <<"Severity">> => string()
@@ -1695,14 +1695,14 @@
 
 %% Example:
 %% batch_modify_cluster_snapshots_output_message() :: #{
-%%   <<"Errors">> => list(snapshot_error_message()()),
-%%   <<"Resources">> => list(string()())
+%%   <<"Errors">> => list(snapshot_error_message()),
+%%   <<"Resources">> => list(string())
 %% }
 -type batch_modify_cluster_snapshots_output_message() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_db_revisions_message() :: #{
-%%   <<"ClusterDbRevisions">> => list(cluster_db_revision()()),
+%%   <<"ClusterDbRevisions">> => list(cluster_db_revision()),
 %%   <<"Marker">> => string()
 %% }
 -type cluster_db_revisions_message() :: #{binary() => any()}.
@@ -1729,7 +1729,7 @@
 %% modify_cluster_subnet_group_message() :: #{
 %%   <<"ClusterSubnetGroupName">> := string(),
 %%   <<"Description">> => string(),
-%%   <<"SubnetIds">> := list(string()())
+%%   <<"SubnetIds">> := list(string())
 %% }
 -type modify_cluster_subnet_group_message() :: #{binary() => any()}.
 
@@ -1776,7 +1776,7 @@
 %% Example:
 %% cluster_parameter_groups_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ParameterGroups">> => list(cluster_parameter_group()())
+%%   <<"ParameterGroups">> => list(cluster_parameter_group())
 %% }
 -type cluster_parameter_groups_message() :: #{binary() => any()}.
 
@@ -1789,7 +1789,7 @@
 %% Example:
 %% modify_cluster_parameter_group_message() :: #{
 %%   <<"ParameterGroupName">> := string(),
-%%   <<"Parameters">> := list(parameter()())
+%%   <<"Parameters">> := list(parameter())
 %% }
 -type modify_cluster_parameter_group_message() :: #{binary() => any()}.
 
@@ -1803,7 +1803,7 @@
 %% cluster() :: #{
 %%   <<"Encrypted">> => boolean(),
 %%   <<"ClusterAvailabilityStatus">> => string(),
-%%   <<"IamRoles">> => list(cluster_iam_role()()),
+%%   <<"IamRoles">> => list(cluster_iam_role()),
 %%   <<"HsmStatus">> => hsm_status(),
 %%   <<"ClusterCreateTime">> => non_neg_integer(),
 %%   <<"ClusterStatus">> => string(),
@@ -1823,7 +1823,7 @@
 %%   <<"RestoreStatus">> => restore_status(),
 %%   <<"PendingModifiedValues">> => pending_modified_values(),
 %%   <<"DataTransferProgress">> => data_transfer_progress(),
-%%   <<"ClusterNodes">> => list(cluster_node()()),
+%%   <<"ClusterNodes">> => list(cluster_node()),
 %%   <<"IpAddressType">> => string(),
 %%   <<"MasterPasswordSecretKmsKeyId">> => string(),
 %%   <<"ElasticIpStatus">> => elastic_ip_status(),
@@ -1831,20 +1831,20 @@
 %%   <<"AquaConfiguration">> => aqua_configuration(),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"MasterUsername">> => string(),
-%%   <<"ClusterSecurityGroups">> => list(cluster_security_group_membership()()),
+%%   <<"ClusterSecurityGroups">> => list(cluster_security_group_membership()),
 %%   <<"ClusterRevisionNumber">> => string(),
 %%   <<"NodeType">> => string(),
 %%   <<"ElasticResizeNumberOfNodeOptions">> => string(),
 %%   <<"DBName">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"ClusterParameterGroups">> => list(cluster_parameter_group_status()()),
+%%   <<"ClusterParameterGroups">> => list(cluster_parameter_group_status()),
 %%   <<"EnhancedVpcRouting">> => boolean(),
 %%   <<"ClusterSnapshotCopyStatus">> => cluster_snapshot_copy_status(),
 %%   <<"MaintenanceTrackName">> => string(),
-%%   <<"PendingActions">> => list(string()()),
+%%   <<"PendingActions">> => list(string()),
 %%   <<"DefaultIamRoleArn">> => string(),
 %%   <<"ClusterNamespaceArn">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string(),
 %%   <<"ClusterPublicKey">> => string(),
 %%   <<"NumberOfNodes">> => integer(),
@@ -1854,9 +1854,9 @@
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"ReservedNodeExchangeStatus">> => reserved_node_exchange_status(),
 %%   <<"NextMaintenanceWindowStartTime">> => non_neg_integer(),
-%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()()),
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()),
 %%   <<"ModifyStatus">> => string(),
-%%   <<"DeferredMaintenanceWindows">> => list(deferred_maintenance_window()()),
+%%   <<"DeferredMaintenanceWindows">> => list(deferred_maintenance_window()),
 %%   <<"CustomDomainCertificateArn">> => string(),
 %%   <<"AllowVersionUpgrade">> => boolean(),
 %%   <<"ClusterIdentifier">> => string(),
@@ -1867,7 +1867,7 @@
 %% Example:
 %% reset_cluster_parameter_group_message() :: #{
 %%   <<"ParameterGroupName">> := string(),
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"ResetAllParameters">> => boolean()
 %% }
 -type reset_cluster_parameter_group_message() :: #{binary() => any()}.
@@ -1881,7 +1881,7 @@
 
 %% Example:
 %% inbound_integrations_message() :: #{
-%%   <<"InboundIntegrations">> => list(inbound_integration()()),
+%%   <<"InboundIntegrations">> => list(inbound_integration()),
 %%   <<"Marker">> => string()
 %% }
 -type inbound_integrations_message() :: #{binary() => any()}.
@@ -1909,8 +1909,8 @@
 %%   <<"Observation">> => string(),
 %%   <<"RecommendationText">> => string(),
 %%   <<"RecommendationType">> => string(),
-%%   <<"RecommendedActions">> => list(recommended_action()()),
-%%   <<"ReferenceLinks">> => list(reference_link()()),
+%%   <<"RecommendedActions">> => list(recommended_action()),
+%%   <<"ReferenceLinks">> => list(reference_link()),
 %%   <<"Title">> => string()
 %% }
 -type recommendation() :: #{binary() => any()}.
@@ -1952,7 +1952,7 @@
 %% ip_range() :: #{
 %%   <<"CIDRIP">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type ip_range() :: #{binary() => any()}.
 
@@ -1960,7 +1960,7 @@
 %% scheduled_action() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"IamRole">> => string(),
-%%   <<"NextInvocations">> => list(non_neg_integer()()),
+%%   <<"NextInvocations">> => list(non_neg_integer()),
 %%   <<"Schedule">> => string(),
 %%   <<"ScheduledActionDescription">> => string(),
 %%   <<"ScheduledActionName">> => string(),
@@ -1972,7 +1972,7 @@
 
 %% Example:
 %% describe_authentication_profiles_result() :: #{
-%%   <<"AuthenticationProfiles">> => list(authentication_profile()())
+%%   <<"AuthenticationProfiles">> => list(authentication_profile())
 %% }
 -type describe_authentication_profiles_result() :: #{binary() => any()}.
 
@@ -2008,7 +2008,7 @@
 %% node_configuration_options_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type node_configuration_options_filter() :: #{binary() => any()}.
 
@@ -2040,7 +2040,7 @@
 
 %% Example:
 %% redshift_idc_application() :: #{
-%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()()),
+%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"IdcDisplayName">> => string(),
 %%   <<"IdcInstanceArn">> => string(),
@@ -2049,13 +2049,13 @@
 %%   <<"IdentityNamespace">> => string(),
 %%   <<"RedshiftIdcApplicationArn">> => string(),
 %%   <<"RedshiftIdcApplicationName">> => string(),
-%%   <<"ServiceIntegrations">> => list(list()())
+%%   <<"ServiceIntegrations">> => list(list())
 %% }
 -type redshift_idc_application() :: #{binary() => any()}.
 
 %% Example:
 %% association() :: #{
-%%   <<"CertificateAssociations">> => list(certificate_association()()),
+%%   <<"CertificateAssociations">> => list(certificate_association()),
 %%   <<"CustomDomainCertificateArn">> => string(),
 %%   <<"CustomDomainCertificateExpiryDate">> => non_neg_integer()
 %% }
@@ -2082,7 +2082,7 @@
 %% Example:
 %% scheduled_actions_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ScheduledActions">> => list(scheduled_action()())
+%%   <<"ScheduledActions">> => list(scheduled_action())
 %% }
 -type scheduled_actions_message() :: #{binary() => any()}.
 
@@ -2110,13 +2110,13 @@
 %% hsm_client_certificate() :: #{
 %%   <<"HsmClientCertificateIdentifier">> => string(),
 %%   <<"HsmClientCertificatePublicKey">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type hsm_client_certificate() :: #{binary() => any()}.
 
 %% Example:
 %% batch_delete_cluster_snapshots_request() :: #{
-%%   <<"Identifiers">> := list(delete_cluster_snapshot_message()())
+%%   <<"Identifiers">> := list(delete_cluster_snapshot_message())
 %% }
 -type batch_delete_cluster_snapshots_request() :: #{binary() => any()}.
 
@@ -2140,7 +2140,7 @@
 %%   <<"NodeCount">> => integer(),
 %%   <<"NodeType">> => string(),
 %%   <<"OfferingType">> => string(),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservedNodeId">> => string(),
 %%   <<"ReservedNodeOfferingId">> => string(),
 %%   <<"ReservedNodeOfferingType">> => list(any()),
@@ -2160,7 +2160,7 @@
 %% snapshot_copy_grant() :: #{
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SnapshotCopyGrantName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type snapshot_copy_grant() :: #{binary() => any()}.
 
@@ -2192,7 +2192,7 @@
 %% data_share() :: #{
 %%   <<"AllowPubliclyAccessibleConsumers">> => boolean(),
 %%   <<"DataShareArn">> => string(),
-%%   <<"DataShareAssociations">> => list(data_share_association()()),
+%%   <<"DataShareAssociations">> => list(data_share_association()),
 %%   <<"DataShareType">> => list(any()),
 %%   <<"ManagedBy">> => string(),
 %%   <<"ProducerArn">> => string()
@@ -2204,7 +2204,7 @@
 %%   <<"Account">> => string(),
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"Force">> => boolean(),
-%%   <<"VpcIds">> => list(string()())
+%%   <<"VpcIds">> => list(string())
 %% }
 -type revoke_endpoint_access_message() :: #{binary() => any()}.
 
@@ -2230,7 +2230,7 @@
 
 %% Example:
 %% vpc_endpoint() :: #{
-%%   <<"NetworkInterfaces">> => list(network_interface()()),
+%%   <<"NetworkInterfaces">> => list(network_interface()),
 %%   <<"VpcEndpointId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -2256,7 +2256,7 @@
 
 %% Example:
 %% deregister_namespace_input_message() :: #{
-%%   <<"ConsumerIdentifiers">> := list(string()()),
+%%   <<"ConsumerIdentifiers">> := list(string()),
 %%   <<"NamespaceIdentifier">> := list()
 %% }
 -type deregister_namespace_input_message() :: #{binary() => any()}.
@@ -2264,7 +2264,7 @@
 %% Example:
 %% reserved_node_offerings_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReservedNodeOfferings">> => list(reserved_node_offering()())
+%%   <<"ReservedNodeOfferings">> => list(reserved_node_offering())
 %% }
 -type reserved_node_offerings_message() :: #{binary() => any()}.
 
@@ -2343,7 +2343,7 @@
 %% Example:
 %% usage_limit_list() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"UsageLimits">> => list(usage_limit()())
+%%   <<"UsageLimits">> => list(usage_limit())
 %% }
 -type usage_limit_list() :: #{binary() => any()}.
 
@@ -2356,7 +2356,7 @@
 %% Example:
 %% cluster_parameter_group_details() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type cluster_parameter_group_details() :: #{binary() => any()}.
 
@@ -2367,7 +2367,7 @@
 %%   <<"LastFailureTime">> => non_neg_integer(),
 %%   <<"LastSuccessfulDeliveryTime">> => non_neg_integer(),
 %%   <<"LogDestinationType">> => list(any()),
-%%   <<"LogExports">> => list(string()()),
+%%   <<"LogExports">> => list(string()),
 %%   <<"LoggingEnabled">> => boolean(),
 %%   <<"S3KeyPrefix">> => string()
 %% }
@@ -2375,7 +2375,7 @@
 
 %% Example:
 %% account_attribute_list() :: #{
-%%   <<"AccountAttributes">> => list(account_attribute()())
+%%   <<"AccountAttributes">> => list(account_attribute())
 %% }
 -type account_attribute_list() :: #{binary() => any()}.
 
@@ -2387,7 +2387,7 @@
 
 %% Example:
 %% cluster_versions_message() :: #{
-%%   <<"ClusterVersions">> => list(cluster_version()()),
+%%   <<"ClusterVersions">> => list(cluster_version()),
 %%   <<"Marker">> => string()
 %% }
 -type cluster_versions_message() :: #{binary() => any()}.
@@ -2426,7 +2426,7 @@
 %% endpoint() :: #{
 %%   <<"Address">> => string(),
 %%   <<"Port">> => integer(),
-%%   <<"VpcEndpoints">> => list(vpc_endpoint()())
+%%   <<"VpcEndpoints">> => list(vpc_endpoint())
 %% }
 -type endpoint() :: #{binary() => any()}.
 
@@ -2440,7 +2440,7 @@
 
 %% Example:
 %% events_message() :: #{
-%%   <<"Events">> => list(event()()),
+%%   <<"Events">> => list(event()),
 %%   <<"Marker">> => string()
 %% }
 -type events_message() :: #{binary() => any()}.
@@ -2448,7 +2448,7 @@
 %% Example:
 %% tagged_resource_list_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"TaggedResources">> => list(tagged_resource()())
+%%   <<"TaggedResources">> => list(tagged_resource())
 %% }
 -type tagged_resource_list_message() :: #{binary() => any()}.
 
@@ -2550,13 +2550,13 @@
 
 %% Example:
 %% create_redshift_idc_application_message() :: #{
-%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()()),
+%%   <<"AuthorizedTokenIssuerList">> => list(authorized_token_issuer()),
 %%   <<"IamRoleArn">> := string(),
 %%   <<"IdcDisplayName">> := string(),
 %%   <<"IdcInstanceArn">> := string(),
 %%   <<"IdentityNamespace">> => string(),
 %%   <<"RedshiftIdcApplicationName">> := string(),
-%%   <<"ServiceIntegrations">> => list(list()())
+%%   <<"ServiceIntegrations">> => list(list())
 %% }
 -type create_redshift_idc_application_message() :: #{binary() => any()}.
 
@@ -2573,7 +2573,7 @@
 %%   <<"IntegrationName">> := string(),
 %%   <<"KMSKeyId">> => string(),
 %%   <<"SourceArn">> := string(),
-%%   <<"TagList">> => list(tag()()),
+%%   <<"TagList">> => list(tag()),
 %%   <<"TargetArn">> := string()
 %% }
 -type create_integration_message() :: #{binary() => any()}.
@@ -2600,7 +2600,7 @@
 %% Example:
 %% event() :: #{
 %%   <<"Date">> => non_neg_integer(),
-%%   <<"EventCategories">> => list(string()()),
+%%   <<"EventCategories">> => list(string()),
 %%   <<"EventId">> => string(),
 %%   <<"Message">> => string(),
 %%   <<"Severity">> => string(),
@@ -2617,7 +2617,7 @@
 
 %% Example:
 %% clusters_message() :: #{
-%%   <<"Clusters">> => list(cluster()()),
+%%   <<"Clusters">> => list(cluster()),
 %%   <<"Marker">> => string()
 %% }
 -type clusters_message() :: #{binary() => any()}.
@@ -2665,12 +2665,12 @@
 %%   <<"ClusterVersion">> => string(),
 %%   <<"EstimatedSecondsToCompletion">> => float(),
 %%   <<"MasterPasswordSecretArn">> => string(),
-%%   <<"RestorableNodeTypes">> => list(string()()),
+%%   <<"RestorableNodeTypes">> => list(string()),
 %%   <<"OwnerAccount">> => string(),
 %%   <<"SnapshotType">> => string(),
 %%   <<"TotalBackupSizeInMegaBytes">> => float(),
 %%   <<"ActualIncrementalBackupSizeInMegaBytes">> => float(),
-%%   <<"AccountsWithRestoreAccess">> => list(account_with_restore_access()()),
+%%   <<"AccountsWithRestoreAccess">> => list(account_with_restore_access()),
 %%   <<"MasterPasswordSecretKmsKeyId">> => string(),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"MasterUsername">> => string(),
@@ -2681,7 +2681,7 @@
 %%   <<"SnapshotCreateTime">> => non_neg_integer(),
 %%   <<"SnapshotArn">> => string(),
 %%   <<"MaintenanceTrackName">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string(),
 %%   <<"SnapshotIdentifier">> => string(),
 %%   <<"NumberOfNodes">> => integer(),
@@ -2724,7 +2724,7 @@
 %% Example:
 %% snapshot_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Snapshots">> => list(snapshot()())
+%%   <<"Snapshots">> => list(snapshot())
 %% }
 -type snapshot_message() :: #{binary() => any()}.
 
@@ -2778,7 +2778,7 @@
 
 %% Example:
 %% hsm_client_certificate_message() :: #{
-%%   <<"HsmClientCertificates">> => list(hsm_client_certificate()()),
+%%   <<"HsmClientCertificates">> => list(hsm_client_certificate()),
 %%   <<"Marker">> => string()
 %% }
 -type hsm_client_certificate_message() :: #{binary() => any()}.
@@ -2801,7 +2801,7 @@
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"CurrentDatabaseRevision">> => string(),
 %%   <<"DatabaseRevisionReleaseDate">> => non_neg_integer(),
-%%   <<"RevisionTargets">> => list(revision_target()())
+%%   <<"RevisionTargets">> => list(revision_target())
 %% }
 -type cluster_db_revision() :: #{binary() => any()}.
 
@@ -2837,7 +2837,7 @@
 %% batch_modify_cluster_snapshots_message() :: #{
 %%   <<"Force">> => boolean(),
 %%   <<"ManualSnapshotRetentionPeriod">> => integer(),
-%%   <<"SnapshotIdentifierList">> := list(string()())
+%%   <<"SnapshotIdentifierList">> := list(string())
 %% }
 -type batch_modify_cluster_snapshots_message() :: #{binary() => any()}.
 
@@ -2862,7 +2862,7 @@
 
 %% Example:
 %% event_categories_message() :: #{
-%%   <<"EventCategoriesMapList">> => list(event_categories_map()())
+%%   <<"EventCategoriesMapList">> => list(event_categories_map())
 %% }
 -type event_categories_message() :: #{binary() => any()}.
 
@@ -2943,10 +2943,10 @@
 %%   <<"SnapshotArn">> => string(),
 %%   <<"SnapshotIdentifier">> => string(),
 %%   <<"SnapshotType">> => string(),
-%%   <<"SortingEntities">> => list(snapshot_sorting_entity()()),
+%%   <<"SortingEntities">> => list(snapshot_sorting_entity()),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_cluster_snapshots_message() :: #{binary() => any()}.
 
@@ -2958,7 +2958,7 @@
 
 %% Example:
 %% cluster_subnet_group_message() :: #{
-%%   <<"ClusterSubnetGroups">> => list(cluster_subnet_group()()),
+%%   <<"ClusterSubnetGroups">> => list(cluster_subnet_group()),
 %%   <<"Marker">> => string()
 %% }
 -type cluster_subnet_group_message() :: #{binary() => any()}.
@@ -2967,7 +2967,7 @@
 %% create_cluster_message() :: #{
 %%   <<"Encrypted">> => boolean(),
 %%   <<"Port">> => integer(),
-%%   <<"IamRoles">> => list(string()()),
+%%   <<"IamRoles">> => list(string()),
 %%   <<"RedshiftIdcApplicationArn">> => string(),
 %%   <<"ElasticIp">> => string(),
 %%   <<"ClusterSubnetGroupName">> => string(),
@@ -2983,19 +2983,19 @@
 %%   <<"AdditionalInfo">> => string(),
 %%   <<"MasterUsername">> := string(),
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"ClusterSecurityGroups">> => list(string()()),
+%%   <<"ClusterSecurityGroups">> => list(string()),
 %%   <<"DBName">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
 %%   <<"EnhancedVpcRouting">> => boolean(),
 %%   <<"NodeType">> := string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"VpcSecurityGroupIds">> => list(string()),
 %%   <<"ClusterParameterGroupName">> => string(),
 %%   <<"ClusterType">> => string(),
 %%   <<"MaintenanceTrackName">> => string(),
 %%   <<"HsmConfigurationIdentifier">> => string(),
 %%   <<"DefaultIamRoleArn">> => string(),
 %%   <<"MasterUserPassword">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"NumberOfNodes">> => integer(),
 %%   <<"ClusterIdentifier">> := string(),
 %%   <<"KmsKeyId">> => string(),
@@ -3030,7 +3030,7 @@
 %%   <<"FeatureType">> => list(any()),
 %%   <<"LimitType">> => list(any()),
 %%   <<"Period">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UsageLimitId">> => string()
 %% }
 -type usage_limit() :: #{binary() => any()}.
@@ -3058,7 +3058,7 @@
 %%   <<"BucketName">> => string(),
 %%   <<"ClusterIdentifier">> := string(),
 %%   <<"LogDestinationType">> => list(any()),
-%%   <<"LogExports">> => list(string()()),
+%%   <<"LogExports">> => list(string()),
 %%   <<"S3KeyPrefix">> => string()
 %% }
 -type enable_logging_message() :: #{binary() => any()}.
@@ -3080,7 +3080,7 @@
 %% Example:
 %% describe_redshift_idc_applications_result() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"RedshiftIdcApplications">> => list(redshift_idc_application()())
+%%   <<"RedshiftIdcApplications">> => list(redshift_idc_application())
 %% }
 -type describe_redshift_idc_applications_result() :: #{binary() => any()}.
 
@@ -3102,7 +3102,7 @@
 %%   <<"EndpointName">> := string(),
 %%   <<"ResourceOwner">> => string(),
 %%   <<"SubnetGroupName">> := string(),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type create_endpoint_access_message() :: #{binary() => any()}.
 
@@ -3124,7 +3124,7 @@
 %% Example:
 %% describe_snapshot_schedules_output_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"SnapshotSchedules">> => list(snapshot_schedule()())
+%%   <<"SnapshotSchedules">> => list(snapshot_schedule())
 %% }
 -type describe_snapshot_schedules_output_message() :: #{binary() => any()}.
 
@@ -3138,7 +3138,7 @@
 %% update_target() :: #{
 %%   <<"DatabaseVersion">> => string(),
 %%   <<"MaintenanceTrackName">> => string(),
-%%   <<"SupportedOperations">> => list(supported_operation()())
+%%   <<"SupportedOperations">> => list(supported_operation())
 %% }
 -type update_target() :: #{binary() => any()}.
 
@@ -3150,7 +3150,7 @@
 %%   <<"FeatureType">> := list(any()),
 %%   <<"LimitType">> := list(any()),
 %%   <<"Period">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_usage_limit_message() :: #{binary() => any()}.
 
@@ -3172,8 +3172,8 @@
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_clusters_message() :: #{binary() => any()}.
 
@@ -3195,9 +3195,9 @@
 %%   <<"DataTransferProgressPercent">> => float(),
 %%   <<"ElapsedTimeInSeconds">> => float(),
 %%   <<"EstimatedTimeToCompletionInSeconds">> => float(),
-%%   <<"ImportTablesCompleted">> => list(string()()),
-%%   <<"ImportTablesInProgress">> => list(string()()),
-%%   <<"ImportTablesNotStarted">> => list(string()()),
+%%   <<"ImportTablesCompleted">> => list(string()),
+%%   <<"ImportTablesInProgress">> => list(string()),
+%%   <<"ImportTablesNotStarted">> => list(string()),
 %%   <<"Message">> => string(),
 %%   <<"ProgressInMegaBytes">> => float(),
 %%   <<"ResizeType">> => string(),
@@ -3213,7 +3213,7 @@
 %% Example:
 %% create_hsm_client_certificate_message() :: #{
 %%   <<"HsmClientCertificateIdentifier">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_hsm_client_certificate_message() :: #{binary() => any()}.
 
@@ -3226,7 +3226,7 @@
 %% Example:
 %% account_attribute() :: #{
 %%   <<"AttributeName">> => string(),
-%%   <<"AttributeValues">> => list(attribute_value_target()())
+%%   <<"AttributeValues">> => list(attribute_value_target())
 %% }
 -type account_attribute() :: #{binary() => any()}.
 
@@ -3276,7 +3276,7 @@
 
 %% Example:
 %% integrations_message() :: #{
-%%   <<"Integrations">> => list(integration()()),
+%%   <<"Integrations">> => list(integration()),
 %%   <<"Marker">> => string()
 %% }
 -type integrations_message() :: #{binary() => any()}.
@@ -3301,7 +3301,7 @@
 %%   <<"HsmPartitionName">> := string(),
 %%   <<"HsmPartitionPassword">> := string(),
 %%   <<"HsmServerPublicCertificate">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_hsm_configuration_message() :: #{binary() => any()}.
 
@@ -3322,7 +3322,7 @@
 %%   <<"AutoCreate">> => boolean(),
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"CustomDomainName">> => string(),
-%%   <<"DbGroups">> => list(string()()),
+%%   <<"DbGroups">> => list(string()),
 %%   <<"DbName">> => string(),
 %%   <<"DbUser">> := string(),
 %%   <<"DurationSeconds">> => integer()
@@ -3334,8 +3334,8 @@
 %%   <<"HsmClientCertificateIdentifier">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string())
 %% }
 -type describe_hsm_client_certificates_message() :: #{binary() => any()}.
 
@@ -3347,7 +3347,7 @@
 
 %% Example:
 %% describe_integrations_message() :: #{
-%%   <<"Filters">> => list(describe_integrations_filter()()),
+%%   <<"Filters">> => list(describe_integrations_filter()),
 %%   <<"IntegrationArn">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
@@ -3368,7 +3368,7 @@
 
 %% Example:
 %% cluster_security_group_message() :: #{
-%%   <<"ClusterSecurityGroups">> => list(cluster_security_group()()),
+%%   <<"ClusterSecurityGroups">> => list(cluster_security_group()),
 %%   <<"Marker">> => string()
 %% }
 -type cluster_security_group_message() :: #{binary() => any()}.
@@ -3412,7 +3412,7 @@
 
 %% Example:
 %% describe_data_shares_for_producer_result() :: #{
-%%   <<"DataShares">> => list(data_share()()),
+%%   <<"DataShares">> => list(data_share()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_data_shares_for_producer_result() :: #{binary() => any()}.
@@ -3428,7 +3428,7 @@
 %%   <<"ResourceOwner">> => string(),
 %%   <<"SubnetGroupName">> => string(),
 %%   <<"VpcEndpoint">> => vpc_endpoint(),
-%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()())
+%%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership())
 %% }
 -type endpoint_access() :: #{binary() => any()}.
 
@@ -3455,7 +3455,7 @@
 
 %% Example:
 %% custom_domain_associations_message() :: #{
-%%   <<"Associations">> => list(association()()),
+%%   <<"Associations">> => list(association()),
 %%   <<"Marker">> => string()
 %% }
 -type custom_domain_associations_message() :: #{binary() => any()}.
@@ -3480,7 +3480,7 @@
 %%   <<"AvailabilityZoneRelocation">> => boolean(),
 %%   <<"ClusterIdentifier">> := string(),
 %%   <<"ClusterParameterGroupName">> => string(),
-%%   <<"ClusterSecurityGroups">> => list(string()()),
+%%   <<"ClusterSecurityGroups">> => list(string()),
 %%   <<"ClusterType">> => string(),
 %%   <<"ClusterVersion">> => string(),
 %%   <<"ElasticIp">> => string(),
@@ -3502,7 +3502,7 @@
 %%   <<"Port">> => integer(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()())
+%%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
 -type modify_cluster_message() :: #{binary() => any()}.
 
@@ -3528,9 +3528,9 @@
 %% cluster_security_group() :: #{
 %%   <<"ClusterSecurityGroupName">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"EC2SecurityGroups">> => list(ec2_security_group()()),
-%%   <<"IPRanges">> => list(ip_range()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"EC2SecurityGroups">> => list(ec2_security_group()),
+%%   <<"IPRanges">> => list(ip_range()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type cluster_security_group() :: #{binary() => any()}.
 
@@ -3599,7 +3599,7 @@
 %% Example:
 %% table_restore_status_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"TableRestoreStatusDetails">> => list(table_restore_status()())
+%%   <<"TableRestoreStatusDetails">> => list(table_restore_status())
 %% }
 -type table_restore_status_message() :: #{binary() => any()}.
 
@@ -3622,14 +3622,14 @@
 
 %% Example:
 %% batch_delete_cluster_snapshots_result() :: #{
-%%   <<"Errors">> => list(snapshot_error_message()()),
-%%   <<"Resources">> => list(string()())
+%%   <<"Errors">> => list(snapshot_error_message()),
+%%   <<"Resources">> => list(string())
 %% }
 -type batch_delete_cluster_snapshots_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_partners_output_message() :: #{
-%%   <<"PartnerIntegrationInfoList">> => list(partner_integration_info()())
+%%   <<"PartnerIntegrationInfoList">> => list(partner_integration_info())
 %% }
 -type describe_partners_output_message() :: #{binary() => any()}.
 
@@ -3638,7 +3638,7 @@
 %%   <<"Encrypted">> => boolean(),
 %%   <<"SnapshotClusterIdentifier">> => string(),
 %%   <<"Port">> => integer(),
-%%   <<"IamRoles">> => list(string()()),
+%%   <<"IamRoles">> => list(string()),
 %%   <<"ElasticIp">> => string(),
 %%   <<"ClusterSubnetGroupName">> => string(),
 %%   <<"OwnerAccount">> => string(),
@@ -3653,11 +3653,11 @@
 %%   <<"AdditionalInfo">> => string(),
 %%   <<"TargetReservedNodeOfferingId">> => string(),
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"ClusterSecurityGroups">> => list(string()()),
+%%   <<"ClusterSecurityGroups">> => list(string()),
 %%   <<"NodeType">> => string(),
 %%   <<"PubliclyAccessible">> => boolean(),
 %%   <<"EnhancedVpcRouting">> => boolean(),
-%%   <<"VpcSecurityGroupIds">> => list(string()()),
+%%   <<"VpcSecurityGroupIds">> => list(string()),
 %%   <<"ClusterParameterGroupName">> => string(),
 %%   <<"SnapshotArn">> => string(),
 %%   <<"MaintenanceTrackName">> => string(),
@@ -3691,13 +3691,13 @@
 %% default_cluster_parameters() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"ParameterGroupFamily">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type default_cluster_parameters() :: #{binary() => any()}.
 
 %% Example:
 %% hsm_configuration_message() :: #{
-%%   <<"HsmConfigurations">> => list(hsm_configuration()()),
+%%   <<"HsmConfigurations">> => list(hsm_configuration()),
 %%   <<"Marker">> => string()
 %% }
 -type hsm_configuration_message() :: #{binary() => any()}.
@@ -3713,7 +3713,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ParameterGroupFamily">> => string(),
 %%   <<"ParameterGroupName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type cluster_parameter_group() :: #{binary() => any()}.
 
@@ -3762,7 +3762,7 @@
 %% describe_node_configuration_options_message() :: #{
 %%   <<"ActionType">> := list(any()),
 %%   <<"ClusterIdentifier">> => string(),
-%%   <<"Filters">> => list(node_configuration_options_filter()()),
+%%   <<"Filters">> => list(node_configuration_options_filter()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"OwnerAccount">> => string(),
@@ -3802,7 +3802,7 @@
 %% Example:
 %% node_configuration_options_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"NodeConfigurationOptionList">> => list(node_configuration_option()())
+%%   <<"NodeConfigurationOptionList">> => list(node_configuration_option())
 %% }
 -type node_configuration_options_message() :: #{binary() => any()}.
 
@@ -3823,7 +3823,7 @@
 
 %% Example:
 %% authorized_token_issuer() :: #{
-%%   <<"AuthorizedAudiencesList">> => list(string()()),
+%%   <<"AuthorizedAudiencesList">> => list(string()),
 %%   <<"TrustedTokenIssuerArn">> => string()
 %% }
 -type authorized_token_issuer() :: #{binary() => any()}.
@@ -3852,7 +3852,7 @@
 %% Example:
 %% secondary_cluster_info() :: #{
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"ClusterNodes">> => list(cluster_node()())
+%%   <<"ClusterNodes">> => list(cluster_node())
 %% }
 -type secondary_cluster_info() :: #{binary() => any()}.
 
@@ -3868,8 +3868,8 @@
 %%   <<"FeatureType">> => list(any()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
-%%   <<"TagKeys">> => list(string()()),
-%%   <<"TagValues">> => list(string()()),
+%%   <<"TagKeys">> => list(string()),
+%%   <<"TagValues">> => list(string()),
 %%   <<"UsageLimitId">> => string()
 %% }
 -type describe_usage_limits_message() :: #{binary() => any()}.
@@ -3878,8 +3878,8 @@
 %% create_cluster_subnet_group_message() :: #{
 %%   <<"ClusterSubnetGroupName">> := string(),
 %%   <<"Description">> := string(),
-%%   <<"SubnetIds">> := list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cluster_subnet_group_message() :: #{binary() => any()}.
 
@@ -3918,7 +3918,7 @@
 %% maintenance_track() :: #{
 %%   <<"DatabaseVersion">> => string(),
 %%   <<"MaintenanceTrackName">> => string(),
-%%   <<"UpdateTargets">> => list(update_target()())
+%%   <<"UpdateTargets">> => list(update_target())
 %% }
 -type maintenance_track() :: #{binary() => any()}.
 
@@ -3931,7 +3931,7 @@
 %% Example:
 %% get_reserved_node_exchange_configuration_options_output_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReservedNodeConfigurationOptionList">> => list(reserved_node_configuration_option()())
+%%   <<"ReservedNodeConfigurationOptionList">> => list(reserved_node_configuration_option())
 %% }
 -type get_reserved_node_exchange_configuration_options_output_message() :: #{binary() => any()}.
 
@@ -3951,25 +3951,25 @@
 %% Example:
 %% describe_reserved_node_exchange_status_output_message() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"ReservedNodeExchangeStatusDetails">> => list(reserved_node_exchange_status()())
+%%   <<"ReservedNodeExchangeStatusDetails">> => list(reserved_node_exchange_status())
 %% }
 -type describe_reserved_node_exchange_status_output_message() :: #{binary() => any()}.
 
 %% Example:
 %% snapshot_schedule() :: #{
 %%   <<"AssociatedClusterCount">> => integer(),
-%%   <<"AssociatedClusters">> => list(cluster_associated_to_schedule()()),
-%%   <<"NextInvocations">> => list(non_neg_integer()()),
-%%   <<"ScheduleDefinitions">> => list(string()()),
+%%   <<"AssociatedClusters">> => list(cluster_associated_to_schedule()),
+%%   <<"NextInvocations">> => list(non_neg_integer()),
+%%   <<"ScheduleDefinitions">> => list(string()),
 %%   <<"ScheduleDescription">> => string(),
 %%   <<"ScheduleIdentifier">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type snapshot_schedule() :: #{binary() => any()}.
 
 %% Example:
 %% track_list_message() :: #{
-%%   <<"MaintenanceTracks">> => list(maintenance_track()()),
+%%   <<"MaintenanceTracks">> => list(maintenance_track()),
 %%   <<"Marker">> => string()
 %% }
 -type track_list_message() :: #{binary() => any()}.

@@ -167,7 +167,7 @@
 
 %% Example:
 %% batch_get_sandboxes_input() :: #{
-%%   <<"ids">> := list(string()())
+%%   <<"ids">> := list(string())
 %% }
 -type batch_get_sandboxes_input() :: #{binary() => any()}.
 
@@ -201,7 +201,7 @@
 
 %% Example:
 %% batch_get_build_batches_input() :: #{
-%%   <<"ids">> := list(string()())
+%%   <<"ids">> := list(string())
 %% }
 -type batch_get_build_batches_input() :: #{binary() => any()}.
 
@@ -216,7 +216,7 @@
 
 %% Example:
 %% list_builds_for_project_output() :: #{
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_builds_for_project_output() :: #{binary() => any()}.
@@ -263,8 +263,8 @@
 
 %% Example:
 %% batch_get_command_executions_output() :: #{
-%%   <<"commandExecutions">> => list(command_execution()()),
-%%   <<"commandExecutionsNotFound">> => list(string()())
+%%   <<"commandExecutions">> => list(command_execution()),
+%%   <<"commandExecutionsNotFound">> => list(string())
 %% }
 -type batch_get_command_executions_output() :: #{binary() => any()}.
 
@@ -288,7 +288,7 @@
 
 %% Example:
 %% list_build_batches_output() :: #{
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_build_batches_output() :: #{binary() => any()}.
@@ -302,7 +302,7 @@
 %% Example:
 %% proxy_configuration() :: #{
 %%   <<"defaultBehavior">> => list(any()),
-%%   <<"orderedProxyRules">> => list(fleet_proxy_rule()())
+%%   <<"orderedProxyRules">> => list(fleet_proxy_rule())
 %% }
 -type proxy_configuration() :: #{binary() => any()}.
 
@@ -321,7 +321,7 @@
 
 %% Example:
 %% list_fleets_output() :: #{
-%%   <<"fleets">> => list(string()()),
+%%   <<"fleets">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleets_output() :: #{binary() => any()}.
@@ -331,29 +331,29 @@
 %%   <<"buildStatus">> => list(any()),
 %%   <<"buildNumber">> => float(),
 %%   <<"buildBatchArn">> => string(),
-%%   <<"exportedEnvironmentVariables">> => list(exported_environment_variable()()),
+%%   <<"exportedEnvironmentVariables">> => list(exported_environment_variable()),
 %%   <<"environment">> => project_environment(),
 %%   <<"projectName">> => string(),
-%%   <<"reportArns">> => list(string()()),
+%%   <<"reportArns">> => list(string()),
 %%   <<"sourceVersion">> => string(),
 %%   <<"id">> => string(),
 %%   <<"debugSession">> => debug_session(),
 %%   <<"networkInterface">> => network_interface(),
 %%   <<"vpcConfig">> => vpc_config(),
 %%   <<"encryptionKey">> => string(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()()),
-%%   <<"secondarySourceVersions">> => list(project_source_version()()),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
 %%   <<"queuedTimeoutInMinutes">> => integer(),
 %%   <<"initiator">> => string(),
 %%   <<"buildComplete">> => boolean(),
 %%   <<"currentPhase">> => string(),
-%%   <<"secondaryArtifacts">> => list(build_artifacts()()),
-%%   <<"phases">> => list(build_phase()()),
+%%   <<"secondaryArtifacts">> => list(build_artifacts()),
+%%   <<"phases">> => list(build_phase()),
 %%   <<"arn">> => string(),
 %%   <<"resolvedSourceVersion">> => string(),
 %%   <<"autoRetryConfig">> => auto_retry_config(),
 %%   <<"timeoutInMinutes">> => integer(),
-%%   <<"secondarySources">> => list(project_source()()),
+%%   <<"secondarySources">> => list(project_source()),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"serviceRole">> => string(),
 %%   <<"source">> => project_source(),
@@ -375,17 +375,17 @@
 %%   <<"description">> => string(),
 %%   <<"encryptionKey">> => string(),
 %%   <<"environment">> => project_environment(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()()),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
 %%   <<"logsConfig">> => logs_config(),
 %%   <<"name">> := string(),
 %%   <<"queuedTimeoutInMinutes">> => integer(),
-%%   <<"secondaryArtifacts">> => list(project_artifacts()()),
-%%   <<"secondarySourceVersions">> => list(project_source_version()()),
-%%   <<"secondarySources">> => list(project_source()()),
+%%   <<"secondaryArtifacts">> => list(project_artifacts()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
 %%   <<"serviceRole">> => string(),
 %%   <<"source">> => project_source(),
 %%   <<"sourceVersion">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"timeoutInMinutes">> => integer(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -394,10 +394,10 @@
 %% Example:
 %% build_group() :: #{
 %%   <<"currentBuildSummary">> => build_summary(),
-%%   <<"dependsOn">> => list(string()()),
+%%   <<"dependsOn">> => list(string()),
 %%   <<"identifier">> => string(),
 %%   <<"ignoreFailure">> => boolean(),
-%%   <<"priorBuildSummaryList">> => list(build_summary()())
+%%   <<"priorBuildSummaryList">> => list(build_summary())
 %% }
 -type build_group() :: #{binary() => any()}.
 
@@ -411,7 +411,7 @@
 
 %% Example:
 %% batch_get_builds_input() :: #{
-%%   <<"ids">> := list(string()())
+%%   <<"ids">> := list(string())
 %% }
 -type batch_get_builds_input() :: #{binary() => any()}.
 
@@ -449,7 +449,7 @@
 %% Example:
 %% list_report_groups_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reportGroups">> => list(string()())
+%%   <<"reportGroups">> => list(string())
 %% }
 -type list_report_groups_output() :: #{binary() => any()}.
 
@@ -507,7 +507,7 @@
 
 %% Example:
 %% sandbox_session_phase() :: #{
-%%   <<"contexts">> => list(phase_context()()),
+%%   <<"contexts">> => list(phase_context()),
 %%   <<"durationInSeconds">> => float(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"phaseStatus">> => list(any()),
@@ -567,14 +567,14 @@
 %% Example:
 %% list_shared_projects_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"projects">> => list(string()())
+%%   <<"projects">> => list(string())
 %% }
 -type list_shared_projects_output() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_builds_output() :: #{
-%%   <<"builds">> => list(build()()),
-%%   <<"buildsNotFound">> => list(string()())
+%%   <<"builds">> => list(build()),
+%%   <<"buildsNotFound">> => list(string())
 %% }
 -type batch_get_builds_output() :: #{binary() => any()}.
 
@@ -598,7 +598,7 @@
 
 %% Example:
 %% environment_platform() :: #{
-%%   <<"languages">> => list(environment_language()()),
+%%   <<"languages">> => list(environment_language()),
 %%   <<"platform">> => list(any())
 %% }
 -type environment_platform() :: #{binary() => any()}.
@@ -681,7 +681,7 @@
 
 %% Example:
 %% list_command_executions_for_sandbox_output() :: #{
-%%   <<"commandExecutions">> => list(command_execution()()),
+%%   <<"commandExecutions">> => list(command_execution()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_command_executions_for_sandbox_output() :: #{binary() => any()}.
@@ -725,8 +725,8 @@
 
 %% Example:
 %% delete_build_batch_output() :: #{
-%%   <<"buildsDeleted">> => list(string()()),
-%%   <<"buildsNotDeleted">> => list(build_not_deleted()()),
+%%   <<"buildsDeleted">> => list(string()),
+%%   <<"buildsNotDeleted">> => list(build_not_deleted()),
 %%   <<"statusCode">> => string()
 %% }
 -type delete_build_batch_output() :: #{binary() => any()}.
@@ -737,7 +737,7 @@
 %%   <<"buildStatus">> => list(any()),
 %%   <<"primaryArtifact">> => resolved_artifact(),
 %%   <<"requestedOn">> => non_neg_integer(),
-%%   <<"secondaryArtifacts">> => list(resolved_artifact()())
+%%   <<"secondaryArtifacts">> => list(resolved_artifact())
 %% }
 -type build_summary() :: #{binary() => any()}.
 
@@ -753,15 +753,15 @@
 
 %% Example:
 %% batch_get_reports_output() :: #{
-%%   <<"reports">> => list(report()()),
-%%   <<"reportsNotFound">> => list(string()())
+%%   <<"reports">> => list(report()),
+%%   <<"reportsNotFound">> => list(string())
 %% }
 -type batch_get_reports_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_reports_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reports">> => list(string()())
+%%   <<"reports">> => list(string())
 %% }
 -type list_reports_output() :: #{binary() => any()}.
 
@@ -796,10 +796,10 @@
 %%   <<"logsConfigOverride">> => logs_config(),
 %%   <<"timeoutInMinutesOverride">> => integer(),
 %%   <<"sourceVersion">> => string(),
-%%   <<"secondarySourcesOverride">> => list(project_source()()),
+%%   <<"secondarySourcesOverride">> => list(project_source()),
 %%   <<"reportBuildStatusOverride">> => boolean(),
 %%   <<"fleetOverride">> => project_fleet(),
-%%   <<"secondarySourcesVersionOverride">> => list(project_source_version()()),
+%%   <<"secondarySourcesVersionOverride">> => list(project_source_version()),
 %%   <<"sourceLocationOverride">> => string(),
 %%   <<"autoRetryLimitOverride">> => integer(),
 %%   <<"gitCloneDepthOverride">> => integer(),
@@ -811,7 +811,7 @@
 %%   <<"artifactsOverride">> => project_artifacts(),
 %%   <<"environmentTypeOverride">> => list(any()),
 %%   <<"sourceTypeOverride">> => list(any()),
-%%   <<"secondaryArtifactsOverride">> => list(project_artifacts()()),
+%%   <<"secondaryArtifactsOverride">> => list(project_artifacts()),
 %%   <<"gitSubmodulesConfigOverride">> => git_submodules_config(),
 %%   <<"computeTypeOverride">> => list(any()),
 %%   <<"serviceRoleOverride">> => string(),
@@ -819,7 +819,7 @@
 %%   <<"insecureSslOverride">> => boolean(),
 %%   <<"queuedTimeoutInMinutesOverride">> => integer(),
 %%   <<"registryCredentialOverride">> => registry_credential(),
-%%   <<"environmentVariablesOverride">> => list(environment_variable()())
+%%   <<"environmentVariablesOverride">> => list(environment_variable())
 %% }
 -type start_build_input() :: #{binary() => any()}.
 
@@ -835,13 +835,13 @@
 
 %% Example:
 %% batch_delete_builds_input() :: #{
-%%   <<"ids">> := list(string()())
+%%   <<"ids">> := list(string())
 %% }
 -type batch_delete_builds_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_curated_environment_images_output() :: #{
-%%   <<"platforms">> => list(environment_platform()())
+%%   <<"platforms">> => list(environment_platform())
 %% }
 -type list_curated_environment_images_output() :: #{binary() => any()}.
 
@@ -853,7 +853,7 @@
 
 %% Example:
 %% describe_code_coverages_output() :: #{
-%%   <<"codeCoverages">> => list(code_coverage()()),
+%%   <<"codeCoverages">> => list(code_coverage()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_code_coverages_output() :: #{binary() => any()}.
@@ -861,7 +861,7 @@
 %% Example:
 %% list_shared_report_groups_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reportGroups">> => list(string()())
+%%   <<"reportGroups">> => list(string())
 %% }
 -type list_shared_report_groups_output() :: #{binary() => any()}.
 
@@ -912,7 +912,7 @@
 %%   <<"description">> => string(),
 %%   <<"encryptionKey">> => string(),
 %%   <<"environment">> => project_environment(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()()),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
 %%   <<"lastModified">> => non_neg_integer(),
 %%   <<"logsConfig">> => logs_config(),
 %%   <<"name">> => string(),
@@ -920,13 +920,13 @@
 %%   <<"publicProjectAlias">> => string(),
 %%   <<"queuedTimeoutInMinutes">> => integer(),
 %%   <<"resourceAccessRole">> => string(),
-%%   <<"secondaryArtifacts">> => list(project_artifacts()()),
-%%   <<"secondarySourceVersions">> => list(project_source_version()()),
-%%   <<"secondarySources">> => list(project_source()()),
+%%   <<"secondaryArtifacts">> => list(project_artifacts()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
 %%   <<"serviceRole">> => string(),
 %%   <<"source">> => project_source(),
 %%   <<"sourceVersion">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"timeoutInMinutes">> => integer(),
 %%   <<"vpcConfig">> => vpc_config(),
 %%   <<"webhook">> => webhook()
@@ -942,15 +942,15 @@
 
 %% Example:
 %% batch_get_projects_output() :: #{
-%%   <<"projects">> => list(project()()),
-%%   <<"projectsNotFound">> => list(string()())
+%%   <<"projects">> => list(project()),
+%%   <<"projectsNotFound">> => list(string())
 %% }
 -type batch_get_projects_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_projects_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"projects">> => list(string()())
+%%   <<"projects">> => list(string())
 %% }
 -type list_projects_output() :: #{binary() => any()}.
 
@@ -972,8 +972,8 @@
 
 %% Example:
 %% batch_get_build_batches_output() :: #{
-%%   <<"buildBatches">> => list(build_batch()()),
-%%   <<"buildBatchesNotFound">> => list(string()())
+%%   <<"buildBatches">> => list(build_batch()),
+%%   <<"buildBatchesNotFound">> => list(string())
 %% }
 -type batch_get_build_batches_output() :: #{binary() => any()}.
 
@@ -1005,14 +1005,14 @@
 %% Example:
 %% describe_test_cases_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testCases">> => list(test_case()())
+%%   <<"testCases">> => list(test_case())
 %% }
 -type describe_test_cases_output() :: #{binary() => any()}.
 
 %% Example:
 %% vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnets">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnets">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_config() :: #{binary() => any()}.
@@ -1043,7 +1043,7 @@
 
 %% Example:
 %% list_source_credentials_output() :: #{
-%%   <<"sourceCredentialsInfos">> => list(source_credentials_info()())
+%%   <<"sourceCredentialsInfos">> => list(source_credentials_info())
 %% }
 -type list_source_credentials_output() :: #{binary() => any()}.
 
@@ -1101,7 +1101,7 @@
 %% create_webhook_input() :: #{
 %%   <<"branchFilter">> => string(),
 %%   <<"buildType">> => list(any()),
-%%   <<"filterGroups">> => list(list(webhook_filter()())()),
+%%   <<"filterGroups">> => list(list(webhook_filter())()),
 %%   <<"manualCreation">> => boolean(),
 %%   <<"projectName">> := string(),
 %%   <<"scopeConfiguration">> => scope_configuration()
@@ -1122,8 +1122,8 @@
 
 %% Example:
 %% batch_get_fleets_output() :: #{
-%%   <<"fleets">> => list(fleet()()),
-%%   <<"fleetsNotFound">> => list(string()())
+%%   <<"fleets">> => list(fleet()),
+%%   <<"fleetsNotFound">> => list(string())
 %% }
 -type batch_get_fleets_output() :: #{binary() => any()}.
 
@@ -1153,17 +1153,17 @@
 %%   <<"description">> => string(),
 %%   <<"encryptionKey">> => string(),
 %%   <<"environment">> := project_environment(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()()),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
 %%   <<"logsConfig">> => logs_config(),
 %%   <<"name">> := string(),
 %%   <<"queuedTimeoutInMinutes">> => integer(),
-%%   <<"secondaryArtifacts">> => list(project_artifacts()()),
-%%   <<"secondarySourceVersions">> => list(project_source_version()()),
-%%   <<"secondarySources">> => list(project_source()()),
+%%   <<"secondaryArtifacts">> => list(project_artifacts()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
 %%   <<"serviceRole">> := string(),
 %%   <<"source">> := project_source(),
 %%   <<"sourceVersion">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"timeoutInMinutes">> => integer(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -1199,7 +1199,7 @@
 %%   <<"overflowBehavior">> => list(any()),
 %%   <<"proxyConfiguration">> => proxy_configuration(),
 %%   <<"scalingConfiguration">> => scaling_configuration_input(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type update_fleet_input() :: #{binary() => any()}.
@@ -1216,7 +1216,7 @@
 %%   <<"overflowBehavior">> => list(any()),
 %%   <<"proxyConfiguration">> => proxy_configuration(),
 %%   <<"scalingConfiguration">> => scaling_configuration_input(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type create_fleet_input() :: #{binary() => any()}.
@@ -1231,7 +1231,7 @@
 
 %% Example:
 %% build_batch_phase() :: #{
-%%   <<"contexts">> => list(phase_context()()),
+%%   <<"contexts">> => list(phase_context()),
 %%   <<"durationInSeconds">> => float(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"phaseStatus">> => list(any()),
@@ -1247,14 +1247,14 @@
 %%   <<"encryptionKey">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"environment">> => project_environment(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()()),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
 %%   <<"id">> => string(),
 %%   <<"logConfig">> => logs_config(),
 %%   <<"projectName">> => string(),
 %%   <<"queuedTimeoutInMinutes">> => integer(),
 %%   <<"requestTime">> => non_neg_integer(),
-%%   <<"secondarySourceVersions">> => list(project_source_version()()),
-%%   <<"secondarySources">> => list(project_source()()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
 %%   <<"serviceRole">> => string(),
 %%   <<"source">> => project_source(),
 %%   <<"sourceVersion">> => string(),
@@ -1281,7 +1281,7 @@
 %% Example:
 %% fleet_proxy_rule() :: #{
 %%   <<"effect">> => list(any()),
-%%   <<"entities">> => list(string()()),
+%%   <<"entities">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type fleet_proxy_rule() :: #{binary() => any()}.
@@ -1302,7 +1302,7 @@
 
 %% Example:
 %% batch_get_command_executions_input() :: #{
-%%   <<"commandExecutionIds">> := list(string()()),
+%%   <<"commandExecutionIds">> := list(string()),
 %%   <<"sandboxId">> := string()
 %% }
 -type batch_get_command_executions_input() :: #{binary() => any()}.
@@ -1336,7 +1336,7 @@
 %%   <<"buildBatchConfig">> => project_build_batch_config(),
 %%   <<"buildBatchNumber">> => float(),
 %%   <<"buildBatchStatus">> => list(any()),
-%%   <<"buildGroups">> => list(build_group()()),
+%%   <<"buildGroups">> => list(build_group()),
 %%   <<"buildTimeoutInMinutes">> => integer(),
 %%   <<"cache">> => project_cache(),
 %%   <<"complete">> => boolean(),
@@ -1345,18 +1345,18 @@
 %%   <<"encryptionKey">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"environment">> => project_environment(),
-%%   <<"fileSystemLocations">> => list(project_file_system_location()()),
+%%   <<"fileSystemLocations">> => list(project_file_system_location()),
 %%   <<"id">> => string(),
 %%   <<"initiator">> => string(),
 %%   <<"logConfig">> => logs_config(),
-%%   <<"phases">> => list(build_batch_phase()()),
+%%   <<"phases">> => list(build_batch_phase()),
 %%   <<"projectName">> => string(),
 %%   <<"queuedTimeoutInMinutes">> => integer(),
-%%   <<"reportArns">> => list(string()()),
+%%   <<"reportArns">> => list(string()),
 %%   <<"resolvedSourceVersion">> => string(),
-%%   <<"secondaryArtifacts">> => list(build_artifacts()()),
-%%   <<"secondarySourceVersions">> => list(project_source_version()()),
-%%   <<"secondarySources">> => list(project_source()()),
+%%   <<"secondaryArtifacts">> => list(build_artifacts()),
+%%   <<"secondarySourceVersions">> => list(project_source_version()),
+%%   <<"secondarySources">> => list(project_source()),
 %%   <<"serviceRole">> => string(),
 %%   <<"source">> => project_source(),
 %%   <<"sourceVersion">> => string(),
@@ -1367,7 +1367,7 @@
 
 %% Example:
 %% list_sandboxes_for_project_output() :: #{
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sandboxes_for_project_output() :: #{binary() => any()}.
@@ -1399,7 +1399,7 @@
 %% create_report_group_input() :: #{
 %%   <<"exportConfig">> := report_export_config(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"type">> := list(any())
 %% }
 -type create_report_group_input() :: #{binary() => any()}.
@@ -1414,7 +1414,7 @@
 
 %% Example:
 %% list_sandboxes_output() :: #{
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sandboxes_output() :: #{binary() => any()}.
@@ -1464,21 +1464,21 @@
 
 %% Example:
 %% batch_get_projects_input() :: #{
-%%   <<"names">> := list(string()())
+%%   <<"names">> := list(string())
 %% }
 -type batch_get_projects_input() :: #{binary() => any()}.
 
 %% Example:
 %% batch_restrictions() :: #{
-%%   <<"computeTypesAllowed">> => list(string()()),
-%%   <<"fleetsAllowed">> => list(string()()),
+%%   <<"computeTypesAllowed">> => list(string()),
+%%   <<"fleetsAllowed">> => list(string()),
 %%   <<"maximumBuildsAllowed">> => integer()
 %% }
 -type batch_restrictions() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_fleets_input() :: #{
-%%   <<"names">> := list(string()())
+%%   <<"names">> := list(string())
 %% }
 -type batch_get_fleets_input() :: #{binary() => any()}.
 
@@ -1501,7 +1501,7 @@
 %% scaling_configuration_input() :: #{
 %%   <<"maxCapacity">> => integer(),
 %%   <<"scalingType">> => list(any()),
-%%   <<"targetTrackingScalingConfigs">> => list(target_tracking_scaling_configuration()())
+%%   <<"targetTrackingScalingConfigs">> => list(target_tracking_scaling_configuration())
 %% }
 -type scaling_configuration_input() :: #{binary() => any()}.
 
@@ -1550,14 +1550,14 @@
 %% environment_image() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"versions">> => list(string()())
+%%   <<"versions">> => list(string())
 %% }
 -type environment_image() :: #{binary() => any()}.
 
 %% Example:
 %% batch_delete_builds_output() :: #{
-%%   <<"buildsDeleted">> => list(string()()),
-%%   <<"buildsNotDeleted">> => list(build_not_deleted()())
+%%   <<"buildsDeleted">> => list(string()),
+%%   <<"buildsNotDeleted">> => list(build_not_deleted())
 %% }
 -type batch_delete_builds_output() :: #{binary() => any()}.
 
@@ -1565,13 +1565,13 @@
 %% update_report_group_input() :: #{
 %%   <<"arn">> := string(),
 %%   <<"exportConfig">> => report_export_config(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type update_report_group_input() :: #{binary() => any()}.
 
 %% Example:
 %% build_phase() :: #{
-%%   <<"contexts">> => list(phase_context()()),
+%%   <<"contexts">> => list(phase_context()),
 %%   <<"durationInSeconds">> => float(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"phaseStatus">> => list(any()),
@@ -1582,7 +1582,7 @@
 
 %% Example:
 %% list_build_batches_for_project_output() :: #{
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_build_batches_for_project_output() :: #{binary() => any()}.
@@ -1612,7 +1612,7 @@
 %%   <<"debugSessionEnabled">> => boolean(),
 %%   <<"encryptionKeyOverride">> => string(),
 %%   <<"environmentTypeOverride">> => list(any()),
-%%   <<"environmentVariablesOverride">> => list(environment_variable()()),
+%%   <<"environmentVariablesOverride">> => list(environment_variable()),
 %%   <<"gitCloneDepthOverride">> => integer(),
 %%   <<"gitSubmodulesConfigOverride">> => git_submodules_config(),
 %%   <<"idempotencyToken">> => string(),
@@ -1625,9 +1625,9 @@
 %%   <<"queuedTimeoutInMinutesOverride">> => integer(),
 %%   <<"registryCredentialOverride">> => registry_credential(),
 %%   <<"reportBuildBatchStatusOverride">> => boolean(),
-%%   <<"secondaryArtifactsOverride">> => list(project_artifacts()()),
-%%   <<"secondarySourcesOverride">> => list(project_source()()),
-%%   <<"secondarySourcesVersionOverride">> => list(project_source_version()()),
+%%   <<"secondaryArtifactsOverride">> => list(project_artifacts()),
+%%   <<"secondarySourcesOverride">> => list(project_source()),
+%%   <<"secondarySourcesVersionOverride">> => list(project_source_version()),
 %%   <<"serviceRoleOverride">> => string(),
 %%   <<"sourceAuthOverride">> => source_auth(),
 %%   <<"sourceLocationOverride">> => string(),
@@ -1638,15 +1638,15 @@
 
 %% Example:
 %% environment_language() :: #{
-%%   <<"images">> => list(environment_image()()),
+%%   <<"images">> => list(environment_image()),
 %%   <<"language">> => list(any())
 %% }
 -type environment_language() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_sandboxes_output() :: #{
-%%   <<"sandboxes">> => list(sandbox()()),
-%%   <<"sandboxesNotFound">> => list(string()())
+%%   <<"sandboxes">> => list(sandbox()),
+%%   <<"sandboxesNotFound">> => list(string())
 %% }
 -type batch_get_sandboxes_output() :: #{binary() => any()}.
 
@@ -1657,7 +1657,7 @@
 %%   <<"id">> => string(),
 %%   <<"logs">> => logs_location(),
 %%   <<"networkInterface">> => network_interface(),
-%%   <<"phases">> => list(sandbox_session_phase()()),
+%%   <<"phases">> => list(sandbox_session_phase()),
 %%   <<"resolvedSourceVersion">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => string()
@@ -1669,7 +1669,7 @@
 %%   <<"desiredCapacity">> => integer(),
 %%   <<"maxCapacity">> => integer(),
 %%   <<"scalingType">> => list(any()),
-%%   <<"targetTrackingScalingConfigs">> => list(target_tracking_scaling_configuration()())
+%%   <<"targetTrackingScalingConfigs">> => list(target_tracking_scaling_configuration())
 %% }
 -type scaling_configuration_output() :: #{binary() => any()}.
 
@@ -1698,7 +1698,7 @@
 
 %% Example:
 %% batch_get_reports_input() :: #{
-%%   <<"reportArns">> := list(string()())
+%%   <<"reportArns">> := list(string())
 %% }
 -type batch_get_reports_input() :: #{binary() => any()}.
 
@@ -1738,7 +1738,7 @@
 %% webhook() :: #{
 %%   <<"branchFilter">> => string(),
 %%   <<"buildType">> => list(any()),
-%%   <<"filterGroups">> => list(list(webhook_filter()())()),
+%%   <<"filterGroups">> => list(list(webhook_filter())()),
 %%   <<"lastModifiedSecret">> => non_neg_integer(),
 %%   <<"manualCreation">> => boolean(),
 %%   <<"payloadUrl">> => string(),
@@ -1752,8 +1752,8 @@
 
 %% Example:
 %% batch_get_report_groups_output() :: #{
-%%   <<"reportGroups">> => list(report_group()()),
-%%   <<"reportGroupsNotFound">> => list(string()())
+%%   <<"reportGroups">> => list(report_group()),
+%%   <<"reportGroupsNotFound">> => list(string())
 %% }
 -type batch_get_report_groups_output() :: #{binary() => any()}.
 
@@ -1761,7 +1761,7 @@
 %% update_webhook_input() :: #{
 %%   <<"branchFilter">> => string(),
 %%   <<"buildType">> => list(any()),
-%%   <<"filterGroups">> => list(list(webhook_filter()())()),
+%%   <<"filterGroups">> => list(list(webhook_filter())()),
 %%   <<"projectName">> := string(),
 %%   <<"rotateSecret">> => boolean()
 %% }
@@ -1784,7 +1784,7 @@
 %%   <<"proxyConfiguration">> => proxy_configuration(),
 %%   <<"scalingConfiguration">> => scaling_configuration_output(),
 %%   <<"status">> => fleet_status(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type fleet() :: #{binary() => any()}.
@@ -1798,7 +1798,7 @@
 
 %% Example:
 %% get_report_group_trend_output() :: #{
-%%   <<"rawData">> => list(report_with_raw_data()()),
+%%   <<"rawData">> => list(report_with_raw_data()),
 %%   <<"stats">> => report_group_trend_stats()
 %% }
 -type get_report_group_trend_output() :: #{binary() => any()}.
@@ -1806,7 +1806,7 @@
 %% Example:
 %% list_reports_for_report_group_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reports">> => list(string()())
+%%   <<"reports">> => list(string())
 %% }
 -type list_reports_for_report_group_output() :: #{binary() => any()}.
 
@@ -1816,7 +1816,7 @@
 %%   <<"computeConfiguration">> => compute_configuration(),
 %%   <<"computeType">> => list(any()),
 %%   <<"dockerServer">> => docker_server(),
-%%   <<"environmentVariables">> => list(environment_variable()()),
+%%   <<"environmentVariables">> => list(environment_variable()),
 %%   <<"fleet">> => project_fleet(),
 %%   <<"image">> => string(),
 %%   <<"imagePullCredentialsType">> => list(any()),
@@ -1829,21 +1829,21 @@
 %% Example:
 %% docker_server() :: #{
 %%   <<"computeType">> => list(any()),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => docker_server_status()
 %% }
 -type docker_server() :: #{binary() => any()}.
 
 %% Example:
 %% list_builds_output() :: #{
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_builds_output() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_report_groups_input() :: #{
-%%   <<"reportGroupArns">> := list(string()())
+%%   <<"reportGroupArns">> := list(string())
 %% }
 -type batch_get_report_groups_input() :: #{binary() => any()}.
 
@@ -1865,7 +1865,7 @@
 %%   <<"lastModified">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"type">> => list(any())
 %% }
 -type report_group() :: #{binary() => any()}.

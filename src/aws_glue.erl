@@ -551,7 +551,7 @@
 %% evaluate_data_quality_multi_frame() :: #{
 %%   <<"AdditionalDataSources">> => map(),
 %%   <<"AdditionalOptions">> => map(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"PublishingOptions">> => d_q_results_publishing_options(),
 %%   <<"Ruleset">> => string(),
@@ -596,7 +596,7 @@
 %%   <<"FunctionName">> => string(),
 %%   <<"OwnerName">> => string(),
 %%   <<"OwnerType">> => list(any()),
-%%   <<"ResourceUris">> => list(resource_uri()())
+%%   <<"ResourceUris">> => list(resource_uri())
 %% }
 -type user_defined_function() :: #{binary() => any()}.
 
@@ -616,7 +616,7 @@
 
 %% Example:
 %% get_custom_entity_type_response() :: #{
-%%   <<"ContextWords">> => list(string()()),
+%%   <<"ContextWords">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"RegexString">> => string()
 %% }
@@ -633,13 +633,13 @@
 
 %% Example:
 %% statistic_summary() :: #{
-%%   <<"ColumnsReferenced">> => list(string()()),
+%%   <<"ColumnsReferenced">> => list(string()),
 %%   <<"DoubleValue">> => float(),
 %%   <<"EvaluationLevel">> => list(any()),
 %%   <<"InclusionAnnotation">> => timestamped_inclusion_annotation(),
 %%   <<"ProfileId">> => string(),
 %%   <<"RecordedOn">> => non_neg_integer(),
-%%   <<"ReferencedDatasets">> => list(string()()),
+%%   <<"ReferencedDatasets">> => list(string()),
 %%   <<"RunIdentifier">> => run_identifier(),
 %%   <<"StatisticId">> => string(),
 %%   <<"StatisticName">> => string(),
@@ -650,7 +650,7 @@
 %% Example:
 %% list_data_quality_results_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(data_quality_result_description()())
+%%   <<"Results">> => list(data_quality_result_description())
 %% }
 -type list_data_quality_results_response() :: #{binary() => any()}.
 
@@ -663,9 +663,9 @@
 %% Example:
 %% s3_catalog_target() :: #{
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
 %%   <<"Table">> => string()
 %% }
@@ -717,7 +717,7 @@
 
 %% Example:
 %% batch_get_crawlers_request() :: #{
-%%   <<"CrawlerNames">> := list(string()())
+%%   <<"CrawlerNames">> := list(string())
 %% }
 -type batch_get_crawlers_request() :: #{binary() => any()}.
 
@@ -784,17 +784,17 @@
 %% Example:
 %% update_column_statistics_for_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"ColumnStatisticsList">> := list(column_statistics()()),
+%%   <<"ColumnStatisticsList">> := list(column_statistics()),
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()()),
+%%   <<"PartitionValues">> := list(string()),
 %%   <<"TableName">> := string()
 %% }
 -type update_column_statistics_for_partition_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_triggers_response() :: #{
-%%   <<"Triggers">> => list(trigger()()),
-%%   <<"TriggersNotFound">> => list(string()())
+%%   <<"Triggers">> => list(trigger()),
+%%   <<"TriggersNotFound">> => list(string())
 %% }
 -type batch_get_triggers_response() :: #{binary() => any()}.
 
@@ -827,9 +827,9 @@
 %% Example:
 %% basic_catalog_target() :: #{
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Table">> => string()
 %% }
 -type basic_catalog_target() :: #{binary() => any()}.
@@ -853,13 +853,13 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"DataFilter">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Errors">> => list(integration_error()()),
+%%   <<"Errors">> => list(integration_error()),
 %%   <<"IntegrationArn">> => string(),
 %%   <<"IntegrationName">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceArn">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetArn">> => string()
 %% }
 -type delete_integration_response() :: #{binary() => any()}.
@@ -868,8 +868,8 @@
 %% view_definition_input() :: #{
 %%   <<"Definer">> => string(),
 %%   <<"IsProtected">> => boolean(),
-%%   <<"Representations">> => list(view_representation_input()()),
-%%   <<"SubObjects">> => list(string()())
+%%   <<"Representations">> => list(view_representation_input()),
+%%   <<"SubObjects">> => list(string())
 %% }
 -type view_definition_input() :: #{binary() => any()}.
 
@@ -878,7 +878,7 @@
 %%   <<"CloudWatchEncryption">> => cloud_watch_encryption(),
 %%   <<"DataQualityEncryption">> => data_quality_encryption(),
 %%   <<"JobBookmarksEncryption">> => job_bookmarks_encryption(),
-%%   <<"S3Encryption">> => list(s3_encryption()())
+%%   <<"S3Encryption">> => list(s3_encryption())
 %% }
 -type encryption_configuration() :: #{binary() => any()}.
 
@@ -894,16 +894,16 @@
 %%   <<"ConnectionName">> => string(),
 %%   <<"ConnectionType">> => string(),
 %%   <<"ConnectorName">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()())
+%%   <<"OutputSchemas">> => list(glue_schema())
 %% }
 -type spark_connector_target() :: #{binary() => any()}.
 
 %% Example:
 %% apply_mapping() :: #{
-%%   <<"Inputs">> => list(string()()),
-%%   <<"Mapping">> => list(mapping()()),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Mapping">> => list(mapping()),
 %%   <<"Name">> => string()
 %% }
 -type apply_mapping() :: #{binary() => any()}.
@@ -938,14 +938,14 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"DataFilter">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Errors">> => list(integration_error()()),
+%%   <<"Errors">> => list(integration_error()),
 %%   <<"IntegrationArn">> => string(),
 %%   <<"IntegrationConfig">> => integration_config(),
 %%   <<"IntegrationName">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceArn">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetArn">> => string()
 %% }
 -type create_integration_response() :: #{binary() => any()}.
@@ -1071,8 +1071,8 @@
 
 %% Example:
 %% batch_get_blueprints_response() :: #{
-%%   <<"Blueprints">> => list(blueprint()()),
-%%   <<"MissingBlueprints">> => list(string()())
+%%   <<"Blueprints">> => list(blueprint()),
+%%   <<"MissingBlueprints">> => list(string())
 %% }
 -type batch_get_blueprints_response() :: #{binary() => any()}.
 
@@ -1090,7 +1090,7 @@
 %%   <<"ConnectionType">> => string(),
 %%   <<"ConnectorName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"Query">> => string()
 %% }
 -type j_db_c_connector_source() :: #{binary() => any()}.
@@ -1104,7 +1104,7 @@
 %% Example:
 %% database() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()()),
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"FederatedDatabase">> => federated_database(),
@@ -1118,7 +1118,7 @@
 %% Example:
 %% get_triggers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Triggers">> => list(trigger()())
+%%   <<"Triggers">> => list(trigger())
 %% }
 -type get_triggers_response() :: #{binary() => any()}.
 
@@ -1137,7 +1137,7 @@
 
 %% Example:
 %% iceberg_partition_spec() :: #{
-%%   <<"Fields">> => list(iceberg_partition_field()()),
+%%   <<"Fields">> => list(iceberg_partition_field()),
 %%   <<"SpecId">> => integer()
 %% }
 -type iceberg_partition_spec() :: #{binary() => any()}.
@@ -1201,7 +1201,7 @@
 %% Example:
 %% partition_index() :: #{
 %%   <<"IndexName">> => string(),
-%%   <<"Keys">> => list(string()())
+%%   <<"Keys">> => list(string())
 %% }
 -type partition_index() :: #{binary() => any()}.
 
@@ -1246,7 +1246,7 @@
 %% Example:
 %% inbound_integration() :: #{
 %%   <<"CreateTime">> => non_neg_integer(),
-%%   <<"Errors">> => list(integration_error()()),
+%%   <<"Errors">> => list(integration_error()),
 %%   <<"IntegrationArn">> => string(),
 %%   <<"IntegrationConfig">> => integration_config(),
 %%   <<"SourceArn">> => string(),
@@ -1274,7 +1274,7 @@
 
 %% Example:
 %% batch_delete_partition_response() :: #{
-%%   <<"Errors">> => list(partition_error()())
+%%   <<"Errors">> => list(partition_error())
 %% }
 -type batch_delete_partition_response() :: #{binary() => any()}.
 
@@ -1289,14 +1289,14 @@
 %% Example:
 %% get_user_defined_functions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UserDefinedFunctions">> => list(user_defined_function()())
+%%   <<"UserDefinedFunctions">> => list(user_defined_function())
 %% }
 -type get_user_defined_functions_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_script_request() :: #{
-%%   <<"DagEdges">> => list(code_gen_edge()()),
-%%   <<"DagNodes">> => list(code_gen_node()()),
+%%   <<"DagEdges">> => list(code_gen_edge()),
+%%   <<"DagNodes">> => list(code_gen_node()),
 %%   <<"Language">> => list(any())
 %% }
 -type create_script_request() :: #{binary() => any()}.
@@ -1304,7 +1304,7 @@
 %% Example:
 %% partition_error() :: #{
 %%   <<"ErrorDetail">> => error_detail(),
-%%   <<"PartitionValues">> => list(string()())
+%%   <<"PartitionValues">> => list(string())
 %% }
 -type partition_error() :: #{binary() => any()}.
 
@@ -1317,7 +1317,7 @@
 %% Example:
 %% list_triggers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TriggerNames">> => list(string()())
+%%   <<"TriggerNames">> => list(string())
 %% }
 -type list_triggers_response() :: #{binary() => any()}.
 
@@ -1340,7 +1340,7 @@
 %% batch_delete_table_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"TablesToDelete">> := list(string()()),
+%%   <<"TablesToDelete">> := list(string()),
 %%   <<"TransactionId">> => string()
 %% }
 -type batch_delete_table_request() :: #{binary() => any()}.
@@ -1354,7 +1354,7 @@
 %% Example:
 %% get_ml_transforms_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Transforms">> => list(ml_transform()())
+%%   <<"Transforms">> => list(ml_transform())
 %% }
 -type get_ml_transforms_response() :: #{binary() => any()}.
 
@@ -1389,13 +1389,13 @@
 %% Example:
 %% get_tables_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TableList">> => list(table()())
+%%   <<"TableList">> => list(table())
 %% }
 -type get_tables_response() :: #{binary() => any()}.
 
 %% Example:
 %% trigger() :: #{
-%%   <<"Actions">> => list(action()()),
+%%   <<"Actions">> => list(action()),
 %%   <<"Description">> => string(),
 %%   <<"EventBatchingCondition">> => event_batching_condition(),
 %%   <<"Id">> => string(),
@@ -1423,16 +1423,16 @@
 %% Example:
 %% get_data_quality_result_response() :: #{
 %%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
-%%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()()),
+%%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
 %%   <<"CompletedOn">> => non_neg_integer(),
 %%   <<"DataSource">> => data_source(),
 %%   <<"EvaluationContext">> => string(),
 %%   <<"JobName">> => string(),
 %%   <<"JobRunId">> => string(),
-%%   <<"Observations">> => list(data_quality_observation()()),
+%%   <<"Observations">> => list(data_quality_observation()),
 %%   <<"ProfileId">> => string(),
 %%   <<"ResultId">> => string(),
-%%   <<"RuleResults">> => list(data_quality_rule_result()()),
+%%   <<"RuleResults">> => list(data_quality_rule_result()),
 %%   <<"RulesetEvaluationRunId">> => string(),
 %%   <<"RulesetName">> => string(),
 %%   <<"Score">> => float(),
@@ -1442,7 +1442,7 @@
 
 %% Example:
 %% batch_create_partition_response() :: #{
-%%   <<"Errors">> => list(partition_error()())
+%%   <<"Errors">> => list(partition_error())
 %% }
 -type batch_create_partition_response() :: #{binary() => any()}.
 
@@ -1455,7 +1455,7 @@
 
 %% Example:
 %% get_classifiers_response() :: #{
-%%   <<"Classifiers">> => list(classifier()()),
+%%   <<"Classifiers">> => list(classifier()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_classifiers_response() :: #{binary() => any()}.
@@ -1470,14 +1470,14 @@
 
 %% Example:
 %% crawler_targets() :: #{
-%%   <<"CatalogTargets">> => list(catalog_target()()),
-%%   <<"DeltaTargets">> => list(delta_target()()),
-%%   <<"DynamoDBTargets">> => list(dynamo_db_target()()),
-%%   <<"HudiTargets">> => list(hudi_target()()),
-%%   <<"IcebergTargets">> => list(iceberg_target()()),
-%%   <<"JdbcTargets">> => list(jdbc_target()()),
-%%   <<"MongoDBTargets">> => list(mongo_db_target()()),
-%%   <<"S3Targets">> => list(s3_target()())
+%%   <<"CatalogTargets">> => list(catalog_target()),
+%%   <<"DeltaTargets">> => list(delta_target()),
+%%   <<"DynamoDBTargets">> => list(dynamo_db_target()),
+%%   <<"HudiTargets">> => list(hudi_target()),
+%%   <<"IcebergTargets">> => list(iceberg_target()),
+%%   <<"JdbcTargets">> => list(jdbc_target()),
+%%   <<"MongoDBTargets">> => list(mongo_db_target()),
+%%   <<"S3Targets">> => list(s3_target())
 %% }
 -type crawler_targets() :: #{binary() => any()}.
 
@@ -1486,7 +1486,7 @@
 %%   <<"AdditionalHudiOptions">> => map(),
 %%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"Table">> => string()
 %% }
 -type s3_catalog_hudi_source() :: #{binary() => any()}.
@@ -1511,9 +1511,9 @@
 %% Example:
 %% hudi_target() :: #{
 %%   <<"ConnectionName">> => string(),
-%%   <<"Exclusions">> => list(string()()),
+%%   <<"Exclusions">> => list(string()),
 %%   <<"MaximumTraversalDepth">> => integer(),
-%%   <<"Paths">> => list(string()())
+%%   <<"Paths">> => list(string())
 %% }
 -type hudi_target() :: #{binary() => any()}.
 
@@ -1554,14 +1554,14 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"DataFilter">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Errors">> => list(integration_error()()),
+%%   <<"Errors">> => list(integration_error()),
 %%   <<"IntegrationArn">> => string(),
 %%   <<"IntegrationConfig">> => integration_config(),
 %%   <<"IntegrationName">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceArn">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetArn">> => string()
 %% }
 -type integration() :: #{binary() => any()}.
@@ -1604,7 +1604,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EvaluationMetrics">> => evaluation_metrics(),
 %%   <<"GlueVersion">> => string(),
-%%   <<"InputRecordTables">> => list(glue_table()()),
+%%   <<"InputRecordTables">> => list(glue_table()),
 %%   <<"LabelCount">> => integer(),
 %%   <<"LastModifiedOn">> => non_neg_integer(),
 %%   <<"MaxCapacity">> => float(),
@@ -1613,7 +1613,7 @@
 %%   <<"NumberOfWorkers">> => integer(),
 %%   <<"Parameters">> => transform_parameters(),
 %%   <<"Role">> => string(),
-%%   <<"Schema">> => list(schema_column()()),
+%%   <<"Schema">> => list(schema_column()),
 %%   <<"Status">> => list(any()),
 %%   <<"Timeout">> => integer(),
 %%   <<"TransformEncryption">> => transform_encryption(),
@@ -1634,13 +1634,13 @@
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"DataFilter">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Errors">> => list(integration_error()()),
+%%   <<"Errors">> => list(integration_error()),
 %%   <<"IntegrationArn">> => string(),
 %%   <<"IntegrationName">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceArn">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetArn">> => string()
 %% }
 -type modify_integration_response() :: #{binary() => any()}.
@@ -1667,7 +1667,7 @@
 %%   <<"MaxCapacity">> => float(),
 %%   <<"NotificationProperty">> => notification_property(),
 %%   <<"NumberOfWorkers">> => integer(),
-%%   <<"PredecessorRuns">> => list(predecessor()()),
+%%   <<"PredecessorRuns">> => list(predecessor()),
 %%   <<"PreviousRunId">> => string(),
 %%   <<"ProfileName">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
@@ -1705,8 +1705,8 @@
 
 %% Example:
 %% batch_get_data_quality_result_response() :: #{
-%%   <<"Results">> => list(data_quality_result()()),
-%%   <<"ResultsNotFound">> => list(string()())
+%%   <<"Results">> => list(data_quality_result()),
+%%   <<"ResultsNotFound">> => list(string())
 %% }
 -type batch_get_data_quality_result_response() :: #{binary() => any()}.
 
@@ -1803,7 +1803,7 @@
 
 %% Example:
 %% get_dev_endpoints_response() :: #{
-%%   <<"DevEndpoints">> => list(dev_endpoint()()),
+%%   <<"DevEndpoints">> => list(dev_endpoint()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_dev_endpoints_response() :: #{binary() => any()}.
@@ -1816,8 +1816,8 @@
 
 %% Example:
 %% get_unfiltered_table_metadata_response() :: #{
-%%   <<"AuthorizedColumns">> => list(string()()),
-%%   <<"CellFilters">> => list(column_row_filter()()),
+%%   <<"AuthorizedColumns">> => list(string()),
+%%   <<"CellFilters">> => list(column_row_filter()),
 %%   <<"IsMultiDialectView">> => boolean(),
 %%   <<"IsProtected">> => boolean(),
 %%   <<"IsRegisteredWithLakeFormation">> => boolean(),
@@ -1864,7 +1864,7 @@
 %% Example:
 %% batch_update_partition_failure_entry() :: #{
 %%   <<"ErrorDetail">> => error_detail(),
-%%   <<"PartitionValueList">> => list(string()())
+%%   <<"PartitionValueList">> => list(string())
 %% }
 -type batch_update_partition_failure_entry() :: #{binary() => any()}.
 
@@ -1887,7 +1887,7 @@
 %% Example:
 %% list_usage_profiles_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Profiles">> => list(usage_profile_definition()())
+%%   <<"Profiles">> => list(usage_profile_definition())
 %% }
 -type list_usage_profiles_response() :: #{binary() => any()}.
 
@@ -1898,7 +1898,7 @@
 %%   <<"ConnectionType">> => string(),
 %%   <<"ConnectorName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"SchemaName">> => string()
 %% }
 -type athena_connector_source() :: #{binary() => any()}.
@@ -1958,7 +1958,7 @@
 %% Example:
 %% list_data_quality_rulesets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Rulesets">> => list(data_quality_ruleset_list_details()())
+%%   <<"Rulesets">> => list(data_quality_ruleset_list_details())
 %% }
 -type list_data_quality_rulesets_response() :: #{binary() => any()}.
 
@@ -1972,7 +1972,7 @@
 %% Example:
 %% integration_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type integration_filter() :: #{binary() => any()}.
 
@@ -2027,7 +2027,7 @@
 %% Example:
 %% resume_workflow_run_request() :: #{
 %%   <<"Name">> := string(),
-%%   <<"NodeIds">> := list(string()()),
+%%   <<"NodeIds">> := list(string()),
 %%   <<"RunId">> := string()
 %% }
 -type resume_workflow_run_request() :: #{binary() => any()}.
@@ -2047,8 +2047,8 @@
 
 %% Example:
 %% get_column_statistics_for_partition_response() :: #{
-%%   <<"ColumnStatisticsList">> => list(column_statistics()()),
-%%   <<"Errors">> => list(column_error()())
+%%   <<"ColumnStatisticsList">> => list(column_statistics()),
+%%   <<"Errors">> => list(column_error())
 %% }
 -type get_column_statistics_for_partition_response() :: #{binary() => any()}.
 
@@ -2068,10 +2068,10 @@
 %%   <<"ContainsHeader">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CustomDatatypeConfigured">> => boolean(),
-%%   <<"CustomDatatypes">> => list(string()()),
+%%   <<"CustomDatatypes">> => list(string()),
 %%   <<"Delimiter">> => string(),
 %%   <<"DisableValueTrimming">> => boolean(),
-%%   <<"Header">> => list(string()()),
+%%   <<"Header">> => list(string()),
 %%   <<"LastUpdated">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"QuoteSymbol">> => string(),
@@ -2083,7 +2083,7 @@
 %% Example:
 %% list_schema_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(schema_version_list_item()())
+%%   <<"Schemas">> => list(schema_version_list_item())
 %% }
 -type list_schema_versions_response() :: #{binary() => any()}.
 
@@ -2111,7 +2111,7 @@
 %% Example:
 %% oracle_s_q_l_catalog_target() :: #{
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Table">> => string()
 %% }
@@ -2154,7 +2154,7 @@
 %% Example:
 %% get_workflow_runs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Runs">> => list(workflow_run()())
+%%   <<"Runs">> => list(workflow_run())
 %% }
 -type get_workflow_runs_response() :: #{binary() => any()}.
 
@@ -2171,7 +2171,7 @@
 
 %% Example:
 %% describe_inbound_integrations_response() :: #{
-%%   <<"InboundIntegrations">> => list(inbound_integration()()),
+%%   <<"InboundIntegrations">> => list(inbound_integration()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_inbound_integrations_response() :: #{binary() => any()}.
@@ -2190,7 +2190,7 @@
 
 %% Example:
 %% iceberg_sort_order() :: #{
-%%   <<"Fields">> => list(iceberg_sort_field()()),
+%%   <<"Fields">> => list(iceberg_sort_field()),
 %%   <<"OrderId">> => integer()
 %% }
 -type iceberg_sort_order() :: #{binary() => any()}.
@@ -2226,10 +2226,10 @@
 %% Example:
 %% dynamic_transform() :: #{
 %%   <<"FunctionName">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
-%%   <<"Parameters">> => list(transform_config_parameter()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Parameters">> => list(transform_config_parameter()),
 %%   <<"Path">> => string(),
 %%   <<"TransformName">> => string(),
 %%   <<"Version">> => string()
@@ -2253,14 +2253,14 @@
 %% s3_parquet_source() :: #{
 %%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
 %%   <<"CompressionType">> => list(any()),
-%%   <<"Exclusions">> => list(string()()),
+%%   <<"Exclusions">> => list(string()),
 %%   <<"GroupFiles">> => string(),
 %%   <<"GroupSize">> => string(),
 %%   <<"MaxBand">> => integer(),
 %%   <<"MaxFilesInBand">> => integer(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
-%%   <<"Paths">> => list(string()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string()),
 %%   <<"Recurse">> => boolean()
 %% }
 -type s3_parquet_source() :: #{binary() => any()}.
@@ -2287,8 +2287,8 @@
 
 %% Example:
 %% batch_get_dev_endpoints_response() :: #{
-%%   <<"DevEndpoints">> => list(dev_endpoint()()),
-%%   <<"DevEndpointsNotFound">> => list(string()())
+%%   <<"DevEndpoints">> => list(dev_endpoint()),
+%%   <<"DevEndpointsNotFound">> => list(string())
 %% }
 -type batch_get_dev_endpoints_response() :: #{binary() => any()}.
 
@@ -2348,7 +2348,7 @@
 
 %% Example:
 %% crawler_node_details() :: #{
-%%   <<"Crawls">> => list(crawl()())
+%%   <<"Crawls">> => list(crawl())
 %% }
 -type crawler_node_details() :: #{binary() => any()}.
 
@@ -2356,10 +2356,10 @@
 %% s3_direct_target() :: #{
 %%   <<"Compression">> => string(),
 %%   <<"Format">> => list(any()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NumberTargetPartitions">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
 %% }
@@ -2375,7 +2375,7 @@
 %% Example:
 %% get_entity_records_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Records">> => list(any()())
+%%   <<"Records">> => list(any())
 %% }
 -type get_entity_records_response() :: #{binary() => any()}.
 
@@ -2392,7 +2392,7 @@
 %%   <<"DatabaseName">> := string(),
 %%   <<"Name">> => string(),
 %%   <<"OpenTableFormatInput">> => open_table_format_input(),
-%%   <<"PartitionIndexes">> => list(partition_index()()),
+%%   <<"PartitionIndexes">> => list(partition_index()),
 %%   <<"TableInput">> := table_input(),
 %%   <<"TransactionId">> => string()
 %% }
@@ -2430,7 +2430,7 @@
 %%   <<"Limit">> := float(),
 %%   <<"NextToken">> => string(),
 %%   <<"OrderBy">> => [string()],
-%%   <<"SelectedFields">> => list(string()())
+%%   <<"SelectedFields">> => list(string())
 %% }
 -type get_entity_records_request() :: #{binary() => any()}.
 
@@ -2449,7 +2449,7 @@
 
 %% Example:
 %% list_data_quality_statistic_annotations_response() :: #{
-%%   <<"Annotations">> => list(statistic_annotation()()),
+%%   <<"Annotations">> => list(statistic_annotation()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_quality_statistic_annotations_response() :: #{binary() => any()}.
@@ -2467,7 +2467,7 @@
 %% create_ml_transform_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"GlueVersion">> => string(),
-%%   <<"InputRecordTables">> := list(glue_table()()),
+%%   <<"InputRecordTables">> := list(glue_table()),
 %%   <<"MaxCapacity">> => float(),
 %%   <<"MaxRetries">> => integer(),
 %%   <<"Name">> := string(),
@@ -2483,17 +2483,17 @@
 
 %% Example:
 %% list_connection_types_response() :: #{
-%%   <<"ConnectionTypes">> => list(connection_type_brief()()),
+%%   <<"ConnectionTypes">> => list(connection_type_brief()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connection_types_response() :: #{binary() => any()}.
 
 %% Example:
 %% partition_index_descriptor() :: #{
-%%   <<"BackfillErrors">> => list(backfill_error()()),
+%%   <<"BackfillErrors">> => list(backfill_error()),
 %%   <<"IndexName">> => string(),
 %%   <<"IndexStatus">> => list(any()),
-%%   <<"Keys">> => list(key_schema_element()())
+%%   <<"Keys">> => list(key_schema_element())
 %% }
 -type partition_index_descriptor() :: #{binary() => any()}.
 
@@ -2514,10 +2514,10 @@
 %%   <<"PrivateAddress">> => string(),
 %%   <<"PublicAddress">> => string(),
 %%   <<"PublicKey">> => string(),
-%%   <<"PublicKeys">> => list(string()()),
+%%   <<"PublicKeys">> => list(string()),
 %%   <<"RoleArn">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Status">> => string(),
 %%   <<"SubnetId">> => string(),
 %%   <<"VpcId">> => string(),
@@ -2550,7 +2550,7 @@
 %%   <<"LastModifiedAfter">> => non_neg_integer(),
 %%   <<"LastModifiedBefore">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Schema">> => list(schema_column()()),
+%%   <<"Schema">> => list(schema_column()),
 %%   <<"Status">> => list(any()),
 %%   <<"TransformType">> => list(any())
 %% }
@@ -2558,9 +2558,9 @@
 
 %% Example:
 %% aggregate() :: #{
-%%   <<"Aggs">> => list(aggregate_operation()()),
-%%   <<"Groups">> => list(list(string()())()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Aggs">> => list(aggregate_operation()),
+%%   <<"Groups">> => list(list(string())()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type aggregate() :: #{binary() => any()}.
@@ -2582,7 +2582,7 @@
 %%   <<"Parameters">> => map(),
 %%   <<"StorageDescriptor">> => storage_descriptor(),
 %%   <<"TableName">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type partition() :: #{binary() => any()}.
 
@@ -2612,7 +2612,7 @@
 
 %% Example:
 %% batch_get_jobs_request() :: #{
-%%   <<"JobNames">> := list(string()())
+%%   <<"JobNames">> := list(string())
 %% }
 -type batch_get_jobs_request() :: #{binary() => any()}.
 
@@ -2620,9 +2620,9 @@
 %% s3_hudi_catalog_target() :: #{
 %%   <<"AdditionalOptions">> => map(),
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
 %%   <<"Table">> => string()
 %% }
@@ -2638,9 +2638,9 @@
 %%   <<"ExecutionTime">> => integer(),
 %%   <<"LastModifiedOn">> => non_neg_integer(),
 %%   <<"NumberOfWorkers">> => integer(),
-%%   <<"ResultIds">> => list(string()()),
+%%   <<"ResultIds">> => list(string()),
 %%   <<"Role">> => string(),
-%%   <<"RulesetNames">> => list(string()()),
+%%   <<"RulesetNames">> => list(string()),
 %%   <<"RunId">> => string(),
 %%   <<"StartedOn">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
@@ -2679,7 +2679,7 @@
 
 %% Example:
 %% code_gen_node() :: #{
-%%   <<"Args">> => list(code_gen_node_arg()()),
+%%   <<"Args">> => list(code_gen_node_arg()),
 %%   <<"Id">> => string(),
 %%   <<"LineNumber">> => integer(),
 %%   <<"NodeType">> => string()
@@ -2698,7 +2698,7 @@
 
 %% Example:
 %% batch_get_triggers_request() :: #{
-%%   <<"TriggerNames">> := list(string()())
+%%   <<"TriggerNames">> := list(string())
 %% }
 -type batch_get_triggers_request() :: #{binary() => any()}.
 
@@ -2711,7 +2711,7 @@
 %% Example:
 %% query_schema_version_metadata_input() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"MetadataList">> => list(metadata_key_value_pair()()),
+%%   <<"MetadataList">> => list(metadata_key_value_pair()),
 %%   <<"NextToken">> => string(),
 %%   <<"SchemaId">> => schema_id(),
 %%   <<"SchemaVersionId">> => string(),
@@ -2731,7 +2731,7 @@
 %% Example:
 %% get_data_quality_model_result_response() :: #{
 %%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"Model">> => list(statistic_model_result()())
+%%   <<"Model">> => list(statistic_model_result())
 %% }
 -type get_data_quality_model_result_response() :: #{binary() => any()}.
 
@@ -2745,7 +2745,7 @@
 
 %% Example:
 %% list_jobs_response() :: #{
-%%   <<"JobNames">> => list(string()()),
+%%   <<"JobNames">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
@@ -2834,7 +2834,7 @@
 %% Example:
 %% join_column() :: #{
 %%   <<"From">> => string(),
-%%   <<"Keys">> => list(list(string()())())
+%%   <<"Keys">> => list(list(string())())
 %% }
 -type join_column() :: #{binary() => any()}.
 
@@ -2843,8 +2843,8 @@
 %%   <<"AdditionalPlanOptionsMap">> => map(),
 %%   <<"Language">> => list(any()),
 %%   <<"Location">> => location(),
-%%   <<"Mapping">> := list(mapping_entry()()),
-%%   <<"Sinks">> => list(catalog_entry()()),
+%%   <<"Mapping">> := list(mapping_entry()),
+%%   <<"Sinks">> => list(catalog_entry()),
 %%   <<"Source">> := catalog_entry()
 %% }
 -type get_plan_request() :: #{binary() => any()}.
@@ -2875,7 +2875,7 @@
 
 %% Example:
 %% get_connections_response() :: #{
-%%   <<"ConnectionList">> => list(connection()()),
+%%   <<"ConnectionList">> => list(connection()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_connections_response() :: #{binary() => any()}.
@@ -2944,7 +2944,7 @@
 
 %% Example:
 %% describe_entity_response() :: #{
-%%   <<"Fields">> => list(field()()),
+%%   <<"Fields">> => list(field()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_entity_response() :: #{binary() => any()}.
@@ -2988,7 +2988,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagsToRemove">> := list(string()())
+%%   <<"TagsToRemove">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -3034,7 +3034,7 @@
 
 %% Example:
 %% target_table_config() :: #{
-%%   <<"PartitionSpec">> => list(integration_partition()()),
+%%   <<"PartitionSpec">> => list(integration_partition()),
 %%   <<"TargetTableName">> => string(),
 %%   <<"UnnestSpec">> => list(any())
 %% }
@@ -3043,14 +3043,14 @@
 %% Example:
 %% status_details() :: #{
 %%   <<"RequestedChange">> => table(),
-%%   <<"ViewValidations">> => list(view_validation()())
+%%   <<"ViewValidations">> => list(view_validation())
 %% }
 -type status_details() :: #{binary() => any()}.
 
 %% Example:
 %% list_data_quality_ruleset_evaluation_runs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Runs">> => list(data_quality_ruleset_evaluation_run_description()())
+%%   <<"Runs">> => list(data_quality_ruleset_evaluation_run_description())
 %% }
 -type list_data_quality_ruleset_evaluation_runs_response() :: #{binary() => any()}.
 
@@ -3064,7 +3064,7 @@
 %% amazon_redshift_node_data() :: #{
 %%   <<"AccessType">> => string(),
 %%   <<"Action">> => string(),
-%%   <<"AdvancedOptions">> => list(amazon_redshift_advanced_option()()),
+%%   <<"AdvancedOptions">> => list(amazon_redshift_advanced_option()),
 %%   <<"CatalogDatabase">> => option(),
 %%   <<"CatalogRedshiftSchema">> => string(),
 %%   <<"CatalogRedshiftTable">> => string(),
@@ -3080,12 +3080,12 @@
 %%   <<"PreAction">> => string(),
 %%   <<"SampleQuery">> => string(),
 %%   <<"Schema">> => option(),
-%%   <<"SelectedColumns">> => list(option()()),
+%%   <<"SelectedColumns">> => list(option()),
 %%   <<"SourceType">> => string(),
 %%   <<"StagingTable">> => string(),
 %%   <<"Table">> => option(),
 %%   <<"TablePrefix">> => string(),
-%%   <<"TableSchema">> => list(option()()),
+%%   <<"TableSchema">> => list(option()),
 %%   <<"TempDir">> => string(),
 %%   <<"Upsert">> => boolean()
 %% }
@@ -3120,7 +3120,7 @@
 
 %% Example:
 %% list_custom_entity_types_response() :: #{
-%%   <<"CustomEntityTypes">> => list(custom_entity_type()()),
+%%   <<"CustomEntityTypes">> => list(custom_entity_type()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_entity_types_response() :: #{binary() => any()}.
@@ -3137,7 +3137,7 @@
 %%   <<"Capabilities">> => capabilities(),
 %%   <<"Categories">> => list([string()]()),
 %%   <<"ConnectionType">> => list(any()),
-%%   <<"ConnectionTypeVariants">> => list(connection_type_variant()()),
+%%   <<"ConnectionTypeVariants">> => list(connection_type_variant()),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"LogoUrl">> => string(),
@@ -3167,7 +3167,7 @@
 
 %% Example:
 %% get_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()()),
+%%   <<"Jobs">> => list(job()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_jobs_response() :: #{binary() => any()}.
@@ -3184,7 +3184,7 @@
 
 %% Example:
 %% batch_put_data_quality_statistic_annotation_response() :: #{
-%%   <<"FailedInclusionAnnotations">> => list(annotation_error()())
+%%   <<"FailedInclusionAnnotations">> => list(annotation_error())
 %% }
 -type batch_put_data_quality_statistic_annotation_response() :: #{binary() => any()}.
 
@@ -3196,7 +3196,7 @@
 
 %% Example:
 %% get_blueprint_runs_response() :: #{
-%%   <<"BlueprintRuns">> => list(blueprint_run()()),
+%%   <<"BlueprintRuns">> => list(blueprint_run()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_blueprint_runs_response() :: #{binary() => any()}.
@@ -3224,7 +3224,7 @@
 %% j_db_c_connector_options() :: #{
 %%   <<"DataTypeMapping">> => map(),
 %%   <<"FilterPredicate">> => string(),
-%%   <<"JobBookmarkKeys">> => list(string()()),
+%%   <<"JobBookmarkKeys">> => list(string()),
 %%   <<"JobBookmarkKeysSortOrder">> => string(),
 %%   <<"LowerBound">> => float(),
 %%   <<"NumPartitions">> => float(),
@@ -3248,9 +3248,9 @@
 
 %% Example:
 %% select_fields() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"Paths">> => list(list(string()())())
+%%   <<"Paths">> => list(list(string())())
 %% }
 -type select_fields() :: #{binary() => any()}.
 
@@ -3279,7 +3279,7 @@
 %% Example:
 %% batch_delete_connection_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"ConnectionNameList">> := list(string()())
+%%   <<"ConnectionNameList">> := list(string())
 %% }
 -type batch_delete_connection_request() :: #{binary() => any()}.
 
@@ -3293,8 +3293,8 @@
 
 %% Example:
 %% batch_get_workflows_response() :: #{
-%%   <<"MissingWorkflows">> => list(string()()),
-%%   <<"Workflows">> => list(workflow()())
+%%   <<"MissingWorkflows">> => list(string()),
+%%   <<"Workflows">> => list(workflow())
 %% }
 -type batch_get_workflows_response() :: #{binary() => any()}.
 
@@ -3315,7 +3315,7 @@
 
 %% Example:
 %% get_databases_response() :: #{
-%%   <<"DatabaseList">> => list(database()()),
+%%   <<"DatabaseList">> => list(database()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_databases_response() :: #{binary() => any()}.
@@ -3343,7 +3343,7 @@
 %% Example:
 %% filter_value() :: #{
 %%   <<"Type">> => list(any()),
-%%   <<"Value">> => list(string()())
+%%   <<"Value">> => list(string())
 %% }
 -type filter_value() :: #{binary() => any()}.
 
@@ -3356,7 +3356,7 @@
 %% Example:
 %% batch_get_workflows_request() :: #{
 %%   <<"IncludeGraph">> => boolean(),
-%%   <<"Names">> := list(string()())
+%%   <<"Names">> := list(string())
 %% }
 -type batch_get_workflows_request() :: #{binary() => any()}.
 
@@ -3392,7 +3392,7 @@
 %% Example:
 %% list_data_quality_rule_recommendation_runs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Runs">> => list(data_quality_rule_recommendation_run_description()())
+%%   <<"Runs">> => list(data_quality_rule_recommendation_run_description())
 %% }
 -type list_data_quality_rule_recommendation_runs_response() :: #{binary() => any()}.
 
@@ -3452,7 +3452,7 @@
 
 %% Example:
 %% create_custom_entity_type_request() :: #{
-%%   <<"ContextWords">> => list(string()()),
+%%   <<"ContextWords">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"RegexString">> := string(),
 %%   <<"Tags">> => map()
@@ -3470,7 +3470,7 @@
 %%   <<"AuditContext">> => audit_context(),
 %%   <<"CatalogId">> := string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()()),
+%%   <<"PartitionValues">> := list(string()),
 %%   <<"QuerySessionContext">> => query_session_context(),
 %%   <<"Region">> => string(),
 %%   <<"SupportedPermissionTypes">> := list(list(any())()),
@@ -3509,7 +3509,7 @@
 %% Example:
 %% find_matches_metrics() :: #{
 %%   <<"AreaUnderPRCurve">> => float(),
-%%   <<"ColumnImportances">> => list(column_importance()()),
+%%   <<"ColumnImportances">> => list(column_importance()),
 %%   <<"ConfusionMatrix">> => confusion_matrix(),
 %%   <<"F1">> => float(),
 %%   <<"Precision">> => float(),
@@ -3521,7 +3521,7 @@
 %% s3_json_source() :: #{
 %%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
 %%   <<"CompressionType">> => list(any()),
-%%   <<"Exclusions">> => list(string()()),
+%%   <<"Exclusions">> => list(string()),
 %%   <<"GroupFiles">> => string(),
 %%   <<"GroupSize">> => string(),
 %%   <<"JsonPath">> => string(),
@@ -3529,8 +3529,8 @@
 %%   <<"MaxFilesInBand">> => integer(),
 %%   <<"Multiline">> => boolean(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
-%%   <<"Paths">> => list(string()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string()),
 %%   <<"Recurse">> => boolean()
 %% }
 -type s3_json_source() :: #{binary() => any()}.
@@ -3602,7 +3602,7 @@
 %%   <<"NumberOfWorkers">> => integer(),
 %%   <<"RoleArn">> => string(),
 %%   <<"SecurityConfiguration">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Status">> => string(),
 %%   <<"SubnetId">> => string(),
 %%   <<"VpcId">> => string(),
@@ -3614,8 +3614,8 @@
 
 %% Example:
 %% batch_get_custom_entity_types_response() :: #{
-%%   <<"CustomEntityTypes">> => list(custom_entity_type()()),
-%%   <<"CustomEntityTypesNotFound">> => list(string()())
+%%   <<"CustomEntityTypes">> => list(custom_entity_type()),
+%%   <<"CustomEntityTypesNotFound">> => list(string())
 %% }
 -type batch_get_custom_entity_types_response() :: #{binary() => any()}.
 
@@ -3628,7 +3628,7 @@
 %% Example:
 %% list_statements_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Statements">> => list(statement()())
+%%   <<"Statements">> => list(statement())
 %% }
 -type list_statements_response() :: #{binary() => any()}.
 
@@ -3670,7 +3670,7 @@
 %% Example:
 %% get_partition_indexes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PartitionIndexDescriptorList">> => list(partition_index_descriptor()())
+%%   <<"PartitionIndexDescriptorList">> => list(partition_index_descriptor())
 %% }
 -type get_partition_indexes_response() :: #{binary() => any()}.
 
@@ -3695,7 +3695,7 @@
 %% upsert_redshift_target_options() :: #{
 %%   <<"ConnectionName">> => string(),
 %%   <<"TableLocation">> => string(),
-%%   <<"UpsertKeys">> => list(string()())
+%%   <<"UpsertKeys">> => list(string())
 %% }
 -type upsert_redshift_target_options() :: #{binary() => any()}.
 
@@ -3717,8 +3717,8 @@
 %%   <<"AdditionalHudiOptions">> => map(),
 %%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
-%%   <<"Paths">> => list(string()())
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string())
 %% }
 -type s3_hudi_source() :: #{binary() => any()}.
 
@@ -3740,10 +3740,10 @@
 %%   <<"AdditionalOptions">> => map(),
 %%   <<"Compression">> => list(any()),
 %%   <<"Format">> => list(any()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NumberTargetPartitions">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
 %% }
@@ -3753,7 +3753,7 @@
 %% jdbc_target() :: #{
 %%   <<"ConnectionName">> => string(),
 %%   <<"EnableAdditionalMetadata">> => list(list(any())()),
-%%   <<"Exclusions">> => list(string()()),
+%%   <<"Exclusions">> => list(string()),
 %%   <<"Path">> => string()
 %% }
 -type jdbc_target() :: #{binary() => any()}.
@@ -3762,7 +3762,7 @@
 %% batch_get_blueprints_request() :: #{
 %%   <<"IncludeBlueprint">> => boolean(),
 %%   <<"IncludeParameterSpec">> => boolean(),
-%%   <<"Names">> := list(string()())
+%%   <<"Names">> := list(string())
 %% }
 -type batch_get_blueprints_request() :: #{binary() => any()}.
 
@@ -3776,7 +3776,7 @@
 %% fill_missing_values() :: #{
 %%   <<"FilledPath">> => string(),
 %%   <<"ImputedPath">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type fill_missing_values() :: #{binary() => any()}.
@@ -3784,7 +3784,7 @@
 %% Example:
 %% get_column_statistics_for_table_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"ColumnNames">> := list(string()()),
+%%   <<"ColumnNames">> := list(string()),
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string()
 %% }
@@ -3812,9 +3812,9 @@
 
 %% Example:
 %% list_sessions_response() :: #{
-%%   <<"Ids">> => list(string()()),
+%%   <<"Ids">> => list(string()),
 %%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(session()())
+%%   <<"Sessions">> => list(session())
 %% }
 -type list_sessions_response() :: #{binary() => any()}.
 
@@ -3832,7 +3832,7 @@
 
 %% Example:
 %% batch_get_custom_entity_types_request() :: #{
-%%   <<"Names">> := list(string()())
+%%   <<"Names">> := list(string())
 %% }
 -type batch_get_custom_entity_types_request() :: #{binary() => any()}.
 
@@ -3873,7 +3873,7 @@
 %% Example:
 %% redshift_target() :: #{
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"RedshiftTmpDir">> => string(),
 %%   <<"Table">> => string(),
@@ -3887,7 +3887,7 @@
 %%   <<"AdditionalHudiOptions">> => map(),
 %%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"Table">> => string()
 %% }
 -type catalog_hudi_source() :: #{binary() => any()}.
@@ -3906,7 +3906,7 @@
 
 %% Example:
 %% configuration_object() :: #{
-%%   <<"AllowedValues">> => list(string()()),
+%%   <<"AllowedValues">> => list(string()),
 %%   <<"DefaultValue">> => string(),
 %%   <<"MaxValue">> => string(),
 %%   <<"MinValue">> => string()
@@ -3915,7 +3915,7 @@
 
 %% Example:
 %% partition_value_list() :: #{
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type partition_value_list() :: #{binary() => any()}.
 
@@ -3934,16 +3934,16 @@
 %% Example:
 %% backfill_error() :: #{
 %%   <<"Code">> => list(any()),
-%%   <<"Partitions">> => list(partition_value_list()())
+%%   <<"Partitions">> => list(partition_value_list())
 %% }
 -type backfill_error() :: #{binary() => any()}.
 
 %% Example:
 %% governed_catalog_target() :: #{
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
 %%   <<"Table">> => string()
 %% }
@@ -3957,7 +3957,7 @@
 
 %% Example:
 %% list_column_statistics_task_runs_response() :: #{
-%%   <<"ColumnStatisticsTaskRunIds">> => list(string()()),
+%%   <<"ColumnStatisticsTaskRunIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_column_statistics_task_runs_response() :: #{binary() => any()}.
@@ -4001,14 +4001,14 @@
 %% Example:
 %% batch_stop_job_run_request() :: #{
 %%   <<"JobName">> := string(),
-%%   <<"JobRunIds">> := list(string()())
+%%   <<"JobRunIds">> := list(string())
 %% }
 -type batch_stop_job_run_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_delete_connection_response() :: #{
 %%   <<"Errors">> => map(),
-%%   <<"Succeeded">> => list(string()())
+%%   <<"Succeeded">> => list(string())
 %% }
 -type batch_delete_connection_response() :: #{binary() => any()}.
 
@@ -4034,7 +4034,7 @@
 %% Example:
 %% batch_put_data_quality_statistic_annotation_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"InclusionAnnotations">> := list(datapoint_inclusion_annotation()())
+%%   <<"InclusionAnnotations">> := list(datapoint_inclusion_annotation())
 %% }
 -type batch_put_data_quality_statistic_annotation_request() :: #{binary() => any()}.
 
@@ -4084,7 +4084,7 @@
 
 %% Example:
 %% update_iceberg_table_input() :: #{
-%%   <<"Updates">> => list(iceberg_table_update()())
+%%   <<"Updates">> => list(iceberg_table_update())
 %% }
 -type update_iceberg_table_input() :: #{binary() => any()}.
 
@@ -4105,7 +4105,7 @@
 %%   <<"CatalogId">> => string(),
 %%   <<"ColumnName">> := string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()()),
+%%   <<"PartitionValues">> := list(string()),
 %%   <<"TableName">> := string()
 %% }
 -type delete_column_statistics_for_partition_request() :: #{binary() => any()}.
@@ -4190,10 +4190,10 @@
 %%   <<"AdditionalOptions">> => map(),
 %%   <<"Compression">> => list(any()),
 %%   <<"Format">> => list(any()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NumberTargetPartitions">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
 %% }
@@ -4264,15 +4264,15 @@
 %% batch_get_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionsToGet">> := list(partition_value_list()()),
+%%   <<"PartitionsToGet">> := list(partition_value_list()),
 %%   <<"TableName">> := string()
 %% }
 -type batch_get_partition_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_partition_response() :: #{
-%%   <<"Partitions">> => list(partition()()),
-%%   <<"UnprocessedKeys">> => list(partition_value_list()())
+%%   <<"Partitions">> => list(partition()),
+%%   <<"UnprocessedKeys">> => list(partition_value_list())
 %% }
 -type batch_get_partition_response() :: #{binary() => any()}.
 
@@ -4302,14 +4302,14 @@
 
 %% Example:
 %% get_mapping_response() :: #{
-%%   <<"Mapping">> => list(mapping_entry()())
+%%   <<"Mapping">> => list(mapping_entry())
 %% }
 -type get_mapping_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_dataflow_graph_response() :: #{
-%%   <<"DagEdges">> => list(code_gen_edge()()),
-%%   <<"DagNodes">> => list(code_gen_node()())
+%%   <<"DagEdges">> => list(code_gen_edge()),
+%%   <<"DagNodes">> => list(code_gen_node())
 %% }
 -type get_dataflow_graph_response() :: #{binary() => any()}.
 
@@ -4323,7 +4323,7 @@
 %% metric_based_observation() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"MetricValues">> => data_quality_metric_values(),
-%%   <<"NewRules">> => list(string()()),
+%%   <<"NewRules">> => list(string()),
 %%   <<"StatisticId">> => string()
 %% }
 -type metric_based_observation() :: #{binary() => any()}.
@@ -4356,7 +4356,7 @@
 %%   <<"LastConnectionValidationTime">> => non_neg_integer(),
 %%   <<"LastUpdatedBy">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"MatchCriteria">> => list(string()()),
+%%   <<"MatchCriteria">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
 %%   <<"PythonProperties">> => map(),
@@ -4385,7 +4385,7 @@
 %% get_connections_filter() :: #{
 %%   <<"ConnectionSchemaVersion">> => integer(),
 %%   <<"ConnectionType">> => list(any()),
-%%   <<"MatchCriteria">> => list(string()())
+%%   <<"MatchCriteria">> => list(string())
 %% }
 -type get_connections_filter() :: #{binary() => any()}.
 
@@ -4394,7 +4394,7 @@
 %%   <<"ConnectionName">> => string(),
 %%   <<"DlqEventQueueArn">> => string(),
 %%   <<"EventQueueArn">> => string(),
-%%   <<"Exclusions">> => list(string()()),
+%%   <<"Exclusions">> => list(string()),
 %%   <<"Path">> => string(),
 %%   <<"SampleSize">> => integer()
 %% }
@@ -4441,8 +4441,8 @@
 
 %% Example:
 %% workflow_graph() :: #{
-%%   <<"Edges">> => list(edge()()),
-%%   <<"Nodes">> => list(glue_node()())
+%%   <<"Edges">> => list(edge()),
+%%   <<"Nodes">> => list(node())
 %% }
 -type workflow_graph() :: #{binary() => any()}.
 
@@ -4486,7 +4486,7 @@
 %% delete_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()()),
+%%   <<"PartitionValues">> := list(string()),
 %%   <<"TableName">> := string()
 %% }
 -type delete_partition_request() :: #{binary() => any()}.
@@ -4509,16 +4509,16 @@
 %% Example:
 %% get_column_statistics_for_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"ColumnNames">> := list(string()()),
+%%   <<"ColumnNames">> := list(string()),
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()()),
+%%   <<"PartitionValues">> := list(string()),
 %%   <<"TableName">> := string()
 %% }
 -type get_column_statistics_for_partition_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_dev_endpoints_request() :: #{
-%%   <<"DevEndpointNames">> := list(string()())
+%%   <<"DevEndpointNames">> := list(string())
 %% }
 -type batch_get_dev_endpoints_request() :: #{binary() => any()}.
 
@@ -4554,8 +4554,8 @@
 
 %% Example:
 %% join() :: #{
-%%   <<"Columns">> => list(join_column()()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Columns">> => list(join_column()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"JoinType">> => list(any()),
 %%   <<"Name">> => string()
 %% }
@@ -4565,7 +4565,7 @@
 %% metadata_info() :: #{
 %%   <<"CreatedTime">> => string(),
 %%   <<"MetadataValue">> => string(),
-%%   <<"OtherMetadataValueList">> => list(other_metadata_value_list_item()())
+%%   <<"OtherMetadataValueList">> => list(other_metadata_value_list_item())
 %% }
 -type metadata_info() :: #{binary() => any()}.
 
@@ -4586,7 +4586,7 @@
 
 %% Example:
 %% get_job_runs_response() :: #{
-%%   <<"JobRuns">> => list(job_run()()),
+%%   <<"JobRuns">> => list(job_run()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_job_runs_response() :: #{binary() => any()}.
@@ -4616,7 +4616,7 @@
 %% Example:
 %% batch_update_partition_request_entry() :: #{
 %%   <<"PartitionInput">> => partition_input(),
-%%   <<"PartitionValueList">> => list(string()())
+%%   <<"PartitionValueList">> => list(string())
 %% }
 -type batch_update_partition_request_entry() :: #{binary() => any()}.
 
@@ -4658,9 +4658,9 @@
 %% Example:
 %% s3_hyper_direct_target() :: #{
 %%   <<"Compression">> => list(any()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
 %% }
@@ -4681,7 +4681,7 @@
 %%   <<"ConnectionType">> => string(),
 %%   <<"ConnectorName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()())
+%%   <<"OutputSchemas">> => list(glue_schema())
 %% }
 -type spark_connector_source() :: #{binary() => any()}.
 
@@ -4710,10 +4710,10 @@
 
 %% Example:
 %% recipe() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"RecipeReference">> => recipe_reference(),
-%%   <<"RecipeSteps">> => list(recipe_step()())
+%%   <<"RecipeSteps">> => list(recipe_step())
 %% }
 -type recipe() :: #{binary() => any()}.
 
@@ -4834,7 +4834,7 @@
 
 %% Example:
 %% update_crawler_request() :: #{
-%%   <<"Classifiers">> => list(string()()),
+%%   <<"Classifiers">> => list(string()),
 %%   <<"Configuration">> => string(),
 %%   <<"CrawlerSecurityConfiguration">> => string(),
 %%   <<"DatabaseName">> => string(),
@@ -4889,7 +4889,7 @@
 
 %% Example:
 %% create_crawler_request() :: #{
-%%   <<"Classifiers">> => list(string()()),
+%%   <<"Classifiers">> => list(string()),
 %%   <<"Configuration">> => string(),
 %%   <<"CrawlerSecurityConfiguration">> => string(),
 %%   <<"DatabaseName">> => string(),
@@ -4917,7 +4917,7 @@
 
 %% Example:
 %% delete_schema_versions_response() :: #{
-%%   <<"SchemaVersionErrors">> => list(schema_version_error_item()())
+%%   <<"SchemaVersionErrors">> => list(schema_version_error_item())
 %% }
 -type delete_schema_versions_response() :: #{binary() => any()}.
 
@@ -4934,7 +4934,7 @@
 %% Example:
 %% select_from_collection() :: #{
 %%   <<"Index">> => integer(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type select_from_collection() :: #{binary() => any()}.
@@ -4948,10 +4948,10 @@
 %% Example:
 %% s3_glue_parquet_target() :: #{
 %%   <<"Compression">> => list(any()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NumberTargetPartitions">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
 %% }
@@ -4979,9 +4979,9 @@
 
 %% Example:
 %% storage_descriptor() :: #{
-%%   <<"AdditionalLocations">> => list(string()()),
-%%   <<"BucketColumns">> => list(string()()),
-%%   <<"Columns">> => list(column()()),
+%%   <<"AdditionalLocations">> => list(string()),
+%%   <<"BucketColumns">> => list(string()),
+%%   <<"Columns">> => list(column()),
 %%   <<"Compressed">> => boolean(),
 %%   <<"InputFormat">> => string(),
 %%   <<"Location">> => string(),
@@ -4991,7 +4991,7 @@
 %%   <<"SchemaReference">> => schema_reference(),
 %%   <<"SerdeInfo">> => ser_de_info(),
 %%   <<"SkewedInfo">> => skewed_info(),
-%%   <<"SortColumns">> => list(order()()),
+%%   <<"SortColumns">> => list(order()),
 %%   <<"StoredAsSubDirectories">> => boolean()
 %% }
 -type storage_descriptor() :: #{binary() => any()}.
@@ -5040,7 +5040,7 @@
 
 %% Example:
 %% unfiltered_partition() :: #{
-%%   <<"AuthorizedColumns">> => list(string()()),
+%%   <<"AuthorizedColumns">> => list(string()),
 %%   <<"IsRegisteredWithLakeFormation">> => boolean(),
 %%   <<"Partition">> => partition()
 %% }
@@ -5067,7 +5067,7 @@
 %%   <<"DatabaseName">> => string(),
 %%   <<"DlqEventQueueArn">> => string(),
 %%   <<"EventQueueArn">> => string(),
-%%   <<"Tables">> => list(string()())
+%%   <<"Tables">> => list(string())
 %% }
 -type catalog_target() :: #{binary() => any()}.
 
@@ -5097,7 +5097,7 @@
 %% Example:
 %% get_mapping_request() :: #{
 %%   <<"Location">> => location(),
-%%   <<"Sinks">> => list(catalog_entry()()),
+%%   <<"Sinks">> => list(catalog_entry()),
 %%   <<"Source">> := catalog_entry()
 %% }
 -type get_mapping_request() :: #{binary() => any()}.
@@ -5124,8 +5124,8 @@
 %% catalog_input() :: #{
 %%   <<"AllowFullTableExternalDataAccess">> => list(any()),
 %%   <<"CatalogProperties">> => catalog_properties(),
-%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()()),
-%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()()),
+%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()),
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
 %%   <<"Description">> => string(),
 %%   <<"FederatedCatalog">> => federated_catalog(),
 %%   <<"Parameters">> => map(),
@@ -5135,9 +5135,9 @@
 
 %% Example:
 %% source_table_config() :: #{
-%%   <<"Fields">> => list(string()()),
+%%   <<"Fields">> => list(string()),
 %%   <<"FilterPredicate">> => string(),
-%%   <<"PrimaryKey">> => list(string()()),
+%%   <<"PrimaryKey">> => list(string()),
 %%   <<"RecordUpdateField">> => string()
 %% }
 -type source_table_config() :: #{binary() => any()}.
@@ -5156,7 +5156,7 @@
 
 %% Example:
 %% get_crawler_metrics_request() :: #{
-%%   <<"CrawlerNameList">> => list(string()()),
+%%   <<"CrawlerNameList">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -5197,10 +5197,10 @@
 %%   <<"AllowSingleColumn">> => boolean(),
 %%   <<"ContainsHeader">> => list(any()),
 %%   <<"CustomDatatypeConfigured">> => boolean(),
-%%   <<"CustomDatatypes">> => list(string()()),
+%%   <<"CustomDatatypes">> => list(string()),
 %%   <<"Delimiter">> => string(),
 %%   <<"DisableValueTrimming">> => boolean(),
-%%   <<"Header">> => list(string()()),
+%%   <<"Header">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"QuoteSymbol">> => string(),
 %%   <<"Serde">> => list(any())
@@ -5247,7 +5247,7 @@
 
 %% Example:
 %% connections_list() :: #{
-%%   <<"Connections">> => list(string()())
+%%   <<"Connections">> => list(string())
 %% }
 -type connections_list() :: #{binary() => any()}.
 
@@ -5292,10 +5292,10 @@
 %%   <<"AllowSingleColumn">> => boolean(),
 %%   <<"ContainsHeader">> => list(any()),
 %%   <<"CustomDatatypeConfigured">> => boolean(),
-%%   <<"CustomDatatypes">> => list(string()()),
+%%   <<"CustomDatatypes">> => list(string()),
 %%   <<"Delimiter">> => string(),
 %%   <<"DisableValueTrimming">> => boolean(),
-%%   <<"Header">> => list(string()()),
+%%   <<"Header">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"QuoteSymbol">> => string(),
 %%   <<"Serde">> => list(any())
@@ -5307,7 +5307,7 @@
 %%   <<"AdditionalDeltaOptions">> => map(),
 %%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"Table">> => string()
 %% }
 -type s3_catalog_delta_source() :: #{binary() => any()}.
@@ -5331,9 +5331,9 @@
 
 %% Example:
 %% location() :: #{
-%%   <<"DynamoDB">> => list(code_gen_node_arg()()),
-%%   <<"Jdbc">> => list(code_gen_node_arg()()),
-%%   <<"S3">> => list(code_gen_node_arg()())
+%%   <<"DynamoDB">> => list(code_gen_node_arg()),
+%%   <<"Jdbc">> => list(code_gen_node_arg()),
+%%   <<"S3">> => list(code_gen_node_arg())
 %% }
 -type location() :: #{binary() => any()}.
 
@@ -5350,14 +5350,14 @@
 %% filter_expression() :: #{
 %%   <<"Negated">> => boolean(),
 %%   <<"Operation">> => list(any()),
-%%   <<"Values">> => list(filter_value()())
+%%   <<"Values">> => list(filter_value())
 %% }
 -type filter_expression() :: #{binary() => any()}.
 
 %% Example:
 %% search_tables_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TableList">> => list(table()())
+%%   <<"TableList">> => list(table())
 %% }
 -type search_tables_response() :: #{binary() => any()}.
 
@@ -5369,7 +5369,7 @@
 
 %% Example:
 %% create_trigger_request() :: #{
-%%   <<"Actions">> := list(action()()),
+%%   <<"Actions">> := list(action()),
 %%   <<"Description">> => string(),
 %%   <<"EventBatchingCondition">> => event_batching_condition(),
 %%   <<"Name">> := string(),
@@ -5434,7 +5434,7 @@
 %% batch_update_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"Entries">> := list(batch_update_partition_request_entry()()),
+%%   <<"Entries">> := list(batch_update_partition_request_entry()),
 %%   <<"TableName">> := string()
 %% }
 -type batch_update_partition_request() :: #{binary() => any()}.
@@ -5530,11 +5530,11 @@
 %%   <<"PreAction">> => string(),
 %%   <<"SampleQuery">> => string(),
 %%   <<"Schema">> => string(),
-%%   <<"SelectedColumns">> => list(option()()),
+%%   <<"SelectedColumns">> => list(option()),
 %%   <<"SourceType">> => string(),
 %%   <<"StagingTable">> => string(),
 %%   <<"Table">> => string(),
-%%   <<"TableSchema">> => list(option()()),
+%%   <<"TableSchema">> => list(option()),
 %%   <<"TempDir">> => string(),
 %%   <<"Upsert">> => boolean()
 %% }
@@ -5542,7 +5542,7 @@
 
 %% Example:
 %% get_resource_policies_response() :: #{
-%%   <<"GetResourcePoliciesResponseList">> => list(glue_policy()()),
+%%   <<"GetResourcePoliciesResponseList">> => list(glue_policy()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_resource_policies_response() :: #{binary() => any()}.
@@ -5551,8 +5551,8 @@
 %% view_definition() :: #{
 %%   <<"Definer">> => string(),
 %%   <<"IsProtected">> => boolean(),
-%%   <<"Representations">> => list(view_representation()()),
-%%   <<"SubObjects">> => list(string()())
+%%   <<"Representations">> => list(view_representation()),
+%%   <<"SubObjects">> => list(string())
 %% }
 -type view_definition() :: #{binary() => any()}.
 
@@ -5565,8 +5565,8 @@
 
 %% Example:
 %% filter() :: #{
-%%   <<"Filters">> => list(filter_expression()()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Filters">> => list(filter_expression()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"LogicalOperator">> => list(any()),
 %%   <<"Name">> => string()
 %% }
@@ -5608,9 +5608,9 @@
 %% custom_code() :: #{
 %%   <<"ClassName">> => string(),
 %%   <<"Code">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()())
+%%   <<"OutputSchemas">> => list(glue_schema())
 %% }
 -type custom_code() :: #{binary() => any()}.
 
@@ -5673,7 +5673,7 @@
 %%   <<"AdditionalDeltaOptions">> => map(),
 %%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"Table">> => string()
 %% }
 -type catalog_delta_source() :: #{binary() => any()}.
@@ -5688,7 +5688,7 @@
 %% Example:
 %% column_statistics_task_run() :: #{
 %%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()()),
+%%   <<"ColumnNameList">> => list(string()),
 %%   <<"ColumnStatisticsTaskRunId">> => string(),
 %%   <<"ComputationType">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -5717,7 +5717,7 @@
 %%   <<"DataSource">> := data_source(),
 %%   <<"NumberOfWorkers">> => integer(),
 %%   <<"Role">> := string(),
-%%   <<"RulesetNames">> := list(string()()),
+%%   <<"RulesetNames">> := list(string()),
 %%   <<"Timeout">> => integer()
 %% }
 -type start_data_quality_ruleset_evaluation_run_request() :: #{binary() => any()}.
@@ -5731,7 +5731,7 @@
 %% Example:
 %% list_ml_transforms_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransformIds">> => list(string()())
+%%   <<"TransformIds">> => list(string())
 %% }
 -type list_ml_transforms_response() :: #{binary() => any()}.
 
@@ -5776,7 +5776,7 @@
 %% Example:
 %% microsoft_s_q_l_server_catalog_target() :: #{
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Table">> => string()
 %% }
@@ -5833,7 +5833,7 @@
 %%   <<"ConnectionProperties">> => map(),
 %%   <<"ConnectionType">> => list(any()),
 %%   <<"Description">> => string(),
-%%   <<"MatchCriteria">> => list(string()()),
+%%   <<"MatchCriteria">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"PhysicalConnectionRequirements">> => physical_connection_requirements(),
 %%   <<"PythonProperties">> => map(),
@@ -5882,7 +5882,7 @@
 %%   <<"IntegrationName">> := string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceArn">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetArn">> := string()
 %% }
 -type create_integration_request() :: #{binary() => any()}.
@@ -5928,7 +5928,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EvaluationMetrics">> => evaluation_metrics(),
 %%   <<"GlueVersion">> => string(),
-%%   <<"InputRecordTables">> => list(glue_table()()),
+%%   <<"InputRecordTables">> => list(glue_table()),
 %%   <<"LabelCount">> => integer(),
 %%   <<"LastModifiedOn">> => non_neg_integer(),
 %%   <<"MaxCapacity">> => float(),
@@ -5937,7 +5937,7 @@
 %%   <<"NumberOfWorkers">> => integer(),
 %%   <<"Parameters">> => transform_parameters(),
 %%   <<"Role">> => string(),
-%%   <<"Schema">> => list(schema_column()()),
+%%   <<"Schema">> => list(schema_column()),
 %%   <<"Status">> => list(any()),
 %%   <<"Timeout">> => integer(),
 %%   <<"TransformEncryption">> => transform_encryption(),
@@ -5956,7 +5956,7 @@
 %% Example:
 %% get_security_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityConfigurations">> => list(security_configuration()())
+%%   <<"SecurityConfigurations">> => list(security_configuration())
 %% }
 -type get_security_configurations_response() :: #{binary() => any()}.
 
@@ -5974,7 +5974,7 @@
 
 %% Example:
 %% trigger_update() :: #{
-%%   <<"Actions">> => list(action()()),
+%%   <<"Actions">> => list(action()),
 %%   <<"Description">> => string(),
 %%   <<"EventBatchingCondition">> => event_batching_condition(),
 %%   <<"Name">> => string(),
@@ -5998,7 +5998,7 @@
 %% Example:
 %% list_data_quality_statistics_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Statistics">> => list(statistic_summary()())
+%%   <<"Statistics">> => list(statistic_summary())
 %% }
 -type list_data_quality_statistics_response() :: #{binary() => any()}.
 
@@ -6058,7 +6058,7 @@
 %%   <<"ConnectionType">> => string(),
 %%   <<"Data">> => map(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()())
+%%   <<"OutputSchemas">> => list(glue_schema())
 %% }
 -type connector_data_source() :: #{binary() => any()}.
 
@@ -6085,9 +6085,9 @@
 %% s3_delta_catalog_target() :: #{
 %%   <<"AdditionalOptions">> => map(),
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
 %%   <<"Table">> => string()
 %% }
@@ -6126,7 +6126,7 @@
 %% Example:
 %% physical_connection_requirements() :: #{
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"SecurityGroupIdList">> => list(string()()),
+%%   <<"SecurityGroupIdList">> => list(string()),
 %%   <<"SubnetId">> => string()
 %% }
 -type physical_connection_requirements() :: #{binary() => any()}.
@@ -6187,13 +6187,13 @@
 %%   <<"FunctionName">> => string(),
 %%   <<"OwnerName">> => string(),
 %%   <<"OwnerType">> => list(any()),
-%%   <<"ResourceUris">> => list(resource_uri()())
+%%   <<"ResourceUris">> => list(resource_uri())
 %% }
 -type user_defined_function_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_column_statistics_for_partition_response() :: #{
-%%   <<"Errors">> => list(column_statistics_error()())
+%%   <<"Errors">> => list(column_statistics_error())
 %% }
 -type update_column_statistics_for_partition_response() :: #{binary() => any()}.
 
@@ -6214,7 +6214,7 @@
 %% Example:
 %% my_s_q_l_catalog_target() :: #{
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Table">> => string()
 %% }
@@ -6263,7 +6263,7 @@
 %% Example:
 %% list_registries_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Registries">> => list(registry_list_item()())
+%%   <<"Registries">> => list(registry_list_item())
 %% }
 -type list_registries_response() :: #{binary() => any()}.
 
@@ -6277,8 +6277,8 @@
 
 %% Example:
 %% batch_get_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()()),
-%%   <<"JobsNotFound">> => list(string()())
+%%   <<"Jobs">> => list(job()),
+%%   <<"JobsNotFound">> => list(string())
 %% }
 -type batch_get_jobs_response() :: #{binary() => any()}.
 
@@ -6324,7 +6324,7 @@
 %% Example:
 %% recipe_step() :: #{
 %%   <<"Action">> => recipe_action(),
-%%   <<"ConditionExpressions">> => list(condition_expression()())
+%%   <<"ConditionExpressions">> => list(condition_expression())
 %% }
 -type recipe_step() :: #{binary() => any()}.
 
@@ -6333,8 +6333,8 @@
 %%   <<"AllowFullTableExternalDataAccess">> => list(any()),
 %%   <<"CatalogId">> => string(),
 %%   <<"CatalogProperties">> => catalog_properties_output(),
-%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()()),
-%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()()),
+%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()),
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"FederatedCatalog">> => federated_catalog(),
@@ -6368,16 +6368,16 @@
 
 %% Example:
 %% job_node_details() :: #{
-%%   <<"JobRuns">> => list(job_run()())
+%%   <<"JobRuns">> => list(job_run())
 %% }
 -type job_node_details() :: #{binary() => any()}.
 
 %% Example:
 %% rename_field() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"SourcePath">> => list(string()()),
-%%   <<"TargetPath">> => list(string()())
+%%   <<"SourcePath">> => list(string()),
+%%   <<"TargetPath">> => list(string())
 %% }
 -type rename_field() :: #{binary() => any()}.
 
@@ -6413,7 +6413,7 @@
 %% batch_delete_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionsToDelete">> := list(partition_value_list()()),
+%%   <<"PartitionsToDelete">> := list(partition_value_list()),
 %%   <<"TableName">> := string()
 %% }
 -type batch_delete_partition_request() :: #{binary() => any()}.
@@ -6435,14 +6435,14 @@
 %%   <<"AdditionalDeltaOptions">> => map(),
 %%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
-%%   <<"Paths">> => list(string()())
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string())
 %% }
 -type s3_delta_source() :: #{binary() => any()}.
 
 %% Example:
 %% get_column_statistics_task_runs_response() :: #{
-%%   <<"ColumnStatisticsTaskRuns">> => list(column_statistics_task_run()()),
+%%   <<"ColumnStatisticsTaskRuns">> => list(column_statistics_task_run()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_column_statistics_task_runs_response() :: #{binary() => any()}.
@@ -6464,7 +6464,7 @@
 
 %% Example:
 %% batch_delete_table_response() :: #{
-%%   <<"Errors">> => list(table_error()())
+%%   <<"Errors">> => list(table_error())
 %% }
 -type batch_delete_table_response() :: #{binary() => any()}.
 
@@ -6485,7 +6485,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => string(),
 %%   <<"Parameters">> => map(),
-%%   <<"PartitionKeys">> => list(column()()),
+%%   <<"PartitionKeys">> => list(column()),
 %%   <<"Retention">> => integer(),
 %%   <<"StorageDescriptor">> => storage_descriptor(),
 %%   <<"TableType">> => string(),
@@ -6506,7 +6506,7 @@
 %% Example:
 %% create_column_statistics_task_settings_request() :: #{
 %%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()()),
+%%   <<"ColumnNameList">> => list(string()),
 %%   <<"DatabaseName">> := string(),
 %%   <<"Role">> := string(),
 %%   <<"SampleSize">> => float(),
@@ -6520,7 +6520,7 @@
 %% Example:
 %% get_ml_task_runs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TaskRuns">> => list(task_run()())
+%%   <<"TaskRuns">> => list(task_run())
 %% }
 -type get_ml_task_runs_response() :: #{binary() => any()}.
 
@@ -6541,7 +6541,7 @@
 %% delta_target() :: #{
 %%   <<"ConnectionName">> => string(),
 %%   <<"CreateNativeDeltaTable">> => boolean(),
-%%   <<"DeltaTables">> => list(string()()),
+%%   <<"DeltaTables">> => list(string()),
 %%   <<"WriteManifest">> => boolean()
 %% }
 -type delta_target() :: #{binary() => any()}.
@@ -6560,7 +6560,7 @@
 %%   <<"Type">> => list(any()),
 %%   <<"ValidationMessage">> => string(),
 %%   <<"ValidationRule">> => string(),
-%%   <<"Value">> => list(string()())
+%%   <<"Value">> => list(string())
 %% }
 -type transform_config_parameter() :: #{binary() => any()}.
 
@@ -6615,7 +6615,7 @@
 
 %% Example:
 %% list_crawls_response() :: #{
-%%   <<"Crawls">> => list(crawler_history()()),
+%%   <<"Crawls">> => list(crawler_history()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_crawls_response() :: #{binary() => any()}.
@@ -6647,13 +6647,13 @@
 %%   <<"LastAnalyzedTime">> => non_neg_integer(),
 %%   <<"Parameters">> => map(),
 %%   <<"StorageDescriptor">> => storage_descriptor(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type partition_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_integrations_request() :: #{
-%%   <<"Filters">> => list(integration_filter()()),
+%%   <<"Filters">> => list(integration_filter()),
 %%   <<"IntegrationIdentifier">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer()
@@ -6662,13 +6662,13 @@
 
 %% Example:
 %% batch_update_partition_response() :: #{
-%%   <<"Errors">> => list(batch_update_partition_failure_entry()())
+%%   <<"Errors">> => list(batch_update_partition_failure_entry())
 %% }
 -type batch_update_partition_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_integrations_response() :: #{
-%%   <<"Integrations">> => list(integration()()),
+%%   <<"Integrations">> => list(integration()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_integrations_response() :: #{binary() => any()}.
@@ -6691,8 +6691,8 @@
 
 %% Example:
 %% p_i_idetection() :: #{
-%%   <<"EntityTypesToDetect">> => list(string()()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"EntityTypesToDetect">> => list(string()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"MaskValue">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OutputColumnName">> => string(),
@@ -6705,7 +6705,7 @@
 %% Example:
 %% aggregate_operation() :: #{
 %%   <<"AggFunc">> => list(any()),
-%%   <<"Column">> => list(string()())
+%%   <<"Column">> => list(string())
 %% }
 -type aggregate_operation() :: #{binary() => any()}.
 
@@ -6736,8 +6736,8 @@
 
 %% Example:
 %% batch_get_crawlers_response() :: #{
-%%   <<"Crawlers">> => list(crawler()()),
-%%   <<"CrawlersNotFound">> => list(string()())
+%%   <<"Crawlers">> => list(crawler()),
+%%   <<"CrawlersNotFound">> => list(string())
 %% }
 -type batch_get_crawlers_response() :: #{binary() => any()}.
 
@@ -6751,23 +6751,23 @@
 %% snowflake_source() :: #{
 %%   <<"Data">> => snowflake_node_data(),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()())
+%%   <<"OutputSchemas">> => list(glue_schema())
 %% }
 -type snowflake_source() :: #{binary() => any()}.
 
 %% Example:
 %% data_quality_result() :: #{
 %%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
-%%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()()),
+%%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
 %%   <<"CompletedOn">> => non_neg_integer(),
 %%   <<"DataSource">> => data_source(),
 %%   <<"EvaluationContext">> => string(),
 %%   <<"JobName">> => string(),
 %%   <<"JobRunId">> => string(),
-%%   <<"Observations">> => list(data_quality_observation()()),
+%%   <<"Observations">> => list(data_quality_observation()),
 %%   <<"ProfileId">> => string(),
 %%   <<"ResultId">> => string(),
-%%   <<"RuleResults">> => list(data_quality_rule_result()()),
+%%   <<"RuleResults">> => list(data_quality_rule_result()),
 %%   <<"RulesetEvaluationRunId">> => string(),
 %%   <<"RulesetName">> => string(),
 %%   <<"Score">> => float(),
@@ -6777,10 +6777,10 @@
 
 %% Example:
 %% drop_null_fields() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NullCheckBoxList">> => null_check_box_list(),
-%%   <<"NullTextList">> => list(null_value_field()())
+%%   <<"NullTextList">> => list(null_value_field())
 %% }
 -type drop_null_fields() :: #{binary() => any()}.
 
@@ -6806,7 +6806,7 @@
 
 %% Example:
 %% get_catalogs_response() :: #{
-%%   <<"CatalogList">> => list(catalog()()),
+%%   <<"CatalogList">> => list(catalog()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_catalogs_response() :: #{binary() => any()}.
@@ -6822,7 +6822,7 @@
 %% Example:
 %% list_crawls_request() :: #{
 %%   <<"CrawlerName">> := string(),
-%%   <<"Filters">> => list(crawls_filter()()),
+%%   <<"Filters">> => list(crawls_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -6870,7 +6870,7 @@
 %% audit_context() :: #{
 %%   <<"AdditionalAuditContext">> => string(),
 %%   <<"AllColumnsRequested">> => boolean(),
-%%   <<"RequestedColumns">> => list(string()())
+%%   <<"RequestedColumns">> => list(string())
 %% }
 -type audit_context() :: #{binary() => any()}.
 
@@ -6954,14 +6954,14 @@
 %% connector_data_target() :: #{
 %%   <<"ConnectionType">> => string(),
 %%   <<"Data">> => map(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type connector_data_target() :: #{binary() => any()}.
 
 %% Example:
 %% property() :: #{
-%%   <<"AllowedValues">> => list(allowed_value()()),
+%%   <<"AllowedValues">> => list(allowed_value()),
 %%   <<"DataOperationScopes">> => list(list(any())()),
 %%   <<"DefaultValue">> => [string()],
 %%   <<"Description">> => string(),
@@ -7054,7 +7054,7 @@
 
 %% Example:
 %% evaluate_data_quality() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Output">> => list(any()),
 %%   <<"PublishingOptions">> => d_q_results_publishing_options(),
@@ -7085,10 +7085,10 @@
 %%   <<"NumberOfNodes">> => integer(),
 %%   <<"NumberOfWorkers">> => integer(),
 %%   <<"PublicKey">> => string(),
-%%   <<"PublicKeys">> => list(string()()),
+%%   <<"PublicKeys">> => list(string()),
 %%   <<"RoleArn">> := string(),
 %%   <<"SecurityConfiguration">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetId">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"WorkerType">> => list(any())
@@ -7116,7 +7116,7 @@
 %% Example:
 %% get_table_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TableVersions">> => list(table_version()())
+%%   <<"TableVersions">> => list(table_version())
 %% }
 -type get_table_versions_response() :: #{binary() => any()}.
 
@@ -7138,7 +7138,7 @@
 
 %% Example:
 %% predicate() :: #{
-%%   <<"Conditions">> => list(condition()()),
+%%   <<"Conditions">> => list(condition()),
 %%   <<"Logical">> => list(any())
 %% }
 -type predicate() :: #{binary() => any()}.
@@ -7175,7 +7175,7 @@
 
 %% Example:
 %% resume_workflow_run_response() :: #{
-%%   <<"NodeIds">> => list(string()()),
+%%   <<"NodeIds">> => list(string()),
 %%   <<"RunId">> => string()
 %% }
 -type resume_workflow_run_response() :: #{binary() => any()}.
@@ -7212,7 +7212,7 @@
 %% Example:
 %% get_unfiltered_partitions_metadata_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UnfilteredPartitions">> => list(unfiltered_partition()())
+%%   <<"UnfilteredPartitions">> => list(unfiltered_partition())
 %% }
 -type get_unfiltered_partitions_metadata_response() :: #{binary() => any()}.
 
@@ -7240,7 +7240,7 @@
 
 %% Example:
 %% batch_get_data_quality_result_request() :: #{
-%%   <<"ResultIds">> := list(string()())
+%%   <<"ResultIds">> := list(string())
 %% }
 -type batch_get_data_quality_result_request() :: #{binary() => any()}.
 
@@ -7257,13 +7257,13 @@
 %% Example:
 %% search_tables_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"Filters">> => list(property_predicate()()),
+%%   <<"Filters">> => list(property_predicate()),
 %%   <<"IncludeStatusDetails">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceShareType">> => list(any()),
 %%   <<"SearchText">> => string(),
-%%   <<"SortCriteria">> => list(sort_criterion()())
+%%   <<"SortCriteria">> => list(sort_criterion())
 %% }
 -type search_tables_request() :: #{binary() => any()}.
 
@@ -7306,7 +7306,7 @@
 %% Example:
 %% get_partitions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Partitions">> => list(partition()())
+%%   <<"Partitions">> => list(partition())
 %% }
 -type get_partitions_response() :: #{binary() => any()}.
 
@@ -7327,7 +7327,7 @@
 
 %% Example:
 %% list_blueprints_response() :: #{
-%%   <<"Blueprints">> => list(string()()),
+%%   <<"Blueprints">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_blueprints_response() :: #{binary() => any()}.
@@ -7399,10 +7399,10 @@
 %%   <<"AdditionalOptions">> => map(),
 %%   <<"Compression">> => list(any()),
 %%   <<"Format">> => list(any()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NumberTargetPartitions">> => string(),
-%%   <<"PartitionKeys">> => list(list(string()())()),
+%%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
 %% }
@@ -7430,8 +7430,8 @@
 
 %% Example:
 %% iceberg_schema() :: #{
-%%   <<"Fields">> => list(iceberg_struct_field()()),
-%%   <<"IdentifierFieldIds">> => list(integer()()),
+%%   <<"Fields">> => list(iceberg_struct_field()),
+%%   <<"IdentifierFieldIds">> => list(integer()),
 %%   <<"SchemaId">> => integer(),
 %%   <<"Type">> => list(any())
 %% }
@@ -7445,7 +7445,7 @@
 
 %% Example:
 %% get_unfiltered_partition_metadata_response() :: #{
-%%   <<"AuthorizedColumns">> => list(string()()),
+%%   <<"AuthorizedColumns">> => list(string()),
 %%   <<"IsRegisteredWithLakeFormation">> => boolean(),
 %%   <<"Partition">> => partition()
 %% }
@@ -7468,14 +7468,14 @@
 
 %% Example:
 %% list_dev_endpoints_response() :: #{
-%%   <<"DevEndpointNames">> => list(string()()),
+%%   <<"DevEndpointNames">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dev_endpoints_response() :: #{binary() => any()}.
 
 %% Example:
 %% database_input() :: #{
-%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()()),
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
 %%   <<"Description">> => string(),
 %%   <<"FederatedDatabase">> => federated_database(),
 %%   <<"LocationUri">> => string(),
@@ -7509,10 +7509,10 @@
 
 %% Example:
 %% spark_s_q_l() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
-%%   <<"SqlAliases">> => list(sql_alias()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"SqlAliases">> => list(sql_alias()),
 %%   <<"SqlQuery">> => string()
 %% }
 -type spark_s_q_l() :: #{binary() => any()}.
@@ -7551,7 +7551,7 @@
 
 %% Example:
 %% batch_delete_table_version_response() :: #{
-%%   <<"Errors">> => list(table_version_error()())
+%%   <<"Errors">> => list(table_version_error())
 %% }
 -type batch_delete_table_version_response() :: #{binary() => any()}.
 
@@ -7588,9 +7588,9 @@
 
 %% Example:
 %% drop_fields() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"Paths">> => list(list(string()())())
+%%   <<"Paths">> => list(list(string())())
 %% }
 -type drop_fields() :: #{binary() => any()}.
 
@@ -7609,7 +7609,7 @@
 
 %% Example:
 %% get_crawler_metrics_response() :: #{
-%%   <<"CrawlerMetricsList">> => list(crawler_metrics()()),
+%%   <<"CrawlerMetricsList">> => list(crawler_metrics()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_crawler_metrics_response() :: #{binary() => any()}.
@@ -7645,8 +7645,8 @@
 
 %% Example:
 %% batch_stop_job_run_response() :: #{
-%%   <<"Errors">> => list(batch_stop_job_run_error()()),
-%%   <<"SuccessfulSubmissions">> => list(batch_stop_job_run_successful_submission()())
+%%   <<"Errors">> => list(batch_stop_job_run_error()),
+%%   <<"SuccessfulSubmissions">> => list(batch_stop_job_run_successful_submission())
 %% }
 -type batch_stop_job_run_response() :: #{binary() => any()}.
 
@@ -7736,7 +7736,7 @@
 
 %% Example:
 %% update_column_statistics_for_table_response() :: #{
-%%   <<"Errors">> => list(column_statistics_error()())
+%%   <<"Errors">> => list(column_statistics_error())
 %% }
 -type update_column_statistics_for_table_response() :: #{binary() => any()}.
 
@@ -7754,9 +7754,9 @@
 
 %% Example:
 %% mapping() :: #{
-%%   <<"Children">> => list(mapping()()),
+%%   <<"Children">> => list(mapping()),
 %%   <<"Dropped">> => boolean(),
-%%   <<"FromPath">> => list(string()()),
+%%   <<"FromPath">> => list(string()),
 %%   <<"FromType">> => string(),
 %%   <<"ToKey">> => string(),
 %%   <<"ToType">> => string()
@@ -7765,8 +7765,8 @@
 
 %% Example:
 %% drop_duplicates() :: #{
-%%   <<"Columns">> => list(list(string()())()),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Columns">> => list(list(string())()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type drop_duplicates() :: #{binary() => any()}.
@@ -7808,7 +7808,7 @@
 
 %% Example:
 %% batch_get_table_optimizer_request() :: #{
-%%   <<"Entries">> := list(batch_get_table_optimizer_entry()())
+%%   <<"Entries">> := list(batch_get_table_optimizer_entry())
 %% }
 -type batch_get_table_optimizer_request() :: #{binary() => any()}.
 
@@ -7821,7 +7821,7 @@
 %% Example:
 %% postgre_s_q_l_catalog_target() :: #{
 %%   <<"Database">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Table">> => string()
 %% }
@@ -7830,7 +7830,7 @@
 %% Example:
 %% snowflake_target() :: #{
 %%   <<"Data">> => snowflake_node_data(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type snowflake_target() :: #{binary() => any()}.
@@ -7851,7 +7851,7 @@
 
 %% Example:
 %% list_entities_response() :: #{
-%%   <<"Entities">> => list(entity()()),
+%%   <<"Entities">> => list(entity()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_entities_response() :: #{binary() => any()}.
@@ -7865,7 +7865,7 @@
 
 %% Example:
 %% list_crawlers_response() :: #{
-%%   <<"CrawlerNames">> => list(string()()),
+%%   <<"CrawlerNames">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_crawlers_response() :: #{binary() => any()}.
@@ -7927,9 +7927,9 @@
 
 %% Example:
 %% split_fields() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"Paths">> => list(list(string()())())
+%%   <<"Paths">> => list(list(string())())
 %% }
 -type split_fields() :: #{binary() => any()}.
 
@@ -7943,7 +7943,7 @@
 %% batch_create_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionInputList">> := list(partition_input()()),
+%%   <<"PartitionInputList">> := list(partition_input()),
 %%   <<"TableName">> := string()
 %% }
 -type batch_create_partition_request() :: #{binary() => any()}.
@@ -7955,7 +7955,7 @@
 %%   <<"ErrorValue">> => string(),
 %%   <<"ExecutionCount">> => integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"Traceback">> => list(string()())
+%%   <<"Traceback">> => list(string())
 %% }
 -type statement_output() :: #{binary() => any()}.
 
@@ -7963,7 +7963,7 @@
 %% get_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"PartitionValues">> := list(string()()),
+%%   <<"PartitionValues">> := list(string()),
 %%   <<"TableName">> := string()
 %% }
 -type get_partition_request() :: #{binary() => any()}.
@@ -7997,15 +7997,15 @@
 %% s3_excel_source() :: #{
 %%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
 %%   <<"CompressionType">> => list(any()),
-%%   <<"Exclusions">> => list(string()()),
+%%   <<"Exclusions">> => list(string()),
 %%   <<"GroupFiles">> => string(),
 %%   <<"GroupSize">> => string(),
 %%   <<"MaxBand">> => integer(),
 %%   <<"MaxFilesInBand">> => integer(),
 %%   <<"Name">> => string(),
 %%   <<"NumberRows">> => float(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
-%%   <<"Paths">> => list(string()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string()),
 %%   <<"Recurse">> => boolean(),
 %%   <<"SkipFooter">> => integer()
 %% }
@@ -8035,7 +8035,7 @@
 
 %% Example:
 %% glue_schema() :: #{
-%%   <<"Columns">> => list(glue_studio_schema_column()())
+%%   <<"Columns">> => list(glue_studio_schema_column())
 %% }
 -type glue_schema() :: #{binary() => any()}.
 
@@ -8077,7 +8077,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => string(),
 %%   <<"Parameters">> => map(),
-%%   <<"PartitionKeys">> => list(column()()),
+%%   <<"PartitionKeys">> => list(column()),
 %%   <<"Retention">> => integer(),
 %%   <<"Status">> => table_status(),
 %%   <<"StorageDescriptor">> => storage_descriptor(),
@@ -8106,15 +8106,15 @@
 
 %% Example:
 %% get_column_statistics_for_table_response() :: #{
-%%   <<"ColumnStatisticsList">> => list(column_statistics()()),
-%%   <<"Errors">> => list(column_error()())
+%%   <<"ColumnStatisticsList">> => list(column_statistics()),
+%%   <<"Errors">> => list(column_error())
 %% }
 -type get_column_statistics_for_table_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_workflows_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Workflows">> => list(string()())
+%%   <<"Workflows">> => list(string())
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
 
@@ -8148,7 +8148,7 @@
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"PartitionInput">> := partition_input(),
-%%   <<"PartitionValueList">> := list(string()()),
+%%   <<"PartitionValueList">> := list(string()),
 %%   <<"TableName">> := string()
 %% }
 -type update_partition_request() :: #{binary() => any()}.
@@ -8156,7 +8156,7 @@
 %% Example:
 %% list_schemas_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(schema_list_item()())
+%%   <<"Schemas">> => list(schema_list_item())
 %% }
 -type list_schemas_response() :: #{binary() => any()}.
 
@@ -8171,7 +8171,7 @@
 %%   <<"AdditionalOptions">> => s3_direct_source_additional_options(),
 %%   <<"CompressionType">> => list(any()),
 %%   <<"Escaper">> => string(),
-%%   <<"Exclusions">> => list(string()()),
+%%   <<"Exclusions">> => list(string()),
 %%   <<"GroupFiles">> => string(),
 %%   <<"GroupSize">> => string(),
 %%   <<"MaxBand">> => integer(),
@@ -8179,8 +8179,8 @@
 %%   <<"Multiline">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"OptimizePerformance">> => boolean(),
-%%   <<"OutputSchemas">> => list(glue_schema()()),
-%%   <<"Paths">> => list(string()()),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Paths">> => list(string()),
 %%   <<"QuoteChar">> => list(any()),
 %%   <<"Recurse">> => boolean(),
 %%   <<"Separator">> => list(any()),
@@ -8229,7 +8229,7 @@
 
 %% Example:
 %% crawler() :: #{
-%%   <<"Classifiers">> => list(string()()),
+%%   <<"Classifiers">> => list(string()),
 %%   <<"Configuration">> => string(),
 %%   <<"CrawlElapsedTime">> => float(),
 %%   <<"CrawlerSecurityConfiguration">> => string(),
@@ -8255,7 +8255,7 @@
 %% Example:
 %% amazon_redshift_target() :: #{
 %%   <<"Data">> => amazon_redshift_node_data(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type amazon_redshift_target() :: #{binary() => any()}.
@@ -8278,8 +8278,8 @@
 
 %% Example:
 %% batch_get_table_optimizer_response() :: #{
-%%   <<"Failures">> => list(batch_get_table_optimizer_error()()),
-%%   <<"TableOptimizers">> => list(batch_table_optimizer()())
+%%   <<"Failures">> => list(batch_get_table_optimizer_error()),
+%%   <<"TableOptimizers">> => list(batch_table_optimizer())
 %% }
 -type batch_get_table_optimizer_response() :: #{binary() => any()}.
 
@@ -8342,7 +8342,7 @@
 %% Example:
 %% column_statistics_task_settings() :: #{
 %%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()()),
+%%   <<"ColumnNameList">> => list(string()),
 %%   <<"DatabaseName">> => string(),
 %%   <<"LastExecutionAttempt">> => execution_attempt(),
 %%   <<"Role">> => string(),
@@ -8390,19 +8390,19 @@
 %% Example:
 %% iceberg_target() :: #{
 %%   <<"ConnectionName">> => string(),
-%%   <<"Exclusions">> => list(string()()),
+%%   <<"Exclusions">> => list(string()),
 %%   <<"MaximumTraversalDepth">> => integer(),
-%%   <<"Paths">> => list(string()())
+%%   <<"Paths">> => list(string())
 %% }
 -type iceberg_target() :: #{binary() => any()}.
 
 %% Example:
 %% update_dev_endpoint_request() :: #{
 %%   <<"AddArguments">> => map(),
-%%   <<"AddPublicKeys">> => list(string()()),
+%%   <<"AddPublicKeys">> => list(string()),
 %%   <<"CustomLibraries">> => dev_endpoint_custom_libraries(),
-%%   <<"DeleteArguments">> => list(string()()),
-%%   <<"DeletePublicKeys">> => list(string()()),
+%%   <<"DeleteArguments">> => list(string()),
+%%   <<"DeletePublicKeys">> => list(string()),
 %%   <<"EndpointName">> := string(),
 %%   <<"PublicKey">> => string(),
 %%   <<"UpdateEtlLibraries">> => boolean()
@@ -8420,7 +8420,7 @@
 %% Example:
 %% start_column_statistics_task_run_request() :: #{
 %%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()()),
+%%   <<"ColumnNameList">> => list(string()),
 %%   <<"DatabaseName">> := string(),
 %%   <<"Role">> := string(),
 %%   <<"SampleSize">> => float(),
@@ -8431,7 +8431,7 @@
 
 %% Example:
 %% custom_entity_type() :: #{
-%%   <<"ContextWords">> => list(string()()),
+%%   <<"ContextWords">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"RegexString">> => string()
 %% }
@@ -8466,9 +8466,9 @@
 
 %% Example:
 %% merge() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"PrimaryKeys">> => list(list(string()())()),
+%%   <<"PrimaryKeys">> => list(list(string())()),
 %%   <<"Source">> => string()
 %% }
 -type merge() :: #{binary() => any()}.
@@ -8490,15 +8490,15 @@
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string(),
-%%   <<"VersionIds">> := list(string()())
+%%   <<"VersionIds">> := list(string())
 %% }
 -type batch_delete_table_version_request() :: #{binary() => any()}.
 
 %% Example:
 %% skewed_info() :: #{
-%%   <<"SkewedColumnNames">> => list(string()()),
+%%   <<"SkewedColumnNames">> => list(string()),
 %%   <<"SkewedColumnValueLocationMaps">> => map(),
-%%   <<"SkewedColumnValues">> => list(string()())
+%%   <<"SkewedColumnValues">> => list(string())
 %% }
 -type skewed_info() :: #{binary() => any()}.
 
@@ -8518,7 +8518,7 @@
 
 %% Example:
 %% union() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"UnionType">> => list(any())
 %% }
@@ -8526,7 +8526,7 @@
 
 %% Example:
 %% get_crawlers_response() :: #{
-%%   <<"Crawlers">> => list(crawler()()),
+%%   <<"Crawlers">> => list(crawler()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_crawlers_response() :: #{binary() => any()}.
@@ -8593,14 +8593,14 @@
 %%   <<"DatabaseName">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"TableName">> => string(),
-%%   <<"TableOptimizerRuns">> => list(table_optimizer_run()())
+%%   <<"TableOptimizerRuns">> => list(table_optimizer_run())
 %% }
 -type list_table_optimizer_runs_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_column_statistics_task_settings_request() :: #{
 %%   <<"CatalogID">> => string(),
-%%   <<"ColumnNameList">> => list(string()()),
+%%   <<"ColumnNameList">> => list(string()),
 %%   <<"DatabaseName">> := string(),
 %%   <<"Role">> => string(),
 %%   <<"SampleSize">> => float(),
@@ -8635,7 +8635,7 @@
 
 %% Example:
 %% spigot() :: #{
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Path">> => string(),
 %%   <<"Prob">> => float(),
@@ -8650,9 +8650,9 @@
 %%   <<"ConnectionTable">> => string(),
 %%   <<"ConnectionType">> => string(),
 %%   <<"ConnectorName">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"OutputSchemas">> => list(glue_schema()())
+%%   <<"OutputSchemas">> => list(glue_schema())
 %% }
 -type j_db_c_connector_target() :: #{binary() => any()}.
 
@@ -8720,7 +8720,7 @@
 %% Example:
 %% update_column_statistics_for_table_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"ColumnStatisticsList">> := list(column_statistics()()),
+%%   <<"ColumnStatisticsList">> := list(column_statistics()),
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string()
 %% }

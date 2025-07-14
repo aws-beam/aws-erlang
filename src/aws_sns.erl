@@ -150,7 +150,7 @@
 %% Example:
 %% list_origination_numbers_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number_information()())
+%%   <<"PhoneNumbers">> => list(phone_number_information())
 %% }
 -type list_origination_numbers_result() :: #{binary() => any()}.
 
@@ -168,7 +168,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -189,7 +189,7 @@
 %%   <<"Attributes">> => map(),
 %%   <<"DataProtectionPolicy">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_topic_input() :: #{binary() => any()}.
 
@@ -269,7 +269,7 @@
 %% Example:
 %% list_subscriptions_by_topic_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Subscriptions">> => list(subscription()())
+%%   <<"Subscriptions">> => list(subscription())
 %% }
 -type list_subscriptions_by_topic_response() :: #{binary() => any()}.
 
@@ -296,7 +296,7 @@
 %% Example:
 %% list_phone_numbers_opted_out_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"phoneNumbers">> => list(string()())
+%%   <<"phoneNumbers">> => list(string())
 %% }
 -type list_phone_numbers_opted_out_response() :: #{binary() => any()}.
 
@@ -354,14 +354,14 @@
 %% Example:
 %% list_sms_sandbox_phone_numbers_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PhoneNumbers">> => list(sms_sandbox_phone_number()())
+%%   <<"PhoneNumbers">> => list(sms_sandbox_phone_number())
 %% }
 -type list_sms_sandbox_phone_numbers_result() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -389,8 +389,8 @@
 
 %% Example:
 %% publish_batch_response() :: #{
-%%   <<"Failed">> => list(batch_result_error_entry()()),
-%%   <<"Successful">> => list(publish_batch_result_entry()())
+%%   <<"Failed">> => list(batch_result_error_entry()),
+%%   <<"Successful">> => list(publish_batch_result_entry())
 %% }
 -type publish_batch_response() :: #{binary() => any()}.
 
@@ -541,20 +541,20 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_sms_attributes_input() :: #{
-%%   <<"attributes">> => list(string()())
+%%   <<"attributes">> => list(string())
 %% }
 -type get_sms_attributes_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_topics_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Topics">> => list(topic()())
+%%   <<"Topics">> => list(topic())
 %% }
 -type list_topics_response() :: #{binary() => any()}.
 
@@ -644,7 +644,7 @@
 %% Example:
 %% list_platform_applications_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PlatformApplications">> => list(platform_application()())
+%%   <<"PlatformApplications">> => list(platform_application())
 %% }
 -type list_platform_applications_response() :: #{binary() => any()}.
 
@@ -705,7 +705,7 @@
 %% Example:
 %% list_subscriptions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Subscriptions">> => list(subscription()())
+%%   <<"Subscriptions">> => list(subscription())
 %% }
 -type list_subscriptions_response() :: #{binary() => any()}.
 
@@ -736,8 +736,8 @@
 
 %% Example:
 %% add_permission_input() :: #{
-%%   <<"AWSAccountId">> := list(string()()),
-%%   <<"ActionName">> := list(string()()),
+%%   <<"AWSAccountId">> := list(string()),
+%%   <<"ActionName">> := list(string()),
 %%   <<"Label">> := string(),
 %%   <<"TopicArn">> := string()
 %% }
@@ -791,7 +791,7 @@
 
 %% Example:
 %% list_endpoints_by_platform_application_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()()),
+%%   <<"Endpoints">> => list(endpoint()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_endpoints_by_platform_application_response() :: #{binary() => any()}.
@@ -890,7 +890,7 @@
 
 %% Example:
 %% publish_batch_input() :: #{
-%%   <<"PublishBatchRequestEntries">> := list(publish_batch_request_entry()()),
+%%   <<"PublishBatchRequestEntries">> := list(publish_batch_request_entry()),
 %%   <<"TopicArn">> := string()
 %% }
 -type publish_batch_input() :: #{binary() => any()}.

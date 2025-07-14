@@ -56,7 +56,7 @@
 
 %% Example:
 %% batch_reset_alarm_response() :: #{
-%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry())
 %% }
 -type batch_reset_alarm_response() :: #{binary() => any()}.
 
@@ -73,15 +73,15 @@
 %% Example:
 %% detector_state() :: #{
 %%   <<"stateName">> => string(),
-%%   <<"timers">> => list(timer()()),
-%%   <<"variables">> => list(variable()())
+%%   <<"timers">> => list(timer()),
+%%   <<"variables">> => list(variable())
 %% }
 -type detector_state() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_snooze_alarm_request() :: #{
-%%   <<"snoozeActionRequests">> := list(snooze_alarm_action_request()())
+%%   <<"snoozeActionRequests">> := list(snooze_alarm_action_request())
 %% }
 -type batch_snooze_alarm_request() :: #{binary() => any()}.
 
@@ -143,7 +143,7 @@
 
 %% Example:
 %% batch_acknowledge_alarm_response() :: #{
-%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry())
 %% }
 -type batch_acknowledge_alarm_response() :: #{binary() => any()}.
 
@@ -160,7 +160,7 @@
 
 %% Example:
 %% batch_put_message_request() :: #{
-%%   <<"messages">> := list(message()())
+%%   <<"messages">> := list(message())
 %% }
 -type batch_put_message_request() :: #{binary() => any()}.
 
@@ -174,7 +174,7 @@
 
 %% Example:
 %% batch_delete_detector_response() :: #{
-%%   <<"batchDeleteDetectorErrorEntries">> => list(batch_delete_detector_error_entry()())
+%%   <<"batchDeleteDetectorErrorEntries">> => list(batch_delete_detector_error_entry())
 %% }
 -type batch_delete_detector_response() :: #{binary() => any()}.
 
@@ -209,7 +209,7 @@
 
 %% Example:
 %% batch_acknowledge_alarm_request() :: #{
-%%   <<"acknowledgeActionRequests">> := list(acknowledge_alarm_action_request()())
+%%   <<"acknowledgeActionRequests">> := list(acknowledge_alarm_action_request())
 %% }
 -type batch_acknowledge_alarm_request() :: #{binary() => any()}.
 
@@ -255,14 +255,14 @@
 
 %% Example:
 %% batch_update_detector_request() :: #{
-%%   <<"detectors">> := list(update_detector_request()())
+%%   <<"detectors">> := list(update_detector_request())
 %% }
 -type batch_update_detector_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_snooze_alarm_response() :: #{
-%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry())
 %% }
 -type batch_snooze_alarm_response() :: #{binary() => any()}.
 
@@ -289,8 +289,8 @@
 %% Example:
 %% detector_state_definition() :: #{
 %%   <<"stateName">> => string(),
-%%   <<"timers">> => list(timer_definition()()),
-%%   <<"variables">> => list(variable_definition()())
+%%   <<"timers">> => list(timer_definition()),
+%%   <<"variables">> => list(variable_definition())
 %% }
 -type detector_state_definition() :: #{binary() => any()}.
 
@@ -333,14 +333,14 @@
 
 %% Example:
 %% batch_disable_alarm_request() :: #{
-%%   <<"disableActionRequests">> := list(disable_alarm_action_request()())
+%%   <<"disableActionRequests">> := list(disable_alarm_action_request())
 %% }
 -type batch_disable_alarm_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_alarms_response() :: #{
-%%   <<"alarmSummaries">> => list(alarm_summary()()),
+%%   <<"alarmSummaries">> => list(alarm_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_alarms_response() :: #{binary() => any()}.
@@ -362,14 +362,14 @@
 
 %% Example:
 %% batch_enable_alarm_request() :: #{
-%%   <<"enableActionRequests">> := list(enable_alarm_action_request()())
+%%   <<"enableActionRequests">> := list(enable_alarm_action_request())
 %% }
 -type batch_enable_alarm_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_reset_alarm_request() :: #{
-%%   <<"resetActionRequests">> := list(reset_alarm_action_request()())
+%%   <<"resetActionRequests">> := list(reset_alarm_action_request())
 %% }
 -type batch_reset_alarm_request() :: #{binary() => any()}.
 
@@ -383,14 +383,14 @@
 
 %% Example:
 %% batch_delete_detector_request() :: #{
-%%   <<"detectors">> := list(delete_detector_request()())
+%%   <<"detectors">> := list(delete_detector_request())
 %% }
 -type batch_delete_detector_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_detectors_response() :: #{
-%%   <<"detectorSummaries">> => list(detector_summary()()),
+%%   <<"detectorSummaries">> => list(detector_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_detectors_response() :: #{binary() => any()}.
@@ -473,14 +473,14 @@
 
 %% Example:
 %% batch_update_detector_response() :: #{
-%%   <<"batchUpdateDetectorErrorEntries">> => list(batch_update_detector_error_entry()())
+%%   <<"batchUpdateDetectorErrorEntries">> => list(batch_update_detector_error_entry())
 %% }
 -type batch_update_detector_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_enable_alarm_response() :: #{
-%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry())
 %% }
 -type batch_enable_alarm_response() :: #{binary() => any()}.
 
@@ -506,7 +506,7 @@
 
 %% Example:
 %% batch_put_message_response() :: #{
-%%   <<"BatchPutMessageErrorEntries">> => list(batch_put_message_error_entry()())
+%%   <<"BatchPutMessageErrorEntries">> => list(batch_put_message_error_entry())
 %% }
 -type batch_put_message_response() :: #{binary() => any()}.
 
@@ -539,7 +539,7 @@
 
 %% Example:
 %% batch_disable_alarm_response() :: #{
-%%   <<"errorEntries">> => list(batch_alarm_action_error_entry()())
+%%   <<"errorEntries">> => list(batch_alarm_action_error_entry())
 %% }
 -type batch_disable_alarm_response() :: #{binary() => any()}.
 

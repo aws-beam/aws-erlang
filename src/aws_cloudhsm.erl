@@ -117,7 +117,7 @@
 %% get_config_request() :: #{
 %%   <<"ClientArn">> := string(),
 %%   <<"ClientVersion">> := list(any()),
-%%   <<"HapgList">> := list(string()())
+%%   <<"HapgList">> := list(string())
 %% }
 -type get_config_request() :: #{binary() => any()}.
 
@@ -156,7 +156,7 @@
 %% Example:
 %% add_tags_to_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagList">> := list(tag()())
+%%   <<"TagList">> := list(tag())
 %% }
 -type add_tags_to_resource_request() :: #{binary() => any()}.
 
@@ -168,7 +168,7 @@
 %%   <<"HsmArn">> => string(),
 %%   <<"HsmType">> => string(),
 %%   <<"IamRoleArn">> => string(),
-%%   <<"Partitions">> => list(string()()),
+%%   <<"Partitions">> => list(string()),
 %%   <<"SerialNumber">> => string(),
 %%   <<"ServerCertLastUpdated">> => string(),
 %%   <<"ServerCertUri">> => string(),
@@ -230,7 +230,7 @@
 %% modify_hapg_request() :: #{
 %%   <<"HapgArn">> := string(),
 %%   <<"Label">> => string(),
-%%   <<"PartitionSerialList">> => list(string()())
+%%   <<"PartitionSerialList">> => list(string())
 %% }
 -type modify_hapg_request() :: #{binary() => any()}.
 
@@ -269,14 +269,14 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% remove_tags_from_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeyList">> := list(string()())
+%%   <<"TagKeyList">> := list(string())
 %% }
 -type remove_tags_from_resource_request() :: #{binary() => any()}.
 
@@ -295,7 +295,7 @@
 
 %% Example:
 %% list_hapgs_response() :: #{
-%%   <<"HapgList">> => list(string()()),
+%%   <<"HapgList">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_hapgs_response() :: #{binary() => any()}.
@@ -322,7 +322,7 @@
 
 %% Example:
 %% list_luna_clients_response() :: #{
-%%   <<"ClientList">> => list(string()()),
+%%   <<"ClientList">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_luna_clients_response() :: #{binary() => any()}.
@@ -335,7 +335,7 @@
 
 %% Example:
 %% list_available_zones_response() :: #{
-%%   <<"AZList">> => list(string()())
+%%   <<"AZList">> => list(string())
 %% }
 -type list_available_zones_response() :: #{binary() => any()}.
 
@@ -347,7 +347,7 @@
 
 %% Example:
 %% list_hsms_response() :: #{
-%%   <<"HsmList">> => list(string()()),
+%%   <<"HsmList">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_hsms_response() :: #{binary() => any()}.
@@ -369,12 +369,12 @@
 %% describe_hapg_response() :: #{
 %%   <<"HapgArn">> => string(),
 %%   <<"HapgSerial">> => string(),
-%%   <<"HsmsLastActionFailed">> => list(string()()),
-%%   <<"HsmsPendingDeletion">> => list(string()()),
-%%   <<"HsmsPendingRegistration">> => list(string()()),
+%%   <<"HsmsLastActionFailed">> => list(string()),
+%%   <<"HsmsPendingDeletion">> => list(string()),
+%%   <<"HsmsPendingRegistration">> => list(string()),
 %%   <<"Label">> => string(),
 %%   <<"LastModifiedTimestamp">> => string(),
-%%   <<"PartitionSerialList">> => list(string()()),
+%%   <<"PartitionSerialList">> => list(string()),
 %%   <<"State">> => list(any())
 %% }
 -type describe_hapg_response() :: #{binary() => any()}.

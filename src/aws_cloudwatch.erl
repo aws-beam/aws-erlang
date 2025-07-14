@@ -112,7 +112,7 @@
 
 %% Example:
 %% enable_insight_rules_input() :: #{
-%%   <<"RuleNames">> := list(string()())
+%%   <<"RuleNames">> := list(string())
 %% }
 -type enable_insight_rules_input() :: #{binary() => any()}.
 
@@ -124,7 +124,7 @@
 
 %% Example:
 %% metric_stream_filter() :: #{
-%%   <<"MetricNames">> => list(string()()),
+%%   <<"MetricNames">> => list(string()),
 %%   <<"Namespace">> => string()
 %% }
 -type metric_stream_filter() :: #{binary() => any()}.
@@ -145,14 +145,14 @@
 %% Example:
 %% managed_rule() :: #{
 %%   <<"ResourceARN">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateName">> => string()
 %% }
 -type managed_rule() :: #{binary() => any()}.
 
 %% Example:
 %% start_metric_streams_input() :: #{
-%%   <<"Names">> := list(string()())
+%%   <<"Names">> := list(string())
 %% }
 -type start_metric_streams_input() :: #{binary() => any()}.
 
@@ -174,7 +174,7 @@
 %%   <<"RuleDefinition">> := string(),
 %%   <<"RuleName">> := string(),
 %%   <<"RuleState">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_insight_rule_input() :: #{binary() => any()}.
 
@@ -184,19 +184,19 @@
 %%   <<"ActionsSuppressor">> => string(),
 %%   <<"ActionsSuppressorExtensionPeriod">> => integer(),
 %%   <<"ActionsSuppressorWaitPeriod">> => integer(),
-%%   <<"AlarmActions">> => list(string()()),
+%%   <<"AlarmActions">> => list(string()),
 %%   <<"AlarmDescription">> => string(),
 %%   <<"AlarmName">> := string(),
 %%   <<"AlarmRule">> := string(),
-%%   <<"InsufficientDataActions">> => list(string()()),
-%%   <<"OKActions">> => list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"InsufficientDataActions">> => list(string()),
+%%   <<"OKActions">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_composite_alarm_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_anomaly_detector_input() :: #{
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricMathAnomalyDetector">> => metric_math_anomaly_detector(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
@@ -210,9 +210,9 @@
 %%   <<"AggregateValue">> => float(),
 %%   <<"AggregationStatistic">> => string(),
 %%   <<"ApproximateUniqueCount">> => float(),
-%%   <<"Contributors">> => list(insight_rule_contributor()()),
-%%   <<"KeyLabels">> => list(string()()),
-%%   <<"MetricDatapoints">> => list(insight_rule_metric_datapoint()())
+%%   <<"Contributors">> => list(insight_rule_contributor()),
+%%   <<"KeyLabels">> => list(string()),
+%%   <<"MetricDatapoints">> => list(insight_rule_metric_datapoint())
 %% }
 -type get_insight_rule_report_output() :: #{binary() => any()}.
 
@@ -236,13 +236,13 @@
 
 %% Example:
 %% delete_dashboards_input() :: #{
-%%   <<"DashboardNames">> := list(string()())
+%%   <<"DashboardNames">> := list(string())
 %% }
 -type delete_dashboards_input() :: #{binary() => any()}.
 
 %% Example:
 %% enable_insight_rules_output() :: #{
-%%   <<"Failures">> => list(partial_failure()())
+%%   <<"Failures">> => list(partial_failure())
 %% }
 -type enable_insight_rules_output() :: #{binary() => any()}.
 
@@ -250,7 +250,7 @@
 %% get_insight_rule_report_input() :: #{
 %%   <<"EndTime">> := non_neg_integer(),
 %%   <<"MaxContributorCount">> => integer(),
-%%   <<"Metrics">> => list(string()()),
+%%   <<"Metrics">> => list(string()),
 %%   <<"OrderBy">> => string(),
 %%   <<"Period">> := integer(),
 %%   <<"RuleName">> := string(),
@@ -260,7 +260,7 @@
 
 %% Example:
 %% metric() :: #{
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string()
 %% }
@@ -268,7 +268,7 @@
 
 %% Example:
 %% anomaly_detector_configuration() :: #{
-%%   <<"ExcludedTimeRanges">> => list(range()()),
+%%   <<"ExcludedTimeRanges">> => list(range()),
 %%   <<"MetricTimezone">> => string()
 %% }
 -type anomaly_detector_configuration() :: #{binary() => any()}.
@@ -293,7 +293,7 @@
 
 %% Example:
 %% disable_alarm_actions_input() :: #{
-%%   <<"AlarmNames">> := list(string()())
+%%   <<"AlarmNames">> := list(string())
 %% }
 -type disable_alarm_actions_input() :: #{binary() => any()}.
 
@@ -305,14 +305,14 @@
 
 %% Example:
 %% list_managed_insight_rules_output() :: #{
-%%   <<"ManagedRules">> => list(managed_rule_description()()),
+%%   <<"ManagedRules">> => list(managed_rule_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_managed_insight_rules_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_metrics_input() :: #{
-%%   <<"Dimensions">> => list(dimension_filter()()),
+%%   <<"Dimensions">> => list(dimension_filter()),
 %%   <<"IncludeLinkedAccounts">> => boolean(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
@@ -356,20 +356,20 @@
 
 %% Example:
 %% metric_stream_statistics_configuration() :: #{
-%%   <<"AdditionalStatistics">> => list(string()()),
-%%   <<"IncludeMetrics">> => list(metric_stream_statistics_metric()())
+%%   <<"AdditionalStatistics">> => list(string()),
+%%   <<"IncludeMetrics">> => list(metric_stream_statistics_metric())
 %% }
 -type metric_stream_statistics_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% put_managed_insight_rules_input() :: #{
-%%   <<"ManagedRules">> := list(managed_rule()())
+%%   <<"ManagedRules">> := list(managed_rule())
 %% }
 -type put_managed_insight_rules_input() :: #{binary() => any()}.
 
 %% Example:
 %% put_managed_insight_rules_output() :: #{
-%%   <<"Failures">> => list(partial_failure()())
+%%   <<"Failures">> => list(partial_failure())
 %% }
 -type put_managed_insight_rules_output() :: #{binary() => any()}.
 
@@ -382,7 +382,7 @@
 
 %% Example:
 %% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -390,7 +390,7 @@
 %% describe_alarms_input() :: #{
 %%   <<"ActionPrefix">> => string(),
 %%   <<"AlarmNamePrefix">> => string(),
-%%   <<"AlarmNames">> => list(string()()),
+%%   <<"AlarmNames">> => list(string()),
 %%   <<"AlarmTypes">> => list(list(any())()),
 %%   <<"ChildrenOfAlarmName">> => string(),
 %%   <<"MaxRecords">> => integer(),
@@ -402,8 +402,8 @@
 
 %% Example:
 %% describe_alarms_output() :: #{
-%%   <<"CompositeAlarms">> => list(composite_alarm()()),
-%%   <<"MetricAlarms">> => list(metric_alarm()()),
+%%   <<"CompositeAlarms">> => list(composite_alarm()),
+%%   <<"MetricAlarms">> => list(metric_alarm()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_alarms_output() :: #{binary() => any()}.
@@ -436,7 +436,7 @@
 %% Example:
 %% put_anomaly_detector_input() :: #{
 %%   <<"Configuration">> => anomaly_detector_configuration(),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricCharacteristics">> => metric_characteristics(),
 %%   <<"MetricMathAnomalyDetector">> => metric_math_anomaly_detector(),
 %%   <<"MetricName">> => string(),
@@ -448,7 +448,7 @@
 
 %% Example:
 %% disable_insight_rules_output() :: #{
-%%   <<"Failures">> => list(partial_failure()())
+%%   <<"Failures">> => list(partial_failure())
 %% }
 -type disable_insight_rules_output() :: #{binary() => any()}.
 
@@ -474,7 +474,7 @@
 
 %% Example:
 %% dashboard_invalid_input_error() :: #{
-%%   <<"dashboardValidationMessages">> => list(dashboard_validation_message()()),
+%%   <<"dashboardValidationMessages">> => list(dashboard_validation_message()),
 %%   <<"message">> => string()
 %% }
 -type dashboard_invalid_input_error() :: #{binary() => any()}.
@@ -490,21 +490,21 @@
 
 %% Example:
 %% disable_insight_rules_input() :: #{
-%%   <<"RuleNames">> := list(string()())
+%%   <<"RuleNames">> := list(string())
 %% }
 -type disable_insight_rules_input() :: #{binary() => any()}.
 
 %% Example:
 %% metric_datum() :: #{
-%%   <<"Counts">> => list(float()()),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Counts">> => list(float()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricName">> => string(),
 %%   <<"StatisticValues">> => statistic_set(),
 %%   <<"StorageResolution">> => integer(),
 %%   <<"Timestamp">> => non_neg_integer(),
 %%   <<"Unit">> => list(any()),
 %%   <<"Value">> => float(),
-%%   <<"Values">> => list(float()())
+%%   <<"Values">> => list(float())
 %% }
 -type metric_datum() :: #{binary() => any()}.
 
@@ -525,23 +525,23 @@
 %% Example:
 %% put_metric_alarm_input() :: #{
 %%   <<"ActionsEnabled">> => boolean(),
-%%   <<"AlarmActions">> => list(string()()),
+%%   <<"AlarmActions">> => list(string()),
 %%   <<"AlarmDescription">> => string(),
 %%   <<"AlarmName">> := string(),
 %%   <<"ComparisonOperator">> := list(any()),
 %%   <<"DatapointsToAlarm">> => integer(),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"EvaluateLowSampleCountPercentile">> => string(),
 %%   <<"EvaluationPeriods">> := integer(),
 %%   <<"ExtendedStatistic">> => string(),
-%%   <<"InsufficientDataActions">> => list(string()()),
+%%   <<"InsufficientDataActions">> => list(string()),
 %%   <<"MetricName">> => string(),
-%%   <<"Metrics">> => list(metric_data_query()()),
+%%   <<"Metrics">> => list(metric_data_query()),
 %%   <<"Namespace">> => string(),
-%%   <<"OKActions">> => list(string()()),
+%%   <<"OKActions">> => list(string()),
 %%   <<"Period">> => integer(),
 %%   <<"Statistic">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Threshold">> => float(),
 %%   <<"ThresholdMetricId">> => string(),
 %%   <<"TreatMissingData">> => string(),
@@ -612,7 +612,7 @@
 %% Example:
 %% single_metric_anomaly_detector() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
 %%   <<"Stat">> => string()
@@ -627,7 +627,7 @@
 
 %% Example:
 %% describe_anomaly_detectors_output() :: #{
-%%   <<"AnomalyDetectors">> => list(anomaly_detector()()),
+%%   <<"AnomalyDetectors">> => list(anomaly_detector()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_anomaly_detectors_output() :: #{binary() => any()}.
@@ -642,7 +642,7 @@
 %% Example:
 %% describe_anomaly_detectors_input() :: #{
 %%   <<"AnomalyDetectorTypes">> => list(list(any())()),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
@@ -652,7 +652,7 @@
 
 %% Example:
 %% enable_alarm_actions_input() :: #{
-%%   <<"AlarmNames">> := list(string()())
+%%   <<"AlarmNames">> := list(string())
 %% }
 -type enable_alarm_actions_input() :: #{binary() => any()}.
 
@@ -665,21 +665,21 @@
 %% Example:
 %% insight_rule_contributor() :: #{
 %%   <<"ApproximateAggregateValue">> => float(),
-%%   <<"Datapoints">> => list(insight_rule_contributor_datapoint()()),
-%%   <<"Keys">> => list(string()())
+%%   <<"Datapoints">> => list(insight_rule_contributor_datapoint()),
+%%   <<"Keys">> => list(string())
 %% }
 -type insight_rule_contributor() :: #{binary() => any()}.
 
 %% Example:
 %% metric_math_anomaly_detector() :: #{
-%%   <<"MetricDataQueries">> => list(metric_data_query()())
+%%   <<"MetricDataQueries">> => list(metric_data_query())
 %% }
 -type metric_math_anomaly_detector() :: #{binary() => any()}.
 
 %% Example:
 %% get_metric_data_output() :: #{
-%%   <<"Messages">> => list(message_data()()),
-%%   <<"MetricDataResults">> => list(metric_data_result()()),
+%%   <<"Messages">> => list(message_data()),
+%%   <<"MetricDataResults">> => list(metric_data_result()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_metric_data_output() :: #{binary() => any()}.
@@ -687,22 +687,22 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% list_metrics_output() :: #{
-%%   <<"Metrics">> => list(metric()()),
+%%   <<"Metrics">> => list(metric()),
 %%   <<"NextToken">> => string(),
-%%   <<"OwningAccounts">> => list(string()())
+%%   <<"OwningAccounts">> => list(string())
 %% }
 -type list_metrics_output() :: #{binary() => any()}.
 
 %% Example:
 %% put_metric_data_input() :: #{
-%%   <<"EntityMetricData">> => list(entity_metric_data()()),
-%%   <<"MetricData">> => list(metric_datum()()),
+%%   <<"EntityMetricData">> => list(entity_metric_data()),
+%%   <<"MetricData">> => list(metric_datum()),
 %%   <<"Namespace">> := string(),
 %%   <<"StrictEntityValidation">> => boolean()
 %% }
@@ -722,7 +722,7 @@
 
 %% Example:
 %% list_metric_streams_output() :: #{
-%%   <<"Entries">> => list(metric_stream_entry()()),
+%%   <<"Entries">> => list(metric_stream_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_metric_streams_output() :: #{binary() => any()}.
@@ -731,22 +731,22 @@
 %% get_metric_stream_output() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"ExcludeFilters">> => list(metric_stream_filter()()),
+%%   <<"ExcludeFilters">> => list(metric_stream_filter()),
 %%   <<"FirehoseArn">> => string(),
-%%   <<"IncludeFilters">> => list(metric_stream_filter()()),
+%%   <<"IncludeFilters">> => list(metric_stream_filter()),
 %%   <<"IncludeLinkedAccountsMetrics">> => boolean(),
 %%   <<"LastUpdateDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"OutputFormat">> => list(any()),
 %%   <<"RoleArn">> => string(),
 %%   <<"State">> => string(),
-%%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration()())
+%%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration())
 %% }
 -type get_metric_stream_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_alarms_for_metric_input() :: #{
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"ExtendedStatistic">> => string(),
 %%   <<"MetricName">> := string(),
 %%   <<"Namespace">> := string(),
@@ -758,27 +758,27 @@
 
 %% Example:
 %% delete_alarms_input() :: #{
-%%   <<"AlarmNames">> := list(string()())
+%%   <<"AlarmNames">> := list(string())
 %% }
 -type delete_alarms_input() :: #{binary() => any()}.
 
 %% Example:
 %% put_metric_stream_input() :: #{
-%%   <<"ExcludeFilters">> => list(metric_stream_filter()()),
+%%   <<"ExcludeFilters">> => list(metric_stream_filter()),
 %%   <<"FirehoseArn">> := string(),
-%%   <<"IncludeFilters">> => list(metric_stream_filter()()),
+%%   <<"IncludeFilters">> => list(metric_stream_filter()),
 %%   <<"IncludeLinkedAccountsMetrics">> => boolean(),
 %%   <<"Name">> := string(),
 %%   <<"OutputFormat">> := list(any()),
 %%   <<"RoleArn">> := string(),
-%%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"StatisticsConfigurations">> => list(metric_stream_statistics_configuration()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_metric_stream_input() :: #{binary() => any()}.
 
 %% Example:
 %% put_dashboard_output() :: #{
-%%   <<"DashboardValidationMessages">> => list(dashboard_validation_message()())
+%%   <<"DashboardValidationMessages">> => list(dashboard_validation_message())
 %% }
 -type put_dashboard_output() :: #{binary() => any()}.
 
@@ -811,7 +811,7 @@
 
 %% Example:
 %% get_metric_statistics_output() :: #{
-%%   <<"Datapoints">> => list(datapoint()()),
+%%   <<"Datapoints">> => list(datapoint()),
 %%   <<"Label">> => string()
 %% }
 -type get_metric_statistics_output() :: #{binary() => any()}.
@@ -825,7 +825,7 @@
 
 %% Example:
 %% delete_insight_rules_input() :: #{
-%%   <<"RuleNames">> := list(string()())
+%%   <<"RuleNames">> := list(string())
 %% }
 -type delete_insight_rules_input() :: #{binary() => any()}.
 
@@ -847,7 +847,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -864,7 +864,7 @@
 
 %% Example:
 %% list_dashboards_output() :: #{
-%%   <<"DashboardEntries">> => list(dashboard_entry()()),
+%%   <<"DashboardEntries">> => list(dashboard_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dashboards_output() :: #{binary() => any()}.
@@ -892,7 +892,7 @@
 %%   <<"EndTime">> := non_neg_integer(),
 %%   <<"LabelOptions">> => label_options(),
 %%   <<"MaxDatapoints">> => integer(),
-%%   <<"MetricDataQueries">> := list(metric_data_query()()),
+%%   <<"MetricDataQueries">> := list(metric_data_query()),
 %%   <<"NextToken">> => string(),
 %%   <<"ScanBy">> => list(any()),
 %%   <<"StartTime">> := non_neg_integer()
@@ -901,7 +901,7 @@
 
 %% Example:
 %% describe_alarm_history_output() :: #{
-%%   <<"AlarmHistoryItems">> => list(alarm_history_item()()),
+%%   <<"AlarmHistoryItems">> => list(alarm_history_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_alarm_history_output() :: #{binary() => any()}.
@@ -914,14 +914,14 @@
 %%   <<"ActionsSuppressor">> => string(),
 %%   <<"ActionsSuppressorExtensionPeriod">> => integer(),
 %%   <<"ActionsSuppressorWaitPeriod">> => integer(),
-%%   <<"AlarmActions">> => list(string()()),
+%%   <<"AlarmActions">> => list(string()),
 %%   <<"AlarmArn">> => string(),
 %%   <<"AlarmConfigurationUpdatedTimestamp">> => non_neg_integer(),
 %%   <<"AlarmDescription">> => string(),
 %%   <<"AlarmName">> => string(),
 %%   <<"AlarmRule">> => string(),
-%%   <<"InsufficientDataActions">> => list(string()()),
-%%   <<"OKActions">> => list(string()()),
+%%   <<"InsufficientDataActions">> => list(string()),
+%%   <<"OKActions">> => list(string()),
 %%   <<"StateReason">> => string(),
 %%   <<"StateReasonData">> => string(),
 %%   <<"StateTransitionedTimestamp">> => non_neg_integer(),
@@ -941,23 +941,23 @@
 %% Example:
 %% metric_alarm() :: #{
 %%   <<"ActionsEnabled">> => boolean(),
-%%   <<"AlarmActions">> => list(string()()),
+%%   <<"AlarmActions">> => list(string()),
 %%   <<"AlarmArn">> => string(),
 %%   <<"AlarmConfigurationUpdatedTimestamp">> => non_neg_integer(),
 %%   <<"AlarmDescription">> => string(),
 %%   <<"AlarmName">> => string(),
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"DatapointsToAlarm">> => integer(),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"EvaluateLowSampleCountPercentile">> => string(),
 %%   <<"EvaluationPeriods">> => integer(),
 %%   <<"EvaluationState">> => list(any()),
 %%   <<"ExtendedStatistic">> => string(),
-%%   <<"InsufficientDataActions">> => list(string()()),
+%%   <<"InsufficientDataActions">> => list(string()),
 %%   <<"MetricName">> => string(),
-%%   <<"Metrics">> => list(metric_data_query()()),
+%%   <<"Metrics">> => list(metric_data_query()),
 %%   <<"Namespace">> => string(),
-%%   <<"OKActions">> => list(string()()),
+%%   <<"OKActions">> => list(string()),
 %%   <<"Period">> => integer(),
 %%   <<"StateReason">> => string(),
 %%   <<"StateReasonData">> => string(),
@@ -994,7 +994,7 @@
 %% Example:
 %% anomaly_detector() :: #{
 %%   <<"Configuration">> => anomaly_detector_configuration(),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricCharacteristics">> => metric_characteristics(),
 %%   <<"MetricMathAnomalyDetector">> => metric_math_anomaly_detector(),
 %%   <<"MetricName">> => string(),
@@ -1013,7 +1013,7 @@
 
 %% Example:
 %% describe_alarms_for_metric_output() :: #{
-%%   <<"MetricAlarms">> => list(metric_alarm()())
+%%   <<"MetricAlarms">> => list(metric_alarm())
 %% }
 -type describe_alarms_for_metric_output() :: #{binary() => any()}.
 
@@ -1041,14 +1041,14 @@
 
 %% Example:
 %% describe_insight_rules_output() :: #{
-%%   <<"InsightRules">> => list(insight_rule()()),
+%%   <<"InsightRules">> => list(insight_rule()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_insight_rules_output() :: #{binary() => any()}.
 
 %% Example:
 %% stop_metric_streams_input() :: #{
-%%   <<"Names">> := list(string()())
+%%   <<"Names">> := list(string())
 %% }
 -type stop_metric_streams_input() :: #{binary() => any()}.
 
@@ -1062,10 +1062,10 @@
 %% metric_data_result() :: #{
 %%   <<"Id">> => string(),
 %%   <<"Label">> => string(),
-%%   <<"Messages">> => list(message_data()()),
+%%   <<"Messages">> => list(message_data()),
 %%   <<"StatusCode">> => list(any()),
-%%   <<"Timestamps">> => list(non_neg_integer()()),
-%%   <<"Values">> => list(float()())
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
 %% }
 -type metric_data_result() :: #{binary() => any()}.
 
@@ -1088,7 +1088,7 @@
 %% Example:
 %% entity_metric_data() :: #{
 %%   <<"Entity">> => entity(),
-%%   <<"MetricData">> => list(metric_datum()())
+%%   <<"MetricData">> => list(metric_datum())
 %% }
 -type entity_metric_data() :: #{binary() => any()}.
 
@@ -1109,9 +1109,9 @@
 
 %% Example:
 %% get_metric_statistics_input() :: #{
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"EndTime">> := non_neg_integer(),
-%%   <<"ExtendedStatistics">> => list(string()()),
+%%   <<"ExtendedStatistics">> => list(string()),
 %%   <<"MetricName">> := string(),
 %%   <<"Namespace">> := string(),
 %%   <<"Period">> := integer(),
@@ -1123,7 +1123,7 @@
 
 %% Example:
 %% delete_insight_rules_output() :: #{
-%%   <<"Failures">> => list(partial_failure()())
+%%   <<"Failures">> => list(partial_failure())
 %% }
 -type delete_insight_rules_output() :: #{binary() => any()}.
 

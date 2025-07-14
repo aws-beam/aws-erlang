@@ -170,7 +170,7 @@
 %% Example:
 %% list_nodegroups_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"nodegroups">> => list(string()())
+%%   <<"nodegroups">> => list(string())
 %% }
 -type list_nodegroups_response() :: #{binary() => any()}.
 
@@ -188,7 +188,7 @@
 
 %% Example:
 %% list_access_policies_response() :: #{
-%%   <<"accessPolicies">> => list(access_policy()()),
+%%   <<"accessPolicies">> => list(access_policy()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_policies_response() :: #{binary() => any()}.
@@ -220,7 +220,7 @@
 %% addon_issue() :: #{
 %%   <<"code">> => list(any()),
 %%   <<"message">> => string(),
-%%   <<"resourceIds">> => list(string()())
+%%   <<"resourceIds">> => list(string())
 %% }
 -type addon_issue() :: #{binary() => any()}.
 
@@ -251,7 +251,7 @@
 %% Example:
 %% encryption_config() :: #{
 %%   <<"provider">> => provider(),
-%%   <<"resources">> => list(string()())
+%%   <<"resources">> => list(string())
 %% }
 -type encryption_config() :: #{binary() => any()}.
 
@@ -259,7 +259,7 @@
 %% Example:
 %% update_labels_payload() :: #{
 %%   <<"addOrUpdateLabels">> => map(),
-%%   <<"removeLabels">> => list(string()())
+%%   <<"removeLabels">> => list(string())
 %% }
 -type update_labels_payload() :: #{binary() => any()}.
 
@@ -275,7 +275,7 @@
 %% outpost_config_response() :: #{
 %%   <<"controlPlaneInstanceType">> => string(),
 %%   <<"controlPlanePlacement">> => control_plane_placement_response(),
-%%   <<"outpostArns">> => list(string()())
+%%   <<"outpostArns">> => list(string())
 %% }
 -type outpost_config_response() :: #{binary() => any()}.
 
@@ -283,7 +283,7 @@
 %% Example:
 %% compute_config_response() :: #{
 %%   <<"enabled">> => boolean(),
-%%   <<"nodePools">> => list(string()()),
+%%   <<"nodePools">> => list(string()),
 %%   <<"nodeRoleArn">> => string()
 %% }
 -type compute_config_response() :: #{binary() => any()}.
@@ -293,7 +293,7 @@
 %% compatibility() :: #{
 %%   <<"clusterVersion">> => string(),
 %%   <<"defaultVersion">> => boolean(),
-%%   <<"platformVersions">> => list(string()())
+%%   <<"platformVersions">> => list(string())
 %% }
 -type compatibility() :: #{binary() => any()}.
 
@@ -311,7 +311,7 @@
 %%   <<"capacityType">> => list(any()),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"diskSize">> => integer(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"labels">> => map(),
 %%   <<"launchTemplate">> => launch_template_specification(),
 %%   <<"nodeRepairConfig">> => node_repair_config(),
@@ -320,9 +320,9 @@
 %%   <<"releaseVersion">> => string(),
 %%   <<"remoteAccess">> => remote_access_config(),
 %%   <<"scalingConfig">> => nodegroup_scaling_config(),
-%%   <<"subnets">> := list(string()()),
+%%   <<"subnets">> := list(string()),
 %%   <<"tags">> => map(),
-%%   <<"taints">> => list(taint()()),
+%%   <<"taints">> => list(taint()),
 %%   <<"updateConfig">> => nodegroup_update_config(),
 %%   <<"version">> => string()
 %% }
@@ -348,7 +348,7 @@
 %%   <<"clusterName">> => string(),
 %%   <<"message">> => string(),
 %%   <<"nodegroupName">> => string(),
-%%   <<"validZones">> => list(string()())
+%%   <<"validZones">> => list(string())
 %% }
 -type unsupported_availability_zone_exception() :: #{binary() => any()}.
 
@@ -371,7 +371,7 @@
 
 %% Example:
 %% access_scope() :: #{
-%%   <<"namespaces">> => list(string()()),
+%%   <<"namespaces">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type access_scope() :: #{binary() => any()}.
@@ -379,7 +379,7 @@
 
 %% Example:
 %% list_associated_access_policies_response() :: #{
-%%   <<"associatedAccessPolicies">> => list(associated_access_policy()()),
+%%   <<"associatedAccessPolicies">> => list(associated_access_policy()),
 %%   <<"clusterName">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"principalArn">> => string()
@@ -407,8 +407,8 @@
 
 %% Example:
 %% remote_network_config_request() :: #{
-%%   <<"remoteNodeNetworks">> => list(remote_node_network()()),
-%%   <<"remotePodNetworks">> => list(remote_pod_network()())
+%%   <<"remoteNodeNetworks">> => list(remote_node_network()),
+%%   <<"remotePodNetworks">> => list(remote_pod_network())
 %% }
 -type remote_network_config_request() :: #{binary() => any()}.
 
@@ -461,7 +461,7 @@
 %%   <<"addonName">> => string(),
 %%   <<"addonVersion">> => string(),
 %%   <<"configurationSchema">> => string(),
-%%   <<"podIdentityConfiguration">> => list(addon_pod_identity_configuration()())
+%%   <<"podIdentityConfiguration">> => list(addon_pod_identity_configuration())
 %% }
 -type describe_addon_configuration_response() :: #{binary() => any()}.
 
@@ -504,7 +504,7 @@
 
 %% Example:
 %% addon_pod_identity_configuration() :: #{
-%%   <<"recommendedManagedPolicies">> => list(string()()),
+%%   <<"recommendedManagedPolicies">> => list(string()),
 %%   <<"serviceAccount">> => string()
 %% }
 -type addon_pod_identity_configuration() :: #{binary() => any()}.
@@ -521,7 +521,7 @@
 %% Example:
 %% update_access_entry_request() :: #{
 %%   <<"clientRequestToken">> => string(),
-%%   <<"kubernetesGroups">> => list(string()()),
+%%   <<"kubernetesGroups">> => list(string()),
 %%   <<"username">> => string()
 %% }
 -type update_access_entry_request() :: #{binary() => any()}.
@@ -529,7 +529,7 @@
 
 %% Example:
 %% addon_compatibility_detail() :: #{
-%%   <<"compatibleVersions">> => list(string()()),
+%%   <<"compatibleVersions">> => list(string()),
 %%   <<"name">> => string()
 %% }
 -type addon_compatibility_detail() :: #{binary() => any()}.
@@ -543,7 +543,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"diskSize">> => integer(),
 %%   <<"health">> => nodegroup_health(),
-%%   <<"instanceTypes">> => list(string()()),
+%%   <<"instanceTypes">> => list(string()),
 %%   <<"labels">> => map(),
 %%   <<"launchTemplate">> => launch_template_specification(),
 %%   <<"modifiedAt">> => non_neg_integer(),
@@ -556,9 +556,9 @@
 %%   <<"resources">> => nodegroup_resources(),
 %%   <<"scalingConfig">> => nodegroup_scaling_config(),
 %%   <<"status">> => list(any()),
-%%   <<"subnets">> => list(string()()),
+%%   <<"subnets">> => list(string()),
 %%   <<"tags">> => map(),
-%%   <<"taints">> => list(taint()()),
+%%   <<"taints">> => list(taint()),
 %%   <<"updateConfig">> => nodegroup_update_config(),
 %%   <<"version">> => string()
 %% }
@@ -600,7 +600,7 @@
 
 %% Example:
 %% list_insights_response() :: #{
-%%   <<"insights">> => list(insight_summary()()),
+%%   <<"insights">> => list(insight_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_insights_response() :: #{binary() => any()}.
@@ -642,7 +642,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -686,7 +686,7 @@
 
 %% Example:
 %% list_pod_identity_associations_response() :: #{
-%%   <<"associations">> => list(pod_identity_association_summary()()),
+%%   <<"associations">> => list(pod_identity_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_pod_identity_associations_response() :: #{binary() => any()}.
@@ -704,7 +704,7 @@
 %% fargate_profile_issue() :: #{
 %%   <<"code">> => list(any()),
 %%   <<"message">> => string(),
-%%   <<"resourceIds">> => list(string()())
+%%   <<"resourceIds">> => list(string())
 %% }
 -type fargate_profile_issue() :: #{binary() => any()}.
 
@@ -712,7 +712,7 @@
 %% Example:
 %% compute_config_request() :: #{
 %%   <<"enabled">> => boolean(),
-%%   <<"nodePools">> => list(string()()),
+%%   <<"nodePools">> => list(string()),
 %%   <<"nodeRoleArn">> => string()
 %% }
 -type compute_config_request() :: #{binary() => any()}.
@@ -724,9 +724,9 @@
 %%   <<"kubernetesVersion">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"owners">> => list(string()()),
-%%   <<"publishers">> => list(string()()),
-%%   <<"types">> => list(string()())
+%%   <<"owners">> => list(string()),
+%%   <<"publishers">> => list(string()),
+%%   <<"types">> => list(string())
 %% }
 -type describe_addon_versions_request() :: #{binary() => any()}.
 
@@ -743,7 +743,7 @@
 %%   <<"marketplaceInformation">> => marketplace_information(),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"owner">> => string(),
-%%   <<"podIdentityAssociations">> => list(string()()),
+%%   <<"podIdentityAssociations">> => list(string()),
 %%   <<"publisher">> => string(),
 %%   <<"serviceAccountRoleArn">> => string(),
 %%   <<"status">> => list(any()),
@@ -754,8 +754,8 @@
 
 %% Example:
 %% update_taints_payload() :: #{
-%%   <<"addOrUpdateTaints">> => list(taint()()),
-%%   <<"removeTaints">> => list(taint()())
+%%   <<"addOrUpdateTaints">> => list(taint()),
+%%   <<"removeTaints">> => list(taint())
 %% }
 -type update_taints_payload() :: #{binary() => any()}.
 
@@ -765,7 +765,7 @@
 %%   <<"accessEntryArn">> => string(),
 %%   <<"clusterName">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"kubernetesGroups">> => list(string()()),
+%%   <<"kubernetesGroups">> => list(string()),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"principalArn">> => string(),
 %%   <<"tags">> => map(),
@@ -827,7 +827,7 @@
 %%   <<"bootstrapSelfManagedAddons">> => boolean(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"computeConfig">> => compute_config_request(),
-%%   <<"encryptionConfig">> => list(encryption_config()()),
+%%   <<"encryptionConfig">> => list(encryption_config()),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> := string(),
@@ -847,9 +847,9 @@
 %% Example:
 %% update() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"errors">> => list(error_detail()()),
+%%   <<"errors">> => list(error_detail()),
 %%   <<"id">> => string(),
-%%   <<"params">> => list(update_param()()),
+%%   <<"params">> => list(update_param()),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
@@ -859,7 +859,7 @@
 %% Example:
 %% insights_filter() :: #{
 %%   <<"categories">> => list(list(any())()),
-%%   <<"kubernetesVersions">> => list(string()()),
+%%   <<"kubernetesVersions">> => list(string()),
 %%   <<"statuses">> => list(list(any())())
 %% }
 -type insights_filter() :: #{binary() => any()}.
@@ -900,7 +900,7 @@
 %%   <<"addonVersion">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"configurationValues">> => string(),
-%%   <<"podIdentityAssociations">> => list(addon_pod_identity_associations()()),
+%%   <<"podIdentityAssociations">> => list(addon_pod_identity_associations()),
 %%   <<"resolveConflicts">> => list(any()),
 %%   <<"serviceAccountRoleArn">> => string()
 %% }
@@ -918,7 +918,7 @@
 %% outpost_config_request() :: #{
 %%   <<"controlPlaneInstanceType">> => string(),
 %%   <<"controlPlanePlacement">> => control_plane_placement_request(),
-%%   <<"outpostArns">> => list(string()())
+%%   <<"outpostArns">> => list(string())
 %% }
 -type outpost_config_request() :: #{binary() => any()}.
 
@@ -933,7 +933,7 @@
 %% Example:
 %% describe_cluster_versions_request() :: #{
 %%   <<"clusterType">> => string(),
-%%   <<"clusterVersions">> => list(string()()),
+%%   <<"clusterVersions">> => list(string()),
 %%   <<"defaultOnly">> => boolean(),
 %%   <<"includeAll">> => boolean(),
 %%   <<"maxResults">> => integer(),
@@ -946,7 +946,7 @@
 
 %% Example:
 %% deprecation_detail() :: #{
-%%   <<"clientStats">> => list(client_stat()()),
+%%   <<"clientStats">> => list(client_stat()),
 %%   <<"replacedWith">> => string(),
 %%   <<"startServingReplacementVersion">> => string(),
 %%   <<"stopServingVersion">> => string(),
@@ -983,7 +983,7 @@
 %% Example:
 %% associate_encryption_config_request() :: #{
 %%   <<"clientRequestToken">> => string(),
-%%   <<"encryptionConfig">> := list(encryption_config()())
+%%   <<"encryptionConfig">> := list(encryption_config())
 %% }
 -type associate_encryption_config_request() :: #{binary() => any()}.
 
@@ -992,7 +992,7 @@
 %% issue() :: #{
 %%   <<"code">> => list(any()),
 %%   <<"message">> => string(),
-%%   <<"resourceIds">> => list(string()())
+%%   <<"resourceIds">> => list(string())
 %% }
 -type issue() :: #{binary() => any()}.
 
@@ -1013,7 +1013,7 @@
 %%   <<"computeConfig">> => compute_config_response(),
 %%   <<"connectorConfig">> => connector_config_response(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"encryptionConfig">> => list(encryption_config()()),
+%%   <<"encryptionConfig">> => list(encryption_config()),
 %%   <<"endpoint">> => string(),
 %%   <<"health">> => cluster_health(),
 %%   <<"id">> => string(),
@@ -1056,14 +1056,14 @@
 %% Example:
 %% list_updates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"updateIds">> => list(string()())
+%%   <<"updateIds">> => list(string())
 %% }
 -type list_updates_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_addon_versions_response() :: #{
-%%   <<"addons">> => list(addon_info()()),
+%%   <<"addons">> => list(addon_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_addon_versions_response() :: #{binary() => any()}.
@@ -1106,7 +1106,7 @@
 
 %% Example:
 %% describe_cluster_versions_response() :: #{
-%%   <<"clusterVersions">> => list(cluster_version_information()()),
+%%   <<"clusterVersions">> => list(cluster_version_information()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_cluster_versions_response() :: #{binary() => any()}.
@@ -1114,7 +1114,7 @@
 
 %% Example:
 %% fargate_profile_health() :: #{
-%%   <<"issues">> => list(fargate_profile_issue()())
+%%   <<"issues">> => list(fargate_profile_issue())
 %% }
 -type fargate_profile_health() :: #{binary() => any()}.
 
@@ -1125,7 +1125,7 @@
 %%   <<"addonVersion">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"configurationValues">> => string(),
-%%   <<"podIdentityAssociations">> => list(addon_pod_identity_associations()()),
+%%   <<"podIdentityAssociations">> => list(addon_pod_identity_associations()),
 %%   <<"resolveConflicts">> => list(any()),
 %%   <<"serviceAccountRoleArn">> => string(),
 %%   <<"tags">> => map()
@@ -1135,8 +1135,8 @@
 
 %% Example:
 %% remote_network_config_response() :: #{
-%%   <<"remoteNodeNetworks">> => list(remote_node_network()()),
-%%   <<"remotePodNetworks">> => list(remote_pod_network()())
+%%   <<"remoteNodeNetworks">> => list(remote_node_network()),
+%%   <<"remotePodNetworks">> => list(remote_pod_network())
 %% }
 -type remote_network_config_response() :: #{binary() => any()}.
 
@@ -1190,9 +1190,9 @@
 %% vpc_config_request() :: #{
 %%   <<"endpointPrivateAccess">> => boolean(),
 %%   <<"endpointPublicAccess">> => boolean(),
-%%   <<"publicAccessCidrs">> => list(string()()),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"publicAccessCidrs">> => list(string()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
 -type vpc_config_request() :: #{binary() => any()}.
 
@@ -1249,7 +1249,7 @@
 
 %% Example:
 %% list_clusters_response() :: #{
-%%   <<"clusters">> => list(string()()),
+%%   <<"clusters">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_clusters_response() :: #{binary() => any()}.
@@ -1264,7 +1264,7 @@
 
 %% Example:
 %% list_fargate_profiles_response() :: #{
-%%   <<"fargateProfileNames">> => list(string()()),
+%%   <<"fargateProfileNames">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fargate_profiles_response() :: #{binary() => any()}.
@@ -1313,7 +1313,7 @@
 
 %% Example:
 %% list_clusters_request() :: #{
-%%   <<"include">> => list(string()()),
+%%   <<"include">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1407,8 +1407,8 @@
 %%   <<"clientRequestToken">> => string(),
 %%   <<"fargateProfileName">> := string(),
 %%   <<"podExecutionRoleArn">> := string(),
-%%   <<"selectors">> => list(fargate_profile_selector()()),
-%%   <<"subnets">> => list(string()()),
+%%   <<"selectors">> => list(fargate_profile_selector()),
+%%   <<"subnets">> => list(string()),
 %%   <<"tags">> => map()
 %% }
 -type create_fargate_profile_request() :: #{binary() => any()}.
@@ -1426,7 +1426,7 @@
 %% error_detail() :: #{
 %%   <<"errorCode">> => list(any()),
 %%   <<"errorMessage">> => string(),
-%%   <<"resourceIds">> => list(string()())
+%%   <<"resourceIds">> => list(string())
 %% }
 -type error_detail() :: #{binary() => any()}.
 
@@ -1454,10 +1454,10 @@
 %%   <<"effectiveDate">> => non_neg_integer(),
 %%   <<"expirationDate">> => non_neg_integer(),
 %%   <<"id">> => string(),
-%%   <<"licenseArns">> => list(string()()),
+%%   <<"licenseArns">> => list(string()),
 %%   <<"licenseQuantity">> => integer(),
 %%   <<"licenseType">> => list(any()),
-%%   <<"licenses">> => list(license()()),
+%%   <<"licenses">> => list(license()),
 %%   <<"status">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"term">> => eks_anywhere_subscription_term()
@@ -1490,7 +1490,7 @@
 
 %% Example:
 %% cluster_health() :: #{
-%%   <<"issues">> => list(cluster_issue()())
+%%   <<"issues">> => list(cluster_issue())
 %% }
 -type cluster_health() :: #{binary() => any()}.
 
@@ -1502,14 +1502,14 @@
 %% Example:
 %% remote_access_config() :: #{
 %%   <<"ec2SshKey">> => string(),
-%%   <<"sourceSecurityGroups">> => list(string()())
+%%   <<"sourceSecurityGroups">> => list(string())
 %% }
 -type remote_access_config() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_identity_provider_configs_response() :: #{
-%%   <<"identityProviderConfigs">> => list(identity_provider_config()()),
+%%   <<"identityProviderConfigs">> => list(identity_provider_config()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_identity_provider_configs_response() :: #{binary() => any()}.
@@ -1540,7 +1540,7 @@
 %% Example:
 %% create_access_entry_request() :: #{
 %%   <<"clientRequestToken">> => string(),
-%%   <<"kubernetesGroups">> => list(string()()),
+%%   <<"kubernetesGroups">> => list(string()),
 %%   <<"principalArn">> := string(),
 %%   <<"tags">> => map(),
 %%   <<"type">> => string(),
@@ -1571,7 +1571,7 @@
 
 %% Example:
 %% addon_health() :: #{
-%%   <<"issues">> => list(addon_issue()())
+%%   <<"issues">> => list(addon_issue())
 %% }
 -type addon_health() :: #{binary() => any()}.
 
@@ -1604,7 +1604,7 @@
 
 %% Example:
 %% nodegroup_health() :: #{
-%%   <<"issues">> => list(issue()())
+%%   <<"issues">> => list(issue())
 %% }
 -type nodegroup_health() :: #{binary() => any()}.
 
@@ -1676,7 +1676,7 @@
 
 %% Example:
 %% nodegroup_resources() :: #{
-%%   <<"autoScalingGroups">> => list(auto_scaling_group()()),
+%%   <<"autoScalingGroups">> => list(auto_scaling_group()),
 %%   <<"remoteAccessSecurityGroup">> => string()
 %% }
 -type nodegroup_resources() :: #{binary() => any()}.
@@ -1718,9 +1718,9 @@
 %%   <<"fargateProfileName">> => string(),
 %%   <<"health">> => fargate_profile_health(),
 %%   <<"podExecutionRoleArn">> => string(),
-%%   <<"selectors">> => list(fargate_profile_selector()()),
+%%   <<"selectors">> => list(fargate_profile_selector()),
 %%   <<"status">> => list(any()),
-%%   <<"subnets">> => list(string()()),
+%%   <<"subnets">> => list(string()),
 %%   <<"tags">> => map()
 %% }
 -type fargate_profile() :: #{binary() => any()}.
@@ -1736,7 +1736,7 @@
 %% Example:
 %% addon_info() :: #{
 %%   <<"addonName">> => string(),
-%%   <<"addonVersions">> => list(addon_version_info()()),
+%%   <<"addonVersions">> => list(addon_version_info()),
 %%   <<"marketplaceInformation">> => marketplace_information(),
 %%   <<"owner">> => string(),
 %%   <<"publisher">> => string(),
@@ -1748,7 +1748,7 @@
 %% Example:
 %% list_eks_anywhere_subscriptions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"subscriptions">> => list(eks_anywhere_subscription()())
+%%   <<"subscriptions">> => list(eks_anywhere_subscription())
 %% }
 -type list_eks_anywhere_subscriptions_response() :: #{binary() => any()}.
 
@@ -1765,7 +1765,7 @@
 
 %% Example:
 %% remote_node_network() :: #{
-%%   <<"cidrs">> => list(string()())
+%%   <<"cidrs">> => list(string())
 %% }
 -type remote_node_network() :: #{binary() => any()}.
 
@@ -1806,9 +1806,9 @@
 %%   <<"clusterSecurityGroupId">> => string(),
 %%   <<"endpointPrivateAccess">> => boolean(),
 %%   <<"endpointPublicAccess">> => boolean(),
-%%   <<"publicAccessCidrs">> => list(string()()),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"publicAccessCidrs">> => list(string()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_config_response() :: #{binary() => any()}.
@@ -1850,7 +1850,7 @@
 %%   <<"lastTransitionTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"recommendation">> => string(),
-%%   <<"resources">> => list(insight_resource_detail()())
+%%   <<"resources">> => list(insight_resource_detail())
 %% }
 -type insight() :: #{binary() => any()}.
 
@@ -1873,7 +1873,7 @@
 
 %% Example:
 %% remote_pod_network() :: #{
-%%   <<"cidrs">> => list(string()())
+%%   <<"cidrs">> => list(string())
 %% }
 -type remote_pod_network() :: #{binary() => any()}.
 
@@ -1882,7 +1882,7 @@
 %% cluster_issue() :: #{
 %%   <<"code">> => list(any()),
 %%   <<"message">> => string(),
-%%   <<"resourceIds">> => list(string()())
+%%   <<"resourceIds">> => list(string())
 %% }
 -type cluster_issue() :: #{binary() => any()}.
 
@@ -1893,7 +1893,7 @@
 
 %% Example:
 %% list_addons_response() :: #{
-%%   <<"addons">> => list(string()()),
+%%   <<"addons">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_addons_response() :: #{binary() => any()}.
@@ -1901,8 +1901,8 @@
 
 %% Example:
 %% insight_category_specific_summary() :: #{
-%%   <<"addonCompatibilityDetails">> => list(addon_compatibility_detail()()),
-%%   <<"deprecationDetails">> => list(deprecation_detail()())
+%%   <<"addonCompatibilityDetails">> => list(addon_compatibility_detail()),
+%%   <<"deprecationDetails">> => list(deprecation_detail())
 %% }
 -type insight_category_specific_summary() :: #{binary() => any()}.
 
@@ -1938,7 +1938,7 @@
 
 %% Example:
 %% list_access_entries_response() :: #{
-%%   <<"accessEntries">> => list(string()()),
+%%   <<"accessEntries">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_entries_response() :: #{binary() => any()}.
@@ -1990,7 +1990,7 @@
 
 %% Example:
 %% logging() :: #{
-%%   <<"clusterLogging">> => list(log_setup()())
+%%   <<"clusterLogging">> => list(log_setup())
 %% }
 -type logging() :: #{binary() => any()}.
 
@@ -2060,9 +2060,9 @@
 %% Example:
 %% addon_version_info() :: #{
 %%   <<"addonVersion">> => string(),
-%%   <<"architecture">> => list(string()()),
-%%   <<"compatibilities">> => list(compatibility()()),
-%%   <<"computeTypes">> => list(string()()),
+%%   <<"architecture">> => list(string()),
+%%   <<"compatibilities">> => list(compatibility()),
+%%   <<"computeTypes">> => list(string()),
 %%   <<"requiresConfiguration">> => boolean(),
 %%   <<"requiresIamPermissions">> => boolean()
 %% }

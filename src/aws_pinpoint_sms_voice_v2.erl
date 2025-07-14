@@ -238,7 +238,7 @@
 %% Example:
 %% describe_spend_limits_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SpendLimits">> => list(spend_limit()())
+%%   <<"SpendLimits">> => list(spend_limit())
 %% }
 -type describe_spend_limits_result() :: #{binary() => any()}.
 
@@ -249,7 +249,7 @@
 %%   <<"IsoCountryCode">> => string(),
 %%   <<"MessageType">> => string(),
 %%   <<"MonthlyLeasingPrice">> => [string()],
-%%   <<"NumberCapabilities">> => list(string()()),
+%%   <<"NumberCapabilities">> => list(string()),
 %%   <<"NumberType">> => string(),
 %%   <<"OptOutListName">> => string(),
 %%   <<"PhoneNumber">> => string(),
@@ -276,7 +276,7 @@
 %% Example:
 %% describe_registration_field_definitions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RegistrationFieldDefinitions">> => list(registration_field_definition()()),
+%%   <<"RegistrationFieldDefinitions">> => list(registration_field_definition()),
 %%   <<"RegistrationType">> => string()
 %% }
 -type describe_registration_field_definitions_result() :: #{binary() => any()}.
@@ -284,7 +284,7 @@
 %% Example:
 %% registration_attachment_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type registration_attachment_filter() :: #{binary() => any()}.
 
@@ -293,7 +293,7 @@
 %%   <<"AttachmentBody">> => binary(),
 %%   <<"AttachmentUrl">> => string(),
 %%   <<"ClientToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_registration_attachment_request() :: #{binary() => any()}.
 
@@ -304,7 +304,7 @@
 %%   <<"IsoCountryCode">> => string(),
 %%   <<"MessageType">> => string(),
 %%   <<"MonthlyLeasingPrice">> => [string()],
-%%   <<"NumberCapabilities">> => list(string()()),
+%%   <<"NumberCapabilities">> => list(string()),
 %%   <<"NumberType">> => string(),
 %%   <<"OptOutListName">> => string(),
 %%   <<"PhoneNumber">> => string(),
@@ -326,7 +326,7 @@
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"RegistrationAttachmentArn">> => [string()],
 %%   <<"RegistrationAttachmentId">> => [string()],
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_registration_attachment_result() :: #{binary() => any()}.
 
@@ -335,16 +335,16 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
 %%   <<"IsoCountryCode">> := string(),
-%%   <<"MessageTypes">> => list(string()()),
+%%   <<"MessageTypes">> => list(string()),
 %%   <<"SenderId">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type request_sender_id_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -388,7 +388,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationArn">> => [string()],
 %%   <<"RegistrationId">> => [string()],
-%%   <<"RegistrationVersions">> => list(registration_version_information()())
+%%   <<"RegistrationVersions">> => list(registration_version_information())
 %% }
 -type describe_registration_versions_result() :: #{binary() => any()}.
 
@@ -426,7 +426,7 @@
 %%   <<"IsoCountryCode">> => string(),
 %%   <<"MessageType">> => string(),
 %%   <<"MonthlyLeasingPrice">> => [string()],
-%%   <<"NumberCapabilities">> => list(string()()),
+%%   <<"NumberCapabilities">> => list(string()),
 %%   <<"NumberType">> => string(),
 %%   <<"OptOutListName">> => string(),
 %%   <<"PhoneNumber">> => string(),
@@ -436,7 +436,7 @@
 %%   <<"RegistrationId">> => [string()],
 %%   <<"SelfManagedOptOutsEnabled">> => [boolean()],
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TwoWayChannelArn">> => string(),
 %%   <<"TwoWayChannelRole">> => string(),
 %%   <<"TwoWayEnabled">> => [boolean()]
@@ -452,13 +452,13 @@
 %% Example:
 %% describe_pools_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Pools">> => list(pool_information()())
+%%   <<"Pools">> => list(pool_information())
 %% }
 -type describe_pools_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_registration_associations_request() :: #{
-%%   <<"Filters">> => list(registration_association_filter()()),
+%%   <<"Filters">> => list(registration_association_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationId">> := string()
@@ -477,11 +477,11 @@
 
 %% Example:
 %% describe_pools_request() :: #{
-%%   <<"Filters">> => list(pool_filter()()),
+%%   <<"Filters">> => list(pool_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Owner">> => string(),
-%%   <<"PoolIds">> => list(string()())
+%%   <<"PoolIds">> => list(string())
 %% }
 -type describe_pools_request() :: #{binary() => any()}.
 
@@ -490,7 +490,7 @@
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"OptOutListArn">> => [string()],
 %%   <<"OptOutListName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_opt_out_list_result() :: #{binary() => any()}.
 
@@ -503,7 +503,7 @@
 %% Example:
 %% verified_destination_number_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type verified_destination_number_filter() :: #{binary() => any()}.
 
@@ -566,7 +566,7 @@
 %% Example:
 %% registration_association_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type registration_association_filter() :: #{binary() => any()}.
 
@@ -626,10 +626,10 @@
 
 %% Example:
 %% describe_registration_type_definitions_request() :: #{
-%%   <<"Filters">> => list(registration_type_filter()()),
+%%   <<"Filters">> => list(registration_type_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RegistrationTypes">> => list(string()())
+%%   <<"RegistrationTypes">> => list(string())
 %% }
 -type describe_registration_type_definitions_request() :: #{binary() => any()}.
 
@@ -670,7 +670,7 @@
 %%   <<"SelfManagedOptOutsEnabled">> => [boolean()],
 %%   <<"SharedRoutesEnabled">> => [boolean()],
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TwoWayChannelArn">> => string(),
 %%   <<"TwoWayChannelRole">> => string(),
 %%   <<"TwoWayEnabled">> => [boolean()]
@@ -689,7 +689,7 @@
 %%   <<"IsoCountryCode">> => string(),
 %%   <<"MessageType">> => string(),
 %%   <<"MonthlyLeasingPrice">> => [string()],
-%%   <<"NumberCapabilities">> => list(string()()),
+%%   <<"NumberCapabilities">> => list(string()),
 %%   <<"NumberType">> => string(),
 %%   <<"OptOutListName">> => string(),
 %%   <<"PhoneNumber">> => string(),
@@ -734,7 +734,7 @@
 %%   <<"DefaultMessageFeedbackEnabled">> => [boolean()],
 %%   <<"DefaultMessageType">> => string(),
 %%   <<"DefaultSenderId">> => string(),
-%%   <<"EventDestinations">> => list(event_destination()()),
+%%   <<"EventDestinations">> => list(event_destination()),
 %%   <<"ProtectConfigurationId">> => string()
 %% }
 -type configuration_set_information() :: #{binary() => any()}.
@@ -756,7 +756,7 @@
 %% Example:
 %% release_sender_id_result() :: #{
 %%   <<"IsoCountryCode">> => string(),
-%%   <<"MessageTypes">> => list(string()()),
+%%   <<"MessageTypes">> => list(string()),
 %%   <<"MonthlyLeasingPrice">> => [string()],
 %%   <<"Registered">> => [boolean()],
 %%   <<"RegistrationId">> => [string()],
@@ -805,21 +805,21 @@
 %%   <<"IsoCountryCode">> := string(),
 %%   <<"MessageType">> := string(),
 %%   <<"OriginationIdentity">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_pool_request() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% registration_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type registration_filter() :: #{binary() => any()}.
 
@@ -833,12 +833,12 @@
 %% request_sender_id_result() :: #{
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
 %%   <<"IsoCountryCode">> => string(),
-%%   <<"MessageTypes">> => list(string()()),
+%%   <<"MessageTypes">> => list(string()),
 %%   <<"MonthlyLeasingPrice">> => [string()],
 %%   <<"Registered">> => [boolean()],
 %%   <<"SenderId">> => string(),
 %%   <<"SenderIdArn">> => [string()],
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type request_sender_id_result() :: #{binary() => any()}.
 
@@ -874,7 +874,7 @@
 %% Example:
 %% describe_registration_section_definitions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RegistrationSectionDefinitions">> => list(registration_section_definition()()),
+%%   <<"RegistrationSectionDefinitions">> => list(registration_section_definition()),
 %%   <<"RegistrationType">> => string()
 %% }
 -type describe_registration_section_definitions_result() :: #{binary() => any()}.
@@ -897,7 +897,7 @@
 
 %% Example:
 %% describe_keywords_result() :: #{
-%%   <<"Keywords">> => list(keyword_information()()),
+%%   <<"Keywords">> => list(keyword_information()),
 %%   <<"NextToken">> => string(),
 %%   <<"OriginationIdentity">> => [string()],
 %%   <<"OriginationIdentityArn">> => [string()]
@@ -939,26 +939,26 @@
 %%   <<"ConfigurationSetName">> := string(),
 %%   <<"EventDestinationName">> := string(),
 %%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
-%%   <<"MatchingEventTypes">> := list(string()()),
+%%   <<"MatchingEventTypes">> := list(string()),
 %%   <<"SnsDestination">> => sns_destination()
 %% }
 -type create_event_destination_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_registrations_request() :: #{
-%%   <<"Filters">> => list(registration_filter()()),
+%%   <<"Filters">> => list(registration_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RegistrationIds">> => list(string()())
+%%   <<"RegistrationIds">> => list(string())
 %% }
 -type describe_registrations_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_protect_configurations_request() :: #{
-%%   <<"Filters">> => list(protect_configuration_filter()()),
+%%   <<"Filters">> => list(protect_configuration_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ProtectConfigurationIds">> => list(string()())
+%%   <<"ProtectConfigurationIds">> => list(string())
 %% }
 -type describe_protect_configurations_request() :: #{binary() => any()}.
 
@@ -979,7 +979,7 @@
 %%   <<"Enabled">> => [boolean()],
 %%   <<"EventDestinationName">> := string(),
 %%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
-%%   <<"MatchingEventTypes">> => list(string()()),
+%%   <<"MatchingEventTypes">> => list(string()),
 %%   <<"SnsDestination">> => sns_destination()
 %% }
 -type update_event_destination_request() :: #{binary() => any()}.
@@ -996,7 +996,7 @@
 %% Example:
 %% describe_verified_destination_numbers_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedDestinationNumbers">> => list(verified_destination_number_information()())
+%%   <<"VerifiedDestinationNumbers">> => list(verified_destination_number_information())
 %% }
 -type describe_verified_destination_numbers_result() :: #{binary() => any()}.
 
@@ -1020,7 +1020,7 @@
 %% create_protect_configuration_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_protect_configuration_request() :: #{binary() => any()}.
 
@@ -1071,7 +1071,7 @@
 %% registration_type_definition() :: #{
 %%   <<"DisplayHints">> => registration_type_display_hints(),
 %%   <<"RegistrationType">> => string(),
-%%   <<"SupportedAssociations">> => list(supported_association()())
+%%   <<"SupportedAssociations">> => list(supported_association())
 %% }
 -type registration_type_definition() :: #{binary() => any()}.
 
@@ -1088,7 +1088,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"ProtectConfigurationArn">> => string(),
 %%   <<"ProtectConfigurationId">> => string(),
-%%   <<"RuleSetNumberOverrides">> => list(protect_configuration_rule_set_number_override()())
+%%   <<"RuleSetNumberOverrides">> => list(protect_configuration_rule_set_number_override())
 %% }
 -type list_protect_configuration_rule_set_number_overrides_result() :: #{binary() => any()}.
 
@@ -1105,7 +1105,7 @@
 %%   <<"Enabled">> => [boolean()],
 %%   <<"EventDestinationName">> => string(),
 %%   <<"KinesisFirehoseDestination">> => kinesis_firehose_destination(),
-%%   <<"MatchingEventTypes">> => list(string()()),
+%%   <<"MatchingEventTypes">> => list(string()),
 %%   <<"SnsDestination">> => sns_destination()
 %% }
 -type event_destination() :: #{binary() => any()}.
@@ -1157,7 +1157,7 @@
 %% Example:
 %% sender_id_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type sender_id_filter() :: #{binary() => any()}.
 
@@ -1172,7 +1172,7 @@
 %% Example:
 %% protect_configuration_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type protect_configuration_filter() :: #{binary() => any()}.
 
@@ -1225,7 +1225,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"OptOutListArn">> => [string()],
 %%   <<"OptOutListName">> => string(),
-%%   <<"OptedOutNumbers">> => list(opted_out_number_information()())
+%%   <<"OptedOutNumbers">> => list(opted_out_number_information())
 %% }
 -type describe_opted_out_numbers_result() :: #{binary() => any()}.
 
@@ -1246,13 +1246,13 @@
 %% Example:
 %% phone_number_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type phone_number_filter() :: #{binary() => any()}.
 
 %% Example:
 %% list_pool_origination_identities_request() :: #{
-%%   <<"Filters">> => list(pool_origination_identities_filter()()),
+%%   <<"Filters">> => list(pool_origination_identities_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"PoolId">> := string()
@@ -1298,7 +1298,7 @@
 %% Example:
 %% keyword_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type keyword_filter() :: #{binary() => any()}.
 
@@ -1310,8 +1310,8 @@
 
 %% Example:
 %% describe_keywords_request() :: #{
-%%   <<"Filters">> => list(keyword_filter()()),
-%%   <<"Keywords">> => list(string()()),
+%%   <<"Filters">> => list(keyword_filter()),
+%%   <<"Keywords">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OriginationIdentity">> := string()
@@ -1338,12 +1338,12 @@
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
 %%   <<"IsoCountryCode">> := string(),
 %%   <<"MessageType">> := string(),
-%%   <<"NumberCapabilities">> := list(string()()),
+%%   <<"NumberCapabilities">> := list(string()),
 %%   <<"NumberType">> := string(),
 %%   <<"OptOutListName">> => string(),
 %%   <<"PoolId">> => string(),
 %%   <<"RegistrationId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type request_phone_number_request() :: #{binary() => any()}.
 
@@ -1354,7 +1354,7 @@
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
 %%   <<"ProtectConfigurationArn">> => string(),
 %%   <<"ProtectConfigurationId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_protect_configuration_result() :: #{binary() => any()}.
 
@@ -1362,7 +1362,7 @@
 %% describe_registration_field_values_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationArn">> => [string()],
-%%   <<"RegistrationFieldValues">> => list(registration_field_value_information()()),
+%%   <<"RegistrationFieldValues">> => list(registration_field_value_information()),
 %%   <<"RegistrationId">> => [string()],
 %%   <<"VersionNumber">> => float()
 %% }
@@ -1384,7 +1384,7 @@
 
 %% Example:
 %% describe_registration_field_values_request() :: #{
-%%   <<"FieldPaths">> => list(string()()),
+%%   <<"FieldPaths">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationId">> := string(),
@@ -1397,7 +1397,7 @@
 %% describe_opt_out_lists_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"OptOutListNames">> => list(string()()),
+%%   <<"OptOutListNames">> => list(string()),
 %%   <<"Owner">> => string()
 %% }
 -type describe_opt_out_lists_request() :: #{binary() => any()}.
@@ -1417,7 +1417,7 @@
 %%   <<"RegistrationId">> => [string()],
 %%   <<"RegistrationStatus">> => string(),
 %%   <<"RegistrationType">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_registration_result() :: #{binary() => any()}.
 
@@ -1448,7 +1448,7 @@
 %% Example:
 %% pool_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type pool_filter() :: #{binary() => any()}.
 
@@ -1461,11 +1461,11 @@
 
 %% Example:
 %% describe_sender_ids_request() :: #{
-%%   <<"Filters">> => list(sender_id_filter()()),
+%%   <<"Filters">> => list(sender_id_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Owner">> => string(),
-%%   <<"SenderIds">> => list(sender_id_and_country()())
+%%   <<"SenderIds">> => list(sender_id_and_country())
 %% }
 -type describe_sender_ids_request() :: #{binary() => any()}.
 
@@ -1479,14 +1479,14 @@
 %% Example:
 %% describe_registration_attachments_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RegistrationAttachments">> => list(registration_attachments_information()())
+%%   <<"RegistrationAttachments">> => list(registration_attachments_information())
 %% }
 -type describe_registration_attachments_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_pool_origination_identities_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OriginationIdentities">> => list(origination_identity_metadata()()),
+%%   <<"OriginationIdentities">> => list(origination_identity_metadata()),
 %%   <<"PoolArn">> => [string()],
 %%   <<"PoolId">> => [string()]
 %% }
@@ -1498,7 +1498,7 @@
 %%   <<"RegistrationArn">> => [string()],
 %%   <<"RegistrationAttachmentId">> => [string()],
 %%   <<"RegistrationId">> => [string()],
-%%   <<"SelectChoices">> => list(string()()),
+%%   <<"SelectChoices">> => list(string()),
 %%   <<"TextValue">> => string(),
 %%   <<"VersionNumber">> => float()
 %% }
@@ -1507,7 +1507,7 @@
 %% Example:
 %% opted_out_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type opted_out_filter() :: #{binary() => any()}.
 
@@ -1519,11 +1519,11 @@
 
 %% Example:
 %% describe_verified_destination_numbers_request() :: #{
-%%   <<"DestinationPhoneNumbers">> => list(string()()),
-%%   <<"Filters">> => list(verified_destination_number_filter()()),
+%%   <<"DestinationPhoneNumbers">> => list(string()),
+%%   <<"Filters">> => list(verified_destination_number_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VerifiedDestinationNumberIds">> => list(string()())
+%%   <<"VerifiedDestinationNumberIds">> => list(string())
 %% }
 -type describe_verified_destination_numbers_request() :: #{binary() => any()}.
 
@@ -1533,7 +1533,7 @@
 %%   <<"DocumentationTitle">> => [string()],
 %%   <<"ExampleTextValue">> => [string()],
 %%   <<"LongDescription">> => [string()],
-%%   <<"SelectOptionDescriptions">> => list(select_option_description()()),
+%%   <<"SelectOptionDescriptions">> => list(select_option_description()),
 %%   <<"ShortDescription">> => [string()],
 %%   <<"TextValidationDescription">> => [string()],
 %%   <<"Title">> => [string()]
@@ -1592,7 +1592,7 @@
 %% list_registration_associations_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationArn">> => [string()],
-%%   <<"RegistrationAssociations">> => list(registration_association_metadata()()),
+%%   <<"RegistrationAssociations">> => list(registration_association_metadata()),
 %%   <<"RegistrationId">> => [string()],
 %%   <<"RegistrationType">> => string()
 %% }
@@ -1611,7 +1611,7 @@
 %% Example:
 %% list_tags_for_resource_result() :: #{
 %%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
 
@@ -1654,7 +1654,7 @@
 %% sender_id_information() :: #{
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
 %%   <<"IsoCountryCode">> => string(),
-%%   <<"MessageTypes">> => list(string()()),
+%%   <<"MessageTypes">> => list(string()),
 %%   <<"MonthlyLeasingPrice">> => [string()],
 %%   <<"Registered">> => [boolean()],
 %%   <<"RegistrationId">> => [string()],
@@ -1674,7 +1674,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationType">> := string(),
-%%   <<"SectionPaths">> => list(string()())
+%%   <<"SectionPaths">> => list(string())
 %% }
 -type describe_registration_section_definitions_request() :: #{binary() => any()}.
 
@@ -1741,7 +1741,7 @@
 %% Example:
 %% describe_sender_ids_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SenderIds">> => list(sender_id_information()())
+%%   <<"SenderIds">> => list(sender_id_information())
 %% }
 -type describe_sender_ids_result() :: #{binary() => any()}.
 
@@ -1756,7 +1756,7 @@
 
 %% Example:
 %% describe_account_attributes_result() :: #{
-%%   <<"AccountAttributes">> => list(account_attribute()()),
+%%   <<"AccountAttributes">> => list(account_attribute()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_account_attributes_result() :: #{binary() => any()}.
@@ -1766,14 +1766,14 @@
 %%   <<"FieldPath">> := string(),
 %%   <<"RegistrationAttachmentId">> => string(),
 %%   <<"RegistrationId">> := string(),
-%%   <<"SelectChoices">> => list(string()()),
+%%   <<"SelectChoices">> => list(string()),
 %%   <<"TextValue">> => string()
 %% }
 -type put_registration_field_value_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_registration_field_definitions_request() :: #{
-%%   <<"FieldPaths">> => list(string()()),
+%%   <<"FieldPaths">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationType">> := string(),
@@ -1784,14 +1784,14 @@
 %% Example:
 %% describe_registrations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Registrations">> => list(registration_information()())
+%%   <<"Registrations">> => list(registration_information())
 %% }
 -type describe_registrations_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_opt_out_lists_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OptOutLists">> => list(opt_out_list_information()())
+%%   <<"OptOutLists">> => list(opt_out_list_information())
 %% }
 -type describe_opt_out_lists_result() :: #{binary() => any()}.
 
@@ -1806,10 +1806,10 @@
 
 %% Example:
 %% describe_registration_attachments_request() :: #{
-%%   <<"Filters">> => list(registration_attachment_filter()()),
+%%   <<"Filters">> => list(registration_attachment_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RegistrationAttachmentIds">> => list(string()())
+%%   <<"RegistrationAttachmentIds">> => list(string())
 %% }
 -type describe_registration_attachments_request() :: #{binary() => any()}.
 
@@ -1817,7 +1817,7 @@
 %% update_sender_id_result() :: #{
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
 %%   <<"IsoCountryCode">> => string(),
-%%   <<"MessageTypes">> => list(string()()),
+%%   <<"MessageTypes">> => list(string()),
 %%   <<"MonthlyLeasingPrice">> => [string()],
 %%   <<"Registered">> => [boolean()],
 %%   <<"RegistrationId">> => [string()],
@@ -1829,20 +1829,20 @@
 %% Example:
 %% pool_origination_identities_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type pool_origination_identities_filter() :: #{binary() => any()}.
 
 %% Example:
 %% describe_account_limits_result() :: #{
-%%   <<"AccountLimits">> => list(account_limit()()),
+%%   <<"AccountLimits">> => list(account_limit()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_account_limits_result() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()()),
+%%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => [string()],
 %%   <<"Reason">> => string()
 %% }
@@ -1892,7 +1892,7 @@
 %% Example:
 %% protect_configuration_rule_set_number_override_filter_item() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type protect_configuration_rule_set_number_override_filter_item() :: #{binary() => any()}.
 
@@ -1908,7 +1908,7 @@
 %% Example:
 %% registration_type_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type registration_type_filter() :: #{binary() => any()}.
 
@@ -1923,34 +1923,34 @@
 %% create_verified_destination_number_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DestinationPhoneNumber">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_verified_destination_number_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_phone_numbers_request() :: #{
-%%   <<"Filters">> => list(phone_number_filter()()),
+%%   <<"Filters">> => list(phone_number_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Owner">> => string(),
-%%   <<"PhoneNumberIds">> => list(string()())
+%%   <<"PhoneNumberIds">> => list(string())
 %% }
 -type describe_phone_numbers_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_opted_out_numbers_request() :: #{
-%%   <<"Filters">> => list(opted_out_filter()()),
+%%   <<"Filters">> => list(opted_out_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OptOutListName">> := string(),
-%%   <<"OptedOutNumbers">> => list(string()())
+%%   <<"OptedOutNumbers">> => list(string())
 %% }
 -type describe_opted_out_numbers_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_protect_configurations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProtectConfigurations">> => list(protect_configuration_information()())
+%%   <<"ProtectConfigurations">> => list(protect_configuration_information())
 %% }
 -type describe_protect_configurations_result() :: #{binary() => any()}.
 
@@ -1969,14 +1969,14 @@
 %% Example:
 %% describe_registration_type_definitions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RegistrationTypeDefinitions">> => list(registration_type_definition()())
+%%   <<"RegistrationTypeDefinitions">> => list(registration_type_definition())
 %% }
 -type describe_registration_type_definitions_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_phone_numbers_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number_information()())
+%%   <<"PhoneNumbers">> => list(phone_number_information())
 %% }
 -type describe_phone_numbers_result() :: #{binary() => any()}.
 
@@ -1989,7 +1989,7 @@
 %% Example:
 %% configuration_set_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type configuration_set_filter() :: #{binary() => any()}.
 
@@ -1997,7 +1997,7 @@
 %% create_opt_out_list_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"OptOutListName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_opt_out_list_request() :: #{binary() => any()}.
 
@@ -2006,7 +2006,7 @@
 %%   <<"ConfigurationSetArn">> => [string()],
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_configuration_set_result() :: #{binary() => any()}.
 
@@ -2024,7 +2024,7 @@
 
 %% Example:
 %% describe_configuration_sets_result() :: #{
-%%   <<"ConfigurationSets">> => list(configuration_set_information()()),
+%%   <<"ConfigurationSets">> => list(configuration_set_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_configuration_sets_result() :: #{binary() => any()}.
@@ -2039,7 +2039,7 @@
 
 %% Example:
 %% list_protect_configuration_rule_set_number_overrides_request() :: #{
-%%   <<"Filters">> => list(protect_configuration_rule_set_number_override_filter_item()()),
+%%   <<"Filters">> => list(protect_configuration_rule_set_number_override_filter_item()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ProtectConfigurationId">> := string()
@@ -2096,11 +2096,11 @@
 
 %% Example:
 %% describe_registration_versions_request() :: #{
-%%   <<"Filters">> => list(registration_version_filter()()),
+%%   <<"Filters">> => list(registration_version_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"RegistrationId">> := string(),
-%%   <<"VersionNumbers">> => list(float()())
+%%   <<"VersionNumbers">> => list(float())
 %% }
 -type describe_registration_versions_request() :: #{binary() => any()}.
 
@@ -2109,7 +2109,7 @@
 %%   <<"DeniedReason">> => [string()],
 %%   <<"FieldPath">> => string(),
 %%   <<"RegistrationAttachmentId">> => string(),
-%%   <<"SelectChoices">> => list(string()()),
+%%   <<"SelectChoices">> => list(string()),
 %%   <<"TextValue">> => string()
 %% }
 -type registration_field_value_information() :: #{binary() => any()}.
@@ -2149,7 +2149,7 @@
 
 %% Example:
 %% registration_version_information() :: #{
-%%   <<"DeniedReasons">> => list(registration_denied_reason_information()()),
+%%   <<"DeniedReasons">> => list(registration_denied_reason_information()),
 %%   <<"RegistrationVersionStatus">> => string(),
 %%   <<"RegistrationVersionStatusHistory">> => registration_version_status_history(),
 %%   <<"VersionNumber">> => float()
@@ -2165,7 +2165,7 @@
 %% Example:
 %% registration_version_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type registration_version_filter() :: #{binary() => any()}.
 
@@ -2184,7 +2184,7 @@
 %% Example:
 %% origination_identity_metadata() :: #{
 %%   <<"IsoCountryCode">> => string(),
-%%   <<"NumberCapabilities">> => list(string()()),
+%%   <<"NumberCapabilities">> => list(string()),
 %%   <<"OriginationIdentity">> => [string()],
 %%   <<"OriginationIdentityArn">> => [string()],
 %%   <<"PhoneNumber">> => string()
@@ -2201,8 +2201,8 @@
 
 %% Example:
 %% describe_configuration_sets_request() :: #{
-%%   <<"ConfigurationSetNames">> => list(string()()),
-%%   <<"Filters">> => list(configuration_set_filter()()),
+%%   <<"ConfigurationSetNames">> => list(string()),
+%%   <<"Filters">> => list(configuration_set_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2212,7 +2212,7 @@
 %% create_registration_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"RegistrationType">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_registration_request() :: #{binary() => any()}.
 
@@ -2254,7 +2254,7 @@
 %% create_configuration_set_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ConfigurationSetName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_configuration_set_request() :: #{binary() => any()}.
 
@@ -2263,7 +2263,7 @@
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"DestinationPhoneNumber">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VerifiedDestinationNumberArn">> => [string()],
 %%   <<"VerifiedDestinationNumberId">> => [string()]
 %% }
@@ -2277,7 +2277,7 @@
 %%   <<"DefaultMessageFeedbackEnabled">> => [boolean()],
 %%   <<"DefaultMessageType">> => string(),
 %%   <<"DefaultSenderId">> => string(),
-%%   <<"EventDestinations">> => list(event_destination()())
+%%   <<"EventDestinations">> => list(event_destination())
 %% }
 -type delete_configuration_set_result() :: #{binary() => any()}.
 
@@ -2287,7 +2287,7 @@
 %%   <<"RegistrationArn">> => [string()],
 %%   <<"RegistrationAttachmentId">> => [string()],
 %%   <<"RegistrationId">> => [string()],
-%%   <<"SelectChoices">> => list(string()()),
+%%   <<"SelectChoices">> => list(string()),
 %%   <<"TextValue">> => string(),
 %%   <<"VersionNumber">> => float()
 %% }
@@ -2341,7 +2341,7 @@
 %%   <<"DestinationPhoneNumber">> := string(),
 %%   <<"DryRun">> => [boolean()],
 %%   <<"MaxPrice">> => string(),
-%%   <<"MediaUrls">> => list(string()()),
+%%   <<"MediaUrls">> => list(string()),
 %%   <<"MessageBody">> => string(),
 %%   <<"MessageFeedbackEnabled">> => [boolean()],
 %%   <<"OriginationIdentity">> := string(),

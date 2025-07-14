@@ -126,7 +126,7 @@
 
 %% Example:
 %% list_experiments_response() :: #{
-%%   <<"experiments">> => list(experiment()()),
+%%   <<"experiments">> => list(experiment()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_experiments_response() :: #{binary() => any()}.
@@ -164,7 +164,7 @@
 
 %% Example:
 %% list_launches_response() :: #{
-%%   <<"launches">> => list(launch()()),
+%%   <<"launches">> => list(launch()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_launches_response() :: #{binary() => any()}.
@@ -178,7 +178,7 @@
 %%   <<"evaluationStrategy">> => string(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map(),
-%%   <<"variations">> := list(variation_config()())
+%%   <<"variations">> := list(variation_config())
 %% }
 -type create_feature_request() :: #{binary() => any()}.
 
@@ -219,7 +219,7 @@
 %%   <<"defaultVariation">> => string(),
 %%   <<"description">> => string(),
 %%   <<"entityOverrides">> => map(),
-%%   <<"evaluationRules">> => list(evaluation_rule()()),
+%%   <<"evaluationRules">> => list(evaluation_rule()),
 %%   <<"evaluationStrategy">> => string(),
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -227,7 +227,7 @@
 %%   <<"status">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"valueType">> => string(),
-%%   <<"variations">> => list(variation()())
+%%   <<"variations">> => list(variation())
 %% }
 -type feature() :: #{binary() => any()}.
 
@@ -242,7 +242,7 @@
 
 %% Example:
 %% scheduled_splits_launch_definition() :: #{
-%%   <<"steps">> => list(scheduled_split()())
+%%   <<"steps">> => list(scheduled_split())
 %% }
 -type scheduled_splits_launch_definition() :: #{binary() => any()}.
 
@@ -282,7 +282,7 @@
 
 %% Example:
 %% put_project_events_response() :: #{
-%%   <<"eventResults">> => list(put_project_events_result_entry()()),
+%%   <<"eventResults">> => list(put_project_events_result_entry()),
 %%   <<"failedEventCount">> => [integer()]
 %% }
 -type put_project_events_response() :: #{binary() => any()}.
@@ -310,7 +310,7 @@
 %% Example:
 %% list_segment_references_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"referencedBy">> => list(ref_resource()())
+%%   <<"referencedBy">> => list(ref_resource())
 %% }
 -type list_segment_references_response() :: #{binary() => any()}.
 
@@ -333,7 +333,7 @@
 
 %% Example:
 %% list_features_response() :: #{
-%%   <<"features">> => list(feature_summary()()),
+%%   <<"features">> => list(feature_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_features_response() :: #{binary() => any()}.
@@ -401,8 +401,8 @@
 %% Example:
 %% create_launch_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"groups">> := list(launch_group_config()()),
-%%   <<"metricMonitors">> => list(metric_monitor_config()()),
+%%   <<"groups">> := list(launch_group_config()),
+%%   <<"metricMonitors">> => list(metric_monitor_config()),
 %%   <<"name">> := string(),
 %%   <<"randomizationSalt">> => string(),
 %%   <<"scheduledSplitsConfig">> => scheduled_splits_launch_config(),
@@ -429,7 +429,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -453,12 +453,12 @@
 
 %% Example:
 %% update_feature_request() :: #{
-%%   <<"addOrUpdateVariations">> => list(variation_config()()),
+%%   <<"addOrUpdateVariations">> => list(variation_config()),
 %%   <<"defaultVariation">> => string(),
 %%   <<"description">> => string(),
 %%   <<"entityOverrides">> => map(),
 %%   <<"evaluationStrategy">> => string(),
-%%   <<"removeVariations">> => list(string()())
+%%   <<"removeVariations">> => list(string())
 %% }
 -type update_feature_request() :: #{binary() => any()}.
 
@@ -480,7 +480,7 @@
 
 %% Example:
 %% put_project_events_request() :: #{
-%%   <<"events">> := list(event()())
+%%   <<"events">> := list(event())
 %% }
 -type put_project_events_request() :: #{binary() => any()}.
 
@@ -512,7 +512,7 @@
 %% Example:
 %% list_segments_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"segments">> => list(segment()())
+%%   <<"segments">> => list(segment())
 %% }
 -type list_segments_response() :: #{binary() => any()}.
 
@@ -528,7 +528,7 @@
 %% Example:
 %% scheduled_split_config() :: #{
 %%   <<"groupWeights">> => map(),
-%%   <<"segmentOverrides">> => list(segment_override()()),
+%%   <<"segmentOverrides">> => list(segment_override()),
 %%   <<"startTime">> => [non_neg_integer()]
 %% }
 -type scheduled_split_config() :: #{binary() => any()}.
@@ -633,7 +633,7 @@
 %% Example:
 %% list_projects_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"projects">> => list(project_summary()())
+%%   <<"projects">> => list(project_summary())
 %% }
 -type list_projects_response() :: #{binary() => any()}.
 
@@ -657,7 +657,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"defaultVariation">> => string(),
-%%   <<"evaluationRules">> => list(evaluation_rule()()),
+%%   <<"evaluationRules">> => list(evaluation_rule()),
 %%   <<"evaluationStrategy">> => string(),
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -695,7 +695,7 @@
 
 %% Example:
 %% batch_evaluate_feature_response() :: #{
-%%   <<"results">> => list(evaluation_result()())
+%%   <<"results">> => list(evaluation_result())
 %% }
 -type batch_evaluate_feature_response() :: #{binary() => any()}.
 
@@ -722,7 +722,7 @@
 
 %% Example:
 %% scheduled_splits_launch_config() :: #{
-%%   <<"steps">> => list(scheduled_split_config()())
+%%   <<"steps">> => list(scheduled_split_config())
 %% }
 -type scheduled_splits_launch_config() :: #{binary() => any()}.
 
@@ -755,13 +755,13 @@
 %% Example:
 %% update_experiment_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"metricGoals">> => list(metric_goal_config()()),
+%%   <<"metricGoals">> => list(metric_goal_config()),
 %%   <<"onlineAbConfig">> => online_ab_config(),
 %%   <<"randomizationSalt">> => string(),
 %%   <<"removeSegment">> => [boolean()],
 %%   <<"samplingRate">> => float(),
 %%   <<"segment">> => string(),
-%%   <<"treatments">> => list(treatment_config()())
+%%   <<"treatments">> => list(treatment_config())
 %% }
 -type update_experiment_request() :: #{binary() => any()}.
 
@@ -769,14 +769,14 @@
 %% Example:
 %% create_experiment_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"metricGoals">> := list(metric_goal_config()()),
+%%   <<"metricGoals">> := list(metric_goal_config()),
 %%   <<"name">> := string(),
 %%   <<"onlineAbConfig">> => online_ab_config(),
 %%   <<"randomizationSalt">> => string(),
 %%   <<"samplingRate">> => float(),
 %%   <<"segment">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"treatments">> := list(treatment_config()())
+%%   <<"treatments">> := list(treatment_config())
 %% }
 -type create_experiment_request() :: #{binary() => any()}.
 
@@ -906,7 +906,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
@@ -919,7 +919,7 @@
 
 %% Example:
 %% batch_evaluate_feature_request() :: #{
-%%   <<"requests">> := list(evaluation_request()())
+%%   <<"requests">> := list(evaluation_request())
 %% }
 -type batch_evaluate_feature_request() :: #{binary() => any()}.
 
@@ -1076,9 +1076,9 @@
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"execution">> => launch_execution(),
-%%   <<"groups">> => list(launch_group()()),
+%%   <<"groups">> => list(launch_group()),
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"metricMonitors">> => list(metric_monitor()()),
+%%   <<"metricMonitors">> => list(metric_monitor()),
 %%   <<"name">> => string(),
 %%   <<"project">> => string(),
 %%   <<"randomizationSalt">> => string(),
@@ -1094,8 +1094,8 @@
 %% Example:
 %% get_experiment_results_response() :: #{
 %%   <<"details">> => [string()],
-%%   <<"reports">> => list(experiment_report()()),
-%%   <<"resultsData">> => list(experiment_results_data()()),
+%%   <<"reports">> => list(experiment_report()),
+%%   <<"resultsData">> => list(experiment_results_data()),
 %%   <<"timestamps">> => list([non_neg_integer()]())
 %% }
 -type get_experiment_results_response() :: #{binary() => any()}.
@@ -1104,7 +1104,7 @@
 %% Example:
 %% scheduled_split() :: #{
 %%   <<"groupWeights">> => map(),
-%%   <<"segmentOverrides">> => list(segment_override()()),
+%%   <<"segmentOverrides">> => list(segment_override()),
 %%   <<"startTime">> => [non_neg_integer()]
 %% }
 -type scheduled_split() :: #{binary() => any()}.
@@ -1117,7 +1117,7 @@
 %%   <<"description">> => string(),
 %%   <<"execution">> => experiment_execution(),
 %%   <<"lastUpdatedTime">> => [non_neg_integer()],
-%%   <<"metricGoals">> => list(metric_goal()()),
+%%   <<"metricGoals">> => list(metric_goal()),
 %%   <<"name">> => string(),
 %%   <<"onlineAbDefinition">> => online_ab_definition(),
 %%   <<"project">> => string(),
@@ -1128,7 +1128,7 @@
 %%   <<"status">> => string(),
 %%   <<"statusReason">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"treatments">> => list(treatment()()),
+%%   <<"treatments">> => list(treatment()),
 %%   <<"type">> => string()
 %% }
 -type experiment() :: #{binary() => any()}.
@@ -1168,12 +1168,12 @@
 %% get_experiment_results_request() :: #{
 %%   <<"baseStat">> => string(),
 %%   <<"endTime">> => [non_neg_integer()],
-%%   <<"metricNames">> := list(string()()),
+%%   <<"metricNames">> := list(string()),
 %%   <<"period">> => float(),
-%%   <<"reportNames">> => list(string()()),
-%%   <<"resultStats">> => list(string()()),
+%%   <<"reportNames">> => list(string()),
+%%   <<"resultStats">> => list(string()),
 %%   <<"startTime">> => [non_neg_integer()],
-%%   <<"treatmentNames">> := list(string()())
+%%   <<"treatmentNames">> := list(string())
 %% }
 -type get_experiment_results_request() :: #{binary() => any()}.
 
@@ -1200,8 +1200,8 @@
 %% Example:
 %% update_launch_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"groups">> => list(launch_group_config()()),
-%%   <<"metricMonitors">> => list(metric_monitor_config()()),
+%%   <<"groups">> => list(launch_group_config()),
+%%   <<"metricMonitors">> => list(metric_monitor_config()),
 %%   <<"randomizationSalt">> => string(),
 %%   <<"scheduledSplitsConfig">> => scheduled_splits_launch_config()
 %% }

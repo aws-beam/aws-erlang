@@ -123,7 +123,7 @@
 
 %% Example:
 %% list_links_output() :: #{
-%%   <<"Items">> => list(list_links_item()()),
+%%   <<"Items">> => list(list_links_item()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_links_output() :: #{binary() => any()}.
@@ -140,7 +140,7 @@
 
 %% Example:
 %% list_attached_links_output() :: #{
-%%   <<"Items">> => list(list_attached_links_item()()),
+%%   <<"Items">> => list(list_attached_links_item()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_attached_links_output() :: #{binary() => any()}.
@@ -327,7 +327,7 @@
 
 %% Example:
 %% list_sinks_output() :: #{
-%%   <<"Items">> => list(list_sinks_item()()),
+%%   <<"Items">> => list(list_sinks_item()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_sinks_output() :: #{binary() => any()}.
@@ -335,7 +335,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 

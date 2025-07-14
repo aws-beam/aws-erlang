@@ -175,7 +175,7 @@
 %%   <<"ListenerArn">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"PageSize">> => integer(),
-%%   <<"RuleArns">> => list(string()())
+%%   <<"RuleArns">> => list(string())
 %% }
 -type describe_rules_input() :: #{binary() => any()}.
 
@@ -187,7 +187,7 @@
 
 %% Example:
 %% describe_capacity_reservation_output() :: #{
-%%   <<"CapacityReservationState">> => list(zonal_capacity_reservation_state()()),
+%%   <<"CapacityReservationState">> => list(zonal_capacity_reservation_state()),
 %%   <<"DecreaseRequestsRemaining">> => integer(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity()
@@ -211,9 +211,9 @@
 
 %% Example:
 %% availability_zone() :: #{
-%%   <<"LoadBalancerAddresses">> => list(load_balancer_address()()),
+%%   <<"LoadBalancerAddresses">> => list(load_balancer_address()),
 %%   <<"OutpostId">> => string(),
-%%   <<"SourceNatIpv6Prefixes">> => list(string()()),
+%%   <<"SourceNatIpv6Prefixes">> => list(string()),
 %%   <<"SubnetId">> => string(),
 %%   <<"ZoneName">> => string()
 %% }
@@ -250,21 +250,21 @@
 
 %% Example:
 %% add_trust_store_revocations_output() :: #{
-%%   <<"TrustStoreRevocations">> => list(trust_store_revocation()())
+%%   <<"TrustStoreRevocations">> => list(trust_store_revocation())
 %% }
 -type add_trust_store_revocations_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_target_group_output() :: #{
-%%   <<"TargetGroups">> => list(target_group()())
+%%   <<"TargetGroups">> => list(target_group())
 %% }
 -type create_target_group_output() :: #{binary() => any()}.
 
 %% Example:
 %% listener() :: #{
-%%   <<"AlpnPolicy">> => list(string()()),
-%%   <<"Certificates">> => list(certificate()()),
-%%   <<"DefaultActions">> => list(action()()),
+%%   <<"AlpnPolicy">> => list(string()),
+%%   <<"Certificates">> => list(certificate()),
+%%   <<"DefaultActions">> => list(action()),
 %%   <<"ListenerArn">> => string(),
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
@@ -288,15 +288,15 @@
 
 %% Example:
 %% create_listener_input() :: #{
-%%   <<"AlpnPolicy">> => list(string()()),
-%%   <<"Certificates">> => list(certificate()()),
-%%   <<"DefaultActions">> := list(action()()),
+%%   <<"AlpnPolicy">> => list(string()),
+%%   <<"Certificates">> => list(certificate()),
+%%   <<"DefaultActions">> := list(action()),
 %%   <<"LoadBalancerArn">> := string(),
 %%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
 %%   <<"Port">> => integer(),
 %%   <<"Protocol">> => list(any()),
 %%   <<"SslPolicy">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_listener_input() :: #{binary() => any()}.
 
@@ -308,13 +308,13 @@
 
 %% Example:
 %% add_listener_certificates_output() :: #{
-%%   <<"Certificates">> => list(certificate()())
+%%   <<"Certificates">> => list(certificate())
 %% }
 -type add_listener_certificates_output() :: #{binary() => any()}.
 
 %% Example:
 %% modify_target_group_output() :: #{
-%%   <<"TargetGroups">> => list(target_group()())
+%%   <<"TargetGroups">> => list(target_group())
 %% }
 -type modify_target_group_output() :: #{binary() => any()}.
 
@@ -322,7 +322,7 @@
 %% set_security_groups_input() :: #{
 %%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => list(any()),
 %%   <<"LoadBalancerArn">> := string(),
-%%   <<"SecurityGroups">> := list(string()())
+%%   <<"SecurityGroups">> := list(string())
 %% }
 -type set_security_groups_input() :: #{binary() => any()}.
 
@@ -343,14 +343,14 @@
 
 %% Example:
 %% modify_target_group_attributes_input() :: #{
-%%   <<"Attributes">> := list(target_group_attribute()()),
+%%   <<"Attributes">> := list(target_group_attribute()),
 %%   <<"TargetGroupArn">> := string()
 %% }
 -type modify_target_group_attributes_input() :: #{binary() => any()}.
 
 %% Example:
 %% add_listener_certificates_input() :: #{
-%%   <<"Certificates">> := list(certificate()()),
+%%   <<"Certificates">> := list(certificate()),
 %%   <<"ListenerArn">> := string()
 %% }
 -type add_listener_certificates_input() :: #{binary() => any()}.
@@ -360,8 +360,8 @@
 %%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"LoadBalancerArn">> := string(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()()),
-%%   <<"Subnets">> => list(string()())
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"Subnets">> => list(string())
 %% }
 -type set_subnets_input() :: #{binary() => any()}.
 
@@ -377,10 +377,10 @@
 
 %% Example:
 %% ssl_policy() :: #{
-%%   <<"Ciphers">> => list(cipher()()),
+%%   <<"Ciphers">> => list(cipher()),
 %%   <<"Name">> => string(),
-%%   <<"SslProtocols">> => list(string()()),
-%%   <<"SupportedLoadBalancerTypes">> => list(string()())
+%%   <<"SslProtocols">> => list(string()),
+%%   <<"SupportedLoadBalancerTypes">> => list(string())
 %% }
 -type ssl_policy() :: #{binary() => any()}.
 
@@ -394,14 +394,14 @@
 
 %% Example:
 %% modify_listener_output() :: #{
-%%   <<"Listeners">> => list(listener()())
+%%   <<"Listeners">> => list(listener())
 %% }
 -type modify_listener_output() :: #{binary() => any()}.
 
 %% Example:
 %% deregister_targets_input() :: #{
 %%   <<"TargetGroupArn">> := string(),
-%%   <<"Targets">> := list(target_description()())
+%%   <<"Targets">> := list(target_description())
 %% }
 -type deregister_targets_input() :: #{binary() => any()}.
 
@@ -413,8 +413,8 @@
 
 %% Example:
 %% add_tags_input() :: #{
-%%   <<"ResourceArns">> := list(string()()),
-%%   <<"Tags">> := list(tag()())
+%%   <<"ResourceArns">> := list(string()),
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_input() :: #{binary() => any()}.
 
@@ -449,20 +449,20 @@
 
 %% Example:
 %% create_rule_output() :: #{
-%%   <<"Rules">> => list(rule()())
+%%   <<"Rules">> => list(rule())
 %% }
 -type create_rule_output() :: #{binary() => any()}.
 
 %% Example:
 %% add_trust_store_revocations_input() :: #{
-%%   <<"RevocationContents">> => list(revocation_content()()),
+%%   <<"RevocationContents">> => list(revocation_content()),
 %%   <<"TrustStoreArn">> := string()
 %% }
 -type add_trust_store_revocations_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_target_group_attributes_output() :: #{
-%%   <<"Attributes">> => list(target_group_attribute()())
+%%   <<"Attributes">> => list(target_group_attribute())
 %% }
 -type describe_target_group_attributes_output() :: #{binary() => any()}.
 
@@ -483,7 +483,7 @@
 %% Example:
 %% describe_trust_stores_output() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"TrustStores">> => list(trust_store()())
+%%   <<"TrustStores">> => list(trust_store())
 %% }
 -type describe_trust_stores_output() :: #{binary() => any()}.
 
@@ -491,14 +491,14 @@
 %% describe_ssl_policies_input() :: #{
 %%   <<"LoadBalancerType">> => list(any()),
 %%   <<"Marker">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"PageSize">> => integer()
 %% }
 -type describe_ssl_policies_input() :: #{binary() => any()}.
 
 %% Example:
 %% create_load_balancer_output() :: #{
-%%   <<"LoadBalancers">> => list(load_balancer()())
+%%   <<"LoadBalancers">> => list(load_balancer())
 %% }
 -type create_load_balancer_output() :: #{binary() => any()}.
 
@@ -544,7 +544,7 @@
 %%   <<"CaCertificatesBundleS3Key">> := string(),
 %%   <<"CaCertificatesBundleS3ObjectVersion">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_trust_store_input() :: #{binary() => any()}.
 
@@ -556,7 +556,7 @@
 
 %% Example:
 %% query_string_condition_config() :: #{
-%%   <<"Values">> => list(query_string_key_value_pair()())
+%%   <<"Values">> => list(query_string_key_value_pair())
 %% }
 -type query_string_condition_config() :: #{binary() => any()}.
 
@@ -581,14 +581,14 @@
 
 %% Example:
 %% host_header_condition_config() :: #{
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type host_header_condition_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ssl_policies_output() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"SslPolicies">> => list(ssl_policy()())
+%%   <<"SslPolicies">> => list(ssl_policy())
 %% }
 -type describe_ssl_policies_output() :: #{binary() => any()}.
 
@@ -637,7 +637,7 @@
 
 %% Example:
 %% describe_tags_input() :: #{
-%%   <<"ResourceArns">> := list(string()())
+%%   <<"ResourceArns">> := list(string())
 %% }
 -type describe_tags_input() :: #{binary() => any()}.
 
@@ -662,7 +662,7 @@
 %%   <<"Port">> => integer(),
 %%   <<"Protocol">> => list(any()),
 %%   <<"ProtocolVersion">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetType">> => list(any()),
 %%   <<"UnhealthyThresholdCount">> => integer(),
 %%   <<"VpcId">> => string()
@@ -690,9 +690,9 @@
 
 %% Example:
 %% modify_listener_input() :: #{
-%%   <<"AlpnPolicy">> => list(string()()),
-%%   <<"Certificates">> => list(certificate()()),
-%%   <<"DefaultActions">> => list(action()()),
+%%   <<"AlpnPolicy">> => list(string()),
+%%   <<"Certificates">> => list(certificate()),
+%%   <<"DefaultActions">> => list(action()),
 %%   <<"ListenerArn">> := string(),
 %%   <<"MutualAuthentication">> => mutual_authentication_attributes(),
 %%   <<"Port">> => integer(),
@@ -721,14 +721,14 @@
 
 %% Example:
 %% set_rule_priorities_output() :: #{
-%%   <<"Rules">> => list(rule()())
+%%   <<"Rules">> => list(rule())
 %% }
 -type set_rule_priorities_output() :: #{binary() => any()}.
 
 %% Example:
 %% tag_description() :: #{
 %%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type tag_description() :: #{binary() => any()}.
 
@@ -747,7 +747,7 @@
 
 %% Example:
 %% set_subnets_output() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"AvailabilityZones">> => list(availability_zone()),
 %%   <<"EnablePrefixForIpv6SourceNat">> => list(any()),
 %%   <<"IpAddressType">> => list(any())
 %% }
@@ -761,7 +761,7 @@
 
 %% Example:
 %% create_listener_output() :: #{
-%%   <<"Listeners">> => list(listener()())
+%%   <<"Listeners">> => list(listener())
 %% }
 -type create_listener_output() :: #{binary() => any()}.
 
@@ -805,7 +805,7 @@
 
 %% Example:
 %% describe_listener_attributes_output() :: #{
-%%   <<"Attributes">> => list(listener_attribute()())
+%%   <<"Attributes">> => list(listener_attribute())
 %% }
 -type describe_listener_attributes_output() :: #{binary() => any()}.
 
@@ -824,7 +824,7 @@
 
 %% Example:
 %% remove_listener_certificates_input() :: #{
-%%   <<"Certificates">> := list(certificate()()),
+%%   <<"Certificates">> := list(certificate()),
 %%   <<"ListenerArn">> := string()
 %% }
 -type remove_listener_certificates_input() :: #{binary() => any()}.
@@ -832,7 +832,7 @@
 %% Example:
 %% forward_action_config() :: #{
 %%   <<"TargetGroupStickinessConfig">> => target_group_stickiness_config(),
-%%   <<"TargetGroups">> => list(target_group_tuple()())
+%%   <<"TargetGroups">> => list(target_group_tuple())
 %% }
 -type forward_action_config() :: #{binary() => any()}.
 
@@ -850,7 +850,7 @@
 
 %% Example:
 %% describe_tags_output() :: #{
-%%   <<"TagDescriptions">> => list(tag_description()())
+%%   <<"TagDescriptions">> => list(tag_description())
 %% }
 -type describe_tags_output() :: #{binary() => any()}.
 
@@ -869,9 +869,9 @@
 %% Example:
 %% describe_trust_stores_input() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"PageSize">> => integer(),
-%%   <<"TrustStoreArns">> => list(string()())
+%%   <<"TrustStoreArns">> => list(string())
 %% }
 -type describe_trust_stores_input() :: #{binary() => any()}.
 
@@ -889,7 +889,7 @@
 
 %% Example:
 %% describe_listener_certificates_output() :: #{
-%%   <<"Certificates">> => list(certificate()()),
+%%   <<"Certificates">> => list(certificate()),
 %%   <<"NextMarker">> => string()
 %% }
 -type describe_listener_certificates_output() :: #{binary() => any()}.
@@ -920,8 +920,8 @@
 
 %% Example:
 %% rule() :: #{
-%%   <<"Actions">> => list(action()()),
-%%   <<"Conditions">> => list(rule_condition()()),
+%%   <<"Actions">> => list(action()),
+%%   <<"Conditions">> => list(rule_condition()),
 %%   <<"IsDefault">> => boolean(),
 %%   <<"Priority">> => string(),
 %%   <<"RuleArn">> => string()
@@ -930,23 +930,23 @@
 
 %% Example:
 %% create_rule_input() :: #{
-%%   <<"Actions">> := list(action()()),
-%%   <<"Conditions">> := list(rule_condition()()),
+%%   <<"Actions">> := list(action()),
+%%   <<"Conditions">> := list(rule_condition()),
 %%   <<"ListenerArn">> := string(),
 %%   <<"Priority">> := integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_rule_input() :: #{binary() => any()}.
 
 %% Example:
 %% set_rule_priorities_input() :: #{
-%%   <<"RulePriorities">> := list(rule_priority_pair()())
+%%   <<"RulePriorities">> := list(rule_priority_pair())
 %% }
 -type set_rule_priorities_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_account_limits_output() :: #{
-%%   <<"Limits">> => list(limit()()),
+%%   <<"Limits">> => list(limit()),
 %%   <<"NextMarker">> => string()
 %% }
 -type describe_account_limits_output() :: #{binary() => any()}.
@@ -971,9 +971,9 @@
 
 %% Example:
 %% describe_load_balancers_input() :: #{
-%%   <<"LoadBalancerArns">> => list(string()()),
+%%   <<"LoadBalancerArns">> => list(string()),
 %%   <<"Marker">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"PageSize">> => integer()
 %% }
 -type describe_load_balancers_input() :: #{binary() => any()}.
@@ -1005,14 +1005,14 @@
 
 %% Example:
 %% describe_listeners_output() :: #{
-%%   <<"Listeners">> => list(listener()()),
+%%   <<"Listeners">> => list(listener()),
 %%   <<"NextMarker">> => string()
 %% }
 -type describe_listeners_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_load_balancer_attributes_output() :: #{
-%%   <<"Attributes">> => list(load_balancer_attribute()())
+%%   <<"Attributes">> => list(load_balancer_attribute())
 %% }
 -type describe_load_balancer_attributes_output() :: #{binary() => any()}.
 
@@ -1025,7 +1025,7 @@
 
 %% Example:
 %% modify_load_balancer_attributes_output() :: #{
-%%   <<"Attributes">> => list(load_balancer_attribute()())
+%%   <<"Attributes">> => list(load_balancer_attribute())
 %% }
 -type modify_load_balancer_attributes_output() :: #{binary() => any()}.
 
@@ -1038,7 +1038,7 @@
 
 %% Example:
 %% remove_trust_store_revocations_input() :: #{
-%%   <<"RevocationIds">> := list(float()()),
+%%   <<"RevocationIds">> := list(float()),
 %%   <<"TrustStoreArn">> := string()
 %% }
 -type remove_trust_store_revocations_input() :: #{binary() => any()}.
@@ -1082,14 +1082,14 @@
 
 %% Example:
 %% modify_listener_attributes_output() :: #{
-%%   <<"Attributes">> => list(listener_attribute()())
+%%   <<"Attributes">> => list(listener_attribute())
 %% }
 -type modify_listener_attributes_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_trust_store_associations_output() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"TrustStoreAssociations">> => list(trust_store_association()())
+%%   <<"TrustStoreAssociations">> => list(trust_store_association())
 %% }
 -type describe_trust_store_associations_output() :: #{binary() => any()}.
 
@@ -1115,7 +1115,7 @@
 %% Example:
 %% describe_target_groups_output() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"TargetGroups">> => list(target_group()())
+%%   <<"TargetGroups">> => list(target_group())
 %% }
 -type describe_target_groups_output() :: #{binary() => any()}.
 
@@ -1140,7 +1140,7 @@
 
 %% Example:
 %% http_request_method_condition_config() :: #{
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type http_request_method_condition_config() :: #{binary() => any()}.
 
@@ -1154,7 +1154,7 @@
 %% describe_trust_store_revocations_input() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"PageSize">> => integer(),
-%%   <<"RevocationIds">> => list(float()()),
+%%   <<"RevocationIds">> => list(float()),
 %%   <<"TrustStoreArn">> := string()
 %% }
 -type describe_trust_store_revocations_input() :: #{binary() => any()}.
@@ -1174,13 +1174,13 @@
 %%   <<"PathPatternConfig">> => path_pattern_condition_config(),
 %%   <<"QueryStringConfig">> => query_string_condition_config(),
 %%   <<"SourceIpConfig">> => source_ip_condition_config(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type rule_condition() :: #{binary() => any()}.
 
 %% Example:
 %% modify_capacity_reservation_output() :: #{
-%%   <<"CapacityReservationState">> => list(zonal_capacity_reservation_state()()),
+%%   <<"CapacityReservationState">> => list(zonal_capacity_reservation_state()),
 %%   <<"DecreaseRequestsRemaining">> => integer(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity()
@@ -1209,7 +1209,7 @@
 
 %% Example:
 %% modify_load_balancer_attributes_input() :: #{
-%%   <<"Attributes">> := list(load_balancer_attribute()()),
+%%   <<"Attributes">> := list(load_balancer_attribute()),
 %%   <<"LoadBalancerArn">> := string()
 %% }
 -type modify_load_balancer_attributes_input() :: #{binary() => any()}.
@@ -1222,10 +1222,10 @@
 %%   <<"IpamPools">> => ipam_pools(),
 %%   <<"Name">> := string(),
 %%   <<"Scheme">> => list(any()),
-%%   <<"SecurityGroups">> => list(string()()),
-%%   <<"SubnetMappings">> => list(subnet_mapping()()),
-%%   <<"Subnets">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"Subnets">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => list(any())
 %% }
 -type create_load_balancer_input() :: #{binary() => any()}.
@@ -1258,7 +1258,7 @@
 %%   <<"HealthCheckTimeoutSeconds">> => integer(),
 %%   <<"HealthyThresholdCount">> => integer(),
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"LoadBalancerArns">> => list(string()()),
+%%   <<"LoadBalancerArns">> => list(string()),
 %%   <<"Matcher">> => matcher(),
 %%   <<"Port">> => integer(),
 %%   <<"Protocol">> => list(any()),
@@ -1273,7 +1273,7 @@
 
 %% Example:
 %% load_balancer() :: #{
-%%   <<"AvailabilityZones">> => list(availability_zone()()),
+%%   <<"AvailabilityZones">> => list(availability_zone()),
 %%   <<"CanonicalHostedZoneId">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"CustomerOwnedIpv4Pool">> => string(),
@@ -1285,7 +1285,7 @@
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"LoadBalancerName">> => string(),
 %%   <<"Scheme">> => list(any()),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"State">> => load_balancer_state(),
 %%   <<"Type">> => list(any()),
 %%   <<"VpcId">> => string()
@@ -1296,7 +1296,7 @@
 %% describe_target_health_input() :: #{
 %%   <<"Include">> => list(list(any())()),
 %%   <<"TargetGroupArn">> := string(),
-%%   <<"Targets">> => list(target_description()())
+%%   <<"Targets">> => list(target_description())
 %% }
 -type describe_target_health_input() :: #{binary() => any()}.
 
@@ -1316,13 +1316,13 @@
 %% Example:
 %% describe_trust_store_revocations_output() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"TrustStoreRevocations">> => list(describe_trust_store_revocation()())
+%%   <<"TrustStoreRevocations">> => list(describe_trust_store_revocation())
 %% }
 -type describe_trust_store_revocations_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_listeners_input() :: #{
-%%   <<"ListenerArns">> => list(string()()),
+%%   <<"ListenerArns">> => list(string()),
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"Marker">> => string(),
 %%   <<"PageSize">> => integer()
@@ -1332,7 +1332,7 @@
 %% Example:
 %% register_targets_input() :: #{
 %%   <<"TargetGroupArn">> := string(),
-%%   <<"Targets">> := list(target_description()())
+%%   <<"Targets">> := list(target_description())
 %% }
 -type register_targets_input() :: #{binary() => any()}.
 
@@ -1396,7 +1396,7 @@
 %% Example:
 %% describe_rules_output() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"Rules">> => list(rule()())
+%%   <<"Rules">> => list(rule())
 %% }
 -type describe_rules_output() :: #{binary() => any()}.
 
@@ -1418,8 +1418,8 @@
 
 %% Example:
 %% modify_rule_input() :: #{
-%%   <<"Actions">> => list(action()()),
-%%   <<"Conditions">> => list(rule_condition()()),
+%%   <<"Actions">> => list(action()),
+%%   <<"Conditions">> => list(rule_condition()),
 %%   <<"RuleArn">> := string()
 %% }
 -type modify_rule_input() :: #{binary() => any()}.
@@ -1456,7 +1456,7 @@
 
 %% Example:
 %% describe_load_balancers_output() :: #{
-%%   <<"LoadBalancers">> => list(load_balancer()()),
+%%   <<"LoadBalancers">> => list(load_balancer()),
 %%   <<"NextMarker">> => string()
 %% }
 -type describe_load_balancers_output() :: #{binary() => any()}.
@@ -1492,9 +1492,9 @@
 %% describe_target_groups_input() :: #{
 %%   <<"LoadBalancerArn">> => string(),
 %%   <<"Marker">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"PageSize">> => integer(),
-%%   <<"TargetGroupArns">> => list(string()())
+%%   <<"TargetGroupArns">> => list(string())
 %% }
 -type describe_target_groups_input() :: #{binary() => any()}.
 
@@ -1506,15 +1506,15 @@
 
 %% Example:
 %% remove_tags_input() :: #{
-%%   <<"ResourceArns">> := list(string()()),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"ResourceArns">> := list(string()),
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_input() :: #{binary() => any()}.
 
 %% Example:
 %% http_header_condition_config() :: #{
 %%   <<"HttpHeaderName">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type http_header_condition_config() :: #{binary() => any()}.
 
@@ -1526,7 +1526,7 @@
 
 %% Example:
 %% path_pattern_condition_config() :: #{
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type path_pattern_condition_config() :: #{binary() => any()}.
 
@@ -1566,13 +1566,13 @@
 
 %% Example:
 %% describe_target_health_output() :: #{
-%%   <<"TargetHealthDescriptions">> => list(target_health_description()())
+%%   <<"TargetHealthDescriptions">> => list(target_health_description())
 %% }
 -type describe_target_health_output() :: #{binary() => any()}.
 
 %% Example:
 %% source_ip_condition_config() :: #{
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type source_ip_condition_config() :: #{binary() => any()}.
 
@@ -1591,20 +1591,20 @@
 
 %% Example:
 %% create_trust_store_output() :: #{
-%%   <<"TrustStores">> => list(trust_store()())
+%%   <<"TrustStores">> => list(trust_store())
 %% }
 -type create_trust_store_output() :: #{binary() => any()}.
 
 %% Example:
 %% set_security_groups_output() :: #{
 %%   <<"EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic">> => list(any()),
-%%   <<"SecurityGroupIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string())
 %% }
 -type set_security_groups_output() :: #{binary() => any()}.
 
 %% Example:
 %% modify_trust_store_output() :: #{
-%%   <<"TrustStores">> => list(trust_store()())
+%%   <<"TrustStores">> => list(trust_store())
 %% }
 -type modify_trust_store_output() :: #{binary() => any()}.
 
@@ -1629,7 +1629,7 @@
 
 %% Example:
 %% modify_listener_attributes_input() :: #{
-%%   <<"Attributes">> := list(listener_attribute()()),
+%%   <<"Attributes">> := list(listener_attribute()),
 %%   <<"ListenerArn">> := string()
 %% }
 -type modify_listener_attributes_input() :: #{binary() => any()}.
@@ -1651,7 +1651,7 @@
 
 %% Example:
 %% modify_rule_output() :: #{
-%%   <<"Rules">> => list(rule()())
+%%   <<"Rules">> => list(rule())
 %% }
 -type modify_rule_output() :: #{binary() => any()}.
 
@@ -1673,7 +1673,7 @@
 
 %% Example:
 %% modify_target_group_attributes_output() :: #{
-%%   <<"Attributes">> => list(target_group_attribute()())
+%%   <<"Attributes">> => list(target_group_attribute())
 %% }
 -type modify_target_group_attributes_output() :: #{binary() => any()}.
 

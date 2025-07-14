@@ -36,7 +36,7 @@
 
 %% Example:
 %% get_ice_server_config_response() :: #{
-%%   <<"IceServerList">> => list(ice_server()())
+%%   <<"IceServerList">> => list(ice_server())
 %% }
 -type get_ice_server_config_response() :: #{binary() => any()}.
 
@@ -45,7 +45,7 @@
 %% ice_server() :: #{
 %%   <<"Password">> => string(),
 %%   <<"Ttl">> => integer(),
-%%   <<"Uris">> => list(string()()),
+%%   <<"Uris">> => list(string()),
 %%   <<"Username">> => string()
 %% }
 -type ice_server() :: #{binary() => any()}.

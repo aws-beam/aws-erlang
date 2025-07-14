@@ -117,7 +117,7 @@
 
 %% Example:
 %% describe_canaries_response() :: #{
-%%   <<"Canaries">> => list(canary()()),
+%%   <<"Canaries">> => list(canary()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_canaries_response() :: #{binary() => any()}.
@@ -126,7 +126,7 @@
 %% Example:
 %% describe_canaries_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_canaries_request() :: #{binary() => any()}.
@@ -166,7 +166,7 @@
 %% Example:
 %% visual_reference_output() :: #{
 %%   <<"BaseCanaryRunId">> => string(),
-%%   <<"BaseScreenshots">> => list(base_screenshot()())
+%%   <<"BaseScreenshots">> => list(base_screenshot())
 %% }
 -type visual_reference_output() :: #{binary() => any()}.
 
@@ -200,7 +200,7 @@
 %% Example:
 %% describe_runtime_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RuntimeVersions">> => list(runtime_version()())
+%%   <<"RuntimeVersions">> => list(runtime_version())
 %% }
 -type describe_runtime_versions_response() :: #{binary() => any()}.
 
@@ -217,7 +217,7 @@
 
 %% Example:
 %% describe_canaries_last_run_response() :: #{
-%%   <<"CanariesLastRun">> => list(canary_last_run()()),
+%%   <<"CanariesLastRun">> => list(canary_last_run()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_canaries_last_run_response() :: #{binary() => any()}.
@@ -225,7 +225,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -244,7 +244,7 @@
 %% Example:
 %% list_group_resources_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(string()())
+%%   <<"Resources">> => list(string())
 %% }
 -type list_group_resources_response() :: #{binary() => any()}.
 
@@ -386,7 +386,7 @@
 
 %% Example:
 %% base_screenshot() :: #{
-%%   <<"IgnoreCoordinates">> => list(string()()),
+%%   <<"IgnoreCoordinates">> => list(string()),
 %%   <<"ScreenshotName">> => string()
 %% }
 -type base_screenshot() :: #{binary() => any()}.
@@ -402,8 +402,8 @@
 %% Example:
 %% vpc_config_output() :: #{
 %%   <<"Ipv6AllowedForDualStack">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type vpc_config_output() :: #{binary() => any()}.
@@ -447,7 +447,7 @@
 
 %% Example:
 %% get_canary_runs_response() :: #{
-%%   <<"CanaryRuns">> => list(canary_run()()),
+%%   <<"CanaryRuns">> => list(canary_run()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_canary_runs_response() :: #{binary() => any()}.
@@ -464,7 +464,7 @@
 %% Example:
 %% describe_canaries_last_run_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_canaries_last_run_request() :: #{binary() => any()}.
@@ -496,7 +496,7 @@
 %% Example:
 %% visual_reference_input() :: #{
 %%   <<"BaseCanaryRunId">> => string(),
-%%   <<"BaseScreenshots">> => list(base_screenshot()())
+%%   <<"BaseScreenshots">> => list(base_screenshot())
 %% }
 -type visual_reference_input() :: #{binary() => any()}.
 
@@ -572,8 +572,8 @@
 %% Example:
 %% vpc_config_input() :: #{
 %%   <<"Ipv6AllowedForDualStack">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_config_input() :: #{binary() => any()}.
 
@@ -667,7 +667,7 @@
 
 %% Example:
 %% list_associated_groups_response() :: #{
-%%   <<"Groups">> => list(group_summary()()),
+%%   <<"Groups">> => list(group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_associated_groups_response() :: #{binary() => any()}.
@@ -675,7 +675,7 @@
 
 %% Example:
 %% list_groups_response() :: #{
-%%   <<"Groups">> => list(group_summary()()),
+%%   <<"Groups">> => list(group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_response() :: #{binary() => any()}.

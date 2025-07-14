@@ -107,7 +107,7 @@
 %% put_hypervisor_property_mappings_input() :: #{
 %%   <<"HypervisorArn">> := string(),
 %%   <<"IamRoleArn">> := string(),
-%%   <<"VmwareToAwsTagMappings">> := list(vmware_to_aws_tag_mapping()())
+%%   <<"VmwareToAwsTagMappings">> := list(vmware_to_aws_tag_mapping())
 %% }
 -type put_hypervisor_property_mappings_input() :: #{binary() => any()}.
 
@@ -125,14 +125,14 @@
 
 %% Example:
 %% get_bandwidth_rate_limit_schedule_output() :: #{
-%%   <<"BandwidthRateLimitIntervals">> => list(bandwidth_rate_limit_interval()()),
+%%   <<"BandwidthRateLimitIntervals">> => list(bandwidth_rate_limit_interval()),
 %%   <<"GatewayArn">> => string()
 %% }
 -type get_bandwidth_rate_limit_schedule_output() :: #{binary() => any()}.
 
 %% Example:
 %% put_bandwidth_rate_limit_schedule_input() :: #{
-%%   <<"BandwidthRateLimitIntervals">> := list(bandwidth_rate_limit_interval()()),
+%%   <<"BandwidthRateLimitIntervals">> := list(bandwidth_rate_limit_interval()),
 %%   <<"GatewayArn">> := string()
 %% }
 -type put_bandwidth_rate_limit_schedule_input() :: #{binary() => any()}.
@@ -188,7 +188,7 @@
 %% get_hypervisor_property_mappings_output() :: #{
 %%   <<"HypervisorArn">> => string(),
 %%   <<"IamRoleArn">> => string(),
-%%   <<"VmwareToAwsTagMappings">> => list(vmware_to_aws_tag_mapping()())
+%%   <<"VmwareToAwsTagMappings">> => list(vmware_to_aws_tag_mapping())
 %% }
 -type get_hypervisor_property_mappings_output() :: #{binary() => any()}.
 
@@ -202,7 +202,7 @@
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -221,7 +221,7 @@
 %% Example:
 %% list_virtual_machines_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VirtualMachines">> => list(virtual_machine()())
+%%   <<"VirtualMachines">> => list(virtual_machine())
 %% }
 -type list_virtual_machines_output() :: #{binary() => any()}.
 
@@ -300,7 +300,7 @@
 %% Example:
 %% bandwidth_rate_limit_interval() :: #{
 %%   <<"AverageUploadRateLimitInBitsPerSec">> => float(),
-%%   <<"DaysOfWeek">> => list(integer()()),
+%%   <<"DaysOfWeek">> => list(integer()),
 %%   <<"EndHourOfDay">> => integer(),
 %%   <<"EndMinuteOfHour">> => integer(),
 %%   <<"StartHourOfDay">> => integer(),
@@ -310,7 +310,7 @@
 
 %% Example:
 %% list_gateways_output() :: #{
-%%   <<"Gateways">> => list(gateway()()),
+%%   <<"Gateways">> => list(gateway()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_gateways_output() :: #{binary() => any()}.
@@ -354,7 +354,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -376,7 +376,7 @@
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Password">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Username">> => string()
 %% }
 -type import_hypervisor_configuration_input() :: #{binary() => any()}.
@@ -429,7 +429,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Path">> => string(),
 %%   <<"ResourceArn">> => string(),
-%%   <<"VmwareTags">> => list(vmware_tag()())
+%%   <<"VmwareTags">> => list(vmware_tag())
 %% }
 -type virtual_machine_details() :: #{binary() => any()}.
 
@@ -450,7 +450,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -464,7 +464,7 @@
 
 %% Example:
 %% list_hypervisors_output() :: #{
-%%   <<"Hypervisors">> => list(hypervisor()()),
+%%   <<"Hypervisors">> => list(hypervisor()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_hypervisors_output() :: #{binary() => any()}.
@@ -506,7 +506,7 @@
 %%   <<"ActivationKey">> := string(),
 %%   <<"GatewayDisplayName">> := string(),
 %%   <<"GatewayType">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_gateway_input() :: #{binary() => any()}.
 

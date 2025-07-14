@@ -69,7 +69,7 @@
 
 %% Example:
 %% list_connectors_response() :: #{
-%%   <<"Connectors">> => list(connector_summary()()),
+%%   <<"Connectors">> => list(connector_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connectors_response() :: #{binary() => any()}.
@@ -307,7 +307,7 @@
 
 %% Example:
 %% list_challenge_metadata_response() :: #{
-%%   <<"Challenges">> => list(challenge_metadata_summary()()),
+%%   <<"Challenges">> => list(challenge_metadata_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_challenge_metadata_response() :: #{binary() => any()}.

@@ -103,16 +103,16 @@
 
 %% Example:
 %% batch_update_cluster_response() :: #{
-%%   <<"ProcessedClusters">> => list(cluster()()),
-%%   <<"UnprocessedClusters">> => list(unprocessed_cluster()())
+%%   <<"ProcessedClusters">> => list(cluster()),
+%%   <<"UnprocessedClusters">> => list(unprocessed_cluster())
 %% }
 -type batch_update_cluster_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_acl_request() :: #{
 %%   <<"ACLName">> := string(),
-%%   <<"UserNamesToAdd">> => list(string()()),
-%%   <<"UserNamesToRemove">> => list(string()())
+%%   <<"UserNamesToAdd">> => list(string()),
+%%   <<"UserNamesToRemove">> => list(string())
 %% }
 -type update_acl_request() :: #{binary() => any()}.
 
@@ -155,7 +155,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -187,7 +187,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Family">> := string(),
 %%   <<"ParameterGroupName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_parameter_group_request() :: #{binary() => any()}.
 
@@ -206,7 +206,7 @@
 %% Example:
 %% describe_parameter_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ParameterGroups">> => list(parameter_group()())
+%%   <<"ParameterGroups">> => list(parameter_group())
 %% }
 -type describe_parameter_groups_response() :: #{binary() => any()}.
 
@@ -219,7 +219,7 @@
 %% Example:
 %% describe_service_updates_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceUpdates">> => list(service_update()())
+%%   <<"ServiceUpdates">> => list(service_update())
 %% }
 -type describe_service_updates_response() :: #{binary() => any()}.
 
@@ -237,7 +237,7 @@
 
 %% Example:
 %% untag_resource_response() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
 
@@ -278,14 +278,14 @@
 %%   <<"ClusterName">> := string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SnapshotName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_snapshot_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_users_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type describe_users_response() :: #{binary() => any()}.
 
@@ -301,7 +301,7 @@
 %%   <<"FixedPrice">> => float(),
 %%   <<"NodeType">> => string(),
 %%   <<"OfferingType">> => string(),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservedNodesOfferingId">> => string()
 %% }
 -type reserved_nodes_offering() :: #{binary() => any()}.
@@ -322,7 +322,7 @@
 
 %% Example:
 %% describe_multi_region_clusters_response() :: #{
-%%   <<"MultiRegionClusters">> => list(multi_region_cluster()()),
+%%   <<"MultiRegionClusters">> => list(multi_region_cluster()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_multi_region_clusters_response() :: #{binary() => any()}.
@@ -337,7 +337,7 @@
 %% Example:
 %% describe_snapshots_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Snapshots">> => list(snapshot()())
+%%   <<"Snapshots">> => list(snapshot())
 %% }
 -type describe_snapshots_response() :: #{binary() => any()}.
 
@@ -352,7 +352,7 @@
 %% reset_parameter_group_request() :: #{
 %%   <<"AllParameters">> => boolean(),
 %%   <<"ParameterGroupName">> := string(),
-%%   <<"ParameterNames">> => list(string()())
+%%   <<"ParameterNames">> => list(string())
 %% }
 -type reset_parameter_group_request() :: #{binary() => any()}.
 
@@ -427,20 +427,20 @@
 
 %% Example:
 %% list_allowed_node_type_updates_response() :: #{
-%%   <<"ScaleDownNodeTypes">> => list(string()()),
-%%   <<"ScaleUpNodeTypes">> => list(string()())
+%%   <<"ScaleDownNodeTypes">> => list(string()),
+%%   <<"ScaleUpNodeTypes">> => list(string())
 %% }
 -type list_allowed_node_type_updates_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_response() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_users_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"UserName">> => string()
@@ -456,7 +456,7 @@
 %% Example:
 %% describe_parameters_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type describe_parameters_response() :: #{binary() => any()}.
 
@@ -481,20 +481,20 @@
 %% Example:
 %% create_acl_request() :: #{
 %%   <<"ACLName">> := string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"UserNames">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserNames">> => list(string())
 %% }
 -type create_acl_request() :: #{binary() => any()}.
 
 %% Example:
 %% acl() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"Clusters">> => list(string()()),
+%%   <<"Clusters">> => list(string()),
 %%   <<"MinimumEngineVersion">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"PendingChanges">> => acl_pending_changes(),
 %%   <<"Status">> => string(),
-%%   <<"UserNames">> => list(string()())
+%%   <<"UserNames">> => list(string())
 %% }
 -type acl() :: #{binary() => any()}.
 
@@ -517,7 +517,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -562,7 +562,7 @@
 %%   <<"NodeType">> => string(),
 %%   <<"ParameterGroupName">> => string(),
 %%   <<"ReplicaConfiguration">> => replica_configuration_request(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"ShardConfiguration">> => shard_configuration_request(),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"SnapshotWindow">> => string(),
@@ -590,7 +590,7 @@
 %%   <<"NumShards">> => integer(),
 %%   <<"ParameterGroupName">> => string(),
 %%   <<"Port">> => integer(),
-%%   <<"Shards">> => list(shard_detail()()),
+%%   <<"Shards">> => list(shard_detail()),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"SnapshotWindow">> => string(),
 %%   <<"SubnetGroupName">> => string(),
@@ -619,8 +619,8 @@
 
 %% Example:
 %% list_allowed_multi_region_cluster_updates_response() :: #{
-%%   <<"ScaleDownNodeTypes">> => list(string()()),
-%%   <<"ScaleUpNodeTypes">> => list(string()())
+%%   <<"ScaleDownNodeTypes">> => list(string()),
+%%   <<"ScaleUpNodeTypes">> => list(string())
 %% }
 -type list_allowed_multi_region_cluster_updates_response() :: #{binary() => any()}.
 
@@ -641,7 +641,7 @@
 %%   <<"ARN">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Subnets">> => list(subnet()()),
+%%   <<"Subnets">> => list(subnet()),
 %%   <<"SupportedNetworkTypes">> => list(list(any())()),
 %%   <<"VpcId">> => string()
 %% }
@@ -672,15 +672,15 @@
 %%   <<"NumShards">> => integer(),
 %%   <<"ParameterGroupName">> => string(),
 %%   <<"Port">> => integer(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SnapshotArns">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SnapshotArns">> => list(string()),
 %%   <<"SnapshotName">> => string(),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"SnapshotWindow">> => string(),
 %%   <<"SnsTopicArn">> => string(),
 %%   <<"SubnetGroupName">> => string(),
 %%   <<"TLSEnabled">> => boolean(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
 
@@ -729,8 +729,8 @@
 %%   <<"ParameterGroupName">> => string(),
 %%   <<"ParameterGroupStatus">> => string(),
 %%   <<"PendingUpdates">> => cluster_pending_updates(),
-%%   <<"SecurityGroups">> => list(security_group_membership()()),
-%%   <<"Shards">> => list(shard()()),
+%%   <<"SecurityGroups">> => list(security_group_membership()),
+%%   <<"Shards">> => list(shard()),
 %%   <<"SnapshotRetentionLimit">> => integer(),
 %%   <<"SnapshotWindow">> => string(),
 %%   <<"SnsTopicArn">> => string(),
@@ -804,14 +804,14 @@
 %%   <<"NodeType">> := string(),
 %%   <<"NumShards">> => integer(),
 %%   <<"TLSEnabled">> => boolean(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_multi_region_cluster_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_subnet_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SubnetGroups">> => list(subnet_group()())
+%%   <<"SubnetGroups">> => list(subnet_group())
 %% }
 -type describe_subnet_groups_response() :: #{binary() => any()}.
 
@@ -842,7 +842,7 @@
 %% update_subnet_group_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"SubnetGroupName">> := string(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type update_subnet_group_request() :: #{binary() => any()}.
 
@@ -867,7 +867,7 @@
 %%   <<"NodeCount">> => integer(),
 %%   <<"NodeType">> => string(),
 %%   <<"OfferingType">> => string(),
-%%   <<"RecurringCharges">> => list(recurring_charge()()),
+%%   <<"RecurringCharges">> => list(recurring_charge()),
 %%   <<"ReservationId">> => string(),
 %%   <<"ReservedNodesOfferingId">> => string(),
 %%   <<"StartTime">> => non_neg_integer(),
@@ -879,8 +879,8 @@
 %% create_subnet_group_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"SubnetGroupName">> := string(),
-%%   <<"SubnetIds">> := list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_subnet_group_request() :: #{binary() => any()}.
 
@@ -892,8 +892,8 @@
 
 %% Example:
 %% acl_pending_changes() :: #{
-%%   <<"UserNamesToAdd">> => list(string()()),
-%%   <<"UserNamesToRemove">> => list(string()())
+%%   <<"UserNamesToAdd">> => list(string()),
+%%   <<"UserNamesToRemove">> => list(string())
 %% }
 -type acl_pending_changes() :: #{binary() => any()}.
 
@@ -905,7 +905,7 @@
 
 %% Example:
 %% batch_update_cluster_request() :: #{
-%%   <<"ClusterNames">> := list(string()()),
+%%   <<"ClusterNames">> := list(string()),
 %%   <<"ServiceUpdate">> => service_update_request()
 %% }
 -type batch_update_cluster_request() :: #{binary() => any()}.
@@ -937,7 +937,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -952,7 +952,7 @@
 %%   <<"NodeCount">> => integer(),
 %%   <<"ReservationId">> => string(),
 %%   <<"ReservedNodesOfferingId">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type purchase_reserved_nodes_offering_request() :: #{binary() => any()}.
 
@@ -1001,7 +1001,7 @@
 
 %% Example:
 %% describe_acls_response() :: #{
-%%   <<"ACLs">> => list(acl()()),
+%%   <<"ACLs">> => list(acl()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_acls_response() :: #{binary() => any()}.
@@ -1021,7 +1021,7 @@
 %% Example:
 %% shard() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(memorydb_node()()),
+%%   <<"Nodes">> => list(node()),
 %%   <<"NumberOfNodes">> => integer(),
 %%   <<"Slots">> => string(),
 %%   <<"Status">> => string()
@@ -1118,7 +1118,7 @@
 
 %% Example:
 %% tag_resource_response() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
 
@@ -1137,7 +1137,7 @@
 %% Example:
 %% describe_reserved_nodes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReservedNodes">> => list(reserved_node()())
+%%   <<"ReservedNodes">> => list(reserved_node())
 %% }
 -type describe_reserved_nodes_response() :: #{binary() => any()}.
 
@@ -1162,7 +1162,7 @@
 %% copy_snapshot_request() :: #{
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceSnapshotName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetBucket">> => string(),
 %%   <<"TargetSnapshotName">> := string()
 %% }
@@ -1170,7 +1170,7 @@
 
 %% Example:
 %% describe_clusters_response() :: #{
-%%   <<"Clusters">> => list(cluster()()),
+%%   <<"Clusters">> => list(cluster()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_clusters_response() :: #{binary() => any()}.
@@ -1179,7 +1179,7 @@
 %% cluster_pending_updates() :: #{
 %%   <<"ACLs">> => acls_update_status(),
 %%   <<"Resharding">> => resharding_status(),
-%%   <<"ServiceUpdates">> => list(pending_modified_service_update()())
+%%   <<"ServiceUpdates">> => list(pending_modified_service_update())
 %% }
 -type cluster_pending_updates() :: #{binary() => any()}.
 
@@ -1211,7 +1211,7 @@
 
 %% Example:
 %% user() :: #{
-%%   <<"ACLNames">> => list(string()()),
+%%   <<"ACLNames">> => list(string()),
 %%   <<"ARN">> => string(),
 %%   <<"AccessString">> => string(),
 %%   <<"Authentication">> => authentication(),
@@ -1238,7 +1238,7 @@
 %% Example:
 %% multi_region_cluster() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"Clusters">> => list(regional_cluster()()),
+%%   <<"Clusters">> => list(regional_cluster()),
 %%   <<"Description">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
@@ -1288,7 +1288,7 @@
 
 %% Example:
 %% authentication_mode() :: #{
-%%   <<"Passwords">> => list(string()()),
+%%   <<"Passwords">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type authentication_mode() :: #{binary() => any()}.
@@ -1296,7 +1296,7 @@
 %% Example:
 %% describe_reserved_nodes_offerings_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReservedNodesOfferings">> => list(reserved_nodes_offering()())
+%%   <<"ReservedNodesOfferings">> => list(reserved_nodes_offering())
 %% }
 -type describe_reserved_nodes_offerings_response() :: #{binary() => any()}.
 
@@ -1309,7 +1309,7 @@
 %% Example:
 %% update_parameter_group_request() :: #{
 %%   <<"ParameterGroupName">> := string(),
-%%   <<"ParameterNameValues">> := list(parameter_name_value()())
+%%   <<"ParameterNameValues">> := list(parameter_name_value())
 %% }
 -type update_parameter_group_request() :: #{binary() => any()}.
 
@@ -1367,7 +1367,7 @@
 
 %% Example:
 %% describe_service_updates_request() :: #{
-%%   <<"ClusterNames">> => list(string()()),
+%%   <<"ClusterNames">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceUpdateName">> => string(),
@@ -1377,7 +1377,7 @@
 
 %% Example:
 %% describe_engine_versions_response() :: #{
-%%   <<"EngineVersions">> => list(engine_version_info()()),
+%%   <<"EngineVersions">> => list(engine_version_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_engine_versions_response() :: #{binary() => any()}.
@@ -1442,7 +1442,7 @@
 
 %% Example:
 %% describe_events_response() :: #{
-%%   <<"Events">> => list(event()()),
+%%   <<"Events">> => list(event()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_events_response() :: #{binary() => any()}.
@@ -1476,7 +1476,7 @@
 %% create_user_request() :: #{
 %%   <<"AccessString">> := string(),
 %%   <<"AuthenticationMode">> := authentication_mode(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserName">> := string()
 %% }
 -type create_user_request() :: #{binary() => any()}.

@@ -59,7 +59,7 @@
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Database">> => string(),
-%%   <<"DbGroups">> => list(string()()),
+%%   <<"DbGroups">> => list(string()),
 %%   <<"DbUser">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"SecretArn">> => string(),
@@ -73,9 +73,9 @@
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Id">> => string(),
 %%   <<"IsBatchStatement">> => [boolean()],
-%%   <<"QueryParameters">> => list(sql_parameter()()),
+%%   <<"QueryParameters">> => list(sql_parameter()),
 %%   <<"QueryString">> => string(),
-%%   <<"QueryStrings">> => list(string()()),
+%%   <<"QueryStrings">> => list(string()),
 %%   <<"ResultFormat">> => string(),
 %%   <<"SecretArn">> => string(),
 %%   <<"SessionId">> => string(),
@@ -121,7 +121,7 @@
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Database">> => string(),
-%%   <<"DbGroups">> => list(string()()),
+%%   <<"DbGroups">> => list(string()),
 %%   <<"DbUser">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"SecretArn">> => string(),
@@ -132,7 +132,7 @@
 
 %% Example:
 %% describe_table_response() :: #{
-%%   <<"ColumnList">> => list(column_metadata()()),
+%%   <<"ColumnList">> => list(column_metadata()),
 %%   <<"NextToken">> => string(),
 %%   <<"TableName">> => string()
 %% }
@@ -150,7 +150,7 @@
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"Database">> => string(),
 %%   <<"DbUser">> => string(),
-%%   <<"Parameters">> => list(sql_parameter()()),
+%%   <<"Parameters">> => list(sql_parameter()),
 %%   <<"ResultFormat">> => string(),
 %%   <<"SecretArn">> => string(),
 %%   <<"SessionId">> => string(),
@@ -186,7 +186,7 @@
 %%   <<"SecretArn">> => string(),
 %%   <<"SessionId">> => string(),
 %%   <<"SessionKeepAliveSeconds">> => integer(),
-%%   <<"Sqls">> := list(string()()),
+%%   <<"Sqls">> := list(string()),
 %%   <<"StatementName">> => string(),
 %%   <<"WithEvent">> => [boolean()],
 %%   <<"WorkgroupName">> => string()
@@ -218,7 +218,7 @@
 %% Example:
 %% list_statements_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Statements">> => list(statement_data()())
+%%   <<"Statements">> => list(statement_data())
 %% }
 -type list_statements_response() :: #{binary() => any()}.
 
@@ -244,15 +244,15 @@
 %% Example:
 %% list_tables_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tables">> => list(table_member()())
+%%   <<"Tables">> => list(table_member())
 %% }
 -type list_tables_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_statement_result_response() :: #{
-%%   <<"ColumnMetadata">> => list(column_metadata()()),
+%%   <<"ColumnMetadata">> => list(column_metadata()),
 %%   <<"NextToken">> => string(),
-%%   <<"Records">> => list(list(list()())()),
+%%   <<"Records">> => list(list(list())()),
 %%   <<"TotalNumRows">> => float()
 %% }
 -type get_statement_result_response() :: #{binary() => any()}.
@@ -347,7 +347,7 @@
 %%   <<"Error">> => string(),
 %%   <<"HasResultSet">> => [boolean()],
 %%   <<"Id">> => string(),
-%%   <<"QueryParameters">> => list(sql_parameter()()),
+%%   <<"QueryParameters">> => list(sql_parameter()),
 %%   <<"QueryString">> => string(),
 %%   <<"RedshiftPid">> => float(),
 %%   <<"RedshiftQueryId">> => float(),
@@ -357,7 +357,7 @@
 %%   <<"SecretArn">> => string(),
 %%   <<"SessionId">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"SubStatements">> => list(sub_statement_data()()),
+%%   <<"SubStatements">> => list(sub_statement_data()),
 %%   <<"UpdatedAt">> => [non_neg_integer()],
 %%   <<"WorkgroupName">> => string()
 %% }
@@ -366,13 +366,13 @@
 %% Example:
 %% list_schemas_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Schemas">> => list(string()())
+%%   <<"Schemas">> => list(string())
 %% }
 -type list_schemas_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_databases_response() :: #{
-%%   <<"Databases">> => list(string()()),
+%%   <<"Databases">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_databases_response() :: #{binary() => any()}.
@@ -385,9 +385,9 @@
 
 %% Example:
 %% get_statement_result_v2_response() :: #{
-%%   <<"ColumnMetadata">> => list(column_metadata()()),
+%%   <<"ColumnMetadata">> => list(column_metadata()),
 %%   <<"NextToken">> => string(),
-%%   <<"Records">> => list(list()()),
+%%   <<"Records">> => list(list()),
 %%   <<"ResultFormat">> => string(),
 %%   <<"TotalNumRows">> => float()
 %% }

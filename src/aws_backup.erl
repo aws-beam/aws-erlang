@@ -332,16 +332,16 @@
 
 %% Example:
 %% backup_plan_input() :: #{
-%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
 %%   <<"BackupPlanName">> => string(),
-%%   <<"Rules">> => list(backup_rule_input()())
+%%   <<"Rules">> => list(backup_rule_input())
 %% }
 -type backup_plan_input() :: #{binary() => any()}.
 
 
 %% Example:
 %% backup_plans_list_member() :: #{
-%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
 %%   <<"BackupPlanArn">> => string(),
 %%   <<"BackupPlanId">> => string(),
 %%   <<"BackupPlanName">> => string(),
@@ -371,7 +371,7 @@
 
 %% Example:
 %% list_backup_vaults_output() :: #{
-%%   <<"BackupVaultList">> => list(backup_vault_list_member()()),
+%%   <<"BackupVaultList">> => list(backup_vault_list_member()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_vaults_output() :: #{binary() => any()}.
@@ -441,7 +441,7 @@
 %% Example:
 %% list_protected_resources_by_backup_vault_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(protected_resource()())
+%%   <<"Results">> => list(protected_resource())
 %% }
 -type list_protected_resources_by_backup_vault_output() :: #{binary() => any()}.
 
@@ -477,7 +477,7 @@
 
 %% Example:
 %% create_backup_plan_output() :: #{
-%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
 %%   <<"BackupPlanArn">> => string(),
 %%   <<"BackupPlanId">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
@@ -500,9 +500,9 @@
 
 %% Example:
 %% backup_plan() :: #{
-%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
 %%   <<"BackupPlanName">> => string(),
-%%   <<"Rules">> => list(backup_rule()())
+%%   <<"Rules">> => list(backup_rule())
 %% }
 -type backup_plan() :: #{binary() => any()}.
 
@@ -554,7 +554,7 @@
 %% Example:
 %% list_report_jobs_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReportJobs">> => list(report_job()())
+%%   <<"ReportJobs">> => list(report_job())
 %% }
 -type list_report_jobs_output() :: #{binary() => any()}.
 
@@ -650,7 +650,7 @@
 %% Example:
 %% report_destination() :: #{
 %%   <<"S3BucketName">> => string(),
-%%   <<"S3Keys">> => list(string()())
+%%   <<"S3Keys">> => list(string())
 %% }
 -type report_destination() :: #{binary() => any()}.
 
@@ -690,7 +690,7 @@
 
 %% Example:
 %% get_backup_plan_output() :: #{
-%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
 %%   <<"BackupPlan">> => backup_plan(),
 %%   <<"BackupPlanArn">> => string(),
 %%   <<"BackupPlanId">> => string(),
@@ -709,7 +709,7 @@
 
 %% Example:
 %% list_backup_plans_output() :: #{
-%%   <<"BackupPlansList">> => list(backup_plans_list_member()()),
+%%   <<"BackupPlansList">> => list(backup_plans_list_member()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_plans_output() :: #{binary() => any()}.
@@ -803,7 +803,7 @@
 %% Example:
 %% list_restore_testing_plans_output() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"RestoreTestingPlans">> => list(restore_testing_plan_for_list()())
+%%   <<"RestoreTestingPlans">> => list(restore_testing_plan_for_list())
 %% }
 -type list_restore_testing_plans_output() :: #{binary() => any()}.
 
@@ -901,8 +901,8 @@
 
 %% Example:
 %% control_scope() :: #{
-%%   <<"ComplianceResourceIds">> => list(string()()),
-%%   <<"ComplianceResourceTypes">> => list(string()()),
+%%   <<"ComplianceResourceIds">> => list(string()),
+%%   <<"ComplianceResourceTypes">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type control_scope() :: #{binary() => any()}.
@@ -933,7 +933,7 @@
 
 %% Example:
 %% framework_control() :: #{
-%%   <<"ControlInputParameters">> => list(control_input_parameter()()),
+%%   <<"ControlInputParameters">> => list(control_input_parameter()),
 %%   <<"ControlName">> => string(),
 %%   <<"ControlScope">> => control_scope()
 %% }
@@ -942,7 +942,7 @@
 
 %% Example:
 %% list_backup_jobs_output() :: #{
-%%   <<"BackupJobs">> => list(backup_job()()),
+%%   <<"BackupJobs">> => list(backup_job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_jobs_output() :: #{binary() => any()}.
@@ -977,7 +977,7 @@
 %% Example:
 %% list_report_plans_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReportPlans">> => list(report_plan()())
+%%   <<"ReportPlans">> => list(report_plan())
 %% }
 -type list_report_plans_output() :: #{binary() => any()}.
 
@@ -986,9 +986,9 @@
 %% backup_selection() :: #{
 %%   <<"Conditions">> => conditions(),
 %%   <<"IamRoleArn">> => string(),
-%%   <<"ListOfTags">> => list(condition()()),
-%%   <<"NotResources">> => list(string()()),
-%%   <<"Resources">> => list(string()()),
+%%   <<"ListOfTags">> => list(condition()),
+%%   <<"NotResources">> => list(string()),
+%%   <<"Resources">> => list(string()),
 %%   <<"SelectionName">> => string()
 %% }
 -type backup_selection() :: #{binary() => any()}.
@@ -1053,8 +1053,8 @@
 
 %% Example:
 %% protected_resource_conditions() :: #{
-%%   <<"StringEquals">> => list(key_value()()),
-%%   <<"StringNotEquals">> => list(key_value()())
+%%   <<"StringEquals">> => list(key_value()),
+%%   <<"StringNotEquals">> => list(key_value())
 %% }
 -type protected_resource_conditions() :: #{binary() => any()}.
 
@@ -1085,7 +1085,7 @@
 
 %% Example:
 %% update_framework_input() :: #{
-%%   <<"FrameworkControls">> => list(framework_control()()),
+%%   <<"FrameworkControls">> => list(framework_control()),
 %%   <<"FrameworkDescription">> => string(),
 %%   <<"IdempotencyToken">> => string()
 %% }
@@ -1162,7 +1162,7 @@
 %% Example:
 %% list_restore_jobs_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RestoreJobs">> => list(restore_jobs_list_member()())
+%%   <<"RestoreJobs">> => list(restore_jobs_list_member())
 %% }
 -type list_restore_jobs_output() :: #{binary() => any()}.
 
@@ -1203,7 +1203,7 @@
 %% Example:
 %% list_recovery_points_by_resource_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RecoveryPoints">> => list(recovery_point_by_resource()())
+%%   <<"RecoveryPoints">> => list(recovery_point_by_resource())
 %% }
 -type list_recovery_points_by_resource_output() :: #{binary() => any()}.
 
@@ -1231,7 +1231,7 @@
 
 %% Example:
 %% list_backup_selections_output() :: #{
-%%   <<"BackupSelectionsList">> => list(backup_selections_list_member()()),
+%%   <<"BackupSelectionsList">> => list(backup_selections_list_member()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_selections_output() :: #{binary() => any()}.
@@ -1292,7 +1292,7 @@
 %% Example:
 %% restore_testing_selection_for_update() :: #{
 %%   <<"IamRoleArn">> => [string()],
-%%   <<"ProtectedResourceArns">> => list(string()()),
+%%   <<"ProtectedResourceArns">> => list(string()),
 %%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
 %%   <<"RestoreMetadataOverrides">> => map(),
 %%   <<"ValidationWindowHours">> => integer()
@@ -1381,7 +1381,7 @@
 %% Example:
 %% list_copy_job_summaries_output() :: #{
 %%   <<"AggregationPeriod">> => string(),
-%%   <<"CopyJobSummaries">> => list(copy_job_summary()()),
+%%   <<"CopyJobSummaries">> => list(copy_job_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_copy_job_summaries_output() :: #{binary() => any()}.
@@ -1397,7 +1397,7 @@
 
 %% Example:
 %% get_supported_resource_types_output() :: #{
-%%   <<"ResourceTypes">> => list(string()())
+%%   <<"ResourceTypes">> => list(string())
 %% }
 -type get_supported_resource_types_output() :: #{binary() => any()}.
 
@@ -1415,8 +1415,8 @@
 %% Example:
 %% restore_testing_recovery_point_selection() :: #{
 %%   <<"Algorithm">> => list(any()),
-%%   <<"ExcludeVaults">> => list(string()()),
-%%   <<"IncludeVaults">> => list(string()()),
+%%   <<"ExcludeVaults">> => list(string()),
+%%   <<"IncludeVaults">> => list(string()),
 %%   <<"RecoveryPointTypes">> => list(list(any())()),
 %%   <<"SelectionWindowDays">> => integer()
 %% }
@@ -1478,18 +1478,18 @@
 %% Example:
 %% recovery_point_selection() :: #{
 %%   <<"DateRange">> => date_range(),
-%%   <<"ResourceIdentifiers">> => list(string()()),
-%%   <<"VaultNames">> => list(string()())
+%%   <<"ResourceIdentifiers">> => list(string()),
+%%   <<"VaultNames">> => list(string())
 %% }
 -type recovery_point_selection() :: #{binary() => any()}.
 
 
 %% Example:
 %% conditions() :: #{
-%%   <<"StringEquals">> => list(condition_parameter()()),
-%%   <<"StringLike">> => list(condition_parameter()()),
-%%   <<"StringNotEquals">> => list(condition_parameter()()),
-%%   <<"StringNotLike">> => list(condition_parameter()())
+%%   <<"StringEquals">> => list(condition_parameter()),
+%%   <<"StringLike">> => list(condition_parameter()),
+%%   <<"StringNotEquals">> => list(condition_parameter()),
+%%   <<"StringNotLike">> => list(condition_parameter())
 %% }
 -type conditions() :: #{binary() => any()}.
 
@@ -1523,7 +1523,7 @@
 
 %% Example:
 %% list_indexed_recovery_points_output() :: #{
-%%   <<"IndexedRecoveryPoints">> => list(indexed_recovery_point()()),
+%%   <<"IndexedRecoveryPoints">> => list(indexed_recovery_point()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_indexed_recovery_points_output() :: #{binary() => any()}.
@@ -1531,7 +1531,7 @@
 
 %% Example:
 %% report_delivery_channel() :: #{
-%%   <<"Formats">> => list(string()()),
+%%   <<"Formats">> => list(string()),
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3KeyPrefix">> => string()
 %% }
@@ -1541,7 +1541,7 @@
 %% Example:
 %% list_protected_resources_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(protected_resource()())
+%%   <<"Results">> => list(protected_resource())
 %% }
 -type list_protected_resources_output() :: #{binary() => any()}.
 
@@ -1680,11 +1680,11 @@
 
 %% Example:
 %% report_setting() :: #{
-%%   <<"Accounts">> => list(string()()),
-%%   <<"FrameworkArns">> => list(string()()),
+%%   <<"Accounts">> => list(string()),
+%%   <<"FrameworkArns">> => list(string()),
 %%   <<"NumberOfFrameworks">> => integer(),
-%%   <<"OrganizationUnits">> => list(string()()),
-%%   <<"Regions">> => list(string()()),
+%%   <<"OrganizationUnits">> => list(string()),
+%%   <<"Regions">> => list(string()),
 %%   <<"ReportTemplate">> => string()
 %% }
 -type report_setting() :: #{binary() => any()}.
@@ -1720,7 +1720,7 @@
 %% Example:
 %% restore_testing_selection_for_create() :: #{
 %%   <<"IamRoleArn">> => [string()],
-%%   <<"ProtectedResourceArns">> => list(string()()),
+%%   <<"ProtectedResourceArns">> => list(string()),
 %%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
 %%   <<"ProtectedResourceType">> => [string()],
 %%   <<"RestoreMetadataOverrides">> => map(),
@@ -1732,7 +1732,7 @@
 
 %% Example:
 %% list_frameworks_output() :: #{
-%%   <<"Frameworks">> => list(framework()()),
+%%   <<"Frameworks">> => list(framework()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_frameworks_output() :: #{binary() => any()}.
@@ -1775,7 +1775,7 @@
 
 %% Example:
 %% list_legal_holds_output() :: #{
-%%   <<"LegalHolds">> => list(legal_hold()()),
+%%   <<"LegalHolds">> => list(legal_hold()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_legal_holds_output() :: #{binary() => any()}.
@@ -1788,9 +1788,9 @@
 %% Example:
 %% backup_rule() :: #{
 %%   <<"CompletionWindowMinutes">> => float(),
-%%   <<"CopyActions">> => list(copy_action()()),
+%%   <<"CopyActions">> => list(copy_action()),
 %%   <<"EnableContinuousBackup">> => boolean(),
-%%   <<"IndexActions">> => list(index_action()()),
+%%   <<"IndexActions">> => list(index_action()),
 %%   <<"Lifecycle">> => lifecycle(),
 %%   <<"RecoveryPointTags">> => map(),
 %%   <<"RuleId">> => string(),
@@ -1822,7 +1822,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"TagKeyList">> := list(string()())
+%%   <<"TagKeyList">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1843,7 +1843,7 @@
 %% Example:
 %% list_recovery_points_by_legal_hold_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RecoveryPoints">> => list(recovery_point_member()())
+%%   <<"RecoveryPoints">> => list(recovery_point_member())
 %% }
 -type list_recovery_points_by_legal_hold_output() :: #{binary() => any()}.
 
@@ -1942,7 +1942,7 @@
 %% Example:
 %% list_restore_jobs_by_protected_resource_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RestoreJobs">> => list(restore_jobs_list_member()())
+%%   <<"RestoreJobs">> => list(restore_jobs_list_member())
 %% }
 -type list_restore_jobs_by_protected_resource_output() :: #{binary() => any()}.
 
@@ -1961,7 +1961,7 @@
 
 %% Example:
 %% create_framework_input() :: #{
-%%   <<"FrameworkControls">> := list(framework_control()()),
+%%   <<"FrameworkControls">> := list(framework_control()),
 %%   <<"FrameworkDescription">> => string(),
 %%   <<"FrameworkName">> := string(),
 %%   <<"FrameworkTags">> => map(),
@@ -1996,7 +1996,7 @@
 
 %% Example:
 %% list_copy_jobs_output() :: #{
-%%   <<"CopyJobs">> => list(copy_job()()),
+%%   <<"CopyJobs">> => list(copy_job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_copy_jobs_output() :: #{binary() => any()}.
@@ -2080,9 +2080,9 @@
 %% Example:
 %% backup_rule_input() :: #{
 %%   <<"CompletionWindowMinutes">> => float(),
-%%   <<"CopyActions">> => list(copy_action()()),
+%%   <<"CopyActions">> => list(copy_action()),
 %%   <<"EnableContinuousBackup">> => boolean(),
-%%   <<"IndexActions">> => list(index_action()()),
+%%   <<"IndexActions">> => list(index_action()),
 %%   <<"Lifecycle">> => lifecycle(),
 %%   <<"RecoveryPointTags">> => map(),
 %%   <<"RuleName">> => string(),
@@ -2120,7 +2120,7 @@
 
 %% Example:
 %% list_backup_plan_versions_output() :: #{
-%%   <<"BackupPlanVersionsList">> => list(backup_plans_list_member()()),
+%%   <<"BackupPlanVersionsList">> => list(backup_plans_list_member()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_plan_versions_output() :: #{binary() => any()}.
@@ -2154,7 +2154,7 @@
 %% Example:
 %% list_backup_job_summaries_output() :: #{
 %%   <<"AggregationPeriod">> => string(),
-%%   <<"BackupJobSummaries">> => list(backup_job_summary()()),
+%%   <<"BackupJobSummaries">> => list(backup_job_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_job_summaries_output() :: #{binary() => any()}.
@@ -2163,7 +2163,7 @@
 %% Example:
 %% list_recovery_points_by_backup_vault_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RecoveryPoints">> => list(recovery_point_by_backup_vault()())
+%%   <<"RecoveryPoints">> => list(recovery_point_by_backup_vault())
 %% }
 -type list_recovery_points_by_backup_vault_output() :: #{binary() => any()}.
 
@@ -2256,7 +2256,7 @@
 %% list_restore_job_summaries_output() :: #{
 %%   <<"AggregationPeriod">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"RestoreJobSummaries">> => list(restore_job_summary()())
+%%   <<"RestoreJobSummaries">> => list(restore_job_summary())
 %% }
 -type list_restore_job_summaries_output() :: #{binary() => any()}.
 
@@ -2266,7 +2266,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DeploymentStatus">> => string(),
 %%   <<"FrameworkArn">> => string(),
-%%   <<"FrameworkControls">> => list(framework_control()()),
+%%   <<"FrameworkControls">> => list(framework_control()),
 %%   <<"FrameworkDescription">> => string(),
 %%   <<"FrameworkName">> => string(),
 %%   <<"FrameworkStatus">> => string(),
@@ -2314,7 +2314,7 @@
 %% Example:
 %% list_restore_testing_selections_output() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"RestoreTestingSelections">> => list(restore_testing_selection_for_list()())
+%%   <<"RestoreTestingSelections">> => list(restore_testing_selection_for_list())
 %% }
 -type list_restore_testing_selections_output() :: #{binary() => any()}.
 
@@ -2415,7 +2415,7 @@
 %%   <<"CreationTime">> => [non_neg_integer()],
 %%   <<"CreatorRequestId">> => [string()],
 %%   <<"IamRoleArn">> => [string()],
-%%   <<"ProtectedResourceArns">> => list(string()()),
+%%   <<"ProtectedResourceArns">> => list(string()),
 %%   <<"ProtectedResourceConditions">> => protected_resource_conditions(),
 %%   <<"ProtectedResourceType">> => [string()],
 %%   <<"RestoreMetadataOverrides">> => map(),
@@ -2451,7 +2451,7 @@
 
 %% Example:
 %% index_action() :: #{
-%%   <<"ResourceTypes">> => list(string()())
+%%   <<"ResourceTypes">> => list(string())
 %% }
 -type index_action() :: #{binary() => any()}.
 
@@ -2479,7 +2479,7 @@
 
 %% Example:
 %% list_backup_plan_templates_output() :: #{
-%%   <<"BackupPlanTemplatesList">> => list(backup_plan_templates_list_member()()),
+%%   <<"BackupPlanTemplatesList">> => list(backup_plan_templates_list_member()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_backup_plan_templates_output() :: #{binary() => any()}.
@@ -2537,7 +2537,7 @@
 
 %% Example:
 %% update_backup_plan_output() :: #{
-%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()()),
+%%   <<"AdvancedBackupSettings">> => list(advanced_backup_setting()),
 %%   <<"BackupPlanArn">> => string(),
 %%   <<"BackupPlanId">> => string(),
 %%   <<"CreationDate">> => non_neg_integer(),
@@ -2549,7 +2549,7 @@
 %% Example:
 %% list_restore_access_backup_vaults_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RestoreAccessBackupVaults">> => list(restore_access_backup_vault_list_member()())
+%%   <<"RestoreAccessBackupVaults">> => list(restore_access_backup_vault_list_member())
 %% }
 -type list_restore_access_backup_vaults_output() :: #{binary() => any()}.
 

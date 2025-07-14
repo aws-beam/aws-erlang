@@ -139,7 +139,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -168,7 +168,7 @@
 %% Example:
 %% list_pipelines_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"pipelineSummaries">> => list(pipeline_summary()())
+%%   <<"pipelineSummaries">> => list(pipeline_summary())
 %% }
 -type list_pipelines_response() :: #{binary() => any()}.
 
@@ -182,7 +182,7 @@
 
 %% Example:
 %% sample_channel_data_response() :: #{
-%%   <<"payloads">> => list(binary()())
+%%   <<"payloads">> => list(binary())
 %% }
 -type sample_channel_data_response() :: #{binary() => any()}.
 
@@ -249,7 +249,7 @@
 
 %% Example:
 %% schema_definition() :: #{
-%%   <<"columns">> => list(column()())
+%%   <<"columns">> => list(column())
 %% }
 -type schema_definition() :: #{binary() => any()}.
 
@@ -357,12 +357,12 @@
 
 %% Example:
 %% pipeline() :: #{
-%%   <<"activities">> => list(pipeline_activity()()),
+%%   <<"activities">> => list(pipeline_activity()),
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"reprocessingSummaries">> => list(reprocessing_summary()())
+%%   <<"reprocessingSummaries">> => list(reprocessing_summary())
 %% }
 -type pipeline() :: #{binary() => any()}.
 
@@ -377,7 +377,7 @@
 
 %% Example:
 %% datastore_partitions() :: #{
-%%   <<"partitions">> => list(datastore_partition()())
+%%   <<"partitions">> => list(datastore_partition())
 %% }
 -type datastore_partitions() :: #{binary() => any()}.
 
@@ -393,7 +393,7 @@
 %% Example:
 %% run_pipeline_activity_response() :: #{
 %%   <<"logResult">> => string(),
-%%   <<"payloads">> => list(binary()())
+%%   <<"payloads">> => list(binary())
 %% }
 -type run_pipeline_activity_response() :: #{binary() => any()}.
 
@@ -449,7 +449,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -464,7 +464,7 @@
 %% Example:
 %% batch_put_message_request() :: #{
 %%   <<"channelName">> := string(),
-%%   <<"messages">> := list(message()())
+%%   <<"messages">> := list(message())
 %% }
 -type batch_put_message_request() :: #{binary() => any()}.
 
@@ -480,7 +480,7 @@
 
 %% Example:
 %% run_pipeline_activity_request() :: #{
-%%   <<"payloads">> := list(binary()()),
+%%   <<"payloads">> := list(binary()),
 %%   <<"pipelineActivity">> := pipeline_activity()
 %% }
 -type run_pipeline_activity_request() :: #{binary() => any()}.
@@ -496,16 +496,16 @@
 
 %% Example:
 %% dataset() :: #{
-%%   <<"actions">> => list(dataset_action()()),
+%%   <<"actions">> => list(dataset_action()),
 %%   <<"arn">> => string(),
-%%   <<"contentDeliveryRules">> => list(dataset_content_delivery_rule()()),
+%%   <<"contentDeliveryRules">> => list(dataset_content_delivery_rule()),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"lastUpdateTime">> => non_neg_integer(),
-%%   <<"lateDataRules">> => list(late_data_rule()()),
+%%   <<"lateDataRules">> => list(late_data_rule()),
 %%   <<"name">> => string(),
 %%   <<"retentionPeriod">> => retention_period(),
 %%   <<"status">> => list(any()),
-%%   <<"triggers">> => list(dataset_trigger()()),
+%%   <<"triggers">> => list(dataset_trigger()),
 %%   <<"versioningConfiguration">> => versioning_configuration()
 %% }
 -type dataset() :: #{binary() => any()}.
@@ -597,12 +597,12 @@
 
 %% Example:
 %% dataset_summary() :: #{
-%%   <<"actions">> => list(dataset_action_summary()()),
+%%   <<"actions">> => list(dataset_action_summary()),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"datasetName">> => string(),
 %%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
-%%   <<"triggers">> => list(dataset_trigger()())
+%%   <<"triggers">> => list(dataset_trigger())
 %% }
 -type dataset_summary() :: #{binary() => any()}.
 
@@ -620,7 +620,7 @@
 %%   <<"executionRoleArn">> => string(),
 %%   <<"image">> => string(),
 %%   <<"resourceConfiguration">> => resource_configuration(),
-%%   <<"variables">> => list(variable()())
+%%   <<"variables">> => list(variable())
 %% }
 -type container_dataset_action() :: #{binary() => any()}.
 
@@ -634,23 +634,23 @@
 
 %% Example:
 %% create_pipeline_request() :: #{
-%%   <<"pipelineActivities">> := list(pipeline_activity()()),
+%%   <<"pipelineActivities">> := list(pipeline_activity()),
 %%   <<"pipelineName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_pipeline_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_pipeline_request() :: #{
-%%   <<"pipelineActivities">> := list(pipeline_activity()())
+%%   <<"pipelineActivities">> := list(pipeline_activity())
 %% }
 -type update_pipeline_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_dataset_contents_response() :: #{
-%%   <<"datasetContentSummaries">> => list(dataset_content_summary()()),
+%%   <<"datasetContentSummaries">> => list(dataset_content_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dataset_contents_response() :: #{binary() => any()}.
@@ -703,7 +703,7 @@
 
 %% Example:
 %% list_datastores_response() :: #{
-%%   <<"datastoreSummaries">> => list(datastore_summary()()),
+%%   <<"datastoreSummaries">> => list(datastore_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_datastores_response() :: #{binary() => any()}.
@@ -711,7 +711,7 @@
 
 %% Example:
 %% get_dataset_content_response() :: #{
-%%   <<"entries">> => list(dataset_entry()()),
+%%   <<"entries">> => list(dataset_entry()),
 %%   <<"status">> => dataset_content_status(),
 %%   <<"timestamp">> => non_neg_integer()
 %% }
@@ -723,7 +723,7 @@
 %%   <<"channelName">> := string(),
 %%   <<"channelStorage">> => channel_storage(),
 %%   <<"retentionPeriod">> => retention_period(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_channel_request() :: #{binary() => any()}.
 
@@ -733,7 +733,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"pipelineName">> => string(),
-%%   <<"reprocessingSummaries">> => list(reprocessing_summary()())
+%%   <<"reprocessingSummaries">> => list(reprocessing_summary())
 %% }
 -type pipeline_summary() :: #{binary() => any()}.
 
@@ -747,7 +747,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -806,11 +806,11 @@
 
 %% Example:
 %% update_dataset_request() :: #{
-%%   <<"actions">> := list(dataset_action()()),
-%%   <<"contentDeliveryRules">> => list(dataset_content_delivery_rule()()),
-%%   <<"lateDataRules">> => list(late_data_rule()()),
+%%   <<"actions">> := list(dataset_action()),
+%%   <<"contentDeliveryRules">> => list(dataset_content_delivery_rule()),
+%%   <<"lateDataRules">> => list(late_data_rule()),
 %%   <<"retentionPeriod">> => retention_period(),
-%%   <<"triggers">> => list(dataset_trigger()()),
+%%   <<"triggers">> => list(dataset_trigger()),
 %%   <<"versioningConfiguration">> => versioning_configuration()
 %% }
 -type update_dataset_request() :: #{binary() => any()}.
@@ -818,7 +818,7 @@
 
 %% Example:
 %% list_channels_response() :: #{
-%%   <<"channelSummaries">> => list(channel_summary()()),
+%%   <<"channelSummaries">> => list(channel_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
@@ -871,7 +871,7 @@
 
 %% Example:
 %% sql_query_dataset_action() :: #{
-%%   <<"filters">> => list(query_filter()()),
+%%   <<"filters">> => list(query_filter()),
 %%   <<"sqlQuery">> => string()
 %% }
 -type sql_query_dataset_action() :: #{binary() => any()}.
@@ -889,7 +889,7 @@
 
 %% Example:
 %% remove_attributes_activity() :: #{
-%%   <<"attributes">> => list(string()()),
+%%   <<"attributes">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"next">> => string()
 %% }
@@ -1048,13 +1048,13 @@
 
 %% Example:
 %% create_dataset_request() :: #{
-%%   <<"actions">> := list(dataset_action()()),
-%%   <<"contentDeliveryRules">> => list(dataset_content_delivery_rule()()),
+%%   <<"actions">> := list(dataset_action()),
+%%   <<"contentDeliveryRules">> => list(dataset_content_delivery_rule()),
 %%   <<"datasetName">> := string(),
-%%   <<"lateDataRules">> => list(late_data_rule()()),
+%%   <<"lateDataRules">> => list(late_data_rule()),
 %%   <<"retentionPeriod">> => retention_period(),
-%%   <<"tags">> => list(tag()()),
-%%   <<"triggers">> => list(dataset_trigger()()),
+%%   <<"tags">> => list(tag()),
+%%   <<"triggers">> => list(dataset_trigger()),
 %%   <<"versioningConfiguration">> => versioning_configuration()
 %% }
 -type create_dataset_request() :: #{binary() => any()}.
@@ -1070,7 +1070,7 @@
 
 %% Example:
 %% select_attributes_activity() :: #{
-%%   <<"attributes">> => list(string()()),
+%%   <<"attributes">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"next">> => string()
 %% }
@@ -1105,7 +1105,7 @@
 %%   <<"datastoreStorage">> => list(),
 %%   <<"fileFormatConfiguration">> => file_format_configuration(),
 %%   <<"retentionPeriod">> => retention_period(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_datastore_request() :: #{binary() => any()}.
 
@@ -1153,7 +1153,7 @@
 
 %% Example:
 %% channel_messages() :: #{
-%%   <<"s3Paths">> => list(string()())
+%%   <<"s3Paths">> => list(string())
 %% }
 -type channel_messages() :: #{binary() => any()}.
 
@@ -1177,7 +1177,7 @@
 
 %% Example:
 %% list_datasets_response() :: #{
-%%   <<"datasetSummaries">> => list(dataset_summary()()),
+%%   <<"datasetSummaries">> => list(dataset_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.
@@ -1227,7 +1227,7 @@
 
 %% Example:
 %% batch_put_message_response() :: #{
-%%   <<"batchPutMessageErrorEntries">> => list(batch_put_message_error_entry()())
+%%   <<"batchPutMessageErrorEntries">> => list(batch_put_message_error_entry())
 %% }
 -type batch_put_message_response() :: #{binary() => any()}.
 

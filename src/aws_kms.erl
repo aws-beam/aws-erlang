@@ -244,7 +244,7 @@
 
 %% Example:
 %% list_aliases_response() :: #{
-%%   <<"Aliases">> => list(alias_list_entry()()),
+%%   <<"Aliases">> => list(alias_list_entry()),
 %%   <<"NextMarker">> => string(),
 %%   <<"Truncated">> => boolean()
 %% }
@@ -279,7 +279,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"KeyId">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -352,14 +352,14 @@
 %%   <<"MultiRegion">> => boolean(),
 %%   <<"Origin">> => list(any()),
 %%   <<"Policy">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"XksKeyId">> => string()
 %% }
 -type create_key_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_custom_key_stores_response() :: #{
-%%   <<"CustomKeyStores">> => list(custom_key_stores_list_entry()()),
+%%   <<"CustomKeyStores">> => list(custom_key_stores_list_entry()),
 %%   <<"NextMarker">> => string(),
 %%   <<"Truncated">> => boolean()
 %% }
@@ -387,7 +387,7 @@
 %% generate_data_key_without_plaintext_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
 %%   <<"KeySpec">> => list(any()),
 %%   <<"NumberOfBytes">> => integer()
@@ -427,7 +427,7 @@
 
 %% Example:
 %% list_keys_response() :: #{
-%%   <<"Keys">> => list(key_list_entry()()),
+%%   <<"Keys">> => list(key_list_entry()),
 %%   <<"NextMarker">> => string(),
 %%   <<"Truncated">> => boolean()
 %% }
@@ -451,7 +451,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncryptionAlgorithm">> => list(any()),
 %%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> => string(),
 %%   <<"Recipient">> => recipient_info()
 %% }
@@ -477,7 +477,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncryptionAlgorithm">> => list(any()),
 %%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
 %%   <<"Plaintext">> := binary()
 %% }
@@ -496,7 +496,7 @@
 %% Example:
 %% derive_shared_secret_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyAgreementAlgorithm">> := list(any()),
 %%   <<"KeyId">> := string(),
 %%   <<"PublicKey">> := binary(),
@@ -533,7 +533,7 @@
 %% generate_data_key_pair_without_plaintext_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
 %%   <<"KeyPairSpec">> := list(any())
 %% }
@@ -542,14 +542,14 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"KeyId">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_key_policies_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"PolicyNames">> => list(string()()),
+%%   <<"PolicyNames">> => list(string()),
 %%   <<"Truncated">> => boolean()
 %% }
 -type list_key_policies_response() :: #{binary() => any()}.
@@ -557,7 +557,7 @@
 %% Example:
 %% list_resource_tags_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Truncated">> => boolean()
 %% }
 -type list_resource_tags_response() :: #{binary() => any()}.
@@ -611,7 +611,7 @@
 %% multi_region_configuration() :: #{
 %%   <<"MultiRegionKeyType">> => list(any()),
 %%   <<"PrimaryKey">> => multi_region_key(),
-%%   <<"ReplicaKeys">> => list(multi_region_key()())
+%%   <<"ReplicaKeys">> => list(multi_region_key())
 %% }
 -type multi_region_configuration() :: #{binary() => any()}.
 
@@ -691,7 +691,7 @@
 
 %% Example:
 %% describe_key_request() :: #{
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string()
 %% }
 -type describe_key_request() :: #{binary() => any()}.
@@ -716,7 +716,7 @@
 
 %% Example:
 %% list_grants_response() :: #{
-%%   <<"Grants">> => list(grant_list_entry()()),
+%%   <<"Grants">> => list(grant_list_entry()),
 %%   <<"NextMarker">> => string(),
 %%   <<"Truncated">> => boolean()
 %% }
@@ -725,7 +725,7 @@
 %% Example:
 %% verify_mac_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
 %%   <<"Mac">> := binary(),
 %%   <<"MacAlgorithm">> := list(any()),
@@ -740,7 +740,7 @@
 %%   <<"DestinationEncryptionContext">> => map(),
 %%   <<"DestinationKeyId">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"SourceEncryptionAlgorithm">> => list(any()),
 %%   <<"SourceEncryptionContext">> => map(),
 %%   <<"SourceKeyId">> => string()
@@ -783,7 +783,7 @@
 %% create_grant_request() :: #{
 %%   <<"Constraints">> => grant_constraints(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"GranteePrincipal">> := string(),
 %%   <<"KeyId">> := string(),
 %%   <<"Name">> => string(),
@@ -978,7 +978,7 @@
 %% Example:
 %% verify_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
 %%   <<"Message">> := binary(),
 %%   <<"MessageType">> => list(any()),
@@ -1031,7 +1031,7 @@
 %%   <<"KeyId">> := string(),
 %%   <<"Policy">> => string(),
 %%   <<"ReplicaRegion">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type replicate_key_request() :: #{binary() => any()}.
 
@@ -1055,7 +1055,7 @@
 
 %% Example:
 %% get_public_key_request() :: #{
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string()
 %% }
 -type get_public_key_request() :: #{binary() => any()}.
@@ -1077,7 +1077,7 @@
 %% Example:
 %% generate_mac_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
 %%   <<"MacAlgorithm">> := list(any()),
 %%   <<"Message">> := binary()
@@ -1181,7 +1181,7 @@
 %% replicate_key_response() :: #{
 %%   <<"ReplicaKeyMetadata">> => key_metadata(),
 %%   <<"ReplicaPolicy">> => string(),
-%%   <<"ReplicaTags">> => list(tag()())
+%%   <<"ReplicaTags">> => list(tag())
 %% }
 -type replicate_key_response() :: #{binary() => any()}.
 
@@ -1278,7 +1278,7 @@
 %% Example:
 %% sign_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
 %%   <<"Message">> := binary(),
 %%   <<"MessageType">> => list(any()),
@@ -1298,7 +1298,7 @@
 %% generate_data_key_pair_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
 %%   <<"KeyPairSpec">> := list(any()),
 %%   <<"Recipient">> => recipient_info()
@@ -1357,7 +1357,7 @@
 %% generate_data_key_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncryptionContext">> => map(),
-%%   <<"GrantTokens">> => list(string()()),
+%%   <<"GrantTokens">> => list(string()),
 %%   <<"KeyId">> := string(),
 %%   <<"KeySpec">> => list(any()),
 %%   <<"NumberOfBytes">> => integer(),
@@ -1429,7 +1429,7 @@
 %% Example:
 %% list_key_rotations_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"Rotations">> => list(rotations_list_entry()()),
+%%   <<"Rotations">> => list(rotations_list_entry()),
 %%   <<"Truncated">> => boolean()
 %% }
 -type list_key_rotations_response() :: #{binary() => any()}.

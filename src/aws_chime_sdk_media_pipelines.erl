@@ -113,7 +113,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -162,9 +162,9 @@
 %% Example:
 %% create_media_concatenation_pipeline_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"Sinks">> := list(concatenation_sink()()),
-%%   <<"Sources">> := list(concatenation_source()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Sinks">> := list(concatenation_sink()),
+%%   <<"Sources">> := list(concatenation_source()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_media_concatenation_pipeline_request() :: #{binary() => any()}.
 
@@ -228,7 +228,7 @@
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"PoolName">> := string(),
 %%   <<"StreamConfiguration">> := kinesis_video_stream_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_media_pipeline_kinesis_video_stream_pool_request() :: #{binary() => any()}.
 
@@ -243,7 +243,7 @@
 
 %% Example:
 %% list_media_pipeline_kinesis_video_stream_pools_response() :: #{
-%%   <<"KinesisVideoStreamPools">> => list(kinesis_video_stream_pool_summary()()),
+%%   <<"KinesisVideoStreamPools">> => list(kinesis_video_stream_pool_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_media_pipeline_kinesis_video_stream_pools_response() :: #{binary() => any()}.
@@ -266,8 +266,8 @@
 
 %% Example:
 %% selected_video_streams() :: #{
-%%   <<"AttendeeIds">> => list(string()()),
-%%   <<"ExternalUserIds">> => list(string()())
+%%   <<"AttendeeIds">> => list(string()),
+%%   <<"ExternalUserIds">> => list(string())
 %% }
 -type selected_video_streams() :: #{binary() => any()}.
 
@@ -403,7 +403,7 @@
 
 %% Example:
 %% list_media_capture_pipelines_response() :: #{
-%%   <<"MediaCapturePipelines">> => list(media_capture_pipeline_summary()()),
+%%   <<"MediaCapturePipelines">> => list(media_capture_pipeline_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_media_capture_pipelines_response() :: #{binary() => any()}.
@@ -436,7 +436,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -513,7 +513,7 @@
 %% Example:
 %% media_insights_pipeline_configuration() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Elements">> => list(media_insights_pipeline_configuration_element()()),
+%%   <<"Elements">> => list(media_insights_pipeline_configuration_element()),
 %%   <<"MediaInsightsPipelineConfigurationArn">> => string(),
 %%   <<"MediaInsightsPipelineConfigurationId">> => string(),
 %%   <<"MediaInsightsPipelineConfigurationName">> => string(),
@@ -581,8 +581,8 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"MediaPipelineArn">> => string(),
 %%   <<"MediaPipelineId">> => string(),
-%%   <<"Sinks">> => list(concatenation_sink()()),
-%%   <<"Sources">> => list(concatenation_source()()),
+%%   <<"Sinks">> => list(concatenation_sink()),
+%%   <<"Sources">> => list(concatenation_source()),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
@@ -599,7 +599,7 @@
 
 %% Example:
 %% amazon_transcribe_call_analytics_processor_configuration() :: #{
-%%   <<"CallAnalyticsStreamCategories">> => list(string()()),
+%%   <<"CallAnalyticsStreamCategories">> => list(string()),
 %%   <<"ContentIdentificationType">> => list(any()),
 %%   <<"ContentRedactionType">> => list(any()),
 %%   <<"EnablePartialResultsStabilization">> => boolean(),
@@ -678,7 +678,7 @@
 
 %% Example:
 %% update_media_insights_pipeline_configuration_request() :: #{
-%%   <<"Elements">> := list(media_insights_pipeline_configuration_element()()),
+%%   <<"Elements">> := list(media_insights_pipeline_configuration_element()),
 %%   <<"RealTimeAlertConfiguration">> => real_time_alert_configuration(),
 %%   <<"ResourceAccessRoleArn">> := string()
 %% }
@@ -720,8 +720,8 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"MediaPipelineArn">> => string(),
 %%   <<"MediaPipelineId">> => string(),
-%%   <<"Sinks">> => list(live_connector_sink_configuration()()),
-%%   <<"Sources">> => list(live_connector_source_configuration()()),
+%%   <<"Sinks">> => list(live_connector_sink_configuration()),
+%%   <<"Sources">> => list(live_connector_source_configuration()),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
@@ -730,7 +730,7 @@
 
 %% Example:
 %% list_media_pipelines_response() :: #{
-%%   <<"MediaPipelines">> => list(media_pipeline_summary()()),
+%%   <<"MediaPipelines">> => list(media_pipeline_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_media_pipelines_response() :: #{binary() => any()}.
@@ -788,9 +788,9 @@
 %% Example:
 %% create_media_live_connector_pipeline_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"Sinks">> := list(live_connector_sink_configuration()()),
-%%   <<"Sources">> := list(live_connector_source_configuration()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Sinks">> := list(live_connector_sink_configuration()),
+%%   <<"Sources">> := list(live_connector_source_configuration()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_media_live_connector_pipeline_request() :: #{binary() => any()}.
 
@@ -822,7 +822,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -891,7 +891,7 @@
 %% kinesis_video_stream_source_runtime_configuration() :: #{
 %%   <<"MediaEncoding">> => list(any()),
 %%   <<"MediaSampleRate">> => integer(),
-%%   <<"Streams">> => list(stream_configuration()())
+%%   <<"Streams">> => list(stream_configuration())
 %% }
 -type kinesis_video_stream_source_runtime_configuration() :: #{binary() => any()}.
 
@@ -899,7 +899,7 @@
 %% Example:
 %% media_insights_pipeline() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"ElementStatuses">> => list(media_insights_pipeline_element_status()()),
+%%   <<"ElementStatuses">> => list(media_insights_pipeline_element_status()),
 %%   <<"KinesisVideoStreamRecordingSourceRuntimeConfiguration">> => kinesis_video_stream_recording_source_runtime_configuration(),
 %%   <<"KinesisVideoStreamSourceRuntimeConfiguration">> => kinesis_video_stream_source_runtime_configuration(),
 %%   <<"MediaInsightsPipelineConfigurationArn">> => string(),
@@ -925,8 +925,8 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"MediaPipelineArn">> => string(),
 %%   <<"MediaPipelineId">> => string(),
-%%   <<"Sinks">> => list(media_stream_sink()()),
-%%   <<"Sources">> => list(media_stream_source()()),
+%%   <<"Sinks">> => list(media_stream_sink()),
+%%   <<"Sources">> => list(media_stream_source()),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
 %% }
@@ -971,7 +971,7 @@
 
 %% Example:
 %% list_media_insights_pipeline_configurations_response() :: #{
-%%   <<"MediaInsightsPipelineConfigurations">> => list(media_insights_pipeline_configuration_summary()()),
+%%   <<"MediaInsightsPipelineConfigurations">> => list(media_insights_pipeline_configuration_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_media_insights_pipeline_configurations_response() :: #{binary() => any()}.
@@ -1010,7 +1010,7 @@
 %%   <<"SourceArn">> := string(),
 %%   <<"SourceType">> := list(any()),
 %%   <<"SseAwsKeyManagementParams">> => sse_aws_key_management_params(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_media_capture_pipeline_request() :: #{binary() => any()}.
 
@@ -1030,7 +1030,7 @@
 %%   <<"MediaInsightsPipelineConfigurationArn">> := string(),
 %%   <<"MediaInsightsRuntimeMetadata">> => map(),
 %%   <<"S3RecordingSinkRuntimeConfiguration">> => s3_recording_sink_runtime_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_media_insights_pipeline_request() :: #{binary() => any()}.
 
@@ -1052,7 +1052,7 @@
 %% Example:
 %% kinesis_video_stream_recording_source_runtime_configuration() :: #{
 %%   <<"FragmentSelector">> => fragment_selector(),
-%%   <<"Streams">> => list(recording_stream_configuration()())
+%%   <<"Streams">> => list(recording_stream_configuration())
 %% }
 -type kinesis_video_stream_recording_source_runtime_configuration() :: #{binary() => any()}.
 
@@ -1112,16 +1112,16 @@
 %% Example:
 %% create_media_stream_pipeline_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"Sinks">> := list(media_stream_sink()()),
-%%   <<"Sources">> := list(media_stream_source()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Sinks">> := list(media_stream_sink()),
+%%   <<"Sources">> := list(media_stream_source()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_media_stream_pipeline_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% keyword_match_configuration() :: #{
-%%   <<"Keywords">> => list(string()()),
+%%   <<"Keywords">> => list(string()),
 %%   <<"Negate">> => boolean(),
 %%   <<"RuleName">> => string()
 %% }
@@ -1157,7 +1157,7 @@
 %% Example:
 %% real_time_alert_configuration() :: #{
 %%   <<"Disabled">> => boolean(),
-%%   <<"Rules">> => list(real_time_alert_rule()())
+%%   <<"Rules">> => list(real_time_alert_rule())
 %% }
 -type real_time_alert_configuration() :: #{binary() => any()}.
 
@@ -1176,11 +1176,11 @@
 %% Example:
 %% create_media_insights_pipeline_configuration_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"Elements">> := list(media_insights_pipeline_configuration_element()()),
+%%   <<"Elements">> := list(media_insights_pipeline_configuration_element()),
 %%   <<"MediaInsightsPipelineConfigurationName">> := string(),
 %%   <<"RealTimeAlertConfiguration">> => real_time_alert_configuration(),
 %%   <<"ResourceAccessRoleArn">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_media_insights_pipeline_configuration_request() :: #{binary() => any()}.
 
@@ -1279,7 +1279,7 @@
 
 %% Example:
 %% stream_channel_definition() :: #{
-%%   <<"ChannelDefinitions">> => list(channel_definition()()),
+%%   <<"ChannelDefinitions">> => list(channel_definition()),
 %%   <<"NumberOfChannels">> => integer()
 %% }
 -type stream_channel_definition() :: #{binary() => any()}.

@@ -282,7 +282,7 @@
 %%   <<"IdentityType">> => list(any()),
 %%   <<"MailFromAttributes">> => mail_from_attributes(),
 %%   <<"Policies">> => map(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VerificationInfo">> => verification_info(),
 %%   <<"VerificationStatus">> => list(any()),
 %%   <<"VerifiedForSendingStatus">> => boolean()
@@ -355,7 +355,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -410,8 +410,8 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"Topics">> => list(topic()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"Topics">> => list(topic())
 %% }
 -type get_contact_list_response() :: #{binary() => any()}.
 
@@ -432,7 +432,7 @@
 
 %% Example:
 %% list_email_identities_response() :: #{
-%%   <<"EmailIdentities">> => list(identity_info()()),
+%%   <<"EmailIdentities">> => list(identity_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_email_identities_response() :: #{binary() => any()}.
@@ -533,7 +533,7 @@
 
 %% Example:
 %% list_deliverability_test_reports_response() :: #{
-%%   <<"DeliverabilityTestReports">> => list(deliverability_test_report()()),
+%%   <<"DeliverabilityTestReports">> => list(deliverability_test_report()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_deliverability_test_reports_response() :: #{binary() => any()}.
@@ -655,7 +655,7 @@
 %%   <<"SigningAttributesOrigin">> => list(any()),
 %%   <<"SigningEnabled">> => boolean(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tokens">> => list(string()())
+%%   <<"Tokens">> => list(string())
 %% }
 -type dkim_attributes() :: #{binary() => any()}.
 
@@ -708,7 +708,7 @@
 %% Example:
 %% put_deliverability_dashboard_option_request() :: #{
 %%   <<"DashboardEnabled">> := boolean(),
-%%   <<"SubscribedDomains">> => list(domain_deliverability_tracking_option()())
+%%   <<"SubscribedDomains">> => list(domain_deliverability_tracking_option())
 %% }
 -type put_deliverability_dashboard_option_request() :: #{binary() => any()}.
 
@@ -728,7 +728,7 @@
 
 %% Example:
 %% put_account_details_request() :: #{
-%%   <<"AdditionalContactEmailAddresses">> => list(string()()),
+%%   <<"AdditionalContactEmailAddresses">> => list(string()),
 %%   <<"ContactLanguage">> => list(any()),
 %%   <<"MailType">> := list(any()),
 %%   <<"ProductionAccessEnabled">> => boolean(),
@@ -740,7 +740,7 @@
 
 %% Example:
 %% send_bulk_email_response() :: #{
-%%   <<"BulkEmailEntryResults">> => list(bulk_email_entry_result()())
+%%   <<"BulkEmailEntryResults">> => list(bulk_email_entry_result())
 %% }
 -type send_bulk_email_response() :: #{binary() => any()}.
 
@@ -772,9 +772,9 @@
 %% Example:
 %% get_deliverability_dashboard_options_response() :: #{
 %%   <<"AccountStatus">> => list(any()),
-%%   <<"ActiveSubscribedDomains">> => list(domain_deliverability_tracking_option()()),
+%%   <<"ActiveSubscribedDomains">> => list(domain_deliverability_tracking_option()),
 %%   <<"DashboardEnabled">> => boolean(),
-%%   <<"PendingExpirationSubscribedDomains">> => list(domain_deliverability_tracking_option()()),
+%%   <<"PendingExpirationSubscribedDomains">> => list(domain_deliverability_tracking_option()),
 %%   <<"SubscriptionExpiryDate">> => non_neg_integer()
 %% }
 -type get_deliverability_dashboard_options_response() :: #{binary() => any()}.
@@ -790,7 +790,7 @@
 
 %% Example:
 %% list_multi_region_endpoints_response() :: #{
-%%   <<"MultiRegionEndpoints">> => list(multi_region_endpoint()()),
+%%   <<"MultiRegionEndpoints">> => list(multi_region_endpoint()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_multi_region_endpoints_response() :: #{binary() => any()}.
@@ -848,7 +848,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -884,14 +884,14 @@
 %% Example:
 %% list_suppressed_destinations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SuppressedDestinationSummaries">> => list(suppressed_destination_summary()())
+%%   <<"SuppressedDestinationSummaries">> => list(suppressed_destination_summary())
 %% }
 -type list_suppressed_destinations_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_domain_deliverability_campaigns_response() :: #{
-%%   <<"DomainDeliverabilityCampaigns">> => list(domain_deliverability_campaign()()),
+%%   <<"DomainDeliverabilityCampaigns">> => list(domain_deliverability_campaign()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_domain_deliverability_campaigns_response() :: #{binary() => any()}.
@@ -936,7 +936,7 @@
 
 %% Example:
 %% cloud_watch_destination() :: #{
-%%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration()())
+%%   <<"DimensionConfigurations">> => list(cloud_watch_dimension_configuration())
 %% }
 -type cloud_watch_destination() :: #{binary() => any()}.
 
@@ -966,7 +966,7 @@
 
 %% Example:
 %% overall_volume() :: #{
-%%   <<"DomainIspPlacements">> => list(domain_isp_placement()()),
+%%   <<"DomainIspPlacements">> => list(domain_isp_placement()),
 %%   <<"ReadRatePercent">> => float(),
 %%   <<"VolumeStatistics">> => volume_statistics()
 %% }
@@ -1017,7 +1017,7 @@
 %% Example:
 %% email_insights() :: #{
 %%   <<"Destination">> => string(),
-%%   <<"Events">> => list(insights_event()()),
+%%   <<"Events">> => list(insights_event()),
 %%   <<"Isp">> => string()
 %% }
 -type email_insights() :: #{binary() => any()}.
@@ -1025,7 +1025,7 @@
 
 %% Example:
 %% get_blacklist_reports_request() :: #{
-%%   <<"BlacklistItemNames">> := list(string()())
+%%   <<"BlacklistItemNames">> := list(string())
 %% }
 -type get_blacklist_reports_request() :: #{binary() => any()}.
 
@@ -1036,12 +1036,12 @@
 
 %% Example:
 %% message_insights_filters() :: #{
-%%   <<"Destination">> => list(string()()),
-%%   <<"FromEmailAddress">> => list(string()()),
-%%   <<"Isp">> => list(string()()),
+%%   <<"Destination">> => list(string()),
+%%   <<"FromEmailAddress">> => list(string()),
+%%   <<"Isp">> => list(string()),
 %%   <<"LastDeliveryEvent">> => list(list(any())()),
 %%   <<"LastEngagementEvent">> => list(list(any())()),
-%%   <<"Subject">> => list(string()())
+%%   <<"Subject">> => list(string())
 %% }
 -type message_insights_filters() :: #{binary() => any()}.
 
@@ -1097,7 +1097,7 @@
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"DkimSigningAttributes">> => dkim_signing_attributes(),
 %%   <<"EmailIdentity">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_email_identity_request() :: #{binary() => any()}.
 
@@ -1105,7 +1105,7 @@
 %% Example:
 %% inbox_placement_tracking_option() :: #{
 %%   <<"Global">> => boolean(),
-%%   <<"TrackedIsps">> => list(string()())
+%%   <<"TrackedIsps">> => list(string())
 %% }
 -type inbox_placement_tracking_option() :: #{binary() => any()}.
 
@@ -1260,7 +1260,7 @@
 %%   <<"EndpointId">> => string(),
 %%   <<"EndpointName">> => string(),
 %%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"Regions">> => list(string()()),
+%%   <<"Regions">> => list(string()),
 %%   <<"Status">> => list(any())
 %% }
 -type multi_region_endpoint() :: #{binary() => any()}.
@@ -1293,7 +1293,7 @@
 
 %% Example:
 %% details() :: #{
-%%   <<"RoutesDetails">> => list(route_details()())
+%%   <<"RoutesDetails">> => list(route_details())
 %% }
 -type details() :: #{binary() => any()}.
 
@@ -1336,7 +1336,7 @@
 
 %% Example:
 %% account_details() :: #{
-%%   <<"AdditionalContactEmailAddresses">> => list(string()()),
+%%   <<"AdditionalContactEmailAddresses">> => list(string()),
 %%   <<"ContactLanguage">> => list(any()),
 %%   <<"MailType">> => list(any()),
 %%   <<"ReviewDetails">> => review_details(),
@@ -1373,7 +1373,7 @@
 %%   <<"EndpointId">> => string(),
 %%   <<"EndpointName">> => string(),
 %%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"Routes">> => list(route()()),
+%%   <<"Routes">> => list(route()),
 %%   <<"Status">> => list(any())
 %% }
 -type get_multi_region_endpoint_response() :: #{binary() => any()}.
@@ -1404,7 +1404,7 @@
 %% metrics_data_source() :: #{
 %%   <<"Dimensions">> => map(),
 %%   <<"EndDate">> => non_neg_integer(),
-%%   <<"Metrics">> => list(export_metric()()),
+%%   <<"Metrics">> => list(export_metric()),
 %%   <<"Namespace">> => list(any()),
 %%   <<"StartDate">> => non_neg_integer()
 %% }
@@ -1433,21 +1433,21 @@
 
 %% Example:
 %% batch_get_metric_data_request() :: #{
-%%   <<"Queries">> := list(batch_get_metric_data_query()())
+%%   <<"Queries">> := list(batch_get_metric_data_query())
 %% }
 -type batch_get_metric_data_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_configuration_sets_response() :: #{
-%%   <<"ConfigurationSets">> => list(string()()),
+%%   <<"ConfigurationSets">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_sets_response() :: #{binary() => any()}.
@@ -1474,7 +1474,7 @@
 
 %% Example:
 %% get_configuration_set_event_destinations_response() :: #{
-%%   <<"EventDestinations">> => list(event_destination()())
+%%   <<"EventDestinations">> => list(event_destination())
 %% }
 -type get_configuration_set_event_destinations_response() :: #{binary() => any()}.
 
@@ -1535,9 +1535,9 @@
 
 %% Example:
 %% get_message_insights_response() :: #{
-%%   <<"EmailTags">> => list(message_tag()()),
+%%   <<"EmailTags">> => list(message_tag()),
 %%   <<"FromEmailAddress">> => string(),
-%%   <<"Insights">> => list(email_insights()()),
+%%   <<"Insights">> => list(email_insights()),
 %%   <<"MessageId">> => string(),
 %%   <<"Subject">> => string()
 %% }
@@ -1546,7 +1546,7 @@
 
 %% Example:
 %% list_custom_verification_email_templates_response() :: #{
-%%   <<"CustomVerificationEmailTemplates">> => list(custom_verification_email_template_metadata()()),
+%%   <<"CustomVerificationEmailTemplates">> => list(custom_verification_email_template_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_verification_email_templates_response() :: #{binary() => any()}.
@@ -1585,8 +1585,8 @@
 %% create_contact_list_request() :: #{
 %%   <<"ContactListName">> := string(),
 %%   <<"Description">> => string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"Topics">> => list(topic()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"Topics">> => list(topic())
 %% }
 -type create_contact_list_request() :: #{binary() => any()}.
 
@@ -1595,7 +1595,7 @@
 %% create_multi_region_endpoint_request() :: #{
 %%   <<"Details">> := details(),
 %%   <<"EndpointName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_multi_region_endpoint_request() :: #{binary() => any()}.
 
@@ -1604,8 +1604,8 @@
 %% contact() :: #{
 %%   <<"EmailAddress">> => string(),
 %%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"TopicDefaultPreferences">> => list(topic_preference()()),
-%%   <<"TopicPreferences">> => list(topic_preference()()),
+%%   <<"TopicDefaultPreferences">> => list(topic_preference()),
+%%   <<"TopicPreferences">> => list(topic_preference()),
 %%   <<"UnsubscribeAll">> => boolean()
 %% }
 -type contact() :: #{binary() => any()}.
@@ -1648,16 +1648,16 @@
 
 %% Example:
 %% send_bulk_email_request() :: #{
-%%   <<"BulkEmailEntries">> := list(bulk_email_entry()()),
+%%   <<"BulkEmailEntries">> := list(bulk_email_entry()),
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"DefaultContent">> := bulk_email_content(),
-%%   <<"DefaultEmailTags">> => list(message_tag()()),
+%%   <<"DefaultEmailTags">> => list(message_tag()),
 %%   <<"EndpointId">> => string(),
 %%   <<"FeedbackForwardingEmailAddress">> => string(),
 %%   <<"FeedbackForwardingEmailAddressIdentityArn">> => string(),
 %%   <<"FromEmailAddress">> => string(),
 %%   <<"FromEmailAddressIdentityArn">> => string(),
-%%   <<"ReplyToAddresses">> => list(string()())
+%%   <<"ReplyToAddresses">> => list(string())
 %% }
 -type send_bulk_email_request() :: #{binary() => any()}.
 
@@ -1705,7 +1705,7 @@
 %% create_dedicated_ip_pool_request() :: #{
 %%   <<"PoolName">> := string(),
 %%   <<"ScalingMode">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_dedicated_ip_pool_request() :: #{binary() => any()}.
 
@@ -1743,7 +1743,7 @@
 
 %% Example:
 %% list_import_jobs_response() :: #{
-%%   <<"ImportJobs">> => list(import_job_summary()()),
+%%   <<"ImportJobs">> => list(import_job_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_import_jobs_response() :: #{binary() => any()}.
@@ -1751,8 +1751,8 @@
 
 %% Example:
 %% batch_get_metric_data_response() :: #{
-%%   <<"Errors">> => list(metric_data_error()()),
-%%   <<"Results">> => list(metric_data_result()())
+%%   <<"Errors">> => list(metric_data_error()),
+%%   <<"Results">> => list(metric_data_result())
 %% }
 -type batch_get_metric_data_response() :: #{binary() => any()}.
 
@@ -1854,7 +1854,7 @@
 %%   <<"Content">> := email_content(),
 %%   <<"FromEmailAddress">> := string(),
 %%   <<"ReportName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_deliverability_test_report_request() :: #{binary() => any()}.
 
@@ -1869,7 +1869,7 @@
 
 %% Example:
 %% list_contacts_response() :: #{
-%%   <<"Contacts">> => list(contact()()),
+%%   <<"Contacts">> => list(contact()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contacts_response() :: #{binary() => any()}.
@@ -1895,7 +1895,7 @@
 
 %% Example:
 %% daily_volume() :: #{
-%%   <<"DomainIspPlacements">> => list(domain_isp_placement()()),
+%%   <<"DomainIspPlacements">> => list(domain_isp_placement()),
 %%   <<"StartDate">> => non_neg_integer(),
 %%   <<"VolumeStatistics">> => volume_statistics()
 %% }
@@ -1947,7 +1947,7 @@
 %% Example:
 %% list_email_templates_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TemplatesMetadata">> => list(email_template_metadata()())
+%%   <<"TemplatesMetadata">> => list(email_template_metadata())
 %% }
 -type list_email_templates_response() :: #{binary() => any()}.
 
@@ -1962,7 +1962,7 @@
 %% Example:
 %% update_contact_request() :: #{
 %%   <<"AttributesData">> => string(),
-%%   <<"TopicPreferences">> => list(topic_preference()()),
+%%   <<"TopicPreferences">> => list(topic_preference()),
 %%   <<"UnsubscribeAll">> => boolean()
 %% }
 -type update_contact_request() :: #{binary() => any()}.
@@ -1971,7 +1971,7 @@
 %% Example:
 %% put_email_identity_dkim_signing_attributes_response() :: #{
 %%   <<"DkimStatus">> => list(any()),
-%%   <<"DkimTokens">> => list(string()())
+%%   <<"DkimTokens">> => list(string())
 %% }
 -type put_email_identity_dkim_signing_attributes_response() :: #{binary() => any()}.
 
@@ -1989,9 +1989,9 @@
 
 %% Example:
 %% destination() :: #{
-%%   <<"BccAddresses">> => list(string()()),
-%%   <<"CcAddresses">> => list(string()()),
-%%   <<"ToAddresses">> => list(string()())
+%%   <<"BccAddresses">> => list(string()),
+%%   <<"CcAddresses">> => list(string()),
+%%   <<"ToAddresses">> => list(string())
 %% }
 -type destination() :: #{binary() => any()}.
 
@@ -2014,7 +2014,7 @@
 
 %% Example:
 %% get_domain_statistics_report_response() :: #{
-%%   <<"DailyVolumes">> => list(daily_volume()()),
+%%   <<"DailyVolumes">> => list(daily_volume()),
 %%   <<"OverallVolume">> => overall_volume()
 %% }
 -type get_domain_statistics_report_response() :: #{binary() => any()}.
@@ -2039,7 +2039,7 @@
 %% create_contact_request() :: #{
 %%   <<"AttributesData">> => string(),
 %%   <<"EmailAddress">> := string(),
-%%   <<"TopicPreferences">> => list(topic_preference()()),
+%%   <<"TopicPreferences">> => list(topic_preference()),
 %%   <<"UnsubscribeAll">> => boolean()
 %% }
 -type create_contact_request() :: #{binary() => any()}.
@@ -2062,7 +2062,7 @@
 
 %% Example:
 %% list_dedicated_ip_pools_response() :: #{
-%%   <<"DedicatedIpPools">> => list(string()()),
+%%   <<"DedicatedIpPools">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dedicated_ip_pools_response() :: #{binary() => any()}.
@@ -2193,7 +2193,7 @@
 %%   <<"ReputationOptions">> => reputation_options(),
 %%   <<"SendingOptions">> => sending_options(),
 %%   <<"SuppressionOptions">> => suppression_options(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrackingOptions">> => tracking_options(),
 %%   <<"VdmOptions">> => vdm_options()
 %% }
@@ -2214,8 +2214,8 @@
 
 %% Example:
 %% template() :: #{
-%%   <<"Attachments">> => list(attachment()()),
-%%   <<"Headers">> => list(message_header()()),
+%%   <<"Attachments">> => list(attachment()),
+%%   <<"Headers">> => list(message_header()),
 %%   <<"TemplateArn">> => string(),
 %%   <<"TemplateContent">> => email_template_content(),
 %%   <<"TemplateData">> => string(),
@@ -2229,14 +2229,14 @@
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"Content">> := email_content(),
 %%   <<"Destination">> => destination(),
-%%   <<"EmailTags">> => list(message_tag()()),
+%%   <<"EmailTags">> => list(message_tag()),
 %%   <<"EndpointId">> => string(),
 %%   <<"FeedbackForwardingEmailAddress">> => string(),
 %%   <<"FeedbackForwardingEmailAddressIdentityArn">> => string(),
 %%   <<"FromEmailAddress">> => string(),
 %%   <<"FromEmailAddressIdentityArn">> => string(),
 %%   <<"ListManagementOptions">> => list_management_options(),
-%%   <<"ReplyToAddresses">> => list(string()())
+%%   <<"ReplyToAddresses">> => list(string())
 %% }
 -type send_email_request() :: #{binary() => any()}.
 
@@ -2263,7 +2263,7 @@
 
 %% Example:
 %% list_export_jobs_response() :: #{
-%%   <<"ExportJobs">> => list(export_job_summary()()),
+%%   <<"ExportJobs">> => list(export_job_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_export_jobs_response() :: #{binary() => any()}.
@@ -2296,7 +2296,7 @@
 %% domain_deliverability_campaign() :: #{
 %%   <<"CampaignId">> => string(),
 %%   <<"DeleteRate">> => float(),
-%%   <<"Esps">> => list(string()()),
+%%   <<"Esps">> => list(string()),
 %%   <<"FirstSeenDateTime">> => non_neg_integer(),
 %%   <<"FromAddress">> => string(),
 %%   <<"ImageUrl">> => string(),
@@ -2305,7 +2305,7 @@
 %%   <<"ProjectedVolume">> => float(),
 %%   <<"ReadDeleteRate">> => float(),
 %%   <<"ReadRate">> => float(),
-%%   <<"SendingIps">> => list(string()()),
+%%   <<"SendingIps">> => list(string()),
 %%   <<"SpamCount">> => float(),
 %%   <<"Subject">> => string()
 %% }
@@ -2322,7 +2322,7 @@
 %% Example:
 %% list_recommendations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Recommendations">> => list(recommendation()())
+%%   <<"Recommendations">> => list(recommendation())
 %% }
 -type list_recommendations_response() :: #{binary() => any()}.
 
@@ -2357,8 +2357,8 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"EmailAddress">> => string(),
 %%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
-%%   <<"TopicDefaultPreferences">> => list(topic_preference()()),
-%%   <<"TopicPreferences">> => list(topic_preference()()),
+%%   <<"TopicDefaultPreferences">> => list(topic_preference()),
+%%   <<"TopicPreferences">> => list(topic_preference()),
 %%   <<"UnsubscribeAll">> => boolean()
 %% }
 -type get_contact_response() :: #{binary() => any()}.
@@ -2391,8 +2391,8 @@
 %% bulk_email_entry() :: #{
 %%   <<"Destination">> := destination(),
 %%   <<"ReplacementEmailContent">> => replacement_email_content(),
-%%   <<"ReplacementHeaders">> => list(message_header()()),
-%%   <<"ReplacementTags">> => list(message_tag()())
+%%   <<"ReplacementHeaders">> => list(message_header()),
+%%   <<"ReplacementTags">> => list(message_tag())
 %% }
 -type bulk_email_entry() :: #{binary() => any()}.
 
@@ -2405,7 +2405,7 @@
 %%   <<"ReputationOptions">> => reputation_options(),
 %%   <<"SendingOptions">> => sending_options(),
 %%   <<"SuppressionOptions">> => suppression_options(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrackingOptions">> => tracking_options(),
 %%   <<"VdmOptions">> => vdm_options()
 %% }
@@ -2449,7 +2449,7 @@
 %% Example:
 %% update_contact_list_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Topics">> => list(topic()())
+%%   <<"Topics">> => list(topic())
 %% }
 -type update_contact_list_request() :: #{binary() => any()}.
 
@@ -2457,8 +2457,8 @@
 %% Example:
 %% metric_data_result() :: #{
 %%   <<"Id">> => string(),
-%%   <<"Timestamps">> => list(non_neg_integer()()),
-%%   <<"Values">> => list(float()())
+%%   <<"Timestamps">> => list(non_neg_integer()),
+%%   <<"Values">> => list(float())
 %% }
 -type metric_data_result() :: #{binary() => any()}.
 
@@ -2489,10 +2489,10 @@
 %% Example:
 %% get_deliverability_test_report_response() :: #{
 %%   <<"DeliverabilityTestReport">> => deliverability_test_report(),
-%%   <<"IspPlacements">> => list(isp_placement()()),
+%%   <<"IspPlacements">> => list(isp_placement()),
 %%   <<"Message">> => string(),
 %%   <<"OverallPlacement">> => placement_statistics(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type get_deliverability_test_report_response() :: #{binary() => any()}.
 
@@ -2531,7 +2531,7 @@
 
 %% Example:
 %% get_dedicated_ips_response() :: #{
-%%   <<"DedicatedIps">> => list(dedicated_ip()()),
+%%   <<"DedicatedIps">> => list(dedicated_ip()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_dedicated_ips_response() :: #{binary() => any()}.
@@ -2539,7 +2539,7 @@
 
 %% Example:
 %% list_contact_lists_response() :: #{
-%%   <<"ContactLists">> => list(contact_list()()),
+%%   <<"ContactLists">> => list(contact_list()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_lists_response() :: #{binary() => any()}.
@@ -2547,9 +2547,9 @@
 
 %% Example:
 %% message() :: #{
-%%   <<"Attachments">> => list(attachment()()),
+%%   <<"Attachments">> => list(attachment()),
 %%   <<"Body">> => body(),
-%%   <<"Headers">> => list(message_header()()),
+%%   <<"Headers">> => list(message_header()),
 %%   <<"Subject">> => content()
 %% }
 -type message() :: #{binary() => any()}.

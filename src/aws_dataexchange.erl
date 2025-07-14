@@ -181,9 +181,9 @@
 
 %% Example:
 %% scope_details() :: #{
-%%   <<"LakeFormationTagPolicies">> => list(lake_formation_tag_policy_details()()),
-%%   <<"RedshiftDataShares">> => list(redshift_data_share_details()()),
-%%   <<"S3DataAccesses">> => list(s3_data_access_details()())
+%%   <<"LakeFormationTagPolicies">> => list(lake_formation_tag_policy_details()),
+%%   <<"RedshiftDataShares">> => list(redshift_data_share_details()),
+%%   <<"S3DataAccesses">> => list(s3_data_access_details())
 %% }
 -type scope_details() :: #{binary() => any()}.
 
@@ -253,7 +253,7 @@
 
 %% Example:
 %% list_received_data_grants_request() :: #{
-%%   <<"AcceptanceState">> => list(string()()),
+%%   <<"AcceptanceState">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -262,7 +262,7 @@
 
 %% Example:
 %% list_data_sets_response() :: #{
-%%   <<"DataSets">> => list(data_set_entry()()),
+%%   <<"DataSets">> => list(data_set_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_sets_response() :: #{binary() => any()}.
@@ -273,7 +273,7 @@
 %%   <<"DataSetId">> => string(),
 %%   <<"Encryption">> => export_server_side_encryption(),
 %%   <<"EventActionArn">> => string(),
-%%   <<"RevisionDestinations">> => list(revision_destination_entry()())
+%%   <<"RevisionDestinations">> => list(revision_destination_entry())
 %% }
 -type export_revisions_to_s3_response_details() :: #{binary() => any()}.
 
@@ -283,7 +283,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Details">> => response_details(),
-%%   <<"Errors">> => list(job_error()()),
+%%   <<"Errors">> => list(job_error()),
 %%   <<"Id">> => string(),
 %%   <<"State">> => string(),
 %%   <<"Type">> => string(),
@@ -321,7 +321,7 @@
 
 %% Example:
 %% list_received_data_grants_response() :: #{
-%%   <<"DataGrantSummaries">> => list(received_data_grant_summaries_entry()()),
+%%   <<"DataGrantSummaries">> => list(received_data_grant_summaries_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_received_data_grants_response() :: #{binary() => any()}.
@@ -443,7 +443,7 @@
 
 %% Example:
 %% list_jobs_response() :: #{
-%%   <<"Jobs">> => list(job_entry()()),
+%%   <<"Jobs">> => list(job_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
@@ -459,15 +459,15 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% database_l_f_tag_policy_and_permissions() :: #{
-%%   <<"Expression">> => list(l_f_tag()()),
-%%   <<"Permissions">> => list(string()())
+%%   <<"Expression">> => list(l_f_tag()),
+%%   <<"Permissions">> => list(string())
 %% }
 -type database_l_f_tag_policy_and_permissions() :: #{binary() => any()}.
 
@@ -596,7 +596,7 @@
 %% Example:
 %% list_data_set_revisions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Revisions">> => list(revision_entry()())
+%%   <<"Revisions">> => list(revision_entry())
 %% }
 -type list_data_set_revisions_response() :: #{binary() => any()}.
 
@@ -661,15 +661,15 @@
 
 %% Example:
 %% table_l_f_tag_policy_and_permissions() :: #{
-%%   <<"Expression">> => list(l_f_tag()()),
-%%   <<"Permissions">> => list(string()())
+%%   <<"Expression">> => list(l_f_tag()),
+%%   <<"Permissions">> => list(string())
 %% }
 -type table_l_f_tag_policy_and_permissions() :: #{binary() => any()}.
 
 
 %% Example:
 %% export_assets_to_s3_request_details() :: #{
-%%   <<"AssetDestinations">> => list(asset_destination_entry()()),
+%%   <<"AssetDestinations">> => list(asset_destination_entry()),
 %%   <<"DataSetId">> => string(),
 %%   <<"Encryption">> => export_server_side_encryption(),
 %%   <<"RevisionId">> => string()
@@ -708,7 +708,7 @@
 
 %% Example:
 %% export_assets_to_s3_response_details() :: #{
-%%   <<"AssetDestinations">> => list(asset_destination_entry()()),
+%%   <<"AssetDestinations">> => list(asset_destination_entry()),
 %%   <<"DataSetId">> => string(),
 %%   <<"Encryption">> => export_server_side_encryption(),
 %%   <<"RevisionId">> => string()
@@ -718,7 +718,7 @@
 
 %% Example:
 %% list_revision_assets_response() :: #{
-%%   <<"Assets">> => list(asset_entry()()),
+%%   <<"Assets">> => list(asset_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_revision_assets_response() :: #{binary() => any()}.
@@ -727,7 +727,7 @@
 %% Example:
 %% details() :: #{
 %%   <<"ImportAssetFromSignedUrlJobErrorDetails">> => import_asset_from_signed_url_job_error_details(),
-%%   <<"ImportAssetsFromS3JobErrorDetails">> => list(asset_source_entry()())
+%%   <<"ImportAssetsFromS3JobErrorDetails">> => list(asset_source_entry())
 %% }
 -type details() :: #{binary() => any()}.
 
@@ -764,7 +764,7 @@
 
 %% Example:
 %% schema_change_request_details() :: #{
-%%   <<"Changes">> => list(schema_change_details()()),
+%%   <<"Changes">> => list(schema_change_details()),
 %%   <<"SchemaChangeAt">> => non_neg_integer()
 %% }
 -type schema_change_request_details() :: #{binary() => any()}.
@@ -789,7 +789,7 @@
 
 %% Example:
 %% database_l_f_tag_policy() :: #{
-%%   <<"Expression">> => list(l_f_tag()())
+%%   <<"Expression">> => list(l_f_tag())
 %% }
 -type database_l_f_tag_policy() :: #{binary() => any()}.
 
@@ -797,9 +797,9 @@
 %% Example:
 %% s3_data_access_asset() :: #{
 %%   <<"Bucket">> => string(),
-%%   <<"KeyPrefixes">> => list(string()()),
-%%   <<"Keys">> => list(string()()),
-%%   <<"KmsKeysToGrant">> => list(kms_key_to_grant()()),
+%%   <<"KeyPrefixes">> => list(string()),
+%%   <<"Keys">> => list(string()),
+%%   <<"KmsKeysToGrant">> => list(kms_key_to_grant()),
 %%   <<"S3AccessPointAlias">> => string(),
 %%   <<"S3AccessPointArn">> => string()
 %% }
@@ -822,7 +822,7 @@
 
 %% Example:
 %% table_l_f_tag_policy() :: #{
-%%   <<"Expression">> => list(l_f_tag()())
+%%   <<"Expression">> => list(l_f_tag())
 %% }
 -type table_l_f_tag_policy() :: #{binary() => any()}.
 
@@ -880,9 +880,9 @@
 %% Example:
 %% s3_data_access_asset_source_entry() :: #{
 %%   <<"Bucket">> => string(),
-%%   <<"KeyPrefixes">> => list(string()()),
-%%   <<"Keys">> => list(string()()),
-%%   <<"KmsKeysToGrant">> => list(kms_key_to_grant()())
+%%   <<"KeyPrefixes">> => list(string()),
+%%   <<"Keys">> => list(string()),
+%%   <<"KmsKeysToGrant">> => list(kms_key_to_grant())
 %% }
 -type s3_data_access_asset_source_entry() :: #{binary() => any()}.
 
@@ -985,8 +985,8 @@
 
 %% Example:
 %% s3_data_access_details() :: #{
-%%   <<"KeyPrefixes">> => list(string()()),
-%%   <<"Keys">> => list(string()())
+%%   <<"KeyPrefixes">> => list(string()),
+%%   <<"Keys">> => list(string())
 %% }
 -type s3_data_access_details() :: #{binary() => any()}.
 
@@ -1018,7 +1018,7 @@
 
 %% Example:
 %% import_assets_from_s3_response_details() :: #{
-%%   <<"AssetSources">> => list(asset_source_entry()()),
+%%   <<"AssetSources">> => list(asset_source_entry()),
 %%   <<"DataSetId">> => string(),
 %%   <<"RevisionId">> => string()
 %% }
@@ -1031,7 +1031,7 @@
 
 %% Example:
 %% import_assets_from_redshift_data_shares_request_details() :: #{
-%%   <<"AssetSources">> => list(redshift_data_share_asset_source_entry()()),
+%%   <<"AssetSources">> => list(redshift_data_share_asset_source_entry()),
 %%   <<"DataSetId">> => string(),
 %%   <<"RevisionId">> => string()
 %% }
@@ -1061,7 +1061,7 @@
 
 %% Example:
 %% import_assets_from_redshift_data_shares_response_details() :: #{
-%%   <<"AssetSources">> => list(redshift_data_share_asset_source_entry()()),
+%%   <<"AssetSources">> => list(redshift_data_share_asset_source_entry()),
 %%   <<"DataSetId">> => string(),
 %%   <<"RevisionId">> => string()
 %% }
@@ -1107,7 +1107,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Details">> => response_details(),
-%%   <<"Errors">> => list(job_error()()),
+%%   <<"Errors">> => list(job_error()),
 %%   <<"Id">> => string(),
 %%   <<"State">> => string(),
 %%   <<"Type">> => string(),
@@ -1220,7 +1220,7 @@
 
 %% Example:
 %% import_assets_from_s3_request_details() :: #{
-%%   <<"AssetSources">> => list(asset_source_entry()()),
+%%   <<"AssetSources">> => list(asset_source_entry()),
 %%   <<"DataSetId">> => string(),
 %%   <<"RevisionId">> => string()
 %% }
@@ -1231,7 +1231,7 @@
 %% lake_formation_data_permission_asset() :: #{
 %%   <<"LakeFormationDataPermissionDetails">> => lake_formation_data_permission_details(),
 %%   <<"LakeFormationDataPermissionType">> => string(),
-%%   <<"Permissions">> => list(string()()),
+%%   <<"Permissions">> => list(string()),
 %%   <<"RoleArn">> => string()
 %% }
 -type lake_formation_data_permission_asset() :: #{binary() => any()}.
@@ -1248,7 +1248,7 @@
 
 %% Example:
 %% list_data_grants_response() :: #{
-%%   <<"DataGrantSummaries">> => list(data_grant_summary_entry()()),
+%%   <<"DataGrantSummaries">> => list(data_grant_summary_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_grants_response() :: #{binary() => any()}.
@@ -1294,7 +1294,7 @@
 
 %% Example:
 %% list_event_actions_response() :: #{
-%%   <<"EventActions">> => list(event_action_entry()()),
+%%   <<"EventActions">> => list(event_action_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_actions_response() :: #{binary() => any()}.
@@ -1320,7 +1320,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Details">> => response_details(),
-%%   <<"Errors">> => list(job_error()()),
+%%   <<"Errors">> => list(job_error()),
 %%   <<"Id">> => string(),
 %%   <<"State">> => string(),
 %%   <<"Type">> => string(),
@@ -1414,7 +1414,7 @@
 %% export_revisions_to_s3_request_details() :: #{
 %%   <<"DataSetId">> => string(),
 %%   <<"Encryption">> => export_server_side_encryption(),
-%%   <<"RevisionDestinations">> => list(revision_destination_entry()())
+%%   <<"RevisionDestinations">> => list(revision_destination_entry())
 %% }
 -type export_revisions_to_s3_request_details() :: #{binary() => any()}.
 

@@ -55,7 +55,7 @@
 %% Example:
 %% application_source() :: #{
 %%   <<"CloudFormationStackARN">> => string(),
-%%   <<"TagFilters">> => list(tag_filter()())
+%%   <<"TagFilters">> => list(tag_filter())
 %% }
 -type application_source() :: #{binary() => any()}.
 
@@ -68,7 +68,7 @@
 %% Example:
 %% create_scaling_plan_request() :: #{
 %%   <<"ApplicationSource">> := application_source(),
-%%   <<"ScalingInstructions">> := list(scaling_instruction()()),
+%%   <<"ScalingInstructions">> := list(scaling_instruction()),
 %%   <<"ScalingPlanName">> := string()
 %% }
 -type create_scaling_plan_request() :: #{binary() => any()}.
@@ -81,7 +81,7 @@
 
 %% Example:
 %% customized_load_metric_specification() :: #{
-%%   <<"Dimensions">> => list(metric_dimension()()),
+%%   <<"Dimensions">> => list(metric_dimension()),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
 %%   <<"Statistic">> => list(any()),
@@ -91,7 +91,7 @@
 
 %% Example:
 %% customized_scaling_metric_specification() :: #{
-%%   <<"Dimensions">> => list(metric_dimension()()),
+%%   <<"Dimensions">> => list(metric_dimension()),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string(),
 %%   <<"Statistic">> => list(any()),
@@ -131,16 +131,16 @@
 %% Example:
 %% describe_scaling_plan_resources_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScalingPlanResources">> => list(scaling_plan_resource()())
+%%   <<"ScalingPlanResources">> => list(scaling_plan_resource())
 %% }
 -type describe_scaling_plan_resources_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_scaling_plans_request() :: #{
-%%   <<"ApplicationSources">> => list(application_source()()),
+%%   <<"ApplicationSources">> => list(application_source()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ScalingPlanNames">> => list(string()()),
+%%   <<"ScalingPlanNames">> => list(string()),
 %%   <<"ScalingPlanVersion">> => float()
 %% }
 -type describe_scaling_plans_request() :: #{binary() => any()}.
@@ -148,7 +148,7 @@
 %% Example:
 %% describe_scaling_plans_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScalingPlans">> => list(scaling_plan()())
+%%   <<"ScalingPlans">> => list(scaling_plan())
 %% }
 -type describe_scaling_plans_response() :: #{binary() => any()}.
 
@@ -167,7 +167,7 @@
 
 %% Example:
 %% get_scaling_plan_resource_forecast_data_response() :: #{
-%%   <<"Datapoints">> => list(datapoint()())
+%%   <<"Datapoints">> => list(datapoint())
 %% }
 -type get_scaling_plan_resource_forecast_data_response() :: #{binary() => any()}.
 
@@ -231,7 +231,7 @@
 %%   <<"ScalingPolicyUpdateBehavior">> => list(any()),
 %%   <<"ScheduledActionBufferTime">> => integer(),
 %%   <<"ServiceNamespace">> => list(any()),
-%%   <<"TargetTrackingConfigurations">> => list(target_tracking_configuration()())
+%%   <<"TargetTrackingConfigurations">> => list(target_tracking_configuration())
 %% }
 -type scaling_instruction() :: #{binary() => any()}.
 
@@ -239,7 +239,7 @@
 %% scaling_plan() :: #{
 %%   <<"ApplicationSource">> => application_source(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"ScalingInstructions">> => list(scaling_instruction()()),
+%%   <<"ScalingInstructions">> => list(scaling_instruction()),
 %%   <<"ScalingPlanName">> => string(),
 %%   <<"ScalingPlanVersion">> => float(),
 %%   <<"StatusCode">> => list(any()),
@@ -254,7 +254,7 @@
 %%   <<"ScalableDimension">> => list(any()),
 %%   <<"ScalingPlanName">> => string(),
 %%   <<"ScalingPlanVersion">> => float(),
-%%   <<"ScalingPolicies">> => list(scaling_policy()()),
+%%   <<"ScalingPolicies">> => list(scaling_policy()),
 %%   <<"ScalingStatusCode">> => list(any()),
 %%   <<"ScalingStatusMessage">> => string(),
 %%   <<"ServiceNamespace">> => list(any())
@@ -272,7 +272,7 @@
 %% Example:
 %% tag_filter() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type tag_filter() :: #{binary() => any()}.
 
@@ -291,7 +291,7 @@
 %% Example:
 %% update_scaling_plan_request() :: #{
 %%   <<"ApplicationSource">> => application_source(),
-%%   <<"ScalingInstructions">> => list(scaling_instruction()()),
+%%   <<"ScalingInstructions">> => list(scaling_instruction()),
 %%   <<"ScalingPlanName">> := string(),
 %%   <<"ScalingPlanVersion">> := float()
 %% }

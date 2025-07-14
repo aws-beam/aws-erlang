@@ -189,8 +189,8 @@
 %%   <<"customerManagedKey">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"ipRules">> := list(ip_rule()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"ipRules">> := list(ip_rule()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_ip_access_settings_request() :: #{binary() => any()}.
 
@@ -248,8 +248,8 @@
 
 %% Example:
 %% cookie_synchronization_configuration() :: #{
-%%   <<"allowlist">> => list(cookie_specification()()),
-%%   <<"blocklist">> => list(cookie_specification()())
+%%   <<"allowlist">> => list(cookie_specification()),
+%%   <<"blocklist">> => list(cookie_specification())
 %% }
 -type cookie_synchronization_configuration() :: #{binary() => any()}.
 
@@ -257,7 +257,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -271,7 +271,7 @@
 
 %% Example:
 %% list_ip_access_settings_response() :: #{
-%%   <<"ipAccessSettings">> => list(ip_access_settings_summary()()),
+%%   <<"ipAccessSettings">> => list(ip_access_settings_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_ip_access_settings_response() :: #{binary() => any()}.
@@ -375,9 +375,9 @@
 %% Example:
 %% create_network_settings_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"securityGroupIds">> := list(string()()),
-%%   <<"subnetIds">> := list(string()()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"securityGroupIds">> := list(string()),
+%%   <<"subnetIds">> := list(string()),
+%%   <<"tags">> => list(tag()),
 %%   <<"vpcId">> := string()
 %% }
 -type create_network_settings_request() :: #{binary() => any()}.
@@ -390,9 +390,9 @@
 %% Example:
 %% inline_redaction_configuration() :: #{
 %%   <<"globalConfidenceLevel">> => integer(),
-%%   <<"globalEnforcedUrls">> => list(string()()),
-%%   <<"globalExemptUrls">> => list(string()()),
-%%   <<"inlineRedactionPatterns">> => list(inline_redaction_pattern()())
+%%   <<"globalEnforcedUrls">> => list(string()),
+%%   <<"globalExemptUrls">> => list(string()),
+%%   <<"inlineRedactionPatterns">> => list(inline_redaction_pattern())
 %% }
 -type inline_redaction_configuration() :: #{binary() => any()}.
 
@@ -469,7 +469,7 @@
 %% Example:
 %% list_user_settings_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"userSettings">> => list(user_settings_summary()())
+%%   <<"userSettings">> => list(user_settings_summary())
 %% }
 -type list_user_settings_response() :: #{binary() => any()}.
 
@@ -490,7 +490,7 @@
 
 %% Example:
 %% user_access_logging_settings() :: #{
-%%   <<"associatedPortalArns">> => list(string()()),
+%%   <<"associatedPortalArns">> => list(string()),
 %%   <<"kinesisStreamArn">> => string(),
 %%   <<"userAccessLoggingSettingsArn">> => string()
 %% }
@@ -545,8 +545,8 @@
 
 %% Example:
 %% update_trust_store_request() :: #{
-%%   <<"certificatesToAdd">> => list(binary()()),
-%%   <<"certificatesToDelete">> => list(string()()),
+%%   <<"certificatesToAdd">> => list(binary()),
+%%   <<"certificatesToDelete">> => list(string()),
 %%   <<"clientToken">> => string()
 %% }
 -type update_trust_store_request() :: #{binary() => any()}.
@@ -571,7 +571,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -650,10 +650,10 @@
 
 %% Example:
 %% network_settings() :: #{
-%%   <<"associatedPortalArns">> => list(string()()),
+%%   <<"associatedPortalArns">> => list(string()),
 %%   <<"networkSettingsArn">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type network_settings() :: #{binary() => any()}.
@@ -672,8 +672,8 @@
 %%   <<"builtInPatternId">> => string(),
 %%   <<"confidenceLevel">> => integer(),
 %%   <<"customPattern">> => custom_pattern(),
-%%   <<"enforcedUrls">> => list(string()()),
-%%   <<"exemptUrls">> => list(string()()),
+%%   <<"enforcedUrls">> => list(string()),
+%%   <<"exemptUrls">> => list(string()),
 %%   <<"redactionPlaceHolder">> => redaction_place_holder()
 %% }
 -type inline_redaction_pattern() :: #{binary() => any()}.
@@ -682,7 +682,7 @@
 %% Example:
 %% list_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sessions">> => list(session_summary()())
+%%   <<"sessions">> => list(session_summary())
 %% }
 -type list_sessions_response() :: #{binary() => any()}.
 
@@ -704,9 +704,9 @@
 
 %% Example:
 %% create_trust_store_request() :: #{
-%%   <<"certificateList">> := list(binary()()),
+%%   <<"certificateList">> := list(binary()),
 %%   <<"clientToken">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_trust_store_request() :: #{binary() => any()}.
 
@@ -770,7 +770,7 @@
 %%   <<"browserPolicy">> := string(),
 %%   <<"clientToken">> => string(),
 %%   <<"customerManagedKey">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_browser_settings_request() :: #{binary() => any()}.
 
@@ -808,7 +808,7 @@
 %%   <<"displayName">> => string(),
 %%   <<"instanceType">> => string(),
 %%   <<"maxConcurrentSessions">> => integer(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_portal_request() :: #{binary() => any()}.
 
@@ -827,8 +827,8 @@
 %% Example:
 %% update_network_settings_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type update_network_settings_request() :: #{binary() => any()}.
@@ -851,7 +851,7 @@
 %% Example:
 %% data_protection_settings() :: #{
 %%   <<"additionalEncryptionContext">> => map(),
-%%   <<"associatedPortalArns">> => list(string()()),
+%%   <<"associatedPortalArns">> => list(string()),
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"customerManagedKey">> => string(),
 %%   <<"dataProtectionSettingsArn">> => string(),
@@ -899,7 +899,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -907,7 +907,7 @@
 %% Example:
 %% list_trust_stores_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"trustStores">> => list(trust_store_summary()())
+%%   <<"trustStores">> => list(trust_store_summary())
 %% }
 -type list_trust_stores_response() :: #{binary() => any()}.
 
@@ -950,7 +950,7 @@
 
 %% Example:
 %% list_data_protection_settings_response() :: #{
-%%   <<"dataProtectionSettings">> => list(data_protection_settings_summary()()),
+%%   <<"dataProtectionSettings">> => list(data_protection_settings_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_protection_settings_response() :: #{binary() => any()}.
@@ -978,7 +978,7 @@
 
 %% Example:
 %% session() :: #{
-%%   <<"clientIpAddresses">> => list(string()()),
+%%   <<"clientIpAddresses">> => list(string()),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"portalArn">> => string(),
 %%   <<"sessionId">> => string(),
@@ -1020,7 +1020,7 @@
 
 %% Example:
 %% list_network_settings_response() :: #{
-%%   <<"networkSettings">> => list(network_settings_summary()()),
+%%   <<"networkSettings">> => list(network_settings_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_network_settings_response() :: #{binary() => any()}.
@@ -1049,7 +1049,7 @@
 
 %% Example:
 %% list_trust_store_certificates_response() :: #{
-%%   <<"certificateList">> => list(certificate_summary()()),
+%%   <<"certificateList">> => list(certificate_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"trustStoreArn">> => string()
 %% }
@@ -1059,7 +1059,7 @@
 %% Example:
 %% list_portals_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"portals">> => list(portal_summary()())
+%%   <<"portals">> => list(portal_summary())
 %% }
 -type list_portals_response() :: #{binary() => any()}.
 
@@ -1107,7 +1107,7 @@
 %%   <<"identityProviderName">> := string(),
 %%   <<"identityProviderType">> := string(),
 %%   <<"portalArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_identity_provider_request() :: #{binary() => any()}.
 
@@ -1166,7 +1166,7 @@
 %%   <<"idleDisconnectTimeoutInMinutes">> => integer(),
 %%   <<"pasteAllowed">> := string(),
 %%   <<"printAllowed">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"toolbarConfiguration">> => toolbar_configuration(),
 %%   <<"uploadAllowed">> := string()
 %% }
@@ -1209,7 +1209,7 @@
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_data_protection_settings_request() :: #{binary() => any()}.
 
@@ -1217,13 +1217,13 @@
 %% Example:
 %% ip_access_settings() :: #{
 %%   <<"additionalEncryptionContext">> => map(),
-%%   <<"associatedPortalArns">> => list(string()()),
+%%   <<"associatedPortalArns">> => list(string()),
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"customerManagedKey">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"ipAccessSettingsArn">> => string(),
-%%   <<"ipRules">> => list(ip_rule()())
+%%   <<"ipRules">> => list(ip_rule())
 %% }
 -type ip_access_settings() :: #{binary() => any()}.
 
@@ -1234,7 +1234,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => string()
 %% }
@@ -1251,7 +1251,7 @@
 
 %% Example:
 %% list_identity_providers_response() :: #{
-%%   <<"identityProviders">> => list(identity_provider_summary()()),
+%%   <<"identityProviders">> => list(identity_provider_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_identity_providers_response() :: #{binary() => any()}.
@@ -1280,7 +1280,7 @@
 
 %% Example:
 %% list_browser_settings_response() :: #{
-%%   <<"browserSettings">> => list(browser_settings_summary()()),
+%%   <<"browserSettings">> => list(browser_settings_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_browser_settings_response() :: #{binary() => any()}.
@@ -1288,7 +1288,7 @@
 
 %% Example:
 %% toolbar_configuration() :: #{
-%%   <<"hiddenToolbarItems">> => list(string()()),
+%%   <<"hiddenToolbarItems">> => list(string()),
 %%   <<"maxDisplayResolution">> => string(),
 %%   <<"toolbarType">> => string(),
 %%   <<"visualMode">> => string()
@@ -1350,7 +1350,7 @@
 %% Example:
 %% user_settings() :: #{
 %%   <<"additionalEncryptionContext">> => map(),
-%%   <<"associatedPortalArns">> => list(string()()),
+%%   <<"associatedPortalArns">> => list(string()),
 %%   <<"cookieSynchronizationConfiguration">> => cookie_synchronization_configuration(),
 %%   <<"copyAllowed">> => string(),
 %%   <<"customerManagedKey">> => string(),
@@ -1388,7 +1388,7 @@
 %% create_user_access_logging_settings_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"kinesisStreamArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_user_access_logging_settings_request() :: #{binary() => any()}.
 
@@ -1406,7 +1406,7 @@
 %% Example:
 %% list_user_access_logging_settings_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"userAccessLoggingSettings">> => list(user_access_logging_settings_summary()())
+%%   <<"userAccessLoggingSettings">> => list(user_access_logging_settings_summary())
 %% }
 -type list_user_access_logging_settings_response() :: #{binary() => any()}.
 
@@ -1431,7 +1431,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"ipRules">> => list(ip_rule()())
+%%   <<"ipRules">> => list(ip_rule())
 %% }
 -type update_ip_access_settings_request() :: #{binary() => any()}.
 
@@ -1439,7 +1439,7 @@
 %% Example:
 %% browser_settings() :: #{
 %%   <<"additionalEncryptionContext">> => map(),
-%%   <<"associatedPortalArns">> => list(string()()),
+%%   <<"associatedPortalArns">> => list(string()),
 %%   <<"browserPolicy">> => string(),
 %%   <<"browserSettingsArn">> => string(),
 %%   <<"customerManagedKey">> => string()
@@ -1521,7 +1521,7 @@
 
 %% Example:
 %% trust_store() :: #{
-%%   <<"associatedPortalArns">> => list(string()()),
+%%   <<"associatedPortalArns">> => list(string()),
 %%   <<"trustStoreArn">> => string()
 %% }
 -type trust_store() :: #{binary() => any()}.

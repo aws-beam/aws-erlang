@@ -177,7 +177,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -208,7 +208,7 @@
 %% Example:
 %% search_filter() :: #{
 %%   <<"operator">> => list(any()),
-%%   <<"values">> => list(list()())
+%%   <<"values">> => list(list())
 %% }
 -type search_filter() :: #{binary() => any()}.
 
@@ -266,7 +266,7 @@
 
 %% Example:
 %% search_image_sets_response() :: #{
-%%   <<"imageSetsMetadataSummaries">> => list(image_sets_metadata_summary()()),
+%%   <<"imageSetsMetadataSummaries">> => list(image_sets_metadata_summary()),
 %%   <<"nextToken">> => string(),
 %%   <<"sort">> => sort()
 %% }
@@ -307,7 +307,7 @@
 
 %% Example:
 %% list_datastores_response() :: #{
-%%   <<"datastoreSummaries">> => list(datastore_summary()()),
+%%   <<"datastoreSummaries">> => list(datastore_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_datastores_response() :: #{binary() => any()}.
@@ -447,7 +447,7 @@
 
 %% Example:
 %% list_image_set_versions_response() :: #{
-%%   <<"imageSetPropertiesList">> => list(image_set_properties()()),
+%%   <<"imageSetPropertiesList">> => list(image_set_properties()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_image_set_versions_response() :: #{binary() => any()}.
@@ -572,7 +572,7 @@
 
 %% Example:
 %% search_criteria() :: #{
-%%   <<"filters">> => list(search_filter()()),
+%%   <<"filters">> => list(search_filter()),
 %%   <<"sort">> => sort()
 %% }
 -type search_criteria() :: #{binary() => any()}.
@@ -588,7 +588,7 @@
 
 %% Example:
 %% list_d_i_c_o_m_import_jobs_response() :: #{
-%%   <<"jobSummaries">> => list(d_i_c_o_m_import_job_summary()()),
+%%   <<"jobSummaries">> => list(d_i_c_o_m_import_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_d_i_c_o_m_import_jobs_response() :: #{binary() => any()}.

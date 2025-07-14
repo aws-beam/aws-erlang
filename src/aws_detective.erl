@@ -186,8 +186,8 @@
 
 %% Example:
 %% get_members_response() :: #{
-%%   <<"MemberDetails">> => list(member_detail()()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"MemberDetails">> => list(member_detail()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type get_members_response() :: #{binary() => any()}.
 
@@ -259,7 +259,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -288,15 +288,15 @@
 
 %% Example:
 %% delete_members_response() :: #{
-%%   <<"AccountIds">> => list(string()()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"AccountIds">> => list(string()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type delete_members_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_investigations_response() :: #{
-%%   <<"InvestigationDetails">> => list(investigation_detail()()),
+%%   <<"InvestigationDetails">> => list(investigation_detail()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_investigations_response() :: #{binary() => any()}.
@@ -343,7 +343,7 @@
 
 %% Example:
 %% get_members_request() :: #{
-%%   <<"AccountIds">> := list(string()()),
+%%   <<"AccountIds">> := list(string()),
 %%   <<"GraphArn">> := string()
 %% }
 -type get_members_request() :: #{binary() => any()}.
@@ -351,7 +351,7 @@
 
 %% Example:
 %% create_members_request() :: #{
-%%   <<"Accounts">> := list(account()()),
+%%   <<"Accounts">> := list(account()),
 %%   <<"DisableEmailNotification">> => boolean(),
 %%   <<"GraphArn">> := string(),
 %%   <<"Message">> => string()
@@ -369,8 +369,8 @@
 
 %% Example:
 %% batch_get_graph_member_datasources_response() :: #{
-%%   <<"MemberDatasources">> => list(membership_datasources()()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"MemberDatasources">> => list(membership_datasources()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type batch_get_graph_member_datasources_response() :: #{binary() => any()}.
 
@@ -378,14 +378,14 @@
 %% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"Resources">> => list(string()())
+%%   <<"Resources">> => list(string())
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 
 %% Example:
 %% delete_members_request() :: #{
-%%   <<"AccountIds">> := list(string()()),
+%%   <<"AccountIds">> := list(string()),
 %%   <<"GraphArn">> := string()
 %% }
 -type delete_members_request() :: #{binary() => any()}.
@@ -416,15 +416,15 @@
 
 %% Example:
 %% batch_get_membership_datasources_response() :: #{
-%%   <<"MembershipDatasources">> => list(membership_datasources()()),
-%%   <<"UnprocessedGraphs">> => list(unprocessed_graph()())
+%%   <<"MembershipDatasources">> => list(membership_datasources()),
+%%   <<"UnprocessedGraphs">> => list(unprocessed_graph())
 %% }
 -type batch_get_membership_datasources_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_graph_member_datasources_request() :: #{
-%%   <<"AccountIds">> := list(string()()),
+%%   <<"AccountIds">> := list(string()),
 %%   <<"GraphArn">> := string()
 %% }
 -type batch_get_graph_member_datasources_request() :: #{binary() => any()}.
@@ -501,7 +501,7 @@
 
 %% Example:
 %% batch_get_membership_datasources_request() :: #{
-%%   <<"GraphArns">> := list(string()())
+%%   <<"GraphArns">> := list(string())
 %% }
 -type batch_get_membership_datasources_request() :: #{binary() => any()}.
 
@@ -523,7 +523,7 @@
 
 %% Example:
 %% list_graphs_response() :: #{
-%%   <<"GraphList">> => list(graph()()),
+%%   <<"GraphList">> => list(graph()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_graphs_response() :: #{binary() => any()}.
@@ -619,7 +619,7 @@
 
 %% Example:
 %% list_members_response() :: #{
-%%   <<"MemberDetails">> => list(member_detail()()),
+%%   <<"MemberDetails">> => list(member_detail()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_members_response() :: #{binary() => any()}.
@@ -727,7 +727,7 @@
 %% Example:
 %% list_indicators_response() :: #{
 %%   <<"GraphArn">> => string(),
-%%   <<"Indicators">> => list(indicator()()),
+%%   <<"Indicators">> => list(indicator()),
 %%   <<"InvestigationId">> => string(),
 %%   <<"NextToken">> => string()
 %% }
@@ -744,7 +744,7 @@
 
 %% Example:
 %% list_organization_admin_accounts_response() :: #{
-%%   <<"Administrators">> => list(administrator()()),
+%%   <<"Administrators">> => list(administrator()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_organization_admin_accounts_response() :: #{binary() => any()}.
@@ -783,8 +783,8 @@
 
 %% Example:
 %% create_members_response() :: #{
-%%   <<"Members">> => list(member_detail()()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"Members">> => list(member_detail()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type create_members_response() :: #{binary() => any()}.
 
@@ -813,7 +813,7 @@
 
 %% Example:
 %% list_invitations_response() :: #{
-%%   <<"Invitations">> => list(member_detail()()),
+%%   <<"Invitations">> => list(member_detail()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_invitations_response() :: #{binary() => any()}.

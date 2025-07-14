@@ -144,7 +144,7 @@
 
 %% Example:
 %% get_messaging_streaming_configurations_response() :: #{
-%%   <<"StreamingConfigurations">> => list(streaming_configuration()())
+%%   <<"StreamingConfigurations">> => list(streaming_configuration())
 %% }
 -type get_messaging_streaming_configurations_response() :: #{binary() => any()}.
 
@@ -218,7 +218,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -264,7 +264,7 @@
 
 %% Example:
 %% list_channel_flows_response() :: #{
-%%   <<"ChannelFlows">> => list(channel_flow_summary()()),
+%%   <<"ChannelFlows">> => list(channel_flow_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channel_flows_response() :: #{binary() => any()}.
@@ -280,7 +280,7 @@
 %% Example:
 %% list_channel_messages_response() :: #{
 %%   <<"ChannelArn">> => string(),
-%%   <<"ChannelMessages">> => list(channel_message_summary()()),
+%%   <<"ChannelMessages">> => list(channel_message_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"SubChannelId">> => string()
 %% }
@@ -290,7 +290,7 @@
 %% Example:
 %% batch_create_channel_membership_response() :: #{
 %%   <<"BatchChannelMemberships">> => batch_channel_memberships(),
-%%   <<"Errors">> => list(batch_create_channel_membership_error()())
+%%   <<"Errors">> => list(batch_create_channel_membership_error())
 %% }
 -type batch_create_channel_membership_response() :: #{binary() => any()}.
 
@@ -356,7 +356,7 @@
 
 %% Example:
 %% message_attribute_value() :: #{
-%%   <<"StringValues">> => list(string()())
+%%   <<"StringValues">> => list(string())
 %% }
 -type message_attribute_value() :: #{binary() => any()}.
 
@@ -380,7 +380,7 @@
 %% Example:
 %% search_channels_request() :: #{
 %%   <<"ChimeBearer">> => string(),
-%%   <<"Fields">> := list(search_field()()),
+%%   <<"Fields">> := list(search_field()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -416,7 +416,7 @@
 
 %% Example:
 %% list_channels_associated_with_channel_flow_response() :: #{
-%%   <<"Channels">> => list(channel_associated_with_flow_summary()()),
+%%   <<"Channels">> => list(channel_associated_with_flow_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_associated_with_channel_flow_response() :: #{binary() => any()}.
@@ -481,7 +481,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -503,7 +503,7 @@
 %% list_sub_channels_response() :: #{
 %%   <<"ChannelArn">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"SubChannels">> => list(sub_channel_summary()())
+%%   <<"SubChannels">> => list(sub_channel_summary())
 %% }
 -type list_sub_channels_response() :: #{binary() => any()}.
 
@@ -517,7 +517,7 @@
 
 %% Example:
 %% list_channels_moderated_by_app_instance_user_response() :: #{
-%%   <<"Channels">> => list(channel_moderated_by_app_instance_user_summary()()),
+%%   <<"Channels">> => list(channel_moderated_by_app_instance_user_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_moderated_by_app_instance_user_response() :: #{binary() => any()}.
@@ -561,7 +561,7 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Processors">> => list(processor()())
+%%   <<"Processors">> => list(processor())
 %% }
 -type channel_flow() :: #{binary() => any()}.
 
@@ -612,7 +612,7 @@
 
 %% Example:
 %% put_messaging_streaming_configurations_response() :: #{
-%%   <<"StreamingConfigurations">> => list(streaming_configuration()())
+%%   <<"StreamingConfigurations">> => list(streaming_configuration())
 %% }
 -type put_messaging_streaming_configurations_response() :: #{binary() => any()}.
 
@@ -620,7 +620,7 @@
 %% Example:
 %% update_channel_flow_request() :: #{
 %%   <<"Name">> := string(),
-%%   <<"Processors">> := list(processor()())
+%%   <<"Processors">> := list(processor())
 %% }
 -type update_channel_flow_request() :: #{binary() => any()}.
 
@@ -679,7 +679,7 @@
 %% Example:
 %% list_channel_bans_response() :: #{
 %%   <<"ChannelArn">> => string(),
-%%   <<"ChannelBans">> => list(channel_ban_summary()()),
+%%   <<"ChannelBans">> => list(channel_ban_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channel_bans_response() :: #{binary() => any()}.
@@ -726,13 +726,13 @@
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"ElasticChannelConfiguration">> => elastic_channel_configuration(),
 %%   <<"ExpirationSettings">> => expiration_settings(),
-%%   <<"MemberArns">> => list(string()()),
+%%   <<"MemberArns">> => list(string()),
 %%   <<"Metadata">> => string(),
 %%   <<"Mode">> => list(any()),
-%%   <<"ModeratorArns">> => list(string()()),
+%%   <<"ModeratorArns">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"Privacy">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_channel_request() :: #{binary() => any()}.
 
@@ -743,14 +743,14 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% put_messaging_streaming_configurations_request() :: #{
-%%   <<"StreamingConfigurations">> := list(streaming_configuration()())
+%%   <<"StreamingConfigurations">> := list(streaming_configuration())
 %% }
 -type put_messaging_streaming_configurations_request() :: #{binary() => any()}.
 
@@ -765,7 +765,7 @@
 
 %% Example:
 %% list_channel_memberships_for_app_instance_user_response() :: #{
-%%   <<"ChannelMemberships">> => list(channel_membership_for_app_instance_user_summary()()),
+%%   <<"ChannelMemberships">> => list(channel_membership_for_app_instance_user_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channel_memberships_for_app_instance_user_response() :: #{binary() => any()}.
@@ -773,7 +773,7 @@
 
 %% Example:
 %% list_channels_response() :: #{
-%%   <<"Channels">> => list(channel_summary()()),
+%%   <<"Channels">> => list(channel_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
@@ -828,8 +828,8 @@
 %%   <<"AppInstanceArn">> := string(),
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Processors">> := list(processor()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Processors">> := list(processor()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_channel_flow_request() :: #{binary() => any()}.
 
@@ -864,7 +864,7 @@
 %%   <<"Sender">> => identity(),
 %%   <<"Status">> => channel_message_status_structure(),
 %%   <<"SubChannelId">> => string(),
-%%   <<"Target">> => list(target()()),
+%%   <<"Target">> => list(target()),
 %%   <<"Type">> => list(any())
 %% }
 -type channel_message() :: #{binary() => any()}.
@@ -910,7 +910,7 @@
 %% search_field() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type search_field() :: #{binary() => any()}.
 
@@ -948,7 +948,7 @@
 %% Example:
 %% batch_create_channel_membership_request() :: #{
 %%   <<"ChimeBearer">> := string(),
-%%   <<"MemberArns">> := list(string()()),
+%%   <<"MemberArns">> := list(string()),
 %%   <<"SubChannelId">> => string(),
 %%   <<"Type">> => list(any())
 %% }
@@ -995,7 +995,7 @@
 %%   <<"Persistence">> := list(any()),
 %%   <<"PushNotification">> => push_notification_configuration(),
 %%   <<"SubChannelId">> => string(),
-%%   <<"Target">> => list(target()()),
+%%   <<"Target">> => list(target()),
 %%   <<"Type">> := list(any())
 %% }
 -type send_channel_message_request() :: #{binary() => any()}.
@@ -1029,7 +1029,7 @@
 %% Example:
 %% list_channel_moderators_response() :: #{
 %%   <<"ChannelArn">> => string(),
-%%   <<"ChannelModerators">> => list(channel_moderator_summary()()),
+%%   <<"ChannelModerators">> => list(channel_moderator_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channel_moderators_response() :: #{binary() => any()}.
@@ -1114,7 +1114,7 @@
 %% Example:
 %% list_channel_memberships_response() :: #{
 %%   <<"ChannelArn">> => string(),
-%%   <<"ChannelMemberships">> => list(channel_membership_summary()()),
+%%   <<"ChannelMemberships">> => list(channel_membership_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channel_memberships_response() :: #{binary() => any()}.
@@ -1167,7 +1167,7 @@
 %% channel_flow_summary() :: #{
 %%   <<"ChannelFlowArn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Processors">> => list(processor()())
+%%   <<"Processors">> => list(processor())
 %% }
 -type channel_flow_summary() :: #{binary() => any()}.
 
@@ -1207,7 +1207,7 @@
 %% batch_channel_memberships() :: #{
 %%   <<"ChannelArn">> => string(),
 %%   <<"InvitedBy">> => identity(),
-%%   <<"Members">> => list(identity()()),
+%%   <<"Members">> => list(identity()),
 %%   <<"SubChannelId">> => string(),
 %%   <<"Type">> => list(any())
 %% }
@@ -1276,7 +1276,7 @@
 %%   <<"Redacted">> => boolean(),
 %%   <<"Sender">> => identity(),
 %%   <<"Status">> => channel_message_status_structure(),
-%%   <<"Target">> => list(target()()),
+%%   <<"Target">> => list(target()),
 %%   <<"Type">> => list(any())
 %% }
 -type channel_message_summary() :: #{binary() => any()}.
@@ -1296,7 +1296,7 @@
 
 %% Example:
 %% search_channels_response() :: #{
-%%   <<"Channels">> => list(channel_summary()()),
+%%   <<"Channels">> => list(channel_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_channels_response() :: #{binary() => any()}.

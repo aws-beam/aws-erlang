@@ -205,7 +205,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -240,7 +240,7 @@
 %% update_rule_set_request() :: #{
 %%   <<"RuleSetId">> := string(),
 %%   <<"RuleSetName">> => string(),
-%%   <<"Rules">> => list(rule()())
+%%   <<"Rules">> => list(rule())
 %% }
 -type update_rule_set_request() :: #{binary() => any()}.
 
@@ -256,13 +256,13 @@
 
 %% Example:
 %% get_archive_search_results_response() :: #{
-%%   <<"Rows">> => list(row()())
+%%   <<"Rows">> => list(row())
 %% }
 -type get_archive_search_results_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_archives_response() :: #{
-%%   <<"Archives">> => list(archive()()),
+%%   <<"Archives">> => list(archive()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_archives_response() :: #{binary() => any()}.
@@ -285,8 +285,8 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"DefaultAction">> := list(any()),
 %%   <<"MaxMessageSizeBytes">> => integer(),
-%%   <<"PolicyStatements">> := list(policy_statement()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"PolicyStatements">> := list(policy_statement()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrafficPolicyName">> := string()
 %% }
 -type create_traffic_policy_request() :: #{binary() => any()}.
@@ -302,7 +302,7 @@
 %% create_addon_instance_request() :: #{
 %%   <<"AddonSubscriptionId">> := string(),
 %%   <<"ClientToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_addon_instance_request() :: #{binary() => any()}.
 
@@ -329,7 +329,7 @@
 %% create_address_list_request() :: #{
 %%   <<"AddressListName">> := string(),
 %%   <<"ClientToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_address_list_request() :: #{binary() => any()}.
 
@@ -413,7 +413,7 @@
 
 %% Example:
 %% list_addon_subscriptions_response() :: #{
-%%   <<"AddonSubscriptions">> => list(addon_subscription()()),
+%%   <<"AddonSubscriptions">> => list(addon_subscription()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_addon_subscriptions_response() :: #{binary() => any()}.
@@ -434,7 +434,7 @@
 %% rule_ip_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type rule_ip_expression() :: #{binary() => any()}.
 
@@ -460,7 +460,7 @@
 
 %% Example:
 %% list_addon_instances_response() :: #{
-%%   <<"AddonInstances">> => list(addon_instance()()),
+%%   <<"AddonInstances">> => list(addon_instance()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_addon_instances_response() :: #{binary() => any()}.
@@ -486,7 +486,7 @@
 %% Example:
 %% list_traffic_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficPolicies">> => list(traffic_policy()())
+%%   <<"TrafficPolicies">> => list(traffic_policy())
 %% }
 -type list_traffic_policies_response() :: #{binary() => any()}.
 
@@ -531,7 +531,7 @@
 %% Example:
 %% policy_statement() :: #{
 %%   <<"Action">> => list(any()),
-%%   <<"Conditions">> => list(list()())
+%%   <<"Conditions">> => list(list())
 %% }
 -type policy_statement() :: #{binary() => any()}.
 
@@ -546,7 +546,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -610,7 +610,7 @@
 %%   <<"RuleSetArn">> => string(),
 %%   <<"RuleSetId">> => string(),
 %%   <<"RuleSetName">> => string(),
-%%   <<"Rules">> => list(rule()())
+%%   <<"Rules">> => list(rule())
 %% }
 -type get_rule_set_response() :: #{binary() => any()}.
 
@@ -686,7 +686,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"KmsKeyArn">> => string(),
 %%   <<"Retention">> => list(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_archive_request() :: #{binary() => any()}.
 
@@ -727,7 +727,7 @@
 
 %% Example:
 %% ingress_is_in_address_list() :: #{
-%%   <<"AddressLists">> => list(string()()),
+%%   <<"AddressLists">> => list(string()),
 %%   <<"Attribute">> => list(any())
 %% }
 -type ingress_is_in_address_list() :: #{binary() => any()}.
@@ -778,7 +778,7 @@
 %% archive_string_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type archive_string_expression() :: #{binary() => any()}.
 
@@ -786,7 +786,7 @@
 %% ingress_ipv4_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type ingress_ipv4_expression() :: #{binary() => any()}.
 
@@ -801,7 +801,7 @@
 %% Example:
 %% list_relays_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Relays">> => list(relay()())
+%%   <<"Relays">> => list(relay())
 %% }
 -type list_relays_response() :: #{binary() => any()}.
 
@@ -815,8 +815,8 @@
 %% create_rule_set_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"RuleSetName">> := string(),
-%%   <<"Rules">> := list(rule()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Rules">> := list(rule()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_rule_set_request() :: #{binary() => any()}.
 
@@ -945,7 +945,7 @@
 %% update_traffic_policy_request() :: #{
 %%   <<"DefaultAction">> => list(any()),
 %%   <<"MaxMessageSizeBytes">> => integer(),
-%%   <<"PolicyStatements">> => list(policy_statement()()),
+%%   <<"PolicyStatements">> => list(policy_statement()),
 %%   <<"TrafficPolicyId">> := string(),
 %%   <<"TrafficPolicyName">> => string()
 %% }
@@ -955,7 +955,7 @@
 %% ingress_ipv6_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type ingress_ipv6_expression() :: #{binary() => any()}.
 
@@ -979,7 +979,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1035,17 +1035,17 @@
 
 %% Example:
 %% rule() :: #{
-%%   <<"Actions">> => list(list()()),
-%%   <<"Conditions">> => list(list()()),
+%%   <<"Actions">> => list(list()),
+%%   <<"Conditions">> => list(list()),
 %%   <<"Name">> => string(),
-%%   <<"Unless">> => list(list()())
+%%   <<"Unless">> => list(list())
 %% }
 -type rule() :: #{binary() => any()}.
 
 %% Example:
 %% list_rule_sets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RuleSets">> => list(rule_set()())
+%%   <<"RuleSets">> => list(rule_set())
 %% }
 -type list_rule_sets_response() :: #{binary() => any()}.
 
@@ -1089,7 +1089,7 @@
 %% Example:
 %% list_archive_searches_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Searches">> => list(search_summary()())
+%%   <<"Searches">> => list(search_summary())
 %% }
 -type list_archive_searches_response() :: #{binary() => any()}.
 
@@ -1132,7 +1132,7 @@
 %%   <<"DefaultAction">> => list(any()),
 %%   <<"LastUpdatedTimestamp">> => [non_neg_integer()],
 %%   <<"MaxMessageSizeBytes">> => integer(),
-%%   <<"PolicyStatements">> => list(policy_statement()()),
+%%   <<"PolicyStatements">> => list(policy_statement()),
 %%   <<"TrafficPolicyArn">> => string(),
 %%   <<"TrafficPolicyId">> => string(),
 %%   <<"TrafficPolicyName">> => string()
@@ -1173,7 +1173,7 @@
 
 %% Example:
 %% list_address_list_import_jobs_response() :: #{
-%%   <<"ImportJobs">> => list(import_job()()),
+%%   <<"ImportJobs">> => list(import_job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_address_list_import_jobs_response() :: #{binary() => any()}.
@@ -1229,7 +1229,7 @@
 
 %% Example:
 %% replace_recipient_action() :: #{
-%%   <<"ReplaceWith">> => list(string()())
+%%   <<"ReplaceWith">> => list(string())
 %% }
 -type replace_recipient_action() :: #{binary() => any()}.
 
@@ -1269,7 +1269,7 @@
 
 %% Example:
 %% list_ingress_points_response() :: #{
-%%   <<"IngressPoints">> => list(ingress_point()()),
+%%   <<"IngressPoints">> => list(ingress_point()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_ingress_points_response() :: #{binary() => any()}.
@@ -1287,7 +1287,7 @@
 %%   <<"IngressPointName">> := string(),
 %%   <<"NetworkConfiguration">> => list(),
 %%   <<"RuleSetId">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrafficPolicyId">> := string(),
 %%   <<"Type">> := list(any())
 %% }
@@ -1308,7 +1308,7 @@
 
 %% Example:
 %% rule_is_in_address_list() :: #{
-%%   <<"AddressLists">> => list(string()()),
+%%   <<"AddressLists">> => list(string()),
 %%   <<"Attribute">> => list(any())
 %% }
 -type rule_is_in_address_list() :: #{binary() => any()}.
@@ -1380,13 +1380,13 @@
 %% create_addon_subscription_request() :: #{
 %%   <<"AddonName">> := string(),
 %%   <<"ClientToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_addon_subscription_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_archive_exports_response() :: #{
-%%   <<"Exports">> => list(export_summary()()),
+%%   <<"Exports">> => list(export_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_archive_exports_response() :: #{binary() => any()}.
@@ -1403,7 +1403,7 @@
 
 %% Example:
 %% list_members_of_address_list_response() :: #{
-%%   <<"Addresses">> => list(saved_address()()),
+%%   <<"Addresses">> => list(saved_address()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_members_of_address_list_response() :: #{binary() => any()}.
@@ -1458,7 +1458,7 @@
 
 %% Example:
 %% list_address_lists_response() :: #{
-%%   <<"AddressLists">> => list(address_list()()),
+%%   <<"AddressLists">> => list(address_list()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_address_lists_response() :: #{binary() => any()}.
@@ -1492,7 +1492,7 @@
 %% rule_string_expression() :: #{
 %%   <<"Evaluate">> => list(),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type rule_string_expression() :: #{binary() => any()}.
 
@@ -1503,7 +1503,7 @@
 %%   <<"RelayName">> := string(),
 %%   <<"ServerName">> := string(),
 %%   <<"ServerPort">> := integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_relay_request() :: #{binary() => any()}.
 
@@ -1523,8 +1523,8 @@
 
 %% Example:
 %% archive_filters() :: #{
-%%   <<"Include">> => list(list()()),
-%%   <<"Unless">> => list(list()())
+%%   <<"Include">> => list(list()),
+%%   <<"Unless">> => list(list())
 %% }
 -type archive_filters() :: #{binary() => any()}.
 

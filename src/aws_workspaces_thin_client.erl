@@ -182,7 +182,7 @@
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"releasedAt">> => non_neg_integer(),
-%%   <<"software">> => list(software()()),
+%%   <<"software">> => list(software()),
 %%   <<"supportedUntil">> => non_neg_integer(),
 %%   <<"validationStatus">> => list(any()),
 %%   <<"version">> => [string()]
@@ -260,7 +260,7 @@
 
 %% Example:
 %% list_devices_response() :: #{
-%%   <<"devices">> => list(device_summary()()),
+%%   <<"devices">> => list(device_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_devices_response() :: #{binary() => any()}.
@@ -356,7 +356,7 @@
 %% Example:
 %% list_software_sets_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"softwareSets">> => list(software_set_summary()())
+%%   <<"softwareSets">> => list(software_set_summary())
 %% }
 -type list_software_sets_response() :: #{binary() => any()}.
 
@@ -382,7 +382,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }
@@ -405,7 +405,7 @@
 
 %% Example:
 %% list_environments_response() :: #{
-%%   <<"environments">> => list(environment_summary()()),
+%%   <<"environments">> => list(environment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_response() :: #{binary() => any()}.

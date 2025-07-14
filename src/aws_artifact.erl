@@ -55,7 +55,7 @@
 
 %% Example:
 %% customer_agreement_summary() :: #{
-%%   <<"acceptanceTerms">> => list(string()()),
+%%   <<"acceptanceTerms">> => list(string()),
 %%   <<"agreementArn">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"awsAccountId">> => string(),
@@ -66,7 +66,7 @@
 %%   <<"name">> => string(),
 %%   <<"organizationArn">> => string(),
 %%   <<"state">> => list(any()),
-%%   <<"terminateTerms">> => list(string()()),
+%%   <<"terminateTerms">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type customer_agreement_summary() :: #{binary() => any()}.
@@ -148,7 +148,7 @@
 
 %% Example:
 %% list_customer_agreements_response() :: #{
-%%   <<"customerAgreements">> => list(customer_agreement_summary()()),
+%%   <<"customerAgreements">> => list(customer_agreement_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_customer_agreements_response() :: #{binary() => any()}.
@@ -165,7 +165,7 @@
 %% Example:
 %% list_reports_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reports">> => list(report_summary()())
+%%   <<"reports">> => list(report_summary())
 %% }
 -type list_reports_response() :: #{binary() => any()}.
 
@@ -263,7 +263,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
