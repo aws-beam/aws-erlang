@@ -111,7 +111,7 @@
 
 %% Example:
 %% list_notification_rules_request() :: #{
-%%   <<"Filters">> => list(list_notification_rules_filter()()),
+%%   <<"Filters">> => list(list_notification_rules_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -148,7 +148,7 @@
 %% Example:
 %% list_targets_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Targets">> => list(target_summary()())
+%%   <<"Targets">> => list(target_summary())
 %% }
 -type list_targets_result() :: #{binary() => any()}.
 
@@ -162,7 +162,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -237,7 +237,7 @@
 
 %% Example:
 %% list_event_types_result() :: #{
-%%   <<"EventTypes">> => list(event_type_summary()()),
+%%   <<"EventTypes">> => list(event_type_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_types_result() :: #{binary() => any()}.
@@ -247,12 +247,12 @@
 %% create_notification_rule_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"DetailType">> := list(any()),
-%%   <<"EventTypeIds">> := list(string()()),
+%%   <<"EventTypeIds">> := list(string()),
 %%   <<"Name">> := string(),
 %%   <<"Resource">> := string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map(),
-%%   <<"Targets">> := list(target()())
+%%   <<"Targets">> := list(target())
 %% }
 -type create_notification_rule_request() :: #{binary() => any()}.
 
@@ -268,10 +268,10 @@
 %% update_notification_rule_request() :: #{
 %%   <<"Arn">> := string(),
 %%   <<"DetailType">> => list(any()),
-%%   <<"EventTypeIds">> => list(string()()),
+%%   <<"EventTypeIds">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Targets">> => list(target()())
+%%   <<"Targets">> => list(target())
 %% }
 -type update_notification_rule_request() :: #{binary() => any()}.
 
@@ -285,7 +285,7 @@
 
 %% Example:
 %% list_targets_request() :: #{
-%%   <<"Filters">> => list(list_targets_filter()()),
+%%   <<"Filters">> => list(list_targets_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -353,7 +353,7 @@
 %% Example:
 %% list_notification_rules_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NotificationRules">> => list(notification_rule_summary()())
+%%   <<"NotificationRules">> => list(notification_rule_summary())
 %% }
 -type list_notification_rules_result() :: #{binary() => any()}.
 
@@ -378,13 +378,13 @@
 %%   <<"CreatedBy">> => string(),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"DetailType">> => list(any()),
-%%   <<"EventTypes">> => list(event_type_summary()()),
+%%   <<"EventTypes">> => list(event_type_summary()),
 %%   <<"LastModifiedTimestamp">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Resource">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map(),
-%%   <<"Targets">> => list(target_summary()())
+%%   <<"Targets">> => list(target_summary())
 %% }
 -type describe_notification_rule_result() :: #{binary() => any()}.
 
@@ -399,7 +399,7 @@
 
 %% Example:
 %% list_event_types_request() :: #{
-%%   <<"Filters">> => list(list_event_types_filter()()),
+%%   <<"Filters">> => list(list_event_types_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }

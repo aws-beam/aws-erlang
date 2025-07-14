@@ -115,11 +115,11 @@
 %%   <<"NextRotationDate">> => non_neg_integer(),
 %%   <<"OwningService">> => string(),
 %%   <<"PrimaryRegion">> => string(),
-%%   <<"ReplicationStatus">> => list(replication_status_type()()),
+%%   <<"ReplicationStatus">> => list(replication_status_type()),
 %%   <<"RotationEnabled">> => boolean(),
 %%   <<"RotationLambdaARN">> => string(),
 %%   <<"RotationRules">> => rotation_rules_type(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VersionIdsToStages">> => map()
 %% }
 -type describe_secret_response() :: #{binary() => any()}.
@@ -134,7 +134,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"SecretId">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -148,7 +148,7 @@
 %% Example:
 %% remove_regions_from_replication_response() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"ReplicationStatus">> => list(replication_status_type()())
+%%   <<"ReplicationStatus">> => list(replication_status_type())
 %% }
 -type remove_regions_from_replication_response() :: #{binary() => any()}.
 
@@ -191,7 +191,7 @@
 
 %% Example:
 %% list_secrets_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"IncludePlannedDeletion">> => boolean(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -217,7 +217,7 @@
 %% Example:
 %% list_secrets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecretList">> => list(secret_list_entry()())
+%%   <<"SecretList">> => list(secret_list_entry())
 %% }
 -type list_secrets_response() :: #{binary() => any()}.
 
@@ -230,7 +230,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"SecretId">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -251,17 +251,17 @@
 
 %% Example:
 %% batch_get_secret_value_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SecretIdList">> => list(string()())
+%%   <<"SecretIdList">> => list(string())
 %% }
 -type batch_get_secret_value_request() :: #{binary() => any()}.
 
 %% Example:
 %% validate_resource_policy_response() :: #{
 %%   <<"PolicyValidationPassed">> => boolean(),
-%%   <<"ValidationErrors">> => list(validation_errors_entry()())
+%%   <<"ValidationErrors">> => list(validation_errors_entry())
 %% }
 -type validate_resource_policy_response() :: #{binary() => any()}.
 
@@ -312,7 +312,7 @@
 %%   <<"ARN">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"VersionId">> => string(),
-%%   <<"VersionStages">> => list(string()())
+%%   <<"VersionStages">> => list(string())
 %% }
 -type put_secret_value_response() :: #{binary() => any()}.
 
@@ -324,7 +324,7 @@
 
 %% Example:
 %% remove_regions_from_replication_request() :: #{
-%%   <<"RemoveReplicaRegions">> := list(string()()),
+%%   <<"RemoveReplicaRegions">> := list(string()),
 %%   <<"SecretId">> := string()
 %% }
 -type remove_regions_from_replication_request() :: #{binary() => any()}.
@@ -346,15 +346,15 @@
 %%   <<"ARN">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(secret_versions_list_entry()())
+%%   <<"Versions">> => list(secret_versions_list_entry())
 %% }
 -type list_secret_version_ids_response() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_secret_value_response() :: #{
-%%   <<"Errors">> => list(api_error_type()()),
+%%   <<"Errors">> => list(api_error_type()),
 %%   <<"NextToken">> => string(),
-%%   <<"SecretValues">> => list(secret_value_entry()())
+%%   <<"SecretValues">> => list(secret_value_entry())
 %% }
 -type batch_get_secret_value_response() :: #{binary() => any()}.
 
@@ -386,14 +386,14 @@
 %% Example:
 %% replicate_secret_to_regions_response() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"ReplicationStatus">> => list(replication_status_type()())
+%%   <<"ReplicationStatus">> => list(replication_status_type())
 %% }
 -type replicate_secret_to_regions_response() :: #{binary() => any()}.
 
 %% Example:
 %% filter() :: #{
 %%   <<"Key">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -414,7 +414,7 @@
 %%   <<"SecretBinary">> => binary(),
 %%   <<"SecretId">> := string(),
 %%   <<"SecretString">> => string(),
-%%   <<"VersionStages">> => list(string()())
+%%   <<"VersionStages">> => list(string())
 %% }
 -type put_secret_value_request() :: #{binary() => any()}.
 
@@ -480,7 +480,7 @@
 %%   <<"SecretBinary">> => binary(),
 %%   <<"SecretString">> => string(),
 %%   <<"VersionId">> => string(),
-%%   <<"VersionStages">> => list(string()())
+%%   <<"VersionStages">> => list(string())
 %% }
 -type get_secret_value_response() :: #{binary() => any()}.
 
@@ -506,7 +506,7 @@
 %%   <<"SecretBinary">> => binary(),
 %%   <<"SecretString">> => string(),
 %%   <<"VersionId">> => string(),
-%%   <<"VersionStages">> => list(string()())
+%%   <<"VersionStages">> => list(string())
 %% }
 -type secret_value_entry() :: #{binary() => any()}.
 
@@ -514,7 +514,7 @@
 %% create_secret_response() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"ReplicationStatus">> => list(replication_status_type()()),
+%%   <<"ReplicationStatus">> => list(replication_status_type()),
 %%   <<"VersionId">> => string()
 %% }
 -type create_secret_response() :: #{binary() => any()}.
@@ -552,17 +552,17 @@
 %%   <<"RotationLambdaARN">> => string(),
 %%   <<"RotationRules">> => rotation_rules_type(),
 %%   <<"SecretVersionsToStages">> => map(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type secret_list_entry() :: #{binary() => any()}.
 
 %% Example:
 %% secret_versions_list_entry() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
-%%   <<"KmsKeyIds">> => list(string()()),
+%%   <<"KmsKeyIds">> => list(string()),
 %%   <<"LastAccessedDate">> => non_neg_integer(),
 %%   <<"VersionId">> => string(),
-%%   <<"VersionStages">> => list(string()())
+%%   <<"VersionStages">> => list(string())
 %% }
 -type secret_versions_list_entry() :: #{binary() => any()}.
 
@@ -621,7 +621,7 @@
 
 %% Example:
 %% replicate_secret_to_regions_request() :: #{
-%%   <<"AddReplicaRegions">> := list(replica_region_type()()),
+%%   <<"AddReplicaRegions">> := list(replica_region_type()),
 %%   <<"ForceOverwriteReplicaSecret">> => boolean(),
 %%   <<"SecretId">> := string()
 %% }
@@ -629,7 +629,7 @@
 
 %% Example:
 %% create_secret_request() :: #{
-%%   <<"AddReplicaRegions">> => list(replica_region_type()()),
+%%   <<"AddReplicaRegions">> => list(replica_region_type()),
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"ForceOverwriteReplicaSecret">> => boolean(),
@@ -637,7 +637,7 @@
 %%   <<"Name">> := string(),
 %%   <<"SecretBinary">> => binary(),
 %%   <<"SecretString">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_secret_request() :: #{binary() => any()}.
 

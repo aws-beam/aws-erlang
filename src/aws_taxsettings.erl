@@ -83,7 +83,7 @@
 
 %% Example:
 %% batch_delete_tax_registration_response() :: #{
-%%   <<"errors">> => list(batch_delete_tax_registration_error()())
+%%   <<"errors">> => list(batch_delete_tax_registration_error())
 %% }
 -type batch_delete_tax_registration_response() :: #{binary() => any()}.
 
@@ -222,7 +222,7 @@
 
 %% Example:
 %% batch_get_tax_exemptions_response() :: #{
-%%   <<"failedAccounts">> => list(string()()),
+%%   <<"failedAccounts">> => list(string()),
 %%   <<"taxExemptionDetailsMap">> => map()
 %% }
 -type batch_get_tax_exemptions_response() :: #{binary() => any()}.
@@ -237,7 +237,7 @@
 
 %% Example:
 %% batch_put_tax_registration_request() :: #{
-%%   <<"accountIds">> := list(string()()),
+%%   <<"accountIds">> := list(string()),
 %%   <<"taxRegistrationEntry">> := tax_registration_entry()
 %% }
 -type batch_put_tax_registration_request() :: #{binary() => any()}.
@@ -339,7 +339,7 @@
 
 %% Example:
 %% tax_exemption_type() :: #{
-%%   <<"applicableJurisdictions">> => list(authority()()),
+%%   <<"applicableJurisdictions">> => list(authority()),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string()
 %% }
@@ -365,14 +365,14 @@
 
 %% Example:
 %% get_tax_exemption_types_response() :: #{
-%%   <<"taxExemptionTypes">> => list(tax_exemption_type()())
+%%   <<"taxExemptionTypes">> => list(tax_exemption_type())
 %% }
 -type get_tax_exemption_types_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_put_tax_registration_response() :: #{
-%%   <<"errors">> => list(batch_put_tax_registration_error()()),
+%%   <<"errors">> => list(batch_put_tax_registration_error()),
 %%   <<"status">> => list(any())
 %% }
 -type batch_put_tax_registration_response() :: #{binary() => any()}.
@@ -411,7 +411,7 @@
 
 %% Example:
 %% list_tax_registrations_response() :: #{
-%%   <<"accountDetails">> => list(account_details()()),
+%%   <<"accountDetails">> => list(account_details()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_tax_registrations_response() :: #{binary() => any()}.
@@ -544,7 +544,7 @@
 %% Example:
 %% verification_details() :: #{
 %%   <<"dateOfBirth">> => string(),
-%%   <<"taxRegistrationDocuments">> => list(tax_registration_document()())
+%%   <<"taxRegistrationDocuments">> => list(tax_registration_document())
 %% }
 -type verification_details() :: #{binary() => any()}.
 
@@ -574,7 +574,7 @@
 %%   <<"registrationType">> => list(any()),
 %%   <<"sector">> => list(any()),
 %%   <<"status">> => list(any()),
-%%   <<"taxDocumentMetadatas">> => list(tax_document_metadata()())
+%%   <<"taxDocumentMetadatas">> => list(tax_document_metadata())
 %% }
 -type tax_registration() :: #{binary() => any()}.
 
@@ -615,7 +615,7 @@
 
 %% Example:
 %% put_tax_exemption_request() :: #{
-%%   <<"accountIds">> := list(string()()),
+%%   <<"accountIds">> := list(string()),
 %%   <<"authority">> := authority(),
 %%   <<"exemptionCertificate">> := exemption_certificate(),
 %%   <<"exemptionType">> := string()
@@ -648,7 +648,7 @@
 %%   <<"registrationType">> => list(any()),
 %%   <<"sector">> => list(any()),
 %%   <<"status">> => list(any()),
-%%   <<"taxDocumentMetadatas">> => list(tax_document_metadata()())
+%%   <<"taxDocumentMetadatas">> => list(tax_document_metadata())
 %% }
 -type tax_registration_with_jurisdiction() :: #{binary() => any()}.
 
@@ -662,7 +662,7 @@
 %%   <<"heritageObtainedDetails">> => boolean(),
 %%   <<"heritageObtainedParentEntity">> => string(),
 %%   <<"heritageObtainedReason">> => string(),
-%%   <<"taxExemptions">> => list(tax_exemption()())
+%%   <<"taxExemptions">> => list(tax_exemption())
 %% }
 -type tax_exemption_details() :: #{binary() => any()}.
 
@@ -670,7 +670,7 @@
 %% Example:
 %% validation_exception() :: #{
 %%   <<"errorCode">> => list(any()),
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
@@ -679,7 +679,7 @@
 %% Example:
 %% list_supplemental_tax_registrations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"taxRegistrations">> => list(supplemental_tax_registration()())
+%%   <<"taxRegistrations">> => list(supplemental_tax_registration())
 %% }
 -type list_supplemental_tax_registrations_response() :: #{binary() => any()}.
 
@@ -756,7 +756,7 @@
 
 %% Example:
 %% batch_get_tax_exemptions_request() :: #{
-%%   <<"accountIds">> := list(string()())
+%%   <<"accountIds">> := list(string())
 %% }
 -type batch_get_tax_exemptions_request() :: #{binary() => any()}.
 
@@ -774,7 +774,7 @@
 
 %% Example:
 %% batch_delete_tax_registration_request() :: #{
-%%   <<"accountIds">> := list(string()())
+%%   <<"accountIds">> := list(string())
 %% }
 -type batch_delete_tax_registration_request() :: #{binary() => any()}.
 

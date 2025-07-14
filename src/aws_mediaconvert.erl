@@ -95,7 +95,7 @@
 %%   <<"Input">> => video_overlay_input(),
 %%   <<"Playback">> => list(any()),
 %%   <<"StartTimecode">> => string(),
-%%   <<"Transitions">> => list(video_overlay_transition()())
+%%   <<"Transitions">> => list(video_overlay_transition())
 %% }
 -type video_overlay() :: #{binary() => any()}.
 
@@ -195,7 +195,7 @@
 %%   <<"AccelerationSettings">> => acceleration_settings(),
 %%   <<"Category">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"HopDestinations">> => list(hop_destination()()),
+%%   <<"HopDestinations">> => list(hop_destination()),
 %%   <<"Priority">> => integer(),
 %%   <<"Queue">> => string(),
 %%   <<"Settings">> => job_template_settings(),
@@ -260,7 +260,7 @@
 %% container() :: #{
 %%   <<"Duration">> => float(),
 %%   <<"Format">> => list(any()),
-%%   <<"Tracks">> => list(track()())
+%%   <<"Tracks">> => list(track())
 %% }
 -type container() :: #{binary() => any()}.
 
@@ -592,7 +592,7 @@
 
 %% Example:
 %% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()()),
+%%   <<"Endpoints">> => list(endpoint()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_endpoints_response() :: #{binary() => any()}.
@@ -616,7 +616,7 @@
 %%   <<"Category">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"HopDestinations">> => list(hop_destination()()),
+%%   <<"HopDestinations">> => list(hop_destination()),
 %%   <<"LastUpdated">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Priority">> => integer(),
@@ -630,8 +630,8 @@
 
 %% Example:
 %% automated_abr_rule() :: #{
-%%   <<"AllowedRenditions">> => list(allowed_rendition_size()()),
-%%   <<"ForceIncludeRenditions">> => list(force_include_rendition_size()()),
+%%   <<"AllowedRenditions">> => list(allowed_rendition_size()),
+%%   <<"ForceIncludeRenditions">> => list(force_include_rendition_size()),
 %%   <<"MinBottomRenditionSize">> => min_bottom_rendition_size(),
 %%   <<"MinTopRenditionSize">> => min_top_rendition_size(),
 %%   <<"Type">> => list(any())
@@ -643,7 +643,7 @@
 %% m3u8_settings() :: #{
 %%   <<"AudioDuration">> => list(any()),
 %%   <<"AudioFramesPerPes">> => integer(),
-%%   <<"AudioPids">> => list(integer()()),
+%%   <<"AudioPids">> => list(integer()),
 %%   <<"AudioPtsOffsetDelta">> => integer(),
 %%   <<"DataPTSControl">> => list(any()),
 %%   <<"MaxPcrInterval">> => integer(),
@@ -669,7 +669,7 @@
 
 %% Example:
 %% list_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()()),
+%%   <<"Jobs">> => list(job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
@@ -680,7 +680,7 @@
 %%   <<"AccelerationSettings">> => acceleration_settings(),
 %%   <<"BillingTagsSource">> => list(any()),
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"HopDestinations">> => list(hop_destination()()),
+%%   <<"HopDestinations">> => list(hop_destination()),
 %%   <<"JobEngineVersion">> => string(),
 %%   <<"JobTemplate">> => string(),
 %%   <<"Priority">> => integer(),
@@ -739,7 +739,7 @@
 %%   <<"PricingPlan">> => list(any()),
 %%   <<"ProgressingJobsCount">> => integer(),
 %%   <<"ReservationPlan">> => reservation_plan(),
-%%   <<"ServiceOverrides">> => list(service_override()()),
+%%   <<"ServiceOverrides">> => list(service_override()),
 %%   <<"Status">> => list(any()),
 %%   <<"SubmittedJobsCount">> => integer(),
 %%   <<"Type">> => list(any())
@@ -753,7 +753,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> => list(string()())
+%%   <<"TagKeys">> => list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -805,16 +805,16 @@
 %% job_template_settings() :: #{
 %%   <<"AdAvailOffset">> => integer(),
 %%   <<"AvailBlanking">> => avail_blanking(),
-%%   <<"ColorConversion3DLUTSettings">> => list(color_conversion3_d_l_u_t_setting()()),
+%%   <<"ColorConversion3DLUTSettings">> => list(color_conversion3_d_l_u_t_setting()),
 %%   <<"Esam">> => esam_settings(),
 %%   <<"ExtendedDataServices">> => extended_data_services(),
 %%   <<"FollowSource">> => integer(),
-%%   <<"Inputs">> => list(input_template()()),
+%%   <<"Inputs">> => list(input_template()),
 %%   <<"KantarWatermark">> => kantar_watermark_settings(),
 %%   <<"MotionImageInserter">> => motion_image_inserter(),
 %%   <<"NielsenConfiguration">> => nielsen_configuration(),
 %%   <<"NielsenNonLinearWatermark">> => nielsen_non_linear_watermark_settings(),
-%%   <<"OutputGroups">> => list(output_group()()),
+%%   <<"OutputGroups">> => list(output_group()),
 %%   <<"TimecodeConfig">> => timecode_config(),
 %%   <<"TimedMetadataInsertion">> => timed_metadata_insertion()
 %% }
@@ -836,9 +836,9 @@
 
 %% Example:
 %% track_mapping() :: #{
-%%   <<"AudioTrackIndexes">> => list(integer()()),
-%%   <<"DataTrackIndexes">> => list(integer()()),
-%%   <<"VideoTrackIndexes">> => list(integer()())
+%%   <<"AudioTrackIndexes">> => list(integer()),
+%%   <<"DataTrackIndexes">> => list(integer()),
+%%   <<"VideoTrackIndexes">> => list(integer())
 %% }
 -type track_mapping() :: #{binary() => any()}.
 
@@ -846,9 +846,9 @@
 %% Example:
 %% speke_key_provider_cmaf() :: #{
 %%   <<"CertificateArn">> => string(),
-%%   <<"DashSignaledSystemIds">> => list(string()()),
+%%   <<"DashSignaledSystemIds">> => list(string()),
 %%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
-%%   <<"HlsSignaledSystemIds">> => list(string()()),
+%%   <<"HlsSignaledSystemIds">> => list(string()),
 %%   <<"ResourceId">> => string(),
 %%   <<"Url">> => string()
 %% }
@@ -893,14 +893,14 @@
 %%   <<"FilterEnable">> => list(any()),
 %%   <<"FilterStrength">> => integer(),
 %%   <<"ImageInserter">> => image_inserter(),
-%%   <<"InputClippings">> => list(input_clipping()()),
+%%   <<"InputClippings">> => list(input_clipping()),
 %%   <<"InputScanType">> => list(any()),
 %%   <<"Position">> => rectangle(),
 %%   <<"ProgramNumber">> => integer(),
 %%   <<"PsiControl">> => list(any()),
 %%   <<"TimecodeSource">> => list(any()),
 %%   <<"TimecodeStart">> => string(),
-%%   <<"VideoOverlays">> => list(video_overlay()()),
+%%   <<"VideoOverlays">> => list(video_overlay()),
 %%   <<"VideoSelector">> => video_selector()
 %% }
 -type input_template() :: #{binary() => any()}.
@@ -956,7 +956,7 @@
 
 %% Example:
 %% audio_selector_group() :: #{
-%%   <<"AudioSelectorNames">> => list(string()())
+%%   <<"AudioSelectorNames">> => list(string())
 %% }
 -type audio_selector_group() :: #{binary() => any()}.
 
@@ -985,7 +985,7 @@
 
 %% Example:
 %% cmaf_group_settings() :: #{
-%%   <<"AdditionalManifests">> => list(cmaf_additional_manifest()()),
+%%   <<"AdditionalManifests">> => list(cmaf_additional_manifest()),
 %%   <<"BaseUrl">> => string(),
 %%   <<"ClientCache">> => list(any()),
 %%   <<"CodecSpecification">> => list(any()),
@@ -1030,7 +1030,7 @@
 
 %% Example:
 %% image_inserter() :: #{
-%%   <<"InsertableImages">> => list(insertable_image()()),
+%%   <<"InsertableImages">> => list(insertable_image()),
 %%   <<"SdrReferenceWhiteLevel">> => integer()
 %% }
 -type image_inserter() :: #{binary() => any()}.
@@ -1047,16 +1047,16 @@
 %% job_settings() :: #{
 %%   <<"AdAvailOffset">> => integer(),
 %%   <<"AvailBlanking">> => avail_blanking(),
-%%   <<"ColorConversion3DLUTSettings">> => list(color_conversion3_d_l_u_t_setting()()),
+%%   <<"ColorConversion3DLUTSettings">> => list(color_conversion3_d_l_u_t_setting()),
 %%   <<"Esam">> => esam_settings(),
 %%   <<"ExtendedDataServices">> => extended_data_services(),
 %%   <<"FollowSource">> => integer(),
-%%   <<"Inputs">> => list(input()()),
+%%   <<"Inputs">> => list(input()),
 %%   <<"KantarWatermark">> => kantar_watermark_settings(),
 %%   <<"MotionImageInserter">> => motion_image_inserter(),
 %%   <<"NielsenConfiguration">> => nielsen_configuration(),
 %%   <<"NielsenNonLinearWatermark">> => nielsen_non_linear_watermark_settings(),
-%%   <<"OutputGroups">> => list(output_group()()),
+%%   <<"OutputGroups">> => list(output_group()),
 %%   <<"TimecodeConfig">> => timecode_config(),
 %%   <<"TimedMetadataInsertion">> => timed_metadata_insertion()
 %% }
@@ -1065,14 +1065,14 @@
 
 %% Example:
 %% timed_metadata_insertion() :: #{
-%%   <<"Id3Insertions">> => list(id3_insertion()())
+%%   <<"Id3Insertions">> => list(id3_insertion())
 %% }
 -type timed_metadata_insertion() :: #{binary() => any()}.
 
 
 %% Example:
 %% ms_smooth_group_settings() :: #{
-%%   <<"AdditionalManifests">> => list(ms_smooth_additional_manifest()()),
+%%   <<"AdditionalManifests">> => list(ms_smooth_additional_manifest()),
 %%   <<"AudioDeduplication">> => list(any()),
 %%   <<"Destination">> => string(),
 %%   <<"DestinationSettings">> => destination_settings(),
@@ -1142,16 +1142,16 @@
 %%   <<"FilterEnable">> => list(any()),
 %%   <<"FilterStrength">> => integer(),
 %%   <<"ImageInserter">> => image_inserter(),
-%%   <<"InputClippings">> => list(input_clipping()()),
+%%   <<"InputClippings">> => list(input_clipping()),
 %%   <<"InputScanType">> => list(any()),
 %%   <<"Position">> => rectangle(),
 %%   <<"ProgramNumber">> => integer(),
 %%   <<"PsiControl">> => list(any()),
-%%   <<"SupplementalImps">> => list(string()()),
+%%   <<"SupplementalImps">> => list(string()),
 %%   <<"TimecodeSource">> => list(any()),
 %%   <<"TimecodeStart">> => string(),
 %%   <<"VideoGenerator">> => input_video_generator(),
-%%   <<"VideoOverlays">> => list(video_overlay()()),
+%%   <<"VideoOverlays">> => list(video_overlay()),
 %%   <<"VideoSelector">> => video_selector()
 %% }
 -type input() :: #{binary() => any()}.
@@ -1209,7 +1209,7 @@
 %%   <<"CustomName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OutputGroupSettings">> => output_group_settings(),
-%%   <<"Outputs">> => list(output()())
+%%   <<"Outputs">> => list(output())
 %% }
 -type output_group() :: #{binary() => any()}.
 
@@ -1260,8 +1260,8 @@
 
 %% Example:
 %% preset_settings() :: #{
-%%   <<"AudioDescriptions">> => list(audio_description()()),
-%%   <<"CaptionDescriptions">> => list(caption_description_preset()()),
+%%   <<"AudioDescriptions">> => list(audio_description()),
+%%   <<"CaptionDescriptions">> => list(caption_description_preset()),
 %%   <<"ContainerSettings">> => container_settings(),
 %%   <<"VideoDescription">> => video_description()
 %% }
@@ -1395,7 +1395,7 @@
 
 %% Example:
 %% output_group_detail() :: #{
-%%   <<"OutputDetails">> => list(output_detail()())
+%%   <<"OutputDetails">> => list(output_detail())
 %% }
 -type output_group_detail() :: #{binary() => any()}.
 
@@ -1428,7 +1428,7 @@
 %%   <<"CertificateArn">> => string(),
 %%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
 %%   <<"ResourceId">> => string(),
-%%   <<"SystemIds">> => list(string()()),
+%%   <<"SystemIds">> => list(string()),
 %%   <<"Url">> => string()
 %% }
 -type speke_key_provider() :: #{binary() => any()}.
@@ -1542,7 +1542,7 @@
 %% Example:
 %% hls_additional_manifest() :: #{
 %%   <<"ManifestNameModifier">> => string(),
-%%   <<"SelectedOutputs">> => list(string()())
+%%   <<"SelectedOutputs">> => list(string())
 %% }
 -type hls_additional_manifest() :: #{binary() => any()}.
 
@@ -1575,7 +1575,7 @@
 
 %% Example:
 %% search_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()()),
+%%   <<"Jobs">> => list(job()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_jobs_response() :: #{binary() => any()}.
@@ -1594,7 +1594,7 @@
 %% Example:
 %% list_presets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Presets">> => list(preset()())
+%%   <<"Presets">> => list(preset())
 %% }
 -type list_presets_response() :: #{binary() => any()}.
 
@@ -1613,7 +1613,7 @@
 %% Example:
 %% list_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(job_engine_version()())
+%%   <<"Versions">> => list(job_engine_version())
 %% }
 -type list_versions_response() :: #{binary() => any()}.
 
@@ -1642,8 +1642,8 @@
 
 %% Example:
 %% job_messages() :: #{
-%%   <<"Info">> => list(string()()),
-%%   <<"Warning">> => list(string()())
+%%   <<"Info">> => list(string()),
+%%   <<"Warning">> => list(string())
 %% }
 -type job_messages() :: #{binary() => any()}.
 
@@ -1749,10 +1749,10 @@
 %% Example:
 %% hls_group_settings() :: #{
 %%   <<"AdMarkers">> => list(list(any())()),
-%%   <<"AdditionalManifests">> => list(hls_additional_manifest()()),
+%%   <<"AdditionalManifests">> => list(hls_additional_manifest()),
 %%   <<"AudioOnlyHeader">> => list(any()),
 %%   <<"BaseUrl">> => string(),
-%%   <<"CaptionLanguageMappings">> => list(hls_caption_language_mapping()()),
+%%   <<"CaptionLanguageMappings">> => list(hls_caption_language_mapping()),
 %%   <<"CaptionLanguageSetting">> => list(any()),
 %%   <<"CaptionSegmentLengthControl">> => list(any()),
 %%   <<"ClientCache">> => list(any()),
@@ -1800,11 +1800,11 @@
 %%   <<"HlsRenditionGroupSettings">> => hls_rendition_group_settings(),
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"Offset">> => integer(),
-%%   <<"Pids">> => list(integer()()),
+%%   <<"Pids">> => list(integer()),
 %%   <<"ProgramSelection">> => integer(),
 %%   <<"RemixSettings">> => remix_settings(),
 %%   <<"SelectorType">> => list(any()),
-%%   <<"Tracks">> => list(integer()())
+%%   <<"Tracks">> => list(integer())
 %% }
 -type audio_selector() :: #{binary() => any()}.
 
@@ -1908,7 +1908,7 @@
 %% Example:
 %% dash_additional_manifest() :: #{
 %%   <<"ManifestNameModifier">> => string(),
-%%   <<"SelectedOutputs">> => list(string()())
+%%   <<"SelectedOutputs">> => list(string())
 %% }
 -type dash_additional_manifest() :: #{binary() => any()}.
 
@@ -2024,7 +2024,7 @@
 %% probe_result() :: #{
 %%   <<"Container">> => container(),
 %%   <<"Metadata">> => metadata(),
-%%   <<"TrackMappings">> => list(track_mapping()())
+%%   <<"TrackMappings">> => list(track_mapping())
 %% }
 -type probe_result() :: #{binary() => any()}.
 
@@ -2032,7 +2032,7 @@
 %% Example:
 %% cmaf_additional_manifest() :: #{
 %%   <<"ManifestNameModifier">> => string(),
-%%   <<"SelectedOutputs">> => list(string()())
+%%   <<"SelectedOutputs">> => list(string())
 %% }
 -type cmaf_additional_manifest() :: #{binary() => any()}.
 
@@ -2042,7 +2042,7 @@
 %%   <<"AccelerationSettings">> => acceleration_settings(),
 %%   <<"Category">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"HopDestinations">> => list(hop_destination()()),
+%%   <<"HopDestinations">> => list(hop_destination()),
 %%   <<"Name">> := string(),
 %%   <<"Priority">> => integer(),
 %%   <<"Queue">> => string(),
@@ -2252,7 +2252,7 @@
 %% Example:
 %% ms_smooth_additional_manifest() :: #{
 %%   <<"ManifestNameModifier">> => string(),
-%%   <<"SelectedOutputs">> => list(string()())
+%%   <<"SelectedOutputs">> => list(string())
 %% }
 -type ms_smooth_additional_manifest() :: #{binary() => any()}.
 
@@ -2268,7 +2268,7 @@
 
 %% Example:
 %% probe_response() :: #{
-%%   <<"ProbeResults">> => list(probe_result()())
+%%   <<"ProbeResults">> => list(probe_result())
 %% }
 -type probe_response() :: #{binary() => any()}.
 
@@ -2304,17 +2304,17 @@
 %%   <<"CurrentPhase">> => list(any()),
 %%   <<"ErrorCode">> => integer(),
 %%   <<"ErrorMessage">> => string(),
-%%   <<"HopDestinations">> => list(hop_destination()()),
+%%   <<"HopDestinations">> => list(hop_destination()),
 %%   <<"Id">> => string(),
 %%   <<"JobEngineVersionRequested">> => string(),
 %%   <<"JobEngineVersionUsed">> => string(),
 %%   <<"JobPercentComplete">> => integer(),
 %%   <<"JobTemplate">> => string(),
 %%   <<"Messages">> => job_messages(),
-%%   <<"OutputGroupDetails">> => list(output_group_detail()()),
+%%   <<"OutputGroupDetails">> => list(output_group_detail()),
 %%   <<"Priority">> => integer(),
 %%   <<"Queue">> => string(),
-%%   <<"QueueTransitions">> => list(queue_transition()()),
+%%   <<"QueueTransitions">> => list(queue_transition()),
 %%   <<"RetryCount">> => integer(),
 %%   <<"Role">> => string(),
 %%   <<"Settings">> => job_settings(),
@@ -2323,7 +2323,7 @@
 %%   <<"StatusUpdateInterval">> => list(any()),
 %%   <<"Timing">> => timing(),
 %%   <<"UserMetadata">> => map(),
-%%   <<"Warnings">> => list(warning_group()())
+%%   <<"Warnings">> => list(warning_group())
 %% }
 -type job() :: #{binary() => any()}.
 
@@ -2375,7 +2375,7 @@
 %% Example:
 %% video_overlay_input() :: #{
 %%   <<"FileInput">> => string(),
-%%   <<"InputClippings">> => list(video_overlay_input_clipping()()),
+%%   <<"InputClippings">> => list(video_overlay_input_clipping()),
 %%   <<"TimecodeSource">> => list(any()),
 %%   <<"TimecodeStart">> => string()
 %% }
@@ -2509,7 +2509,7 @@
 %%   <<"ProgramNumber">> => integer(),
 %%   <<"VideoPid">> => integer(),
 %%   <<"MaxPcrInterval">> => integer(),
-%%   <<"AudioPids">> => list(integer()()),
+%%   <<"AudioPids">> => list(integer()),
 %%   <<"RateMode">> => list(any()),
 %%   <<"DvbNitSettings">> => dvb_nit_settings(),
 %%   <<"SegmentationTime">> => float(),
@@ -2517,7 +2517,7 @@
 %%   <<"SegmentationMarkers">> => list(any()),
 %%   <<"DvbTeletextPid">> => integer(),
 %%   <<"PtsOffsetMode">> => list(any()),
-%%   <<"DvbSubPids">> => list(integer()()),
+%%   <<"DvbSubPids">> => list(integer()),
 %%   <<"AudioFramesPerPes">> => integer(),
 %%   <<"KlvMetadata">> => list(any()),
 %%   <<"TransportStreamId">> => integer(),
@@ -2543,7 +2543,7 @@
 %% Example:
 %% list_queues_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Queues">> => list(queue()()),
+%%   <<"Queues">> => list(queue()),
 %%   <<"TotalConcurrentJobs">> => integer(),
 %%   <<"UnallocatedConcurrentJobs">> => integer()
 %% }
@@ -2637,7 +2637,7 @@
 
 %% Example:
 %% channel_mapping() :: #{
-%%   <<"OutputChannels">> => list(output_channel_mapping()())
+%%   <<"OutputChannels">> => list(output_channel_mapping())
 %% }
 -type channel_mapping() :: #{binary() => any()}.
 
@@ -2684,7 +2684,7 @@
 %%   <<"MaxQualityLevel">> => float(),
 %%   <<"MaxRenditions">> => integer(),
 %%   <<"MinAbrBitrate">> => integer(),
-%%   <<"Rules">> => list(automated_abr_rule()())
+%%   <<"Rules">> => list(automated_abr_rule())
 %% }
 -type automated_abr_settings() :: #{binary() => any()}.
 
@@ -2713,7 +2713,7 @@
 
 %% Example:
 %% list_job_templates_response() :: #{
-%%   <<"JobTemplates">> => list(job_template()()),
+%%   <<"JobTemplates">> => list(job_template()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_job_templates_response() :: #{binary() => any()}.
@@ -2785,22 +2785,22 @@
 
 %% Example:
 %% output_channel_mapping() :: #{
-%%   <<"InputChannels">> => list(integer()()),
-%%   <<"InputChannelsFineTune">> => list(float()())
+%%   <<"InputChannels">> => list(integer()),
+%%   <<"InputChannelsFineTune">> => list(float())
 %% }
 -type output_channel_mapping() :: #{binary() => any()}.
 
 
 %% Example:
 %% probe_request() :: #{
-%%   <<"InputFiles">> => list(probe_input_file()())
+%%   <<"InputFiles">> => list(probe_input_file())
 %% }
 -type probe_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% dash_iso_group_settings() :: #{
-%%   <<"AdditionalManifests">> => list(dash_additional_manifest()()),
+%%   <<"AdditionalManifests">> => list(dash_additional_manifest()),
 %%   <<"AudioChannelConfigSchemeIdUri">> => list(any()),
 %%   <<"BaseUrl">> => string(),
 %%   <<"DashIFrameTrickPlayNameModifier">> => string(),
@@ -2963,8 +2963,8 @@
 
 %% Example:
 %% output() :: #{
-%%   <<"AudioDescriptions">> => list(audio_description()()),
-%%   <<"CaptionDescriptions">> => list(caption_description()()),
+%%   <<"AudioDescriptions">> => list(audio_description()),
+%%   <<"CaptionDescriptions">> => list(caption_description()),
 %%   <<"ContainerSettings">> => container_settings(),
 %%   <<"Extension">> => string(),
 %%   <<"NameModifier">> => string(),

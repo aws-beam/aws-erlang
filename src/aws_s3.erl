@@ -302,7 +302,7 @@
 %% list_bucket_metrics_configurations_output() :: #{
 %%   <<"ContinuationToken">> => string(),
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"MetricsConfigurationList">> => list(metrics_configuration()()),
+%%   <<"MetricsConfigurationList">> => list(metrics_configuration()),
 %%   <<"NextContinuationToken">> => string()
 %% }
 -type list_bucket_metrics_configurations_output() :: #{binary() => any()}.
@@ -332,7 +332,7 @@
 
 %% Example:
 %% c_o_r_s_configuration() :: #{
-%%   <<"CORSRules">> => list(c_o_r_s_rule()())
+%%   <<"CORSRules">> => list(c_o_r_s_rule())
 %% }
 -type c_o_r_s_configuration() :: #{binary() => any()}.
 
@@ -565,10 +565,10 @@
 %%   <<"Filter">> => lifecycle_rule_filter(),
 %%   <<"ID">> => string(),
 %%   <<"NoncurrentVersionExpiration">> => noncurrent_version_expiration(),
-%%   <<"NoncurrentVersionTransitions">> => list(noncurrent_version_transition()()),
+%%   <<"NoncurrentVersionTransitions">> => list(noncurrent_version_transition()),
 %%   <<"Prefix">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Transitions">> => list(transition()())
+%%   <<"Transitions">> => list(transition())
 %% }
 -type lifecycle_rule() :: #{binary() => any()}.
 
@@ -612,7 +612,7 @@
 
 %% Example:
 %% delete() :: #{
-%%   <<"Objects">> => list(object_identifier()()),
+%%   <<"Objects">> => list(object_identifier()),
 %%   <<"Quiet">> => boolean()
 %% }
 -type delete() :: #{binary() => any()}.
@@ -843,7 +843,7 @@
 %% Example:
 %% list_bucket_inventory_configurations_output() :: #{
 %%   <<"ContinuationToken">> => string(),
-%%   <<"InventoryConfigurationList">> => list(inventory_configuration()()),
+%%   <<"InventoryConfigurationList">> => list(inventory_configuration()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"NextContinuationToken">> => string()
 %% }
@@ -1092,8 +1092,8 @@
 
 %% Example:
 %% list_object_versions_output() :: #{
-%%   <<"CommonPrefixes">> => list(common_prefix()()),
-%%   <<"DeleteMarkers">> => list(delete_marker_entry()()),
+%%   <<"CommonPrefixes">> => list(common_prefix()),
+%%   <<"DeleteMarkers">> => list(delete_marker_entry()),
 %%   <<"Delimiter">> => string(),
 %%   <<"EncodingType">> => list(any()),
 %%   <<"IsTruncated">> => boolean(),
@@ -1105,14 +1105,14 @@
 %%   <<"Prefix">> => string(),
 %%   <<"RequestCharged">> => list(any()),
 %%   <<"VersionIdMarker">> => string(),
-%%   <<"Versions">> => list(object_version()())
+%%   <<"Versions">> => list(object_version())
 %% }
 -type list_object_versions_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_bucket_lifecycle_configuration_output() :: #{
-%%   <<"Rules">> => list(lifecycle_rule()()),
+%%   <<"Rules">> => list(lifecycle_rule()),
 %%   <<"TransitionDefaultMinimumObjectSize">> => list(any())
 %% }
 -type get_bucket_lifecycle_configuration_output() :: #{binary() => any()}.
@@ -1154,7 +1154,7 @@
 
 %% Example:
 %% get_bucket_acl_output() :: #{
-%%   <<"Grants">> => list(grant()()),
+%%   <<"Grants">> => list(grant()),
 %%   <<"Owner">> => owner()
 %% }
 -type get_bucket_acl_output() :: #{binary() => any()}.
@@ -1209,7 +1209,7 @@
 %% Example:
 %% logging_enabled() :: #{
 %%   <<"TargetBucket">> => string(),
-%%   <<"TargetGrants">> => list(target_grant()()),
+%%   <<"TargetGrants">> => list(target_grant()),
 %%   <<"TargetObjectKeyFormat">> => target_object_key_format(),
 %%   <<"TargetPrefix">> => string()
 %% }
@@ -1508,7 +1508,7 @@
 
 %% Example:
 %% list_bucket_analytics_configurations_output() :: #{
-%%   <<"AnalyticsConfigurationList">> => list(analytics_configuration()()),
+%%   <<"AnalyticsConfigurationList">> => list(analytics_configuration()),
 %%   <<"ContinuationToken">> => string(),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"NextContinuationToken">> => string()
@@ -1519,14 +1519,14 @@
 %% Example:
 %% replication_configuration() :: #{
 %%   <<"Role">> => string(),
-%%   <<"Rules">> => list(replication_rule()())
+%%   <<"Rules">> => list(replication_rule())
 %% }
 -type replication_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_bucket_tagging_output() :: #{
-%%   <<"TagSet">> => list(tag()())
+%%   <<"TagSet">> => list(tag())
 %% }
 -type get_bucket_tagging_output() :: #{binary() => any()}.
 
@@ -1545,7 +1545,7 @@
 %% Example:
 %% intelligent_tiering_and_operator() :: #{
 %%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type intelligent_tiering_and_operator() :: #{binary() => any()}.
 
@@ -1636,7 +1636,7 @@
 
 %% Example:
 %% get_object_tagging_output() :: #{
-%%   <<"TagSet">> => list(tag()()),
+%%   <<"TagSet">> => list(tag()),
 %%   <<"VersionId">> => string()
 %% }
 -type get_object_tagging_output() :: #{binary() => any()}.
@@ -1666,7 +1666,7 @@
 
 %% Example:
 %% get_bucket_cors_output() :: #{
-%%   <<"CORSRules">> => list(c_o_r_s_rule()())
+%%   <<"CORSRules">> => list(c_o_r_s_rule())
 %% }
 -type get_bucket_cors_output() :: #{binary() => any()}.
 
@@ -1794,7 +1794,7 @@
 
 %% Example:
 %% list_buckets_output() :: #{
-%%   <<"Buckets">> => list(bucket()()),
+%%   <<"Buckets">> => list(bucket()),
 %%   <<"ContinuationToken">> => string(),
 %%   <<"Owner">> => owner(),
 %%   <<"Prefix">> => string()
@@ -1807,7 +1807,7 @@
 %%   <<"Bucket">> => bucket_info(),
 %%   <<"Location">> => location_info(),
 %%   <<"LocationConstraint">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_bucket_configuration() :: #{binary() => any()}.
 
@@ -1827,7 +1827,7 @@
 %% Example:
 %% list_bucket_intelligent_tiering_configurations_output() :: #{
 %%   <<"ContinuationToken">> => string(),
-%%   <<"IntelligentTieringConfigurationList">> => list(intelligent_tiering_configuration()()),
+%%   <<"IntelligentTieringConfigurationList">> => list(intelligent_tiering_configuration()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"NextContinuationToken">> => string()
 %% }
@@ -1903,7 +1903,7 @@
 
 %% Example:
 %% s3_key_filter() :: #{
-%%   <<"FilterRules">> => list(filter_rule()())
+%%   <<"FilterRules">> => list(filter_rule())
 %% }
 -type s3_key_filter() :: #{binary() => any()}.
 
@@ -1921,7 +1921,7 @@
 %%   <<"Filter">> => intelligent_tiering_filter(),
 %%   <<"Id">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tierings">> => list(tiering()())
+%%   <<"Tierings">> => list(tiering())
 %% }
 -type intelligent_tiering_configuration() :: #{binary() => any()}.
 
@@ -1936,7 +1936,7 @@
 
 %% Example:
 %% tagging() :: #{
-%%   <<"TagSet">> => list(tag()())
+%%   <<"TagSet">> => list(tag())
 %% }
 -type tagging() :: #{binary() => any()}.
 
@@ -1990,7 +1990,7 @@
 %%   <<"ErrorDocument">> => error_document(),
 %%   <<"IndexDocument">> => index_document(),
 %%   <<"RedirectAllRequestsTo">> => redirect_all_requests_to(),
-%%   <<"RoutingRules">> => list(routing_rule()())
+%%   <<"RoutingRules">> => list(routing_rule())
 %% }
 -type website_configuration() :: #{binary() => any()}.
 
@@ -2023,7 +2023,7 @@
 %%   <<"MaxParts">> => integer(),
 %%   <<"NextPartNumberMarker">> => string(),
 %%   <<"PartNumberMarker">> => string(),
-%%   <<"Parts">> => list(object_part()()),
+%%   <<"Parts">> => list(object_part()),
 %%   <<"TotalPartsCount">> => integer()
 %% }
 -type get_object_attributes_parts() :: #{binary() => any()}.
@@ -2031,8 +2031,8 @@
 
 %% Example:
 %% list_objects_v2_output() :: #{
-%%   <<"CommonPrefixes">> => list(common_prefix()()),
-%%   <<"Contents">> => list(object()()),
+%%   <<"CommonPrefixes">> => list(common_prefix()),
+%%   <<"Contents">> => list(object()),
 %%   <<"ContinuationToken">> => string(),
 %%   <<"Delimiter">> => string(),
 %%   <<"EncodingType">> => list(any()),
@@ -2102,14 +2102,14 @@
 
 %% Example:
 %% s3_location() :: #{
-%%   <<"AccessControlList">> => list(grant()()),
+%%   <<"AccessControlList">> => list(grant()),
 %%   <<"BucketName">> => string(),
 %%   <<"CannedACL">> => list(any()),
 %%   <<"Encryption">> => encryption(),
 %%   <<"Prefix">> => string(),
 %%   <<"StorageClass">> => list(any()),
 %%   <<"Tagging">> => tagging(),
-%%   <<"UserMetadata">> => list(metadata_entry()())
+%%   <<"UserMetadata">> => list(metadata_entry())
 %% }
 -type s3_location() :: #{binary() => any()}.
 
@@ -2167,14 +2167,14 @@
 
 %% Example:
 %% server_side_encryption_configuration() :: #{
-%%   <<"Rules">> => list(server_side_encryption_rule()())
+%%   <<"Rules">> => list(server_side_encryption_rule())
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_object_acl_output() :: #{
-%%   <<"Grants">> => list(grant()()),
+%%   <<"Grants">> => list(grant()),
 %%   <<"Owner">> => owner(),
 %%   <<"RequestCharged">> => list(any())
 %% }
@@ -2202,7 +2202,7 @@
 
 %% Example:
 %% ownership_controls() :: #{
-%%   <<"Rules">> => list(ownership_controls_rule()())
+%%   <<"Rules">> => list(ownership_controls_rule())
 %% }
 -type ownership_controls() :: #{binary() => any()}.
 
@@ -2210,9 +2210,9 @@
 %% Example:
 %% notification_configuration() :: #{
 %%   <<"EventBridgeConfiguration">> => event_bridge_configuration(),
-%%   <<"LambdaFunctionConfigurations">> => list(lambda_function_configuration()()),
-%%   <<"QueueConfigurations">> => list(queue_configuration()()),
-%%   <<"TopicConfigurations">> => list(topic_configuration()())
+%%   <<"LambdaFunctionConfigurations">> => list(lambda_function_configuration()),
+%%   <<"QueueConfigurations">> => list(queue_configuration()),
+%%   <<"TopicConfigurations">> => list(topic_configuration())
 %% }
 -type notification_configuration() :: #{binary() => any()}.
 
@@ -2250,8 +2250,8 @@
 
 %% Example:
 %% delete_objects_output() :: #{
-%%   <<"Deleted">> => list(deleted_object()()),
-%%   <<"Errors">> => list(error()()),
+%%   <<"Deleted">> => list(deleted_object()),
+%%   <<"Errors">> => list(error()),
 %%   <<"RequestCharged">> => list(any())
 %% }
 -type delete_objects_output() :: #{binary() => any()}.
@@ -2266,8 +2266,8 @@
 
 %% Example:
 %% list_objects_output() :: #{
-%%   <<"CommonPrefixes">> => list(common_prefix()()),
-%%   <<"Contents">> => list(object()()),
+%%   <<"CommonPrefixes">> => list(common_prefix()),
+%%   <<"Contents">> => list(object()),
 %%   <<"Delimiter">> => string(),
 %%   <<"EncodingType">> => list(any()),
 %%   <<"IsTruncated">> => boolean(),
@@ -2445,7 +2445,7 @@
 %% Example:
 %% analytics_and_operator() :: #{
 %%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type analytics_and_operator() :: #{binary() => any()}.
 
@@ -2509,10 +2509,10 @@
 
 %% Example:
 %% c_o_r_s_rule() :: #{
-%%   <<"AllowedHeaders">> => list(string()()),
-%%   <<"AllowedMethods">> => list(string()()),
-%%   <<"AllowedOrigins">> => list(string()()),
-%%   <<"ExposeHeaders">> => list(string()()),
+%%   <<"AllowedHeaders">> => list(string()),
+%%   <<"AllowedMethods">> => list(string()),
+%%   <<"AllowedOrigins">> => list(string()),
+%%   <<"ExposeHeaders">> => list(string()),
 %%   <<"ID">> => string(),
 %%   <<"MaxAgeSeconds">> => integer()
 %% }
@@ -2757,7 +2757,7 @@
 
 %% Example:
 %% access_control_policy() :: #{
-%%   <<"Grants">> => list(grant()()),
+%%   <<"Grants">> => list(grant()),
 %%   <<"Owner">> => owner()
 %% }
 -type access_control_policy() :: #{binary() => any()}.
@@ -2850,7 +2850,7 @@
 %% Example:
 %% list_multipart_uploads_output() :: #{
 %%   <<"Bucket">> => string(),
-%%   <<"CommonPrefixes">> => list(common_prefix()()),
+%%   <<"CommonPrefixes">> => list(common_prefix()),
 %%   <<"Delimiter">> => string(),
 %%   <<"EncodingType">> => list(any()),
 %%   <<"IsTruncated">> => boolean(),
@@ -2861,7 +2861,7 @@
 %%   <<"Prefix">> => string(),
 %%   <<"RequestCharged">> => list(any()),
 %%   <<"UploadIdMarker">> => string(),
-%%   <<"Uploads">> => list(multipart_upload()())
+%%   <<"Uploads">> => list(multipart_upload())
 %% }
 -type list_multipart_uploads_output() :: #{binary() => any()}.
 
@@ -2900,7 +2900,7 @@
 
 %% Example:
 %% completed_multipart_upload() :: #{
-%%   <<"Parts">> => list(completed_part()())
+%%   <<"Parts">> => list(completed_part())
 %% }
 -type completed_multipart_upload() :: #{binary() => any()}.
 
@@ -2919,7 +2919,7 @@
 %%   <<"NextPartNumberMarker">> => string(),
 %%   <<"Owner">> => owner(),
 %%   <<"PartNumberMarker">> => string(),
-%%   <<"Parts">> => list(part()()),
+%%   <<"Parts">> => list(part()),
 %%   <<"RequestCharged">> => list(any()),
 %%   <<"StorageClass">> => list(any()),
 %%   <<"UploadId">> => string()
@@ -2952,7 +2952,7 @@
 %% Example:
 %% replication_rule_and_operator() :: #{
 %%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type replication_rule_and_operator() :: #{binary() => any()}.
 
@@ -3086,7 +3086,7 @@
 
 %% Example:
 %% list_directory_buckets_output() :: #{
-%%   <<"Buckets">> => list(bucket()()),
+%%   <<"Buckets">> => list(bucket()),
 %%   <<"ContinuationToken">> => string()
 %% }
 -type list_directory_buckets_output() :: #{binary() => any()}.
@@ -3150,7 +3150,7 @@
 %% metrics_and_operator() :: #{
 %%   <<"AccessPointArn">> => string(),
 %%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type metrics_and_operator() :: #{binary() => any()}.
 
@@ -3160,7 +3160,7 @@
 %%   <<"ErrorDocument">> => error_document(),
 %%   <<"IndexDocument">> => index_document(),
 %%   <<"RedirectAllRequestsTo">> => redirect_all_requests_to(),
-%%   <<"RoutingRules">> => list(routing_rule()())
+%%   <<"RoutingRules">> => list(routing_rule())
 %% }
 -type get_bucket_website_output() :: #{binary() => any()}.
 
@@ -3174,7 +3174,7 @@
 
 %% Example:
 %% bucket_lifecycle_configuration() :: #{
-%%   <<"Rules">> => list(lifecycle_rule()())
+%%   <<"Rules">> => list(lifecycle_rule())
 %% }
 -type bucket_lifecycle_configuration() :: #{binary() => any()}.
 
@@ -3367,7 +3367,7 @@
 %%   <<"ObjectSizeGreaterThan">> => float(),
 %%   <<"ObjectSizeLessThan">> => float(),
 %%   <<"Prefix">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type lifecycle_rule_and_operator() :: #{binary() => any()}.
 

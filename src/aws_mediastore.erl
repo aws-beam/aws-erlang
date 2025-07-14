@@ -121,7 +121,7 @@
 
 %% Example:
 %% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -140,7 +140,7 @@
 %% Example:
 %% put_cors_policy_input() :: #{
 %%   <<"ContainerName">> := string(),
-%%   <<"CorsPolicy">> := list(cors_rule()())
+%%   <<"CorsPolicy">> := list(cors_rule())
 %% }
 -type put_cors_policy_input() :: #{binary() => any()}.
 
@@ -152,7 +152,7 @@
 
 %% Example:
 %% get_cors_policy_output() :: #{
-%%   <<"CorsPolicy">> => list(cors_rule()())
+%%   <<"CorsPolicy">> => list(cors_rule())
 %% }
 -type get_cors_policy_output() :: #{binary() => any()}.
 
@@ -208,7 +208,7 @@
 
 %% Example:
 %% list_containers_output() :: #{
-%%   <<"Containers">> => list(container()()),
+%%   <<"Containers">> => list(container()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_containers_output() :: #{binary() => any()}.
@@ -222,7 +222,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"Resource">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -253,10 +253,10 @@
 
 %% Example:
 %% cors_rule() :: #{
-%%   <<"AllowedHeaders">> => list(string()()),
+%%   <<"AllowedHeaders">> => list(string()),
 %%   <<"AllowedMethods">> => list(list(any())()),
-%%   <<"AllowedOrigins">> => list(string()()),
-%%   <<"ExposeHeaders">> => list(string()()),
+%%   <<"AllowedOrigins">> => list(string()),
+%%   <<"ExposeHeaders">> => list(string()),
 %%   <<"MaxAgeSeconds">> => integer()
 %% }
 -type cors_rule() :: #{binary() => any()}.
@@ -307,7 +307,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"Resource">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -320,7 +320,7 @@
 %% Example:
 %% metric_policy() :: #{
 %%   <<"ContainerLevelMetrics">> => list(any()),
-%%   <<"MetricPolicyRules">> => list(metric_policy_rule()())
+%%   <<"MetricPolicyRules">> => list(metric_policy_rule())
 %% }
 -type metric_policy() :: #{binary() => any()}.
 
@@ -388,7 +388,7 @@
 %% Example:
 %% create_container_input() :: #{
 %%   <<"ContainerName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_container_input() :: #{binary() => any()}.
 

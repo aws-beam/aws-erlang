@@ -139,14 +139,14 @@
 %% Example:
 %% batch_meter_usage_request() :: #{
 %%   <<"ProductCode">> := string(),
-%%   <<"UsageRecords">> := list(usage_record()())
+%%   <<"UsageRecords">> := list(usage_record())
 %% }
 -type batch_meter_usage_request() :: #{binary() => any()}.
 
 %% Example:
 %% batch_meter_usage_result() :: #{
-%%   <<"Results">> => list(usage_record_result()()),
-%%   <<"UnprocessedRecords">> => list(usage_record()())
+%%   <<"Results">> => list(usage_record_result()),
+%%   <<"UnprocessedRecords">> => list(usage_record())
 %% }
 -type batch_meter_usage_result() :: #{binary() => any()}.
 
@@ -239,7 +239,7 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"ProductCode">> := string(),
 %%   <<"Timestamp">> := non_neg_integer(),
-%%   <<"UsageAllocations">> => list(usage_allocation()()),
+%%   <<"UsageAllocations">> => list(usage_allocation()),
 %%   <<"UsageDimension">> := string(),
 %%   <<"UsageQuantity">> => integer()
 %% }
@@ -308,7 +308,7 @@
 %% Example:
 %% usage_allocation() :: #{
 %%   <<"AllocatedUsageQuantity">> => integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type usage_allocation() :: #{binary() => any()}.
 
@@ -319,7 +319,7 @@
 %%   <<"Dimension">> => string(),
 %%   <<"Quantity">> => integer(),
 %%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"UsageAllocations">> => list(usage_allocation()())
+%%   <<"UsageAllocations">> => list(usage_allocation())
 %% }
 -type usage_record() :: #{binary() => any()}.
 

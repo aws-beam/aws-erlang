@@ -79,7 +79,7 @@
 
 %% Example:
 %% set_status_input() :: #{
-%%   <<"objectIds">> := list(string()()),
+%%   <<"objectIds">> := list(string()),
 %%   <<"pipelineId">> := string(),
 %%   <<"status">> := string()
 %% }
@@ -117,14 +117,14 @@
 %% Example:
 %% validate_pipeline_definition_output() :: #{
 %%   <<"errored">> => boolean(),
-%%   <<"validationErrors">> => list(validation_error()()),
-%%   <<"validationWarnings">> => list(validation_warning()())
+%%   <<"validationErrors">> => list(validation_error()),
+%%   <<"validationWarnings">> => list(validation_warning())
 %% }
 -type validate_pipeline_definition_output() :: #{binary() => any()}.
 
 %% Example:
 %% pipeline_object() :: #{
-%%   <<"fields">> => list(field()()),
+%%   <<"fields">> => list(field()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
@@ -140,10 +140,10 @@
 
 %% Example:
 %% validate_pipeline_definition_input() :: #{
-%%   <<"parameterObjects">> => list(parameter_object()()),
-%%   <<"parameterValues">> => list(parameter_value()()),
+%%   <<"parameterObjects">> => list(parameter_object()),
+%%   <<"parameterValues">> => list(parameter_value()),
 %%   <<"pipelineId">> := string(),
-%%   <<"pipelineObjects">> := list(pipeline_object()())
+%%   <<"pipelineObjects">> := list(pipeline_object())
 %% }
 -type validate_pipeline_definition_input() :: #{binary() => any()}.
 
@@ -187,21 +187,21 @@
 %% Example:
 %% add_tags_input() :: #{
 %%   <<"pipelineId">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type add_tags_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_pipeline_definition_output() :: #{
-%%   <<"parameterObjects">> => list(parameter_object()()),
-%%   <<"parameterValues">> => list(parameter_value()()),
-%%   <<"pipelineObjects">> => list(pipeline_object()())
+%%   <<"parameterObjects">> => list(parameter_object()),
+%%   <<"parameterValues">> => list(parameter_value()),
+%%   <<"pipelineObjects">> => list(pipeline_object())
 %% }
 -type get_pipeline_definition_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_pipelines_input() :: #{
-%%   <<"pipelineIds">> := list(string()())
+%%   <<"pipelineIds">> := list(string())
 %% }
 -type describe_pipelines_input() :: #{binary() => any()}.
 
@@ -214,7 +214,7 @@
 %% Example:
 %% operator() :: #{
 %%   <<"type">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type operator() :: #{binary() => any()}.
 
@@ -235,7 +235,7 @@
 %% create_pipeline_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"uniqueId">> := string()
 %% }
 -type create_pipeline_input() :: #{binary() => any()}.
@@ -273,7 +273,7 @@
 
 %% Example:
 %% describe_pipelines_output() :: #{
-%%   <<"pipelineDescriptionList">> => list(pipeline_description()())
+%%   <<"pipelineDescriptionList">> => list(pipeline_description())
 %% }
 -type describe_pipelines_output() :: #{binary() => any()}.
 
@@ -287,7 +287,7 @@
 
 %% Example:
 %% validation_error() :: #{
-%%   <<"errors">> => list(string()()),
+%%   <<"errors">> => list(string()),
 %%   <<"id">> => string()
 %% }
 -type validation_error() :: #{binary() => any()}.
@@ -319,7 +319,7 @@
 %% describe_objects_output() :: #{
 %%   <<"hasMoreResults">> => boolean(),
 %%   <<"marker">> => string(),
-%%   <<"pipelineObjects">> => list(pipeline_object()())
+%%   <<"pipelineObjects">> => list(pipeline_object())
 %% }
 -type describe_objects_output() :: #{binary() => any()}.
 
@@ -333,7 +333,7 @@
 %% Example:
 %% query_objects_output() :: #{
 %%   <<"hasMoreResults">> => boolean(),
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"marker">> => string()
 %% }
 -type query_objects_output() :: #{binary() => any()}.
@@ -341,17 +341,17 @@
 %% Example:
 %% validation_warning() :: #{
 %%   <<"id">> => string(),
-%%   <<"warnings">> => list(string()())
+%%   <<"warnings">> => list(string())
 %% }
 -type validation_warning() :: #{binary() => any()}.
 
 %% Example:
 %% pipeline_description() :: #{
 %%   <<"description">> => string(),
-%%   <<"fields">> => list(field()()),
+%%   <<"fields">> => list(field()),
 %%   <<"name">> => string(),
 %%   <<"pipelineId">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type pipeline_description() :: #{binary() => any()}.
 
@@ -375,7 +375,7 @@
 
 %% Example:
 %% activate_pipeline_input() :: #{
-%%   <<"parameterValues">> => list(parameter_value()()),
+%%   <<"parameterValues">> => list(parameter_value()),
 %%   <<"pipelineId">> := string(),
 %%   <<"startTimestamp">> => non_neg_integer()
 %% }
@@ -391,7 +391,7 @@
 %% list_pipelines_output() :: #{
 %%   <<"hasMoreResults">> => boolean(),
 %%   <<"marker">> => string(),
-%%   <<"pipelineIdList">> => list(pipeline_id_name()())
+%%   <<"pipelineIdList">> => list(pipeline_id_name())
 %% }
 -type list_pipelines_output() :: #{binary() => any()}.
 
@@ -404,30 +404,30 @@
 %% Example:
 %% put_pipeline_definition_output() :: #{
 %%   <<"errored">> => boolean(),
-%%   <<"validationErrors">> => list(validation_error()()),
-%%   <<"validationWarnings">> => list(validation_warning()())
+%%   <<"validationErrors">> => list(validation_error()),
+%%   <<"validationWarnings">> => list(validation_warning())
 %% }
 -type put_pipeline_definition_output() :: #{binary() => any()}.
 
 %% Example:
 %% put_pipeline_definition_input() :: #{
-%%   <<"parameterObjects">> => list(parameter_object()()),
-%%   <<"parameterValues">> => list(parameter_value()()),
+%%   <<"parameterObjects">> => list(parameter_object()),
+%%   <<"parameterValues">> => list(parameter_value()),
 %%   <<"pipelineId">> := string(),
-%%   <<"pipelineObjects">> := list(pipeline_object()())
+%%   <<"pipelineObjects">> := list(pipeline_object())
 %% }
 -type put_pipeline_definition_input() :: #{binary() => any()}.
 
 %% Example:
 %% query() :: #{
-%%   <<"selectors">> => list(selector()())
+%%   <<"selectors">> => list(selector())
 %% }
 -type query() :: #{binary() => any()}.
 
 %% Example:
 %% remove_tags_input() :: #{
 %%   <<"pipelineId">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type remove_tags_input() :: #{binary() => any()}.
 
@@ -435,14 +435,14 @@
 %% describe_objects_input() :: #{
 %%   <<"evaluateExpressions">> => boolean(),
 %%   <<"marker">> => string(),
-%%   <<"objectIds">> := list(string()()),
+%%   <<"objectIds">> := list(string()),
 %%   <<"pipelineId">> := string()
 %% }
 -type describe_objects_input() :: #{binary() => any()}.
 
 %% Example:
 %% report_task_progress_input() :: #{
-%%   <<"fields">> => list(field()()),
+%%   <<"fields">> => list(field()),
 %%   <<"taskId">> := string()
 %% }
 -type report_task_progress_input() :: #{binary() => any()}.
@@ -469,7 +469,7 @@
 
 %% Example:
 %% parameter_object() :: #{
-%%   <<"attributes">> => list(parameter_attribute()()),
+%%   <<"attributes">> => list(parameter_attribute()),
 %%   <<"id">> => string()
 %% }
 -type parameter_object() :: #{binary() => any()}.

@@ -163,7 +163,7 @@
 
 %% Example:
 %% remove_tags_from_vault_input() :: #{
-%%   <<"TagKeys">> => list(string()())
+%%   <<"TagKeys">> => list(string())
 %% }
 -type remove_tags_from_vault_input() :: #{binary() => any()}.
 
@@ -231,7 +231,7 @@
 
 %% Example:
 %% list_provisioned_capacity_output() :: #{
-%%   <<"ProvisionedCapacityList">> => list(provisioned_capacity_description()())
+%%   <<"ProvisionedCapacityList">> => list(provisioned_capacity_description())
 %% }
 -type list_provisioned_capacity_output() :: #{binary() => any()}.
 
@@ -352,7 +352,7 @@
 
 %% Example:
 %% data_retrieval_policy() :: #{
-%%   <<"Rules">> => list(data_retrieval_rule()())
+%%   <<"Rules">> => list(data_retrieval_rule())
 %% }
 -type data_retrieval_policy() :: #{binary() => any()}.
 
@@ -498,7 +498,7 @@
 
 %% Example:
 %% s3_location() :: #{
-%%   <<"AccessControlList">> => list(grant()()),
+%%   <<"AccessControlList">> => list(grant()),
 %%   <<"BucketName">> => string(),
 %%   <<"CannedACL">> => list(any()),
 %%   <<"Encryption">> => encryption(),
@@ -528,7 +528,7 @@
 %% Example:
 %% list_vaults_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"VaultList">> => list(describe_vault_output()())
+%%   <<"VaultList">> => list(describe_vault_output())
 %% }
 -type list_vaults_output() :: #{binary() => any()}.
 
@@ -555,7 +555,7 @@
 
 %% Example:
 %% list_jobs_output() :: #{
-%%   <<"JobList">> => list(glacier_job_description()()),
+%%   <<"JobList">> => list(glacier_job_description()),
 %%   <<"Marker">> => string()
 %% }
 -type list_jobs_output() :: #{binary() => any()}.
@@ -592,7 +592,7 @@
 
 %% Example:
 %% vault_notification_config() :: #{
-%%   <<"Events">> => list(string()()),
+%%   <<"Events">> => list(string()),
 %%   <<"SNSTopic">> => string()
 %% }
 -type vault_notification_config() :: #{binary() => any()}.
@@ -638,7 +638,7 @@
 %% Example:
 %% list_multipart_uploads_output() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"UploadsList">> => list(upload_list_element()())
+%%   <<"UploadsList">> => list(upload_list_element())
 %% }
 -type list_multipart_uploads_output() :: #{binary() => any()}.
 
@@ -665,7 +665,7 @@
 %%   <<"Marker">> => string(),
 %%   <<"MultipartUploadId">> => string(),
 %%   <<"PartSizeInBytes">> => float(),
-%%   <<"Parts">> => list(part_list_element()()),
+%%   <<"Parts">> => list(part_list_element()),
 %%   <<"VaultARN">> => string()
 %% }
 -type list_parts_output() :: #{binary() => any()}.

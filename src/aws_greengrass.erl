@@ -248,7 +248,7 @@
 %% Example:
 %% function_definition_version() :: #{
 %%   <<"DefaultConfig">> => function_default_config(),
-%%   <<"Functions">> => list(greengrass_function()())
+%%   <<"Functions">> => list(function())
 %% }
 -type function_definition_version() :: #{binary() => any()}.
 
@@ -276,7 +276,7 @@
 %% Example:
 %% create_resource_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
-%%   <<"Resources">> => list(resource()())
+%%   <<"Resources">> => list(resource())
 %% }
 -type create_resource_definition_version_request() :: #{binary() => any()}.
 
@@ -362,7 +362,7 @@
 %% Example:
 %% list_logger_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information()())
+%%   <<"Versions">> => list(version_information())
 %% }
 -type list_logger_definition_versions_response() :: #{binary() => any()}.
 
@@ -402,7 +402,7 @@
 %% Example:
 %% secrets_manager_secret_resource_data() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"AdditionalStagingLabelsToDownload">> => list(string()())
+%%   <<"AdditionalStagingLabelsToDownload">> => list(string())
 %% }
 -type secrets_manager_secret_resource_data() :: #{binary() => any()}.
 
@@ -432,7 +432,7 @@
 
 %% Example:
 %% list_logger_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()()),
+%%   <<"Definitions">> => list(definition_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_logger_definitions_response() :: #{binary() => any()}.
@@ -499,7 +499,7 @@
 
 %% Example:
 %% list_deployments_response() :: #{
-%%   <<"Deployments">> => list(deployment()()),
+%%   <<"Deployments">> => list(deployment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_deployments_response() :: #{binary() => any()}.
@@ -518,7 +518,7 @@
 
 %% Example:
 %% list_connector_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()()),
+%%   <<"Definitions">> => list(definition_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connector_definitions_response() :: #{binary() => any()}.
@@ -528,7 +528,7 @@
 %% create_function_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
 %%   <<"DefaultConfig">> => function_default_config(),
-%%   <<"Functions">> => list(greengrass_function()())
+%%   <<"Functions">> => list(function())
 %% }
 -type create_function_definition_version_request() :: #{binary() => any()}.
 
@@ -549,7 +549,7 @@
 
 %% Example:
 %% resource_definition_version() :: #{
-%%   <<"Resources">> => list(resource()())
+%%   <<"Resources">> => list(resource())
 %% }
 -type resource_definition_version() :: #{binary() => any()}.
 
@@ -633,7 +633,7 @@
 %% Example:
 %% create_device_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
-%%   <<"Devices">> => list(device()())
+%%   <<"Devices">> => list(device())
 %% }
 -type create_device_definition_version_request() :: #{binary() => any()}.
 
@@ -659,7 +659,7 @@
 
 %% Example:
 %% list_bulk_deployments_response() :: #{
-%%   <<"BulkDeployments">> => list(bulk_deployment()()),
+%%   <<"BulkDeployments">> => list(bulk_deployment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_bulk_deployments_response() :: #{binary() => any()}.
@@ -677,7 +677,7 @@
 
 %% Example:
 %% list_resource_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()()),
+%%   <<"Definitions">> => list(definition_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_resource_definitions_response() :: #{binary() => any()}.
@@ -685,7 +685,7 @@
 
 %% Example:
 %% subscription_definition_version() :: #{
-%%   <<"Subscriptions">> => list(subscription()())
+%%   <<"Subscriptions">> => list(subscription())
 %% }
 -type subscription_definition_version() :: #{binary() => any()}.
 
@@ -734,14 +734,14 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% connector_definition_version() :: #{
-%%   <<"Connectors">> => list(connector()())
+%%   <<"Connectors">> => list(connector())
 %% }
 -type connector_definition_version() :: #{binary() => any()}.
 
@@ -750,7 +750,7 @@
 %% function_configuration_environment() :: #{
 %%   <<"AccessSysfs">> => boolean(),
 %%   <<"Execution">> => function_execution_config(),
-%%   <<"ResourceAccessPolicies">> => list(resource_access_policy()()),
+%%   <<"ResourceAccessPolicies">> => list(resource_access_policy()),
 %%   <<"Variables">> => map()
 %% }
 -type function_configuration_environment() :: #{binary() => any()}.
@@ -798,7 +798,7 @@
 
 %% Example:
 %% core_definition_version() :: #{
-%%   <<"Cores">> => list(core()())
+%%   <<"Cores">> => list(core())
 %% }
 -type core_definition_version() :: #{binary() => any()}.
 
@@ -817,7 +817,7 @@
 
 %% Example:
 %% update_connectivity_info_request() :: #{
-%%   <<"ConnectivityInfo">> => list(connectivity_info()())
+%%   <<"ConnectivityInfo">> => list(connectivity_info())
 %% }
 -type update_connectivity_info_request() :: #{binary() => any()}.
 
@@ -895,7 +895,7 @@
 %% Example:
 %% list_core_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information()())
+%%   <<"Versions">> => list(version_information())
 %% }
 -type list_core_definition_versions_response() :: #{binary() => any()}.
 
@@ -912,7 +912,7 @@
 
 %% Example:
 %% list_bulk_deployment_detailed_reports_response() :: #{
-%%   <<"Deployments">> => list(bulk_deployment_result()()),
+%%   <<"Deployments">> => list(bulk_deployment_result()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_bulk_deployment_detailed_reports_response() :: #{binary() => any()}.
@@ -930,7 +930,7 @@
 
 %% Example:
 %% get_connectivity_info_response() :: #{
-%%   <<"ConnectivityInfo">> => list(connectivity_info()()),
+%%   <<"ConnectivityInfo">> => list(connectivity_info()),
 %%   <<"Message">> => string()
 %% }
 -type get_connectivity_info_response() :: #{binary() => any()}.
@@ -951,14 +951,14 @@
 
 %% Example:
 %% device_definition_version() :: #{
-%%   <<"Devices">> => list(device()())
+%%   <<"Devices">> => list(device())
 %% }
 -type device_definition_version() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_function_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()()),
+%%   <<"Definitions">> => list(definition_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_function_definitions_response() :: #{binary() => any()}.
@@ -971,7 +971,7 @@
 %% Example:
 %% list_group_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information()())
+%%   <<"Versions">> => list(version_information())
 %% }
 -type list_group_versions_response() :: #{binary() => any()}.
 
@@ -989,7 +989,7 @@
 %% Example:
 %% list_subscription_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information()())
+%%   <<"Versions">> => list(version_information())
 %% }
 -type list_subscription_definition_versions_response() :: #{binary() => any()}.
 
@@ -1061,7 +1061,7 @@
 
 %% Example:
 %% list_group_certificate_authorities_response() :: #{
-%%   <<"GroupCertificateAuthorities">> => list(group_certificate_authority_properties()())
+%%   <<"GroupCertificateAuthorities">> => list(group_certificate_authority_properties())
 %% }
 -type list_group_certificate_authorities_response() :: #{binary() => any()}.
 
@@ -1096,7 +1096,7 @@
 %% Example:
 %% list_resource_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information()())
+%%   <<"Versions">> => list(version_information())
 %% }
 -type list_resource_definition_versions_response() :: #{binary() => any()}.
 
@@ -1105,7 +1105,7 @@
 %% get_deployment_status_response() :: #{
 %%   <<"DeploymentStatus">> => string(),
 %%   <<"DeploymentType">> => list(any()),
-%%   <<"ErrorDetails">> => list(error_detail()()),
+%%   <<"ErrorDetails">> => list(error_detail()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"UpdatedAt">> => string()
 %% }
@@ -1147,7 +1147,7 @@
 %% Example:
 %% create_logger_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
-%%   <<"Loggers">> => list(logger()())
+%%   <<"Loggers">> => list(logger())
 %% }
 -type create_logger_definition_version_request() :: #{binary() => any()}.
 
@@ -1291,7 +1291,7 @@
 
 %% Example:
 %% list_device_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()()),
+%%   <<"Definitions">> => list(definition_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_device_definitions_response() :: #{binary() => any()}.
@@ -1300,7 +1300,7 @@
 %% Example:
 %% list_device_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information()())
+%%   <<"Versions">> => list(version_information())
 %% }
 -type list_device_definition_versions_response() :: #{binary() => any()}.
 
@@ -1395,7 +1395,7 @@
 
 %% Example:
 %% logger_definition_version() :: #{
-%%   <<"Loggers">> => list(logger()())
+%%   <<"Loggers">> => list(logger())
 %% }
 -type logger_definition_version() :: #{binary() => any()}.
 
@@ -1457,7 +1457,7 @@
 %% Example:
 %% create_core_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
-%%   <<"Cores">> => list(core()())
+%%   <<"Cores">> => list(core())
 %% }
 -type create_core_definition_version_request() :: #{binary() => any()}.
 
@@ -1469,7 +1469,7 @@
 %% Example:
 %% create_subscription_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
-%%   <<"Subscriptions">> => list(subscription()())
+%%   <<"Subscriptions">> => list(subscription())
 %% }
 -type create_subscription_definition_version_request() :: #{binary() => any()}.
 
@@ -1477,7 +1477,7 @@
 %% Example:
 %% list_connector_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information()())
+%%   <<"Versions">> => list(version_information())
 %% }
 -type list_connector_definition_versions_response() :: #{binary() => any()}.
 
@@ -1558,7 +1558,7 @@
 
 %% Example:
 %% internal_server_error_exception() :: #{
-%%   <<"ErrorDetails">> => list(error_detail()()),
+%%   <<"ErrorDetails">> => list(error_detail()),
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
@@ -1676,7 +1676,7 @@
 %%   <<"DeploymentId">> => string(),
 %%   <<"DeploymentStatus">> => string(),
 %%   <<"DeploymentType">> => list(any()),
-%%   <<"ErrorDetails">> => list(error_detail()()),
+%%   <<"ErrorDetails">> => list(error_detail()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"GroupArn">> => string()
 %% }
@@ -1698,7 +1698,7 @@
 
 %% Example:
 %% list_core_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()()),
+%%   <<"Definitions">> => list(definition_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_core_definitions_response() :: #{binary() => any()}.
@@ -1722,7 +1722,7 @@
 
 %% Example:
 %% bad_request_exception() :: #{
-%%   <<"ErrorDetails">> => list(error_detail()()),
+%%   <<"ErrorDetails">> => list(error_detail()),
 %%   <<"Message">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
@@ -1734,7 +1734,7 @@
 
 %% Example:
 %% list_subscription_definitions_response() :: #{
-%%   <<"Definitions">> => list(definition_information()()),
+%%   <<"Definitions">> => list(definition_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_subscription_definitions_response() :: #{binary() => any()}.
@@ -1814,7 +1814,7 @@
 %%   <<"S3UrlSignerRole">> := string(),
 %%   <<"SoftwareToUpdate">> := list(any()),
 %%   <<"UpdateAgentLogLevel">> => list(any()),
-%%   <<"UpdateTargets">> := list(string()()),
+%%   <<"UpdateTargets">> := list(string()),
 %%   <<"UpdateTargetsArchitecture">> := list(any()),
 %%   <<"UpdateTargetsOperatingSystem">> := list(any())
 %% }
@@ -1824,14 +1824,14 @@
 %% Example:
 %% create_connector_definition_version_request() :: #{
 %%   <<"AmznClientToken">> => string(),
-%%   <<"Connectors">> => list(connector()())
+%%   <<"Connectors">> => list(connector())
 %% }
 -type create_connector_definition_version_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_groups_response() :: #{
-%%   <<"Groups">> => list(group_information()()),
+%%   <<"Groups">> => list(group_information()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_response() :: #{binary() => any()}.
@@ -1900,7 +1900,7 @@
 %% Example:
 %% list_function_definition_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Versions">> => list(version_information()())
+%%   <<"Versions">> => list(version_information())
 %% }
 -type list_function_definition_versions_response() :: #{binary() => any()}.
 
@@ -1924,7 +1924,7 @@
 %%   <<"BulkDeploymentMetrics">> => bulk_deployment_metrics(),
 %%   <<"BulkDeploymentStatus">> => list(any()),
 %%   <<"CreatedAt">> => string(),
-%%   <<"ErrorDetails">> => list(error_detail()()),
+%%   <<"ErrorDetails">> => list(error_detail()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"tags">> => map()
 %% }

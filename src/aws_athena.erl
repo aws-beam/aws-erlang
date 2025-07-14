@@ -174,10 +174,10 @@
 
 %% Example:
 %% query_stage_plan_node() :: #{
-%%   <<"Children">> => list(query_stage_plan_node()()),
+%%   <<"Children">> => list(query_stage_plan_node()),
 %%   <<"Identifier">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"RemoteSources">> => list(string()())
+%%   <<"RemoteSources">> => list(string())
 %% }
 -type query_stage_plan_node() :: #{binary() => any()}.
 
@@ -272,7 +272,7 @@
 
 %% Example:
 %% result_set_metadata() :: #{
-%%   <<"ColumnInfo">> => list(column_info()())
+%%   <<"ColumnInfo">> => list(column_info())
 %% }
 -type result_set_metadata() :: #{binary() => any()}.
 
@@ -346,7 +346,7 @@
 %% Example:
 %% list_notebook_metadata_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NotebookMetadataList">> => list(notebook_metadata()())
+%%   <<"NotebookMetadataList">> => list(notebook_metadata())
 %% }
 -type list_notebook_metadata_output() :: #{binary() => any()}.
 
@@ -486,7 +486,7 @@
 
 %% Example:
 %% list_application_d_p_u_sizes_output() :: #{
-%%   <<"ApplicationDPUSizes">> => list(application_d_p_u_sizes()()),
+%%   <<"ApplicationDPUSizes">> => list(application_d_p_u_sizes()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_d_p_u_sizes_output() :: #{binary() => any()}.
@@ -528,7 +528,7 @@
 
 %% Example:
 %% put_capacity_assignment_configuration_input() :: #{
-%%   <<"CapacityAssignments">> := list(capacity_assignment()()),
+%%   <<"CapacityAssignments">> := list(capacity_assignment()),
 %%   <<"CapacityReservationName">> := string()
 %% }
 -type put_capacity_assignment_configuration_input() :: #{binary() => any()}.
@@ -563,7 +563,7 @@
 
 %% Example:
 %% list_capacity_reservations_output() :: #{
-%%   <<"CapacityReservations">> => list(capacity_reservation()()),
+%%   <<"CapacityReservations">> => list(capacity_reservation()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_capacity_reservations_output() :: #{binary() => any()}.
@@ -589,14 +589,14 @@
 
 %% Example:
 %% capacity_assignment_configuration() :: #{
-%%   <<"CapacityAssignments">> => list(capacity_assignment()()),
+%%   <<"CapacityAssignments">> => list(capacity_assignment()),
 %%   <<"CapacityReservationName">> => string()
 %% }
 -type capacity_assignment_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_named_query_input() :: #{
-%%   <<"NamedQueryIds">> := list(string()())
+%%   <<"NamedQueryIds">> := list(string())
 %% }
 -type batch_get_named_query_input() :: #{binary() => any()}.
 
@@ -617,7 +617,7 @@
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -696,7 +696,7 @@
 
 %% Example:
 %% batch_get_prepared_statement_input() :: #{
-%%   <<"PreparedStatementNames">> := list(string()()),
+%%   <<"PreparedStatementNames">> := list(string()),
 %%   <<"WorkGroup">> := string()
 %% }
 -type batch_get_prepared_statement_input() :: #{binary() => any()}.
@@ -727,7 +727,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Parameters">> => map(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> := list(any())
 %% }
 -type create_data_catalog_input() :: #{binary() => any()}.
@@ -789,12 +789,12 @@
 
 %% Example:
 %% table_metadata() :: #{
-%%   <<"Columns">> => list(column()()),
+%%   <<"Columns">> => list(column()),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"LastAccessTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Parameters">> => map(),
-%%   <<"PartitionKeys">> => list(column()()),
+%%   <<"PartitionKeys">> => list(column()),
 %%   <<"TableType">> => string()
 %% }
 -type table_metadata() :: #{binary() => any()}.
@@ -802,7 +802,7 @@
 %% Example:
 %% list_sessions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(session_summary()())
+%%   <<"Sessions">> => list(session_summary())
 %% }
 -type list_sessions_response() :: #{binary() => any()}.
 
@@ -845,14 +845,14 @@
 %% Example:
 %% list_table_metadata_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TableMetadataList">> => list(table_metadata()())
+%%   <<"TableMetadataList">> => list(table_metadata())
 %% }
 -type list_table_metadata_output() :: #{binary() => any()}.
 
 %% Example:
 %% application_d_p_u_sizes() :: #{
 %%   <<"ApplicationRuntimeId">> => string(),
-%%   <<"SupportedDPUSizes">> => list(integer()())
+%%   <<"SupportedDPUSizes">> => list(integer())
 %% }
 -type application_d_p_u_sizes() :: #{binary() => any()}.
 
@@ -879,7 +879,7 @@
 
 %% Example:
 %% capacity_assignment() :: #{
-%%   <<"WorkGroupNames">> => list(string()())
+%%   <<"WorkGroupNames">> => list(string())
 %% }
 -type capacity_assignment() :: #{binary() => any()}.
 
@@ -894,7 +894,7 @@
 
 %% Example:
 %% row() :: #{
-%%   <<"Data">> => list(datum()())
+%%   <<"Data">> => list(datum())
 %% }
 -type row() :: #{binary() => any()}.
 
@@ -906,7 +906,7 @@
 
 %% Example:
 %% list_databases_output() :: #{
-%%   <<"DatabaseList">> => list(database()()),
+%%   <<"DatabaseList">> => list(database()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_databases_output() :: #{binary() => any()}.
@@ -921,7 +921,7 @@
 %% Example:
 %% list_notebook_sessions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NotebookSessionsList">> => list(notebook_session_summary()())
+%%   <<"NotebookSessionsList">> => list(notebook_session_summary())
 %% }
 -type list_notebook_sessions_response() :: #{binary() => any()}.
 
@@ -935,13 +935,13 @@
 %%   <<"QueryStagePlan">> => query_stage_plan_node(),
 %%   <<"StageId">> => float(),
 %%   <<"State">> => string(),
-%%   <<"SubStages">> => list(query_stage()())
+%%   <<"SubStages">> => list(query_stage())
 %% }
 -type query_stage() :: #{binary() => any()}.
 
 %% Example:
 %% list_executors_response() :: #{
-%%   <<"ExecutorsSummary">> => list(executors_summary()()),
+%%   <<"ExecutorsSummary">> => list(executors_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"SessionId">> => string()
 %% }
@@ -969,7 +969,7 @@
 %% Example:
 %% query_execution() :: #{
 %%   <<"EngineVersion">> => engine_version(),
-%%   <<"ExecutionParameters">> => list(string()()),
+%%   <<"ExecutionParameters">> => list(string()),
 %%   <<"ManagedQueryResultsConfiguration">> => managed_query_results_configuration(),
 %%   <<"Query">> => string(),
 %%   <<"QueryExecutionContext">> => query_execution_context(),
@@ -994,7 +994,7 @@
 %% Example:
 %% create_capacity_reservation_input() :: #{
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetDpus">> := integer()
 %% }
 -type create_capacity_reservation_input() :: #{binary() => any()}.
@@ -1017,8 +1017,8 @@
 
 %% Example:
 %% batch_get_named_query_output() :: #{
-%%   <<"NamedQueries">> => list(named_query()()),
-%%   <<"UnprocessedNamedQueryIds">> => list(unprocessed_named_query_id()())
+%%   <<"NamedQueries">> => list(named_query()),
+%%   <<"UnprocessedNamedQueryIds">> => list(unprocessed_named_query_id())
 %% }
 -type batch_get_named_query_output() :: #{binary() => any()}.
 
@@ -1078,20 +1078,20 @@
 %%   <<"Configuration">> => work_group_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_work_group_input() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_query_execution_input() :: #{
-%%   <<"QueryExecutionIds">> := list(string()())
+%%   <<"QueryExecutionIds">> := list(string())
 %% }
 -type batch_get_query_execution_input() :: #{binary() => any()}.
 
@@ -1246,7 +1246,7 @@
 %% Example:
 %% start_query_execution_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"ExecutionParameters">> => list(string()()),
+%%   <<"ExecutionParameters">> => list(string()),
 %%   <<"QueryExecutionContext">> => query_execution_context(),
 %%   <<"QueryString">> := string(),
 %%   <<"ResultConfiguration">> => result_configuration(),
@@ -1326,7 +1326,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1372,7 +1372,7 @@
 
 %% Example:
 %% list_calculation_executions_response() :: #{
-%%   <<"Calculations">> => list(calculation_summary()()),
+%%   <<"Calculations">> => list(calculation_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_calculation_executions_response() :: #{binary() => any()}.
@@ -1380,7 +1380,7 @@
 %% Example:
 %% result_set() :: #{
 %%   <<"ResultSetMetadata">> => result_set_metadata(),
-%%   <<"Rows">> => list(row()())
+%%   <<"Rows">> => list(row())
 %% }
 -type result_set() :: #{binary() => any()}.
 
@@ -1452,14 +1452,14 @@
 %% Example:
 %% list_work_groups_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WorkGroups">> => list(work_group_summary()())
+%%   <<"WorkGroups">> => list(work_group_summary())
 %% }
 -type list_work_groups_output() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_prepared_statement_output() :: #{
-%%   <<"PreparedStatements">> => list(prepared_statement()()),
-%%   <<"UnprocessedPreparedStatementNames">> => list(unprocessed_prepared_statement_name()())
+%%   <<"PreparedStatements">> => list(prepared_statement()),
+%%   <<"UnprocessedPreparedStatementNames">> => list(unprocessed_prepared_statement_name())
 %% }
 -type batch_get_prepared_statement_output() :: #{binary() => any()}.
 
@@ -1476,7 +1476,7 @@
 
 %% Example:
 %% list_data_catalogs_output() :: #{
-%%   <<"DataCatalogsSummary">> => list(data_catalog_summary()()),
+%%   <<"DataCatalogsSummary">> => list(data_catalog_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_catalogs_output() :: #{binary() => any()}.
@@ -1555,7 +1555,7 @@
 %% Example:
 %% list_query_executions_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"QueryExecutionIds">> => list(string()())
+%%   <<"QueryExecutionIds">> => list(string())
 %% }
 -type list_query_executions_output() :: #{binary() => any()}.
 
@@ -1593,8 +1593,8 @@
 
 %% Example:
 %% batch_get_query_execution_output() :: #{
-%%   <<"QueryExecutions">> => list(query_execution()()),
-%%   <<"UnprocessedQueryExecutionIds">> => list(unprocessed_query_execution_id()())
+%%   <<"QueryExecutions">> => list(query_execution()),
+%%   <<"UnprocessedQueryExecutionIds">> => list(unprocessed_query_execution_id())
 %% }
 -type batch_get_query_execution_output() :: #{binary() => any()}.
 
@@ -1630,7 +1630,7 @@
 
 %% Example:
 %% list_engine_versions_output() :: #{
-%%   <<"EngineVersions">> => list(engine_version()()),
+%%   <<"EngineVersions">> => list(engine_version()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_engine_versions_output() :: #{binary() => any()}.
@@ -1666,7 +1666,7 @@
 
 %% Example:
 %% list_named_queries_output() :: #{
-%%   <<"NamedQueryIds">> => list(string()()),
+%%   <<"NamedQueryIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_named_queries_output() :: #{binary() => any()}.
@@ -1699,7 +1699,7 @@
 %% Example:
 %% list_prepared_statements_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PreparedStatements">> => list(prepared_statement_summary()())
+%%   <<"PreparedStatements">> => list(prepared_statement_summary())
 %% }
 -type list_prepared_statements_output() :: #{binary() => any()}.
 

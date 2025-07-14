@@ -390,7 +390,7 @@
 %%   <<"fallbackLocation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"propagatedSetLevelTags">> => list(string()()),
+%%   <<"propagatedSetLevelTags">> => list(string()),
 %%   <<"s3Access">> => sequence_store_s3_access(),
 %%   <<"sseConfig">> => sse_config(),
 %%   <<"status">> => string(),
@@ -433,7 +433,7 @@
 
 %% Example:
 %% get_run_request() :: #{
-%%   <<"export">> => list(string()())
+%%   <<"export">> => list(string())
 %% }
 -type get_run_request() :: #{binary() => any()}.
 
@@ -441,7 +441,7 @@
 %% Example:
 %% list_reference_stores_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"referenceStores">> => list(reference_store_detail()())
+%%   <<"referenceStores">> => list(reference_store_detail())
 %% }
 -type list_reference_stores_response() :: #{binary() => any()}.
 
@@ -474,7 +474,7 @@
 
 %% Example:
 %% list_runs_response() :: #{
-%%   <<"items">> => list(run_list_item()()),
+%%   <<"items">> => list(run_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_runs_response() :: #{binary() => any()}.
@@ -532,7 +532,7 @@
 
 %% Example:
 %% list_read_set_activation_jobs_response() :: #{
-%%   <<"activationJobs">> => list(activate_read_set_job_item()()),
+%%   <<"activationJobs">> => list(activate_read_set_job_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_read_set_activation_jobs_response() :: #{binary() => any()}.
@@ -549,7 +549,7 @@
 %% start_read_set_import_job_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"roleArn">> := string(),
-%%   <<"sources">> := list(start_read_set_import_job_source_item()())
+%%   <<"sources">> := list(start_read_set_import_job_source_item())
 %% }
 -type start_read_set_import_job_request() :: #{binary() => any()}.
 
@@ -615,7 +615,7 @@
 %% Example:
 %% list_annotation_stores_request() :: #{
 %%   <<"filter">> => list_annotation_stores_filter(),
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -661,7 +661,7 @@
 
 %% Example:
 %% batch_delete_read_set_response() :: #{
-%%   <<"errors">> => list(read_set_batch_error()())
+%%   <<"errors">> => list(read_set_batch_error())
 %% }
 -type batch_delete_read_set_response() :: #{binary() => any()}.
 
@@ -708,7 +708,7 @@
 %% Example:
 %% list_variant_import_jobs_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"variantImportJobs">> => list(variant_import_job_item()())
+%%   <<"variantImportJobs">> => list(variant_import_job_item())
 %% }
 -type list_variant_import_jobs_response() :: #{binary() => any()}.
 
@@ -755,7 +755,7 @@
 
 %% Example:
 %% delete_annotation_store_versions_response() :: #{
-%%   <<"errors">> => list(version_delete_error()())
+%%   <<"errors">> => list(version_delete_error())
 %% }
 -type delete_annotation_store_versions_response() :: #{binary() => any()}.
 
@@ -777,7 +777,7 @@
 
 %% Example:
 %% list_run_caches_response() :: #{
-%%   <<"items">> => list(run_cache_list_item()()),
+%%   <<"items">> => list(run_cache_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_run_caches_response() :: #{binary() => any()}.
@@ -844,7 +844,7 @@
 
 %% Example:
 %% list_annotation_stores_response() :: #{
-%%   <<"annotationStores">> => list(annotation_store_item()()),
+%%   <<"annotationStores">> => list(annotation_store_item()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_annotation_stores_response() :: #{binary() => any()}.
@@ -888,7 +888,7 @@
 
 %% Example:
 %% list_annotation_store_versions_response() :: #{
-%%   <<"annotationStoreVersions">> => list(annotation_store_version_item()()),
+%%   <<"annotationStoreVersions">> => list(annotation_store_version_item()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_annotation_store_versions_response() :: #{binary() => any()}.
@@ -972,7 +972,7 @@
 %% Example:
 %% list_variant_import_jobs_request() :: #{
 %%   <<"filter">> => list_variant_import_jobs_filter(),
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -981,7 +981,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1015,7 +1015,7 @@
 
 %% Example:
 %% list_read_set_import_jobs_response() :: #{
-%%   <<"importJobs">> => list(import_read_set_job_item()()),
+%%   <<"importJobs">> => list(import_read_set_job_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_read_set_import_jobs_response() :: #{binary() => any()}.
@@ -1024,7 +1024,7 @@
 %% Example:
 %% start_read_set_activation_job_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"sources">> := list(start_read_set_activation_job_source_item()())
+%%   <<"sources">> := list(start_read_set_activation_job_source_item())
 %% }
 -type start_read_set_activation_job_request() :: #{binary() => any()}.
 
@@ -1093,7 +1093,7 @@
 
 %% Example:
 %% get_workflow_request() :: #{
-%%   <<"export">> => list(string()()),
+%%   <<"export">> => list(string()),
 %%   <<"type">> => string(),
 %%   <<"workflowOwnerId">> => string()
 %% }
@@ -1103,7 +1103,7 @@
 %% Example:
 %% list_references_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"references">> => list(reference_list_item()())
+%%   <<"references">> => list(reference_list_item())
 %% }
 -type list_references_response() :: #{binary() => any()}.
 
@@ -1111,7 +1111,7 @@
 %% Example:
 %% list_variant_stores_request() :: #{
 %%   <<"filter">> => list_variant_stores_filter(),
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -1148,7 +1148,7 @@
 %%   <<"eTagAlgorithmFamily">> => string(),
 %%   <<"fallbackLocation">> => string(),
 %%   <<"name">> := string(),
-%%   <<"propagatedSetLevelTags">> => list(string()()),
+%%   <<"propagatedSetLevelTags">> => list(string()),
 %%   <<"s3AccessConfig">> => s3_access_config(),
 %%   <<"sseConfig">> => sse_config(),
 %%   <<"tags">> => map()
@@ -1195,7 +1195,7 @@
 %% Example:
 %% list_shares_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"shares">> => list(share_details()())
+%%   <<"shares">> => list(share_details())
 %% }
 -type list_shares_response() :: #{binary() => any()}.
 
@@ -1227,7 +1227,7 @@
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
 %%   <<"sequenceStoreId">> => string(),
-%%   <<"sources">> => list(activate_read_set_source_item()()),
+%%   <<"sources">> => list(activate_read_set_source_item()),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string()
 %% }
@@ -1299,7 +1299,7 @@
 %% Example:
 %% list_sequence_stores_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sequenceStores">> => list(sequence_store_detail()())
+%%   <<"sequenceStores">> => list(sequence_store_detail())
 %% }
 -type list_sequence_stores_response() :: #{binary() => any()}.
 
@@ -1364,7 +1364,7 @@
 %%   <<"fallbackLocation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"propagatedSetLevelTags">> => list(string()()),
+%%   <<"propagatedSetLevelTags">> => list(string()),
 %%   <<"s3Access">> => sequence_store_s3_access(),
 %%   <<"sseConfig">> => sse_config(),
 %%   <<"status">> => string(),
@@ -1405,14 +1405,14 @@
 %% start_reference_import_job_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"roleArn">> := string(),
-%%   <<"sources">> := list(start_reference_import_job_source_item()())
+%%   <<"sources">> := list(start_reference_import_job_source_item())
 %% }
 -type start_reference_import_job_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_run_tasks_response() :: #{
-%%   <<"items">> => list(task_list_item()()),
+%%   <<"items">> => list(task_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_run_tasks_response() :: #{binary() => any()}.
@@ -1538,7 +1538,7 @@
 %% Example:
 %% list_read_sets_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"readSets">> => list(read_set_list_item()())
+%%   <<"readSets">> => list(read_set_list_item())
 %% }
 -type list_read_sets_response() :: #{binary() => any()}.
 
@@ -1581,7 +1581,7 @@
 %%   <<"description">> => string(),
 %%   <<"fallbackLocation">> => string(),
 %%   <<"name">> => string(),
-%%   <<"propagatedSetLevelTags">> => list(string()()),
+%%   <<"propagatedSetLevelTags">> => list(string()),
 %%   <<"s3AccessConfig">> => s3_access_config()
 %% }
 -type update_sequence_store_request() :: #{binary() => any()}.
@@ -1685,7 +1685,7 @@
 
 %% Example:
 %% list_annotation_import_jobs_response() :: #{
-%%   <<"annotationImportJobs">> => list(annotation_import_job_item()()),
+%%   <<"annotationImportJobs">> => list(annotation_import_job_item()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_annotation_import_jobs_response() :: #{binary() => any()}.
@@ -1704,7 +1704,7 @@
 %%   <<"annotationFields">> => map(),
 %%   <<"destinationName">> := string(),
 %%   <<"formatOptions">> => list(),
-%%   <<"items">> := list(annotation_import_item_source()()),
+%%   <<"items">> := list(annotation_import_item_source()),
 %%   <<"roleArn">> := string(),
 %%   <<"runLeftNormalization">> => boolean(),
 %%   <<"versionName">> => string()
@@ -1714,7 +1714,7 @@
 
 %% Example:
 %% batch_delete_read_set_request() :: #{
-%%   <<"ids">> := list(string()())
+%%   <<"ids">> := list(string())
 %% }
 -type batch_delete_read_set_request() :: #{binary() => any()}.
 
@@ -1732,7 +1732,7 @@
 
 %% Example:
 %% get_workflow_version_request() :: #{
-%%   <<"export">> => list(string()()),
+%%   <<"export">> => list(string()),
 %%   <<"type">> => string(),
 %%   <<"workflowOwnerId">> => string()
 %% }
@@ -1754,7 +1754,7 @@
 
 %% Example:
 %% list_run_groups_response() :: #{
-%%   <<"items">> => list(run_group_list_item()()),
+%%   <<"items">> => list(run_group_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_run_groups_response() :: #{binary() => any()}.
@@ -1780,8 +1780,8 @@
 %% Example:
 %% filter() :: #{
 %%   <<"resourceArns">> => list([string()]()),
-%%   <<"status">> => list(string()()),
-%%   <<"type">> => list(string()())
+%%   <<"status">> => list(string()),
+%%   <<"type">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -1795,7 +1795,7 @@
 %%   <<"fallbackLocation">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"propagatedSetLevelTags">> => list(string()()),
+%%   <<"propagatedSetLevelTags">> => list(string()),
 %%   <<"s3Access">> => sequence_store_s3_access(),
 %%   <<"sseConfig">> => sse_config(),
 %%   <<"status">> => string(),
@@ -1838,7 +1838,7 @@
 
 %% Example:
 %% list_workflow_versions_response() :: #{
-%%   <<"items">> => list(workflow_version_list_item()()),
+%%   <<"items">> => list(workflow_version_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_workflow_versions_response() :: #{binary() => any()}.
@@ -1890,7 +1890,7 @@
 
 %% Example:
 %% list_read_set_export_jobs_response() :: #{
-%%   <<"exportJobs">> => list(export_read_set_job_detail()()),
+%%   <<"exportJobs">> => list(export_read_set_job_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_read_set_export_jobs_response() :: #{binary() => any()}.
@@ -1922,7 +1922,7 @@
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"destination">> => string(),
 %%   <<"id">> => string(),
-%%   <<"readSets">> => list(export_read_set_detail()()),
+%%   <<"readSets">> => list(export_read_set_detail()),
 %%   <<"sequenceStoreId">> => string(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string()
@@ -1958,7 +1958,7 @@
 %% Example:
 %% list_multipart_read_set_uploads_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"uploads">> => list(multipart_read_set_upload_list_item()())
+%%   <<"uploads">> => list(multipart_read_set_upload_list_item())
 %% }
 -type list_multipart_read_set_uploads_response() :: #{binary() => any()}.
 
@@ -1993,7 +1993,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"destinationName">> => string(),
 %%   <<"id">> => string(),
-%%   <<"items">> => list(variant_import_item_detail()()),
+%%   <<"items">> => list(variant_import_item_detail()),
 %%   <<"roleArn">> => string(),
 %%   <<"runLeftNormalization">> => boolean(),
 %%   <<"status">> => string(),
@@ -2087,7 +2087,7 @@
 %%   <<"id">> => string(),
 %%   <<"referenceStoreId">> => string(),
 %%   <<"roleArn">> => string(),
-%%   <<"sources">> => list(import_reference_source_item()()),
+%%   <<"sources">> => list(import_reference_source_item()),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string()
 %% }
@@ -2101,7 +2101,7 @@
 %%   <<"id">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"sequenceStoreId">> => string(),
-%%   <<"sources">> => list(import_read_set_source_item()()),
+%%   <<"sources">> => list(import_read_set_source_item()),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string()
 %% }
@@ -2136,7 +2136,7 @@
 %% tsv_version_options() :: #{
 %%   <<"annotationType">> => string(),
 %%   <<"formatToHeader">> => map(),
-%%   <<"schema">> => list(map()())
+%%   <<"schema">> => list(map())
 %% }
 -type tsv_version_options() :: #{binary() => any()}.
 
@@ -2164,7 +2164,7 @@
 %% Example:
 %% list_annotation_import_jobs_request() :: #{
 %%   <<"filter">> => list_annotation_import_jobs_filter(),
-%%   <<"ids">> => list(string()()),
+%%   <<"ids">> => list(string()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -2174,7 +2174,7 @@
 %% Example:
 %% list_variant_stores_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"variantStores">> => list(variant_store_item()())
+%%   <<"variantStores">> => list(variant_store_item())
 %% }
 -type list_variant_stores_response() :: #{binary() => any()}.
 
@@ -2368,7 +2368,7 @@
 %% Example:
 %% delete_annotation_store_versions_request() :: #{
 %%   <<"force">> => [boolean()],
-%%   <<"versions">> := list(string()())
+%%   <<"versions">> := list(string())
 %% }
 -type delete_annotation_store_versions_request() :: #{binary() => any()}.
 
@@ -2420,7 +2420,7 @@
 %% Example:
 %% list_read_set_upload_parts_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"parts">> => list(read_set_upload_part_list_item()())
+%%   <<"parts">> => list(read_set_upload_part_list_item())
 %% }
 -type list_read_set_upload_parts_response() :: #{binary() => any()}.
 
@@ -2447,7 +2447,7 @@
 %% start_variant_import_request() :: #{
 %%   <<"annotationFields">> => map(),
 %%   <<"destinationName">> := string(),
-%%   <<"items">> := list(variant_import_item_source()()),
+%%   <<"items">> := list(variant_import_item_source()),
 %%   <<"roleArn">> := string(),
 %%   <<"runLeftNormalization">> => boolean()
 %% }
@@ -2481,7 +2481,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"destination">> := string(),
 %%   <<"roleArn">> := string(),
-%%   <<"sources">> := list(export_read_set()())
+%%   <<"sources">> := list(export_read_set())
 %% }
 -type start_read_set_export_job_request() :: #{binary() => any()}.
 
@@ -2497,7 +2497,7 @@
 %% tsv_store_options() :: #{
 %%   <<"annotationType">> => string(),
 %%   <<"formatToHeader">> => map(),
-%%   <<"schema">> => list(map()())
+%%   <<"schema">> => list(map())
 %% }
 -type tsv_store_options() :: #{binary() => any()}.
 
@@ -2564,7 +2564,7 @@
 
 %% Example:
 %% list_workflows_response() :: #{
-%%   <<"items">> => list(workflow_list_item()()),
+%%   <<"items">> => list(workflow_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
@@ -2586,7 +2586,7 @@
 
 %% Example:
 %% complete_multipart_read_set_upload_request() :: #{
-%%   <<"parts">> := list(complete_read_set_upload_part_list_item()())
+%%   <<"parts">> := list(complete_read_set_upload_part_list_item())
 %% }
 -type complete_multipart_read_set_upload_request() :: #{binary() => any()}.
 
@@ -2655,7 +2655,7 @@
 
 %% Example:
 %% list_reference_import_jobs_response() :: #{
-%%   <<"importJobs">> => list(import_reference_job_item()()),
+%%   <<"importJobs">> => list(import_reference_job_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_reference_import_jobs_response() :: #{binary() => any()}.
@@ -2669,7 +2669,7 @@
 %%   <<"destinationName">> => string(),
 %%   <<"formatOptions">> => list(),
 %%   <<"id">> => string(),
-%%   <<"items">> => list(annotation_import_item_detail()()),
+%%   <<"items">> => list(annotation_import_item_detail()),
 %%   <<"roleArn">> => string(),
 %%   <<"runLeftNormalization">> => boolean(),
 %%   <<"status">> => string(),

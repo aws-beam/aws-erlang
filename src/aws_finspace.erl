@@ -133,8 +133,8 @@
 
 %% Example:
 %% get_kx_volume_response() :: #{
-%%   <<"attachedClusters">> => list(kx_attached_cluster()()),
-%%   <<"availabilityZoneIds">> => list(string()()),
+%%   <<"attachedClusters">> => list(kx_attached_cluster()),
+%%   <<"availabilityZoneIds">> => list(string()),
 %%   <<"azMode">> => list(any()),
 %%   <<"createdTimestamp">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -208,10 +208,10 @@
 
 %% Example:
 %% update_kx_environment_network_response() :: #{
-%%   <<"availabilityZoneIds">> => list(string()()),
+%%   <<"availabilityZoneIds">> => list(string()),
 %%   <<"awsAccountId">> => string(),
 %%   <<"creationTimestamp">> => non_neg_integer(),
-%%   <<"customDNSConfiguration">> => list(custom_dns_server()()),
+%%   <<"customDNSConfiguration">> => list(custom_dns_server()),
 %%   <<"dedicatedServiceAccountId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"dnsStatus">> => list(any()),
@@ -240,7 +240,7 @@
 
 %% Example:
 %% list_kx_dataviews_response() :: #{
-%%   <<"kxDataviews">> => list(kx_dataview_list_entry()()),
+%%   <<"kxDataviews">> => list(kx_dataview_list_entry()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_dataviews_response() :: #{binary() => any()}.
@@ -257,7 +257,7 @@
 
 %% Example:
 %% list_kx_environments_response() :: #{
-%%   <<"environments">> => list(kx_environment()()),
+%%   <<"environments">> => list(kx_environment()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_environments_response() :: #{binary() => any()}.
@@ -266,8 +266,8 @@
 %% Example:
 %% vpc_configuration() :: #{
 %%   <<"ipAddressType">> => list(any()),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_configuration() :: #{binary() => any()}.
@@ -275,7 +275,7 @@
 
 %% Example:
 %% list_kx_volumes_response() :: #{
-%%   <<"kxVolumeSummaries">> => list(kx_volume()()),
+%%   <<"kxVolumeSummaries">> => list(kx_volume()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_volumes_response() :: #{binary() => any()}.
@@ -295,7 +295,7 @@
 %%   <<"releaseLabel">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string(),
-%%   <<"volumes">> => list(volume()())
+%%   <<"volumes">> => list(volume())
 %% }
 -type kx_cluster() :: #{binary() => any()}.
 
@@ -333,7 +333,7 @@
 
 %% Example:
 %% kx_dataview_list_entry() :: #{
-%%   <<"activeVersions">> => list(kx_dataview_active_version()()),
+%%   <<"activeVersions">> => list(kx_dataview_active_version()),
 %%   <<"autoUpdate">> => boolean(),
 %%   <<"availabilityZoneId">> => string(),
 %%   <<"azMode">> => list(any()),
@@ -345,7 +345,7 @@
 %%   <<"environmentId">> => string(),
 %%   <<"lastModifiedTimestamp">> => non_neg_integer(),
 %%   <<"readWrite">> => boolean(),
-%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()()),
+%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string()
 %% }
@@ -380,7 +380,7 @@
 
 %% Example:
 %% create_kx_changeset_request() :: #{
-%%   <<"changeRequests">> := list(change_request()()),
+%%   <<"changeRequests">> := list(change_request()),
 %%   <<"clientToken">> := string()
 %% }
 -type create_kx_changeset_request() :: #{binary() => any()}.
@@ -421,7 +421,7 @@
 
 %% Example:
 %% list_kx_databases_response() :: #{
-%%   <<"kxDatabases">> => list(kx_database_list_entry()()),
+%%   <<"kxDatabases">> => list(kx_database_list_entry()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_databases_response() :: #{binary() => any()}.
@@ -462,7 +462,7 @@
 
 %% Example:
 %% create_kx_changeset_response() :: #{
-%%   <<"changeRequests">> => list(change_request()()),
+%%   <<"changeRequests">> => list(change_request()),
 %%   <<"changesetId">> => string(),
 %%   <<"createdTimestamp">> => non_neg_integer(),
 %%   <<"databaseName">> => string(),
@@ -480,7 +480,7 @@
 
 %% Example:
 %% kx_volume() :: #{
-%%   <<"availabilityZoneIds">> => list(string()()),
+%%   <<"availabilityZoneIds">> => list(string()),
 %%   <<"azMode">> => list(any()),
 %%   <<"createdTimestamp">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -495,7 +495,7 @@
 
 %% Example:
 %% tickerplant_log_configuration() :: #{
-%%   <<"tickerplantLogVolumes">> => list(string()())
+%%   <<"tickerplantLogVolumes">> => list(string())
 %% }
 -type tickerplant_log_configuration() :: #{binary() => any()}.
 
@@ -505,7 +505,7 @@
 %%   <<"changesetId">> => string(),
 %%   <<"clientToken">> := string(),
 %%   <<"description">> => string(),
-%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()())
+%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration())
 %% }
 -type update_kx_dataview_request() :: #{binary() => any()}.
 
@@ -533,7 +533,7 @@
 %% Example:
 %% list_kx_users_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"users">> => list(kx_user()())
+%%   <<"users">> => list(kx_user())
 %% }
 -type list_kx_users_response() :: #{binary() => any()}.
 
@@ -541,7 +541,7 @@
 %% Example:
 %% list_kx_cluster_nodes_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"nodes">> => list(kx_node()())
+%%   <<"nodes">> => list(kx_node())
 %% }
 -type list_kx_cluster_nodes_response() :: #{binary() => any()}.
 
@@ -563,18 +563,18 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_kx_environment_response() :: #{
-%%   <<"availabilityZoneIds">> => list(string()()),
+%%   <<"availabilityZoneIds">> => list(string()),
 %%   <<"awsAccountId">> => string(),
 %%   <<"certificateAuthorityArn">> => string(),
 %%   <<"creationTimestamp">> => non_neg_integer(),
-%%   <<"customDNSConfiguration">> => list(custom_dns_server()()),
+%%   <<"customDNSConfiguration">> => list(custom_dns_server()),
 %%   <<"dedicatedServiceAccountId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"dnsStatus">> => list(any()),
@@ -618,7 +618,7 @@
 %% kx_database_cache_configuration() :: #{
 %%   <<"cacheType">> => string(),
 %%   <<"dataviewName">> => string(),
-%%   <<"dbPaths">> => list(string()())
+%%   <<"dbPaths">> => list(string())
 %% }
 -type kx_database_cache_configuration() :: #{binary() => any()}.
 
@@ -637,7 +637,7 @@
 %% Example:
 %% get_kx_scaling_group_response() :: #{
 %%   <<"availabilityZoneId">> => string(),
-%%   <<"clusters">> => list(string()()),
+%%   <<"clusters">> => list(string()),
 %%   <<"createdTimestamp">> => non_neg_integer(),
 %%   <<"hostType">> => string(),
 %%   <<"lastModifiedTimestamp">> => non_neg_integer(),
@@ -695,7 +695,7 @@
 
 %% Example:
 %% kx_database_configuration() :: #{
-%%   <<"cacheConfigurations">> => list(kx_database_cache_configuration()()),
+%%   <<"cacheConfigurations">> => list(kx_database_cache_configuration()),
 %%   <<"changesetId">> => string(),
 %%   <<"databaseName">> => string(),
 %%   <<"dataviewConfiguration">> => kx_dataview_configuration(),
@@ -707,7 +707,7 @@
 %% Example:
 %% get_kx_changeset_response() :: #{
 %%   <<"activeFromTimestamp">> => non_neg_integer(),
-%%   <<"changeRequests">> => list(change_request()()),
+%%   <<"changeRequests">> => list(change_request()),
 %%   <<"changesetId">> => string(),
 %%   <<"createdTimestamp">> => non_neg_integer(),
 %%   <<"databaseName">> => string(),
@@ -724,7 +724,7 @@
 %%   <<"changesetId">> => string(),
 %%   <<"dataviewName">> => string(),
 %%   <<"dataviewVersionId">> => string(),
-%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()())
+%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration())
 %% }
 -type kx_dataview_configuration() :: #{binary() => any()}.
 
@@ -796,7 +796,7 @@
 
 %% Example:
 %% create_kx_volume_request() :: #{
-%%   <<"availabilityZoneIds">> := list(string()()),
+%%   <<"availabilityZoneIds">> := list(string()),
 %%   <<"azMode">> := list(any()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -810,11 +810,11 @@
 
 %% Example:
 %% kx_environment() :: #{
-%%   <<"availabilityZoneIds">> => list(string()()),
+%%   <<"availabilityZoneIds">> => list(string()),
 %%   <<"awsAccountId">> => string(),
 %%   <<"certificateAuthorityArn">> => string(),
 %%   <<"creationTimestamp">> => non_neg_integer(),
-%%   <<"customDNSConfiguration">> => list(custom_dns_server()()),
+%%   <<"customDNSConfiguration">> => list(custom_dns_server()),
 %%   <<"dedicatedServiceAccountId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"dnsStatus">> => list(any()),
@@ -872,15 +872,15 @@
 %%   <<"autoScalingConfiguration">> => auto_scaling_configuration(),
 %%   <<"availabilityZoneId">> => string(),
 %%   <<"azMode">> => list(any()),
-%%   <<"cacheStorageConfigurations">> => list(kx_cache_storage_configuration()()),
+%%   <<"cacheStorageConfigurations">> => list(kx_cache_storage_configuration()),
 %%   <<"capacityConfiguration">> => capacity_configuration(),
 %%   <<"clusterDescription">> => string(),
 %%   <<"clusterName">> => string(),
 %%   <<"clusterType">> => list(any()),
 %%   <<"code">> => code_configuration(),
-%%   <<"commandLineArguments">> => list(kx_command_line_argument()()),
+%%   <<"commandLineArguments">> => list(kx_command_line_argument()),
 %%   <<"createdTimestamp">> => non_neg_integer(),
-%%   <<"databases">> => list(kx_database_configuration()()),
+%%   <<"databases">> => list(kx_database_configuration()),
 %%   <<"executionRole">> => string(),
 %%   <<"initializationScript">> => string(),
 %%   <<"lastModifiedTimestamp">> => non_neg_integer(),
@@ -890,7 +890,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string(),
 %%   <<"tickerplantLogConfiguration">> => tickerplant_log_configuration(),
-%%   <<"volumes">> => list(volume()()),
+%%   <<"volumes">> => list(volume()),
 %%   <<"vpcConfiguration">> => vpc_configuration()
 %% }
 -type get_kx_cluster_response() :: #{binary() => any()}.
@@ -906,7 +906,7 @@
 %%   <<"dataviewName">> := string(),
 %%   <<"description">> => string(),
 %%   <<"readWrite">> => boolean(),
-%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()()),
+%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()),
 %%   <<"tags">> => map()
 %% }
 -type create_kx_dataview_request() :: #{binary() => any()}.
@@ -915,7 +915,7 @@
 %% Example:
 %% kx_scaling_group() :: #{
 %%   <<"availabilityZoneId">> => string(),
-%%   <<"clusters">> => list(string()()),
+%%   <<"clusters">> => list(string()),
 %%   <<"createdTimestamp">> => non_neg_integer(),
 %%   <<"hostType">> => string(),
 %%   <<"lastModifiedTimestamp">> => non_neg_integer(),
@@ -976,7 +976,7 @@
 
 %% Example:
 %% list_kx_clusters_response() :: #{
-%%   <<"kxClusterSummaries">> => list(kx_cluster()()),
+%%   <<"kxClusterSummaries">> => list(kx_cluster()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_clusters_response() :: #{binary() => any()}.
@@ -1023,7 +1023,7 @@
 %%   <<"environmentId">> => string(),
 %%   <<"lastModifiedTimestamp">> => non_neg_integer(),
 %%   <<"readWrite">> => boolean(),
-%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()()),
+%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()),
 %%   <<"status">> => list(any())
 %% }
 -type create_kx_dataview_response() :: #{binary() => any()}.
@@ -1043,8 +1043,8 @@
 
 %% Example:
 %% update_kx_volume_response() :: #{
-%%   <<"attachedClusters">> => list(kx_attached_cluster()()),
-%%   <<"availabilityZoneIds">> => list(string()()),
+%%   <<"attachedClusters">> => list(kx_attached_cluster()),
+%%   <<"availabilityZoneIds">> => list(string()),
 %%   <<"azMode">> => list(any()),
 %%   <<"createdTimestamp">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -1073,7 +1073,7 @@
 %% update_kx_cluster_code_configuration_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"code">> := code_configuration(),
-%%   <<"commandLineArguments">> => list(kx_command_line_argument()()),
+%%   <<"commandLineArguments">> => list(kx_command_line_argument()),
 %%   <<"deploymentConfiguration">> => kx_cluster_code_deployment_configuration(),
 %%   <<"initializationScript">> => string()
 %% }
@@ -1165,15 +1165,15 @@
 %%   <<"autoScalingConfiguration">> => auto_scaling_configuration(),
 %%   <<"availabilityZoneId">> => string(),
 %%   <<"azMode">> := list(any()),
-%%   <<"cacheStorageConfigurations">> => list(kx_cache_storage_configuration()()),
+%%   <<"cacheStorageConfigurations">> => list(kx_cache_storage_configuration()),
 %%   <<"capacityConfiguration">> => capacity_configuration(),
 %%   <<"clientToken">> => string(),
 %%   <<"clusterDescription">> => string(),
 %%   <<"clusterName">> := string(),
 %%   <<"clusterType">> := list(any()),
 %%   <<"code">> => code_configuration(),
-%%   <<"commandLineArguments">> => list(kx_command_line_argument()()),
-%%   <<"databases">> => list(kx_database_configuration()()),
+%%   <<"commandLineArguments">> => list(kx_command_line_argument()),
+%%   <<"databases">> => list(kx_database_configuration()),
 %%   <<"executionRole">> => string(),
 %%   <<"initializationScript">> => string(),
 %%   <<"releaseLabel">> := string(),
@@ -1216,10 +1216,10 @@
 
 %% Example:
 %% kx_dataview_active_version() :: #{
-%%   <<"attachedClusters">> => list(string()()),
+%%   <<"attachedClusters">> => list(string()),
 %%   <<"changesetId">> => string(),
 %%   <<"createdTimestamp">> => non_neg_integer(),
-%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()()),
+%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()),
 %%   <<"versionId">> => string()
 %% }
 -type kx_dataview_active_version() :: #{binary() => any()}.
@@ -1228,7 +1228,7 @@
 %% Example:
 %% list_kx_scaling_groups_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"scalingGroups">> => list(kx_scaling_group()())
+%%   <<"scalingGroups">> => list(kx_scaling_group())
 %% }
 -type list_kx_scaling_groups_response() :: #{binary() => any()}.
 
@@ -1250,7 +1250,7 @@
 
 %% Example:
 %% list_environments_response() :: #{
-%%   <<"environments">> => list(environment()()),
+%%   <<"environments">> => list(environment()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_response() :: #{binary() => any()}.
@@ -1276,7 +1276,7 @@
 
 %% Example:
 %% update_kx_dataview_response() :: #{
-%%   <<"activeVersions">> => list(kx_dataview_active_version()()),
+%%   <<"activeVersions">> => list(kx_dataview_active_version()),
 %%   <<"autoUpdate">> => boolean(),
 %%   <<"availabilityZoneId">> => string(),
 %%   <<"azMode">> => list(any()),
@@ -1288,7 +1288,7 @@
 %%   <<"environmentId">> => string(),
 %%   <<"lastModifiedTimestamp">> => non_neg_integer(),
 %%   <<"readWrite">> => boolean(),
-%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()()),
+%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()),
 %%   <<"status">> => list(any())
 %% }
 -type update_kx_dataview_response() :: #{binary() => any()}.
@@ -1297,7 +1297,7 @@
 %% Example:
 %% update_kx_cluster_databases_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"databases">> := list(kx_database_configuration()()),
+%%   <<"databases">> := list(kx_database_configuration()),
 %%   <<"deploymentConfiguration">> => kx_deployment_configuration()
 %% }
 -type update_kx_cluster_databases_request() :: #{binary() => any()}.
@@ -1312,7 +1312,7 @@
 
 %% Example:
 %% get_kx_dataview_response() :: #{
-%%   <<"activeVersions">> => list(kx_dataview_active_version()()),
+%%   <<"activeVersions">> => list(kx_dataview_active_version()),
 %%   <<"autoUpdate">> => boolean(),
 %%   <<"availabilityZoneId">> => string(),
 %%   <<"azMode">> => list(any()),
@@ -1324,7 +1324,7 @@
 %%   <<"environmentId">> => string(),
 %%   <<"lastModifiedTimestamp">> => non_neg_integer(),
 %%   <<"readWrite">> => boolean(),
-%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()()),
+%%   <<"segmentConfigurations">> => list(kx_dataview_segment_configuration()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string()
 %% }
@@ -1373,7 +1373,7 @@
 
 %% Example:
 %% kx_dataview_segment_configuration() :: #{
-%%   <<"dbPaths">> => list(string()()),
+%%   <<"dbPaths">> => list(string()),
 %%   <<"onDemand">> => boolean(),
 %%   <<"volumeName">> => string()
 %% }
@@ -1389,7 +1389,7 @@
 
 %% Example:
 %% create_environment_request() :: #{
-%%   <<"dataBundles">> => list(string()()),
+%%   <<"dataBundles">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"federationMode">> => list(any()),
 %%   <<"federationParameters">> => federation_parameters(),
@@ -1423,7 +1423,7 @@
 
 %% Example:
 %% list_kx_changesets_response() :: #{
-%%   <<"kxChangesets">> => list(kx_changeset_list_entry()()),
+%%   <<"kxChangesets">> => list(kx_changeset_list_entry()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_kx_changesets_response() :: #{binary() => any()}.
@@ -1432,7 +1432,7 @@
 %% Example:
 %% update_kx_environment_network_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"customDNSConfiguration">> => list(custom_dns_server()()),
+%%   <<"customDNSConfiguration">> => list(custom_dns_server()),
 %%   <<"transitGatewayConfiguration">> => transit_gateway_configuration()
 %% }
 -type update_kx_environment_network_request() :: #{binary() => any()}.
@@ -1457,7 +1457,7 @@
 
 %% Example:
 %% transit_gateway_configuration() :: #{
-%%   <<"attachmentNetworkAclConfiguration">> => list(network_acl_entry()()),
+%%   <<"attachmentNetworkAclConfiguration">> => list(network_acl_entry()),
 %%   <<"routableCIDRSpace">> => string(),
 %%   <<"transitGatewayID">> => string()
 %% }
@@ -1470,7 +1470,7 @@
 
 %% Example:
 %% create_kx_volume_response() :: #{
-%%   <<"availabilityZoneIds">> => list(string()()),
+%%   <<"availabilityZoneIds">> => list(string()),
 %%   <<"azMode">> => list(any()),
 %%   <<"createdTimestamp">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -1497,10 +1497,10 @@
 
 %% Example:
 %% update_kx_environment_response() :: #{
-%%   <<"availabilityZoneIds">> => list(string()()),
+%%   <<"availabilityZoneIds">> => list(string()),
 %%   <<"awsAccountId">> => string(),
 %%   <<"creationTimestamp">> => non_neg_integer(),
-%%   <<"customDNSConfiguration">> => list(custom_dns_server()()),
+%%   <<"customDNSConfiguration">> => list(custom_dns_server()),
 %%   <<"dedicatedServiceAccountId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"dnsStatus">> => list(any()),
@@ -1534,15 +1534,15 @@
 %%   <<"autoScalingConfiguration">> => auto_scaling_configuration(),
 %%   <<"availabilityZoneId">> => string(),
 %%   <<"azMode">> => list(any()),
-%%   <<"cacheStorageConfigurations">> => list(kx_cache_storage_configuration()()),
+%%   <<"cacheStorageConfigurations">> => list(kx_cache_storage_configuration()),
 %%   <<"capacityConfiguration">> => capacity_configuration(),
 %%   <<"clusterDescription">> => string(),
 %%   <<"clusterName">> => string(),
 %%   <<"clusterType">> => list(any()),
 %%   <<"code">> => code_configuration(),
-%%   <<"commandLineArguments">> => list(kx_command_line_argument()()),
+%%   <<"commandLineArguments">> => list(kx_command_line_argument()),
 %%   <<"createdTimestamp">> => non_neg_integer(),
-%%   <<"databases">> => list(kx_database_configuration()()),
+%%   <<"databases">> => list(kx_database_configuration()),
 %%   <<"environmentId">> => string(),
 %%   <<"executionRole">> => string(),
 %%   <<"initializationScript">> => string(),
@@ -1553,7 +1553,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string(),
 %%   <<"tickerplantLogConfiguration">> => tickerplant_log_configuration(),
-%%   <<"volumes">> => list(volume()()),
+%%   <<"volumes">> => list(volume()),
 %%   <<"vpcConfiguration">> => vpc_configuration()
 %% }
 -type create_kx_cluster_response() :: #{binary() => any()}.

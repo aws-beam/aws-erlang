@@ -60,7 +60,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Arn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -75,7 +75,7 @@
 %% Example:
 %% list_pipelines_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Pipelines">> => list(pipeline_summary()())
+%%   <<"Pipelines">> => list(pipeline_summary())
 %% }
 -type list_pipelines_response() :: #{binary() => any()}.
 
@@ -108,7 +108,7 @@
 
 %% Example:
 %% get_pipeline_change_progress_response() :: #{
-%%   <<"ChangeProgressStatuses">> => list(change_progress_status()())
+%%   <<"ChangeProgressStatuses">> => list(change_progress_status())
 %% }
 -type get_pipeline_change_progress_response() :: #{binary() => any()}.
 
@@ -117,9 +117,9 @@
 %% pipeline() :: #{
 %%   <<"BufferOptions">> => buffer_options(),
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Destinations">> => list(pipeline_destination()()),
+%%   <<"Destinations">> => list(pipeline_destination()),
 %%   <<"EncryptionAtRestOptions">> => encryption_at_rest_options(),
-%%   <<"IngestEndpointUrls">> => list(string()()),
+%%   <<"IngestEndpointUrls">> => list(string()),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"LogPublishingOptions">> => log_publishing_options(),
 %%   <<"MaxUnits">> => integer(),
@@ -127,12 +127,12 @@
 %%   <<"PipelineArn">> => string(),
 %%   <<"PipelineConfigurationBody">> => string(),
 %%   <<"PipelineName">> => string(),
-%%   <<"ServiceVpcEndpoints">> => list(service_vpc_endpoint()()),
+%%   <<"ServiceVpcEndpoints">> => list(service_vpc_endpoint()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => pipeline_status_reason(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcEndpointService">> => string(),
-%%   <<"VpcEndpoints">> => list(vpc_endpoint()())
+%%   <<"VpcEndpoints">> => list(vpc_endpoint())
 %% }
 -type pipeline() :: #{binary() => any()}.
 
@@ -153,7 +153,7 @@
 
 %% Example:
 %% change_progress_status() :: #{
-%%   <<"ChangeProgressStages">> => list(change_progress_stage()()),
+%%   <<"ChangeProgressStages">> => list(change_progress_stage()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"TotalNumberOfStages">> => integer()
@@ -164,7 +164,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"Arn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -193,7 +193,7 @@
 
 %% Example:
 %% list_pipeline_blueprints_response() :: #{
-%%   <<"Blueprints">> => list(pipeline_blueprint_summary()())
+%%   <<"Blueprints">> => list(pipeline_blueprint_summary())
 %% }
 -type list_pipeline_blueprints_response() :: #{binary() => any()}.
 
@@ -229,7 +229,7 @@
 %%   <<"MinUnits">> := integer(),
 %%   <<"PipelineConfigurationBody">> := string(),
 %%   <<"PipelineName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcOptions">> => vpc_options()
 %% }
 -type create_pipeline_request() :: #{binary() => any()}.
@@ -273,7 +273,7 @@
 %% Example:
 %% pipeline_summary() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Destinations">> => list(pipeline_destination()()),
+%%   <<"Destinations">> => list(pipeline_destination()),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"MaxUnits">> => integer(),
 %%   <<"MinUnits">> => integer(),
@@ -281,7 +281,7 @@
 %%   <<"PipelineName">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => pipeline_status_reason(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type pipeline_summary() :: #{binary() => any()}.
 
@@ -295,7 +295,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -388,7 +388,7 @@
 
 %% Example:
 %% validate_pipeline_response() :: #{
-%%   <<"Errors">> => list(validation_message()()),
+%%   <<"Errors">> => list(validation_message()),
 %%   <<"isValid">> => boolean()
 %% }
 -type validate_pipeline_response() :: #{binary() => any()}.
@@ -429,8 +429,8 @@
 
 %% Example:
 %% vpc_options() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcAttachmentOptions">> => vpc_attachment_options(),
 %%   <<"VpcEndpointManagement">> => list(any())
 %% }

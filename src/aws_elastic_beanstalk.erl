@@ -126,7 +126,7 @@
 
 %% Example:
 %% environment_descriptions_message() :: #{
-%%   <<"Environments">> => list(environment_description()()),
+%%   <<"Environments">> => list(environment_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type environment_descriptions_message() :: #{binary() => any()}.
@@ -134,11 +134,11 @@
 %% Example:
 %% create_platform_version_request() :: #{
 %%   <<"EnvironmentName">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()()),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
 %%   <<"PlatformDefinitionBundle">> := s3_location(),
 %%   <<"PlatformName">> := string(),
 %%   <<"PlatformVersion">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_platform_version_request() :: #{binary() => any()}.
 
@@ -173,8 +173,8 @@
 %% update_configuration_template_message() :: #{
 %%   <<"ApplicationName">> := string(),
 %%   <<"Description">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()()),
-%%   <<"OptionsToRemove">> => list(option_specification()()),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
+%%   <<"OptionsToRemove">> => list(option_specification()),
 %%   <<"TemplateName">> := string()
 %% }
 -type update_configuration_template_message() :: #{binary() => any()}.
@@ -183,7 +183,7 @@
 %% compose_environments_message() :: #{
 %%   <<"ApplicationName">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"VersionLabels">> => list(string()())
+%%   <<"VersionLabels">> => list(string())
 %% }
 -type compose_environments_message() :: #{binary() => any()}.
 
@@ -226,7 +226,7 @@
 
 %% Example:
 %% solution_stack_description() :: #{
-%%   <<"PermittedFileTypes">> => list(string()()),
+%%   <<"PermittedFileTypes">> => list(string()),
 %%   <<"SolutionStackName">> => string()
 %% }
 -type solution_stack_description() :: #{binary() => any()}.
@@ -248,7 +248,7 @@
 %% single_instance_health() :: #{
 %%   <<"ApplicationMetrics">> => application_metrics(),
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"Causes">> => list(string()()),
+%%   <<"Causes">> => list(string()),
 %%   <<"Color">> => string(),
 %%   <<"Deployment">> => deployment(),
 %%   <<"HealthStatus">> => string(),
@@ -262,8 +262,8 @@
 %% Example:
 %% describe_environments_message() :: #{
 %%   <<"ApplicationName">> => string(),
-%%   <<"EnvironmentIds">> => list(string()()),
-%%   <<"EnvironmentNames">> => list(string()()),
+%%   <<"EnvironmentIds">> => list(string()),
+%%   <<"EnvironmentNames">> => list(string()),
 %%   <<"IncludeDeleted">> => boolean(),
 %%   <<"IncludedDeletedBackTo">> => non_neg_integer(),
 %%   <<"MaxRecords">> => integer(),
@@ -299,7 +299,7 @@
 
 %% Example:
 %% list_platform_versions_request() :: #{
-%%   <<"Filters">> => list(platform_filter()()),
+%%   <<"Filters">> => list(platform_filter()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -336,7 +336,7 @@
 
 %% Example:
 %% describe_environment_managed_action_history_result() :: #{
-%%   <<"ManagedActionHistoryItems">> => list(managed_action_history_item()()),
+%%   <<"ManagedActionHistoryItems">> => list(managed_action_history_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_environment_managed_action_history_result() :: #{binary() => any()}.
@@ -350,7 +350,7 @@
 
 %% Example:
 %% describe_instances_health_result() :: #{
-%%   <<"InstanceHealthList">> => list(single_instance_health()()),
+%%   <<"InstanceHealthList">> => list(single_instance_health()),
 %%   <<"NextToken">> => string(),
 %%   <<"RefreshedAt">> => non_neg_integer()
 %% }
@@ -403,7 +403,7 @@
 
 %% Example:
 %% event_descriptions_message() :: #{
-%%   <<"Events">> => list(event_description()()),
+%%   <<"Events">> => list(event_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type event_descriptions_message() :: #{binary() => any()}.
@@ -447,7 +447,7 @@
 %%   <<"Namespace">> => string(),
 %%   <<"Regex">> => option_restriction_regex(),
 %%   <<"UserDefined">> => boolean(),
-%%   <<"ValueOptions">> => list(string()()),
+%%   <<"ValueOptions">> => list(string()),
 %%   <<"ValueType">> => list(any())
 %% }
 -type configuration_option_description() :: #{binary() => any()}.
@@ -455,7 +455,7 @@
 %% Example:
 %% load_balancer_description() :: #{
 %%   <<"Domain">> => string(),
-%%   <<"Listeners">> => list(listener()()),
+%%   <<"Listeners">> => list(listener()),
 %%   <<"LoadBalancerName">> => string()
 %% }
 -type load_balancer_description() :: #{binary() => any()}.
@@ -484,7 +484,7 @@
 %% Example:
 %% list_platform_branches_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PlatformBranchSummaryList">> => list(platform_branch_summary()())
+%%   <<"PlatformBranchSummaryList">> => list(platform_branch_summary())
 %% }
 -type list_platform_branches_result() :: #{binary() => any()}.
 
@@ -533,11 +533,11 @@
 
 %% Example:
 %% platform_description() :: #{
-%%   <<"CustomAmiList">> => list(custom_ami()()),
+%%   <<"CustomAmiList">> => list(custom_ami()),
 %%   <<"DateCreated">> => non_neg_integer(),
 %%   <<"DateUpdated">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"Frameworks">> => list(platform_framework()()),
+%%   <<"Frameworks">> => list(platform_framework()),
 %%   <<"Maintainer">> => string(),
 %%   <<"OperatingSystemName">> => string(),
 %%   <<"OperatingSystemVersion">> => string(),
@@ -550,10 +550,10 @@
 %%   <<"PlatformOwner">> => string(),
 %%   <<"PlatformStatus">> => list(any()),
 %%   <<"PlatformVersion">> => string(),
-%%   <<"ProgrammingLanguages">> => list(platform_programming_language()()),
+%%   <<"ProgrammingLanguages">> => list(platform_programming_language()),
 %%   <<"SolutionStackName">> => string(),
-%%   <<"SupportedAddonList">> => list(string()()),
-%%   <<"SupportedTierList">> => list(string()())
+%%   <<"SupportedAddonList">> => list(string()),
+%%   <<"SupportedTierList">> => list(string())
 %% }
 -type platform_description() :: #{binary() => any()}.
 
@@ -579,14 +579,14 @@
 
 %% Example:
 %% environment_resource_description() :: #{
-%%   <<"AutoScalingGroups">> => list(auto_scaling_group()()),
+%%   <<"AutoScalingGroups">> => list(auto_scaling_group()),
 %%   <<"EnvironmentName">> => string(),
-%%   <<"Instances">> => list(instance()()),
-%%   <<"LaunchConfigurations">> => list(launch_configuration()()),
-%%   <<"LaunchTemplates">> => list(launch_template()()),
-%%   <<"LoadBalancers">> => list(load_balancer()()),
-%%   <<"Queues">> => list(queue()()),
-%%   <<"Triggers">> => list(trigger()())
+%%   <<"Instances">> => list(instance()),
+%%   <<"LaunchConfigurations">> => list(launch_configuration()),
+%%   <<"LaunchTemplates">> => list(launch_template()),
+%%   <<"LoadBalancers">> => list(load_balancer()),
+%%   <<"Queues">> => list(queue()),
+%%   <<"Triggers">> => list(trigger())
 %% }
 -type environment_resource_description() :: #{binary() => any()}.
 
@@ -631,7 +631,7 @@
 %%   <<"DeploymentStatus">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"EnvironmentName">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()()),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
 %%   <<"PlatformArn">> => string(),
 %%   <<"SolutionStackName">> => string(),
 %%   <<"TemplateName">> => string()
@@ -646,7 +646,7 @@
 
 %% Example:
 %% configuration_settings_validation_messages() :: #{
-%%   <<"Messages">> => list(validation_message()())
+%%   <<"Messages">> => list(validation_message())
 %% }
 -type configuration_settings_validation_messages() :: #{binary() => any()}.
 
@@ -654,7 +654,7 @@
 %% search_filter() :: #{
 %%   <<"Attribute">> => string(),
 %%   <<"Operator">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type search_filter() :: #{binary() => any()}.
 
@@ -662,7 +662,7 @@
 %% platform_filter() :: #{
 %%   <<"Operator">> => string(),
 %%   <<"Type">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type platform_filter() :: #{binary() => any()}.
 
@@ -679,7 +679,7 @@
 %% describe_configuration_options_message() :: #{
 %%   <<"ApplicationName">> => string(),
 %%   <<"EnvironmentName">> => string(),
-%%   <<"Options">> => list(option_specification()()),
+%%   <<"Options">> => list(option_specification()),
 %%   <<"PlatformArn">> => string(),
 %%   <<"SolutionStackName">> => string(),
 %%   <<"TemplateName">> => string()
@@ -714,8 +714,8 @@
 %%   <<"EnvironmentId">> => string(),
 %%   <<"EnvironmentName">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()()),
-%%   <<"OptionsToRemove">> => list(option_specification()()),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
+%%   <<"OptionsToRemove">> => list(option_specification()),
 %%   <<"PlatformArn">> => string(),
 %%   <<"SolutionStackName">> => string(),
 %%   <<"TemplateName">> => string(),
@@ -759,7 +759,7 @@
 %% Example:
 %% describe_environment_health_result() :: #{
 %%   <<"ApplicationMetrics">> => application_metrics(),
-%%   <<"Causes">> => list(string()()),
+%%   <<"Causes">> => list(string()),
 %%   <<"Color">> => string(),
 %%   <<"EnvironmentName">> => string(),
 %%   <<"HealthStatus">> => string(),
@@ -785,7 +785,7 @@
 %%   <<"Process">> => boolean(),
 %%   <<"SourceBuildInformation">> => source_build_information(),
 %%   <<"SourceBundle">> => s3_location(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VersionLabel">> := string()
 %% }
 -type create_application_version_message() :: #{binary() => any()}.
@@ -811,14 +811,14 @@
 %%   <<"BranchOrder">> => integer(),
 %%   <<"LifecycleState">> => string(),
 %%   <<"PlatformName">> => string(),
-%%   <<"SupportedTierList">> => list(string()())
+%%   <<"SupportedTierList">> => list(string())
 %% }
 -type platform_branch_summary() :: #{binary() => any()}.
 
 %% Example:
 %% list_available_solution_stacks_result_message() :: #{
-%%   <<"SolutionStackDetails">> => list(solution_stack_description()()),
-%%   <<"SolutionStacks">> => list(string()())
+%%   <<"SolutionStackDetails">> => list(solution_stack_description()),
+%%   <<"SolutionStacks">> => list(string())
 %% }
 -type list_available_solution_stacks_result_message() :: #{binary() => any()}.
 
@@ -847,7 +847,7 @@
 %% Example:
 %% system_status() :: #{
 %%   <<"CPUUtilization">> => c_p_u_utilization(),
-%%   <<"LoadAverage">> => list(float()())
+%%   <<"LoadAverage">> => list(float())
 %% }
 -type system_status() :: #{binary() => any()}.
 
@@ -869,7 +869,7 @@
 %%   <<"ApplicationName">> => string(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VersionLabels">> => list(string()())
+%%   <<"VersionLabels">> => list(string())
 %% }
 -type describe_application_versions_message() :: #{binary() => any()}.
 
@@ -885,8 +885,8 @@
 %%   <<"PlatformOwner">> => string(),
 %%   <<"PlatformStatus">> => list(any()),
 %%   <<"PlatformVersion">> => string(),
-%%   <<"SupportedAddonList">> => list(string()()),
-%%   <<"SupportedTierList">> => list(string()())
+%%   <<"SupportedAddonList">> => list(string()),
+%%   <<"SupportedTierList">> => list(string())
 %% }
 -type platform_summary() :: #{binary() => any()}.
 
@@ -900,7 +900,7 @@
 
 %% Example:
 %% retrieve_environment_info_result_message() :: #{
-%%   <<"EnvironmentInfo">> => list(environment_info_description()())
+%%   <<"EnvironmentInfo">> => list(environment_info_description())
 %% }
 -type retrieve_environment_info_result_message() :: #{binary() => any()}.
 
@@ -921,7 +921,7 @@
 %%   <<"EndpointURL">> => string(),
 %%   <<"EnvironmentArn">> => string(),
 %%   <<"EnvironmentId">> => string(),
-%%   <<"EnvironmentLinks">> => list(environment_link()()),
+%%   <<"EnvironmentLinks">> => list(environment_link()),
 %%   <<"EnvironmentName">> => string(),
 %%   <<"Health">> => list(any()),
 %%   <<"HealthStatus">> => list(any()),
@@ -984,7 +984,7 @@
 %% validate_configuration_settings_message() :: #{
 %%   <<"ApplicationName">> := string(),
 %%   <<"EnvironmentName">> => string(),
-%%   <<"OptionSettings">> := list(configuration_option_setting()()),
+%%   <<"OptionSettings">> := list(configuration_option_setting()),
 %%   <<"TemplateName">> => string()
 %% }
 -type validate_configuration_settings_message() :: #{binary() => any()}.
@@ -1010,7 +1010,7 @@
 
 %% Example:
 %% configuration_options_description() :: #{
-%%   <<"Options">> => list(configuration_option_description()()),
+%%   <<"Options">> => list(configuration_option_description()),
 %%   <<"PlatformArn">> => string(),
 %%   <<"SolutionStackName">> => string()
 %% }
@@ -1018,7 +1018,7 @@
 
 %% Example:
 %% application_descriptions_message() :: #{
-%%   <<"Applications">> => list(application_description()())
+%%   <<"Applications">> => list(application_description())
 %% }
 -type application_descriptions_message() :: #{binary() => any()}.
 
@@ -1083,14 +1083,14 @@
 
 %% Example:
 %% describe_environment_managed_actions_result() :: #{
-%%   <<"ManagedActions">> => list(managed_action()())
+%%   <<"ManagedActions">> => list(managed_action())
 %% }
 -type describe_environment_managed_actions_result() :: #{binary() => any()}.
 
 %% Example:
 %% resource_tags_description_message() :: #{
 %%   <<"ResourceArn">> => string(),
-%%   <<"ResourceTags">> => list(tag()())
+%%   <<"ResourceTags">> => list(tag())
 %% }
 -type resource_tags_description_message() :: #{binary() => any()}.
 
@@ -1102,7 +1102,7 @@
 
 %% Example:
 %% configuration_settings_descriptions() :: #{
-%%   <<"ConfigurationSettings">> => list(configuration_settings_description()())
+%%   <<"ConfigurationSettings">> => list(configuration_settings_description())
 %% }
 -type configuration_settings_descriptions() :: #{binary() => any()}.
 
@@ -1123,18 +1123,18 @@
 %% application_description() :: #{
 %%   <<"ApplicationArn">> => string(),
 %%   <<"ApplicationName">> => string(),
-%%   <<"ConfigurationTemplates">> => list(string()()),
+%%   <<"ConfigurationTemplates">> => list(string()),
 %%   <<"DateCreated">> => non_neg_integer(),
 %%   <<"DateUpdated">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"ResourceLifecycleConfig">> => application_resource_lifecycle_config(),
-%%   <<"Versions">> => list(string()())
+%%   <<"Versions">> => list(string())
 %% }
 -type application_description() :: #{binary() => any()}.
 
 %% Example:
 %% list_platform_branches_request() :: #{
-%%   <<"Filters">> => list(search_filter()()),
+%%   <<"Filters">> => list(search_filter()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1148,7 +1148,7 @@
 
 %% Example:
 %% describe_applications_message() :: #{
-%%   <<"ApplicationNames">> => list(string()())
+%%   <<"ApplicationNames">> => list(string())
 %% }
 -type describe_applications_message() :: #{binary() => any()}.
 
@@ -1160,7 +1160,7 @@
 
 %% Example:
 %% application_version_descriptions_message() :: #{
-%%   <<"ApplicationVersions">> => list(application_version_description()()),
+%%   <<"ApplicationVersions">> => list(application_version_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type application_version_descriptions_message() :: #{binary() => any()}.
@@ -1196,11 +1196,11 @@
 %%   <<"ApplicationName">> := string(),
 %%   <<"Description">> => string(),
 %%   <<"EnvironmentId">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()()),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
 %%   <<"PlatformArn">> => string(),
 %%   <<"SolutionStackName">> => string(),
 %%   <<"SourceConfiguration">> => source_configuration(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateName">> := string()
 %% }
 -type create_configuration_template_message() :: #{binary() => any()}.
@@ -1269,7 +1269,7 @@
 %% Example:
 %% list_platform_versions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PlatformSummaryList">> => list(platform_summary()())
+%%   <<"PlatformSummaryList">> => list(platform_summary())
 %% }
 -type list_platform_versions_result() :: #{binary() => any()}.
 
@@ -1295,8 +1295,8 @@
 %% Example:
 %% update_tags_for_resource_message() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagsToAdd">> => list(tag()()),
-%%   <<"TagsToRemove">> => list(string()())
+%%   <<"TagsToAdd">> => list(tag()),
+%%   <<"TagsToRemove">> => list(string())
 %% }
 -type update_tags_for_resource_message() :: #{binary() => any()}.
 
@@ -1318,7 +1318,7 @@
 %%   <<"ApplicationName">> := string(),
 %%   <<"Description">> => string(),
 %%   <<"ResourceLifecycleConfig">> => application_resource_lifecycle_config(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_application_message() :: #{binary() => any()}.
 
@@ -1337,11 +1337,11 @@
 %%   <<"EnvironmentName">> => string(),
 %%   <<"GroupName">> => string(),
 %%   <<"OperationsRole">> => string(),
-%%   <<"OptionSettings">> => list(configuration_option_setting()()),
-%%   <<"OptionsToRemove">> => list(option_specification()()),
+%%   <<"OptionSettings">> => list(configuration_option_setting()),
+%%   <<"OptionsToRemove">> => list(option_specification()),
 %%   <<"PlatformArn">> => string(),
 %%   <<"SolutionStackName">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TemplateName">> => string(),
 %%   <<"Tier">> => environment_tier(),
 %%   <<"VersionLabel">> => string()

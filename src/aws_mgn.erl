@@ -227,7 +227,7 @@
 
 %% Example:
 %% list_exports_request_filters() :: #{
-%%   <<"exportIDs">> => list(string()())
+%%   <<"exportIDs">> => list(string())
 %% }
 -type list_exports_request_filters() :: #{binary() => any()}.
 
@@ -242,7 +242,7 @@
 
 %% Example:
 %% list_connectors_response() :: #{
-%%   <<"items">> => list(connector()()),
+%%   <<"items">> => list(connector()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_connectors_response() :: #{binary() => any()}.
@@ -251,7 +251,7 @@
 %% Example:
 %% list_waves_request_filters() :: #{
 %%   <<"isArchived">> => [boolean()],
-%%   <<"waveIDs">> => list(string()())
+%%   <<"waveIDs">> => list(string())
 %% }
 -type list_waves_request_filters() :: #{binary() => any()}.
 
@@ -275,7 +275,7 @@
 
 %% Example:
 %% describe_launch_configuration_templates_request() :: #{
-%%   <<"launchConfigurationTemplateIDs">> => list(string()()),
+%%   <<"launchConfigurationTemplateIDs">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -316,7 +316,7 @@
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"replicationConfigurationTemplateID">> := string(),
 %%   <<"replicationServerInstanceType">> => string(),
-%%   <<"replicationServersSecurityGroupsIDs">> => list(string()()),
+%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
 %%   <<"stagingAreaSubnetId">> => string(),
 %%   <<"stagingAreaTags">> => map(),
 %%   <<"tags">> => map(),
@@ -356,7 +356,7 @@
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"replicationConfigurationTemplateID">> := string(),
 %%   <<"replicationServerInstanceType">> => string(),
-%%   <<"replicationServersSecurityGroupsIDs">> => list(string()()),
+%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
 %%   <<"stagingAreaSubnetId">> => string(),
 %%   <<"stagingAreaTags">> => map(),
 %%   <<"useDedicatedReplicationServer">> => [boolean()],
@@ -399,7 +399,7 @@
 
 %% Example:
 %% network_interface() :: #{
-%%   <<"ips">> => list(string()()),
+%%   <<"ips">> => list(string()),
 %%   <<"isPrimary">> => [boolean()],
 %%   <<"macAddress">> => string()
 %% }
@@ -423,7 +423,7 @@
 %%   <<"ebsEncryption">> := string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"replicationServerInstanceType">> := string(),
-%%   <<"replicationServersSecurityGroupsIDs">> := list(string()()),
+%%   <<"replicationServersSecurityGroupsIDs">> := list(string()),
 %%   <<"stagingAreaSubnetId">> := string(),
 %%   <<"stagingAreaTags">> := map(),
 %%   <<"tags">> => map(),
@@ -449,7 +449,7 @@
 %% Example:
 %% associate_applications_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"applicationIDs">> := list(string()()),
+%%   <<"applicationIDs">> := list(string()),
 %%   <<"waveID">> := string()
 %% }
 -type associate_applications_request() :: #{binary() => any()}.
@@ -465,9 +465,9 @@
 
 %% Example:
 %% list_applications_request_filters() :: #{
-%%   <<"applicationIDs">> => list(string()()),
+%%   <<"applicationIDs">> => list(string()),
 %%   <<"isArchived">> => [boolean()],
-%%   <<"waveIDs">> => list(string()())
+%%   <<"waveIDs">> => list(string())
 %% }
 -type list_applications_request_filters() :: #{binary() => any()}.
 
@@ -503,7 +503,7 @@
 %% Example:
 %% start_test_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"sourceServerIDs">> := list(string()()),
+%%   <<"sourceServerIDs">> := list(string()),
 %%   <<"tags">> => map()
 %% }
 -type start_test_request() :: #{binary() => any()}.
@@ -570,14 +570,14 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_template_actions_response() :: #{
-%%   <<"items">> => list(template_action_document()()),
+%%   <<"items">> => list(template_action_document()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_template_actions_response() :: #{binary() => any()}.
@@ -616,7 +616,7 @@
 
 %% Example:
 %% list_source_server_actions_response() :: #{
-%%   <<"items">> => list(source_server_action_document()()),
+%%   <<"items">> => list(source_server_action_document()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_source_server_actions_response() :: #{binary() => any()}.
@@ -689,7 +689,7 @@
 
 %% Example:
 %% list_imports_response() :: #{
-%%   <<"items">> => list(import_task()()),
+%%   <<"items">> => list(import_task()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_imports_response() :: #{binary() => any()}.
@@ -708,7 +708,7 @@
 
 %% Example:
 %% source_server_actions_request_filters() :: #{
-%%   <<"actionIDs">> => list(string()())
+%%   <<"actionIDs">> => list(string())
 %% }
 -type source_server_actions_request_filters() :: #{binary() => any()}.
 
@@ -724,11 +724,11 @@
 
 %% Example:
 %% source_properties() :: #{
-%%   <<"cpus">> => list(c_p_u()()),
-%%   <<"disks">> => list(disk()()),
+%%   <<"cpus">> => list(c_p_u()),
+%%   <<"disks">> => list(disk()),
 %%   <<"identificationHints">> => identification_hints(),
 %%   <<"lastUpdatedDateTime">> => string(),
-%%   <<"networkInterfaces">> => list(network_interface()()),
+%%   <<"networkInterfaces">> => list(network_interface()),
 %%   <<"os">> => o_s(),
 %%   <<"ramBytes">> => float(),
 %%   <<"recommendedInstanceType">> => string()
@@ -738,7 +738,7 @@
 
 %% Example:
 %% describe_source_servers_response() :: #{
-%%   <<"items">> => list(source_server()()),
+%%   <<"items">> => list(source_server()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_source_servers_response() :: #{binary() => any()}.
@@ -746,7 +746,7 @@
 
 %% Example:
 %% describe_replication_configuration_templates_response() :: #{
-%%   <<"items">> => list(replication_configuration_template()()),
+%%   <<"items">> => list(replication_configuration_template()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_replication_configuration_templates_response() :: #{binary() => any()}.
@@ -809,9 +809,9 @@
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"name">> => string(),
-%%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()()),
+%%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()),
 %%   <<"replicationServerInstanceType">> => string(),
-%%   <<"replicationServersSecurityGroupsIDs">> => list(string()()),
+%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
 %%   <<"sourceServerID">> => string(),
 %%   <<"stagingAreaSubnetId">> => string(),
 %%   <<"stagingAreaTags">> => map(),
@@ -824,7 +824,7 @@
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"code">> => string(),
-%%   <<"errors">> => list(error_details()()),
+%%   <<"errors">> => list(error_details()),
 %%   <<"message">> => string(),
 %%   <<"resourceId">> => string(),
 %%   <<"resourceType">> => string()
@@ -853,7 +853,7 @@
 %% Example:
 %% disassociate_applications_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"applicationIDs">> := list(string()()),
+%%   <<"applicationIDs">> := list(string()),
 %%   <<"waveID">> := string()
 %% }
 -type disassociate_applications_request() :: #{binary() => any()}.
@@ -882,7 +882,7 @@
 %%   <<"deployment">> => string(),
 %%   <<"s3LogBucket">> => string(),
 %%   <<"s3OutputKeyPrefix">> => string(),
-%%   <<"ssmDocuments">> => list(ssm_document()())
+%%   <<"ssmDocuments">> => list(ssm_document())
 %% }
 -type post_launch_actions() :: #{binary() => any()}.
 
@@ -910,7 +910,7 @@
 
 %% Example:
 %% post_launch_actions_status() :: #{
-%%   <<"postLaunchActionsLaunchStatusList">> => list(job_post_launch_actions_launch_status()()),
+%%   <<"postLaunchActionsLaunchStatusList">> => list(job_post_launch_actions_launch_status()),
 %%   <<"ssmAgentDiscoveryDatetime">> => string()
 %% }
 -type post_launch_actions_status() :: #{binary() => any()}.
@@ -1048,7 +1048,7 @@
 %%   <<"etaDateTime">> => string(),
 %%   <<"lagDuration">> => string(),
 %%   <<"lastSnapshotDateTime">> => string(),
-%%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk()())
+%%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk())
 %% }
 -type data_replication_info() :: #{binary() => any()}.
 
@@ -1063,11 +1063,11 @@
 
 %% Example:
 %% describe_source_servers_request_filters() :: #{
-%%   <<"applicationIDs">> => list(string()()),
+%%   <<"applicationIDs">> => list(string()),
 %%   <<"isArchived">> => [boolean()],
-%%   <<"lifeCycleStates">> => list(string()()),
-%%   <<"replicationTypes">> => list(string()()),
-%%   <<"sourceServerIDs">> => list(string()())
+%%   <<"lifeCycleStates">> => list(string()),
+%%   <<"replicationTypes">> => list(string()),
+%%   <<"sourceServerIDs">> => list(string())
 %% }
 -type describe_source_servers_request_filters() :: #{binary() => any()}.
 
@@ -1076,7 +1076,7 @@
 %% associate_source_servers_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"applicationID">> := string(),
-%%   <<"sourceServerIDs">> := list(string()())
+%%   <<"sourceServerIDs">> := list(string())
 %% }
 -type associate_source_servers_request() :: #{binary() => any()}.
 
@@ -1091,7 +1091,7 @@
 %% Example:
 %% terminate_target_instances_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"sourceServerIDs">> := list(string()()),
+%%   <<"sourceServerIDs">> := list(string()),
 %%   <<"tags">> => map()
 %% }
 -type terminate_target_instances_request() :: #{binary() => any()}.
@@ -1152,7 +1152,7 @@
 
 %% Example:
 %% describe_vcenter_clients_response() :: #{
-%%   <<"items">> => list(vcenter_client()()),
+%%   <<"items">> => list(vcenter_client()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_vcenter_clients_response() :: #{binary() => any()}.
@@ -1176,7 +1176,7 @@
 %% Example:
 %% describe_jobs_request_filters() :: #{
 %%   <<"fromDate">> => string(),
-%%   <<"jobIDs">> => list(string()()),
+%%   <<"jobIDs">> => list(string()),
 %%   <<"toDate">> => string()
 %% }
 -type describe_jobs_request_filters() :: #{binary() => any()}.
@@ -1186,14 +1186,14 @@
 %% data_replication_initiation() :: #{
 %%   <<"nextAttemptDateTime">> => string(),
 %%   <<"startDateTime">> => string(),
-%%   <<"steps">> => list(data_replication_initiation_step()())
+%%   <<"steps">> => list(data_replication_initiation_step())
 %% }
 -type data_replication_initiation() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_managed_accounts_response() :: #{
-%%   <<"items">> => list(managed_account()()),
+%%   <<"items">> => list(managed_account()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_accounts_response() :: #{binary() => any()}.
@@ -1216,7 +1216,7 @@
 
 %% Example:
 %% describe_launch_configuration_templates_response() :: #{
-%%   <<"items">> => list(launch_configuration_template()()),
+%%   <<"items">> => list(launch_configuration_template()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_launch_configuration_templates_response() :: #{binary() => any()}.
@@ -1378,7 +1378,7 @@
 
 %% Example:
 %% list_export_errors_response() :: #{
-%%   <<"items">> => list(export_task_error()()),
+%%   <<"items">> => list(export_task_error()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_export_errors_response() :: #{binary() => any()}.
@@ -1426,7 +1426,7 @@
 
 %% Example:
 %% describe_jobs_response() :: #{
-%%   <<"items">> => list(job()()),
+%%   <<"items">> => list(job()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_jobs_response() :: #{binary() => any()}.
@@ -1461,7 +1461,7 @@
 %% Example:
 %% validation_exception() :: #{
 %%   <<"code">> => string(),
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => string()
 %% }
@@ -1486,7 +1486,7 @@
 %%   <<"endDateTime">> => string(),
 %%   <<"initiatedBy">> => string(),
 %%   <<"jobID">> => string(),
-%%   <<"participatingServers">> => list(participating_server()()),
+%%   <<"participatingServers">> => list(participating_server()),
 %%   <<"status">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"type">> => string()
@@ -1564,7 +1564,7 @@
 
 %% Example:
 %% list_imports_request_filters() :: #{
-%%   <<"importIDs">> => list(string()())
+%%   <<"importIDs">> => list(string())
 %% }
 -type list_imports_request_filters() :: #{binary() => any()}.
 
@@ -1617,7 +1617,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"items">> => list(application()()),
+%%   <<"items">> => list(application()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.
@@ -1658,9 +1658,9 @@
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"name">> => string(),
-%%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()()),
+%%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()),
 %%   <<"replicationServerInstanceType">> => string(),
-%%   <<"replicationServersSecurityGroupsIDs">> => list(string()()),
+%%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
 %%   <<"sourceServerID">> := string(),
 %%   <<"stagingAreaSubnetId">> => string(),
 %%   <<"stagingAreaTags">> => map(),
@@ -1710,7 +1710,7 @@
 
 %% Example:
 %% list_import_errors_response() :: #{
-%%   <<"items">> => list(import_task_error()()),
+%%   <<"items">> => list(import_task_error()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_import_errors_response() :: #{binary() => any()}.
@@ -1718,7 +1718,7 @@
 
 %% Example:
 %% list_waves_response() :: #{
-%%   <<"items">> => list(wave()()),
+%%   <<"items">> => list(wave()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_waves_response() :: #{binary() => any()}.
@@ -1774,7 +1774,7 @@
 %% disassociate_source_servers_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"applicationID">> := string(),
-%%   <<"sourceServerIDs">> := list(string()())
+%%   <<"sourceServerIDs">> := list(string())
 %% }
 -type disassociate_source_servers_request() :: #{binary() => any()}.
 
@@ -1783,7 +1783,7 @@
 %% describe_replication_configuration_templates_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"replicationConfigurationTemplateIDs">> => list(string()())
+%%   <<"replicationConfigurationTemplateIDs">> => list(string())
 %% }
 -type describe_replication_configuration_templates_request() :: #{binary() => any()}.
 
@@ -1797,14 +1797,14 @@
 
 %% Example:
 %% list_connectors_request_filters() :: #{
-%%   <<"connectorIDs">> => list(string()())
+%%   <<"connectorIDs">> => list(string())
 %% }
 -type list_connectors_request_filters() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_job_log_items_response() :: #{
-%%   <<"items">> => list(job_log()()),
+%%   <<"items">> => list(job_log()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_job_log_items_response() :: #{binary() => any()}.
@@ -1864,7 +1864,7 @@
 %% Example:
 %% start_cutover_request() :: #{
 %%   <<"accountID">> => string(),
-%%   <<"sourceServerIDs">> := list(string()()),
+%%   <<"sourceServerIDs">> := list(string()),
 %%   <<"tags">> => map()
 %% }
 -type start_cutover_request() :: #{binary() => any()}.
@@ -1881,7 +1881,7 @@
 
 %% Example:
 %% template_actions_request_filters() :: #{
-%%   <<"actionIDs">> => list(string()())
+%%   <<"actionIDs">> => list(string())
 %% }
 -type template_actions_request_filters() :: #{binary() => any()}.
 
@@ -1896,7 +1896,7 @@
 
 %% Example:
 %% list_exports_response() :: #{
-%%   <<"items">> => list(export_task()()),
+%%   <<"items">> => list(export_task()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_exports_response() :: #{binary() => any()}.

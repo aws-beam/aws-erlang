@@ -80,7 +80,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -88,7 +88,7 @@
 %% registration_config() :: #{
 %%   <<"DuplicateRegistrationAction">> => string(),
 %%   <<"FraudsterSimilarityThreshold">> => integer(),
-%%   <<"WatchlistIds">> => list(string()())
+%%   <<"WatchlistIds">> => list(string())
 %% }
 -type registration_config() :: #{binary() => any()}.
 
@@ -101,7 +101,7 @@
 %% Example:
 %% list_speakers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SpeakerSummaries">> => list(speaker_summary()())
+%%   <<"SpeakerSummaries">> => list(speaker_summary())
 %% }
 -type list_speakers_response() :: #{binary() => any()}.
 
@@ -225,7 +225,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -236,7 +236,7 @@
 %%   <<"Configuration">> => fraud_detection_configuration(),
 %%   <<"Decision">> => string(),
 %%   <<"FraudDetectionResultId">> => string(),
-%%   <<"Reasons">> => list(string()()),
+%%   <<"Reasons">> => list(string()),
 %%   <<"RiskDetails">> => fraud_risk_details()
 %% }
 -type fraud_detection_result() :: #{binary() => any()}.
@@ -293,13 +293,13 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainId">> => string(),
 %%   <<"GeneratedFraudsterId">> => string(),
-%%   <<"WatchlistIds">> => list(string()())
+%%   <<"WatchlistIds">> => list(string())
 %% }
 -type fraudster_summary() :: #{binary() => any()}.
 
 %% Example:
 %% list_speaker_enrollment_jobs_response() :: #{
-%%   <<"JobSummaries">> => list(speaker_enrollment_job_summary()()),
+%%   <<"JobSummaries">> => list(speaker_enrollment_job_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_speaker_enrollment_jobs_response() :: #{binary() => any()}.
@@ -365,7 +365,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_domain_request() :: #{binary() => any()}.
 
@@ -409,7 +409,7 @@
 
 %% Example:
 %% list_domains_response() :: #{
-%%   <<"DomainSummaries">> => list(domain_summary()()),
+%%   <<"DomainSummaries">> => list(domain_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_domains_response() :: #{binary() => any()}.
@@ -439,7 +439,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -516,7 +516,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainId">> => string(),
 %%   <<"GeneratedFraudsterId">> => string(),
-%%   <<"WatchlistIds">> => list(string()())
+%%   <<"WatchlistIds">> => list(string())
 %% }
 -type fraudster() :: #{binary() => any()}.
 
@@ -611,7 +611,7 @@
 %% Example:
 %% list_watchlists_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WatchlistSummaries">> => list(watchlist_summary()())
+%%   <<"WatchlistSummaries">> => list(watchlist_summary())
 %% }
 -type list_watchlists_response() :: #{binary() => any()}.
 
@@ -657,7 +657,7 @@
 
 %% Example:
 %% list_fraudsters_response() :: #{
-%%   <<"FraudsterSummaries">> => list(fraudster_summary()()),
+%%   <<"FraudsterSummaries">> => list(fraudster_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_fraudsters_response() :: #{binary() => any()}.
@@ -676,7 +676,7 @@
 
 %% Example:
 %% list_fraudster_registration_jobs_response() :: #{
-%%   <<"JobSummaries">> => list(fraudster_registration_job_summary()()),
+%%   <<"JobSummaries">> => list(fraudster_registration_job_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_fraudster_registration_jobs_response() :: #{binary() => any()}.
@@ -769,7 +769,7 @@
 %% enrollment_job_fraud_detection_config() :: #{
 %%   <<"FraudDetectionAction">> => string(),
 %%   <<"RiskThreshold">> => integer(),
-%%   <<"WatchlistIds">> => list(string()())
+%%   <<"WatchlistIds">> => list(string())
 %% }
 -type enrollment_job_fraud_detection_config() :: #{binary() => any()}.
 

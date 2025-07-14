@@ -310,7 +310,7 @@
 %%   <<"AuthorizerType">> => list(any()),
 %%   <<"AuthorizerUri">> => string(),
 %%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentitySource">> => list(string()),
 %%   <<"IdentityValidationExpression">> => string(),
 %%   <<"JwtConfiguration">> => j_w_t_configuration(),
 %%   <<"Name">> => string()
@@ -327,7 +327,7 @@
 %%   <<"AuthorizerType">> => list(any()),
 %%   <<"AuthorizerUri">> => string(),
 %%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentitySource">> => list(string()),
 %%   <<"IdentityValidationExpression">> => string(),
 %%   <<"JwtConfiguration">> => j_w_t_configuration(),
 %%   <<"Name">> => string()
@@ -357,7 +357,7 @@
 
 %% Example:
 %% get_vpc_links_response() :: #{
-%%   <<"Items">> => list(vpc_link()()),
+%%   <<"Items">> => list(vpc_link()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_vpc_links_response() :: #{binary() => any()}.
@@ -480,7 +480,7 @@
 
 %% Example:
 %% get_authorizers_response() :: #{
-%%   <<"Items">> => list(authorizer()()),
+%%   <<"Items">> => list(authorizer()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_authorizers_response() :: #{binary() => any()}.
@@ -504,14 +504,14 @@
 %% Example:
 %% list_routing_rules_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RoutingRules">> => list(routing_rule()())
+%%   <<"RoutingRules">> => list(routing_rule())
 %% }
 -type list_routing_rules_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_route_responses_response() :: #{
-%%   <<"Items">> => list(route_response()()),
+%%   <<"Items">> => list(route_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_route_responses_response() :: #{binary() => any()}.
@@ -521,7 +521,7 @@
 %% mutual_tls_authentication() :: #{
 %%   <<"TruststoreUri">> => string(),
 %%   <<"TruststoreVersion">> => string(),
-%%   <<"TruststoreWarnings">> => list(string()())
+%%   <<"TruststoreWarnings">> => list(string())
 %% }
 -type mutual_tls_authentication() :: #{binary() => any()}.
 
@@ -576,14 +576,14 @@
 %%   <<"Description">> => string(),
 %%   <<"DisableExecuteApiEndpoint">> => boolean(),
 %%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"ImportInfo">> => list(string()()),
+%%   <<"ImportInfo">> => list(string()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"ProtocolType">> => list(any()),
 %%   <<"RouteSelectionExpression">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Version">> => string(),
-%%   <<"Warnings">> => list(string()())
+%%   <<"Warnings">> => list(string())
 %% }
 -type create_api_response() :: #{binary() => any()}.
 
@@ -602,7 +602,7 @@
 %% update_route_result() :: #{
 %%   <<"ApiGatewayManaged">> => boolean(),
 %%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationScopes">> => list(string()),
 %%   <<"AuthorizationType">> => list(any()),
 %%   <<"AuthorizerId">> => string(),
 %%   <<"ModelSelectionExpression">> => string(),
@@ -619,8 +619,8 @@
 
 %% Example:
 %% put_routing_rule_response() :: #{
-%%   <<"Actions">> => list(routing_rule_action()()),
-%%   <<"Conditions">> => list(routing_rule_condition()()),
+%%   <<"Actions">> => list(routing_rule_action()),
+%%   <<"Conditions">> => list(routing_rule_condition()),
 %%   <<"Priority">> => integer(),
 %%   <<"RoutingRuleArn">> => string(),
 %%   <<"RoutingRuleId">> => string()
@@ -654,7 +654,7 @@
 %% Example:
 %% create_domain_name_request() :: #{
 %%   <<"DomainName">> := string(),
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input(),
 %%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
@@ -686,8 +686,8 @@
 %% vpc_link() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"VpcLinkId">> => string(),
 %%   <<"VpcLinkStatus">> => list(any()),
@@ -719,7 +719,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -748,7 +748,7 @@
 %%   <<"AuthorizerType">> := list(any()),
 %%   <<"AuthorizerUri">> => string(),
 %%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> := list(string()()),
+%%   <<"IdentitySource">> := list(string()),
 %%   <<"IdentityValidationExpression">> => string(),
 %%   <<"JwtConfiguration">> => j_w_t_configuration(),
 %%   <<"Name">> := string()
@@ -801,7 +801,7 @@
 %%   <<"AuthorizerType">> => list(any()),
 %%   <<"AuthorizerUri">> => string(),
 %%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentitySource">> => list(string()),
 %%   <<"IdentityValidationExpression">> => string(),
 %%   <<"JwtConfiguration">> => j_w_t_configuration(),
 %%   <<"Name">> => string()
@@ -845,8 +845,8 @@
 
 %% Example:
 %% put_routing_rule_request() :: #{
-%%   <<"Actions">> := list(routing_rule_action()()),
-%%   <<"Conditions">> := list(routing_rule_condition()()),
+%%   <<"Actions">> := list(routing_rule_action()),
+%%   <<"Conditions">> := list(routing_rule_condition()),
 %%   <<"DomainNameId">> => string(),
 %%   <<"Priority">> := integer()
 %% }
@@ -883,14 +883,14 @@
 %%   <<"Description">> => string(),
 %%   <<"DisableExecuteApiEndpoint">> => boolean(),
 %%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"ImportInfo">> => list(string()()),
+%%   <<"ImportInfo">> => list(string()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"ProtocolType">> => list(any()),
 %%   <<"RouteSelectionExpression">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Version">> => string(),
-%%   <<"Warnings">> => list(string()())
+%%   <<"Warnings">> => list(string())
 %% }
 -type get_api_response() :: #{binary() => any()}.
 
@@ -910,14 +910,14 @@
 %%   <<"Description">> => string(),
 %%   <<"DisableExecuteApiEndpoint">> => boolean(),
 %%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"ImportInfo">> => list(string()()),
+%%   <<"ImportInfo">> => list(string()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"ProtocolType">> => list(any()),
 %%   <<"RouteSelectionExpression">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Version">> => string(),
-%%   <<"Warnings">> => list(string()())
+%%   <<"Warnings">> => list(string())
 %% }
 -type update_api_response() :: #{binary() => any()}.
 
@@ -928,7 +928,7 @@
 
 %% Example:
 %% j_w_t_configuration() :: #{
-%%   <<"Audience">> => list(string()()),
+%%   <<"Audience">> => list(string()),
 %%   <<"Issuer">> => string()
 %% }
 -type j_w_t_configuration() :: #{binary() => any()}.
@@ -937,8 +937,8 @@
 %% Example:
 %% create_vpc_link_request() :: #{
 %%   <<"Name">> := string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> := list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> := list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type create_vpc_link_request() :: #{binary() => any()}.
@@ -955,7 +955,7 @@
 
 %% Example:
 %% routing_rule_match_headers() :: #{
-%%   <<"AnyOf">> => list(routing_rule_match_header_value()())
+%%   <<"AnyOf">> => list(routing_rule_match_header_value())
 %% }
 -type routing_rule_match_headers() :: #{binary() => any()}.
 
@@ -964,8 +964,8 @@
 %% create_vpc_link_response() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"VpcLinkId">> => string(),
 %%   <<"VpcLinkStatus">> => list(any()),
@@ -984,7 +984,7 @@
 
 %% Example:
 %% get_integration_responses_response() :: #{
-%%   <<"Items">> => list(integration_response()()),
+%%   <<"Items">> => list(integration_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_integration_responses_response() :: #{binary() => any()}.
@@ -1002,7 +1002,7 @@
 %% route() :: #{
 %%   <<"ApiGatewayManaged">> => boolean(),
 %%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationScopes">> => list(string()),
 %%   <<"AuthorizationType">> => list(any()),
 %%   <<"AuthorizerId">> => string(),
 %%   <<"ModelSelectionExpression">> => string(),
@@ -1047,7 +1047,7 @@
 %%   <<"ApiMappingSelectionExpression">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"DomainNameArn">> => string(),
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
 %%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
@@ -1081,7 +1081,7 @@
 
 %% Example:
 %% get_routes_response() :: #{
-%%   <<"Items">> => list(route()()),
+%%   <<"Items">> => list(route()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_routes_response() :: #{binary() => any()}.
@@ -1168,14 +1168,14 @@
 %%   <<"Description">> => string(),
 %%   <<"DisableExecuteApiEndpoint">> => boolean(),
 %%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"ImportInfo">> => list(string()()),
+%%   <<"ImportInfo">> => list(string()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"ProtocolType">> => list(any()),
 %%   <<"RouteSelectionExpression">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Version">> => string(),
-%%   <<"Warnings">> => list(string()())
+%%   <<"Warnings">> => list(string())
 %% }
 -type reimport_api_response() :: #{binary() => any()}.
 
@@ -1183,7 +1183,7 @@
 %% Example:
 %% update_route_request() :: #{
 %%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationScopes">> => list(string()),
 %%   <<"AuthorizationType">> => list(any()),
 %%   <<"AuthorizerId">> => string(),
 %%   <<"ModelSelectionExpression">> => string(),
@@ -1199,7 +1199,7 @@
 
 %% Example:
 %% update_domain_name_request() :: #{
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication_input(),
 %%   <<"RoutingMode">> => list(any())
 %% }
@@ -1219,7 +1219,7 @@
 %%   <<"ApiMappingSelectionExpression">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"DomainNameArn">> => string(),
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
 %%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
@@ -1249,7 +1249,7 @@
 
 %% Example:
 %% get_domain_names_response() :: #{
-%%   <<"Items">> => list(domain_name()()),
+%%   <<"Items">> => list(domain_name()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_domain_names_response() :: #{binary() => any()}.
@@ -1341,7 +1341,7 @@
 
 %% Example:
 %% get_integrations_response() :: #{
-%%   <<"Items">> => list(integration()()),
+%%   <<"Items">> => list(integration()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_integrations_response() :: #{binary() => any()}.
@@ -1357,7 +1357,7 @@
 
 %% Example:
 %% get_models_response() :: #{
-%%   <<"Items">> => list(model()()),
+%%   <<"Items">> => list(model()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_models_response() :: #{binary() => any()}.
@@ -1367,7 +1367,7 @@
 %% get_route_result() :: #{
 %%   <<"ApiGatewayManaged">> => boolean(),
 %%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationScopes">> => list(string()),
 %%   <<"AuthorizationType">> => list(any()),
 %%   <<"AuthorizerId">> => string(),
 %%   <<"ModelSelectionExpression">> => string(),
@@ -1388,7 +1388,7 @@
 
 %% Example:
 %% get_stages_response() :: #{
-%%   <<"Items">> => list(stage()()),
+%%   <<"Items">> => list(stage()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_stages_response() :: #{binary() => any()}.
@@ -1406,7 +1406,7 @@
 %% create_route_result() :: #{
 %%   <<"ApiGatewayManaged">> => boolean(),
 %%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationScopes">> => list(string()),
 %%   <<"AuthorizationType">> => list(any()),
 %%   <<"AuthorizerId">> => string(),
 %%   <<"ModelSelectionExpression">> => string(),
@@ -1445,8 +1445,8 @@
 
 %% Example:
 %% create_routing_rule_response() :: #{
-%%   <<"Actions">> => list(routing_rule_action()()),
-%%   <<"Conditions">> => list(routing_rule_condition()()),
+%%   <<"Actions">> => list(routing_rule_action()),
+%%   <<"Conditions">> => list(routing_rule_condition()),
 %%   <<"Priority">> => integer(),
 %%   <<"RoutingRuleArn">> => string(),
 %%   <<"RoutingRuleId">> => string()
@@ -1539,7 +1539,7 @@
 %%   <<"AuthorizerType">> => list(any()),
 %%   <<"AuthorizerUri">> => string(),
 %%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentitySource">> => list(string()),
 %%   <<"IdentityValidationExpression">> => string(),
 %%   <<"JwtConfiguration">> => j_w_t_configuration(),
 %%   <<"Name">> => string()
@@ -1571,8 +1571,8 @@
 %% get_vpc_link_response() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"VpcLinkId">> => string(),
 %%   <<"VpcLinkStatus">> => list(any()),
@@ -1585,10 +1585,10 @@
 %% Example:
 %% cors() :: #{
 %%   <<"AllowCredentials">> => boolean(),
-%%   <<"AllowHeaders">> => list(string()()),
-%%   <<"AllowMethods">> => list(string()()),
-%%   <<"AllowOrigins">> => list(string()()),
-%%   <<"ExposeHeaders">> => list(string()()),
+%%   <<"AllowHeaders">> => list(string()),
+%%   <<"AllowMethods">> => list(string()),
+%%   <<"AllowOrigins">> => list(string()),
+%%   <<"ExposeHeaders">> => list(string()),
 %%   <<"MaxAge">> => integer()
 %% }
 -type cors() :: #{binary() => any()}.
@@ -1605,14 +1605,14 @@
 %%   <<"Description">> => string(),
 %%   <<"DisableExecuteApiEndpoint">> => boolean(),
 %%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"ImportInfo">> => list(string()()),
+%%   <<"ImportInfo">> => list(string()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"ProtocolType">> => list(any()),
 %%   <<"RouteSelectionExpression">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Version">> => string(),
-%%   <<"Warnings">> => list(string()())
+%%   <<"Warnings">> => list(string())
 %% }
 -type api() :: #{binary() => any()}.
 
@@ -1674,8 +1674,8 @@
 %% update_vpc_link_response() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"VpcLinkId">> => string(),
 %%   <<"VpcLinkStatus">> => list(any()),
@@ -1690,7 +1690,7 @@
 %%   <<"ApiMappingSelectionExpression">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"DomainNameArn">> => string(),
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
 %%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
@@ -1711,7 +1711,7 @@
 
 %% Example:
 %% get_deployments_response() :: #{
-%%   <<"Items">> => list(deployment()()),
+%%   <<"Items">> => list(deployment()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_deployments_response() :: #{binary() => any()}.
@@ -1728,14 +1728,14 @@
 %%   <<"Description">> => string(),
 %%   <<"DisableExecuteApiEndpoint">> => boolean(),
 %%   <<"DisableSchemaValidation">> => boolean(),
-%%   <<"ImportInfo">> => list(string()()),
+%%   <<"ImportInfo">> => list(string()),
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"ProtocolType">> => list(any()),
 %%   <<"RouteSelectionExpression">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Version">> => string(),
-%%   <<"Warnings">> => list(string()())
+%%   <<"Warnings">> => list(string())
 %% }
 -type import_api_response() :: #{binary() => any()}.
 
@@ -1746,7 +1746,7 @@
 
 %% Example:
 %% get_api_mappings_response() :: #{
-%%   <<"Items">> => list(api_mapping()()),
+%%   <<"Items">> => list(api_mapping()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_api_mappings_response() :: #{binary() => any()}.
@@ -1755,7 +1755,7 @@
 %% Example:
 %% create_route_request() :: #{
 %%   <<"ApiKeyRequired">> => boolean(),
-%%   <<"AuthorizationScopes">> => list(string()()),
+%%   <<"AuthorizationScopes">> => list(string()),
 %%   <<"AuthorizationType">> => list(any()),
 %%   <<"AuthorizerId">> => string(),
 %%   <<"ModelSelectionExpression">> => string(),
@@ -1779,8 +1779,8 @@
 
 %% Example:
 %% create_routing_rule_request() :: #{
-%%   <<"Actions">> := list(routing_rule_action()()),
-%%   <<"Conditions">> := list(routing_rule_condition()()),
+%%   <<"Actions">> := list(routing_rule_action()),
+%%   <<"Conditions">> := list(routing_rule_condition()),
 %%   <<"DomainNameId">> => string(),
 %%   <<"Priority">> := integer()
 %% }
@@ -1789,7 +1789,7 @@
 
 %% Example:
 %% get_apis_response() :: #{
-%%   <<"Items">> => list(api()()),
+%%   <<"Items">> => list(api()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_apis_response() :: #{binary() => any()}.
@@ -1829,8 +1829,8 @@
 
 %% Example:
 %% routing_rule() :: #{
-%%   <<"Actions">> => list(routing_rule_action()()),
-%%   <<"Conditions">> => list(routing_rule_condition()()),
+%%   <<"Actions">> => list(routing_rule_action()),
+%%   <<"Conditions">> => list(routing_rule_condition()),
 %%   <<"Priority">> => integer(),
 %%   <<"RoutingRuleArn">> => string(),
 %%   <<"RoutingRuleId">> => string()
@@ -1840,8 +1840,8 @@
 
 %% Example:
 %% get_routing_rule_response() :: #{
-%%   <<"Actions">> => list(routing_rule_action()()),
-%%   <<"Conditions">> => list(routing_rule_condition()()),
+%%   <<"Actions">> => list(routing_rule_action()),
+%%   <<"Conditions">> => list(routing_rule_condition()),
 %%   <<"Priority">> => integer(),
 %%   <<"RoutingRuleArn">> => string(),
 %%   <<"RoutingRuleId">> => string()
@@ -1885,7 +1885,7 @@
 %%   <<"ApiMappingSelectionExpression">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"DomainNameArn">> => string(),
-%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()()),
+%%   <<"DomainNameConfigurations">> => list(domain_name_configuration()),
 %%   <<"MutualTlsAuthentication">> => mutual_tls_authentication(),
 %%   <<"RoutingMode">> => list(any()),
 %%   <<"Tags">> => map()
@@ -1931,7 +1931,7 @@
 %%   <<"AuthorizerType">> => list(any()),
 %%   <<"AuthorizerUri">> => string(),
 %%   <<"EnableSimpleResponses">> => boolean(),
-%%   <<"IdentitySource">> => list(string()()),
+%%   <<"IdentitySource">> => list(string()),
 %%   <<"IdentityValidationExpression">> => string(),
 %%   <<"JwtConfiguration">> => j_w_t_configuration(),
 %%   <<"Name">> => string()
@@ -1945,7 +1945,7 @@
 
 %% Example:
 %% routing_rule_match_base_paths() :: #{
-%%   <<"AnyOf">> => list(string()())
+%%   <<"AnyOf">> => list(string())
 %% }
 -type routing_rule_match_base_paths() :: #{binary() => any()}.
 

@@ -107,13 +107,13 @@
 %% Example:
 %% gating_rule() :: #{
 %%   <<"ControlPanelArn">> => string(),
-%%   <<"GatingControls">> => list(string()()),
+%%   <<"GatingControls">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => string(),
 %%   <<"RuleConfig">> => rule_config(),
 %%   <<"SafetyRuleArn">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"TargetControls">> => list(string()()),
+%%   <<"TargetControls">> => list(string()),
 %%   <<"WaitPeriodMs">> => integer()
 %% }
 -type gating_rule() :: #{binary() => any()}.
@@ -186,7 +186,7 @@
 
 %% Example:
 %% list_control_panels_response() :: #{
-%%   <<"ControlPanels">> => list(control_panel()()),
+%%   <<"ControlPanels">> => list(control_panel()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_control_panels_response() :: #{binary() => any()}.
@@ -202,7 +202,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -284,7 +284,7 @@
 %% Example:
 %% cluster() :: #{
 %%   <<"ClusterArn">> => string(),
-%%   <<"ClusterEndpoints">> => list(cluster_endpoint()()),
+%%   <<"ClusterEndpoints">> => list(cluster_endpoint()),
 %%   <<"Name">> => string(),
 %%   <<"NetworkType">> => list(any()),
 %%   <<"Owner">> => string(),
@@ -357,14 +357,14 @@
 %% Example:
 %% list_routing_controls_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RoutingControls">> => list(routing_control()())
+%%   <<"RoutingControls">> => list(routing_control())
 %% }
 -type list_routing_controls_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_clusters_response() :: #{
-%%   <<"Clusters">> => list(cluster()()),
+%%   <<"Clusters">> => list(cluster()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_clusters_response() :: #{binary() => any()}.
@@ -425,10 +425,10 @@
 %% Example:
 %% new_gating_rule() :: #{
 %%   <<"ControlPanelArn">> => string(),
-%%   <<"GatingControls">> => list(string()()),
+%%   <<"GatingControls">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"RuleConfig">> => rule_config(),
-%%   <<"TargetControls">> => list(string()()),
+%%   <<"TargetControls">> => list(string()),
 %%   <<"WaitPeriodMs">> => integer()
 %% }
 -type new_gating_rule() :: #{binary() => any()}.
@@ -443,7 +443,7 @@
 
 %% Example:
 %% assertion_rule() :: #{
-%%   <<"AssertedControls">> => list(string()()),
+%%   <<"AssertedControls">> => list(string()),
 %%   <<"ControlPanelArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => string(),
@@ -457,7 +457,7 @@
 
 %% Example:
 %% new_assertion_rule() :: #{
-%%   <<"AssertedControls">> => list(string()()),
+%%   <<"AssertedControls">> => list(string()),
 %%   <<"ControlPanelArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RuleConfig">> => rule_config(),
@@ -508,7 +508,7 @@
 
 %% Example:
 %% list_associated_route53_health_checks_response() :: #{
-%%   <<"HealthCheckIds">> => list(string()()),
+%%   <<"HealthCheckIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_associated_route53_health_checks_response() :: #{binary() => any()}.
@@ -535,7 +535,7 @@
 %% Example:
 %% list_safety_rules_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SafetyRules">> => list(rule()())
+%%   <<"SafetyRules">> => list(rule())
 %% }
 -type list_safety_rules_response() :: #{binary() => any()}.
 

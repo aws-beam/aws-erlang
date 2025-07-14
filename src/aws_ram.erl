@@ -115,7 +115,7 @@
 %% Example:
 %% list_permissions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(resource_share_permission_summary()())
+%%   <<"permissions">> => list(resource_share_permission_summary())
 %% }
 -type list_permissions_response() :: #{binary() => any()}.
 
@@ -146,7 +146,7 @@
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"resourceShareArn">> => string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -165,7 +165,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"workIds">> => list(string()())
+%%   <<"workIds">> => list(string())
 %% }
 -type list_replace_permission_associations_work_request() :: #{binary() => any()}.
 
@@ -183,7 +183,7 @@
 %% Example:
 %% list_resources_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resource()())
+%%   <<"resources">> => list(resource())
 %% }
 -type list_resources_response() :: #{binary() => any()}.
 
@@ -230,11 +230,11 @@
 %%   <<"allowExternalPrincipals">> => boolean(),
 %%   <<"clientToken">> => string(),
 %%   <<"name">> := string(),
-%%   <<"permissionArns">> => list(string()()),
-%%   <<"principals">> => list(string()()),
-%%   <<"resourceArns">> => list(string()()),
-%%   <<"sources">> => list(string()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"permissionArns">> => list(string()),
+%%   <<"principals">> => list(string()),
+%%   <<"resourceArns">> => list(string()),
+%%   <<"sources">> => list(string()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_resource_share_request() :: #{binary() => any()}.
 
@@ -294,7 +294,7 @@
 %%   <<"permissionType">> => list(any()),
 %%   <<"resourceType">> => string(),
 %%   <<"status">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"version">> => string()
 %% }
 -type resource_share_permission_summary() :: #{binary() => any()}.
@@ -310,7 +310,7 @@
 %% Example:
 %% get_resource_share_invitations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resourceShareInvitations">> => list(resource_share_invitation()())
+%%   <<"resourceShareInvitations">> => list(resource_share_invitation())
 %% }
 -type get_resource_share_invitations_response() :: #{binary() => any()}.
 
@@ -396,7 +396,7 @@
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"resourceShareArn">> => string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -422,7 +422,7 @@
 %%   <<"receiverAccountId">> => string(),
 %%   <<"receiverArn">> => string(),
 %%   <<"resourceShareArn">> => string(),
-%%   <<"resourceShareAssociations">> => list(resource_share_association()()),
+%%   <<"resourceShareAssociations">> => list(resource_share_association()),
 %%   <<"resourceShareInvitationArn">> => string(),
 %%   <<"resourceShareName">> => string(),
 %%   <<"senderAccountId">> => string(),
@@ -456,7 +456,7 @@
 %% Example:
 %% disassociate_resource_share_response() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"resourceShareAssociations">> => list(resource_share_association()())
+%%   <<"resourceShareAssociations">> => list(resource_share_association())
 %% }
 -type disassociate_resource_share_response() :: #{binary() => any()}.
 
@@ -500,7 +500,7 @@
 %%   <<"nextToken">> => string(),
 %%   <<"principal">> => string(),
 %%   <<"resourceArn">> => string(),
-%%   <<"resourceShareArns">> => list(string()())
+%%   <<"resourceShareArns">> => list(string())
 %% }
 -type get_resource_share_associations_request() :: #{binary() => any()}.
 
@@ -526,7 +526,7 @@
 %%   <<"permissionType">> => list(any()),
 %%   <<"resourceType">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"version">> => string()
 %% }
 -type resource_share_permission_detail() :: #{binary() => any()}.
@@ -553,7 +553,7 @@
 %% Example:
 %% list_replace_permission_associations_work_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"replacePermissionAssociationsWorks">> => list(replace_permission_associations_work()())
+%%   <<"replacePermissionAssociationsWorks">> => list(replace_permission_associations_work())
 %% }
 -type list_replace_permission_associations_work_response() :: #{binary() => any()}.
 
@@ -612,9 +612,9 @@
 %%   <<"permissionArn">> => string(),
 %%   <<"permissionVersion">> => integer(),
 %%   <<"resourceOwner">> := list(any()),
-%%   <<"resourceShareArns">> => list(string()()),
+%%   <<"resourceShareArns">> => list(string()),
 %%   <<"resourceShareStatus">> => list(any()),
-%%   <<"tagFilters">> => list(tag_filter()())
+%%   <<"tagFilters">> => list(tag_filter())
 %% }
 -type get_resource_shares_request() :: #{binary() => any()}.
 
@@ -622,7 +622,7 @@
 %% Example:
 %% list_permission_versions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(resource_share_permission_summary()())
+%%   <<"permissions">> => list(resource_share_permission_summary())
 %% }
 -type list_permission_versions_response() :: #{binary() => any()}.
 
@@ -645,7 +645,7 @@
 %%   <<"resourceShareArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusMessage">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type resource_share() :: #{binary() => any()}.
 
@@ -668,7 +668,7 @@
 %% Example:
 %% list_principals_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"principals">> => list(principal()())
+%%   <<"principals">> => list(principal())
 %% }
 -type list_principals_response() :: #{binary() => any()}.
 
@@ -693,7 +693,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"principal">> => string(),
-%%   <<"resourceArns">> := list(string()())
+%%   <<"resourceArns">> := list(string())
 %% }
 -type get_resource_policies_request() :: #{binary() => any()}.
 
@@ -701,7 +701,7 @@
 %% Example:
 %% get_resource_policies_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"policies">> => list(string()())
+%%   <<"policies">> => list(string())
 %% }
 -type get_resource_policies_response() :: #{binary() => any()}.
 
@@ -709,10 +709,10 @@
 %% Example:
 %% disassociate_resource_share_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"principals">> => list(string()()),
-%%   <<"resourceArns">> => list(string()()),
+%%   <<"principals">> => list(string()),
+%%   <<"resourceArns">> => list(string()),
 %%   <<"resourceShareArn">> := string(),
-%%   <<"sources">> => list(string()())
+%%   <<"sources">> => list(string())
 %% }
 -type disassociate_resource_share_request() :: #{binary() => any()}.
 
@@ -732,7 +732,7 @@
 %%   <<"name">> := string(),
 %%   <<"policyTemplate">> := string(),
 %%   <<"resourceType">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_permission_request() :: #{binary() => any()}.
 
@@ -741,8 +741,8 @@
 %% get_resource_share_invitations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"resourceShareArns">> => list(string()()),
-%%   <<"resourceShareInvitationArns">> => list(string()())
+%%   <<"resourceShareArns">> => list(string()),
+%%   <<"resourceShareInvitationArns">> => list(string())
 %% }
 -type get_resource_share_invitations_request() :: #{binary() => any()}.
 
@@ -774,7 +774,7 @@
 %% Example:
 %% list_pending_invitation_resources_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resource()())
+%%   <<"resources">> => list(resource())
 %% }
 -type list_pending_invitation_resources_response() :: #{binary() => any()}.
 
@@ -782,10 +782,10 @@
 %% Example:
 %% associate_resource_share_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"principals">> => list(string()()),
-%%   <<"resourceArns">> => list(string()()),
+%%   <<"principals">> => list(string()),
+%%   <<"resourceArns">> => list(string()),
 %%   <<"resourceShareArn">> := string(),
-%%   <<"sources">> => list(string()())
+%%   <<"sources">> => list(string())
 %% }
 -type associate_resource_share_request() :: #{binary() => any()}.
 
@@ -793,7 +793,7 @@
 %% Example:
 %% get_resource_share_associations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resourceShareAssociations">> => list(resource_share_association()())
+%%   <<"resourceShareAssociations">> => list(resource_share_association())
 %% }
 -type get_resource_share_associations_response() :: #{binary() => any()}.
 
@@ -872,7 +872,7 @@
 %% Example:
 %% associate_resource_share_response() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"resourceShareAssociations">> => list(resource_share_association()())
+%%   <<"resourceShareAssociations">> => list(resource_share_association())
 %% }
 -type associate_resource_share_response() :: #{binary() => any()}.
 
@@ -891,7 +891,7 @@
 %% Example:
 %% list_resource_share_permissions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(resource_share_permission_summary()())
+%%   <<"permissions">> => list(resource_share_permission_summary())
 %% }
 -type list_resource_share_permissions_response() :: #{binary() => any()}.
 
@@ -901,10 +901,10 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"principal">> => string(),
-%%   <<"resourceArns">> => list(string()()),
+%%   <<"resourceArns">> => list(string()),
 %%   <<"resourceOwner">> := list(any()),
 %%   <<"resourceRegionScope">> => list(any()),
-%%   <<"resourceShareArns">> => list(string()()),
+%%   <<"resourceShareArns">> => list(string()),
 %%   <<"resourceType">> => string()
 %% }
 -type list_resources_request() :: #{binary() => any()}.
@@ -913,7 +913,7 @@
 %% Example:
 %% list_permission_associations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(associated_permission()())
+%%   <<"permissions">> => list(associated_permission())
 %% }
 -type list_permission_associations_response() :: #{binary() => any()}.
 
@@ -928,7 +928,7 @@
 %% Example:
 %% tag_filter() :: #{
 %%   <<"tagKey">> => string(),
-%%   <<"tagValues">> => list(string()())
+%%   <<"tagValues">> => list(string())
 %% }
 -type tag_filter() :: #{binary() => any()}.
 
@@ -944,10 +944,10 @@
 %% list_principals_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"principals">> => list(string()()),
+%%   <<"principals">> => list(string()),
 %%   <<"resourceArn">> => string(),
 %%   <<"resourceOwner">> := list(any()),
-%%   <<"resourceShareArns">> => list(string()()),
+%%   <<"resourceShareArns">> => list(string()),
 %%   <<"resourceType">> => string()
 %% }
 -type list_principals_request() :: #{binary() => any()}.
@@ -956,7 +956,7 @@
 %% Example:
 %% list_resource_types_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resourceTypes">> => list(service_name_and_resource_type()())
+%%   <<"resourceTypes">> => list(service_name_and_resource_type())
 %% }
 -type list_resource_types_response() :: #{binary() => any()}.
 
@@ -973,7 +973,7 @@
 %% Example:
 %% get_resource_shares_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resourceShares">> => list(resource_share()())
+%%   <<"resourceShares">> => list(resource_share())
 %% }
 -type get_resource_shares_response() :: #{binary() => any()}.
 

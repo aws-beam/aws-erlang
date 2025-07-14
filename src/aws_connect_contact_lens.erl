@@ -43,7 +43,7 @@
 
 %% Example:
 %% categories() :: #{
-%%   <<"MatchedCategories">> => list(string()()),
+%%   <<"MatchedCategories">> => list(string()),
 %%   <<"MatchedDetails">> => map()
 %% }
 -type categories() :: #{binary() => any()}.
@@ -51,7 +51,7 @@
 
 %% Example:
 %% category_details() :: #{
-%%   <<"PointsOfInterest">> => list(point_of_interest()())
+%%   <<"PointsOfInterest">> => list(point_of_interest())
 %% }
 -type category_details() :: #{binary() => any()}.
 
@@ -98,7 +98,7 @@
 %% Example:
 %% list_realtime_contact_analysis_segments_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Segments">> => list(realtime_contact_analysis_segment()())
+%%   <<"Segments">> => list(realtime_contact_analysis_segment())
 %% }
 -type list_realtime_contact_analysis_segments_response() :: #{binary() => any()}.
 
@@ -149,7 +149,7 @@
 %%   <<"Content">> => string(),
 %%   <<"EndOffsetMillis">> => integer(),
 %%   <<"Id">> => string(),
-%%   <<"IssuesDetected">> => list(issue_detected()()),
+%%   <<"IssuesDetected">> => list(issue_detected()),
 %%   <<"ParticipantId">> => string(),
 %%   <<"ParticipantRole">> => string(),
 %%   <<"Sentiment">> => list(any())

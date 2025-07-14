@@ -237,7 +237,7 @@
 
 %% Example:
 %% list_destinations_response() :: #{
-%%   <<"DestinationList">> => list(destination_summary()()),
+%%   <<"DestinationList">> => list(destination_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_destinations_response() :: #{binary() => any()}.
@@ -272,7 +272,7 @@
 
 %% Example:
 %% list_device_discoveries_response() :: #{
-%%   <<"Items">> => list(device_discovery_summary()()),
+%%   <<"Items">> => list(device_discovery_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_device_discoveries_response() :: #{binary() => any()}.
@@ -302,7 +302,7 @@
 %% send_managed_thing_command_request() :: #{
 %%   <<"AccountAssociationId">> => string(),
 %%   <<"ConnectorAssociationId">> => string(),
-%%   <<"Endpoints">> := list(command_endpoint()())
+%%   <<"Endpoints">> := list(command_endpoint())
 %% }
 -type send_managed_thing_command_request() :: #{binary() => any()}.
 
@@ -455,12 +455,12 @@
 
 %% Example:
 %% matter_capability_report_cluster() :: #{
-%%   <<"attributes">> => list(matter_capability_report_attribute()()),
-%%   <<"commands">> => list(string()()),
-%%   <<"events">> => list(string()()),
+%%   <<"attributes">> => list(matter_capability_report_attribute()),
+%%   <<"commands">> => list(string()),
+%%   <<"events">> => list(string()),
 %%   <<"fabricIndex">> => integer(),
 %%   <<"featureMap">> => float(),
-%%   <<"generatedCommands">> => list(string()()),
+%%   <<"generatedCommands">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"publicId">> => string(),
@@ -503,7 +503,7 @@
 
 %% Example:
 %% ota_task_execution_retry_config() :: #{
-%%   <<"RetryConfigCriteria">> => list(retry_config_criteria()())
+%%   <<"RetryConfigCriteria">> => list(retry_config_criteria())
 %% }
 -type ota_task_execution_retry_config() :: #{binary() => any()}.
 
@@ -550,7 +550,7 @@
 %%   <<"Brand">> => string(),
 %%   <<"ConnectorDeviceId">> => string(),
 %%   <<"ConnectorDeviceName">> => string(),
-%%   <<"DeviceTypes">> => list(string()()),
+%%   <<"DeviceTypes">> => list(string()),
 %%   <<"DiscoveredAt">> => non_neg_integer(),
 %%   <<"ManagedThingId">> => string(),
 %%   <<"Model">> => string(),
@@ -569,7 +569,7 @@
 
 %% Example:
 %% list_schema_versions_response() :: #{
-%%   <<"Items">> => list(schema_version_list_item()()),
+%%   <<"Items">> => list(schema_version_list_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_schema_versions_response() :: #{binary() => any()}.
@@ -621,7 +621,7 @@
 
 %% Example:
 %% list_cloud_connectors_response() :: #{
-%%   <<"Items">> => list(connector_item()()),
+%%   <<"Items">> => list(connector_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cloud_connectors_response() :: #{binary() => any()}.
@@ -650,7 +650,7 @@
 
 %% Example:
 %% state_endpoint() :: #{
-%%   <<"capabilities">> => list(state_capability()()),
+%%   <<"capabilities">> => list(state_capability()),
 %%   <<"endpointId">> => string()
 %% }
 -type state_endpoint() :: #{binary() => any()}.
@@ -684,7 +684,7 @@
 
 %% Example:
 %% list_credential_lockers_response() :: #{
-%%   <<"Items">> => list(credential_locker_summary()()),
+%%   <<"Items">> => list(credential_locker_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_credential_lockers_response() :: #{binary() => any()}.
@@ -700,7 +700,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -811,8 +811,8 @@
 
 %% Example:
 %% capability_report_endpoint() :: #{
-%%   <<"capabilities">> => list(capability_report_capability()()),
-%%   <<"deviceTypes">> => list(string()()),
+%%   <<"capabilities">> => list(capability_report_capability()),
+%%   <<"deviceTypes">> => list(string()),
 %%   <<"id">> => string()
 %% }
 -type capability_report_endpoint() :: #{binary() => any()}.
@@ -820,7 +820,7 @@
 
 %% Example:
 %% list_managed_thing_account_associations_response() :: #{
-%%   <<"Items">> => list(managed_thing_association()()),
+%%   <<"Items">> => list(managed_thing_association()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_managed_thing_account_associations_response() :: #{binary() => any()}.
@@ -828,7 +828,7 @@
 
 %% Example:
 %% matter_endpoint() :: #{
-%%   <<"clusters">> => list(matter_cluster()()),
+%%   <<"clusters">> => list(matter_cluster()),
 %%   <<"id">> => string()
 %% }
 -type matter_endpoint() :: #{binary() => any()}.
@@ -844,7 +844,7 @@
 
 %% Example:
 %% command_capability() :: #{
-%%   <<"actions">> => list(capability_action()()),
+%%   <<"actions">> => list(capability_action()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"version">> => string()
@@ -871,7 +871,7 @@
 %% Example:
 %% list_ota_tasks_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tasks">> => list(ota_task_summary()())
+%%   <<"Tasks">> => list(ota_task_summary())
 %% }
 -type list_ota_tasks_response() :: #{binary() => any()}.
 
@@ -889,7 +889,7 @@
 %% ota_task_scheduling_config() :: #{
 %%   <<"EndBehavior">> => list(any()),
 %%   <<"EndTime">> => string(),
-%%   <<"MaintenanceWindows">> => list(schedule_maintenance_window()()),
+%%   <<"MaintenanceWindows">> => list(schedule_maintenance_window()),
 %%   <<"StartTime">> => string()
 %% }
 -type ota_task_scheduling_config() :: #{binary() => any()}.
@@ -939,14 +939,14 @@
 %% Example:
 %% list_notification_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"NotificationConfigurationList">> => list(notification_configuration_summary()())
+%%   <<"NotificationConfigurationList">> => list(notification_configuration_summary())
 %% }
 -type list_notification_configurations_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_event_log_configurations_response() :: #{
-%%   <<"EventLogConfigurationList">> => list(event_log_configuration_summary()()),
+%%   <<"EventLogConfigurationList">> => list(event_log_configuration_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_log_configurations_response() :: #{binary() => any()}.
@@ -956,7 +956,7 @@
 %% send_connector_event_request() :: #{
 %%   <<"ConnectorDeviceId">> => string(),
 %%   <<"DeviceDiscoveryId">> => string(),
-%%   <<"Devices">> => list(device()()),
+%%   <<"Devices">> => list(device()),
 %%   <<"MatterEndpoint">> => matter_endpoint(),
 %%   <<"Message">> => string(),
 %%   <<"Operation">> := list(any()),
@@ -1030,7 +1030,7 @@
 
 %% Example:
 %% ota_task_abort_config() :: #{
-%%   <<"AbortConfigCriteriaList">> => list(abort_config_criteria()())
+%%   <<"AbortConfigCriteriaList">> => list(abort_config_criteria())
 %% }
 -type ota_task_abort_config() :: #{binary() => any()}.
 
@@ -1151,7 +1151,7 @@
 
 %% Example:
 %% get_managed_thing_state_response() :: #{
-%%   <<"Endpoints">> => list(state_endpoint()())
+%%   <<"Endpoints">> => list(state_endpoint())
 %% }
 -type get_managed_thing_state_response() :: #{binary() => any()}.
 
@@ -1189,7 +1189,7 @@
 %%   <<"Brand">> => string(),
 %%   <<"Capabilities">> => string(),
 %%   <<"CapabilityReport">> => capability_report(),
-%%   <<"CapabilitySchemas">> => list(capability_schema_item()()),
+%%   <<"CapabilitySchemas">> => list(capability_schema_item()),
 %%   <<"Classification">> => string(),
 %%   <<"CredentialLockerId">> => string(),
 %%   <<"HubNetworkMode">> => list(any()),
@@ -1233,7 +1233,7 @@
 
 %% Example:
 %% list_account_associations_response() :: #{
-%%   <<"Items">> => list(account_association_item()()),
+%%   <<"Items">> => list(account_association_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_account_associations_response() :: #{binary() => any()}.
@@ -1257,7 +1257,7 @@
 
 %% Example:
 %% list_connector_destinations_response() :: #{
-%%   <<"ConnectorDestinationList">> => list(connector_destination_summary()()),
+%%   <<"ConnectorDestinationList">> => list(connector_destination_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connector_destinations_response() :: #{binary() => any()}.
@@ -1397,7 +1397,7 @@
 
 %% Example:
 %% list_managed_thing_schemas_response() :: #{
-%%   <<"Items">> => list(managed_thing_schema_list_item()()),
+%%   <<"Items">> => list(managed_thing_schema_list_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_managed_thing_schemas_response() :: #{binary() => any()}.
@@ -1456,7 +1456,7 @@
 
 %% Example:
 %% list_provisioning_profiles_response() :: #{
-%%   <<"Items">> => list(provisioning_profile_summary()()),
+%%   <<"Items">> => list(provisioning_profile_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_provisioning_profiles_response() :: #{binary() => any()}.
@@ -1477,7 +1477,7 @@
 
 %% Example:
 %% list_ota_task_executions_response() :: #{
-%%   <<"ExecutionSummaries">> => list(ota_task_execution_summaries()()),
+%%   <<"ExecutionSummaries">> => list(ota_task_execution_summaries()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_ota_task_executions_response() :: #{binary() => any()}.
@@ -1570,7 +1570,7 @@
 
 %% Example:
 %% matter_capability_report() :: #{
-%%   <<"endpoints">> => list(matter_capability_report_endpoint()()),
+%%   <<"endpoints">> => list(matter_capability_report_endpoint()),
 %%   <<"nodeId">> => string(),
 %%   <<"version">> => string()
 %% }
@@ -1608,7 +1608,7 @@
 
 %% Example:
 %% command_endpoint() :: #{
-%%   <<"capabilities">> => list(command_capability()()),
+%%   <<"capabilities">> => list(command_capability()),
 %%   <<"endpointId">> => string()
 %% }
 -type command_endpoint() :: #{binary() => any()}.
@@ -1637,11 +1637,11 @@
 
 %% Example:
 %% capability_report_capability() :: #{
-%%   <<"actions">> => list(string()()),
-%%   <<"events">> => list(string()()),
+%%   <<"actions">> => list(string()),
+%%   <<"events">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"properties">> => list(string()()),
+%%   <<"properties">> => list(string()),
 %%   <<"version">> => string()
 %% }
 -type capability_report_capability() :: #{binary() => any()}.
@@ -1688,7 +1688,7 @@
 
 %% Example:
 %% list_managed_things_response() :: #{
-%%   <<"Items">> => list(managed_thing_summary()()),
+%%   <<"Items">> => list(managed_thing_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_managed_things_response() :: #{binary() => any()}.
@@ -1768,7 +1768,7 @@
 
 %% Example:
 %% list_discovered_devices_response() :: #{
-%%   <<"Items">> => list(discovered_device_summary()()),
+%%   <<"Items">> => list(discovered_device_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_discovered_devices_response() :: #{binary() => any()}.
@@ -1799,7 +1799,7 @@
 
 %% Example:
 %% capability_report() :: #{
-%%   <<"endpoints">> => list(capability_report_endpoint()()),
+%%   <<"endpoints">> => list(capability_report_endpoint()),
 %%   <<"nodeId">> => string(),
 %%   <<"version">> => string()
 %% }
@@ -1809,7 +1809,7 @@
 %% Example:
 %% device() :: #{
 %%   <<"CapabilityReport">> => matter_capability_report(),
-%%   <<"CapabilitySchemas">> => list(capability_schema_item()()),
+%%   <<"CapabilitySchemas">> => list(capability_schema_item()),
 %%   <<"ConnectorDeviceId">> => string(),
 %%   <<"ConnectorDeviceName">> => string(),
 %%   <<"DeviceMetadata">> => any()
@@ -1858,7 +1858,7 @@
 
 %% Example:
 %% list_ota_task_configurations_response() :: #{
-%%   <<"Items">> => list(ota_task_configuration_summary()()),
+%%   <<"Items">> => list(ota_task_configuration_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_ota_task_configurations_response() :: #{binary() => any()}.
@@ -1956,7 +1956,7 @@
 %%   <<"Brand">> => string(),
 %%   <<"Capabilities">> => string(),
 %%   <<"CapabilityReport">> => capability_report(),
-%%   <<"CapabilitySchemas">> => list(capability_schema_item()()),
+%%   <<"CapabilitySchemas">> => list(capability_schema_item()),
 %%   <<"Classification">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"CredentialLockerId">> => string(),
@@ -1973,12 +1973,12 @@
 
 %% Example:
 %% matter_capability_report_endpoint() :: #{
-%%   <<"clientClusters">> => list(string()()),
-%%   <<"clusters">> => list(matter_capability_report_cluster()()),
-%%   <<"deviceTypes">> => list(string()()),
+%%   <<"clientClusters">> => list(string()),
+%%   <<"clusters">> => list(matter_capability_report_cluster()),
+%%   <<"deviceTypes">> => list(string()),
 %%   <<"id">> => string(),
-%%   <<"parts">> => list(string()()),
-%%   <<"semanticTags">> => list(string()())
+%%   <<"parts">> => list(string()),
+%%   <<"semanticTags">> => list(string())
 %% }
 -type matter_capability_report_endpoint() :: #{binary() => any()}.
 

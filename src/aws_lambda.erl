@@ -265,7 +265,7 @@
 
 %% Example:
 %% list_functions_by_code_signing_config_response() :: #{
-%%   <<"FunctionArns">> => list(string()()),
+%%   <<"FunctionArns">> => list(string()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_functions_by_code_signing_config_response() :: #{binary() => any()}.
@@ -292,7 +292,7 @@
 
 %% Example:
 %% list_aliases_response() :: #{
-%%   <<"Aliases">> => list(alias_configuration()()),
+%%   <<"Aliases">> => list(alias_configuration()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_aliases_response() :: #{binary() => any()}.
@@ -363,7 +363,7 @@
 %%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
 %%   <<"ScalingConfig">> => scaling_config(),
 %%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
-%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()()),
+%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()),
 %%   <<"TumblingWindowInSeconds">> => integer()
 %% }
 -type update_event_source_mapping_request() :: #{binary() => any()}.
@@ -446,7 +446,7 @@
 
 %% Example:
 %% list_functions_response() :: #{
-%%   <<"Functions">> => list(function_configuration()()),
+%%   <<"Functions">> => list(function_configuration()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_functions_response() :: #{binary() => any()}.
@@ -470,14 +470,14 @@
 %% Example:
 %% list_provisioned_concurrency_configs_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"ProvisionedConcurrencyConfigs">> => list(provisioned_concurrency_config_list_item()())
+%%   <<"ProvisionedConcurrencyConfigs">> => list(provisioned_concurrency_config_list_item())
 %% }
 -type list_provisioned_concurrency_configs_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_code_signing_configs_response() :: #{
-%%   <<"CodeSigningConfigs">> => list(code_signing_config()()),
+%%   <<"CodeSigningConfigs">> => list(code_signing_config()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_code_signing_configs_response() :: #{binary() => any()}.
@@ -503,7 +503,7 @@
 
 %% Example:
 %% filter_criteria() :: #{
-%%   <<"Filters">> => list(filter()())
+%%   <<"Filters">> => list(filter())
 %% }
 -type filter_criteria() :: #{binary() => any()}.
 
@@ -605,7 +605,7 @@
 
 %% Example:
 %% list_layers_response() :: #{
-%%   <<"Layers">> => list(layers_list_item()()),
+%%   <<"Layers">> => list(layers_list_item()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_layers_response() :: #{binary() => any()}.
@@ -735,7 +735,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -746,8 +746,8 @@
 
 %% Example:
 %% image_config() :: #{
-%%   <<"Command">> => list(string()()),
-%%   <<"EntryPoint">> => list(string()()),
+%%   <<"Command">> => list(string()),
+%%   <<"EntryPoint">> => list(string()),
 %%   <<"WorkingDirectory">> => string()
 %% }
 -type image_config() :: #{binary() => any()}.
@@ -831,7 +831,7 @@
 
 %% Example:
 %% list_function_event_invoke_configs_response() :: #{
-%%   <<"FunctionEventInvokeConfigs">> => list(function_event_invoke_config()()),
+%%   <<"FunctionEventInvokeConfigs">> => list(function_event_invoke_config()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_function_event_invoke_configs_response() :: #{binary() => any()}.
@@ -881,7 +881,7 @@
 
 %% Example:
 %% list_event_source_mappings_response() :: #{
-%%   <<"EventSourceMappings">> => list(event_source_mapping_configuration()()),
+%%   <<"EventSourceMappings">> => list(event_source_mapping_configuration()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_event_source_mappings_response() :: #{binary() => any()}.
@@ -1073,16 +1073,16 @@
 %%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
 %%   <<"ParallelizationFactor">> => integer(),
 %%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
-%%   <<"Queues">> => list(string()()),
+%%   <<"Queues">> => list(string()),
 %%   <<"ScalingConfig">> => scaling_config(),
 %%   <<"SelfManagedEventSource">> => self_managed_event_source(),
 %%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
-%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()()),
+%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()),
 %%   <<"StartingPosition">> => list(any()),
 %%   <<"StartingPositionTimestamp">> => non_neg_integer(),
 %%   <<"State">> => string(),
 %%   <<"StateTransitionReason">> => string(),
-%%   <<"Topics">> => list(string()()),
+%%   <<"Topics">> => list(string()),
 %%   <<"TumblingWindowInSeconds">> => integer(),
 %%   <<"UUID">> => string()
 %% }
@@ -1116,15 +1116,15 @@
 %%   <<"MetricsConfig">> => event_source_mapping_metrics_config(),
 %%   <<"ParallelizationFactor">> => integer(),
 %%   <<"ProvisionedPollerConfig">> => provisioned_poller_config(),
-%%   <<"Queues">> => list(string()()),
+%%   <<"Queues">> => list(string()),
 %%   <<"ScalingConfig">> => scaling_config(),
 %%   <<"SelfManagedEventSource">> => self_managed_event_source(),
 %%   <<"SelfManagedKafkaEventSourceConfig">> => self_managed_kafka_event_source_config(),
-%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()()),
+%%   <<"SourceAccessConfigurations">> => list(source_access_configuration()),
 %%   <<"StartingPosition">> => list(any()),
 %%   <<"StartingPositionTimestamp">> => non_neg_integer(),
 %%   <<"Tags">> => map(),
-%%   <<"Topics">> => list(string()()),
+%%   <<"Topics">> => list(string()),
 %%   <<"TumblingWindowInSeconds">> => integer()
 %% }
 -type create_event_source_mapping_request() :: #{binary() => any()}.
@@ -1165,8 +1165,8 @@
 %% Example:
 %% vpc_config() :: #{
 %%   <<"Ipv6AllowedForDualStack">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
@@ -1302,7 +1302,7 @@
 
 %% Example:
 %% list_layer_versions_response() :: #{
-%%   <<"LayerVersions">> => list(layer_versions_list_item()()),
+%%   <<"LayerVersions">> => list(layer_versions_list_item()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_layer_versions_response() :: #{binary() => any()}.
@@ -1579,12 +1579,12 @@
 %%   <<"Version">> => string(),
 %%   <<"CodeSize">> => float(),
 %%   <<"Architectures">> => list(list(any())()),
-%%   <<"FileSystemConfigs">> => list(file_system_config()()),
+%%   <<"FileSystemConfigs">> => list(file_system_config()),
 %%   <<"LastUpdateStatusReasonCode">> => list(any()),
 %%   <<"KMSKeyArn">> => string(),
 %%   <<"PackageType">> => list(any()),
 %%   <<"LastModified">> => string(),
-%%   <<"Layers">> => list(layer()()),
+%%   <<"Layers">> => list(layer()),
 %%   <<"FunctionArn">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"VpcConfig">> => vpc_config_response(),
@@ -1683,10 +1683,10 @@
 %% Example:
 %% cors() :: #{
 %%   <<"AllowCredentials">> => boolean(),
-%%   <<"AllowHeaders">> => list(string()()),
-%%   <<"AllowMethods">> => list(string()()),
-%%   <<"AllowOrigins">> => list(string()()),
-%%   <<"ExposeHeaders">> => list(string()()),
+%%   <<"AllowHeaders">> => list(string()),
+%%   <<"AllowMethods">> => list(string()),
+%%   <<"AllowOrigins">> => list(string()),
+%%   <<"ExposeHeaders">> => list(string()),
 %%   <<"MaxAge">> => integer()
 %% }
 -type cors() :: #{binary() => any()}.
@@ -1725,11 +1725,11 @@
 %%   <<"Description">> => string(),
 %%   <<"Environment">> => environment(),
 %%   <<"EphemeralStorage">> => ephemeral_storage(),
-%%   <<"FileSystemConfigs">> => list(file_system_config()()),
+%%   <<"FileSystemConfigs">> => list(file_system_config()),
 %%   <<"Handler">> => string(),
 %%   <<"ImageConfig">> => image_config(),
 %%   <<"KMSKeyArn">> => string(),
-%%   <<"Layers">> => list(string()()),
+%%   <<"Layers">> => list(string()),
 %%   <<"LoggingConfig">> => logging_config(),
 %%   <<"MemorySize">> => integer(),
 %%   <<"RevisionId">> => string(),
@@ -1745,10 +1745,10 @@
 
 %% Example:
 %% kafka_schema_registry_config() :: #{
-%%   <<"AccessConfigs">> => list(kafka_schema_registry_access_config()()),
+%%   <<"AccessConfigs">> => list(kafka_schema_registry_access_config()),
 %%   <<"EventRecordFormat">> => list(any()),
 %%   <<"SchemaRegistryURI">> => string(),
-%%   <<"SchemaValidationConfigs">> => list(kafka_schema_validation_config()())
+%%   <<"SchemaValidationConfigs">> => list(kafka_schema_validation_config())
 %% }
 -type kafka_schema_registry_config() :: #{binary() => any()}.
 
@@ -1771,7 +1771,7 @@
 
 %% Example:
 %% list_function_url_configs_response() :: #{
-%%   <<"FunctionUrlConfigs">> => list(function_url_config()()),
+%%   <<"FunctionUrlConfigs">> => list(function_url_config()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_function_url_configs_response() :: #{binary() => any()}.
@@ -1779,7 +1779,7 @@
 
 %% Example:
 %% allowed_publishers() :: #{
-%%   <<"SigningProfileVersionArns">> => list(string()())
+%%   <<"SigningProfileVersionArns">> => list(string())
 %% }
 -type allowed_publishers() :: #{binary() => any()}.
 
@@ -1787,7 +1787,7 @@
 %% Example:
 %% list_versions_by_function_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"Versions">> => list(function_configuration()())
+%%   <<"Versions">> => list(function_configuration())
 %% }
 -type list_versions_by_function_response() :: #{binary() => any()}.
 
@@ -1795,8 +1795,8 @@
 %% Example:
 %% vpc_config_response() :: #{
 %%   <<"Ipv6AllowedForDualStack">> => boolean(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type vpc_config_response() :: #{binary() => any()}.
@@ -1840,12 +1840,12 @@
 %%   <<"Description">> => string(),
 %%   <<"Environment">> => environment(),
 %%   <<"EphemeralStorage">> => ephemeral_storage(),
-%%   <<"FileSystemConfigs">> => list(file_system_config()()),
+%%   <<"FileSystemConfigs">> => list(file_system_config()),
 %%   <<"FunctionName">> := string(),
 %%   <<"Handler">> => string(),
 %%   <<"ImageConfig">> => image_config(),
 %%   <<"KMSKeyArn">> => string(),
-%%   <<"Layers">> => list(string()()),
+%%   <<"Layers">> => list(string()),
 %%   <<"LoggingConfig">> => logging_config(),
 %%   <<"MemorySize">> => integer(),
 %%   <<"PackageType">> => list(any()),

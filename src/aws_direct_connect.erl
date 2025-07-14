@@ -163,7 +163,7 @@
 
 %% Example:
 %% describe_direct_connect_gateway_associations_result() :: #{
-%%   <<"directConnectGatewayAssociations">> => list(direct_connect_gateway_association()()),
+%%   <<"directConnectGatewayAssociations">> => list(direct_connect_gateway_association()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_direct_connect_gateway_associations_result() :: #{binary() => any()}.
@@ -173,17 +173,17 @@
 %%   <<"associatedGateway">> => associated_gateway(),
 %%   <<"directConnectGatewayId">> => string(),
 %%   <<"directConnectGatewayOwnerAccount">> => string(),
-%%   <<"existingAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()()),
+%%   <<"existingAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
 %%   <<"proposalId">> => string(),
 %%   <<"proposalState">> => list(any()),
-%%   <<"requestedAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()())
+%%   <<"requestedAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix())
 %% }
 -type direct_connect_gateway_association_proposal() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -198,7 +198,7 @@
 
 %% Example:
 %% start_bgp_failover_test_request() :: #{
-%%   <<"bgpPeers">> => list(string()()),
+%%   <<"bgpPeers">> => list(string()),
 %%   <<"testDurationInMinutes">> => integer(),
 %%   <<"virtualInterfaceId">> := string()
 %% }
@@ -206,7 +206,7 @@
 
 %% Example:
 %% describe_direct_connect_gateways_result() :: #{
-%%   <<"directConnectGateways">> => list(direct_connect_gateway()()),
+%%   <<"directConnectGateways">> => list(direct_connect_gateway()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_direct_connect_gateways_result() :: #{binary() => any()}.
@@ -251,7 +251,7 @@
 %%   <<"directConnectGatewayId">> => string(),
 %%   <<"enableSiteLink">> => boolean(),
 %%   <<"mtu">> => integer(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"virtualGatewayId">> => string(),
 %%   <<"virtualInterfaceName">> => string(),
 %%   <<"vlan">> => integer()
@@ -266,7 +266,7 @@
 
 %% Example:
 %% virtual_gateways() :: #{
-%%   <<"virtualGateways">> => list(virtual_gateway()())
+%%   <<"virtualGateways">> => list(virtual_gateway())
 %% }
 -type virtual_gateways() :: #{binary() => any()}.
 
@@ -290,7 +290,7 @@
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"mtu">> => integer(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
 %%   <<"vlan">> => integer()
 %% }
@@ -317,7 +317,7 @@
 %%   <<"lagId">> => string(),
 %%   <<"location">> := string(),
 %%   <<"providerName">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_interconnect_request() :: #{binary() => any()}.
 
@@ -342,7 +342,7 @@
 
 %% Example:
 %% describe_customer_metadata_response() :: #{
-%%   <<"agreements">> => list(customer_agreement()()),
+%%   <<"agreements">> => list(customer_agreement()),
 %%   <<"nniPartnerType">> => list(any())
 %% }
 -type describe_customer_metadata_response() :: #{binary() => any()}.
@@ -379,7 +379,7 @@
 %% Example:
 %% disassociate_mac_sec_key_response() :: #{
 %%   <<"connectionId">> => string(),
-%%   <<"macSecKeys">> => list(mac_sec_key()())
+%%   <<"macSecKeys">> => list(mac_sec_key())
 %% }
 -type disassociate_mac_sec_key_response() :: #{binary() => any()}.
 
@@ -427,7 +427,7 @@
 %%   <<"location">> => string(),
 %%   <<"providerName">> => string(),
 %%   <<"region">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type interconnect() :: #{binary() => any()}.
 
@@ -446,7 +446,7 @@
 
 %% Example:
 %% direct_connect_gateway_association() :: #{
-%%   <<"allowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()()),
+%%   <<"allowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
 %%   <<"associatedCoreNetwork">> => associated_core_network(),
 %%   <<"associatedGateway">> => associated_gateway(),
 %%   <<"associationId">> => string(),
@@ -474,7 +474,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -493,13 +493,13 @@
 
 %% Example:
 %% describe_tags_response() :: #{
-%%   <<"resourceTags">> => list(resource_tag()())
+%%   <<"resourceTags">> => list(resource_tag())
 %% }
 -type describe_tags_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_virtual_interface_test_history_request() :: #{
-%%   <<"bgpPeers">> => list(string()()),
+%%   <<"bgpPeers">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"status">> => string(),
@@ -510,14 +510,14 @@
 
 %% Example:
 %% describe_direct_connect_gateway_attachments_result() :: #{
-%%   <<"directConnectGatewayAttachments">> => list(direct_connect_gateway_attachment()()),
+%%   <<"directConnectGatewayAttachments">> => list(direct_connect_gateway_attachment()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_direct_connect_gateway_attachments_result() :: #{binary() => any()}.
 
 %% Example:
 %% virtual_interfaces() :: #{
-%%   <<"virtualInterfaces">> => list(virtual_interface()())
+%%   <<"virtualInterfaces">> => list(virtual_interface())
 %% }
 -type virtual_interfaces() :: #{binary() => any()}.
 
@@ -536,7 +536,7 @@
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"mtu">> => integer(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
 %%   <<"vlan">> => integer()
 %% }
@@ -579,7 +579,7 @@
 
 %% Example:
 %% create_lag_request() :: #{
-%%   <<"childConnectionTags">> => list(tag()()),
+%%   <<"childConnectionTags">> => list(tag()),
 %%   <<"connectionId">> => string(),
 %%   <<"connectionsBandwidth">> := string(),
 %%   <<"lagName">> := string(),
@@ -587,7 +587,7 @@
 %%   <<"numberOfConnections">> := integer(),
 %%   <<"providerName">> => string(),
 %%   <<"requestMACSec">> => boolean(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_lag_request() :: #{binary() => any()}.
 
@@ -606,7 +606,7 @@
 %% Example:
 %% list_virtual_interface_test_history_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"virtualInterfaceTestHistory">> => list(virtual_interface_test_history()())
+%%   <<"virtualInterfaceTestHistory">> => list(virtual_interface_test_history())
 %% }
 -type list_virtual_interface_test_history_response() :: #{binary() => any()}.
 
@@ -652,13 +652,13 @@
 %%   <<"loaIssueTime">> => non_neg_integer(),
 %%   <<"location">> => string(),
 %%   <<"macSecCapable">> => boolean(),
-%%   <<"macSecKeys">> => list(mac_sec_key()()),
+%%   <<"macSecKeys">> => list(mac_sec_key()),
 %%   <<"ownerAccount">> => string(),
 %%   <<"partnerName">> => string(),
 %%   <<"portEncryptionStatus">> => string(),
 %%   <<"providerName">> => string(),
 %%   <<"region">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"vlan">> => integer()
 %% }
 -type connection() :: #{binary() => any()}.
@@ -676,8 +676,8 @@
 %%   <<"asn">> => integer(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
-%%   <<"routeFilterPrefixes">> => list(route_filter_prefix()()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
+%%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
 %%   <<"vlan">> => integer()
 %% }
@@ -713,13 +713,13 @@
 %% create_direct_connect_gateway_request() :: #{
 %%   <<"amazonSideAsn">> => float(),
 %%   <<"directConnectGatewayName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_direct_connect_gateway_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_direct_connect_gateway_association_request() :: #{
-%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()()),
+%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
 %%   <<"directConnectGatewayId">> := string(),
 %%   <<"gatewayId">> => string(),
 %%   <<"virtualGatewayId">> => string()
@@ -745,9 +745,9 @@
 
 %% Example:
 %% location() :: #{
-%%   <<"availableMacSecPortSpeeds">> => list(string()()),
-%%   <<"availablePortSpeeds">> => list(string()()),
-%%   <<"availableProviders">> => list(string()()),
+%%   <<"availableMacSecPortSpeeds">> => list(string()),
+%%   <<"availablePortSpeeds">> => list(string()),
+%%   <<"availableProviders">> => list(string()),
 %%   <<"locationCode">> => string(),
 %%   <<"locationName">> => string(),
 %%   <<"region">> => string()
@@ -782,7 +782,7 @@
 
 %% Example:
 %% connections() :: #{
-%%   <<"connections">> => list(connection()())
+%%   <<"connections">> => list(connection())
 %% }
 -type connections() :: #{binary() => any()}.
 
@@ -794,7 +794,7 @@
 
 %% Example:
 %% locations() :: #{
-%%   <<"locations">> => list(location()())
+%%   <<"locations">> => list(location())
 %% }
 -type locations() :: #{binary() => any()}.
 
@@ -806,7 +806,7 @@
 
 %% Example:
 %% virtual_interface_test_history() :: #{
-%%   <<"bgpPeers">> => list(string()()),
+%%   <<"bgpPeers">> => list(string()),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"ownerAccount">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
@@ -827,7 +827,7 @@
 %%   <<"directConnectGatewayId">> => string(),
 %%   <<"enableSiteLink">> => boolean(),
 %%   <<"mtu">> => integer(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
 %%   <<"vlan">> => integer()
 %% }
@@ -841,7 +841,7 @@
 
 %% Example:
 %% describe_direct_connect_gateway_association_proposals_result() :: #{
-%%   <<"directConnectGatewayAssociationProposals">> => list(direct_connect_gateway_association_proposal()()),
+%%   <<"directConnectGatewayAssociationProposals">> => list(direct_connect_gateway_association_proposal()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_direct_connect_gateway_association_proposals_result() :: #{binary() => any()}.
@@ -855,7 +855,7 @@
 %%   <<"authKey">> => string(),
 %%   <<"awsDeviceV2">> => string(),
 %%   <<"awsLogicalDeviceId">> => string(),
-%%   <<"bgpPeers">> => list(bgp_peer()()),
+%%   <<"bgpPeers">> => list(bgp_peer()),
 %%   <<"connectionId">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"customerRouterConfig">> => string(),
@@ -865,9 +865,9 @@
 %%   <<"mtu">> => integer(),
 %%   <<"ownerAccount">> => string(),
 %%   <<"region">> => string(),
-%%   <<"routeFilterPrefixes">> => list(route_filter_prefix()()),
+%%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
 %%   <<"siteLinkEnabled">> => boolean(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"virtualGatewayId">> => string(),
 %%   <<"virtualInterfaceId">> => string(),
 %%   <<"virtualInterfaceName">> => string(),
@@ -880,7 +880,7 @@
 %% Example:
 %% resource_tag() :: #{
 %%   <<"resourceArn">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type resource_tag() :: #{binary() => any()}.
 
@@ -890,7 +890,7 @@
 %%   <<"connectionId">> := string(),
 %%   <<"connectionName">> := string(),
 %%   <<"ownerAccount">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"vlan">> := integer()
 %% }
 -type allocate_hosted_connection_request() :: #{binary() => any()}.
@@ -969,9 +969,9 @@
 
 %% Example:
 %% update_direct_connect_gateway_association_request() :: #{
-%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()()),
+%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
 %%   <<"associationId">> => string(),
-%%   <<"removeAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()())
+%%   <<"removeAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix())
 %% }
 -type update_direct_connect_gateway_association_request() :: #{binary() => any()}.
 
@@ -991,7 +991,7 @@
 
 %% Example:
 %% interconnects() :: #{
-%%   <<"interconnects">> => list(interconnect()())
+%%   <<"interconnects">> => list(interconnect())
 %% }
 -type interconnects() :: #{binary() => any()}.
 
@@ -1032,11 +1032,11 @@
 
 %% Example:
 %% create_direct_connect_gateway_association_proposal_request() :: #{
-%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()()),
+%%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
 %%   <<"directConnectGatewayId">> := string(),
 %%   <<"directConnectGatewayOwnerAccount">> := string(),
 %%   <<"gatewayId">> := string(),
-%%   <<"removeAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()())
+%%   <<"removeAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix())
 %% }
 -type create_direct_connect_gateway_association_proposal_request() :: #{binary() => any()}.
 
@@ -1058,7 +1058,7 @@
 %% accept_direct_connect_gateway_association_proposal_request() :: #{
 %%   <<"associatedGatewayOwnerAccount">> := string(),
 %%   <<"directConnectGatewayId">> := string(),
-%%   <<"overrideAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()()),
+%%   <<"overrideAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
 %%   <<"proposalId">> := string()
 %% }
 -type accept_direct_connect_gateway_association_proposal_request() :: #{binary() => any()}.
@@ -1074,7 +1074,7 @@
 %% Example:
 %% associate_mac_sec_key_response() :: #{
 %%   <<"connectionId">> => string(),
-%%   <<"macSecKeys">> => list(mac_sec_key()())
+%%   <<"macSecKeys">> => list(mac_sec_key())
 %% }
 -type associate_mac_sec_key_response() :: #{binary() => any()}.
 
@@ -1094,7 +1094,7 @@
 %%   <<"directConnectGatewayState">> => list(any()),
 %%   <<"ownerAccount">> => string(),
 %%   <<"stateChangeError">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type direct_connect_gateway() :: #{binary() => any()}.
 
@@ -1107,7 +1107,7 @@
 
 %% Example:
 %% describe_tags_request() :: #{
-%%   <<"resourceArns">> := list(string()())
+%%   <<"resourceArns">> := list(string())
 %% }
 -type describe_tags_request() :: #{binary() => any()}.
 
@@ -1168,7 +1168,7 @@
 
 %% Example:
 %% lags() :: #{
-%%   <<"lags">> => list(lag()())
+%%   <<"lags">> => list(lag())
 %% }
 -type lags() :: #{binary() => any()}.
 
@@ -1194,7 +1194,7 @@
 %%   <<"location">> := string(),
 %%   <<"providerName">> => string(),
 %%   <<"requestMACSec">> => boolean(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_connection_request() :: #{binary() => any()}.
 
@@ -1217,7 +1217,7 @@
 %%   <<"awsDevice">> => string(),
 %%   <<"awsDeviceV2">> => string(),
 %%   <<"awsLogicalDeviceId">> => string(),
-%%   <<"connections">> => list(connection()()),
+%%   <<"connections">> => list(connection()),
 %%   <<"connectionsBandwidth">> => string(),
 %%   <<"encryptionMode">> => string(),
 %%   <<"hasLogicalRedundancy">> => list(any()),
@@ -1227,13 +1227,13 @@
 %%   <<"lagState">> => list(any()),
 %%   <<"location">> => string(),
 %%   <<"macSecCapable">> => boolean(),
-%%   <<"macSecKeys">> => list(mac_sec_key()()),
+%%   <<"macSecKeys">> => list(mac_sec_key()),
 %%   <<"minimumLinks">> => integer(),
 %%   <<"numberOfConnections">> => integer(),
 %%   <<"ownerAccount">> => string(),
 %%   <<"providerName">> => string(),
 %%   <<"region">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type lag() :: #{binary() => any()}.
 
@@ -1250,8 +1250,8 @@
 %%   <<"asn">> => integer(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
-%%   <<"routeFilterPrefixes">> => list(route_filter_prefix()()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
+%%   <<"tags">> => list(tag()),
 %%   <<"virtualInterfaceName">> => string(),
 %%   <<"vlan">> => integer()
 %% }

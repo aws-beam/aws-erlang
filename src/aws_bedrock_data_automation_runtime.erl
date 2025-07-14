@@ -88,7 +88,7 @@
 
 %% Example:
 %% invoke_data_automation_async_request() :: #{
-%%   <<"blueprints">> => list(blueprint()()),
+%%   <<"blueprints">> => list(blueprint()),
 %%   <<"clientToken">> => string(),
 %%   <<"dataAutomationConfiguration">> => data_automation_configuration(),
 %%   <<"dataAutomationProfileArn">> := string(),
@@ -96,7 +96,7 @@
 %%   <<"inputConfiguration">> := input_configuration(),
 %%   <<"notificationConfiguration">> => notification_configuration(),
 %%   <<"outputConfiguration">> := output_configuration(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type invoke_data_automation_async_request() :: #{binary() => any()}.
 
@@ -114,7 +114,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -152,7 +152,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -178,7 +178,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 

@@ -117,23 +117,23 @@
 
 %% Example:
 %% recurrence_settings() :: #{
-%%   <<"DailySettings">> => list(hand_off_time()()),
-%%   <<"MonthlySettings">> => list(monthly_setting()()),
+%%   <<"DailySettings">> => list(hand_off_time()),
+%%   <<"MonthlySettings">> => list(monthly_setting()),
 %%   <<"NumberOfOnCalls">> => integer(),
 %%   <<"RecurrenceMultiplier">> => integer(),
 %%   <<"ShiftCoverages">> => map(),
-%%   <<"WeeklySettings">> => list(weekly_setting()())
+%%   <<"WeeklySettings">> => list(weekly_setting())
 %% }
 -type recurrence_settings() :: #{binary() => any()}.
 
 %% Example:
 %% create_rotation_request() :: #{
-%%   <<"ContactIds">> := list(string()()),
+%%   <<"ContactIds">> := list(string()),
 %%   <<"IdempotencyToken">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Recurrence">> := recurrence_settings(),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TimeZoneId">> := string()
 %% }
 -type create_rotation_request() :: #{binary() => any()}.
@@ -156,14 +156,14 @@
 %% Example:
 %% stage() :: #{
 %%   <<"DurationInMinutes">> => integer(),
-%%   <<"Targets">> => list(target()())
+%%   <<"Targets">> => list(target())
 %% }
 -type stage() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -190,7 +190,7 @@
 %% create_rotation_override_request() :: #{
 %%   <<"EndTime">> := non_neg_integer(),
 %%   <<"IdempotencyToken">> => string(),
-%%   <<"NewContactIds">> := list(string()()),
+%%   <<"NewContactIds">> := list(string()),
 %%   <<"RotationId">> := string(),
 %%   <<"StartTime">> := non_neg_integer()
 %% }
@@ -260,7 +260,7 @@
 
 %% Example:
 %% shift_details() :: #{
-%%   <<"OverriddenContactIds">> => list(string()())
+%%   <<"OverriddenContactIds">> => list(string())
 %% }
 -type shift_details() :: #{binary() => any()}.
 
@@ -282,7 +282,7 @@
 
 %% Example:
 %% update_rotation_request() :: #{
-%%   <<"ContactIds">> => list(string()()),
+%%   <<"ContactIds">> => list(string()),
 %%   <<"Recurrence">> := recurrence_settings(),
 %%   <<"RotationId">> := string(),
 %%   <<"StartTime">> => non_neg_integer(),
@@ -293,14 +293,14 @@
 %% Example:
 %% list_page_resolutions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PageResolutions">> => list(resolution_contact()())
+%%   <<"PageResolutions">> => list(resolution_contact())
 %% }
 -type list_page_resolutions_result() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -312,7 +312,7 @@
 
 %% Example:
 %% rotation() :: #{
-%%   <<"ContactIds">> => list(string()()),
+%%   <<"ContactIds">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Recurrence">> => recurrence_settings(),
 %%   <<"RotationArn">> => string(),
@@ -349,7 +349,7 @@
 %% rotation_override() :: #{
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NewContactIds">> => list(string()()),
+%%   <<"NewContactIds">> => list(string()),
 %%   <<"RotationOverrideId">> => string(),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
@@ -384,7 +384,7 @@
 
 %% Example:
 %% list_engagements_result() :: #{
-%%   <<"Engagements">> => list(engagement()()),
+%%   <<"Engagements">> => list(engagement()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_engagements_result() :: #{binary() => any()}.
@@ -405,7 +405,7 @@
 %% Example:
 %% list_pages_by_engagement_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Pages">> => list(page()())
+%%   <<"Pages">> => list(page())
 %% }
 -type list_pages_by_engagement_result() :: #{binary() => any()}.
 
@@ -433,7 +433,7 @@
 
 %% Example:
 %% conflict_exception() :: #{
-%%   <<"DependentEntities">> => list(dependent_entity()()),
+%%   <<"DependentEntities">> => list(dependent_entity()),
 %%   <<"Message">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceType">> => string()
@@ -442,7 +442,7 @@
 
 %% Example:
 %% list_contacts_result() :: #{
-%%   <<"Contacts">> => list(contact()()),
+%%   <<"Contacts">> => list(contact()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contacts_result() :: #{binary() => any()}.
@@ -464,7 +464,7 @@
 %% Example:
 %% list_page_receipts_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Receipts">> => list(receipt()())
+%%   <<"Receipts">> => list(receipt())
 %% }
 -type list_page_receipts_result() :: #{binary() => any()}.
 
@@ -479,7 +479,7 @@
 %% Example:
 %% list_pages_by_contact_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Pages">> => list(page()())
+%%   <<"Pages">> => list(page())
 %% }
 -type list_pages_by_contact_result() :: #{binary() => any()}.
 
@@ -522,7 +522,7 @@
 %% get_rotation_override_result() :: #{
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NewContactIds">> => list(string()()),
+%%   <<"NewContactIds">> => list(string()),
 %%   <<"RotationArn">> => string(),
 %%   <<"RotationOverrideId">> => string(),
 %%   <<"StartTime">> => non_neg_integer()
@@ -542,7 +542,7 @@
 %% Example:
 %% list_preview_rotation_shifts_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RotationShifts">> => list(rotation_shift()())
+%%   <<"RotationShifts">> => list(rotation_shift())
 %% }
 -type list_preview_rotation_shifts_result() :: #{binary() => any()}.
 
@@ -560,7 +560,7 @@
 
 %% Example:
 %% list_contact_channels_result() :: #{
-%%   <<"ContactChannels">> => list(contact_channel()()),
+%%   <<"ContactChannels">> => list(contact_channel()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_channels_result() :: #{binary() => any()}.
@@ -577,7 +577,7 @@
 
 %% Example:
 %% get_rotation_result() :: #{
-%%   <<"ContactIds">> => list(string()()),
+%%   <<"ContactIds">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Recurrence">> => recurrence_settings(),
 %%   <<"RotationArn">> => string(),
@@ -618,7 +618,7 @@
 
 %% Example:
 %% dependent_entity() :: #{
-%%   <<"DependentResourceIds">> => list(string()()),
+%%   <<"DependentResourceIds">> => list(string()),
 %%   <<"RelationType">> => string()
 %% }
 -type dependent_entity() :: #{binary() => any()}.
@@ -647,13 +647,13 @@
 %% Example:
 %% list_rotation_shifts_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RotationShifts">> => list(rotation_shift()())
+%%   <<"RotationShifts">> => list(rotation_shift())
 %% }
 -type list_rotation_shifts_result() :: #{binary() => any()}.
 
 %% Example:
 %% rotation_shift() :: #{
-%%   <<"ContactIds">> => list(string()()),
+%%   <<"ContactIds">> => list(string()),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"ShiftDetails">> => shift_details(),
 %%   <<"StartTime">> => non_neg_integer(),
@@ -687,7 +687,7 @@
 
 %% Example:
 %% list_tags_for_resource_result() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
 
@@ -709,7 +709,7 @@
 %% Example:
 %% list_rotations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Rotations">> => list(rotation()())
+%%   <<"Rotations">> => list(rotation())
 %% }
 -type list_rotations_result() :: #{binary() => any()}.
 
@@ -747,7 +747,7 @@
 %% Example:
 %% list_rotation_overrides_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RotationOverrides">> => list(rotation_override()())
+%%   <<"RotationOverrides">> => list(rotation_override())
 %% }
 -type list_rotation_overrides_result() :: #{binary() => any()}.
 
@@ -792,7 +792,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()()),
+%%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
 %% }
@@ -819,7 +819,7 @@
 %%   <<"DisplayName">> => string(),
 %%   <<"IdempotencyToken">> => string(),
 %%   <<"Plan">> := plan(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> := list(any())
 %% }
 -type create_contact_request() :: #{binary() => any()}.
@@ -841,9 +841,9 @@
 %% list_preview_rotation_shifts_request() :: #{
 %%   <<"EndTime">> := non_neg_integer(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"Members">> := list(string()()),
+%%   <<"Members">> := list(string()),
 %%   <<"NextToken">> => string(),
-%%   <<"Overrides">> => list(preview_override()()),
+%%   <<"Overrides">> => list(preview_override()),
 %%   <<"Recurrence">> := recurrence_settings(),
 %%   <<"RotationStartTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer(),
@@ -867,7 +867,7 @@
 %% Example:
 %% preview_override() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"NewMembers">> => list(string()()),
+%%   <<"NewMembers">> => list(string()),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type preview_override() :: #{binary() => any()}.
@@ -972,8 +972,8 @@
 
 %% Example:
 %% plan() :: #{
-%%   <<"RotationIds">> => list(string()()),
-%%   <<"Stages">> => list(stage()())
+%%   <<"RotationIds">> => list(string()),
+%%   <<"Stages">> => list(stage())
 %% }
 -type plan() :: #{binary() => any()}.
 

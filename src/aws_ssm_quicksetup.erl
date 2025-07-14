@@ -70,13 +70,13 @@
 
 %% Example:
 %% get_configuration_manager_output() :: #{
-%%   <<"ConfigurationDefinitions">> => list(configuration_definition()()),
+%%   <<"ConfigurationDefinitions">> => list(configuration_definition()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => [string()],
 %%   <<"LastModifiedAt">> => [non_neg_integer()],
 %%   <<"ManagerArn">> => [string()],
 %%   <<"Name">> => [string()],
-%%   <<"StatusSummaries">> => list(status_summary()()),
+%%   <<"StatusSummaries">> => list(status_summary()),
 %%   <<"Tags">> => map()
 %% }
 -type get_configuration_manager_output() :: #{binary() => any()}.
@@ -91,7 +91,7 @@
 %%   <<"Id">> => [string()],
 %%   <<"ManagerArn">> => [string()],
 %%   <<"Region">> => [string()],
-%%   <<"StatusSummaries">> => list(status_summary()()),
+%%   <<"StatusSummaries">> => list(status_summary()),
 %%   <<"Type">> => [string()],
 %%   <<"TypeVersion">> => [string()]
 %% }
@@ -108,7 +108,7 @@
 %%   <<"ManagerArn">> => [string()],
 %%   <<"Parameters">> => map(),
 %%   <<"Region">> => [string()],
-%%   <<"StatusSummaries">> => list(status_summary()()),
+%%   <<"StatusSummaries">> => list(status_summary()),
 %%   <<"Type">> => [string()],
 %%   <<"TypeVersion">> => [string()]
 %% }
@@ -117,7 +117,7 @@
 
 %% Example:
 %% list_configuration_managers_output() :: #{
-%%   <<"ConfigurationManagersList">> => list(configuration_manager_summary()()),
+%%   <<"ConfigurationManagersList">> => list(configuration_manager_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_configuration_managers_output() :: #{binary() => any()}.
@@ -125,7 +125,7 @@
 
 %% Example:
 %% create_configuration_manager_input() :: #{
-%%   <<"ConfigurationDefinitions">> := list(configuration_definition_input()()),
+%%   <<"ConfigurationDefinitions">> := list(configuration_definition_input()),
 %%   <<"Description">> => [string()],
 %%   <<"Name">> => [string()],
 %%   <<"Tags">> => map()
@@ -173,14 +173,14 @@
 
 %% Example:
 %% list_quick_setup_types_output() :: #{
-%%   <<"QuickSetupTypeList">> => list(quick_setup_type_output()())
+%%   <<"QuickSetupTypeList">> => list(quick_setup_type_output())
 %% }
 -type list_quick_setup_types_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_configurations_output() :: #{
-%%   <<"ConfigurationsList">> => list(configuration_summary()()),
+%%   <<"ConfigurationsList">> => list(configuration_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_configurations_output() :: #{binary() => any()}.
@@ -192,7 +192,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag_entry()())
+%%   <<"Tags">> => list(tag_entry())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -311,18 +311,18 @@
 
 %% Example:
 %% configuration_manager_summary() :: #{
-%%   <<"ConfigurationDefinitionSummaries">> => list(configuration_definition_summary()()),
+%%   <<"ConfigurationDefinitionSummaries">> => list(configuration_definition_summary()),
 %%   <<"Description">> => [string()],
 %%   <<"ManagerArn">> => [string()],
 %%   <<"Name">> => [string()],
-%%   <<"StatusSummaries">> => list(status_summary()())
+%%   <<"StatusSummaries">> => list(status_summary())
 %% }
 -type configuration_manager_summary() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_configuration_managers_input() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxItems">> => [integer()],
 %%   <<"StartingToken">> => [string()]
 %% }
@@ -343,7 +343,7 @@
 %% Example:
 %% list_configurations_input() :: #{
 %%   <<"ConfigurationDefinitionId">> => [string()],
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"ManagerArn">> => [string()],
 %%   <<"MaxItems">> => [integer()],
 %%   <<"StartingToken">> => [string()]

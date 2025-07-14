@@ -64,7 +64,7 @@
 %% Example:
 %% list_suite_definitions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"suiteDefinitionInformationList">> => list(suite_definition_information()())
+%%   <<"suiteDefinitionInformationList">> => list(suite_definition_information())
 %% }
 -type list_suite_definitions_response() :: #{binary() => any()}.
 
@@ -94,7 +94,7 @@
 %% suite_run_configuration() :: #{
 %%   <<"parallelRun">> => boolean(),
 %%   <<"primaryDevice">> => device_under_test(),
-%%   <<"selectedTestList">> => list(string()())
+%%   <<"selectedTestList">> => list(string())
 %% }
 -type suite_run_configuration() :: #{binary() => any()}.
 
@@ -102,7 +102,7 @@
 %% Example:
 %% suite_definition_information() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"defaultDevices">> => list(device_under_test()()),
+%%   <<"defaultDevices">> => list(device_under_test()),
 %%   <<"intendedForQualification">> => boolean(),
 %%   <<"isLongDurationTest">> => boolean(),
 %%   <<"protocol">> => list(any()),
@@ -128,7 +128,7 @@
 
 %% Example:
 %% test_result() :: #{
-%%   <<"groups">> => list(group_result()())
+%%   <<"groups">> => list(group_result())
 %% }
 -type test_result() :: #{binary() => any()}.
 
@@ -160,7 +160,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -277,7 +277,7 @@
 %% Example:
 %% suite_definition_configuration() :: #{
 %%   <<"devicePermissionRoleArn">> => string(),
-%%   <<"devices">> => list(device_under_test()()),
+%%   <<"devices">> => list(device_under_test()),
 %%   <<"intendedForQualification">> => boolean(),
 %%   <<"isLongDurationTest">> => boolean(),
 %%   <<"protocol">> => list(any()),
@@ -341,7 +341,7 @@
 %% Example:
 %% list_suite_runs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"suiteRunsList">> => list(suite_run_information()())
+%%   <<"suiteRunsList">> => list(suite_run_information())
 %% }
 -type list_suite_runs_response() :: #{binary() => any()}.
 
@@ -350,7 +350,7 @@
 %% group_result() :: #{
 %%   <<"groupId">> => string(),
 %%   <<"groupName">> => string(),
-%%   <<"tests">> => list(test_case_run()())
+%%   <<"tests">> => list(test_case_run())
 %% }
 -type group_result() :: #{binary() => any()}.
 
@@ -374,7 +374,7 @@
 %%   <<"testCaseDefinitionId">> => string(),
 %%   <<"testCaseDefinitionName">> => string(),
 %%   <<"testCaseRunId">> => string(),
-%%   <<"testScenarios">> => list(test_case_scenario()()),
+%%   <<"testScenarios">> => list(test_case_scenario()),
 %%   <<"warnings">> => string()
 %% }
 -type test_case_run() :: #{binary() => any()}.

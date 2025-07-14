@@ -96,9 +96,9 @@
 %%   <<"DatasetExists">> => boolean(),
 %%   <<"DatasetSyncCount">> => float(),
 %%   <<"LastModifiedBy">> => string(),
-%%   <<"MergedDatasetNames">> => list(string()()),
+%%   <<"MergedDatasetNames">> => list(string()),
 %%   <<"NextToken">> => string(),
-%%   <<"Records">> => list(record()()),
+%%   <<"Records">> => list(record()),
 %%   <<"SyncSessionToken">> => string()
 %% }
 -type list_records_response() :: #{binary() => any()}.
@@ -130,7 +130,7 @@
 %% Example:
 %% list_identity_pool_usage_response() :: #{
 %%   <<"Count">> => integer(),
-%%   <<"IdentityPoolUsages">> => list(identity_pool_usage()()),
+%%   <<"IdentityPoolUsages">> => list(identity_pool_usage()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -143,7 +143,7 @@
 
 %% Example:
 %% push_sync() :: #{
-%%   <<"ApplicationArns">> => list(string()()),
+%%   <<"ApplicationArns">> => list(string()),
 %%   <<"RoleArn">> => string()
 %% }
 -type push_sync() :: #{binary() => any()}.
@@ -192,7 +192,7 @@
 %% update_records_request() :: #{
 %%   <<"ClientContext">> => string(),
 %%   <<"DeviceId">> => string(),
-%%   <<"RecordPatches">> => list(record_patch()()),
+%%   <<"RecordPatches">> => list(record_patch()),
 %%   <<"SyncSessionToken">> := string()
 %% }
 -type update_records_request() :: #{binary() => any()}.
@@ -362,7 +362,7 @@
 
 %% Example:
 %% update_records_response() :: #{
-%%   <<"Records">> => list(record()())
+%%   <<"Records">> => list(record())
 %% }
 -type update_records_response() :: #{binary() => any()}.
 
@@ -419,7 +419,7 @@
 %% Example:
 %% list_datasets_response() :: #{
 %%   <<"Count">> => integer(),
-%%   <<"Datasets">> => list(dataset()()),
+%%   <<"Datasets">> => list(dataset()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.

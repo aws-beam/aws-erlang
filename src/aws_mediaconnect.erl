@@ -189,7 +189,7 @@
 
 %% Example:
 %% media_stream_output_configuration_request() :: #{
-%%   <<"DestinationConfigurations">> => list(destination_configuration_request()()),
+%%   <<"DestinationConfigurations">> => list(destination_configuration_request()),
 %%   <<"EncodingName">> => list(any()),
 %%   <<"EncodingParameters">> => encoding_parameters_request(),
 %%   <<"MediaStreamName">> => [string()]
@@ -200,7 +200,7 @@
 %% Example:
 %% add_flow_sources_response() :: #{
 %%   <<"FlowArn">> => [string()],
-%%   <<"Sources">> => list(source()())
+%%   <<"Sources">> => list(source())
 %% }
 -type add_flow_sources_response() :: #{binary() => any()}.
 
@@ -227,7 +227,7 @@
 %%   <<"ProgramName">> => [string()],
 %%   <<"ProgramNumber">> => [integer()],
 %%   <<"ProgramPid">> => [integer()],
-%%   <<"Streams">> => list(transport_stream()())
+%%   <<"Streams">> => list(transport_stream())
 %% }
 -type transport_stream_program() :: #{binary() => any()}.
 
@@ -235,7 +235,7 @@
 %% Example:
 %% describe_flow_source_metadata_response() :: #{
 %%   <<"FlowArn">> => [string()],
-%%   <<"Messages">> => list(message_detail()()),
+%%   <<"Messages">> => list(message_detail()),
 %%   <<"Timestamp">> => [non_neg_integer()],
 %%   <<"TransportMediaInfo">> => transport_media_info()
 %% }
@@ -244,7 +244,7 @@
 
 %% Example:
 %% grant_flow_entitlements_request() :: #{
-%%   <<"Entitlements">> := list(grant_entitlement_request()())
+%%   <<"Entitlements">> := list(grant_entitlement_request())
 %% }
 -type grant_flow_entitlements_request() :: #{binary() => any()}.
 
@@ -273,18 +273,18 @@
 %% Example:
 %% create_flow_request() :: #{
 %%   <<"AvailabilityZone">> => [string()],
-%%   <<"Entitlements">> => list(grant_entitlement_request()()),
+%%   <<"Entitlements">> => list(grant_entitlement_request()),
 %%   <<"FlowSize">> => list(any()),
 %%   <<"Maintenance">> => add_maintenance(),
-%%   <<"MediaStreams">> => list(add_media_stream_request()()),
+%%   <<"MediaStreams">> => list(add_media_stream_request()),
 %%   <<"Name">> := [string()],
 %%   <<"NdiConfig">> => ndi_config(),
-%%   <<"Outputs">> => list(add_output_request()()),
+%%   <<"Outputs">> => list(add_output_request()),
 %%   <<"Source">> => set_source_request(),
 %%   <<"SourceFailoverConfig">> => failover_config(),
 %%   <<"SourceMonitoringConfig">> => monitoring_config(),
-%%   <<"Sources">> => list(set_source_request()()),
-%%   <<"VpcInterfaces">> => list(vpc_interface_request()())
+%%   <<"Sources">> => list(set_source_request()),
+%%   <<"VpcInterfaces">> => list(vpc_interface_request())
 %% }
 -type create_flow_request() :: #{binary() => any()}.
 
@@ -298,7 +298,7 @@
 
 %% Example:
 %% list_gateway_instances_response() :: #{
-%%   <<"Instances">> => list(listed_gateway_instance()()),
+%%   <<"Instances">> => list(listed_gateway_instance()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_gateway_instances_response() :: #{binary() => any()}.
@@ -307,7 +307,7 @@
 %% Example:
 %% media_stream_source_configuration_request() :: #{
 %%   <<"EncodingName">> => list(any()),
-%%   <<"InputConfigurations">> => list(input_configuration_request()()),
+%%   <<"InputConfigurations">> => list(input_configuration_request()),
 %%   <<"MediaStreamName">> => [string()]
 %% }
 -type media_stream_source_configuration_request() :: #{binary() => any()}.
@@ -323,7 +323,7 @@
 %% Example:
 %% add_bridge_sources_response() :: #{
 %%   <<"BridgeArn">> => [string()],
-%%   <<"Sources">> => list(bridge_source()())
+%%   <<"Sources">> => list(bridge_source())
 %% }
 -type add_bridge_sources_response() :: #{binary() => any()}.
 
@@ -346,7 +346,7 @@
 %% Example:
 %% add_flow_media_streams_response() :: #{
 %%   <<"FlowArn">> => [string()],
-%%   <<"MediaStreams">> => list(media_stream()())
+%%   <<"MediaStreams">> => list(media_stream())
 %% }
 -type add_flow_media_streams_response() :: #{binary() => any()}.
 
@@ -354,7 +354,7 @@
 %% Example:
 %% add_flow_outputs_response() :: #{
 %%   <<"FlowArn">> => [string()],
-%%   <<"Outputs">> => list(output()())
+%%   <<"Outputs">> => list(output())
 %% }
 -type add_flow_outputs_response() :: #{binary() => any()}.
 
@@ -426,7 +426,7 @@
 %% Example:
 %% list_offerings_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"Offerings">> => list(offering()())
+%%   <<"Offerings">> => list(offering())
 %% }
 -type list_offerings_response() :: #{binary() => any()}.
 
@@ -510,7 +510,7 @@
 %% thumbnail_details() :: #{
 %%   <<"FlowArn">> => [string()],
 %%   <<"Thumbnail">> => [string()],
-%%   <<"ThumbnailMessages">> => list(message_detail()()),
+%%   <<"ThumbnailMessages">> => list(message_detail()),
 %%   <<"Timecode">> => [string()],
 %%   <<"Timestamp">> => [non_neg_integer()]
 %% }
@@ -610,10 +610,10 @@
 %% gateway() :: #{
 %%   <<"EgressCidrBlocks">> => list([string()]()),
 %%   <<"GatewayArn">> => [string()],
-%%   <<"GatewayMessages">> => list(message_detail()()),
+%%   <<"GatewayMessages">> => list(message_detail()),
 %%   <<"GatewayState">> => list(any()),
 %%   <<"Name">> => [string()],
-%%   <<"Networks">> => list(gateway_network()())
+%%   <<"Networks">> => list(gateway_network())
 %% }
 -type gateway() :: #{binary() => any()}.
 
@@ -722,7 +722,7 @@
 %%   <<"MaxBitrate">> => [integer()],
 %%   <<"MaxLatency">> => [integer()],
 %%   <<"MaxSyncBuffer">> => [integer()],
-%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration_request()()),
+%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration_request()),
 %%   <<"MinLatency">> => [integer()],
 %%   <<"Protocol">> => list(any()),
 %%   <<"SenderControlPort">> => [integer()],
@@ -738,7 +738,7 @@
 
 %% Example:
 %% list_flows_response() :: #{
-%%   <<"Flows">> => list(listed_flow()()),
+%%   <<"Flows">> => list(listed_flow()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_flows_response() :: #{binary() => any()}.
@@ -823,17 +823,17 @@
 %%   <<"EgressGatewayBridge">> => add_egress_gateway_bridge_request(),
 %%   <<"IngressGatewayBridge">> => add_ingress_gateway_bridge_request(),
 %%   <<"Name">> := [string()],
-%%   <<"Outputs">> => list(add_bridge_output_request()()),
+%%   <<"Outputs">> => list(add_bridge_output_request()),
 %%   <<"PlacementArn">> := [string()],
 %%   <<"SourceFailoverConfig">> => failover_config(),
-%%   <<"Sources">> := list(add_bridge_source_request()())
+%%   <<"Sources">> := list(add_bridge_source_request())
 %% }
 -type create_bridge_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% add_flow_vpc_interfaces_request() :: #{
-%%   <<"VpcInterfaces">> := list(vpc_interface_request()())
+%%   <<"VpcInterfaces">> := list(vpc_interface_request())
 %% }
 -type add_flow_vpc_interfaces_request() :: #{binary() => any()}.
 
@@ -979,15 +979,15 @@
 %% Example:
 %% bridge() :: #{
 %%   <<"BridgeArn">> => [string()],
-%%   <<"BridgeMessages">> => list(message_detail()()),
+%%   <<"BridgeMessages">> => list(message_detail()),
 %%   <<"BridgeState">> => list(any()),
 %%   <<"EgressGatewayBridge">> => egress_gateway_bridge(),
 %%   <<"IngressGatewayBridge">> => ingress_gateway_bridge(),
 %%   <<"Name">> => [string()],
-%%   <<"Outputs">> => list(bridge_output()()),
+%%   <<"Outputs">> => list(bridge_output()),
 %%   <<"PlacementArn">> => [string()],
 %%   <<"SourceFailoverConfig">> => failover_config(),
-%%   <<"Sources">> => list(bridge_source()())
+%%   <<"Sources">> => list(bridge_source())
 %% }
 -type bridge() :: #{binary() => any()}.
 
@@ -1089,7 +1089,7 @@
 
 %% Example:
 %% list_entitlements_response() :: #{
-%%   <<"Entitlements">> => list(listed_entitlement()()),
+%%   <<"Entitlements">> => list(listed_entitlement()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_entitlements_response() :: #{binary() => any()}.
@@ -1097,7 +1097,7 @@
 
 %% Example:
 %% add_flow_sources_request() :: #{
-%%   <<"Sources">> := list(set_source_request()())
+%%   <<"Sources">> := list(set_source_request())
 %% }
 -type add_flow_sources_request() :: #{binary() => any()}.
 
@@ -1129,7 +1129,7 @@
 %% Example:
 %% add_bridge_outputs_response() :: #{
 %%   <<"BridgeArn">> => [string()],
-%%   <<"Outputs">> => list(bridge_output()())
+%%   <<"Outputs">> => list(bridge_output())
 %% }
 -type add_bridge_outputs_response() :: #{binary() => any()}.
 
@@ -1164,7 +1164,7 @@
 
 %% Example:
 %% media_stream_output_configuration() :: #{
-%%   <<"DestinationConfigurations">> => list(destination_configuration()()),
+%%   <<"DestinationConfigurations">> => list(destination_configuration()),
 %%   <<"EncodingName">> => list(any()),
 %%   <<"EncodingParameters">> => encoding_parameters(),
 %%   <<"MediaStreamName">> => [string()]
@@ -1189,7 +1189,7 @@
 %%   <<"GatewayBridgeSource">> => gateway_bridge_source(),
 %%   <<"IngestIp">> => [string()],
 %%   <<"IngestPort">> => [integer()],
-%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration()()),
+%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration()),
 %%   <<"Name">> => [string()],
 %%   <<"PeerIpAddress">> => [string()],
 %%   <<"SenderControlPort">> => [integer()],
@@ -1248,14 +1248,14 @@
 %% create_gateway_request() :: #{
 %%   <<"EgressCidrBlocks">> := list([string()]()),
 %%   <<"Name">> := [string()],
-%%   <<"Networks">> := list(gateway_network()())
+%%   <<"Networks">> := list(gateway_network())
 %% }
 -type create_gateway_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% grant_flow_entitlements_response() :: #{
-%%   <<"Entitlements">> => list(entitlement()()),
+%%   <<"Entitlements">> => list(entitlement()),
 %%   <<"FlowArn">> => [string()]
 %% }
 -type grant_flow_entitlements_response() :: #{binary() => any()}.
@@ -1263,7 +1263,7 @@
 
 %% Example:
 %% add_bridge_outputs_request() :: #{
-%%   <<"Outputs">> := list(add_bridge_output_request()())
+%%   <<"Outputs">> := list(add_bridge_output_request())
 %% }
 -type add_bridge_outputs_request() :: #{binary() => any()}.
 
@@ -1318,7 +1318,7 @@
 %% Example:
 %% ndi_config() :: #{
 %%   <<"MachineName">> => [string()],
-%%   <<"NdiDiscoveryServers">> => list(ndi_discovery_server_config()()),
+%%   <<"NdiDiscoveryServers">> => list(ndi_discovery_server_config()),
 %%   <<"NdiState">> => list(any())
 %% }
 -type ndi_config() :: #{binary() => any()}.
@@ -1327,7 +1327,7 @@
 %% Example:
 %% list_reservations_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"Reservations">> => list(reservation()())
+%%   <<"Reservations">> => list(reservation())
 %% }
 -type list_reservations_response() :: #{binary() => any()}.
 
@@ -1372,7 +1372,7 @@
 
 %% Example:
 %% transport_media_info() :: #{
-%%   <<"Programs">> => list(transport_stream_program()())
+%%   <<"Programs">> => list(transport_stream_program())
 %% }
 -type transport_media_info() :: #{binary() => any()}.
 
@@ -1445,10 +1445,10 @@
 
 %% Example:
 %% monitoring_config() :: #{
-%%   <<"AudioMonitoringSettings">> => list(audio_monitoring_setting()()),
+%%   <<"AudioMonitoringSettings">> => list(audio_monitoring_setting()),
 %%   <<"ContentQualityAnalysisState">> => list(any()),
 %%   <<"ThumbnailState">> => list(any()),
-%%   <<"VideoMonitoringSettings">> => list(video_monitoring_setting()())
+%%   <<"VideoMonitoringSettings">> => list(video_monitoring_setting())
 %% }
 -type monitoring_config() :: #{binary() => any()}.
 
@@ -1545,7 +1545,7 @@
 %%   <<"Destination">> => [string()],
 %%   <<"Encryption">> => update_encryption(),
 %%   <<"MaxLatency">> => [integer()],
-%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()()),
+%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()),
 %%   <<"MinLatency">> => [integer()],
 %%   <<"NdiProgramName">> => [string()],
 %%   <<"NdiSpeedHqQuality">> => [integer()],
@@ -1569,7 +1569,7 @@
 %%   <<"GatewayArn">> => [string()],
 %%   <<"GatewayInstanceArn">> => [string()],
 %%   <<"InstanceId">> => [string()],
-%%   <<"InstanceMessages">> => list(message_detail()()),
+%%   <<"InstanceMessages">> => list(message_detail()),
 %%   <<"InstanceState">> => list(any()),
 %%   <<"RunningBridgeCount">> => [integer()]
 %% }
@@ -1593,7 +1593,7 @@
 
 %% Example:
 %% add_bridge_sources_request() :: #{
-%%   <<"Sources">> := list(add_bridge_source_request()())
+%%   <<"Sources">> := list(add_bridge_source_request())
 %% }
 -type add_bridge_sources_request() :: #{binary() => any()}.
 
@@ -1673,7 +1673,7 @@
 
 %% Example:
 %% add_flow_outputs_request() :: #{
-%%   <<"Outputs">> := list(add_output_request()())
+%%   <<"Outputs">> := list(add_output_request())
 %% }
 -type add_flow_outputs_request() :: #{binary() => any()}.
 
@@ -1691,20 +1691,20 @@
 %%   <<"AvailabilityZone">> => [string()],
 %%   <<"Description">> => [string()],
 %%   <<"EgressIp">> => [string()],
-%%   <<"Entitlements">> => list(entitlement()()),
+%%   <<"Entitlements">> => list(entitlement()),
 %%   <<"FlowArn">> => [string()],
 %%   <<"FlowSize">> => list(any()),
 %%   <<"Maintenance">> => maintenance(),
-%%   <<"MediaStreams">> => list(media_stream()()),
+%%   <<"MediaStreams">> => list(media_stream()),
 %%   <<"Name">> => [string()],
 %%   <<"NdiConfig">> => ndi_config(),
-%%   <<"Outputs">> => list(output()()),
+%%   <<"Outputs">> => list(output()),
 %%   <<"Source">> => source(),
 %%   <<"SourceFailoverConfig">> => failover_config(),
 %%   <<"SourceMonitoringConfig">> => monitoring_config(),
-%%   <<"Sources">> => list(source()()),
+%%   <<"Sources">> => list(source()),
 %%   <<"Status">> => list(any()),
-%%   <<"VpcInterfaces">> => list(vpc_interface()())
+%%   <<"VpcInterfaces">> => list(vpc_interface())
 %% }
 -type flow() :: #{binary() => any()}.
 
@@ -1719,7 +1719,7 @@
 %%   <<"MaxBitrate">> => [integer()],
 %%   <<"MaxLatency">> => [integer()],
 %%   <<"MaxSyncBuffer">> => [integer()],
-%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration_request()()),
+%%   <<"MediaStreamSourceConfigurations">> => list(media_stream_source_configuration_request()),
 %%   <<"MinLatency">> => [integer()],
 %%   <<"Name">> => [string()],
 %%   <<"Protocol">> => list(any()),
@@ -1746,7 +1746,7 @@
 
 %% Example:
 %% list_gateways_response() :: #{
-%%   <<"Gateways">> => list(listed_gateway()()),
+%%   <<"Gateways">> => list(listed_gateway()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_gateways_response() :: #{binary() => any()}.
@@ -1799,14 +1799,14 @@
 %% Example:
 %% add_flow_vpc_interfaces_response() :: #{
 %%   <<"FlowArn">> => [string()],
-%%   <<"VpcInterfaces">> => list(vpc_interface()())
+%%   <<"VpcInterfaces">> => list(vpc_interface())
 %% }
 -type add_flow_vpc_interfaces_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_bridges_response() :: #{
-%%   <<"Bridges">> => list(listed_bridge()()),
+%%   <<"Bridges">> => list(listed_bridge()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_bridges_response() :: #{binary() => any()}.
@@ -1832,7 +1832,7 @@
 
 %% Example:
 %% add_flow_media_streams_request() :: #{
-%%   <<"MediaStreams">> := list(add_media_stream_request()())
+%%   <<"MediaStreams">> := list(add_media_stream_request())
 %% }
 -type add_flow_media_streams_request() :: #{binary() => any()}.
 
@@ -1859,7 +1859,7 @@
 %%   <<"EntitlementArn">> => [string()],
 %%   <<"ListenerAddress">> => [string()],
 %%   <<"MediaLiveInputArn">> => [string()],
-%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration()()),
+%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration()),
 %%   <<"Name">> => [string()],
 %%   <<"OutputArn">> => [string()],
 %%   <<"OutputStatus">> => list(any()),
@@ -1907,7 +1907,7 @@
 %% Example:
 %% media_stream_source_configuration() :: #{
 %%   <<"EncodingName">> => list(any()),
-%%   <<"InputConfigurations">> => list(input_configuration()()),
+%%   <<"InputConfigurations">> => list(input_configuration()),
 %%   <<"MediaStreamName">> => [string()]
 %% }
 -type media_stream_source_configuration() :: #{binary() => any()}.
@@ -1928,7 +1928,7 @@
 %%   <<"Destination">> => [string()],
 %%   <<"Encryption">> => encryption(),
 %%   <<"MaxLatency">> => [integer()],
-%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()()),
+%%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()),
 %%   <<"MinLatency">> => [integer()],
 %%   <<"Name">> => [string()],
 %%   <<"NdiProgramName">> => [string()],

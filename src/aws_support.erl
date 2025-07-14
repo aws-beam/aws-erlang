@@ -143,7 +143,7 @@
 
 %% Example:
 %% communication() :: #{
-%%   <<"attachmentSet">> => list(attachment_details()()),
+%%   <<"attachmentSet">> => list(attachment_details()),
 %%   <<"body">> => string(),
 %%   <<"caseId">> => string(),
 %%   <<"submittedBy">> => string(),
@@ -168,14 +168,14 @@
 %% Example:
 %% add_attachments_to_set_request() :: #{
 %%   <<"attachmentSetId">> => string(),
-%%   <<"attachments">> := list(attachment()())
+%%   <<"attachments">> := list(attachment())
 %% }
 -type add_attachments_to_set_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_services_request() :: #{
 %%   <<"language">> => string(),
-%%   <<"serviceCodeList">> => list(string()())
+%%   <<"serviceCodeList">> => list(string())
 %% }
 -type describe_services_request() :: #{binary() => any()}.
 
@@ -183,7 +183,7 @@
 %% create_case_request() :: #{
 %%   <<"attachmentSetId">> => string(),
 %%   <<"categoryCode">> => string(),
-%%   <<"ccEmailAddresses">> => list(string()()),
+%%   <<"ccEmailAddresses">> => list(string()),
 %%   <<"communicationBody">> := string(),
 %%   <<"issueType">> => string(),
 %%   <<"language">> => string(),
@@ -215,13 +215,13 @@
 
 %% Example:
 %% describe_trusted_advisor_check_summaries_request() :: #{
-%%   <<"checkIds">> := list(string()())
+%%   <<"checkIds">> := list(string())
 %% }
 -type describe_trusted_advisor_check_summaries_request() :: #{binary() => any()}.
 
 %% Example:
 %% recent_case_communications() :: #{
-%%   <<"communications">> => list(communication()()),
+%%   <<"communications">> => list(communication()),
 %%   <<"nextToken">> => string()
 %% }
 -type recent_case_communications() :: #{binary() => any()}.
@@ -241,7 +241,7 @@
 
 %% Example:
 %% service() :: #{
-%%   <<"categories">> => list(category()()),
+%%   <<"categories">> => list(category()),
 %%   <<"code">> => string(),
 %%   <<"name">> => string()
 %% }
@@ -249,7 +249,7 @@
 
 %% Example:
 %% describe_trusted_advisor_check_refresh_statuses_response() :: #{
-%%   <<"statuses">> => list(trusted_advisor_check_refresh_status()())
+%%   <<"statuses">> => list(trusted_advisor_check_refresh_status())
 %% }
 -type describe_trusted_advisor_check_refresh_statuses_response() :: #{binary() => any()}.
 
@@ -279,14 +279,14 @@
 %%   <<"category">> => string(),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
-%%   <<"metadata">> => list(string()()),
+%%   <<"metadata">> => list(string()),
 %%   <<"name">> => string()
 %% }
 -type trusted_advisor_check_description() :: #{binary() => any()}.
 
 %% Example:
 %% describe_services_response() :: #{
-%%   <<"services">> => list(service()())
+%%   <<"services">> => list(service())
 %% }
 -type describe_services_response() :: #{binary() => any()}.
 
@@ -298,7 +298,7 @@
 
 %% Example:
 %% describe_trusted_advisor_checks_response() :: #{
-%%   <<"checks">> => list(trusted_advisor_check_description()())
+%%   <<"checks">> => list(trusted_advisor_check_description())
 %% }
 -type describe_trusted_advisor_checks_response() :: #{binary() => any()}.
 
@@ -306,7 +306,7 @@
 %% add_communication_to_case_request() :: #{
 %%   <<"attachmentSetId">> => string(),
 %%   <<"caseId">> => string(),
-%%   <<"ccEmailAddresses">> => list(string()()),
+%%   <<"ccEmailAddresses">> => list(string()),
 %%   <<"communicationBody">> := string()
 %% }
 -type add_communication_to_case_request() :: #{binary() => any()}.
@@ -314,7 +314,7 @@
 %% Example:
 %% trusted_advisor_resource_detail() :: #{
 %%   <<"isSuppressed">> => boolean(),
-%%   <<"metadata">> => list(string()()),
+%%   <<"metadata">> => list(string()),
 %%   <<"region">> => string(),
 %%   <<"resourceId">> => string(),
 %%   <<"status">> => string()
@@ -342,7 +342,7 @@
 
 %% Example:
 %% describe_trusted_advisor_check_refresh_statuses_request() :: #{
-%%   <<"checkIds">> := list(string()())
+%%   <<"checkIds">> := list(string())
 %% }
 -type describe_trusted_advisor_check_refresh_statuses_request() :: #{binary() => any()}.
 
@@ -354,7 +354,7 @@
 
 %% Example:
 %% describe_severity_levels_response() :: #{
-%%   <<"severityLevels">> => list(severity_level()())
+%%   <<"severityLevels">> => list(severity_level())
 %% }
 -type describe_severity_levels_response() :: #{binary() => any()}.
 
@@ -373,21 +373,21 @@
 
 %% Example:
 %% describe_cases_response() :: #{
-%%   <<"cases">> => list(case_details()()),
+%%   <<"cases">> => list(case_details()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_cases_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_create_case_options_response() :: #{
-%%   <<"communicationTypes">> => list(communication_type_options()()),
+%%   <<"communicationTypes">> => list(communication_type_options()),
 %%   <<"languageAvailability">> => string()
 %% }
 -type describe_create_case_options_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_supported_languages_response() :: #{
-%%   <<"supportedLanguages">> => list(supported_language()())
+%%   <<"supportedLanguages">> => list(supported_language())
 %% }
 -type describe_supported_languages_response() :: #{binary() => any()}.
 
@@ -395,7 +395,7 @@
 %% case_details() :: #{
 %%   <<"caseId">> => string(),
 %%   <<"categoryCode">> => string(),
-%%   <<"ccEmailAddresses">> => list(string()()),
+%%   <<"ccEmailAddresses">> => list(string()),
 %%   <<"displayId">> => string(),
 %%   <<"language">> => string(),
 %%   <<"recentCommunications">> => recent_case_communications(),
@@ -412,7 +412,7 @@
 %% trusted_advisor_check_result() :: #{
 %%   <<"categorySpecificSummary">> => trusted_advisor_category_specific_summary(),
 %%   <<"checkId">> => string(),
-%%   <<"flaggedResources">> => list(trusted_advisor_resource_detail()()),
+%%   <<"flaggedResources">> => list(trusted_advisor_resource_detail()),
 %%   <<"resourcesSummary">> => trusted_advisor_resources_summary(),
 %%   <<"status">> => string(),
 %%   <<"timestamp">> => string()
@@ -436,7 +436,7 @@
 
 %% Example:
 %% describe_communications_response() :: #{
-%%   <<"communications">> => list(communication()()),
+%%   <<"communications">> => list(communication()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_communications_response() :: #{binary() => any()}.
@@ -469,7 +469,7 @@
 %% describe_cases_request() :: #{
 %%   <<"afterTime">> => string(),
 %%   <<"beforeTime">> => string(),
-%%   <<"caseIdList">> => list(string()()),
+%%   <<"caseIdList">> => list(string()),
 %%   <<"displayId">> => string(),
 %%   <<"includeCommunications">> => boolean(),
 %%   <<"includeResolvedCases">> => boolean(),
@@ -481,15 +481,15 @@
 
 %% Example:
 %% communication_type_options() :: #{
-%%   <<"datesWithoutSupport">> => list(date_interval()()),
-%%   <<"supportedHours">> => list(supported_hour()()),
+%%   <<"datesWithoutSupport">> => list(date_interval()),
+%%   <<"supportedHours">> => list(supported_hour()),
 %%   <<"type">> => string()
 %% }
 -type communication_type_options() :: #{binary() => any()}.
 
 %% Example:
 %% describe_trusted_advisor_check_summaries_response() :: #{
-%%   <<"summaries">> => list(trusted_advisor_check_summary()())
+%%   <<"summaries">> => list(trusted_advisor_check_summary())
 %% }
 -type describe_trusted_advisor_check_summaries_response() :: #{binary() => any()}.
 

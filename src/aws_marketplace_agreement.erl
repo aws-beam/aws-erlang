@@ -43,7 +43,7 @@
 
 %% Example:
 %% get_agreement_terms_output() :: #{
-%%   <<"acceptedTerms">> => list(list()()),
+%%   <<"acceptedTerms">> => list(list()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_agreement_terms_output() :: #{binary() => any()}.
@@ -57,7 +57,7 @@
 
 %% Example:
 %% configurable_upfront_pricing_term_configuration() :: #{
-%%   <<"dimensions">> => list(dimension()()),
+%%   <<"dimensions">> => list(dimension()),
 %%   <<"selectorValue">> => string()
 %% }
 -type configurable_upfront_pricing_term_configuration() :: #{binary() => any()}.
@@ -138,7 +138,7 @@
 %% Example:
 %% usage_based_pricing_term() :: #{
 %%   <<"currencyCode">> => string(),
-%%   <<"rateCards">> => list(usage_based_rate_card_item()()),
+%%   <<"rateCards">> => list(usage_based_rate_card_item()),
 %%   <<"type">> => string()
 %% }
 -type usage_based_pricing_term() :: #{binary() => any()}.
@@ -173,7 +173,7 @@
 
 %% Example:
 %% legal_term() :: #{
-%%   <<"documents">> => list(document_item()()),
+%%   <<"documents">> => list(document_item()),
 %%   <<"type">> => string()
 %% }
 -type legal_term() :: #{binary() => any()}.
@@ -188,14 +188,14 @@
 %% Example:
 %% payment_schedule_term() :: #{
 %%   <<"currencyCode">> => string(),
-%%   <<"schedule">> => list(schedule_item()()),
+%%   <<"schedule">> => list(schedule_item()),
 %%   <<"type">> => string()
 %% }
 -type payment_schedule_term() :: #{binary() => any()}.
 
 %% Example:
 %% usage_based_rate_card_item() :: #{
-%%   <<"rateCard">> => list(rate_card_item()())
+%%   <<"rateCard">> => list(rate_card_item())
 %% }
 -type usage_based_rate_card_item() :: #{binary() => any()}.
 
@@ -210,7 +210,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -229,7 +229,7 @@
 
 %% Example:
 %% search_agreements_output() :: #{
-%%   <<"agreementViewSummaries">> => list(agreement_view_summary()()),
+%%   <<"agreementViewSummaries">> => list(agreement_view_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type search_agreements_output() :: #{binary() => any()}.
@@ -245,7 +245,7 @@
 %% fixed_upfront_pricing_term() :: #{
 %%   <<"currencyCode">> => string(),
 %%   <<"duration">> => string(),
-%%   <<"grants">> => list(grant_item()()),
+%%   <<"grants">> => list(grant_item()),
 %%   <<"price">> => string(),
 %%   <<"type">> => string()
 %% }
@@ -254,7 +254,7 @@
 %% Example:
 %% search_agreements_input() :: #{
 %%   <<"catalog">> => string(),
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sort">> => sort()
@@ -278,7 +278,7 @@
 %% Example:
 %% configurable_upfront_rate_card_item() :: #{
 %%   <<"constraints">> => constraints(),
-%%   <<"rateCard">> => list(rate_card_item()()),
+%%   <<"rateCard">> => list(rate_card_item()),
 %%   <<"selector">> => selector()
 %% }
 -type configurable_upfront_rate_card_item() :: #{binary() => any()}.
@@ -292,7 +292,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"fields">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any()),
 %%   <<"requestId">> => string()
@@ -302,7 +302,7 @@
 %% Example:
 %% proposal_summary() :: #{
 %%   <<"offerId">> => string(),
-%%   <<"resources">> => list(resource()())
+%%   <<"resources">> => list(resource())
 %% }
 -type proposal_summary() :: #{binary() => any()}.
 
@@ -316,7 +316,7 @@
 %% Example:
 %% free_trial_pricing_term() :: #{
 %%   <<"duration">> => string(),
-%%   <<"grants">> => list(grant_item()()),
+%%   <<"grants">> => list(grant_item()),
 %%   <<"type">> => string()
 %% }
 -type free_trial_pricing_term() :: #{binary() => any()}.
@@ -348,7 +348,7 @@
 %% configurable_upfront_pricing_term() :: #{
 %%   <<"configuration">> => configurable_upfront_pricing_term_configuration(),
 %%   <<"currencyCode">> => string(),
-%%   <<"rateCards">> => list(configurable_upfront_rate_card_item()()),
+%%   <<"rateCards">> => list(configurable_upfront_rate_card_item()),
 %%   <<"type">> => string()
 %% }
 -type configurable_upfront_pricing_term() :: #{binary() => any()}.

@@ -190,7 +190,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -201,7 +201,7 @@
 
 %% Example:
 %% list_clusters_output() :: #{
-%%   <<"clusters">> => list(cluster_in_list()()),
+%%   <<"clusters">> => list(cluster_in_list()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_clusters_output() :: #{binary() => any()}.
@@ -210,7 +210,7 @@
 %% Example:
 %% list_pending_maintenance_actions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resourcePendingMaintenanceActions">> => list(resource_pending_maintenance_action()())
+%%   <<"resourcePendingMaintenanceActions">> => list(resource_pending_maintenance_action())
 %% }
 -type list_pending_maintenance_actions_output() :: #{binary() => any()}.
 
@@ -262,7 +262,7 @@
 %%   <<"shardCapacity">> => [integer()],
 %%   <<"shardCount">> => [integer()],
 %%   <<"shardInstanceCount">> => [integer()],
-%%   <<"shards">> => list(shard()()),
+%%   <<"shards">> => list(shard()),
 %%   <<"status">> => string(),
 %%   <<"subnetIds">> => list([string()]()),
 %%   <<"vpcSecurityGroupIds">> => list([string()]())
@@ -338,7 +338,7 @@
 %% Example:
 %% list_cluster_snapshots_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"snapshots">> => list(cluster_snapshot_in_list()())
+%%   <<"snapshots">> => list(cluster_snapshot_in_list())
 %% }
 -type list_cluster_snapshots_output() :: #{binary() => any()}.
 
@@ -390,7 +390,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
@@ -411,7 +411,7 @@
 
 %% Example:
 %% resource_pending_maintenance_action() :: #{
-%%   <<"pendingMaintenanceActionDetails">> => list(pending_maintenance_action_details()()),
+%%   <<"pendingMaintenanceActionDetails">> => list(pending_maintenance_action_details()),
 %%   <<"resourceArn">> => [string()]
 %% }
 -type resource_pending_maintenance_action() :: #{binary() => any()}.

@@ -22,14 +22,14 @@
 
 %% Example:
 %% batch_get_metrics_request() :: #{
-%%   <<"MetricQueries">> := list(metric_query()())
+%%   <<"MetricQueries">> := list(metric_query())
 %% }
 -type batch_get_metrics_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_metrics_response() :: #{
-%%   <<"MetricQueryResults">> => list(metric_query_result()())
+%%   <<"MetricQueryResults">> => list(metric_query_result())
 %% }
 -type batch_get_metrics_response() :: #{binary() => any()}.
 
@@ -44,7 +44,7 @@
 
 %% Example:
 %% batch_put_metrics_request() :: #{
-%%   <<"MetricData">> := list(raw_metric_data()()),
+%%   <<"MetricData">> := list(raw_metric_data()),
 %%   <<"TrialComponentName">> := string()
 %% }
 -type batch_put_metrics_request() :: #{binary() => any()}.
@@ -52,7 +52,7 @@
 
 %% Example:
 %% batch_put_metrics_response() :: #{
-%%   <<"Errors">> => list(batch_put_metrics_error()())
+%%   <<"Errors">> => list(batch_put_metrics_error())
 %% }
 -type batch_put_metrics_response() :: #{binary() => any()}.
 
@@ -73,9 +73,9 @@
 %% Example:
 %% metric_query_result() :: #{
 %%   <<"Message">> => string(),
-%%   <<"MetricValues">> => list(float()()),
+%%   <<"MetricValues">> => list(float()),
 %%   <<"Status">> => list(any()),
-%%   <<"XAxisValues">> => list(float()())
+%%   <<"XAxisValues">> => list(float())
 %% }
 -type metric_query_result() :: #{binary() => any()}.
 

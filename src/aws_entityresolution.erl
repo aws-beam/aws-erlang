@@ -185,7 +185,7 @@
 %% Example:
 %% update_schema_mapping_output() :: #{
 %%   <<"description">> => string(),
-%%   <<"mappedInputFields">> => list(schema_input_attribute()()),
+%%   <<"mappedInputFields">> => list(schema_input_attribute()),
 %%   <<"schemaArn">> => string(),
 %%   <<"schemaName">> => string()
 %% }
@@ -208,10 +208,10 @@
 
 %% Example:
 %% add_policy_statement_input() :: #{
-%%   <<"action">> := list(string()()),
+%%   <<"action">> := list(string()),
 %%   <<"condition">> => string(),
 %%   <<"effect">> := list(any()),
-%%   <<"principal">> := list(string()())
+%%   <<"principal">> := list(string())
 %% }
 -type add_policy_statement_input() :: #{binary() => any()}.
 
@@ -219,7 +219,7 @@
 %% Example:
 %% update_schema_mapping_input() :: #{
 %%   <<"description">> => string(),
-%%   <<"mappedInputFields">> := list(schema_input_attribute()())
+%%   <<"mappedInputFields">> := list(schema_input_attribute())
 %% }
 -type update_schema_mapping_input() :: #{binary() => any()}.
 
@@ -232,8 +232,8 @@
 %% update_matching_workflow_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"incrementalRunConfig">> => incremental_run_config(),
-%%   <<"inputSourceConfig">> := list(input_source()()),
-%%   <<"outputSourceConfig">> := list(output_source()()),
+%%   <<"inputSourceConfig">> := list(input_source()),
+%%   <<"outputSourceConfig">> := list(output_source()),
 %%   <<"resolutionTechniques">> := resolution_techniques(),
 %%   <<"roleArn">> := [string()]
 %% }
@@ -254,7 +254,7 @@
 %% Example:
 %% list_schema_mappings_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"schemaList">> => list(schema_mapping_summary()())
+%%   <<"schemaList">> => list(schema_mapping_summary())
 %% }
 -type list_schema_mappings_output() :: #{binary() => any()}.
 
@@ -318,7 +318,7 @@
 
 %% Example:
 %% list_id_namespaces_output() :: #{
-%%   <<"idNamespaceSummaries">> => list(id_namespace_summary()()),
+%%   <<"idNamespaceSummaries">> => list(id_namespace_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_id_namespaces_output() :: #{binary() => any()}.
@@ -336,7 +336,7 @@
 %% Example:
 %% create_schema_mapping_output() :: #{
 %%   <<"description">> => string(),
-%%   <<"mappedInputFields">> => list(schema_input_attribute()()),
+%%   <<"mappedInputFields">> => list(schema_input_attribute()),
 %%   <<"schemaArn">> => string(),
 %%   <<"schemaName">> => string()
 %% }
@@ -347,8 +347,8 @@
 %% update_matching_workflow_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"incrementalRunConfig">> => incremental_run_config(),
-%%   <<"inputSourceConfig">> => list(input_source()()),
-%%   <<"outputSourceConfig">> => list(output_source()()),
+%%   <<"inputSourceConfig">> => list(input_source()),
+%%   <<"outputSourceConfig">> => list(output_source()),
 %%   <<"resolutionTechniques">> => resolution_techniques(),
 %%   <<"roleArn">> => [string()],
 %%   <<"workflowName">> => string()
@@ -358,7 +358,7 @@
 
 %% Example:
 %% list_id_mapping_jobs_output() :: #{
-%%   <<"jobs">> => list(job_summary()()),
+%%   <<"jobs">> => list(job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_id_mapping_jobs_output() :: #{binary() => any()}.
@@ -379,8 +379,8 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> => id_mapping_techniques(),
-%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()()),
-%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()()),
+%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()],
@@ -419,7 +419,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"hasWorkflows">> => [boolean()],
-%%   <<"mappedInputFields">> => list(schema_input_attribute()()),
+%%   <<"mappedInputFields">> => list(schema_input_attribute()),
 %%   <<"schemaArn">> => string(),
 %%   <<"schemaName">> => string(),
 %%   <<"tags">> => map(),
@@ -433,7 +433,7 @@
 %%   <<"attributeMatchingModel">> => list(any()),
 %%   <<"recordMatchingModels">> => list(list(any())()),
 %%   <<"ruleDefinitionTypes">> => list(list(any())()),
-%%   <<"rules">> => list(rule()())
+%%   <<"rules">> => list(rule())
 %% }
 -type namespace_rule_based_properties() :: #{binary() => any()}.
 
@@ -458,8 +458,8 @@
 %% create_matching_workflow_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"incrementalRunConfig">> => incremental_run_config(),
-%%   <<"inputSourceConfig">> => list(input_source()()),
-%%   <<"outputSourceConfig">> => list(output_source()()),
+%%   <<"inputSourceConfig">> => list(input_source()),
+%%   <<"outputSourceConfig">> => list(output_source()),
 %%   <<"resolutionTechniques">> => resolution_techniques(),
 %%   <<"roleArn">> => [string()],
 %%   <<"workflowArn">> => string(),
@@ -488,9 +488,9 @@
 
 %% Example:
 %% batch_delete_unique_id_output() :: #{
-%%   <<"deleted">> => list(deleted_unique_id()()),
-%%   <<"disconnectedUniqueIds">> => list(string()()),
-%%   <<"errors">> => list(delete_unique_id_error()()),
+%%   <<"deleted">> => list(deleted_unique_id()),
+%%   <<"disconnectedUniqueIds">> => list(string()),
+%%   <<"errors">> => list(delete_unique_id_error()),
 %%   <<"status">> => list(any())
 %% }
 -type batch_delete_unique_id_output() :: #{binary() => any()}.
@@ -521,7 +521,7 @@
 %% Example:
 %% batch_delete_unique_id_input() :: #{
 %%   <<"inputSource">> => [string()],
-%%   <<"uniqueIds">> := list(string()())
+%%   <<"uniqueIds">> := list(string())
 %% }
 -type batch_delete_unique_id_input() :: #{binary() => any()}.
 
@@ -554,7 +554,7 @@
 %% Example:
 %% generate_match_id_input() :: #{
 %%   <<"processingType">> => list(any()),
-%%   <<"records">> := list(record()())
+%%   <<"records">> := list(record())
 %% }
 -type generate_match_id_input() :: #{binary() => any()}.
 
@@ -562,7 +562,7 @@
 %% Example:
 %% list_id_mapping_workflows_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workflowSummaries">> => list(id_mapping_workflow_summary()())
+%%   <<"workflowSummaries">> => list(id_mapping_workflow_summary())
 %% }
 -type list_id_mapping_workflows_output() :: #{binary() => any()}.
 
@@ -584,8 +584,8 @@
 %% create_id_mapping_workflow_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> := id_mapping_techniques(),
-%%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()()),
-%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()()),
+%%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"workflowName">> := string()
@@ -596,7 +596,7 @@
 %% Example:
 %% list_matching_workflows_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workflowSummaries">> => list(matching_workflow_summary()())
+%%   <<"workflowSummaries">> => list(matching_workflow_summary())
 %% }
 -type list_matching_workflows_output() :: #{binary() => any()}.
 
@@ -605,8 +605,8 @@
 %% create_matching_workflow_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"incrementalRunConfig">> => incremental_run_config(),
-%%   <<"inputSourceConfig">> := list(input_source()()),
-%%   <<"outputSourceConfig">> := list(output_source()()),
+%%   <<"inputSourceConfig">> := list(input_source()),
+%%   <<"outputSourceConfig">> := list(output_source()),
 %%   <<"resolutionTechniques">> := resolution_techniques(),
 %%   <<"roleArn">> := [string()],
 %%   <<"tags">> => map(),
@@ -639,7 +639,7 @@
 %%   <<"errorDetails">> => error_details(),
 %%   <<"jobId">> => string(),
 %%   <<"metrics">> => id_mapping_job_metrics(),
-%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()()),
+%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()),
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"status">> => list(any())
 %% }
@@ -658,7 +658,7 @@
 
 %% Example:
 %% start_id_mapping_job_input() :: #{
-%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()())
+%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source())
 %% }
 -type start_id_mapping_job_input() :: #{binary() => any()}.
 
@@ -667,8 +667,8 @@
 %% update_id_mapping_workflow_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> => id_mapping_techniques(),
-%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()()),
-%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()()),
+%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string(),
 %%   <<"workflowArn">> => string(),
 %%   <<"workflowName">> => string()
@@ -729,7 +729,7 @@
 
 %% Example:
 %% rule() :: #{
-%%   <<"matchingKeys">> => list(string()()),
+%%   <<"matchingKeys">> => list(string()),
 %%   <<"ruleName">> => [string()]
 %% }
 -type rule() :: #{binary() => any()}.
@@ -750,7 +750,7 @@
 %% match_group() :: #{
 %%   <<"matchId">> => [string()],
 %%   <<"matchRule">> => [string()],
-%%   <<"records">> => list(matched_record()())
+%%   <<"records">> => list(matched_record())
 %% }
 -type match_group() :: #{binary() => any()}.
 
@@ -774,8 +774,8 @@
 %% create_id_mapping_workflow_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> => id_mapping_techniques(),
-%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()()),
-%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()()),
+%%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string(),
 %%   <<"workflowArn">> => string(),
 %%   <<"workflowName">> => string()
@@ -787,8 +787,8 @@
 %% update_id_mapping_workflow_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> := id_mapping_techniques(),
-%%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()()),
-%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()()),
+%%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()),
+%%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string()
 %% }
 -type update_id_mapping_workflow_input() :: #{binary() => any()}.
@@ -809,10 +809,10 @@
 %% get_id_namespace_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
 %%   <<"idNamespaceArn">> => string(),
 %%   <<"idNamespaceName">> => string(),
-%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any()),
@@ -824,7 +824,7 @@
 %% Example:
 %% create_schema_mapping_input() :: #{
 %%   <<"description">> => string(),
-%%   <<"mappedInputFields">> := list(schema_input_attribute()()),
+%%   <<"mappedInputFields">> := list(schema_input_attribute()),
 %%   <<"schemaName">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -834,9 +834,9 @@
 %% Example:
 %% create_id_namespace_input() :: #{
 %%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
 %%   <<"idNamespaceName">> := string(),
-%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"type">> := list(any())
@@ -846,7 +846,7 @@
 
 %% Example:
 %% provider_intermediate_data_access_configuration() :: #{
-%%   <<"awsAccountIds">> => list(string()()),
+%%   <<"awsAccountIds">> => list(string()),
 %%   <<"requiredBucketActions">> => list([string()]())
 %% }
 -type provider_intermediate_data_access_configuration() :: #{binary() => any()}.
@@ -869,8 +869,8 @@
 
 %% Example:
 %% generate_match_id_output() :: #{
-%%   <<"failedRecords">> => list(failed_record()()),
-%%   <<"matchGroups">> => list(match_group()())
+%%   <<"failedRecords">> => list(failed_record()),
+%%   <<"matchGroups">> => list(match_group())
 %% }
 -type generate_match_id_output() :: #{binary() => any()}.
 
@@ -878,8 +878,8 @@
 %% Example:
 %% update_id_namespace_input() :: #{
 %%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
-%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
 %%   <<"roleArn">> => string()
 %% }
 -type update_id_namespace_input() :: #{binary() => any()}.
@@ -887,7 +887,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -972,7 +972,7 @@
 %% output_source() :: #{
 %%   <<"KMSArn">> => string(),
 %%   <<"applyNormalization">> => [boolean()],
-%%   <<"output">> => list(output_attribute()()),
+%%   <<"output">> => list(output_attribute()),
 %%   <<"outputS3Path">> => string()
 %% }
 -type output_source() :: #{binary() => any()}.
@@ -1003,7 +1003,7 @@
 
 %% Example:
 %% provider_component_schema() :: #{
-%%   <<"providerSchemaAttributes">> => list(provider_schema_attribute()()),
+%%   <<"providerSchemaAttributes">> => list(provider_schema_attribute()),
 %%   <<"schemas">> => list(list([string()]())())
 %% }
 -type provider_component_schema() :: #{binary() => any()}.
@@ -1022,7 +1022,7 @@
 %% id_namespace_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_metadata()()),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_metadata()),
 %%   <<"idNamespaceArn">> => string(),
 %%   <<"idNamespaceName">> => string(),
 %%   <<"type">> => list(any()),
@@ -1034,7 +1034,7 @@
 %% Example:
 %% start_id_mapping_job_output() :: #{
 %%   <<"jobId">> => string(),
-%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()())
+%%   <<"outputSourceConfig">> => list(id_mapping_job_output_source())
 %% }
 -type start_id_mapping_job_output() :: #{binary() => any()}.
 
@@ -1044,8 +1044,8 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"incrementalRunConfig">> => incremental_run_config(),
-%%   <<"inputSourceConfig">> => list(input_source()()),
-%%   <<"outputSourceConfig">> => list(output_source()()),
+%%   <<"inputSourceConfig">> => list(input_source()),
+%%   <<"outputSourceConfig">> => list(output_source()),
 %%   <<"resolutionTechniques">> => resolution_techniques(),
 %%   <<"roleArn">> => [string()],
 %%   <<"tags">> => map(),
@@ -1092,7 +1092,7 @@
 %%   <<"errorDetails">> => error_details(),
 %%   <<"jobId">> => string(),
 %%   <<"metrics">> => job_metrics(),
-%%   <<"outputSourceConfig">> => list(job_output_source()()),
+%%   <<"outputSourceConfig">> => list(job_output_source()),
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"status">> => list(any())
 %% }
@@ -1103,7 +1103,7 @@
 %% rule_based_properties() :: #{
 %%   <<"attributeMatchingModel">> => list(any()),
 %%   <<"matchPurpose">> => list(any()),
-%%   <<"rules">> => list(rule()())
+%%   <<"rules">> => list(rule())
 %% }
 -type rule_based_properties() :: #{binary() => any()}.
 
@@ -1112,10 +1112,10 @@
 %% create_id_namespace_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
 %%   <<"idNamespaceArn">> => string(),
 %%   <<"idNamespaceName">> => string(),
-%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"type">> => list(any()),
@@ -1129,7 +1129,7 @@
 %%   <<"attributeMatchingModel">> => list(any()),
 %%   <<"recordMatchingModel">> => list(any()),
 %%   <<"ruleDefinitionType">> => list(any()),
-%%   <<"rules">> => list(rule()())
+%%   <<"rules">> => list(rule())
 %% }
 -type id_mapping_rule_based_properties() :: #{binary() => any()}.
 
@@ -1138,10 +1138,10 @@
 %% update_id_namespace_output() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()()),
+%%   <<"idMappingWorkflowProperties">> => list(id_namespace_id_mapping_workflow_properties()),
 %%   <<"idNamespaceArn">> => string(),
 %%   <<"idNamespaceName">> => string(),
-%%   <<"inputSourceConfig">> => list(id_namespace_input_source()()),
+%%   <<"inputSourceConfig">> => list(id_namespace_input_source()),
 %%   <<"roleArn">> => string(),
 %%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -1179,7 +1179,7 @@
 
 %% Example:
 %% list_matching_jobs_output() :: #{
-%%   <<"jobs">> => list(job_summary()()),
+%%   <<"jobs">> => list(job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_matching_jobs_output() :: #{binary() => any()}.
@@ -1188,7 +1188,7 @@
 %% Example:
 %% list_provider_services_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"providerServiceSummaries">> => list(provider_service_summary()())
+%%   <<"providerServiceSummaries">> => list(provider_service_summary())
 %% }
 -type list_provider_services_output() :: #{binary() => any()}.
 

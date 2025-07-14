@@ -213,7 +213,7 @@
 %% xss_match_set() :: #{
 %%   <<"Name">> => string(),
 %%   <<"XssMatchSetId">> => string(),
-%%   <<"XssMatchTuples">> => list(xss_match_tuple()())
+%%   <<"XssMatchTuples">> => list(xss_match_tuple())
 %% }
 -type xss_match_set() :: #{binary() => any()}.
 
@@ -222,7 +222,7 @@
 %%   <<"ChangeToken">> := string(),
 %%   <<"MetricName">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_rule_request() :: #{binary() => any()}.
 
@@ -249,7 +249,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -263,13 +263,13 @@
 %% sql_injection_match_set() :: #{
 %%   <<"Name">> => string(),
 %%   <<"SqlInjectionMatchSetId">> => string(),
-%%   <<"SqlInjectionMatchTuples">> => list(sql_injection_match_tuple()())
+%%   <<"SqlInjectionMatchTuples">> => list(sql_injection_match_tuple())
 %% }
 -type sql_injection_match_set() :: #{binary() => any()}.
 
 %% Example:
 %% rate_based_rule() :: #{
-%%   <<"MatchPredicates">> => list(predicate()()),
+%%   <<"MatchPredicates">> => list(predicate()),
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RateKey">> => list(any()),
@@ -282,7 +282,7 @@
 %% update_size_constraint_set_request() :: #{
 %%   <<"ChangeToken">> := string(),
 %%   <<"SizeConstraintSetId">> := string(),
-%%   <<"Updates">> := list(size_constraint_set_update()())
+%%   <<"Updates">> := list(size_constraint_set_update())
 %% }
 -type update_size_constraint_set_request() :: #{binary() => any()}.
 
@@ -328,7 +328,7 @@
 %% Example:
 %% list_rule_groups_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"RuleGroups">> => list(rule_group_summary()())
+%%   <<"RuleGroups">> => list(rule_group_summary())
 %% }
 -type list_rule_groups_response() :: #{binary() => any()}.
 
@@ -354,7 +354,7 @@
 %% Example:
 %% list_regex_match_sets_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"RegexMatchSets">> => list(regex_match_set_summary()())
+%%   <<"RegexMatchSets">> => list(regex_match_set_summary())
 %% }
 -type list_regex_match_sets_response() :: #{binary() => any()}.
 
@@ -406,7 +406,7 @@
 %% Example:
 %% list_xss_match_sets_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"XssMatchSets">> => list(xss_match_set_summary()())
+%%   <<"XssMatchSets">> => list(xss_match_set_summary())
 %% }
 -type list_xss_match_sets_response() :: #{binary() => any()}.
 
@@ -459,7 +459,7 @@
 %% update_byte_match_set_request() :: #{
 %%   <<"ByteMatchSetId">> := string(),
 %%   <<"ChangeToken">> := string(),
-%%   <<"Updates">> := list(byte_match_set_update()())
+%%   <<"Updates">> := list(byte_match_set_update())
 %% }
 -type update_byte_match_set_request() :: #{binary() => any()}.
 
@@ -497,7 +497,7 @@
 %% update_rule_request() :: #{
 %%   <<"ChangeToken">> := string(),
 %%   <<"RuleId">> := string(),
-%%   <<"Updates">> := list(rule_update()())
+%%   <<"Updates">> := list(rule_update())
 %% }
 -type update_rule_request() :: #{binary() => any()}.
 
@@ -554,21 +554,21 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_info_for_resource() :: #{
 %%   <<"ResourceARN">> => string(),
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type tag_info_for_resource() :: #{binary() => any()}.
 
 %% Example:
 %% activated_rule() :: #{
 %%   <<"Action">> => waf_action(),
-%%   <<"ExcludedRules">> => list(excluded_rule()()),
+%%   <<"ExcludedRules">> => list(excluded_rule()),
 %%   <<"OverrideAction">> => waf_override_action(),
 %%   <<"Priority">> => integer(),
 %%   <<"RuleId">> => string(),
@@ -593,7 +593,7 @@
 %% update_ip_set_request() :: #{
 %%   <<"ChangeToken">> := string(),
 %%   <<"IPSetId">> := string(),
-%%   <<"Updates">> := list(ip_set_update()())
+%%   <<"Updates">> := list(ip_set_update())
 %% }
 -type update_ip_set_request() :: #{binary() => any()}.
 
@@ -625,8 +625,8 @@
 
 %% Example:
 %% logging_configuration() :: #{
-%%   <<"LogDestinationConfigs">> => list(string()()),
-%%   <<"RedactedFields">> => list(field_to_match()()),
+%%   <<"LogDestinationConfigs">> => list(string()),
+%%   <<"RedactedFields">> => list(field_to_match()),
 %%   <<"ResourceArn">> => string()
 %% }
 -type logging_configuration() :: #{binary() => any()}.
@@ -649,7 +649,7 @@
 %% Example:
 %% list_sql_injection_match_sets_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"SqlInjectionMatchSets">> => list(sql_injection_match_set_summary()())
+%%   <<"SqlInjectionMatchSets">> => list(sql_injection_match_set_summary())
 %% }
 -type list_sql_injection_match_sets_response() :: #{binary() => any()}.
 
@@ -665,7 +665,7 @@
 %%   <<"ChangeToken">> := string(),
 %%   <<"MetricName">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_rule_group_request() :: #{binary() => any()}.
 
@@ -719,7 +719,7 @@
 %%   <<"DefaultAction">> => waf_action(),
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Rules">> => list(activated_rule()()),
+%%   <<"Rules">> => list(activated_rule()),
 %%   <<"WebACLArn">> => string(),
 %%   <<"WebACLId">> => string()
 %% }
@@ -735,13 +735,13 @@
 %% regex_match_set() :: #{
 %%   <<"Name">> => string(),
 %%   <<"RegexMatchSetId">> => string(),
-%%   <<"RegexMatchTuples">> => list(regex_match_tuple()())
+%%   <<"RegexMatchTuples">> => list(regex_match_tuple())
 %% }
 -type regex_match_set() :: #{binary() => any()}.
 
 %% Example:
 %% list_activated_rules_in_rule_group_response() :: #{
-%%   <<"ActivatedRules">> => list(activated_rule()()),
+%%   <<"ActivatedRules">> => list(activated_rule()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_activated_rules_in_rule_group_response() :: #{binary() => any()}.
@@ -802,7 +802,7 @@
 %% update_regex_pattern_set_request() :: #{
 %%   <<"ChangeToken">> := string(),
 %%   <<"RegexPatternSetId">> := string(),
-%%   <<"Updates">> := list(regex_pattern_set_update()())
+%%   <<"Updates">> := list(regex_pattern_set_update())
 %% }
 -type update_regex_pattern_set_request() :: #{binary() => any()}.
 
@@ -821,7 +821,7 @@
 
 %% Example:
 %% list_ip_sets_response() :: #{
-%%   <<"IPSets">> => list(ip_set_summary()()),
+%%   <<"IPSets">> => list(ip_set_summary()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_ip_sets_response() :: #{binary() => any()}.
@@ -857,7 +857,7 @@
 %% update_sql_injection_match_set_request() :: #{
 %%   <<"ChangeToken">> := string(),
 %%   <<"SqlInjectionMatchSetId">> := string(),
-%%   <<"Updates">> := list(sql_injection_match_set_update()())
+%%   <<"Updates">> := list(sql_injection_match_set_update())
 %% }
 -type update_sql_injection_match_set_request() :: #{binary() => any()}.
 
@@ -870,7 +870,7 @@
 %% Example:
 %% update_xss_match_set_request() :: #{
 %%   <<"ChangeToken">> := string(),
-%%   <<"Updates">> := list(xss_match_set_update()()),
+%%   <<"Updates">> := list(xss_match_set_update()),
 %%   <<"XssMatchSetId">> := string()
 %% }
 -type update_xss_match_set_request() :: #{binary() => any()}.
@@ -893,7 +893,7 @@
 %%   <<"ChangeToken">> := string(),
 %%   <<"RateLimit">> := float(),
 %%   <<"RuleId">> := string(),
-%%   <<"Updates">> := list(rule_update()())
+%%   <<"Updates">> := list(rule_update())
 %% }
 -type update_rate_based_rule_request() :: #{binary() => any()}.
 
@@ -920,7 +920,7 @@
 
 %% Example:
 %% ip_set() :: #{
-%%   <<"IPSetDescriptors">> => list(ip_set_descriptor()()),
+%%   <<"IPSetDescriptors">> => list(ip_set_descriptor()),
 %%   <<"IPSetId">> => string(),
 %%   <<"Name">> => string()
 %% }
@@ -979,7 +979,7 @@
 %% update_web_acl_request() :: #{
 %%   <<"ChangeToken">> := string(),
 %%   <<"DefaultAction">> => waf_action(),
-%%   <<"Updates">> => list(web_acl_update()()),
+%%   <<"Updates">> => list(web_acl_update()),
 %%   <<"WebACLId">> := string()
 %% }
 -type update_web_acl_request() :: #{binary() => any()}.
@@ -993,7 +993,7 @@
 
 %% Example:
 %% get_rate_based_rule_managed_keys_response() :: #{
-%%   <<"ManagedKeys">> => list(string()()),
+%%   <<"ManagedKeys">> => list(string()),
 %%   <<"NextMarker">> => string()
 %% }
 -type get_rate_based_rule_managed_keys_response() :: #{binary() => any()}.
@@ -1076,7 +1076,7 @@
 %% Example:
 %% list_subscribed_rule_groups_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"RuleGroups">> => list(subscribed_rule_group_summary()())
+%%   <<"RuleGroups">> => list(subscribed_rule_group_summary())
 %% }
 -type list_subscribed_rule_groups_response() :: #{binary() => any()}.
 
@@ -1084,7 +1084,7 @@
 %% rule() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Predicates">> => list(predicate()()),
+%%   <<"Predicates">> => list(predicate()),
 %%   <<"RuleId">> => string()
 %% }
 -type rule() :: #{binary() => any()}.
@@ -1099,7 +1099,7 @@
 %% size_constraint_set() :: #{
 %%   <<"Name">> => string(),
 %%   <<"SizeConstraintSetId">> => string(),
-%%   <<"SizeConstraints">> => list(size_constraint()())
+%%   <<"SizeConstraints">> => list(size_constraint())
 %% }
 -type size_constraint_set() :: #{binary() => any()}.
 
@@ -1198,14 +1198,14 @@
 
 %% Example:
 %% list_byte_match_sets_response() :: #{
-%%   <<"ByteMatchSets">> => list(byte_match_set_summary()()),
+%%   <<"ByteMatchSets">> => list(byte_match_set_summary()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_byte_match_sets_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_logging_configurations_response() :: #{
-%%   <<"LoggingConfigurations">> => list(logging_configuration()()),
+%%   <<"LoggingConfigurations">> => list(logging_configuration()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_logging_configurations_response() :: #{binary() => any()}.
@@ -1231,7 +1231,7 @@
 
 %% Example:
 %% list_geo_match_sets_response() :: #{
-%%   <<"GeoMatchSets">> => list(geo_match_set_summary()()),
+%%   <<"GeoMatchSets">> => list(geo_match_set_summary()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_geo_match_sets_response() :: #{binary() => any()}.
@@ -1254,7 +1254,7 @@
 %%   <<"DefaultAction">> := waf_action(),
 %%   <<"MetricName">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_web_acl_request() :: #{binary() => any()}.
 
@@ -1276,14 +1276,14 @@
 %% update_rule_group_request() :: #{
 %%   <<"ChangeToken">> := string(),
 %%   <<"RuleGroupId">> := string(),
-%%   <<"Updates">> := list(rule_group_update()())
+%%   <<"Updates">> := list(rule_group_update())
 %% }
 -type update_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_rules_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"Rules">> => list(rule_summary()())
+%%   <<"Rules">> => list(rule_summary())
 %% }
 -type list_rules_response() :: #{binary() => any()}.
 
@@ -1304,7 +1304,7 @@
 %%   <<"ClientIP">> => string(),
 %%   <<"Country">> => string(),
 %%   <<"HTTPVersion">> => string(),
-%%   <<"Headers">> => list(h_t_t_p_header()()),
+%%   <<"Headers">> => list(h_t_t_p_header()),
 %%   <<"Method">> => string(),
 %%   <<"URI">> => string()
 %% }
@@ -1320,7 +1320,7 @@
 %% regex_pattern_set() :: #{
 %%   <<"Name">> => string(),
 %%   <<"RegexPatternSetId">> => string(),
-%%   <<"RegexPatternStrings">> => list(string()())
+%%   <<"RegexPatternStrings">> => list(string())
 %% }
 -type regex_pattern_set() :: #{binary() => any()}.
 
@@ -1339,7 +1339,7 @@
 %% Example:
 %% list_rate_based_rules_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"Rules">> => list(rule_summary()())
+%%   <<"Rules">> => list(rule_summary())
 %% }
 -type list_rate_based_rules_response() :: #{binary() => any()}.
 
@@ -1401,7 +1401,7 @@
 %% update_regex_match_set_request() :: #{
 %%   <<"ChangeToken">> := string(),
 %%   <<"RegexMatchSetId">> := string(),
-%%   <<"Updates">> := list(regex_match_set_update()())
+%%   <<"Updates">> := list(regex_match_set_update())
 %% }
 -type update_regex_match_set_request() :: #{binary() => any()}.
 
@@ -1483,7 +1483,7 @@
 %% update_geo_match_set_request() :: #{
 %%   <<"ChangeToken">> := string(),
 %%   <<"GeoMatchSetId">> := string(),
-%%   <<"Updates">> := list(geo_match_set_update()())
+%%   <<"Updates">> := list(geo_match_set_update())
 %% }
 -type update_geo_match_set_request() :: #{binary() => any()}.
 
@@ -1503,13 +1503,13 @@
 %% Example:
 %% list_size_constraint_sets_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"SizeConstraintSets">> => list(size_constraint_set_summary()())
+%%   <<"SizeConstraintSets">> => list(size_constraint_set_summary())
 %% }
 -type list_size_constraint_sets_response() :: #{binary() => any()}.
 
 %% Example:
 %% geo_match_set() :: #{
-%%   <<"GeoMatchConstraints">> => list(geo_match_constraint()()),
+%%   <<"GeoMatchConstraints">> => list(geo_match_constraint()),
 %%   <<"GeoMatchSetId">> => string(),
 %%   <<"Name">> => string()
 %% }
@@ -1530,7 +1530,7 @@
 %% Example:
 %% get_sampled_requests_response() :: #{
 %%   <<"PopulationSize">> => float(),
-%%   <<"SampledRequests">> => list(sampled_h_t_t_p_request()()),
+%%   <<"SampledRequests">> => list(sampled_h_t_t_p_request()),
 %%   <<"TimeWindow">> => time_window()
 %% }
 -type get_sampled_requests_response() :: #{binary() => any()}.
@@ -1538,7 +1538,7 @@
 %% Example:
 %% list_regex_pattern_sets_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"RegexPatternSets">> => list(regex_pattern_set_summary()())
+%%   <<"RegexPatternSets">> => list(regex_pattern_set_summary())
 %% }
 -type list_regex_pattern_sets_response() :: #{binary() => any()}.
 
@@ -1574,7 +1574,7 @@
 %% Example:
 %% list_web_acls_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"WebACLs">> => list(web_acl_summary()())
+%%   <<"WebACLs">> => list(web_acl_summary())
 %% }
 -type list_web_acls_response() :: #{binary() => any()}.
 
@@ -1715,7 +1715,7 @@
 %%   <<"Name">> := string(),
 %%   <<"RateKey">> := list(any()),
 %%   <<"RateLimit">> := float(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_rate_based_rule_request() :: #{binary() => any()}.
 
@@ -1729,7 +1729,7 @@
 %% Example:
 %% byte_match_set() :: #{
 %%   <<"ByteMatchSetId">> => string(),
-%%   <<"ByteMatchTuples">> => list(byte_match_tuple()()),
+%%   <<"ByteMatchTuples">> => list(byte_match_tuple()),
 %%   <<"Name">> => string()
 %% }
 -type byte_match_set() :: #{binary() => any()}.

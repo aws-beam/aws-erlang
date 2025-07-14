@@ -112,14 +112,14 @@
 
 %% Example:
 %% workflow_execution_infos() :: #{
-%%   <<"executionInfos">> => list(workflow_execution_info()()),
+%%   <<"executionInfos">> => list(workflow_execution_info()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type workflow_execution_infos() :: #{binary() => any()}.
 
 %% Example:
 %% respond_decision_task_completed_input() :: #{
-%%   <<"decisions">> => list(decision()()),
+%%   <<"decisions">> => list(decision()),
 %%   <<"executionContext">> => string(),
 %%   <<"taskList">> => task_list(),
 %%   <<"taskListScheduleToStartTimeout">> => string(),
@@ -217,7 +217,7 @@
 %%   <<"executionStartToCloseTimeout">> => string(),
 %%   <<"input">> => string(),
 %%   <<"lambdaRole">> => string(),
-%%   <<"tagList">> => list(string()()),
+%%   <<"tagList">> => list(string()),
 %%   <<"taskList">> => task_list(),
 %%   <<"taskPriority">> => string(),
 %%   <<"taskStartToCloseTimeout">> => string(),
@@ -299,7 +299,7 @@
 %%   <<"lambdaRole">> => string(),
 %%   <<"parentInitiatedEventId">> => float(),
 %%   <<"parentWorkflowExecution">> => workflow_execution(),
-%%   <<"tagList">> => list(string()()),
+%%   <<"tagList">> => list(string()),
 %%   <<"taskList">> => task_list(),
 %%   <<"taskPriority">> => string(),
 %%   <<"taskStartToCloseTimeout">> => string(),
@@ -384,7 +384,7 @@
 %% Example:
 %% workflow_type_infos() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"typeInfos">> => list(workflow_type_info()())
+%%   <<"typeInfos">> => list(workflow_type_info())
 %% }
 -type workflow_type_infos() :: #{binary() => any()}.
 
@@ -416,7 +416,7 @@
 
 %% Example:
 %% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => list(resource_tag()())
+%%   <<"tags">> => list(resource_tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -481,7 +481,7 @@
 %% register_domain_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(resource_tag()()),
+%%   <<"tags">> => list(resource_tag()),
 %%   <<"workflowExecutionRetentionPeriodInDays">> := string()
 %% }
 -type register_domain_input() :: #{binary() => any()}.
@@ -525,7 +525,7 @@
 %%   <<"executionStartToCloseTimeout">> => string(),
 %%   <<"input">> => string(),
 %%   <<"lambdaRole">> => string(),
-%%   <<"tagList">> => list(string()()),
+%%   <<"tagList">> => list(string()),
 %%   <<"taskList">> => task_list(),
 %%   <<"taskPriority">> => string(),
 %%   <<"taskStartToCloseTimeout">> => string(),
@@ -726,7 +726,7 @@
 %%   <<"executionStartToCloseTimeout">> => string(),
 %%   <<"input">> => string(),
 %%   <<"lambdaRole">> => string(),
-%%   <<"tagList">> => list(string()()),
+%%   <<"tagList">> => list(string()),
 %%   <<"taskList">> => task_list(),
 %%   <<"taskPriority">> => string(),
 %%   <<"taskStartToCloseTimeout">> => string(),
@@ -786,7 +786,7 @@
 
 %% Example:
 %% decision_task() :: #{
-%%   <<"events">> => list(history_event()()),
+%%   <<"events">> => list(history_event()),
 %%   <<"nextPageToken">> => string(),
 %%   <<"previousStartedEventId">> => float(),
 %%   <<"startedEventId">> => float(),
@@ -893,7 +893,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(resource_tag()())
+%%   <<"tags">> := list(resource_tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -913,7 +913,7 @@
 %%   <<"executionStatus">> => list(any()),
 %%   <<"parent">> => workflow_execution(),
 %%   <<"startTimestamp">> => non_neg_integer(),
-%%   <<"tagList">> => list(string()()),
+%%   <<"tagList">> => list(string()),
 %%   <<"workflowType">> => workflow_type()
 %% }
 -type workflow_execution_info() :: #{binary() => any()}.
@@ -1087,7 +1087,7 @@
 %% Example:
 %% activity_type_infos() :: #{
 %%   <<"nextPageToken">> => string(),
-%%   <<"typeInfos">> => list(activity_type_info()())
+%%   <<"typeInfos">> => list(activity_type_info())
 %% }
 -type activity_type_infos() :: #{binary() => any()}.
 
@@ -1108,7 +1108,7 @@
 
 %% Example:
 %% domain_infos() :: #{
-%%   <<"domainInfos">> => list(domain_info()()),
+%%   <<"domainInfos">> => list(domain_info()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type domain_infos() :: #{binary() => any()}.
@@ -1156,7 +1156,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1310,7 +1310,7 @@
 %%   <<"input">> => string(),
 %%   <<"lambdaRole">> => string(),
 %%   <<"newExecutionRunId">> => string(),
-%%   <<"tagList">> => list(string()()),
+%%   <<"tagList">> => list(string()),
 %%   <<"taskList">> => task_list(),
 %%   <<"taskPriority">> => string(),
 %%   <<"taskStartToCloseTimeout">> => string(),
@@ -1344,7 +1344,7 @@
 
 %% Example:
 %% history() :: #{
-%%   <<"events">> => list(history_event()()),
+%%   <<"events">> => list(history_event()),
 %%   <<"nextPageToken">> => string()
 %% }
 -type history() :: #{binary() => any()}.
@@ -1371,7 +1371,7 @@
 %%   <<"executionStartToCloseTimeout">> => string(),
 %%   <<"input">> => string(),
 %%   <<"lambdaRole">> => string(),
-%%   <<"tagList">> => list(string()()),
+%%   <<"tagList">> => list(string()),
 %%   <<"taskList">> => task_list(),
 %%   <<"taskPriority">> => string(),
 %%   <<"taskStartToCloseTimeout">> => string(),

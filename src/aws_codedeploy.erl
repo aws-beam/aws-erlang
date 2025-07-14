@@ -201,7 +201,7 @@
 
 %% Example:
 %% traffic_route() :: #{
-%%   <<"listenerArns">> => list(string()())
+%%   <<"listenerArns">> => list(string())
 %% }
 -type traffic_route() :: #{binary() => any()}.
 
@@ -251,7 +251,7 @@
 
 %% Example:
 %% batch_get_deployments_input() :: #{
-%%   <<"deploymentIds">> := list(string()())
+%%   <<"deploymentIds">> := list(string())
 %% }
 -type batch_get_deployments_input() :: #{binary() => any()}.
 
@@ -263,7 +263,7 @@
 
 %% Example:
 %% delete_deployment_group_output() :: #{
-%%   <<"hooksNotCleanedUp">> => list(auto_scaling_group()())
+%%   <<"hooksNotCleanedUp">> => list(auto_scaling_group())
 %% }
 -type delete_deployment_group_output() :: #{binary() => any()}.
 
@@ -303,7 +303,7 @@
 
 %% Example:
 %% list_deployment_instances_output() :: #{
-%%   <<"instancesList">> => list(string()()),
+%%   <<"instancesList">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployment_instances_output() :: #{binary() => any()}.
@@ -311,7 +311,7 @@
 %% Example:
 %% batch_get_application_revisions_input() :: #{
 %%   <<"applicationName">> := string(),
-%%   <<"revisions">> := list(revision_location()())
+%%   <<"revisions">> := list(revision_location())
 %% }
 -type batch_get_application_revisions_input() :: #{binary() => any()}.
 
@@ -358,7 +358,7 @@
 
 %% Example:
 %% batch_get_on_premises_instances_input() :: #{
-%%   <<"instanceNames">> := list(string()())
+%%   <<"instanceNames">> := list(string())
 %% }
 -type batch_get_on_premises_instances_input() :: #{binary() => any()}.
 
@@ -425,7 +425,7 @@
 
 %% Example:
 %% batch_get_deployment_groups_output() :: #{
-%%   <<"deploymentGroupsInfo">> => list(deployment_group_info()()),
+%%   <<"deploymentGroupsInfo">> => list(deployment_group_info()),
 %%   <<"errorMessage">> => string()
 %% }
 -type batch_get_deployment_groups_output() :: #{binary() => any()}.
@@ -434,24 +434,24 @@
 %% e_c_s_target() :: #{
 %%   <<"deploymentId">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()()),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
 %%   <<"status">> => list(any()),
 %%   <<"targetArn">> => string(),
 %%   <<"targetId">> => string(),
-%%   <<"taskSetsInfo">> => list(e_c_s_task_set()())
+%%   <<"taskSetsInfo">> => list(e_c_s_task_set())
 %% }
 -type e_c_s_target() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_deployment_targets_output() :: #{
-%%   <<"deploymentTargets">> => list(deployment_target()())
+%%   <<"deploymentTargets">> => list(deployment_target())
 %% }
 -type batch_get_deployment_targets_output() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_deployment_instances_input() :: #{
 %%   <<"deploymentId">> := string(),
-%%   <<"instanceIds">> := list(string()())
+%%   <<"instanceIds">> := list(string())
 %% }
 -type batch_get_deployment_instances_input() :: #{binary() => any()}.
 
@@ -463,14 +463,14 @@
 
 %% Example:
 %% update_deployment_group_output() :: #{
-%%   <<"hooksNotCleanedUp">> => list(auto_scaling_group()())
+%%   <<"hooksNotCleanedUp">> => list(auto_scaling_group())
 %% }
 -type update_deployment_group_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_application_revisions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"revisions">> => list(revision_location()())
+%%   <<"revisions">> => list(revision_location())
 %% }
 -type list_application_revisions_output() :: #{binary() => any()}.
 
@@ -611,7 +611,7 @@
 %% Example:
 %% batch_get_deployment_targets_input() :: #{
 %%   <<"deploymentId">> := string(),
-%%   <<"targetIds">> := list(string()())
+%%   <<"targetIds">> := list(string())
 %% }
 -type batch_get_deployment_targets_input() :: #{binary() => any()}.
 
@@ -624,7 +624,7 @@
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -657,7 +657,7 @@
 
 %% Example:
 %% list_deployment_configs_output() :: #{
-%%   <<"deploymentConfigsList">> => list(string()()),
+%%   <<"deploymentConfigsList">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployment_configs_output() :: #{binary() => any()}.
@@ -676,7 +676,7 @@
 %%   <<"deploymentGroupName">> => string(),
 %%   <<"deploymentId">> => string(),
 %%   <<"deploymentOverview">> => deployment_overview(),
-%%   <<"deploymentStatusMessages">> => list(string()()),
+%%   <<"deploymentStatusMessages">> => list(string()),
 %%   <<"deploymentStyle">> => deployment_style(),
 %%   <<"description">> => string(),
 %%   <<"errorInformation">> => error_information(),
@@ -719,14 +719,14 @@
 %% Example:
 %% target_group_pair_info() :: #{
 %%   <<"prodTrafficRoute">> => traffic_route(),
-%%   <<"targetGroups">> => list(target_group_info()()),
+%%   <<"targetGroups">> => list(target_group_info()),
 %%   <<"testTrafficRoute">> => traffic_route()
 %% }
 -type target_group_pair_info() :: #{binary() => any()}.
 
 %% Example:
 %% list_on_premises_instances_output() :: #{
-%%   <<"instanceNames">> => list(string()()),
+%%   <<"instanceNames">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_on_premises_instances_output() :: #{binary() => any()}.
@@ -739,7 +739,7 @@
 
 %% Example:
 %% batch_get_deployments_output() :: #{
-%%   <<"deploymentsInfo">> => list(deployment_info()())
+%%   <<"deploymentsInfo">> => list(deployment_info())
 %% }
 -type batch_get_deployments_output() :: #{binary() => any()}.
 
@@ -795,7 +795,7 @@
 
 %% Example:
 %% list_applications_output() :: #{
-%%   <<"applications">> => list(string()()),
+%%   <<"applications">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_applications_output() :: #{binary() => any()}.
@@ -815,7 +815,7 @@
 
 %% Example:
 %% batch_get_applications_input() :: #{
-%%   <<"applicationNames">> := list(string()())
+%%   <<"applicationNames">> := list(string())
 %% }
 -type batch_get_applications_input() :: #{binary() => any()}.
 
@@ -828,7 +828,7 @@
 %% Example:
 %% list_deployment_groups_output() :: #{
 %%   <<"applicationName">> => string(),
-%%   <<"deploymentGroups">> => list(string()()),
+%%   <<"deploymentGroups">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployment_groups_output() :: #{binary() => any()}.
@@ -892,26 +892,26 @@
 %%   <<"alarmConfiguration">> => alarm_configuration(),
 %%   <<"applicationName">> => string(),
 %%   <<"autoRollbackConfiguration">> => auto_rollback_configuration(),
-%%   <<"autoScalingGroups">> => list(auto_scaling_group()()),
+%%   <<"autoScalingGroups">> => list(auto_scaling_group()),
 %%   <<"blueGreenDeploymentConfiguration">> => blue_green_deployment_configuration(),
 %%   <<"computePlatform">> => list(any()),
 %%   <<"deploymentConfigName">> => string(),
 %%   <<"deploymentGroupId">> => string(),
 %%   <<"deploymentGroupName">> => string(),
 %%   <<"deploymentStyle">> => deployment_style(),
-%%   <<"ec2TagFilters">> => list(ec2_tag_filter()()),
+%%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
 %%   <<"ec2TagSet">> => ec2_tag_set(),
-%%   <<"ecsServices">> => list(e_c_s_service()()),
+%%   <<"ecsServices">> => list(e_c_s_service()),
 %%   <<"lastAttemptedDeployment">> => last_deployment_info(),
 %%   <<"lastSuccessfulDeployment">> => last_deployment_info(),
 %%   <<"loadBalancerInfo">> => load_balancer_info(),
-%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()()),
+%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()),
 %%   <<"onPremisesTagSet">> => on_premises_tag_set(),
 %%   <<"outdatedInstancesStrategy">> => list(any()),
 %%   <<"serviceRoleArn">> => string(),
 %%   <<"targetRevision">> => revision_location(),
 %%   <<"terminationHookEnabled">> => boolean(),
-%%   <<"triggerConfigurations">> => list(trigger_config()())
+%%   <<"triggerConfigurations">> => list(trigger_config())
 %% }
 -type deployment_group_info() :: #{binary() => any()}.
 
@@ -923,7 +923,7 @@
 
 %% Example:
 %% on_premises_tag_set() :: #{
-%%   <<"onPremisesTagSetList">> => list(list(tag_filter()())())
+%%   <<"onPremisesTagSetList">> => list(list(tag_filter())())
 %% }
 -type on_premises_tag_set() :: #{binary() => any()}.
 
@@ -969,7 +969,7 @@
 %% create_application_input() :: #{
 %%   <<"applicationName">> := string(),
 %%   <<"computePlatform">> => list(any()),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_application_input() :: #{binary() => any()}.
 
@@ -999,22 +999,22 @@
 %%   <<"alarmConfiguration">> => alarm_configuration(),
 %%   <<"applicationName">> := string(),
 %%   <<"autoRollbackConfiguration">> => auto_rollback_configuration(),
-%%   <<"autoScalingGroups">> => list(string()()),
+%%   <<"autoScalingGroups">> => list(string()),
 %%   <<"blueGreenDeploymentConfiguration">> => blue_green_deployment_configuration(),
 %%   <<"currentDeploymentGroupName">> := string(),
 %%   <<"deploymentConfigName">> => string(),
 %%   <<"deploymentStyle">> => deployment_style(),
-%%   <<"ec2TagFilters">> => list(ec2_tag_filter()()),
+%%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
 %%   <<"ec2TagSet">> => ec2_tag_set(),
-%%   <<"ecsServices">> => list(e_c_s_service()()),
+%%   <<"ecsServices">> => list(e_c_s_service()),
 %%   <<"loadBalancerInfo">> => load_balancer_info(),
 %%   <<"newDeploymentGroupName">> => string(),
-%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()()),
+%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()),
 %%   <<"onPremisesTagSet">> => on_premises_tag_set(),
 %%   <<"outdatedInstancesStrategy">> => list(any()),
 %%   <<"serviceRoleArn">> => string(),
 %%   <<"terminationHookEnabled">> => boolean(),
-%%   <<"triggerConfigurations">> => list(trigger_config()())
+%%   <<"triggerConfigurations">> => list(trigger_config())
 %% }
 -type update_deployment_group_input() :: #{binary() => any()}.
 
@@ -1061,7 +1061,7 @@
 %% Example:
 %% list_deployment_targets_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"targetIds">> => list(string()())
+%%   <<"targetIds">> => list(string())
 %% }
 -type list_deployment_targets_output() :: #{binary() => any()}.
 
@@ -1088,7 +1088,7 @@
 %% list_on_premises_instances_input() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"registrationStatus">> => list(any()),
-%%   <<"tagFilters">> => list(tag_filter()())
+%%   <<"tagFilters">> => list(tag_filter())
 %% }
 -type list_on_premises_instances_input() :: #{binary() => any()}.
 
@@ -1110,7 +1110,7 @@
 %%   <<"deploymentId">> => string(),
 %%   <<"instanceLabel">> => list(any()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()()),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
 %%   <<"status">> => list(any()),
 %%   <<"targetArn">> => string(),
 %%   <<"targetId">> => string()
@@ -1137,9 +1137,9 @@
 
 %% Example:
 %% target_instances() :: #{
-%%   <<"autoScalingGroups">> => list(string()()),
+%%   <<"autoScalingGroups">> => list(string()),
 %%   <<"ec2TagSet">> => ec2_tag_set(),
-%%   <<"tagFilters">> => list(ec2_tag_filter()())
+%%   <<"tagFilters">> => list(ec2_tag_filter())
 %% }
 -type target_instances() :: #{binary() => any()}.
 
@@ -1164,7 +1164,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -1178,7 +1178,7 @@
 %% Example:
 %% batch_get_deployment_groups_input() :: #{
 %%   <<"applicationName">> := string(),
-%%   <<"deploymentGroupNames">> := list(string()())
+%%   <<"deploymentGroupNames">> := list(string())
 %% }
 -type batch_get_deployment_groups_input() :: #{binary() => any()}.
 
@@ -1262,7 +1262,7 @@
 
 %% Example:
 %% batch_get_on_premises_instances_output() :: #{
-%%   <<"instanceInfos">> => list(instance_info()())
+%%   <<"instanceInfos">> => list(instance_info())
 %% }
 -type batch_get_on_premises_instances_output() :: #{binary() => any()}.
 
@@ -1292,7 +1292,7 @@
 %% cloud_formation_target() :: #{
 %%   <<"deploymentId">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()()),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
 %%   <<"resourceType">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"targetId">> => string(),
@@ -1335,22 +1335,22 @@
 %%   <<"alarmConfiguration">> => alarm_configuration(),
 %%   <<"applicationName">> := string(),
 %%   <<"autoRollbackConfiguration">> => auto_rollback_configuration(),
-%%   <<"autoScalingGroups">> => list(string()()),
+%%   <<"autoScalingGroups">> => list(string()),
 %%   <<"blueGreenDeploymentConfiguration">> => blue_green_deployment_configuration(),
 %%   <<"deploymentConfigName">> => string(),
 %%   <<"deploymentGroupName">> := string(),
 %%   <<"deploymentStyle">> => deployment_style(),
-%%   <<"ec2TagFilters">> => list(ec2_tag_filter()()),
+%%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
 %%   <<"ec2TagSet">> => ec2_tag_set(),
-%%   <<"ecsServices">> => list(e_c_s_service()()),
+%%   <<"ecsServices">> => list(e_c_s_service()),
 %%   <<"loadBalancerInfo">> => load_balancer_info(),
-%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()()),
+%%   <<"onPremisesInstanceTagFilters">> => list(tag_filter()),
 %%   <<"onPremisesTagSet">> => on_premises_tag_set(),
 %%   <<"outdatedInstancesStrategy">> => list(any()),
 %%   <<"serviceRoleArn">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"terminationHookEnabled">> => boolean(),
-%%   <<"triggerConfigurations">> => list(trigger_config()())
+%%   <<"triggerConfigurations">> => list(trigger_config())
 %% }
 -type create_deployment_group_input() :: #{binary() => any()}.
 
@@ -1363,7 +1363,7 @@
 
 %% Example:
 %% related_deployments() :: #{
-%%   <<"autoUpdateOutdatedInstancesDeploymentIds">> => list(string()()),
+%%   <<"autoUpdateOutdatedInstancesDeploymentIds">> => list(string()),
 %%   <<"autoUpdateOutdatedInstancesRootDeploymentId">> => string()
 %% }
 -type related_deployments() :: #{binary() => any()}.
@@ -1406,7 +1406,7 @@
 
 %% Example:
 %% ec2_tag_set() :: #{
-%%   <<"ec2TagSetList">> => list(list(ec2_tag_filter()())())
+%%   <<"ec2TagSetList">> => list(list(ec2_tag_filter())())
 %% }
 -type ec2_tag_set() :: #{binary() => any()}.
 
@@ -1432,7 +1432,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1446,7 +1446,7 @@
 %% batch_get_application_revisions_output() :: #{
 %%   <<"applicationName">> => string(),
 %%   <<"errorMessage">> => string(),
-%%   <<"revisions">> => list(revision_info()())
+%%   <<"revisions">> => list(revision_info())
 %% }
 -type batch_get_application_revisions_output() :: #{binary() => any()}.
 
@@ -1465,7 +1465,7 @@
 
 %% Example:
 %% batch_get_applications_output() :: #{
-%%   <<"applicationsInfo">> => list(application_info()())
+%%   <<"applicationsInfo">> => list(application_info())
 %% }
 -type batch_get_applications_output() :: #{binary() => any()}.
 
@@ -1492,7 +1492,7 @@
 
 %% Example:
 %% generic_revision_info() :: #{
-%%   <<"deploymentGroups">> => list(string()()),
+%%   <<"deploymentGroups">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"firstUsedTime">> => non_neg_integer(),
 %%   <<"lastUsedTime">> => non_neg_integer(),
@@ -1503,7 +1503,7 @@
 %% Example:
 %% batch_get_deployment_instances_output() :: #{
 %%   <<"errorMessage">> => string(),
-%%   <<"instancesSummary">> => list(instance_summary()())
+%%   <<"instancesSummary">> => list(instance_summary())
 %% }
 -type batch_get_deployment_instances_output() :: #{binary() => any()}.
 
@@ -1524,8 +1524,8 @@
 
 %% Example:
 %% add_tags_to_on_premises_instances_input() :: #{
-%%   <<"instanceNames">> := list(string()()),
-%%   <<"tags">> := list(tag()())
+%%   <<"instanceNames">> := list(string()),
+%%   <<"tags">> := list(tag())
 %% }
 -type add_tags_to_on_premises_instances_input() :: #{binary() => any()}.
 
@@ -1561,9 +1561,9 @@
 
 %% Example:
 %% load_balancer_info() :: #{
-%%   <<"elbInfoList">> => list(e_lb_info()()),
-%%   <<"targetGroupInfoList">> => list(target_group_info()()),
-%%   <<"targetGroupPairInfoList">> => list(target_group_pair_info()())
+%%   <<"elbInfoList">> => list(e_lb_info()),
+%%   <<"targetGroupInfoList">> => list(target_group_info()),
+%%   <<"targetGroupPairInfoList">> => list(target_group_pair_info())
 %% }
 -type load_balancer_info() :: #{binary() => any()}.
 
@@ -1591,7 +1591,7 @@
 %%   <<"instanceId">> => string(),
 %%   <<"instanceType">> => list(any()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()()),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
 %%   <<"status">> => list(any())
 %% }
 -type instance_summary() :: #{binary() => any()}.
@@ -1689,7 +1689,7 @@
 
 %% Example:
 %% list_deployments_output() :: #{
-%%   <<"deployments">> => list(string()()),
+%%   <<"deployments">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployments_output() :: #{binary() => any()}.
@@ -1753,7 +1753,7 @@
 %%   <<"instanceArn">> => string(),
 %%   <<"instanceName">> => string(),
 %%   <<"registerTime">> => non_neg_integer(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type instance_info() :: #{binary() => any()}.
 
@@ -1768,7 +1768,7 @@
 %%   <<"deploymentId">> => string(),
 %%   <<"lambdaFunctionInfo">> => lambda_function_info(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"lifecycleEvents">> => list(lifecycle_event()()),
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
 %%   <<"status">> => list(any()),
 %%   <<"targetArn">> => string(),
 %%   <<"targetId">> => string()
@@ -1835,8 +1835,8 @@
 
 %% Example:
 %% remove_tags_from_on_premises_instances_input() :: #{
-%%   <<"instanceNames">> := list(string()()),
-%%   <<"tags">> := list(tag()())
+%%   <<"instanceNames">> := list(string()),
+%%   <<"tags">> := list(tag())
 %% }
 -type remove_tags_from_on_premises_instances_input() :: #{binary() => any()}.
 
@@ -1891,7 +1891,7 @@
 %% Example:
 %% list_git_hub_account_token_names_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tokenNameList">> => list(string()())
+%%   <<"tokenNameList">> => list(string())
 %% }
 -type list_git_hub_account_token_names_output() :: #{binary() => any()}.
 
@@ -1931,7 +1931,7 @@
 
 %% Example:
 %% alarm_configuration() :: #{
-%%   <<"alarms">> => list(alarm()()),
+%%   <<"alarms">> => list(alarm()),
 %%   <<"enabled">> => boolean(),
 %%   <<"ignorePollAlarmFailure">> => boolean()
 %% }

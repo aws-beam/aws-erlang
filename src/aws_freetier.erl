@@ -50,16 +50,16 @@
 %% dimension_values() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"MatchOptions">> => list(list(any())()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type dimension_values() :: #{binary() => any()}.
 
 %% Example:
 %% expression() :: #{
-%%   <<"And">> => list(expression()()),
+%%   <<"And">> => list(expression()),
 %%   <<"Dimensions">> => dimension_values(),
 %%   <<"Not">> => expression(),
-%%   <<"Or">> => list(expression()())
+%%   <<"Or">> => list(expression())
 %% }
 -type expression() :: #{binary() => any()}.
 
@@ -126,7 +126,7 @@
 
 %% Example:
 %% get_free_tier_usage_response() :: #{
-%%   <<"freeTierUsages">> => list(free_tier_usage()()),
+%%   <<"freeTierUsages">> => list(free_tier_usage()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_free_tier_usage_response() :: #{binary() => any()}.
@@ -148,7 +148,7 @@
 
 %% Example:
 %% list_account_activities_response() :: #{
-%%   <<"activities">> => list(activity_summary()()),
+%%   <<"activities">> => list(activity_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_account_activities_response() :: #{binary() => any()}.

@@ -257,21 +257,21 @@
 %%   <<"DataRetentionInHours">> => integer(),
 %%   <<"Disabled">> => boolean(),
 %%   <<"MediaInsightsConfiguration">> => media_insights_configuration(),
-%%   <<"StreamingNotificationTargets">> => list(streaming_notification_target()())
+%%   <<"StreamingNotificationTargets">> => list(streaming_notification_target())
 %% }
 -type streaming_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_delete_phone_number_request() :: #{
-%%   <<"PhoneNumberIds">> := list(string()())
+%%   <<"PhoneNumberIds">> := list(string())
 %% }
 -type batch_delete_phone_number_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% put_voice_connector_termination_credentials_request() :: #{
-%%   <<"Credentials">> => list(credential()())
+%%   <<"Credentials">> => list(credential())
 %% }
 -type put_voice_connector_termination_credentials_request() :: #{binary() => any()}.
 
@@ -280,7 +280,7 @@
 %% update_sip_rule_request() :: #{
 %%   <<"Disabled">> => boolean(),
 %%   <<"Name">> := string(),
-%%   <<"TargetApplications">> => list(sip_rule_target_application()())
+%%   <<"TargetApplications">> => list(sip_rule_target_application())
 %% }
 -type update_sip_rule_request() :: #{binary() => any()}.
 
@@ -291,7 +291,7 @@
 %%   <<"Disabled">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"SipRuleId">> => string(),
-%%   <<"TargetApplications">> => list(sip_rule_target_application()()),
+%%   <<"TargetApplications">> => list(sip_rule_target_application()),
 %%   <<"TriggerType">> => list(any()),
 %%   <<"TriggerValue">> => string(),
 %%   <<"UpdatedTimestamp">> => non_neg_integer()
@@ -318,9 +318,9 @@
 %% Example:
 %% create_sip_media_application_request() :: #{
 %%   <<"AwsRegion">> := string(),
-%%   <<"Endpoints">> := list(sip_media_application_endpoint()()),
+%%   <<"Endpoints">> := list(sip_media_application_endpoint()),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_sip_media_application_request() :: #{binary() => any()}.
 
@@ -335,7 +335,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -352,7 +352,7 @@
 %%   <<"DefaultSessionExpiryMinutes">> => integer(),
 %%   <<"Disabled">> => boolean(),
 %%   <<"FallBackPhoneNumber">> => string(),
-%%   <<"PhoneNumberCountries">> => list(string()())
+%%   <<"PhoneNumberCountries">> => list(string())
 %% }
 -type proxy() :: #{binary() => any()}.
 
@@ -367,7 +367,7 @@
 
 %% Example:
 %% batch_update_phone_number_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
 -type batch_update_phone_number_response() :: #{binary() => any()}.
 
@@ -380,7 +380,7 @@
 %% validate_e911_address_response() :: #{
 %%   <<"Address">> => address(),
 %%   <<"AddressExternalId">> => string(),
-%%   <<"CandidateAddressList">> => list(candidate_address()()),
+%%   <<"CandidateAddressList">> => list(candidate_address()),
 %%   <<"ValidationResult">> => integer()
 %% }
 -type validate_e911_address_response() :: #{binary() => any()}.
@@ -396,7 +396,7 @@
 %% Example:
 %% list_phone_number_orders_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberOrders">> => list(phone_number_order()())
+%%   <<"PhoneNumberOrders">> => list(phone_number_order())
 %% }
 -type list_phone_number_orders_response() :: #{binary() => any()}.
 
@@ -436,7 +436,7 @@
 
 %% Example:
 %% update_sip_media_application_request() :: #{
-%%   <<"Endpoints">> => list(sip_media_application_endpoint()()),
+%%   <<"Endpoints">> => list(sip_media_application_endpoint()),
 %%   <<"Name">> => string()
 %% }
 -type update_sip_media_application_request() :: #{binary() => any()}.
@@ -461,7 +461,7 @@
 %% Example:
 %% origination() :: #{
 %%   <<"Disabled">> => boolean(),
-%%   <<"Routes">> => list(origination_route()())
+%%   <<"Routes">> => list(origination_route())
 %% }
 -type origination() :: #{binary() => any()}.
 
@@ -499,7 +499,7 @@
 
 %% Example:
 %% search_available_phone_numbers_response() :: #{
-%%   <<"E164PhoneNumbers">> => list(string()()),
+%%   <<"E164PhoneNumbers">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_available_phone_numbers_response() :: #{binary() => any()}.
@@ -525,7 +525,7 @@
 
 %% Example:
 %% associate_phone_numbers_with_voice_connector_group_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()()),
+%%   <<"E164PhoneNumbers">> := list(string()),
 %%   <<"ForceAssociate">> => boolean()
 %% }
 -type associate_phone_numbers_with_voice_connector_group_request() :: #{binary() => any()}.
@@ -541,7 +541,7 @@
 %% Example:
 %% list_voice_profile_domains_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VoiceProfileDomains">> => list(voice_profile_domain_summary()())
+%%   <<"VoiceProfileDomains">> => list(voice_profile_domain_summary())
 %% }
 -type list_voice_profile_domains_response() :: #{binary() => any()}.
 
@@ -665,7 +665,7 @@
 
 %% Example:
 %% phone_number() :: #{
-%%   <<"Associations">> => list(phone_number_association()()),
+%%   <<"Associations">> => list(phone_number_association()),
 %%   <<"CallingName">> => string(),
 %%   <<"CallingNameStatus">> => list(any()),
 %%   <<"Capabilities">> => phone_number_capabilities(),
@@ -686,8 +686,8 @@
 
 %% Example:
 %% termination() :: #{
-%%   <<"CallingRegions">> => list(string()()),
-%%   <<"CidrAllowedList">> => list(string()()),
+%%   <<"CallingRegions">> => list(string()),
+%%   <<"CidrAllowedList">> => list(string()),
 %%   <<"CpsLimit">> => integer(),
 %%   <<"DefaultPhoneNumber">> => string(),
 %%   <<"Disabled">> => boolean()
@@ -778,7 +778,7 @@
 
 %% Example:
 %% associate_phone_numbers_with_voice_connector_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()()),
+%%   <<"E164PhoneNumbers">> := list(string()),
 %%   <<"ForceAssociate">> => boolean()
 %% }
 -type associate_phone_numbers_with_voice_connector_request() :: #{binary() => any()}.
@@ -806,7 +806,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -835,7 +835,7 @@
 
 %% Example:
 %% create_phone_number_order_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()()),
+%%   <<"E164PhoneNumbers">> := list(string()),
 %%   <<"Name">> => string(),
 %%   <<"ProductType">> := list(any())
 %% }
@@ -930,7 +930,7 @@
 
 %% Example:
 %% speaker_search_details() :: #{
-%%   <<"Results">> => list(speaker_search_result()()),
+%%   <<"Results">> => list(speaker_search_result()),
 %%   <<"VoiceprintGenerationStatus">> => string()
 %% }
 -type speaker_search_details() :: #{binary() => any()}.
@@ -954,14 +954,14 @@
 %% Example:
 %% update_voice_connector_group_request() :: #{
 %%   <<"Name">> := string(),
-%%   <<"VoiceConnectorItems">> := list(voice_connector_item()())
+%%   <<"VoiceConnectorItems">> := list(voice_connector_item())
 %% }
 -type update_voice_connector_group_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_supported_phone_number_countries_response() :: #{
-%%   <<"PhoneNumberCountries">> => list(phone_number_country()())
+%%   <<"PhoneNumberCountries">> => list(phone_number_country())
 %% }
 -type list_supported_phone_number_countries_response() :: #{binary() => any()}.
 
@@ -998,7 +998,7 @@
 
 %% Example:
 %% disassociate_phone_numbers_from_voice_connector_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()())
+%%   <<"E164PhoneNumbers">> := list(string())
 %% }
 -type disassociate_phone_numbers_from_voice_connector_request() :: #{binary() => any()}.
 
@@ -1010,7 +1010,7 @@
 %% Example:
 %% list_voice_connector_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VoiceConnectorGroups">> => list(voice_connector_group()())
+%%   <<"VoiceConnectorGroups">> => list(voice_connector_group())
 %% }
 -type list_voice_connector_groups_response() :: #{binary() => any()}.
 
@@ -1031,7 +1031,7 @@
 %% Example:
 %% list_proxy_sessions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProxySessions">> => list(proxy_session()())
+%%   <<"ProxySessions">> => list(proxy_session())
 %% }
 -type list_proxy_sessions_response() :: #{binary() => any()}.
 
@@ -1081,7 +1081,7 @@
 
 %% Example:
 %% disassociate_phone_numbers_from_voice_connector_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
 -type disassociate_phone_numbers_from_voice_connector_response() :: #{binary() => any()}.
 
@@ -1093,14 +1093,14 @@
 %% Example:
 %% list_sip_rules_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SipRules">> => list(sip_rule()())
+%%   <<"SipRules">> => list(sip_rule())
 %% }
 -type list_sip_rules_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% disassociate_phone_numbers_from_voice_connector_group_request() :: #{
-%%   <<"E164PhoneNumbers">> := list(string()())
+%%   <<"E164PhoneNumbers">> := list(string())
 %% }
 -type disassociate_phone_numbers_from_voice_connector_group_request() :: #{binary() => any()}.
 
@@ -1117,7 +1117,7 @@
 %% create_sip_rule_request() :: #{
 %%   <<"Disabled">> => boolean(),
 %%   <<"Name">> := string(),
-%%   <<"TargetApplications">> => list(sip_rule_target_application()()),
+%%   <<"TargetApplications">> => list(sip_rule_target_application()),
 %%   <<"TriggerType">> := list(any()),
 %%   <<"TriggerValue">> := string()
 %% }
@@ -1155,7 +1155,7 @@
 
 %% Example:
 %% batch_delete_phone_number_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
 -type batch_delete_phone_number_response() :: #{binary() => any()}.
 
@@ -1177,7 +1177,7 @@
 %%   <<"GeoMatchParams">> => geo_match_params(),
 %%   <<"Name">> => string(),
 %%   <<"NumberSelectionBehavior">> => list(any()),
-%%   <<"Participants">> => list(participant()()),
+%%   <<"Participants">> => list(participant()),
 %%   <<"ProxySessionId">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedTimestamp">> => non_neg_integer(),
@@ -1219,7 +1219,7 @@
 %%   <<"IntegrationType">> => list(any()),
 %%   <<"Name">> := string(),
 %%   <<"RequireEncryption">> := boolean(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_voice_connector_request() :: #{binary() => any()}.
 
@@ -1248,14 +1248,14 @@
 %%   <<"DefaultSessionExpiryMinutes">> := integer(),
 %%   <<"Disabled">> => boolean(),
 %%   <<"FallBackPhoneNumber">> => string(),
-%%   <<"PhoneNumberPoolCountries">> := list(string()())
+%%   <<"PhoneNumberPoolCountries">> := list(string())
 %% }
 -type put_voice_connector_proxy_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% associate_phone_numbers_with_voice_connector_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
 -type associate_phone_numbers_with_voice_connector_response() :: #{binary() => any()}.
 
@@ -1272,7 +1272,7 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"FocDate">> => non_neg_integer(),
 %%   <<"OrderType">> => list(any()),
-%%   <<"OrderedPhoneNumbers">> => list(ordered_phone_number()()),
+%%   <<"OrderedPhoneNumbers">> => list(ordered_phone_number()),
 %%   <<"PhoneNumberOrderId">> => string(),
 %%   <<"ProductType">> => list(any()),
 %%   <<"Status">> => list(any()),
@@ -1287,7 +1287,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1301,7 +1301,7 @@
 
 %% Example:
 %% disassociate_phone_numbers_from_voice_connector_group_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
 -type disassociate_phone_numbers_from_voice_connector_group_response() :: #{binary() => any()}.
 
@@ -1390,7 +1390,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"ServerSideEncryptionConfiguration">> := server_side_encryption_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_voice_profile_domain_request() :: #{binary() => any()}.
 
@@ -1442,7 +1442,7 @@
 
 %% Example:
 %% list_voice_connector_termination_credentials_response() :: #{
-%%   <<"Usernames">> => list(string()())
+%%   <<"Usernames">> => list(string())
 %% }
 -type list_voice_connector_termination_credentials_response() :: #{binary() => any()}.
 
@@ -1463,7 +1463,7 @@
 
 %% Example:
 %% sip_media_application_alexa_skill_configuration() :: #{
-%%   <<"AlexaSkillIds">> => list(string()()),
+%%   <<"AlexaSkillIds">> => list(string()),
 %%   <<"AlexaSkillStatus">> => list(any())
 %% }
 -type sip_media_application_alexa_skill_configuration() :: #{binary() => any()}.
@@ -1477,7 +1477,7 @@
 %%   <<"GeoMatchParams">> => geo_match_params(),
 %%   <<"Name">> => string(),
 %%   <<"NumberSelectionBehavior">> => list(any()),
-%%   <<"ParticipantPhoneNumbers">> := list(string()())
+%%   <<"ParticipantPhoneNumbers">> := list(string())
 %% }
 -type create_proxy_session_request() :: #{binary() => any()}.
 
@@ -1510,7 +1510,7 @@
 %% Example:
 %% list_sip_media_applications_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SipMediaApplications">> => list(sip_media_application()())
+%%   <<"SipMediaApplications">> => list(sip_media_application())
 %% }
 -type list_sip_media_applications_response() :: #{binary() => any()}.
 
@@ -1544,7 +1544,7 @@
 %% Example:
 %% list_voice_profiles_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VoiceProfiles">> => list(voice_profile_summary()())
+%%   <<"VoiceProfiles">> => list(voice_profile_summary())
 %% }
 -type list_voice_profiles_response() :: #{binary() => any()}.
 
@@ -1579,7 +1579,7 @@
 %% Example:
 %% create_voice_connector_group_request() :: #{
 %%   <<"Name">> := string(),
-%%   <<"VoiceConnectorItems">> => list(voice_connector_item()())
+%%   <<"VoiceConnectorItems">> => list(voice_connector_item())
 %% }
 -type create_voice_connector_group_request() :: #{binary() => any()}.
 
@@ -1627,7 +1627,7 @@
 
 %% Example:
 %% associate_phone_numbers_with_voice_connector_group_response() :: #{
-%%   <<"PhoneNumberErrors">> => list(phone_number_error()())
+%%   <<"PhoneNumberErrors">> => list(phone_number_error())
 %% }
 -type associate_phone_numbers_with_voice_connector_group_response() :: #{binary() => any()}.
 
@@ -1648,7 +1648,7 @@
 
 %% Example:
 %% delete_voice_connector_termination_credentials_request() :: #{
-%%   <<"Usernames">> := list(string()())
+%%   <<"Usernames">> := list(string())
 %% }
 -type delete_voice_connector_termination_credentials_request() :: #{binary() => any()}.
 
@@ -1656,7 +1656,7 @@
 %% Example:
 %% list_voice_connectors_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VoiceConnectors">> => list(voice_connector()())
+%%   <<"VoiceConnectors">> => list(voice_connector())
 %% }
 -type list_voice_connectors_response() :: #{binary() => any()}.
 
@@ -1679,7 +1679,7 @@
 %%   <<"UpdatedTimestamp">> => non_neg_integer(),
 %%   <<"VoiceConnectorGroupArn">> => string(),
 %%   <<"VoiceConnectorGroupId">> => string(),
-%%   <<"VoiceConnectorItems">> => list(voice_connector_item()())
+%%   <<"VoiceConnectorItems">> => list(voice_connector_item())
 %% }
 -type voice_connector_group() :: #{binary() => any()}.
 
@@ -1771,7 +1771,7 @@
 %% Example:
 %% list_phone_numbers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PhoneNumbers">> => list(phone_number()())
+%%   <<"PhoneNumbers">> => list(phone_number())
 %% }
 -type list_phone_numbers_response() :: #{binary() => any()}.
 
@@ -1925,7 +1925,7 @@
 
 %% Example:
 %% batch_update_phone_number_request() :: #{
-%%   <<"UpdatePhoneNumberRequestItems">> := list(update_phone_number_request_item()())
+%%   <<"UpdatePhoneNumberRequestItems">> := list(update_phone_number_request_item())
 %% }
 -type batch_update_phone_number_request() :: #{binary() => any()}.
 
@@ -1941,7 +1941,7 @@
 %% sip_media_application() :: #{
 %%   <<"AwsRegion">> => string(),
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
-%%   <<"Endpoints">> => list(sip_media_application_endpoint()()),
+%%   <<"Endpoints">> => list(sip_media_application_endpoint()),
 %%   <<"Name">> => string(),
 %%   <<"SipMediaApplicationArn">> => string(),
 %%   <<"SipMediaApplicationId">> => string(),
@@ -1973,7 +1973,7 @@
 
 %% Example:
 %% emergency_calling_configuration() :: #{
-%%   <<"DNIS">> => list(d_n_i_s_emergency_calling_configuration()())
+%%   <<"DNIS">> => list(d_n_i_s_emergency_calling_configuration())
 %% }
 -type emergency_calling_configuration() :: #{binary() => any()}.
 

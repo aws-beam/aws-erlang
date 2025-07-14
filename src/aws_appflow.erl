@@ -121,11 +121,11 @@
 %% update_flow_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"destinationFlowConfigList">> := list(destination_flow_config()()),
+%%   <<"destinationFlowConfigList">> := list(destination_flow_config()),
 %%   <<"flowName">> := string(),
 %%   <<"metadataCatalogConfig">> => metadata_catalog_config(),
 %%   <<"sourceFlowConfig">> := source_flow_config(),
-%%   <<"tasks">> := list(task()()),
+%%   <<"tasks">> := list(task()),
 %%   <<"triggerConfig">> := trigger_config()
 %% }
 -type update_flow_request() :: #{binary() => any()}.
@@ -166,7 +166,7 @@
 %% task() :: #{
 %%   <<"connectorOperator">> => connector_operator(),
 %%   <<"destinationField">> => string(),
-%%   <<"sourceFields">> => list(string()()),
+%%   <<"sourceFields">> => list(string()),
 %%   <<"taskProperties">> => map(),
 %%   <<"taskType">> => list(any())
 %% }
@@ -208,7 +208,7 @@
 
 %% Example:
 %% snowflake_metadata() :: #{
-%%   <<"supportedRegions">> => list(string()())
+%%   <<"supportedRegions">> => list(string())
 %% }
 -type snowflake_metadata() :: #{binary() => any()}.
 
@@ -224,7 +224,7 @@
 
 %% Example:
 %% honeycode_metadata() :: #{
-%%   <<"oAuthScopes">> => list(string()())
+%%   <<"oAuthScopes">> => list(string())
 %% }
 -type honeycode_metadata() :: #{binary() => any()}.
 
@@ -269,7 +269,7 @@
 
 %% Example:
 %% list_connectors_response() :: #{
-%%   <<"connectors">> => list(connector_detail()()),
+%%   <<"connectors">> => list(connector_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_connectors_response() :: #{binary() => any()}.
@@ -316,13 +316,13 @@
 %% create_flow_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"destinationFlowConfigList">> := list(destination_flow_config()()),
+%%   <<"destinationFlowConfigList">> := list(destination_flow_config()),
 %%   <<"flowName">> := string(),
 %%   <<"kmsArn">> => string(),
 %%   <<"metadataCatalogConfig">> => metadata_catalog_config(),
 %%   <<"sourceFlowConfig">> := source_flow_config(),
 %%   <<"tags">> => map(),
-%%   <<"tasks">> := list(task()()),
+%%   <<"tasks">> := list(task()),
 %%   <<"triggerConfig">> := trigger_config()
 %% }
 -type create_flow_request() :: #{binary() => any()}.
@@ -331,7 +331,7 @@
 %% Example:
 %% zendesk_destination_properties() :: #{
 %%   <<"errorHandlingConfig">> => error_handling_config(),
-%%   <<"idFieldNames">> => list(string()()),
+%%   <<"idFieldNames">> => list(string()),
 %%   <<"object">> => string(),
 %%   <<"writeOperationType">> => list(any())
 %% }
@@ -391,11 +391,11 @@
 
 %% Example:
 %% o_auth2_defaults() :: #{
-%%   <<"authCodeUrls">> => list(string()()),
-%%   <<"oauth2CustomProperties">> => list(o_auth2_custom_parameter()()),
+%%   <<"authCodeUrls">> => list(string()),
+%%   <<"oauth2CustomProperties">> => list(o_auth2_custom_parameter()),
 %%   <<"oauth2GrantTypesSupported">> => list(list(any())()),
-%%   <<"oauthScopes">> => list(string()()),
-%%   <<"tokenUrls">> => list(string()())
+%%   <<"oauthScopes">> => list(string()),
+%%   <<"tokenUrls">> => list(string())
 %% }
 -type o_auth2_defaults() :: #{binary() => any()}.
 
@@ -458,14 +458,14 @@
 
 %% Example:
 %% describe_connector_entity_response() :: #{
-%%   <<"connectorEntityFields">> => list(connector_entity_field()())
+%%   <<"connectorEntityFields">> => list(connector_entity_field())
 %% }
 -type describe_connector_entity_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_connector_profiles_response() :: #{
-%%   <<"connectorProfileDetails">> => list(connector_profile()()),
+%%   <<"connectorProfileDetails">> => list(connector_profile()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_connector_profiles_response() :: #{binary() => any()}.
@@ -506,7 +506,7 @@
 
 %% Example:
 %% google_analytics_metadata() :: #{
-%%   <<"oAuthScopes">> => list(string()())
+%%   <<"oAuthScopes">> => list(string())
 %% }
 -type google_analytics_metadata() :: #{binary() => any()}.
 
@@ -609,7 +609,7 @@
 %% Example:
 %% describe_connectors_response() :: #{
 %%   <<"connectorConfigurations">> => map(),
-%%   <<"connectors">> => list(connector_detail()()),
+%%   <<"connectors">> => list(connector_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_connectors_response() :: #{binary() => any()}.
@@ -661,7 +661,7 @@
 %% salesforce_destination_properties() :: #{
 %%   <<"dataTransferApi">> => list(any()),
 %%   <<"errorHandlingConfig">> => error_handling_config(),
-%%   <<"idFieldNames">> => list(string()()),
+%%   <<"idFieldNames">> => list(string()),
 %%   <<"object">> => string(),
 %%   <<"writeOperationType">> => list(any())
 %% }
@@ -753,7 +753,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -871,7 +871,7 @@
 
 %% Example:
 %% custom_auth_config() :: #{
-%%   <<"authParameters">> => list(auth_parameter()()),
+%%   <<"authParameters">> => list(auth_parameter()),
 %%   <<"customAuthenticationType">> => string()
 %% }
 -type custom_auth_config() :: #{binary() => any()}.
@@ -889,7 +889,7 @@
 
 %% Example:
 %% cancel_flow_executions_response() :: #{
-%%   <<"invalidExecutions">> => list(string()())
+%%   <<"invalidExecutions">> => list(string())
 %% }
 -type cancel_flow_executions_response() :: #{binary() => any()}.
 
@@ -897,7 +897,7 @@
 %% Example:
 %% o_auth_properties() :: #{
 %%   <<"authCodeUrl">> => string(),
-%%   <<"oAuthScopes">> => list(string()()),
+%%   <<"oAuthScopes">> => list(string()),
 %%   <<"tokenUrl">> => string()
 %% }
 -type o_auth_properties() :: #{binary() => any()}.
@@ -926,7 +926,7 @@
 
 %% Example:
 %% list_flows_response() :: #{
-%%   <<"flows">> => list(flow_definition()()),
+%%   <<"flows">> => list(flow_definition()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_flows_response() :: #{binary() => any()}.
@@ -938,7 +938,7 @@
 
 %% Example:
 %% zendesk_metadata() :: #{
-%%   <<"oAuthScopes">> => list(string()())
+%%   <<"oAuthScopes">> => list(string())
 %% }
 -type zendesk_metadata() :: #{binary() => any()}.
 
@@ -1025,7 +1025,7 @@
 %% Example:
 %% describe_connector_profiles_request() :: #{
 %%   <<"connectorLabel">> => string(),
-%%   <<"connectorProfileNames">> => list(string()()),
+%%   <<"connectorProfileNames">> => list(string()),
 %%   <<"connectorType">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1060,7 +1060,7 @@
 %% Example:
 %% s_a_p_o_data_destination_properties() :: #{
 %%   <<"errorHandlingConfig">> => error_handling_config(),
-%%   <<"idFieldNames">> => list(string()()),
+%%   <<"idFieldNames">> => list(string()),
 %%   <<"objectPath">> => string(),
 %%   <<"successResponseHandlingConfig">> => success_response_handling_config(),
 %%   <<"writeOperationType">> => list(any())
@@ -1185,7 +1185,7 @@
 
 %% Example:
 %% describe_flow_execution_records_response() :: #{
-%%   <<"flowExecutions">> => list(execution_record()()),
+%%   <<"flowExecutions">> => list(execution_record()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_flow_execution_records_response() :: #{binary() => any()}.
@@ -1275,7 +1275,7 @@
 %%   <<"applicationType">> => string(),
 %%   <<"connectorDescription">> => string(),
 %%   <<"connectorLabel">> => string(),
-%%   <<"connectorModes">> => list(string()()),
+%%   <<"connectorModes">> => list(string()),
 %%   <<"connectorName">> => string(),
 %%   <<"connectorOwner">> => string(),
 %%   <<"connectorProvisioningType">> => list(any()),
@@ -1351,7 +1351,7 @@
 %%   <<"customProperties">> => map(),
 %%   <<"entityName">> => string(),
 %%   <<"errorHandlingConfig">> => error_handling_config(),
-%%   <<"idFieldNames">> => list(string()()),
+%%   <<"idFieldNames">> => list(string()),
 %%   <<"writeOperationType">> => list(any())
 %% }
 -type custom_connector_destination_properties() :: #{binary() => any()}.
@@ -1359,7 +1359,7 @@
 
 %% Example:
 %% auth_parameter() :: #{
-%%   <<"connectorSuppliedValues">> => list(string()()),
+%%   <<"connectorSuppliedValues">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"isRequired">> => boolean(),
 %%   <<"isSensitiveField">> => boolean(),
@@ -1396,7 +1396,7 @@
 
 %% Example:
 %% slack_metadata() :: #{
-%%   <<"oAuthScopes">> => list(string()())
+%%   <<"oAuthScopes">> => list(string())
 %% }
 -type slack_metadata() :: #{binary() => any()}.
 
@@ -1509,7 +1509,7 @@
 %%   <<"executionResult">> => execution_result(),
 %%   <<"executionStatus">> => list(any()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"metadataCatalogDetails">> => list(metadata_catalog_detail()()),
+%%   <<"metadataCatalogDetails">> => list(metadata_catalog_detail()),
 %%   <<"startedAt">> => non_neg_integer()
 %% }
 -type execution_record() :: #{binary() => any()}.
@@ -1535,7 +1535,7 @@
 
 %% Example:
 %% o_auth2_custom_parameter() :: #{
-%%   <<"connectorSuppliedValues">> => list(string()()),
+%%   <<"connectorSuppliedValues">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"isRequired">> => boolean(),
 %%   <<"isSensitiveField">> => boolean(),
@@ -1711,7 +1711,7 @@
 %%   <<"fieldValueRange">> => range(),
 %%   <<"filterOperators">> => list(list(any())()),
 %%   <<"supportedDateFormat">> => string(),
-%%   <<"supportedValues">> => list(string()()),
+%%   <<"supportedValues">> => list(string()),
 %%   <<"valueRegexPattern">> => string()
 %% }
 -type field_type_details() :: #{binary() => any()}.
@@ -1773,7 +1773,7 @@
 
 %% Example:
 %% cancel_flow_executions_request() :: #{
-%%   <<"executionIds">> => list(string()()),
+%%   <<"executionIds">> => list(string()),
 %%   <<"flowName">> := string()
 %% }
 -type cancel_flow_executions_request() :: #{binary() => any()}.
@@ -1784,21 +1784,21 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
-%%   <<"destinationFlowConfigList">> => list(destination_flow_config()()),
+%%   <<"destinationFlowConfigList">> => list(destination_flow_config()),
 %%   <<"flowArn">> => string(),
 %%   <<"flowName">> => string(),
 %%   <<"flowStatus">> => list(any()),
 %%   <<"flowStatusMessage">> => string(),
 %%   <<"kmsArn">> => string(),
 %%   <<"lastRunExecutionDetails">> => execution_details(),
-%%   <<"lastRunMetadataCatalogDetails">> => list(metadata_catalog_detail()()),
+%%   <<"lastRunMetadataCatalogDetails">> => list(metadata_catalog_detail()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"lastUpdatedBy">> => string(),
 %%   <<"metadataCatalogConfig">> => metadata_catalog_config(),
 %%   <<"schemaVersion">> => float(),
 %%   <<"sourceFlowConfig">> => source_flow_config(),
 %%   <<"tags">> => map(),
-%%   <<"tasks">> => list(task()()),
+%%   <<"tasks">> => list(task()),
 %%   <<"triggerConfig">> => trigger_config()
 %% }
 -type describe_flow_response() :: #{binary() => any()}.
@@ -1853,7 +1853,7 @@
 %% Example:
 %% salesforce_metadata() :: #{
 %%   <<"dataTransferApis">> => list(list(any())()),
-%%   <<"oAuthScopes">> => list(string()()),
+%%   <<"oAuthScopes">> => list(string()),
 %%   <<"oauth2GrantTypesSupported">> => list(list(any())())
 %% }
 -type salesforce_metadata() :: #{binary() => any()}.
@@ -1907,7 +1907,7 @@
 
 %% Example:
 %% connector_runtime_setting() :: #{
-%%   <<"connectorSuppliedValueOptions">> => list(string()()),
+%%   <<"connectorSuppliedValueOptions">> => list(string()),
 %%   <<"dataType">> => string(),
 %%   <<"description">> => string(),
 %%   <<"isRequired">> => boolean(),
@@ -1928,7 +1928,7 @@
 
 %% Example:
 %% authentication_config() :: #{
-%%   <<"customAuthConfigs">> => list(custom_auth_config()()),
+%%   <<"customAuthConfigs">> => list(custom_auth_config()),
 %%   <<"isApiKeyAuthSupported">> => boolean(),
 %%   <<"isBasicAuthSupported">> => boolean(),
 %%   <<"isCustomAuthSupported">> => boolean(),
@@ -1951,12 +1951,12 @@
 %%   <<"connectorDescription">> => string(),
 %%   <<"connectorLabel">> => string(),
 %%   <<"connectorMetadata">> => connector_metadata(),
-%%   <<"connectorModes">> => list(string()()),
+%%   <<"connectorModes">> => list(string()),
 %%   <<"connectorName">> => string(),
 %%   <<"connectorOwner">> => string(),
 %%   <<"connectorProvisioningConfig">> => connector_provisioning_config(),
 %%   <<"connectorProvisioningType">> => list(any()),
-%%   <<"connectorRuntimeSettings">> => list(connector_runtime_setting()()),
+%%   <<"connectorRuntimeSettings">> => list(connector_runtime_setting()),
 %%   <<"connectorType">> => list(any()),
 %%   <<"connectorVersion">> => string(),
 %%   <<"isPrivateLinkEnabled">> => boolean(),
@@ -1964,8 +1964,8 @@
 %%   <<"logoURL">> => string(),
 %%   <<"registeredAt">> => non_neg_integer(),
 %%   <<"registeredBy">> => string(),
-%%   <<"supportedApiVersions">> => list(string()()),
-%%   <<"supportedDataTransferApis">> => list(data_transfer_api()()),
+%%   <<"supportedApiVersions">> => list(string()),
+%%   <<"supportedDataTransferApis">> => list(data_transfer_api()),
 %%   <<"supportedDataTransferTypes">> => list(list(any())()),
 %%   <<"supportedDestinationConnectors">> => list(list(any())()),
 %%   <<"supportedOperators">> => list(list(any())()),

@@ -195,7 +195,7 @@
 %%   <<"StackName">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"ThemeFaviconURL">> => string(),
-%%   <<"ThemeFooterLinks">> => list(theme_footer_link()()),
+%%   <<"ThemeFooterLinks">> => list(theme_footer_link()),
 %%   <<"ThemeOrganizationLogoURL">> => string(),
 %%   <<"ThemeStyling">> => list(any()),
 %%   <<"ThemeTitleText">> => string()
@@ -204,7 +204,7 @@
 
 %% Example:
 %% describe_app_block_builders_result() :: #{
-%%   <<"AppBlockBuilders">> => list(app_block_builder()()),
+%%   <<"AppBlockBuilders">> => list(app_block_builder()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_app_block_builders_result() :: #{binary() => any()}.
@@ -218,7 +218,7 @@
 
 %% Example:
 %% image_builder() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()()),
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"AppstreamAgentVersion">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -228,7 +228,7 @@
 %%   <<"EnableDefaultInternetAccess">> => boolean(),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"ImageArn">> => string(),
-%%   <<"ImageBuilderErrors">> => list(resource_error()()),
+%%   <<"ImageBuilderErrors">> => list(resource_error()),
 %%   <<"InstanceType">> => string(),
 %%   <<"LatestAppstreamAgentVersion">> => list(any()),
 %%   <<"Name">> => string(),
@@ -267,7 +267,7 @@
 
 %% Example:
 %% batch_disassociate_user_stack_request() :: #{
-%%   <<"UserStackAssociations">> := list(user_stack_association()())
+%%   <<"UserStackAssociations">> := list(user_stack_association())
 %% }
 -type batch_disassociate_user_stack_request() :: #{binary() => any()}.
 
@@ -319,14 +319,14 @@
 
 %% Example:
 %% describe_app_blocks_result() :: #{
-%%   <<"AppBlocks">> => list(app_block()()),
+%%   <<"AppBlocks">> => list(app_block()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_app_blocks_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_app_block_builder_request() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()()),
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"EnableDefaultInternetAccess">> => boolean(),
@@ -355,50 +355,50 @@
 %% update_directory_config_request() :: #{
 %%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
 %%   <<"DirectoryName">> := string(),
-%%   <<"OrganizationalUnitDistinguishedNames">> => list(string()()),
+%%   <<"OrganizationalUnitDistinguishedNames">> => list(string()),
 %%   <<"ServiceAccountCredentials">> => service_account_credentials()
 %% }
 -type update_directory_config_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_stack_request() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()()),
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"ApplicationSettings">> => application_settings(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
-%%   <<"EmbedHostDomains">> => list(string()()),
+%%   <<"EmbedHostDomains">> => list(string()),
 %%   <<"FeedbackURL">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"RedirectURL">> => string(),
-%%   <<"StorageConnectors">> => list(storage_connector()()),
+%%   <<"StorageConnectors">> => list(storage_connector()),
 %%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
 %%   <<"Tags">> => map(),
-%%   <<"UserSettings">> => list(user_setting()())
+%%   <<"UserSettings">> => list(user_setting())
 %% }
 -type create_stack_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_stack_request() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()()),
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"ApplicationSettings">> => application_settings(),
 %%   <<"AttributesToDelete">> => list(list(any())()),
 %%   <<"DeleteStorageConnectors">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
-%%   <<"EmbedHostDomains">> => list(string()()),
+%%   <<"EmbedHostDomains">> => list(string()),
 %%   <<"FeedbackURL">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"RedirectURL">> => string(),
-%%   <<"StorageConnectors">> => list(storage_connector()()),
+%%   <<"StorageConnectors">> => list(storage_connector()),
 %%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
-%%   <<"UserSettings">> => list(user_setting()())
+%%   <<"UserSettings">> => list(user_setting())
 %% }
 -type update_stack_request() :: #{binary() => any()}.
 
 %% Example:
 %% app_block_builder() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()()),
-%%   <<"AppBlockBuilderErrors">> => list(resource_error()()),
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AppBlockBuilderErrors">> => list(resource_error()),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -428,7 +428,7 @@
 
 %% Example:
 %% describe_images_result() :: #{
-%%   <<"Images">> => list(image()()),
+%%   <<"Images">> => list(image()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_images_result() :: #{binary() => any()}.
@@ -455,7 +455,7 @@
 %%   <<"SessionScriptS3Location">> => s3_location(),
 %%   <<"StreamView">> => list(any()),
 %%   <<"Tags">> => map(),
-%%   <<"UsbDeviceFilterStrings">> => list(string()()),
+%%   <<"UsbDeviceFilterStrings">> => list(string()),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type create_fleet_request() :: #{binary() => any()}.
@@ -469,7 +469,7 @@
 
 %% Example:
 %% describe_image_builders_result() :: #{
-%%   <<"ImageBuilders">> => list(image_builder()()),
+%%   <<"ImageBuilders">> => list(image_builder()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_image_builders_result() :: #{binary() => any()}.
@@ -488,9 +488,9 @@
 
 %% Example:
 %% describe_images_request() :: #{
-%%   <<"Arns">> => list(string()()),
+%%   <<"Arns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"Type">> => list(any())
 %% }
@@ -560,7 +560,7 @@
 
 %% Example:
 %% update_app_block_builder_request() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()()),
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"AttributesToDelete">> => list(list(any())()),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
@@ -614,7 +614,7 @@
 %% Example:
 %% describe_image_builders_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_image_builders_request() :: #{binary() => any()}.
@@ -647,7 +647,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"Name">> := string(),
 %%   <<"NextToken">> => string(),
-%%   <<"SharedAwsAccountIds">> => list(string()())
+%%   <<"SharedAwsAccountIds">> => list(string())
 %% }
 -type describe_image_permissions_request() :: #{binary() => any()}.
 
@@ -691,7 +691,7 @@
 
 %% Example:
 %% describe_app_blocks_request() :: #{
-%%   <<"Arns">> => list(string()()),
+%%   <<"Arns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -706,7 +706,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -794,20 +794,20 @@
 
 %% Example:
 %% stack() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()()),
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"ApplicationSettings">> => application_settings_response(),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
-%%   <<"EmbedHostDomains">> => list(string()()),
+%%   <<"EmbedHostDomains">> => list(string()),
 %%   <<"FeedbackURL">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RedirectURL">> => string(),
-%%   <<"StackErrors">> => list(stack_error()()),
-%%   <<"StorageConnectors">> => list(storage_connector()()),
+%%   <<"StackErrors">> => list(stack_error()),
+%%   <<"StorageConnectors">> => list(storage_connector()),
 %%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
-%%   <<"UserSettings">> => list(user_setting()())
+%%   <<"UserSettings">> => list(user_setting())
 %% }
 -type stack() :: #{binary() => any()}.
 
@@ -850,7 +850,7 @@
 
 %% Example:
 %% describe_directory_configs_result() :: #{
-%%   <<"DirectoryConfigs">> => list(directory_config()()),
+%%   <<"DirectoryConfigs">> => list(directory_config()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_directory_configs_result() :: #{binary() => any()}.
@@ -894,7 +894,7 @@
 %% update_theme_for_stack_request() :: #{
 %%   <<"AttributesToDelete">> => list(list(any())()),
 %%   <<"FaviconS3Location">> => s3_location(),
-%%   <<"FooterLinks">> => list(theme_footer_link()()),
+%%   <<"FooterLinks">> => list(theme_footer_link()),
 %%   <<"OrganizationLogoS3Location">> => s3_location(),
 %%   <<"StackName">> := string(),
 %%   <<"State">> => list(any()),
@@ -929,14 +929,14 @@
 
 %% Example:
 %% describe_stacks_request() :: #{
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_stacks_request() :: #{binary() => any()}.
 
 %% Example:
 %% app_block() :: #{
-%%   <<"AppBlockErrors">> => list(error_details()()),
+%%   <<"AppBlockErrors">> => list(error_details()),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -972,7 +972,7 @@
 %%   <<"Platform">> => list(any()),
 %%   <<"SessionScriptS3Location">> => s3_location(),
 %%   <<"StreamView">> => list(any()),
-%%   <<"UsbDeviceFilterStrings">> => list(string()()),
+%%   <<"UsbDeviceFilterStrings">> => list(string()),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type update_fleet_request() :: #{binary() => any()}.
@@ -982,7 +982,7 @@
 %%   <<"LastGeneratedReportDate">> => non_neg_integer(),
 %%   <<"S3BucketName">> => string(),
 %%   <<"Schedule">> => list(any()),
-%%   <<"SubscriptionErrors">> => list(last_report_generation_execution_error()())
+%%   <<"SubscriptionErrors">> => list(last_report_generation_execution_error())
 %% }
 -type usage_report_subscription() :: #{binary() => any()}.
 
@@ -1003,7 +1003,7 @@
 
 %% Example:
 %% create_image_builder_request() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()()),
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"AppstreamAgentVersion">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
@@ -1029,7 +1029,7 @@
 %%   <<"Enabled">> => boolean(),
 %%   <<"IconS3Location">> => s3_location(),
 %%   <<"IconURL">> => string(),
-%%   <<"InstanceFamilies">> => list(string()()),
+%%   <<"InstanceFamilies">> => list(string()),
 %%   <<"LaunchParameters">> => string(),
 %%   <<"LaunchPath">> => string(),
 %%   <<"Metadata">> => map(),
@@ -1071,8 +1071,8 @@
 
 %% Example:
 %% vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
@@ -1086,13 +1086,13 @@
 %% Example:
 %% describe_user_stack_associations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UserStackAssociations">> => list(user_stack_association()())
+%%   <<"UserStackAssociations">> => list(user_stack_association())
 %% }
 -type describe_user_stack_associations_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_directory_configs_request() :: #{
-%%   <<"DirectoryNames">> => list(string()()),
+%%   <<"DirectoryNames">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1101,8 +1101,8 @@
 %% Example:
 %% storage_connector() :: #{
 %%   <<"ConnectorType">> => list(any()),
-%%   <<"Domains">> => list(string()()),
-%%   <<"DomainsRequireAdminConsent">> => list(string()()),
+%%   <<"Domains">> => list(string()),
+%%   <<"DomainsRequireAdminConsent">> => list(string()),
 %%   <<"ResourceIdentifier">> => string()
 %% }
 -type storage_connector() :: #{binary() => any()}.
@@ -1122,7 +1122,7 @@
 
 %% Example:
 %% describe_applications_request() :: #{
-%%   <<"Arns">> => list(string()()),
+%%   <<"Arns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1140,7 +1140,7 @@
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"IconS3Location">> := s3_location(),
-%%   <<"InstanceFamilies">> := list(string()()),
+%%   <<"InstanceFamilies">> := list(string()),
 %%   <<"LaunchParameters">> => string(),
 %%   <<"LaunchPath">> := string(),
 %%   <<"Name">> := string(),
@@ -1259,7 +1259,7 @@
 
 %% Example:
 %% list_entitled_applications_result() :: #{
-%%   <<"EntitledApplications">> => list(entitled_application()()),
+%%   <<"EntitledApplications">> => list(entitled_application()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_entitled_applications_result() :: #{binary() => any()}.
@@ -1361,14 +1361,14 @@
 
 %% Example:
 %% list_associated_fleets_result() :: #{
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_associated_fleets_result() :: #{binary() => any()}.
 
 %% Example:
 %% batch_disassociate_user_stack_result() :: #{
-%%   <<"errors">> => list(user_stack_association_error()())
+%%   <<"errors">> => list(user_stack_association_error())
 %% }
 -type batch_disassociate_user_stack_result() :: #{binary() => any()}.
 
@@ -1380,21 +1380,21 @@
 
 %% Example:
 %% batch_associate_user_stack_request() :: #{
-%%   <<"UserStackAssociations">> := list(user_stack_association()())
+%%   <<"UserStackAssociations">> := list(user_stack_association())
 %% }
 -type batch_associate_user_stack_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_users_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type describe_users_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_stacks_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Stacks">> => list(stack()())
+%%   <<"Stacks">> => list(stack())
 %% }
 -type describe_stacks_result() :: #{binary() => any()}.
 
@@ -1421,7 +1421,7 @@
 %% Example:
 %% entitlement() :: #{
 %%   <<"AppVisibility">> => list(any()),
-%%   <<"Attributes">> => list(entitlement_attribute()()),
+%%   <<"Attributes">> => list(entitlement_attribute()),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -1432,7 +1432,7 @@
 
 %% Example:
 %% image() :: #{
-%%   <<"Applications">> => list(application()()),
+%%   <<"Applications">> => list(application()),
 %%   <<"AppstreamAgentVersion">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"BaseImageArn">> => string(),
@@ -1442,7 +1442,7 @@
 %%   <<"DynamicAppProvidersEnabled">> => list(any()),
 %%   <<"ImageBuilderName">> => string(),
 %%   <<"ImageBuilderSupported">> => boolean(),
-%%   <<"ImageErrors">> => list(resource_error()()),
+%%   <<"ImageErrors">> => list(resource_error()),
 %%   <<"ImagePermissions">> => image_permissions(),
 %%   <<"ImageSharedWithOthers">> => list(any()),
 %%   <<"LatestAppstreamAgentVersion">> => list(any()),
@@ -1451,14 +1451,14 @@
 %%   <<"PublicBaseImageReleasedDate">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
 %%   <<"StateChangeReason">> => image_state_change_reason(),
-%%   <<"SupportedInstanceFamilies">> => list(string()()),
+%%   <<"SupportedInstanceFamilies">> => list(string()),
 %%   <<"Visibility">> => list(any())
 %% }
 -type image() :: #{binary() => any()}.
 
 %% Example:
 %% describe_entitlements_result() :: #{
-%%   <<"Entitlements">> => list(entitlement()()),
+%%   <<"Entitlements">> => list(entitlement()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_entitlements_result() :: #{binary() => any()}.
@@ -1498,7 +1498,7 @@
 
 %% Example:
 %% describe_app_block_builder_app_block_associations_result() :: #{
-%%   <<"AppBlockBuilderAppBlockAssociations">> => list(app_block_builder_app_block_association()()),
+%%   <<"AppBlockBuilderAppBlockAssociations">> => list(app_block_builder_app_block_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_app_block_builder_app_block_associations_result() :: #{binary() => any()}.
@@ -1514,14 +1514,14 @@
 %%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"DirectoryName">> => string(),
-%%   <<"OrganizationalUnitDistinguishedNames">> => list(string()()),
+%%   <<"OrganizationalUnitDistinguishedNames">> => list(string()),
 %%   <<"ServiceAccountCredentials">> => service_account_credentials()
 %% }
 -type directory_config() :: #{binary() => any()}.
 
 %% Example:
 %% batch_associate_user_stack_result() :: #{
-%%   <<"errors">> => list(user_stack_association_error()())
+%%   <<"errors">> => list(user_stack_association_error())
 %% }
 -type batch_associate_user_stack_result() :: #{binary() => any()}.
 
@@ -1535,7 +1535,7 @@
 %% describe_image_permissions_result() :: #{
 %%   <<"Name">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"SharedImagePermissionsList">> => list(shared_image_permissions()())
+%%   <<"SharedImagePermissionsList">> => list(shared_image_permissions())
 %% }
 -type describe_image_permissions_result() :: #{binary() => any()}.
 
@@ -1666,7 +1666,7 @@
 
 %% Example:
 %% describe_fleets_result() :: #{
-%%   <<"Fleets">> => list(fleet()()),
+%%   <<"Fleets">> => list(fleet()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleets_result() :: #{binary() => any()}.
@@ -1680,13 +1680,13 @@
 %% Example:
 %% describe_usage_report_subscriptions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UsageReportSubscriptions">> => list(usage_report_subscription()())
+%%   <<"UsageReportSubscriptions">> => list(usage_report_subscription())
 %% }
 -type describe_usage_report_subscriptions_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_associated_stacks_result() :: #{
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_associated_stacks_result() :: #{binary() => any()}.
@@ -1701,7 +1701,7 @@
 %% Example:
 %% describe_app_block_builders_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_app_block_builders_request() :: #{binary() => any()}.
@@ -1768,7 +1768,7 @@
 %% Example:
 %% update_entitlement_request() :: #{
 %%   <<"AppVisibility">> => list(any()),
-%%   <<"Attributes">> => list(entitlement_attribute()()),
+%%   <<"Attributes">> => list(entitlement_attribute()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"StackName">> := string()
@@ -1777,7 +1777,7 @@
 
 %% Example:
 %% describe_application_fleet_associations_result() :: #{
-%%   <<"ApplicationFleetAssociations">> => list(application_fleet_association()()),
+%%   <<"ApplicationFleetAssociations">> => list(application_fleet_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_application_fleet_associations_result() :: #{binary() => any()}.
@@ -1812,7 +1812,7 @@
 %% Example:
 %% create_theme_for_stack_request() :: #{
 %%   <<"FaviconS3Location">> := s3_location(),
-%%   <<"FooterLinks">> => list(theme_footer_link()()),
+%%   <<"FooterLinks">> => list(theme_footer_link()),
 %%   <<"OrganizationLogoS3Location">> := s3_location(),
 %%   <<"StackName">> := string(),
 %%   <<"ThemeStyling">> := list(any()),
@@ -1829,7 +1829,7 @@
 
 %% Example:
 %% describe_fleets_request() :: #{
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleets_request() :: #{binary() => any()}.
@@ -1844,7 +1844,7 @@
 %%   <<"DisplayName">> => string(),
 %%   <<"DomainJoinInfo">> => domain_join_info(),
 %%   <<"EnableDefaultInternetAccess">> => boolean(),
-%%   <<"FleetErrors">> => list(fleet_error()()),
+%%   <<"FleetErrors">> => list(fleet_error()),
 %%   <<"FleetType">> => list(any()),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"IdleDisconnectTimeoutInSeconds">> => integer(),
@@ -1859,7 +1859,7 @@
 %%   <<"SessionScriptS3Location">> => s3_location(),
 %%   <<"State">> => list(any()),
 %%   <<"StreamView">> => list(any()),
-%%   <<"UsbDeviceFilterStrings">> => list(string()()),
+%%   <<"UsbDeviceFilterStrings">> => list(string()),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type fleet() :: #{binary() => any()}.
@@ -1875,7 +1875,7 @@
 
 %% Example:
 %% describe_applications_result() :: #{
-%%   <<"Applications">> => list(application()()),
+%%   <<"Applications">> => list(application()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_applications_result() :: #{binary() => any()}.
@@ -1889,7 +1889,7 @@
 %% Example:
 %% describe_sessions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(session()())
+%%   <<"Sessions">> => list(session())
 %% }
 -type describe_sessions_result() :: #{binary() => any()}.
 
@@ -1920,7 +1920,7 @@
 %% Example:
 %% create_entitlement_request() :: #{
 %%   <<"AppVisibility">> := list(any()),
-%%   <<"Attributes">> := list(entitlement_attribute()()),
+%%   <<"Attributes">> := list(entitlement_attribute()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"StackName">> := string()
@@ -1931,7 +1931,7 @@
 %% create_directory_config_request() :: #{
 %%   <<"CertificateBasedAuthProperties">> => certificate_based_auth_properties(),
 %%   <<"DirectoryName">> := string(),
-%%   <<"OrganizationalUnitDistinguishedNames">> := list(string()()),
+%%   <<"OrganizationalUnitDistinguishedNames">> := list(string()),
 %%   <<"ServiceAccountCredentials">> => service_account_credentials()
 %% }
 -type create_directory_config_request() :: #{binary() => any()}.

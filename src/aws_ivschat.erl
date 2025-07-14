@@ -199,7 +199,7 @@
 %% Example:
 %% list_rooms_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"rooms">> := list(room_summary()())
+%%   <<"rooms">> := list(room_summary())
 %% }
 -type list_rooms_response() :: #{binary() => any()}.
 
@@ -215,7 +215,7 @@
 %% Example:
 %% create_chat_token_request() :: #{
 %%   <<"attributes">> => map(),
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"roomIdentifier">> := string(),
 %%   <<"sessionDurationInMinutes">> => integer(),
 %%   <<"userId">> := string()
@@ -255,7 +255,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createTime">> => non_neg_integer(),
 %%   <<"id">> => string(),
-%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
 %%   <<"maximumMessageLength">> => integer(),
 %%   <<"maximumMessageRatePerSecond">> => integer(),
 %%   <<"messageReviewHandler">> => message_review_handler(),
@@ -277,7 +277,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -408,7 +408,7 @@
 
 %% Example:
 %% list_logging_configurations_response() :: #{
-%%   <<"loggingConfigurations">> := list(logging_configuration_summary()()),
+%%   <<"loggingConfigurations">> := list(logging_configuration_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_logging_configurations_response() :: #{binary() => any()}.
@@ -426,7 +426,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createTime">> => non_neg_integer(),
 %%   <<"id">> => string(),
-%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
 %%   <<"maximumMessageLength">> => integer(),
 %%   <<"maximumMessageRatePerSecond">> => integer(),
 %%   <<"messageReviewHandler">> => message_review_handler(),
@@ -443,7 +443,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => string()
 %% }
@@ -456,7 +456,7 @@
 
 %% Example:
 %% create_room_request() :: #{
-%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
 %%   <<"maximumMessageLength">> => integer(),
 %%   <<"maximumMessageRatePerSecond">> => integer(),
 %%   <<"messageReviewHandler">> => message_review_handler(),
@@ -521,7 +521,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createTime">> => non_neg_integer(),
 %%   <<"id">> => string(),
-%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
 %%   <<"messageReviewHandler">> => message_review_handler(),
 %%   <<"name">> => string(),
 %%   <<"tags">> => map(),
@@ -561,7 +561,7 @@
 %% Example:
 %% update_room_request() :: #{
 %%   <<"identifier">> := string(),
-%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
 %%   <<"maximumMessageLength">> => integer(),
 %%   <<"maximumMessageRatePerSecond">> => integer(),
 %%   <<"messageReviewHandler">> => message_review_handler(),
@@ -575,7 +575,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createTime">> => non_neg_integer(),
 %%   <<"id">> => string(),
-%%   <<"loggingConfigurationIdentifiers">> => list(string()()),
+%%   <<"loggingConfigurationIdentifiers">> => list(string()),
 %%   <<"maximumMessageLength">> => integer(),
 %%   <<"maximumMessageRatePerSecond">> => integer(),
 %%   <<"messageReviewHandler">> => message_review_handler(),

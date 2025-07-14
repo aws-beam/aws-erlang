@@ -53,7 +53,7 @@
 %% Example:
 %% search_quantum_tasks_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"quantumTasks">> := list(quantum_task_summary()())
+%%   <<"quantumTasks">> := list(quantum_task_summary())
 %% }
 -type search_quantum_tasks_response() :: #{binary() => any()}.
 
@@ -82,7 +82,7 @@
 
 %% Example:
 %% get_quantum_task_request() :: #{
-%%   <<"additionalAttributeNames">> => list(string()())
+%%   <<"additionalAttributeNames">> => list(string())
 %% }
 -type get_quantum_task_request() :: #{binary() => any()}.
 
@@ -140,7 +140,7 @@
 %% Example:
 %% search_devices_filter() :: #{
 %%   <<"name">> => [string()],
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type search_devices_filter() :: #{binary() => any()}.
 
@@ -155,12 +155,12 @@
 %% Example:
 %% create_job_request() :: #{
 %%   <<"algorithmSpecification">> := algorithm_specification(),
-%%   <<"associations">> => list(association()()),
+%%   <<"associations">> => list(association()),
 %%   <<"checkpointConfig">> => job_checkpoint_config(),
 %%   <<"clientToken">> := string(),
 %%   <<"deviceConfig">> := device_config(),
 %%   <<"hyperParameters">> => map(),
-%%   <<"inputDataConfig">> => list(input_file_config()()),
+%%   <<"inputDataConfig">> => list(input_file_config()),
 %%   <<"instanceConfig">> := instance_config(),
 %%   <<"jobName">> := [string()],
 %%   <<"outputDataConfig">> := job_output_data_config(),
@@ -173,7 +173,7 @@
 
 %% Example:
 %% get_quantum_task_response() :: #{
-%%   <<"associations">> => list(association()()),
+%%   <<"associations">> => list(association()),
 %%   <<"createdAt">> := [non_neg_integer()],
 %%   <<"deviceArn">> := string(),
 %%   <<"deviceParameters">> := string(),
@@ -200,7 +200,7 @@
 
 %% Example:
 %% search_quantum_tasks_request() :: #{
-%%   <<"filters">> := list(search_quantum_tasks_filter()()),
+%%   <<"filters">> := list(search_quantum_tasks_filter()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -269,7 +269,7 @@
 
 %% Example:
 %% search_jobs_request() :: #{
-%%   <<"filters">> := list(search_jobs_filter()()),
+%%   <<"filters">> := list(search_jobs_filter()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -321,7 +321,7 @@
 
 %% Example:
 %% search_jobs_response() :: #{
-%%   <<"jobs">> := list(job_summary()()),
+%%   <<"jobs">> := list(job_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type search_jobs_response() :: #{binary() => any()}.
@@ -331,7 +331,7 @@
 %% search_quantum_tasks_filter() :: #{
 %%   <<"name">> => string(),
 %%   <<"operator">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type search_quantum_tasks_filter() :: #{binary() => any()}.
 
@@ -340,7 +340,7 @@
 %% search_jobs_filter() :: #{
 %%   <<"name">> => string(),
 %%   <<"operator">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type search_jobs_filter() :: #{binary() => any()}.
 
@@ -356,7 +356,7 @@
 
 %% Example:
 %% search_devices_response() :: #{
-%%   <<"devices">> := list(device_summary()()),
+%%   <<"devices">> := list(device_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type search_devices_response() :: #{binary() => any()}.
@@ -396,7 +396,7 @@
 %% Example:
 %% create_quantum_task_request() :: #{
 %%   <<"action">> := string(),
-%%   <<"associations">> => list(association()()),
+%%   <<"associations">> => list(association()),
 %%   <<"clientToken">> := string(),
 %%   <<"deviceArn">> := string(),
 %%   <<"deviceParameters">> => string(),
@@ -433,16 +433,16 @@
 %% Example:
 %% get_job_response() :: #{
 %%   <<"algorithmSpecification">> := algorithm_specification(),
-%%   <<"associations">> => list(association()()),
+%%   <<"associations">> => list(association()),
 %%   <<"billableDuration">> => [integer()],
 %%   <<"checkpointConfig">> => job_checkpoint_config(),
 %%   <<"createdAt">> := [non_neg_integer()],
 %%   <<"deviceConfig">> => device_config(),
 %%   <<"endedAt">> => [non_neg_integer()],
-%%   <<"events">> => list(job_event_details()()),
+%%   <<"events">> => list(job_event_details()),
 %%   <<"failureReason">> => string(),
 %%   <<"hyperParameters">> => map(),
-%%   <<"inputDataConfig">> => list(input_file_config()()),
+%%   <<"inputDataConfig">> => list(input_file_config()),
 %%   <<"instanceConfig">> := instance_config(),
 %%   <<"jobArn">> := string(),
 %%   <<"jobName">> := [string()],
@@ -479,7 +479,7 @@
 
 %% Example:
 %% get_job_request() :: #{
-%%   <<"additionalAttributeNames">> => list(string()())
+%%   <<"additionalAttributeNames">> => list(string())
 %% }
 -type get_job_request() :: #{binary() => any()}.
 
@@ -517,7 +517,7 @@
 
 %% Example:
 %% search_devices_request() :: #{
-%%   <<"filters">> := list(search_devices_filter()()),
+%%   <<"filters">> := list(search_devices_filter()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -529,7 +529,7 @@
 %%   <<"deviceArn">> := string(),
 %%   <<"deviceCapabilities">> := string(),
 %%   <<"deviceName">> := [string()],
-%%   <<"deviceQueueInfo">> => list(device_queue_info()()),
+%%   <<"deviceQueueInfo">> => list(device_queue_info()),
 %%   <<"deviceStatus">> := string(),
 %%   <<"deviceType">> := string(),
 %%   <<"providerName">> := [string()]

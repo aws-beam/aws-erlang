@@ -96,7 +96,7 @@
 %% Example:
 %% get_resource_policies_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resourcePolicies">> := list(resource_policy()())
+%%   <<"resourcePolicies">> := list(resource_policy())
 %% }
 -type get_resource_policies_output() :: #{binary() => any()}.
 
@@ -107,7 +107,7 @@
 
 %% Example:
 %% list_timeline_events_output() :: #{
-%%   <<"eventSummaries">> := list(event_summary()()),
+%%   <<"eventSummaries">> := list(event_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_timeline_events_output() :: #{binary() => any()}.
@@ -181,7 +181,7 @@
 %% start_incident_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"impact">> => integer(),
-%%   <<"relatedItems">> => list(related_item()()),
+%%   <<"relatedItems">> => list(related_item()),
 %%   <<"responsePlanArn">> := string(),
 %%   <<"title">> => string(),
 %%   <<"triggerDetails">> => trigger_details()
@@ -207,8 +207,8 @@
 
 %% Example:
 %% batch_get_incident_findings_output() :: #{
-%%   <<"errors">> => list(batch_get_incident_findings_error()()),
-%%   <<"findings">> => list(finding()())
+%%   <<"errors">> => list(batch_get_incident_findings_error()),
+%%   <<"findings">> => list(finding())
 %% }
 -type batch_get_incident_findings_output() :: #{binary() => any()}.
 
@@ -269,7 +269,7 @@
 %% timeline_event() :: #{
 %%   <<"eventData">> => string(),
 %%   <<"eventId">> => string(),
-%%   <<"eventReferences">> => list(list()()),
+%%   <<"eventReferences">> => list(list()),
 %%   <<"eventTime">> => [non_neg_integer()],
 %%   <<"eventType">> => string(),
 %%   <<"eventUpdatedTime">> => [non_neg_integer()],
@@ -308,14 +308,14 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_replication_set_input() :: #{
-%%   <<"actions">> := list(list()()),
+%%   <<"actions">> := list(list()),
 %%   <<"arn">> := string(),
 %%   <<"clientToken">> => string()
 %% }
@@ -324,7 +324,7 @@
 
 %% Example:
 %% batch_get_incident_findings_input() :: #{
-%%   <<"findingIds">> := list(string()()),
+%%   <<"findingIds">> := list(string()),
 %%   <<"incidentRecordArn">> := string()
 %% }
 -type batch_get_incident_findings_input() :: #{binary() => any()}.
@@ -342,7 +342,7 @@
 
 %% Example:
 %% list_incident_records_output() :: #{
-%%   <<"incidentRecordSummaries">> := list(incident_record_summary()()),
+%%   <<"incidentRecordSummaries">> := list(incident_record_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_incident_records_output() :: #{binary() => any()}.
@@ -354,19 +354,19 @@
 
 %% Example:
 %% update_response_plan_input() :: #{
-%%   <<"actions">> => list(list()()),
+%%   <<"actions">> => list(list()),
 %%   <<"arn">> := string(),
 %%   <<"chatChannel">> => list(),
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"engagements">> => list(string()()),
+%%   <<"engagements">> => list(string()),
 %%   <<"incidentTemplateDedupeString">> => string(),
 %%   <<"incidentTemplateImpact">> => integer(),
-%%   <<"incidentTemplateNotificationTargets">> => list(list()()),
+%%   <<"incidentTemplateNotificationTargets">> => list(list()),
 %%   <<"incidentTemplateSummary">> => string(),
 %%   <<"incidentTemplateTags">> => map(),
 %%   <<"incidentTemplateTitle">> => string(),
-%%   <<"integrations">> => list(list()())
+%%   <<"integrations">> => list(list())
 %% }
 -type update_response_plan_input() :: #{binary() => any()}.
 
@@ -439,7 +439,7 @@
 %% Example:
 %% list_replication_sets_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"replicationSetArns">> := list(string()())
+%%   <<"replicationSetArns">> := list(string())
 %% }
 -type list_replication_sets_output() :: #{binary() => any()}.
 
@@ -457,7 +457,7 @@
 
 %% Example:
 %% list_incident_findings_output() :: #{
-%%   <<"findings">> => list(finding_summary()()),
+%%   <<"findings">> => list(finding_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_incident_findings_output() :: #{binary() => any()}.
@@ -480,7 +480,7 @@
 %%   <<"chatChannel">> => list(),
 %%   <<"clientToken">> => string(),
 %%   <<"impact">> => integer(),
-%%   <<"notificationTargets">> => list(list()()),
+%%   <<"notificationTargets">> => list(list()),
 %%   <<"status">> => string(),
 %%   <<"summary">> => string(),
 %%   <<"title">> => string()
@@ -560,7 +560,7 @@
 %% Example:
 %% event_summary() :: #{
 %%   <<"eventId">> => string(),
-%%   <<"eventReferences">> => list(list()()),
+%%   <<"eventReferences">> => list(list()),
 %%   <<"eventTime">> => [non_neg_integer()],
 %%   <<"eventType">> => string(),
 %%   <<"eventUpdatedTime">> => [non_neg_integer()],
@@ -598,13 +598,13 @@
 
 %% Example:
 %% get_response_plan_output() :: #{
-%%   <<"actions">> => list(list()()),
+%%   <<"actions">> => list(list()),
 %%   <<"arn">> := string(),
 %%   <<"chatChannel">> => list(),
 %%   <<"displayName">> => string(),
-%%   <<"engagements">> => list(string()()),
+%%   <<"engagements">> => list(string()),
 %%   <<"incidentTemplate">> := incident_template(),
-%%   <<"integrations">> => list(list()()),
+%%   <<"integrations">> => list(list()),
 %%   <<"name">> := string()
 %% }
 -type get_response_plan_output() :: #{binary() => any()}.
@@ -612,7 +612,7 @@
 
 %% Example:
 %% list_timeline_events_input() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"incidentRecordArn">> := string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -721,7 +721,7 @@
 %%   <<"dedupeString">> => string(),
 %%   <<"impact">> => integer(),
 %%   <<"incidentTags">> => map(),
-%%   <<"notificationTargets">> => list(list()()),
+%%   <<"notificationTargets">> => list(list()),
 %%   <<"summary">> => string(),
 %%   <<"title">> => string()
 %% }
@@ -730,7 +730,7 @@
 
 %% Example:
 %% list_incident_records_input() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -761,7 +761,7 @@
 %% Example:
 %% list_response_plans_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"responsePlanSummaries">> := list(response_plan_summary()())
+%%   <<"responsePlanSummaries">> := list(response_plan_summary())
 %% }
 -type list_response_plans_output() :: #{binary() => any()}.
 
@@ -778,7 +778,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"eventData">> => string(),
 %%   <<"eventId">> := string(),
-%%   <<"eventReferences">> => list(list()()),
+%%   <<"eventReferences">> => list(list()),
 %%   <<"eventTime">> => [non_neg_integer()],
 %%   <<"eventType">> => string(),
 %%   <<"incidentRecordArn">> := string()
@@ -796,7 +796,7 @@
 %% Example:
 %% list_related_items_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"relatedItems">> := list(related_item()())
+%%   <<"relatedItems">> := list(related_item())
 %% }
 -type list_related_items_output() :: #{binary() => any()}.
 
@@ -809,7 +809,7 @@
 %% create_timeline_event_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"eventData">> := string(),
-%%   <<"eventReferences">> => list(list()()),
+%%   <<"eventReferences">> => list(list()),
 %%   <<"eventTime">> := [non_neg_integer()],
 %%   <<"eventType">> := string(),
 %%   <<"incidentRecordArn">> := string()
@@ -833,13 +833,13 @@
 
 %% Example:
 %% create_response_plan_input() :: #{
-%%   <<"actions">> => list(list()()),
+%%   <<"actions">> => list(list()),
 %%   <<"chatChannel">> => list(),
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"engagements">> => list(string()()),
+%%   <<"engagements">> => list(string()),
 %%   <<"incidentTemplate">> := incident_template(),
-%%   <<"integrations">> => list(list()()),
+%%   <<"integrations">> => list(list()),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -869,7 +869,7 @@
 %% Example:
 %% incident_record() :: #{
 %%   <<"arn">> => string(),
-%%   <<"automationExecutions">> => list(list()()),
+%%   <<"automationExecutions">> => list(list()),
 %%   <<"chatChannel">> => list(),
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"dedupeString">> => string(),
@@ -877,7 +877,7 @@
 %%   <<"incidentRecordSource">> => incident_record_source(),
 %%   <<"lastModifiedBy">> => string(),
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
-%%   <<"notificationTargets">> => list(list()()),
+%%   <<"notificationTargets">> => list(list()),
 %%   <<"resolvedTime">> => [non_neg_integer()],
 %%   <<"status">> => string(),
 %%   <<"summary">> => string(),

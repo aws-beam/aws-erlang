@@ -159,7 +159,7 @@
 
 %% Example:
 %% list_db_servers_output() :: #{
-%%   <<"dbServers">> => list(db_server_summary()()),
+%%   <<"dbServers">> => list(db_server_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_db_servers_output() :: #{binary() => any()}.
@@ -220,7 +220,7 @@
 
 %% Example:
 %% list_db_nodes_output() :: #{
-%%   <<"dbNodes">> => list(db_node_summary()()),
+%%   <<"dbNodes">> => list(db_node_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_db_nodes_output() :: #{binary() => any()}.
@@ -252,7 +252,7 @@
 %%   <<"ociUrl">> => [string()],
 %%   <<"status">> => list(any()),
 %%   <<"isLocalBackupEnabled">> => [boolean()],
-%%   <<"sshPublicKeys">> => list(string()()),
+%%   <<"sshPublicKeys">> => list(string()),
 %%   <<"dataStorageSizeInTBs">> => [float()],
 %%   <<"listenerPort">> => [integer()],
 %%   <<"scanIpIds">> => list([string()]()),
@@ -431,7 +431,7 @@
 %% Example:
 %% list_system_versions_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"systemVersions">> => list(system_version_summary()())
+%%   <<"systemVersions">> => list(system_version_summary())
 %% }
 -type list_system_versions_output() :: #{binary() => any()}.
 
@@ -444,7 +444,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -554,7 +554,7 @@
 %% Example:
 %% list_odb_networks_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"odbNetworks">> => list(odb_network_summary()())
+%%   <<"odbNetworks">> => list(odb_network_summary())
 %% }
 -type list_odb_networks_output() :: #{binary() => any()}.
 
@@ -575,7 +575,7 @@
 
 %% Example:
 %% exadata_iorm_config() :: #{
-%%   <<"dbPlans">> => list(db_iorm_config()()),
+%%   <<"dbPlans">> => list(db_iorm_config()),
 %%   <<"lifecycleDetails">> => [string()],
 %%   <<"lifecycleState">> => list(any()),
 %%   <<"objective">> => list(any())
@@ -632,7 +632,7 @@
 %%   <<"memorySizeInGBs">> => [integer()],
 %%   <<"displayName">> => [string()],
 %%   <<"totalStorageSizeInGBs">> => [integer()],
-%%   <<"customerContactsToSendToOCI">> => list(customer_contact()()),
+%%   <<"customerContactsToSendToOCI">> => list(customer_contact()),
 %%   <<"ociUrl">> => [string()],
 %%   <<"availabilityZoneId">> => [string()],
 %%   <<"cpuCount">> => [integer()],
@@ -750,7 +750,7 @@
 
 %% Example:
 %% list_cloud_vm_clusters_output() :: #{
-%%   <<"cloudVmClusters">> => list(cloud_vm_cluster_summary()()),
+%%   <<"cloudVmClusters">> => list(cloud_vm_cluster_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_cloud_vm_clusters_output() :: #{binary() => any()}.
@@ -840,7 +840,7 @@
 %%   <<"defaultDnsPrefix">> => [string()],
 %%   <<"displayName">> => [string()],
 %%   <<"managedServices">> => managed_services(),
-%%   <<"ociDnsForwardingConfigs">> => list(oci_dns_forwarding_config()()),
+%%   <<"ociDnsForwardingConfigs">> => list(oci_dns_forwarding_config()),
 %%   <<"ociNetworkAnchorId">> => [string()],
 %%   <<"ociNetworkAnchorUrl">> => [string()],
 %%   <<"ociResourceAnchorName">> => [string()],
@@ -896,7 +896,7 @@
 %%   <<"defaultDnsPrefix">> => [string()],
 %%   <<"displayName">> => [string()],
 %%   <<"managedServices">> => managed_services(),
-%%   <<"ociDnsForwardingConfigs">> => list(oci_dns_forwarding_config()()),
+%%   <<"ociDnsForwardingConfigs">> => list(oci_dns_forwarding_config()),
 %%   <<"ociNetworkAnchorId">> => [string()],
 %%   <<"ociNetworkAnchorUrl">> => [string()],
 %%   <<"ociResourceAnchorName">> => [string()],
@@ -950,7 +950,7 @@
 %%   <<"availabilityZoneId">> => [string()],
 %%   <<"clientToken">> => string(),
 %%   <<"computeCount">> := [integer()],
-%%   <<"customerContactsToSendToOCI">> => list(customer_contact()()),
+%%   <<"customerContactsToSendToOCI">> => list(customer_contact()),
 %%   <<"databaseServerType">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"maintenanceWindow">> => maintenance_window(),
@@ -984,7 +984,7 @@
 %% Example:
 %% list_odb_peering_connections_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"odbPeeringConnections">> => list(odb_peering_connection_summary()())
+%%   <<"odbPeeringConnections">> => list(odb_peering_connection_summary())
 %% }
 -type list_odb_peering_connections_output() :: #{binary() => any()}.
 
@@ -1041,7 +1041,7 @@
 
 %% Example:
 %% list_cloud_exadata_infrastructures_output() :: #{
-%%   <<"cloudExadataInfrastructures">> => list(cloud_exadata_infrastructure_summary()()),
+%%   <<"cloudExadataInfrastructures">> => list(cloud_exadata_infrastructure_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_cloud_exadata_infrastructures_output() :: #{binary() => any()}.
@@ -1102,7 +1102,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }
@@ -1160,7 +1160,7 @@
 %%   <<"ociUrl">> => [string()],
 %%   <<"status">> => list(any()),
 %%   <<"isLocalBackupEnabled">> => [boolean()],
-%%   <<"sshPublicKeys">> => list(string()()),
+%%   <<"sshPublicKeys">> => list(string()),
 %%   <<"dataStorageSizeInTBs">> => [float()],
 %%   <<"listenerPort">> => [integer()],
 %%   <<"scanIpIds">> => list([string()]()),
@@ -1206,7 +1206,7 @@
 %%   <<"memorySizeInGBs">> => [integer()],
 %%   <<"displayName">> => [string()],
 %%   <<"totalStorageSizeInGBs">> => [integer()],
-%%   <<"customerContactsToSendToOCI">> => list(customer_contact()()),
+%%   <<"customerContactsToSendToOCI">> => list(customer_contact()),
 %%   <<"ociUrl">> => [string()],
 %%   <<"availabilityZoneId">> => [string()],
 %%   <<"cpuCount">> => [integer()],
@@ -1243,7 +1243,7 @@
 
 %% Example:
 %% list_autonomous_virtual_machines_output() :: #{
-%%   <<"autonomousVirtualMachines">> => list(autonomous_virtual_machine_summary()()),
+%%   <<"autonomousVirtualMachines">> => list(autonomous_virtual_machine_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_autonomous_virtual_machines_output() :: #{binary() => any()}.
@@ -1257,7 +1257,7 @@
 
 %% Example:
 %% list_gi_versions_output() :: #{
-%%   <<"giVersions">> => list(gi_version_summary()()),
+%%   <<"giVersions">> => list(gi_version_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_gi_versions_output() :: #{binary() => any()}.
@@ -1270,7 +1270,7 @@
 
 %% Example:
 %% list_db_system_shapes_output() :: #{
-%%   <<"dbSystemShapes">> => list(db_system_shape_summary()()),
+%%   <<"dbSystemShapes">> => list(db_system_shape_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_db_system_shapes_output() :: #{binary() => any()}.
@@ -1308,7 +1308,7 @@
 
 %% Example:
 %% list_cloud_autonomous_vm_clusters_output() :: #{
-%%   <<"cloudAutonomousVmClusters">> => list(cloud_autonomous_vm_cluster_summary()()),
+%%   <<"cloudAutonomousVmClusters">> => list(cloud_autonomous_vm_cluster_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_cloud_autonomous_vm_clusters_output() :: #{binary() => any()}.
@@ -1343,11 +1343,11 @@
 %% Example:
 %% maintenance_window() :: #{
 %%   <<"customActionTimeoutInMins">> => [integer()],
-%%   <<"daysOfWeek">> => list(day_of_week()()),
+%%   <<"daysOfWeek">> => list(day_of_week()),
 %%   <<"hoursOfDay">> => list([integer()]()),
 %%   <<"isCustomActionTimeoutEnabled">> => [boolean()],
 %%   <<"leadTimeInWeeks">> => [integer()],
-%%   <<"months">> => list(month()()),
+%%   <<"months">> => list(month()),
 %%   <<"patchingMode">> => list(any()),
 %%   <<"preference">> => list(any()),
 %%   <<"skipRu">> => [boolean()],
@@ -1357,7 +1357,7 @@
 
 %% Example:
 %% cloud_exadata_infrastructure_unallocated_resources() :: #{
-%%   <<"cloudAutonomousVmClusters">> => list(cloud_autonomous_vm_cluster_resource_details()()),
+%%   <<"cloudAutonomousVmClusters">> => list(cloud_autonomous_vm_cluster_resource_details()),
 %%   <<"cloudExadataInfrastructureDisplayName">> => [string()],
 %%   <<"cloudExadataInfrastructureId">> => string(),
 %%   <<"exadataStorageInTBs">> => [float()],

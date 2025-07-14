@@ -75,7 +75,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -241,7 +241,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -345,14 +345,14 @@
 %%   <<"projectName">> := string(),
 %%   <<"projectStage">> => list(any()),
 %%   <<"standardOutputConfiguration">> := standard_output_configuration(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_data_automation_project_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -531,7 +531,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
@@ -587,7 +587,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"schema">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"type">> := list(any())
 %% }
 -type create_blueprint_request() :: #{binary() => any()}.
@@ -595,7 +595,7 @@
 
 %% Example:
 %% list_blueprints_response() :: #{
-%%   <<"blueprints">> => list(blueprint_summary()()),
+%%   <<"blueprints">> => list(blueprint_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_blueprints_response() :: #{binary() => any()}.
@@ -626,7 +626,7 @@
 
 %% Example:
 %% custom_output_configuration() :: #{
-%%   <<"blueprints">> => list(blueprint_item()())
+%%   <<"blueprints">> => list(blueprint_item())
 %% }
 -type custom_output_configuration() :: #{binary() => any()}.
 
@@ -645,7 +645,7 @@
 %% Example:
 %% list_data_automation_projects_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"projects">> => list(data_automation_project_summary()())
+%%   <<"projects">> => list(data_automation_project_summary())
 %% }
 -type list_data_automation_projects_response() :: #{binary() => any()}.
 

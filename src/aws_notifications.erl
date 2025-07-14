@@ -213,7 +213,7 @@
 
 %% Example:
 %% list_managed_notification_child_events_response() :: #{
-%%   <<"managedNotificationChildEvents">> => list(managed_notification_child_event_overview()()),
+%%   <<"managedNotificationChildEvents">> => list(managed_notification_child_event_overview()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_notification_child_events_response() :: #{binary() => any()}.
@@ -237,7 +237,7 @@
 %% Example:
 %% update_event_rule_request() :: #{
 %%   <<"eventPattern">> => string(),
-%%   <<"regions">> => list(string()())
+%%   <<"regions">> => list(string())
 %% }
 -type update_event_rule_request() :: #{binary() => any()}.
 
@@ -262,7 +262,7 @@
 
 %% Example:
 %% managed_notification_event_overview() :: #{
-%%   <<"aggregatedNotificationRegions">> => list(string()()),
+%%   <<"aggregatedNotificationRegions">> => list(string()),
 %%   <<"aggregationEventType">> => string(),
 %%   <<"aggregationSummary">> => aggregation_summary(),
 %%   <<"arn">> => string(),
@@ -351,9 +351,9 @@
 
 %% Example:
 %% aggregation_summary() :: #{
-%%   <<"additionalSummarizationDimensions">> => list(summarization_dimension_overview()()),
+%%   <<"additionalSummarizationDimensions">> => list(summarization_dimension_overview()),
 %%   <<"aggregatedAccounts">> => summarization_dimension_overview(),
-%%   <<"aggregatedBy">> => list(aggregation_key()()),
+%%   <<"aggregatedBy">> => list(aggregation_key()),
 %%   <<"aggregatedOrganizationalUnits">> => summarization_dimension_overview(),
 %%   <<"aggregatedRegions">> => summarization_dimension_overview(),
 %%   <<"eventCount">> => [integer()]
@@ -396,7 +396,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -407,7 +407,7 @@
 
 %% Example:
 %% list_managed_notification_configurations_response() :: #{
-%%   <<"managedNotificationConfigurations">> => list(managed_notification_configuration_structure()()),
+%%   <<"managedNotificationConfigurations">> => list(managed_notification_configuration_structure()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_notification_configurations_response() :: #{binary() => any()}.
@@ -451,7 +451,7 @@
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"eventStatus">> => string(),
 %%   <<"id">> => string(),
-%%   <<"media">> => list(media_element()()),
+%%   <<"media">> => list(media_element()),
 %%   <<"messageComponents">> => message_components(),
 %%   <<"notificationType">> => string(),
 %%   <<"schemaVersion">> => string(),
@@ -511,7 +511,7 @@
 
 %% Example:
 %% aggregation_detail() :: #{
-%%   <<"summarizationDimensions">> => list(summarization_dimension_detail()())
+%%   <<"summarizationDimensions">> => list(summarization_dimension_detail())
 %% }
 -type aggregation_detail() :: #{binary() => any()}.
 
@@ -562,7 +562,7 @@
 %% Example:
 %% list_notification_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"notificationConfigurations">> => list(notification_configuration_structure()())
+%%   <<"notificationConfigurations">> => list(notification_configuration_structure())
 %% }
 -type list_notification_configurations_response() :: #{binary() => any()}.
 
@@ -640,9 +640,9 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"eventPattern">> => string(),
 %%   <<"eventType">> => string(),
-%%   <<"managedRules">> => list(string()()),
+%%   <<"managedRules">> => list(string()),
 %%   <<"notificationConfigurationArn">> => string(),
-%%   <<"regions">> => list(string()()),
+%%   <<"regions">> => list(string()),
 %%   <<"source">> => string(),
 %%   <<"statusSummaryByRegion">> => map()
 %% }
@@ -652,7 +652,7 @@
 %% Example:
 %% list_notification_hubs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"notificationHubs">> => list(notification_hub_overview()())
+%%   <<"notificationHubs">> => list(notification_hub_overview())
 %% }
 -type list_notification_hubs_response() :: #{binary() => any()}.
 
@@ -687,7 +687,7 @@
 %% Example:
 %% list_notification_events_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"notificationEvents">> => list(notification_event_overview()())
+%%   <<"notificationEvents">> => list(notification_event_overview())
 %% }
 -type list_notification_events_response() :: #{binary() => any()}.
 
@@ -726,7 +726,7 @@
 
 %% Example:
 %% list_channels_response() :: #{
-%%   <<"channels">> => list(string()()),
+%%   <<"channels">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
@@ -745,7 +745,7 @@
 
 %% Example:
 %% list_managed_notification_channel_associations_response() :: #{
-%%   <<"channelAssociations">> => list(managed_notification_channel_association_summary()()),
+%%   <<"channelAssociations">> => list(managed_notification_channel_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_notification_channel_associations_response() :: #{binary() => any()}.
@@ -761,7 +761,7 @@
 
 %% Example:
 %% list_event_rules_response() :: #{
-%%   <<"eventRules">> => list(event_rule_structure()()),
+%%   <<"eventRules">> => list(event_rule_structure()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_event_rules_response() :: #{binary() => any()}.
@@ -780,7 +780,7 @@
 
 %% Example:
 %% list_managed_notification_events_response() :: #{
-%%   <<"managedNotificationEvents">> => list(managed_notification_event_overview()()),
+%%   <<"managedNotificationEvents">> => list(managed_notification_event_overview()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_notification_events_response() :: #{binary() => any()}.
@@ -829,7 +829,7 @@
 %% Example:
 %% message_components() :: #{
 %%   <<"completeDescription">> => string(),
-%%   <<"dimensions">> => list(dimension()()),
+%%   <<"dimensions">> => list(dimension()),
 %%   <<"headline">> => string(),
 %%   <<"paragraphSummary">> => string()
 %% }
@@ -873,7 +873,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => string()
 %% }
@@ -905,7 +905,7 @@
 %%   <<"eventType">> => [string()],
 %%   <<"eventTypeVersion">> => [string()],
 %%   <<"relatedAccount">> => string(),
-%%   <<"relatedResources">> => list(resource()()),
+%%   <<"relatedResources">> => list(resource()),
 %%   <<"source">> => string(),
 %%   <<"sourceEventId">> => [string()]
 %% }
@@ -964,9 +964,9 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"eventPattern">> => string(),
 %%   <<"eventType">> => string(),
-%%   <<"managedRules">> => list(string()()),
+%%   <<"managedRules">> => list(string()),
 %%   <<"notificationConfigurationArn">> => string(),
-%%   <<"regions">> => list(string()()),
+%%   <<"regions">> => list(string()),
 %%   <<"source">> => string(),
 %%   <<"statusSummaryByRegion">> => map()
 %% }
@@ -1017,7 +1017,7 @@
 %%   <<"eventPattern">> => string(),
 %%   <<"eventType">> := string(),
 %%   <<"notificationConfigurationArn">> := string(),
-%%   <<"regions">> := list(string()()),
+%%   <<"regions">> := list(string()),
 %%   <<"source">> := string()
 %% }
 -type create_event_rule_request() :: #{binary() => any()}.

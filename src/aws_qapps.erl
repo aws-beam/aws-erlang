@@ -119,7 +119,7 @@
 %% create_library_item_input() :: #{
 %%   <<"appId">> := string(),
 %%   <<"appVersion">> := integer(),
-%%   <<"categories">> := list(string()()),
+%%   <<"categories">> := list(string()),
 %%   <<"instanceId">> := string()
 %% }
 -type create_library_item_input() :: #{binary() => any()}.
@@ -165,7 +165,7 @@
 %% Example:
 %% update_q_app_permissions_output() :: #{
 %%   <<"appId">> => [string()],
-%%   <<"permissions">> => list(permission_output()()),
+%%   <<"permissions">> => list(permission_output()),
 %%   <<"resourceArn">> => [string()]
 %% }
 -type update_q_app_permissions_output() :: #{binary() => any()}.
@@ -192,7 +192,7 @@
 %% list_q_app_session_data_output() :: #{
 %%   <<"nextToken">> => [string()],
 %%   <<"sessionArn">> => [string()],
-%%   <<"sessionData">> => list(q_app_session_data()()),
+%%   <<"sessionData">> => list(q_app_session_data()),
 %%   <<"sessionId">> => string()
 %% }
 -type list_q_app_session_data_output() :: #{binary() => any()}.
@@ -259,7 +259,7 @@
 
 %% Example:
 %% batch_create_category_input() :: #{
-%%   <<"categories">> := list(batch_create_category_input_category()()),
+%%   <<"categories">> := list(batch_create_category_input_category()),
 %%   <<"instanceId">> := string()
 %% }
 -type batch_create_category_input() :: #{binary() => any()}.
@@ -267,7 +267,7 @@
 
 %% Example:
 %% list_categories_output() :: #{
-%%   <<"categories">> => list(category()())
+%%   <<"categories">> => list(category())
 %% }
 -type list_categories_output() :: #{binary() => any()}.
 
@@ -303,7 +303,7 @@
 
 %% Example:
 %% app_definition_input() :: #{
-%%   <<"cards">> => list(list()()),
+%%   <<"cards">> => list(list()),
 %%   <<"initialPrompt">> => string()
 %% }
 -type app_definition_input() :: #{binary() => any()}.
@@ -320,7 +320,7 @@
 %% start_q_app_session_input() :: #{
 %%   <<"appId">> := string(),
 %%   <<"appVersion">> := integer(),
-%%   <<"initialValues">> => list(card_value()()),
+%%   <<"initialValues">> => list(card_value()),
 %%   <<"instanceId">> := string(),
 %%   <<"sessionId">> => [string()],
 %%   <<"tags">> => map()
@@ -332,7 +332,7 @@
 %% get_library_item_output() :: #{
 %%   <<"appId">> => string(),
 %%   <<"appVersion">> => integer(),
-%%   <<"categories">> => list(category()()),
+%%   <<"categories">> => list(category()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => [string()],
 %%   <<"isRatedByUser">> => [boolean()],
@@ -351,7 +351,7 @@
 %% update_q_app_session_input() :: #{
 %%   <<"instanceId">> := string(),
 %%   <<"sessionId">> := string(),
-%%   <<"values">> => list(card_value()())
+%%   <<"values">> => list(card_value())
 %% }
 -type update_q_app_session_input() :: #{binary() => any()}.
 
@@ -374,7 +374,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -390,7 +390,7 @@
 %% Example:
 %% describe_q_app_permissions_output() :: #{
 %%   <<"appId">> => [string()],
-%%   <<"permissions">> => list(permission_output()()),
+%%   <<"permissions">> => list(permission_output()),
 %%   <<"resourceArn">> => [string()]
 %% }
 -type describe_q_app_permissions_output() :: #{binary() => any()}.
@@ -425,7 +425,7 @@
 %% update_library_item_output() :: #{
 %%   <<"appId">> => string(),
 %%   <<"appVersion">> => integer(),
-%%   <<"categories">> => list(category()()),
+%%   <<"categories">> => list(category()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => [string()],
 %%   <<"isRatedByUser">> => [boolean()],
@@ -464,7 +464,7 @@
 %% app_definition() :: #{
 %%   <<"appDefinitionVersion">> => [string()],
 %%   <<"canEdit">> => [boolean()],
-%%   <<"cards">> => list(list()())
+%%   <<"cards">> => list(list())
 %% }
 -type app_definition() :: #{binary() => any()}.
 
@@ -501,7 +501,7 @@
 %% library_item_member() :: #{
 %%   <<"appId">> => string(),
 %%   <<"appVersion">> => integer(),
-%%   <<"categories">> => list(category()()),
+%%   <<"categories">> => list(category()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => [string()],
 %%   <<"isRatedByUser">> => [boolean()],
@@ -565,7 +565,7 @@
 %% card_status() :: #{
 %%   <<"currentState">> => list(any()),
 %%   <<"currentValue">> => [string()],
-%%   <<"submissions">> => list(submission()())
+%%   <<"submissions">> => list(submission())
 %% }
 -type card_status() :: #{binary() => any()}.
 
@@ -586,7 +586,7 @@
 
 %% Example:
 %% batch_delete_category_input() :: #{
-%%   <<"categories">> := list(string()()),
+%%   <<"categories">> := list(string()),
 %%   <<"instanceId">> := string()
 %% }
 -type batch_delete_category_input() :: #{binary() => any()}.
@@ -651,9 +651,9 @@
 %% Example:
 %% update_q_app_permissions_input() :: #{
 %%   <<"appId">> := string(),
-%%   <<"grantPermissions">> => list(permission_input()()),
+%%   <<"grantPermissions">> => list(permission_input()),
 %%   <<"instanceId">> := string(),
-%%   <<"revokePermissions">> => list(permission_input()())
+%%   <<"revokePermissions">> => list(permission_input())
 %% }
 -type update_q_app_permissions_input() :: #{binary() => any()}.
 
@@ -697,7 +697,7 @@
 
 %% Example:
 %% update_library_item_input() :: #{
-%%   <<"categories">> => list(string()()),
+%%   <<"categories">> => list(string()),
 %%   <<"instanceId">> := string(),
 %%   <<"libraryItemId">> := string(),
 %%   <<"status">> => list(any())
@@ -822,7 +822,7 @@
 
 %% Example:
 %% list_library_items_output() :: #{
-%%   <<"libraryItems">> => list(library_item_member()()),
+%%   <<"libraryItems">> => list(library_item_member()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_library_items_output() :: #{binary() => any()}.
@@ -955,7 +955,7 @@
 
 %% Example:
 %% attribute_filter() :: #{
-%%   <<"andAllFilters">> => list(attribute_filter()()),
+%%   <<"andAllFilters">> => list(attribute_filter()),
 %%   <<"containsAll">> => document_attribute(),
 %%   <<"containsAny">> => document_attribute(),
 %%   <<"equalsTo">> => document_attribute(),
@@ -964,7 +964,7 @@
 %%   <<"lessThan">> => document_attribute(),
 %%   <<"lessThanOrEquals">> => document_attribute(),
 %%   <<"notFilter">> => attribute_filter(),
-%%   <<"orAllFilters">> => list(attribute_filter()())
+%%   <<"orAllFilters">> => list(attribute_filter())
 %% }
 -type attribute_filter() :: #{binary() => any()}.
 
@@ -1024,7 +1024,7 @@
 
 %% Example:
 %% batch_update_category_input() :: #{
-%%   <<"categories">> := list(category_input()()),
+%%   <<"categories">> := list(category_input()),
 %%   <<"instanceId">> := string()
 %% }
 -type batch_update_category_input() :: #{binary() => any()}.
@@ -1068,7 +1068,7 @@
 
 %% Example:
 %% list_q_apps_output() :: #{
-%%   <<"apps">> => list(user_app_item()()),
+%%   <<"apps">> => list(user_app_item()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_q_apps_output() :: #{binary() => any()}.

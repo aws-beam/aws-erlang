@@ -235,7 +235,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"customerEncryptionKeyId">> => string(),
 %%   <<"evaluationConfig">> => list(),
-%%   <<"failureMessages">> => list(string()()),
+%%   <<"failureMessages">> => list(string()),
 %%   <<"inferenceConfig">> => list(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobDescription">> => string(),
@@ -267,7 +267,7 @@
 
 %% Example:
 %% list_marketplace_model_endpoints_response() :: #{
-%%   <<"marketplaceModelEndpoints">> => list(marketplace_model_endpoint_summary()()),
+%%   <<"marketplaceModelEndpoints">> => list(marketplace_model_endpoint_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_marketplace_model_endpoints_response() :: #{binary() => any()}.
@@ -292,7 +292,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -397,14 +397,14 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"crossRegionDetails">> => guardrail_cross_region_details(),
 %%   <<"description">> => string(),
-%%   <<"failureRecommendations">> => list(string()()),
+%%   <<"failureRecommendations">> => list(string()),
 %%   <<"guardrailArn">> => string(),
 %%   <<"guardrailId">> => string(),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"sensitiveInformationPolicy">> => guardrail_sensitive_information_policy(),
 %%   <<"status">> => list(any()),
-%%   <<"statusReasons">> => list(string()()),
+%%   <<"statusReasons">> => list(string()),
 %%   <<"topicPolicy">> => guardrail_topic_policy(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"version">> => string(),
@@ -432,7 +432,7 @@
 %% Example:
 %% guardrail_topic_policy_config() :: #{
 %%   <<"tierConfig">> => guardrail_topics_tier_config(),
-%%   <<"topicsConfig">> => list(guardrail_topic_config()())
+%%   <<"topicsConfig">> => list(guardrail_topic_config())
 %% }
 -type guardrail_topic_policy_config() :: #{binary() => any()}.
 
@@ -463,7 +463,7 @@
 %%   <<"kmsKeyId">> => string(),
 %%   <<"name">> := string(),
 %%   <<"sensitiveInformationPolicyConfig">> => guardrail_sensitive_information_policy_config(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"topicPolicyConfig">> => guardrail_topic_policy_config(),
 %%   <<"wordPolicyConfig">> => guardrail_word_policy_config()
 %% }
@@ -510,8 +510,8 @@
 
 %% Example:
 %% guardrail_word_policy() :: #{
-%%   <<"managedWordLists">> => list(guardrail_managed_words()()),
-%%   <<"words">> => list(guardrail_word()())
+%%   <<"managedWordLists">> => list(guardrail_managed_words()),
+%%   <<"words">> => list(guardrail_word())
 %% }
 -type guardrail_word_policy() :: #{binary() => any()}.
 
@@ -551,7 +551,7 @@
 %% Example:
 %% automated_evaluation_config() :: #{
 %%   <<"customMetricConfig">> => automated_evaluation_custom_metric_config(),
-%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()()),
+%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()),
 %%   <<"evaluatorModelConfig">> => list()
 %% }
 -type automated_evaluation_config() :: #{binary() => any()}.
@@ -560,7 +560,7 @@
 %% Example:
 %% guardrail_topic_config() :: #{
 %%   <<"definition">> => string(),
-%%   <<"examples">> => list(string()()),
+%%   <<"examples">> => list(string()),
 %%   <<"inputAction">> => list(any()),
 %%   <<"inputEnabled">> => [boolean()],
 %%   <<"name">> => string(),
@@ -578,7 +578,7 @@
 %%   <<"inferenceProfileArn">> => string(),
 %%   <<"inferenceProfileId">> => string(),
 %%   <<"inferenceProfileName">> => string(),
-%%   <<"models">> => list(inference_profile_model()()),
+%%   <<"models">> => list(inference_profile_model()),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -603,7 +603,7 @@
 
 %% Example:
 %% guardrail_content_policy() :: #{
-%%   <<"filters">> => list(guardrail_content_filter()()),
+%%   <<"filters">> => list(guardrail_content_filter()),
 %%   <<"tier">> => guardrail_content_filters_tier()
 %% }
 -type guardrail_content_policy() :: #{binary() => any()}.
@@ -675,7 +675,7 @@
 %% Example:
 %% list_foundation_model_agreement_offers_response() :: #{
 %%   <<"modelId">> => string(),
-%%   <<"offers">> => list(offer()())
+%%   <<"offers">> => list(offer())
 %% }
 -type list_foundation_model_agreement_offers_response() :: #{binary() => any()}.
 
@@ -697,7 +697,7 @@
 
 %% Example:
 %% pricing_term() :: #{
-%%   <<"rateCard">> => list(dimensional_price_rate()())
+%%   <<"rateCard">> => list(dimensional_price_rate())
 %% }
 -type pricing_term() :: #{binary() => any()}.
 
@@ -733,7 +733,7 @@
 
 %% Example:
 %% automated_evaluation_custom_metric_config() :: #{
-%%   <<"customMetrics">> => list(list()()),
+%%   <<"customMetrics">> => list(list()),
 %%   <<"evaluatorModelConfig">> => custom_metric_evaluator_model_config()
 %% }
 -type automated_evaluation_custom_metric_config() :: #{binary() => any()}.
@@ -741,8 +741,8 @@
 
 %% Example:
 %% evaluation_model_config_summary() :: #{
-%%   <<"bedrockModelIdentifiers">> => list(string()()),
-%%   <<"precomputedInferenceSourceIdentifiers">> => list(string()())
+%%   <<"bedrockModelIdentifiers">> => list(string()),
+%%   <<"precomputedInferenceSourceIdentifiers">> => list(string())
 %% }
 -type evaluation_model_config_summary() :: #{binary() => any()}.
 
@@ -777,7 +777,7 @@
 
 %% Example:
 %% list_inference_profiles_response() :: #{
-%%   <<"inferenceProfileSummaries">> => list(inference_profile_summary()()),
+%%   <<"inferenceProfileSummaries">> => list(inference_profile_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_inference_profiles_response() :: #{binary() => any()}.
@@ -822,7 +822,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -849,7 +849,7 @@
 %%   <<"description">> => string(),
 %%   <<"inferenceProfileName">> := string(),
 %%   <<"modelSource">> := list(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_inference_profile_request() :: #{binary() => any()}.
 
@@ -857,7 +857,7 @@
 %% Example:
 %% list_provisioned_model_throughputs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"provisionedModelSummaries">> => list(provisioned_model_summary()())
+%%   <<"provisionedModelSummaries">> => list(provisioned_model_summary())
 %% }
 -type list_provisioned_model_throughputs_response() :: #{binary() => any()}.
 
@@ -895,7 +895,7 @@
 %%   <<"modelKmsKeyId">> => string(),
 %%   <<"sourceModelArn">> := string(),
 %%   <<"targetModelName">> := string(),
-%%   <<"targetModelTags">> => list(tag()())
+%%   <<"targetModelTags">> => list(tag())
 %% }
 -type create_model_copy_job_request() :: #{binary() => any()}.
 
@@ -905,7 +905,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"fallbackModel">> => prompt_router_target_model(),
-%%   <<"models">> => list(prompt_router_target_model()()),
+%%   <<"models">> => list(prompt_router_target_model()),
 %%   <<"promptRouterArn">> => string(),
 %%   <<"promptRouterName">> => string(),
 %%   <<"routingCriteria">> => routing_criteria(),
@@ -966,7 +966,7 @@
 %%   <<"inferenceProfileArn">> => string(),
 %%   <<"inferenceProfileId">> => string(),
 %%   <<"inferenceProfileName">> => string(),
-%%   <<"models">> => list(inference_profile_model()()),
+%%   <<"models">> => list(inference_profile_model()),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -982,7 +982,7 @@
 %%   <<"modelId">> := string(),
 %%   <<"outputDataConfig">> := list(),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"timeoutDurationInHours">> => integer(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -1128,7 +1128,7 @@
 
 %% Example:
 %% list_guardrails_response() :: #{
-%%   <<"guardrails">> => list(guardrail_summary()()),
+%%   <<"guardrails">> => list(guardrail_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_guardrails_response() :: #{binary() => any()}.
@@ -1138,7 +1138,7 @@
 %% custom_metric_definition() :: #{
 %%   <<"instructions">> => string(),
 %%   <<"name">> => string(),
-%%   <<"ratingScale">> => list(rating_scale_item()())
+%%   <<"ratingScale">> => list(rating_scale_item())
 %% }
 -type custom_metric_definition() :: #{binary() => any()}.
 
@@ -1176,7 +1176,7 @@
 %%   <<"endpointConfig">> := list(),
 %%   <<"endpointName">> := string(),
 %%   <<"modelSourceIdentifier">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_marketplace_model_endpoint_request() :: #{binary() => any()}.
 
@@ -1188,7 +1188,7 @@
 %% Example:
 %% evaluation_dataset_metric_config() :: #{
 %%   <<"dataset">> => evaluation_dataset(),
-%%   <<"metricNames">> => list(string()()),
+%%   <<"metricNames">> => list(string()),
 %%   <<"taskType">> => list(any())
 %% }
 -type evaluation_dataset_metric_config() :: #{binary() => any()}.
@@ -1240,7 +1240,7 @@
 
 %% Example:
 %% list_model_invocation_jobs_response() :: #{
-%%   <<"invocationJobSummaries">> => list(model_invocation_job_summary()()),
+%%   <<"invocationJobSummaries">> => list(model_invocation_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_model_invocation_jobs_response() :: #{binary() => any()}.
@@ -1264,7 +1264,7 @@
 %%   <<"trainingDataConfig">> => training_data_config(),
 %%   <<"trainingMetrics">> => training_metrics(),
 %%   <<"validationDataConfig">> => validation_data_config(),
-%%   <<"validationMetrics">> => list(validator_metric()())
+%%   <<"validationMetrics">> => list(validator_metric())
 %% }
 -type get_custom_model_response() :: #{binary() => any()}.
 
@@ -1281,7 +1281,7 @@
 %%   <<"targetModelArn">> => string(),
 %%   <<"targetModelKmsKeyArn">> => string(),
 %%   <<"targetModelName">> => string(),
-%%   <<"targetModelTags">> => list(tag()())
+%%   <<"targetModelTags">> => list(tag())
 %% }
 -type model_copy_job_summary() :: #{binary() => any()}.
 
@@ -1317,7 +1317,7 @@
 
 %% Example:
 %% guardrail_content_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_content_filter_config()()),
+%%   <<"filtersConfig">> => list(guardrail_content_filter_config()),
 %%   <<"tierConfig">> => guardrail_content_filters_tier_config()
 %% }
 -type guardrail_content_policy_config() :: #{binary() => any()}.
@@ -1352,7 +1352,7 @@
 %%   <<"modelId">> := string(),
 %%   <<"modelUnits">> := integer(),
 %%   <<"provisionedModelName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_provisioned_model_throughput_request() :: #{binary() => any()}.
 
@@ -1387,8 +1387,8 @@
 
 %% Example:
 %% vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
@@ -1405,7 +1405,7 @@
 %% external_sources_retrieve_and_generate_configuration() :: #{
 %%   <<"generationConfiguration">> => external_sources_generation_configuration(),
 %%   <<"modelArn">> => string(),
-%%   <<"sources">> => list(external_source()())
+%%   <<"sources">> => list(external_source())
 %% }
 -type external_sources_retrieve_and_generate_configuration() :: #{binary() => any()}.
 
@@ -1416,8 +1416,8 @@
 
 %% Example:
 %% batch_delete_evaluation_job_response() :: #{
-%%   <<"errors">> => list(batch_delete_evaluation_job_error()()),
-%%   <<"evaluationJobs">> => list(batch_delete_evaluation_job_item()())
+%%   <<"errors">> => list(batch_delete_evaluation_job_error()),
+%%   <<"evaluationJobs">> => list(batch_delete_evaluation_job_item())
 %% }
 -type batch_delete_evaluation_job_response() :: #{binary() => any()}.
 
@@ -1427,7 +1427,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"fallbackModel">> => prompt_router_target_model(),
-%%   <<"models">> => list(prompt_router_target_model()()),
+%%   <<"models">> => list(prompt_router_target_model()),
 %%   <<"promptRouterArn">> => string(),
 %%   <<"promptRouterName">> => string(),
 %%   <<"routingCriteria">> => routing_criteria(),
@@ -1466,7 +1466,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1578,7 +1578,7 @@
 
 %% Example:
 %% list_imported_models_response() :: #{
-%%   <<"modelSummaries">> => list(imported_model_summary()()),
+%%   <<"modelSummaries">> => list(imported_model_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_imported_models_response() :: #{binary() => any()}.
@@ -1619,10 +1619,10 @@
 %%   <<"clientRequestToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"fallbackModel">> := prompt_router_target_model(),
-%%   <<"models">> := list(prompt_router_target_model()()),
+%%   <<"models">> := list(prompt_router_target_model()),
 %%   <<"promptRouterName">> := string(),
 %%   <<"routingCriteria">> := routing_criteria(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_prompt_router_request() :: #{binary() => any()}.
 
@@ -1681,15 +1681,15 @@
 
 %% Example:
 %% guardrail_sensitive_information_policy() :: #{
-%%   <<"piiEntities">> => list(guardrail_pii_entity()()),
-%%   <<"regexes">> => list(guardrail_regex()())
+%%   <<"piiEntities">> => list(guardrail_pii_entity()),
+%%   <<"regexes">> => list(guardrail_regex())
 %% }
 -type guardrail_sensitive_information_policy() :: #{binary() => any()}.
 
 
 %% Example:
 %% implicit_filter_configuration() :: #{
-%%   <<"metadataAttributes">> => list(metadata_attribute_schema()()),
+%%   <<"metadataAttributes">> => list(metadata_attribute_schema()),
 %%   <<"modelArn">> => string()
 %% }
 -type implicit_filter_configuration() :: #{binary() => any()}.
@@ -1711,7 +1711,7 @@
 
 %% Example:
 %% guardrail_contextual_grounding_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config()())
+%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config())
 %% }
 -type guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
 
@@ -1725,8 +1725,8 @@
 
 %% Example:
 %% evaluation_rag_config_summary() :: #{
-%%   <<"bedrockKnowledgeBaseIdentifiers">> => list(string()()),
-%%   <<"precomputedRagSourceIdentifiers">> => list(string()())
+%%   <<"bedrockKnowledgeBaseIdentifiers">> => list(string()),
+%%   <<"precomputedRagSourceIdentifiers">> => list(string())
 %% }
 -type evaluation_rag_config_summary() :: #{binary() => any()}.
 
@@ -1767,7 +1767,7 @@
 
 %% Example:
 %% list_model_copy_jobs_response() :: #{
-%%   <<"modelCopyJobSummaries">> => list(model_copy_job_summary()()),
+%%   <<"modelCopyJobSummaries">> => list(model_copy_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_model_copy_jobs_response() :: #{binary() => any()}.
@@ -1779,7 +1779,7 @@
 
 %% Example:
 %% validation_data_config() :: #{
-%%   <<"validators">> => list(validator()())
+%%   <<"validators">> => list(validator())
 %% }
 -type validation_data_config() :: #{binary() => any()}.
 
@@ -1832,7 +1832,7 @@
 
 %% Example:
 %% custom_metric_evaluator_model_config() :: #{
-%%   <<"bedrockEvaluatorModels">> => list(custom_metric_bedrock_evaluator_model()())
+%%   <<"bedrockEvaluatorModels">> => list(custom_metric_bedrock_evaluator_model())
 %% }
 -type custom_metric_evaluator_model_config() :: #{binary() => any()}.
 
@@ -1847,7 +1847,7 @@
 
 %% Example:
 %% list_model_customization_jobs_response() :: #{
-%%   <<"modelCustomizationJobSummaries">> => list(model_customization_job_summary()()),
+%%   <<"modelCustomizationJobSummaries">> => list(model_customization_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_model_customization_jobs_response() :: #{binary() => any()}.
@@ -1855,7 +1855,7 @@
 
 %% Example:
 %% list_foundation_models_response() :: #{
-%%   <<"modelSummaries">> => list(foundation_model_summary()())
+%%   <<"modelSummaries">> => list(foundation_model_summary())
 %% }
 -type list_foundation_models_response() :: #{binary() => any()}.
 
@@ -1918,12 +1918,12 @@
 %%   <<"clientRequestToken">> => string(),
 %%   <<"customModelKmsKeyId">> => string(),
 %%   <<"customModelName">> := string(),
-%%   <<"customModelTags">> => list(tag()()),
+%%   <<"customModelTags">> => list(tag()),
 %%   <<"customizationConfig">> => list(),
 %%   <<"customizationType">> => list(any()),
 %%   <<"hyperParameters">> => map(),
 %%   <<"jobName">> := string(),
-%%   <<"jobTags">> => list(tag()()),
+%%   <<"jobTags">> => list(tag()),
 %%   <<"outputDataConfig">> := output_data_config(),
 %%   <<"roleArn">> := string(),
 %%   <<"trainingDataConfig">> := training_data_config(),
@@ -1967,7 +1967,7 @@
 %%   <<"inferenceConfig">> := list(),
 %%   <<"jobDescription">> => string(),
 %%   <<"jobName">> := string(),
-%%   <<"jobTags">> => list(tag()()),
+%%   <<"jobTags">> => list(tag()),
 %%   <<"outputDataConfig">> := evaluation_output_data_config(),
 %%   <<"roleArn">> := string()
 %% }
@@ -1987,7 +1987,7 @@
 %%   <<"modelKmsKeyArn">> => string(),
 %%   <<"modelName">> := string(),
 %%   <<"modelSourceConfig">> := list(),
-%%   <<"modelTags">> => list(tag()()),
+%%   <<"modelTags">> => list(tag()),
 %%   <<"roleArn">> => string()
 %% }
 -type create_custom_model_request() :: #{binary() => any()}.
@@ -2004,8 +2004,8 @@
 
 %% Example:
 %% guardrail_word_policy_config() :: #{
-%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()()),
-%%   <<"wordsConfig">> => list(guardrail_word_config()())
+%%   <<"managedWordListsConfig">> => list(guardrail_managed_words_config()),
+%%   <<"wordsConfig">> => list(guardrail_word_config())
 %% }
 -type guardrail_word_policy_config() :: #{binary() => any()}.
 
@@ -2019,7 +2019,7 @@
 
 %% Example:
 %% list_evaluation_jobs_response() :: #{
-%%   <<"jobSummaries">> => list(evaluation_summary()()),
+%%   <<"jobSummaries">> => list(evaluation_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_evaluation_jobs_response() :: #{binary() => any()}.
@@ -2027,8 +2027,8 @@
 
 %% Example:
 %% guardrail_sensitive_information_policy_config() :: #{
-%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()()),
-%%   <<"regexesConfig">> => list(guardrail_regex_config()())
+%%   <<"piiEntitiesConfig">> => list(guardrail_pii_entity_config()),
+%%   <<"regexesConfig">> => list(guardrail_regex_config())
 %% }
 -type guardrail_sensitive_information_policy_config() :: #{binary() => any()}.
 
@@ -2136,7 +2136,7 @@
 %%   <<"trainingDataConfig">> => training_data_config(),
 %%   <<"trainingMetrics">> => training_metrics(),
 %%   <<"validationDataConfig">> => validation_data_config(),
-%%   <<"validationMetrics">> => list(validator_metric()()),
+%%   <<"validationMetrics">> => list(validator_metric()),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type get_model_customization_job_response() :: #{binary() => any()}.
@@ -2154,7 +2154,7 @@
 %%   <<"targetModelArn">> => string(),
 %%   <<"targetModelKmsKeyArn">> => string(),
 %%   <<"targetModelName">> => string(),
-%%   <<"targetModelTags">> => list(tag()())
+%%   <<"targetModelTags">> => list(tag())
 %% }
 -type get_model_copy_job_response() :: #{binary() => any()}.
 
@@ -2169,7 +2169,7 @@
 
 %% Example:
 %% list_custom_models_response() :: #{
-%%   <<"modelSummaries">> => list(custom_model_summary()()),
+%%   <<"modelSummaries">> => list(custom_model_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_models_response() :: #{binary() => any()}.
@@ -2178,7 +2178,7 @@
 %% Example:
 %% list_prompt_routers_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"promptRouterSummaries">> => list(prompt_router_summary()())
+%%   <<"promptRouterSummaries">> => list(prompt_router_summary())
 %% }
 -type list_prompt_routers_response() :: #{binary() => any()}.
 
@@ -2194,7 +2194,7 @@
 %% Example:
 %% guardrail_topic_policy() :: #{
 %%   <<"tier">> => guardrail_topics_tier(),
-%%   <<"topics">> => list(guardrail_topic()())
+%%   <<"topics">> => list(guardrail_topic())
 %% }
 -type guardrail_topic_policy() :: #{binary() => any()}.
 
@@ -2218,9 +2218,9 @@
 %%   <<"clientRequestToken">> => string(),
 %%   <<"importedModelKmsKeyId">> => string(),
 %%   <<"importedModelName">> := string(),
-%%   <<"importedModelTags">> => list(tag()()),
+%%   <<"importedModelTags">> => list(tag()),
 %%   <<"jobName">> := string(),
-%%   <<"jobTags">> => list(tag()()),
+%%   <<"jobTags">> => list(tag()),
 %%   <<"modelDataSource">> := list(),
 %%   <<"roleArn">> := string(),
 %%   <<"vpcConfig">> => vpc_config()
@@ -2351,7 +2351,7 @@
 
 %% Example:
 %% batch_delete_evaluation_job_request() :: #{
-%%   <<"jobIdentifiers">> := list(string()())
+%%   <<"jobIdentifiers">> := list(string())
 %% }
 -type batch_delete_evaluation_job_request() :: #{binary() => any()}.
 
@@ -2424,15 +2424,15 @@
 %% evaluation_summary() :: #{
 %%   <<"applicationType">> => list(any()),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"customMetricsEvaluatorModelIdentifiers">> => list(string()()),
+%%   <<"customMetricsEvaluatorModelIdentifiers">> => list(string()),
 %%   <<"evaluationTaskTypes">> => list(list(any())()),
-%%   <<"evaluatorModelIdentifiers">> => list(string()()),
+%%   <<"evaluatorModelIdentifiers">> => list(string()),
 %%   <<"inferenceConfigSummary">> => evaluation_inference_config_summary(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobName">> => string(),
 %%   <<"jobType">> => list(any()),
-%%   <<"modelIdentifiers">> => list(string()()),
-%%   <<"ragIdentifiers">> => list(string()()),
+%%   <<"modelIdentifiers">> => list(string()),
+%%   <<"ragIdentifiers">> => list(string()),
 %%   <<"status">> => list(any())
 %% }
 -type evaluation_summary() :: #{binary() => any()}.
@@ -2505,7 +2505,7 @@
 %% Example:
 %% guardrail_topic() :: #{
 %%   <<"definition">> => string(),
-%%   <<"examples">> => list(string()()),
+%%   <<"examples">> => list(string()),
 %%   <<"inputAction">> => list(any()),
 %%   <<"inputEnabled">> => [boolean()],
 %%   <<"name">> => string(),
@@ -2518,15 +2518,15 @@
 
 %% Example:
 %% guardrail_contextual_grounding_policy() :: #{
-%%   <<"filters">> => list(guardrail_contextual_grounding_filter()())
+%%   <<"filters">> => list(guardrail_contextual_grounding_filter())
 %% }
 -type guardrail_contextual_grounding_policy() :: #{binary() => any()}.
 
 
 %% Example:
 %% human_evaluation_config() :: #{
-%%   <<"customMetrics">> => list(human_evaluation_custom_metric()()),
-%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()()),
+%%   <<"customMetrics">> => list(human_evaluation_custom_metric()),
+%%   <<"datasetMetricConfigs">> => list(evaluation_dataset_metric_config()),
 %%   <<"humanWorkflowConfig">> => human_workflow_config()
 %% }
 -type human_evaluation_config() :: #{binary() => any()}.
@@ -2570,7 +2570,7 @@
 
 %% Example:
 %% list_model_import_jobs_response() :: #{
-%%   <<"modelImportJobSummaries">> => list(model_import_job_summary()()),
+%%   <<"modelImportJobSummaries">> => list(model_import_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_model_import_jobs_response() :: #{binary() => any()}.

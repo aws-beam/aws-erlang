@@ -757,7 +757,7 @@
 
 %% Example:
 %% update_user_proficiencies_request() :: #{
-%%   <<"UserProficiencies">> := list(user_proficiency()())
+%%   <<"UserProficiencies">> := list(user_proficiency())
 %% }
 -type update_user_proficiencies_request() :: #{binary() => any()}.
 
@@ -810,7 +810,7 @@
 
 %% Example:
 %% view_input_content() :: #{
-%%   <<"Actions">> => list(string()()),
+%%   <<"Actions">> => list(string()),
 %%   <<"Template">> => string()
 %% }
 -type view_input_content() :: #{binary() => any()}.
@@ -819,7 +819,7 @@
 %% Example:
 %% list_contact_references_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReferenceSummaryList">> => list(list()())
+%%   <<"ReferenceSummaryList">> => list(list())
 %% }
 -type list_contact_references_response() :: #{binary() => any()}.
 
@@ -827,19 +827,19 @@
 %% Example:
 %% search_vocabularies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VocabularySummaryList">> => list(vocabulary_summary()())
+%%   <<"VocabularySummaryList">> => list(vocabulary_summary())
 %% }
 -type search_vocabularies_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_current_metric_data_request() :: #{
-%%   <<"CurrentMetrics">> := list(current_metric()()),
+%%   <<"CurrentMetrics">> := list(current_metric()),
 %%   <<"Filters">> := filters(),
 %%   <<"Groupings">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SortCriteria">> => list(current_metric_sort_criteria()())
+%%   <<"SortCriteria">> => list(current_metric_sort_criteria())
 %% }
 -type get_current_metric_data_request() :: #{binary() => any()}.
 
@@ -854,7 +854,7 @@
 
 %% Example:
 %% create_rule_request() :: #{
-%%   <<"Actions">> := list(rule_action()()),
+%%   <<"Actions">> := list(rule_action()),
 %%   <<"ClientToken">> => string(),
 %%   <<"Function">> := string(),
 %%   <<"Name">> := string(),
@@ -870,7 +870,7 @@
 %%   <<"CreateNewVersion">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"EvaluationFormVersion">> := integer(),
-%%   <<"Items">> := list(list()()),
+%%   <<"Items">> := list(list()),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
 %%   <<"Title">> := string()
 %% }
@@ -886,8 +886,8 @@
 
 %% Example:
 %% security_profile_search_criteria() :: #{
-%%   <<"AndConditions">> => list(security_profile_search_criteria()()),
-%%   <<"OrConditions">> => list(security_profile_search_criteria()()),
+%%   <<"AndConditions">> => list(security_profile_search_criteria()),
+%%   <<"OrConditions">> => list(security_profile_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type security_profile_search_criteria() :: #{binary() => any()}.
@@ -1072,8 +1072,8 @@
 
 %% Example:
 %% contact_flow_search_criteria() :: #{
-%%   <<"AndConditions">> => list(contact_flow_search_criteria()()),
-%%   <<"OrConditions">> => list(contact_flow_search_criteria()()),
+%%   <<"AndConditions">> => list(contact_flow_search_criteria()),
+%%   <<"OrConditions">> => list(contact_flow_search_criteria()),
 %%   <<"StateCondition">> => list(any()),
 %%   <<"StatusCondition">> => list(any()),
 %%   <<"StringCondition">> => string_condition(),
@@ -1086,7 +1086,7 @@
 %% search_users_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user_search_summary()())
+%%   <<"Users">> => list(user_search_summary())
 %% }
 -type search_users_response() :: #{binary() => any()}.
 
@@ -1104,7 +1104,7 @@
 %%   <<"RelatedContactId">> => string(),
 %%   <<"SegmentAttributes">> := map(),
 %%   <<"SourceEndpoint">> := endpoint(),
-%%   <<"SupportedMessagingContentTypes">> => list(string()())
+%%   <<"SupportedMessagingContentTypes">> => list(string())
 %% }
 -type start_outbound_chat_contact_request() :: #{binary() => any()}.
 
@@ -1122,14 +1122,14 @@
 %% Example:
 %% list_traffic_distribution_group_users_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficDistributionGroupUserSummaryList">> => list(traffic_distribution_group_user_summary()())
+%%   <<"TrafficDistributionGroupUserSummaryList">> => list(traffic_distribution_group_user_summary())
 %% }
 -type list_traffic_distribution_group_users_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% routing_criteria_input() :: #{
-%%   <<"Steps">> => list(routing_criteria_input_step()())
+%%   <<"Steps">> => list(routing_criteria_input_step())
 %% }
 -type routing_criteria_input() :: #{binary() => any()}.
 
@@ -1186,7 +1186,7 @@
 
 %% Example:
 %% list_condition() :: #{
-%%   <<"Conditions">> => list(condition()()),
+%%   <<"Conditions">> => list(condition()),
 %%   <<"TargetListType">> => list(any())
 %% }
 -type list_condition() :: #{binary() => any()}.
@@ -1235,7 +1235,7 @@
 %% Example:
 %% search_hours_of_operations_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
-%%   <<"HoursOfOperations">> => list(hours_of_operation()()),
+%%   <<"HoursOfOperations">> => list(hours_of_operation()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_hours_of_operations_response() :: #{binary() => any()}.
@@ -1255,7 +1255,7 @@
 
 %% Example:
 %% searchable_segment_attributes() :: #{
-%%   <<"Criteria">> => list(searchable_segment_attributes_criteria()()),
+%%   <<"Criteria">> => list(searchable_segment_attributes_criteria()),
 %%   <<"MatchType">> => list(any())
 %% }
 -type searchable_segment_attributes() :: #{binary() => any()}.
@@ -1305,7 +1305,7 @@
 
 %% Example:
 %% search_available_phone_numbers_response() :: #{
-%%   <<"AvailableNumbersList">> => list(available_number_summary()()),
+%%   <<"AvailableNumbersList">> => list(available_number_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_available_phone_numbers_response() :: #{binary() => any()}.
@@ -1329,7 +1329,7 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Defaults">> => task_template_defaults(),
 %%   <<"Description">> => string(),
-%%   <<"Fields">> => list(task_template_field()()),
+%%   <<"Fields">> => list(task_template_field()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -1354,7 +1354,7 @@
 
 %% Example:
 %% list_hours_of_operations_response() :: #{
-%%   <<"HoursOfOperationSummaryList">> => list(hours_of_operation_summary()()),
+%%   <<"HoursOfOperationSummaryList">> => list(hours_of_operation_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_hours_of_operations_response() :: #{binary() => any()}.
@@ -1363,7 +1363,7 @@
 %% Example:
 %% property_validation_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"PropertyList">> => list(property_validation_exception_property()())
+%%   <<"PropertyList">> => list(property_validation_exception_property())
 %% }
 -type property_validation_exception() :: #{binary() => any()}.
 
@@ -1389,7 +1389,7 @@
 
 %% Example:
 %% list_flow_associations_response() :: #{
-%%   <<"FlowAssociationSummaryList">> => list(flow_association_summary()()),
+%%   <<"FlowAssociationSummaryList">> => list(flow_association_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_flow_associations_response() :: #{binary() => any()}.
@@ -1459,7 +1459,7 @@
 %% search_predefined_attributes_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
-%%   <<"PredefinedAttributes">> => list(predefined_attribute()())
+%%   <<"PredefinedAttributes">> => list(predefined_attribute())
 %% }
 -type search_predefined_attributes_response() :: #{binary() => any()}.
 
@@ -1536,7 +1536,7 @@
 %% routing_criteria() :: #{
 %%   <<"ActivationTimestamp">> => non_neg_integer(),
 %%   <<"Index">> => integer(),
-%%   <<"Steps">> => list(step()())
+%%   <<"Steps">> => list(step())
 %% }
 -type routing_criteria() :: #{binary() => any()}.
 
@@ -1554,14 +1554,14 @@
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"UserProficiencyList">> => list(user_proficiency()())
+%%   <<"UserProficiencyList">> => list(user_proficiency())
 %% }
 -type list_user_proficiencies_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% historical_metric_result() :: #{
-%%   <<"Collections">> => list(historical_metric_data()()),
+%%   <<"Collections">> => list(historical_metric_data()),
 %%   <<"Dimensions">> => dimensions()
 %% }
 -type historical_metric_result() :: #{binary() => any()}.
@@ -1611,7 +1611,7 @@
 %% Example:
 %% search_resource_tags_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag_set()())
+%%   <<"Tags">> => list(tag_set())
 %% }
 -type search_resource_tags_response() :: #{binary() => any()}.
 
@@ -1630,7 +1630,7 @@
 %% Example:
 %% searchable_segment_attributes_criteria() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type searchable_segment_attributes_criteria() :: #{binary() => any()}.
 
@@ -1670,8 +1670,8 @@
 
 %% Example:
 %% agent_status_search_criteria() :: #{
-%%   <<"AndConditions">> => list(agent_status_search_criteria()()),
-%%   <<"OrConditions">> => list(agent_status_search_criteria()()),
+%%   <<"AndConditions">> => list(agent_status_search_criteria()),
+%%   <<"OrConditions">> => list(agent_status_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type agent_status_search_criteria() :: #{binary() => any()}.
@@ -1695,18 +1695,18 @@
 %% Example:
 %% list_prompts_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PromptSummaryList">> => list(prompt_summary()())
+%%   <<"PromptSummaryList">> => list(prompt_summary())
 %% }
 -type list_prompts_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% user_data_filters() :: #{
-%%   <<"Agents">> => list(string()()),
+%%   <<"Agents">> => list(string()),
 %%   <<"ContactFilter">> => contact_filter(),
-%%   <<"Queues">> => list(string()()),
-%%   <<"RoutingProfiles">> => list(string()()),
-%%   <<"UserHierarchyGroups">> => list(string()())
+%%   <<"Queues">> => list(string()),
+%%   <<"RoutingProfiles">> => list(string()),
+%%   <<"UserHierarchyGroups">> => list(string())
 %% }
 -type user_data_filters() :: #{binary() => any()}.
 
@@ -1732,7 +1732,7 @@
 
 %% Example:
 %% create_hours_of_operation_request() :: #{
-%%   <<"Config">> := list(hours_of_operation_config()()),
+%%   <<"Config">> := list(hours_of_operation_config()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => map(),
@@ -1743,7 +1743,7 @@
 
 %% Example:
 %% real_time_contact_analysis_point_of_interest() :: #{
-%%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_character_offsets()())
+%%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_character_offsets())
 %% }
 -type real_time_contact_analysis_point_of_interest() :: #{binary() => any()}.
 
@@ -1778,11 +1778,11 @@
 %% update_security_profile_request() :: #{
 %%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
 %%   <<"AllowedAccessControlTags">> => map(),
-%%   <<"Applications">> => list(application()()),
+%%   <<"Applications">> => list(application()),
 %%   <<"Description">> => string(),
-%%   <<"HierarchyRestrictedResources">> => list(string()()),
-%%   <<"Permissions">> => list(string()()),
-%%   <<"TagRestrictedResources">> => list(string()())
+%%   <<"HierarchyRestrictedResources">> => list(string()),
+%%   <<"Permissions">> => list(string()),
+%%   <<"TagRestrictedResources">> => list(string())
 %% }
 -type update_security_profile_request() :: #{binary() => any()}.
 
@@ -1791,7 +1791,7 @@
 %% search_user_hierarchy_groups_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
-%%   <<"UserHierarchyGroups">> => list(hierarchy_group()())
+%%   <<"UserHierarchyGroups">> => list(hierarchy_group())
 %% }
 -type search_user_hierarchy_groups_response() :: #{binary() => any()}.
 
@@ -1809,7 +1809,7 @@
 %% Example:
 %% search_contact_flow_modules_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
-%%   <<"ContactFlowModules">> => list(contact_flow_module()()),
+%%   <<"ContactFlowModules">> => list(contact_flow_module()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_contact_flow_modules_response() :: #{binary() => any()}.
@@ -1821,9 +1821,9 @@
 
 %% Example:
 %% hours_of_operation_override_search_criteria() :: #{
-%%   <<"AndConditions">> => list(hours_of_operation_override_search_criteria()()),
+%%   <<"AndConditions">> => list(hours_of_operation_override_search_criteria()),
 %%   <<"DateCondition">> => date_condition(),
-%%   <<"OrConditions">> => list(hours_of_operation_override_search_criteria()()),
+%%   <<"OrConditions">> => list(hours_of_operation_override_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type hours_of_operation_override_search_criteria() :: #{binary() => any()}.
@@ -1905,7 +1905,7 @@
 %% Example:
 %% control_plane_attribute_filter() :: #{
 %%   <<"AndCondition">> => common_attribute_and_condition(),
-%%   <<"OrConditions">> => list(common_attribute_and_condition()()),
+%%   <<"OrConditions">> => list(common_attribute_and_condition()),
 %%   <<"TagCondition">> => tag_condition()
 %% }
 -type control_plane_attribute_filter() :: #{binary() => any()}.
@@ -1913,7 +1913,7 @@
 
 %% Example:
 %% hours_of_operation() :: #{
-%%   <<"Config">> => list(hours_of_operation_config()()),
+%%   <<"Config">> => list(hours_of_operation_config()),
 %%   <<"Description">> => string(),
 %%   <<"HoursOfOperationArn">> => string(),
 %%   <<"HoursOfOperationId">> => string(),
@@ -1948,7 +1948,7 @@
 %% Example:
 %% metric_filter_v2() :: #{
 %%   <<"MetricFilterKey">> => string(),
-%%   <<"MetricFilterValues">> => list(string()()),
+%%   <<"MetricFilterValues">> => list(string()),
 %%   <<"Negate">> => boolean()
 %% }
 -type metric_filter_v2() :: #{binary() => any()}.
@@ -1977,7 +1977,7 @@
 
 %% Example:
 %% get_metric_data_v2_response() :: #{
-%%   <<"MetricResults">> => list(metric_result_v2()()),
+%%   <<"MetricResults">> => list(metric_result_v2()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_metric_data_v2_response() :: #{binary() => any()}.
@@ -2006,7 +2006,7 @@
 %%   <<"ContactFlowId">> => string(),
 %%   <<"Defaults">> => task_template_defaults(),
 %%   <<"Description">> => string(),
-%%   <<"Fields">> := list(task_template_field()()),
+%%   <<"Fields">> := list(task_template_field()),
 %%   <<"Name">> := string(),
 %%   <<"SelfAssignFlowId">> => string(),
 %%   <<"Status">> => list(any())
@@ -2033,7 +2033,7 @@
 %% task_template_field() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Id">> => task_template_field_identifier(),
-%%   <<"SingleSelectOptions">> => list(string()()),
+%%   <<"SingleSelectOptions">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type task_template_field() :: #{binary() => any()}.
@@ -2048,7 +2048,7 @@
 
 %% Example:
 %% task_template_defaults() :: #{
-%%   <<"DefaultFieldValues">> => list(task_template_default_field_value()())
+%%   <<"DefaultFieldValues">> => list(task_template_default_field_value())
 %% }
 -type task_template_defaults() :: #{binary() => any()}.
 
@@ -2088,7 +2088,7 @@
 %%   <<"IdentityInfo">> => user_identity_info_lite(),
 %%   <<"PhoneConfig">> => user_phone_config(),
 %%   <<"RoutingProfileId">> => string(),
-%%   <<"SecurityProfileIds">> => list(string()()),
+%%   <<"SecurityProfileIds">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"Username">> => string()
 %% }
@@ -2148,8 +2148,8 @@
 
 %% Example:
 %% contact_flow_module_search_criteria() :: #{
-%%   <<"AndConditions">> => list(contact_flow_module_search_criteria()()),
-%%   <<"OrConditions">> => list(contact_flow_module_search_criteria()()),
+%%   <<"AndConditions">> => list(contact_flow_module_search_criteria()),
+%%   <<"OrConditions">> => list(contact_flow_module_search_criteria()),
 %%   <<"StateCondition">> => list(any()),
 %%   <<"StatusCondition">> => list(any()),
 %%   <<"StringCondition">> => string_condition()
@@ -2175,7 +2175,7 @@
 
 %% Example:
 %% update_hours_of_operation_request() :: #{
-%%   <<"Config">> => list(hours_of_operation_config()()),
+%%   <<"Config">> => list(hours_of_operation_config()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"TimeZone">> => string()
@@ -2213,7 +2213,7 @@
 
 %% Example:
 %% update_rule_request() :: #{
-%%   <<"Actions">> := list(rule_action()()),
+%%   <<"Actions">> := list(rule_action()),
 %%   <<"Function">> := string(),
 %%   <<"Name">> := string(),
 %%   <<"PublishStatus">> := list(any())
@@ -2347,7 +2347,7 @@
 
 %% Example:
 %% real_time_contact_analysis_segment_issues() :: #{
-%%   <<"IssuesDetected">> => list(real_time_contact_analysis_issue_detected()())
+%%   <<"IssuesDetected">> => list(real_time_contact_analysis_issue_detected())
 %% }
 -type real_time_contact_analysis_segment_issues() :: #{binary() => any()}.
 
@@ -2362,7 +2362,7 @@
 
 %% Example:
 %% list_contact_evaluations_response() :: #{
-%%   <<"EvaluationSummaryList">> => list(evaluation_summary()()),
+%%   <<"EvaluationSummaryList">> => list(evaluation_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_evaluations_response() :: #{binary() => any()}.
@@ -2378,9 +2378,9 @@
 
 %% Example:
 %% authentication_profile() :: #{
-%%   <<"AllowedIps">> => list(string()()),
+%%   <<"AllowedIps">> => list(string()),
 %%   <<"Arn">> => string(),
-%%   <<"BlockedIps">> => list(string()()),
+%%   <<"BlockedIps">> => list(string()),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
@@ -2412,7 +2412,7 @@
 
 %% Example:
 %% list_hours_of_operation_overrides_response() :: #{
-%%   <<"HoursOfOperationOverrideList">> => list(hours_of_operation_override()()),
+%%   <<"HoursOfOperationOverrideList">> => list(hours_of_operation_override()),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string()
@@ -2430,7 +2430,7 @@
 
 %% Example:
 %% invalid_contact_flow_exception() :: #{
-%%   <<"problems">> => list(problem_detail()())
+%%   <<"problems">> => list(problem_detail())
 %% }
 -type invalid_contact_flow_exception() :: #{binary() => any()}.
 
@@ -2586,7 +2586,7 @@
 
 %% Example:
 %% transcript() :: #{
-%%   <<"Criteria">> => list(transcript_criteria()()),
+%%   <<"Criteria">> => list(transcript_criteria()),
 %%   <<"MatchType">> => list(any())
 %% }
 -type transcript() :: #{binary() => any()}.
@@ -2610,7 +2610,7 @@
 
 %% Example:
 %% disassociate_queue_quick_connects_request() :: #{
-%%   <<"QuickConnectIds">> := list(string()())
+%%   <<"QuickConnectIds">> := list(string())
 %% }
 -type disassociate_queue_quick_connects_request() :: #{binary() => any()}.
 
@@ -2621,14 +2621,14 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_hours_of_operation_override_request() :: #{
-%%   <<"Config">> => list(hours_of_operation_override_config()()),
+%%   <<"Config">> => list(hours_of_operation_override_config()),
 %%   <<"Description">> => string(),
 %%   <<"EffectiveFrom">> => string(),
 %%   <<"EffectiveTill">> => string(),
@@ -2639,7 +2639,7 @@
 
 %% Example:
 %% list_security_profile_applications_response() :: #{
-%%   <<"Applications">> => list(application()()),
+%%   <<"Applications">> => list(application()),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string()
@@ -2763,7 +2763,7 @@
 
 %% Example:
 %% get_effective_hours_of_operations_response() :: #{
-%%   <<"EffectiveHoursOfOperationList">> => list(effective_hours_of_operations()()),
+%%   <<"EffectiveHoursOfOperationList">> => list(effective_hours_of_operations()),
 %%   <<"TimeZone">> => string()
 %% }
 -type get_effective_hours_of_operations_response() :: #{binary() => any()}.
@@ -2841,8 +2841,8 @@
 
 %% Example:
 %% email_address_search_criteria() :: #{
-%%   <<"AndConditions">> => list(email_address_search_criteria()()),
-%%   <<"OrConditions">> => list(email_address_search_criteria()()),
+%%   <<"AndConditions">> => list(email_address_search_criteria()),
+%%   <<"OrConditions">> => list(email_address_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type email_address_search_criteria() :: #{binary() => any()}.
@@ -2872,7 +2872,7 @@
 
 %% Example:
 %% list_lex_bots_response() :: #{
-%%   <<"LexBots">> => list(lex_bot()()),
+%%   <<"LexBots">> => list(lex_bot()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lex_bots_response() :: #{binary() => any()}.
@@ -2898,7 +2898,7 @@
 
 %% Example:
 %% metric_result_v2() :: #{
-%%   <<"Collections">> => list(metric_data_v2()()),
+%%   <<"Collections">> => list(metric_data_v2()),
 %%   <<"Dimensions">> => map(),
 %%   <<"MetricInterval">> => metric_interval()
 %% }
@@ -2907,8 +2907,8 @@
 
 %% Example:
 %% batch_get_attached_file_metadata_response() :: #{
-%%   <<"Errors">> => list(attached_file_error()()),
-%%   <<"Files">> => list(attached_file()())
+%%   <<"Errors">> => list(attached_file_error()),
+%%   <<"Files">> => list(attached_file())
 %% }
 -type batch_get_attached_file_metadata_response() :: #{binary() => any()}.
 
@@ -2998,7 +2998,7 @@
 %% Example:
 %% list_task_templates_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TaskTemplates">> => list(task_template_metadata()())
+%%   <<"TaskTemplates">> => list(task_template_metadata())
 %% }
 -type list_task_templates_response() :: #{binary() => any()}.
 
@@ -3007,7 +3007,7 @@
 %% get_current_user_data_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
-%%   <<"UserDataList">> => list(user_data()())
+%%   <<"UserDataList">> => list(user_data())
 %% }
 -type get_current_user_data_response() :: #{binary() => any()}.
 
@@ -3095,7 +3095,7 @@
 %% user_data() :: #{
 %%   <<"ActiveSlotsByChannel">> => map(),
 %%   <<"AvailableSlotsByChannel">> => map(),
-%%   <<"Contacts">> => list(agent_contact_reference()()),
+%%   <<"Contacts">> => list(agent_contact_reference()),
 %%   <<"HierarchyPath">> => hierarchy_path_reference(),
 %%   <<"MaxSlotsByChannel">> => map(),
 %%   <<"NextStatus">> => string(),
@@ -3159,8 +3159,8 @@
 
 %% Example:
 %% quick_connect_search_criteria() :: #{
-%%   <<"AndConditions">> => list(quick_connect_search_criteria()()),
-%%   <<"OrConditions">> => list(quick_connect_search_criteria()()),
+%%   <<"AndConditions">> => list(quick_connect_search_criteria()),
+%%   <<"OrConditions">> => list(quick_connect_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type quick_connect_search_criteria() :: #{binary() => any()}.
@@ -3266,7 +3266,7 @@
 
 %% Example:
 %% list_lambda_functions_response() :: #{
-%%   <<"LambdaFunctions">> => list(string()()),
+%%   <<"LambdaFunctions">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lambda_functions_response() :: #{binary() => any()}.
@@ -3289,7 +3289,7 @@
 
 %% Example:
 %% view_content() :: #{
-%%   <<"Actions">> => list(string()()),
+%%   <<"Actions">> => list(string()),
 %%   <<"InputSchema">> => string(),
 %%   <<"Template">> => string()
 %% }
@@ -3371,7 +3371,7 @@
 
 %% Example:
 %% associate_routing_profile_queues_request() :: #{
-%%   <<"QueueConfigs">> := list(routing_profile_queue_config()())
+%%   <<"QueueConfigs">> := list(routing_profile_queue_config())
 %% }
 -type associate_routing_profile_queues_request() :: #{binary() => any()}.
 
@@ -3380,7 +3380,7 @@
 %% search_prompts_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
-%%   <<"Prompts">> => list(prompt()())
+%%   <<"Prompts">> => list(prompt())
 %% }
 -type search_prompts_response() :: #{binary() => any()}.
 
@@ -3397,7 +3397,7 @@
 %% Example:
 %% replication_configuration() :: #{
 %%   <<"GlobalSignInEndpoint">> => string(),
-%%   <<"ReplicationStatusSummaryList">> => list(replication_status_summary()()),
+%%   <<"ReplicationStatusSummaryList">> => list(replication_status_summary()),
 %%   <<"SourceRegion">> => string()
 %% }
 -type replication_configuration() :: #{binary() => any()}.
@@ -3421,12 +3421,12 @@
 %% create_security_profile_request() :: #{
 %%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
 %%   <<"AllowedAccessControlTags">> => map(),
-%%   <<"Applications">> => list(application()()),
+%%   <<"Applications">> => list(application()),
 %%   <<"Description">> => string(),
-%%   <<"HierarchyRestrictedResources">> => list(string()()),
-%%   <<"Permissions">> => list(string()()),
+%%   <<"HierarchyRestrictedResources">> => list(string()),
+%%   <<"Permissions">> => list(string()),
 %%   <<"SecurityProfileName">> := string(),
-%%   <<"TagRestrictedResources">> => list(string()()),
+%%   <<"TagRestrictedResources">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type create_security_profile_request() :: #{binary() => any()}.
@@ -3449,7 +3449,7 @@
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Permissions">> => list(string()())
+%%   <<"Permissions">> => list(string())
 %% }
 -type list_security_profile_permissions_response() :: #{binary() => any()}.
 
@@ -3474,7 +3474,7 @@
 
 %% Example:
 %% real_time_contact_analysis_category_details() :: #{
-%%   <<"PointsOfInterest">> => list(real_time_contact_analysis_point_of_interest()())
+%%   <<"PointsOfInterest">> => list(real_time_contact_analysis_point_of_interest())
 %% }
 -type real_time_contact_analysis_category_details() :: #{binary() => any()}.
 
@@ -3555,7 +3555,7 @@
 %%   <<"DeviceInfo">> => device_info(),
 %%   <<"HierarchyGroups">> => hierarchy_groups(),
 %%   <<"Id">> => string(),
-%%   <<"StateTransitions">> => list(state_transition()())
+%%   <<"StateTransitions">> => list(state_transition())
 %% }
 -type agent_info() :: #{binary() => any()}.
 
@@ -3569,7 +3569,7 @@
 
 %% Example:
 %% batch_disassociate_analytics_data_set_request() :: #{
-%%   <<"DataSetIds">> := list(string()()),
+%%   <<"DataSetIds">> := list(string()),
 %%   <<"TargetAccountId">> => string()
 %% }
 -type batch_disassociate_analytics_data_set_request() :: #{binary() => any()}.
@@ -3625,7 +3625,7 @@
 %%   <<"ContactFlowId">> => string(),
 %%   <<"Defaults">> => task_template_defaults(),
 %%   <<"Description">> => string(),
-%%   <<"Fields">> => list(task_template_field()()),
+%%   <<"Fields">> => list(task_template_field()),
 %%   <<"Name">> => string(),
 %%   <<"SelfAssignFlowId">> => string(),
 %%   <<"Status">> => list(any())
@@ -3658,7 +3658,7 @@
 %% Example:
 %% batch_put_contact_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"ContactDataRequestList">> := list(contact_data_request()())
+%%   <<"ContactDataRequestList">> := list(contact_data_request())
 %% }
 -type batch_put_contact_request() :: #{binary() => any()}.
 
@@ -3675,7 +3675,7 @@
 
 %% Example:
 %% telephony_config() :: #{
-%%   <<"Distributions">> => list(distribution()())
+%%   <<"Distributions">> => list(distribution())
 %% }
 -type telephony_config() :: #{binary() => any()}.
 
@@ -3683,7 +3683,7 @@
 %% Example:
 %% list_security_profiles_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityProfileSummaryList">> => list(security_profile_summary()())
+%%   <<"SecurityProfileSummaryList">> => list(security_profile_summary())
 %% }
 -type list_security_profiles_response() :: #{binary() => any()}.
 
@@ -3750,7 +3750,7 @@
 %% Example:
 %% batch_get_attached_file_metadata_request() :: #{
 %%   <<"AssociatedResourceArn">> := string(),
-%%   <<"FileIds">> := list(string()())
+%%   <<"FileIds">> := list(string())
 %% }
 -type batch_get_attached_file_metadata_request() :: #{binary() => any()}.
 
@@ -3765,7 +3765,7 @@
 
 %% Example:
 %% batch_get_flow_association_request() :: #{
-%%   <<"ResourceIds">> := list(string()()),
+%%   <<"ResourceIds">> := list(string()),
 %%   <<"ResourceType">> => list(any())
 %% }
 -type batch_get_flow_association_request() :: #{binary() => any()}.
@@ -3825,7 +3825,7 @@
 %%   <<"EvaluationFormArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
 %%   <<"EvaluationFormVersion">> => integer(),
-%%   <<"Items">> => list(list()()),
+%%   <<"Items">> => list(list()),
 %%   <<"LastModifiedBy">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Locked">> => boolean(),
@@ -3905,7 +3905,7 @@
 %%   <<"EndTime">> := non_neg_integer(),
 %%   <<"Filters">> := filters(),
 %%   <<"Groupings">> => list(list(any())()),
-%%   <<"HistoricalMetrics">> := list(historical_metric()()),
+%%   <<"HistoricalMetrics">> := list(historical_metric()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StartTime">> := non_neg_integer()
@@ -3940,7 +3940,7 @@
 
 %% Example:
 %% disassociate_routing_profile_queues_request() :: #{
-%%   <<"QueueReferences">> := list(routing_profile_queue_reference()())
+%%   <<"QueueReferences">> := list(routing_profile_queue_reference())
 %% }
 -type disassociate_routing_profile_queues_request() :: #{binary() => any()}.
 
@@ -3948,7 +3948,7 @@
 %% Example:
 %% filter_v2() :: #{
 %%   <<"FilterKey">> => string(),
-%%   <<"FilterValues">> => list(string()())
+%%   <<"FilterValues">> => list(string())
 %% }
 -type filter_v2() :: #{binary() => any()}.
 
@@ -3986,14 +3986,14 @@
 %% Example:
 %% list_users_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UserSummaryList">> => list(user_summary()())
+%%   <<"UserSummaryList">> => list(user_summary())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% application() :: #{
-%%   <<"ApplicationPermissions">> => list(string()()),
+%%   <<"ApplicationPermissions">> => list(string()),
 %%   <<"Namespace">> => string()
 %% }
 -type application() :: #{binary() => any()}.
@@ -4049,7 +4049,7 @@
 
 %% Example:
 %% list_evaluation_form_versions_response() :: #{
-%%   <<"EvaluationFormVersionSummaryList">> => list(evaluation_form_version_summary()()),
+%%   <<"EvaluationFormVersionSummaryList">> => list(evaluation_form_version_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_evaluation_form_versions_response() :: #{binary() => any()}.
@@ -4059,7 +4059,7 @@
 %% create_evaluation_form_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Items">> := list(list()()),
+%%   <<"Items">> := list(list()),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
 %%   <<"Title">> := string()
 %% }
@@ -4073,11 +4073,11 @@
 %% Example:
 %% get_metric_data_v2_request() :: #{
 %%   <<"EndTime">> := non_neg_integer(),
-%%   <<"Filters">> := list(filter_v2()()),
-%%   <<"Groupings">> => list(string()()),
+%%   <<"Filters">> := list(filter_v2()),
+%%   <<"Groupings">> => list(string()),
 %%   <<"Interval">> => interval_details(),
 %%   <<"MaxResults">> => integer(),
-%%   <<"Metrics">> := list(metric_v2()()),
+%%   <<"Metrics">> := list(metric_v2()),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceArn">> := string(),
 %%   <<"StartTime">> := non_neg_integer()
@@ -4107,7 +4107,7 @@
 
 %% Example:
 %% untag_contact_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_contact_request() :: #{binary() => any()}.
 
@@ -4116,7 +4116,7 @@
 %% search_quick_connects_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
-%%   <<"QuickConnects">> => list(quick_connect()())
+%%   <<"QuickConnects">> => list(quick_connect())
 %% }
 -type search_quick_connects_response() :: #{binary() => any()}.
 
@@ -4125,7 +4125,7 @@
 %% list_realtime_contact_analysis_segments_v2_response() :: #{
 %%   <<"Channel">> => list(any()),
 %%   <<"NextToken">> => string(),
-%%   <<"Segments">> => list(list()()),
+%%   <<"Segments">> => list(list()),
 %%   <<"Status">> => list(any())
 %% }
 -type list_realtime_contact_analysis_segments_v2_response() :: #{binary() => any()}.
@@ -4156,7 +4156,7 @@
 
 %% Example:
 %% search_contacts_response() :: #{
-%%   <<"Contacts">> => list(contact_search_summary()()),
+%%   <<"Contacts">> => list(contact_search_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"TotalCount">> => float()
 %% }
@@ -4253,7 +4253,7 @@
 
 %% Example:
 %% update_routing_profile_queues_request() :: #{
-%%   <<"QueueConfigs">> := list(routing_profile_queue_config()())
+%%   <<"QueueConfigs">> := list(routing_profile_queue_config())
 %% }
 -type update_routing_profile_queues_request() :: #{binary() => any()}.
 
@@ -4287,7 +4287,7 @@
 
 %% Example:
 %% notification_recipient_type() :: #{
-%%   <<"UserIds">> => list(string()()),
+%%   <<"UserIds">> => list(string()),
 %%   <<"UserTags">> => map()
 %% }
 -type notification_recipient_type() :: #{binary() => any()}.
@@ -4336,11 +4336,11 @@
 
 %% Example:
 %% agent_hierarchy_groups() :: #{
-%%   <<"L1Ids">> => list(string()()),
-%%   <<"L2Ids">> => list(string()()),
-%%   <<"L3Ids">> => list(string()()),
-%%   <<"L4Ids">> => list(string()()),
-%%   <<"L5Ids">> => list(string()())
+%%   <<"L1Ids">> => list(string()),
+%%   <<"L2Ids">> => list(string()),
+%%   <<"L3Ids">> => list(string()),
+%%   <<"L4Ids">> => list(string()),
+%%   <<"L5Ids">> => list(string())
 %% }
 -type agent_hierarchy_groups() :: #{binary() => any()}.
 
@@ -4355,7 +4355,7 @@
 %% Example:
 %% list_use_cases_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UseCaseSummaryList">> => list(use_case()())
+%%   <<"UseCaseSummaryList">> => list(use_case())
 %% }
 -type list_use_cases_response() :: #{binary() => any()}.
 
@@ -4431,7 +4431,7 @@
 
 %% Example:
 %% disassociate_user_proficiencies_request() :: #{
-%%   <<"UserProficiencies">> := list(user_proficiency_disassociate()())
+%%   <<"UserProficiencies">> := list(user_proficiency_disassociate())
 %% }
 -type disassociate_user_proficiencies_request() :: #{binary() => any()}.
 
@@ -4481,7 +4481,7 @@
 %% Example:
 %% list_approved_origins_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Origins">> => list(string()())
+%%   <<"Origins">> => list(string())
 %% }
 -type list_approved_origins_response() :: #{binary() => any()}.
 
@@ -4500,7 +4500,7 @@
 
 %% Example:
 %% agents_criteria() :: #{
-%%   <<"AgentIds">> => list(string()())
+%%   <<"AgentIds">> => list(string())
 %% }
 -type agents_criteria() :: #{binary() => any()}.
 
@@ -4508,7 +4508,7 @@
 %% Example:
 %% effective_hours_of_operations() :: #{
 %%   <<"Date">> => string(),
-%%   <<"OperationalHours">> => list(operational_hour()())
+%%   <<"OperationalHours">> => list(operational_hour())
 %% }
 -type effective_hours_of_operations() :: #{binary() => any()}.
 
@@ -4522,8 +4522,8 @@
 
 %% Example:
 %% routing_profile_search_criteria() :: #{
-%%   <<"AndConditions">> => list(routing_profile_search_criteria()()),
-%%   <<"OrConditions">> => list(routing_profile_search_criteria()()),
+%%   <<"AndConditions">> => list(routing_profile_search_criteria()),
+%%   <<"OrConditions">> => list(routing_profile_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type routing_profile_search_criteria() :: #{binary() => any()}.
@@ -4560,7 +4560,7 @@
 
 %% Example:
 %% create_case_action_definition() :: #{
-%%   <<"Fields">> => list(field_value()()),
+%%   <<"Fields">> => list(field_value()),
 %%   <<"TemplateId">> => string()
 %% }
 -type create_case_action_definition() :: #{binary() => any()}.
@@ -4576,7 +4576,7 @@
 
 %% Example:
 %% current_metric_result() :: #{
-%%   <<"Collections">> => list(current_metric_data()()),
+%%   <<"Collections">> => list(current_metric_data()),
 %%   <<"Dimensions">> => dimensions()
 %% }
 -type current_metric_result() :: #{binary() => any()}.
@@ -4634,7 +4634,7 @@
 %%   <<"Name">> := string(),
 %%   <<"OutboundCallerConfig">> => outbound_caller_config(),
 %%   <<"OutboundEmailConfig">> => outbound_email_config(),
-%%   <<"QuickConnectIds">> => list(string()()),
+%%   <<"QuickConnectIds">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type create_queue_request() :: #{binary() => any()}.
@@ -4643,7 +4643,7 @@
 %% Example:
 %% attribute_and_condition() :: #{
 %%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
-%%   <<"TagConditions">> => list(tag_condition()())
+%%   <<"TagConditions">> => list(tag_condition())
 %% }
 -type attribute_and_condition() :: #{binary() => any()}.
 
@@ -4665,7 +4665,7 @@
 
 %% Example:
 %% chat_participant_role_config() :: #{
-%%   <<"ParticipantTimerConfigList">> => list(participant_timer_configuration()())
+%%   <<"ParticipantTimerConfigList">> => list(participant_timer_configuration())
 %% }
 -type chat_participant_role_config() :: #{binary() => any()}.
 
@@ -4762,7 +4762,7 @@
 
 %% Example:
 %% get_metric_data_response() :: #{
-%%   <<"MetricResults">> => list(historical_metric_result()()),
+%%   <<"MetricResults">> => list(historical_metric_result()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_metric_data_response() :: #{binary() => any()}.
@@ -4797,7 +4797,7 @@
 
 %% Example:
 %% rule() :: #{
-%%   <<"Actions">> => list(rule_action()()),
+%%   <<"Actions">> => list(rule_action()),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Function">> => string(),
 %%   <<"LastUpdatedBy">> => string(),
@@ -4861,7 +4861,7 @@
 %%   <<"DisconnectTimestamp">> => non_neg_integer(),
 %%   <<"Tags">> => map(),
 %%   <<"RelatedContactId">> => string(),
-%%   <<"Recordings">> => list(recording_info()()),
+%%   <<"Recordings">> => list(recording_info()),
 %%   <<"SegmentAttributes">> => map(),
 %%   <<"Name">> => string(),
 %%   <<"DisconnectDetails">> => disconnect_details(),
@@ -4886,7 +4886,7 @@
 
 %% Example:
 %% update_routing_profile_concurrency_request() :: #{
-%%   <<"MediaConcurrencies">> := list(media_concurrency()())
+%%   <<"MediaConcurrencies">> := list(media_concurrency())
 %% }
 -type update_routing_profile_concurrency_request() :: #{binary() => any()}.
 
@@ -4903,7 +4903,7 @@
 %% control_plane_user_attribute_filter() :: #{
 %%   <<"AndCondition">> => attribute_and_condition(),
 %%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
-%%   <<"OrConditions">> => list(attribute_and_condition()()),
+%%   <<"OrConditions">> => list(attribute_and_condition()),
 %%   <<"TagCondition">> => tag_condition()
 %% }
 -type control_plane_user_attribute_filter() :: #{binary() => any()}.
@@ -5003,22 +5003,22 @@
 %%   <<"Automation">> => list(),
 %%   <<"MaxValue">> => integer(),
 %%   <<"MinValue">> => integer(),
-%%   <<"Options">> => list(evaluation_form_numeric_question_option()())
+%%   <<"Options">> => list(evaluation_form_numeric_question_option())
 %% }
 -type evaluation_form_numeric_question_properties() :: #{binary() => any()}.
 
 
 %% Example:
 %% additional_email_recipients() :: #{
-%%   <<"CcList">> => list(email_recipient()()),
-%%   <<"ToList">> => list(email_recipient()())
+%%   <<"CcList">> => list(email_recipient()),
+%%   <<"ToList">> => list(email_recipient())
 %% }
 -type additional_email_recipients() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_instance_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute()()),
+%%   <<"Attributes">> => list(attribute()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_instance_attributes_response() :: #{binary() => any()}.
@@ -5048,7 +5048,7 @@
 %% Example:
 %% searchable_contact_attributes_criteria() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type searchable_contact_attributes_criteria() :: #{binary() => any()}.
 
@@ -5056,7 +5056,7 @@
 %% Example:
 %% list_view_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ViewVersionSummaryList">> => list(view_version_summary()())
+%%   <<"ViewVersionSummaryList">> => list(view_version_summary())
 %% }
 -type list_view_versions_response() :: #{binary() => any()}.
 
@@ -5100,7 +5100,7 @@
 
 %% Example:
 %% list_contact_flow_modules_response() :: #{
-%%   <<"ContactFlowModulesSummaryList">> => list(contact_flow_module_summary()()),
+%%   <<"ContactFlowModulesSummaryList">> => list(contact_flow_module_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_flow_modules_response() :: #{binary() => any()}.
@@ -5124,7 +5124,7 @@
 
 %% Example:
 %% list_instances_response() :: #{
-%%   <<"InstanceSummaryList">> => list(instance_summary()()),
+%%   <<"InstanceSummaryList">> => list(instance_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_instances_response() :: #{binary() => any()}.
@@ -5152,7 +5152,7 @@
 %% Example:
 %% search_email_addresses_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
-%%   <<"EmailAddresses">> => list(email_address_metadata()()),
+%%   <<"EmailAddresses">> => list(email_address_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_email_addresses_response() :: #{binary() => any()}.
@@ -5172,7 +5172,7 @@
 
 %% Example:
 %% update_case_action_definition() :: #{
-%%   <<"Fields">> => list(field_value()())
+%%   <<"Fields">> => list(field_value())
 %% }
 -type update_case_action_definition() :: #{binary() => any()}.
 
@@ -5187,13 +5187,13 @@
 %%   <<"AllowedAccessControlTags">> => map(),
 %%   <<"Arn">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"HierarchyRestrictedResources">> => list(string()()),
+%%   <<"HierarchyRestrictedResources">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"OrganizationResourceId">> => string(),
 %%   <<"SecurityProfileName">> => string(),
-%%   <<"TagRestrictedResources">> => list(string()()),
+%%   <<"TagRestrictedResources">> => list(string()),
 %%   <<"Tags">> => map()
 %% }
 -type security_profile() :: #{binary() => any()}.
@@ -5243,8 +5243,8 @@
 
 %% Example:
 %% user_hierarchy_group_search_criteria() :: #{
-%%   <<"AndConditions">> => list(user_hierarchy_group_search_criteria()()),
-%%   <<"OrConditions">> => list(user_hierarchy_group_search_criteria()()),
+%%   <<"AndConditions">> => list(user_hierarchy_group_search_criteria()),
+%%   <<"OrConditions">> => list(user_hierarchy_group_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type user_hierarchy_group_search_criteria() :: #{binary() => any()}.
@@ -5252,7 +5252,7 @@
 
 %% Example:
 %% hours_of_operation_override() :: #{
-%%   <<"Config">> => list(hours_of_operation_override_config()()),
+%%   <<"Config">> => list(hours_of_operation_override_config()),
 %%   <<"Description">> => string(),
 %%   <<"EffectiveFrom">> => string(),
 %%   <<"EffectiveTill">> => string(),
@@ -5267,14 +5267,14 @@
 %% Example:
 %% list_analytics_data_lake_data_sets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(analytics_data_sets_result()())
+%%   <<"Results">> => list(analytics_data_sets_result())
 %% }
 -type list_analytics_data_lake_data_sets_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% rule_summary() :: #{
-%%   <<"ActionSummaries">> => list(action_summary()()),
+%%   <<"ActionSummaries">> => list(action_summary()),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"EventSourceName">> => list(any()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
@@ -5321,7 +5321,7 @@
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RoutingProfileQueueConfigSummaryList">> => list(routing_profile_queue_config_summary()())
+%%   <<"RoutingProfileQueueConfigSummaryList">> => list(routing_profile_queue_config_summary())
 %% }
 -type list_routing_profile_queues_response() :: #{binary() => any()}.
 
@@ -5374,7 +5374,7 @@
 
 %% Example:
 %% list_bots_response() :: #{
-%%   <<"LexBots">> => list(lex_bot_config()()),
+%%   <<"LexBots">> => list(lex_bot_config()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_bots_response() :: #{binary() => any()}.
@@ -5417,7 +5417,7 @@
 
 %% Example:
 %% list_contact_flow_versions_response() :: #{
-%%   <<"ContactFlowVersionSummaryList">> => list(contact_flow_version_summary()()),
+%%   <<"ContactFlowVersionSummaryList">> => list(contact_flow_version_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_flow_versions_response() :: #{binary() => any()}.
@@ -5445,7 +5445,7 @@
 
 %% Example:
 %% update_user_security_profiles_request() :: #{
-%%   <<"SecurityProfileIds">> := list(string()())
+%%   <<"SecurityProfileIds">> := list(string())
 %% }
 -type update_user_security_profiles_request() :: #{binary() => any()}.
 
@@ -5511,7 +5511,7 @@
 %% Example:
 %% list_security_keys_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityKeys">> => list(security_key()())
+%%   <<"SecurityKeys">> => list(security_key())
 %% }
 -type list_security_keys_response() :: #{binary() => any()}.
 
@@ -5539,10 +5539,10 @@
 
 %% Example:
 %% user_search_criteria() :: #{
-%%   <<"AndConditions">> => list(user_search_criteria()()),
+%%   <<"AndConditions">> => list(user_search_criteria()),
 %%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
 %%   <<"ListCondition">> => list_condition(),
-%%   <<"OrConditions">> => list(user_search_criteria()()),
+%%   <<"OrConditions">> => list(user_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type user_search_criteria() :: #{binary() => any()}.
@@ -5614,7 +5614,7 @@
 %% Example:
 %% start_email_contact_request() :: #{
 %%   <<"AdditionalRecipients">> => inbound_additional_recipients(),
-%%   <<"Attachments">> => list(email_attachment()()),
+%%   <<"Attachments">> => list(email_attachment()),
 %%   <<"Attributes">> => map(),
 %%   <<"ClientToken">> => string(),
 %%   <<"ContactFlowId">> => string(),
@@ -5680,7 +5680,7 @@
 %%   <<"Attributes">> => map(),
 %%   <<"ParticipantDetails">> => participant_details(),
 %%   <<"StreamingConfiguration">> => chat_streaming_configuration(),
-%%   <<"SupportedMessagingContentTypes">> => list(string()())
+%%   <<"SupportedMessagingContentTypes">> => list(string())
 %% }
 -type new_session_details() :: #{binary() => any()}.
 
@@ -5730,7 +5730,7 @@
 
 %% Example:
 %% sign_in_config() :: #{
-%%   <<"Distributions">> => list(sign_in_distribution()())
+%%   <<"Distributions">> => list(sign_in_distribution())
 %% }
 -type sign_in_config() :: #{binary() => any()}.
 
@@ -5738,7 +5738,7 @@
 %% Example:
 %% list_routing_profiles_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RoutingProfileSummaryList">> => list(routing_profile_summary()())
+%%   <<"RoutingProfileSummaryList">> => list(routing_profile_summary())
 %% }
 -type list_routing_profiles_response() :: #{binary() => any()}.
 
@@ -5760,7 +5760,7 @@
 %% Example:
 %% search_hours_of_operation_overrides_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
-%%   <<"HoursOfOperationOverrides">> => list(hours_of_operation_override()()),
+%%   <<"HoursOfOperationOverrides">> => list(hours_of_operation_override()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_hours_of_operation_overrides_response() :: #{binary() => any()}.
@@ -5808,7 +5808,7 @@
 %% Example:
 %% list_rules_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RuleSummaryList">> => list(rule_summary()())
+%%   <<"RuleSummaryList">> => list(rule_summary())
 %% }
 -type list_rules_response() :: #{binary() => any()}.
 
@@ -5825,7 +5825,7 @@
 %%   <<"InstanceId">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceTypes">> => list(string()()),
+%%   <<"ResourceTypes">> => list(string()),
 %%   <<"SearchCriteria">> => resource_tags_search_criteria()
 %% }
 -type search_resource_tags_request() :: #{binary() => any()}.
@@ -5864,9 +5864,9 @@
 
 %% Example:
 %% task_template_constraints() :: #{
-%%   <<"InvisibleFields">> => list(invisible_field_info()()),
-%%   <<"ReadOnlyFields">> => list(read_only_field_info()()),
-%%   <<"RequiredFields">> => list(required_field_info()())
+%%   <<"InvisibleFields">> => list(invisible_field_info()),
+%%   <<"ReadOnlyFields">> => list(read_only_field_info()),
+%%   <<"RequiredFields">> => list(required_field_info())
 %% }
 -type task_template_constraints() :: #{binary() => any()}.
 
@@ -5904,7 +5904,7 @@
 
 %% Example:
 %% audio_quality_metrics_info() :: #{
-%%   <<"PotentialQualityIssues">> => list(string()()),
+%%   <<"PotentialQualityIssues">> => list(string()),
 %%   <<"QualityScore">> => float()
 %% }
 -type audio_quality_metrics_info() :: #{binary() => any()}.
@@ -5939,7 +5939,7 @@
 %% search_routing_profiles_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
-%%   <<"RoutingProfiles">> => list(routing_profile()())
+%%   <<"RoutingProfiles">> => list(routing_profile())
 %% }
 -type search_routing_profiles_response() :: #{binary() => any()}.
 
@@ -5980,8 +5980,8 @@
 
 %% Example:
 %% queue_search_criteria() :: #{
-%%   <<"AndConditions">> => list(queue_search_criteria()()),
-%%   <<"OrConditions">> => list(queue_search_criteria()()),
+%%   <<"AndConditions">> => list(queue_search_criteria()),
+%%   <<"OrConditions">> => list(queue_search_criteria()),
 %%   <<"QueueTypeCondition">> => list(any()),
 %%   <<"StringCondition">> => string_condition()
 %% }
@@ -5998,7 +5998,7 @@
 
 %% Example:
 %% common_attribute_and_condition() :: #{
-%%   <<"TagConditions">> => list(tag_condition()())
+%%   <<"TagConditions">> => list(tag_condition())
 %% }
 -type common_attribute_and_condition() :: #{binary() => any()}.
 
@@ -6009,7 +6009,7 @@
 
 %% Example:
 %% associate_user_proficiencies_request() :: #{
-%%   <<"UserProficiencies">> := list(user_proficiency()())
+%%   <<"UserProficiencies">> := list(user_proficiency())
 %% }
 -type associate_user_proficiencies_request() :: #{binary() => any()}.
 
@@ -6044,14 +6044,14 @@
 %% search_security_profiles_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityProfiles">> => list(security_profile_search_summary()())
+%%   <<"SecurityProfiles">> => list(security_profile_search_summary())
 %% }
 -type search_security_profiles_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% agent_config() :: #{
-%%   <<"Distributions">> => list(distribution()())
+%%   <<"Distributions">> => list(distribution())
 %% }
 -type agent_config() :: #{binary() => any()}.
 
@@ -6137,14 +6137,14 @@
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"QuickConnectSummaryList">> => list(quick_connect_summary()())
+%%   <<"QuickConnectSummaryList">> => list(quick_connect_summary())
 %% }
 -type list_queue_quick_connects_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_associated_contacts_response() :: #{
-%%   <<"ContactSummaryList">> => list(associated_contact_summary()()),
+%%   <<"ContactSummaryList">> => list(associated_contact_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_associated_contacts_response() :: #{binary() => any()}.
@@ -6152,14 +6152,14 @@
 
 %% Example:
 %% outbound_additional_recipients() :: #{
-%%   <<"CcEmailAddresses">> => list(email_address_info()())
+%%   <<"CcEmailAddresses">> => list(email_address_info())
 %% }
 -type outbound_additional_recipients() :: #{binary() => any()}.
 
 
 %% Example:
 %% searchable_contact_attributes() :: #{
-%%   <<"Criteria">> => list(searchable_contact_attributes_criteria()()),
+%%   <<"Criteria">> => list(searchable_contact_attributes_criteria()),
 %%   <<"MatchType">> => list(any())
 %% }
 -type searchable_contact_attributes() :: #{binary() => any()}.
@@ -6175,8 +6175,8 @@
 
 %% Example:
 %% batch_put_contact_response() :: #{
-%%   <<"FailedRequestList">> => list(failed_request()()),
-%%   <<"SuccessfulRequestList">> => list(successful_request()())
+%%   <<"FailedRequestList">> => list(failed_request()),
+%%   <<"SuccessfulRequestList">> => list(successful_request())
 %% }
 -type batch_put_contact_response() :: #{binary() => any()}.
 
@@ -6198,7 +6198,7 @@
 
 %% Example:
 %% invalid_contact_flow_module_exception() :: #{
-%%   <<"Problems">> => list(problem_detail()())
+%%   <<"Problems">> => list(problem_detail())
 %% }
 -type invalid_contact_flow_module_exception() :: #{binary() => any()}.
 
@@ -6230,14 +6230,14 @@
 %% Example:
 %% list_traffic_distribution_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TrafficDistributionGroupSummaryList">> => list(traffic_distribution_group_summary()())
+%%   <<"TrafficDistributionGroupSummaryList">> => list(traffic_distribution_group_summary())
 %% }
 -type list_traffic_distribution_groups_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_contact_flows_response() :: #{
-%%   <<"ContactFlowSummaryList">> => list(contact_flow_summary()()),
+%%   <<"ContactFlowSummaryList">> => list(contact_flow_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_flows_response() :: #{binary() => any()}.
@@ -6264,7 +6264,7 @@
 %% Example:
 %% evaluation_form_section() :: #{
 %%   <<"Instructions">> => string(),
-%%   <<"Items">> => list(list()()),
+%%   <<"Items">> => list(list()),
 %%   <<"RefId">> => string(),
 %%   <<"Title">> => string(),
 %%   <<"Weight">> => float()
@@ -6297,7 +6297,7 @@
 
 %% Example:
 %% list_integration_associations_response() :: #{
-%%   <<"IntegrationAssociationSummaryList">> => list(integration_association_summary()()),
+%%   <<"IntegrationAssociationSummaryList">> => list(integration_association_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_integration_associations_response() :: #{binary() => any()}.
@@ -6421,7 +6421,7 @@
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"PhoneConfig">> => user_phone_config(),
 %%   <<"RoutingProfileId">> => string(),
-%%   <<"SecurityProfileIds">> => list(string()()),
+%%   <<"SecurityProfileIds">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"Username">> => string()
 %% }
@@ -6442,10 +6442,10 @@
 
 %% Example:
 %% expression() :: #{
-%%   <<"AndExpression">> => list(expression()()),
+%%   <<"AndExpression">> => list(expression()),
 %%   <<"AttributeCondition">> => attribute_condition(),
 %%   <<"NotAttributeCondition">> => attribute_condition(),
-%%   <<"OrExpression">> => list(expression()())
+%%   <<"OrExpression">> => list(expression())
 %% }
 -type expression() :: #{binary() => any()}.
 
@@ -6470,7 +6470,7 @@
 
 %% Example:
 %% create_hours_of_operation_override_request() :: #{
-%%   <<"Config">> := list(hours_of_operation_override_config()()),
+%%   <<"Config">> := list(hours_of_operation_override_config()),
 %%   <<"Description">> => string(),
 %%   <<"EffectiveFrom">> := string(),
 %%   <<"EffectiveTill">> := string(),
@@ -6520,8 +6520,8 @@
 
 %% Example:
 %% predefined_attribute_search_criteria() :: #{
-%%   <<"AndConditions">> => list(predefined_attribute_search_criteria()()),
-%%   <<"OrConditions">> => list(predefined_attribute_search_criteria()()),
+%%   <<"AndConditions">> => list(predefined_attribute_search_criteria()),
+%%   <<"OrConditions">> => list(predefined_attribute_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type predefined_attribute_search_criteria() :: #{binary() => any()}.
@@ -6545,7 +6545,7 @@
 
 %% Example:
 %% real_time_contact_analysis_transcript_item_redaction() :: #{
-%%   <<"CharacterOffsets">> => list(real_time_contact_analysis_character_interval()())
+%%   <<"CharacterOffsets">> => list(real_time_contact_analysis_character_interval())
 %% }
 -type real_time_contact_analysis_transcript_item_redaction() :: #{binary() => any()}.
 
@@ -6569,8 +6569,8 @@
 
 %% Example:
 %% hours_of_operation_search_criteria() :: #{
-%%   <<"AndConditions">> => list(hours_of_operation_search_criteria()()),
-%%   <<"OrConditions">> => list(hours_of_operation_search_criteria()()),
+%%   <<"AndConditions">> => list(hours_of_operation_search_criteria()),
+%%   <<"OrConditions">> => list(hours_of_operation_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type hours_of_operation_search_criteria() :: #{binary() => any()}.
@@ -6632,7 +6632,7 @@
 
 %% Example:
 %% list_phone_numbers_v2_response() :: #{
-%%   <<"ListPhoneNumbersSummaryList">> => list(list_phone_numbers_summary()()),
+%%   <<"ListPhoneNumbersSummaryList">> => list(list_phone_numbers_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_phone_numbers_v2_response() :: #{binary() => any()}.
@@ -6654,7 +6654,7 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Defaults">> => task_template_defaults(),
 %%   <<"Description">> => string(),
-%%   <<"Fields">> => list(task_template_field()()),
+%%   <<"Fields">> => list(task_template_field()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -6667,9 +6667,9 @@
 
 %% Example:
 %% metric_v2() :: #{
-%%   <<"MetricFilters">> => list(metric_filter_v2()()),
+%%   <<"MetricFilters">> => list(metric_filter_v2()),
 %%   <<"Name">> => string(),
-%%   <<"Threshold">> => list(threshold_v2()())
+%%   <<"Threshold">> => list(threshold_v2())
 %% }
 -type metric_v2() :: #{binary() => any()}.
 
@@ -6766,16 +6766,16 @@
 %% Example:
 %% filters() :: #{
 %%   <<"Channels">> => list(list(any())()),
-%%   <<"Queues">> => list(string()()),
-%%   <<"RoutingProfiles">> => list(string()()),
-%%   <<"RoutingStepExpressions">> => list(string()())
+%%   <<"Queues">> => list(string()),
+%%   <<"RoutingProfiles">> => list(string()),
+%%   <<"RoutingStepExpressions">> => list(string())
 %% }
 -type filters() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_agent_status_response() :: #{
-%%   <<"AgentStatusSummaryList">> => list(agent_status_summary()()),
+%%   <<"AgentStatusSummaryList">> => list(agent_status_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_agent_status_response() :: #{binary() => any()}.
@@ -6813,14 +6813,14 @@
 %% Example:
 %% list_queues_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"QueueSummaryList">> => list(queue_summary()())
+%%   <<"QueueSummaryList">> => list(queue_summary())
 %% }
 -type list_queues_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_evaluation_forms_response() :: #{
-%%   <<"EvaluationFormSummaryList">> => list(evaluation_form_summary()()),
+%%   <<"EvaluationFormSummaryList">> => list(evaluation_form_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_evaluation_forms_response() :: #{binary() => any()}.
@@ -6830,7 +6830,7 @@
 %% evaluation_form_single_select_question_properties() :: #{
 %%   <<"Automation">> => evaluation_form_single_select_question_automation(),
 %%   <<"DisplayAs">> => list(any()),
-%%   <<"Options">> => list(evaluation_form_single_select_question_option()())
+%%   <<"Options">> => list(evaluation_form_single_select_question_option())
 %% }
 -type evaluation_form_single_select_question_properties() :: #{binary() => any()}.
 
@@ -6993,7 +6993,7 @@
 %% Example:
 %% list_phone_numbers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PhoneNumberSummaryList">> => list(phone_number_summary()())
+%%   <<"PhoneNumberSummaryList">> => list(phone_number_summary())
 %% }
 -type list_phone_numbers_response() :: #{binary() => any()}.
 
@@ -7087,8 +7087,8 @@
 
 %% Example:
 %% control_plane_tag_filter() :: #{
-%%   <<"AndConditions">> => list(tag_condition()()),
-%%   <<"OrConditions">> => list(list(tag_condition()())()),
+%%   <<"AndConditions">> => list(tag_condition()),
+%%   <<"OrConditions">> => list(list(tag_condition())()),
 %%   <<"TagCondition">> => tag_condition()
 %% }
 -type control_plane_tag_filter() :: #{binary() => any()}.
@@ -7123,7 +7123,7 @@
 
 %% Example:
 %% search_agent_statuses_response() :: #{
-%%   <<"AgentStatuses">> => list(agent_status()()),
+%%   <<"AgentStatuses">> => list(agent_status()),
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string()
 %% }
@@ -7147,7 +7147,7 @@
 %% Example:
 %% search_contact_flows_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
-%%   <<"ContactFlows">> => list(contact_flow()()),
+%%   <<"ContactFlows">> => list(contact_flow()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_contact_flows_response() :: #{binary() => any()}.
@@ -7223,7 +7223,7 @@
 %% case_sla_configuration() :: #{
 %%   <<"FieldId">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"TargetFieldValues">> => list(field_value_union()()),
+%%   <<"TargetFieldValues">> => list(field_value_union()),
 %%   <<"TargetSlaMinutes">> => float(),
 %%   <<"Type">> => list(any())
 %% }
@@ -7251,7 +7251,7 @@
 
 %% Example:
 %% batch_associate_analytics_data_set_request() :: #{
-%%   <<"DataSetIds">> := list(string()()),
+%%   <<"DataSetIds">> := list(string()),
 %%   <<"TargetAccountId">> => string()
 %% }
 -type batch_associate_analytics_data_set_request() :: #{binary() => any()}.
@@ -7268,7 +7268,7 @@
 
 %% Example:
 %% associate_queue_quick_connects_request() :: #{
-%%   <<"QuickConnectIds">> := list(string()())
+%%   <<"QuickConnectIds">> := list(string())
 %% }
 -type associate_queue_quick_connects_request() :: #{binary() => any()}.
 
@@ -7325,7 +7325,7 @@
 %% Example:
 %% list_predefined_attributes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PredefinedAttributeSummaryList">> => list(predefined_attribute_summary()())
+%%   <<"PredefinedAttributeSummaryList">> => list(predefined_attribute_summary())
 %% }
 -type list_predefined_attributes_response() :: #{binary() => any()}.
 
@@ -7333,14 +7333,14 @@
 %% Example:
 %% routing_profile() :: #{
 %%   <<"AgentAvailabilityTimer">> => list(any()),
-%%   <<"AssociatedQueueIds">> => list(string()()),
+%%   <<"AssociatedQueueIds">> => list(string()),
 %%   <<"DefaultOutboundQueueId">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"IsDefault">> => boolean(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"MediaConcurrencies">> => list(media_concurrency()()),
+%%   <<"MediaConcurrencies">> => list(media_concurrency()),
 %%   <<"Name">> => string(),
 %%   <<"NumberOfAssociatedQueues">> => float(),
 %%   <<"NumberOfAssociatedUsers">> => float(),
@@ -7371,9 +7371,9 @@
 %%   <<"AgentAvailabilityTimer">> => list(any()),
 %%   <<"DefaultOutboundQueueId">> := string(),
 %%   <<"Description">> := string(),
-%%   <<"MediaConcurrencies">> := list(media_concurrency()()),
+%%   <<"MediaConcurrencies">> := list(media_concurrency()),
 %%   <<"Name">> := string(),
-%%   <<"QueueConfigs">> => list(routing_profile_queue_config()()),
+%%   <<"QueueConfigs">> => list(routing_profile_queue_config()),
 %%   <<"Tags">> => map()
 %% }
 -type create_routing_profile_request() :: #{binary() => any()}.
@@ -7392,7 +7392,7 @@
 %%   <<"PersistentChat">> => persistent_chat(),
 %%   <<"RelatedContactId">> => string(),
 %%   <<"SegmentAttributes">> => map(),
-%%   <<"SupportedMessagingContentTypes">> => list(string()())
+%%   <<"SupportedMessagingContentTypes">> => list(string())
 %% }
 -type start_chat_contact_request() :: #{binary() => any()}.
 
@@ -7439,8 +7439,8 @@
 
 %% Example:
 %% prompt_search_criteria() :: #{
-%%   <<"AndConditions">> => list(prompt_search_criteria()()),
-%%   <<"OrConditions">> => list(prompt_search_criteria()()),
+%%   <<"AndConditions">> => list(prompt_search_criteria()),
+%%   <<"OrConditions">> => list(prompt_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
 -type prompt_search_criteria() :: #{binary() => any()}.
@@ -7449,11 +7449,11 @@
 %% Example:
 %% search_criteria() :: #{
 %%   <<"AgentHierarchyGroups">> => agent_hierarchy_groups(),
-%%   <<"AgentIds">> => list(string()()),
+%%   <<"AgentIds">> => list(string()),
 %%   <<"Channels">> => list(list(any())()),
 %%   <<"ContactAnalysis">> => contact_analysis(),
 %%   <<"InitiationMethods">> => list(list(any())()),
-%%   <<"QueueIds">> => list(string()()),
+%%   <<"QueueIds">> => list(string()),
 %%   <<"SearchableContactAttributes">> => searchable_contact_attributes(),
 %%   <<"SearchableSegmentAttributes">> => searchable_segment_attributes()
 %% }
@@ -7518,7 +7518,7 @@
 %% Example:
 %% list_quick_connects_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"QuickConnectSummaryList">> => list(quick_connect_summary()())
+%%   <<"QuickConnectSummaryList">> => list(quick_connect_summary())
 %% }
 -type list_quick_connects_response() :: #{binary() => any()}.
 
@@ -7576,7 +7576,7 @@
 %% Example:
 %% list_instance_storage_configs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StorageConfigs">> => list(instance_storage_config()())
+%%   <<"StorageConfigs">> => list(instance_storage_config())
 %% }
 -type list_instance_storage_configs_response() :: #{binary() => any()}.
 
@@ -7591,7 +7591,7 @@
 %% Example:
 %% evaluation_form_single_select_question_automation() :: #{
 %%   <<"DefaultOptionRefId">> => string(),
-%%   <<"Options">> => list(list()())
+%%   <<"Options">> => list(list())
 %% }
 -type evaluation_form_single_select_question_automation() :: #{binary() => any()}.
 
@@ -7600,7 +7600,7 @@
 %% search_queues_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"NextToken">> => string(),
-%%   <<"Queues">> => list(queue()())
+%%   <<"Queues">> => list(queue())
 %% }
 -type search_queues_response() :: #{binary() => any()}.
 
@@ -7615,15 +7615,15 @@
 
 %% Example:
 %% real_time_contact_analysis_issue_detected() :: #{
-%%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_content()())
+%%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_content())
 %% }
 -type real_time_contact_analysis_issue_detected() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_authentication_profile_request() :: #{
-%%   <<"AllowedIps">> => list(string()()),
-%%   <<"BlockedIps">> => list(string()()),
+%%   <<"AllowedIps">> => list(string()),
+%%   <<"BlockedIps">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"PeriodicSessionDuration">> => integer()
@@ -7649,8 +7649,8 @@
 
 %% Example:
 %% inbound_additional_recipients() :: #{
-%%   <<"CcAddresses">> => list(email_address_info()()),
-%%   <<"ToAddresses">> => list(email_address_info()())
+%%   <<"CcAddresses">> => list(email_address_info()),
+%%   <<"ToAddresses">> => list(email_address_info())
 %% }
 -type inbound_additional_recipients() :: #{binary() => any()}.
 
@@ -7667,7 +7667,7 @@
 %% Example:
 %% list_views_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ViewsSummaryList">> => list(view_summary()())
+%%   <<"ViewsSummaryList">> => list(view_summary())
 %% }
 -type list_views_response() :: #{binary() => any()}.
 
@@ -7702,7 +7702,7 @@
 %% Example:
 %% list_analytics_data_associations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(analytics_data_association_result()())
+%%   <<"Results">> => list(analytics_data_association_result())
 %% }
 -type list_analytics_data_associations_response() :: #{binary() => any()}.
 
@@ -7721,7 +7721,7 @@
 %% Example:
 %% list_user_hierarchy_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UserHierarchyGroupSummaryList">> => list(hierarchy_group_summary()())
+%%   <<"UserHierarchyGroupSummaryList">> => list(hierarchy_group_summary())
 %% }
 -type list_user_hierarchy_groups_response() :: #{binary() => any()}.
 
@@ -7754,7 +7754,7 @@
 
 %% Example:
 %% list_default_vocabularies_response() :: #{
-%%   <<"DefaultVocabularyList">> => list(default_vocabulary()()),
+%%   <<"DefaultVocabularyList">> => list(default_vocabulary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_default_vocabularies_response() :: #{binary() => any()}.
@@ -7810,7 +7810,7 @@
 %% get_current_metric_data_response() :: #{
 %%   <<"ApproximateTotalCount">> => float(),
 %%   <<"DataSnapshotTime">> => non_neg_integer(),
-%%   <<"MetricResults">> => list(current_metric_result()()),
+%%   <<"MetricResults">> => list(current_metric_result()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_current_metric_data_response() :: #{binary() => any()}.
@@ -7818,7 +7818,7 @@
 
 %% Example:
 %% list_authentication_profiles_response() :: #{
-%%   <<"AuthenticationProfileSummaryList">> => list(authentication_profile_summary()()),
+%%   <<"AuthenticationProfileSummaryList">> => list(authentication_profile_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_authentication_profiles_response() :: #{binary() => any()}.
@@ -7901,7 +7901,7 @@
 
 %% Example:
 %% real_time_contact_analysis_segment_attachments() :: #{
-%%   <<"Attachments">> => list(real_time_contact_analysis_attachment()()),
+%%   <<"Attachments">> => list(real_time_contact_analysis_attachment()),
 %%   <<"DisplayName">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"ParticipantId">> => string(),
@@ -7938,7 +7938,7 @@
 %% transcript_criteria() :: #{
 %%   <<"MatchType">> => list(any()),
 %%   <<"ParticipantRole">> => list(any()),
-%%   <<"SearchText">> => list(string()())
+%%   <<"SearchText">> => list(string())
 %% }
 -type transcript_criteria() :: #{binary() => any()}.
 
@@ -7958,8 +7958,8 @@
 
 %% Example:
 %% batch_disassociate_analytics_data_set_response() :: #{
-%%   <<"Deleted">> => list(string()()),
-%%   <<"Errors">> => list(error_result()())
+%%   <<"Deleted">> => list(string()),
+%%   <<"Errors">> => list(error_result())
 %% }
 -type batch_disassociate_analytics_data_set_response() :: #{binary() => any()}.
 
@@ -7977,7 +7977,7 @@
 
 %% Example:
 %% batch_get_flow_association_response() :: #{
-%%   <<"FlowAssociationSummaryList">> => list(flow_association_summary()())
+%%   <<"FlowAssociationSummaryList">> => list(flow_association_summary())
 %% }
 -type batch_get_flow_association_response() :: #{binary() => any()}.
 
@@ -8007,7 +8007,7 @@
 %%   <<"Password">> => string(),
 %%   <<"PhoneConfig">> := user_phone_config(),
 %%   <<"RoutingProfileId">> := string(),
-%%   <<"SecurityProfileIds">> := list(string()()),
+%%   <<"SecurityProfileIds">> := list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"Username">> := string()
 %% }
@@ -8029,7 +8029,7 @@
 %%   <<"EvaluationFormArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
 %%   <<"EvaluationFormVersion">> => integer(),
-%%   <<"Items">> => list(list()()),
+%%   <<"Items">> => list(list()),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
 %%   <<"Title">> => string()
 %% }
@@ -8099,8 +8099,8 @@
 
 %% Example:
 %% batch_associate_analytics_data_set_response() :: #{
-%%   <<"Created">> => list(analytics_data_association_result()()),
-%%   <<"Errors">> => list(error_result()())
+%%   <<"Created">> => list(analytics_data_association_result()),
+%%   <<"Errors">> => list(error_result())
 %% }
 -type batch_associate_analytics_data_set_response() :: #{binary() => any()}.
 

@@ -296,7 +296,7 @@
 %% static_image_output_deactivate_schedule_action_settings() :: #{
 %%   <<"FadeOut">> => integer(),
 %%   <<"Layer">> => integer(),
-%%   <<"OutputNames">> => list(string()())
+%%   <<"OutputNames">> => list(string())
 %% }
 -type static_image_output_deactivate_schedule_action_settings() :: #{binary() => any()}.
 
@@ -312,11 +312,11 @@
 %% Example:
 %% create_network_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"AssociatedClusterIds">> => list(string()),
 %%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"IpPools">> => list(ip_pool()),
 %%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()()),
+%%   <<"Routes">> => list(route()),
 %%   <<"State">> => list(any())
 %% }
 -type create_network_response() :: #{binary() => any()}.
@@ -378,7 +378,7 @@
 
 %% Example:
 %% list_networks_response() :: #{
-%%   <<"Networks">> => list(describe_network_summary()()),
+%%   <<"Networks">> => list(describe_network_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_networks_response() :: #{binary() => any()}.
@@ -448,11 +448,11 @@
 %% Example:
 %% describe_channel_placement_group_summary() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()()),
+%%   <<"Channels">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()()),
+%%   <<"Nodes">> => list(string()),
 %%   <<"State">> => list(any())
 %% }
 -type describe_channel_placement_group_summary() :: #{binary() => any()}.
@@ -462,7 +462,7 @@
 %% input_destination() :: #{
 %%   <<"Ip">> => string(),
 %%   <<"Network">> => string(),
-%%   <<"NetworkRoutes">> => list(input_destination_route()()),
+%%   <<"NetworkRoutes">> => list(input_destination_route()),
 %%   <<"Port">> => string(),
 %%   <<"Url">> => string(),
 %%   <<"Vpc">> => input_destination_vpc()
@@ -480,7 +480,7 @@
 %%   <<"HdDeviceSettings">> => input_device_hd_settings(),
 %%   <<"Id">> => string(),
 %%   <<"MacAddress">> => string(),
-%%   <<"MedialiveInputArns">> => list(string()()),
+%%   <<"MedialiveInputArns">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NetworkSettings">> => input_device_network_settings(),
 %%   <<"OutputType">> => list(any()),
@@ -494,8 +494,8 @@
 
 %% Example:
 %% batch_start_response() :: #{
-%%   <<"Failed">> => list(batch_failed_result_model()()),
-%%   <<"Successful">> => list(batch_successful_result_model()())
+%%   <<"Failed">> => list(batch_failed_result_model()),
+%%   <<"Successful">> => list(batch_successful_result_model())
 %% }
 -type batch_start_response() :: #{binary() => any()}.
 
@@ -515,7 +515,7 @@
 %% Example:
 %% list_signal_maps_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SignalMaps">> => list(signal_map_summary()())
+%%   <<"SignalMaps">> => list(signal_map_summary())
 %% }
 -type list_signal_maps_response() :: #{binary() => any()}.
 
@@ -549,11 +549,11 @@
 %% Example:
 %% output_destination() :: #{
 %%   <<"Id">> => string(),
-%%   <<"LogicalInterfaceNames">> => list(string()()),
-%%   <<"MediaPackageSettings">> => list(media_package_output_destination_settings()()),
+%%   <<"LogicalInterfaceNames">> => list(string()),
+%%   <<"MediaPackageSettings">> => list(media_package_output_destination_settings()),
 %%   <<"MultiplexSettings">> => multiplex_program_channel_destination_settings(),
-%%   <<"Settings">> => list(output_destination_settings()()),
-%%   <<"SrtSettings">> => list(srt_output_destination_settings()())
+%%   <<"Settings">> => list(output_destination_settings()),
+%%   <<"SrtSettings">> => list(srt_output_destination_settings())
 %% }
 -type output_destination() :: #{binary() => any()}.
 
@@ -584,7 +584,7 @@
 %% Example:
 %% multiplex_summary() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"MultiplexSettings">> => multiplex_settings_summary(),
 %%   <<"Name">> => string(),
@@ -602,7 +602,7 @@
 
 %% Example:
 %% delete_tags_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type delete_tags_request() :: #{binary() => any()}.
 
@@ -619,7 +619,7 @@
 
 %% Example:
 %% list_multiplex_programs_response() :: #{
-%%   <<"MultiplexPrograms">> => list(multiplex_program_summary()()),
+%%   <<"MultiplexPrograms">> => list(multiplex_program_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_multiplex_programs_response() :: #{binary() => any()}.
@@ -652,17 +652,17 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"Destinations">> => list(output_destination()()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
-%%   <<"InputAttachments">> => list(input_attachment()()),
+%%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"MaintenanceStatus">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()()),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
 %%   <<"PipelinesRunningCount">> => integer(),
 %%   <<"RoleArn">> => string(),
 %%   <<"State">> => list(any()),
@@ -778,11 +778,11 @@
 %% Example:
 %% describe_channel_placement_group_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()()),
+%%   <<"Channels">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()()),
+%%   <<"Nodes">> => list(string()),
 %%   <<"State">> => list(any())
 %% }
 -type describe_channel_placement_group_response() :: #{binary() => any()}.
@@ -815,7 +815,7 @@
 
 %% Example:
 %% pause_state_schedule_action_settings() :: #{
-%%   <<"Pipelines">> => list(pipeline_pause_state_settings()())
+%%   <<"Pipelines">> => list(pipeline_pause_state_settings())
 %% }
 -type pause_state_schedule_action_settings() :: #{binary() => any()}.
 
@@ -823,7 +823,7 @@
 %% Example:
 %% describe_cluster_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ChannelIds">> => list(string()),
 %%   <<"ClusterType">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceRoleArn">> => string(),
@@ -837,11 +837,11 @@
 %% Example:
 %% update_channel_placement_group_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()()),
+%%   <<"Channels">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()()),
+%%   <<"Nodes">> => list(string()),
 %%   <<"State">> => list(any())
 %% }
 -type update_channel_placement_group_response() :: #{binary() => any()}.
@@ -858,11 +858,11 @@
 %% Example:
 %% describe_network_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"AssociatedClusterIds">> => list(string()),
 %%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"IpPools">> => list(ip_pool()),
 %%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()()),
+%%   <<"Routes">> => list(route()),
 %%   <<"State">> => list(any())
 %% }
 -type describe_network_response() :: #{binary() => any()}.
@@ -918,7 +918,7 @@
 
 %% Example:
 %% multicast_settings() :: #{
-%%   <<"Sources">> => list(multicast_source()())
+%%   <<"Sources">> => list(multicast_source())
 %% }
 -type multicast_settings() :: #{binary() => any()}.
 
@@ -930,16 +930,16 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"Destinations">> => list(output_destination()()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
-%%   <<"InputAttachments">> => list(input_attachment()()),
+%%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()()),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
 %%   <<"PipelinesRunningCount">> => integer(),
 %%   <<"RoleArn">> => string(),
 %%   <<"State">> => list(any()),
@@ -959,7 +959,7 @@
 %% Example:
 %% update_channel_placement_group_request() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()())
+%%   <<"Nodes">> => list(string())
 %% }
 -type update_channel_placement_group_request() :: #{binary() => any()}.
 
@@ -967,7 +967,7 @@
 %% Example:
 %% update_input_security_group_request() :: #{
 %%   <<"Tags">> => map(),
-%%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr()())
+%%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr())
 %% }
 -type update_input_security_group_request() :: #{binary() => any()}.
 
@@ -1025,7 +1025,7 @@
 %% Example:
 %% create_node_request() :: #{
 %%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping_create_request()()),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping_create_request()),
 %%   <<"RequestId">> => string(),
 %%   <<"Role">> => list(any()),
 %%   <<"Tags">> => map()
@@ -1036,7 +1036,7 @@
 %% Example:
 %% create_cluster_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ChannelIds">> => list(string()),
 %%   <<"ClusterType">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceRoleArn">> => string(),
@@ -1057,7 +1057,7 @@
 %%   <<"HdDeviceSettings">> => input_device_hd_settings(),
 %%   <<"Id">> => string(),
 %%   <<"MacAddress">> => string(),
-%%   <<"MedialiveInputArns">> => list(string()()),
+%%   <<"MedialiveInputArns">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NetworkSettings">> => input_device_network_settings(),
 %%   <<"OutputType">> => list(any()),
@@ -1085,7 +1085,7 @@
 
 %% Example:
 %% input_device_network_settings() :: #{
-%%   <<"DnsAddresses">> => list(string()()),
+%%   <<"DnsAddresses">> => list(string()),
 %%   <<"Gateway">> => string(),
 %%   <<"IpAddress">> => string(),
 %%   <<"IpScheme">> => list(any()),
@@ -1112,7 +1112,7 @@
 %%   <<"ChannelId">> => string(),
 %%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
 %%   <<"PacketIdentifiersMap">> => multiplex_program_packet_identifiers_map(),
-%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()()),
+%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()),
 %%   <<"ProgramName">> => string()
 %% }
 -type multiplex_program() :: #{binary() => any()}.
@@ -1263,11 +1263,11 @@
 %% Example:
 %% create_channel_placement_group_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()()),
+%%   <<"Channels">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()()),
+%%   <<"Nodes">> => list(string()),
 %%   <<"State">> => list(any())
 %% }
 -type create_channel_placement_group_response() :: #{binary() => any()}.
@@ -1287,7 +1287,7 @@
 %% Example:
 %% list_offerings_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Offerings">> => list(offering()())
+%%   <<"Offerings">> => list(offering())
 %% }
 -type list_offerings_response() :: #{binary() => any()}.
 
@@ -1308,7 +1308,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
 %%   <<"EventType">> => list(any()),
 %%   <<"GroupId">> => string(),
 %%   <<"Id">> => string(),
@@ -1346,8 +1346,8 @@
 
 %% Example:
 %% input_settings() :: #{
-%%   <<"AudioSelectors">> => list(audio_selector()()),
-%%   <<"CaptionSelectors">> => list(caption_selector()()),
+%%   <<"AudioSelectors">> => list(audio_selector()),
+%%   <<"CaptionSelectors">> => list(caption_selector()),
 %%   <<"DeblockFilter">> => list(any()),
 %%   <<"DenoiseFilter">> => list(any()),
 %%   <<"FilterStrength">> => integer(),
@@ -1363,7 +1363,7 @@
 
 %% Example:
 %% create_multiplex_request() :: #{
-%%   <<"AvailabilityZones">> := list(string()()),
+%%   <<"AvailabilityZones">> := list(string()),
 %%   <<"MultiplexSettings">> := multiplex_settings(),
 %%   <<"Name">> := string(),
 %%   <<"RequestId">> := string(),
@@ -1393,16 +1393,16 @@
 %% Example:
 %% describe_node_summary() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ChannelPlacementGroups">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"ConnectionState">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"ManagedInstanceId">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
 %%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
 %%   <<"State">> => list(any())
 %% }
 -type describe_node_summary() :: #{binary() => any()}.
@@ -1411,15 +1411,15 @@
 %% Example:
 %% update_node_state_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ChannelPlacementGroups">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"ConnectionState">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
 %%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
 %%   <<"State">> => list(any())
 %% }
 -type update_node_state_response() :: #{binary() => any()}.
@@ -1427,7 +1427,7 @@
 
 %% Example:
 %% smpte2110_receiver_group_settings() :: #{
-%%   <<"Smpte2110ReceiverGroups">> => list(smpte2110_receiver_group()())
+%%   <<"Smpte2110ReceiverGroups">> => list(smpte2110_receiver_group())
 %% }
 -type smpte2110_receiver_group_settings() :: #{binary() => any()}.
 
@@ -1458,8 +1458,8 @@
 
 %% Example:
 %% batch_delete_response() :: #{
-%%   <<"Failed">> => list(batch_failed_result_model()()),
-%%   <<"Successful">> => list(batch_successful_result_model()())
+%%   <<"Failed">> => list(batch_failed_result_model()),
+%%   <<"Successful">> => list(batch_successful_result_model())
 %% }
 -type batch_delete_response() :: #{binary() => any()}.
 
@@ -1493,7 +1493,7 @@
 
 %% Example:
 %% multicast_settings_update_request() :: #{
-%%   <<"Sources">> => list(multicast_source_update_request()())
+%%   <<"Sources">> => list(multicast_source_update_request())
 %% }
 -type multicast_settings_update_request() :: #{binary() => any()}.
 
@@ -1615,10 +1615,10 @@
 %% input_security_group() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => map(),
-%%   <<"WhitelistRules">> => list(input_whitelist_rule()())
+%%   <<"WhitelistRules">> => list(input_whitelist_rule())
 %% }
 -type input_security_group() :: #{binary() => any()}.
 
@@ -1675,7 +1675,7 @@
 
 %% Example:
 %% list_cloud_watch_alarm_template_groups_response() :: #{
-%%   <<"CloudWatchAlarmTemplateGroups">> => list(cloud_watch_alarm_template_group_summary()()),
+%%   <<"CloudWatchAlarmTemplateGroups">> => list(cloud_watch_alarm_template_group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cloud_watch_alarm_template_groups_response() :: #{binary() => any()}.
@@ -1710,7 +1710,7 @@
 %% sdi_source() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Mode">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any()),
@@ -1725,7 +1725,7 @@
 
 %% Example:
 %% input_device_configurable_settings() :: #{
-%%   <<"AudioChannelPairs">> => list(input_device_configurable_audio_channel_pair_config()()),
+%%   <<"AudioChannelPairs">> => list(input_device_configurable_audio_channel_pair_config()),
 %%   <<"Codec">> => list(any()),
 %%   <<"ConfiguredInput">> => list(any()),
 %%   <<"InputResolution">> => string(),
@@ -1746,15 +1746,15 @@
 %% Example:
 %% update_node_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ChannelPlacementGroups">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"ConnectionState">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
 %%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
 %%   <<"State">> => list(any())
 %% }
 -type update_node_response() :: #{binary() => any()}.
@@ -1799,15 +1799,15 @@
 %% Example:
 %% describe_node_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ChannelPlacementGroups">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"ConnectionState">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
 %%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
 %%   <<"State">> => list(any())
 %% }
 -type describe_node_response() :: #{binary() => any()}.
@@ -1845,7 +1845,7 @@
 %% Example:
 %% create_input_security_group_request() :: #{
 %%   <<"Tags">> => map(),
-%%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr()())
+%%   <<"WhitelistRules">> => list(input_whitelist_rule_cidr())
 %% }
 -type create_input_security_group_request() :: #{binary() => any()}.
 
@@ -1860,11 +1860,11 @@
 %% Example:
 %% delete_network_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"AssociatedClusterIds">> => list(string()),
 %%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"IpPools">> => list(ip_pool()),
 %%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()()),
+%%   <<"Routes">> => list(route()),
 %%   <<"State">> => list(any())
 %% }
 -type delete_network_response() :: #{binary() => any()}.
@@ -1872,10 +1872,10 @@
 
 %% Example:
 %% batch_delete_request() :: #{
-%%   <<"ChannelIds">> => list(string()()),
-%%   <<"InputIds">> => list(string()()),
-%%   <<"InputSecurityGroupIds">> => list(string()()),
-%%   <<"MultiplexIds">> => list(string()())
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"InputIds">> => list(string()),
+%%   <<"InputSecurityGroupIds">> => list(string()),
+%%   <<"MultiplexIds">> => list(string())
 %% }
 -type batch_delete_request() :: #{binary() => any()}.
 
@@ -1884,7 +1884,7 @@
 %% create_node_registration_script_request() :: #{
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
 %%   <<"RequestId">> => string(),
 %%   <<"Role">> => list(any())
 %% }
@@ -1901,7 +1901,7 @@
 
 %% Example:
 %% list_input_security_groups_response() :: #{
-%%   <<"InputSecurityGroups">> => list(input_security_group()()),
+%%   <<"InputSecurityGroups">> => list(input_security_group()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_input_security_groups_response() :: #{binary() => any()}.
@@ -1941,7 +1941,7 @@
 %%   <<"InputAttachmentName">> => string(),
 %%   <<"InputId">> => string(),
 %%   <<"InputSettings">> => input_settings(),
-%%   <<"LogicalInterfaceNames">> => list(string()())
+%%   <<"LogicalInterfaceNames">> => list(string())
 %% }
 -type input_attachment() :: #{binary() => any()}.
 
@@ -1978,7 +1978,7 @@
 
 %% Example:
 %% list_input_devices_response() :: #{
-%%   <<"InputDevices">> => list(input_device_summary()()),
+%%   <<"InputDevices">> => list(input_device_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_input_devices_response() :: #{binary() => any()}.
@@ -2014,14 +2014,14 @@
 
 %% Example:
 %% batch_schedule_action_create_request() :: #{
-%%   <<"ScheduleActions">> => list(schedule_action()())
+%%   <<"ScheduleActions">> => list(schedule_action())
 %% }
 -type batch_schedule_action_create_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% multicast_settings_create_request() :: #{
-%%   <<"Sources">> => list(multicast_source_create_request()())
+%%   <<"Sources">> => list(multicast_source_create_request())
 %% }
 -type multicast_settings_create_request() :: #{binary() => any()}.
 
@@ -2045,7 +2045,7 @@
 %% Example:
 %% describe_schedule_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScheduleActions">> => list(schedule_action()())
+%%   <<"ScheduleActions">> => list(schedule_action())
 %% }
 -type describe_schedule_response() :: #{binary() => any()}.
 
@@ -2085,8 +2085,8 @@
 %% Example:
 %% stop_multiplex_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"Destinations">> => list(multiplex_output_destination()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
 %%   <<"Id">> => string(),
 %%   <<"MultiplexSettings">> => multiplex_settings(),
 %%   <<"Name">> => string(),
@@ -2184,18 +2184,18 @@
 
 %% Example:
 %% create_input_request() :: #{
-%%   <<"Destinations">> => list(input_destination_request()()),
-%%   <<"InputDevices">> => list(input_device_settings()()),
+%%   <<"Destinations">> => list(input_destination_request()),
+%%   <<"InputDevices">> => list(input_device_settings()),
 %%   <<"InputNetworkLocation">> => list(any()),
-%%   <<"InputSecurityGroups">> => list(string()()),
-%%   <<"MediaConnectFlows">> => list(media_connect_flow_request()()),
+%%   <<"InputSecurityGroups">> => list(string()),
+%%   <<"MediaConnectFlows">> => list(media_connect_flow_request()),
 %%   <<"MulticastSettings">> => multicast_settings_create_request(),
 %%   <<"Name">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"RoleArn">> => string(),
-%%   <<"SdiSources">> => list(string()()),
+%%   <<"SdiSources">> => list(string()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
-%%   <<"Sources">> => list(input_source_request()()),
+%%   <<"Sources">> => list(input_source_request()),
 %%   <<"SrtSettings">> => srt_settings_request(),
 %%   <<"Tags">> => map(),
 %%   <<"Type">> => list(any()),
@@ -2217,7 +2217,7 @@
 %%   <<"ChannelId">> => string(),
 %%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
 %%   <<"PacketIdentifiersMap">> => multiplex_program_packet_identifiers_map(),
-%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()()),
+%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()),
 %%   <<"ProgramName">> => string()
 %% }
 -type delete_multiplex_program_response() :: #{binary() => any()}.
@@ -2230,10 +2230,10 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"Destinations">> => list(output_destination()()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"Id">> => string(),
-%%   <<"InputAttachments">> => list(input_attachment()()),
+%%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
@@ -2242,7 +2242,7 @@
 %%   <<"RoleArn">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => map(),
-%%   <<"UsedChannelEngineVersions">> => list(channel_engine_version_response()()),
+%%   <<"UsedChannelEngineVersions">> => list(channel_engine_version_response()),
 %%   <<"Vpc">> => vpc_output_settings_description()
 %% }
 -type channel_summary() :: #{binary() => any()}.
@@ -2273,16 +2273,16 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"Destinations">> => list(output_destination()()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
-%%   <<"InputAttachments">> => list(input_attachment()()),
+%%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()()),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
 %%   <<"PipelinesRunningCount">> => integer(),
 %%   <<"RoleArn">> => string(),
 %%   <<"State">> => list(any()),
@@ -2318,7 +2318,7 @@
 
 %% Example:
 %% describe_thumbnails_response() :: #{
-%%   <<"ThumbnailDetails">> => list(thumbnail_detail()())
+%%   <<"ThumbnailDetails">> => list(thumbnail_detail())
 %% }
 -type describe_thumbnails_response() :: #{binary() => any()}.
 
@@ -2338,8 +2338,8 @@
 
 %% Example:
 %% batch_stop_response() :: #{
-%%   <<"Failed">> => list(batch_failed_result_model()()),
-%%   <<"Successful">> => list(batch_successful_result_model()())
+%%   <<"Failed">> => list(batch_failed_result_model()),
+%%   <<"Successful">> => list(batch_successful_result_model())
 %% }
 -type batch_stop_response() :: #{binary() => any()}.
 
@@ -2347,22 +2347,22 @@
 %% Example:
 %% input() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AttachedChannels">> => list(string()()),
-%%   <<"Destinations">> => list(input_destination()()),
+%%   <<"AttachedChannels">> => list(string()),
+%%   <<"Destinations">> => list(input_destination()),
 %%   <<"Id">> => string(),
 %%   <<"InputClass">> => list(any()),
-%%   <<"InputDevices">> => list(input_device_settings()()),
+%%   <<"InputDevices">> => list(input_device_settings()),
 %%   <<"InputNetworkLocation">> => list(any()),
-%%   <<"InputPartnerIds">> => list(string()()),
+%%   <<"InputPartnerIds">> => list(string()),
 %%   <<"InputSourceType">> => list(any()),
-%%   <<"MediaConnectFlows">> => list(media_connect_flow()()),
+%%   <<"MediaConnectFlows">> => list(media_connect_flow()),
 %%   <<"MulticastSettings">> => multicast_settings(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
-%%   <<"SdiSources">> => list(string()()),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SdiSources">> => list(string()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
-%%   <<"Sources">> => list(input_source()()),
+%%   <<"Sources">> => list(input_source()),
 %%   <<"SrtSettings">> => srt_settings(),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => map(),
@@ -2374,7 +2374,7 @@
 %% Example:
 %% automatic_input_failover_settings() :: #{
 %%   <<"ErrorClearTimeMsec">> => integer(),
-%%   <<"FailoverConditions">> => list(failover_condition()()),
+%%   <<"FailoverConditions">> => list(failover_condition()),
 %%   <<"InputPreference">> => list(any()),
 %%   <<"SecondaryInputId">> => string()
 %% }
@@ -2398,16 +2398,16 @@
 
 %% Example:
 %% update_input_request() :: #{
-%%   <<"Destinations">> => list(input_destination_request()()),
-%%   <<"InputDevices">> => list(input_device_request()()),
-%%   <<"InputSecurityGroups">> => list(string()()),
-%%   <<"MediaConnectFlows">> => list(media_connect_flow_request()()),
+%%   <<"Destinations">> => list(input_destination_request()),
+%%   <<"InputDevices">> => list(input_device_request()),
+%%   <<"InputSecurityGroups">> => list(string()),
+%%   <<"MediaConnectFlows">> => list(media_connect_flow_request()),
 %%   <<"MulticastSettings">> => multicast_settings_update_request(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
-%%   <<"SdiSources">> => list(string()()),
+%%   <<"SdiSources">> => list(string()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
-%%   <<"Sources">> => list(input_source_request()()),
+%%   <<"Sources">> => list(input_source_request()),
 %%   <<"SrtSettings">> => srt_settings_request()
 %% }
 -type update_input_request() :: #{binary() => any()}.
@@ -2439,11 +2439,11 @@
 %% Example:
 %% describe_network_summary() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"AssociatedClusterIds">> => list(string()),
 %%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"IpPools">> => list(ip_pool()),
 %%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()()),
+%%   <<"Routes">> => list(route()),
 %%   <<"State">> => list(any())
 %% }
 -type describe_network_summary() :: #{binary() => any()}.
@@ -2500,8 +2500,8 @@
 
 %% Example:
 %% batch_stop_request() :: #{
-%%   <<"ChannelIds">> => list(string()()),
-%%   <<"MultiplexIds">> => list(string()())
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"MultiplexIds">> => list(string())
 %% }
 -type batch_stop_request() :: #{binary() => any()}.
 
@@ -2521,7 +2521,7 @@
 %% Example:
 %% describe_cluster_summary() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ChannelIds">> => list(string()),
 %%   <<"ClusterType">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceRoleArn">> => string(),
@@ -2536,7 +2536,7 @@
 %% output_group() :: #{
 %%   <<"Name">> => string(),
 %%   <<"OutputGroupSettings">> => output_group_settings(),
-%%   <<"Outputs">> => list(output()())
+%%   <<"Outputs">> => list(output())
 %% }
 -type output_group() :: #{binary() => any()}.
 
@@ -2544,7 +2544,7 @@
 %% Example:
 %% input_device_uhd_settings() :: #{
 %%   <<"ActiveInput">> => list(any()),
-%%   <<"AudioChannelPairs">> => list(input_device_uhd_audio_channel_pair_config()()),
+%%   <<"AudioChannelPairs">> => list(input_device_uhd_audio_channel_pair_config()),
 %%   <<"Codec">> => list(any()),
 %%   <<"ConfiguredInput">> => list(any()),
 %%   <<"DeviceState">> => list(any()),
@@ -2627,7 +2627,7 @@
 %% Example:
 %% update_channel_class_request() :: #{
 %%   <<"ChannelClass">> := list(any()),
-%%   <<"Destinations">> => list(output_destination()())
+%%   <<"Destinations">> => list(output_destination())
 %% }
 -type update_channel_class_request() :: #{binary() => any()}.
 
@@ -2661,7 +2661,7 @@
 
 %% Example:
 %% srt_settings_request() :: #{
-%%   <<"SrtCallerSources">> => list(srt_caller_source_request()())
+%%   <<"SrtCallerSources">> => list(srt_caller_source_request())
 %% }
 -type srt_settings_request() :: #{binary() => any()}.
 
@@ -2673,16 +2673,16 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"Destinations">> => list(output_destination()()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
-%%   <<"InputAttachments">> => list(input_attachment()()),
+%%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()()),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
 %%   <<"PipelinesRunningCount">> => integer(),
 %%   <<"RoleArn">> => string(),
 %%   <<"State">> => list(any()),
@@ -2697,7 +2697,7 @@
 %%   <<"ChannelId">> => string(),
 %%   <<"MultiplexProgramSettings">> => multiplex_program_settings(),
 %%   <<"PacketIdentifiersMap">> => multiplex_program_packet_identifiers_map(),
-%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()()),
+%%   <<"PipelineDetails">> => list(multiplex_program_pipeline_detail()),
 %%   <<"ProgramName">> => string()
 %% }
 -type describe_multiplex_program_response() :: #{binary() => any()}.
@@ -2763,7 +2763,7 @@
 %% Example:
 %% cluster_network_settings() :: #{
 %%   <<"DefaultRoute">> => string(),
-%%   <<"InterfaceMappings">> => list(interface_mapping()())
+%%   <<"InterfaceMappings">> => list(interface_mapping())
 %% }
 -type cluster_network_settings() :: #{binary() => any()}.
 
@@ -2825,12 +2825,12 @@
 %% Example:
 %% create_signal_map_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DiscoveryEntryPointArn">> => string(),
 %%   <<"ErrorMessage">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
 %%   <<"FailedMediaResourceMap">> => map(),
 %%   <<"Id">> => string(),
 %%   <<"LastDiscoveredAt">> => non_neg_integer(),
@@ -2932,22 +2932,22 @@
 %% Example:
 %% describe_input_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AttachedChannels">> => list(string()()),
-%%   <<"Destinations">> => list(input_destination()()),
+%%   <<"AttachedChannels">> => list(string()),
+%%   <<"Destinations">> => list(input_destination()),
 %%   <<"Id">> => string(),
 %%   <<"InputClass">> => list(any()),
-%%   <<"InputDevices">> => list(input_device_settings()()),
+%%   <<"InputDevices">> => list(input_device_settings()),
 %%   <<"InputNetworkLocation">> => list(any()),
-%%   <<"InputPartnerIds">> => list(string()()),
+%%   <<"InputPartnerIds">> => list(string()),
 %%   <<"InputSourceType">> => list(any()),
-%%   <<"MediaConnectFlows">> => list(media_connect_flow()()),
+%%   <<"MediaConnectFlows">> => list(media_connect_flow()),
 %%   <<"MulticastSettings">> => multicast_settings(),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
-%%   <<"SdiSources">> => list(string()()),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SdiSources">> => list(string()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"Smpte2110ReceiverGroupSettings">> => smpte2110_receiver_group_settings(),
-%%   <<"Sources">> => list(input_source()()),
+%%   <<"Sources">> => list(input_source()),
 %%   <<"SrtSettings">> => srt_settings(),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => map(),
@@ -2970,10 +2970,10 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
-%%   <<"Destinations">> => list(output_destination()()),
+%%   <<"Destinations">> => list(output_destination()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncoderSettings">> => encoder_settings(),
-%%   <<"InputAttachments">> => list(input_attachment()()),
+%%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_create_settings(),
@@ -2998,12 +2998,12 @@
 %% Example:
 %% start_delete_monitor_deployment_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DiscoveryEntryPointArn">> => string(),
 %%   <<"ErrorMessage">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
 %%   <<"FailedMediaResourceMap">> => map(),
 %%   <<"Id">> => string(),
 %%   <<"LastDiscoveredAt">> => non_neg_integer(),
@@ -3100,8 +3100,8 @@
 %% Example:
 %% start_multiplex_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"Destinations">> => list(multiplex_output_destination()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
 %%   <<"Id">> => string(),
 %%   <<"MultiplexSettings">> => multiplex_settings(),
 %%   <<"Name">> => string(),
@@ -3148,18 +3148,18 @@
 %% Example:
 %% multiplex_program_packet_identifiers_map() :: #{
 %%   <<"AribCaptionsPid">> => integer(),
-%%   <<"AudioPids">> => list(integer()()),
-%%   <<"DvbSubPids">> => list(integer()()),
+%%   <<"AudioPids">> => list(integer()),
+%%   <<"DvbSubPids">> => list(integer()),
 %%   <<"DvbTeletextPid">> => integer(),
-%%   <<"DvbTeletextPids">> => list(integer()()),
+%%   <<"DvbTeletextPids">> => list(integer()),
 %%   <<"EcmPid">> => integer(),
 %%   <<"EtvPlatformPid">> => integer(),
 %%   <<"EtvSignalPid">> => integer(),
-%%   <<"KlvDataPids">> => list(integer()()),
+%%   <<"KlvDataPids">> => list(integer()),
 %%   <<"PcrPid">> => integer(),
 %%   <<"PmtPid">> => integer(),
 %%   <<"PrivateMetadataPid">> => integer(),
-%%   <<"Scte27Pids">> => list(integer()()),
+%%   <<"Scte27Pids">> => list(integer()),
 %%   <<"Scte35Pid">> => integer(),
 %%   <<"Smpte2038Pid">> => integer(),
 %%   <<"TimedMetadataPid">> => integer(),
@@ -3222,7 +3222,7 @@
 
 %% Example:
 %% batch_schedule_action_create_result() :: #{
-%%   <<"ScheduleActions">> => list(schedule_action()())
+%%   <<"ScheduleActions">> => list(schedule_action())
 %% }
 -type batch_schedule_action_create_result() :: #{binary() => any()}.
 
@@ -3267,7 +3267,7 @@
 
 %% Example:
 %% list_versions_response() :: #{
-%%   <<"Versions">> => list(channel_engine_version_response()())
+%%   <<"Versions">> => list(channel_engine_version_response())
 %% }
 -type list_versions_response() :: #{binary() => any()}.
 
@@ -3275,11 +3275,11 @@
 %% Example:
 %% delete_channel_placement_group_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Channels">> => list(string()()),
+%%   <<"Channels">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()()),
+%%   <<"Nodes">> => list(string()),
 %%   <<"State">> => list(any())
 %% }
 -type delete_channel_placement_group_response() :: #{binary() => any()}.
@@ -3287,7 +3287,7 @@
 
 %% Example:
 %% list_inputs_response() :: #{
-%%   <<"Inputs">> => list(input()()),
+%%   <<"Inputs">> => list(input()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_inputs_response() :: #{binary() => any()}.
@@ -3310,7 +3310,7 @@
 
 %% Example:
 %% list_clusters_response() :: #{
-%%   <<"Clusters">> => list(describe_cluster_summary()()),
+%%   <<"Clusters">> => list(describe_cluster_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_clusters_response() :: #{binary() => any()}.
@@ -3326,7 +3326,7 @@
 
 %% Example:
 %% list_channels_response() :: #{
-%%   <<"Channels">> => list(channel_summary()()),
+%%   <<"Channels">> => list(channel_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
@@ -3359,7 +3359,7 @@
 %% input_switch_schedule_action_settings() :: #{
 %%   <<"InputAttachmentNameReference">> => string(),
 %%   <<"InputClippingSettings">> => input_clipping_settings(),
-%%   <<"UrlPath">> => list(string()())
+%%   <<"UrlPath">> => list(string())
 %% }
 -type input_switch_schedule_action_settings() :: #{binary() => any()}.
 
@@ -3367,7 +3367,7 @@
 %% Example:
 %% delete_cluster_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ChannelIds">> => list(string()),
 %%   <<"ClusterType">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceRoleArn">> => string(),
@@ -3421,7 +3421,7 @@
 
 %% Example:
 %% audio_channel_mapping() :: #{
-%%   <<"InputChannelLevels">> => list(input_channel_level()()),
+%%   <<"InputChannelLevels">> => list(input_channel_level()),
 %%   <<"OutputChannel">> => integer()
 %% }
 -type audio_channel_mapping() :: #{binary() => any()}.
@@ -3443,7 +3443,7 @@
 %%   <<"ProgramDateTime">> => list(any()),
 %%   <<"KeyFormat">> => string(),
 %%   <<"TimestampDeltaMilliseconds">> => integer(),
-%%   <<"CaptionLanguageMappings">> => list(caption_language_mapping()()),
+%%   <<"CaptionLanguageMappings">> => list(caption_language_mapping()),
 %%   <<"SegmentationMode">> => list(any()),
 %%   <<"BaseUrlContent1">> => string(),
 %%   <<"ClientCache">> => list(any()),
@@ -3516,10 +3516,10 @@
 %%   <<"AnywhereSettings">> => anywhere_settings(),
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_request(),
-%%   <<"Destinations">> => list(output_destination()()),
+%%   <<"Destinations">> => list(output_destination()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncoderSettings">> => encoder_settings(),
-%%   <<"InputAttachments">> => list(input_attachment()()),
+%%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_update_settings(),
@@ -3607,8 +3607,8 @@
 %% Example:
 %% describe_multiplex_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"Destinations">> => list(multiplex_output_destination()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
 %%   <<"Id">> => string(),
 %%   <<"MultiplexSettings">> => multiplex_settings(),
 %%   <<"Name">> => string(),
@@ -3630,12 +3630,12 @@
 %% Example:
 %% get_signal_map_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DiscoveryEntryPointArn">> => string(),
 %%   <<"ErrorMessage">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
 %%   <<"FailedMediaResourceMap">> => map(),
 %%   <<"Id">> => string(),
 %%   <<"LastDiscoveredAt">> => non_neg_integer(),
@@ -3759,7 +3759,7 @@
 
 %% Example:
 %% scte35_time_signal_schedule_action_settings() :: #{
-%%   <<"Scte35Descriptors">> => list(scte35_descriptor()())
+%%   <<"Scte35Descriptors">> => list(scte35_descriptor())
 %% }
 -type scte35_time_signal_schedule_action_settings() :: #{binary() => any()}.
 
@@ -3777,7 +3777,7 @@
 
 %% Example:
 %% list_channel_placement_groups_response() :: #{
-%%   <<"ChannelPlacementGroups">> => list(describe_channel_placement_group_summary()()),
+%%   <<"ChannelPlacementGroups">> => list(describe_channel_placement_group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channel_placement_groups_response() :: #{binary() => any()}.
@@ -3828,10 +3828,10 @@
 
 %% Example:
 %% create_signal_map_request() :: #{
-%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()()),
+%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"DiscoveryEntryPointArn">> := string(),
-%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()()),
+%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Tags">> => map()
@@ -3853,10 +3853,10 @@
 
 %% Example:
 %% create_network_request() :: #{
-%%   <<"IpPools">> => list(ip_pool_create_request()()),
+%%   <<"IpPools">> => list(ip_pool_create_request()),
 %%   <<"Name">> => string(),
 %%   <<"RequestId">> => string(),
-%%   <<"Routes">> => list(route_create_request()()),
+%%   <<"Routes">> => list(route_create_request()),
 %%   <<"Tags">> => map()
 %% }
 -type create_network_request() :: #{binary() => any()}.
@@ -3875,7 +3875,7 @@
 %% Example:
 %% create_channel_placement_group_request() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Nodes">> => list(string()()),
+%%   <<"Nodes">> => list(string()),
 %%   <<"RequestId">> => string(),
 %%   <<"Tags">> => map()
 %% }
@@ -3913,7 +3913,7 @@
 %%   <<"ImageY">> => integer(),
 %%   <<"Layer">> => integer(),
 %%   <<"Opacity">> => integer(),
-%%   <<"OutputNames">> => list(string()()),
+%%   <<"OutputNames">> => list(string()),
 %%   <<"Width">> => integer()
 %% }
 -type static_image_output_activate_schedule_action_settings() :: #{binary() => any()}.
@@ -3932,10 +3932,10 @@
 
 %% Example:
 %% vpc_output_settings_description() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"NetworkInterfaceIds">> => list(string()()),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"NetworkInterfaceIds">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_output_settings_description() :: #{binary() => any()}.
 
@@ -3953,9 +3953,9 @@
 
 %% Example:
 %% vpc_output_settings() :: #{
-%%   <<"PublicAddressAllocationIds">> => list(string()()),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"PublicAddressAllocationIds">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_output_settings() :: #{binary() => any()}.
 
@@ -3964,7 +3964,7 @@
 %% input_prepare_schedule_action_settings() :: #{
 %%   <<"InputAttachmentNameReference">> => string(),
 %%   <<"InputClippingSettings">> => input_clipping_settings(),
-%%   <<"UrlPath">> => list(string()())
+%%   <<"UrlPath">> => list(string())
 %% }
 -type input_prepare_schedule_action_settings() :: #{binary() => any()}.
 
@@ -3992,7 +3992,7 @@
 %% Example:
 %% update_event_bridge_rule_template_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
 %%   <<"EventType">> => list(any()),
 %%   <<"GroupIdentifier">> => string(),
 %%   <<"Name">> => string()
@@ -4026,27 +4026,27 @@
 %% Example:
 %% unprocessable_entity_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"ValidationErrors">> => list(validation_error()())
+%%   <<"ValidationErrors">> => list(validation_error())
 %% }
 -type unprocessable_entity_exception() :: #{binary() => any()}.
 
 
 %% Example:
 %% encoder_settings() :: #{
-%%   <<"AudioDescriptions">> => list(audio_description()()),
+%%   <<"AudioDescriptions">> => list(audio_description()),
 %%   <<"AvailBlanking">> => avail_blanking(),
 %%   <<"AvailConfiguration">> => avail_configuration(),
 %%   <<"BlackoutSlate">> => blackout_slate(),
-%%   <<"CaptionDescriptions">> => list(caption_description()()),
+%%   <<"CaptionDescriptions">> => list(caption_description()),
 %%   <<"ColorCorrectionSettings">> => color_correction_settings(),
 %%   <<"FeatureActivations">> => feature_activations(),
 %%   <<"GlobalConfiguration">> => global_configuration(),
 %%   <<"MotionGraphicsConfiguration">> => motion_graphics_configuration(),
 %%   <<"NielsenConfiguration">> => nielsen_configuration(),
-%%   <<"OutputGroups">> => list(output_group()()),
+%%   <<"OutputGroups">> => list(output_group()),
 %%   <<"ThumbnailConfiguration">> => thumbnail_configuration(),
 %%   <<"TimecodeConfig">> => timecode_config(),
-%%   <<"VideoDescriptions">> => list(video_description()())
+%%   <<"VideoDescriptions">> => list(video_description())
 %% }
 -type encoder_settings() :: #{binary() => any()}.
 
@@ -4089,7 +4089,7 @@
 %% Example:
 %% list_reservations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Reservations">> => list(reservation()())
+%%   <<"Reservations">> => list(reservation())
 %% }
 -type list_reservations_response() :: #{binary() => any()}.
 
@@ -4128,11 +4128,11 @@
 %% Example:
 %% update_network_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AssociatedClusterIds">> => list(string()()),
+%%   <<"AssociatedClusterIds">> => list(string()),
 %%   <<"Id">> => string(),
-%%   <<"IpPools">> => list(ip_pool()()),
+%%   <<"IpPools">> => list(ip_pool()),
 %%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route()()),
+%%   <<"Routes">> => list(route()),
 %%   <<"State">> => list(any())
 %% }
 -type update_network_response() :: #{binary() => any()}.
@@ -4172,7 +4172,7 @@
 
 %% Example:
 %% remix_settings() :: #{
-%%   <<"ChannelMappings">> => list(audio_channel_mapping()()),
+%%   <<"ChannelMappings">> => list(audio_channel_mapping()),
 %%   <<"ChannelsIn">> => integer(),
 %%   <<"ChannelsOut">> => integer()
 %% }
@@ -4190,7 +4190,7 @@
 %% Example:
 %% thumbnail_detail() :: #{
 %%   <<"PipelineId">> => string(),
-%%   <<"Thumbnails">> => list(thumbnail()())
+%%   <<"Thumbnails">> => list(thumbnail())
 %% }
 -type thumbnail_detail() :: #{binary() => any()}.
 
@@ -4252,15 +4252,15 @@
 %% Example:
 %% create_node_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ChannelPlacementGroups">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"ConnectionState">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
 %%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
 %%   <<"State">> => list(any())
 %% }
 -type create_node_response() :: #{binary() => any()}.
@@ -4271,7 +4271,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
 %%   <<"EventType">> => list(any()),
 %%   <<"GroupId">> => string(),
 %%   <<"Id">> => string(),
@@ -4305,8 +4305,8 @@
 %% Example:
 %% multiplex() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"Destinations">> => list(multiplex_output_destination()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
 %%   <<"Id">> => string(),
 %%   <<"MultiplexSettings">> => multiplex_settings(),
 %%   <<"Name">> => string(),
@@ -4332,8 +4332,8 @@
 
 %% Example:
 %% smpte2110_receiver_group_sdp_settings() :: #{
-%%   <<"AncillarySdps">> => list(input_sdp_location()()),
-%%   <<"AudioSdps">> => list(input_sdp_location()()),
+%%   <<"AncillarySdps">> => list(input_sdp_location()),
+%%   <<"AudioSdps">> => list(input_sdp_location()),
 %%   <<"VideoSdp">> => input_sdp_location()
 %% }
 -type smpte2110_receiver_group_sdp_settings() :: #{binary() => any()}.
@@ -4341,7 +4341,7 @@
 
 %% Example:
 %% cmaf_ingest_group_settings() :: #{
-%%   <<"CaptionLanguageMappings">> => list(cmaf_ingest_caption_language_mapping()()),
+%%   <<"CaptionLanguageMappings">> => list(cmaf_ingest_caption_language_mapping()),
 %%   <<"Destination">> => output_location_ref(),
 %%   <<"Id3Behavior">> => list(any()),
 %%   <<"Id3NameModifier">> => string(),
@@ -4363,8 +4363,8 @@
 
 %% Example:
 %% input_vpc_request() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type input_vpc_request() :: #{binary() => any()}.
 
@@ -4393,15 +4393,15 @@
 %% Example:
 %% delete_node_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelPlacementGroups">> => list(string()()),
+%%   <<"ChannelPlacementGroups">> => list(string()),
 %%   <<"ClusterId">> => string(),
 %%   <<"ConnectionState">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()()),
+%%   <<"NodeInterfaceMappings">> => list(node_interface_mapping()),
 %%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()()),
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping()),
 %%   <<"State">> => list(any())
 %% }
 -type delete_node_response() :: #{binary() => any()}.
@@ -4417,7 +4417,7 @@
 %%   <<"HdDeviceSettings">> => input_device_hd_settings(),
 %%   <<"Id">> => string(),
 %%   <<"MacAddress">> => string(),
-%%   <<"MedialiveInputArns">> => list(string()()),
+%%   <<"MedialiveInputArns">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NetworkSettings">> => input_device_network_settings(),
 %%   <<"OutputType">> => list(any()),
@@ -4455,7 +4455,7 @@
 
 %% Example:
 %% color_correction_settings() :: #{
-%%   <<"GlobalColorCorrections">> => list(color_correction()())
+%%   <<"GlobalColorCorrections">> => list(color_correction())
 %% }
 -type color_correction_settings() :: #{binary() => any()}.
 
@@ -4468,7 +4468,7 @@
 %% sdi_source_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"Mode">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any()),
@@ -4481,10 +4481,10 @@
 %% describe_input_security_group_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Inputs">> => list(string()()),
+%%   <<"Inputs">> => list(string()),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => map(),
-%%   <<"WhitelistRules">> => list(input_whitelist_rule()())
+%%   <<"WhitelistRules">> => list(input_whitelist_rule())
 %% }
 -type describe_input_security_group_response() :: #{binary() => any()}.
 
@@ -4506,7 +4506,7 @@
 
 %% Example:
 %% list_cloud_watch_alarm_templates_response() :: #{
-%%   <<"CloudWatchAlarmTemplates">> => list(cloud_watch_alarm_template_summary()()),
+%%   <<"CloudWatchAlarmTemplates">> => list(cloud_watch_alarm_template_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cloud_watch_alarm_templates_response() :: #{binary() => any()}.
@@ -4514,7 +4514,7 @@
 
 %% Example:
 %% list_event_bridge_rule_template_groups_response() :: #{
-%%   <<"EventBridgeRuleTemplateGroups">> => list(event_bridge_rule_template_group_summary()()),
+%%   <<"EventBridgeRuleTemplateGroups">> => list(event_bridge_rule_template_group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_bridge_rule_template_groups_response() :: #{binary() => any()}.
@@ -4552,9 +4552,9 @@
 
 %% Example:
 %% media_resource() :: #{
-%%   <<"Destinations">> => list(media_resource_neighbor()()),
+%%   <<"Destinations">> => list(media_resource_neighbor()),
 %%   <<"Name">> => string(),
-%%   <<"Sources">> => list(media_resource_neighbor()())
+%%   <<"Sources">> => list(media_resource_neighbor())
 %% }
 -type media_resource() :: #{binary() => any()}.
 
@@ -4586,16 +4586,16 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"Destinations">> => list(output_destination()()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
-%%   <<"InputAttachments">> => list(input_attachment()()),
+%%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()()),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
 %%   <<"PipelinesRunningCount">> => integer(),
 %%   <<"RoleArn">> => string(),
 %%   <<"State">> => list(any()),
@@ -4640,16 +4640,16 @@
 %%   <<"CdiInputSpecification">> => cdi_input_specification(),
 %%   <<"ChannelClass">> => list(any()),
 %%   <<"ChannelEngineVersion">> => channel_engine_version_response(),
-%%   <<"Destinations">> => list(output_destination()()),
-%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()()),
+%%   <<"Destinations">> => list(output_destination()),
+%%   <<"EgressEndpoints">> => list(channel_egress_endpoint()),
 %%   <<"EncoderSettings">> => encoder_settings(),
 %%   <<"Id">> => string(),
-%%   <<"InputAttachments">> => list(input_attachment()()),
+%%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
 %%   <<"Name">> => string(),
-%%   <<"PipelineDetails">> => list(pipeline_detail()()),
+%%   <<"PipelineDetails">> => list(pipeline_detail()),
 %%   <<"PipelinesRunningCount">> => integer(),
 %%   <<"RoleArn">> => string(),
 %%   <<"State">> => list(any()),
@@ -4716,7 +4716,7 @@
 %% Example:
 %% audio_track_selection() :: #{
 %%   <<"DolbyEDecode">> => audio_dolby_e_decode(),
-%%   <<"Tracks">> => list(audio_track()())
+%%   <<"Tracks">> => list(audio_track())
 %% }
 -type audio_track_selection() :: #{binary() => any()}.
 
@@ -4751,7 +4751,7 @@
 
 %% Example:
 %% srt_settings() :: #{
-%%   <<"SrtCallerSources">> => list(srt_caller_source()())
+%%   <<"SrtCallerSources">> => list(srt_caller_source())
 %% }
 -type srt_settings() :: #{binary() => any()}.
 
@@ -4833,7 +4833,7 @@
 %% Example:
 %% input_destination_request() :: #{
 %%   <<"Network">> => string(),
-%%   <<"NetworkRoutes">> => list(input_request_destination_route()()),
+%%   <<"NetworkRoutes">> => list(input_request_destination_route()),
 %%   <<"StaticIpAddress">> => string(),
 %%   <<"StreamName">> => string()
 %% }
@@ -4915,7 +4915,7 @@
 
 %% Example:
 %% list_event_bridge_rule_templates_response() :: #{
-%%   <<"EventBridgeRuleTemplates">> => list(event_bridge_rule_template_summary()()),
+%%   <<"EventBridgeRuleTemplates">> => list(event_bridge_rule_template_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_bridge_rule_templates_response() :: #{binary() => any()}.
@@ -4967,7 +4967,7 @@
 
 %% Example:
 %% batch_schedule_action_delete_result() :: #{
-%%   <<"ScheduleActions">> => list(schedule_action()())
+%%   <<"ScheduleActions">> => list(schedule_action())
 %% }
 -type batch_schedule_action_delete_result() :: #{binary() => any()}.
 
@@ -4985,7 +4985,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
 %%   <<"EventType">> => list(any()),
 %%   <<"GroupId">> => string(),
 %%   <<"Id">> => string(),
@@ -5007,7 +5007,7 @@
 
 %% Example:
 %% batch_schedule_action_delete_request() :: #{
-%%   <<"ActionNames">> => list(string()())
+%%   <<"ActionNames">> => list(string())
 %% }
 -type batch_schedule_action_delete_request() :: #{binary() => any()}.
 
@@ -5015,7 +5015,7 @@
 %% Example:
 %% list_sdi_sources_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SdiSources">> => list(sdi_source_summary()())
+%%   <<"SdiSources">> => list(sdi_source_summary())
 %% }
 -type list_sdi_sources_response() :: #{binary() => any()}.
 
@@ -5077,12 +5077,12 @@
 %% Example:
 %% start_monitor_deployment_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DiscoveryEntryPointArn">> => string(),
 %%   <<"ErrorMessage">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
 %%   <<"FailedMediaResourceMap">> => map(),
 %%   <<"Id">> => string(),
 %%   <<"LastDiscoveredAt">> => non_neg_integer(),
@@ -5100,7 +5100,7 @@
 
 %% Example:
 %% list_multiplexes_response() :: #{
-%%   <<"Multiplexes">> => list(multiplex_summary()()),
+%%   <<"Multiplexes">> => list(multiplex_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_multiplexes_response() :: #{binary() => any()}.
@@ -5137,9 +5137,9 @@
 
 %% Example:
 %% update_network_request() :: #{
-%%   <<"IpPools">> => list(ip_pool_update_request()()),
+%%   <<"IpPools">> => list(ip_pool_update_request()),
 %%   <<"Name">> => string(),
-%%   <<"Routes">> => list(route_update_request()())
+%%   <<"Routes">> => list(route_update_request())
 %% }
 -type update_network_request() :: #{binary() => any()}.
 
@@ -5163,7 +5163,7 @@
 %% Example:
 %% cluster_network_settings_update_request() :: #{
 %%   <<"DefaultRoute">> => string(),
-%%   <<"InterfaceMappings">> => list(interface_mapping_update_request()())
+%%   <<"InterfaceMappings">> => list(interface_mapping_update_request())
 %% }
 -type cluster_network_settings_update_request() :: #{binary() => any()}.
 
@@ -5280,7 +5280,7 @@
 %% Example:
 %% create_event_bridge_rule_template_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"EventTargets">> => list(event_bridge_rule_template_target()()),
+%%   <<"EventTargets">> => list(event_bridge_rule_template_target()),
 %%   <<"EventType">> := list(any()),
 %%   <<"GroupIdentifier">> := string(),
 %%   <<"Name">> := string(),
@@ -5354,12 +5354,12 @@
 %% Example:
 %% start_update_signal_map_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()()),
+%%   <<"CloudWatchAlarmTemplateGroupIds">> => list(string()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DiscoveryEntryPointArn">> => string(),
 %%   <<"ErrorMessage">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()()),
+%%   <<"EventBridgeRuleTemplateGroupIds">> => list(string()),
 %%   <<"FailedMediaResourceMap">> => map(),
 %%   <<"Id">> => string(),
 %%   <<"LastDiscoveredAt">> => non_neg_integer(),
@@ -5530,7 +5530,7 @@
 %% update_node_request() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Role">> => list(any()),
-%%   <<"SdiSourceMappings">> => list(sdi_source_mapping_update_request()())
+%%   <<"SdiSourceMappings">> => list(sdi_source_mapping_update_request())
 %% }
 -type update_node_request() :: #{binary() => any()}.
 
@@ -5545,7 +5545,7 @@
 %% Example:
 %% cluster_network_settings_create_request() :: #{
 %%   <<"DefaultRoute">> => string(),
-%%   <<"InterfaceMappings">> => list(interface_mapping_create_request()())
+%%   <<"InterfaceMappings">> => list(interface_mapping_create_request())
 %% }
 -type cluster_network_settings_create_request() :: #{binary() => any()}.
 
@@ -5561,14 +5561,14 @@
 %% Example:
 %% list_nodes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Nodes">> => list(describe_node_summary()())
+%%   <<"Nodes">> => list(describe_node_summary())
 %% }
 -type list_nodes_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_input_device_transfers_response() :: #{
-%%   <<"InputDeviceTransfers">> => list(transferring_input_device_summary()()),
+%%   <<"InputDeviceTransfers">> => list(transferring_input_device_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_input_device_transfers_response() :: #{binary() => any()}.
@@ -5634,8 +5634,8 @@
 
 %% Example:
 %% batch_start_request() :: #{
-%%   <<"ChannelIds">> => list(string()()),
-%%   <<"MultiplexIds">> => list(string()())
+%%   <<"ChannelIds">> => list(string()),
+%%   <<"MultiplexIds">> => list(string())
 %% }
 -type batch_start_request() :: #{binary() => any()}.
 
@@ -5670,8 +5670,8 @@
 
 %% Example:
 %% output() :: #{
-%%   <<"AudioDescriptionNames">> => list(string()()),
-%%   <<"CaptionDescriptionNames">> => list(string()()),
+%%   <<"AudioDescriptionNames">> => list(string()),
+%%   <<"CaptionDescriptionNames">> => list(string()),
 %%   <<"OutputName">> => string(),
 %%   <<"OutputSettings">> => output_settings(),
 %%   <<"VideoDescriptionName">> => string()
@@ -5689,8 +5689,8 @@
 %% Example:
 %% delete_multiplex_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AvailabilityZones">> => list(string()()),
-%%   <<"Destinations">> => list(multiplex_output_destination()()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"Destinations">> => list(multiplex_output_destination()),
 %%   <<"Id">> => string(),
 %%   <<"MultiplexSettings">> => multiplex_settings(),
 %%   <<"Name">> => string(),
@@ -5810,7 +5810,7 @@
 %% Example:
 %% update_cluster_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ChannelIds">> => list(string()()),
+%%   <<"ChannelIds">> => list(string()),
 %%   <<"ClusterType">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
@@ -5822,10 +5822,10 @@
 
 %% Example:
 %% start_update_signal_map_request() :: #{
-%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()()),
+%%   <<"CloudWatchAlarmTemplateGroupIdentifiers">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"DiscoveryEntryPointArn">> => string(),
-%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()()),
+%%   <<"EventBridgeRuleTemplateGroupIdentifiers">> => list(string()),
 %%   <<"ForceRediscovery">> => boolean(),
 %%   <<"Name">> => string()
 %% }

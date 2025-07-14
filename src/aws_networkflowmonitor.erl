@@ -139,12 +139,12 @@
 %% Example:
 %% get_monitor_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"localResources">> => list(monitor_local_resource()()),
+%%   <<"localResources">> => list(monitor_local_resource()),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"monitorArn">> => string(),
 %%   <<"monitorName">> => string(),
 %%   <<"monitorStatus">> => list(any()),
-%%   <<"remoteResources">> => list(monitor_remote_resource()()),
+%%   <<"remoteResources">> => list(monitor_remote_resource()),
 %%   <<"tags">> => map()
 %% }
 -type get_monitor_output() :: #{binary() => any()}.
@@ -152,7 +152,7 @@
 
 %% Example:
 %% list_monitors_output() :: #{
-%%   <<"monitors">> => list(monitor_summary()()),
+%%   <<"monitors">> => list(monitor_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_monitors_output() :: #{binary() => any()}.
@@ -206,7 +206,7 @@
 
 %% Example:
 %% get_query_results_workload_insights_top_contributors_data_output() :: #{
-%%   <<"datapoints">> => list(workload_insights_top_contributors_data_point()()),
+%%   <<"datapoints">> => list(workload_insights_top_contributors_data_point()),
 %%   <<"nextToken">> => [string()],
 %%   <<"unit">> => list(any())
 %% }
@@ -295,8 +295,8 @@
 
 %% Example:
 %% update_scope_input() :: #{
-%%   <<"resourcesToAdd">> => list(target_resource()()),
-%%   <<"resourcesToDelete">> => list(target_resource()())
+%%   <<"resourcesToAdd">> => list(target_resource()),
+%%   <<"resourcesToDelete">> => list(target_resource())
 %% }
 -type update_scope_input() :: #{binary() => any()}.
 
@@ -382,7 +382,7 @@
 %% Example:
 %% get_query_results_workload_insights_top_contributors_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"topContributors">> => list(workload_insights_top_contributors_row()())
+%%   <<"topContributors">> => list(workload_insights_top_contributors_row())
 %% }
 -type get_query_results_workload_insights_top_contributors_output() :: #{binary() => any()}.
 
@@ -396,7 +396,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -404,7 +404,7 @@
 %% Example:
 %% get_query_results_monitor_top_contributors_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"topContributors">> => list(monitor_top_contributors_row()()),
+%%   <<"topContributors">> => list(monitor_top_contributors_row()),
 %%   <<"unit">> => list(any())
 %% }
 -type get_query_results_monitor_top_contributors_output() :: #{binary() => any()}.
@@ -413,10 +413,10 @@
 %% Example:
 %% update_monitor_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"localResourcesToAdd">> => list(monitor_local_resource()()),
-%%   <<"localResourcesToRemove">> => list(monitor_local_resource()()),
-%%   <<"remoteResourcesToAdd">> => list(monitor_remote_resource()()),
-%%   <<"remoteResourcesToRemove">> => list(monitor_remote_resource()())
+%%   <<"localResourcesToAdd">> => list(monitor_local_resource()),
+%%   <<"localResourcesToRemove">> => list(monitor_local_resource()),
+%%   <<"remoteResourcesToAdd">> => list(monitor_remote_resource()),
+%%   <<"remoteResourcesToRemove">> => list(monitor_remote_resource())
 %% }
 -type update_monitor_input() :: #{binary() => any()}.
 
@@ -436,7 +436,7 @@
 %% create_scope_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"targets">> := list(target_resource()())
+%%   <<"targets">> := list(target_resource())
 %% }
 -type create_scope_input() :: #{binary() => any()}.
 
@@ -447,7 +447,7 @@
 %%   <<"scopeId">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"targets">> => list(target_resource()())
+%%   <<"targets">> => list(target_resource())
 %% }
 -type get_scope_output() :: #{binary() => any()}.
 
@@ -517,12 +517,12 @@
 %% Example:
 %% create_monitor_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"localResources">> => list(monitor_local_resource()()),
+%%   <<"localResources">> => list(monitor_local_resource()),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"monitorArn">> => string(),
 %%   <<"monitorName">> => string(),
 %%   <<"monitorStatus">> => list(any()),
-%%   <<"remoteResources">> => list(monitor_remote_resource()()),
+%%   <<"remoteResources">> => list(monitor_remote_resource()),
 %%   <<"tags">> => map()
 %% }
 -type create_monitor_output() :: #{binary() => any()}.
@@ -543,7 +543,7 @@
 %% Example:
 %% list_scopes_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"scopes">> => list(scope_summary()())
+%%   <<"scopes">> => list(scope_summary())
 %% }
 -type list_scopes_output() :: #{binary() => any()}.
 
@@ -577,7 +577,7 @@
 %%   <<"remoteVpcId">> => string(),
 %%   <<"snatIp">> => [string()],
 %%   <<"targetPort">> => [integer()],
-%%   <<"traversedConstructs">> => list(traversed_component()()),
+%%   <<"traversedConstructs">> => list(traversed_component()),
 %%   <<"value">> => [float()]
 %% }
 -type monitor_top_contributors_row() :: #{binary() => any()}.
@@ -608,12 +608,12 @@
 %% Example:
 %% update_monitor_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"localResources">> => list(monitor_local_resource()()),
+%%   <<"localResources">> => list(monitor_local_resource()),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"monitorArn">> => string(),
 %%   <<"monitorName">> => string(),
 %%   <<"monitorStatus">> => list(any()),
-%%   <<"remoteResources">> => list(monitor_remote_resource()()),
+%%   <<"remoteResources">> => list(monitor_remote_resource()),
 %%   <<"tags">> => map()
 %% }
 -type update_monitor_output() :: #{binary() => any()}.
@@ -622,9 +622,9 @@
 %% Example:
 %% create_monitor_input() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"localResources">> := list(monitor_local_resource()()),
+%%   <<"localResources">> := list(monitor_local_resource()),
 %%   <<"monitorName">> := string(),
-%%   <<"remoteResources">> => list(monitor_remote_resource()()),
+%%   <<"remoteResources">> => list(monitor_remote_resource()),
 %%   <<"scopeArn">> := string(),
 %%   <<"tags">> => map()
 %% }

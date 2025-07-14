@@ -100,11 +100,11 @@
 %%   <<"ChannelId">> := string(),
 %%   <<"ChannelName">> => string(),
 %%   <<"ConfigurationName">> := string(),
-%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"GuardrailPolicyArns">> => list(string()),
 %%   <<"IamRoleArn">> := string(),
 %%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SnsTopicArns">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TeamId">> := string(),
 %%   <<"TeamName">> => string(),
 %%   <<"TenantId">> := string(),
@@ -139,7 +139,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -174,7 +174,7 @@
 %% Example:
 %% update_custom_action_request() :: #{
 %%   <<"AliasName">> => string(),
-%%   <<"Attachments">> => list(custom_action_attachment()()),
+%%   <<"Attachments">> => list(custom_action_attachment()),
 %%   <<"CustomActionArn">> := string(),
 %%   <<"Definition">> := custom_action_definition()
 %% }
@@ -235,7 +235,7 @@
 
 %% Example:
 %% list_microsoft_teams_configured_teams_result() :: #{
-%%   <<"ConfiguredTeams">> => list(configured_team()()),
+%%   <<"ConfiguredTeams">> => list(configured_team()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_microsoft_teams_configured_teams_result() :: #{binary() => any()}.
@@ -252,12 +252,12 @@
 %% Example:
 %% update_slack_channel_configuration_request() :: #{
 %%   <<"ChatConfigurationArn">> := string(),
-%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"GuardrailPolicyArns">> => list(string()),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
 %%   <<"SlackChannelId">> := string(),
 %%   <<"SlackChannelName">> => string(),
-%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"SnsTopicArns">> => list(string()),
 %%   <<"UserAuthorizationRequired">> => boolean()
 %% }
 -type update_slack_channel_configuration_request() :: #{binary() => any()}.
@@ -284,7 +284,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -298,7 +298,7 @@
 
 %% Example:
 %% list_custom_actions_result() :: #{
-%%   <<"CustomActions">> => list(string()()),
+%%   <<"CustomActions">> => list(string()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_custom_actions_result() :: #{binary() => any()}.
@@ -340,10 +340,10 @@
 %%   <<"ChannelId">> := string(),
 %%   <<"ChannelName">> => string(),
 %%   <<"ChatConfigurationArn">> := string(),
-%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"GuardrailPolicyArns">> => list(string()),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"SnsTopicArns">> => list(string()),
 %%   <<"UserAuthorizationRequired">> => boolean()
 %% }
 -type update_teams_channel_configuration_request() :: #{binary() => any()}.
@@ -359,7 +359,7 @@
 %% Example:
 %% describe_chime_webhook_configurations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WebhookConfigurations">> => list(chime_webhook_configuration()())
+%%   <<"WebhookConfigurations">> => list(chime_webhook_configuration())
 %% }
 -type describe_chime_webhook_configurations_result() :: #{binary() => any()}.
 
@@ -462,7 +462,7 @@
 %% Example:
 %% custom_action_attachment() :: #{
 %%   <<"ButtonText">> => string(),
-%%   <<"Criteria">> => list(custom_action_attachment_criteria()()),
+%%   <<"Criteria">> => list(custom_action_attachment_criteria()),
 %%   <<"NotificationType">> => string(),
 %%   <<"Variables">> => map()
 %% }
@@ -472,7 +472,7 @@
 %% Example:
 %% describe_slack_workspaces_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SlackWorkspaces">> => list(slack_workspace()())
+%%   <<"SlackWorkspaces">> => list(slack_workspace())
 %% }
 -type describe_slack_workspaces_result() :: #{binary() => any()}.
 
@@ -500,7 +500,7 @@
 
 %% Example:
 %% list_associations_result() :: #{
-%%   <<"Associations">> => list(association_listing()()),
+%%   <<"Associations">> => list(association_listing()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_associations_result() :: #{binary() => any()}.
@@ -508,7 +508,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -545,7 +545,7 @@
 %% Example:
 %% list_teams_channel_configurations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TeamChannelConfigurations">> => list(teams_channel_configuration()())
+%%   <<"TeamChannelConfigurations">> => list(teams_channel_configuration())
 %% }
 -type list_teams_channel_configurations_result() :: #{binary() => any()}.
 
@@ -593,10 +593,10 @@
 %% create_custom_action_request() :: #{
 %%   <<"ActionName">> := string(),
 %%   <<"AliasName">> => string(),
-%%   <<"Attachments">> => list(custom_action_attachment()()),
+%%   <<"Attachments">> => list(custom_action_attachment()),
 %%   <<"ClientToken">> => string(),
 %%   <<"Definition">> := custom_action_definition(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_custom_action_request() :: #{binary() => any()}.
 
@@ -614,8 +614,8 @@
 %%   <<"ConfigurationName">> := string(),
 %%   <<"IamRoleArn">> := string(),
 %%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> := list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SnsTopicArns">> := list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WebhookDescription">> := string(),
 %%   <<"WebhookUrl">> := string()
 %% }
@@ -640,14 +640,14 @@
 %% Example:
 %% create_slack_channel_configuration_request() :: #{
 %%   <<"ConfigurationName">> := string(),
-%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"GuardrailPolicyArns">> => list(string()),
 %%   <<"IamRoleArn">> := string(),
 %%   <<"LoggingLevel">> => string(),
 %%   <<"SlackChannelId">> := string(),
 %%   <<"SlackChannelName">> => string(),
 %%   <<"SlackTeamId">> := string(),
-%%   <<"SnsTopicArns">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SnsTopicArns">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserAuthorizationRequired">> => boolean()
 %% }
 -type create_slack_channel_configuration_request() :: #{binary() => any()}.
@@ -658,7 +658,7 @@
 %%   <<"ChatConfigurationArn">> := string(),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"SnsTopicArns">> => list(string()),
 %%   <<"WebhookDescription">> => string(),
 %%   <<"WebhookUrl">> => string()
 %% }
@@ -696,7 +696,7 @@
 %% custom_action() :: #{
 %%   <<"ActionName">> => string(),
 %%   <<"AliasName">> => string(),
-%%   <<"Attachments">> => list(custom_action_attachment()()),
+%%   <<"Attachments">> => list(custom_action_attachment()),
 %%   <<"CustomActionArn">> => string(),
 %%   <<"Definition">> => custom_action_definition()
 %% }
@@ -790,17 +790,17 @@
 %% slack_channel_configuration() :: #{
 %%   <<"ChatConfigurationArn">> => string(),
 %%   <<"ConfigurationName">> => string(),
-%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"GuardrailPolicyArns">> => list(string()),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
 %%   <<"SlackChannelId">> => string(),
 %%   <<"SlackChannelName">> => string(),
 %%   <<"SlackTeamId">> => string(),
 %%   <<"SlackTeamName">> => string(),
-%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"SnsTopicArns">> => list(string()),
 %%   <<"State">> => string(),
 %%   <<"StateReason">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserAuthorizationRequired">> => boolean()
 %% }
 -type slack_channel_configuration() :: #{binary() => any()}.
@@ -816,7 +816,7 @@
 %% Example:
 %% list_microsoft_teams_user_identities_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TeamsUserIdentities">> => list(teams_user_identity()())
+%%   <<"TeamsUserIdentities">> => list(teams_user_identity())
 %% }
 -type list_microsoft_teams_user_identities_result() :: #{binary() => any()}.
 
@@ -841,10 +841,10 @@
 %%   <<"ConfigurationName">> => string(),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"SnsTopicArns">> => list(string()),
 %%   <<"State">> => string(),
 %%   <<"StateReason">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WebhookDescription">> => string()
 %% }
 -type chime_webhook_configuration() :: #{binary() => any()}.
@@ -919,13 +919,13 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"ChatConfigurationArn">> => string(),
 %%   <<"ConfigurationName">> => string(),
-%%   <<"GuardrailPolicyArns">> => list(string()()),
+%%   <<"GuardrailPolicyArns">> => list(string()),
 %%   <<"IamRoleArn">> => string(),
 %%   <<"LoggingLevel">> => string(),
-%%   <<"SnsTopicArns">> => list(string()()),
+%%   <<"SnsTopicArns">> => list(string()),
 %%   <<"State">> => string(),
 %%   <<"StateReason">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TeamId">> => string(),
 %%   <<"TeamName">> => string(),
 %%   <<"TenantId">> => string(),
@@ -937,7 +937,7 @@
 %% Example:
 %% describe_slack_user_identities_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SlackUserIdentities">> => list(slack_user_identity()())
+%%   <<"SlackUserIdentities">> => list(slack_user_identity())
 %% }
 -type describe_slack_user_identities_result() :: #{binary() => any()}.
 
@@ -993,7 +993,7 @@
 %% Example:
 %% describe_slack_channel_configurations_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SlackChannelConfigurations">> => list(slack_channel_configuration()())
+%%   <<"SlackChannelConfigurations">> => list(slack_channel_configuration())
 %% }
 -type describe_slack_channel_configurations_result() :: #{binary() => any()}.
 

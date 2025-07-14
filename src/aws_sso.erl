@@ -91,7 +91,7 @@
 %% Example:
 %% list_account_roles_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"roleList">> => list(role_info()())
+%%   <<"roleList">> => list(role_info())
 %% }
 -type list_account_roles_response() :: #{binary() => any()}.
 
@@ -107,7 +107,7 @@
 
 %% Example:
 %% list_accounts_response() :: #{
-%%   <<"accountList">> => list(account_info()()),
+%%   <<"accountList">> => list(account_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_accounts_response() :: #{binary() => any()}.

@@ -174,7 +174,7 @@
 
 %% Example:
 %% receive_message_result() :: #{
-%%   <<"Messages">> => list(message()())
+%%   <<"Messages">> => list(message())
 %% }
 -type receive_message_result() :: #{binary() => any()}.
 
@@ -192,14 +192,14 @@
 
 %% Example:
 %% send_message_batch_request() :: #{
-%%   <<"Entries">> := list(send_message_batch_request_entry()()),
+%%   <<"Entries">> := list(send_message_batch_request_entry()),
 %%   <<"QueueUrl">> := string()
 %% }
 -type send_message_batch_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_message_batch_request() :: #{
-%%   <<"Entries">> := list(delete_message_batch_request_entry()()),
+%%   <<"Entries">> := list(delete_message_batch_request_entry()),
 %%   <<"QueueUrl">> := string()
 %% }
 -type delete_message_batch_request() :: #{binary() => any()}.
@@ -238,17 +238,17 @@
 
 %% Example:
 %% message_attribute_value() :: #{
-%%   <<"BinaryListValues">> => list(binary()()),
+%%   <<"BinaryListValues">> => list(binary()),
 %%   <<"BinaryValue">> => binary(),
 %%   <<"DataType">> => string(),
-%%   <<"StringListValues">> => list(string()()),
+%%   <<"StringListValues">> => list(string()),
 %%   <<"StringValue">> => string()
 %% }
 -type message_attribute_value() :: #{binary() => any()}.
 
 %% Example:
 %% list_message_move_tasks_result() :: #{
-%%   <<"Results">> => list(list_message_move_tasks_result_entry()())
+%%   <<"Results">> => list(list_message_move_tasks_result_entry())
 %% }
 -type list_message_move_tasks_result() :: #{binary() => any()}.
 
@@ -261,7 +261,7 @@
 %% Example:
 %% list_queues_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"QueueUrls">> => list(string()())
+%%   <<"QueueUrls">> => list(string())
 %% }
 -type list_queues_result() :: #{binary() => any()}.
 
@@ -282,8 +282,8 @@
 
 %% Example:
 %% delete_message_batch_result() :: #{
-%%   <<"Failed">> => list(batch_result_error_entry()()),
-%%   <<"Successful">> => list(delete_message_batch_result_entry()())
+%%   <<"Failed">> => list(batch_result_error_entry()),
+%%   <<"Successful">> => list(delete_message_batch_result_entry())
 %% }
 -type delete_message_batch_result() :: #{binary() => any()}.
 
@@ -309,15 +309,15 @@
 
 %% Example:
 %% send_message_batch_result() :: #{
-%%   <<"Failed">> => list(batch_result_error_entry()()),
-%%   <<"Successful">> => list(send_message_batch_result_entry()())
+%%   <<"Failed">> => list(batch_result_error_entry()),
+%%   <<"Successful">> => list(send_message_batch_result_entry())
 %% }
 -type send_message_batch_result() :: #{binary() => any()}.
 
 %% Example:
 %% untag_queue_request() :: #{
 %%   <<"QueueUrl">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_queue_request() :: #{binary() => any()}.
 
@@ -377,7 +377,7 @@
 
 %% Example:
 %% change_message_visibility_batch_request() :: #{
-%%   <<"Entries">> := list(change_message_visibility_batch_request_entry()()),
+%%   <<"Entries">> := list(change_message_visibility_batch_request_entry()),
 %%   <<"QueueUrl">> := string()
 %% }
 -type change_message_visibility_batch_request() :: #{binary() => any()}.
@@ -478,7 +478,7 @@
 %% receive_message_request() :: #{
 %%   <<"AttributeNames">> => list(list(any())()),
 %%   <<"MaxNumberOfMessages">> => integer(),
-%%   <<"MessageAttributeNames">> => list(string()()),
+%%   <<"MessageAttributeNames">> => list(string()),
 %%   <<"MessageSystemAttributeNames">> => list(list(any())()),
 %%   <<"QueueUrl">> := string(),
 %%   <<"ReceiveRequestAttemptId">> => string(),
@@ -495,10 +495,10 @@
 
 %% Example:
 %% message_system_attribute_value() :: #{
-%%   <<"BinaryListValues">> => list(binary()()),
+%%   <<"BinaryListValues">> => list(binary()),
 %%   <<"BinaryValue">> => binary(),
 %%   <<"DataType">> => string(),
-%%   <<"StringListValues">> => list(string()()),
+%%   <<"StringListValues">> => list(string()),
 %%   <<"StringValue">> => string()
 %% }
 -type message_system_attribute_value() :: #{binary() => any()}.
@@ -518,7 +518,7 @@
 %% Example:
 %% list_dead_letter_source_queues_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"queueUrls">> => list(string()())
+%%   <<"queueUrls">> => list(string())
 %% }
 -type list_dead_letter_source_queues_result() :: #{binary() => any()}.
 
@@ -584,8 +584,8 @@
 
 %% Example:
 %% change_message_visibility_batch_result() :: #{
-%%   <<"Failed">> => list(batch_result_error_entry()()),
-%%   <<"Successful">> => list(change_message_visibility_batch_result_entry()())
+%%   <<"Failed">> => list(batch_result_error_entry()),
+%%   <<"Successful">> => list(change_message_visibility_batch_result_entry())
 %% }
 -type change_message_visibility_batch_result() :: #{binary() => any()}.
 
@@ -624,8 +624,8 @@
 
 %% Example:
 %% add_permission_request() :: #{
-%%   <<"AWSAccountIds">> := list(string()()),
-%%   <<"Actions">> := list(string()()),
+%%   <<"AWSAccountIds">> := list(string()),
+%%   <<"Actions">> := list(string()),
 %%   <<"Label">> := string(),
 %%   <<"QueueUrl">> := string()
 %% }

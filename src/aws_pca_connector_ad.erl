@@ -122,7 +122,7 @@
 
 %% Example:
 %% list_connectors_response() :: #{
-%%   <<"Connectors">> => list(connector_summary()()),
+%%   <<"Connectors">> => list(connector_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connectors_response() :: #{binary() => any()}.
@@ -171,7 +171,7 @@
 %%   <<"PrivateKeyAttributes">> => private_key_attributes_v3(),
 %%   <<"PrivateKeyFlags">> => private_key_flags_v3(),
 %%   <<"SubjectNameFlags">> => subject_name_flags_v3(),
-%%   <<"SupersededTemplates">> => list(string()())
+%%   <<"SupersededTemplates">> => list(string())
 %% }
 -type template_v3() :: #{binary() => any()}.
 
@@ -321,7 +321,7 @@
 %% Example:
 %% list_service_principal_names_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServicePrincipalNames">> => list(service_principal_name_summary()())
+%%   <<"ServicePrincipalNames">> => list(service_principal_name_summary())
 %% }
 -type list_service_principal_names_response() :: #{binary() => any()}.
 
@@ -424,7 +424,7 @@
 %%   <<"PrivateKeyAttributes">> => private_key_attributes_v4(),
 %%   <<"PrivateKeyFlags">> => private_key_flags_v4(),
 %%   <<"SubjectNameFlags">> => subject_name_flags_v4(),
-%%   <<"SupersededTemplates">> => list(string()())
+%%   <<"SupersededTemplates">> => list(string())
 %% }
 -type template_v4() :: #{binary() => any()}.
 
@@ -521,7 +521,7 @@
 
 %% Example:
 %% list_directory_registrations_response() :: #{
-%%   <<"DirectoryRegistrations">> => list(directory_registration_summary()()),
+%%   <<"DirectoryRegistrations">> => list(directory_registration_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_directory_registrations_response() :: #{binary() => any()}.
@@ -628,7 +628,7 @@
 %% Example:
 %% application_policies() :: #{
 %%   <<"Critical">> => [boolean()],
-%%   <<"Policies">> => list(list()())
+%%   <<"Policies">> => list(list())
 %% }
 -type application_policies() :: #{binary() => any()}.
 
@@ -647,7 +647,7 @@
 %% Example:
 %% list_templates_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Templates">> => list(template_summary()())
+%%   <<"Templates">> => list(template_summary())
 %% }
 -type list_templates_response() :: #{binary() => any()}.
 
@@ -685,7 +685,7 @@
 
 %% Example:
 %% list_template_group_access_control_entries_response() :: #{
-%%   <<"AccessControlEntries">> => list(access_control_entry_summary()()),
+%%   <<"AccessControlEntries">> => list(access_control_entry_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_template_group_access_control_entries_response() :: #{binary() => any()}.
@@ -740,7 +740,7 @@
 %%   <<"PrivateKeyAttributes">> => private_key_attributes_v2(),
 %%   <<"PrivateKeyFlags">> => private_key_flags_v2(),
 %%   <<"SubjectNameFlags">> => subject_name_flags_v2(),
-%%   <<"SupersededTemplates">> => list(string()())
+%%   <<"SupersededTemplates">> => list(string())
 %% }
 -type template_v2() :: #{binary() => any()}.
 
@@ -811,7 +811,7 @@
 %% Example:
 %% vpc_information() :: #{
 %%   <<"IpAddressType">> => list(any()),
-%%   <<"SecurityGroupIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string())
 %% }
 -type vpc_information() :: #{binary() => any()}.
 

@@ -144,7 +144,7 @@
 
 %% Example:
 %% list_code_reviews_response() :: #{
-%%   <<"CodeReviewSummaries">> => list(code_review_summary()()),
+%%   <<"CodeReviewSummaries">> => list(code_review_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_code_reviews_response() :: #{binary() => any()}.
@@ -217,7 +217,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -236,9 +236,9 @@
 %% Example:
 %% list_repository_associations_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string(),
-%%   <<"Owners">> => list(string()()),
+%%   <<"Owners">> => list(string()),
 %%   <<"ProviderTypes">> => list(list(any())()),
 %%   <<"States">> => list(list(any())())
 %% }
@@ -379,7 +379,7 @@
 %%   <<"LongDescription">> => string(),
 %%   <<"RuleId">> => string(),
 %%   <<"RuleName">> => string(),
-%%   <<"RuleTags">> => list(string()()),
+%%   <<"RuleTags">> => list(string()),
 %%   <<"ShortDescription">> => string()
 %% }
 -type rule_metadata() :: #{binary() => any()}.
@@ -479,7 +479,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ProviderTypes">> => list(list(any())()),
-%%   <<"RepositoryNames">> => list(string()()),
+%%   <<"RepositoryNames">> => list(string()),
 %%   <<"States">> => list(list(any())()),
 %%   <<"Type">> := list(any())
 %% }
@@ -498,8 +498,8 @@
 %% list_recommendation_feedback_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RecommendationIds">> => list(string()()),
-%%   <<"UserIds">> => list(string()())
+%%   <<"RecommendationIds">> => list(string()),
+%%   <<"UserIds">> => list(string())
 %% }
 -type list_recommendation_feedback_request() :: #{binary() => any()}.
 
@@ -532,7 +532,7 @@
 %% Example:
 %% list_repository_associations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RepositoryAssociationSummaries">> => list(repository_association_summary()())
+%%   <<"RepositoryAssociationSummaries">> => list(repository_association_summary())
 %% }
 -type list_repository_associations_response() :: #{binary() => any()}.
 
@@ -561,7 +561,7 @@
 %% Example:
 %% list_recommendation_feedback_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RecommendationFeedbackSummaries">> => list(recommendation_feedback_summary()())
+%%   <<"RecommendationFeedbackSummaries">> => list(recommendation_feedback_summary())
 %% }
 -type list_recommendation_feedback_response() :: #{binary() => any()}.
 
@@ -573,7 +573,7 @@
 %% Example:
 %% list_recommendations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RecommendationSummaries">> => list(recommendation_summary()())
+%%   <<"RecommendationSummaries">> => list(recommendation_summary())
 %% }
 -type list_recommendations_response() :: #{binary() => any()}.
 

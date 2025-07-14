@@ -33,8 +33,8 @@
 
 %% Example:
 %% get_session_response() :: #{
-%%   <<"interpretations">> => list(interpretation()()),
-%%   <<"messages">> => list(message()()),
+%%   <<"interpretations">> => list(interpretation()),
+%%   <<"messages">> => list(message()),
 %%   <<"sessionId">> => string(),
 %%   <<"sessionState">> => session_state()
 %% }
@@ -43,7 +43,7 @@
 
 %% Example:
 %% put_session_request() :: #{
-%%   <<"messages">> => list(message()()),
+%%   <<"messages">> => list(message()),
 %%   <<"requestAttributes">> => map(),
 %%   <<"responseContentType">> => string(),
 %%   <<"sessionState">> := session_state()
@@ -80,7 +80,7 @@
 %%   <<"shape">> => list(any()),
 %%   <<"subSlots">> => map(),
 %%   <<"value">> => value(),
-%%   <<"values">> => list(slot()())
+%%   <<"values">> => list(slot())
 %% }
 -type slot() :: #{binary() => any()}.
 
@@ -116,7 +116,7 @@
 %% value() :: #{
 %%   <<"interpretedValue">> => string(),
 %%   <<"originalValue">> => string(),
-%%   <<"resolvedValues">> => list(string()())
+%%   <<"resolvedValues">> => list(string())
 %% }
 -type value() :: #{binary() => any()}.
 
@@ -148,7 +148,7 @@
 
 %% Example:
 %% image_response_card() :: #{
-%%   <<"buttons">> => list(button()()),
+%%   <<"buttons">> => list(button()),
 %%   <<"imageUrl">> => string(),
 %%   <<"subtitle">> => string(),
 %%   <<"title">> => string()
@@ -210,7 +210,7 @@
 %% intent_result_event() :: #{
 %%   <<"eventId">> => string(),
 %%   <<"inputMode">> => list(any()),
-%%   <<"interpretations">> => list(interpretation()()),
+%%   <<"interpretations">> => list(interpretation()),
 %%   <<"recognizedBotMember">> => recognized_bot_member(),
 %%   <<"requestAttributes">> => map(),
 %%   <<"sessionId">> => string(),
@@ -232,7 +232,7 @@
 %% Example:
 %% text_response_event() :: #{
 %%   <<"eventId">> => string(),
-%%   <<"messages">> => list(message()())
+%%   <<"messages">> => list(message())
 %% }
 -type text_response_event() :: #{binary() => any()}.
 
@@ -263,7 +263,7 @@
 
 %% Example:
 %% session_state() :: #{
-%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"activeContexts">> => list(active_context()),
 %%   <<"dialogAction">> => dialog_action(),
 %%   <<"intent">> => intent(),
 %%   <<"originatingRequestId">> => string(),
@@ -275,8 +275,8 @@
 
 %% Example:
 %% recognize_text_response() :: #{
-%%   <<"interpretations">> => list(interpretation()()),
-%%   <<"messages">> => list(message()()),
+%%   <<"interpretations">> => list(interpretation()),
+%%   <<"messages">> => list(message()),
 %%   <<"recognizedBotMember">> => recognized_bot_member(),
 %%   <<"requestAttributes">> => map(),
 %%   <<"sessionId">> => string(),
@@ -347,7 +347,7 @@
 %%   <<"requestAttributes">> => map(),
 %%   <<"responseContentType">> => string(),
 %%   <<"sessionState">> => session_state(),
-%%   <<"welcomeMessages">> => list(message()())
+%%   <<"welcomeMessages">> => list(message())
 %% }
 -type configuration_event() :: #{binary() => any()}.
 
@@ -424,7 +424,7 @@
 
 %% Example:
 %% runtime_hint_details() :: #{
-%%   <<"runtimeHintValues">> => list(runtime_hint_value()()),
+%%   <<"runtimeHintValues">> => list(runtime_hint_value()),
 %%   <<"subSlotHints">> => map()
 %% }
 -type runtime_hint_details() :: #{binary() => any()}.

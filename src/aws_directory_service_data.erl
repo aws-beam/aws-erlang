@@ -121,7 +121,7 @@
 %% Example:
 %% list_groups_result() :: #{
 %%   <<"DirectoryId">> => string(),
-%%   <<"Groups">> => list(group_summary()()),
+%%   <<"Groups">> => list(group_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string()
 %% }
@@ -144,7 +144,7 @@
 %%   <<"DirectoryId">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type search_users_result() :: #{binary() => any()}.
 
@@ -234,7 +234,7 @@
 %% Example:
 %% search_groups_result() :: #{
 %%   <<"DirectoryId">> => string(),
-%%   <<"Groups">> => list(group()()),
+%%   <<"Groups">> => list(group()),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string()
 %% }
@@ -251,7 +251,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string(),
-%%   <<"SearchAttributes">> := list(string()()),
+%%   <<"SearchAttributes">> := list(string()),
 %%   <<"SearchString">> := string()
 %% }
 -type search_groups_request() :: #{binary() => any()}.
@@ -272,7 +272,7 @@
 %% list_group_members_result() :: #{
 %%   <<"DirectoryId">> => string(),
 %%   <<"MemberRealm">> => string(),
-%%   <<"Members">> => list(member()()),
+%%   <<"Members">> => list(member()),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string()
 %% }
@@ -285,7 +285,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string(),
-%%   <<"SearchAttributes">> := list(string()()),
+%%   <<"SearchAttributes">> := list(string()),
 %%   <<"SearchString">> := string()
 %% }
 -type search_users_request() :: #{binary() => any()}.
@@ -308,7 +308,7 @@
 %%   <<"DirectoryId">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string(),
-%%   <<"Users">> => list(user_summary()())
+%%   <<"Users">> => list(user_summary())
 %% }
 -type list_users_result() :: #{binary() => any()}.
 
@@ -340,7 +340,7 @@
 %% Example:
 %% describe_user_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"OtherAttributes">> => list(string()()),
+%%   <<"OtherAttributes">> => list(string()),
 %%   <<"Realm">> => string(),
 %%   <<"SAMAccountName">> := string()
 %% }
@@ -438,7 +438,7 @@
 %% Example:
 %% describe_group_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"OtherAttributes">> => list(string()()),
+%%   <<"OtherAttributes">> => list(string()),
 %%   <<"Realm">> => string(),
 %%   <<"SAMAccountName">> := string()
 %% }
@@ -492,7 +492,7 @@
 %% Example:
 %% list_groups_for_member_result() :: #{
 %%   <<"DirectoryId">> => string(),
-%%   <<"Groups">> => list(group_summary()()),
+%%   <<"Groups">> => list(group_summary()),
 %%   <<"MemberRealm">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"Realm">> => string()

@@ -160,12 +160,12 @@
 %% create_origin_endpoint_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ContainerType">> := list(any()),
-%%   <<"DashManifests">> => list(create_dash_manifest_configuration()()),
+%%   <<"DashManifests">> => list(create_dash_manifest_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
-%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()()),
-%%   <<"MssManifests">> => list(create_mss_manifest_configuration()()),
+%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()),
+%%   <<"MssManifests">> => list(create_mss_manifest_configuration()),
 %%   <<"OriginEndpointName">> := string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
@@ -203,7 +203,7 @@
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
-%%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"IngestEndpoints">> => list(ingest_endpoint()),
 %%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
@@ -252,14 +252,14 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"ContainerType">> => list(any()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DashManifests">> => list(get_dash_manifest_configuration()()),
+%%   <<"DashManifests">> => list(get_dash_manifest_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
-%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
+%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"MssManifests">> => list(get_mss_manifest_configuration()()),
+%%   <<"MssManifests">> => list(get_mss_manifest_configuration()),
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
@@ -284,7 +284,7 @@
 
 %% Example:
 %% create_dash_manifest_configuration() :: #{
-%%   <<"BaseUrls">> => list(dash_base_url()()),
+%%   <<"BaseUrls">> => list(dash_base_url()),
 %%   <<"Compactness">> => list(any()),
 %%   <<"DrmSignaling">> => list(any()),
 %%   <<"DvbSettings">> => dash_dvb_settings(),
@@ -317,13 +317,13 @@
 %% Example:
 %% update_origin_endpoint_request() :: #{
 %%   <<"ContainerType">> := list(any()),
-%%   <<"DashManifests">> => list(create_dash_manifest_configuration()()),
+%%   <<"DashManifests">> => list(create_dash_manifest_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()()),
-%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()()),
-%%   <<"MssManifests">> => list(create_mss_manifest_configuration()()),
+%%   <<"HlsManifests">> => list(create_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(create_low_latency_hls_manifest_configuration()),
+%%   <<"MssManifests">> => list(create_mss_manifest_configuration()),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()]
 %% }
@@ -418,7 +418,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -446,7 +446,7 @@
 
 %% Example:
 %% list_origin_endpoints_response() :: #{
-%%   <<"Items">> => list(origin_endpoint_list_configuration()()),
+%%   <<"Items">> => list(origin_endpoint_list_configuration()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_origin_endpoints_response() :: #{binary() => any()}.
@@ -600,7 +600,7 @@
 
 %% Example:
 %% dash_dvb_settings() :: #{
-%%   <<"ErrorMetrics">> => list(dash_dvb_metrics_reporting()()),
+%%   <<"ErrorMetrics">> => list(dash_dvb_metrics_reporting()),
 %%   <<"FontDownload">> => dash_dvb_font_download()
 %% }
 -type dash_dvb_settings() :: #{binary() => any()}.
@@ -690,7 +690,7 @@
 
 %% Example:
 %% get_dash_manifest_configuration() :: #{
-%%   <<"BaseUrls">> => list(dash_base_url()()),
+%%   <<"BaseUrls">> => list(dash_base_url()),
 %%   <<"Compactness">> => list(any()),
 %%   <<"DrmSignaling">> => list(any()),
 %%   <<"DvbSettings">> => dash_dvb_settings(),
@@ -714,7 +714,7 @@
 
 %% Example:
 %% list_channels_response() :: #{
-%%   <<"Items">> => list(channel_list_configuration()()),
+%%   <<"Items">> => list(channel_list_configuration()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_channels_response() :: #{binary() => any()}.
@@ -789,7 +789,7 @@
 
 %% Example:
 %% list_channel_groups_response() :: #{
-%%   <<"Items">> => list(channel_group_list_configuration()()),
+%%   <<"Items">> => list(channel_group_list_configuration()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_channel_groups_response() :: #{binary() => any()}.
@@ -928,7 +928,7 @@
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
-%%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"IngestEndpoints">> => list(ingest_endpoint()),
 %%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
@@ -966,7 +966,7 @@
 
 %% Example:
 %% list_harvest_jobs_response() :: #{
-%%   <<"Items">> => list(harvest_job()()),
+%%   <<"Items">> => list(harvest_job()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_harvest_jobs_response() :: #{binary() => any()}.
@@ -984,7 +984,7 @@
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
-%%   <<"IngestEndpoints">> => list(ingest_endpoint()()),
+%%   <<"IngestEndpoints">> => list(ingest_endpoint()),
 %%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
@@ -1001,13 +1001,13 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"ContainerType">> => list(any()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DashManifests">> => list(list_dash_manifest_configuration()()),
+%%   <<"DashManifests">> => list(list_dash_manifest_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(list_hls_manifest_configuration()()),
-%%   <<"LowLatencyHlsManifests">> => list(list_low_latency_hls_manifest_configuration()()),
+%%   <<"HlsManifests">> => list(list_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(list_low_latency_hls_manifest_configuration()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"MssManifests">> => list(list_mss_manifest_configuration()()),
+%%   <<"MssManifests">> => list(list_mss_manifest_configuration()),
 %%   <<"OriginEndpointName">> => string()
 %% }
 -type origin_endpoint_list_configuration() :: #{binary() => any()}.
@@ -1071,9 +1071,9 @@
 
 %% Example:
 %% harvested_manifests() :: #{
-%%   <<"DashManifests">> => list(harvested_dash_manifest()()),
-%%   <<"HlsManifests">> => list(harvested_hls_manifest()()),
-%%   <<"LowLatencyHlsManifests">> => list(harvested_low_latency_hls_manifest()())
+%%   <<"DashManifests">> => list(harvested_dash_manifest()),
+%%   <<"HlsManifests">> => list(harvested_hls_manifest()),
+%%   <<"LowLatencyHlsManifests">> => list(harvested_low_latency_hls_manifest())
 %% }
 -type harvested_manifests() :: #{binary() => any()}.
 
@@ -1085,14 +1085,14 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"ContainerType">> => list(any()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DashManifests">> => list(get_dash_manifest_configuration()()),
+%%   <<"DashManifests">> => list(get_dash_manifest_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
-%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
+%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"MssManifests">> => list(get_mss_manifest_configuration()()),
+%%   <<"MssManifests">> => list(get_mss_manifest_configuration()),
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"Segment">> => segment(),
 %%   <<"StartoverWindowSeconds">> => [integer()],
@@ -1142,14 +1142,14 @@
 %%   <<"ChannelName">> => string(),
 %%   <<"ContainerType">> => list(any()),
 %%   <<"CreatedAt">> => [non_neg_integer()],
-%%   <<"DashManifests">> => list(get_dash_manifest_configuration()()),
+%%   <<"DashManifests">> => list(get_dash_manifest_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"ForceEndpointErrorConfiguration">> => force_endpoint_error_configuration(),
-%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()()),
-%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()()),
+%%   <<"HlsManifests">> => list(get_hls_manifest_configuration()),
+%%   <<"LowLatencyHlsManifests">> => list(get_low_latency_hls_manifest_configuration()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
-%%   <<"MssManifests">> => list(get_mss_manifest_configuration()()),
+%%   <<"MssManifests">> => list(get_mss_manifest_configuration()),
 %%   <<"OriginEndpointName">> => string(),
 %%   <<"ResetAt">> => [non_neg_integer()],
 %%   <<"Segment">> => segment(),

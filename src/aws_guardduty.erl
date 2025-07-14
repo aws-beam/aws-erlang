@@ -268,11 +268,11 @@
 %%   <<"InstanceState">> => string(),
 %%   <<"InstanceType">> => string(),
 %%   <<"LaunchTime">> => string(),
-%%   <<"NetworkInterfaces">> => list(network_interface()()),
+%%   <<"NetworkInterfaces">> => list(network_interface()),
 %%   <<"OutpostArn">> => string(),
 %%   <<"Platform">> => string(),
-%%   <<"ProductCodes">> => list(product_code()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"ProductCodes">> => list(product_code()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type instance_details() :: #{binary() => any()}.
 
@@ -281,7 +281,7 @@
 %% member_data_source_configuration() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"DataSources">> => data_source_configurations_result(),
-%%   <<"Features">> => list(member_features_configuration_result()())
+%%   <<"Features">> => list(member_features_configuration_result())
 %% }
 -type member_data_source_configuration() :: #{binary() => any()}.
 
@@ -334,7 +334,7 @@
 
 %% Example:
 %% decline_invitations_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type decline_invitations_response() :: #{binary() => any()}.
 
@@ -354,7 +354,7 @@
 %%   <<"ImagePrefix">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"SecurityContext">> => security_context(),
-%%   <<"VolumeMounts">> => list(volume_mount()())
+%%   <<"VolumeMounts">> => list(volume_mount())
 %% }
 -type container() :: #{binary() => any()}.
 
@@ -401,12 +401,12 @@
 
 %% Example:
 %% usage_statistics() :: #{
-%%   <<"SumByAccount">> => list(usage_account_result()()),
-%%   <<"SumByDataSource">> => list(usage_data_source_result()()),
-%%   <<"SumByFeature">> => list(usage_feature_result()()),
-%%   <<"SumByResource">> => list(usage_resource_result()()),
-%%   <<"TopAccountsByFeature">> => list(usage_top_accounts_result()()),
-%%   <<"TopResources">> => list(usage_resource_result()())
+%%   <<"SumByAccount">> => list(usage_account_result()),
+%%   <<"SumByDataSource">> => list(usage_data_source_result()),
+%%   <<"SumByFeature">> => list(usage_feature_result()),
+%%   <<"SumByResource">> => list(usage_resource_result()),
+%%   <<"TopAccountsByFeature">> => list(usage_top_accounts_result()),
+%%   <<"TopResources">> => list(usage_resource_result())
 %% }
 -type usage_statistics() :: #{binary() => any()}.
 
@@ -428,7 +428,7 @@
 %%   <<"ProtectedResource">> => create_protected_resource(),
 %%   <<"Role">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"StatusReasons">> => list(malware_protection_plan_status_reason()()),
+%%   <<"StatusReasons">> => list(malware_protection_plan_status_reason()),
 %%   <<"Tags">> => map()
 %% }
 -type get_malware_protection_plan_response() :: #{binary() => any()}.
@@ -450,8 +450,8 @@
 %%   <<"Name">> => string(),
 %%   <<"Owner">> => owner(),
 %%   <<"PublicAccess">> => public_access(),
-%%   <<"S3ObjectDetails">> => list(s3_object_detail()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"S3ObjectDetails">> => list(s3_object_detail()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string()
 %% }
 -type s3_bucket_detail() :: #{binary() => any()}.
@@ -490,15 +490,15 @@
 
 %% Example:
 %% get_members_response() :: #{
-%%   <<"Members">> => list(member()()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"Members">> => list(member()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type get_members_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_member_detectors_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type get_member_detectors_request() :: #{binary() => any()}.
 
@@ -513,13 +513,13 @@
 
 %% Example:
 %% sequence() :: #{
-%%   <<"Actors">> => list(actor()()),
-%%   <<"AdditionalSequenceTypes">> => list(string()()),
+%%   <<"Actors">> => list(actor()),
+%%   <<"AdditionalSequenceTypes">> => list(string()),
 %%   <<"Description">> => string(),
-%%   <<"Endpoints">> => list(network_endpoint()()),
-%%   <<"Resources">> => list(resource_v2()()),
-%%   <<"SequenceIndicators">> => list(indicator()()),
-%%   <<"Signals">> => list(signal()()),
+%%   <<"Endpoints">> => list(network_endpoint()),
+%%   <<"Resources">> => list(resource_v2()),
+%%   <<"SequenceIndicators">> => list(indicator()),
+%%   <<"Signals">> => list(signal()),
 %%   <<"Uid">> => string()
 %% }
 -type sequence() :: #{binary() => any()}.
@@ -555,8 +555,8 @@
 
 %% Example:
 %% ebs_volume_details() :: #{
-%%   <<"ScannedVolumeDetails">> => list(volume_detail()()),
-%%   <<"SkippedVolumeDetails">> => list(volume_detail()())
+%%   <<"ScannedVolumeDetails">> => list(volume_detail()),
+%%   <<"SkippedVolumeDetails">> => list(volume_detail())
 %% }
 -type ebs_volume_details() :: #{binary() => any()}.
 
@@ -574,7 +574,7 @@
 
 %% Example:
 %% kubernetes_workload_details() :: #{
-%%   <<"Containers">> => list(container()()),
+%%   <<"Containers">> => list(container()),
 %%   <<"HostIPC">> => boolean(),
 %%   <<"HostNetwork">> => boolean(),
 %%   <<"HostPID">> => boolean(),
@@ -583,7 +583,7 @@
 %%   <<"ServiceAccountName">> => string(),
 %%   <<"Type">> => string(),
 %%   <<"Uid">> => string(),
-%%   <<"Volumes">> => list(volume()())
+%%   <<"Volumes">> => list(volume())
 %% }
 -type kubernetes_workload_details() :: #{binary() => any()}.
 
@@ -597,7 +597,7 @@
 %%   <<"Euid">> => integer(),
 %%   <<"ExecutablePath">> => string(),
 %%   <<"ExecutableSha256">> => string(),
-%%   <<"Lineage">> => list(lineage_object()()),
+%%   <<"Lineage">> => list(lineage_object()),
 %%   <<"Name">> => string(),
 %%   <<"NamespacePid">> => integer(),
 %%   <<"ParentUuid">> => string(),
@@ -625,7 +625,7 @@
 
 %% Example:
 %% filter_criteria() :: #{
-%%   <<"FilterCriterion">> => list(filter_criterion()())
+%%   <<"FilterCriterion">> => list(filter_criterion())
 %% }
 -type filter_criteria() :: #{binary() => any()}.
 
@@ -668,8 +668,8 @@
 
 %% Example:
 %% coverage_filter_condition() :: #{
-%%   <<"Equals">> => list(string()()),
-%%   <<"NotEquals">> => list(string()())
+%%   <<"Equals">> => list(string()),
+%%   <<"NotEquals">> => list(string())
 %% }
 -type coverage_filter_condition() :: #{binary() => any()}.
 
@@ -691,7 +691,7 @@
 
 %% Example:
 %% start_monitoring_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type start_monitoring_members_response() :: #{binary() => any()}.
 
@@ -712,7 +712,7 @@
 %%   <<"RequestUri">> => string(),
 %%   <<"Resource">> => string(),
 %%   <<"ResourceName">> => string(),
-%%   <<"SourceIps">> => list(string()()),
+%%   <<"SourceIps">> => list(string()),
 %%   <<"StatusCode">> => integer(),
 %%   <<"Subresource">> => string(),
 %%   <<"UserAgent">> => string(),
@@ -723,7 +723,7 @@
 
 %% Example:
 %% detector_feature_configuration_result() :: #{
-%%   <<"AdditionalConfiguration">> => list(detector_additional_configuration_result()()),
+%%   <<"AdditionalConfiguration">> => list(detector_additional_configuration_result()),
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedAt">> => non_neg_integer()
@@ -813,7 +813,7 @@
 %%   <<"LastModifiedAt">> => non_neg_integer(),
 %%   <<"RevisionId">> => string(),
 %%   <<"Role">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type lambda_details() :: #{binary() => any()}.
@@ -827,7 +827,7 @@
 %%   <<"DbShardGroupResourceId">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type rds_limitless_db_details() :: #{binary() => any()}.
 
@@ -866,14 +866,14 @@
 
 %% Example:
 %% network_interface() :: #{
-%%   <<"Ipv6Addresses">> => list(string()()),
+%%   <<"Ipv6Addresses">> => list(string()),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"PrivateDnsName">> => string(),
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_details()()),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_details()),
 %%   <<"PublicDnsName">> => string(),
 %%   <<"PublicIp">> => string(),
-%%   <<"SecurityGroups">> => list(security_group()()),
+%%   <<"SecurityGroups">> => list(security_group()),
 %%   <<"SubnetId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -948,7 +948,7 @@
 
 %% Example:
 %% list_findings_response() :: #{
-%%   <<"FindingIds">> => list(string()()),
+%%   <<"FindingIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_findings_response() :: #{binary() => any()}.
@@ -1024,7 +1024,7 @@
 
 %% Example:
 %% get_findings_request() :: #{
-%%   <<"FindingIds">> := list(string()()),
+%%   <<"FindingIds">> := list(string()),
 %%   <<"SortCriteria">> => sort_criteria()
 %% }
 -type get_findings_request() :: #{binary() => any()}.
@@ -1100,14 +1100,14 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% detector_feature_configuration() :: #{
-%%   <<"AdditionalConfiguration">> => list(detector_additional_configuration()()),
+%%   <<"AdditionalConfiguration">> => list(detector_additional_configuration()),
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
@@ -1141,7 +1141,7 @@
 
 %% Example:
 %% impersonated_user() :: #{
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"Username">> => string()
 %% }
 -type impersonated_user() :: #{binary() => any()}.
@@ -1153,14 +1153,14 @@
 
 %% Example:
 %% delete_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type delete_members_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% invite_members_request() :: #{
-%%   <<"AccountIds">> := list(string()()),
+%%   <<"AccountIds">> := list(string()),
 %%   <<"DisableEmailNotification">> => boolean(),
 %%   <<"Message">> => string()
 %% }
@@ -1195,7 +1195,7 @@
 
 %% Example:
 %% member_features_configuration_result() :: #{
-%%   <<"AdditionalConfiguration">> => list(member_additional_configuration_result()()),
+%%   <<"AdditionalConfiguration">> => list(member_additional_configuration_result()),
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedAt">> => non_neg_integer()
@@ -1221,14 +1221,14 @@
 %% Example:
 %% list_threat_intel_sets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ThreatIntelSetIds">> => list(string()())
+%%   <<"ThreatIntelSetIds">> => list(string())
 %% }
 -type list_threat_intel_sets_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% observations() :: #{
-%%   <<"Text">> => list(string()())
+%%   <<"Text">> => list(string())
 %% }
 -type observations() :: #{binary() => any()}.
 
@@ -1244,7 +1244,7 @@
 
 %% Example:
 %% archive_findings_request() :: #{
-%%   <<"FindingIds">> := list(string()())
+%%   <<"FindingIds">> := list(string())
 %% }
 -type archive_findings_request() :: #{binary() => any()}.
 
@@ -1282,9 +1282,9 @@
 
 %% Example:
 %% kubernetes_user_details() :: #{
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"ImpersonatedUser">> => impersonated_user(),
-%%   <<"SessionName">> => list(string()()),
+%%   <<"SessionName">> => list(string()),
 %%   <<"Uid">> => string(),
 %%   <<"Username">> => string()
 %% }
@@ -1314,7 +1314,7 @@
 %%   <<"Region">> => string(),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"Service">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Uid">> => string()
 %% }
 -type resource_v2() :: #{binary() => any()}.
@@ -1325,7 +1325,7 @@
 %%   <<"AutoEnable">> => boolean(),
 %%   <<"AutoEnableOrganizationMembers">> => list(any()),
 %%   <<"DataSources">> => organization_data_source_configurations_result(),
-%%   <<"Features">> => list(organization_feature_configuration_result()()),
+%%   <<"Features">> => list(organization_feature_configuration_result()),
 %%   <<"MemberAccountLimitReached">> => boolean(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1341,7 +1341,7 @@
 
 %% Example:
 %% organization_feature_configuration() :: #{
-%%   <<"AdditionalConfiguration">> => list(organization_additional_configuration()()),
+%%   <<"AdditionalConfiguration">> => list(organization_additional_configuration()),
 %%   <<"AutoEnable">> => list(any()),
 %%   <<"Name">> => list(any())
 %% }
@@ -1371,7 +1371,7 @@
 
 %% Example:
 %% unarchive_findings_request() :: #{
-%%   <<"FindingIds">> := list(string()())
+%%   <<"FindingIds">> := list(string())
 %% }
 -type unarchive_findings_request() :: #{binary() => any()}.
 
@@ -1417,7 +1417,7 @@
 
 %% Example:
 %% get_members_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type get_members_request() :: #{binary() => any()}.
 
@@ -1436,7 +1436,7 @@
 
 %% Example:
 %% create_members_request() :: #{
-%%   <<"AccountDetails">> := list(account_detail()())
+%%   <<"AccountDetails">> := list(account_detail())
 %% }
 -type create_members_request() :: #{binary() => any()}.
 
@@ -1447,7 +1447,7 @@
 
 %% Example:
 %% list_ip_sets_response() :: #{
-%%   <<"IpSetIds">> => list(string()()),
+%%   <<"IpSetIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_ip_sets_response() :: #{binary() => any()}.
@@ -1502,7 +1502,7 @@
 %%   <<"OwnerId">> => string(),
 %%   <<"PublicReadAccess">> => list(any()),
 %%   <<"PublicWriteAccess">> => list(any()),
-%%   <<"S3ObjectUids">> => list(string()())
+%%   <<"S3ObjectUids">> => list(string())
 %% }
 -type s3_bucket() :: #{binary() => any()}.
 
@@ -1522,7 +1522,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"DataSources">> => data_source_configurations(),
 %%   <<"Enable">> := boolean(),
-%%   <<"Features">> => list(detector_feature_configuration()()),
+%%   <<"Features">> => list(detector_feature_configuration()),
 %%   <<"FindingPublishingFrequency">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
@@ -1539,14 +1539,14 @@
 
 %% Example:
 %% disassociate_members_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type disassociate_members_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_findings_response() :: #{
-%%   <<"Findings">> => list(finding()())
+%%   <<"Findings">> => list(finding())
 %% }
 -type get_findings_response() :: #{binary() => any()}.
 
@@ -1619,14 +1619,14 @@
 
 %% Example:
 %% delete_members_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type delete_members_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% invite_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type invite_members_response() :: #{binary() => any()}.
 
@@ -1641,7 +1641,7 @@
 
 %% Example:
 %% member_features_configuration() :: #{
-%%   <<"AdditionalConfiguration">> => list(member_additional_configuration()()),
+%%   <<"AdditionalConfiguration">> => list(member_additional_configuration()),
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
@@ -1651,17 +1651,17 @@
 %% Example:
 %% describe_malware_scans_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Scans">> => list(scan()())
+%%   <<"Scans">> => list(scan())
 %% }
 -type describe_malware_scans_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% ec2_network_interface() :: #{
-%%   <<"Ipv6Addresses">> => list(string()()),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_details()()),
+%%   <<"Ipv6Addresses">> => list(string()),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_details()),
 %%   <<"PublicIp">> => string(),
-%%   <<"SecurityGroups">> => list(security_group()()),
+%%   <<"SecurityGroups">> => list(security_group()),
 %%   <<"SubNetId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -1671,33 +1671,33 @@
 %% Example:
 %% ecs_task_details() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Containers">> => list(container()()),
+%%   <<"Containers">> => list(container()),
 %%   <<"DefinitionArn">> => string(),
 %%   <<"Group">> => string(),
 %%   <<"LaunchType">> => string(),
 %%   <<"StartedAt">> => non_neg_integer(),
 %%   <<"StartedBy">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TaskCreatedAt">> => non_neg_integer(),
 %%   <<"Version">> => string(),
-%%   <<"Volumes">> => list(volume()())
+%%   <<"Volumes">> => list(volume())
 %% }
 -type ecs_task_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% signal() :: #{
-%%   <<"ActorIds">> => list(string()()),
+%%   <<"ActorIds">> => list(string()),
 %%   <<"Count">> => integer(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"EndpointIds">> => list(string()()),
+%%   <<"EndpointIds">> => list(string()),
 %%   <<"FirstSeenAt">> => non_neg_integer(),
 %%   <<"LastSeenAt">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"ResourceUids">> => list(string()()),
+%%   <<"ResourceUids">> => list(string()),
 %%   <<"Severity">> => float(),
-%%   <<"SignalIndicators">> => list(indicator()()),
+%%   <<"SignalIndicators">> => list(indicator()),
 %%   <<"Type">> => list(any()),
 %%   <<"Uid">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer()
@@ -1746,7 +1746,7 @@
 %% eks_cluster() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"Ec2InstanceUids">> => list(string()()),
+%%   <<"Ec2InstanceUids">> => list(string()),
 %%   <<"Status">> => list(any()),
 %%   <<"VpcId">> => string()
 %% }
@@ -1759,8 +1759,8 @@
 
 %% Example:
 %% vpc_config() :: #{
-%%   <<"SecurityGroups">> => list(security_group()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroups">> => list(security_group()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type vpc_config() :: #{binary() => any()}.
@@ -1858,7 +1858,7 @@
 
 %% Example:
 %% list_publishing_destinations_response() :: #{
-%%   <<"Destinations">> => list(destination()()),
+%%   <<"Destinations">> => list(destination()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_publishing_destinations_response() :: #{binary() => any()}.
@@ -1916,7 +1916,7 @@
 
 %% Example:
 %% disassociate_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type disassociate_members_response() :: #{binary() => any()}.
 
@@ -1932,15 +1932,15 @@
 %% Example:
 %% list_coverage_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(coverage_resource()())
+%%   <<"Resources">> => list(coverage_resource())
 %% }
 -type list_coverage_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% condition() :: #{
-%%   <<"Eq">> => list(string()()),
-%%   <<"Equals">> => list(string()()),
+%%   <<"Eq">> => list(string()),
+%%   <<"Equals">> => list(string()),
 %%   <<"GreaterThan">> => float(),
 %%   <<"GreaterThanOrEqual">> => float(),
 %%   <<"Gt">> => integer(),
@@ -1949,8 +1949,8 @@
 %%   <<"LessThanOrEqual">> => float(),
 %%   <<"Lt">> => integer(),
 %%   <<"Lte">> => integer(),
-%%   <<"Neq">> => list(string()()),
-%%   <<"NotEquals">> => list(string()())
+%%   <<"Neq">> => list(string()),
+%%   <<"NotEquals">> => list(string())
 %% }
 -type condition() :: #{binary() => any()}.
 
@@ -1997,14 +1997,14 @@
 %% Example:
 %% ec2_instance() :: #{
 %%   <<"AvailabilityZone">> => string(),
-%%   <<"Ec2NetworkInterfaceUids">> => list(string()()),
+%%   <<"Ec2NetworkInterfaceUids">> => list(string()),
 %%   <<"IamInstanceProfile">> => iam_instance_profile(),
 %%   <<"ImageDescription">> => string(),
 %%   <<"InstanceState">> => string(),
 %%   <<"InstanceType">> => string(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"Platform">> => string(),
-%%   <<"ProductCodes">> => list(product_code()())
+%%   <<"ProductCodes">> => list(product_code())
 %% }
 -type ec2_instance() :: #{binary() => any()}.
 
@@ -2049,7 +2049,7 @@
 
 %% Example:
 %% malware_scan_details() :: #{
-%%   <<"Threats">> => list(threat()())
+%%   <<"Threats">> => list(threat())
 %% }
 -type malware_scan_details() :: #{binary() => any()}.
 
@@ -2071,14 +2071,14 @@
 
 %% Example:
 %% create_sample_findings_request() :: #{
-%%   <<"FindingTypes">> => list(string()())
+%%   <<"FindingTypes">> => list(string())
 %% }
 -type create_sample_findings_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% decline_invitations_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type decline_invitations_request() :: #{binary() => any()}.
 
@@ -2094,7 +2094,7 @@
 %% account_free_trial_info() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"DataSources">> => data_sources_free_trial(),
-%%   <<"Features">> => list(free_trial_feature_configuration_result()())
+%%   <<"Features">> => list(free_trial_feature_configuration_result())
 %% }
 -type account_free_trial_info() :: #{binary() => any()}.
 
@@ -2115,8 +2115,8 @@
 
 %% Example:
 %% get_member_detectors_response() :: #{
-%%   <<"MemberDataSourceConfigurations">> => list(member_data_source_configuration()()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"MemberDataSourceConfigurations">> => list(member_data_source_configuration()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type get_member_detectors_response() :: #{binary() => any()}.
 
@@ -2160,7 +2160,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> => string()
 %% }
 -type eks_cluster_details() :: #{binary() => any()}.
@@ -2168,7 +2168,7 @@
 
 %% Example:
 %% kubernetes_workload() :: #{
-%%   <<"ContainerUids">> => list(string()()),
+%%   <<"ContainerUids">> => list(string()),
 %%   <<"KubernetesResourcesTypes">> => list(any()),
 %%   <<"Namespace">> => string()
 %% }
@@ -2184,7 +2184,7 @@
 
 %% Example:
 %% delete_invitations_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type delete_invitations_request() :: #{binary() => any()}.
 
@@ -2200,7 +2200,7 @@
 %% get_detector_response() :: #{
 %%   <<"CreatedAt">> => string(),
 %%   <<"DataSources">> => data_source_configurations_result(),
-%%   <<"Features">> => list(detector_feature_configuration_result()()),
+%%   <<"Features">> => list(detector_feature_configuration_result()),
 %%   <<"FindingPublishingFrequency">> => list(any()),
 %%   <<"ServiceRole">> => string(),
 %%   <<"Status">> => list(any()),
@@ -2286,7 +2286,7 @@
 %%   <<"AutoEnable">> => boolean(),
 %%   <<"AutoEnableOrganizationMembers">> => list(any()),
 %%   <<"DataSources">> => organization_data_source_configurations(),
-%%   <<"Features">> => list(organization_feature_configuration()())
+%%   <<"Features">> => list(organization_feature_configuration())
 %% }
 -type update_organization_configuration_request() :: #{binary() => any()}.
 
@@ -2341,7 +2341,7 @@
 %% threat_intelligence_detail() :: #{
 %%   <<"ThreatFileSha256">> => string(),
 %%   <<"ThreatListName">> => string(),
-%%   <<"ThreatNames">> => list(string()())
+%%   <<"ThreatNames">> => list(string())
 %% }
 -type threat_intelligence_detail() :: #{binary() => any()}.
 
@@ -2377,9 +2377,9 @@
 
 %% Example:
 %% update_member_detectors_request() :: #{
-%%   <<"AccountIds">> := list(string()()),
+%%   <<"AccountIds">> := list(string()),
 %%   <<"DataSources">> => data_source_configurations(),
-%%   <<"Features">> => list(member_features_configuration()())
+%%   <<"Features">> => list(member_features_configuration())
 %% }
 -type update_member_detectors_request() :: #{binary() => any()}.
 
@@ -2395,7 +2395,7 @@
 
 %% Example:
 %% delete_invitations_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type delete_invitations_response() :: #{binary() => any()}.
 
@@ -2412,7 +2412,7 @@
 %% Example:
 %% port_probe_action() :: #{
 %%   <<"Blocked">> => boolean(),
-%%   <<"PortProbeDetails">> => list(port_probe_detail()())
+%%   <<"PortProbeDetails">> => list(port_probe_detail())
 %% }
 -type port_probe_action() :: #{binary() => any()}.
 
@@ -2435,7 +2435,7 @@
 
 %% Example:
 %% threat() :: #{
-%%   <<"ItemPaths">> => list(item_path()()),
+%%   <<"ItemPaths">> => list(item_path()),
 %%   <<"Name">> => string(),
 %%   <<"Source">> => string()
 %% }
@@ -2491,7 +2491,7 @@
 
 %% Example:
 %% list_malware_protection_plans_response() :: #{
-%%   <<"MalwareProtectionPlans">> => list(malware_protection_plan_summary()()),
+%%   <<"MalwareProtectionPlans">> => list(malware_protection_plan_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_malware_protection_plans_response() :: #{binary() => any()}.
@@ -2562,7 +2562,7 @@
 
 %% Example:
 %% fargate_details() :: #{
-%%   <<"Issues">> => list(string()()),
+%%   <<"Issues">> => list(string()),
 %%   <<"ManagementType">> => list(any())
 %% }
 -type fargate_details() :: #{binary() => any()}.
@@ -2578,7 +2578,7 @@
 
 %% Example:
 %% list_members_response() :: #{
-%%   <<"Members">> => list(member()()),
+%%   <<"Members">> => list(member()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_members_response() :: #{binary() => any()}.
@@ -2596,7 +2596,7 @@
 
 %% Example:
 %% list_detectors_response() :: #{
-%%   <<"DetectorIds">> => list(string()()),
+%%   <<"DetectorIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_detectors_response() :: #{binary() => any()}.
@@ -2612,7 +2612,7 @@
 
 %% Example:
 %% organization_feature_statistics() :: #{
-%%   <<"AdditionalConfiguration">> => list(organization_feature_statistics_additional_configuration()()),
+%%   <<"AdditionalConfiguration">> => list(organization_feature_statistics_additional_configuration()),
 %%   <<"EnabledAccountsCount">> => integer(),
 %%   <<"Name">> => list(any())
 %% }
@@ -2629,7 +2629,7 @@
 
 %% Example:
 %% get_remaining_free_trial_days_request() :: #{
-%%   <<"AccountIds">> => list(string()())
+%%   <<"AccountIds">> => list(string())
 %% }
 -type get_remaining_free_trial_days_request() :: #{binary() => any()}.
 
@@ -2653,7 +2653,7 @@
 
 %% Example:
 %% organization_feature_configuration_result() :: #{
-%%   <<"AdditionalConfiguration">> => list(organization_additional_configuration_result()()),
+%%   <<"AdditionalConfiguration">> => list(organization_additional_configuration_result()),
 %%   <<"AutoEnable">> => list(any()),
 %%   <<"Name">> => list(any())
 %% }
@@ -2672,8 +2672,8 @@
 
 %% Example:
 %% get_remaining_free_trial_days_response() :: #{
-%%   <<"Accounts">> => list(account_free_trial_info()()),
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"Accounts">> => list(account_free_trial_info()),
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type get_remaining_free_trial_days_response() :: #{binary() => any()}.
 
@@ -2715,11 +2715,11 @@
 %%   <<"AddressFamily">> => string(),
 %%   <<"CommandLineExample">> => string(),
 %%   <<"FileSystemType">> => string(),
-%%   <<"Flags">> => list(string()()),
+%%   <<"Flags">> => list(string()),
 %%   <<"IanaProtocolNumber">> => integer(),
 %%   <<"LdPreloadValue">> => string(),
 %%   <<"LibraryPath">> => string(),
-%%   <<"MemoryRegions">> => list(string()()),
+%%   <<"MemoryRegions">> => list(string()),
 %%   <<"ModifiedAt">> => non_neg_integer(),
 %%   <<"ModifyingProcess">> => process_details(),
 %%   <<"ModuleFilePath">> => string(),
@@ -2743,14 +2743,14 @@
 
 %% Example:
 %% evidence() :: #{
-%%   <<"ThreatIntelligenceDetails">> => list(threat_intelligence_detail()())
+%%   <<"ThreatIntelligenceDetails">> => list(threat_intelligence_detail())
 %% }
 -type evidence() :: #{binary() => any()}.
 
 
 %% Example:
 %% scan_threat_name() :: #{
-%%   <<"FilePaths">> => list(scan_file_path()()),
+%%   <<"FilePaths">> => list(scan_file_path()),
 %%   <<"ItemCount">> => integer(),
 %%   <<"Name">> => string(),
 %%   <<"Severity">> => string()
@@ -2768,7 +2768,7 @@
 
 %% Example:
 %% coverage_filter_criteria() :: #{
-%%   <<"FilterCriterion">> => list(coverage_filter_criterion()())
+%%   <<"FilterCriterion">> => list(coverage_filter_criterion())
 %% }
 -type coverage_filter_criteria() :: #{binary() => any()}.
 
@@ -2837,7 +2837,7 @@
 
 %% Example:
 %% start_monitoring_members_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type start_monitoring_members_request() :: #{binary() => any()}.
 
@@ -2850,7 +2850,7 @@
 %% update_findings_feedback_request() :: #{
 %%   <<"Comments">> => string(),
 %%   <<"Feedback">> := list(any()),
-%%   <<"FindingIds">> := list(string()())
+%%   <<"FindingIds">> := list(string())
 %% }
 -type update_findings_feedback_request() :: #{binary() => any()}.
 
@@ -2858,14 +2858,14 @@
 %% Example:
 %% create_s3_bucket_resource() :: #{
 %%   <<"BucketName">> => string(),
-%%   <<"ObjectPrefixes">> => list(string()())
+%%   <<"ObjectPrefixes">> => list(string())
 %% }
 -type create_s3_bucket_resource() :: #{binary() => any()}.
 
 
 %% Example:
 %% rds_login_attempt_action() :: #{
-%%   <<"LoginAttributes">> => list(login_attribute()()),
+%%   <<"LoginAttributes">> => list(login_attribute()),
 %%   <<"RemoteIpDetails">> => remote_ip_details()
 %% }
 -type rds_login_attempt_action() :: #{binary() => any()}.
@@ -2914,11 +2914,11 @@
 %% Example:
 %% finding_statistics() :: #{
 %%   <<"CountBySeverity">> => map(),
-%%   <<"GroupedByAccount">> => list(account_statistics()()),
-%%   <<"GroupedByDate">> => list(date_statistics()()),
-%%   <<"GroupedByFindingType">> => list(finding_type_statistics()()),
-%%   <<"GroupedByResource">> => list(resource_statistics()()),
-%%   <<"GroupedBySeverity">> => list(severity_statistics()())
+%%   <<"GroupedByAccount">> => list(account_statistics()),
+%%   <<"GroupedByDate">> => list(date_statistics()),
+%%   <<"GroupedByFindingType">> => list(finding_type_statistics()),
+%%   <<"GroupedByResource">> => list(resource_statistics()),
+%%   <<"GroupedBySeverity">> => list(severity_statistics())
 %% }
 -type finding_statistics() :: #{binary() => any()}.
 
@@ -2938,7 +2938,7 @@
 %%   <<"RegisteredContainerInstancesCount">> => integer(),
 %%   <<"RunningTasksCount">> => integer(),
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TaskDetails">> => ecs_task_details()
 %% }
 -type ecs_cluster_details() :: #{binary() => any()}.
@@ -2948,7 +2948,7 @@
 %% scan() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"AdminDetectorId">> => string(),
-%%   <<"AttachedVolumes">> => list(volume_detail()()),
+%%   <<"AttachedVolumes">> => list(volume_detail()),
 %%   <<"DetectorId">> => string(),
 %%   <<"FailureReason">> => string(),
 %%   <<"FileCount">> => float(),
@@ -2980,7 +2980,7 @@
 %% Example:
 %% organization_statistics() :: #{
 %%   <<"ActiveAccountsCount">> => integer(),
-%%   <<"CountByFeature">> => list(organization_feature_statistics()()),
+%%   <<"CountByFeature">> => list(organization_feature_statistics()),
 %%   <<"EnabledAccountsCount">> => integer(),
 %%   <<"MemberAccountsCount">> => integer(),
 %%   <<"TotalAccountsCount">> => integer()
@@ -3020,7 +3020,7 @@
 %%   <<"ScanId">> => string(),
 %%   <<"ScanStartedAt">> => non_neg_integer(),
 %%   <<"ScanType">> => list(any()),
-%%   <<"Sources">> => list(string()()),
+%%   <<"Sources">> => list(string()),
 %%   <<"TriggerFindingId">> => string()
 %% }
 -type ebs_volume_scan_details() :: #{binary() => any()}.
@@ -3045,7 +3045,7 @@
 
 %% Example:
 %% update_member_detectors_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type update_member_detectors_response() :: #{binary() => any()}.
 
@@ -3084,7 +3084,7 @@
 
 %% Example:
 %% stop_monitoring_members_request() :: #{
-%%   <<"AccountIds">> := list(string()())
+%%   <<"AccountIds">> := list(string())
 %% }
 -type stop_monitoring_members_request() :: #{binary() => any()}.
 
@@ -3104,14 +3104,14 @@
 %%   <<"DbInstanceIdentifier">> => string(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type rds_db_instance_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% scan_condition() :: #{
-%%   <<"MapEquals">> => list(scan_condition_pair()())
+%%   <<"MapEquals">> => list(scan_condition_pair())
 %% }
 -type scan_condition() :: #{binary() => any()}.
 
@@ -3120,7 +3120,7 @@
 %% threat_detected_by_name() :: #{
 %%   <<"ItemCount">> => integer(),
 %%   <<"Shortened">> => boolean(),
-%%   <<"ThreatNames">> => list(scan_threat_name()()),
+%%   <<"ThreatNames">> => list(scan_threat_name()),
 %%   <<"UniqueThreatNameCount">> => integer()
 %% }
 -type threat_detected_by_name() :: #{binary() => any()}.
@@ -3137,7 +3137,7 @@
 
 %% Example:
 %% list_organization_admin_accounts_response() :: #{
-%%   <<"AdminAccounts">> => list(admin_account()()),
+%%   <<"AdminAccounts">> => list(admin_account()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_organization_admin_accounts_response() :: #{binary() => any()}.
@@ -3145,7 +3145,7 @@
 
 %% Example:
 %% usage_top_accounts_result() :: #{
-%%   <<"Accounts">> => list(usage_top_account_result()()),
+%%   <<"Accounts">> => list(usage_top_account_result()),
 %%   <<"Feature">> => list(any())
 %% }
 -type usage_top_accounts_result() :: #{binary() => any()}.
@@ -3170,7 +3170,7 @@
 
 %% Example:
 %% stop_monitoring_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type stop_monitoring_members_response() :: #{binary() => any()}.
 
@@ -3183,7 +3183,7 @@
 %% update_detector_request() :: #{
 %%   <<"DataSources">> => data_source_configurations(),
 %%   <<"Enable">> => boolean(),
-%%   <<"Features">> => list(detector_feature_configuration()()),
+%%   <<"Features">> => list(detector_feature_configuration()),
 %%   <<"FindingPublishingFrequency">> => list(any())
 %% }
 -type update_detector_request() :: #{binary() => any()}.
@@ -3256,7 +3256,7 @@
 
 %% Example:
 %% list_filters_response() :: #{
-%%   <<"FilterNames">> => list(string()()),
+%%   <<"FilterNames">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_filters_response() :: #{binary() => any()}.
@@ -3275,7 +3275,7 @@
 
 %% Example:
 %% create_members_response() :: #{
-%%   <<"UnprocessedAccounts">> => list(unprocessed_account()())
+%%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type create_members_response() :: #{binary() => any()}.
 
@@ -3334,10 +3334,10 @@
 
 %% Example:
 %% usage_criteria() :: #{
-%%   <<"AccountIds">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
 %%   <<"DataSources">> => list(list(any())()),
 %%   <<"Features">> => list(list(any())()),
-%%   <<"Resources">> => list(string()())
+%%   <<"Resources">> => list(string())
 %% }
 -type usage_criteria() :: #{binary() => any()}.
 
@@ -3360,7 +3360,7 @@
 
 %% Example:
 %% update_s3_bucket_resource() :: #{
-%%   <<"ObjectPrefixes">> => list(string()())
+%%   <<"ObjectPrefixes">> => list(string())
 %% }
 -type update_s3_bucket_resource() :: #{binary() => any()}.
 
@@ -3371,7 +3371,7 @@
 
 %% Example:
 %% list_invitations_response() :: #{
-%%   <<"Invitations">> => list(invitation()()),
+%%   <<"Invitations">> => list(invitation()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_invitations_response() :: #{binary() => any()}.
@@ -3391,7 +3391,7 @@
 %%   <<"RdsDbUserDetails">> => rds_db_user_details(),
 %%   <<"RdsLimitlessDbDetails">> => rds_limitless_db_details(),
 %%   <<"ResourceType">> => string(),
-%%   <<"S3BucketDetails">> => list(s3_bucket_detail()())
+%%   <<"S3BucketDetails">> => list(s3_bucket_detail())
 %% }
 -type resource() :: #{binary() => any()}.
 
@@ -3400,7 +3400,7 @@
 %% indicator() :: #{
 %%   <<"Key">> => list(any()),
 %%   <<"Title">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type indicator() :: #{binary() => any()}.
 

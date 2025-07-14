@@ -525,9 +525,9 @@
 
 %% Example:
 %% box_plot_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => box_plot_chart_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -642,7 +642,7 @@
 %%   <<"DashboardArn">> => string(),
 %%   <<"DashboardId">> => string(),
 %%   <<"LinkSharingConfiguration">> => link_sharing_configuration(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -652,7 +652,7 @@
 %% Example:
 %% field_based_tooltip() :: #{
 %%   <<"AggregationVisibility">> => list(any()),
-%%   <<"TooltipFields">> => list(tooltip_item()()),
+%%   <<"TooltipFields">> => list(tooltip_item()),
 %%   <<"TooltipTitleType">> => list(any())
 %% }
 -type field_based_tooltip() :: #{binary() => any()}.
@@ -676,7 +676,7 @@
 %% Example:
 %% date_time_parameter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(non_neg_integer()())
+%%   <<"Values">> => list(non_neg_integer())
 %% }
 -type date_time_parameter() :: #{binary() => any()}.
 
@@ -725,7 +725,7 @@
 %% dashboard_error() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => list(any()),
-%%   <<"ViolatedEntities">> => list(entity()())
+%%   <<"ViolatedEntities">> => list(entity())
 %% }
 -type dashboard_error() :: #{binary() => any()}.
 
@@ -758,7 +758,7 @@
 %% describe_analysis_definition_response() :: #{
 %%   <<"AnalysisId">> => string(),
 %%   <<"Definition">> => analysis_definition(),
-%%   <<"Errors">> => list(analysis_error()()),
+%%   <<"Errors">> => list(analysis_error()),
 %%   <<"Name">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"ResourceStatus">> => list(any()),
@@ -831,10 +831,10 @@
 %% Example:
 %% template_version() :: #{
 %%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"DataSetConfigurations">> => list(data_set_configuration()()),
+%%   <<"DataSetConfigurations">> => list(data_set_configuration()),
 %%   <<"Description">> => string(),
-%%   <<"Errors">> => list(template_error()()),
-%%   <<"Sheets">> => list(sheet()()),
+%%   <<"Errors">> => list(template_error()),
+%%   <<"Sheets">> => list(sheet()),
 %%   <<"SourceEntityArn">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"ThemeArn">> => string(),
@@ -852,9 +852,9 @@
 
 %% Example:
 %% radar_chart_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => radar_chart_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -927,7 +927,7 @@
 %% Example:
 %% string_default_values() :: #{
 %%   <<"DynamicValue">> => dynamic_default_value(),
-%%   <<"StaticValues">> => list(string()())
+%%   <<"StaticValues">> => list(string())
 %% }
 -type string_default_values() :: #{binary() => any()}.
 
@@ -1001,7 +1001,7 @@
 %% create_custom_permissions_request() :: #{
 %%   <<"Capabilities">> => capabilities(),
 %%   <<"CustomPermissionsName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_custom_permissions_request() :: #{binary() => any()}.
 
@@ -1017,10 +1017,10 @@
 
 %% Example:
 %% line_chart_aggregated_field_wells() :: #{
-%%   <<"Category">> => list(dimension_field()()),
-%%   <<"Colors">> => list(dimension_field()()),
-%%   <<"SmallMultiples">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Category">> => list(dimension_field()),
+%%   <<"Colors">> => list(dimension_field()),
+%%   <<"SmallMultiples">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type line_chart_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -1061,9 +1061,9 @@
 
 %% Example:
 %% bar_chart_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => bar_chart_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -1091,8 +1091,8 @@
 
 %% Example:
 %% column_level_permission_rule() :: #{
-%%   <<"ColumnNames">> => list(string()()),
-%%   <<"Principals">> => list(string()())
+%%   <<"ColumnNames">> => list(string()),
+%%   <<"Principals">> => list(string())
 %% }
 -type column_level_permission_rule() :: #{binary() => any()}.
 
@@ -1107,7 +1107,7 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -1116,7 +1116,7 @@
 %% snapshot_file_sheet_selection() :: #{
 %%   <<"SelectionScope">> => list(any()),
 %%   <<"SheetId">> => string(),
-%%   <<"VisualIds">> => list(string()())
+%%   <<"VisualIds">> => list(string())
 %% }
 -type snapshot_file_sheet_selection() :: #{binary() => any()}.
 
@@ -1136,16 +1136,16 @@
 %% Example:
 %% plugin_visual_field_well() :: #{
 %%   <<"AxisName">> => list(any()),
-%%   <<"Dimensions">> => list(dimension_field()()),
-%%   <<"Measures">> => list(measure_field()()),
-%%   <<"Unaggregated">> => list(unaggregated_field()())
+%%   <<"Dimensions">> => list(dimension_field()),
+%%   <<"Measures">> => list(measure_field()),
+%%   <<"Unaggregated">> => list(unaggregated_field())
 %% }
 -type plugin_visual_field_well() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_columns_operation() :: #{
-%%   <<"Columns">> => list(calculated_column()())
+%%   <<"Columns">> => list(calculated_column())
 %% }
 -type create_columns_operation() :: #{binary() => any()}.
 
@@ -1155,7 +1155,7 @@
 %%   <<"DashboardId">> => string(),
 %%   <<"DashboardPublishOptions">> => dashboard_publish_options(),
 %%   <<"Definition">> => dashboard_version_definition(),
-%%   <<"Errors">> => list(dashboard_error()()),
+%%   <<"Errors">> => list(dashboard_error()),
 %%   <<"Name">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"ResourceStatus">> => list(any()),
@@ -1186,7 +1186,7 @@
 %%   <<"DefaultOpacity">> => float(),
 %%   <<"NullDataSettings">> => geospatial_null_data_settings(),
 %%   <<"NullDataVisibility">> => list(any()),
-%%   <<"StepColors">> => list(geospatial_gradient_step_color()())
+%%   <<"StepColors">> => list(geospatial_gradient_step_color())
 %% }
 -type geospatial_gradient_color() :: #{binary() => any()}.
 
@@ -1258,7 +1258,7 @@
 %% Example:
 %% string_parameter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type string_parameter() :: #{binary() => any()}.
 
@@ -1276,7 +1276,7 @@
 
 %% Example:
 %% get_dashboard_embed_url_request() :: #{
-%%   <<"AdditionalDashboardIds">> => list(string()()),
+%%   <<"AdditionalDashboardIds">> => list(string()),
 %%   <<"IdentityType">> := list(any()),
 %%   <<"Namespace">> => string(),
 %%   <<"ResetDisabled">> => boolean(),
@@ -1303,7 +1303,7 @@
 %% Example:
 %% cell_value_synonym() :: #{
 %%   <<"CellValue">> => string(),
-%%   <<"Synonyms">> => list(string()())
+%%   <<"Synonyms">> => list(string())
 %% }
 -type cell_value_synonym() :: #{binary() => any()}.
 
@@ -1312,7 +1312,7 @@
 %% topic_visual() :: #{
 %%   <<"Ir">> => topic_i_r(),
 %%   <<"Role">> => list(any()),
-%%   <<"SupportingVisuals">> => list(topic_visual()()),
+%%   <<"SupportingVisuals">> => list(topic_visual()),
 %%   <<"VisualId">> => string()
 %% }
 -type topic_visual() :: #{binary() => any()}.
@@ -1325,7 +1325,7 @@
 %% Example:
 %% snapshot_configuration() :: #{
 %%   <<"DestinationConfiguration">> => snapshot_destination_configuration(),
-%%   <<"FileGroups">> => list(snapshot_file_group()()),
+%%   <<"FileGroups">> => list(snapshot_file_group()),
 %%   <<"Parameters">> => parameters()
 %% }
 -type snapshot_configuration() :: #{binary() => any()}.
@@ -1386,7 +1386,7 @@
 %% Example:
 %% logical_table() :: #{
 %%   <<"Alias">> => string(),
-%%   <<"DataTransforms">> => list(list()()),
+%%   <<"DataTransforms">> => list(list()),
 %%   <<"Source">> => logical_table_source()
 %% }
 -type logical_table() :: #{binary() => any()}.
@@ -1461,7 +1461,7 @@
 %% Example:
 %% s3_source() :: #{
 %%   <<"DataSourceArn">> => string(),
-%%   <<"InputColumns">> => list(input_column()()),
+%%   <<"InputColumns">> => list(input_column()),
 %%   <<"UploadSettings">> => upload_settings()
 %% }
 -type s3_source() :: #{binary() => any()}.
@@ -1469,7 +1469,7 @@
 
 %% Example:
 %% list_data_sets_response() :: #{
-%%   <<"DataSetSummaries">> => list(data_set_summary()()),
+%%   <<"DataSetSummaries">> => list(data_set_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -1499,9 +1499,9 @@
 %% Example:
 %% combo_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
-%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"CategorySort">> => list(field_sort_options()),
 %%   <<"ColorItemsLimit">> => items_limit_configuration(),
-%%   <<"ColorSort">> => list(field_sort_options()())
+%%   <<"ColorSort">> => list(field_sort_options())
 %% }
 -type combo_chart_sort_configuration() :: #{binary() => any()}.
 
@@ -1530,7 +1530,7 @@
 %% Example:
 %% integer_parameter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(float()())
+%%   <<"Values">> => list(float())
 %% }
 -type integer_parameter() :: #{binary() => any()}.
 
@@ -1545,7 +1545,7 @@
 
 %% Example:
 %% insight_configuration() :: #{
-%%   <<"Computations">> => list(computation()()),
+%%   <<"Computations">> => list(computation()),
 %%   <<"CustomNarrative">> => custom_narrative_options(),
 %%   <<"Interactions">> => visual_interaction_options()
 %% }
@@ -1565,7 +1565,7 @@
 
 %% Example:
 %% list_custom_permissions_response() :: #{
-%%   <<"CustomPermissionsList">> => list(custom_permissions()()),
+%%   <<"CustomPermissionsList">> => list(custom_permissions()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -1628,7 +1628,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"VPCConnectionSummaries">> => list(vpc_connection_summary()())
+%%   <<"VPCConnectionSummaries">> => list(vpc_connection_summary())
 %% }
 -type list_vpc_connections_response() :: #{binary() => any()}.
 
@@ -1645,8 +1645,8 @@
 
 %% Example:
 %% predefined_hierarchy() :: #{
-%%   <<"Columns">> => list(column_identifier()()),
-%%   <<"DrillDownFilters">> => list(drill_down_filter()()),
+%%   <<"Columns">> => list(column_identifier()),
+%%   <<"DrillDownFilters">> => list(drill_down_filter()),
 %%   <<"HierarchyId">> => string()
 %% }
 -type predefined_hierarchy() :: #{binary() => any()}.
@@ -1654,7 +1654,7 @@
 
 %% Example:
 %% list_ingestions_response() :: #{
-%%   <<"Ingestions">> => list(ingestion()()),
+%%   <<"Ingestions">> => list(ingestion()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -1694,7 +1694,7 @@
 %% Example:
 %% analysis_source_template() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"DataSetReferences">> => list(data_set_reference()())
+%%   <<"DataSetReferences">> => list(data_set_reference())
 %% }
 -type analysis_source_template() :: #{binary() => any()}.
 
@@ -1732,14 +1732,14 @@
 %% Example:
 %% dashboard_version_definition() :: #{
 %%   <<"AnalysisDefaults">> => analysis_defaults(),
-%%   <<"CalculatedFields">> => list(calculated_field()()),
-%%   <<"ColumnConfigurations">> => list(column_configuration()()),
-%%   <<"DataSetIdentifierDeclarations">> => list(data_set_identifier_declaration()()),
-%%   <<"FilterGroups">> => list(filter_group()()),
+%%   <<"CalculatedFields">> => list(calculated_field()),
+%%   <<"ColumnConfigurations">> => list(column_configuration()),
+%%   <<"DataSetIdentifierDeclarations">> => list(data_set_identifier_declaration()),
+%%   <<"FilterGroups">> => list(filter_group()),
 %%   <<"Options">> => asset_options(),
-%%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
-%%   <<"Sheets">> => list(sheet_definition()()),
-%%   <<"StaticFiles">> => list(static_file()())
+%%   <<"ParameterDeclarations">> => list(parameter_declaration()),
+%%   <<"Sheets">> => list(sheet_definition()),
+%%   <<"StaticFiles">> => list(static_file())
 %% }
 -type dashboard_version_definition() :: #{binary() => any()}.
 
@@ -1758,11 +1758,11 @@
 %%   <<"Credentials">> => data_source_credentials(),
 %%   <<"DataSourceId">> := string(),
 %%   <<"DataSourceParameters">> => list(),
-%%   <<"FolderArns">> => list(string()()),
+%%   <<"FolderArns">> => list(string()),
 %%   <<"Name">> := string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"SslProperties">> => ssl_properties(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> := list(any()),
 %%   <<"VpcConnectionProperties">> => vpc_connection_properties()
 %% }
@@ -1771,7 +1771,7 @@
 
 %% Example:
 %% list_topic_refresh_schedules_response() :: #{
-%%   <<"RefreshSchedules">> => list(topic_refresh_schedule_summary()()),
+%%   <<"RefreshSchedules">> => list(topic_refresh_schedule_summary()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
 %%   <<"TopicArn">> => string(),
@@ -1782,8 +1782,8 @@
 
 %% Example:
 %% asset_bundle_resource_permissions() :: #{
-%%   <<"Actions">> => list(string()()),
-%%   <<"Principals">> => list(string()())
+%%   <<"Actions">> => list(string()),
+%%   <<"Principals">> => list(string())
 %% }
 -type asset_bundle_resource_permissions() :: #{binary() => any()}.
 
@@ -1808,7 +1808,7 @@
 
 %% Example:
 %% search_folders_response() :: #{
-%%   <<"FolderSummaryList">> => list(folder_summary()()),
+%%   <<"FolderSummaryList">> => list(folder_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -1818,7 +1818,7 @@
 
 %% Example:
 %% unique_key() :: #{
-%%   <<"ColumnNames">> => list(string()())
+%%   <<"ColumnNames">> => list(string())
 %% }
 -type unique_key() :: #{binary() => any()}.
 
@@ -1848,7 +1848,7 @@
 %% describe_data_source_permissions_response() :: #{
 %%   <<"DataSourceArn">> => string(),
 %%   <<"DataSourceId">> => string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -1901,7 +1901,7 @@
 %% relational_table() :: #{
 %%   <<"Catalog">> => string(),
 %%   <<"DataSourceArn">> => string(),
-%%   <<"InputColumns">> => list(input_column()()),
+%%   <<"InputColumns">> => list(input_column()),
 %%   <<"Name">> => string(),
 %%   <<"Schema">> => string()
 %% }
@@ -1910,10 +1910,10 @@
 
 %% Example:
 %% table_field_options() :: #{
-%%   <<"Order">> => list(string()()),
+%%   <<"Order">> => list(string()),
 %%   <<"PinnedFieldOptions">> => table_pinned_field_options(),
-%%   <<"SelectedFieldOptions">> => list(table_field_option()()),
-%%   <<"TransposedTableOptions">> => list(transposed_table_option()())
+%%   <<"SelectedFieldOptions">> => list(table_field_option()),
+%%   <<"TransposedTableOptions">> => list(transposed_table_option())
 %% }
 -type table_field_options() :: #{binary() => any()}.
 
@@ -2030,9 +2030,9 @@
 
 %% Example:
 %% k_p_i_field_wells() :: #{
-%%   <<"TargetValues">> => list(measure_field()()),
-%%   <<"TrendGroups">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"TargetValues">> => list(measure_field()),
+%%   <<"TrendGroups">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type k_p_i_field_wells() :: #{binary() => any()}.
 
@@ -2105,9 +2105,9 @@
 %% Example:
 %% pie_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
-%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"CategorySort">> => list(field_sort_options()),
 %%   <<"SmallMultiplesLimitConfiguration">> => items_limit_configuration(),
-%%   <<"SmallMultiplesSort">> => list(field_sort_options()())
+%%   <<"SmallMultiplesSort">> => list(field_sort_options())
 %% }
 -type pie_chart_sort_configuration() :: #{binary() => any()}.
 
@@ -2141,17 +2141,17 @@
 %% Example:
 %% line_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimitConfiguration">> => items_limit_configuration(),
-%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"CategorySort">> => list(field_sort_options()),
 %%   <<"ColorItemsLimitConfiguration">> => items_limit_configuration(),
 %%   <<"SmallMultiplesLimitConfiguration">> => items_limit_configuration(),
-%%   <<"SmallMultiplesSort">> => list(field_sort_options()())
+%%   <<"SmallMultiplesSort">> => list(field_sort_options())
 %% }
 -type line_chart_sort_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_template_permissions_response() :: #{
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
 %%   <<"TemplateArn">> => string(),
@@ -2172,19 +2172,19 @@
 %% Example:
 %% data_set() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"ColumnGroups">> => list(column_group()()),
-%%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()()),
+%%   <<"ColumnGroups">> => list(column_group()),
+%%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()),
 %%   <<"ConsumedSpiceCapacityInBytes">> => float(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"DataSetId">> => string(),
 %%   <<"DataSetUsageConfiguration">> => data_set_usage_configuration(),
-%%   <<"DatasetParameters">> => list(dataset_parameter()()),
+%%   <<"DatasetParameters">> => list(dataset_parameter()),
 %%   <<"FieldFolders">> => map(),
 %%   <<"ImportMode">> => list(any()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"LogicalTableMap">> => map(),
 %%   <<"Name">> => string(),
-%%   <<"OutputColumns">> => list(output_column()()),
+%%   <<"OutputColumns">> => list(output_column()),
 %%   <<"PerformanceConfiguration">> => performance_configuration(),
 %%   <<"PhysicalTableMap">> => map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
@@ -2197,9 +2197,9 @@
 %% Example:
 %% radar_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
-%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"CategorySort">> => list(field_sort_options()),
 %%   <<"ColorItemsLimit">> => items_limit_configuration(),
-%%   <<"ColorSort">> => list(field_sort_options()())
+%%   <<"ColorSort">> => list(field_sort_options())
 %% }
 -type radar_chart_sort_configuration() :: #{binary() => any()}.
 
@@ -2253,7 +2253,7 @@
 
 %% Example:
 %% sheet_image() :: #{
-%%   <<"Actions">> => list(image_custom_action()()),
+%%   <<"Actions">> => list(image_custom_action()),
 %%   <<"ImageContentAltText">> => string(),
 %%   <<"Interactions">> => image_interaction_options(),
 %%   <<"Scaling">> => sheet_image_scaling_configuration(),
@@ -2282,14 +2282,14 @@
 
 %% Example:
 %% pivot_table_sort_configuration() :: #{
-%%   <<"FieldSortOptions">> => list(pivot_field_sort_options()())
+%%   <<"FieldSortOptions">> => list(pivot_field_sort_options())
 %% }
 -type pivot_table_sort_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_user_groups_response() :: #{
-%%   <<"GroupList">> => list(group()()),
+%%   <<"GroupList">> => list(group()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -2299,7 +2299,7 @@
 
 %% Example:
 %% authorized_targets_by_service() :: #{
-%%   <<"AuthorizedTargets">> => list(string()()),
+%%   <<"AuthorizedTargets">> => list(string()),
 %%   <<"Service">> => list(any())
 %% }
 -type authorized_targets_by_service() :: #{binary() => any()}.
@@ -2340,14 +2340,14 @@
 
 %% Example:
 %% snapshot_file_group() :: #{
-%%   <<"Files">> => list(snapshot_file()())
+%%   <<"Files">> => list(snapshot_file())
 %% }
 -type snapshot_file_group() :: #{binary() => any()}.
 
 
 %% Example:
 %% search_folders_request() :: #{
-%%   <<"Filters">> := list(folder_search_filter()()),
+%%   <<"Filters">> := list(folder_search_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2381,7 +2381,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"TemplateAliasList">> => list(template_alias()())
+%%   <<"TemplateAliasList">> => list(template_alias())
 %% }
 -type list_template_aliases_response() :: #{binary() => any()}.
 
@@ -2417,7 +2417,7 @@
 
 %% Example:
 %% field_folder() :: #{
-%%   <<"columns">> => list(string()()),
+%%   <<"columns">> => list(string()),
 %%   <<"description">> => string()
 %% }
 -type field_folder() :: #{binary() => any()}.
@@ -2425,15 +2425,15 @@
 
 %% Example:
 %% asset_bundle_import_job_vpc_connection_override_tags() :: #{
-%%   <<"Tags">> => list(tag()()),
-%%   <<"VPCConnectionIds">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"VPCConnectionIds">> => list(string())
 %% }
 -type asset_bundle_import_job_vpc_connection_override_tags() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_iam_policy_assignments_response() :: #{
-%%   <<"IAMPolicyAssignments">> => list(iam_policy_assignment_summary()()),
+%%   <<"IAMPolicyAssignments">> => list(iam_policy_assignment_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -2466,7 +2466,7 @@
 %% Example:
 %% funnel_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
-%%   <<"CategorySort">> => list(field_sort_options()())
+%%   <<"CategorySort">> => list(field_sort_options())
 %% }
 -type funnel_chart_sort_configuration() :: #{binary() => any()}.
 
@@ -2493,7 +2493,7 @@
 
 %% Example:
 %% gauge_chart_conditional_formatting() :: #{
-%%   <<"ConditionalFormattingOptions">> => list(gauge_chart_conditional_formatting_option()())
+%%   <<"ConditionalFormattingOptions">> => list(gauge_chart_conditional_formatting_option())
 %% }
 -type gauge_chart_conditional_formatting() :: #{binary() => any()}.
 
@@ -2551,7 +2551,7 @@
 %%   <<"CloudFormationOverridePropertyConfiguration">> => asset_bundle_cloud_formation_override_property_configuration(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"DownloadUrl">> => string(),
-%%   <<"Errors">> => list(asset_bundle_export_job_error()()),
+%%   <<"Errors">> => list(asset_bundle_export_job_error()),
 %%   <<"ExportFormat">> => list(any()),
 %%   <<"IncludeAllDependencies">> => boolean(),
 %%   <<"IncludeFolderMembers">> => list(any()),
@@ -2560,10 +2560,10 @@
 %%   <<"IncludeTags">> => boolean(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"RequestId">> => string(),
-%%   <<"ResourceArns">> => list(string()()),
+%%   <<"ResourceArns">> => list(string()),
 %%   <<"Status">> => integer(),
 %%   <<"ValidationStrategy">> => asset_bundle_export_job_validation_strategy(),
-%%   <<"Warnings">> => list(asset_bundle_export_job_warning()())
+%%   <<"Warnings">> => list(asset_bundle_export_job_warning())
 %% }
 -type describe_asset_bundle_export_job_response() :: #{binary() => any()}.
 
@@ -2585,7 +2585,7 @@
 
 %% Example:
 %% free_form_section_layout_configuration() :: #{
-%%   <<"Elements">> => list(free_form_layout_element()())
+%%   <<"Elements">> => list(free_form_layout_element())
 %% }
 -type free_form_section_layout_configuration() :: #{binary() => any()}.
 
@@ -2641,7 +2641,7 @@
 %% geospatial_layer_map_configuration() :: #{
 %%   <<"Interactions">> => visual_interaction_options(),
 %%   <<"Legend">> => legend_options(),
-%%   <<"MapLayers">> => list(geospatial_layer_item()()),
+%%   <<"MapLayers">> => list(geospatial_layer_item()),
 %%   <<"MapState">> => geospatial_map_state(),
 %%   <<"MapStyle">> => geospatial_map_style()
 %% }
@@ -2675,7 +2675,7 @@
 %% Example:
 %% asset_bundle_import_job_theme_override_permissions() :: #{
 %%   <<"Permissions">> => asset_bundle_resource_permissions(),
-%%   <<"ThemeIds">> => list(string()())
+%%   <<"ThemeIds">> => list(string())
 %% }
 -type asset_bundle_import_job_theme_override_permissions() :: #{binary() => any()}.
 
@@ -2736,7 +2736,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"TopicSummaryList">> => list(topic_summary()())
+%%   <<"TopicSummaryList">> => list(topic_summary())
 %% }
 -type search_topics_response() :: #{binary() => any()}.
 
@@ -2786,7 +2786,7 @@
 %% Example:
 %% describe_template_definition_response() :: #{
 %%   <<"Definition">> => template_version_definition(),
-%%   <<"Errors">> => list(template_error()()),
+%%   <<"Errors">> => list(template_error()),
 %%   <<"Name">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"ResourceStatus">> => list(any()),
@@ -2908,10 +2908,10 @@
 %% dashboard_version() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"DataSetArns">> => list(string()()),
+%%   <<"DataSetArns">> => list(string()),
 %%   <<"Description">> => string(),
-%%   <<"Errors">> => list(dashboard_error()()),
-%%   <<"Sheets">> => list(sheet()()),
+%%   <<"Errors">> => list(dashboard_error()),
+%%   <<"Sheets">> => list(sheet()),
 %%   <<"SourceEntityArn">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"ThemeArn">> => string(),
@@ -2922,7 +2922,7 @@
 
 %% Example:
 %% table_unaggregated_field_wells() :: #{
-%%   <<"Values">> => list(unaggregated_field()())
+%%   <<"Values">> => list(unaggregated_field())
 %% }
 -type table_unaggregated_field_wells() :: #{binary() => any()}.
 
@@ -2942,15 +2942,15 @@
 %% Example:
 %% integer_default_values() :: #{
 %%   <<"DynamicValue">> => dynamic_default_value(),
-%%   <<"StaticValues">> => list(float()())
+%%   <<"StaticValues">> => list(float())
 %% }
 -type integer_default_values() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_analysis_permissions_request() :: #{
-%%   <<"GrantPermissions">> => list(resource_permission()()),
-%%   <<"RevokePermissions">> => list(resource_permission()())
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
 %% }
 -type update_analysis_permissions_request() :: #{binary() => any()}.
 
@@ -2971,7 +2971,7 @@
 
 %% Example:
 %% asset_bundle_import_job_folder_override_permissions() :: #{
-%%   <<"FolderIds">> => list(string()()),
+%%   <<"FolderIds">> => list(string()),
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_import_job_folder_override_permissions() :: #{binary() => any()}.
@@ -2981,9 +2981,9 @@
 %% create_template_request() :: #{
 %%   <<"Definition">> => template_version_definition(),
 %%   <<"Name">> => string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"SourceEntity">> => template_source_entity(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"ValidationStrategy">> => validation_strategy(),
 %%   <<"VersionDescription">> => string()
 %% }
@@ -3027,7 +3027,7 @@
 
 %% Example:
 %% generate_embed_url_for_registered_user_request() :: #{
-%%   <<"AllowedDomains">> => list(string()()),
+%%   <<"AllowedDomains">> => list(string()),
 %%   <<"ExperienceConfiguration">> := registered_user_embedding_experience_configuration(),
 %%   <<"SessionLifetimeInMinutes">> => float(),
 %%   <<"UserArn">> := string()
@@ -3037,7 +3037,7 @@
 
 %% Example:
 %% search_data_sources_request() :: #{
-%%   <<"Filters">> := list(data_source_search_filter()()),
+%%   <<"Filters">> := list(data_source_search_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3133,14 +3133,14 @@
 
 %% Example:
 %% update_dashboard_links_request() :: #{
-%%   <<"LinkEntities">> := list(string()())
+%%   <<"LinkEntities">> := list(string())
 %% }
 -type update_dashboard_links_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% geo_spatial_column_group() :: #{
-%%   <<"Columns">> => list(string()()),
+%%   <<"Columns">> => list(string()),
 %%   <<"CountryCode">> => list(any()),
 %%   <<"Name">> => string()
 %% }
@@ -3149,8 +3149,8 @@
 
 %% Example:
 %% create_topic_request() :: #{
-%%   <<"FolderArns">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"FolderArns">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Topic">> := topic_details(),
 %%   <<"TopicId">> := string()
 %% }
@@ -3233,7 +3233,7 @@
 
 %% Example:
 %% search_data_sources_response() :: #{
-%%   <<"DataSourceSummaries">> => list(data_source_summary()()),
+%%   <<"DataSourceSummaries">> => list(data_source_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -3243,7 +3243,7 @@
 
 %% Example:
 %% search_topics_request() :: #{
-%%   <<"Filters">> := list(topic_search_filter()()),
+%%   <<"Filters">> := list(topic_search_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3299,7 +3299,7 @@
 
 %% Example:
 %% update_key_registration_request() :: #{
-%%   <<"KeyRegistration">> := list(registered_customer_managed_key()())
+%%   <<"KeyRegistration">> := list(registered_customer_managed_key())
 %% }
 -type update_key_registration_request() :: #{binary() => any()}.
 
@@ -3323,7 +3323,7 @@
 %% filter_group() :: #{
 %%   <<"CrossDataset">> => list(any()),
 %%   <<"FilterGroupId">> => string(),
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"ScopeConfiguration">> => filter_scope_configuration(),
 %%   <<"Status">> => list(any())
 %% }
@@ -3396,7 +3396,7 @@
 
 %% Example:
 %% custom_filter_list_configuration() :: #{
-%%   <<"CategoryValues">> => list(string()()),
+%%   <<"CategoryValues">> => list(string()),
 %%   <<"MatchOperator">> => list(any()),
 %%   <<"NullOption">> => list(any()),
 %%   <<"SelectAllOptions">> => list(any())
@@ -3421,11 +3421,11 @@
 
 %% Example:
 %% scatter_plot_categorically_aggregated_field_wells() :: #{
-%%   <<"Category">> => list(dimension_field()()),
-%%   <<"Label">> => list(dimension_field()()),
-%%   <<"Size">> => list(measure_field()()),
-%%   <<"XAxis">> => list(measure_field()()),
-%%   <<"YAxis">> => list(measure_field()())
+%%   <<"Category">> => list(dimension_field()),
+%%   <<"Label">> => list(dimension_field()),
+%%   <<"Size">> => list(measure_field()),
+%%   <<"XAxis">> => list(measure_field()),
+%%   <<"YAxis">> => list(measure_field())
 %% }
 -type scatter_plot_categorically_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -3472,7 +3472,7 @@
 
 %% Example:
 %% top_bottom_filter() :: #{
-%%   <<"AggregationSortConfigurations">> => list(aggregation_sort_configuration()()),
+%%   <<"AggregationSortConfigurations">> => list(aggregation_sort_configuration()),
 %%   <<"Column">> => column_identifier(),
 %%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration(),
 %%   <<"FilterId">> => string(),
@@ -3533,7 +3533,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -3543,12 +3543,12 @@
 %%   <<"Arn">> => string(),
 %%   <<"AvailabilityStatus">> => list(any()),
 %%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"DnsResolvers">> => list(string()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"NetworkInterfaces">> => list(network_interface()()),
+%%   <<"NetworkInterfaces">> => list(network_interface()),
 %%   <<"RoleArn">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Status">> => list(any()),
 %%   <<"VPCConnectionId">> => string(),
 %%   <<"VPCId">> => string()
@@ -3558,12 +3558,12 @@
 
 %% Example:
 %% create_vpc_connection_request() :: #{
-%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"DnsResolvers">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"RoleArn">> := string(),
-%%   <<"SecurityGroupIds">> := list(string()()),
-%%   <<"SubnetIds">> := list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SecurityGroupIds">> := list(string()),
+%%   <<"SubnetIds">> := list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VPCConnectionId">> := string()
 %% }
 -type create_vpc_connection_request() :: #{binary() => any()}.
@@ -3590,7 +3590,7 @@
 %% Example:
 %% line_series_axis_display_options() :: #{
 %%   <<"AxisOptions">> => axis_display_options(),
-%%   <<"MissingDataConfigurations">> => list(missing_data_configuration()())
+%%   <<"MissingDataConfigurations">> => list(missing_data_configuration())
 %% }
 -type line_series_axis_display_options() :: #{binary() => any()}.
 
@@ -3599,7 +3599,7 @@
 %% sheet_visual_scoping_configuration() :: #{
 %%   <<"Scope">> => list(any()),
 %%   <<"SheetId">> => string(),
-%%   <<"VisualIds">> => list(string()())
+%%   <<"VisualIds">> => list(string())
 %% }
 -type sheet_visual_scoping_configuration() :: #{binary() => any()}.
 
@@ -3625,7 +3625,7 @@
 %% pivot_table_cell_conditional_formatting() :: #{
 %%   <<"FieldId">> => string(),
 %%   <<"Scope">> => pivot_table_conditional_formatting_scope(),
-%%   <<"Scopes">> => list(pivot_table_conditional_formatting_scope()()),
+%%   <<"Scopes">> => list(pivot_table_conditional_formatting_scope()),
 %%   <<"TextFormat">> => text_conditional_format()
 %% }
 -type pivot_table_cell_conditional_formatting() :: #{binary() => any()}.
@@ -3633,7 +3633,7 @@
 
 %% Example:
 %% search_analyses_response() :: #{
-%%   <<"AnalysisSummaryList">> => list(analysis_summary()()),
+%%   <<"AnalysisSummaryList">> => list(analysis_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -3643,10 +3643,10 @@
 
 %% Example:
 %% parameters() :: #{
-%%   <<"DateTimeParameters">> => list(date_time_parameter()()),
-%%   <<"DecimalParameters">> => list(decimal_parameter()()),
-%%   <<"IntegerParameters">> => list(integer_parameter()()),
-%%   <<"StringParameters">> => list(string_parameter()())
+%%   <<"DateTimeParameters">> => list(date_time_parameter()),
+%%   <<"DecimalParameters">> => list(decimal_parameter()),
+%%   <<"IntegerParameters">> => list(integer_parameter()),
+%%   <<"StringParameters">> => list(string_parameter())
 %% }
 -type parameters() :: #{binary() => any()}.
 
@@ -3654,7 +3654,7 @@
 %% Example:
 %% grid_layout_configuration() :: #{
 %%   <<"CanvasSizeOptions">> => grid_layout_canvas_size_options(),
-%%   <<"Elements">> => list(grid_layout_element()())
+%%   <<"Elements">> => list(grid_layout_element())
 %% }
 -type grid_layout_configuration() :: #{binary() => any()}.
 
@@ -3669,15 +3669,15 @@
 %% Example:
 %% template_version_definition() :: #{
 %%   <<"AnalysisDefaults">> => analysis_defaults(),
-%%   <<"CalculatedFields">> => list(calculated_field()()),
-%%   <<"ColumnConfigurations">> => list(column_configuration()()),
-%%   <<"DataSetConfigurations">> => list(data_set_configuration()()),
-%%   <<"FilterGroups">> => list(filter_group()()),
+%%   <<"CalculatedFields">> => list(calculated_field()),
+%%   <<"ColumnConfigurations">> => list(column_configuration()),
+%%   <<"DataSetConfigurations">> => list(data_set_configuration()),
+%%   <<"FilterGroups">> => list(filter_group()),
 %%   <<"Options">> => asset_options(),
-%%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
+%%   <<"ParameterDeclarations">> => list(parameter_declaration()),
 %%   <<"QueryExecutionOptions">> => query_execution_options(),
-%%   <<"Sheets">> => list(sheet_definition()()),
-%%   <<"StaticFiles">> => list(static_file()())
+%%   <<"Sheets">> => list(sheet_definition()),
+%%   <<"StaticFiles">> => list(static_file())
 %% }
 -type template_version_definition() :: #{binary() => any()}.
 
@@ -3722,16 +3722,16 @@
 %%   <<"ContentType">> => list(any()),
 %%   <<"CustomActionDefaults">> => visual_custom_action_defaults(),
 %%   <<"Description">> => string(),
-%%   <<"FilterControls">> => list(filter_control()()),
-%%   <<"Images">> => list(sheet_image()()),
-%%   <<"Layouts">> => list(layout()()),
+%%   <<"FilterControls">> => list(filter_control()),
+%%   <<"Images">> => list(sheet_image()),
+%%   <<"Layouts">> => list(layout()),
 %%   <<"Name">> => string(),
-%%   <<"ParameterControls">> => list(parameter_control()()),
-%%   <<"SheetControlLayouts">> => list(sheet_control_layout()()),
+%%   <<"ParameterControls">> => list(parameter_control()),
+%%   <<"SheetControlLayouts">> => list(sheet_control_layout()),
 %%   <<"SheetId">> => string(),
-%%   <<"TextBoxes">> => list(sheet_text_box()()),
+%%   <<"TextBoxes">> => list(sheet_text_box()),
 %%   <<"Title">> => string(),
-%%   <<"Visuals">> => list(visual()())
+%%   <<"Visuals">> => list(visual())
 %% }
 -type sheet_definition() :: #{binary() => any()}.
 
@@ -3799,7 +3799,7 @@
 %%   <<"Maximum">> => string(),
 %%   <<"Minimum">> => string(),
 %%   <<"Value">> => string(),
-%%   <<"ValueList">> => list(collective_constant_entry()())
+%%   <<"ValueList">> => list(collective_constant_entry())
 %% }
 -type topic_constant_value() :: #{binary() => any()}.
 
@@ -3890,7 +3890,7 @@
 %% Example:
 %% describe_key_registration_response() :: #{
 %%   <<"AwsAccountId">> => string(),
-%%   <<"KeyRegistration">> => list(registered_customer_managed_key()()),
+%%   <<"KeyRegistration">> => list(registered_customer_managed_key()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -3950,7 +3950,7 @@
 
 %% Example:
 %% custom_sql() :: #{
-%%   <<"Columns">> => list(input_column()()),
+%%   <<"Columns">> => list(input_column()),
 %%   <<"DataSourceArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"SqlQuery">> => string()
@@ -3960,7 +3960,7 @@
 
 %% Example:
 %% filter_selectable_values() :: #{
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter_selectable_values() :: #{binary() => any()}.
 
@@ -3990,7 +3990,7 @@
 
 %% Example:
 %% search_analyses_request() :: #{
-%%   <<"Filters">> := list(analysis_search_filter()()),
+%%   <<"Filters">> := list(analysis_search_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -3999,7 +3999,7 @@
 
 %% Example:
 %% geospatial_categorical_color() :: #{
-%%   <<"CategoryDataColors">> => list(geospatial_categorical_data_color()()),
+%%   <<"CategoryDataColors">> => list(geospatial_categorical_data_color()),
 %%   <<"DefaultOpacity">> => float(),
 %%   <<"NullDataSettings">> => geospatial_null_data_settings(),
 %%   <<"NullDataVisibility">> => list(any())
@@ -4009,7 +4009,7 @@
 
 %% Example:
 %% describe_theme_permissions_response() :: #{
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
 %%   <<"ThemeArn">> => string(),
@@ -4021,7 +4021,7 @@
 %% Example:
 %% integer_parameter_declaration() :: #{
 %%   <<"DefaultValues">> => integer_default_values(),
-%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()()),
+%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()),
 %%   <<"Name">> => string(),
 %%   <<"ParameterValueType">> => list(any()),
 %%   <<"ValueWhenUnset">> => integer_value_when_unset_configuration()
@@ -4057,7 +4057,7 @@
 %% update_folder_permissions_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"FolderId">> => string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -4087,7 +4087,7 @@
 %% Example:
 %% data_path_sort() :: #{
 %%   <<"Direction">> => list(any()),
-%%   <<"SortPaths">> => list(data_path_value()())
+%%   <<"SortPaths">> => list(data_path_value())
 %% }
 -type data_path_sort() :: #{binary() => any()}.
 
@@ -4117,14 +4117,14 @@
 
 %% Example:
 %% update_identity_propagation_config_request() :: #{
-%%   <<"AuthorizedTargets">> => list(string()())
+%%   <<"AuthorizedTargets">> => list(string())
 %% }
 -type update_identity_propagation_config_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_topic_permissions_response() :: #{
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
 %%   <<"TopicArn">> => string(),
@@ -4154,7 +4154,7 @@
 %% template_error() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => list(any()),
-%%   <<"ViolatedEntities">> => list(entity()())
+%%   <<"ViolatedEntities">> => list(entity())
 %% }
 -type template_error() :: #{binary() => any()}.
 
@@ -4217,7 +4217,7 @@
 
 %% Example:
 %% list_folders_for_resource_response() :: #{
-%%   <<"Folders">> => list(string()()),
+%%   <<"Folders">> => list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -4278,15 +4278,15 @@
 %% Example:
 %% analysis_definition() :: #{
 %%   <<"AnalysisDefaults">> => analysis_defaults(),
-%%   <<"CalculatedFields">> => list(calculated_field()()),
-%%   <<"ColumnConfigurations">> => list(column_configuration()()),
-%%   <<"DataSetIdentifierDeclarations">> => list(data_set_identifier_declaration()()),
-%%   <<"FilterGroups">> => list(filter_group()()),
+%%   <<"CalculatedFields">> => list(calculated_field()),
+%%   <<"ColumnConfigurations">> => list(column_configuration()),
+%%   <<"DataSetIdentifierDeclarations">> => list(data_set_identifier_declaration()),
+%%   <<"FilterGroups">> => list(filter_group()),
 %%   <<"Options">> => asset_options(),
-%%   <<"ParameterDeclarations">> => list(parameter_declaration()()),
+%%   <<"ParameterDeclarations">> => list(parameter_declaration()),
 %%   <<"QueryExecutionOptions">> => query_execution_options(),
-%%   <<"Sheets">> => list(sheet_definition()()),
-%%   <<"StaticFiles">> => list(static_file()())
+%%   <<"Sheets">> => list(sheet_definition()),
+%%   <<"StaticFiles">> => list(static_file())
 %% }
 -type analysis_definition() :: #{binary() => any()}.
 
@@ -4337,7 +4337,7 @@
 %%   <<"MetricHeaderCellStyle">> => table_cell_style(),
 %%   <<"Placement">> => list(any()),
 %%   <<"ScrollStatus">> => list(any()),
-%%   <<"TotalAggregationOptions">> => list(total_aggregation_option()()),
+%%   <<"TotalAggregationOptions">> => list(total_aggregation_option()),
 %%   <<"TotalCellStyle">> => table_cell_style(),
 %%   <<"TotalsVisibility">> => list(any()),
 %%   <<"ValueCellStyle">> => table_cell_style()
@@ -4369,7 +4369,7 @@
 
 %% Example:
 %% snapshot_job_result() :: #{
-%%   <<"AnonymousUsers">> => list(anonymous_user_snapshot_job_result()())
+%%   <<"AnonymousUsers">> => list(anonymous_user_snapshot_job_result())
 %% }
 -type snapshot_job_result() :: #{binary() => any()}.
 
@@ -4412,7 +4412,7 @@
 %% describe_analysis_permissions_response() :: #{
 %%   <<"AnalysisArn">> => string(),
 %%   <<"AnalysisId">> => string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -4472,19 +4472,19 @@
 
 %% Example:
 %% line_chart_configuration() :: #{
-%%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()()),
+%%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()),
 %%   <<"DataLabels">> => data_label_options(),
 %%   <<"DefaultSeriesSettings">> => line_chart_default_series_settings(),
 %%   <<"FieldWells">> => line_chart_field_wells(),
-%%   <<"ForecastConfigurations">> => list(forecast_configuration()()),
+%%   <<"ForecastConfigurations">> => list(forecast_configuration()),
 %%   <<"Interactions">> => visual_interaction_options(),
 %%   <<"Legend">> => legend_options(),
 %%   <<"PrimaryYAxisDisplayOptions">> => line_series_axis_display_options(),
 %%   <<"PrimaryYAxisLabelOptions">> => chart_axis_label_options(),
-%%   <<"ReferenceLines">> => list(reference_line()()),
+%%   <<"ReferenceLines">> => list(reference_line()),
 %%   <<"SecondaryYAxisDisplayOptions">> => line_series_axis_display_options(),
 %%   <<"SecondaryYAxisLabelOptions">> => chart_axis_label_options(),
-%%   <<"Series">> => list(series_item()()),
+%%   <<"Series">> => list(series_item()),
 %%   <<"SingleAxisOptions">> => single_axis_options(),
 %%   <<"SmallMultiplesOptions">> => small_multiples_options(),
 %%   <<"SortConfiguration">> => line_chart_sort_configuration(),
@@ -4506,10 +4506,10 @@
 
 %% Example:
 %% topic_named_entity() :: #{
-%%   <<"Definition">> => list(named_entity_definition()()),
+%%   <<"Definition">> => list(named_entity_definition()),
 %%   <<"EntityDescription">> => string(),
 %%   <<"EntityName">> => string(),
-%%   <<"EntitySynonyms">> => list(string()()),
+%%   <<"EntitySynonyms">> => list(string()),
 %%   <<"SemanticEntityType">> => semantic_entity_type()
 %% }
 -type topic_named_entity() :: #{binary() => any()}.
@@ -4540,10 +4540,10 @@
 
 %% Example:
 %% bar_chart_aggregated_field_wells() :: #{
-%%   <<"Category">> => list(dimension_field()()),
-%%   <<"Colors">> => list(dimension_field()()),
-%%   <<"SmallMultiples">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Category">> => list(dimension_field()),
+%%   <<"Colors">> => list(dimension_field()),
+%%   <<"SmallMultiples">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type bar_chart_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -4566,15 +4566,15 @@
 
 %% Example:
 %% topic_i_r_metric() :: #{
-%%   <<"CalculatedFieldReferences">> => list(quicksight_identifier()()),
+%%   <<"CalculatedFieldReferences">> => list(identifier()),
 %%   <<"ComparisonMethod">> => topic_i_r_comparison_method(),
 %%   <<"DisplayFormat">> => list(any()),
 %%   <<"DisplayFormatOptions">> => display_format_options(),
 %%   <<"Expression">> => string(),
 %%   <<"Function">> => agg_function(),
-%%   <<"MetricId">> => quicksight_identifier(),
+%%   <<"MetricId">> => identifier(),
 %%   <<"NamedEntity">> => named_entity_ref(),
-%%   <<"Operands">> => list(quicksight_identifier()())
+%%   <<"Operands">> => list(identifier())
 %% }
 -type topic_i_r_metric() :: #{binary() => any()}.
 
@@ -4608,14 +4608,14 @@
 %% body_section_dynamic_numeric_dimension_configuration() :: #{
 %%   <<"Column">> => column_identifier(),
 %%   <<"Limit">> => integer(),
-%%   <<"SortByMetrics">> => list(column_sort()())
+%%   <<"SortByMetrics">> => list(column_sort())
 %% }
 -type body_section_dynamic_numeric_dimension_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% link_sharing_configuration() :: #{
-%%   <<"Permissions">> => list(resource_permission()())
+%%   <<"Permissions">> => list(resource_permission())
 %% }
 -type link_sharing_configuration() :: #{binary() => any()}.
 
@@ -4725,8 +4725,8 @@
 
 %% Example:
 %% asset_bundle_import_job_analysis_override_tags() :: #{
-%%   <<"AnalysisIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"AnalysisIds">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type asset_bundle_import_job_analysis_override_tags() :: #{binary() => any()}.
 
@@ -4735,7 +4735,7 @@
 %% create_namespace_request() :: #{
 %%   <<"IdentityStore">> := list(any()),
 %%   <<"Namespace">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_namespace_request() :: #{binary() => any()}.
 
@@ -4751,7 +4751,7 @@
 
 %% Example:
 %% data_set_configuration() :: #{
-%%   <<"ColumnGroupSchemaList">> => list(column_group_schema()()),
+%%   <<"ColumnGroupSchemaList">> => list(column_group_schema()),
 %%   <<"DataSetSchema">> => data_set_schema(),
 %%   <<"Placeholder">> => string()
 %% }
@@ -4769,9 +4769,9 @@
 
 %% Example:
 %% heat_map_aggregated_field_wells() :: #{
-%%   <<"Columns">> => list(dimension_field()()),
-%%   <<"Rows">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Columns">> => list(dimension_field()),
+%%   <<"Rows">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type heat_map_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -4793,7 +4793,7 @@
 
 %% Example:
 %% list_iam_policy_assignments_for_user_response() :: #{
-%%   <<"ActiveAssignments">> => list(active_iam_policy_assignment()()),
+%%   <<"ActiveAssignments">> => list(active_iam_policy_assignment()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -4821,7 +4821,7 @@
 
 %% Example:
 %% list_topic_reviewed_answers_response() :: #{
-%%   <<"Answers">> => list(topic_reviewed_answer()()),
+%%   <<"Answers">> => list(topic_reviewed_answer()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
 %%   <<"TopicArn">> => string(),
@@ -4912,10 +4912,10 @@
 
 %% Example:
 %% topic_i_r_filter_option() :: #{
-%%   <<"AggMetrics">> => list(filter_agg_metrics()()),
+%%   <<"AggMetrics">> => list(filter_agg_metrics()),
 %%   <<"Aggregation">> => list(any()),
 %%   <<"AggregationFunctionParameters">> => map(),
-%%   <<"AggregationPartitionBy">> => list(aggregation_partition_by()()),
+%%   <<"AggregationPartitionBy">> => list(aggregation_partition_by()),
 %%   <<"Anchor">> => anchor(),
 %%   <<"Constant">> => topic_constant_value(),
 %%   <<"FilterClass">> => list(any()),
@@ -4925,7 +4925,7 @@
 %%   <<"Inverse">> => boolean(),
 %%   <<"LastNextOffset">> => topic_constant_value(),
 %%   <<"NullFilter">> => list(any()),
-%%   <<"OperandField">> => quicksight_identifier(),
+%%   <<"OperandField">> => identifier(),
 %%   <<"Range">> => topic_constant_value(),
 %%   <<"SortDirection">> => list(any()),
 %%   <<"TimeGranularity">> => list(any()),
@@ -5007,7 +5007,7 @@
 
 %% Example:
 %% search_data_sets_response() :: #{
-%%   <<"DataSetSummaries">> => list(data_set_summary()()),
+%%   <<"DataSetSummaries">> => list(data_set_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -5019,7 +5019,7 @@
 %% list_identity_propagation_configs_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
-%%   <<"Services">> => list(authorized_targets_by_service()()),
+%%   <<"Services">> => list(authorized_targets_by_service()),
 %%   <<"Status">> => integer()
 %% }
 -type list_identity_propagation_configs_response() :: #{binary() => any()}.
@@ -5114,7 +5114,7 @@
 
 %% Example:
 %% string_dataset_parameter_default_values() :: #{
-%%   <<"StaticValues">> => list(string()())
+%%   <<"StaticValues">> => list(string())
 %% }
 -type string_dataset_parameter_default_values() :: #{binary() => any()}.
 
@@ -5136,7 +5136,7 @@
 
 %% Example:
 %% plugin_visual_configuration() :: #{
-%%   <<"FieldWells">> => list(plugin_visual_field_well()()),
+%%   <<"FieldWells">> => list(plugin_visual_field_well()),
 %%   <<"SortConfiguration">> => plugin_visual_sort_configuration(),
 %%   <<"VisualOptions">> => plugin_visual_options()
 %% }
@@ -5180,7 +5180,7 @@
 
 %% Example:
 %% colors_configuration() :: #{
-%%   <<"CustomColors">> => list(custom_color()())
+%%   <<"CustomColors">> => list(custom_color())
 %% }
 -type colors_configuration() :: #{binary() => any()}.
 
@@ -5203,7 +5203,7 @@
 
 %% Example:
 %% pivot_table_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => pivot_table_configuration(),
 %%   <<"ConditionalFormatting">> => pivot_table_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
@@ -5268,7 +5268,7 @@
 
 %% Example:
 %% describe_template_permissions_response() :: #{
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
 %%   <<"TemplateArn">> => string(),
@@ -5305,9 +5305,9 @@
 %% subtotal_options() :: #{
 %%   <<"CustomLabel">> => string(),
 %%   <<"FieldLevel">> => list(any()),
-%%   <<"FieldLevelOptions">> => list(pivot_table_field_subtotal_options()()),
+%%   <<"FieldLevelOptions">> => list(pivot_table_field_subtotal_options()),
 %%   <<"MetricHeaderCellStyle">> => table_cell_style(),
-%%   <<"StyleTargets">> => list(table_style_target()()),
+%%   <<"StyleTargets">> => list(table_style_target()),
 %%   <<"TotalCellStyle">> => table_cell_style(),
 %%   <<"TotalsVisibility">> => list(any()),
 %%   <<"ValueCellStyle">> => table_cell_style()
@@ -5341,7 +5341,7 @@
 
 %% Example:
 %% pivot_table_field_collapse_state_target() :: #{
-%%   <<"FieldDataPathValues">> => list(data_path_value()()),
+%%   <<"FieldDataPathValues">> => list(data_path_value()),
 %%   <<"FieldId">> => string()
 %% }
 -type pivot_table_field_collapse_state_target() :: #{binary() => any()}.
@@ -5357,22 +5357,22 @@
 
 %% Example:
 %% create_data_set_request() :: #{
-%%   <<"ColumnGroups">> => list(column_group()()),
-%%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()()),
+%%   <<"ColumnGroups">> => list(column_group()),
+%%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()),
 %%   <<"DataSetId">> := string(),
 %%   <<"DataSetUsageConfiguration">> => data_set_usage_configuration(),
-%%   <<"DatasetParameters">> => list(dataset_parameter()()),
+%%   <<"DatasetParameters">> => list(dataset_parameter()),
 %%   <<"FieldFolders">> => map(),
-%%   <<"FolderArns">> => list(string()()),
+%%   <<"FolderArns">> => list(string()),
 %%   <<"ImportMode">> := list(any()),
 %%   <<"LogicalTableMap">> => map(),
 %%   <<"Name">> := string(),
 %%   <<"PerformanceConfiguration">> => performance_configuration(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"PhysicalTableMap">> := map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
 %%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UseAs">> => list(any())
 %% }
 -type create_data_set_request() :: #{binary() => any()}.
@@ -5420,7 +5420,7 @@
 
 %% Example:
 %% search_data_sets_request() :: #{
-%%   <<"Filters">> := list(data_set_search_filter()()),
+%%   <<"Filters">> := list(data_set_search_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -5430,7 +5430,7 @@
 %% Example:
 %% visual_palette() :: #{
 %%   <<"ChartColor">> => string(),
-%%   <<"ColorMap">> => list(data_path_color()())
+%%   <<"ColorMap">> => list(data_path_color())
 %% }
 -type visual_palette() :: #{binary() => any()}.
 
@@ -5461,11 +5461,11 @@
 
 %% Example:
 %% scatter_plot_unaggregated_field_wells() :: #{
-%%   <<"Category">> => list(dimension_field()()),
-%%   <<"Label">> => list(dimension_field()()),
-%%   <<"Size">> => list(measure_field()()),
-%%   <<"XAxis">> => list(dimension_field()()),
-%%   <<"YAxis">> => list(dimension_field()())
+%%   <<"Category">> => list(dimension_field()),
+%%   <<"Label">> => list(dimension_field()),
+%%   <<"Size">> => list(measure_field()),
+%%   <<"XAxis">> => list(dimension_field()),
+%%   <<"YAxis">> => list(dimension_field())
 %% }
 -type scatter_plot_unaggregated_field_wells() :: #{binary() => any()}.
 
@@ -5495,7 +5495,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"FolderId">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -5521,7 +5521,7 @@
 
 %% Example:
 %% filled_map_sort_configuration() :: #{
-%%   <<"CategorySort">> => list(field_sort_options()())
+%%   <<"CategorySort">> => list(field_sort_options())
 %% }
 -type filled_map_sort_configuration() :: #{binary() => any()}.
 
@@ -5541,7 +5541,7 @@
 %% Example:
 %% template_source_analysis() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"DataSetReferences">> => list(data_set_reference()())
+%%   <<"DataSetReferences">> => list(data_set_reference())
 %% }
 -type template_source_analysis() :: #{binary() => any()}.
 
@@ -5573,8 +5573,8 @@
 
 %% Example:
 %% geospatial_layer_color_field() :: #{
-%%   <<"ColorDimensionsFields">> => list(dimension_field()()),
-%%   <<"ColorValuesFields">> => list(measure_field()())
+%%   <<"ColorDimensionsFields">> => list(dimension_field()),
+%%   <<"ColorValuesFields">> => list(measure_field())
 %% }
 -type geospatial_layer_color_field() :: #{binary() => any()}.
 
@@ -5585,7 +5585,7 @@
 
 %% Example:
 %% layer_custom_action() :: #{
-%%   <<"ActionOperations">> => list(layer_custom_action_operation()()),
+%%   <<"ActionOperations">> => list(layer_custom_action_operation()),
 %%   <<"CustomActionId">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => list(any()),
@@ -5605,7 +5605,7 @@
 
 %% Example:
 %% list_asset_bundle_export_jobs_response() :: #{
-%%   <<"AssetBundleExportJobSummaryList">> => list(asset_bundle_export_job_summary()()),
+%%   <<"AssetBundleExportJobSummaryList">> => list(asset_bundle_export_job_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -5615,9 +5615,9 @@
 
 %% Example:
 %% k_p_i_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => k_p_i_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"ConditionalFormatting">> => k_p_i_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
@@ -5634,7 +5634,7 @@
 %%   <<"DashboardId">> => string(),
 %%   <<"LastPublishedTime">> => non_neg_integer(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
-%%   <<"LinkEntities">> => list(string()()),
+%%   <<"LinkEntities">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Version">> => dashboard_version()
 %% }
@@ -5694,8 +5694,8 @@
 
 %% Example:
 %% asset_bundle_import_job_data_source_override_tags() :: #{
-%%   <<"DataSourceIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"DataSourceIds">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type asset_bundle_import_job_data_source_override_tags() :: #{binary() => any()}.
 
@@ -5711,10 +5711,10 @@
 %% Example:
 %% semantic_type() :: #{
 %%   <<"FalseyCellValue">> => string(),
-%%   <<"FalseyCellValueSynonyms">> => list(string()()),
+%%   <<"FalseyCellValueSynonyms">> => list(string()),
 %%   <<"SubTypeName">> => string(),
 %%   <<"TruthyCellValue">> => string(),
-%%   <<"TruthyCellValueSynonyms">> => list(string()()),
+%%   <<"TruthyCellValueSynonyms">> => list(string()),
 %%   <<"TypeName">> => string(),
 %%   <<"TypeParameters">> => map()
 %% }
@@ -5723,7 +5723,7 @@
 
 %% Example:
 %% table_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => table_configuration(),
 %%   <<"ConditionalFormatting">> => table_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
@@ -5750,7 +5750,7 @@
 
 %% Example:
 %% topic_template() :: #{
-%%   <<"Slots">> => list(slot()()),
+%%   <<"Slots">> => list(slot()),
 %%   <<"TemplateType">> => string()
 %% }
 -type topic_template() :: #{binary() => any()}.
@@ -5806,7 +5806,7 @@
 
 %% Example:
 %% snapshot_anonymous_user_redacted() :: #{
-%%   <<"RowLevelPermissionTagKeys">> => list(string()())
+%%   <<"RowLevelPermissionTagKeys">> => list(string())
 %% }
 -type snapshot_anonymous_user_redacted() :: #{binary() => any()}.
 
@@ -5895,7 +5895,7 @@
 %% Example:
 %% filter_agg_metrics() :: #{
 %%   <<"Function">> => list(any()),
-%%   <<"MetricOperand">> => quicksight_identifier(),
+%%   <<"MetricOperand">> => identifier(),
 %%   <<"SortDirection">> => list(any())
 %% }
 -type filter_agg_metrics() :: #{binary() => any()}.
@@ -5942,7 +5942,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"UserList">> => list(user()())
+%%   <<"UserList">> => list(user())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -5967,7 +5967,7 @@
 
 %% Example:
 %% project_operation() :: #{
-%%   <<"ProjectedColumns">> => list(string()())
+%%   <<"ProjectedColumns">> => list(string())
 %% }
 -type project_operation() :: #{binary() => any()}.
 
@@ -5994,8 +5994,8 @@
 %%   <<"BaseThemeId">> := string(),
 %%   <<"Configuration">> := theme_configuration(),
 %%   <<"Name">> := string(),
-%%   <<"Permissions">> => list(resource_permission()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VersionDescription">> => string()
 %% }
 -type create_theme_request() :: #{binary() => any()}.
@@ -6010,7 +6010,7 @@
 
 %% Example:
 %% plugin_visual_options() :: #{
-%%   <<"VisualProperties">> => list(plugin_visual_property()())
+%%   <<"VisualProperties">> => list(plugin_visual_property())
 %% }
 -type plugin_visual_options() :: #{binary() => any()}.
 
@@ -6025,8 +6025,8 @@
 
 %% Example:
 %% body_section_repeat_configuration() :: #{
-%%   <<"DimensionConfigurations">> => list(body_section_repeat_dimension_configuration()()),
-%%   <<"NonRepeatingVisuals">> => list(string()()),
+%%   <<"DimensionConfigurations">> => list(body_section_repeat_dimension_configuration()),
+%%   <<"NonRepeatingVisuals">> => list(string()),
 %%   <<"PageBreakConfiguration">> => body_section_repeat_page_break_configuration()
 %% }
 -type body_section_repeat_configuration() :: #{binary() => any()}.
@@ -6034,7 +6034,7 @@
 
 %% Example:
 %% search_groups_request() :: #{
-%%   <<"Filters">> := list(group_search_filter()()),
+%%   <<"Filters">> := list(group_search_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -6088,7 +6088,7 @@
 
 %% Example:
 %% sankey_diagram_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => sankey_diagram_chart_configuration(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
@@ -6103,7 +6103,7 @@
 %%   <<"DashboardArn">> => string(),
 %%   <<"DashboardId">> => string(),
 %%   <<"LinkSharingConfiguration">> => link_sharing_configuration(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -6156,7 +6156,7 @@
 %%   <<"Configuration">> => theme_configuration(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"Errors">> => list(theme_error()()),
+%%   <<"Errors">> => list(theme_error()),
 %%   <<"Status">> => list(any()),
 %%   <<"VersionNumber">> => float()
 %% }
@@ -6199,10 +6199,10 @@
 
 %% Example:
 %% combo_chart_aggregated_field_wells() :: #{
-%%   <<"BarValues">> => list(measure_field()()),
-%%   <<"Category">> => list(dimension_field()()),
-%%   <<"Colors">> => list(dimension_field()()),
-%%   <<"LineValues">> => list(measure_field()())
+%%   <<"BarValues">> => list(measure_field()),
+%%   <<"Category">> => list(dimension_field()),
+%%   <<"Colors">> => list(dimension_field()),
+%%   <<"LineValues">> => list(measure_field())
 %% }
 -type combo_chart_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -6212,7 +6212,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"TemplateVersionSummaryList">> => list(template_version_summary()())
+%%   <<"TemplateVersionSummaryList">> => list(template_version_summary())
 %% }
 -type list_template_versions_response() :: #{binary() => any()}.
 
@@ -6226,7 +6226,7 @@
 
 %% Example:
 %% image_custom_action() :: #{
-%%   <<"ActionOperations">> => list(image_custom_action_operation()()),
+%%   <<"ActionOperations">> => list(image_custom_action_operation()),
 %%   <<"CustomActionId">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => list(any()),
@@ -6270,7 +6270,7 @@
 
 %% Example:
 %% list_data_sources_response() :: #{
-%%   <<"DataSources">> => list(data_source()()),
+%%   <<"DataSources">> => list(data_source()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -6295,7 +6295,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"ThemeAliasList">> => list(theme_alias()())
+%%   <<"ThemeAliasList">> => list(theme_alias())
 %% }
 -type list_theme_aliases_response() :: #{binary() => any()}.
 
@@ -6362,7 +6362,7 @@
 %% Example:
 %% create_brand_request() :: #{
 %%   <<"BrandDefinition">> => brand_definition(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_brand_request() :: #{binary() => any()}.
 
@@ -6403,9 +6403,9 @@
 
 %% Example:
 %% tree_map_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => tree_map_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -6416,7 +6416,7 @@
 
 %% Example:
 %% empty_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"DataSetIdentifier">> => string(),
 %%   <<"VisualId">> => string()
 %% }
@@ -6425,8 +6425,8 @@
 
 %% Example:
 %% asset_bundle_import_job_data_set_override_tags() :: #{
-%%   <<"DataSetIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"DataSetIds">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type asset_bundle_import_job_data_set_override_tags() :: #{binary() => any()}.
 
@@ -6457,7 +6457,7 @@
 %%   <<"IncludeFolderMemberships">> => boolean(),
 %%   <<"IncludePermissions">> => boolean(),
 %%   <<"IncludeTags">> => boolean(),
-%%   <<"ResourceArns">> := list(string()()),
+%%   <<"ResourceArns">> := list(string()),
 %%   <<"ValidationStrategy">> => asset_bundle_export_job_validation_strategy()
 %% }
 -type start_asset_bundle_export_job_request() :: #{binary() => any()}.
@@ -6473,9 +6473,9 @@
 
 %% Example:
 %% pivot_table_field_options() :: #{
-%%   <<"CollapseStateOptions">> => list(pivot_table_field_collapse_state_option()()),
-%%   <<"DataPathOptions">> => list(pivot_table_data_path_option()()),
-%%   <<"SelectedFieldOptions">> => list(pivot_table_field_option()())
+%%   <<"CollapseStateOptions">> => list(pivot_table_field_collapse_state_option()),
+%%   <<"DataPathOptions">> => list(pivot_table_data_path_option()),
+%%   <<"SelectedFieldOptions">> => list(pivot_table_field_option())
 %% }
 -type pivot_table_field_options() :: #{binary() => any()}.
 
@@ -6507,7 +6507,7 @@
 %% Example:
 %% tree_map_sort_configuration() :: #{
 %%   <<"TreeMapGroupItemsLimitConfiguration">> => items_limit_configuration(),
-%%   <<"TreeMapSort">> => list(field_sort_options()())
+%%   <<"TreeMapSort">> => list(field_sort_options())
 %% }
 -type tree_map_sort_configuration() :: #{binary() => any()}.
 
@@ -6575,10 +6575,10 @@
 
 %% Example:
 %% update_dashboard_permissions_request() :: #{
-%%   <<"GrantLinkPermissions">> => list(resource_permission()()),
-%%   <<"GrantPermissions">> => list(resource_permission()()),
-%%   <<"RevokeLinkPermissions">> => list(resource_permission()()),
-%%   <<"RevokePermissions">> => list(resource_permission()())
+%%   <<"GrantLinkPermissions">> => list(resource_permission()),
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokeLinkPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
 %% }
 -type update_dashboard_permissions_request() :: #{binary() => any()}.
 
@@ -6614,7 +6614,7 @@
 %% list_tags_for_resource_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -6660,15 +6660,15 @@
 %% Example:
 %% free_form_layout_configuration() :: #{
 %%   <<"CanvasSizeOptions">> => free_form_layout_canvas_size_options(),
-%%   <<"Elements">> => list(free_form_layout_element()())
+%%   <<"Elements">> => list(free_form_layout_element())
 %% }
 -type free_form_layout_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% funnel_chart_aggregated_field_wells() :: #{
-%%   <<"Category">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Category">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type funnel_chart_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -6676,7 +6676,7 @@
 %% Example:
 %% date_time_parameter_declaration() :: #{
 %%   <<"DefaultValues">> => date_time_default_values(),
-%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()()),
+%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()),
 %%   <<"Name">> => string(),
 %%   <<"TimeGranularity">> => list(any()),
 %%   <<"ValueWhenUnset">> => date_time_value_when_unset_configuration()
@@ -6719,7 +6719,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"TopicsSummaries">> => list(topic_summary()())
+%%   <<"TopicsSummaries">> => list(topic_summary())
 %% }
 -type list_topics_response() :: #{binary() => any()}.
 
@@ -6746,7 +6746,7 @@
 
 %% Example:
 %% batch_delete_topic_reviewed_answer_request() :: #{
-%%   <<"AnswerIds">> => list(string()())
+%%   <<"AnswerIds">> => list(string())
 %% }
 -type batch_delete_topic_reviewed_answer_request() :: #{binary() => any()}.
 
@@ -6769,7 +6769,7 @@
 
 %% Example:
 %% asset_bundle_import_job_analysis_override_permissions() :: #{
-%%   <<"AnalysisIds">> => list(string()()),
+%%   <<"AnalysisIds">> => list(string()),
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_import_job_analysis_override_permissions() :: #{binary() => any()}.
@@ -6777,9 +6777,9 @@
 
 %% Example:
 %% radar_chart_aggregated_field_wells() :: #{
-%%   <<"Category">> => list(dimension_field()()),
-%%   <<"Color">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Category">> => list(dimension_field()),
+%%   <<"Color">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type radar_chart_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -6823,7 +6823,7 @@
 
 %% Example:
 %% geospatial_layer_item() :: #{
-%%   <<"Actions">> => list(layer_custom_action()()),
+%%   <<"Actions">> => list(layer_custom_action()),
 %%   <<"DataSource">> => geospatial_data_source_item(),
 %%   <<"JoinDefinition">> => geospatial_layer_join_definition(),
 %%   <<"Label">> => string(),
@@ -6838,9 +6838,9 @@
 
 %% Example:
 %% pie_chart_aggregated_field_wells() :: #{
-%%   <<"Category">> => list(dimension_field()()),
-%%   <<"SmallMultiples">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Category">> => list(dimension_field()),
+%%   <<"SmallMultiples">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type pie_chart_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -6876,8 +6876,8 @@
 
 %% Example:
 %% update_template_permissions_request() :: #{
-%%   <<"GrantPermissions">> => list(resource_permission()()),
-%%   <<"RevokePermissions">> => list(resource_permission()())
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
 %% }
 -type update_template_permissions_request() :: #{binary() => any()}.
 
@@ -6905,7 +6905,7 @@
 
 %% Example:
 %% generate_embed_url_for_registered_user_with_identity_request() :: #{
-%%   <<"AllowedDomains">> => list(string()()),
+%%   <<"AllowedDomains">> => list(string()),
 %%   <<"ExperienceConfiguration">> := registered_user_embedding_experience_configuration(),
 %%   <<"SessionLifetimeInMinutes">> => float()
 %% }
@@ -6930,7 +6930,7 @@
 %% analysis_error() :: #{
 %%   <<"Message">> => string(),
 %%   <<"Type">> => list(any()),
-%%   <<"ViolatedEntities">> => list(entity()())
+%%   <<"ViolatedEntities">> => list(entity())
 %% }
 -type analysis_error() :: #{binary() => any()}.
 
@@ -6955,13 +6955,13 @@
 %%   <<"CategoryAxis">> => axis_display_options(),
 %%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
 %%   <<"ColorLabelOptions">> => chart_axis_label_options(),
-%%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()()),
+%%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()),
 %%   <<"DataLabels">> => data_label_options(),
 %%   <<"FieldWells">> => bar_chart_field_wells(),
 %%   <<"Interactions">> => visual_interaction_options(),
 %%   <<"Legend">> => legend_options(),
 %%   <<"Orientation">> => list(any()),
-%%   <<"ReferenceLines">> => list(reference_line()()),
+%%   <<"ReferenceLines">> => list(reference_line()),
 %%   <<"SmallMultiplesOptions">> => small_multiples_options(),
 %%   <<"SortConfiguration">> => bar_chart_sort_configuration(),
 %%   <<"Tooltip">> => tooltip_options(),
@@ -7005,19 +7005,19 @@
 
 %% Example:
 %% generate_embed_url_for_anonymous_user_request() :: #{
-%%   <<"AllowedDomains">> => list(string()()),
-%%   <<"AuthorizedResourceArns">> := list(string()()),
+%%   <<"AllowedDomains">> => list(string()),
+%%   <<"AuthorizedResourceArns">> := list(string()),
 %%   <<"ExperienceConfiguration">> := anonymous_user_embedding_experience_configuration(),
 %%   <<"Namespace">> := string(),
 %%   <<"SessionLifetimeInMinutes">> => float(),
-%%   <<"SessionTags">> => list(session_tag()())
+%%   <<"SessionTags">> => list(session_tag())
 %% }
 -type generate_embed_url_for_anonymous_user_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% date_time_dataset_parameter_default_values() :: #{
-%%   <<"StaticValues">> => list(non_neg_integer()())
+%%   <<"StaticValues">> => list(non_neg_integer())
 %% }
 -type date_time_dataset_parameter_default_values() :: #{binary() => any()}.
 
@@ -7036,8 +7036,8 @@
 
 %% Example:
 %% asset_bundle_import_job_dashboard_override_tags() :: #{
-%%   <<"DashboardIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"DashboardIds">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type asset_bundle_import_job_dashboard_override_tags() :: #{binary() => any()}.
 
@@ -7061,10 +7061,10 @@
 
 %% Example:
 %% batch_create_topic_reviewed_answer_response() :: #{
-%%   <<"InvalidAnswers">> => list(invalid_topic_reviewed_answer()()),
+%%   <<"InvalidAnswers">> => list(invalid_topic_reviewed_answer()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"SucceededAnswers">> => list(succeeded_topic_reviewed_answer()()),
+%%   <<"SucceededAnswers">> => list(succeeded_topic_reviewed_answer()),
 %%   <<"TopicArn">> => string(),
 %%   <<"TopicId">> => string()
 %% }
@@ -7098,9 +7098,9 @@
 
 %% Example:
 %% update_key_registration_response() :: #{
-%%   <<"FailedKeyRegistration">> => list(failed_key_registration_entry()()),
+%%   <<"FailedKeyRegistration">> => list(failed_key_registration_entry()),
 %%   <<"RequestId">> => string(),
-%%   <<"SuccessfulKeyRegistration">> => list(successful_key_registration_entry()())
+%%   <<"SuccessfulKeyRegistration">> => list(successful_key_registration_entry())
 %% }
 -type update_key_registration_response() :: #{binary() => any()}.
 
@@ -7143,7 +7143,7 @@
 
 %% Example:
 %% list_asset_bundle_import_jobs_response() :: #{
-%%   <<"AssetBundleImportJobSummaryList">> => list(asset_bundle_import_job_summary()()),
+%%   <<"AssetBundleImportJobSummaryList">> => list(asset_bundle_import_job_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -7161,7 +7161,7 @@
 
 %% Example:
 %% category_drill_down_filter() :: #{
-%%   <<"CategoryValues">> => list(string()()),
+%%   <<"CategoryValues">> => list(string()),
 %%   <<"Column">> => column_identifier()
 %% }
 -type category_drill_down_filter() :: #{binary() => any()}.
@@ -7303,9 +7303,9 @@
 
 %% Example:
 %% filter_operation_selected_fields_configuration() :: #{
-%%   <<"SelectedColumns">> => list(column_identifier()()),
+%%   <<"SelectedColumns">> => list(column_identifier()),
 %%   <<"SelectedFieldOptions">> => list(any()),
-%%   <<"SelectedFields">> => list(string()())
+%%   <<"SelectedFields">> => list(string())
 %% }
 -type filter_operation_selected_fields_configuration() :: #{binary() => any()}.
 
@@ -7365,7 +7365,7 @@
 
 %% Example:
 %% update_topic_permissions_response() :: #{
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
 %%   <<"TopicArn">> => string(),
@@ -7389,7 +7389,7 @@
 %% Example:
 %% topic_i_r_contribution_analysis() :: #{
 %%   <<"Direction">> => list(any()),
-%%   <<"Factors">> => list(contribution_analysis_factor()()),
+%%   <<"Factors">> => list(contribution_analysis_factor()),
 %%   <<"SortType">> => list(any()),
 %%   <<"TimeRanges">> => contribution_analysis_time_ranges()
 %% }
@@ -7435,7 +7435,7 @@
 
 %% Example:
 %% list_brands_response() :: #{
-%%   <<"Brands">> => list(brand_summary()()),
+%%   <<"Brands">> => list(brand_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_brands_response() :: #{binary() => any()}.
@@ -7583,8 +7583,8 @@
 
 %% Example:
 %% gauge_chart_field_wells() :: #{
-%%   <<"TargetValues">> => list(measure_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"TargetValues">> => list(measure_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type gauge_chart_field_wells() :: #{binary() => any()}.
 
@@ -7592,7 +7592,7 @@
 %% Example:
 %% topic_details() :: #{
 %%   <<"ConfigOptions">> => topic_config_options(),
-%%   <<"DataSets">> => list(dataset_metadata()()),
+%%   <<"DataSets">> => list(dataset_metadata()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"UserExperienceVersion">> => list(any())
@@ -7650,11 +7650,11 @@
 %% create_account_subscription_request() :: #{
 %%   <<"AccountName">> := string(),
 %%   <<"ActiveDirectoryName">> => string(),
-%%   <<"AdminGroup">> => list(string()()),
-%%   <<"AdminProGroup">> => list(string()()),
+%%   <<"AdminGroup">> => list(string()),
+%%   <<"AdminProGroup">> => list(string()),
 %%   <<"AuthenticationMethod">> := list(any()),
-%%   <<"AuthorGroup">> => list(string()()),
-%%   <<"AuthorProGroup">> => list(string()()),
+%%   <<"AuthorGroup">> => list(string()),
+%%   <<"AuthorProGroup">> => list(string()),
 %%   <<"ContactNumber">> => string(),
 %%   <<"DirectoryId">> => string(),
 %%   <<"Edition">> => list(any()),
@@ -7663,8 +7663,8 @@
 %%   <<"IAMIdentityCenterInstanceArn">> => string(),
 %%   <<"LastName">> => string(),
 %%   <<"NotificationEmail">> := string(),
-%%   <<"ReaderGroup">> => list(string()()),
-%%   <<"ReaderProGroup">> => list(string()()),
+%%   <<"ReaderGroup">> => list(string()),
+%%   <<"ReaderProGroup">> => list(string()),
 %%   <<"Realm">> => string()
 %% }
 -type create_account_subscription_request() :: #{binary() => any()}.
@@ -7673,7 +7673,7 @@
 %% Example:
 %% tag_column_operation() :: #{
 %%   <<"ColumnName">> => string(),
-%%   <<"Tags">> => list(column_tag()())
+%%   <<"Tags">> => list(column_tag())
 %% }
 -type tag_column_operation() :: #{binary() => any()}.
 
@@ -7690,11 +7690,11 @@
 %% Example:
 %% bar_chart_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
-%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"CategorySort">> => list(field_sort_options()),
 %%   <<"ColorItemsLimit">> => items_limit_configuration(),
-%%   <<"ColorSort">> => list(field_sort_options()()),
+%%   <<"ColorSort">> => list(field_sort_options()),
 %%   <<"SmallMultiplesLimitConfiguration">> => items_limit_configuration(),
-%%   <<"SmallMultiplesSort">> => list(field_sort_options()())
+%%   <<"SmallMultiplesSort">> => list(field_sort_options())
 %% }
 -type bar_chart_sort_configuration() :: #{binary() => any()}.
 
@@ -7715,9 +7715,9 @@
 
 %% Example:
 %% pie_chart_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => pie_chart_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -7739,7 +7739,7 @@
 
 %% Example:
 %% list_folders_response() :: #{
-%%   <<"FolderSummaryList">> => list(folder_summary()()),
+%%   <<"FolderSummaryList">> => list(folder_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -7749,8 +7749,8 @@
 
 %% Example:
 %% table_aggregated_field_wells() :: #{
-%%   <<"GroupBy">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"GroupBy">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type table_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -7872,7 +7872,7 @@
 
 %% Example:
 %% filter_list_configuration() :: #{
-%%   <<"CategoryValues">> => list(string()()),
+%%   <<"CategoryValues">> => list(string()),
 %%   <<"MatchOperator">> => list(any()),
 %%   <<"NullOption">> => list(any()),
 %%   <<"SelectAllOptions">> => list(any())
@@ -7907,7 +7907,7 @@
 
 %% Example:
 %% custom_content_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => custom_content_configuration(),
 %%   <<"DataSetIdentifier">> => string(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
@@ -7920,9 +7920,9 @@
 
 %% Example:
 %% waterfall_chart_aggregated_field_wells() :: #{
-%%   <<"Breakdowns">> => list(dimension_field()()),
-%%   <<"Categories">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Breakdowns">> => list(dimension_field()),
+%%   <<"Categories">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type waterfall_chart_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -7984,7 +7984,7 @@
 
 %% Example:
 %% snapshot_destination_configuration() :: #{
-%%   <<"S3Destinations">> => list(snapshot_s3_destination_configuration()())
+%%   <<"S3Destinations">> => list(snapshot_s3_destination_configuration())
 %% }
 -type snapshot_destination_configuration() :: #{binary() => any()}.
 
@@ -8002,11 +8002,11 @@
 %%   <<"AnalysisId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"DataSetArns">> => list(string()()),
-%%   <<"Errors">> => list(analysis_error()()),
+%%   <<"DataSetArns">> => list(string()),
+%%   <<"Errors">> => list(analysis_error()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Sheets">> => list(sheet()()),
+%%   <<"Sheets">> => list(sheet()),
 %%   <<"Status">> => list(any()),
 %%   <<"ThemeArn">> => string()
 %% }
@@ -8022,17 +8022,17 @@
 
 %% Example:
 %% new_default_values() :: #{
-%%   <<"DateTimeStaticValues">> => list(non_neg_integer()()),
-%%   <<"DecimalStaticValues">> => list(float()()),
-%%   <<"IntegerStaticValues">> => list(float()()),
-%%   <<"StringStaticValues">> => list(string()())
+%%   <<"DateTimeStaticValues">> => list(non_neg_integer()),
+%%   <<"DecimalStaticValues">> => list(float()),
+%%   <<"IntegerStaticValues">> => list(float()),
+%%   <<"StringStaticValues">> => list(string())
 %% }
 -type new_default_values() :: #{binary() => any()}.
 
 
 %% Example:
 %% k_p_i_sort_configuration() :: #{
-%%   <<"TrendGroupSort">> => list(field_sort_options()())
+%%   <<"TrendGroupSort">> => list(field_sort_options())
 %% }
 -type k_p_i_sort_configuration() :: #{binary() => any()}.
 
@@ -8047,7 +8047,7 @@
 
 %% Example:
 %% geospatial_heatmap_color_scale() :: #{
-%%   <<"Colors">> => list(geospatial_heatmap_data_color()())
+%%   <<"Colors">> => list(geospatial_heatmap_data_color())
 %% }
 -type geospatial_heatmap_color_scale() :: #{binary() => any()}.
 
@@ -8084,7 +8084,7 @@
 
 %% Example:
 %% topic_sort_clause() :: #{
-%%   <<"Operand">> => quicksight_identifier(),
+%%   <<"Operand">> => identifier(),
 %%   <<"SortDirection">> => list(any())
 %% }
 -type topic_sort_clause() :: #{binary() => any()}.
@@ -8113,7 +8113,7 @@
 %%   <<"LineDataLabels">> => data_label_options(),
 %%   <<"PrimaryYAxisDisplayOptions">> => axis_display_options(),
 %%   <<"PrimaryYAxisLabelOptions">> => chart_axis_label_options(),
-%%   <<"ReferenceLines">> => list(reference_line()()),
+%%   <<"ReferenceLines">> => list(reference_line()),
 %%   <<"SecondaryYAxisDisplayOptions">> => axis_display_options(),
 %%   <<"SecondaryYAxisLabelOptions">> => chart_axis_label_options(),
 %%   <<"SingleAxisOptions">> => single_axis_options(),
@@ -8143,7 +8143,7 @@
 
 %% Example:
 %% list_role_memberships_response() :: #{
-%%   <<"MembersList">> => list(string()()),
+%%   <<"MembersList">> => list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -8161,9 +8161,9 @@
 
 %% Example:
 %% funnel_chart_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => funnel_chart_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -8186,7 +8186,7 @@
 
 %% Example:
 %% list_analyses_response() :: #{
-%%   <<"AnalysisSummaryList">> => list(analysis_summary()()),
+%%   <<"AnalysisSummaryList">> => list(analysis_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -8248,9 +8248,9 @@
 
 %% Example:
 %% line_chart_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => line_chart_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -8278,7 +8278,7 @@
 
 %% Example:
 %% row_alternate_color_options() :: #{
-%%   <<"RowAlternateColors">> => list(string()()),
+%%   <<"RowAlternateColors">> => list(string()),
 %%   <<"Status">> => list(any()),
 %%   <<"UsePrimaryBackgroundColor">> => list(any())
 %% }
@@ -8296,7 +8296,7 @@
 
 %% Example:
 %% integer_dataset_parameter_default_values() :: #{
-%%   <<"StaticValues">> => list(float()())
+%%   <<"StaticValues">> => list(float())
 %% }
 -type integer_dataset_parameter_default_values() :: #{binary() => any()}.
 
@@ -8383,7 +8383,7 @@
 
 %% Example:
 %% anonymous_user_snapshot_job_result() :: #{
-%%   <<"FileGroups">> => list(snapshot_job_result_file_group()())
+%%   <<"FileGroups">> => list(snapshot_job_result_file_group())
 %% }
 -type anonymous_user_snapshot_job_result() :: #{binary() => any()}.
 
@@ -8420,7 +8420,7 @@
 
 %% Example:
 %% selected_sheets_filter_scope_configuration() :: #{
-%%   <<"SheetVisualScopingConfigurations">> => list(sheet_visual_scoping_configuration()())
+%%   <<"SheetVisualScopingConfigurations">> => list(sheet_visual_scoping_configuration())
 %% }
 -type selected_sheets_filter_scope_configuration() :: #{binary() => any()}.
 
@@ -8434,7 +8434,7 @@
 
 %% Example:
 %% batch_create_topic_reviewed_answer_request() :: #{
-%%   <<"Answers">> := list(create_topic_reviewed_answer()())
+%%   <<"Answers">> := list(create_topic_reviewed_answer())
 %% }
 -type batch_create_topic_reviewed_answer_request() :: #{binary() => any()}.
 
@@ -8452,7 +8452,7 @@
 %% describe_data_set_permissions_response() :: #{
 %%   <<"DataSetArn">> => string(),
 %%   <<"DataSetId">> => string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -8501,9 +8501,9 @@
 
 %% Example:
 %% geospatial_map_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => geospatial_map_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -8527,9 +8527,9 @@
 %% Example:
 %% topic_i_r() :: #{
 %%   <<"ContributionAnalysis">> => topic_i_r_contribution_analysis(),
-%%   <<"Filters">> => list(list(topic_i_r_filter_option()())()),
-%%   <<"GroupByList">> => list(topic_i_r_group_by()()),
-%%   <<"Metrics">> => list(topic_i_r_metric()()),
+%%   <<"Filters">> => list(list(topic_i_r_filter_option())()),
+%%   <<"GroupByList">> => list(topic_i_r_group_by()),
+%%   <<"Metrics">> => list(topic_i_r_metric()),
 %%   <<"Sort">> => topic_sort_clause(),
 %%   <<"Visual">> => visual_options()
 %% }
@@ -8538,8 +8538,8 @@
 
 %% Example:
 %% snapshot_job_result_file_group() :: #{
-%%   <<"Files">> => list(snapshot_file()()),
-%%   <<"S3Results">> => list(snapshot_job_s3_result()())
+%%   <<"Files">> => list(snapshot_file()),
+%%   <<"S3Results">> => list(snapshot_job_s3_result())
 %% }
 -type snapshot_job_result_file_group() :: #{binary() => any()}.
 
@@ -8557,7 +8557,7 @@
 %% Example:
 %% update_dashboard_links_response() :: #{
 %%   <<"DashboardArn">> => string(),
-%%   <<"LinkEntities">> => list(string()()),
+%%   <<"LinkEntities">> => list(string()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -8625,15 +8625,15 @@
 
 %% Example:
 %% snapshot_user_configuration() :: #{
-%%   <<"AnonymousUsers">> => list(snapshot_anonymous_user()())
+%%   <<"AnonymousUsers">> => list(snapshot_anonymous_user())
 %% }
 -type snapshot_user_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_theme_permissions_request() :: #{
-%%   <<"GrantPermissions">> => list(resource_permission()()),
-%%   <<"RevokePermissions">> => list(resource_permission()())
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
 %% }
 -type update_theme_permissions_request() :: #{binary() => any()}.
 
@@ -8661,7 +8661,7 @@
 %% Example:
 %% data_label_options() :: #{
 %%   <<"CategoryLabelVisibility">> => list(any()),
-%%   <<"DataLabelTypes">> => list(data_label_type()()),
+%%   <<"DataLabelTypes">> => list(data_label_type()),
 %%   <<"LabelColor">> => string(),
 %%   <<"LabelContent">> => list(any()),
 %%   <<"LabelFontConfiguration">> => font_configuration(),
@@ -8694,8 +8694,8 @@
 %% Example:
 %% row_level_permission_tag_configuration() :: #{
 %%   <<"Status">> => list(any()),
-%%   <<"TagRuleConfigurations">> => list(list(string()())()),
-%%   <<"TagRules">> => list(row_level_permission_tag_rule()())
+%%   <<"TagRuleConfigurations">> => list(list(string())()),
+%%   <<"TagRules">> => list(row_level_permission_tag_rule())
 %% }
 -type row_level_permission_tag_configuration() :: #{binary() => any()}.
 
@@ -8789,8 +8789,8 @@
 
 %% Example:
 %% explicit_hierarchy() :: #{
-%%   <<"Columns">> => list(column_identifier()()),
-%%   <<"DrillDownFilters">> => list(drill_down_filter()()),
+%%   <<"Columns">> => list(column_identifier()),
+%%   <<"DrillDownFilters">> => list(drill_down_filter()),
 %%   <<"HierarchyId">> => string()
 %% }
 -type explicit_hierarchy() :: #{binary() => any()}.
@@ -8879,7 +8879,7 @@
 %%   <<"BrandId">> => string(),
 %%   <<"BrandStatus">> => list(any()),
 %%   <<"CreatedTime">> => [non_neg_integer()],
-%%   <<"Errors">> => list(string()()),
+%%   <<"Errors">> => list(string()),
 %%   <<"LastUpdatedTime">> => [non_neg_integer()],
 %%   <<"Logo">> => logo(),
 %%   <<"VersionId">> => string(),
@@ -8890,7 +8890,7 @@
 
 %% Example:
 %% table_pinned_field_options() :: #{
-%%   <<"PinnedLeftFields">> => list(string()())
+%%   <<"PinnedLeftFields">> => list(string())
 %% }
 -type table_pinned_field_options() :: #{binary() => any()}.
 
@@ -8898,7 +8898,7 @@
 %% Example:
 %% parameter_selectable_values() :: #{
 %%   <<"LinkToDataSetColumn">> => column_identifier(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type parameter_selectable_values() :: #{binary() => any()}.
 
@@ -8975,7 +8975,7 @@
 %%   <<"AssetBundleImportSource">> => asset_bundle_import_source_description(),
 %%   <<"AwsAccountId">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"Errors">> => list(asset_bundle_import_job_error()()),
+%%   <<"Errors">> => list(asset_bundle_import_job_error()),
 %%   <<"FailureAction">> => list(any()),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"OverrideParameters">> => asset_bundle_import_job_override_parameters(),
@@ -8983,9 +8983,9 @@
 %%   <<"OverrideTags">> => asset_bundle_import_job_override_tags(),
 %%   <<"OverrideValidationStrategy">> => asset_bundle_import_job_override_validation_strategy(),
 %%   <<"RequestId">> => string(),
-%%   <<"RollbackErrors">> => list(asset_bundle_import_job_error()()),
+%%   <<"RollbackErrors">> => list(asset_bundle_import_job_error()),
 %%   <<"Status">> => integer(),
-%%   <<"Warnings">> => list(asset_bundle_import_job_warning()())
+%%   <<"Warnings">> => list(asset_bundle_import_job_warning())
 %% }
 -type describe_asset_bundle_import_job_response() :: #{binary() => any()}.
 
@@ -8999,9 +8999,9 @@
 
 %% Example:
 %% filled_map_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => filled_map_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"ConditionalFormatting">> => filled_map_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
@@ -9018,7 +9018,7 @@
 %%   <<"Interactions">> => visual_interaction_options(),
 %%   <<"PaginatedReportOptions">> => table_paginated_report_options(),
 %%   <<"SortConfiguration">> => table_sort_configuration(),
-%%   <<"TableInlineVisualizations">> => list(table_inline_visualization()()),
+%%   <<"TableInlineVisualizations">> => list(table_inline_visualization()),
 %%   <<"TableOptions">> => table_options(),
 %%   <<"TotalOptions">> => total_options()
 %% }
@@ -9027,7 +9027,7 @@
 
 %% Example:
 %% contribution_analysis_default() :: #{
-%%   <<"ContributorDimensions">> => list(column_identifier()()),
+%%   <<"ContributorDimensions">> => list(column_identifier()),
 %%   <<"MeasureFieldId">> => string()
 %% }
 -type contribution_analysis_default() :: #{binary() => any()}.
@@ -9042,7 +9042,7 @@
 
 %% Example:
 %% gauge_chart_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => gauge_chart_configuration(),
 %%   <<"ConditionalFormatting">> => gauge_chart_conditional_formatting(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
@@ -9056,7 +9056,7 @@
 %% Example:
 %% plugin_visual_table_query_sort() :: #{
 %%   <<"ItemsLimitConfiguration">> => plugin_visual_items_limit_configuration(),
-%%   <<"RowSort">> => list(field_sort_options()())
+%%   <<"RowSort">> => list(field_sort_options())
 %% }
 -type plugin_visual_table_query_sort() :: #{binary() => any()}.
 
@@ -9079,11 +9079,11 @@
 
 %% Example:
 %% asset_bundle_import_job_vpc_connection_override_parameters() :: #{
-%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"DnsResolvers">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"RoleArn">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VPCConnectionId">> => string()
 %% }
 -type asset_bundle_import_job_vpc_connection_override_parameters() :: #{binary() => any()}.
@@ -9091,7 +9091,7 @@
 
 %% Example:
 %% histogram_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => histogram_configuration(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
@@ -9136,7 +9136,7 @@
 %%   <<"Legend">> => legend_options(),
 %%   <<"PrimaryYAxisDisplayOptions">> => axis_display_options(),
 %%   <<"PrimaryYAxisLabelOptions">> => chart_axis_label_options(),
-%%   <<"ReferenceLines">> => list(reference_line()()),
+%%   <<"ReferenceLines">> => list(reference_line()),
 %%   <<"SortConfiguration">> => box_plot_sort_configuration(),
 %%   <<"Tooltip">> => tooltip_options(),
 %%   <<"VisualPalette">> => visual_palette()
@@ -9187,9 +9187,9 @@
 
 %% Example:
 %% tree_map_aggregated_field_wells() :: #{
-%%   <<"Colors">> => list(measure_field()()),
-%%   <<"Groups">> => list(dimension_field()()),
-%%   <<"Sizes">> => list(measure_field()())
+%%   <<"Colors">> => list(measure_field()),
+%%   <<"Groups">> => list(dimension_field()),
+%%   <<"Sizes">> => list(measure_field())
 %% }
 -type tree_map_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -9277,12 +9277,12 @@
 %% topic_column() :: #{
 %%   <<"Aggregation">> => list(any()),
 %%   <<"AllowedAggregations">> => list(list(any())()),
-%%   <<"CellValueSynonyms">> => list(cell_value_synonym()()),
+%%   <<"CellValueSynonyms">> => list(cell_value_synonym()),
 %%   <<"ColumnDataRole">> => list(any()),
 %%   <<"ColumnDescription">> => string(),
 %%   <<"ColumnFriendlyName">> => string(),
 %%   <<"ColumnName">> => string(),
-%%   <<"ColumnSynonyms">> => list(string()()),
+%%   <<"ColumnSynonyms">> => list(string()),
 %%   <<"ComparativeOrder">> => comparative_order(),
 %%   <<"DefaultFormatting">> => default_formatting(),
 %%   <<"DisableIndexing">> => boolean(),
@@ -9299,7 +9299,7 @@
 %% Example:
 %% asset_options() :: #{
 %%   <<"CustomActionDefaults">> => visual_custom_action_defaults(),
-%%   <<"ExcludedDataSetArns">> => list(string()()),
+%%   <<"ExcludedDataSetArns">> => list(string()),
 %%   <<"QBusinessInsightsStatus">> => list(any()),
 %%   <<"Timezone">> => string(),
 %%   <<"WeekStart">> => list(any())
@@ -9341,7 +9341,7 @@
 
 %% Example:
 %% chart_axis_label_options() :: #{
-%%   <<"AxisLabelOptions">> => list(axis_label_options()()),
+%%   <<"AxisLabelOptions">> => list(axis_label_options()),
 %%   <<"SortIconVisibility">> => list(any()),
 %%   <<"Visibility">> => list(any())
 %% }
@@ -9367,17 +9367,17 @@
 
 %% Example:
 %% update_topic_permissions_request() :: #{
-%%   <<"GrantPermissions">> => list(resource_permission()()),
-%%   <<"RevokePermissions">> => list(resource_permission()())
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
 %% }
 -type update_topic_permissions_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% waterfall_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => waterfall_chart_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -9510,7 +9510,7 @@
 %% topic_i_r_group_by() :: #{
 %%   <<"DisplayFormat">> => list(any()),
 %%   <<"DisplayFormatOptions">> => display_format_options(),
-%%   <<"FieldName">> => quicksight_identifier(),
+%%   <<"FieldName">> => identifier(),
 %%   <<"NamedEntity">> => named_entity_ref(),
 %%   <<"Sort">> => topic_sort_clause(),
 %%   <<"TimeGranularity">> => list(any())
@@ -9539,7 +9539,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"TemplateSummaryList">> => list(template_summary()())
+%%   <<"TemplateSummaryList">> => list(template_summary())
 %% }
 -type list_templates_response() :: #{binary() => any()}.
 
@@ -9576,7 +9576,7 @@
 
 %% Example:
 %% credential_pair() :: #{
-%%   <<"AlternateDataSourceParameters">> => list(list()()),
+%%   <<"AlternateDataSourceParameters">> => list(list()),
 %%   <<"Password">> => string(),
 %%   <<"Username">> => string()
 %% }
@@ -9585,7 +9585,7 @@
 
 %% Example:
 %% column_group_schema() :: #{
-%%   <<"ColumnGroupColumnSchemaList">> => list(column_group_column_schema()()),
+%%   <<"ColumnGroupColumnSchemaList">> => list(column_group_column_schema()),
 %%   <<"Name">> => string()
 %% }
 -type column_group_schema() :: #{binary() => any()}.
@@ -9600,7 +9600,7 @@
 
 %% Example:
 %% sheet() :: #{
-%%   <<"Images">> => list(sheet_image()()),
+%%   <<"Images">> => list(sheet_image()),
 %%   <<"Name">> => string(),
 %%   <<"SheetId">> => string()
 %% }
@@ -9663,7 +9663,7 @@
 %% Example:
 %% decimal_parameter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(float()())
+%%   <<"Values">> => list(float())
 %% }
 -type decimal_parameter() :: #{binary() => any()}.
 
@@ -9680,7 +9680,7 @@
 
 %% Example:
 %% gradient_color() :: #{
-%%   <<"Stops">> => list(gradient_stop()())
+%%   <<"Stops">> => list(gradient_stop())
 %% }
 -type gradient_color() :: #{binary() => any()}.
 
@@ -9716,7 +9716,7 @@
 
 %% Example:
 %% snapshot_user_configuration_redacted() :: #{
-%%   <<"AnonymousUsers">> => list(snapshot_anonymous_user_redacted()())
+%%   <<"AnonymousUsers">> => list(snapshot_anonymous_user_redacted())
 %% }
 -type snapshot_user_configuration_redacted() :: #{binary() => any()}.
 
@@ -9750,9 +9750,9 @@
 
 %% Example:
 %% sankey_diagram_aggregated_field_wells() :: #{
-%%   <<"Destination">> => list(dimension_field()()),
-%%   <<"Source">> => list(dimension_field()()),
-%%   <<"Weight">> => list(measure_field()())
+%%   <<"Destination">> => list(dimension_field()),
+%%   <<"Source">> => list(dimension_field()),
+%%   <<"Weight">> => list(measure_field())
 %% }
 -type sankey_diagram_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -9763,7 +9763,7 @@
 
 %% Example:
 %% pivot_table_data_path_option() :: #{
-%%   <<"DataPathList">> => list(data_path_value()()),
+%%   <<"DataPathList">> => list(data_path_value()),
 %%   <<"Width">> => string()
 %% }
 -type pivot_table_data_path_option() :: #{binary() => any()}.
@@ -9833,7 +9833,7 @@
 
 %% Example:
 %% collective_constant() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type collective_constant() :: #{binary() => any()}.
 
@@ -9847,7 +9847,7 @@
 
 %% Example:
 %% k_p_i_conditional_formatting() :: #{
-%%   <<"ConditionalFormattingOptions">> => list(k_p_i_conditional_formatting_option()())
+%%   <<"ConditionalFormattingOptions">> => list(k_p_i_conditional_formatting_option())
 %% }
 -type k_p_i_conditional_formatting() :: #{binary() => any()}.
 
@@ -9950,8 +9950,8 @@
 
 %% Example:
 %% asset_bundle_import_job_folder_override_tags() :: #{
-%%   <<"FolderIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"FolderIds">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type asset_bundle_import_job_folder_override_tags() :: #{binary() => any()}.
 
@@ -9980,7 +9980,7 @@
 
 %% Example:
 %% list_namespaces_response() :: #{
-%%   <<"Namespaces">> => list(namespace_info_v2()()),
+%%   <<"Namespaces">> => list(namespace_info_v2()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -10034,14 +10034,14 @@
 %% Example:
 %% dashboard_source_template() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"DataSetReferences">> => list(data_set_reference()())
+%%   <<"DataSetReferences">> => list(data_set_reference())
 %% }
 -type dashboard_source_template() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_folder_members_response() :: #{
-%%   <<"FolderMemberList">> => list(member_id_arn_pair()()),
+%%   <<"FolderMemberList">> => list(member_id_arn_pair()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -10052,7 +10052,7 @@
 %% Example:
 %% word_cloud_sort_configuration() :: #{
 %%   <<"CategoryItemsLimit">> => items_limit_configuration(),
-%%   <<"CategorySort">> => list(field_sort_options()())
+%%   <<"CategorySort">> => list(field_sort_options())
 %% }
 -type word_cloud_sort_configuration() :: #{binary() => any()}.
 
@@ -10139,7 +10139,7 @@
 %% sankey_diagram_sort_configuration() :: #{
 %%   <<"DestinationItemsLimit">> => items_limit_configuration(),
 %%   <<"SourceItemsLimit">> => items_limit_configuration(),
-%%   <<"WeightSort">> => list(field_sort_options()())
+%%   <<"WeightSort">> => list(field_sort_options())
 %% }
 -type sankey_diagram_sort_configuration() :: #{binary() => any()}.
 
@@ -10178,7 +10178,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"FolderId">> => string(),
-%%   <<"FolderPath">> => list(string()()),
+%%   <<"FolderPath">> => list(string()),
 %%   <<"FolderType">> => list(any()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -10201,9 +10201,9 @@
 
 %% Example:
 %% geospatial_map_aggregated_field_wells() :: #{
-%%   <<"Colors">> => list(dimension_field()()),
-%%   <<"Geospatial">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Colors">> => list(dimension_field()),
+%%   <<"Geospatial">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type geospatial_map_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -10212,14 +10212,14 @@
 %% create_dashboard_request() :: #{
 %%   <<"DashboardPublishOptions">> => dashboard_publish_options(),
 %%   <<"Definition">> => dashboard_version_definition(),
-%%   <<"FolderArns">> => list(string()()),
-%%   <<"LinkEntities">> => list(string()()),
+%%   <<"FolderArns">> => list(string()),
+%%   <<"LinkEntities">> => list(string()),
 %%   <<"LinkSharingConfiguration">> => link_sharing_configuration(),
 %%   <<"Name">> := string(),
 %%   <<"Parameters">> => parameters(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"SourceEntity">> => dashboard_source_entity(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"ThemeArn">> => string(),
 %%   <<"ValidationStrategy">> => validation_strategy(),
 %%   <<"VersionDescription">> => string()
@@ -10241,7 +10241,7 @@
 
 %% Example:
 %% visual_custom_action() :: #{
-%%   <<"ActionOperations">> => list(visual_custom_action_operation()()),
+%%   <<"ActionOperations">> => list(visual_custom_action_operation()),
 %%   <<"CustomActionId">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Status">> => list(any()),
@@ -10273,14 +10273,14 @@
 %% Example:
 %% decimal_default_values() :: #{
 %%   <<"DynamicValue">> => dynamic_default_value(),
-%%   <<"StaticValues">> => list(float()())
+%%   <<"StaticValues">> => list(float())
 %% }
 -type decimal_default_values() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_refresh_schedules_response() :: #{
-%%   <<"RefreshSchedules">> => list(refresh_schedule()()),
+%%   <<"RefreshSchedules">> => list(refresh_schedule()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -10313,7 +10313,7 @@
 %%   <<"AnalysisId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"RequestId">> => string(),
-%%   <<"RestorationFailedFolderArns">> => list(string()()),
+%%   <<"RestorationFailedFolderArns">> => list(string()),
 %%   <<"Status">> => integer()
 %% }
 -type restore_analysis_response() :: #{binary() => any()}.
@@ -10337,7 +10337,7 @@
 
 %% Example:
 %% asset_bundle_import_job_dashboard_override_permissions() :: #{
-%%   <<"DashboardIds">> => list(string()()),
+%%   <<"DashboardIds">> => list(string()),
 %%   <<"LinkSharingConfiguration">> => asset_bundle_resource_link_sharing_configuration(),
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
@@ -10347,9 +10347,9 @@
 %% Example:
 %% heat_map_sort_configuration() :: #{
 %%   <<"HeatMapColumnItemsLimitConfiguration">> => items_limit_configuration(),
-%%   <<"HeatMapColumnSort">> => list(field_sort_options()()),
+%%   <<"HeatMapColumnSort">> => list(field_sort_options()),
 %%   <<"HeatMapRowItemsLimitConfiguration">> => items_limit_configuration(),
-%%   <<"HeatMapRowSort">> => list(field_sort_options()())
+%%   <<"HeatMapRowSort">> => list(field_sort_options())
 %% }
 -type heat_map_sort_configuration() :: #{binary() => any()}.
 
@@ -10395,7 +10395,7 @@
 %% update_analysis_permissions_response() :: #{
 %%   <<"AnalysisArn">> => string(),
 %%   <<"AnalysisId">> => string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -10462,7 +10462,7 @@
 %% Example:
 %% pie_chart_configuration() :: #{
 %%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
-%%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()()),
+%%   <<"ContributionAnalysisDefaults">> => list(contribution_analysis_default()),
 %%   <<"DataLabels">> => data_label_options(),
 %%   <<"DonutOptions">> => donut_options(),
 %%   <<"FieldWells">> => pie_chart_field_wells(),
@@ -10497,15 +10497,15 @@
 
 %% Example:
 %% asset_bundle_import_job_theme_override_tags() :: #{
-%%   <<"Tags">> => list(tag()()),
-%%   <<"ThemeIds">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"ThemeIds">> => list(string())
 %% }
 -type asset_bundle_import_job_theme_override_tags() :: #{binary() => any()}.
 
 
 %% Example:
 %% search_dashboards_request() :: #{
-%%   <<"Filters">> := list(dashboard_search_filter()()),
+%%   <<"Filters">> := list(dashboard_search_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -10518,7 +10518,7 @@
 
 %% Example:
 %% asset_bundle_import_job_data_set_override_permissions() :: #{
-%%   <<"DataSetIds">> => list(string()()),
+%%   <<"DataSetIds">> => list(string()),
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_import_job_data_set_override_permissions() :: #{binary() => any()}.
@@ -10572,11 +10572,11 @@
 
 %% Example:
 %% update_vpc_connection_request() :: #{
-%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"DnsResolvers">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"RoleArn">> := string(),
-%%   <<"SecurityGroupIds">> := list(string()()),
-%%   <<"SubnetIds">> := list(string()())
+%%   <<"SecurityGroupIds">> := list(string()),
+%%   <<"SubnetIds">> := list(string())
 %% }
 -type update_vpc_connection_request() :: #{binary() => any()}.
 
@@ -10600,7 +10600,7 @@
 
 %% Example:
 %% table_conditional_formatting() :: #{
-%%   <<"ConditionalFormattingOptions">> => list(table_conditional_formatting_option()())
+%%   <<"ConditionalFormattingOptions">> => list(table_conditional_formatting_option())
 %% }
 -type table_conditional_formatting() :: #{binary() => any()}.
 
@@ -10618,7 +10618,7 @@
 %% create_account_customization_request() :: #{
 %%   <<"AccountCustomization">> := account_customization(),
 %%   <<"Namespace">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_account_customization_request() :: #{binary() => any()}.
 
@@ -10657,12 +10657,12 @@
 %%   <<"Arn">> => string(),
 %%   <<"AvailabilityStatus">> => list(any()),
 %%   <<"CreatedTime">> => non_neg_integer(),
-%%   <<"DnsResolvers">> => list(string()()),
+%%   <<"DnsResolvers">> => list(string()),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"NetworkInterfaces">> => list(network_interface()()),
+%%   <<"NetworkInterfaces">> => list(network_interface()),
 %%   <<"RoleArn">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Status">> => list(any()),
 %%   <<"VPCConnectionId">> => string(),
 %%   <<"VPCId">> => string()
@@ -10672,9 +10672,9 @@
 
 %% Example:
 %% pivot_table_aggregated_field_wells() :: #{
-%%   <<"Columns">> => list(dimension_field()()),
-%%   <<"Rows">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Columns">> => list(dimension_field()),
+%%   <<"Rows">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type pivot_table_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -10810,7 +10810,7 @@
 
 %% Example:
 %% update_theme_permissions_response() :: #{
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
 %%   <<"ThemeArn">> => string(),
@@ -10822,7 +10822,7 @@
 %% Example:
 %% waterfall_chart_sort_configuration() :: #{
 %%   <<"BreakdownItemsLimit">> => items_limit_configuration(),
-%%   <<"CategorySort">> => list(field_sort_options()())
+%%   <<"CategorySort">> => list(field_sort_options())
 %% }
 -type waterfall_chart_sort_configuration() :: #{binary() => any()}.
 
@@ -10831,14 +10831,14 @@
 %% date_time_default_values() :: #{
 %%   <<"DynamicValue">> => dynamic_default_value(),
 %%   <<"RollingDate">> => rolling_date_configuration(),
-%%   <<"StaticValues">> => list(non_neg_integer()())
+%%   <<"StaticValues">> => list(non_neg_integer())
 %% }
 -type date_time_default_values() :: #{binary() => any()}.
 
 
 %% Example:
 %% data_set_schema() :: #{
-%%   <<"ColumnSchemaList">> => list(column_schema()())
+%%   <<"ColumnSchemaList">> => list(column_schema())
 %% }
 -type data_set_schema() :: #{binary() => any()}.
 
@@ -10862,8 +10862,8 @@
 
 %% Example:
 %% update_data_set_permissions_request() :: #{
-%%   <<"GrantPermissions">> => list(resource_permission()()),
-%%   <<"RevokePermissions">> => list(resource_permission()())
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
 %% }
 -type update_data_set_permissions_request() :: #{binary() => any()}.
 
@@ -10900,7 +10900,7 @@
 %%   <<"CustomLabel">> => string(),
 %%   <<"Placement">> => list(any()),
 %%   <<"ScrollStatus">> => list(any()),
-%%   <<"TotalAggregationOptions">> => list(total_aggregation_option()()),
+%%   <<"TotalAggregationOptions">> => list(total_aggregation_option()),
 %%   <<"TotalCellStyle">> => table_cell_style(),
 %%   <<"TotalsVisibility">> => list(any())
 %% }
@@ -10909,7 +10909,7 @@
 
 %% Example:
 %% search_dashboards_response() :: #{
-%%   <<"DashboardSummaryList">> => list(dashboard_summary()()),
+%%   <<"DashboardSummaryList">> => list(dashboard_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -11010,7 +11010,7 @@
 
 %% Example:
 %% resource_permission() :: #{
-%%   <<"Actions">> => list(string()()),
+%%   <<"Actions">> => list(string()),
 %%   <<"Principal">> => string()
 %% }
 -type resource_permission() :: #{binary() => any()}.
@@ -11047,7 +11047,7 @@
 %% Example:
 %% redshift_iam_parameters() :: #{
 %%   <<"AutoCreateDatabaseUser">> => boolean(),
-%%   <<"DatabaseGroups">> => list(string()()),
+%%   <<"DatabaseGroups">> => list(string()),
 %%   <<"DatabaseUser">> => string(),
 %%   <<"RoleArn">> => string()
 %% }
@@ -11064,15 +11064,15 @@
 
 %% Example:
 %% update_folder_permissions_request() :: #{
-%%   <<"GrantPermissions">> => list(resource_permission()()),
-%%   <<"RevokePermissions">> => list(resource_permission()())
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
 %% }
 -type update_folder_permissions_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% typography() :: #{
-%%   <<"FontFamilies">> => list(font()())
+%%   <<"FontFamilies">> => list(font())
 %% }
 -type typography() :: #{binary() => any()}.
 
@@ -11091,8 +11091,8 @@
 
 %% Example:
 %% filled_map_aggregated_field_wells() :: #{
-%%   <<"Geospatial">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Geospatial">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type filled_map_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -11155,12 +11155,12 @@
 
 %% Example:
 %% asset_bundle_import_job_override_permissions() :: #{
-%%   <<"Analyses">> => list(asset_bundle_import_job_analysis_override_permissions()()),
-%%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_permissions()()),
-%%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_permissions()()),
-%%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_permissions()()),
-%%   <<"Folders">> => list(asset_bundle_import_job_folder_override_permissions()()),
-%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_permissions()())
+%%   <<"Analyses">> => list(asset_bundle_import_job_analysis_override_permissions()),
+%%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_permissions()),
+%%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_permissions()),
+%%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_permissions()),
+%%   <<"Folders">> => list(asset_bundle_import_job_folder_override_permissions()),
+%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_permissions())
 %% }
 -type asset_bundle_import_job_override_permissions() :: #{binary() => any()}.
 
@@ -11214,7 +11214,7 @@
 
 %% Example:
 %% decimal_dataset_parameter_default_values() :: #{
-%%   <<"StaticValues">> => list(float()())
+%%   <<"StaticValues">> => list(float())
 %% }
 -type decimal_dataset_parameter_default_values() :: #{binary() => any()}.
 
@@ -11252,7 +11252,7 @@
 
 %% Example:
 %% data_source() :: #{
-%%   <<"AlternateDataSourceParameters">> => list(list()()),
+%%   <<"AlternateDataSourceParameters">> => list(list()),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"DataSourceId">> => string(),
@@ -11271,7 +11271,7 @@
 
 %% Example:
 %% search_groups_response() :: #{
-%%   <<"GroupList">> => list(group()()),
+%%   <<"GroupList">> => list(group()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -11309,7 +11309,7 @@
 %% Example:
 %% string_parameter_declaration() :: #{
 %%   <<"DefaultValues">> => string_default_values(),
-%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()()),
+%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()),
 %%   <<"Name">> => string(),
 %%   <<"ParameterValueType">> => list(any()),
 %%   <<"ValueWhenUnset">> => string_value_when_unset_configuration()
@@ -11327,7 +11327,7 @@
 
 %% Example:
 %% list_group_memberships_response() :: #{
-%%   <<"GroupMemberList">> => list(group_member()()),
+%%   <<"GroupMemberList">> => list(group_member()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -11337,9 +11337,9 @@
 
 %% Example:
 %% combo_chart_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => combo_chart_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -11392,7 +11392,7 @@
 
 %% Example:
 %% list_groups_response() :: #{
-%%   <<"GroupList">> => list(group()()),
+%%   <<"GroupList">> => list(group()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -11449,7 +11449,7 @@
 
 %% Example:
 %% snapshot_anonymous_user() :: #{
-%%   <<"RowLevelPermissionTags">> => list(session_tag()())
+%%   <<"RowLevelPermissionTags">> => list(session_tag())
 %% }
 -type snapshot_anonymous_user() :: #{binary() => any()}.
 
@@ -11530,7 +11530,7 @@
 %% Example:
 %% snapshot_file() :: #{
 %%   <<"FormatType">> => list(any()),
-%%   <<"SheetSelections">> => list(snapshot_file_sheet_selection()())
+%%   <<"SheetSelections">> => list(snapshot_file_sheet_selection())
 %% }
 -type snapshot_file() :: #{binary() => any()}.
 
@@ -11538,7 +11538,7 @@
 %% Example:
 %% color_scale() :: #{
 %%   <<"ColorFillType">> => list(any()),
-%%   <<"Colors">> => list(data_color()()),
+%%   <<"Colors">> => list(data_color()),
 %%   <<"NullValueColor">> => data_color()
 %% }
 -type color_scale() :: #{binary() => any()}.
@@ -11555,7 +11555,7 @@
 %% Example:
 %% same_sheet_target_visual_configuration() :: #{
 %%   <<"TargetVisualOptions">> => list(any()),
-%%   <<"TargetVisuals">> => list(string()())
+%%   <<"TargetVisuals">> => list(string())
 %% }
 -type same_sheet_target_visual_configuration() :: #{binary() => any()}.
 
@@ -11570,7 +11570,7 @@
 
 %% Example:
 %% pivot_table_conditional_formatting() :: #{
-%%   <<"ConditionalFormattingOptions">> => list(pivot_table_conditional_formatting_option()())
+%%   <<"ConditionalFormattingOptions">> => list(pivot_table_conditional_formatting_option())
 %% }
 -type pivot_table_conditional_formatting() :: #{binary() => any()}.
 
@@ -11621,9 +11621,9 @@
 %%   <<"FolderType">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"ParentFolderArn">> => string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"SharingModel">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_folder_request() :: #{binary() => any()}.
 
@@ -11633,7 +11633,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"ThemeSummaryList">> => list(theme_summary()())
+%%   <<"ThemeSummaryList">> => list(theme_summary())
 %% }
 -type list_themes_response() :: #{binary() => any()}.
 
@@ -11643,14 +11643,14 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"ThemeVersionSummaryList">> => list(theme_version_summary()())
+%%   <<"ThemeVersionSummaryList">> => list(theme_version_summary())
 %% }
 -type list_theme_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% date_time_hierarchy() :: #{
-%%   <<"DrillDownFilters">> => list(drill_down_filter()()),
+%%   <<"DrillDownFilters">> => list(drill_down_filter()),
 %%   <<"HierarchyId">> => string()
 %% }
 -type date_time_hierarchy() :: #{binary() => any()}.
@@ -11676,7 +11676,7 @@
 
 %% Example:
 %% list_dashboards_response() :: #{
-%%   <<"DashboardSummaryList">> => list(dashboard_summary()()),
+%%   <<"DashboardSummaryList">> => list(dashboard_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -11756,7 +11756,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"FolderId">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
 %% }
@@ -11777,7 +11777,7 @@
 %% body_section_dynamic_category_dimension_configuration() :: #{
 %%   <<"Column">> => column_identifier(),
 %%   <<"Limit">> => integer(),
-%%   <<"SortByMetrics">> => list(column_sort()())
+%%   <<"SortByMetrics">> => list(column_sort())
 %% }
 -type body_section_dynamic_category_dimension_configuration() :: #{binary() => any()}.
 
@@ -11791,7 +11791,7 @@
 
 %% Example:
 %% snapshot_job_s3_result() :: #{
-%%   <<"ErrorInfo">> => list(snapshot_job_result_error_info()()),
+%%   <<"ErrorInfo">> => list(snapshot_job_result_error_info()),
 %%   <<"S3DestinationConfiguration">> => snapshot_s3_destination_configuration(),
 %%   <<"S3Uri">> => string()
 %% }
@@ -11842,10 +11842,10 @@
 
 %% Example:
 %% batch_delete_topic_reviewed_answer_response() :: #{
-%%   <<"InvalidAnswers">> => list(invalid_topic_reviewed_answer()()),
+%%   <<"InvalidAnswers">> => list(invalid_topic_reviewed_answer()),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
-%%   <<"SucceededAnswers">> => list(succeeded_topic_reviewed_answer()()),
+%%   <<"SucceededAnswers">> => list(succeeded_topic_reviewed_answer()),
 %%   <<"TopicArn">> => string(),
 %%   <<"TopicId">> => string()
 %% }
@@ -11881,7 +11881,7 @@
 
 %% Example:
 %% insight_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"DataSetIdentifier">> => string(),
 %%   <<"InsightConfiguration">> => insight_configuration(),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
@@ -11924,7 +11924,7 @@
 %%   <<"IamArn">> => string(),
 %%   <<"IdentityType">> := list(any()),
 %%   <<"SessionName">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserName">> => string(),
 %%   <<"UserRole">> := list(any())
 %% }
@@ -11940,15 +11940,15 @@
 
 %% Example:
 %% asset_bundle_import_job_override_parameters() :: #{
-%%   <<"Analyses">> => list(asset_bundle_import_job_analysis_override_parameters()()),
-%%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_parameters()()),
-%%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_parameters()()),
-%%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_parameters()()),
-%%   <<"Folders">> => list(asset_bundle_import_job_folder_override_parameters()()),
-%%   <<"RefreshSchedules">> => list(asset_bundle_import_job_refresh_schedule_override_parameters()()),
+%%   <<"Analyses">> => list(asset_bundle_import_job_analysis_override_parameters()),
+%%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_parameters()),
+%%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_parameters()),
+%%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_parameters()),
+%%   <<"Folders">> => list(asset_bundle_import_job_folder_override_parameters()),
+%%   <<"RefreshSchedules">> => list(asset_bundle_import_job_refresh_schedule_override_parameters()),
 %%   <<"ResourceIdOverrideConfiguration">> => asset_bundle_import_job_resource_id_override_configuration(),
-%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_parameters()()),
-%%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_parameters()())
+%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_parameters()),
+%%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_parameters())
 %% }
 -type asset_bundle_import_job_override_parameters() :: #{binary() => any()}.
 
@@ -11963,7 +11963,7 @@
 
 %% Example:
 %% custom_action_set_parameters_operation() :: #{
-%%   <<"ParameterValueConfigurations">> => list(set_parameter_value_configuration()())
+%%   <<"ParameterValueConfigurations">> => list(set_parameter_value_configuration())
 %% }
 -type custom_action_set_parameters_operation() :: #{binary() => any()}.
 
@@ -11980,7 +11980,7 @@
 
 %% Example:
 %% comparative_order() :: #{
-%%   <<"SpecifedOrder">> => list(string()()),
+%%   <<"SpecifedOrder">> => list(string()),
 %%   <<"TreatUndefinedSpecifiedValues">> => list(any()),
 %%   <<"UseOrdering">> => list(any())
 %% }
@@ -11989,9 +11989,9 @@
 
 %% Example:
 %% scatter_plot_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => scatter_plot_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -12006,9 +12006,9 @@
 
 %% Example:
 %% heat_map_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => heat_map_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -12020,7 +12020,7 @@
 %% Example:
 %% decimal_parameter_declaration() :: #{
 %%   <<"DefaultValues">> => decimal_default_values(),
-%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()()),
+%%   <<"MappedDataSetParameters">> => list(mapped_data_set_parameter()),
 %%   <<"Name">> => string(),
 %%   <<"ParameterValueType">> => list(any()),
 %%   <<"ValueWhenUnset">> => decimal_value_when_unset_configuration()
@@ -12031,12 +12031,12 @@
 %% Example:
 %% create_analysis_request() :: #{
 %%   <<"Definition">> => analysis_definition(),
-%%   <<"FolderArns">> => list(string()()),
+%%   <<"FolderArns">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"Parameters">> => parameters(),
-%%   <<"Permissions">> => list(resource_permission()()),
+%%   <<"Permissions">> => list(resource_permission()),
 %%   <<"SourceEntity">> => analysis_source_entity(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"ThemeArn">> => string(),
 %%   <<"ValidationStrategy">> => validation_strategy()
 %% }
@@ -12077,26 +12077,26 @@
 
 %% Example:
 %% cascading_control_configuration() :: #{
-%%   <<"SourceControls">> => list(cascading_control_source()())
+%%   <<"SourceControls">> => list(cascading_control_source())
 %% }
 -type cascading_control_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% data_color_palette() :: #{
-%%   <<"Colors">> => list(string()()),
+%%   <<"Colors">> => list(string()),
 %%   <<"EmptyFillColor">> => string(),
-%%   <<"MinMaxGradient">> => list(string()())
+%%   <<"MinMaxGradient">> => list(string())
 %% }
 -type data_color_palette() :: #{binary() => any()}.
 
 
 %% Example:
 %% custom_parameter_values() :: #{
-%%   <<"DateTimeValues">> => list(non_neg_integer()()),
-%%   <<"DecimalValues">> => list(float()()),
-%%   <<"IntegerValues">> => list(float()()),
-%%   <<"StringValues">> => list(string()())
+%%   <<"DateTimeValues">> => list(non_neg_integer()),
+%%   <<"DecimalValues">> => list(float()),
+%%   <<"IntegerValues">> => list(float()),
+%%   <<"StringValues">> => list(string())
 %% }
 -type custom_parameter_values() :: #{binary() => any()}.
 
@@ -12139,7 +12139,7 @@
 %%   <<"ElementType">> => list(any()),
 %%   <<"Height">> => string(),
 %%   <<"LoadingAnimation">> => loading_animation(),
-%%   <<"RenderingRules">> => list(sheet_element_rendering_rule()()),
+%%   <<"RenderingRules">> => list(sheet_element_rendering_rule()),
 %%   <<"SelectedBorderStyle">> => free_form_layout_element_border_style(),
 %%   <<"Visibility">> => list(any()),
 %%   <<"Width">> => string(),
@@ -12151,42 +12151,42 @@
 
 %% Example:
 %% filled_map_conditional_formatting() :: #{
-%%   <<"ConditionalFormattingOptions">> => list(filled_map_conditional_formatting_option()())
+%%   <<"ConditionalFormattingOptions">> => list(filled_map_conditional_formatting_option())
 %% }
 -type filled_map_conditional_formatting() :: #{binary() => any()}.
 
 
 %% Example:
 %% asset_bundle_import_job_override_tags() :: #{
-%%   <<"Analyses">> => list(asset_bundle_import_job_analysis_override_tags()()),
-%%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_tags()()),
-%%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_tags()()),
-%%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_tags()()),
-%%   <<"Folders">> => list(asset_bundle_import_job_folder_override_tags()()),
-%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_tags()()),
-%%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_tags()())
+%%   <<"Analyses">> => list(asset_bundle_import_job_analysis_override_tags()),
+%%   <<"Dashboards">> => list(asset_bundle_import_job_dashboard_override_tags()),
+%%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_tags()),
+%%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_tags()),
+%%   <<"Folders">> => list(asset_bundle_import_job_folder_override_tags()),
+%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_tags()),
+%%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_tags())
 %% }
 -type asset_bundle_import_job_override_tags() :: #{binary() => any()}.
 
 
 %% Example:
 %% dataset_metadata() :: #{
-%%   <<"CalculatedFields">> => list(topic_calculated_field()()),
-%%   <<"Columns">> => list(topic_column()()),
+%%   <<"CalculatedFields">> => list(topic_calculated_field()),
+%%   <<"Columns">> => list(topic_column()),
 %%   <<"DataAggregation">> => data_aggregation(),
 %%   <<"DatasetArn">> => string(),
 %%   <<"DatasetDescription">> => string(),
 %%   <<"DatasetName">> => string(),
-%%   <<"Filters">> => list(topic_filter()()),
-%%   <<"NamedEntities">> => list(topic_named_entity()())
+%%   <<"Filters">> => list(topic_filter()),
+%%   <<"NamedEntities">> => list(topic_named_entity())
 %% }
 -type dataset_metadata() :: #{binary() => any()}.
 
 
 %% Example:
 %% word_cloud_aggregated_field_wells() :: #{
-%%   <<"GroupBy">> => list(dimension_field()()),
-%%   <<"Size">> => list(measure_field()())
+%%   <<"GroupBy">> => list(dimension_field()),
+%%   <<"Size">> => list(measure_field())
 %% }
 -type word_cloud_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -12261,8 +12261,8 @@
 %%   <<"AllowedAggregations">> => list(list(any())()),
 %%   <<"CalculatedFieldDescription">> => string(),
 %%   <<"CalculatedFieldName">> => string(),
-%%   <<"CalculatedFieldSynonyms">> => list(string()()),
-%%   <<"CellValueSynonyms">> => list(cell_value_synonym()()),
+%%   <<"CalculatedFieldSynonyms">> => list(string()),
+%%   <<"CellValueSynonyms">> => list(cell_value_synonym()),
 %%   <<"ColumnDataRole">> => list(any()),
 %%   <<"ComparativeOrder">> => comparative_order(),
 %%   <<"DefaultFormatting">> => default_formatting(),
@@ -12349,10 +12349,10 @@
 
 %% Example:
 %% update_data_set_request() :: #{
-%%   <<"ColumnGroups">> => list(column_group()()),
-%%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()()),
+%%   <<"ColumnGroups">> => list(column_group()),
+%%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()),
 %%   <<"DataSetUsageConfiguration">> => data_set_usage_configuration(),
-%%   <<"DatasetParameters">> => list(dataset_parameter()()),
+%%   <<"DatasetParameters">> => list(dataset_parameter()),
 %%   <<"FieldFolders">> => map(),
 %%   <<"ImportMode">> := list(any()),
 %%   <<"LogicalTableMap">> => map(),
@@ -12429,7 +12429,7 @@
 
 %% Example:
 %% box_plot_sort_configuration() :: #{
-%%   <<"CategorySort">> => list(field_sort_options()()),
+%%   <<"CategorySort">> => list(field_sort_options()),
 %%   <<"PaginationConfiguration">> => pagination_configuration()
 %% }
 -type box_plot_sort_configuration() :: #{binary() => any()}.
@@ -12445,23 +12445,23 @@
 
 %% Example:
 %% asset_bundle_cloud_formation_override_property_configuration() :: #{
-%%   <<"Analyses">> => list(asset_bundle_export_job_analysis_override_properties()()),
-%%   <<"Dashboards">> => list(asset_bundle_export_job_dashboard_override_properties()()),
-%%   <<"DataSets">> => list(asset_bundle_export_job_data_set_override_properties()()),
-%%   <<"DataSources">> => list(asset_bundle_export_job_data_source_override_properties()()),
-%%   <<"Folders">> => list(asset_bundle_export_job_folder_override_properties()()),
-%%   <<"RefreshSchedules">> => list(asset_bundle_export_job_refresh_schedule_override_properties()()),
+%%   <<"Analyses">> => list(asset_bundle_export_job_analysis_override_properties()),
+%%   <<"Dashboards">> => list(asset_bundle_export_job_dashboard_override_properties()),
+%%   <<"DataSets">> => list(asset_bundle_export_job_data_set_override_properties()),
+%%   <<"DataSources">> => list(asset_bundle_export_job_data_source_override_properties()),
+%%   <<"Folders">> => list(asset_bundle_export_job_folder_override_properties()),
+%%   <<"RefreshSchedules">> => list(asset_bundle_export_job_refresh_schedule_override_properties()),
 %%   <<"ResourceIdOverrideConfiguration">> => asset_bundle_export_job_resource_id_override_configuration(),
-%%   <<"Themes">> => list(asset_bundle_export_job_theme_override_properties()()),
-%%   <<"VPCConnections">> => list(asset_bundle_export_job_vpc_connection_override_properties()())
+%%   <<"Themes">> => list(asset_bundle_export_job_theme_override_properties()),
+%%   <<"VPCConnections">> => list(asset_bundle_export_job_vpc_connection_override_properties())
 %% }
 -type asset_bundle_cloud_formation_override_property_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% box_plot_aggregated_field_wells() :: #{
-%%   <<"GroupBy">> => list(dimension_field()()),
-%%   <<"Values">> => list(measure_field()())
+%%   <<"GroupBy">> => list(dimension_field()),
+%%   <<"Values">> => list(measure_field())
 %% }
 -type box_plot_aggregated_field_wells() :: #{binary() => any()}.
 
@@ -12547,7 +12547,7 @@
 %%   <<"FilterClass">> => list(any()),
 %%   <<"FilterDescription">> => string(),
 %%   <<"FilterName">> => string(),
-%%   <<"FilterSynonyms">> => list(string()()),
+%%   <<"FilterSynonyms">> => list(string()),
 %%   <<"FilterType">> => list(any()),
 %%   <<"NumericEqualityFilter">> => topic_numeric_equality_filter(),
 %%   <<"NumericRangeFilter">> => topic_numeric_range_filter(),
@@ -12571,14 +12571,14 @@
 
 %% Example:
 %% histogram_aggregated_field_wells() :: #{
-%%   <<"Values">> => list(measure_field()())
+%%   <<"Values">> => list(measure_field())
 %% }
 -type histogram_aggregated_field_wells() :: #{binary() => any()}.
 
 
 %% Example:
 %% predict_q_a_results_response() :: #{
-%%   <<"AdditionalResults">> => list(q_a_result()()),
+%%   <<"AdditionalResults">> => list(q_a_result()),
 %%   <<"PrimaryResult">> => q_a_result(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -12605,7 +12605,7 @@
 
 %% Example:
 %% performance_configuration() :: #{
-%%   <<"UniqueKeys">> => list(unique_key()())
+%%   <<"UniqueKeys">> => list(unique_key())
 %% }
 -type performance_configuration() :: #{binary() => any()}.
 
@@ -12620,8 +12620,8 @@
 
 %% Example:
 %% update_data_source_permissions_request() :: #{
-%%   <<"GrantPermissions">> => list(resource_permission()()),
-%%   <<"RevokePermissions">> => list(resource_permission()())
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
 %% }
 -type update_data_source_permissions_request() :: #{binary() => any()}.
 
@@ -12669,7 +12669,7 @@
 %% Example:
 %% table_sort_configuration() :: #{
 %%   <<"PaginationConfiguration">> => pagination_configuration(),
-%%   <<"RowSort">> => list(field_sort_options()())
+%%   <<"RowSort">> => list(field_sort_options())
 %% }
 -type table_sort_configuration() :: #{binary() => any()}.
 
@@ -12693,7 +12693,7 @@
 
 %% Example:
 %% asset_bundle_import_job_data_source_override_permissions() :: #{
-%%   <<"DataSourceIds">> => list(string()()),
+%%   <<"DataSourceIds">> => list(string()),
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
 %% }
 -type asset_bundle_import_job_data_source_override_permissions() :: #{binary() => any()}.
@@ -12751,9 +12751,9 @@
 
 %% Example:
 %% word_cloud_visual() :: #{
-%%   <<"Actions">> => list(visual_custom_action()()),
+%%   <<"Actions">> => list(visual_custom_action()),
 %%   <<"ChartConfiguration">> => word_cloud_chart_configuration(),
-%%   <<"ColumnHierarchies">> => list(column_hierarchy()()),
+%%   <<"ColumnHierarchies">> => list(column_hierarchy()),
 %%   <<"Subtitle">> => visual_subtitle_label_options(),
 %%   <<"Title">> => visual_title_label_options(),
 %%   <<"VisualContentAltText">> => string(),
@@ -12780,7 +12780,7 @@
 
 %% Example:
 %% list_dashboard_versions_response() :: #{
-%%   <<"DashboardVersionSummaryList">> => list(dashboard_version_summary()()),
+%%   <<"DashboardVersionSummaryList">> => list(dashboard_version_summary()),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -12804,10 +12804,10 @@
 
 %% Example:
 %% section_based_layout_configuration() :: #{
-%%   <<"BodySections">> => list(body_section_configuration()()),
+%%   <<"BodySections">> => list(body_section_configuration()),
 %%   <<"CanvasSizeOptions">> => section_based_layout_canvas_size_options(),
-%%   <<"FooterSections">> => list(header_footer_section_configuration()()),
-%%   <<"HeaderSections">> => list(header_footer_section_configuration()())
+%%   <<"FooterSections">> => list(header_footer_section_configuration()),
+%%   <<"HeaderSections">> => list(header_footer_section_configuration())
 %% }
 -type section_based_layout_configuration() :: #{binary() => any()}.
 

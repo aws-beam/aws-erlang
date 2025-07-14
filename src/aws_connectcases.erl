@@ -108,7 +108,7 @@
 
 %% Example:
 %% contact_filter() :: #{
-%%   <<"channel">> => list(string()()),
+%%   <<"channel">> => list(string()),
 %%   <<"contactArn">> => string()
 %% }
 -type contact_filter() :: #{binary() => any()}.
@@ -155,7 +155,7 @@
 
 %% Example:
 %% get_case_audit_events_response() :: #{
-%%   <<"auditEvents">> => list(audit_event()()),
+%%   <<"auditEvents">> => list(audit_event()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_case_audit_events_response() :: #{binary() => any()}.
@@ -171,7 +171,7 @@
 %% Example:
 %% search_related_items_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"relatedItems">> := list(search_related_items_response_item()())
+%%   <<"relatedItems">> := list(search_related_items_response_item())
 %% }
 -type search_related_items_response() :: #{binary() => any()}.
 
@@ -186,12 +186,12 @@
 
 %% Example:
 %% search_cases_request() :: #{
-%%   <<"fields">> => list(field_identifier()()),
+%%   <<"fields">> => list(field_identifier()),
 %%   <<"filter">> => list(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
 %%   <<"searchTerm">> => [string()],
-%%   <<"sorts">> => list(sort()())
+%%   <<"sorts">> => list(sort())
 %% }
 -type search_cases_request() :: #{binary() => any()}.
 
@@ -216,7 +216,7 @@
 %% list_templates_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"status">> => list(string()())
+%%   <<"status">> => list(string())
 %% }
 -type list_templates_request() :: #{binary() => any()}.
 
@@ -224,7 +224,7 @@
 %% Example:
 %% create_case_request() :: #{
 %%   <<"clientToken">> => [string()],
-%%   <<"fields">> := list(field_value()()),
+%%   <<"fields">> := list(field_value()),
 %%   <<"performedBy">> => list(),
 %%   <<"templateId">> := string()
 %% }
@@ -242,7 +242,7 @@
 
 %% Example:
 %% list_layouts_response() :: #{
-%%   <<"layouts">> := list(layout_summary()()),
+%%   <<"layouts">> := list(layout_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_layouts_response() :: #{binary() => any()}.
@@ -262,8 +262,8 @@
 %%   <<"description">> => string(),
 %%   <<"layoutConfiguration">> => layout_configuration(),
 %%   <<"name">> := string(),
-%%   <<"requiredFields">> => list(required_field()()),
-%%   <<"rules">> => list(template_rule()()),
+%%   <<"requiredFields">> => list(required_field()),
+%%   <<"rules">> => list(template_rule()),
 %%   <<"status">> => string()
 %% }
 -type create_template_request() :: #{binary() => any()}.
@@ -277,8 +277,8 @@
 %%   <<"lastModifiedTime">> => non_neg_integer(),
 %%   <<"layoutConfiguration">> => layout_configuration(),
 %%   <<"name">> := string(),
-%%   <<"requiredFields">> => list(required_field()()),
-%%   <<"rules">> => list(template_rule()()),
+%%   <<"requiredFields">> => list(required_field()),
+%%   <<"rules">> => list(template_rule()),
 %%   <<"status">> := string(),
 %%   <<"tags">> => map(),
 %%   <<"templateArn">> := string(),
@@ -293,7 +293,7 @@
 
 %% Example:
 %% batch_put_field_options_request() :: #{
-%%   <<"options">> := list(field_option()())
+%%   <<"options">> := list(field_option())
 %% }
 -type batch_put_field_options_request() :: #{binary() => any()}.
 
@@ -325,7 +325,7 @@
 %% list_field_options_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type list_field_options_request() :: #{binary() => any()}.
 
@@ -343,8 +343,8 @@
 %%   <<"description">> => string(),
 %%   <<"layoutConfiguration">> => layout_configuration(),
 %%   <<"name">> => string(),
-%%   <<"requiredFields">> => list(required_field()()),
-%%   <<"rules">> => list(template_rule()()),
+%%   <<"requiredFields">> => list(required_field()),
+%%   <<"rules">> => list(template_rule()),
 %%   <<"status">> => string()
 %% }
 -type update_template_request() :: #{binary() => any()}.
@@ -352,7 +352,7 @@
 
 %% Example:
 %% list_cases_for_contact_response() :: #{
-%%   <<"cases">> := list(case_summary()()),
+%%   <<"cases">> := list(case_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_cases_for_contact_response() :: #{binary() => any()}.
@@ -360,7 +360,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -375,7 +375,7 @@
 
 %% Example:
 %% get_case_response() :: #{
-%%   <<"fields">> := list(field_value()()),
+%%   <<"fields">> := list(field_value()),
 %%   <<"nextToken">> => string(),
 %%   <<"tags">> => map(),
 %%   <<"templateId">> := string()
@@ -420,7 +420,7 @@
 %% Example:
 %% search_cases_response_item() :: #{
 %%   <<"caseId">> => string(),
-%%   <<"fields">> => list(field_value()()),
+%%   <<"fields">> => list(field_value()),
 %%   <<"tags">> => map(),
 %%   <<"templateId">> => string()
 %% }
@@ -429,7 +429,7 @@
 
 %% Example:
 %% search_related_items_request() :: #{
-%%   <<"filters">> => list(list()()),
+%%   <<"filters">> => list(list()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
 %% }
@@ -485,7 +485,7 @@
 
 %% Example:
 %% batch_get_field_request() :: #{
-%%   <<"fields">> := list(field_identifier()())
+%%   <<"fields">> := list(field_identifier())
 %% }
 -type batch_get_field_request() :: #{binary() => any()}.
 
@@ -508,7 +508,7 @@
 
 %% Example:
 %% get_case_request() :: #{
-%%   <<"fields">> := list(field_identifier()()),
+%%   <<"fields">> := list(field_identifier()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_case_request() :: #{binary() => any()}.
@@ -535,7 +535,7 @@
 
 %% Example:
 %% list_domains_response() :: #{
-%%   <<"domains">> := list(domain_summary()()),
+%%   <<"domains">> := list(domain_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_domains_response() :: #{binary() => any()}.
@@ -583,15 +583,15 @@
 
 %% Example:
 %% batch_get_field_response() :: #{
-%%   <<"errors">> := list(field_error()()),
-%%   <<"fields">> := list(get_field_response()())
+%%   <<"errors">> := list(field_error()),
+%%   <<"fields">> := list(get_field_response())
 %% }
 -type batch_get_field_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_case_rules_response() :: #{
-%%   <<"caseRules">> => list(case_rule_summary()()),
+%%   <<"caseRules">> => list(case_rule_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_case_rules_response() :: #{binary() => any()}.
@@ -601,7 +601,7 @@
 %% sla_input_configuration() :: #{
 %%   <<"fieldId">> => string(),
 %%   <<"name">> => string(),
-%%   <<"targetFieldValues">> => list(list()()),
+%%   <<"targetFieldValues">> => list(list()),
 %%   <<"targetSlaMinutes">> => float(),
 %%   <<"type">> => string()
 %% }
@@ -637,7 +637,7 @@
 
 %% Example:
 %% list_fields_response() :: #{
-%%   <<"fields">> := list(field_summary()()),
+%%   <<"fields">> := list(field_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fields_response() :: #{binary() => any()}.
@@ -755,7 +755,7 @@
 
 %% Example:
 %% update_case_request() :: #{
-%%   <<"fields">> := list(field_value()()),
+%%   <<"fields">> := list(field_value()),
 %%   <<"performedBy">> => list()
 %% }
 -type update_case_request() :: #{binary() => any()}.
@@ -787,7 +787,7 @@
 %%   <<"fieldId">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => string(),
-%%   <<"targetFieldValues">> => list(list()()),
+%%   <<"targetFieldValues">> => list(list()),
 %%   <<"targetTime">> => non_neg_integer(),
 %%   <<"type">> => string()
 %% }
@@ -827,8 +827,8 @@
 
 %% Example:
 %% batch_get_case_rule_response() :: #{
-%%   <<"caseRules">> => list(get_case_rule_response()()),
-%%   <<"errors">> => list(case_rule_error()())
+%%   <<"caseRules">> => list(get_case_rule_response()),
+%%   <<"errors">> => list(case_rule_error())
 %% }
 -type batch_get_case_rule_response() :: #{binary() => any()}.
 
@@ -870,7 +870,7 @@
 %% Example:
 %% list_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templates">> := list(template_summary()())
+%%   <<"templates">> := list(template_summary())
 %% }
 -type list_templates_response() :: #{binary() => any()}.
 
@@ -884,7 +884,7 @@
 
 %% Example:
 %% layout_sections() :: #{
-%%   <<"sections">> => list(list()())
+%%   <<"sections">> => list(list())
 %% }
 -type layout_sections() :: #{binary() => any()}.
 
@@ -936,7 +936,7 @@
 
 %% Example:
 %% search_cases_response() :: #{
-%%   <<"cases">> := list(search_cases_response_item()()),
+%%   <<"cases">> := list(search_cases_response_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type search_cases_response() :: #{binary() => any()}.
@@ -944,7 +944,7 @@
 
 %% Example:
 %% batch_put_field_options_response() :: #{
-%%   <<"errors">> => list(field_option_error()())
+%%   <<"errors">> => list(field_option_error())
 %% }
 -type batch_put_field_options_response() :: #{binary() => any()}.
 
@@ -1007,7 +1007,7 @@
 
 %% Example:
 %% required_case_rule() :: #{
-%%   <<"conditions">> => list(list()()),
+%%   <<"conditions">> => list(list()),
 %%   <<"defaultValue">> => [boolean()]
 %% }
 -type required_case_rule() :: #{binary() => any()}.
@@ -1016,7 +1016,7 @@
 %% Example:
 %% list_field_options_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"options">> := list(field_option()())
+%%   <<"options">> := list(field_option())
 %% }
 -type list_field_options_response() :: #{binary() => any()}.
 
@@ -1072,7 +1072,7 @@
 
 %% Example:
 %% field_group() :: #{
-%%   <<"fields">> => list(field_item()()),
+%%   <<"fields">> => list(field_item()),
 %%   <<"name">> => [string()]
 %% }
 -type field_group() :: #{binary() => any()}.
@@ -1081,7 +1081,7 @@
 %% Example:
 %% audit_event() :: #{
 %%   <<"eventId">> => string(),
-%%   <<"fields">> => list(audit_event_field()()),
+%%   <<"fields">> => list(audit_event_field()),
 %%   <<"performedBy">> => audit_event_performed_by(),
 %%   <<"performedTime">> => non_neg_integer(),
 %%   <<"relatedItemType">> => string(),
@@ -1092,7 +1092,7 @@
 
 %% Example:
 %% case_event_included_data() :: #{
-%%   <<"fields">> => list(field_identifier()())
+%%   <<"fields">> => list(field_identifier())
 %% }
 -type case_event_included_data() :: #{binary() => any()}.
 
@@ -1130,7 +1130,7 @@
 
 %% Example:
 %% batch_get_case_rule_request() :: #{
-%%   <<"caseRules">> := list(case_rule_identifier()())
+%%   <<"caseRules">> := list(case_rule_identifier())
 %% }
 -type batch_get_case_rule_request() :: #{binary() => any()}.
 

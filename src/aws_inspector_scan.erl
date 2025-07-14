@@ -53,7 +53,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"fields">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }

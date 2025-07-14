@@ -97,7 +97,7 @@
 %% Example:
 %% list_workflow_steps_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workflowStepsSummary">> := list(workflow_step_summary()())
+%%   <<"workflowStepsSummary">> := list(workflow_step_summary())
 %% }
 -type list_workflow_steps_response() :: #{binary() => any()}.
 
@@ -121,12 +121,12 @@
 %% create_workflow_step_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"next">> => list(string()()),
-%%   <<"outputs">> => list(workflow_step_output()()),
-%%   <<"previous">> => list(string()()),
+%%   <<"next">> => list(string()),
+%%   <<"outputs">> => list(workflow_step_output()),
+%%   <<"previous">> => list(string()),
 %%   <<"stepActionType">> := string(),
 %%   <<"stepGroupId">> := string(),
-%%   <<"stepTarget">> => list(string()()),
+%%   <<"stepTarget">> => list(string()),
 %%   <<"workflowId">> := string(),
 %%   <<"workflowStepAutomationConfiguration">> => workflow_step_automation_configuration()
 %% }
@@ -150,7 +150,7 @@
 %%   <<"description">> => [string()],
 %%   <<"inputParameters">> := map(),
 %%   <<"name">> := [string()],
-%%   <<"stepTargets">> => list(string()()),
+%%   <<"stepTargets">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"templateId">> := [string()]
 %% }
@@ -169,8 +169,8 @@
 %% update_workflow_step_group_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"next">> => list(string()()),
-%%   <<"previous">> => list(string()()),
+%%   <<"next">> => list(string()),
+%%   <<"previous">> => list(string()),
 %%   <<"workflowId">> := string()
 %% }
 -type update_workflow_step_group_request() :: #{binary() => any()}.
@@ -216,13 +216,13 @@
 %% update_workflow_step_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"next">> => list(string()()),
-%%   <<"outputs">> => list(workflow_step_output()()),
-%%   <<"previous">> => list(string()()),
+%%   <<"next">> => list(string()),
+%%   <<"outputs">> => list(workflow_step_output()),
+%%   <<"previous">> => list(string()),
 %%   <<"status">> => string(),
 %%   <<"stepActionType">> => string(),
 %%   <<"stepGroupId">> := string(),
-%%   <<"stepTarget">> => list(string()()),
+%%   <<"stepTarget">> => list(string()),
 %%   <<"workflowId">> := string(),
 %%   <<"workflowStepAutomationConfiguration">> => workflow_step_automation_configuration()
 %% }
@@ -234,14 +234,14 @@
 %%   <<"description">> => [string()],
 %%   <<"inputParameters">> => map(),
 %%   <<"name">> => [string()],
-%%   <<"stepTargets">> => list(string()())
+%%   <<"stepTargets">> => list(string())
 %% }
 -type update_migration_workflow_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_migration_workflows_response() :: #{
-%%   <<"migrationWorkflowSummary">> := list(migration_workflow_summary()()),
+%%   <<"migrationWorkflowSummary">> := list(migration_workflow_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_migration_workflows_response() :: #{binary() => any()}.
@@ -277,7 +277,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -297,19 +297,19 @@
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"lastStartTime">> => [non_neg_integer()],
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
+%%   <<"next">> => list(string()),
 %%   <<"noOfSrvCompleted">> => [integer()],
 %%   <<"noOfSrvFailed">> => [integer()],
-%%   <<"outputs">> => list(workflow_step_output()()),
+%%   <<"outputs">> => list(workflow_step_output()),
 %%   <<"owner">> => string(),
-%%   <<"previous">> => list(string()()),
+%%   <<"previous">> => list(string()),
 %%   <<"scriptOutputLocation">> => [string()],
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => [string()],
 %%   <<"stepActionType">> => string(),
 %%   <<"stepGroupId">> => [string()],
 %%   <<"stepId">> => [string()],
-%%   <<"stepTarget">> => list(string()()),
+%%   <<"stepTarget">> => list(string()),
 %%   <<"totalNoOfSrv">> => [integer()],
 %%   <<"workflowId">> => [string()],
 %%   <<"workflowStepAutomationConfiguration">> => workflow_step_automation_configuration()
@@ -338,7 +338,7 @@
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
 %%   <<"id">> => [string()],
-%%   <<"inputs">> => list(template_input()()),
+%%   <<"inputs">> => list(template_input()),
 %%   <<"name">> => [string()],
 %%   <<"owner">> => [string()],
 %%   <<"status">> => string(),
@@ -346,7 +346,7 @@
 %%   <<"tags">> => map(),
 %%   <<"templateArn">> => [string()],
 %%   <<"templateClass">> => [string()],
-%%   <<"tools">> => list(tool()())
+%%   <<"tools">> => list(tool())
 %% }
 -type get_migration_workflow_template_response() :: #{binary() => any()}.
 
@@ -398,7 +398,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => [string()],
 %%   <<"status">> => string(),
-%%   <<"stepTargets">> => list(string()()),
+%%   <<"stepTargets">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"templateId">> => [string()],
 %%   <<"workflowInputs">> => map()
@@ -410,8 +410,8 @@
 %% template_step_group_summary() :: #{
 %%   <<"id">> => [string()],
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
-%%   <<"previous">> => list(string()())
+%%   <<"next">> => list(string()),
+%%   <<"previous">> => list(string())
 %% }
 -type template_step_group_summary() :: #{binary() => any()}.
 
@@ -430,8 +430,8 @@
 %% create_workflow_step_group_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"next">> => list(string()()),
-%%   <<"previous">> => list(string()()),
+%%   <<"next">> => list(string()),
+%%   <<"previous">> => list(string()),
 %%   <<"workflowId">> := string()
 %% }
 -type create_workflow_step_group_request() :: #{binary() => any()}.
@@ -455,11 +455,11 @@
 %%   <<"id">> => [string()],
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
-%%   <<"previous">> => list(string()()),
+%%   <<"next">> => list(string()),
+%%   <<"previous">> => list(string()),
 %%   <<"status">> => string(),
 %%   <<"templateId">> => [string()],
-%%   <<"tools">> => list(tool()())
+%%   <<"tools">> => list(tool())
 %% }
 -type get_template_step_group_response() :: #{binary() => any()}.
 
@@ -482,7 +482,7 @@
 %%   <<"statusMessage">> => [string()],
 %%   <<"tags">> => map(),
 %%   <<"templateId">> => [string()],
-%%   <<"tools">> => list(tool()()),
+%%   <<"tools">> => list(tool()),
 %%   <<"totalSteps">> => [integer()],
 %%   <<"workflowBucket">> => [string()],
 %%   <<"workflowInputs">> => map()
@@ -512,7 +512,7 @@
 %% Example:
 %% list_plugins_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"plugins">> => list(plugin_summary()())
+%%   <<"plugins">> => list(plugin_summary())
 %% }
 -type list_plugins_response() :: #{binary() => any()}.
 
@@ -521,11 +521,11 @@
 %% workflow_step_summary() :: #{
 %%   <<"description">> => [string()],
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
+%%   <<"next">> => list(string()),
 %%   <<"noOfSrvCompleted">> => [integer()],
 %%   <<"noOfSrvFailed">> => [integer()],
 %%   <<"owner">> => string(),
-%%   <<"previous">> => list(string()()),
+%%   <<"previous">> => list(string()),
 %%   <<"scriptLocation">> => [string()],
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => [string()],
@@ -540,9 +540,9 @@
 %% workflow_step_group_summary() :: #{
 %%   <<"id">> => [string()],
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
+%%   <<"next">> => list(string()),
 %%   <<"owner">> => string(),
-%%   <<"previous">> => list(string()()),
+%%   <<"previous">> => list(string()),
 %%   <<"status">> => string()
 %% }
 -type workflow_step_group_summary() :: #{binary() => any()}.
@@ -609,9 +609,9 @@
 %%   <<"description">> => [string()],
 %%   <<"id">> => [string()],
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
-%%   <<"previous">> => list(string()()),
-%%   <<"tools">> => list(tool()()),
+%%   <<"next">> => list(string()),
+%%   <<"previous">> => list(string()),
+%%   <<"tools">> => list(tool()),
 %%   <<"workflowId">> => [string()]
 %% }
 -type create_workflow_step_group_response() :: #{binary() => any()}.
@@ -627,7 +627,7 @@
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => [string()],
 %%   <<"status">> => string(),
-%%   <<"stepTargets">> => list(string()()),
+%%   <<"stepTargets">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"templateId">> => [string()],
 %%   <<"workflowInputs">> => map()
@@ -675,7 +675,7 @@
 %% Example:
 %% list_workflow_step_groups_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workflowStepGroupsSummary">> := list(workflow_step_group_summary()())
+%%   <<"workflowStepGroupsSummary">> := list(workflow_step_group_summary())
 %% }
 -type list_workflow_step_groups_response() :: #{binary() => any()}.
 
@@ -696,9 +696,9 @@
 %%   <<"id">> => [string()],
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
-%%   <<"previous">> => list(string()()),
-%%   <<"tools">> => list(tool()()),
+%%   <<"next">> => list(string()),
+%%   <<"previous">> => list(string()),
+%%   <<"tools">> => list(tool()),
 %%   <<"workflowId">> => [string()]
 %% }
 -type update_workflow_step_group_response() :: #{binary() => any()}.
@@ -738,9 +738,9 @@
 %% template_step_summary() :: #{
 %%   <<"id">> => [string()],
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
+%%   <<"next">> => list(string()),
 %%   <<"owner">> => string(),
-%%   <<"previous">> => list(string()()),
+%%   <<"previous">> => list(string()),
 %%   <<"stepActionType">> => string(),
 %%   <<"stepGroupId">> => [string()],
 %%   <<"targetType">> => string(),
@@ -795,11 +795,11 @@
 %%   <<"id">> => string(),
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
+%%   <<"next">> => list(string()),
 %%   <<"owner">> => string(),
-%%   <<"previous">> => list(string()()),
+%%   <<"previous">> => list(string()),
 %%   <<"status">> => string(),
-%%   <<"tools">> => list(tool()()),
+%%   <<"tools">> => list(tool()),
 %%   <<"workflowId">> => [string()]
 %% }
 -type get_workflow_step_group_response() :: #{binary() => any()}.
@@ -815,9 +815,9 @@
 %%   <<"description">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"name">> => [string()],
-%%   <<"next">> => list(string()()),
-%%   <<"outputs">> => list(step_output()()),
-%%   <<"previous">> => list(string()()),
+%%   <<"next">> => list(string()),
+%%   <<"outputs">> => list(step_output()),
+%%   <<"previous">> => list(string()),
 %%   <<"stepActionType">> => string(),
 %%   <<"stepAutomationConfiguration">> => step_automation_configuration(),
 %%   <<"stepGroupId">> => string(),
@@ -853,7 +853,7 @@
 %% Example:
 %% list_migration_workflow_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templateSummary">> := list(template_summary()())
+%%   <<"templateSummary">> := list(template_summary())
 %% }
 -type list_migration_workflow_templates_response() :: #{binary() => any()}.
 
@@ -861,7 +861,7 @@
 %% Example:
 %% list_template_steps_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templateStepSummaryList">> => list(template_step_summary()())
+%%   <<"templateStepSummaryList">> => list(template_step_summary())
 %% }
 -type list_template_steps_response() :: #{binary() => any()}.
 
@@ -877,7 +877,7 @@
 %% Example:
 %% list_template_step_groups_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templateStepGroupSummary">> := list(template_step_group_summary()())
+%%   <<"templateStepGroupSummary">> := list(template_step_group_summary())
 %% }
 -type list_template_step_groups_response() :: #{binary() => any()}.
 

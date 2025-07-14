@@ -49,7 +49,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -110,7 +110,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -147,7 +147,7 @@
 
 %% Example:
 %% list_fhir_datastores_response() :: #{
-%%   <<"DatastorePropertiesList">> => list(datastore_properties()()),
+%%   <<"DatastorePropertiesList">> => list(datastore_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_fhir_datastores_response() :: #{binary() => any()}.
@@ -168,7 +168,7 @@
 
 %% Example:
 %% list_fhir_export_jobs_response() :: #{
-%%   <<"ExportJobPropertiesList">> => list(export_job_properties()()),
+%%   <<"ExportJobPropertiesList">> => list(export_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_fhir_export_jobs_response() :: #{binary() => any()}.
@@ -228,7 +228,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -295,7 +295,7 @@
 
 %% Example:
 %% list_fhir_import_jobs_response() :: #{
-%%   <<"ImportJobPropertiesList">> => list(import_job_properties()()),
+%%   <<"ImportJobPropertiesList">> => list(import_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_fhir_import_jobs_response() :: #{binary() => any()}.
@@ -364,7 +364,7 @@
 %%   <<"IdentityProviderConfiguration">> => identity_provider_configuration(),
 %%   <<"PreloadDataConfig">> => preload_data_config(),
 %%   <<"SseConfiguration">> => sse_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_fhir_datastore_request() :: #{binary() => any()}.
 

@@ -140,7 +140,7 @@
 %% Example:
 %% geometry() :: #{
 %%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Polygon">> => list(point()()),
+%%   <<"Polygon">> => list(point()),
 %%   <<"RotationAngle">> => float()
 %% }
 -type geometry() :: #{binary() => any()}.
@@ -155,7 +155,7 @@
 %% analyze_id_response() :: #{
 %%   <<"AnalyzeIDModelVersion">> => string(),
 %%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"IdentityDocuments">> => list(identity_document()())
+%%   <<"IdentityDocuments">> => list(identity_document())
 %% }
 -type analyze_id_response() :: #{binary() => any()}.
 
@@ -182,8 +182,8 @@
 
 %% Example:
 %% lending_document() :: #{
-%%   <<"LendingFields">> => list(lending_field()()),
-%%   <<"SignatureDetections">> => list(signature_detection()())
+%%   <<"LendingFields">> => list(lending_field()),
+%%   <<"SignatureDetections">> => list(signature_detection())
 %% }
 -type lending_document() :: #{binary() => any()}.
 
@@ -208,7 +208,7 @@
 
 %% Example:
 %% analyze_id_request() :: #{
-%%   <<"DocumentPages">> := list(document()())
+%%   <<"DocumentPages">> := list(document())
 %% }
 -type analyze_id_request() :: #{binary() => any()}.
 
@@ -224,7 +224,7 @@
 
 %% Example:
 %% relationship() :: #{
-%%   <<"Ids">> => list(string()()),
+%%   <<"Ids">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type relationship() :: #{binary() => any()}.
@@ -233,11 +233,11 @@
 %% get_expense_analysis_response() :: #{
 %%   <<"AnalyzeExpenseModelVersion">> => string(),
 %%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"ExpenseDocuments">> => list(expense_document()()),
+%%   <<"ExpenseDocuments">> => list(expense_document()),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"NextToken">> => string(),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Warnings">> => list(warning()())
+%%   <<"Warnings">> => list(warning())
 %% }
 -type get_expense_analysis_response() :: #{binary() => any()}.
 
@@ -260,14 +260,14 @@
 
 %% Example:
 %% line_item_fields() :: #{
-%%   <<"LineItemExpenseFields">> => list(expense_field()())
+%%   <<"LineItemExpenseFields">> => list(expense_field())
 %% }
 -type line_item_fields() :: #{binary() => any()}.
 
 %% Example:
 %% adapter() :: #{
 %%   <<"AdapterId">> => string(),
-%%   <<"Pages">> => list(string()()),
+%%   <<"Pages">> => list(string()),
 %%   <<"Version">> => string()
 %% }
 -type adapter() :: #{binary() => any()}.
@@ -283,20 +283,20 @@
 %% Example:
 %% analyze_expense_response() :: #{
 %%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"ExpenseDocuments">> => list(expense_document()())
+%%   <<"ExpenseDocuments">> => list(expense_document())
 %% }
 -type analyze_expense_response() :: #{binary() => any()}.
 
 %% Example:
 %% adapters_config() :: #{
-%%   <<"Adapters">> => list(adapter()())
+%%   <<"Adapters">> => list(adapter())
 %% }
 -type adapters_config() :: #{binary() => any()}.
 
 %% Example:
 %% line_item_group() :: #{
 %%   <<"LineItemGroupIndex">> => integer(),
-%%   <<"LineItems">> => list(line_item_fields()())
+%%   <<"LineItems">> => list(line_item_fields())
 %% }
 -type line_item_group() :: #{binary() => any()}.
 
@@ -309,7 +309,7 @@
 %% Example:
 %% analyze_document_response() :: #{
 %%   <<"AnalyzeDocumentModelVersion">> => string(),
-%%   <<"Blocks">> => list(block()()),
+%%   <<"Blocks">> => list(block()),
 %%   <<"DocumentMetadata">> => document_metadata(),
 %%   <<"HumanLoopActivationOutput">> => human_loop_activation_output()
 %% }
@@ -318,7 +318,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -342,7 +342,7 @@
 %% Example:
 %% expense_group_property() :: #{
 %%   <<"Id">> => string(),
-%%   <<"Types">> => list(string()())
+%%   <<"Types">> => list(string())
 %% }
 -type expense_group_property() :: #{binary() => any()}.
 
@@ -353,16 +353,16 @@
 %%   <<"JobStatus">> => list(any()),
 %%   <<"StatusMessage">> => string(),
 %%   <<"Summary">> => lending_summary(),
-%%   <<"Warnings">> => list(warning()())
+%%   <<"Warnings">> => list(warning())
 %% }
 -type get_lending_analysis_summary_response() :: #{binary() => any()}.
 
 %% Example:
 %% expense_document() :: #{
-%%   <<"Blocks">> => list(block()()),
+%%   <<"Blocks">> => list(block()),
 %%   <<"ExpenseIndex">> => integer(),
-%%   <<"LineItemGroups">> => list(line_item_group()()),
-%%   <<"SummaryFields">> => list(expense_field()())
+%%   <<"LineItemGroups">> => list(line_item_group()),
+%%   <<"SummaryFields">> => list(expense_field())
 %% }
 -type expense_document() :: #{binary() => any()}.
 
@@ -387,7 +387,7 @@
 %% Example:
 %% split_document() :: #{
 %%   <<"Index">> => integer(),
-%%   <<"Pages">> => list(integer()())
+%%   <<"Pages">> => list(integer())
 %% }
 -type split_document() :: #{binary() => any()}.
 
@@ -405,9 +405,9 @@
 %%   <<"DocumentMetadata">> => document_metadata(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(lending_result()()),
+%%   <<"Results">> => list(lending_result()),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Warnings">> => list(warning()())
+%%   <<"Warnings">> => list(warning())
 %% }
 -type get_lending_analysis_response() :: #{binary() => any()}.
 
@@ -428,7 +428,7 @@
 %% Example:
 %% human_loop_activation_output() :: #{
 %%   <<"HumanLoopActivationConditionsEvaluationResults">> => string(),
-%%   <<"HumanLoopActivationReasons">> => list(string()()),
+%%   <<"HumanLoopActivationReasons">> => list(string()),
 %%   <<"HumanLoopArn">> => string()
 %% }
 -type human_loop_activation_output() :: #{binary() => any()}.
@@ -503,13 +503,13 @@
 
 %% Example:
 %% get_document_text_detection_response() :: #{
-%%   <<"Blocks">> => list(block()()),
+%%   <<"Blocks">> => list(block()),
 %%   <<"DetectDocumentTextModelVersion">> => string(),
 %%   <<"DocumentMetadata">> => document_metadata(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"NextToken">> => string(),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Warnings">> => list(warning()())
+%%   <<"Warnings">> => list(warning())
 %% }
 -type get_document_text_detection_response() :: #{binary() => any()}.
 
@@ -535,7 +535,7 @@
 %% lending_field() :: #{
 %%   <<"KeyDetection">> => lending_detection(),
 %%   <<"Type">> => string(),
-%%   <<"ValueDetections">> => list(lending_detection()())
+%%   <<"ValueDetections">> => list(lending_detection())
 %% }
 -type lending_field() :: #{binary() => any()}.
 
@@ -559,7 +559,7 @@
 
 %% Example:
 %% queries_config() :: #{
-%%   <<"Queries">> => list(query()())
+%%   <<"Queries">> => list(query())
 %% }
 -type queries_config() :: #{binary() => any()}.
 
@@ -647,7 +647,7 @@
 
 %% Example:
 %% list_adapter_versions_response() :: #{
-%%   <<"AdapterVersions">> => list(adapter_version_overview()()),
+%%   <<"AdapterVersions">> => list(adapter_version_overview()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_adapter_versions_response() :: #{binary() => any()}.
@@ -662,7 +662,7 @@
 %% Example:
 %% warning() :: #{
 %%   <<"ErrorCode">> => string(),
-%%   <<"Pages">> => list(integer()())
+%%   <<"Pages">> => list(integer())
 %% }
 -type warning() :: #{binary() => any()}.
 
@@ -711,12 +711,12 @@
 %% Example:
 %% get_document_analysis_response() :: #{
 %%   <<"AnalyzeDocumentModelVersion">> => string(),
-%%   <<"Blocks">> => list(block()()),
+%%   <<"Blocks">> => list(block()),
 %%   <<"DocumentMetadata">> => document_metadata(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"NextToken">> => string(),
 %%   <<"StatusMessage">> => string(),
-%%   <<"Warnings">> => list(warning()())
+%%   <<"Warnings">> => list(warning())
 %% }
 -type get_document_analysis_response() :: #{binary() => any()}.
 
@@ -770,8 +770,8 @@
 
 %% Example:
 %% page_classification() :: #{
-%%   <<"PageNumber">> => list(prediction()()),
-%%   <<"PageType">> => list(prediction()())
+%%   <<"PageNumber">> => list(prediction()),
+%%   <<"PageType">> => list(prediction())
 %% }
 -type page_classification() :: #{binary() => any()}.
 
@@ -808,17 +808,17 @@
 
 %% Example:
 %% document_group() :: #{
-%%   <<"DetectedSignatures">> => list(detected_signature()()),
-%%   <<"SplitDocuments">> => list(split_document()()),
+%%   <<"DetectedSignatures">> => list(detected_signature()),
+%%   <<"SplitDocuments">> => list(split_document()),
 %%   <<"Type">> => string(),
-%%   <<"UndetectedSignatures">> => list(undetected_signature()())
+%%   <<"UndetectedSignatures">> => list(undetected_signature())
 %% }
 -type document_group() :: #{binary() => any()}.
 
 %% Example:
 %% expense_field() :: #{
 %%   <<"Currency">> => expense_currency(),
-%%   <<"GroupProperties">> => list(expense_group_property()()),
+%%   <<"GroupProperties">> => list(expense_group_property()),
 %%   <<"LabelDetection">> => expense_detection(),
 %%   <<"PageNumber">> => integer(),
 %%   <<"Type">> => expense_type(),
@@ -829,7 +829,7 @@
 %% Example:
 %% query() :: #{
 %%   <<"Alias">> => string(),
-%%   <<"Pages">> => list(string()()),
+%%   <<"Pages">> => list(string()),
 %%   <<"Text">> => string()
 %% }
 -type query() :: #{binary() => any()}.
@@ -840,7 +840,7 @@
 %%   <<"AdapterVersion">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DatasetConfig">> => adapter_version_dataset_config(),
-%%   <<"EvaluationMetrics">> => list(adapter_version_evaluation_metric()()),
+%%   <<"EvaluationMetrics">> => list(adapter_version_evaluation_metric()),
 %%   <<"FeatureTypes">> => list(list(any())()),
 %%   <<"KMSKeyId">> => string(),
 %%   <<"OutputConfig">> => output_config(),
@@ -858,7 +858,7 @@
 
 %% Example:
 %% detect_document_text_response() :: #{
-%%   <<"Blocks">> => list(block()()),
+%%   <<"Blocks">> => list(block()),
 %%   <<"DetectDocumentTextModelVersion">> => string(),
 %%   <<"DocumentMetadata">> => document_metadata()
 %% }
@@ -866,9 +866,9 @@
 
 %% Example:
 %% identity_document() :: #{
-%%   <<"Blocks">> => list(block()()),
+%%   <<"Blocks">> => list(block()),
 %%   <<"DocumentIndex">> => integer(),
-%%   <<"IdentityDocumentFields">> => list(identity_document_field()())
+%%   <<"IdentityDocumentFields">> => list(identity_document_field())
 %% }
 -type identity_document() :: #{binary() => any()}.
 
@@ -899,7 +899,7 @@
 %%   <<"Id">> => string(),
 %%   <<"Page">> => integer(),
 %%   <<"Query">> => query(),
-%%   <<"Relationships">> => list(relationship()()),
+%%   <<"Relationships">> => list(relationship()),
 %%   <<"RowIndex">> => integer(),
 %%   <<"RowSpan">> => integer(),
 %%   <<"SelectionStatus">> => list(any()),
@@ -910,7 +910,7 @@
 
 %% Example:
 %% list_adapters_response() :: #{
-%%   <<"Adapters">> => list(adapter_overview()()),
+%%   <<"Adapters">> => list(adapter_overview()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_adapters_response() :: #{binary() => any()}.
@@ -938,8 +938,8 @@
 
 %% Example:
 %% lending_summary() :: #{
-%%   <<"DocumentGroups">> => list(document_group()()),
-%%   <<"UndetectedDocumentTypes">> => list(string()())
+%%   <<"DocumentGroups">> => list(document_group()),
+%%   <<"UndetectedDocumentTypes">> => list(string())
 %% }
 -type lending_summary() :: #{binary() => any()}.
 
@@ -979,7 +979,7 @@
 
 %% Example:
 %% lending_result() :: #{
-%%   <<"Extractions">> => list(extraction()()),
+%%   <<"Extractions">> => list(extraction()),
 %%   <<"Page">> => integer(),
 %%   <<"PageClassification">> => page_classification()
 %% }

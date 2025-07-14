@@ -88,7 +88,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceName">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -102,13 +102,13 @@
 %% Example:
 %% describe_parameter_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ParameterGroups">> => list(parameter_group()())
+%%   <<"ParameterGroups">> => list(parameter_group())
 %% }
 -type describe_parameter_groups_response() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
 
@@ -175,14 +175,14 @@
 %% Example:
 %% list_tags_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_parameters_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type describe_parameters_response() :: #{binary() => any()}.
 
@@ -201,7 +201,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceName">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -213,7 +213,7 @@
 
 %% Example:
 %% parameter_group_status() :: #{
-%%   <<"NodeIdsToReboot">> => list(string()()),
+%%   <<"NodeIdsToReboot">> => list(string()),
 %%   <<"ParameterApplyStatus">> => string(),
 %%   <<"ParameterGroupName">> => string()
 %% }
@@ -233,7 +233,7 @@
 %%   <<"NotificationTopicStatus">> => string(),
 %%   <<"ParameterGroupName">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string())
 %% }
 -type update_cluster_request() :: #{binary() => any()}.
 
@@ -265,7 +265,7 @@
 %% subnet_group() :: #{
 %%   <<"Description">> => string(),
 %%   <<"SubnetGroupName">> => string(),
-%%   <<"Subnets">> => list(subnet()()),
+%%   <<"Subnets">> => list(subnet()),
 %%   <<"VpcId">> => string()
 %% }
 -type subnet_group() :: #{binary() => any()}.
@@ -278,7 +278,7 @@
 
 %% Example:
 %% create_cluster_request() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ClusterEndpointEncryptionType">> => list(any()),
 %%   <<"ClusterName">> := string(),
 %%   <<"Description">> => string(),
@@ -289,16 +289,16 @@
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"ReplicationFactor">> := integer(),
 %%   <<"SSESpecification">> => sse_specification(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetGroupName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_default_parameters_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type describe_default_parameters_response() :: #{binary() => any()}.
 
@@ -318,14 +318,14 @@
 %%   <<"ClusterName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"IamRoleArn">> => string(),
-%%   <<"NodeIdsToRemove">> => list(string()()),
+%%   <<"NodeIdsToRemove">> => list(string()),
 %%   <<"NodeType">> => string(),
-%%   <<"Nodes">> => list(dax_node()()),
+%%   <<"Nodes">> => list(node()),
 %%   <<"NotificationConfiguration">> => notification_configuration(),
 %%   <<"ParameterGroup">> => parameter_group_status(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"SSEDescription">> => sse_description(),
-%%   <<"SecurityGroups">> => list(security_group_membership()()),
+%%   <<"SecurityGroups">> => list(security_group_membership()),
 %%   <<"Status">> => string(),
 %%   <<"SubnetGroup">> => string(),
 %%   <<"TotalNodes">> => integer()
@@ -352,7 +352,7 @@
 
 %% Example:
 %% increase_replication_factor_request() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ClusterName">> := string(),
 %%   <<"NewReplicationFactor">> := integer()
 %% }
@@ -361,7 +361,7 @@
 %% Example:
 %% describe_subnet_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SubnetGroups">> => list(subnet_group()())
+%%   <<"SubnetGroups">> => list(subnet_group())
 %% }
 -type describe_subnet_groups_response() :: #{binary() => any()}.
 
@@ -372,7 +372,7 @@
 %%   <<"DataType">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"IsModifiable">> => list(any()),
-%%   <<"NodeTypeSpecificValues">> => list(node_type_specific_value()()),
+%%   <<"NodeTypeSpecificValues">> => list(node_type_specific_value()),
 %%   <<"ParameterName">> => string(),
 %%   <<"ParameterType">> => list(any()),
 %%   <<"ParameterValue">> => string(),
@@ -384,7 +384,7 @@
 %% update_subnet_group_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"SubnetGroupName">> := string(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type update_subnet_group_request() :: #{binary() => any()}.
 
@@ -405,7 +405,7 @@
 %% create_subnet_group_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"SubnetGroupName">> := string(),
-%%   <<"SubnetIds">> := list(string()())
+%%   <<"SubnetIds">> := list(string())
 %% }
 -type create_subnet_group_request() :: #{binary() => any()}.
 
@@ -436,10 +436,10 @@
 
 %% Example:
 %% decrease_replication_factor_request() :: #{
-%%   <<"AvailabilityZones">> => list(string()()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ClusterName">> := string(),
 %%   <<"NewReplicationFactor">> := integer(),
-%%   <<"NodeIdsToRemove">> => list(string()())
+%%   <<"NodeIdsToRemove">> => list(string())
 %% }
 -type decrease_replication_factor_request() :: #{binary() => any()}.
 
@@ -518,7 +518,7 @@
 %% describe_subnet_groups_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SubnetGroupNames">> => list(string()())
+%%   <<"SubnetGroupNames">> => list(string())
 %% }
 -type describe_subnet_groups_request() :: #{binary() => any()}.
 
@@ -548,7 +548,7 @@
 
 %% Example:
 %% tag_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type tag_resource_response() :: #{binary() => any()}.
 
@@ -556,13 +556,13 @@
 %% describe_parameter_groups_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ParameterGroupNames">> => list(string()())
+%%   <<"ParameterGroupNames">> => list(string())
 %% }
 -type describe_parameter_groups_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_clusters_response() :: #{
-%%   <<"Clusters">> => list(cluster()()),
+%%   <<"Clusters">> => list(cluster()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_clusters_response() :: #{binary() => any()}.
@@ -595,7 +595,7 @@
 %% Example:
 %% update_parameter_group_request() :: #{
 %%   <<"ParameterGroupName">> := string(),
-%%   <<"ParameterNameValues">> := list(parameter_name_value()())
+%%   <<"ParameterNameValues">> := list(parameter_name_value())
 %% }
 -type update_parameter_group_request() :: #{binary() => any()}.
 
@@ -645,7 +645,7 @@
 
 %% Example:
 %% describe_clusters_request() :: #{
-%%   <<"ClusterNames">> => list(string()()),
+%%   <<"ClusterNames">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -653,7 +653,7 @@
 
 %% Example:
 %% describe_events_response() :: #{
-%%   <<"Events">> => list(event()()),
+%%   <<"Events">> => list(event()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_events_response() :: #{binary() => any()}.

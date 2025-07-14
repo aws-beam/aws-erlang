@@ -209,7 +209,7 @@
 %%   <<"ModelKmsKeyId">> => string(),
 %%   <<"ModelPolicy">> => string(),
 %%   <<"OutputDataConfig">> => document_classifier_output_data_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VersionName">> => string(),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
@@ -240,7 +240,7 @@
 
 %% Example:
 %% list_entity_recognizers_response() :: #{
-%%   <<"EntityRecognizerPropertiesList">> => list(entity_recognizer_properties()()),
+%%   <<"EntityRecognizerPropertiesList">> => list(entity_recognizer_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_entity_recognizers_response() :: #{binary() => any()}.
@@ -277,7 +277,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -301,7 +301,7 @@
 
 %% Example:
 %% document_classifier_input_data_config() :: #{
-%%   <<"AugmentedManifests">> => list(augmented_manifests_list_item()()),
+%%   <<"AugmentedManifests">> => list(augmented_manifests_list_item()),
 %%   <<"DataFormat">> => list(any()),
 %%   <<"DocumentReaderConfig">> => document_reader_config(),
 %%   <<"DocumentType">> => list(any()),
@@ -314,8 +314,8 @@
 
 %% Example:
 %% batch_detect_dominant_language_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()()),
-%%   <<"ResultList">> => list(batch_detect_dominant_language_item_result()())
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_dominant_language_item_result())
 %% }
 -type batch_detect_dominant_language_response() :: #{binary() => any()}.
 
@@ -327,8 +327,8 @@
 %%   <<"JobName">> => string(),
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TargetEventTypes">> := list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetEventTypes">> := list(string())
 %% }
 -type start_events_detection_job_request() :: #{binary() => any()}.
 
@@ -367,7 +367,7 @@
 %% Example:
 %% batch_detect_dominant_language_item_result() :: #{
 %%   <<"Index">> => integer(),
-%%   <<"Languages">> => list(dominant_language()())
+%%   <<"Languages">> => list(dominant_language())
 %% }
 -type batch_detect_dominant_language_item_result() :: #{binary() => any()}.
 
@@ -384,7 +384,7 @@
 %%   <<"Message">> => string(),
 %%   <<"OutputDataConfig">> => output_data_config(),
 %%   <<"SubmitTime">> => non_neg_integer(),
-%%   <<"TargetEventTypes">> => list(string()())
+%%   <<"TargetEventTypes">> => list(string())
 %% }
 -type events_detection_job_properties() :: #{binary() => any()}.
 
@@ -405,7 +405,7 @@
 %% Example:
 %% geometry() :: #{
 %%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Polygon">> => list(point()())
+%%   <<"Polygon">> => list(point())
 %% }
 -type geometry() :: #{binary() => any()}.
 
@@ -418,7 +418,7 @@
 %%   <<"InputDataConfig">> := input_data_config(),
 %%   <<"JobName">> => string(),
 %%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -432,7 +432,7 @@
 
 %% Example:
 %% list_flywheel_iteration_history_response() :: #{
-%%   <<"FlywheelIterationPropertiesList">> => list(flywheel_iteration_properties()()),
+%%   <<"FlywheelIterationPropertiesList">> => list(flywheel_iteration_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_flywheel_iteration_history_response() :: #{binary() => any()}.
@@ -440,7 +440,7 @@
 %% Example:
 %% entity() :: #{
 %%   <<"BeginOffset">> => integer(),
-%%   <<"BlockReferences">> => list(block_reference()()),
+%%   <<"BlockReferences">> => list(block_reference()),
 %%   <<"EndOffset">> => integer(),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
@@ -519,7 +519,7 @@
 
 %% Example:
 %% list_flywheels_response() :: #{
-%%   <<"FlywheelSummaryList">> => list(flywheel_summary()()),
+%%   <<"FlywheelSummaryList">> => list(flywheel_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_flywheels_response() :: #{binary() => any()}.
@@ -527,7 +527,7 @@
 %% Example:
 %% dataset_augmented_manifests_list_item() :: #{
 %%   <<"AnnotationDataS3Uri">> => string(),
-%%   <<"AttributeNames">> => list(string()()),
+%%   <<"AttributeNames">> => list(string()),
 %%   <<"DocumentType">> => list(any()),
 %%   <<"S3Uri">> => string(),
 %%   <<"SourceDocumentsS3Uri">> => string()
@@ -552,7 +552,7 @@
 %% Example:
 %% batch_detect_syntax_item_result() :: #{
 %%   <<"Index">> => integer(),
-%%   <<"SyntaxTokens">> => list(syntax_token()())
+%%   <<"SyntaxTokens">> => list(syntax_token())
 %% }
 -type batch_detect_syntax_item_result() :: #{binary() => any()}.
 
@@ -579,7 +579,7 @@
 %%   <<"EndpointName">> := string(),
 %%   <<"FlywheelArn">> => string(),
 %%   <<"ModelArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_endpoint_request() :: #{binary() => any()}.
 
@@ -621,7 +621,7 @@
 
 %% Example:
 %% contains_pii_entities_response() :: #{
-%%   <<"Labels">> => list(entity_label()())
+%%   <<"Labels">> => list(entity_label())
 %% }
 -type contains_pii_entities_response() :: #{binary() => any()}.
 
@@ -634,7 +634,7 @@
 %% Example:
 %% augmented_manifests_list_item() :: #{
 %%   <<"AnnotationDataS3Uri">> => string(),
-%%   <<"AttributeNames">> => list(string()()),
+%%   <<"AttributeNames">> => list(string()),
 %%   <<"DocumentType">> => list(any()),
 %%   <<"S3Uri">> => string(),
 %%   <<"SourceDocumentsS3Uri">> => string(),
@@ -668,7 +668,7 @@
 
 %% Example:
 %% detect_pii_entities_response() :: #{
-%%   <<"Entities">> => list(pii_entity()())
+%%   <<"Entities">> => list(pii_entity())
 %% }
 -type detect_pii_entities_response() :: #{binary() => any()}.
 
@@ -681,7 +681,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -714,7 +714,7 @@
 %% Example:
 %% batch_detect_syntax_request() :: #{
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string()())
+%%   <<"TextList">> := list(string())
 %% }
 -type batch_detect_syntax_request() :: #{binary() => any()}.
 
@@ -785,7 +785,7 @@
 %%   <<"ModelKmsKeyId">> => string(),
 %%   <<"ModelPolicy">> => string(),
 %%   <<"RecognizerName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VersionName">> => string(),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
@@ -795,7 +795,7 @@
 %% Example:
 %% batch_detect_targeted_sentiment_request() :: #{
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string()())
+%%   <<"TextList">> := list(string())
 %% }
 -type batch_detect_targeted_sentiment_request() :: #{binary() => any()}.
 
@@ -809,7 +809,7 @@
 %%   <<"JobName">> => string(),
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -867,11 +867,11 @@
 %% Example:
 %% entity_recognizer_input_data_config() :: #{
 %%   <<"Annotations">> => entity_recognizer_annotations(),
-%%   <<"AugmentedManifests">> => list(augmented_manifests_list_item()()),
+%%   <<"AugmentedManifests">> => list(augmented_manifests_list_item()),
 %%   <<"DataFormat">> => list(any()),
 %%   <<"Documents">> => entity_recognizer_documents(),
 %%   <<"EntityList">> => entity_recognizer_entity_list(),
-%%   <<"EntityTypes">> => list(entity_types_list_item()())
+%%   <<"EntityTypes">> => list(entity_types_list_item())
 %% }
 -type entity_recognizer_input_data_config() :: #{binary() => any()}.
 
@@ -915,11 +915,11 @@
 
 %% Example:
 %% detect_entities_response() :: #{
-%%   <<"Blocks">> => list(block()()),
+%%   <<"Blocks">> => list(block()),
 %%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"DocumentType">> => list(document_type_list_item()()),
-%%   <<"Entities">> => list(entity()()),
-%%   <<"Errors">> => list(errors_list_item()())
+%%   <<"DocumentType">> => list(document_type_list_item()),
+%%   <<"Entities">> => list(entity()),
+%%   <<"Errors">> => list(errors_list_item())
 %% }
 -type detect_entities_response() :: #{binary() => any()}.
 
@@ -939,7 +939,7 @@
 
 %% Example:
 %% list_document_classifier_summaries_response() :: #{
-%%   <<"DocumentClassifierSummariesList">> => list(document_classifier_summary()()),
+%%   <<"DocumentClassifierSummariesList">> => list(document_classifier_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_document_classifier_summaries_response() :: #{binary() => any()}.
@@ -967,7 +967,7 @@
 
 %% Example:
 %% list_document_classification_jobs_response() :: #{
-%%   <<"DocumentClassificationJobPropertiesList">> => list(document_classification_job_properties()()),
+%%   <<"DocumentClassificationJobPropertiesList">> => list(document_classification_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_document_classification_jobs_response() :: #{binary() => any()}.
@@ -1026,7 +1026,7 @@
 %%   <<"JobName">> => string(),
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -1080,7 +1080,7 @@
 %% block_reference() :: #{
 %%   <<"BeginOffset">> => integer(),
 %%   <<"BlockId">> => string(),
-%%   <<"ChildBlocks">> => list(child_block()()),
+%%   <<"ChildBlocks">> => list(child_block()),
 %%   <<"EndOffset">> => integer()
 %% }
 -type block_reference() :: #{binary() => any()}.
@@ -1093,7 +1093,7 @@
 %%   <<"JobName">> => string(),
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -1117,7 +1117,7 @@
 
 %% Example:
 %% relationships_list_item() :: #{
-%%   <<"Ids">> => list(string()()),
+%%   <<"Ids">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type relationships_list_item() :: #{binary() => any()}.
@@ -1153,8 +1153,8 @@
 
 %% Example:
 %% batch_detect_key_phrases_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()()),
-%%   <<"ResultList">> => list(batch_detect_key_phrases_item_result()())
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_key_phrases_item_result())
 %% }
 -type batch_detect_key_phrases_response() :: #{binary() => any()}.
 
@@ -1191,7 +1191,7 @@
 
 %% Example:
 %% list_endpoints_response() :: #{
-%%   <<"EndpointPropertiesList">> => list(endpoint_properties()()),
+%%   <<"EndpointPropertiesList">> => list(endpoint_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_endpoints_response() :: #{binary() => any()}.
@@ -1199,13 +1199,13 @@
 %% Example:
 %% batch_detect_entities_request() :: #{
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string()())
+%%   <<"TextList">> := list(string())
 %% }
 -type batch_detect_entities_request() :: #{binary() => any()}.
 
 %% Example:
 %% dataset_input_data_config() :: #{
-%%   <<"AugmentedManifests">> => list(dataset_augmented_manifests_list_item()()),
+%%   <<"AugmentedManifests">> => list(dataset_augmented_manifests_list_item()),
 %%   <<"DataFormat">> => list(any()),
 %%   <<"DocumentClassifierInputDataConfig">> => dataset_document_classifier_input_data_config(),
 %%   <<"EntityRecognizerInputDataConfig">> => dataset_entity_recognizer_input_data_config()
@@ -1242,7 +1242,7 @@
 
 %% Example:
 %% list_events_detection_jobs_response() :: #{
-%%   <<"EventsDetectionJobPropertiesList">> => list(events_detection_job_properties()()),
+%%   <<"EventsDetectionJobPropertiesList">> => list(events_detection_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_events_detection_jobs_response() :: #{binary() => any()}.
@@ -1290,14 +1290,14 @@
 
 %% Example:
 %% batch_detect_sentiment_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()()),
-%%   <<"ResultList">> => list(batch_detect_sentiment_item_result()())
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_sentiment_item_result())
 %% }
 -type batch_detect_sentiment_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_document_classifiers_response() :: #{
-%%   <<"DocumentClassifierPropertiesList">> => list(document_classifier_properties()()),
+%%   <<"DocumentClassifierPropertiesList">> => list(document_classifier_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_document_classifiers_response() :: #{binary() => any()}.
@@ -1310,8 +1310,8 @@
 
 %% Example:
 %% vpc_config() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"Subnets">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"Subnets">> => list(string())
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
@@ -1337,7 +1337,7 @@
 
 %% Example:
 %% batch_detect_dominant_language_request() :: #{
-%%   <<"TextList">> := list(string()())
+%%   <<"TextList">> := list(string())
 %% }
 -type batch_detect_dominant_language_request() :: #{binary() => any()}.
 
@@ -1358,7 +1358,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1390,13 +1390,13 @@
 
 %% Example:
 %% detect_syntax_response() :: #{
-%%   <<"SyntaxTokens">> => list(syntax_token()())
+%%   <<"SyntaxTokens">> => list(syntax_token())
 %% }
 -type detect_syntax_response() :: #{binary() => any()}.
 
 %% Example:
 %% detect_key_phrases_response() :: #{
-%%   <<"KeyPhrases">> => list(key_phrase()())
+%%   <<"KeyPhrases">> => list(key_phrase())
 %% }
 -type detect_key_phrases_response() :: #{binary() => any()}.
 
@@ -1415,7 +1415,7 @@
 %%   <<"InputDataConfig">> := input_data_config(),
 %%   <<"JobName">> => string(),
 %%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -1445,7 +1445,7 @@
 %%   <<"DataSecurityConfig">> => data_security_config(),
 %%   <<"FlywheelName">> := string(),
 %%   <<"ModelType">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TaskConfig">> => task_config()
 %% }
 -type create_flywheel_request() :: #{binary() => any()}.
@@ -1474,7 +1474,7 @@
 %% Example:
 %% detect_toxic_content_request() :: #{
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"TextSegments">> := list(text_segment()())
+%%   <<"TextSegments">> := list(text_segment())
 %% }
 -type detect_toxic_content_request() :: #{binary() => any()}.
 
@@ -1542,7 +1542,7 @@
 %% Example:
 %% list_sentiment_detection_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SentimentDetectionJobPropertiesList">> => list(sentiment_detection_job_properties()())
+%%   <<"SentimentDetectionJobPropertiesList">> => list(sentiment_detection_job_properties())
 %% }
 -type list_sentiment_detection_jobs_response() :: #{binary() => any()}.
 
@@ -1570,7 +1570,7 @@
 
 %% Example:
 %% list_entities_detection_jobs_response() :: #{
-%%   <<"EntitiesDetectionJobPropertiesList">> => list(entities_detection_job_properties()()),
+%%   <<"EntitiesDetectionJobPropertiesList">> => list(entities_detection_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_entities_detection_jobs_response() :: #{binary() => any()}.
@@ -1585,8 +1585,8 @@
 
 %% Example:
 %% targeted_sentiment_entity() :: #{
-%%   <<"DescriptiveMentionIndex">> => list(integer()()),
-%%   <<"Mentions">> => list(targeted_sentiment_mention()())
+%%   <<"DescriptiveMentionIndex">> => list(integer()),
+%%   <<"Mentions">> => list(targeted_sentiment_mention())
 %% }
 -type targeted_sentiment_entity() :: #{binary() => any()}.
 
@@ -1643,7 +1643,7 @@
 %% Example:
 %% batch_detect_sentiment_request() :: #{
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string()())
+%%   <<"TextList">> := list(string())
 %% }
 -type batch_detect_sentiment_request() :: #{binary() => any()}.
 
@@ -1690,7 +1690,7 @@
 
 %% Example:
 %% detect_dominant_language_response() :: #{
-%%   <<"Languages">> => list(dominant_language()())
+%%   <<"Languages">> => list(dominant_language())
 %% }
 -type detect_dominant_language_response() :: #{binary() => any()}.
 
@@ -1767,7 +1767,7 @@
 
 %% Example:
 %% entity_recognition_config() :: #{
-%%   <<"EntityTypes">> => list(entity_types_list_item()())
+%%   <<"EntityTypes">> => list(entity_types_list_item())
 %% }
 -type entity_recognition_config() :: #{binary() => any()}.
 
@@ -1895,7 +1895,7 @@
 
 %% Example:
 %% entity_recognizer_metadata() :: #{
-%%   <<"EntityTypes">> => list(entity_recognizer_metadata_entity_types_list_item()()),
+%%   <<"EntityTypes">> => list(entity_recognizer_metadata_entity_types_list_item()),
 %%   <<"EvaluationMetrics">> => entity_recognizer_evaluation_metrics(),
 %%   <<"NumberOfTestDocuments">> => integer(),
 %%   <<"NumberOfTrainedDocuments">> => integer()
@@ -1941,7 +1941,7 @@
 %% Example:
 %% batch_detect_key_phrases_item_result() :: #{
 %%   <<"Index">> => integer(),
-%%   <<"KeyPhrases">> => list(key_phrase()())
+%%   <<"KeyPhrases">> => list(key_phrase())
 %% }
 -type batch_detect_key_phrases_item_result() :: #{binary() => any()}.
 
@@ -1953,7 +1953,7 @@
 %%   <<"Description">> => string(),
 %%   <<"FlywheelArn">> := string(),
 %%   <<"InputDataConfig">> := dataset_input_data_config(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_dataset_request() :: #{binary() => any()}.
 
@@ -1965,7 +1965,7 @@
 
 %% Example:
 %% document_metadata() :: #{
-%%   <<"ExtractedCharacters">> => list(extracted_characters_list_item()()),
+%%   <<"ExtractedCharacters">> => list(extracted_characters_list_item()),
 %%   <<"Pages">> => integer()
 %% }
 -type document_metadata() :: #{binary() => any()}.
@@ -2015,7 +2015,7 @@
 %%   <<"Mode">> := list(any()),
 %%   <<"OutputDataConfig">> := output_data_config(),
 %%   <<"RedactionConfig">> => redaction_config(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_pii_entities_detection_job_request() :: #{binary() => any()}.
 
@@ -2059,13 +2059,13 @@
 %% Example:
 %% list_topics_detection_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TopicsDetectionJobPropertiesList">> => list(topics_detection_job_properties()())
+%%   <<"TopicsDetectionJobPropertiesList">> => list(topics_detection_job_properties())
 %% }
 -type list_topics_detection_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% batch_detect_targeted_sentiment_item_result() :: #{
-%%   <<"Entities">> => list(targeted_sentiment_entity()()),
+%%   <<"Entities">> => list(targeted_sentiment_entity()),
 %%   <<"Index">> => integer()
 %% }
 -type batch_detect_targeted_sentiment_item_result() :: #{binary() => any()}.
@@ -2073,7 +2073,7 @@
 %% Example:
 %% list_targeted_sentiment_detection_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TargetedSentimentDetectionJobPropertiesList">> => list(targeted_sentiment_detection_job_properties()())
+%%   <<"TargetedSentimentDetectionJobPropertiesList">> => list(targeted_sentiment_detection_job_properties())
 %% }
 -type list_targeted_sentiment_detection_jobs_response() :: #{binary() => any()}.
 
@@ -2132,7 +2132,7 @@
 %% Example:
 %% batch_detect_key_phrases_request() :: #{
 %%   <<"LanguageCode">> := list(any()),
-%%   <<"TextList">> := list(string()())
+%%   <<"TextList">> := list(string())
 %% }
 -type batch_detect_key_phrases_request() :: #{binary() => any()}.
 
@@ -2144,21 +2144,21 @@
 
 %% Example:
 %% batch_detect_entities_item_result() :: #{
-%%   <<"Entities">> => list(entity()()),
+%%   <<"Entities">> => list(entity()),
 %%   <<"Index">> => integer()
 %% }
 -type batch_detect_entities_item_result() :: #{binary() => any()}.
 
 %% Example:
 %% toxic_labels() :: #{
-%%   <<"Labels">> => list(toxic_content()()),
+%%   <<"Labels">> => list(toxic_content()),
 %%   <<"Toxicity">> => float()
 %% }
 -type toxic_labels() :: #{binary() => any()}.
 
 %% Example:
 %% detect_targeted_sentiment_response() :: #{
-%%   <<"Entities">> => list(targeted_sentiment_entity()())
+%%   <<"Entities">> => list(targeted_sentiment_entity())
 %% }
 -type detect_targeted_sentiment_response() :: #{binary() => any()}.
 
@@ -2183,7 +2183,7 @@
 
 %% Example:
 %% list_key_phrases_detection_jobs_response() :: #{
-%%   <<"KeyPhrasesDetectionJobPropertiesList">> => list(key_phrases_detection_job_properties()()),
+%%   <<"KeyPhrasesDetectionJobPropertiesList">> => list(key_phrases_detection_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_key_phrases_detection_jobs_response() :: #{binary() => any()}.
@@ -2206,8 +2206,8 @@
 
 %% Example:
 %% batch_detect_targeted_sentiment_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()()),
-%%   <<"ResultList">> => list(batch_detect_targeted_sentiment_item_result()())
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_targeted_sentiment_item_result())
 %% }
 -type batch_detect_targeted_sentiment_response() :: #{binary() => any()}.
 
@@ -2228,7 +2228,7 @@
 
 %% Example:
 %% list_datasets_response() :: #{
-%%   <<"DatasetPropertiesList">> => list(dataset_properties()()),
+%%   <<"DatasetPropertiesList">> => list(dataset_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.
@@ -2268,7 +2268,7 @@
 
 %% Example:
 %% detect_toxic_content_response() :: #{
-%%   <<"ResultList">> => list(toxic_labels()())
+%%   <<"ResultList">> => list(toxic_labels())
 %% }
 -type detect_toxic_content_response() :: #{binary() => any()}.
 
@@ -2288,7 +2288,7 @@
 %%   <<"JobName">> => string(),
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -2306,7 +2306,7 @@
 %%   <<"Geometry">> => geometry(),
 %%   <<"Id">> => string(),
 %%   <<"Page">> => integer(),
-%%   <<"Relationships">> => list(relationships_list_item()()),
+%%   <<"Relationships">> => list(relationships_list_item()),
 %%   <<"Text">> => string()
 %% }
 -type block() :: #{binary() => any()}.
@@ -2338,7 +2338,7 @@
 
 %% Example:
 %% list_entity_recognizer_summaries_response() :: #{
-%%   <<"EntityRecognizerSummariesList">> => list(entity_recognizer_summary()()),
+%%   <<"EntityRecognizerSummariesList">> => list(entity_recognizer_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_entity_recognizer_summaries_response() :: #{binary() => any()}.
@@ -2363,8 +2363,8 @@
 
 %% Example:
 %% batch_detect_entities_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()()),
-%%   <<"ResultList">> => list(batch_detect_entities_item_result()())
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_entities_item_result())
 %% }
 -type batch_detect_entities_response() :: #{binary() => any()}.
 
@@ -2374,7 +2374,7 @@
 %%   <<"ModelKmsKeyId">> => string(),
 %%   <<"ModelName">> => string(),
 %%   <<"SourceModelArn">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VersionName">> => string()
 %% }
 -type import_model_request() :: #{binary() => any()}.
@@ -2410,7 +2410,7 @@
 %% Example:
 %% list_pii_entities_detection_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PiiEntitiesDetectionJobPropertiesList">> => list(pii_entities_detection_job_properties()())
+%%   <<"PiiEntitiesDetectionJobPropertiesList">> => list(pii_entities_detection_job_properties())
 %% }
 -type list_pii_entities_detection_jobs_response() :: #{binary() => any()}.
 
@@ -2452,8 +2452,8 @@
 
 %% Example:
 %% batch_detect_syntax_response() :: #{
-%%   <<"ErrorList">> => list(batch_item_error()()),
-%%   <<"ResultList">> => list(batch_detect_syntax_item_result()())
+%%   <<"ErrorList">> => list(batch_item_error()),
+%%   <<"ResultList">> => list(batch_detect_syntax_item_result())
 %% }
 -type batch_detect_syntax_response() :: #{binary() => any()}.
 
@@ -2472,7 +2472,7 @@
 
 %% Example:
 %% document_classification_config() :: #{
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"Mode">> => list(any())
 %% }
 -type document_classification_config() :: #{binary() => any()}.
@@ -2485,12 +2485,12 @@
 
 %% Example:
 %% classify_document_response() :: #{
-%%   <<"Classes">> => list(document_class()()),
+%%   <<"Classes">> => list(document_class()),
 %%   <<"DocumentMetadata">> => document_metadata(),
-%%   <<"DocumentType">> => list(document_type_list_item()()),
-%%   <<"Errors">> => list(errors_list_item()()),
-%%   <<"Labels">> => list(document_label()()),
-%%   <<"Warnings">> => list(warnings_list_item()())
+%%   <<"DocumentType">> => list(document_type_list_item()),
+%%   <<"Errors">> => list(errors_list_item()),
+%%   <<"Labels">> => list(document_label()),
+%%   <<"Warnings">> => list(warnings_list_item())
 %% }
 -type classify_document_response() :: #{binary() => any()}.
 
@@ -2508,7 +2508,7 @@
 %%   <<"JobName">> => string(),
 %%   <<"NumberOfTopics">> => integer(),
 %%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -2566,7 +2566,7 @@
 
 %% Example:
 %% list_dominant_language_detection_jobs_response() :: #{
-%%   <<"DominantLanguageDetectionJobPropertiesList">> => list(dominant_language_detection_job_properties()()),
+%%   <<"DominantLanguageDetectionJobPropertiesList">> => list(dominant_language_detection_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dominant_language_detection_jobs_response() :: #{binary() => any()}.

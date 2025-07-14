@@ -39,14 +39,14 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"resourceTags">> := list(resource_tag()())
+%%   <<"resourceTags">> := list(resource_tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_billing_views_request() :: #{
 %%   <<"activeTimeRange">> => active_time_range(),
-%%   <<"arns">> => list(string()()),
+%%   <<"arns">> => list(string()),
 %%   <<"billingViewTypes">> => list(list(any())()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -72,7 +72,7 @@
 %% Example:
 %% list_source_views_for_billing_view_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sourceViews">> => list(string()())
+%%   <<"sourceViews">> => list(string())
 %% }
 -type list_source_views_for_billing_view_response() :: #{binary() => any()}.
 
@@ -91,7 +91,7 @@
 %% Example:
 %% tag_values() :: #{
 %%   <<"key">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type tag_values() :: #{binary() => any()}.
 
@@ -111,7 +111,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"resourceTagKeys">> := list(string()())
+%%   <<"resourceTagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -121,8 +121,8 @@
 %%   <<"dataFilterExpression">> => expression(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"resourceTags">> => list(resource_tag()()),
-%%   <<"sourceViews">> := list(string()())
+%%   <<"resourceTags">> => list(resource_tag()),
+%%   <<"sourceViews">> := list(string())
 %% }
 -type create_billing_view_request() :: #{binary() => any()}.
 
@@ -145,7 +145,7 @@
 %% Example:
 %% dimension_values() :: #{
 %%   <<"key">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type dimension_values() :: #{binary() => any()}.
 
@@ -176,7 +176,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"resourceTags">> => list(resource_tag()())
+%%   <<"resourceTags">> => list(resource_tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -250,7 +250,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }
@@ -283,7 +283,7 @@
 
 %% Example:
 %% list_billing_views_response() :: #{
-%%   <<"billingViews">> => list(billing_view_list_element()()),
+%%   <<"billingViews">> => list(billing_view_list_element()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_billing_views_response() :: #{binary() => any()}.

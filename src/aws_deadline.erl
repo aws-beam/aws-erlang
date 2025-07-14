@@ -348,7 +348,7 @@
 %% Example:
 %% fleet_attribute_capability() :: #{
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type fleet_attribute_capability() :: #{binary() => any()}.
 
@@ -371,7 +371,7 @@
 
 %% Example:
 %% list_queue_environments_response() :: #{
-%%   <<"environments">> => list(queue_environment_summary()()),
+%%   <<"environments">> => list(queue_environment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_queue_environments_response() :: #{binary() => any()}.
@@ -394,7 +394,7 @@
 
 %% Example:
 %% get_queue_response() :: #{
-%%   <<"allowedStorageProfileIds">> => list(string()()),
+%%   <<"allowedStorageProfileIds">> => list(string()),
 %%   <<"blockedReason">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -405,7 +405,7 @@
 %%   <<"jobAttachmentSettings">> => job_attachment_settings(),
 %%   <<"jobRunAsUser">> => job_run_as_user(),
 %%   <<"queueId">> => string(),
-%%   <<"requiredFileSystemLocationNames">> => list(string()()),
+%%   <<"requiredFileSystemLocationNames">> => list(string()),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -513,8 +513,8 @@
 %%   <<"itemOffset">> := integer(),
 %%   <<"jobId">> => string(),
 %%   <<"pageSize">> => integer(),
-%%   <<"queueIds">> := list(string()()),
-%%   <<"sortExpressions">> => list(list()())
+%%   <<"queueIds">> := list(string()),
+%%   <<"sortExpressions">> => list(list())
 %% }
 -type search_tasks_request() :: #{binary() => any()}.
 
@@ -543,7 +543,7 @@
 
 %% Example:
 %% list_monitors_response() :: #{
-%%   <<"monitors">> => list(monitor_summary()()),
+%%   <<"monitors">> => list(monitor_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_monitors_response() :: #{binary() => any()}.
@@ -565,7 +565,7 @@
 
 %% Example:
 %% batch_get_job_entity_request() :: #{
-%%   <<"identifiers">> := list(list()())
+%%   <<"identifiers">> := list(list())
 %% }
 -type batch_get_job_entity_request() :: #{binary() => any()}.
 
@@ -594,8 +594,8 @@
 
 %% Example:
 %% batch_get_job_entity_response() :: #{
-%%   <<"entities">> => list(list()()),
-%%   <<"errors">> => list(list()())
+%%   <<"entities">> => list(list()),
+%%   <<"errors">> => list(list())
 %% }
 -type batch_get_job_entity_response() :: #{binary() => any()}.
 
@@ -611,7 +611,7 @@
 %% updated_session_action_info() :: #{
 %%   <<"completedStatus">> => list(any()),
 %%   <<"endedAt">> => non_neg_integer(),
-%%   <<"manifests">> => list(task_run_manifest_properties_request()()),
+%%   <<"manifests">> => list(task_run_manifest_properties_request()),
 %%   <<"processExitCode">> => integer(),
 %%   <<"progressMessage">> => string(),
 %%   <<"progressPercent">> => float(),
@@ -632,7 +632,7 @@
 %% Example:
 %% list_queue_fleet_associations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"queueFleetAssociations">> => list(queue_fleet_association_summary()())
+%%   <<"queueFleetAssociations">> => list(queue_fleet_association_summary())
 %% }
 -type list_queue_fleet_associations_response() :: #{binary() => any()}.
 
@@ -655,7 +655,7 @@
 
 %% Example:
 %% list_available_metered_products_response() :: #{
-%%   <<"meteredProducts">> => list(metered_product_summary()()),
+%%   <<"meteredProducts">> => list(metered_product_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_available_metered_products_response() :: #{binary() => any()}.
@@ -685,16 +685,16 @@
 
 %% Example:
 %% fleet_capabilities() :: #{
-%%   <<"amounts">> => list(fleet_amount_capability()()),
-%%   <<"attributes">> => list(fleet_attribute_capability()())
+%%   <<"amounts">> => list(fleet_amount_capability()),
+%%   <<"attributes">> => list(fleet_attribute_capability())
 %% }
 -type fleet_capabilities() :: #{binary() => any()}.
 
 
 %% Example:
 %% step_required_capabilities() :: #{
-%%   <<"amounts">> => list(step_amount_capability()()),
-%%   <<"attributes">> => list(step_attribute_capability()())
+%%   <<"amounts">> => list(step_amount_capability()),
+%%   <<"attributes">> => list(step_attribute_capability())
 %% }
 -type step_required_capabilities() :: #{binary() => any()}.
 
@@ -725,8 +725,8 @@
 %% update_storage_profile_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"fileSystemLocationsToAdd">> => list(file_system_location()()),
-%%   <<"fileSystemLocationsToRemove">> => list(file_system_location()()),
+%%   <<"fileSystemLocationsToAdd">> => list(file_system_location()),
+%%   <<"fileSystemLocationsToRemove">> => list(file_system_location()),
 %%   <<"osFamily">> => list(any())
 %% }
 -type update_storage_profile_request() :: #{binary() => any()}.
@@ -797,10 +797,10 @@
 %% Example:
 %% search_workers_request() :: #{
 %%   <<"filterExpressions">> => search_grouped_filter_expressions(),
-%%   <<"fleetIds">> := list(string()()),
+%%   <<"fleetIds">> := list(string()),
 %%   <<"itemOffset">> := integer(),
 %%   <<"pageSize">> => integer(),
-%%   <<"sortExpressions">> => list(list()())
+%%   <<"sortExpressions">> => list(list())
 %% }
 -type search_workers_request() :: #{binary() => any()}.
 
@@ -825,7 +825,7 @@
 
 %% Example:
 %% list_license_endpoints_response() :: #{
-%%   <<"licenseEndpoints">> => list(license_endpoint_summary()()),
+%%   <<"licenseEndpoints">> => list(license_endpoint_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_license_endpoints_response() :: #{binary() => any()}.
@@ -886,7 +886,7 @@
 %%   <<"fileSystemLocationName">> => string(),
 %%   <<"inputManifestHash">> => string(),
 %%   <<"inputManifestPath">> => string(),
-%%   <<"outputRelativeDirectories">> => list(string()()),
+%%   <<"outputRelativeDirectories">> => list(string()),
 %%   <<"rootPath">> => string(),
 %%   <<"rootPathFormat">> => list(any())
 %% }
@@ -896,7 +896,7 @@
 %% Example:
 %% list_sessions_for_worker_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sessions">> => list(worker_session_summary()())
+%%   <<"sessions">> => list(worker_session_summary())
 %% }
 -type list_sessions_for_worker_response() :: #{binary() => any()}.
 
@@ -924,7 +924,7 @@
 %% Example:
 %% worker_attribute_capability() :: #{
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type worker_attribute_capability() :: #{binary() => any()}.
 
@@ -987,7 +987,7 @@
 %% Example:
 %% search_steps_response() :: #{
 %%   <<"nextItemOffset">> => integer(),
-%%   <<"steps">> => list(step_search_summary()()),
+%%   <<"steps">> => list(step_search_summary()),
 %%   <<"totalResults">> => integer()
 %% }
 -type search_steps_response() :: #{binary() => any()}.
@@ -1041,7 +1041,7 @@
 
 %% Example:
 %% list_jobs_response() :: #{
-%%   <<"jobs">> => list(job_summary()()),
+%%   <<"jobs">> => list(job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
@@ -1067,7 +1067,7 @@
 
 %% Example:
 %% list_limits_response() :: #{
-%%   <<"limits">> => list(limit_summary()()),
+%%   <<"limits">> => list(limit_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_limits_response() :: #{binary() => any()}.
@@ -1095,7 +1095,7 @@
 
 %% Example:
 %% list_fleets_response() :: #{
-%%   <<"fleets">> => list(fleet_summary()()),
+%%   <<"fleets">> => list(fleet_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleets_response() :: #{binary() => any()}.
@@ -1113,7 +1113,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1129,16 +1129,16 @@
 
 %% Example:
 %% update_queue_request() :: #{
-%%   <<"allowedStorageProfileIdsToAdd">> => list(string()()),
-%%   <<"allowedStorageProfileIdsToRemove">> => list(string()()),
+%%   <<"allowedStorageProfileIdsToAdd">> => list(string()),
+%%   <<"allowedStorageProfileIdsToRemove">> => list(string()),
 %%   <<"clientToken">> => string(),
 %%   <<"defaultBudgetAction">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"jobAttachmentSettings">> => job_attachment_settings(),
 %%   <<"jobRunAsUser">> => job_run_as_user(),
-%%   <<"requiredFileSystemLocationNamesToAdd">> => list(string()()),
-%%   <<"requiredFileSystemLocationNamesToRemove">> => list(string()()),
+%%   <<"requiredFileSystemLocationNamesToAdd">> => list(string()),
+%%   <<"requiredFileSystemLocationNamesToRemove">> => list(string()),
 %%   <<"roleArn">> => string()
 %% }
 -type update_queue_request() :: #{binary() => any()}.
@@ -1153,7 +1153,7 @@
 
 %% Example:
 %% list_job_members_response() :: #{
-%%   <<"members">> => list(job_member()()),
+%%   <<"members">> => list(job_member()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_members_response() :: #{binary() => any()}.
@@ -1205,7 +1205,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"fileSystemLocations">> => list(file_system_location()()),
+%%   <<"fileSystemLocations">> => list(file_system_location()),
 %%   <<"osFamily">> => list(any()),
 %%   <<"storageProfileId">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -1217,11 +1217,11 @@
 %% Example:
 %% service_managed_ec2_instance_capabilities() :: #{
 %%   <<"acceleratorCapabilities">> => accelerator_capabilities(),
-%%   <<"allowedInstanceTypes">> => list(string()()),
+%%   <<"allowedInstanceTypes">> => list(string()),
 %%   <<"cpuArchitectureType">> => list(any()),
-%%   <<"customAmounts">> => list(fleet_amount_capability()()),
-%%   <<"customAttributes">> => list(fleet_attribute_capability()()),
-%%   <<"excludedInstanceTypes">> => list(string()()),
+%%   <<"customAmounts">> => list(fleet_amount_capability()),
+%%   <<"customAttributes">> => list(fleet_attribute_capability()),
+%%   <<"excludedInstanceTypes">> => list(string()),
 %%   <<"memoryMiB">> => memory_mi_b_range(),
 %%   <<"osFamily">> => list(any()),
 %%   <<"rootEbsVolume">> => ec2_ebs_volume(),
@@ -1249,7 +1249,7 @@
 %% Example:
 %% list_session_actions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sessionActions">> => list(session_action_summary()())
+%%   <<"sessionActions">> => list(session_action_summary())
 %% }
 -type list_session_actions_response() :: #{binary() => any()}.
 
@@ -1265,8 +1265,8 @@
 
 %% Example:
 %% update_budget_request() :: #{
-%%   <<"actionsToAdd">> => list(budget_action_to_add()()),
-%%   <<"actionsToRemove">> => list(budget_action_to_remove()()),
+%%   <<"actionsToAdd">> => list(budget_action_to_add()),
+%%   <<"actionsToRemove">> => list(budget_action_to_remove()),
 %%   <<"approximateDollarLimit">> => float(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -1279,8 +1279,8 @@
 
 %% Example:
 %% step_attribute_capability() :: #{
-%%   <<"allOf">> => list(string()()),
-%%   <<"anyOf">> => list(string()()),
+%%   <<"allOf">> => list(string()),
+%%   <<"anyOf">> => list(string()),
 %%   <<"name">> => string()
 %% }
 -type step_attribute_capability() :: #{binary() => any()}.
@@ -1301,7 +1301,7 @@
 
 %% Example:
 %% step_details_entity() :: #{
-%%   <<"dependencies">> => list(string()()),
+%%   <<"dependencies">> => list(string()),
 %%   <<"jobId">> => string(),
 %%   <<"schemaVersion">> => string(),
 %%   <<"stepId">> => string(),
@@ -1411,8 +1411,8 @@
 %% Example:
 %% create_license_endpoint_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"securityGroupIds">> := list(string()()),
-%%   <<"subnetIds">> := list(string()()),
+%%   <<"securityGroupIds">> := list(string()),
+%%   <<"subnetIds">> := list(string()),
 %%   <<"tags">> => map(),
 %%   <<"vpcId">> := string()
 %% }
@@ -1425,7 +1425,7 @@
 
 %% Example:
 %% search_grouped_filter_expressions() :: #{
-%%   <<"filters">> => list(list()()),
+%%   <<"filters">> => list(list()),
 %%   <<"operator">> => list(any())
 %% }
 -type search_grouped_filter_expressions() :: #{binary() => any()}.
@@ -1470,7 +1470,7 @@
 
 %% Example:
 %% list_job_parameter_definitions_response() :: #{
-%%   <<"jobParameterDefinitions">> => list(any()()),
+%%   <<"jobParameterDefinitions">> => list(any()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_parameter_definitions_response() :: #{binary() => any()}.
@@ -1481,8 +1481,8 @@
 %%   <<"filterExpressions">> => search_grouped_filter_expressions(),
 %%   <<"itemOffset">> := integer(),
 %%   <<"pageSize">> => integer(),
-%%   <<"queueIds">> := list(string()()),
-%%   <<"sortExpressions">> => list(list()())
+%%   <<"queueIds">> := list(string()),
+%%   <<"sortExpressions">> => list(list())
 %% }
 -type search_jobs_request() :: #{binary() => any()}.
 
@@ -1497,7 +1497,7 @@
 %% Example:
 %% list_sessions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sessions">> => list(session_summary()())
+%%   <<"sessions">> => list(session_summary())
 %% }
 -type list_sessions_response() :: #{binary() => any()}.
 
@@ -1509,7 +1509,7 @@
 %%   <<"jobRunAsUser">> => job_run_as_user(),
 %%   <<"logGroupName">> => string(),
 %%   <<"parameters">> => map(),
-%%   <<"pathMappingRules">> => list(path_mapping_rule()()),
+%%   <<"pathMappingRules">> => list(path_mapping_rule()),
 %%   <<"queueRoleArn">> => string(),
 %%   <<"schemaVersion">> => string()
 %% }
@@ -1523,7 +1523,7 @@
 %% Example:
 %% list_storage_profiles_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"storageProfiles">> => list(storage_profile_summary()())
+%%   <<"storageProfiles">> => list(storage_profile_summary())
 %% }
 -type list_storage_profiles_response() :: #{binary() => any()}.
 
@@ -1570,7 +1570,7 @@
 %% Example:
 %% accelerator_capabilities() :: #{
 %%   <<"count">> => accelerator_count_range(),
-%%   <<"selections">> => list(accelerator_selection()())
+%%   <<"selections">> => list(accelerator_selection())
 %% }
 -type accelerator_capabilities() :: #{binary() => any()}.
 
@@ -1630,17 +1630,17 @@
 %% Example:
 %% list_storage_profiles_for_queue_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"storageProfiles">> => list(storage_profile_summary()())
+%%   <<"storageProfiles">> => list(storage_profile_summary())
 %% }
 -type list_storage_profiles_for_queue_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_session_action_response() :: #{
-%%   <<"acquiredLimits">> => list(acquired_limit()()),
+%%   <<"acquiredLimits">> => list(acquired_limit()),
 %%   <<"definition">> => list(),
 %%   <<"endedAt">> => non_neg_integer(),
-%%   <<"manifests">> => list(task_run_manifest_properties_response()()),
+%%   <<"manifests">> => list(task_run_manifest_properties_response()),
 %%   <<"processExitCode">> => integer(),
 %%   <<"progressMessage">> => string(),
 %%   <<"progressPercent">> => float(),
@@ -1660,7 +1660,7 @@
 %% Example:
 %% get_sessions_statistics_aggregation_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"statistics">> => list(statistics()()),
+%%   <<"statistics">> => list(statistics()),
 %%   <<"status">> => list(any()),
 %%   <<"statusMessage">> => string()
 %% }
@@ -1697,7 +1697,7 @@
 %% search_workers_response() :: #{
 %%   <<"nextItemOffset">> => integer(),
 %%   <<"totalResults">> => integer(),
-%%   <<"workers">> => list(worker_search_summary()())
+%%   <<"workers">> => list(worker_search_summary())
 %% }
 -type search_workers_response() :: #{binary() => any()}.
 
@@ -1756,7 +1756,7 @@
 %% session_action_summary() :: #{
 %%   <<"definition">> => list(),
 %%   <<"endedAt">> => non_neg_integer(),
-%%   <<"manifests">> => list(task_run_manifest_properties_response()()),
+%%   <<"manifests">> => list(task_run_manifest_properties_response()),
 %%   <<"progressPercent">> => float(),
 %%   <<"sessionActionId">> => string(),
 %%   <<"startedAt">> => non_neg_integer(),
@@ -1864,7 +1864,7 @@
 %% Example:
 %% list_queue_limit_associations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"queueLimitAssociations">> => list(queue_limit_association_summary()())
+%%   <<"queueLimitAssociations">> => list(queue_limit_association_summary())
 %% }
 -type list_queue_limit_associations_response() :: #{binary() => any()}.
 
@@ -1918,14 +1918,14 @@
 %% Example:
 %% parameter_space() :: #{
 %%   <<"combination">> => string(),
-%%   <<"parameters">> => list(step_parameter()())
+%%   <<"parameters">> => list(step_parameter())
 %% }
 -type parameter_space() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_metered_products_response() :: #{
-%%   <<"meteredProducts">> => list(metered_product_summary()()),
+%%   <<"meteredProducts">> => list(metered_product_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_metered_products_response() :: #{binary() => any()}.
@@ -1951,7 +1951,7 @@
 %%   <<"jobId">> => string(),
 %%   <<"logConfiguration">> => log_configuration(),
 %%   <<"queueId">> => string(),
-%%   <<"sessionActions">> => list(assigned_session_action()())
+%%   <<"sessionActions">> => list(assigned_session_action())
 %% }
 -type assigned_session() :: #{binary() => any()}.
 
@@ -1966,7 +1966,7 @@
 
 %% Example:
 %% search_jobs_response() :: #{
-%%   <<"jobs">> => list(job_search_summary()()),
+%%   <<"jobs">> => list(job_search_summary()),
 %%   <<"nextItemOffset">> => integer(),
 %%   <<"totalResults">> => integer()
 %% }
@@ -2014,14 +2014,14 @@
 
 %% Example:
 %% create_queue_request() :: #{
-%%   <<"allowedStorageProfileIds">> => list(string()()),
+%%   <<"allowedStorageProfileIds">> => list(string()),
 %%   <<"clientToken">> => string(),
 %%   <<"defaultBudgetAction">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"jobAttachmentSettings">> => job_attachment_settings(),
 %%   <<"jobRunAsUser">> => job_run_as_user(),
-%%   <<"requiredFileSystemLocationNames">> => list(string()()),
+%%   <<"requiredFileSystemLocationNames">> => list(string()),
 %%   <<"roleArn">> => string(),
 %%   <<"tags">> => map()
 %% }
@@ -2053,7 +2053,7 @@
 
 %% Example:
 %% list_queue_members_response() :: #{
-%%   <<"members">> => list(queue_member()()),
+%%   <<"members">> => list(queue_member()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_queue_members_response() :: #{binary() => any()}.
@@ -2108,7 +2108,7 @@
 
 %% Example:
 %% list_farm_members_response() :: #{
-%%   <<"members">> => list(farm_member()()),
+%%   <<"members">> => list(farm_member()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_farm_members_response() :: #{binary() => any()}.
@@ -2141,8 +2141,8 @@
 %%   <<"itemOffset">> := integer(),
 %%   <<"jobId">> => string(),
 %%   <<"pageSize">> => integer(),
-%%   <<"queueIds">> := list(string()()),
-%%   <<"sortExpressions">> => list(list()())
+%%   <<"queueIds">> := list(string()),
+%%   <<"sortExpressions">> => list(list())
 %% }
 -type search_steps_request() :: #{binary() => any()}.
 
@@ -2159,10 +2159,10 @@
 %% get_license_endpoint_response() :: #{
 %%   <<"dnsName">> => string(),
 %%   <<"licenseEndpointId">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"statusMessage">> => string(),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type get_license_endpoint_response() :: #{binary() => any()}.
@@ -2211,7 +2211,7 @@
 %% Example:
 %% attachments() :: #{
 %%   <<"fileSystem">> => list(any()),
-%%   <<"manifests">> => list(manifest_properties()())
+%%   <<"manifests">> => list(manifest_properties())
 %% }
 -type attachments() :: #{binary() => any()}.
 
@@ -2272,7 +2272,7 @@
 %% Example:
 %% list_steps_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"steps">> => list(step_summary()())
+%%   <<"steps">> => list(step_summary())
 %% }
 -type list_steps_response() :: #{binary() => any()}.
 
@@ -2280,7 +2280,7 @@
 %% Example:
 %% list_workers_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workers">> => list(worker_summary()())
+%%   <<"workers">> => list(worker_summary())
 %% }
 -type list_workers_response() :: #{binary() => any()}.
 
@@ -2318,7 +2318,7 @@
 
 %% Example:
 %% list_step_consumers_response() :: #{
-%%   <<"consumers">> => list(step_consumer()()),
+%%   <<"consumers">> => list(step_consumer()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_step_consumers_response() :: #{binary() => any()}.
@@ -2337,7 +2337,7 @@
 %% create_storage_profile_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> := string(),
-%%   <<"fileSystemLocations">> => list(file_system_location()()),
+%%   <<"fileSystemLocations">> => list(file_system_location()),
 %%   <<"osFamily">> := list(any())
 %% }
 -type create_storage_profile_request() :: #{binary() => any()}.
@@ -2346,7 +2346,7 @@
 %% Example:
 %% search_tasks_response() :: #{
 %%   <<"nextItemOffset">> => integer(),
-%%   <<"tasks">> => list(task_search_summary()()),
+%%   <<"tasks">> => list(task_search_summary()),
 %%   <<"totalResults">> => integer()
 %% }
 -type search_tasks_response() :: #{binary() => any()}.
@@ -2366,8 +2366,8 @@
 %%   <<"acceleratorTotalMemoryMiB">> => accelerator_total_memory_mi_b_range(),
 %%   <<"acceleratorTypes">> => list(list(any())()),
 %%   <<"cpuArchitectureType">> => list(any()),
-%%   <<"customAmounts">> => list(fleet_amount_capability()()),
-%%   <<"customAttributes">> => list(fleet_attribute_capability()()),
+%%   <<"customAmounts">> => list(fleet_amount_capability()),
+%%   <<"customAttributes">> => list(fleet_attribute_capability()),
 %%   <<"memoryMiB">> => memory_mi_b_range(),
 %%   <<"osFamily">> => list(any()),
 %%   <<"vCpuCount">> => v_cpu_count_range()
@@ -2392,8 +2392,8 @@
 
 %% Example:
 %% ip_addresses() :: #{
-%%   <<"ipV4Addresses">> => list(string()()),
-%%   <<"ipV6Addresses">> => list(string()())
+%%   <<"ipV4Addresses">> => list(string()),
+%%   <<"ipV6Addresses">> => list(string())
 %% }
 -type ip_addresses() :: #{binary() => any()}.
 
@@ -2452,7 +2452,7 @@
 
 %% Example:
 %% create_budget_request() :: #{
-%%   <<"actions">> := list(budget_action_to_add()()),
+%%   <<"actions">> := list(budget_action_to_add()),
 %%   <<"approximateDollarLimit">> := float(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -2465,7 +2465,7 @@
 
 %% Example:
 %% list_budgets_response() :: #{
-%%   <<"budgets">> => list(budget_summary()()),
+%%   <<"budgets">> => list(budget_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_budgets_response() :: #{binary() => any()}.
@@ -2562,7 +2562,7 @@
 %% Example:
 %% validation_exception() :: #{
 %%   <<"context">> => map(),
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }
@@ -2720,7 +2720,7 @@
 %% Example:
 %% list_queues_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"queues">> => list(queue_summary()())
+%%   <<"queues">> => list(queue_summary())
 %% }
 -type list_queues_response() :: #{binary() => any()}.
 
@@ -2923,14 +2923,14 @@
 %% Example:
 %% list_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(task_summary()())
+%%   <<"tasks">> => list(task_summary())
 %% }
 -type list_tasks_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_budget_response() :: #{
-%%   <<"actions">> => list(response_budget_action()()),
+%%   <<"actions">> => list(response_budget_action()),
 %%   <<"approximateDollarLimit">> => float(),
 %%   <<"budgetId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -3013,7 +3013,7 @@
 
 %% Example:
 %% list_fleet_members_response() :: #{
-%%   <<"members">> => list(fleet_member()()),
+%%   <<"members">> => list(fleet_member()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleet_members_response() :: #{binary() => any()}.
@@ -3236,8 +3236,8 @@
 
 %% Example:
 %% worker_capabilities() :: #{
-%%   <<"amounts">> => list(worker_amount_capability()()),
-%%   <<"attributes">> => list(worker_attribute_capability()())
+%%   <<"amounts">> => list(worker_amount_capability()),
+%%   <<"attributes">> => list(worker_attribute_capability())
 %% }
 -type worker_capabilities() :: #{binary() => any()}.
 
@@ -3258,7 +3258,7 @@
 
 %% Example:
 %% list_farms_response() :: #{
-%%   <<"farms">> => list(farm_summary()()),
+%%   <<"farms">> => list(farm_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_farms_response() :: #{binary() => any()}.
@@ -3266,7 +3266,7 @@
 
 %% Example:
 %% list_step_dependencies_response() :: #{
-%%   <<"dependencies">> => list(step_dependency()()),
+%%   <<"dependencies">> => list(step_dependency()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_step_dependencies_response() :: #{binary() => any()}.
@@ -3283,7 +3283,7 @@
 %% Example:
 %% get_storage_profile_for_queue_response() :: #{
 %%   <<"displayName">> => string(),
-%%   <<"fileSystemLocations">> => list(file_system_location()()),
+%%   <<"fileSystemLocations">> => list(file_system_location()),
 %%   <<"osFamily">> => list(any()),
 %%   <<"storageProfileId">> => string()
 %% }

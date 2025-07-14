@@ -94,7 +94,7 @@
 %% Example:
 %% external_url_config() :: #{
 %%   <<"AccessUrl">> => string(),
-%%   <<"ApprovedOrigins">> => list(string()())
+%%   <<"ApprovedOrigins">> => list(string())
 %% }
 -type external_url_config() :: #{binary() => any()}.
 
@@ -155,7 +155,7 @@
 
 %% Example:
 %% list_data_integration_associations_response() :: #{
-%%   <<"DataIntegrationAssociations">> => list(data_integration_association_summary()()),
+%%   <<"DataIntegrationAssociations">> => list(data_integration_association_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_integration_associations_response() :: #{binary() => any()}.
@@ -163,7 +163,7 @@
 
 %% Example:
 %% list_data_integrations_response() :: #{
-%%   <<"DataIntegrations">> => list(data_integration_summary()()),
+%%   <<"DataIntegrations">> => list(data_integration_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_integrations_response() :: #{binary() => any()}.
@@ -213,14 +213,14 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_event_integration_associations_response() :: #{
-%%   <<"EventIntegrationAssociations">> => list(event_integration_association()()),
+%%   <<"EventIntegrationAssociations">> => list(event_integration_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_integration_associations_response() :: #{binary() => any()}.
@@ -318,9 +318,9 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"Namespace">> := string(),
-%%   <<"Permissions">> => list(string()()),
-%%   <<"Publications">> => list(publication()()),
-%%   <<"Subscriptions">> => list(subscription()()),
+%%   <<"Permissions">> => list(string()),
+%%   <<"Publications">> => list(publication()),
+%%   <<"Subscriptions">> => list(subscription()),
 %%   <<"Tags">> => map()
 %% }
 -type create_application_request() :: #{binary() => any()}.
@@ -405,9 +405,9 @@
 %%   <<"ApplicationSourceConfig">> => application_source_config(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Permissions">> => list(string()()),
-%%   <<"Publications">> => list(publication()()),
-%%   <<"Subscriptions">> => list(subscription()())
+%%   <<"Permissions">> => list(string()),
+%%   <<"Publications">> => list(publication()),
+%%   <<"Subscriptions">> => list(subscription())
 %% }
 -type update_application_request() :: #{binary() => any()}.
 
@@ -435,9 +435,9 @@
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Namespace">> => string(),
-%%   <<"Permissions">> => list(string()()),
-%%   <<"Publications">> => list(publication()()),
-%%   <<"Subscriptions">> => list(subscription()()),
+%%   <<"Permissions">> => list(string()),
+%%   <<"Publications">> => list(publication()),
+%%   <<"Subscriptions">> => list(subscription()),
 %%   <<"Tags">> => map()
 %% }
 -type get_application_response() :: #{binary() => any()}.
@@ -555,7 +555,7 @@
 
 %% Example:
 %% list_application_associations_response() :: #{
-%%   <<"ApplicationAssociations">> => list(application_association_summary()()),
+%%   <<"ApplicationAssociations">> => list(application_association_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_associations_response() :: #{binary() => any()}.
@@ -563,7 +563,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"Applications">> => list(application_summary()()),
+%%   <<"Applications">> => list(application_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.
@@ -571,7 +571,7 @@
 
 %% Example:
 %% list_event_integrations_response() :: #{
-%%   <<"EventIntegrations">> => list(event_integration()()),
+%%   <<"EventIntegrations">> => list(event_integration()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_integrations_response() :: #{binary() => any()}.
@@ -588,7 +588,7 @@
 %% Example:
 %% file_configuration() :: #{
 %%   <<"Filters">> => map(),
-%%   <<"Folders">> => list(string()())
+%%   <<"Folders">> => list(string())
 %% }
 -type file_configuration() :: #{binary() => any()}.
 

@@ -74,7 +74,7 @@
 
 %% Example:
 %% list_journal_s3_exports_for_ledger_response() :: #{
-%%   <<"JournalS3Exports">> => list(journal_s3_export_description()()),
+%%   <<"JournalS3Exports">> => list(journal_s3_export_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_journal_s3_exports_for_ledger_response() :: #{binary() => any()}.
@@ -191,7 +191,7 @@
 
 %% Example:
 %% list_ledgers_response() :: #{
-%%   <<"Ledgers">> => list(ledger_summary()()),
+%%   <<"Ledgers">> => list(ledger_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_ledgers_response() :: #{binary() => any()}.
@@ -211,7 +211,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -247,7 +247,7 @@
 %% Example:
 %% list_journal_kinesis_streams_for_ledger_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Streams">> => list(journal_kinesis_stream_description()())
+%%   <<"Streams">> => list(journal_kinesis_stream_description())
 %% }
 -type list_journal_kinesis_streams_for_ledger_response() :: #{binary() => any()}.
 
@@ -370,7 +370,7 @@
 
 %% Example:
 %% list_journal_s3_exports_response() :: #{
-%%   <<"JournalS3Exports">> => list(journal_s3_export_description()()),
+%%   <<"JournalS3Exports">> => list(journal_s3_export_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_journal_s3_exports_response() :: #{binary() => any()}.

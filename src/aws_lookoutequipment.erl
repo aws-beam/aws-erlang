@@ -150,7 +150,7 @@
 
 %% Example:
 %% list_models_response() :: #{
-%%   <<"ModelSummaries">> => list(model_summary()()),
+%%   <<"ModelSummaries">> => list(model_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_models_response() :: #{binary() => any()}.
@@ -158,13 +158,13 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_labels_response() :: #{
-%%   <<"LabelSummaries">> => list(label_summary()()),
+%%   <<"LabelSummaries">> => list(label_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_labels_response() :: #{binary() => any()}.
@@ -267,7 +267,7 @@
 
 %% Example:
 %% list_inference_executions_response() :: #{
-%%   <<"InferenceExecutionSummaries">> => list(inference_execution_summary()()),
+%%   <<"InferenceExecutionSummaries">> => list(inference_execution_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_inference_executions_response() :: #{binary() => any()}.
@@ -283,7 +283,7 @@
 %%   <<"ModelName">> := string(),
 %%   <<"RoleArn">> := string(),
 %%   <<"ServerSideKmsKeyId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_inference_scheduler_request() :: #{binary() => any()}.
 
@@ -315,7 +315,7 @@
 %%   <<"OffCondition">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"ServerSideKmsKeyId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrainingDataEndTime">> => non_neg_integer(),
 %%   <<"TrainingDataStartTime">> => non_neg_integer()
 %% }
@@ -370,7 +370,7 @@
 
 %% Example:
 %% list_model_versions_response() :: #{
-%%   <<"ModelVersionSummaries">> => list(model_version_summary()()),
+%%   <<"ModelVersionSummaries">> => list(model_version_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_model_versions_response() :: #{binary() => any()}.
@@ -378,7 +378,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -525,9 +525,9 @@
 %% Example:
 %% create_label_group_request() :: #{
 %%   <<"ClientToken">> := string(),
-%%   <<"FaultCodes">> => list(string()()),
+%%   <<"FaultCodes">> => list(string()),
 %%   <<"LabelGroupName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_label_group_request() :: #{binary() => any()}.
 
@@ -594,7 +594,7 @@
 
 %% Example:
 %% list_label_groups_response() :: #{
-%%   <<"LabelGroupSummaries">> => list(label_group_summary()()),
+%%   <<"LabelGroupSummaries">> => list(label_group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_label_groups_response() :: #{binary() => any()}.
@@ -657,7 +657,7 @@
 
 %% Example:
 %% list_inference_events_response() :: #{
-%%   <<"InferenceEventSummaries">> => list(inference_event_summary()()),
+%%   <<"InferenceEventSummaries">> => list(inference_event_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_inference_events_response() :: #{binary() => any()}.
@@ -670,7 +670,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -750,7 +750,7 @@
 
 %% Example:
 %% list_data_ingestion_jobs_response() :: #{
-%%   <<"DataIngestionJobSummaries">> => list(data_ingestion_job_summary()()),
+%%   <<"DataIngestionJobSummaries">> => list(data_ingestion_job_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_ingestion_jobs_response() :: #{binary() => any()}.
@@ -777,14 +777,14 @@
 %%   <<"RoleArn">> => string(),
 %%   <<"ServerSideKmsKeyId">> => string(),
 %%   <<"SourceModelVersionArn">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_model_version_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_retraining_schedulers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RetrainingSchedulerSummaries">> => list(retraining_scheduler_summary()())
+%%   <<"RetrainingSchedulerSummaries">> => list(retraining_scheduler_summary())
 %% }
 -type list_retraining_schedulers_response() :: #{binary() => any()}.
 
@@ -884,7 +884,7 @@
 
 %% Example:
 %% ingested_files_summary() :: #{
-%%   <<"DiscardedFiles">> => list(s3_object()()),
+%%   <<"DiscardedFiles">> => list(s3_object()),
 %%   <<"IngestedNumberOfFiles">> => integer(),
 %%   <<"TotalNumberOfFiles">> => integer()
 %% }
@@ -919,7 +919,7 @@
 %% Example:
 %% describe_label_group_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"FaultCodes">> => list(string()()),
+%%   <<"FaultCodes">> => list(string()),
 %%   <<"LabelGroupArn">> => string(),
 %%   <<"LabelGroupName">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer()
@@ -1018,7 +1018,7 @@
 %% Example:
 %% list_sensor_statistics_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SensorStatisticsSummaries">> => list(sensor_statistics_summary()())
+%%   <<"SensorStatisticsSummaries">> => list(sensor_statistics_summary())
 %% }
 -type list_sensor_statistics_response() :: #{binary() => any()}.
 
@@ -1056,7 +1056,7 @@
 %%   <<"DatasetName">> := string(),
 %%   <<"DatasetSchema">> => dataset_schema(),
 %%   <<"ServerSideKmsKeyId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_dataset_request() :: #{binary() => any()}.
 
@@ -1134,7 +1134,7 @@
 
 %% Example:
 %% update_label_group_request() :: #{
-%%   <<"FaultCodes">> => list(string()()),
+%%   <<"FaultCodes">> => list(string()),
 %%   <<"LabelGroupName">> := string()
 %% }
 -type update_label_group_request() :: #{binary() => any()}.
@@ -1166,7 +1166,7 @@
 %%   <<"DatasetName">> => string(),
 %%   <<"ServerSideKmsKeyId">> => string(),
 %%   <<"SourceDatasetArn">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_dataset_request() :: #{binary() => any()}.
 
@@ -1207,7 +1207,7 @@
 
 %% Example:
 %% list_datasets_response() :: #{
-%%   <<"DatasetSummaries">> => list(dataset_summary()()),
+%%   <<"DatasetSummaries">> => list(dataset_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.
@@ -1254,7 +1254,7 @@
 
 %% Example:
 %% list_inference_schedulers_response() :: #{
-%%   <<"InferenceSchedulerSummaries">> => list(inference_scheduler_summary()()),
+%%   <<"InferenceSchedulerSummaries">> => list(inference_scheduler_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_inference_schedulers_response() :: #{binary() => any()}.

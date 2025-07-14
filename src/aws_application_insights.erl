@@ -125,14 +125,14 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_workloads_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WorkloadList">> => list(workload()())
+%%   <<"WorkloadList">> => list(workload())
 %% }
 -type list_workloads_response() :: #{binary() => any()}.
 
@@ -178,7 +178,7 @@
 %% list_problems_response() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"ProblemList">> => list(problem()()),
+%%   <<"ProblemList">> => list(problem()),
 %%   <<"ResourceGroupName">> => string()
 %% }
 -type list_problems_response() :: #{binary() => any()}.
@@ -217,7 +217,7 @@
 
 %% Example:
 %% list_configuration_history_response() :: #{
-%%   <<"EventList">> => list(configuration_event()()),
+%%   <<"EventList">> => list(configuration_event()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_history_response() :: #{binary() => any()}.
@@ -225,7 +225,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -346,7 +346,7 @@
 %%   <<"ComponentName">> := string(),
 %%   <<"NewComponentName">> => string(),
 %%   <<"ResourceGroupName">> := string(),
-%%   <<"ResourceList">> => list(string()())
+%%   <<"ResourceList">> => list(string())
 %% }
 -type update_component_request() :: #{binary() => any()}.
 
@@ -386,7 +386,7 @@
 %% Example:
 %% list_log_pattern_sets_response() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"LogPatternSets">> => list(string()()),
+%%   <<"LogPatternSets">> => list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceGroupName">> => string()
 %% }
@@ -418,7 +418,7 @@
 %% create_component_request() :: #{
 %%   <<"ComponentName">> := string(),
 %%   <<"ResourceGroupName">> := string(),
-%%   <<"ResourceList">> := list(string()())
+%%   <<"ResourceList">> := list(string())
 %% }
 -type create_component_request() :: #{binary() => any()}.
 
@@ -440,7 +440,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -455,14 +455,14 @@
 %%   <<"OpsItemSNSTopicArn">> => string(),
 %%   <<"ResourceGroupName">> => string(),
 %%   <<"SNSNotificationArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_log_patterns_response() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"LogPatterns">> => list(log_pattern()()),
+%%   <<"LogPatterns">> => list(log_pattern()),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceGroupName">> => string()
 %% }
@@ -672,7 +672,7 @@
 %% Example:
 %% describe_component_response() :: #{
 %%   <<"ApplicationComponent">> => application_component(),
-%%   <<"ResourceList">> => list(string()())
+%%   <<"ResourceList">> => list(string())
 %% }
 -type describe_component_response() :: #{binary() => any()}.
 
@@ -691,20 +691,20 @@
 
 %% Example:
 %% related_observations() :: #{
-%%   <<"ObservationList">> => list(observation()())
+%%   <<"ObservationList">> => list(observation())
 %% }
 -type related_observations() :: #{binary() => any()}.
 
 %% Example:
 %% list_components_response() :: #{
-%%   <<"ApplicationComponentList">> => list(application_component()()),
+%%   <<"ApplicationComponentList">> => list(application_component()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_components_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"ApplicationInfoList">> => list(application_info()()),
+%%   <<"ApplicationInfoList">> => list(application_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.

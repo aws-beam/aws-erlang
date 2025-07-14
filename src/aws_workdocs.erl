@@ -192,7 +192,7 @@
 %%   <<"Filters">> => filters(),
 %%   <<"Limit">> => integer(),
 %%   <<"Marker">> => string(),
-%%   <<"OrderBy">> => list(search_sort_result()()),
+%%   <<"OrderBy">> => list(search_sort_result()),
 %%   <<"OrganizationId">> => string(),
 %%   <<"QueryScopes">> => list(list(any())()),
 %%   <<"QueryText">> => string()
@@ -203,7 +203,7 @@
 %% Example:
 %% describe_resource_permissions_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Principals">> => list(principal()())
+%%   <<"Principals">> => list(principal())
 %% }
 -type describe_resource_permissions_response() :: #{binary() => any()}.
 
@@ -221,7 +221,7 @@
 %% add_resource_permissions_request() :: #{
 %%   <<"AuthenticationToken">> => string(),
 %%   <<"NotificationOptions">> => notification_options(),
-%%   <<"Principals">> := list(share_principal()())
+%%   <<"Principals">> := list(share_principal())
 %% }
 -type add_resource_permissions_request() :: #{binary() => any()}.
 
@@ -346,7 +346,7 @@
 %% describe_users_response() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"TotalNumberOfUsers">> => float(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type describe_users_response() :: #{binary() => any()}.
 
@@ -385,7 +385,7 @@
 
 %% Example:
 %% add_resource_permissions_response() :: #{
-%%   <<"ShareResults">> => list(share_result()())
+%%   <<"ShareResults">> => list(share_result())
 %% }
 -type add_resource_permissions_response() :: #{binary() => any()}.
 
@@ -400,8 +400,8 @@
 
 %% Example:
 %% describe_folder_contents_response() :: #{
-%%   <<"Documents">> => list(document_metadata()()),
-%%   <<"Folders">> => list(folder_metadata()()),
+%%   <<"Documents">> => list(document_metadata()),
+%%   <<"Folders">> => list(folder_metadata()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_folder_contents_response() :: #{binary() => any()}.
@@ -486,7 +486,7 @@
 %% delete_custom_metadata_request() :: #{
 %%   <<"AuthenticationToken">> => string(),
 %%   <<"DeleteAll">> => boolean(),
-%%   <<"Keys">> => list(string()()),
+%%   <<"Keys">> => list(string()),
 %%   <<"VersionId">> => string()
 %% }
 -type delete_custom_metadata_request() :: #{binary() => any()}.
@@ -501,7 +501,7 @@
 
 %% Example:
 %% entity_not_exists_exception() :: #{
-%%   <<"EntityIds">> => list(string()()),
+%%   <<"EntityIds">> => list(string()),
 %%   <<"Message">> => string()
 %% }
 -type entity_not_exists_exception() :: #{binary() => any()}.
@@ -511,7 +511,7 @@
 %% delete_labels_request() :: #{
 %%   <<"AuthenticationToken">> => string(),
 %%   <<"DeleteAll">> => boolean(),
-%%   <<"Labels">> => list(string()())
+%%   <<"Labels">> => list(string())
 %% }
 -type delete_labels_request() :: #{binary() => any()}.
 
@@ -519,7 +519,7 @@
 %% Example:
 %% principal() :: #{
 %%   <<"Id">> => string(),
-%%   <<"Roles">> => list(permission_info()()),
+%%   <<"Roles">> => list(permission_info()),
 %%   <<"Type">> => list(any())
 %% }
 -type principal() :: #{binary() => any()}.
@@ -546,7 +546,7 @@
 
 %% Example:
 %% describe_document_versions_response() :: #{
-%%   <<"DocumentVersions">> => list(document_version_metadata()()),
+%%   <<"DocumentVersions">> => list(document_version_metadata()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_document_versions_response() :: #{binary() => any()}.
@@ -562,7 +562,7 @@
 %% Example:
 %% describe_activities_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"UserActivities">> => list(activity()())
+%%   <<"UserActivities">> => list(activity())
 %% }
 -type describe_activities_response() :: #{binary() => any()}.
 
@@ -603,7 +603,7 @@
 
 %% Example:
 %% search_resources_response() :: #{
-%%   <<"Items">> => list(response_item()()),
+%%   <<"Items">> => list(response_item()),
 %%   <<"Marker">> => string()
 %% }
 -type search_resources_response() :: #{binary() => any()}.
@@ -713,8 +713,8 @@
 
 %% Example:
 %% get_resources_response() :: #{
-%%   <<"Documents">> => list(document_metadata()()),
-%%   <<"Folders">> => list(folder_metadata()()),
+%%   <<"Documents">> => list(document_metadata()),
+%%   <<"Folders">> => list(folder_metadata()),
 %%   <<"Marker">> => string()
 %% }
 -type get_resources_response() :: #{binary() => any()}.
@@ -739,7 +739,7 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"CreatorId">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"LatestVersionSize">> => float(),
 %%   <<"ModifiedTimestamp">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -761,7 +761,7 @@
 %% Example:
 %% create_labels_request() :: #{
 %%   <<"AuthenticationToken">> => string(),
-%%   <<"Labels">> := list(string()())
+%%   <<"Labels">> := list(string())
 %% }
 -type create_labels_request() :: #{binary() => any()}.
 
@@ -819,7 +819,7 @@
 
 %% Example:
 %% resource_path() :: #{
-%%   <<"Components">> => list(resource_path_component()())
+%%   <<"Components">> => list(resource_path_component())
 %% }
 -type resource_path() :: #{binary() => any()}.
 
@@ -873,7 +873,7 @@
 
 %% Example:
 %% describe_comments_response() :: #{
-%%   <<"Comments">> => list(comment()()),
+%%   <<"Comments">> => list(comment()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_comments_response() :: #{binary() => any()}.
@@ -924,7 +924,7 @@
 
 %% Example:
 %% describe_groups_response() :: #{
-%%   <<"Groups">> => list(group_metadata()()),
+%%   <<"Groups">> => list(group_metadata()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_groups_response() :: #{binary() => any()}.
@@ -946,7 +946,7 @@
 
 %% Example:
 %% describe_root_folders_response() :: #{
-%%   <<"Folders">> => list(folder_metadata()()),
+%%   <<"Folders">> => list(folder_metadata()),
 %%   <<"Marker">> => string()
 %% }
 -type describe_root_folders_response() :: #{binary() => any()}.
@@ -979,7 +979,7 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"CreatorId">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"LatestVersionMetadata">> => document_version_metadata(),
 %%   <<"ModifiedTimestamp">> => non_neg_integer(),
 %%   <<"ParentFolderId">> => string(),
@@ -1043,19 +1043,19 @@
 %% Example:
 %% describe_notification_subscriptions_response() :: #{
 %%   <<"Marker">> => string(),
-%%   <<"Subscriptions">> => list(subscription()())
+%%   <<"Subscriptions">> => list(subscription())
 %% }
 -type describe_notification_subscriptions_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% filters() :: #{
-%%   <<"AncestorIds">> => list(string()()),
+%%   <<"AncestorIds">> => list(string()),
 %%   <<"ContentCategories">> => list(list(any())()),
 %%   <<"CreatedRange">> => date_range_type(),
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"ModifiedRange">> => date_range_type(),
-%%   <<"Principals">> => list(search_principal_type()()),
+%%   <<"Principals">> => list(search_principal_type()),
 %%   <<"ResourceTypes">> => list(list(any())()),
 %%   <<"SearchCollectionTypes">> => list(list(any())()),
 %%   <<"SizeRange">> => long_range_type(),
@@ -1166,8 +1166,8 @@
 
 %% Example:
 %% participants() :: #{
-%%   <<"Groups">> => list(group_metadata()()),
-%%   <<"Users">> => list(user_metadata()())
+%%   <<"Groups">> => list(group_metadata()),
+%%   <<"Users">> => list(user_metadata())
 %% }
 -type participants() :: #{binary() => any()}.
 

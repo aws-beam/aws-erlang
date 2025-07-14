@@ -102,7 +102,7 @@
 
 %% Example:
 %% list_findings_reports_response() :: #{
-%%   <<"findingsReportSummaries">> => list(findings_report_summary()()),
+%%   <<"findingsReportSummaries">> => list(findings_report_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_reports_response() :: #{binary() => any()}.
@@ -218,7 +218,7 @@
 %% Example:
 %% list_profile_times_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"profileTimes">> => list(profile_time()())
+%%   <<"profileTimes">> => list(profile_time())
 %% }
 -type list_profile_times_response() :: #{binary() => any()}.
 
@@ -229,11 +229,11 @@
 
 %% Example:
 %% get_recommendations_response() :: #{
-%%   <<"anomalies">> => list(anomaly()()),
+%%   <<"anomalies">> => list(anomaly()),
 %%   <<"profileEndTime">> => non_neg_integer(),
 %%   <<"profileStartTime">> => non_neg_integer(),
 %%   <<"profilingGroupName">> => string(),
-%%   <<"recommendations">> => list(recommendation()())
+%%   <<"recommendations">> => list(recommendation())
 %% }
 -type get_recommendations_response() :: #{binary() => any()}.
 
@@ -315,7 +315,7 @@
 %% Example:
 %% get_findings_report_account_summary_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reportSummaries">> => list(findings_report_summary()())
+%%   <<"reportSummaries">> => list(findings_report_summary())
 %% }
 -type get_findings_report_account_summary_response() :: #{binary() => any()}.
 
@@ -351,7 +351,7 @@
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"pattern">> => pattern(),
 %%   <<"startTime">> => non_neg_integer(),
-%%   <<"topMatches">> => list(match()())
+%%   <<"topMatches">> => list(match())
 %% }
 -type recommendation() :: #{binary() => any()}.
 
@@ -392,7 +392,7 @@
 
 %% Example:
 %% put_permission_request() :: #{
-%%   <<"principals">> => list(string()()),
+%%   <<"principals">> => list(string()),
 %%   <<"revisionId">> => string()
 %% }
 -type put_permission_request() :: #{binary() => any()}.
@@ -429,7 +429,7 @@
 
 %% Example:
 %% notification_configuration() :: #{
-%%   <<"channels">> => list(channel()())
+%%   <<"channels">> => list(channel())
 %% }
 -type notification_configuration() :: #{binary() => any()}.
 
@@ -469,7 +469,7 @@
 
 %% Example:
 %% anomaly() :: #{
-%%   <<"instances">> => list(anomaly_instance()()),
+%%   <<"instances">> => list(anomaly_instance()),
 %%   <<"metric">> => metric(),
 %%   <<"reason">> => [string()]
 %% }
@@ -506,15 +506,15 @@
 %% Example:
 %% list_profiling_groups_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"profilingGroupNames">> => list(string()()),
-%%   <<"profilingGroups">> => list(profiling_group_description()())
+%%   <<"profilingGroupNames">> => list(string()),
+%%   <<"profilingGroups">> => list(profiling_group_description())
 %% }
 -type list_profiling_groups_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% add_notification_channels_request() :: #{
-%%   <<"channels">> => list(channel()())
+%%   <<"channels">> => list(channel())
 %% }
 -type add_notification_channels_request() :: #{binary() => any()}.
 
@@ -555,7 +555,7 @@
 %% Example:
 %% batch_get_frame_metric_data_request() :: #{
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"frameMetrics">> => list(frame_metric()()),
+%%   <<"frameMetrics">> => list(frame_metric()),
 %%   <<"period">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"targetResolution">> => string()
@@ -565,7 +565,7 @@
 
 %% Example:
 %% channel() :: #{
-%%   <<"eventPublishers">> => list(string()()),
+%%   <<"eventPublishers">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"uri">> => string()
 %% }
@@ -575,8 +575,8 @@
 %% Example:
 %% batch_get_frame_metric_data_response() :: #{
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"endTimes">> => list(timestamp_structure()()),
-%%   <<"frameMetricData">> => list(frame_metric_datum()()),
+%%   <<"endTimes">> => list(timestamp_structure()),
+%%   <<"frameMetricData">> => list(frame_metric_datum()),
 %%   <<"resolution">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"unprocessedEndTimes">> => map()
@@ -604,7 +604,7 @@
 %% Example:
 %% frame_metric_datum() :: #{
 %%   <<"frameMetric">> => frame_metric(),
-%%   <<"values">> => list(float()())
+%%   <<"values">> => list(float())
 %% }
 -type frame_metric_datum() :: #{binary() => any()}.
 

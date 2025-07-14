@@ -122,7 +122,7 @@
 
 %% Example:
 %% batch_delete_recipe_version_response() :: #{
-%%   <<"Errors">> => list(recipe_version_error_detail()()),
+%%   <<"Errors">> => list(recipe_version_error_detail()),
 %%   <<"Name">> => string()
 %% }
 -type batch_delete_recipe_version_response() :: #{binary() => any()}.
@@ -161,7 +161,7 @@
 %% create_ruleset_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Rules">> := list(rule()()),
+%%   <<"Rules">> := list(rule()),
 %%   <<"Tags">> => map(),
 %%   <<"TargetArn">> := string()
 %% }
@@ -201,7 +201,7 @@
 %% create_recipe_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Steps">> := list(recipe_step()()),
+%%   <<"Steps">> := list(recipe_step()),
 %%   <<"Tags">> => map()
 %% }
 -type create_recipe_request() :: #{binary() => any()}.
@@ -217,7 +217,7 @@
 %% Example:
 %% list_recipes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Recipes">> => list(recipe()())
+%%   <<"Recipes">> => list(recipe())
 %% }
 -type list_recipes_response() :: #{binary() => any()}.
 
@@ -237,7 +237,7 @@
 %%   <<"RoleArn">> := string(),
 %%   <<"Tags">> => map(),
 %%   <<"Timeout">> => integer(),
-%%   <<"ValidationConfigurations">> => list(validation_configuration()())
+%%   <<"ValidationConfigurations">> => list(validation_configuration())
 %% }
 -type create_profile_job_request() :: #{binary() => any()}.
 
@@ -246,8 +246,8 @@
 %% describe_job_response() :: #{
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"CreatedBy">> => string(),
-%%   <<"DataCatalogOutputs">> => list(data_catalog_output()()),
-%%   <<"DatabaseOutputs">> => list(database_output()()),
+%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
+%%   <<"DatabaseOutputs">> => list(database_output()),
 %%   <<"DatasetName">> => string(),
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"EncryptionMode">> => list(any()),
@@ -258,7 +258,7 @@
 %%   <<"MaxCapacity">> => integer(),
 %%   <<"MaxRetries">> => integer(),
 %%   <<"Name">> => string(),
-%%   <<"Outputs">> => list(output()()),
+%%   <<"Outputs">> => list(output()),
 %%   <<"ProfileConfiguration">> => profile_configuration(),
 %%   <<"ProjectName">> => string(),
 %%   <<"RecipeReference">> => recipe_reference(),
@@ -267,7 +267,7 @@
 %%   <<"Tags">> => map(),
 %%   <<"Timeout">> => integer(),
 %%   <<"Type">> => list(any()),
-%%   <<"ValidationConfigurations">> => list(validation_configuration()())
+%%   <<"ValidationConfigurations">> => list(validation_configuration())
 %% }
 -type describe_job_response() :: #{binary() => any()}.
 
@@ -276,7 +276,7 @@
 %% view_frame() :: #{
 %%   <<"Analytics">> => list(any()),
 %%   <<"ColumnRange">> => integer(),
-%%   <<"HiddenColumns">> => list(string()()),
+%%   <<"HiddenColumns">> => list(string()),
 %%   <<"RowRange">> => integer(),
 %%   <<"StartColumnIndex">> => integer(),
 %%   <<"StartRowIndex">> => integer()
@@ -300,8 +300,8 @@
 
 %% Example:
 %% statistics_configuration() :: #{
-%%   <<"IncludedStatistics">> => list(string()()),
-%%   <<"Overrides">> => list(statistic_override()())
+%%   <<"IncludedStatistics">> => list(string()),
+%%   <<"Overrides">> => list(statistic_override())
 %% }
 -type statistics_configuration() :: #{binary() => any()}.
 
@@ -310,8 +310,8 @@
 %% job_run() :: #{
 %%   <<"Attempt">> => integer(),
 %%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"DataCatalogOutputs">> => list(data_catalog_output()()),
-%%   <<"DatabaseOutputs">> => list(database_output()()),
+%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
+%%   <<"DatabaseOutputs">> => list(database_output()),
 %%   <<"DatasetName">> => string(),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"ExecutionTime">> => integer(),
@@ -319,13 +319,13 @@
 %%   <<"JobSample">> => job_sample(),
 %%   <<"LogGroupName">> => string(),
 %%   <<"LogSubscription">> => list(any()),
-%%   <<"Outputs">> => list(output()()),
+%%   <<"Outputs">> => list(output()),
 %%   <<"RecipeReference">> => recipe_reference(),
 %%   <<"RunId">> => string(),
 %%   <<"StartedBy">> => string(),
 %%   <<"StartedOn">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"ValidationConfigurations">> => list(validation_configuration()())
+%%   <<"ValidationConfigurations">> => list(validation_configuration())
 %% }
 -type job_run() :: #{binary() => any()}.
 
@@ -379,7 +379,7 @@
 
 %% Example:
 %% batch_delete_recipe_version_request() :: #{
-%%   <<"RecipeVersions">> := list(string()())
+%%   <<"RecipeVersions">> := list(string())
 %% }
 -type batch_delete_recipe_version_request() :: #{binary() => any()}.
 
@@ -388,8 +388,8 @@
 %% describe_job_run_response() :: #{
 %%   <<"Attempt">> => integer(),
 %%   <<"CompletedOn">> => non_neg_integer(),
-%%   <<"DataCatalogOutputs">> => list(data_catalog_output()()),
-%%   <<"DatabaseOutputs">> => list(database_output()()),
+%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
+%%   <<"DatabaseOutputs">> => list(database_output()),
 %%   <<"DatasetName">> => string(),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"ExecutionTime">> => integer(),
@@ -397,14 +397,14 @@
 %%   <<"JobSample">> => job_sample(),
 %%   <<"LogGroupName">> => string(),
 %%   <<"LogSubscription">> => list(any()),
-%%   <<"Outputs">> => list(output()()),
+%%   <<"Outputs">> => list(output()),
 %%   <<"ProfileConfiguration">> => profile_configuration(),
 %%   <<"RecipeReference">> => recipe_reference(),
 %%   <<"RunId">> => string(),
 %%   <<"StartedBy">> => string(),
 %%   <<"StartedOn">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
-%%   <<"ValidationConfigurations">> => list(validation_configuration()())
+%%   <<"ValidationConfigurations">> => list(validation_configuration())
 %% }
 -type describe_job_run_response() :: #{binary() => any()}.
 
@@ -456,7 +456,7 @@
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"ResourceArn">> => string(),
-%%   <<"Rules">> => list(rule()()),
+%%   <<"Rules">> => list(rule()),
 %%   <<"Tags">> => map(),
 %%   <<"TargetArn">> => string()
 %% }
@@ -465,16 +465,16 @@
 
 %% Example:
 %% entity_detector_configuration() :: #{
-%%   <<"AllowedStatistics">> => list(allowed_statistics()()),
-%%   <<"EntityTypes">> => list(string()())
+%%   <<"AllowedStatistics">> => list(allowed_statistics()),
+%%   <<"EntityTypes">> => list(string())
 %% }
 -type entity_detector_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_recipe_job_request() :: #{
-%%   <<"DataCatalogOutputs">> => list(data_catalog_output()()),
-%%   <<"DatabaseOutputs">> => list(database_output()()),
+%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
+%%   <<"DatabaseOutputs">> => list(database_output()),
 %%   <<"DatasetName">> => string(),
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"EncryptionMode">> => list(any()),
@@ -482,7 +482,7 @@
 %%   <<"MaxCapacity">> => integer(),
 %%   <<"MaxRetries">> => integer(),
 %%   <<"Name">> := string(),
-%%   <<"Outputs">> => list(output()()),
+%%   <<"Outputs">> => list(output()),
 %%   <<"ProjectName">> => string(),
 %%   <<"RecipeReference">> => recipe_reference(),
 %%   <<"RoleArn">> := string(),
@@ -505,7 +505,7 @@
 
 %% Example:
 %% list_jobs_response() :: #{
-%%   <<"Jobs">> => list(job()()),
+%%   <<"Jobs">> => list(job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
@@ -532,7 +532,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -548,7 +548,7 @@
 %% Example:
 %% list_schedules_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Schedules">> => list(schedule()())
+%%   <<"Schedules">> => list(schedule())
 %% }
 -type list_schedules_response() :: #{binary() => any()}.
 
@@ -565,7 +565,7 @@
 %%   <<"OutputLocation">> := s3_location(),
 %%   <<"RoleArn">> := string(),
 %%   <<"Timeout">> => integer(),
-%%   <<"ValidationConfigurations">> => list(validation_configuration()())
+%%   <<"ValidationConfigurations">> => list(validation_configuration())
 %% }
 -type update_profile_job_request() :: #{binary() => any()}.
 
@@ -601,7 +601,7 @@
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"CreatedBy">> => string(),
 %%   <<"CronExpression">> => string(),
-%%   <<"JobNames">> => list(string()()),
+%%   <<"JobNames">> => list(string()),
 %%   <<"LastModifiedBy">> => string(),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -730,7 +730,7 @@
 %% Example:
 %% list_rulesets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Rulesets">> => list(ruleset_item()())
+%%   <<"Rulesets">> => list(ruleset_item())
 %% }
 -type list_rulesets_response() :: #{binary() => any()}.
 
@@ -786,7 +786,7 @@
 %%   <<"PublishedDate">> => non_neg_integer(),
 %%   <<"RecipeVersion">> => string(),
 %%   <<"ResourceArn">> => string(),
-%%   <<"Steps">> => list(recipe_step()()),
+%%   <<"Steps">> => list(recipe_step()),
 %%   <<"Tags">> => map()
 %% }
 -type describe_recipe_response() :: #{binary() => any()}.
@@ -794,7 +794,7 @@
 
 %% Example:
 %% list_job_runs_response() :: #{
-%%   <<"JobRuns">> => list(job_run()()),
+%%   <<"JobRuns">> => list(job_run()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_job_runs_response() :: #{binary() => any()}.
@@ -831,7 +831,7 @@
 %%   <<"PublishedDate">> => non_neg_integer(),
 %%   <<"RecipeVersion">> => string(),
 %%   <<"ResourceArn">> => string(),
-%%   <<"Steps">> => list(recipe_step()()),
+%%   <<"Steps">> => list(recipe_step()),
 %%   <<"Tags">> => map()
 %% }
 -type recipe() :: #{binary() => any()}.
@@ -848,7 +848,7 @@
 %% Example:
 %% list_projects_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Projects">> => list(project()())
+%%   <<"Projects">> => list(project())
 %% }
 -type list_projects_response() :: #{binary() => any()}.
 
@@ -856,7 +856,7 @@
 %% Example:
 %% list_recipe_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Recipes">> => list(recipe()())
+%%   <<"Recipes">> => list(recipe())
 %% }
 -type list_recipe_versions_response() :: #{binary() => any()}.
 
@@ -937,7 +937,7 @@
 %% Example:
 %% rule() :: #{
 %%   <<"CheckExpression">> => string(),
-%%   <<"ColumnSelectors">> => list(column_selector()()),
+%%   <<"ColumnSelectors">> => list(column_selector()),
 %%   <<"Disabled">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"SubstitutionMap">> => map(),
@@ -984,7 +984,7 @@
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"CreatedBy">> => string(),
 %%   <<"CronExpression">> => string(),
-%%   <<"JobNames">> => list(string()()),
+%%   <<"JobNames">> => list(string()),
 %%   <<"LastModifiedBy">> => string(),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -1022,10 +1022,10 @@
 
 %% Example:
 %% profile_configuration() :: #{
-%%   <<"ColumnStatisticsConfigurations">> => list(column_statistics_configuration()()),
+%%   <<"ColumnStatisticsConfigurations">> => list(column_statistics_configuration()),
 %%   <<"DatasetStatisticsConfiguration">> => statistics_configuration(),
 %%   <<"EntityDetectorConfiguration">> => entity_detector_configuration(),
-%%   <<"ProfileColumns">> => list(column_selector()())
+%%   <<"ProfileColumns">> => list(column_selector())
 %% }
 -type profile_configuration() :: #{binary() => any()}.
 
@@ -1033,7 +1033,7 @@
 %% Example:
 %% update_ruleset_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Rules">> := list(rule()())
+%%   <<"Rules">> := list(rule())
 %% }
 -type update_ruleset_request() :: #{binary() => any()}.
 
@@ -1041,7 +1041,7 @@
 %% Example:
 %% recipe_step() :: #{
 %%   <<"Action">> => recipe_action(),
-%%   <<"ConditionExpressions">> => list(condition_expression()())
+%%   <<"ConditionExpressions">> => list(condition_expression())
 %% }
 -type recipe_step() :: #{binary() => any()}.
 
@@ -1089,7 +1089,7 @@
 %% Example:
 %% update_schedule_request() :: #{
 %%   <<"CronExpression">> := string(),
-%%   <<"JobNames">> => list(string()())
+%%   <<"JobNames">> => list(string())
 %% }
 -type update_schedule_request() :: #{binary() => any()}.
 
@@ -1109,7 +1109,7 @@
 
 %% Example:
 %% column_statistics_configuration() :: #{
-%%   <<"Selectors">> => list(column_selector()()),
+%%   <<"Selectors">> => list(column_selector()),
 %%   <<"Statistics">> => statistics_configuration()
 %% }
 -type column_statistics_configuration() :: #{binary() => any()}.
@@ -1125,7 +1125,7 @@
 %% Example:
 %% update_recipe_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Steps">> => list(recipe_step()())
+%%   <<"Steps">> => list(recipe_step())
 %% }
 -type update_recipe_request() :: #{binary() => any()}.
 
@@ -1164,8 +1164,8 @@
 %%   <<"AccountId">> => string(),
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"CreatedBy">> => string(),
-%%   <<"DataCatalogOutputs">> => list(data_catalog_output()()),
-%%   <<"DatabaseOutputs">> => list(database_output()()),
+%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
+%%   <<"DatabaseOutputs">> => list(database_output()),
 %%   <<"DatasetName">> => string(),
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"EncryptionMode">> => list(any()),
@@ -1176,7 +1176,7 @@
 %%   <<"MaxCapacity">> => integer(),
 %%   <<"MaxRetries">> => integer(),
 %%   <<"Name">> => string(),
-%%   <<"Outputs">> => list(output()()),
+%%   <<"Outputs">> => list(output()),
 %%   <<"ProjectName">> => string(),
 %%   <<"RecipeReference">> => recipe_reference(),
 %%   <<"ResourceArn">> => string(),
@@ -1184,7 +1184,7 @@
 %%   <<"Tags">> => map(),
 %%   <<"Timeout">> => integer(),
 %%   <<"Type">> => list(any()),
-%%   <<"ValidationConfigurations">> => list(validation_configuration()())
+%%   <<"ValidationConfigurations">> => list(validation_configuration())
 %% }
 -type job() :: #{binary() => any()}.
 
@@ -1203,14 +1203,14 @@
 
 %% Example:
 %% update_recipe_job_request() :: #{
-%%   <<"DataCatalogOutputs">> => list(data_catalog_output()()),
-%%   <<"DatabaseOutputs">> => list(database_output()()),
+%%   <<"DataCatalogOutputs">> => list(data_catalog_output()),
+%%   <<"DatabaseOutputs">> => list(database_output()),
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"EncryptionMode">> => list(any()),
 %%   <<"LogSubscription">> => list(any()),
 %%   <<"MaxCapacity">> => integer(),
 %%   <<"MaxRetries">> => integer(),
-%%   <<"Outputs">> => list(output()()),
+%%   <<"Outputs">> => list(output()),
 %%   <<"RoleArn">> := string(),
 %%   <<"Timeout">> => integer()
 %% }
@@ -1220,7 +1220,7 @@
 %% Example:
 %% create_schedule_request() :: #{
 %%   <<"CronExpression">> := string(),
-%%   <<"JobNames">> => list(string()()),
+%%   <<"JobNames">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => map()
 %% }
@@ -1288,15 +1288,15 @@
 %% Example:
 %% excel_options() :: #{
 %%   <<"HeaderRow">> => boolean(),
-%%   <<"SheetIndexes">> => list(integer()()),
-%%   <<"SheetNames">> => list(string()())
+%%   <<"SheetIndexes">> => list(integer()),
+%%   <<"SheetNames">> => list(string())
 %% }
 -type excel_options() :: #{binary() => any()}.
 
 
 %% Example:
 %% allowed_statistics() :: #{
-%%   <<"Statistics">> => list(string()())
+%%   <<"Statistics">> => list(string())
 %% }
 -type allowed_statistics() :: #{binary() => any()}.
 
@@ -1311,7 +1311,7 @@
 
 %% Example:
 %% list_datasets_response() :: #{
-%%   <<"Datasets">> => list(dataset()()),
+%%   <<"Datasets">> => list(dataset()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.
@@ -1399,7 +1399,7 @@
 %%   <<"Location">> => s3_location(),
 %%   <<"MaxOutputFiles">> => integer(),
 %%   <<"Overwrite">> => boolean(),
-%%   <<"PartitionColumns">> => list(string()())
+%%   <<"PartitionColumns">> => list(string())
 %% }
 -type output() :: #{binary() => any()}.
 

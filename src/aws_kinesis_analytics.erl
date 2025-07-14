@@ -82,7 +82,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -94,12 +94,12 @@
 %%   <<"ApplicationName">> => string(),
 %%   <<"ApplicationStatus">> => list(any()),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()()),
+%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()),
 %%   <<"CreateTimestamp">> => non_neg_integer(),
-%%   <<"InputDescriptions">> => list(input_description()()),
+%%   <<"InputDescriptions">> => list(input_description()),
 %%   <<"LastUpdateTimestamp">> => non_neg_integer(),
-%%   <<"OutputDescriptions">> => list(output_description()()),
-%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description()())
+%%   <<"OutputDescriptions">> => list(output_description()),
+%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description())
 %% }
 -type application_detail() :: #{binary() => any()}.
 
@@ -143,7 +143,7 @@
 
 %% Example:
 %% input_schema_update() :: #{
-%%   <<"RecordColumnUpdates">> => list(record_column()()),
+%%   <<"RecordColumnUpdates">> => list(record_column()),
 %%   <<"RecordEncodingUpdate">> => string(),
 %%   <<"RecordFormatUpdate">> => record_format()
 %% }
@@ -152,9 +152,9 @@
 %% Example:
 %% discover_input_schema_response() :: #{
 %%   <<"InputSchema">> => source_schema(),
-%%   <<"ParsedInputRecords">> => list(list(string()())()),
-%%   <<"ProcessedInputRecords">> => list(string()()),
-%%   <<"RawInputRecords">> => list(string()())
+%%   <<"ParsedInputRecords">> => list(list(string())()),
+%%   <<"ProcessedInputRecords">> => list(string()),
+%%   <<"RawInputRecords">> => list(string())
 %% }
 -type discover_input_schema_response() :: #{binary() => any()}.
 
@@ -246,7 +246,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -274,8 +274,8 @@
 
 %% Example:
 %% unable_to_detect_schema_exception() :: #{
-%%   <<"ProcessedInputRecords">> => list(string()()),
-%%   <<"RawInputRecords">> => list(string()()),
+%%   <<"ProcessedInputRecords">> => list(string()),
+%%   <<"RawInputRecords">> => list(string()),
 %%   <<"message">> => string()
 %% }
 -type unable_to_detect_schema_exception() :: #{binary() => any()}.
@@ -291,10 +291,10 @@
 %% Example:
 %% application_update() :: #{
 %%   <<"ApplicationCodeUpdate">> => string(),
-%%   <<"CloudWatchLoggingOptionUpdates">> => list(cloud_watch_logging_option_update()()),
-%%   <<"InputUpdates">> => list(input_update()()),
-%%   <<"OutputUpdates">> => list(output_update()()),
-%%   <<"ReferenceDataSourceUpdates">> => list(reference_data_source_update()())
+%%   <<"CloudWatchLoggingOptionUpdates">> => list(cloud_watch_logging_option_update()),
+%%   <<"InputUpdates">> => list(input_update()),
+%%   <<"OutputUpdates">> => list(output_update()),
+%%   <<"ReferenceDataSourceUpdates">> => list(reference_data_source_update())
 %% }
 -type application_update() :: #{binary() => any()}.
 
@@ -405,7 +405,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -414,10 +414,10 @@
 %%   <<"ApplicationCode">> => string(),
 %%   <<"ApplicationDescription">> => string(),
 %%   <<"ApplicationName">> := string(),
-%%   <<"CloudWatchLoggingOptions">> => list(cloud_watch_logging_option()()),
-%%   <<"Inputs">> => list(input()()),
-%%   <<"Outputs">> => list(output()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"CloudWatchLoggingOptions">> => list(cloud_watch_logging_option()),
+%%   <<"Inputs">> => list(input()),
+%%   <<"Outputs">> => list(output()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
@@ -512,7 +512,7 @@
 %% Example:
 %% start_application_request() :: #{
 %%   <<"ApplicationName">> := string(),
-%%   <<"InputConfigurations">> := list(input_configuration()())
+%%   <<"InputConfigurations">> := list(input_configuration())
 %% }
 -type start_application_request() :: #{binary() => any()}.
 
@@ -625,7 +625,7 @@
 
 %% Example:
 %% source_schema() :: #{
-%%   <<"RecordColumns">> => list(record_column()()),
+%%   <<"RecordColumns">> => list(record_column()),
 %%   <<"RecordEncoding">> => string(),
 %%   <<"RecordFormat">> => record_format()
 %% }
@@ -646,7 +646,7 @@
 
 %% Example:
 %% input_description() :: #{
-%%   <<"InAppStreamNames">> => list(string()()),
+%%   <<"InAppStreamNames">> => list(string()),
 %%   <<"InputId">> => string(),
 %%   <<"InputParallelism">> => input_parallelism(),
 %%   <<"InputProcessingConfigurationDescription">> => input_processing_configuration_description(),
@@ -703,7 +703,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"ApplicationSummaries">> => list(application_summary()()),
+%%   <<"ApplicationSummaries">> => list(application_summary()),
 %%   <<"HasMoreApplications">> => boolean()
 %% }
 -type list_applications_response() :: #{binary() => any()}.

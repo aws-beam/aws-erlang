@@ -211,10 +211,10 @@
 
 %% Example:
 %% managed_rule_group_statement() :: #{
-%%   <<"ExcludedRules">> => list(excluded_rule()()),
-%%   <<"ManagedRuleGroupConfigs">> => list(managed_rule_group_config()()),
+%%   <<"ExcludedRules">> => list(excluded_rule()),
+%%   <<"ManagedRuleGroupConfigs">> => list(managed_rule_group_config()),
 %%   <<"Name">> => string(),
-%%   <<"RuleActionOverrides">> => list(rule_action_override()()),
+%%   <<"RuleActionOverrides">> => list(rule_action_override()),
 %%   <<"ScopeDownStatement">> => statement(),
 %%   <<"VendorName">> => string(),
 %%   <<"Version">> => string()
@@ -255,13 +255,13 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% check_capacity_request() :: #{
-%%   <<"Rules">> := list(rule()()),
+%%   <<"Rules">> := list(rule()),
 %%   <<"Scope">> := list(any())
 %% }
 -type check_capacity_request() :: #{binary() => any()}.
@@ -315,13 +315,13 @@
 %% Example:
 %% get_decrypted_api_key_response() :: #{
 %%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"TokenDomains">> => list(string()())
+%%   <<"TokenDomains">> => list(string())
 %% }
 -type get_decrypted_api_key_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_api_keys_response() :: #{
-%%   <<"APIKeySummaries">> => list(api_key_summary()()),
+%%   <<"APIKeySummaries">> => list(api_key_summary()),
 %%   <<"ApplicationIntegrationURL">> => string(),
 %%   <<"NextMarker">> => string()
 %% }
@@ -331,7 +331,7 @@
 %% api_key_summary() :: #{
 %%   <<"APIKey">> => string(),
 %%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"TokenDomains">> => list(string()()),
+%%   <<"TokenDomains">> => list(string()),
 %%   <<"Version">> => integer()
 %% }
 -type api_key_summary() :: #{binary() => any()}.
@@ -339,7 +339,7 @@
 %% Example:
 %% rate_limit_query_argument() :: #{
 %%   <<"Name">> => string(),
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type rate_limit_query_argument() :: #{binary() => any()}.
 
@@ -354,22 +354,22 @@
 
 %% Example:
 %% describe_managed_products_by_vendor_response() :: #{
-%%   <<"ManagedProducts">> => list(managed_product_descriptor()())
+%%   <<"ManagedProducts">> => list(managed_product_descriptor())
 %% }
 -type describe_managed_products_by_vendor_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_rule_groups_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"RuleGroups">> => list(rule_group_summary()())
+%%   <<"RuleGroups">> => list(rule_group_summary())
 %% }
 -type list_rule_groups_response() :: #{binary() => any()}.
 
 %% Example:
 %% response_inspection_json() :: #{
-%%   <<"FailureValues">> => list(string()()),
+%%   <<"FailureValues">> => list(string()),
 %%   <<"Identifier">> => string(),
-%%   <<"SuccessValues">> => list(string()())
+%%   <<"SuccessValues">> => list(string())
 %% }
 -type response_inspection_json() :: #{binary() => any()}.
 
@@ -383,7 +383,7 @@
 
 %% Example:
 %% rate_based_statement_managed_keys_ip_set() :: #{
-%%   <<"Addresses">> => list(string()()),
+%%   <<"Addresses">> => list(string()),
 %%   <<"IPAddressVersion">> => list(any())
 %% }
 -type rate_based_statement_managed_keys_ip_set() :: #{binary() => any()}.
@@ -396,11 +396,11 @@
 
 %% Example:
 %% request_inspection_a_c_f_p() :: #{
-%%   <<"AddressFields">> => list(address_field()()),
+%%   <<"AddressFields">> => list(address_field()),
 %%   <<"EmailField">> => email_field(),
 %%   <<"PasswordField">> => password_field(),
 %%   <<"PayloadType">> => list(any()),
-%%   <<"PhoneNumberFields">> => list(phone_number_field()()),
+%%   <<"PhoneNumberFields">> => list(phone_number_field()),
 %%   <<"UsernameField">> => username_field()
 %% }
 -type request_inspection_a_c_f_p() :: #{binary() => any()}.
@@ -443,13 +443,13 @@
 %% custom_response() :: #{
 %%   <<"CustomResponseBodyKey">> => string(),
 %%   <<"ResponseCode">> => integer(),
-%%   <<"ResponseHeaders">> => list(custom_h_t_t_p_header()())
+%%   <<"ResponseHeaders">> => list(custom_h_t_t_p_header())
 %% }
 -type custom_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_all_managed_products_response() :: #{
-%%   <<"ManagedProducts">> => list(managed_product_descriptor()())
+%%   <<"ManagedProducts">> => list(managed_product_descriptor())
 %% }
 -type describe_all_managed_products_response() :: #{binary() => any()}.
 
@@ -508,7 +508,7 @@
 %% regex_pattern_set_reference_statement() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"FieldToMatch">> => field_to_match(),
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type regex_pattern_set_reference_statement() :: #{binary() => any()}.
 
@@ -541,15 +541,15 @@
 %% Example:
 %% rule_group() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"AvailableLabels">> => list(label_summary()()),
+%%   <<"AvailableLabels">> => list(label_summary()),
 %%   <<"Capacity">> => float(),
-%%   <<"ConsumedLabels">> => list(label_summary()()),
+%%   <<"ConsumedLabels">> => list(label_summary()),
 %%   <<"CustomResponseBodies">> => map(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LabelNamespace">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Rules">> => list(rule()()),
+%%   <<"Rules">> => list(rule()),
 %%   <<"VisibilityConfig">> => visibility_config()
 %% }
 -type rule_group() :: #{binary() => any()}.
@@ -575,7 +575,7 @@
 %% Example:
 %% rate_based_statement() :: #{
 %%   <<"AggregateKeyType">> => list(any()),
-%%   <<"CustomKeys">> => list(rate_based_statement_custom_key()()),
+%%   <<"CustomKeys">> => list(rate_based_statement_custom_key()),
 %%   <<"EvaluationWindowSec">> => float(),
 %%   <<"ForwardedIPConfig">> => forwarded_ip_config(),
 %%   <<"Limit">> => float(),
@@ -604,7 +604,7 @@
 %% sqli_match_statement() :: #{
 %%   <<"FieldToMatch">> => field_to_match(),
 %%   <<"SensitivityLevel">> => list(any()),
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type sqli_match_statement() :: #{binary() => any()}.
 
@@ -640,7 +640,7 @@
 
 %% Example:
 %% custom_request_handling() :: #{
-%%   <<"InsertHeaders">> => list(custom_h_t_t_p_header()())
+%%   <<"InsertHeaders">> => list(custom_h_t_t_p_header())
 %% }
 -type custom_request_handling() :: #{binary() => any()}.
 
@@ -648,7 +648,7 @@
 %% regex_match_statement() :: #{
 %%   <<"FieldToMatch">> => field_to_match(),
 %%   <<"RegexString">> => string(),
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type regex_match_statement() :: #{binary() => any()}.
 
@@ -675,8 +675,8 @@
 
 %% Example:
 %% response_inspection_status_code() :: #{
-%%   <<"FailureCodes">> => list(integer()()),
-%%   <<"SuccessCodes">> => list(integer()())
+%%   <<"FailureCodes">> => list(integer()),
+%%   <<"SuccessCodes">> => list(integer())
 %% }
 -type response_inspection_status_code() :: #{binary() => any()}.
 
@@ -691,14 +691,14 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% tag_info_for_resource() :: #{
 %%   <<"ResourceARN">> => string(),
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type tag_info_for_resource() :: #{binary() => any()}.
 
@@ -738,7 +738,7 @@
 %% list_available_managed_rule_group_versions_response() :: #{
 %%   <<"CurrentDefaultVersion">> => string(),
 %%   <<"NextMarker">> => string(),
-%%   <<"Versions">> => list(managed_rule_group_version()())
+%%   <<"Versions">> => list(managed_rule_group_version())
 %% }
 -type list_available_managed_rule_group_versions_response() :: #{binary() => any()}.
 
@@ -751,7 +751,7 @@
 
 %% Example:
 %% update_ip_set_request() :: #{
-%%   <<"Addresses">> := list(string()()),
+%%   <<"Addresses">> := list(string()),
 %%   <<"Description">> => string(),
 %%   <<"Id">> := string(),
 %%   <<"LockToken">> := string(),
@@ -762,12 +762,12 @@
 
 %% Example:
 %% logging_configuration() :: #{
-%%   <<"LogDestinationConfigs">> => list(string()()),
+%%   <<"LogDestinationConfigs">> => list(string()),
 %%   <<"LogScope">> => list(any()),
 %%   <<"LogType">> => list(any()),
 %%   <<"LoggingFilter">> => logging_filter(),
 %%   <<"ManagedByFirewallManager">> => boolean(),
-%%   <<"RedactedFields">> => list(field_to_match()()),
+%%   <<"RedactedFields">> => list(field_to_match()),
 %%   <<"ResourceArn">> => string()
 %% }
 -type logging_configuration() :: #{binary() => any()}.
@@ -775,14 +775,14 @@
 %% Example:
 %% application_attribute() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type application_attribute() :: #{binary() => any()}.
 
 %% Example:
 %% rate_limit_cookie() :: #{
 %%   <<"Name">> => string(),
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type rate_limit_cookie() :: #{binary() => any()}.
 
@@ -798,9 +798,9 @@
 %%   <<"CustomResponseBodies">> => map(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Rules">> => list(rule()()),
+%%   <<"Rules">> => list(rule()),
 %%   <<"Scope">> := list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VisibilityConfig">> := visibility_config()
 %% }
 -type create_rule_group_request() :: #{binary() => any()}.
@@ -831,7 +831,7 @@
 
 %% Example:
 %% list_available_managed_rule_groups_response() :: #{
-%%   <<"ManagedRuleGroups">> => list(managed_rule_group_summary()()),
+%%   <<"ManagedRuleGroups">> => list(managed_rule_group_summary()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_available_managed_rule_groups_response() :: #{binary() => any()}.
@@ -862,11 +862,11 @@
 %%   <<"ManagedByFirewallManager">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
-%%   <<"PostProcessFirewallManagerRuleGroups">> => list(firewall_manager_rule_group()()),
-%%   <<"PreProcessFirewallManagerRuleGroups">> => list(firewall_manager_rule_group()()),
+%%   <<"PostProcessFirewallManagerRuleGroups">> => list(firewall_manager_rule_group()),
+%%   <<"PreProcessFirewallManagerRuleGroups">> => list(firewall_manager_rule_group()),
 %%   <<"RetrofittedByFirewallManager">> => boolean(),
-%%   <<"Rules">> => list(rule()()),
-%%   <<"TokenDomains">> => list(string()()),
+%%   <<"Rules">> => list(rule()),
+%%   <<"TokenDomains">> => list(string()),
 %%   <<"VisibilityConfig">> => visibility_config()
 %% }
 -type web_acl() :: #{binary() => any()}.
@@ -923,7 +923,7 @@
 %%   <<"Id">> := string(),
 %%   <<"LockToken">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"RegularExpressionList">> := list(regex()()),
+%%   <<"RegularExpressionList">> := list(regex()),
 %%   <<"Scope">> := list(any())
 %% }
 -type update_regex_pattern_set_request() :: #{binary() => any()}.
@@ -939,7 +939,7 @@
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"FieldToMatch">> => field_to_match(),
 %%   <<"Size">> => float(),
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type size_constraint_statement() :: #{binary() => any()}.
 
@@ -952,7 +952,7 @@
 
 %% Example:
 %% list_ip_sets_response() :: #{
-%%   <<"IPSets">> => list(ip_set_summary()()),
+%%   <<"IPSets">> => list(ip_set_summary()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_ip_sets_response() :: #{binary() => any()}.
@@ -994,8 +994,8 @@
 %% Example:
 %% cookie_match_pattern() :: #{
 %%   <<"All">> => all(),
-%%   <<"ExcludedCookies">> => list(string()()),
-%%   <<"IncludedCookies">> => list(string()())
+%%   <<"ExcludedCookies">> => list(string()),
+%%   <<"IncludedCookies">> => list(string())
 %% }
 -type cookie_match_pattern() :: #{binary() => any()}.
 
@@ -1014,13 +1014,13 @@
 
 %% Example:
 %% data_protection_config() :: #{
-%%   <<"DataProtections">> => list(data_protection()())
+%%   <<"DataProtections">> => list(data_protection())
 %% }
 -type data_protection_config() :: #{binary() => any()}.
 
 %% Example:
 %% client_side_action() :: #{
-%%   <<"ExemptUriRegularExpressions">> => list(regex()()),
+%%   <<"ExemptUriRegularExpressions">> => list(regex()),
 %%   <<"Sensitivity">> => list(any()),
 %%   <<"UsageOfAction">> => list(any())
 %% }
@@ -1035,8 +1035,8 @@
 %% Example:
 %% rule_group_reference_statement() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"ExcludedRules">> => list(excluded_rule()()),
-%%   <<"RuleActionOverrides">> => list(rule_action_override()())
+%%   <<"ExcludedRules">> => list(excluded_rule()),
+%%   <<"RuleActionOverrides">> => list(rule_action_override())
 %% }
 -type rule_group_reference_statement() :: #{binary() => any()}.
 
@@ -1061,8 +1061,8 @@
 
 %% Example:
 %% response_inspection_body_contains() :: #{
-%%   <<"FailureStrings">> => list(string()()),
-%%   <<"SuccessStrings">> => list(string()())
+%%   <<"FailureStrings">> => list(string()),
+%%   <<"SuccessStrings">> => list(string())
 %% }
 -type response_inspection_body_contains() :: #{binary() => any()}.
 
@@ -1087,20 +1087,20 @@
 
 %% Example:
 %% rate_limit_query_string() :: #{
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type rate_limit_query_string() :: #{binary() => any()}.
 
 %% Example:
 %% list_mobile_sdk_releases_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"ReleaseSummaries">> => list(release_summary()())
+%%   <<"ReleaseSummaries">> => list(release_summary())
 %% }
 -type list_mobile_sdk_releases_response() :: #{binary() => any()}.
 
 %% Example:
 %% field_to_protect() :: #{
-%%   <<"FieldKeys">> => list(string()()),
+%%   <<"FieldKeys">> => list(string()),
 %%   <<"FieldType">> => list(any())
 %% }
 -type field_to_protect() :: #{binary() => any()}.
@@ -1126,7 +1126,7 @@
 %% Example:
 %% ip_set() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"Addresses">> => list(string()()),
+%%   <<"Addresses">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"IPAddressVersion">> => list(any()),
 %%   <<"Id">> => string(),
@@ -1137,17 +1137,17 @@
 %% Example:
 %% json_match_pattern() :: #{
 %%   <<"All">> => all(),
-%%   <<"IncludedPaths">> => list(string()())
+%%   <<"IncludedPaths">> => list(string())
 %% }
 -type json_match_pattern() :: #{binary() => any()}.
 
 %% Example:
 %% describe_managed_rule_group_response() :: #{
-%%   <<"AvailableLabels">> => list(label_summary()()),
+%%   <<"AvailableLabels">> => list(label_summary()),
 %%   <<"Capacity">> => float(),
-%%   <<"ConsumedLabels">> => list(label_summary()()),
+%%   <<"ConsumedLabels">> => list(label_summary()),
 %%   <<"LabelNamespace">> => string(),
-%%   <<"Rules">> => list(rule_summary()()),
+%%   <<"Rules">> => list(rule_summary()),
 %%   <<"SnsTopicArn">> => string(),
 %%   <<"VersionName">> => string()
 %% }
@@ -1190,10 +1190,10 @@
 %%   <<"Action">> => string(),
 %%   <<"CaptchaResponse">> => captcha_response(),
 %%   <<"ChallengeResponse">> => challenge_response(),
-%%   <<"Labels">> => list(label()()),
+%%   <<"Labels">> => list(label()),
 %%   <<"OverriddenAction">> => string(),
 %%   <<"Request">> => h_t_t_p_request(),
-%%   <<"RequestHeadersInserted">> => list(h_t_t_p_header()()),
+%%   <<"RequestHeadersInserted">> => list(h_t_t_p_header()),
 %%   <<"ResponseCodeSent">> => integer(),
 %%   <<"RuleNameWithinRuleGroup">> => string(),
 %%   <<"Timestamp">> => non_neg_integer(),
@@ -1220,9 +1220,9 @@
 %%   <<"LockToken">> := string(),
 %%   <<"Name">> := string(),
 %%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
-%%   <<"Rules">> => list(rule()()),
+%%   <<"Rules">> => list(rule()),
 %%   <<"Scope">> := list(any()),
-%%   <<"TokenDomains">> => list(string()()),
+%%   <<"TokenDomains">> => list(string()),
 %%   <<"VisibilityConfig">> := visibility_config()
 %% }
 -type update_web_acl_request() :: #{binary() => any()}.
@@ -1292,9 +1292,9 @@
 
 %% Example:
 %% response_inspection_header() :: #{
-%%   <<"FailureValues">> => list(string()()),
+%%   <<"FailureValues">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"SuccessValues">> => list(string()())
+%%   <<"SuccessValues">> => list(string())
 %% }
 -type response_inspection_header() :: #{binary() => any()}.
 
@@ -1336,14 +1336,14 @@
 %% Example:
 %% filter() :: #{
 %%   <<"Behavior">> => list(any()),
-%%   <<"Conditions">> => list(condition()()),
+%%   <<"Conditions">> => list(condition()),
 %%   <<"Requirement">> => list(any())
 %% }
 -type filter() :: #{binary() => any()}.
 
 %% Example:
 %% rate_limit_uri_path() :: #{
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type rate_limit_uri_path() :: #{binary() => any()}.
 
@@ -1355,7 +1355,7 @@
 %%   <<"Name">> => string(),
 %%   <<"OverrideAction">> => override_action(),
 %%   <<"Priority">> => integer(),
-%%   <<"RuleLabels">> => list(label()()),
+%%   <<"RuleLabels">> => list(label()),
 %%   <<"Statement">> => statement(),
 %%   <<"VisibilityConfig">> => visibility_config()
 %% }
@@ -1378,7 +1378,7 @@
 %% Example:
 %% create_api_key_request() :: #{
 %%   <<"Scope">> := list(any()),
-%%   <<"TokenDomains">> := list(string()())
+%%   <<"TokenDomains">> := list(string())
 %% }
 -type create_api_key_request() :: #{binary() => any()}.
 
@@ -1432,7 +1432,7 @@
 
 %% Example:
 %% list_managed_rule_sets_response() :: #{
-%%   <<"ManagedRuleSets">> => list(managed_rule_set_summary()()),
+%%   <<"ManagedRuleSets">> => list(managed_rule_set_summary()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_managed_rule_sets_response() :: #{binary() => any()}.
@@ -1440,7 +1440,7 @@
 %% Example:
 %% xss_match_statement() :: #{
 %%   <<"FieldToMatch">> => field_to_match(),
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type xss_match_statement() :: #{binary() => any()}.
 
@@ -1497,7 +1497,7 @@
 
 %% Example:
 %% list_logging_configurations_response() :: #{
-%%   <<"LoggingConfigurations">> => list(logging_configuration()()),
+%%   <<"LoggingConfigurations">> => list(logging_configuration()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_logging_configurations_response() :: #{binary() => any()}.
@@ -1525,13 +1525,13 @@
 
 %% Example:
 %% and_statement() :: #{
-%%   <<"Statements">> => list(statement()())
+%%   <<"Statements">> => list(statement())
 %% }
 -type and_statement() :: #{binary() => any()}.
 
 %% Example:
 %% or_statement() :: #{
-%%   <<"Statements">> => list(statement()())
+%%   <<"Statements">> => list(statement())
 %% }
 -type or_statement() :: #{binary() => any()}.
 
@@ -1565,22 +1565,22 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"OnSourceDDoSProtectionConfig">> => on_source_d_do_s_protection_config(),
-%%   <<"Rules">> => list(rule()()),
+%%   <<"Rules">> => list(rule()),
 %%   <<"Scope">> := list(any()),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TokenDomains">> => list(string()()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TokenDomains">> => list(string()),
 %%   <<"VisibilityConfig">> := visibility_config()
 %% }
 -type create_web_acl_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_ip_set_request() :: #{
-%%   <<"Addresses">> := list(string()()),
+%%   <<"Addresses">> := list(string()),
 %%   <<"Description">> => string(),
 %%   <<"IPAddressVersion">> := list(any()),
 %%   <<"Name">> := string(),
 %%   <<"Scope">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_ip_set_request() :: #{binary() => any()}.
 
@@ -1591,7 +1591,7 @@
 %%   <<"Id">> := string(),
 %%   <<"LockToken">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Rules">> => list(rule()()),
+%%   <<"Rules">> => list(rule()),
 %%   <<"Scope">> := list(any()),
 %%   <<"VisibilityConfig">> := visibility_config()
 %% }
@@ -1622,7 +1622,7 @@
 %%   <<"ClientIP">> => string(),
 %%   <<"Country">> => string(),
 %%   <<"HTTPVersion">> => string(),
-%%   <<"Headers">> => list(h_t_t_p_header()()),
+%%   <<"Headers">> => list(h_t_t_p_header()),
 %%   <<"Method">> => string(),
 %%   <<"URI">> => string()
 %% }
@@ -1636,7 +1636,7 @@
 
 %% Example:
 %% asn_match_statement() :: #{
-%%   <<"AsnList">> => list(float()()),
+%%   <<"AsnList">> => list(float()),
 %%   <<"ForwardedIPConfig">> => forwarded_ip_config()
 %% }
 -type asn_match_statement() :: #{binary() => any()}.
@@ -1647,7 +1647,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"RegularExpressionList">> => list(regex()())
+%%   <<"RegularExpressionList">> => list(regex())
 %% }
 -type regex_pattern_set() :: #{binary() => any()}.
 
@@ -1661,7 +1661,7 @@
 %% Example:
 %% logging_filter() :: #{
 %%   <<"DefaultBehavior">> => list(any()),
-%%   <<"Filters">> => list(filter()())
+%%   <<"Filters">> => list(filter())
 %% }
 -type logging_filter() :: #{binary() => any()}.
 
@@ -1713,9 +1713,9 @@
 %% create_regex_pattern_set_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"RegularExpressionList">> := list(regex()()),
+%%   <<"RegularExpressionList">> := list(regex()),
 %%   <<"Scope">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_regex_pattern_set_request() :: #{binary() => any()}.
 
@@ -1794,7 +1794,7 @@
 
 %% Example:
 %% list_resources_for_web_acl_response() :: #{
-%%   <<"ResourceArns">> => list(string()())
+%%   <<"ResourceArns">> => list(string())
 %% }
 -type list_resources_for_web_acl_response() :: #{binary() => any()}.
 
@@ -1896,7 +1896,7 @@
 %% Example:
 %% rate_limit_header() :: #{
 %%   <<"Name">> => string(),
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type rate_limit_header() :: #{binary() => any()}.
 
@@ -1930,7 +1930,7 @@
 %% Example:
 %% get_sampled_requests_response() :: #{
 %%   <<"PopulationSize">> => float(),
-%%   <<"SampledRequests">> => list(sampled_h_t_t_p_request()()),
+%%   <<"SampledRequests">> => list(sampled_h_t_t_p_request()),
 %%   <<"TimeWindow">> => time_window()
 %% }
 -type get_sampled_requests_response() :: #{binary() => any()}.
@@ -1950,7 +1950,7 @@
 
 %% Example:
 %% application_config() :: #{
-%%   <<"Attributes">> => list(application_attribute()())
+%%   <<"Attributes">> => list(application_attribute())
 %% }
 -type application_config() :: #{binary() => any()}.
 
@@ -1963,7 +1963,7 @@
 %% Example:
 %% list_regex_pattern_sets_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"RegexPatternSets">> => list(regex_pattern_set_summary()())
+%%   <<"RegexPatternSets">> => list(regex_pattern_set_summary())
 %% }
 -type list_regex_pattern_sets_response() :: #{binary() => any()}.
 
@@ -1980,14 +1980,14 @@
 %%   <<"FieldToMatch">> => field_to_match(),
 %%   <<"PositionalConstraint">> => list(any()),
 %%   <<"SearchString">> => binary(),
-%%   <<"TextTransformations">> => list(text_transformation()())
+%%   <<"TextTransformations">> => list(text_transformation())
 %% }
 -type byte_match_statement() :: #{binary() => any()}.
 
 %% Example:
 %% list_web_acls_response() :: #{
 %%   <<"NextMarker">> => string(),
-%%   <<"WebACLs">> => list(web_acl_summary()())
+%%   <<"WebACLs">> => list(web_acl_summary())
 %% }
 -type list_web_acls_response() :: #{binary() => any()}.
 
@@ -2006,8 +2006,8 @@
 %% Example:
 %% header_match_pattern() :: #{
 %%   <<"All">> => all(),
-%%   <<"ExcludedHeaders">> => list(string()()),
-%%   <<"IncludedHeaders">> => list(string()())
+%%   <<"ExcludedHeaders">> => list(string()),
+%%   <<"IncludedHeaders">> => list(string())
 %% }
 -type header_match_pattern() :: #{binary() => any()}.
 
@@ -2181,7 +2181,7 @@
 %% mobile_sdk_release() :: #{
 %%   <<"ReleaseNotes">> => string(),
 %%   <<"ReleaseVersion">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Timestamp">> => non_neg_integer()
 %% }
 -type mobile_sdk_release() :: #{binary() => any()}.

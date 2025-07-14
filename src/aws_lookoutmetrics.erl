@@ -77,7 +77,7 @@
 
 %% Example:
 %% get_data_quality_metrics_response() :: #{
-%%   <<"AnomalyDetectorDataQualityMetricList">> => list(anomaly_detector_data_quality_metric()())
+%%   <<"AnomalyDetectorDataQualityMetricList">> => list(anomaly_detector_data_quality_metric())
 %% }
 -type get_data_quality_metrics_response() :: #{binary() => any()}.
 
@@ -125,9 +125,9 @@
 
 %% Example:
 %% update_metric_set_request() :: #{
-%%   <<"DimensionFilterList">> => list(metric_set_dimension_filter()()),
-%%   <<"DimensionList">> => list(string()()),
-%%   <<"MetricList">> => list(metric()()),
+%%   <<"DimensionFilterList">> => list(metric_set_dimension_filter()),
+%%   <<"DimensionList">> => list(string()),
+%%   <<"MetricList">> => list(metric()),
 %%   <<"MetricSetArn">> := string(),
 %%   <<"MetricSetDescription">> => string(),
 %%   <<"MetricSetFrequency">> => list(any()),
@@ -148,7 +148,7 @@
 %% Example:
 %% dimension_contribution() :: #{
 %%   <<"DimensionName">> => string(),
-%%   <<"DimensionValueContributionList">> => list(dimension_value_contribution()())
+%%   <<"DimensionValueContributionList">> => list(dimension_value_contribution())
 %% }
 -type dimension_contribution() :: #{binary() => any()}.
 
@@ -156,7 +156,7 @@
 %% Example:
 %% list_anomaly_group_summaries_response() :: #{
 %%   <<"AnomalyGroupStatistics">> => anomaly_group_statistics(),
-%%   <<"AnomalyGroupSummaryList">> => list(anomaly_group_summary()()),
+%%   <<"AnomalyGroupSummaryList">> => list(anomaly_group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_anomaly_group_summaries_response() :: #{binary() => any()}.
@@ -176,7 +176,7 @@
 %%   <<"AnomalyGroupId">> => string(),
 %%   <<"AnomalyGroupScore">> => float(),
 %%   <<"EndTime">> => string(),
-%%   <<"MetricLevelImpactList">> => list(metric_level_impact()()),
+%%   <<"MetricLevelImpactList">> => list(metric_level_impact()),
 %%   <<"PrimaryMetricName">> => string(),
 %%   <<"StartTime">> => string()
 %% }
@@ -185,15 +185,15 @@
 
 %% Example:
 %% vpc_configuration() :: #{
-%%   <<"SecurityGroupIdList">> => list(string()()),
-%%   <<"SubnetIdList">> => list(string()())
+%%   <<"SecurityGroupIdList">> => list(string()),
+%%   <<"SubnetIdList">> => list(string())
 %% }
 -type vpc_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_metric_sets_response() :: #{
-%%   <<"MetricSetSummaryList">> => list(metric_set_summary()()),
+%%   <<"MetricSetSummaryList">> => list(metric_set_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_metric_sets_response() :: #{binary() => any()}.
@@ -283,7 +283,7 @@
 
 %% Example:
 %% metric_set_dimension_filter() :: #{
-%%   <<"FilterList">> => list(filter()()),
+%%   <<"FilterList">> => list(filter()),
 %%   <<"Name">> => string()
 %% }
 -type metric_set_dimension_filter() :: #{binary() => any()}.
@@ -319,7 +319,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -353,8 +353,8 @@
 
 %% Example:
 %% auto_detection_s3_source_config() :: #{
-%%   <<"HistoricalDataPathList">> => list(string()()),
-%%   <<"TemplatedPathList">> => list(string()())
+%%   <<"HistoricalDataPathList">> => list(string()),
+%%   <<"TemplatedPathList">> => list(string())
 %% }
 -type auto_detection_s3_source_config() :: #{binary() => any()}.
 
@@ -378,8 +378,8 @@
 
 %% Example:
 %% get_sample_data_response() :: #{
-%%   <<"HeaderValues">> => list(string()()),
-%%   <<"SampleRows">> => list(list(string()())())
+%%   <<"HeaderValues">> => list(string()),
+%%   <<"SampleRows">> => list(list(string())())
 %% }
 -type get_sample_data_response() :: #{binary() => any()}.
 
@@ -425,7 +425,7 @@
 
 %% Example:
 %% anomaly_detector_data_quality_metric() :: #{
-%%   <<"MetricSetDataQualityMetricList">> => list(metric_set_data_quality_metric()()),
+%%   <<"MetricSetDataQualityMetricList">> => list(metric_set_data_quality_metric()),
 %%   <<"StartTimestamp">> => non_neg_integer()
 %% }
 -type anomaly_detector_data_quality_metric() :: #{binary() => any()}.
@@ -477,7 +477,7 @@
 
 %% Example:
 %% metric_set_data_quality_metric() :: #{
-%%   <<"DataQualityMetricList">> => list(data_quality_metric()()),
+%%   <<"DataQualityMetricList">> => list(data_quality_metric()),
 %%   <<"MetricSetArn">> => string()
 %% }
 -type metric_set_data_quality_metric() :: #{binary() => any()}.
@@ -517,7 +517,7 @@
 %%   <<"ContainsHeader">> => boolean(),
 %%   <<"Delimiter">> => string(),
 %%   <<"FileCompression">> => list(any()),
-%%   <<"HeaderList">> => list(string()()),
+%%   <<"HeaderList">> => list(string()),
 %%   <<"QuoteSymbol">> => string()
 %% }
 -type csv_format_descriptor() :: #{binary() => any()}.
@@ -549,9 +549,9 @@
 %% Example:
 %% sample_data_s3_source_config() :: #{
 %%   <<"FileFormatDescriptor">> => file_format_descriptor(),
-%%   <<"HistoricalDataPathList">> => list(string()()),
+%%   <<"HistoricalDataPathList">> => list(string()),
 %%   <<"RoleArn">> => string(),
-%%   <<"TemplatedPathList">> => list(string()())
+%%   <<"TemplatedPathList">> => list(string())
 %% }
 -type sample_data_s3_source_config() :: #{binary() => any()}.
 
@@ -566,8 +566,8 @@
 
 %% Example:
 %% time_series() :: #{
-%%   <<"DimensionList">> => list(dimension_name_value()()),
-%%   <<"MetricValueList">> => list(float()()),
+%%   <<"DimensionList">> => list(dimension_name_value()),
+%%   <<"MetricValueList">> => list(float()),
 %%   <<"TimeSeriesId">> => string()
 %% }
 -type time_series() :: #{binary() => any()}.
@@ -659,11 +659,11 @@
 %% Example:
 %% attribute_value() :: #{
 %%   <<"B">> => string(),
-%%   <<"BS">> => list(string()()),
+%%   <<"BS">> => list(string()),
 %%   <<"N">> => string(),
-%%   <<"NS">> => list(string()()),
+%%   <<"NS">> => list(string()),
 %%   <<"S">> => string(),
-%%   <<"SS">> => list(string()())
+%%   <<"SS">> => list(string())
 %% }
 -type attribute_value() :: #{binary() => any()}.
 
@@ -700,9 +700,9 @@
 %% Example:
 %% s3_source_config() :: #{
 %%   <<"FileFormatDescriptor">> => file_format_descriptor(),
-%%   <<"HistoricalDataPathList">> => list(string()()),
+%%   <<"HistoricalDataPathList">> => list(string()),
 %%   <<"RoleArn">> => string(),
-%%   <<"TemplatedPathList">> => list(string()())
+%%   <<"TemplatedPathList">> => list(string())
 %% }
 -type s3_source_config() :: #{binary() => any()}.
 
@@ -727,7 +727,7 @@
 
 %% Example:
 %% list_anomaly_group_related_metrics_response() :: #{
-%%   <<"InterMetricImpactList">> => list(inter_metric_impact_details()()),
+%%   <<"InterMetricImpactList">> => list(inter_metric_impact_details()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_anomaly_group_related_metrics_response() :: #{binary() => any()}.
@@ -800,15 +800,15 @@
 %%   <<"AnomalyGroupId">> => string(),
 %%   <<"MetricName">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"TimeSeriesList">> => list(time_series()()),
-%%   <<"TimestampList">> => list(string()())
+%%   <<"TimeSeriesList">> => list(time_series()),
+%%   <<"TimestampList">> => list(string())
 %% }
 -type list_anomaly_group_time_series_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_anomaly_detection_executions_response() :: #{
-%%   <<"ExecutionList">> => list(execution_status()()),
+%%   <<"ExecutionList">> => list(execution_status()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_anomaly_detection_executions_response() :: #{binary() => any()}.
@@ -851,7 +851,7 @@
 
 %% Example:
 %% get_feedback_response() :: #{
-%%   <<"AnomalyGroupTimeSeriesFeedback">> => list(time_series_feedback()()),
+%%   <<"AnomalyGroupTimeSeriesFeedback">> => list(time_series_feedback()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_feedback_response() :: #{binary() => any()}.
@@ -872,10 +872,10 @@
 %% describe_metric_set_response() :: #{
 %%   <<"AnomalyDetectorArn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DimensionFilterList">> => list(metric_set_dimension_filter()()),
-%%   <<"DimensionList">> => list(string()()),
+%%   <<"DimensionFilterList">> => list(metric_set_dimension_filter()),
+%%   <<"DimensionList">> => list(string()),
 %%   <<"LastModificationTime">> => non_neg_integer(),
-%%   <<"MetricList">> => list(metric()()),
+%%   <<"MetricList">> => list(metric()),
 %%   <<"MetricSetArn">> => string(),
 %%   <<"MetricSetDescription">> => string(),
 %%   <<"MetricSetFrequency">> => list(any()),
@@ -890,7 +890,7 @@
 
 %% Example:
 %% contribution_matrix() :: #{
-%%   <<"DimensionContributionList">> => list(dimension_contribution()())
+%%   <<"DimensionContributionList">> => list(dimension_contribution())
 %% }
 -type contribution_matrix() :: #{binary() => any()}.
 
@@ -906,7 +906,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()()),
+%%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
 %% }
@@ -966,8 +966,8 @@
 
 %% Example:
 %% alert_filters() :: #{
-%%   <<"DimensionFilterList">> => list(dimension_filter()()),
-%%   <<"MetricList">> => list(string()())
+%%   <<"DimensionFilterList">> => list(dimension_filter()),
+%%   <<"MetricList">> => list(string())
 %% }
 -type alert_filters() :: #{binary() => any()}.
 
@@ -1001,7 +1001,7 @@
 
 %% Example:
 %% list_alerts_response() :: #{
-%%   <<"AlertSummaryList">> => list(alert_summary()()),
+%%   <<"AlertSummaryList">> => list(alert_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_alerts_response() :: #{binary() => any()}.
@@ -1020,7 +1020,7 @@
 
 %% Example:
 %% list_anomaly_detectors_response() :: #{
-%%   <<"AnomalyDetectorSummaryList">> => list(anomaly_detector_summary()()),
+%%   <<"AnomalyDetectorSummaryList">> => list(anomaly_detector_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_anomaly_detectors_response() :: #{binary() => any()}.
@@ -1037,7 +1037,7 @@
 %% Example:
 %% anomaly_group_statistics() :: #{
 %%   <<"EvaluationStartDate">> => string(),
-%%   <<"ItemizedMetricStatsList">> => list(itemized_metric_stats()()),
+%%   <<"ItemizedMetricStatsList">> => list(itemized_metric_stats()),
 %%   <<"TotalCount">> => integer()
 %% }
 -type anomaly_group_statistics() :: #{binary() => any()}.
@@ -1080,7 +1080,7 @@
 %% Example:
 %% dimension_filter() :: #{
 %%   <<"DimensionName">> => string(),
-%%   <<"DimensionValueList">> => list(string()())
+%%   <<"DimensionValueList">> => list(string())
 %% }
 -type dimension_filter() :: #{binary() => any()}.
 
@@ -1110,9 +1110,9 @@
 %% Example:
 %% create_metric_set_request() :: #{
 %%   <<"AnomalyDetectorArn">> := string(),
-%%   <<"DimensionFilterList">> => list(metric_set_dimension_filter()()),
-%%   <<"DimensionList">> => list(string()()),
-%%   <<"MetricList">> := list(metric()()),
+%%   <<"DimensionFilterList">> => list(metric_set_dimension_filter()),
+%%   <<"DimensionList">> => list(string()),
+%%   <<"MetricList">> := list(metric()),
 %%   <<"MetricSetDescription">> => string(),
 %%   <<"MetricSetFrequency">> => list(any()),
 %%   <<"MetricSetName">> := string(),

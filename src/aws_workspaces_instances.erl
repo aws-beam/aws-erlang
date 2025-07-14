@@ -57,7 +57,7 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag()()),
+%%   <<"Tags">> := list(tag()),
 %%   <<"WorkspaceInstanceId">> := string()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
@@ -111,7 +111,7 @@
 %% create_workspace_instance_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"ManagedInstance">> := managed_instance_request(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_workspace_instance_request() :: #{binary() => any()}.
 
@@ -124,7 +124,7 @@
 %% Example:
 %% list_workspace_instances_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WorkspaceInstances">> => list(workspace_instance()())
+%%   <<"WorkspaceInstances">> => list(workspace_instance())
 %% }
 -type list_workspace_instances_response() :: #{binary() => any()}.
 
@@ -153,7 +153,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()()),
+%%   <<"TagKeys">> := list(string()),
 %%   <<"WorkspaceInstanceId">> := string()
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
@@ -279,10 +279,10 @@
 
 %% Example:
 %% get_workspace_instance_response() :: #{
-%%   <<"EC2InstanceErrors">> => list(ec2_instance_error()()),
+%%   <<"EC2InstanceErrors">> => list(ec2_instance_error()),
 %%   <<"EC2ManagedInstance">> => ec2_managed_instance(),
 %%   <<"ProvisionState">> => list(any()),
-%%   <<"WorkspaceInstanceErrors">> => list(workspace_instance_error()()),
+%%   <<"WorkspaceInstanceErrors">> => list(workspace_instance_error()),
 %%   <<"WorkspaceInstanceId">> => string()
 %% }
 -type get_workspace_instance_response() :: #{binary() => any()}.
@@ -319,7 +319,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -333,7 +333,7 @@
 
 %% Example:
 %% managed_instance_request() :: #{
-%%   <<"BlockDeviceMappings">> => list(block_device_mapping_request()()),
+%%   <<"BlockDeviceMappings">> => list(block_device_mapping_request()),
 %%   <<"CapacityReservationSpecification">> => capacity_reservation_specification(),
 %%   <<"CpuOptions">> => cpu_options_request(),
 %%   <<"CreditSpecification">> => credit_specification_request(),
@@ -347,23 +347,23 @@
 %%   <<"InstanceMarketOptions">> => instance_market_options_request(),
 %%   <<"InstanceType">> => string(),
 %%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()()),
+%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()),
 %%   <<"KernelId">> => string(),
 %%   <<"KeyName">> => string(),
-%%   <<"LicenseSpecifications">> => list(license_configuration_request()()),
+%%   <<"LicenseSpecifications">> => list(license_configuration_request()),
 %%   <<"MaintenanceOptions">> => instance_maintenance_options_request(),
 %%   <<"MetadataOptions">> => instance_metadata_options_request(),
 %%   <<"Monitoring">> => run_instances_monitoring_enabled(),
-%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()()),
+%%   <<"NetworkInterfaces">> => list(instance_network_interface_specification()),
 %%   <<"NetworkPerformanceOptions">> => instance_network_performance_options_request(),
 %%   <<"Placement">> => placement(),
 %%   <<"PrivateDnsNameOptions">> => private_dns_name_options_request(),
 %%   <<"PrivateIpAddress">> => string(),
 %%   <<"RamdiskId">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SecurityGroups">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SecurityGroups">> => list(string()),
 %%   <<"SubnetId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"UserData">> => string()
 %% }
 -type managed_instance_request() :: #{binary() => any()}.
@@ -449,7 +449,7 @@
 %% Example:
 %% tag_specification() :: #{
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type tag_specification() :: #{binary() => any()}.
 
@@ -493,7 +493,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SizeInGB">> => integer(),
 %%   <<"SnapshotId">> => string(),
-%%   <<"TagSpecifications">> => list(tag_specification()()),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Throughput">> => integer(),
 %%   <<"VolumeType">> => list(any())
 %% }
@@ -501,7 +501,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"FieldList">> => list(validation_exception_field()()),
+%%   <<"FieldList">> => list(validation_exception_field()),
 %%   <<"Message">> => [string()],
 %%   <<"Reason">> => list(any())
 %% }
@@ -533,7 +533,7 @@
 %% Example:
 %% list_regions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Regions">> => list(region()())
+%%   <<"Regions">> => list(region())
 %% }
 -type list_regions_response() :: #{binary() => any()}.
 
@@ -545,7 +545,7 @@
 
 %% Example:
 %% list_instance_types_response() :: #{
-%%   <<"InstanceTypes">> => list(instance_type_info()()),
+%%   <<"InstanceTypes">> => list(instance_type_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_instance_types_response() :: #{binary() => any()}.
@@ -571,19 +571,19 @@
 %%   <<"Description">> => string(),
 %%   <<"DeviceIndex">> => integer(),
 %%   <<"EnaSrdSpecification">> => ena_srd_specification_request(),
-%%   <<"Groups">> => list(string()()),
+%%   <<"Groups">> => list(string()),
 %%   <<"InterfaceType">> => list(any()),
 %%   <<"Ipv4PrefixCount">> => integer(),
-%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()()),
+%%   <<"Ipv4Prefixes">> => list(ipv4_prefix_specification_request()),
 %%   <<"Ipv6AddressCount">> => integer(),
-%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()()),
+%%   <<"Ipv6Addresses">> => list(instance_ipv6_address()),
 %%   <<"Ipv6PrefixCount">> => integer(),
-%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()()),
+%%   <<"Ipv6Prefixes">> => list(ipv6_prefix_specification_request()),
 %%   <<"NetworkCardIndex">> => integer(),
 %%   <<"NetworkInterfaceId">> => string(),
 %%   <<"PrimaryIpv6">> => [boolean()],
 %%   <<"PrivateIpAddress">> => string(),
-%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()()),
+%%   <<"PrivateIpAddresses">> => list(private_ip_address_specification()),
 %%   <<"SecondaryPrivateIpAddressCount">> => integer(),
 %%   <<"SubnetId">> => string()
 %% }

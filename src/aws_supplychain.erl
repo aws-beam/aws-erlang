@@ -132,7 +132,7 @@
 
 %% Example:
 %% list_data_lake_namespaces_response() :: #{
-%%   <<"namespaces">> => list(data_lake_namespace()()),
+%%   <<"namespaces">> => list(data_lake_namespace()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_lake_namespaces_response() :: #{binary() => any()}.
@@ -263,14 +263,14 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_data_integration_flow_request() :: #{
-%%   <<"sources">> := list(data_integration_flow_source()()),
+%%   <<"sources">> := list(data_integration_flow_source()),
 %%   <<"tags">> => map(),
 %%   <<"target">> := data_integration_flow_target(),
 %%   <<"transformation">> := data_integration_flow_transformation()
@@ -300,7 +300,7 @@
 %%   <<"instanceId">> => string(),
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"sources">> => list(data_integration_flow_source()()),
+%%   <<"sources">> => list(data_integration_flow_source()),
 %%   <<"target">> => data_integration_flow_target(),
 %%   <<"transformation">> => data_integration_flow_transformation()
 %% }
@@ -365,7 +365,7 @@
 
 %% Example:
 %% list_data_lake_datasets_response() :: #{
-%%   <<"datasets">> => list(data_lake_dataset()()),
+%%   <<"datasets">> => list(data_lake_dataset()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_lake_datasets_response() :: #{binary() => any()}.
@@ -434,7 +434,7 @@
 
 %% Example:
 %% list_data_integration_flow_executions_response() :: #{
-%%   <<"flowExecutions">> => list(data_integration_flow_execution()()),
+%%   <<"flowExecutions">> => list(data_integration_flow_execution()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_integration_flow_executions_response() :: #{binary() => any()}.
@@ -458,9 +458,9 @@
 
 %% Example:
 %% data_lake_dataset_schema() :: #{
-%%   <<"fields">> => list(data_lake_dataset_schema_field()()),
+%%   <<"fields">> => list(data_lake_dataset_schema_field()),
 %%   <<"name">> => string(),
-%%   <<"primaryKeys">> => list(data_lake_dataset_primary_key_field()())
+%%   <<"primaryKeys">> => list(data_lake_dataset_primary_key_field())
 %% }
 -type data_lake_dataset_schema() :: #{binary() => any()}.
 
@@ -506,7 +506,7 @@
 
 %% Example:
 %% list_instances_request() :: #{
-%%   <<"instanceNameFilter">> => list(string()()),
+%%   <<"instanceNameFilter">> => list(string()),
 %%   <<"instanceStateFilter">> => list(list(any())()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -523,7 +523,7 @@
 
 %% Example:
 %% list_instances_response() :: #{
-%%   <<"instances">> => list(instance()()),
+%%   <<"instances">> => list(instance()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_instances_response() :: #{binary() => any()}.
@@ -625,7 +625,7 @@
 
 %% Example:
 %% list_data_integration_events_response() :: #{
-%%   <<"events">> => list(data_integration_event()()),
+%%   <<"events">> => list(data_integration_event()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_integration_events_response() :: #{binary() => any()}.
@@ -680,7 +680,7 @@
 
 %% Example:
 %% list_data_integration_flows_response() :: #{
-%%   <<"flows">> => list(data_integration_flow()()),
+%%   <<"flows">> => list(data_integration_flow()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_integration_flows_response() :: #{binary() => any()}.
@@ -696,7 +696,7 @@
 
 %% Example:
 %% data_integration_flow_field_priority_dedupe_strategy_configuration() :: #{
-%%   <<"fields">> => list(data_integration_flow_field_priority_dedupe_field()())
+%%   <<"fields">> => list(data_integration_flow_field_priority_dedupe_field())
 %% }
 -type data_integration_flow_field_priority_dedupe_strategy_configuration() :: #{binary() => any()}.
 
@@ -760,7 +760,7 @@
 
 %% Example:
 %% data_lake_dataset_partition_spec() :: #{
-%%   <<"fields">> => list(data_lake_dataset_partition_field()())
+%%   <<"fields">> => list(data_lake_dataset_partition_field())
 %% }
 -type data_lake_dataset_partition_spec() :: #{binary() => any()}.
 
@@ -806,7 +806,7 @@
 
 %% Example:
 %% update_data_integration_flow_request() :: #{
-%%   <<"sources">> => list(data_integration_flow_source()()),
+%%   <<"sources">> => list(data_integration_flow_source()),
 %%   <<"target">> => data_integration_flow_target(),
 %%   <<"transformation">> => data_integration_flow_transformation()
 %% }

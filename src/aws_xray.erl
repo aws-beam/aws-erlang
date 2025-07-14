@@ -99,7 +99,7 @@
 %%   <<"ContainsOldGroupVersions">> => boolean(),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Services">> => list(service()()),
+%%   <<"Services">> => list(service()),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type get_service_graph_result() :: #{binary() => any()}.
@@ -137,14 +137,14 @@
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
 %%   <<"Summary">> => string(),
-%%   <<"TopAnomalousServices">> => list(anomalous_service()())
+%%   <<"TopAnomalousServices">> => list(anomalous_service())
 %% }
 -type insight_summary() :: #{binary() => any()}.
 
 
 %% Example:
 %% graph_link() :: #{
-%%   <<"DestinationTraceIds">> => list(string()()),
+%%   <<"DestinationTraceIds">> => list(string()),
 %%   <<"ReferenceType">> => string(),
 %%   <<"SourceTraceId">> => string()
 %% }
@@ -154,10 +154,10 @@
 %% Example:
 %% response_time_root_cause_service() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"EntityPath">> => list(response_time_root_cause_entity()()),
+%%   <<"EntityPath">> => list(response_time_root_cause_entity()),
 %%   <<"Inferred">> => boolean(),
 %%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"Type">> => string()
 %% }
 -type response_time_root_cause_service() :: #{binary() => any()}.
@@ -181,7 +181,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -233,7 +233,7 @@
 
 %% Example:
 %% put_trace_segments_request() :: #{
-%%   <<"TraceSegmentDocuments">> := list(string()())
+%%   <<"TraceSegmentDocuments">> := list(string())
 %% }
 -type put_trace_segments_request() :: #{binary() => any()}.
 
@@ -250,7 +250,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"RetrievalStatus">> => list(any()),
 %%   <<"TraceFormat">> => list(any()),
-%%   <<"Traces">> => list(retrieved_trace()())
+%%   <<"Traces">> => list(retrieved_trace())
 %% }
 -type list_retrieved_traces_result() :: #{binary() => any()}.
 
@@ -315,9 +315,9 @@
 %% Example:
 %% insight_impact_graph_service() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"Edges">> => list(insight_impact_graph_edge()()),
+%%   <<"Edges">> => list(insight_impact_graph_edge()),
 %%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"ReferenceId">> => integer(),
 %%   <<"Type">> => string()
 %% }
@@ -337,7 +337,7 @@
 %% get_trace_summaries_result() :: #{
 %%   <<"ApproximateTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TraceSummaries">> => list(trace_summary()()),
+%%   <<"TraceSummaries">> => list(trace_summary()),
 %%   <<"TracesProcessedCount">> => float()
 %% }
 -type get_trace_summaries_result() :: #{binary() => any()}.
@@ -377,7 +377,7 @@
 %%   <<"EC2InstanceId">> => string(),
 %%   <<"Hostname">> => string(),
 %%   <<"ResourceARN">> => string(),
-%%   <<"TelemetryRecords">> := list(telemetry_record()())
+%%   <<"TelemetryRecords">> := list(telemetry_record())
 %% }
 -type put_telemetry_records_request() :: #{binary() => any()}.
 
@@ -396,7 +396,7 @@
 %% Example:
 %% error_root_cause() :: #{
 %%   <<"ClientImpacting">> => boolean(),
-%%   <<"Services">> => list(error_root_cause_service()())
+%%   <<"Services">> => list(error_root_cause_service())
 %% }
 -type error_root_cause() :: #{binary() => any()}.
 
@@ -404,7 +404,7 @@
 %% Example:
 %% get_trace_graph_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Services">> => list(service()())
+%%   <<"Services">> => list(service())
 %% }
 -type get_trace_graph_result() :: #{binary() => any()}.
 
@@ -419,13 +419,13 @@
 %% Example:
 %% service() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"DurationHistogram">> => list(histogram_entry()()),
-%%   <<"Edges">> => list(edge()()),
+%%   <<"DurationHistogram">> => list(histogram_entry()),
+%%   <<"Edges">> => list(edge()),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"ReferenceId">> => integer(),
-%%   <<"ResponseTimeHistogram">> => list(histogram_entry()()),
+%%   <<"ResponseTimeHistogram">> => list(histogram_entry()),
 %%   <<"Root">> => boolean(),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"State">> => string(),
@@ -463,7 +463,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -472,7 +472,7 @@
 %% retrieved_trace() :: #{
 %%   <<"Duration">> => float(),
 %%   <<"Id">> => string(),
-%%   <<"Spans">> => list(span()())
+%%   <<"Spans">> => list(span())
 %% }
 -type retrieved_trace() :: #{binary() => any()}.
 
@@ -480,8 +480,8 @@
 %% Example:
 %% batch_get_traces_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Traces">> => list(trace()()),
-%%   <<"UnprocessedTraceIds">> => list(string()())
+%%   <<"Traces">> => list(trace()),
+%%   <<"UnprocessedTraceIds">> => list(string())
 %% }
 -type batch_get_traces_result() :: #{binary() => any()}.
 
@@ -532,7 +532,7 @@
 
 %% Example:
 %% retrieved_service() :: #{
-%%   <<"Links">> => list(graph_link()()),
+%%   <<"Links">> => list(graph_link()),
 %%   <<"Service">> => service()
 %% }
 -type retrieved_service() :: #{binary() => any()}.
@@ -541,7 +541,7 @@
 %% Example:
 %% batch_get_traces_request() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TraceIds">> := list(string()())
+%%   <<"TraceIds">> := list(string())
 %% }
 -type batch_get_traces_request() :: #{binary() => any()}.
 
@@ -558,7 +558,7 @@
 %% Example:
 %% value_with_service_ids() :: #{
 %%   <<"AnnotationValue">> => list(),
-%%   <<"ServiceIds">> => list(service_id()())
+%%   <<"ServiceIds">> => list(service_id())
 %% }
 -type value_with_service_ids() :: #{binary() => any()}.
 
@@ -567,7 +567,7 @@
 %% start_trace_retrieval_request() :: #{
 %%   <<"EndTime">> := non_neg_integer(),
 %%   <<"StartTime">> := non_neg_integer(),
-%%   <<"TraceIds">> := list(string()())
+%%   <<"TraceIds">> := list(string())
 %% }
 -type start_trace_retrieval_request() :: #{binary() => any()}.
 
@@ -635,7 +635,7 @@
 %%   <<"EventTime">> => non_neg_integer(),
 %%   <<"RootCauseServiceRequestImpactStatistics">> => request_impact_statistics(),
 %%   <<"Summary">> => string(),
-%%   <<"TopAnomalousServices">> => list(anomalous_service()())
+%%   <<"TopAnomalousServices">> => list(anomalous_service())
 %% }
 -type insight_event() :: #{binary() => any()}.
 
@@ -643,7 +643,7 @@
 %% Example:
 %% response_time_root_cause() :: #{
 %%   <<"ClientImpacting">> => boolean(),
-%%   <<"Services">> => list(response_time_root_cause_service()())
+%%   <<"Services">> => list(response_time_root_cause_service())
 %% }
 -type response_time_root_cause() :: #{binary() => any()}.
 
@@ -704,7 +704,7 @@
 
 %% Example:
 %% get_insight_events_result() :: #{
-%%   <<"InsightEvents">> => list(insight_event()()),
+%%   <<"InsightEvents">> => list(insight_event()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_insight_events_result() :: #{binary() => any()}.
@@ -712,7 +712,7 @@
 
 %% Example:
 %% get_sampling_targets_request() :: #{
-%%   <<"SamplingStatisticsDocuments">> := list(sampling_statistics_document()())
+%%   <<"SamplingStatisticsDocuments">> := list(sampling_statistics_document())
 %% }
 -type get_sampling_targets_request() :: #{binary() => any()}.
 
@@ -741,7 +741,7 @@
 %% Example:
 %% time_series_service_statistics() :: #{
 %%   <<"EdgeSummaryStatistics">> => edge_statistics(),
-%%   <<"ResponseTimeHistogram">> => list(histogram_entry()()),
+%%   <<"ResponseTimeHistogram">> => list(histogram_entry()),
 %%   <<"ServiceForecastStatistics">> => forecast_statistics(),
 %%   <<"ServiceSummaryStatistics">> => service_statistics(),
 %%   <<"Timestamp">> => non_neg_integer()
@@ -752,8 +752,8 @@
 %% Example:
 %% get_sampling_targets_result() :: #{
 %%   <<"LastRuleModification">> => non_neg_integer(),
-%%   <<"SamplingTargetDocuments">> => list(sampling_target_document()()),
-%%   <<"UnprocessedStatistics">> => list(unprocessed_statistics()())
+%%   <<"SamplingTargetDocuments">> => list(sampling_target_document()),
+%%   <<"UnprocessedStatistics">> => list(unprocessed_statistics())
 %% }
 -type get_sampling_targets_result() :: #{binary() => any()}.
 
@@ -765,10 +765,10 @@
 %% Example:
 %% fault_root_cause_service() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"EntityPath">> => list(fault_root_cause_entity()()),
+%%   <<"EntityPath">> => list(fault_root_cause_entity()),
 %%   <<"Inferred">> => boolean(),
 %%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"Type">> => string()
 %% }
 -type fault_root_cause_service() :: #{binary() => any()}.
@@ -784,7 +784,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -802,7 +802,7 @@
 %%   <<"FilterExpression">> => string(),
 %%   <<"GroupName">> := string(),
 %%   <<"InsightsConfiguration">> => insights_configuration(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_group_request() :: #{binary() => any()}.
 
@@ -824,14 +824,14 @@
 %% Example:
 %% get_sampling_statistic_summaries_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SamplingStatisticSummaries">> => list(sampling_statistic_summary()())
+%%   <<"SamplingStatisticSummaries">> => list(sampling_statistic_summary())
 %% }
 -type get_sampling_statistic_summaries_result() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_groups_result() :: #{
-%%   <<"Groups">> => list(group_summary()()),
+%%   <<"Groups">> => list(group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_groups_result() :: #{binary() => any()}.
@@ -840,7 +840,7 @@
 %% Example:
 %% get_trace_graph_request() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TraceIds">> := list(string()())
+%%   <<"TraceIds">> := list(string())
 %% }
 -type get_trace_graph_request() :: #{binary() => any()}.
 
@@ -848,10 +848,10 @@
 %% Example:
 %% error_root_cause_service() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"EntityPath">> => list(error_root_cause_entity()()),
+%%   <<"EntityPath">> => list(error_root_cause_entity()),
 %%   <<"Inferred">> => boolean(),
 %%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"Type">> => string()
 %% }
 -type error_root_cause_service() :: #{binary() => any()}.
@@ -862,7 +862,7 @@
 %%   <<"Duration">> => float(),
 %%   <<"Id">> => string(),
 %%   <<"LimitExceeded">> => boolean(),
-%%   <<"Segments">> => list(segment()())
+%%   <<"Segments">> => list(segment())
 %% }
 -type trace() :: #{binary() => any()}.
 
@@ -883,7 +883,7 @@
 
 %% Example:
 %% fault_root_cause_entity() :: #{
-%%   <<"Exceptions">> => list(root_cause_exception()()),
+%%   <<"Exceptions">> => list(root_cause_exception()),
 %%   <<"Name">> => string(),
 %%   <<"Remote">> => boolean()
 %% }
@@ -892,7 +892,7 @@
 
 %% Example:
 %% error_root_cause_entity() :: #{
-%%   <<"Exceptions">> => list(root_cause_exception()()),
+%%   <<"Exceptions">> => list(root_cause_exception()),
 %%   <<"Name">> => string(),
 %%   <<"Remote">> => boolean()
 %% }
@@ -924,7 +924,7 @@
 %% Example:
 %% create_sampling_rule_request() :: #{
 %%   <<"SamplingRule">> := sampling_rule(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_sampling_rule_request() :: #{binary() => any()}.
 
@@ -949,7 +949,7 @@
 %% Example:
 %% alias() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"Type">> => string()
 %% }
 -type alias() :: #{binary() => any()}.
@@ -961,7 +961,7 @@
 
 %% Example:
 %% put_trace_segments_result() :: #{
-%%   <<"UnprocessedTraceSegments">> => list(unprocessed_trace_segment()())
+%%   <<"UnprocessedTraceSegments">> => list(unprocessed_trace_segment())
 %% }
 -type put_trace_segments_result() :: #{binary() => any()}.
 
@@ -1027,7 +1027,7 @@
 
 %% Example:
 %% get_indexing_rules_result() :: #{
-%%   <<"IndexingRules">> => list(indexing_rule()()),
+%%   <<"IndexingRules">> => list(indexing_rule()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_indexing_rules_result() :: #{binary() => any()}.
@@ -1049,7 +1049,7 @@
 %% service_id() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Names">> => list(string()()),
+%%   <<"Names">> => list(string()),
 %%   <<"Type">> => string()
 %% }
 -type service_id() :: #{binary() => any()}.
@@ -1058,26 +1058,26 @@
 %% Example:
 %% trace_summary() :: #{
 %%   <<"Annotations">> => map(),
-%%   <<"AvailabilityZones">> => list(availability_zone_detail()()),
+%%   <<"AvailabilityZones">> => list(availability_zone_detail()),
 %%   <<"Duration">> => float(),
 %%   <<"EntryPoint">> => service_id(),
-%%   <<"ErrorRootCauses">> => list(error_root_cause()()),
-%%   <<"FaultRootCauses">> => list(fault_root_cause()()),
+%%   <<"ErrorRootCauses">> => list(error_root_cause()),
+%%   <<"FaultRootCauses">> => list(fault_root_cause()),
 %%   <<"HasError">> => boolean(),
 %%   <<"HasFault">> => boolean(),
 %%   <<"HasThrottle">> => boolean(),
 %%   <<"Http">> => http(),
 %%   <<"Id">> => string(),
-%%   <<"InstanceIds">> => list(instance_id_detail()()),
+%%   <<"InstanceIds">> => list(instance_id_detail()),
 %%   <<"IsPartial">> => boolean(),
 %%   <<"MatchedEventTime">> => non_neg_integer(),
-%%   <<"ResourceARNs">> => list(resource_arn_detail()()),
+%%   <<"ResourceARNs">> => list(resource_arn_detail()),
 %%   <<"ResponseTime">> => float(),
-%%   <<"ResponseTimeRootCauses">> => list(response_time_root_cause()()),
+%%   <<"ResponseTimeRootCauses">> => list(response_time_root_cause()),
 %%   <<"Revision">> => integer(),
-%%   <<"ServiceIds">> => list(service_id()()),
+%%   <<"ServiceIds">> => list(service_id()),
 %%   <<"StartTime">> => non_neg_integer(),
-%%   <<"Users">> => list(trace_user()())
+%%   <<"Users">> => list(trace_user())
 %% }
 -type trace_summary() :: #{binary() => any()}.
 
@@ -1111,7 +1111,7 @@
 %% Example:
 %% fault_root_cause() :: #{
 %%   <<"ClientImpacting">> => boolean(),
-%%   <<"Services">> => list(fault_root_cause_service()())
+%%   <<"Services">> => list(fault_root_cause_service())
 %% }
 -type fault_root_cause() :: #{binary() => any()}.
 
@@ -1145,14 +1145,14 @@
 %% Example:
 %% get_sampling_rules_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SamplingRuleRecords">> => list(sampling_rule_record()())
+%%   <<"SamplingRuleRecords">> => list(sampling_rule_record())
 %% }
 -type get_sampling_rules_result() :: #{binary() => any()}.
 
 
 %% Example:
 %% trace_user() :: #{
-%%   <<"ServiceIds">> => list(service_id()()),
+%%   <<"ServiceIds">> => list(service_id()),
 %%   <<"UserName">> => string()
 %% }
 -type trace_user() :: #{binary() => any()}.
@@ -1231,7 +1231,7 @@
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"State">> => list(any()),
 %%   <<"Summary">> => string(),
-%%   <<"TopAnomalousServices">> => list(anomalous_service()())
+%%   <<"TopAnomalousServices">> => list(anomalous_service())
 %% }
 -type insight() :: #{binary() => any()}.
 
@@ -1242,12 +1242,12 @@
 
 %% Example:
 %% edge() :: #{
-%%   <<"Aliases">> => list(alias()()),
+%%   <<"Aliases">> => list(alias()),
 %%   <<"EdgeType">> => string(),
 %%   <<"EndTime">> => non_neg_integer(),
-%%   <<"ReceivedEventAgeHistogram">> => list(histogram_entry()()),
+%%   <<"ReceivedEventAgeHistogram">> => list(histogram_entry()),
 %%   <<"ReferenceId">> => integer(),
-%%   <<"ResponseTimeHistogram">> => list(histogram_entry()()),
+%%   <<"ResponseTimeHistogram">> => list(histogram_entry()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"SummaryStatistics">> => edge_statistics()
 %% }
@@ -1273,7 +1273,7 @@
 %% get_retrieved_traces_graph_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RetrievalStatus">> => list(any()),
-%%   <<"Services">> => list(retrieved_service()())
+%%   <<"Services">> => list(retrieved_service())
 %% }
 -type get_retrieved_traces_graph_result() :: #{binary() => any()}.
 
@@ -1290,14 +1290,14 @@
 %% get_time_series_service_statistics_result() :: #{
 %%   <<"ContainsOldGroupVersions">> => boolean(),
 %%   <<"NextToken">> => string(),
-%%   <<"TimeSeriesServiceStatistics">> => list(time_series_service_statistics()())
+%%   <<"TimeSeriesServiceStatistics">> => list(time_series_service_statistics())
 %% }
 -type get_time_series_service_statistics_result() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_insight_summaries_result() :: #{
-%%   <<"InsightSummaries">> => list(insight_summary()()),
+%%   <<"InsightSummaries">> => list(insight_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_insight_summaries_result() :: #{binary() => any()}.
@@ -1337,7 +1337,7 @@
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceGraphEndTime">> => non_neg_integer(),
 %%   <<"ServiceGraphStartTime">> => non_neg_integer(),
-%%   <<"Services">> => list(insight_impact_graph_service()()),
+%%   <<"Services">> => list(insight_impact_graph_service()),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type get_insight_impact_graph_result() :: #{binary() => any()}.
@@ -1386,7 +1386,7 @@
 %% Example:
 %% list_resource_policies_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourcePolicies">> => list(resource_policy()())
+%%   <<"ResourcePolicies">> => list(resource_policy())
 %% }
 -type list_resource_policies_result() :: #{binary() => any()}.
 

@@ -241,7 +241,7 @@
 %% source_attribution() :: #{
 %%   <<"citationNumber">> => integer(),
 %%   <<"snippet">> => string(),
-%%   <<"textMessageSegments">> => list(text_segment()()),
+%%   <<"textMessageSegments">> => list(text_segment()),
 %%   <<"title">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"url">> => string()
@@ -300,7 +300,7 @@
 
 %% Example:
 %% update_data_accessor_request() :: #{
-%%   <<"actionConfigurations">> := list(action_configuration()()),
+%%   <<"actionConfigurations">> := list(action_configuration()),
 %%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
 %%   <<"displayName">> => string()
 %% }
@@ -332,7 +332,7 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -354,15 +354,15 @@
 
 %% Example:
 %% data_source_vpc_configuration() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
 -type data_source_vpc_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_data_accessors_response() :: #{
-%%   <<"dataAccessors">> => list(data_accessor()()),
+%%   <<"dataAccessors">> => list(data_accessor()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_accessors_response() :: #{binary() => any()}.
@@ -433,9 +433,9 @@
 
 %% Example:
 %% update_user_response() :: #{
-%%   <<"userAliasesAdded">> => list(user_alias()()),
-%%   <<"userAliasesDeleted">> => list(user_alias()()),
-%%   <<"userAliasesUpdated">> => list(user_alias()())
+%%   <<"userAliasesAdded">> => list(user_alias()),
+%%   <<"userAliasesDeleted">> => list(user_alias()),
+%%   <<"userAliasesUpdated">> => list(user_alias())
 %% }
 -type update_user_response() :: #{binary() => any()}.
 
@@ -450,7 +450,7 @@
 %%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
 %%   <<"roleArn">> => string(),
 %%   <<"syncSchedule">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"vpcConfiguration">> => data_source_vpc_configuration()
 %% }
 -type create_data_source_request() :: #{binary() => any()}.
@@ -471,7 +471,7 @@
 
 %% Example:
 %% get_data_accessor_response() :: #{
-%%   <<"actionConfigurations">> => list(action_configuration()()),
+%%   <<"actionConfigurations">> => list(action_configuration()),
 %%   <<"applicationId">> => string(),
 %%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -596,7 +596,7 @@
 
 %% Example:
 %% list_plugin_type_metadata_response() :: #{
-%%   <<"items">> => list(plugin_type_metadata_summary()()),
+%%   <<"items">> => list(plugin_type_metadata_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_plugin_type_metadata_response() :: #{binary() => any()}.
@@ -655,7 +655,7 @@
 
 %% Example:
 %% list_messages_response() :: #{
-%%   <<"messages">> => list(message()()),
+%%   <<"messages">> => list(message()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_messages_response() :: #{binary() => any()}.
@@ -674,12 +674,12 @@
 
 %% Example:
 %% create_data_accessor_request() :: #{
-%%   <<"actionConfigurations">> := list(action_configuration()()),
+%%   <<"actionConfigurations">> := list(action_configuration()),
 %%   <<"authenticationDetail">> => data_accessor_authentication_detail(),
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"principal">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_data_accessor_request() :: #{binary() => any()}.
 
@@ -706,7 +706,7 @@
 
 %% Example:
 %% get_user_response() :: #{
-%%   <<"userAliases">> => list(user_alias()())
+%%   <<"userAliases">> => list(user_alias())
 %% }
 -type get_user_response() :: #{binary() => any()}.
 
@@ -724,7 +724,7 @@
 %%   <<"configuration">> := list(),
 %%   <<"displayName">> := string(),
 %%   <<"roleArn">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"type">> := list(any())
 %% }
 -type create_retriever_request() :: #{binary() => any()}.
@@ -757,7 +757,7 @@
 %% Example:
 %% list_web_experiences_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"webExperiences">> => list(web_experience()())
+%%   <<"webExperiences">> => list(web_experience())
 %% }
 -type list_web_experiences_response() :: #{binary() => any()}.
 
@@ -783,7 +783,7 @@
 
 %% Example:
 %% list_plugin_actions_response() :: #{
-%%   <<"items">> => list(action_summary()()),
+%%   <<"items">> => list(action_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_plugin_actions_response() :: #{binary() => any()}.
@@ -813,16 +813,16 @@
 %% Example:
 %% topic_configuration() :: #{
 %%   <<"description">> => string(),
-%%   <<"exampleChatMessages">> => list(string()()),
+%%   <<"exampleChatMessages">> => list(string()),
 %%   <<"name">> => string(),
-%%   <<"rules">> => list(rule()())
+%%   <<"rules">> => list(rule())
 %% }
 -type topic_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -831,8 +831,8 @@
 %% check_document_access_response() :: #{
 %%   <<"documentAcl">> => document_acl(),
 %%   <<"hasAccess">> => [boolean()],
-%%   <<"userAliases">> => list(associated_user()()),
-%%   <<"userGroups">> => list(associated_group()())
+%%   <<"userAliases">> => list(associated_user()),
+%%   <<"userGroups">> => list(associated_group())
 %% }
 -type check_document_access_response() :: #{binary() => any()}.
 
@@ -897,7 +897,7 @@
 
 %% Example:
 %% document_acl_membership() :: #{
-%%   <<"conditions">> => list(document_acl_condition()()),
+%%   <<"conditions">> => list(document_acl_condition()),
 %%   <<"memberRelation">> => list(any())
 %% }
 -type document_acl_membership() :: #{binary() => any()}.
@@ -905,7 +905,7 @@
 
 %% Example:
 %% list_documents_response() :: #{
-%%   <<"documentDetailList">> => list(document_details()()),
+%%   <<"documentDetailList">> => list(document_details()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_documents_response() :: #{binary() => any()}.
@@ -922,7 +922,7 @@
 %%   <<"customPluginConfiguration">> => custom_plugin_configuration(),
 %%   <<"displayName">> := string(),
 %%   <<"serverUrl">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"type">> := list(any())
 %% }
 -type create_plugin_request() :: #{binary() => any()}.
@@ -932,7 +932,7 @@
 %% metadata_event() :: #{
 %%   <<"conversationId">> => string(),
 %%   <<"finalTextMessage">> => string(),
-%%   <<"sourceAttributions">> => list(source_attribution()()),
+%%   <<"sourceAttributions">> => list(source_attribution()),
 %%   <<"systemMessageId">> => string(),
 %%   <<"userMessageId">> => string()
 %% }
@@ -976,8 +976,8 @@
 %%   <<"actionReview">> => action_review(),
 %%   <<"authChallengeRequest">> => auth_challenge_request(),
 %%   <<"conversationId">> => string(),
-%%   <<"failedAttachments">> => list(attachment_output()()),
-%%   <<"sourceAttributions">> => list(source_attribution()()),
+%%   <<"failedAttachments">> => list(attachment_output()),
+%%   <<"sourceAttributions">> => list(source_attribution()),
 %%   <<"systemMessage">> => string(),
 %%   <<"systemMessageId">> => string(),
 %%   <<"userMessageId">> => string()
@@ -1055,11 +1055,11 @@
 %%   <<"clientToken">> => string(),
 %%   <<"customizationConfiguration">> => customization_configuration(),
 %%   <<"identityProviderConfiguration">> => list(),
-%%   <<"origins">> => list(string()()),
+%%   <<"origins">> => list(string()),
 %%   <<"roleArn">> => string(),
 %%   <<"samplePromptsControlMode">> => list(any()),
 %%   <<"subtitle">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"title">> => string(),
 %%   <<"welcomeMessage">> => string()
 %% }
@@ -1149,7 +1149,7 @@
 %%   <<"defaultEndpoint">> => string(),
 %%   <<"error">> => error_detail(),
 %%   <<"identityProviderConfiguration">> => list(),
-%%   <<"origins">> => list(string()()),
+%%   <<"origins">> => list(string()),
 %%   <<"roleArn">> => string(),
 %%   <<"samplePromptsControlMode">> => list(any()),
 %%   <<"status">> => list(any()),
@@ -1174,14 +1174,14 @@
 %% Example:
 %% list_retrievers_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"retrievers">> => list(retriever()())
+%%   <<"retrievers">> => list(retriever())
 %% }
 -type list_retrievers_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_delete_document_response() :: #{
-%%   <<"failedDocuments">> => list(failed_document()())
+%%   <<"failedDocuments">> => list(failed_document())
 %% }
 -type batch_delete_document_response() :: #{binary() => any()}.
 
@@ -1189,7 +1189,7 @@
 %% Example:
 %% chat_sync_input() :: #{
 %%   <<"actionExecution">> => action_execution(),
-%%   <<"attachments">> => list(attachment_input()()),
+%%   <<"attachments">> => list(attachment_input()),
 %%   <<"attributeFilter">> => attribute_filter(),
 %%   <<"authChallengeResponse">> => auth_challenge_response(),
 %%   <<"chatMode">> => list(any()),
@@ -1197,7 +1197,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"conversationId">> => string(),
 %%   <<"parentMessageId">> => string(),
-%%   <<"userGroups">> => list(string()()),
+%%   <<"userGroups">> => list(string()),
 %%   <<"userId">> => string(),
 %%   <<"userMessage">> => string()
 %% }
@@ -1269,7 +1269,7 @@
 %% Example:
 %% access_control() :: #{
 %%   <<"memberRelation">> => list(any()),
-%%   <<"principals">> => list(list()())
+%%   <<"principals">> => list(list())
 %% }
 -type access_control() :: #{binary() => any()}.
 
@@ -1289,7 +1289,7 @@
 %%   <<"browserExtensionConfiguration">> => browser_extension_configuration(),
 %%   <<"customizationConfiguration">> => customization_configuration(),
 %%   <<"identityProviderConfiguration">> => list(),
-%%   <<"origins">> => list(string()()),
+%%   <<"origins">> => list(string()),
 %%   <<"roleArn">> => string(),
 %%   <<"samplePromptsControlMode">> => list(any()),
 %%   <<"subtitle">> => string(),
@@ -1351,7 +1351,7 @@
 
 %% Example:
 %% list_data_sources_response() :: #{
-%%   <<"dataSources">> => list(data_source()()),
+%%   <<"dataSources">> => list(data_source()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_sources_response() :: #{binary() => any()}.
@@ -1396,7 +1396,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1412,7 +1412,7 @@
 %% Example:
 %% create_application_request() :: #{
 %%   <<"attachmentsConfiguration">> => attachments_configuration(),
-%%   <<"clientIdsForOIDC">> => list(string()()),
+%%   <<"clientIdsForOIDC">> => list(string()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> := string(),
@@ -1424,7 +1424,7 @@
 %%   <<"qAppsConfiguration">> => q_apps_configuration(),
 %%   <<"quickSightConfiguration">> => quick_sight_configuration(),
 %%   <<"roleArn">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
@@ -1498,7 +1498,7 @@
 %% Example:
 %% list_plugins_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"plugins">> => list(plugin()())
+%%   <<"plugins">> => list(plugin())
 %% }
 -type list_plugins_response() :: #{binary() => any()}.
 
@@ -1513,7 +1513,7 @@
 
 %% Example:
 %% list_documents_request() :: #{
-%%   <<"dataSourceIds">> => list(string()()),
+%%   <<"dataSourceIds">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1529,7 +1529,7 @@
 
 %% Example:
 %% blocked_phrases_configuration() :: #{
-%%   <<"blockedPhrases">> => list(string()()),
+%%   <<"blockedPhrases">> => list(string()),
 %%   <<"systemMessageOverride">> => string()
 %% }
 -type blocked_phrases_configuration() :: #{binary() => any()}.
@@ -1537,7 +1537,7 @@
 
 %% Example:
 %% list_indices_response() :: #{
-%%   <<"indices">> => list(index()()),
+%%   <<"indices">> => list(index()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_indices_response() :: #{binary() => any()}.
@@ -1642,17 +1642,17 @@
 
 %% Example:
 %% document_acl_condition() :: #{
-%%   <<"groups">> => list(document_acl_group()()),
+%%   <<"groups">> => list(document_acl_group()),
 %%   <<"memberRelation">> => list(any()),
-%%   <<"users">> => list(document_acl_user()())
+%%   <<"users">> => list(document_acl_user())
 %% }
 -type document_acl_condition() :: #{binary() => any()}.
 
 
 %% Example:
 %% blocked_phrases_configuration_update() :: #{
-%%   <<"blockedPhrasesToCreateOrUpdate">> => list(string()()),
-%%   <<"blockedPhrasesToDelete">> => list(string()()),
+%%   <<"blockedPhrasesToCreateOrUpdate">> => list(string()),
+%%   <<"blockedPhrasesToDelete">> => list(string()),
 %%   <<"systemMessageOverride">> => string()
 %% }
 -type blocked_phrases_configuration_update() :: #{binary() => any()}.
@@ -1660,7 +1660,7 @@
 
 %% Example:
 %% list_plugin_type_actions_response() :: #{
-%%   <<"items">> => list(action_summary()()),
+%%   <<"items">> => list(action_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_plugin_type_actions_response() :: #{binary() => any()}.
@@ -1729,7 +1729,7 @@
 %% Example:
 %% search_relevant_content_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"relevantContent">> => list(relevant_content()())
+%%   <<"relevantContent">> => list(relevant_content())
 %% }
 -type search_relevant_content_response() :: #{binary() => any()}.
 
@@ -1786,7 +1786,7 @@
 %%   <<"applicationId">> => string(),
 %%   <<"attachmentsConfiguration">> => applied_attachments_configuration(),
 %%   <<"autoSubscriptionConfiguration">> => auto_subscription_configuration(),
-%%   <<"clientIdsForOIDC">> => list(string()()),
+%%   <<"clientIdsForOIDC">> => list(string()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
@@ -1808,7 +1808,7 @@
 %% Example:
 %% batch_delete_document_request() :: #{
 %%   <<"dataSourceSyncId">> => string(),
-%%   <<"documents">> := list(delete_document()())
+%%   <<"documents">> := list(delete_document())
 %% }
 -type batch_delete_document_request() :: #{binary() => any()}.
 
@@ -1844,7 +1844,7 @@
 
 %% Example:
 %% batch_put_document_response() :: #{
-%%   <<"failedDocuments">> => list(failed_document()())
+%%   <<"failedDocuments">> => list(failed_document())
 %% }
 -type batch_put_document_response() :: #{binary() => any()}.
 
@@ -1870,7 +1870,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"type">> => list(any())
 %% }
 -type create_index_request() :: #{binary() => any()}.
@@ -1892,7 +1892,7 @@
 %%   <<"capacityConfiguration">> => index_capacity_configuration(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"documentAttributeConfigurations">> => list(document_attribute_configuration()())
+%%   <<"documentAttributeConfigurations">> => list(document_attribute_configuration())
 %% }
 -type update_index_request() :: #{binary() => any()}.
 
@@ -1920,7 +1920,7 @@
 %% Example:
 %% relevant_content() :: #{
 %%   <<"content">> => string(),
-%%   <<"documentAttributes">> => list(document_attribute()()),
+%%   <<"documentAttributes">> => list(document_attribute()),
 %%   <<"documentId">> => string(),
 %%   <<"documentTitle">> => string(),
 %%   <<"documentUri">> => string(),
@@ -2014,7 +2014,7 @@
 
 %% Example:
 %% list_conversations_response() :: #{
-%%   <<"conversations">> => list(conversation()()),
+%%   <<"conversations">> => list(conversation()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_conversations_response() :: #{binary() => any()}.
@@ -2026,8 +2026,8 @@
 
 %% Example:
 %% update_user_request() :: #{
-%%   <<"userAliasesToDelete">> => list(user_alias()()),
-%%   <<"userAliasesToUpdate">> => list(user_alias()())
+%%   <<"userAliasesToDelete">> => list(user_alias()),
+%%   <<"userAliasesToUpdate">> => list(user_alias())
 %% }
 -type update_user_request() :: #{binary() => any()}.
 
@@ -2038,7 +2038,7 @@
 %%   <<"conversationId">> => string(),
 %%   <<"inputStream">> => list(),
 %%   <<"parentMessageId">> => string(),
-%%   <<"userGroups">> => list(string()()),
+%%   <<"userGroups">> => list(string()),
 %%   <<"userId">> => string()
 %% }
 -type chat_input() :: #{binary() => any()}.
@@ -2052,8 +2052,8 @@
 %%   <<"hallucinationReductionConfiguration">> => hallucination_reduction_configuration(),
 %%   <<"orchestrationConfiguration">> => orchestration_configuration(),
 %%   <<"responseScope">> => list(any()),
-%%   <<"topicConfigurationsToCreateOrUpdate">> => list(topic_configuration()()),
-%%   <<"topicConfigurationsToDelete">> => list(topic_configuration()())
+%%   <<"topicConfigurationsToCreateOrUpdate">> => list(topic_configuration()),
+%%   <<"topicConfigurationsToDelete">> => list(topic_configuration())
 %% }
 -type update_chat_controls_configuration_request() :: #{binary() => any()}.
 
@@ -2064,7 +2064,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"fields">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }
@@ -2086,7 +2086,7 @@
 %% Example:
 %% action_review_payload_field() :: #{
 %%   <<"allowedFormat">> => string(),
-%%   <<"allowedValues">> => list(action_review_payload_field_allowed_value()()),
+%%   <<"allowedValues">> => list(action_review_payload_field_allowed_value()),
 %%   <<"arrayItemJsonSchema">> => any(),
 %%   <<"displayDescription">> => string(),
 %%   <<"displayName">> => string(),
@@ -2115,7 +2115,7 @@
 %% Example:
 %% batch_put_document_request() :: #{
 %%   <<"dataSourceSyncId">> => string(),
-%%   <<"documents">> := list(document()()),
+%%   <<"documents">> := list(document()),
 %%   <<"roleArn">> => string()
 %% }
 -type batch_put_document_request() :: #{binary() => any()}.
@@ -2146,7 +2146,7 @@
 %% Example:
 %% get_group_response() :: #{
 %%   <<"status">> => group_status_detail(),
-%%   <<"statusHistory">> => list(group_status_detail()())
+%%   <<"statusHistory">> => list(group_status_detail())
 %% }
 -type get_group_response() :: #{binary() => any()}.
 
@@ -2173,8 +2173,8 @@
 
 %% Example:
 %% group_members() :: #{
-%%   <<"memberGroups">> => list(member_group()()),
-%%   <<"memberUsers">> => list(member_user()()),
+%%   <<"memberGroups">> => list(member_group()),
+%%   <<"memberUsers">> => list(member_user()),
 %%   <<"s3PathForGroupMembers">> => s3()
 %% }
 -type group_members() :: #{binary() => any()}.
@@ -2190,14 +2190,14 @@
 %% Example:
 %% list_subscriptions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"subscriptions">> => list(subscription()())
+%%   <<"subscriptions">> => list(subscription())
 %% }
 -type list_subscriptions_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% document_enrichment_configuration() :: #{
-%%   <<"inlineConfigurations">> => list(inline_document_enrichment_configuration()()),
+%%   <<"inlineConfigurations">> => list(inline_document_enrichment_configuration()),
 %%   <<"postExtractionHookConfiguration">> => hook_configuration(),
 %%   <<"preExtractionHookConfiguration">> => hook_configuration()
 %% }
@@ -2206,7 +2206,7 @@
 
 %% Example:
 %% list_data_source_sync_jobs_response() :: #{
-%%   <<"history">> => list(data_source_sync_job()()),
+%%   <<"history">> => list(data_source_sync_job()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_source_sync_jobs_response() :: #{binary() => any()}.
@@ -2214,7 +2214,7 @@
 
 %% Example:
 %% browser_extension_configuration() :: #{
-%%   <<"enabledBrowserExtensions">> => list(string()())
+%%   <<"enabledBrowserExtensions">> => list(string())
 %% }
 -type browser_extension_configuration() :: #{binary() => any()}.
 
@@ -2246,8 +2246,8 @@
 
 %% Example:
 %% associate_permission_request() :: #{
-%%   <<"actions">> := list(string()()),
-%%   <<"conditions">> => list(permission_condition()()),
+%%   <<"actions">> := list(string()),
+%%   <<"conditions">> => list(permission_condition()),
 %%   <<"principal">> := string(),
 %%   <<"statementId">> := string()
 %% }
@@ -2256,7 +2256,7 @@
 
 %% Example:
 %% content_retrieval_rule() :: #{
-%%   <<"eligibleDataSources">> => list(eligible_data_source()())
+%%   <<"eligibleDataSources">> => list(eligible_data_source())
 %% }
 -type content_retrieval_rule() :: #{binary() => any()}.
 
@@ -2279,7 +2279,7 @@
 
 %% Example:
 %% list_chat_response_configurations_response() :: #{
-%%   <<"chatResponseConfigurations">> => list(chat_response_configuration()()),
+%%   <<"chatResponseConfigurations">> => list(chat_response_configuration()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_chat_response_configurations_response() :: #{binary() => any()}.
@@ -2303,14 +2303,14 @@
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"responseConfigurations">> := map(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_chat_response_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% attribute_filter() :: #{
-%%   <<"andAllFilters">> => list(attribute_filter()()),
+%%   <<"andAllFilters">> => list(attribute_filter()),
 %%   <<"containsAll">> => document_attribute(),
 %%   <<"containsAny">> => document_attribute(),
 %%   <<"equalsTo">> => document_attribute(),
@@ -2319,7 +2319,7 @@
 %%   <<"lessThan">> => document_attribute(),
 %%   <<"lessThanOrEquals">> => document_attribute(),
 %%   <<"notFilter">> => attribute_filter(),
-%%   <<"orAllFilters">> => list(attribute_filter()())
+%%   <<"orAllFilters">> => list(attribute_filter())
 %% }
 -type attribute_filter() :: #{binary() => any()}.
 
@@ -2337,7 +2337,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"applications">> => list(application()()),
+%%   <<"applications">> => list(application()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.
@@ -2347,7 +2347,7 @@
 %% data_accessor_authentication_detail() :: #{
 %%   <<"authenticationConfiguration">> => list(),
 %%   <<"authenticationType">> => list(any()),
-%%   <<"externalIds">> => list(string()())
+%%   <<"externalIds">> => list(string())
 %% }
 -type data_accessor_authentication_detail() :: #{binary() => any()}.
 
@@ -2384,7 +2384,7 @@
 %%   <<"nextToken">> => string(),
 %%   <<"orchestrationConfiguration">> => applied_orchestration_configuration(),
 %%   <<"responseScope">> => list(any()),
-%%   <<"topicConfigurations">> => list(topic_configuration()())
+%%   <<"topicConfigurations">> => list(topic_configuration())
 %% }
 -type get_chat_controls_configuration_response() :: #{binary() => any()}.
 
@@ -2440,7 +2440,7 @@
 %% permission_condition() :: #{
 %%   <<"conditionKey">> => string(),
 %%   <<"conditionOperator">> => list(any()),
-%%   <<"conditionValues">> => list(string()())
+%%   <<"conditionValues">> => list(string())
 %% }
 -type permission_condition() :: #{binary() => any()}.
 
@@ -2486,7 +2486,7 @@
 
 %% Example:
 %% list_groups_response() :: #{
-%%   <<"items">> => list(group_summary()()),
+%%   <<"items">> => list(group_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_groups_response() :: #{binary() => any()}.
@@ -2501,7 +2501,7 @@
 
 %% Example:
 %% access_configuration() :: #{
-%%   <<"accessControls">> => list(access_control()()),
+%%   <<"accessControls">> => list(access_control()),
 %%   <<"memberRelation">> => list(any())
 %% }
 -type access_configuration() :: #{binary() => any()}.
@@ -2559,8 +2559,8 @@
 
 %% Example:
 %% users_and_groups() :: #{
-%%   <<"userGroups">> => list(string()()),
-%%   <<"userIds">> => list(string()())
+%%   <<"userGroups">> => list(string()),
+%%   <<"userIds">> => list(string())
 %% }
 -type users_and_groups() :: #{binary() => any()}.
 
@@ -2675,7 +2675,7 @@
 %% Example:
 %% document() :: #{
 %%   <<"accessConfiguration">> => access_configuration(),
-%%   <<"attributes">> => list(document_attribute()()),
+%%   <<"attributes">> => list(document_attribute()),
 %%   <<"content">> => list(),
 %%   <<"contentType">> => list(any()),
 %%   <<"documentEnrichmentConfiguration">> => document_enrichment_configuration(),
@@ -2688,7 +2688,7 @@
 
 %% Example:
 %% list_attachments_response() :: #{
-%%   <<"attachments">> => list(attachment()()),
+%%   <<"attachments">> => list(attachment()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_attachments_response() :: #{binary() => any()}.
@@ -2767,7 +2767,7 @@
 %% Example:
 %% create_user_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"userAliases">> => list(user_alias()()),
+%%   <<"userAliases">> => list(user_alias()),
 %%   <<"userId">> := string()
 %% }
 -type create_user_request() :: #{binary() => any()}.
@@ -2780,7 +2780,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
-%%   <<"documentAttributeConfigurations">> => list(document_attribute_configuration()()),
+%%   <<"documentAttributeConfigurations">> => list(document_attribute_configuration()),
 %%   <<"error">> => error_detail(),
 %%   <<"indexArn">> => string(),
 %%   <<"indexId">> => string(),
@@ -2796,10 +2796,10 @@
 %% message() :: #{
 %%   <<"actionExecution">> => action_execution(),
 %%   <<"actionReview">> => action_review(),
-%%   <<"attachments">> => list(attachment_output()()),
+%%   <<"attachments">> => list(attachment_output()),
 %%   <<"body">> => string(),
 %%   <<"messageId">> => string(),
-%%   <<"sourceAttribution">> => list(source_attribution()()),
+%%   <<"sourceAttribution">> => list(source_attribution()),
 %%   <<"time">> => non_neg_integer(),
 %%   <<"type">> => list(any())
 %% }

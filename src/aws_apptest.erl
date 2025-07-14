@@ -125,7 +125,7 @@
 
 %% Example:
 %% batch_step_output() :: #{
-%%   <<"dataSetDetails">> => list(data_set()()),
+%%   <<"dataSetDetails">> => list(data_set()),
 %%   <<"dataSetExportLocation">> => string(),
 %%   <<"dmsOutputLocation">> => string()
 %% }
@@ -147,7 +147,7 @@
 %% Example:
 %% list_test_run_test_cases_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testRunTestCases">> => list(test_case_run_summary()())
+%%   <<"testRunTestCases">> => list(test_case_run_summary())
 %% }
 -type list_test_run_test_cases_response() :: #{binary() => any()}.
 
@@ -215,8 +215,8 @@
 
 %% Example:
 %% create_test_suite_request() :: #{
-%%   <<"afterSteps">> => list(step()()),
-%%   <<"beforeSteps">> => list(step()()),
+%%   <<"afterSteps">> => list(step()),
+%%   <<"beforeSteps">> => list(step()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
@@ -230,7 +230,7 @@
 %% list_test_suites_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"testSuiteIds">> => list(string()())
+%%   <<"testSuiteIds">> => list(string())
 %% }
 -type list_test_suites_request() :: #{binary() => any()}.
 
@@ -271,7 +271,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -325,7 +325,7 @@
 %% Example:
 %% list_test_cases_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testCases">> => list(test_case_summary()())
+%%   <<"testCases">> => list(test_case_summary())
 %% }
 -type list_test_cases_response() :: #{binary() => any()}.
 
@@ -335,7 +335,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"steps">> := list(step()()),
+%%   <<"steps">> := list(step()),
 %%   <<"tags">> => map()
 %% }
 -type create_test_case_request() :: #{binary() => any()}.
@@ -390,7 +390,7 @@
 %% list_test_configurations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"testConfigurationIds">> => list(string()())
+%%   <<"testConfigurationIds">> => list(string())
 %% }
 -type list_test_configurations_request() :: #{binary() => any()}.
 
@@ -515,7 +515,7 @@
 %% Example:
 %% list_test_suites_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testSuites">> => list(test_suite_summary()())
+%%   <<"testSuites">> => list(test_suite_summary())
 %% }
 -type list_test_suites_response() :: #{binary() => any()}.
 
@@ -587,8 +587,8 @@
 
 %% Example:
 %% update_test_suite_request() :: #{
-%%   <<"afterSteps">> => list(step()()),
-%%   <<"beforeSteps">> => list(step()()),
+%%   <<"afterSteps">> => list(step()),
+%%   <<"beforeSteps">> => list(step()),
 %%   <<"description">> => string(),
 %%   <<"testCases">> => list()
 %% }
@@ -647,7 +647,7 @@
 %% batch_step_input() :: #{
 %%   <<"batchJobName">> => string(),
 %%   <<"batchJobParameters">> => map(),
-%%   <<"exportDataSetNames">> => list(string()()),
+%%   <<"exportDataSetNames">> => list(string()),
 %%   <<"properties">> => mainframe_action_properties(),
 %%   <<"resource">> => list()
 %% }
@@ -664,7 +664,7 @@
 %% Example:
 %% update_test_case_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"steps">> => list(step()())
+%%   <<"steps">> => list(step())
 %% }
 -type update_test_case_request() :: #{binary() => any()}.
 
@@ -673,7 +673,7 @@
 %% list_test_cases_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"testCaseIds">> => list(string()())
+%%   <<"testCaseIds">> => list(string())
 %% }
 -type list_test_cases_request() :: #{binary() => any()}.
 
@@ -724,7 +724,7 @@
 %% Example:
 %% list_test_run_steps_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testRunSteps">> => list(test_run_step_summary()())
+%%   <<"testRunSteps">> => list(test_run_step_summary())
 %% }
 -type list_test_run_steps_response() :: #{binary() => any()}.
 
@@ -737,7 +737,7 @@
 %%   <<"latestVersion">> => test_configuration_latest_version(),
 %%   <<"name">> => string(),
 %%   <<"properties">> => map(),
-%%   <<"resources">> => list(resource()()),
+%%   <<"resources">> => list(resource()),
 %%   <<"serviceSettings">> => service_settings(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()],
@@ -753,14 +753,14 @@
 %% batch() :: #{
 %%   <<"batchJobName">> => string(),
 %%   <<"batchJobParameters">> => map(),
-%%   <<"exportDataSetNames">> => list(string()())
+%%   <<"exportDataSetNames">> => list(string())
 %% }
 -type batch() :: #{binary() => any()}.
 
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }
@@ -797,8 +797,8 @@
 
 %% Example:
 %% get_test_suite_response() :: #{
-%%   <<"afterSteps">> => list(step()()),
-%%   <<"beforeSteps">> => list(step()()),
+%%   <<"afterSteps">> => list(step()),
+%%   <<"beforeSteps">> => list(step()),
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"lastUpdateTime">> => [non_neg_integer()],
@@ -835,7 +835,7 @@
 
 %% Example:
 %% t_n3270() :: #{
-%%   <<"exportDataSetNames">> => list(string()()),
+%%   <<"exportDataSetNames">> => list(string()),
 %%   <<"script">> => script()
 %% }
 -type t_n3270() :: #{binary() => any()}.
@@ -851,9 +851,9 @@
 
 %% Example:
 %% compare_data_sets_step_input() :: #{
-%%   <<"sourceDataSets">> => list(data_set()()),
+%%   <<"sourceDataSets">> => list(data_set()),
 %%   <<"sourceLocation">> => string(),
-%%   <<"targetDataSets">> => list(data_set()()),
+%%   <<"targetDataSets">> => list(data_set()),
 %%   <<"targetLocation">> => string()
 %% }
 -type compare_data_sets_step_input() :: #{binary() => any()}.
@@ -872,7 +872,7 @@
 %% Example:
 %% list_test_runs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testRuns">> => list(test_run_summary()())
+%%   <<"testRuns">> => list(test_run_summary())
 %% }
 -type list_test_runs_response() :: #{binary() => any()}.
 
@@ -928,7 +928,7 @@
 
 %% Example:
 %% t_n3270_step_output() :: #{
-%%   <<"dataSetDetails">> => list(data_set()()),
+%%   <<"dataSetDetails">> => list(data_set()),
 %%   <<"dataSetExportLocation">> => string(),
 %%   <<"dmsOutputLocation">> => string(),
 %%   <<"scriptOutputLocation">> => string()
@@ -955,7 +955,7 @@
 
 %% Example:
 %% t_n3270_step_input() :: #{
-%%   <<"exportDataSetNames">> => list(string()()),
+%%   <<"exportDataSetNames">> => list(string()),
 %%   <<"properties">> => mainframe_action_properties(),
 %%   <<"resource">> => list(),
 %%   <<"script">> => script_summary()
@@ -974,7 +974,7 @@
 %% Example:
 %% list_test_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"testConfigurations">> => list(test_configuration_summary()())
+%%   <<"testConfigurations">> => list(test_configuration_summary())
 %% }
 -type list_test_configurations_response() :: #{binary() => any()}.
 
@@ -1020,7 +1020,7 @@
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"properties">> => map(),
-%%   <<"resources">> := list(resource()()),
+%%   <<"resources">> := list(resource()),
 %%   <<"serviceSettings">> => service_settings(),
 %%   <<"tags">> => map()
 %% }
@@ -1036,7 +1036,7 @@
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()],
-%%   <<"steps">> => list(step()()),
+%%   <<"steps">> => list(step()),
 %%   <<"tags">> => map(),
 %%   <<"testCaseArn">> => string(),
 %%   <<"testCaseId">> => string(),
@@ -1049,7 +1049,7 @@
 %% list_test_runs_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"testRunIds">> => list(string()()),
+%%   <<"testRunIds">> => list(string()),
 %%   <<"testSuiteId">> => string()
 %% }
 -type list_test_runs_request() :: #{binary() => any()}.
@@ -1059,7 +1059,7 @@
 %% update_test_configuration_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"properties">> => map(),
-%%   <<"resources">> => list(resource()()),
+%%   <<"resources">> => list(resource()),
 %%   <<"serviceSettings">> => service_settings()
 %% }
 -type update_test_configuration_request() :: #{binary() => any()}.

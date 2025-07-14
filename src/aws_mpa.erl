@@ -98,7 +98,7 @@
 %% Example:
 %% list_policy_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PolicyVersions">> => list(policy_version_summary()())
+%%   <<"PolicyVersions">> => list(policy_version_summary())
 %% }
 -type list_policy_versions_response() :: #{binary() => any()}.
 
@@ -143,7 +143,7 @@
 %%   <<"ApprovalStrategy">> => list(),
 %%   <<"ApprovalTeamArn">> => string(),
 %%   <<"ApprovalTeamName">> => string(),
-%%   <<"ApproverResponses">> => list(get_session_response_approver_response()()),
+%%   <<"ApproverResponses">> => list(get_session_response_approver_response()),
 %%   <<"CompletionTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"ExecutionStatus">> => list(any()),
@@ -172,7 +172,7 @@
 %% Example:
 %% list_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Policies">> => list(policy()())
+%%   <<"Policies">> => list(policy())
 %% }
 -type list_policies_response() :: #{binary() => any()}.
 
@@ -205,7 +205,7 @@
 %% Example:
 %% get_approval_team_response() :: #{
 %%   <<"ApprovalStrategy">> => list(),
-%%   <<"Approvers">> => list(get_approval_team_response_approver()()),
+%%   <<"Approvers">> => list(get_approval_team_response_approver()),
 %%   <<"Arn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -213,7 +213,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NumberOfApprovers">> => [integer()],
 %%   <<"PendingUpdate">> => pending_update(),
-%%   <<"Policies">> => list(policy_reference()()),
+%%   <<"Policies">> => list(policy_reference()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusCode">> => list(any()),
 %%   <<"StatusMessage">> => string(),
@@ -247,7 +247,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -317,7 +317,7 @@
 %% Example:
 %% list_sessions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(list_sessions_response_session()())
+%%   <<"Sessions">> => list(list_sessions_response_session())
 %% }
 -type list_sessions_response() :: #{binary() => any()}.
 
@@ -352,7 +352,7 @@
 
 %% Example:
 %% list_identity_sources_response() :: #{
-%%   <<"IdentitySources">> => list(identity_source_for_list()()),
+%%   <<"IdentitySources">> => list(identity_source_for_list()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_identity_sources_response() :: #{binary() => any()}.
@@ -394,7 +394,7 @@
 
 %% Example:
 %% list_sessions_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -436,7 +436,7 @@
 
 %% Example:
 %% list_approval_teams_response() :: #{
-%%   <<"ApprovalTeams">> => list(list_approval_teams_response_approval_team()()),
+%%   <<"ApprovalTeams">> => list(list_approval_teams_response_approval_team()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_approval_teams_response() :: #{binary() => any()}.
@@ -520,11 +520,11 @@
 %% Example:
 %% create_approval_team_request() :: #{
 %%   <<"ApprovalStrategy">> := list(),
-%%   <<"Approvers">> := list(approval_team_request_approver()()),
+%%   <<"Approvers">> := list(approval_team_request_approver()),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Policies">> := list(policy_reference()()),
+%%   <<"Policies">> := list(policy_reference()),
 %%   <<"Tags">> => map()
 %% }
 -type create_approval_team_request() :: #{binary() => any()}.
@@ -560,7 +560,7 @@
 %% Example:
 %% list_resource_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourcePolicies">> => list(list_resource_policies_response_resource_policy()())
+%%   <<"ResourcePolicies">> => list(list_resource_policies_response_resource_policy())
 %% }
 -type list_resource_policies_response() :: #{binary() => any()}.
 
@@ -638,7 +638,7 @@
 %% Example:
 %% pending_update() :: #{
 %%   <<"ApprovalStrategy">> => list(),
-%%   <<"Approvers">> => list(get_approval_team_response_approver()()),
+%%   <<"Approvers">> => list(get_approval_team_response_approver()),
 %%   <<"Description">> => string(),
 %%   <<"NumberOfApprovers">> => [integer()],
 %%   <<"Status">> => list(any()),
@@ -661,7 +661,7 @@
 %% Example:
 %% update_approval_team_request() :: #{
 %%   <<"ApprovalStrategy">> => list(),
-%%   <<"Approvers">> => list(approval_team_request_approver()()),
+%%   <<"Approvers">> => list(approval_team_request_approver()),
 %%   <<"Description">> => string()
 %% }
 -type update_approval_team_request() :: #{binary() => any()}.

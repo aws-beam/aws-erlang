@@ -65,7 +65,7 @@
 %% Example:
 %% describe_report_definitions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReportDefinitions">> => list(report_definition()())
+%%   <<"ReportDefinitions">> => list(report_definition())
 %% }
 -type describe_report_definitions_response() :: #{binary() => any()}.
 
@@ -89,7 +89,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -109,7 +109,7 @@
 %% Example:
 %% put_report_definition_request() :: #{
 %%   <<"ReportDefinition">> := report_definition(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type put_report_definition_request() :: #{binary() => any()}.
 
@@ -166,7 +166,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ReportName">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -179,7 +179,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ReportName">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 

@@ -105,7 +105,7 @@
 %% Example:
 %% get_buyer_dashboard_input() :: #{
 %%   <<"dashboardIdentifier">> := string(),
-%%   <<"embeddingDomains">> := list(string()())
+%%   <<"embeddingDomains">> := list(string())
 %% }
 -type get_buyer_dashboard_input() :: #{binary() => any()}.
 
@@ -114,7 +114,7 @@
 %% get_buyer_dashboard_output() :: #{
 %%   <<"dashboardIdentifier">> => string(),
 %%   <<"embedUrl">> => [string()],
-%%   <<"embeddingDomains">> => list(string()())
+%%   <<"embeddingDomains">> => list(string())
 %% }
 -type get_buyer_dashboard_output() :: #{binary() => any()}.
 

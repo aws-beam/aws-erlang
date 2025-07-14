@@ -566,7 +566,7 @@
 %% Example:
 %% realtime_log_configs() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(realtime_log_config()()),
+%%   <<"Items">> => list(realtime_log_config()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string()
@@ -623,7 +623,7 @@
 
 %% Example:
 %% status_codes() :: #{
-%%   <<"Items">> => list(integer()()),
+%%   <<"Items">> => list(integer()),
 %%   <<"Quantity">> => integer()
 %% }
 -type status_codes() :: #{binary() => any()}.
@@ -647,7 +647,7 @@
 
 %% Example:
 %% lambda_function_associations() :: #{
-%%   <<"Items">> => list(lambda_function_association()()),
+%%   <<"Items">> => list(lambda_function_association()),
 %%   <<"Quantity">> => integer()
 %% }
 -type lambda_function_associations() :: #{binary() => any()}.
@@ -760,11 +760,11 @@
 %%   <<"ConnectionGroupId">> => string(),
 %%   <<"Customizations">> => customizations(),
 %%   <<"DistributionId">> := string(),
-%%   <<"Domains">> := list(domain_item()()),
+%%   <<"Domains">> := list(domain_item()),
 %%   <<"Enabled">> => boolean(),
 %%   <<"ManagedCertificateRequest">> => managed_certificate_request(),
 %%   <<"Name">> := string(),
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"Tags">> => tags()
 %% }
 -type create_distribution_tenant_request() :: #{binary() => any()}.
@@ -820,7 +820,7 @@
 
 %% Example:
 %% continuous_deployment_policy_list() :: #{
-%%   <<"Items">> => list(continuous_deployment_policy_summary()()),
+%%   <<"Items">> => list(continuous_deployment_policy_summary()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -837,7 +837,7 @@
 
 %% Example:
 %% anycast_ip_list() :: #{
-%%   <<"AnycastIps">> => list(string()()),
+%%   <<"AnycastIps">> => list(string()),
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"IpCount">> => integer(),
@@ -850,7 +850,7 @@
 
 %% Example:
 %% encryption_entities() :: #{
-%%   <<"Items">> => list(encryption_entity()()),
+%%   <<"Items">> => list(encryption_entity()),
 %%   <<"Quantity">> => integer()
 %% }
 -type encryption_entities() :: #{binary() => any()}.
@@ -987,7 +987,7 @@
 
 %% Example:
 %% field_level_encryption_list() :: #{
-%%   <<"Items">> => list(field_level_encryption_summary()()),
+%%   <<"Items">> => list(field_level_encryption_summary()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -1093,11 +1093,11 @@
 %%   <<"ConnectionGroupId">> => string(),
 %%   <<"Customizations">> => customizations(),
 %%   <<"DistributionId">> => string(),
-%%   <<"Domains">> => list(domain_item()()),
+%%   <<"Domains">> => list(domain_item()),
 %%   <<"Enabled">> => boolean(),
 %%   <<"IfMatch">> := string(),
 %%   <<"ManagedCertificateRequest">> => managed_certificate_request(),
-%%   <<"Parameters">> => list(parameter()())
+%%   <<"Parameters">> => list(parameter())
 %% }
 -type update_distribution_tenant_request() :: #{binary() => any()}.
 
@@ -1155,7 +1155,7 @@
 %% Example:
 %% trusted_key_groups() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type trusted_key_groups() :: #{binary() => any()}.
@@ -1188,7 +1188,7 @@
 %% Example:
 %% origin_access_control_list() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(origin_access_control_summary()()),
+%%   <<"Items">> => list(origin_access_control_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
@@ -1199,7 +1199,7 @@
 
 %% Example:
 %% geo_restriction() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer(),
 %%   <<"RestrictionType">> => list(any())
 %% }
@@ -1242,7 +1242,7 @@
 %% test_result() :: #{
 %%   <<"ComputeUtilization">> => string(),
 %%   <<"FunctionErrorMessage">> => string(),
-%%   <<"FunctionExecutionLogs">> => list(string()()),
+%%   <<"FunctionExecutionLogs">> => list(string()),
 %%   <<"FunctionOutput">> => string(),
 %%   <<"FunctionSummary">> => function_summary()
 %% }
@@ -1267,7 +1267,7 @@
 %% Example:
 %% distribution_summary() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"AliasICPRecordals">> => list(alias_i_c_p_recordal()()),
+%%   <<"AliasICPRecordals">> => list(alias_i_c_p_recordal()),
 %%   <<"Aliases">> => aliases(),
 %%   <<"AnycastIpListId">> => string(),
 %%   <<"CacheBehaviors">> => cache_behaviors(),
@@ -1452,7 +1452,7 @@
 %% Example:
 %% key_group_config() :: #{
 %%   <<"Comment">> => string(),
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type key_group_config() :: #{binary() => any()}.
@@ -1555,7 +1555,7 @@
 
 %% Example:
 %% query_string_cache_keys() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type query_string_cache_keys() :: #{binary() => any()}.
@@ -1739,7 +1739,7 @@
 
 %% Example:
 %% geo_restriction_customization() :: #{
-%%   <<"Locations">> => list(string()()),
+%%   <<"Locations">> => list(string()),
 %%   <<"RestrictionType">> => list(any())
 %% }
 -type geo_restriction_customization() :: #{binary() => any()}.
@@ -1777,7 +1777,7 @@
 
 %% Example:
 %% query_arg_profiles() :: #{
-%%   <<"Items">> => list(query_arg_profile()()),
+%%   <<"Items">> => list(query_arg_profile()),
 %%   <<"Quantity">> => integer()
 %% }
 -type query_arg_profiles() :: #{binary() => any()}.
@@ -1805,7 +1805,7 @@
 
 %% Example:
 %% response_headers_policy_access_control_allow_origins() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type response_headers_policy_access_control_allow_origins() :: #{binary() => any()}.
@@ -1836,7 +1836,7 @@
 
 %% Example:
 %% key_group_list() :: #{
-%%   <<"Items">> => list(key_group_summary()()),
+%%   <<"Items">> => list(key_group_summary()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -1878,7 +1878,7 @@
 
 %% Example:
 %% content_type_profiles() :: #{
-%%   <<"Items">> => list(content_type_profile()()),
+%%   <<"Items">> => list(content_type_profile()),
 %%   <<"Quantity">> => integer()
 %% }
 -type content_type_profiles() :: #{binary() => any()}.
@@ -1922,7 +1922,7 @@
 
 %% Example:
 %% cache_policy_list() :: #{
-%%   <<"Items">> => list(cache_policy_summary()()),
+%%   <<"Items">> => list(cache_policy_summary()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -1970,7 +1970,7 @@
 
 %% Example:
 %% origins() :: #{
-%%   <<"Items">> => list(origin()()),
+%%   <<"Items">> => list(origin()),
 %%   <<"Quantity">> => integer()
 %% }
 -type origins() :: #{binary() => any()}.
@@ -2014,7 +2014,7 @@
 
 %% Example:
 %% list_connection_groups_result() :: #{
-%%   <<"ConnectionGroups">> => list(connection_group_summary()()),
+%%   <<"ConnectionGroups">> => list(connection_group_summary()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_connection_groups_result() :: #{binary() => any()}.
@@ -2047,7 +2047,7 @@
 
 %% Example:
 %% cache_behaviors() :: #{
-%%   <<"Items">> => list(cache_behavior()()),
+%%   <<"Items">> => list(cache_behavior()),
 %%   <<"Quantity">> => integer()
 %% }
 -type cache_behaviors() :: #{binary() => any()}.
@@ -2055,7 +2055,7 @@
 
 %% Example:
 %% custom_headers() :: #{
-%%   <<"Items">> => list(origin_custom_header()()),
+%%   <<"Items">> => list(origin_custom_header()),
 %%   <<"Quantity">> => integer()
 %% }
 -type custom_headers() :: #{binary() => any()}.
@@ -2070,8 +2070,8 @@
 
 %% Example:
 %% create_realtime_log_config_request() :: #{
-%%   <<"EndPoints">> := list(end_point()()),
-%%   <<"Fields">> := list(string()()),
+%%   <<"EndPoints">> := list(end_point()),
+%%   <<"Fields">> := list(string()),
 %%   <<"Name">> := string(),
 %%   <<"SamplingRate">> := float()
 %% }
@@ -2094,7 +2094,7 @@
 
 %% Example:
 %% function_associations() :: #{
-%%   <<"Items">> => list(function_association()()),
+%%   <<"Items">> => list(function_association()),
 %%   <<"Quantity">> => integer()
 %% }
 -type function_associations() :: #{binary() => any()}.
@@ -2306,7 +2306,7 @@
 
 %% Example:
 %% public_key_list() :: #{
-%%   <<"Items">> => list(public_key_summary()()),
+%%   <<"Items">> => list(public_key_summary()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -2324,7 +2324,7 @@
 
 %% Example:
 %% response_headers_policy_custom_headers_config() :: #{
-%%   <<"Items">> => list(response_headers_policy_custom_header()()),
+%%   <<"Items">> => list(response_headers_policy_custom_header()),
 %%   <<"Quantity">> => integer()
 %% }
 -type response_headers_policy_custom_headers_config() :: #{binary() => any()}.
@@ -2409,7 +2409,7 @@
 
 %% Example:
 %% response_headers_policy_access_control_expose_headers() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type response_headers_policy_access_control_expose_headers() :: #{binary() => any()}.
@@ -2467,14 +2467,14 @@
 
 %% Example:
 %% tenant_config() :: #{
-%%   <<"ParameterDefinitions">> => list(parameter_definition()())
+%%   <<"ParameterDefinitions">> => list(parameter_definition())
 %% }
 -type tenant_config() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_domain_conflicts_result() :: #{
-%%   <<"DomainConflicts">> => list(domain_conflict()()),
+%%   <<"DomainConflicts">> => list(domain_conflict()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_domain_conflicts_result() :: #{binary() => any()}.
@@ -2500,7 +2500,7 @@
 
 %% Example:
 %% response_headers_policy_remove_headers_config() :: #{
-%%   <<"Items">> => list(response_headers_policy_remove_header()()),
+%%   <<"Items">> => list(response_headers_policy_remove_header()),
 %%   <<"Quantity">> => integer()
 %% }
 -type response_headers_policy_remove_headers_config() :: #{binary() => any()}.
@@ -2547,7 +2547,7 @@
 
 %% Example:
 %% key_value_store_associations() :: #{
-%%   <<"Items">> => list(key_value_store_association()()),
+%%   <<"Items">> => list(key_value_store_association()),
 %%   <<"Quantity">> => integer()
 %% }
 -type key_value_store_associations() :: #{binary() => any()}.
@@ -2602,7 +2602,7 @@
 
 %% Example:
 %% response_headers_policy_list() :: #{
-%%   <<"Items">> => list(response_headers_policy_summary()()),
+%%   <<"Items">> => list(response_headers_policy_summary()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -2657,7 +2657,7 @@
 
 %% Example:
 %% cookie_names() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type cookie_names() :: #{binary() => any()}.
@@ -2701,7 +2701,7 @@
 
 %% Example:
 %% field_patterns() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type field_patterns() :: #{binary() => any()}.
@@ -2733,7 +2733,7 @@
 
 %% Example:
 %% tags() :: #{
-%%   <<"Items">> => list(tag()())
+%%   <<"Items">> => list(tag())
 %% }
 -type tags() :: #{binary() => any()}.
 
@@ -2741,7 +2741,7 @@
 %% Example:
 %% anycast_ip_list_collection() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(anycast_ip_list_summary()()),
+%%   <<"Items">> => list(anycast_ip_list_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
@@ -2755,7 +2755,7 @@
 %%   <<"ARN">> => string(),
 %%   <<"ActiveTrustedKeyGroups">> => active_trusted_key_groups(),
 %%   <<"ActiveTrustedSigners">> => active_trusted_signers(),
-%%   <<"AliasICPRecordals">> => list(alias_i_c_p_recordal()()),
+%%   <<"AliasICPRecordals">> => list(alias_i_c_p_recordal()),
 %%   <<"DistributionConfig">> => distribution_config(),
 %%   <<"DomainName">> => string(),
 %%   <<"Id">> => string(),
@@ -2783,7 +2783,7 @@
 
 %% Example:
 %% list_distribution_tenants_result() :: #{
-%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()()),
+%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_distribution_tenants_result() :: #{binary() => any()}.
@@ -2867,7 +2867,7 @@
 
 %% Example:
 %% aliases() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type aliases() :: #{binary() => any()}.
@@ -2875,7 +2875,7 @@
 
 %% Example:
 %% list_distribution_tenants_by_customization_result() :: #{
-%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()()),
+%%   <<"DistributionTenantList">> => list(distribution_tenant_summary()),
 %%   <<"NextMarker">> => string()
 %% }
 -type list_distribution_tenants_by_customization_result() :: #{binary() => any()}.
@@ -2890,7 +2890,7 @@
 
 %% Example:
 %% origin_groups() :: #{
-%%   <<"Items">> => list(origin_group()()),
+%%   <<"Items">> => list(origin_group()),
 %%   <<"Quantity">> => integer()
 %% }
 -type origin_groups() :: #{binary() => any()}.
@@ -3031,7 +3031,7 @@
 %% managed_certificate_details() :: #{
 %%   <<"CertificateArn">> => string(),
 %%   <<"CertificateStatus">> => list(any()),
-%%   <<"ValidationTokenDetails">> => list(validation_token_detail()()),
+%%   <<"ValidationTokenDetails">> => list(validation_token_detail()),
 %%   <<"ValidationTokenHost">> => list(any())
 %% }
 -type managed_certificate_details() :: #{binary() => any()}.
@@ -3167,7 +3167,7 @@
 
 %% Example:
 %% key_value_store_list() :: #{
-%%   <<"Items">> => list(key_value_store()()),
+%%   <<"Items">> => list(key_value_store()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -3185,7 +3185,7 @@
 
 %% Example:
 %% query_string_names() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type query_string_names() :: #{binary() => any()}.
@@ -3230,7 +3230,7 @@
 
 %% Example:
 %% conflicting_aliases_list() :: #{
-%%   <<"Items">> => list(conflicting_alias()()),
+%%   <<"Items">> => list(conflicting_alias()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -3338,7 +3338,7 @@
 %% Example:
 %% active_trusted_signers() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"Items">> => list(signer()()),
+%%   <<"Items">> => list(signer()),
 %%   <<"Quantity">> => integer()
 %% }
 -type active_trusted_signers() :: #{binary() => any()}.
@@ -3413,7 +3413,7 @@
 %% Example:
 %% distribution_list() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(distribution_summary()()),
+%%   <<"Items">> => list(distribution_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
@@ -3518,12 +3518,12 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Customizations">> => customizations(),
 %%   <<"DistributionId">> => string(),
-%%   <<"Domains">> => list(domain_result()()),
+%%   <<"Domains">> => list(domain_result()),
 %%   <<"Enabled">> => boolean(),
 %%   <<"Id">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
-%%   <<"Parameters">> => list(parameter()()),
+%%   <<"Parameters">> => list(parameter()),
 %%   <<"Status">> => string(),
 %%   <<"Tags">> => tags()
 %% }
@@ -3556,7 +3556,7 @@
 
 %% Example:
 %% tag_keys() :: #{
-%%   <<"Items">> => list(string()())
+%%   <<"Items">> => list(string())
 %% }
 -type tag_keys() :: #{binary() => any()}.
 
@@ -3570,7 +3570,7 @@
 
 %% Example:
 %% verify_dns_configuration_result() :: #{
-%%   <<"DnsConfigurationList">> => list(dns_configuration()())
+%%   <<"DnsConfigurationList">> => list(dns_configuration())
 %% }
 -type verify_dns_configuration_result() :: #{binary() => any()}.
 
@@ -3831,8 +3831,8 @@
 %% Example:
 %% update_realtime_log_config_request() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"EndPoints">> => list(end_point()()),
-%%   <<"Fields">> => list(string()()),
+%%   <<"EndPoints">> => list(end_point()),
+%%   <<"Fields">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"SamplingRate">> => float()
 %% }
@@ -3867,7 +3867,7 @@
 
 %% Example:
 %% function_list() :: #{
-%%   <<"Items">> => list(function_summary()()),
+%%   <<"Items">> => list(function_summary()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -3898,7 +3898,7 @@
 
 %% Example:
 %% headers() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type headers() :: #{binary() => any()}.
@@ -4020,7 +4020,7 @@
 
 %% Example:
 %% origin_group_members() :: #{
-%%   <<"Items">> => list(origin_group_member()()),
+%%   <<"Items">> => list(origin_group_member()),
 %%   <<"Quantity">> => integer()
 %% }
 -type origin_group_members() :: #{binary() => any()}.
@@ -4123,7 +4123,7 @@
 
 %% Example:
 %% origin_request_policy_list() :: #{
-%%   <<"Items">> => list(origin_request_policy_summary()()),
+%%   <<"Items">> => list(origin_request_policy_summary()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -4282,7 +4282,7 @@
 
 %% Example:
 %% paths() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type paths() :: #{binary() => any()}.
@@ -4364,7 +4364,7 @@
 %% Example:
 %% invalidation_list() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(invalidation_summary()()),
+%%   <<"Items">> => list(invalidation_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
@@ -4437,7 +4437,7 @@
 %% Example:
 %% vpc_origin_list() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(vpc_origin_summary()()),
+%%   <<"Items">> => list(vpc_origin_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
@@ -4514,7 +4514,7 @@
 
 %% Example:
 %% field_level_encryption_profile_list() :: #{
-%%   <<"Items">> => list(field_level_encryption_profile_summary()()),
+%%   <<"Items">> => list(field_level_encryption_profile_summary()),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
 %%   <<"Quantity">> => integer()
@@ -4617,7 +4617,7 @@
 %% Example:
 %% cloud_front_origin_access_identity_list() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(cloud_front_origin_access_identity_summary()()),
+%%   <<"Items">> => list(cloud_front_origin_access_identity_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
@@ -4722,7 +4722,7 @@
 
 %% Example:
 %% custom_error_responses() :: #{
-%%   <<"Items">> => list(custom_error_response()()),
+%%   <<"Items">> => list(custom_error_response()),
 %%   <<"Quantity">> => integer()
 %% }
 -type custom_error_responses() :: #{binary() => any()}.
@@ -4957,7 +4957,7 @@
 %% Example:
 %% trusted_signers() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type trusted_signers() :: #{binary() => any()}.
@@ -4966,7 +4966,7 @@
 %% Example:
 %% streaming_distribution_list() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(streaming_distribution_summary()()),
+%%   <<"Items">> => list(streaming_distribution_summary()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
@@ -4984,7 +4984,7 @@
 
 %% Example:
 %% staging_distribution_dns_names() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type staging_distribution_dns_names() :: #{binary() => any()}.
@@ -5068,7 +5068,7 @@
 
 %% Example:
 %% key_pair_ids() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type key_pair_ids() :: #{binary() => any()}.
@@ -5126,7 +5126,7 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Customizations">> => customizations(),
 %%   <<"DistributionId">> => string(),
-%%   <<"Domains">> => list(domain_result()()),
+%%   <<"Domains">> => list(domain_result()),
 %%   <<"ETag">> => string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"Id">> => string(),
@@ -5161,7 +5161,7 @@
 %% Example:
 %% active_trusted_key_groups() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"Items">> => list(k_g_key_pair_ids()()),
+%%   <<"Items">> => list(k_g_key_pair_ids()),
 %%   <<"Quantity">> => integer()
 %% }
 -type active_trusted_key_groups() :: #{binary() => any()}.
@@ -5170,8 +5170,8 @@
 %% Example:
 %% realtime_log_config() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"EndPoints">> => list(end_point()()),
-%%   <<"Fields">> => list(string()()),
+%%   <<"EndPoints">> => list(end_point()),
+%%   <<"Fields">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"SamplingRate">> => float()
 %% }
@@ -5189,7 +5189,7 @@
 %% Example:
 %% distribution_id_list() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextMarker">> => string(),
@@ -5268,7 +5268,7 @@
 
 %% Example:
 %% response_headers_policy_access_control_allow_headers() :: #{
-%%   <<"Items">> => list(string()()),
+%%   <<"Items">> => list(string()),
 %%   <<"Quantity">> => integer()
 %% }
 -type response_headers_policy_access_control_allow_headers() :: #{binary() => any()}.

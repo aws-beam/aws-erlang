@@ -41,14 +41,14 @@
 %% Example:
 %% describe_savings_plans_offerings_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"searchResults">> => list(savings_plan_offering()())
+%%   <<"searchResults">> => list(savings_plan_offering())
 %% }
 -type describe_savings_plans_offerings_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_savings_plan_rates_request() :: #{
-%%   <<"filters">> => list(savings_plan_rate_filter()()),
+%%   <<"filters">> => list(savings_plan_rate_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"savingsPlanId">> := string()
@@ -67,18 +67,18 @@
 %% Example:
 %% savings_plan_rate_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type savings_plan_rate_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_savings_plans_request() :: #{
-%%   <<"filters">> => list(savings_plan_filter()()),
+%%   <<"filters">> => list(savings_plan_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"savingsPlanArns">> => list(string()()),
-%%   <<"savingsPlanIds">> => list(string()()),
+%%   <<"savingsPlanArns">> => list(string()),
+%%   <<"savingsPlanIds">> => list(string()),
 %%   <<"states">> => list(list(any())())
 %% }
 -type describe_savings_plans_request() :: #{binary() => any()}.
@@ -99,7 +99,7 @@
 %% savings_plan_offering_rate() :: #{
 %%   <<"operation">> => string(),
 %%   <<"productType">> => list(any()),
-%%   <<"properties">> => list(savings_plan_offering_rate_property()()),
+%%   <<"properties">> => list(savings_plan_offering_rate_property()),
 %%   <<"rate">> => string(),
 %%   <<"savingsPlanOffering">> => parent_savings_plan_offering(),
 %%   <<"serviceCode">> => list(any()),
@@ -127,7 +127,7 @@
 %%   <<"paymentOption">> => list(any()),
 %%   <<"planType">> => list(any()),
 %%   <<"productTypes">> => list(list(any())()),
-%%   <<"properties">> => list(savings_plan_offering_property()()),
+%%   <<"properties">> => list(savings_plan_offering_property()),
 %%   <<"serviceCode">> => string(),
 %%   <<"usageType">> => string()
 %% }
@@ -136,16 +136,16 @@
 
 %% Example:
 %% describe_savings_plans_offering_rates_request() :: #{
-%%   <<"filters">> => list(savings_plan_offering_rate_filter_element()()),
+%%   <<"filters">> => list(savings_plan_offering_rate_filter_element()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"operations">> => list(string()()),
+%%   <<"operations">> => list(string()),
 %%   <<"products">> => list(list(any())()),
-%%   <<"savingsPlanOfferingIds">> => list(string()()),
+%%   <<"savingsPlanOfferingIds">> => list(string()),
 %%   <<"savingsPlanPaymentOptions">> => list(list(any())()),
 %%   <<"savingsPlanTypes">> => list(list(any())()),
 %%   <<"serviceCodes">> => list(list(any())()),
-%%   <<"usageTypes">> => list(string()())
+%%   <<"usageTypes">> => list(string())
 %% }
 -type describe_savings_plans_offering_rates_request() :: #{binary() => any()}.
 
@@ -155,7 +155,7 @@
 %%   <<"currency">> => list(any()),
 %%   <<"operation">> => string(),
 %%   <<"productType">> => list(any()),
-%%   <<"properties">> => list(savings_plan_rate_property()()),
+%%   <<"properties">> => list(savings_plan_rate_property()),
 %%   <<"rate">> => string(),
 %%   <<"serviceCode">> => list(any()),
 %%   <<"unit">> => list(any()),
@@ -171,7 +171,7 @@
 %% Example:
 %% savings_plan_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type savings_plan_filter() :: #{binary() => any()}.
 
@@ -179,7 +179,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -273,7 +273,7 @@
 %% Example:
 %% describe_savings_plans_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"savingsPlans">> => list(savings_plan()())
+%%   <<"savingsPlans">> => list(savings_plan())
 %% }
 -type describe_savings_plans_response() :: #{binary() => any()}.
 
@@ -281,7 +281,7 @@
 %% Example:
 %% describe_savings_plans_offering_rates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"searchResults">> => list(savings_plan_offering_rate()())
+%%   <<"searchResults">> => list(savings_plan_offering_rate())
 %% }
 -type describe_savings_plans_offering_rates_response() :: #{binary() => any()}.
 
@@ -290,7 +290,7 @@
 %% describe_savings_plan_rates_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"savingsPlanId">> => string(),
-%%   <<"searchResults">> => list(savings_plan_rate()())
+%%   <<"searchResults">> => list(savings_plan_rate())
 %% }
 -type describe_savings_plan_rates_response() :: #{binary() => any()}.
 
@@ -345,7 +345,7 @@
 %% Example:
 %% savings_plan_offering_filter_element() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type savings_plan_offering_filter_element() :: #{binary() => any()}.
 
@@ -353,18 +353,18 @@
 %% Example:
 %% describe_savings_plans_offerings_request() :: #{
 %%   <<"currencies">> => list(list(any())()),
-%%   <<"descriptions">> => list(string()()),
-%%   <<"durations">> => list(float()()),
-%%   <<"filters">> => list(savings_plan_offering_filter_element()()),
+%%   <<"descriptions">> => list(string()),
+%%   <<"durations">> => list(float()),
+%%   <<"filters">> => list(savings_plan_offering_filter_element()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"offeringIds">> => list(string()()),
-%%   <<"operations">> => list(string()()),
+%%   <<"offeringIds">> => list(string()),
+%%   <<"operations">> => list(string()),
 %%   <<"paymentOptions">> => list(list(any())()),
 %%   <<"planTypes">> => list(list(any())()),
 %%   <<"productType">> => list(any()),
-%%   <<"serviceCodes">> => list(string()()),
-%%   <<"usageTypes">> => list(string()())
+%%   <<"serviceCodes">> => list(string()),
+%%   <<"usageTypes">> => list(string())
 %% }
 -type describe_savings_plans_offerings_request() :: #{binary() => any()}.
 
@@ -372,7 +372,7 @@
 %% Example:
 %% savings_plan_offering_rate_filter_element() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type savings_plan_offering_rate_filter_element() :: #{binary() => any()}.
 

@@ -110,9 +110,9 @@
 %%   <<"id">> => string(),
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
-%%   <<"overrides">> => list(theme_values()()),
+%%   <<"overrides">> => list(theme_values()),
 %%   <<"tags">> => map(),
-%%   <<"values">> => list(theme_values()())
+%%   <<"values">> => list(theme_values())
 %% }
 -type theme() :: #{binary() => any()}.
 
@@ -200,7 +200,7 @@
 %%   <<"asset">> => codegen_job_asset(),
 %%   <<"autoGenerateForms">> => [boolean()],
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"dependencies">> => list(codegen_dependency()()),
+%%   <<"dependencies">> => list(codegen_dependency()),
 %%   <<"environmentName">> => [string()],
 %%   <<"features">> => codegen_feature_flags(),
 %%   <<"genericDataSchema">> => codegen_job_generic_data_schema(),
@@ -273,7 +273,7 @@
 %%   <<"field">> => [string()],
 %%   <<"key">> => [string()],
 %%   <<"model">> => [string()],
-%%   <<"predicates">> => list(predicate()()),
+%%   <<"predicates">> => list(predicate()),
 %%   <<"slotName">> => [string()],
 %%   <<"userAttribute">> => [string()]
 %% }
@@ -298,9 +298,9 @@
 %% Example:
 %% create_theme_data() :: #{
 %%   <<"name">> => string(),
-%%   <<"overrides">> => list(theme_values()()),
+%%   <<"overrides">> => list(theme_values()),
 %%   <<"tags">> => map(),
-%%   <<"values">> => list(theme_values()())
+%%   <<"values">> => list(theme_values())
 %% }
 -type create_theme_data() :: #{binary() => any()}.
 
@@ -355,7 +355,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -451,7 +451,7 @@
 
 %% Example:
 %% list_codegen_jobs_response() :: #{
-%%   <<"entities">> => list(codegen_job_summary()()),
+%%   <<"entities">> => list(codegen_job_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_codegen_jobs_response() :: #{binary() => any()}.
@@ -486,7 +486,7 @@
 %% Example:
 %% create_component_data() :: #{
 %%   <<"bindingProperties">> => map(),
-%%   <<"children">> => list(component_child()()),
+%%   <<"children">> => list(component_child()),
 %%   <<"collectionProperties">> => map(),
 %%   <<"componentType">> => string(),
 %%   <<"events">> => map(),
@@ -496,7 +496,7 @@
 %%   <<"schemaVersion">> => [string()],
 %%   <<"sourceId">> => [string()],
 %%   <<"tags">> => map(),
-%%   <<"variants">> => list(component_variant()())
+%%   <<"variants">> => list(component_variant())
 %% }
 -type create_component_data() :: #{binary() => any()}.
 
@@ -519,7 +519,7 @@
 
 %% Example:
 %% export_forms_response() :: #{
-%%   <<"entities">> := list(form()()),
+%%   <<"entities">> := list(form()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type export_forms_response() :: #{binary() => any()}.
@@ -558,7 +558,7 @@
 %%   <<"inputType">> => field_input_config(),
 %%   <<"label">> => [string()],
 %%   <<"position">> => list(),
-%%   <<"validations">> => list(field_validation_configuration()())
+%%   <<"validations">> => list(field_validation_configuration())
 %% }
 -type field_config() :: #{binary() => any()}.
 
@@ -579,7 +579,7 @@
 
 %% Example:
 %% component_child() :: #{
-%%   <<"children">> => list(component_child()()),
+%%   <<"children">> => list(component_child()),
 %%   <<"componentType">> => [string()],
 %%   <<"events">> => map(),
 %%   <<"name">> => [string()],
@@ -593,7 +593,7 @@
 %% component() :: #{
 %%   <<"appId">> => [string()],
 %%   <<"bindingProperties">> => map(),
-%%   <<"children">> => list(component_child()()),
+%%   <<"children">> => list(component_child()),
 %%   <<"collectionProperties">> => map(),
 %%   <<"componentType">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -607,7 +607,7 @@
 %%   <<"schemaVersion">> => [string()],
 %%   <<"sourceId">> => [string()],
 %%   <<"tags">> => map(),
-%%   <<"variants">> => list(component_variant()())
+%%   <<"variants">> => list(component_variant())
 %% }
 -type component() :: #{binary() => any()}.
 
@@ -621,7 +621,7 @@
 
 %% Example:
 %% list_forms_response() :: #{
-%%   <<"entities">> := list(form_summary()()),
+%%   <<"entities">> := list(form_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_forms_response() :: #{binary() => any()}.
@@ -650,7 +650,7 @@
 
 %% Example:
 %% export_components_response() :: #{
-%%   <<"entities">> := list(component()()),
+%%   <<"entities">> := list(component()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type export_components_response() :: #{binary() => any()}.
@@ -805,7 +805,7 @@
 
 %% Example:
 %% theme_value() :: #{
-%%   <<"children">> => list(theme_values()()),
+%%   <<"children">> => list(theme_values()),
 %%   <<"value">> => [string()]
 %% }
 -type theme_value() :: #{binary() => any()}.
@@ -830,7 +830,7 @@
 %% Example:
 %% form_input_value_property() :: #{
 %%   <<"bindingProperties">> => form_input_value_property_binding_properties(),
-%%   <<"concat">> => list(form_input_value_property()()),
+%%   <<"concat">> => list(form_input_value_property()),
 %%   <<"value">> => [string()]
 %% }
 -type form_input_value_property() :: #{binary() => any()}.
@@ -909,7 +909,7 @@
 %%   <<"bindings">> => map(),
 %%   <<"collectionBindingProperties">> => component_property_binding_properties(),
 %%   <<"componentName">> => [string()],
-%%   <<"concat">> => list(component_property()()),
+%%   <<"concat">> => list(component_property()),
 %%   <<"condition">> => component_condition_property(),
 %%   <<"configured">> => [boolean()],
 %%   <<"defaultValue">> => [string()],
@@ -986,8 +986,8 @@
 %% update_theme_data() :: #{
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"overrides">> => list(theme_values()()),
-%%   <<"values">> => list(theme_values()())
+%%   <<"overrides">> => list(theme_values()),
+%%   <<"values">> => list(theme_values())
 %% }
 -type update_theme_data() :: #{binary() => any()}.
 
@@ -1016,7 +1016,7 @@
 %%   <<"identifiers">> => list([string()]()),
 %%   <<"model">> => [string()],
 %%   <<"predicate">> => predicate(),
-%%   <<"sort">> => list(sort_property()())
+%%   <<"sort">> => list(sort_property())
 %% }
 -type component_data_configuration() :: #{binary() => any()}.
 
@@ -1030,12 +1030,12 @@
 
 %% Example:
 %% predicate() :: #{
-%%   <<"and">> => list(predicate()()),
+%%   <<"and">> => list(predicate()),
 %%   <<"field">> => [string()],
 %%   <<"operand">> => [string()],
 %%   <<"operandType">> => string(),
 %%   <<"operator">> => [string()],
-%%   <<"or">> => list(predicate()())
+%%   <<"or">> => list(predicate())
 %% }
 -type predicate() :: #{binary() => any()}.
 
@@ -1059,7 +1059,7 @@
 
 %% Example:
 %% list_components_response() :: #{
-%%   <<"entities">> := list(component_summary()()),
+%%   <<"entities">> := list(component_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_components_response() :: #{binary() => any()}.
@@ -1102,14 +1102,14 @@
 %% Example:
 %% value_mappings() :: #{
 %%   <<"bindingProperties">> => map(),
-%%   <<"values">> => list(value_mapping()())
+%%   <<"values">> => list(value_mapping())
 %% }
 -type value_mappings() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_themes_response() :: #{
-%%   <<"entities">> := list(theme_summary()()),
+%%   <<"entities">> := list(theme_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_themes_response() :: #{binary() => any()}.
@@ -1125,7 +1125,7 @@
 
 %% Example:
 %% export_themes_response() :: #{
-%%   <<"entities">> := list(theme()()),
+%%   <<"entities">> := list(theme()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type export_themes_response() :: #{binary() => any()}.
@@ -1154,7 +1154,7 @@
 %% Example:
 %% update_component_data() :: #{
 %%   <<"bindingProperties">> => map(),
-%%   <<"children">> => list(component_child()()),
+%%   <<"children">> => list(component_child()),
 %%   <<"collectionProperties">> => map(),
 %%   <<"componentType">> => string(),
 %%   <<"events">> => map(),
@@ -1164,7 +1164,7 @@
 %%   <<"properties">> => map(),
 %%   <<"schemaVersion">> => [string()],
 %%   <<"sourceId">> => [string()],
-%%   <<"variants">> => list(component_variant()())
+%%   <<"variants">> => list(component_variant())
 %% }
 -type update_component_data() :: #{binary() => any()}.
 

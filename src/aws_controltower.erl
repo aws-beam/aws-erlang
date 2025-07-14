@@ -351,7 +351,7 @@
 
 %% Example:
 %% list_enabled_controls_output() :: #{
-%%   <<"enabledControls">> => list(enabled_control_summary()()),
+%%   <<"enabledControls">> => list(enabled_control_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_enabled_controls_output() :: #{binary() => any()}.
@@ -400,7 +400,7 @@
 
 %% Example:
 %% enabled_control_filter() :: #{
-%%   <<"controlIdentifiers">> => list(string()()),
+%%   <<"controlIdentifiers">> => list(string()),
 %%   <<"driftStatuses">> => list(list(any())()),
 %%   <<"statuses">> => list(list(any())())
 %% }
@@ -426,7 +426,7 @@
 %% Example:
 %% enable_control_input() :: #{
 %%   <<"controlIdentifier">> := string(),
-%%   <<"parameters">> => list(enabled_control_parameter()()),
+%%   <<"parameters">> => list(enabled_control_parameter()),
 %%   <<"tags">> => map(),
 %%   <<"targetIdentifier">> := string()
 %% }
@@ -474,7 +474,7 @@
 
 %% Example:
 %% list_control_operations_output() :: #{
-%%   <<"controlOperations">> => list(control_operation_summary()()),
+%%   <<"controlOperations">> => list(control_operation_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_control_operations_output() :: #{binary() => any()}.
@@ -524,7 +524,7 @@
 
 %% Example:
 %% list_baselines_output() :: #{
-%%   <<"baselines">> => list(baseline_summary()()),
+%%   <<"baselines">> => list(baseline_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_baselines_output() :: #{binary() => any()}.
@@ -532,7 +532,7 @@
 
 %% Example:
 %% list_enabled_baselines_output() :: #{
-%%   <<"enabledBaselines">> => list(enabled_baseline_summary()()),
+%%   <<"enabledBaselines">> => list(enabled_baseline_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_enabled_baselines_output() :: #{binary() => any()}.
@@ -638,7 +638,7 @@
 
 %% Example:
 %% list_landing_zones_output() :: #{
-%%   <<"landingZones">> => list(landing_zone_summary()()),
+%%   <<"landingZones">> => list(landing_zone_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_landing_zones_output() :: #{binary() => any()}.
@@ -772,18 +772,18 @@
 
 %% Example:
 %% enabled_baseline_filter() :: #{
-%%   <<"baselineIdentifiers">> => list(string()()),
+%%   <<"baselineIdentifiers">> => list(string()),
 %%   <<"inheritanceDriftStatuses">> => list(list(any())()),
-%%   <<"parentIdentifiers">> => list(string()()),
+%%   <<"parentIdentifiers">> => list(string()),
 %%   <<"statuses">> => list(list(any())()),
-%%   <<"targetIdentifiers">> => list(string()())
+%%   <<"targetIdentifiers">> => list(string())
 %% }
 -type enabled_baseline_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -792,7 +792,7 @@
 %% enable_baseline_input() :: #{
 %%   <<"baselineIdentifier">> := string(),
 %%   <<"baselineVersion">> := string(),
-%%   <<"parameters">> => list(enabled_baseline_parameter()()),
+%%   <<"parameters">> => list(enabled_baseline_parameter()),
 %%   <<"tags">> => map(),
 %%   <<"targetIdentifier">> := string()
 %% }
@@ -859,18 +859,18 @@
 %% update_enabled_baseline_input() :: #{
 %%   <<"baselineVersion">> := string(),
 %%   <<"enabledBaselineIdentifier">> := string(),
-%%   <<"parameters">> => list(enabled_baseline_parameter()())
+%%   <<"parameters">> => list(enabled_baseline_parameter())
 %% }
 -type update_enabled_baseline_input() :: #{binary() => any()}.
 
 
 %% Example:
 %% control_operation_filter() :: #{
-%%   <<"controlIdentifiers">> => list(string()()),
+%%   <<"controlIdentifiers">> => list(string()),
 %%   <<"controlOperationTypes">> => list(list(any())()),
-%%   <<"enabledControlIdentifiers">> => list(string()()),
+%%   <<"enabledControlIdentifiers">> => list(string()),
 %%   <<"statuses">> => list(list(any())()),
-%%   <<"targetIdentifiers">> => list(string()())
+%%   <<"targetIdentifiers">> => list(string())
 %% }
 -type control_operation_filter() :: #{binary() => any()}.
 
@@ -888,7 +888,7 @@
 %%   <<"baselineIdentifier">> => [string()],
 %%   <<"baselineVersion">> => [string()],
 %%   <<"driftStatusSummary">> => enabled_baseline_drift_status_summary(),
-%%   <<"parameters">> => list(enabled_baseline_parameter_summary()()),
+%%   <<"parameters">> => list(enabled_baseline_parameter_summary()),
 %%   <<"parentIdentifier">> => string(),
 %%   <<"statusSummary">> => enablement_status_summary(),
 %%   <<"targetIdentifier">> => [string()]
@@ -906,7 +906,7 @@
 %% Example:
 %% update_enabled_control_input() :: #{
 %%   <<"enabledControlIdentifier">> := string(),
-%%   <<"parameters">> := list(enabled_control_parameter()())
+%%   <<"parameters">> := list(enabled_control_parameter())
 %% }
 -type update_enabled_control_input() :: #{binary() => any()}.
 
@@ -932,10 +932,10 @@
 %%   <<"arn">> => string(),
 %%   <<"controlIdentifier">> => string(),
 %%   <<"driftStatusSummary">> => drift_status_summary(),
-%%   <<"parameters">> => list(enabled_control_parameter_summary()()),
+%%   <<"parameters">> => list(enabled_control_parameter_summary()),
 %%   <<"statusSummary">> => enablement_status_summary(),
 %%   <<"targetIdentifier">> => string(),
-%%   <<"targetRegions">> => list(region()())
+%%   <<"targetRegions">> => list(region())
 %% }
 -type enabled_control_details() :: #{binary() => any()}.
 
@@ -987,7 +987,7 @@
 
 %% Example:
 %% list_landing_zone_operations_output() :: #{
-%%   <<"landingZoneOperations">> => list(landing_zone_operation_summary()()),
+%%   <<"landingZoneOperations">> => list(landing_zone_operation_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_landing_zone_operations_output() :: #{binary() => any()}.

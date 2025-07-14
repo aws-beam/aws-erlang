@@ -180,7 +180,7 @@
 
 %% Example:
 %% batch_get_link_attributes() :: #{
-%%   <<"AttributeNames">> => list(string()()),
+%%   <<"AttributeNames">> => list(string()),
 %%   <<"TypedLinkSpecifier">> => typed_link_specifier()
 %% }
 -type batch_get_link_attributes() :: #{binary() => any()}.
@@ -206,14 +206,14 @@
 %% Example:
 %% policy_to_path() :: #{
 %%   <<"Path">> => string(),
-%%   <<"Policies">> => list(policy_attachment()())
+%%   <<"Policies">> => list(policy_attachment())
 %% }
 -type policy_to_path() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_incoming_typed_links_response() :: #{
-%%   <<"LinkSpecifiers">> => list(typed_link_specifier()()),
+%%   <<"LinkSpecifiers">> => list(typed_link_specifier()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_incoming_typed_links_response() :: #{binary() => any()}.
@@ -221,7 +221,7 @@
 
 %% Example:
 %% get_object_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value()())
+%%   <<"Attributes">> => list(attribute_key_and_value())
 %% }
 -type get_object_attributes_response() :: #{binary() => any()}.
 
@@ -240,7 +240,7 @@
 %%   <<"IndexReference">> => object_reference(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RangesOnIndexedValues">> => list(object_attribute_range()())
+%%   <<"RangesOnIndexedValues">> => list(object_attribute_range())
 %% }
 -type batch_list_index() :: #{binary() => any()}.
 
@@ -272,14 +272,14 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_object_policies_response() :: #{
-%%   <<"AttachedPolicyIds">> => list(string()()),
+%%   <<"AttachedPolicyIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_object_policies_response() :: #{binary() => any()}.
@@ -288,7 +288,7 @@
 %% Example:
 %% list_published_schema_arns_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SchemaArns">> => list(string()())
+%%   <<"SchemaArns">> => list(string())
 %% }
 -type list_published_schema_arns_response() :: #{binary() => any()}.
 
@@ -309,7 +309,7 @@
 
 %% Example:
 %% batch_get_object_attributes() :: #{
-%%   <<"AttributeNames">> => list(string()()),
+%%   <<"AttributeNames">> => list(string()),
 %%   <<"ObjectReference">> => object_reference(),
 %%   <<"SchemaFacet">> => schema_facet()
 %% }
@@ -318,7 +318,7 @@
 
 %% Example:
 %% typed_link_specifier() :: #{
-%%   <<"IdentityAttributeValues">> => list(attribute_name_and_value()()),
+%%   <<"IdentityAttributeValues">> => list(attribute_name_and_value()),
 %%   <<"SourceObjectReference">> => object_reference(),
 %%   <<"TargetObjectReference">> => object_reference(),
 %%   <<"TypedLinkFacet">> => typed_link_schema_and_facet_name()
@@ -328,7 +328,7 @@
 
 %% Example:
 %% batch_list_incoming_typed_links() :: #{
-%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()()),
+%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
 %%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -475,7 +475,7 @@
 %% Example:
 %% batch_write_request() :: #{
 %%   <<"DirectoryArn">> := string(),
-%%   <<"Operations">> := list(batch_write_operation()())
+%%   <<"Operations">> := list(batch_write_operation())
 %% }
 -type batch_write_request() :: #{binary() => any()}.
 
@@ -490,7 +490,7 @@
 %% Example:
 %% batch_list_policy_attachments_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ObjectIdentifiers">> => list(string()())
+%%   <<"ObjectIdentifiers">> => list(string())
 %% }
 -type batch_list_policy_attachments_response() :: #{binary() => any()}.
 
@@ -504,7 +504,7 @@
 
 %% Example:
 %% batch_list_incoming_typed_links_response() :: #{
-%%   <<"LinkSpecifiers">> => list(typed_link_specifier()()),
+%%   <<"LinkSpecifiers">> => list(typed_link_specifier()),
 %%   <<"NextToken">> => string()
 %% }
 -type batch_list_incoming_typed_links_response() :: #{binary() => any()}.
@@ -720,7 +720,7 @@
 
 %% Example:
 %% get_link_attributes_request() :: #{
-%%   <<"AttributeNames">> := list(string()()),
+%%   <<"AttributeNames">> := list(string()),
 %%   <<"ConsistencyLevel">> => list(any()),
 %%   <<"DirectoryArn">> := string(),
 %%   <<"TypedLinkSpecifier">> := typed_link_specifier()
@@ -753,7 +753,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -833,7 +833,7 @@
 
 %% Example:
 %% batch_list_object_policies_response() :: #{
-%%   <<"AttachedPolicyIds">> => list(string()()),
+%%   <<"AttachedPolicyIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type batch_list_object_policies_response() :: #{binary() => any()}.
@@ -851,7 +851,7 @@
 
 %% Example:
 %% update_object_attributes_request() :: #{
-%%   <<"AttributeUpdates">> := list(object_attribute_update()()),
+%%   <<"AttributeUpdates">> := list(object_attribute_update()),
 %%   <<"DirectoryArn">> := string(),
 %%   <<"ObjectReference">> := object_reference()
 %% }
@@ -870,7 +870,7 @@
 
 %% Example:
 %% list_typed_link_facet_attributes_response() :: #{
-%%   <<"Attributes">> => list(typed_link_attribute_definition()()),
+%%   <<"Attributes">> => list(typed_link_attribute_definition()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_typed_link_facet_attributes_response() :: #{binary() => any()}.
@@ -886,14 +886,14 @@
 %% Example:
 %% batch_list_object_parent_paths_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PathToObjectIdentifiersList">> => list(path_to_object_identifiers()())
+%%   <<"PathToObjectIdentifiersList">> => list(path_to_object_identifiers())
 %% }
 -type batch_list_object_parent_paths_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% index_attachment() :: #{
-%%   <<"IndexedAttributes">> => list(attribute_key_and_value()()),
+%%   <<"IndexedAttributes">> => list(attribute_key_and_value()),
 %%   <<"ObjectIdentifier">> => string()
 %% }
 -type index_attachment() :: #{binary() => any()}.
@@ -902,14 +902,14 @@
 %% Example:
 %% batch_list_object_parents_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ParentLinks">> => list(object_identifier_and_link_name_tuple()())
+%%   <<"ParentLinks">> => list(object_identifier_and_link_name_tuple())
 %% }
 -type batch_list_object_parents_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_write_response() :: #{
-%%   <<"Responses">> => list(batch_write_operation_response()())
+%%   <<"Responses">> => list(batch_write_operation_response())
 %% }
 -type batch_write_response() :: #{binary() => any()}.
 
@@ -937,7 +937,7 @@
 %% Example:
 %% list_object_parents_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ParentLinks">> => list(object_identifier_and_link_name_tuple()()),
+%%   <<"ParentLinks">> => list(object_identifier_and_link_name_tuple()),
 %%   <<"Parents">> => map()
 %% }
 -type list_object_parents_response() :: #{binary() => any()}.
@@ -1001,7 +1001,7 @@
 
 %% Example:
 %% list_facet_names_response() :: #{
-%%   <<"FacetNames">> => list(string()()),
+%%   <<"FacetNames">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_facet_names_response() :: #{binary() => any()}.
@@ -1050,7 +1050,7 @@
 %% Example:
 %% batch_lookup_policy_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PolicyToPathList">> => list(policy_to_path()())
+%%   <<"PolicyToPathList">> => list(policy_to_path())
 %% }
 -type batch_lookup_policy_response() :: #{binary() => any()}.
 
@@ -1084,7 +1084,7 @@
 
 %% Example:
 %% batch_update_link_attributes() :: #{
-%%   <<"AttributeUpdates">> => list(link_attribute_update()()),
+%%   <<"AttributeUpdates">> => list(link_attribute_update()),
 %%   <<"TypedLinkSpecifier">> => typed_link_specifier()
 %% }
 -type batch_update_link_attributes() :: #{binary() => any()}.
@@ -1155,7 +1155,7 @@
 %% Example:
 %% batch_get_object_information_response() :: #{
 %%   <<"ObjectIdentifier">> => string(),
-%%   <<"SchemaFacets">> => list(schema_facet()())
+%%   <<"SchemaFacets">> => list(schema_facet())
 %% }
 -type batch_get_object_information_response() :: #{binary() => any()}.
 
@@ -1210,7 +1210,7 @@
 
 %% Example:
 %% batch_list_attached_indices_response() :: #{
-%%   <<"IndexAttachments">> => list(index_attachment()()),
+%%   <<"IndexAttachments">> => list(index_attachment()),
 %%   <<"NextToken">> => string()
 %% }
 -type batch_list_attached_indices_response() :: #{binary() => any()}.
@@ -1239,9 +1239,9 @@
 %% batch_create_object() :: #{
 %%   <<"BatchReferenceName">> => string(),
 %%   <<"LinkName">> => string(),
-%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()()),
+%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
 %%   <<"ParentReference">> => object_reference(),
-%%   <<"SchemaFacet">> => list(schema_facet()())
+%%   <<"SchemaFacet">> => list(schema_facet())
 %% }
 -type batch_create_object() :: #{binary() => any()}.
 
@@ -1270,7 +1270,7 @@
 %% list_incoming_typed_links_request() :: #{
 %%   <<"ConsistencyLevel">> => list(any()),
 %%   <<"DirectoryArn">> := string(),
-%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()()),
+%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
 %%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -1281,7 +1281,7 @@
 
 %% Example:
 %% list_facet_attributes_response() :: #{
-%%   <<"Attributes">> => list(facet_attribute()()),
+%%   <<"Attributes">> => list(facet_attribute()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_facet_attributes_response() :: #{binary() => any()}.
@@ -1290,7 +1290,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1318,7 +1318,7 @@
 %% list_outgoing_typed_links_request() :: #{
 %%   <<"ConsistencyLevel">> => list(any()),
 %%   <<"DirectoryArn">> := string(),
-%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()()),
+%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
 %%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -1336,7 +1336,7 @@
 
 %% Example:
 %% batch_list_index_response() :: #{
-%%   <<"IndexAttachments">> => list(index_attachment()()),
+%%   <<"IndexAttachments">> => list(index_attachment()),
 %%   <<"NextToken">> => string()
 %% }
 -type batch_list_index_response() :: #{binary() => any()}.
@@ -1345,7 +1345,7 @@
 %% Example:
 %% list_outgoing_typed_links_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TypedLinkSpecifiers">> => list(typed_link_specifier()())
+%%   <<"TypedLinkSpecifiers">> => list(typed_link_specifier())
 %% }
 -type list_outgoing_typed_links_response() :: #{binary() => any()}.
 
@@ -1366,7 +1366,7 @@
 
 %% Example:
 %% update_link_attributes_request() :: #{
-%%   <<"AttributeUpdates">> := list(link_attribute_update()()),
+%%   <<"AttributeUpdates">> := list(link_attribute_update()),
 %%   <<"DirectoryArn">> := string(),
 %%   <<"TypedLinkSpecifier">> := typed_link_specifier()
 %% }
@@ -1391,7 +1391,7 @@
 
 %% Example:
 %% attach_typed_link_request() :: #{
-%%   <<"Attributes">> := list(attribute_name_and_value()()),
+%%   <<"Attributes">> := list(attribute_name_and_value()),
 %%   <<"DirectoryArn">> := string(),
 %%   <<"SourceObjectReference">> := object_reference(),
 %%   <<"TargetObjectReference">> := object_reference(),
@@ -1403,7 +1403,7 @@
 %% Example:
 %% list_applied_schema_arns_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SchemaArns">> => list(string()())
+%%   <<"SchemaArns">> => list(string())
 %% }
 -type list_applied_schema_arns_response() :: #{binary() => any()}.
 
@@ -1431,7 +1431,7 @@
 
 %% Example:
 %% batch_attach_typed_link() :: #{
-%%   <<"Attributes">> => list(attribute_name_and_value()()),
+%%   <<"Attributes">> => list(attribute_name_and_value()),
 %%   <<"SourceObjectReference">> => object_reference(),
 %%   <<"TargetObjectReference">> => object_reference(),
 %%   <<"TypedLinkFacet">> => typed_link_schema_and_facet_name()
@@ -1453,7 +1453,7 @@
 %%   <<"IndexReference">> := object_reference(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"RangesOnIndexedValues">> => list(object_attribute_range()())
+%%   <<"RangesOnIndexedValues">> => list(object_attribute_range())
 %% }
 -type list_index_request() :: #{binary() => any()}.
 
@@ -1491,7 +1491,7 @@
 
 %% Example:
 %% batch_update_object_attributes() :: #{
-%%   <<"AttributeUpdates">> => list(object_attribute_update()()),
+%%   <<"AttributeUpdates">> => list(object_attribute_update()),
 %%   <<"ObjectReference">> => object_reference()
 %% }
 -type batch_update_object_attributes() :: #{binary() => any()}.
@@ -1499,7 +1499,7 @@
 
 %% Example:
 %% list_object_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value()()),
+%%   <<"Attributes">> => list(attribute_key_and_value()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_object_attributes_response() :: #{binary() => any()}.
@@ -1511,7 +1511,7 @@
 
 %% Example:
 %% batch_list_object_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value()()),
+%%   <<"Attributes">> => list(attribute_key_and_value()),
 %%   <<"NextToken">> => string()
 %% }
 -type batch_list_object_attributes_response() :: #{binary() => any()}.
@@ -1530,21 +1530,21 @@
 %% Example:
 %% get_object_information_response() :: #{
 %%   <<"ObjectIdentifier">> => string(),
-%%   <<"SchemaFacets">> => list(schema_facet()())
+%%   <<"SchemaFacets">> => list(schema_facet())
 %% }
 -type get_object_information_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_read_response() :: #{
-%%   <<"Responses">> => list(batch_read_operation_response()())
+%%   <<"Responses">> => list(batch_read_operation_response())
 %% }
 -type batch_read_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% path_to_object_identifiers() :: #{
-%%   <<"ObjectIdentifiers">> => list(string()()),
+%%   <<"ObjectIdentifiers">> => list(string()),
 %%   <<"Path">> => string()
 %% }
 -type path_to_object_identifiers() :: #{binary() => any()}.
@@ -1561,7 +1561,7 @@
 %% Example:
 %% list_object_parent_paths_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PathToObjectIdentifiersList">> => list(path_to_object_identifiers()())
+%%   <<"PathToObjectIdentifiersList">> => list(path_to_object_identifiers())
 %% }
 -type list_object_parent_paths_response() :: #{binary() => any()}.
 
@@ -1601,7 +1601,7 @@
 
 %% Example:
 %% create_facet_request() :: #{
-%%   <<"Attributes">> => list(facet_attribute()()),
+%%   <<"Attributes">> => list(facet_attribute()),
 %%   <<"FacetStyle">> => list(any()),
 %%   <<"Name">> := string(),
 %%   <<"ObjectType">> => list(any()),
@@ -1640,7 +1640,7 @@
 %%   <<"DirectoryArn">> := string(),
 %%   <<"IsUnique">> := boolean(),
 %%   <<"LinkName">> => string(),
-%%   <<"OrderedIndexedAttributeList">> := list(attribute_key()()),
+%%   <<"OrderedIndexedAttributeList">> := list(attribute_key()),
 %%   <<"ParentReference">> => object_reference()
 %% }
 -type create_index_request() :: #{binary() => any()}.
@@ -1648,8 +1648,8 @@
 
 %% Example:
 %% update_typed_link_facet_request() :: #{
-%%   <<"AttributeUpdates">> := list(typed_link_facet_attribute_update()()),
-%%   <<"IdentityAttributeOrder">> := list(string()()),
+%%   <<"AttributeUpdates">> := list(typed_link_facet_attribute_update()),
+%%   <<"IdentityAttributeOrder">> := list(string()),
 %%   <<"Name">> := string(),
 %%   <<"SchemaArn">> := string()
 %% }
@@ -1705,7 +1705,7 @@
 
 %% Example:
 %% list_typed_link_facet_names_response() :: #{
-%%   <<"FacetNames">> => list(string()()),
+%%   <<"FacetNames">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_typed_link_facet_names_response() :: #{binary() => any()}.
@@ -1743,7 +1743,7 @@
 %% Example:
 %% list_development_schema_arns_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SchemaArns">> => list(string()())
+%%   <<"SchemaArns">> => list(string())
 %% }
 -type list_development_schema_arns_response() :: #{binary() => any()}.
 
@@ -1751,7 +1751,7 @@
 %% Example:
 %% list_managed_schema_arns_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SchemaArns">> => list(string()())
+%%   <<"SchemaArns">> => list(string())
 %% }
 -type list_managed_schema_arns_response() :: #{binary() => any()}.
 
@@ -1762,7 +1762,7 @@
 
 %% Example:
 %% get_link_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value()())
+%%   <<"Attributes">> => list(attribute_key_and_value())
 %% }
 -type get_link_attributes_response() :: #{binary() => any()}.
 
@@ -1778,7 +1778,7 @@
 
 %% Example:
 %% list_attached_indices_response() :: #{
-%%   <<"IndexAttachments">> => list(index_attachment()()),
+%%   <<"IndexAttachments">> => list(index_attachment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_attached_indices_response() :: #{binary() => any()}.
@@ -1811,7 +1811,7 @@
 %%   <<"BatchReferenceName">> => string(),
 %%   <<"IsUnique">> => boolean(),
 %%   <<"LinkName">> => string(),
-%%   <<"OrderedIndexedAttributeList">> => list(attribute_key()()),
+%%   <<"OrderedIndexedAttributeList">> => list(attribute_key()),
 %%   <<"ParentReference">> => object_reference()
 %% }
 -type batch_create_index() :: #{binary() => any()}.
@@ -1835,7 +1835,7 @@
 
 %% Example:
 %% update_facet_request() :: #{
-%%   <<"AttributeUpdates">> => list(facet_attribute_update()()),
+%%   <<"AttributeUpdates">> => list(facet_attribute_update()),
 %%   <<"Name">> := string(),
 %%   <<"ObjectType">> => list(any()),
 %%   <<"SchemaArn">> := string()
@@ -1882,8 +1882,8 @@
 
 %% Example:
 %% typed_link_facet() :: #{
-%%   <<"Attributes">> => list(typed_link_attribute_definition()()),
-%%   <<"IdentityAttributeOrder">> => list(string()()),
+%%   <<"Attributes">> => list(typed_link_attribute_definition()),
+%%   <<"IdentityAttributeOrder">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type typed_link_facet() :: #{binary() => any()}.
@@ -1930,14 +1930,14 @@
 %% Example:
 %% list_policy_attachments_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ObjectIdentifiers">> => list(string()())
+%%   <<"ObjectIdentifiers">> => list(string())
 %% }
 -type list_policy_attachments_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_object_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value()())
+%%   <<"Attributes">> => list(attribute_key_and_value())
 %% }
 -type batch_get_object_attributes_response() :: #{binary() => any()}.
 
@@ -1959,7 +1959,7 @@
 %% Example:
 %% batch_list_outgoing_typed_links_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TypedLinkSpecifiers">> => list(typed_link_specifier()())
+%%   <<"TypedLinkSpecifiers">> => list(typed_link_specifier())
 %% }
 -type batch_list_outgoing_typed_links_response() :: #{binary() => any()}.
 
@@ -1999,7 +1999,7 @@
 
 %% Example:
 %% list_index_response() :: #{
-%%   <<"IndexAttachments">> => list(index_attachment()()),
+%%   <<"IndexAttachments">> => list(index_attachment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_index_response() :: #{binary() => any()}.
@@ -2027,7 +2027,7 @@
 
 %% Example:
 %% list_directories_response() :: #{
-%%   <<"Directories">> => list(directory()()),
+%%   <<"Directories">> => list(directory()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_directories_response() :: #{binary() => any()}.
@@ -2052,9 +2052,9 @@
 %% create_object_request() :: #{
 %%   <<"DirectoryArn">> := string(),
 %%   <<"LinkName">> => string(),
-%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()()),
+%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
 %%   <<"ParentReference">> => object_reference(),
-%%   <<"SchemaFacets">> := list(schema_facet()())
+%%   <<"SchemaFacets">> := list(schema_facet())
 %% }
 -type create_object_request() :: #{binary() => any()}.
 
@@ -2069,7 +2069,7 @@
 %% Example:
 %% add_facet_to_object_request() :: #{
 %%   <<"DirectoryArn">> := string(),
-%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()()),
+%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
 %%   <<"ObjectReference">> := object_reference(),
 %%   <<"SchemaFacet">> := schema_facet()
 %% }
@@ -2078,7 +2078,7 @@
 
 %% Example:
 %% batch_list_outgoing_typed_links() :: #{
-%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()()),
+%%   <<"FilterAttributeRanges">> => list(typed_link_attribute_range()),
 %%   <<"FilterTypedLink">> => typed_link_schema_and_facet_name(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -2114,7 +2114,7 @@
 %% Example:
 %% lookup_policy_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PolicyToPathList">> => list(policy_to_path()())
+%%   <<"PolicyToPathList">> => list(policy_to_path())
 %% }
 -type lookup_policy_response() :: #{binary() => any()}.
 
@@ -2149,7 +2149,7 @@
 %% batch_read_request() :: #{
 %%   <<"ConsistencyLevel">> => list(any()),
 %%   <<"DirectoryArn">> := string(),
-%%   <<"Operations">> := list(batch_read_operation()())
+%%   <<"Operations">> := list(batch_read_operation())
 %% }
 -type batch_read_request() :: #{binary() => any()}.
 
@@ -2214,7 +2214,7 @@
 
 %% Example:
 %% get_object_attributes_request() :: #{
-%%   <<"AttributeNames">> := list(string()()),
+%%   <<"AttributeNames">> := list(string()),
 %%   <<"ConsistencyLevel">> => list(any()),
 %%   <<"DirectoryArn">> := string(),
 %%   <<"ObjectReference">> := object_reference(),
@@ -2225,14 +2225,14 @@
 
 %% Example:
 %% batch_get_link_attributes_response() :: #{
-%%   <<"Attributes">> => list(attribute_key_and_value()())
+%%   <<"Attributes">> => list(attribute_key_and_value())
 %% }
 -type batch_get_link_attributes_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_typed_link_facet_information_response() :: #{
-%%   <<"IdentityAttributeOrder">> => list(string()())
+%%   <<"IdentityAttributeOrder">> => list(string())
 %% }
 -type get_typed_link_facet_information_response() :: #{binary() => any()}.
 
@@ -2254,7 +2254,7 @@
 
 %% Example:
 %% batch_add_facet_to_object() :: #{
-%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()()),
+%%   <<"ObjectAttributeList">> => list(attribute_key_and_value()),
 %%   <<"ObjectReference">> => object_reference(),
 %%   <<"SchemaFacet">> => schema_facet()
 %% }

@@ -133,7 +133,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -151,7 +151,7 @@
 %%   <<"ApplicationVersionRolledBackFrom">> => float(),
 %%   <<"ApplicationVersionRolledBackTo">> => float(),
 %%   <<"ApplicationVersionUpdatedFrom">> => float(),
-%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()()),
+%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()),
 %%   <<"ConditionalToken">> => string(),
 %%   <<"CreateTimestamp">> => non_neg_integer(),
 %%   <<"LastUpdateTimestamp">> => non_neg_integer(),
@@ -201,8 +201,8 @@
 
 %% Example:
 %% vpc_configuration() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_configuration() :: #{binary() => any()}.
 
@@ -266,14 +266,14 @@
 %% add_application_cloud_watch_logging_option_response() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()()),
+%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()),
 %%   <<"OperationId">> => string()
 %% }
 -type add_application_cloud_watch_logging_option_response() :: #{binary() => any()}.
 
 %% Example:
 %% input_schema_update() :: #{
-%%   <<"RecordColumnUpdates">> => list(record_column()()),
+%%   <<"RecordColumnUpdates">> => list(record_column()),
 %%   <<"RecordEncodingUpdate">> => string(),
 %%   <<"RecordFormatUpdate">> => record_format()
 %% }
@@ -282,17 +282,17 @@
 %% Example:
 %% discover_input_schema_response() :: #{
 %%   <<"InputSchema">> => source_schema(),
-%%   <<"ParsedInputRecords">> => list(list(string()())()),
-%%   <<"ProcessedInputRecords">> => list(string()()),
-%%   <<"RawInputRecords">> => list(string()())
+%%   <<"ParsedInputRecords">> => list(list(string())()),
+%%   <<"ProcessedInputRecords">> => list(string()),
+%%   <<"RawInputRecords">> => list(string())
 %% }
 -type discover_input_schema_response() :: #{binary() => any()}.
 
 %% Example:
 %% sql_application_configuration_update() :: #{
-%%   <<"InputUpdates">> => list(input_update()()),
-%%   <<"OutputUpdates">> => list(output_update()()),
-%%   <<"ReferenceDataSourceUpdates">> => list(reference_data_source_update()())
+%%   <<"InputUpdates">> => list(input_update()),
+%%   <<"OutputUpdates">> => list(output_update()),
+%%   <<"ReferenceDataSourceUpdates">> => list(reference_data_source_update())
 %% }
 -type sql_application_configuration_update() :: #{binary() => any()}.
 
@@ -347,8 +347,8 @@
 
 %% Example:
 %% vpc_configuration_description() :: #{
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcConfigurationId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -364,14 +364,14 @@
 %% add_application_input_response() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"InputDescriptions">> => list(input_description()())
+%%   <<"InputDescriptions">> => list(input_description())
 %% }
 -type add_application_input_response() :: #{binary() => any()}.
 
 %% Example:
 %% zeppelin_application_configuration_description() :: #{
 %%   <<"CatalogConfigurationDescription">> => catalog_configuration_description(),
-%%   <<"CustomArtifactsConfigurationDescription">> => list(custom_artifact_configuration_description()()),
+%%   <<"CustomArtifactsConfigurationDescription">> => list(custom_artifact_configuration_description()),
 %%   <<"DeployAsApplicationConfigurationDescription">> => deploy_as_application_configuration_description(),
 %%   <<"MonitoringConfigurationDescription">> => zeppelin_monitoring_configuration_description()
 %% }
@@ -386,8 +386,8 @@
 
 %% Example:
 %% vpc_configuration_update() :: #{
-%%   <<"SecurityGroupIdUpdates">> => list(string()()),
-%%   <<"SubnetIdUpdates">> => list(string()()),
+%%   <<"SecurityGroupIdUpdates">> => list(string()),
+%%   <<"SubnetIdUpdates">> => list(string()),
 %%   <<"VpcConfigurationId">> => string()
 %% }
 -type vpc_configuration_update() :: #{binary() => any()}.
@@ -449,7 +449,7 @@
 %% Example:
 %% list_application_snapshots_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SnapshotSummaries">> => list(snapshot_details()())
+%%   <<"SnapshotSummaries">> => list(snapshot_details())
 %% }
 -type list_application_snapshots_response() :: #{binary() => any()}.
 
@@ -495,7 +495,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -523,8 +523,8 @@
 %% Example:
 %% unable_to_detect_schema_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"ProcessedInputRecords">> => list(string()()),
-%%   <<"RawInputRecords">> => list(string()())
+%%   <<"ProcessedInputRecords">> => list(string()),
+%%   <<"RawInputRecords">> => list(string())
 %% }
 -type unable_to_detect_schema_exception() :: #{binary() => any()}.
 
@@ -647,13 +647,13 @@
 %% run_configuration() :: #{
 %%   <<"ApplicationRestoreConfiguration">> => application_restore_configuration(),
 %%   <<"FlinkRunConfiguration">> => flink_run_configuration(),
-%%   <<"SqlRunConfigurations">> => list(sql_run_configuration()())
+%%   <<"SqlRunConfigurations">> => list(sql_run_configuration())
 %% }
 -type run_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% environment_properties() :: #{
-%%   <<"PropertyGroups">> => list(property_group()())
+%%   <<"PropertyGroups">> => list(property_group())
 %% }
 -type environment_properties() :: #{binary() => any()}.
 
@@ -701,7 +701,7 @@
 %%   <<"EnvironmentProperties">> => environment_properties(),
 %%   <<"FlinkApplicationConfiguration">> => flink_application_configuration(),
 %%   <<"SqlApplicationConfiguration">> => sql_application_configuration(),
-%%   <<"VpcConfigurations">> => list(vpc_configuration()()),
+%%   <<"VpcConfigurations">> => list(vpc_configuration()),
 %%   <<"ZeppelinApplicationConfiguration">> => zeppelin_application_configuration()
 %% }
 -type application_configuration() :: #{binary() => any()}.
@@ -782,7 +782,7 @@
 %% delete_application_cloud_watch_logging_option_response() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()()),
+%%   <<"CloudWatchLoggingOptionDescriptions">> => list(cloud_watch_logging_option_description()),
 %%   <<"OperationId">> => string()
 %% }
 -type delete_application_cloud_watch_logging_option_response() :: #{binary() => any()}.
@@ -796,7 +796,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -806,10 +806,10 @@
 %%   <<"ApplicationDescription">> => string(),
 %%   <<"ApplicationMode">> => list(any()),
 %%   <<"ApplicationName">> := string(),
-%%   <<"CloudWatchLoggingOptions">> => list(cloud_watch_logging_option()()),
+%%   <<"CloudWatchLoggingOptions">> => list(cloud_watch_logging_option()),
 %%   <<"RuntimeEnvironment">> := list(any()),
 %%   <<"ServiceExecutionRole">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
@@ -853,7 +853,7 @@
 %% add_application_output_response() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"OutputDescriptions">> => list(output_description()())
+%%   <<"OutputDescriptions">> => list(output_description())
 %% }
 -type add_application_output_response() :: #{binary() => any()}.
 
@@ -917,7 +917,7 @@
 %% Example:
 %% zeppelin_application_configuration() :: #{
 %%   <<"CatalogConfiguration">> => catalog_configuration(),
-%%   <<"CustomArtifactsConfiguration">> => list(custom_artifact_configuration()()),
+%%   <<"CustomArtifactsConfiguration">> => list(custom_artifact_configuration()),
 %%   <<"DeployAsApplicationConfiguration">> => deploy_as_application_configuration(),
 %%   <<"MonitoringConfiguration">> => zeppelin_monitoring_configuration()
 %% }
@@ -933,7 +933,7 @@
 
 %% Example:
 %% list_application_operations_response() :: #{
-%%   <<"ApplicationOperationInfoList">> => list(application_operation_info()()),
+%%   <<"ApplicationOperationInfoList">> => list(application_operation_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_operations_response() :: #{binary() => any()}.
@@ -949,7 +949,7 @@
 %% update_application_request() :: #{
 %%   <<"ApplicationConfigurationUpdate">> => application_configuration_update(),
 %%   <<"ApplicationName">> := string(),
-%%   <<"CloudWatchLoggingOptionUpdates">> => list(cloud_watch_logging_option_update()()),
+%%   <<"CloudWatchLoggingOptionUpdates">> => list(cloud_watch_logging_option_update()),
 %%   <<"ConditionalToken">> => string(),
 %%   <<"CurrentApplicationVersionId">> => float(),
 %%   <<"RunConfigurationUpdate">> => run_configuration_update(),
@@ -1062,14 +1062,14 @@
 
 %% Example:
 %% environment_property_descriptions() :: #{
-%%   <<"PropertyGroupDescriptions">> => list(property_group()())
+%%   <<"PropertyGroupDescriptions">> => list(property_group())
 %% }
 -type environment_property_descriptions() :: #{binary() => any()}.
 
 %% Example:
 %% zeppelin_application_configuration_update() :: #{
 %%   <<"CatalogConfigurationUpdate">> => catalog_configuration_update(),
-%%   <<"CustomArtifactsConfigurationUpdate">> => list(custom_artifact_configuration()()),
+%%   <<"CustomArtifactsConfigurationUpdate">> => list(custom_artifact_configuration()),
 %%   <<"DeployAsApplicationConfigurationUpdate">> => deploy_as_application_configuration_update(),
 %%   <<"MonitoringConfigurationUpdate">> => zeppelin_monitoring_configuration_update()
 %% }
@@ -1174,7 +1174,7 @@
 
 %% Example:
 %% environment_property_updates() :: #{
-%%   <<"PropertyGroups">> => list(property_group()())
+%%   <<"PropertyGroups">> => list(property_group())
 %% }
 -type environment_property_updates() :: #{binary() => any()}.
 
@@ -1214,7 +1214,7 @@
 
 %% Example:
 %% source_schema() :: #{
-%%   <<"RecordColumns">> => list(record_column()()),
+%%   <<"RecordColumns">> => list(record_column()),
 %%   <<"RecordEncoding">> => string(),
 %%   <<"RecordFormat">> => record_format()
 %% }
@@ -1244,7 +1244,7 @@
 
 %% Example:
 %% input_description() :: #{
-%%   <<"InAppStreamNames">> => list(string()()),
+%%   <<"InAppStreamNames">> => list(string()),
 %%   <<"InputId">> => string(),
 %%   <<"InputParallelism">> => input_parallelism(),
 %%   <<"InputProcessingConfigurationDescription">> => input_processing_configuration_description(),
@@ -1322,7 +1322,7 @@
 %%   <<"FlinkApplicationConfigurationDescription">> => flink_application_configuration_description(),
 %%   <<"RunConfigurationDescription">> => run_configuration_description(),
 %%   <<"SqlApplicationConfigurationDescription">> => sql_application_configuration_description(),
-%%   <<"VpcConfigurationDescriptions">> => list(vpc_configuration_description()()),
+%%   <<"VpcConfigurationDescriptions">> => list(vpc_configuration_description()),
 %%   <<"ZeppelinApplicationConfigurationDescription">> => zeppelin_application_configuration_description()
 %% }
 -type application_configuration_description() :: #{binary() => any()}.
@@ -1357,7 +1357,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"ApplicationSummaries">> => list(application_summary()()),
+%%   <<"ApplicationSummaries">> => list(application_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.
@@ -1381,7 +1381,7 @@
 
 %% Example:
 %% list_application_versions_response() :: #{
-%%   <<"ApplicationVersionSummaries">> => list(application_version_summary()()),
+%%   <<"ApplicationVersionSummaries">> => list(application_version_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_versions_response() :: #{binary() => any()}.
@@ -1443,9 +1443,9 @@
 
 %% Example:
 %% sql_application_configuration() :: #{
-%%   <<"Inputs">> => list(input()()),
-%%   <<"Outputs">> => list(output()()),
-%%   <<"ReferenceDataSources">> => list(reference_data_source()())
+%%   <<"Inputs">> => list(input()),
+%%   <<"Outputs">> => list(output()),
+%%   <<"ReferenceDataSources">> => list(reference_data_source())
 %% }
 -type sql_application_configuration() :: #{binary() => any()}.
 
@@ -1522,15 +1522,15 @@
 %% add_application_reference_data_source_response() :: #{
 %%   <<"ApplicationARN">> => string(),
 %%   <<"ApplicationVersionId">> => float(),
-%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description()())
+%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description())
 %% }
 -type add_application_reference_data_source_response() :: #{binary() => any()}.
 
 %% Example:
 %% sql_application_configuration_description() :: #{
-%%   <<"InputDescriptions">> => list(input_description()()),
-%%   <<"OutputDescriptions">> => list(output_description()()),
-%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description()())
+%%   <<"InputDescriptions">> => list(input_description()),
+%%   <<"OutputDescriptions">> => list(output_description()),
+%%   <<"ReferenceDataSourceDescriptions">> => list(reference_data_source_description())
 %% }
 -type sql_application_configuration_description() :: #{binary() => any()}.
 
@@ -1571,7 +1571,7 @@
 %%   <<"EnvironmentPropertyUpdates">> => environment_property_updates(),
 %%   <<"FlinkApplicationConfigurationUpdate">> => flink_application_configuration_update(),
 %%   <<"SqlApplicationConfigurationUpdate">> => sql_application_configuration_update(),
-%%   <<"VpcConfigurationUpdates">> => list(vpc_configuration_update()()),
+%%   <<"VpcConfigurationUpdates">> => list(vpc_configuration_update()),
 %%   <<"ZeppelinApplicationConfigurationUpdate">> => zeppelin_application_configuration_update()
 %% }
 -type application_configuration_update() :: #{binary() => any()}.

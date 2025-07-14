@@ -39,7 +39,7 @@
 
 %% Example:
 %% list_async_invokes_response() :: #{
-%%   <<"asyncInvokeSummaries">> => list(async_invoke_summary()()),
+%%   <<"asyncInvokeSummaries">> => list(async_invoke_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_async_invokes_response() :: #{binary() => any()}.
@@ -63,7 +63,7 @@
 
 %% Example:
 %% guardrail_content_policy_assessment() :: #{
-%%   <<"filters">> => list(guardrail_content_filter()())
+%%   <<"filters">> => list(guardrail_content_filter())
 %% }
 -type guardrail_content_policy_assessment() :: #{binary() => any()}.
 
@@ -83,9 +83,9 @@
 %% apply_guardrail_response() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"actionReason">> => [string()],
-%%   <<"assessments">> => list(guardrail_assessment()()),
+%%   <<"assessments">> => list(guardrail_assessment()),
 %%   <<"guardrailCoverage">> => guardrail_coverage(),
-%%   <<"outputs">> => list(guardrail_output_content()()),
+%%   <<"outputs">> => list(guardrail_output_content()),
 %%   <<"usage">> => guardrail_usage()
 %% }
 -type apply_guardrail_response() :: #{binary() => any()}.
@@ -116,7 +116,7 @@
 %% Example:
 %% inference_configuration() :: #{
 %%   <<"maxTokens">> => [integer()],
-%%   <<"stopSequences">> => list(string()()),
+%%   <<"stopSequences">> => list(string()),
 %%   <<"temperature">> => [float()],
 %%   <<"topP">> => [float()]
 %% }
@@ -129,7 +129,7 @@
 
 %% Example:
 %% apply_guardrail_request() :: #{
-%%   <<"content">> := list(list()()),
+%%   <<"content">> := list(list()),
 %%   <<"outputScope">> => list(any()),
 %%   <<"source">> := list(any())
 %% }
@@ -142,11 +142,11 @@
 %%   <<"additionalModelResponseFieldPaths">> => list([string()]()),
 %%   <<"guardrailConfig">> => guardrail_configuration(),
 %%   <<"inferenceConfig">> => inference_configuration(),
-%%   <<"messages">> => list(message()()),
+%%   <<"messages">> => list(message()),
 %%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptVariables">> => map(),
 %%   <<"requestMetadata">> => map(),
-%%   <<"system">> => list(list()()),
+%%   <<"system">> => list(list()),
 %%   <<"toolConfig">> => tool_configuration()
 %% }
 -type converse_request() :: #{binary() => any()}.
@@ -156,7 +156,7 @@
 %% guardrail_trace_assessment() :: #{
 %%   <<"actionReason">> => [string()],
 %%   <<"inputAssessment">> => map(),
-%%   <<"modelOutput">> => list(string()()),
+%%   <<"modelOutput">> => list(string()),
 %%   <<"outputAssessments">> => map()
 %% }
 -type guardrail_trace_assessment() :: #{binary() => any()}.
@@ -165,7 +165,7 @@
 %% Example:
 %% citation() :: #{
 %%   <<"location">> => list(),
-%%   <<"sourceContent">> => list(list()()),
+%%   <<"sourceContent">> => list(list()),
 %%   <<"title">> => [string()]
 %% }
 -type citation() :: #{binary() => any()}.
@@ -173,8 +173,8 @@
 
 %% Example:
 %% citations_content_block() :: #{
-%%   <<"citations">> => list(citation()()),
-%%   <<"content">> => list(list()())
+%%   <<"citations">> => list(citation()),
+%%   <<"content">> => list(list())
 %% }
 -type citations_content_block() :: #{binary() => any()}.
 
@@ -317,8 +317,8 @@
 
 %% Example:
 %% guardrail_word_policy_assessment() :: #{
-%%   <<"customWords">> => list(guardrail_custom_word()()),
-%%   <<"managedWordLists">> => list(guardrail_managed_word()())
+%%   <<"customWords">> => list(guardrail_custom_word()),
+%%   <<"managedWordLists">> => list(guardrail_managed_word())
 %% }
 -type guardrail_word_policy_assessment() :: #{binary() => any()}.
 
@@ -329,7 +329,7 @@
 %%   <<"modelId">> := string(),
 %%   <<"modelInput">> := any(),
 %%   <<"outputDataConfig">> := list(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type start_async_invoke_request() :: #{binary() => any()}.
 
@@ -405,8 +405,8 @@
 
 %% Example:
 %% guardrail_sensitive_information_policy_assessment() :: #{
-%%   <<"piiEntities">> => list(guardrail_pii_entity_filter()()),
-%%   <<"regexes">> => list(guardrail_regex_filter()())
+%%   <<"piiEntities">> => list(guardrail_pii_entity_filter()),
+%%   <<"regexes">> => list(guardrail_regex_filter())
 %% }
 -type guardrail_sensitive_information_policy_assessment() :: #{binary() => any()}.
 
@@ -553,7 +553,7 @@
 
 %% Example:
 %% guardrail_contextual_grounding_policy_assessment() :: #{
-%%   <<"filters">> => list(guardrail_contextual_grounding_filter()())
+%%   <<"filters">> => list(guardrail_contextual_grounding_filter())
 %% }
 -type guardrail_contextual_grounding_policy_assessment() :: #{binary() => any()}.
 
@@ -633,7 +633,7 @@
 %% Example:
 %% tool_configuration() :: #{
 %%   <<"toolChoice">> => list(),
-%%   <<"tools">> => list(list()())
+%%   <<"tools">> => list(list())
 %% }
 -type tool_configuration() :: #{binary() => any()}.
 
@@ -644,11 +644,11 @@
 %%   <<"additionalModelResponseFieldPaths">> => list([string()]()),
 %%   <<"guardrailConfig">> => guardrail_stream_configuration(),
 %%   <<"inferenceConfig">> => inference_configuration(),
-%%   <<"messages">> => list(message()()),
+%%   <<"messages">> => list(message()),
 %%   <<"performanceConfig">> => performance_configuration(),
 %%   <<"promptVariables">> => map(),
 %%   <<"requestMetadata">> => map(),
-%%   <<"system">> => list(list()()),
+%%   <<"system">> => list(list()),
 %%   <<"toolConfig">> => tool_configuration()
 %% }
 -type converse_stream_request() :: #{binary() => any()}.
@@ -656,7 +656,7 @@
 
 %% Example:
 %% tool_result_block() :: #{
-%%   <<"content">> => list(list()()),
+%%   <<"content">> => list(list()),
 %%   <<"status">> => list(any()),
 %%   <<"toolUseId">> => string()
 %% }
@@ -692,7 +692,7 @@
 
 %% Example:
 %% guardrail_topic_policy_assessment() :: #{
-%%   <<"topics">> => list(guardrail_topic()())
+%%   <<"topics">> => list(guardrail_topic())
 %% }
 -type guardrail_topic_policy_assessment() :: #{binary() => any()}.
 
@@ -871,7 +871,7 @@
 %% Example:
 %% citations_delta() :: #{
 %%   <<"location">> => list(),
-%%   <<"sourceContent">> => list(citation_source_content_delta()()),
+%%   <<"sourceContent">> => list(citation_source_content_delta()),
 %%   <<"title">> => [string()]
 %% }
 -type citations_delta() :: #{binary() => any()}.
@@ -879,7 +879,7 @@
 
 %% Example:
 %% message() :: #{
-%%   <<"content">> => list(list()()),
+%%   <<"content">> => list(list()),
 %%   <<"role">> => list(any())
 %% }
 -type message() :: #{binary() => any()}.

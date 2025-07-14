@@ -125,13 +125,13 @@
 %% Example:
 %% get_replication_jobs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"replicationJobList">> => list(replication_job()())
+%%   <<"replicationJobList">> => list(replication_job())
 %% }
 -type get_replication_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_apps_response() :: #{
-%%   <<"apps">> => list(app_summary()()),
+%%   <<"apps">> => list(app_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_apps_response() :: #{binary() => any()}.
@@ -160,8 +160,8 @@
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"roleName">> => string(),
-%%   <<"serverGroups">> => list(server_group()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"serverGroups">> => list(server_group()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_app_request() :: #{binary() => any()}.
 
@@ -285,7 +285,7 @@
 
 %% Example:
 %% get_connectors_response() :: #{
-%%   <<"connectorList">> => list(connector()()),
+%%   <<"connectorList">> => list(connector()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_connectors_response() :: #{binary() => any()}.
@@ -293,7 +293,7 @@
 %% Example:
 %% put_app_replication_configuration_request() :: #{
 %%   <<"appId">> => string(),
-%%   <<"serverGroupReplicationConfigurations">> => list(server_group_replication_configuration()())
+%%   <<"serverGroupReplicationConfigurations">> => list(server_group_replication_configuration())
 %% }
 -type put_app_replication_configuration_request() :: #{binary() => any()}.
 
@@ -324,7 +324,7 @@
 %% server_group_launch_configuration() :: #{
 %%   <<"launchOrder">> => integer(),
 %%   <<"serverGroupId">> => string(),
-%%   <<"serverLaunchConfigurations">> => list(server_launch_configuration()())
+%%   <<"serverLaunchConfigurations">> => list(server_launch_configuration())
 %% }
 -type server_group_launch_configuration() :: #{binary() => any()}.
 
@@ -368,7 +368,7 @@
 %% Example:
 %% server_group_replication_configuration() :: #{
 %%   <<"serverGroupId">> => string(),
-%%   <<"serverReplicationConfigurations">> => list(server_replication_configuration()())
+%%   <<"serverReplicationConfigurations">> => list(server_replication_configuration())
 %% }
 -type server_group_replication_configuration() :: #{binary() => any()}.
 
@@ -388,7 +388,7 @@
 %% get_servers_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"vmServerAddressList">> => list(vm_server_address()())
+%%   <<"vmServerAddressList">> => list(vm_server_address())
 %% }
 -type get_servers_request() :: #{binary() => any()}.
 
@@ -425,7 +425,7 @@
 %%   <<"appId">> => string(),
 %%   <<"autoLaunch">> => boolean(),
 %%   <<"roleName">> => string(),
-%%   <<"serverGroupLaunchConfigurations">> => list(server_group_launch_configuration()())
+%%   <<"serverGroupLaunchConfigurations">> => list(server_group_launch_configuration())
 %% }
 -type put_app_launch_configuration_request() :: #{binary() => any()}.
 
@@ -487,8 +487,8 @@
 %% Example:
 %% put_app_validation_configuration_request() :: #{
 %%   <<"appId">> := string(),
-%%   <<"appValidationConfigurations">> => list(app_validation_configuration()()),
-%%   <<"serverGroupValidationConfigurations">> => list(server_group_validation_configuration()())
+%%   <<"appValidationConfigurations">> => list(app_validation_configuration()),
+%%   <<"serverGroupValidationConfigurations">> => list(server_group_validation_configuration())
 %% }
 -type put_app_validation_configuration_request() :: #{binary() => any()}.
 
@@ -582,8 +582,8 @@
 %% Example:
 %% get_app_response() :: #{
 %%   <<"appSummary">> => app_summary(),
-%%   <<"serverGroups">> => list(server_group()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"serverGroups">> => list(server_group()),
+%%   <<"tags">> => list(tag())
 %% }
 -type get_app_response() :: #{binary() => any()}.
 
@@ -596,8 +596,8 @@
 %% Example:
 %% update_app_response() :: #{
 %%   <<"appSummary">> => app_summary(),
-%%   <<"serverGroups">> => list(server_group()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"serverGroups">> => list(server_group()),
+%%   <<"tags">> => list(tag())
 %% }
 -type update_app_response() :: #{binary() => any()}.
 
@@ -610,7 +610,7 @@
 %% Example:
 %% server_group_validation_configuration() :: #{
 %%   <<"serverGroupId">> => string(),
-%%   <<"serverValidationConfigurations">> => list(server_validation_configuration()())
+%%   <<"serverValidationConfigurations">> => list(server_validation_configuration())
 %% }
 -type server_group_validation_configuration() :: #{binary() => any()}.
 
@@ -637,8 +637,8 @@
 
 %% Example:
 %% get_app_validation_configuration_response() :: #{
-%%   <<"appValidationConfigurations">> => list(app_validation_configuration()()),
-%%   <<"serverGroupValidationConfigurations">> => list(server_group_validation_configuration()())
+%%   <<"appValidationConfigurations">> => list(app_validation_configuration()),
+%%   <<"serverGroupValidationConfigurations">> => list(server_group_validation_configuration())
 %% }
 -type get_app_validation_configuration_response() :: #{binary() => any()}.
 
@@ -723,8 +723,8 @@
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"roleName">> => string(),
-%%   <<"serverGroups">> => list(server_group()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"serverGroups">> => list(server_group()),
+%%   <<"tags">> => list(tag())
 %% }
 -type update_app_request() :: #{binary() => any()}.
 
@@ -739,7 +739,7 @@
 %%   <<"lastModifiedOn">> => non_neg_integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"serverCatalogStatus">> => list(any()),
-%%   <<"serverList">> => list(server()())
+%%   <<"serverList">> => list(server())
 %% }
 -type get_servers_response() :: #{binary() => any()}.
 
@@ -765,7 +765,7 @@
 
 %% Example:
 %% list_apps_request() :: #{
-%%   <<"appIds">> => list(string()()),
+%%   <<"appIds">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -811,7 +811,7 @@
 
 %% Example:
 %% get_app_replication_configuration_response() :: #{
-%%   <<"serverGroupReplicationConfigurations">> => list(server_group_replication_configuration()())
+%%   <<"serverGroupReplicationConfigurations">> => list(server_group_replication_configuration())
 %% }
 -type get_app_replication_configuration_response() :: #{binary() => any()}.
 
@@ -836,8 +836,8 @@
 %% Example:
 %% create_app_response() :: #{
 %%   <<"appSummary">> => app_summary(),
-%%   <<"serverGroups">> => list(server_group()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"serverGroups">> => list(server_group()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_app_response() :: #{binary() => any()}.
 
@@ -868,7 +868,7 @@
 
 %% Example:
 %% get_app_validation_output_response() :: #{
-%%   <<"validationOutputList">> => list(validation_output()())
+%%   <<"validationOutputList">> => list(validation_output())
 %% }
 -type get_app_validation_output_response() :: #{binary() => any()}.
 
@@ -877,7 +877,7 @@
 %%   <<"appId">> => string(),
 %%   <<"autoLaunch">> => boolean(),
 %%   <<"roleName">> => string(),
-%%   <<"serverGroupLaunchConfigurations">> => list(server_group_launch_configuration()())
+%%   <<"serverGroupLaunchConfigurations">> => list(server_group_launch_configuration())
 %% }
 -type get_app_launch_configuration_response() :: #{binary() => any()}.
 
@@ -911,7 +911,7 @@
 %%   <<"nextReplicationRunStartTime">> => non_neg_integer(),
 %%   <<"numberOfRecentAmisToKeep">> => integer(),
 %%   <<"replicationJobId">> => string(),
-%%   <<"replicationRunList">> => list(replication_run()()),
+%%   <<"replicationRunList">> => list(replication_run()),
 %%   <<"roleName">> => string(),
 %%   <<"runOnce">> => boolean(),
 %%   <<"seedReplicationTime">> => non_neg_integer(),
@@ -927,7 +927,7 @@
 %% get_replication_runs_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"replicationJob">> => replication_job(),
-%%   <<"replicationRunList">> => list(replication_run()())
+%%   <<"replicationRunList">> => list(replication_run())
 %% }
 -type get_replication_runs_response() :: #{binary() => any()}.
 
@@ -943,7 +943,7 @@
 %% server_group() :: #{
 %%   <<"name">> => string(),
 %%   <<"serverGroupId">> => string(),
-%%   <<"serverList">> => list(server()())
+%%   <<"serverList">> => list(server())
 %% }
 -type server_group() :: #{binary() => any()}.
 

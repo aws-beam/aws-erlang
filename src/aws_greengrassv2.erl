@@ -109,7 +109,7 @@
 %%   <<"componentDependencies">> => map(),
 %%   <<"componentLambdaParameters">> => lambda_execution_parameters(),
 %%   <<"componentName">> => string(),
-%%   <<"componentPlatforms">> => list(component_platform()()),
+%%   <<"componentPlatforms">> => list(component_platform()),
 %%   <<"componentVersion">> => string(),
 %%   <<"lambdaArn">> => string()
 %% }
@@ -170,7 +170,7 @@
 
 %% Example:
 %% list_component_versions_response() :: #{
-%%   <<"componentVersions">> => list(component_version_list_item()()),
+%%   <<"componentVersions">> => list(component_version_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_component_versions_response() :: #{binary() => any()}.
@@ -220,8 +220,8 @@
 %% Example:
 %% lambda_execution_parameters() :: #{
 %%   <<"environmentVariables">> => map(),
-%%   <<"eventSources">> => list(lambda_event_source()()),
-%%   <<"execArgs">> => list(string()()),
+%%   <<"eventSources">> => list(lambda_event_source()),
+%%   <<"execArgs">> => list(string()),
 %%   <<"inputPayloadEncodingType">> => list(any()),
 %%   <<"linuxProcessParams">> => lambda_linux_process_params(),
 %%   <<"maxIdleTimeInSeconds">> => integer(),
@@ -236,7 +236,7 @@
 
 %% Example:
 %% list_deployments_response() :: #{
-%%   <<"deployments">> => list(deployment()()),
+%%   <<"deployments">> => list(deployment()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployments_response() :: #{binary() => any()}.
@@ -293,7 +293,7 @@
 
 %% Example:
 %% list_core_devices_response() :: #{
-%%   <<"coreDevices">> => list(core_device()()),
+%%   <<"coreDevices">> => list(core_device()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_core_devices_response() :: #{binary() => any()}.
@@ -334,7 +334,7 @@
 
 %% Example:
 %% list_installed_components_response() :: #{
-%%   <<"installedComponents">> => list(installed_component()()),
+%%   <<"installedComponents">> => list(installed_component()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_installed_components_response() :: #{binary() => any()}.
@@ -371,7 +371,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -400,7 +400,7 @@
 
 %% Example:
 %% update_connectivity_info_request() :: #{
-%%   <<"connectivityInfo">> := list(connectivity_info()())
+%%   <<"connectivityInfo">> := list(connectivity_info())
 %% }
 -type update_connectivity_info_request() :: #{binary() => any()}.
 
@@ -464,7 +464,7 @@
 
 %% Example:
 %% get_connectivity_info_response() :: #{
-%%   <<"connectivityInfo">> => list(connectivity_info()()),
+%%   <<"connectivityInfo">> => list(connectivity_info()),
 %%   <<"message">> => string()
 %% }
 -type get_connectivity_info_response() :: #{binary() => any()}.
@@ -480,7 +480,7 @@
 %%   <<"lastStatusChangeTimestamp">> => non_neg_integer(),
 %%   <<"lifecycleState">> => list(any()),
 %%   <<"lifecycleStateDetails">> => string(),
-%%   <<"lifecycleStatusCodes">> => list(string()())
+%%   <<"lifecycleStatusCodes">> => list(string())
 %% }
 -type installed_component() :: #{binary() => any()}.
 
@@ -524,7 +524,7 @@
 
 %% Example:
 %% batch_disassociate_client_device_from_core_device_response() :: #{
-%%   <<"errorEntries">> => list(disassociate_client_device_from_core_device_error_entry()())
+%%   <<"errorEntries">> => list(disassociate_client_device_from_core_device_error_entry())
 %% }
 -type batch_disassociate_client_device_from_core_device_response() :: #{binary() => any()}.
 
@@ -546,7 +546,7 @@
 %%   <<"componentVersion">> => string(),
 %%   <<"creationTimestamp">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"platforms">> => list(component_platform()()),
+%%   <<"platforms">> => list(component_platform()),
 %%   <<"publisher">> => string()
 %% }
 -type component_latest_version() :: #{binary() => any()}.
@@ -631,8 +631,8 @@
 
 %% Example:
 %% effective_deployment_status_details() :: #{
-%%   <<"errorStack">> => list(string()()),
-%%   <<"errorTypes">> => list(string()())
+%%   <<"errorStack">> => list(string()),
+%%   <<"errorTypes">> => list(string())
 %% }
 -type effective_deployment_status_details() :: #{binary() => any()}.
 
@@ -656,7 +656,7 @@
 
 %% Example:
 %% list_client_devices_associated_with_core_device_response() :: #{
-%%   <<"associatedClientDevices">> => list(associated_client_device()()),
+%%   <<"associatedClientDevices">> => list(associated_client_device()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_client_devices_associated_with_core_device_response() :: #{binary() => any()}.
@@ -697,7 +697,7 @@
 %% Example:
 %% component_configuration_update() :: #{
 %%   <<"merge">> => string(),
-%%   <<"reset">> => list(string()())
+%%   <<"reset">> => list(string())
 %% }
 -type component_configuration_update() :: #{binary() => any()}.
 
@@ -718,7 +718,7 @@
 
 %% Example:
 %% resolve_component_candidates_response() :: #{
-%%   <<"resolvedComponentVersions">> => list(resolved_component_version()())
+%%   <<"resolvedComponentVersions">> => list(resolved_component_version())
 %% }
 -type resolve_component_candidates_response() :: #{binary() => any()}.
 
@@ -734,7 +734,7 @@
 
 %% Example:
 %% batch_disassociate_client_device_from_core_device_request() :: #{
-%%   <<"entries">> => list(disassociate_client_device_from_core_device_entry()())
+%%   <<"entries">> => list(disassociate_client_device_from_core_device_entry())
 %% }
 -type batch_disassociate_client_device_from_core_device_request() :: #{binary() => any()}.
 
@@ -752,7 +752,7 @@
 
 %% Example:
 %% io_t_job_abort_config() :: #{
-%%   <<"criteriaList">> => list(io_t_job_abort_criteria()())
+%%   <<"criteriaList">> => list(io_t_job_abort_criteria())
 %% }
 -type io_t_job_abort_config() :: #{binary() => any()}.
 
@@ -768,17 +768,17 @@
 
 %% Example:
 %% lambda_container_params() :: #{
-%%   <<"devices">> => list(lambda_device_mount()()),
+%%   <<"devices">> => list(lambda_device_mount()),
 %%   <<"memorySizeInKB">> => integer(),
 %%   <<"mountROSysfs">> => boolean(),
-%%   <<"volumes">> => list(lambda_volume_mount()())
+%%   <<"volumes">> => list(lambda_volume_mount())
 %% }
 -type lambda_container_params() :: #{binary() => any()}.
 
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"fields">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }
@@ -833,7 +833,7 @@
 %%   <<"componentVersion">> => string(),
 %%   <<"creationTimestamp">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"platforms">> => list(component_platform()()),
+%%   <<"platforms">> => list(component_platform()),
 %%   <<"publisher">> => string(),
 %%   <<"status">> => cloud_component_status(),
 %%   <<"tags">> => map()
@@ -851,7 +851,7 @@
 
 %% Example:
 %% list_components_response() :: #{
-%%   <<"components">> => list(component()()),
+%%   <<"components">> => list(component()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_components_response() :: #{binary() => any()}.
@@ -875,7 +875,7 @@
 
 %% Example:
 %% batch_associate_client_device_with_core_device_response() :: #{
-%%   <<"errorEntries">> => list(associate_client_device_with_core_device_error_entry()())
+%%   <<"errorEntries">> => list(associate_client_device_with_core_device_error_entry())
 %% }
 -type batch_associate_client_device_with_core_device_response() :: #{binary() => any()}.
 
@@ -911,7 +911,7 @@
 
 %% Example:
 %% list_effective_deployments_response() :: #{
-%%   <<"effectiveDeployments">> => list(effective_deployment()()),
+%%   <<"effectiveDeployments">> => list(effective_deployment()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_effective_deployments_response() :: #{binary() => any()}.
@@ -935,7 +935,7 @@
 
 %% Example:
 %% batch_associate_client_device_with_core_device_request() :: #{
-%%   <<"entries">> => list(associate_client_device_with_core_device_entry()())
+%%   <<"entries">> => list(associate_client_device_with_core_device_entry())
 %% }
 -type batch_associate_client_device_with_core_device_request() :: #{binary() => any()}.
 
@@ -970,7 +970,7 @@
 
 %% Example:
 %% resolve_component_candidates_request() :: #{
-%%   <<"componentCandidates">> => list(component_candidate()()),
+%%   <<"componentCandidates">> => list(component_candidate()),
 %%   <<"platform">> => component_platform()
 %% }
 -type resolve_component_candidates_request() :: #{binary() => any()}.

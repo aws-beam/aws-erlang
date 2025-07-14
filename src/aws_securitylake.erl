@@ -134,14 +134,14 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_data_lake_exceptions_response() :: #{
-%%   <<"exceptions">> => list(data_lake_exception()()),
+%%   <<"exceptions">> => list(data_lake_exception()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_lake_exceptions_response() :: #{binary() => any()}.
@@ -149,7 +149,7 @@
 
 %% Example:
 %% create_aws_log_source_response() :: #{
-%%   <<"failed">> => list(string()())
+%%   <<"failed">> => list(string())
 %% }
 -type create_aws_log_source_response() :: #{binary() => any()}.
 
@@ -160,14 +160,14 @@
 
 %% Example:
 %% list_data_lakes_request() :: #{
-%%   <<"regions">> => list(string()())
+%%   <<"regions">> => list(string())
 %% }
 -type list_data_lakes_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% data_lake_replication_configuration() :: #{
-%%   <<"regions">> => list(string()()),
+%%   <<"regions">> => list(string()),
 %%   <<"roleArn">> => string()
 %% }
 -type data_lake_replication_configuration() :: #{binary() => any()}.
@@ -191,11 +191,11 @@
 
 %% Example:
 %% list_log_sources_request() :: #{
-%%   <<"accounts">> => list(string()()),
+%%   <<"accounts">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"regions">> => list(string()()),
-%%   <<"sources">> => list(list()())
+%%   <<"regions">> => list(string()),
+%%   <<"sources">> => list(list())
 %% }
 -type list_log_sources_request() :: #{binary() => any()}.
 
@@ -217,7 +217,7 @@
 
 %% Example:
 %% get_data_lake_sources_request() :: #{
-%%   <<"accounts">> => list(string()()),
+%%   <<"accounts">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -226,9 +226,9 @@
 
 %% Example:
 %% create_data_lake_request() :: #{
-%%   <<"configurations">> := list(data_lake_configuration()()),
+%%   <<"configurations">> := list(data_lake_configuration()),
 %%   <<"metaStoreManagerRoleArn">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_data_lake_request() :: #{binary() => any()}.
 
@@ -243,7 +243,7 @@
 
 %% Example:
 %% list_data_lakes_response() :: #{
-%%   <<"dataLakes">> => list(data_lake_resource()())
+%%   <<"dataLakes">> => list(data_lake_resource())
 %% }
 -type list_data_lakes_response() :: #{binary() => any()}.
 
@@ -273,7 +273,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -294,14 +294,14 @@
 %% Example:
 %% data_lake_auto_enable_new_account_configuration() :: #{
 %%   <<"region">> => string(),
-%%   <<"sources">> => list(aws_log_source_resource()())
+%%   <<"sources">> => list(aws_log_source_resource())
 %% }
 -type data_lake_auto_enable_new_account_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_data_lake_request() :: #{
-%%   <<"configurations">> := list(data_lake_configuration()()),
+%%   <<"configurations">> := list(data_lake_configuration()),
 %%   <<"metaStoreManagerRoleArn">> => string()
 %% }
 -type update_data_lake_request() :: #{binary() => any()}.
@@ -313,7 +313,7 @@
 
 %% Example:
 %% create_aws_log_source_request() :: #{
-%%   <<"sources">> := list(aws_log_source_configuration()())
+%%   <<"sources">> := list(aws_log_source_configuration())
 %% }
 -type create_aws_log_source_request() :: #{binary() => any()}.
 
@@ -321,7 +321,7 @@
 %% Example:
 %% get_data_lake_sources_response() :: #{
 %%   <<"dataLakeArn">> => string(),
-%%   <<"dataLakeSources">> => list(data_lake_source()()),
+%%   <<"dataLakeSources">> => list(data_lake_source()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_data_lake_sources_response() :: #{binary() => any()}.
@@ -348,14 +348,14 @@
 
 %% Example:
 %% update_data_lake_response() :: #{
-%%   <<"dataLakes">> => list(data_lake_resource()())
+%%   <<"dataLakes">> => list(data_lake_resource())
 %% }
 -type update_data_lake_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_data_lake_response() :: #{
-%%   <<"dataLakes">> => list(data_lake_resource()())
+%%   <<"dataLakes">> => list(data_lake_resource())
 %% }
 -type create_data_lake_response() :: #{binary() => any()}.
 
@@ -380,7 +380,7 @@
 
 %% Example:
 %% update_subscriber_request() :: #{
-%%   <<"sources">> => list(list()()),
+%%   <<"sources">> => list(list()),
 %%   <<"subscriberDescription">> => string(),
 %%   <<"subscriberIdentity">> => aws_identity(),
 %%   <<"subscriberName">> => string()
@@ -471,7 +471,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -484,7 +484,7 @@
 %%   <<"resourceShareName">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"s3BucketArn">> => string(),
-%%   <<"sources">> => list(list()()),
+%%   <<"sources">> => list(list()),
 %%   <<"subscriberArn">> => string(),
 %%   <<"subscriberDescription">> => string(),
 %%   <<"subscriberEndpoint">> => string(),
@@ -499,7 +499,7 @@
 
 %% Example:
 %% create_data_lake_organization_configuration_request() :: #{
-%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration()())
+%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration())
 %% }
 -type create_data_lake_organization_configuration_request() :: #{binary() => any()}.
 
@@ -512,7 +512,7 @@
 %% list_data_lake_exceptions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"regions">> => list(string()())
+%%   <<"regions">> => list(string())
 %% }
 -type list_data_lake_exceptions_request() :: #{binary() => any()}.
 
@@ -524,22 +524,22 @@
 %% Example:
 %% list_subscribers_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"subscribers">> => list(subscriber_resource()())
+%%   <<"subscribers">> => list(subscriber_resource())
 %% }
 -type list_subscribers_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% delete_data_lake_organization_configuration_request() :: #{
-%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration()())
+%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration())
 %% }
 -type delete_data_lake_organization_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_log_source_configuration() :: #{
-%%   <<"accounts">> => list(string()()),
-%%   <<"regions">> => list(string()()),
+%%   <<"accounts">> => list(string()),
+%%   <<"regions">> => list(string()),
 %%   <<"sourceName">> => list(any()),
 %%   <<"sourceVersion">> => string()
 %% }
@@ -556,9 +556,9 @@
 %% Example:
 %% data_lake_source() :: #{
 %%   <<"account">> => [string()],
-%%   <<"eventClasses">> => list(string()()),
+%%   <<"eventClasses">> => list(string()),
 %%   <<"sourceName">> => [string()],
-%%   <<"sourceStatuses">> => list(data_lake_source_status()())
+%%   <<"sourceStatuses">> => list(data_lake_source_status())
 %% }
 -type data_lake_source() :: #{binary() => any()}.
 
@@ -578,7 +578,7 @@
 %% log_source() :: #{
 %%   <<"account">> => string(),
 %%   <<"region">> => string(),
-%%   <<"sources">> => list(list()())
+%%   <<"sources">> => list(list())
 %% }
 -type log_source() :: #{binary() => any()}.
 
@@ -606,7 +606,7 @@
 
 %% Example:
 %% delete_aws_log_source_response() :: #{
-%%   <<"failed">> => list(string()())
+%%   <<"failed">> => list(string())
 %% }
 -type delete_aws_log_source_response() :: #{binary() => any()}.
 
@@ -614,7 +614,7 @@
 %% Example:
 %% data_lake_lifecycle_configuration() :: #{
 %%   <<"expiration">> => data_lake_lifecycle_expiration(),
-%%   <<"transitions">> => list(data_lake_lifecycle_transition()())
+%%   <<"transitions">> => list(data_lake_lifecycle_transition())
 %% }
 -type data_lake_lifecycle_configuration() :: #{binary() => any()}.
 
@@ -638,7 +638,7 @@
 %% Example:
 %% list_log_sources_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sources">> => list(log_source()())
+%%   <<"sources">> => list(log_source())
 %% }
 -type list_log_sources_response() :: #{binary() => any()}.
 
@@ -658,7 +658,7 @@
 %% Example:
 %% create_custom_log_source_request() :: #{
 %%   <<"configuration">> := custom_log_source_configuration(),
-%%   <<"eventClasses">> => list(string()()),
+%%   <<"eventClasses">> => list(string()),
 %%   <<"sourceName">> := string(),
 %%   <<"sourceVersion">> => string()
 %% }
@@ -675,7 +675,7 @@
 
 %% Example:
 %% delete_data_lake_request() :: #{
-%%   <<"regions">> := list(string()())
+%%   <<"regions">> := list(string())
 %% }
 -type delete_data_lake_request() :: #{binary() => any()}.
 
@@ -752,7 +752,7 @@
 
 %% Example:
 %% get_data_lake_organization_configuration_response() :: #{
-%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration()())
+%%   <<"autoEnableNewAccount">> => list(data_lake_auto_enable_new_account_configuration())
 %% }
 -type get_data_lake_organization_configuration_response() :: #{binary() => any()}.
 
@@ -775,18 +775,18 @@
 %% Example:
 %% create_subscriber_request() :: #{
 %%   <<"accessTypes">> => list(list(any())()),
-%%   <<"sources">> := list(list()()),
+%%   <<"sources">> := list(list()),
 %%   <<"subscriberDescription">> => string(),
 %%   <<"subscriberIdentity">> := aws_identity(),
 %%   <<"subscriberName">> := [string()],
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_subscriber_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% delete_aws_log_source_request() :: #{
-%%   <<"sources">> := list(aws_log_source_configuration()())
+%%   <<"sources">> := list(aws_log_source_configuration())
 %% }
 -type delete_aws_log_source_request() :: #{binary() => any()}.
 

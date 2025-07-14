@@ -98,7 +98,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -136,7 +136,7 @@
 
 %% Example:
 %% describe_images_request() :: #{
-%%   <<"imageIds">> => list(image_identifier()()),
+%%   <<"imageIds">> => list(image_identifier()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"registryId">> => string(),
@@ -174,8 +174,8 @@
 
 %% Example:
 %% batch_check_layer_availability_response() :: #{
-%%   <<"failures">> => list(layer_failure()()),
-%%   <<"layers">> => list(layer()())
+%%   <<"failures">> => list(layer_failure()),
+%%   <<"layers">> => list(layer())
 %% }
 -type batch_check_layer_availability_response() :: #{binary() => any()}.
 
@@ -220,7 +220,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -246,7 +246,7 @@
 
 %% Example:
 %% describe_images_response() :: #{
-%%   <<"imageDetails">> => list(image_detail()()),
+%%   <<"imageDetails">> => list(image_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_images_response() :: #{binary() => any()}.
@@ -256,7 +256,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"registryId">> => string(),
-%%   <<"repositoryNames">> => list(string()())
+%%   <<"repositoryNames">> => list(string())
 %% }
 -type describe_repositories_request() :: #{binary() => any()}.
 
@@ -273,7 +273,7 @@
 
 %% Example:
 %% complete_layer_upload_request() :: #{
-%%   <<"layerDigests">> := list(string()()),
+%%   <<"layerDigests">> := list(string()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string(),
 %%   <<"uploadId">> := string()
@@ -306,7 +306,7 @@
 
 %% Example:
 %% batch_delete_image_request() :: #{
-%%   <<"imageIds">> := list(image_identifier()()),
+%%   <<"imageIds">> := list(image_identifier()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
@@ -412,18 +412,18 @@
 %% Example:
 %% repository_catalog_data() :: #{
 %%   <<"aboutText">> => string(),
-%%   <<"architectures">> => list(string()()),
+%%   <<"architectures">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"logoUrl">> => string(),
 %%   <<"marketplaceCertified">> => boolean(),
-%%   <<"operatingSystems">> => list(string()()),
+%%   <<"operatingSystems">> => list(string()),
 %%   <<"usageText">> => string()
 %% }
 -type repository_catalog_data() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -451,17 +451,17 @@
 %% Example:
 %% describe_registries_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"registries">> => list(registry()())
+%%   <<"registries">> => list(registry())
 %% }
 -type describe_registries_response() :: #{binary() => any()}.
 
 %% Example:
 %% repository_catalog_data_input() :: #{
 %%   <<"aboutText">> => string(),
-%%   <<"architectures">> => list(string()()),
+%%   <<"architectures">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"logoImageBlob">> => binary(),
-%%   <<"operatingSystems">> => list(string()()),
+%%   <<"operatingSystems">> => list(string()),
 %%   <<"usageText">> => string()
 %% }
 -type repository_catalog_data_input() :: #{binary() => any()}.
@@ -485,7 +485,7 @@
 %% create_repository_request() :: #{
 %%   <<"catalogData">> => repository_catalog_data_input(),
 %%   <<"repositoryName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_repository_request() :: #{binary() => any()}.
 
@@ -521,8 +521,8 @@
 
 %% Example:
 %% batch_delete_image_response() :: #{
-%%   <<"failures">> => list(image_failure()()),
-%%   <<"imageIds">> => list(image_identifier()())
+%%   <<"failures">> => list(image_failure()),
+%%   <<"imageIds">> => list(image_identifier())
 %% }
 -type batch_delete_image_response() :: #{binary() => any()}.
 
@@ -570,7 +570,7 @@
 
 %% Example:
 %% batch_check_layer_availability_request() :: #{
-%%   <<"layerDigests">> := list(string()()),
+%%   <<"layerDigests">> := list(string()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
@@ -603,7 +603,7 @@
 
 %% Example:
 %% registry() :: #{
-%%   <<"aliases">> => list(registry_alias()()),
+%%   <<"aliases">> => list(registry_alias()),
 %%   <<"registryArn">> => string(),
 %%   <<"registryId">> => string(),
 %%   <<"registryUri">> => string(),
@@ -626,7 +626,7 @@
 %% Example:
 %% describe_repositories_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository()())
+%%   <<"repositories">> => list(repository())
 %% }
 -type describe_repositories_response() :: #{binary() => any()}.
 
@@ -638,7 +638,7 @@
 
 %% Example:
 %% describe_image_tags_response() :: #{
-%%   <<"imageTagDetails">> => list(image_tag_detail()()),
+%%   <<"imageTagDetails">> => list(image_tag_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_image_tags_response() :: #{binary() => any()}.
@@ -657,7 +657,7 @@
 %%   <<"imageManifestMediaType">> => string(),
 %%   <<"imagePushedAt">> => non_neg_integer(),
 %%   <<"imageSizeInBytes">> => float(),
-%%   <<"imageTags">> => list(string()()),
+%%   <<"imageTags">> => list(string()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> => string()
 %% }

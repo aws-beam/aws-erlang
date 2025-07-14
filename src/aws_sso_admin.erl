@@ -199,7 +199,7 @@
 %% Example:
 %% list_trusted_token_issuers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TrustedTokenIssuers">> => list(trusted_token_issuer_metadata()())
+%%   <<"TrustedTokenIssuers">> => list(trusted_token_issuer_metadata())
 %% }
 -type list_trusted_token_issuers_response() :: #{binary() => any()}.
 
@@ -218,7 +218,7 @@
 
 %% Example:
 %% scope_details() :: #{
-%%   <<"AuthorizedTargets">> => list(string()()),
+%%   <<"AuthorizedTargets">> => list(string()),
 %%   <<"Scope">> => string()
 %% }
 -type scope_details() :: #{binary() => any()}.
@@ -227,7 +227,7 @@
 %% tag_resource_request() :: #{
 %%   <<"InstanceArn">> => string(),
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -284,7 +284,7 @@
 
 %% Example:
 %% list_accounts_for_provisioned_permission_set_response() :: #{
-%%   <<"AccountIds">> => list(string()()),
+%%   <<"AccountIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_accounts_for_provisioned_permission_set_response() :: #{binary() => any()}.
@@ -325,7 +325,7 @@
 
 %% Example:
 %% list_account_assignment_deletion_status_response() :: #{
-%%   <<"AccountAssignmentsDeletionStatus">> => list(account_assignment_operation_status_metadata()()),
+%%   <<"AccountAssignmentsDeletionStatus">> => list(account_assignment_operation_status_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_account_assignment_deletion_status_response() :: #{binary() => any()}.
@@ -397,7 +397,7 @@
 %% Example:
 %% list_permission_sets_provisioned_to_account_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PermissionSets">> => list(string()())
+%%   <<"PermissionSets">> => list(string())
 %% }
 -type list_permission_sets_provisioned_to_account_response() :: #{binary() => any()}.
 
@@ -481,14 +481,14 @@
 %% Example:
 %% list_application_access_scopes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Scopes">> => list(scope_details()())
+%%   <<"Scopes">> => list(scope_details())
 %% }
 -type list_application_access_scopes_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_permission_set_provisioning_status_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PermissionSetsProvisioningStatus">> => list(permission_set_provisioning_status_metadata()())
+%%   <<"PermissionSetsProvisioningStatus">> => list(permission_set_provisioning_status_metadata())
 %% }
 -type list_permission_set_provisioning_status_response() :: #{binary() => any()}.
 
@@ -496,7 +496,7 @@
 %% untag_resource_request() :: #{
 %%   <<"InstanceArn">> => string(),
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -528,7 +528,7 @@
 
 %% Example:
 %% get_application_access_scope_response() :: #{
-%%   <<"AuthorizedTargets">> => list(string()()),
+%%   <<"AuthorizedTargets">> => list(string()),
 %%   <<"Scope">> => string()
 %% }
 -type get_application_access_scope_response() :: #{binary() => any()}.
@@ -572,14 +572,14 @@
 
 %% Example:
 %% list_customer_managed_policy_references_in_permission_set_response() :: #{
-%%   <<"CustomerManagedPolicyReferences">> => list(customer_managed_policy_reference()()),
+%%   <<"CustomerManagedPolicyReferences">> => list(customer_managed_policy_reference()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_customer_managed_policy_references_in_permission_set_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_application_grants_response() :: #{
-%%   <<"Grants">> => list(grant_item()()),
+%%   <<"Grants">> => list(grant_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_grants_response() :: #{binary() => any()}.
@@ -591,7 +591,7 @@
 %%   <<"Name">> := string(),
 %%   <<"RelayState">> => string(),
 %%   <<"SessionDuration">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_permission_set_request() :: #{binary() => any()}.
 
@@ -603,7 +603,7 @@
 
 %% Example:
 %% list_managed_policies_in_permission_set_response() :: #{
-%%   <<"AttachedManagedPolicies">> => list(attached_managed_policy()()),
+%%   <<"AttachedManagedPolicies">> => list(attached_managed_policy()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_managed_policies_in_permission_set_response() :: #{binary() => any()}.
@@ -661,7 +661,7 @@
 
 %% Example:
 %% access_control_attribute_value() :: #{
-%%   <<"Source">> => list(string()())
+%%   <<"Source">> => list(string())
 %% }
 -type access_control_attribute_value() :: #{binary() => any()}.
 
@@ -703,7 +703,7 @@
 
 %% Example:
 %% jwt_bearer_grant() :: #{
-%%   <<"AuthorizedTokenIssuers">> => list(authorized_token_issuer()())
+%%   <<"AuthorizedTokenIssuers">> => list(authorized_token_issuer())
 %% }
 -type jwt_bearer_grant() :: #{binary() => any()}.
 
@@ -755,7 +755,7 @@
 
 %% Example:
 %% authorization_code_grant() :: #{
-%%   <<"RedirectUris">> => list(string()())
+%%   <<"RedirectUris">> => list(string())
 %% }
 -type authorization_code_grant() :: #{binary() => any()}.
 
@@ -789,7 +789,7 @@
 
 %% Example:
 %% list_application_providers_response() :: #{
-%%   <<"ApplicationProviders">> => list(application_provider()()),
+%%   <<"ApplicationProviders">> => list(application_provider()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_providers_response() :: #{binary() => any()}.
@@ -850,7 +850,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"InstanceArn">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrustedTokenIssuerConfiguration">> := list(),
 %%   <<"TrustedTokenIssuerType">> := list(any())
 %% }
@@ -875,7 +875,7 @@
 
 %% Example:
 %% list_account_assignment_creation_status_response() :: #{
-%%   <<"AccountAssignmentsCreationStatus">> => list(account_assignment_operation_status_metadata()()),
+%%   <<"AccountAssignmentsCreationStatus">> => list(account_assignment_operation_status_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_account_assignment_creation_status_response() :: #{binary() => any()}.
@@ -899,7 +899,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -912,7 +912,7 @@
 %%   <<"Name">> := string(),
 %%   <<"PortalOptions">> => portal_options(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_application_request() :: #{binary() => any()}.
 
@@ -953,7 +953,7 @@
 
 %% Example:
 %% list_account_assignments_for_principal_response() :: #{
-%%   <<"AccountAssignments">> => list(account_assignment_for_principal()()),
+%%   <<"AccountAssignments">> => list(account_assignment_for_principal()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_account_assignments_for_principal_response() :: #{binary() => any()}.
@@ -1055,7 +1055,7 @@
 
 %% Example:
 %% list_instances_response() :: #{
-%%   <<"Instances">> => list(instance_metadata()()),
+%%   <<"Instances">> => list(instance_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_instances_response() :: #{binary() => any()}.
@@ -1099,7 +1099,7 @@
 
 %% Example:
 %% list_application_assignments_for_principal_response() :: #{
-%%   <<"ApplicationAssignments">> => list(application_assignment_for_principal()()),
+%%   <<"ApplicationAssignments">> => list(application_assignment_for_principal()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_assignments_for_principal_response() :: #{binary() => any()}.
@@ -1131,7 +1131,7 @@
 
 %% Example:
 %% list_account_assignments_response() :: #{
-%%   <<"AccountAssignments">> => list(account_assignment()()),
+%%   <<"AccountAssignments">> => list(account_assignment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_account_assignments_response() :: #{binary() => any()}.
@@ -1154,7 +1154,7 @@
 
 %% Example:
 %% list_application_assignments_response() :: #{
-%%   <<"ApplicationAssignments">> => list(application_assignment()()),
+%%   <<"ApplicationAssignments">> => list(application_assignment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_assignments_response() :: #{binary() => any()}.
@@ -1179,7 +1179,7 @@
 %% create_instance_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_instance_request() :: #{binary() => any()}.
 
@@ -1262,7 +1262,7 @@
 
 %% Example:
 %% instance_access_control_attribute_configuration() :: #{
-%%   <<"AccessControlAttributes">> => list(access_control_attribute()())
+%%   <<"AccessControlAttributes">> => list(access_control_attribute())
 %% }
 -type instance_access_control_attribute_configuration() :: #{binary() => any()}.
 
@@ -1303,7 +1303,7 @@
 
 %% Example:
 %% list_application_authentication_methods_response() :: #{
-%%   <<"AuthenticationMethods">> => list(authentication_method_item()()),
+%%   <<"AuthenticationMethods">> => list(authentication_method_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_authentication_methods_response() :: #{binary() => any()}.
@@ -1366,7 +1366,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"Applications">> => list(application()()),
+%%   <<"Applications">> => list(application()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.
@@ -1472,7 +1472,7 @@
 %% Example:
 %% put_application_access_scope_request() :: #{
 %%   <<"ApplicationArn">> := string(),
-%%   <<"AuthorizedTargets">> => list(string()()),
+%%   <<"AuthorizedTargets">> => list(string()),
 %%   <<"Scope">> := string()
 %% }
 -type put_application_access_scope_request() :: #{binary() => any()}.
@@ -1513,7 +1513,7 @@
 
 %% Example:
 %% authorized_token_issuer() :: #{
-%%   <<"AuthorizedAudiences">> => list(string()()),
+%%   <<"AuthorizedAudiences">> => list(string()),
 %%   <<"TrustedTokenIssuerArn">> => string()
 %% }
 -type authorized_token_issuer() :: #{binary() => any()}.
@@ -1538,7 +1538,7 @@
 %% Example:
 %% list_permission_sets_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PermissionSets">> => list(string()())
+%%   <<"PermissionSets">> => list(string())
 %% }
 -type list_permission_sets_response() :: #{binary() => any()}.
 

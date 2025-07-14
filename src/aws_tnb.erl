@@ -108,7 +108,7 @@
 %% Example:
 %% get_sol_vnf_info() :: #{
 %%   <<"vnfState">> => list(any()),
-%%   <<"vnfcResourceInfo">> => list(get_sol_vnfc_resource_info()())
+%%   <<"vnfcResourceInfo">> => list(get_sol_vnfc_resource_info())
 %% }
 -type get_sol_vnf_info() :: #{binary() => any()}.
 
@@ -184,7 +184,7 @@
 
 %% Example:
 %% list_sol_network_packages_output() :: #{
-%%   <<"networkPackages">> => list(list_sol_network_package_info()()),
+%%   <<"networkPackages">> => list(list_sol_network_package_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sol_network_packages_output() :: #{binary() => any()}.
@@ -253,7 +253,7 @@
 %%   <<"nsdUsageState">> => list(any()),
 %%   <<"nsdVersion">> => [string()],
 %%   <<"tags">> => map(),
-%%   <<"vnfPkgIds">> => list(string()())
+%%   <<"vnfPkgIds">> => list(string())
 %% }
 -type get_sol_network_package_output() :: #{binary() => any()}.
 
@@ -379,7 +379,7 @@
 %%   <<"nsdId">> => string(),
 %%   <<"nsdName">> => [string()],
 %%   <<"nsdVersion">> => [string()],
-%%   <<"vnfPkgIds">> => list(string()())
+%%   <<"vnfPkgIds">> => list(string())
 %% }
 -type put_sol_network_package_content_output() :: #{binary() => any()}.
 
@@ -478,7 +478,7 @@
 
 %% Example:
 %% list_sol_function_packages_output() :: #{
-%%   <<"functionPackages">> => list(list_sol_function_package_info()()),
+%%   <<"functionPackages">> => list(list_sol_function_package_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sol_function_packages_output() :: #{binary() => any()}.
@@ -637,7 +637,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -676,7 +676,7 @@
 %%   <<"nsdId">> => string(),
 %%   <<"nsdName">> => [string()],
 %%   <<"nsdVersion">> => [string()],
-%%   <<"vnfPkgIds">> => list(string()())
+%%   <<"vnfPkgIds">> => list(string())
 %% }
 -type validate_sol_network_package_content_output() :: #{binary() => any()}.
 
@@ -747,7 +747,7 @@
 
 %% Example:
 %% list_sol_network_operations_output() :: #{
-%%   <<"networkOperations">> => list(list_sol_network_operations_info()()),
+%%   <<"networkOperations">> => list(list_sol_network_operations_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sol_network_operations_output() :: #{binary() => any()}.
@@ -788,7 +788,7 @@
 
 %% Example:
 %% list_sol_network_instances_output() :: #{
-%%   <<"networkInstances">> => list(list_sol_network_instance_info()()),
+%%   <<"networkInstances">> => list(list_sol_network_instance_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sol_network_instances_output() :: #{binary() => any()}.
@@ -836,7 +836,7 @@
 
 %% Example:
 %% function_artifact_meta() :: #{
-%%   <<"overrides">> => list(tosca_override()())
+%%   <<"overrides">> => list(tosca_override())
 %% }
 -type function_artifact_meta() :: #{binary() => any()}.
 
@@ -894,7 +894,7 @@
 %%   <<"nsInstanceId">> => string(),
 %%   <<"operationState">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"tasks">> => list(get_sol_network_operation_task_details()()),
+%%   <<"tasks">> => list(get_sol_network_operation_task_details()),
 %%   <<"updateType">> => list(any())
 %% }
 -type get_sol_network_operation_output() :: #{binary() => any()}.
@@ -930,7 +930,7 @@
 
 %% Example:
 %% list_sol_function_instances_output() :: #{
-%%   <<"functionInstances">> => list(list_sol_function_instance_info()()),
+%%   <<"functionInstances">> => list(list_sol_function_instance_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_sol_function_instances_output() :: #{binary() => any()}.
@@ -949,7 +949,7 @@
 %%   <<"nsdOperationalState">> => list(any()),
 %%   <<"nsdUsageState">> => list(any()),
 %%   <<"nsdVersion">> => [string()],
-%%   <<"vnfPkgIds">> => list(string()())
+%%   <<"vnfPkgIds">> => list(string())
 %% }
 -type list_sol_network_package_info() :: #{binary() => any()}.
 
@@ -964,7 +964,7 @@
 
 %% Example:
 %% network_artifact_meta() :: #{
-%%   <<"overrides">> => list(tosca_override()())
+%%   <<"overrides">> => list(tosca_override())
 %% }
 -type network_artifact_meta() :: #{binary() => any()}.
 

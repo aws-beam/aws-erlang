@@ -236,23 +236,23 @@
 %%   <<"DateCreated">> => non_neg_integer(),
 %%   <<"DateModified">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"DeviceModels">> => list(string()()),
-%%   <<"DeviceOperatingSystems">> => list(string()()),
-%%   <<"DeviceTypes">> => list(string()()),
-%%   <<"DeviceUserAgents">> => list(string()()),
+%%   <<"DeviceModels">> => list(string()),
+%%   <<"DeviceOperatingSystems">> => list(string()),
+%%   <<"DeviceTypes">> => list(string()),
+%%   <<"DeviceUserAgents">> => list(string()),
 %%   <<"Effect">> => list(any()),
 %%   <<"MobileDeviceAccessRuleId">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NotDeviceModels">> => list(string()()),
-%%   <<"NotDeviceOperatingSystems">> => list(string()()),
-%%   <<"NotDeviceTypes">> => list(string()()),
-%%   <<"NotDeviceUserAgents">> => list(string()())
+%%   <<"NotDeviceModels">> => list(string()),
+%%   <<"NotDeviceOperatingSystems">> => list(string()),
+%%   <<"NotDeviceTypes">> => list(string()),
+%%   <<"NotDeviceUserAgents">> => list(string())
 %% }
 -type mobile_device_access_rule() :: #{binary() => any()}.
 
 %% Example:
 %% list_aliases_response() :: #{
-%%   <<"Aliases">> => list(string()()),
+%%   <<"Aliases">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_aliases_response() :: #{binary() => any()}.
@@ -274,7 +274,7 @@
 %% Example:
 %% get_access_control_effect_response() :: #{
 %%   <<"Effect">> => list(any()),
-%%   <<"MatchedRules">> => list(string()())
+%%   <<"MatchedRules">> => list(string())
 %% }
 -type get_access_control_effect_response() :: #{binary() => any()}.
 
@@ -304,7 +304,7 @@
 %% Example:
 %% list_mobile_device_access_overrides_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Overrides">> => list(mobile_device_access_override()())
+%%   <<"Overrides">> => list(mobile_device_access_override())
 %% }
 -type list_mobile_device_access_overrides_response() :: #{binary() => any()}.
 
@@ -318,14 +318,14 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_organizations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OrganizationSummaries">> => list(organization_summary()())
+%%   <<"OrganizationSummaries">> => list(organization_summary())
 %% }
 -type list_organizations_response() :: #{binary() => any()}.
 
@@ -371,7 +371,7 @@
 %% Example:
 %% list_resources_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Resources">> => list(resource()())
+%%   <<"Resources">> => list(resource())
 %% }
 -type list_resources_response() :: #{binary() => any()}.
 
@@ -439,16 +439,16 @@
 %% create_mobile_device_access_rule_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"DeviceModels">> => list(string()()),
-%%   <<"DeviceOperatingSystems">> => list(string()()),
-%%   <<"DeviceTypes">> => list(string()()),
-%%   <<"DeviceUserAgents">> => list(string()()),
+%%   <<"DeviceModels">> => list(string()),
+%%   <<"DeviceOperatingSystems">> => list(string()),
+%%   <<"DeviceTypes">> => list(string()),
+%%   <<"DeviceUserAgents">> => list(string()),
 %%   <<"Effect">> := list(any()),
 %%   <<"Name">> := string(),
-%%   <<"NotDeviceModels">> => list(string()()),
-%%   <<"NotDeviceOperatingSystems">> => list(string()()),
-%%   <<"NotDeviceTypes">> => list(string()()),
-%%   <<"NotDeviceUserAgents">> => list(string()()),
+%%   <<"NotDeviceModels">> => list(string()),
+%%   <<"NotDeviceOperatingSystems">> => list(string()),
+%%   <<"NotDeviceTypes">> => list(string()),
+%%   <<"NotDeviceUserAgents">> => list(string()),
 %%   <<"OrganizationId">> := string()
 %% }
 -type create_mobile_device_access_rule_request() :: #{binary() => any()}.
@@ -537,7 +537,7 @@
 %%   <<"ExpiresTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"PersonalAccessTokenId">> => string(),
-%%   <<"Scopes">> => list(string()()),
+%%   <<"Scopes">> => list(string()),
 %%   <<"UserId">> => string()
 %% }
 -type personal_access_token_summary() :: #{binary() => any()}.
@@ -597,13 +597,13 @@
 %%   <<"IsDefault">> => boolean(),
 %%   <<"IsTestDomain">> => boolean(),
 %%   <<"OwnershipVerificationStatus">> => list(any()),
-%%   <<"Records">> => list(dns_record()())
+%%   <<"Records">> => list(dns_record())
 %% }
 -type get_mail_domain_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_mailbox_export_jobs_response() :: #{
-%%   <<"Jobs">> => list(mailbox_export_job()()),
+%%   <<"Jobs">> => list(mailbox_export_job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_mailbox_export_jobs_response() :: #{binary() => any()}.
@@ -632,19 +632,19 @@
 
 %% Example:
 %% access_control_rule() :: #{
-%%   <<"Actions">> => list(string()()),
+%%   <<"Actions">> => list(string()),
 %%   <<"DateCreated">> => non_neg_integer(),
 %%   <<"DateModified">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"Effect">> => list(any()),
-%%   <<"ImpersonationRoleIds">> => list(string()()),
-%%   <<"IpRanges">> => list(string()()),
+%%   <<"ImpersonationRoleIds">> => list(string()),
+%%   <<"IpRanges">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"NotActions">> => list(string()()),
-%%   <<"NotImpersonationRoleIds">> => list(string()()),
-%%   <<"NotIpRanges">> => list(string()()),
-%%   <<"NotUserIds">> => list(string()()),
-%%   <<"UserIds">> => list(string()())
+%%   <<"NotActions">> => list(string()),
+%%   <<"NotImpersonationRoleIds">> => list(string()),
+%%   <<"NotIpRanges">> => list(string()),
+%%   <<"NotUserIds">> => list(string()),
+%%   <<"UserIds">> => list(string())
 %% }
 -type access_control_rule() :: #{binary() => any()}.
 
@@ -697,7 +697,7 @@
 %% Example:
 %% put_retention_policy_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"FolderConfigurations">> := list(folder_configuration()()),
+%%   <<"FolderConfigurations">> := list(folder_configuration()),
 %%   <<"Id">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"OrganizationId">> := string()
@@ -712,14 +712,14 @@
 
 %% Example:
 %% list_mail_domains_response() :: #{
-%%   <<"MailDomains">> => list(mail_domain_summary()()),
+%%   <<"MailDomains">> => list(mail_domain_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_mail_domains_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_mobile_device_access_rules_response() :: #{
-%%   <<"Rules">> => list(mobile_device_access_rule()())
+%%   <<"Rules">> => list(mobile_device_access_rule())
 %% }
 -type list_mobile_device_access_rules_response() :: #{binary() => any()}.
 
@@ -730,7 +730,7 @@
 %%   <<"ExpiresTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"PersonalAccessTokenId">> => string(),
-%%   <<"Scopes">> => list(string()()),
+%%   <<"Scopes">> => list(string()),
 %%   <<"UserId">> => string()
 %% }
 -type get_personal_access_token_metadata_response() :: #{binary() => any()}.
@@ -784,13 +784,13 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_resource_delegates_response() :: #{
-%%   <<"Delegates">> => list(delegate()()),
+%%   <<"Delegates">> => list(delegate()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_resource_delegates_response() :: #{binary() => any()}.
@@ -837,7 +837,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
 %%   <<"OrganizationId">> := string(),
-%%   <<"Rules">> := list(impersonation_rule()()),
+%%   <<"Rules">> := list(impersonation_rule()),
 %%   <<"Type">> := list(any())
 %% }
 -type create_impersonation_role_request() :: #{binary() => any()}.
@@ -1079,7 +1079,7 @@
 %% Example:
 %% list_impersonation_roles_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Roles">> => list(impersonation_role()())
+%%   <<"Roles">> => list(impersonation_role())
 %% }
 -type list_impersonation_roles_response() :: #{binary() => any()}.
 
@@ -1093,14 +1093,14 @@
 %% Example:
 %% list_users_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_impersonation_role_effect_response() :: #{
 %%   <<"Effect">> => list(any()),
-%%   <<"MatchedRules">> => list(impersonation_matched_rule()()),
+%%   <<"MatchedRules">> => list(impersonation_matched_rule()),
 %%   <<"Type">> => list(any())
 %% }
 -type get_impersonation_role_effect_response() :: #{binary() => any()}.
@@ -1167,7 +1167,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1234,7 +1234,7 @@
 
 %% Example:
 %% list_groups_for_entity_response() :: #{
-%%   <<"Groups">> => list(group_identifier()()),
+%%   <<"Groups">> => list(group_identifier()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_for_entity_response() :: #{binary() => any()}.
@@ -1397,18 +1397,18 @@
 
 %% Example:
 %% put_access_control_rule_request() :: #{
-%%   <<"Actions">> => list(string()()),
+%%   <<"Actions">> => list(string()),
 %%   <<"Description">> := string(),
 %%   <<"Effect">> := list(any()),
-%%   <<"ImpersonationRoleIds">> => list(string()()),
-%%   <<"IpRanges">> => list(string()()),
+%%   <<"ImpersonationRoleIds">> => list(string()),
+%%   <<"IpRanges">> => list(string()),
 %%   <<"Name">> := string(),
-%%   <<"NotActions">> => list(string()()),
-%%   <<"NotImpersonationRoleIds">> => list(string()()),
-%%   <<"NotIpRanges">> => list(string()()),
-%%   <<"NotUserIds">> => list(string()()),
+%%   <<"NotActions">> => list(string()),
+%%   <<"NotImpersonationRoleIds">> => list(string()),
+%%   <<"NotIpRanges">> => list(string()),
+%%   <<"NotUserIds">> => list(string()),
 %%   <<"OrganizationId">> := string(),
-%%   <<"UserIds">> => list(string()())
+%%   <<"UserIds">> => list(string())
 %% }
 -type put_access_control_rule_request() :: #{binary() => any()}.
 
@@ -1432,8 +1432,8 @@
 %%   <<"Effect">> => list(any()),
 %%   <<"ImpersonationRuleId">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"NotTargetUsers">> => list(string()()),
-%%   <<"TargetUsers">> => list(string()())
+%%   <<"NotTargetUsers">> => list(string()),
+%%   <<"TargetUsers">> => list(string())
 %% }
 -type impersonation_rule() :: #{binary() => any()}.
 
@@ -1500,7 +1500,7 @@
 
 %% Example:
 %% list_availability_configurations_response() :: #{
-%%   <<"AvailabilityConfigurations">> => list(availability_configuration()()),
+%%   <<"AvailabilityConfigurations">> => list(availability_configuration()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_availability_configurations_response() :: #{binary() => any()}.
@@ -1541,7 +1541,7 @@
 %%   <<"ImpersonationRoleId">> := string(),
 %%   <<"Name">> := string(),
 %%   <<"OrganizationId">> := string(),
-%%   <<"Rules">> := list(impersonation_rule()()),
+%%   <<"Rules">> := list(impersonation_rule()),
 %%   <<"Type">> := list(any())
 %% }
 -type update_impersonation_role_request() :: #{binary() => any()}.
@@ -1555,7 +1555,7 @@
 
 %% Example:
 %% list_access_control_rules_response() :: #{
-%%   <<"Rules">> => list(access_control_rule()())
+%%   <<"Rules">> => list(access_control_rule())
 %% }
 -type list_access_control_rules_response() :: #{binary() => any()}.
 
@@ -1669,7 +1669,7 @@
 %% Example:
 %% list_mailbox_permissions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Permissions">> => list(permission()())
+%%   <<"Permissions">> => list(permission())
 %% }
 -type list_mailbox_permissions_response() :: #{binary() => any()}.
 
@@ -1803,17 +1803,17 @@
 %% Example:
 %% update_mobile_device_access_rule_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"DeviceModels">> => list(string()()),
-%%   <<"DeviceOperatingSystems">> => list(string()()),
-%%   <<"DeviceTypes">> => list(string()()),
-%%   <<"DeviceUserAgents">> => list(string()()),
+%%   <<"DeviceModels">> => list(string()),
+%%   <<"DeviceOperatingSystems">> => list(string()),
+%%   <<"DeviceTypes">> => list(string()),
+%%   <<"DeviceUserAgents">> => list(string()),
 %%   <<"Effect">> := list(any()),
 %%   <<"MobileDeviceAccessRuleId">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"NotDeviceModels">> => list(string()()),
-%%   <<"NotDeviceOperatingSystems">> => list(string()()),
-%%   <<"NotDeviceTypes">> => list(string()()),
-%%   <<"NotDeviceUserAgents">> => list(string()()),
+%%   <<"NotDeviceModels">> => list(string()),
+%%   <<"NotDeviceOperatingSystems">> => list(string()),
+%%   <<"NotDeviceTypes">> => list(string()),
+%%   <<"NotDeviceUserAgents">> => list(string()),
 %%   <<"OrganizationId">> := string()
 %% }
 -type update_mobile_device_access_rule_request() :: #{binary() => any()}.
@@ -1831,7 +1831,7 @@
 %% Example:
 %% get_mobile_device_access_effect_response() :: #{
 %%   <<"Effect">> => list(any()),
-%%   <<"MatchedRules">> => list(mobile_device_access_matched_rule()())
+%%   <<"MatchedRules">> => list(mobile_device_access_matched_rule())
 %% }
 -type get_mobile_device_access_effect_response() :: #{binary() => any()}.
 
@@ -1864,7 +1864,7 @@
 %% Example:
 %% list_personal_access_tokens_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PersonalAccessTokenSummaries">> => list(personal_access_token_summary()())
+%%   <<"PersonalAccessTokenSummaries">> => list(personal_access_token_summary())
 %% }
 -type list_personal_access_tokens_response() :: #{binary() => any()}.
 
@@ -1879,7 +1879,7 @@
 %% Example:
 %% get_default_retention_policy_response() :: #{
 %%   <<"Description">> => string(),
-%%   <<"FolderConfigurations">> => list(folder_configuration()()),
+%%   <<"FolderConfigurations">> => list(folder_configuration()),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string()
 %% }
@@ -1901,7 +1901,7 @@
 
 %% Example:
 %% list_groups_response() :: #{
-%%   <<"Groups">> => list(group()()),
+%%   <<"Groups">> => list(group()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_response() :: #{binary() => any()}.
@@ -2043,7 +2043,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ImpersonationRoleId">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Rules">> => list(impersonation_rule()()),
+%%   <<"Rules">> => list(impersonation_rule()),
 %%   <<"Type">> => list(any())
 %% }
 -type get_impersonation_role_response() :: #{binary() => any()}.
@@ -2070,7 +2070,7 @@
 
 %% Example:
 %% list_group_members_response() :: #{
-%%   <<"Members">> => list(member()()),
+%%   <<"Members">> => list(member()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_group_members_response() :: #{binary() => any()}.
@@ -2100,7 +2100,7 @@
 %%   <<"Alias">> := string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"DirectoryId">> => string(),
-%%   <<"Domains">> => list(domain()()),
+%%   <<"Domains">> => list(domain()),
 %%   <<"EnableInteroperability">> => boolean(),
 %%   <<"KmsKeyArn">> => string()
 %% }

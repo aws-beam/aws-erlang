@@ -90,7 +90,7 @@
 %% Example:
 %% query_filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type query_filter() :: #{binary() => any()}.
 
@@ -107,7 +107,7 @@
 %%   <<"Alias">> => string(),
 %%   <<"AppMonitorDetails">> := app_monitor_details(),
 %%   <<"BatchId">> := [string()],
-%%   <<"RumEvents">> := list(rum_event()()),
+%%   <<"RumEvents">> := list(rum_event()),
 %%   <<"UserDetails">> := user_details()
 %% }
 -type put_rum_events_request() :: #{binary() => any()}.
@@ -165,7 +165,7 @@
 %% batch_delete_rum_metric_definitions_request() :: #{
 %%   <<"Destination">> := string(),
 %%   <<"DestinationArn">> => string(),
-%%   <<"MetricDefinitionIds">> := list(string()())
+%%   <<"MetricDefinitionIds">> := list(string())
 %% }
 -type batch_delete_rum_metric_definitions_request() :: #{binary() => any()}.
 
@@ -174,13 +174,13 @@
 %% app_monitor_configuration() :: #{
 %%   <<"AllowCookies">> => [boolean()],
 %%   <<"EnableXRay">> => [boolean()],
-%%   <<"ExcludedPages">> => list(string()()),
+%%   <<"ExcludedPages">> => list(string()),
 %%   <<"FavoritePages">> => list([string()]()),
 %%   <<"GuestRoleArn">> => string(),
 %%   <<"IdentityPoolId">> => string(),
-%%   <<"IncludedPages">> => list(string()()),
+%%   <<"IncludedPages">> => list(string()),
 %%   <<"SessionSampleRate">> => float(),
-%%   <<"Telemetries">> => list(string()())
+%%   <<"Telemetries">> => list(string())
 %% }
 -type app_monitor_configuration() :: #{binary() => any()}.
 
@@ -208,14 +208,14 @@
 %%   <<"CwLogEnabled">> => [boolean()],
 %%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
 %%   <<"Domain">> => string(),
-%%   <<"DomainList">> => list(string()())
+%%   <<"DomainList">> => list(string())
 %% }
 -type update_app_monitor_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_app_monitor_data_request() :: #{
-%%   <<"Filters">> => list(query_filter()()),
+%%   <<"Filters">> => list(query_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"TimeRange">> := time_range()
@@ -253,7 +253,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -296,7 +296,7 @@
 %%   <<"DataStorage">> => data_storage(),
 %%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
 %%   <<"Domain">> => string(),
-%%   <<"DomainList">> => list(string()()),
+%%   <<"DomainList">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"LastModified">> => string(),
 %%   <<"Name">> => string(),
@@ -317,7 +317,7 @@
 %%   <<"CwLogEnabled">> => [boolean()],
 %%   <<"DeobfuscationConfiguration">> => deobfuscation_configuration(),
 %%   <<"Domain">> => string(),
-%%   <<"DomainList">> => list(string()()),
+%%   <<"DomainList">> => list(string()),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => map()
 %% }
@@ -352,7 +352,7 @@
 %% batch_create_rum_metric_definitions_request() :: #{
 %%   <<"Destination">> := string(),
 %%   <<"DestinationArn">> => string(),
-%%   <<"MetricDefinitions">> := list(metric_definition_request()())
+%%   <<"MetricDefinitions">> := list(metric_definition_request())
 %% }
 -type batch_create_rum_metric_definitions_request() :: #{binary() => any()}.
 
@@ -394,8 +394,8 @@
 
 %% Example:
 %% batch_delete_rum_metric_definitions_response() :: #{
-%%   <<"Errors">> := list(batch_delete_rum_metric_definitions_error()()),
-%%   <<"MetricDefinitionIds">> => list(string()())
+%%   <<"Errors">> := list(batch_delete_rum_metric_definitions_error()),
+%%   <<"MetricDefinitionIds">> => list(string())
 %% }
 -type batch_delete_rum_metric_definitions_response() :: #{binary() => any()}.
 
@@ -425,7 +425,7 @@
 
 %% Example:
 %% get_app_monitor_data_response() :: #{
-%%   <<"Events">> => list(string()()),
+%%   <<"Events">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_app_monitor_data_response() :: #{binary() => any()}.
@@ -474,7 +474,7 @@
 
 %% Example:
 %% batch_get_rum_metric_definitions_response() :: #{
-%%   <<"MetricDefinitions">> => list(metric_definition()()),
+%%   <<"MetricDefinitions">> => list(metric_definition()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type batch_get_rum_metric_definitions_response() :: #{binary() => any()}.
@@ -527,8 +527,8 @@
 
 %% Example:
 %% batch_create_rum_metric_definitions_response() :: #{
-%%   <<"Errors">> := list(batch_create_rum_metric_definitions_error()()),
-%%   <<"MetricDefinitions">> => list(metric_definition()())
+%%   <<"Errors">> := list(batch_create_rum_metric_definitions_error()),
+%%   <<"MetricDefinitions">> => list(metric_definition())
 %% }
 -type batch_create_rum_metric_definitions_response() :: #{binary() => any()}.
 
@@ -598,7 +598,7 @@
 
 %% Example:
 %% list_app_monitors_response() :: #{
-%%   <<"AppMonitorSummaries">> => list(app_monitor_summary()()),
+%%   <<"AppMonitorSummaries">> => list(app_monitor_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_app_monitors_response() :: #{binary() => any()}.
@@ -606,7 +606,7 @@
 
 %% Example:
 %% list_rum_metrics_destinations_response() :: #{
-%%   <<"Destinations">> => list(metric_destination_summary()()),
+%%   <<"Destinations">> => list(metric_destination_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_rum_metrics_destinations_response() :: #{binary() => any()}.

@@ -104,14 +104,14 @@
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()()),
-%%   <<"vpcSubnetIds">> => list(string()())
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
 %% }
 -type delete_db_instance_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_db_clusters_output() :: #{
-%%   <<"items">> => list(db_cluster_summary()()),
+%%   <<"items">> => list(db_cluster_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_db_clusters_output() :: #{binary() => any()}.
@@ -127,7 +127,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -139,7 +139,7 @@
 
 %% Example:
 %% list_db_instances_for_cluster_output() :: #{
-%%   <<"items">> => list(db_instance_for_cluster_summary()()),
+%%   <<"items">> => list(db_instance_for_cluster_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_db_instances_for_cluster_output() :: #{binary() => any()}.
@@ -204,8 +204,8 @@
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()()),
-%%   <<"vpcSubnetIds">> => list(string()())
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
 %% }
 -type get_db_instance_output() :: #{binary() => any()}.
 
@@ -259,8 +259,8 @@
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"tags">> => map(),
 %%   <<"username">> => string(),
-%%   <<"vpcSecurityGroupIds">> := list(string()()),
-%%   <<"vpcSubnetIds">> := list(string()())
+%%   <<"vpcSecurityGroupIds">> := list(string()),
+%%   <<"vpcSubnetIds">> := list(string())
 %% }
 -type create_db_cluster_input() :: #{binary() => any()}.
 
@@ -332,8 +332,8 @@
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"readerEndpoint">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()()),
-%%   <<"vpcSubnetIds">> => list(string()())
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
 %% }
 -type get_db_cluster_output() :: #{binary() => any()}.
 
@@ -351,7 +351,7 @@
 
 %% Example:
 %% list_db_parameter_groups_output() :: #{
-%%   <<"items">> => list(db_parameter_group_summary()()),
+%%   <<"items">> => list(db_parameter_group_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_db_parameter_groups_output() :: #{binary() => any()}.
@@ -377,8 +377,8 @@
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()()),
-%%   <<"vpcSubnetIds">> => list(string()())
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
 %% }
 -type create_db_instance_output() :: #{binary() => any()}.
 
@@ -407,7 +407,7 @@
 
 %% Example:
 %% list_db_instances_output() :: #{
-%%   <<"items">> => list(db_instance_summary()()),
+%%   <<"items">> => list(db_instance_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_db_instances_output() :: #{binary() => any()}.
@@ -461,8 +461,8 @@
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"secondaryAvailabilityZone">> => [string()],
 %%   <<"status">> => list(any()),
-%%   <<"vpcSecurityGroupIds">> => list(string()()),
-%%   <<"vpcSubnetIds">> => list(string()())
+%%   <<"vpcSecurityGroupIds">> => list(string()),
+%%   <<"vpcSubnetIds">> => list(string())
 %% }
 -type update_db_instance_output() :: #{binary() => any()}.
 
@@ -568,8 +568,8 @@
 %%   <<"publiclyAccessible">> => [boolean()],
 %%   <<"tags">> => map(),
 %%   <<"username">> => string(),
-%%   <<"vpcSecurityGroupIds">> := list(string()()),
-%%   <<"vpcSubnetIds">> := list(string()())
+%%   <<"vpcSecurityGroupIds">> := list(string()),
+%%   <<"vpcSubnetIds">> := list(string())
 %% }
 -type create_db_instance_input() :: #{binary() => any()}.
 

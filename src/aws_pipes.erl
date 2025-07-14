@@ -84,7 +84,7 @@
 
 %% Example:
 %% pipe_target_sage_maker_pipeline_parameters() :: #{
-%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter()())
+%%   <<"PipelineParameterList">> => list(sage_maker_pipeline_parameter())
 %% }
 -type pipe_target_sage_maker_pipeline_parameters() :: #{binary() => any()}.
 
@@ -93,7 +93,7 @@
 %% pipe_log_configuration() :: #{
 %%   <<"CloudwatchLogsLogDestination">> => cloudwatch_logs_log_destination(),
 %%   <<"FirehoseLogDestination">> => firehose_log_destination(),
-%%   <<"IncludeExecutionData">> => list(string()()),
+%%   <<"IncludeExecutionData">> => list(string()),
 %%   <<"Level">> => string(),
 %%   <<"S3LogDestination">> => s3_log_destination()
 %% }
@@ -167,7 +167,7 @@
 
 %% Example:
 %% filter_criteria() :: #{
-%%   <<"Filters">> => list(filter()())
+%%   <<"Filters">> => list(filter())
 %% }
 -type filter_criteria() :: #{binary() => any()}.
 
@@ -232,7 +232,7 @@
 %% pipe_target_event_bridge_event_bus_parameters() :: #{
 %%   <<"DetailType">> => string(),
 %%   <<"EndpointId">> => string(),
-%%   <<"Resources">> => list(string()()),
+%%   <<"Resources">> => list(string()),
 %%   <<"Source">> => string(),
 %%   <<"Time">> => string()
 %% }
@@ -292,7 +292,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> => list(string()())
+%%   <<"tagKeys">> => list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -394,7 +394,7 @@
 %% pipe_target_batch_job_parameters() :: #{
 %%   <<"ArrayProperties">> => batch_array_properties(),
 %%   <<"ContainerOverrides">> => batch_container_overrides(),
-%%   <<"DependsOn">> => list(batch_job_dependency()()),
+%%   <<"DependsOn">> => list(batch_job_dependency()),
 %%   <<"JobDefinition">> => [string()],
 %%   <<"JobName">> => [string()],
 %%   <<"Parameters">> => map(),
@@ -425,7 +425,7 @@
 %% Example:
 %% pipe_target_http_parameters() :: #{
 %%   <<"HeaderParameters">> => map(),
-%%   <<"PathParameterValues">> => list(string()()),
+%%   <<"PathParameterValues">> => list(string()),
 %%   <<"QueryStringParameters">> => map()
 %% }
 -type pipe_target_http_parameters() :: #{binary() => any()}.
@@ -456,7 +456,7 @@
 %% Example:
 %% list_pipes_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Pipes">> => list(pipe()())
+%%   <<"Pipes">> => list(pipe())
 %% }
 -type list_pipes_response() :: #{binary() => any()}.
 
@@ -506,7 +506,7 @@
 
 %% Example:
 %% multi_measure_mapping() :: #{
-%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()()),
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
 %%   <<"MultiMeasureName">> => string()
 %% }
 -type multi_measure_mapping() :: #{binary() => any()}.
@@ -529,14 +529,14 @@
 
 %% Example:
 %% ecs_container_override() :: #{
-%%   <<"Command">> => list(string()()),
+%%   <<"Command">> => list(string()),
 %%   <<"Cpu">> => [integer()],
-%%   <<"Environment">> => list(ecs_environment_variable()()),
-%%   <<"EnvironmentFiles">> => list(ecs_environment_file()()),
+%%   <<"Environment">> => list(ecs_environment_variable()),
+%%   <<"EnvironmentFiles">> => list(ecs_environment_file()),
 %%   <<"Memory">> => [integer()],
 %%   <<"MemoryReservation">> => [integer()],
 %%   <<"Name">> => string(),
-%%   <<"ResourceRequirements">> => list(ecs_resource_requirement()())
+%%   <<"ResourceRequirements">> => list(ecs_resource_requirement())
 %% }
 -type ecs_container_override() :: #{binary() => any()}.
 
@@ -563,11 +563,11 @@
 
 %% Example:
 %% ecs_task_override() :: #{
-%%   <<"ContainerOverrides">> => list(ecs_container_override()()),
+%%   <<"ContainerOverrides">> => list(ecs_container_override()),
 %%   <<"Cpu">> => string(),
 %%   <<"EphemeralStorage">> => ecs_ephemeral_storage(),
 %%   <<"ExecutionRoleArn">> => string(),
-%%   <<"InferenceAcceleratorOverrides">> => list(ecs_inference_accelerator_override()()),
+%%   <<"InferenceAcceleratorOverrides">> => list(ecs_inference_accelerator_override()),
 %%   <<"Memory">> => string(),
 %%   <<"TaskRoleArn">> => string()
 %% }
@@ -623,19 +623,19 @@
 
 %% Example:
 %% pipe_target_ecs_task_parameters() :: #{
-%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()()),
+%%   <<"CapacityProviderStrategy">> => list(capacity_provider_strategy_item()),
 %%   <<"EnableECSManagedTags">> => boolean(),
 %%   <<"EnableExecuteCommand">> => boolean(),
 %%   <<"Group">> => string(),
 %%   <<"LaunchType">> => string(),
 %%   <<"NetworkConfiguration">> => network_configuration(),
 %%   <<"Overrides">> => ecs_task_override(),
-%%   <<"PlacementConstraints">> => list(placement_constraint()()),
-%%   <<"PlacementStrategy">> => list(placement_strategy()()),
+%%   <<"PlacementConstraints">> => list(placement_constraint()),
+%%   <<"PlacementStrategy">> => list(placement_strategy()),
 %%   <<"PlatformVersion">> => string(),
 %%   <<"PropagateTags">> => string(),
 %%   <<"ReferenceId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TaskCount">> => integer(),
 %%   <<"TaskDefinitionArn">> => string()
 %% }
@@ -664,10 +664,10 @@
 
 %% Example:
 %% pipe_target_timestream_parameters() :: #{
-%%   <<"DimensionMappings">> => list(dimension_mapping()()),
+%%   <<"DimensionMappings">> => list(dimension_mapping()),
 %%   <<"EpochTimeUnit">> => string(),
-%%   <<"MultiMeasureMappings">> => list(multi_measure_mapping()()),
-%%   <<"SingleMeasureMappings">> => list(single_measure_mapping()()),
+%%   <<"MultiMeasureMappings">> => list(multi_measure_mapping()),
+%%   <<"SingleMeasureMappings">> => list(single_measure_mapping()),
 %%   <<"TimeFieldType">> => string(),
 %%   <<"TimeValue">> => string(),
 %%   <<"TimestampFormat">> => string(),
@@ -685,7 +685,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
@@ -717,7 +717,7 @@
 %%   <<"Database">> => string(),
 %%   <<"DbUser">> => string(),
 %%   <<"SecretManagerArn">> => string(),
-%%   <<"Sqls">> => list(string()()),
+%%   <<"Sqls">> => list(string()),
 %%   <<"StatementName">> => string(),
 %%   <<"WithEvent">> => boolean()
 %% }
@@ -762,8 +762,8 @@
 %% Example:
 %% aws_vpc_configuration() :: #{
 %%   <<"AssignPublicIp">> => string(),
-%%   <<"SecurityGroups">> => list(string()()),
-%%   <<"Subnets">> => list(string()())
+%%   <<"SecurityGroups">> => list(string()),
+%%   <<"Subnets">> => list(string())
 %% }
 -type aws_vpc_configuration() :: #{binary() => any()}.
 
@@ -772,7 +772,7 @@
 %% pipe_log_configuration_parameters() :: #{
 %%   <<"CloudwatchLogsLogDestination">> => cloudwatch_logs_log_destination_parameters(),
 %%   <<"FirehoseLogDestination">> => firehose_log_destination_parameters(),
-%%   <<"IncludeExecutionData">> => list(string()()),
+%%   <<"IncludeExecutionData">> => list(string()),
 %%   <<"Level">> => string(),
 %%   <<"S3LogDestination">> => s3_log_destination_parameters()
 %% }
@@ -809,7 +809,7 @@
 
 %% Example:
 %% pipe_source_self_managed_kafka_parameters() :: #{
-%%   <<"AdditionalBootstrapServers">> => list(string()()),
+%%   <<"AdditionalBootstrapServers">> => list(string()),
 %%   <<"BatchSize">> => integer(),
 %%   <<"ConsumerGroupID">> => string(),
 %%   <<"Credentials">> => list(),
@@ -824,10 +824,10 @@
 
 %% Example:
 %% batch_container_overrides() :: #{
-%%   <<"Command">> => list(string()()),
-%%   <<"Environment">> => list(batch_environment_variable()()),
+%%   <<"Command">> => list(string()),
+%%   <<"Environment">> => list(batch_environment_variable()),
 %%   <<"InstanceType">> => [string()],
-%%   <<"ResourceRequirements">> => list(batch_resource_requirement()())
+%%   <<"ResourceRequirements">> => list(batch_resource_requirement())
 %% }
 -type batch_container_overrides() :: #{binary() => any()}.
 
@@ -843,7 +843,7 @@
 %% Example:
 %% pipe_enrichment_http_parameters() :: #{
 %%   <<"HeaderParameters">> => map(),
-%%   <<"PathParameterValues">> => list(string()()),
+%%   <<"PathParameterValues">> => list(string()),
 %%   <<"QueryStringParameters">> => map()
 %% }
 -type pipe_enrichment_http_parameters() :: #{binary() => any()}.
@@ -897,8 +897,8 @@
 
 %% Example:
 %% self_managed_kafka_access_configuration_vpc() :: #{
-%%   <<"SecurityGroup">> => list(string()()),
-%%   <<"Subnets">> => list(string()())
+%%   <<"SecurityGroup">> => list(string()),
+%%   <<"Subnets">> => list(string())
 %% }
 -type self_managed_kafka_access_configuration_vpc() :: #{binary() => any()}.
 

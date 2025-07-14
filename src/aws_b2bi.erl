@@ -94,7 +94,7 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -124,9 +124,9 @@
 %% create_capability_request() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"configuration">> := list(),
-%%   <<"instructionsDocuments">> => list(s3_location()()),
+%%   <<"instructionsDocuments">> => list(s3_location()),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"type">> := list(any())
 %% }
 -type create_capability_request() :: #{binary() => any()}.
@@ -139,14 +139,14 @@
 
 %% Example:
 %% create_partnership_request() :: #{
-%%   <<"capabilities">> := list(string()()),
+%%   <<"capabilities">> := list(string()),
 %%   <<"capabilityOptions">> => capability_options(),
 %%   <<"clientToken">> => [string()],
 %%   <<"email">> := string(),
 %%   <<"name">> := string(),
 %%   <<"phone">> => string(),
 %%   <<"profileId">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_partnership_request() :: #{binary() => any()}.
 
@@ -165,7 +165,7 @@
 
 %% Example:
 %% partnership_summary() :: #{
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"modifiedAt">> => non_neg_integer(),
@@ -186,7 +186,7 @@
 
 %% Example:
 %% get_partnership_response() :: #{
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"email">> => string(),
@@ -206,7 +206,7 @@
 %%   <<"capabilityId">> => string(),
 %%   <<"configuration">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"instructionsDocuments">> => list(s3_location()()),
+%%   <<"instructionsDocuments">> => list(s3_location()),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"type">> => list(any())
@@ -258,7 +258,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -281,7 +281,7 @@
 %%   <<"outputConversion">> => output_conversion(),
 %%   <<"sampleDocument">> => string(),
 %%   <<"sampleDocuments">> => sample_documents(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_transformer_request() :: #{binary() => any()}.
 
@@ -310,7 +310,7 @@
 %%   <<"capabilityId">> => string(),
 %%   <<"configuration">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"instructionsDocuments">> => list(s3_location()()),
+%%   <<"instructionsDocuments">> => list(s3_location()),
 %%   <<"name">> => string(),
 %%   <<"type">> => list(any())
 %% }
@@ -319,7 +319,7 @@
 %% Example:
 %% list_transformers_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"transformers">> => list(transformer_summary()())
+%%   <<"transformers">> => list(transformer_summary())
 %% }
 -type list_transformers_response() :: #{binary() => any()}.
 
@@ -329,7 +329,7 @@
 %%   <<"capabilityId">> => string(),
 %%   <<"configuration">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"instructionsDocuments">> => list(s3_location()()),
+%%   <<"instructionsDocuments">> => list(s3_location()),
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"type">> => list(any())
@@ -347,7 +347,7 @@
 
 %% Example:
 %% update_partnership_request() :: #{
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"capabilityOptions">> => capability_options(),
 %%   <<"name">> => string()
 %% }
@@ -402,7 +402,7 @@
 %%   <<"logging">> := list(any()),
 %%   <<"name">> := string(),
 %%   <<"phone">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_profile_request() :: #{binary() => any()}.
 
@@ -510,14 +510,14 @@
 %% Example:
 %% get_transformer_job_response() :: #{
 %%   <<"message">> => [string()],
-%%   <<"outputFiles">> => list(s3_location()()),
+%%   <<"outputFiles">> => list(s3_location()),
 %%   <<"status">> => list(any())
 %% }
 -type get_transformer_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -540,7 +540,7 @@
 %% Example:
 %% update_capability_request() :: #{
 %%   <<"configuration">> => list(),
-%%   <<"instructionsDocuments">> => list(s3_location()()),
+%%   <<"instructionsDocuments">> => list(s3_location()),
 %%   <<"name">> => string()
 %% }
 -type update_capability_request() :: #{binary() => any()}.
@@ -555,7 +555,7 @@
 %% Example:
 %% list_partnerships_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"partnerships">> => list(partnership_summary()())
+%%   <<"partnerships">> => list(partnership_summary())
 %% }
 -type list_partnerships_response() :: #{binary() => any()}.
 
@@ -639,7 +639,7 @@
 
 %% Example:
 %% list_capabilities_response() :: #{
-%%   <<"capabilities">> => list(capability_summary()()),
+%%   <<"capabilities">> => list(capability_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_capabilities_response() :: #{binary() => any()}.
@@ -687,7 +687,7 @@
 %% Example:
 %% list_profiles_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"profiles">> => list(profile_summary()())
+%%   <<"profiles">> => list(profile_summary())
 %% }
 -type list_profiles_response() :: #{binary() => any()}.
 
@@ -712,7 +712,7 @@
 %% Example:
 %% sample_documents() :: #{
 %%   <<"bucketName">> => string(),
-%%   <<"keys">> => list(sample_document_keys()())
+%%   <<"keys">> => list(sample_document_keys())
 %% }
 -type sample_documents() :: #{binary() => any()}.
 
@@ -725,7 +725,7 @@
 
 %% Example:
 %% update_partnership_response() :: #{
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"email">> => string(),
@@ -809,7 +809,7 @@
 
 %% Example:
 %% create_partnership_response() :: #{
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"capabilityOptions">> => capability_options(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"email">> => string(),

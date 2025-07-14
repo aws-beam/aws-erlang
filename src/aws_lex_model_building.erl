@@ -132,7 +132,7 @@
 %% Example:
 %% get_slot_types_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"slotTypes">> => list(slot_type_metadata()())
+%%   <<"slotTypes">> => list(slot_type_metadata())
 %% }
 -type get_slot_types_response() :: #{binary() => any()}.
 
@@ -148,11 +148,11 @@
 %%   <<"detectSentiment">> => boolean(),
 %%   <<"enableModelImprovements">> => boolean(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"intents">> => list(intent()()),
+%%   <<"intents">> => list(intent()),
 %%   <<"locale">> := list(any()),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
 %%   <<"processBehavior">> => list(any()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"voiceId">> => string()
 %% }
 -type put_bot_request() :: #{binary() => any()}.
@@ -160,14 +160,14 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_bot_channel_associations_response() :: #{
-%%   <<"botChannelAssociations">> => list(bot_channel_association()()),
+%%   <<"botChannelAssociations">> => list(bot_channel_association()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_bot_channel_associations_response() :: #{binary() => any()}.
@@ -215,7 +215,7 @@
 
 %% Example:
 %% get_migration_response() :: #{
-%%   <<"alerts">> => list(migration_alert()()),
+%%   <<"alerts">> => list(migration_alert()),
 %%   <<"migrationId">> => string(),
 %%   <<"migrationStatus">> => list(any()),
 %%   <<"migrationStrategy">> => list(any()),
@@ -240,7 +240,7 @@
 %% Example:
 %% get_builtin_slot_types_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"slotTypes">> => list(builtin_slot_type_metadata()())
+%%   <<"slotTypes">> => list(builtin_slot_type_metadata())
 %% }
 -type get_builtin_slot_types_response() :: #{binary() => any()}.
 
@@ -255,11 +255,11 @@
 %%   <<"createVersion">> => boolean(),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"enumerationValues">> => list(enumeration_value()()),
+%%   <<"enumerationValues">> => list(enumeration_value()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()()),
+%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
 %%   <<"valueSelectionStrategy">> => list(any()),
 %%   <<"version">> => string()
 %% }
@@ -269,7 +269,7 @@
 %% Example:
 %% get_import_response() :: #{
 %%   <<"createdDate">> => non_neg_integer(),
-%%   <<"failureReason">> => list(string()()),
+%%   <<"failureReason">> => list(string()),
 %%   <<"importId">> => string(),
 %%   <<"importStatus">> => list(any()),
 %%   <<"mergeStrategy">> => list(any()),
@@ -307,11 +307,11 @@
 %%   <<"checksum">> => string(),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"enumerationValues">> => list(enumeration_value()()),
+%%   <<"enumerationValues">> => list(enumeration_value()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()()),
+%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
 %%   <<"valueSelectionStrategy">> => list(any()),
 %%   <<"version">> => string()
 %% }
@@ -344,7 +344,7 @@
 %%   <<"enableModelImprovements">> => boolean(),
 %%   <<"failureReason">> => string(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"intents">> => list(intent()()),
+%%   <<"intents">> => list(intent()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"locale">> => list(any()),
 %%   <<"name">> => string(),
@@ -381,7 +381,7 @@
 %%   <<"obfuscationSetting">> => list(any()),
 %%   <<"priority">> => integer(),
 %%   <<"responseCard">> => string(),
-%%   <<"sampleUtterances">> => list(string()()),
+%%   <<"sampleUtterances">> => list(string()),
 %%   <<"slotConstraint">> => list(any()),
 %%   <<"slotType">> => string(),
 %%   <<"slotTypeVersion">> => string(),
@@ -425,7 +425,7 @@
 %% Example:
 %% get_builtin_intent_response() :: #{
 %%   <<"signature">> => string(),
-%%   <<"slots">> => list(builtin_intent_slot()()),
+%%   <<"slots">> => list(builtin_intent_slot()),
 %%   <<"supportedLocales">> => list(list(any())())
 %% }
 -type get_builtin_intent_response() :: #{binary() => any()}.
@@ -441,7 +441,7 @@
 %% Example:
 %% get_slot_type_versions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"slotTypes">> => list(slot_type_metadata()())
+%%   <<"slotTypes">> => list(slot_type_metadata())
 %% }
 -type get_slot_type_versions_response() :: #{binary() => any()}.
 
@@ -452,7 +452,7 @@
 
 %% Example:
 %% statement() :: #{
-%%   <<"messages">> => list(message()()),
+%%   <<"messages">> => list(message()),
 %%   <<"responseCard">> => string()
 %% }
 -type statement() :: #{binary() => any()}.
@@ -460,7 +460,7 @@
 
 %% Example:
 %% get_bots_response() :: #{
-%%   <<"bots">> => list(bot_metadata()()),
+%%   <<"bots">> => list(bot_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_bots_response() :: #{binary() => any()}.
@@ -476,7 +476,7 @@
 
 %% Example:
 %% get_migrations_response() :: #{
-%%   <<"migrationSummaries">> => list(migration_summary()()),
+%%   <<"migrationSummaries">> => list(migration_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_migrations_response() :: #{binary() => any()}.
@@ -484,7 +484,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -540,7 +540,7 @@
 
 %% Example:
 %% get_intents_response() :: #{
-%%   <<"intents">> => list(intent_metadata()()),
+%%   <<"intents">> => list(intent_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_intents_response() :: #{binary() => any()}.
@@ -548,7 +548,7 @@
 
 %% Example:
 %% get_intent_versions_response() :: #{
-%%   <<"intents">> => list(intent_metadata()()),
+%%   <<"intents">> => list(intent_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_intent_versions_response() :: #{binary() => any()}.
@@ -584,15 +584,15 @@
 %%   <<"dialogCodeHook">> => code_hook(),
 %%   <<"followUpPrompt">> => follow_up_prompt(),
 %%   <<"fulfillmentActivity">> => fulfillment_activity(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string(),
 %%   <<"rejectionStatement">> => statement(),
-%%   <<"sampleUtterances">> => list(string()()),
-%%   <<"slots">> => list(slot()()),
+%%   <<"sampleUtterances">> => list(string()),
+%%   <<"slots">> => list(slot()),
 %%   <<"version">> => string()
 %% }
 -type get_intent_response() :: #{binary() => any()}.
@@ -637,7 +637,7 @@
 %% Example:
 %% conversation_logs_response() :: #{
 %%   <<"iamRoleArn">> => string(),
-%%   <<"logSettings">> => list(log_settings_response()())
+%%   <<"logSettings">> => list(log_settings_response())
 %% }
 -type conversation_logs_response() :: #{binary() => any()}.
 
@@ -660,7 +660,7 @@
 %%   <<"checksum">> => string(),
 %%   <<"conversationLogs">> => conversation_logs_request(),
 %%   <<"description">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type put_bot_alias_request() :: #{binary() => any()}.
 
@@ -674,7 +674,7 @@
 
 %% Example:
 %% slot_default_value_spec() :: #{
-%%   <<"defaultValueList">> => list(slot_default_value()())
+%%   <<"defaultValueList">> => list(slot_default_value())
 %% }
 -type slot_default_value_spec() :: #{binary() => any()}.
 
@@ -685,7 +685,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -693,7 +693,7 @@
 %% Example:
 %% get_utterances_view_response() :: #{
 %%   <<"botName">> => string(),
-%%   <<"utterances">> => list(utterance_list()())
+%%   <<"utterances">> => list(utterance_list())
 %% }
 -type get_utterances_view_response() :: #{binary() => any()}.
 
@@ -711,13 +711,13 @@
 %%   <<"enableModelImprovements">> => boolean(),
 %%   <<"failureReason">> => string(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"intents">> => list(intent()()),
+%%   <<"intents">> => list(intent()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"locale">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"version">> => string(),
 %%   <<"voiceId">> => string()
 %% }
@@ -758,7 +758,7 @@
 
 %% Example:
 %% get_bot_aliases_response() :: #{
-%%   <<"BotAliases">> => list(bot_alias_metadata()()),
+%%   <<"BotAliases">> => list(bot_alias_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_bot_aliases_response() :: #{binary() => any()}.
@@ -769,11 +769,11 @@
 %%   <<"checksum">> => string(),
 %%   <<"createdDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"enumerationValues">> => list(enumeration_value()()),
+%%   <<"enumerationValues">> => list(enumeration_value()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()()),
+%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
 %%   <<"valueSelectionStrategy">> => list(any()),
 %%   <<"version">> => string()
 %% }
@@ -783,7 +783,7 @@
 %% Example:
 %% utterance_list() :: #{
 %%   <<"botVersion">> => string(),
-%%   <<"utterances">> => list(utterance_data()())
+%%   <<"utterances">> => list(utterance_data())
 %% }
 -type utterance_list() :: #{binary() => any()}.
 
@@ -802,7 +802,7 @@
 
 %% Example:
 %% get_bot_versions_response() :: #{
-%%   <<"bots">> => list(bot_metadata()()),
+%%   <<"bots">> => list(bot_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_bot_versions_response() :: #{binary() => any()}.
@@ -818,13 +818,13 @@
 %%   <<"dialogCodeHook">> => code_hook(),
 %%   <<"followUpPrompt">> => follow_up_prompt(),
 %%   <<"fulfillmentActivity">> => fulfillment_activity(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string(),
 %%   <<"rejectionStatement">> => statement(),
-%%   <<"sampleUtterances">> => list(string()()),
-%%   <<"slots">> => list(slot()())
+%%   <<"sampleUtterances">> => list(string()),
+%%   <<"slots">> => list(slot())
 %% }
 -type put_intent_request() :: #{binary() => any()}.
 
@@ -853,9 +853,9 @@
 %%   <<"checksum">> => string(),
 %%   <<"createVersion">> => boolean(),
 %%   <<"description">> => string(),
-%%   <<"enumerationValues">> => list(enumeration_value()()),
+%%   <<"enumerationValues">> => list(enumeration_value()),
 %%   <<"parentSlotTypeSignature">> => string(),
-%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()()),
+%%   <<"slotTypeConfigurations">> => list(slot_type_configuration()),
 %%   <<"valueSelectionStrategy">> => list(any())
 %% }
 -type put_slot_type_request() :: #{binary() => any()}.
@@ -878,7 +878,7 @@
 %% Example:
 %% conversation_logs_request() :: #{
 %%   <<"iamRoleArn">> => string(),
-%%   <<"logSettings">> => list(log_settings_request()())
+%%   <<"logSettings">> => list(log_settings_request())
 %% }
 -type conversation_logs_request() :: #{binary() => any()}.
 
@@ -892,7 +892,7 @@
 
 %% Example:
 %% get_builtin_intents_response() :: #{
-%%   <<"intents">> => list(builtin_intent_metadata()()),
+%%   <<"intents">> => list(builtin_intent_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_builtin_intents_response() :: #{binary() => any()}.
@@ -909,15 +909,15 @@
 %%   <<"dialogCodeHook">> => code_hook(),
 %%   <<"followUpPrompt">> => follow_up_prompt(),
 %%   <<"fulfillmentActivity">> => fulfillment_activity(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string(),
 %%   <<"rejectionStatement">> => statement(),
-%%   <<"sampleUtterances">> => list(string()()),
-%%   <<"slots">> => list(slot()()),
+%%   <<"sampleUtterances">> => list(string()),
+%%   <<"slots">> => list(slot()),
 %%   <<"version">> => string()
 %% }
 -type put_intent_response() :: #{binary() => any()}.
@@ -1036,15 +1036,15 @@
 %%   <<"dialogCodeHook">> => code_hook(),
 %%   <<"followUpPrompt">> => follow_up_prompt(),
 %%   <<"fulfillmentActivity">> => fulfillment_activity(),
-%%   <<"inputContexts">> => list(input_context()()),
+%%   <<"inputContexts">> => list(input_context()),
 %%   <<"kendraConfiguration">> => kendra_configuration(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"outputContexts">> => list(output_context()()),
+%%   <<"outputContexts">> => list(output_context()),
 %%   <<"parentIntentSignature">> => string(),
 %%   <<"rejectionStatement">> => statement(),
-%%   <<"sampleUtterances">> => list(string()()),
-%%   <<"slots">> => list(slot()()),
+%%   <<"sampleUtterances">> => list(string()),
+%%   <<"slots">> => list(slot()),
 %%   <<"version">> => string()
 %% }
 -type create_intent_version_response() :: #{binary() => any()}.
@@ -1082,7 +1082,7 @@
 
 %% Example:
 %% enumeration_value() :: #{
-%%   <<"synonyms">> => list(string()()),
+%%   <<"synonyms">> => list(string()),
 %%   <<"value">> => string()
 %% }
 -type enumeration_value() :: #{binary() => any()}.
@@ -1090,7 +1090,7 @@
 
 %% Example:
 %% get_utterances_view_request() :: #{
-%%   <<"botVersions">> := list(string()()),
+%%   <<"botVersions">> := list(string()),
 %%   <<"statusType">> := list(any())
 %% }
 -type get_utterances_view_request() :: #{binary() => any()}.
@@ -1106,7 +1106,7 @@
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type put_bot_alias_response() :: #{binary() => any()}.
 
@@ -1120,9 +1120,9 @@
 
 %% Example:
 %% migration_alert() :: #{
-%%   <<"details">> => list(string()()),
+%%   <<"details">> => list(string()),
 %%   <<"message">> => string(),
-%%   <<"referenceURLs">> => list(string()()),
+%%   <<"referenceURLs">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type migration_alert() :: #{binary() => any()}.
@@ -1160,7 +1160,7 @@
 %%   <<"mergeStrategy">> := list(any()),
 %%   <<"payload">> := binary(),
 %%   <<"resourceType">> := list(any()),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type start_import_request() :: #{binary() => any()}.
 
@@ -1184,7 +1184,7 @@
 %%   <<"mergeStrategy">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"resourceType">> => list(any()),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type start_import_response() :: #{binary() => any()}.
 
@@ -1192,7 +1192,7 @@
 %% Example:
 %% prompt() :: #{
 %%   <<"maxAttempts">> => integer(),
-%%   <<"messages">> => list(message()()),
+%%   <<"messages">> => list(message()),
 %%   <<"responseCard">> => string()
 %% }
 -type prompt() :: #{binary() => any()}.
@@ -1210,7 +1210,7 @@
 %%   <<"enableModelImprovements">> => boolean(),
 %%   <<"failureReason">> => string(),
 %%   <<"idleSessionTTLInSeconds">> => integer(),
-%%   <<"intents">> => list(intent()()),
+%%   <<"intents">> => list(intent()),
 %%   <<"lastUpdatedDate">> => non_neg_integer(),
 %%   <<"locale">> => list(any()),
 %%   <<"name">> => string(),

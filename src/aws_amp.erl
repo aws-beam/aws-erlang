@@ -113,7 +113,7 @@
 %% Example:
 %% query_logging_configuration_metadata() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"destinations">> => list(logging_destination()()),
+%%   <<"destinations">> => list(logging_destination()),
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"status">> => query_logging_configuration_status(),
 %%   <<"workspace">> => string()
@@ -139,7 +139,7 @@
 %% Example:
 %% update_workspace_configuration_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()()),
+%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()),
 %%   <<"retentionPeriodInDays">> => [integer()]
 %% }
 -type update_workspace_configuration_request() :: #{binary() => any()}.
@@ -166,7 +166,7 @@
 %% Example:
 %% list_rule_groups_namespaces_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"ruleGroupsNamespaces">> => list(rule_groups_namespace_summary()())
+%%   <<"ruleGroupsNamespaces">> => list(rule_groups_namespace_summary())
 %% }
 -type list_rule_groups_namespaces_response() :: #{binary() => any()}.
 
@@ -318,7 +318,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -378,7 +378,7 @@
 
 %% Example:
 %% workspace_configuration_description() :: #{
-%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()()),
+%%   <<"limitsPerLabelSet">> => list(limits_per_label_set()),
 %%   <<"retentionPeriodInDays">> => [integer()],
 %%   <<"status">> => workspace_configuration_status()
 %% }
@@ -483,8 +483,8 @@
 %% Example:
 %% eks_configuration() :: #{
 %%   <<"clusterArn">> => string(),
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
 -type eks_configuration() :: #{binary() => any()}.
 
@@ -511,7 +511,7 @@
 %% Example:
 %% update_query_logging_configuration_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"destinations">> := list(logging_destination()())
+%%   <<"destinations">> := list(logging_destination())
 %% }
 -type update_query_logging_configuration_request() :: #{binary() => any()}.
 
@@ -589,7 +589,7 @@
 %% Example:
 %% list_workspaces_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workspaces">> => list(workspace_summary()())
+%%   <<"workspaces">> => list(workspace_summary())
 %% }
 -type list_workspaces_response() :: #{binary() => any()}.
 
@@ -688,7 +688,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
@@ -792,7 +792,7 @@
 %% Example:
 %% create_query_logging_configuration_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"destinations">> := list(logging_destination()())
+%%   <<"destinations">> := list(logging_destination())
 %% }
 -type create_query_logging_configuration_request() :: #{binary() => any()}.
 
@@ -800,7 +800,7 @@
 %% Example:
 %% list_scrapers_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"scrapers">> => list(scraper_summary()())
+%%   <<"scrapers">> => list(scraper_summary())
 %% }
 -type list_scrapers_response() :: #{binary() => any()}.
 

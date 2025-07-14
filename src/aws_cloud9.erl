@@ -88,20 +88,20 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_environments_result() :: #{
-%%   <<"environmentIds">> => list(string()()),
+%%   <<"environmentIds">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_environments_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_environments_result() :: #{
-%%   <<"environments">> => list(environment()())
+%%   <<"environments">> => list(environment())
 %% }
 -type describe_environments_result() :: #{binary() => any()}.
 
@@ -147,7 +147,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -211,7 +211,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -294,7 +294,7 @@
 %%   <<"name">> := string(),
 %%   <<"ownerArn">> => string(),
 %%   <<"subnetId">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_environment_ec2_request() :: #{binary() => any()}.
 
@@ -314,7 +314,7 @@
 
 %% Example:
 %% describe_environment_memberships_result() :: #{
-%%   <<"memberships">> => list(environment_member()()),
+%%   <<"memberships">> => list(environment_member()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_environment_memberships_result() :: #{binary() => any()}.
@@ -360,7 +360,7 @@
 
 %% Example:
 %% describe_environments_request() :: #{
-%%   <<"environmentIds">> := list(string()())
+%%   <<"environmentIds">> := list(string())
 %% }
 -type describe_environments_request() :: #{binary() => any()}.
 

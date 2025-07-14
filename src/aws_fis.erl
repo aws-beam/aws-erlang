@@ -103,7 +103,7 @@
 
 %% Example:
 %% list_experiments_response() :: #{
-%%   <<"experiments">> => list(experiment_summary()()),
+%%   <<"experiments">> => list(experiment_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_experiments_response() :: #{binary() => any()}.
@@ -178,9 +178,9 @@
 
 %% Example:
 %% experiment_template_target() :: #{
-%%   <<"filters">> => list(experiment_template_target_filter()()),
+%%   <<"filters">> => list(experiment_template_target_filter()),
 %%   <<"parameters">> => map(),
-%%   <<"resourceArns">> => list(string()()),
+%%   <<"resourceArns">> => list(string()),
 %%   <<"resourceTags">> => map(),
 %%   <<"resourceType">> => string(),
 %%   <<"selectionMode">> => string()
@@ -207,14 +207,14 @@
 
 %% Example:
 %% experiment_report_configuration_data_sources() :: #{
-%%   <<"cloudWatchDashboards">> => list(experiment_report_configuration_cloud_watch_dashboard()())
+%%   <<"cloudWatchDashboards">> => list(experiment_report_configuration_cloud_watch_dashboard())
 %% }
 -type experiment_report_configuration_data_sources() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_experiment_templates_response() :: #{
-%%   <<"experimentTemplates">> => list(experiment_template_summary()()),
+%%   <<"experimentTemplates">> => list(experiment_template_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_experiment_templates_response() :: #{binary() => any()}.
@@ -228,7 +228,7 @@
 %%   <<"experimentReportConfiguration">> => update_experiment_template_report_configuration_input(),
 %%   <<"logConfiguration">> => update_experiment_template_log_configuration_input(),
 %%   <<"roleArn">> => string(),
-%%   <<"stopConditions">> => list(update_experiment_template_stop_condition_input()()),
+%%   <<"stopConditions">> => list(update_experiment_template_stop_condition_input()),
 %%   <<"targets">> => map()
 %% }
 -type update_experiment_template_request() :: #{binary() => any()}.
@@ -263,7 +263,7 @@
 %%   <<"description">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"parameters">> => map(),
-%%   <<"startAfter">> => list(string()()),
+%%   <<"startAfter">> => list(string()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"state">> => experiment_action_state(),
 %%   <<"targets">> => map()
@@ -303,7 +303,7 @@
 %% Example:
 %% experiment_template_target_filter() :: #{
 %%   <<"path">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type experiment_template_target_filter() :: #{binary() => any()}.
 
@@ -334,7 +334,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> => list(string()())
+%%   <<"tagKeys">> => list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -369,7 +369,7 @@
 %% Example:
 %% list_experiment_target_account_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"targetAccountConfigurations">> => list(experiment_target_account_configuration_summary()())
+%%   <<"targetAccountConfigurations">> => list(experiment_target_account_configuration_summary())
 %% }
 -type list_experiment_target_account_configurations_response() :: #{binary() => any()}.
 
@@ -413,7 +413,7 @@
 %%   <<"actionId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"parameters">> => map(),
-%%   <<"startAfter">> => list(string()()),
+%%   <<"startAfter">> => list(string()),
 %%   <<"targets">> => map()
 %% }
 -type update_experiment_template_action_input_item() :: #{binary() => any()}.
@@ -422,7 +422,7 @@
 %% Example:
 %% experiment_target_filter() :: #{
 %%   <<"path">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type experiment_target_filter() :: #{binary() => any()}.
 
@@ -534,7 +534,7 @@
 
 %% Example:
 %% experiment_template_report_configuration_data_sources_input() :: #{
-%%   <<"cloudWatchDashboards">> => list(report_configuration_cloud_watch_dashboard_input()())
+%%   <<"cloudWatchDashboards">> => list(report_configuration_cloud_watch_dashboard_input())
 %% }
 -type experiment_template_report_configuration_data_sources_input() :: #{binary() => any()}.
 
@@ -556,7 +556,7 @@
 %%   <<"experimentReportConfiguration">> => create_experiment_template_report_configuration_input(),
 %%   <<"logConfiguration">> => create_experiment_template_log_configuration_input(),
 %%   <<"roleArn">> := string(),
-%%   <<"stopConditions">> := list(create_experiment_template_stop_condition_input()()),
+%%   <<"stopConditions">> := list(create_experiment_template_stop_condition_input()),
 %%   <<"tags">> => map(),
 %%   <<"targets">> => map()
 %% }
@@ -586,9 +586,9 @@
 
 %% Example:
 %% experiment_target() :: #{
-%%   <<"filters">> => list(experiment_target_filter()()),
+%%   <<"filters">> => list(experiment_target_filter()),
 %%   <<"parameters">> => map(),
-%%   <<"resourceArns">> => list(string()()),
+%%   <<"resourceArns">> => list(string()),
 %%   <<"resourceTags">> => map(),
 %%   <<"resourceType">> => string(),
 %%   <<"selectionMode">> => string()
@@ -627,7 +627,7 @@
 
 %% Example:
 %% list_actions_response() :: #{
-%%   <<"actions">> => list(action_summary()()),
+%%   <<"actions">> => list(action_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_actions_response() :: #{binary() => any()}.
@@ -635,7 +635,7 @@
 
 %% Example:
 %% experiment_report() :: #{
-%%   <<"s3Reports">> => list(experiment_report_s3_report()()),
+%%   <<"s3Reports">> => list(experiment_report_s3_report()),
 %%   <<"state">> => experiment_report_state()
 %% }
 -type experiment_report() :: #{binary() => any()}.
@@ -690,7 +690,7 @@
 %% Example:
 %% list_target_account_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"targetAccountConfigurations">> => list(target_account_configuration_summary()())
+%%   <<"targetAccountConfigurations">> => list(target_account_configuration_summary())
 %% }
 -type list_target_account_configurations_response() :: #{binary() => any()}.
 
@@ -737,7 +737,7 @@
 %%   <<"actionId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"parameters">> => map(),
-%%   <<"startAfter">> => list(string()()),
+%%   <<"startAfter">> => list(string()),
 %%   <<"targets">> => map()
 %% }
 -type experiment_template_action() :: #{binary() => any()}.
@@ -752,7 +752,7 @@
 
 %% Example:
 %% experiment_template_report_configuration_data_sources() :: #{
-%%   <<"cloudWatchDashboards">> => list(experiment_template_report_configuration_cloud_watch_dashboard()())
+%%   <<"cloudWatchDashboards">> => list(experiment_template_report_configuration_cloud_watch_dashboard())
 %% }
 -type experiment_template_report_configuration_data_sources() :: #{binary() => any()}.
 
@@ -781,7 +781,7 @@
 %%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"logConfiguration">> => experiment_template_log_configuration(),
 %%   <<"roleArn">> => string(),
-%%   <<"stopConditions">> => list(experiment_template_stop_condition()()),
+%%   <<"stopConditions">> => list(experiment_template_stop_condition()),
 %%   <<"tags">> => map(),
 %%   <<"targetAccountConfigurationsCount">> => float(),
 %%   <<"targets">> => map()
@@ -817,7 +817,7 @@
 %% Example:
 %% list_experiment_resolved_targets_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resolvedTargets">> => list(resolved_target()())
+%%   <<"resolvedTargets">> => list(resolved_target())
 %% }
 -type list_experiment_resolved_targets_response() :: #{binary() => any()}.
 
@@ -842,7 +842,7 @@
 %%   <<"actionId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"parameters">> => map(),
-%%   <<"startAfter">> => list(string()()),
+%%   <<"startAfter">> => list(string()),
 %%   <<"targets">> => map()
 %% }
 -type create_experiment_template_action_input() :: #{binary() => any()}.
@@ -851,7 +851,7 @@
 %% Example:
 %% experiment_template_target_input_filter() :: #{
 %%   <<"path">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type experiment_template_target_input_filter() :: #{binary() => any()}.
 
@@ -877,7 +877,7 @@
 %% Example:
 %% list_target_resource_types_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"targetResourceTypes">> => list(target_resource_type_summary()())
+%%   <<"targetResourceTypes">> => list(target_resource_type_summary())
 %% }
 -type list_target_resource_types_response() :: #{binary() => any()}.
 
@@ -981,9 +981,9 @@
 
 %% Example:
 %% create_experiment_template_target_input() :: #{
-%%   <<"filters">> => list(experiment_template_target_input_filter()()),
+%%   <<"filters">> => list(experiment_template_target_input_filter()),
 %%   <<"parameters">> => map(),
-%%   <<"resourceArns">> => list(string()()),
+%%   <<"resourceArns">> => list(string()),
 %%   <<"resourceTags">> => map(),
 %%   <<"resourceType">> => string(),
 %%   <<"selectionMode">> => string()
@@ -1030,9 +1030,9 @@
 
 %% Example:
 %% update_experiment_template_target_input() :: #{
-%%   <<"filters">> => list(experiment_template_target_input_filter()()),
+%%   <<"filters">> => list(experiment_template_target_input_filter()),
 %%   <<"parameters">> => map(),
-%%   <<"resourceArns">> => list(string()()),
+%%   <<"resourceArns">> => list(string()),
 %%   <<"resourceTags">> => map(),
 %%   <<"resourceType">> => string(),
 %%   <<"selectionMode">> => string()
@@ -1072,7 +1072,7 @@
 %%   <<"roleArn">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"state">> => experiment_state(),
-%%   <<"stopConditions">> => list(experiment_stop_condition()()),
+%%   <<"stopConditions">> => list(experiment_stop_condition()),
 %%   <<"tags">> => map(),
 %%   <<"targetAccountConfigurationsCount">> => float(),
 %%   <<"targets">> => map()

@@ -255,8 +255,8 @@
 %% server_certificate_configuration() :: #{
 %%   <<"CertificateAuthorityArn">> => string(),
 %%   <<"CheckCertificateRevocationStatus">> => check_certificate_revocation_status_actions(),
-%%   <<"Scopes">> => list(server_certificate_scope()()),
-%%   <<"ServerCertificates">> => list(server_certificate()())
+%%   <<"Scopes">> => list(server_certificate_scope()),
+%%   <<"ServerCertificates">> => list(server_certificate())
 %% }
 -type server_certificate_configuration() :: #{binary() => any()}.
 
@@ -276,7 +276,7 @@
 %% Example:
 %% analysis_result() :: #{
 %%   <<"AnalysisDetail">> => string(),
-%%   <<"IdentifiedRuleIds">> => list(string()()),
+%%   <<"IdentifiedRuleIds">> => list(string()),
 %%   <<"IdentifiedType">> => list(any())
 %% }
 -type analysis_result() :: #{binary() => any()}.
@@ -292,7 +292,7 @@
 %% rules_source() :: #{
 %%   <<"RulesSourceList">> => rules_source_list(),
 %%   <<"RulesString">> => string(),
-%%   <<"StatefulRules">> => list(stateful_rule()()),
+%%   <<"StatefulRules">> => list(stateful_rule()),
 %%   <<"StatelessRulesAndCustomActions">> => stateless_rules_and_custom_actions()
 %% }
 -type rules_source() :: #{binary() => any()}.
@@ -308,7 +308,7 @@
 %% flow_filter() :: #{
 %%   <<"DestinationAddress">> => address(),
 %%   <<"DestinationPort">> => string(),
-%%   <<"Protocols">> => list(string()()),
+%%   <<"Protocols">> => list(string()),
 %%   <<"SourceAddress">> => address(),
 %%   <<"SourcePort">> => string()
 %% }
@@ -317,7 +317,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -349,7 +349,7 @@
 %% Example:
 %% list_rule_groups_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RuleGroups">> => list(rule_group_metadata()())
+%%   <<"RuleGroups">> => list(rule_group_metadata())
 %% }
 -type list_rule_groups_response() :: #{binary() => any()}.
 
@@ -357,7 +357,7 @@
 %% start_flow_capture_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"FirewallArn">> := string(),
-%%   <<"FlowFilters">> := list(flow_filter()()),
+%%   <<"FlowFilters">> := list(flow_filter()),
 %%   <<"MinimumFlowAgeInSeconds">> => integer(),
 %%   <<"VpcEndpointAssociationArn">> => string(),
 %%   <<"VpcEndpointId">> => string()
@@ -402,14 +402,14 @@
 %% associate_subnets_response() :: #{
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()()),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type associate_subnets_response() :: #{binary() => any()}.
 
 %% Example:
 %% associate_availability_zones_response() :: #{
-%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()()),
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
 %%   <<"UpdateToken">> => string()
@@ -441,7 +441,7 @@
 
 %% Example:
 %% rule_definition() :: #{
-%%   <<"Actions">> => list(string()()),
+%%   <<"Actions">> => list(string()),
 %%   <<"MatchAttributes">> => match_attributes()
 %% }
 -type rule_definition() :: #{binary() => any()}.
@@ -483,7 +483,7 @@
 
 %% Example:
 %% get_analysis_report_results_response() :: #{
-%%   <<"AnalysisReportResults">> => list(analysis_type_report_result()()),
+%%   <<"AnalysisReportResults">> => list(analysis_type_report_result()),
 %%   <<"AnalysisType">> => list(any()),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"NextToken">> => string(),
@@ -537,7 +537,7 @@
 
 %% Example:
 %% t_l_s_inspection_configuration() :: #{
-%%   <<"ServerCertificateConfigurations">> => list(server_certificate_configuration()())
+%%   <<"ServerCertificateConfigurations">> => list(server_certificate_configuration())
 %% }
 -type t_l_s_inspection_configuration() :: #{binary() => any()}.
 
@@ -568,14 +568,14 @@
 
 %% Example:
 %% publish_metric_action() :: #{
-%%   <<"Dimensions">> => list(dimension()())
+%%   <<"Dimensions">> => list(dimension())
 %% }
 -type publish_metric_action() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -615,7 +615,7 @@
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"FirewallPolicy">> := firewall_policy(),
 %%   <<"FirewallPolicyName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_firewall_policy_request() :: #{binary() => any()}.
 
@@ -631,13 +631,13 @@
 %% Example:
 %% list_vpc_endpoint_associations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VpcEndpointAssociations">> => list(vpc_endpoint_association_metadata()())
+%%   <<"VpcEndpointAssociations">> => list(vpc_endpoint_association_metadata())
 %% }
 -type list_vpc_endpoint_associations_response() :: #{binary() => any()}.
 
 %% Example:
 %% logging_configuration() :: #{
-%%   <<"LogDestinationConfigs">> => list(log_destination_config()())
+%%   <<"LogDestinationConfigs">> => list(log_destination_config())
 %% }
 -type logging_configuration() :: #{binary() => any()}.
 
@@ -653,13 +653,13 @@
 %% Example:
 %% firewall_policy() :: #{
 %%   <<"PolicyVariables">> => policy_variables(),
-%%   <<"StatefulDefaultActions">> => list(string()()),
+%%   <<"StatefulDefaultActions">> => list(string()),
 %%   <<"StatefulEngineOptions">> => stateful_engine_options(),
-%%   <<"StatefulRuleGroupReferences">> => list(stateful_rule_group_reference()()),
-%%   <<"StatelessCustomActions">> => list(custom_action()()),
-%%   <<"StatelessDefaultActions">> => list(string()()),
-%%   <<"StatelessFragmentDefaultActions">> => list(string()()),
-%%   <<"StatelessRuleGroupReferences">> => list(stateless_rule_group_reference()()),
+%%   <<"StatefulRuleGroupReferences">> => list(stateful_rule_group_reference()),
+%%   <<"StatelessCustomActions">> => list(custom_action()),
+%%   <<"StatelessDefaultActions">> => list(string()),
+%%   <<"StatelessFragmentDefaultActions">> => list(string()),
+%%   <<"StatelessRuleGroupReferences">> => list(stateless_rule_group_reference()),
 %%   <<"TLSInspectionConfigurationArn">> => string()
 %% }
 -type firewall_policy() :: #{binary() => any()}.
@@ -719,7 +719,7 @@
 %%   <<"Rules">> => string(),
 %%   <<"SourceMetadata">> => source_metadata(),
 %%   <<"SummaryConfiguration">> => summary_configuration(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> := list(any())
 %% }
 -type create_rule_group_request() :: #{binary() => any()}.
@@ -738,7 +738,7 @@
 
 %% Example:
 %% list_analysis_reports_response() :: #{
-%%   <<"AnalysisReports">> => list(analysis_report()()),
+%%   <<"AnalysisReports">> => list(analysis_report()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_analysis_reports_response() :: #{binary() => any()}.
@@ -769,7 +769,7 @@
 
 %% Example:
 %% list_flow_operations_response() :: #{
-%%   <<"FlowOperations">> => list(flow_operation_metadata()()),
+%%   <<"FlowOperations">> => list(flow_operation_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_flow_operations_response() :: #{binary() => any()}.
@@ -837,11 +837,11 @@
 
 %% Example:
 %% server_certificate_scope() :: #{
-%%   <<"DestinationPorts">> => list(port_range()()),
-%%   <<"Destinations">> => list(address()()),
-%%   <<"Protocols">> => list(integer()()),
-%%   <<"SourcePorts">> => list(port_range()()),
-%%   <<"Sources">> => list(address()())
+%%   <<"DestinationPorts">> => list(port_range()),
+%%   <<"Destinations">> => list(address()),
+%%   <<"Protocols">> => list(integer()),
+%%   <<"SourcePorts">> => list(port_range()),
+%%   <<"Sources">> => list(address())
 %% }
 -type server_certificate_scope() :: #{binary() => any()}.
 
@@ -877,7 +877,7 @@
 %% disassociate_subnets_response() :: #{
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()()),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type disassociate_subnets_response() :: #{binary() => any()}.
@@ -914,7 +914,7 @@
 %%   <<"Description">> => string(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"SubnetMapping">> => subnet_mapping(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcEndpointAssociationArn">> => string(),
 %%   <<"VpcEndpointAssociationId">> => string(),
 %%   <<"VpcId">> => string()
@@ -937,7 +937,7 @@
 
 %% Example:
 %% rule_group_response() :: #{
-%%   <<"AnalysisResults">> => list(analysis_result()()),
+%%   <<"AnalysisResults">> => list(analysis_result()),
 %%   <<"Capacity">> => integer(),
 %%   <<"ConsumedCapacity">> => integer(),
 %%   <<"Description">> => string(),
@@ -951,7 +951,7 @@
 %%   <<"SnsTopic">> => string(),
 %%   <<"SourceMetadata">> => source_metadata(),
 %%   <<"SummaryConfiguration">> => summary_configuration(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => list(any())
 %% }
 -type rule_group_response() :: #{binary() => any()}.
@@ -967,7 +967,7 @@
 
 %% Example:
 %% ip_set() :: #{
-%%   <<"Definition">> => list(string()())
+%%   <<"Definition">> => list(string())
 %% }
 -type ip_set() :: #{binary() => any()}.
 
@@ -993,7 +993,7 @@
 %% stateful_rule() :: #{
 %%   <<"Action">> => list(any()),
 %%   <<"Header">> => header(),
-%%   <<"RuleOptions">> => list(rule_option()())
+%%   <<"RuleOptions">> => list(rule_option())
 %% }
 -type stateful_rule() :: #{binary() => any()}.
 
@@ -1016,13 +1016,13 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_firewalls_response() :: #{
-%%   <<"Firewalls">> => list(firewall_metadata()()),
+%%   <<"Firewalls">> => list(firewall_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewalls_response() :: #{binary() => any()}.
@@ -1033,7 +1033,7 @@
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"TLSInspectionConfiguration">> := t_l_s_inspection_configuration(),
 %%   <<"TLSInspectionConfigurationName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_t_l_s_inspection_configuration_request() :: #{binary() => any()}.
 
@@ -1058,13 +1058,13 @@
 %%   <<"FirewallPolicyStatus">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"NumberOfAssociations">> => integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type firewall_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% flow_operation() :: #{
-%%   <<"FlowFilters">> => list(flow_filter()()),
+%%   <<"FlowFilters">> => list(flow_filter()),
 %%   <<"MinimumFlowAgeInSeconds">> => integer()
 %% }
 -type flow_operation() :: #{binary() => any()}.
@@ -1122,7 +1122,7 @@
 %% Example:
 %% firewall() :: #{
 %%   <<"AvailabilityZoneChangeProtection">> => boolean(),
-%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()()),
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
 %%   <<"DeleteProtection">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"EnabledAnalysisTypes">> => list(list(any())()),
@@ -1134,8 +1134,8 @@
 %%   <<"FirewallPolicyChangeProtection">> => boolean(),
 %%   <<"NumberOfAssociations">> => integer(),
 %%   <<"SubnetChangeProtection">> => boolean(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"TransitGatewayOwnerAccountId">> => string(),
 %%   <<"VpcId">> => string()
@@ -1151,7 +1151,7 @@
 %% Example:
 %% create_firewall_request() :: #{
 %%   <<"AvailabilityZoneChangeProtection">> => boolean(),
-%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()()),
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
 %%   <<"DeleteProtection">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"EnabledAnalysisTypes">> => list(list(any())()),
@@ -1160,8 +1160,8 @@
 %%   <<"FirewallPolicyArn">> := string(),
 %%   <<"FirewallPolicyChangeProtection">> => boolean(),
 %%   <<"SubnetChangeProtection">> => boolean(),
-%%   <<"SubnetMappings">> => list(subnet_mapping()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubnetMappings">> => list(subnet_mapping()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -1196,7 +1196,7 @@
 %% Example:
 %% list_t_l_s_inspection_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TLSInspectionConfigurations">> => list(t_l_s_inspection_configuration_metadata()())
+%%   <<"TLSInspectionConfigurations">> => list(t_l_s_inspection_configuration_metadata())
 %% }
 -type list_t_l_s_inspection_configurations_response() :: #{binary() => any()}.
 
@@ -1204,7 +1204,7 @@
 %% start_flow_flush_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"FirewallArn">> := string(),
-%%   <<"FlowFilters">> := list(flow_filter()()),
+%%   <<"FlowFilters">> := list(flow_filter()),
 %%   <<"MinimumFlowAgeInSeconds">> => integer(),
 %%   <<"VpcEndpointAssociationArn">> => string(),
 %%   <<"VpcEndpointId">> => string()
@@ -1222,7 +1222,7 @@
 %% Example:
 %% t_l_s_inspection_configuration_response() :: #{
 %%   <<"CertificateAuthority">> => tls_certificate_data(),
-%%   <<"Certificates">> => list(tls_certificate_data()()),
+%%   <<"Certificates">> => list(tls_certificate_data()),
 %%   <<"Description">> => string(),
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -1231,7 +1231,7 @@
 %%   <<"TLSInspectionConfigurationId">> => string(),
 %%   <<"TLSInspectionConfigurationName">> => string(),
 %%   <<"TLSInspectionConfigurationStatus">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type t_l_s_inspection_configuration_response() :: #{binary() => any()}.
 
@@ -1267,7 +1267,7 @@
 %% rules_source_list() :: #{
 %%   <<"GeneratedRulesType">> => list(any()),
 %%   <<"TargetTypes">> => list(list(any())()),
-%%   <<"Targets">> => list(string()())
+%%   <<"Targets">> => list(string())
 %% }
 -type rules_source_list() :: #{binary() => any()}.
 
@@ -1287,7 +1287,7 @@
 
 %% Example:
 %% disassociate_availability_zones_request() :: #{
-%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()()),
+%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
 %%   <<"UpdateToken">> => string()
@@ -1296,7 +1296,7 @@
 
 %% Example:
 %% list_firewall_policies_response() :: #{
-%%   <<"FirewallPolicies">> => list(firewall_policy_metadata()()),
+%%   <<"FirewallPolicies">> => list(firewall_policy_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_policies_response() :: #{binary() => any()}.
@@ -1312,7 +1312,7 @@
 
 %% Example:
 %% port_set() :: #{
-%%   <<"Definition">> => list(string()())
+%%   <<"Definition">> => list(string())
 %% }
 -type port_set() :: #{binary() => any()}.
 
@@ -1404,7 +1404,7 @@
 %% list_firewalls_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"VpcIds">> => list(string()())
+%%   <<"VpcIds">> => list(string())
 %% }
 -type list_firewalls_request() :: #{binary() => any()}.
 
@@ -1500,7 +1500,7 @@
 %% disassociate_subnets_request() :: #{
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
-%%   <<"SubnetIds">> := list(string()()),
+%%   <<"SubnetIds">> := list(string()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type disassociate_subnets_request() :: #{binary() => any()}.
@@ -1541,7 +1541,7 @@
 %%   <<"Description">> => string(),
 %%   <<"FirewallArn">> := string(),
 %%   <<"SubnetMapping">> := subnet_mapping(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> := string()
 %% }
 -type create_vpc_endpoint_association_request() :: #{binary() => any()}.
@@ -1580,7 +1580,7 @@
 
 %% Example:
 %% associate_availability_zones_request() :: #{
-%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()()),
+%%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
 %%   <<"UpdateToken">> => string()
@@ -1605,7 +1605,7 @@
 %%   <<"FlowOperationId">> => string(),
 %%   <<"FlowOperationStatus">> => list(any()),
 %%   <<"FlowRequestTimestamp">> => non_neg_integer(),
-%%   <<"Flows">> => list(flow()()),
+%%   <<"Flows">> => list(flow()),
 %%   <<"NextToken">> => string(),
 %%   <<"StatusMessage">> => string(),
 %%   <<"VpcEndpointAssociationArn">> => string(),
@@ -1647,12 +1647,12 @@
 
 %% Example:
 %% match_attributes() :: #{
-%%   <<"DestinationPorts">> => list(port_range()()),
-%%   <<"Destinations">> => list(address()()),
-%%   <<"Protocols">> => list(integer()()),
-%%   <<"SourcePorts">> => list(port_range()()),
-%%   <<"Sources">> => list(address()()),
-%%   <<"TCPFlags">> => list(t_c_p_flag_field()())
+%%   <<"DestinationPorts">> => list(port_range()),
+%%   <<"Destinations">> => list(address()),
+%%   <<"Protocols">> => list(integer()),
+%%   <<"SourcePorts">> => list(port_range()),
+%%   <<"Sources">> => list(address()),
+%%   <<"TCPFlags">> => list(t_c_p_flag_field())
 %% }
 -type match_attributes() :: #{binary() => any()}.
 
@@ -1672,7 +1672,7 @@
 %% associate_subnets_request() :: #{
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
-%%   <<"SubnetMappings">> := list(subnet_mapping()()),
+%%   <<"SubnetMappings">> := list(subnet_mapping()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type associate_subnets_request() :: #{binary() => any()}.
@@ -1763,7 +1763,7 @@
 
 %% Example:
 %% summary() :: #{
-%%   <<"RuleSummaries">> => list(rule_summary()())
+%%   <<"RuleSummaries">> => list(rule_summary())
 %% }
 -type summary() :: #{binary() => any()}.
 
@@ -1786,21 +1786,21 @@
 
 %% Example:
 %% stateless_rules_and_custom_actions() :: #{
-%%   <<"CustomActions">> => list(custom_action()()),
-%%   <<"StatelessRules">> => list(stateless_rule()())
+%%   <<"CustomActions">> => list(custom_action()),
+%%   <<"StatelessRules">> => list(stateless_rule())
 %% }
 -type stateless_rules_and_custom_actions() :: #{binary() => any()}.
 
 %% Example:
 %% rule_option() :: #{
 %%   <<"Keyword">> => string(),
-%%   <<"Settings">> => list(string()())
+%%   <<"Settings">> => list(string())
 %% }
 -type rule_option() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_availability_zones_response() :: #{
-%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()()),
+%%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
 %%   <<"UpdateToken">> => string()

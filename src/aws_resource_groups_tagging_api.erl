@@ -27,8 +27,8 @@
 %% Example:
 %% compliance_details() :: #{
 %%   <<"ComplianceStatus">> => boolean(),
-%%   <<"KeysWithNoncompliantValues">> => list(string()()),
-%%   <<"NoncompliantKeys">> => list(string()())
+%%   <<"KeysWithNoncompliantValues">> => list(string()),
+%%   <<"NoncompliantKeys">> => list(string())
 %% }
 -type compliance_details() :: #{binary() => any()}.
 
@@ -72,17 +72,17 @@
 %%   <<"GroupBy">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"PaginationToken">> => string(),
-%%   <<"RegionFilters">> => list(string()()),
-%%   <<"ResourceTypeFilters">> => list(string()()),
-%%   <<"TagKeyFilters">> => list(string()()),
-%%   <<"TargetIdFilters">> => list(string()())
+%%   <<"RegionFilters">> => list(string()),
+%%   <<"ResourceTypeFilters">> => list(string()),
+%%   <<"TagKeyFilters">> => list(string()),
+%%   <<"TargetIdFilters">> => list(string())
 %% }
 -type get_compliance_summary_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_compliance_summary_output() :: #{
 %%   <<"PaginationToken">> => string(),
-%%   <<"SummaryList">> => list(summary()())
+%%   <<"SummaryList">> => list(summary())
 %% }
 -type get_compliance_summary_output() :: #{binary() => any()}.
 
@@ -91,10 +91,10 @@
 %%   <<"ExcludeCompliantResources">> => boolean(),
 %%   <<"IncludeComplianceDetails">> => boolean(),
 %%   <<"PaginationToken">> => string(),
-%%   <<"ResourceARNList">> => list(string()()),
-%%   <<"ResourceTypeFilters">> => list(string()()),
+%%   <<"ResourceARNList">> => list(string()),
+%%   <<"ResourceTypeFilters">> => list(string()),
 %%   <<"ResourcesPerPage">> => integer(),
-%%   <<"TagFilters">> => list(tag_filter()()),
+%%   <<"TagFilters">> => list(tag_filter()),
 %%   <<"TagsPerPage">> => integer()
 %% }
 -type get_resources_input() :: #{binary() => any()}.
@@ -102,7 +102,7 @@
 %% Example:
 %% get_resources_output() :: #{
 %%   <<"PaginationToken">> => string(),
-%%   <<"ResourceTagMappingList">> => list(resource_tag_mapping()())
+%%   <<"ResourceTagMappingList">> => list(resource_tag_mapping())
 %% }
 -type get_resources_output() :: #{binary() => any()}.
 
@@ -115,7 +115,7 @@
 %% Example:
 %% get_tag_keys_output() :: #{
 %%   <<"PaginationToken">> => string(),
-%%   <<"TagKeys">> => list(string()())
+%%   <<"TagKeys">> => list(string())
 %% }
 -type get_tag_keys_output() :: #{binary() => any()}.
 
@@ -129,7 +129,7 @@
 %% Example:
 %% get_tag_values_output() :: #{
 %%   <<"PaginationToken">> => string(),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagValues">> => list(string())
 %% }
 -type get_tag_values_output() :: #{binary() => any()}.
 
@@ -155,7 +155,7 @@
 %% resource_tag_mapping() :: #{
 %%   <<"ComplianceDetails">> => compliance_details(),
 %%   <<"ResourceARN">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type resource_tag_mapping() :: #{binary() => any()}.
 
@@ -192,13 +192,13 @@
 %% Example:
 %% tag_filter() :: #{
 %%   <<"Key">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type tag_filter() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resources_input() :: #{
-%%   <<"ResourceARNList">> := list(string()()),
+%%   <<"ResourceARNList">> := list(string()),
 %%   <<"Tags">> := map()
 %% }
 -type tag_resources_input() :: #{binary() => any()}.
@@ -217,8 +217,8 @@
 
 %% Example:
 %% untag_resources_input() :: #{
-%%   <<"ResourceARNList">> := list(string()()),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"ResourceARNList">> := list(string()),
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resources_input() :: #{binary() => any()}.
 

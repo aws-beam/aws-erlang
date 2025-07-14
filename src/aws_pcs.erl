@@ -130,8 +130,8 @@
 
 %% Example:
 %% networking() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
 -type networking() :: #{binary() => any()}.
 
@@ -145,9 +145,9 @@
 %% queue() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"clusterId">> => [string()],
-%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()()),
+%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"errorInfo">> => list(error_info()()),
+%%   <<"errorInfo">> => list(error_info()),
 %%   <<"id">> => [string()],
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -164,7 +164,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -172,7 +172,7 @@
 %% update_queue_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"clusterIdentifier">> := string(),
-%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()()),
+%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
 %%   <<"queueIdentifier">> := string()
 %% }
 -type update_queue_request() :: #{binary() => any()}.
@@ -182,7 +182,7 @@
 %%   <<"accounting">> => accounting(),
 %%   <<"authKey">> => slurm_auth_key(),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()())
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type cluster_slurm_configuration() :: #{binary() => any()}.
 
@@ -229,10 +229,10 @@
 %%   <<"clusterId">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"customLaunchTemplate">> => custom_launch_template(),
-%%   <<"errorInfo">> => list(error_info()()),
+%%   <<"errorInfo">> => list(error_info()),
 %%   <<"iamInstanceProfileArn">> => string(),
 %%   <<"id">> => [string()],
-%%   <<"instanceConfigs">> => list(instance_config()()),
+%%   <<"instanceConfigs">> => list(instance_config()),
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"purchaseOption">> => list(any()),
@@ -240,7 +240,7 @@
 %%   <<"slurmConfiguration">> => compute_node_group_slurm_configuration(),
 %%   <<"spotOptions">> => spot_options(),
 %%   <<"status">> => list(any()),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"subnetIds">> => list(string())
 %% }
 -type compute_node_group() :: #{binary() => any()}.
 
@@ -258,7 +258,7 @@
 
 %% Example:
 %% register_compute_node_group_instance_response() :: #{
-%%   <<"endpoints">> => list(endpoint()()),
+%%   <<"endpoints">> => list(endpoint()),
 %%   <<"nodeID">> => [string()],
 %%   <<"sharedSecret">> => string()
 %% }
@@ -291,8 +291,8 @@
 %% cluster() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"endpoints">> => list(endpoint()()),
-%%   <<"errorInfo">> => list(error_info()()),
+%%   <<"endpoints">> => list(endpoint()),
+%%   <<"errorInfo">> => list(error_info()),
 %%   <<"id">> => [string()],
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => [string()],
@@ -323,7 +323,7 @@
 
 %% Example:
 %% update_compute_node_group_slurm_configuration_request() :: #{
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()())
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type update_compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
 
@@ -336,7 +336,7 @@
 
 %% Example:
 %% list_compute_node_groups_response() :: #{
-%%   <<"computeNodeGroups">> => list(compute_node_group_summary()()),
+%%   <<"computeNodeGroups">> => list(compute_node_group_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_compute_node_groups_response() :: #{binary() => any()}.
@@ -372,7 +372,7 @@
 
 %% Example:
 %% compute_node_group_slurm_configuration_request() :: #{
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()())
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
 
@@ -393,7 +393,7 @@
 %% create_queue_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"clusterIdentifier">> := string(),
-%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()()),
+%%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
 %%   <<"queueName">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -401,7 +401,7 @@
 
 %% Example:
 %% list_clusters_response() :: #{
-%%   <<"clusters">> => list(cluster_summary()()),
+%%   <<"clusters">> => list(cluster_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_clusters_response() :: #{binary() => any()}.
@@ -442,7 +442,7 @@
 
 %% Example:
 %% compute_node_group_slurm_configuration() :: #{
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()())
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type compute_node_group_slurm_configuration() :: #{binary() => any()}.
 
@@ -477,7 +477,7 @@
 %% cluster_slurm_configuration_request() :: #{
 %%   <<"accounting">> => accounting_request(),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
-%%   <<"slurmCustomSettings">> => list(slurm_custom_setting()())
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type cluster_slurm_configuration_request() :: #{binary() => any()}.
 
@@ -496,7 +496,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }
@@ -530,7 +530,7 @@
 %% Example:
 %% list_queues_response() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"queues">> => list(queue_summary()())
+%%   <<"queues">> => list(queue_summary())
 %% }
 -type list_queues_response() :: #{binary() => any()}.
 
@@ -558,8 +558,8 @@
 
 %% Example:
 %% networking_request() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()())
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string())
 %% }
 -type networking_request() :: #{binary() => any()}.
 
@@ -571,7 +571,7 @@
 %%   <<"computeNodeGroupName">> := string(),
 %%   <<"customLaunchTemplate">> := custom_launch_template(),
 %%   <<"iamInstanceProfileArn">> := string(),
-%%   <<"instanceConfigs">> := list(instance_config()()),
+%%   <<"instanceConfigs">> := list(instance_config()),
 %%   <<"purchaseOption">> => list(any()),
 %%   <<"scalingConfiguration">> := scaling_configuration_request(),
 %%   <<"slurmConfiguration">> => compute_node_group_slurm_configuration_request(),

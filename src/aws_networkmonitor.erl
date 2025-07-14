@@ -80,7 +80,7 @@
 %%   <<"modifiedAt">> => non_neg_integer(),
 %%   <<"monitorArn">> => string(),
 %%   <<"monitorName">> => string(),
-%%   <<"probes">> => list(probe()()),
+%%   <<"probes">> => list(probe()),
 %%   <<"state">> => list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -89,7 +89,7 @@
 
 %% Example:
 %% list_monitors_output() :: #{
-%%   <<"monitors">> => list(monitor_summary()()),
+%%   <<"monitors">> => list(monitor_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_monitors_output() :: #{binary() => any()}.
@@ -244,7 +244,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -366,7 +366,7 @@
 %%   <<"aggregationPeriod">> => float(),
 %%   <<"clientToken">> => [string()],
 %%   <<"monitorName">> := string(),
-%%   <<"probes">> => list(create_monitor_probe_input()()),
+%%   <<"probes">> => list(create_monitor_probe_input()),
 %%   <<"tags">> => map()
 %% }
 -type create_monitor_input() :: #{binary() => any()}.

@@ -167,14 +167,14 @@
 %% Example:
 %% update_ec2_deep_inspection_configuration_request() :: #{
 %%   <<"activateDeepInspection">> => [boolean()],
-%%   <<"packagePaths">> => list(string()())
+%%   <<"packagePaths">> => list(string())
 %% }
 -type update_ec2_deep_inspection_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_disassociate_code_security_scan_configuration_request() :: #{
-%%   <<"disassociateConfigurationRequests">> := list(disassociate_configuration_request()())
+%%   <<"disassociateConfigurationRequests">> := list(disassociate_configuration_request())
 %% }
 -type batch_disassociate_code_security_scan_configuration_request() :: #{binary() => any()}.
 
@@ -188,12 +188,12 @@
 
 %% Example:
 %% code_vulnerability_details() :: #{
-%%   <<"cwes">> => list(string()()),
+%%   <<"cwes">> => list(string()),
 %%   <<"detectorId">> => string(),
 %%   <<"detectorName">> => string(),
-%%   <<"detectorTags">> => list(string()()),
+%%   <<"detectorTags">> => list(string()),
 %%   <<"filePath">> => code_file_path(),
-%%   <<"referenceUrls">> => list(string()()),
+%%   <<"referenceUrls">> => list(string()),
 %%   <<"ruleId">> => string(),
 %%   <<"sourceLambdaLayerArn">> => string()
 %% }
@@ -202,8 +202,8 @@
 
 %% Example:
 %% disable_request() :: #{
-%%   <<"accountIds">> => list(string()()),
-%%   <<"resourceTypes">> => list(string()())
+%%   <<"accountIds">> => list(string()),
+%%   <<"resourceTypes">> => list(string())
 %% }
 -type disable_request() :: #{binary() => any()}.
 
@@ -228,7 +228,7 @@
 
 %% Example:
 %% network_path() :: #{
-%%   <<"steps">> => list(step()())
+%%   <<"steps">> => list(step())
 %% }
 -type network_path() :: #{binary() => any()}.
 
@@ -258,7 +258,7 @@
 
 %% Example:
 %% repository_aggregation() :: #{
-%%   <<"repositories">> => list(string_filter()()),
+%%   <<"repositories">> => list(string_filter()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -267,8 +267,8 @@
 
 %% Example:
 %% project_code_security_scan_configuration() :: #{
-%%   <<"continuousIntegrationScanConfigurations">> => list(project_continuous_integration_scan_configuration()()),
-%%   <<"periodicScanConfigurations">> => list(project_periodic_scan_configuration()())
+%%   <<"continuousIntegrationScanConfigurations">> => list(project_continuous_integration_scan_configuration()),
+%%   <<"periodicScanConfigurations">> => list(project_periodic_scan_configuration())
 %% }
 -type project_code_security_scan_configuration() :: #{binary() => any()}.
 
@@ -291,9 +291,9 @@
 
 %% Example:
 %% enable_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"clientToken">> => string(),
-%%   <<"resourceTypes">> := list(string()())
+%%   <<"resourceTypes">> := list(string())
 %% }
 -type enable_request() :: #{binary() => any()}.
 
@@ -304,14 +304,14 @@
 %%   <<"cisaData">> => cisa_data(),
 %%   <<"cvss2">> => cvss2(),
 %%   <<"cvss3">> => cvss3(),
-%%   <<"cwes">> => list(string()()),
+%%   <<"cwes">> => list(string()),
 %%   <<"description">> => string(),
-%%   <<"detectionPlatforms">> => list(string()()),
+%%   <<"detectionPlatforms">> => list(string()),
 %%   <<"epss">> => epss(),
 %%   <<"exploitObserved">> => exploit_observed(),
 %%   <<"id">> => string(),
-%%   <<"referenceUrls">> => list(string()()),
-%%   <<"relatedVulnerabilities">> => list(string()()),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"relatedVulnerabilities">> => list(string()),
 %%   <<"source">> => string(),
 %%   <<"sourceUrl">> => string(),
 %%   <<"vendorCreatedAt">> => non_neg_integer(),
@@ -360,14 +360,14 @@
 %% Example:
 %% usage_total() :: #{
 %%   <<"accountId">> => string(),
-%%   <<"usage">> => list(usage()())
+%%   <<"usage">> => list(usage())
 %% }
 -type usage_total() :: #{binary() => any()}.
 
 
 %% Example:
 %% cis_targets() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"targetResourceTags">> => map()
 %% }
 -type cis_targets() :: #{binary() => any()}.
@@ -439,52 +439,52 @@
 
 %% Example:
 %% filter_criteria() :: #{
-%%   <<"updatedAt">> => list(date_filter()()),
-%%   <<"lambdaFunctionLastModifiedAt">> => list(date_filter()()),
-%%   <<"networkProtocol">> => list(string_filter()()),
-%%   <<"lambdaFunctionLayers">> => list(string_filter()()),
-%%   <<"awsAccountId">> => list(string_filter()()),
-%%   <<"inspectorScore">> => list(number_filter()()),
-%%   <<"ecrImageArchitecture">> => list(string_filter()()),
-%%   <<"codeRepositoryProjectName">> => list(string_filter()()),
-%%   <<"codeVulnerabilityFilePath">> => list(string_filter()()),
-%%   <<"epssScore">> => list(number_filter()()),
-%%   <<"ec2InstanceVpcId">> => list(string_filter()()),
-%%   <<"codeVulnerabilityDetectorName">> => list(string_filter()()),
-%%   <<"findingStatus">> => list(string_filter()()),
-%%   <<"relatedVulnerabilities">> => list(string_filter()()),
-%%   <<"vulnerabilityId">> => list(string_filter()()),
-%%   <<"componentType">> => list(string_filter()()),
-%%   <<"componentId">> => list(string_filter()()),
-%%   <<"ec2InstanceSubnetId">> => list(string_filter()()),
-%%   <<"codeRepositoryProviderType">> => list(string_filter()()),
-%%   <<"portRange">> => list(port_range_filter()()),
-%%   <<"vulnerablePackages">> => list(package_filter()()),
-%%   <<"ecrImageRegistry">> => list(string_filter()()),
-%%   <<"lambdaFunctionExecutionRoleArn">> => list(string_filter()()),
-%%   <<"resourceTags">> => list(map_filter()()),
-%%   <<"vulnerabilitySource">> => list(string_filter()()),
-%%   <<"findingArn">> => list(string_filter()()),
-%%   <<"codeVulnerabilityDetectorTags">> => list(string_filter()()),
-%%   <<"ecrImageInUseCount">> => list(number_filter()()),
-%%   <<"ec2InstanceImageId">> => list(string_filter()()),
-%%   <<"ecrImagePushedAt">> => list(date_filter()()),
-%%   <<"ecrImageRepositoryName">> => list(string_filter()()),
-%%   <<"findingType">> => list(string_filter()()),
-%%   <<"resourceId">> => list(string_filter()()),
-%%   <<"firstObservedAt">> => list(date_filter()()),
-%%   <<"lambdaFunctionRuntime">> => list(string_filter()()),
-%%   <<"ecrImageTags">> => list(string_filter()()),
-%%   <<"vendorSeverity">> => list(string_filter()()),
-%%   <<"lambdaFunctionName">> => list(string_filter()()),
-%%   <<"ecrImageHash">> => list(string_filter()()),
-%%   <<"lastObservedAt">> => list(date_filter()()),
-%%   <<"resourceType">> => list(string_filter()()),
-%%   <<"fixAvailable">> => list(string_filter()()),
-%%   <<"severity">> => list(string_filter()()),
-%%   <<"ecrImageLastInUseAt">> => list(date_filter()()),
-%%   <<"exploitAvailable">> => list(string_filter()()),
-%%   <<"title">> => list(string_filter()())
+%%   <<"updatedAt">> => list(date_filter()),
+%%   <<"lambdaFunctionLastModifiedAt">> => list(date_filter()),
+%%   <<"networkProtocol">> => list(string_filter()),
+%%   <<"lambdaFunctionLayers">> => list(string_filter()),
+%%   <<"awsAccountId">> => list(string_filter()),
+%%   <<"inspectorScore">> => list(number_filter()),
+%%   <<"ecrImageArchitecture">> => list(string_filter()),
+%%   <<"codeRepositoryProjectName">> => list(string_filter()),
+%%   <<"codeVulnerabilityFilePath">> => list(string_filter()),
+%%   <<"epssScore">> => list(number_filter()),
+%%   <<"ec2InstanceVpcId">> => list(string_filter()),
+%%   <<"codeVulnerabilityDetectorName">> => list(string_filter()),
+%%   <<"findingStatus">> => list(string_filter()),
+%%   <<"relatedVulnerabilities">> => list(string_filter()),
+%%   <<"vulnerabilityId">> => list(string_filter()),
+%%   <<"componentType">> => list(string_filter()),
+%%   <<"componentId">> => list(string_filter()),
+%%   <<"ec2InstanceSubnetId">> => list(string_filter()),
+%%   <<"codeRepositoryProviderType">> => list(string_filter()),
+%%   <<"portRange">> => list(port_range_filter()),
+%%   <<"vulnerablePackages">> => list(package_filter()),
+%%   <<"ecrImageRegistry">> => list(string_filter()),
+%%   <<"lambdaFunctionExecutionRoleArn">> => list(string_filter()),
+%%   <<"resourceTags">> => list(map_filter()),
+%%   <<"vulnerabilitySource">> => list(string_filter()),
+%%   <<"findingArn">> => list(string_filter()),
+%%   <<"codeVulnerabilityDetectorTags">> => list(string_filter()),
+%%   <<"ecrImageInUseCount">> => list(number_filter()),
+%%   <<"ec2InstanceImageId">> => list(string_filter()),
+%%   <<"ecrImagePushedAt">> => list(date_filter()),
+%%   <<"ecrImageRepositoryName">> => list(string_filter()),
+%%   <<"findingType">> => list(string_filter()),
+%%   <<"resourceId">> => list(string_filter()),
+%%   <<"firstObservedAt">> => list(date_filter()),
+%%   <<"lambdaFunctionRuntime">> => list(string_filter()),
+%%   <<"ecrImageTags">> => list(string_filter()),
+%%   <<"vendorSeverity">> => list(string_filter()),
+%%   <<"lambdaFunctionName">> => list(string_filter()),
+%%   <<"ecrImageHash">> => list(string_filter()),
+%%   <<"lastObservedAt">> => list(date_filter()),
+%%   <<"resourceType">> => list(string_filter()),
+%%   <<"fixAvailable">> => list(string_filter()),
+%%   <<"severity">> => list(string_filter()),
+%%   <<"ecrImageLastInUseAt">> => list(date_filter()),
+%%   <<"exploitAvailable">> => list(string_filter()),
+%%   <<"title">> => list(string_filter())
 %% }
 -type filter_criteria() :: #{binary() => any()}.
 
@@ -546,7 +546,7 @@
 
 %% Example:
 %% search_vulnerabilities_filter_criteria() :: #{
-%%   <<"vulnerabilityIds">> => list(string()())
+%%   <<"vulnerabilityIds">> => list(string())
 %% }
 -type search_vulnerabilities_filter_criteria() :: #{binary() => any()}.
 
@@ -561,8 +561,8 @@
 
 %% Example:
 %% batch_get_member_ec2_deep_inspection_status_response() :: #{
-%%   <<"accountIds">> => list(member_account_ec2_deep_inspection_status_state()()),
-%%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state()())
+%%   <<"accountIds">> => list(member_account_ec2_deep_inspection_status_state()),
+%%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state())
 %% }
 -type batch_get_member_ec2_deep_inspection_status_response() :: #{binary() => any()}.
 
@@ -632,7 +632,7 @@
 
 %% Example:
 %% list_usage_totals_request() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -658,7 +658,7 @@
 %% Example:
 %% list_account_permissions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"permissions">> := list(permission()())
+%%   <<"permissions">> := list(permission())
 %% }
 -type list_account_permissions_response() :: #{binary() => any()}.
 
@@ -679,7 +679,7 @@
 
 %% Example:
 %% update_cis_targets() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"targetResourceTags">> => map()
 %% }
 -type update_cis_targets() :: #{binary() => any()}.
@@ -703,7 +703,7 @@
 
 %% Example:
 %% list_findings_response() :: #{
-%%   <<"findings">> => list(finding()()),
+%%   <<"findings">> => list(finding()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_response() :: #{binary() => any()}.
@@ -711,8 +711,8 @@
 
 %% Example:
 %% disable_response() :: #{
-%%   <<"accounts">> := list(account()()),
-%%   <<"failedAccounts">> => list(failed_account()())
+%%   <<"accounts">> := list(account()),
+%%   <<"failedAccounts">> => list(failed_account())
 %% }
 -type disable_response() :: #{binary() => any()}.
 
@@ -764,15 +764,15 @@
 
 %% Example:
 %% cis_scan_results_aggregated_by_target_resource_filter_criteria() :: #{
-%%   <<"accountIdFilters">> => list(cis_string_filter()()),
-%%   <<"checkIdFilters">> => list(cis_string_filter()()),
-%%   <<"failedChecksFilters">> => list(cis_number_filter()()),
-%%   <<"platformFilters">> => list(cis_string_filter()()),
-%%   <<"statusFilters">> => list(cis_result_status_filter()()),
-%%   <<"targetResourceIdFilters">> => list(cis_string_filter()()),
-%%   <<"targetResourceTagFilters">> => list(tag_filter()()),
-%%   <<"targetStatusFilters">> => list(cis_target_status_filter()()),
-%%   <<"targetStatusReasonFilters">> => list(cis_target_status_reason_filter()())
+%%   <<"accountIdFilters">> => list(cis_string_filter()),
+%%   <<"checkIdFilters">> => list(cis_string_filter()),
+%%   <<"failedChecksFilters">> => list(cis_number_filter()),
+%%   <<"platformFilters">> => list(cis_string_filter()),
+%%   <<"statusFilters">> => list(cis_result_status_filter()),
+%%   <<"targetResourceIdFilters">> => list(cis_string_filter()),
+%%   <<"targetResourceTagFilters">> => list(tag_filter()),
+%%   <<"targetStatusFilters">> => list(cis_target_status_filter()),
+%%   <<"targetStatusReasonFilters">> => list(cis_target_status_reason_filter())
 %% }
 -type cis_scan_results_aggregated_by_target_resource_filter_criteria() :: #{binary() => any()}.
 
@@ -871,7 +871,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -906,8 +906,8 @@
 
 %% Example:
 %% batch_get_free_trial_info_response() :: #{
-%%   <<"accounts">> := list(free_trial_account_info()()),
-%%   <<"failedAccounts">> := list(free_trial_info_error()())
+%%   <<"accounts">> := list(free_trial_account_info()),
+%%   <<"failedAccounts">> := list(free_trial_info_error())
 %% }
 -type batch_get_free_trial_info_response() :: #{binary() => any()}.
 
@@ -923,8 +923,8 @@
 %% Example:
 %% update_ec2_deep_inspection_configuration_response() :: #{
 %%   <<"errorMessage">> => string(),
-%%   <<"orgPackagePaths">> => list(string()()),
-%%   <<"packagePaths">> => list(string()()),
+%%   <<"orgPackagePaths">> => list(string()),
+%%   <<"packagePaths">> => list(string()),
 %%   <<"status">> => string()
 %% }
 -type update_ec2_deep_inspection_configuration_response() :: #{binary() => any()}.
@@ -969,7 +969,7 @@
 %% Example:
 %% list_cis_scans_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"scans">> => list(cis_scan()())
+%%   <<"scans">> => list(cis_scan())
 %% }
 -type list_cis_scans_response() :: #{binary() => any()}.
 
@@ -1023,10 +1023,10 @@
 
 %% Example:
 %% ec2_instance_aggregation() :: #{
-%%   <<"amis">> => list(string_filter()()),
-%%   <<"instanceIds">> => list(string_filter()()),
-%%   <<"instanceTags">> => list(map_filter()()),
-%%   <<"operatingSystems">> => list(string_filter()()),
+%%   <<"amis">> => list(string_filter()),
+%%   <<"instanceIds">> => list(string_filter()),
+%%   <<"instanceTags">> => list(map_filter()),
+%%   <<"operatingSystems">> => list(string_filter()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -1042,11 +1042,11 @@
 
 %% Example:
 %% code_snippet_result() :: #{
-%%   <<"codeSnippet">> => list(code_line()()),
+%%   <<"codeSnippet">> => list(code_line()),
 %%   <<"endLine">> => [integer()],
 %%   <<"findingArn">> => string(),
 %%   <<"startLine">> => [integer()],
-%%   <<"suggestedFixes">> => list(suggested_fix()())
+%%   <<"suggestedFixes">> => list(suggested_fix())
 %% }
 -type code_snippet_result() :: #{binary() => any()}.
 
@@ -1060,7 +1060,7 @@
 
 %% Example:
 %% list_code_security_scan_configuration_associations_response() :: #{
-%%   <<"associations">> => list(code_security_scan_configuration_association_summary()()),
+%%   <<"associations">> => list(code_security_scan_configuration_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_code_security_scan_configuration_associations_response() :: #{binary() => any()}.
@@ -1068,7 +1068,7 @@
 
 %% Example:
 %% list_cis_scan_results_aggregated_by_checks_response() :: #{
-%%   <<"checkAggregations">> => list(cis_check_aggregation()()),
+%%   <<"checkAggregations">> => list(cis_check_aggregation()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_cis_scan_results_aggregated_by_checks_response() :: #{binary() => any()}.
@@ -1136,7 +1136,7 @@
 %% list_finding_aggregations_response() :: #{
 %%   <<"aggregationType">> := string(),
 %%   <<"nextToken">> => string(),
-%%   <<"responses">> => list(list()())
+%%   <<"responses">> => list(list())
 %% }
 -type list_finding_aggregations_response() :: #{binary() => any()}.
 
@@ -1144,7 +1144,7 @@
 %% Example:
 %% list_cis_scan_results_aggregated_by_target_resource_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"targetResourceAggregations">> => list(cis_target_resource_aggregation()())
+%%   <<"targetResourceAggregations">> => list(cis_target_resource_aggregation())
 %% }
 -type list_cis_scan_results_aggregated_by_target_resource_response() :: #{binary() => any()}.
 
@@ -1159,10 +1159,10 @@
 
 %% Example:
 %% lambda_function_aggregation() :: #{
-%%   <<"functionNames">> => list(string_filter()()),
-%%   <<"functionTags">> => list(map_filter()()),
-%%   <<"resourceIds">> => list(string_filter()()),
-%%   <<"runtimes">> => list(string_filter()()),
+%%   <<"functionNames">> => list(string_filter()),
+%%   <<"functionTags">> => list(map_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
+%%   <<"runtimes">> => list(string_filter()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -1207,7 +1207,7 @@
 
 %% Example:
 %% list_code_security_scan_configurations_response() :: #{
-%%   <<"configurations">> => list(code_security_scan_configuration_summary()()),
+%%   <<"configurations">> => list(code_security_scan_configuration_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_code_security_scan_configurations_response() :: #{binary() => any()}.
@@ -1261,7 +1261,7 @@
 
 %% Example:
 %% list_delegated_admin_accounts_response() :: #{
-%%   <<"delegatedAdminAccounts">> => list(delegated_admin_account()()),
+%%   <<"delegatedAdminAccounts">> => list(delegated_admin_account()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_delegated_admin_accounts_response() :: #{binary() => any()}.
@@ -1284,21 +1284,21 @@
 
 %% Example:
 %% resource_filter_criteria() :: #{
-%%   <<"accountId">> => list(resource_string_filter()()),
-%%   <<"ec2InstanceTags">> => list(resource_map_filter()()),
-%%   <<"ecrImageTags">> => list(resource_string_filter()()),
-%%   <<"ecrRepositoryName">> => list(resource_string_filter()()),
-%%   <<"lambdaFunctionName">> => list(resource_string_filter()()),
-%%   <<"lambdaFunctionTags">> => list(resource_map_filter()()),
-%%   <<"resourceId">> => list(resource_string_filter()()),
-%%   <<"resourceType">> => list(resource_string_filter()())
+%%   <<"accountId">> => list(resource_string_filter()),
+%%   <<"ec2InstanceTags">> => list(resource_map_filter()),
+%%   <<"ecrImageTags">> => list(resource_string_filter()),
+%%   <<"ecrRepositoryName">> => list(resource_string_filter()),
+%%   <<"lambdaFunctionName">> => list(resource_string_filter()),
+%%   <<"lambdaFunctionTags">> => list(resource_map_filter()),
+%%   <<"resourceId">> => list(resource_string_filter()),
+%%   <<"resourceType">> => list(resource_string_filter())
 %% }
 -type resource_filter_criteria() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_cis_targets() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"targetResourceTags">> => map()
 %% }
 -type create_cis_targets() :: #{binary() => any()}.
@@ -1387,7 +1387,7 @@
 
 %% Example:
 %% batch_get_finding_details_request() :: #{
-%%   <<"findingArns">> := list(string()())
+%%   <<"findingArns">> := list(string())
 %% }
 -type batch_get_finding_details_request() :: #{binary() => any()}.
 
@@ -1403,8 +1403,8 @@
 
 %% Example:
 %% lambda_vpc_config() :: #{
-%%   <<"securityGroupIds">> => list(string()()),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"securityGroupIds">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type lambda_vpc_config() :: #{binary() => any()}.
@@ -1423,8 +1423,8 @@
 %% atig_data() :: #{
 %%   <<"firstSeen">> => non_neg_integer(),
 %%   <<"lastSeen">> => non_neg_integer(),
-%%   <<"targets">> => list(string()()),
-%%   <<"ttps">> => list(string()())
+%%   <<"targets">> => list(string()),
+%%   <<"ttps">> => list(string())
 %% }
 -type atig_data() :: #{binary() => any()}.
 
@@ -1456,7 +1456,7 @@
 
 %% Example:
 %% cvss_score_details() :: #{
-%%   <<"adjustments">> => list(cvss_score_adjustment()()),
+%%   <<"adjustments">> => list(cvss_score_adjustment()),
 %%   <<"cvssSource">> => string(),
 %%   <<"score">> => [float()],
 %%   <<"scoreSource">> => string(),
@@ -1503,7 +1503,7 @@
 %%   <<"networkReachabilityDetails">> => network_reachability_details(),
 %%   <<"packageVulnerabilityDetails">> => package_vulnerability_details(),
 %%   <<"remediation">> => remediation(),
-%%   <<"resources">> => list(resource()()),
+%%   <<"resources">> => list(resource()),
 %%   <<"severity">> => string(),
 %%   <<"status">> => string(),
 %%   <<"title">> => string(),
@@ -1608,7 +1608,7 @@
 %% Example:
 %% list_usage_totals_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"totals">> => list(usage_total()())
+%%   <<"totals">> => list(usage_total())
 %% }
 -type list_usage_totals_response() :: #{binary() => any()}.
 
@@ -1678,7 +1678,7 @@
 
 %% Example:
 %% list_coverage_response() :: #{
-%%   <<"coveredResources">> => list(covered_resource()()),
+%%   <<"coveredResources">> => list(covered_resource()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_coverage_response() :: #{binary() => any()}.
@@ -1708,9 +1708,9 @@
 
 %% Example:
 %% list_cis_scan_configurations_filter_criteria() :: #{
-%%   <<"scanConfigurationArnFilters">> => list(cis_string_filter()()),
-%%   <<"scanNameFilters">> => list(cis_string_filter()()),
-%%   <<"targetResourceTagFilters">> => list(tag_filter()())
+%%   <<"scanConfigurationArnFilters">> => list(cis_string_filter()),
+%%   <<"scanNameFilters">> => list(cis_string_filter()),
+%%   <<"targetResourceTagFilters">> => list(tag_filter())
 %% }
 -type list_cis_scan_configurations_filter_criteria() :: #{binary() => any()}.
 
@@ -1752,16 +1752,16 @@
 %% Example:
 %% cluster_information() :: #{
 %%   <<"clusterArn">> => [string()],
-%%   <<"clusterDetails">> => list(cluster_details()())
+%%   <<"clusterDetails">> => list(cluster_details())
 %% }
 -type cluster_information() :: #{binary() => any()}.
 
 
 %% Example:
 %% code_repository_aggregation() :: #{
-%%   <<"projectNames">> => list(string_filter()()),
-%%   <<"providerTypes">> => list(string_filter()()),
-%%   <<"resourceIds">> => list(string_filter()()),
+%%   <<"projectNames">> => list(string_filter()),
+%%   <<"providerTypes">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -1794,7 +1794,7 @@
 %% Example:
 %% list_cis_scan_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"scanConfigurations">> => list(cis_scan_configuration()())
+%%   <<"scanConfigurations">> => list(cis_scan_configuration())
 %% }
 -type list_cis_scan_configurations_response() :: #{binary() => any()}.
 
@@ -1802,15 +1802,15 @@
 %% Example:
 %% finding_detail() :: #{
 %%   <<"cisaData">> => cisa_data(),
-%%   <<"cwes">> => list(string()()),
+%%   <<"cwes">> => list(string()),
 %%   <<"epssScore">> => [float()],
-%%   <<"evidences">> => list(evidence()()),
+%%   <<"evidences">> => list(evidence()),
 %%   <<"exploitObserved">> => exploit_observed(),
 %%   <<"findingArn">> => string(),
-%%   <<"referenceUrls">> => list(string()()),
+%%   <<"referenceUrls">> => list(string()),
 %%   <<"riskScore">> => integer(),
-%%   <<"tools">> => list(string()()),
-%%   <<"ttps">> => list(string()())
+%%   <<"tools">> => list(string()),
+%%   <<"ttps">> => list(string())
 %% }
 -type finding_detail() :: #{binary() => any()}.
 
@@ -1953,7 +1953,7 @@
 
 %% Example:
 %% list_code_security_integrations_response() :: #{
-%%   <<"integrations">> => list(code_security_integration_summary()()),
+%%   <<"integrations">> => list(code_security_integration_summary()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_code_security_integrations_response() :: #{binary() => any()}.
@@ -1965,15 +1965,15 @@
 
 %% Example:
 %% batch_get_account_status_response() :: #{
-%%   <<"accounts">> := list(account_state()()),
-%%   <<"failedAccounts">> => list(failed_account()())
+%%   <<"accounts">> := list(account_state()),
+%%   <<"failedAccounts">> => list(failed_account())
 %% }
 -type batch_get_account_status_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_free_trial_info_request() :: #{
-%%   <<"accountIds">> := list(string()())
+%%   <<"accountIds">> := list(string())
 %% }
 -type batch_get_free_trial_info_request() :: #{binary() => any()}.
 
@@ -2009,8 +2009,8 @@
 
 %% Example:
 %% enable_response() :: #{
-%%   <<"accounts">> := list(account()()),
-%%   <<"failedAccounts">> => list(failed_account()())
+%%   <<"accounts">> := list(account()),
+%%   <<"failedAccounts">> => list(failed_account())
 %% }
 -type enable_response() :: #{binary() => any()}.
 
@@ -2038,9 +2038,9 @@
 
 %% Example:
 %% image_layer_aggregation() :: #{
-%%   <<"layerHashes">> => list(string_filter()()),
-%%   <<"repositories">> => list(string_filter()()),
-%%   <<"resourceIds">> => list(string_filter()()),
+%%   <<"layerHashes">> => list(string_filter()),
+%%   <<"repositories">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -2059,9 +2059,9 @@
 
 %% Example:
 %% lambda_layer_aggregation() :: #{
-%%   <<"functionNames">> => list(string_filter()()),
-%%   <<"layerArns">> => list(string_filter()()),
-%%   <<"resourceIds">> => list(string_filter()()),
+%%   <<"functionNames">> => list(string_filter()),
+%%   <<"layerArns">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -2087,7 +2087,7 @@
 
 %% Example:
 %% batch_get_code_snippet_request() :: #{
-%%   <<"findingArns">> := list(string()())
+%%   <<"findingArns">> := list(string())
 %% }
 -type batch_get_code_snippet_request() :: #{binary() => any()}.
 
@@ -2154,16 +2154,16 @@
 
 %% Example:
 %% package_vulnerability_details() :: #{
-%%   <<"cvss">> => list(cvss_score()()),
-%%   <<"referenceUrls">> => list(string()()),
-%%   <<"relatedVulnerabilities">> => list(string()()),
+%%   <<"cvss">> => list(cvss_score()),
+%%   <<"referenceUrls">> => list(string()),
+%%   <<"relatedVulnerabilities">> => list(string()),
 %%   <<"source">> => string(),
 %%   <<"sourceUrl">> => string(),
 %%   <<"vendorCreatedAt">> => non_neg_integer(),
 %%   <<"vendorSeverity">> => string(),
 %%   <<"vendorUpdatedAt">> => non_neg_integer(),
 %%   <<"vulnerabilityId">> => string(),
-%%   <<"vulnerablePackages">> => list(vulnerable_package()())
+%%   <<"vulnerablePackages">> => list(vulnerable_package())
 %% }
 -type package_vulnerability_details() :: #{binary() => any()}.
 
@@ -2182,8 +2182,8 @@
 %% aws_ec2_instance_details() :: #{
 %%   <<"iamInstanceProfileArn">> => string(),
 %%   <<"imageId">> => string(),
-%%   <<"ipV4Addresses">> => list(string()()),
-%%   <<"ipV6Addresses">> => list(string()()),
+%%   <<"ipV4Addresses">> => list(string()),
+%%   <<"ipV6Addresses">> => list(string()),
 %%   <<"keyName">> => string(),
 %%   <<"launchedAt">> => non_neg_integer(),
 %%   <<"platform">> => string(),
@@ -2214,7 +2214,7 @@
 
 %% Example:
 %% batch_get_member_ec2_deep_inspection_status_request() :: #{
-%%   <<"accountIds">> => list(string()())
+%%   <<"accountIds">> => list(string())
 %% }
 -type batch_get_member_ec2_deep_inspection_status_request() :: #{binary() => any()}.
 
@@ -2249,7 +2249,7 @@
 
 %% Example:
 %% list_members_response() :: #{
-%%   <<"members">> => list(member()()),
+%%   <<"members">> => list(member()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_members_response() :: #{binary() => any()}.
@@ -2258,8 +2258,8 @@
 %% Example:
 %% get_ec2_deep_inspection_configuration_response() :: #{
 %%   <<"errorMessage">> => string(),
-%%   <<"orgPackagePaths">> => list(string()()),
-%%   <<"packagePaths">> => list(string()()),
+%%   <<"orgPackagePaths">> => list(string()),
+%%   <<"packagePaths">> => list(string()),
 %%   <<"status">> => string()
 %% }
 -type get_ec2_deep_inspection_configuration_response() :: #{binary() => any()}.
@@ -2306,7 +2306,7 @@
 %% get_cis_scan_report_request() :: #{
 %%   <<"reportFormat">> => list(any()),
 %%   <<"scanArn">> := string(),
-%%   <<"targetAccounts">> => list(string()())
+%%   <<"targetAccounts">> => list(string())
 %% }
 -type get_cis_scan_report_request() :: #{binary() => any()}.
 
@@ -2327,7 +2327,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"fields">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
@@ -2341,7 +2341,7 @@
 %% Example:
 %% get_cis_scan_result_details_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"scanResultDetails">> => list(cis_scan_result_details()())
+%%   <<"scanResultDetails">> => list(cis_scan_result_details())
 %% }
 -type get_cis_scan_result_details_response() :: #{binary() => any()}.
 
@@ -2374,7 +2374,7 @@
 
 %% Example:
 %% list_coverage_statistics_response() :: #{
-%%   <<"countsByGroup">> => list(counts()()),
+%%   <<"countsByGroup">> => list(counts()),
 %%   <<"nextToken">> => string(),
 %%   <<"totalCounts">> := [float()]
 %% }
@@ -2428,27 +2428,27 @@
 
 %% Example:
 %% coverage_filter_criteria() :: #{
-%%   <<"accountId">> => list(coverage_string_filter()()),
-%%   <<"codeRepositoryProjectName">> => list(coverage_string_filter()()),
-%%   <<"codeRepositoryProviderType">> => list(coverage_string_filter()()),
-%%   <<"codeRepositoryProviderTypeVisibility">> => list(coverage_string_filter()()),
-%%   <<"ec2InstanceTags">> => list(coverage_map_filter()()),
-%%   <<"ecrImageInUseCount">> => list(coverage_number_filter()()),
-%%   <<"ecrImageLastInUseAt">> => list(coverage_date_filter()()),
-%%   <<"ecrImageTags">> => list(coverage_string_filter()()),
-%%   <<"ecrRepositoryName">> => list(coverage_string_filter()()),
-%%   <<"imagePulledAt">> => list(coverage_date_filter()()),
-%%   <<"lambdaFunctionName">> => list(coverage_string_filter()()),
-%%   <<"lambdaFunctionRuntime">> => list(coverage_string_filter()()),
-%%   <<"lambdaFunctionTags">> => list(coverage_map_filter()()),
-%%   <<"lastScannedAt">> => list(coverage_date_filter()()),
-%%   <<"lastScannedCommitId">> => list(coverage_string_filter()()),
-%%   <<"resourceId">> => list(coverage_string_filter()()),
-%%   <<"resourceType">> => list(coverage_string_filter()()),
-%%   <<"scanMode">> => list(coverage_string_filter()()),
-%%   <<"scanStatusCode">> => list(coverage_string_filter()()),
-%%   <<"scanStatusReason">> => list(coverage_string_filter()()),
-%%   <<"scanType">> => list(coverage_string_filter()())
+%%   <<"accountId">> => list(coverage_string_filter()),
+%%   <<"codeRepositoryProjectName">> => list(coverage_string_filter()),
+%%   <<"codeRepositoryProviderType">> => list(coverage_string_filter()),
+%%   <<"codeRepositoryProviderTypeVisibility">> => list(coverage_string_filter()),
+%%   <<"ec2InstanceTags">> => list(coverage_map_filter()),
+%%   <<"ecrImageInUseCount">> => list(coverage_number_filter()),
+%%   <<"ecrImageLastInUseAt">> => list(coverage_date_filter()),
+%%   <<"ecrImageTags">> => list(coverage_string_filter()),
+%%   <<"ecrRepositoryName">> => list(coverage_string_filter()),
+%%   <<"imagePulledAt">> => list(coverage_date_filter()),
+%%   <<"lambdaFunctionName">> => list(coverage_string_filter()),
+%%   <<"lambdaFunctionRuntime">> => list(coverage_string_filter()),
+%%   <<"lambdaFunctionTags">> => list(coverage_map_filter()),
+%%   <<"lastScannedAt">> => list(coverage_date_filter()),
+%%   <<"lastScannedCommitId">> => list(coverage_string_filter()),
+%%   <<"resourceId">> => list(coverage_string_filter()),
+%%   <<"resourceType">> => list(coverage_string_filter()),
+%%   <<"scanMode">> => list(coverage_string_filter()),
+%%   <<"scanStatusCode">> => list(coverage_string_filter()),
+%%   <<"scanStatusReason">> => list(coverage_string_filter()),
+%%   <<"scanType">> => list(coverage_string_filter())
 %% }
 -type coverage_filter_criteria() :: #{binary() => any()}.
 
@@ -2462,14 +2462,14 @@
 
 %% Example:
 %% batch_get_account_status_request() :: #{
-%%   <<"accountIds">> => list(string()())
+%%   <<"accountIds">> => list(string())
 %% }
 -type batch_get_account_status_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_clusters_for_image_response() :: #{
-%%   <<"cluster">> => list(cluster_information()()),
+%%   <<"cluster">> => list(cluster_information()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_clusters_for_image_response() :: #{binary() => any()}.
@@ -2498,7 +2498,7 @@
 
 %% Example:
 %% ami_aggregation() :: #{
-%%   <<"amis">> => list(string_filter()()),
+%%   <<"amis">> => list(string_filter()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -2566,7 +2566,7 @@
 
 %% Example:
 %% package_aggregation() :: #{
-%%   <<"packageNames">> => list(string_filter()()),
+%%   <<"packageNames">> => list(string_filter()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -2584,12 +2584,12 @@
 
 %% Example:
 %% cis_scan_results_aggregated_by_checks_filter_criteria() :: #{
-%%   <<"accountIdFilters">> => list(cis_string_filter()()),
-%%   <<"checkIdFilters">> => list(cis_string_filter()()),
-%%   <<"failedResourcesFilters">> => list(cis_number_filter()()),
-%%   <<"platformFilters">> => list(cis_string_filter()()),
-%%   <<"securityLevelFilters">> => list(cis_security_level_filter()()),
-%%   <<"titleFilters">> => list(cis_string_filter()())
+%%   <<"accountIdFilters">> => list(cis_string_filter()),
+%%   <<"checkIdFilters">> => list(cis_string_filter()),
+%%   <<"failedResourcesFilters">> => list(cis_number_filter()),
+%%   <<"platformFilters">> => list(cis_string_filter()),
+%%   <<"securityLevelFilters">> => list(cis_security_level_filter()),
+%%   <<"titleFilters">> => list(cis_string_filter())
 %% }
 -type cis_scan_results_aggregated_by_checks_filter_criteria() :: #{binary() => any()}.
 
@@ -2639,7 +2639,7 @@
 
 %% Example:
 %% list_finding_aggregations_request() :: #{
-%%   <<"accountIds">> => list(string_filter()()),
+%%   <<"accountIds">> => list(string_filter()),
 %%   <<"aggregationRequest">> => list(),
 %%   <<"aggregationType">> := string(),
 %%   <<"maxResults">> => integer(),
@@ -2688,7 +2688,7 @@
 
 %% Example:
 %% batch_associate_code_security_scan_configuration_request() :: #{
-%%   <<"associateConfigurationRequests">> := list(associate_configuration_request()())
+%%   <<"associateConfigurationRequests">> := list(associate_configuration_request())
 %% }
 -type batch_associate_code_security_scan_configuration_request() :: #{binary() => any()}.
 
@@ -2707,21 +2707,21 @@
 
 %% Example:
 %% batch_disassociate_code_security_scan_configuration_response() :: #{
-%%   <<"failedAssociations">> => list(failed_association_result()()),
-%%   <<"successfulAssociations">> => list(successful_association_result()())
+%%   <<"failedAssociations">> => list(failed_association_result()),
+%%   <<"successfulAssociations">> => list(successful_association_result())
 %% }
 -type batch_disassociate_code_security_scan_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% aws_ecr_container_aggregation() :: #{
-%%   <<"architectures">> => list(string_filter()()),
-%%   <<"imageShas">> => list(string_filter()()),
-%%   <<"imageTags">> => list(string_filter()()),
-%%   <<"inUseCount">> => list(number_filter()()),
-%%   <<"lastInUseAt">> => list(date_filter()()),
-%%   <<"repositories">> => list(string_filter()()),
-%%   <<"resourceIds">> => list(string_filter()()),
+%%   <<"architectures">> => list(string_filter()),
+%%   <<"imageShas">> => list(string_filter()),
+%%   <<"imageTags">> => list(string_filter()),
+%%   <<"inUseCount">> => list(number_filter()),
+%%   <<"lastInUseAt">> => list(date_filter()),
+%%   <<"repositories">> => list(string_filter()),
+%%   <<"resourceIds">> => list(string_filter()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -2739,8 +2739,8 @@
 
 %% Example:
 %% batch_get_code_snippet_response() :: #{
-%%   <<"codeSnippetResults">> => list(code_snippet_result()()),
-%%   <<"errors">> => list(code_snippet_error()())
+%%   <<"codeSnippetResults">> => list(code_snippet_result()),
+%%   <<"errors">> => list(code_snippet_error())
 %% }
 -type batch_get_code_snippet_response() :: #{binary() => any()}.
 
@@ -2787,7 +2787,7 @@
 
 %% Example:
 %% batch_update_member_ec2_deep_inspection_status_request() :: #{
-%%   <<"accountIds">> := list(member_account_ec2_deep_inspection_status()())
+%%   <<"accountIds">> := list(member_account_ec2_deep_inspection_status())
 %% }
 -type batch_update_member_ec2_deep_inspection_status_request() :: #{binary() => any()}.
 
@@ -2798,8 +2798,8 @@
 
 %% Example:
 %% batch_update_member_ec2_deep_inspection_status_response() :: #{
-%%   <<"accountIds">> => list(member_account_ec2_deep_inspection_status_state()()),
-%%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state()())
+%%   <<"accountIds">> => list(member_account_ec2_deep_inspection_status_state()),
+%%   <<"failedAccountIds">> => list(failed_member_account_ec2_deep_inspection_status_state())
 %% }
 -type batch_update_member_ec2_deep_inspection_status_response() :: #{binary() => any()}.
 
@@ -2861,7 +2861,7 @@
 
 %% Example:
 %% send_cis_session_telemetry_request() :: #{
-%%   <<"messages">> := list(cis_session_message()()),
+%%   <<"messages">> := list(cis_session_message()),
 %%   <<"scanJobId">> := string(),
 %%   <<"sessionToken">> := string()
 %% }
@@ -2911,7 +2911,7 @@
 %%   <<"architecture">> => string(),
 %%   <<"author">> => [string()],
 %%   <<"imageHash">> => string(),
-%%   <<"imageTags">> => list(string()()),
+%%   <<"imageTags">> => list(string()),
 %%   <<"inUseCount">> => [float()],
 %%   <<"lastInUseAt">> => non_neg_integer(),
 %%   <<"platform">> => string(),
@@ -2942,8 +2942,8 @@
 %%   <<"resourceType">> => string(),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string(),
-%%   <<"titles">> => list(string_filter()()),
-%%   <<"vulnerabilityIds">> => list(string_filter()())
+%%   <<"titles">> => list(string_filter()),
+%%   <<"vulnerabilityIds">> => list(string_filter())
 %% }
 -type title_aggregation() :: #{binary() => any()}.
 
@@ -2955,7 +2955,7 @@
 %% Example:
 %% aws_eks_metadata_details() :: #{
 %%   <<"namespace">> => [string()],
-%%   <<"workloadInfoList">> => list(aws_eks_workload_info()())
+%%   <<"workloadInfoList">> => list(aws_eks_workload_info())
 %% }
 -type aws_eks_metadata_details() :: #{binary() => any()}.
 
@@ -2980,12 +2980,12 @@
 
 %% Example:
 %% aws_lambda_function_details() :: #{
-%%   <<"architectures">> => list(string()()),
+%%   <<"architectures">> => list(string()),
 %%   <<"codeSha256">> => string(),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"functionName">> => string(),
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
-%%   <<"layers">> => list(string()()),
+%%   <<"layers">> => list(string()),
 %%   <<"packageType">> => string(),
 %%   <<"runtime">> => string(),
 %%   <<"version">> => string(),
@@ -3012,26 +3012,26 @@
 
 %% Example:
 %% batch_associate_code_security_scan_configuration_response() :: #{
-%%   <<"failedAssociations">> => list(failed_association_result()()),
-%%   <<"successfulAssociations">> => list(successful_association_result()())
+%%   <<"failedAssociations">> => list(failed_association_result()),
+%%   <<"successfulAssociations">> => list(successful_association_result())
 %% }
 -type batch_associate_code_security_scan_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% cis_scan_result_details_filter_criteria() :: #{
-%%   <<"checkIdFilters">> => list(cis_string_filter()()),
-%%   <<"findingArnFilters">> => list(cis_string_filter()()),
-%%   <<"findingStatusFilters">> => list(cis_finding_status_filter()()),
-%%   <<"securityLevelFilters">> => list(cis_security_level_filter()()),
-%%   <<"titleFilters">> => list(cis_string_filter()())
+%%   <<"checkIdFilters">> => list(cis_string_filter()),
+%%   <<"findingArnFilters">> => list(cis_string_filter()),
+%%   <<"findingStatusFilters">> => list(cis_finding_status_filter()),
+%%   <<"securityLevelFilters">> => list(cis_security_level_filter()),
+%%   <<"titleFilters">> => list(cis_string_filter())
 %% }
 -type cis_scan_result_details_filter_criteria() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_filters_response() :: #{
-%%   <<"filters">> := list(filter()()),
+%%   <<"filters">> := list(filter()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_filters_response() :: #{binary() => any()}.
@@ -3064,7 +3064,7 @@
 %% Example:
 %% search_vulnerabilities_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"vulnerabilities">> => list(vulnerability()())
+%%   <<"vulnerabilities">> => list(vulnerability())
 %% }
 -type search_vulnerabilities_response() :: #{binary() => any()}.
 
@@ -3072,14 +3072,14 @@
 %% Example:
 %% free_trial_account_info() :: #{
 %%   <<"accountId">> => string(),
-%%   <<"freeTrialInfo">> => list(free_trial_info()())
+%%   <<"freeTrialInfo">> => list(free_trial_info())
 %% }
 -type free_trial_account_info() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_org_ec2_deep_inspection_configuration_request() :: #{
-%%   <<"orgPackagePaths">> := list(string()())
+%%   <<"orgPackagePaths">> := list(string())
 %% }
 -type update_org_ec2_deep_inspection_configuration_request() :: #{binary() => any()}.
 
@@ -3096,7 +3096,7 @@
 %%   <<"accountId">> => string(),
 %%   <<"architecture">> => [string()],
 %%   <<"imageSha">> => [string()],
-%%   <<"imageTags">> => list(string()()),
+%%   <<"imageTags">> => list(string()),
 %%   <<"inUseCount">> => [float()],
 %%   <<"lastInUseAt">> => non_neg_integer(),
 %%   <<"repository">> => [string()],
@@ -3125,16 +3125,16 @@
 
 %% Example:
 %% list_cis_scans_filter_criteria() :: #{
-%%   <<"failedChecksFilters">> => list(cis_number_filter()()),
-%%   <<"scanArnFilters">> => list(cis_string_filter()()),
-%%   <<"scanAtFilters">> => list(cis_date_filter()()),
-%%   <<"scanConfigurationArnFilters">> => list(cis_string_filter()()),
-%%   <<"scanNameFilters">> => list(cis_string_filter()()),
-%%   <<"scanStatusFilters">> => list(cis_scan_status_filter()()),
-%%   <<"scheduledByFilters">> => list(cis_string_filter()()),
-%%   <<"targetAccountIdFilters">> => list(cis_string_filter()()),
-%%   <<"targetResourceIdFilters">> => list(cis_string_filter()()),
-%%   <<"targetResourceTagFilters">> => list(tag_filter()())
+%%   <<"failedChecksFilters">> => list(cis_number_filter()),
+%%   <<"scanArnFilters">> => list(cis_string_filter()),
+%%   <<"scanAtFilters">> => list(cis_date_filter()),
+%%   <<"scanConfigurationArnFilters">> => list(cis_string_filter()),
+%%   <<"scanNameFilters">> => list(cis_string_filter()),
+%%   <<"scanStatusFilters">> => list(cis_scan_status_filter()),
+%%   <<"scheduledByFilters">> => list(cis_string_filter()),
+%%   <<"targetAccountIdFilters">> => list(cis_string_filter()),
+%%   <<"targetResourceIdFilters">> => list(cis_string_filter()),
+%%   <<"targetResourceTagFilters">> => list(tag_filter())
 %% }
 -type list_cis_scans_filter_criteria() :: #{binary() => any()}.
 
@@ -3151,7 +3151,7 @@
 %% Example:
 %% list_filters_request() :: #{
 %%   <<"action">> => string(),
-%%   <<"arns">> => list(string()()),
+%%   <<"arns">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -3168,8 +3168,8 @@
 
 %% Example:
 %% batch_get_finding_details_response() :: #{
-%%   <<"errors">> => list(finding_details_error()()),
-%%   <<"findingDetails">> => list(finding_detail()())
+%%   <<"errors">> => list(finding_details_error()),
+%%   <<"findingDetails">> => list(finding_detail())
 %% }
 -type batch_get_finding_details_response() :: #{binary() => any()}.
 

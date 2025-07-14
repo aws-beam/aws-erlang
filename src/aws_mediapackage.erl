@@ -99,7 +99,7 @@
 %%   <<"StartoverWindowSeconds">> => integer(),
 %%   <<"Tags">> => map(),
 %%   <<"TimeDelaySeconds">> => integer(),
-%%   <<"Whitelist">> => list(string()())
+%%   <<"Whitelist">> => list(string())
 %% }
 -type create_origin_endpoint_request() :: #{binary() => any()}.
 
@@ -140,7 +140,7 @@
 %%   <<"Tags">> => map(),
 %%   <<"TimeDelaySeconds">> => integer(),
 %%   <<"Url">> => string(),
-%%   <<"Whitelist">> => list(string()())
+%%   <<"Whitelist">> => list(string())
 %% }
 -type create_origin_endpoint_response() :: #{binary() => any()}.
 
@@ -178,7 +178,7 @@
 %%   <<"Origination">> => list(any()),
 %%   <<"StartoverWindowSeconds">> => integer(),
 %%   <<"TimeDelaySeconds">> => integer(),
-%%   <<"Whitelist">> => list(string()())
+%%   <<"Whitelist">> => list(string())
 %% }
 -type update_origin_endpoint_request() :: #{binary() => any()}.
 
@@ -201,7 +201,7 @@
 %%   <<"Tags">> => map(),
 %%   <<"TimeDelaySeconds">> => integer(),
 %%   <<"Url">> => string(),
-%%   <<"Whitelist">> => list(string()())
+%%   <<"Whitelist">> => list(string())
 %% }
 -type origin_endpoint() :: #{binary() => any()}.
 
@@ -246,7 +246,7 @@
 %%   <<"Tags">> => map(),
 %%   <<"TimeDelaySeconds">> => integer(),
 %%   <<"Url">> => string(),
-%%   <<"Whitelist">> => list(string()())
+%%   <<"Whitelist">> => list(string())
 %% }
 -type describe_origin_endpoint_response() :: #{binary() => any()}.
 
@@ -267,7 +267,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -297,7 +297,7 @@
 
 %% Example:
 %% hls_ingest() :: #{
-%%   <<"IngestEndpoints">> => list(ingest_endpoint()())
+%%   <<"IngestEndpoints">> => list(ingest_endpoint())
 %% }
 -type hls_ingest() :: #{binary() => any()}.
 
@@ -309,7 +309,7 @@
 %% Example:
 %% list_origin_endpoints_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OriginEndpoints">> => list(origin_endpoint()())
+%%   <<"OriginEndpoints">> => list(origin_endpoint())
 %% }
 -type list_origin_endpoints_response() :: #{binary() => any()}.
 
@@ -347,7 +347,7 @@
 %% Example:
 %% cmaf_package() :: #{
 %%   <<"Encryption">> => cmaf_encryption(),
-%%   <<"HlsManifests">> => list(hls_manifest()()),
+%%   <<"HlsManifests">> => list(hls_manifest()),
 %%   <<"SegmentDurationSeconds">> => integer(),
 %%   <<"SegmentPrefix">> => string(),
 %%   <<"StreamSelection">> => stream_selection()
@@ -372,7 +372,7 @@
 %% Example:
 %% cmaf_package_create_or_update_parameters() :: #{
 %%   <<"Encryption">> => cmaf_encryption(),
-%%   <<"HlsManifests">> => list(hls_manifest_create_or_update_parameters()()),
+%%   <<"HlsManifests">> => list(hls_manifest_create_or_update_parameters()),
 %%   <<"SegmentDurationSeconds">> => integer(),
 %%   <<"SegmentPrefix">> => string(),
 %%   <<"StreamSelection">> => stream_selection()
@@ -397,7 +397,7 @@
 %%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
 %%   <<"ResourceId">> => string(),
 %%   <<"RoleArn">> => string(),
-%%   <<"SystemIds">> => list(string()()),
+%%   <<"SystemIds">> => list(string()),
 %%   <<"Url">> => string()
 %% }
 -type speke_key_provider() :: #{binary() => any()}.
@@ -478,7 +478,7 @@
 
 %% Example:
 %% list_channels_response() :: #{
-%%   <<"Channels">> => list(channel()()),
+%%   <<"Channels">> => list(channel()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
@@ -647,7 +647,7 @@
 
 %% Example:
 %% list_harvest_jobs_response() :: #{
-%%   <<"HarvestJobs">> => list(harvest_job()()),
+%%   <<"HarvestJobs">> => list(harvest_job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_harvest_jobs_response() :: #{binary() => any()}.
@@ -692,7 +692,7 @@
 %%   <<"Tags">> => map(),
 %%   <<"TimeDelaySeconds">> => integer(),
 %%   <<"Url">> => string(),
-%%   <<"Whitelist">> => list(string()())
+%%   <<"Whitelist">> => list(string())
 %% }
 -type update_origin_endpoint_response() :: #{binary() => any()}.
 

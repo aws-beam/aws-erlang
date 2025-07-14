@@ -112,15 +112,15 @@
 
 %% Example:
 %% icd10_cm_entity() :: #{
-%%   <<"Attributes">> => list(icd10_cm_attribute()()),
+%%   <<"Attributes">> => list(icd10_cm_attribute()),
 %%   <<"BeginOffset">> => integer(),
 %%   <<"Category">> => list(any()),
 %%   <<"EndOffset">> => integer(),
-%%   <<"ICD10CMConcepts">> => list(icd10_cm_concept()()),
+%%   <<"ICD10CMConcepts">> => list(icd10_cm_concept()),
 %%   <<"Id">> => integer(),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
-%%   <<"Traits">> => list(icd10_cm_trait()()),
+%%   <<"Traits">> => list(icd10_cm_trait()),
 %%   <<"Type">> => list(any())
 %% }
 -type icd10_cm_entity() :: #{binary() => any()}.
@@ -140,14 +140,14 @@
 
 %% Example:
 %% entity() :: #{
-%%   <<"Attributes">> => list(attribute()()),
+%%   <<"Attributes">> => list(attribute()),
 %%   <<"BeginOffset">> => integer(),
 %%   <<"Category">> => list(any()),
 %%   <<"EndOffset">> => integer(),
 %%   <<"Id">> => integer(),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
-%%   <<"Traits">> => list(trait()()),
+%%   <<"Traits">> => list(trait()),
 %%   <<"Type">> => list(any())
 %% }
 -type entity() :: #{binary() => any()}.
@@ -160,7 +160,7 @@
 
 %% Example:
 %% list_rx_norm_inference_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()()),
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_rx_norm_inference_jobs_response() :: #{binary() => any()}.
@@ -185,10 +185,10 @@
 %%   <<"Id">> => integer(),
 %%   <<"RelationshipScore">> => float(),
 %%   <<"RelationshipType">> => list(any()),
-%%   <<"SNOMEDCTConcepts">> => list(s_n_o_m_e_d_c_t_concept()()),
+%%   <<"SNOMEDCTConcepts">> => list(s_n_o_m_e_d_c_t_concept()),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
-%%   <<"Traits">> => list(s_n_o_m_e_d_c_t_trait()()),
+%%   <<"Traits">> => list(s_n_o_m_e_d_c_t_trait()),
 %%   <<"Type">> => list(any())
 %% }
 -type s_n_o_m_e_d_c_t_attribute() :: #{binary() => any()}.
@@ -196,7 +196,7 @@
 %% Example:
 %% infer_s_n_o_m_e_d_c_t_response() :: #{
 %%   <<"Characters">> => characters(),
-%%   <<"Entities">> => list(s_n_o_m_e_d_c_t_entity()()),
+%%   <<"Entities">> => list(s_n_o_m_e_d_c_t_entity()),
 %%   <<"ModelVersion">> => string(),
 %%   <<"PaginationToken">> => string(),
 %%   <<"SNOMEDCTDetails">> => s_n_o_m_e_d_c_t_details()
@@ -205,7 +205,7 @@
 
 %% Example:
 %% detect_phi_response() :: #{
-%%   <<"Entities">> => list(entity()()),
+%%   <<"Entities">> => list(entity()),
 %%   <<"ModelVersion">> => string(),
 %%   <<"PaginationToken">> => string()
 %% }
@@ -231,7 +231,7 @@
 
 %% Example:
 %% infer_rx_norm_response() :: #{
-%%   <<"Entities">> => list(rx_norm_entity()()),
+%%   <<"Entities">> => list(rx_norm_entity()),
 %%   <<"ModelVersion">> => string(),
 %%   <<"PaginationToken">> => string()
 %% }
@@ -266,22 +266,22 @@
 
 %% Example:
 %% list_s_n_o_m_e_d_c_t_inference_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()()),
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_s_n_o_m_e_d_c_t_inference_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% rx_norm_entity() :: #{
-%%   <<"Attributes">> => list(rx_norm_attribute()()),
+%%   <<"Attributes">> => list(rx_norm_attribute()),
 %%   <<"BeginOffset">> => integer(),
 %%   <<"Category">> => list(any()),
 %%   <<"EndOffset">> => integer(),
 %%   <<"Id">> => integer(),
-%%   <<"RxNormConcepts">> => list(rx_norm_concept()()),
+%%   <<"RxNormConcepts">> => list(rx_norm_concept()),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
-%%   <<"Traits">> => list(rx_norm_trait()()),
+%%   <<"Traits">> => list(rx_norm_trait()),
 %%   <<"Type">> => list(any())
 %% }
 -type rx_norm_entity() :: #{binary() => any()}.
@@ -296,10 +296,10 @@
 
 %% Example:
 %% detect_entities_response() :: #{
-%%   <<"Entities">> => list(entity()()),
+%%   <<"Entities">> => list(entity()),
 %%   <<"ModelVersion">> => string(),
 %%   <<"PaginationToken">> => string(),
-%%   <<"UnmappedAttributes">> => list(unmapped_attribute()())
+%%   <<"UnmappedAttributes">> => list(unmapped_attribute())
 %% }
 -type detect_entities_response() :: #{binary() => any()}.
 
@@ -331,7 +331,7 @@
 
 %% Example:
 %% infer_icd10_cm_response() :: #{
-%%   <<"Entities">> => list(icd10_cm_entity()()),
+%%   <<"Entities">> => list(icd10_cm_entity()),
 %%   <<"ModelVersion">> => string(),
 %%   <<"PaginationToken">> => string()
 %% }
@@ -353,10 +353,10 @@
 
 %% Example:
 %% detect_entities_v2_response() :: #{
-%%   <<"Entities">> => list(entity()()),
+%%   <<"Entities">> => list(entity()),
 %%   <<"ModelVersion">> => string(),
 %%   <<"PaginationToken">> => string(),
-%%   <<"UnmappedAttributes">> => list(unmapped_attribute()())
+%%   <<"UnmappedAttributes">> => list(unmapped_attribute())
 %% }
 -type detect_entities_v2_response() :: #{binary() => any()}.
 
@@ -368,15 +368,15 @@
 
 %% Example:
 %% s_n_o_m_e_d_c_t_entity() :: #{
-%%   <<"Attributes">> => list(s_n_o_m_e_d_c_t_attribute()()),
+%%   <<"Attributes">> => list(s_n_o_m_e_d_c_t_attribute()),
 %%   <<"BeginOffset">> => integer(),
 %%   <<"Category">> => list(any()),
 %%   <<"EndOffset">> => integer(),
 %%   <<"Id">> => integer(),
-%%   <<"SNOMEDCTConcepts">> => list(s_n_o_m_e_d_c_t_concept()()),
+%%   <<"SNOMEDCTConcepts">> => list(s_n_o_m_e_d_c_t_concept()),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
-%%   <<"Traits">> => list(s_n_o_m_e_d_c_t_trait()()),
+%%   <<"Traits">> => list(s_n_o_m_e_d_c_t_trait()),
 %%   <<"Type">> => list(any())
 %% }
 -type s_n_o_m_e_d_c_t_entity() :: #{binary() => any()}.
@@ -389,7 +389,7 @@
 
 %% Example:
 %% list_phi_detection_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()()),
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_phi_detection_jobs_response() :: #{binary() => any()}.
@@ -455,7 +455,7 @@
 %%   <<"RelationshipScore">> => float(),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
-%%   <<"Traits">> => list(rx_norm_trait()()),
+%%   <<"Traits">> => list(rx_norm_trait()),
 %%   <<"Type">> => list(any())
 %% }
 -type rx_norm_attribute() :: #{binary() => any()}.
@@ -476,21 +476,21 @@
 %%   <<"RelationshipType">> => list(any()),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
-%%   <<"Traits">> => list(icd10_cm_trait()()),
+%%   <<"Traits">> => list(icd10_cm_trait()),
 %%   <<"Type">> => list(any())
 %% }
 -type icd10_cm_attribute() :: #{binary() => any()}.
 
 %% Example:
 %% list_entities_detection_v2_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()()),
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_entities_detection_v2_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_icd10_cm_inference_jobs_response() :: #{
-%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()()),
+%%   <<"ComprehendMedicalAsyncJobPropertiesList">> => list(comprehend_medical_async_job_properties()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_icd10_cm_inference_jobs_response() :: #{binary() => any()}.
@@ -646,7 +646,7 @@
 %%   <<"RelationshipType">> => list(any()),
 %%   <<"Score">> => float(),
 %%   <<"Text">> => string(),
-%%   <<"Traits">> => list(trait()()),
+%%   <<"Traits">> => list(trait()),
 %%   <<"Type">> => list(any())
 %% }
 -type attribute() :: #{binary() => any()}.

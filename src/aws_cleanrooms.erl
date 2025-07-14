@@ -232,7 +232,7 @@
 
 %% Example:
 %% protected_query_distribute_output_configuration() :: #{
-%%   <<"locations">> => list(list()())
+%%   <<"locations">> => list(list())
 %% }
 -type protected_query_distribute_output_configuration() :: #{binary() => any()}.
 
@@ -295,7 +295,7 @@
 
 %% Example:
 %% list_collaboration_analysis_templates_output() :: #{
-%%   <<"collaborationAnalysisTemplateSummaries">> := list(collaboration_analysis_template_summary()()),
+%%   <<"collaborationAnalysisTemplateSummaries">> := list(collaboration_analysis_template_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_analysis_templates_output() :: #{binary() => any()}.
@@ -337,7 +337,7 @@
 
 %% Example:
 %% list_members_output() :: #{
-%%   <<"memberSummaries">> := list(member_summary()()),
+%%   <<"memberSummaries">> := list(member_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_members_output() :: #{binary() => any()}.
@@ -366,7 +366,7 @@
 
 %% Example:
 %% batch_get_collaboration_analysis_template_input() :: #{
-%%   <<"analysisTemplateArns">> := list(string()())
+%%   <<"analysisTemplateArns">> := list(string())
 %% }
 -type batch_get_collaboration_analysis_template_input() :: #{binary() => any()}.
 
@@ -388,7 +388,7 @@
 
 %% Example:
 %% create_configured_table_input() :: #{
-%%   <<"allowedColumns">> := list(string()()),
+%%   <<"allowedColumns">> := list(string()),
 %%   <<"analysisMethod">> := list(any()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
@@ -422,7 +422,7 @@
 
 %% Example:
 %% analysis_template_artifacts() :: #{
-%%   <<"additionalArtifacts">> => list(analysis_template_artifact()()),
+%%   <<"additionalArtifacts">> => list(analysis_template_artifact()),
 %%   <<"entryPoint">> => analysis_template_artifact(),
 %%   <<"roleArn">> => string()
 %% }
@@ -431,7 +431,7 @@
 
 %% Example:
 %% list_configured_table_associations_output() :: #{
-%%   <<"configuredTableAssociationSummaries">> := list(configured_table_association_summary()()),
+%%   <<"configuredTableAssociationSummaries">> := list(configured_table_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_table_associations_output() :: #{binary() => any()}.
@@ -439,7 +439,7 @@
 
 %% Example:
 %% collaboration_analysis_template() :: #{
-%%   <<"analysisParameters">> => list(analysis_parameter()()),
+%%   <<"analysisParameters">> => list(analysis_parameter()),
 %%   <<"arn">> => string(),
 %%   <<"collaborationArn">> => string(),
 %%   <<"collaborationId">> => string(),
@@ -453,7 +453,7 @@
 %%   <<"source">> => list(),
 %%   <<"sourceMetadata">> => list(),
 %%   <<"updateTime">> => [non_neg_integer()],
-%%   <<"validations">> => list(analysis_template_validation_status_detail()())
+%%   <<"validations">> => list(analysis_template_validation_status_detail())
 %% }
 -type collaboration_analysis_template() :: #{binary() => any()}.
 
@@ -487,7 +487,7 @@
 
 %% Example:
 %% list_analysis_templates_output() :: #{
-%%   <<"analysisTemplateSummaries">> := list(analysis_template_summary()()),
+%%   <<"analysisTemplateSummaries">> := list(analysis_template_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_analysis_templates_output() :: #{binary() => any()}.
@@ -520,7 +520,7 @@
 %%   <<"id">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
-%%   <<"receiverConfigurations">> => list(receiver_configuration()()),
+%%   <<"receiverConfigurations">> => list(receiver_configuration()),
 %%   <<"status">> => string()
 %% }
 -type protected_query_summary() :: #{binary() => any()}.
@@ -627,7 +627,7 @@
 
 %% Example:
 %% list_memberships_output() :: #{
-%%   <<"membershipSummaries">> := list(membership_summary()()),
+%%   <<"membershipSummaries">> := list(membership_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_memberships_output() :: #{binary() => any()}.
@@ -667,7 +667,7 @@
 
 %% Example:
 %% analysis_template_validation_status_detail() :: #{
-%%   <<"reasons">> => list(analysis_template_validation_status_reason()()),
+%%   <<"reasons">> => list(analysis_template_validation_status_reason()),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
@@ -677,14 +677,14 @@
 %% Example:
 %% list_protected_queries_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"protectedQueries">> := list(protected_query_summary()())
+%%   <<"protectedQueries">> := list(protected_query_summary())
 %% }
 -type list_protected_queries_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% protected_query_distribute_output() :: #{
-%%   <<"memberList">> => list(protected_query_single_member_output()()),
+%%   <<"memberList">> => list(protected_query_single_member_output()),
 %%   <<"s3">> => protected_query_s3_output()
 %% }
 -type protected_query_distribute_output() :: #{binary() => any()}.
@@ -708,7 +708,7 @@
 
 %% Example:
 %% differential_privacy_parameters() :: #{
-%%   <<"sensitivityParameters">> => list(differential_privacy_sensitivity_parameters()())
+%%   <<"sensitivityParameters">> => list(differential_privacy_sensitivity_parameters())
 %% }
 -type differential_privacy_parameters() :: #{binary() => any()}.
 
@@ -790,20 +790,20 @@
 %% Example:
 %% analysis_rule_aggregation() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
-%%   <<"aggregateColumns">> => list(aggregate_column()()),
-%%   <<"allowedJoinOperators">> => list(string()()),
-%%   <<"dimensionColumns">> => list(string()()),
-%%   <<"joinColumns">> => list(string()()),
+%%   <<"aggregateColumns">> => list(aggregate_column()),
+%%   <<"allowedJoinOperators">> => list(string()),
+%%   <<"dimensionColumns">> => list(string()),
+%%   <<"joinColumns">> => list(string()),
 %%   <<"joinRequired">> => string(),
-%%   <<"outputConstraints">> => list(aggregation_constraint()()),
-%%   <<"scalarFunctions">> => list(string()())
+%%   <<"outputConstraints">> => list(aggregation_constraint()),
+%%   <<"scalarFunctions">> => list(string())
 %% }
 -type analysis_rule_aggregation() :: #{binary() => any()}.
 
 
 %% Example:
 %% differential_privacy_privacy_budget() :: #{
-%%   <<"aggregations">> => list(differential_privacy_privacy_budget_aggregation()()),
+%%   <<"aggregations">> => list(differential_privacy_privacy_budget_aggregation()),
 %%   <<"epsilon">> => integer()
 %% }
 -type differential_privacy_privacy_budget() :: #{binary() => any()}.
@@ -826,7 +826,7 @@
 
 %% Example:
 %% analysis_schema() :: #{
-%%   <<"referencedTables">> => list(string()())
+%%   <<"referencedTables">> => list(string())
 %% }
 -type analysis_schema() :: #{binary() => any()}.
 
@@ -884,7 +884,7 @@
 %%   <<"analysisRuleType">> => list(any()),
 %%   <<"analysisType">> => list(any()),
 %%   <<"configurations">> => list(list(any())()),
-%%   <<"reasons">> => list(schema_status_reason()()),
+%%   <<"reasons">> => list(schema_status_reason()),
 %%   <<"status">> => list(any())
 %% }
 -type schema_status_detail() :: #{binary() => any()}.
@@ -959,7 +959,7 @@
 
 %% Example:
 %% id_mapping_table_schema_type_properties() :: #{
-%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source()())
+%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source())
 %% }
 -type id_mapping_table_schema_type_properties() :: #{binary() => any()}.
 
@@ -983,7 +983,7 @@
 %% Example:
 %% list_schemas_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"schemaSummaries">> := list(schema_summary()())
+%%   <<"schemaSummaries">> := list(schema_summary())
 %% }
 -type list_schemas_output() :: #{binary() => any()}.
 
@@ -995,11 +995,11 @@
 %% Example:
 %% consolidated_policy_list() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
-%%   <<"allowedAdditionalAnalyses">> => list(string()()),
-%%   <<"allowedJoinOperators">> => list(string()()),
-%%   <<"allowedResultReceivers">> => list(string()()),
-%%   <<"joinColumns">> => list(string()()),
-%%   <<"listColumns">> => list(string()())
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedJoinOperators">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"joinColumns">> => list(string()),
+%%   <<"listColumns">> => list(string())
 %% }
 -type consolidated_policy_list() :: #{binary() => any()}.
 
@@ -1026,10 +1026,10 @@
 %% Example:
 %% analysis_rule_custom() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
-%%   <<"allowedAnalyses">> => list(string()()),
-%%   <<"allowedAnalysisProviders">> => list(string()()),
+%%   <<"allowedAnalyses">> => list(string()),
+%%   <<"allowedAnalysisProviders">> => list(string()),
 %%   <<"differentialPrivacy">> => differential_privacy_configuration(),
-%%   <<"disallowedOutputColumns">> => list(string()())
+%%   <<"disallowedOutputColumns">> => list(string())
 %% }
 -type analysis_rule_custom() :: #{binary() => any()}.
 
@@ -1124,8 +1124,8 @@
 
 %% Example:
 %% configured_table_association_analysis_rule_custom() :: #{
-%%   <<"allowedAdditionalAnalyses">> => list(string()()),
-%%   <<"allowedResultReceivers">> => list(string()())
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string())
 %% }
 -type configured_table_association_analysis_rule_custom() :: #{binary() => any()}.
 
@@ -1151,7 +1151,7 @@
 
 %% Example:
 %% list_configured_audience_model_associations_output() :: #{
-%%   <<"configuredAudienceModelAssociationSummaries">> => list(configured_audience_model_association_summary()()),
+%%   <<"configuredAudienceModelAssociationSummaries">> => list(configured_audience_model_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_audience_model_associations_output() :: #{binary() => any()}.
@@ -1160,19 +1160,19 @@
 %% Example:
 %% consolidated_policy_custom() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
-%%   <<"allowedAdditionalAnalyses">> => list(string()()),
-%%   <<"allowedAnalyses">> => list(string()()),
-%%   <<"allowedAnalysisProviders">> => list(string()()),
-%%   <<"allowedResultReceivers">> => list(string()()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedAnalyses">> => list(string()),
+%%   <<"allowedAnalysisProviders">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string()),
 %%   <<"differentialPrivacy">> => differential_privacy_configuration(),
-%%   <<"disallowedOutputColumns">> => list(string()())
+%%   <<"disallowedOutputColumns">> => list(string())
 %% }
 -type consolidated_policy_custom() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_collaboration_privacy_budget_templates_output() :: #{
-%%   <<"collaborationPrivacyBudgetTemplateSummaries">> => list(collaboration_privacy_budget_template_summary()()),
+%%   <<"collaborationPrivacyBudgetTemplateSummaries">> => list(collaboration_privacy_budget_template_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_privacy_budget_templates_output() :: #{binary() => any()}.
@@ -1225,7 +1225,7 @@
 
 %% Example:
 %% query_constraint_require_overlap() :: #{
-%%   <<"columns">> => list(string()())
+%%   <<"columns">> => list(string())
 %% }
 -type query_constraint_require_overlap() :: #{binary() => any()}.
 
@@ -1301,8 +1301,8 @@
 
 %% Example:
 %% batch_get_schema_analysis_rule_output() :: #{
-%%   <<"analysisRules">> => list(analysis_rule()()),
-%%   <<"errors">> => list(batch_get_schema_analysis_rule_error()())
+%%   <<"analysisRules">> => list(analysis_rule()),
+%%   <<"errors">> => list(batch_get_schema_analysis_rule_error())
 %% }
 -type batch_get_schema_analysis_rule_output() :: #{binary() => any()}.
 
@@ -1321,7 +1321,7 @@
 %%   <<"id">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),
-%%   <<"receiverConfigurations">> => list(protected_job_receiver_configuration()()),
+%%   <<"receiverConfigurations">> => list(protected_job_receiver_configuration()),
 %%   <<"status">> => list(any())
 %% }
 -type protected_job_summary() :: #{binary() => any()}.
@@ -1440,8 +1440,8 @@
 
 %% Example:
 %% configured_table_association_analysis_rule_aggregation() :: #{
-%%   <<"allowedAdditionalAnalyses">> => list(string()()),
-%%   <<"allowedResultReceivers">> => list(string()())
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string())
 %% }
 -type configured_table_association_analysis_rule_aggregation() :: #{binary() => any()}.
 
@@ -1493,8 +1493,8 @@
 
 %% Example:
 %% batch_get_schema_output() :: #{
-%%   <<"errors">> := list(batch_get_schema_error()()),
-%%   <<"schemas">> := list(schema()())
+%%   <<"errors">> := list(batch_get_schema_error()),
+%%   <<"schemas">> := list(schema())
 %% }
 -type batch_get_schema_output() :: #{binary() => any()}.
 
@@ -1522,13 +1522,13 @@
 %%   <<"analysisRuleTypes">> => list(list(any())()),
 %%   <<"collaborationArn">> => string(),
 %%   <<"collaborationId">> => string(),
-%%   <<"columns">> => list(column()()),
+%%   <<"columns">> => list(column()),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"partitionKeys">> => list(column()()),
-%%   <<"schemaStatusDetails">> => list(schema_status_detail()()),
+%%   <<"partitionKeys">> => list(column()),
+%%   <<"schemaStatusDetails">> => list(schema_status_detail()),
 %%   <<"schemaTypeProperties">> => list(),
 %%   <<"selectedAnalysisMethods">> => list(list(any())()),
 %%   <<"type">> => list(any()),
@@ -1582,7 +1582,7 @@
 
 %% Example:
 %% list_collaboration_configured_audience_model_associations_output() :: #{
-%%   <<"collaborationConfiguredAudienceModelAssociationSummaries">> => list(collaboration_configured_audience_model_association_summary()()),
+%%   <<"collaborationConfiguredAudienceModelAssociationSummaries">> => list(collaboration_configured_audience_model_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_configured_audience_model_associations_output() :: #{binary() => any()}.
@@ -1595,7 +1595,7 @@
 %% Example:
 %% list_privacy_budget_templates_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"privacyBudgetTemplateSummaries">> => list(privacy_budget_template_summary()())
+%%   <<"privacyBudgetTemplateSummaries">> => list(privacy_budget_template_summary())
 %% }
 -type list_privacy_budget_templates_output() :: #{binary() => any()}.
 
@@ -1610,9 +1610,9 @@
 %% Example:
 %% analysis_rule_list() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
-%%   <<"allowedJoinOperators">> => list(string()()),
-%%   <<"joinColumns">> => list(string()()),
-%%   <<"listColumns">> => list(string()())
+%%   <<"allowedJoinOperators">> => list(string()),
+%%   <<"joinColumns">> => list(string()),
+%%   <<"listColumns">> => list(string())
 %% }
 -type analysis_rule_list() :: #{binary() => any()}.
 
@@ -1668,16 +1668,16 @@
 
 %% Example:
 %% analysis_rule_id_mapping_table() :: #{
-%%   <<"dimensionColumns">> => list(string()()),
-%%   <<"joinColumns">> => list(string()()),
-%%   <<"queryConstraints">> => list(list()())
+%%   <<"dimensionColumns">> => list(string()),
+%%   <<"joinColumns">> => list(string()),
+%%   <<"queryConstraints">> => list(list())
 %% }
 -type analysis_rule_id_mapping_table() :: #{binary() => any()}.
 
 
 %% Example:
 %% protected_job_direct_analysis_configuration_details() :: #{
-%%   <<"receiverAccountIds">> => list(string()())
+%%   <<"receiverAccountIds">> => list(string())
 %% }
 -type protected_job_direct_analysis_configuration_details() :: #{binary() => any()}.
 
@@ -1777,7 +1777,7 @@
 
 %% Example:
 %% differential_privacy_privacy_impact() :: #{
-%%   <<"aggregations">> => list(differential_privacy_preview_aggregation()())
+%%   <<"aggregations">> => list(differential_privacy_preview_aggregation())
 %% }
 -type differential_privacy_privacy_impact() :: #{binary() => any()}.
 
@@ -1824,7 +1824,7 @@
 %%   <<"dataEncryptionMetadata">> => data_encryption_metadata(),
 %%   <<"description">> := string(),
 %%   <<"jobLogStatus">> => list(any()),
-%%   <<"members">> := list(member_specification()()),
+%%   <<"members">> := list(member_specification()),
 %%   <<"name">> := string(),
 %%   <<"queryLogStatus">> := list(any()),
 %%   <<"tags">> => map()
@@ -1903,7 +1903,7 @@
 
 %% Example:
 %% list_collaboration_privacy_budgets_output() :: #{
-%%   <<"collaborationPrivacyBudgetSummaries">> => list(collaboration_privacy_budget_summary()()),
+%%   <<"collaborationPrivacyBudgetSummaries">> => list(collaboration_privacy_budget_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_privacy_budgets_output() :: #{binary() => any()}.
@@ -1934,7 +1934,7 @@
 
 %% Example:
 %% analysis_template_artifact_metadata() :: #{
-%%   <<"additionalArtifactHashes">> => list(hash()()),
+%%   <<"additionalArtifactHashes">> => list(hash()),
 %%   <<"entryPointHash">> => hash()
 %% }
 -type analysis_template_artifact_metadata() :: #{binary() => any()}.
@@ -1942,7 +1942,7 @@
 
 %% Example:
 %% list_id_namespace_associations_output() :: #{
-%%   <<"idNamespaceAssociationSummaries">> => list(id_namespace_association_summary()()),
+%%   <<"idNamespaceAssociationSummaries">> => list(id_namespace_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_id_namespace_associations_output() :: #{binary() => any()}.
@@ -2030,28 +2030,28 @@
 
 %% Example:
 %% differential_privacy_configuration() :: #{
-%%   <<"columns">> => list(differential_privacy_column()())
+%%   <<"columns">> => list(differential_privacy_column())
 %% }
 -type differential_privacy_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% direct_analysis_configuration_details() :: #{
-%%   <<"receiverAccountIds">> => list(string()())
+%%   <<"receiverAccountIds">> => list(string())
 %% }
 -type direct_analysis_configuration_details() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_schema_analysis_rule_input() :: #{
-%%   <<"schemaAnalysisRuleRequests">> := list(schema_analysis_rule_request()())
+%%   <<"schemaAnalysisRuleRequests">> := list(schema_analysis_rule_request())
 %% }
 -type batch_get_schema_analysis_rule_input() :: #{binary() => any()}.
 
@@ -2072,7 +2072,7 @@
 
 %% Example:
 %% analysis_template() :: #{
-%%   <<"analysisParameters">> => list(analysis_parameter()()),
+%%   <<"analysisParameters">> => list(analysis_parameter()),
 %%   <<"arn">> => string(),
 %%   <<"collaborationArn">> => string(),
 %%   <<"collaborationId">> => string(),
@@ -2087,7 +2087,7 @@
 %%   <<"source">> => list(),
 %%   <<"sourceMetadata">> => list(),
 %%   <<"updateTime">> => [non_neg_integer()],
-%%   <<"validations">> => list(analysis_template_validation_status_detail()())
+%%   <<"validations">> => list(analysis_template_validation_status_detail())
 %% }
 -type analysis_template() :: #{binary() => any()}.
 
@@ -2129,8 +2129,8 @@
 
 %% Example:
 %% configured_table_association_analysis_rule_list() :: #{
-%%   <<"allowedAdditionalAnalyses">> => list(string()()),
-%%   <<"allowedResultReceivers">> => list(string()())
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string())
 %% }
 -type configured_table_association_analysis_rule_list() :: #{binary() => any()}.
 
@@ -2167,7 +2167,7 @@
 
 %% Example:
 %% list_collaborations_output() :: #{
-%%   <<"collaborationList">> := list(collaboration_summary()()),
+%%   <<"collaborationList">> := list(collaboration_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaborations_output() :: #{binary() => any()}.
@@ -2209,7 +2209,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => string()
 %% }
@@ -2269,7 +2269,7 @@
 %% Example:
 %% list_protected_jobs_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"protectedJobs">> => list(protected_job_summary()())
+%%   <<"protectedJobs">> => list(protected_job_summary())
 %% }
 -type list_protected_jobs_output() :: #{binary() => any()}.
 
@@ -2418,15 +2418,15 @@
 
 %% Example:
 %% batch_get_collaboration_analysis_template_output() :: #{
-%%   <<"collaborationAnalysisTemplates">> := list(collaboration_analysis_template()()),
-%%   <<"errors">> := list(batch_get_collaboration_analysis_template_error()())
+%%   <<"collaborationAnalysisTemplates">> := list(collaboration_analysis_template()),
+%%   <<"errors">> := list(batch_get_collaboration_analysis_template_error())
 %% }
 -type batch_get_collaboration_analysis_template_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_schema_input() :: #{
-%%   <<"names">> := list(string()())
+%%   <<"names">> := list(string())
 %% }
 -type batch_get_schema_input() :: #{binary() => any()}.
 
@@ -2481,15 +2481,15 @@
 %% Example:
 %% consolidated_policy_aggregation() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
-%%   <<"aggregateColumns">> => list(aggregate_column()()),
-%%   <<"allowedAdditionalAnalyses">> => list(string()()),
-%%   <<"allowedJoinOperators">> => list(string()()),
-%%   <<"allowedResultReceivers">> => list(string()()),
-%%   <<"dimensionColumns">> => list(string()()),
-%%   <<"joinColumns">> => list(string()()),
+%%   <<"aggregateColumns">> => list(aggregate_column()),
+%%   <<"allowedAdditionalAnalyses">> => list(string()),
+%%   <<"allowedJoinOperators">> => list(string()),
+%%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"dimensionColumns">> => list(string()),
+%%   <<"joinColumns">> => list(string()),
 %%   <<"joinRequired">> => string(),
-%%   <<"outputConstraints">> => list(aggregation_constraint()()),
-%%   <<"scalarFunctions">> => list(string()())
+%%   <<"outputConstraints">> => list(aggregation_constraint()),
+%%   <<"scalarFunctions">> => list(string())
 %% }
 -type consolidated_policy_aggregation() :: #{binary() => any()}.
 
@@ -2556,7 +2556,7 @@
 
 %% Example:
 %% configured_table() :: #{
-%%   <<"allowedColumns">> => list(string()()),
+%%   <<"allowedColumns">> => list(string()),
 %%   <<"analysisMethod">> => list(any()),
 %%   <<"analysisRuleTypes">> => list(list(any())()),
 %%   <<"arn">> => string(),
@@ -2622,7 +2622,7 @@
 
 %% Example:
 %% aggregate_column() :: #{
-%%   <<"columnNames">> => list(string()()),
+%%   <<"columnNames">> => list(string()),
 %%   <<"function">> => string()
 %% }
 -type aggregate_column() :: #{binary() => any()}.
@@ -2634,7 +2634,7 @@
 
 %% Example:
 %% create_analysis_template_input() :: #{
-%%   <<"analysisParameters">> => list(analysis_parameter()()),
+%%   <<"analysisParameters">> => list(analysis_parameter()),
 %%   <<"description">> => string(),
 %%   <<"format">> := list(any()),
 %%   <<"name">> := string(),
@@ -2655,7 +2655,7 @@
 
 %% Example:
 %% list_configured_tables_output() :: #{
-%%   <<"configuredTableSummaries">> := list(configured_table_summary()()),
+%%   <<"configuredTableSummaries">> := list(configured_table_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_tables_output() :: #{binary() => any()}.
@@ -2774,7 +2774,7 @@
 
 %% Example:
 %% id_mapping_table_input_reference_properties() :: #{
-%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source()())
+%%   <<"idMappingTableInputSource">> => list(id_mapping_table_input_source())
 %% }
 -type id_mapping_table_input_reference_properties() :: #{binary() => any()}.
 
@@ -2873,7 +2873,7 @@
 
 %% Example:
 %% list_id_mapping_tables_output() :: #{
-%%   <<"idMappingTableSummaries">> => list(id_mapping_table_summary()()),
+%%   <<"idMappingTableSummaries">> => list(id_mapping_table_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_id_mapping_tables_output() :: #{binary() => any()}.
@@ -2888,7 +2888,7 @@
 
 %% Example:
 %% list_collaboration_id_namespace_associations_output() :: #{
-%%   <<"collaborationIdNamespaceAssociationSummaries">> => list(collaboration_id_namespace_association_summary()()),
+%%   <<"collaborationIdNamespaceAssociationSummaries">> => list(collaboration_id_namespace_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_id_namespace_associations_output() :: #{binary() => any()}.
@@ -2897,7 +2897,7 @@
 %% Example:
 %% list_privacy_budgets_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"privacyBudgetSummaries">> => list(privacy_budget_summary()())
+%%   <<"privacyBudgetSummaries">> => list(privacy_budget_summary())
 %% }
 -type list_privacy_budgets_output() :: #{binary() => any()}.
 

@@ -203,7 +203,7 @@
 
 %% Example:
 %% list_signing_jobs_response() :: #{
-%%   <<"jobs">> => list(signing_job()()),
+%%   <<"jobs">> => list(signing_job()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_signing_jobs_response() :: #{binary() => any()}.
@@ -230,7 +230,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -337,7 +337,7 @@
 
 %% Example:
 %% get_revocation_status_response() :: #{
-%%   <<"revokedEntities">> => list(string()())
+%%   <<"revokedEntities">> => list(string())
 %% }
 -type get_revocation_status_response() :: #{binary() => any()}.
 
@@ -384,7 +384,7 @@
 
 %% Example:
 %% get_revocation_status_request() :: #{
-%%   <<"certificateHashes">> := list(string()()),
+%%   <<"certificateHashes">> := list(string()),
 %%   <<"jobArn">> := string(),
 %%   <<"platformId">> := string(),
 %%   <<"profileVersionArn">> := string(),
@@ -396,7 +396,7 @@
 %% Example:
 %% list_profile_permissions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"permissions">> => list(permission()()),
+%%   <<"permissions">> => list(permission()),
 %%   <<"policySizeBytes">> => integer(),
 %%   <<"revisionId">> => string()
 %% }
@@ -608,7 +608,7 @@
 %% Example:
 %% list_signing_profiles_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"profiles">> => list(signing_profile()())
+%%   <<"profiles">> => list(signing_profile())
 %% }
 -type list_signing_profiles_response() :: #{binary() => any()}.
 
@@ -652,7 +652,7 @@
 %% Example:
 %% list_signing_platforms_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"platforms">> => list(signing_platform()())
+%%   <<"platforms">> => list(signing_platform())
 %% }
 -type list_signing_platforms_response() :: #{binary() => any()}.
 

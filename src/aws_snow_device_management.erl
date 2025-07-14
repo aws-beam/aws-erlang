@@ -55,7 +55,7 @@
 
 %% Example:
 %% list_devices_output() :: #{
-%%   <<"devices">> => list(device_summary()()),
+%%   <<"devices">> => list(device_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_devices_output() :: #{binary() => any()}.
@@ -63,7 +63,7 @@
 
 %% Example:
 %% list_executions_output() :: #{
-%%   <<"executions">> => list(execution_summary()()),
+%%   <<"executions">> => list(execution_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_executions_output() :: #{binary() => any()}.
@@ -71,7 +71,7 @@
 
 %% Example:
 %% describe_device_ec2_output() :: #{
-%%   <<"instances">> => list(instance_summary()())
+%%   <<"instances">> => list(instance_summary())
 %% }
 -type describe_device_ec2_output() :: #{binary() => any()}.
 
@@ -180,7 +180,7 @@
 %% Example:
 %% list_tasks_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(task_summary()())
+%%   <<"tasks">> => list(task_summary())
 %% }
 -type list_tasks_output() :: #{binary() => any()}.
 
@@ -202,14 +202,14 @@
 %% Example:
 %% describe_device_output() :: #{
 %%   <<"associatedWithJob">> => [string()],
-%%   <<"deviceCapacities">> => list(capacity()()),
+%%   <<"deviceCapacities">> => list(capacity()),
 %%   <<"deviceState">> => string(),
 %%   <<"deviceType">> => [string()],
 %%   <<"lastReachedOutAt">> => [non_neg_integer()],
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"managedDeviceArn">> => [string()],
 %%   <<"managedDeviceId">> => string(),
-%%   <<"physicalNetworkInterfaces">> => list(physical_network_interface()()),
+%%   <<"physicalNetworkInterfaces">> => list(physical_network_interface()),
 %%   <<"software">> => software_information(),
 %%   <<"tags">> => map()
 %% }
@@ -288,7 +288,7 @@
 %% Example:
 %% instance() :: #{
 %%   <<"amiLaunchIndex">> => [integer()],
-%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()()),
+%%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"cpuOptions">> => cpu_options(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"imageId">> => [string()],
@@ -297,7 +297,7 @@
 %%   <<"privateIpAddress">> => [string()],
 %%   <<"publicIpAddress">> => [string()],
 %%   <<"rootDeviceName">> => [string()],
-%%   <<"securityGroups">> => list(security_group_identifier()()),
+%%   <<"securityGroups">> => list(security_group_identifier()),
 %%   <<"state">> => instance_state(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
@@ -325,7 +325,7 @@
 %% Example:
 %% list_device_resources_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resource_summary()())
+%%   <<"resources">> => list(resource_summary())
 %% }
 -type list_device_resources_output() :: #{binary() => any()}.
 

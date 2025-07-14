@@ -96,17 +96,17 @@
 %%   <<"BillingPrivacy">> => boolean(),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"DnsSec">> => string(),
-%%   <<"DnssecKeys">> => list(dnssec_key()()),
+%%   <<"DnssecKeys">> => list(dnssec_key()),
 %%   <<"DomainName">> => string(),
 %%   <<"ExpirationDate">> => non_neg_integer(),
-%%   <<"Nameservers">> => list(nameserver()()),
+%%   <<"Nameservers">> => list(nameserver()),
 %%   <<"RegistrantContact">> => contact_detail(),
 %%   <<"RegistrantPrivacy">> => boolean(),
 %%   <<"RegistrarName">> => string(),
 %%   <<"RegistrarUrl">> => string(),
 %%   <<"RegistryDomainId">> => string(),
 %%   <<"Reseller">> => string(),
-%%   <<"StatusList">> => list(string()()),
+%%   <<"StatusList">> => list(string()),
 %%   <<"TechContact">> => contact_detail(),
 %%   <<"TechPrivacy">> => boolean(),
 %%   <<"UpdatedDate">> => non_neg_integer(),
@@ -167,7 +167,7 @@
 %% filter_condition() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter_condition() :: #{binary() => any()}.
 
@@ -185,7 +185,7 @@
 
 %% Example:
 %% nameserver() :: #{
-%%   <<"GlueIps">> => list(string()()),
+%%   <<"GlueIps">> => list(string()),
 %%   <<"Name">> => string()
 %% }
 -type nameserver() :: #{binary() => any()}.
@@ -193,7 +193,7 @@
 %% Example:
 %% list_prices_response() :: #{
 %%   <<"NextPageMarker">> => string(),
-%%   <<"Prices">> => list(domain_price()())
+%%   <<"Prices">> => list(domain_price())
 %% }
 -type list_prices_response() :: #{binary() => any()}.
 
@@ -249,7 +249,7 @@
 %%   <<"ContactType">> => list(any()),
 %%   <<"CountryCode">> => list(any()),
 %%   <<"Email">> => string(),
-%%   <<"ExtraParams">> => list(extra_param()()),
+%%   <<"ExtraParams">> => list(extra_param()),
 %%   <<"Fax">> => string(),
 %%   <<"FirstName">> => string(),
 %%   <<"LastName">> => string(),
@@ -262,7 +262,7 @@
 
 %% Example:
 %% list_tags_for_domain_response() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_for_domain_response() :: #{binary() => any()}.
 
@@ -300,7 +300,7 @@
 %% update_domain_nameservers_request() :: #{
 %%   <<"DomainName">> := string(),
 %%   <<"FIAuthKey">> => string(),
-%%   <<"Nameservers">> := list(nameserver()())
+%%   <<"Nameservers">> := list(nameserver())
 %% }
 -type update_domain_nameservers_request() :: #{binary() => any()}.
 
@@ -357,7 +357,7 @@
 
 %% Example:
 %% get_domain_suggestions_response() :: #{
-%%   <<"SuggestionsList">> => list(domain_suggestion()())
+%%   <<"SuggestionsList">> => list(domain_suggestion())
 %% }
 -type get_domain_suggestions_response() :: #{binary() => any()}.
 
@@ -376,7 +376,7 @@
 %%   <<"DomainName">> := string(),
 %%   <<"DurationInYears">> := integer(),
 %%   <<"IdnLangCode">> => string(),
-%%   <<"Nameservers">> => list(nameserver()()),
+%%   <<"Nameservers">> => list(nameserver()),
 %%   <<"PrivacyProtectAdminContact">> => boolean(),
 %%   <<"PrivacyProtectBillingContact">> => boolean(),
 %%   <<"PrivacyProtectRegistrantContact">> => boolean(),
@@ -407,7 +407,7 @@
 
 %% Example:
 %% view_billing_response() :: #{
-%%   <<"BillingRecords">> => list(billing_record()()),
+%%   <<"BillingRecords">> => list(billing_record()),
 %%   <<"NextPageMarker">> => string()
 %% }
 -type view_billing_response() :: #{binary() => any()}.
@@ -437,7 +437,7 @@
 %% Example:
 %% update_tags_for_domain_request() :: #{
 %%   <<"DomainName">> := string(),
-%%   <<"TagsToUpdate">> => list(tag()())
+%%   <<"TagsToUpdate">> => list(tag())
 %% }
 -type update_tags_for_domain_request() :: #{binary() => any()}.
 
@@ -504,7 +504,7 @@
 
 %% Example:
 %% list_domains_response() :: #{
-%%   <<"Domains">> => list(domain_summary()()),
+%%   <<"Domains">> => list(domain_summary()),
 %%   <<"NextPageMarker">> => string()
 %% }
 -type list_domains_response() :: #{binary() => any()}.
@@ -581,7 +581,7 @@
 
 %% Example:
 %% list_domains_request() :: #{
-%%   <<"FilterConditions">> => list(filter_condition()()),
+%%   <<"FilterConditions">> => list(filter_condition()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"SortCondition">> => sort_condition()
@@ -609,7 +609,7 @@
 %% Example:
 %% list_operations_response() :: #{
 %%   <<"NextPageMarker">> => string(),
-%%   <<"Operations">> => list(operation_summary()())
+%%   <<"Operations">> => list(operation_summary())
 %% }
 -type list_operations_response() :: #{binary() => any()}.
 
@@ -659,7 +659,7 @@
 %% Example:
 %% delete_tags_for_domain_request() :: #{
 %%   <<"DomainName">> := string(),
-%%   <<"TagsToDelete">> := list(string()())
+%%   <<"TagsToDelete">> := list(string())
 %% }
 -type delete_tags_for_domain_request() :: #{binary() => any()}.
 

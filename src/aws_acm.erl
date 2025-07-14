@@ -108,7 +108,7 @@
 
 %% Example:
 %% renewal_summary() :: #{
-%%   <<"DomainValidationOptions">> => list(domain_validation()()),
+%%   <<"DomainValidationOptions">> => list(domain_validation()),
 %%   <<"RenewalStatus">> => list(any()),
 %%   <<"RenewalStatusReason">> => list(any()),
 %%   <<"UpdatedAt">> => non_neg_integer()
@@ -143,13 +143,13 @@
 %% request_certificate_request() :: #{
 %%   <<"CertificateAuthorityArn">> => string(),
 %%   <<"DomainName">> := string(),
-%%   <<"DomainValidationOptions">> => list(domain_validation_option()()),
+%%   <<"DomainValidationOptions">> => list(domain_validation_option()),
 %%   <<"IdempotencyToken">> => string(),
 %%   <<"KeyAlgorithm">> => list(any()),
 %%   <<"ManagedBy">> => list(any()),
 %%   <<"Options">> => certificate_options(),
-%%   <<"SubjectAlternativeNames">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubjectAlternativeNames">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"ValidationMethod">> => list(any())
 %% }
 -type request_certificate_request() :: #{binary() => any()}.
@@ -157,7 +157,7 @@
 %% Example:
 %% remove_tags_from_certificate_request() :: #{
 %%   <<"CertificateArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type remove_tags_from_certificate_request() :: #{binary() => any()}.
 
@@ -193,7 +193,7 @@
 %%   <<"RenewalEligibility">> => list(any()),
 %%   <<"RevokedAt">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"SubjectAlternativeNameSummaries">> => list(string()()),
+%%   <<"SubjectAlternativeNameSummaries">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type certificate_summary() :: #{binary() => any()}.
@@ -283,7 +283,7 @@
 
 %% Example:
 %% list_tags_for_certificate_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_certificate_response() :: #{binary() => any()}.
 
@@ -296,7 +296,7 @@
 %% Example:
 %% add_tags_to_certificate_request() :: #{
 %%   <<"CertificateArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_to_certificate_request() :: #{binary() => any()}.
 
@@ -306,7 +306,7 @@
 %%   <<"CertificateArn">> => string(),
 %%   <<"CertificateChain">> => binary(),
 %%   <<"PrivateKey">> := binary(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_certificate_request() :: #{binary() => any()}.
 
@@ -375,7 +375,7 @@
 %%   <<"HttpRedirect">> => http_redirect(),
 %%   <<"ResourceRecord">> => resource_record(),
 %%   <<"ValidationDomain">> => string(),
-%%   <<"ValidationEmails">> => list(string()()),
+%%   <<"ValidationEmails">> => list(string()),
 %%   <<"ValidationMethod">> => list(any()),
 %%   <<"ValidationStatus">> => list(any())
 %% }
@@ -422,7 +422,7 @@
 
 %% Example:
 %% list_certificates_response() :: #{
-%%   <<"CertificateSummaryList">> => list(certificate_summary()()),
+%%   <<"CertificateSummaryList">> => list(certificate_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_certificates_response() :: #{binary() => any()}.
@@ -433,15 +433,15 @@
 %%   <<"CertificateAuthorityArn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
-%%   <<"DomainValidationOptions">> => list(domain_validation()()),
-%%   <<"ExtendedKeyUsages">> => list(extended_key_usage()()),
+%%   <<"DomainValidationOptions">> => list(domain_validation()),
+%%   <<"ExtendedKeyUsages">> => list(extended_key_usage()),
 %%   <<"FailureReason">> => list(any()),
 %%   <<"ImportedAt">> => non_neg_integer(),
-%%   <<"InUseBy">> => list(string()()),
+%%   <<"InUseBy">> => list(string()),
 %%   <<"IssuedAt">> => non_neg_integer(),
 %%   <<"Issuer">> => string(),
 %%   <<"KeyAlgorithm">> => list(any()),
-%%   <<"KeyUsages">> => list(key_usage()()),
+%%   <<"KeyUsages">> => list(key_usage()),
 %%   <<"ManagedBy">> => list(any()),
 %%   <<"NotAfter">> => non_neg_integer(),
 %%   <<"NotBefore">> => non_neg_integer(),
@@ -454,7 +454,7 @@
 %%   <<"SignatureAlgorithm">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"Subject">> => string(),
-%%   <<"SubjectAlternativeNames">> => list(string()()),
+%%   <<"SubjectAlternativeNames">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type certificate_detail() :: #{binary() => any()}.

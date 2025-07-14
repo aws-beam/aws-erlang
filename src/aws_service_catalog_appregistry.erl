@@ -107,7 +107,7 @@
 %% Example:
 %% list_associated_resources_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resource_info()())
+%%   <<"resources">> => list(resource_info())
 %% }
 -type list_associated_resources_response() :: #{binary() => any()}.
 
@@ -117,14 +117,14 @@
 %%   <<"applicationTagStatus">> => list(any()),
 %%   <<"errorMessage">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"resources">> => list(resources_list_item()())
+%%   <<"resources">> => list(resources_list_item())
 %% }
 -type application_tag_result() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -154,7 +154,7 @@
 
 %% Example:
 %% list_associated_attribute_groups_response() :: #{
-%%   <<"attributeGroups">> => list(string()()),
+%%   <<"attributeGroups">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_associated_attribute_groups_response() :: #{binary() => any()}.
@@ -171,7 +171,7 @@
 
 %% Example:
 %% list_attribute_groups_response() :: #{
-%%   <<"attributeGroups">> => list(attribute_group_summary()()),
+%%   <<"attributeGroups">> => list(attribute_group_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_attribute_groups_response() :: #{binary() => any()}.
@@ -431,7 +431,7 @@
 
 %% Example:
 %% list_attribute_groups_for_application_response() :: #{
-%%   <<"attributeGroupsDetails">> => list(attribute_group_details()()),
+%%   <<"attributeGroupsDetails">> => list(attribute_group_details()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_attribute_groups_for_application_response() :: #{binary() => any()}.
@@ -514,7 +514,7 @@
 
 %% Example:
 %% list_applications_response() :: #{
-%%   <<"applications">> => list(application_summary()()),
+%%   <<"applications">> => list(application_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_applications_response() :: #{binary() => any()}.

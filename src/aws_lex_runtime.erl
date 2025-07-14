@@ -117,7 +117,7 @@
 %% Example:
 %% generic_attachment() :: #{
 %%   <<"attachmentLinkUrl">> => string(),
-%%   <<"buttons">> => list(button()()),
+%%   <<"buttons">> => list(button()),
 %%   <<"imageUrl">> => string(),
 %%   <<"subTitle">> => string(),
 %%   <<"title">> => string()
@@ -134,9 +134,9 @@
 
 %% Example:
 %% get_session_response() :: #{
-%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"activeContexts">> => list(active_context()),
 %%   <<"dialogAction">> => dialog_action(),
-%%   <<"recentIntentSummaryView">> => list(intent_summary()()),
+%%   <<"recentIntentSummaryView">> => list(intent_summary()),
 %%   <<"sessionAttributes">> => map(),
 %%   <<"sessionId">> => string()
 %% }
@@ -237,7 +237,7 @@
 
 %% Example:
 %% post_text_request() :: #{
-%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"activeContexts">> => list(active_context()),
 %%   <<"inputText">> := string(),
 %%   <<"requestAttributes">> => map(),
 %%   <<"sessionAttributes">> => map()
@@ -247,8 +247,8 @@
 
 %% Example:
 %% post_text_response() :: #{
-%%   <<"activeContexts">> => list(active_context()()),
-%%   <<"alternativeIntents">> => list(predicted_intent()()),
+%%   <<"activeContexts">> => list(active_context()),
+%%   <<"alternativeIntents">> => list(predicted_intent()),
 %%   <<"botVersion">> => string(),
 %%   <<"dialogState">> => list(any()),
 %%   <<"intentName">> => string(),
@@ -277,9 +277,9 @@
 %% Example:
 %% put_session_request() :: #{
 %%   <<"accept">> => string(),
-%%   <<"activeContexts">> => list(active_context()()),
+%%   <<"activeContexts">> => list(active_context()),
 %%   <<"dialogAction">> => dialog_action(),
-%%   <<"recentIntentSummaryView">> => list(intent_summary()()),
+%%   <<"recentIntentSummaryView">> => list(intent_summary()),
 %%   <<"sessionAttributes">> => map()
 %% }
 -type put_session_request() :: #{binary() => any()}.
@@ -313,7 +313,7 @@
 %% Example:
 %% response_card() :: #{
 %%   <<"contentType">> => list(any()),
-%%   <<"genericAttachments">> => list(generic_attachment()()),
+%%   <<"genericAttachments">> => list(generic_attachment()),
 %%   <<"version">> => string()
 %% }
 -type response_card() :: #{binary() => any()}.

@@ -129,7 +129,7 @@
 %% Example:
 %% update_location_azure_blob_request() :: #{
 %%   <<"AccessTier">> => list(any()),
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"BlobType">> => list(any()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
@@ -149,8 +149,8 @@
 %% Example:
 %% private_link_config() :: #{
 %%   <<"PrivateLinkEndpoint">> => string(),
-%%   <<"SecurityGroupArns">> => list(string()()),
-%%   <<"SubnetArns">> => list(string()()),
+%%   <<"SecurityGroupArns">> => list(string()),
+%%   <<"SubnetArns">> => list(string()),
 %%   <<"VpcEndpointId">> => string()
 %% }
 -type private_link_config() :: #{binary() => any()}.
@@ -158,7 +158,7 @@
 %% Example:
 %% create_location_object_storage_request() :: #{
 %%   <<"AccessKey">> => string(),
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"BucketName">> := string(),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
@@ -168,7 +168,7 @@
 %%   <<"ServerPort">> => integer(),
 %%   <<"ServerProtocol">> => list(any()),
 %%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type create_location_object_storage_request() :: #{binary() => any()}.
 
@@ -198,7 +198,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag_list_entry()())
+%%   <<"Tags">> := list(tag_list_entry())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -273,7 +273,7 @@
 %%   <<"Domain">> => string(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
-%%   <<"SecurityGroupArns">> => list(string()()),
+%%   <<"SecurityGroupArns">> => list(string()),
 %%   <<"User">> => string()
 %% }
 -type describe_location_fsx_windows_response() :: #{binary() => any()}.
@@ -293,7 +293,7 @@
 
 %% Example:
 %% list_agents_response() :: #{
-%%   <<"Agents">> => list(agent_list_entry()()),
+%%   <<"Agents">> => list(agent_list_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_agents_response() :: #{binary() => any()}.
@@ -309,9 +309,9 @@
 %% create_agent_request() :: #{
 %%   <<"ActivationKey">> := string(),
 %%   <<"AgentName">> => string(),
-%%   <<"SecurityGroupArns">> => list(string()()),
-%%   <<"SubnetArns">> => list(string()()),
-%%   <<"Tags">> => list(tag_list_entry()()),
+%%   <<"SecurityGroupArns">> => list(string()),
+%%   <<"SubnetArns">> => list(string()),
+%%   <<"Tags">> => list(tag_list_entry()),
 %%   <<"VpcEndpointId">> => string()
 %% }
 -type create_agent_request() :: #{binary() => any()}.
@@ -328,7 +328,7 @@
 %%   <<"OnPremConfig">> := on_prem_config(),
 %%   <<"ServerHostname">> := string(),
 %%   <<"Subdirectory">> := string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type create_location_nfs_request() :: #{binary() => any()}.
 
@@ -340,7 +340,7 @@
 
 %% Example:
 %% update_location_hdfs_request() :: #{
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"BlockSize">> => integer(),
 %%   <<"KerberosKeytab">> => binary(),
@@ -348,7 +348,7 @@
 %%   <<"KerberosPrincipal">> => string(),
 %%   <<"KmsKeyProviderUri">> => string(),
 %%   <<"LocationArn">> := string(),
-%%   <<"NameNodes">> => list(hdfs_name_node()()),
+%%   <<"NameNodes">> => list(hdfs_name_node()),
 %%   <<"QopConfiguration">> => qop_configuration(),
 %%   <<"ReplicationFactor">> => integer(),
 %%   <<"SimpleUser">> => string(),
@@ -360,7 +360,7 @@
 %% location_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type location_filter() :: #{binary() => any()}.
 
@@ -368,14 +368,14 @@
 %% create_task_request() :: #{
 %%   <<"CloudWatchLogGroupArn">> => string(),
 %%   <<"DestinationLocationArn">> := string(),
-%%   <<"Excludes">> => list(filter_rule()()),
-%%   <<"Includes">> => list(filter_rule()()),
+%%   <<"Excludes">> => list(filter_rule()),
+%%   <<"Includes">> => list(filter_rule()),
 %%   <<"ManifestConfig">> => manifest_config(),
 %%   <<"Name">> => string(),
 %%   <<"Options">> => options(),
 %%   <<"Schedule">> => task_schedule(),
 %%   <<"SourceLocationArn">> := string(),
-%%   <<"Tags">> => list(tag_list_entry()()),
+%%   <<"Tags">> => list(tag_list_entry()),
 %%   <<"TaskMode">> => list(any()),
 %%   <<"TaskReportConfig">> => task_report_config()
 %% }
@@ -434,7 +434,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
-%%   <<"SecurityGroupArns">> => list(string()())
+%%   <<"SecurityGroupArns">> => list(string())
 %% }
 -type describe_location_fsx_lustre_response() :: #{binary() => any()}.
 
@@ -454,7 +454,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"Keys">> := list(string()()),
+%%   <<"Keys">> := list(string()),
 %%   <<"ResourceArn">> := string()
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
@@ -518,7 +518,7 @@
 %% Example:
 %% create_location_azure_blob_request() :: #{
 %%   <<"AccessTier">> => list(any()),
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> := list(any()),
 %%   <<"BlobType">> => list(any()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
@@ -526,7 +526,7 @@
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"SasConfiguration">> => azure_blob_sas_configuration(),
 %%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type create_location_azure_blob_request() :: #{binary() => any()}.
 
@@ -590,9 +590,9 @@
 
 %% Example:
 %% update_location_smb_request() :: #{
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
-%%   <<"DnsIpAddresses">> => list(string()()),
+%%   <<"DnsIpAddresses">> => list(string()),
 %%   <<"Domain">> => string(),
 %%   <<"KerberosKeytab">> => binary(),
 %%   <<"KerberosKrb5Conf">> => binary(),
@@ -631,7 +631,7 @@
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
 %%   <<"Protocol">> => fsx_protocol(),
-%%   <<"SecurityGroupArns">> => list(string()()),
+%%   <<"SecurityGroupArns">> => list(string()),
 %%   <<"StorageVirtualMachineArn">> => string()
 %% }
 -type describe_location_fsx_ontap_response() :: #{binary() => any()}.
@@ -687,13 +687,13 @@
 %% Example:
 %% list_task_executions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TaskExecutions">> => list(task_execution_list_entry()())
+%%   <<"TaskExecutions">> => list(task_execution_list_entry())
 %% }
 -type list_task_executions_response() :: #{binary() => any()}.
 
 %% Example:
 %% on_prem_config() :: #{
-%%   <<"AgentArns">> => list(string()())
+%%   <<"AgentArns">> => list(string())
 %% }
 -type on_prem_config() :: #{binary() => any()}.
 
@@ -726,10 +726,10 @@
 %% Example:
 %% create_location_fsx_ontap_request() :: #{
 %%   <<"Protocol">> := fsx_protocol(),
-%%   <<"SecurityGroupArns">> := list(string()()),
+%%   <<"SecurityGroupArns">> := list(string()),
 %%   <<"StorageVirtualMachineArn">> := string(),
 %%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type create_location_fsx_ontap_request() :: #{binary() => any()}.
 
@@ -745,18 +745,18 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CurrentTaskExecutionArn">> => string(),
 %%   <<"DestinationLocationArn">> => string(),
-%%   <<"DestinationNetworkInterfaceArns">> => list(string()()),
+%%   <<"DestinationNetworkInterfaceArns">> => list(string()),
 %%   <<"ErrorCode">> => string(),
 %%   <<"ErrorDetail">> => string(),
-%%   <<"Excludes">> => list(filter_rule()()),
-%%   <<"Includes">> => list(filter_rule()()),
+%%   <<"Excludes">> => list(filter_rule()),
+%%   <<"Includes">> => list(filter_rule()),
 %%   <<"ManifestConfig">> => manifest_config(),
 %%   <<"Name">> => string(),
 %%   <<"Options">> => options(),
 %%   <<"Schedule">> => task_schedule(),
 %%   <<"ScheduleDetails">> => task_schedule_details(),
 %%   <<"SourceLocationArn">> => string(),
-%%   <<"SourceNetworkInterfaceArns">> => list(string()()),
+%%   <<"SourceNetworkInterfaceArns">> => list(string()),
 %%   <<"Status">> => list(any()),
 %%   <<"TaskArn">> => string(),
 %%   <<"TaskMode">> => list(any()),
@@ -815,7 +815,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -825,13 +825,13 @@
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
 %%   <<"Protocol">> => fsx_protocol(),
-%%   <<"SecurityGroupArns">> => list(string()())
+%%   <<"SecurityGroupArns">> => list(string())
 %% }
 -type describe_location_fsx_open_zfs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_locations_request() :: #{
-%%   <<"Filters">> => list(location_filter()()),
+%%   <<"Filters">> => list(location_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -839,12 +839,12 @@
 
 %% Example:
 %% create_location_s3_request() :: #{
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"S3BucketArn">> := string(),
 %%   <<"S3Config">> := s3_config(),
 %%   <<"S3StorageClass">> => list(any()),
 %%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type create_location_s3_request() :: #{binary() => any()}.
 
@@ -856,7 +856,7 @@
 %%   <<"FileSystemAccessRoleArn">> => string(),
 %%   <<"InTransitEncryption">> => list(any()),
 %%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type create_location_efs_request() :: #{binary() => any()}.
 
@@ -869,8 +869,8 @@
 %% Example:
 %% update_task_request() :: #{
 %%   <<"CloudWatchLogGroupArn">> => string(),
-%%   <<"Excludes">> => list(filter_rule()()),
-%%   <<"Includes">> => list(filter_rule()()),
+%%   <<"Excludes">> => list(filter_rule()),
+%%   <<"Includes">> => list(filter_rule()),
 %%   <<"ManifestConfig">> => manifest_config(),
 %%   <<"Name">> => string(),
 %%   <<"Options">> => options(),
@@ -909,9 +909,9 @@
 %% create_location_fsx_open_zfs_request() :: #{
 %%   <<"FsxFilesystemArn">> := string(),
 %%   <<"Protocol">> := fsx_protocol(),
-%%   <<"SecurityGroupArns">> := list(string()()),
+%%   <<"SecurityGroupArns">> := list(string()),
 %%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type create_location_fsx_open_zfs_request() :: #{binary() => any()}.
 
@@ -924,7 +924,7 @@
 %%   <<"EstimatedBytesToTransfer">> => float(),
 %%   <<"EstimatedFilesToDelete">> => float(),
 %%   <<"EstimatedFilesToTransfer">> => float(),
-%%   <<"Excludes">> => list(filter_rule()()),
+%%   <<"Excludes">> => list(filter_rule()),
 %%   <<"FilesDeleted">> => float(),
 %%   <<"FilesFailed">> => task_execution_files_failed_detail(),
 %%   <<"FilesListed">> => task_execution_files_listed_detail(),
@@ -932,7 +932,7 @@
 %%   <<"FilesSkipped">> => float(),
 %%   <<"FilesTransferred">> => float(),
 %%   <<"FilesVerified">> => float(),
-%%   <<"Includes">> => list(filter_rule()()),
+%%   <<"Includes">> => list(filter_rule()),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"ManifestConfig">> => manifest_config(),
 %%   <<"Options">> => options(),
@@ -963,9 +963,9 @@
 %%   <<"Domain">> => string(),
 %%   <<"FsxFilesystemArn">> := string(),
 %%   <<"Password">> := string(),
-%%   <<"SecurityGroupArns">> := list(string()()),
+%%   <<"SecurityGroupArns">> := list(string()),
 %%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()()),
+%%   <<"Tags">> => list(tag_list_entry()),
 %%   <<"User">> := string()
 %% }
 -type create_location_fsx_windows_request() :: #{binary() => any()}.
@@ -978,9 +978,9 @@
 
 %% Example:
 %% create_location_smb_request() :: #{
-%%   <<"AgentArns">> := list(string()()),
+%%   <<"AgentArns">> := list(string()),
 %%   <<"AuthenticationType">> => list(any()),
-%%   <<"DnsIpAddresses">> => list(string()()),
+%%   <<"DnsIpAddresses">> => list(string()),
 %%   <<"Domain">> => string(),
 %%   <<"KerberosKeytab">> => binary(),
 %%   <<"KerberosKrb5Conf">> => binary(),
@@ -989,7 +989,7 @@
 %%   <<"Password">> => string(),
 %%   <<"ServerHostname">> := string(),
 %%   <<"Subdirectory">> := string(),
-%%   <<"Tags">> => list(tag_list_entry()()),
+%%   <<"Tags">> => list(tag_list_entry()),
 %%   <<"User">> => string()
 %% }
 -type create_location_smb_request() :: #{binary() => any()}.
@@ -1071,19 +1071,19 @@
 
 %% Example:
 %% create_location_hdfs_request() :: #{
-%%   <<"AgentArns">> := list(string()()),
+%%   <<"AgentArns">> := list(string()),
 %%   <<"AuthenticationType">> := list(any()),
 %%   <<"BlockSize">> => integer(),
 %%   <<"KerberosKeytab">> => binary(),
 %%   <<"KerberosKrb5Conf">> => binary(),
 %%   <<"KerberosPrincipal">> => string(),
 %%   <<"KmsKeyProviderUri">> => string(),
-%%   <<"NameNodes">> := list(hdfs_name_node()()),
+%%   <<"NameNodes">> := list(hdfs_name_node()),
 %%   <<"QopConfiguration">> => qop_configuration(),
 %%   <<"ReplicationFactor">> => integer(),
 %%   <<"SimpleUser">> => string(),
 %%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type create_location_hdfs_request() :: #{binary() => any()}.
 
@@ -1125,9 +1125,9 @@
 %% Example:
 %% create_location_fsx_lustre_request() :: #{
 %%   <<"FsxFilesystemArn">> := string(),
-%%   <<"SecurityGroupArns">> := list(string()()),
+%%   <<"SecurityGroupArns">> := list(string()),
 %%   <<"Subdirectory">> => string(),
-%%   <<"Tags">> => list(tag_list_entry()())
+%%   <<"Tags">> => list(tag_list_entry())
 %% }
 -type create_location_fsx_lustre_request() :: #{binary() => any()}.
 
@@ -1173,7 +1173,7 @@
 %% Example:
 %% update_location_object_storage_request() :: #{
 %%   <<"AccessKey">> => string(),
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
 %%   <<"LocationArn">> := string(),
@@ -1188,7 +1188,7 @@
 
 %% Example:
 %% list_tasks_request() :: #{
-%%   <<"Filters">> => list(task_filter()()),
+%%   <<"Filters">> => list(task_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1224,7 +1224,7 @@
 
 %% Example:
 %% list_locations_response() :: #{
-%%   <<"Locations">> => list(location_list_entry()()),
+%%   <<"Locations">> => list(location_list_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_locations_response() :: #{binary() => any()}.
@@ -1244,7 +1244,7 @@
 %% Example:
 %% list_tasks_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tasks">> => list(task_list_entry()())
+%%   <<"Tasks">> => list(task_list_entry())
 %% }
 -type list_tasks_response() :: #{binary() => any()}.
 
@@ -1257,7 +1257,7 @@
 %% Example:
 %% describe_location_azure_blob_response() :: #{
 %%   <<"AccessTier">> => list(any()),
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"BlobType">> => list(any()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
@@ -1279,7 +1279,7 @@
 %% task_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type task_filter() :: #{binary() => any()}.
 
@@ -1293,14 +1293,14 @@
 
 %% Example:
 %% ec2_config() :: #{
-%%   <<"SecurityGroupArns">> => list(string()()),
+%%   <<"SecurityGroupArns">> => list(string()),
 %%   <<"SubnetArn">> => string()
 %% }
 -type ec2_config() :: #{binary() => any()}.
 
 %% Example:
 %% describe_location_hdfs_response() :: #{
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"BlockSize">> => integer(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -1308,7 +1308,7 @@
 %%   <<"KmsKeyProviderUri">> => string(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
-%%   <<"NameNodes">> => list(hdfs_name_node()()),
+%%   <<"NameNodes">> => list(hdfs_name_node()),
 %%   <<"QopConfiguration">> => qop_configuration(),
 %%   <<"ReplicationFactor">> => integer(),
 %%   <<"SimpleUser">> => string()
@@ -1330,7 +1330,7 @@
 %% Example:
 %% describe_location_object_storage_response() :: #{
 %%   <<"AccessKey">> => string(),
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
@@ -1345,10 +1345,10 @@
 
 %% Example:
 %% describe_location_smb_response() :: #{
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DnsIpAddresses">> => list(string()()),
+%%   <<"DnsIpAddresses">> => list(string()),
 %%   <<"Domain">> => string(),
 %%   <<"KerberosPrincipal">> => string(),
 %%   <<"LocationArn">> => string(),
@@ -1381,7 +1381,7 @@
 
 %% Example:
 %% describe_location_s3_response() :: #{
-%%   <<"AgentArns">> => list(string()()),
+%%   <<"AgentArns">> => list(string()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
@@ -1392,11 +1392,11 @@
 
 %% Example:
 %% start_task_execution_request() :: #{
-%%   <<"Excludes">> => list(filter_rule()()),
-%%   <<"Includes">> => list(filter_rule()()),
+%%   <<"Excludes">> => list(filter_rule()),
+%%   <<"Includes">> => list(filter_rule()),
 %%   <<"ManifestConfig">> => manifest_config(),
 %%   <<"OverrideOptions">> => options(),
-%%   <<"Tags">> => list(tag_list_entry()()),
+%%   <<"Tags">> => list(tag_list_entry()),
 %%   <<"TaskArn">> := string(),
 %%   <<"TaskReportConfig">> => task_report_config()
 %% }

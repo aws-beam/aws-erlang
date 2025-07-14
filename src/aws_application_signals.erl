@@ -96,7 +96,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -116,7 +116,7 @@
 %% service_dependency() :: #{
 %%   <<"DependencyKeyAttributes">> => map(),
 %%   <<"DependencyOperationName">> => string(),
-%%   <<"MetricReferences">> => list(metric_reference()()),
+%%   <<"MetricReferences">> => list(metric_reference()),
 %%   <<"OperationName">> => string()
 %% }
 -type service_dependency() :: #{binary() => any()}.
@@ -126,7 +126,7 @@
 %% list_service_dependencies_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceDependencies">> => list(service_dependency()()),
+%%   <<"ServiceDependencies">> => list(service_dependency()),
 %%   <<"StartTime">> => [non_neg_integer()]
 %% }
 -type list_service_dependencies_output() :: #{binary() => any()}.
@@ -134,7 +134,7 @@
 
 %% Example:
 %% service_operation() :: #{
-%%   <<"MetricReferences">> => list(metric_reference()()),
+%%   <<"MetricReferences">> => list(metric_reference()),
 %%   <<"Name">> => string()
 %% }
 -type service_operation() :: #{binary() => any()}.
@@ -155,7 +155,7 @@
 
 %% Example:
 %% metric() :: #{
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricName">> => string(),
 %%   <<"Namespace">> => string()
 %% }
@@ -203,7 +203,7 @@
 %% service_level_indicator_metric_config() :: #{
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
-%%   <<"MetricDataQueries">> => list(metric_data_query()()),
+%%   <<"MetricDataQueries">> => list(metric_data_query()),
 %%   <<"MetricType">> => list(any()),
 %%   <<"OperationName">> => string(),
 %%   <<"PeriodSeconds">> => integer(),
@@ -229,7 +229,7 @@
 %% Example:
 %% metric_reference() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"MetricName">> => string(),
 %%   <<"MetricType">> => string(),
 %%   <<"Namespace">> => string()
@@ -239,23 +239,23 @@
 
 %% Example:
 %% service() :: #{
-%%   <<"AttributeMaps">> => list(map()()),
+%%   <<"AttributeMaps">> => list(map()),
 %%   <<"KeyAttributes">> => map(),
-%%   <<"LogGroupReferences">> => list(map()()),
-%%   <<"MetricReferences">> => list(metric_reference()())
+%%   <<"LogGroupReferences">> => list(map()),
+%%   <<"MetricReferences">> => list(metric_reference())
 %% }
 -type service() :: #{binary() => any()}.
 
 
 %% Example:
 %% create_service_level_objective_input() :: #{
-%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()()),
+%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"Goal">> => goal(),
 %%   <<"Name">> := string(),
 %%   <<"RequestBasedSliConfig">> => request_based_service_level_indicator_config(),
 %%   <<"SliConfig">> => service_level_indicator_config(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_service_level_objective_input() :: #{binary() => any()}.
 
@@ -263,7 +263,7 @@
 %% Example:
 %% service_level_objective() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()()),
+%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
 %%   <<"CreatedTime">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"EvaluationType">> => list(any()),
@@ -280,14 +280,14 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_update_exclusion_windows_output() :: #{
-%%   <<"Errors">> => list(batch_update_exclusion_windows_error()()),
+%%   <<"Errors">> => list(batch_update_exclusion_windows_error()),
 %%   <<"SloIds">> => list([string()]())
 %% }
 -type batch_update_exclusion_windows_output() :: #{binary() => any()}.
@@ -304,8 +304,8 @@
 
 %% Example:
 %% batch_get_service_level_objective_budget_report_output() :: #{
-%%   <<"Errors">> => list(service_level_objective_budget_report_error()()),
-%%   <<"Reports">> => list(service_level_objective_budget_report()()),
+%%   <<"Errors">> => list(service_level_objective_budget_report_error()),
+%%   <<"Reports">> => list(service_level_objective_budget_report()),
 %%   <<"Timestamp">> => [non_neg_integer()]
 %% }
 -type batch_get_service_level_objective_budget_report_output() :: #{binary() => any()}.
@@ -315,7 +315,7 @@
 %% service_level_indicator_metric() :: #{
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
-%%   <<"MetricDataQueries">> => list(metric_data_query()()),
+%%   <<"MetricDataQueries">> => list(metric_data_query()),
 %%   <<"MetricType">> => list(any()),
 %%   <<"OperationName">> => string()
 %% }
@@ -329,7 +329,7 @@
 %%   <<"MetricType">> => list(any()),
 %%   <<"MonitoredRequestCountMetric">> => list(),
 %%   <<"OperationName">> => string(),
-%%   <<"TotalRequestCountMetric">> => list(metric_data_query()())
+%%   <<"TotalRequestCountMetric">> => list(metric_data_query())
 %% }
 -type request_based_service_level_indicator_metric_config() :: #{binary() => any()}.
 
@@ -364,7 +364,7 @@
 
 %% Example:
 %% list_service_level_objective_exclusion_windows_output() :: #{
-%%   <<"ExclusionWindows">> => list(exclusion_window()()),
+%%   <<"ExclusionWindows">> => list(exclusion_window()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_service_level_objective_exclusion_windows_output() :: #{binary() => any()}.
@@ -373,7 +373,7 @@
 %% Example:
 %% get_service_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
-%%   <<"LogGroupReferences">> => list(map()()),
+%%   <<"LogGroupReferences">> => list(map()),
 %%   <<"Service">> => service(),
 %%   <<"StartTime">> => [non_neg_integer()]
 %% }
@@ -397,9 +397,9 @@
 
 %% Example:
 %% service_summary() :: #{
-%%   <<"AttributeMaps">> => list(map()()),
+%%   <<"AttributeMaps">> => list(map()),
 %%   <<"KeyAttributes">> => map(),
-%%   <<"MetricReferences">> => list(metric_reference()())
+%%   <<"MetricReferences">> => list(metric_reference())
 %% }
 -type service_summary() :: #{binary() => any()}.
 
@@ -442,7 +442,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -451,7 +451,7 @@
 %% service_dependent() :: #{
 %%   <<"DependentKeyAttributes">> => map(),
 %%   <<"DependentOperationName">> => string(),
-%%   <<"MetricReferences">> => list(metric_reference()()),
+%%   <<"MetricReferences">> => list(metric_reference()),
 %%   <<"OperationName">> => string()
 %% }
 -type service_dependent() :: #{binary() => any()}.
@@ -502,8 +502,8 @@
 
 %% Example:
 %% batch_update_exclusion_windows_input() :: #{
-%%   <<"AddExclusionWindows">> => list(exclusion_window()()),
-%%   <<"RemoveExclusionWindows">> => list(exclusion_window()()),
+%%   <<"AddExclusionWindows">> => list(exclusion_window()),
+%%   <<"RemoveExclusionWindows">> => list(exclusion_window()),
 %%   <<"SloIds">> := list([string()]())
 %% }
 -type batch_update_exclusion_windows_input() :: #{binary() => any()}.
@@ -512,7 +512,7 @@
 %% Example:
 %% list_service_level_objectives_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SloSummaries">> => list(service_level_objective_summary()())
+%%   <<"SloSummaries">> => list(service_level_objective_summary())
 %% }
 -type list_service_level_objectives_output() :: #{binary() => any()}.
 
@@ -562,7 +562,7 @@
 %%   <<"MetricType">> => list(any()),
 %%   <<"MonitoredRequestCountMetric">> => list(),
 %%   <<"OperationName">> => string(),
-%%   <<"TotalRequestCountMetric">> => list(metric_data_query()())
+%%   <<"TotalRequestCountMetric">> => list(metric_data_query())
 %% }
 -type request_based_service_level_indicator_metric() :: #{binary() => any()}.
 
@@ -571,7 +571,7 @@
 %% list_service_operations_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceOperations">> => list(service_operation()()),
+%%   <<"ServiceOperations">> => list(service_operation()),
 %%   <<"StartTime">> => [non_neg_integer()]
 %% }
 -type list_service_operations_output() :: #{binary() => any()}.
@@ -579,7 +579,7 @@
 
 %% Example:
 %% update_service_level_objective_input() :: #{
-%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()()),
+%%   <<"BurnRateConfigurations">> => list(burn_rate_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"Goal">> => goal(),
 %%   <<"RequestBasedSliConfig">> => request_based_service_level_indicator_config(),
@@ -669,7 +669,7 @@
 %% list_service_dependents_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceDependents">> => list(service_dependent()()),
+%%   <<"ServiceDependents">> => list(service_dependent()),
 %%   <<"StartTime">> => [non_neg_integer()]
 %% }
 -type list_service_dependents_output() :: #{binary() => any()}.
@@ -683,7 +683,7 @@
 %% list_services_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceSummaries">> => list(service_summary()()),
+%%   <<"ServiceSummaries">> => list(service_summary()),
 %%   <<"StartTime">> => [non_neg_integer()]
 %% }
 -type list_services_output() :: #{binary() => any()}.

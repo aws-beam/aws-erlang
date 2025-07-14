@@ -389,7 +389,7 @@
 %% Example:
 %% create_face_liveness_session_request_settings() :: #{
 %%   <<"AuditImagesLimit">> => integer(),
-%%   <<"ChallengePreferences">> => list(challenge_preference()()),
+%%   <<"ChallengePreferences">> => list(challenge_preference()),
 %%   <<"OutputConfig">> => liveness_output_config()
 %% }
 -type create_face_liveness_session_request_settings() :: #{binary() => any()}.
@@ -467,14 +467,14 @@
 
 %% Example:
 %% detect_text_response() :: #{
-%%   <<"TextDetections">> => list(text_detection()()),
+%%   <<"TextDetections">> => list(text_detection()),
 %%   <<"TextModelVersion">> => string()
 %% }
 -type detect_text_response() :: #{binary() => any()}.
 
 %% Example:
 %% detect_protective_equipment_response() :: #{
-%%   <<"Persons">> => list(protective_equipment_person()()),
+%%   <<"Persons">> => list(protective_equipment_person()),
 %%   <<"ProtectiveEquipmentModelVersion">> => string(),
 %%   <<"Summary">> => protective_equipment_summary()
 %% }
@@ -491,7 +491,7 @@
 %% project_description() :: #{
 %%   <<"AutoUpdate">> => list(any()),
 %%   <<"CreationTimestamp">> => non_neg_integer(),
-%%   <<"Datasets">> => list(dataset_metadata()()),
+%%   <<"Datasets">> => list(dataset_metadata()),
 %%   <<"Feature">> => list(any()),
 %%   <<"ProjectArn">> => string(),
 %%   <<"Status">> => list(any())
@@ -513,7 +513,7 @@
 %% Example:
 %% delete_faces_request() :: #{
 %%   <<"CollectionId">> := string(),
-%%   <<"FaceIds">> := list(string()())
+%%   <<"FaceIds">> := list(string())
 %% }
 -type delete_faces_request() :: #{binary() => any()}.
 
@@ -546,7 +546,7 @@
 %%   <<"FaceModelVersion">> => string(),
 %%   <<"SearchedFace">> => searched_face(),
 %%   <<"SearchedUser">> => searched_user(),
-%%   <<"UserMatches">> => list(user_match()())
+%%   <<"UserMatches">> => list(user_match())
 %% }
 -type search_users_response() :: #{binary() => any()}.
 
@@ -559,7 +559,7 @@
 
 %% Example:
 %% search_faces_response() :: #{
-%%   <<"FaceMatches">> => list(face_match()()),
+%%   <<"FaceMatches">> => list(face_match()),
 %%   <<"FaceModelVersion">> => string(),
 %%   <<"SearchedFaceId">> => string()
 %% }
@@ -585,7 +585,7 @@
 
 %% Example:
 %% list_dataset_labels_response() :: #{
-%%   <<"DatasetLabelDescriptions">> => list(dataset_label_description()()),
+%%   <<"DatasetLabelDescriptions">> => list(dataset_label_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dataset_labels_response() :: #{binary() => any()}.
@@ -615,7 +615,7 @@
 %% Example:
 %% geometry() :: #{
 %%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Polygon">> => list(point()())
+%%   <<"Polygon">> => list(point())
 %% }
 -type geometry() :: #{binary() => any()}.
 
@@ -688,7 +688,7 @@
 
 %% Example:
 %% person_match() :: #{
-%%   <<"FaceMatches">> => list(face_match()()),
+%%   <<"FaceMatches">> => list(face_match()),
 %%   <<"Person">> => person_detail(),
 %%   <<"Timestamp">> => float()
 %% }
@@ -697,20 +697,20 @@
 %% Example:
 %% describe_projects_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProjectDescriptions">> => list(project_description()())
+%%   <<"ProjectDescriptions">> => list(project_description())
 %% }
 -type describe_projects_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_faces_response() :: #{
-%%   <<"DeletedFaces">> => list(string()()),
-%%   <<"UnsuccessfulFaceDeletions">> => list(unsuccessful_face_deletion()())
+%%   <<"DeletedFaces">> => list(string()),
+%%   <<"UnsuccessfulFaceDeletions">> => list(unsuccessful_face_deletion())
 %% }
 -type delete_faces_response() :: #{binary() => any()}.
 
 %% Example:
 %% detect_faces_response() :: #{
-%%   <<"FaceDetails">> => list(face_detail()()),
+%%   <<"FaceDetails">> => list(face_detail()),
 %%   <<"OrientationCorrection">> => list(any())
 %% }
 -type detect_faces_response() :: #{binary() => any()}.
@@ -725,7 +725,7 @@
 %%   <<"Name">> => string(),
 %%   <<"NotificationChannel">> => stream_processor_notification_channel(),
 %%   <<"Output">> => stream_processor_output(),
-%%   <<"RegionsOfInterest">> => list(region_of_interest()()),
+%%   <<"RegionsOfInterest">> => list(region_of_interest()),
 %%   <<"RoleArn">> => string(),
 %%   <<"Settings">> => stream_processor_settings(),
 %%   <<"Status">> => list(any()),
@@ -756,7 +756,7 @@
 
 %% Example:
 %% connected_home_settings() :: #{
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"MinConfidence">> => float()
 %% }
 -type connected_home_settings() :: #{binary() => any()}.
@@ -765,7 +765,7 @@
 %% get_celebrity_info_response() :: #{
 %%   <<"KnownGender">> => known_gender(),
 %%   <<"Name">> => string(),
-%%   <<"Urls">> => list(string()())
+%%   <<"Urls">> => list(string())
 %% }
 -type get_celebrity_info_response() :: #{binary() => any()}.
 
@@ -814,8 +814,8 @@
 
 %% Example:
 %% associate_faces_response() :: #{
-%%   <<"AssociatedFaces">> => list(associated_face()()),
-%%   <<"UnsuccessfulFaceAssociations">> => list(unsuccessful_face_association()()),
+%%   <<"AssociatedFaces">> => list(associated_face()),
+%%   <<"UnsuccessfulFaceAssociations">> => list(unsuccessful_face_association()),
 %%   <<"UserStatus">> => list(any())
 %% }
 -type associate_faces_response() :: #{binary() => any()}.
@@ -836,7 +836,7 @@
 
 %% Example:
 %% protective_equipment_person() :: #{
-%%   <<"BodyParts">> => list(protective_equipment_body_part()()),
+%%   <<"BodyParts">> => list(protective_equipment_body_part()),
 %%   <<"BoundingBox">> => bounding_box(),
 %%   <<"Confidence">> => float(),
 %%   <<"Id">> => integer()
@@ -881,7 +881,7 @@
 
 %% Example:
 %% connected_home_settings_for_update() :: #{
-%%   <<"Labels">> => list(string()()),
+%%   <<"Labels">> => list(string()),
 %%   <<"MinConfidence">> => float()
 %% }
 -type connected_home_settings_for_update() :: #{binary() => any()}.
@@ -894,9 +894,9 @@
 
 %% Example:
 %% detect_moderation_labels_response() :: #{
-%%   <<"ContentTypes">> => list(content_type()()),
+%%   <<"ContentTypes">> => list(content_type()),
 %%   <<"HumanLoopActivationOutput">> => human_loop_activation_output(),
-%%   <<"ModerationLabels">> => list(moderation_label()()),
+%%   <<"ModerationLabels">> => list(moderation_label()),
 %%   <<"ModerationModelVersion">> => string(),
 %%   <<"ProjectVersion">> => string()
 %% }
@@ -927,8 +927,8 @@
 
 %% Example:
 %% disassociate_faces_response() :: #{
-%%   <<"DisassociatedFaces">> => list(disassociated_face()()),
-%%   <<"UnsuccessfulFaceDisassociations">> => list(unsuccessful_face_disassociation()()),
+%%   <<"DisassociatedFaces">> => list(disassociated_face()),
+%%   <<"UnsuccessfulFaceDisassociations">> => list(unsuccessful_face_disassociation()),
 %%   <<"UserStatus">> => list(any())
 %% }
 -type disassociate_faces_response() :: #{binary() => any()}.
@@ -942,7 +942,7 @@
 
 %% Example:
 %% training_data() :: #{
-%%   <<"Assets">> => list(asset()())
+%%   <<"Assets">> => list(asset())
 %% }
 -type training_data() :: #{binary() => any()}.
 
@@ -963,7 +963,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1006,7 +1006,7 @@
 %% Example:
 %% list_faces_request() :: #{
 %%   <<"CollectionId">> := string(),
-%%   <<"FaceIds">> => list(string()()),
+%%   <<"FaceIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"UserId">> => string()
@@ -1027,7 +1027,7 @@
 %%   <<"JobStatus">> => list(any()),
 %%   <<"JobTag">> => string(),
 %%   <<"LabelModelVersion">> => string(),
-%%   <<"Labels">> => list(label_detection()()),
+%%   <<"Labels">> => list(label_detection()),
 %%   <<"NextToken">> => string(),
 %%   <<"StatusMessage">> => string(),
 %%   <<"Video">> => video(),
@@ -1046,8 +1046,8 @@
 
 %% Example:
 %% list_collections_response() :: #{
-%%   <<"CollectionIds">> => list(string()()),
-%%   <<"FaceModelVersions">> => list(string()()),
+%%   <<"CollectionIds">> => list(string()),
+%%   <<"FaceModelVersions">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_collections_response() :: #{binary() => any()}.
@@ -1076,13 +1076,13 @@
 %% Example:
 %% region_of_interest() :: #{
 %%   <<"BoundingBox">> => bounding_box(),
-%%   <<"Polygon">> => list(point()())
+%%   <<"Polygon">> => list(point())
 %% }
 -type region_of_interest() :: #{binary() => any()}.
 
 %% Example:
 %% distribute_dataset_entries_request() :: #{
-%%   <<"Datasets">> := list(distribute_dataset()())
+%%   <<"Datasets">> := list(distribute_dataset())
 %% }
 -type distribute_dataset_entries_request() :: #{binary() => any()}.
 
@@ -1091,7 +1091,7 @@
 %%   <<"Features">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ProjectNames">> => list(string()())
+%%   <<"ProjectNames">> => list(string())
 %% }
 -type describe_projects_request() :: #{binary() => any()}.
 
@@ -1111,7 +1111,7 @@
 
 %% Example:
 %% testing_data() :: #{
-%%   <<"Assets">> => list(asset()()),
+%%   <<"Assets">> => list(asset()),
 %%   <<"AutoCreate">> => boolean()
 %% }
 -type testing_data() :: #{binary() => any()}.
@@ -1131,7 +1131,7 @@
 
 %% Example:
 %% get_celebrity_recognition_response() :: #{
-%%   <<"Celebrities">> => list(celebrity_recognition()()),
+%%   <<"Celebrities">> => list(celebrity_recognition()),
 %%   <<"JobId">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"JobTag">> => string(),
@@ -1164,7 +1164,7 @@
 %% Example:
 %% human_loop_activation_output() :: #{
 %%   <<"HumanLoopActivationConditionsEvaluationResults">> => string(),
-%%   <<"HumanLoopActivationReasons">> => list(string()()),
+%%   <<"HumanLoopActivationReasons">> => list(string()),
 %%   <<"HumanLoopArn">> => string()
 %% }
 -type human_loop_activation_output() :: #{binary() => any()}.
@@ -1266,7 +1266,7 @@
 %% associate_faces_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"CollectionId">> := string(),
-%%   <<"FaceIds">> := list(string()()),
+%%   <<"FaceIds">> := list(string()),
 %%   <<"UserId">> := string(),
 %%   <<"UserMatchThreshold">> => float()
 %% }
@@ -1287,7 +1287,7 @@
 
 %% Example:
 %% list_media_analysis_jobs_response() :: #{
-%%   <<"MediaAnalysisJobs">> => list(media_analysis_job_description()()),
+%%   <<"MediaAnalysisJobs">> => list(media_analysis_job_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_media_analysis_jobs_response() :: #{binary() => any()}.
@@ -1308,7 +1308,7 @@
 %% Example:
 %% detect_labels_image_properties() :: #{
 %%   <<"Background">> => detect_labels_image_background(),
-%%   <<"DominantColors">> => list(dominant_color()()),
+%%   <<"DominantColors">> => list(dominant_color()),
 %%   <<"Foreground">> => detect_labels_image_foreground(),
 %%   <<"Quality">> => detect_labels_image_quality()
 %% }
@@ -1361,7 +1361,7 @@
 %% Example:
 %% list_stream_processors_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StreamProcessors">> => list(stream_processor()())
+%%   <<"StreamProcessors">> => list(stream_processor())
 %% }
 -type list_stream_processors_response() :: #{binary() => any()}.
 
@@ -1427,7 +1427,7 @@
 %% Example:
 %% list_users_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -1439,7 +1439,7 @@
 
 %% Example:
 %% get_face_detection_response() :: #{
-%%   <<"Faces">> => list(face_detection()()),
+%%   <<"Faces">> => list(face_detection()),
 %%   <<"JobId">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"JobTag">> => string(),
@@ -1471,14 +1471,14 @@
 
 %% Example:
 %% detect_text_filters() :: #{
-%%   <<"RegionsOfInterest">> => list(region_of_interest()()),
+%%   <<"RegionsOfInterest">> => list(region_of_interest()),
 %%   <<"WordFilter">> => detection_filter()
 %% }
 -type detect_text_filters() :: #{binary() => any()}.
 
 %% Example:
 %% list_dataset_entries_request() :: #{
-%%   <<"ContainsLabels">> => list(string()()),
+%%   <<"ContainsLabels">> => list(string()),
 %%   <<"DatasetArn">> := string(),
 %%   <<"HasErrors">> => boolean(),
 %%   <<"Labeled">> => boolean(),
@@ -1490,7 +1490,7 @@
 
 %% Example:
 %% detect_custom_labels_response() :: #{
-%%   <<"CustomLabels">> => list(custom_label()())
+%%   <<"CustomLabels">> => list(custom_label())
 %% }
 -type detect_custom_labels_response() :: #{binary() => any()}.
 
@@ -1589,7 +1589,7 @@
 
 %% Example:
 %% content_moderation_detection() :: #{
-%%   <<"ContentTypes">> => list(content_type()()),
+%%   <<"ContentTypes">> => list(content_type()),
 %%   <<"DurationMillis">> => float(),
 %%   <<"EndTimestampMillis">> => float(),
 %%   <<"ModerationLabel">> => moderation_label(),
@@ -1636,8 +1636,8 @@
 %% search_users_by_image_response() :: #{
 %%   <<"FaceModelVersion">> => string(),
 %%   <<"SearchedFace">> => searched_face_details(),
-%%   <<"UnsearchedFaces">> => list(unsearched_face()()),
-%%   <<"UserMatches">> => list(user_match()())
+%%   <<"UnsearchedFaces">> => list(unsearched_face()),
+%%   <<"UserMatches">> => list(user_match())
 %% }
 -type search_users_by_image_response() :: #{binary() => any()}.
 
@@ -1647,13 +1647,13 @@
 %%   <<"Beard">> => beard(),
 %%   <<"BoundingBox">> => bounding_box(),
 %%   <<"Confidence">> => float(),
-%%   <<"Emotions">> => list(emotion()()),
+%%   <<"Emotions">> => list(emotion()),
 %%   <<"EyeDirection">> => eye_direction(),
 %%   <<"Eyeglasses">> => eyeglasses(),
 %%   <<"EyesOpen">> => eye_open(),
 %%   <<"FaceOccluded">> => face_occluded(),
 %%   <<"Gender">> => gender(),
-%%   <<"Landmarks">> => list(landmark()()),
+%%   <<"Landmarks">> => list(landmark()),
 %%   <<"MouthOpen">> => mouth_open(),
 %%   <<"Mustache">> => mustache(),
 %%   <<"Pose">> => pose(),
@@ -1674,7 +1674,7 @@
 %% detect_labels_response() :: #{
 %%   <<"ImageProperties">> => detect_labels_image_properties(),
 %%   <<"LabelModelVersion">> => string(),
-%%   <<"Labels">> => list(label()()),
+%%   <<"Labels">> => list(label()),
 %%   <<"OrientationCorrection">> => list(any())
 %% }
 -type detect_labels_response() :: #{binary() => any()}.
@@ -1709,7 +1709,7 @@
 %% Example:
 %% list_project_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProjectPolicies">> => list(project_policy()())
+%%   <<"ProjectPolicies">> => list(project_policy())
 %% }
 -type list_project_policies_response() :: #{binary() => any()}.
 
@@ -1764,16 +1764,16 @@
 
 %% Example:
 %% get_segment_detection_response() :: #{
-%%   <<"AudioMetadata">> => list(audio_metadata()()),
+%%   <<"AudioMetadata">> => list(audio_metadata()),
 %%   <<"JobId">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"JobTag">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"Segments">> => list(segment_detection()()),
-%%   <<"SelectedSegmentTypes">> => list(segment_type_info()()),
+%%   <<"Segments">> => list(segment_detection()),
+%%   <<"SelectedSegmentTypes">> => list(segment_type_info()),
 %%   <<"StatusMessage">> => string(),
 %%   <<"Video">> => video(),
-%%   <<"VideoMetadata">> => list(video_metadata()())
+%%   <<"VideoMetadata">> => list(video_metadata())
 %% }
 -type get_segment_detection_response() :: #{binary() => any()}.
 
@@ -1792,7 +1792,7 @@
 %%   <<"KnownGender">> => known_gender(),
 %%   <<"MatchConfidence">> => float(),
 %%   <<"Name">> => string(),
-%%   <<"Urls">> => list(string()())
+%%   <<"Urls">> => list(string())
 %% }
 -type celebrity() :: #{binary() => any()}.
 
@@ -1827,9 +1827,9 @@
 
 %% Example:
 %% recognize_celebrities_response() :: #{
-%%   <<"CelebrityFaces">> => list(celebrity()()),
+%%   <<"CelebrityFaces">> => list(celebrity()),
 %%   <<"OrientationCorrection">> => list(any()),
-%%   <<"UnrecognizedFaces">> => list(compared_face()())
+%%   <<"UnrecognizedFaces">> => list(compared_face())
 %% }
 -type recognize_celebrities_response() :: #{binary() => any()}.
 
@@ -1900,7 +1900,7 @@
 %% Example:
 %% protective_equipment_body_part() :: #{
 %%   <<"Confidence">> => float(),
-%%   <<"EquipmentDetections">> => list(equipment_detection()()),
+%%   <<"EquipmentDetections">> => list(equipment_detection()),
 %%   <<"Name">> => list(any())
 %% }
 -type protective_equipment_body_part() :: #{binary() => any()}.
@@ -1997,7 +1997,7 @@
 %%   <<"JobStatus">> => list(any()),
 %%   <<"JobTag">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"Persons">> => list(person_detection()()),
+%%   <<"Persons">> => list(person_detection()),
 %%   <<"StatusMessage">> => string(),
 %%   <<"Video">> => video(),
 %%   <<"VideoMetadata">> => video_metadata()
@@ -2053,7 +2053,7 @@
 %% instance() :: #{
 %%   <<"BoundingBox">> => bounding_box(),
 %%   <<"Confidence">> => float(),
-%%   <<"DominantColors">> => list(dominant_color()())
+%%   <<"DominantColors">> => list(dominant_color())
 %% }
 -type instance() :: #{binary() => any()}.
 
@@ -2067,7 +2067,7 @@
 %% Example:
 %% list_faces_response() :: #{
 %%   <<"FaceModelVersion">> => string(),
-%%   <<"Faces">> => list(face()()),
+%%   <<"Faces">> => list(face()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_faces_response() :: #{binary() => any()}.
@@ -2104,7 +2104,7 @@
 %%   <<"Name">> := string(),
 %%   <<"NotificationChannel">> => stream_processor_notification_channel(),
 %%   <<"Output">> := stream_processor_output(),
-%%   <<"RegionsOfInterest">> => list(region_of_interest()()),
+%%   <<"RegionsOfInterest">> => list(region_of_interest()),
 %%   <<"RoleArn">> := string(),
 %%   <<"Settings">> := stream_processor_settings(),
 %%   <<"Tags">> => map()
@@ -2114,9 +2114,9 @@
 %% Example:
 %% index_faces_response() :: #{
 %%   <<"FaceModelVersion">> => string(),
-%%   <<"FaceRecords">> => list(face_record()()),
+%%   <<"FaceRecords">> => list(face_record()),
 %%   <<"OrientationCorrection">> => list(any()),
-%%   <<"UnindexedFaces">> => list(unindexed_face()())
+%%   <<"UnindexedFaces">> => list(unindexed_face())
 %% }
 -type index_faces_response() :: #{binary() => any()}.
 
@@ -2291,7 +2291,7 @@
 
 %% Example:
 %% get_face_liveness_session_results_response() :: #{
-%%   <<"AuditImages">> => list(audit_image()()),
+%%   <<"AuditImages">> => list(audit_image()),
 %%   <<"Challenge">> => challenge(),
 %%   <<"Confidence">> => float(),
 %%   <<"ReferenceImage">> => audit_image(),
@@ -2395,7 +2395,7 @@
 %%   <<"DataSharingPreferenceForUpdate">> => stream_processor_data_sharing_preference(),
 %%   <<"Name">> := string(),
 %%   <<"ParametersToDelete">> => list(list(any())()),
-%%   <<"RegionsOfInterestForUpdate">> => list(region_of_interest()()),
+%%   <<"RegionsOfInterestForUpdate">> => list(region_of_interest()),
 %%   <<"SettingsForUpdate">> => stream_processor_settings_for_update()
 %% }
 -type update_stream_processor_request() :: #{binary() => any()}.
@@ -2439,10 +2439,10 @@
 
 %% Example:
 %% general_labels_settings() :: #{
-%%   <<"LabelCategoryExclusionFilters">> => list(string()()),
-%%   <<"LabelCategoryInclusionFilters">> => list(string()()),
-%%   <<"LabelExclusionFilters">> => list(string()()),
-%%   <<"LabelInclusionFilters">> => list(string()())
+%%   <<"LabelCategoryExclusionFilters">> => list(string()),
+%%   <<"LabelCategoryInclusionFilters">> => list(string()),
+%%   <<"LabelExclusionFilters">> => list(string()),
+%%   <<"LabelInclusionFilters">> => list(string())
 %% }
 -type general_labels_settings() :: #{binary() => any()}.
 
@@ -2510,7 +2510,7 @@
 %% disassociate_faces_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"CollectionId">> := string(),
-%%   <<"FaceIds">> := list(string()()),
+%%   <<"FaceIds">> := list(string()),
 %%   <<"UserId">> := string()
 %% }
 -type disassociate_faces_request() :: #{binary() => any()}.
@@ -2522,7 +2522,7 @@
 %%   <<"JobTag">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"StatusMessage">> => string(),
-%%   <<"TextDetections">> => list(text_detection_result()()),
+%%   <<"TextDetections">> => list(text_detection_result()),
 %%   <<"TextModelVersion">> => string(),
 %%   <<"Video">> => video(),
 %%   <<"VideoMetadata">> => video_metadata()
@@ -2537,15 +2537,15 @@
 
 %% Example:
 %% protective_equipment_summary() :: #{
-%%   <<"PersonsIndeterminate">> => list(integer()()),
-%%   <<"PersonsWithRequiredEquipment">> => list(integer()()),
-%%   <<"PersonsWithoutRequiredEquipment">> => list(integer()())
+%%   <<"PersonsIndeterminate">> => list(integer()),
+%%   <<"PersonsWithRequiredEquipment">> => list(integer()),
+%%   <<"PersonsWithoutRequiredEquipment">> => list(integer())
 %% }
 -type protective_equipment_summary() :: #{binary() => any()}.
 
 %% Example:
 %% start_text_detection_filters() :: #{
-%%   <<"RegionsOfInterest">> => list(region_of_interest()()),
+%%   <<"RegionsOfInterest">> => list(region_of_interest()),
 %%   <<"WordFilter">> => detection_filter()
 %% }
 -type start_text_detection_filters() :: #{binary() => any()}.
@@ -2598,7 +2598,7 @@
 %% Example:
 %% describe_project_versions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ProjectVersionDescriptions">> => list(project_version_description()())
+%%   <<"ProjectVersionDescriptions">> => list(project_version_description())
 %% }
 -type describe_project_versions_response() :: #{binary() => any()}.
 
@@ -2645,7 +2645,7 @@
 
 %% Example:
 %% validation_data() :: #{
-%%   <<"Assets">> => list(asset()())
+%%   <<"Assets">> => list(asset())
 %% }
 -type validation_data() :: #{binary() => any()}.
 
@@ -2654,13 +2654,13 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ProjectArn">> := string(),
-%%   <<"VersionNames">> => list(string()())
+%%   <<"VersionNames">> => list(string())
 %% }
 -type describe_project_versions_request() :: #{binary() => any()}.
 
 %% Example:
 %% detect_labels_image_foreground() :: #{
-%%   <<"DominantColors">> => list(dominant_color()()),
+%%   <<"DominantColors">> => list(dominant_color()),
 %%   <<"Quality">> => detect_labels_image_quality()
 %% }
 -type detect_labels_image_foreground() :: #{binary() => any()}.
@@ -2750,7 +2750,7 @@
 %%   <<"JobId">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"JobTag">> => string(),
-%%   <<"ModerationLabels">> => list(content_moderation_detection()()),
+%%   <<"ModerationLabels">> => list(content_moderation_detection()),
 %%   <<"ModerationModelVersion">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"StatusMessage">> => string(),
@@ -2767,11 +2767,11 @@
 
 %% Example:
 %% compare_faces_response() :: #{
-%%   <<"FaceMatches">> => list(compare_faces_match()()),
+%%   <<"FaceMatches">> => list(compare_faces_match()),
 %%   <<"SourceImageFace">> => compared_source_image_face(),
 %%   <<"SourceImageOrientationCorrection">> => list(any()),
 %%   <<"TargetImageOrientationCorrection">> => list(any()),
-%%   <<"UnmatchedFaces">> => list(compared_face()())
+%%   <<"UnmatchedFaces">> => list(compared_face())
 %% }
 -type compare_faces_response() :: #{binary() => any()}.
 
@@ -2788,7 +2788,7 @@
 
 %% Example:
 %% search_faces_by_image_response() :: #{
-%%   <<"FaceMatches">> => list(face_match()()),
+%%   <<"FaceMatches">> => list(face_match()),
 %%   <<"FaceModelVersion">> => string(),
 %%   <<"SearchedFaceBoundingBox">> => bounding_box(),
 %%   <<"SearchedFaceConfidence">> => float()
@@ -2797,7 +2797,7 @@
 
 %% Example:
 %% list_dataset_entries_response() :: #{
-%%   <<"DatasetEntries">> => list(string()()),
+%%   <<"DatasetEntries">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dataset_entries_response() :: #{binary() => any()}.
@@ -2827,7 +2827,7 @@
 
 %% Example:
 %% detect_labels_image_background() :: #{
-%%   <<"DominantColors">> => list(dominant_color()()),
+%%   <<"DominantColors">> => list(dominant_color()),
 %%   <<"Quality">> => detect_labels_image_quality()
 %% }
 -type detect_labels_image_background() :: #{binary() => any()}.
@@ -2840,7 +2840,7 @@
 %%   <<"Id">> => string(),
 %%   <<"KnownGender">> => known_gender(),
 %%   <<"Name">> => string(),
-%%   <<"Urls">> => list(string()())
+%%   <<"Urls">> => list(string())
 %% }
 -type celebrity_detail() :: #{binary() => any()}.
 
@@ -2868,12 +2868,12 @@
 
 %% Example:
 %% label() :: #{
-%%   <<"Aliases">> => list(label_alias()()),
-%%   <<"Categories">> => list(label_category()()),
+%%   <<"Aliases">> => list(label_alias()),
+%%   <<"Categories">> => list(label_category()),
 %%   <<"Confidence">> => float(),
-%%   <<"Instances">> => list(instance()()),
+%%   <<"Instances">> => list(instance()),
 %%   <<"Name">> => string(),
-%%   <<"Parents">> => list(parent()())
+%%   <<"Parents">> => list(parent())
 %% }
 -type label() :: #{binary() => any()}.
 
@@ -2883,7 +2883,7 @@
 %%   <<"JobStatus">> => list(any()),
 %%   <<"JobTag">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"Persons">> => list(person_match()()),
+%%   <<"Persons">> => list(person_match()),
 %%   <<"StatusMessage">> => string(),
 %%   <<"Video">> => video(),
 %%   <<"VideoMetadata">> => video_metadata()
@@ -2902,8 +2902,8 @@
 %% compared_face() :: #{
 %%   <<"BoundingBox">> => bounding_box(),
 %%   <<"Confidence">> => float(),
-%%   <<"Emotions">> => list(emotion()()),
-%%   <<"Landmarks">> => list(landmark()()),
+%%   <<"Emotions">> => list(emotion()),
+%%   <<"Landmarks">> => list(landmark()),
 %%   <<"Pose">> => pose(),
 %%   <<"Quality">> => image_quality(),
 %%   <<"Smile">> => smile()

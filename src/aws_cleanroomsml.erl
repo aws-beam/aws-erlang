@@ -197,7 +197,7 @@
 %%   <<"configuredModelAlgorithmAssociationArn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()()),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
 %%   <<"membershipIdentifier">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
@@ -217,7 +217,7 @@
 
 %% Example:
 %% list_configured_model_algorithm_associations_response() :: #{
-%%   <<"configuredModelAlgorithmAssociations">> => list(configured_model_algorithm_association_summary()()),
+%%   <<"configuredModelAlgorithmAssociations">> => list(configured_model_algorithm_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_model_algorithm_associations_response() :: #{binary() => any()}.
@@ -240,7 +240,7 @@
 %% Example:
 %% audience_quality_metrics() :: #{
 %%   <<"recallMetric">> => [float()],
-%%   <<"relevanceMetrics">> => list(relevance_metric()())
+%%   <<"relevanceMetrics">> => list(relevance_metric())
 %% }
 -type audience_quality_metrics() :: #{binary() => any()}.
 
@@ -299,7 +299,7 @@
 
 %% Example:
 %% list_configured_model_algorithms_response() :: #{
-%%   <<"configuredModelAlgorithms">> => list(configured_model_algorithm_summary()()),
+%%   <<"configuredModelAlgorithms">> => list(configured_model_algorithm_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_model_algorithms_response() :: #{binary() => any()}.
@@ -307,7 +307,7 @@
 
 %% Example:
 %% create_ml_input_channel_request() :: #{
-%%   <<"configuredModelAlgorithmAssociations">> := list(string()()),
+%%   <<"configuredModelAlgorithmAssociations">> := list(string()),
 %%   <<"description">> => string(),
 %%   <<"inputChannel">> := input_channel(),
 %%   <<"kmsKeyArn">> => string(),
@@ -333,7 +333,7 @@
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"trainingData">> => list(dataset()()),
+%%   <<"trainingData">> => list(dataset()),
 %%   <<"trainingDatasetArn">> => string(),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
@@ -342,7 +342,7 @@
 
 %% Example:
 %% trained_models_configuration_policy() :: #{
-%%   <<"containerLogs">> => list(logs_configuration_policy()()),
+%%   <<"containerLogs">> => list(logs_configuration_policy()),
 %%   <<"containerMetrics">> => metrics_configuration_policy(),
 %%   <<"maxArtifactSize">> => trained_model_artifact_max_size()
 %% }
@@ -392,7 +392,7 @@
 %% Example:
 %% inference_output_configuration() :: #{
 %%   <<"accept">> => [string()],
-%%   <<"members">> => list(inference_receiver_member()())
+%%   <<"members">> => list(inference_receiver_member())
 %% }
 -type inference_output_configuration() :: #{binary() => any()}.
 
@@ -450,7 +450,7 @@
 %% Example:
 %% get_ml_input_channel_response() :: #{
 %%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociations">> => list(string()()),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"inputChannel">> => input_channel(),
@@ -477,7 +477,7 @@
 
 %% Example:
 %% list_ml_input_channels_response() :: #{
-%%   <<"mlInputChannelsList">> => list(ml_input_channel_summary()()),
+%%   <<"mlInputChannelsList">> => list(ml_input_channel_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_ml_input_channels_response() :: #{binary() => any()}.
@@ -498,7 +498,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
-%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()()),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
 %%   <<"logsStatus">> => list(any()),
 %%   <<"logsStatusDetails">> => [string()],
 %%   <<"membershipIdentifier">> => string(),
@@ -536,7 +536,7 @@
 %% Example:
 %% collaboration_ml_input_channel_summary() :: #{
 %%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociations">> => list(string()()),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
@@ -552,7 +552,7 @@
 %% Example:
 %% ml_input_channel_summary() :: #{
 %%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociations">> => list(string()()),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"membershipIdentifier">> => string(),
@@ -617,11 +617,11 @@
 %%   <<"collaborationIdentifier">> => string(),
 %%   <<"configuredModelAlgorithmAssociationArn">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
-%%   <<"dataChannels">> => list(model_training_data_channel()()),
+%%   <<"dataChannels">> => list(model_training_data_channel()),
 %%   <<"description">> => string(),
 %%   <<"environment">> => map(),
 %%   <<"hyperparameters">> => map(),
-%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()()),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"logsStatus">> => list(any()),
 %%   <<"logsStatusDetails">> => [string()],
@@ -645,7 +645,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -671,7 +671,7 @@
 %% Example:
 %% list_trained_model_versions_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"trainedModels">> => list(trained_model_summary()())
+%%   <<"trainedModels">> => list(trained_model_summary())
 %% }
 -type list_trained_model_versions_response() :: #{binary() => any()}.
 
@@ -797,7 +797,7 @@
 
 %% Example:
 %% trained_model_inference_jobs_configuration_policy() :: #{
-%%   <<"containerLogs">> => list(logs_configuration_policy()()),
+%%   <<"containerLogs">> => list(logs_configuration_policy()),
 %%   <<"maxOutputSize">> => trained_model_inference_max_output_size()
 %% }
 -type trained_model_inference_jobs_configuration_policy() :: #{binary() => any()}.
@@ -819,10 +819,10 @@
 
 %% Example:
 %% container_config() :: #{
-%%   <<"arguments">> => list(string()()),
-%%   <<"entrypoint">> => list(string()()),
+%%   <<"arguments">> => list(string()),
+%%   <<"entrypoint">> => list(string()),
 %%   <<"imageUri">> => string(),
-%%   <<"metricDefinitions">> => list(metric_definition()())
+%%   <<"metricDefinitions">> => list(metric_definition())
 %% }
 -type container_config() :: #{binary() => any()}.
 
@@ -834,7 +834,7 @@
 %% Example:
 %% list_trained_model_inference_jobs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"trainedModelInferenceJobs">> => list(trained_model_inference_job_summary()())
+%%   <<"trainedModelInferenceJobs">> => list(trained_model_inference_job_summary())
 %% }
 -type list_trained_model_inference_jobs_response() :: #{binary() => any()}.
 
@@ -966,7 +966,7 @@
 
 %% Example:
 %% list_collaboration_trained_model_export_jobs_response() :: #{
-%%   <<"collaborationTrainedModelExportJobs">> => list(collaboration_trained_model_export_job_summary()()),
+%%   <<"collaborationTrainedModelExportJobs">> => list(collaboration_trained_model_export_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_trained_model_export_jobs_response() :: #{binary() => any()}.
@@ -975,11 +975,11 @@
 %% Example:
 %% create_trained_model_request() :: #{
 %%   <<"configuredModelAlgorithmAssociationArn">> := string(),
-%%   <<"dataChannels">> := list(model_training_data_channel()()),
+%%   <<"dataChannels">> := list(model_training_data_channel()),
 %%   <<"description">> => string(),
 %%   <<"environment">> => map(),
 %%   <<"hyperparameters">> => map(),
-%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel()()),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"resourceConfig">> := resource_config(),
@@ -993,7 +993,7 @@
 %% Example:
 %% list_training_datasets_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"trainingDatasets">> => list(training_dataset_summary()())
+%%   <<"trainingDatasets">> => list(training_dataset_summary())
 %% }
 -type list_training_datasets_response() :: #{binary() => any()}.
 
@@ -1005,7 +1005,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
-%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()()),
+%%   <<"incrementalTrainingDataChannels">> => list(incremental_training_data_channel_output()),
 %%   <<"membershipIdentifier">> => string(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
@@ -1175,7 +1175,7 @@
 
 %% Example:
 %% list_configured_audience_models_response() :: #{
-%%   <<"configuredAudienceModels">> => list(configured_audience_model_summary()()),
+%%   <<"configuredAudienceModels">> => list(configured_audience_model_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configured_audience_models_response() :: #{binary() => any()}.
@@ -1222,7 +1222,7 @@
 
 %% Example:
 %% list_audience_export_jobs_response() :: #{
-%%   <<"audienceExportJobs">> => list(audience_export_job_summary()()),
+%%   <<"audienceExportJobs">> => list(audience_export_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_audience_export_jobs_response() :: #{binary() => any()}.
@@ -1244,7 +1244,7 @@
 %% Example:
 %% list_trained_models_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"trainedModels">> => list(trained_model_summary()())
+%%   <<"trainedModels">> => list(trained_model_summary())
 %% }
 -type list_trained_models_response() :: #{binary() => any()}.
 
@@ -1321,7 +1321,7 @@
 
 %% Example:
 %% list_collaboration_trained_models_response() :: #{
-%%   <<"collaborationTrainedModels">> => list(collaboration_trained_model_summary()()),
+%%   <<"collaborationTrainedModels">> => list(collaboration_trained_model_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_trained_models_response() :: #{binary() => any()}.
@@ -1378,7 +1378,7 @@
 
 %% Example:
 %% list_collaboration_ml_input_channels_response() :: #{
-%%   <<"collaborationMLInputChannelsList">> => list(collaboration_ml_input_channel_summary()()),
+%%   <<"collaborationMLInputChannelsList">> => list(collaboration_ml_input_channel_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_ml_input_channels_response() :: #{binary() => any()}.
@@ -1456,7 +1456,7 @@
 %% Example:
 %% get_collaboration_ml_input_channel_response() :: #{
 %%   <<"collaborationIdentifier">> => string(),
-%%   <<"configuredModelAlgorithmAssociations">> => list(string()()),
+%%   <<"configuredModelAlgorithmAssociations">> => list(string()),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
@@ -1489,7 +1489,7 @@
 %%   <<"name">> := string(),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => map(),
-%%   <<"trainingData">> := list(dataset()())
+%%   <<"trainingData">> := list(dataset())
 %% }
 -type create_training_dataset_request() :: #{binary() => any()}.
 
@@ -1520,7 +1520,7 @@
 
 %% Example:
 %% list_collaboration_trained_model_inference_jobs_response() :: #{
-%%   <<"collaborationTrainedModelInferenceJobs">> => list(collaboration_trained_model_inference_job_summary()()),
+%%   <<"collaborationTrainedModelInferenceJobs">> => list(collaboration_trained_model_inference_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_trained_model_inference_jobs_response() :: #{binary() => any()}.
@@ -1551,7 +1551,7 @@
 %% Example:
 %% dataset_input_config() :: #{
 %%   <<"dataSource">> => data_source(),
-%%   <<"schema">> => list(column_schema()())
+%%   <<"schema">> => list(column_schema())
 %% }
 -type dataset_input_config() :: #{binary() => any()}.
 
@@ -1581,7 +1581,7 @@
 
 %% Example:
 %% audience_size_config() :: #{
-%%   <<"audienceSizeBins">> => list(integer()()),
+%%   <<"audienceSizeBins">> => list(integer()),
 %%   <<"audienceSizeType">> => list(any())
 %% }
 -type audience_size_config() :: #{binary() => any()}.
@@ -1652,7 +1652,7 @@
 
 %% Example:
 %% list_collaboration_configured_model_algorithm_associations_response() :: #{
-%%   <<"collaborationConfiguredModelAlgorithmAssociations">> => list(collaboration_configured_model_algorithm_association_summary()()),
+%%   <<"collaborationConfiguredModelAlgorithmAssociations">> => list(collaboration_configured_model_algorithm_association_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_configured_model_algorithm_associations_response() :: #{binary() => any()}.
@@ -1676,14 +1676,14 @@
 
 %% Example:
 %% trained_model_export_output_configuration() :: #{
-%%   <<"members">> => list(trained_model_export_receiver_member()())
+%%   <<"members">> => list(trained_model_export_receiver_member())
 %% }
 -type trained_model_export_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_audience_generation_jobs_response() :: #{
-%%   <<"audienceGenerationJobs">> => list(audience_generation_job_summary()()),
+%%   <<"audienceGenerationJobs">> => list(audience_generation_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_audience_generation_jobs_response() :: #{binary() => any()}.
@@ -1691,7 +1691,7 @@
 
 %% Example:
 %% list_audience_models_response() :: #{
-%%   <<"audienceModels">> => list(audience_model_summary()()),
+%%   <<"audienceModels">> => list(audience_model_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_audience_models_response() :: #{binary() => any()}.

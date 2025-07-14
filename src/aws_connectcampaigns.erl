@@ -120,8 +120,8 @@
 
 %% Example:
 %% get_campaign_state_batch_response() :: #{
-%%   <<"failedRequests">> => list(failed_campaign_state_response()()),
-%%   <<"successfulRequests">> => list(successful_campaign_state_response()())
+%%   <<"failedRequests">> => list(failed_campaign_state_response()),
+%%   <<"successfulRequests">> => list(successful_campaign_state_response())
 %% }
 -type get_campaign_state_batch_response() :: #{binary() => any()}.
 
@@ -137,7 +137,7 @@
 
 %% Example:
 %% list_campaigns_response() :: #{
-%%   <<"campaignSummaryList">> => list(campaign_summary()()),
+%%   <<"campaignSummaryList">> => list(campaign_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_campaigns_response() :: #{binary() => any()}.
@@ -160,7 +160,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> => list(string()())
+%%   <<"tagKeys">> => list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -252,8 +252,8 @@
 
 %% Example:
 %% put_dial_request_batch_response() :: #{
-%%   <<"failedRequests">> => list(failed_request()()),
-%%   <<"successfulRequests">> => list(successful_request()())
+%%   <<"failedRequests">> => list(failed_request()),
+%%   <<"successfulRequests">> => list(successful_request())
 %% }
 -type put_dial_request_batch_response() :: #{binary() => any()}.
 
@@ -276,7 +276,7 @@
 
 %% Example:
 %% get_campaign_state_batch_request() :: #{
-%%   <<"campaignIds">> => list(string()())
+%%   <<"campaignIds">> => list(string())
 %% }
 -type get_campaign_state_batch_request() :: #{binary() => any()}.
 
@@ -297,7 +297,7 @@
 
 %% Example:
 %% put_dial_request_batch_request() :: #{
-%%   <<"dialRequests">> => list(dial_request()())
+%%   <<"dialRequests">> => list(dial_request())
 %% }
 -type put_dial_request_batch_request() :: #{binary() => any()}.
 

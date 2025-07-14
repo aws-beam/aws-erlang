@@ -226,7 +226,7 @@
 %% Example:
 %% configuration() :: #{
 %%   <<"classification">> => string(),
-%%   <<"configurations">> => list(configuration()()),
+%%   <<"configurations">> => list(configuration()),
 %%   <<"properties">> => map()
 %% }
 -type configuration() :: #{binary() => any()}.
@@ -260,7 +260,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -393,7 +393,7 @@
 
 %% Example:
 %% list_job_runs_response() :: #{
-%%   <<"jobRuns">> => list(job_run()()),
+%%   <<"jobRuns">> => list(job_run()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_job_runs_response() :: #{binary() => any()}.
@@ -470,7 +470,7 @@
 %%   <<"serverUrl">> => string(),
 %%   <<"state">> => list(any()),
 %%   <<"stateDetails">> => string(),
-%%   <<"subnetIds">> => list(string()()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"tags">> => map(),
 %%   <<"type">> => string(),
 %%   <<"virtualClusterId">> => string()
@@ -480,7 +480,7 @@
 
 %% Example:
 %% parametric_configuration_overrides() :: #{
-%%   <<"applicationConfiguration">> => list(configuration()()),
+%%   <<"applicationConfiguration">> => list(configuration()),
 %%   <<"monitoringConfiguration">> => parametric_monitoring_configuration()
 %% }
 -type parametric_configuration_overrides() :: #{binary() => any()}.
@@ -632,7 +632,7 @@
 
 %% Example:
 %% list_managed_endpoints_response() :: #{
-%%   <<"endpoints">> => list(endpoint()()),
+%%   <<"endpoints">> => list(endpoint()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_managed_endpoints_response() :: #{binary() => any()}.
@@ -656,7 +656,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"states">> => list(list(any())()),
-%%   <<"types">> => list(string()())
+%%   <<"types">> => list(string())
 %% }
 -type list_managed_endpoints_request() :: #{binary() => any()}.
 
@@ -688,7 +688,7 @@
 
 %% Example:
 %% configuration_overrides() :: #{
-%%   <<"applicationConfiguration">> => list(configuration()()),
+%%   <<"applicationConfiguration">> => list(configuration()),
 %%   <<"monitoringConfiguration">> => monitoring_configuration()
 %% }
 -type configuration_overrides() :: #{binary() => any()}.
@@ -716,7 +716,7 @@
 %% Example:
 %% list_security_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"securityConfigurations">> => list(security_configuration()())
+%%   <<"securityConfigurations">> => list(security_configuration())
 %% }
 -type list_security_configurations_response() :: #{binary() => any()}.
 
@@ -747,7 +747,7 @@
 %% Example:
 %% list_job_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templates">> => list(job_template()())
+%%   <<"templates">> => list(job_template())
 %% }
 -type list_job_templates_response() :: #{binary() => any()}.
 
@@ -770,7 +770,7 @@
 %% Example:
 %% list_virtual_clusters_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"virtualClusters">> => list(virtual_cluster()())
+%%   <<"virtualClusters">> => list(virtual_cluster())
 %% }
 -type list_virtual_clusters_response() :: #{binary() => any()}.
 
@@ -791,7 +791,7 @@
 %% Example:
 %% spark_submit_job_driver() :: #{
 %%   <<"entryPoint">> => string(),
-%%   <<"entryPointArguments">> => list(string()()),
+%%   <<"entryPointArguments">> => list(string()),
 %%   <<"sparkSubmitParameters">> => string()
 %% }
 -type spark_submit_job_driver() :: #{binary() => any()}.

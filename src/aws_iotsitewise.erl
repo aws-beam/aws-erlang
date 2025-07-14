@@ -292,10 +292,10 @@
 
 %% Example:
 %% batch_get_asset_property_aggregates_response() :: #{
-%%   <<"errorEntries">> => list(batch_get_asset_property_aggregates_error_entry()()),
+%%   <<"errorEntries">> => list(batch_get_asset_property_aggregates_error_entry()),
 %%   <<"nextToken">> => string(),
-%%   <<"skippedEntries">> => list(batch_get_asset_property_aggregates_skipped_entry()()),
-%%   <<"successEntries">> => list(batch_get_asset_property_aggregates_success_entry()())
+%%   <<"skippedEntries">> => list(batch_get_asset_property_aggregates_skipped_entry()),
+%%   <<"successEntries">> => list(batch_get_asset_property_aggregates_success_entry())
 %% }
 -type batch_get_asset_property_aggregates_response() :: #{binary() => any()}.
 
@@ -324,7 +324,7 @@
 
 %% Example:
 %% list_composition_relationships_response() :: #{
-%%   <<"compositionRelationshipSummaries">> => list(composition_relationship_summary()()),
+%%   <<"compositionRelationshipSummaries">> => list(composition_relationship_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_composition_relationships_response() :: #{binary() => any()}.
@@ -332,7 +332,7 @@
 
 %% Example:
 %% list_access_policies_response() :: #{
-%%   <<"accessPolicySummaries">> => list(access_policy_summary()()),
+%%   <<"accessPolicySummaries">> => list(access_policy_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_policies_response() :: #{binary() => any()}.
@@ -351,14 +351,14 @@
 
 %% Example:
 %% describe_asset_model_composite_model_response() :: #{
-%%   <<"actionDefinitions">> => list(action_definition()()),
+%%   <<"actionDefinitions">> => list(action_definition()),
 %%   <<"assetModelCompositeModelDescription">> => string(),
 %%   <<"assetModelCompositeModelExternalId">> => string(),
 %%   <<"assetModelCompositeModelId">> => string(),
 %%   <<"assetModelCompositeModelName">> => string(),
-%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()()),
-%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()()),
-%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()()),
+%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()),
+%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()),
+%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()),
 %%   <<"assetModelCompositeModelType">> => string(),
 %%   <<"assetModelId">> => string(),
 %%   <<"compositionDetails">> => composition_details()
@@ -393,7 +393,7 @@
 
 %% Example:
 %% batch_associate_project_assets_response() :: #{
-%%   <<"errors">> => list(asset_error_details()())
+%%   <<"errors">> => list(asset_error_details())
 %% }
 -type batch_associate_project_assets_response() :: #{binary() => any()}.
 
@@ -407,7 +407,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"notification">> => property_notification(),
-%%   <<"path">> => list(asset_property_path_segment()()),
+%%   <<"path">> => list(asset_property_path_segment()),
 %%   <<"unit">> => string()
 %% }
 -type asset_property() :: #{binary() => any()}.
@@ -431,7 +431,7 @@
 
 %% Example:
 %% get_asset_property_aggregates_response() :: #{
-%%   <<"aggregatedValues">> => list(aggregated_value()()),
+%%   <<"aggregatedValues">> => list(aggregated_value()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_asset_property_aggregates_response() :: #{binary() => any()}.
@@ -453,7 +453,7 @@
 
 %% Example:
 %% list_project_assets_response() :: #{
-%%   <<"assetIds">> => list(string()()),
+%%   <<"assetIds">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_project_assets_response() :: #{binary() => any()}.
@@ -537,7 +537,7 @@
 %% metric() :: #{
 %%   <<"expression">> => string(),
 %%   <<"processingConfig">> => metric_processing_config(),
-%%   <<"variables">> => list(expression_variable()()),
+%%   <<"variables">> => list(expression_variable()),
 %%   <<"window">> => metric_window()
 %% }
 -type metric() :: #{binary() => any()}.
@@ -565,7 +565,7 @@
 
 %% Example:
 %% list_asset_model_composite_models_response() :: #{
-%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()()),
+%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_model_composite_models_response() :: #{binary() => any()}.
@@ -576,7 +576,7 @@
 %%   <<"adaptiveIngestion">> => boolean(),
 %%   <<"deleteFilesAfterImport">> => boolean(),
 %%   <<"errorReportLocation">> := error_report_location(),
-%%   <<"files">> := list(file()()),
+%%   <<"files">> := list(file()),
 %%   <<"jobConfiguration">> := job_configuration(),
 %%   <<"jobName">> := string(),
 %%   <<"jobRoleArn">> := string()
@@ -669,17 +669,17 @@
 %% Example:
 %% describe_asset_response() :: #{
 %%   <<"assetArn">> => string(),
-%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()()),
-%%   <<"assetCompositeModels">> => list(asset_composite_model()()),
+%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()),
+%%   <<"assetCompositeModels">> => list(asset_composite_model()),
 %%   <<"assetCreationDate">> => non_neg_integer(),
 %%   <<"assetDescription">> => string(),
 %%   <<"assetExternalId">> => string(),
-%%   <<"assetHierarchies">> => list(asset_hierarchy()()),
+%%   <<"assetHierarchies">> => list(asset_hierarchy()),
 %%   <<"assetId">> => string(),
 %%   <<"assetLastUpdateDate">> => non_neg_integer(),
 %%   <<"assetModelId">> => string(),
 %%   <<"assetName">> => string(),
-%%   <<"assetProperties">> => list(asset_property()()),
+%%   <<"assetProperties">> => list(asset_property()),
 %%   <<"assetStatus">> => asset_status()
 %% }
 -type describe_asset_response() :: #{binary() => any()}.
@@ -691,7 +691,7 @@
 %%   <<"entryId">> => string(),
 %%   <<"propertyAlias">> => string(),
 %%   <<"propertyId">> => string(),
-%%   <<"propertyValues">> => list(asset_property_value()())
+%%   <<"propertyValues">> => list(asset_property_value())
 %% }
 -type put_asset_property_value_entry() :: #{binary() => any()}.
 
@@ -727,7 +727,7 @@
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"path">> => list(asset_model_property_path_segment()()),
+%%   <<"path">> => list(asset_model_property_path_segment()),
 %%   <<"type">> => property_type(),
 %%   <<"unit">> => string()
 %% }
@@ -736,7 +736,7 @@
 
 %% Example:
 %% datum() :: #{
-%%   <<"arrayValue">> => list(datum()()),
+%%   <<"arrayValue">> => list(datum()),
 %%   <<"nullValue">> => boolean(),
 %%   <<"rowValue">> => row(),
 %%   <<"scalarValue">> => string()
@@ -747,7 +747,7 @@
 %% Example:
 %% citation() :: #{
 %%   <<"content">> => content(),
-%%   <<"reference">> => iotsitewise_reference()
+%%   <<"reference">> => reference()
 %% }
 -type citation() :: #{binary() => any()}.
 
@@ -806,7 +806,7 @@
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"properties">> => list(asset_model_property()()),
+%%   <<"properties">> => list(asset_model_property()),
 %%   <<"type">> => string()
 %% }
 -type asset_model_composite_model() :: #{binary() => any()}.
@@ -874,7 +874,7 @@
 
 %% Example:
 %% batch_get_asset_property_aggregates_request() :: #{
-%%   <<"entries">> := list(batch_get_asset_property_aggregates_entry()()),
+%%   <<"entries">> := list(batch_get_asset_property_aggregates_entry()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -916,7 +916,7 @@
 
 %% Example:
 %% invocation_output() :: #{
-%%   <<"citations">> => list(citation()()),
+%%   <<"citations">> => list(citation()),
 %%   <<"message">> => string()
 %% }
 -type invocation_output() :: #{binary() => any()}.
@@ -980,7 +980,7 @@
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"externalId">> => string(),
-%%   <<"hierarchies">> => list(asset_hierarchy()()),
+%%   <<"hierarchies">> => list(asset_hierarchy()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdateDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
@@ -1001,7 +1001,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1078,10 +1078,10 @@
 
 %% Example:
 %% batch_get_asset_property_value_history_response() :: #{
-%%   <<"errorEntries">> => list(batch_get_asset_property_value_history_error_entry()()),
+%%   <<"errorEntries">> => list(batch_get_asset_property_value_history_error_entry()),
 %%   <<"nextToken">> => string(),
-%%   <<"skippedEntries">> => list(batch_get_asset_property_value_history_skipped_entry()()),
-%%   <<"successEntries">> => list(batch_get_asset_property_value_history_success_entry()())
+%%   <<"skippedEntries">> => list(batch_get_asset_property_value_history_skipped_entry()),
+%%   <<"successEntries">> => list(batch_get_asset_property_value_history_success_entry())
 %% }
 -type batch_get_asset_property_value_history_response() :: #{binary() => any()}.
 
@@ -1117,7 +1117,7 @@
 %%   <<"adaptiveIngestion">> => boolean(),
 %%   <<"deleteFilesAfterImport">> => boolean(),
 %%   <<"errorReportLocation">> => error_report_location(),
-%%   <<"files">> => list(file()()),
+%%   <<"files">> => list(file()),
 %%   <<"jobConfiguration">> => job_configuration(),
 %%   <<"jobCreationDate">> => non_neg_integer(),
 %%   <<"jobId">> => string(),
@@ -1131,7 +1131,7 @@
 
 %% Example:
 %% batch_associate_project_assets_request() :: #{
-%%   <<"assetIds">> := list(string()()),
+%%   <<"assetIds">> := list(string()),
 %%   <<"clientToken">> => string()
 %% }
 -type batch_associate_project_assets_request() :: #{binary() => any()}.
@@ -1176,7 +1176,7 @@
 %% Example:
 %% gateway_summary() :: #{
 %%   <<"creationDate">> => non_neg_integer(),
-%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()()),
+%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()),
 %%   <<"gatewayId">> => string(),
 %%   <<"gatewayName">> => string(),
 %%   <<"gatewayPlatform">> => gateway_platform(),
@@ -1188,7 +1188,7 @@
 
 %% Example:
 %% list_time_series_response() :: #{
-%%   <<"TimeSeriesSummaries">> => list(time_series_summary()()),
+%%   <<"TimeSeriesSummaries">> => list(time_series_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_time_series_response() :: #{binary() => any()}.
@@ -1226,7 +1226,7 @@
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"properties">> => list(asset_property()()),
+%%   <<"properties">> => list(asset_property()),
 %%   <<"type">> => string()
 %% }
 -type asset_composite_model() :: #{binary() => any()}.
@@ -1268,7 +1268,7 @@
 
 %% Example:
 %% batch_get_asset_property_aggregates_success_entry() :: #{
-%%   <<"aggregatedValues">> => list(aggregated_value()()),
+%%   <<"aggregatedValues">> => list(aggregated_value()),
 %%   <<"entryId">> => string()
 %% }
 -type batch_get_asset_property_aggregates_success_entry() :: #{binary() => any()}.
@@ -1396,7 +1396,7 @@
 
 %% Example:
 %% row() :: #{
-%%   <<"data">> => list(datum()())
+%%   <<"data">> => list(datum())
 %% }
 -type row() :: #{binary() => any()}.
 
@@ -1420,12 +1420,12 @@
 
 %% Example:
 %% update_asset_model_request() :: #{
-%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()()),
+%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()),
 %%   <<"assetModelDescription">> => string(),
 %%   <<"assetModelExternalId">> => string(),
-%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()()),
+%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()),
 %%   <<"assetModelName">> := string(),
-%%   <<"assetModelProperties">> => list(asset_model_property()()),
+%%   <<"assetModelProperties">> => list(asset_model_property()),
 %%   <<"clientToken">> => string(),
 %%   <<"ifMatch">> => string(),
 %%   <<"ifNoneMatch">> => string(),
@@ -1459,7 +1459,7 @@
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"externalId">> => string(),
-%%   <<"hierarchies">> => list(asset_hierarchy()()),
+%%   <<"hierarchies">> => list(asset_hierarchy()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdateDate">> => non_neg_integer(),
 %%   <<"name">> => string(),
@@ -1508,7 +1508,7 @@
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"notification">> => property_notification(),
-%%   <<"path">> => list(asset_property_path_segment()()),
+%%   <<"path">> => list(asset_property_path_segment()),
 %%   <<"unit">> => string()
 %% }
 -type asset_property_summary() :: #{binary() => any()}.
@@ -1520,7 +1520,7 @@
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"properties">> => list(asset_model_property_definition()()),
+%%   <<"properties">> => list(asset_model_property_definition()),
 %%   <<"type">> => string()
 %% }
 -type asset_model_composite_model_definition() :: #{binary() => any()}.
@@ -1594,7 +1594,7 @@
 %% Example:
 %% list_projects_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"projectSummaries">> => list(project_summary()())
+%%   <<"projectSummaries">> => list(project_summary())
 %% }
 -type list_projects_response() :: #{binary() => any()}.
 
@@ -1616,7 +1616,7 @@
 %% Example:
 %% error_details() :: #{
 %%   <<"code">> => list(any()),
-%%   <<"details">> => list(detailed_error()()),
+%%   <<"details">> => list(detailed_error()),
 %%   <<"message">> => string()
 %% }
 -type error_details() :: #{binary() => any()}.
@@ -1664,7 +1664,7 @@
 
 %% Example:
 %% list_actions_response() :: #{
-%%   <<"actionSummaries">> => list(action_summary()()),
+%%   <<"actionSummaries">> => list(action_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_actions_response() :: #{binary() => any()}.
@@ -1750,7 +1750,7 @@
 %%   <<"assetModelCompositeModelExternalId">> => string(),
 %%   <<"assetModelCompositeModelId">> => string(),
 %%   <<"assetModelCompositeModelName">> := string(),
-%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property_definition()()),
+%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property_definition()),
 %%   <<"assetModelCompositeModelType">> := string(),
 %%   <<"clientToken">> => string(),
 %%   <<"composedAssetModelId">> => string(),
@@ -1794,7 +1794,7 @@
 
 %% Example:
 %% batch_get_asset_property_value_history_request() :: #{
-%%   <<"entries">> := list(batch_get_asset_property_value_history_entry()()),
+%%   <<"entries">> := list(batch_get_asset_property_value_history_entry()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1824,7 +1824,7 @@
 %% Example:
 %% create_asset_model_composite_model_response() :: #{
 %%   <<"assetModelCompositeModelId">> => string(),
-%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()()),
+%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()),
 %%   <<"assetModelStatus">> => asset_model_status()
 %% }
 -type create_asset_model_composite_model_response() :: #{binary() => any()}.
@@ -1849,7 +1849,7 @@
 
 %% Example:
 %% list_asset_models_response() :: #{
-%%   <<"assetModelSummaries">> => list(asset_model_summary()()),
+%%   <<"assetModelSummaries">> => list(asset_model_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_models_response() :: #{binary() => any()}.
@@ -1891,7 +1891,7 @@
 %% Example:
 %% batch_put_asset_property_value_request() :: #{
 %%   <<"enablePartialEntryProcessing">> => boolean(),
-%%   <<"entries">> := list(put_asset_property_value_entry()())
+%%   <<"entries">> := list(put_asset_property_value_entry())
 %% }
 -type batch_put_asset_property_value_request() :: #{binary() => any()}.
 
@@ -1916,16 +1916,16 @@
 %% Example:
 %% describe_asset_model_response() :: #{
 %%   <<"assetModelArn">> => string(),
-%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()()),
-%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()()),
+%%   <<"assetModelCompositeModelSummaries">> => list(asset_model_composite_model_summary()),
+%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model()),
 %%   <<"assetModelCreationDate">> => non_neg_integer(),
 %%   <<"assetModelDescription">> => string(),
 %%   <<"assetModelExternalId">> => string(),
-%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()()),
+%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy()),
 %%   <<"assetModelId">> => string(),
 %%   <<"assetModelLastUpdateDate">> => non_neg_integer(),
 %%   <<"assetModelName">> => string(),
-%%   <<"assetModelProperties">> => list(asset_model_property()()),
+%%   <<"assetModelProperties">> => list(asset_model_property()),
 %%   <<"assetModelStatus">> => asset_model_status(),
 %%   <<"assetModelType">> => list(any()),
 %%   <<"assetModelVersion">> => string(),
@@ -1953,7 +1953,7 @@
 %% Example:
 %% list_portals_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"portalSummaries">> => list(portal_summary()())
+%%   <<"portalSummaries">> => list(portal_summary())
 %% }
 -type list_portals_response() :: #{binary() => any()}.
 
@@ -2064,7 +2064,7 @@
 
 %% Example:
 %% get_interpolated_asset_property_values_response() :: #{
-%%   <<"interpolatedAssetPropertyValues">> => list(interpolated_asset_property_value()()),
+%%   <<"interpolatedAssetPropertyValues">> => list(interpolated_asset_property_value()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_interpolated_asset_property_values_response() :: #{binary() => any()}.
@@ -2112,10 +2112,10 @@
 
 %% Example:
 %% batch_get_asset_property_value_response() :: #{
-%%   <<"errorEntries">> => list(batch_get_asset_property_value_error_entry()()),
+%%   <<"errorEntries">> => list(batch_get_asset_property_value_error_entry()),
 %%   <<"nextToken">> => string(),
-%%   <<"skippedEntries">> => list(batch_get_asset_property_value_skipped_entry()()),
-%%   <<"successEntries">> => list(batch_get_asset_property_value_success_entry()())
+%%   <<"skippedEntries">> => list(batch_get_asset_property_value_skipped_entry()),
+%%   <<"successEntries">> => list(batch_get_asset_property_value_success_entry())
 %% }
 -type batch_get_asset_property_value_response() :: #{binary() => any()}.
 
@@ -2124,7 +2124,7 @@
 %% transform() :: #{
 %%   <<"expression">> => string(),
 %%   <<"processingConfig">> => transform_processing_config(),
-%%   <<"variables">> => list(expression_variable()())
+%%   <<"variables">> => list(expression_variable())
 %% }
 -type transform() :: #{binary() => any()}.
 
@@ -2165,7 +2165,7 @@
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"path">> => list(asset_composite_model_path_segment()()),
+%%   <<"path">> => list(asset_composite_model_path_segment()),
 %%   <<"type">> => string()
 %% }
 -type asset_composite_model_summary() :: #{binary() => any()}.
@@ -2259,7 +2259,7 @@
 
 %% Example:
 %% batch_disassociate_project_assets_response() :: #{
-%%   <<"errors">> => list(asset_error_details()())
+%%   <<"errors">> => list(asset_error_details())
 %% }
 -type batch_disassociate_project_assets_response() :: #{binary() => any()}.
 
@@ -2391,7 +2391,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"notification">> => property_notification(),
-%%   <<"path">> => list(asset_property_path_segment()()),
+%%   <<"path">> => list(asset_property_path_segment()),
 %%   <<"type">> => property_type(),
 %%   <<"unit">> => string()
 %% }
@@ -2400,9 +2400,9 @@
 
 %% Example:
 %% execute_query_response() :: #{
-%%   <<"columns">> => list(column_info()()),
+%%   <<"columns">> => list(column_info()),
 %%   <<"nextToken">> => string(),
-%%   <<"rows">> => list(row()())
+%%   <<"rows">> => list(row())
 %% }
 -type execute_query_response() :: #{binary() => any()}.
 
@@ -2416,7 +2416,7 @@
 
 %% Example:
 %% get_asset_property_value_history_response() :: #{
-%%   <<"assetPropertyValueHistory">> => list(asset_property_value()()),
+%%   <<"assetPropertyValueHistory">> => list(asset_property_value()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_asset_property_value_history_response() :: #{binary() => any()}.
@@ -2428,7 +2428,7 @@
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"path">> => list(asset_model_composite_model_path_segment()()),
+%%   <<"path">> => list(asset_model_composite_model_path_segment()),
 %%   <<"type">> => string()
 %% }
 -type asset_model_composite_model_summary() :: #{binary() => any()}.
@@ -2444,7 +2444,7 @@
 
 %% Example:
 %% composition_details() :: #{
-%%   <<"compositionRelationship">> => list(composition_relationship_item()())
+%%   <<"compositionRelationship">> => list(composition_relationship_item())
 %% }
 -type composition_details() :: #{binary() => any()}.
 
@@ -2471,7 +2471,7 @@
 %% describe_gateway_response() :: #{
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"gatewayArn">> => string(),
-%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()()),
+%%   <<"gatewayCapabilitySummaries">> => list(gateway_capability_summary()),
 %%   <<"gatewayId">> => string(),
 %%   <<"gatewayName">> => string(),
 %%   <<"gatewayPlatform">> => gateway_platform(),
@@ -2483,7 +2483,7 @@
 
 %% Example:
 %% batch_get_asset_property_value_request() :: #{
-%%   <<"entries">> := list(batch_get_asset_property_value_entry()()),
+%%   <<"entries">> := list(batch_get_asset_property_value_entry()),
 %%   <<"nextToken">> => string()
 %% }
 -type batch_get_asset_property_value_request() :: #{binary() => any()}.
@@ -2500,7 +2500,7 @@
 
 %% Example:
 %% batch_get_asset_property_value_history_success_entry() :: #{
-%%   <<"assetPropertyValueHistory">> => list(asset_property_value()()),
+%%   <<"assetPropertyValueHistory">> => list(asset_property_value()),
 %%   <<"entryId">> => string()
 %% }
 -type batch_get_asset_property_value_history_success_entry() :: #{binary() => any()}.
@@ -2551,7 +2551,7 @@
 %%   <<"assetModelCompositeModelDescription">> => string(),
 %%   <<"assetModelCompositeModelExternalId">> => string(),
 %%   <<"assetModelCompositeModelName">> := string(),
-%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()()),
+%%   <<"assetModelCompositeModelProperties">> => list(asset_model_property()),
 %%   <<"clientToken">> => string(),
 %%   <<"ifMatch">> => string(),
 %%   <<"ifNoneMatch">> => string(),
@@ -2562,7 +2562,7 @@
 
 %% Example:
 %% list_asset_relationships_response() :: #{
-%%   <<"assetRelationshipSummaries">> => list(asset_relationship_summary()()),
+%%   <<"assetRelationshipSummaries">> => list(asset_relationship_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_relationships_response() :: #{binary() => any()}.
@@ -2582,7 +2582,7 @@
 
 %% Example:
 %% list_asset_model_properties_response() :: #{
-%%   <<"assetModelPropertySummaries">> => list(asset_model_property_summary()()),
+%%   <<"assetModelPropertySummaries">> => list(asset_model_property_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_model_properties_response() :: #{binary() => any()}.
@@ -2629,7 +2629,7 @@
 
 %% Example:
 %% batch_disassociate_project_assets_request() :: #{
-%%   <<"assetIds">> := list(string()()),
+%%   <<"assetIds">> := list(string()),
 %%   <<"clientToken">> => string()
 %% }
 -type batch_disassociate_project_assets_request() :: #{binary() => any()}.
@@ -2637,21 +2637,21 @@
 
 %% Example:
 %% batch_put_asset_property_value_response() :: #{
-%%   <<"errorEntries">> => list(batch_put_asset_property_error_entry()())
+%%   <<"errorEntries">> => list(batch_put_asset_property_error_entry())
 %% }
 -type batch_put_asset_property_value_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_asset_composite_model_response() :: #{
-%%   <<"actionDefinitions">> => list(action_definition()()),
+%%   <<"actionDefinitions">> => list(action_definition()),
 %%   <<"assetCompositeModelDescription">> => string(),
 %%   <<"assetCompositeModelExternalId">> => string(),
 %%   <<"assetCompositeModelId">> => string(),
 %%   <<"assetCompositeModelName">> => string(),
-%%   <<"assetCompositeModelPath">> => list(asset_composite_model_path_segment()()),
-%%   <<"assetCompositeModelProperties">> => list(asset_property()()),
-%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()()),
+%%   <<"assetCompositeModelPath">> => list(asset_composite_model_path_segment()),
+%%   <<"assetCompositeModelProperties">> => list(asset_property()),
+%%   <<"assetCompositeModelSummaries">> => list(asset_composite_model_summary()),
 %%   <<"assetCompositeModelType">> => string(),
 %%   <<"assetId">> => string()
 %% }
@@ -2678,7 +2678,7 @@
 
 %% Example:
 %% list_asset_properties_response() :: #{
-%%   <<"assetPropertySummaries">> => list(asset_property_summary()()),
+%%   <<"assetPropertySummaries">> => list(asset_property_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_properties_response() :: #{binary() => any()}.
@@ -2724,7 +2724,7 @@
 %% Example:
 %% batch_put_asset_property_error_entry() :: #{
 %%   <<"entryId">> => string(),
-%%   <<"errors">> => list(batch_put_asset_property_error()())
+%%   <<"errors">> => list(batch_put_asset_property_error())
 %% }
 -type batch_put_asset_property_error_entry() :: #{binary() => any()}.
 
@@ -2742,7 +2742,7 @@
 
 %% Example:
 %% list_datasets_response() :: #{
-%%   <<"datasetSummaries">> => list(dataset_summary()()),
+%%   <<"datasetSummaries">> => list(dataset_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.
@@ -2761,7 +2761,7 @@
 %% variable_value() :: #{
 %%   <<"hierarchyId">> => string(),
 %%   <<"propertyId">> => string(),
-%%   <<"propertyPath">> => list(asset_model_property_path_segment()())
+%%   <<"propertyPath">> => list(asset_model_property_path_segment())
 %% }
 -type variable_value() :: #{binary() => any()}.
 
@@ -2812,7 +2812,7 @@
 
 %% Example:
 %% portal_type_entry() :: #{
-%%   <<"portalTools">> => list(string()())
+%%   <<"portalTools">> => list(string())
 %% }
 -type portal_type_entry() :: #{binary() => any()}.
 
@@ -2826,13 +2826,13 @@
 
 %% Example:
 %% create_asset_model_request() :: #{
-%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model_definition()()),
+%%   <<"assetModelCompositeModels">> => list(asset_model_composite_model_definition()),
 %%   <<"assetModelDescription">> => string(),
 %%   <<"assetModelExternalId">> => string(),
-%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy_definition()()),
+%%   <<"assetModelHierarchies">> => list(asset_model_hierarchy_definition()),
 %%   <<"assetModelId">> => string(),
 %%   <<"assetModelName">> := string(),
-%%   <<"assetModelProperties">> => list(asset_model_property_definition()()),
+%%   <<"assetModelProperties">> => list(asset_model_property_definition()),
 %%   <<"assetModelType">> => list(any()),
 %%   <<"clientToken">> => string(),
 %%   <<"tags">> => map()
@@ -2854,14 +2854,14 @@
 %% batch_put_asset_property_error() :: #{
 %%   <<"errorCode">> => list(any()),
 %%   <<"errorMessage">> => string(),
-%%   <<"timestamps">> => list(time_in_nanos()())
+%%   <<"timestamps">> => list(time_in_nanos())
 %% }
 -type batch_put_asset_property_error() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_assets_response() :: #{
-%%   <<"assetSummaries">> => list(asset_summary()()),
+%%   <<"assetSummaries">> => list(asset_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assets_response() :: #{binary() => any()}.
@@ -2883,7 +2883,7 @@
 
 %% Example:
 %% list_dashboards_response() :: #{
-%%   <<"dashboardSummaries">> => list(dashboard_summary()()),
+%%   <<"dashboardSummaries">> => list(dashboard_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_dashboards_response() :: #{binary() => any()}.
@@ -2909,7 +2909,7 @@
 
 %% Example:
 %% list_gateways_response() :: #{
-%%   <<"gatewaySummaries">> => list(gateway_summary()()),
+%%   <<"gatewaySummaries">> => list(gateway_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_gateways_response() :: #{binary() => any()}.
@@ -3021,7 +3021,7 @@
 
 %% Example:
 %% list_associated_assets_response() :: #{
-%%   <<"assetSummaries">> => list(associated_assets_summary()()),
+%%   <<"assetSummaries">> => list(associated_assets_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_associated_assets_response() :: #{binary() => any()}.
@@ -3033,7 +3033,7 @@
 
 %% Example:
 %% update_asset_model_composite_model_response() :: #{
-%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()()),
+%%   <<"assetModelCompositeModelPath">> => list(asset_model_composite_model_path_segment()),
 %%   <<"assetModelStatus">> => asset_model_status()
 %% }
 -type update_asset_model_composite_model_response() :: #{binary() => any()}.
@@ -3064,7 +3064,7 @@
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
-%%   <<"path">> => list(asset_model_property_path_segment()()),
+%%   <<"path">> => list(asset_model_property_path_segment()),
 %%   <<"type">> => property_type(),
 %%   <<"unit">> => string()
 %% }
@@ -3098,7 +3098,7 @@
 
 %% Example:
 %% list_bulk_import_jobs_response() :: #{
-%%   <<"jobSummaries">> => list(job_summary()()),
+%%   <<"jobSummaries">> => list(job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_bulk_import_jobs_response() :: #{binary() => any()}.

@@ -51,7 +51,7 @@
 %% Example:
 %% deployment_result() :: #{
 %%   <<"DeploymentEndTime">> => non_neg_integer(),
-%%   <<"DeploymentModels">> => list(deployment_model()()),
+%%   <<"DeploymentModels">> => list(deployment_model()),
 %%   <<"DeploymentName">> => string(),
 %%   <<"DeploymentStartTime">> => non_neg_integer(),
 %%   <<"DeploymentStatus">> => string(),
@@ -62,7 +62,7 @@
 
 %% Example:
 %% edge_deployment() :: #{
-%%   <<"Definitions">> => list(definition()()),
+%%   <<"Definitions">> => list(definition()),
 %%   <<"DeploymentName">> => string(),
 %%   <<"FailureHandlingPolicy">> => list(any()),
 %%   <<"Type">> => list(any())
@@ -90,7 +90,7 @@
 
 %% Example:
 %% get_deployments_result() :: #{
-%%   <<"Deployments">> => list(edge_deployment()())
+%%   <<"Deployments">> => list(edge_deployment())
 %% }
 -type get_deployments_result() :: #{binary() => any()}.
 
@@ -122,7 +122,7 @@
 %% model() :: #{
 %%   <<"LatestInference">> => non_neg_integer(),
 %%   <<"LatestSampleTime">> => non_neg_integer(),
-%%   <<"ModelMetrics">> => list(edge_metric()()),
+%%   <<"ModelMetrics">> => list(edge_metric()),
 %%   <<"ModelName">> => string(),
 %%   <<"ModelVersion">> => string()
 %% }
@@ -131,12 +131,12 @@
 
 %% Example:
 %% send_heartbeat_request() :: #{
-%%   <<"AgentMetrics">> => list(edge_metric()()),
+%%   <<"AgentMetrics">> => list(edge_metric()),
 %%   <<"AgentVersion">> := string(),
 %%   <<"DeploymentResult">> => deployment_result(),
 %%   <<"DeviceFleetName">> := string(),
 %%   <<"DeviceName">> := string(),
-%%   <<"Models">> => list(model()())
+%%   <<"Models">> => list(model())
 %% }
 -type send_heartbeat_request() :: #{binary() => any()}.
 

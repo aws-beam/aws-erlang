@@ -177,7 +177,7 @@
 %%   <<"NotBeforeDate">> => non_neg_integer(),
 %%   <<"Serial">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => list(any()),
 %%   <<"Usage">> => list(any())
 %% }
@@ -199,9 +199,9 @@
 %% Example:
 %% create_workflow_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"OnExceptionSteps">> => list(workflow_step()()),
-%%   <<"Steps">> := list(workflow_step()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"OnExceptionSteps">> => list(workflow_step()),
+%%   <<"Steps">> := list(workflow_step()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_workflow_request() :: #{binary() => any()}.
 
@@ -218,7 +218,7 @@
 %% described_access() :: #{
 %%   <<"ExternalId">> => string(),
 %%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()()),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
 %%   <<"HomeDirectoryType">> => list(any()),
 %%   <<"Policy">> => string(),
 %%   <<"PosixProfile">> => posix_profile(),
@@ -236,7 +236,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"Arn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -297,7 +297,7 @@
 
 %% Example:
 %% list_connectors_response() :: #{
-%%   <<"Connectors">> => list(listed_connector()()),
+%%   <<"Connectors">> => list(listed_connector()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connectors_response() :: #{binary() => any()}.
@@ -318,7 +318,7 @@
 %%   <<"S3StorageOptions">> => s3_storage_options(),
 %%   <<"SecurityPolicyName">> => string(),
 %%   <<"ServerId">> := string(),
-%%   <<"StructuredLogDestinations">> => list(string()()),
+%%   <<"StructuredLogDestinations">> => list(string()),
 %%   <<"WorkflowDetails">> => workflow_details()
 %% }
 -type update_server_request() :: #{binary() => any()}.
@@ -355,8 +355,8 @@
 
 %% Example:
 %% workflow_details() :: #{
-%%   <<"OnPartialUpload">> => list(workflow_detail()()),
-%%   <<"OnUpload">> => list(workflow_detail()())
+%%   <<"OnPartialUpload">> => list(workflow_detail()),
+%%   <<"OnUpload">> => list(workflow_detail())
 %% }
 -type workflow_details() :: #{binary() => any()}.
 
@@ -422,7 +422,7 @@
 %%   <<"PreserveFilename">> => list(any()),
 %%   <<"ServerId">> := string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_agreement_request() :: #{binary() => any()}.
 
@@ -455,9 +455,9 @@
 
 %% Example:
 %% endpoint_details() :: #{
-%%   <<"AddressAllocationIds">> => list(string()()),
-%%   <<"SecurityGroupIds">> => list(string()()),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"AddressAllocationIds">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcEndpointId">> => string(),
 %%   <<"VpcId">> => string()
 %% }
@@ -559,7 +559,7 @@
 %% Example:
 %% posix_profile() :: #{
 %%   <<"Gid">> => float(),
-%%   <<"SecondaryGids">> => list(float()()),
+%%   <<"SecondaryGids">> => list(float()),
 %%   <<"Uid">> => float()
 %% }
 -type posix_profile() :: #{binary() => any()}.
@@ -598,7 +598,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"Arn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -626,7 +626,7 @@
 %% update_access_request() :: #{
 %%   <<"ExternalId">> := string(),
 %%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()()),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
 %%   <<"HomeDirectoryType">> => list(any()),
 %%   <<"Policy">> => string(),
 %%   <<"PosixProfile">> => posix_profile(),
@@ -652,8 +652,8 @@
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"S3StorageOptions">> => s3_storage_options(),
 %%   <<"SecurityPolicyName">> => string(),
-%%   <<"StructuredLogDestinations">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"StructuredLogDestinations">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WorkflowDetails">> => workflow_details()
 %% }
 -type create_server_request() :: #{binary() => any()}.
@@ -684,11 +684,11 @@
 %%   <<"Fips">> => boolean(),
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"SecurityPolicyName">> => string(),
-%%   <<"SshCiphers">> => list(string()()),
-%%   <<"SshHostKeyAlgorithms">> => list(string()()),
-%%   <<"SshKexs">> => list(string()()),
-%%   <<"SshMacs">> => list(string()()),
-%%   <<"TlsCiphers">> => list(string()()),
+%%   <<"SshCiphers">> => list(string()),
+%%   <<"SshHostKeyAlgorithms">> => list(string()),
+%%   <<"SshKexs">> => list(string()),
+%%   <<"SshMacs">> => list(string()),
+%%   <<"TlsCiphers">> => list(string()),
 %%   <<"Type">> => list(any())
 %% }
 -type described_security_policy() :: #{binary() => any()}.
@@ -697,7 +697,7 @@
 %% create_web_app_request() :: #{
 %%   <<"AccessEndpoint">> => string(),
 %%   <<"IdentityProviderDetails">> := list(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WebAppEndpointPolicy">> => list(any()),
 %%   <<"WebAppUnits">> => list()
 %% }
@@ -723,7 +723,7 @@
 
 %% Example:
 %% cfn_user_properties() :: #{
-%%   <<"SshPublicKeys">> => list(string()())
+%%   <<"SshPublicKeys">> => list(string())
 %% }
 -type cfn_user_properties() :: #{binary() => any()}.
 
@@ -739,9 +739,9 @@
 %% Example:
 %% create_profile_request() :: #{
 %%   <<"As2Id">> := string(),
-%%   <<"CertificateIds">> => list(string()()),
+%%   <<"CertificateIds">> => list(string()),
 %%   <<"ProfileType">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_profile_request() :: #{binary() => any()}.
 
@@ -758,20 +758,20 @@
 %% described_user() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()()),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
 %%   <<"HomeDirectoryType">> => list(any()),
 %%   <<"Policy">> => string(),
 %%   <<"PosixProfile">> => posix_profile(),
 %%   <<"Role">> => string(),
-%%   <<"SshPublicKeys">> => list(ssh_public_key()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SshPublicKeys">> => list(ssh_public_key()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserName">> => string()
 %% }
 -type described_user() :: #{binary() => any()}.
 
 %% Example:
 %% list_accesses_response() :: #{
-%%   <<"Accesses">> => list(listed_access()()),
+%%   <<"Accesses">> => list(listed_access()),
 %%   <<"NextToken">> => string(),
 %%   <<"ServerId">> => string()
 %% }
@@ -799,7 +799,7 @@
 %%   <<"Description">> => string(),
 %%   <<"HostKeyFingerprint">> => string(),
 %%   <<"HostKeyId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string()
 %% }
 -type described_host_key() :: #{binary() => any()}.
@@ -829,14 +829,14 @@
 
 %% Example:
 %% update_profile_request() :: #{
-%%   <<"CertificateIds">> => list(string()()),
+%%   <<"CertificateIds">> => list(string()),
 %%   <<"ProfileId">> := string()
 %% }
 -type update_profile_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_executions_response() :: #{
-%%   <<"Executions">> => list(listed_execution()()),
+%%   <<"Executions">> => list(listed_execution()),
 %%   <<"NextToken">> => string(),
 %%   <<"WorkflowId">> => string()
 %% }
@@ -847,7 +847,7 @@
 %%   <<"Description">> => string(),
 %%   <<"HostKeyBody">> := string(),
 %%   <<"ServerId">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_host_key_request() :: #{binary() => any()}.
 
@@ -927,7 +927,7 @@
 %% list_users_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ServerId">> => string(),
-%%   <<"Users">> => list(listed_user()())
+%%   <<"Users">> => list(listed_user())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -955,7 +955,7 @@
 %% create_access_request() :: #{
 %%   <<"ExternalId">> := string(),
 %%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()()),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
 %%   <<"HomeDirectoryType">> => list(any()),
 %%   <<"Policy">> => string(),
 %%   <<"PosixProfile">> => posix_profile(),
@@ -987,7 +987,7 @@
 %% list_tags_for_resource_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1025,7 +1025,7 @@
 
 %% Example:
 %% list_file_transfer_results_response() :: #{
-%%   <<"FileTransferResults">> => list(connector_file_transfer_result()()),
+%%   <<"FileTransferResults">> => list(connector_file_transfer_result()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_file_transfer_results_response() :: #{binary() => any()}.
@@ -1034,7 +1034,7 @@
 %% tag_step_details() :: #{
 %%   <<"Name">> => string(),
 %%   <<"SourceFileLocation">> => string(),
-%%   <<"Tags">> => list(s3_tag()())
+%%   <<"Tags">> => list(s3_tag())
 %% }
 -type tag_step_details() :: #{binary() => any()}.
 
@@ -1079,7 +1079,7 @@
 %% Example:
 %% described_server() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"As2ServiceManagedEgressIpAddresses">> => list(string()()),
+%%   <<"As2ServiceManagedEgressIpAddresses">> => list(string()),
 %%   <<"Certificate">> => string(),
 %%   <<"Domain">> => list(any()),
 %%   <<"EndpointDetails">> => endpoint_details(),
@@ -1097,8 +1097,8 @@
 %%   <<"SecurityPolicyName">> => string(),
 %%   <<"ServerId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"StructuredLogDestinations">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"StructuredLogDestinations">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserCount">> => integer(),
 %%   <<"WorkflowDetails">> => workflow_details()
 %% }
@@ -1123,10 +1123,10 @@
 %% described_profile() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"As2Id">> => string(),
-%%   <<"CertificateIds">> => list(string()()),
+%%   <<"CertificateIds">> => list(string()),
 %%   <<"ProfileId">> => string(),
 %%   <<"ProfileType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type described_profile() :: #{binary() => any()}.
 
@@ -1282,7 +1282,7 @@
 %%   <<"Description">> => string(),
 %%   <<"InactiveDate">> => non_neg_integer(),
 %%   <<"PrivateKey">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Usage">> := list(any())
 %% }
 -type import_certificate_request() :: #{binary() => any()}.
@@ -1350,7 +1350,7 @@
 %%   <<"LoggingRole">> => string(),
 %%   <<"SecurityPolicyName">> => string(),
 %%   <<"SftpConfig">> => sftp_connector_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Url">> := string()
 %% }
 -type create_connector_request() :: #{binary() => any()}.
@@ -1358,7 +1358,7 @@
 %% Example:
 %% list_security_policies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SecurityPolicyNames">> => list(string()())
+%%   <<"SecurityPolicyNames">> => list(string())
 %% }
 -type list_security_policies_response() :: #{binary() => any()}.
 
@@ -1438,7 +1438,7 @@
 %% Example:
 %% update_user_request() :: #{
 %%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()()),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
 %%   <<"HomeDirectoryType">> => list(any()),
 %%   <<"Policy">> => string(),
 %%   <<"PosixProfile">> => posix_profile(),
@@ -1451,7 +1451,7 @@
 %% Example:
 %% list_profiles_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Profiles">> => list(listed_profile()())
+%%   <<"Profiles">> => list(listed_profile())
 %% }
 -type list_profiles_response() :: #{binary() => any()}.
 
@@ -1473,7 +1473,7 @@
 
 %% Example:
 %% list_host_keys_response() :: #{
-%%   <<"HostKeys">> => list(listed_host_key()()),
+%%   <<"HostKeys">> => list(listed_host_key()),
 %%   <<"NextToken">> => string(),
 %%   <<"ServerId">> => string()
 %% }
@@ -1482,7 +1482,7 @@
 %% Example:
 %% list_web_apps_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WebApps">> => list(listed_web_app()())
+%%   <<"WebApps">> => list(listed_web_app())
 %% }
 -type list_web_apps_response() :: #{binary() => any()}.
 
@@ -1511,9 +1511,9 @@
 %% described_workflow() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"OnExceptionSteps">> => list(workflow_step()()),
-%%   <<"Steps">> => list(workflow_step()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"OnExceptionSteps">> => list(workflow_step()),
+%%   <<"Steps">> => list(workflow_step()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WorkflowId">> => string()
 %% }
 -type described_workflow() :: #{binary() => any()}.
@@ -1521,7 +1521,7 @@
 %% Example:
 %% list_servers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Servers">> => list(listed_server()())
+%%   <<"Servers">> => list(listed_server())
 %% }
 -type list_servers_response() :: #{binary() => any()}.
 
@@ -1605,13 +1605,13 @@
 %%   <<"PreserveFilename">> => list(any()),
 %%   <<"ServerId">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type described_agreement() :: #{binary() => any()}.
 
 %% Example:
 %% list_agreements_response() :: #{
-%%   <<"Agreements">> => list(listed_agreement()()),
+%%   <<"Agreements">> => list(listed_agreement()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_agreements_response() :: #{binary() => any()}.
@@ -1619,7 +1619,7 @@
 %% Example:
 %% sftp_connector_config() :: #{
 %%   <<"MaxConcurrentConnections">> => integer(),
-%%   <<"TrustedHostKeys">> => list(string()()),
+%%   <<"TrustedHostKeys">> => list(string()),
 %%   <<"UserSecretId">> => string()
 %% }
 -type sftp_connector_config() :: #{binary() => any()}.
@@ -1635,7 +1635,7 @@
 %%   <<"AccessEndpoint">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"DescribedIdentityProviderDetails">> => list(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WebAppEndpoint">> => string(),
 %%   <<"WebAppEndpointPolicy">> => list(any()),
 %%   <<"WebAppId">> => string(),
@@ -1653,7 +1653,7 @@
 %% Example:
 %% list_workflows_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Workflows">> => list(listed_workflow()())
+%%   <<"Workflows">> => list(listed_workflow())
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
 
@@ -1699,8 +1699,8 @@
 %%   <<"ConnectorId">> := string(),
 %%   <<"LocalDirectoryPath">> => string(),
 %%   <<"RemoteDirectoryPath">> => string(),
-%%   <<"RetrieveFilePaths">> => list(string()()),
-%%   <<"SendFilePaths">> => list(string()())
+%%   <<"RetrieveFilePaths">> => list(string()),
+%%   <<"SendFilePaths">> => list(string())
 %% }
 -type start_file_transfer_request() :: #{binary() => any()}.
 
@@ -1718,8 +1718,8 @@
 
 %% Example:
 %% execution_results() :: #{
-%%   <<"OnExceptionSteps">> => list(execution_step_result()()),
-%%   <<"Steps">> => list(execution_step_result()())
+%%   <<"OnExceptionSteps">> => list(execution_step_result()),
+%%   <<"Steps">> => list(execution_step_result())
 %% }
 -type execution_results() :: #{binary() => any()}.
 
@@ -1731,16 +1731,16 @@
 %%   <<"ConnectorId">> => string(),
 %%   <<"LoggingRole">> => string(),
 %%   <<"SecurityPolicyName">> => string(),
-%%   <<"ServiceManagedEgressIpAddresses">> => list(string()()),
+%%   <<"ServiceManagedEgressIpAddresses">> => list(string()),
 %%   <<"SftpConfig">> => sftp_connector_config(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Url">> => string()
 %% }
 -type described_connector() :: #{binary() => any()}.
 
 %% Example:
 %% list_certificates_response() :: #{
-%%   <<"Certificates">> => list(listed_certificate()()),
+%%   <<"Certificates">> => list(listed_certificate()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_certificates_response() :: #{binary() => any()}.
@@ -1777,14 +1777,14 @@
 %% Example:
 %% create_user_request() :: #{
 %%   <<"HomeDirectory">> => string(),
-%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()()),
+%%   <<"HomeDirectoryMappings">> => list(home_directory_map_entry()),
 %%   <<"HomeDirectoryType">> => list(any()),
 %%   <<"Policy">> => string(),
 %%   <<"PosixProfile">> => posix_profile(),
 %%   <<"Role">> := string(),
 %%   <<"ServerId">> := string(),
 %%   <<"SshPublicKeyBody">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserName">> := string()
 %% }
 -type create_user_request() :: #{binary() => any()}.

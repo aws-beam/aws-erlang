@@ -58,7 +58,7 @@
 
 %% Example:
 %% batch_add_role_input() :: #{
-%%   <<"accessorIds">> := list(string()()),
+%%   <<"accessorIds">> := list(string()),
 %%   <<"role">> := list(any())
 %% }
 -type batch_add_role_input() :: #{binary() => any()}.
@@ -66,8 +66,8 @@
 
 %% Example:
 %% batch_add_role_output() :: #{
-%%   <<"addedAccessorIds">> => list(string()()),
-%%   <<"errors">> => list(batch_error()())
+%%   <<"addedAccessorIds">> => list(string()),
+%%   <<"errors">> => list(batch_error())
 %% }
 -type batch_add_role_output() :: #{binary() => any()}.
 
@@ -83,7 +83,7 @@
 
 %% Example:
 %% batch_remove_role_input() :: #{
-%%   <<"accessorIds">> := list(string()()),
+%%   <<"accessorIds">> := list(string()),
 %%   <<"role">> := list(any())
 %% }
 -type batch_remove_role_input() :: #{binary() => any()}.
@@ -91,8 +91,8 @@
 
 %% Example:
 %% batch_remove_role_output() :: #{
-%%   <<"errors">> => list(batch_error()()),
-%%   <<"removedAccessorIds">> => list(string()())
+%%   <<"errors">> => list(batch_error()),
+%%   <<"removedAccessorIds">> => list(string())
 %% }
 -type batch_remove_role_output() :: #{binary() => any()}.
 
@@ -148,7 +148,7 @@
 %%   <<"customerRoleArn">> => string(),
 %%   <<"deleteDateTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
-%%   <<"groupAdmins">> => list(string()()),
+%%   <<"groupAdmins">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"randomDomain">> => string(),
 %%   <<"roles">> => map(),
@@ -156,7 +156,7 @@
 %%   <<"status">> => string(),
 %%   <<"storageLimit">> => float(),
 %%   <<"tier">> => list(any()),
-%%   <<"userAdmins">> => list(string()()),
+%%   <<"userAdmins">> => list(string()),
 %%   <<"userCount">> => integer(),
 %%   <<"userKMSKey">> => string(),
 %%   <<"vanityDomain">> => string(),
@@ -184,7 +184,7 @@
 %% Example:
 %% list_spaces_output() :: #{
 %%   <<"nextToken">> => [string()],
-%%   <<"spaces">> => list(space_data()())
+%%   <<"spaces">> => list(space_data())
 %% }
 -type list_spaces_output() :: #{binary() => any()}.
 
@@ -215,7 +215,7 @@
 
 %% Example:
 %% send_invites_input() :: #{
-%%   <<"accessorIds">> := list(string()()),
+%%   <<"accessorIds">> := list(string()),
 %%   <<"body">> := string(),
 %%   <<"title">> := string()
 %% }
@@ -278,7 +278,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -298,7 +298,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }

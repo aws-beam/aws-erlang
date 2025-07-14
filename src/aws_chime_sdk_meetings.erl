@@ -71,7 +71,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -98,7 +98,7 @@
 
 %% Example:
 %% create_meeting_with_attendees_request() :: #{
-%%   <<"Attendees">> := list(create_attendee_request_item()()),
+%%   <<"Attendees">> := list(create_attendee_request_item()),
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"ExternalMeetingId">> := string(),
 %%   <<"MediaRegion">> := string(),
@@ -106,8 +106,8 @@
 %%   <<"MeetingHostId">> => string(),
 %%   <<"NotificationsConfiguration">> => notifications_configuration(),
 %%   <<"PrimaryMeetingId">> => string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TenantIds">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"TenantIds">> => list(string())
 %% }
 -type create_meeting_with_attendees_request() :: #{binary() => any()}.
 
@@ -140,7 +140,7 @@
 %%   <<"MeetingHostId">> => string(),
 %%   <<"MeetingId">> => string(),
 %%   <<"PrimaryMeetingId">> => string(),
-%%   <<"TenantIds">> => list(string()())
+%%   <<"TenantIds">> => list(string())
 %% }
 -type meeting() :: #{binary() => any()}.
 
@@ -162,7 +162,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -202,7 +202,7 @@
 
 %% Example:
 %% list_attendees_response() :: #{
-%%   <<"Attendees">> => list(attendee()()),
+%%   <<"Attendees">> => list(attendee()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_attendees_response() :: #{binary() => any()}.
@@ -210,8 +210,8 @@
 
 %% Example:
 %% create_meeting_with_attendees_response() :: #{
-%%   <<"Attendees">> => list(attendee()()),
-%%   <<"Errors">> => list(create_attendee_error()()),
+%%   <<"Attendees">> => list(attendee()),
+%%   <<"Errors">> => list(create_attendee_error()),
 %%   <<"Meeting">> => meeting()
 %% }
 -type create_meeting_with_attendees_response() :: #{binary() => any()}.
@@ -284,8 +284,8 @@
 %%   <<"MeetingHostId">> => string(),
 %%   <<"NotificationsConfiguration">> => notifications_configuration(),
 %%   <<"PrimaryMeetingId">> => string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TenantIds">> => list(string()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"TenantIds">> => list(string())
 %% }
 -type create_meeting_request() :: #{binary() => any()}.
 
@@ -316,7 +316,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -426,15 +426,15 @@
 
 %% Example:
 %% batch_create_attendee_request() :: #{
-%%   <<"Attendees">> := list(create_attendee_request_item()())
+%%   <<"Attendees">> := list(create_attendee_request_item())
 %% }
 -type batch_create_attendee_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_create_attendee_response() :: #{
-%%   <<"Attendees">> => list(attendee()()),
-%%   <<"Errors">> => list(create_attendee_error()())
+%%   <<"Attendees">> => list(attendee()),
+%%   <<"Errors">> => list(create_attendee_error())
 %% }
 -type batch_create_attendee_response() :: #{binary() => any()}.
 
@@ -450,7 +450,7 @@
 %% Example:
 %% batch_update_attendee_capabilities_except_request() :: #{
 %%   <<"Capabilities">> := attendee_capabilities(),
-%%   <<"ExcludedAttendeeIds">> := list(attendee_id_item()())
+%%   <<"ExcludedAttendeeIds">> := list(attendee_id_item())
 %% }
 -type batch_update_attendee_capabilities_except_request() :: #{binary() => any()}.
 

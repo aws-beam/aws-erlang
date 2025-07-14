@@ -98,14 +98,14 @@
 
 %% Example:
 %% points_of_interest() :: #{
-%%   <<"TimestampRanges">> => list(timestamp_range()())
+%%   <<"TimestampRanges">> => list(timestamp_range())
 %% }
 -type points_of_interest() :: #{binary() => any()}.
 
 
 %% Example:
 %% medical_scribe_stream_details() :: #{
-%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()()),
+%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
 %%   <<"EncryptionSettings">> => medical_scribe_encryption_settings(),
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"MediaEncoding">> => list(any()),
@@ -175,8 +175,8 @@
 
 %% Example:
 %% medical_alternative() :: #{
-%%   <<"Entities">> => list(medical_entity()()),
-%%   <<"Items">> => list(medical_item()()),
+%%   <<"Entities">> => list(medical_entity()),
+%%   <<"Items">> => list(medical_item()),
 %%   <<"Transcript">> => string()
 %% }
 -type medical_alternative() :: #{binary() => any()}.
@@ -184,7 +184,7 @@
 
 %% Example:
 %% category_event() :: #{
-%%   <<"MatchedCategories">> => list(string()()),
+%%   <<"MatchedCategories">> => list(string()),
 %%   <<"MatchedDetails">> => map()
 %% }
 -type category_event() :: #{binary() => any()}.
@@ -199,7 +199,7 @@
 
 %% Example:
 %% medical_scribe_configuration_event() :: #{
-%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()()),
+%%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
 %%   <<"EncryptionSettings">> => medical_scribe_encryption_settings(),
 %%   <<"PostStreamAnalyticsSettings">> => medical_scribe_post_stream_analytics_settings(),
 %%   <<"ResourceAccessRoleArn">> => string(),
@@ -220,7 +220,7 @@
 
 %% Example:
 %% transcript() :: #{
-%%   <<"Results">> => list(result()())
+%%   <<"Results">> => list(result())
 %% }
 -type transcript() :: #{binary() => any()}.
 
@@ -245,7 +245,7 @@
 
 %% Example:
 %% medical_transcript() :: #{
-%%   <<"Results">> => list(medical_result()())
+%%   <<"Results">> => list(medical_result())
 %% }
 -type medical_transcript() :: #{binary() => any()}.
 
@@ -348,12 +348,12 @@
 
 %% Example:
 %% result() :: #{
-%%   <<"Alternatives">> => list(alternative()()),
+%%   <<"Alternatives">> => list(alternative()),
 %%   <<"ChannelId">> => string(),
 %%   <<"EndTime">> => float(),
 %%   <<"IsPartial">> => boolean(),
 %%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageIdentification">> => list(language_with_score()()),
+%%   <<"LanguageIdentification">> => list(language_with_score()),
 %%   <<"ResultId">> => string(),
 %%   <<"StartTime">> => float()
 %% }
@@ -457,7 +457,7 @@
 
 %% Example:
 %% medical_result() :: #{
-%%   <<"Alternatives">> => list(medical_alternative()()),
+%%   <<"Alternatives">> => list(medical_alternative()),
 %%   <<"ChannelId">> => string(),
 %%   <<"EndTime">> => float(),
 %%   <<"IsPartial">> => boolean(),
@@ -497,7 +497,7 @@
 
 %% Example:
 %% configuration_event() :: #{
-%%   <<"ChannelDefinitions">> => list(channel_definition()()),
+%%   <<"ChannelDefinitions">> => list(channel_definition()),
 %%   <<"PostCallAnalyticsSettings">> => post_call_analytics_settings()
 %% }
 -type configuration_event() :: #{binary() => any()}.
@@ -522,10 +522,10 @@
 %% utterance_event() :: #{
 %%   <<"BeginOffsetMillis">> => float(),
 %%   <<"EndOffsetMillis">> => float(),
-%%   <<"Entities">> => list(call_analytics_entity()()),
+%%   <<"Entities">> => list(call_analytics_entity()),
 %%   <<"IsPartial">> => boolean(),
-%%   <<"IssuesDetected">> => list(issue_detected()()),
-%%   <<"Items">> => list(call_analytics_item()()),
+%%   <<"IssuesDetected">> => list(issue_detected()),
+%%   <<"Items">> => list(call_analytics_item()),
 %%   <<"ParticipantRole">> => list(any()),
 %%   <<"Sentiment">> => list(any()),
 %%   <<"Transcript">> => string(),
@@ -574,7 +574,7 @@
 %%   <<"Content">> => string(),
 %%   <<"EndAudioTime">> => float(),
 %%   <<"IsPartial">> => boolean(),
-%%   <<"Items">> => list(medical_scribe_transcript_item()()),
+%%   <<"Items">> => list(medical_scribe_transcript_item()),
 %%   <<"SegmentId">> => string()
 %% }
 -type medical_scribe_transcript_segment() :: #{binary() => any()}.
@@ -619,8 +619,8 @@
 
 %% Example:
 %% alternative() :: #{
-%%   <<"Entities">> => list(entity()()),
-%%   <<"Items">> => list(item()()),
+%%   <<"Entities">> => list(entity()),
+%%   <<"Items">> => list(item()),
 %%   <<"Transcript">> => string()
 %% }
 -type alternative() :: #{binary() => any()}.

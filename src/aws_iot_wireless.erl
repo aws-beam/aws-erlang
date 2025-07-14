@@ -322,7 +322,7 @@
 
 %% Example:
 %% list_destinations_response() :: #{
-%%   <<"DestinationList">> => list(destinations()()),
+%%   <<"DestinationList">> => list(destinations()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_destinations_response() :: #{binary() => any()}.
@@ -362,7 +362,7 @@
 %%   <<"DestinationName">> := string(),
 %%   <<"DeviceName">> => string(),
 %%   <<"Sidewalk">> := sidewalk_single_start_import_info(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_single_wireless_device_import_task_request() :: #{binary() => any()}.
 
@@ -370,7 +370,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -378,7 +378,7 @@
 %% Example:
 %% list_position_configurations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PositionConfigurationList">> => list(position_configuration_item()())
+%%   <<"PositionConfigurationList">> => list(position_configuration_item())
 %% }
 -type list_position_configurations_response() :: #{binary() => any()}.
 
@@ -448,7 +448,7 @@
 %% Example:
 %% summary_metric_query() :: #{
 %%   <<"AggregationPeriod">> => list(any()),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"EndTimestamp">> => non_neg_integer(),
 %%   <<"MetricName">> => list(any()),
 %%   <<"QueryId">> => string(),
@@ -499,7 +499,7 @@
 %%   <<"Description">> => string(),
 %%   <<"LoRaWAN">> := lo_ra_w_a_n_gateway(),
 %%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_wireless_gateway_request() :: #{binary() => any()}.
 
@@ -512,7 +512,7 @@
 %%   <<"ExpressionType">> := list(any()),
 %%   <<"Name">> := string(),
 %%   <<"RoleArn">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_destination_request() :: #{binary() => any()}.
 
@@ -616,11 +616,11 @@
 %% get_network_analyzer_configuration_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"MulticastGroups">> => list(string()()),
+%%   <<"MulticastGroups">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"TraceContent">> => trace_content(),
-%%   <<"WirelessDevices">> => list(string()()),
-%%   <<"WirelessGateways">> => list(string()())
+%%   <<"WirelessDevices">> => list(string()),
+%%   <<"WirelessGateways">> => list(string())
 %% }
 -type get_network_analyzer_configuration_response() :: #{binary() => any()}.
 
@@ -736,11 +736,11 @@
 
 %% Example:
 %% cell_towers() :: #{
-%%   <<"Cdma">> => list(cdma_obj()()),
-%%   <<"Gsm">> => list(gsm_obj()()),
-%%   <<"Lte">> => list(lte_obj()()),
-%%   <<"Tdscdma">> => list(tdscdma_obj()()),
-%%   <<"Wcdma">> => list(wcdma_obj()())
+%%   <<"Cdma">> => list(cdma_obj()),
+%%   <<"Gsm">> => list(gsm_obj()),
+%%   <<"Lte">> => list(lte_obj()),
+%%   <<"Tdscdma">> => list(tdscdma_obj()),
+%%   <<"Wcdma">> => list(wcdma_obj())
 %% }
 -type cell_towers() :: #{binary() => any()}.
 
@@ -888,7 +888,7 @@
 
 %% Example:
 %% participating_gateways_multicast() :: #{
-%%   <<"GatewayList">> => list(string()()),
+%%   <<"GatewayList">> => list(string()),
 %%   <<"TransmissionInterval">> => integer()
 %% }
 -type participating_gateways_multicast() :: #{binary() => any()}.
@@ -979,7 +979,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1032,12 +1032,12 @@
 %% create_network_analyzer_configuration_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"MulticastGroups">> => list(string()()),
+%%   <<"MulticastGroups">> => list(string()),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TraceContent">> => trace_content(),
-%%   <<"WirelessDevices">> => list(string()()),
-%%   <<"WirelessGateways">> => list(string()())
+%%   <<"WirelessDevices">> => list(string()),
+%%   <<"WirelessGateways">> => list(string())
 %% }
 -type create_network_analyzer_configuration_request() :: #{binary() => any()}.
 
@@ -1165,7 +1165,7 @@
 %% Example:
 %% list_wireless_device_import_tasks_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WirelessDeviceImportTaskList">> => list(wireless_device_import_task()())
+%%   <<"WirelessDeviceImportTaskList">> => list(wireless_device_import_task())
 %% }
 -type list_wireless_device_import_tasks_response() :: #{binary() => any()}.
 
@@ -1198,7 +1198,7 @@
 %%   <<"Description">> => string(),
 %%   <<"LoRaWAN">> := lo_ra_w_a_n_multicast(),
 %%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_multicast_group_request() :: #{binary() => any()}.
 
@@ -1222,7 +1222,7 @@
 %% Example:
 %% list_wireless_gateways_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WirelessGatewayList">> => list(wireless_gateway_statistics()())
+%%   <<"WirelessGatewayList">> => list(wireless_gateway_statistics())
 %% }
 -type list_wireless_gateways_response() :: #{binary() => any()}.
 
@@ -1230,7 +1230,7 @@
 %% Example:
 %% list_wireless_devices_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WirelessDeviceList">> => list(wireless_device_statistics()())
+%%   <<"WirelessDeviceList">> => list(wireless_device_statistics())
 %% }
 -type list_wireless_devices_response() :: #{binary() => any()}.
 
@@ -1239,11 +1239,11 @@
 %% lo_ra_w_a_n_gateway() :: #{
 %%   <<"Beaconing">> => beaconing(),
 %%   <<"GatewayEui">> => string(),
-%%   <<"JoinEuiFilters">> => list(list(string()())()),
+%%   <<"JoinEuiFilters">> => list(list(string())()),
 %%   <<"MaxEirp">> => float(),
-%%   <<"NetIdFilters">> => list(string()()),
+%%   <<"NetIdFilters">> => list(string()),
 %%   <<"RfRegion">> => string(),
-%%   <<"SubBands">> => list(integer()())
+%%   <<"SubBands">> => list(integer())
 %% }
 -type lo_ra_w_a_n_gateway() :: #{binary() => any()}.
 
@@ -1252,7 +1252,7 @@
 %% associate_aws_account_with_partner_account_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"Sidewalk">> := sidewalk_account_info(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type associate_aws_account_with_partner_account_request() :: #{binary() => any()}.
 
@@ -1260,7 +1260,7 @@
 %% Example:
 %% get_position_response() :: #{
 %%   <<"Accuracy">> => accuracy(),
-%%   <<"Position">> => list(float()()),
+%%   <<"Position">> => list(float()),
 %%   <<"SolverProvider">> => list(any()),
 %%   <<"SolverType">> => list(any()),
 %%   <<"SolverVersion">> => string(),
@@ -1299,7 +1299,7 @@
 %% lo_ra_w_a_n_device_profile() :: #{
 %%   <<"ClassBTimeout">> => integer(),
 %%   <<"ClassCTimeout">> => integer(),
-%%   <<"FactoryPresetFreqsList">> => list(integer()()),
+%%   <<"FactoryPresetFreqsList">> => list(integer()),
 %%   <<"MacVersion">> => string(),
 %%   <<"MaxDutyCycle">> => integer(),
 %%   <<"MaxEirp">> => integer(),
@@ -1435,7 +1435,7 @@
 
 %% Example:
 %% get_metrics_request() :: #{
-%%   <<"SummaryMetricQueries">> => list(summary_metric_query()())
+%%   <<"SummaryMetricQueries">> => list(summary_metric_query())
 %% }
 -type get_metrics_request() :: #{binary() => any()}.
 
@@ -1520,7 +1520,7 @@
 %% Example:
 %% gnss() :: #{
 %%   <<"AssistAltitude">> => float(),
-%%   <<"AssistPosition">> => list(float()()),
+%%   <<"AssistPosition">> => list(float()),
 %%   <<"CaptureTime">> => float(),
 %%   <<"CaptureTimeAccuracy">> => float(),
 %%   <<"Payload">> => string(),
@@ -1582,7 +1582,7 @@
 %%   <<"LoRaWAN">> => lo_ra_w_a_n_fuota_task(),
 %%   <<"Name">> => string(),
 %%   <<"RedundancyPercent">> => integer(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_fuota_task_request() :: #{binary() => any()}.
 
@@ -1626,7 +1626,7 @@
 %%   <<"PathLoss">> => integer(),
 %%   <<"Rscp">> => integer(),
 %%   <<"TdscdmaLocalId">> => tdscdma_local_id(),
-%%   <<"TdscdmaNmr">> => list(tdscdma_nmr_obj()()),
+%%   <<"TdscdmaNmr">> => list(tdscdma_nmr_obj()),
 %%   <<"TdscdmaTimingAdvance">> => integer(),
 %%   <<"UtranCid">> => integer()
 %% }
@@ -1639,8 +1639,8 @@
 %%   <<"DevEui">> => string(),
 %%   <<"FPort">> => integer(),
 %%   <<"Frequency">> => integer(),
-%%   <<"Gateways">> => list(lo_ra_w_a_n_gateway_metadata()()),
-%%   <<"PublicGateways">> => list(lo_ra_w_a_n_public_gateway_metadata()()),
+%%   <<"Gateways">> => list(lo_ra_w_a_n_gateway_metadata()),
+%%   <<"PublicGateways">> => list(lo_ra_w_a_n_public_gateway_metadata()),
 %%   <<"Timestamp">> => string()
 %% }
 -type lo_ra_w_a_n_device_metadata() :: #{binary() => any()}.
@@ -1673,7 +1673,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1823,7 +1823,7 @@
 
 %% Example:
 %% list_multicast_groups_by_fuota_task_response() :: #{
-%%   <<"MulticastGroupList">> => list(multicast_group_by_fuota_task()()),
+%%   <<"MulticastGroupList">> => list(multicast_group_by_fuota_task()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_multicast_groups_by_fuota_task_response() :: #{binary() => any()}.
@@ -1843,7 +1843,7 @@
 %% Example:
 %% list_service_profiles_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServiceProfileList">> => list(service_profile()())
+%%   <<"ServiceProfileList">> => list(service_profile())
 %% }
 -type list_service_profiles_response() :: #{binary() => any()}.
 
@@ -1857,7 +1857,7 @@
 %%   <<"Name">> => string(),
 %%   <<"Positioning">> => list(any()),
 %%   <<"Sidewalk">> => sidewalk_create_wireless_device(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> := list(any())
 %% }
 -type create_wireless_device_request() :: #{binary() => any()}.
@@ -1890,7 +1890,7 @@
 %% Example:
 %% list_devices_for_wireless_device_import_task_response() :: #{
 %%   <<"DestinationName">> => string(),
-%%   <<"ImportedWirelessDeviceList">> => list(imported_wireless_device()()),
+%%   <<"ImportedWirelessDeviceList">> => list(imported_wireless_device()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_devices_for_wireless_device_import_task_response() :: #{binary() => any()}.
@@ -1932,7 +1932,7 @@
 
 %% Example:
 %% list_event_configurations_response() :: #{
-%%   <<"EventConfigurationsList">> => list(event_configuration_item()()),
+%%   <<"EventConfigurationsList">> => list(event_configuration_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_configurations_response() :: #{binary() => any()}.
@@ -1947,14 +1947,14 @@
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"LoRaWAN">> => lo_ra_w_a_n_service_profile(),
 %%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_service_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% fuota_task_log_option() :: #{
-%%   <<"Events">> => list(fuota_task_event_log_option()()),
+%%   <<"Events">> => list(fuota_task_event_log_option()),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
@@ -1963,7 +1963,7 @@
 
 %% Example:
 %% wireless_gateway_log_option() :: #{
-%%   <<"Events">> => list(wireless_gateway_event_log_option()()),
+%%   <<"Events">> => list(wireless_gateway_event_log_option()),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
@@ -2023,14 +2023,14 @@
 %% Example:
 %% list_wireless_gateway_task_definitions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TaskDefinitions">> => list(update_wireless_gateway_task_entry()())
+%%   <<"TaskDefinitions">> => list(update_wireless_gateway_task_entry())
 %% }
 -type list_wireless_gateway_task_definitions_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_metrics_response() :: #{
-%%   <<"SummaryMetricQueryResults">> => list(summary_metric_query_result()())
+%%   <<"SummaryMetricQueryResults">> => list(summary_metric_query_result())
 %% }
 -type get_metrics_response() :: #{binary() => any()}.
 
@@ -2121,9 +2121,9 @@
 %% Example:
 %% update_log_levels_by_resource_types_request() :: #{
 %%   <<"DefaultLogLevel">> => list(any()),
-%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()()),
-%%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()()),
-%%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option()())
+%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()),
+%%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()),
+%%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option())
 %% }
 -type update_log_levels_by_resource_types_request() :: #{binary() => any()}.
 
@@ -2134,7 +2134,7 @@
 
 %% Example:
 %% update_position_request() :: #{
-%%   <<"Position">> := list(float()()),
+%%   <<"Position">> := list(float()),
 %%   <<"ResourceType">> := list(any())
 %% }
 -type update_position_request() :: #{binary() => any()}.
@@ -2187,7 +2187,7 @@
 
 %% Example:
 %% list_network_analyzer_configurations_response() :: #{
-%%   <<"NetworkAnalyzerConfigurationList">> => list(network_analyzer_configurations()()),
+%%   <<"NetworkAnalyzerConfigurationList">> => list(network_analyzer_configurations()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_network_analyzer_configurations_response() :: #{binary() => any()}.
@@ -2211,13 +2211,13 @@
 %% Example:
 %% update_network_analyzer_configuration_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"MulticastGroupsToAdd">> => list(string()()),
-%%   <<"MulticastGroupsToRemove">> => list(string()()),
+%%   <<"MulticastGroupsToAdd">> => list(string()),
+%%   <<"MulticastGroupsToRemove">> => list(string()),
 %%   <<"TraceContent">> => trace_content(),
-%%   <<"WirelessDevicesToAdd">> => list(string()()),
-%%   <<"WirelessDevicesToRemove">> => list(string()()),
-%%   <<"WirelessGatewaysToAdd">> => list(string()()),
-%%   <<"WirelessGatewaysToRemove">> => list(string()())
+%%   <<"WirelessDevicesToAdd">> => list(string()),
+%%   <<"WirelessDevicesToRemove">> => list(string()),
+%%   <<"WirelessGatewaysToAdd">> => list(string()),
+%%   <<"WirelessGatewaysToRemove">> => list(string())
 %% }
 -type update_network_analyzer_configuration_request() :: #{binary() => any()}.
 
@@ -2241,7 +2241,7 @@
 %% gsm_obj() :: #{
 %%   <<"GeranCid">> => integer(),
 %%   <<"GsmLocalId">> => gsm_local_id(),
-%%   <<"GsmNmr">> => list(gsm_nmr_obj()()),
+%%   <<"GsmNmr">> => list(gsm_nmr_obj()),
 %%   <<"GsmTimingAdvance">> => integer(),
 %%   <<"Lac">> => integer(),
 %%   <<"Mcc">> => integer(),
@@ -2258,7 +2258,7 @@
 %% Example:
 %% beaconing() :: #{
 %%   <<"DataRate">> => integer(),
-%%   <<"Frequencies">> => list(integer()())
+%%   <<"Frequencies">> => list(integer())
 %% }
 -type beaconing() :: #{binary() => any()}.
 
@@ -2289,7 +2289,7 @@
 %%   <<"Gnss">> => gnss(),
 %%   <<"Ip">> => ip(),
 %%   <<"Timestamp">> => non_neg_integer(),
-%%   <<"WiFiAccessPoints">> => list(wi_fi_access_point()())
+%%   <<"WiFiAccessPoints">> => list(wi_fi_access_point())
 %% }
 -type get_position_estimate_request() :: #{binary() => any()}.
 
@@ -2297,7 +2297,7 @@
 %% Example:
 %% participating_gateways() :: #{
 %%   <<"DownlinkMode">> => list(any()),
-%%   <<"GatewayList">> => list(gateway_list_item()()),
+%%   <<"GatewayList">> => list(gateway_list_item()),
 %%   <<"TransmissionInterval">> => integer()
 %% }
 -type participating_gateways() :: #{binary() => any()}.
@@ -2419,7 +2419,7 @@
 %% Example:
 %% list_partner_accounts_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Sidewalk">> => list(sidewalk_account_info_with_fingerprint()())
+%%   <<"Sidewalk">> => list(sidewalk_account_info_with_fingerprint())
 %% }
 -type list_partner_accounts_response() :: #{binary() => any()}.
 
@@ -2460,7 +2460,7 @@
 
 %% Example:
 %% list_queued_messages_response() :: #{
-%%   <<"DownlinkQueueMessagesList">> => list(downlink_queue_message()()),
+%%   <<"DownlinkQueueMessagesList">> => list(downlink_queue_message()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_queued_messages_response() :: #{binary() => any()}.
@@ -2475,7 +2475,7 @@
 
 %% Example:
 %% update_f_ports() :: #{
-%%   <<"Applications">> => list(application_config()()),
+%%   <<"Applications">> => list(application_config()),
 %%   <<"Positioning">> => positioning()
 %% }
 -type update_f_ports() :: #{binary() => any()}.
@@ -2523,7 +2523,7 @@
 %%   <<"Rscp">> => integer(),
 %%   <<"UtranCid">> => integer(),
 %%   <<"WcdmaLocalId">> => wcdma_local_id(),
-%%   <<"WcdmaNmr">> => list(wcdma_nmr_obj()())
+%%   <<"WcdmaNmr">> => list(wcdma_nmr_obj())
 %% }
 -type wcdma_obj() :: #{binary() => any()}.
 
@@ -2555,7 +2555,7 @@
 %% Example:
 %% start_bulk_associate_wireless_device_with_multicast_group_request() :: #{
 %%   <<"QueryString">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_bulk_associate_wireless_device_with_multicast_group_request() :: #{binary() => any()}.
 
@@ -2591,9 +2591,9 @@
 %% sidewalk_device() :: #{
 %%   <<"AmazonId">> => string(),
 %%   <<"CertificateId">> => string(),
-%%   <<"DeviceCertificates">> => list(certificate_list()()),
+%%   <<"DeviceCertificates">> => list(certificate_list()),
 %%   <<"DeviceProfileId">> => string(),
-%%   <<"PrivateKeys">> => list(certificate_list()()),
+%%   <<"PrivateKeys">> => list(certificate_list()),
 %%   <<"SidewalkId">> => string(),
 %%   <<"SidewalkManufacturingSn">> => string(),
 %%   <<"Status">> => list(any())
@@ -2612,9 +2612,9 @@
 %% Example:
 %% get_log_levels_by_resource_types_response() :: #{
 %%   <<"DefaultLogLevel">> => list(any()),
-%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()()),
-%%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()()),
-%%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option()())
+%%   <<"FuotaTaskLogOptions">> => list(fuota_task_log_option()),
+%%   <<"WirelessDeviceLogOptions">> => list(wireless_device_log_option()),
+%%   <<"WirelessGatewayLogOptions">> => list(wireless_gateway_log_option())
 %% }
 -type get_log_levels_by_resource_types_response() :: #{binary() => any()}.
 
@@ -2629,7 +2629,7 @@
 
 %% Example:
 %% list_multicast_groups_response() :: #{
-%%   <<"MulticastGroupList">> => list(multicast_group()()),
+%%   <<"MulticastGroupList">> => list(multicast_group()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_multicast_groups_response() :: #{binary() => any()}.
@@ -2657,7 +2657,7 @@
 
 %% Example:
 %% f_ports() :: #{
-%%   <<"Applications">> => list(application_config()()),
+%%   <<"Applications">> => list(application_config()),
 %%   <<"ClockSync">> => integer(),
 %%   <<"Fuota">> => integer(),
 %%   <<"Multicast">> => integer(),
@@ -2689,7 +2689,7 @@
 %% Example:
 %% start_bulk_disassociate_wireless_device_from_multicast_group_request() :: #{
 %%   <<"QueryString">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_bulk_disassociate_wireless_device_from_multicast_group_request() :: #{binary() => any()}.
 
@@ -2704,10 +2704,10 @@
 %% Example:
 %% update_wireless_gateway_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"JoinEuiFilters">> => list(list(string()())()),
+%%   <<"JoinEuiFilters">> => list(list(string())()),
 %%   <<"MaxEirp">> => float(),
 %%   <<"Name">> => string(),
-%%   <<"NetIdFilters">> => list(string()())
+%%   <<"NetIdFilters">> => list(string())
 %% }
 -type update_wireless_gateway_request() :: #{binary() => any()}.
 
@@ -2717,7 +2717,7 @@
 %%   <<"AutoCreateTasks">> := boolean(),
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Update">> => update_wireless_gateway_task_create()
 %% }
 -type create_wireless_gateway_task_definition_request() :: #{binary() => any()}.
@@ -2749,7 +2749,7 @@
 %%   <<"LoRaWAN">> => lo_ra_w_a_n_device_profile(),
 %%   <<"Name">> => string(),
 %%   <<"Sidewalk">> => sidewalk_create_device_profile(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_device_profile_request() :: #{binary() => any()}.
 
@@ -2773,7 +2773,7 @@
 
 %% Example:
 %% wireless_device_log_option() :: #{
-%%   <<"Events">> => list(wireless_device_event_log_option()()),
+%%   <<"Events">> => list(wireless_device_event_log_option()),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
@@ -2783,16 +2783,16 @@
 %% Example:
 %% summary_metric_query_result() :: #{
 %%   <<"AggregationPeriod">> => list(any()),
-%%   <<"Dimensions">> => list(dimension()()),
+%%   <<"Dimensions">> => list(dimension()),
 %%   <<"EndTimestamp">> => non_neg_integer(),
 %%   <<"Error">> => string(),
 %%   <<"MetricName">> => list(any()),
 %%   <<"QueryId">> => string(),
 %%   <<"QueryStatus">> => list(any()),
 %%   <<"StartTimestamp">> => non_neg_integer(),
-%%   <<"Timestamps">> => list(non_neg_integer()()),
+%%   <<"Timestamps">> => list(non_neg_integer()),
 %%   <<"Unit">> => string(),
-%%   <<"Values">> => list(metric_query_value()())
+%%   <<"Values">> => list(metric_query_value())
 %% }
 -type summary_metric_query_result() :: #{binary() => any()}.
 
@@ -2802,7 +2802,7 @@
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"DestinationName">> := string(),
 %%   <<"Sidewalk">> := sidewalk_start_import_info(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_wireless_device_import_task_request() :: #{binary() => any()}.
 
@@ -2821,7 +2821,7 @@
 
 %% Example:
 %% list_fuota_tasks_response() :: #{
-%%   <<"FuotaTaskList">> => list(fuota_task()()),
+%%   <<"FuotaTaskList">> => list(fuota_task()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_fuota_tasks_response() :: #{binary() => any()}.
@@ -2920,7 +2920,7 @@
 
 %% Example:
 %% list_device_profiles_response() :: #{
-%%   <<"DeviceProfileList">> => list(device_profile()()),
+%%   <<"DeviceProfileList">> => list(device_profile()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_device_profiles_response() :: #{binary() => any()}.
@@ -2959,7 +2959,7 @@
 %% Example:
 %% sidewalk_get_device_profile() :: #{
 %%   <<"ApplicationServerPublicKey">> => string(),
-%%   <<"DakCertificateMetadata">> => list(dak_certificate_metadata()()),
+%%   <<"DakCertificateMetadata">> => list(dak_certificate_metadata()),
 %%   <<"QualificationStatus">> => boolean()
 %% }
 -type sidewalk_get_device_profile() :: #{binary() => any()}.
@@ -3032,7 +3032,7 @@
 %% Example:
 %% sidewalk_list_device() :: #{
 %%   <<"AmazonId">> => string(),
-%%   <<"DeviceCertificates">> => list(certificate_list()()),
+%%   <<"DeviceCertificates">> => list(certificate_list()),
 %%   <<"DeviceProfileId">> => string(),
 %%   <<"SidewalkId">> => string(),
 %%   <<"SidewalkManufacturingSn">> => string(),
@@ -3075,7 +3075,7 @@
 %% lte_obj() :: #{
 %%   <<"EutranCid">> => integer(),
 %%   <<"LteLocalId">> => lte_local_id(),
-%%   <<"LteNmr">> => list(lte_nmr_obj()()),
+%%   <<"LteNmr">> => list(lte_nmr_obj()),
 %%   <<"LteTimingAdvance">> => integer(),
 %%   <<"Mcc">> => integer(),
 %%   <<"Mnc">> => integer(),
@@ -3135,7 +3135,7 @@
 
 %% Example:
 %% sidewalk_get_start_import_info() :: #{
-%%   <<"DeviceCreationFileList">> => list(string()()),
+%%   <<"DeviceCreationFileList">> => list(string()),
 %%   <<"Role">> => string()
 %% }
 -type sidewalk_get_start_import_info() :: #{binary() => any()}.
@@ -3147,7 +3147,7 @@
 %%   <<"BaseLng">> => float(),
 %%   <<"BaseStationId">> => integer(),
 %%   <<"CdmaLocalId">> => cdma_local_id(),
-%%   <<"CdmaNmr">> => list(cdma_nmr_obj()()),
+%%   <<"CdmaNmr">> => list(cdma_nmr_obj()),
 %%   <<"NetworkId">> => integer(),
 %%   <<"PilotPower">> => integer(),
 %%   <<"RegistrationZone">> => integer(),

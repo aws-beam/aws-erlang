@@ -62,7 +62,7 @@
 %% Example:
 %% list_scans_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"summaries">> => list(scan_summary()())
+%%   <<"summaries">> => list(scan_summary())
 %% }
 -type list_scans_response() :: #{binary() => any()}.
 
@@ -145,7 +145,7 @@
 %% Example:
 %% remediation() :: #{
 %%   <<"recommendation">> => recommendation(),
-%%   <<"suggestedFixes">> => list(suggested_fix()())
+%%   <<"suggestedFixes">> => list(suggested_fix())
 %% }
 -type remediation() :: #{binary() => any()}.
 
@@ -200,11 +200,11 @@
 
 %% Example:
 %% metrics_summary() :: #{
-%%   <<"categoriesWithMostFindings">> => list(category_with_finding_num()()),
+%%   <<"categoriesWithMostFindings">> => list(category_with_finding_num()),
 %%   <<"date">> => [non_neg_integer()],
 %%   <<"openFindings">> => finding_metrics_value_per_severity(),
-%%   <<"scansWithMostOpenCriticalFindings">> => list(scan_name_with_finding_num()()),
-%%   <<"scansWithMostOpenFindings">> => list(scan_name_with_finding_num()())
+%%   <<"scansWithMostOpenCriticalFindings">> => list(scan_name_with_finding_num()),
+%%   <<"scansWithMostOpenFindings">> => list(scan_name_with_finding_num())
 %% }
 -type metrics_summary() :: #{binary() => any()}.
 
@@ -218,7 +218,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -233,7 +233,7 @@
 
 %% Example:
 %% list_findings_metrics_response() :: #{
-%%   <<"findingsMetrics">> => list(account_findings_metric()()),
+%%   <<"findingsMetrics">> => list(account_findings_metric()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_findings_metrics_response() :: #{binary() => any()}.
@@ -241,8 +241,8 @@
 
 %% Example:
 %% batch_get_findings_response() :: #{
-%%   <<"failedFindings">> => list(batch_get_findings_error()()),
-%%   <<"findings">> => list(finding()())
+%%   <<"failedFindings">> => list(batch_get_findings_error()),
+%%   <<"findings">> => list(finding())
 %% }
 -type batch_get_findings_response() :: #{binary() => any()}.
 
@@ -279,7 +279,7 @@
 
 %% Example:
 %% get_findings_response() :: #{
-%%   <<"findings">> => list(finding()()),
+%%   <<"findings">> => list(finding()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_findings_response() :: #{binary() => any()}.
@@ -363,7 +363,7 @@
 
 %% Example:
 %% batch_get_findings_request() :: #{
-%%   <<"findingIdentifiers">> := list(finding_identifier()())
+%%   <<"findingIdentifiers">> := list(finding_identifier())
 %% }
 -type batch_get_findings_request() :: #{binary() => any()}.
 
@@ -413,7 +413,7 @@
 %% Example:
 %% validation_exception() :: #{
 %%   <<"errorCode">> => [string()],
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }
@@ -426,7 +426,7 @@
 
 %% Example:
 %% file_path() :: #{
-%%   <<"codeSnippet">> => list(code_line()()),
+%%   <<"codeSnippet">> => list(code_line()),
 %%   <<"endLine">> => [integer()],
 %%   <<"name">> => [string()],
 %%   <<"path">> => [string()],

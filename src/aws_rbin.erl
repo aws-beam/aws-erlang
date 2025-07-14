@@ -68,12 +68,12 @@
 %% Example:
 %% create_rule_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()),
 %%   <<"LockConfiguration">> => lock_configuration(),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> := list(any()),
 %%   <<"RetentionPeriod">> := retention_period(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_rule_request() :: #{binary() => any()}.
 
@@ -81,16 +81,16 @@
 %% Example:
 %% create_rule_response() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockConfiguration">> => lock_configuration(),
 %%   <<"LockState">> => list(any()),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"RetentionPeriod">> => retention_period(),
 %%   <<"RuleArn">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_rule_response() :: #{binary() => any()}.
 
@@ -110,12 +110,12 @@
 %% Example:
 %% get_rule_response() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockConfiguration">> => lock_configuration(),
 %%   <<"LockEndTime">> => non_neg_integer(),
 %%   <<"LockState">> => list(any()),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"RetentionPeriod">> => retention_period(),
 %%   <<"RuleArn">> => string(),
@@ -133,11 +133,11 @@
 
 %% Example:
 %% list_rules_request() :: #{
-%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()),
 %%   <<"LockState">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> := list(any())
 %% }
 -type list_rules_request() :: #{binary() => any()}.
@@ -146,7 +146,7 @@
 %% Example:
 %% list_rules_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Rules">> => list(rule_summary()())
+%%   <<"Rules">> => list(rule_summary())
 %% }
 -type list_rules_response() :: #{binary() => any()}.
 
@@ -157,7 +157,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -179,11 +179,11 @@
 %% Example:
 %% lock_rule_response() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockConfiguration">> => lock_configuration(),
 %%   <<"LockState">> => list(any()),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"RetentionPeriod">> => retention_period(),
 %%   <<"RuleArn">> => string(),
@@ -245,7 +245,7 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -269,12 +269,12 @@
 %% Example:
 %% unlock_rule_response() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockConfiguration">> => lock_configuration(),
 %%   <<"LockEndTime">> => non_neg_integer(),
 %%   <<"LockState">> => list(any()),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"RetentionPeriod">> => retention_period(),
 %%   <<"RuleArn">> => string(),
@@ -285,7 +285,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -297,8 +297,8 @@
 %% Example:
 %% update_rule_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"RetentionPeriod">> => retention_period()
 %% }
@@ -308,11 +308,11 @@
 %% Example:
 %% update_rule_response() :: #{
 %%   <<"Description">> => string(),
-%%   <<"ExcludeResourceTags">> => list(resource_tag()()),
+%%   <<"ExcludeResourceTags">> => list(resource_tag()),
 %%   <<"Identifier">> => string(),
 %%   <<"LockEndTime">> => non_neg_integer(),
 %%   <<"LockState">> => list(any()),
-%%   <<"ResourceTags">> => list(resource_tag()()),
+%%   <<"ResourceTags">> => list(resource_tag()),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"RetentionPeriod">> => retention_period(),
 %%   <<"RuleArn">> => string(),

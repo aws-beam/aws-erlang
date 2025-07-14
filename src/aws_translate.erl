@@ -72,7 +72,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -110,7 +110,7 @@
 %%   <<"SkippedRecordCount">> => float(),
 %%   <<"SourceLanguageCode">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"TargetLanguageCodes">> => list(string()())
+%%   <<"TargetLanguageCodes">> => list(string())
 %% }
 -type parallel_data_properties() :: #{binary() => any()}.
 
@@ -130,7 +130,7 @@
 %% Example:
 %% translate_text_response() :: #{
 %%   <<"AppliedSettings">> => translation_settings(),
-%%   <<"AppliedTerminologies">> => list(applied_terminology()()),
+%%   <<"AppliedTerminologies">> => list(applied_terminology()),
 %%   <<"SourceLanguageCode">> => string(),
 %%   <<"TargetLanguageCode">> => string(),
 %%   <<"TranslatedText">> => string()
@@ -182,12 +182,12 @@
 %%   <<"JobStatus">> => list(any()),
 %%   <<"Message">> => string(),
 %%   <<"OutputDataConfig">> => output_data_config(),
-%%   <<"ParallelDataNames">> => list(string()()),
+%%   <<"ParallelDataNames">> => list(string()),
 %%   <<"Settings">> => translation_settings(),
 %%   <<"SourceLanguageCode">> => string(),
 %%   <<"SubmittedTime">> => non_neg_integer(),
-%%   <<"TargetLanguageCodes">> => list(string()()),
-%%   <<"TerminologyNames">> => list(string()())
+%%   <<"TargetLanguageCodes">> => list(string()),
+%%   <<"TerminologyNames">> => list(string())
 %% }
 -type text_translation_job_properties() :: #{binary() => any()}.
 
@@ -204,7 +204,7 @@
 %%   <<"EncryptionKey">> => encryption_key(),
 %%   <<"MergeStrategy">> := list(any()),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TerminologyData">> := terminology_data()
 %% }
 -type import_terminology_request() :: #{binary() => any()}.
@@ -212,7 +212,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -262,14 +262,14 @@
 %% Example:
 %% list_text_translation_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TextTranslationJobPropertiesList">> => list(text_translation_job_properties()())
+%%   <<"TextTranslationJobPropertiesList">> => list(text_translation_job_properties())
 %% }
 -type list_text_translation_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_terminologies_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TerminologyPropertiesList">> => list(terminology_properties()())
+%%   <<"TerminologyPropertiesList">> => list(terminology_properties())
 %% }
 -type list_terminologies_response() :: #{binary() => any()}.
 
@@ -328,7 +328,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -379,7 +379,7 @@
 %%   <<"Settings">> => translation_settings(),
 %%   <<"SourceLanguageCode">> := string(),
 %%   <<"TargetLanguageCode">> := string(),
-%%   <<"TerminologyNames">> => list(string()()),
+%%   <<"TerminologyNames">> => list(string()),
 %%   <<"Text">> := string()
 %% }
 -type translate_text_request() :: #{binary() => any()}.
@@ -397,14 +397,14 @@
 %%   <<"EncryptionKey">> => encryption_key(),
 %%   <<"Name">> := string(),
 %%   <<"ParallelDataConfig">> := parallel_data_config(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_parallel_data_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_parallel_data_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ParallelDataPropertiesList">> => list(parallel_data_properties()())
+%%   <<"ParallelDataPropertiesList">> => list(parallel_data_properties())
 %% }
 -type list_parallel_data_response() :: #{binary() => any()}.
 
@@ -418,7 +418,7 @@
 %% Example:
 %% list_languages_response() :: #{
 %%   <<"DisplayLanguageCode">> => list(any()),
-%%   <<"Languages">> => list(language()()),
+%%   <<"Languages">> => list(language()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_languages_response() :: #{binary() => any()}.
@@ -433,7 +433,7 @@
 %% Example:
 %% translate_document_response() :: #{
 %%   <<"AppliedSettings">> => translation_settings(),
-%%   <<"AppliedTerminologies">> => list(applied_terminology()()),
+%%   <<"AppliedTerminologies">> => list(applied_terminology()),
 %%   <<"SourceLanguageCode">> => string(),
 %%   <<"TargetLanguageCode">> => string(),
 %%   <<"TranslatedDocument">> => translated_document()
@@ -519,7 +519,7 @@
 %%   <<"Settings">> => translation_settings(),
 %%   <<"SourceLanguageCode">> := string(),
 %%   <<"TargetLanguageCode">> := string(),
-%%   <<"TerminologyNames">> => list(string()())
+%%   <<"TerminologyNames">> => list(string())
 %% }
 -type translate_document_request() :: #{binary() => any()}.
 
@@ -558,7 +558,7 @@
 %%   <<"SizeBytes">> => integer(),
 %%   <<"SkippedTermCount">> => integer(),
 %%   <<"SourceLanguageCode">> => string(),
-%%   <<"TargetLanguageCodes">> => list(string()()),
+%%   <<"TargetLanguageCodes">> => list(string()),
 %%   <<"TermCount">> => integer()
 %% }
 -type terminology_properties() :: #{binary() => any()}.
@@ -570,11 +570,11 @@
 %%   <<"InputDataConfig">> := input_data_config(),
 %%   <<"JobName">> => string(),
 %%   <<"OutputDataConfig">> := output_data_config(),
-%%   <<"ParallelDataNames">> => list(string()()),
+%%   <<"ParallelDataNames">> => list(string()),
 %%   <<"Settings">> => translation_settings(),
 %%   <<"SourceLanguageCode">> := string(),
-%%   <<"TargetLanguageCodes">> := list(string()()),
-%%   <<"TerminologyNames">> => list(string()())
+%%   <<"TargetLanguageCodes">> := list(string()),
+%%   <<"TerminologyNames">> => list(string())
 %% }
 -type start_text_translation_job_request() :: #{binary() => any()}.
 
@@ -602,7 +602,7 @@
 %% Example:
 %% applied_terminology() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Terms">> => list(translate_term()())
+%%   <<"Terms">> => list(term())
 %% }
 -type applied_terminology() :: #{binary() => any()}.
 

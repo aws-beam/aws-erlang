@@ -41,7 +41,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -63,7 +63,7 @@
 %%   <<"NotificationConfiguration">> => notification_configuration(),
 %%   <<"PreviousInvocationTime">> => non_neg_integer(),
 %%   <<"QueryString">> => string(),
-%%   <<"RecentlyFailedRuns">> => list(scheduled_query_run_summary()()),
+%%   <<"RecentlyFailedRuns">> => list(scheduled_query_run_summary()),
 %%   <<"ScheduleConfiguration">> => schedule_configuration(),
 %%   <<"ScheduledQueryExecutionRoleArn">> => string(),
 %%   <<"State">> => list(any()),
@@ -151,17 +151,17 @@
 
 %% Example:
 %% datum() :: #{
-%%   <<"ArrayValue">> => list(datum()()),
+%%   <<"ArrayValue">> => list(datum()),
 %%   <<"NullValue">> => boolean(),
 %%   <<"RowValue">> => row(),
 %%   <<"ScalarValue">> => string(),
-%%   <<"TimeSeriesValue">> => list(time_series_data_point()())
+%%   <<"TimeSeriesValue">> => list(time_series_data_point())
 %% }
 -type datum() :: #{binary() => any()}.
 
 %% Example:
 %% describe_endpoints_response() :: #{
-%%   <<"Endpoints">> => list(endpoint()())
+%%   <<"Endpoints">> => list(endpoint())
 %% }
 -type describe_endpoints_response() :: #{binary() => any()}.
 
@@ -200,7 +200,7 @@
 %%   <<"QueryString">> := string(),
 %%   <<"ScheduleConfiguration">> := schedule_configuration(),
 %%   <<"ScheduledQueryExecutionRoleArn">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TargetConfiguration">> => target_configuration()
 %% }
 -type create_scheduled_query_request() :: #{binary() => any()}.
@@ -230,7 +230,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -297,12 +297,12 @@
 
 %% Example:
 %% query_response() :: #{
-%%   <<"ColumnInfo">> => list(column_info()()),
+%%   <<"ColumnInfo">> => list(column_info()),
 %%   <<"NextToken">> => string(),
 %%   <<"QueryId">> => string(),
 %%   <<"QueryInsightsResponse">> => query_insights_response(),
 %%   <<"QueryStatus">> => query_status(),
-%%   <<"Rows">> => list(row()())
+%%   <<"Rows">> => list(row())
 %% }
 -type query_response() :: #{binary() => any()}.
 
@@ -315,7 +315,7 @@
 
 %% Example:
 %% row() :: #{
-%%   <<"Data">> => list(datum()())
+%%   <<"Data">> => list(datum())
 %% }
 -type row() :: #{binary() => any()}.
 
@@ -334,7 +334,7 @@
 
 %% Example:
 %% query_spatial_coverage_max() :: #{
-%%   <<"PartitionKey">> => list(string()()),
+%%   <<"PartitionKey">> => list(string()),
 %%   <<"TableArn">> => string(),
 %%   <<"Value">> => float()
 %% }
@@ -343,7 +343,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -374,9 +374,9 @@
 %% Example:
 %% timestream_configuration() :: #{
 %%   <<"DatabaseName">> => string(),
-%%   <<"DimensionMappings">> => list(dimension_mapping()()),
+%%   <<"DimensionMappings">> => list(dimension_mapping()),
 %%   <<"MeasureNameColumn">> => string(),
-%%   <<"MixedMeasureMappings">> => list(mixed_measure_mapping()()),
+%%   <<"MixedMeasureMappings">> => list(mixed_measure_mapping()),
 %%   <<"MultiMeasureMappings">> => multi_measure_mappings(),
 %%   <<"TableName">> => string(),
 %%   <<"TimeColumn">> => string()
@@ -429,7 +429,7 @@
 
 %% Example:
 %% multi_measure_mappings() :: #{
-%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()()),
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
 %%   <<"TargetMultiMeasureName">> => string()
 %% }
 -type multi_measure_mappings() :: #{binary() => any()}.
@@ -456,7 +456,7 @@
 %% Example:
 %% list_scheduled_queries_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ScheduledQueries">> => list(scheduled_query()())
+%%   <<"ScheduledQueries">> => list(scheduled_query())
 %% }
 -type list_scheduled_queries_response() :: #{binary() => any()}.
 
@@ -516,7 +516,7 @@
 %% Example:
 %% type() :: #{
 %%   <<"ArrayColumnInfo">> => column_info(),
-%%   <<"RowColumnInfo">> => list(column_info()()),
+%%   <<"RowColumnInfo">> => list(column_info()),
 %%   <<"ScalarType">> => list(any()),
 %%   <<"TimeSeriesMeasureValueColumnInfo">> => column_info()
 %% }
@@ -534,7 +534,7 @@
 %% mixed_measure_mapping() :: #{
 %%   <<"MeasureName">> => string(),
 %%   <<"MeasureValueType">> => list(any()),
-%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()()),
+%%   <<"MultiMeasureAttributeMappings">> => list(multi_measure_attribute_mapping()),
 %%   <<"SourceColumn">> => string(),
 %%   <<"TargetMeasureName">> => string()
 %% }
@@ -542,8 +542,8 @@
 
 %% Example:
 %% prepare_query_response() :: #{
-%%   <<"Columns">> => list(select_column()()),
-%%   <<"Parameters">> => list(parameter_mapping()()),
+%%   <<"Columns">> => list(select_column()),
+%%   <<"Parameters">> => list(parameter_mapping()),
 %%   <<"QueryString">> => string()
 %% }
 -type prepare_query_response() :: #{binary() => any()}.

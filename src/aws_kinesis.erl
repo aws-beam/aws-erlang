@@ -91,7 +91,7 @@
 %% Example:
 %% list_shards_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Shards">> => list(shard()())
+%%   <<"Shards">> => list(shard())
 %% }
 -type list_shards_output() :: #{binary() => any()}.
 
@@ -203,18 +203,18 @@
 %% Example:
 %% list_tags_for_stream_output() :: #{
 %%   <<"HasMoreTags">> => boolean(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_stream_output() :: #{binary() => any()}.
 
 %% Example:
 %% stream_description() :: #{
 %%   <<"EncryptionType">> => list(any()),
-%%   <<"EnhancedMonitoring">> => list(enhanced_metrics()()),
+%%   <<"EnhancedMonitoring">> => list(enhanced_metrics()),
 %%   <<"HasMoreShards">> => boolean(),
 %%   <<"KeyId">> => string(),
 %%   <<"RetentionPeriodHours">> => integer(),
-%%   <<"Shards">> => list(shard()()),
+%%   <<"Shards">> => list(shard()),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamCreationTimestamp">> => non_neg_integer(),
 %%   <<"StreamModeDetails">> => stream_mode_details(),
@@ -235,7 +235,7 @@
 %% stream_description_summary() :: #{
 %%   <<"ConsumerCount">> => integer(),
 %%   <<"EncryptionType">> => list(any()),
-%%   <<"EnhancedMonitoring">> => list(enhanced_metrics()()),
+%%   <<"EnhancedMonitoring">> => list(enhanced_metrics()),
 %%   <<"KeyId">> => string(),
 %%   <<"OpenShardCount">> => integer(),
 %%   <<"RetentionPeriodHours">> => integer(),
@@ -279,13 +279,13 @@
 
 %% Example:
 %% list_tags_for_resource_output() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
 %% Example:
 %% put_records_input() :: #{
-%%   <<"Records">> := list(put_records_request_entry()()),
+%%   <<"Records">> := list(put_records_request_entry()),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamName">> => string()
 %% }
@@ -293,10 +293,10 @@
 
 %% Example:
 %% get_records_output() :: #{
-%%   <<"ChildShards">> => list(child_shard()()),
+%%   <<"ChildShards">> => list(child_shard()),
 %%   <<"MillisBehindLatest">> => float(),
 %%   <<"NextShardIterator">> => string(),
-%%   <<"Records">> => list(record()())
+%%   <<"Records">> => list(record())
 %% }
 -type get_records_output() :: #{binary() => any()}.
 
@@ -312,8 +312,8 @@
 %% list_streams_output() :: #{
 %%   <<"HasMoreStreams">> => boolean(),
 %%   <<"NextToken">> => string(),
-%%   <<"StreamNames">> => list(string()()),
-%%   <<"StreamSummaries">> => list(stream_summary()())
+%%   <<"StreamNames">> => list(string()),
+%%   <<"StreamSummaries">> => list(stream_summary())
 %% }
 -type list_streams_output() :: #{binary() => any()}.
 
@@ -402,7 +402,7 @@
 %% remove_tags_from_stream_input() :: #{
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamName">> => string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_from_stream_input() :: #{binary() => any()}.
 
@@ -443,7 +443,7 @@
 
 %% Example:
 %% list_stream_consumers_output() :: #{
-%%   <<"Consumers">> => list(consumer()()),
+%%   <<"Consumers">> => list(consumer()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_stream_consumers_output() :: #{binary() => any()}.
@@ -538,7 +538,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -600,17 +600,17 @@
 
 %% Example:
 %% subscribe_to_shard_event() :: #{
-%%   <<"ChildShards">> => list(child_shard()()),
+%%   <<"ChildShards">> => list(child_shard()),
 %%   <<"ContinuationSequenceNumber">> => string(),
 %%   <<"MillisBehindLatest">> => float(),
-%%   <<"Records">> => list(record()())
+%%   <<"Records">> => list(record())
 %% }
 -type subscribe_to_shard_event() :: #{binary() => any()}.
 
 %% Example:
 %% child_shard() :: #{
 %%   <<"HashKeyRange">> => hash_key_range(),
-%%   <<"ParentShards">> => list(string()()),
+%%   <<"ParentShards">> => list(string()),
 %%   <<"ShardId">> => string()
 %% }
 -type child_shard() :: #{binary() => any()}.
@@ -748,7 +748,7 @@
 %% put_records_output() :: #{
 %%   <<"EncryptionType">> => list(any()),
 %%   <<"FailedRecordCount">> => integer(),
-%%   <<"Records">> => list(put_records_result_entry()())
+%%   <<"Records">> => list(put_records_result_entry())
 %% }
 -type put_records_output() :: #{binary() => any()}.
 

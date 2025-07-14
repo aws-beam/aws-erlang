@@ -115,7 +115,7 @@
 
 %% Example:
 %% list_connectors_response() :: #{
-%%   <<"connectors">> => list(connector_summary()()),
+%%   <<"connectors">> => list(connector_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_connectors_response() :: #{binary() => any()}.
@@ -163,8 +163,8 @@
 
 %% Example:
 %% vpc() :: #{
-%%   <<"securityGroups">> => list(string()()),
-%%   <<"subnets">> => list(string()())
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
 %% }
 -type vpc() :: #{binary() => any()}.
 
@@ -184,7 +184,7 @@
 %%   <<"kafkaClusterEncryptionInTransit">> => kafka_cluster_encryption_in_transit_description(),
 %%   <<"kafkaConnectVersion">> => string(),
 %%   <<"logDelivery">> => log_delivery_description(),
-%%   <<"plugins">> => list(plugin_description()()),
+%%   <<"plugins">> => list(plugin_description()),
 %%   <<"serviceExecutionRoleArn">> => string(),
 %%   <<"stateDescription">> => state_description(),
 %%   <<"workerConfiguration">> => worker_configuration_description()
@@ -261,7 +261,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -318,7 +318,7 @@
 %% Example:
 %% list_worker_configurations_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workerConfigurations">> => list(worker_configuration_summary()())
+%%   <<"workerConfigurations">> => list(worker_configuration_summary())
 %% }
 -type list_worker_configurations_response() :: #{binary() => any()}.
 
@@ -361,15 +361,15 @@
 
 %% Example:
 %% vpc_description() :: #{
-%%   <<"securityGroups">> => list(string()()),
-%%   <<"subnets">> => list(string()())
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
 %% }
 -type vpc_description() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_custom_plugins_response() :: #{
-%%   <<"customPlugins">> => list(custom_plugin_summary()()),
+%%   <<"customPlugins">> => list(custom_plugin_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_custom_plugins_response() :: #{binary() => any()}.
@@ -559,7 +559,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"errorInfo">> => state_description(),
-%%   <<"operationSteps">> => list(connector_operation_step()()),
+%%   <<"operationSteps">> => list(connector_operation_step()),
 %%   <<"originConnectorConfiguration">> => map(),
 %%   <<"originWorkerSetting">> => worker_setting(),
 %%   <<"targetConnectorConfiguration">> => map(),
@@ -597,7 +597,7 @@
 %%   <<"kafkaClusterEncryptionInTransit">> := kafka_cluster_encryption_in_transit(),
 %%   <<"kafkaConnectVersion">> := string(),
 %%   <<"logDelivery">> => log_delivery(),
-%%   <<"plugins">> := list(plugin()()),
+%%   <<"plugins">> := list(plugin()),
 %%   <<"serviceExecutionRoleArn">> := string(),
 %%   <<"tags">> => map(),
 %%   <<"workerConfiguration">> => worker_configuration()
@@ -655,7 +655,7 @@
 %%   <<"kafkaClusterEncryptionInTransit">> => kafka_cluster_encryption_in_transit_description(),
 %%   <<"kafkaConnectVersion">> => string(),
 %%   <<"logDelivery">> => log_delivery_description(),
-%%   <<"plugins">> => list(plugin_description()()),
+%%   <<"plugins">> => list(plugin_description()),
 %%   <<"serviceExecutionRoleArn">> => string(),
 %%   <<"workerConfiguration">> => worker_configuration_description()
 %% }
@@ -842,7 +842,7 @@
 
 %% Example:
 %% list_connector_operations_response() :: #{
-%%   <<"connectorOperations">> => list(connector_operation_summary()()),
+%%   <<"connectorOperations">> => list(connector_operation_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_connector_operations_response() :: #{binary() => any()}.

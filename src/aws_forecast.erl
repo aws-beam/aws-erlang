@@ -136,7 +136,7 @@
 
 %% Example:
 %% list_forecast_export_jobs_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -152,7 +152,7 @@
 %% Example:
 %% list_what_if_forecasts_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WhatIfForecasts">> => list(what_if_forecast_summary()())
+%%   <<"WhatIfForecasts">> => list(what_if_forecast_summary())
 %% }
 -type list_what_if_forecasts_response() :: #{binary() => any()}.
 
@@ -165,7 +165,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -177,14 +177,14 @@
 %%   <<"EvaluationParameters">> => evaluation_parameters(),
 %%   <<"FeaturizationConfig">> := featurization_config(),
 %%   <<"ForecastHorizon">> := integer(),
-%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"ForecastTypes">> => list(string()),
 %%   <<"HPOConfig">> => hyper_parameter_tuning_job_config(),
 %%   <<"InputDataConfig">> := input_data_config(),
 %%   <<"OptimizationMetric">> => list(any()),
 %%   <<"PerformAutoML">> => boolean(),
 %%   <<"PerformHPO">> => boolean(),
 %%   <<"PredictorName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TrainingParameters">> => map()
 %% }
 -type create_predictor_request() :: #{binary() => any()}.
@@ -234,7 +234,7 @@
 
 %% Example:
 %% list_monitors_response() :: #{
-%%   <<"Monitors">> => list(monitor_summary()()),
+%%   <<"Monitors">> => list(monitor_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_monitors_response() :: #{binary() => any()}.
@@ -242,7 +242,7 @@
 %% Example:
 %% list_monitor_evaluations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PredictorMonitorEvaluations">> => list(predictor_monitor_evaluation()())
+%%   <<"PredictorMonitorEvaluations">> => list(predictor_monitor_evaluation())
 %% }
 -type list_monitor_evaluations_response() :: #{binary() => any()}.
 
@@ -263,7 +263,7 @@
 %%   <<"AutoMLOverrideStrategy">> => list(any()),
 %%   <<"IsAutoPredictor">> => boolean(),
 %%   <<"OptimizationMetric">> => list(any()),
-%%   <<"PredictorEvaluationResults">> => list(evaluation_result()())
+%%   <<"PredictorEvaluationResults">> => list(evaluation_result())
 %% }
 -type get_accuracy_metrics_response() :: #{binary() => any()}.
 
@@ -272,7 +272,7 @@
 %%   <<"EvaluationState">> => string(),
 %%   <<"EvaluationTime">> => non_neg_integer(),
 %%   <<"Message">> => string(),
-%%   <<"MetricResults">> => list(metric_result()()),
+%%   <<"MetricResults">> => list(metric_result()),
 %%   <<"MonitorArn">> => string(),
 %%   <<"MonitorDataSource">> => monitor_data_source(),
 %%   <<"NumItemsEvaluated">> => float(),
@@ -286,7 +286,7 @@
 %% Example:
 %% input_data_config() :: #{
 %%   <<"DatasetGroupArn">> => string(),
-%%   <<"SupplementaryFeatures">> => list(supplementary_feature()())
+%%   <<"SupplementaryFeatures">> => list(supplementary_feature())
 %% }
 -type input_data_config() :: #{binary() => any()}.
 
@@ -306,14 +306,14 @@
 %% describe_auto_predictor_response() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DataConfig">> => data_config(),
-%%   <<"DatasetImportJobArns">> => list(string()()),
+%%   <<"DatasetImportJobArns">> => list(string()),
 %%   <<"EncryptionConfig">> => encryption_config(),
 %%   <<"EstimatedTimeRemainingInMinutes">> => float(),
 %%   <<"ExplainabilityInfo">> => explainability_info(),
-%%   <<"ForecastDimensions">> => list(string()()),
+%%   <<"ForecastDimensions">> => list(string()),
 %%   <<"ForecastFrequency">> => string(),
 %%   <<"ForecastHorizon">> => integer(),
-%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"ForecastTypes">> => list(string()),
 %%   <<"LastModificationTime">> => non_neg_integer(),
 %%   <<"Message">> => string(),
 %%   <<"MonitorInfo">> => monitor_info(),
@@ -364,7 +364,7 @@
 %% Example:
 %% list_what_if_analyses_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WhatIfAnalyses">> => list(what_if_analysis_summary()())
+%%   <<"WhatIfAnalyses">> => list(what_if_analysis_summary())
 %% }
 -type list_what_if_analyses_response() :: #{binary() => any()}.
 
@@ -377,9 +377,9 @@
 
 %% Example:
 %% parameter_ranges() :: #{
-%%   <<"CategoricalParameterRanges">> => list(categorical_parameter_range()()),
-%%   <<"ContinuousParameterRanges">> => list(continuous_parameter_range()()),
-%%   <<"IntegerParameterRanges">> => list(integer_parameter_range()())
+%%   <<"CategoricalParameterRanges">> => list(categorical_parameter_range()),
+%%   <<"ContinuousParameterRanges">> => list(continuous_parameter_range()),
+%%   <<"IntegerParameterRanges">> => list(integer_parameter_range())
 %% }
 -type parameter_ranges() :: #{binary() => any()}.
 
@@ -391,7 +391,7 @@
 
 %% Example:
 %% list_forecast_export_jobs_response() :: #{
-%%   <<"ForecastExportJobs">> => list(forecast_export_job_summary()()),
+%%   <<"ForecastExportJobs">> => list(forecast_export_job_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_forecast_export_jobs_response() :: #{binary() => any()}.
@@ -402,7 +402,7 @@
 %%   <<"ExplainabilityArn">> := string(),
 %%   <<"ExplainabilityExportName">> := string(),
 %%   <<"Format">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_explainability_export_request() :: #{binary() => any()}.
 
@@ -422,7 +422,7 @@
 %% Example:
 %% list_what_if_forecast_exports_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WhatIfForecastExports">> => list(what_if_forecast_export_summary()())
+%%   <<"WhatIfForecastExports">> => list(what_if_forecast_export_summary())
 %% }
 -type list_what_if_forecast_exports_response() :: #{binary() => any()}.
 
@@ -435,15 +435,15 @@
 
 %% Example:
 %% featurization_config() :: #{
-%%   <<"Featurizations">> => list(featurization()()),
-%%   <<"ForecastDimensions">> => list(string()()),
+%%   <<"Featurizations">> => list(featurization()),
+%%   <<"ForecastDimensions">> => list(string()),
 %%   <<"ForecastFrequency">> => string()
 %% }
 -type featurization_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_monitors_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -452,7 +452,7 @@
 %% Example:
 %% list_predictors_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Predictors">> => list(predictor_summary()())
+%%   <<"Predictors">> => list(predictor_summary())
 %% }
 -type list_predictors_response() :: #{binary() => any()}.
 
@@ -465,7 +465,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -484,7 +484,7 @@
 
 %% Example:
 %% list_what_if_forecasts_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -505,10 +505,10 @@
 
 %% Example:
 %% create_dataset_group_request() :: #{
-%%   <<"DatasetArns">> => list(string()()),
+%%   <<"DatasetArns">> => list(string()),
 %%   <<"DatasetGroupName">> := string(),
 %%   <<"Domain">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_dataset_group_request() :: #{binary() => any()}.
 
@@ -519,7 +519,7 @@
 %%   <<"EstimatedTimeRemainingInMinutes">> => float(),
 %%   <<"ForecastArn">> => string(),
 %%   <<"ForecastName">> => string(),
-%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"ForecastTypes">> => list(string()),
 %%   <<"LastModificationTime">> => non_neg_integer(),
 %%   <<"Message">> => string(),
 %%   <<"PredictorArn">> => string(),
@@ -548,7 +548,7 @@
 
 %% Example:
 %% predictor_execution_details() :: #{
-%%   <<"PredictorExecutions">> => list(predictor_execution()())
+%%   <<"PredictorExecutions">> => list(predictor_execution())
 %% }
 -type predictor_execution_details() :: #{binary() => any()}.
 
@@ -569,16 +569,16 @@
 %% Example:
 %% describe_predictor_response() :: #{
 %%   <<"AlgorithmArn">> => string(),
-%%   <<"AutoMLAlgorithmArns">> => list(string()()),
+%%   <<"AutoMLAlgorithmArns">> => list(string()),
 %%   <<"AutoMLOverrideStrategy">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DatasetImportJobArns">> => list(string()()),
+%%   <<"DatasetImportJobArns">> => list(string()),
 %%   <<"EncryptionConfig">> => encryption_config(),
 %%   <<"EstimatedTimeRemainingInMinutes">> => float(),
 %%   <<"EvaluationParameters">> => evaluation_parameters(),
 %%   <<"FeaturizationConfig">> => featurization_config(),
 %%   <<"ForecastHorizon">> => integer(),
-%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"ForecastTypes">> => list(string()),
 %%   <<"HPOConfig">> => hyper_parameter_tuning_job_config(),
 %%   <<"InputDataConfig">> => input_data_config(),
 %%   <<"IsAutoPredictor">> => boolean(),
@@ -602,7 +602,7 @@
 %%   <<"LastModificationTime">> => non_neg_integer(),
 %%   <<"Message">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"WhatIfForecastArns">> => list(string()()),
+%%   <<"WhatIfForecastArns">> => list(string()),
 %%   <<"WhatIfForecastExportArn">> => string(),
 %%   <<"WhatIfForecastExportName">> => string()
 %% }
@@ -625,7 +625,7 @@
 
 %% Example:
 %% list_explainability_exports_response() :: #{
-%%   <<"ExplainabilityExports">> => list(explainability_export_summary()()),
+%%   <<"ExplainabilityExports">> => list(explainability_export_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_explainability_exports_response() :: #{binary() => any()}.
@@ -645,9 +645,9 @@
 %% Example:
 %% metrics() :: #{
 %%   <<"AverageWeightedQuantileLoss">> => float(),
-%%   <<"ErrorMetrics">> => list(error_metric()()),
+%%   <<"ErrorMetrics">> => list(error_metric()),
 %%   <<"RMSE">> => float(),
-%%   <<"WeightedQuantileLosses">> => list(weighted_quantile_loss()())
+%%   <<"WeightedQuantileLosses">> => list(weighted_quantile_loss())
 %% }
 -type metrics() :: #{binary() => any()}.
 
@@ -667,12 +667,12 @@
 %% describe_what_if_forecast_response() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"EstimatedTimeRemainingInMinutes">> => float(),
-%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"ForecastTypes">> => list(string()),
 %%   <<"LastModificationTime">> => non_neg_integer(),
 %%   <<"Message">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"TimeSeriesReplacementsDataSource">> => time_series_replacements_data_source(),
-%%   <<"TimeSeriesTransformations">> => list(time_series_transformation()()),
+%%   <<"TimeSeriesTransformations">> => list(time_series_transformation()),
 %%   <<"WhatIfAnalysisArn">> => string(),
 %%   <<"WhatIfForecastArn">> => string(),
 %%   <<"WhatIfForecastName">> => string()
@@ -694,7 +694,7 @@
 
 %% Example:
 %% list_dataset_import_jobs_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -803,14 +803,14 @@
 %% Example:
 %% time_series_transformation() :: #{
 %%   <<"Action">> => action(),
-%%   <<"TimeSeriesConditions">> => list(time_series_condition()())
+%%   <<"TimeSeriesConditions">> => list(time_series_condition())
 %% }
 -type time_series_transformation() :: #{binary() => any()}.
 
 %% Example:
 %% data_config() :: #{
-%%   <<"AdditionalDatasets">> => list(additional_dataset()()),
-%%   <<"AttributeConfigs">> => list(attribute_config()()),
+%%   <<"AdditionalDatasets">> => list(additional_dataset()),
+%%   <<"AttributeConfigs">> => list(attribute_config()),
 %%   <<"DatasetGroupArn">> => string()
 %% }
 -type data_config() :: #{binary() => any()}.
@@ -829,9 +829,9 @@
 
 %% Example:
 %% create_what_if_forecast_request() :: #{
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TimeSeriesReplacementsDataSource">> => time_series_replacements_data_source(),
-%%   <<"TimeSeriesTransformations">> => list(time_series_transformation()()),
+%%   <<"TimeSeriesTransformations">> => list(time_series_transformation()),
 %%   <<"WhatIfAnalysisArn">> := string(),
 %%   <<"WhatIfForecastName">> := string()
 %% }
@@ -842,22 +842,22 @@
 %%   <<"DataConfig">> => data_config(),
 %%   <<"EncryptionConfig">> => encryption_config(),
 %%   <<"ExplainPredictor">> => boolean(),
-%%   <<"ForecastDimensions">> => list(string()()),
+%%   <<"ForecastDimensions">> => list(string()),
 %%   <<"ForecastFrequency">> => string(),
 %%   <<"ForecastHorizon">> => integer(),
-%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"ForecastTypes">> => list(string()),
 %%   <<"MonitorConfig">> => monitor_config(),
 %%   <<"OptimizationMetric">> => list(any()),
 %%   <<"PredictorName">> := string(),
 %%   <<"ReferencePredictorArn">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TimeAlignmentBoundary">> => time_alignment_boundary()
 %% }
 -type create_auto_predictor_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_dataset_groups_response() :: #{
-%%   <<"DatasetGroups">> => list(dataset_group_summary()()),
+%%   <<"DatasetGroups">> => list(dataset_group_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dataset_groups_response() :: #{binary() => any()}.
@@ -870,7 +870,7 @@
 
 %% Example:
 %% list_what_if_analyses_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -878,7 +878,7 @@
 
 %% Example:
 %% list_predictors_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -900,7 +900,7 @@
 
 %% Example:
 %% schema() :: #{
-%%   <<"Attributes">> => list(schema_attribute()())
+%%   <<"Attributes">> => list(schema_attribute())
 %% }
 -type schema() :: #{binary() => any()}.
 
@@ -913,7 +913,7 @@
 
 %% Example:
 %% list_forecasts_response() :: #{
-%%   <<"Forecasts">> => list(forecast_summary()()),
+%%   <<"Forecasts">> => list(forecast_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_forecasts_response() :: #{binary() => any()}.
@@ -932,21 +932,21 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_predictor_backtest_export_jobs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PredictorBacktestExportJobs">> => list(predictor_backtest_export_job_summary()())
+%%   <<"PredictorBacktestExportJobs">> => list(predictor_backtest_export_job_summary())
 %% }
 -type list_predictor_backtest_export_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_what_if_analysis_request() :: #{
 %%   <<"ForecastArn">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TimeSeriesSelector">> => time_series_selector(),
 %%   <<"WhatIfAnalysisName">> := string()
 %% }
@@ -968,7 +968,7 @@
 %% Example:
 %% categorical_parameter_range() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type categorical_parameter_range() :: #{binary() => any()}.
 
@@ -996,7 +996,7 @@
 
 %% Example:
 %% list_explainabilities_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1020,7 +1020,7 @@
 %%   <<"ResourceArn">> := string(),
 %%   <<"Schema">> => schema(),
 %%   <<"StartDateTime">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_explainability_request() :: #{binary() => any()}.
 
@@ -1053,7 +1053,7 @@
 %% Example:
 %% predictor_execution() :: #{
 %%   <<"AlgorithmArn">> => string(),
-%%   <<"TestWindows">> => list(test_window_summary()())
+%%   <<"TestWindows">> => list(test_window_summary())
 %% }
 -type predictor_execution() :: #{binary() => any()}.
 
@@ -1113,7 +1113,7 @@
 
 %% Example:
 %% list_dataset_import_jobs_response() :: #{
-%%   <<"DatasetImportJobs">> => list(dataset_import_job_summary()()),
+%%   <<"DatasetImportJobs">> => list(dataset_import_job_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_dataset_import_jobs_response() :: #{binary() => any()}.
@@ -1150,7 +1150,7 @@
 
 %% Example:
 %% update_dataset_group_request() :: #{
-%%   <<"DatasetArns">> := list(string()()),
+%%   <<"DatasetArns">> := list(string()),
 %%   <<"DatasetGroupArn">> := string()
 %% }
 -type update_dataset_group_request() :: #{binary() => any()}.
@@ -1169,7 +1169,7 @@
 
 %% Example:
 %% list_what_if_forecast_exports_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1181,7 +1181,7 @@
 %%   <<"ForecastArn">> := string(),
 %%   <<"ForecastExportJobName">> := string(),
 %%   <<"Format">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_forecast_export_job_request() :: #{binary() => any()}.
 
@@ -1191,7 +1191,7 @@
 %%   <<"Format">> => string(),
 %%   <<"PredictorArn">> := string(),
 %%   <<"PredictorBacktestExportJobName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_predictor_backtest_export_job_request() :: #{binary() => any()}.
 
@@ -1260,7 +1260,7 @@
 %%   <<"LastModificationTime">> => non_neg_integer(),
 %%   <<"Message">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"WhatIfForecastArns">> => list(string()()),
+%%   <<"WhatIfForecastArns">> => list(string()),
 %%   <<"WhatIfForecastExportArn">> => string(),
 %%   <<"WhatIfForecastExportName">> => string()
 %% }
@@ -1292,7 +1292,7 @@
 %%   <<"Domain">> := list(any()),
 %%   <<"EncryptionConfig">> => encryption_config(),
 %%   <<"Schema">> := schema(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_dataset_request() :: #{binary() => any()}.
 
@@ -1325,7 +1325,7 @@
 %%   <<"Format">> => string(),
 %%   <<"GeolocationFormat">> => string(),
 %%   <<"ImportMode">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TimeZone">> => string(),
 %%   <<"TimestampFormat">> => string(),
 %%   <<"UseGeolocationForTimeZone">> => boolean()
@@ -1409,8 +1409,8 @@
 %% create_what_if_forecast_export_request() :: #{
 %%   <<"Destination">> := data_destination(),
 %%   <<"Format">> => string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"WhatIfForecastArns">> := list(string()()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"WhatIfForecastArns">> := list(string()),
 %%   <<"WhatIfForecastExportName">> := string()
 %% }
 -type create_what_if_forecast_export_request() :: #{binary() => any()}.
@@ -1429,7 +1429,7 @@
 
 %% Example:
 %% list_monitor_evaluations_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"MonitorArn">> := string(),
 %%   <<"NextToken">> => string()
@@ -1439,7 +1439,7 @@
 %% Example:
 %% describe_dataset_group_response() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
-%%   <<"DatasetArns">> => list(string()()),
+%%   <<"DatasetArns">> => list(string()),
 %%   <<"DatasetGroupArn">> => string(),
 %%   <<"DatasetGroupName">> => string(),
 %%   <<"Domain">> => list(any()),
@@ -1451,13 +1451,13 @@
 %% Example:
 %% evaluation_result() :: #{
 %%   <<"AlgorithmArn">> => string(),
-%%   <<"TestWindows">> => list(window_summary()())
+%%   <<"TestWindows">> => list(window_summary())
 %% }
 -type evaluation_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_forecasts_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1477,7 +1477,7 @@
 
 %% Example:
 %% list_datasets_response() :: #{
-%%   <<"Datasets">> => list(dataset_summary()()),
+%%   <<"Datasets">> => list(dataset_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.
@@ -1497,9 +1497,9 @@
 %% Example:
 %% create_forecast_request() :: #{
 %%   <<"ForecastName">> := string(),
-%%   <<"ForecastTypes">> => list(string()()),
+%%   <<"ForecastTypes">> => list(string()),
 %%   <<"PredictorArn">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TimeSeriesSelector">> => time_series_selector()
 %% }
 -type create_forecast_request() :: #{binary() => any()}.
@@ -1527,13 +1527,13 @@
 %% create_monitor_request() :: #{
 %%   <<"MonitorName">> := string(),
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_monitor_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_explainability_exports_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1563,14 +1563,14 @@
 
 %% Example:
 %% list_explainabilities_response() :: #{
-%%   <<"Explainabilities">> => list(explainability_summary()()),
+%%   <<"Explainabilities">> => list(explainability_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_explainabilities_response() :: #{binary() => any()}.
 
 %% Example:
 %% predictor_baseline() :: #{
-%%   <<"BaselineMetrics">> => list(baseline_metric()())
+%%   <<"BaselineMetrics">> => list(baseline_metric())
 %% }
 -type predictor_baseline() :: #{binary() => any()}.
 
@@ -1624,13 +1624,13 @@
 %% Example:
 %% featurization() :: #{
 %%   <<"AttributeName">> => string(),
-%%   <<"FeaturizationPipeline">> => list(featurization_method()())
+%%   <<"FeaturizationPipeline">> => list(featurization_method())
 %% }
 -type featurization() :: #{binary() => any()}.
 
 %% Example:
 %% list_predictor_backtest_export_jobs_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }

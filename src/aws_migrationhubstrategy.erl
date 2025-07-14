@@ -94,7 +94,7 @@
 %% start_import_file_task_request() :: #{
 %%   <<"S3Bucket">> := string(),
 %%   <<"dataSourceType">> => string(),
-%%   <<"groupId">> => list(group()()),
+%%   <<"groupId">> => list(group()),
 %%   <<"name">> := string(),
 %%   <<"s3bucketForReportData">> => string(),
 %%   <<"s3key">> := string()
@@ -111,14 +111,14 @@
 
 %% Example:
 %% no_database_migration_preference() :: #{
-%%   <<"targetDatabaseEngine">> => list(string()())
+%%   <<"targetDatabaseEngine">> => list(string())
 %% }
 -type no_database_migration_preference() :: #{binary() => any()}.
 
 
 %% Example:
 %% heterogeneous() :: #{
-%%   <<"targetDatabaseEngine">> => list(string()())
+%%   <<"targetDatabaseEngine">> => list(string())
 %% }
 -type heterogeneous() :: #{binary() => any()}.
 
@@ -148,8 +148,8 @@
 %% Example:
 %% get_application_component_details_response() :: #{
 %%   <<"applicationComponentDetail">> => application_component_detail(),
-%%   <<"associatedApplications">> => list(associated_application()()),
-%%   <<"associatedServerIds">> => list(string()()),
+%%   <<"associatedApplications">> => list(associated_application()),
+%%   <<"associatedServerIds">> => list(string()),
 %%   <<"moreApplicationResource">> => boolean()
 %% }
 -type get_application_component_details_response() :: #{binary() => any()}.
@@ -202,7 +202,7 @@
 
 %% Example:
 %% list_collectors_response() :: #{
-%%   <<"Collectors">> => list(collector()()),
+%%   <<"Collectors">> => list(collector()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_collectors_response() :: #{binary() => any()}.
@@ -212,7 +212,7 @@
 %% system_info() :: #{
 %%   <<"cpuArchitecture">> => string(),
 %%   <<"fileSystemType">> => string(),
-%%   <<"networkInfoList">> => list(network_info()()),
+%%   <<"networkInfoList">> => list(network_info()),
 %%   <<"osInfo">> => o_s_info()
 %% }
 -type system_info() :: #{binary() => any()}.
@@ -220,14 +220,14 @@
 
 %% Example:
 %% homogeneous() :: #{
-%%   <<"targetDatabaseEngine">> => list(string()())
+%%   <<"targetDatabaseEngine">> => list(string())
 %% }
 -type homogeneous() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_server_details_response() :: #{
-%%   <<"associatedApplications">> => list(associated_application()()),
+%%   <<"associatedApplications">> => list(associated_application()),
 %%   <<"nextToken">> => string(),
 %%   <<"serverDetail">> => server_detail()
 %% }
@@ -252,7 +252,7 @@
 %% Example:
 %% list_servers_request() :: #{
 %%   <<"filterValue">> => string(),
-%%   <<"groupIdFilter">> => list(group()()),
+%%   <<"groupIdFilter">> => list(group()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"serverCriteria">> => string(),
@@ -317,7 +317,7 @@
 %% list_application_components_request() :: #{
 %%   <<"applicationComponentCriteria">> => string(),
 %%   <<"filterValue">> => string(),
-%%   <<"groupIdFilter">> => list(group()()),
+%%   <<"groupIdFilter">> => list(group()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sort">> => string()
@@ -331,18 +331,18 @@
 
 %% Example:
 %% no_management_preference() :: #{
-%%   <<"targetDestination">> => list(string()())
+%%   <<"targetDestination">> => list(string())
 %% }
 -type no_management_preference() :: #{binary() => any()}.
 
 
 %% Example:
 %% configuration_summary() :: #{
-%%   <<"ipAddressBasedRemoteInfoList">> => list(ip_address_based_remote_info()()),
-%%   <<"pipelineInfoList">> => list(pipeline_info()()),
+%%   <<"ipAddressBasedRemoteInfoList">> => list(ip_address_based_remote_info()),
+%%   <<"pipelineInfoList">> => list(pipeline_info()),
 %%   <<"remoteSourceCodeAnalysisServerInfo">> => remote_source_code_analysis_server_info(),
-%%   <<"vcenterBasedRemoteInfoList">> => list(vcenter_based_remote_info()()),
-%%   <<"versionControlInfoList">> => list(version_control_info()())
+%%   <<"vcenterBasedRemoteInfoList">> => list(vcenter_based_remote_info()),
+%%   <<"versionControlInfoList">> => list(version_control_info())
 %% }
 -type configuration_summary() :: #{binary() => any()}.
 
@@ -369,7 +369,7 @@
 
 %% Example:
 %% list_analyzable_servers_response() :: #{
-%%   <<"analyzableServers">> => list(analyzable_server_summary()()),
+%%   <<"analyzableServers">> => list(analyzable_server_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_analyzable_servers_response() :: #{binary() => any()}.
@@ -441,7 +441,7 @@
 
 %% Example:
 %% aws_managed_resources() :: #{
-%%   <<"targetDestination">> => list(string()())
+%%   <<"targetDestination">> => list(string())
 %% }
 -type aws_managed_resources() :: #{binary() => any()}.
 
@@ -468,17 +468,17 @@
 %%   <<"id">> => string(),
 %%   <<"inclusionStatus">> => string(),
 %%   <<"lastAnalyzedTimestamp">> => non_neg_integer(),
-%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()()),
+%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()),
 %%   <<"moreServerAssociationExists">> => boolean(),
 %%   <<"name">> => string(),
 %%   <<"osDriver">> => string(),
 %%   <<"osVersion">> => string(),
 %%   <<"recommendationSet">> => recommendation_set(),
 %%   <<"resourceSubType">> => string(),
-%%   <<"resultList">> => list(result()()),
+%%   <<"resultList">> => list(result()),
 %%   <<"runtimeStatus">> => string(),
 %%   <<"runtimeStatusMessage">> => string(),
-%%   <<"sourceCodeRepositories">> => list(source_code_repository()()),
+%%   <<"sourceCodeRepositories">> => list(source_code_repository()),
 %%   <<"statusMessage">> => string()
 %% }
 -type application_component_detail() :: #{binary() => any()}.
@@ -489,11 +489,11 @@
 %%   <<"antipatternReportS3Object">> => s3_object(),
 %%   <<"antipatternReportStatus">> => string(),
 %%   <<"antipatternReportStatusMessage">> => string(),
-%%   <<"applicationComponentStrategySummary">> => list(strategy_summary()()),
+%%   <<"applicationComponentStrategySummary">> => list(strategy_summary()),
 %%   <<"dataCollectionStatus">> => string(),
 %%   <<"id">> => string(),
 %%   <<"lastAnalyzedTimestamp">> => non_neg_integer(),
-%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()()),
+%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()),
 %%   <<"name">> => string(),
 %%   <<"recommendationSet">> => recommendation_set(),
 %%   <<"serverError">> => server_error(),
@@ -513,7 +513,7 @@
 
 %% Example:
 %% get_server_strategies_response() :: #{
-%%   <<"serverStrategies">> => list(server_strategy()())
+%%   <<"serverStrategies">> => list(server_strategy())
 %% }
 -type get_server_strategies_response() :: #{binary() => any()}.
 
@@ -522,7 +522,7 @@
 %% recommendation_report_details() :: #{
 %%   <<"completionTime">> => non_neg_integer(),
 %%   <<"s3Bucket">> => string(),
-%%   <<"s3Keys">> => list(string()()),
+%%   <<"s3Keys">> => list(string()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string()
@@ -538,7 +538,7 @@
 %% result() :: #{
 %%   <<"analysisStatus">> => list(),
 %%   <<"analysisType">> => string(),
-%%   <<"antipatternReportResultList">> => list(antipattern_report_result()()),
+%%   <<"antipatternReportResultList">> => list(antipattern_report_result()),
 %%   <<"statusMessage">> => string()
 %% }
 -type result() :: #{binary() => any()}.
@@ -567,7 +567,7 @@
 %% Example:
 %% start_assessment_request() :: #{
 %%   <<"assessmentDataSourceType">> => string(),
-%%   <<"assessmentTargets">> => list(assessment_target()()),
+%%   <<"assessmentTargets">> => list(assessment_target()),
 %%   <<"s3bucketForAnalysisData">> => string(),
 %%   <<"s3bucketForReportData">> => string()
 %% }
@@ -576,7 +576,7 @@
 
 %% Example:
 %% get_application_component_strategies_response() :: #{
-%%   <<"applicationComponentStrategies">> => list(application_component_strategy()())
+%%   <<"applicationComponentStrategies">> => list(application_component_strategy())
 %% }
 -type get_application_component_strategies_response() :: #{binary() => any()}.
 
@@ -588,14 +588,14 @@
 %% Example:
 %% list_import_file_task_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"taskInfos">> => list(import_file_task_information()())
+%%   <<"taskInfos">> => list(import_file_task_information())
 %% }
 -type list_import_file_task_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% start_recommendation_report_generation_request() :: #{
-%%   <<"groupIdFilter">> => list(group()()),
+%%   <<"groupIdFilter">> => list(group()),
 %%   <<"outputFormat">> => string()
 %% }
 -type start_recommendation_report_generation_request() :: #{binary() => any()}.
@@ -676,7 +676,7 @@
 %%   <<"configureOnly">> => boolean(),
 %%   <<"inclusionStatus">> => string(),
 %%   <<"secretsManagerKey">> => string(),
-%%   <<"sourceCodeList">> => list(source_code()()),
+%%   <<"sourceCodeList">> => list(source_code()),
 %%   <<"strategyOption">> => strategy_option()
 %% }
 -type update_application_component_config_request() :: #{binary() => any()}.
@@ -697,7 +697,7 @@
 
 %% Example:
 %% get_assessment_response() :: #{
-%%   <<"assessmentTargets">> => list(assessment_target()()),
+%%   <<"assessmentTargets">> => list(assessment_target()),
 %%   <<"dataCollectionDetails">> => data_collection_details(),
 %%   <<"id">> => string()
 %% }
@@ -739,7 +739,7 @@
 
 %% Example:
 %% list_application_components_response() :: #{
-%%   <<"applicationComponentInfos">> => list(application_component_detail()()),
+%%   <<"applicationComponentInfos">> => list(application_component_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_application_components_response() :: #{binary() => any()}.
@@ -820,7 +820,7 @@
 %% Example:
 %% list_servers_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"serverInfos">> => list(server_detail()())
+%%   <<"serverInfos">> => list(server_detail())
 %% }
 -type list_servers_response() :: #{binary() => any()}.
 
@@ -879,7 +879,7 @@
 
 %% Example:
 %% self_manage_resources() :: #{
-%%   <<"targetDestination">> => list(string()())
+%%   <<"targetDestination">> => list(string())
 %% }
 -type self_manage_resources() :: #{binary() => any()}.
 
@@ -888,7 +888,7 @@
 %% assessment_target() :: #{
 %%   <<"condition">> => string(),
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type assessment_target() :: #{binary() => any()}.
 
@@ -899,13 +899,13 @@
 %%   <<"antipatternReportStatus">> => string(),
 %%   <<"antipatternReportStatusMessage">> => string(),
 %%   <<"lastAnalyzedTimestamp">> => non_neg_integer(),
-%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()()),
-%%   <<"listApplicationComponentStatusSummary">> => list(application_component_status_summary()()),
-%%   <<"listApplicationComponentStrategySummary">> => list(strategy_summary()()),
-%%   <<"listApplicationComponentSummary">> => list(application_component_summary()()),
-%%   <<"listServerStatusSummary">> => list(server_status_summary()()),
-%%   <<"listServerStrategySummary">> => list(strategy_summary()()),
-%%   <<"listServerSummary">> => list(server_summary()())
+%%   <<"listAntipatternSeveritySummary">> => list(antipattern_severity_summary()),
+%%   <<"listApplicationComponentStatusSummary">> => list(application_component_status_summary()),
+%%   <<"listApplicationComponentStrategySummary">> => list(strategy_summary()),
+%%   <<"listApplicationComponentSummary">> => list(application_component_summary()),
+%%   <<"listServerStatusSummary">> => list(server_status_summary()),
+%%   <<"listServerStrategySummary">> => list(strategy_summary()),
+%%   <<"listServerSummary">> => list(server_summary())
 %% }
 -type assessment_summary() :: #{binary() => any()}.
 

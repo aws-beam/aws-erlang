@@ -229,7 +229,7 @@
 
 %% Example:
 %% list_assessments_response() :: #{
-%%   <<"assessmentMetadata">> => list(assessment_metadata_item()()),
+%%   <<"assessmentMetadata">> => list(assessment_metadata_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessments_response() :: #{binary() => any()}.
@@ -296,7 +296,7 @@
 
 %% Example:
 %% batch_delete_delegation_by_assessment_response() :: #{
-%%   <<"errors">> => list(batch_delete_delegation_by_assessment_error()())
+%%   <<"errors">> => list(batch_delete_delegation_by_assessment_error())
 %% }
 -type batch_delete_delegation_by_assessment_response() :: #{binary() => any()}.
 
@@ -329,7 +329,7 @@
 
 %% Example:
 %% list_assessment_reports_response() :: #{
-%%   <<"assessmentReports">> => list(assessment_report_metadata()()),
+%%   <<"assessmentReports">> => list(assessment_report_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_reports_response() :: #{binary() => any()}.
@@ -346,7 +346,7 @@
 %% Example:
 %% list_notifications_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"notifications">> => list(notification()())
+%%   <<"notifications">> => list(notification())
 %% }
 -type list_notifications_response() :: #{binary() => any()}.
 
@@ -417,7 +417,7 @@
 
 %% Example:
 %% control_set() :: #{
-%%   <<"controls">> => list(control()()),
+%%   <<"controls">> => list(control()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
@@ -460,11 +460,11 @@
 %% assessment_metadata_item() :: #{
 %%   <<"complianceType">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"delegations">> => list(delegation()()),
+%%   <<"delegations">> => list(delegation()),
 %%   <<"id">> => string(),
 %%   <<"lastUpdated">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"roles">> => list(role()()),
+%%   <<"roles">> => list(role()),
 %%   <<"status">> => list(any())
 %% }
 -type assessment_metadata_item() :: #{binary() => any()}.
@@ -515,7 +515,7 @@
 %%   <<"actionPlanInstructions">> => string(),
 %%   <<"actionPlanTitle">> => string(),
 %%   <<"arn">> => string(),
-%%   <<"controlMappingSources">> => list(control_mapping_source()()),
+%%   <<"controlMappingSources">> => list(control_mapping_source()),
 %%   <<"controlSources">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -538,7 +538,7 @@
 
 %% Example:
 %% list_control_insights_by_control_domain_response() :: #{
-%%   <<"controlInsightsMetadata">> => list(control_insights_metadata_item()()),
+%%   <<"controlInsightsMetadata">> => list(control_insights_metadata_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_control_insights_by_control_domain_response() :: #{binary() => any()}.
@@ -546,7 +546,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -569,12 +569,12 @@
 %%   <<"assessmentReportsDestination">> => assessment_reports_destination(),
 %%   <<"complianceType">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
-%%   <<"delegations">> => list(delegation()()),
+%%   <<"delegations">> => list(delegation()),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
 %%   <<"lastUpdated">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"roles">> => list(role()()),
+%%   <<"roles">> => list(role()),
 %%   <<"scope">> => scope(),
 %%   <<"status">> => list(any())
 %% }
@@ -584,7 +584,7 @@
 %% Example:
 %% batch_disassociate_assessment_report_evidence_request() :: #{
 %%   <<"evidenceFolderId">> := string(),
-%%   <<"evidenceIds">> := list(string()())
+%%   <<"evidenceIds">> := list(string())
 %% }
 -type batch_disassociate_assessment_report_evidence_request() :: #{binary() => any()}.
 
@@ -592,10 +592,10 @@
 %% Example:
 %% assessment_control() :: #{
 %%   <<"assessmentReportEvidenceCount">> => integer(),
-%%   <<"comments">> => list(control_comment()()),
+%%   <<"comments">> => list(control_comment()),
 %%   <<"description">> => string(),
 %%   <<"evidenceCount">> => integer(),
-%%   <<"evidenceSources">> => list(string()()),
+%%   <<"evidenceSources">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"response">> => list(any()),
@@ -626,7 +626,7 @@
 
 %% Example:
 %% list_controls_response() :: #{
-%%   <<"controlMetadataList">> => list(control_metadata()()),
+%%   <<"controlMetadataList">> => list(control_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_controls_response() :: #{binary() => any()}.
@@ -651,7 +651,7 @@
 %% Example:
 %% batch_associate_assessment_report_evidence_request() :: #{
 %%   <<"evidenceFolderId">> := string(),
-%%   <<"evidenceIds">> := list(string()())
+%%   <<"evidenceIds">> := list(string())
 %% }
 -type batch_associate_assessment_report_evidence_request() :: #{binary() => any()}.
 
@@ -677,7 +677,7 @@
 
 %% Example:
 %% list_control_domain_insights_by_assessment_response() :: #{
-%%   <<"controlDomainInsights">> => list(control_domain_insights()()),
+%%   <<"controlDomainInsights">> => list(control_domain_insights()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_control_domain_insights_by_assessment_response() :: #{binary() => any()}.
@@ -685,7 +685,7 @@
 
 %% Example:
 %% create_assessment_framework_control_set() :: #{
-%%   <<"controls">> => list(create_assessment_framework_control()()),
+%%   <<"controls">> => list(create_assessment_framework_control()),
 %%   <<"name">> => string()
 %% }
 -type create_assessment_framework_control_set() :: #{binary() => any()}.
@@ -700,7 +700,7 @@
 
 %% Example:
 %% get_change_logs_response() :: #{
-%%   <<"changeLogs">> => list(change_log()()),
+%%   <<"changeLogs">> => list(change_log()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_change_logs_response() :: #{binary() => any()}.
@@ -729,7 +729,7 @@
 
 %% Example:
 %% batch_create_delegation_by_assessment_request() :: #{
-%%   <<"createDelegationRequests">> := list(create_delegation_request()())
+%%   <<"createDelegationRequests">> := list(create_delegation_request())
 %% }
 -type batch_create_delegation_by_assessment_request() :: #{binary() => any()}.
 
@@ -753,7 +753,7 @@
 %% Example:
 %% create_assessment_framework_request() :: #{
 %%   <<"complianceType">> => string(),
-%%   <<"controlSets">> := list(create_assessment_framework_control_set()()),
+%%   <<"controlSets">> := list(create_assessment_framework_control_set()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map()
@@ -763,7 +763,7 @@
 
 %% Example:
 %% list_assessment_frameworks_response() :: #{
-%%   <<"frameworkMetadataList">> => list(assessment_framework_metadata()()),
+%%   <<"frameworkMetadataList">> => list(assessment_framework_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_frameworks_response() :: #{binary() => any()}.
@@ -783,7 +783,7 @@
 
 %% Example:
 %% list_assessment_framework_share_requests_response() :: #{
-%%   <<"assessmentFrameworkShareRequests">> => list(assessment_framework_share_request()()),
+%%   <<"assessmentFrameworkShareRequests">> => list(assessment_framework_share_request()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_framework_share_requests_response() :: #{binary() => any()}.
@@ -798,7 +798,7 @@
 
 %% Example:
 %% list_assessment_control_insights_by_control_domain_response() :: #{
-%%   <<"controlInsightsByAssessment">> => list(control_insights_metadata_by_assessment_item()()),
+%%   <<"controlInsightsByAssessment">> => list(control_insights_metadata_by_assessment_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_assessment_control_insights_by_control_domain_response() :: #{binary() => any()}.
@@ -829,7 +829,7 @@
 %% Example:
 %% update_assessment_framework_request() :: #{
 %%   <<"complianceType">> => string(),
-%%   <<"controlSets">> := list(update_assessment_framework_control_set()()),
+%%   <<"controlSets">> := list(update_assessment_framework_control_set()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string()
 %% }
@@ -880,12 +880,12 @@
 
 %% Example:
 %% assessment_control_set() :: #{
-%%   <<"controls">> => list(assessment_control()()),
-%%   <<"delegations">> => list(delegation()()),
+%%   <<"controls">> => list(assessment_control()),
+%%   <<"delegations">> => list(delegation()),
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
 %%   <<"manualEvidenceCount">> => integer(),
-%%   <<"roles">> => list(role()()),
+%%   <<"roles">> => list(role()),
 %%   <<"status">> => list(any()),
 %%   <<"systemEvidenceCount">> => integer()
 %% }
@@ -905,7 +905,7 @@
 %% settings() :: #{
 %%   <<"defaultAssessmentReportsDestination">> => assessment_reports_destination(),
 %%   <<"defaultExportDestination">> => default_export_destination(),
-%%   <<"defaultProcessOwners">> => list(role()()),
+%%   <<"defaultProcessOwners">> => list(role()),
 %%   <<"deregistrationPolicy">> => deregistration_policy(),
 %%   <<"evidenceFinderEnablement">> => evidence_finder_enablement(),
 %%   <<"isAwsOrgEnabled">> => boolean(),
@@ -917,7 +917,7 @@
 
 %% Example:
 %% get_services_in_scope_response() :: #{
-%%   <<"serviceMetadata">> => list(service_metadata()())
+%%   <<"serviceMetadata">> => list(service_metadata())
 %% }
 -type get_services_in_scope_response() :: #{binary() => any()}.
 
@@ -946,8 +946,8 @@
 
 %% Example:
 %% batch_associate_assessment_report_evidence_response() :: #{
-%%   <<"errors">> => list(assessment_report_evidence_error()()),
-%%   <<"evidenceIds">> => list(string()())
+%%   <<"errors">> => list(assessment_report_evidence_error()),
+%%   <<"evidenceIds">> => list(string())
 %% }
 -type batch_associate_assessment_report_evidence_response() :: #{binary() => any()}.
 
@@ -963,7 +963,7 @@
 %% update_settings_request() :: #{
 %%   <<"defaultAssessmentReportsDestination">> => assessment_reports_destination(),
 %%   <<"defaultExportDestination">> => default_export_destination(),
-%%   <<"defaultProcessOwners">> => list(role()()),
+%%   <<"defaultProcessOwners">> => list(role()),
 %%   <<"deregistrationPolicy">> => deregistration_policy(),
 %%   <<"evidenceFinderEnabled">> => boolean(),
 %%   <<"kmsKey">> => string(),
@@ -974,7 +974,7 @@
 
 %% Example:
 %% get_evidence_folders_by_assessment_control_response() :: #{
-%%   <<"evidenceFolders">> => list(assessment_evidence_folder()()),
+%%   <<"evidenceFolders">> => list(assessment_evidence_folder()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_evidence_folders_by_assessment_control_response() :: #{binary() => any()}.
@@ -1033,7 +1033,7 @@
 %%   <<"assessmentDescription">> => string(),
 %%   <<"assessmentName">> => string(),
 %%   <<"assessmentReportsDestination">> => assessment_reports_destination(),
-%%   <<"roles">> => list(role()()),
+%%   <<"roles">> => list(role()),
 %%   <<"scope">> := scope()
 %% }
 -type update_assessment_request() :: #{binary() => any()}.
@@ -1052,7 +1052,7 @@
 
 %% Example:
 %% batch_import_evidence_to_assessment_control_request() :: #{
-%%   <<"manualEvidence">> := list(manual_evidence()())
+%%   <<"manualEvidence">> := list(manual_evidence())
 %% }
 -type batch_import_evidence_to_assessment_control_request() :: #{binary() => any()}.
 
@@ -1073,7 +1073,7 @@
 
 %% Example:
 %% get_evidence_folders_by_assessment_response() :: #{
-%%   <<"evidenceFolders">> => list(assessment_evidence_folder()()),
+%%   <<"evidenceFolders">> => list(assessment_evidence_folder()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_evidence_folders_by_assessment_response() :: #{binary() => any()}.
@@ -1111,15 +1111,15 @@
 
 %% Example:
 %% scope() :: #{
-%%   <<"awsAccounts">> => list(aws_account()()),
-%%   <<"awsServices">> => list(aws_service()())
+%%   <<"awsAccounts">> => list(aws_account()),
+%%   <<"awsServices">> => list(aws_service())
 %% }
 -type scope() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_delete_delegation_by_assessment_request() :: #{
-%%   <<"delegationIds">> := list(string()())
+%%   <<"delegationIds">> := list(string())
 %% }
 -type batch_delete_delegation_by_assessment_request() :: #{binary() => any()}.
 
@@ -1128,7 +1128,7 @@
 %% framework() :: #{
 %%   <<"arn">> => string(),
 %%   <<"complianceType">> => string(),
-%%   <<"controlSets">> => list(control_set()()),
+%%   <<"controlSets">> => list(control_set()),
 %%   <<"controlSources">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -1153,7 +1153,7 @@
 
 %% Example:
 %% get_delegations_response() :: #{
-%%   <<"delegations">> => list(delegation_metadata()()),
+%%   <<"delegations">> => list(delegation_metadata()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_delegations_response() :: #{binary() => any()}.
@@ -1184,7 +1184,7 @@
 
 %% Example:
 %% update_assessment_framework_control_set() :: #{
-%%   <<"controls">> => list(create_assessment_framework_control()()),
+%%   <<"controls">> => list(create_assessment_framework_control()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string()
 %% }
@@ -1201,7 +1201,7 @@
 
 %% Example:
 %% list_control_domain_insights_response() :: #{
-%%   <<"controlDomainInsights">> => list(control_domain_insights()()),
+%%   <<"controlDomainInsights">> => list(control_domain_insights()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_control_domain_insights_response() :: #{binary() => any()}.
@@ -1230,7 +1230,7 @@
 
 %% Example:
 %% batch_import_evidence_to_assessment_control_response() :: #{
-%%   <<"errors">> => list(batch_import_evidence_to_assessment_control_error()())
+%%   <<"errors">> => list(batch_import_evidence_to_assessment_control_error())
 %% }
 -type batch_import_evidence_to_assessment_control_response() :: #{binary() => any()}.
 
@@ -1256,7 +1256,7 @@
 %%   <<"signatureDateTime">> => string(),
 %%   <<"signatureKeyId">> => string(),
 %%   <<"signatureValid">> => boolean(),
-%%   <<"validationErrors">> => list(string()())
+%%   <<"validationErrors">> => list(string())
 %% }
 -type validate_assessment_report_integrity_response() :: #{binary() => any()}.
 
@@ -1282,7 +1282,7 @@
 %% update_control_request() :: #{
 %%   <<"actionPlanInstructions">> => string(),
 %%   <<"actionPlanTitle">> => string(),
-%%   <<"controlMappingSources">> := list(control_mapping_source()()),
+%%   <<"controlMappingSources">> := list(control_mapping_source()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"testingInformation">> => string()
@@ -1312,7 +1312,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_field()()),
+%%   <<"fields">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any())
 %% }
@@ -1325,8 +1325,8 @@
 
 %% Example:
 %% batch_create_delegation_by_assessment_response() :: #{
-%%   <<"delegations">> => list(delegation()()),
-%%   <<"errors">> => list(batch_create_delegation_by_assessment_error()())
+%%   <<"delegations">> => list(delegation()),
+%%   <<"errors">> => list(batch_create_delegation_by_assessment_error())
 %% }
 -type batch_create_delegation_by_assessment_response() :: #{binary() => any()}.
 
@@ -1368,7 +1368,7 @@
 %%   <<"evidenceFolderId">> => string(),
 %%   <<"iamId">> => string(),
 %%   <<"id">> => string(),
-%%   <<"resourcesIncluded">> => list(resource()()),
+%%   <<"resourcesIncluded">> => list(resource()),
 %%   <<"time">> => non_neg_integer()
 %% }
 -type evidence() :: #{binary() => any()}.
@@ -1404,7 +1404,7 @@
 
 %% Example:
 %% get_evidence_by_evidence_folder_response() :: #{
-%%   <<"evidence">> => list(evidence()()),
+%%   <<"evidence">> => list(evidence()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_evidence_by_evidence_folder_response() :: #{binary() => any()}.
@@ -1440,7 +1440,7 @@
 
 %% Example:
 %% list_keywords_for_data_source_response() :: #{
-%%   <<"keywords">> => list(string()()),
+%%   <<"keywords">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_keywords_for_data_source_response() :: #{binary() => any()}.
@@ -1554,7 +1554,7 @@
 %%   <<"description">> => string(),
 %%   <<"frameworkId">> := string(),
 %%   <<"name">> := string(),
-%%   <<"roles">> := list(role()()),
+%%   <<"roles">> := list(role()),
 %%   <<"scope">> := scope(),
 %%   <<"tags">> => map()
 %% }
@@ -1563,8 +1563,8 @@
 
 %% Example:
 %% batch_disassociate_assessment_report_evidence_response() :: #{
-%%   <<"errors">> => list(assessment_report_evidence_error()()),
-%%   <<"evidenceIds">> => list(string()())
+%%   <<"errors">> => list(assessment_report_evidence_error()),
+%%   <<"evidenceIds">> => list(string())
 %% }
 -type batch_disassociate_assessment_report_evidence_response() :: #{binary() => any()}.
 
@@ -1573,7 +1573,7 @@
 %% create_control_request() :: #{
 %%   <<"actionPlanInstructions">> => string(),
 %%   <<"actionPlanTitle">> => string(),
-%%   <<"controlMappingSources">> := list(create_control_mapping_source()()),
+%%   <<"controlMappingSources">> := list(create_control_mapping_source()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map(),
@@ -1704,7 +1704,7 @@
 %% Example:
 %% assessment_framework() :: #{
 %%   <<"arn">> => string(),
-%%   <<"controlSets">> => list(assessment_control_set()()),
+%%   <<"controlSets">> => list(assessment_control_set()),
 %%   <<"id">> => string(),
 %%   <<"metadata">> => framework_metadata()
 %% }

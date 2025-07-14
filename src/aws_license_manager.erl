@@ -113,7 +113,7 @@
 %% Example:
 %% checkout_license_response() :: #{
 %%   <<"CheckoutType">> => list(any()),
-%%   <<"EntitlementsAllowed">> => list(entitlement_data()()),
+%%   <<"EntitlementsAllowed">> => list(entitlement_data()),
 %%   <<"Expiration">> => string(),
 %%   <<"IssuedAt">> => string(),
 %%   <<"LicenseArn">> => string(),
@@ -159,7 +159,7 @@
 %% Example:
 %% license_configuration() :: #{
 %%   <<"AutomatedDiscoveryInformation">> => automated_discovery_information(),
-%%   <<"ConsumedLicenseSummaryList">> => list(consumed_license_summary()()),
+%%   <<"ConsumedLicenseSummaryList">> => list(consumed_license_summary()),
 %%   <<"ConsumedLicenses">> => float(),
 %%   <<"Description">> => string(),
 %%   <<"DisassociateWhenNotFound">> => boolean(),
@@ -168,18 +168,18 @@
 %%   <<"LicenseCount">> => float(),
 %%   <<"LicenseCountHardLimit">> => boolean(),
 %%   <<"LicenseCountingType">> => list(any()),
-%%   <<"LicenseRules">> => list(string()()),
-%%   <<"ManagedResourceSummaryList">> => list(managed_resource_summary()()),
+%%   <<"LicenseRules">> => list(string()),
+%%   <<"ManagedResourceSummaryList">> => list(managed_resource_summary()),
 %%   <<"Name">> => string(),
 %%   <<"OwnerAccountId">> => string(),
-%%   <<"ProductInformationList">> => list(product_information()()),
+%%   <<"ProductInformationList">> => list(product_information()),
 %%   <<"Status">> => string()
 %% }
 -type license_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_received_grants_for_organization_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"LicenseArn">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -189,13 +189,13 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_usage_for_license_configuration_response() :: #{
-%%   <<"LicenseConfigurationUsageList">> => list(license_configuration_usage()()),
+%%   <<"LicenseConfigurationUsageList">> => list(license_configuration_usage()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_usage_for_license_configuration_response() :: #{binary() => any()}.
@@ -232,7 +232,7 @@
 
 %% Example:
 %% list_license_conversion_tasks_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -250,8 +250,8 @@
 
 %% Example:
 %% list_license_configurations_request() :: #{
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LicenseConfigurationArns">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseConfigurationArns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -265,7 +265,7 @@
 
 %% Example:
 %% license_usage() :: #{
-%%   <<"EntitlementUsages">> => list(entitlement_usage()())
+%%   <<"EntitlementUsages">> => list(entitlement_usage())
 %% }
 -type license_usage() :: #{binary() => any()}.
 
@@ -283,8 +283,8 @@
 
 %% Example:
 %% list_received_licenses_request() :: #{
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LicenseArns">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseArns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -305,8 +305,8 @@
 
 %% Example:
 %% list_licenses_request() :: #{
-%%   <<"Filters">> => list(filter()()),
-%%   <<"LicenseArns">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"LicenseArns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -337,11 +337,11 @@
 %%   <<"Beneficiary">> => string(),
 %%   <<"ConsumptionConfiguration">> => consumption_configuration(),
 %%   <<"CreateTime">> => string(),
-%%   <<"Entitlements">> => list(entitlement()()),
+%%   <<"Entitlements">> => list(entitlement()),
 %%   <<"HomeRegion">> => string(),
 %%   <<"Issuer">> => issuer_details(),
 %%   <<"LicenseArn">> => string(),
-%%   <<"LicenseMetadata">> => list(metadata()()),
+%%   <<"LicenseMetadata">> => list(metadata()),
 %%   <<"LicenseName">> => string(),
 %%   <<"ProductName">> => string(),
 %%   <<"ProductSKU">> => string(),
@@ -381,14 +381,14 @@
 
 %% Example:
 %% list_license_versions_response() :: #{
-%%   <<"Licenses">> => list(license()()),
+%%   <<"Licenses">> => list(license()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_license_versions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_license_manager_report_generators_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -396,7 +396,7 @@
 
 %% Example:
 %% list_received_licenses_for_organization_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -404,7 +404,7 @@
 
 %% Example:
 %% list_licenses_response() :: #{
-%%   <<"Licenses">> => list(license()()),
+%%   <<"Licenses">> => list(license()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_licenses_response() :: #{binary() => any()}.
@@ -413,11 +413,11 @@
 %% create_license_version_request() :: #{
 %%   <<"ClientToken">> := string(),
 %%   <<"ConsumptionConfiguration">> := consumption_configuration(),
-%%   <<"Entitlements">> := list(entitlement()()),
+%%   <<"Entitlements">> := list(entitlement()),
 %%   <<"HomeRegion">> := string(),
 %%   <<"Issuer">> := issuer(),
 %%   <<"LicenseArn">> := string(),
-%%   <<"LicenseMetadata">> => list(metadata()()),
+%%   <<"LicenseMetadata">> => list(metadata()),
 %%   <<"LicenseName">> := string(),
 %%   <<"ProductName">> := string(),
 %%   <<"SourceVersion">> => string(),
@@ -440,7 +440,7 @@
 
 %% Example:
 %% list_distributed_grants_response() :: #{
-%%   <<"Grants">> => list(grant()()),
+%%   <<"Grants">> => list(grant()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_distributed_grants_response() :: #{binary() => any()}.
@@ -454,7 +454,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -494,7 +494,7 @@
 
 %% Example:
 %% list_failures_for_license_configuration_operations_response() :: #{
-%%   <<"LicenseOperationFailureList">> => list(license_operation_failure()()),
+%%   <<"LicenseOperationFailureList">> => list(license_operation_failure()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_failures_for_license_configuration_operations_response() :: #{binary() => any()}.
@@ -510,14 +510,14 @@
 %%   <<"Beneficiary">> := string(),
 %%   <<"ClientToken">> := string(),
 %%   <<"ConsumptionConfiguration">> := consumption_configuration(),
-%%   <<"Entitlements">> := list(entitlement()()),
+%%   <<"Entitlements">> := list(entitlement()),
 %%   <<"HomeRegion">> := string(),
 %%   <<"Issuer">> := issuer(),
-%%   <<"LicenseMetadata">> => list(metadata()()),
+%%   <<"LicenseMetadata">> => list(metadata()),
 %%   <<"LicenseName">> := string(),
 %%   <<"ProductName">> := string(),
 %%   <<"ProductSKU">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Validity">> := datetime_range()
 %% }
 -type create_license_request() :: #{binary() => any()}.
@@ -550,8 +550,8 @@
 
 %% Example:
 %% list_distributed_grants_request() :: #{
-%%   <<"Filters">> => list(filter()()),
-%%   <<"GrantArns">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"GrantArns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -567,7 +567,7 @@
 
 %% Example:
 %% list_received_grants_for_organization_response() :: #{
-%%   <<"Grants">> => list(grant()()),
+%%   <<"Grants">> => list(grant()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_received_grants_for_organization_response() :: #{binary() => any()}.
@@ -580,7 +580,7 @@
 
 %% Example:
 %% list_license_configurations_response() :: #{
-%%   <<"LicenseConfigurations">> => list(license_configuration()()),
+%%   <<"LicenseConfigurations">> => list(license_configuration()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_license_configurations_response() :: #{binary() => any()}.
@@ -664,9 +664,9 @@
 %%   <<"LicenseConfigurationStatus">> => list(any()),
 %%   <<"LicenseCount">> => float(),
 %%   <<"LicenseCountHardLimit">> => boolean(),
-%%   <<"LicenseRules">> => list(string()()),
+%%   <<"LicenseRules">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"ProductInformationList">> => list(product_information()())
+%%   <<"ProductInformationList">> => list(product_information())
 %% }
 -type update_license_configuration_request() :: #{binary() => any()}.
 
@@ -677,8 +677,8 @@
 %%   <<"GrantName">> := string(),
 %%   <<"HomeRegion">> := string(),
 %%   <<"LicenseArn">> := string(),
-%%   <<"Principals">> := list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Principals">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_grant_request() :: #{binary() => any()}.
 
@@ -714,7 +714,7 @@
 
 %% Example:
 %% product_information() :: #{
-%%   <<"ProductInformationFilterList">> => list(product_information_filter()()),
+%%   <<"ProductInformationFilterList">> => list(product_information_filter()),
 %%   <<"ResourceType">> => string()
 %% }
 -type product_information() :: #{binary() => any()}.
@@ -723,10 +723,10 @@
 %% token_data() :: #{
 %%   <<"ExpirationTime">> => string(),
 %%   <<"LicenseArn">> => string(),
-%%   <<"RoleArns">> => list(string()()),
+%%   <<"RoleArns">> => list(string()),
 %%   <<"Status">> => string(),
 %%   <<"TokenId">> => string(),
-%%   <<"TokenProperties">> => list(string()()),
+%%   <<"TokenProperties">> => list(string()),
 %%   <<"TokenType">> => string()
 %% }
 -type token_data() :: #{binary() => any()}.
@@ -768,7 +768,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -808,7 +808,7 @@
 
 %% Example:
 %% license_conversion_context() :: #{
-%%   <<"ProductCodes">> => list(product_code_list_item()()),
+%%   <<"ProductCodes">> => list(product_code_list_item()),
 %%   <<"UsageOperation">> => string()
 %% }
 -type license_conversion_context() :: #{binary() => any()}.
@@ -821,7 +821,7 @@
 
 %% Example:
 %% list_resource_inventory_request() :: #{
-%%   <<"Filters">> => list(inventory_filter()()),
+%%   <<"Filters">> => list(inventory_filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -830,7 +830,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -844,7 +844,7 @@
 
 %% Example:
 %% list_license_conversion_tasks_response() :: #{
-%%   <<"LicenseConversionTasks">> => list(license_conversion_task()()),
+%%   <<"LicenseConversionTasks">> => list(license_conversion_task()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_license_conversion_tasks_response() :: #{binary() => any()}.
@@ -858,7 +858,7 @@
 
 %% Example:
 %% list_received_licenses_for_organization_response() :: #{
-%%   <<"Licenses">> => list(granted_license()()),
+%%   <<"Licenses">> => list(granted_license()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_received_licenses_for_organization_response() :: #{binary() => any()}.
@@ -866,7 +866,7 @@
 %% Example:
 %% list_resource_inventory_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceInventoryList">> => list(resource_inventory()())
+%%   <<"ResourceInventoryList">> => list(resource_inventory())
 %% }
 -type list_resource_inventory_response() :: #{binary() => any()}.
 
@@ -877,10 +877,10 @@
 %%   <<"LicenseCount">> => float(),
 %%   <<"LicenseCountHardLimit">> => boolean(),
 %%   <<"LicenseCountingType">> := list(any()),
-%%   <<"LicenseRules">> => list(string()()),
+%%   <<"LicenseRules">> => list(string()),
 %%   <<"Name">> := string(),
-%%   <<"ProductInformationList">> => list(product_information()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"ProductInformationList">> => list(product_information()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_license_configuration_request() :: #{binary() => any()}.
 
@@ -911,8 +911,8 @@
 
 %% Example:
 %% checkout_borrow_license_response() :: #{
-%%   <<"CheckoutMetadata">> => list(metadata()()),
-%%   <<"EntitlementsAllowed">> => list(entitlement_data()()),
+%%   <<"CheckoutMetadata">> => list(metadata()),
+%%   <<"EntitlementsAllowed">> => list(entitlement_data()),
 %%   <<"Expiration">> => string(),
 %%   <<"IssuedAt">> => string(),
 %%   <<"LicenseArn">> => string(),
@@ -929,7 +929,7 @@
 %%   <<"ReportContext">> := report_context(),
 %%   <<"ReportFrequency">> := report_frequency(),
 %%   <<"ReportGeneratorName">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> := list(list(any())())
 %% }
 -type create_license_manager_report_generator_request() :: #{binary() => any()}.
@@ -944,7 +944,7 @@
 %% Example:
 %% get_license_configuration_response() :: #{
 %%   <<"AutomatedDiscoveryInformation">> => automated_discovery_information(),
-%%   <<"ConsumedLicenseSummaryList">> => list(consumed_license_summary()()),
+%%   <<"ConsumedLicenseSummaryList">> => list(consumed_license_summary()),
 %%   <<"ConsumedLicenses">> => float(),
 %%   <<"Description">> => string(),
 %%   <<"DisassociateWhenNotFound">> => boolean(),
@@ -953,19 +953,19 @@
 %%   <<"LicenseCount">> => float(),
 %%   <<"LicenseCountHardLimit">> => boolean(),
 %%   <<"LicenseCountingType">> => list(any()),
-%%   <<"LicenseRules">> => list(string()()),
-%%   <<"ManagedResourceSummaryList">> => list(managed_resource_summary()()),
+%%   <<"LicenseRules">> => list(string()),
+%%   <<"ManagedResourceSummaryList">> => list(managed_resource_summary()),
 %%   <<"Name">> => string(),
 %%   <<"OwnerAccountId">> => string(),
-%%   <<"ProductInformationList">> => list(product_information()()),
+%%   <<"ProductInformationList">> => list(product_information()),
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type get_license_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_received_licenses_response() :: #{
-%%   <<"Licenses">> => list(granted_license()()),
+%%   <<"Licenses">> => list(granted_license()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_received_licenses_response() :: #{binary() => any()}.
@@ -1021,7 +1021,7 @@
 
 %% Example:
 %% report_context() :: #{
-%%   <<"licenseConfigurationArns">> => list(string()())
+%%   <<"licenseConfigurationArns">> => list(string())
 %% }
 -type report_context() :: #{binary() => any()}.
 
@@ -1033,7 +1033,7 @@
 
 %% Example:
 %% list_usage_for_license_configuration_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"LicenseConfigurationArn">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1067,7 +1067,7 @@
 %%   <<"ReportGeneratorName">> => string(),
 %%   <<"ReportType">> => list(list(any())()),
 %%   <<"S3Location">> => s3_location(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type report_generator() :: #{binary() => any()}.
 
@@ -1079,7 +1079,7 @@
 
 %% Example:
 %% list_received_grants_response() :: #{
-%%   <<"Grants">> => list(grant()()),
+%%   <<"Grants">> => list(grant()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_received_grants_response() :: #{binary() => any()}.
@@ -1114,11 +1114,11 @@
 %%   <<"Beneficiary">> => string(),
 %%   <<"ConsumptionConfiguration">> => consumption_configuration(),
 %%   <<"CreateTime">> => string(),
-%%   <<"Entitlements">> => list(entitlement()()),
+%%   <<"Entitlements">> => list(entitlement()),
 %%   <<"HomeRegion">> => string(),
 %%   <<"Issuer">> => issuer_details(),
 %%   <<"LicenseArn">> => string(),
-%%   <<"LicenseMetadata">> => list(metadata()()),
+%%   <<"LicenseMetadata">> => list(metadata()),
 %%   <<"LicenseName">> => string(),
 %%   <<"ProductName">> => string(),
 %%   <<"ProductSKU">> => string(),
@@ -1139,8 +1139,8 @@
 
 %% Example:
 %% update_license_specifications_for_resource_request() :: #{
-%%   <<"AddLicenseSpecifications">> => list(license_specification()()),
-%%   <<"RemoveLicenseSpecifications">> => list(license_specification()()),
+%%   <<"AddLicenseSpecifications">> => list(license_specification()),
+%%   <<"RemoveLicenseSpecifications">> => list(license_specification()),
 %%   <<"ResourceArn">> := string()
 %% }
 -type update_license_specifications_for_resource_request() :: #{binary() => any()}.
@@ -1149,7 +1149,7 @@
 %% license_operation_failure() :: #{
 %%   <<"ErrorMessage">> => string(),
 %%   <<"FailureTime">> => non_neg_integer(),
-%%   <<"MetadataList">> => list(metadata()()),
+%%   <<"MetadataList">> => list(metadata()),
 %%   <<"OperationName">> => string(),
 %%   <<"OperationRequestedBy">> => string(),
 %%   <<"ResourceArn">> => string(),
@@ -1171,14 +1171,14 @@
 %% Example:
 %% get_access_token_request() :: #{
 %%   <<"Token">> := string(),
-%%   <<"TokenProperties">> => list(string()())
+%%   <<"TokenProperties">> => list(string())
 %% }
 -type get_access_token_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_received_grants_request() :: #{
-%%   <<"Filters">> => list(filter()()),
-%%   <<"GrantArns">> => list(string()()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"GrantArns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1192,7 +1192,7 @@
 
 %% Example:
 %% list_license_specifications_for_resource_response() :: #{
-%%   <<"LicenseSpecifications">> => list(license_specification()()),
+%%   <<"LicenseSpecifications">> => list(license_specification()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_license_specifications_for_resource_response() :: #{binary() => any()}.
@@ -1202,7 +1202,7 @@
 %%   <<"Beneficiary">> => string(),
 %%   <<"CheckoutType">> := list(any()),
 %%   <<"ClientToken">> := string(),
-%%   <<"Entitlements">> := list(entitlement_data()()),
+%%   <<"Entitlements">> := list(entitlement_data()),
 %%   <<"KeyFingerprint">> := string(),
 %%   <<"NodeId">> => string(),
 %%   <<"ProductSKU">> := string()
@@ -1252,7 +1252,7 @@
 %% product_information_filter() :: #{
 %%   <<"ProductInformationFilterComparator">> => string(),
 %%   <<"ProductInformationFilterName">> => string(),
-%%   <<"ProductInformationFilterValue">> => list(string()())
+%%   <<"ProductInformationFilterValue">> => list(string())
 %% }
 -type product_information_filter() :: #{binary() => any()}.
 
@@ -1292,19 +1292,19 @@
 
 %% Example:
 %% list_tokens_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TokenIds">> => list(string()())
+%%   <<"TokenIds">> => list(string())
 %% }
 -type list_tokens_request() :: #{binary() => any()}.
 
 %% Example:
 %% checkout_borrow_license_request() :: #{
-%%   <<"CheckoutMetadata">> => list(metadata()()),
+%%   <<"CheckoutMetadata">> => list(metadata()),
 %%   <<"ClientToken">> := string(),
 %%   <<"DigitalSignatureMethod">> := list(any()),
-%%   <<"Entitlements">> := list(entitlement_data()()),
+%%   <<"Entitlements">> := list(entitlement_data()),
 %%   <<"LicenseArn">> := string(),
 %%   <<"NodeId">> => string()
 %% }
@@ -1315,15 +1315,15 @@
 %%   <<"ClientToken">> := string(),
 %%   <<"ExpirationInDays">> => integer(),
 %%   <<"LicenseArn">> := string(),
-%%   <<"RoleArns">> => list(string()()),
-%%   <<"TokenProperties">> => list(string()())
+%%   <<"RoleArns">> => list(string()),
+%%   <<"TokenProperties">> => list(string())
 %% }
 -type create_token_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_license_manager_report_generators_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ReportGenerators">> => list(report_generator()())
+%%   <<"ReportGenerators">> => list(report_generator())
 %% }
 -type list_license_manager_report_generators_response() :: #{binary() => any()}.
 
@@ -1381,13 +1381,13 @@
 %% Example:
 %% list_tokens_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tokens">> => list(token_data()())
+%%   <<"Tokens">> => list(token_data())
 %% }
 -type list_tokens_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_associations_for_license_configuration_response() :: #{
-%%   <<"LicenseConfigurationAssociations">> => list(license_configuration_association()()),
+%%   <<"LicenseConfigurationAssociations">> => list(license_configuration_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_associations_for_license_configuration_response() :: #{binary() => any()}.

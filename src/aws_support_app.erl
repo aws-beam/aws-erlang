@@ -167,7 +167,7 @@
 %% Example:
 %% list_slack_channel_configurations_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"slackChannelConfigurations">> := list(slack_channel_configuration()())
+%%   <<"slackChannelConfigurations">> := list(slack_channel_configuration())
 %% }
 -type list_slack_channel_configurations_result() :: #{binary() => any()}.
 
@@ -182,7 +182,7 @@
 %% Example:
 %% list_slack_workspace_configurations_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"slackWorkspaceConfigurations">> => list(slack_workspace_configuration()())
+%%   <<"slackWorkspaceConfigurations">> => list(slack_workspace_configuration())
 %% }
 -type list_slack_workspace_configurations_result() :: #{binary() => any()}.
 

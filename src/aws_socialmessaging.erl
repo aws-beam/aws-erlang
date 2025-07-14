@@ -166,7 +166,7 @@
 
 %% Example:
 %% put_whats_app_business_account_event_destinations_input() :: #{
-%%   <<"eventDestinations">> := list(whats_app_business_account_event_destination()()),
+%%   <<"eventDestinations">> := list(whats_app_business_account_event_destination()),
 %%   <<"id">> := string()
 %% }
 -type put_whats_app_business_account_event_destinations_input() :: #{binary() => any()}.
@@ -175,7 +175,7 @@
 %% Example:
 %% linked_whats_app_business_account_summary() :: #{
 %%   <<"arn">> => string(),
-%%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()()),
+%%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
 %%   <<"id">> => string(),
 %%   <<"linkDate">> => non_neg_integer(),
 %%   <<"registrationStatus">> => list(any()),
@@ -203,7 +203,7 @@
 %% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"statusCode">> => [integer()],
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -248,10 +248,10 @@
 %% Example:
 %% linked_whats_app_business_account() :: #{
 %%   <<"arn">> => string(),
-%%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()()),
+%%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
 %%   <<"id">> => string(),
 %%   <<"linkDate">> => non_neg_integer(),
-%%   <<"phoneNumbers">> => list(whats_app_phone_number_summary()()),
+%%   <<"phoneNumbers">> => list(whats_app_phone_number_summary()),
 %%   <<"registrationStatus">> => list(any()),
 %%   <<"wabaId">> => string(),
 %%   <<"wabaName">> => string()
@@ -271,7 +271,7 @@
 %% waba_phone_number_setup_finalization() :: #{
 %%   <<"dataLocalizationRegion">> => string(),
 %%   <<"id">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"twoFactorPin">> => string()
 %% }
 -type waba_phone_number_setup_finalization() :: #{binary() => any()}.
@@ -304,7 +304,7 @@
 %% whats_app_setup_finalization() :: #{
 %%   <<"associateInProgressToken">> => string(),
 %%   <<"phoneNumberParent">> => string(),
-%%   <<"phoneNumbers">> => list(waba_phone_number_setup_finalization()()),
+%%   <<"phoneNumbers">> => list(waba_phone_number_setup_finalization()),
 %%   <<"waba">> => waba_setup_finalization()
 %% }
 -type whats_app_setup_finalization() :: #{binary() => any()}.
@@ -313,7 +313,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -398,7 +398,7 @@
 %% linked_whats_app_business_account_id_meta_data() :: #{
 %%   <<"accountName">> => string(),
 %%   <<"registrationStatus">> => list(any()),
-%%   <<"unregisteredWhatsAppPhoneNumbers">> => list(whats_app_phone_number_detail()()),
+%%   <<"unregisteredWhatsAppPhoneNumbers">> => list(whats_app_phone_number_detail()),
 %%   <<"wabaId">> => string()
 %% }
 -type linked_whats_app_business_account_id_meta_data() :: #{binary() => any()}.
@@ -456,7 +456,7 @@
 
 %% Example:
 %% list_linked_whats_app_business_accounts_output() :: #{
-%%   <<"linkedAccounts">> => list(linked_whats_app_business_account_summary()()),
+%%   <<"linkedAccounts">> => list(linked_whats_app_business_account_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_linked_whats_app_business_accounts_output() :: #{binary() => any()}.
@@ -479,9 +479,9 @@
 
 %% Example:
 %% waba_setup_finalization() :: #{
-%%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()()),
+%%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
 %%   <<"id">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type waba_setup_finalization() :: #{binary() => any()}.
 

@@ -164,7 +164,7 @@
 %% delete_tags_input() :: #{
 %%   <<"ResourceId">> := string(),
 %%   <<"ResourceType">> := list(any()),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type delete_tags_input() :: #{binary() => any()}.
 
@@ -212,7 +212,7 @@
 %% Example:
 %% describe_batch_predictions_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(batch_prediction()())
+%%   <<"Results">> => list(batch_prediction())
 %% }
 -type describe_batch_predictions_output() :: #{binary() => any()}.
 
@@ -265,7 +265,7 @@
 %% add_tags_input() :: #{
 %%   <<"ResourceId">> := string(),
 %%   <<"ResourceType">> := list(any()),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type add_tags_input() :: #{binary() => any()}.
 
@@ -329,7 +329,7 @@
 %% Example:
 %% describe_ml_models_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(ml_model()())
+%%   <<"Results">> => list(ml_model())
 %% }
 -type describe_ml_models_output() :: #{binary() => any()}.
 
@@ -394,7 +394,7 @@
 %%   <<"DatabaseInformation">> => rds_database(),
 %%   <<"ResourceRole">> => string(),
 %%   <<"S3StagingLocation">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SelectSqlQuery">> => string(),
 %%   <<"ServiceRole">> => string(),
 %%   <<"SubnetId">> => string()
@@ -481,7 +481,7 @@
 %% describe_tags_output() :: #{
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceType">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type describe_tags_output() :: #{binary() => any()}.
 
@@ -592,7 +592,7 @@
 %% Example:
 %% describe_data_sources_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(data_source()())
+%%   <<"Results">> => list(data_source())
 %% }
 -type describe_data_sources_output() :: #{binary() => any()}.
 
@@ -809,7 +809,7 @@
 %% Example:
 %% describe_evaluations_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Results">> => list(evaluation()())
+%%   <<"Results">> => list(evaluation())
 %% }
 -type describe_evaluations_output() :: #{binary() => any()}.
 

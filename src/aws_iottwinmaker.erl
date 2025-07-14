@@ -168,7 +168,7 @@
 
 %% Example:
 %% list_entities_request() :: #{
-%%   <<"filters">> => list(list()()),
+%%   <<"filters">> => list(list()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -195,8 +195,8 @@
 
 %% Example:
 %% tabular_conditions() :: #{
-%%   <<"orderBy">> => list(order_by()()),
-%%   <<"propertyFilters">> => list(property_filter()())
+%%   <<"orderBy">> => list(order_by()),
+%%   <<"propertyFilters">> => list(property_filter())
 %% }
 -type tabular_conditions() :: #{binary() => any()}.
 
@@ -227,14 +227,14 @@
 %% Example:
 %% list_properties_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"propertySummaries">> => list(property_summary()())
+%%   <<"propertySummaries">> => list(property_summary())
 %% }
 -type list_properties_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% iot_twin_maker_source_configuration() :: #{
-%%   <<"filters">> => list(list()()),
+%%   <<"filters">> => list(list()),
 %%   <<"workspace">> => string()
 %% }
 -type iot_twin_maker_source_configuration() :: #{binary() => any()}.
@@ -258,7 +258,7 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"propertyGroupName">> => string(),
-%%   <<"selectedProperties">> := list(string()()),
+%%   <<"selectedProperties">> := list(string()),
 %%   <<"tabularConditions">> => tabular_conditions()
 %% }
 -type get_property_value_request() :: #{binary() => any()}.
@@ -269,7 +269,7 @@
 %%   <<"componentTypeName">> => string(),
 %%   <<"compositeComponentTypes">> => map(),
 %%   <<"description">> => string(),
-%%   <<"extendsFrom">> => list(string()()),
+%%   <<"extendsFrom">> => list(string()),
 %%   <<"functions">> => map(),
 %%   <<"isSingleton">> => boolean(),
 %%   <<"propertyDefinitions">> => map(),
@@ -354,7 +354,7 @@
 %%   <<"arn">> => string(),
 %%   <<"creationDateTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"linkedServices">> => list(string()()),
+%%   <<"linkedServices">> => list(string()),
 %%   <<"updateDateTime">> => non_neg_integer(),
 %%   <<"workspaceId">> => string()
 %% }
@@ -365,7 +365,7 @@
 %% component_property_group_response() :: #{
 %%   <<"groupType">> => string(),
 %%   <<"isInherited">> => boolean(),
-%%   <<"propertyNames">> => list(string()())
+%%   <<"propertyNames">> => list(string())
 %% }
 -type component_property_group_response() :: #{binary() => any()}.
 
@@ -440,7 +440,7 @@
 
 %% Example:
 %% data_type() :: #{
-%%   <<"allowedValues">> => list(data_value()()),
+%%   <<"allowedValues">> => list(data_value()),
 %%   <<"nestedType">> => data_type(),
 %%   <<"relationship">> => relationship(),
 %%   <<"type">> => string(),
@@ -480,7 +480,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -535,7 +535,7 @@
 %%   <<"componentTypeName">> => string(),
 %%   <<"compositeComponentTypes">> => map(),
 %%   <<"description">> => string(),
-%%   <<"extendsFrom">> => list(string()()),
+%%   <<"extendsFrom">> => list(string()),
 %%   <<"functions">> => map(),
 %%   <<"isSingleton">> => boolean(),
 %%   <<"propertyDefinitions">> => map(),
@@ -547,7 +547,7 @@
 %% Example:
 %% property_group_request() :: #{
 %%   <<"groupType">> => string(),
-%%   <<"propertyNames">> => list(string()())
+%%   <<"propertyNames">> => list(string())
 %% }
 -type property_group_request() :: #{binary() => any()}.
 
@@ -579,7 +579,7 @@
 %% Example:
 %% property_value_entry() :: #{
 %%   <<"entityPropertyReference">> => entity_property_reference(),
-%%   <<"propertyValues">> => list(property_value()())
+%%   <<"propertyValues">> => list(property_value())
 %% }
 -type property_value_entry() :: #{binary() => any()}.
 
@@ -587,7 +587,7 @@
 %% Example:
 %% component_property_group_request() :: #{
 %%   <<"groupType">> => string(),
-%%   <<"propertyNames">> => list(string()()),
+%%   <<"propertyNames">> => list(string()),
 %%   <<"updateType">> => string()
 %% }
 -type component_property_group_request() :: #{binary() => any()}.
@@ -603,7 +603,7 @@
 %%   <<"metadataTransferJobRole">> => string(),
 %%   <<"progress">> => metadata_transfer_job_progress(),
 %%   <<"reportUrl">> => string(),
-%%   <<"sources">> => list(source_configuration()()),
+%%   <<"sources">> => list(source_configuration()),
 %%   <<"status">> => metadata_transfer_job_status(),
 %%   <<"updateDateTime">> => non_neg_integer()
 %% }
@@ -613,14 +613,14 @@
 %% Example:
 %% get_property_value_history_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"propertyValues">> := list(property_value_history()())
+%%   <<"propertyValues">> := list(property_value_history())
 %% }
 -type get_property_value_history_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_put_property_values_request() :: #{
-%%   <<"entries">> := list(property_value_entry()())
+%%   <<"entries">> := list(property_value_entry())
 %% }
 -type batch_put_property_values_request() :: #{binary() => any()}.
 
@@ -647,7 +647,7 @@
 %%   <<"compositeComponentTypes">> => map(),
 %%   <<"creationDateTime">> := non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"extendsFrom">> => list(string()()),
+%%   <<"extendsFrom">> => list(string()),
 %%   <<"functions">> => map(),
 %%   <<"isAbstract">> => boolean(),
 %%   <<"isSchemaInitialized">> => boolean(),
@@ -682,7 +682,7 @@
 %% Example:
 %% list_sync_jobs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"syncJobSummaries">> => list(sync_job_summary()())
+%%   <<"syncJobSummaries">> => list(sync_job_summary())
 %% }
 -type list_sync_jobs_response() :: #{binary() => any()}.
 
@@ -700,7 +700,7 @@
 
 %% Example:
 %% batch_put_property_values_response() :: #{
-%%   <<"errorEntries">> := list(batch_put_property_error_entry()())
+%%   <<"errorEntries">> := list(batch_put_property_error_entry())
 %% }
 -type batch_put_property_values_response() :: #{binary() => any()}.
 
@@ -715,7 +715,7 @@
 
 %% Example:
 %% row() :: #{
-%%   <<"rowData">> => list(any()())
+%%   <<"rowData">> => list(any())
 %% }
 -type row() :: #{binary() => any()}.
 
@@ -778,7 +778,7 @@
 %% Example:
 %% get_scene_response() :: #{
 %%   <<"arn">> := string(),
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"contentLocation">> := string(),
 %%   <<"creationDateTime">> := non_neg_integer(),
 %%   <<"description">> => string(),
@@ -847,7 +847,7 @@
 
 %% Example:
 %% batch_put_property_error_entry() :: #{
-%%   <<"errors">> => list(batch_put_property_error()())
+%%   <<"errors">> => list(batch_put_property_error())
 %% }
 -type batch_put_property_error_entry() :: #{binary() => any()}.
 
@@ -921,7 +921,7 @@
 %% Example:
 %% function_request() :: #{
 %%   <<"implementedBy">> => data_connector(),
-%%   <<"requiredProperties">> => list(string()()),
+%%   <<"requiredProperties">> => list(string()),
 %%   <<"scope">> => string()
 %% }
 -type function_request() :: #{binary() => any()}.
@@ -940,7 +940,7 @@
 %% property_group_response() :: #{
 %%   <<"groupType">> => string(),
 %%   <<"isInherited">> => boolean(),
-%%   <<"propertyNames">> => list(string()())
+%%   <<"propertyNames">> => list(string())
 %% }
 -type property_group_response() :: #{binary() => any()}.
 
@@ -987,7 +987,7 @@
 
 %% Example:
 %% list_component_types_response() :: #{
-%%   <<"componentTypeSummaries">> := list(component_type_summary()()),
+%%   <<"componentTypeSummaries">> := list(component_type_summary()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"workspaceId">> := string()
@@ -1024,7 +1024,7 @@
 %% Example:
 %% list_sync_resources_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"syncResources">> => list(sync_resource_summary()())
+%%   <<"syncResources">> => list(sync_resource_summary())
 %% }
 -type list_sync_resources_response() :: #{binary() => any()}.
 
@@ -1032,7 +1032,7 @@
 %% Example:
 %% list_workspaces_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"workspaceSummaries">> => list(workspace_summary()())
+%%   <<"workspaceSummaries">> => list(workspace_summary())
 %% }
 -type list_workspaces_response() :: #{binary() => any()}.
 
@@ -1052,7 +1052,7 @@
 %% Example:
 %% list_metadata_transfer_jobs_request() :: #{
 %%   <<"destinationType">> := string(),
-%%   <<"filters">> => list(list()()),
+%%   <<"filters">> => list(list()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"sourceType">> := string()
@@ -1103,7 +1103,7 @@
 
 %% Example:
 %% list_sync_resources_request() :: #{
-%%   <<"filters">> => list(list()()),
+%%   <<"filters">> => list(list()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1207,7 +1207,7 @@
 
 %% Example:
 %% update_pricing_plan_request() :: #{
-%%   <<"bundleNames">> => list(string()()),
+%%   <<"bundleNames">> => list(string()),
 %%   <<"pricingMode">> := string()
 %% }
 -type update_pricing_plan_request() :: #{binary() => any()}.
@@ -1225,9 +1225,9 @@
 
 %% Example:
 %% execute_query_response() :: #{
-%%   <<"columnDescriptions">> => list(column_description()()),
+%%   <<"columnDescriptions">> => list(column_description()),
 %%   <<"nextToken">> => string(),
-%%   <<"rows">> => list(row()())
+%%   <<"rows">> => list(row())
 %% }
 -type execute_query_response() :: #{binary() => any()}.
 
@@ -1258,8 +1258,8 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"orderByTime">> => string(),
-%%   <<"propertyFilters">> => list(property_filter()()),
-%%   <<"selectedProperties">> := list(string()()),
+%%   <<"propertyFilters">> => list(property_filter()),
+%%   <<"selectedProperties">> := list(string()),
 %%   <<"startDateTime">> => non_neg_integer(),
 %%   <<"startTime">> => string()
 %% }
@@ -1275,7 +1275,7 @@
 
 %% Example:
 %% list_components_response() :: #{
-%%   <<"componentSummaries">> => list(component_summary()()),
+%%   <<"componentSummaries">> => list(component_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_components_response() :: #{binary() => any()}.
@@ -1296,14 +1296,14 @@
 %%   <<"description">> => string(),
 %%   <<"destination">> := destination_configuration(),
 %%   <<"metadataTransferJobId">> => string(),
-%%   <<"sources">> := list(source_configuration()())
+%%   <<"sources">> := list(source_configuration())
 %% }
 -type create_metadata_transfer_job_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% bundle_information() :: #{
-%%   <<"bundleNames">> => list(string()()),
+%%   <<"bundleNames">> => list(string()),
 %%   <<"pricingTier">> => string()
 %% }
 -type bundle_information() :: #{binary() => any()}.
@@ -1318,7 +1318,7 @@
 
 %% Example:
 %% create_scene_request() :: #{
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"contentLocation">> := string(),
 %%   <<"description">> => string(),
 %%   <<"sceneId">> := string(),
@@ -1330,7 +1330,7 @@
 
 %% Example:
 %% list_metadata_transfer_jobs_response() :: #{
-%%   <<"metadataTransferJobSummaries">> => list(metadata_transfer_job_summary()()),
+%%   <<"metadataTransferJobSummaries">> => list(metadata_transfer_job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_metadata_transfer_jobs_response() :: #{binary() => any()}.
@@ -1356,7 +1356,7 @@
 %% Example:
 %% property_value_history() :: #{
 %%   <<"entityPropertyReference">> => entity_property_reference(),
-%%   <<"values">> => list(property_value()())
+%%   <<"values">> => list(property_value())
 %% }
 -type property_value_history() :: #{binary() => any()}.
 
@@ -1377,7 +1377,7 @@
 %% function_response() :: #{
 %%   <<"implementedBy">> => data_connector(),
 %%   <<"isInherited">> => boolean(),
-%%   <<"requiredProperties">> => list(string()()),
+%%   <<"requiredProperties">> => list(string()),
 %%   <<"scope">> => string()
 %% }
 -type function_response() :: #{binary() => any()}.
@@ -1385,7 +1385,7 @@
 
 %% Example:
 %% list_entities_response() :: #{
-%%   <<"entitySummaries">> => list(entity_summary()()),
+%%   <<"entitySummaries">> => list(entity_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_entities_response() :: #{binary() => any()}.
@@ -1400,7 +1400,7 @@
 
 %% Example:
 %% iot_site_wise_source_configuration() :: #{
-%%   <<"filters">> => list(list()())
+%%   <<"filters">> => list(list())
 %% }
 -type iot_site_wise_source_configuration() :: #{binary() => any()}.
 
@@ -1419,7 +1419,7 @@
 
 %% Example:
 %% list_component_types_request() :: #{
-%%   <<"filters">> => list(list()()),
+%%   <<"filters">> => list(list()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1432,7 +1432,7 @@
 %%   <<"doubleValue">> => float(),
 %%   <<"expression">> => string(),
 %%   <<"integerValue">> => integer(),
-%%   <<"listValue">> => list(data_value()()),
+%%   <<"listValue">> => list(data_value()),
 %%   <<"longValue">> => float(),
 %%   <<"mapValue">> => map(),
 %%   <<"relationshipValue">> => relationship_value(),
@@ -1463,7 +1463,7 @@
 %%   <<"arn">> := string(),
 %%   <<"creationDateTime">> := non_neg_integer(),
 %%   <<"description">> => string(),
-%%   <<"linkedServices">> => list(string()()),
+%%   <<"linkedServices">> => list(string()),
 %%   <<"role">> => string(),
 %%   <<"s3Location">> => string(),
 %%   <<"updateDateTime">> := non_neg_integer(),
@@ -1475,7 +1475,7 @@
 %% Example:
 %% list_scenes_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"sceneSummaries">> => list(scene_summary()())
+%%   <<"sceneSummaries">> => list(scene_summary())
 %% }
 -type list_scenes_response() :: #{binary() => any()}.
 
@@ -1503,14 +1503,14 @@
 %% get_property_value_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"propertyValues">> => map(),
-%%   <<"tabularPropertyValues">> => list(list(map()())())
+%%   <<"tabularPropertyValues">> => list(list(map())())
 %% }
 -type get_property_value_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_scene_request() :: #{
-%%   <<"capabilities">> => list(string()()),
+%%   <<"capabilities">> => list(string()),
 %%   <<"contentLocation">> => string(),
 %%   <<"description">> => string(),
 %%   <<"sceneMetadata">> => map()

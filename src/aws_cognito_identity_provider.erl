@@ -439,13 +439,13 @@
 %% Example:
 %% delete_user_attributes_request() :: #{
 %%   <<"AccessToken">> := string(),
-%%   <<"UserAttributeNames">> := list(string()())
+%%   <<"UserAttributeNames">> := list(string())
 %% }
 -type delete_user_attributes_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_user_attributes_response() :: #{
-%%   <<"CodeDeliveryDetailsList">> => list(code_delivery_details_type()())
+%%   <<"CodeDeliveryDetailsList">> => list(code_delivery_details_type())
 %% }
 -type update_user_attributes_response() :: #{binary() => any()}.
 
@@ -528,14 +528,14 @@
 
 %% Example:
 %% get_csv_header_response() :: #{
-%%   <<"CSVHeader">> => list(string()()),
+%%   <<"CSVHeader">> => list(string()),
 %%   <<"UserPoolId">> => string()
 %% }
 -type get_csv_header_response() :: #{binary() => any()}.
 
 %% Example:
 %% set_log_delivery_configuration_request() :: #{
-%%   <<"LogConfigurations">> := list(log_configuration_type()()),
+%%   <<"LogConfigurations">> := list(log_configuration_type()),
 %%   <<"UserPoolId">> := string()
 %% }
 -type set_log_delivery_configuration_request() :: #{binary() => any()}.
@@ -575,7 +575,7 @@
 %% get_user_auth_factors_response() :: #{
 %%   <<"ConfiguredUserAuthFactors">> => list(list(any())()),
 %%   <<"PreferredMfaSetting">> => string(),
-%%   <<"UserMFASettingList">> => list(string()()),
+%%   <<"UserMFASettingList">> => list(string()),
 %%   <<"Username">> => string()
 %% }
 -type get_user_auth_factors_response() :: #{binary() => any()}.
@@ -618,10 +618,10 @@
 %%   <<"ForceAliasCreation">> => boolean(),
 %%   <<"MessageAction">> => list(any()),
 %%   <<"TemporaryPassword">> => string(),
-%%   <<"UserAttributes">> => list(attribute_type()()),
+%%   <<"UserAttributes">> => list(attribute_type()),
 %%   <<"UserPoolId">> := string(),
 %%   <<"Username">> := string(),
-%%   <<"ValidationData">> => list(attribute_type()())
+%%   <<"ValidationData">> => list(attribute_type())
 %% }
 -type admin_create_user_request() :: #{binary() => any()}.
 
@@ -649,7 +649,7 @@
 %% update_user_attributes_request() :: #{
 %%   <<"AccessToken">> := string(),
 %%   <<"ClientMetadata">> => map(),
-%%   <<"UserAttributes">> := list(attribute_type()())
+%%   <<"UserAttributes">> := list(attribute_type())
 %% }
 -type update_user_attributes_request() :: #{binary() => any()}.
 
@@ -783,10 +783,10 @@
 
 %% Example:
 %% get_user_response() :: #{
-%%   <<"MFAOptions">> => list(mfa_option_type()()),
+%%   <<"MFAOptions">> => list(mfa_option_type()),
 %%   <<"PreferredMfaSetting">> => string(),
-%%   <<"UserAttributes">> => list(attribute_type()()),
-%%   <<"UserMFASettingList">> => list(string()()),
+%%   <<"UserAttributes">> => list(attribute_type()),
+%%   <<"UserMFASettingList">> => list(string()),
 %%   <<"Username">> => string()
 %% }
 -type get_user_response() :: #{binary() => any()}.
@@ -802,9 +802,9 @@
 
 %% Example:
 %% user_type() :: #{
-%%   <<"Attributes">> => list(attribute_type()()),
+%%   <<"Attributes">> => list(attribute_type()),
 %%   <<"Enabled">> => boolean(),
-%%   <<"MFAOptions">> => list(mfa_option_type()()),
+%%   <<"MFAOptions">> => list(mfa_option_type()),
 %%   <<"UserCreateDate">> => non_neg_integer(),
 %%   <<"UserLastModifiedDate">> => non_neg_integer(),
 %%   <<"UserStatus">> => list(any()),
@@ -815,7 +815,7 @@
 %% Example:
 %% list_user_pools_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UserPools">> => list(user_pool_description_type()())
+%%   <<"UserPools">> => list(user_pool_description_type())
 %% }
 -type list_user_pools_response() :: #{binary() => any()}.
 
@@ -868,7 +868,7 @@
 %% update_resource_server_request() :: #{
 %%   <<"Identifier">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Scopes">> => list(resource_server_scope_type()()),
+%%   <<"Scopes">> => list(resource_server_scope_type()),
 %%   <<"UserPoolId">> := string()
 %% }
 -type update_resource_server_request() :: #{binary() => any()}.
@@ -1016,10 +1016,10 @@
 %%   <<"AccessTokenValidity">> => integer(),
 %%   <<"AllowedOAuthFlows">> => list(list(any())()),
 %%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
-%%   <<"AllowedOAuthScopes">> => list(string()()),
+%%   <<"AllowedOAuthScopes">> => list(string()),
 %%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
 %%   <<"AuthSessionValidity">> => integer(),
-%%   <<"CallbackURLs">> => list(string()()),
+%%   <<"CallbackURLs">> => list(string()),
 %%   <<"ClientId">> => string(),
 %%   <<"ClientName">> => string(),
 %%   <<"ClientSecret">> => string(),
@@ -1030,15 +1030,15 @@
 %%   <<"ExplicitAuthFlows">> => list(list(any())()),
 %%   <<"IdTokenValidity">> => integer(),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
-%%   <<"LogoutURLs">> => list(string()()),
+%%   <<"LogoutURLs">> => list(string()),
 %%   <<"PreventUserExistenceErrors">> => list(any()),
-%%   <<"ReadAttributes">> => list(string()()),
+%%   <<"ReadAttributes">> => list(string()),
 %%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
 %%   <<"RefreshTokenValidity">> => integer(),
-%%   <<"SupportedIdentityProviders">> => list(string()()),
+%%   <<"SupportedIdentityProviders">> => list(string()),
 %%   <<"TokenValidityUnits">> => token_validity_units_type(),
 %%   <<"UserPoolId">> => string(),
-%%   <<"WriteAttributes">> => list(string()())
+%%   <<"WriteAttributes">> => list(string())
 %% }
 -type user_pool_client_type() :: #{binary() => any()}.
 
@@ -1059,7 +1059,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1088,12 +1088,12 @@
 %% Example:
 %% admin_get_user_response() :: #{
 %%   <<"Enabled">> => boolean(),
-%%   <<"MFAOptions">> => list(mfa_option_type()()),
+%%   <<"MFAOptions">> => list(mfa_option_type()),
 %%   <<"PreferredMfaSetting">> => string(),
-%%   <<"UserAttributes">> => list(attribute_type()()),
+%%   <<"UserAttributes">> => list(attribute_type()),
 %%   <<"UserCreateDate">> => non_neg_integer(),
 %%   <<"UserLastModifiedDate">> => non_neg_integer(),
-%%   <<"UserMFASettingList">> => list(string()()),
+%%   <<"UserMFASettingList">> => list(string()),
 %%   <<"UserStatus">> => list(any()),
 %%   <<"Username">> => string()
 %% }
@@ -1155,7 +1155,7 @@
 %% Example:
 %% admin_update_user_attributes_request() :: #{
 %%   <<"ClientMetadata">> => map(),
-%%   <<"UserAttributes">> := list(attribute_type()()),
+%%   <<"UserAttributes">> := list(attribute_type()),
 %%   <<"UserPoolId">> := string(),
 %%   <<"Username">> := string()
 %% }
@@ -1171,7 +1171,7 @@
 %% identity_provider_type() :: #{
 %%   <<"AttributeMapping">> => map(),
 %%   <<"CreationDate">> => non_neg_integer(),
-%%   <<"IdpIdentifiers">> => list(string()()),
+%%   <<"IdpIdentifiers">> => list(string()),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"ProviderDetails">> => map(),
 %%   <<"ProviderName">> => string(),
@@ -1195,7 +1195,7 @@
 
 %% Example:
 %% admin_set_user_settings_request() :: #{
-%%   <<"MFAOptions">> := list(mfa_option_type()()),
+%%   <<"MFAOptions">> := list(mfa_option_type()),
 %%   <<"UserPoolId">> := string(),
 %%   <<"Username">> := string()
 %% }
@@ -1253,7 +1253,7 @@
 
 %% Example:
 %% update_managed_login_branding_request() :: #{
-%%   <<"Assets">> => list(asset_type()()),
+%%   <<"Assets">> => list(asset_type()),
 %%   <<"ManagedLoginBrandingId">> => string(),
 %%   <<"Settings">> => any(),
 %%   <<"UseCognitoProvidedValues">> => boolean(),
@@ -1294,7 +1294,7 @@
 
 %% Example:
 %% device_type() :: #{
-%%   <<"DeviceAttributes">> => list(attribute_type()()),
+%%   <<"DeviceAttributes">> => list(attribute_type()),
 %%   <<"DeviceCreateDate">> => non_neg_integer(),
 %%   <<"DeviceKey">> => string(),
 %%   <<"DeviceLastAuthenticatedDate">> => non_neg_integer(),
@@ -1383,7 +1383,7 @@
 %% Example:
 %% list_users_in_group_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> => list(user_type()())
+%%   <<"Users">> => list(user_type())
 %% }
 -type list_users_in_group_response() :: #{binary() => any()}.
 
@@ -1447,7 +1447,7 @@
 
 %% Example:
 %% admin_delete_user_attributes_request() :: #{
-%%   <<"UserAttributeNames">> := list(string()()),
+%%   <<"UserAttributeNames">> := list(string()),
 %%   <<"UserPoolId">> := string(),
 %%   <<"Username">> := string()
 %% }
@@ -1474,15 +1474,15 @@
 
 %% Example:
 %% log_delivery_configuration_type() :: #{
-%%   <<"LogConfigurations">> => list(log_configuration_type()()),
+%%   <<"LogConfigurations">> => list(log_configuration_type()),
 %%   <<"UserPoolId">> => string()
 %% }
 -type log_delivery_configuration_type() :: #{binary() => any()}.
 
 %% Example:
 %% risk_exception_configuration_type() :: #{
-%%   <<"BlockedIPRangeList">> => list(string()()),
-%%   <<"SkippedIPRangeList">> => list(string()())
+%%   <<"BlockedIPRangeList">> => list(string()),
+%%   <<"SkippedIPRangeList">> => list(string())
 %% }
 -type risk_exception_configuration_type() :: #{binary() => any()}.
 
@@ -1556,7 +1556,7 @@
 %%   <<"MfaConfiguration">> => list(any()),
 %%   <<"Policies">> => user_pool_policy_type(),
 %%   <<"PoolName">> := string(),
-%%   <<"Schema">> => list(schema_attribute_type()()),
+%%   <<"Schema">> => list(schema_attribute_type()),
 %%   <<"SmsAuthenticationMessage">> => string(),
 %%   <<"SmsConfiguration">> => sms_configuration_type(),
 %%   <<"SmsVerificationMessage">> => string(),
@@ -1573,14 +1573,14 @@
 %% Example:
 %% list_user_import_jobs_response() :: #{
 %%   <<"PaginationToken">> => string(),
-%%   <<"UserImportJobs">> => list(user_import_job_type()())
+%%   <<"UserImportJobs">> => list(user_import_job_type())
 %% }
 -type list_user_import_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_users_response() :: #{
 %%   <<"PaginationToken">> => string(),
-%%   <<"Users">> => list(user_type()())
+%%   <<"Users">> => list(user_type())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -1607,10 +1607,10 @@
 %%   <<"AccessTokenValidity">> => integer(),
 %%   <<"AllowedOAuthFlows">> => list(list(any())()),
 %%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
-%%   <<"AllowedOAuthScopes">> => list(string()()),
+%%   <<"AllowedOAuthScopes">> => list(string()),
 %%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
 %%   <<"AuthSessionValidity">> => integer(),
-%%   <<"CallbackURLs">> => list(string()()),
+%%   <<"CallbackURLs">> => list(string()),
 %%   <<"ClientName">> := string(),
 %%   <<"DefaultRedirectURI">> => string(),
 %%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
@@ -1618,15 +1618,15 @@
 %%   <<"ExplicitAuthFlows">> => list(list(any())()),
 %%   <<"GenerateSecret">> => boolean(),
 %%   <<"IdTokenValidity">> => integer(),
-%%   <<"LogoutURLs">> => list(string()()),
+%%   <<"LogoutURLs">> => list(string()),
 %%   <<"PreventUserExistenceErrors">> => list(any()),
-%%   <<"ReadAttributes">> => list(string()()),
+%%   <<"ReadAttributes">> => list(string()),
 %%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
 %%   <<"RefreshTokenValidity">> => integer(),
-%%   <<"SupportedIdentityProviders">> => list(string()()),
+%%   <<"SupportedIdentityProviders">> => list(string()),
 %%   <<"TokenValidityUnits">> => token_validity_units_type(),
 %%   <<"UserPoolId">> := string(),
-%%   <<"WriteAttributes">> => list(string()())
+%%   <<"WriteAttributes">> => list(string())
 %% }
 -type create_user_pool_client_request() :: #{binary() => any()}.
 
@@ -1675,7 +1675,7 @@
 
 %% Example:
 %% managed_login_branding_type() :: #{
-%%   <<"Assets">> => list(asset_type()()),
+%%   <<"Assets">> => list(asset_type()),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"LastModifiedDate">> => non_neg_integer(),
 %%   <<"ManagedLoginBrandingId">> => string(),
@@ -1729,7 +1729,7 @@
 %% create_resource_server_request() :: #{
 %%   <<"Identifier">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Scopes">> => list(resource_server_scope_type()()),
+%%   <<"Scopes">> => list(resource_server_scope_type()),
 %%   <<"UserPoolId">> := string()
 %% }
 -type create_resource_server_request() :: #{binary() => any()}.
@@ -1765,7 +1765,7 @@
 %% resource_server_type() :: #{
 %%   <<"Identifier">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Scopes">> => list(resource_server_scope_type()()),
+%%   <<"Scopes">> => list(resource_server_scope_type()),
 %%   <<"UserPoolId">> => string()
 %% }
 -type resource_server_type() :: #{binary() => any()}.
@@ -1778,7 +1778,7 @@
 
 %% Example:
 %% list_devices_response() :: #{
-%%   <<"Devices">> => list(device_type()()),
+%%   <<"Devices">> => list(device_type()),
 %%   <<"PaginationToken">> => string()
 %% }
 -type list_devices_response() :: #{binary() => any()}.
@@ -1827,7 +1827,7 @@
 
 %% Example:
 %% add_custom_attributes_request() :: #{
-%%   <<"CustomAttributes">> := list(schema_attribute_type()()),
+%%   <<"CustomAttributes">> := list(schema_attribute_type()),
 %%   <<"UserPoolId">> := string()
 %% }
 -type add_custom_attributes_request() :: #{binary() => any()}.
@@ -1891,7 +1891,7 @@
 %% Example:
 %% set_user_settings_request() :: #{
 %%   <<"AccessToken">> := string(),
-%%   <<"MFAOptions">> := list(mfa_option_type()())
+%%   <<"MFAOptions">> := list(mfa_option_type())
 %% }
 -type set_user_settings_request() :: #{binary() => any()}.
 
@@ -1934,7 +1934,7 @@
 
 %% Example:
 %% admin_list_devices_response() :: #{
-%%   <<"Devices">> => list(device_type()()),
+%%   <<"Devices">> => list(device_type()),
 %%   <<"PaginationToken">> => string()
 %% }
 -type admin_list_devices_response() :: #{binary() => any()}.
@@ -1970,7 +1970,7 @@
 %% Example:
 %% web_authn_credential_description() :: #{
 %%   <<"AuthenticatorAttachment">> => string(),
-%%   <<"AuthenticatorTransports">> => list(string()()),
+%%   <<"AuthenticatorTransports">> => list(string()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"CredentialId">> => string(),
 %%   <<"FriendlyCredentialName">> => string(),
@@ -2027,10 +2027,10 @@
 %%   <<"ClientMetadata">> => map(),
 %%   <<"Password">> => string(),
 %%   <<"SecretHash">> => string(),
-%%   <<"UserAttributes">> => list(attribute_type()()),
+%%   <<"UserAttributes">> => list(attribute_type()),
 %%   <<"UserContextData">> => user_context_data_type(),
 %%   <<"Username">> := string(),
-%%   <<"ValidationData">> => list(attribute_type()())
+%%   <<"ValidationData">> => list(attribute_type())
 %% }
 -type sign_up_request() :: #{binary() => any()}.
 
@@ -2134,7 +2134,7 @@
 
 %% Example:
 %% admin_list_user_auth_events_response() :: #{
-%%   <<"AuthEvents">> => list(auth_event_type()()),
+%%   <<"AuthEvents">> => list(auth_event_type()),
 %%   <<"NextToken">> => string()
 %% }
 -type admin_list_user_auth_events_response() :: #{binary() => any()}.
@@ -2159,7 +2159,7 @@
 
 %% Example:
 %% auth_event_type() :: #{
-%%   <<"ChallengeResponses">> => list(challenge_response_type()()),
+%%   <<"ChallengeResponses">> => list(challenge_response_type()),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"EventContextData">> => event_context_data_type(),
 %%   <<"EventFeedback">> => event_feedback_type(),
@@ -2173,7 +2173,7 @@
 %% Example:
 %% create_identity_provider_request() :: #{
 %%   <<"AttributeMapping">> => map(),
-%%   <<"IdpIdentifiers">> => list(string()()),
+%%   <<"IdpIdentifiers">> => list(string()),
 %%   <<"ProviderDetails">> := map(),
 %%   <<"ProviderName">> := string(),
 %%   <<"ProviderType">> := list(any()),
@@ -2323,7 +2323,7 @@
 
 %% Example:
 %% account_recovery_setting_type() :: #{
-%%   <<"RecoveryMechanisms">> => list(recovery_option_type()())
+%%   <<"RecoveryMechanisms">> => list(recovery_option_type())
 %% }
 -type account_recovery_setting_type() :: #{binary() => any()}.
 
@@ -2450,7 +2450,7 @@
 %% Example:
 %% list_identity_providers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Providers">> => list(provider_description()())
+%%   <<"Providers">> => list(provider_description())
 %% }
 -type list_identity_providers_response() :: #{binary() => any()}.
 
@@ -2505,7 +2505,7 @@
 
 %% Example:
 %% admin_list_groups_for_user_response() :: #{
-%%   <<"Groups">> => list(group_type()()),
+%%   <<"Groups">> => list(group_type()),
 %%   <<"NextToken">> => string()
 %% }
 -type admin_list_groups_for_user_response() :: #{binary() => any()}.
@@ -2528,10 +2528,10 @@
 %%   <<"AccessTokenValidity">> => integer(),
 %%   <<"AllowedOAuthFlows">> => list(list(any())()),
 %%   <<"AllowedOAuthFlowsUserPoolClient">> => boolean(),
-%%   <<"AllowedOAuthScopes">> => list(string()()),
+%%   <<"AllowedOAuthScopes">> => list(string()),
 %%   <<"AnalyticsConfiguration">> => analytics_configuration_type(),
 %%   <<"AuthSessionValidity">> => integer(),
-%%   <<"CallbackURLs">> => list(string()()),
+%%   <<"CallbackURLs">> => list(string()),
 %%   <<"ClientId">> := string(),
 %%   <<"ClientName">> => string(),
 %%   <<"DefaultRedirectURI">> => string(),
@@ -2539,15 +2539,15 @@
 %%   <<"EnableTokenRevocation">> => boolean(),
 %%   <<"ExplicitAuthFlows">> => list(list(any())()),
 %%   <<"IdTokenValidity">> => integer(),
-%%   <<"LogoutURLs">> => list(string()()),
+%%   <<"LogoutURLs">> => list(string()),
 %%   <<"PreventUserExistenceErrors">> => list(any()),
-%%   <<"ReadAttributes">> => list(string()()),
+%%   <<"ReadAttributes">> => list(string()),
 %%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
 %%   <<"RefreshTokenValidity">> => integer(),
-%%   <<"SupportedIdentityProviders">> => list(string()()),
+%%   <<"SupportedIdentityProviders">> => list(string()),
 %%   <<"TokenValidityUnits">> => token_validity_units_type(),
 %%   <<"UserPoolId">> := string(),
-%%   <<"WriteAttributes">> => list(string()())
+%%   <<"WriteAttributes">> => list(string())
 %% }
 -type update_user_pool_client_request() :: #{binary() => any()}.
 
@@ -2559,7 +2559,7 @@
 
 %% Example:
 %% list_users_request() :: #{
-%%   <<"AttributesToGet">> => list(string()()),
+%%   <<"AttributesToGet">> => list(string()),
 %%   <<"Filter">> => string(),
 %%   <<"Limit">> => integer(),
 %%   <<"PaginationToken">> => string(),
@@ -2628,7 +2628,7 @@
 
 %% Example:
 %% create_managed_login_branding_request() :: #{
-%%   <<"Assets">> => list(asset_type()()),
+%%   <<"Assets">> => list(asset_type()),
 %%   <<"ClientId">> := string(),
 %%   <<"Settings">> => any(),
 %%   <<"UseCognitoProvidedValues">> => boolean(),
@@ -2672,7 +2672,7 @@
 %% Example:
 %% update_identity_provider_request() :: #{
 %%   <<"AttributeMapping">> => map(),
-%%   <<"IdpIdentifiers">> => list(string()()),
+%%   <<"IdpIdentifiers">> => list(string()),
 %%   <<"ProviderDetails">> => map(),
 %%   <<"ProviderName">> := string(),
 %%   <<"UserPoolId">> := string()
@@ -2682,7 +2682,7 @@
 %% Example:
 %% context_data_type() :: #{
 %%   <<"EncodedData">> => string(),
-%%   <<"HttpHeaders">> => list(http_header()()),
+%%   <<"HttpHeaders">> => list(http_header()),
 %%   <<"IpAddress">> => string(),
 %%   <<"ServerName">> => string(),
 %%   <<"ServerPath">> => string()
@@ -2699,7 +2699,7 @@
 
 %% Example:
 %% list_groups_response() :: #{
-%%   <<"Groups">> => list(group_type()()),
+%%   <<"Groups">> => list(group_type()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_response() :: #{binary() => any()}.
@@ -2775,7 +2775,7 @@
 
 %% Example:
 %% list_web_authn_credentials_response() :: #{
-%%   <<"Credentials">> => list(web_authn_credential_description()()),
+%%   <<"Credentials">> => list(web_authn_credential_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_web_authn_credentials_response() :: #{binary() => any()}.
@@ -2797,7 +2797,7 @@
 
 %% Example:
 %% user_pool_type() :: #{
-%%   <<"SchemaAttributes">> => list(schema_attribute_type()()),
+%%   <<"SchemaAttributes">> => list(schema_attribute_type()),
 %%   <<"Policies">> => user_pool_policy_type(),
 %%   <<"UserAttributeUpdateSettings">> => user_attribute_update_settings_type(),
 %%   <<"CustomDomain">> => string(),
@@ -2968,7 +2968,7 @@
 %% Example:
 %% list_user_pool_clients_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"UserPoolClients">> => list(user_pool_client_description()())
+%%   <<"UserPoolClients">> => list(user_pool_client_description())
 %% }
 -type list_user_pool_clients_response() :: #{binary() => any()}.
 
@@ -3018,7 +3018,7 @@
 %% Example:
 %% list_resource_servers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceServers">> => list(resource_server_type()())
+%%   <<"ResourceServers">> => list(resource_server_type())
 %% }
 -type list_resource_servers_response() :: #{binary() => any()}.
 

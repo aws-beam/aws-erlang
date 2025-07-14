@@ -532,7 +532,7 @@
 %%   <<"commitId">> => string(),
 %%   <<"committer">> => user_info(),
 %%   <<"message">> => string(),
-%%   <<"parents">> => list(string()()),
+%%   <<"parents">> => list(string()),
 %%   <<"treeId">> => string()
 %% }
 -type commit() :: #{binary() => any()}.
@@ -688,7 +688,7 @@
 %% Example:
 %% list_pull_requests_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"pullRequestIds">> => list(string()())
+%%   <<"pullRequestIds">> => list(string())
 %% }
 -type list_pull_requests_output() :: #{binary() => any()}.
 
@@ -749,7 +749,7 @@
 %%   <<"baseCommitId">> => string(),
 %%   <<"conflictMetadata">> => conflict_metadata(),
 %%   <<"destinationCommitId">> => string(),
-%%   <<"mergeHunks">> => list(merge_hunk()()),
+%%   <<"mergeHunks">> => list(merge_hunk()),
 %%   <<"nextToken">> => string(),
 %%   <<"sourceCommitId">> => string()
 %% }
@@ -763,9 +763,9 @@
 
 %% Example:
 %% conflict_resolution() :: #{
-%%   <<"deleteFiles">> => list(delete_file_entry()()),
-%%   <<"replaceContents">> => list(replace_content_entry()()),
-%%   <<"setFileModes">> => list(set_file_mode_entry()())
+%%   <<"deleteFiles">> => list(delete_file_entry()),
+%%   <<"replaceContents">> => list(replace_content_entry()),
+%%   <<"setFileModes">> => list(set_file_mode_entry())
 %% }
 -type conflict_resolution() :: #{binary() => any()}.
 
@@ -836,7 +836,7 @@
 %% Example:
 %% list_repositories_for_approval_rule_template_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"repositoryNames">> => list(string()())
+%%   <<"repositoryNames">> => list(string())
 %% }
 -type list_repositories_for_approval_rule_template_output() :: #{binary() => any()}.
 
@@ -919,7 +919,7 @@
 %% Example:
 %% test_repository_triggers_input() :: #{
 %%   <<"repositoryName">> := string(),
-%%   <<"triggers">> := list(repository_trigger()())
+%%   <<"triggers">> := list(repository_trigger())
 %% }
 -type test_repository_triggers_input() :: #{binary() => any()}.
 
@@ -932,7 +932,7 @@
 %% Example:
 %% get_differences_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"differences">> => list(difference()())
+%%   <<"differences">> => list(difference())
 %% }
 -type get_differences_output() :: #{binary() => any()}.
 
@@ -945,7 +945,7 @@
 %% Example:
 %% get_merge_conflicts_output() :: #{
 %%   <<"baseCommitId">> => string(),
-%%   <<"conflictMetadataList">> => list(conflict_metadata()()),
+%%   <<"conflictMetadataList">> => list(conflict_metadata()),
 %%   <<"destinationCommitId">> => string(),
 %%   <<"mergeable">> => boolean(),
 %%   <<"nextToken">> => string(),
@@ -1002,7 +1002,7 @@
 
 %% Example:
 %% get_pull_request_approval_states_output() :: #{
-%%   <<"approvals">> => list(approval()())
+%%   <<"approvals">> => list(approval())
 %% }
 -type get_pull_request_approval_states_output() :: #{binary() => any()}.
 
@@ -1010,7 +1010,7 @@
 %% create_pull_request_input() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"targets">> := list(target()()),
+%%   <<"targets">> := list(target()),
 %%   <<"title">> := string()
 %% }
 -type create_pull_request_input() :: #{binary() => any()}.
@@ -1035,7 +1035,7 @@
 
 %% Example:
 %% list_branches_output() :: #{
-%%   <<"branches">> => list(string()()),
+%%   <<"branches">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_branches_output() :: #{binary() => any()}.
@@ -1078,7 +1078,7 @@
 %% Example:
 %% get_repository_triggers_output() :: #{
 %%   <<"configurationId">> => string(),
-%%   <<"triggers">> => list(repository_trigger()())
+%%   <<"triggers">> => list(repository_trigger())
 %% }
 -type get_repository_triggers_output() :: #{binary() => any()}.
 
@@ -1317,7 +1317,7 @@
 %% Example:
 %% list_file_commit_history_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"revisionDag">> => list(file_version()())
+%%   <<"revisionDag">> => list(file_version())
 %% }
 -type list_file_commit_history_response() :: #{binary() => any()}.
 
@@ -1419,8 +1419,8 @@
 
 %% Example:
 %% batch_associate_approval_rule_template_with_repositories_output() :: #{
-%%   <<"associatedRepositoryNames">> => list(string()()),
-%%   <<"errors">> => list(batch_associate_approval_rule_template_with_repositories_error()())
+%%   <<"associatedRepositoryNames">> => list(string()),
+%%   <<"errors">> => list(batch_associate_approval_rule_template_with_repositories_error())
 %% }
 -type batch_associate_approval_rule_template_with_repositories_output() :: #{binary() => any()}.
 
@@ -1507,7 +1507,7 @@
 %% Example:
 %% get_comment_reactions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"reactionsForComment">> => list(reaction_for_comment()())
+%%   <<"reactionsForComment">> => list(reaction_for_comment())
 %% }
 -type get_comment_reactions_output() :: #{binary() => any()}.
 
@@ -1569,7 +1569,7 @@
 %% Example:
 %% comment() :: #{
 %%   <<"authorArn">> => string(),
-%%   <<"callerReactions">> => list(string()()),
+%%   <<"callerReactions">> => list(string()),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"commentId">> => string(),
 %%   <<"content">> => string(),
@@ -1631,11 +1631,11 @@
 %% Example:
 %% get_folder_output() :: #{
 %%   <<"commitId">> => string(),
-%%   <<"files">> => list(file()()),
+%%   <<"files">> => list(file()),
 %%   <<"folderPath">> => string(),
-%%   <<"subFolders">> => list(folder()()),
-%%   <<"subModules">> => list(sub_module()()),
-%%   <<"symbolicLinks">> => list(symbolic_link()()),
+%%   <<"subFolders">> => list(folder()),
+%%   <<"subModules">> => list(sub_module()),
+%%   <<"symbolicLinks">> => list(symbolic_link()),
 %%   <<"treeId">> => string()
 %% }
 -type get_folder_output() :: #{binary() => any()}.
@@ -1685,9 +1685,9 @@
 %% Example:
 %% batch_describe_merge_conflicts_output() :: #{
 %%   <<"baseCommitId">> => string(),
-%%   <<"conflicts">> => list(conflict()()),
+%%   <<"conflicts">> => list(conflict()),
 %%   <<"destinationCommitId">> => string(),
-%%   <<"errors">> => list(batch_describe_merge_conflicts_error()()),
+%%   <<"errors">> => list(batch_describe_merge_conflicts_error()),
 %%   <<"nextToken">> => string(),
 %%   <<"sourceCommitId">> => string()
 %% }
@@ -1842,7 +1842,7 @@
 %% Example:
 %% conflict() :: #{
 %%   <<"conflictMetadata">> => conflict_metadata(),
-%%   <<"mergeHunks">> => list(merge_hunk()())
+%%   <<"mergeHunks">> => list(merge_hunk())
 %% }
 -type conflict() :: #{binary() => any()}.
 
@@ -1902,7 +1902,7 @@
 %% Example:
 %% batch_associate_approval_rule_template_with_repositories_input() :: #{
 %%   <<"approvalRuleTemplateName">> := string(),
-%%   <<"repositoryNames">> := list(string()())
+%%   <<"repositoryNames">> := list(string())
 %% }
 -type batch_associate_approval_rule_template_with_repositories_input() :: #{binary() => any()}.
 
@@ -1954,9 +1954,9 @@
 %% Example:
 %% create_commit_output() :: #{
 %%   <<"commitId">> => string(),
-%%   <<"filesAdded">> => list(file_metadata()()),
-%%   <<"filesDeleted">> => list(file_metadata()()),
-%%   <<"filesUpdated">> => list(file_metadata()()),
+%%   <<"filesAdded">> => list(file_metadata()),
+%%   <<"filesDeleted">> => list(file_metadata()),
+%%   <<"filesUpdated">> => list(file_metadata()),
 %%   <<"treeId">> => string()
 %% }
 -type create_commit_output() :: #{binary() => any()}.
@@ -1991,7 +1991,7 @@
 
 %% Example:
 %% pull_request() :: #{
-%%   <<"approvalRules">> => list(approval_rule()()),
+%%   <<"approvalRules">> => list(approval_rule()),
 %%   <<"authorArn">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"creationDate">> => non_neg_integer(),
@@ -1999,7 +1999,7 @@
 %%   <<"lastActivityDate">> => non_neg_integer(),
 %%   <<"pullRequestId">> => string(),
 %%   <<"pullRequestStatus">> => list(any()),
-%%   <<"pullRequestTargets">> => list(pull_request_target()()),
+%%   <<"pullRequestTargets">> => list(pull_request_target()),
 %%   <<"revisionId">> => string(),
 %%   <<"title">> => string()
 %% }
@@ -2035,8 +2035,8 @@
 
 %% Example:
 %% batch_get_commits_output() :: #{
-%%   <<"commits">> => list(commit()()),
-%%   <<"errors">> => list(batch_get_commits_error()())
+%%   <<"commits">> => list(commit()),
+%%   <<"errors">> => list(batch_get_commits_error())
 %% }
 -type batch_get_commits_output() :: #{binary() => any()}.
 
@@ -2059,13 +2059,13 @@
 %%   <<"authorName">> => string(),
 %%   <<"branchName">> := string(),
 %%   <<"commitMessage">> => string(),
-%%   <<"deleteFiles">> => list(delete_file_entry()()),
+%%   <<"deleteFiles">> => list(delete_file_entry()),
 %%   <<"email">> => string(),
 %%   <<"keepEmptyFolders">> => boolean(),
 %%   <<"parentCommitId">> => string(),
-%%   <<"putFiles">> => list(put_file_entry()()),
+%%   <<"putFiles">> => list(put_file_entry()),
 %%   <<"repositoryName">> := string(),
-%%   <<"setFileModes">> => list(set_file_mode_entry()())
+%%   <<"setFileModes">> => list(set_file_mode_entry())
 %% }
 -type create_commit_input() :: #{binary() => any()}.
 
@@ -2107,7 +2107,7 @@
 
 %% Example:
 %% list_approval_rule_templates_output() :: #{
-%%   <<"approvalRuleTemplateNames">> => list(string()()),
+%%   <<"approvalRuleTemplateNames">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_approval_rule_templates_output() :: #{binary() => any()}.
@@ -2258,7 +2258,7 @@
 
 %% Example:
 %% list_associated_approval_rule_templates_for_repository_output() :: #{
-%%   <<"approvalRuleTemplateNames">> => list(string()()),
+%%   <<"approvalRuleTemplateNames">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_associated_approval_rule_templates_for_repository_output() :: #{binary() => any()}.
@@ -2339,7 +2339,7 @@
 %%   <<"conflictDetailLevel">> => list(any()),
 %%   <<"conflictResolutionStrategy">> => list(any()),
 %%   <<"destinationCommitSpecifier">> := string(),
-%%   <<"filePaths">> => list(string()()),
+%%   <<"filePaths">> => list(string()),
 %%   <<"maxConflictFiles">> => integer(),
 %%   <<"maxMergeHunks">> => integer(),
 %%   <<"mergeOption">> := list(any()),
@@ -2358,14 +2358,14 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
 %% Example:
 %% batch_disassociate_approval_rule_template_from_repositories_input() :: #{
 %%   <<"approvalRuleTemplateName">> := string(),
-%%   <<"repositoryNames">> := list(string()())
+%%   <<"repositoryNames">> := list(string())
 %% }
 -type batch_disassociate_approval_rule_template_from_repositories_input() :: #{binary() => any()}.
 
@@ -2407,7 +2407,7 @@
 
 %% Example:
 %% repository_trigger() :: #{
-%%   <<"branches">> => list(string()()),
+%%   <<"branches">> => list(string()),
 %%   <<"customData">> => string(),
 %%   <<"destinationArn">> => string(),
 %%   <<"events">> => list(list(any())()),
@@ -2424,14 +2424,14 @@
 %% Example:
 %% put_repository_triggers_input() :: #{
 %%   <<"repositoryName">> := string(),
-%%   <<"triggers">> := list(repository_trigger()())
+%%   <<"triggers">> := list(repository_trigger())
 %% }
 -type put_repository_triggers_input() :: #{binary() => any()}.
 
 %% Example:
 %% describe_pull_request_events_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"pullRequestEvents">> => list(pull_request_event()())
+%%   <<"pullRequestEvents">> => list(pull_request_event())
 %% }
 -type describe_pull_request_events_output() :: #{binary() => any()}.
 
@@ -2447,7 +2447,7 @@
 %%   <<"afterCommitId">> => string(),
 %%   <<"beforeBlobId">> => string(),
 %%   <<"beforeCommitId">> => string(),
-%%   <<"comments">> => list(comment()()),
+%%   <<"comments">> => list(comment()),
 %%   <<"location">> => location(),
 %%   <<"repositoryName">> => string()
 %% }
@@ -2503,7 +2503,7 @@
 
 %% Example:
 %% batch_get_commits_input() :: #{
-%%   <<"commitIds">> := list(string()()),
+%%   <<"commitIds">> := list(string()),
 %%   <<"repositoryName">> := string()
 %% }
 -type batch_get_commits_input() :: #{binary() => any()}.
@@ -2511,7 +2511,7 @@
 %% Example:
 %% reaction_for_comment() :: #{
 %%   <<"reaction">> => reaction_value_formats(),
-%%   <<"reactionUsers">> => list(string()()),
+%%   <<"reactionUsers">> => list(string()),
 %%   <<"reactionsFromDeletedUsersCount">> => integer()
 %% }
 -type reaction_for_comment() :: #{binary() => any()}.
@@ -2526,7 +2526,7 @@
 %% Example:
 %% list_repositories_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"repositories">> => list(repository_name_id_pair()())
+%%   <<"repositories">> => list(repository_name_id_pair())
 %% }
 -type list_repositories_output() :: #{binary() => any()}.
 
@@ -2574,7 +2574,7 @@
 %%   <<"blobId">> => string(),
 %%   <<"commit">> => commit(),
 %%   <<"path">> => string(),
-%%   <<"revisionChildren">> => list(string()())
+%%   <<"revisionChildren">> => list(string())
 %% }
 -type file_version() :: #{binary() => any()}.
 
@@ -2623,7 +2623,7 @@
 
 %% Example:
 %% get_comments_for_compared_commit_output() :: #{
-%%   <<"commentsForComparedCommitData">> => list(comments_for_compared_commit()()),
+%%   <<"commentsForComparedCommitData">> => list(comments_for_compared_commit()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_comments_for_compared_commit_output() :: #{binary() => any()}.
@@ -2737,7 +2737,7 @@
 
 %% Example:
 %% get_comments_for_pull_request_output() :: #{
-%%   <<"commentsForPullRequestData">> => list(comments_for_pull_request()()),
+%%   <<"commentsForPullRequestData">> => list(comments_for_pull_request()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_comments_for_pull_request_output() :: #{binary() => any()}.
@@ -2758,8 +2758,8 @@
 
 %% Example:
 %% evaluation() :: #{
-%%   <<"approvalRulesNotSatisfied">> => list(string()()),
-%%   <<"approvalRulesSatisfied">> => list(string()()),
+%%   <<"approvalRulesNotSatisfied">> => list(string()),
+%%   <<"approvalRulesSatisfied">> => list(string()),
 %%   <<"approved">> => boolean(),
 %%   <<"overridden">> => boolean()
 %% }
@@ -2885,8 +2885,8 @@
 
 %% Example:
 %% batch_disassociate_approval_rule_template_from_repositories_output() :: #{
-%%   <<"disassociatedRepositoryNames">> => list(string()()),
-%%   <<"errors">> => list(batch_disassociate_approval_rule_template_from_repositories_error()())
+%%   <<"disassociatedRepositoryNames">> => list(string()),
+%%   <<"errors">> => list(batch_disassociate_approval_rule_template_from_repositories_error())
 %% }
 -type batch_disassociate_approval_rule_template_from_repositories_output() :: #{binary() => any()}.
 
@@ -2901,7 +2901,7 @@
 
 %% Example:
 %% batch_get_repositories_input() :: #{
-%%   <<"repositoryNames">> := list(string()())
+%%   <<"repositoryNames">> := list(string())
 %% }
 -type batch_get_repositories_input() :: #{binary() => any()}.
 
@@ -2979,9 +2979,9 @@
 
 %% Example:
 %% batch_get_repositories_output() :: #{
-%%   <<"errors">> => list(batch_get_repositories_error()()),
-%%   <<"repositories">> => list(repository_metadata()()),
-%%   <<"repositoriesNotFound">> => list(string()())
+%%   <<"errors">> => list(batch_get_repositories_error()),
+%%   <<"repositories">> => list(repository_metadata()),
+%%   <<"repositoriesNotFound">> => list(string())
 %% }
 -type batch_get_repositories_output() :: #{binary() => any()}.
 
@@ -3019,7 +3019,7 @@
 %%   <<"afterCommitId">> => string(),
 %%   <<"beforeBlobId">> => string(),
 %%   <<"beforeCommitId">> => string(),
-%%   <<"comments">> => list(comment()()),
+%%   <<"comments">> => list(comment()),
 %%   <<"location">> => location(),
 %%   <<"pullRequestId">> => string(),
 %%   <<"repositoryName">> => string()
@@ -3087,8 +3087,8 @@
 
 %% Example:
 %% test_repository_triggers_output() :: #{
-%%   <<"failedExecutions">> => list(repository_trigger_execution_failure()()),
-%%   <<"successfulExecutions">> => list(string()())
+%%   <<"failedExecutions">> => list(repository_trigger_execution_failure()),
+%%   <<"successfulExecutions">> => list(string())
 %% }
 -type test_repository_triggers_output() :: #{binary() => any()}.
 

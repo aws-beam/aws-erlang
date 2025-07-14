@@ -73,10 +73,10 @@
 
 %% Example:
 %% ebs_item_filter() :: #{
-%%   <<"CreationTimes">> => list(time_condition()()),
-%%   <<"FilePaths">> => list(string_condition()()),
-%%   <<"LastModificationTimes">> => list(time_condition()()),
-%%   <<"Sizes">> => list(long_condition()())
+%%   <<"CreationTimes">> => list(time_condition()),
+%%   <<"FilePaths">> => list(string_condition()),
+%%   <<"LastModificationTimes">> => list(time_condition()),
+%%   <<"Sizes">> => list(long_condition())
 %% }
 -type ebs_item_filter() :: #{binary() => any()}.
 
@@ -84,7 +84,7 @@
 %% Example:
 %% list_search_job_backups_output() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"Results">> => list(search_job_backups_result()())
+%%   <<"Results">> => list(search_job_backups_result())
 %% }
 -type list_search_job_backups_output() :: #{binary() => any()}.
 
@@ -92,7 +92,7 @@
 %% Example:
 %% list_search_job_results_output() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"Results">> => list(list()())
+%%   <<"Results">> => list(list())
 %% }
 -type list_search_job_results_output() :: #{binary() => any()}.
 
@@ -151,18 +151,18 @@
 %% Example:
 %% list_search_jobs_output() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"SearchJobs">> => list(search_job_summary()())
+%%   <<"SearchJobs">> => list(search_job_summary())
 %% }
 -type list_search_jobs_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% s3_item_filter() :: #{
-%%   <<"CreationTimes">> => list(time_condition()()),
-%%   <<"ETags">> => list(string_condition()()),
-%%   <<"ObjectKeys">> => list(string_condition()()),
-%%   <<"Sizes">> => list(long_condition()()),
-%%   <<"VersionIds">> => list(string_condition()())
+%%   <<"CreationTimes">> => list(time_condition()),
+%%   <<"ETags">> => list(string_condition()),
+%%   <<"ObjectKeys">> => list(string_condition()),
+%%   <<"Sizes">> => list(long_condition()),
+%%   <<"VersionIds">> => list(string_condition())
 %% }
 -type s3_item_filter() :: #{binary() => any()}.
 
@@ -285,7 +285,7 @@
 
 %% Example:
 %% list_search_result_export_jobs_output() :: #{
-%%   <<"ExportJobs">> => list(export_job_summary()()),
+%%   <<"ExportJobs">> => list(export_job_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_search_result_export_jobs_output() :: #{binary() => any()}.
@@ -401,7 +401,7 @@
 
 %% Example:
 %% search_scope() :: #{
-%%   <<"BackupResourceArns">> => list(string()()),
+%%   <<"BackupResourceArns">> => list(string()),
 %%   <<"BackupResourceCreationTime">> => backup_creation_time_filter(),
 %%   <<"BackupResourceTags">> => map(),
 %%   <<"BackupResourceTypes">> => list(list(any())()),
@@ -440,8 +440,8 @@
 
 %% Example:
 %% item_filters() :: #{
-%%   <<"EBSItemFilters">> => list(ebs_item_filter()()),
-%%   <<"S3ItemFilters">> => list(s3_item_filter()())
+%%   <<"EBSItemFilters">> => list(ebs_item_filter()),
+%%   <<"S3ItemFilters">> => list(s3_item_filter())
 %% }
 -type item_filters() :: #{binary() => any()}.
 

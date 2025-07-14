@@ -134,7 +134,7 @@
 %% Example:
 %% delete_object_input() :: #{
 %%   <<"ETag">> => string(),
-%%   <<"PartitionValues">> => list(string()()),
+%%   <<"PartitionValues">> => list(string()),
 %%   <<"Uri">> => string()
 %% }
 -type delete_object_input() :: #{binary() => any()}.
@@ -159,7 +159,7 @@
 %% Example:
 %% list_permissions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"PrincipalResourcePermissions">> => list(principal_resource_permissions()())
+%%   <<"PrincipalResourcePermissions">> => list(principal_resource_permissions())
 %% }
 -type list_permissions_response() :: #{binary() => any()}.
 
@@ -167,7 +167,7 @@
 %% Example:
 %% search_databases_by_l_f_tags_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"Expression">> := list(l_f_tag()()),
+%%   <<"Expression">> := list(l_f_tag()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -185,7 +185,7 @@
 %% l_f_tag_key_resource() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"TagKey">> => string(),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagValues">> => list(string())
 %% }
 -type l_f_tag_key_resource() :: #{binary() => any()}.
 
@@ -215,7 +215,7 @@
 %% Example:
 %% list_resources_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceInfoList">> => list(resource_info()())
+%%   <<"ResourceInfoList">> => list(resource_info())
 %% }
 -type list_resources_response() :: #{binary() => any()}.
 
@@ -224,7 +224,7 @@
 %% l_f_tag_expression() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Expression">> => list(l_f_tag()()),
+%%   <<"Expression">> => list(l_f_tag()),
 %%   <<"Name">> => string()
 %% }
 -type l_f_tag_expression() :: #{binary() => any()}.
@@ -241,7 +241,7 @@
 %% filter_condition() :: #{
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"Field">> => list(any()),
-%%   <<"StringValueList">> => list(string()())
+%%   <<"StringValueList">> => list(string())
 %% }
 -type filter_condition() :: #{binary() => any()}.
 
@@ -250,8 +250,8 @@
 %% update_l_f_tag_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"TagKey">> := string(),
-%%   <<"TagValuesToAdd">> => list(string()()),
-%%   <<"TagValuesToDelete">> => list(string()())
+%%   <<"TagValuesToAdd">> => list(string()),
+%%   <<"TagValuesToDelete">> => list(string())
 %% }
 -type update_l_f_tag_request() :: #{binary() => any()}.
 
@@ -270,7 +270,7 @@
 %% Example:
 %% l_f_tag() :: #{
 %%   <<"TagKey">> => string(),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagValues">> => list(string())
 %% }
 -type l_f_tag() :: #{binary() => any()}.
 
@@ -319,9 +319,9 @@
 
 %% Example:
 %% get_resource_l_f_tags_response() :: #{
-%%   <<"LFTagOnDatabase">> => list(l_f_tag_pair()()),
-%%   <<"LFTagsOnColumns">> => list(column_l_f_tag()()),
-%%   <<"LFTagsOnTable">> => list(l_f_tag_pair()())
+%%   <<"LFTagOnDatabase">> => list(l_f_tag_pair()),
+%%   <<"LFTagsOnColumns">> => list(column_l_f_tag()),
+%%   <<"LFTagsOnTable">> => list(l_f_tag_pair())
 %% }
 -type get_resource_l_f_tags_response() :: #{binary() => any()}.
 
@@ -343,7 +343,7 @@
 %% Example:
 %% l_f_tag_policy_resource() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"Expression">> => list(l_f_tag()()),
+%%   <<"Expression">> => list(l_f_tag()),
 %%   <<"ExpressionName">> => string(),
 %%   <<"ResourceType">> => list(any())
 %% }
@@ -390,7 +390,7 @@
 %%   <<"ApplicationStatus">> => list(any()),
 %%   <<"CatalogId">> => string(),
 %%   <<"ExternalFiltering">> => external_filtering_configuration(),
-%%   <<"ShareRecipients">> => list(data_lake_principal()())
+%%   <<"ShareRecipients">> => list(data_lake_principal())
 %% }
 -type update_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
 
@@ -413,7 +413,7 @@
 %%   <<"CatalogId">> => string(),
 %%   <<"ExternalFiltering">> => external_filtering_configuration(),
 %%   <<"InstanceArn">> => string(),
-%%   <<"ShareRecipients">> => list(data_lake_principal()())
+%%   <<"ShareRecipients">> => list(data_lake_principal())
 %% }
 -type create_lake_formation_identity_center_configuration_request() :: #{binary() => any()}.
 
@@ -421,7 +421,7 @@
 %% Example:
 %% list_transactions_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Transactions">> => list(transaction_description()())
+%%   <<"Transactions">> => list(transaction_description())
 %% }
 -type list_transactions_response() :: #{binary() => any()}.
 
@@ -461,7 +461,7 @@
 %% create_l_f_tag_expression_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Expression">> := list(l_f_tag()()),
+%%   <<"Expression">> := list(l_f_tag()),
 %%   <<"Name">> := string()
 %% }
 -type create_l_f_tag_expression_request() :: #{binary() => any()}.
@@ -469,9 +469,9 @@
 
 %% Example:
 %% tagged_table() :: #{
-%%   <<"LFTagOnDatabase">> => list(l_f_tag_pair()()),
-%%   <<"LFTagsOnColumns">> => list(column_l_f_tag()()),
-%%   <<"LFTagsOnTable">> => list(l_f_tag_pair()()),
+%%   <<"LFTagOnDatabase">> => list(l_f_tag_pair()),
+%%   <<"LFTagsOnColumns">> => list(column_l_f_tag()),
+%%   <<"LFTagsOnTable">> => list(l_f_tag_pair()),
 %%   <<"Table">> => table_resource()
 %% }
 -type tagged_table() :: #{binary() => any()}.
@@ -494,7 +494,7 @@
 %% Example:
 %% list_table_storage_optimizers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StorageOptimizerList">> => list(storage_optimizer()())
+%%   <<"StorageOptimizerList">> => list(storage_optimizer())
 %% }
 -type list_table_storage_optimizers_response() :: #{binary() => any()}.
 
@@ -502,7 +502,7 @@
 %% Example:
 %% search_tables_by_l_f_tags_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"Expression">> := list(l_f_tag()()),
+%%   <<"Expression">> := list(l_f_tag()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -513,7 +513,7 @@
 %% update_l_f_tag_expression_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Expression">> := list(l_f_tag()()),
+%%   <<"Expression">> := list(l_f_tag()),
 %%   <<"Name">> := string()
 %% }
 -type update_l_f_tag_expression_request() :: #{binary() => any()}.
@@ -528,8 +528,8 @@
 
 %% Example:
 %% partition_objects() :: #{
-%%   <<"Objects">> => list(table_object()()),
-%%   <<"PartitionValues">> => list(string()())
+%%   <<"Objects">> => list(table_object()),
+%%   <<"PartitionValues">> => list(string())
 %% }
 -type partition_objects() :: #{binary() => any()}.
 
@@ -552,7 +552,7 @@
 %% get_l_f_tag_response() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"TagKey">> => string(),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagValues">> => list(string())
 %% }
 -type get_l_f_tag_response() :: #{binary() => any()}.
 
@@ -565,14 +565,14 @@
 %% create_l_f_tag_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"TagKey">> := string(),
-%%   <<"TagValues">> := list(string()())
+%%   <<"TagValues">> := list(string())
 %% }
 -type create_l_f_tag_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_lake_formation_opt_ins_response() :: #{
-%%   <<"LakeFormationOptInsInfoList">> => list(lake_formation_opt_ins_info()()),
+%%   <<"LakeFormationOptInsInfoList">> => list(lake_formation_opt_ins_info()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lake_formation_opt_ins_response() :: #{binary() => any()}.
@@ -618,7 +618,7 @@
 
 %% Example:
 %% list_l_f_tag_expressions_response() :: #{
-%%   <<"LFTagExpressions">> => list(l_f_tag_expression()()),
+%%   <<"LFTagExpressions">> => list(l_f_tag_expression()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_l_f_tag_expressions_response() :: #{binary() => any()}.
@@ -689,14 +689,14 @@
 
 %% Example:
 %% add_l_f_tags_to_resource_response() :: #{
-%%   <<"Failures">> => list(l_f_tag_error()())
+%%   <<"Failures">> => list(l_f_tag_error())
 %% }
 -type add_l_f_tags_to_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% data_cells_filter() :: #{
-%%   <<"ColumnNames">> => list(string()()),
+%%   <<"ColumnNames">> => list(string()),
 %%   <<"ColumnWildcard">> => column_wildcard(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"Name">> => string(),
@@ -756,7 +756,7 @@
 
 %% Example:
 %% partition_value_list() :: #{
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type partition_value_list() :: #{binary() => any()}.
 
@@ -772,7 +772,7 @@
 
 %% Example:
 %% search_databases_by_l_f_tags_response() :: #{
-%%   <<"DatabaseList">> => list(tagged_database()()),
+%%   <<"DatabaseList">> => list(tagged_database()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_databases_by_l_f_tags_response() :: #{binary() => any()}.
@@ -814,7 +814,7 @@
 
 %% Example:
 %% column_wildcard() :: #{
-%%   <<"ExcludedColumnNames">> => list(string()())
+%%   <<"ExcludedColumnNames">> => list(string())
 %% }
 -type column_wildcard() :: #{binary() => any()}.
 
@@ -886,14 +886,14 @@
 
 %% Example:
 %% remove_l_f_tags_from_resource_response() :: #{
-%%   <<"Failures">> => list(l_f_tag_error()())
+%%   <<"Failures">> => list(l_f_tag_error())
 %% }
 -type remove_l_f_tags_from_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% details_map() :: #{
-%%   <<"ResourceShare">> => list(string()())
+%%   <<"ResourceShare">> => list(string())
 %% }
 -type details_map() :: #{binary() => any()}.
 
@@ -910,7 +910,7 @@
 %% Example:
 %% search_tables_by_l_f_tags_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TableList">> => list(tagged_table()())
+%%   <<"TableList">> => list(tagged_table())
 %% }
 -type search_tables_by_l_f_tags_response() :: #{binary() => any()}.
 
@@ -918,7 +918,7 @@
 %% Example:
 %% add_object_input() :: #{
 %%   <<"ETag">> => string(),
-%%   <<"PartitionValues">> => list(string()()),
+%%   <<"PartitionValues">> => list(string()),
 %%   <<"Size">> => float(),
 %%   <<"Uri">> => string()
 %% }
@@ -956,7 +956,7 @@
 %% get_l_f_tag_expression_response() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"Description">> => string(),
-%%   <<"Expression">> => list(l_f_tag()()),
+%%   <<"Expression">> => list(l_f_tag()),
 %%   <<"Name">> => string()
 %% }
 -type get_l_f_tag_expression_response() :: #{binary() => any()}.
@@ -1009,7 +1009,7 @@
 %%   <<"Expiration">> => non_neg_integer(),
 %%   <<"SecretAccessKey">> => string(),
 %%   <<"SessionToken">> => string(),
-%%   <<"VendedS3Path">> => list(string()())
+%%   <<"VendedS3Path">> => list(string())
 %% }
 -type get_temporary_glue_table_credentials_response() :: #{binary() => any()}.
 
@@ -1021,7 +1021,7 @@
 %%   <<"ExternalFiltering">> => external_filtering_configuration(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"ResourceShare">> => string(),
-%%   <<"ShareRecipients">> => list(data_lake_principal()())
+%%   <<"ShareRecipients">> => list(data_lake_principal())
 %% }
 -type describe_lake_formation_identity_center_configuration_response() :: #{binary() => any()}.
 
@@ -1045,7 +1045,7 @@
 %% l_f_tag_pair() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"TagKey">> => string(),
-%%   <<"TagValues">> => list(string()())
+%%   <<"TagValues">> => list(string())
 %% }
 -type l_f_tag_pair() :: #{binary() => any()}.
 
@@ -1098,7 +1098,7 @@
 
 %% Example:
 %% batch_revoke_permissions_response() :: #{
-%%   <<"Failures">> => list(batch_permissions_failure_entry()())
+%%   <<"Failures">> => list(batch_permissions_failure_entry())
 %% }
 -type batch_revoke_permissions_response() :: #{binary() => any()}.
 
@@ -1109,7 +1109,7 @@
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string(),
 %%   <<"TransactionId">> => string(),
-%%   <<"WriteOperations">> := list(write_operation()())
+%%   <<"WriteOperations">> := list(write_operation())
 %% }
 -type update_table_objects_request() :: #{binary() => any()}.
 
@@ -1120,7 +1120,7 @@
 
 %% Example:
 %% list_data_cells_filter_response() :: #{
-%%   <<"DataCellsFilters">> => list(data_cells_filter()()),
+%%   <<"DataCellsFilters">> => list(data_cells_filter()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_data_cells_filter_response() :: #{binary() => any()}.
@@ -1137,7 +1137,7 @@
 %% Example:
 %% get_effective_permissions_for_path_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Permissions">> => list(principal_resource_permissions()())
+%%   <<"Permissions">> => list(principal_resource_permissions())
 %% }
 -type get_effective_permissions_for_path_response() :: #{binary() => any()}.
 
@@ -1145,7 +1145,7 @@
 %% Example:
 %% batch_grant_permissions_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"Entries">> := list(batch_permissions_request_entry()())
+%%   <<"Entries">> := list(batch_permissions_request_entry())
 %% }
 -type batch_grant_permissions_request() :: #{binary() => any()}.
 
@@ -1194,7 +1194,7 @@
 %% delete_objects_on_cancel_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
-%%   <<"Objects">> := list(virtual_object()()),
+%%   <<"Objects">> := list(virtual_object()),
 %%   <<"TableName">> := string(),
 %%   <<"TransactionId">> := string()
 %% }
@@ -1217,14 +1217,14 @@
 %% data_lake_settings() :: #{
 %%   <<"AllowExternalDataFiltering">> => boolean(),
 %%   <<"AllowFullTableExternalDataAccess">> => boolean(),
-%%   <<"AuthorizedSessionTagValueList">> => list(string()()),
-%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()()),
-%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()()),
-%%   <<"DataLakeAdmins">> => list(data_lake_principal()()),
-%%   <<"ExternalDataFilteringAllowList">> => list(data_lake_principal()()),
+%%   <<"AuthorizedSessionTagValueList">> => list(string()),
+%%   <<"CreateDatabaseDefaultPermissions">> => list(principal_permissions()),
+%%   <<"CreateTableDefaultPermissions">> => list(principal_permissions()),
+%%   <<"DataLakeAdmins">> => list(data_lake_principal()),
+%%   <<"ExternalDataFilteringAllowList">> => list(data_lake_principal()),
 %%   <<"Parameters">> => map(),
-%%   <<"ReadOnlyAdmins">> => list(data_lake_principal()()),
-%%   <<"TrustedResourceOwners">> => list(string()())
+%%   <<"ReadOnlyAdmins">> => list(data_lake_principal()),
+%%   <<"TrustedResourceOwners">> => list(string())
 %% }
 -type data_lake_settings() :: #{binary() => any()}.
 
@@ -1255,14 +1255,14 @@
 
 %% Example:
 %% batch_grant_permissions_response() :: #{
-%%   <<"Failures">> => list(batch_permissions_failure_entry()())
+%%   <<"Failures">> => list(batch_permissions_failure_entry())
 %% }
 -type batch_grant_permissions_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% external_filtering_configuration() :: #{
-%%   <<"AuthorizedTargets">> => list(string()()),
+%%   <<"AuthorizedTargets">> => list(string()),
 %%   <<"Status">> => list(any())
 %% }
 -type external_filtering_configuration() :: #{binary() => any()}.
@@ -1314,7 +1314,7 @@
 %% get_work_units_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"QueryId">> => string(),
-%%   <<"WorkUnitRanges">> => list(work_unit_range()())
+%%   <<"WorkUnitRanges">> => list(work_unit_range())
 %% }
 -type get_work_units_response() :: #{binary() => any()}.
 
@@ -1322,7 +1322,7 @@
 %% Example:
 %% tagged_database() :: #{
 %%   <<"Database">> => database_resource(),
-%%   <<"LFTags">> => list(l_f_tag_pair()())
+%%   <<"LFTags">> => list(l_f_tag_pair())
 %% }
 -type tagged_database() :: #{binary() => any()}.
 
@@ -1342,7 +1342,7 @@
 %% Example:
 %% batch_revoke_permissions_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"Entries">> := list(batch_permissions_request_entry()())
+%%   <<"Entries">> := list(batch_permissions_request_entry())
 %% }
 -type batch_revoke_permissions_request() :: #{binary() => any()}.
 
@@ -1401,7 +1401,7 @@
 %% Example:
 %% get_table_objects_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Objects">> => list(partition_objects()())
+%%   <<"Objects">> => list(partition_objects())
 %% }
 -type get_table_objects_response() :: #{binary() => any()}.
 
@@ -1416,7 +1416,7 @@
 %% Example:
 %% table_with_columns_resource() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"ColumnNames">> => list(string()()),
+%%   <<"ColumnNames">> => list(string()),
 %%   <<"ColumnWildcard">> => column_wildcard(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"Name">> => string()
@@ -1426,7 +1426,7 @@
 
 %% Example:
 %% list_resources_request() :: #{
-%%   <<"FilterConditionList">> => list(filter_condition()()),
+%%   <<"FilterConditionList">> => list(filter_condition()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1435,7 +1435,7 @@
 
 %% Example:
 %% list_l_f_tags_response() :: #{
-%%   <<"LFTags">> => list(l_f_tag_pair()()),
+%%   <<"LFTags">> => list(l_f_tag_pair()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_l_f_tags_response() :: #{binary() => any()}.
@@ -1515,7 +1515,7 @@
 %% Example:
 %% remove_l_f_tags_from_resource_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"LFTags">> := list(l_f_tag_pair()()),
+%%   <<"LFTags">> := list(l_f_tag_pair()),
 %%   <<"Resource">> := resource()
 %% }
 -type remove_l_f_tags_from_resource_request() :: #{binary() => any()}.
@@ -1616,7 +1616,7 @@
 %% Example:
 %% add_l_f_tags_to_resource_request() :: #{
 %%   <<"CatalogId">> => string(),
-%%   <<"LFTags">> := list(l_f_tag_pair()()),
+%%   <<"LFTags">> := list(l_f_tag_pair()),
 %%   <<"Resource">> := resource()
 %% }
 -type add_l_f_tags_to_resource_request() :: #{binary() => any()}.
@@ -1631,7 +1631,7 @@
 
 %% Example:
 %% column_l_f_tag() :: #{
-%%   <<"LFTags">> => list(l_f_tag_pair()()),
+%%   <<"LFTags">> => list(l_f_tag_pair()),
 %%   <<"Name">> => string()
 %% }
 -type column_l_f_tag() :: #{binary() => any()}.

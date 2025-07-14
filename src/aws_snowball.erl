@@ -117,20 +117,20 @@
 %% Example:
 %% describe_job_result() :: #{
 %%   <<"JobMetadata">> => job_metadata(),
-%%   <<"SubJobMetadata">> => list(job_metadata()())
+%%   <<"SubJobMetadata">> => list(job_metadata())
 %% }
 -type describe_job_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_compatible_images_result() :: #{
-%%   <<"CompatibleImages">> => list(compatible_image()()),
+%%   <<"CompatibleImages">> => list(compatible_image()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_compatible_images_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_jobs_result() :: #{
-%%   <<"JobListEntries">> => list(job_list_entry()()),
+%%   <<"JobListEntries">> => list(job_list_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_jobs_result() :: #{binary() => any()}.
@@ -271,7 +271,7 @@
 
 %% Example:
 %% lambda_resource() :: #{
-%%   <<"EventTriggers">> => list(event_trigger_definition()()),
+%%   <<"EventTriggers">> => list(event_trigger_definition()),
 %%   <<"LambdaArn">> => string()
 %% }
 -type lambda_resource() :: #{binary() => any()}.
@@ -292,7 +292,7 @@
 
 %% Example:
 %% list_service_versions_request() :: #{
-%%   <<"DependentServices">> => list(dependent_service()()),
+%%   <<"DependentServices">> => list(dependent_service()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceName">> := list(any())
@@ -348,7 +348,7 @@
 %% s3_resource() :: #{
 %%   <<"BucketArn">> => string(),
 %%   <<"KeyRange">> => key_range(),
-%%   <<"TargetOnDeviceServices">> => list(target_on_device_service()())
+%%   <<"TargetOnDeviceServices">> => list(target_on_device_service())
 %% }
 -type s3_resource() :: #{binary() => any()}.
 
@@ -361,7 +361,7 @@
 %%   <<"InitialClusterSize">> => integer(),
 %%   <<"JobType">> := list(any()),
 %%   <<"KmsKeyARN">> => string(),
-%%   <<"LongTermPricingIds">> => list(string()()),
+%%   <<"LongTermPricingIds">> => list(string()),
 %%   <<"Notification">> => notification(),
 %%   <<"OnDeviceServiceConfiguration">> => on_device_service_configuration(),
 %%   <<"RemoteManagement">> => list(any()),
@@ -446,7 +446,7 @@
 %% Example:
 %% create_cluster_result() :: #{
 %%   <<"ClusterId">> => string(),
-%%   <<"JobListEntries">> => list(job_list_entry()())
+%%   <<"JobListEntries">> => list(job_list_entry())
 %% }
 -type create_cluster_result() :: #{binary() => any()}.
 
@@ -464,7 +464,7 @@
 
 %% Example:
 %% list_long_term_pricing_result() :: #{
-%%   <<"LongTermPricingEntries">> => list(long_term_pricing_list_entry()()),
+%%   <<"LongTermPricingEntries">> => list(long_term_pricing_list_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_long_term_pricing_result() :: #{binary() => any()}.
@@ -496,10 +496,10 @@
 
 %% Example:
 %% list_service_versions_result() :: #{
-%%   <<"DependentServices">> => list(dependent_service()()),
+%%   <<"DependentServices">> => list(dependent_service()),
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceName">> => list(any()),
-%%   <<"ServiceVersions">> => list(service_version()())
+%%   <<"ServiceVersions">> => list(service_version())
 %% }
 -type list_service_versions_result() :: #{binary() => any()}.
 
@@ -511,7 +511,7 @@
 
 %% Example:
 %% describe_addresses_result() :: #{
-%%   <<"Addresses">> => list(address()()),
+%%   <<"Addresses">> => list(address()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_addresses_result() :: #{binary() => any()}.
@@ -537,7 +537,7 @@
 
 %% Example:
 %% list_pickup_locations_result() :: #{
-%%   <<"Addresses">> => list(address()()),
+%%   <<"Addresses">> => list(address()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_pickup_locations_result() :: #{binary() => any()}.
@@ -609,7 +609,7 @@
 
 %% Example:
 %% list_cluster_jobs_result() :: #{
-%%   <<"JobListEntries">> => list(job_list_entry()()),
+%%   <<"JobListEntries">> => list(job_list_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_cluster_jobs_result() :: #{binary() => any()}.
@@ -640,7 +640,7 @@
 
 %% Example:
 %% list_clusters_result() :: #{
-%%   <<"ClusterListEntries">> => list(cluster_list_entry()()),
+%%   <<"ClusterListEntries">> => list(cluster_list_entry()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_clusters_result() :: #{binary() => any()}.
@@ -747,7 +747,7 @@
 %% long_term_pricing_list_entry() :: #{
 %%   <<"CurrentActiveJob">> => string(),
 %%   <<"IsLongTermPricingAutoRenew">> => boolean(),
-%%   <<"JobIds">> => list(string()()),
+%%   <<"JobIds">> => list(string()),
 %%   <<"LongTermPricingEndDate">> => non_neg_integer(),
 %%   <<"LongTermPricingId">> => string(),
 %%   <<"LongTermPricingStartDate">> => non_neg_integer(),
@@ -795,9 +795,9 @@
 
 %% Example:
 %% job_resource() :: #{
-%%   <<"Ec2AmiResources">> => list(ec2_ami_resource()()),
-%%   <<"LambdaResources">> => list(lambda_resource()()),
-%%   <<"S3Resources">> => list(s3_resource()())
+%%   <<"Ec2AmiResources">> => list(ec2_ami_resource()),
+%%   <<"LambdaResources">> => list(lambda_resource()),
+%%   <<"S3Resources">> => list(s3_resource())
 %% }
 -type job_resource() :: #{binary() => any()}.
 

@@ -308,7 +308,7 @@
 
 %% Example:
 %% campaign_response() :: #{
-%%   <<"AdditionalTreatments">> => list(treatment_resource()()),
+%%   <<"AdditionalTreatments">> => list(treatment_resource()),
 %%   <<"ApplicationId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"CreationDate">> => string(),
@@ -534,7 +534,7 @@
 
 %% Example:
 %% endpoints_response() :: #{
-%%   <<"Item">> => list(endpoint_response()())
+%%   <<"Item">> => list(endpoint_response())
 %% }
 -type endpoints_response() :: #{binary() => any()}.
 
@@ -663,7 +663,7 @@
 %% Example:
 %% email_template_request() :: #{
 %%   <<"DefaultSubstitutions">> => string(),
-%%   <<"Headers">> => list(message_header()()),
+%%   <<"Headers">> => list(message_header()),
 %%   <<"HtmlPart">> => string(),
 %%   <<"RecommenderId">> => string(),
 %%   <<"Subject">> => string(),
@@ -705,7 +705,7 @@
 
 %% Example:
 %% export_jobs_response() :: #{
-%%   <<"Item">> => list(export_job_response()()),
+%%   <<"Item">> => list(export_job_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type export_jobs_response() :: #{binary() => any()}.
@@ -779,7 +779,7 @@
 
 %% Example:
 %% campaigns_response() :: #{
-%%   <<"Item">> => list(campaign_response()()),
+%%   <<"Item">> => list(campaign_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type campaigns_response() :: #{binary() => any()}.
@@ -867,7 +867,7 @@
 
 %% Example:
 %% base_kpi_result() :: #{
-%%   <<"Rows">> => list(result_row()())
+%%   <<"Rows">> => list(result_row())
 %% }
 -type base_kpi_result() :: #{binary() => any()}.
 
@@ -888,7 +888,7 @@
 
 %% Example:
 %% endpoint_batch_request() :: #{
-%%   <<"Item">> => list(endpoint_batch_item()())
+%%   <<"Item">> => list(endpoint_batch_item())
 %% }
 -type endpoint_batch_request() :: #{binary() => any()}.
 
@@ -1184,7 +1184,7 @@
 
 %% Example:
 %% templates_response() :: #{
-%%   <<"Item">> => list(template_response()()),
+%%   <<"Item">> => list(template_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type templates_response() :: #{binary() => any()}.
@@ -1201,7 +1201,7 @@
 %% attributes_resource() :: #{
 %%   <<"ApplicationId">> => string(),
 %%   <<"AttributeType">> => string(),
-%%   <<"Attributes">> => list(string()())
+%%   <<"Attributes">> => list(string())
 %% }
 -type attributes_resource() :: #{binary() => any()}.
 
@@ -1396,7 +1396,7 @@
 
 %% Example:
 %% journeys_response() :: #{
-%%   <<"Item">> => list(journey_response()()),
+%%   <<"Item">> => list(journey_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type journeys_response() :: #{binary() => any()}.
@@ -1444,7 +1444,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -1658,7 +1658,7 @@
 %%   <<"CreationDate">> => string(),
 %%   <<"Definition">> => import_job_resource(),
 %%   <<"FailedPieces">> => integer(),
-%%   <<"Failures">> => list(string()()),
+%%   <<"Failures">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"TotalFailures">> => integer(),
@@ -1719,8 +1719,8 @@
 
 %% Example:
 %% result_row() :: #{
-%%   <<"GroupedBys">> => list(result_row_value()()),
-%%   <<"Values">> => list(result_row_value()())
+%%   <<"GroupedBys">> => list(result_row_value()),
+%%   <<"Values">> => list(result_row_value())
 %% }
 -type result_row() :: #{binary() => any()}.
 
@@ -1913,7 +1913,7 @@
 
 %% Example:
 %% update_attributes_request() :: #{
-%%   <<"Blacklist">> => list(string()())
+%%   <<"Blacklist">> => list(string())
 %% }
 -type update_attributes_request() :: #{binary() => any()}.
 
@@ -2317,7 +2317,7 @@
 %%   <<"CreationDate">> => string(),
 %%   <<"Definition">> => export_job_resource(),
 %%   <<"FailedPieces">> => integer(),
-%%   <<"Failures">> => list(string()()),
+%%   <<"Failures">> => list(string()),
 %%   <<"Id">> => string(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"TotalFailures">> => integer(),
@@ -2330,7 +2330,7 @@
 
 %% Example:
 %% applications_response() :: #{
-%%   <<"Item">> => list(application_response()()),
+%%   <<"Item">> => list(application_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type applications_response() :: #{binary() => any()}.
@@ -2484,7 +2484,7 @@
 
 %% Example:
 %% template_versions_response() :: #{
-%%   <<"Item">> => list(template_version_response()()),
+%%   <<"Item">> => list(template_version_response()),
 %%   <<"Message">> => string(),
 %%   <<"NextToken">> => string(),
 %%   <<"RequestID">> => string()
@@ -2555,7 +2555,7 @@
 
 %% Example:
 %% in_app_message() :: #{
-%%   <<"Content">> => list(in_app_message_content()()),
+%%   <<"Content">> => list(in_app_message_content()),
 %%   <<"CustomConfig">> => map(),
 %%   <<"Layout">> => list(any())
 %% }
@@ -2615,7 +2615,7 @@
 
 %% Example:
 %% import_jobs_response() :: #{
-%%   <<"Item">> => list(import_job_response()()),
+%%   <<"Item">> => list(import_job_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type import_jobs_response() :: #{binary() => any()}.
@@ -2623,7 +2623,7 @@
 
 %% Example:
 %% condition() :: #{
-%%   <<"Conditions">> => list(simple_condition()()),
+%%   <<"Conditions">> => list(simple_condition()),
 %%   <<"Operator">> => list(any())
 %% }
 -type condition() :: #{binary() => any()}.
@@ -2649,7 +2649,7 @@
 %% Example:
 %% campaign_in_app_message() :: #{
 %%   <<"Body">> => string(),
-%%   <<"Content">> => list(in_app_message_content()()),
+%%   <<"Content">> => list(in_app_message_content()),
 %%   <<"CustomConfig">> => map(),
 %%   <<"Layout">> => list(any())
 %% }
@@ -2729,7 +2729,7 @@
 
 %% Example:
 %% list_recommender_configurations_response() :: #{
-%%   <<"Item">> => list(recommender_configuration_response()()),
+%%   <<"Item">> => list(recommender_configuration_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_recommender_configurations_response() :: #{binary() => any()}.
@@ -2795,7 +2795,7 @@
 %%   <<"FeedbackForwardingAddress">> => string(),
 %%   <<"FromAddress">> => string(),
 %%   <<"RawEmail">> => raw_email(),
-%%   <<"ReplyToAddresses">> => list(string()()),
+%%   <<"ReplyToAddresses">> => list(string()),
 %%   <<"SimpleEmail">> => simple_email(),
 %%   <<"Substitutions">> => map()
 %% }
@@ -2880,8 +2880,8 @@
 
 %% Example:
 %% segment_group() :: #{
-%%   <<"Dimensions">> => list(segment_dimensions()()),
-%%   <<"SourceSegments">> => list(segment_reference()()),
+%%   <<"Dimensions">> => list(segment_dimensions()),
+%%   <<"SourceSegments">> => list(segment_reference()),
 %%   <<"SourceType">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
@@ -2990,7 +2990,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreationDate">> => string(),
 %%   <<"DefaultSubstitutions">> => string(),
-%%   <<"Headers">> => list(message_header()()),
+%%   <<"Headers">> => list(message_header()),
 %%   <<"HtmlPart">> => string(),
 %%   <<"LastModifiedDate">> => string(),
 %%   <<"RecommenderId">> => string(),
@@ -3058,7 +3058,7 @@
 
 %% Example:
 %% activities_response() :: #{
-%%   <<"Item">> => list(activity_response()()),
+%%   <<"Item">> => list(activity_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type activities_response() :: #{binary() => any()}.
@@ -3077,7 +3077,7 @@
 
 %% Example:
 %% in_app_messages_response() :: #{
-%%   <<"InAppMessageCampaigns">> => list(in_app_message_campaign()())
+%%   <<"InAppMessageCampaigns">> => list(in_app_message_campaign())
 %% }
 -type in_app_messages_response() :: #{binary() => any()}.
 
@@ -3164,7 +3164,7 @@
 
 %% Example:
 %% write_campaign_request() :: #{
-%%   <<"AdditionalTreatments">> => list(write_treatment_resource()()),
+%%   <<"AdditionalTreatments">> => list(write_treatment_resource()),
 %%   <<"CustomDeliveryConfiguration">> => custom_delivery_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"HoldoutPercent">> => integer(),
@@ -3239,7 +3239,7 @@
 
 %% Example:
 %% journey_runs_response() :: #{
-%%   <<"Item">> => list(journey_run_response()()),
+%%   <<"Item">> => list(journey_run_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type journey_runs_response() :: #{binary() => any()}.
@@ -3264,7 +3264,7 @@
 
 %% Example:
 %% segments_response() :: #{
-%%   <<"Item">> => list(segment_response()()),
+%%   <<"Item">> => list(segment_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type segments_response() :: #{binary() => any()}.
@@ -3272,11 +3272,11 @@
 
 %% Example:
 %% closed_days() :: #{
-%%   <<"CUSTOM">> => list(closed_days_rule()()),
-%%   <<"EMAIL">> => list(closed_days_rule()()),
-%%   <<"PUSH">> => list(closed_days_rule()()),
-%%   <<"SMS">> => list(closed_days_rule()()),
-%%   <<"VOICE">> => list(closed_days_rule()())
+%%   <<"CUSTOM">> => list(closed_days_rule()),
+%%   <<"EMAIL">> => list(closed_days_rule()),
+%%   <<"PUSH">> => list(closed_days_rule()),
+%%   <<"SMS">> => list(closed_days_rule()),
+%%   <<"VOICE">> => list(closed_days_rule())
 %% }
 -type closed_days() :: #{binary() => any()}.
 
@@ -3410,7 +3410,7 @@
 %% campaign_email_message() :: #{
 %%   <<"Body">> => string(),
 %%   <<"FromAddress">> => string(),
-%%   <<"Headers">> => list(message_header()()),
+%%   <<"Headers">> => list(message_header()),
 %%   <<"HtmlBody">> => string(),
 %%   <<"Title">> => string()
 %% }
@@ -3599,7 +3599,7 @@
 %% Example:
 %% attribute_dimension() :: #{
 %%   <<"AttributeType">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type attribute_dimension() :: #{binary() => any()}.
 
@@ -3647,7 +3647,7 @@
 %% Example:
 %% set_dimension() :: #{
 %%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type set_dimension() :: #{binary() => any()}.
 
@@ -3689,7 +3689,7 @@
 
 %% Example:
 %% simple_email() :: #{
-%%   <<"Headers">> => list(message_header()()),
+%%   <<"Headers">> => list(message_header()),
 %%   <<"HtmlPart">> => simple_email_part(),
 %%   <<"Subject">> => simple_email_part(),
 %%   <<"TextPart">> => simple_email_part()
@@ -3750,7 +3750,7 @@
 
 %% Example:
 %% multi_conditional_split_activity() :: #{
-%%   <<"Branches">> => list(multi_conditional_branch()()),
+%%   <<"Branches">> => list(multi_conditional_branch()),
 %%   <<"DefaultActivity">> => string(),
 %%   <<"EvaluationWaitTime">> => wait_time()
 %% }
@@ -4053,7 +4053,7 @@
 
 %% Example:
 %% random_split_activity() :: #{
-%%   <<"Branches">> => list(random_split_entry()())
+%%   <<"Branches">> => list(random_split_entry())
 %% }
 -type random_split_activity() :: #{binary() => any()}.
 
@@ -4067,7 +4067,7 @@
 
 %% Example:
 %% segment_group_list() :: #{
-%%   <<"Groups">> => list(segment_group()()),
+%%   <<"Groups">> => list(segment_group()),
 %%   <<"Include">> => list(any())
 %% }
 -type segment_group_list() :: #{binary() => any()}.
@@ -4075,7 +4075,7 @@
 
 %% Example:
 %% in_app_template_request() :: #{
-%%   <<"Content">> => list(in_app_message_content()()),
+%%   <<"Content">> => list(in_app_message_content()),
 %%   <<"CustomConfig">> => map(),
 %%   <<"Layout">> => list(any()),
 %%   <<"TemplateDescription">> => string(),
@@ -4330,7 +4330,7 @@
 %% Example:
 %% in_app_template_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Content">> => list(in_app_message_content()()),
+%%   <<"Content">> => list(in_app_message_content()),
 %%   <<"CreationDate">> => string(),
 %%   <<"CustomConfig">> => map(),
 %%   <<"LastModifiedDate">> => string(),

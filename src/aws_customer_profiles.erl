@@ -254,7 +254,7 @@
 %%   <<"BusinessPhoneNumber">> => string(),
 %%   <<"EmailAddress">> => string(),
 %%   <<"FirstName">> => string(),
-%%   <<"FoundByItems">> => list(found_by_key_value()()),
+%%   <<"FoundByItems">> => list(found_by_key_value()),
 %%   <<"Gender">> => list(any()),
 %%   <<"GenderString">> => string(),
 %%   <<"HomePhoneNumber">> => string(),
@@ -305,7 +305,7 @@
 %% Example:
 %% event_trigger_limits() :: #{
 %%   <<"EventExpiration">> => float(),
-%%   <<"Periods">> => list(period()())
+%%   <<"Periods">> => list(period())
 %% }
 -type event_trigger_limits() :: #{binary() => any()}.
 
@@ -411,7 +411,7 @@
 %% task() :: #{
 %%   <<"ConnectorOperator">> => connector_operator(),
 %%   <<"DestinationField">> => string(),
-%%   <<"SourceFields">> => list(string()()),
+%%   <<"SourceFields">> => list(string()),
 %%   <<"TaskProperties">> => map(),
 %%   <<"TaskType">> => list(any())
 %% }
@@ -488,7 +488,7 @@
 
 %% Example:
 %% attribute_details() :: #{
-%%   <<"Attributes">> => list(attribute_item()()),
+%%   <<"Attributes">> => list(attribute_item()),
 %%   <<"Expression">> => string()
 %% }
 -type attribute_details() :: #{binary() => any()}.
@@ -496,7 +496,7 @@
 
 %% Example:
 %% detect_profile_object_type_response() :: #{
-%%   <<"DetectedProfileObjectTypes">> => list(detected_profile_object_type()())
+%%   <<"DetectedProfileObjectTypes">> => list(detected_profile_object_type())
 %% }
 -type detect_profile_object_type_response() :: #{binary() => any()}.
 
@@ -593,7 +593,7 @@
 
 %% Example:
 %% event_trigger_condition() :: #{
-%%   <<"EventTriggerDimensions">> => list(event_trigger_dimension()()),
+%%   <<"EventTriggerDimensions">> => list(event_trigger_dimension()),
 %%   <<"LogicalOperator">> => list(any())
 %% }
 -type event_trigger_condition() :: #{binary() => any()}.
@@ -633,7 +633,7 @@
 %% Example:
 %% object_filter() :: #{
 %%   <<"KeyName">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type object_filter() :: #{binary() => any()}.
 
@@ -661,7 +661,7 @@
 %% Example:
 %% found_by_key_value() :: #{
 %%   <<"KeyName">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type found_by_key_value() :: #{binary() => any()}.
 
@@ -723,7 +723,7 @@
 
 %% Example:
 %% detect_profile_object_type_request() :: #{
-%%   <<"Objects">> := list(string()())
+%%   <<"Objects">> := list(string())
 %% }
 -type detect_profile_object_type_request() :: #{binary() => any()}.
 
@@ -772,7 +772,7 @@
 %%   <<"MatchId">> => string(),
 %%   <<"MatchType">> => list(any()),
 %%   <<"NextToken">> => string(),
-%%   <<"ProfileIds">> => list(string()()),
+%%   <<"ProfileIds">> => list(string()),
 %%   <<"RuleLevel">> => integer()
 %% }
 -type get_similar_profiles_response() :: #{binary() => any()}.
@@ -780,7 +780,7 @@
 
 %% Example:
 %% put_integration_request() :: #{
-%%   <<"EventTriggerNames">> => list(string()()),
+%%   <<"EventTriggerNames">> => list(string()),
 %%   <<"FlowDefinition">> => flow_definition(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"ObjectTypeNames">> => map(),
@@ -829,7 +829,7 @@
 %%   <<"FlowName">> => string(),
 %%   <<"KmsArn">> => string(),
 %%   <<"SourceFlowConfig">> => source_flow_config(),
-%%   <<"Tasks">> => list(task()()),
+%%   <<"Tasks">> => list(task()),
 %%   <<"TriggerConfig">> => trigger_config()
 %% }
 -type flow_definition() :: #{binary() => any()}.
@@ -845,7 +845,7 @@
 
 %% Example:
 %% list_rule_based_matches_response() :: #{
-%%   <<"MatchIds">> => list(string()()),
+%%   <<"MatchIds">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_rule_based_matches_response() :: #{binary() => any()}.
@@ -863,14 +863,14 @@
 %% Example:
 %% add_profile_key_response() :: #{
 %%   <<"KeyName">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type add_profile_key_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% filter_group() :: #{
-%%   <<"Dimensions">> => list(filter_dimension()()),
+%%   <<"Dimensions">> => list(filter_dimension()),
 %%   <<"Type">> => list(any())
 %% }
 -type filter_group() :: #{binary() => any()}.
@@ -878,7 +878,7 @@
 
 %% Example:
 %% list_identity_resolution_jobs_response() :: #{
-%%   <<"IdentityResolutionJobsList">> => list(identity_resolution_job()()),
+%%   <<"IdentityResolutionJobsList">> => list(identity_resolution_job()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_identity_resolution_jobs_response() :: #{binary() => any()}.
@@ -902,14 +902,14 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% matching_rule() :: #{
-%%   <<"Rule">> => list(string()())
+%%   <<"Rule">> => list(string())
 %% }
 -type matching_rule() :: #{binary() => any()}.
 
@@ -925,7 +925,7 @@
 %% put_integration_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
-%%   <<"EventTriggerNames">> => list(string()()),
+%%   <<"EventTriggerNames">> => list(string()),
 %%   <<"IsUnstructured">> => boolean(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"ObjectTypeName">> => string(),
@@ -997,7 +997,7 @@
 
 %% Example:
 %% list_event_triggers_response() :: #{
-%%   <<"Items">> => list(event_trigger_summary_item()()),
+%%   <<"Items">> => list(event_trigger_summary_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_triggers_response() :: #{binary() => any()}.
@@ -1123,7 +1123,7 @@
 %% get_integration_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
-%%   <<"EventTriggerNames">> => list(string()()),
+%%   <<"EventTriggerNames">> => list(string()),
 %%   <<"IsUnstructured">> => boolean(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"ObjectTypeName">> => string(),
@@ -1151,7 +1151,7 @@
 %% delete_profile_key_request() :: #{
 %%   <<"KeyName">> := string(),
 %%   <<"ProfileId">> := string(),
-%%   <<"Values">> := list(string()())
+%%   <<"Values">> := list(string())
 %% }
 -type delete_profile_key_request() :: #{binary() => any()}.
 
@@ -1160,7 +1160,7 @@
 %% calculated_attribute_dimension() :: #{
 %%   <<"ConditionOverrides">> => condition_overrides(),
 %%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type calculated_attribute_dimension() :: #{binary() => any()}.
 
@@ -1176,7 +1176,7 @@
 %% match_item() :: #{
 %%   <<"ConfidenceScore">> => float(),
 %%   <<"MatchId">> => string(),
-%%   <<"ProfileIds">> => list(string()())
+%%   <<"ProfileIds">> => list(string())
 %% }
 -type match_item() :: #{binary() => any()}.
 
@@ -1233,7 +1233,7 @@
 %%   <<"ConflictResolution">> => conflict_resolution(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"ExportingConfig">> => exporting_config(),
-%%   <<"MatchingRules">> => list(matching_rule()()),
+%%   <<"MatchingRules">> => list(matching_rule()),
 %%   <<"MaxAllowedRuleLevelForMatching">> => integer(),
 %%   <<"MaxAllowedRuleLevelForMerging">> => integer(),
 %%   <<"Status">> => list(any())
@@ -1262,7 +1262,7 @@
 %% Example:
 %% additional_search_key() :: #{
 %%   <<"KeyName">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type additional_search_key() :: #{binary() => any()}.
 
@@ -1285,7 +1285,7 @@
 
 %% Example:
 %% segment_group_structure() :: #{
-%%   <<"Groups">> => list(group()()),
+%%   <<"Groups">> => list(group()),
 %%   <<"Include">> => list(any())
 %% }
 -type segment_group_structure() :: #{binary() => any()}.
@@ -1366,7 +1366,7 @@
 %% Example:
 %% create_event_trigger_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> := list(event_trigger_condition()()),
+%%   <<"EventTriggerConditions">> := list(event_trigger_condition()),
 %%   <<"EventTriggerLimits">> => event_trigger_limits(),
 %%   <<"ObjectTypeName">> := string(),
 %%   <<"SegmentFilter">> => string(),
@@ -1378,23 +1378,23 @@
 %% Example:
 %% profile_dimension() :: #{
 %%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type profile_dimension() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_get_calculated_attribute_for_profile_response() :: #{
-%%   <<"CalculatedAttributeValues">> => list(calculated_attribute_value()()),
+%%   <<"CalculatedAttributeValues">> => list(calculated_attribute_value()),
 %%   <<"ConditionOverrides">> => condition_overrides(),
-%%   <<"Errors">> => list(batch_get_calculated_attribute_for_profile_error()())
+%%   <<"Errors">> => list(batch_get_calculated_attribute_for_profile_error())
 %% }
 -type batch_get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_event_streams_response() :: #{
-%%   <<"Items">> => list(event_stream_summary()()),
+%%   <<"Items">> => list(event_stream_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_streams_response() :: #{binary() => any()}.
@@ -1402,7 +1402,7 @@
 
 %% Example:
 %% list_object_type_attributes_response() :: #{
-%%   <<"Items">> => list(list_object_type_attribute_item()()),
+%%   <<"Items">> => list(list_object_type_attribute_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_object_type_attributes_response() :: #{binary() => any()}.
@@ -1410,7 +1410,7 @@
 
 %% Example:
 %% list_profile_objects_response() :: #{
-%%   <<"Items">> => list(list_profile_objects_item()()),
+%%   <<"Items">> => list(list_profile_objects_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_profile_objects_response() :: #{binary() => any()}.
@@ -1432,7 +1432,7 @@
 %% merge_profiles_request() :: #{
 %%   <<"FieldSourceProfileIds">> => field_source_profile_ids(),
 %%   <<"MainProfileId">> := string(),
-%%   <<"ProfileIdsToBeMerged">> := list(string()())
+%%   <<"ProfileIdsToBeMerged">> := list(string())
 %% }
 -type merge_profiles_request() :: #{binary() => any()}.
 
@@ -1450,7 +1450,7 @@
 %% get_event_trigger_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> => list(event_trigger_condition()()),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
 %%   <<"EventTriggerLimits">> => event_trigger_limits(),
 %%   <<"EventTriggerName">> => string(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
@@ -1463,7 +1463,7 @@
 
 %% Example:
 %% list_domains_response() :: #{
-%%   <<"Items">> => list(list_domain_item()()),
+%%   <<"Items">> => list(list_domain_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_domains_response() :: #{binary() => any()}.
@@ -1526,8 +1526,8 @@
 
 %% Example:
 %% batch_get_profile_response() :: #{
-%%   <<"Errors">> => list(batch_get_profile_error()()),
-%%   <<"Profiles">> => list(profile()())
+%%   <<"Errors">> => list(batch_get_profile_error()),
+%%   <<"Profiles">> => list(profile())
 %% }
 -type batch_get_profile_response() :: #{binary() => any()}.
 
@@ -1663,7 +1663,7 @@
 
 %% Example:
 %% event_trigger_dimension() :: #{
-%%   <<"ObjectAttributes">> => list(object_attribute()())
+%%   <<"ObjectAttributes">> => list(object_attribute())
 %% }
 -type event_trigger_dimension() :: #{binary() => any()}.
 
@@ -1678,7 +1678,7 @@
 
 %% Example:
 %% consolidation() :: #{
-%%   <<"MatchingAttributesList">> => list(list(string()())())
+%%   <<"MatchingAttributesList">> => list(list(string())())
 %% }
 -type consolidation() :: #{binary() => any()}.
 
@@ -1700,7 +1700,7 @@
 %%   <<"ConflictResolution">> => conflict_resolution(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"ExportingConfig">> => exporting_config(),
-%%   <<"MatchingRules">> => list(matching_rule()()),
+%%   <<"MatchingRules">> => list(matching_rule()),
 %%   <<"MaxAllowedRuleLevelForMatching">> => integer(),
 %%   <<"MaxAllowedRuleLevelForMerging">> => integer()
 %% }
@@ -1709,7 +1709,7 @@
 
 %% Example:
 %% object_type_key() :: #{
-%%   <<"FieldNames">> => list(string()()),
+%%   <<"FieldNames">> => list(string()),
 %%   <<"StandardIdentifiers">> => list(list(any())())
 %% }
 -type object_type_key() :: #{binary() => any()}.
@@ -1718,7 +1718,7 @@
 %% Example:
 %% get_matches_response() :: #{
 %%   <<"MatchGenerationDate">> => non_neg_integer(),
-%%   <<"Matches">> => list(match_item()()),
+%%   <<"Matches">> => list(match_item()),
 %%   <<"NextToken">> => string(),
 %%   <<"PotentialMatches">> => integer()
 %% }
@@ -1733,7 +1733,7 @@
 %% update_event_trigger_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> => list(event_trigger_condition()()),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
 %%   <<"EventTriggerLimits">> => event_trigger_limits(),
 %%   <<"EventTriggerName">> => string(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
@@ -1753,7 +1753,7 @@
 
 %% Example:
 %% filter() :: #{
-%%   <<"Groups">> => list(filter_group()()),
+%%   <<"Groups">> => list(filter_group()),
 %%   <<"Include">> => list(any())
 %% }
 -type filter() :: #{binary() => any()}.
@@ -1845,14 +1845,14 @@
 %% Example:
 %% filter_attribute_dimension() :: #{
 %%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter_attribute_dimension() :: #{binary() => any()}.
 
 
 %% Example:
 %% segment_group() :: #{
-%%   <<"Groups">> => list(group()()),
+%%   <<"Groups">> => list(group()),
 %%   <<"Include">> => list(any())
 %% }
 -type segment_group() :: #{binary() => any()}.
@@ -1864,19 +1864,19 @@
 
 %% Example:
 %% search_profiles_request() :: #{
-%%   <<"AdditionalSearchKeys">> => list(additional_search_key()()),
+%%   <<"AdditionalSearchKeys">> => list(additional_search_key()),
 %%   <<"KeyName">> := string(),
 %%   <<"LogicalOperator">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"Values">> := list(string()())
+%%   <<"Values">> := list(string())
 %% }
 -type search_profiles_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_segment_definitions_response() :: #{
-%%   <<"Items">> => list(segment_definition_item()()),
+%%   <<"Items">> => list(segment_definition_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_segment_definitions_response() :: #{binary() => any()}.
@@ -1931,7 +1931,7 @@
 %% create_event_trigger_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> => list(event_trigger_condition()()),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
 %%   <<"EventTriggerLimits">> => event_trigger_limits(),
 %%   <<"EventTriggerName">> => string(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
@@ -1947,7 +1947,7 @@
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"FieldName">> => string(),
 %%   <<"Source">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type object_attribute() :: #{binary() => any()}.
 
@@ -1975,7 +1975,7 @@
 
 %% Example:
 %% get_workflow_steps_response() :: #{
-%%   <<"Items">> => list(workflow_step_item()()),
+%%   <<"Items">> => list(workflow_step_item()),
 %%   <<"NextToken">> => string(),
 %%   <<"WorkflowId">> => string(),
 %%   <<"WorkflowType">> => list(any())
@@ -1997,7 +1997,7 @@
 
 %% Example:
 %% list_calculated_attributes_for_profile_response() :: #{
-%%   <<"Items">> => list(list_calculated_attribute_for_profile_item()()),
+%%   <<"Items">> => list(list_calculated_attribute_for_profile_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_calculated_attributes_for_profile_response() :: #{binary() => any()}.
@@ -2013,7 +2013,7 @@
 
 %% Example:
 %% get_segment_membership_request() :: #{
-%%   <<"ProfileIds">> := list(string()())
+%%   <<"ProfileIds">> := list(string())
 %% }
 -type get_segment_membership_request() :: #{binary() => any()}.
 
@@ -2048,7 +2048,7 @@
 
 %% Example:
 %% search_profiles_response() :: #{
-%%   <<"Items">> => list(profile()()),
+%%   <<"Items">> => list(profile()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_profiles_response() :: #{binary() => any()}.
@@ -2102,7 +2102,7 @@
 %% Example:
 %% batch_get_calculated_attribute_for_profile_request() :: #{
 %%   <<"ConditionOverrides">> => condition_overrides(),
-%%   <<"ProfileIds">> := list(string()())
+%%   <<"ProfileIds">> := list(string())
 %% }
 -type batch_get_calculated_attribute_for_profile_request() :: #{binary() => any()}.
 
@@ -2113,10 +2113,10 @@
 
 %% Example:
 %% attribute_types_selector() :: #{
-%%   <<"Address">> => list(string()()),
+%%   <<"Address">> => list(string()),
 %%   <<"AttributeMatchingModel">> => list(any()),
-%%   <<"EmailAddress">> => list(string()()),
-%%   <<"PhoneNumber">> => list(string()())
+%%   <<"EmailAddress">> => list(string()),
+%%   <<"PhoneNumber">> => list(string())
 %% }
 -type attribute_types_selector() :: #{binary() => any()}.
 
@@ -2180,8 +2180,8 @@
 
 %% Example:
 %% get_segment_membership_response() :: #{
-%%   <<"Failures">> => list(profile_query_failures()()),
-%%   <<"Profiles">> => list(profile_query_result()()),
+%%   <<"Failures">> => list(profile_query_failures()),
+%%   <<"Profiles">> => list(profile_query_result()),
 %%   <<"SegmentDefinitionName">> => string()
 %% }
 -type get_segment_membership_response() :: #{binary() => any()}.
@@ -2205,15 +2205,15 @@
 %% Example:
 %% attribute_dimension() :: #{
 %%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type attribute_dimension() :: #{binary() => any()}.
 
 
 %% Example:
 %% group() :: #{
-%%   <<"Dimensions">> => list(list()()),
-%%   <<"SourceSegments">> => list(source_segment()()),
+%%   <<"Dimensions">> => list(list()),
+%%   <<"SourceSegments">> => list(source_segment()),
 %%   <<"SourceType">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
@@ -2303,7 +2303,7 @@
 
 %% Example:
 %% list_upload_jobs_response() :: #{
-%%   <<"Items">> => list(upload_job_item()()),
+%%   <<"Items">> => list(upload_job_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_upload_jobs_response() :: #{binary() => any()}.
@@ -2311,7 +2311,7 @@
 
 %% Example:
 %% batch_get_profile_request() :: #{
-%%   <<"ProfileIds">> := list(string()())
+%%   <<"ProfileIds">> := list(string())
 %% }
 -type batch_get_profile_request() :: #{binary() => any()}.
 
@@ -2330,7 +2330,7 @@
 %% Example:
 %% update_event_trigger_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"EventTriggerConditions">> => list(event_trigger_condition()()),
+%%   <<"EventTriggerConditions">> => list(event_trigger_condition()),
 %%   <<"EventTriggerLimits">> => event_trigger_limits(),
 %%   <<"ObjectTypeName">> => string(),
 %%   <<"SegmentFilter">> => string()
@@ -2402,7 +2402,7 @@
 
 %% Example:
 %% appflow_integration() :: #{
-%%   <<"Batches">> => list(batch()()),
+%%   <<"Batches">> => list(batch()),
 %%   <<"FlowDefinition">> => flow_definition()
 %% }
 -type appflow_integration() :: #{binary() => any()}.
@@ -2410,7 +2410,7 @@
 
 %% Example:
 %% list_domain_layouts_response() :: #{
-%%   <<"Items">> => list(layout_item()()),
+%%   <<"Items">> => list(layout_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_domain_layouts_response() :: #{binary() => any()}.
@@ -2455,7 +2455,7 @@
 %% profile_attribute_values_response() :: #{
 %%   <<"AttributeName">> => string(),
 %%   <<"DomainName">> => string(),
-%%   <<"Items">> => list(attribute_value_item()()),
+%%   <<"Items">> => list(attribute_value_item()),
 %%   <<"StatusCode">> => integer()
 %% }
 -type profile_attribute_values_response() :: #{binary() => any()}.
@@ -2472,7 +2472,7 @@
 
 %% Example:
 %% list_calculated_attribute_definitions_response() :: #{
-%%   <<"Items">> => list(list_calculated_attribute_definition_item()()),
+%%   <<"Items">> => list(list_calculated_attribute_definition_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_calculated_attribute_definitions_response() :: #{binary() => any()}.
@@ -2484,7 +2484,7 @@
 
 %% Example:
 %% list_workflows_response() :: #{
-%%   <<"Items">> => list(list_workflows_item()()),
+%%   <<"Items">> => list(list_workflows_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_workflows_response() :: #{binary() => any()}.
@@ -2501,7 +2501,7 @@
 %% Example:
 %% extra_length_value_profile_dimension() :: #{
 %%   <<"DimensionType">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type extra_length_value_profile_dimension() :: #{binary() => any()}.
 
@@ -2521,7 +2521,7 @@
 
 %% Example:
 %% list_profile_object_type_templates_response() :: #{
-%%   <<"Items">> => list(list_profile_object_type_template_item()()),
+%%   <<"Items">> => list(list_profile_object_type_template_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_profile_object_type_templates_response() :: #{binary() => any()}.
@@ -2536,7 +2536,7 @@
 
 %% Example:
 %% list_account_integrations_response() :: #{
-%%   <<"Items">> => list(list_integration_item()()),
+%%   <<"Items">> => list(list_integration_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_account_integrations_response() :: #{binary() => any()}.
@@ -2553,7 +2553,7 @@
 %% list_integration_item() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
-%%   <<"EventTriggerNames">> => list(string()()),
+%%   <<"EventTriggerNames">> => list(string()),
 %%   <<"IsUnstructured">> => boolean(),
 %%   <<"LastUpdatedAt">> => non_neg_integer(),
 %%   <<"ObjectTypeName">> => string(),
@@ -2629,7 +2629,7 @@
 %% add_profile_key_request() :: #{
 %%   <<"KeyName">> := string(),
 %%   <<"ProfileId">> := string(),
-%%   <<"Values">> := list(string()())
+%%   <<"Values">> := list(string())
 %% }
 -type add_profile_key_request() :: #{binary() => any()}.
 
@@ -2701,7 +2701,7 @@
 
 %% Example:
 %% list_profile_object_types_response() :: #{
-%%   <<"Items">> => list(list_profile_object_type_item()()),
+%%   <<"Items">> => list(list_profile_object_type_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_profile_object_types_response() :: #{binary() => any()}.
@@ -2713,7 +2713,7 @@
 
 %% Example:
 %% list_integrations_response() :: #{
-%%   <<"Items">> => list(list_integration_item()()),
+%%   <<"Items">> => list(list_integration_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_integrations_response() :: #{binary() => any()}.

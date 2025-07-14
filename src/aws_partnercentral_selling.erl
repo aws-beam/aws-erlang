@@ -141,7 +141,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -159,7 +159,7 @@
 
 %% Example:
 %% list_engagement_members_response() :: #{
-%%   <<"EngagementMemberList">> => list(engagement_member()()),
+%%   <<"EngagementMemberList">> => list(engagement_member()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_engagement_members_response() :: #{binary() => any()}.
@@ -175,7 +175,7 @@
 %% life_cycle() :: #{
 %%   <<"ClosedLostReason">> => list(any()),
 %%   <<"NextSteps">> => string(),
-%%   <<"NextStepsHistory">> => list(next_steps_history()()),
+%%   <<"NextStepsHistory">> => list(next_steps_history()),
 %%   <<"ReviewComments">> => [string()],
 %%   <<"ReviewStatus">> => list(any()),
 %%   <<"ReviewStatusReason">> => [string()],
@@ -245,7 +245,7 @@
 %% Example:
 %% project_summary() :: #{
 %%   <<"DeliveryModels">> => list(list(any())()),
-%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()())
+%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend())
 %% }
 -type project_summary() :: #{binary() => any()}.
 
@@ -274,14 +274,14 @@
 %% Example:
 %% list_engagement_by_accepting_invitation_tasks_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"TaskSummaries">> => list(list_engagement_by_accepting_invitation_task_summary()())
+%%   <<"TaskSummaries">> => list(list_engagement_by_accepting_invitation_task_summary())
 %% }
 -type list_engagement_by_accepting_invitation_tasks_response() :: #{binary() => any()}.
 
 %% Example:
 %% aws_opportunity_related_entities() :: #{
-%%   <<"AwsProducts">> => list(string()()),
-%%   <<"Solutions">> => list(string()())
+%%   <<"AwsProducts">> => list(string()),
+%%   <<"Solutions">> => list(string())
 %% }
 -type aws_opportunity_related_entities() :: #{binary() => any()}.
 
@@ -309,7 +309,7 @@
 %%   <<"InvolvementType">> => list(any()),
 %%   <<"InvolvementTypeChangeReason">> => list(any()),
 %%   <<"LifeCycle">> => aws_opportunity_life_cycle(),
-%%   <<"OpportunityTeam">> => list(aws_team_member()()),
+%%   <<"OpportunityTeam">> => list(aws_team_member()),
 %%   <<"Origin">> => list(any()),
 %%   <<"Project">> => aws_opportunity_project(),
 %%   <<"RelatedEntityIds">> => aws_opportunity_related_entities(),
@@ -344,7 +344,7 @@
 %%   <<"LifeCycle">> => life_cycle(),
 %%   <<"Marketing">> => marketing(),
 %%   <<"NationalSecurity">> => list(any()),
-%%   <<"OpportunityTeam">> => list(contact()()),
+%%   <<"OpportunityTeam">> => list(contact()),
 %%   <<"OpportunityType">> => list(any()),
 %%   <<"PartnerOpportunityIdentifier">> => [string()],
 %%   <<"PrimaryNeedsFromAws">> => list(list(any())()),
@@ -365,7 +365,7 @@
 %% project_view() :: #{
 %%   <<"CustomerUseCase">> => [string()],
 %%   <<"DeliveryModels">> => list(list(any())()),
-%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()()),
+%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()),
 %%   <<"OtherSolutionDescription">> => string(),
 %%   <<"SalesActivities">> => list(list(any())())
 %% }
@@ -394,7 +394,7 @@
 %% Example:
 %% list_resource_snapshots_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"ResourceSnapshotSummaries">> => list(resource_snapshot_summary()())
+%%   <<"ResourceSnapshotSummaries">> => list(resource_snapshot_summary())
 %% }
 -type list_resource_snapshots_response() :: #{binary() => any()}.
 
@@ -416,7 +416,7 @@
 %% list_solutions_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"Category">> => list([string()]()),
-%%   <<"Identifier">> => list(string()()),
+%%   <<"Identifier">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()],
 %%   <<"Sort">> => solution_sort(),
@@ -427,19 +427,19 @@
 %% Example:
 %% list_engagement_from_opportunity_tasks_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"EngagementIdentifier">> => list(string()()),
+%%   <<"EngagementIdentifier">> => list(string()),
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => [string()],
-%%   <<"OpportunityIdentifier">> => list(string()()),
+%%   <<"OpportunityIdentifier">> => list(string()),
 %%   <<"Sort">> => list_tasks_sort_base(),
-%%   <<"TaskIdentifier">> => list(string()()),
+%%   <<"TaskIdentifier">> => list(string()),
 %%   <<"TaskStatus">> => list(list(any())())
 %% }
 -type list_engagement_from_opportunity_tasks_request() :: #{binary() => any()}.
 
 %% Example:
 %% aws_opportunity_project() :: #{
-%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()())
+%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend())
 %% }
 -type aws_opportunity_project() :: #{binary() => any()}.
 
@@ -463,7 +463,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -493,12 +493,12 @@
 %% Example:
 %% list_engagement_by_accepting_invitation_tasks_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"EngagementInvitationIdentifier">> => list(string()()),
+%%   <<"EngagementInvitationIdentifier">> => list(string()),
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => [string()],
-%%   <<"OpportunityIdentifier">> => list(string()()),
+%%   <<"OpportunityIdentifier">> => list(string()),
 %%   <<"Sort">> => list_tasks_sort_base(),
-%%   <<"TaskIdentifier">> => list(string()()),
+%%   <<"TaskIdentifier">> => list(string()),
 %%   <<"TaskStatus">> => list(list(any())())
 %% }
 -type list_engagement_by_accepting_invitation_tasks_request() :: #{binary() => any()}.
@@ -512,7 +512,7 @@
 
 %% Example:
 %% list_engagements_response() :: #{
-%%   <<"EngagementSummaryList">> => list(engagement_summary()()),
+%%   <<"EngagementSummaryList">> => list(engagement_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_engagements_response() :: #{binary() => any()}.
@@ -528,16 +528,16 @@
 
 %% Example:
 %% related_entity_identifiers() :: #{
-%%   <<"AwsMarketplaceOffers">> => list(string()()),
-%%   <<"AwsProducts">> => list(string()()),
-%%   <<"Solutions">> => list(string()())
+%%   <<"AwsMarketplaceOffers">> => list(string()),
+%%   <<"AwsProducts">> => list(string()),
+%%   <<"Solutions">> => list(string())
 %% }
 -type related_entity_identifiers() :: #{binary() => any()}.
 
 %% Example:
 %% customer() :: #{
 %%   <<"Account">> => account(),
-%%   <<"Contacts">> => list(contact()())
+%%   <<"Contacts">> => list(contact())
 %% }
 -type customer() :: #{binary() => any()}.
 
@@ -552,7 +552,7 @@
 
 %% Example:
 %% list_engagement_invitations_response() :: #{
-%%   <<"EngagementInvitationSummaries">> => list(engagement_invitation_summary()()),
+%%   <<"EngagementInvitationSummaries">> => list(engagement_invitation_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_engagement_invitations_response() :: #{binary() => any()}.
@@ -613,7 +613,7 @@
 %%   <<"CustomerBusinessProblem">> => string(),
 %%   <<"CustomerUseCase">> => [string()],
 %%   <<"DeliveryModels">> => list(list(any())()),
-%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()()),
+%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()),
 %%   <<"OtherCompetitorNames">> => [string()],
 %%   <<"OtherSolutionDescription">> => string(),
 %%   <<"RelatedOpportunityIdentifier">> => string(),
@@ -646,7 +646,7 @@
 %% create_engagement_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := [string()],
-%%   <<"Contexts">> => list(engagement_context_details()()),
+%%   <<"Contexts">> => list(engagement_context_details()),
 %%   <<"Description">> := string(),
 %%   <<"Title">> := string()
 %% }
@@ -656,7 +656,7 @@
 %% list_opportunities_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"CustomerCompanyName">> => list([string()]()),
-%%   <<"Identifier">> => list(string()()),
+%%   <<"Identifier">> => list(string()),
 %%   <<"LastModifiedDate">> => last_modified_date(),
 %%   <<"LifeCycleReviewStatus">> => list(list(any())()),
 %%   <<"LifeCycleStage">> => list(list(any())()),
@@ -725,7 +725,7 @@
 %%   <<"Customer">> => engagement_customer(),
 %%   <<"Project">> => project_details(),
 %%   <<"ReceiverResponsibilities">> => list(list(any())()),
-%%   <<"SenderContacts">> => list(sender_contact()())
+%%   <<"SenderContacts">> => list(sender_contact())
 %% }
 -type opportunity_invitation_payload() :: #{binary() => any()}.
 
@@ -769,19 +769,19 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_engagement_invitations_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"EngagementIdentifier">> => list(string()()),
+%%   <<"EngagementIdentifier">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()],
 %%   <<"ParticipantType">> := list(any()),
 %%   <<"PayloadType">> => list(list(any())()),
-%%   <<"SenderAwsAccountId">> => list(string()()),
+%%   <<"SenderAwsAccountId">> => list(string()),
 %%   <<"Sort">> => opportunity_engagement_invitation_sort(),
 %%   <<"Status">> => list(list(any())())
 %% }
@@ -824,7 +824,7 @@
 %% Example:
 %% list_solutions_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"SolutionSummaries">> => list(solution_base()())
+%%   <<"SolutionSummaries">> => list(solution_base())
 %% }
 -type list_solutions_response() :: #{binary() => any()}.
 
@@ -837,7 +837,7 @@
 %% Example:
 %% project_details() :: #{
 %%   <<"BusinessProblem">> => string(),
-%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()()),
+%%   <<"ExpectedCustomerSpend">> => list(expected_customer_spend()),
 %%   <<"TargetCompletionDate">> => string(),
 %%   <<"Title">> => [string()]
 %% }
@@ -851,7 +851,7 @@
 %%   <<"LifeCycle">> => life_cycle(),
 %%   <<"Marketing">> => marketing(),
 %%   <<"NationalSecurity">> => list(any()),
-%%   <<"OpportunityTeam">> => list(contact()()),
+%%   <<"OpportunityTeam">> => list(contact()),
 %%   <<"OpportunityType">> => list(any()),
 %%   <<"Origin">> => list(any()),
 %%   <<"PartnerOpportunityIdentifier">> => [string()],
@@ -905,7 +905,7 @@
 %% Example:
 %% list_opportunities_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"OpportunitySummaries">> => list(opportunity_summary()())
+%%   <<"OpportunitySummaries">> => list(opportunity_summary())
 %% }
 -type list_opportunities_response() :: #{binary() => any()}.
 
@@ -938,7 +938,7 @@
 %% Example:
 %% list_resource_snapshot_jobs_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"ResourceSnapshotJobSummaries">> => list(resource_snapshot_job_summary()())
+%%   <<"ResourceSnapshotJobSummaries">> => list(resource_snapshot_job_summary())
 %% }
 -type list_resource_snapshot_jobs_response() :: #{binary() => any()}.
 
@@ -968,7 +968,7 @@
 
 %% Example:
 %% list_engagement_resource_associations_response() :: #{
-%%   <<"EngagementResourceAssociationSummaries">> => list(engagement_resource_association_summary()()),
+%%   <<"EngagementResourceAssociationSummaries">> => list(engagement_resource_association_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_engagement_resource_associations_response() :: #{binary() => any()}.
@@ -979,7 +979,7 @@
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := string(),
 %%   <<"Identifier">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_engagement_from_opportunity_task_request() :: #{binary() => any()}.
 
@@ -1017,7 +1017,7 @@
 %% aws_opportunity_life_cycle() :: #{
 %%   <<"ClosedLostReason">> => list(any()),
 %%   <<"NextSteps">> => string(),
-%%   <<"NextStepsHistory">> => list(profile_next_steps_history()()),
+%%   <<"NextStepsHistory">> => list(profile_next_steps_history()),
 %%   <<"Stage">> => list(any()),
 %%   <<"TargetCloseDate">> => string()
 %% }
@@ -1063,7 +1063,7 @@
 %% Example:
 %% list_engagement_from_opportunity_tasks_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"TaskSummaries">> => list(list_engagement_from_opportunity_task_summary()())
+%%   <<"TaskSummaries">> => list(list_engagement_from_opportunity_task_summary())
 %% }
 -type list_engagement_from_opportunity_tasks_response() :: #{binary() => any()}.
 
@@ -1080,7 +1080,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"ErrorList">> => list(validation_exception_error()()),
+%%   <<"ErrorList">> => list(validation_exception_error()),
 %%   <<"Message">> => [string()],
 %%   <<"Reason">> => list(any())
 %% }
@@ -1135,7 +1135,7 @@
 %%   <<"ResourceIdentifier">> := string(),
 %%   <<"ResourceSnapshotTemplateIdentifier">> := string(),
 %%   <<"ResourceType">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_resource_snapshot_job_request() :: #{binary() => any()}.
 
@@ -1148,7 +1148,7 @@
 
 %% Example:
 %% aws_opportunity_customer() :: #{
-%%   <<"Contacts">> => list(contact()())
+%%   <<"Contacts">> => list(contact())
 %% }
 -type aws_opportunity_customer() :: #{binary() => any()}.
 
@@ -1245,7 +1245,7 @@
 %%   <<"EngagementDescription">> => string(),
 %%   <<"EngagementId">> => string(),
 %%   <<"EngagementTitle">> => string(),
-%%   <<"ExistingMembers">> => list(engagement_member_summary()()),
+%%   <<"ExistingMembers">> => list(engagement_member_summary()),
 %%   <<"ExpirationDate">> => non_neg_integer(),
 %%   <<"Id">> => string(),
 %%   <<"InvitationDate">> => non_neg_integer(),
@@ -1264,7 +1264,7 @@
 %% opportunity_summary_view() :: #{
 %%   <<"Customer">> => customer(),
 %%   <<"Lifecycle">> => life_cycle_for_view(),
-%%   <<"OpportunityTeam">> => list(contact()()),
+%%   <<"OpportunityTeam">> => list(contact()),
 %%   <<"OpportunityType">> => list(any()),
 %%   <<"PrimaryNeedsFromAws">> => list(list(any())()),
 %%   <<"Project">> => project_view(),
@@ -1275,9 +1275,9 @@
 %% Example:
 %% list_engagements_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"CreatedBy">> => list(string()()),
-%%   <<"EngagementIdentifier">> => list(string()()),
-%%   <<"ExcludeCreatedBy">> => list(string()()),
+%%   <<"CreatedBy">> => list(string()),
+%%   <<"EngagementIdentifier">> => list(string()),
+%%   <<"ExcludeCreatedBy">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()],
 %%   <<"Sort">> => engagement_sort()
@@ -1287,7 +1287,7 @@
 %% Example:
 %% get_engagement_response() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"Contexts">> => list(engagement_context_details()()),
+%%   <<"Contexts">> => list(engagement_context_details()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"CreatedBy">> => string(),
 %%   <<"Description">> => string(),
@@ -1348,7 +1348,7 @@
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := string(),
 %%   <<"Identifier">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type start_engagement_by_accepting_invitation_task_request() :: #{binary() => any()}.
 

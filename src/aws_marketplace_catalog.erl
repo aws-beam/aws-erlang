@@ -52,7 +52,7 @@
 
 %% Example:
 %% resale_authorization_product_name_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type resale_authorization_product_name_filter() :: #{binary() => any()}.
@@ -64,7 +64,7 @@
 %%   <<"EntityType">> := string(),
 %%   <<"EntityTypeFilters">> => list(),
 %%   <<"EntityTypeSort">> => list(),
-%%   <<"FilterList">> => list(filter()()),
+%%   <<"FilterList">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OwnershipType">> => list(any()),
@@ -84,7 +84,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -108,7 +108,7 @@
 %%   <<"Details">> => string(),
 %%   <<"DetailsDocument">> => any(),
 %%   <<"Entity">> => entity(),
-%%   <<"EntityTags">> => list(tag()())
+%%   <<"EntityTags">> => list(tag())
 %% }
 -type change() :: #{binary() => any()}.
 
@@ -124,7 +124,7 @@
 %% Example:
 %% list_change_sets_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"FilterList">> => list(filter()()),
+%%   <<"FilterList">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Sort">> => sort()
@@ -175,7 +175,7 @@
 
 %% Example:
 %% machine_learning_product_entity_id_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type machine_learning_product_entity_id_filter() :: #{binary() => any()}.
 
@@ -189,7 +189,7 @@
 
 %% Example:
 %% resale_authorization_manufacturer_account_id_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type resale_authorization_manufacturer_account_id_filter() :: #{binary() => any()}.
@@ -197,7 +197,7 @@
 
 %% Example:
 %% ami_product_title_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type ami_product_title_filter() :: #{binary() => any()}.
@@ -229,7 +229,7 @@
 
 %% Example:
 %% saa_s_product_entity_id_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type saa_s_product_entity_id_filter() :: #{binary() => any()}.
 
@@ -244,7 +244,7 @@
 
 %% Example:
 %% resale_authorization_manufacturer_legal_name_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type resale_authorization_manufacturer_legal_name_filter() :: #{binary() => any()}.
@@ -252,7 +252,7 @@
 
 %% Example:
 %% saa_s_product_title_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type saa_s_product_title_filter() :: #{binary() => any()}.
@@ -261,7 +261,7 @@
 %% Example:
 %% resale_authorization_created_date_filter() :: #{
 %%   <<"DateRange">> => resale_authorization_created_date_filter_date_range(),
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type resale_authorization_created_date_filter() :: #{binary() => any()}.
 
@@ -288,14 +288,14 @@
 %% Example:
 %% resale_authorization_availability_end_date_filter() :: #{
 %%   <<"DateRange">> => resale_authorization_availability_end_date_filter_date_range(),
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type resale_authorization_availability_end_date_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% describe_change_set_response() :: #{
-%%   <<"ChangeSet">> => list(change_summary()()),
+%%   <<"ChangeSet">> => list(change_summary()),
 %%   <<"ChangeSetArn">> => string(),
 %%   <<"ChangeSetId">> => string(),
 %%   <<"ChangeSetName">> => string(),
@@ -342,7 +342,7 @@
 
 %% Example:
 %% container_product_entity_id_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type container_product_entity_id_filter() :: #{binary() => any()}.
 
@@ -377,14 +377,14 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% resale_authorization_product_id_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type resale_authorization_product_id_filter() :: #{binary() => any()}.
@@ -426,7 +426,7 @@
 
 %% Example:
 %% resale_authorization_offer_extended_status_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type resale_authorization_offer_extended_status_filter() :: #{binary() => any()}.
 
@@ -448,7 +448,7 @@
 
 %% Example:
 %% resale_authorization_reseller_legal_name_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type resale_authorization_reseller_legal_name_filter() :: #{binary() => any()}.
@@ -466,7 +466,7 @@
 
 %% Example:
 %% batch_describe_entities_request() :: #{
-%%   <<"EntityRequestList">> := list(entity_request()())
+%%   <<"EntityRequestList">> := list(entity_request())
 %% }
 -type batch_describe_entities_request() :: #{binary() => any()}.
 
@@ -502,7 +502,7 @@
 
 %% Example:
 %% machine_learning_product_title_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type machine_learning_product_title_filter() :: #{binary() => any()}.
@@ -548,9 +548,9 @@
 %% Example:
 %% start_change_set_request() :: #{
 %%   <<"Catalog">> := string(),
-%%   <<"ChangeSet">> := list(change()()),
+%%   <<"ChangeSet">> := list(change()),
 %%   <<"ChangeSetName">> => string(),
-%%   <<"ChangeSetTags">> => list(tag()()),
+%%   <<"ChangeSetTags">> => list(tag()),
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"Intent">> => list(any())
 %% }
@@ -559,7 +559,7 @@
 
 %% Example:
 %% ami_product_entity_id_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type ami_product_entity_id_filter() :: #{binary() => any()}.
 
@@ -581,21 +581,21 @@
 
 %% Example:
 %% offer_resale_authorization_id_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type offer_resale_authorization_id_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% resale_authorization_entity_id_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type resale_authorization_entity_id_filter() :: #{binary() => any()}.
 
 
 %% Example:
 %% offer_product_id_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type offer_product_id_filter() :: #{binary() => any()}.
 
@@ -606,7 +606,7 @@
 %%   <<"ChangeSetId">> => string(),
 %%   <<"ChangeSetName">> => string(),
 %%   <<"EndTime">> => string(),
-%%   <<"EntityIdList">> => list(string()()),
+%%   <<"EntityIdList">> => list(string()),
 %%   <<"FailureCode">> => list(any()),
 %%   <<"StartTime">> => string(),
 %%   <<"Status">> => list(any())
@@ -617,7 +617,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"ResourceArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -631,7 +631,7 @@
 
 %% Example:
 %% resale_authorization_name_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type resale_authorization_name_filter() :: #{binary() => any()}.
@@ -665,7 +665,7 @@
 %% Example:
 %% offer_summary() :: #{
 %%   <<"AvailabilityEndDate">> => string(),
-%%   <<"BuyerAccounts">> => list(string()()),
+%%   <<"BuyerAccounts">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"ProductId">> => string(),
 %%   <<"ReleaseDate">> => string(),
@@ -679,7 +679,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -710,7 +710,7 @@
 
 %% Example:
 %% data_product_title_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type data_product_title_filter() :: #{binary() => any()}.
@@ -754,7 +754,7 @@
 %%   <<"Details">> => string(),
 %%   <<"DetailsDocument">> => any(),
 %%   <<"Entity">> => entity(),
-%%   <<"ErrorDetailList">> => list(error_detail()())
+%%   <<"ErrorDetailList">> => list(error_detail())
 %% }
 -type change_summary() :: #{binary() => any()}.
 
@@ -787,7 +787,7 @@
 
 %% Example:
 %% offer_name_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type offer_name_filter() :: #{binary() => any()}.
@@ -840,7 +840,7 @@
 
 %% Example:
 %% offer_entity_id_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type offer_entity_id_filter() :: #{binary() => any()}.
 
@@ -865,7 +865,7 @@
 
 %% Example:
 %% data_product_entity_id_filter() :: #{
-%%   <<"ValueList">> => list(string()())
+%%   <<"ValueList">> => list(string())
 %% }
 -type data_product_entity_id_filter() :: #{binary() => any()}.
 
@@ -888,7 +888,7 @@
 
 %% Example:
 %% container_product_title_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type container_product_title_filter() :: #{binary() => any()}.
@@ -944,7 +944,7 @@
 
 %% Example:
 %% list_entities_response() :: #{
-%%   <<"EntitySummaryList">> => list(entity_summary()()),
+%%   <<"EntitySummaryList">> => list(entity_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_entities_response() :: #{binary() => any()}.
@@ -959,7 +959,7 @@
 
 %% Example:
 %% resale_authorization_reseller_account_id_filter() :: #{
-%%   <<"ValueList">> => list(string()()),
+%%   <<"ValueList">> => list(string()),
 %%   <<"WildCardValue">> => string()
 %% }
 -type resale_authorization_reseller_account_id_filter() :: #{binary() => any()}.
@@ -1014,7 +1014,7 @@
 
 %% Example:
 %% list_change_sets_response() :: #{
-%%   <<"ChangeSetSummaryList">> => list(change_set_summary_list_item()()),
+%%   <<"ChangeSetSummaryList">> => list(change_set_summary_list_item()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_change_sets_response() :: #{binary() => any()}.

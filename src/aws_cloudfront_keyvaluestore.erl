@@ -111,7 +111,7 @@
 
 %% Example:
 %% list_keys_response() :: #{
-%%   <<"Items">> => list(list_keys_response_list_item()()),
+%%   <<"Items">> => list(list_keys_response_list_item()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_keys_response() :: #{binary() => any()}.
@@ -166,9 +166,9 @@
 
 %% Example:
 %% update_keys_request() :: #{
-%%   <<"Deletes">> => list(delete_key_request_list_item()()),
+%%   <<"Deletes">> => list(delete_key_request_list_item()),
 %%   <<"IfMatch">> := string(),
-%%   <<"Puts">> => list(put_key_request_list_item()())
+%%   <<"Puts">> => list(put_key_request_list_item())
 %% }
 -type update_keys_request() :: #{binary() => any()}.
 

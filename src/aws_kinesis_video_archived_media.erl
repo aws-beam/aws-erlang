@@ -159,7 +159,7 @@
 
 %% Example:
 %% get_images_output() :: #{
-%%   <<"Images">> => list(image()()),
+%%   <<"Images">> => list(image()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_images_output() :: #{binary() => any()}.
@@ -167,7 +167,7 @@
 
 %% Example:
 %% get_media_for_fragment_list_input() :: #{
-%%   <<"Fragments">> := list(string()()),
+%%   <<"Fragments">> := list(string()),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamName">> => string()
 %% }
@@ -241,7 +241,7 @@
 
 %% Example:
 %% list_fragments_output() :: #{
-%%   <<"Fragments">> => list(fragment()()),
+%%   <<"Fragments">> => list(fragment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_fragments_output() :: #{binary() => any()}.

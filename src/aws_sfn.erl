@@ -139,7 +139,7 @@
 
 %% Example:
 %% list_executions_output() :: #{
-%%   <<"executions">> => list(execution_list_item()()),
+%%   <<"executions">> => list(execution_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_executions_output() :: #{binary() => any()}.
@@ -271,7 +271,7 @@
 %% Example:
 %% list_state_machine_aliases_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"stateMachineAliases">> => list(state_machine_alias_list_item()())
+%%   <<"stateMachineAliases">> => list(state_machine_alias_list_item())
 %% }
 -type list_state_machine_aliases_output() :: #{binary() => any()}.
 
@@ -319,7 +319,7 @@
 %% Example:
 %% list_state_machines_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"stateMachines">> => list(state_machine_list_item()())
+%%   <<"stateMachines">> => list(state_machine_list_item())
 %% }
 -type list_state_machines_output() :: #{binary() => any()}.
 
@@ -327,7 +327,7 @@
 %% create_state_machine_alias_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"routingConfiguration">> := list(routing_configuration_list_item()())
+%%   <<"routingConfiguration">> := list(routing_configuration_list_item())
 %% }
 -type create_state_machine_alias_input() :: #{binary() => any()}.
 
@@ -432,7 +432,7 @@
 %%   <<"creationDate">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"routingConfiguration">> => list(routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> => list(routing_configuration_list_item()),
 %%   <<"stateMachineAliasArn">> => string(),
 %%   <<"updateDate">> => non_neg_integer()
 %% }
@@ -446,7 +446,7 @@
 
 %% Example:
 %% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
 
@@ -479,7 +479,7 @@
 
 %% Example:
 %% logging_configuration() :: #{
-%%   <<"destinations">> => list(log_destination()()),
+%%   <<"destinations">> => list(log_destination()),
 %%   <<"includeExecutionData">> => boolean(),
 %%   <<"level">> => list(any())
 %% }
@@ -571,7 +571,7 @@
 
 %% Example:
 %% get_execution_history_output() :: #{
-%%   <<"events">> => list(history_event()()),
+%%   <<"events">> => list(history_event()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_execution_history_output() :: #{binary() => any()}.
@@ -725,7 +725,7 @@
 %%   <<"name">> := string(),
 %%   <<"publish">> => boolean(),
 %%   <<"roleArn">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"tracingConfiguration">> => tracing_configuration(),
 %%   <<"type">> => list(any()),
 %%   <<"versionDescription">> => string()
@@ -761,7 +761,7 @@
 %% create_activity_input() :: #{
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_activity_input() :: #{binary() => any()}.
 
@@ -808,7 +808,7 @@
 %% Example:
 %% tag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
 
@@ -942,7 +942,7 @@
 %% Example:
 %% update_state_machine_alias_input() :: #{
 %%   <<"description">> => string(),
-%%   <<"routingConfiguration">> => list(routing_configuration_list_item()()),
+%%   <<"routingConfiguration">> => list(routing_configuration_list_item()),
 %%   <<"stateMachineAliasArn">> := string()
 %% }
 -type update_state_machine_alias_input() :: #{binary() => any()}.
@@ -973,7 +973,7 @@
 
 %% Example:
 %% validate_state_machine_definition_output() :: #{
-%%   <<"diagnostics">> => list(validate_state_machine_definition_diagnostic()()),
+%%   <<"diagnostics">> => list(validate_state_machine_definition_diagnostic()),
 %%   <<"result">> => list(any()),
 %%   <<"truncated">> => boolean()
 %% }
@@ -1040,7 +1040,7 @@
 %% Example:
 %% untag_resource_input() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -1300,7 +1300,7 @@
 %% Example:
 %% list_state_machine_versions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"stateMachineVersions">> => list(state_machine_version_list_item()())
+%%   <<"stateMachineVersions">> => list(state_machine_version_list_item())
 %% }
 -type list_state_machine_versions_output() :: #{binary() => any()}.
 
@@ -1334,7 +1334,7 @@
 
 %% Example:
 %% list_activities_output() :: #{
-%%   <<"activities">> => list(activity_list_item()()),
+%%   <<"activities">> => list(activity_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_activities_output() :: #{binary() => any()}.
@@ -1354,7 +1354,7 @@
 
 %% Example:
 %% list_map_runs_output() :: #{
-%%   <<"mapRuns">> => list(map_run_list_item()()),
+%%   <<"mapRuns">> => list(map_run_list_item()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_map_runs_output() :: #{binary() => any()}.

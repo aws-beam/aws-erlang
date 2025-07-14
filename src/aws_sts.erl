@@ -40,15 +40,15 @@
 %%   <<"DurationSeconds">> => integer(),
 %%   <<"ExternalId">> => string(),
 %%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()()),
-%%   <<"ProvidedContexts">> => list(provided_context()()),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
+%%   <<"ProvidedContexts">> => list(provided_context()),
 %%   <<"RoleArn">> := string(),
 %%   <<"RoleSessionName">> := string(),
 %%   <<"SerialNumber">> => string(),
 %%   <<"SourceIdentity">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TokenCode">> => string(),
-%%   <<"TransitiveTagKeys">> => list(string()())
+%%   <<"TransitiveTagKeys">> => list(string())
 %% }
 -type assume_role_request() :: #{binary() => any()}.
 
@@ -65,7 +65,7 @@
 %% assume_role_with_saml_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
 %%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()()),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
 %%   <<"PrincipalArn">> := string(),
 %%   <<"RoleArn">> := string(),
 %%   <<"SAMLAssertion">> := string()
@@ -90,7 +90,7 @@
 %% assume_role_with_web_identity_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
 %%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()()),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
 %%   <<"ProviderId">> => string(),
 %%   <<"RoleArn">> := string(),
 %%   <<"RoleSessionName">> := string(),
@@ -197,8 +197,8 @@
 %%   <<"DurationSeconds">> => integer(),
 %%   <<"Name">> := string(),
 %%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type get_federation_token_request() :: #{binary() => any()}.
 

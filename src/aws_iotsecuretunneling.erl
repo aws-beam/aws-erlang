@@ -64,7 +64,7 @@
 
 %% Example:
 %% destination_config() :: #{
-%%   <<"services">> => list(string()()),
+%%   <<"services">> => list(string()),
 %%   <<"thingName">> => string()
 %% }
 -type destination_config() :: #{binary() => any()}.
@@ -83,7 +83,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -98,7 +98,7 @@
 %% Example:
 %% list_tunnels_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tunnelSummaries">> => list(tunnel_summary()())
+%%   <<"tunnelSummaries">> => list(tunnel_summary())
 %% }
 -type list_tunnels_response() :: #{binary() => any()}.
 
@@ -106,7 +106,7 @@
 %% open_tunnel_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"destinationConfig">> => destination_config(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"timeoutConfig">> => timeout_config()
 %% }
 -type open_tunnel_request() :: #{binary() => any()}.
@@ -151,7 +151,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -176,7 +176,7 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"sourceConnectionState">> => connection_state(),
 %%   <<"status">> => list(any()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"timeoutConfig">> => timeout_config(),
 %%   <<"tunnelArn">> => string(),
 %%   <<"tunnelId">> => string()
@@ -197,7 +197,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 

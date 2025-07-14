@@ -64,7 +64,7 @@
 
 %% Example:
 %% zonal_statistics_config_input() :: #{
-%%   <<"Statistics">> => list(string()()),
+%%   <<"Statistics">> => list(string()),
 %%   <<"TargetBands">> => list([string()]()),
 %%   <<"ZoneS3Path">> => string(),
 %%   <<"ZoneS3PathKmsKeyId">> => string()
@@ -110,7 +110,7 @@
 %%   <<"JobConfig">> => list(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"Name">> => [string()],
-%%   <<"OutputBands">> => list(output_band()()),
+%%   <<"OutputBands">> => list(output_band()),
 %%   <<"Status">> => string(),
 %%   <<"Tags">> => map()
 %% }
@@ -151,7 +151,7 @@
 %% Example:
 %% property_filters() :: #{
 %%   <<"LogicalOperator">> => string(),
-%%   <<"Properties">> => list(property_filter()())
+%%   <<"Properties">> => list(property_filter())
 %% }
 -type property_filters() :: #{binary() => any()}.
 
@@ -166,7 +166,7 @@
 %% Example:
 %% list_raster_data_collections_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"RasterDataCollectionSummaries">> := list(raster_data_collection_metadata()())
+%%   <<"RasterDataCollectionSummaries">> := list(raster_data_collection_metadata())
 %% }
 -type list_raster_data_collections_output() :: #{binary() => any()}.
 
@@ -185,7 +185,7 @@
 
 %% Example:
 %% list_earth_observation_job_output() :: #{
-%%   <<"EarthObservationJobSummaries">> := list(list_earth_observation_job_output_config()()),
+%%   <<"EarthObservationJobSummaries">> := list(list_earth_observation_job_output_config()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_earth_observation_job_output() :: #{binary() => any()}.
@@ -291,7 +291,7 @@
 
 %% Example:
 %% custom_indices_input() :: #{
-%%   <<"Operations">> => list(operation()())
+%%   <<"Operations">> => list(operation())
 %% }
 -type custom_indices_input() :: #{binary() => any()}.
 
@@ -345,7 +345,7 @@
 %% Example:
 %% list_vector_enrichment_job_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"VectorEnrichmentJobSummaries">> := list(list_vector_enrichment_job_output_config()())
+%%   <<"VectorEnrichmentJobSummaries">> := list(list_vector_enrichment_job_output_config())
 %% }
 -type list_vector_enrichment_job_output() :: #{binary() => any()}.
 
@@ -377,7 +377,7 @@
 %% Example:
 %% temporal_statistics_config_input() :: #{
 %%   <<"GroupBy">> => string(),
-%%   <<"Statistics">> => list(string()()),
+%%   <<"Statistics">> => list(string()),
 %%   <<"TargetBands">> => list([string()]())
 %% }
 -type temporal_statistics_config_input() :: #{binary() => any()}.
@@ -676,7 +676,7 @@
 %%   <<"Description">> => [string()],
 %%   <<"DescriptionPageUrl">> => [string()],
 %%   <<"Name">> => [string()],
-%%   <<"SupportedFilters">> => list(filter()()),
+%%   <<"SupportedFilters">> => list(filter()),
 %%   <<"Tags">> => map(),
 %%   <<"Type">> => string()
 %% }
@@ -721,7 +721,7 @@
 %% Example:
 %% search_raster_data_collection_output() :: #{
 %%   <<"ApproximateResultCount">> => [integer()],
-%%   <<"Items">> => list(item_source()()),
+%%   <<"Items">> => list(item_source()),
 %%   <<"NextToken">> => string()
 %% }
 -type search_raster_data_collection_output() :: #{binary() => any()}.
@@ -765,7 +765,7 @@
 %%   <<"DescriptionPageUrl">> := [string()],
 %%   <<"ImageSourceBands">> := list([string()]()),
 %%   <<"Name">> := [string()],
-%%   <<"SupportedFilters">> := list(filter()()),
+%%   <<"SupportedFilters">> := list(filter()),
 %%   <<"Tags">> => map(),
 %%   <<"Type">> := string()
 %% }

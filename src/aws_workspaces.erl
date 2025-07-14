@@ -234,7 +234,7 @@
 
 %% Example:
 %% describe_account_modifications_result() :: #{
-%%   <<"AccountModifications">> => list(account_modification()()),
+%%   <<"AccountModifications">> => list(account_modification()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_account_modifications_result() :: #{binary() => any()}.
@@ -253,13 +253,13 @@
 
 %% Example:
 %% start_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request()())
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
 %% }
 -type start_workspaces_result() :: #{binary() => any()}.
 
 %% Example:
 %% start_workspaces_request() :: #{
-%%   <<"StartWorkspaceRequests">> := list(start_request()())
+%%   <<"StartWorkspaceRequests">> := list(start_request())
 %% }
 -type start_workspaces_request() :: #{binary() => any()}.
 
@@ -306,7 +306,7 @@
 %% Example:
 %% delete_tags_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type delete_tags_request() :: #{binary() => any()}.
 
@@ -317,7 +317,7 @@
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"UserName">> => string(),
-%%   <<"WorkspaceIds">> => list(string()()),
+%%   <<"WorkspaceIds">> => list(string()),
 %%   <<"WorkspaceName">> => string()
 %% }
 -type describe_workspaces_request() :: #{binary() => any()}.
@@ -371,7 +371,7 @@
 %% Example:
 %% describe_workspace_directories_filter() :: #{
 %%   <<"Name">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type describe_workspace_directories_filter() :: #{binary() => any()}.
 
@@ -380,7 +380,7 @@
 %%   <<"Created">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"ErrorCode">> => string(),
-%%   <<"ErrorDetails">> => list(error_details()()),
+%%   <<"ErrorDetails">> => list(error_details()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"ImageId">> => string(),
 %%   <<"Name">> => string(),
@@ -461,7 +461,7 @@
 
 %% Example:
 %% rebuild_workspaces_request() :: #{
-%%   <<"RebuildWorkspaceRequests">> := list(rebuild_request()())
+%%   <<"RebuildWorkspaceRequests">> := list(rebuild_request())
 %% }
 -type rebuild_workspaces_request() :: #{binary() => any()}.
 
@@ -487,7 +487,7 @@
 
 %% Example:
 %% describe_workspace_images_request() :: #{
-%%   <<"ImageIds">> => list(string()()),
+%%   <<"ImageIds">> => list(string()),
 %%   <<"ImageType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -500,14 +500,14 @@
 %%   <<"Name">> := string(),
 %%   <<"SourceImageId">> := string(),
 %%   <<"SourceRegion">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type copy_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
 %% revoke_ip_rules_request() :: #{
 %%   <<"GroupId">> := string(),
-%%   <<"UserRules">> := list(string()())
+%%   <<"UserRules">> := list(string())
 %% }
 -type revoke_ip_rules_request() :: #{binary() => any()}.
 
@@ -519,7 +519,7 @@
 
 %% Example:
 %% reboot_workspaces_request() :: #{
-%%   <<"RebootWorkspaceRequests">> := list(reboot_request()())
+%%   <<"RebootWorkspaceRequests">> := list(reboot_request())
 %% }
 -type reboot_workspaces_request() :: #{binary() => any()}.
 
@@ -533,14 +533,14 @@
 
 %% Example:
 %% describe_connection_aliases_result() :: #{
-%%   <<"ConnectionAliases">> => list(connection_alias()()),
+%%   <<"ConnectionAliases">> => list(connection_alias()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_connection_aliases_result() :: #{binary() => any()}.
 
 %% Example:
 %% access_endpoint_config() :: #{
-%%   <<"AccessEndpoints">> => list(access_endpoint()()),
+%%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"InternetFallbackProtocols">> => list(list(any())())
 %% }
 -type access_endpoint_config() :: #{binary() => any()}.
@@ -548,7 +548,7 @@
 %% Example:
 %% describe_workspace_image_permissions_result() :: #{
 %%   <<"ImageId">> => string(),
-%%   <<"ImagePermissions">> => list(image_permission()()),
+%%   <<"ImagePermissions">> => list(image_permission()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_workspace_image_permissions_result() :: #{binary() => any()}.
@@ -611,7 +611,7 @@
 %%   <<"ComputeType">> := compute_type(),
 %%   <<"ImageId">> := string(),
 %%   <<"RootStorage">> => root_storage(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserStorage">> := user_storage()
 %% }
 -type create_workspace_bundle_request() :: #{binary() => any()}.
@@ -729,7 +729,7 @@
 %% Example:
 %% associate_ip_groups_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"GroupIds">> := list(string()())
+%%   <<"GroupIds">> := list(string())
 %% }
 -type associate_ip_groups_request() :: #{binary() => any()}.
 
@@ -760,7 +760,7 @@
 
 %% Example:
 %% rebuild_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request()())
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
 %% }
 -type rebuild_workspaces_result() :: #{binary() => any()}.
 
@@ -794,7 +794,7 @@
 
 %% Example:
 %% list_available_management_cidr_ranges_result() :: #{
-%%   <<"ManagementCidrRanges">> => list(string()()),
+%%   <<"ManagementCidrRanges">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_available_management_cidr_ranges_result() :: #{binary() => any()}.
@@ -808,7 +808,7 @@
 %% Example:
 %% describe_workspaces_pool_sessions_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Sessions">> => list(workspaces_pool_session()())
+%%   <<"Sessions">> => list(workspaces_pool_session())
 %% }
 -type describe_workspaces_pool_sessions_result() :: #{binary() => any()}.
 
@@ -821,19 +821,19 @@
 %% Example:
 %% create_tags_request() :: #{
 %%   <<"ResourceId">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type create_tags_request() :: #{binary() => any()}.
 
 %% Example:
 %% terminate_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request()())
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
 %% }
 -type terminate_workspaces_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_workspaces_request() :: #{
-%%   <<"Workspaces">> := list(workspace_request()())
+%%   <<"Workspaces">> := list(workspace_request())
 %% }
 -type create_workspaces_request() :: #{binary() => any()}.
 
@@ -861,7 +861,7 @@
 %% Example:
 %% create_standby_workspaces_request() :: #{
 %%   <<"PrimaryRegion">> := string(),
-%%   <<"StandbyWorkspaces">> := list(standby_workspace()())
+%%   <<"StandbyWorkspaces">> := list(standby_workspace())
 %% }
 -type create_standby_workspaces_request() :: #{binary() => any()}.
 
@@ -897,7 +897,7 @@
 %%   <<"groupDesc">> => string(),
 %%   <<"groupId">> => string(),
 %%   <<"groupName">> => string(),
-%%   <<"userRules">> => list(ip_rule_item()())
+%%   <<"userRules">> => list(ip_rule_item())
 %% }
 -type workspaces_ip_group() :: #{binary() => any()}.
 
@@ -1020,14 +1020,14 @@
 
 %% Example:
 %% terminate_workspaces_request() :: #{
-%%   <<"TerminateWorkspaceRequests">> := list(terminate_request()())
+%%   <<"TerminateWorkspaceRequests">> := list(terminate_request())
 %% }
 -type terminate_workspaces_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_rules_of_ip_group_request() :: #{
 %%   <<"GroupId">> := string(),
-%%   <<"UserRules">> := list(ip_rule_item()())
+%%   <<"UserRules">> := list(ip_rule_item())
 %% }
 -type update_rules_of_ip_group_request() :: #{binary() => any()}.
 
@@ -1046,7 +1046,7 @@
 
 %% Example:
 %% describe_workspace_bundles_request() :: #{
-%%   <<"BundleIds">> => list(string()()),
+%%   <<"BundleIds">> => list(string()),
 %%   <<"NextToken">> => string(),
 %%   <<"Owner">> => string()
 %% }
@@ -1067,7 +1067,7 @@
 
 %% Example:
 %% describe_connection_aliases_request() :: #{
-%%   <<"AliasIds">> => list(string()()),
+%%   <<"AliasIds">> => list(string()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ResourceId">> => string()
@@ -1105,14 +1105,14 @@
 %% Example:
 %% authorize_ip_rules_request() :: #{
 %%   <<"GroupId">> := string(),
-%%   <<"UserRules">> := list(ip_rule_item()())
+%%   <<"UserRules">> := list(ip_rule_item())
 %% }
 -type authorize_ip_rules_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_connection_alias_permissions_result() :: #{
 %%   <<"AliasId">> => string(),
-%%   <<"ConnectionAliasPermissions">> => list(connection_alias_permission()()),
+%%   <<"ConnectionAliasPermissions">> => list(connection_alias_permission()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_connection_alias_permissions_result() :: #{binary() => any()}.
@@ -1146,7 +1146,7 @@
 
 %% Example:
 %% describe_workspace_associations_result() :: #{
-%%   <<"Associations">> => list(workspace_resource_association()())
+%%   <<"Associations">> => list(workspace_resource_association())
 %% }
 -type describe_workspace_associations_result() :: #{binary() => any()}.
 
@@ -1197,7 +1197,7 @@
 
 %% Example:
 %% describe_applications_request() :: #{
-%%   <<"ApplicationIds">> => list(string()()),
+%%   <<"ApplicationIds">> => list(string()),
 %%   <<"ComputeTypeNames">> => list(list(any())()),
 %%   <<"LicenseType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
@@ -1221,7 +1221,7 @@
 
 %% Example:
 %% describe_application_associations_result() :: #{
-%%   <<"Associations">> => list(application_resource_association()()),
+%%   <<"Associations">> => list(application_resource_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_application_associations_result() :: #{binary() => any()}.
@@ -1231,7 +1231,7 @@
 %%   <<"Description">> := string(),
 %%   <<"Name">> := string(),
 %%   <<"SourceImageId">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_updated_workspace_image_request() :: #{binary() => any()}.
 
@@ -1277,18 +1277,18 @@
 
 %% Example:
 %% list_account_links_result() :: #{
-%%   <<"AccountLinks">> => list(account_link()()),
+%%   <<"AccountLinks">> => list(account_link()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_account_links_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_workspace_directories_request() :: #{
-%%   <<"DirectoryIds">> => list(string()()),
-%%   <<"Filters">> => list(describe_workspace_directories_filter()()),
+%%   <<"DirectoryIds">> => list(string()),
+%%   <<"Filters">> => list(describe_workspace_directories_filter()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"WorkspaceDirectoryNames">> => list(string()())
+%%   <<"WorkspaceDirectoryNames">> => list(string())
 %% }
 -type describe_workspace_directories_request() :: #{binary() => any()}.
 
@@ -1300,14 +1300,14 @@
 
 %% Example:
 %% describe_image_associations_result() :: #{
-%%   <<"Associations">> => list(image_resource_association()())
+%%   <<"Associations">> => list(image_resource_association())
 %% }
 -type describe_image_associations_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_workspaces_connection_status_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WorkspacesConnectionStatus">> => list(workspace_connection_status()())
+%%   <<"WorkspacesConnectionStatus">> => list(workspace_connection_status())
 %% }
 -type describe_workspaces_connection_status_result() :: #{binary() => any()}.
 
@@ -1371,7 +1371,7 @@
 
 %% Example:
 %% describe_workspace_images_result() :: #{
-%%   <<"Images">> => list(workspace_image()()),
+%%   <<"Images">> => list(workspace_image()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_workspace_images_result() :: #{binary() => any()}.
@@ -1458,14 +1458,14 @@
 %% Example:
 %% describe_workspaces_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Workspaces">> => list(workspace()())
+%%   <<"Workspaces">> => list(workspace())
 %% }
 -type describe_workspaces_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_create_workspace_request()()),
-%%   <<"PendingRequests">> => list(workspace()())
+%%   <<"FailedRequests">> => list(failed_create_workspace_request()),
+%%   <<"PendingRequests">> => list(workspace())
 %% }
 -type create_workspaces_result() :: #{binary() => any()}.
 
@@ -1528,10 +1528,10 @@
 %%   <<"ErrorCode">> => string(),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"IpAddress">> => string(),
-%%   <<"ModificationStates">> => list(modification_state()()),
-%%   <<"RelatedWorkspaces">> => list(related_workspace_properties()()),
+%%   <<"ModificationStates">> => list(modification_state()),
+%%   <<"RelatedWorkspaces">> => list(related_workspace_properties()),
 %%   <<"RootVolumeEncryptionEnabled">> => boolean(),
-%%   <<"StandbyWorkspacesProperties">> => list(standby_workspaces_properties()()),
+%%   <<"StandbyWorkspacesProperties">> => list(standby_workspaces_properties()),
 %%   <<"State">> => list(any()),
 %%   <<"SubnetId">> => string(),
 %%   <<"UserName">> => string(),
@@ -1561,7 +1561,7 @@
 
 %% Example:
 %% describe_client_properties_result() :: #{
-%%   <<"ClientPropertiesList">> => list(client_properties_result()())
+%%   <<"ClientPropertiesList">> => list(client_properties_result())
 %% }
 -type describe_client_properties_result() :: #{binary() => any()}.
 
@@ -1580,15 +1580,15 @@
 
 %% Example:
 %% describe_workspace_snapshots_result() :: #{
-%%   <<"RebuildSnapshots">> => list(snapshot()()),
-%%   <<"RestoreSnapshots">> => list(snapshot()())
+%%   <<"RebuildSnapshots">> => list(snapshot()),
+%%   <<"RestoreSnapshots">> => list(snapshot())
 %% }
 -type describe_workspace_snapshots_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_ip_groups_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Result">> => list(workspaces_ip_group()())
+%%   <<"Result">> => list(workspaces_ip_group())
 %% }
 -type describe_ip_groups_result() :: #{binary() => any()}.
 
@@ -1599,14 +1599,14 @@
 %%   <<"ImageDescription">> := string(),
 %%   <<"ImageName">> := string(),
 %%   <<"IngestionProcess">> := list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type import_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_connection_alias_request() :: #{
 %%   <<"ConnectionString">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_connection_alias_request() :: #{binary() => any()}.
 
@@ -1626,7 +1626,7 @@
 %% describe_workspaces_pools_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Operator">> => list(any()),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type describe_workspaces_pools_filter() :: #{binary() => any()}.
 
@@ -1645,8 +1645,8 @@
 %% create_ip_group_request() :: #{
 %%   <<"GroupDesc">> => string(),
 %%   <<"GroupName">> := string(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"UserRules">> => list(ip_rule_item()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"UserRules">> => list(ip_rule_item())
 %% }
 -type create_ip_group_request() :: #{binary() => any()}.
 
@@ -1672,8 +1672,8 @@
 %%   <<"EnableSelfService">> => boolean(),
 %%   <<"IdcInstanceArn">> => string(),
 %%   <<"MicrosoftEntraConfig">> => microsoft_entra_config(),
-%%   <<"SubnetIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Tenancy">> => list(any()),
 %%   <<"UserIdentityType">> => list(any()),
 %%   <<"WorkspaceDirectoryDescription">> => string(),
@@ -1712,7 +1712,7 @@
 %% create_workspace_image_request() :: #{
 %%   <<"Description">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"WorkspaceId">> := string()
 %% }
 -type create_workspace_image_request() :: #{binary() => any()}.
@@ -1817,7 +1817,7 @@
 %%   <<"DirectoryId">> => string(),
 %%   <<"DirectoryName">> => string(),
 %%   <<"DirectoryType">> => list(any()),
-%%   <<"DnsIpAddresses">> => list(string()()),
+%%   <<"DnsIpAddresses">> => list(string()),
 %%   <<"EndpointEncryptionMode">> => list(any()),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"IDCConfig">> => id_c_config(),
@@ -1828,7 +1828,7 @@
 %%   <<"SelfservicePermissions">> => selfservice_permissions(),
 %%   <<"State">> => list(any()),
 %%   <<"StreamingProperties">> => streaming_properties(),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"Tenancy">> => list(any()),
 %%   <<"UserIdentityType">> => list(any()),
 %%   <<"WorkspaceAccessProperties">> => workspace_access_properties(),
@@ -1837,7 +1837,7 @@
 %%   <<"WorkspaceDirectoryName">> => string(),
 %%   <<"WorkspaceSecurityGroupId">> => string(),
 %%   <<"WorkspaceType">> => list(any()),
-%%   <<"ipGroupIds">> => list(string()())
+%%   <<"ipGroupIds">> => list(string())
 %% }
 -type workspace_directory() :: #{binary() => any()}.
 
@@ -1850,7 +1850,7 @@
 
 %% Example:
 %% stop_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request()())
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
 %% }
 -type stop_workspaces_result() :: #{binary() => any()}.
 
@@ -1865,15 +1865,15 @@
 %%   <<"DataReplication">> => list(any()),
 %%   <<"DirectoryId">> => string(),
 %%   <<"PrimaryWorkspaceId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VolumeEncryptionKey">> => string()
 %% }
 -type standby_workspace() :: #{binary() => any()}.
 
 %% Example:
 %% create_standby_workspaces_result() :: #{
-%%   <<"FailedStandbyRequests">> => list(failed_create_standby_workspaces_request()()),
-%%   <<"PendingStandbyRequests">> => list(pending_create_standby_workspaces_request()())
+%%   <<"FailedStandbyRequests">> => list(failed_create_standby_workspaces_request()),
+%%   <<"PendingStandbyRequests">> => list(pending_create_standby_workspaces_request())
 %% }
 -type create_standby_workspaces_result() :: #{binary() => any()}.
 
@@ -1920,7 +1920,7 @@
 
 %% Example:
 %% describe_bundle_associations_result() :: #{
-%%   <<"Associations">> => list(bundle_resource_association()())
+%%   <<"Associations">> => list(bundle_resource_association())
 %% }
 -type describe_bundle_associations_result() :: #{binary() => any()}.
 
@@ -1941,7 +1941,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DirectoryId">> => string(),
-%%   <<"Errors">> => list(workspaces_pool_error()()),
+%%   <<"Errors">> => list(workspaces_pool_error()),
 %%   <<"PoolArn">> => string(),
 %%   <<"PoolId">> => string(),
 %%   <<"PoolName">> => string(),
@@ -1954,9 +1954,9 @@
 %% Example:
 %% streaming_properties() :: #{
 %%   <<"GlobalAccelerator">> => global_accelerator_for_directory(),
-%%   <<"StorageConnectors">> => list(storage_connector()()),
+%%   <<"StorageConnectors">> => list(storage_connector()),
 %%   <<"StreamingExperiencePreferredProtocol">> => list(any()),
-%%   <<"UserSettings">> => list(user_setting()())
+%%   <<"UserSettings">> => list(user_setting())
 %% }
 -type streaming_properties() :: #{binary() => any()}.
 
@@ -1981,7 +1981,7 @@
 %%   <<"DirectoryId">> := string(),
 %%   <<"PoolName">> := string(),
 %%   <<"RunningMode">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TimeoutSettings">> => timeout_settings()
 %% }
 -type create_workspaces_pool_request() :: #{binary() => any()}.
@@ -2000,7 +2000,7 @@
 
 %% Example:
 %% describe_client_properties_request() :: #{
-%%   <<"ResourceIds">> := list(string()())
+%%   <<"ResourceIds">> := list(string())
 %% }
 -type describe_client_properties_request() :: #{binary() => any()}.
 
@@ -2024,7 +2024,7 @@
 
 %% Example:
 %% describe_tags_result() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type describe_tags_result() :: #{binary() => any()}.
 
@@ -2043,7 +2043,7 @@
 
 %% Example:
 %% describe_workspace_bundles_result() :: #{
-%%   <<"Bundles">> => list(workspace_bundle()()),
+%%   <<"Bundles">> => list(workspace_bundle()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_workspace_bundles_result() :: #{binary() => any()}.
@@ -2056,7 +2056,7 @@
 
 %% Example:
 %% describe_ip_groups_request() :: #{
-%%   <<"GroupIds">> => list(string()()),
+%%   <<"GroupIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2070,7 +2070,7 @@
 
 %% Example:
 %% work_space_application_deployment() :: #{
-%%   <<"Associations">> => list(workspace_resource_association()())
+%%   <<"Associations">> => list(workspace_resource_association())
 %% }
 -type work_space_application_deployment() :: #{binary() => any()}.
 
@@ -2114,7 +2114,7 @@
 
 %% Example:
 %% reboot_workspaces_result() :: #{
-%%   <<"FailedRequests">> => list(failed_workspace_change_request()())
+%%   <<"FailedRequests">> => list(failed_workspace_change_request())
 %% }
 -type reboot_workspaces_result() :: #{binary() => any()}.
 
@@ -2134,7 +2134,7 @@
 %% Example:
 %% disassociate_ip_groups_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"GroupIds">> := list(string()())
+%%   <<"GroupIds">> := list(string())
 %% }
 -type disassociate_ip_groups_request() :: #{binary() => any()}.
 
@@ -2179,14 +2179,14 @@
 %% Example:
 %% describe_workspaces_pools_result() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WorkspacesPools">> => list(workspaces_pool()())
+%%   <<"WorkspacesPools">> => list(workspaces_pool())
 %% }
 -type describe_workspaces_pools_result() :: #{binary() => any()}.
 
 %% Example:
 %% connection_alias() :: #{
 %%   <<"AliasId">> => string(),
-%%   <<"Associations">> => list(connection_alias_association()()),
+%%   <<"Associations">> => list(connection_alias_association()),
 %%   <<"ConnectionString">> => string(),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"State">> => list(any())
@@ -2204,7 +2204,7 @@
 %%   <<"BundleId">> => string(),
 %%   <<"DirectoryId">> => string(),
 %%   <<"RootVolumeEncryptionEnabled">> => boolean(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserName">> => string(),
 %%   <<"UserVolumeEncryptionEnabled">> => boolean(),
 %%   <<"VolumeEncryptionKey">> => string(),
@@ -2216,7 +2216,7 @@
 %% Example:
 %% describe_workspaces_connection_status_request() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"WorkspaceIds">> => list(string()())
+%%   <<"WorkspaceIds">> => list(string())
 %% }
 -type describe_workspaces_connection_status_request() :: #{binary() => any()}.
 
@@ -2234,7 +2234,7 @@
 
 %% Example:
 %% describe_connect_client_add_ins_result() :: #{
-%%   <<"AddIns">> => list(connect_client_add_in()()),
+%%   <<"AddIns">> => list(connect_client_add_in()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_connect_client_add_ins_result() :: #{binary() => any()}.
@@ -2249,7 +2249,7 @@
 
 %% Example:
 %% describe_workspace_directories_result() :: #{
-%%   <<"Directories">> => list(workspace_directory()()),
+%%   <<"Directories">> => list(workspace_directory()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_workspace_directories_result() :: #{binary() => any()}.
@@ -2275,7 +2275,7 @@
 
 %% Example:
 %% describe_applications_result() :: #{
-%%   <<"Applications">> => list(work_space_application()()),
+%%   <<"Applications">> => list(work_space_application()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_applications_result() :: #{binary() => any()}.
@@ -2294,7 +2294,7 @@
 
 %% Example:
 %% stop_workspaces_request() :: #{
-%%   <<"StopWorkspaceRequests">> := list(stop_request()())
+%%   <<"StopWorkspaceRequests">> := list(stop_request())
 %% }
 -type stop_workspaces_request() :: #{binary() => any()}.
 
@@ -2308,10 +2308,10 @@
 
 %% Example:
 %% describe_workspaces_pools_request() :: #{
-%%   <<"Filters">> => list(describe_workspaces_pools_filter()()),
+%%   <<"Filters">> => list(describe_workspaces_pools_filter()),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"PoolIds">> => list(string()())
+%%   <<"PoolIds">> => list(string())
 %% }
 -type describe_workspaces_pools_request() :: #{binary() => any()}.
 

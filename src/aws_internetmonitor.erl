@@ -98,7 +98,7 @@
 %%   <<"EventId">> := string(),
 %%   <<"HealthScoreThreshold">> => float(),
 %%   <<"ImpactType">> := string(),
-%%   <<"ImpactedLocations">> := list(impacted_location()()),
+%%   <<"ImpactedLocations">> := list(impacted_location()),
 %%   <<"LastUpdatedAt">> := [non_neg_integer()],
 %%   <<"PercentOfTotalTrafficImpacted">> => [float()],
 %%   <<"StartedAt">> := [non_neg_integer()],
@@ -130,7 +130,7 @@
 %% Example:
 %% get_query_results_output() :: #{
 %%   <<"Data">> => list(list([string()]())()),
-%%   <<"Fields">> => list(query_field()()),
+%%   <<"Fields">> => list(query_field()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type get_query_results_output() :: #{binary() => any()}.
@@ -147,7 +147,7 @@
 %%   <<"MonitorName">> => string(),
 %%   <<"ProcessingStatus">> => string(),
 %%   <<"ProcessingStatusInfo">> => [string()],
-%%   <<"Resources">> => list(string()()),
+%%   <<"Resources">> => list(string()),
 %%   <<"Status">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"TrafficPercentageToMonitor">> => integer()
@@ -164,7 +164,7 @@
 
 %% Example:
 %% list_monitors_output() :: #{
-%%   <<"Monitors">> => list(monitor()()),
+%%   <<"Monitors">> => list(monitor()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_monitors_output() :: #{binary() => any()}.
@@ -185,9 +185,9 @@
 
 %% Example:
 %% network_impairment() :: #{
-%%   <<"AsPath">> => list(network()()),
+%%   <<"AsPath">> => list(network()),
 %%   <<"NetworkEventType">> => string(),
-%%   <<"Networks">> => list(network()())
+%%   <<"Networks">> => list(network())
 %% }
 -type network_impairment() :: #{binary() => any()}.
 
@@ -375,7 +375,7 @@
 
 %% Example:
 %% list_health_events_output() :: #{
-%%   <<"HealthEvents">> := list(health_event()()),
+%%   <<"HealthEvents">> := list(health_event()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_health_events_output() :: #{binary() => any()}.
@@ -437,7 +437,7 @@
 
 %% Example:
 %% untag_resource_input() :: #{
-%%   <<"TagKeys">> => list(string()())
+%%   <<"TagKeys">> => list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
 
@@ -448,8 +448,8 @@
 %%   <<"HealthEventsConfig">> => health_events_config(),
 %%   <<"InternetMeasurementsLogDelivery">> => internet_measurements_log_delivery(),
 %%   <<"MaxCityNetworksToMonitor">> => integer(),
-%%   <<"ResourcesToAdd">> => list(string()()),
-%%   <<"ResourcesToRemove">> => list(string()()),
+%%   <<"ResourcesToAdd">> => list(string()),
+%%   <<"ResourcesToRemove">> => list(string()),
 %%   <<"Status">> => string(),
 %%   <<"TrafficPercentageToMonitor">> => integer()
 %% }
@@ -464,7 +464,7 @@
 %%   <<"EventId">> => string(),
 %%   <<"HealthScoreThreshold">> => float(),
 %%   <<"ImpactType">> => string(),
-%%   <<"ImpactedLocations">> => list(impacted_location()()),
+%%   <<"ImpactedLocations">> => list(impacted_location()),
 %%   <<"LastUpdatedAt">> => [non_neg_integer()],
 %%   <<"PercentOfTotalTrafficImpacted">> => [float()],
 %%   <<"StartedAt">> => [non_neg_integer()],
@@ -559,7 +559,7 @@
 
 %% Example:
 %% list_internet_events_output() :: #{
-%%   <<"InternetEvents">> => list(internet_event_summary()()),
+%%   <<"InternetEvents">> => list(internet_event_summary()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_internet_events_output() :: #{binary() => any()}.
@@ -581,7 +581,7 @@
 %% Example:
 %% start_query_input() :: #{
 %%   <<"EndTime">> := [non_neg_integer()],
-%%   <<"FilterParameters">> => list(filter_parameter()()),
+%%   <<"FilterParameters">> => list(filter_parameter()),
 %%   <<"LinkedAccountId">> => string(),
 %%   <<"QueryType">> := string(),
 %%   <<"StartTime">> := [non_neg_integer()]
@@ -604,7 +604,7 @@
 %%   <<"InternetMeasurementsLogDelivery">> => internet_measurements_log_delivery(),
 %%   <<"MaxCityNetworksToMonitor">> => integer(),
 %%   <<"MonitorName">> := string(),
-%%   <<"Resources">> => list(string()()),
+%%   <<"Resources">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"TrafficPercentageToMonitor">> => integer()
 %% }

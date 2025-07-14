@@ -381,7 +381,7 @@
 %%   <<"EnableDate">> => non_neg_integer(),
 %%   <<"QRCodePNG">> => binary(),
 %%   <<"SerialNumber">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"User">> => user()
 %% }
 -type virtual_mfa_device() :: #{binary() => any()}.
@@ -396,7 +396,7 @@
 %% list_group_policies_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"PolicyNames">> => list(string()())
+%%   <<"PolicyNames">> => list(string())
 %% }
 -type list_group_policies_response() :: #{binary() => any()}.
 
@@ -412,7 +412,7 @@
 %% list_policies_granting_service_access_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"PoliciesGrantingServiceAccess">> => list(list_policies_granting_service_access_entry()())
+%%   <<"PoliciesGrantingServiceAccess">> => list(list_policies_granting_service_access_entry())
 %% }
 -type list_policies_granting_service_access_response() :: #{binary() => any()}.
 
@@ -422,7 +422,7 @@
 %%   <<"AssertionEncryptionMode">> => list(any()),
 %%   <<"Name">> := string(),
 %%   <<"SAMLMetadataDocument">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_saml_provider_request() :: #{binary() => any()}.
 
@@ -457,7 +457,7 @@
 
 %% Example:
 %% get_organizations_access_report_response() :: #{
-%%   <<"AccessDetails">> => list(access_detail()()),
+%%   <<"AccessDetails">> => list(access_detail()),
 %%   <<"ErrorDetails">> => error_details(),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"JobCompletionDate">> => non_neg_integer(),
@@ -473,13 +473,13 @@
 %% list_policy_versions_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Versions">> => list(policy_version()())
+%%   <<"Versions">> => list(policy_version())
 %% }
 -type list_policy_versions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_saml_providers_response() :: #{
-%%   <<"SAMLProviderList">> => list(saml_provider_list_entry()())
+%%   <<"SAMLProviderList">> => list(saml_provider_list_entry())
 %% }
 -type list_saml_providers_response() :: #{binary() => any()}.
 
@@ -521,8 +521,8 @@
 %%   <<"EvalDecisionDetails">> => map(),
 %%   <<"EvalResourceDecision">> => list(any()),
 %%   <<"EvalResourceName">> => string(),
-%%   <<"MatchedStatements">> => list(statement()()),
-%%   <<"MissingContextValues">> => list(string()()),
+%%   <<"MatchedStatements">> => list(statement()),
+%%   <<"MissingContextValues">> => list(string()),
 %%   <<"PermissionsBoundaryDecisionDetail">> => permissions_boundary_decision_detail()
 %% }
 -type resource_specific_result() :: #{binary() => any()}.
@@ -534,8 +534,8 @@
 %%   <<"InstanceProfileId">> => string(),
 %%   <<"InstanceProfileName">> => string(),
 %%   <<"Path">> => string(),
-%%   <<"Roles">> => list(role()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Roles">> => list(role()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type instance_profile() :: #{binary() => any()}.
 
@@ -549,7 +549,7 @@
 %% Example:
 %% create_open_id_connect_provider_response() :: #{
 %%   <<"OpenIDConnectProviderArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_open_id_connect_provider_response() :: #{binary() => any()}.
 
@@ -557,7 +557,7 @@
 %% list_policy_tags_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_policy_tags_response() :: #{binary() => any()}.
 
@@ -600,7 +600,7 @@
 %% context_entry() :: #{
 %%   <<"ContextKeyName">> => string(),
 %%   <<"ContextKeyType">> => list(any()),
-%%   <<"ContextKeyValues">> => list(string()())
+%%   <<"ContextKeyValues">> => list(string())
 %% }
 -type context_entry() :: #{binary() => any()}.
 
@@ -608,7 +608,7 @@
 %% list_server_certificates_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"ServerCertificateMetadataList">> => list(server_certificate_metadata()())
+%%   <<"ServerCertificateMetadataList">> => list(server_certificate_metadata())
 %% }
 -type list_server_certificates_response() :: #{binary() => any()}.
 
@@ -623,10 +623,10 @@
 
 %% Example:
 %% get_open_id_connect_provider_response() :: #{
-%%   <<"ClientIDList">> => list(string()()),
+%%   <<"ClientIDList">> => list(string()),
 %%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"ThumbprintList">> => list(string()()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ThumbprintList">> => list(string()),
 %%   <<"Url">> => string()
 %% }
 -type get_open_id_connect_provider_response() :: #{binary() => any()}.
@@ -640,13 +640,13 @@
 %%   <<"JobStatus">> => list(any()),
 %%   <<"JobType">> => list(any()),
 %%   <<"Marker">> => string(),
-%%   <<"ServicesLastAccessed">> => list(service_last_accessed()())
+%%   <<"ServicesLastAccessed">> => list(service_last_accessed())
 %% }
 -type get_service_last_accessed_details_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_context_keys_for_policy_response() :: #{
-%%   <<"ContextKeyNames">> => list(string()())
+%%   <<"ContextKeyNames">> => list(string())
 %% }
 -type get_context_keys_for_policy_response() :: #{binary() => any()}.
 
@@ -662,7 +662,7 @@
 %% list_policies_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Policies">> => list(policy()())
+%%   <<"Policies">> => list(policy())
 %% }
 -type list_policies_response() :: #{binary() => any()}.
 
@@ -741,7 +741,7 @@
 
 %% Example:
 %% list_groups_for_user_response() :: #{
-%%   <<"Groups">> => list(group()()),
+%%   <<"Groups">> => list(group()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -798,7 +798,7 @@
 %% Example:
 %% list_mfa_devices_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
-%%   <<"MFADevices">> => list(mfa_device()()),
+%%   <<"MFADevices">> => list(mfa_device()),
 %%   <<"Marker">> => string()
 %% }
 -type list_mfa_devices_response() :: #{binary() => any()}.
@@ -824,7 +824,7 @@
 %% Example:
 %% tag_saml_provider_request() :: #{
 %%   <<"SAMLProviderArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_saml_provider_request() :: #{binary() => any()}.
 
@@ -832,7 +832,7 @@
 %% list_role_policies_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"PolicyNames">> => list(string()())
+%%   <<"PolicyNames">> => list(string())
 %% }
 -type list_role_policies_response() :: #{binary() => any()}.
 
@@ -842,7 +842,7 @@
 %%   <<"Path">> => string(),
 %%   <<"PolicyDocument">> := string(),
 %%   <<"PolicyName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_policy_request() :: #{binary() => any()}.
 
@@ -880,7 +880,7 @@
 %%   <<"RoleId">> => string(),
 %%   <<"RoleLastUsed">> => role_last_used(),
 %%   <<"RoleName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type role() :: #{binary() => any()}.
 
@@ -895,7 +895,7 @@
 %% list_roles_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Roles">> => list(role()())
+%%   <<"Roles">> => list(role())
 %% }
 -type list_roles_response() :: #{binary() => any()}.
 
@@ -909,7 +909,7 @@
 %% Example:
 %% untag_open_id_connect_provider_request() :: #{
 %%   <<"OpenIDConnectProviderArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_open_id_connect_provider_request() :: #{binary() => any()}.
 
@@ -935,10 +935,10 @@
 %% get_saml_provider_response() :: #{
 %%   <<"AssertionEncryptionMode">> => list(any()),
 %%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"PrivateKeyList">> => list(saml_private_key()()),
+%%   <<"PrivateKeyList">> => list(saml_private_key()),
 %%   <<"SAMLMetadataDocument">> => string(),
 %%   <<"SAMLProviderUUID">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"ValidUntil">> => non_neg_integer()
 %% }
 -type get_saml_provider_response() :: #{binary() => any()}.
@@ -947,9 +947,9 @@
 %% list_entities_for_policy_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"PolicyGroups">> => list(policy_group()()),
-%%   <<"PolicyRoles">> => list(policy_role()()),
-%%   <<"PolicyUsers">> => list(policy_user()())
+%%   <<"PolicyGroups">> => list(policy_group()),
+%%   <<"PolicyRoles">> => list(policy_role()),
+%%   <<"PolicyUsers">> => list(policy_user())
 %% }
 -type list_entities_for_policy_response() :: #{binary() => any()}.
 
@@ -961,14 +961,14 @@
 
 %% Example:
 %% simulate_custom_policy_request() :: #{
-%%   <<"ActionNames">> := list(string()()),
+%%   <<"ActionNames">> := list(string()),
 %%   <<"CallerArn">> => string(),
-%%   <<"ContextEntries">> => list(context_entry()()),
+%%   <<"ContextEntries">> => list(context_entry()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
-%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()()),
-%%   <<"PolicyInputList">> := list(string()()),
-%%   <<"ResourceArns">> => list(string()()),
+%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()),
+%%   <<"PolicyInputList">> := list(string()),
+%%   <<"ResourceArns">> => list(string()),
 %%   <<"ResourceHandlingOption">> => string(),
 %%   <<"ResourceOwner">> => string(),
 %%   <<"ResourcePolicy">> => string()
@@ -979,22 +979,22 @@
 %% role_detail() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"AssumeRolePolicyDocument">> => string(),
-%%   <<"AttachedManagedPolicies">> => list(attached_policy()()),
+%%   <<"AttachedManagedPolicies">> => list(attached_policy()),
 %%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"InstanceProfileList">> => list(instance_profile()()),
+%%   <<"InstanceProfileList">> => list(instance_profile()),
 %%   <<"Path">> => string(),
 %%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
 %%   <<"RoleId">> => string(),
 %%   <<"RoleLastUsed">> => role_last_used(),
 %%   <<"RoleName">> => string(),
-%%   <<"RolePolicyList">> => list(policy_detail()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"RolePolicyList">> => list(policy_detail()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type role_detail() :: #{binary() => any()}.
 
 %% Example:
 %% list_open_id_connect_providers_response() :: #{
-%%   <<"OpenIDConnectProviderList">> => list(open_id_connect_provider_list_entry()())
+%%   <<"OpenIDConnectProviderList">> => list(open_id_connect_provider_list_entry())
 %% }
 -type list_open_id_connect_providers_response() :: #{binary() => any()}.
 
@@ -1030,7 +1030,7 @@
 
 %% Example:
 %% untag_user_request() :: #{
-%%   <<"TagKeys">> := list(string()()),
+%%   <<"TagKeys">> := list(string()),
 %%   <<"UserName">> := string()
 %% }
 -type untag_user_request() :: #{binary() => any()}.
@@ -1049,7 +1049,7 @@
 
 %% Example:
 %% list_instance_profiles_response() :: #{
-%%   <<"InstanceProfiles">> => list(instance_profile()()),
+%%   <<"InstanceProfiles">> => list(instance_profile()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -1101,7 +1101,7 @@
 %% list_service_specific_credentials_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"ServiceSpecificCredentials">> => list(service_specific_credential_metadata()())
+%%   <<"ServiceSpecificCredentials">> => list(service_specific_credential_metadata())
 %% }
 -type list_service_specific_credentials_response() :: #{binary() => any()}.
 
@@ -1128,11 +1128,11 @@
 %% Example:
 %% group_detail() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AttachedManagedPolicies">> => list(attached_policy()()),
+%%   <<"AttachedManagedPolicies">> => list(attached_policy()),
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"GroupId">> => string(),
 %%   <<"GroupName">> => string(),
-%%   <<"GroupPolicyList">> => list(policy_detail()()),
+%%   <<"GroupPolicyList">> => list(policy_detail()),
 %%   <<"Path">> => string()
 %% }
 -type group_detail() :: #{binary() => any()}.
@@ -1144,7 +1144,7 @@
 %%   <<"Path">> => string(),
 %%   <<"PrivateKey">> := string(),
 %%   <<"ServerCertificateName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type upload_server_certificate_request() :: #{binary() => any()}.
 
@@ -1167,7 +1167,7 @@
 %% create_instance_profile_request() :: #{
 %%   <<"InstanceProfileName">> := string(),
 %%   <<"Path">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_instance_profile_request() :: #{binary() => any()}.
 
@@ -1198,7 +1198,7 @@
 %%   <<"PermissionsBoundaryUsageCount">> => integer(),
 %%   <<"PolicyId">> => string(),
 %%   <<"PolicyName">> => string(),
-%%   <<"PolicyVersionList">> => list(policy_version()()),
+%%   <<"PolicyVersionList">> => list(policy_version()),
 %%   <<"UpdateDate">> => non_neg_integer()
 %% }
 -type managed_policy_detail() :: #{binary() => any()}.
@@ -1206,7 +1206,7 @@
 %% Example:
 %% untag_server_certificate_request() :: #{
 %%   <<"ServerCertificateName">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_server_certificate_request() :: #{binary() => any()}.
 
@@ -1302,7 +1302,7 @@
 %% list_role_tags_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_role_tags_response() :: #{binary() => any()}.
 
@@ -1317,7 +1317,7 @@
 %% list_mfa_device_tags_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_mfa_device_tags_response() :: #{binary() => any()}.
 
@@ -1331,7 +1331,7 @@
 %% Example:
 %% tag_mfa_device_request() :: #{
 %%   <<"SerialNumber">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_mfa_device_request() :: #{binary() => any()}.
 
@@ -1430,13 +1430,13 @@
 
 %% Example:
 %% get_context_keys_for_custom_policy_request() :: #{
-%%   <<"PolicyInputList">> := list(string()())
+%%   <<"PolicyInputList">> := list(string())
 %% }
 -type get_context_keys_for_custom_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_attached_user_policies_response() :: #{
-%%   <<"AttachedPolicies">> => list(attached_policy()()),
+%%   <<"AttachedPolicies">> => list(attached_policy()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -1485,7 +1485,7 @@
 %% list_users_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -1542,7 +1542,7 @@
 %% list_server_certificate_tags_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_server_certificate_tags_response() :: #{binary() => any()}.
 
@@ -1550,7 +1550,7 @@
 %% list_instance_profile_tags_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_instance_profile_tags_response() :: #{binary() => any()}.
 
@@ -1601,7 +1601,7 @@
 
 %% Example:
 %% list_policies_granting_service_access_entry() :: #{
-%%   <<"Policies">> => list(policy_granting_service_access()()),
+%%   <<"Policies">> => list(policy_granting_service_access()),
 %%   <<"ServiceNamespace">> => string()
 %% }
 -type list_policies_granting_service_access_entry() :: #{binary() => any()}.
@@ -1609,7 +1609,7 @@
 %% Example:
 %% untag_saml_provider_request() :: #{
 %%   <<"SAMLProviderArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_saml_provider_request() :: #{binary() => any()}.
 
@@ -1694,7 +1694,7 @@
 %% Example:
 %% tag_instance_profile_request() :: #{
 %%   <<"InstanceProfileName">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_instance_profile_request() :: #{binary() => any()}.
 
@@ -1702,14 +1702,14 @@
 %% list_virtual_mfa_devices_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"VirtualMFADevices">> => list(virtual_mfa_device()())
+%%   <<"VirtualMFADevices">> => list(virtual_mfa_device())
 %% }
 -type list_virtual_mfa_devices_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag_open_id_connect_provider_request() :: #{
 %%   <<"OpenIDConnectProviderArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_open_id_connect_provider_request() :: #{binary() => any()}.
 
@@ -1799,7 +1799,7 @@
 %% list_policies_granting_service_access_request() :: #{
 %%   <<"Arn">> := string(),
 %%   <<"Marker">> => string(),
-%%   <<"ServiceNamespaces">> := list(string()())
+%%   <<"ServiceNamespaces">> := list(string())
 %% }
 -type list_policies_granting_service_access_request() :: #{binary() => any()}.
 
@@ -1879,7 +1879,7 @@
 
 %% Example:
 %% list_instance_profiles_for_role_response() :: #{
-%%   <<"InstanceProfiles">> => list(instance_profile()()),
+%%   <<"InstanceProfiles">> => list(instance_profile()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -1931,7 +1931,7 @@
 
 %% Example:
 %% list_signing_certificates_response() :: #{
-%%   <<"Certificates">> => list(signing_certificate()()),
+%%   <<"Certificates">> => list(signing_certificate()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -1939,15 +1939,15 @@
 
 %% Example:
 %% simulate_principal_policy_request() :: #{
-%%   <<"ActionNames">> := list(string()()),
+%%   <<"ActionNames">> := list(string()),
 %%   <<"CallerArn">> => string(),
-%%   <<"ContextEntries">> => list(context_entry()()),
+%%   <<"ContextEntries">> => list(context_entry()),
 %%   <<"Marker">> => string(),
 %%   <<"MaxItems">> => integer(),
-%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()()),
-%%   <<"PolicyInputList">> => list(string()()),
+%%   <<"PermissionsBoundaryPolicyInputList">> => list(string()),
+%%   <<"PolicyInputList">> => list(string()),
 %%   <<"PolicySourceArn">> := string(),
-%%   <<"ResourceArns">> => list(string()()),
+%%   <<"ResourceArns">> => list(string()),
 %%   <<"ResourceHandlingOption">> => string(),
 %%   <<"ResourceOwner">> => string(),
 %%   <<"ResourcePolicy">> => string()
@@ -1956,12 +1956,12 @@
 
 %% Example:
 %% get_account_authorization_details_response() :: #{
-%%   <<"GroupDetailList">> => list(group_detail()()),
+%%   <<"GroupDetailList">> => list(group_detail()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Policies">> => list(managed_policy_detail()()),
-%%   <<"RoleDetailList">> => list(role_detail()()),
-%%   <<"UserDetailList">> => list(user_detail()())
+%%   <<"Policies">> => list(managed_policy_detail()),
+%%   <<"RoleDetailList">> => list(role_detail()),
+%%   <<"UserDetailList">> => list(user_detail())
 %% }
 -type get_account_authorization_details_response() :: #{binary() => any()}.
 
@@ -2016,7 +2016,7 @@
 %% list_user_tags_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_user_tags_response() :: #{binary() => any()}.
 
@@ -2029,7 +2029,7 @@
 %% Example:
 %% create_saml_provider_response() :: #{
 %%   <<"SAMLProviderArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_saml_provider_response() :: #{binary() => any()}.
 
@@ -2045,7 +2045,7 @@
 %%   <<"PermissionsBoundaryUsageCount">> => integer(),
 %%   <<"PolicyId">> => string(),
 %%   <<"PolicyName">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UpdateDate">> => non_neg_integer()
 %% }
 -type policy() :: #{binary() => any()}.
@@ -2106,7 +2106,7 @@
 %% Example:
 %% update_open_id_connect_provider_thumbprint_request() :: #{
 %%   <<"OpenIDConnectProviderArn">> := string(),
-%%   <<"ThumbprintList">> := list(string()())
+%%   <<"ThumbprintList">> := list(string())
 %% }
 -type update_open_id_connect_provider_thumbprint_request() :: #{binary() => any()}.
 
@@ -2119,15 +2119,15 @@
 %% Example:
 %% user_detail() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"AttachedManagedPolicies">> => list(attached_policy()()),
+%%   <<"AttachedManagedPolicies">> => list(attached_policy()),
 %%   <<"CreateDate">> => non_neg_integer(),
-%%   <<"GroupList">> => list(string()()),
+%%   <<"GroupList">> => list(string()),
 %%   <<"Path">> => string(),
 %%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserId">> => string(),
 %%   <<"UserName">> => string(),
-%%   <<"UserPolicyList">> => list(policy_detail()())
+%%   <<"UserPolicyList">> => list(policy_detail())
 %% }
 -type user_detail() :: #{binary() => any()}.
 
@@ -2140,7 +2140,7 @@
 %% Example:
 %% tag_policy_request() :: #{
 %%   <<"PolicyArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_policy_request() :: #{binary() => any()}.
 
@@ -2152,7 +2152,7 @@
 %%   <<"ServiceName">> => string(),
 %%   <<"ServiceNamespace">> => string(),
 %%   <<"TotalAuthenticatedEntities">> => integer(),
-%%   <<"TrackedActionsLastAccessed">> => list(tracked_action_last_accessed()())
+%%   <<"TrackedActionsLastAccessed">> => list(tracked_action_last_accessed())
 %% }
 -type service_last_accessed() :: #{binary() => any()}.
 
@@ -2179,7 +2179,7 @@
 %% Example:
 %% role_usage_type() :: #{
 %%   <<"Region">> => string(),
-%%   <<"Resources">> => list(string()())
+%%   <<"Resources">> => list(string())
 %% }
 -type role_usage_type() :: #{binary() => any()}.
 
@@ -2204,7 +2204,7 @@
 %% Example:
 %% untag_policy_request() :: #{
 %%   <<"PolicyArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_policy_request() :: #{binary() => any()}.
 
@@ -2234,7 +2234,7 @@
 
 %% Example:
 %% list_attached_group_policies_response() :: #{
-%%   <<"AttachedPolicies">> => list(attached_policy()()),
+%%   <<"AttachedPolicies">> => list(attached_policy()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -2259,13 +2259,13 @@
 %% list_user_policies_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"PolicyNames">> => list(string()())
+%%   <<"PolicyNames">> => list(string())
 %% }
 -type list_user_policies_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_account_aliases_response() :: #{
-%%   <<"AccountAliases">> => list(string()()),
+%%   <<"AccountAliases">> => list(string()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -2273,7 +2273,7 @@
 
 %% Example:
 %% get_context_keys_for_principal_policy_request() :: #{
-%%   <<"PolicyInputList">> => list(string()()),
+%%   <<"PolicyInputList">> => list(string()),
 %%   <<"PolicySourceArn">> := string()
 %% }
 -type get_context_keys_for_principal_policy_request() :: #{binary() => any()}.
@@ -2290,7 +2290,7 @@
 %% list_ssh_public_keys_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"SSHPublicKeys">> => list(ssh_public_key_metadata()())
+%%   <<"SSHPublicKeys">> => list(ssh_public_key_metadata())
 %% }
 -type list_ssh_public_keys_response() :: #{binary() => any()}.
 
@@ -2303,7 +2303,7 @@
 
 %% Example:
 %% get_service_last_accessed_details_with_entities_response() :: #{
-%%   <<"EntityDetailsList">> => list(entity_details()()),
+%%   <<"EntityDetailsList">> => list(entity_details()),
 %%   <<"Error">> => error_details(),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"JobCompletionDate">> => non_neg_integer(),
@@ -2328,7 +2328,7 @@
 
 %% Example:
 %% list_access_keys_response() :: #{
-%%   <<"AccessKeyMetadata">> => list(access_key_metadata()()),
+%%   <<"AccessKeyMetadata">> => list(access_key_metadata()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -2360,7 +2360,7 @@
 %%   <<"Group">> => group(),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Users">> => list(user()())
+%%   <<"Users">> => list(user())
 %% }
 -type get_group_response() :: #{binary() => any()}.
 
@@ -2371,7 +2371,7 @@
 %%   <<"PasswordLastUsed">> => non_neg_integer(),
 %%   <<"Path">> => string(),
 %%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserId">> => string(),
 %%   <<"UserName">> => string()
 %% }
@@ -2385,7 +2385,7 @@
 %%   <<"Path">> => string(),
 %%   <<"PermissionsBoundary">> => string(),
 %%   <<"RoleName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_role_request() :: #{binary() => any()}.
 
@@ -2498,7 +2498,7 @@
 %% Example:
 %% upload_server_certificate_response() :: #{
 %%   <<"ServerCertificateMetadata">> => server_certificate_metadata(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type upload_server_certificate_response() :: #{binary() => any()}.
 
@@ -2550,18 +2550,18 @@
 %%   <<"EvalDecision">> => list(any()),
 %%   <<"EvalDecisionDetails">> => map(),
 %%   <<"EvalResourceName">> => string(),
-%%   <<"MatchedStatements">> => list(statement()()),
-%%   <<"MissingContextValues">> => list(string()()),
+%%   <<"MatchedStatements">> => list(statement()),
+%%   <<"MissingContextValues">> => list(string()),
 %%   <<"OrganizationsDecisionDetail">> => organizations_decision_detail(),
 %%   <<"PermissionsBoundaryDecisionDetail">> => permissions_boundary_decision_detail(),
-%%   <<"ResourceSpecificResults">> => list(resource_specific_result()())
+%%   <<"ResourceSpecificResults">> => list(resource_specific_result())
 %% }
 -type evaluation_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_virtual_mfa_device_request() :: #{
 %%   <<"Path">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VirtualMFADeviceName">> := string()
 %% }
 -type create_virtual_mfa_device_request() :: #{binary() => any()}.
@@ -2575,7 +2575,7 @@
 %% Example:
 %% tag_server_certificate_request() :: #{
 %%   <<"ServerCertificateName">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_server_certificate_request() :: #{binary() => any()}.
 
@@ -2620,13 +2620,13 @@
 %% list_open_id_connect_provider_tags_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_open_id_connect_provider_tags_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_groups_response() :: #{
-%%   <<"Groups">> => list(group()()),
+%%   <<"Groups">> => list(group()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -2704,7 +2704,7 @@
 %% list_saml_provider_tags_response() :: #{
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_saml_provider_tags_response() :: #{binary() => any()}.
 
@@ -2734,7 +2734,7 @@
 %% Example:
 %% untag_role_request() :: #{
 %%   <<"RoleName">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_role_request() :: #{binary() => any()}.
 
@@ -2774,7 +2774,7 @@
 %% Example:
 %% tag_role_request() :: #{
 %%   <<"RoleName">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_role_request() :: #{binary() => any()}.
 
@@ -2816,20 +2816,20 @@
 %% Example:
 %% deletion_task_failure_reason_type() :: #{
 %%   <<"Reason">> => string(),
-%%   <<"RoleUsageList">> => list(role_usage_type()())
+%%   <<"RoleUsageList">> => list(role_usage_type())
 %% }
 -type deletion_task_failure_reason_type() :: #{binary() => any()}.
 
 %% Example:
 %% tag_user_request() :: #{
-%%   <<"Tags">> := list(tag()()),
+%%   <<"Tags">> := list(tag()),
 %%   <<"UserName">> := string()
 %% }
 -type tag_user_request() :: #{binary() => any()}.
 
 %% Example:
 %% simulate_policy_response() :: #{
-%%   <<"EvaluationResults">> => list(evaluation_result()()),
+%%   <<"EvaluationResults">> => list(evaluation_result()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -2838,7 +2838,7 @@
 %% Example:
 %% untag_mfa_device_request() :: #{
 %%   <<"SerialNumber">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_mfa_device_request() :: #{binary() => any()}.
 
@@ -2858,7 +2858,7 @@
 
 %% Example:
 %% list_attached_role_policies_response() :: #{
-%%   <<"AttachedPolicies">> => list(attached_policy()()),
+%%   <<"AttachedPolicies">> => list(attached_policy()),
 %%   <<"IsTruncated">> => boolean(),
 %%   <<"Marker">> => string()
 %% }
@@ -2869,15 +2869,15 @@
 %%   <<"CertificateBody">> => string(),
 %%   <<"CertificateChain">> => string(),
 %%   <<"ServerCertificateMetadata">> => server_certificate_metadata(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type server_certificate() :: #{binary() => any()}.
 
 %% Example:
 %% create_open_id_connect_provider_request() :: #{
-%%   <<"ClientIDList">> => list(string()()),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"ThumbprintList">> => list(string()()),
+%%   <<"ClientIDList">> => list(string()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ThumbprintList">> => list(string()),
 %%   <<"Url">> := string()
 %% }
 -type create_open_id_connect_provider_request() :: #{binary() => any()}.
@@ -2905,7 +2905,7 @@
 %% create_user_request() :: #{
 %%   <<"Path">> => string(),
 %%   <<"PermissionsBoundary">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UserName">> := string()
 %% }
 -type create_user_request() :: #{binary() => any()}.
@@ -2913,7 +2913,7 @@
 %% Example:
 %% untag_instance_profile_request() :: #{
 %%   <<"InstanceProfileName">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_instance_profile_request() :: #{binary() => any()}.
 

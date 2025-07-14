@@ -187,7 +187,7 @@
 
 %% Example:
 %% batch_get_variable_request() :: #{
-%%   <<"names">> := list(string()())
+%%   <<"names">> := list(string())
 %% }
 -type batch_get_variable_request() :: #{binary() => any()}.
 
@@ -211,9 +211,9 @@
 %%   <<"detectorId">> := string(),
 %%   <<"expression">> := string(),
 %%   <<"language">> := list(any()),
-%%   <<"outcomes">> := list(string()()),
+%%   <<"outcomes">> := list(string()),
 %%   <<"ruleId">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_rule_request() :: #{binary() => any()}.
 
@@ -243,7 +243,7 @@
 
 %% Example:
 %% a_t_i_training_metrics_value() :: #{
-%%   <<"metricDataPoints">> => list(a_t_i_metric_data_point()()),
+%%   <<"metricDataPoints">> => list(a_t_i_metric_data_point()),
 %%   <<"modelPerformance">> => a_t_i_model_performance()
 %% }
 -type a_t_i_training_metrics_value() :: #{binary() => any()}.
@@ -260,7 +260,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -279,9 +279,9 @@
 %% Example:
 %% create_list_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"elements">> => list(string()()),
+%%   <<"elements">> => list(string()),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"variableType">> => string()
 %% }
 -type create_list_request() :: #{binary() => any()}.
@@ -293,7 +293,7 @@
 %%   <<"majorVersionNumber">> := string(),
 %%   <<"modelId">> := string(),
 %%   <<"modelType">> := list(any()),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type update_model_version_request() :: #{binary() => any()}.
 
@@ -370,13 +370,13 @@
 %%   <<"inputPath">> := string(),
 %%   <<"jobId">> := string(),
 %%   <<"outputPath">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_batch_prediction_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_lists_metadata_result() :: #{
-%%   <<"lists">> => list(allow_deny_list()()),
+%%   <<"lists">> => list(allow_deny_list()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_lists_metadata_result() :: #{binary() => any()}.
@@ -406,7 +406,7 @@
 %% put_label_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type put_label_request() :: #{binary() => any()}.
 
@@ -422,9 +422,9 @@
 %%   <<"description">> => string(),
 %%   <<"expression">> := string(),
 %%   <<"language">> := list(any()),
-%%   <<"outcomes">> := list(string()()),
+%%   <<"outcomes">> := list(string()),
 %%   <<"rule">> := rule(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type update_rule_version_request() :: #{binary() => any()}.
 
@@ -455,14 +455,14 @@
 %%   <<"defaultValue">> := string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"variableType">> => string()
 %% }
 -type create_variable_request() :: #{binary() => any()}.
 
 %% Example:
 %% o_f_i_training_metrics_value() :: #{
-%%   <<"metricDataPoints">> => list(o_f_i_metric_data_point()()),
+%%   <<"metricDataPoints">> => list(o_f_i_metric_data_point()),
 %%   <<"modelPerformance">> => o_f_i_model_performance()
 %% }
 -type o_f_i_training_metrics_value() :: #{binary() => any()}.
@@ -534,7 +534,7 @@
 %%   <<"eventTypeName">> := string(),
 %%   <<"modelId">> := string(),
 %%   <<"modelType">> := list(any()),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_model_request() :: #{binary() => any()}.
 
@@ -556,7 +556,7 @@
 %% describe_detector_result() :: #{
 %%   <<"arn">> => string(),
 %%   <<"detectorId">> => string(),
-%%   <<"detectorVersionSummaries">> => list(detector_version_summary()()),
+%%   <<"detectorVersionSummaries">> => list(detector_version_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_detector_result() :: #{binary() => any()}.
@@ -629,7 +629,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -676,7 +676,7 @@
 %%   <<"expression">> => string(),
 %%   <<"language">> => list(any()),
 %%   <<"lastUpdatedTime">> => string(),
-%%   <<"outcomes">> => list(string()()),
+%%   <<"outcomes">> => list(string()),
 %%   <<"ruleId">> => string(),
 %%   <<"ruleVersion">> => string()
 %% }
@@ -707,7 +707,7 @@
 %% Example:
 %% training_data_schema() :: #{
 %%   <<"labelSchema">> => label_schema(),
-%%   <<"modelVariables">> => list(string()())
+%%   <<"modelVariables">> => list(string())
 %% }
 -type training_data_schema() :: #{binary() => any()}.
 
@@ -732,13 +732,13 @@
 %%   <<"description">> => string(),
 %%   <<"detectorId">> := string(),
 %%   <<"eventTypeName">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type put_detector_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_event_types_result() :: #{
-%%   <<"eventTypes">> => list(event_type()()),
+%%   <<"eventTypes">> => list(event_type()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_event_types_result() :: #{binary() => any()}.
@@ -746,7 +746,7 @@
 %% Example:
 %% send_event_request() :: #{
 %%   <<"assignedLabel">> => string(),
-%%   <<"entities">> := list(entity()()),
+%%   <<"entities">> := list(entity()),
 %%   <<"eventId">> := string(),
 %%   <<"eventTimestamp">> := string(),
 %%   <<"eventTypeName">> := string(),
@@ -804,10 +804,10 @@
 %%   <<"description">> => string(),
 %%   <<"detectorId">> := string(),
 %%   <<"detectorVersionId">> := string(),
-%%   <<"externalModelEndpoints">> := list(string()()),
-%%   <<"modelVersions">> => list(model_version()()),
+%%   <<"externalModelEndpoints">> := list(string()),
+%%   <<"modelVersions">> => list(model_version()),
 %%   <<"ruleExecutionMode">> => list(any()),
-%%   <<"rules">> := list(rule()())
+%%   <<"rules">> := list(rule())
 %% }
 -type update_detector_version_request() :: #{binary() => any()}.
 
@@ -845,7 +845,7 @@
 %%   <<"ingestedEventsDetail">> => ingested_events_detail(),
 %%   <<"modelId">> := string(),
 %%   <<"modelType">> := list(any()),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"trainingDataSchema">> := training_data_schema(),
 %%   <<"trainingDataSource">> := list(any())
 %% }
@@ -864,7 +864,7 @@
 %%   <<"inputPath">> := string(),
 %%   <<"jobId">> := string(),
 %%   <<"outputPath">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_batch_import_job_request() :: #{binary() => any()}.
 
@@ -882,15 +882,15 @@
 
 %% Example:
 %% batch_get_variable_result() :: #{
-%%   <<"errors">> => list(batch_get_variable_error()()),
-%%   <<"variables">> => list(variable()())
+%%   <<"errors">> => list(batch_get_variable_error()),
+%%   <<"variables">> => list(variable())
 %% }
 -type batch_get_variable_result() :: #{binary() => any()}.
 
 %% Example:
 %% prediction_explanations() :: #{
-%%   <<"aggregatedVariablesImpactExplanations">> => list(aggregated_variables_impact_explanation()()),
-%%   <<"variableImpactExplanations">> => list(variable_impact_explanation()())
+%%   <<"aggregatedVariablesImpactExplanations">> => list(aggregated_variables_impact_explanation()),
+%%   <<"variableImpactExplanations">> => list(variable_impact_explanation())
 %% }
 -type prediction_explanations() :: #{binary() => any()}.
 
@@ -950,7 +950,7 @@
 
 %% Example:
 %% variable_importance_metrics() :: #{
-%%   <<"logOddsMetrics">> => list(log_odds_metric()())
+%%   <<"logOddsMetrics">> => list(log_odds_metric())
 %% }
 -type variable_importance_metrics() :: #{binary() => any()}.
 
@@ -1015,8 +1015,8 @@
 
 %% Example:
 %% data_validation_metrics() :: #{
-%%   <<"fieldLevelMessages">> => list(field_validation_message()()),
-%%   <<"fileLevelMessages">> => list(file_validation_message()())
+%%   <<"fieldLevelMessages">> => list(field_validation_message()),
+%%   <<"fileLevelMessages">> => list(file_validation_message())
 %% }
 -type data_validation_metrics() :: #{binary() => any()}.
 
@@ -1030,7 +1030,7 @@
 
 %% Example:
 %% t_f_i_training_metrics_value() :: #{
-%%   <<"metricDataPoints">> => list(t_f_i_metric_data_point()()),
+%%   <<"metricDataPoints">> => list(t_f_i_metric_data_point()),
 %%   <<"modelPerformance">> => t_f_i_model_performance()
 %% }
 -type t_f_i_training_metrics_value() :: #{binary() => any()}.
@@ -1052,14 +1052,14 @@
 
 %% Example:
 %% get_detectors_result() :: #{
-%%   <<"detectors">> => list(detector()()),
+%%   <<"detectors">> => list(detector()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_detectors_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_list_elements_result() :: #{
-%%   <<"elements">> => list(string()()),
+%%   <<"elements">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_list_elements_result() :: #{binary() => any()}.
@@ -1085,20 +1085,20 @@
 %% put_entity_type_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type put_entity_type_request() :: #{binary() => any()}.
 
 %% Example:
 %% training_metrics() :: #{
 %%   <<"auc">> => float(),
-%%   <<"metricDataPoints">> => list(metric_data_point()())
+%%   <<"metricDataPoints">> => list(metric_data_point())
 %% }
 -type training_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% batch_create_variable_result() :: #{
-%%   <<"errors">> => list(batch_create_variable_error()())
+%%   <<"errors">> => list(batch_create_variable_error())
 %% }
 -type batch_create_variable_result() :: #{binary() => any()}.
 
@@ -1121,15 +1121,15 @@
 
 %% Example:
 %% get_event_prediction_result() :: #{
-%%   <<"externalModelOutputs">> => list(external_model_outputs()()),
-%%   <<"modelScores">> => list(model_scores()()),
-%%   <<"ruleResults">> => list(rule_result()())
+%%   <<"externalModelOutputs">> => list(external_model_outputs()),
+%%   <<"modelScores">> => list(model_scores()),
+%%   <<"ruleResults">> => list(rule_result())
 %% }
 -type get_event_prediction_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_labels_result() :: #{
-%%   <<"labels">> => list(label()()),
+%%   <<"labels">> => list(label()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_labels_result() :: #{binary() => any()}.
@@ -1143,7 +1143,7 @@
 
 %% Example:
 %% get_entity_types_result() :: #{
-%%   <<"entityTypes">> => list(entity_type()()),
+%%   <<"entityTypes">> => list(entity_type()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_entity_types_result() :: #{binary() => any()}.
@@ -1189,7 +1189,7 @@
 %% put_outcome_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type put_outcome_request() :: #{binary() => any()}.
 
@@ -1270,13 +1270,13 @@
 
 %% Example:
 %% aggregated_variables_importance_metrics() :: #{
-%%   <<"logOddsMetrics">> => list(aggregated_log_odds_metric()())
+%%   <<"logOddsMetrics">> => list(aggregated_log_odds_metric())
 %% }
 -type aggregated_variables_importance_metrics() :: #{binary() => any()}.
 
 %% Example:
 %% get_models_result() :: #{
-%%   <<"models">> => list(model()()),
+%%   <<"models">> => list(model()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_models_result() :: #{binary() => any()}.
@@ -1299,8 +1299,8 @@
 
 %% Example:
 %% batch_create_variable_request() :: #{
-%%   <<"tags">> => list(tag()()),
-%%   <<"variableEntries">> := list(variable_entry()())
+%%   <<"tags">> => list(tag()),
+%%   <<"variableEntries">> := list(variable_entry())
 %% }
 -type batch_create_variable_request() :: #{binary() => any()}.
 
@@ -1313,7 +1313,7 @@
 %% Example:
 %% list_tags_for_resource_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_result() :: #{binary() => any()}.
 
@@ -1340,7 +1340,7 @@
 
 %% Example:
 %% evaluated_model_version() :: #{
-%%   <<"evaluations">> => list(model_version_evaluation()()),
+%%   <<"evaluations">> => list(model_version_evaluation()),
 %%   <<"modelId">> => string(),
 %%   <<"modelType">> => string(),
 %%   <<"modelVersion">> => string()
@@ -1355,7 +1355,7 @@
 
 %% Example:
 %% describe_model_versions_result() :: #{
-%%   <<"modelVersionDetails">> => list(model_version_detail()()),
+%%   <<"modelVersionDetails">> => list(model_version_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_model_versions_result() :: #{binary() => any()}.
@@ -1363,7 +1363,7 @@
 %% Example:
 %% event() :: #{
 %%   <<"currentLabel">> => string(),
-%%   <<"entities">> => list(entity()()),
+%%   <<"entities">> => list(entity()),
 %%   <<"eventId">> => string(),
 %%   <<"eventTimestamp">> => string(),
 %%   <<"eventTypeName">> => string(),
@@ -1398,11 +1398,11 @@
 %% create_detector_version_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"detectorId">> := string(),
-%%   <<"externalModelEndpoints">> => list(string()()),
-%%   <<"modelVersions">> => list(model_version()()),
+%%   <<"externalModelEndpoints">> => list(string()),
+%%   <<"modelVersions">> => list(model_version()),
 %%   <<"ruleExecutionMode">> => list(any()),
-%%   <<"rules">> := list(rule()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"rules">> := list(rule()),
+%%   <<"tags">> => list(tag())
 %% }
 -type create_detector_version_request() :: #{binary() => any()}.
 
@@ -1416,7 +1416,7 @@
 
 %% Example:
 %% get_external_models_result() :: #{
-%%   <<"externalModels">> => list(external_model()()),
+%%   <<"externalModels">> => list(external_model()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_external_models_result() :: #{binary() => any()}.
@@ -1445,16 +1445,16 @@
 %%   <<"detectorVersionStatus">> => string(),
 %%   <<"entityId">> => string(),
 %%   <<"entityType">> => string(),
-%%   <<"evaluatedExternalModels">> => list(evaluated_external_model()()),
-%%   <<"evaluatedModelVersions">> => list(evaluated_model_version()()),
+%%   <<"evaluatedExternalModels">> => list(evaluated_external_model()),
+%%   <<"evaluatedModelVersions">> => list(evaluated_model_version()),
 %%   <<"eventId">> => string(),
 %%   <<"eventTimestamp">> => string(),
 %%   <<"eventTypeName">> => string(),
-%%   <<"eventVariables">> => list(event_variable_summary()()),
-%%   <<"outcomes">> => list(string()()),
+%%   <<"eventVariables">> => list(event_variable_summary()),
+%%   <<"outcomes">> => list(string()),
 %%   <<"predictionTimestamp">> => string(),
 %%   <<"ruleExecutionMode">> => list(any()),
-%%   <<"rules">> => list(evaluated_rule()())
+%%   <<"rules">> => list(evaluated_rule())
 %% }
 -type get_event_prediction_metadata_result() :: #{binary() => any()}.
 
@@ -1467,7 +1467,7 @@
 %% Example:
 %% aggregated_log_odds_metric() :: #{
 %%   <<"aggregatedVariablesImportance">> => float(),
-%%   <<"variableNames">> => list(string()())
+%%   <<"variableNames">> => list(string())
 %% }
 -type aggregated_log_odds_metric() :: #{binary() => any()}.
 
@@ -1480,7 +1480,7 @@
 
 %% Example:
 %% rule_result() :: #{
-%%   <<"outcomes">> => list(string()()),
+%%   <<"outcomes">> => list(string()),
 %%   <<"ruleId">> => string()
 %% }
 -type rule_result() :: #{binary() => any()}.
@@ -1517,7 +1517,7 @@
 %% Example:
 %% update_list_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"elements">> => list(string()()),
+%%   <<"elements">> => list(string()),
 %%   <<"name">> := string(),
 %%   <<"updateMode">> => list(any()),
 %%   <<"variableType">> => string()
@@ -1598,7 +1598,7 @@
 %%   <<"expression">> => string(),
 %%   <<"expressionWithValues">> => string(),
 %%   <<"matched">> => boolean(),
-%%   <<"outcomes">> => list(string()()),
+%%   <<"outcomes">> => list(string()),
 %%   <<"ruleId">> => string(),
 %%   <<"ruleVersion">> => string()
 %% }
@@ -1606,7 +1606,7 @@
 
 %% Example:
 %% get_batch_prediction_jobs_result() :: #{
-%%   <<"batchPredictions">> => list(batch_prediction()()),
+%%   <<"batchPredictions">> => list(batch_prediction()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_batch_prediction_jobs_result() :: #{binary() => any()}.
@@ -1631,12 +1631,12 @@
 %%   <<"arn">> => string(),
 %%   <<"createdTime">> => string(),
 %%   <<"description">> => string(),
-%%   <<"entityTypes">> => list(string()()),
+%%   <<"entityTypes">> => list(string()),
 %%   <<"eventIngestion">> => list(any()),
 %%   <<"eventOrchestration">> => event_orchestration(),
-%%   <<"eventVariables">> => list(string()()),
+%%   <<"eventVariables">> => list(string()),
 %%   <<"ingestedEventStatistics">> => ingested_event_statistics(),
-%%   <<"labels">> => list(string()()),
+%%   <<"labels">> => list(string()),
 %%   <<"lastUpdatedTime">> => string(),
 %%   <<"name">> => string()
 %% }
@@ -1659,7 +1659,7 @@
 %% Example:
 %% get_variables_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"variables">> => list(variable()())
+%%   <<"variables">> => list(variable())
 %% }
 -type get_variables_result() :: #{binary() => any()}.
 
@@ -1710,13 +1710,13 @@
 %%   <<"modelEndpointStatus">> := list(any()),
 %%   <<"modelSource">> := list(any()),
 %%   <<"outputConfiguration">> := model_output_configuration(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type put_external_model_request() :: #{binary() => any()}.
 
 %% Example:
 %% aggregated_variables_impact_explanation() :: #{
-%%   <<"eventVariableNames">> => list(string()()),
+%%   <<"eventVariableNames">> => list(string()),
 %%   <<"logOddsImpact">> => float(),
 %%   <<"relativeImpact">> => string()
 %% }
@@ -1747,7 +1747,7 @@
 
 %% Example:
 %% list_event_predictions_result() :: #{
-%%   <<"eventPredictionSummaries">> => list(event_prediction_summary()()),
+%%   <<"eventPredictionSummaries">> => list(event_prediction_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_event_predictions_result() :: #{binary() => any()}.
@@ -1787,7 +1787,7 @@
 %% get_event_prediction_request() :: #{
 %%   <<"detectorId">> := string(),
 %%   <<"detectorVersionId">> => string(),
-%%   <<"entities">> := list(entity()()),
+%%   <<"entities">> := list(entity()),
 %%   <<"eventId">> := string(),
 %%   <<"eventTimestamp">> := string(),
 %%   <<"eventTypeName">> := string(),
@@ -1846,7 +1846,7 @@
 %% Example:
 %% get_outcomes_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"outcomes">> => list(outcome()())
+%%   <<"outcomes">> => list(outcome())
 %% }
 -type get_outcomes_result() :: #{binary() => any()}.
 
@@ -1858,7 +1858,7 @@
 
 %% Example:
 %% get_batch_import_jobs_result() :: #{
-%%   <<"batchImports">> => list(batch_import()()),
+%%   <<"batchImports">> => list(batch_import()),
 %%   <<"nextToken">> => string()
 %% }
 -type get_batch_import_jobs_result() :: #{binary() => any()}.
@@ -1866,13 +1866,13 @@
 %% Example:
 %% put_event_type_request() :: #{
 %%   <<"description">> => string(),
-%%   <<"entityTypes">> := list(string()()),
+%%   <<"entityTypes">> := list(string()),
 %%   <<"eventIngestion">> => list(any()),
 %%   <<"eventOrchestration">> => event_orchestration(),
-%%   <<"eventVariables">> := list(string()()),
-%%   <<"labels">> => list(string()()),
+%%   <<"eventVariables">> := list(string()),
+%%   <<"labels">> => list(string()),
 %%   <<"name">> := string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type put_event_type_request() :: #{binary() => any()}.
 
@@ -1926,7 +1926,7 @@
 %% Example:
 %% get_rules_result() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"ruleDetails">> => list(rule_detail()())
+%%   <<"ruleDetails">> => list(rule_detail())
 %% }
 -type get_rules_result() :: #{binary() => any()}.
 
@@ -1949,11 +1949,11 @@
 %%   <<"description">> => string(),
 %%   <<"detectorId">> => string(),
 %%   <<"detectorVersionId">> => string(),
-%%   <<"externalModelEndpoints">> => list(string()()),
+%%   <<"externalModelEndpoints">> => list(string()),
 %%   <<"lastUpdatedTime">> => string(),
-%%   <<"modelVersions">> => list(model_version()()),
+%%   <<"modelVersions">> => list(model_version()),
 %%   <<"ruleExecutionMode">> => list(any()),
-%%   <<"rules">> => list(rule()()),
+%%   <<"rules">> => list(rule()),
 %%   <<"status">> => list(any())
 %% }
 -type get_detector_version_result() :: #{binary() => any()}.

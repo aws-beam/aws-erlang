@@ -48,7 +48,7 @@
 
 %% Example:
 %% record() :: #{
-%%   <<"values">> => list(list()())
+%%   <<"values">> => list(list())
 %% }
 -type record() :: #{binary() => any()}.
 
@@ -56,7 +56,7 @@
 %% Example:
 %% result_set_metadata() :: #{
 %%   <<"columnCount">> => float(),
-%%   <<"columnMetadata">> => list(column_metadata()())
+%%   <<"columnMetadata">> => list(column_metadata())
 %% }
 -type result_set_metadata() :: #{binary() => any()}.
 
@@ -140,7 +140,7 @@
 
 %% Example:
 %% update_result() :: #{
-%%   <<"generatedFields">> => list(list()())
+%%   <<"generatedFields">> => list(list())
 %% }
 -type update_result() :: #{binary() => any()}.
 
@@ -157,7 +157,7 @@
 %% Example:
 %% batch_execute_statement_request() :: #{
 %%   <<"database">> => string(),
-%%   <<"parameterSets">> => list(list(sql_parameter()())()),
+%%   <<"parameterSets">> => list(list(sql_parameter())()),
 %%   <<"resourceArn">> => string(),
 %%   <<"schema">> => string(),
 %%   <<"secretArn">> => string(),
@@ -179,11 +179,11 @@
 
 %% Example:
 %% execute_statement_response() :: #{
-%%   <<"columnMetadata">> => list(column_metadata()()),
+%%   <<"columnMetadata">> => list(column_metadata()),
 %%   <<"formattedRecords">> => string(),
-%%   <<"generatedFields">> => list(list()()),
+%%   <<"generatedFields">> => list(list()),
 %%   <<"numberOfRecordsUpdated">> => float(),
-%%   <<"records">> => list(list(list()())())
+%%   <<"records">> => list(list(list())())
 %% }
 -type execute_statement_response() :: #{binary() => any()}.
 
@@ -287,7 +287,7 @@
 
 %% Example:
 %% result_frame() :: #{
-%%   <<"records">> => list(record()()),
+%%   <<"records">> => list(record()),
 %%   <<"resultSetMetadata">> => result_set_metadata()
 %% }
 -type result_frame() :: #{binary() => any()}.
@@ -299,7 +299,7 @@
 %%   <<"database">> => string(),
 %%   <<"formatRecordsAs">> => string(),
 %%   <<"includeResultMetadata">> => boolean(),
-%%   <<"parameters">> => list(sql_parameter()()),
+%%   <<"parameters">> => list(sql_parameter()),
 %%   <<"resourceArn">> => string(),
 %%   <<"resultSetOptions">> => result_set_options(),
 %%   <<"schema">> => string(),
@@ -327,21 +327,21 @@
 
 %% Example:
 %% execute_sql_response() :: #{
-%%   <<"sqlStatementResults">> => list(sql_statement_result()())
+%%   <<"sqlStatementResults">> => list(sql_statement_result())
 %% }
 -type execute_sql_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% struct_value() :: #{
-%%   <<"attributes">> => list(list()())
+%%   <<"attributes">> => list(list())
 %% }
 -type struct_value() :: #{binary() => any()}.
 
 
 %% Example:
 %% batch_execute_statement_response() :: #{
-%%   <<"updateResults">> => list(update_result()())
+%%   <<"updateResults">> => list(update_result())
 %% }
 -type batch_execute_statement_response() :: #{binary() => any()}.
 

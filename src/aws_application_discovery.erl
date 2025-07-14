@@ -172,7 +172,7 @@
 
 %% Example:
 %% describe_continuous_exports_response() :: #{
-%%   <<"descriptions">> => list(continuous_export_description()()),
+%%   <<"descriptions">> => list(continuous_export_description()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_continuous_exports_response() :: #{binary() => any()}.
@@ -211,14 +211,14 @@
 
 %% Example:
 %% batch_delete_agents_request() :: #{
-%%   <<"deleteAgents">> := list(delete_agent()())
+%%   <<"deleteAgents">> := list(delete_agent())
 %% }
 -type batch_delete_agents_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_tags_request() :: #{
-%%   <<"configurationIds">> := list(string()()),
-%%   <<"tags">> => list(tag()())
+%%   <<"configurationIds">> := list(string()),
+%%   <<"tags">> => list(tag())
 %% }
 -type delete_tags_request() :: #{binary() => any()}.
 
@@ -260,7 +260,7 @@
 
 %% Example:
 %% list_configurations_response() :: #{
-%%   <<"configurations">> => list(map()()),
+%%   <<"configurations">> => list(map()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_configurations_response() :: #{binary() => any()}.
@@ -268,7 +268,7 @@
 %% Example:
 %% list_server_neighbors_response() :: #{
 %%   <<"knownDependencyCount">> => float(),
-%%   <<"neighbors">> => list(neighbor_connection_detail()()),
+%%   <<"neighbors">> => list(neighbor_connection_detail()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_server_neighbors_response() :: #{binary() => any()}.
@@ -283,7 +283,7 @@
 
 %% Example:
 %% describe_export_configurations_response() :: #{
-%%   <<"exportsInfo">> => list(export_info()()),
+%%   <<"exportsInfo">> => list(export_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_export_configurations_response() :: #{binary() => any()}.
@@ -292,34 +292,34 @@
 %% export_filter() :: #{
 %%   <<"condition">> => string(),
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type export_filter() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_configuration_items_from_application_request() :: #{
 %%   <<"applicationConfigurationId">> := string(),
-%%   <<"configurationIds">> := list(string()())
+%%   <<"configurationIds">> := list(string())
 %% }
 -type disassociate_configuration_items_from_application_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_export_tasks_response() :: #{
-%%   <<"exportsInfo">> => list(export_info()()),
+%%   <<"exportsInfo">> => list(export_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_export_tasks_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_configurations_request() :: #{
-%%   <<"configurationIds">> := list(string()())
+%%   <<"configurationIds">> := list(string())
 %% }
 -type describe_configurations_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_agents_request() :: #{
-%%   <<"agentIds">> => list(string()()),
-%%   <<"filters">> => list(filter()()),
+%%   <<"agentIds">> => list(string()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -342,13 +342,13 @@
 %% Example:
 %% describe_tags_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(configuration_tag()())
+%%   <<"tags">> => list(configuration_tag())
 %% }
 -type describe_tags_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_batch_delete_configuration_task_request() :: #{
-%%   <<"configurationIds">> := list(string()()),
+%%   <<"configurationIds">> := list(string()),
 %%   <<"configurationType">> := list(any())
 %% }
 -type start_batch_delete_configuration_task_request() :: #{binary() => any()}.
@@ -356,10 +356,10 @@
 %% Example:
 %% list_configurations_request() :: #{
 %%   <<"configurationType">> := list(any()),
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"orderBy">> => list(order_by_element()())
+%%   <<"orderBy">> => list(order_by_element())
 %% }
 -type list_configurations_request() :: #{binary() => any()}.
 
@@ -371,8 +371,8 @@
 
 %% Example:
 %% create_tags_request() :: #{
-%%   <<"configurationIds">> := list(string()()),
-%%   <<"tags">> := list(tag()())
+%%   <<"configurationIds">> := list(string()),
+%%   <<"tags">> := list(tag())
 %% }
 -type create_tags_request() :: #{binary() => any()}.
 
@@ -417,7 +417,7 @@
 %% Example:
 %% agent_info() :: #{
 %%   <<"agentId">> => string(),
-%%   <<"agentNetworkInfoList">> => list(agent_network_info()()),
+%%   <<"agentNetworkInfoList">> => list(agent_network_info()),
 %%   <<"agentType">> => string(),
 %%   <<"collectionStatus">> => string(),
 %%   <<"connectorId">> => string(),
@@ -438,8 +438,8 @@
 
 %% Example:
 %% describe_export_tasks_request() :: #{
-%%   <<"exportIds">> => list(string()()),
-%%   <<"filters">> => list(export_filter()()),
+%%   <<"exportIds">> => list(string()),
+%%   <<"filters">> => list(export_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -457,7 +457,7 @@
 
 %% Example:
 %% batch_delete_import_data_response() :: #{
-%%   <<"errors">> => list(batch_delete_import_data_error()())
+%%   <<"errors">> => list(batch_delete_import_data_error())
 %% }
 -type batch_delete_import_data_response() :: #{binary() => any()}.
 
@@ -489,7 +489,7 @@
 
 %% Example:
 %% batch_delete_agents_response() :: #{
-%%   <<"errors">> => list(batch_delete_agent_error()())
+%%   <<"errors">> => list(batch_delete_agent_error())
 %% }
 -type batch_delete_agents_response() :: #{binary() => any()}.
 
@@ -524,7 +524,7 @@
 %% ec2_recommendations_export_preferences() :: #{
 %%   <<"cpuPerformanceMetricBasis">> => usage_metric_basis(),
 %%   <<"enabled">> => boolean(),
-%%   <<"excludedInstanceTypes">> => list(string()()),
+%%   <<"excludedInstanceTypes">> => list(string()),
 %%   <<"preferredRegion">> => string(),
 %%   <<"ramPerformanceMetricBasis">> => usage_metric_basis(),
 %%   <<"reservedInstanceOptions">> => reserved_instance_options(),
@@ -534,7 +534,7 @@
 
 %% Example:
 %% stop_data_collection_by_agent_ids_response() :: #{
-%%   <<"agentsConfigurationStatus">> => list(agent_configuration_status()())
+%%   <<"agentsConfigurationStatus">> => list(agent_configuration_status())
 %% }
 -type stop_data_collection_by_agent_ids_response() :: #{binary() => any()}.
 
@@ -547,7 +547,7 @@
 %% Example:
 %% associate_configuration_items_to_application_request() :: #{
 %%   <<"applicationConfigurationId">> := string(),
-%%   <<"configurationIds">> := list(string()())
+%%   <<"configurationIds">> := list(string())
 %% }
 -type associate_configuration_items_to_application_request() :: #{binary() => any()}.
 
@@ -572,7 +572,7 @@
 
 %% Example:
 %% describe_configurations_response() :: #{
-%%   <<"configurations">> => list(map()())
+%%   <<"configurations">> => list(map())
 %% }
 -type describe_configurations_response() :: #{binary() => any()}.
 
@@ -580,7 +580,7 @@
 %% filter() :: #{
 %%   <<"condition">> => string(),
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -604,7 +604,7 @@
 
 %% Example:
 %% start_data_collection_by_agent_ids_request() :: #{
-%%   <<"agentIds">> := list(string()())
+%%   <<"agentIds">> := list(string())
 %% }
 -type start_data_collection_by_agent_ids_request() :: #{binary() => any()}.
 
@@ -645,11 +645,11 @@
 %% Example:
 %% batch_delete_configuration_task() :: #{
 %%   <<"configurationType">> => list(any()),
-%%   <<"deletedConfigurations">> => list(string()()),
-%%   <<"deletionWarnings">> => list(deletion_warning()()),
+%%   <<"deletedConfigurations">> => list(string()),
+%%   <<"deletionWarnings">> => list(deletion_warning()),
 %%   <<"endTime">> => non_neg_integer(),
-%%   <<"failedConfigurations">> => list(failed_configuration()()),
-%%   <<"requestedConfigurations">> => list(string()()),
+%%   <<"failedConfigurations">> => list(failed_configuration()),
+%%   <<"requestedConfigurations">> => list(string()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
 %%   <<"taskId">> => string()
@@ -659,7 +659,7 @@
 %% Example:
 %% batch_delete_import_data_request() :: #{
 %%   <<"deleteHistory">> => boolean(),
-%%   <<"importTaskIds">> := list(string()())
+%%   <<"importTaskIds">> := list(string())
 %% }
 -type batch_delete_import_data_request() :: #{binary() => any()}.
 
@@ -671,7 +671,7 @@
 
 %% Example:
 %% describe_continuous_exports_request() :: #{
-%%   <<"exportIds">> => list(string()()),
+%%   <<"exportIds">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -679,7 +679,7 @@
 
 %% Example:
 %% stop_data_collection_by_agent_ids_request() :: #{
-%%   <<"agentIds">> := list(string()())
+%%   <<"agentIds">> := list(string())
 %% }
 -type stop_data_collection_by_agent_ids_request() :: #{binary() => any()}.
 
@@ -697,7 +697,7 @@
 
 %% Example:
 %% start_data_collection_by_agent_ids_response() :: #{
-%%   <<"agentsConfigurationStatus">> => list(agent_configuration_status()())
+%%   <<"agentsConfigurationStatus">> => list(agent_configuration_status())
 %% }
 -type start_data_collection_by_agent_ids_response() :: #{binary() => any()}.
 
@@ -712,13 +712,13 @@
 %% Example:
 %% import_task_filter() :: #{
 %%   <<"name">> => list(any()),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type import_task_filter() :: #{binary() => any()}.
 
 %% Example:
 %% describe_agents_response() :: #{
-%%   <<"agentsInfo">> => list(agent_info()()),
+%%   <<"agentsInfo">> => list(agent_info()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_agents_response() :: #{binary() => any()}.
@@ -727,7 +727,7 @@
 %% start_export_task_request() :: #{
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"exportDataFormat">> => list(list(any())()),
-%%   <<"filters">> => list(export_filter()()),
+%%   <<"filters">> => list(export_filter()),
 %%   <<"preferences">> => list(),
 %%   <<"startTime">> => non_neg_integer()
 %% }
@@ -741,7 +741,7 @@
 
 %% Example:
 %% describe_export_configurations_request() :: #{
-%%   <<"exportIds">> => list(string()()),
+%%   <<"exportIds">> => list(string()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -787,7 +787,7 @@
 %% list_server_neighbors_request() :: #{
 %%   <<"configurationId">> := string(),
 %%   <<"maxResults">> => integer(),
-%%   <<"neighborConfigurationIds">> => list(string()()),
+%%   <<"neighborConfigurationIds">> => list(string()),
 %%   <<"nextToken">> => string(),
 %%   <<"portInformationNeeded">> => boolean()
 %% }
@@ -834,7 +834,7 @@
 
 %% Example:
 %% describe_tags_request() :: #{
-%%   <<"filters">> => list(tag_filter()()),
+%%   <<"filters">> => list(tag_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -843,13 +843,13 @@
 %% Example:
 %% tag_filter() :: #{
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type tag_filter() :: #{binary() => any()}.
 
 %% Example:
 %% describe_import_tasks_request() :: #{
-%%   <<"filters">> => list(import_task_filter()()),
+%%   <<"filters">> => list(import_task_filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -877,13 +877,13 @@
 %% Example:
 %% describe_import_tasks_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tasks">> => list(import_task()())
+%%   <<"tasks">> => list(import_task())
 %% }
 -type describe_import_tasks_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_applications_request() :: #{
-%%   <<"configurationIds">> := list(string()())
+%%   <<"configurationIds">> := list(string())
 %% }
 -type delete_applications_request() :: #{binary() => any()}.
 

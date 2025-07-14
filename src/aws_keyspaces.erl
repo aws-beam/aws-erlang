@@ -99,7 +99,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -112,7 +112,7 @@
 
 %% Example:
 %% update_table_request() :: #{
-%%   <<"addColumns">> => list(column_definition()()),
+%%   <<"addColumns">> => list(column_definition()),
 %%   <<"autoScalingSpecification">> => auto_scaling_specification(),
 %%   <<"capacitySpecification">> => capacity_specification(),
 %%   <<"cdcSpecification">> => cdc_specification(),
@@ -121,7 +121,7 @@
 %%   <<"encryptionSpecification">> => encryption_specification(),
 %%   <<"keyspaceName">> := string(),
 %%   <<"pointInTimeRecovery">> => point_in_time_recovery(),
-%%   <<"replicaSpecifications">> => list(replica_specification()()),
+%%   <<"replicaSpecifications">> => list(replica_specification()),
 %%   <<"tableName">> := string(),
 %%   <<"ttl">> => time_to_live()
 %% }
@@ -136,14 +136,14 @@
 %% Example:
 %% list_types_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"types">> => list(string()())
+%%   <<"types">> => list(string())
 %% }
 -type list_types_response() :: #{binary() => any()}.
 
 %% Example:
 %% keyspace_summary() :: #{
 %%   <<"keyspaceName">> => string(),
-%%   <<"replicationRegions">> => list(string()()),
+%%   <<"replicationRegions">> => list(string()),
 %%   <<"replicationStrategy">> => string(),
 %%   <<"resourceArn">> => string()
 %% }
@@ -159,24 +159,24 @@
 
 %% Example:
 %% replication_specification() :: #{
-%%   <<"regionList">> => list(string()()),
+%%   <<"regionList">> => list(string()),
 %%   <<"replicationStrategy">> => string()
 %% }
 -type replication_specification() :: #{binary() => any()}.
 
 %% Example:
 %% list_keyspaces_response() :: #{
-%%   <<"keyspaces">> := list(keyspace_summary()()),
+%%   <<"keyspaces">> := list(keyspace_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_keyspaces_response() :: #{binary() => any()}.
 
 %% Example:
 %% schema_definition() :: #{
-%%   <<"allColumns">> => list(column_definition()()),
-%%   <<"clusteringKeys">> => list(clustering_key()()),
-%%   <<"partitionKeys">> => list(partition_key()()),
-%%   <<"staticColumns">> => list(static_column()())
+%%   <<"allColumns">> => list(column_definition()),
+%%   <<"clusteringKeys">> => list(clustering_key()),
+%%   <<"partitionKeys">> => list(partition_key()),
+%%   <<"staticColumns">> => list(static_column())
 %% }
 -type schema_definition() :: #{binary() => any()}.
 
@@ -190,7 +190,7 @@
 %% cdc_specification() :: #{
 %%   <<"propagateTags">> => string(),
 %%   <<"status">> => string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"viewType">> => string()
 %% }
 -type cdc_specification() :: #{binary() => any()}.
@@ -237,10 +237,10 @@
 %%   <<"encryptionSpecification">> => encryption_specification(),
 %%   <<"keyspaceName">> := string(),
 %%   <<"pointInTimeRecovery">> => point_in_time_recovery(),
-%%   <<"replicaSpecifications">> => list(replica_specification()()),
+%%   <<"replicaSpecifications">> => list(replica_specification()),
 %%   <<"schemaDefinition">> := schema_definition(),
 %%   <<"tableName">> := string(),
-%%   <<"tags">> => list(tag()()),
+%%   <<"tags">> => list(tag()),
 %%   <<"ttl">> => time_to_live()
 %% }
 -type create_table_request() :: #{binary() => any()}.
@@ -257,7 +257,7 @@
 %%   <<"keyspaceName">> := string(),
 %%   <<"latestStreamArn">> => string(),
 %%   <<"pointInTimeRecovery">> => point_in_time_recovery_summary(),
-%%   <<"replicaSpecifications">> => list(replica_specification_summary()()),
+%%   <<"replicaSpecifications">> => list(replica_specification_summary()),
 %%   <<"resourceArn">> := string(),
 %%   <<"schemaDefinition">> => schema_definition(),
 %%   <<"status">> => string(),
@@ -281,13 +281,13 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceArn">> := string(),
-%%   <<"tags">> := list(tag()())
+%%   <<"tags">> := list(tag())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_type_request() :: #{
-%%   <<"fieldDefinitions">> := list(field_definition()()),
+%%   <<"fieldDefinitions">> := list(field_definition()),
 %%   <<"keyspaceName">> := string(),
 %%   <<"typeName">> := string()
 %% }
@@ -305,7 +305,7 @@
 %% create_keyspace_request() :: #{
 %%   <<"keyspaceName">> := string(),
 %%   <<"replicationSpecification">> => replication_specification(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type create_keyspace_request() :: #{binary() => any()}.
 
@@ -326,9 +326,9 @@
 
 %% Example:
 %% get_type_response() :: #{
-%%   <<"directParentTypes">> => list(string()()),
-%%   <<"directReferringTables">> => list(string()()),
-%%   <<"fieldDefinitions">> => list(field_definition()()),
+%%   <<"directParentTypes">> => list(string()),
+%%   <<"directReferringTables">> => list(string()),
+%%   <<"fieldDefinitions">> => list(field_definition()),
 %%   <<"keyspaceArn">> => string(),
 %%   <<"keyspaceName">> => string(),
 %%   <<"lastModifiedTimestamp">> => non_neg_integer(),
@@ -354,7 +354,7 @@
 %% Example:
 %% list_tables_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tables">> => list(table_summary()())
+%%   <<"tables">> => list(table_summary())
 %% }
 -type list_tables_response() :: #{binary() => any()}.
 
@@ -413,7 +413,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -498,11 +498,11 @@
 %%   <<"capacitySpecificationOverride">> => capacity_specification(),
 %%   <<"encryptionSpecificationOverride">> => encryption_specification(),
 %%   <<"pointInTimeRecoveryOverride">> => point_in_time_recovery(),
-%%   <<"replicaSpecifications">> => list(replica_specification()()),
+%%   <<"replicaSpecifications">> => list(replica_specification()),
 %%   <<"restoreTimestamp">> => non_neg_integer(),
 %%   <<"sourceKeyspaceName">> := string(),
 %%   <<"sourceTableName">> := string(),
-%%   <<"tagsOverride">> => list(tag()()),
+%%   <<"tagsOverride">> => list(tag()),
 %%   <<"targetKeyspaceName">> := string(),
 %%   <<"targetTableName">> := string()
 %% }
@@ -539,8 +539,8 @@
 %% Example:
 %% get_keyspace_response() :: #{
 %%   <<"keyspaceName">> := string(),
-%%   <<"replicationGroupStatuses">> => list(replication_group_status()()),
-%%   <<"replicationRegions">> => list(string()()),
+%%   <<"replicationGroupStatuses">> => list(replication_group_status()),
+%%   <<"replicationRegions">> => list(string()),
 %%   <<"replicationStrategy">> := string(),
 %%   <<"resourceArn">> := string()
 %% }
@@ -571,7 +571,7 @@
 %% get_table_auto_scaling_settings_response() :: #{
 %%   <<"autoScalingSpecification">> => auto_scaling_specification(),
 %%   <<"keyspaceName">> => string(),
-%%   <<"replicaSpecifications">> => list(replica_auto_scaling_specification()()),
+%%   <<"replicaSpecifications">> => list(replica_auto_scaling_specification()),
 %%   <<"resourceArn">> => string(),
 %%   <<"tableName">> => string()
 %% }

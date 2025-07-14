@@ -50,7 +50,7 @@
 
 %% Example:
 %% list_asset_contracts_output() :: #{
-%%   <<"contracts">> => list(asset_contract()()),
+%%   <<"contracts">> => list(asset_contract()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_contracts_output() :: #{binary() => any()}.
@@ -191,8 +191,8 @@
 
 %% Example:
 %% batch_get_token_balance_output() :: #{
-%%   <<"errors">> => list(batch_get_token_balance_error_item()()),
-%%   <<"tokenBalances">> => list(batch_get_token_balance_output_item()())
+%%   <<"errors">> => list(batch_get_token_balance_error_item()),
+%%   <<"tokenBalances">> => list(batch_get_token_balance_output_item())
 %% }
 -type batch_get_token_balance_output() :: #{binary() => any()}.
 
@@ -300,7 +300,7 @@
 
 %% Example:
 %% batch_get_token_balance_input() :: #{
-%%   <<"getTokenBalanceInputs">> => list(batch_get_token_balance_input_item()())
+%%   <<"getTokenBalanceInputs">> => list(batch_get_token_balance_input_item())
 %% }
 -type batch_get_token_balance_input() :: #{binary() => any()}.
 
@@ -318,7 +318,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()()),
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => string(),
 %%   <<"reason">> => string()
 %% }
@@ -335,7 +335,7 @@
 
 %% Example:
 %% confirmation_status_filter() :: #{
-%%   <<"include">> => list(string()())
+%%   <<"include">> => list(string())
 %% }
 -type confirmation_status_filter() :: #{binary() => any()}.
 
@@ -387,7 +387,7 @@
 
 %% Example:
 %% list_filtered_transaction_events_output() :: #{
-%%   <<"events">> => list(transaction_event()()),
+%%   <<"events">> => list(transaction_event()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_filtered_transaction_events_output() :: #{binary() => any()}.
@@ -405,14 +405,14 @@
 %% Example:
 %% list_token_balances_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"tokenBalances">> => list(token_balance()())
+%%   <<"tokenBalances">> => list(token_balance())
 %% }
 -type list_token_balances_output() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_transaction_events_output() :: #{
-%%   <<"events">> => list(transaction_event()()),
+%%   <<"events">> => list(transaction_event()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_transaction_events_output() :: #{binary() => any()}.
@@ -442,7 +442,7 @@
 
 %% Example:
 %% address_identifier_filter() :: #{
-%%   <<"transactionEventToAddress">> => list(string()())
+%%   <<"transactionEventToAddress">> => list(string())
 %% }
 -type address_identifier_filter() :: #{binary() => any()}.
 
@@ -476,7 +476,7 @@
 %% Example:
 %% list_transactions_output() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"transactions">> => list(transaction_output_item()())
+%%   <<"transactions">> => list(transaction_output_item())
 %% }
 -type list_transactions_output() :: #{binary() => any()}.
 

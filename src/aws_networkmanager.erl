@@ -309,7 +309,7 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -323,7 +323,7 @@
 
 %% Example:
 %% edge_override() :: #{
-%%   <<"EdgeSets">> => list(list(string()())()),
+%%   <<"EdgeSets">> => list(list(string())()),
 %%   <<"UseEdge">> => string()
 %% }
 -type edge_override() :: #{binary() => any()}.
@@ -338,7 +338,7 @@
 
 %% Example:
 %% get_devices_request() :: #{
-%%   <<"DeviceIds">> => list(string()()),
+%%   <<"DeviceIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"SiteId">> => string()
@@ -361,7 +361,7 @@
 %% Example:
 %% get_transit_gateway_connect_peer_associations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayConnectPeerAssociations">> => list(transit_gateway_connect_peer_association()())
+%%   <<"TransitGatewayConnectPeerAssociations">> => list(transit_gateway_connect_peer_association())
 %% }
 -type get_transit_gateway_connect_peer_associations_response() :: #{binary() => any()}.
 
@@ -370,7 +370,7 @@
 %% get_transit_gateway_connect_peer_associations_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayConnectPeerArns">> => list(string()())
+%%   <<"TransitGatewayConnectPeerArns">> => list(string())
 %% }
 -type get_transit_gateway_connect_peer_associations_request() :: #{binary() => any()}.
 
@@ -393,7 +393,7 @@
 
 %% Example:
 %% get_network_resource_counts_response() :: #{
-%%   <<"NetworkResourceCounts">> => list(network_resource_count()()),
+%%   <<"NetworkResourceCounts">> => list(network_resource_count()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_network_resource_counts_response() :: #{binary() => any()}.
@@ -413,8 +413,8 @@
 
 %% Example:
 %% service_insertion_segments() :: #{
-%%   <<"SendTo">> => list(string()()),
-%%   <<"SendVia">> => list(string()())
+%%   <<"SendTo">> => list(string()),
+%%   <<"SendVia">> => list(string())
 %% }
 -type service_insertion_segments() :: #{binary() => any()}.
 
@@ -463,7 +463,7 @@
 
 %% Example:
 %% get_network_resources_response() :: #{
-%%   <<"NetworkResources">> => list(network_resource()()),
+%%   <<"NetworkResources">> => list(network_resource()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_network_resources_response() :: #{binary() => any()}.
@@ -478,7 +478,7 @@
 
 %% Example:
 %% get_connect_peer_associations_request() :: #{
-%%   <<"ConnectPeerIds">> => list(string()()),
+%%   <<"ConnectPeerIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -488,7 +488,7 @@
 %% Example:
 %% create_global_network_request() :: #{
 %%   <<"Description">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_global_network_request() :: #{binary() => any()}.
 
@@ -504,7 +504,7 @@
 %% vpc_attachment() :: #{
 %%   <<"Attachment">> => attachment(),
 %%   <<"Options">> => vpc_options(),
-%%   <<"SubnetArns">> => list(string()())
+%%   <<"SubnetArns">> => list(string())
 %% }
 -type vpc_attachment() :: #{binary() => any()}.
 
@@ -529,7 +529,7 @@
 
 %% Example:
 %% get_core_network_change_events_response() :: #{
-%%   <<"CoreNetworkChangeEvents">> => list(core_network_change_event()()),
+%%   <<"CoreNetworkChangeEvents">> => list(core_network_change_event()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_core_network_change_events_response() :: #{binary() => any()}.
@@ -537,7 +537,7 @@
 
 %% Example:
 %% get_core_network_change_set_response() :: #{
-%%   <<"CoreNetworkChanges">> => list(core_network_change()()),
+%%   <<"CoreNetworkChanges">> => list(core_network_change()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_core_network_change_set_response() :: #{binary() => any()}.
@@ -546,7 +546,7 @@
 %% Example:
 %% get_network_resource_relationships_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Relationships">> => list(relationship()())
+%%   <<"Relationships">> => list(relationship())
 %% }
 -type get_network_resource_relationships_response() :: #{binary() => any()}.
 
@@ -573,7 +573,7 @@
 
 %% Example:
 %% describe_global_networks_response() :: #{
-%%   <<"GlobalNetworks">> => list(global_network()()),
+%%   <<"GlobalNetworks">> => list(global_network()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_global_networks_response() :: #{binary() => any()}.
@@ -581,7 +581,7 @@
 
 %% Example:
 %% get_network_telemetry_response() :: #{
-%%   <<"NetworkTelemetry">> => list(network_telemetry()()),
+%%   <<"NetworkTelemetry">> => list(network_telemetry()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_network_telemetry_response() :: #{binary() => any()}.
@@ -600,9 +600,9 @@
 
 %% Example:
 %% connect_peer_configuration() :: #{
-%%   <<"BgpConfigurations">> => list(connect_peer_bgp_configuration()()),
+%%   <<"BgpConfigurations">> => list(connect_peer_bgp_configuration()),
 %%   <<"CoreNetworkAddress">> => string(),
-%%   <<"InsideCidrBlocks">> => list(string()()),
+%%   <<"InsideCidrBlocks">> => list(string()),
 %%   <<"PeerAddress">> => string(),
 %%   <<"Protocol">> => list(any())
 %% }
@@ -613,7 +613,7 @@
 %% create_transit_gateway_route_table_attachment_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"PeeringId">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayRouteTableArn">> := string()
 %% }
 -type create_transit_gateway_route_table_attachment_request() :: #{binary() => any()}.
@@ -621,7 +621,7 @@
 
 %% Example:
 %% get_connections_request() :: #{
-%%   <<"ConnectionIds">> => list(string()()),
+%%   <<"ConnectionIds">> => list(string()),
 %%   <<"DeviceId">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -650,7 +650,7 @@
 %% create_site_to_site_vpn_attachment_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpnConnectionArn">> := string()
 %% }
 -type create_site_to_site_vpn_attachment_request() :: #{binary() => any()}.
@@ -662,7 +662,7 @@
 %%   <<"Description">> => string(),
 %%   <<"GlobalNetworkId">> := string(),
 %%   <<"PolicyDocument">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_core_network_request() :: #{binary() => any()}.
 
@@ -671,7 +671,7 @@
 %% proposed_network_function_group_change() :: #{
 %%   <<"AttachmentPolicyRuleNumber">> => integer(),
 %%   <<"NetworkFunctionGroupName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type proposed_network_function_group_change() :: #{binary() => any()}.
 
@@ -696,8 +696,8 @@
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
-%%   <<"EdgeLocations">> => list(string()()),
-%%   <<"LastModificationErrors">> => list(attachment_error()()),
+%%   <<"EdgeLocations">> => list(string()),
+%%   <<"LastModificationErrors">> => list(attachment_error()),
 %%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"ProposedNetworkFunctionGroupChange">> => proposed_network_function_group_change(),
@@ -705,7 +705,7 @@
 %%   <<"ResourceArn">> => string(),
 %%   <<"SegmentName">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type attachment() :: #{binary() => any()}.
@@ -749,7 +749,7 @@
 %%   <<"Provider">> => string(),
 %%   <<"SiteId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string()
 %% }
 -type link() :: #{binary() => any()}.
@@ -792,9 +792,9 @@
 
 %% Example:
 %% update_vpc_attachment_request() :: #{
-%%   <<"AddSubnetArns">> => list(string()()),
+%%   <<"AddSubnetArns">> => list(string()),
 %%   <<"Options">> => vpc_options(),
-%%   <<"RemoveSubnetArns">> => list(string()())
+%%   <<"RemoveSubnetArns">> => list(string())
 %% }
 -type update_vpc_attachment_request() :: #{binary() => any()}.
 
@@ -808,7 +808,7 @@
 
 %% Example:
 %% describe_global_networks_request() :: #{
-%%   <<"GlobalNetworkIds">> => list(string()()),
+%%   <<"GlobalNetworkIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -818,14 +818,14 @@
 %% Example:
 %% route_analysis_path() :: #{
 %%   <<"CompletionStatus">> => route_analysis_completion(),
-%%   <<"Path">> => list(path_component()())
+%%   <<"Path">> => list(path_component())
 %% }
 -type route_analysis_path() :: #{binary() => any()}.
 
 
 %% Example:
 %% get_connections_response() :: #{
-%%   <<"Connections">> => list(connection()()),
+%%   <<"Connections">> => list(connection()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_connections_response() :: #{binary() => any()}.
@@ -834,13 +834,13 @@
 %% Example:
 %% get_network_routes_request() :: #{
 %%   <<"DestinationFilters">> => map(),
-%%   <<"ExactCidrMatches">> => list(string()()),
-%%   <<"LongestPrefixMatches">> => list(string()()),
-%%   <<"PrefixListIds">> => list(string()()),
+%%   <<"ExactCidrMatches">> => list(string()),
+%%   <<"LongestPrefixMatches">> => list(string()),
+%%   <<"PrefixListIds">> => list(string()),
 %%   <<"RouteTableIdentifier">> := route_table_identifier(),
 %%   <<"States">> => list(list(any())()),
-%%   <<"SubnetOfMatches">> => list(string()()),
-%%   <<"SupernetOfMatches">> => list(string()()),
+%%   <<"SubnetOfMatches">> => list(string()),
+%%   <<"SupernetOfMatches">> => list(string()),
 %%   <<"Types">> => list(list(any())())
 %% }
 -type get_network_routes_request() :: #{binary() => any()}.
@@ -855,7 +855,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -870,7 +870,7 @@
 %% Example:
 %% get_network_routes_response() :: #{
 %%   <<"CoreNetworkSegmentEdge">> => core_network_segment_edge_identifier(),
-%%   <<"NetworkRoutes">> => list(network_route()()),
+%%   <<"NetworkRoutes">> => list(network_route()),
 %%   <<"RouteTableArn">> => string(),
 %%   <<"RouteTableTimestamp">> => non_neg_integer(),
 %%   <<"RouteTableType">> => list(any())
@@ -905,7 +905,7 @@
 %% create_site_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Location">> => location(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_site_request() :: #{binary() => any()}.
 
@@ -929,8 +929,8 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
 %%   <<"DirectConnectGatewayArn">> := string(),
-%%   <<"EdgeLocations">> := list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"EdgeLocations">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_direct_connect_gateway_attachment_request() :: #{binary() => any()}.
 
@@ -946,7 +946,7 @@
 %% get_transit_gateway_registrations_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayArns">> => list(string()())
+%%   <<"TransitGatewayArns">> => list(string())
 %% }
 -type get_transit_gateway_registrations_request() :: #{binary() => any()}.
 
@@ -977,7 +977,7 @@
 %% core_network_edge() :: #{
 %%   <<"Asn">> => float(),
 %%   <<"EdgeLocation">> => string(),
-%%   <<"InsideCidrBlocks">> => list(string()())
+%%   <<"InsideCidrBlocks">> => list(string())
 %% }
 -type core_network_edge() :: #{binary() => any()}.
 
@@ -1022,7 +1022,7 @@
 %%   <<"CoreNetworkId">> := string(),
 %%   <<"EdgeLocation">> := string(),
 %%   <<"Options">> := connect_attachment_options(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransportAttachmentId">> := string()
 %% }
 -type create_connect_attachment_request() :: #{binary() => any()}.
@@ -1071,7 +1071,7 @@
 
 %% Example:
 %% when_sent_to() :: #{
-%%   <<"WhenSentToSegmentsList">> => list(string()())
+%%   <<"WhenSentToSegmentsList">> => list(string())
 %% }
 -type when_sent_to() :: #{binary() => any()}.
 
@@ -1080,7 +1080,7 @@
 %% create_transit_gateway_peering_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"TransitGatewayArn">> := string()
 %% }
 -type create_transit_gateway_peering_request() :: #{binary() => any()}.
@@ -1108,13 +1108,13 @@
 %%   <<"Cidr">> => string(),
 %%   <<"DestinationIdentifier">> => string(),
 %%   <<"DnsSupport">> => boolean(),
-%%   <<"EdgeLocations">> => list(string()()),
-%%   <<"InsideCidrBlocks">> => list(string()()),
+%%   <<"EdgeLocations">> => list(string()),
+%%   <<"InsideCidrBlocks">> => list(string()),
 %%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"SecurityGroupReferencingSupport">> => boolean(),
 %%   <<"SegmentName">> => string(),
-%%   <<"ServiceInsertionActions">> => list(service_insertion_action()()),
-%%   <<"SharedSegments">> => list(string()()),
+%%   <<"ServiceInsertionActions">> => list(service_insertion_action()),
+%%   <<"SharedSegments">> => list(string()),
 %%   <<"VpnEcmpSupport">> => boolean()
 %% }
 -type core_network_change_values() :: #{binary() => any()}.
@@ -1171,7 +1171,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Provider">> => string(),
 %%   <<"SiteId">> := string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string()
 %% }
 -type create_link_request() :: #{binary() => any()}.
@@ -1187,7 +1187,7 @@
 %% Example:
 %% network_route() :: #{
 %%   <<"DestinationCidrBlock">> => string(),
-%%   <<"Destinations">> => list(network_route_destination()()),
+%%   <<"Destinations">> => list(network_route_destination()),
 %%   <<"PrefixListId">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Type">> => list(any())
@@ -1261,7 +1261,7 @@
 %%   <<"GlobalNetworkId">> => string(),
 %%   <<"LinkId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type connection() :: #{binary() => any()}.
 
@@ -1299,7 +1299,7 @@
 %% get_sites_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"SiteIds">> => list(string()())
+%%   <<"SiteIds">> => list(string())
 %% }
 -type get_sites_request() :: #{binary() => any()}.
 
@@ -1323,7 +1323,7 @@
 
 %% Example:
 %% get_connect_peer_associations_response() :: #{
-%%   <<"ConnectPeerAssociations">> => list(connect_peer_association()()),
+%%   <<"ConnectPeerAssociations">> => list(connect_peer_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_connect_peer_associations_response() :: #{binary() => any()}.
@@ -1335,13 +1335,13 @@
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
-%%   <<"LastModificationErrors">> => list(peering_error()()),
+%%   <<"LastModificationErrors">> => list(peering_error()),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"PeeringId">> => string(),
 %%   <<"PeeringType">> => list(any()),
 %%   <<"ResourceArn">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type peering() :: #{binary() => any()}.
 
@@ -1395,7 +1395,7 @@
 %%   <<"SiteArn">> => string(),
 %%   <<"SiteId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type site() :: #{binary() => any()}.
 
@@ -1406,12 +1406,12 @@
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
-%%   <<"Edges">> => list(core_network_edge()()),
+%%   <<"Edges">> => list(core_network_edge()),
 %%   <<"GlobalNetworkId">> => string(),
-%%   <<"NetworkFunctionGroups">> => list(core_network_network_function_group()()),
-%%   <<"Segments">> => list(core_network_segment()()),
+%%   <<"NetworkFunctionGroups">> => list(core_network_network_function_group()),
+%%   <<"Segments">> => list(core_network_segment()),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type core_network() :: #{binary() => any()}.
 
@@ -1439,7 +1439,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"TagList">> => list(tag()())
+%%   <<"TagList">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -1524,7 +1524,7 @@
 
 %% Example:
 %% list_core_networks_response() :: #{
-%%   <<"CoreNetworks">> => list(core_network_summary()()),
+%%   <<"CoreNetworks">> => list(core_network_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_core_networks_response() :: #{binary() => any()}.
@@ -1539,7 +1539,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
 %%   <<"SubnetArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type connect_peer_summary() :: #{binary() => any()}.
 
@@ -1569,7 +1569,7 @@
 
 %% Example:
 %% core_network_policy_exception() :: #{
-%%   <<"Errors">> => list(core_network_policy_error()()),
+%%   <<"Errors">> => list(core_network_policy_error()),
 %%   <<"Message">> => string()
 %% }
 -type core_network_policy_exception() :: #{binary() => any()}.
@@ -1586,7 +1586,7 @@
 %%   <<"GlobalNetworkArn">> => string(),
 %%   <<"GlobalNetworkId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type global_network() :: #{binary() => any()}.
 
@@ -1600,7 +1600,7 @@
 
 %% Example:
 %% get_links_response() :: #{
-%%   <<"Links">> => list(link()()),
+%%   <<"Links">> => list(link()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_links_response() :: #{binary() => any()}.
@@ -1626,8 +1626,8 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
 %%   <<"Options">> => vpc_options(),
-%%   <<"SubnetArns">> := list(string()()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"SubnetArns">> := list(string()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcArn">> := string()
 %% }
 -type create_vpc_attachment_request() :: #{binary() => any()}.
@@ -1648,7 +1648,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"PolicyDocument">> => string(),
-%%   <<"PolicyErrors">> => list(core_network_policy_error()()),
+%%   <<"PolicyErrors">> => list(core_network_policy_error()),
 %%   <<"PolicyVersionId">> => integer()
 %% }
 -type core_network_policy() :: #{binary() => any()}.
@@ -1684,7 +1684,7 @@
 
 %% Example:
 %% get_link_associations_response() :: #{
-%%   <<"LinkAssociations">> => list(link_association()()),
+%%   <<"LinkAssociations">> => list(link_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_link_associations_response() :: #{binary() => any()}.
@@ -1707,7 +1707,7 @@
 %%   <<"Model">> => string(),
 %%   <<"SerialNumber">> => string(),
 %%   <<"SiteId">> => string(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string(),
 %%   <<"Vendor">> => string()
 %% }
@@ -1723,7 +1723,7 @@
 
 %% Example:
 %% update_direct_connect_gateway_attachment_request() :: #{
-%%   <<"EdgeLocations">> => list(string()())
+%%   <<"EdgeLocations">> => list(string())
 %% }
 -type update_direct_connect_gateway_attachment_request() :: #{binary() => any()}.
 
@@ -1804,7 +1804,7 @@
 
 %% Example:
 %% get_devices_response() :: #{
-%%   <<"Devices">> => list(device()()),
+%%   <<"Devices">> => list(device()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_devices_response() :: #{binary() => any()}.
@@ -1899,7 +1899,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Fields">> => list(validation_exception_field()()),
+%%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => string(),
 %%   <<"Reason">> => list(any())
 %% }
@@ -1919,9 +1919,9 @@
 
 %% Example:
 %% core_network_segment() :: #{
-%%   <<"EdgeLocations">> => list(string()()),
+%%   <<"EdgeLocations">> => list(string()),
 %%   <<"Name">> => string(),
-%%   <<"SharedSegments">> => list(string()())
+%%   <<"SharedSegments">> => list(string())
 %% }
 -type core_network_segment() :: #{binary() => any()}.
 
@@ -1938,7 +1938,7 @@
 %% proposed_segment_change() :: #{
 %%   <<"AttachmentPolicyRuleNumber">> => integer(),
 %%   <<"SegmentName">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type proposed_segment_change() :: #{binary() => any()}.
 
@@ -1965,7 +1965,7 @@
 
 %% Example:
 %% core_network_network_function_group() :: #{
-%%   <<"EdgeLocations">> => list(string()()),
+%%   <<"EdgeLocations">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"Segments">> => service_insertion_segments()
 %% }
@@ -1974,7 +1974,7 @@
 
 %% Example:
 %% get_customer_gateway_associations_request() :: #{
-%%   <<"CustomerGatewayArns">> => list(string()()),
+%%   <<"CustomerGatewayArns">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1990,7 +1990,7 @@
 
 %% Example:
 %% get_customer_gateway_associations_response() :: #{
-%%   <<"CustomerGatewayAssociations">> => list(customer_gateway_association()()),
+%%   <<"CustomerGatewayAssociations">> => list(customer_gateway_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_customer_gateway_associations_response() :: #{binary() => any()}.
@@ -2018,7 +2018,7 @@
 %%   <<"ResourceArn">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceType">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type network_resource() :: #{binary() => any()}.
 
@@ -2106,10 +2106,10 @@
 %%   <<"CoreNetworkId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"EdgeLocation">> => string(),
-%%   <<"LastModificationErrors">> => list(connect_peer_error()()),
+%%   <<"LastModificationErrors">> => list(connect_peer_error()),
 %%   <<"State">> => list(any()),
 %%   <<"SubnetArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type connect_peer() :: #{binary() => any()}.
 
@@ -2125,7 +2125,7 @@
 
 %% Example:
 %% get_links_request() :: #{
-%%   <<"LinkIds">> => list(string()()),
+%%   <<"LinkIds">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"Provider">> => string(),
@@ -2172,7 +2172,7 @@
 %%   <<"SerialNumber">> => string(),
 %%   <<"SiteId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string(),
 %%   <<"Vendor">> => string()
 %% }
@@ -2217,7 +2217,7 @@
 %%   <<"GlobalNetworkId">> => string(),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"State">> => list(any()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type core_network_summary() :: #{binary() => any()}.
 
@@ -2228,7 +2228,7 @@
 
 %% Example:
 %% list_core_network_policy_versions_response() :: #{
-%%   <<"CoreNetworkPolicyVersions">> => list(core_network_policy_version()()),
+%%   <<"CoreNetworkPolicyVersions">> => list(core_network_policy_version()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_core_network_policy_versions_response() :: #{binary() => any()}.
@@ -2236,7 +2236,7 @@
 
 %% Example:
 %% list_connect_peers_response() :: #{
-%%   <<"ConnectPeers">> => list(connect_peer_summary()()),
+%%   <<"ConnectPeers">> => list(connect_peer_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_connect_peers_response() :: #{binary() => any()}.
@@ -2245,7 +2245,7 @@
 %% Example:
 %% list_peerings_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Peerings">> => list(peering()())
+%%   <<"Peerings">> => list(peering())
 %% }
 -type list_peerings_response() :: #{binary() => any()}.
 
@@ -2281,7 +2281,7 @@
 %% Example:
 %% get_sites_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Sites">> => list(site()())
+%%   <<"Sites">> => list(site())
 %% }
 -type get_sites_response() :: #{binary() => any()}.
 
@@ -2300,7 +2300,7 @@
 %% Example:
 %% get_transit_gateway_registrations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TransitGatewayRegistrations">> => list(transit_gateway_registration()())
+%%   <<"TransitGatewayRegistrations">> => list(transit_gateway_registration())
 %% }
 -type get_transit_gateway_registrations_response() :: #{binary() => any()}.
 
@@ -2326,14 +2326,14 @@
 %%   <<"Description">> => string(),
 %%   <<"DeviceId">> := string(),
 %%   <<"LinkId">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_connection_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_attachments_response() :: #{
-%%   <<"Attachments">> => list(attachment()()),
+%%   <<"Attachments">> => list(attachment()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_attachments_response() :: #{binary() => any()}.
@@ -2366,7 +2366,7 @@
 
 %% Example:
 %% organization_status() :: #{
-%%   <<"AccountStatusList">> => list(account_status()()),
+%%   <<"AccountStatusList">> => list(account_status()),
 %%   <<"OrganizationAwsServiceAccessStatus">> => string(),
 %%   <<"OrganizationId">> => string(),
 %%   <<"SLRDeploymentStatus">> => string()
@@ -2376,8 +2376,8 @@
 
 %% Example:
 %% via() :: #{
-%%   <<"NetworkFunctionGroups">> => list(network_function_group()()),
-%%   <<"WithEdgeOverrides">> => list(edge_override()())
+%%   <<"NetworkFunctionGroups">> => list(network_function_group()),
+%%   <<"WithEdgeOverrides">> => list(edge_override())
 %% }
 -type via() :: #{binary() => any()}.
 
@@ -2388,10 +2388,10 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectAttachmentId">> := string(),
 %%   <<"CoreNetworkAddress">> => string(),
-%%   <<"InsideCidrBlocks">> => list(string()()),
+%%   <<"InsideCidrBlocks">> => list(string()),
 %%   <<"PeerAddress">> := string(),
 %%   <<"SubnetArn">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_connect_peer_request() :: #{binary() => any()}.
 

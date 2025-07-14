@@ -127,7 +127,7 @@
 
 %% Example:
 %% list_deployment_jobs_response() :: #{
-%%   <<"deploymentJobs">> => list(deployment_job()()),
+%%   <<"deploymentJobs">> => list(deployment_job()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_deployment_jobs_response() :: #{binary() => any()}.
@@ -153,12 +153,12 @@
 %% describe_deployment_job_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()()),
+%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()),
 %%   <<"deploymentConfig">> => deployment_config(),
 %%   <<"failureCode">> => list(any()),
 %%   <<"failureReason">> => string(),
 %%   <<"fleet">> => string(),
-%%   <<"robotDeploymentSummary">> => list(robot_deployment()()),
+%%   <<"robotDeploymentSummary">> => list(robot_deployment()),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -168,14 +168,14 @@
 %% Example:
 %% list_simulation_applications_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"simulationApplicationSummaries">> => list(simulation_application_summary()())
+%%   <<"simulationApplicationSummaries">> => list(simulation_application_summary())
 %% }
 -type list_simulation_applications_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_world_export_jobs_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -233,7 +233,7 @@
 %%   <<"revisionId">> => string(),
 %%   <<"robotSoftwareSuite">> => robot_software_suite(),
 %%   <<"simulationSoftwareSuite">> => simulation_software_suite(),
-%%   <<"sources">> => list(source()()),
+%%   <<"sources">> => list(source()),
 %%   <<"tags">> => map(),
 %%   <<"version">> => string()
 %% }
@@ -246,11 +246,11 @@
 %%   <<"batchPolicy">> => batch_policy(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdRequests">> => list(simulation_job_summary()()),
-%%   <<"failedRequests">> => list(failed_create_simulation_job_request()()),
+%%   <<"createdRequests">> => list(simulation_job_summary()),
+%%   <<"failedRequests">> => list(failed_create_simulation_job_request()),
 %%   <<"failureCode">> => list(any()),
 %%   <<"failureReason">> => string(),
-%%   <<"pendingRequests">> => list(simulation_job_request()()),
+%%   <<"pendingRequests">> => list(simulation_job_request()),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -268,7 +268,7 @@
 %%   <<"renderingEngine">> => rendering_engine(),
 %%   <<"robotSoftwareSuite">> := robot_software_suite(),
 %%   <<"simulationSoftwareSuite">> := simulation_software_suite(),
-%%   <<"sources">> => list(source_config()()),
+%%   <<"sources">> => list(source_config()),
 %%   <<"tags">> => map()
 %% }
 -type create_simulation_application_request() :: #{binary() => any()}.
@@ -338,7 +338,7 @@
 %% create_deployment_job_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()()),
+%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()),
 %%   <<"deploymentConfig">> => deployment_config(),
 %%   <<"failureCode">> => list(any()),
 %%   <<"failureReason">> => string(),
@@ -397,7 +397,7 @@
 %%   <<"currentRevisionId">> => string(),
 %%   <<"environment">> => environment(),
 %%   <<"robotSoftwareSuite">> := robot_software_suite(),
-%%   <<"sources">> => list(source_config()())
+%%   <<"sources">> => list(source_config())
 %% }
 -type update_robot_application_request() :: #{binary() => any()}.
 
@@ -405,14 +405,14 @@
 %% Example:
 %% simulation_job_request() :: #{
 %%   <<"compute">> => compute(),
-%%   <<"dataSources">> => list(data_source_config()()),
+%%   <<"dataSources">> => list(data_source_config()),
 %%   <<"failureBehavior">> => list(any()),
 %%   <<"iamRole">> => string(),
 %%   <<"loggingConfig">> => logging_config(),
 %%   <<"maxJobDurationInSeconds">> => float(),
 %%   <<"outputLocation">> => output_location(),
-%%   <<"robotApplications">> => list(robot_application_config()()),
-%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"robotApplications">> => list(robot_application_config()),
+%%   <<"simulationApplications">> => list(simulation_application_config()),
 %%   <<"tags">> => map(),
 %%   <<"useDefaultApplications">> => boolean(),
 %%   <<"vpcConfig">> => vpc_config()
@@ -422,7 +422,7 @@
 
 %% Example:
 %% list_fleets_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -474,11 +474,11 @@
 %% simulation_job_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"computeType">> => list(any()),
-%%   <<"dataSourceNames">> => list(string()()),
+%%   <<"dataSourceNames">> => list(string()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"robotApplicationNames">> => list(string()()),
-%%   <<"simulationApplicationNames">> => list(string()()),
+%%   <<"robotApplicationNames">> => list(string()),
+%%   <<"simulationApplicationNames">> => list(string()),
 %%   <<"status">> => list(any())
 %% }
 -type simulation_job_summary() :: #{binary() => any()}.
@@ -486,7 +486,7 @@
 
 %% Example:
 %% list_fleets_response() :: #{
-%%   <<"fleetDetails">> => list(fleet()()),
+%%   <<"fleetDetails">> => list(fleet()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fleets_response() :: #{binary() => any()}.
@@ -507,7 +507,7 @@
 %%   <<"name">> => string(),
 %%   <<"revisionId">> => string(),
 %%   <<"robotSoftwareSuite">> => robot_software_suite(),
-%%   <<"sources">> => list(source()()),
+%%   <<"sources">> => list(source()),
 %%   <<"version">> => string()
 %% }
 -type update_robot_application_response() :: #{binary() => any()}.
@@ -515,7 +515,7 @@
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string()())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -528,7 +528,7 @@
 %%   <<"renderingEngine">> => rendering_engine(),
 %%   <<"robotSoftwareSuite">> := robot_software_suite(),
 %%   <<"simulationSoftwareSuite">> := simulation_software_suite(),
-%%   <<"sources">> => list(source_config()())
+%%   <<"sources">> => list(source_config())
 %% }
 -type update_simulation_application_request() :: #{binary() => any()}.
 
@@ -538,7 +538,7 @@
 %%   <<"application">> := string(),
 %%   <<"currentRevisionId">> => string(),
 %%   <<"imageDigest">> => string(),
-%%   <<"s3Etags">> => list(string()())
+%%   <<"s3Etags">> => list(string())
 %% }
 -type create_robot_application_version_request() :: #{binary() => any()}.
 
@@ -593,7 +593,7 @@
 %%   <<"name">> => string(),
 %%   <<"revisionId">> => string(),
 %%   <<"robotSoftwareSuite">> => robot_software_suite(),
-%%   <<"sources">> => list(source()()),
+%%   <<"sources">> => list(source()),
 %%   <<"version">> => string()
 %% }
 -type create_robot_application_version_response() :: #{binary() => any()}.
@@ -609,7 +609,7 @@
 %% Example:
 %% create_deployment_job_request() :: #{
 %%   <<"clientRequestToken">> := string(),
-%%   <<"deploymentApplicationConfigs">> := list(deployment_application_config()()),
+%%   <<"deploymentApplicationConfigs">> := list(deployment_application_config()),
 %%   <<"deploymentConfig">> => deployment_config(),
 %%   <<"fleet">> := string(),
 %%   <<"tags">> => map()
@@ -665,7 +665,7 @@
 %% Example:
 %% list_world_generation_jobs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"worldGenerationJobSummaries">> => list(world_generation_job_summary()())
+%%   <<"worldGenerationJobSummaries">> => list(world_generation_job_summary())
 %% }
 -type list_world_generation_jobs_response() :: #{binary() => any()}.
 
@@ -678,7 +678,7 @@
 %%   <<"lastDeploymentStatus">> => list(any()),
 %%   <<"lastDeploymentTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
-%%   <<"robots">> => list(robot()()),
+%%   <<"robots">> => list(robot()),
 %%   <<"tags">> => map()
 %% }
 -type describe_fleet_response() :: #{binary() => any()}.
@@ -689,7 +689,7 @@
 %%   <<"application">> := string(),
 %%   <<"currentRevisionId">> => string(),
 %%   <<"imageDigest">> => string(),
-%%   <<"s3Etags">> => list(string()())
+%%   <<"s3Etags">> => list(string())
 %% }
 -type create_simulation_application_version_request() :: #{binary() => any()}.
 
@@ -731,7 +731,7 @@
 %%   <<"arn">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"compute">> => compute_response(),
-%%   <<"dataSources">> => list(data_source()()),
+%%   <<"dataSources">> => list(data_source()),
 %%   <<"failureBehavior">> => list(any()),
 %%   <<"failureCode">> => list(any()),
 %%   <<"failureReason">> => string(),
@@ -743,8 +743,8 @@
 %%   <<"name">> => string(),
 %%   <<"networkInterface">> => network_interface(),
 %%   <<"outputLocation">> => output_location(),
-%%   <<"robotApplications">> => list(robot_application_config()()),
-%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"robotApplications">> => list(robot_application_config()),
+%%   <<"simulationApplications">> => list(simulation_application_config()),
 %%   <<"simulationTimeMillis">> => float(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
@@ -790,7 +790,7 @@
 %% Example:
 %% list_world_templates_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"templateSummaries">> => list(template_summary()())
+%%   <<"templateSummaries">> => list(template_summary())
 %% }
 -type list_world_templates_response() :: #{binary() => any()}.
 
@@ -812,7 +812,7 @@
 %%   <<"revisionId">> => string(),
 %%   <<"robotSoftwareSuite">> => robot_software_suite(),
 %%   <<"simulationSoftwareSuite">> => simulation_software_suite(),
-%%   <<"sources">> => list(source()()),
+%%   <<"sources">> => list(source()),
 %%   <<"version">> => string()
 %% }
 -type create_simulation_application_version_response() :: #{binary() => any()}.
@@ -836,7 +836,7 @@
 
 %% Example:
 %% launch_config() :: #{
-%%   <<"command">> => list(string()()),
+%%   <<"command">> => list(string()),
 %%   <<"environmentVariables">> => map(),
 %%   <<"launchFile">> => string(),
 %%   <<"packageName">> => string(),
@@ -868,7 +868,7 @@
 %%   <<"arn">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"compute">> => compute_response(),
-%%   <<"dataSources">> => list(data_source()()),
+%%   <<"dataSources">> => list(data_source()),
 %%   <<"failureBehavior">> => list(any()),
 %%   <<"failureCode">> => list(any()),
 %%   <<"iamRole">> => string(),
@@ -877,8 +877,8 @@
 %%   <<"loggingConfig">> => logging_config(),
 %%   <<"maxJobDurationInSeconds">> => float(),
 %%   <<"outputLocation">> => output_location(),
-%%   <<"robotApplications">> => list(robot_application_config()()),
-%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"robotApplications">> => list(robot_application_config()),
+%%   <<"simulationApplications">> => list(simulation_application_config()),
 %%   <<"simulationTimeMillis">> => float(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
@@ -889,7 +889,7 @@
 
 %% Example:
 %% port_forwarding_config() :: #{
-%%   <<"portMappings">> => list(port_mapping()())
+%%   <<"portMappings">> => list(port_mapping())
 %% }
 -type port_forwarding_config() :: #{binary() => any()}.
 
@@ -917,7 +917,7 @@
 %%   <<"destination">> => string(),
 %%   <<"name">> => string(),
 %%   <<"s3Bucket">> => string(),
-%%   <<"s3Keys">> => list(string()()),
+%%   <<"s3Keys">> => list(string()),
 %%   <<"type">> => list(any())
 %% }
 -type data_source_config() :: #{binary() => any()}.
@@ -967,8 +967,8 @@
 %% Example:
 %% vpc_config() :: #{
 %%   <<"assignPublicIp">> => boolean(),
-%%   <<"securityGroups">> => list(string()()),
-%%   <<"subnets">> => list(string()())
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
@@ -987,7 +987,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"outputLocation">> => output_location(),
 %%   <<"status">> => list(any()),
-%%   <<"worlds">> => list(string()())
+%%   <<"worlds">> => list(string())
 %% }
 -type world_export_job_summary() :: #{binary() => any()}.
 
@@ -997,7 +997,7 @@
 %%   <<"arn">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"compute">> => compute_response(),
-%%   <<"dataSources">> => list(data_source()()),
+%%   <<"dataSources">> => list(data_source()),
 %%   <<"failureBehavior">> => list(any()),
 %%   <<"failureCode">> => list(any()),
 %%   <<"failureReason">> => string(),
@@ -1009,8 +1009,8 @@
 %%   <<"name">> => string(),
 %%   <<"networkInterface">> => network_interface(),
 %%   <<"outputLocation">> => output_location(),
-%%   <<"robotApplications">> => list(robot_application_config()()),
-%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"robotApplications">> => list(robot_application_config()),
+%%   <<"simulationApplications">> => list(simulation_application_config()),
 %%   <<"simulationTimeMillis">> => float(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
@@ -1028,8 +1028,8 @@
 
 %% Example:
 %% batch_describe_simulation_job_response() :: #{
-%%   <<"jobs">> => list(simulation_job()()),
-%%   <<"unprocessedJobs">> => list(string()())
+%%   <<"jobs">> => list(simulation_job()),
+%%   <<"unprocessedJobs">> => list(string())
 %% }
 -type batch_describe_simulation_job_response() :: #{binary() => any()}.
 
@@ -1037,7 +1037,7 @@
 %% Example:
 %% list_world_export_jobs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"worldExportJobSummaries">> => list(world_export_job_summary()())
+%%   <<"worldExportJobSummaries">> => list(world_export_job_summary())
 %% }
 -type list_world_export_jobs_response() :: #{binary() => any()}.
 
@@ -1110,7 +1110,7 @@
 
 %% Example:
 %% batch_delete_worlds_request() :: #{
-%%   <<"worlds">> := list(string()())
+%%   <<"worlds">> := list(string())
 %% }
 -type batch_delete_worlds_request() :: #{binary() => any()}.
 
@@ -1118,7 +1118,7 @@
 %% Example:
 %% list_robot_applications_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"robotApplicationSummaries">> => list(robot_application_summary()())
+%%   <<"robotApplicationSummaries">> => list(robot_application_summary())
 %% }
 -type list_robot_applications_response() :: #{binary() => any()}.
 
@@ -1133,7 +1133,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"name">> => string(),
-%%   <<"values">> => list(string()())
+%%   <<"values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -1147,7 +1147,7 @@
 
 %% Example:
 %% list_world_generation_jobs_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1157,7 +1157,7 @@
 %% Example:
 %% list_simulation_job_batches_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"simulationJobBatchSummaries">> => list(simulation_job_batch_summary()())
+%%   <<"simulationJobBatchSummaries">> => list(simulation_job_batch_summary())
 %% }
 -type list_simulation_job_batches_response() :: #{binary() => any()}.
 
@@ -1172,7 +1172,7 @@
 %%   <<"revisionId">> => string(),
 %%   <<"robotSoftwareSuite">> => robot_software_suite(),
 %%   <<"simulationSoftwareSuite">> => simulation_software_suite(),
-%%   <<"sources">> => list(source()()),
+%%   <<"sources">> => list(source()),
 %%   <<"version">> => string()
 %% }
 -type update_simulation_application_response() :: #{binary() => any()}.
@@ -1181,7 +1181,7 @@
 %% Example:
 %% list_robots_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"robots">> => list(robot()())
+%%   <<"robots">> => list(robot())
 %% }
 -type list_robots_response() :: #{binary() => any()}.
 
@@ -1207,7 +1207,7 @@
 %% start_simulation_job_batch_request() :: #{
 %%   <<"batchPolicy">> => batch_policy(),
 %%   <<"clientRequestToken">> => string(),
-%%   <<"createSimulationJobRequests">> := list(simulation_job_request()()),
+%%   <<"createSimulationJobRequests">> := list(simulation_job_request()),
 %%   <<"tags">> => map()
 %% }
 -type start_simulation_job_batch_request() :: #{binary() => any()}.
@@ -1215,7 +1215,7 @@
 
 %% Example:
 %% failure_summary() :: #{
-%%   <<"failures">> => list(world_failure()()),
+%%   <<"failures">> => list(world_failure()),
 %%   <<"totalFailureCount">> => integer()
 %% }
 -type failure_summary() :: #{binary() => any()}.
@@ -1224,7 +1224,7 @@
 %% Example:
 %% list_simulation_jobs_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"simulationJobSummaries">> => list(simulation_job_summary()())
+%%   <<"simulationJobSummaries">> => list(simulation_job_summary())
 %% }
 -type list_simulation_jobs_response() :: #{binary() => any()}.
 
@@ -1243,7 +1243,7 @@
 
 %% Example:
 %% list_worlds_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1280,7 +1280,7 @@
 %%   <<"name">> => string(),
 %%   <<"revisionId">> => string(),
 %%   <<"robotSoftwareSuite">> => robot_software_suite(),
-%%   <<"sources">> => list(source()()),
+%%   <<"sources">> => list(source()),
 %%   <<"tags">> => map(),
 %%   <<"version">> => string()
 %% }
@@ -1308,7 +1308,7 @@
 %%   <<"outputLocation">> => output_location(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
-%%   <<"worlds">> => list(string()())
+%%   <<"worlds">> => list(string())
 %% }
 -type describe_world_export_job_response() :: #{binary() => any()}.
 
@@ -1351,7 +1351,7 @@
 
 %% Example:
 %% list_simulation_jobs_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1363,7 +1363,7 @@
 %%   <<"environment">> => environment(),
 %%   <<"name">> := string(),
 %%   <<"robotSoftwareSuite">> := robot_software_suite(),
-%%   <<"sources">> => list(source_config()()),
+%%   <<"sources">> => list(source_config()),
 %%   <<"tags">> => map()
 %% }
 -type create_robot_application_request() :: #{binary() => any()}.
@@ -1375,12 +1375,12 @@
 %%   <<"batchPolicy">> => batch_policy(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"createdRequests">> => list(simulation_job_summary()()),
-%%   <<"failedRequests">> => list(failed_create_simulation_job_request()()),
+%%   <<"createdRequests">> => list(simulation_job_summary()),
+%%   <<"failedRequests">> => list(failed_create_simulation_job_request()),
 %%   <<"failureCode">> => list(any()),
 %%   <<"failureReason">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"pendingRequests">> => list(simulation_job_request()()),
+%%   <<"pendingRequests">> => list(simulation_job_request()),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -1389,14 +1389,14 @@
 
 %% Example:
 %% batch_delete_worlds_response() :: #{
-%%   <<"unprocessedWorlds">> => list(string()())
+%%   <<"unprocessedWorlds">> => list(string())
 %% }
 -type batch_delete_worlds_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_robot_applications_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"versionQualifier">> => string()
@@ -1454,7 +1454,7 @@
 
 %% Example:
 %% batch_describe_simulation_job_request() :: #{
-%%   <<"jobs">> := list(string()())
+%%   <<"jobs">> := list(string())
 %% }
 -type batch_describe_simulation_job_request() :: #{binary() => any()}.
 
@@ -1467,7 +1467,7 @@
 %% finished_worlds_summary() :: #{
 %%   <<"failureSummary">> => failure_summary(),
 %%   <<"finishedCount">> => integer(),
-%%   <<"succeededWorlds">> => list(string()())
+%%   <<"succeededWorlds">> => list(string())
 %% }
 -type finished_worlds_summary() :: #{binary() => any()}.
 
@@ -1483,14 +1483,14 @@
 %% create_simulation_job_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"compute">> => compute(),
-%%   <<"dataSources">> => list(data_source_config()()),
+%%   <<"dataSources">> => list(data_source_config()),
 %%   <<"failureBehavior">> => list(any()),
 %%   <<"iamRole">> := string(),
 %%   <<"loggingConfig">> => logging_config(),
 %%   <<"maxJobDurationInSeconds">> := float(),
 %%   <<"outputLocation">> => output_location(),
-%%   <<"robotApplications">> => list(robot_application_config()()),
-%%   <<"simulationApplications">> => list(simulation_application_config()()),
+%%   <<"robotApplications">> => list(robot_application_config()),
+%%   <<"simulationApplications">> => list(simulation_application_config()),
 %%   <<"tags">> => map(),
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -1525,8 +1525,8 @@
 %% Example:
 %% vpc_config_response() :: #{
 %%   <<"assignPublicIp">> => boolean(),
-%%   <<"securityGroups">> => list(string()()),
-%%   <<"subnets">> => list(string()()),
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string()),
 %%   <<"vpcId">> => string()
 %% }
 -type vpc_config_response() :: #{binary() => any()}.
@@ -1537,11 +1537,11 @@
 %%   <<"application">> => string(),
 %%   <<"applicationVersion">> => string(),
 %%   <<"launchConfig">> => launch_config(),
-%%   <<"tools">> => list(tool()()),
-%%   <<"uploadConfigurations">> => list(upload_configuration()()),
+%%   <<"tools">> => list(tool()),
+%%   <<"uploadConfigurations">> => list(upload_configuration()),
 %%   <<"useDefaultTools">> => boolean(),
 %%   <<"useDefaultUploadConfigurations">> => boolean(),
-%%   <<"worldConfigs">> => list(world_config()())
+%%   <<"worldConfigs">> => list(world_config())
 %% }
 -type simulation_application_config() :: #{binary() => any()}.
 
@@ -1561,7 +1561,7 @@
 %% sync_deployment_job_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()()),
+%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()),
 %%   <<"deploymentConfig">> => deployment_config(),
 %%   <<"failureCode">> => list(any()),
 %%   <<"failureReason">> => string(),
@@ -1595,7 +1595,7 @@
 %%   <<"revisionId">> => string(),
 %%   <<"robotSoftwareSuite">> => robot_software_suite(),
 %%   <<"simulationSoftwareSuite">> => simulation_software_suite(),
-%%   <<"sources">> => list(source()()),
+%%   <<"sources">> => list(source()),
 %%   <<"tags">> => map(),
 %%   <<"version">> => string()
 %% }
@@ -1622,7 +1622,7 @@
 %%   <<"destination">> => string(),
 %%   <<"name">> => string(),
 %%   <<"s3Bucket">> => string(),
-%%   <<"s3Keys">> => list(s3_key_output()()),
+%%   <<"s3Keys">> => list(s3_key_output()),
 %%   <<"type">> => list(any())
 %% }
 -type data_source() :: #{binary() => any()}.
@@ -1630,7 +1630,7 @@
 
 %% Example:
 %% list_robots_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1654,7 +1654,7 @@
 %%   <<"name">> => string(),
 %%   <<"revisionId">> => string(),
 %%   <<"robotSoftwareSuite">> => robot_software_suite(),
-%%   <<"sources">> => list(source()()),
+%%   <<"sources">> => list(source()),
 %%   <<"tags">> => map(),
 %%   <<"version">> => string()
 %% }
@@ -1663,7 +1663,7 @@
 
 %% Example:
 %% list_simulation_job_batches_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1673,7 +1673,7 @@
 %% Example:
 %% list_worlds_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"worldSummaries">> => list(world_summary()())
+%%   <<"worldSummaries">> => list(world_summary())
 %% }
 -type list_worlds_response() :: #{binary() => any()}.
 
@@ -1702,7 +1702,7 @@
 %%   <<"iamRole">> := string(),
 %%   <<"outputLocation">> := output_location(),
 %%   <<"tags">> => map(),
-%%   <<"worlds">> := list(string()())
+%%   <<"worlds">> := list(string())
 %% }
 -type create_world_export_job_request() :: #{binary() => any()}.
 
@@ -1727,7 +1727,7 @@
 
 %% Example:
 %% list_simulation_applications_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"versionQualifier">> => string()
@@ -1763,7 +1763,7 @@
 %% deployment_job() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
-%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()()),
+%%   <<"deploymentApplicationConfigs">> => list(deployment_application_config()),
 %%   <<"deploymentConfig">> => deployment_config(),
 %%   <<"failureCode">> => list(any()),
 %%   <<"failureReason">> => string(),
@@ -1778,8 +1778,8 @@
 %%   <<"application">> => string(),
 %%   <<"applicationVersion">> => string(),
 %%   <<"launchConfig">> => launch_config(),
-%%   <<"tools">> => list(tool()()),
-%%   <<"uploadConfigurations">> => list(upload_configuration()()),
+%%   <<"tools">> => list(tool()),
+%%   <<"uploadConfigurations">> => list(upload_configuration()),
 %%   <<"useDefaultTools">> => boolean(),
 %%   <<"useDefaultUploadConfigurations">> => boolean()
 %% }
@@ -1788,7 +1788,7 @@
 
 %% Example:
 %% list_deployment_jobs_request() :: #{
-%%   <<"filters">> => list(filter()()),
+%%   <<"filters">> => list(filter()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }

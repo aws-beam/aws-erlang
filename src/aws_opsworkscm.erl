@@ -136,7 +136,7 @@
 
 %% Example:
 %% describe_node_association_status_response() :: #{
-%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"EngineAttributes">> => list(engine_attribute()),
 %%   <<"NodeAssociationStatus">> => list(any())
 %% }
 -type describe_node_association_status_response() :: #{binary() => any()}.
@@ -157,7 +157,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -179,7 +179,7 @@
 
 %% Example:
 %% start_maintenance_request() :: #{
-%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"EngineAttributes">> => list(engine_attribute()),
 %%   <<"ServerName">> := string()
 %% }
 -type start_maintenance_request() :: #{binary() => any()}.
@@ -207,7 +207,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -227,7 +227,7 @@
 %%   <<"CustomPrivateKey">> => string(),
 %%   <<"DisableAutomatedBackup">> => boolean(),
 %%   <<"Engine">> := string(),
-%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"EngineAttributes">> => list(engine_attribute()),
 %%   <<"EngineModel">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"InstanceProfileArn">> := string(),
@@ -235,11 +235,11 @@
 %%   <<"KeyPair">> => string(),
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"ServerName">> := string(),
 %%   <<"ServiceRoleArn">> := string(),
-%%   <<"SubnetIds">> => list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_server_request() :: #{binary() => any()}.
 
@@ -309,20 +309,20 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_account_attributes_response() :: #{
-%%   <<"Attributes">> => list(account_attribute()())
+%%   <<"Attributes">> => list(account_attribute())
 %% }
 -type describe_account_attributes_response() :: #{binary() => any()}.
 
 %% Example:
 %% export_server_engine_attribute_request() :: #{
 %%   <<"ExportAttributeName">> := string(),
-%%   <<"InputAttributes">> => list(engine_attribute()()),
+%%   <<"InputAttributes">> => list(engine_attribute()),
 %%   <<"ServerName">> := string()
 %% }
 -type export_server_engine_attribute_request() :: #{binary() => any()}.
@@ -345,12 +345,12 @@
 %%   <<"S3DataSize">> => integer(),
 %%   <<"S3DataUrl">> => string(),
 %%   <<"S3LogUrl">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"ServerName">> => string(),
 %%   <<"ServiceRoleArn">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusDescription">> => string(),
-%%   <<"SubnetIds">> => list(string()()),
+%%   <<"SubnetIds">> => list(string()),
 %%   <<"ToolsVersion">> => string(),
 %%   <<"UserArn">> => string()
 %% }
@@ -366,7 +366,7 @@
 
 %% Example:
 %% disassociate_node_request() :: #{
-%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"EngineAttributes">> => list(engine_attribute()),
 %%   <<"NodeName">> := string(),
 %%   <<"ServerName">> := string()
 %% }
@@ -400,7 +400,7 @@
 %%   <<"DisableAutomatedBackup">> => boolean(),
 %%   <<"Endpoint">> => string(),
 %%   <<"Engine">> => string(),
-%%   <<"EngineAttributes">> => list(engine_attribute()()),
+%%   <<"EngineAttributes">> => list(engine_attribute()),
 %%   <<"EngineModel">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"InstanceProfileArn">> => string(),
@@ -409,13 +409,13 @@
 %%   <<"MaintenanceStatus">> => list(any()),
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"ServerArn">> => string(),
 %%   <<"ServerName">> => string(),
 %%   <<"ServiceRoleArn">> => string(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string(),
-%%   <<"SubnetIds">> => list(string()())
+%%   <<"SubnetIds">> => list(string())
 %% }
 -type server() :: #{binary() => any()}.
 
@@ -429,7 +429,7 @@
 
 %% Example:
 %% associate_node_request() :: #{
-%%   <<"EngineAttributes">> := list(engine_attribute()()),
+%%   <<"EngineAttributes">> := list(engine_attribute()),
 %%   <<"NodeName">> := string(),
 %%   <<"ServerName">> := string()
 %% }
@@ -438,7 +438,7 @@
 %% Example:
 %% describe_servers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Servers">> => list(server()())
+%%   <<"Servers">> => list(server())
 %% }
 -type describe_servers_response() :: #{binary() => any()}.
 
@@ -478,7 +478,7 @@
 
 %% Example:
 %% describe_backups_response() :: #{
-%%   <<"Backups">> => list(backup()()),
+%%   <<"Backups">> => list(backup()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_backups_response() :: #{binary() => any()}.
@@ -493,7 +493,7 @@
 %% create_backup_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"ServerName">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_backup_request() :: #{binary() => any()}.
 
@@ -533,7 +533,7 @@
 %% Example:
 %% describe_events_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ServerEvents">> => list(server_event()())
+%%   <<"ServerEvents">> => list(server_event())
 %% }
 -type describe_events_response() :: #{binary() => any()}.
 

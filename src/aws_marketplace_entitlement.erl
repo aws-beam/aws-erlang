@@ -58,7 +58,7 @@
 
 %% Example:
 %% get_entitlements_result() :: #{
-%%   <<"Entitlements">> => list(entitlement()()),
+%%   <<"Entitlements">> => list(entitlement()),
 %%   <<"NextToken">> => string()
 %% }
 -type get_entitlements_result() :: #{binary() => any()}.

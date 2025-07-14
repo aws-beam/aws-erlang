@@ -231,7 +231,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -308,7 +308,7 @@
 
 %% Example:
 %% list_firewall_rules_response() :: #{
-%%   <<"FirewallRules">> => list(firewall_rule()()),
+%%   <<"FirewallRules">> => list(firewall_rule()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_rules_response() :: #{binary() => any()}.
@@ -369,7 +369,7 @@
 
 %% Example:
 %% list_resolver_dnssec_configs_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -377,7 +377,7 @@
 
 %% Example:
 %% list_resolver_query_log_configs_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"SortBy">> => string(),
@@ -403,7 +403,7 @@
 
 %% Example:
 %% list_firewall_domain_lists_response() :: #{
-%%   <<"FirewallDomainLists">> => list(firewall_domain_list_metadata()()),
+%%   <<"FirewallDomainLists">> => list(firewall_domain_list_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_domain_lists_response() :: #{binary() => any()}.
@@ -457,7 +457,7 @@
 
 %% Example:
 %% list_resolver_rules_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -526,7 +526,7 @@
 
 %% Example:
 %% list_resolver_endpoints_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -537,7 +537,7 @@
 %%   <<"CreatorRequestId">> := string(),
 %%   <<"DestinationArn">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_resolver_query_log_config_request() :: #{binary() => any()}.
 
@@ -557,7 +557,7 @@
 %% create_firewall_domain_list_request() :: #{
 %%   <<"CreatorRequestId">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_firewall_domain_list_request() :: #{binary() => any()}.
 
@@ -583,7 +583,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -639,7 +639,7 @@
 %%   <<"MutationProtection">> => list(any()),
 %%   <<"Name">> := string(),
 %%   <<"Priority">> := integer(),
-%%   <<"Tags">> => list(tag()()),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcId">> := string()
 %% }
 -type associate_firewall_rule_group_request() :: #{binary() => any()}.
@@ -648,14 +648,14 @@
 %% create_resolver_endpoint_request() :: #{
 %%   <<"CreatorRequestId">> := string(),
 %%   <<"Direction">> := list(any()),
-%%   <<"IpAddresses">> := list(ip_address_request()()),
+%%   <<"IpAddresses">> := list(ip_address_request()),
 %%   <<"Name">> => string(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"PreferredInstanceType">> => string(),
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"ResolverEndpointType">> => list(any()),
-%%   <<"SecurityGroupIds">> := list(string()()),
-%%   <<"Tags">> => list(tag()())
+%%   <<"SecurityGroupIds">> := list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_resolver_endpoint_request() :: #{binary() => any()}.
 
@@ -672,7 +672,7 @@
 %%   <<"Name">> := string(),
 %%   <<"OutpostArn">> := string(),
 %%   <<"PreferredInstanceType">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_outpost_resolver_request() :: #{binary() => any()}.
 
@@ -698,7 +698,7 @@
 %% list_resolver_endpoints_response() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResolverEndpoints">> => list(resolver_endpoint()())
+%%   <<"ResolverEndpoints">> => list(resolver_endpoint())
 %% }
 -type list_resolver_endpoints_response() :: #{binary() => any()}.
 
@@ -740,7 +740,7 @@
 
 %% Example:
 %% list_resolver_endpoint_ip_addresses_response() :: #{
-%%   <<"IpAddresses">> => list(ip_address_response()()),
+%%   <<"IpAddresses">> => list(ip_address_response()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -801,7 +801,7 @@
 
 %% Example:
 %% list_firewall_configs_response() :: #{
-%%   <<"FirewallConfigs">> => list(firewall_config()()),
+%%   <<"FirewallConfigs">> => list(firewall_config()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_configs_response() :: #{binary() => any()}.
@@ -848,7 +848,7 @@
 %%   <<"ShareStatus">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string(),
-%%   <<"TargetIps">> => list(target_address()())
+%%   <<"TargetIps">> => list(target_address())
 %% }
 -type resolver_rule() :: #{binary() => any()}.
 
@@ -928,7 +928,7 @@
 %% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -988,7 +988,7 @@
 %%   <<"PreferredInstanceType">> => string(),
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"ResolverEndpointType">> => list(any()),
-%%   <<"SecurityGroupIds">> => list(string()()),
+%%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusMessage">> => string()
 %% }
@@ -1012,7 +1012,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
-%%   <<"Values">> => list(string()())
+%%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -1042,7 +1042,7 @@
 %% Example:
 %% list_resolver_configs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResolverConfigs">> => list(resolver_config()())
+%%   <<"ResolverConfigs">> => list(resolver_config())
 %% }
 -type list_resolver_configs_response() :: #{binary() => any()}.
 
@@ -1064,7 +1064,7 @@
 %% Example:
 %% list_resolver_dnssec_configs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResolverDnssecConfigs">> => list(resolver_dnssec_config()())
+%%   <<"ResolverDnssecConfigs">> => list(resolver_dnssec_config())
 %% }
 -type list_resolver_dnssec_configs_response() :: #{binary() => any()}.
 
@@ -1085,8 +1085,8 @@
 %%   <<"Name">> => string(),
 %%   <<"ResolverEndpointId">> => string(),
 %%   <<"RuleType">> := list(any()),
-%%   <<"Tags">> => list(tag()()),
-%%   <<"TargetIps">> => list(target_address()())
+%%   <<"Tags">> => list(tag()),
+%%   <<"TargetIps">> => list(target_address())
 %% }
 -type create_resolver_rule_request() :: #{binary() => any()}.
 
@@ -1105,7 +1105,7 @@
 %% Example:
 %% list_resolver_query_log_config_associations_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResolverQueryLogConfigAssociations">> => list(resolver_query_log_config_association()()),
+%%   <<"ResolverQueryLogConfigAssociations">> => list(resolver_query_log_config_association()),
 %%   <<"TotalCount">> => integer(),
 %%   <<"TotalFilteredCount">> => integer()
 %% }
@@ -1115,7 +1115,7 @@
 %% create_firewall_rule_group_request() :: #{
 %%   <<"CreatorRequestId">> := string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_firewall_rule_group_request() :: #{binary() => any()}.
 
@@ -1127,7 +1127,7 @@
 
 %% Example:
 %% list_firewall_rule_groups_response() :: #{
-%%   <<"FirewallRuleGroups">> => list(firewall_rule_group_metadata()()),
+%%   <<"FirewallRuleGroups">> => list(firewall_rule_group_metadata()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_rule_groups_response() :: #{binary() => any()}.
@@ -1145,7 +1145,7 @@
 %% list_resolver_rules_response() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResolverRules">> => list(resolver_rule()())
+%%   <<"ResolverRules">> => list(resolver_rule())
 %% }
 -type list_resolver_rules_response() :: #{binary() => any()}.
 
@@ -1256,7 +1256,7 @@
 
 %% Example:
 %% list_firewall_rule_group_associations_response() :: #{
-%%   <<"FirewallRuleGroupAssociations">> => list(firewall_rule_group_association()()),
+%%   <<"FirewallRuleGroupAssociations">> => list(firewall_rule_group_association()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_rule_group_associations_response() :: #{binary() => any()}.
@@ -1279,13 +1279,13 @@
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"ResolverEndpointId">> := string(),
 %%   <<"ResolverEndpointType">> => list(any()),
-%%   <<"UpdateIpAddresses">> => list(update_ip_address()())
+%%   <<"UpdateIpAddresses">> => list(update_ip_address())
 %% }
 -type update_resolver_endpoint_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_firewall_domains_request() :: #{
-%%   <<"Domains">> := list(string()()),
+%%   <<"Domains">> := list(string()),
 %%   <<"FirewallDomainListId">> := string(),
 %%   <<"Operation">> := list(any())
 %% }
@@ -1337,7 +1337,7 @@
 %% resolver_rule_config() :: #{
 %%   <<"Name">> => string(),
 %%   <<"ResolverEndpointId">> => string(),
-%%   <<"TargetIps">> => list(target_address()())
+%%   <<"TargetIps">> => list(target_address())
 %% }
 -type resolver_rule_config() :: #{binary() => any()}.
 
@@ -1363,7 +1363,7 @@
 %% Example:
 %% list_resolver_query_log_configs_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResolverQueryLogConfigs">> => list(resolver_query_log_config()()),
+%%   <<"ResolverQueryLogConfigs">> => list(resolver_query_log_config()),
 %%   <<"TotalCount">> => integer(),
 %%   <<"TotalFilteredCount">> => integer()
 %% }
@@ -1371,7 +1371,7 @@
 
 %% Example:
 %% list_resolver_rule_associations_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1411,7 +1411,7 @@
 
 %% Example:
 %% list_resolver_query_log_config_associations_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"SortBy">> => string(),
@@ -1423,13 +1423,13 @@
 %% list_resolver_rule_associations_response() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
-%%   <<"ResolverRuleAssociations">> => list(resolver_rule_association()())
+%%   <<"ResolverRuleAssociations">> => list(resolver_rule_association())
 %% }
 -type list_resolver_rule_associations_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_firewall_domains_response() :: #{
-%%   <<"Domains">> => list(string()()),
+%%   <<"Domains">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_domains_response() :: #{binary() => any()}.
@@ -1443,7 +1443,7 @@
 %% Example:
 %% list_outpost_resolvers_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"OutpostResolvers">> => list(outpost_resolver()())
+%%   <<"OutpostResolvers">> => list(outpost_resolver())
 %% }
 -type list_outpost_resolvers_response() :: #{binary() => any()}.
 

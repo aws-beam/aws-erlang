@@ -126,7 +126,7 @@
 
 %% Example:
 %% list_linux_subscription_instances_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()]
 %% }
@@ -135,7 +135,7 @@
 
 %% Example:
 %% list_linux_subscription_instances_response() :: #{
-%%   <<"Instances">> => list(instance()()),
+%%   <<"Instances">> => list(instance()),
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_linux_subscription_instances_response() :: #{binary() => any()}.
@@ -143,7 +143,7 @@
 
 %% Example:
 %% list_linux_subscriptions_request() :: #{
-%%   <<"Filters">> => list(filter()()),
+%%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()]
 %% }
@@ -153,7 +153,7 @@
 %% Example:
 %% list_linux_subscriptions_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"Subscriptions">> => list(subscription()())
+%%   <<"Subscriptions">> => list(subscription())
 %% }
 -type list_linux_subscriptions_response() :: #{binary() => any()}.
 
@@ -162,7 +162,7 @@
 %% list_registered_subscription_providers_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => [string()],
-%%   <<"SubscriptionProviderSources">> => list(string()())
+%%   <<"SubscriptionProviderSources">> => list(string())
 %% }
 -type list_registered_subscription_providers_request() :: #{binary() => any()}.
 
@@ -170,7 +170,7 @@
 %% Example:
 %% list_registered_subscription_providers_response() :: #{
 %%   <<"NextToken">> => [string()],
-%%   <<"RegisteredSubscriptionProviders">> => list(registered_subscription_provider()())
+%%   <<"RegisteredSubscriptionProviders">> => list(registered_subscription_provider())
 %% }
 -type list_registered_subscription_providers_response() :: #{binary() => any()}.
 

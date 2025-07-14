@@ -43,7 +43,7 @@
 %% synthesize_speech_input() :: #{
 %%   <<"Engine">> => list(any()),
 %%   <<"LanguageCode">> => list(any()),
-%%   <<"LexiconNames">> => list(string()()),
+%%   <<"LexiconNames">> => list(string()),
 %%   <<"OutputFormat">> := list(any()),
 %%   <<"SampleRate">> => string(),
 %%   <<"SpeechMarkTypes">> => list(list(any())()),
@@ -64,7 +64,7 @@
 %% Example:
 %% describe_voices_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Voices">> => list(voice()())
+%%   <<"Voices">> => list(voice())
 %% }
 -type describe_voices_output() :: #{binary() => any()}.
 
@@ -106,7 +106,7 @@
 
 %% Example:
 %% list_lexicons_output() :: #{
-%%   <<"Lexicons">> => list(lexicon_description()()),
+%%   <<"Lexicons">> => list(lexicon_description()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_lexicons_output() :: #{binary() => any()}.
@@ -138,7 +138,7 @@
 %% Example:
 %% list_speech_synthesis_tasks_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"SynthesisTasks">> => list(synthesis_task()())
+%%   <<"SynthesisTasks">> => list(synthesis_task())
 %% }
 -type list_speech_synthesis_tasks_output() :: #{binary() => any()}.
 
@@ -241,7 +241,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Engine">> => list(any()),
 %%   <<"LanguageCode">> => list(any()),
-%%   <<"LexiconNames">> => list(string()()),
+%%   <<"LexiconNames">> => list(string()),
 %%   <<"OutputFormat">> => list(any()),
 %%   <<"OutputUri">> => string(),
 %%   <<"RequestCharacters">> => integer(),
@@ -346,7 +346,7 @@
 %% start_speech_synthesis_task_input() :: #{
 %%   <<"Engine">> => list(any()),
 %%   <<"LanguageCode">> => list(any()),
-%%   <<"LexiconNames">> => list(string()()),
+%%   <<"LexiconNames">> => list(string()),
 %%   <<"OutputFormat">> := list(any()),
 %%   <<"OutputS3BucketName">> := string(),
 %%   <<"OutputS3KeyPrefix">> => string(),

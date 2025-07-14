@@ -124,7 +124,7 @@
 
 %% Example:
 %% get_configuration_set_event_destinations_response() :: #{
-%%   <<"EventDestinations">> => list(event_destination()())
+%%   <<"EventDestinations">> => list(event_destination())
 %% }
 -type get_configuration_set_event_destinations_response() :: #{binary() => any()}.
 
@@ -161,7 +161,7 @@
 
 %% Example:
 %% list_configuration_sets_response() :: #{
-%%   <<"ConfigurationSets">> => list(string()()),
+%%   <<"ConfigurationSets">> => list(string()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_configuration_sets_response() :: #{binary() => any()}.

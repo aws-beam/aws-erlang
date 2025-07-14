@@ -74,7 +74,7 @@
 %% Example:
 %% resource_cost_calculation() :: #{
 %%   <<"pricing">> => resource_pricing(),
-%%   <<"usages">> => list(usage()())
+%%   <<"usages">> => list(usage())
 %% }
 -type resource_cost_calculation() :: #{binary() => any()}.
 
@@ -126,7 +126,7 @@
 %% Example:
 %% list_enrollment_statuses_response() :: #{
 %%   <<"includeMemberAccounts">> => [boolean()],
-%%   <<"items">> => list(account_enrollment_status()()),
+%%   <<"items">> => list(account_enrollment_status()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_enrollment_statuses_response() :: #{binary() => any()}.
@@ -309,7 +309,7 @@
 %%   <<"currencyCode">> => [string()],
 %%   <<"estimatedTotalDedupedSavings">> => [float()],
 %%   <<"groupBy">> => [string()],
-%%   <<"items">> => list(recommendation_summary()()),
+%%   <<"items">> => list(recommendation_summary()),
 %%   <<"metrics">> => summary_metrics_result(),
 %%   <<"nextToken">> => [string()]
 %% }
@@ -386,7 +386,7 @@
 %%   <<"restartNeeded">> => [boolean()],
 %%   <<"rollbackPossible">> => [boolean()],
 %%   <<"source">> => list(any()),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type recommendation() :: #{binary() => any()}.
 
@@ -499,7 +499,7 @@
 
 %% Example:
 %% filter() :: #{
-%%   <<"accountIds">> => list(string()()),
+%%   <<"accountIds">> => list(string()),
 %%   <<"actionTypes">> => list(list(any())()),
 %%   <<"implementationEfforts">> => list(list(any())()),
 %%   <<"recommendationIds">> => list([string()]()),
@@ -509,7 +509,7 @@
 %%   <<"resourceTypes">> => list(list(any())()),
 %%   <<"restartNeeded">> => [boolean()],
 %%   <<"rollbackPossible">> => [boolean()],
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type filter() :: #{binary() => any()}.
 
@@ -524,7 +524,7 @@
 %% ec2_auto_scaling_group_configuration() :: #{
 %%   <<"allocationStrategy">> => list(any()),
 %%   <<"instance">> => instance_configuration(),
-%%   <<"mixedInstances">> => list(mixed_instance_configuration()()),
+%%   <<"mixedInstances">> => list(mixed_instance_configuration()),
 %%   <<"type">> => list(any())
 %% }
 -type ec2_auto_scaling_group_configuration() :: #{binary() => any()}.
@@ -598,7 +598,7 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"fields">> => list(validation_exception_detail()()),
+%%   <<"fields">> => list(validation_exception_detail()),
 %%   <<"message">> => [string()],
 %%   <<"reason">> => list(any())
 %% }
@@ -665,7 +665,7 @@
 
 %% Example:
 %% list_recommendations_response() :: #{
-%%   <<"items">> => list(recommendation()()),
+%%   <<"items">> => list(recommendation()),
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_recommendations_response() :: #{binary() => any()}.
@@ -694,7 +694,7 @@
 %%   <<"restartNeeded">> => [boolean()],
 %%   <<"rollbackPossible">> => [boolean()],
 %%   <<"source">> => list(any()),
-%%   <<"tags">> => list(tag()())
+%%   <<"tags">> => list(tag())
 %% }
 -type get_recommendation_response() :: #{binary() => any()}.
 

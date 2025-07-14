@@ -91,7 +91,7 @@
 
 %% Example:
 %% list_app_instances_response() :: #{
-%%   <<"AppInstances">> => list(app_instance_summary()()),
+%%   <<"AppInstances">> => list(app_instance_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_app_instances_response() :: #{binary() => any()}.
@@ -124,7 +124,7 @@
 %% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"Tags">> := list(tag()())
+%%   <<"Tags">> := list(tag())
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
 
@@ -181,7 +181,7 @@
 
 %% Example:
 %% list_app_instance_admins_response() :: #{
-%%   <<"AppInstanceAdmins">> => list(app_instance_admin_summary()()),
+%%   <<"AppInstanceAdmins">> => list(app_instance_admin_summary()),
 %%   <<"AppInstanceArn">> => string(),
 %%   <<"NextToken">> => string()
 %% }
@@ -283,7 +283,7 @@
 %% Example:
 %% untag_resource_request() :: #{
 %%   <<"ResourceARN">> := string(),
-%%   <<"TagKeys">> := list(string()())
+%%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -378,7 +378,7 @@
 %% Example:
 %% list_app_instance_users_response() :: #{
 %%   <<"AppInstanceArn">> => string(),
-%%   <<"AppInstanceUsers">> => list(app_instance_user_summary()()),
+%%   <<"AppInstanceUsers">> => list(app_instance_user_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_app_instance_users_response() :: #{binary() => any()}.
@@ -423,7 +423,7 @@
 
 %% Example:
 %% list_app_instance_user_endpoints_response() :: #{
-%%   <<"AppInstanceUserEndpoints">> => list(app_instance_user_endpoint_summary()()),
+%%   <<"AppInstanceUserEndpoints">> => list(app_instance_user_endpoint_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_app_instance_user_endpoints_response() :: #{binary() => any()}.
@@ -438,7 +438,7 @@
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
@@ -506,7 +506,7 @@
 %% Example:
 %% list_app_instance_bots_response() :: #{
 %%   <<"AppInstanceArn">> => string(),
-%%   <<"AppInstanceBots">> => list(app_instance_bot_summary()()),
+%%   <<"AppInstanceBots">> => list(app_instance_bot_summary()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_app_instance_bots_response() :: #{binary() => any()}.
@@ -532,7 +532,7 @@
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"Metadata">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_app_instance_request() :: #{binary() => any()}.
 
@@ -573,7 +573,7 @@
 %%   <<"Configuration">> := configuration(),
 %%   <<"Metadata">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_app_instance_bot_request() :: #{binary() => any()}.
 
@@ -697,7 +697,7 @@
 %%   <<"ExpirationSettings">> => expiration_settings(),
 %%   <<"Metadata">> => string(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => list(tag()())
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_app_instance_user_request() :: #{binary() => any()}.
 

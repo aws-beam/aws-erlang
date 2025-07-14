@@ -30,7 +30,7 @@
 %% Example:
 %% list_resource_requests_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceRequestStatusSummaries">> => list(progress_event()())
+%%   <<"ResourceRequestStatusSummaries">> => list(progress_event())
 %% }
 -type list_resource_requests_output() :: #{binary() => any()}.
 
@@ -195,7 +195,7 @@
 
 %% Example:
 %% get_resource_request_status_output() :: #{
-%%   <<"HooksProgressEvent">> => list(hook_progress_event()()),
+%%   <<"HooksProgressEvent">> => list(hook_progress_event()),
 %%   <<"ProgressEvent">> => progress_event()
 %% }
 -type get_resource_request_status_output() :: #{binary() => any()}.
@@ -302,7 +302,7 @@
 %% Example:
 %% list_resources_output() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"ResourceDescriptions">> => list(resource_description()()),
+%%   <<"ResourceDescriptions">> => list(resource_description()),
 %%   <<"TypeName">> => string()
 %% }
 -type list_resources_output() :: #{binary() => any()}.
@@ -315,8 +315,8 @@
 
 %% Example:
 %% resource_request_status_filter() :: #{
-%%   <<"OperationStatuses">> => list(string()()),
-%%   <<"Operations">> => list(string()())
+%%   <<"OperationStatuses">> => list(string()),
+%%   <<"Operations">> => list(string())
 %% }
 -type resource_request_status_filter() :: #{binary() => any()}.
 

@@ -38,7 +38,7 @@
 
 %% Example:
 %% bucket_info() :: #{
-%%   <<"buckets">> => list(bucket()())
+%%   <<"buckets">> => list(bucket())
 %% }
 -type bucket_info() :: #{binary() => any()}.
 
@@ -86,7 +86,7 @@
 %% hits() :: #{
 %%   <<"cursor">> => string(),
 %%   <<"found">> => float(),
-%%   <<"hit">> => list(hit()()),
+%%   <<"hit">> => list(hit()),
 %%   <<"start">> => float()
 %% }
 -type hits() :: #{binary() => any()}.
@@ -141,7 +141,7 @@
 %% suggest_model() :: #{
 %%   <<"found">> => float(),
 %%   <<"query">> => string(),
-%%   <<"suggestions">> => list(suggestion_match()())
+%%   <<"suggestions">> => list(suggestion_match())
 %% }
 -type suggest_model() :: #{binary() => any()}.
 
@@ -193,7 +193,7 @@
 %%   <<"adds">> => float(),
 %%   <<"deletes">> => float(),
 %%   <<"status">> => string(),
-%%   <<"warnings">> => list(document_service_warning()())
+%%   <<"warnings">> => list(document_service_warning())
 %% }
 -type upload_documents_response() :: #{binary() => any()}.
 

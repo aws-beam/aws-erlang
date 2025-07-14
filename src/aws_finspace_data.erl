@@ -86,7 +86,7 @@
 
 %% Example:
 %% permission_group_params() :: #{
-%%   <<"datasetPermissions">> => list(resource_permission()()),
+%%   <<"datasetPermissions">> => list(resource_permission()),
 %%   <<"permissionGroupId">> => string()
 %% }
 -type permission_group_params() :: #{binary() => any()}.
@@ -109,7 +109,7 @@
 %% Example:
 %% list_users_by_permission_group_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"users">> => list(user_by_permission_group()())
+%%   <<"users">> => list(user_by_permission_group())
 %% }
 -type list_users_by_permission_group_response() :: #{binary() => any()}.
 
@@ -152,8 +152,8 @@
 
 %% Example:
 %% schema_definition() :: #{
-%%   <<"columns">> => list(column_definition()()),
-%%   <<"primaryKeyColumns">> => list(string()())
+%%   <<"columns">> => list(column_definition()),
+%%   <<"primaryKeyColumns">> => list(string())
 %% }
 -type schema_definition() :: #{binary() => any()}.
 
@@ -234,8 +234,8 @@
 %%   <<"autoUpdate">> => boolean(),
 %%   <<"clientToken">> => string(),
 %%   <<"destinationTypeParams">> := data_view_destination_type_params(),
-%%   <<"partitionColumns">> => list(string()()),
-%%   <<"sortColumns">> => list(string()())
+%%   <<"partitionColumns">> => list(string()),
+%%   <<"sortColumns">> => list(string())
 %% }
 -type create_data_view_request() :: #{binary() => any()}.
 
@@ -277,7 +277,7 @@
 %% Example:
 %% list_permission_groups_by_user_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"permissionGroups">> => list(permission_group_by_user()())
+%%   <<"permissionGroups">> => list(permission_group_by_user())
 %% }
 -type list_permission_groups_by_user_response() :: #{binary() => any()}.
 
@@ -366,8 +366,8 @@
 %%   <<"destinationTypeParams">> => data_view_destination_type_params(),
 %%   <<"errorInfo">> => data_view_error_info(),
 %%   <<"lastModifiedTime">> => float(),
-%%   <<"partitionColumns">> => list(string()()),
-%%   <<"sortColumns">> => list(string()()),
+%%   <<"partitionColumns">> => list(string()),
+%%   <<"sortColumns">> => list(string()),
 %%   <<"status">> => list(any())
 %% }
 -type get_data_view_response() :: #{binary() => any()}.
@@ -400,7 +400,7 @@
 %% Example:
 %% list_users_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"users">> => list(user()())
+%%   <<"users">> => list(user())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -555,7 +555,7 @@
 %% Example:
 %% list_permission_groups_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"permissionGroups">> => list(permission_group()())
+%%   <<"permissionGroups">> => list(permission_group())
 %% }
 -type list_permission_groups_response() :: #{binary() => any()}.
 
@@ -752,7 +752,7 @@
 
 %% Example:
 %% list_datasets_response() :: #{
-%%   <<"datasets">> => list(dataset()()),
+%%   <<"datasets">> => list(dataset()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_datasets_response() :: #{binary() => any()}.
@@ -789,7 +789,7 @@
 
 %% Example:
 %% list_changesets_response() :: #{
-%%   <<"changesets">> => list(changeset_summary()()),
+%%   <<"changesets">> => list(changeset_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_changesets_response() :: #{binary() => any()}.
@@ -806,8 +806,8 @@
 %%   <<"destinationTypeProperties">> => data_view_destination_type_params(),
 %%   <<"errorInfo">> => data_view_error_info(),
 %%   <<"lastModifiedTime">> => float(),
-%%   <<"partitionColumns">> => list(string()()),
-%%   <<"sortColumns">> => list(string()()),
+%%   <<"partitionColumns">> => list(string()),
+%%   <<"sortColumns">> => list(string()),
 %%   <<"status">> => list(any())
 %% }
 -type data_view_summary() :: #{binary() => any()}.
@@ -845,7 +845,7 @@
 
 %% Example:
 %% list_data_views_response() :: #{
-%%   <<"dataViews">> => list(data_view_summary()()),
+%%   <<"dataViews">> => list(data_view_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_data_views_response() :: #{binary() => any()}.
