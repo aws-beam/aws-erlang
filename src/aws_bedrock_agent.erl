@@ -925,6 +925,15 @@
 
 
 %% Example:
+%% s3_vectors_configuration() :: #{
+%%   <<"indexArn">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"vectorBucketArn">> => string()
+%% }
+-type s3_vectors_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_flow_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1782,6 +1791,7 @@
 %%   <<"pineconeConfiguration">> => pinecone_configuration(),
 %%   <<"rdsConfiguration">> => rds_configuration(),
 %%   <<"redisEnterpriseCloudConfiguration">> => redis_enterprise_cloud_configuration(),
+%%   <<"s3VectorsConfiguration">> => s3_vectors_configuration(),
 %%   <<"type">> => list(any())
 %% }
 -type storage_configuration() :: #{binary() => any()}.
@@ -3994,13 +4004,13 @@ associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) 
 %% expires, the subsequent `InvokeAgent' request begins a new session.
 %%
 %% To enable your agent to retain conversational context across multiple
-%% sessions, include a `memoryConfiguration' object.
-%% For more information, see Configure memory:
+%% sessions, include a `memoryConfiguration' object. For more
+%% information, see Configure memory:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-configure-memory.html.
 %%
 %% To override the default prompt behavior for agent orchestration and to use
-%% advanced prompts, include a `promptOverrideConfiguration' object.
-%% For more information, see Advanced prompts:
+%% advanced prompts, include a `promptOverrideConfiguration' object. For
+%% more information, see Advanced prompts:
 %% https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html.
 %%
 %% If your agent fails to be created, the response returns a list of
@@ -4050,13 +4060,12 @@ create_agent(Client, Input0, Options0) ->
 %% calling them.
 %%
 %% To allow your agent to request the user for additional information when
-%% trying to complete a task,
-%% add an action group with the `parentActionGroupSignature' field set to
-%% `AMAZON.UserInput'.
+%% trying to complete a task, add an action group with the
+%% `parentActionGroupSignature' field set to `AMAZON.UserInput'.
 %%
 %% To allow your agent to generate, run, and troubleshoot code when trying to
-%% complete a task,
-%% add an action group with the `parentActionGroupSignature' field set to
+%% complete a task, add an action group with the
+%% `parentActionGroupSignature' field set to
 %% `AMAZON.CodeInterpreter'.
 %%
 %% You must leave the `description', `apiSchema', and

@@ -115,7 +115,8 @@
 %% list_table_buckets_request() :: #{
 %%   <<"continuationToken">> => string(),
 %%   <<"maxBuckets">> => integer(),
-%%   <<"prefix">> => [string()]
+%%   <<"prefix">> => [string()],
+%%   <<"type">> => list(any())
 %% }
 -type list_table_buckets_request() :: #{binary() => any()}.
 
@@ -556,7 +557,8 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"ownerAccountId">> => string(),
-%%   <<"tableBucketId">> => string()
+%%   <<"tableBucketId">> => string(),
+%%   <<"type">> => list(any())
 %% }
 -type get_table_bucket_response() :: #{binary() => any()}.
 
@@ -593,7 +595,8 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"ownerAccountId">> => string(),
-%%   <<"tableBucketId">> => string()
+%%   <<"tableBucketId">> => string(),
+%%   <<"type">> => list(any())
 %% }
 -type table_bucket_summary() :: #{binary() => any()}.
 
@@ -1824,7 +1827,8 @@ list_table_buckets(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"continuationToken">>, maps:get(<<"continuationToken">>, QueryMap, undefined)},
         {<<"maxBuckets">>, maps:get(<<"maxBuckets">>, QueryMap, undefined)},
-        {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)}
+        {<<"prefix">>, maps:get(<<"prefix">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

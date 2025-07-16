@@ -729,6 +729,14 @@
 
 
 %% Example:
+%% s3_properties_patch() :: #{
+%%   <<"s3AccessGrantLocationId">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type s3_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_subscription_target_output() :: #{
 %%   <<"applicableAssetTypes">> => list(string()),
 %%   <<"authorizedPrincipals">> => list(string()),
@@ -1075,7 +1083,7 @@
 %%   <<"environmentAccountRegion">> => [string()],
 %%   <<"environmentBlueprintIdentifier">> => [string()],
 %%   <<"environmentConfigurationId">> => [string()],
-%%   <<"environmentProfileIdentifier">> := string(),
+%%   <<"environmentProfileIdentifier">> => string(),
 %%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> := [string()],
 %%   <<"projectIdentifier">> := string(),
@@ -3368,6 +3376,16 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_properties_output() :: #{
+%%   <<"errorMessage">> => [string()],
+%%   <<"s3AccessGrantLocationId">> => string(),
+%%   <<"s3Uri">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type s3_properties_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_glossary_input() :: #{}
@@ -5785,6 +5803,14 @@
 %%   <<"locationRegistrationRole">> => string()
 %% }
 -type lake_formation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_properties_input() :: #{
+%%   <<"s3AccessGrantLocationId">> => string(),
+%%   <<"s3Uri">> => string()
+%% }
+-type s3_properties_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_listing_output() :: #{}

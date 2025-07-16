@@ -15,19 +15,31 @@
 %% the cloud.
 -module(aws_repostspace).
 
--export([batch_add_role/3,
+-export([batch_add_channel_role_to_accessors/4,
+         batch_add_channel_role_to_accessors/5,
+         batch_add_role/3,
          batch_add_role/4,
+         batch_remove_channel_role_from_accessors/4,
+         batch_remove_channel_role_from_accessors/5,
          batch_remove_role/3,
          batch_remove_role/4,
+         create_channel/3,
+         create_channel/4,
          create_space/2,
          create_space/3,
          delete_space/3,
          delete_space/4,
          deregister_admin/4,
          deregister_admin/5,
+         get_channel/3,
+         get_channel/5,
+         get_channel/6,
          get_space/2,
          get_space/4,
          get_space/5,
+         list_channels/2,
+         list_channels/4,
+         list_channels/5,
          list_spaces/1,
          list_spaces/3,
          list_spaces/4,
@@ -42,6 +54,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_channel/4,
+         update_channel/5,
          update_space/3,
          update_space/4]).
 
@@ -50,35 +64,38 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
+%% batch_remove_role_output() :: #{
+%%   <<"errors">> => list(batch_error()),
+%%   <<"removedAccessorIds">> => list(string())
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type batch_remove_role_output() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_add_role_input() :: #{
+%% batch_remove_channel_role_from_accessors_input() :: #{
 %%   <<"accessorIds">> := list(string()),
-%%   <<"role">> := list(any())
+%%   <<"channelRole">> := list(any())
 %% }
--type batch_add_role_input() :: #{binary() => any()}.
+-type batch_remove_channel_role_from_accessors_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% batch_add_role_output() :: #{
-%%   <<"addedAccessorIds">> => list(string()),
-%%   <<"errors">> => list(batch_error())
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
 %% }
--type batch_add_role_output() :: #{binary() => any()}.
+-type tag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% register_admin_input() :: #{}
+-type register_admin_input() :: #{}.
 
 
 %% Example:
-%% batch_error() :: #{
-%%   <<"accessorId">> => string(),
-%%   <<"error">> => integer(),
-%%   <<"message">> => string()
+%% list_spaces_output() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"spaces">> => list(space_data())
 %% }
--type batch_error() :: #{binary() => any()}.
+-type list_spaces_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -88,13 +105,97 @@
 %% }
 -type batch_remove_role_input() :: #{binary() => any()}.
 
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
+
 
 %% Example:
-%% batch_remove_role_output() :: #{
-%%   <<"errors">> => list(batch_error()),
-%%   <<"removedAccessorIds">> => list(string())
+%% batch_add_channel_role_to_accessors_output() :: #{
+%%   <<"addedAccessorIds">> => list(string()),
+%%   <<"errors">> => list(batch_error())
 %% }
--type batch_remove_role_output() :: #{binary() => any()}.
+-type batch_add_channel_role_to_accessors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_add_channel_role_to_accessors_input() :: #{
+%%   <<"accessorIds">> := list(string()),
+%%   <<"channelRole">> := list(any())
+%% }
+-type batch_add_channel_role_to_accessors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% supported_email_domains_status() :: #{
+%%   <<"allowedDomains">> => list(string()),
+%%   <<"enabled">> => list(any())
+%% }
+-type supported_email_domains_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_data() :: #{
+%%   <<"channelDescription">> => string(),
+%%   <<"channelId">> => string(),
+%%   <<"channelName">> => string(),
+%%   <<"channelStatus">> => list(any()),
+%%   <<"createDateTime">> => [non_neg_integer()],
+%%   <<"deleteDateTime">> => [non_neg_integer()],
+%%   <<"groupCount">> => integer(),
+%%   <<"spaceId">> => string(),
+%%   <<"userCount">> => integer()
+%% }
+-type channel_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_space_input() :: #{}
+-type get_space_input() :: #{}.
+
+
+%% Example:
+%% list_channels_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_channels_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_channels_output() :: #{
+%%   <<"channels">> => list(channel_data()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_channels_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_space_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"roleArn">> => string(),
+%%   <<"subdomain">> := string(),
+%%   <<"supportedEmailDomains">> => supported_email_domains_parameters(),
+%%   <<"tags">> => map(),
+%%   <<"tier">> := list(any()),
+%%   <<"userKMSKey">> => string()
+%% }
+-type create_space_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_channel_input() :: #{
+%%   <<"channelDescription">> => string(),
+%%   <<"channelName">> := string()
+%% }
+-type update_channel_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -107,104 +208,6 @@
 
 
 %% Example:
-%% create_space_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"name">> := string(),
-%%   <<"roleArn">> => string(),
-%%   <<"subdomain">> := string(),
-%%   <<"tags">> => map(),
-%%   <<"tier">> := list(any()),
-%%   <<"userKMSKey">> => string()
-%% }
--type create_space_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% create_space_output() :: #{
-%%   <<"spaceId">> => string()
-%% }
--type create_space_output() :: #{binary() => any()}.
-
-%% Example:
-%% delete_space_input() :: #{}
--type delete_space_input() :: #{}.
-
-%% Example:
-%% deregister_admin_input() :: #{}
--type deregister_admin_input() :: #{}.
-
-%% Example:
-%% get_space_input() :: #{}
--type get_space_input() :: #{}.
-
-
-%% Example:
-%% get_space_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"clientId">> => string(),
-%%   <<"configurationStatus">> => list(any()),
-%%   <<"contentSize">> => float(),
-%%   <<"createDateTime">> => [non_neg_integer()],
-%%   <<"customerRoleArn">> => string(),
-%%   <<"deleteDateTime">> => [non_neg_integer()],
-%%   <<"description">> => string(),
-%%   <<"groupAdmins">> => list(string()),
-%%   <<"name">> => string(),
-%%   <<"randomDomain">> => string(),
-%%   <<"roles">> => map(),
-%%   <<"spaceId">> => string(),
-%%   <<"status">> => string(),
-%%   <<"storageLimit">> => float(),
-%%   <<"tier">> => list(any()),
-%%   <<"userAdmins">> => list(string()),
-%%   <<"userCount">> => integer(),
-%%   <<"userKMSKey">> => string(),
-%%   <<"vanityDomain">> => string(),
-%%   <<"vanityDomainStatus">> => list(any())
-%% }
--type get_space_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
-%% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_spaces_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => [string()]
-%% }
--type list_spaces_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_spaces_output() :: #{
-%%   <<"nextToken">> => [string()],
-%%   <<"spaces">> => list(space_data())
-%% }
--type list_spaces_output() :: #{binary() => any()}.
-
-%% Example:
-%% list_tags_for_resource_request() :: #{}
--type list_tags_for_resource_request() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_response() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_response() :: #{binary() => any()}.
-
-%% Example:
-%% register_admin_input() :: #{}
--type register_admin_input() :: #{}.
-
-
-%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"resourceId">> => [string()],
@@ -214,23 +217,28 @@
 
 
 %% Example:
-%% send_invites_input() :: #{
-%%   <<"accessorIds">> := list(string()),
-%%   <<"body">> := string(),
-%%   <<"title">> := string()
+%% update_space_input() :: #{
+%%   <<"description">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"supportedEmailDomains">> => supported_email_domains_parameters(),
+%%   <<"tier">> => list(any())
 %% }
--type send_invites_input() :: #{binary() => any()}.
+-type update_space_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
+%% create_channel_output() :: #{
+%%   <<"channelId">> => string()
 %% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
+-type create_channel_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_remove_channel_role_from_accessors_output() :: #{
+%%   <<"errors">> => list(batch_error()),
+%%   <<"removedAccessorIds">> => list(string())
+%% }
+-type batch_remove_channel_role_from_accessors_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -246,6 +254,7 @@
 %%   <<"spaceId">> => string(),
 %%   <<"status">> => string(),
 %%   <<"storageLimit">> => float(),
+%%   <<"supportedEmailDomains">> => supported_email_domains_status(),
 %%   <<"tier">> => list(any()),
 %%   <<"userCount">> => integer(),
 %%   <<"userKMSKey">> => string(),
@@ -256,14 +265,169 @@
 
 
 %% Example:
-%% tag_resource_request() :: #{
-%%   <<"tags">> := map()
+%% get_channel_output() :: #{
+%%   <<"channelDescription">> => string(),
+%%   <<"channelId">> => string(),
+%%   <<"channelName">> => string(),
+%%   <<"channelRoles">> => map(),
+%%   <<"channelStatus">> => list(any()),
+%%   <<"createDateTime">> => [non_neg_integer()],
+%%   <<"deleteDateTime">> => [non_neg_integer()],
+%%   <<"spaceId">> => string()
 %% }
--type tag_resource_request() :: #{binary() => any()}.
+-type get_channel_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_space_input() :: #{}
+-type delete_space_input() :: #{}.
+
+
+%% Example:
+%% send_invites_input() :: #{
+%%   <<"accessorIds">> := list(string()),
+%%   <<"body">> := string(),
+%%   <<"title">> := string()
+%% }
+-type send_invites_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_space_output() :: #{
+%%   <<"applicationArn">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"clientId">> => string(),
+%%   <<"configurationStatus">> => list(any()),
+%%   <<"contentSize">> => float(),
+%%   <<"createDateTime">> => [non_neg_integer()],
+%%   <<"customerRoleArn">> => string(),
+%%   <<"deleteDateTime">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"groupAdmins">> => list(string()),
+%%   <<"identityStoreId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"randomDomain">> => string(),
+%%   <<"roles">> => map(),
+%%   <<"spaceId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"storageLimit">> => float(),
+%%   <<"supportedEmailDomains">> => supported_email_domains_status(),
+%%   <<"tier">> => list(any()),
+%%   <<"userAdmins">> => list(string()),
+%%   <<"userCount">> => integer(),
+%%   <<"userKMSKey">> => string(),
+%%   <<"vanityDomain">> => string(),
+%%   <<"vanityDomainStatus">> => list(any())
+%% }
+-type get_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_add_role_output() :: #{
+%%   <<"addedAccessorIds">> => list(string()),
+%%   <<"errors">> => list(batch_error())
+%% }
+-type batch_add_role_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_channel_input() :: #{
+%%   <<"channelDescription">> => string(),
+%%   <<"channelName">> := string()
+%% }
+-type create_channel_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_spaces_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_spaces_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_channel_output() :: #{}
+-type update_channel_output() :: #{}.
+
+
+%% Example:
+%% create_space_output() :: #{
+%%   <<"spaceId">> => string()
+%% }
+-type create_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_admin_input() :: #{}
+-type deregister_admin_input() :: #{}.
 
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% batch_add_role_input() :: #{
+%%   <<"accessorIds">> := list(string()),
+%%   <<"role">> := list(any())
+%% }
+-type batch_add_role_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
+
+%% Example:
+%% get_channel_input() :: #{}
+-type get_channel_input() :: #{}.
 
 
 %% Example:
@@ -277,139 +441,197 @@
 
 
 %% Example:
-%% untag_resource_request() :: #{
-%%   <<"tagKeys">> := list(string())
+%% supported_email_domains_parameters() :: #{
+%%   <<"allowedDomains">> => list(string()),
+%%   <<"enabled">> => list(any())
 %% }
--type untag_resource_request() :: #{binary() => any()}.
-
-%% Example:
-%% untag_resource_response() :: #{}
--type untag_resource_response() :: #{}.
+-type supported_email_domains_parameters() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_space_input() :: #{
-%%   <<"description">> => string(),
-%%   <<"roleArn">> => string(),
-%%   <<"tier">> => list(any())
+%% batch_error() :: #{
+%%   <<"accessorId">> => string(),
+%%   <<"error">> => integer(),
+%%   <<"message">> => string()
 %% }
--type update_space_input() :: #{binary() => any()}.
+-type batch_error() :: #{binary() => any()}.
 
-
-%% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
+-type batch_add_channel_role_to_accessors_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type batch_add_role_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
+
+-type batch_remove_channel_role_from_accessors_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type batch_remove_role_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
--type create_space_errors() ::
-    validation_exception() | 
+-type create_channel_errors() ::
     throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_space_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_space_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type deregister_admin_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
+
+-type get_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_space_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
+
+-type list_channels_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_spaces_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    internal_server_exception() | 
-    access_denied_exception().
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type register_admin_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type send_invites_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type tag_resource_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
 
 -type untag_resource_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    access_denied_exception().
+    resource_not_found_exception().
+
+-type update_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_space_errors() ::
-    validation_exception() | 
     throttling_exception() | 
-    resource_not_found_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception() | 
-    access_denied_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
 %%====================================================================
 
-%% @doc Add role to multiple users or groups in a private re:Post.
+%% @doc Add role to multiple users or groups in a private re:Post channel.
+-spec batch_add_channel_role_to_accessors(aws_client:aws_client(), binary() | list(), binary() | list(), batch_add_channel_role_to_accessors_input()) ->
+    {ok, batch_add_channel_role_to_accessors_output(), tuple()} |
+    {error, any()} |
+    {error, batch_add_channel_role_to_accessors_errors(), tuple()}.
+batch_add_channel_role_to_accessors(Client, ChannelId, SpaceId, Input) ->
+    batch_add_channel_role_to_accessors(Client, ChannelId, SpaceId, Input, []).
+
+-spec batch_add_channel_role_to_accessors(aws_client:aws_client(), binary() | list(), binary() | list(), batch_add_channel_role_to_accessors_input(), proplists:proplist()) ->
+    {ok, batch_add_channel_role_to_accessors_output(), tuple()} |
+    {error, any()} |
+    {error, batch_add_channel_role_to_accessors_errors(), tuple()}.
+batch_add_channel_role_to_accessors(Client, ChannelId, SpaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/channels/", aws_util:encode_uri(ChannelId), "/roles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Add a role to multiple users or groups in a private re:Post.
 -spec batch_add_role(aws_client:aws_client(), binary() | list(), batch_add_role_input()) ->
     {ok, batch_add_role_output(), tuple()} |
     {error, any()} |
@@ -443,7 +665,42 @@ batch_add_role(Client, SpaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Remove role from multiple users or groups in a private re:Post.
+%% @doc Remove a role from multiple users or groups in a private re:Post
+%% channel.
+-spec batch_remove_channel_role_from_accessors(aws_client:aws_client(), binary() | list(), binary() | list(), batch_remove_channel_role_from_accessors_input()) ->
+    {ok, batch_remove_channel_role_from_accessors_output(), tuple()} |
+    {error, any()} |
+    {error, batch_remove_channel_role_from_accessors_errors(), tuple()}.
+batch_remove_channel_role_from_accessors(Client, ChannelId, SpaceId, Input) ->
+    batch_remove_channel_role_from_accessors(Client, ChannelId, SpaceId, Input, []).
+
+-spec batch_remove_channel_role_from_accessors(aws_client:aws_client(), binary() | list(), binary() | list(), batch_remove_channel_role_from_accessors_input(), proplists:proplist()) ->
+    {ok, batch_remove_channel_role_from_accessors_output(), tuple()} |
+    {error, any()} |
+    {error, batch_remove_channel_role_from_accessors_errors(), tuple()}.
+batch_remove_channel_role_from_accessors(Client, ChannelId, SpaceId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/channels/", aws_util:encode_uri(ChannelId), "/roles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Remove a role from multiple users or groups in a private re:Post.
 -spec batch_remove_role(aws_client:aws_client(), binary() | list(), batch_remove_role_input()) ->
     {ok, batch_remove_role_output(), tuple()} |
     {error, any()} |
@@ -458,6 +715,40 @@ batch_remove_role(Client, SpaceId, Input) ->
 batch_remove_role(Client, SpaceId, Input0, Options0) ->
     Method = patch,
     Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/roles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a channel in an AWS re:Post Private private re:Post.
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_input()) ->
+    {ok, create_channel_output(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
+create_channel(Client, SpaceId, Input) ->
+    create_channel(Client, SpaceId, Input, []).
+
+-spec create_channel(aws_client:aws_client(), binary() | list(), create_channel_input(), proplists:proplist()) ->
+    {ok, create_channel_output(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
+create_channel(Client, SpaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/channels"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -580,6 +871,43 @@ deregister_admin(Client, AdminId, SpaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Displays information about a channel in a private re:Post.
+-spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_channel_output(), tuple()} |
+    {error, any()} |
+    {error, get_channel_errors(), tuple()}.
+get_channel(Client, ChannelId, SpaceId)
+  when is_map(Client) ->
+    get_channel(Client, ChannelId, SpaceId, #{}, #{}).
+
+-spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_channel_output(), tuple()} |
+    {error, any()} |
+    {error, get_channel_errors(), tuple()}.
+get_channel(Client, ChannelId, SpaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_channel(Client, ChannelId, SpaceId, QueryMap, HeadersMap, []).
+
+-spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_channel_output(), tuple()} |
+    {error, any()} |
+    {error, get_channel_errors(), tuple()}.
+get_channel(Client, ChannelId, SpaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/channels/", aws_util:encode_uri(ChannelId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Displays information about the AWS re:Post Private private re:Post.
 -spec get_space(aws_client:aws_client(), binary() | list()) ->
     {ok, get_space_output(), tuple()} |
@@ -614,6 +942,49 @@ get_space(Client, SpaceId, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the list of channel within a private re:Post with some
+%% information about each channel.
+-spec list_channels(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_channels_output(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
+list_channels(Client, SpaceId)
+  when is_map(Client) ->
+    list_channels(Client, SpaceId, #{}, #{}).
+
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_channels_output(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
+list_channels(Client, SpaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_channels(Client, SpaceId, QueryMap, HeadersMap, []).
+
+-spec list_channels(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_channels_output(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
+list_channels(Client, SpaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/channels"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -843,6 +1214,40 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Modifies an existing channel.
+-spec update_channel(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_input()) ->
+    {ok, update_channel_output(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
+update_channel(Client, ChannelId, SpaceId, Input) ->
+    update_channel(Client, ChannelId, SpaceId, Input, []).
+
+-spec update_channel(aws_client:aws_client(), binary() | list(), binary() | list(), update_channel_input(), proplists:proplist()) ->
+    {ok, update_channel_output(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
+update_channel(Client, ChannelId, SpaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/spaces/", aws_util:encode_uri(SpaceId), "/channels/", aws_util:encode_uri(ChannelId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies an existing AWS re:Post Private private re:Post.

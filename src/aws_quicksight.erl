@@ -3149,6 +3149,7 @@
 
 %% Example:
 %% create_topic_request() :: #{
+%%   <<"CustomInstructions">> => custom_instructions(),
 %%   <<"FolderArns">> => list(string()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"Topic">> := topic_details(),
@@ -3261,6 +3262,7 @@
 
 %% Example:
 %% update_topic_request() :: #{
+%%   <<"CustomInstructions">> => custom_instructions(),
 %%   <<"Topic">> := topic_details()
 %% }
 -type update_topic_request() :: #{binary() => any()}.
@@ -4966,6 +4968,7 @@
 %% Example:
 %% describe_topic_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"CustomInstructions">> => custom_instructions(),
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer(),
 %%   <<"Topic">> => topic_details(),
@@ -9878,6 +9881,13 @@
 %%   <<"VpcConnectionProperties">> => vpc_connection_properties()
 %% }
 -type update_data_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_instructions() :: #{
+%%   <<"CustomInstructionsString">> => string()
+%% }
+-type custom_instructions() :: #{binary() => any()}.
 
 
 %% Example:
@@ -20036,6 +20046,8 @@ list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the history of SPICE ingestions for a dataset.
+%%
+%% Limited to 5 TPS per user and 25 TPS per account.
 -spec list_ingestions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_ingestions_response(), tuple()} |
     {error, any()} |

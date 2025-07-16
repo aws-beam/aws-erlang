@@ -2263,6 +2263,7 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"Events">> => list(volume_status_event()),
+%%   <<"InitializationStatusDetails">> => initialization_status_details(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"VolumeId">> => string(),
 %%   <<"VolumeStatus">> => volume_status_info()
@@ -8140,6 +8141,14 @@
 %%   <<"TagSpecifications">> => list(tag_specification())
 %% }
 -type create_internet_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% initialization_status_details() :: #{
+%%   <<"EstimatedTimeToCompleteInSeconds">> => float(),
+%%   <<"InitializationType">> => list(any()),
+%%   <<"Progress">> => float()
+%% }
+-type initialization_status_details() :: #{binary() => any()}.
 
 %% Example:
 %% describe_reserved_instances_result() :: #{
@@ -14596,6 +14605,7 @@
 %% create_instance_connect_endpoint_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"PreserveClientIp">> => boolean(),
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetId">> := string(),
@@ -20091,6 +20101,7 @@
 %%   <<"FipsDnsName">> => string(),
 %%   <<"InstanceConnectEndpointArn">> => string(),
 %%   <<"InstanceConnectEndpointId">> => string(),
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"NetworkInterfaceIds">> => list(string()),
 %%   <<"OwnerId">> => string(),
 %%   <<"PreserveClientIp">> => boolean(),
@@ -22697,7 +22708,8 @@ create_image(Client, Input, Options)
 %%
 %% An EC2 Instance Connect Endpoint allows you to connect to an instance,
 %% without
-%% requiring the instance to have a public IPv4 address. For more
+%% requiring the instance to have a public IPv4 or public IPv6 address. For
+%% more
 %% information, see Connect to your instances using EC2 Instance Connect
 %% Endpoint:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect-Endpoint.html

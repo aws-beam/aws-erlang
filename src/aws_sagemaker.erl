@@ -546,6 +546,8 @@
          list_pipeline_executions/3,
          list_pipeline_parameters_for_execution/2,
          list_pipeline_parameters_for_execution/3,
+         list_pipeline_versions/2,
+         list_pipeline_versions/3,
          list_pipelines/2,
          list_pipelines/3,
          list_processing_jobs/2,
@@ -716,6 +718,8 @@
          update_pipeline/3,
          update_pipeline_execution/2,
          update_pipeline_execution/3,
+         update_pipeline_version/2,
+         update_pipeline_version/3,
          update_project/2,
          update_project/3,
          update_space/2,
@@ -1548,7 +1552,8 @@
 
 %% Example:
 %% update_pipeline_response() :: #{
-%%   <<"PipelineArn">> => string()
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionId">> => float()
 %% }
 -type update_pipeline_response() :: #{binary() => any()}.
 
@@ -1786,6 +1791,7 @@
 %%   <<"InstanceGroups">> => list(cluster_instance_group_details()),
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"Orchestrator">> => cluster_orchestrator(),
+%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_details()),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type describe_cluster_response() :: #{binary() => any()}.
@@ -2080,7 +2086,7 @@
 %% Example:
 %% describe_cluster_node_request() :: #{
 %%   <<"ClusterName">> := string(),
-%%   <<"NodeId">> := string()
+%%   <<"NodeId">> => string()
 %% }
 -type describe_cluster_node_request() :: #{binary() => any()}.
 
@@ -2104,6 +2110,17 @@
 %%   <<"FeatureGroupName">> => string()
 %% }
 -type processing_feature_store_output() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_version_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastExecutionPipelineExecutionArn">> => string(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionDescription">> => string(),
+%%   <<"PipelineVersionDisplayName">> => string(),
+%%   <<"PipelineVersionId">> => float()
+%% }
+-type pipeline_version_summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_lineage_group_policy_response() :: #{
@@ -2393,6 +2410,13 @@
 -type experiment_source() :: #{binary() => any()}.
 
 %% Example:
+%% f_sx_lustre_config() :: #{
+%%   <<"PerUnitStorageThroughput">> => integer(),
+%%   <<"SizeInGiB">> => integer()
+%% }
+-type f_sx_lustre_config() :: #{binary() => any()}.
+
+%% Example:
 %% update_image_version_response() :: #{
 %%   <<"ImageVersionArn">> => string()
 %% }
@@ -2658,6 +2682,13 @@
 -type deployment_config() :: #{binary() => any()}.
 
 %% Example:
+%% environment_config_details() :: #{
+%%   <<"FSxLustreConfig">> => f_sx_lustre_config(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type environment_config_details() :: #{binary() => any()}.
+
+%% Example:
 %% processing_job_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"ExitMessage">> => string(),
@@ -2755,6 +2786,8 @@
 %%   <<"PipelineExecutionStatus">> => list(any()),
 %%   <<"PipelineExperimentConfig">> => pipeline_experiment_config(),
 %%   <<"PipelineParameters">> => list(parameter()),
+%%   <<"PipelineVersionDisplayName">> => string(),
+%%   <<"PipelineVersionId">> => float(),
 %%   <<"SelectiveExecutionConfig">> => selective_execution_config()
 %% }
 -type pipeline_execution() :: #{binary() => any()}.
@@ -3975,6 +4008,17 @@
 -type describe_context_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_pipeline_versions_request() :: #{
+%%   <<"CreatedAfter">> => non_neg_integer(),
+%%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineName">> := string(),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_pipeline_versions_request() :: #{binary() => any()}.
+
+%% Example:
 %% human_task_ui_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"HumanTaskUiArn">> => string(),
@@ -4102,7 +4146,8 @@
 %%   <<"ClusterName">> := string(),
 %%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
 %%   <<"InstanceGroupsToDelete">> => list(string()),
-%%   <<"NodeRecovery">> => list(any())
+%%   <<"NodeRecovery">> => list(any()),
+%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification())
 %% }
 -type update_cluster_request() :: #{binary() => any()}.
 
@@ -4963,6 +5008,12 @@
 -type model_bias_job_input() :: #{binary() => any()}.
 
 %% Example:
+%% environment_config() :: #{
+%%   <<"FSxLustreConfig">> => f_sx_lustre_config()
+%% }
+-type environment_config() :: #{binary() => any()}.
+
+%% Example:
 %% compilation_job_summary() :: #{
 %%   <<"CompilationEndTime">> => non_neg_integer(),
 %%   <<"CompilationJobArn">> => string(),
@@ -5197,6 +5248,7 @@
 %%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"Orchestrator">> => cluster_orchestrator(),
+%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -6003,6 +6055,22 @@
 -type list_projects_output() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_restricted_instance_group_specification() :: #{
+%%   <<"EnvironmentConfig">> => environment_config(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceStorageConfigs">> => list(list()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"TrainingPlanArn">> => string()
+%% }
+-type cluster_restricted_instance_group_specification() :: #{binary() => any()}.
+
+%% Example:
 %% human_loop_request_source() :: #{
 %%   <<"AwsManagedHumanLoopRequestSource">> => list(any())
 %% }
@@ -6212,6 +6280,22 @@
 %%   <<"LastModifiedTime">> => non_neg_integer()
 %% }
 -type endpoint_summary() :: #{binary() => any()}.
+
+%% Example:
+%% pipeline_version() :: #{
+%%   <<"CreatedBy">> => user_context(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastExecutedPipelineExecutionArn">> => string(),
+%%   <<"LastExecutedPipelineExecutionDisplayName">> => string(),
+%%   <<"LastExecutedPipelineExecutionStatus">> => list(any()),
+%%   <<"LastModifiedBy">> => user_context(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionDescription">> => string(),
+%%   <<"PipelineVersionDisplayName">> => string(),
+%%   <<"PipelineVersionId">> => float()
+%% }
+-type pipeline_version() :: #{binary() => any()}.
 
 %% Example:
 %% auto_ml_data_split_config() :: #{
@@ -6795,6 +6879,8 @@
 %%   <<"PipelineDisplayName">> => string(),
 %%   <<"PipelineName">> => string(),
 %%   <<"PipelineStatus">> => list(any()),
+%%   <<"PipelineVersionDescription">> => string(),
+%%   <<"PipelineVersionDisplayName">> => string(),
 %%   <<"RoleArn">> => string()
 %% }
 -type describe_pipeline_response() :: #{binary() => any()}.
@@ -7213,7 +7299,7 @@
 %% Example:
 %% cluster_node_summary() :: #{
 %%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceId">> => string(),
+%%   <<"InstanceId">> => [string()],
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
@@ -7756,7 +7842,7 @@
 
 %% Example:
 %% cluster_instance_status_details() :: #{
-%%   <<"Message">> => string(),
+%%   <<"Message">> => [string()],
 %%   <<"Status">> => list(any())
 %% }
 -type cluster_instance_status_details() :: #{binary() => any()}.
@@ -9089,6 +9175,15 @@
 -type update_space_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_pipeline_version_request() :: #{
+%%   <<"PipelineArn">> := string(),
+%%   <<"PipelineVersionDescription">> => string(),
+%%   <<"PipelineVersionDisplayName">> => string(),
+%%   <<"PipelineVersionId">> := float()
+%% }
+-type update_pipeline_version_request() :: #{binary() => any()}.
+
+%% Example:
 %% trial_component_source_detail() :: #{
 %%   <<"ProcessingJob">> => processing_job(),
 %%   <<"SourceArn">> => string(),
@@ -9188,7 +9283,7 @@
 %% Example:
 %% batch_delete_cluster_nodes_error() :: #{
 %%   <<"Code">> => list(any()),
-%%   <<"Message">> => string(),
+%%   <<"Message">> => [string()],
 %%   <<"NodeId">> => string()
 %% }
 -type batch_delete_cluster_nodes_error() :: #{binary() => any()}.
@@ -9791,6 +9886,7 @@
 %%   <<"PipelineExecutionDisplayName">> => string(),
 %%   <<"PipelineName">> := string(),
 %%   <<"PipelineParameters">> => list(parameter()),
+%%   <<"PipelineVersionId">> => float(),
 %%   <<"SelectiveExecutionConfig">> => selective_execution_config()
 %% }
 -type start_pipeline_execution_request() :: #{binary() => any()}.
@@ -9816,6 +9912,7 @@
 %%   <<"PipelineExecutionDisplayName">> => string(),
 %%   <<"PipelineExecutionStatus">> => list(any()),
 %%   <<"PipelineExperimentConfig">> => pipeline_experiment_config(),
+%%   <<"PipelineVersionId">> => float(),
 %%   <<"SelectiveExecutionConfig">> => selective_execution_config()
 %% }
 -type describe_pipeline_execution_response() :: #{binary() => any()}.
@@ -10216,6 +10313,13 @@
 -type start_notebook_instance_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_pipeline_version_response() :: #{
+%%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionId">> => float()
+%% }
+-type update_pipeline_version_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_workforce_response() :: #{
 %%   <<"Workforce">> => workforce()
 %% }
@@ -10251,7 +10355,7 @@
 %% Example:
 %% batch_delete_cluster_nodes_request() :: #{
 %%   <<"ClusterName">> := string(),
-%%   <<"NodeIds">> := list(string())
+%%   <<"NodeIds">> => list(string())
 %% }
 -type batch_delete_cluster_nodes_request() :: #{binary() => any()}.
 
@@ -10630,6 +10734,25 @@
 %%   <<"UserProfileNameEquals">> => string()
 %% }
 -type list_apps_request() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_restricted_instance_group_details() :: #{
+%%   <<"CurrentCount">> => integer(),
+%%   <<"EnvironmentConfig">> => environment_config_details(),
+%%   <<"ExecutionRole">> => string(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceStorageConfigs">> => list(list()),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
+%%   <<"OverrideVpcConfig">> => vpc_config(),
+%%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetCount">> => integer(),
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"TrainingPlanArn">> => string(),
+%%   <<"TrainingPlanStatus">> => string()
+%% }
+-type cluster_restricted_instance_group_details() :: #{binary() => any()}.
 
 %% Example:
 %% stop_optimization_job_request() :: #{
@@ -11348,7 +11471,8 @@
 
 %% Example:
 %% describe_pipeline_request() :: #{
-%%   <<"PipelineName">> := string()
+%%   <<"PipelineName">> := string(),
+%%   <<"PipelineVersionId">> => float()
 %% }
 -type describe_pipeline_request() :: #{binary() => any()}.
 
@@ -11780,6 +11904,7 @@
 %%   <<"ModelPackageGroup">> => model_package_group(),
 %%   <<"Pipeline">> => pipeline(),
 %%   <<"PipelineExecution">> => pipeline_execution(),
+%%   <<"PipelineVersion">> => pipeline_version(),
 %%   <<"Project">> => project(),
 %%   <<"TrainingJob">> => training_job(),
 %%   <<"Trial">> => trial(),
@@ -11877,6 +12002,13 @@
 %%   <<"ExperimentArn">> => string()
 %% }
 -type update_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_pipeline_versions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineVersionSummaries">> => list(pipeline_version_summary())
+%% }
+-type list_pipeline_versions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_algorithms_output() :: #{
@@ -12445,7 +12577,7 @@
 %% Example:
 %% cluster_node_details() :: #{
 %%   <<"InstanceGroupName">> => string(),
-%%   <<"InstanceId">> => string(),
+%%   <<"InstanceId">> => [string()],
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),
 %%   <<"InstanceStorageConfigs">> => list(list()),
 %%   <<"InstanceType">> => list(any()),
@@ -13329,6 +13461,9 @@
 -type list_pipeline_parameters_for_execution_errors() ::
     resource_not_found().
 
+-type list_pipeline_versions_errors() ::
+    resource_not_found().
+
 -type list_studio_lifecycle_configs_errors() ::
     resource_in_use().
 
@@ -13563,6 +13698,10 @@
     resource_not_found().
 
 -type update_pipeline_execution_errors() ::
+    conflict_exception() | 
+    resource_not_found().
+
+-type update_pipeline_version_errors() ::
     conflict_exception() | 
     resource_not_found().
 
@@ -19263,6 +19402,23 @@ list_pipeline_parameters_for_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelineParametersForExecution">>, Input, Options).
 
+%% @doc Gets a list of all versions of the pipeline.
+-spec list_pipeline_versions(aws_client:aws_client(), list_pipeline_versions_request()) ->
+    {ok, list_pipeline_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_versions_errors(), tuple()}.
+list_pipeline_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_pipeline_versions(Client, Input, []).
+
+-spec list_pipeline_versions(aws_client:aws_client(), list_pipeline_versions_request(), proplists:proplist()) ->
+    {ok, list_pipeline_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_versions_errors(), tuple()}.
+list_pipeline_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPipelineVersions">>, Input, Options).
+
 %% @doc Gets a list of pipelines.
 -spec list_pipelines(aws_client:aws_client(), list_pipelines_request()) ->
     {ok, list_pipelines_response(), tuple()} |
@@ -20971,6 +21127,23 @@ update_pipeline_execution(Client, Input)
 update_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePipelineExecution">>, Input, Options).
+
+%% @doc Updates a pipeline version.
+-spec update_pipeline_version(aws_client:aws_client(), update_pipeline_version_request()) ->
+    {ok, update_pipeline_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_version_errors(), tuple()}.
+update_pipeline_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_pipeline_version(Client, Input, []).
+
+-spec update_pipeline_version(aws_client:aws_client(), update_pipeline_version_request(), proplists:proplist()) ->
+    {ok, update_pipeline_version_response(), tuple()} |
+    {error, any()} |
+    {error, update_pipeline_version_errors(), tuple()}.
+update_pipeline_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePipelineVersion">>, Input, Options).
 
 %% @doc Updates a machine learning (ML) project that is created from a
 %% template that sets up an ML pipeline from training to deploying an

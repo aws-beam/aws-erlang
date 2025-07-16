@@ -30,6 +30,7 @@
 %% describe_stream_input() :: #{
 %%   <<"ExclusiveStartShardId">> => string(),
 %%   <<"Limit">> => integer(),
+%%   <<"ShardFilter">> => shard_filter(),
 %%   <<"StreamArn">> := string()
 %% }
 -type describe_stream_input() :: #{binary() => any()}.
@@ -148,6 +149,13 @@
 %%   <<"ShardId">> => string()
 %% }
 -type shard() :: #{binary() => any()}.
+
+%% Example:
+%% shard_filter() :: #{
+%%   <<"ShardId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type shard_filter() :: #{binary() => any()}.
 
 %% Example:
 %% stream() :: #{

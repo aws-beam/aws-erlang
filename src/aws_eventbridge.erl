@@ -186,6 +186,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EventSourceName">> => string(),
 %%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LogConfig">> => log_config(),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => list(tag())
 %% }
@@ -475,7 +476,8 @@
 %%   <<"DeadLetterConfig">> => dead_letter_config(),
 %%   <<"Description">> => string(),
 %%   <<"EventBusArn">> => string(),
-%%   <<"KmsKeyIdentifier">> => string()
+%%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LogConfig">> => log_config()
 %% }
 -type create_event_bus_response() :: #{binary() => any()}.
 
@@ -876,6 +878,13 @@
 -type connection() :: #{binary() => any()}.
 
 %% Example:
+%% log_config() :: #{
+%%   <<"IncludeDetail">> => list(any()),
+%%   <<"Level">> => list(any())
+%% }
+-type log_config() :: #{binary() => any()}.
+
+%% Example:
 %% primary() :: #{
 %%   <<"HealthCheck">> => string()
 %% }
@@ -1238,6 +1247,7 @@
 %%   <<"Description">> => string(),
 %%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LogConfig">> => log_config(),
 %%   <<"Name">> => string(),
 %%   <<"Policy">> => string()
 %% }
@@ -1278,6 +1288,7 @@
 %%   <<"DeadLetterConfig">> => dead_letter_config(),
 %%   <<"Description">> => string(),
 %%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LogConfig">> => log_config(),
 %%   <<"Name">> => string()
 %% }
 -type update_event_bus_request() :: #{binary() => any()}.
@@ -1667,6 +1678,7 @@
 %%   <<"DeadLetterConfig">> => dead_letter_config(),
 %%   <<"Description">> => string(),
 %%   <<"KmsKeyIdentifier">> => string(),
+%%   <<"LogConfig">> => log_config(),
 %%   <<"Name">> => string()
 %% }
 -type update_event_bus_response() :: #{binary() => any()}.
