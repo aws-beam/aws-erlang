@@ -9,6 +9,8 @@
          batch_delete_evaluation_job/3,
          create_custom_model/2,
          create_custom_model/3,
+         create_custom_model_deployment/2,
+         create_custom_model_deployment/3,
          create_evaluation_job/2,
          create_evaluation_job/3,
          create_foundation_model_agreement/2,
@@ -35,6 +37,8 @@
          create_provisioned_model_throughput/3,
          delete_custom_model/3,
          delete_custom_model/4,
+         delete_custom_model_deployment/3,
+         delete_custom_model_deployment/4,
          delete_foundation_model_agreement/2,
          delete_foundation_model_agreement/3,
          delete_guardrail/3,
@@ -56,6 +60,9 @@
          get_custom_model/2,
          get_custom_model/4,
          get_custom_model/5,
+         get_custom_model_deployment/2,
+         get_custom_model_deployment/4,
+         get_custom_model_deployment/5,
          get_evaluation_job/2,
          get_evaluation_job/4,
          get_evaluation_job/5,
@@ -101,6 +108,9 @@
          get_use_case_for_model_access/1,
          get_use_case_for_model_access/3,
          get_use_case_for_model_access/4,
+         list_custom_model_deployments/1,
+         list_custom_model_deployments/3,
+         list_custom_model_deployments/4,
          list_custom_models/1,
          list_custom_models/3,
          list_custom_models/4,
@@ -659,6 +669,17 @@
 
 
 %% Example:
+%% create_custom_model_deployment_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"modelArn">> := string(),
+%%   <<"modelDeploymentName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_custom_model_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_model_customization_jobs_request() :: #{
 %%   <<"creationTimeAfter">> => non_neg_integer(),
 %%   <<"creationTimeBefore">> => non_neg_integer(),
@@ -701,6 +722,10 @@
 %% }
 -type pricing_term() :: #{binary() => any()}.
 
+%% Example:
+%% delete_custom_model_deployment_request() :: #{}
+-type delete_custom_model_deployment_request() :: #{}.
+
 
 %% Example:
 %% create_guardrail_response() :: #{
@@ -737,6 +762,10 @@
 %%   <<"evaluatorModelConfig">> => custom_metric_evaluator_model_config()
 %% }
 -type automated_evaluation_custom_metric_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_model_deployment_request() :: #{}
+-type get_custom_model_deployment_request() :: #{}.
 
 
 %% Example:
@@ -917,6 +946,21 @@
 
 
 %% Example:
+%% list_custom_model_deployments_request() :: #{
+%%   <<"createdAfter">> => non_neg_integer(),
+%%   <<"createdBefore">> => non_neg_integer(),
+%%   <<"maxResults">> => integer(),
+%%   <<"modelArnEquals">> => string(),
+%%   <<"nameContains">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any()),
+%%   <<"statusEquals">> => list(any())
+%% }
+-type list_custom_model_deployments_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_import_job_summary() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"endTime">> => non_neg_integer(),
@@ -1044,6 +1088,14 @@
 %% Example:
 %% get_foundation_model_request() :: #{}
 -type get_foundation_model_request() :: #{}.
+
+
+%% Example:
+%% list_custom_model_deployments_response() :: #{
+%%   <<"modelDeploymentSummaries">> => list(custom_model_deployment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_custom_model_deployments_response() :: #{binary() => any()}.
 
 %% Example:
 %% deregister_marketplace_model_endpoint_response() :: #{}
@@ -1231,6 +1283,19 @@
 
 
 %% Example:
+%% custom_model_deployment_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customModelDeploymentArn">> => string(),
+%%   <<"customModelDeploymentName">> => string(),
+%%   <<"failureMessage">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type custom_model_deployment_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_config() :: #{
 %%   <<"bucketName">> => string(),
 %%   <<"keyPrefix">> => string()
@@ -1313,6 +1378,10 @@
 %%   <<"type">> => list(any())
 %% }
 -type guardrail_managed_words() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_model_deployment_response() :: #{}
+-type delete_custom_model_deployment_response() :: #{}.
 
 
 %% Example:
@@ -1858,6 +1927,20 @@
 %%   <<"modelSummaries">> => list(foundation_model_summary())
 %% }
 -type list_foundation_models_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_custom_model_deployment_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customModelDeploymentArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"failureMessage">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"modelArn">> => string(),
+%%   <<"modelDeploymentName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_custom_model_deployment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2439,6 +2522,13 @@
 
 
 %% Example:
+%% create_custom_model_deployment_response() :: #{
+%%   <<"customModelDeploymentArn">> => string()
+%% }
+-type create_custom_model_deployment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% training_data_config() :: #{
 %%   <<"invocationLogsConfig">> => invocation_logs_config(),
 %%   <<"s3Uri">> => string()
@@ -2600,6 +2690,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_custom_model_deployment_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
 -type create_evaluation_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2717,6 +2816,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_custom_model_deployment_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_foundation_model_agreement_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2785,6 +2892,13 @@
     resource_not_found_exception().
 
 -type get_custom_model_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_custom_model_deployment_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2892,6 +3006,12 @@
     validation_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type list_custom_model_deployments_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_custom_models_errors() ::
     throttling_exception() | 
@@ -3159,7 +3279,61 @@ create_custom_model(Client, Input) ->
 create_custom_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-models/create-custom-model"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deploys a custom model for on-demand inference in Amazon Bedrock.
+%%
+%% After you deploy your custom model, you use the deployment's Amazon
+%% Resource Name (ARN) as the `modelId' parameter when you submit prompts
+%% and generate responses with model inference.
+%%
+%% For more information about setting up on-demand inference for custom
+%% models, see Set up inference for a custom model:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html.
+%%
+%% The following actions are related to the `CreateCustomModelDeployment'
+%% operation:
+%%
+%% GetCustomModelDeployment:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetCustomModelDeployment.html
+%%
+%% ListCustomModelDeployments:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_ListCustomModelDeployments.html
+%%
+%% DeleteCustomModelDeployment:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_DeleteCustomModelDeployment.html
+-spec create_custom_model_deployment(aws_client:aws_client(), create_custom_model_deployment_request()) ->
+    {ok, create_custom_model_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_model_deployment_errors(), tuple()}.
+create_custom_model_deployment(Client, Input) ->
+    create_custom_model_deployment(Client, Input, []).
+
+-spec create_custom_model_deployment(aws_client:aws_client(), create_custom_model_deployment_request(), proplists:proplist()) ->
+    {ok, create_custom_model_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_model_deployment_errors(), tuple()}.
+create_custom_model_deployment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/model-customization/custom-model-deployments"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -3715,6 +3889,56 @@ delete_custom_model(Client, ModelIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a custom model deployment.
+%%
+%% This operation stops the deployment and removes it from your account.
+%% After deletion, the deployment ARN can no longer be used for inference
+%% requests.
+%%
+%% The following actions are related to the `DeleteCustomModelDeployment'
+%% operation:
+%%
+%% CreateCustomModelDeployment:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateCustomModelDeployment.html
+%%
+%% GetCustomModelDeployment:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetCustomModelDeployment.html
+%%
+%% ListCustomModelDeployments:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_ListCustomModelDeployments.html
+-spec delete_custom_model_deployment(aws_client:aws_client(), binary() | list(), delete_custom_model_deployment_request()) ->
+    {ok, delete_custom_model_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_model_deployment_errors(), tuple()}.
+delete_custom_model_deployment(Client, CustomModelDeploymentIdentifier, Input) ->
+    delete_custom_model_deployment(Client, CustomModelDeploymentIdentifier, Input, []).
+
+-spec delete_custom_model_deployment(aws_client:aws_client(), binary() | list(), delete_custom_model_deployment_request(), proplists:proplist()) ->
+    {ok, delete_custom_model_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_model_deployment_errors(), tuple()}.
+delete_custom_model_deployment(Client, CustomModelDeploymentIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/model-customization/custom-model-deployments/", aws_util:encode_uri(CustomModelDeploymentIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete the model access agreement for the specified model.
 -spec delete_foundation_model_agreement(aws_client:aws_client(), delete_foundation_model_agreement_request()) ->
     {ok, delete_foundation_model_agreement_response(), tuple()} |
@@ -4081,6 +4305,59 @@ get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap)
 get_custom_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/custom-models/", aws_util:encode_uri(ModelIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a custom model deployment, including its
+%% status, configuration, and metadata.
+%%
+%% Use this operation to monitor the deployment status and retrieve details
+%% needed for inference requests.
+%%
+%% The following actions are related to the `GetCustomModelDeployment'
+%% operation:
+%%
+%% CreateCustomModelDeployment:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateCustomModelDeployment.html
+%%
+%% ListCustomModelDeployments:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_ListCustomModelDeployments.html
+%%
+%% DeleteCustomModelDeployment:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_DeleteCustomModelDeployment.html
+-spec get_custom_model_deployment(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_custom_model_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_model_deployment_errors(), tuple()}.
+get_custom_model_deployment(Client, CustomModelDeploymentIdentifier)
+  when is_map(Client) ->
+    get_custom_model_deployment(Client, CustomModelDeploymentIdentifier, #{}, #{}).
+
+-spec get_custom_model_deployment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_custom_model_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_model_deployment_errors(), tuple()}.
+get_custom_model_deployment(Client, CustomModelDeploymentIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_custom_model_deployment(Client, CustomModelDeploymentIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_custom_model_deployment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_custom_model_deployment_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_model_deployment_errors(), tuple()}.
+get_custom_model_deployment(Client, CustomModelDeploymentIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/model-customization/custom-model-deployments/", aws_util:encode_uri(CustomModelDeploymentIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4685,6 +4962,74 @@ get_use_case_for_model_access(Client, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists custom model deployments in your account.
+%%
+%% You can filter the results by creation time, name, status, and associated
+%% model. Use this operation to manage and monitor your custom model
+%% deployments.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+%%
+%% The following actions are related to the `ListCustomModelDeployments'
+%% operation:
+%%
+%% CreateCustomModelDeployment:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateCustomModelDeployment.html
+%%
+%% GetCustomModelDeployment:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_GetCustomModelDeployment.html
+%%
+%% DeleteCustomModelDeployment:
+%% https://docs.aws.amazon.com/bedrock/latest/APIReference/API_DeleteCustomModelDeployment.html
+-spec list_custom_model_deployments(aws_client:aws_client()) ->
+    {ok, list_custom_model_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_model_deployments_errors(), tuple()}.
+list_custom_model_deployments(Client)
+  when is_map(Client) ->
+    list_custom_model_deployments(Client, #{}, #{}).
+
+-spec list_custom_model_deployments(aws_client:aws_client(), map(), map()) ->
+    {ok, list_custom_model_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_model_deployments_errors(), tuple()}.
+list_custom_model_deployments(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_custom_model_deployments(Client, QueryMap, HeadersMap, []).
+
+-spec list_custom_model_deployments(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_custom_model_deployments_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_model_deployments_errors(), tuple()}.
+list_custom_model_deployments(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/model-customization/custom-model-deployments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"modelArnEquals">>, maps:get(<<"modelArnEquals">>, QueryMap, undefined)},
+        {<<"nameContains">>, maps:get(<<"nameContains">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
+        {<<"statusEquals">>, maps:get(<<"statusEquals">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

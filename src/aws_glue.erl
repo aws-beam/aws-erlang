@@ -2393,7 +2393,7 @@
 %%   <<"Name">> => string(),
 %%   <<"OpenTableFormatInput">> => open_table_format_input(),
 %%   <<"PartitionIndexes">> => list(partition_index()),
-%%   <<"TableInput">> := table_input(),
+%%   <<"TableInput">> => table_input(),
 %%   <<"TransactionId">> => string()
 %% }
 -type create_table_request() :: #{binary() => any()}.

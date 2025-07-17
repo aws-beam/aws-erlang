@@ -1133,6 +1133,7 @@
 %% Example:
 %% update_ip_set_request() :: #{
 %%   <<"Activate">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Location">> => string(),
 %%   <<"Name">> => string()
 %% }
@@ -1553,6 +1554,7 @@
 
 %% Example:
 %% get_threat_intel_set_response() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Format">> => list(any()),
 %%   <<"Location">> => string(),
 %%   <<"Name">> => string(),
@@ -1583,6 +1585,7 @@
 %% Example:
 %% update_threat_intel_set_request() :: #{
 %%   <<"Activate">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Location">> => string(),
 %%   <<"Name">> => string()
 %% }
@@ -2350,6 +2353,7 @@
 %% create_threat_intel_set_request() :: #{
 %%   <<"Activate">> := boolean(),
 %%   <<"ClientToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Format">> := list(any()),
 %%   <<"Location">> := string(),
 %%   <<"Name">> := string(),
@@ -2446,6 +2450,7 @@
 %% create_ip_set_request() :: #{
 %%   <<"Activate">> := boolean(),
 %%   <<"ClientToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Format">> := list(any()),
 %%   <<"Location">> := string(),
 %%   <<"Name">> := string(),
@@ -2499,6 +2504,7 @@
 
 %% Example:
 %% get_ip_set_response() :: #{
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Format">> => list(any()),
 %%   <<"Location">> => string(),
 %%   <<"Name">> => string(),
@@ -3434,7 +3440,8 @@
 
 -type create_ip_set_errors() ::
     bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type create_malware_protection_plan_errors() ::
     bad_request_exception() | 
@@ -3456,7 +3463,8 @@
 
 -type create_threat_intel_set_errors() ::
     bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type decline_invitations_errors() ::
     bad_request_exception() | 
@@ -3693,7 +3701,8 @@
 
 -type update_ip_set_errors() ::
     bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 -type update_malware_protection_plan_errors() ::
     bad_request_exception() | 
@@ -3719,7 +3728,8 @@
 
 -type update_threat_intel_set_errors() ::
     bad_request_exception() | 
-    internal_server_error_exception().
+    internal_server_error_exception() | 
+    access_denied_exception().
 
 %%====================================================================
 %% API

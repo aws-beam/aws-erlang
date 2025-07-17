@@ -343,6 +343,7 @@
 
 %% Example:
 %% put_origin_endpoint_policy_request() :: #{
+%%   <<"CdnAuthConfiguration">> => cdn_auth_configuration(),
 %%   <<"Policy">> := string()
 %% }
 -type put_origin_endpoint_policy_request() :: #{binary() => any()}.
@@ -531,6 +532,14 @@
 %%   <<"ResourceTypeNotFound">> => list(any())
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% cdn_auth_configuration() :: #{
+%%   <<"CdnIdentifierSecretArns">> => list(string()),
+%%   <<"SecretsRoleArn">> => [string()]
+%% }
+-type cdn_auth_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1127,6 +1136,7 @@
 
 %% Example:
 %% get_origin_endpoint_policy_response() :: #{
+%%   <<"CdnAuthConfiguration">> => cdn_auth_configuration(),
 %%   <<"ChannelGroupName">> => string(),
 %%   <<"ChannelName">> => string(),
 %%   <<"OriginEndpointName">> => string(),
