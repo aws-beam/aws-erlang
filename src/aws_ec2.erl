@@ -14122,6 +14122,7 @@
 %%   <<"State">> => list(any()),
 %%   <<"VirtualizationType">> => list(any()),
 %%   <<"CreationDate">> => string(),
+%%   <<"FreeTierEligible">> => boolean(),
 %%   <<"Platform">> => list(any()),
 %%   <<"RootDeviceName">> => string(),
 %%   <<"RamdiskId">> => string(),

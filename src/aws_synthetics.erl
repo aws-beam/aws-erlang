@@ -116,6 +116,14 @@
 
 
 %% Example:
+%% dependency() :: #{
+%%   <<"Reference">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type dependency() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_canaries_response() :: #{
 %%   <<"Canaries">> => list(canary()),
 %%   <<"NextToken">> => string()
@@ -455,6 +463,7 @@
 
 %% Example:
 %% canary_code_output() :: #{
+%%   <<"Dependencies">> => list(dependency()),
 %%   <<"Handler">> => string(),
 %%   <<"SourceLocationArn">> => string()
 %% }
@@ -718,6 +727,7 @@
 
 %% Example:
 %% canary_code_input() :: #{
+%%   <<"Dependencies">> => list(dependency()),
 %%   <<"Handler">> => string(),
 %%   <<"S3Bucket">> => string(),
 %%   <<"S3Key">> => string(),

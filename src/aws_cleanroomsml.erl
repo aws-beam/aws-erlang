@@ -400,6 +400,7 @@
 %% Example:
 %% protected_query_input_parameters() :: #{
 %%   <<"computeConfiguration">> => list(),
+%%   <<"resultFormat">> => list(any()),
 %%   <<"sqlParameters">> => protected_query_s_q_l_parameters()
 %% }
 -type protected_query_input_parameters() :: #{binary() => any()}.
