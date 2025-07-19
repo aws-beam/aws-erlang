@@ -25,7 +25,7 @@
 %% For details about predefined runbooks for Automation, a tool in Amazon Web
 %% Services Systems Manager, see the
 %%
-%% Systems Manager Automation runbook reference:
+%% Systems Manager Automation Runbook Reference:
 %% https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html
 %% .
 %%
@@ -7731,6 +7731,13 @@ describe_ops_items(Client, Input, Options)
 %% the
 %% `NextToken' in a subsequent call to get the next set of results.
 %%
+%% Parameter names can't contain spaces. The service removes any spaces
+%% specified for the
+%% beginning or end of a parameter name. If the specified name for a
+%% parameter contains spaces
+%% between characters, the request fails with a `ValidationException'
+%% error.
+%%
 %% If you change the KMS key alias for the KMS key used to encrypt a
 %% parameter,
 %% then you must also update the key alias the parameter uses to reference
@@ -8366,6 +8373,13 @@ get_ops_summary(Client, Input, Options)
 %% @doc Get information about a single parameter by specifying the parameter
 %% name.
 %%
+%% Parameter names can't contain spaces. The service removes any spaces
+%% specified for the
+%% beginning or end of a parameter name. If the specified name for a
+%% parameter contains spaces
+%% between characters, the request fails with a `ValidationException'
+%% error.
+%%
 %% To get information about more than one parameter at a time, use the
 %% `GetParameters' operation.
 -spec get_parameter(aws_client:aws_client(), get_parameter_request()) ->
@@ -8385,6 +8399,13 @@ get_parameter(Client, Input, Options)
     request(Client, <<"GetParameter">>, Input, Options).
 
 %% @doc Retrieves the history of all changes to a parameter.
+%%
+%% Parameter names can't contain spaces. The service removes any spaces
+%% specified for the
+%% beginning or end of a parameter name. If the specified name for a
+%% parameter contains spaces
+%% between characters, the request fails with a `ValidationException'
+%% error.
 %%
 %% If you change the KMS key alias for the KMS key used to encrypt a
 %% parameter,
@@ -8414,6 +8435,13 @@ get_parameter_history(Client, Input, Options)
 %% To get information about a single parameter, you can use the
 %% `GetParameter'
 %% operation instead.
+%%
+%% Parameter names can't contain spaces. The service removes any spaces
+%% specified for the
+%% beginning or end of a parameter name. If the specified name for a
+%% parameter contains spaces
+%% between characters, the request fails with a `ValidationException'
+%% error.
 -spec get_parameters(aws_client:aws_client(), get_parameters_request()) ->
     {ok, get_parameters_result(), tuple()} |
     {error, any()} |
@@ -8444,6 +8472,13 @@ get_parameters(Client, Input, Options)
 %% matching values up to that point and a `NextToken'. You can specify
 %% the
 %% `NextToken' in a subsequent call to get the next set of results.
+%%
+%% Parameter names can't contain spaces. The service removes any spaces
+%% specified for the
+%% beginning or end of a parameter name. If the specified name for a
+%% parameter contains spaces
+%% between characters, the request fails with a `ValidationException'
+%% error.
 -spec get_parameters_by_path(aws_client:aws_client(), get_parameters_by_path_request()) ->
     {ok, get_parameters_by_path_result(), tuple()} |
     {error, any()} |
@@ -8597,6 +8632,13 @@ get_service_setting(Client, Input, Options)
 %% sensitive). If a label fails to meet these requirements, then the label
 %% isn't associated with a
 %% parameter and the system displays it in the list of InvalidLabels.
+%%
+%% Parameter names can't contain spaces. The service removes any spaces
+%% specified for
+%% the beginning or end of a parameter name. If the specified name for a
+%% parameter contains spaces
+%% between characters, the request fails with a `ValidationException'
+%% error.
 -spec label_parameter_version(aws_client:aws_client(), label_parameter_version_request()) ->
     {ok, label_parameter_version_result(), tuple()} |
     {error, any()} |
@@ -9039,6 +9081,16 @@ modify_document_permission(Client, Input, Options)
 %% ExecutionTime. The time the patch, association, or custom compliance item
 %% was applied to
 %% the managed node.
+%%
+%% For State Manager associations, this represents the time when compliance
+%% status was
+%% captured by the Systems Manager service during its internal compliance
+%% aggregation workflow, not
+%% necessarily when the association was executed on the managed node. State
+%% Manager updates
+%% compliance information for all associations on an instance whenever any
+%% association executes,
+%% which may result in multiple associations showing the same execution time.
 %%
 %% Id: The patch, association, or custom compliance ID.
 %%
@@ -9561,6 +9613,13 @@ terminate_session(Client, Input, Options)
     request(Client, <<"TerminateSession">>, Input, Options).
 
 %% @doc Remove a label or labels from a parameter.
+%%
+%% Parameter names can't contain spaces. The service removes any spaces
+%% specified for the
+%% beginning or end of a parameter name. If the specified name for a
+%% parameter contains spaces
+%% between characters, the request fails with a `ValidationException'
+%% error.
 -spec unlabel_parameter_version(aws_client:aws_client(), unlabel_parameter_version_request()) ->
     {ok, unlabel_parameter_version_result(), tuple()} |
     {error, any()} |

@@ -43,6 +43,9 @@
          get_outpost/2,
          get_outpost/4,
          get_outpost/5,
+         get_outpost_billing_information/2,
+         get_outpost_billing_information/4,
+         get_outpost_billing_information/5,
          get_outpost_instance_types/2,
          get_outpost_instance_types/4,
          get_outpost_instance_types/5,
@@ -342,6 +345,15 @@
 
 
 %% Example:
+%% get_outpost_billing_information_output() :: #{
+%%   <<"ContractEndDate">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Subscriptions">> => list(subscription())
+%% }
+-type get_outpost_billing_information_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_site_rack_physical_properties_input() :: #{
 %%   <<"FiberOpticCableType">> => list(any()),
 %%   <<"MaximumSupportedWeightLbs">> => list(any()),
@@ -628,6 +640,14 @@
 %% delete_site_output() :: #{}
 -type delete_site_output() :: #{}.
 
+
+%% Example:
+%% get_outpost_billing_information_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_outpost_billing_information_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_outpost_output() :: #{}
 -type delete_outpost_output() :: #{}.
@@ -728,6 +748,20 @@
 %%   <<"OutpostIdentifierFilter">> => string()
 %% }
 -type list_capacity_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscription() :: #{
+%%   <<"BeginDate">> => non_neg_integer(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"MonthlyRecurringPrice">> => float(),
+%%   <<"OrderIds">> => list(string()),
+%%   <<"SubscriptionId">> => string(),
+%%   <<"SubscriptionStatus">> => list(any()),
+%%   <<"SubscriptionType">> => list(any()),
+%%   <<"UpfrontPrice">> => float()
+%% }
+-type subscription() :: #{binary() => any()}.
 
 
 %% Example:
@@ -994,6 +1028,7 @@
 
 -type get_catalog_item_errors() ::
     validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
     not_found_exception().
 
@@ -1010,6 +1045,11 @@
 
 -type get_outpost_errors() ::
     validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception().
+
+-type get_outpost_billing_information_errors() ::
     access_denied_exception() | 
     internal_server_exception() | 
     not_found_exception().
@@ -1064,6 +1104,7 @@
 
 -type list_catalog_items_errors() ::
     validation_exception() | 
+    access_denied_exception() | 
     internal_server_exception() | 
     not_found_exception().
 
@@ -1580,6 +1621,49 @@ get_outpost(Client, OutpostId, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets current and historical billing information about the specified
+%% Outpost.
+-spec get_outpost_billing_information(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_outpost_billing_information_output(), tuple()} |
+    {error, any()} |
+    {error, get_outpost_billing_information_errors(), tuple()}.
+get_outpost_billing_information(Client, OutpostIdentifier)
+  when is_map(Client) ->
+    get_outpost_billing_information(Client, OutpostIdentifier, #{}, #{}).
+
+-spec get_outpost_billing_information(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_outpost_billing_information_output(), tuple()} |
+    {error, any()} |
+    {error, get_outpost_billing_information_errors(), tuple()}.
+get_outpost_billing_information(Client, OutpostIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_outpost_billing_information(Client, OutpostIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_outpost_billing_information(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_outpost_billing_information_output(), tuple()} |
+    {error, any()} |
+    {error, get_outpost_billing_information_errors(), tuple()}.
+get_outpost_billing_information(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/outpost/", aws_util:encode_uri(OutpostIdentifier), "/billing-information"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -2186,7 +2270,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Starts the specified capacity task.
 %%
-%% You can have one active capacity task for each order and each Outpost.
+%% You can have one active capacity task for each order
+%% and each Outpost.
 -spec start_capacity_task(aws_client:aws_client(), binary() | list(), start_capacity_task_input()) ->
     {ok, start_capacity_task_output(), tuple()} |
     {error, any()} |

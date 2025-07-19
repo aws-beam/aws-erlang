@@ -2047,6 +2047,7 @@
     resource_not_found_exception().
 
 -type register_organization_admin_account_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 

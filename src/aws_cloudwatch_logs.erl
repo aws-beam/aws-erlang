@@ -154,6 +154,8 @@
          get_log_events/3,
          get_log_group_fields/2,
          get_log_group_fields/3,
+         get_log_object/2,
+         get_log_object/3,
          get_log_record/2,
          get_log_record/3,
          get_query_results/2,
@@ -602,6 +604,12 @@
 %%   <<"tags">> => map()
 %% }
 -type create_log_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% fields_data() :: #{
+%%   <<"data">> => binary()
+%% }
+-type fields_data() :: #{binary() => any()}.
 
 %% Example:
 %% open_search_encryption_policy() :: #{
@@ -1671,6 +1679,12 @@
 -type start_query_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_log_object_response() :: #{
+%%   <<"fieldStream">> => list()
+%% }
+-type get_log_object_response() :: #{binary() => any()}.
+
+%% Example:
 %% start_live_tail_request() :: #{
 %%   <<"logEventFilterPattern">> => string(),
 %%   <<"logGroupIdentifiers">> := list(string()),
@@ -2024,6 +2038,13 @@
 -type delete_resource_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_log_object_request() :: #{
+%%   <<"logObjectPointer">> := string(),
+%%   <<"unmask">> => boolean()
+%% }
+-type get_log_object_request() :: #{binary() => any()}.
+
+%% Example:
 %% anomaly_detector() :: #{
 %%   <<"anomalyDetectorArn">> => string(),
 %%   <<"anomalyDetectorStatus">> => list(any()),
@@ -2063,6 +2084,12 @@
 %%   <<"name">> := string()
 %% }
 -type delete_delivery_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% internal_streaming_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type internal_streaming_exception() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_export_task_request() :: #{
@@ -2603,6 +2630,13 @@
     invalid_parameter_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception().
+
+-type get_log_object_errors() ::
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    invalid_operation_exception().
 
 -type get_log_record_errors() ::
     limit_exceeded_exception() | 
@@ -4473,6 +4507,40 @@ get_log_group_fields(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLogGroupFields">>, Input, Options).
 
+%% @doc Retrieves a large logging object (LLO) and streams it back.
+%%
+%% This API is used to fetch the content of large portions of log events that
+%% have been ingested through the PutOpenTelemetryLogs API.
+%% When log events contain fields that would cause the total event size to
+%% exceed 1MB, CloudWatch Logs automatically processes up to 10 fields,
+%% starting with the largest fields. Each field is truncated as needed to
+%% keep
+%% the total event size as close to 1MB as possible. The excess portions are
+%% stored as Large Log Objects (LLOs) and these fields are processed
+%% separately and LLO reference system fields (in the format
+%% `@ptr.$[path.to.field]') are
+%% added. The path in the reference field reflects the original JSON
+%% structure where the large field was located. For example, this could be
+%% `@ptr.$['input']['message']',
+%% `@ptr.$['AAA']['BBB']['CCC']['DDD']',
+%% `@ptr.$['AAA']', or any other path matching your log
+%% structure.
+-spec get_log_object(aws_client:aws_client(), get_log_object_request()) ->
+    {ok, get_log_object_response(), tuple()} |
+    {error, any()} |
+    {error, get_log_object_errors(), tuple()}.
+get_log_object(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_log_object(Client, Input, []).
+
+-spec get_log_object(aws_client:aws_client(), get_log_object_request(), proplists:proplist()) ->
+    {ok, get_log_object_response(), tuple()} |
+    {error, any()} |
+    {error, get_log_object_errors(), tuple()}.
+get_log_object(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLogObject">>, Input, Options).
+
 %% @doc Retrieves all of the fields and values of a single log event.
 %%
 %% All fields are retrieved,
@@ -4739,9 +4807,10 @@ list_tags_log_group(Client, Input, Options)
     request(Client, <<"ListTagsLogGroup">>, Input, Options).
 
 %% @doc Creates an account-level data protection policy, subscription filter
-%% policy, or field
-%% index policy that applies to all log groups or a subset of log groups in
-%% the account.
+%% policy, field index
+%% policy, transformer policy, or metric extraction policy that applies to
+%% all log groups or a
+%% subset of log groups in the account.
 %%
 %% To use this operation, you must be signed on with the correct permissions
 %% depending on the
@@ -4761,6 +4830,10 @@ list_tags_log_group(Client, Input, Options)
 %%
 %% To create a field index policy, you must have the
 %% `logs:PutIndexPolicy' and
+%% `logs:PutAccountPolicy' permissions.
+%%
+%% To create a metric extraction policy, you must have the
+%% `logs:PutMetricExtractionPolicy' and
 %% `logs:PutAccountPolicy' permissions.
 %%
 %% Data protection policy
@@ -4995,6 +5068,86 @@ list_tags_log_group(Client, Input, Options)
 %% account-level policy that
 %% you create with PutAccountPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html.
+%%
+%% Metric extraction policy
+%%
+%% A metric extraction policy controls whether CloudWatch Metrics can be
+%% created through the
+%% Embedded Metrics Format (EMF) for log groups in your account. By default,
+%% EMF metric creation
+%% is enabled for all log groups. You can use metric extraction policies to
+%% disable EMF metric
+%% creation for your entire account or specific log groups.
+%%
+%% When a policy disables EMF metric creation for a log group, log events in
+%% the EMF format
+%% are still ingested, but no CloudWatch Metrics are created from them.
+%%
+%% Creating a policy disables metrics for AWS features that use EMF to create
+%% metrics, such
+%% as CloudWatch Container Insights and CloudWatch Application Signals. To
+%% prevent turning off
+%% those features by accident, we recommend that you exclude the underlying
+%% log-groups through a
+%% selection-criteria such as
+%% ```
+%% LogGroupNamePrefix NOT IN [&quot;/aws/containerinsights&quot;,
+%% &quot;/aws/ecs/containerinsights&quot;,
+%% &quot;/aws/application-signals/data&quot;]'''.
+%%
+%% Each account can have either one account-level metric extraction policy
+%% that applies to
+%% all log groups, or up to 5 policies that are each scoped to a subset of
+%% log groups with the
+%% `selectionCriteria' parameter. The selection criteria supports
+%% filtering by `LogGroupName' and
+%% `LogGroupNamePrefix' using the operators `IN' and `NOT IN'.
+%% You can specify up to 50 values in each
+%% `IN' or `NOT IN' list.
+%%
+%% The selection criteria can be specified in these formats:
+%%
+%% `LogGroupName IN [&quot;log-group-1&quot;, &quot;log-group-2&quot;]'
+%%
+%% `LogGroupNamePrefix NOT IN [&quot;/aws/prefix1&quot;,
+%% &quot;/aws/prefix2&quot;]'
+%%
+%% If you have multiple account-level metric extraction policies with
+%% selection criteria, no
+%% two of them can have overlapping criteria. For example, if you have one
+%% policy with selection
+%% criteria `LogGroupNamePrefix IN [&quot;my-log&quot;]', you can't
+%% have another metric extraction policy
+%% with selection criteria `LogGroupNamePrefix IN
+%% [&quot;/my-log-prod&quot;]' or
+%% ```
+%% LogGroupNamePrefix IN [&quot;/my-logging&quot;]''', as the set
+%% of log groups matching these prefixes would be a subset of the log
+%% groups matching the first policy's prefix, creating an overlap.
+%%
+%% When using `NOT IN', only one policy with this operator is allowed per
+%% account.
+%%
+%% When combining policies with `IN' and `NOT IN' operators, the
+%% overlap check ensures that
+%% policies don't have conflicting effects. Two policies with `IN'
+%% and `NOT IN' operators do not
+%% overlap if and only if every value in the `IN 'policy is completely
+%% contained within some value
+%% in the `NOT IN' policy. For example:
+%%
+%% If you have a `NOT IN' policy for prefix
+%% `&quot;/aws/lambda&quot;', you can create an `IN' policy for
+%% the exact log group name `&quot;/aws/lambda/function1&quot;' because
+%% the set of log groups matching
+%% `&quot;/aws/lambda/function1&quot;' is a subset of the log groups
+%% matching `&quot;/aws/lambda&quot;'.
+%%
+%% If you have a `NOT IN' policy for prefix
+%% `&quot;/aws/lambda&quot;', you cannot create an `IN' policy
+%% for prefix `&quot;/aws&quot;' because the set of log groups matching
+%% `&quot;/aws&quot;' is not a subset of the log
+%% groups matching `&quot;/aws/lambda&quot;'.
 -spec put_account_policy(aws_client:aws_client(), put_account_policy_request()) ->
     {ok, put_account_policy_response(), tuple()} |
     {error, any()} |
@@ -6139,12 +6292,11 @@ test_transformer(Client, Input, Options)
 %% To add tags, use TagResource:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_TagResource.html.
 %%
-%% CloudWatch Logs doesn't support IAM policies that prevent users from
-%% assigning specified
-%% tags to log groups using the
-%% ```
-%% aws:Resource/key-name ''' or
-%% `aws:TagKeys' condition keys.
+%% When using IAM policies to control tag management for CloudWatch Logs log
+%% groups, the
+%% condition keys `aws:Resource/key-name' and `aws:TagKeys' cannot be
+%% used to restrict which tags
+%% users can assign.
 -spec untag_log_group(aws_client:aws_client(), untag_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
