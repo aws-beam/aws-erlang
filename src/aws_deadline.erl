@@ -593,6 +593,13 @@
 
 
 %% Example:
+%% vpc_configuration() :: #{
+%%   <<"resourceConfigurationArns">> => list(string())
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_job_entity_response() :: #{
 %%   <<"entities">> => list(list()),
 %%   <<"errors">> => list(list())
@@ -835,7 +842,8 @@
 %% service_managed_ec2_fleet_configuration() :: #{
 %%   <<"instanceCapabilities">> => service_managed_ec2_instance_capabilities(),
 %%   <<"instanceMarketOptions">> => service_managed_ec2_instance_market_options(),
-%%   <<"storageProfileId">> => string()
+%%   <<"storageProfileId">> => string(),
+%%   <<"vpcConfiguration">> => vpc_configuration()
 %% }
 -type service_managed_ec2_fleet_configuration() :: #{binary() => any()}.
 
@@ -967,6 +975,7 @@
 %% Example:
 %% step_search_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
 %%   <<"endedAt">> => non_neg_integer(),
 %%   <<"jobId">> => string(),
 %%   <<"lifecycleStatus">> => list(any()),
@@ -979,7 +988,9 @@
 %%   <<"targetTaskRunStatus">> => list(any()),
 %%   <<"taskFailureRetryCount">> => integer(),
 %%   <<"taskRunStatus">> => list(any()),
-%%   <<"taskRunStatusCounts">> => map()
+%%   <<"taskRunStatusCounts">> => map(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
 -type step_search_summary() :: #{binary() => any()}.
 
@@ -1241,7 +1252,9 @@
 %%   <<"startedAt">> => non_neg_integer(),
 %%   <<"stepId">> => string(),
 %%   <<"targetRunStatus">> => list(any()),
-%%   <<"taskId">> => string()
+%%   <<"taskId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
 -type task_search_summary() :: #{binary() => any()}.
 
@@ -2843,7 +2856,9 @@
 %%   <<"targetTaskRunStatus">> => list(any()),
 %%   <<"taskFailureRetryCount">> => integer(),
 %%   <<"taskRunStatus">> => list(any()),
-%%   <<"taskRunStatusCounts">> => map()
+%%   <<"taskRunStatusCounts">> => map(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"updatedBy">> => string()
 %% }
 -type job_search_summary() :: #{binary() => any()}.
 

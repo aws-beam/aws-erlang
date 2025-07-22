@@ -2098,6 +2098,12 @@
 -type list_cluster_scheduler_configs_response() :: #{binary() => any()}.
 
 %% Example:
+%% s3_file_system() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type s3_file_system() :: #{binary() => any()}.
+
+%% Example:
 %% clarify_shap_baseline_config() :: #{
 %%   <<"MimeType">> => string(),
 %%   <<"ShapBaseline">> => string(),
@@ -2245,6 +2251,13 @@
 %%   <<"NotebookInstances">> => list(notebook_instance_summary())
 %% }
 -type list_notebook_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% s3_file_system_config() :: #{
+%%   <<"MountPath">> => string(),
+%%   <<"S3Uri">> => string()
+%% }
+-type s3_file_system_config() :: #{binary() => any()}.
 
 %% Example:
 %% list_model_card_export_jobs_request() :: #{
@@ -8475,6 +8488,7 @@
 %%   <<"CognitoConfig">> => cognito_config(),
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"FailureReason">> => string(),
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"LastUpdatedDate">> => non_neg_integer(),
 %%   <<"OidcConfig">> => oidc_config_for_response(),
 %%   <<"SourceIpConfig">> => source_ip_config(),
@@ -9730,6 +9744,7 @@
 
 %% Example:
 %% update_workforce_request() :: #{
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"OidcConfig">> => oidc_config(),
 %%   <<"SourceIpConfig">> => source_ip_config(),
 %%   <<"WorkforceName">> := string(),
@@ -10168,6 +10183,7 @@
 %% Example:
 %% create_workforce_request() :: #{
 %%   <<"CognitoConfig">> => cognito_config(),
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"OidcConfig">> => oidc_config(),
 %%   <<"SourceIpConfig">> => source_ip_config(),
 %%   <<"Tags">> => list(tag()),
