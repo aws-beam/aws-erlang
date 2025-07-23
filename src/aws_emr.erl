@@ -659,6 +659,7 @@
 
 %% Example:
 %% modify_cluster_output() :: #{
+%%   <<"ExtendedSupport">> => boolean(),
 %%   <<"StepConcurrencyLevel">> => integer()
 %% }
 -type modify_cluster_output() :: #{binary() => any()}.
@@ -846,6 +847,7 @@
 %%   <<"MasterPublicDnsName">> => string(),
 %%   <<"ScaleDownBehavior">> => list(any()),
 %%   <<"EbsRootVolumeSize">> => integer(),
+%%   <<"ExtendedSupport">> => boolean(),
 %%   <<"OSReleaseLabel">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"RepoUpgradeOnBoot">> => list(any()),
@@ -1465,6 +1467,7 @@
 %% Example:
 %% modify_cluster_input() :: #{
 %%   <<"ClusterId">> := string(),
+%%   <<"ExtendedSupport">> => boolean(),
 %%   <<"StepConcurrencyLevel">> => integer()
 %% }
 -type modify_cluster_input() :: #{binary() => any()}.
@@ -1960,6 +1963,7 @@
 %%   <<"EbsRootVolumeIops">> => integer(),
 %%   <<"EbsRootVolumeSize">> => integer(),
 %%   <<"EbsRootVolumeThroughput">> => integer(),
+%%   <<"ExtendedSupport">> => boolean(),
 %%   <<"Instances">> := job_flow_instances_config(),
 %%   <<"JobFlowRole">> => string(),
 %%   <<"KerberosAttributes">> => kerberos_attributes(),

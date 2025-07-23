@@ -4,14 +4,12 @@
 %% @doc Neptune Data API
 %%
 %% The Amazon Neptune data API provides SDK support for more than 40 of
-%% Neptune's data
-%% operations, including data loading, query execution, data inquiry, and
-%% machine learning.
+%% Neptune's data operations, including data loading, query execution,
+%% data inquiry, and machine learning.
 %%
-%% It supports the Gremlin and openCypher query languages, and is
-%% available in all SDK languages. It automatically signs API requests and
-%% greatly simplifies
-%% integrating Neptune into your applications.
+%% It supports the Gremlin and openCypher query languages, and is available
+%% in all SDK languages. It automatically signs API requests and greatly
+%% simplifies integrating Neptune into your applications.
 -module(aws_neptunedata).
 
 -export([cancel_gremlin_query/3,
@@ -2051,14 +2049,13 @@
 
 %% @doc Cancels a Gremlin query.
 %%
-%% See Gremlin
-%% query cancellation:
+%% See Gremlin query cancellation:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/gremlin-api-status-cancel.html
 %% for more information.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:CancelQuery:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelQuery:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelquery
 %% IAM action in that cluster.
 -spec cancel_gremlin_query(aws_client:aws_client(), binary() | list(), cancel_gremlin_query_input()) ->
@@ -2096,15 +2093,13 @@ cancel_gremlin_query(Client, QueryId, Input0, Options0) ->
 
 %% @doc Cancels a specified load job.
 %%
-%% This is an HTTP `DELETE'
-%% request. See Neptune
-%% Loader Get-Status API:
+%% This is an HTTP `DELETE' request. See Neptune Loader Get-Status API:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/load-api-reference-status.htm
 %% for more information.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:CancelLoaderJob:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelLoaderJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelloaderjob
 %% IAM action in that cluster..
 -spec cancel_loader_job(aws_client:aws_client(), binary() | list(), cancel_loader_job_input()) ->
@@ -2142,14 +2137,12 @@ cancel_loader_job(Client, LoadId, Input0, Options0) ->
 
 %% @doc Cancels a Neptune ML data processing job.
 %%
-%% See The
-%% `dataprocessing' command:
+%% See The `dataprocessing' command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-dataprocessing.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
-%% neptune-db:CancelMLDataProcessingJob:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelMLDataProcessingJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelmldataprocessingjob
 %% IAM action in that cluster.
 -spec cancel_ml_data_processing_job(aws_client:aws_client(), binary() | list(), cancel_ml_data_processing_job_input()) ->
@@ -2189,14 +2182,12 @@ cancel_ml_data_processing_job(Client, Id, Input0, Options0) ->
 
 %% @doc Cancels a Neptune ML model training job.
 %%
-%% See Model
-%% training using the `modeltraining' command:
+%% See Model training using the `modeltraining' command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-modeltraining.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
-%% neptune-db:CancelMLModelTrainingJob:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelMLModelTrainingJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelmlmodeltrainingjob
 %% IAM action in that cluster.
 -spec cancel_ml_model_training_job(aws_client:aws_client(), binary() | list(), cancel_ml_model_training_job_input()) ->
@@ -2236,14 +2227,12 @@ cancel_ml_model_training_job(Client, Id, Input0, Options0) ->
 
 %% @doc Cancels a specified model transform job.
 %%
-%% See Use
-%% a trained model to generate new model artifacts:
+%% See Use a trained model to generate new model artifacts:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-model-transform.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
-%% neptune-db:CancelMLModelTransformJob:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelMLModelTransformJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelmlmodeltransformjob
 %% IAM action in that cluster.
 -spec cancel_ml_model_transform_job(aws_client:aws_client(), binary() | list(), cancel_ml_model_transform_job_input()) ->
@@ -2283,14 +2272,13 @@ cancel_ml_model_transform_job(Client, Id, Input0, Options0) ->
 
 %% @doc Cancels a specified openCypher query.
 %%
-%% See Neptune
-%% openCypher status endpoint:
+%% See Neptune openCypher status endpoint:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-opencypher-status.html
 %% for more information.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:CancelQuery:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelQuery:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelquery
 %% IAM action in that cluster.
 -spec cancel_open_cypher_query(aws_client:aws_client(), binary() | list(), cancel_open_cypher_query_input()) ->
@@ -2327,17 +2315,15 @@ cancel_open_cypher_query(Client, QueryId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Neptune ML inference endpoint that lets you query
-%% one specific model that the model-training process constructed.
+%% @doc Creates a new Neptune ML inference endpoint that lets you query one
+%% specific model that the model-training process constructed.
 %%
-%% See
-%% Managing
-%% inference endpoints using the endpoints command:
+%% See Managing inference endpoints using the endpoints command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-endpoints.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:CreateMLEndpoint:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CreateMLEndpoint:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#createmlendpoint
 %% IAM action in that cluster.
 -spec create_ml_endpoint(aws_client:aws_client(), create_ml_endpoint_input()) ->
@@ -2375,14 +2361,12 @@ create_ml_endpoint(Client, Input0, Options0) ->
 
 %% @doc Cancels the creation of a Neptune ML inference endpoint.
 %%
-%% See
-%% Managing
-%% inference endpoints using the endpoints command:
+%% See Managing inference endpoints using the endpoints command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-endpoints.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:DeleteMLEndpoint:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:DeleteMLEndpoint:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#deletemlendpoint
 %% IAM action in that cluster.
 -spec delete_ml_endpoint(aws_client:aws_client(), binary() | list(), delete_ml_endpoint_input()) ->
@@ -2420,12 +2404,11 @@ delete_ml_endpoint(Client, Id, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes statistics for Gremlin and openCypher (property graph)
-%% data.
+%% @doc Deletes statistics for Gremlin and openCypher (property graph) data.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:DeleteStatistics:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:DeleteStatistics:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#deletestatistics
 %% IAM action in that cluster.
 -spec delete_propertygraph_statistics(aws_client:aws_client(), #{}) ->
@@ -2464,8 +2447,8 @@ delete_propertygraph_statistics(Client, Input0, Options0) ->
 %% @doc Deletes SPARQL statistics
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:DeleteStatistics:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:DeleteStatistics:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#deletestatistics
 %% IAM action in that cluster.
 -spec delete_sparql_statistics(aws_client:aws_client(), #{}) ->
@@ -2501,22 +2484,20 @@ delete_sparql_statistics(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The fast reset REST API lets you reset a Neptune graph quicky
-%% and easily, removing all of its data.
+%% @doc The fast reset REST API lets you reset a Neptune graph quicky and
+%% easily, removing all of its data.
 %%
 %% Neptune fast reset is a two-step process. First you call
-%% `ExecuteFastReset'
-%% with `action' set to `initiateDatabaseReset'. This returns a
-%% UUID token which you then include when calling `ExecuteFastReset'
-%% again
-%% with `action' set to `performDatabaseReset'. See Empty an Amazon
-%% Neptune
-%% DB cluster using the fast reset API:
+%% `ExecuteFastReset' with `action' set to
+%% `initiateDatabaseReset'. This returns a UUID token which you then
+%% include when calling `ExecuteFastReset' again with `action' set to
+%% `performDatabaseReset'. See Empty an Amazon Neptune DB cluster using
+%% the fast reset API:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-fast-reset.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:ResetDatabase:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ResetDatabase:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#resetdatabase
 %% IAM action in that cluster.
 -spec execute_fast_reset(aws_client:aws_client(), execute_fast_reset_input()) ->
@@ -2554,25 +2535,22 @@ execute_fast_reset(Client, Input0, Options0) ->
 
 %% @doc Executes a Gremlin Explain query.
 %%
-%% Amazon Neptune has added a Gremlin feature named `explain'
-%% that provides is a self-service tool for understanding the execution
-%% approach being taken by the Neptune engine for the query. You invoke
-%% it by adding an `explain' parameter to an HTTP call that
-%% submits a Gremlin query.
+%% Amazon Neptune has added a Gremlin feature named `explain' that
+%% provides is a self-service tool for understanding the execution approach
+%% being taken by the Neptune engine for the query. You invoke it by adding
+%% an `explain' parameter to an HTTP call that submits a Gremlin query.
 %%
-%% The explain feature provides information about the logical structure
-%% of query execution plans. You can use this information to identify
-%% potential evaluation and execution bottlenecks and to tune your query,
-%% as explained in Tuning
-%% Gremlin queries:
+%% The explain feature provides information about the logical structure of
+%% query execution plans. You can use this information to identify potential
+%% evaluation and execution bottlenecks and to tune your query, as explained
+%% in Tuning Gremlin queries:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/gremlin-traversal-tuning.html.
-%% You can also use query hints to improve
-%% query execution plans.
+%% You can also use query hints to improve query execution plans.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows one of the following IAM actions
-%% in that cluster, depending on the query:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows one of the following IAM actions in that
+%% cluster, depending on the query:
 %%
 %% neptune-db:ReadDataViaQuery:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#readdataviaquery
@@ -2586,9 +2564,8 @@ execute_fast_reset(Client, Input0, Options0) ->
 %% Note that the neptune-db:QueryLanguage:Gremlin:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% Gremlin queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of Gremlin queries (see Condition keys available in Neptune IAM
+%% data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec execute_gremlin_explain_query(aws_client:aws_client(), execute_gremlin_explain_query_input()) ->
     {ok, execute_gremlin_explain_query_output(), tuple()} |
@@ -2624,26 +2601,24 @@ execute_gremlin_explain_query(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Executes a Gremlin Profile query, which runs a specified traversal,
-%% collects various metrics about the run, and produces a profile report
-%% as output.
+%% collects various metrics about the run, and produces a profile report as
+%% output.
 %%
-%% See Gremlin profile
-%% API in Neptune:
+%% See Gremlin profile API in Neptune:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/gremlin-profile-api.html
 %% for details.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:ReadDataViaQuery:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ReadDataViaQuery:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#readdataviaquery
 %% IAM action in that cluster.
 %%
 %% Note that the neptune-db:QueryLanguage:Gremlin:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% Gremlin queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of Gremlin queries (see Condition keys available in Neptune IAM
+%% data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec execute_gremlin_profile_query(aws_client:aws_client(), execute_gremlin_profile_query_input()) ->
     {ok, execute_gremlin_profile_query_output(), tuple()} |
@@ -2680,19 +2655,18 @@ execute_gremlin_profile_query(Client, Input0, Options0) ->
 
 %% @doc This commands executes a Gremlin query.
 %%
-%% Amazon Neptune is compatible
-%% with Apache TinkerPop3 and Gremlin, so you can use the Gremlin traversal
-%% language to query the graph, as described under The
-%% Graph: https://tinkerpop.apache.org/docs/current/reference/#graph in the
-%% Apache TinkerPop3 documentation.
-%% More details can also be found in Accessing a
+%% Amazon Neptune is compatible with Apache TinkerPop3 and Gremlin, so you
+%% can use the Gremlin traversal language to query the graph, as described
+%% under The Graph:
+%% https://tinkerpop.apache.org/docs/current/reference/#graph in the Apache
+%% TinkerPop3 documentation. More details can also be found in Accessing a
 %% Neptune graph with Gremlin:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-gremlin.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that enables one of the following IAM actions
-%% in that cluster, depending on the query:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that enables one of the following IAM actions in that
+%% cluster, depending on the query:
 %%
 %% neptune-db:ReadDataViaQuery:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#readdataviaquery
@@ -2706,9 +2680,8 @@ execute_gremlin_profile_query(Client, Input0, Options0) ->
 %% Note that the neptune-db:QueryLanguage:Gremlin:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% Gremlin queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of Gremlin queries (see Condition keys available in Neptune IAM
+%% data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec execute_gremlin_query(aws_client:aws_client(), execute_gremlin_query_input()) ->
     {ok, execute_gremlin_query_output(), tuple()} |
@@ -2747,24 +2720,21 @@ execute_gremlin_query(Client, Input0, Options0) ->
 
 %% @doc Executes an openCypher `explain' request.
 %%
-%% See
-%% The
-%% openCypher explain feature:
+%% See The openCypher explain feature:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-opencypher-explain.html
 %% for more information.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:ReadDataViaQuery:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ReadDataViaQuery:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#readdataviaquery
 %% IAM action in that cluster.
 %%
 %% Note that the neptune-db:QueryLanguage:OpenCypher:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% openCypher queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of openCypher queries (see Condition keys available in Neptune IAM
+%% data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec execute_open_cypher_explain_query(aws_client:aws_client(), execute_open_cypher_explain_query_input()) ->
     {ok, execute_open_cypher_explain_query_output(), tuple()} |
@@ -2801,27 +2771,24 @@ execute_open_cypher_explain_query(Client, Input0, Options0) ->
 
 %% @doc Executes an openCypher query.
 %%
-%% See Accessing
-%% the Neptune Graph with openCypher:
+%% See Accessing the Neptune Graph with openCypher:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-opencypher.html
 %% for more information.
 %%
-%% Neptune supports building graph applications using openCypher,
-%% which is currently one of the most popular query languages among
-%% developers working with graph databases. Developers, business analysts,
-%% and data scientists like openCypher's declarative, SQL-inspired syntax
-%% because it provides a familiar structure in which to querying property
-%% graphs.
+%% Neptune supports building graph applications using openCypher, which is
+%% currently one of the most popular query languages among developers working
+%% with graph databases. Developers, business analysts, and data scientists
+%% like openCypher's declarative, SQL-inspired syntax because it provides
+%% a familiar structure in which to querying property graphs.
 %%
 %% The openCypher language was originally developed by Neo4j, then
 %% open-sourced in 2015 and contributed to the openCypher project:
-%% https://opencypher.org/ under an Apache
-%% 2 open-source license.
+%% https://opencypher.org/ under an Apache 2 open-source license.
 %%
 %% Note that when invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows one of the following IAM actions
-%% in that cluster, depending on the query:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows one of the following IAM actions in that
+%% cluster, depending on the query:
 %%
 %% neptune-db:ReadDataViaQuery:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#readdataviaquery
@@ -2835,9 +2802,8 @@ execute_open_cypher_explain_query(Client, Input0, Options0) ->
 %% Note also that the neptune-db:QueryLanguage:OpenCypher:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% openCypher queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of openCypher queries (see Condition keys available in Neptune IAM
+%% data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec execute_open_cypher_query(aws_client:aws_client(), execute_open_cypher_query_input()) ->
     {ok, execute_open_cypher_query_output(), tuple()} |
@@ -2875,8 +2841,8 @@ execute_open_cypher_query(Client, Input0, Options0) ->
 %% @doc Retrieves the status of the graph database on the host.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetEngineStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetEngineStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getenginestatus
 %% IAM action in that cluster.
 -spec get_engine_status(aws_client:aws_client()) ->
@@ -2918,17 +2884,16 @@ get_engine_status(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets the status of a specified Gremlin query.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetQueryStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetQueryStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getquerystatus
 %% IAM action in that cluster.
 %%
 %% Note that the neptune-db:QueryLanguage:Gremlin:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% Gremlin queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of Gremlin queries (see Condition keys available in Neptune IAM
+%% data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec get_gremlin_query_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_gremlin_query_status_output(), tuple()} |
@@ -2968,17 +2933,16 @@ get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets status information about a specified load job.
 %%
-%% Neptune keeps track of the most recent 1,024 bulk load jobs,
-%% and stores the last 10,000 error details per job.
+%% Neptune keeps track of the most recent 1,024 bulk load jobs, and stores
+%% the last 10,000 error details per job.
 %%
-%% See Neptune
-%% Loader Get-Status API:
+%% See Neptune Loader Get-Status API:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/load-api-reference-status.htm
 %% for more information.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetLoaderJobStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetLoaderJobStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getloaderjobstatus
 %% IAM action in that cluster..
 -spec get_loader_job_status(aws_client:aws_client(), binary() | list()) ->
@@ -3026,13 +2990,12 @@ get_loader_job_status(Client, LoadId, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about a specified data processing job.
 %%
-%% See The
-%% `dataprocessing' command:
+%% See The `dataprocessing' command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-dataprocessing.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the
 %% neptune-db:neptune-db:GetMLDataProcessingJobStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getmldataprocessingjobstatus
 %% IAM action in that cluster.
@@ -3078,13 +3041,12 @@ get_ml_data_processing_job(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves details about an inference endpoint.
 %%
-%% See Managing
-%% inference endpoints using the endpoints command:
+%% See Managing inference endpoints using the endpoints command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-endpoints.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetMLEndpointStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetMLEndpointStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getmlendpointstatus
 %% IAM action in that cluster.
 -spec get_ml_endpoint(aws_client:aws_client(), binary() | list()) ->
@@ -3129,14 +3091,12 @@ get_ml_endpoint(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about a Neptune ML model training job.
 %%
-%% See Model
-%% training using the `modeltraining' command:
+%% See Model training using the `modeltraining' command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-modeltraining.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
-%% neptune-db:GetMLModelTrainingJobStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetMLModelTrainingJobStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getmlmodeltrainingjobstatus
 %% IAM action in that cluster.
 -spec get_ml_model_training_job(aws_client:aws_client(), binary() | list()) ->
@@ -3181,14 +3141,12 @@ get_ml_model_training_job(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about a specified model transform job.
 %%
-%% See Use
-%% a trained model to generate new model artifacts:
+%% See Use a trained model to generate new model artifacts:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-model-transform.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
-%% neptune-db:GetMLModelTransformJobStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetMLModelTransformJobStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getmlmodeltransformjobstatus
 %% IAM action in that cluster.
 -spec get_ml_model_transform_job(aws_client:aws_client(), binary() | list()) ->
@@ -3234,17 +3192,16 @@ get_ml_model_transform_job(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the status of a specified openCypher query.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetQueryStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetQueryStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getquerystatus
 %% IAM action in that cluster.
 %%
 %% Note that the neptune-db:QueryLanguage:OpenCypher:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% openCypher queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of openCypher queries (see Condition keys available in Neptune IAM
+%% data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec get_open_cypher_query_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_open_cypher_query_status_output(), tuple()} |
@@ -3285,8 +3242,8 @@ get_open_cypher_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
 %% @doc Gets property graph statistics (Gremlin and openCypher).
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetStatisticsStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetStatisticsStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getstatisticsstatus
 %% IAM action in that cluster.
 -spec get_propertygraph_statistics(aws_client:aws_client()) ->
@@ -3327,33 +3284,32 @@ get_propertygraph_statistics(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a stream for a property graph.
 %%
-%% With the Neptune Streams feature, you can generate a complete
-%% sequence of change-log entries that record every change made to your
-%% graph data as it happens. `GetPropertygraphStream' lets
-%% you collect these change-log entries for a property graph.
+%% With the Neptune Streams feature, you can generate a complete sequence of
+%% change-log entries that record every change made to your graph data as it
+%% happens. `GetPropertygraphStream' lets you collect these change-log
+%% entries for a property graph.
 %%
-%% The Neptune streams feature needs to be enabled on your Neptune
-%% DBcluster. To enable streams, set the neptune_streams:
+%% The Neptune streams feature needs to be enabled on your Neptune DBcluster.
+%% To enable streams, set the neptune_streams:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/parameters.html#parameters-db-cluster-parameters-neptune_streams
 %% DB cluster parameter to `1'.
 %%
-%% See Capturing
-%% graph changes in real time using Neptune streams:
+%% See Capturing graph changes in real time using Neptune streams:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/streams.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetStreamRecords:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetStreamRecords:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getstreamrecords
 %% IAM action in that cluster.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that enables one of the following IAM actions,
-%% depending on the query:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that enables one of the following IAM actions, depending
+%% on the query:
 %%
-%% Note that you can restrict property-graph queries using the
-%% following IAM context keys:
+%% Note that you can restrict property-graph queries using the following IAM
+%% context keys:
 %%
 %% neptune-db:QueryLanguage:Gremlin:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
@@ -3361,8 +3317,7 @@ get_propertygraph_statistics(Client, QueryMap, HeadersMap, Options0)
 %% neptune-db:QueryLanguage:OpenCypher:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %%
-%% See Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% See Condition keys available in Neptune IAM data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec get_propertygraph_stream(aws_client:aws_client()) ->
     {ok, get_propertygraph_stream_output(), tuple()} |
@@ -3414,8 +3369,8 @@ get_propertygraph_stream(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets a graph summary for a property graph.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetGraphSummary:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetGraphSummary:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getgraphsummary
 %% IAM action in that cluster.
 -spec get_propertygraph_summary(aws_client:aws_client()) ->
@@ -3461,8 +3416,8 @@ get_propertygraph_summary(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets a graph summary for an RDF graph.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetGraphSummary:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetGraphSummary:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getgraphsummary
 %% IAM action in that cluster.
 -spec get_r_d_f_graph_summary(aws_client:aws_client()) ->
@@ -3544,32 +3499,30 @@ get_sparql_statistics(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a stream for an RDF graph.
 %%
-%% With the Neptune Streams feature, you can generate a complete
-%% sequence of change-log entries that record every change made to your
-%% graph data as it happens. `GetSparqlStream' lets
-%% you collect these change-log entries for an RDF graph.
+%% With the Neptune Streams feature, you can generate a complete sequence of
+%% change-log entries that record every change made to your graph data as it
+%% happens. `GetSparqlStream' lets you collect these change-log entries
+%% for an RDF graph.
 %%
-%% The Neptune streams feature needs to be enabled on your Neptune
-%% DBcluster. To enable streams, set the neptune_streams:
+%% The Neptune streams feature needs to be enabled on your Neptune DBcluster.
+%% To enable streams, set the neptune_streams:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/parameters.html#parameters-db-cluster-parameters-neptune_streams
 %% DB cluster parameter to `1'.
 %%
-%% See Capturing
-%% graph changes in real time using Neptune streams:
+%% See Capturing graph changes in real time using Neptune streams:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/streams.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetStreamRecords:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetStreamRecords:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getstreamrecords
 %% IAM action in that cluster.
 %%
 %% Note that the neptune-db:QueryLanguage:Sparql:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% SPARQL queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of SPARQL queries (see Condition keys available in Neptune IAM data-access
+%% policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec get_sparql_stream(aws_client:aws_client()) ->
     {ok, get_sparql_stream_output(), tuple()} |
@@ -3620,23 +3573,21 @@ get_sparql_stream(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists active Gremlin queries.
 %%
-%% See Gremlin query
-%% status API:
+%% See Gremlin query status API:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/gremlin-api-status.html
 %% for details about the output.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetQueryStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetQueryStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getquerystatus
 %% IAM action in that cluster.
 %%
 %% Note that the neptune-db:QueryLanguage:Gremlin:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% Gremlin queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of Gremlin queries (see Condition keys available in Neptune IAM
+%% data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec list_gremlin_queries(aws_client:aws_client()) ->
     {ok, list_gremlin_queries_output(), tuple()} |
@@ -3678,12 +3629,11 @@ list_gremlin_queries(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of the `loadIds' for all active
-%% loader jobs.
+%% @doc Retrieves a list of the `loadIds' for all active loader jobs.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:ListLoaderJobs:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ListLoaderJobs:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#listloaderjobs
 %% IAM action in that cluster..
 -spec list_loader_jobs(aws_client:aws_client()) ->
@@ -3729,14 +3679,13 @@ list_loader_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of Neptune ML data processing jobs.
 %%
-%% See Listing
-%% active data-processing jobs using the Neptune ML dataprocessing command:
+%% See Listing active data-processing jobs using the Neptune ML
+%% dataprocessing command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-dataprocessing.html#machine-learning-api-dataprocessing-list-jobs.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
-%% neptune-db:ListMLDataProcessingJobs:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ListMLDataProcessingJobs:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#listmldataprocessingjobs
 %% IAM action in that cluster.
 -spec list_ml_data_processing_jobs(aws_client:aws_client()) ->
@@ -3782,13 +3731,12 @@ list_ml_data_processing_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists existing inference endpoints.
 %%
-%% See Managing
-%% inference endpoints using the endpoints command:
+%% See Managing inference endpoints using the endpoints command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-endpoints.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:ListMLEndpoints:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ListMLEndpoints:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#listmlendpoints
 %% IAM action in that cluster.
 -spec list_ml_endpoints(aws_client:aws_client()) ->
@@ -3834,13 +3782,12 @@ list_ml_endpoints(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists Neptune ML model-training jobs.
 %%
-%% See Model
-%% training using the `modeltraining' command:
+%% See Model training using the `modeltraining' command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-modeltraining.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the
 %% neptune-db:neptune-db:ListMLModelTrainingJobs:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#neptune-db:listmlmodeltrainingjobs
 %% IAM action in that cluster.
@@ -3887,14 +3834,12 @@ list_ml_model_training_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of model transform job IDs.
 %%
-%% See Use
-%% a trained model to generate new model artifacts:
+%% See Use a trained model to generate new model artifacts:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-model-transform.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
-%% neptune-db:ListMLModelTransformJobs:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ListMLModelTransformJobs:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#listmlmodeltransformjobs
 %% IAM action in that cluster.
 -spec list_ml_model_transform_jobs(aws_client:aws_client()) ->
@@ -3940,23 +3885,21 @@ list_ml_model_transform_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists active openCypher queries.
 %%
-%% See Neptune
-%% openCypher status endpoint:
+%% See Neptune openCypher status endpoint:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/access-graph-opencypher-status.html
 %% for more information.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:GetQueryStatus:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetQueryStatus:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getquerystatus
 %% IAM action in that cluster.
 %%
 %% Note that the neptune-db:QueryLanguage:OpenCypher:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html#iam-neptune-condition-keys
 %% IAM condition key can be used in the policy document to restrict the use
-%% of
-%% openCypher queries (see Condition
-%% keys available in Neptune IAM data-access policy statements:
+%% of openCypher queries (see Condition keys available in Neptune IAM
+%% data-access policy statements:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-condition-keys.html).
 -spec list_open_cypher_queries(aws_client:aws_client()) ->
     {ok, list_open_cypher_queries_output(), tuple()} |
@@ -4001,8 +3944,8 @@ list_open_cypher_queries(Client, QueryMap, HeadersMap, Options0)
 %% @doc Manages the generation and use of property graph statistics.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:ManageStatistics:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ManageStatistics:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#managestatistics
 %% IAM action in that cluster.
 -spec manage_propertygraph_statistics(aws_client:aws_client(), manage_propertygraph_statistics_input()) ->
@@ -4041,8 +3984,8 @@ manage_propertygraph_statistics(Client, Input0, Options0) ->
 %% @doc Manages the generation and use of RDF graph statistics.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:ManageStatistics:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ManageStatistics:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#managestatistics
 %% IAM action in that cluster.
 -spec manage_sparql_statistics(aws_client:aws_client(), manage_sparql_statistics_input()) ->
@@ -4081,13 +4024,12 @@ manage_sparql_statistics(Client, Input0, Options0) ->
 %% @doc Starts a Neptune bulk loader job to load data from an Amazon S3
 %% bucket into a Neptune DB instance.
 %%
-%% See Using the Amazon Neptune
-%% Bulk Loader to Ingest Data:
+%% See Using the Amazon Neptune Bulk Loader to Ingest Data:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:StartLoaderJob:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:StartLoaderJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#startloaderjob
 %% IAM action in that cluster.
 -spec start_loader_job(aws_client:aws_client(), start_loader_job_input()) ->
@@ -4123,16 +4065,15 @@ start_loader_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Neptune ML data processing job for processing the
-%% graph data exported from Neptune for training.
+%% @doc Creates a new Neptune ML data processing job for processing the graph
+%% data exported from Neptune for training.
 %%
-%% See The
-%% `dataprocessing' command:
+%% See The `dataprocessing' command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-dataprocessing.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the
 %% neptune-db:StartMLModelDataProcessingJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#startmlmodeldataprocessingjob
 %% IAM action in that cluster.
@@ -4171,13 +4112,12 @@ start_ml_data_processing_job(Client, Input0, Options0) ->
 
 %% @doc Creates a new Neptune ML model training job.
 %%
-%% See Model
-%% training using the `modeltraining' command:
+%% See Model training using the `modeltraining' command:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-api-modeltraining.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the neptune-db:StartMLModelTrainingJob:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:StartMLModelTrainingJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#startmlmodeltrainingjob
 %% IAM action in that cluster.
 -spec start_ml_model_training_job(aws_client:aws_client(), start_ml_model_training_job_input()) ->
@@ -4215,14 +4155,12 @@ start_ml_model_training_job(Client, Input0, Options0) ->
 
 %% @doc Creates a new model transform job.
 %%
-%% See Use
-%% a trained model to generate new model artifacts:
+%% See Use a trained model to generate new model artifacts:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/machine-learning-model-transform.html.
 %%
 %% When invoking this operation in a Neptune cluster that has IAM
-%% authentication enabled, the IAM user or role making the request must
-%% have a policy attached that allows the
-%% neptune-db:StartMLModelTransformJob:
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:StartMLModelTransformJob:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#startmlmodeltransformjob
 %% IAM action in that cluster.
 -spec start_ml_model_transform_job(aws_client:aws_client(), start_ml_model_transform_job_input()) ->

@@ -210,6 +210,7 @@
 %% Example:
 %% put_image_tag_mutability_response() :: #{
 %%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> => string()
 %% }
@@ -281,6 +282,13 @@
 -type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% image_tag_mutability_exclusion_filter() :: #{
+%%   <<"filter">> => string(),
+%%   <<"filterType">> => list(any())
+%% }
+-type image_tag_mutability_exclusion_filter() :: #{binary() => any()}.
+
+%% Example:
 %% image_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -293,6 +301,7 @@
 %%   <<"description">> => string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration_for_repository_creation_template(),
 %%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
 %%   <<"lifecyclePolicy">> => string(),
 %%   <<"prefix">> := string(),
 %%   <<"repositoryPolicy">> => string(),
@@ -669,6 +678,7 @@
 %%   <<"description">> => string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration_for_repository_creation_template(),
 %%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
 %%   <<"lifecyclePolicy">> => string(),
 %%   <<"prefix">> => string(),
 %%   <<"repositoryPolicy">> => string(),
@@ -775,6 +785,7 @@
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
 %%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryArn">> => string(),
 %%   <<"repositoryName">> => string(),
@@ -1001,6 +1012,7 @@
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
 %%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string(),
 %%   <<"tags">> => list(tag())
@@ -1077,6 +1089,7 @@
 %% Example:
 %% put_image_tag_mutability_request() :: #{
 %%   <<"imageTagMutability">> := list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
 %%   <<"registryId">> => string(),
 %%   <<"repositoryName">> := string()
 %% }
@@ -1481,6 +1494,7 @@
 %%   <<"description">> => string(),
 %%   <<"encryptionConfiguration">> => encryption_configuration_for_repository_creation_template(),
 %%   <<"imageTagMutability">> => list(any()),
+%%   <<"imageTagMutabilityExclusionFilters">> => list(image_tag_mutability_exclusion_filter()),
 %%   <<"lifecyclePolicy">> => string(),
 %%   <<"prefix">> := string(),
 %%   <<"repositoryPolicy">> => string(),
