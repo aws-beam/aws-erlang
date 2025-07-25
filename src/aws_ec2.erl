@@ -1997,7 +1997,8 @@
 %%   <<"DryRun">> => boolean(),
 %%   <<"Force">> => boolean(),
 %%   <<"Hibernate">> => boolean(),
-%%   <<"InstanceIds">> := list(string())
+%%   <<"InstanceIds">> := list(string()),
+%%   <<"SkipOsShutdown">> => boolean()
 %% }
 -type stop_instances_request() :: #{binary() => any()}.
 
@@ -3650,7 +3651,8 @@
 %% Example:
 %% terminate_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceIds">> := list(string())
+%%   <<"InstanceIds">> := list(string()),
+%%   <<"SkipOsShutdown">> => boolean()
 %% }
 -type terminate_instances_request() :: #{binary() => any()}.
 
@@ -36997,10 +36999,9 @@ send_diagnostic_interrupt(Client, Input, Options)
 %%
 %% The report is saved to your specified S3 bucket, using the following path
 %% structure
-%% (with the italicized placeholders representing your specific
-%% values):
+%% (with the capitalized placeholders representing your specific values):
 %%
-%% `s3://amzn-s3-demo-bucket/your-optional-s3-prefix/ec2_targetId_reportId_yyyyMMddThhmmZ.csv'
+%% `s3://AMZN-S3-DEMO-BUCKET/YOUR-OPTIONAL-S3-PREFIX/ec2_TARGETID_REPORTID_YYYYMMDDTHHMMZ.csv'
 %%
 %% == Prerequisites for generating a report ==
 %%
@@ -37170,11 +37171,15 @@ start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html in the
 %% Amazon EC2 User Guide.
 %%
-%% When you stop an instance, we shut it down.
+%% When you stop or hibernate an instance, we shut it down. By default, this
+%% includes a
+%% graceful operating system (OS) shutdown. To bypass the graceful shutdown,
+%% use the
+%% `skipOsShutdown' parameter; however, this might risk data
+%% integrity.
 %%
-%% You can use the Stop operation together with the Hibernate parameter to
-%% hibernate an
-%% instance if the instance is enabled for
+%% You can use the StopInstances operation together with the `Hibernate'
+%% parameter to hibernate an instance if the instance is enabled for
 %% hibernation:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enabling-hibernation.html
 %% and meets the hibernation
@@ -37190,9 +37195,10 @@ start_vpc_endpoint_service_private_dns_verification(Client, Input, Options)
 %%
 %% If your instance appears stuck in the `stopping' state, there might be
 %% an
-%% issue with the underlying host computer. You can use the Stop operation
-%% together with
-%% the Force parameter to force stop your instance. For more information, see
+%% issue with the underlying host computer. You can use the StopInstances
+%% operation
+%% together with the Force parameter to force stop your instance. For more
+%% information, see
 %% Troubleshoot
 %% Amazon EC2 instance stop issues:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html
@@ -37307,6 +37313,11 @@ terminate_client_vpn_connections(Client, Input, Options)
 %% instance
 %% launched. Volumes attached after instance launch continue running.
 %%
+%% By default, the TerminateInstances operation includes a graceful operating
+%% system (OS)
+%% shutdown. To bypass the graceful shutdown, use the `skipOsShutdown'
+%% parameter; however, this might risk data integrity.
+%%
 %% You can stop, start, and terminate EBS-backed instances. You can only
 %% terminate
 %% instance store-backed instances. What happens to an instance differs if
@@ -37318,13 +37329,20 @@ terminate_client_vpn_connections(Client, Input, Options)
 %% EBS volumes with the `DeleteOnTermination' block device mapping
 %% parameter set
 %% to `true' are automatically deleted. For more information about the
-%% differences between stopping and terminating instances, see Instance
-%% lifecycle:
+%% differences between stopping and terminating instances, see Amazon EC2
+%% instance state changes:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html
 %% in the Amazon EC2 User Guide.
 %%
-%% For more information about troubleshooting, see Troubleshooting
-%% terminating your instance:
+%% When you terminate an instance, we attempt to terminate it forcibly after
+%% a short
+%% while. If your instance appears stuck in the shutting-down state after a
+%% period of time,
+%% there might be an issue with the underlying host computer. For more
+%% information about
+%% terminating and troubleshooting terminating your instances, see Terminate
+%% Amazon EC2 instances: https://docs.aws.amazon.com/ and
+%% Troubleshooting terminating your instance:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html
 %% in the
 %% Amazon EC2 User Guide.

@@ -1667,6 +1667,14 @@
 
 
 %% Example:
+%% match_offset() :: #{
+%%   <<"endOffset">> => [integer()],
+%%   <<"startOffset">> => [integer()]
+%% }
+-type match_offset() :: #{binary() => any()}.
+
+
+%% Example:
 %% subscription_target_summary() :: #{
 %%   <<"applicableAssetTypes">> => list(string()),
 %%   <<"authorizedPrincipals">> => list(string()),
@@ -2005,6 +2013,7 @@
 %% asset_item_additional_attributes() :: #{
 %%   <<"formsOutput">> => list(form_output()),
 %%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
+%%   <<"matchRationale">> => list(list()),
 %%   <<"readOnlyFormsOutput">> => list(form_output())
 %% }
 -type asset_item_additional_attributes() :: #{binary() => any()}.
@@ -2340,6 +2349,7 @@
 
 %% Example:
 %% glossary_term_item() :: #{
+%%   <<"additionalAttributes">> => glossary_term_item_additional_attributes(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
@@ -2557,6 +2567,15 @@
 
 
 %% Example:
+%% aggregation_output_item() :: #{
+%%   <<"count">> => [integer()],
+%%   <<"displayValue">> => string(),
+%%   <<"value">> => string()
+%% }
+-type aggregation_output_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_metadata_generation_run_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -2708,6 +2727,15 @@
 %%   <<"columnName">> => [string()]
 %% }
 -type is_null_expression() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_match_item() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"matchOffsets">> => list(match_offset()),
+%%   <<"text">> => [string()]
+%% }
+-type text_match_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2951,7 +2979,8 @@
 %% Example:
 %% asset_listing_item_additional_attributes() :: #{
 %%   <<"forms">> => string(),
-%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output())
+%%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()),
+%%   <<"matchRationale">> => list(list())
 %% }
 -type asset_listing_item_additional_attributes() :: #{binary() => any()}.
 
@@ -3118,11 +3147,21 @@
 
 %% Example:
 %% search_listings_output() :: #{
+%%   <<"aggregates">> => list(aggregation_output()),
 %%   <<"items">> => list(list()),
 %%   <<"nextToken">> => string(),
 %%   <<"totalMatchCount">> => [integer()]
 %% }
 -type search_listings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_output() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"displayValue">> => string(),
+%%   <<"items">> => list(aggregation_output_item())
+%% }
+-type aggregation_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3592,6 +3631,7 @@
 %% Example:
 %% search_listings_input() :: #{
 %%   <<"additionalAttributes">> => list(list(any())()),
+%%   <<"aggregations">> => list(aggregation_list_item()),
 %%   <<"filters">> => list(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -3632,6 +3672,7 @@
 
 %% Example:
 %% glossary_item() :: #{
+%%   <<"additionalAttributes">> => glossary_item_additional_attributes(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
@@ -3808,6 +3849,7 @@
 
 %% Example:
 %% data_product_result_item() :: #{
+%%   <<"additionalAttributes">> => data_product_item_additional_attributes(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
@@ -3973,6 +4015,13 @@
 
 
 %% Example:
+%% glossary_term_item_additional_attributes() :: #{
+%%   <<"matchRationale">> => list(list())
+%% }
+-type glossary_term_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% notification_output() :: #{
 %%   <<"actionLink">> => string(),
 %%   <<"creationTimestamp">> => [non_neg_integer()],
@@ -4023,7 +4072,8 @@
 
 %% Example:
 %% data_product_listing_item_additional_attributes() :: #{
-%%   <<"forms">> => string()
+%%   <<"forms">> => string(),
+%%   <<"matchRationale">> => list(list())
 %% }
 -type data_product_listing_item_additional_attributes() :: #{binary() => any()}.
 
@@ -4248,6 +4298,14 @@
 %% Example:
 %% get_environment_credentials_input() :: #{}
 -type get_environment_credentials_input() :: #{}.
+
+
+%% Example:
+%% aggregation_list_item() :: #{
+%%   <<"attribute">> => string(),
+%%   <<"displayValue">> => string()
+%% }
+-type aggregation_list_item() :: #{binary() => any()}.
 
 %% Example:
 %% delete_environment_blueprint_configuration_output() :: #{}
@@ -5345,6 +5403,13 @@
 %% }
 -type create_project_from_project_profile_policy_grant_detail() :: #{binary() => any()}.
 
+
+%% Example:
+%% glossary_item_additional_attributes() :: #{
+%%   <<"matchRationale">> => list(list())
+%% }
+-type glossary_item_additional_attributes() :: #{binary() => any()}.
+
 %% Example:
 %% delete_listing_input() :: #{}
 -type delete_listing_input() :: #{}.
@@ -5714,6 +5779,13 @@
 %% Example:
 %% delete_project_profile_output() :: #{}
 -type delete_project_profile_output() :: #{}.
+
+
+%% Example:
+%% data_product_item_additional_attributes() :: #{
+%%   <<"matchRationale">> => list(list())
+%% }
+-type data_product_item_additional_attributes() :: #{binary() => any()}.
 
 
 %% Example:

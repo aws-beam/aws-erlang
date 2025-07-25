@@ -1,11 +1,17 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the AWS HealthOmics API Reference.
+%% @doc Amazon Web Services HealthOmics is a service that helps users such as
+%% bioinformaticians, researchers, and scientists to store, query, analyze,
+%% and generate insights from genomics and other biological data.
 %%
-%% For an introduction to the service, see What is AWS HealthOmics?:
-%% https://docs.aws.amazon.com/omics/latest/dev/ in the AWS HealthOmics User
-%% Guide.
+%% It simplifies and accelerates the process of storing and analyzing genomic
+%% information for Amazon Web Services.
+%%
+%% For an introduction to the service, see What is Amazon Web Services
+%% HealthOmics?:
+%% https://docs.aws.amazon.com/omics/latest/dev/what-is-healthomics.html in
+%% the Amazon Web Services HealthOmics User Guide.
 -module(aws_omics).
 
 -export([abort_multipart_read_set_upload/4,
@@ -276,6 +282,7 @@
 %% Example:
 %% create_workflow_request() :: #{
 %%   <<"accelerators">> => string(),
+%%   <<"definitionRepository">> => definition_repository(),
 %%   <<"definitionUri">> => string(),
 %%   <<"definitionZip">> => [binary()],
 %%   <<"description">> => string(),
@@ -283,10 +290,15 @@
 %%   <<"main">> => string(),
 %%   <<"name">> => string(),
 %%   <<"parameterTemplate">> => map(),
+%%   <<"parameterTemplatePath">> => string(),
+%%   <<"readmeMarkdown">> => string(),
+%%   <<"readmePath">> => string(),
+%%   <<"readmeUri">> => string(),
 %%   <<"requestId">> := string(),
 %%   <<"storageCapacity">> => [integer()],
 %%   <<"storageType">> => string(),
-%%   <<"tags">> => map()
+%%   <<"tags">> => map(),
+%%   <<"workflowBucketOwnerId">> => string()
 %% }
 -type create_workflow_request() :: #{binary() => any()}.
 
@@ -316,6 +328,17 @@
 %%   <<"updateTime">> => non_neg_integer()
 %% }
 -type update_variant_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% definition_repository_details() :: #{
+%%   <<"connectionArn">> => string(),
+%%   <<"fullRepositoryId">> => string(),
+%%   <<"providerEndpoint">> => [string()],
+%%   <<"providerType">> => [string()],
+%%   <<"sourceReference">> => source_reference()
+%% }
+-type definition_repository_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -685,12 +708,15 @@
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"definition">> => string(),
+%%   <<"definitionRepositoryDetails">> => definition_repository_details(),
 %%   <<"description">> => string(),
 %%   <<"digest">> => string(),
 %%   <<"engine">> => string(),
 %%   <<"main">> => string(),
 %%   <<"metadata">> => map(),
 %%   <<"parameterTemplate">> => map(),
+%%   <<"readme">> => string(),
+%%   <<"readmePath">> => string(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string(),
 %%   <<"storageCapacity">> => [integer()],
@@ -905,6 +931,7 @@
 %% update_workflow_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
+%%   <<"readmeMarkdown">> => string(),
 %%   <<"storageCapacity">> => [integer()],
 %%   <<"storageType">> => string()
 %% }
@@ -1049,6 +1076,14 @@
 
 
 %% Example:
+%% source_reference() :: #{
+%%   <<"type">> => string(),
+%%   <<"value">> => string()
+%% }
+-type source_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_read_set_request() :: #{
 %%   <<"file">> => string(),
 %%   <<"partNumber">> := [integer()]
@@ -1182,6 +1217,16 @@
 %%   <<"updateTime">> => non_neg_integer()
 %% }
 -type get_annotation_store_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% definition_repository() :: #{
+%%   <<"connectionArn">> => string(),
+%%   <<"excludeFilePatterns">> => list([string()]()),
+%%   <<"fullRepositoryId">> => string(),
+%%   <<"sourceReference">> => source_reference()
+%% }
+-type definition_repository() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1430,12 +1475,17 @@
 %% Example:
 %% create_workflow_version_request() :: #{
 %%   <<"accelerators">> => string(),
+%%   <<"definitionRepository">> => definition_repository(),
 %%   <<"definitionUri">> => string(),
 %%   <<"definitionZip">> => [binary()],
 %%   <<"description">> => string(),
 %%   <<"engine">> => string(),
 %%   <<"main">> => string(),
 %%   <<"parameterTemplate">> => map(),
+%%   <<"parameterTemplatePath">> => string(),
+%%   <<"readmeMarkdown">> => string(),
+%%   <<"readmePath">> => string(),
+%%   <<"readmeUri">> => string(),
 %%   <<"requestId">> := string(),
 %%   <<"storageCapacity">> => [integer()],
 %%   <<"storageType">> => string(),
@@ -2376,6 +2426,7 @@
 %% Example:
 %% update_workflow_version_request() :: #{
 %%   <<"description">> => string(),
+%%   <<"readmeMarkdown">> => string(),
 %%   <<"storageCapacity">> => [integer()],
 %%   <<"storageType">> => string()
 %% }
@@ -2744,6 +2795,7 @@
 %%   <<"arn">> => string(),
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"definition">> => string(),
+%%   <<"definitionRepositoryDetails">> => definition_repository_details(),
 %%   <<"description">> => string(),
 %%   <<"digest">> => string(),
 %%   <<"engine">> => string(),
@@ -2752,6 +2804,8 @@
 %%   <<"metadata">> => map(),
 %%   <<"name">> => string(),
 %%   <<"parameterTemplate">> => map(),
+%%   <<"readme">> => string(),
+%%   <<"readmePath">> => string(),
 %%   <<"status">> => string(),
 %%   <<"statusMessage">> => string(),
 %%   <<"storageCapacity">> => [integer()],
@@ -3755,7 +3809,11 @@ cancel_annotation_import_job(Client, JobId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels a run.
+%% @doc Cancels a run using its ID and returns a response with no body if the
+%% operation is successful.
+%%
+%% To confirm that the run has been cancelled, use the `ListRuns' API
+%% operation to check that it is no longer listed.
 -spec cancel_run(aws_client:aws_client(), binary() | list(), cancel_run_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3994,15 +4052,17 @@ create_reference_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc You can create a run cache to save the task outputs from completed
-%% tasks in a run for a private workflow.
+%% @doc Creates a run cache to store and reference task outputs from
+%% completed private runs.
 %%
-%% Subsequent runs use the task outputs from the cache, rather than computing
-%% the task outputs again. You specify an Amazon S3 location where Amazon Web
-%% Services HealthOmics saves the cached data. This data must be immediately
-%% accessible (not in an archived state).
+%% Specify an Amazon S3 location where Amazon Web Services HealthOmics saves
+%% the cached data. This data must be immediately accessible and not in an
+%% archived state. You can save intermediate task files to a run cache if
+%% they are declared as task outputs in the workflow definition file.
 %%
-%% For more information, see Creating a run cache:
+%% For more information, see Call caching:
+%% https://docs.aws.amazon.com/omics/latest/dev/workflows-call-caching.html
+%% and Creating a run cache:
 %% https://docs.aws.amazon.com/omics/latest/dev/workflow-cache-create.html in
 %% the Amazon Web Services HealthOmics User Guide.
 -spec create_run_cache(aws_client:aws_client(), create_run_cache_request()) ->
@@ -4038,8 +4098,10 @@ create_run_cache(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc You can optionally create a run group to limit the compute resources
-%% for the runs that you add to the group.
+%% @doc Creates a run group to limit the compute resources for the runs that
+%% are added to the group.
+%%
+%% Returns an ARN, ID, and tags for the run group.
 -spec create_run_group(aws_client:aws_client(), create_run_group_request()) ->
     {ok, create_run_group_response(), tuple()} |
     {error, any()} |
@@ -4186,26 +4248,27 @@ create_variant_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a private workflow.Private workflows depend on a variety of
-%% resources that you create and configure before creating the workflow:
+%% @doc Creates a private workflow.
 %%
-%% Input data: Input data for the workflow, stored in an S3 bucket or a
-%% Amazon Web Services HealthOmics sequence store.
+%% Before you create a private workflow, you must create and configure these
+%% required resources:
 %%
 %% Workflow definition files: Define your workflow in one or more workflow
 %% definition files, written in WDL, Nextflow, or CWL. The workflow
 %% definition specifies the inputs and outputs for runs that use the
 %% workflow. It also includes specifications for the runs and run tasks for
-%% your workflow, including compute and memory requirements.
+%% your workflow, including compute and memory requirements. The workflow
+%% definition file must be in .zip format.
 %%
-%% Parameter template files: Define run parameters using a parameter template
-%% file (written in JSON).
+%% (Optional) Parameter template: You can create a parameter template file
+%% that defines the run parameters, or Amazon Web Services HealthOmics can
+%% generate the parameter template for you.
 %%
 %% ECR container images: Create one or more container images for the
 %% workflow. Store the images in a private ECR repository.
 %%
-%% (Optional) Sentieon licenses: Request a Sentieon license if you plan to
-%% use Sentieon software in a private workflow.
+%% (Optional) Sentieon licenses: Request a Sentieon license if using the
+%% Sentieon software in a private workflow.
 %%
 %% For more information, see Creating or updating a private workflow in
 %% Amazon Web Services HealthOmics:
@@ -4432,7 +4495,20 @@ delete_reference_store(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a workflow run.
+%% @doc Deletes a run and returns a response with no body if the operation is
+%% successful.
+%%
+%% You can only delete a run that has reached a `COMPLETED',
+%% `FAILED', or `CANCELLED' stage. A completed run has delivered an
+%% output, or was cancelled and resulted in no output. When you delete a run,
+%% only the metadata associated with the run is deleted. The run outputs
+%% remain in Amazon S3 and logs remain in CloudWatch.
+%%
+%% To verify that the workflow is deleted:
+%%
+%% Use `ListRuns' to confirm the workflow no longer appears in the list.
+%%
+%% Use `GetRun' to verify the workflow cannot be found.
 -spec delete_run(aws_client:aws_client(), binary() | list(), delete_run_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4466,10 +4542,11 @@ delete_run(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a run cache.
+%% @doc Deletes a run cache and returns a response with no body if the
+%% operation is successful.
 %%
 %% This action removes the cache metadata stored in the service account, but
-%% doesn't delete the data in Amazon S3. You can access the cache data in
+%% does not delete the data in Amazon S3. You can access the cache data in
 %% Amazon S3, for inspection or to troubleshoot issues. You can remove old
 %% cache data using standard S3 `Delete' operations.
 %%
@@ -4509,7 +4586,15 @@ delete_run_cache(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a workflow run group.
+%% @doc Deletes a run group and returns a response with no body if the
+%% operation is successful.
+%%
+%% To verify that the run group is deleted:
+%%
+%% Use `ListRunGroups' to confirm the workflow no longer appears in the
+%% list.
+%%
+%% Use `GetRunGroup' to verify the workflow cannot be found.
 -spec delete_run_group(aws_client:aws_client(), binary() | list(), delete_run_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4684,7 +4769,16 @@ delete_variant_store(Client, Name, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a workflow.
+%% @doc Deletes a workflow by specifying its ID.
+%%
+%% No response is returned if the deletion is successful.
+%%
+%% To verify that the workflow is deleted:
+%%
+%% Use `ListWorkflows' to confirm the workflow no longer appears in the
+%% list.
+%%
+%% Use `GetWorkflow' to verify the workflow cannot be found.
 -spec delete_workflow(aws_client:aws_client(), binary() | list(), delete_workflow_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5218,16 +5312,14 @@ get_reference_store(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a workflow run.
+%% @doc Gets detailed information about a specific run using its ID.
 %%
-%% If a workflow is shared with you, you cannot export information about the
-%% run.
-%%
-%% Amazon Web Services HealthOmics stores a fixed number of runs that are
-%% available to the console and API. If GetRun doesn't return the
-%% requested run, you can find run logs for all runs in the CloudWatch logs.
-%% For more information about viewing the run logs, see CloudWatch logs:
-%% https://docs.aws.amazon.com/omics/latest/dev/cloudwatch-logs.html in the
+%% Amazon Web Services HealthOmics stores a configurable number of runs, as
+%% determined by service limits, that are available to the console and API.
+%% If `GetRun' does not return the requested run, you can find all run
+%% logs in the CloudWatch logs. For more information about viewing the run
+%% logs, see CloudWatch logs:
+%% https://docs.aws.amazon.com/omics/latest/dev/monitoring-cloudwatch-logs.html
 %% in the Amazon Web Services HealthOmics User Guide.
 -spec get_run(aws_client:aws_client(), binary() | list()) ->
     {ok, get_run_response(), tuple()} |
@@ -5269,12 +5361,13 @@ get_run(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve the details for the specified run cache.
+%% @doc Retrieves detailed information about the specified run cache using
+%% its ID.
 %%
 %% For more information, see Call caching for Amazon Web Services HealthOmics
 %% runs:
-%% https://docs.aws.amazon.com/omics/latest/dev/workflow-call-caching.html in
-%% the Amazon Web Services HealthOmics User Guide.
+%% https://docs.aws.amazon.com/omics/latest/dev/workflows-call-caching.html
+%% in the Amazon Web Services HealthOmics User Guide.
 -spec get_run_cache(aws_client:aws_client(), binary() | list()) ->
     {ok, get_run_cache_response(), tuple()} |
     {error, any()} |
@@ -5311,7 +5404,7 @@ get_run_cache(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a workflow run group.
+%% @doc Gets information about a run group and returns its metadata.
 -spec get_run_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_run_group_response(), tuple()} |
     {error, any()} |
@@ -5348,7 +5441,7 @@ get_run_group(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a workflow run task.
+%% @doc Gets detailed information about a run task using its ID.
 -spec get_run_task(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_run_task_response(), tuple()} |
     {error, any()} |
@@ -5570,9 +5663,14 @@ get_variant_store(Client, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a workflow.
+%% @doc Gets all information about a workflow using its ID.
 %%
 %% If a workflow is shared with you, you cannot export the workflow.
+%%
+%% For more information about your workflow status, see Verify the workflow
+%% status:
+%% https://docs.aws.amazon.com/omics/latest/dev/using-get-workflow.html in
+%% the Amazon Web Services HealthOmics User Guide.
 -spec get_workflow(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
@@ -6099,7 +6197,7 @@ list_references(Client, ReferenceStoreId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of your run caches.
+%% @doc Retrieves a list of your run caches and the metadata for each cache.
 -spec list_run_caches(aws_client:aws_client()) ->
     {ok, list_run_caches_response(), tuple()} |
     {error, any()} |
@@ -6141,7 +6239,8 @@ list_run_caches(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of run groups.
+%% @doc Retrieves a list of all run groups and returns the metadata for each
+%% run group.
 -spec list_run_groups(aws_client:aws_client()) ->
     {ok, list_run_groups_response(), tuple()} |
     {error, any()} |
@@ -6184,7 +6283,11 @@ list_run_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of tasks for a run.
+%% @doc Returns a list of tasks and status information within their specified
+%% run.
+%%
+%% Use this operation to monitor runs and to identify which specific tasks
+%% have failed.
 -spec list_run_tasks(aws_client:aws_client(), binary() | list()) ->
     {ok, list_run_tasks_response(), tuple()} |
     {error, any()} |
@@ -6227,15 +6330,16 @@ list_run_tasks(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of runs.
+%% @doc Retrieves a list of runs and returns each run's metadata and
+%% status.
 %%
-%% Amazon Web Services HealthOmics stores a fixed number of runs that are
-%% available to the console and API. If the ListRuns response doesn't
-%% include specific runs that you expected, you can find run logs for all
-%% runs in the CloudWatch logs. For more information about viewing the run
-%% logs, see CloudWatch logs:
-%% https://docs.aws.amazon.com/omics/latest/dev/cloudwatch-logs.html in the
-%% Amazon Web Services HealthOmics User Guide.
+%% Amazon Web Services HealthOmics stores a configurable number of runs, as
+%% determined by service limits, that are available to the console and API.
+%% If the `ListRuns' response doesn't include specific runs that you
+%% expected, you can find all run logs in the CloudWatch logs. For more
+%% information about viewing the run logs, see CloudWatch logs:
+%% https://docs.aws.amazon.com/omics/latest/dev/monitoring-cloudwatch-logs.html
+%% in the Amazon Web Services HealthOmics User Guide.
 -spec list_runs(aws_client:aws_client()) ->
     {ok, list_runs_response(), tuple()} |
     {error, any()} |
@@ -6512,7 +6616,13 @@ list_workflow_versions(Client, WorkflowId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of workflows.
+%% @doc Retrieves a list of existing workflows.
+%%
+%% You can filter for specific workflows by their name and type. Using the
+%% type parameter, specify `PRIVATE' to retrieve a list of private
+%% workflows or specify `READY2RUN' for a list of all Ready2Run
+%% workflows. If you do not specify the type of workflow, this operation
+%% returns a list of existing workflows.
 -spec list_workflows(aws_client:aws_client()) ->
     {ok, list_workflows_response(), tuple()} |
     {error, any()} |
@@ -6763,18 +6873,64 @@ start_reference_import_job(Client, ReferenceStoreId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a new run or duplicates an existing run.
+%% @doc Starts a new run and returns details about the run, or duplicates an
+%% existing run.
 %%
-%% For a new run, specify a unique `requestId', the `workflowId', and
-%% a role ARN. If you're using static run storage (the default), specify
-%% the required `storageCapacity'.
+%% A run is a single invocation of a workflow. If you provide request IDs,
+%% Amazon Web Services HealthOmics identifies duplicate requests and starts
+%% the run only once. Monitor the progress of the run by calling the
+%% `GetRun' API operation.
 %%
-%% You duplicate a run by specifing a unique `requestId', the `runID'
-%% of the run to duplicate, and a role ARN.
+%% To start a new run, the following inputs are required:
 %%
-%% For more information about the optional parameters in the StartRun
-%% request, see Starting a run:
+%% A service role ARN (`roleArn').
+%%
+%% The run's workflow ID (`workflowId', not the `uuid' or
+%% `runId').
+%%
+%% An Amazon S3 location (`outputUri') where the run outputs will be
+%% saved.
+%%
+%% All required workflow parameters (`parameter'), which can include
+%% optional parameters from the parameter template. The run cannot include
+%% any parameters that are not defined in the parameter template. To see all
+%% possible parameters, use the `GetRun' API operation.
+%%
+%% For runs with a `STATIC' (default) storage type, specify the required
+%% storage capacity (in gibibytes). A storage capacity value is not required
+%% for runs that use `DYNAMIC' storage.
+%%
+%% `StartRun' can also duplicate an existing run using the run's
+%% default values. You can modify these default values and/or add other
+%% optional inputs. To duplicate a run, the following inputs are required:
+%%
+%% A service role ARN (`roleArn').
+%%
+%% The ID of the run to duplicate (`runId').
+%%
+%% An Amazon S3 location where the run outputs will be saved
+%% (`outputUri').
+%%
+%% To learn more about the optional parameters for `StartRun', see
+%% Starting a run:
 %% https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html in the
+%% Amazon Web Services HealthOmics User Guide.
+%%
+%% Use the `retentionMode' input to control how long the metadata for
+%% each run is stored in CloudWatch. There are two retention modes:
+%%
+%% Specify `REMOVE' to automatically remove the oldest runs when you
+%% reach the maximum service retention limit for runs. It is recommended that
+%% you use the `REMOVE' mode to initiate major run requests so that your
+%% runs do not fail when you reach the limit.
+%%
+%% The `retentionMode' is set to the `RETAIN' mode by default, which
+%% allows you to manually remove runs after reaching the maximum service
+%% retention limit. Under this setting, you cannot create additional runs
+%% until you remove the excess runs.
+%%
+%% To learn more about the retention modes, see Run retention mode:
+%% https://docs.aws.amazon.com/omics/latest/dev/run-retention.html in the
 %% Amazon Web Services HealthOmics User Guide.
 -spec start_run(aws_client:aws_client(), start_run_request()) ->
     {ok, start_run_response(), tuple()} |
@@ -6980,7 +7136,17 @@ update_annotation_store_version(Client, Name, VersionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update a run cache.
+%% @doc Updates a run cache using its ID and returns a response with no body
+%% if the operation is successful.
+%%
+%% You can update the run cache description, name, or the default run cache
+%% behavior with `CACHE_ON_FAILURE' or `CACHE_ALWAYS'. To confirm
+%% that your run cache settings have been properly updated, use the
+%% `GetRunCache' API operation.
+%%
+%% For more information, see How call caching works:
+%% https://docs.aws.amazon.com/omics/latest/dev/how-run-cache.html in the
+%% Amazon Web Services HealthOmics User Guide.
 -spec update_run_cache(aws_client:aws_client(), binary() | list(), update_run_cache_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -7014,7 +7180,24 @@ update_run_cache(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a run group.
+%% @doc Updates the settings of a run group and returns a response with no
+%% body if the operation is successful.
+%%
+%% You can update the following settings with `UpdateRunGroup':
+%%
+%% Maximum number of CPUs
+%%
+%% Run time (measured in minutes)
+%%
+%% Number of GPUs
+%%
+%% Number of concurrent runs
+%%
+%% Group name
+%%
+%% To confirm that the settings have been successfully updated, use the
+%% `ListRunGroups' or `GetRunGroup' API operations to verify that the
+%% desired changes have been made.
 -spec update_run_group(aws_client:aws_client(), binary() | list(), update_run_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -7117,6 +7300,20 @@ update_variant_store(Client, Name, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information about a workflow.
+%%
+%% You can update the following workflow information:
+%%
+%% Name
+%%
+%% Description
+%%
+%% Default storage type
+%%
+%% Default storage capacity (with workflow ID)
+%%
+%% This operation returns a response with no body if the operation is
+%% successful. You can check the workflow updates by calling the
+%% `GetWorkflow' API operation.
 %%
 %% For more information, see Update a private workflow:
 %% https://docs.aws.amazon.com/omics/latest/dev/update-private-workflow.html
