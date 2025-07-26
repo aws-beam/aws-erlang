@@ -42,8 +42,8 @@
 %% Amazon SQS Dead-Letter Queues:
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
 %%
-%% Amazon SQS in the Command Line Interface
-%% : http://docs.aws.amazon.com/cli/latest/reference/sqs/index.html
+%% Amazon SQS in the Command Line Interface:
+%% https://awscli.amazonaws.com/v2/documentation/api/latest/reference/sqs/index.html
 %%
 %% Amazon Web Services General Reference
 %%
@@ -1084,7 +1084,7 @@ change_message_visibility_batch(Client, Input, Options)
 %% an existing standard queue into a FIFO queue. You must either create a new
 %% FIFO queue for your application or delete your existing standard queue and
 %% recreate it as a FIFO queue. For more information, see Moving From a
-%% Standard Queue to a FIFO Queue:
+%% standard queue to a FIFO queue:
 %% https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-moving
 %% in the
 %% Amazon SQS Developer Guide.
@@ -1619,8 +1619,8 @@ remove_permission(Client, Input, Options)
 %%
 %% Amazon SQS does not throw an exception or completely reject the message if
 %% it contains invalid characters. Instead, it replaces those invalid
-%% characters with `U+FFFD' before storing the message in the queue, as
-%% long as the message body contains at least one valid character.
+%% characters with U+FFFD before storing the message in the queue, as long as
+%% the message body contains at least one valid character.
 -spec send_message(aws_client:aws_client(), send_message_request()) ->
     {ok, send_message_result(), tuple()} |
     {error, any()} |
@@ -1670,8 +1670,8 @@ send_message(Client, Input, Options)
 %%
 %% Amazon SQS does not throw an exception or completely reject the message if
 %% it contains invalid characters. Instead, it replaces those invalid
-%% characters with `U+FFFD' before storing the message in the queue, as
-%% long as the message body contains at least one valid character.
+%% characters with U+FFFD before storing the message in the queue, as long as
+%% the message body contains at least one valid character.
 %%
 %% If you don't specify the `DelaySeconds' parameter for an entry,
 %% Amazon SQS uses

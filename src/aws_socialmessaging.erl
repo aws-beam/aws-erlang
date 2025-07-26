@@ -63,8 +63,16 @@
 
 -export([associate_whats_app_business_account/2,
          associate_whats_app_business_account/3,
+         create_whats_app_message_template/2,
+         create_whats_app_message_template/3,
+         create_whats_app_message_template_from_library/2,
+         create_whats_app_message_template_from_library/3,
+         create_whats_app_message_template_media/2,
+         create_whats_app_message_template_media/3,
          delete_whats_app_message_media/2,
          delete_whats_app_message_media/3,
+         delete_whats_app_message_template/2,
+         delete_whats_app_message_template/3,
          disassociate_whats_app_business_account/2,
          disassociate_whats_app_business_account/3,
          get_linked_whats_app_business_account/2,
@@ -75,12 +83,20 @@
          get_linked_whats_app_business_account_phone_number/5,
          get_whats_app_message_media/2,
          get_whats_app_message_media/3,
+         get_whats_app_message_template/3,
+         get_whats_app_message_template/5,
+         get_whats_app_message_template/6,
          list_linked_whats_app_business_accounts/1,
          list_linked_whats_app_business_accounts/3,
          list_linked_whats_app_business_accounts/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_whats_app_message_templates/2,
+         list_whats_app_message_templates/4,
+         list_whats_app_message_templates/5,
+         list_whats_app_template_library/2,
+         list_whats_app_template_library/3,
          post_whats_app_message_media/2,
          post_whats_app_message_media/3,
          put_whats_app_business_account_event_destinations/2,
@@ -90,7 +106,9 @@
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_whats_app_message_template/2,
+         update_whats_app_message_template/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -134,6 +152,26 @@
 
 
 %% Example:
+%% update_whats_app_message_template_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"metaTemplateId">> := string(),
+%%   <<"templateCategory">> => string(),
+%%   <<"templateComponents">> => binary()
+%% }
+-type update_whats_app_message_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_whats_app_message_template_input() :: #{
+%%   <<"deleteAllLanguages">> => boolean(),
+%%   <<"id">> := string(),
+%%   <<"metaTemplateId">> => string(),
+%%   <<"templateName">> := string()
+%% }
+-type delete_whats_app_message_template_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% whats_app_signup_callback_result() :: #{
 %%   <<"associateInProgressToken">> => string(),
 %%   <<"linkedAccountsWithIncompleteSetup">> => map()
@@ -170,6 +208,21 @@
 %%   <<"id">> := string()
 %% }
 -type put_whats_app_business_account_event_destinations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_message_template_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"metaTemplateId">> := string()
+%% }
+-type get_whats_app_message_template_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_message_template_output() :: #{
+%%   <<"template">> => string()
+%% }
+-type get_whats_app_message_template_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -232,6 +285,19 @@
 
 
 %% Example:
+%% create_whats_app_message_template_from_library_output() :: #{
+%%   <<"category">> => string(),
+%%   <<"metaTemplateId">> => string(),
+%%   <<"templateStatus">> => [string()]
+%% }
+-type create_whats_app_message_template_from_library_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_whats_app_message_template_output() :: #{}
+-type update_whats_app_message_template_output() :: #{}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -239,10 +305,38 @@
 
 
 %% Example:
+%% list_whats_app_template_library_output() :: #{
+%%   <<"metaLibraryTemplates">> => list(meta_library_template_definition()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_whats_app_template_library_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_output() :: #{
+%%   <<"category">> => string(),
+%%   <<"metaTemplateId">> => string(),
+%%   <<"templateStatus">> => [string()]
+%% }
+-type create_whats_app_message_template_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_linked_whats_app_business_account_input() :: #{
 %%   <<"id">> := string()
 %% }
 -type get_linked_whats_app_business_account_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% library_template_body_inputs() :: #{
+%%   <<"addContactNumber">> => boolean(),
+%%   <<"addLearnMoreLink">> => boolean(),
+%%   <<"addSecurityRecommendation">> => boolean(),
+%%   <<"addTrackPackageLink">> => boolean(),
+%%   <<"codeExpirationMinutes">> => integer()
+%% }
+-type library_template_body_inputs() :: #{binary() => any()}.
 
 
 %% Example:
@@ -285,6 +379,42 @@
 
 
 %% Example:
+%% template_summary() :: #{
+%%   <<"metaTemplateId">> => string(),
+%%   <<"templateCategory">> => string(),
+%%   <<"templateLanguage">> => string(),
+%%   <<"templateName">> => string(),
+%%   <<"templateQualityScore">> => string(),
+%%   <<"templateStatus">> => string()
+%% }
+-type template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_media_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"sourceS3File">> => s3_file()
+%% }
+-type create_whats_app_message_template_media_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_from_library_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"metaLibraryTemplate">> := meta_library_template()
+%% }
+-type create_whats_app_message_template_from_library_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_whats_app_message_templates_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"templates">> => list(template_summary())
+%% }
+-type list_whats_app_message_templates_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_parameters_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -319,6 +449,18 @@
 
 
 %% Example:
+%% library_template_button_input() :: #{
+%%   <<"otpType">> => string(),
+%%   <<"phoneNumber">> => string(),
+%%   <<"supportedApps">> => list(map()),
+%%   <<"type">> => string(),
+%%   <<"url">> => map(),
+%%   <<"zeroTapTermsAccepted">> => boolean()
+%% }
+-type library_template_button_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% post_whats_app_message_media_output() :: #{
 %%   <<"mediaId">> => string()
 %% }
@@ -341,6 +483,16 @@
 
 
 %% Example:
+%% list_whats_app_template_library_input() :: #{
+%%   <<"filters">> => map(),
+%%   <<"id">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_whats_app_template_library_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_output() :: #{
 %%   <<"statusCode">> => [integer()]
 %% }
@@ -352,6 +504,19 @@
 %%   <<"success">> => [boolean()]
 %% }
 -type delete_whats_app_message_media_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% library_template_button_list() :: #{
+%%   <<"otpType">> => string(),
+%%   <<"phoneNumber">> => string(),
+%%   <<"supportedApps">> => list(map()),
+%%   <<"text">> => string(),
+%%   <<"type">> => string(),
+%%   <<"url">> => string(),
+%%   <<"zeroTapTermsAccepted">> => boolean()
+%% }
+-type library_template_button_list() :: #{binary() => any()}.
 
 
 %% Example:
@@ -372,6 +537,10 @@
 %% disassociate_whats_app_business_account_output() :: #{}
 -type disassociate_whats_app_business_account_output() :: #{}.
 
+%% Example:
+%% delete_whats_app_message_template_output() :: #{}
+-type delete_whats_app_message_template_output() :: #{}.
+
 
 %% Example:
 %% validation_exception() :: #{
@@ -388,10 +557,27 @@
 
 
 %% Example:
+%% list_whats_app_message_templates_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_whats_app_message_templates_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_output() :: #{
 %%   <<"statusCode">> => [integer()]
 %% }
 -type untag_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_input() :: #{
+%%   <<"id">> := string(),
+%%   <<"templateDefinition">> := binary()
+%% }
+-type create_whats_app_message_template_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -407,6 +593,7 @@
 %% Example:
 %% whats_app_phone_number_detail() :: #{
 %%   <<"arn">> => string(),
+%%   <<"dataLocalizationRegion">> => string(),
 %%   <<"displayPhoneNumber">> => string(),
 %%   <<"displayPhoneNumberName">> => string(),
 %%   <<"metaPhoneNumberId">> => string(),
@@ -420,6 +607,7 @@
 %% Example:
 %% whats_app_phone_number_summary() :: #{
 %%   <<"arn">> => string(),
+%%   <<"dataLocalizationRegion">> => string(),
 %%   <<"displayPhoneNumber">> => string(),
 %%   <<"displayPhoneNumberName">> => string(),
 %%   <<"metaPhoneNumberId">> => string(),
@@ -439,8 +627,16 @@
 
 
 %% Example:
+%% limit_exceeded_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% whats_app_signup_callback() :: #{
-%%   <<"accessToken">> => [string()]
+%%   <<"accessToken">> => [string()],
+%%   <<"callbackUrl">> => [string()]
 %% }
 -type whats_app_signup_callback() :: #{binary() => any()}.
 
@@ -471,10 +667,45 @@
 
 
 %% Example:
+%% meta_library_template_definition() :: #{
+%%   <<"templateBody">> => string(),
+%%   <<"templateButtons">> => list(library_template_button_list()),
+%%   <<"templateCategory">> => string(),
+%%   <<"templateHeader">> => string(),
+%%   <<"templateId">> => string(),
+%%   <<"templateIndustry">> => list(string()),
+%%   <<"templateLanguage">> => string(),
+%%   <<"templateName">> => string(),
+%%   <<"templateTopic">> => string(),
+%%   <<"templateUseCase">> => string()
+%% }
+-type meta_library_template_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_linked_whats_app_business_account_phone_number_input() :: #{
 %%   <<"id">> := string()
 %% }
 -type get_linked_whats_app_business_account_phone_number_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% meta_library_template() :: #{
+%%   <<"libraryTemplateBodyInputs">> => library_template_body_inputs(),
+%%   <<"libraryTemplateButtonInputs">> => list(library_template_button_input()),
+%%   <<"libraryTemplateName">> => string(),
+%%   <<"templateCategory">> => string(),
+%%   <<"templateLanguage">> => string(),
+%%   <<"templateName">> => string()
+%% }
+-type meta_library_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_whats_app_message_template_media_output() :: #{
+%%   <<"metaHeaderHandle">> => [string()]
+%% }
+-type create_whats_app_message_template_media_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -486,8 +717,30 @@
 -type waba_setup_finalization() :: #{binary() => any()}.
 
 -type associate_whats_app_business_account_errors() ::
+    limit_exceeded_exception() | 
     invalid_parameters_exception() | 
     throttled_request_exception() | 
+    dependency_exception().
+
+-type create_whats_app_message_template_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    dependency_exception().
+
+-type create_whats_app_message_template_from_library_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    dependency_exception().
+
+-type create_whats_app_message_template_media_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
     dependency_exception().
 
 -type delete_whats_app_message_media_errors() ::
@@ -496,6 +749,13 @@
     resource_not_found_exception() | 
     internal_service_exception() | 
     access_denied_by_meta_exception() | 
+    dependency_exception().
+
+-type delete_whats_app_message_template_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
     dependency_exception().
 
 -type disassociate_whats_app_business_account_errors() ::
@@ -526,6 +786,13 @@
     access_denied_by_meta_exception() | 
     dependency_exception().
 
+-type get_whats_app_message_template_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    dependency_exception().
+
 -type list_linked_whats_app_business_accounts_errors() ::
     invalid_parameters_exception() | 
     throttled_request_exception() | 
@@ -536,6 +803,20 @@
     invalid_parameters_exception() | 
     throttled_request_exception() | 
     internal_service_exception().
+
+-type list_whats_app_message_templates_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    dependency_exception().
+
+-type list_whats_app_template_library_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    dependency_exception().
 
 -type post_whats_app_message_media_errors() ::
     invalid_parameters_exception() | 
@@ -567,6 +848,13 @@
     throttled_request_exception() | 
     internal_service_exception().
 
+-type update_whats_app_message_template_errors() ::
+    invalid_parameters_exception() | 
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    dependency_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -588,6 +876,109 @@ associate_whats_app_business_account(Client, Input) ->
 associate_whats_app_business_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/whatsapp/signup"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new WhatsApp message template from a custom definition.
+-spec create_whats_app_message_template(aws_client:aws_client(), create_whats_app_message_template_input()) ->
+    {ok, create_whats_app_message_template_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_message_template_errors(), tuple()}.
+create_whats_app_message_template(Client, Input) ->
+    create_whats_app_message_template(Client, Input, []).
+
+-spec create_whats_app_message_template(aws_client:aws_client(), create_whats_app_message_template_input(), proplists:proplist()) ->
+    {ok, create_whats_app_message_template_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_message_template_errors(), tuple()}.
+create_whats_app_message_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/template/put"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new WhatsApp message template using a template from
+%% Meta's template library.
+-spec create_whats_app_message_template_from_library(aws_client:aws_client(), create_whats_app_message_template_from_library_input()) ->
+    {ok, create_whats_app_message_template_from_library_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_message_template_from_library_errors(), tuple()}.
+create_whats_app_message_template_from_library(Client, Input) ->
+    create_whats_app_message_template_from_library(Client, Input, []).
+
+-spec create_whats_app_message_template_from_library(aws_client:aws_client(), create_whats_app_message_template_from_library_input(), proplists:proplist()) ->
+    {ok, create_whats_app_message_template_from_library_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_message_template_from_library_errors(), tuple()}.
+create_whats_app_message_template_from_library(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/template/create"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Uploads media for use in a WhatsApp message template.
+-spec create_whats_app_message_template_media(aws_client:aws_client(), create_whats_app_message_template_media_input()) ->
+    {ok, create_whats_app_message_template_media_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_message_template_media_errors(), tuple()}.
+create_whats_app_message_template_media(Client, Input) ->
+    create_whats_app_message_template_media(Client, Input, []).
+
+-spec create_whats_app_message_template_media(aws_client:aws_client(), create_whats_app_message_template_media_input(), proplists:proplist()) ->
+    {ok, create_whats_app_message_template_media_output(), tuple()} |
+    {error, any()} |
+    {error, create_whats_app_message_template_media_errors(), tuple()}.
+create_whats_app_message_template_media(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/template/media"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -642,6 +1033,44 @@ delete_whats_app_message_media(Client, Input0, Options0) ->
     QueryMapping = [
                      {<<"mediaId">>, <<"mediaId">>},
                      {<<"originationPhoneNumberId">>, <<"originationPhoneNumberId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a WhatsApp message template.
+-spec delete_whats_app_message_template(aws_client:aws_client(), delete_whats_app_message_template_input()) ->
+    {ok, delete_whats_app_message_template_output(), tuple()} |
+    {error, any()} |
+    {error, delete_whats_app_message_template_errors(), tuple()}.
+delete_whats_app_message_template(Client, Input) ->
+    delete_whats_app_message_template(Client, Input, []).
+
+-spec delete_whats_app_message_template(aws_client:aws_client(), delete_whats_app_message_template_input(), proplists:proplist()) ->
+    {ok, delete_whats_app_message_template_output(), tuple()} |
+    {error, any()} |
+    {error, delete_whats_app_message_template_errors(), tuple()}.
+delete_whats_app_message_template(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/whatsapp/template"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"deleteAllTemplates">>, <<"deleteAllLanguages">>},
+                     {<<"id">>, <<"id">>},
+                     {<<"metaTemplateId">>, <<"metaTemplateId">>},
+                     {<<"templateName">>, <<"templateName">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -807,6 +1236,48 @@ get_whats_app_message_media(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves a specific WhatsApp message template.
+-spec get_whats_app_message_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_whats_app_message_template_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_message_template_errors(), tuple()}.
+get_whats_app_message_template(Client, Id, MetaTemplateId)
+  when is_map(Client) ->
+    get_whats_app_message_template(Client, Id, MetaTemplateId, #{}, #{}).
+
+-spec get_whats_app_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_whats_app_message_template_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_message_template_errors(), tuple()}.
+get_whats_app_message_template(Client, Id, MetaTemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_whats_app_message_template(Client, Id, MetaTemplateId, QueryMap, HeadersMap, []).
+
+-spec get_whats_app_message_template(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_whats_app_message_template_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_message_template_errors(), tuple()}.
+get_whats_app_message_template(Client, Id, MetaTemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/whatsapp/template"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"id">>, Id},
+        {<<"metaTemplateId">>, MetaTemplateId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List all WhatsApp Business Accounts linked to your Amazon Web
 %% Services account.
 -spec list_linked_whats_app_business_accounts(aws_client:aws_client()) ->
@@ -891,6 +1362,86 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists WhatsApp message templates for a specific WhatsApp Business
+%% Account.
+-spec list_whats_app_message_templates(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_whats_app_message_templates_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_message_templates_errors(), tuple()}.
+list_whats_app_message_templates(Client, Id)
+  when is_map(Client) ->
+    list_whats_app_message_templates(Client, Id, #{}, #{}).
+
+-spec list_whats_app_message_templates(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_whats_app_message_templates_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_message_templates_errors(), tuple()}.
+list_whats_app_message_templates(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_whats_app_message_templates(Client, Id, QueryMap, HeadersMap, []).
+
+-spec list_whats_app_message_templates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_whats_app_message_templates_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_message_templates_errors(), tuple()}.
+list_whats_app_message_templates(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/whatsapp/template/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"id">>, Id},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists templates available in Meta's template library for WhatsApp
+%% messaging.
+-spec list_whats_app_template_library(aws_client:aws_client(), list_whats_app_template_library_input()) ->
+    {ok, list_whats_app_template_library_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_template_library_errors(), tuple()}.
+list_whats_app_template_library(Client, Input) ->
+    list_whats_app_template_library(Client, Input, []).
+
+-spec list_whats_app_template_library(aws_client:aws_client(), list_whats_app_template_library_input(), proplists:proplist()) ->
+    {ok, list_whats_app_template_library_output(), tuple()} |
+    {error, any()} |
+    {error, list_whats_app_template_library_errors(), tuple()}.
+list_whats_app_template_library(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/template/library"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"id">>, <<"id">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Upload a media file to the WhatsApp service.
 %%
@@ -1069,6 +1620,40 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/untag-resource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing WhatsApp message template.
+-spec update_whats_app_message_template(aws_client:aws_client(), update_whats_app_message_template_input()) ->
+    {ok, update_whats_app_message_template_output(), tuple()} |
+    {error, any()} |
+    {error, update_whats_app_message_template_errors(), tuple()}.
+update_whats_app_message_template(Client, Input) ->
+    update_whats_app_message_template(Client, Input, []).
+
+-spec update_whats_app_message_template(aws_client:aws_client(), update_whats_app_message_template_input(), proplists:proplist()) ->
+    {ok, update_whats_app_message_template_output(), tuple()} |
+    {error, any()} |
+    {error, update_whats_app_message_template_errors(), tuple()}.
+update_whats_app_message_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/template"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

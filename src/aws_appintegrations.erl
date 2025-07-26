@@ -123,6 +123,14 @@
 
 
 %% Example:
+%% iframe_config() :: #{
+%%   <<"Allow">> => list(string()),
+%%   <<"Sandbox">> => list(string())
+%% }
+-type iframe_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% unsupported_operation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -216,6 +224,13 @@
 %%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_handling() :: #{
+%%   <<"Scope">> => list(any())
+%% }
+-type contact_handling() :: #{binary() => any()}.
 
 
 %% Example:
@@ -313,9 +328,13 @@
 
 %% Example:
 %% create_application_request() :: #{
+%%   <<"ApplicationConfig">> => application_config(),
 %%   <<"ApplicationSourceConfig">> := application_source_config(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"IframeConfig">> => iframe_config(),
+%%   <<"InitializationTimeout">> => integer(),
+%%   <<"IsService">> => boolean(),
 %%   <<"Name">> := string(),
 %%   <<"Namespace">> := string(),
 %%   <<"Permissions">> => list(string()),
@@ -402,8 +421,12 @@
 
 %% Example:
 %% update_application_request() :: #{
+%%   <<"ApplicationConfig">> => application_config(),
 %%   <<"ApplicationSourceConfig">> => application_source_config(),
 %%   <<"Description">> => string(),
+%%   <<"IframeConfig">> => iframe_config(),
+%%   <<"InitializationTimeout">> => integer(),
+%%   <<"IsService">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"Permissions">> => list(string()),
 %%   <<"Publications">> => list(publication()),
@@ -427,11 +450,15 @@
 
 %% Example:
 %% get_application_response() :: #{
+%%   <<"ApplicationConfig">> => application_config(),
 %%   <<"ApplicationSourceConfig">> => application_source_config(),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"IframeConfig">> => iframe_config(),
+%%   <<"InitializationTimeout">> => integer(),
+%%   <<"IsService">> => boolean(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Namespace">> => string(),
@@ -546,6 +573,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Id">> => string(),
+%%   <<"IsService">> => boolean(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Namespace">> => string()
@@ -583,6 +611,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_integrations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_config() :: #{
+%%   <<"ContactHandling">> => contact_handling()
+%% }
+-type application_config() :: #{binary() => any()}.
 
 
 %% Example:

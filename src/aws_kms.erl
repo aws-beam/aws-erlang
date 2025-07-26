@@ -13,9 +13,10 @@
 %% Key Management Service Developer Guide
 %% : https://docs.aws.amazon.com/kms/latest/developerguide/.
 %%
-%% KMS has replaced the term customer master key (CMK) with KMS key and KMS
-%% key. The concept has not changed. To prevent breaking changes, KMS is
-%% keeping some variations of this term.
+%% KMS has replaced the term customer master key (CMK) with Key Management
+%% Service key
+%% and KMS key. The concept has not changed. To prevent breaking changes, KMS
+%% is keeping some variations of this term.
 %%
 %% Amazon Web Services provides SDKs that consist of libraries and sample
 %% code for various programming
@@ -2466,9 +2467,10 @@ create_grant(Client, Input, Options)
 %% source of
 %% its key material, its key policy, description, tags, and other properties.
 %%
-%% KMS has replaced the term customer master key (CMK) with KMS key and KMS
-%% key. The concept has not changed. To prevent breaking changes, KMS is
-%% keeping some variations of this term.
+%% KMS has replaced the term customer master key (CMK) with Key Management
+%% Service key
+%% and KMS key. The concept has not changed. To prevent breaking changes, KMS
+%% is keeping some variations of this term.
 %%
 %% To create different types of KMS keys, use the following guidance:
 %%
@@ -3281,9 +3283,9 @@ describe_custom_key_stores(Client, Input, Options)
 %% You can run `DescribeKey' on a
 %% customer managed
 %% key:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key
 %% or an Amazon Web Services managed key:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key.
 %%
 %% This detailed information includes the key ARN, creation date (and
 %% deletion date, if
@@ -3330,7 +3332,7 @@ describe_custom_key_stores(Client, Input, Options)
 %% services use `DescribeKey' to
 %% create Amazon Web Services
 %% managed keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key
 %% from a predefined Amazon Web Services alias with no key
 %% ID.
 %%
@@ -3443,14 +3445,14 @@ disable_key(Client, Input, Options)
 %% You can enable (`EnableKeyRotation') and disable automatic rotation of
 %% the
 %% key material in customer managed KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key.
 %% Key material rotation of Amazon Web Services managed KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key
 %% is not
 %% configurable. KMS always rotates the key material for every year. Rotation
 %% of Amazon Web Services owned KMS
 %% keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-key
 %% varies.
 %%
 %% In May 2022, KMS changed the rotation schedule for Amazon Web Services
@@ -3623,7 +3625,7 @@ enable_key(Client, Input, Options)
 %%
 %% By default, when you enable automatic rotation of a customer managed KMS
 %% key:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key,
 %% KMS
 %% rotates the key material of the KMS key one year (approximately 365 days)
 %% from the enable date
@@ -3660,12 +3662,12 @@ enable_key(Client, Input, Options)
 %%
 %% You cannot enable or disable automatic rotation of Amazon Web Services
 %% managed KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key.
 %% KMS
 %% always rotates the key material of Amazon Web Services managed keys every
 %% year. Rotation of Amazon Web Services owned KMS
 %% keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-key
 %% is managed by the Amazon Web Services service that owns the key.
 %%
 %% In May 2022, KMS changed the rotation schedule for Amazon Web Services
@@ -4546,7 +4548,7 @@ get_key_policy(Client, Input, Options)
 %% (`DisableKeyRotation') of the key material in customer managed KMS
 %% keys. Key
 %% material rotation of Amazon Web Services managed KMS keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key
 %% is not
 %% configurable. KMS always rotates the key material in Amazon Web Services
 %% managed KMS keys every year. The
@@ -5905,12 +5907,12 @@ revoke_grant(Client, Input, Options)
 %%
 %% You cannot initiate on-demand rotation of Amazon Web Services managed KMS
 %% keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key.
 %% KMS
 %% always rotates the key material of Amazon Web Services managed keys every
 %% year. Rotation of Amazon Web Services owned KMS
 %% keys:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-key
 %% is managed by the Amazon Web Services service that owns the key.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
@@ -6162,7 +6164,7 @@ sign(Client, Input, Options)
     request(Client, <<"Sign">>, Input, Options).
 
 %% @doc Adds or edits tags on a customer managed key:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key.
 %%
 %% Tagging or untagging a KMS key can allow or deny permission to the KMS
 %% key. For details, see ABAC for KMS:
@@ -6176,13 +6178,13 @@ sign(Client, Input, Options)
 %% value. To edit a tag, specify an existing tag key and a new tag value.
 %%
 %% You can use this operation to tag a customer managed key:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key,
 %% but you cannot
 %% tag an Amazon Web Services
 %% managed key:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key,
 %% an Amazon Web Services owned key:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk,
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-key,
 %% a custom key store:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/key-store-overview.html,
 %% or an alias:
@@ -6242,7 +6244,7 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc Deletes tags from a customer managed key:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk.
+%% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key.
 %%
 %% To delete a tag,
 %% specify the tag key and the KMS key.

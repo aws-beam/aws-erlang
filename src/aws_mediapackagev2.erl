@@ -121,7 +121,8 @@
 
 %% Example:
 %% input_switch_configuration() :: #{
-%%   <<"MQCSInputSwitching">> => [boolean()]
+%%   <<"MQCSInputSwitching">> => [boolean()],
+%%   <<"PreferredInput">> => [integer()]
 %% }
 -type input_switch_configuration() :: #{binary() => any()}.
 
@@ -1770,8 +1771,7 @@ delete_origin_endpoint_policy(Client, ChannelGroupName, ChannelName, OriginEndpo
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the specified channel that's configured in AWS
-%% Elemental MediaPackage, including the origin endpoints that are associated
-%% with it.
+%% Elemental MediaPackage.
 -spec get_channel(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
@@ -1809,8 +1809,7 @@ get_channel(Client, ChannelGroupName, ChannelName, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the specified channel group that's configured in AWS
-%% Elemental MediaPackage, including the channels and origin endpoints that
-%% are associated with it.
+%% Elemental MediaPackage.
 -spec get_channel_group(aws_client:aws_client(), binary() | list()) ->
     {ok, get_channel_group_response(), tuple()} |
     {error, any()} |
@@ -2046,8 +2045,7 @@ list_channel_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves all channels in a specific channel group that are
-%% configured in AWS Elemental MediaPackage, including the origin endpoints
-%% that are associated with it.
+%% configured in AWS Elemental MediaPackage.
 -spec list_channels(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
