@@ -127,6 +127,7 @@
 %%   <<"PipelineArn">> => string(),
 %%   <<"PipelineConfigurationBody">> => string(),
 %%   <<"PipelineName">> => string(),
+%%   <<"PipelineRoleArn">> => string(),
 %%   <<"ServiceVpcEndpoints">> => list(service_vpc_endpoint()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => pipeline_status_reason(),
@@ -229,6 +230,7 @@
 %%   <<"MinUnits">> := integer(),
 %%   <<"PipelineConfigurationBody">> := string(),
 %%   <<"PipelineName">> := string(),
+%%   <<"PipelineRoleArn">> => string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VpcOptions">> => vpc_options()
 %% }
@@ -242,7 +244,8 @@
 %%   <<"LogPublishingOptions">> => log_publishing_options(),
 %%   <<"MaxUnits">> => integer(),
 %%   <<"MinUnits">> => integer(),
-%%   <<"PipelineConfigurationBody">> => string()
+%%   <<"PipelineConfigurationBody">> => string(),
+%%   <<"PipelineRoleArn">> => string()
 %% }
 -type update_pipeline_request() :: #{binary() => any()}.
 

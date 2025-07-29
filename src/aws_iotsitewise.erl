@@ -41,6 +41,8 @@
          create_asset_model_composite_model/4,
          create_bulk_import_job/2,
          create_bulk_import_job/3,
+         create_computation_model/2,
+         create_computation_model/3,
          create_dashboard/2,
          create_dashboard/3,
          create_dataset/2,
@@ -59,6 +61,8 @@
          delete_asset_model/4,
          delete_asset_model_composite_model/4,
          delete_asset_model_composite_model/5,
+         delete_computation_model/3,
+         delete_computation_model/4,
          delete_dashboard/3,
          delete_dashboard/4,
          delete_dataset/3,
@@ -95,6 +99,12 @@
          describe_bulk_import_job/2,
          describe_bulk_import_job/4,
          describe_bulk_import_job/5,
+         describe_computation_model/2,
+         describe_computation_model/4,
+         describe_computation_model/5,
+         describe_computation_model_execution_summary/2,
+         describe_computation_model_execution_summary/4,
+         describe_computation_model_execution_summary/5,
          describe_dashboard/2,
          describe_dashboard/4,
          describe_dashboard/5,
@@ -104,6 +114,9 @@
          describe_default_encryption_configuration/1,
          describe_default_encryption_configuration/3,
          describe_default_encryption_configuration/4,
+         describe_execution/2,
+         describe_execution/4,
+         describe_execution/5,
          describe_gateway/2,
          describe_gateway/4,
          describe_gateway/5,
@@ -180,12 +193,23 @@
          list_composition_relationships/2,
          list_composition_relationships/4,
          list_composition_relationships/5,
+         list_computation_model_data_binding_usages/2,
+         list_computation_model_data_binding_usages/3,
+         list_computation_model_resolve_to_resources/2,
+         list_computation_model_resolve_to_resources/4,
+         list_computation_model_resolve_to_resources/5,
+         list_computation_models/1,
+         list_computation_models/3,
+         list_computation_models/4,
          list_dashboards/2,
          list_dashboards/4,
          list_dashboards/5,
          list_datasets/2,
          list_datasets/4,
          list_datasets/5,
+         list_executions/3,
+         list_executions/5,
+         list_executions/6,
          list_gateways/1,
          list_gateways/3,
          list_gateways/4,
@@ -224,6 +248,8 @@
          update_asset_model_composite_model/5,
          update_asset_property/4,
          update_asset_property/5,
+         update_computation_model/3,
+         update_computation_model/4,
          update_dashboard/3,
          update_dashboard/4,
          update_dataset/3,
@@ -246,6 +272,14 @@
 %%   <<"assetModelStatus">> => asset_model_status()
 %% }
 -type delete_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_property_binding_value() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type asset_property_binding_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -276,6 +310,7 @@
 %% action_summary() :: #{
 %%   <<"actionDefinitionId">> => string(),
 %%   <<"actionId">> => string(),
+%%   <<"resolveTo">> => resolve_to(),
 %%   <<"targetResource">> => target_resource()
 %% }
 -type action_summary() :: #{binary() => any()}.
@@ -430,6 +465,13 @@
 
 
 %% Example:
+%% update_computation_model_response() :: #{
+%%   <<"computationModelStatus">> => computation_model_status()
+%% }
+-type update_computation_model_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_asset_property_aggregates_response() :: #{
 %%   <<"aggregatedValues">> => list(aggregated_value()),
 %%   <<"nextToken">> => string()
@@ -466,6 +508,10 @@
 %%   <<"sourceType">> => list(any())
 %% }
 -type dataset_source() :: #{binary() => any()}.
+
+%% Example:
+%% describe_execution_request() :: #{}
+-type describe_execution_request() :: #{}.
 
 
 %% Example:
@@ -523,6 +569,31 @@
 %%   <<"name">> => string()
 %% }
 -type asset_model_hierarchy() :: #{binary() => any()}.
+
+
+%% Example:
+%% computation_model_status() :: #{
+%%   <<"error">> => error_details(),
+%%   <<"state">> => list(any())
+%% }
+-type computation_model_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_computation_model_response() :: #{
+%%   <<"actionDefinitions">> => list(action_definition()),
+%%   <<"computationModelArn">> => string(),
+%%   <<"computationModelConfiguration">> => computation_model_configuration(),
+%%   <<"computationModelCreationDate">> => non_neg_integer(),
+%%   <<"computationModelDataBinding">> => map(),
+%%   <<"computationModelDescription">> => string(),
+%%   <<"computationModelId">> => string(),
+%%   <<"computationModelLastUpdateDate">> => non_neg_integer(),
+%%   <<"computationModelName">> => string(),
+%%   <<"computationModelStatus">> => computation_model_status(),
+%%   <<"computationModelVersion">> => string()
+%% }
+-type describe_computation_model_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -650,6 +721,7 @@
 %%   <<"actionId">> => string(),
 %%   <<"actionPayload">> => action_payload(),
 %%   <<"executionTime">> => non_neg_integer(),
+%%   <<"resolveTo">> => resolve_to(),
 %%   <<"targetResource">> => target_resource()
 %% }
 -type describe_action_response() :: #{binary() => any()}.
@@ -664,6 +736,13 @@
 %%   <<"valueType">> => list(any())
 %% }
 -type property_value_null_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_computation_model_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_computation_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -783,6 +862,14 @@
 
 
 %% Example:
+%% list_computation_model_resolve_to_resources_response() :: #{
+%%   <<"computationModelResolveToResourceSummaries">> => list(computation_model_resolve_to_resource_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_model_resolve_to_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_asset_property_value_request() :: #{
 %%   <<"assetId">> => string(),
 %%   <<"propertyAlias">> => string(),
@@ -810,6 +897,13 @@
 %%   <<"type">> => string()
 %% }
 -type asset_model_composite_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_binding_value_filter() :: #{
+%%   <<"assetModelId">> => string()
+%% }
+-type asset_model_binding_value_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -842,12 +936,37 @@
 
 
 %% Example:
+%% describe_execution_response() :: #{
+%%   <<"actionType">> => string(),
+%%   <<"executionDetails">> => map(),
+%%   <<"executionEndTime">> => non_neg_integer(),
+%%   <<"executionEntityVersion">> => string(),
+%%   <<"executionId">> => string(),
+%%   <<"executionResult">> => map(),
+%%   <<"executionStartTime">> => non_neg_integer(),
+%%   <<"executionStatus">> => execution_status(),
+%%   <<"resolveTo">> => resolve_to(),
+%%   <<"targetResource">> => target_resource(),
+%%   <<"targetResourceVersion">> => string()
+%% }
+-type describe_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_asset_property_value_history_skipped_entry() :: #{
 %%   <<"completionStatus">> => list(any()),
 %%   <<"entryId">> => string(),
 %%   <<"errorInfo">> => batch_get_asset_property_value_history_error_info()
 %% }
 -type batch_get_asset_property_value_history_skipped_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_computation_models_response() :: #{
+%%   <<"computationModelSummaries">> => list(computation_model_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_models_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1005,6 +1124,14 @@
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% computation_model_anomaly_detection_configuration() :: #{
+%%   <<"inputProperties">> => string(),
+%%   <<"resultProperty">> => string()
+%% }
+-type computation_model_anomaly_detection_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% update_project_response() :: #{}
 -type update_project_response() :: #{}.
@@ -1059,6 +1186,13 @@
 
 
 %% Example:
+%% execution_status() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type execution_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_associated_assets_request() :: #{
 %%   <<"hierarchyId">> => string(),
 %%   <<"maxResults">> => integer(),
@@ -1095,7 +1229,8 @@
 
 %% Example:
 %% target_resource() :: #{
-%%   <<"assetId">> => string()
+%%   <<"assetId">> => string(),
+%%   <<"computationModelId">> => string()
 %% }
 -type target_resource() :: #{binary() => any()}.
 
@@ -1107,9 +1242,29 @@
 %% }
 -type list_project_assets_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% create_computation_model_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"computationModelConfiguration">> := computation_model_configuration(),
+%%   <<"computationModelDataBinding">> := map(),
+%%   <<"computationModelDescription">> => string(),
+%%   <<"computationModelName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_computation_model_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_action_request() :: #{}
 -type describe_action_request() :: #{}.
+
+
+%% Example:
+%% list_computation_model_data_binding_usages_response() :: #{
+%%   <<"dataBindingUsageSummaries">> => list(computation_model_data_binding_usage_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_model_data_binding_usages_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1147,6 +1302,21 @@
 
 
 %% Example:
+%% execution_summary() :: #{
+%%   <<"actionType">> => string(),
+%%   <<"executionEndTime">> => non_neg_integer(),
+%%   <<"executionEntityVersion">> => string(),
+%%   <<"executionId">> => string(),
+%%   <<"executionStartTime">> => non_neg_integer(),
+%%   <<"executionStatus">> => execution_status(),
+%%   <<"resolveTo">> => resolve_to(),
+%%   <<"targetResource">> => target_resource(),
+%%   <<"targetResourceVersion">> => string()
+%% }
+-type execution_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_asset_response() :: #{
 %%   <<"assetStatus">> => asset_status()
 %% }
@@ -1164,6 +1334,14 @@
 %%   <<"errorMessage">> => string()
 %% }
 -type batch_get_asset_property_value_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% computation_model_data_binding_usage_summary() :: #{
+%%   <<"computationModelIds">> => list(string()),
+%%   <<"matchedDataBinding">> => matched_data_binding()
+%% }
+-type computation_model_data_binding_usage_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1267,6 +1445,15 @@
 
 
 %% Example:
+%% computation_model_data_binding_value() :: #{
+%%   <<"assetModelProperty">> => asset_model_property_binding_value(),
+%%   <<"assetProperty">> => asset_property_binding_value(),
+%%   <<"list">> => list(computation_model_data_binding_value())
+%% }
+-type computation_model_data_binding_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_asset_property_aggregates_success_entry() :: #{
 %%   <<"aggregatedValues">> => list(aggregated_value()),
 %%   <<"entryId">> => string()
@@ -1351,6 +1538,14 @@
 
 
 %% Example:
+%% list_executions_response() :: #{
+%%   <<"executionSummaries">> => list(execution_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% dataset_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"creationDate">> => non_neg_integer(),
@@ -1369,6 +1564,21 @@
 %%   <<"name">> => string()
 %% }
 -type asset_composite_model_path_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% computation_model_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdateDate">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => computation_model_status(),
+%%   <<"type">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type computation_model_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1392,6 +1602,14 @@
 %%   <<"kendra">> => kendra_source_detail()
 %% }
 -type source_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_computation_model_resolve_to_resources_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_model_resolve_to_resources_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1600,10 +1818,30 @@
 
 
 %% Example:
+%% list_computation_model_data_binding_usages_request() :: #{
+%%   <<"dataBindingValueFilter">> := data_binding_value_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_model_data_binding_usages_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_asset_response() :: #{
 %%   <<"assetStatus">> => asset_status()
 %% }
 -type delete_asset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_computation_model_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"computationModelConfiguration">> := computation_model_configuration(),
+%%   <<"computationModelDataBinding">> := map(),
+%%   <<"computationModelDescription">> => string(),
+%%   <<"computationModelName">> := string()
+%% }
+-type update_computation_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1706,6 +1944,8 @@
 %% list_actions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"resolveToResourceId">> => string(),
+%%   <<"resolveToResourceType">> => list(any()),
 %%   <<"targetResourceId">> := string(),
 %%   <<"targetResourceType">> := list(any())
 %% }
@@ -1742,6 +1982,14 @@
 %%   <<"datasetSource">> := dataset_source()
 %% }
 -type update_dataset_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_model_property_binding_value_filter() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type asset_model_property_binding_value_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1793,12 +2041,29 @@
 
 
 %% Example:
+%% data_binding_value_filter() :: #{
+%%   <<"asset">> => asset_binding_value_filter(),
+%%   <<"assetModel">> => asset_model_binding_value_filter(),
+%%   <<"assetModelProperty">> => asset_model_property_binding_value_filter(),
+%%   <<"assetProperty">> => asset_property_binding_value_filter()
+%% }
+-type data_binding_value_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_asset_property_value_history_request() :: #{
 %%   <<"entries">> := list(batch_get_asset_property_value_history_entry()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type batch_get_asset_property_value_history_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_computation_model_response() :: #{
+%%   <<"computationModelStatus">> => computation_model_status()
+%% }
+-type delete_computation_model_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_logging_options_request() :: #{}
@@ -1857,6 +2122,13 @@
 %% Example:
 %% describe_asset_property_request() :: #{}
 -type describe_asset_property_request() :: #{}.
+
+
+%% Example:
+%% asset_binding_value_filter() :: #{
+%%   <<"assetId">> => string()
+%% }
+-type asset_binding_value_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1932,6 +2204,19 @@
 %%   <<"eTag">> => string()
 %% }
 -type describe_asset_model_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_computation_model_execution_summary_response() :: #{
+%%   <<"computationModelExecutionSummary">> => map(),
+%%   <<"computationModelId">> => string(),
+%%   <<"resolveTo">> => resolve_to()
+%% }
+-type describe_computation_model_execution_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_computation_model_request() :: #{}
+-type describe_computation_model_request() :: #{}.
 
 
 %% Example:
@@ -2060,6 +2345,15 @@
 %%   <<"name">> => string()
 %% }
 -type asset_model_composite_model_path_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_computation_model_response() :: #{
+%%   <<"computationModelArn">> => string(),
+%%   <<"computationModelId">> => string(),
+%%   <<"computationModelStatus">> => computation_model_status()
+%% }
+-type create_computation_model_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2450,6 +2744,14 @@
 
 
 %% Example:
+%% asset_model_property_binding_value() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type asset_model_property_binding_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2544,6 +2846,14 @@
 %%   <<"tags">> => map()
 %% }
 -type create_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_property_binding_value_filter() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"propertyId">> => string()
+%% }
+-type asset_property_binding_value_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2666,6 +2976,14 @@
 
 
 %% Example:
+%% describe_computation_model_execution_summary_request() :: #{
+%%   <<"resolveToResourceId">> => string(),
+%%   <<"resolveToResourceType">> => list(any())
+%% }
+-type describe_computation_model_execution_summary_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% logging_options() :: #{
 %%   <<"level">> => list(any())
 %% }
@@ -2711,6 +3029,21 @@
 %%   <<"unit">> => string()
 %% }
 -type asset_model_property_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% matched_data_binding() :: #{
+%%   <<"value">> => data_binding_value()
+%% }
+-type matched_data_binding() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_binding_value() :: #{
+%%   <<"assetModelProperty">> => asset_model_property_binding_value(),
+%%   <<"assetProperty">> => asset_property_binding_value()
+%% }
+-type data_binding_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2764,6 +3097,13 @@
 %%   <<"propertyPath">> => list(asset_model_property_path_segment())
 %% }
 -type variable_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% resolve_to() :: #{
+%%   <<"assetId">> => string()
+%% }
+-type resolve_to() :: #{binary() => any()}.
 
 %% Example:
 %% describe_portal_request() :: #{}
@@ -2845,6 +3185,7 @@
 %%   <<"actionDefinitionId">> := string(),
 %%   <<"actionPayload">> := action_payload(),
 %%   <<"clientToken">> => string(),
+%%   <<"resolveTo">> => resolve_to(),
 %%   <<"targetResource">> := target_resource()
 %% }
 -type execute_action_request() :: #{binary() => any()}.
@@ -2887,6 +3228,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_dashboards_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_computation_models_request() :: #{
+%%   <<"computationModelType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_computation_models_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2944,6 +3294,13 @@
 
 
 %% Example:
+%% computation_model_resolve_to_resource_summary() :: #{
+%%   <<"resolveTo">> => resolve_to()
+%% }
+-type computation_model_resolve_to_resource_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_default_encryption_configuration_request() :: #{
 %%   <<"encryptionType">> := list(any()),
 %%   <<"kmsKeyId">> => string()
@@ -2988,6 +3345,13 @@
 %%   <<"timeOrdering">> => list(any())
 %% }
 -type get_asset_property_aggregates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% computation_model_configuration() :: #{
+%%   <<"anomalyDetection">> => computation_model_anomaly_detection_configuration()
+%% }
+-type computation_model_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3045,6 +3409,19 @@
 %%   <<"conversationId">> => string()
 %% }
 -type invoke_assistant_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_executions_request() :: #{
+%%   <<"actionType">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resolveToResourceId">> => string(),
+%%   <<"resolveToResourceType">> => list(any()),
+%%   <<"targetResourceId">> := string(),
+%%   <<"targetResourceType">> := list(any())
+%% }
+-type list_executions_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3203,6 +3580,15 @@
     conflicting_operation_exception() | 
     internal_failure_exception().
 
+-type create_computation_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
 -type create_dashboard_errors() ::
     limit_exceeded_exception() | 
     throttling_exception() | 
@@ -3263,6 +3649,13 @@
 
 -type delete_asset_model_composite_model_errors() ::
     precondition_failed_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type delete_computation_model_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -3357,6 +3750,18 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type describe_computation_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_computation_model_execution_summary_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type describe_dashboard_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
@@ -3372,6 +3777,12 @@
 -type describe_default_encryption_configuration_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
+    internal_failure_exception().
+
+-type describe_execution_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type describe_gateway_errors() ::
@@ -3550,6 +3961,22 @@
     resource_not_found_exception() | 
     internal_failure_exception().
 
+-type list_computation_model_data_binding_usages_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_computation_model_resolve_to_resources_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_computation_models_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception().
+
 -type list_dashboards_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
@@ -3558,6 +3985,12 @@
 -type list_datasets_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
+    internal_failure_exception().
+
+-type list_executions_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type list_gateways_errors() ::
@@ -3672,6 +4105,15 @@
     internal_failure_exception().
 
 -type update_asset_property_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
+-type update_computation_model_errors() ::
+    resource_already_exists_exception() | 
+    limit_exceeded_exception() | 
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -4279,9 +4721,16 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
 %% PutStorageConfiguration:
 %% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_PutStorageConfiguration.html.
 %%
-%% Bulk import is designed to store historical data to IoT SiteWise. It does
-%% not trigger
-%% computations or notifications on IoT SiteWise warm or cold tier storage.
+%% Bulk import is designed to store historical data to IoT SiteWise.
+%%
+%% Newly ingested data in the hot tier triggers notifications and
+%% computations.
+%%
+%% After data moves from the hot tier to the warm or cold tier based on
+%% retention settings,
+%% it does not trigger computations or notifications.
+%%
+%% Data older than 7 days does not trigger computations or notifications.
 -spec create_bulk_import_job(aws_client:aws_client(), create_bulk_import_job_request()) ->
     {ok, create_bulk_import_job_response(), tuple()} |
     {error, any()} |
@@ -4296,6 +4745,40 @@ create_bulk_import_job(Client, Input) ->
 create_bulk_import_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a computation model with a configuration and data binding.
+-spec create_computation_model(aws_client:aws_client(), create_computation_model_request()) ->
+    {ok, create_computation_model_response(), tuple()} |
+    {error, any()} |
+    {error, create_computation_model_errors(), tuple()}.
+create_computation_model(Client, Input) ->
+    create_computation_model(Client, Input, []).
+
+-spec create_computation_model(aws_client:aws_client(), create_computation_model_request(), proplists:proplist()) ->
+    {ok, create_computation_model_response(), tuple()} |
+    {error, any()} |
+    {error, create_computation_model_errors(), tuple()}.
+create_computation_model(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/computation-models"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4682,6 +5165,43 @@ delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
                        {<<"Match-For-Version-Type">>, <<"matchForVersionType">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a computation model.
+%%
+%% This action can't be undone.
+-spec delete_computation_model(aws_client:aws_client(), binary() | list(), delete_computation_model_request()) ->
+    {ok, delete_computation_model_response(), tuple()} |
+    {error, any()} |
+    {error, delete_computation_model_errors(), tuple()}.
+delete_computation_model(Client, ComputationModelId, Input) ->
+    delete_computation_model(Client, ComputationModelId, Input, []).
+
+-spec delete_computation_model(aws_client:aws_client(), binary() | list(), delete_computation_model_request(), proplists:proplist()) ->
+    {ok, delete_computation_model_response(), tuple()} |
+    {error, any()} |
+    {error, delete_computation_model_errors(), tuple()}.
+delete_computation_model(Client, ComputationModelId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/computation-models/", aws_util:encode_uri(ComputationModelId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -5283,6 +5803,86 @@ describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a computation model.
+-spec describe_computation_model(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_computation_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_computation_model_errors(), tuple()}.
+describe_computation_model(Client, ComputationModelId)
+  when is_map(Client) ->
+    describe_computation_model(Client, ComputationModelId, #{}, #{}).
+
+-spec describe_computation_model(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_computation_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_computation_model_errors(), tuple()}.
+describe_computation_model(Client, ComputationModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_computation_model(Client, ComputationModelId, QueryMap, HeadersMap, []).
+
+-spec describe_computation_model(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_computation_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_computation_model_errors(), tuple()}.
+describe_computation_model(Client, ComputationModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/computation-models/", aws_util:encode_uri(ComputationModelId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the execution summary of a computation
+%% model.
+-spec describe_computation_model_execution_summary(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_computation_model_execution_summary_response(), tuple()} |
+    {error, any()} |
+    {error, describe_computation_model_execution_summary_errors(), tuple()}.
+describe_computation_model_execution_summary(Client, ComputationModelId)
+  when is_map(Client) ->
+    describe_computation_model_execution_summary(Client, ComputationModelId, #{}, #{}).
+
+-spec describe_computation_model_execution_summary(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_computation_model_execution_summary_response(), tuple()} |
+    {error, any()} |
+    {error, describe_computation_model_execution_summary_errors(), tuple()}.
+describe_computation_model_execution_summary(Client, ComputationModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_computation_model_execution_summary(Client, ComputationModelId, QueryMap, HeadersMap, []).
+
+-spec describe_computation_model_execution_summary(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_computation_model_execution_summary_response(), tuple()} |
+    {error, any()} |
+    {error, describe_computation_model_execution_summary_errors(), tuple()}.
+describe_computation_model_execution_summary(Client, ComputationModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/computation-models/", aws_util:encode_uri(ComputationModelId), "/execution-summary"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resolveToResourceId">>, maps:get(<<"resolveToResourceId">>, QueryMap, undefined)},
+        {<<"resolveToResourceType">>, maps:get(<<"resolveToResourceType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a dashboard.
 -spec describe_dashboard(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_dashboard_response(), tuple()} |
@@ -5401,6 +6001,43 @@ describe_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about the execution.
+-spec describe_execution(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_execution_errors(), tuple()}.
+describe_execution(Client, ExecutionId)
+  when is_map(Client) ->
+    describe_execution(Client, ExecutionId, #{}, #{}).
+
+-spec describe_execution(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_execution_errors(), tuple()}.
+describe_execution(Client, ExecutionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_execution(Client, ExecutionId, QueryMap, HeadersMap, []).
+
+-spec describe_execution(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_execution_response(), tuple()} |
+    {error, any()} |
+    {error, describe_execution_errors(), tuple()}.
+describe_execution(Client, ExecutionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/executions/", aws_util:encode_uri(ExecutionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a gateway.
 -spec describe_gateway(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_gateway_response(), tuple()} |
@@ -5438,16 +6075,31 @@ describe_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a gateway capability configuration.
+%% @doc Each gateway capability defines data sources for a gateway.
 %%
-%% Each gateway capability defines data sources for a gateway. A capability
-%% configuration
-%% can contain multiple data source configurations. If you define OPC-UA
-%% sources for a gateway in
-%% the IoT SiteWise console, all of your OPC-UA sources are stored in one
-%% capability configuration. To
-%% list all capability configurations for a gateway, use DescribeGateway:
-%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
+%% This is the namespace of the gateway capability.
+%%
+%% . The namespace follows the format `service:capability:version',
+%% where:
+%%
+%% `service' - The service providing the capability, or
+%% `iotsitewise'.
+%%
+%% `capability' - The specific capability type. Options include:
+%% `opcuacollector' for the OPC UA data source collector, or
+%% `publisher' for data publisher capability.
+%%
+%% `version' - The version number of the capability. Option include
+%% `2' for Classic streams, V2 gateways, and `3' for MQTT-enabled, V3
+%% gateways.
+%%
+%% After updating a capability configuration, the sync status becomes
+%% `OUT_OF_SYNC' until the gateway processes the configuration.Use
+%% `DescribeGatewayCapabilityConfiguration' to check the sync status and
+%% verify the configuration was applied.
+%%
+%% A gateway can have multiple capability configurations with different
+%% namespaces.
 -spec describe_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |
@@ -6225,6 +6877,8 @@ list_actions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap,
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resolveToResourceId">>, maps:get(<<"resolveToResourceId">>, QueryMap, undefined)},
+        {<<"resolveToResourceType">>, maps:get(<<"resolveToResourceType">>, QueryMap, undefined)},
         {<<"targetResourceId">>, TargetResourceId},
         {<<"targetResourceType">>, TargetResourceType}
       ],
@@ -6663,6 +7317,131 @@ list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc
+%% Lists all data binding usages for computation models.
+%%
+%% This allows to identify where specific data bindings are being
+%% utilized across the computation models.
+%% This track dependencies between data sources and computation models.
+-spec list_computation_model_data_binding_usages(aws_client:aws_client(), list_computation_model_data_binding_usages_request()) ->
+    {ok, list_computation_model_data_binding_usages_response(), tuple()} |
+    {error, any()} |
+    {error, list_computation_model_data_binding_usages_errors(), tuple()}.
+list_computation_model_data_binding_usages(Client, Input) ->
+    list_computation_model_data_binding_usages(Client, Input, []).
+
+-spec list_computation_model_data_binding_usages(aws_client:aws_client(), list_computation_model_data_binding_usages_request(), proplists:proplist()) ->
+    {ok, list_computation_model_data_binding_usages_response(), tuple()} |
+    {error, any()} |
+    {error, list_computation_model_data_binding_usages_errors(), tuple()}.
+list_computation_model_data_binding_usages(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/computation-models/data-binding-usages"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all distinct resources that are resolved from the executed
+%% actions of the computation model.
+-spec list_computation_model_resolve_to_resources(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_computation_model_resolve_to_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_computation_model_resolve_to_resources_errors(), tuple()}.
+list_computation_model_resolve_to_resources(Client, ComputationModelId)
+  when is_map(Client) ->
+    list_computation_model_resolve_to_resources(Client, ComputationModelId, #{}, #{}).
+
+-spec list_computation_model_resolve_to_resources(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_computation_model_resolve_to_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_computation_model_resolve_to_resources_errors(), tuple()}.
+list_computation_model_resolve_to_resources(Client, ComputationModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_computation_model_resolve_to_resources(Client, ComputationModelId, QueryMap, HeadersMap, []).
+
+-spec list_computation_model_resolve_to_resources(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_computation_model_resolve_to_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_computation_model_resolve_to_resources_errors(), tuple()}.
+list_computation_model_resolve_to_resources(Client, ComputationModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/computation-models/", aws_util:encode_uri(ComputationModelId), "/resolve-to-resources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of summaries of all computation models.
+-spec list_computation_models(aws_client:aws_client()) ->
+    {ok, list_computation_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_computation_models_errors(), tuple()}.
+list_computation_models(Client)
+  when is_map(Client) ->
+    list_computation_models(Client, #{}, #{}).
+
+-spec list_computation_models(aws_client:aws_client(), map(), map()) ->
+    {ok, list_computation_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_computation_models_errors(), tuple()}.
+list_computation_models(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_computation_models(Client, QueryMap, HeadersMap, []).
+
+-spec list_computation_models(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_computation_models_response(), tuple()} |
+    {error, any()} |
+    {error, list_computation_models_errors(), tuple()}.
+list_computation_models(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/computation-models"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"computationModelType">>, maps:get(<<"computationModelType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a paginated list of dashboards for an IoT SiteWise Monitor
 %% project.
 -spec list_dashboards(aws_client:aws_client(), binary() | list()) ->
@@ -6746,6 +7525,53 @@ list_datasets(Client, SourceType, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"sourceType">>, SourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of summaries of all executions.
+-spec list_executions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_executions_errors(), tuple()}.
+list_executions(Client, TargetResourceId, TargetResourceType)
+  when is_map(Client) ->
+    list_executions(Client, TargetResourceId, TargetResourceType, #{}, #{}).
+
+-spec list_executions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_executions_errors(), tuple()}.
+list_executions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_executions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, []).
+
+-spec list_executions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_executions_errors(), tuple()}.
+list_executions(Client, TargetResourceId, TargetResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/executions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"actionType">>, maps:get(<<"actionType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resolveToResourceId">>, maps:get(<<"resolveToResourceId">>, QueryMap, undefined)},
+        {<<"resolveToResourceType">>, maps:get(<<"resolveToResourceType">>, QueryMap, undefined)},
+        {<<"targetResourceId">>, TargetResourceId},
+        {<<"targetResourceType">>, TargetResourceType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7434,6 +8260,40 @@ update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the computation model.
+-spec update_computation_model(aws_client:aws_client(), binary() | list(), update_computation_model_request()) ->
+    {ok, update_computation_model_response(), tuple()} |
+    {error, any()} |
+    {error, update_computation_model_errors(), tuple()}.
+update_computation_model(Client, ComputationModelId, Input) ->
+    update_computation_model(Client, ComputationModelId, Input, []).
+
+-spec update_computation_model(aws_client:aws_client(), binary() | list(), update_computation_model_request(), proplists:proplist()) ->
+    {ok, update_computation_model_response(), tuple()} |
+    {error, any()} |
+    {error, update_computation_model_errors(), tuple()}.
+update_computation_model(Client, ComputationModelId, Input0, Options0) ->
+    Method = post,
+    Path = ["/computation-models/", aws_util:encode_uri(ComputationModelId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an IoT SiteWise Monitor dashboard.
 -spec update_dashboard(aws_client:aws_client(), binary() | list(), update_dashboard_request()) ->
     {ok, update_dashboard_response(), tuple()} |
@@ -7539,14 +8399,34 @@ update_gateway(Client, GatewayId, Input0, Options0) ->
 %% @doc Updates a gateway capability configuration or defines a new
 %% capability configuration.
 %%
-%% Each gateway capability defines data sources for a gateway. A capability
-%% configuration
-%% can contain multiple data source configurations. If you define OPC-UA
-%% sources for a gateway in
-%% the IoT SiteWise console, all of your OPC-UA sources are stored in one
-%% capability configuration. To
-%% list all capability configurations for a gateway, use DescribeGateway:
-%% https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DescribeGateway.html.
+%% Each gateway capability defines data sources for a gateway.
+%%
+%% Important workflow notes:
+%%
+%% Each gateway capability defines data sources for a gateway. This is the
+%% namespace of the gateway capability.
+%%
+%% . The namespace follows the format `service:capability:version',
+%% where:
+%%
+%% `service' - The service providing the capability, or
+%% `iotsitewise'.
+%%
+%% `capability' - The specific capability type. Options include:
+%% `opcuacollector' for the OPC UA data source collector, or
+%% `publisher' for data publisher capability.
+%%
+%% `version' - The version number of the capability. Option include
+%% `2' for Classic streams, V2 gateways, and `3' for MQTT-enabled, V3
+%% gateways.
+%%
+%% After updating a capability configuration, the sync status becomes
+%% `OUT_OF_SYNC' until the gateway processes the configuration.Use
+%% `DescribeGatewayCapabilityConfiguration' to check the sync status and
+%% verify the configuration was applied.
+%%
+%% A gateway can have multiple capability configurations with different
+%% namespaces.
 -spec update_gateway_capability_configuration(aws_client:aws_client(), binary() | list(), update_gateway_capability_configuration_request()) ->
     {ok, update_gateway_capability_configuration_response(), tuple()} |
     {error, any()} |

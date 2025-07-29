@@ -317,6 +317,7 @@
 %%   <<"lagId">> => string(),
 %%   <<"location">> := string(),
 %%   <<"providerName">> => string(),
+%%   <<"requestMACSec">> => boolean(),
 %%   <<"tags">> => list(tag())
 %% }
 -type create_interconnect_request() :: #{binary() => any()}.
@@ -417,6 +418,7 @@
 %%   <<"awsDeviceV2">> => string(),
 %%   <<"awsLogicalDeviceId">> => string(),
 %%   <<"bandwidth">> => string(),
+%%   <<"encryptionMode">> => string(),
 %%   <<"hasLogicalRedundancy">> => list(any()),
 %%   <<"interconnectId">> => string(),
 %%   <<"interconnectName">> => string(),
@@ -425,6 +427,9 @@
 %%   <<"lagId">> => string(),
 %%   <<"loaIssueTime">> => non_neg_integer(),
 %%   <<"location">> => string(),
+%%   <<"macSecCapable">> => boolean(),
+%%   <<"macSecKeys">> => list(mac_sec_key()),
+%%   <<"portEncryptionStatus">> => string(),
 %%   <<"providerName">> => string(),
 %%   <<"region">> => string(),
 %%   <<"tags">> => list(tag())
@@ -654,6 +659,7 @@
 %%   <<"macSecCapable">> => boolean(),
 %%   <<"macSecKeys">> => list(mac_sec_key()),
 %%   <<"ownerAccount">> => string(),
+%%   <<"partnerInterconnectMacSecCapable">> => boolean(),
 %%   <<"partnerName">> => string(),
 %%   <<"portEncryptionStatus">> => string(),
 %%   <<"providerName">> => string(),
@@ -1781,8 +1787,7 @@ associate_hosted_connection(Client, Input, Options)
     request(Client, <<"AssociateHostedConnection">>, Input, Options).
 
 %% @doc Associates a MAC Security (MACsec) Connection Key Name (CKN)/
-%% Connectivity Association Key (CAK) pair with an Direct Connect dedicated
-%% connection.
+%% Connectivity Association Key (CAK) pair with a Direct Connect connection.
 %%
 %% You must supply either the `secretARN,' or the CKN/CAK (`ckn' and
 %% `cak') pair in the request.
@@ -2947,7 +2952,7 @@ disassociate_connection_from_lag(Client, Input, Options)
     request(Client, <<"DisassociateConnectionFromLag">>, Input, Options).
 
 %% @doc Removes the association between a MAC Security (MACsec) security key
-%% and an Direct Connect dedicated connection.
+%% and a Direct Connect connection.
 -spec disassociate_mac_sec_key(aws_client:aws_client(), disassociate_mac_sec_key_request()) ->
     {ok, disassociate_mac_sec_key_response(), tuple()} |
     {error, any()} |
@@ -3070,7 +3075,7 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates the Direct Connect dedicated connection configuration.
+%% @doc Updates the Direct Connect connection configuration.
 %%
 %% You can update the following parameters for a connection:
 %%
