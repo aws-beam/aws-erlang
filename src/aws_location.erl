@@ -826,7 +826,7 @@
 %% Example:
 %% circle() :: #{
 %%   <<"Center">> => list([float()]()),
-%%   <<"Radius">> => [float()]
+%%   <<"Radius">> => float()
 %% }
 -type circle() :: #{binary() => any()}.
 
@@ -1399,7 +1399,7 @@
 
 %% Example:
 %% positional_accuracy() :: #{
-%%   <<"Horizontal">> => [float()]
+%%   <<"Horizontal">> => float()
 %% }
 -type positional_accuracy() :: #{binary() => any()}.
 
@@ -1526,6 +1526,7 @@
 %% geofence_geometry() :: #{
 %%   <<"Circle">> => circle(),
 %%   <<"Geobuf">> => binary(),
+%%   <<"MultiPolygon">> => list(list(list(list([float()]())())())()),
 %%   <<"Polygon">> => list(list(list([float()]())())())
 %% }
 -type geofence_geometry() :: #{binary() => any()}.
@@ -2336,7 +2337,8 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
 %% optional `Accuracy' of a `DevicePositionUpdate'.
 %%
 %% The `DeviceID' is used as a string to represent the device. You do not
-%% need to have a `Tracker' associated with the `DeviceID'.
+%% need to have a `Tracker' associated with the
+%% `DeviceID'.
 -spec batch_evaluate_geofences(aws_client:aws_client(), binary() | list(), batch_evaluate_geofences_request()) ->
     {ok, batch_evaluate_geofences_response(), tuple()} |
     {error, any()} |
@@ -2407,7 +2409,8 @@ batch_get_device_position(Client, TrackerName, Input0, Options0) ->
 %% @doc A batch request for storing geofence geometries into a given geofence
 %% collection, or
 %% updates the geometry of an existing geofence if a geofence ID is included
-%% in the request.
+%% in the
+%% request.
 -spec batch_put_geofence(aws_client:aws_client(), binary() | list(), batch_put_geofence_request()) ->
     {ok, batch_put_geofence_response(), tuple()} |
     {error, any()} |
@@ -2510,7 +2513,7 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 
 %% @doc
 %% Calculates a route:
-%% https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html
+%% https://docs.aws.amazon.com/location/previous/developerguide/calculate-route.html
 %% given the following required parameters:
 %% `DeparturePosition' and `DestinationPosition'.
 %%
@@ -2527,7 +2530,7 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 %%
 %% Specifying a
 %% departure time:
-%% https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html
+%% https://docs.aws.amazon.com/location/previous/developerguide/departure-time.html
 %% using either `DepartureTime' or
 %% `DepartNow'. This calculates a route based on predictive traffic
 %% data at the given time.
@@ -2538,7 +2541,7 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 %%
 %% Specifying a travel
 %% mode:
-%% https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html
+%% https://docs.aws.amazon.com/location/previous/developerguide/travel-mode.html
 %% using TravelMode sets the transportation mode used to calculate
 %% the routes. This also lets you specify additional route preferences in
 %% `CarModeOptions' if traveling by `Car', or
@@ -2583,7 +2586,7 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
 %% @doc
 %% Calculates a route
 %% matrix:
-%% https://docs.aws.amazon.com/location/latest/developerguide/calculate-route-matrix.html
+%% https://docs.aws.amazon.com/location/previous/developerguide/calculate-route-matrix.html
 %% given the following required parameters:
 %% `DeparturePositions' and `DestinationPositions'.
 %%
@@ -2616,7 +2619,7 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
 %%
 %% Specifying a
 %% departure time:
-%% https://docs.aws.amazon.com/location/latest/developerguide/departure-time.html
+%% https://docs.aws.amazon.com/location/previous/developerguide/departure-time.html
 %% using either `DepartureTime' or
 %% `DepartNow'. This calculates routes based on predictive traffic
 %% data at the given time.
@@ -2627,7 +2630,7 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
 %%
 %% Specifying a travel
 %% mode:
-%% https://docs.aws.amazon.com/location/latest/developerguide/travel-mode.html
+%% https://docs.aws.amazon.com/location/previous/developerguide/travel-mode.html
 %% using TravelMode sets the transportation mode used to calculate
 %% the routes. This also lets you specify additional route preferences in
 %% `CarModeOptions' if traveling by `Car', or
@@ -2705,7 +2708,7 @@ create_geofence_collection(Client, Input0, Options0) ->
 %% actions for Amazon Location resources to the API key bearer.
 %%
 %% For more information, see Using API keys:
-%% https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html.
+%% https://docs.aws.amazon.com/location/previous/developerguide/using-apikeys.html.
 -spec create_key(aws_client:aws_client(), create_key_request()) ->
     {ok, create_key_response(), tuple()} |
     {error, any()} |
@@ -3402,22 +3405,35 @@ disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Evaluates device positions against
-%% geofence geometries from a given geofence collection.
+%% @doc This action forecasts future geofence events that are likely to occur
+%% within a
+%% specified time horizon if a device continues moving at its current speed.
 %%
-%% The event forecasts three states for which
-%% a device can be in relative to a geofence:
+%% Each
+%% forecasted event is associated with a geofence from a provided geofence
+%% collection. A
+%% forecast event can have one of the following states:
 %%
-%% `ENTER': If a device is outside of a geofence, but would breach the
-%% fence if the device is moving at its current speed within time horizon
-%% window.
+%% `ENTER': The device position is outside the referenced geofence, but
+%% the
+%% device may cross into the geofence during the forecasting time horizon if
+%% it maintains
+%% its current speed.
 %%
-%% `EXIT': If a device is inside of a geofence, but would breach the
-%% fence if the device is moving at its current speed within time horizon
-%% window.
+%% `EXIT': The device position is inside the referenced geofence, but the
+%% device may leave the geofence during the forecasted time horizon if the
+%% device maintains
+%% it's current speed.
 %%
-%% `IDLE': If a device is inside of a geofence, and the device is not
-%% moving.
+%% `IDLE':The device is inside the geofence, and it will remain inside
+%% the
+%% geofence through the end of the time horizon if the device maintains
+%% it's current
+%% speed.
+%%
+%% Heading direction is not considered in the current version. The API takes
+%% a
+%% conservative approach and includes events that can occur for any heading.
 -spec forecast_geofence_events(aws_client:aws_client(), binary() | list(), forecast_geofence_events_request()) ->
     {ok, forecast_geofence_events_response(), tuple()} |
     {error, any()} |
@@ -3532,7 +3548,8 @@ get_device_position_history(Client, DeviceId, TrackerName, Input0, Options0) ->
 %% @doc Retrieves the geofence details from a geofence collection.
 %%
 %% The returned geometry will always match the geometry format used when the
-%% geofence was created.
+%% geofence
+%% was created.
 -spec get_geofence(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_geofence_response(), tuple()} |
     {error, any()} |
@@ -3837,6 +3854,12 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
 %% Amazon Web Services Region
 %%
 %% Data provider specified in the place index resource
+%%
+%% If your Place index resource is configured with Grab as your geolocation
+%% provider and Storage as Intended use, the GetPlace operation is
+%% unavailable. For
+%% more information, see AWS service
+%% terms: http://aws.amazon.com/service-terms.
 -spec get_place(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_place_response(), tuple()} |
     {error, any()} |
@@ -4692,6 +4715,12 @@ update_tracker(Client, TrackerName, Input0, Options0) ->
 %% @doc Verifies the integrity of the device's position by determining if
 %% it was reported behind a proxy, and by comparing it to an inferred
 %% position estimated based on the device's state.
+%%
+%% The Location Integrity SDK provides enhanced
+%% features related to device verification, and it is available for use by
+%% request.
+%% To get access to the SDK, contact Sales Support:
+%% https://aws.amazon.com/contact-us/sales-support/?pg=locationprice&amp;cta=herobtn.
 -spec verify_device_position(aws_client:aws_client(), binary() | list(), verify_device_position_request()) ->
     {ok, verify_device_position_response(), tuple()} |
     {error, any()} |

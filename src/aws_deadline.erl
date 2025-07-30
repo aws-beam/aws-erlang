@@ -2926,7 +2926,8 @@
 %%   <<"displayName">> := string(),
 %%   <<"identityCenterInstanceArn">> := string(),
 %%   <<"roleArn">> := string(),
-%%   <<"subdomain">> := string()
+%%   <<"subdomain">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_monitor_request() :: #{binary() => any()}.
 

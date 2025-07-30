@@ -36,6 +36,8 @@
          create_job_queue/3,
          create_scheduling_policy/2,
          create_scheduling_policy/3,
+         create_service_environment/2,
+         create_service_environment/3,
          delete_compute_environment/2,
          delete_compute_environment/3,
          delete_consumable_resource/2,
@@ -44,6 +46,8 @@
          delete_job_queue/3,
          delete_scheduling_policy/2,
          delete_scheduling_policy/3,
+         delete_service_environment/2,
+         delete_service_environment/3,
          deregister_job_definition/2,
          deregister_job_definition/3,
          describe_compute_environments/2,
@@ -58,6 +62,10 @@
          describe_jobs/3,
          describe_scheduling_policies/2,
          describe_scheduling_policies/3,
+         describe_service_environments/2,
+         describe_service_environments/3,
+         describe_service_job/2,
+         describe_service_job/3,
          get_job_queue_snapshot/2,
          get_job_queue_snapshot/3,
          list_consumable_resources/2,
@@ -68,6 +76,8 @@
          list_jobs_by_consumable_resource/3,
          list_scheduling_policies/2,
          list_scheduling_policies/3,
+         list_service_jobs/2,
+         list_service_jobs/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -75,10 +85,14 @@
          register_job_definition/3,
          submit_job/2,
          submit_job/3,
+         submit_service_job/2,
+         submit_service_job/3,
          tag_resource/3,
          tag_resource/4,
          terminate_job/2,
          terminate_job/3,
+         terminate_service_job/2,
+         terminate_service_job/3,
          untag_resource/3,
          untag_resource/4,
          update_compute_environment/2,
@@ -88,7 +102,9 @@
          update_job_queue/2,
          update_job_queue/3,
          update_scheduling_policy/2,
-         update_scheduling_policy/3]).
+         update_scheduling_policy/3,
+         update_service_environment/2,
+         update_service_environment/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -146,6 +162,14 @@
 %%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_service_job_request() :: #{
+%%   <<"jobId">> := string(),
+%%   <<"reason">> := string()
+%% }
+-type terminate_service_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -218,6 +242,13 @@
 
 
 %% Example:
+%% latest_service_job_attempt() :: #{
+%%   <<"serviceResourceId">> => service_resource_id()
+%% }
+-type latest_service_job_attempt() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_host_path() :: #{
 %%   <<"path">> => string()
 %% }
@@ -230,6 +261,10 @@
 %%   <<"computeEnvironmentName">> => string()
 %% }
 -type create_compute_environment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_service_environment_response() :: #{}
+-type delete_service_environment_response() :: #{}.
 
 
 %% Example:
@@ -293,6 +328,10 @@
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
 
+%% Example:
+%% terminate_service_job_response() :: #{}
+-type terminate_service_job_response() :: #{}.
+
 
 %% Example:
 %% delete_scheduling_policy_request() :: #{
@@ -343,6 +382,17 @@
 
 
 %% Example:
+%% create_service_environment_request() :: #{
+%%   <<"capacityLimits">> := list(capacity_limit()),
+%%   <<"serviceEnvironmentName">> := string(),
+%%   <<"serviceEnvironmentType">> := list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type create_service_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% network_interface() :: #{
 %%   <<"attachmentId">> => string(),
 %%   <<"ipv6Address">> => string(),
@@ -364,11 +414,46 @@
 
 
 %% Example:
+%% update_service_environment_response() :: #{
+%%   <<"serviceEnvironmentArn">> => string(),
+%%   <<"serviceEnvironmentName">> => string()
+%% }
+-type update_service_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_jobs_response() :: #{
+%%   <<"jobSummaryList">> => list(service_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_jobs_response() :: #{
 %%   <<"jobSummaryList">> => list(job_summary()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_environment_order() :: #{
+%%   <<"order">> => integer(),
+%%   <<"serviceEnvironment">> => string()
+%% }
+-type service_environment_order() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_jobs_request() :: #{
+%%   <<"filters">> => list(key_values_pair()),
+%%   <<"jobQueue">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_service_jobs_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -402,9 +487,11 @@
 %%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
 %%   <<"jobQueueArn">> => string(),
 %%   <<"jobQueueName">> => string(),
+%%   <<"jobQueueType">> => list(any()),
 %%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
 %%   <<"priority">> => integer(),
 %%   <<"schedulingPolicyArn">> => string(),
+%%   <<"serviceEnvironmentOrder">> => list(service_environment_order()),
 %%   <<"state">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string(),
@@ -459,6 +546,23 @@
 %%   <<"status">> => string()
 %% }
 -type describe_job_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_evaluate_on_exit() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"onStatusReason">> => string()
+%% }
+-type service_job_evaluate_on_exit() :: #{binary() => any()}.
+
+
+%% Example:
+%% submit_service_job_response() :: #{
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string()
+%% }
+-type submit_service_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -526,6 +630,13 @@
 %%   <<"podProperties">> => eks_pod_properties_override()
 %% }
 -type eks_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_timeout() :: #{
+%%   <<"attemptDurationSeconds">> => integer()
+%% }
+-type service_job_timeout() :: #{binary() => any()}.
 
 
 %% Example:
@@ -597,6 +708,22 @@
 
 
 %% Example:
+%% submit_service_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"jobName">> := string(),
+%%   <<"jobQueue">> := string(),
+%%   <<"retryStrategy">> => service_job_retry_strategy(),
+%%   <<"schedulingPriority">> => integer(),
+%%   <<"serviceJobType">> := list(any()),
+%%   <<"serviceRequestPayload">> := string(),
+%%   <<"shareIdentifier">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timeoutConfig">> => service_job_timeout()
+%% }
+-type submit_service_job_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% task_container_details() :: #{
 %%   <<"command">> => list(string()),
 %%   <<"dependsOn">> => list(task_container_dependency()),
@@ -624,10 +751,25 @@
 
 
 %% Example:
+%% create_service_environment_response() :: #{
+%%   <<"serviceEnvironmentArn">> => string(),
+%%   <<"serviceEnvironmentName">> => string()
+%% }
+-type create_service_environment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% client_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type client_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_service_environment_request() :: #{
+%%   <<"serviceEnvironment">> := string()
+%% }
+-type delete_service_environment_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -636,6 +778,14 @@
 %%   <<"jobQueueName">> => string()
 %% }
 -type create_job_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_resource_id() :: #{
+%%   <<"name">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type service_resource_id() :: #{binary() => any()}.
 
 
 %% Example:
@@ -750,6 +900,7 @@
 %%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
 %%   <<"priority">> => integer(),
 %%   <<"schedulingPolicyArn">> => string(),
+%%   <<"serviceEnvironmentOrder">> => list(service_environment_order()),
 %%   <<"state">> => list(any())
 %% }
 -type update_job_queue_request() :: #{binary() => any()}.
@@ -874,6 +1025,15 @@
 
 
 %% Example:
+%% update_service_environment_request() :: #{
+%%   <<"capacityLimits">> => list(capacity_limit()),
+%%   <<"serviceEnvironment">> := string(),
+%%   <<"state">> => list(any())
+%% }
+-type update_service_environment_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% container_summary() :: #{
 %%   <<"exitCode">> => integer(),
 %%   <<"reason">> => string()
@@ -886,6 +1046,23 @@
 %%   <<"consumableResource">> := string()
 %% }
 -type delete_consumable_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_service_environments_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceEnvironments">> => list(string())
+%% }
+-type describe_service_environments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_job_retry_strategy() :: #{
+%%   <<"attempts">> => integer(),
+%%   <<"evaluateOnExit">> => list(service_job_evaluate_on_exit())
+%% }
+-type service_job_retry_strategy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -965,6 +1142,19 @@
 
 
 %% Example:
+%% service_environment_detail() :: #{
+%%   <<"capacityLimits">> => list(capacity_limit()),
+%%   <<"serviceEnvironmentArn">> => string(),
+%%   <<"serviceEnvironmentName">> => string(),
+%%   <<"serviceEnvironmentType">> => list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map()
+%% }
+-type service_environment_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% compute_resource_update() :: #{
 %%   <<"allocationStrategy">> => list(any()),
 %%   <<"bidPercentage">> => integer(),
@@ -997,6 +1187,14 @@
 %%   <<"runAsUser">> => float()
 %% }
 -type eks_container_security_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_service_environments_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceEnvironments">> => list(service_environment_detail())
+%% }
+-type describe_service_environments_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1106,6 +1304,16 @@
 %% }
 -type scheduling_policy_listing_detail() :: #{binary() => any()}.
 
+
+%% Example:
+%% service_job_attempt_detail() :: #{
+%%   <<"serviceResourceId">> => service_resource_id(),
+%%   <<"startedAt">> => float(),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
+%% }
+-type service_job_attempt_detail() :: #{binary() => any()}.
+
 %% Example:
 %% delete_consumable_resource_response() :: #{}
 -type delete_consumable_resource_response() :: #{}.
@@ -1191,6 +1399,14 @@
 
 
 %% Example:
+%% capacity_limit() :: #{
+%%   <<"capacityUnit">> => string(),
+%%   <<"maxCapacity">> => integer()
+%% }
+-type capacity_limit() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_attempt_container_detail() :: #{
 %%   <<"containerID">> => string(),
 %%   <<"exitCode">> => integer(),
@@ -1206,6 +1422,13 @@
 %%   <<"readOnly">> => boolean()
 %% }
 -type eks_persistent_volume_claim() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_service_job_request() :: #{
+%%   <<"jobId">> := string()
+%% }
+-type describe_service_job_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1263,6 +1486,31 @@
 %%   <<"requests">> => map()
 %% }
 -type eks_container_resource_requirements() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_service_job_response() :: #{
+%%   <<"attempts">> => list(service_job_attempt_detail()),
+%%   <<"createdAt">> => float(),
+%%   <<"isTerminated">> => boolean(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"jobQueue">> => string(),
+%%   <<"latestAttempt">> => latest_service_job_attempt(),
+%%   <<"retryStrategy">> => service_job_retry_strategy(),
+%%   <<"schedulingPriority">> => integer(),
+%%   <<"serviceJobType">> => list(any()),
+%%   <<"serviceRequestPayload">> => string(),
+%%   <<"shareIdentifier">> => string(),
+%%   <<"startedAt">> => float(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float(),
+%%   <<"tags">> => map(),
+%%   <<"timeoutConfig">> => service_job_timeout()
+%% }
+-type describe_service_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1523,6 +1771,23 @@
 
 
 %% Example:
+%% service_job_summary() :: #{
+%%   <<"createdAt">> => float(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
+%%   <<"latestAttempt">> => latest_service_job_attempt(),
+%%   <<"serviceJobType">> => list(any()),
+%%   <<"shareIdentifier">> => string(),
+%%   <<"startedAt">> => float(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"stoppedAt">> => float()
+%% }
+-type service_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% consumable_resource_summary() :: #{
 %%   <<"consumableResourceArn">> => string(),
 %%   <<"consumableResourceName">> => string(),
@@ -1535,11 +1800,13 @@
 
 %% Example:
 %% create_job_queue_request() :: #{
-%%   <<"computeEnvironmentOrder">> := list(compute_environment_order()),
+%%   <<"computeEnvironmentOrder">> => list(compute_environment_order()),
 %%   <<"jobQueueName">> := string(),
+%%   <<"jobQueueType">> => list(any()),
 %%   <<"jobStateTimeLimitActions">> => list(job_state_time_limit_action()),
 %%   <<"priority">> := integer(),
 %%   <<"schedulingPolicyArn">> => string(),
+%%   <<"serviceEnvironmentOrder">> => list(service_environment_order()),
 %%   <<"state">> => list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -1739,6 +2006,10 @@
     server_exception() | 
     client_exception().
 
+-type create_service_environment_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type delete_compute_environment_errors() ::
     server_exception() | 
     client_exception().
@@ -1752,6 +2023,10 @@
     client_exception().
 
 -type delete_scheduling_policy_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type delete_service_environment_errors() ::
     server_exception() | 
     client_exception().
 
@@ -1783,6 +2058,14 @@
     server_exception() | 
     client_exception().
 
+-type describe_service_environments_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type describe_service_job_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type get_job_queue_snapshot_errors() ::
     server_exception() | 
     client_exception().
@@ -1803,6 +2086,10 @@
     server_exception() | 
     client_exception().
 
+-type list_service_jobs_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type list_tags_for_resource_errors() ::
     server_exception() | 
     client_exception().
@@ -1815,11 +2102,19 @@
     server_exception() | 
     client_exception().
 
+-type submit_service_job_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type tag_resource_errors() ::
     server_exception() | 
     client_exception().
 
 -type terminate_job_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type terminate_service_job_errors() ::
     server_exception() | 
     client_exception().
 
@@ -1840,6 +2135,10 @@
     client_exception().
 
 -type update_scheduling_policy_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type update_service_environment_errors() ::
     server_exception() | 
     client_exception().
 
@@ -2179,6 +2478,43 @@ create_scheduling_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a service environment for running service jobs.
+%%
+%% Service environments define capacity limits for specific service types
+%% such as SageMaker Training jobs.
+-spec create_service_environment(aws_client:aws_client(), create_service_environment_request()) ->
+    {ok, create_service_environment_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_environment_errors(), tuple()}.
+create_service_environment(Client, Input) ->
+    create_service_environment(Client, Input, []).
+
+-spec create_service_environment(aws_client:aws_client(), create_service_environment_request(), proplists:proplist()) ->
+    {ok, create_service_environment_response(), tuple()} |
+    {error, any()} |
+    {error, create_service_environment_errors(), tuple()}.
+create_service_environment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/createserviceenvironment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an Batch compute environment.
 %%
 %% Before you can delete a compute environment, you must set its state to
@@ -2320,6 +2656,45 @@ delete_scheduling_policy(Client, Input) ->
 delete_scheduling_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deleteschedulingpolicy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a Service environment.
+%%
+%% Before you can delete a service environment, you must first set its state
+%% to `DISABLED' with the `UpdateServiceEnvironment' API operation
+%% and disassociate it from any job queues with the `UpdateJobQueue' API
+%% operation.
+-spec delete_service_environment(aws_client:aws_client(), delete_service_environment_request()) ->
+    {ok, delete_service_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_environment_errors(), tuple()}.
+delete_service_environment(Client, Input) ->
+    delete_service_environment(Client, Input, []).
+
+-spec delete_service_environment(aws_client:aws_client(), delete_service_environment_request(), proplists:proplist()) ->
+    {ok, delete_service_environment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_service_environment_errors(), tuple()}.
+delete_service_environment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/deleteserviceenvironment"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2588,6 +2963,74 @@ describe_scheduling_policies(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes one or more of your service environments.
+-spec describe_service_environments(aws_client:aws_client(), describe_service_environments_request()) ->
+    {ok, describe_service_environments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_environments_errors(), tuple()}.
+describe_service_environments(Client, Input) ->
+    describe_service_environments(Client, Input, []).
+
+-spec describe_service_environments(aws_client:aws_client(), describe_service_environments_request(), proplists:proplist()) ->
+    {ok, describe_service_environments_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_environments_errors(), tuple()}.
+describe_service_environments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/describeserviceenvironments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The details of a service job.
+-spec describe_service_job(aws_client:aws_client(), describe_service_job_request()) ->
+    {ok, describe_service_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_job_errors(), tuple()}.
+describe_service_job(Client, Input) ->
+    describe_service_job(Client, Input, []).
+
+-spec describe_service_job(aws_client:aws_client(), describe_service_job_request(), proplists:proplist()) ->
+    {ok, describe_service_job_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_job_errors(), tuple()}.
+describe_service_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/describeservicejob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Provides a list of the first 100 `RUNNABLE' jobs associated to a
 %% single job queue.
 -spec get_job_queue_snapshot(aws_client:aws_client(), get_job_queue_snapshot_request()) ->
@@ -2772,6 +3215,40 @@ list_scheduling_policies(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of service jobs for a specified job queue.
+-spec list_service_jobs(aws_client:aws_client(), list_service_jobs_request()) ->
+    {ok, list_service_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_jobs_errors(), tuple()}.
+list_service_jobs(Client, Input) ->
+    list_service_jobs(Client, Input, []).
+
+-spec list_service_jobs(aws_client:aws_client(), list_service_jobs_request(), proplists:proplist()) ->
+    {ok, list_service_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_jobs_errors(), tuple()}.
+list_service_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/listservicejobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the tags for an Batch resource.
 %%
 %% Batch resources that support tags are compute environments, jobs, job
@@ -2904,6 +3381,44 @@ submit_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Submits a service job to a specified job queue to run on SageMaker
+%% AI.
+%%
+%% A service job is a unit of work that you submit to Batch for execution on
+%% SageMaker AI.
+-spec submit_service_job(aws_client:aws_client(), submit_service_job_request()) ->
+    {ok, submit_service_job_response(), tuple()} |
+    {error, any()} |
+    {error, submit_service_job_errors(), tuple()}.
+submit_service_job(Client, Input) ->
+    submit_service_job(Client, Input, []).
+
+-spec submit_service_job(aws_client:aws_client(), submit_service_job_request(), proplists:proplist()) ->
+    {ok, submit_service_job_response(), tuple()} |
+    {error, any()} |
+    {error, submit_service_job_errors(), tuple()}.
+submit_service_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/submitservicejob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Associates the specified tags to a resource with the specified
 %% `resourceArn'.
 %%
@@ -2969,6 +3484,40 @@ terminate_job(Client, Input) ->
 terminate_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/terminatejob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Terminates a service job in a job queue.
+-spec terminate_service_job(aws_client:aws_client(), terminate_service_job_request()) ->
+    {ok, terminate_service_job_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_service_job_errors(), tuple()}.
+terminate_service_job(Client, Input) ->
+    terminate_service_job(Client, Input, []).
+
+-spec terminate_service_job(aws_client:aws_client(), terminate_service_job_request(), proplists:proplist()) ->
+    {ok, terminate_service_job_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_service_job_errors(), tuple()}.
+terminate_service_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/terminateservicejob"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3140,6 +3689,44 @@ update_scheduling_policy(Client, Input) ->
 update_scheduling_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updateschedulingpolicy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a service environment.
+%%
+%% You can update the state of a service environment from `ENABLED' to
+%% `DISABLED' to prevent new service jobs from being placed in the
+%% service environment.
+-spec update_service_environment(aws_client:aws_client(), update_service_environment_request()) ->
+    {ok, update_service_environment_response(), tuple()} |
+    {error, any()} |
+    {error, update_service_environment_errors(), tuple()}.
+update_service_environment(Client, Input) ->
+    update_service_environment(Client, Input, []).
+
+-spec update_service_environment(aws_client:aws_client(), update_service_environment_request(), proplists:proplist()) ->
+    {ok, update_service_environment_response(), tuple()} |
+    {error, any()} |
+    {error, update_service_environment_errors(), tuple()}.
+update_service_environment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/updateserviceenvironment"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

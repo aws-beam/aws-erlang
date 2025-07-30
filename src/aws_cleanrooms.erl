@@ -2119,10 +2119,12 @@
 
 %% Example:
 %% update_configured_table_input() :: #{
+%%   <<"allowedColumns">> => list(string()),
 %%   <<"analysisMethod">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"selectedAnalysisMethods">> => list(list(any())())
+%%   <<"selectedAnalysisMethods">> => list(list(any())()),
+%%   <<"tableReference">> => list()
 %% }
 -type update_configured_table_input() :: #{binary() => any()}.
 
@@ -3441,6 +3443,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -3969,11 +3972,11 @@ create_membership(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a privacy budget template for a specified membership.
+%% @doc Creates a privacy budget template for a specified collaboration.
 %%
-%% Each membership can have only one privacy budget template, but it can be
-%% deleted and recreated. If you need to change the privacy budget template
-%% for a membership, use the `UpdatePrivacyBudgetTemplate' operation.
+%% Each collaboration can have only one privacy budget template. If you need
+%% to change the privacy budget template, use the
+%% `UpdatePrivacyBudgetTemplate' operation.
 -spec create_privacy_budget_template(aws_client:aws_client(), binary() | list(), create_privacy_budget_template_input()) ->
     {ok, create_privacy_budget_template_output(), tuple()} |
     {error, any()} |
@@ -4390,7 +4393,7 @@ delete_membership(Client, MembershipIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a privacy budget template for a specified membership.
+%% @doc Deletes a privacy budget template for a specified collaboration.
 -spec delete_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), delete_privacy_budget_template_input()) ->
     {ok, delete_privacy_budget_template_output(), tuple()} |
     {error, any()} |
@@ -6530,7 +6533,7 @@ update_membership(Client, MembershipIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the privacy budget template for the specified membership.
+%% @doc Updates the privacy budget template for the specified collaboration.
 -spec update_privacy_budget_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_privacy_budget_template_input()) ->
     {ok, update_privacy_budget_template_output(), tuple()} |
     {error, any()} |
