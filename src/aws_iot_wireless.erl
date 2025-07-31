@@ -2176,12 +2176,16 @@
 %%   <<"DrMin">> => integer(),
 %%   <<"HrAllowed">> => boolean(),
 %%   <<"MinGwDiversity">> => integer(),
+%%   <<"NbTransMax">> => integer(),
+%%   <<"NbTransMin">> => integer(),
 %%   <<"NwkGeoLoc">> => boolean(),
 %%   <<"PrAllowed">> => boolean(),
 %%   <<"RaAllowed">> => boolean(),
 %%   <<"ReportDevStatusBattery">> => boolean(),
 %%   <<"ReportDevStatusMargin">> => boolean(),
 %%   <<"TargetPer">> => integer(),
+%%   <<"TxPowerIndexMax">> => integer(),
+%%   <<"TxPowerIndexMin">> => integer(),
 %%   <<"UlBucketSize">> => integer(),
 %%   <<"UlRate">> => integer(),
 %%   <<"UlRatePolicy">> => string()
@@ -3016,8 +3020,12 @@
 %%   <<"AddGwMetadata">> => boolean(),
 %%   <<"DrMax">> => integer(),
 %%   <<"DrMin">> => integer(),
+%%   <<"NbTransMax">> => integer(),
+%%   <<"NbTransMin">> => integer(),
 %%   <<"PrAllowed">> => boolean(),
-%%   <<"RaAllowed">> => boolean()
+%%   <<"RaAllowed">> => boolean(),
+%%   <<"TxPowerIndexMax">> => integer(),
+%%   <<"TxPowerIndexMin">> => integer()
 %% }
 -type lo_ra_w_a_n_service_profile() :: #{binary() => any()}.
 

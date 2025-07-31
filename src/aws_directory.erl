@@ -49,6 +49,8 @@
          create_conditional_forwarder/3,
          create_directory/2,
          create_directory/3,
+         create_hybrid_ad/2,
+         create_hybrid_ad/3,
          create_log_subscription/2,
          create_log_subscription/3,
          create_microsoft_ad/2,
@@ -57,6 +59,8 @@
          create_snapshot/3,
          create_trust/2,
          create_trust/3,
+         delete_ad_assessment/2,
+         delete_ad_assessment/3,
          delete_conditional_forwarder/2,
          delete_conditional_forwarder/3,
          delete_directory/2,
@@ -71,6 +75,8 @@
          deregister_certificate/3,
          deregister_event_topic/2,
          deregister_event_topic/3,
+         describe_ad_assessment/2,
+         describe_ad_assessment/3,
          describe_certificate/2,
          describe_certificate/3,
          describe_client_authentication_settings/2,
@@ -85,6 +91,8 @@
          describe_domain_controllers/3,
          describe_event_topics/2,
          describe_event_topics/3,
+         describe_hybrid_ad_update/2,
+         describe_hybrid_ad_update/3,
          describe_ldaps_settings/2,
          describe_ldaps_settings/3,
          describe_regions/2,
@@ -123,6 +131,8 @@
          get_directory_limits/3,
          get_snapshot_limits/2,
          get_snapshot_limits/3,
+         list_ad_assessments/2,
+         list_ad_assessments/3,
          list_certificates/2,
          list_certificates/3,
          list_ip_routes/2,
@@ -151,6 +161,8 @@
          restore_from_snapshot/3,
          share_directory/2,
          share_directory/3,
+         start_ad_assessment/2,
+         start_ad_assessment/3,
          start_schema_extension/2,
          start_schema_extension/3,
          unshare_directory/2,
@@ -159,6 +171,8 @@
          update_conditional_forwarder/3,
          update_directory_setup/2,
          update_directory_setup/3,
+         update_hybrid_ad/2,
+         update_hybrid_ad/3,
          update_number_of_domain_controllers/2,
          update_number_of_domain_controllers/3,
          update_radius/2,
@@ -324,6 +338,14 @@
 -type get_snapshot_limits_result() :: #{binary() => any()}.
 
 %% Example:
+%% update_hybrid_ad_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"HybridAdministratorAccountUpdate">> => hybrid_administrator_account_update(),
+%%   <<"SelfManagedInstancesSettings">> => hybrid_customer_instances_settings()
+%% }
+-type update_hybrid_ad_request() :: #{binary() => any()}.
+
+%% Example:
 %% unshare_directory_request() :: #{
 %%   <<"DirectoryId">> := string(),
 %%   <<"UnshareTarget">> := unshare_target()
@@ -376,6 +398,13 @@
 -type remove_ip_routes_result() :: #{binary() => any()}.
 
 %% Example:
+%% hybrid_update_activities() :: #{
+%%   <<"HybridAdministratorAccount">> => list(hybrid_update_info_entry()),
+%%   <<"SelfManagedInstances">> => list(hybrid_update_info_entry())
+%% }
+-type hybrid_update_activities() :: #{binary() => any()}.
+
+%% Example:
 %% reject_shared_directory_request() :: #{
 %%   <<"SharedDirectoryId">> := string()
 %% }
@@ -418,6 +447,13 @@
 -type create_conditional_forwarder_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ad_assessment_result() :: #{
+%%   <<"Assessment">> => assessment(),
+%%   <<"AssessmentReports">> => list(assessment_report())
+%% }
+-type describe_ad_assessment_result() :: #{binary() => any()}.
+
+%% Example:
 %% share_directory_request() :: #{
 %%   <<"DirectoryId">> := string(),
 %%   <<"ShareMethod">> := list(any()),
@@ -425,6 +461,14 @@
 %%   <<"ShareTarget">> := share_target()
 %% }
 -type share_directory_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_hybrid_ad_update_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"UpdateType">> => list(any())
+%% }
+-type describe_hybrid_ad_update_request() :: #{binary() => any()}.
 
 %% Example:
 %% setting_entry() :: #{
@@ -538,6 +582,13 @@
 -type describe_directory_data_access_request() :: #{binary() => any()}.
 
 %% Example:
+%% ad_assessment_limit_exceeded_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type ad_assessment_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% enable_radius_request() :: #{
 %%   <<"DirectoryId">> := string(),
 %%   <<"RadiusSettings">> := radius_settings()
@@ -605,6 +656,12 @@
 -type add_tags_to_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ad_assessment_request() :: #{
+%%   <<"AssessmentId">> := string()
+%% }
+-type describe_ad_assessment_request() :: #{binary() => any()}.
+
+%% Example:
 %% remove_region_result() :: #{
 
 %% }
@@ -651,11 +708,24 @@
 -type directory_not_shared_exception() :: #{binary() => any()}.
 
 %% Example:
+%% start_ad_assessment_result() :: #{
+%%   <<"AssessmentId">> => string()
+%% }
+-type start_ad_assessment_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_update_directory_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"UpdateActivities">> => list(update_info_entry())
 %% }
 -type describe_update_directory_result() :: #{binary() => any()}.
+
+%% Example:
+%% start_ad_assessment_request() :: #{
+%%   <<"AssessmentConfiguration">> => assessment_configuration(),
+%%   <<"DirectoryId">> => string()
+%% }
+-type start_ad_assessment_request() :: #{binary() => any()}.
 
 %% Example:
 %% client_cert_auth_settings() :: #{
@@ -758,6 +828,13 @@
 -type certificate_already_exists_exception() :: #{binary() => any()}.
 
 %% Example:
+%% hybrid_customer_instances_settings() :: #{
+%%   <<"CustomerDnsIps">> => list(string()),
+%%   <<"InstanceIds">> => list(string())
+%% }
+-type hybrid_customer_instances_settings() :: #{binary() => any()}.
+
+%% Example:
 %% get_snapshot_limits_request() :: #{
 %%   <<"DirectoryId">> := string()
 %% }
@@ -849,6 +926,18 @@
 -type describe_event_topics_result() :: #{binary() => any()}.
 
 %% Example:
+%% assessment_validation() :: #{
+%%   <<"Category">> => string(),
+%%   <<"LastUpdateDateTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"StatusCode">> => string(),
+%%   <<"StatusReason">> => string()
+%% }
+-type assessment_validation() :: #{binary() => any()}.
+
+%% Example:
 %% directory_does_not_exist_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
@@ -864,6 +953,13 @@
 -type log_subscription() :: #{binary() => any()}.
 
 %% Example:
+%% list_ad_assessments_result() :: #{
+%%   <<"Assessments">> => list(assessment_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ad_assessments_result() :: #{binary() => any()}.
+
+%% Example:
 %% incompatible_settings_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
@@ -875,6 +971,16 @@
 
 %% }
 -type enable_directory_data_access_result() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_configuration() :: #{
+%%   <<"CustomerDnsIps">> => list(string()),
+%%   <<"DnsName">> => string(),
+%%   <<"InstanceIds">> => list(string()),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"VpcSettings">> => directory_vpc_settings()
+%% }
+-type assessment_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -981,6 +1087,12 @@
 -type describe_conditional_forwarders_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ad_assessment_result() :: #{
+%%   <<"AssessmentId">> => string()
+%% }
+-type delete_ad_assessment_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_shared_directories_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"SharedDirectories">> => list(shared_directory())
@@ -1017,6 +1129,7 @@
 %%   <<"DirectoryId">> => string(),
 %%   <<"DnsIpAddrs">> => list(string()),
 %%   <<"Edition">> => list(any()),
+%%   <<"HybridSettings">> => hybrid_settings_description(),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"OsVersion">> => list(any()),
@@ -1094,6 +1207,13 @@
 -type update_settings_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_hybrid_ad_result() :: #{
+%%   <<"AssessmentId">> => string(),
+%%   <<"DirectoryId">> => string()
+%% }
+-type update_hybrid_ad_result() :: #{binary() => any()}.
+
+%% Example:
 %% register_certificate_request() :: #{
 %%   <<"CertificateData">> := string(),
 %%   <<"ClientCertAuthSettings">> => client_cert_auth_settings(),
@@ -1144,6 +1264,26 @@
 -type remove_tags_from_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% assessment() :: #{
+%%   <<"AssessmentId">> => string(),
+%%   <<"CustomerDnsIps">> => list(string()),
+%%   <<"DirectoryId">> => string(),
+%%   <<"DnsName">> => string(),
+%%   <<"LastUpdateDateTime">> => non_neg_integer(),
+%%   <<"ReportType">> => string(),
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SelfManagedInstanceIds">> => list(string()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => string(),
+%%   <<"StatusCode">> => string(),
+%%   <<"StatusReason">> => string(),
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"Version">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type assessment() :: #{binary() => any()}.
+
+%% Example:
 %% connect_directory_result() :: #{
 %%   <<"DirectoryId">> => string()
 %% }
@@ -1189,6 +1329,20 @@
 
 %% }
 -type restore_from_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ad_assessment_request() :: #{
+%%   <<"AssessmentId">> := string()
+%% }
+-type delete_ad_assessment_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ad_assessments_request() :: #{
+%%   <<"DirectoryId">> => string(),
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_ad_assessments_request() :: #{binary() => any()}.
 
 %% Example:
 %% disable_radius_result() :: #{
@@ -1284,10 +1438,23 @@
 -type ldaps_setting_info() :: #{binary() => any()}.
 
 %% Example:
+%% hybrid_settings_description() :: #{
+%%   <<"SelfManagedDnsIpAddrs">> => list(string()),
+%%   <<"SelfManagedInstanceIds">> => list(string())
+%% }
+-type hybrid_settings_description() :: #{binary() => any()}.
+
+%% Example:
 %% delete_snapshot_result() :: #{
 %%   <<"SnapshotId">> => string()
 %% }
 -type delete_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% hybrid_administrator_account_update() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type hybrid_administrator_account_update() :: #{binary() => any()}.
 
 %% Example:
 %% list_ip_routes_result() :: #{
@@ -1354,6 +1521,13 @@
 %%   <<"RequestId">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% hybrid_update_value() :: #{
+%%   <<"DnsIps">> => list(string()),
+%%   <<"InstanceIds">> => list(string())
+%% }
+-type hybrid_update_value() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_parameter_exception() :: #{
@@ -1480,6 +1654,13 @@
 -type delete_trust_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_hybrid_ad_update_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UpdateActivities">> => hybrid_update_activities()
+%% }
+-type describe_hybrid_ad_update_result() :: #{binary() => any()}.
+
+%% Example:
 %% attribute() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Value">> => string()
@@ -1569,6 +1750,19 @@
 -type directory_connect_settings_description() :: #{binary() => any()}.
 
 %% Example:
+%% hybrid_update_info_entry() :: #{
+%%   <<"AssessmentId">> => string(),
+%%   <<"InitiatedBy">> => string(),
+%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"NewValue">> => hybrid_update_value(),
+%%   <<"PreviousValue">> => hybrid_update_value(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type hybrid_update_info_entry() :: #{binary() => any()}.
+
+%% Example:
 %% certificate_does_not_exist_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
@@ -1621,6 +1815,19 @@
 
 %% }
 -type enable_client_authentication_result() :: #{binary() => any()}.
+
+%% Example:
+%% assessment_report() :: #{
+%%   <<"DomainControllerIp">> => string(),
+%%   <<"Validations">> => list(assessment_validation())
+%% }
+-type assessment_report() :: #{binary() => any()}.
+
+%% Example:
+%% create_hybrid_ad_result() :: #{
+%%   <<"DirectoryId">> => string()
+%% }
+-type create_hybrid_ad_result() :: #{binary() => any()}.
 
 %% Example:
 %% add_tags_to_resource_result() :: #{
@@ -1754,6 +1961,19 @@
 -type share_target() :: #{binary() => any()}.
 
 %% Example:
+%% assessment_summary() :: #{
+%%   <<"AssessmentId">> => string(),
+%%   <<"CustomerDnsIps">> => list(string()),
+%%   <<"DirectoryId">> => string(),
+%%   <<"DnsName">> => string(),
+%%   <<"LastUpdateDateTime">> => non_neg_integer(),
+%%   <<"ReportType">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => string()
+%% }
+-type assessment_summary() :: #{binary() => any()}.
+
+%% Example:
 %% update_radius_result() :: #{
 
 %% }
@@ -1780,6 +2000,14 @@
 %%   <<"RadiusSettings">> := radius_settings()
 %% }
 -type update_radius_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_hybrid_ad_request() :: #{
+%%   <<"AssessmentId">> := string(),
+%%   <<"SecretArn">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_hybrid_ad_request() :: #{binary() => any()}.
 
 -type accept_shared_directory_errors() ::
     entity_does_not_exist_exception() | 
@@ -1859,6 +2087,15 @@
     service_exception() | 
     client_exception().
 
+-type create_hybrid_ad_errors() ::
+    directory_limit_exceeded_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    ad_assessment_limit_exceeded_exception() | 
+    unsupported_operation_exception().
+
 -type create_log_subscription_errors() ::
     entity_does_not_exist_exception() | 
     service_exception() | 
@@ -1888,6 +2125,13 @@
     client_exception() | 
     unsupported_operation_exception() | 
     entity_already_exists_exception().
+
+-type delete_ad_assessment_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
 
 -type delete_conditional_forwarder_errors() ::
     directory_unavailable_exception() | 
@@ -1936,6 +2180,13 @@
     invalid_parameter_exception() | 
     service_exception() | 
     client_exception().
+
+-type describe_ad_assessment_errors() ::
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    service_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
 
 -type describe_certificate_errors() ::
     certificate_does_not_exist_exception() | 
@@ -1988,6 +2239,14 @@
     invalid_parameter_exception() | 
     service_exception() | 
     client_exception().
+
+-type describe_hybrid_ad_update_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    invalid_next_token_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
 
 -type describe_ldaps_settings_errors() ::
     invalid_parameter_exception() | 
@@ -2135,6 +2394,13 @@
     service_exception() | 
     client_exception().
 
+-type list_ad_assessments_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
 -type list_certificates_errors() ::
     invalid_parameter_exception() | 
     service_exception() | 
@@ -2241,6 +2507,14 @@
     unsupported_operation_exception() | 
     invalid_target_exception().
 
+-type start_ad_assessment_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    ad_assessment_limit_exceeded_exception() | 
+    unsupported_operation_exception().
+
 -type start_schema_extension_errors() ::
     directory_unavailable_exception() | 
     entity_does_not_exist_exception() | 
@@ -2274,6 +2548,14 @@
     directory_in_desired_state_exception() | 
     unsupported_operation_exception() | 
     snapshot_limit_exceeded_exception().
+
+-type update_hybrid_ad_errors() ::
+    invalid_parameter_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    ad_assessment_limit_exceeded_exception() | 
+    unsupported_operation_exception().
 
 -type update_number_of_domain_controllers_errors() ::
     directory_unavailable_exception() | 
@@ -2552,6 +2834,33 @@ create_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDirectory">>, Input, Options).
 
+%% @doc Creates a hybrid directory that connects your self-managed Active
+%% Directory (AD)
+%% infrastructure and Amazon Web Services.
+%%
+%% You must have a successful directory assessment using
+%% `StartADAssessment' to validate your environment compatibility before
+%% you
+%% use this operation.
+%%
+%% Updates are applied asynchronously. Use `DescribeDirectories' to
+%% monitor the progress of directory creation.
+-spec create_hybrid_ad(aws_client:aws_client(), create_hybrid_ad_request()) ->
+    {ok, create_hybrid_ad_result(), tuple()} |
+    {error, any()} |
+    {error, create_hybrid_ad_errors(), tuple()}.
+create_hybrid_ad(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_hybrid_ad(Client, Input, []).
+
+-spec create_hybrid_ad(aws_client:aws_client(), create_hybrid_ad_request(), proplists:proplist()) ->
+    {ok, create_hybrid_ad_result(), tuple()} |
+    {error, any()} |
+    {error, create_hybrid_ad_errors(), tuple()}.
+create_hybrid_ad(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateHybridAD">>, Input, Options).
+
 %% @doc Creates a subscription to forward real-time Directory Service domain
 %% controller security
 %% logs to the specified Amazon CloudWatch log group in your Amazon Web
@@ -2650,6 +2959,31 @@ create_trust(Client, Input)
 create_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrust">>, Input, Options).
+
+%% @doc Deletes a directory assessment and all associated data.
+%%
+%% This operation permanently
+%% removes the assessment results, validation reports, and configuration
+%% information.
+%%
+%% You cannot delete system-initiated assessments. You can delete
+%% customer-created
+%% assessments even if they are in progress.
+-spec delete_ad_assessment(aws_client:aws_client(), delete_ad_assessment_request()) ->
+    {ok, delete_ad_assessment_result(), tuple()} |
+    {error, any()} |
+    {error, delete_ad_assessment_errors(), tuple()}.
+delete_ad_assessment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ad_assessment(Client, Input, []).
+
+-spec delete_ad_assessment(aws_client:aws_client(), delete_ad_assessment_request(), proplists:proplist()) ->
+    {ok, delete_ad_assessment_result(), tuple()} |
+    {error, any()} |
+    {error, delete_ad_assessment_errors(), tuple()}.
+delete_ad_assessment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteADAssessment">>, Input, Options).
 
 %% @doc Deletes a conditional forwarder that has been set up for your Amazon
 %% Web Services
@@ -2784,6 +3118,28 @@ deregister_event_topic(Client, Input)
 deregister_event_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterEventTopic">>, Input, Options).
+
+%% @doc Retrieves detailed information about a directory assessment,
+%% including its current
+%% status, validation results, and configuration details.
+%%
+%% Use this operation to monitor
+%% assessment progress and review results.
+-spec describe_ad_assessment(aws_client:aws_client(), describe_ad_assessment_request()) ->
+    {ok, describe_ad_assessment_result(), tuple()} |
+    {error, any()} |
+    {error, describe_ad_assessment_errors(), tuple()}.
+describe_ad_assessment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_ad_assessment(Client, Input, []).
+
+-spec describe_ad_assessment(aws_client:aws_client(), describe_ad_assessment_request(), proplists:proplist()) ->
+    {ok, describe_ad_assessment_result(), tuple()} |
+    {error, any()} |
+    {error, describe_ad_assessment_errors(), tuple()}.
+describe_ad_assessment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeADAssessment">>, Input, Options).
 
 %% @doc Displays information about the certificate registered for secure LDAP
 %% or client
@@ -2944,6 +3300,28 @@ describe_event_topics(Client, Input)
 describe_event_topics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventTopics">>, Input, Options).
+
+%% @doc Retrieves information about update activities for a hybrid directory.
+%%
+%% This operation
+%% provides details about configuration changes, administrator account
+%% updates, and
+%% self-managed instance settings (IDs and DNS IPs).
+-spec describe_hybrid_ad_update(aws_client:aws_client(), describe_hybrid_ad_update_request()) ->
+    {ok, describe_hybrid_ad_update_result(), tuple()} |
+    {error, any()} |
+    {error, describe_hybrid_ad_update_errors(), tuple()}.
+describe_hybrid_ad_update(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_hybrid_ad_update(Client, Input, []).
+
+-spec describe_hybrid_ad_update(aws_client:aws_client(), describe_hybrid_ad_update_request(), proplists:proplist()) ->
+    {ok, describe_hybrid_ad_update_result(), tuple()} |
+    {error, any()} |
+    {error, describe_hybrid_ad_update_errors(), tuple()}.
+describe_hybrid_ad_update(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeHybridADUpdate">>, Input, Options).
 
 %% @doc Describes the status of LDAP security for the specified directory.
 -spec describe_ldaps_settings(aws_client:aws_client(), describe_ldaps_settings_request()) ->
@@ -3311,6 +3689,28 @@ get_snapshot_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshotLimits">>, Input, Options).
 
+%% @doc Retrieves a list of directory assessments for the specified directory
+%% or all
+%% assessments in your account.
+%%
+%% Use this operation to monitor assessment status and manage
+%% multiple assessments.
+-spec list_ad_assessments(aws_client:aws_client(), list_ad_assessments_request()) ->
+    {ok, list_ad_assessments_result(), tuple()} |
+    {error, any()} |
+    {error, list_ad_assessments_errors(), tuple()}.
+list_ad_assessments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_ad_assessments(Client, Input, []).
+
+-spec list_ad_assessments(aws_client:aws_client(), list_ad_assessments_request(), proplists:proplist()) ->
+    {ok, list_ad_assessments_result(), tuple()} |
+    {error, any()} |
+    {error, list_ad_assessments_errors(), tuple()}.
+list_ad_assessments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListADAssessments">>, Input, Options).
+
 %% @doc For the specified directory, lists all the certificates registered
 %% for a secure LDAP or
 %% client certificate authentication.
@@ -3630,6 +4030,53 @@ share_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ShareDirectory">>, Input, Options).
 
+%% @doc Initiates a directory assessment to validate your self-managed AD
+%% environment for
+%% hybrid domain join.
+%%
+%% The assessment checks compatibility and connectivity of the
+%% self-managed AD environment.
+%%
+%% A directory assessment is automatically created when you create a hybrid
+%% directory.
+%% There are two types of assessments: `CUSTOMER' and `SYSTEM'. Your
+%% Amazon Web Services account has a limit of 100 `CUSTOMER' directory
+%% assessments.
+%%
+%% The assessment process typically takes 30 minutes or more to complete. The
+%% assessment
+%% process is asynchronous and you can monitor it with
+%% `DescribeADAssessment'.
+%%
+%% The `InstanceIds' must have a one-to-one correspondence with
+%% `CustomerDnsIps', meaning that if the IP address for instance
+%% i-10243410
+%% is 10.24.34.100 and the IP address for instance i-10243420 is
+%% 10.24.34.200, then the
+%% input arrays must maintain the same order relationship, either
+%% [10.24.34.100,
+%% 10.24.34.200] paired with [i-10243410, i-10243420] or [10.24.34.200,
+%% 10.24.34.100]
+%% paired with [i-10243420, i-10243410].
+%%
+%% Note: You must provide exactly one `DirectoryId' or
+%% `AssessmentConfiguration'.
+-spec start_ad_assessment(aws_client:aws_client(), start_ad_assessment_request()) ->
+    {ok, start_ad_assessment_result(), tuple()} |
+    {error, any()} |
+    {error, start_ad_assessment_errors(), tuple()}.
+start_ad_assessment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_ad_assessment(Client, Input, []).
+
+-spec start_ad_assessment(aws_client:aws_client(), start_ad_assessment_request(), proplists:proplist()) ->
+    {ok, start_ad_assessment_result(), tuple()} |
+    {error, any()} |
+    {error, start_ad_assessment_errors(), tuple()}.
+start_ad_assessment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartADAssessment">>, Input, Options).
+
 %% @doc Applies a schema extension to a Microsoft AD directory.
 -spec start_schema_extension(aws_client:aws_client(), start_schema_extension_request()) ->
     {ok, start_schema_extension_result(), tuple()} |
@@ -3700,6 +4147,44 @@ update_directory_setup(Client, Input)
 update_directory_setup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDirectorySetup">>, Input, Options).
+
+%% @doc Updates the configuration of an existing hybrid directory.
+%%
+%% You can recover hybrid
+%% directory administrator account or modify self-managed instance settings.
+%%
+%% Updates are applied asynchronously. Use `DescribeHybridADUpdate' to
+%% monitor the progress of configuration changes.
+%%
+%% The `InstanceIds' must have a one-to-one correspondence with
+%% `CustomerDnsIps', meaning that if the IP address for instance
+%% i-10243410
+%% is 10.24.34.100 and the IP address for instance i-10243420 is
+%% 10.24.34.200, then the
+%% input arrays must maintain the same order relationship, either
+%% [10.24.34.100,
+%% 10.24.34.200] paired with [i-10243410, i-10243420] or [10.24.34.200,
+%% 10.24.34.100]
+%% paired with [i-10243420, i-10243410].
+%%
+%% You must provide at least one update to
+%% `UpdateHybridADRequest$HybridAdministratorAccountUpdate' or
+%% `UpdateHybridADRequest$SelfManagedInstancesSettings'.
+-spec update_hybrid_ad(aws_client:aws_client(), update_hybrid_ad_request()) ->
+    {ok, update_hybrid_ad_result(), tuple()} |
+    {error, any()} |
+    {error, update_hybrid_ad_errors(), tuple()}.
+update_hybrid_ad(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_hybrid_ad(Client, Input, []).
+
+-spec update_hybrid_ad(aws_client:aws_client(), update_hybrid_ad_request(), proplists:proplist()) ->
+    {ok, update_hybrid_ad_result(), tuple()} |
+    {error, any()} |
+    {error, update_hybrid_ad_errors(), tuple()}.
+update_hybrid_ad(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateHybridAD">>, Input, Options).
 
 %% @doc Adds or removes domain controllers to or from the directory.
 %%

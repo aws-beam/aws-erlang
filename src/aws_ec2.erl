@@ -10470,6 +10470,7 @@
 %%   <<"GatewayId">> => string(),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceOwnerId">> => string(),
+%%   <<"IpAddress">> => string(),
 %%   <<"LocalGatewayId">> => string(),
 %%   <<"NatGatewayId">> => string(),
 %%   <<"NetworkInterfaceId">> => string(),
@@ -20764,8 +20765,6 @@ accept_vpc_peering_connection(Client, Input, Options)
 %% It can take a few minutes before traffic to the specified addresses starts
 %% routing to Amazon Web Services
 %% because of BGP propagation delays.
-%%
-%% To stop advertising the BYOIP CIDR, use `WithdrawByoipCidr'.
 -spec advertise_byoip_cidr(aws_client:aws_client(), advertise_byoip_cidr_request()) ->
     {ok, advertise_byoip_cidr_result(), tuple()} |
     {error, any()}.
@@ -26381,10 +26380,9 @@ delete_vpn_gateway(Client, Input, Options)
 %% through bring your own IP addresses (BYOIP) and deletes the corresponding
 %% address pool.
 %%
-%% Before you can release an address range, you must stop advertising it
-%% using `WithdrawByoipCidr' and you must not have any IP addresses
-%% allocated from its
-%% address range.
+%% Before you can release an address range, you must stop advertising it and
+%% you must not
+%% have any IP addresses allocated from its address range.
 -spec deprovision_byoip_cidr(aws_client:aws_client(), deprovision_byoip_cidr_request()) ->
     {ok, deprovision_byoip_cidr_result(), tuple()} |
     {error, any()}.
@@ -26781,12 +26779,9 @@ describe_bundle_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBundleTasks">>, Input, Options).
 
-%% @doc Describes the IP address ranges that were specified in calls to
-%% `ProvisionByoipCidr'.
-%%
-%% To describe the address pools that were created when you provisioned the
-%% address
-%% ranges, use `DescribePublicIpv4Pools' or `DescribeIpv6Pools'.
+%% @doc Describes the IP address ranges that were provisioned for use with
+%% Amazon Web Services resources
+%% through through bring your own IP addresses (BYOIP).
 -spec describe_byoip_cidrs(aws_client:aws_client(), describe_byoip_cidrs_request()) ->
     {ok, describe_byoip_cidrs_result(), tuple()} |
     {error, any()}.
@@ -27633,8 +27628,8 @@ describe_image_attribute(Client, Input, Options)
 %% `audit-mode', the `imageAllowed' field is set to `true' for
 %% images that meet the account's Allowed AMIs criteria, and `false'
 %% for images that
-%% don't meet the criteria. For more information, see
-%% `EnableAllowedImagesSettings'.
+%% don't meet the criteria. For more information, see Allowed AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-allowed-amis.html.
 %%
 %% The Amazon EC2 API follows an eventual consistency model. This means that
 %% the result of an API
@@ -28475,9 +28470,6 @@ describe_mac_modification_tasks(Client, Input, Options)
 
 %% @doc Describes your managed prefix lists and any Amazon Web
 %% Services-managed prefix lists.
-%%
-%% To view the entries for your prefix list, use
-%% `GetManagedPrefixListEntries'.
 -spec describe_managed_prefix_lists(aws_client:aws_client(), describe_managed_prefix_lists_request()) ->
     {ok, describe_managed_prefix_lists_result(), tuple()} |
     {error, any()}.
@@ -28726,8 +28718,6 @@ describe_placement_groups(Client, Input, Options)
 %% format, which includes the prefix list
 %% name and prefix list ID of the service and the IP address range for the
 %% service.
-%%
-%% We recommend that you use `DescribeManagedPrefixLists' instead.
 -spec describe_prefix_lists(aws_client:aws_client(), describe_prefix_lists_request()) ->
     {ok, describe_prefix_lists_result(), tuple()} |
     {error, any()}.
@@ -29337,9 +29327,6 @@ describe_snapshot_tier_status(Client, Input, Options)
 %% paginate the output to make the
 %% list more manageable. For more information, see Pagination:
 %% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination.
-%%
-%% To get the state of fast snapshot restores for a snapshot, use
-%% `DescribeFastSnapshotRestores'.
 %%
 %% For more information about EBS snapshots, see Amazon EBS snapshots:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html in the
@@ -30024,9 +30011,11 @@ describe_volume_attribute(Client, Input, Options)
 %% shows `potential-data-inconsistency', then the action shows
 %% `enable-volume-io'. This means that you may want to enable the I/O
 %% operations for
-%% the volume by calling the `EnableVolumeIO' action and then check the
-%% volume
-%% for data consistency.
+%% the volume and then check the volume for data consistency. For more
+%% information, see
+%% Work with an
+%% impaired EBS volume:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/work_volumes_impaired.html.
 %%
 %% Volume status is based on the volume status checks, and does not reflect
 %% the volume state.
@@ -31530,10 +31519,6 @@ enable_aws_network_performance_metric_subscription(Client, Input, Options)
 %% the
 %% Amazon EBS User Guide.
 %%
-%% You can specify the default KMS key for encryption by default using
-%% `ModifyEbsDefaultKmsKeyId'
-%% or `ResetEbsDefaultKmsKeyId'.
-%%
 %% Enabling encryption by default has no effect on the encryption status of
 %% your
 %% existing volumes.
@@ -31592,9 +31577,6 @@ enable_fast_launch(Client, Input, Options)
 %%
 %% You get the full benefit of fast snapshot restores after they enter the
 %% `enabled' state.
-%% To get the current state of fast snapshot restores, use
-%% `DescribeFastSnapshotRestores'.
-%% To disable fast snapshot restores, use `DisableFastSnapshotRestores'.
 %%
 %% For more information, see Amazon EBS fast snapshot
 %% restore:
@@ -31703,8 +31685,7 @@ enable_image_deprecation(Client, Input, Options)
 %% the AMI can't be deregistered.
 %%
 %% To allow the AMI to be deregistered, you must first disable deregistration
-%% protection
-%% using `DisableImageDeregistrationProtection'.
+%% protection.
 %%
 %% For more information, see Protect an
 %% Amazon EC2 AMI from deregistration:
@@ -32303,10 +32284,6 @@ get_default_credit_specification(Client, Input, Options)
 
 %% @doc Describes the default KMS key for EBS encryption by default for your
 %% account in this Region.
-%%
-%% You can change the default KMS key for encryption by default using
-%% `ModifyEbsDefaultKmsKeyId' or
-%% `ResetEbsDefaultKmsKeyId'.
 %%
 %% For more information, see Amazon EBS encryption:
 %% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html
@@ -33698,9 +33675,7 @@ modify_default_credit_specification(Client, Input, Options)
 %% in each Region for use with encryption by default. If
 %% you change the default KMS key to a symmetric customer managed KMS key, it
 %% is used instead of the Amazon Web Services
-%% managed KMS key. To reset the default KMS key to the Amazon Web Services
-%% managed KMS key for EBS, use `ResetEbsDefaultKmsKeyId'. Amazon EBS
-%% does not support asymmetric KMS keys.
+%% managed KMS key. Amazon EBS does not support asymmetric KMS keys.
 %%
 %% If you delete or disable the customer managed KMS key that you specified
 %% for use with
@@ -35406,10 +35381,8 @@ monitor_instances(Client, Input, Options)
 %% hours, and it must not
 %% be associated with an instance. After the Elastic IP address is moved, it
 %% is no longer
-%% available for use in the EC2-Classic platform, unless you move it back
-%% using the
-%% `RestoreAddressToClassic' request. You cannot move an Elastic IP
-%% address that was
+%% available for use in the EC2-Classic platform. You cannot move an Elastic
+%% IP address that was
 %% originally allocated for use in the EC2-VPC platform to the EC2-Classic
 %% platform.
 -spec move_address_to_vpc(aws_client:aws_client(), move_address_to_vpc_request()) ->
@@ -35486,7 +35459,7 @@ move_capacity_reservation_instances(Client, Input, Options)
 %% addresses (BYOIP) and creates a corresponding address pool.
 %%
 %% After the address range is
-%% provisioned, it is ready to be advertised using `AdvertiseByoipCidr'.
+%% provisioned, it is ready to be advertised.
 %%
 %% Amazon Web Services verifies that you own the address range and are
 %% authorized to advertise it.
@@ -35502,12 +35475,9 @@ move_capacity_reservation_instances(Client, Input, Options)
 %% returns immediately,
 %% but the address range is not ready to use until its status changes from
 %% `pending-provision'
-%% to `provisioned'. To monitor the status of an address range, use
-%% `DescribeByoipCidrs'.
-%% To allocate an Elastic IP address from your IPv4 address pool, use
-%% `AllocateAddress'
-%% with either the specific address from the address pool or the ID of the
-%% address pool.
+%% to `provisioned'. For more information, see Onboard your address
+%% range:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/byoip-onboard.html.
 -spec provision_byoip_cidr(aws_client:aws_client(), provision_byoip_cidr_request()) ->
     {ok, provision_byoip_cidr_result(), tuple()} |
     {error, any()}.
@@ -35755,13 +35725,6 @@ reboot_instances(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html
 %% in the Amazon EC2 User Guide.
 %%
-%% For Amazon EBS-backed instances, `CreateImage' creates and registers
-%% the AMI
-%% in a single request, so you don't have to register the AMI yourself.
-%% We recommend that you
-%% always use `CreateImage' unless you have a specific reason to use
-%% RegisterImage.
-%%
 %% If needed, you can deregister an AMI at any time. Any modifications you
 %% make to an AMI
 %% backed by an instance store volume invalidates its registration. If you
@@ -35808,8 +35771,8 @@ reboot_instances(Client, Input, Options)
 %% expected operating system
 %% code (for example, Windows, RedHat, SUSE, or SQL), the AMI creation was
 %% unsuccessful, and you
-%% should discard the AMI and instead create the AMI from an instance using
-%% `CreateImage'. For more information, see Create an AMI
+%% should discard the AMI and instead create the AMI from an instance.
+%% For more information, see Create an AMI
 %% from an instance :
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#how-to-create-ebs-ami
 %% in the Amazon EC2 User Guide.
@@ -35820,8 +35783,8 @@ reboot_instances(Client, Input, Options)
 %% Instance has the matching
 %% billing product code. If you purchase a Reserved Instance without the
 %% matching billing product
-%% code, the Reserved Instance will not be applied to the On-Demand Instance.
-%% For information
+%% code, the Reserved Instance is not applied to the On-Demand Instance. For
+%% information
 %% about how to obtain the platform details and billing information of an
 %% AMI, see Understand AMI
 %% billing information:
@@ -36035,12 +35998,11 @@ reject_vpc_peering_connection(Client, Input, Options)
 %%
 %% [Default VPC] Releasing an Elastic IP address automatically disassociates
 %% it
-%% from any instance that it's associated with. To disassociate an
-%% Elastic IP address without
-%% releasing it, use `DisassociateAddress'.
+%% from any instance that it's associated with. Alternatively, you can
+%% disassociate an Elastic IP address without
+%% releasing it.
 %%
-%% [Nondefault VPC] You must use `DisassociateAddress' to disassociate
-%% the Elastic IP address
+%% [Nondefault VPC] You must disassociate the Elastic IP address
 %% before you can release it. Otherwise, Amazon EC2 returns an error
 %% (`InvalidIPAddress.InUse').
 %%
@@ -36054,7 +36016,8 @@ reject_vpc_peering_connection(Client, Input, Options)
 %% Amazon Web Services account.
 %%
 %% After you release an Elastic IP address, you might be able to recover it.
-%% For more information, see `AllocateAddress'.
+%% For more information, see Release an Elastic IP address:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing-eips-releasing.html.
 -spec release_address(aws_client:aws_client(), release_address_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.

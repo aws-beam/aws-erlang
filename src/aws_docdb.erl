@@ -136,6 +136,7 @@
 %%   <<"EngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
 %%   <<"SnapshotIdentifier">> := string(),
 %%   <<"StorageType">> => string(),
 %%   <<"Tags">> => list(tag()),
@@ -503,6 +504,7 @@
 %%   <<"Port">> => integer(),
 %%   <<"RestoreToTime">> => non_neg_integer(),
 %%   <<"RestoreType">> => string(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
 %%   <<"SourceDBClusterIdentifier">> := string(),
 %%   <<"StorageType">> => string(),
 %%   <<"Tags">> => list(tag()),
@@ -934,6 +936,13 @@
 -type certificate_message() :: #{binary() => any()}.
 
 %% Example:
+%% serverless_v2_features_support() :: #{
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MinCapacity">> => float()
+%% }
+-type serverless_v2_features_support() :: #{binary() => any()}.
+
+%% Example:
 %% db_upgrade_dependency_failure_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1001,6 +1010,7 @@
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"ExportableLogTypes">> => list(string()),
+%%   <<"ServerlessV2FeaturesSupport">> => serverless_v2_features_support(),
 %%   <<"SupportedCACertificateIdentifiers">> => list(string()),
 %%   <<"SupportsCertificateRotationWithoutRestart">> => boolean(),
 %%   <<"SupportsLogExportsToCloudwatchLogs">> => boolean(),
@@ -1099,6 +1109,7 @@
 %%   <<"PreSignedUrl">> => string(),
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
 %%   <<"StorageEncrypted">> => boolean(),
 %%   <<"StorageType">> => string(),
 %%   <<"Tags">> => list(tag()),
@@ -1287,6 +1298,7 @@
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"Engine">> => string(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration_info(),
 %%   <<"DBClusterMembers">> => list(db_cluster_member()),
 %%   <<"ClusterCreateTime">> => non_neg_integer(),
 %%   <<"MasterUserSecret">> => cluster_master_user_secret(),
@@ -1511,6 +1523,13 @@
 -type modify_db_subnet_group_result() :: #{binary() => any()}.
 
 %% Example:
+%% serverless_v2_scaling_configuration_info() :: #{
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MinCapacity">> => float()
+%% }
+-type serverless_v2_scaling_configuration_info() :: #{binary() => any()}.
+
+%% Example:
 %% db_subnet_group() :: #{
 %%   <<"DBSubnetGroupArn">> => string(),
 %%   <<"DBSubnetGroupDescription">> => string(),
@@ -1586,6 +1605,7 @@
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"RotateMasterUserPassword">> => boolean(),
+%%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
 %%   <<"StorageType">> => string(),
 %%   <<"VpcSecurityGroupIds">> => list(string())
 %% }
@@ -1660,6 +1680,13 @@
 %%   <<"PromotionTier">> => integer()
 %% }
 -type modify_db_instance_message() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_scaling_configuration() :: #{
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MinCapacity">> => float()
+%% }
+-type serverless_v2_scaling_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_db_instance_result() :: #{
