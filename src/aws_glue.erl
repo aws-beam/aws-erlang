@@ -662,6 +662,7 @@
 
 %% Example:
 %% s3_catalog_target() :: #{
+%%   <<"AutoDataQuality">> => auto_data_quality(),
 %%   <<"Database">> => string(),
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
@@ -1586,6 +1587,7 @@
 %%   <<"ConnectionType">> => list(any()),
 %%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"RedshiftTmpDir">> => string(),
 %%   <<"Table">> => string()
 %% }
@@ -1721,6 +1723,7 @@
 %% code_gen_configuration_node() :: #{
 %%   <<"S3HyperDirectTarget">> => s3_hyper_direct_target(),
 %%   <<"DynamicTransform">> => dynamic_transform(),
+%%   <<"S3CatalogIcebergSource">> => s3_catalog_iceberg_source(),
 %%   <<"ConnectorDataSource">> => connector_data_source(),
 %%   <<"AmazonRedshiftSource">> => amazon_redshift_source(),
 %%   <<"Filter">> => filter(),
@@ -1732,6 +1735,7 @@
 %%   <<"CatalogSource">> => catalog_source(),
 %%   <<"EvaluateDataQualityMultiFrame">> => evaluate_data_quality_multi_frame(),
 %%   <<"S3CsvSource">> => s3_csv_source(),
+%%   <<"S3IcebergCatalogTarget">> => s3_iceberg_catalog_target(),
 %%   <<"PostgreSQLCatalogSource">> => postgre_s_q_l_catalog_source(),
 %%   <<"S3ExcelSource">> => s3_excel_source(),
 %%   <<"JDBCConnectorTarget">> => j_db_c_connector_target(),
@@ -1756,6 +1760,7 @@
 %%   <<"CustomCode">> => custom_code(),
 %%   <<"DirectKafkaSource">> => direct_kafka_source(),
 %%   <<"DirectKinesisSource">> => direct_kinesis_source(),
+%%   <<"CatalogIcebergSource">> => catalog_iceberg_source(),
 %%   <<"ConnectorDataTarget">> => connector_data_target(),
 %%   <<"DropNullFields">> => drop_null_fields(),
 %%   <<"S3JsonSource">> => s3_json_source(),
@@ -1776,6 +1781,7 @@
 %%   <<"OracleSQLCatalogSource">> => oracle_s_q_l_catalog_source(),
 %%   <<"MicrosoftSQLServerCatalogSource">> => microsoft_s_q_l_server_catalog_source(),
 %%   <<"CatalogKinesisSource">> => catalog_kinesis_source(),
+%%   <<"Route">> => route(),
 %%   <<"SparkConnectorTarget">> => spark_connector_target(),
 %%   <<"SparkSQL">> => spark_s_q_l(),
 %%   <<"Join">> => join(),
@@ -1791,6 +1797,7 @@
 %%   <<"SparkConnectorSource">> => spark_connector_source(),
 %%   <<"Spigot">> => spigot(),
 %%   <<"S3DeltaCatalogTarget">> => s3_delta_catalog_target(),
+%%   <<"DynamoDBELTConnectorSource">> => dynamo_db_e_l_t_connector_source(),
 %%   <<"CatalogKafkaSource">> => catalog_kafka_source(),
 %%   <<"MySQLCatalogSource">> => my_s_q_l_catalog_source()
 %% }
@@ -2355,11 +2362,13 @@
 
 %% Example:
 %% s3_direct_target() :: #{
+%%   <<"AutoDataQuality">> => auto_data_quality(),
 %%   <<"Compression">> => string(),
 %%   <<"Format">> => list(any()),
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NumberTargetPartitions">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
@@ -2620,9 +2629,11 @@
 %% Example:
 %% s3_hudi_catalog_target() :: #{
 %%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
 %%   <<"Database">> => string(),
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
 %%   <<"Table">> => string()
@@ -3739,11 +3750,13 @@
 %% Example:
 %% s3_iceberg_direct_target() :: #{
 %%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
 %%   <<"Compression">> => list(any()),
 %%   <<"Format">> => list(any()),
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
 %%   <<"NumberTargetPartitions">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
@@ -3855,6 +3868,7 @@
 %%   <<"DescribeShardInterval">> => float(),
 %%   <<"EmitConsumerLagMetrics">> => string(),
 %%   <<"EndpointUrl">> => string(),
+%%   <<"FanoutConsumerARN">> => string(),
 %%   <<"IdleTimeBetweenReadsInMs">> => float(),
 %%   <<"MaxFetchRecordsPerShard">> => float(),
 %%   <<"MaxFetchTimeInMs">> => float(),
@@ -4163,6 +4177,16 @@
 -type get_data_quality_rule_recommendation_run_response() :: #{binary() => any()}.
 
 %% Example:
+%% s3_catalog_iceberg_source() :: #{
+%%   <<"AdditionalIcebergOptions">> => map(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Table">> => string()
+%% }
+-type s3_catalog_iceberg_source() :: #{binary() => any()}.
+
+%% Example:
 %% describe_connection_type_response() :: #{
 %%   <<"AthenaConnectionProperties">> => map(),
 %%   <<"AuthenticationConfiguration">> => auth_configuration(),
@@ -4189,6 +4213,7 @@
 %% Example:
 %% s3_delta_direct_target() :: #{
 %%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
 %%   <<"Compression">> => list(any()),
 %%   <<"Format">> => list(any()),
 %%   <<"Inputs">> => list(string()),
@@ -4478,6 +4503,14 @@
 -type start_workflow_run_request() :: #{binary() => any()}.
 
 %% Example:
+%% dynamo_db_e_l_t_connector_source() :: #{
+%%   <<"ConnectionOptions">> => d_db_e_l_t_connection_options(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema())
+%% }
+-type dynamo_db_e_l_t_connector_source() :: #{binary() => any()}.
+
+%% Example:
 %% stop_crawler_schedule_response() :: #{
 
 %% }
@@ -4658,9 +4691,12 @@
 
 %% Example:
 %% s3_hyper_direct_target() :: #{
+%%   <<"AutoDataQuality">> => auto_data_quality(),
 %%   <<"Compression">> => list(any()),
+%%   <<"Format">> => list(any()),
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"Path">> => string(),
 %%   <<"SchemaChangePolicy">> => direct_schema_change_policy()
@@ -4710,6 +4746,18 @@
 -type delete_table_version_request() :: #{binary() => any()}.
 
 %% Example:
+%% d_db_e_l_t_connection_options() :: #{
+%%   <<"DynamodbExport">> => list(any()),
+%%   <<"DynamodbS3Bucket">> => string(),
+%%   <<"DynamodbS3BucketOwner">> => string(),
+%%   <<"DynamodbS3Prefix">> => string(),
+%%   <<"DynamodbStsRoleArn">> => string(),
+%%   <<"DynamodbTableArn">> => string(),
+%%   <<"DynamodbUnnestDDBJson">> => boolean()
+%% }
+-type d_db_e_l_t_connection_options() :: #{binary() => any()}.
+
+%% Example:
 %% recipe() :: #{
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
@@ -4731,6 +4779,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_blueprint_runs_request() :: #{binary() => any()}.
+
+%% Example:
+%% route() :: #{
+%%   <<"GroupFiltersList">> => list(group_filters()),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string()
+%% }
+-type route() :: #{binary() => any()}.
 
 %% Example:
 %% catalog_entry() :: #{
@@ -4828,6 +4884,7 @@
 
 %% Example:
 %% glue_studio_schema_column() :: #{
+%%   <<"GlueStudioType">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Type">> => string()
 %% }
@@ -4872,6 +4929,16 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% catalog_iceberg_source() :: #{
+%%   <<"AdditionalIcebergOptions">> => map(),
+%%   <<"Database">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"Table">> => string()
+%% }
+-type catalog_iceberg_source() :: #{binary() => any()}.
 
 %% Example:
 %% get_data_quality_rule_recommendation_run_request() :: #{
@@ -4948,6 +5015,7 @@
 
 %% Example:
 %% s3_glue_parquet_target() :: #{
+%%   <<"AutoDataQuality">> => auto_data_quality(),
 %%   <<"Compression">> => list(any()),
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
@@ -5432,6 +5500,19 @@
 -type database_identifier() :: #{binary() => any()}.
 
 %% Example:
+%% s3_iceberg_catalog_target() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
+%%   <<"Database">> => string(),
+%%   <<"Inputs">> => list(string()),
+%%   <<"Name">> => string(),
+%%   <<"PartitionKeys">> => list(list(string())()),
+%%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
+%%   <<"Table">> => string()
+%% }
+-type s3_iceberg_catalog_target() :: #{binary() => any()}.
+
+%% Example:
 %% batch_update_partition_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
@@ -5585,6 +5666,14 @@
 
 %% }
 -type delete_column_statistics_for_partition_response() :: #{binary() => any()}.
+
+%% Example:
+%% group_filters() :: #{
+%%   <<"Filters">> => list(filter_expression()),
+%%   <<"GroupName">> => string(),
+%%   <<"LogicalOperator">> => list(any())
+%% }
+-type group_filters() :: #{binary() => any()}.
 
 %% Example:
 %% get_classifier_request() :: #{
@@ -6086,9 +6175,11 @@
 %% Example:
 %% s3_delta_catalog_target() :: #{
 %%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
 %%   <<"Database">> => string(),
 %%   <<"Inputs">> => list(string()),
 %%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
 %%   <<"PartitionKeys">> => list(list(string())()),
 %%   <<"SchemaChangePolicy">> => catalog_schema_change_policy(),
 %%   <<"Table">> => string()
@@ -6693,12 +6784,19 @@
 
 %% Example:
 %% p_i_idetection() :: #{
+%%   <<"DetectionParameters">> => string(),
+%%   <<"DetectionSensitivity">> => string(),
 %%   <<"EntityTypesToDetect">> => list(string()),
 %%   <<"Inputs">> => list(string()),
 %%   <<"MaskValue">> => string(),
+%%   <<"MatchPattern">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"NumLeftCharsToExclude">> => integer(),
+%%   <<"NumRightCharsToExclude">> => integer(),
 %%   <<"OutputColumnName">> => string(),
 %%   <<"PiiType">> => list(any()),
+%%   <<"RedactChar">> => string(),
+%%   <<"RedactText">> => string(),
 %%   <<"SampleFraction">> => float(),
 %%   <<"ThresholdFraction">> => float()
 %% }
@@ -6898,6 +6996,8 @@
 %% catalog_source() :: #{
 %%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"OutputSchemas">> => list(glue_schema()),
+%%   <<"PartitionPredicate">> => string(),
 %%   <<"Table">> => string()
 %% }
 -type catalog_source() :: #{binary() => any()}.
@@ -7314,8 +7414,10 @@
 
 %% Example:
 %% dynamo_db_catalog_source() :: #{
+%%   <<"AdditionalOptions">> => d_db_e_l_t_catalog_additional_options(),
 %%   <<"Database">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"PitrEnabled">> => boolean(),
 %%   <<"Table">> => string()
 %% }
 -type dynamo_db_catalog_source() :: #{binary() => any()}.
@@ -7399,6 +7501,7 @@
 %% Example:
 %% s3_hudi_direct_target() :: #{
 %%   <<"AdditionalOptions">> => map(),
+%%   <<"AutoDataQuality">> => auto_data_quality(),
 %%   <<"Compression">> => list(any()),
 %%   <<"Format">> => list(any()),
 %%   <<"Inputs">> => list(string()),
@@ -7819,6 +7922,13 @@
 %%   <<"GlueTable">> => glue_table()
 %% }
 -type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% d_db_e_l_t_catalog_additional_options() :: #{
+%%   <<"DynamodbExport">> => string(),
+%%   <<"DynamodbUnnestDDBJson">> => boolean()
+%% }
+-type d_db_e_l_t_catalog_additional_options() :: #{binary() => any()}.
 
 %% Example:
 %% postgre_s_q_l_catalog_target() :: #{
@@ -8333,6 +8443,13 @@
 %%   <<"NumTruePositives">> => float()
 %% }
 -type confusion_matrix() :: #{binary() => any()}.
+
+%% Example:
+%% auto_data_quality() :: #{
+%%   <<"EvaluationContext">> => string(),
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type auto_data_quality() :: #{binary() => any()}.
 
 %% Example:
 %% evaluation_metrics() :: #{

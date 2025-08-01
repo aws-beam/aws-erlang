@@ -45,6 +45,10 @@
          create_import_job/3,
          create_multi_region_endpoint/2,
          create_multi_region_endpoint/3,
+         create_tenant/2,
+         create_tenant/3,
+         create_tenant_resource_association/2,
+         create_tenant_resource_association/3,
          delete_configuration_set/3,
          delete_configuration_set/4,
          delete_configuration_set_event_destination/4,
@@ -67,6 +71,10 @@
          delete_multi_region_endpoint/4,
          delete_suppressed_destination/3,
          delete_suppressed_destination/4,
+         delete_tenant/2,
+         delete_tenant/3,
+         delete_tenant_resource_association/2,
+         delete_tenant_resource_association/3,
          get_account/1,
          get_account/3,
          get_account/4,
@@ -130,9 +138,14 @@
          get_multi_region_endpoint/2,
          get_multi_region_endpoint/4,
          get_multi_region_endpoint/5,
+         get_reputation_entity/3,
+         get_reputation_entity/5,
+         get_reputation_entity/6,
          get_suppressed_destination/2,
          get_suppressed_destination/4,
          get_suppressed_destination/5,
+         get_tenant/2,
+         get_tenant/3,
          list_configuration_sets/1,
          list_configuration_sets/3,
          list_configuration_sets/4,
@@ -168,12 +181,20 @@
          list_multi_region_endpoints/4,
          list_recommendations/2,
          list_recommendations/3,
+         list_reputation_entities/2,
+         list_reputation_entities/3,
+         list_resource_tenants/2,
+         list_resource_tenants/3,
          list_suppressed_destinations/1,
          list_suppressed_destinations/3,
          list_suppressed_destinations/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_tenant_resources/2,
+         list_tenant_resources/3,
+         list_tenants/2,
+         list_tenants/3,
          put_account_dedicated_ip_warmup_attributes/2,
          put_account_dedicated_ip_warmup_attributes/3,
          put_account_details/2,
@@ -241,7 +262,11 @@
          update_email_identity_policy/4,
          update_email_identity_policy/5,
          update_email_template/3,
-         update_email_template/4]).
+         update_email_template/4,
+         update_reputation_entity_customer_managed_status/4,
+         update_reputation_entity_customer_managed_status/5,
+         update_reputation_entity_policy/4,
+         update_reputation_entity_policy/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -298,6 +323,14 @@
 %%   <<"NextSigningKeyLength">> => list(any())
 %% }
 -type dkim_signing_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% tenant_resource() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type tenant_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -376,6 +409,13 @@
 
 
 %% Example:
+%% update_reputation_entity_policy_request() :: #{
+%%   <<"ReputationEntityPolicy">> := string()
+%% }
+-type update_reputation_entity_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_account_sending_attributes_request() :: #{
 %%   <<"SendingEnabled">> => boolean()
 %% }
@@ -394,6 +434,18 @@
 %%   <<"VdmAttributes">> => vdm_attributes()
 %% }
 -type get_account_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tenant_response() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"SendingStatus">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TenantArn">> => string(),
+%%   <<"TenantId">> => string(),
+%%   <<"TenantName">> => string()
+%% }
+-type create_tenant_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_contact_request() :: #{}
@@ -456,6 +508,10 @@
 %% cancel_export_job_response() :: #{}
 -type cancel_export_job_response() :: #{}.
 
+%% Example:
+%% delete_tenant_resource_association_response() :: #{}
+-type delete_tenant_resource_association_response() :: #{}.
+
 
 %% Example:
 %% create_email_identity_policy_request() :: #{
@@ -477,6 +533,15 @@
 
 
 %% Example:
+%% list_reputation_entities_request() :: #{
+%%   <<"Filter">> => map(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_reputation_entities_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_email_identity_feedback_attributes_request() :: #{
 %%   <<"EmailForwardingEnabled">> => boolean()
 %% }
@@ -489,6 +554,14 @@
 %%   <<"PlacementStatistics">> => placement_statistics()
 %% }
 -type isp_placement() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tenants_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_tenants_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -612,6 +685,13 @@
 %%   <<"Region">> => string()
 %% }
 -type route_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_tenant_request() :: #{
+%%   <<"TenantName">> := string()
+%% }
+-type delete_tenant_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_email_identity_policy_response() :: #{}
@@ -761,6 +841,16 @@
 
 
 %% Example:
+%% resource_tenant_metadata() :: #{
+%%   <<"AssociatedTimestamp">> => non_neg_integer(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"TenantId">> => string(),
+%%   <<"TenantName">> => string()
+%% }
+-type resource_tenant_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% email_content() :: #{
 %%   <<"Raw">> => raw_message(),
 %%   <<"Simple">> => message(),
@@ -798,6 +888,16 @@
 %% Example:
 %% put_account_vdm_attributes_response() :: #{}
 -type put_account_vdm_attributes_response() :: #{}.
+
+
+%% Example:
+%% tenant_info() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"TenantArn">> => string(),
+%%   <<"TenantId">> => string(),
+%%   <<"TenantName">> => string()
+%% }
+-type tenant_info() :: #{binary() => any()}.
 
 %% Example:
 %% delete_email_identity_request() :: #{}
@@ -909,6 +1009,13 @@
 
 
 %% Example:
+%% get_tenant_response() :: #{
+%%   <<"Tenant">> => tenant()
+%% }
+-type get_tenant_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% send_email_response() :: #{
 %%   <<"MessageId">> => string()
 %% }
@@ -1001,6 +1108,19 @@
 
 
 %% Example:
+%% reputation_entity() :: #{
+%%   <<"AwsSesManagedStatus">> => status_record(),
+%%   <<"CustomerManagedStatus">> => status_record(),
+%%   <<"ReputationEntityReference">> => string(),
+%%   <<"ReputationEntityType">> => list(any()),
+%%   <<"ReputationImpact">> => list(any()),
+%%   <<"ReputationManagementPolicy">> => string(),
+%%   <<"SendingStatusAggregate">> => list(any())
+%% }
+-type reputation_entity() :: #{binary() => any()}.
+
+
+%% Example:
 %% dedicated_ip() :: #{
 %%   <<"Ip">> => string(),
 %%   <<"PoolName">> => string(),
@@ -1054,6 +1174,18 @@
 %% }
 -type mail_from_attributes() :: #{binary() => any()}.
 
+
+%% Example:
+%% tenant() :: #{
+%%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"SendingStatus">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TenantArn">> => string(),
+%%   <<"TenantId">> => string(),
+%%   <<"TenantName">> => string()
+%% }
+-type tenant() :: #{binary() => any()}.
+
 %% Example:
 %% create_configuration_set_response() :: #{}
 -type create_configuration_set_response() :: #{}.
@@ -1077,6 +1209,22 @@
 %% Example:
 %% put_deliverability_dashboard_option_response() :: #{}
 -type put_deliverability_dashboard_option_response() :: #{}.
+
+
+%% Example:
+%% list_resource_tenants_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_resource_tenants_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_reputation_entity_response() :: #{
+%%   <<"ReputationEntity">> => reputation_entity()
+%% }
+-type get_reputation_entity_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1176,6 +1324,14 @@
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_tenants_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceTenants">> => list(resource_tenant_metadata())
+%% }
+-type list_resource_tenants_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1333,6 +1489,10 @@
 %% delete_email_template_response() :: #{}
 -type delete_email_template_response() :: #{}.
 
+%% Example:
+%% update_reputation_entity_policy_response() :: #{}
+-type update_reputation_entity_policy_response() :: #{}.
+
 
 %% Example:
 %% account_details() :: #{
@@ -1480,6 +1640,16 @@
 
 
 %% Example:
+%% list_tenant_resources_request() :: #{
+%%   <<"Filter">> => map(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer(),
+%%   <<"TenantName">> := string()
+%% }
+-type list_tenant_resources_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_domain_deliverability_campaign_response() :: #{
 %%   <<"DomainDeliverabilityCampaign">> => domain_deliverability_campaign()
 %% }
@@ -1569,6 +1739,14 @@
 %% }
 -type dashboard_attributes() :: #{binary() => any()}.
 
+
+%% Example:
+%% delete_tenant_resource_association_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TenantName">> := string()
+%% }
+-type delete_tenant_resource_association_request() :: #{binary() => any()}.
+
 %% Example:
 %% put_configuration_set_sending_options_response() :: #{}
 -type put_configuration_set_sending_options_response() :: #{}.
@@ -1657,7 +1835,8 @@
 %%   <<"FeedbackForwardingEmailAddressIdentityArn">> => string(),
 %%   <<"FromEmailAddress">> => string(),
 %%   <<"FromEmailAddressIdentityArn">> => string(),
-%%   <<"ReplyToAddresses">> => list(string())
+%%   <<"ReplyToAddresses">> => list(string()),
+%%   <<"TenantName">> => string()
 %% }
 -type send_bulk_email_request() :: #{binary() => any()}.
 
@@ -1725,6 +1904,10 @@
 %% }
 -type send_custom_verification_email_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_reputation_entity_customer_managed_status_response() :: #{}
+-type update_reputation_entity_customer_managed_status_response() :: #{}.
+
 
 %% Example:
 %% get_dedicated_ip_response() :: #{
@@ -1739,6 +1922,22 @@
 %%   <<"SigningAttributesOrigin">> := list(any())
 %% }
 -type put_email_identity_dkim_signing_attributes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tenant_resources_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TenantResources">> => list(tenant_resource())
+%% }
+-type list_tenant_resources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tenants_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Tenants">> => list(tenant_info())
+%% }
+-type list_tenants_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1767,6 +1966,13 @@
 %% Example:
 %% put_dedicated_ip_pool_scaling_attributes_response() :: #{}
 -type put_dedicated_ip_pool_scaling_attributes_response() :: #{}.
+
+
+%% Example:
+%% update_reputation_entity_customer_managed_status_request() :: #{
+%%   <<"SendingStatus">> := list(any())
+%% }
+-type update_reputation_entity_customer_managed_status_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_contact_request() :: #{}
@@ -1812,6 +2018,14 @@
 %%   <<"TlsPolicy">> => list(any())
 %% }
 -type put_configuration_set_delivery_options_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_reputation_entities_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ReputationEntities">> => list(reputation_entity())
+%% }
+-type list_reputation_entities_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1901,6 +2115,15 @@
 %% }
 -type daily_volume() :: #{binary() => any()}.
 
+
+%% Example:
+%% status_record() :: #{
+%%   <<"Cause">> => string(),
+%%   <<"LastUpdatedTimestamp">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type status_record() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -1916,6 +2139,10 @@
 %%   <<"ProcessedRecordsCount">> => integer()
 %% }
 -type import_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_reputation_entity_request() :: #{}
+-type get_reputation_entity_request() :: #{}.
 
 
 %% Example:
@@ -1933,6 +2160,10 @@
 -type sending_options() :: #{binary() => any()}.
 
 %% Example:
+%% delete_tenant_response() :: #{}
+-type delete_tenant_response() :: #{}.
+
+%% Example:
 %% delete_email_identity_policy_request() :: #{}
 -type delete_email_identity_policy_request() :: #{}.
 
@@ -1942,6 +2173,10 @@
 %%   <<"message">> => string()
 %% }
 -type concurrent_modification_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_tenant_resource_association_response() :: #{}
+-type create_tenant_resource_association_response() :: #{}.
 
 
 %% Example:
@@ -1978,6 +2213,14 @@
 %% Example:
 %% cancel_export_job_request() :: #{}
 -type cancel_export_job_request() :: #{}.
+
+
+%% Example:
+%% create_tenant_resource_association_request() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TenantName">> := string()
+%% }
+-type create_tenant_resource_association_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2141,6 +2384,13 @@
 
 
 %% Example:
+%% get_tenant_request() :: #{
+%%   <<"TenantName">> := string()
+%% }
+-type get_tenant_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% bad_request_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2236,7 +2486,8 @@
 %%   <<"FromEmailAddress">> => string(),
 %%   <<"FromEmailAddressIdentityArn">> => string(),
 %%   <<"ListManagementOptions">> => list_management_options(),
-%%   <<"ReplyToAddresses">> => list(string())
+%%   <<"ReplyToAddresses">> => list(string()),
+%%   <<"TenantName">> => string()
 %% }
 -type send_email_request() :: #{binary() => any()}.
 
@@ -2325,6 +2576,14 @@
 %%   <<"Recommendations">> => list(recommendation())
 %% }
 -type list_recommendations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_tenant_request() :: #{
+%%   <<"Tags">> => list(tag()),
+%%   <<"TenantName">> := string()
+%% }
+-type create_tenant_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2655,6 +2914,18 @@
     too_many_requests_exception() | 
     already_exists_exception().
 
+-type create_tenant_errors() ::
+    bad_request_exception() | 
+    limit_exceeded_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
+-type create_tenant_resource_association_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    already_exists_exception().
+
 -type delete_configuration_set_errors() ::
     bad_request_exception() | 
     concurrent_modification_exception() | 
@@ -2711,6 +2982,16 @@
     too_many_requests_exception().
 
 -type delete_suppressed_destination_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_tenant_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_tenant_resource_association_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
     too_many_requests_exception().
@@ -2819,7 +3100,17 @@
     not_found_exception() | 
     too_many_requests_exception().
 
+-type get_reputation_entity_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
 -type get_suppressed_destination_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_tenant_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
     too_many_requests_exception().
@@ -2880,6 +3171,15 @@
     not_found_exception() | 
     too_many_requests_exception().
 
+-type list_reputation_entities_errors() ::
+    bad_request_exception() | 
+    too_many_requests_exception().
+
+-type list_resource_tenants_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
 -type list_suppressed_destinations_errors() ::
     bad_request_exception() | 
     invalid_next_token_exception() | 
@@ -2888,6 +3188,15 @@
 -type list_tags_for_resource_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_tenant_resources_errors() ::
+    bad_request_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_tenants_errors() ::
+    bad_request_exception() | 
     too_many_requests_exception().
 
 -type put_account_dedicated_ip_warmup_attributes_errors() ::
@@ -3074,6 +3383,16 @@
 -type update_email_template_errors() ::
     bad_request_exception() | 
     not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_reputation_entity_customer_managed_status_errors() ::
+    bad_request_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
+-type update_reputation_entity_policy_errors() ::
+    bad_request_exception() | 
+    conflict_exception() | 
     too_many_requests_exception().
 
 %%====================================================================
@@ -3726,6 +4045,92 @@ create_multi_region_endpoint(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create a tenant.
+%%
+%% Tenants are logical containers that group related SES resources together.
+%% Each tenant can have its own set of resources like email identities,
+%% configuration sets,
+%% and templates, along with reputation metrics and sending status. This
+%% helps isolate and manage
+%% email sending for different customers or business units within your Amazon
+%% SES API v2 account.
+-spec create_tenant(aws_client:aws_client(), create_tenant_request()) ->
+    {ok, create_tenant_response(), tuple()} |
+    {error, any()} |
+    {error, create_tenant_errors(), tuple()}.
+create_tenant(Client, Input) ->
+    create_tenant(Client, Input, []).
+
+-spec create_tenant(aws_client:aws_client(), create_tenant_request(), proplists:proplist()) ->
+    {ok, create_tenant_response(), tuple()} |
+    {error, any()} |
+    {error, create_tenant_errors(), tuple()}.
+create_tenant(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/tenants"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associate a resource with a tenant.
+%%
+%% Resources can be email identities, configuration sets, or email templates.
+%% When you associate a resource with a tenant, you can use that resource
+%% when sending emails
+%% on behalf of that tenant.
+%%
+%% A single resource can be associated with multiple tenants, allowing for
+%% resource sharing
+%% across different tenants while maintaining isolation in email sending
+%% operations.
+-spec create_tenant_resource_association(aws_client:aws_client(), create_tenant_resource_association_request()) ->
+    {ok, create_tenant_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_tenant_resource_association_errors(), tuple()}.
+create_tenant_resource_association(Client, Input) ->
+    create_tenant_resource_association(Client, Input, []).
+
+-spec create_tenant_resource_association(aws_client:aws_client(), create_tenant_resource_association_request(), proplists:proplist()) ->
+    {ok, create_tenant_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_tenant_resource_association_errors(), tuple()}.
+create_tenant_resource_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/tenants/resources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete an existing configuration set.
 %%
 %% Configuration sets are groups of rules that you can apply to the
@@ -4131,6 +4536,84 @@ delete_suppressed_destination(Client, EmailAddress, Input) ->
 delete_suppressed_destination(Client, EmailAddress, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/email/suppression/addresses/", aws_util:encode_uri(EmailAddress), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete an existing tenant.
+%%
+%% When you delete a tenant, its associations with resources
+%% are removed, but the resources themselves are not deleted.
+-spec delete_tenant(aws_client:aws_client(), delete_tenant_request()) ->
+    {ok, delete_tenant_response(), tuple()} |
+    {error, any()} |
+    {error, delete_tenant_errors(), tuple()}.
+delete_tenant(Client, Input) ->
+    delete_tenant(Client, Input, []).
+
+-spec delete_tenant(aws_client:aws_client(), delete_tenant_request(), proplists:proplist()) ->
+    {ok, delete_tenant_response(), tuple()} |
+    {error, any()} |
+    {error, delete_tenant_errors(), tuple()}.
+delete_tenant(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/tenants/delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete an association between a tenant and a resource.
+%%
+%% When you delete a tenant-resource association, the resource itself is not
+%% deleted,
+%% only its association with the specific tenant is removed. After removal,
+%% the resource
+%% will no longer be available for use with that tenant's email sending
+%% operations.
+-spec delete_tenant_resource_association(aws_client:aws_client(), delete_tenant_resource_association_request()) ->
+    {ok, delete_tenant_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_tenant_resource_association_errors(), tuple()}.
+delete_tenant_resource_association(Client, Input) ->
+    delete_tenant_resource_association(Client, Input, []).
+
+-spec delete_tenant_resource_association(aws_client:aws_client(), delete_tenant_resource_association_request(), proplists:proplist()) ->
+    {ok, delete_tenant_resource_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_tenant_resource_association_errors(), tuple()}.
+delete_tenant_resource_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/tenants/resources/delete"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5041,6 +5524,55 @@ get_multi_region_endpoint(Client, EndpointName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieve information about a specific reputation entity, including
+%% its reputation
+%% management policy, customer-managed status, Amazon Web Services Amazon
+%% SES-managed status, and aggregate
+%% sending status.
+%%
+%% Reputation entities represent resources in your Amazon SES account that
+%% have reputation
+%% tracking and management capabilities. The reputation impact reflects the
+%% highest
+%% impact reputation finding for the entity. Reputation findings can be
+%% retrieved
+%% using the `ListRecommendations' operation.
+-spec get_reputation_entity(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_reputation_entity_response(), tuple()} |
+    {error, any()} |
+    {error, get_reputation_entity_errors(), tuple()}.
+get_reputation_entity(Client, ReputationEntityReference, ReputationEntityType)
+  when is_map(Client) ->
+    get_reputation_entity(Client, ReputationEntityReference, ReputationEntityType, #{}, #{}).
+
+-spec get_reputation_entity(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_reputation_entity_response(), tuple()} |
+    {error, any()} |
+    {error, get_reputation_entity_errors(), tuple()}.
+get_reputation_entity(Client, ReputationEntityReference, ReputationEntityType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_reputation_entity(Client, ReputationEntityReference, ReputationEntityType, QueryMap, HeadersMap, []).
+
+-spec get_reputation_entity(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_reputation_entity_response(), tuple()} |
+    {error, any()} |
+    {error, get_reputation_entity_errors(), tuple()}.
+get_reputation_entity(Client, ReputationEntityReference, ReputationEntityType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/email/reputation/entities/", aws_util:encode_uri(ReputationEntityType), "/", aws_util:encode_uri(ReputationEntityReference), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a specific email address that's on
 %% the suppression list
 %% for your account.
@@ -5079,6 +5611,42 @@ get_suppressed_destination(Client, EmailAddress, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get information about a specific tenant, including the tenant's
+%% name, ID, ARN,
+%% creation timestamp, tags, and sending status.
+-spec get_tenant(aws_client:aws_client(), get_tenant_request()) ->
+    {ok, get_tenant_response(), tuple()} |
+    {error, any()} |
+    {error, get_tenant_errors(), tuple()}.
+get_tenant(Client, Input) ->
+    get_tenant(Client, Input, []).
+
+-spec get_tenant(aws_client:aws_client(), get_tenant_request(), proplists:proplist()) ->
+    {ok, get_tenant_response(), tuple()} |
+    {error, any()} |
+    {error, get_tenant_errors(), tuple()}.
+get_tenant(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/tenants/get"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List all of the configuration sets associated with your account in
 %% the current
@@ -5653,6 +6221,91 @@ list_recommendations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc List reputation entities in your Amazon SES account in the current
+%% Amazon Web Services Region.
+%%
+%% You can filter the results by entity type, reputation impact, sending
+%% status,
+%% or entity reference prefix.
+%%
+%% Reputation entities represent resources in your account that have
+%% reputation
+%% tracking and management capabilities. Use this operation to get an
+%% overview of
+%% all entities and their current reputation status.
+-spec list_reputation_entities(aws_client:aws_client(), list_reputation_entities_request()) ->
+    {ok, list_reputation_entities_response(), tuple()} |
+    {error, any()} |
+    {error, list_reputation_entities_errors(), tuple()}.
+list_reputation_entities(Client, Input) ->
+    list_reputation_entities(Client, Input, []).
+
+-spec list_reputation_entities(aws_client:aws_client(), list_reputation_entities_request(), proplists:proplist()) ->
+    {ok, list_reputation_entities_response(), tuple()} |
+    {error, any()} |
+    {error, list_reputation_entities_errors(), tuple()}.
+list_reputation_entities(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/reputation/entities"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List all tenants associated with a specific resource.
+%%
+%% This operation returns a list of tenants that are associated with the
+%% specified
+%% resource. This is useful for understanding which tenants are currently
+%% using a particular
+%% resource such as an email identity, configuration set, or email template.
+-spec list_resource_tenants(aws_client:aws_client(), list_resource_tenants_request()) ->
+    {ok, list_resource_tenants_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_tenants_errors(), tuple()}.
+list_resource_tenants(Client, Input) ->
+    list_resource_tenants(Client, Input, []).
+
+-spec list_resource_tenants(aws_client:aws_client(), list_resource_tenants_request(), proplists:proplist()) ->
+    {ok, list_resource_tenants_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_tenants_errors(), tuple()}.
+list_resource_tenants(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/resources/tenants/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of email addresses that are on the suppression list
 %% for your
 %% account.
@@ -5749,6 +6402,84 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all resources associated with a specific tenant.
+%%
+%% This operation returns a list of resources (email identities,
+%% configuration sets,
+%% or email templates) that are associated with the specified tenant. You can
+%% optionally
+%% filter the results by resource type.
+-spec list_tenant_resources(aws_client:aws_client(), list_tenant_resources_request()) ->
+    {ok, list_tenant_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_tenant_resources_errors(), tuple()}.
+list_tenant_resources(Client, Input) ->
+    list_tenant_resources(Client, Input, []).
+
+-spec list_tenant_resources(aws_client:aws_client(), list_tenant_resources_request(), proplists:proplist()) ->
+    {ok, list_tenant_resources_response(), tuple()} |
+    {error, any()} |
+    {error, list_tenant_resources_errors(), tuple()}.
+list_tenant_resources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/tenants/resources/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List all tenants associated with your account in the current Amazon
+%% Web Services Region.
+%%
+%% This operation returns basic information about each tenant,
+%% such as tenant name, ID, ARN, and creation timestamp.
+-spec list_tenants(aws_client:aws_client(), list_tenants_request()) ->
+    {ok, list_tenants_response(), tuple()} |
+    {error, any()} |
+    {error, list_tenants_errors(), tuple()}.
+list_tenants(Client, Input) ->
+    list_tenants(Client, Input, []).
+
+-spec list_tenants(aws_client:aws_client(), list_tenants_request(), proplists:proplist()) ->
+    {ok, list_tenants_response(), tuple()} |
+    {error, any()} |
+    {error, list_tenants_errors(), tuple()}.
+list_tenants(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/tenants/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enable or disable the automatic warm-up feature for dedicated IP
 %% addresses.
@@ -7077,6 +7808,100 @@ update_email_template(Client, TemplateName, Input) ->
 update_email_template(Client, TemplateName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/templates/", aws_util:encode_uri(TemplateName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the customer-managed sending status for a reputation entity.
+%%
+%% This allows
+%% you to enable, disable, or reinstate sending for the entity.
+%%
+%% The customer-managed status works in conjunction with the Amazon Web
+%% Services Amazon SES-managed status
+%% to determine the overall sending capability. When you update the
+%% customer-managed status,
+%% the Amazon Web Services Amazon SES-managed status remains unchanged. If
+%% Amazon Web Services Amazon SES has disabled the entity,
+%% it will not be allowed to send regardless of the customer-managed status
+%% setting. When you
+%% reinstate an entity through the customer-managed status, it can continue
+%% sending only if
+%% the Amazon Web Services Amazon SES-managed status also permits sending,
+%% even if there are active reputation
+%% findings, until the findings are resolved or new violations occur.
+-spec update_reputation_entity_customer_managed_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_reputation_entity_customer_managed_status_request()) ->
+    {ok, update_reputation_entity_customer_managed_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_reputation_entity_customer_managed_status_errors(), tuple()}.
+update_reputation_entity_customer_managed_status(Client, ReputationEntityReference, ReputationEntityType, Input) ->
+    update_reputation_entity_customer_managed_status(Client, ReputationEntityReference, ReputationEntityType, Input, []).
+
+-spec update_reputation_entity_customer_managed_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_reputation_entity_customer_managed_status_request(), proplists:proplist()) ->
+    {ok, update_reputation_entity_customer_managed_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_reputation_entity_customer_managed_status_errors(), tuple()}.
+update_reputation_entity_customer_managed_status(Client, ReputationEntityReference, ReputationEntityType, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/email/reputation/entities/", aws_util:encode_uri(ReputationEntityType), "/", aws_util:encode_uri(ReputationEntityReference), "/customer-managed-status"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the reputation management policy for a reputation entity.
+%%
+%% The policy
+%% determines how the entity responds to reputation findings, such as
+%% automatically
+%% pausing sending when certain thresholds are exceeded.
+%%
+%% Reputation management policies are Amazon Web Services Amazon SES-managed
+%% (predefined policies).
+%% You can select from none, standard, and strict policies.
+-spec update_reputation_entity_policy(aws_client:aws_client(), binary() | list(), binary() | list(), update_reputation_entity_policy_request()) ->
+    {ok, update_reputation_entity_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_reputation_entity_policy_errors(), tuple()}.
+update_reputation_entity_policy(Client, ReputationEntityReference, ReputationEntityType, Input) ->
+    update_reputation_entity_policy(Client, ReputationEntityReference, ReputationEntityType, Input, []).
+
+-spec update_reputation_entity_policy(aws_client:aws_client(), binary() | list(), binary() | list(), update_reputation_entity_policy_request(), proplists:proplist()) ->
+    {ok, update_reputation_entity_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_reputation_entity_policy_errors(), tuple()}.
+update_reputation_entity_policy(Client, ReputationEntityReference, ReputationEntityType, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/email/reputation/entities/", aws_util:encode_uri(ReputationEntityType), "/", aws_util:encode_uri(ReputationEntityReference), "/policy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

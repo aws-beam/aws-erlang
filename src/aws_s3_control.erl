@@ -1262,6 +1262,7 @@
 %%   <<"BucketAccountId">> => string(),
 %%   <<"PublicAccessBlockConfiguration">> => public_access_block_configuration(),
 %%   <<"Scope">> => scope(),
+%%   <<"Tags">> => list(tag()),
 %%   <<"VpcConfiguration">> => vpc_configuration()
 %% }
 -type create_access_point_request() :: #{binary() => any()}.

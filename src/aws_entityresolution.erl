@@ -177,7 +177,8 @@
 %% resolution_techniques() :: #{
 %%   <<"providerProperties">> => provider_properties(),
 %%   <<"resolutionType">> => list(any()),
-%%   <<"ruleBasedProperties">> => rule_based_properties()
+%%   <<"ruleBasedProperties">> => rule_based_properties(),
+%%   <<"ruleConditionProperties">> => rule_condition_properties()
 %% }
 -type resolution_techniques() :: #{binary() => any()}.
 
@@ -568,6 +569,13 @@
 
 
 %% Example:
+%% rule_condition_properties() :: #{
+%%   <<"rules">> => list(rule_condition())
+%% }
+-type rule_condition_properties() :: #{binary() => any()}.
+
+
+%% Example:
 %% id_mapping_job_metrics() :: #{
 %%   <<"inputRecords">> => [integer()],
 %%   <<"recordsNotProcessed">> => [integer()],
@@ -894,6 +902,14 @@
 %% Example:
 %% delete_policy_statement_input() :: #{}
 -type delete_policy_statement_input() :: #{}.
+
+
+%% Example:
+%% rule_condition() :: #{
+%%   <<"condition">> => [string()],
+%%   <<"ruleName">> => [string()]
+%% }
+-type rule_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1546,7 +1562,7 @@ batch_delete_unique_id(Client, WorkflowName, Input0, Options0) ->
 %% configuration of the data processing job to be run.
 %%
 %% Each `IdMappingWorkflow' must have a unique workflow name. To modify
-%% an existing workflow, use the `UpdateIdMappingWorkflow' API.
+%% an existing workflow, use the UpdateIdMappingWorkflow API.
 -spec create_id_mapping_workflow(aws_client:aws_client(), create_id_mapping_workflow_input()) ->
     {ok, create_id_mapping_workflow_output(), tuple()} |
     {error, any()} |
@@ -1584,7 +1600,7 @@ create_id_mapping_workflow(Client, Input0, Options0) ->
 %% metadata explaining their dataset and how to use it.
 %%
 %% Each ID namespace must have a unique name. To modify an existing ID
-%% namespace, use the `UpdateIdNamespace' API.
+%% namespace, use the UpdateIdNamespace API.
 -spec create_id_namespace(aws_client:aws_client(), create_id_namespace_input()) ->
     {ok, create_id_namespace_output(), tuple()} |
     {error, any()} |
@@ -1618,12 +1634,14 @@ create_id_namespace(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `MatchingWorkflow' object which stores the
-%% configuration of the data processing job to be run.
+%% @doc Creates a matching workflow that defines the configuration for a data
+%% processing job.
 %%
-%% It is important to note that there should not be a pre-existing
-%% `MatchingWorkflow' with the same name. To modify an existing workflow,
-%% utilize the `UpdateMatchingWorkflow' API.
+%% The workflow name must be unique. To modify an existing workflow, use
+%% `UpdateMatchingWorkflow'.
+%%
+%% For workflows where `resolutionType' is ML_MATCHING, incremental
+%% processing is not supported.
 -spec create_matching_workflow(aws_client:aws_client(), create_matching_workflow_input()) ->
     {ok, create_matching_workflow_output(), tuple()} |
     {error, any()} |
@@ -2796,8 +2814,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an existing `IdMappingWorkflow'.
 %%
-%% This method is identical to `CreateIdMappingWorkflow', except it uses
-%% an HTTP `PUT' request instead of a `POST' request, and the
+%% This method is identical to CreateIdMappingWorkflow, except it uses an
+%% HTTP `PUT' request instead of a `POST' request, and the
 %% `IdMappingWorkflow' must already exist for the method to succeed.
 -spec update_id_mapping_workflow(aws_client:aws_client(), binary() | list(), update_id_mapping_workflow_input()) ->
     {ok, update_id_mapping_workflow_output(), tuple()} |
@@ -2866,11 +2884,12 @@ update_id_namespace(Client, IdNamespaceName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing `MatchingWorkflow'.
+%% @doc Updates an existing matching workflow.
 %%
-%% This method is identical to `CreateMatchingWorkflow', except it uses
-%% an HTTP `PUT' request instead of a `POST' request, and the
-%% `MatchingWorkflow' must already exist for the method to succeed.
+%% The workflow must already exist for this operation to succeed.
+%%
+%% For workflows where `resolutionType' is ML_MATCHING, incremental
+%% processing is not supported.
 -spec update_matching_workflow(aws_client:aws_client(), binary() | list(), update_matching_workflow_input()) ->
     {ok, update_matching_workflow_output(), tuple()} |
     {error, any()} |

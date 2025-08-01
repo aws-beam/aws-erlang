@@ -25,6 +25,8 @@
          associate_ip_access_settings/4,
          associate_network_settings/3,
          associate_network_settings/4,
+         associate_session_logger/3,
+         associate_session_logger/4,
          associate_trust_store/3,
          associate_trust_store/4,
          associate_user_access_logging_settings/3,
@@ -43,6 +45,8 @@
          create_network_settings/3,
          create_portal/2,
          create_portal/3,
+         create_session_logger/2,
+         create_session_logger/3,
          create_trust_store/2,
          create_trust_store/3,
          create_user_access_logging_settings/2,
@@ -61,6 +65,8 @@
          delete_network_settings/4,
          delete_portal/3,
          delete_portal/4,
+         delete_session_logger/3,
+         delete_session_logger/4,
          delete_trust_store/3,
          delete_trust_store/4,
          delete_user_access_logging_settings/3,
@@ -75,6 +81,8 @@
          disassociate_ip_access_settings/4,
          disassociate_network_settings/3,
          disassociate_network_settings/4,
+         disassociate_session_logger/3,
+         disassociate_session_logger/4,
          disassociate_trust_store/3,
          disassociate_trust_store/4,
          disassociate_user_access_logging_settings/3,
@@ -107,6 +115,9 @@
          get_session/3,
          get_session/5,
          get_session/6,
+         get_session_logger/2,
+         get_session_logger/4,
+         get_session_logger/5,
          get_trust_store/2,
          get_trust_store/4,
          get_trust_store/5,
@@ -137,6 +148,9 @@
          list_portals/1,
          list_portals/3,
          list_portals/4,
+         list_session_loggers/1,
+         list_session_loggers/3,
+         list_session_loggers/4,
          list_sessions/2,
          list_sessions/4,
          list_sessions/5,
@@ -171,6 +185,8 @@
          update_network_settings/4,
          update_portal/3,
          update_portal/4,
+         update_session_logger/3,
+         update_session_logger/4,
          update_trust_store/3,
          update_trust_store/4,
          update_user_access_logging_settings/3,
@@ -332,6 +348,15 @@
 
 
 %% Example:
+%% update_session_logger_request() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"eventFilter">> => list(),
+%%   <<"logConfiguration">> => log_configuration()
+%% }
+-type update_session_logger_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_identity_provider_response() :: #{
 %%   <<"identityProvider">> => identity_provider()
 %% }
@@ -432,6 +457,13 @@
 
 
 %% Example:
+%% get_session_logger_response() :: #{
+%%   <<"sessionLogger">> => session_logger()
+%% }
+-type get_session_logger_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_identity_provider_response() :: #{
 %%   <<"identityProviderArn">> => string()
 %% }
@@ -507,6 +539,18 @@
 %% Example:
 %% expire_session_request() :: #{}
 -type expire_session_request() :: #{}.
+
+%% Example:
+%% delete_session_logger_request() :: #{}
+-type delete_session_logger_request() :: #{}.
+
+
+%% Example:
+%% list_session_loggers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_session_loggers_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_browser_settings_response() :: #{}
@@ -660,11 +704,29 @@
 
 
 %% Example:
+%% associate_session_logger_request() :: #{
+%%   <<"sessionLoggerArn">> := string()
+%% }
+-type associate_session_logger_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_portals_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_portals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_log_configuration() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"bucketOwner">> => string(),
+%%   <<"folderStructure">> => list(any()),
+%%   <<"keyPrefix">> => string(),
+%%   <<"logFileFormat">> => list(any())
+%% }
+-type s3_log_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -703,6 +765,19 @@
 
 
 %% Example:
+%% create_session_logger_request() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"clientToken">> => string(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eventFilter">> := list(),
+%%   <<"logConfiguration">> := log_configuration(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_session_logger_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_trust_store_request() :: #{
 %%   <<"certificateList">> := list(binary()),
 %%   <<"clientToken">> => string(),
@@ -735,6 +810,14 @@
 %%   <<"portalArn">> => string()
 %% }
 -type associate_network_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_session_loggers_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"sessionLoggers">> => list(session_logger_summary())
+%% }
+-type list_session_loggers_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -872,12 +955,24 @@
 %% }
 -type update_data_protection_settings_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_session_logger_response() :: #{}
+-type delete_session_logger_response() :: #{}.
+
 
 %% Example:
 %% browser_settings_summary() :: #{
 %%   <<"browserSettingsArn">> => string()
 %% }
 -type browser_settings_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_session_logger_response() :: #{
+%%   <<"portalArn">> => string(),
+%%   <<"sessionLoggerArn">> => string()
+%% }
+-type associate_session_logger_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -927,6 +1022,10 @@
 %%   <<"identityProviderType">> => string()
 %% }
 -type identity_provider_summary() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_session_logger_request() :: #{}
+-type disassociate_session_logger_request() :: #{}.
 
 
 %% Example:
@@ -1136,6 +1235,13 @@
 %% }
 -type create_trust_store_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% update_session_logger_response() :: #{
+%%   <<"sessionLogger">> => session_logger()
+%% }
+-type update_session_logger_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_identity_provider_response() :: #{}
 -type delete_identity_provider_response() :: #{}.
@@ -1328,11 +1434,26 @@
 %%   <<"portalEndpoint">> => string(),
 %%   <<"portalStatus">> => string(),
 %%   <<"rendererType">> => string(),
+%%   <<"sessionLoggerArn">> => string(),
 %%   <<"trustStoreArn">> => string(),
 %%   <<"userAccessLoggingSettingsArn">> => string(),
 %%   <<"userSettingsArn">> => string()
 %% }
 -type portal_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_logger() :: #{
+%%   <<"additionalEncryptionContext">> => map(),
+%%   <<"associatedPortalArns">> => list(string()),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"customerManagedKey">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eventFilter">> => list(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"sessionLoggerArn">> => string()
+%% }
+-type session_logger() :: #{binary() => any()}.
 
 %% Example:
 %% get_identity_provider_request() :: #{}
@@ -1375,6 +1496,16 @@
 
 
 %% Example:
+%% session_logger_summary() :: #{
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"displayName">> => string(),
+%%   <<"logConfiguration">> => log_configuration(),
+%%   <<"sessionLoggerArn">> => string()
+%% }
+-type session_logger_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_pattern() :: #{
 %%   <<"keywordRegex">> => string(),
 %%   <<"patternDescription">> => string(),
@@ -1401,6 +1532,21 @@
 %%   <<"identityProviderType">> => string()
 %% }
 -type update_identity_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_logger_request() :: #{}
+-type get_session_logger_request() :: #{}.
+
+%% Example:
+%% disassociate_session_logger_response() :: #{}
+-type disassociate_session_logger_response() :: #{}.
+
+
+%% Example:
+%% log_configuration() :: #{
+%%   <<"s3">> => s3_log_configuration()
+%% }
+-type log_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1511,12 +1657,20 @@
 %%   <<"portalEndpoint">> => string(),
 %%   <<"portalStatus">> => string(),
 %%   <<"rendererType">> => string(),
+%%   <<"sessionLoggerArn">> => string(),
 %%   <<"statusReason">> => string(),
 %%   <<"trustStoreArn">> => string(),
 %%   <<"userAccessLoggingSettingsArn">> => string(),
 %%   <<"userSettingsArn">> => string()
 %% }
 -type portal() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_session_logger_response() :: #{
+%%   <<"sessionLoggerArn">> => string()
+%% }
+-type create_session_logger_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1562,6 +1716,14 @@
     conflict_exception().
 
 -type associate_network_settings_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_session_logger_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1645,6 +1807,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_session_logger_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_trust_store_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1711,6 +1881,13 @@
     internal_server_exception() | 
     conflict_exception().
 
+-type delete_session_logger_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
 -type delete_trust_store_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1763,6 +1940,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type disassociate_session_logger_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type disassociate_trust_store_errors() ::
     throttling_exception() | 
@@ -1851,6 +2035,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_session_logger_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_trust_store_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1910,6 +2101,12 @@
     internal_server_exception().
 
 -type list_portals_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_session_loggers_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2012,6 +2209,13 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type update_session_logger_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type update_trust_store_errors() ::
     throttling_exception() | 
@@ -2175,6 +2379,41 @@ associate_network_settings(Client, PortalArn, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"networkSettingsArn">>, <<"networkSettingsArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a session logger with a portal.
+-spec associate_session_logger(aws_client:aws_client(), binary() | list(), associate_session_logger_request()) ->
+    {ok, associate_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, associate_session_logger_errors(), tuple()}.
+associate_session_logger(Client, PortalArn, Input) ->
+    associate_session_logger(Client, PortalArn, Input, []).
+
+-spec associate_session_logger(aws_client:aws_client(), binary() | list(), associate_session_logger_request(), proplists:proplist()) ->
+    {ok, associate_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, associate_session_logger_errors(), tuple()}.
+associate_session_logger(Client, PortalArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/sessionLogger"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"sessionLoggerArn">>, <<"sessionLoggerArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -2484,6 +2723,40 @@ create_portal(Client, Input) ->
 create_portal(Client, Input0, Options0) ->
     Method = post,
     Path = ["/portals"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a session logger.
+-spec create_session_logger(aws_client:aws_client(), create_session_logger_request()) ->
+    {ok, create_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, create_session_logger_errors(), tuple()}.
+create_session_logger(Client, Input) ->
+    create_session_logger(Client, Input, []).
+
+-spec create_session_logger(aws_client:aws_client(), create_session_logger_request(), proplists:proplist()) ->
+    {ok, create_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, create_session_logger_errors(), tuple()}.
+create_session_logger(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/sessionLoggers"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2827,6 +3100,40 @@ delete_portal(Client, PortalArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a session logger resource.
+-spec delete_session_logger(aws_client:aws_client(), binary() | list(), delete_session_logger_request()) ->
+    {ok, delete_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, delete_session_logger_errors(), tuple()}.
+delete_session_logger(Client, SessionLoggerArn, Input) ->
+    delete_session_logger(Client, SessionLoggerArn, Input, []).
+
+-spec delete_session_logger(aws_client:aws_client(), binary() | list(), delete_session_logger_request(), proplists:proplist()) ->
+    {ok, delete_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, delete_session_logger_errors(), tuple()}.
+delete_session_logger(Client, SessionLoggerArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/sessionLoggers/", aws_util:encode_multi_segment_uri(SessionLoggerArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the trust store.
 -spec delete_trust_store(aws_client:aws_client(), binary() | list(), delete_trust_store_request()) ->
     {ok, delete_trust_store_response(), tuple()} |
@@ -3046,6 +3353,40 @@ disassociate_network_settings(Client, PortalArn, Input) ->
 disassociate_network_settings(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/networkSettings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a session logger from a portal.
+-spec disassociate_session_logger(aws_client:aws_client(), binary() | list(), disassociate_session_logger_request()) ->
+    {ok, disassociate_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_session_logger_errors(), tuple()}.
+disassociate_session_logger(Client, PortalArn, Input) ->
+    disassociate_session_logger(Client, PortalArn, Input, []).
+
+-spec disassociate_session_logger(aws_client:aws_client(), binary() | list(), disassociate_session_logger_request(), proplists:proplist()) ->
+    {ok, disassociate_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_session_logger_errors(), tuple()}.
+disassociate_session_logger(Client, PortalArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/sessionLogger"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3497,6 +3838,43 @@ get_session(Client, PortalId, SessionId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets details about a specific session logger resource.
+-spec get_session_logger(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_logger_errors(), tuple()}.
+get_session_logger(Client, SessionLoggerArn)
+  when is_map(Client) ->
+    get_session_logger(Client, SessionLoggerArn, #{}, #{}).
+
+-spec get_session_logger(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_logger_errors(), tuple()}.
+get_session_logger(Client, SessionLoggerArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_session_logger(Client, SessionLoggerArn, QueryMap, HeadersMap, []).
+
+-spec get_session_logger(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, get_session_logger_errors(), tuple()}.
+get_session_logger(Client, SessionLoggerArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/sessionLoggers/", aws_util:encode_multi_segment_uri(SessionLoggerArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets the trust store.
 -spec get_trust_store(aws_client:aws_client(), binary() | list()) ->
     {ok, get_trust_store_response(), tuple()} |
@@ -3883,6 +4261,48 @@ list_portals(Client, QueryMap, HeadersMap)
 list_portals(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all available session logger resources.
+-spec list_session_loggers(aws_client:aws_client()) ->
+    {ok, list_session_loggers_response(), tuple()} |
+    {error, any()} |
+    {error, list_session_loggers_errors(), tuple()}.
+list_session_loggers(Client)
+  when is_map(Client) ->
+    list_session_loggers(Client, #{}, #{}).
+
+-spec list_session_loggers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_session_loggers_response(), tuple()} |
+    {error, any()} |
+    {error, list_session_loggers_errors(), tuple()}.
+list_session_loggers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_session_loggers(Client, QueryMap, HeadersMap, []).
+
+-spec list_session_loggers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_session_loggers_response(), tuple()} |
+    {error, any()} |
+    {error, list_session_loggers_errors(), tuple()}.
+list_session_loggers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/sessionLoggers"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4407,6 +4827,40 @@ update_portal(Client, PortalArn, Input) ->
 update_portal(Client, PortalArn, Input0, Options0) ->
     Method = put,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the details of a session logger.
+-spec update_session_logger(aws_client:aws_client(), binary() | list(), update_session_logger_request()) ->
+    {ok, update_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, update_session_logger_errors(), tuple()}.
+update_session_logger(Client, SessionLoggerArn, Input) ->
+    update_session_logger(Client, SessionLoggerArn, Input, []).
+
+-spec update_session_logger(aws_client:aws_client(), binary() | list(), update_session_logger_request(), proplists:proplist()) ->
+    {ok, update_session_logger_response(), tuple()} |
+    {error, any()} |
+    {error, update_session_logger_errors(), tuple()}.
+update_session_logger(Client, SessionLoggerArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/sessionLoggers/", aws_util:encode_multi_segment_uri(SessionLoggerArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -255,6 +255,9 @@
          describe_domain_configuration/2,
          describe_domain_configuration/4,
          describe_domain_configuration/5,
+         describe_encryption_configuration/1,
+         describe_encryption_configuration/3,
+         describe_encryption_configuration/4,
          describe_endpoint/1,
          describe_endpoint/3,
          describe_endpoint/4,
@@ -650,6 +653,8 @@
          update_domain_configuration/4,
          update_dynamic_thing_group/3,
          update_dynamic_thing_group/4,
+         update_encryption_configuration/2,
+         update_encryption_configuration/3,
          update_event_configurations/2,
          update_event_configurations/3,
          update_fleet_metric/3,
@@ -3887,6 +3892,15 @@
 
 
 %% Example:
+%% configuration_details() :: #{
+%%   <<"configurationStatus">> => list(any()),
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string()
+%% }
+-type configuration_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_dynamic_thing_group_request() :: #{
 %%   <<"indexName">> => string(),
 %%   <<"queryString">> := string(),
@@ -3916,6 +3930,15 @@
 %%   <<"removeAutoRegistration">> => boolean()
 %% }
 -type update_ca_certificate_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_encryption_configuration_request() :: #{
+%%   <<"encryptionType">> := list(any()),
+%%   <<"kmsAccessRoleArn">> => string(),
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type update_encryption_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_ota_update_response() :: #{}
@@ -4097,6 +4120,17 @@
 %%   <<"unsetDefaultVersion">> => boolean()
 %% }
 -type update_package_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_encryption_configuration_response() :: #{
+%%   <<"configurationDetails">> => configuration_details(),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsAccessRoleArn">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lastModifiedDate">> => non_neg_integer()
+%% }
+-type describe_encryption_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4916,6 +4950,10 @@
 %%   <<"vpcConfiguration">> => vpc_destination_configuration()
 %% }
 -type topic_rule_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_encryption_configuration_request() :: #{}
+-type describe_encryption_configuration_request() :: #{}.
 
 
 %% Example:
@@ -6895,6 +6933,10 @@
 %% delete_domain_configuration_response() :: #{}
 -type delete_domain_configuration_response() :: #{}.
 
+%% Example:
+%% update_encryption_configuration_response() :: #{}
+-type update_encryption_configuration_response() :: #{}.
+
 
 %% Example:
 %% audit_check_details() :: #{
@@ -7560,14 +7602,16 @@
     conflicting_resource_update_exception() | 
     internal_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    unauthorized_exception().
 
 -type create_topic_rule_destination_errors() ::
     resource_already_exists_exception() | 
     conflicting_resource_update_exception() | 
     internal_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    unauthorized_exception().
 
 -type delete_account_audit_configuration_errors() ::
     throttling_exception() | 
@@ -7932,6 +7976,13 @@
     service_unavailable_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    unauthorized_exception() | 
+    internal_failure_exception().
+
+-type describe_encryption_configuration_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
     unauthorized_exception() | 
     internal_failure_exception().
 
@@ -8671,7 +8722,8 @@
 -type list_topic_rules_errors() ::
     internal_exception() | 
     service_unavailable_exception() | 
-    invalid_request_exception().
+    invalid_request_exception() | 
+    unauthorized_exception().
 
 -type list_v2_logging_levels_errors() ::
     internal_exception() | 
@@ -8964,6 +9016,13 @@
     invalid_request_exception() | 
     resource_not_found_exception() | 
     version_conflict_exception() | 
+    internal_failure_exception().
+
+-type update_encryption_configuration_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    invalid_request_exception() | 
+    unauthorized_exception() | 
     internal_failure_exception().
 
 -type update_event_configurations_errors() ::
@@ -13340,6 +13399,50 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
 describe_domain_configuration(Client, DomainConfigurationName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the encryption configuration for resources and data of your
+%% Amazon Web Services account in
+%% Amazon Web Services IoT Core.
+%%
+%% For more information, see Key management in IoT:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/key-management.html
+%% from
+%% the Amazon Web Services IoT Core Developer Guide.
+-spec describe_encryption_configuration(aws_client:aws_client()) ->
+    {ok, describe_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_encryption_configuration_errors(), tuple()}.
+describe_encryption_configuration(Client)
+  when is_map(Client) ->
+    describe_encryption_configuration(Client, #{}, #{}).
+
+-spec describe_encryption_configuration(aws_client:aws_client(), map(), map()) ->
+    {ok, describe_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_encryption_configuration_errors(), tuple()}.
+describe_encryption_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_encryption_configuration(Client, QueryMap, HeadersMap, []).
+
+-spec describe_encryption_configuration(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, describe_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_encryption_configuration_errors(), tuple()}.
+describe_encryption_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/encryption-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -19498,16 +19601,40 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %%
 %% You can cancel the transfer until it is acknowledged by the recipient.
 %%
-%% No notification is sent to the transfer destination's account. It is
-%% up to the caller
+%% No notification is sent to the transfer destination's account.
+%% It's up to the caller
 %% to notify the transfer target.
 %%
-%% The certificate being transferred must not be in the ACTIVE state. You can
-%% use the
+%% The certificate being transferred must not be in the `ACTIVE' state.
+%% You can use the
 %% `UpdateCertificate' action to deactivate it.
 %%
 %% The certificate must not have any policies attached to it. You can use the
 %% `DetachPolicy' action to detach them.
+%%
+%% Customer managed key behavior: When you use a customer managed key to
+%% secure your data and then transfer
+%% the key to a customer in a different account using the
+%% `TransferCertificate' operation, the certificates will no longer be
+%% protected by their
+%% customer managed key configuration. During the transfer process,
+%% certificates are encrypted using IoT owned keys.
+%%
+%% While a certificate is in the PENDING_TRANSFER state, it's always
+%% protected by IoT owned keys, regardless of the customer managed key
+%% configuration of either the source or destination account.
+%%
+%% Once the transfer is completed through `AcceptCertificateTransfer',
+%% `RejectCertificateTransfer', or
+%% `CancelCertificateTransfer', the certificate will be protected by the
+%% customer managed key configuration of the account that owns
+%% the certificate after the transfer operation:
+%%
+%% If the transfer is accepted: The certificate is protected by the
+%% destination account's customer managed key configuration.
+%%
+%% If the transfer is rejected or cancelled: The certificate is protected by
+%% the source account's customer managed key configuration.
 -spec transfer_certificate(aws_client:aws_client(), binary() | list(), transfer_certificate_request()) ->
     {ok, transfer_certificate_response(), tuple()} |
     {error, any()} |
@@ -20041,6 +20168,51 @@ update_dynamic_thing_group(Client, ThingGroupName, Input) ->
 update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = patch,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the encryption configuration.
+%%
+%% By default, all Amazon Web Services IoT Core data at rest is
+%% encrypted using Amazon Web Services owned keys. Amazon Web Services IoT
+%% Core also supports symmetric customer managed keys
+%% from Amazon Web Services Key Management Service (KMS). With customer
+%% managed keys, you create, own, and
+%% manage the KMS keys in your Amazon Web Services account. For more
+%% information, see Data
+%% encryption:
+%% https://docs.aws.amazon.com/iot/latest/developerguide/data-encryption.html
+%% in the Amazon Web Services IoT Core Developer Guide.
+-spec update_encryption_configuration(aws_client:aws_client(), update_encryption_configuration_request()) ->
+    {ok, update_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_encryption_configuration_errors(), tuple()}.
+update_encryption_configuration(Client, Input) ->
+    update_encryption_configuration(Client, Input, []).
+
+-spec update_encryption_configuration(aws_client:aws_client(), update_encryption_configuration_request(), proplists:proplist()) ->
+    {ok, update_encryption_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_encryption_configuration_errors(), tuple()}.
+update_encryption_configuration(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/encryption-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

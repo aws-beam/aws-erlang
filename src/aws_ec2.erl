@@ -3651,6 +3651,7 @@
 %% Example:
 %% terminate_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
+%%   <<"Force">> => boolean(),
 %%   <<"InstanceIds">> := list(string()),
 %%   <<"SkipOsShutdown">> => boolean()
 %% }

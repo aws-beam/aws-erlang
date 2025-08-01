@@ -253,6 +253,7 @@
 %%   <<"BusinessName">> => string(),
 %%   <<"BusinessPhoneNumber">> => string(),
 %%   <<"EmailAddress">> => string(),
+%%   <<"EngagementPreferences">> => engagement_preferences(),
 %%   <<"FirstName">> => string(),
 %%   <<"FoundByItems">> => list(found_by_key_value()),
 %%   <<"Gender">> => list(any()),
@@ -267,6 +268,7 @@
 %%   <<"PersonalEmailAddress">> => string(),
 %%   <<"PhoneNumber">> => string(),
 %%   <<"ProfileId">> => string(),
+%%   <<"ProfileType">> => list(any()),
 %%   <<"ShippingAddress">> => address()
 %% }
 -type profile() :: #{binary() => any()}.
@@ -767,6 +769,14 @@
 
 
 %% Example:
+%% profile_type_dimension() :: #{
+%%   <<"DimensionType">> => list(any()),
+%%   <<"Values">> => list(list(any())())
+%% }
+-type profile_type_dimension() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_similar_profiles_response() :: #{
 %%   <<"ConfidenceScore">> => float(),
 %%   <<"MatchId">> => string(),
@@ -1193,6 +1203,7 @@
 %%   <<"BusinessName">> => string(),
 %%   <<"BusinessPhoneNumber">> => string(),
 %%   <<"EmailAddress">> => string(),
+%%   <<"EngagementPreferences">> => engagement_preferences(),
 %%   <<"FirstName">> => string(),
 %%   <<"Gender">> => list(any()),
 %%   <<"GenderString">> => string(),
@@ -1205,6 +1216,7 @@
 %%   <<"PartyTypeString">> => string(),
 %%   <<"PersonalEmailAddress">> => string(),
 %%   <<"PhoneNumber">> => string(),
+%%   <<"ProfileType">> => list(any()),
 %%   <<"ShippingAddress">> => address()
 %% }
 -type create_profile_request() :: #{binary() => any()}.
@@ -1326,6 +1338,7 @@
 %%   <<"BusinessName">> => string(),
 %%   <<"BusinessPhoneNumber">> => string(),
 %%   <<"EmailAddress">> => string(),
+%%   <<"EngagementPreferences">> => engagement_preferences(),
 %%   <<"FirstName">> => string(),
 %%   <<"Gender">> => list(any()),
 %%   <<"GenderString">> => string(),
@@ -1339,6 +1352,7 @@
 %%   <<"PersonalEmailAddress">> => string(),
 %%   <<"PhoneNumber">> => string(),
 %%   <<"ProfileId">> := string(),
+%%   <<"ProfileType">> => list(any()),
 %%   <<"ShippingAddress">> => update_address()
 %% }
 -type update_profile_request() :: #{binary() => any()}.
@@ -1353,6 +1367,14 @@
 %%   <<"Value">> => string()
 %% }
 -type get_calculated_attribute_for_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% engagement_preferences() :: #{
+%%   <<"Email">> => list(contact_preference()),
+%%   <<"Phone">> => list(contact_preference())
+%% }
+-type engagement_preferences() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1817,6 +1839,7 @@
 %%   <<"BusinessName">> => string(),
 %%   <<"BusinessPhoneNumber">> => string(),
 %%   <<"EmailAddress">> => string(),
+%%   <<"EngagementPreferences">> => string(),
 %%   <<"FirstName">> => string(),
 %%   <<"Gender">> => string(),
 %%   <<"HomePhoneNumber">> => string(),
@@ -1827,6 +1850,7 @@
 %%   <<"PartyType">> => string(),
 %%   <<"PersonalEmailAddress">> => string(),
 %%   <<"PhoneNumber">> => string(),
+%%   <<"ProfileType">> => string(),
 %%   <<"ShippingAddress">> => string()
 %% }
 -type field_source_profile_ids() :: #{binary() => any()}.
@@ -2185,6 +2209,16 @@
 %%   <<"SegmentDefinitionName">> => string()
 %% }
 -type get_segment_membership_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_preference() :: #{
+%%   <<"ContactType">> => list(any()),
+%%   <<"KeyName">> => string(),
+%%   <<"KeyValue">> => string(),
+%%   <<"ProfileId">> => string()
+%% }
+-type contact_preference() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2666,6 +2700,7 @@
 %%   <<"PartyTypeString">> => profile_dimension(),
 %%   <<"PersonalEmailAddress">> => profile_dimension(),
 %%   <<"PhoneNumber">> => profile_dimension(),
+%%   <<"ProfileType">> => profile_type_dimension(),
 %%   <<"ShippingAddress">> => address_dimension()
 %% }
 -type profile_attributes() :: #{binary() => any()}.

@@ -1169,6 +1169,7 @@
 %%   <<"AnonymousAuthDisableDate">> => non_neg_integer(),
 %%   <<"AnonymousAuthEnabled">> => boolean(),
 %%   <<"Enabled">> => boolean(),
+%%   <<"IAMFederationOptions">> => iam_federation_options_output(),
 %%   <<"InternalUserDatabaseEnabled">> => boolean(),
 %%   <<"JWTOptions">> => j_w_t_options_output(),
 %%   <<"SAMLOptions">> => saml_options_output()
@@ -1496,6 +1497,15 @@
 
 
 %% Example:
+%% iam_federation_options_input() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type iam_federation_options_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_package_version_history_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1644,6 +1654,7 @@
 %% advanced_security_options_input() :: #{
 %%   <<"AnonymousAuthEnabled">> => boolean(),
 %%   <<"Enabled">> => boolean(),
+%%   <<"IAMFederationOptions">> => iam_federation_options_input(),
 %%   <<"InternalUserDatabaseEnabled">> => boolean(),
 %%   <<"JWTOptions">> => j_w_t_options_input(),
 %%   <<"MasterUserOptions">> => master_user_options(),
@@ -1977,6 +1988,15 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_federation_options_output() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"RolesKey">> => string(),
+%%   <<"SubjectKey">> => string()
+%% }
+-type iam_federation_options_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_domain_request() :: #{}
@@ -3319,8 +3339,8 @@ accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 %% @doc Creates a new direct-query data source to the specified domain.
 %%
 %% For more information, see
-%% Creating Amazon
-%% OpenSearch Service data source integrations with Amazon S3:
+%% Creating Amazon OpenSearch Service data source integrations with Amazon
+%% S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html.
 -spec add_data_source(aws_client:aws_client(), binary() | list(), add_data_source_request()) ->
     {ok, add_data_source_response(), tuple()} |
@@ -3355,9 +3375,9 @@ add_data_source(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a new data source in Amazon OpenSearch Service so that you can
-%% perform direct queries
-%% on external data.
+%% @doc
+%% Adds a new data source in Amazon OpenSearch Service
+%% so that you can perform direct queries on external data.
 -spec add_direct_query_data_source(aws_client:aws_client(), add_direct_query_data_source_request()) ->
     {ok, add_direct_query_data_source_response(), tuple()} |
     {error, any()} |
@@ -3435,7 +3455,8 @@ add_tags(Client, Input0, Options0) ->
 %% @doc Associates a package with an Amazon OpenSearch Service domain.
 %%
 %% For more information, see
-%% Custom packages for Amazon OpenSearch Service:
+%% Custom packages
+%% for Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 -spec associate_package(aws_client:aws_client(), binary() | list(), binary() | list(), associate_package_request()) ->
     {ok, associate_package_response(), tuple()} |
@@ -3471,8 +3492,7 @@ associate_package(Client, DomainName, PackageID, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Operation in the Amazon OpenSearch Service API for associating
-%% multiple packages with a
-%% domain simultaneously.
+%% multiple packages with a domain simultaneously.
 -spec associate_packages(aws_client:aws_client(), associate_packages_request()) ->
     {ok, associate_packages_response(), tuple()} |
     {error, any()} |
@@ -3621,8 +3641,8 @@ cancel_service_software_update(Client, Input0, Options0) ->
 
 %% @doc Creates an OpenSearch UI application.
 %%
-%% For more information, see Using the OpenSearch user
-%% interface in Amazon OpenSearch Service:
+%% For more information, see Using the OpenSearch user interface in Amazon
+%% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/application.html.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
@@ -3843,8 +3863,8 @@ delete_application(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes a direct-query data source.
 %%
-%% For more information, see Deleting an Amazon
-%% OpenSearch Service data source with Amazon S3:
+%% For more information, see Deleting an Amazon OpenSearch Service data
+%% source with Amazon S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-delete.html.
 -spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
@@ -3879,8 +3899,9 @@ delete_data_source(Client, DomainName, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a previously configured direct query data source from Amazon
-%% OpenSearch Service.
+%% @doc
+%% Deletes a previously configured direct query data
+%% source from Amazon OpenSearch Service.
 -spec delete_direct_query_data_source(aws_client:aws_client(), binary() | list(), delete_direct_query_data_source_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4189,8 +4210,8 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
 %% on an Amazon
 %% OpenSearch Service domain.
 %%
-%% For more information, see Making
-%% configuration changes in Amazon OpenSearch Service:
+%% For more information, see Making configuration changes in Amazon
+%% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-configuration-changes.html.
 -spec describe_domain_change_progress(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_change_progress_response(), tuple()} |
@@ -4270,8 +4291,8 @@ describe_domain_config(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about domain and node health, the standby
-%% Availability Zone, number of
-%% nodes per Availability Zone, and shard count per node.
+%% Availability Zone, number of nodes per Availability Zone, and shard count
+%% per node.
 -spec describe_domain_health(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_domain_health_response(), tuple()} |
     {error, any()} |
@@ -4385,8 +4406,8 @@ describe_domains(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes the progress of a pre-update dry run analysis on an Amazon
-%% OpenSearch Service
-%% domain.
+%% OpenSearch
+%% Service domain.
 %%
 %% For more information, see Determining whether a change will cause a
 %% blue/green deployment:
@@ -4597,8 +4618,7 @@ describe_packages(Client, Input0, Options0) ->
 %% offerings for a given
 %% Region.
 %%
-%% For more information, see Reserved Instances in Amazon OpenSearch
-%% Service:
+%% For more information, see Reserved Instances in Amazon OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html.
 -spec describe_reserved_instance_offerings(aws_client:aws_client()) ->
     {ok, describe_reserved_instance_offerings_response(), tuple()} |
@@ -4920,9 +4940,9 @@ get_data_source(Client, DomainName, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns detailed configuration information for a specific direct
-%% query data source in
-%% Amazon OpenSearch Service.
+%% @doc
+%% Returns detailed configuration information for
+%% a specific direct query data source in Amazon OpenSearch Service.
 -spec get_direct_query_data_source(aws_client:aws_client(), binary() | list()) ->
     {ok, get_direct_query_data_source_response(), tuple()} |
     {error, any()} |
@@ -5001,12 +5021,10 @@ get_domain_maintenance_status(Client, DomainName, MaintenanceId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Amazon OpenSearch Service package versions, along
-%% with their creation
-%% time, commit message, and plugin properties (if the package is a zip
-%% plugin package).
+%% with their creation time, commit message, and plugin properties (if the
+%% package is a zip plugin package).
 %%
-%% For more
-%% information, see Custom packages for Amazon
+%% For more information, see Custom packages for Amazon
 %% OpenSearch Service:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html.
 -spec get_package_version_history(aws_client:aws_client(), binary() | list()) ->
@@ -5178,9 +5196,9 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists direct-query data sources for a specific domain.
 %%
-%% For more information, see For more
-%% information, see Working with Amazon
-%% OpenSearch Service direct queries with Amazon S3:
+%% For more information, see
+%% For more information, see
+%% Working with Amazon OpenSearch Service direct queries with Amazon S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3.html.
 -spec list_data_sources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_data_sources_response(), tuple()} |
@@ -5218,9 +5236,9 @@ list_data_sources(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists an inventory of all the direct query data sources that you have
-%% configured within
-%% Amazon OpenSearch Service.
+%% @doc
+%% Lists an inventory of all the direct query data sources that you
+%% have configured within Amazon OpenSearch Service.
 -spec list_direct_query_data_sources(aws_client:aws_client()) ->
     {ok, list_direct_query_data_sources_response(), tuple()} |
     {error, any()} |
@@ -5909,9 +5927,9 @@ revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 
 %% @doc Starts the node maintenance process on the data node.
 %%
-%% These processes can include a node
-%% reboot, an Opensearch or Elasticsearch process restart, or a Dashboard or
-%% Kibana restart.
+%% These processes can include a node reboot, an Opensearch or Elasticsearch
+%% process restart,
+%% or a Dashboard or Kibana restart.
 -spec start_domain_maintenance(aws_client:aws_client(), binary() | list(), start_domain_maintenance_request()) ->
     {ok, start_domain_maintenance_response(), tuple()} |
     {error, any()} |
@@ -6022,8 +6040,9 @@ update_application(Client, Id, Input0, Options0) ->
 
 %% @doc Updates a direct-query data source.
 %%
-%% For more information, see Working with Amazon
-%% OpenSearch Service data source integrations with Amazon S3:
+%% For more information, see
+%% Working with Amazon OpenSearch Service data source integrations with
+%% Amazon S3:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3-creating.html.
 -spec update_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_source_request()) ->
     {ok, update_data_source_response(), tuple()} |
@@ -6058,9 +6077,9 @@ update_data_source(Client, DomainName, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the configuration or properties of an existing direct query
-%% data source in Amazon
-%% OpenSearch Service.
+%% @doc
+%% Updates the configuration or properties of an existing
+%% direct query data source in Amazon OpenSearch Service.
 -spec update_direct_query_data_source(aws_client:aws_client(), binary() | list(), update_direct_query_data_source_request()) ->
     {ok, update_direct_query_data_source_response(), tuple()} |
     {error, any()} |
@@ -6095,7 +6114,8 @@ update_direct_query_data_source(Client, DataSourceName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies the cluster configuration of the specified Amazon OpenSearch
-%% Service domain.
+%% Service
+%% domain.
 -spec update_domain_config(aws_client:aws_client(), binary() | list(), update_domain_config_request()) ->
     {ok, update_domain_config_response(), tuple()} |
     {error, any()} |
@@ -6169,8 +6189,7 @@ update_package(Client, Input0, Options0) ->
 
 %% @doc Updates the scope of a package.
 %%
-%% Scope of the package defines users who can view and
-%% associate a package.
+%% Scope of the package defines users who can view and associate a package.
 -spec update_package_scope(aws_client:aws_client(), update_package_scope_request()) ->
     {ok, update_package_scope_response(), tuple()} |
     {error, any()} |
