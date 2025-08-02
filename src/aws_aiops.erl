@@ -134,12 +134,12 @@
 %% get_investigation_group_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"chatbotNotificationChannel">> => map(),
-%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdAt">> => [float()],
 %%   <<"createdBy">> => string(),
 %%   <<"crossAccountConfigurations">> => list(cross_account_configuration()),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"isCloudTrailEventHistoryEnabled">> => [boolean()],
-%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedAt">> => [float()],
 %%   <<"lastModifiedBy">> => string(),
 %%   <<"name">> => string(),
 %%   <<"retentionInDays">> => float(),
@@ -379,20 +379,19 @@
 %% group in that Region
 %%
 %% To create an investigation group and set up CloudWatch investigations, you
-%% must be signed in to an IAM principal that has the either the
+%% must be signed in to an IAM principal that has either the
 %% `AIOpsConsoleAdminPolicy' or the `AdministratorAccess' IAM policy
 %% attached, or to an account that has similar permissions.
 %%
 %% You can configure CloudWatch alarms to start investigations and add events
 %% to investigations. If you create your investigation group with
 %% `CreateInvestigationGroup' and you want to enable alarms to do this,
-%% you must use PutInvestigationGroupPolicy:
-%% https://docs.aws.amazon.com/operationalinvestigations/latest/AmazonQDeveloperOperationalInvestigationsAPIReference/API_PutInvestigationGroupPolicy.html
-%% to create a resource policy that grants this permission to CloudWatch
-%% alarms.
+%% you must use `PutInvestigationGroupPolicy' to create a resource policy
+%% that grants this permission to CloudWatch alarms.
 %%
-%% For more information about configuring CloudWatch alarms to work with
-%% CloudWatch investigations, see
+%% For more information about configuring CloudWatch alarms, see Using Amazon
+%% CloudWatch alarms:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html
 -spec create_investigation_group(aws_client:aws_client(), create_investigation_group_input()) ->
     {ok, create_investigation_group_output(), tuple()} |
     {error, any()} |
@@ -537,8 +536,11 @@ get_investigation_group(Client, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the IAM resource policy that is associated with the specified
-%% investigation group.
+%% @doc Returns the JSON of the IAM resource policy associated with the
+%% specified investigation group in a string.
+%%
+%% For example,
+%% `{\&quot;Version\&quot;:\&quot;2012-10-17\&quot;,\&quot;Statement\&quot;:[{\&quot;Effect\&quot;:\&quot;Allow\&quot;,\&quot;Principal\&quot;:{\&quot;Service\&quot;:\&quot;aiops.alarms.cloudwatch.amazonaws.com\&quot;},\&quot;Action\&quot;:[\&quot;aiops:CreateInvestigation\&quot;,\&quot;aiops:CreateInvestigationEvent\&quot;],\&quot;Resource\&quot;:\&quot;*\&quot;,\&quot;Condition\&quot;:{\&quot;StringEquals\&quot;:{\&quot;aws:SourceAccount\&quot;:\&quot;111122223333\&quot;},\&quot;ArnLike\&quot;:{\&quot;aws:SourceArn\&quot;:\&quot;arn:aws:cloudwatch:us-east-1:111122223333:alarm:*\&quot;}}}]}'.
 -spec get_investigation_group_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_investigation_group_policy_response(), tuple()} |
     {error, any()} |
@@ -665,15 +667,15 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% events to investigations, you must use this operation to create a policy
 %% similar to this example.
 %%
-%% `{ &quot;Version&quot;: &quot;2008-10-17&quot;, &quot;Statement&quot;: [{
-%% &quot;Effect&quot;: &quot;Allow&quot;, &quot;Principal&quot;: {
+%% ` { &quot;Version&quot;: &quot;2008-10-17&quot;, &quot;Statement&quot;: [
+%% { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Principal&quot;: {
 %% &quot;Service&quot;: &quot;aiops.alarms.cloudwatch.amazonaws.com&quot; },
-%% &quot;Action&quot;: [&quot;aiops:CreateInvestigation&quot;,
-%% &quot;aiops:CreateInvestigationEvent&quot;], &quot;Resource&quot;:
+%% &quot;Action&quot;: [ &quot;aiops:CreateInvestigation&quot;,
+%% &quot;aiops:CreateInvestigationEvent&quot; ], &quot;Resource&quot;:
 %% &quot;*&quot;, &quot;Condition&quot;: { &quot;StringEquals&quot;: {
 %% &quot;aws:SourceAccount&quot;: &quot;account-id&quot; },
 %% &quot;ArnLike&quot;: { &quot;aws:SourceArn&quot;:
-%% &quot;arn:aws:cloudwatch:region:account-id:alarm:*&quot; } } }] }'
+%% &quot;arn:aws:cloudwatch:region:account-id:alarm:*&quot; } } } ] } '
 -spec put_investigation_group_policy(aws_client:aws_client(), binary() | list(), put_investigation_group_policy_request()) ->
     {ok, put_investigation_group_policy_response(), tuple()} |
     {error, any()} |

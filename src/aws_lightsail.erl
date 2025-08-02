@@ -21,7 +21,7 @@
 %% Command Line Interface (CLI), or SDKs. For more information about
 %% Lightsail
 %% concepts and tasks, see the Amazon Lightsail Developer Guide:
-%% https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.
+%% https://docs.aws.amazon.com/lightsail/latest/userguide/lightsail-how-to-set-up-and-configure-aws-cli.
 %%
 %% This API Reference provides detailed information about the actions, data
 %% types,
@@ -696,6 +696,15 @@
 %%   <<"includeRelationalDatabaseAvailabilityZones">> => boolean()
 %% }
 -type get_regions_request() :: #{binary() => any()}.
+
+%% Example:
+%% region_setup_in_progress_exception() :: #{
+%%   <<"code">> => string(),
+%%   <<"docs">> => string(),
+%%   <<"message">> => string(),
+%%   <<"tip">> => string()
+%% }
+-type region_setup_in_progress_exception() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_result() :: #{
@@ -3967,7 +3976,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type attach_certificate_to_distribution_errors() ::
     operation_failure_exception() | 
@@ -3984,7 +3994,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type attach_instances_to_load_balancer_errors() ::
     operation_failure_exception() | 
@@ -3993,7 +4004,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type attach_load_balancer_tls_certificate_errors() ::
     operation_failure_exception() | 
@@ -4002,7 +4014,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type attach_static_ip_errors() ::
     operation_failure_exception() | 
@@ -4011,7 +4024,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type close_instance_public_ports_errors() ::
     operation_failure_exception() | 
@@ -4020,7 +4034,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type copy_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4029,27 +4044,31 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_bucket_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_bucket_access_key_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_certificate_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_cloud_formation_stack_errors() ::
     operation_failure_exception() | 
@@ -4058,7 +4077,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_contact_method_errors() ::
     operation_failure_exception() | 
@@ -4066,28 +4086,32 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_container_service_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_container_service_deployment_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_container_service_registry_login_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_disk_errors() ::
     operation_failure_exception() | 
@@ -4096,7 +4120,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_disk_from_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4105,7 +4130,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_disk_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4114,7 +4140,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_distribution_errors() ::
     operation_failure_exception() | 
@@ -4131,7 +4158,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_domain_entry_errors() ::
     operation_failure_exception() | 
@@ -4140,14 +4168,16 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_g_ui_session_access_details_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_instance_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4156,7 +4186,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_instances_errors() ::
     operation_failure_exception() | 
@@ -4165,7 +4196,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_instances_from_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4174,7 +4206,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_key_pair_errors() ::
     operation_failure_exception() | 
@@ -4183,7 +4216,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_load_balancer_errors() ::
     operation_failure_exception() | 
@@ -4192,7 +4226,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_load_balancer_tls_certificate_errors() ::
     operation_failure_exception() | 
@@ -4201,7 +4236,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_relational_database_errors() ::
     operation_failure_exception() | 
@@ -4210,7 +4246,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_relational_database_from_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4219,7 +4256,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type create_relational_database_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4228,7 +4266,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_alarm_errors() ::
     operation_failure_exception() | 
@@ -4236,7 +4275,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_auto_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4244,28 +4284,32 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_bucket_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_bucket_access_key_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_certificate_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_contact_method_errors() ::
     operation_failure_exception() | 
@@ -4273,21 +4317,24 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_container_image_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_container_service_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_disk_errors() ::
     operation_failure_exception() | 
@@ -4296,7 +4343,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_disk_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4305,7 +4353,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_distribution_errors() ::
     operation_failure_exception() | 
@@ -4322,7 +4371,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_domain_entry_errors() ::
     operation_failure_exception() | 
@@ -4331,7 +4381,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_instance_errors() ::
     operation_failure_exception() | 
@@ -4340,7 +4391,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_instance_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4349,7 +4401,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_key_pair_errors() ::
     operation_failure_exception() | 
@@ -4358,7 +4411,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_known_host_keys_errors() ::
     operation_failure_exception() | 
@@ -4367,7 +4421,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_load_balancer_errors() ::
     operation_failure_exception() | 
@@ -4376,7 +4431,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_load_balancer_tls_certificate_errors() ::
     operation_failure_exception() | 
@@ -4385,7 +4441,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_relational_database_errors() ::
     operation_failure_exception() | 
@@ -4394,7 +4451,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type delete_relational_database_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4403,7 +4461,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type detach_certificate_from_distribution_errors() ::
     operation_failure_exception() | 
@@ -4420,7 +4479,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type detach_instances_from_load_balancer_errors() ::
     operation_failure_exception() | 
@@ -4429,7 +4489,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type detach_static_ip_errors() ::
     operation_failure_exception() | 
@@ -4438,7 +4499,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type disable_add_on_errors() ::
     operation_failure_exception() | 
@@ -4446,7 +4508,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type download_default_key_pair_errors() ::
     operation_failure_exception() | 
@@ -4455,7 +4518,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type enable_add_on_errors() ::
     operation_failure_exception() | 
@@ -4463,7 +4527,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type export_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4472,7 +4537,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_active_names_errors() ::
     operation_failure_exception() | 
@@ -4481,7 +4547,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_alarms_errors() ::
     operation_failure_exception() | 
@@ -4489,7 +4556,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_auto_snapshots_errors() ::
     operation_failure_exception() | 
@@ -4497,7 +4565,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_blueprints_errors() ::
     operation_failure_exception() | 
@@ -4506,34 +4575,39 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_bucket_access_keys_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_bucket_bundles_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_bucket_metric_data_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_buckets_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_bundles_errors() ::
     operation_failure_exception() | 
@@ -4542,14 +4616,16 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_certificates_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_cloud_formation_stack_records_errors() ::
     operation_failure_exception() | 
@@ -4558,7 +4634,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_contact_methods_errors() ::
     operation_failure_exception() | 
@@ -4566,61 +4643,70 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_container_api_metadata_errors() ::
     access_denied_exception() | 
     service_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_container_images_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_container_log_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_container_service_deployments_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_container_service_metric_data_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_container_service_powers_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_container_services_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_cost_estimate_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_disk_errors() ::
     operation_failure_exception() | 
@@ -4629,7 +4715,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_disk_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4638,7 +4725,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_disk_snapshots_errors() ::
     operation_failure_exception() | 
@@ -4647,7 +4735,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_disks_errors() ::
     operation_failure_exception() | 
@@ -4656,7 +4745,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_distribution_bundles_errors() ::
     operation_failure_exception() | 
@@ -4697,7 +4787,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_domains_errors() ::
     operation_failure_exception() | 
@@ -4706,7 +4797,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_export_snapshot_records_errors() ::
     operation_failure_exception() | 
@@ -4715,7 +4807,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_instance_errors() ::
     operation_failure_exception() | 
@@ -4724,7 +4817,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_instance_access_details_errors() ::
     operation_failure_exception() | 
@@ -4733,7 +4827,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_instance_metric_data_errors() ::
     operation_failure_exception() | 
@@ -4742,7 +4837,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_instance_port_states_errors() ::
     operation_failure_exception() | 
@@ -4751,7 +4847,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_instance_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4760,7 +4857,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_instance_snapshots_errors() ::
     operation_failure_exception() | 
@@ -4769,7 +4867,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_instance_state_errors() ::
     operation_failure_exception() | 
@@ -4778,7 +4877,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_instances_errors() ::
     operation_failure_exception() | 
@@ -4787,7 +4887,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_key_pair_errors() ::
     operation_failure_exception() | 
@@ -4796,7 +4897,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_key_pairs_errors() ::
     operation_failure_exception() | 
@@ -4805,7 +4907,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_load_balancer_errors() ::
     operation_failure_exception() | 
@@ -4814,7 +4917,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_load_balancer_metric_data_errors() ::
     operation_failure_exception() | 
@@ -4823,7 +4927,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_load_balancer_tls_certificates_errors() ::
     operation_failure_exception() | 
@@ -4832,14 +4937,16 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_load_balancer_tls_policies_errors() ::
     account_setup_in_progress_exception() | 
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_load_balancers_errors() ::
     operation_failure_exception() | 
@@ -4848,7 +4955,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_operation_errors() ::
     operation_failure_exception() | 
@@ -4857,7 +4965,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_operations_errors() ::
     operation_failure_exception() | 
@@ -4866,7 +4975,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_operations_for_resource_errors() ::
     operation_failure_exception() | 
@@ -4875,7 +4985,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_regions_errors() ::
     operation_failure_exception() | 
@@ -4884,7 +4995,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_errors() ::
     operation_failure_exception() | 
@@ -4893,7 +5005,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_blueprints_errors() ::
     operation_failure_exception() | 
@@ -4902,7 +5015,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_bundles_errors() ::
     operation_failure_exception() | 
@@ -4911,7 +5025,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_events_errors() ::
     operation_failure_exception() | 
@@ -4920,7 +5035,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_log_events_errors() ::
     operation_failure_exception() | 
@@ -4929,7 +5045,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_log_streams_errors() ::
     operation_failure_exception() | 
@@ -4938,7 +5055,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_master_user_password_errors() ::
     operation_failure_exception() | 
@@ -4947,7 +5065,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_metric_data_errors() ::
     operation_failure_exception() | 
@@ -4956,7 +5075,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_parameters_errors() ::
     operation_failure_exception() | 
@@ -4965,7 +5085,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_snapshot_errors() ::
     operation_failure_exception() | 
@@ -4974,7 +5095,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_database_snapshots_errors() ::
     operation_failure_exception() | 
@@ -4983,7 +5105,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_relational_databases_errors() ::
     operation_failure_exception() | 
@@ -4992,14 +5115,16 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_setup_history_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_static_ip_errors() ::
     operation_failure_exception() | 
@@ -5008,7 +5133,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type get_static_ips_errors() ::
     operation_failure_exception() | 
@@ -5017,7 +5143,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type import_key_pair_errors() ::
     operation_failure_exception() | 
@@ -5026,7 +5153,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type is_vpc_peered_errors() ::
     operation_failure_exception() | 
@@ -5035,7 +5163,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type open_instance_public_ports_errors() ::
     operation_failure_exception() | 
@@ -5044,7 +5173,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type peer_vpc_errors() ::
     operation_failure_exception() | 
@@ -5053,7 +5183,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type put_alarm_errors() ::
     operation_failure_exception() | 
@@ -5061,7 +5192,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type put_instance_public_ports_errors() ::
     operation_failure_exception() | 
@@ -5070,7 +5202,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type reboot_instance_errors() ::
     operation_failure_exception() | 
@@ -5079,7 +5212,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type reboot_relational_database_errors() ::
     operation_failure_exception() | 
@@ -5088,14 +5222,16 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type register_container_image_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type release_static_ip_errors() ::
     operation_failure_exception() | 
@@ -5104,7 +5240,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type reset_distribution_cache_errors() ::
     operation_failure_exception() | 
@@ -5120,7 +5257,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type set_ip_address_type_errors() ::
     operation_failure_exception() | 
@@ -5129,28 +5267,32 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type set_resource_access_for_bucket_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type setup_instance_https_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type start_g_ui_session_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type start_instance_errors() ::
     operation_failure_exception() | 
@@ -5159,7 +5301,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type start_relational_database_errors() ::
     operation_failure_exception() | 
@@ -5168,14 +5311,16 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type stop_g_ui_session_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type stop_instance_errors() ::
     operation_failure_exception() | 
@@ -5184,7 +5329,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type stop_relational_database_errors() ::
     operation_failure_exception() | 
@@ -5193,7 +5339,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type tag_resource_errors() ::
     operation_failure_exception() | 
@@ -5202,7 +5349,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type test_alarm_errors() ::
     operation_failure_exception() | 
@@ -5210,7 +5358,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type unpeer_vpc_errors() ::
     operation_failure_exception() | 
@@ -5219,7 +5368,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type untag_resource_errors() ::
     operation_failure_exception() | 
@@ -5228,28 +5378,32 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type update_bucket_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type update_bucket_bundle_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type update_container_service_errors() ::
     access_denied_exception() | 
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type update_distribution_errors() ::
     operation_failure_exception() | 
@@ -5274,7 +5428,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type update_instance_metadata_options_errors() ::
     operation_failure_exception() | 
@@ -5283,7 +5438,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type update_load_balancer_attribute_errors() ::
     operation_failure_exception() | 
@@ -5292,7 +5448,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type update_relational_database_errors() ::
     operation_failure_exception() | 
@@ -5301,7 +5458,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 -type update_relational_database_parameters_errors() ::
     operation_failure_exception() | 
@@ -5310,7 +5468,8 @@
     invalid_input_exception() | 
     service_exception() | 
     not_found_exception() | 
-    unauthenticated_exception().
+    unauthenticated_exception() | 
+    region_setup_in_progress_exception().
 
 %%====================================================================
 %% API

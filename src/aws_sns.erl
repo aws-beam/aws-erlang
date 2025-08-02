@@ -1329,12 +1329,12 @@ confirm_subscription(Client, Input, Options)
 %%
 %% For GCM (Firebase Cloud Messaging) using token credentials, there is no
 %% `PlatformPrincipal'. The `PlatformCredential' is a
-%% JSON formatted private key file. When using the Amazon Web Services CLI,
-%% the file must be in
-%% string format and special characters must be ignored. To format the file
-%% correctly, Amazon SNS recommends using the following command:
-%% ```
-%% SERVICE_JSON=`jq @json &lt;&lt;&lt; cat service.json`'''.
+%% JSON formatted private key file. When using the Amazon Web Services CLI or
+%% Amazon Web Services SDKs, the
+%% file must be in string format and special characters must be ignored. To
+%% format
+%% the file correctly, Amazon SNS recommends using the following command:
+%% `SERVICE_JSON=$(jq @json &lt; service.json)'.
 %%
 %% For MPNS, `PlatformPrincipal' is `TLS certificate' and
 %% `PlatformCredential' is `private key'.
@@ -2040,14 +2040,20 @@ publish(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Publish">>, Input, Options).
 
-%% @doc Publishes up to ten messages to the specified topic.
+%% @doc Publishes up to 10 messages to the specified topic in a single batch.
 %%
-%% This is a batch version of
-%% `Publish'. For FIFO topics, multiple messages within a single batch
-%% are
-%% published in the order they are sent, and messages are deduplicated within
-%% the batch and
-%% across batches for 5 minutes.
+%% This is a batch
+%% version of the `Publish' API. If you try to send more than 10 messages
+%% in a
+%% single batch request, you will receive a
+%% `TooManyEntriesInBatchRequest'
+%% exception.
+%%
+%% For FIFO topics, multiple messages within a single batch are published in
+%% the order
+%% they are sent, and messages are deduplicated within the batch and across
+%% batches for
+%% five minutes.
 %%
 %% The result of publishing each message is reported individually in the
 %% response.
@@ -2055,21 +2061,27 @@ publish(Client, Input, Options)
 %% unsuccessful
 %% actions, you should check for batch errors even when the call returns an
 %% HTTP status
-%% code of `200'.
+%% code of 200.
 %%
 %% The maximum allowed individual message size and the maximum total payload
-%% size (the
-%% sum of the individual lengths of all of the batched messages) are both 256
-%% KB (262,144
+%% size (the sum
+%% of the individual lengths of all of the batched messages) are both 256 KB
+%% (262,144
 %% bytes).
+%%
+%% The `PublishBatch' API can send up to 10 messages at a time. If you
+%% attempt to send more than 10 messages in one request, you will encounter a
+%% `TooManyEntriesInBatchRequest' exception. In such cases, split your
+%% messages into multiple requests, each containing no more than 10 messages.
 %%
 %% Some actions take lists of parameters. These lists are specified using the
 %% `param.n' notation. Values of `n' are integers starting from
-%% 1. For example, a parameter list with two elements looks like this:
+%% 1. For example, a parameter list with two elements
+%% looks like this:
 %%
-%% &amp;AttributeName.1=first
+%% `&amp;AttributeName.1=first'
 %%
-%% &amp;AttributeName.2=second
+%% `&amp;AttributeName.2=second'
 %%
 %% If you send a batch message to a topic, Amazon SNS publishes the batch
 %% message to each
@@ -2077,7 +2089,7 @@ publish(Client, Input, Options)
 %% depends on the
 %% notification protocol for each subscribed endpoint.
 %%
-%% When a `messageId' is returned, the batch message is saved and Amazon
+%% When a `messageId' is returned, the batch message is saved, and Amazon
 %% SNS
 %% immediately delivers the message to subscribers.
 -spec publish_batch(aws_client:aws_client(), publish_batch_input()) ->
@@ -2337,12 +2349,6 @@ tag_resource(Client, Input, Options)
 %% message is delivered to the endpoint, so that the endpoint owner can
 %% easily resubscribe
 %% to the topic if the `Unsubscribe' request was unintended.
-%%
-%% Amazon SQS queue subscriptions require authentication for deletion. Only
-%% the owner of
-%% the subscription, or the owner of the topic can unsubscribe using the
-%% required Amazon Web Services
-%% signature.
 %%
 %% This action is throttled at 100 transactions per second (TPS).
 -spec unsubscribe(aws_client:aws_client(), unsubscribe_input()) ->

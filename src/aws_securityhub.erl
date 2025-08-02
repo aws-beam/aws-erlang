@@ -8411,6 +8411,7 @@
 %% resource_details() :: #{
 %%   <<"AwsEcsTaskDefinition">> => aws_ecs_task_definition_details(),
 %%   <<"AwsEc2Instance">> => aws_ec2_instance_details(),
+%%   <<"CodeRepository">> => code_repository_details(),
 %%   <<"AwsApiGatewayV2Api">> => aws_api_gateway_v2_api_details(),
 %%   <<"AwsEc2VpcPeeringConnection">> => aws_ec2_vpc_peering_connection_details(),
 %%   <<"AwsApiGatewayV2Stage">> => aws_api_gateway_v2_stage_details(),
@@ -8648,6 +8649,15 @@
 %%   <<"ServiceEnabled">> => boolean()
 %% }
 -type security_hub_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% code_repository_details() :: #{
+%%   <<"CodeSecurityIntegrationArn">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"ProviderType">> => string()
+%% }
+-type code_repository_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -13070,7 +13080,7 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
-%% Returns the history of a Security Hub finding for the past 90 days.
+%% Returns the history of a Security Hub finding.
 %%
 %% The history includes changes made to any fields in
 %% the Amazon Web Services Security Finding Format (ASFF) except top-level

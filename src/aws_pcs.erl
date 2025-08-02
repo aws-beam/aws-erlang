@@ -130,6 +130,7 @@
 
 %% Example:
 %% networking() :: #{
+%%   <<"networkType">> => list(any()),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"subnetIds">> => list(string())
 %% }
@@ -420,6 +421,7 @@
 
 %% Example:
 %% endpoint() :: #{
+%%   <<"ipv6Address">> => [string()],
 %%   <<"port">> => [string()],
 %%   <<"privateIpAddress">> => [string()],
 %%   <<"publicIpAddress">> => [string()],
@@ -558,6 +560,7 @@
 
 %% Example:
 %% networking_request() :: #{
+%%   <<"networkType">> => list(any()),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"subnetIds">> => list(string())
 %% }
