@@ -61,6 +61,8 @@
          delete_asset_model/4,
          delete_asset_model_composite_model/4,
          delete_asset_model_composite_model/5,
+         delete_asset_model_interface_relationship/4,
+         delete_asset_model_interface_relationship/5,
          delete_computation_model/3,
          delete_computation_model/4,
          delete_dashboard/3,
@@ -93,6 +95,9 @@
          describe_asset_model_composite_model/3,
          describe_asset_model_composite_model/5,
          describe_asset_model_composite_model/6,
+         describe_asset_model_interface_relationship/3,
+         describe_asset_model_interface_relationship/5,
+         describe_asset_model_interface_relationship/6,
          describe_asset_property/3,
          describe_asset_property/5,
          describe_asset_property/6,
@@ -213,6 +218,9 @@
          list_gateways/1,
          list_gateways/3,
          list_gateways/4,
+         list_interface_relationships/2,
+         list_interface_relationships/4,
+         list_interface_relationships/5,
          list_portals/1,
          list_portals/3,
          list_portals/4,
@@ -228,6 +236,8 @@
          list_time_series/1,
          list_time_series/3,
          list_time_series/4,
+         put_asset_model_interface_relationship/4,
+         put_asset_model_interface_relationship/5,
          put_default_encryption_configuration/2,
          put_default_encryption_configuration/3,
          put_logging_options/2,
@@ -363,6 +373,16 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_composition_relationships_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_asset_model_interface_relationship_response() :: #{
+%%   <<"assetModelArn">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status(),
+%%   <<"interfaceAssetModelId">> => string()
+%% }
+-type put_asset_model_interface_relationship_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -537,6 +557,10 @@
 %% }
 -type greengrass() :: #{binary() => any()}.
 
+%% Example:
+%% describe_asset_model_interface_relationship_request() :: #{}
+-type describe_asset_model_interface_relationship_request() :: #{}.
+
 
 %% Example:
 %% project_summary() :: #{
@@ -602,6 +626,14 @@
 %%   <<"gatewayId">> => string()
 %% }
 -type create_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_summary() :: #{
+%%   <<"interfaceAssetModelId">> => string(),
+%%   <<"interfaceAssetModelPropertyId">> => string()
+%% }
+-type interface_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1221,6 +1253,14 @@
 
 
 %% Example:
+%% list_interface_relationships_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_interface_relationships_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% multi_layer_storage() :: #{
 %%   <<"customerManagedS3Storage">> => customer_managed_s3_storage()
 %% }
@@ -1409,6 +1449,16 @@
 %% }
 -type asset_composite_model() :: #{binary() => any()}.
 
+
+%% Example:
+%% delete_asset_model_interface_relationship_response() :: #{
+%%   <<"assetModelArn">> => string(),
+%%   <<"assetModelId">> => string(),
+%%   <<"assetModelStatus">> => asset_model_status(),
+%%   <<"interfaceAssetModelId">> => string()
+%% }
+-type delete_asset_model_interface_relationship_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_gateway_capability_configuration_request() :: #{}
 -type describe_gateway_capability_configuration_request() :: #{}.
@@ -1427,6 +1477,13 @@
 %%   <<"clientToken">> => string()
 %% }
 -type delete_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_relationship() :: #{
+%%   <<"id">> => string()
+%% }
+-type interface_relationship() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1756,6 +1813,13 @@
 
 
 %% Example:
+%% delete_asset_model_interface_relationship_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_asset_model_interface_relationship_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_asset_relationships_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -1917,6 +1981,14 @@
 
 
 %% Example:
+%% put_asset_model_interface_relationship_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"propertyMappingConfiguration">> := property_mapping_configuration()
+%% }
+-type put_asset_model_interface_relationship_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2060,6 +2132,16 @@
 
 
 %% Example:
+%% describe_asset_model_interface_relationship_response() :: #{
+%%   <<"assetModelId">> => string(),
+%%   <<"hierarchyMappings">> => list(hierarchy_mapping()),
+%%   <<"interfaceAssetModelId">> => string(),
+%%   <<"propertyMappings">> => list(property_mapping())
+%% }
+-type describe_asset_model_interface_relationship_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_computation_model_response() :: #{
 %%   <<"computationModelStatus">> => computation_model_status()
 %% }
@@ -2138,6 +2220,14 @@
 %% }
 -type asset_model_status() :: #{binary() => any()}.
 
+
+%% Example:
+%% hierarchy_mapping() :: #{
+%%   <<"assetModelHierarchyId">> => string(),
+%%   <<"interfaceAssetModelHierarchyId">> => string()
+%% }
+-type hierarchy_mapping() :: #{binary() => any()}.
+
 %% Example:
 %% describe_access_policy_request() :: #{}
 -type describe_access_policy_request() :: #{}.
@@ -2150,6 +2240,21 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_asset_model_composite_models_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% property_mapping() :: #{
+%%   <<"assetModelPropertyId">> => string(),
+%%   <<"interfaceAssetModelPropertyId">> => string()
+%% }
+-type property_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% interface_relationship_summary() :: #{
+%%   <<"id">> => string()
+%% }
+-type interface_relationship_summary() :: #{binary() => any()}.
 
 %% Example:
 %% describe_asset_composite_model_request() :: #{}
@@ -2201,7 +2306,8 @@
 %%   <<"assetModelStatus">> => asset_model_status(),
 %%   <<"assetModelType">> => list(any()),
 %%   <<"assetModelVersion">> => string(),
-%%   <<"eTag">> => string()
+%%   <<"eTag">> => string(),
+%%   <<"interfaceDetails">> => list(interface_relationship())
 %% }
 -type describe_asset_model_response() :: #{binary() => any()}.
 
@@ -2989,6 +3095,15 @@
 %% }
 -type logging_options() :: #{binary() => any()}.
 
+
+%% Example:
+%% property_mapping_configuration() :: #{
+%%   <<"createMissingProperty">> => boolean(),
+%%   <<"matchByPropertyName">> => boolean(),
+%%   <<"overrides">> => list(property_mapping())
+%% }
+-type property_mapping_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% describe_dashboard_request() :: #{}
 -type describe_dashboard_request() :: #{}.
@@ -3440,6 +3555,7 @@
 %%   <<"dataTypeSpec">> => string(),
 %%   <<"externalId">> => string(),
 %%   <<"id">> => string(),
+%%   <<"interfaceSummaries">> => list(interface_summary()),
 %%   <<"name">> => string(),
 %%   <<"path">> => list(asset_model_property_path_segment()),
 %%   <<"type">> => property_type(),
@@ -3463,6 +3579,14 @@
 %%   <<"propertyId">> := string()
 %% }
 -type associate_time_series_to_asset_property_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_interface_relationships_response() :: #{
+%%   <<"interfaceRelationshipSummaries">> => list(interface_relationship_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_interface_relationships_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3655,6 +3779,13 @@
     conflicting_operation_exception() | 
     internal_failure_exception().
 
+-type delete_asset_model_interface_relationship_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
+    internal_failure_exception().
+
 -type delete_computation_model_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
@@ -3733,6 +3864,12 @@
     internal_failure_exception().
 
 -type describe_asset_model_composite_model_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_asset_model_interface_relationship_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
@@ -3998,6 +4135,12 @@
     invalid_request_exception() | 
     internal_failure_exception().
 
+-type list_interface_relationships_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
 -type list_portals_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
@@ -4026,6 +4169,14 @@
     throttling_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type put_asset_model_interface_relationship_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    conflicting_operation_exception() | 
     internal_failure_exception().
 
 -type put_default_encryption_configuration_errors() ::
@@ -4592,8 +4743,8 @@ create_asset(Client, Input0, Options0) ->
 %% in the
 %% IoT SiteWise User Guide.
 %%
-%% You can create two types of asset models, `ASSET_MODEL' or
-%% `COMPONENT_MODEL'.
+%% You can create three types of asset models, `ASSET_MODEL',
+%% `COMPONENT_MODEL', or an `INTERFACE'.
 %%
 %% ASSET_MODEL – (default) An asset model that
 %% you can use to create assets. Can't be included as a component in
@@ -4604,6 +4755,10 @@ create_asset(Client, Input0, Options0) ->
 %% you can include in the composite models of other asset models. You
 %% can't create
 %% assets directly from this type of asset model.
+%%
+%% INTERFACE – An interface is a type of model
+%% that defines a standard structure that can be applied to different asset
+%% models.
 -spec create_asset_model(aws_client:aws_client(), create_asset_model_request()) ->
     {ok, create_asset_model_response(), tuple()} |
     {error, any()} |
@@ -4727,8 +4882,8 @@ create_asset_model_composite_model(Client, AssetModelId, Input0, Options0) ->
 %% computations.
 %%
 %% After data moves from the hot tier to the warm or cold tier based on
-%% retention settings,
-%% it does not trigger computations or notifications.
+%% retention
+%% settings, it does not trigger computations or notifications.
 %%
 %% Data older than 7 days does not trigger computations or notifications.
 -spec create_bulk_import_job(aws_client:aws_client(), create_bulk_import_job_request()) ->
@@ -5175,6 +5330,43 @@ delete_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMode
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an interface relationship between an asset model and an
+%% interface asset
+%% model.
+-spec delete_asset_model_interface_relationship(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_model_interface_relationship_request()) ->
+    {ok, delete_asset_model_interface_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_model_interface_relationship_errors(), tuple()}.
+delete_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, Input) ->
+    delete_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, Input, []).
+
+-spec delete_asset_model_interface_relationship(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_model_interface_relationship_request(), proplists:proplist()) ->
+    {ok, delete_asset_model_interface_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, delete_asset_model_interface_relationship_errors(), tuple()}.
+delete_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/interface/", aws_util:encode_uri(InterfaceAssetModelId), "/asset-model-interface-relationship"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a computation model.
 %%
 %% This action can't be undone.
@@ -5607,6 +5799,11 @@ describe_asset_composite_model(Client, AssetCompositeModelId, AssetId, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about an asset model.
+%%
+%% This includes details about the asset model's
+%% properties, hierarchies, composite models, and any interface relationships
+%% if the asset model
+%% implements interfaces.
 -spec describe_asset_model(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_asset_model_response(), tuple()} |
     {error, any()} |
@@ -5709,6 +5906,45 @@ describe_asset_model_composite_model(Client, AssetModelCompositeModelId, AssetMo
         {<<"assetModelVersion">>, maps:get(<<"assetModelVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about an interface relationship between an
+%% asset model and an
+%% interface asset model.
+-spec describe_asset_model_interface_relationship(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_asset_model_interface_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_model_interface_relationship_errors(), tuple()}.
+describe_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId)
+  when is_map(Client) ->
+    describe_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, #{}, #{}).
+
+-spec describe_asset_model_interface_relationship(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_asset_model_interface_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_model_interface_relationship_errors(), tuple()}.
+describe_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, QueryMap, HeadersMap, []).
+
+-spec describe_asset_model_interface_relationship(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_asset_model_interface_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, describe_asset_model_interface_relationship_errors(), tuple()}.
+describe_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/interface/", aws_util:encode_uri(InterfaceAssetModelId), "/asset-model-interface-relationship"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -7317,12 +7553,12 @@ list_composition_relationships(Client, AssetModelId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists all data binding usages for computation models.
+%% @doc Lists all data binding usages for computation models.
 %%
-%% This allows to identify where specific data bindings are being
-%% utilized across the computation models.
-%% This track dependencies between data sources and computation models.
+%% This allows to identify where
+%% specific data bindings are being utilized across the computation models.
+%% This track
+%% dependencies between data sources and computation models.
 -spec list_computation_model_data_binding_usages(aws_client:aws_client(), list_computation_model_data_binding_usages_request()) ->
     {ok, list_computation_model_data_binding_usages_response(), tuple()} |
     {error, any()} |
@@ -7357,7 +7593,8 @@ list_computation_model_data_binding_usages(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all distinct resources that are resolved from the executed
-%% actions of the computation model.
+%% actions of the
+%% computation model.
 -spec list_computation_model_resolve_to_resources(aws_client:aws_client(), binary() | list()) ->
     {ok, list_computation_model_resolve_to_resources_response(), tuple()} |
     {error, any()} |
@@ -7619,6 +7856,50 @@ list_gateways(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of asset models that have a specific
+%% interface asset model
+%% applied to them.
+-spec list_interface_relationships(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_interface_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_interface_relationships_errors(), tuple()}.
+list_interface_relationships(Client, InterfaceAssetModelId)
+  when is_map(Client) ->
+    list_interface_relationships(Client, InterfaceAssetModelId, #{}, #{}).
+
+-spec list_interface_relationships(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_interface_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_interface_relationships_errors(), tuple()}.
+list_interface_relationships(Client, InterfaceAssetModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_interface_relationships(Client, InterfaceAssetModelId, QueryMap, HeadersMap, []).
+
+-spec list_interface_relationships(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_interface_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, list_interface_relationships_errors(), tuple()}.
+list_interface_relationships(Client, InterfaceAssetModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/interface/", aws_util:encode_uri(InterfaceAssetModelId), "/asset-models"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a paginated list of IoT SiteWise Monitor portals.
 -spec list_portals(aws_client:aws_client()) ->
     {ok, list_portals_response(), tuple()} |
@@ -7833,6 +8114,44 @@ list_time_series(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Creates or updates an interface relationship between an asset model
+%% and an interface asset
+%% model.
+%%
+%% This operation applies an interface to an asset model.
+-spec put_asset_model_interface_relationship(aws_client:aws_client(), binary() | list(), binary() | list(), put_asset_model_interface_relationship_request()) ->
+    {ok, put_asset_model_interface_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, put_asset_model_interface_relationship_errors(), tuple()}.
+put_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, Input) ->
+    put_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, Input, []).
+
+-spec put_asset_model_interface_relationship(aws_client:aws_client(), binary() | list(), binary() | list(), put_asset_model_interface_relationship_request(), proplists:proplist()) ->
+    {ok, put_asset_model_interface_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, put_asset_model_interface_relationship_errors(), tuple()}.
+put_asset_model_interface_relationship(Client, AssetModelId, InterfaceAssetModelId, Input0, Options0) ->
+    Method = put,
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/interface/", aws_util:encode_uri(InterfaceAssetModelId), "/asset-model-interface-relationship"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the default encryption configuration for the Amazon Web Services
 %% account.

@@ -4,7 +4,9 @@
 %% @doc Amazon Bedrock AgentCore is in preview release and is subject to
 %% change.
 %%
-%% Data plane operations for Amazon Bedrock AgentCore.
+%% Welcome to the Amazon Bedrock AgentCore Data Plane API reference. Data
+%% Plane actions process and handle data or workloads within Amazon Web
+%% Services services.
 -module(aws_bedrock_agentcore).
 
 -export([create_event/3,
@@ -307,7 +309,6 @@
 %%   <<"resourceCredentialProviderName">> := string(),
 %%   <<"resourceOauth2ReturnUrl">> => string(),
 %%   <<"scopes">> := list(string()),
-%%   <<"userId">> => string(),
 %%   <<"workloadIdentityToken">> := string()
 %% }
 -type get_resource_oauth2_token_request() :: #{binary() => any()}.
@@ -1059,13 +1060,13 @@
 %% API
 %%====================================================================
 
-%% @doc Creates an event in a memory store.
+%% @doc Creates an event in an AgentCore Memory resource.
 %%
 %% Events represent interactions or activities that occur within a session
 %% and are associated with specific actors.
 %%
-%% To use this operation, you must have the `genesismemory:CreateEvent'
-%% permission.
+%% To use this operation, you must have the
+%% `bedrock-agentcore:CreateEvent' permission.
 %%
 %% This operation is subject to request rate limiting.
 -spec create_event(aws_client:aws_client(), binary() | list(), create_event_input()) ->
@@ -1101,12 +1102,12 @@ create_event(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an event from a memory store.
+%% @doc Deletes an event from an AgentCore Memory resource.
 %%
 %% When you delete an event, it is permanently removed.
 %%
-%% To use this operation, you must have the `genesismemory:DeleteEvent'
-%% permission.
+%% To use this operation, you must have the
+%% `bedrock-agentcore:DeleteEvent' permission.
 -spec delete_event(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), delete_event_input()) ->
     {ok, delete_event_output(), tuple()} |
     {error, any()} |
@@ -1140,12 +1141,12 @@ delete_event(Client, ActorId, EventId, MemoryId, SessionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a memory record from a memory store.
+%% @doc Deletes a memory record from an AgentCore Memory resource.
 %%
 %% When you delete a memory record, it is permanently removed.
 %%
 %% To use this operation, you must have the
-%% `genesismemory:DeleteMemoryRecord' permission.
+%% `bedrock-agentcore:DeleteMemoryRecord' permission.
 -spec delete_memory_record(aws_client:aws_client(), binary() | list(), binary() | list(), delete_memory_record_input()) ->
     {ok, delete_memory_record_output(), tuple()} |
     {error, any()} |
@@ -1299,9 +1300,10 @@ get_code_interpreter_session(Client, CodeInterpreterIdentifier, SessionId, Query
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a specific event in a memory store.
+%% @doc Retrieves information about a specific event in an AgentCore Memory
+%% resource.
 %%
-%% To use this operation, you must have the `genesismemory:GetEvent'
+%% To use this operation, you must have the `bedrock-agentcore:GetEvent'
 %% permission.
 -spec get_event(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_event_output(), tuple()} |
@@ -1339,10 +1341,10 @@ get_event(Client, ActorId, EventId, MemoryId, SessionId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a specific memory record from a memory store.
+%% @doc Retrieves a specific memory record from an AgentCore Memory resource.
 %%
 %% To use this operation, you must have the
-%% `genesismemory:GetMemoryRecord' permission.
+%% `bedrock-agentcore:GetMemoryRecord' permission.
 -spec get_memory_record(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_memory_record_output(), tuple()} |
     {error, any()} |
@@ -1413,7 +1415,7 @@ get_resource_api_key(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Reaturns the Oauth2Token of the provided resource
+%% @doc Returns the OAuth 2.0 token of the provided resource
 -spec get_resource_oauth2_token(aws_client:aws_client(), get_resource_oauth2_token_request()) ->
     {ok, get_resource_oauth2_token_response(), tuple()} |
     {error, any()} |
@@ -1552,20 +1554,29 @@ get_workload_access_token_for_user_id(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sends a request to an agent runtime in Amazon Bedrock and receives
-%% responses in real-time.
+%% @doc Sends a request to an agent or tool hosted in an Amazon Bedrock
+%% AgentCore Runtime and receives responses in real-time.
 %%
-%% The agent processes the request using the configured foundation model and
-%% any associated knowledge bases or action groups.
-%%
-%% To invoke an agent runtime, you must specify the agent runtime ARN and
-%% provide a payload containing your request. You can optionally specify a
-%% qualifier to target a specific version or alias of the agent.
+%% To invoke an agent you must specify the AgentCore Runtime ARN and provide
+%% a payload containing your request. You can optionally specify a qualifier
+%% to target a specific version or endpoint of the agent.
 %%
 %% This operation supports streaming responses, allowing you to receive
 %% partial responses as they become available. We recommend using pagination
 %% to ensure that the operation returns quickly and successfully when
 %% processing large responses.
+%%
+%% For example code, see Invoke an AgentCore Runtime agent:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-invoke-agent.html.
+%%
+%% If you're integrating your agent with OAuth, you can't use the
+%% Amazon Web Services SDK to call `InvokeAgentRuntime'. Instead, make a
+%% HTTPS request to `InvokeAgentRuntime'. For an example, see
+%% Authenticate and authorize with Inbound Auth and Outbound Auth:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-oauth.html.
+%%
+%% To use this operation, you must have the
+%% `bedrock-agentcore:InvokeAgentRuntime' permission.
 -spec invoke_agent_runtime(aws_client:aws_client(), binary() | list(), invoke_agent_runtime_request()) ->
     {ok, invoke_agent_runtime_response(), tuple()} |
     {error, any()} |
@@ -1707,13 +1718,13 @@ invoke_code_interpreter(Client, CodeInterpreterIdentifier, Input0, Options0) ->
         Result
     end.
 
-%% @doc Lists all actors in a memory store.
+%% @doc Lists all actors in an AgentCore Memory resource.
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
 %% and successfully.
 %%
-%% To use this operation, you must have the `genesismemory:ListActors'
-%% permission.
+%% To use this operation, you must have the
+%% `bedrock-agentcore:ListActors' permission.
 -spec list_actors(aws_client:aws_client(), binary() | list(), list_actors_input()) ->
     {ok, list_actors_output(), tuple()} |
     {error, any()} |
@@ -1851,13 +1862,14 @@ list_code_interpreter_sessions(Client, CodeInterpreterIdentifier, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists events in a memory store based on specified criteria.
+%% @doc Lists events in an AgentCore Memory resource based on specified
+%% criteria.
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
 %% and successfully.
 %%
-%% To use this operation, you must have the `genesismemory:ListEvents'
-%% permission.
+%% To use this operation, you must have the
+%% `bedrock-agentcore:ListEvents' permission.
 -spec list_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), list_events_input()) ->
     {ok, list_events_output(), tuple()} |
     {error, any()} |
@@ -1891,13 +1903,14 @@ list_events(Client, ActorId, MemoryId, SessionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists memory records in a memory store based on specified criteria.
+%% @doc Lists memory records in an AgentCore Memory resource based on
+%% specified criteria.
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
 %% and successfully.
 %%
 %% To use this operation, you must have the
-%% `genesismemory:ListMemoryRecords' permission.
+%% `bedrock-agentcore:ListMemoryRecords' permission.
 -spec list_memory_records(aws_client:aws_client(), binary() | list(), list_memory_records_input()) ->
     {ok, list_memory_records_output(), tuple()} |
     {error, any()} |
@@ -1931,13 +1944,14 @@ list_memory_records(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists sessions in a memory store based on specified criteria.
+%% @doc Lists sessions in an AgentCore Memory resource based on specified
+%% criteria.
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
 %% and successfully.
 %%
-%% To use this operation, you must have the `genesismemory:ListSessions'
-%% permission.
+%% To use this operation, you must have the
+%% `bedrock-agentcore:ListSessions' permission.
 -spec list_sessions(aws_client:aws_client(), binary() | list(), binary() | list(), list_sessions_input()) ->
     {ok, list_sessions_output(), tuple()} |
     {error, any()} |
@@ -1971,14 +1985,14 @@ list_sessions(Client, ActorId, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches for and retrieves memory records from a memory store based
-%% on specified search criteria.
+%% @doc Searches for and retrieves memory records from an AgentCore Memory
+%% resource based on specified search criteria.
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
 %% and successfully.
 %%
 %% To use this operation, you must have the
-%% `genesismemory:RetrieveMemoryRecords' permission.
+%% `bedrock-agentcore:RetrieveMemoryRecords' permission.
 -spec retrieve_memory_records(aws_client:aws_client(), binary() | list(), retrieve_memory_records_input()) ->
     {ok, retrieve_memory_records_output(), tuple()} |
     {error, any()} |

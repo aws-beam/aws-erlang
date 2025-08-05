@@ -18,6 +18,8 @@
          add_tags/3,
          associate_trial_component/2,
          associate_trial_component/3,
+         attach_cluster_node_volume/2,
+         attach_cluster_node_volume/3,
          batch_delete_cluster_nodes/2,
          batch_delete_cluster_nodes/3,
          batch_describe_model_package/2,
@@ -400,6 +402,8 @@
          describe_workforce/3,
          describe_workteam/2,
          describe_workteam/3,
+         detach_cluster_node_volume/2,
+         detach_cluster_node_volume/3,
          disable_sagemaker_servicecatalog_portfolio/2,
          disable_sagemaker_servicecatalog_portfolio/3,
          disassociate_trial_component/2,
@@ -1512,6 +1516,17 @@
 %%   <<"TemplateURL">> => string()
 %% }
 -type cfn_create_template_provider() :: #{binary() => any()}.
+
+%% Example:
+%% detach_cluster_node_volume_response() :: #{
+%%   <<"AttachTime">> => non_neg_integer(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VolumeId">> => string()
+%% }
+-type detach_cluster_node_volume_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_inference_component_output() :: #{
@@ -3875,6 +3890,17 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type import_hub_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_cluster_node_volume_response() :: #{
+%%   <<"AttachTime">> => non_neg_integer(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"DeviceName">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VolumeId">> => string()
+%% }
+-type attach_cluster_node_volume_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_model_card_request() :: #{
@@ -6515,6 +6541,14 @@
 %%   <<"StageName">> => string()
 %% }
 -type device_deployment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% detach_cluster_node_volume_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"NodeId">> := string(),
+%%   <<"VolumeId">> := string()
+%% }
+-type detach_cluster_node_volume_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_hub_content_request() :: #{
@@ -9957,6 +9991,14 @@
 -type create_user_profile_response() :: #{binary() => any()}.
 
 %% Example:
+%% attach_cluster_node_volume_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"NodeId">> := string(),
+%%   <<"VolumeId">> := string()
+%% }
+-type attach_cluster_node_volume_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_auto_ml_job_v2_request() :: #{
 %%   <<"AutoMLJobName">> := string()
 %% }
@@ -12869,6 +12911,9 @@
     resource_limit_exceeded() | 
     resource_not_found().
 
+-type attach_cluster_node_volume_errors() ::
+    resource_not_found().
+
 -type batch_delete_cluster_nodes_errors() ::
     resource_not_found().
 
@@ -13409,6 +13454,9 @@
     resource_limit_exceeded() | 
     resource_not_found().
 
+-type detach_cluster_node_volume_errors() ::
+    resource_not_found().
+
 -type disassociate_trial_component_errors() ::
     resource_not_found().
 
@@ -13847,6 +13895,28 @@ associate_trial_component(Client, Input)
 associate_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTrialComponent">>, Input, Options).
+
+%% @doc Attaches your Amazon Elastic Block Store (Amazon EBS) volume to a
+%% node in your EKS-orchestrated HyperPod cluster.
+%%
+%% This API works with the Amazon Elastic Block Store (Amazon EBS) Container
+%% Storage Interface (CSI) driver to manage the lifecycle of persistent
+%% storage in your HyperPod EKS clusters.
+-spec attach_cluster_node_volume(aws_client:aws_client(), attach_cluster_node_volume_request()) ->
+    {ok, attach_cluster_node_volume_response(), tuple()} |
+    {error, any()} |
+    {error, attach_cluster_node_volume_errors(), tuple()}.
+attach_cluster_node_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    attach_cluster_node_volume(Client, Input, []).
+
+-spec attach_cluster_node_volume(aws_client:aws_client(), attach_cluster_node_volume_request(), proplists:proplist()) ->
+    {ok, attach_cluster_node_volume_response(), tuple()} |
+    {error, any()} |
+    {error, attach_cluster_node_volume_errors(), tuple()}.
+attach_cluster_node_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AttachClusterNodeVolume">>, Input, Options).
 
 %% @doc Deletes specific nodes within a SageMaker HyperPod cluster.
 %%
@@ -18207,6 +18277,28 @@ describe_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkteam">>, Input, Options).
 
+%% @doc Detaches your Amazon Elastic Block Store (Amazon EBS) volume from a
+%% node in your EKS-orchestrated SageMaker HyperPod cluster.
+%%
+%% This API works with the Amazon Elastic Block Store (Amazon EBS) Container
+%% Storage Interface (CSI) driver to manage the lifecycle of persistent
+%% storage in your HyperPod EKS clusters.
+-spec detach_cluster_node_volume(aws_client:aws_client(), detach_cluster_node_volume_request()) ->
+    {ok, detach_cluster_node_volume_response(), tuple()} |
+    {error, any()} |
+    {error, detach_cluster_node_volume_errors(), tuple()}.
+detach_cluster_node_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detach_cluster_node_volume(Client, Input, []).
+
+-spec detach_cluster_node_volume(aws_client:aws_client(), detach_cluster_node_volume_request(), proplists:proplist()) ->
+    {ok, detach_cluster_node_volume_response(), tuple()} |
+    {error, any()} |
+    {error, detach_cluster_node_volume_errors(), tuple()}.
+detach_cluster_node_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetachClusterNodeVolume">>, Input, Options).
+
 %% @doc Disables using Service Catalog in SageMaker.
 %%
 %% Service Catalog is used to create SageMaker projects.
@@ -21290,8 +21382,15 @@ update_user_profile(Client, Input, Options)
 %% any IP address outside the specified range are denied and get a `Not
 %% Found' error message on the worker portal.
 %%
-%% To restrict access to all the workers in public internet, add the
-%% `SourceIpConfig' CIDR value as &quot;10.0.0.0/16&quot;.
+%% To restrict public internet access for all workers, configure the
+%% `SourceIpConfig' CIDR value. For example, when using
+%% `SourceIpConfig' with an `IpAddressType' of `IPv4', you can
+%% restrict access to the IPv4 CIDR block &quot;10.0.0.0/16&quot;. When using
+%% an `IpAddressType' of `dualstack', you can specify both the IPv4
+%% and IPv6 CIDR blocks, such as &quot;10.0.0.0/16&quot; for IPv4 only,
+%% &quot;2001:db8:1234:1a00::/56&quot; for IPv6 only, or
+%% &quot;10.0.0.0/16&quot; and &quot;2001:db8:1234:1a00::/56&quot; for dual
+%% stack.
 %%
 %% Amazon SageMaker does not support Source Ip restriction for worker portals
 %% in VPC.
