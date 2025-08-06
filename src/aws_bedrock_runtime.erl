@@ -31,6 +31,14 @@
 
 
 %% Example:
+%% guardrail_automated_reasoning_rule() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"policyVersionArn">> => string()
+%% }
+-type guardrail_automated_reasoning_rule() :: #{binary() => any()}.
+
+
+%% Example:
 %% invoke_model_with_bidirectional_stream_response() :: #{
 %%   <<"body">> => list()
 %% }
@@ -66,6 +74,26 @@
 %%   <<"filters">> => list(guardrail_content_filter())
 %% }
 -type guardrail_content_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_impossible_finding() :: #{
+%%   <<"contradictingRules">> => list(guardrail_automated_reasoning_rule()),
+%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
+%%   <<"translation">> => guardrail_automated_reasoning_translation()
+%% }
+-type guardrail_automated_reasoning_impossible_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_policy_assessment() :: #{
+%%   <<"findings">> => list(list())
+%% }
+-type guardrail_automated_reasoning_policy_assessment() :: #{binary() => any()}.
+
+%% Example:
+%% guardrail_automated_reasoning_no_translations_finding() :: #{}
+-type guardrail_automated_reasoning_no_translations_finding() :: #{}.
 
 
 %% Example:
@@ -153,6 +181,17 @@
 
 
 %% Example:
+%% guardrail_automated_reasoning_translation() :: #{
+%%   <<"claims">> => list(guardrail_automated_reasoning_statement()),
+%%   <<"confidence">> => float(),
+%%   <<"premises">> => list(guardrail_automated_reasoning_statement()),
+%%   <<"untranslatedClaims">> => list(guardrail_automated_reasoning_input_text_reference()),
+%%   <<"untranslatedPremises">> => list(guardrail_automated_reasoning_input_text_reference())
+%% }
+-type guardrail_automated_reasoning_translation() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_trace_assessment() :: #{
 %%   <<"actionReason">> => [string()],
 %%   <<"inputAssessment">> => map(),
@@ -235,6 +274,15 @@
 %%   <<"source">> => list()
 %% }
 -type guardrail_converse_image_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_invalid_finding() :: #{
+%%   <<"contradictingRules">> => list(guardrail_automated_reasoning_rule()),
+%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
+%%   <<"translation">> => guardrail_automated_reasoning_translation()
+%% }
+-type guardrail_automated_reasoning_invalid_finding() :: #{binary() => any()}.
 
 
 %% Example:
@@ -332,6 +380,14 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type start_async_invoke_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_translation_ambiguous_finding() :: #{
+%%   <<"differenceScenarios">> => list(guardrail_automated_reasoning_scenario()),
+%%   <<"options">> => list(guardrail_automated_reasoning_translation_option())
+%% }
+-type guardrail_automated_reasoning_translation_ambiguous_finding() :: #{binary() => any()}.
 
 
 %% Example:
@@ -481,6 +537,14 @@
 
 
 %% Example:
+%% guardrail_automated_reasoning_statement() :: #{
+%%   <<"logic">> => string(),
+%%   <<"naturalLanguage">> => string()
+%% }
+-type guardrail_automated_reasoning_statement() :: #{binary() => any()}.
+
+
+%% Example:
 %% tool_specification() :: #{
 %%   <<"description">> => string(),
 %%   <<"inputSchema">> => list(),
@@ -495,6 +559,13 @@
 %%   <<"source">> => list()
 %% }
 -type guardrail_image_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_translation_option() :: #{
+%%   <<"translations">> => list(guardrail_automated_reasoning_translation())
+%% }
+-type guardrail_automated_reasoning_translation_option() :: #{binary() => any()}.
 
 
 %% Example:
@@ -518,6 +589,15 @@
 %%   <<"start">> => [integer()]
 %% }
 -type document_page_location() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_logic_warning() :: #{
+%%   <<"claims">> => list(guardrail_automated_reasoning_statement()),
+%%   <<"premises">> => list(guardrail_automated_reasoning_statement()),
+%%   <<"type">> => list(any())
+%% }
+-type guardrail_automated_reasoning_logic_warning() :: #{binary() => any()}.
 
 
 %% Example:
@@ -577,6 +657,16 @@
 
 
 %% Example:
+%% guardrail_automated_reasoning_valid_finding() :: #{
+%%   <<"claimsTrueScenario">> => guardrail_automated_reasoning_scenario(),
+%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
+%%   <<"supportingRules">> => list(guardrail_automated_reasoning_rule()),
+%%   <<"translation">> => guardrail_automated_reasoning_translation()
+%% }
+-type guardrail_automated_reasoning_valid_finding() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_stream_configuration() :: #{
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
@@ -595,6 +685,7 @@
 
 %% Example:
 %% guardrail_assessment() :: #{
+%%   <<"automatedReasoningPolicy">> => guardrail_automated_reasoning_policy_assessment(),
 %%   <<"contentPolicy">> => guardrail_content_policy_assessment(),
 %%   <<"contextualGroundingPolicy">> => guardrail_contextual_grounding_policy_assessment(),
 %%   <<"invocationMetrics">> => guardrail_invocation_metrics(),
@@ -699,6 +790,8 @@
 
 %% Example:
 %% guardrail_usage() :: #{
+%%   <<"automatedReasoningPolicies">> => integer(),
+%%   <<"automatedReasoningPolicyUnits">> => integer(),
 %%   <<"contentPolicyImageUnits">> => integer(),
 %%   <<"contentPolicyUnits">> => integer(),
 %%   <<"contextualGroundingPolicyUnits">> => integer(),
@@ -763,6 +856,13 @@
 
 
 %% Example:
+%% guardrail_automated_reasoning_scenario() :: #{
+%%   <<"statements">> => list(guardrail_automated_reasoning_statement())
+%% }
+-type guardrail_automated_reasoning_scenario() :: #{binary() => any()}.
+
+
+%% Example:
 %% bidirectional_output_payload_part() :: #{
 %%   <<"bytes">> => binary()
 %% }
@@ -788,6 +888,10 @@
 %% }
 -type guardrail_regex_filter() :: #{binary() => any()}.
 
+%% Example:
+%% guardrail_automated_reasoning_too_complex_finding() :: #{}
+-type guardrail_automated_reasoning_too_complex_finding() :: #{}.
+
 
 %% Example:
 %% video_block() :: #{
@@ -809,6 +913,16 @@
 %%   <<"enabled">> => [boolean()]
 %% }
 -type citations_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_satisfiable_finding() :: #{
+%%   <<"claimsFalseScenario">> => guardrail_automated_reasoning_scenario(),
+%%   <<"claimsTrueScenario">> => guardrail_automated_reasoning_scenario(),
+%%   <<"logicWarning">> => guardrail_automated_reasoning_logic_warning(),
+%%   <<"translation">> => guardrail_automated_reasoning_translation()
+%% }
+-type guardrail_automated_reasoning_satisfiable_finding() :: #{binary() => any()}.
 
 
 %% Example:
@@ -866,6 +980,13 @@
 %%   <<"latency">> => list(any())
 %% }
 -type performance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_input_text_reference() :: #{
+%%   <<"text">> => string()
+%% }
+-type guardrail_automated_reasoning_input_text_reference() :: #{binary() => any()}.
 
 
 %% Example:

@@ -4062,6 +4062,7 @@
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"HttpEndpointEnabled">> => boolean(),
 %%   <<"Port">> => integer(),
+%%   <<"ServerlessV2PlatformVersion">> => string(),
 %%   <<"IOOptimizedNextAllowedModificationTime">> => non_neg_integer(),
 %%   <<"Engine">> => string(),
 %%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration_info(),

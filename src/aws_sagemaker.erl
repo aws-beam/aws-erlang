@@ -20,6 +20,8 @@
          associate_trial_component/3,
          attach_cluster_node_volume/2,
          attach_cluster_node_volume/3,
+         batch_add_cluster_nodes/2,
+         batch_add_cluster_nodes/3,
          batch_delete_cluster_nodes/2,
          batch_delete_cluster_nodes/3,
          batch_describe_model_package/2,
@@ -284,6 +286,8 @@
          describe_auto_ml_job_v2/3,
          describe_cluster/2,
          describe_cluster/3,
+         describe_cluster_event/2,
+         describe_cluster_event/3,
          describe_cluster_node/2,
          describe_cluster_node/3,
          describe_cluster_scheduler_config/2,
@@ -442,6 +446,8 @@
          list_auto_ml_jobs/3,
          list_candidates_for_auto_ml_job/2,
          list_candidates_for_auto_ml_job/3,
+         list_cluster_events/2,
+         list_cluster_events/3,
          list_cluster_nodes/2,
          list_cluster_nodes/3,
          list_cluster_scheduler_configs/2,
@@ -779,6 +785,17 @@
 %%   <<"PropertiesToRemove">> => list(string())
 %% }
 -type update_context_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_metadata() :: #{
+%%   <<"AmiOverride">> => [string()],
+%%   <<"AvailabilityZoneId">> => [string()],
+%%   <<"CapacityReservation">> => capacity_reservation(),
+%%   <<"FailureMessage">> => [string()],
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetId">> => [string()]
+%% }
+-type instance_group_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% action_summary() :: #{
@@ -1222,6 +1239,13 @@
 -type list_user_profiles_response() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_reservation() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Type">> => list(any())
+%% }
+-type capacity_reservation() :: #{binary() => any()}.
+
+%% Example:
 %% resource_limits() :: #{
 %%   <<"MaxNumberOfTrainingJobs">> => integer(),
 %%   <<"MaxParallelTrainingJobs">> => integer(),
@@ -1338,6 +1362,17 @@
 %%   <<"ScalingType">> => list(any())
 %% }
 -type integer_parameter_range() :: #{binary() => any()}.
+
+%% Example:
+%% instance_metadata() :: #{
+%%   <<"AdditionalEnis">> => additional_enis(),
+%%   <<"CapacityReservation">> => capacity_reservation(),
+%%   <<"CustomerEni">> => [string()],
+%%   <<"FailureMessage">> => [string()],
+%%   <<"LcsExecutionState">> => [string()],
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type instance_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% update_pipeline_execution_request() :: #{
@@ -1590,6 +1625,7 @@
 %%   <<"ClusterName">> := string(),
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"IncludeNodeLogicalIds">> => boolean(),
 %%   <<"InstanceGroupNameContains">> => string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -1804,6 +1840,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"FailureMessage">> => string(),
 %%   <<"InstanceGroups">> => list(cluster_instance_group_details()),
+%%   <<"NodeProvisioningMode">> => list(any()),
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_details()),
@@ -1922,6 +1959,7 @@
 %% update_cluster_software_request() :: #{
 %%   <<"ClusterName">> := string(),
 %%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"ImageId">> => string(),
 %%   <<"InstanceGroups">> => list(update_cluster_software_instance_group_specification())
 %% }
 -type update_cluster_software_request() :: #{binary() => any()}.
@@ -2101,7 +2139,8 @@
 %% Example:
 %% describe_cluster_node_request() :: #{
 %%   <<"ClusterName">> := string(),
-%%   <<"NodeId">> => string()
+%%   <<"NodeId">> => string(),
+%%   <<"NodeLogicalId">> => string()
 %% }
 -type describe_cluster_node_request() :: #{binary() => any()}.
 
@@ -2266,6 +2305,12 @@
 %%   <<"NotebookInstances">> => list(notebook_instance_summary())
 %% }
 -type list_notebook_instances_output() :: #{binary() => any()}.
+
+%% Example:
+%% event_details() :: #{
+%%   <<"EventMetadata">> => list()
+%% }
+-type event_details() :: #{binary() => any()}.
 
 %% Example:
 %% s3_file_system_config() :: #{
@@ -2702,6 +2747,14 @@
 -type trial_component() :: #{binary() => any()}.
 
 %% Example:
+%% batch_delete_cluster_node_logical_ids_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type batch_delete_cluster_node_logical_ids_error() :: #{binary() => any()}.
+
+%% Example:
 %% deployment_config() :: #{
 %%   <<"AutoRollbackConfiguration">> => auto_rollback_config(),
 %%   <<"BlueGreenUpdatePolicy">> => blue_green_update_policy(),
@@ -2915,6 +2968,15 @@
 %%   <<"ModelPackageArn">> => string()
 %% }
 -type update_model_package_output() :: #{binary() => any()}.
+
+%% Example:
+%% batch_add_cluster_nodes_error() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"FailedCount">> => integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type batch_add_cluster_nodes_error() :: #{binary() => any()}.
 
 %% Example:
 %% human_task_config() :: #{
@@ -3259,6 +3321,14 @@
 %%   <<"SnsDataSource">> => labeling_job_sns_data_source()
 %% }
 -type labeling_job_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% batch_add_cluster_nodes_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ClusterName">> := string(),
+%%   <<"NodesToAdd">> := list(add_cluster_node_specification())
+%% }
+-type batch_add_cluster_nodes_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_trial_components_response() :: #{
@@ -4072,6 +4142,12 @@
 -type create_presigned_notebook_instance_url_output() :: #{binary() => any()}.
 
 %% Example:
+%% additional_enis() :: #{
+%%   <<"EfaEnis">> => list([string()]())
+%% }
+-type additional_enis() :: #{binary() => any()}.
+
+%% Example:
 %% update_cluster_software_response() :: #{
 %%   <<"ClusterArn">> => string()
 %% }
@@ -4370,6 +4446,14 @@
 %%   <<"InstanceGroupName">> => string()
 %% }
 -type update_cluster_software_instance_group_specification() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_metadata() :: #{
+%%   <<"EksRoleAccessEntries">> => list([string()]()),
+%%   <<"FailureMessage">> => [string()],
+%%   <<"SlrAccessEntry">> => [string()]
+%% }
+-type cluster_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% service_catalog_provisioning_details() :: #{
@@ -4966,6 +5050,12 @@
 -type describe_model_card_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_cluster_event_response() :: #{
+%%   <<"EventDetails">> => cluster_event_detail()
+%% }
+-type describe_cluster_event_response() :: #{binary() => any()}.
+
+%% Example:
 %% deployment_configuration() :: #{
 %%   <<"AutoRollbackConfiguration">> => list(alarm_details()),
 %%   <<"RollingUpdatePolicy">> => rolling_deployment_policy(),
@@ -5285,6 +5375,7 @@
 %% create_cluster_request() :: #{
 %%   <<"ClusterName">> := string(),
 %%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
+%%   <<"NodeProvisioningMode">> => list(any()),
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
@@ -5728,6 +5819,13 @@
 %%   <<"Value">> => string()
 %% }
 -type tag() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_events_response() :: #{
+%%   <<"Events">> => list(cluster_event_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_events_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_partner_app_response() :: #{
@@ -6598,6 +6696,13 @@
 -type list_processing_jobs_request() :: #{binary() => any()}.
 
 %% Example:
+%% batch_add_cluster_nodes_response() :: #{
+%%   <<"Failed">> => list(batch_add_cluster_nodes_error()),
+%%   <<"Successful">> => list(node_addition_result())
+%% }
+-type batch_add_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
 %% code_repository() :: #{
 %%   <<"RepositoryUrl">> => string()
 %% }
@@ -7023,6 +7128,20 @@
 -type workteam() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_event_detail() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"Description">> => [string()],
+%%   <<"EventDetails">> => event_details(),
+%%   <<"EventId">> => string(),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceId">> => [string()],
+%%   <<"ResourceType">> => list(any())
+%% }
+-type cluster_event_detail() :: #{binary() => any()}.
+
+%% Example:
 %% drift_check_bias() :: #{
 %%   <<"ConfigFile">> => file_source(),
 %%   <<"PostTrainingConstraints">> => metrics_source(),
@@ -7350,7 +7469,8 @@
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
-%%   <<"LaunchTime">> => non_neg_integer()
+%%   <<"LaunchTime">> => non_neg_integer(),
+%%   <<"NodeLogicalId">> => [string()]
 %% }
 -type cluster_node_summary() :: #{binary() => any()}.
 
@@ -7636,6 +7756,19 @@
 -type experiment_config() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_event_summary() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterName">> => string(),
+%%   <<"Description">> => [string()],
+%%   <<"EventId">> => string(),
+%%   <<"EventTime">> => non_neg_integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"InstanceId">> => [string()],
+%%   <<"ResourceType">> => list(any())
+%% }
+-type cluster_event_summary() :: #{binary() => any()}.
+
+%% Example:
 %% ttl_duration() :: #{
 %%   <<"Unit">> => list(any()),
 %%   <<"Value">> => integer()
@@ -7705,6 +7838,13 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_model_package_group_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_cluster_node_specification() :: #{
+%%   <<"IncrementTargetCountBy">> => integer(),
+%%   <<"InstanceGroupName">> => string()
+%% }
+-type add_cluster_node_specification() :: #{binary() => any()}.
 
 %% Example:
 %% list_model_quality_job_definitions_response() :: #{
@@ -7879,6 +8019,14 @@
 %%   <<"TrainingJobSummaries">> => list(hyper_parameter_training_job_summary())
 %% }
 -type list_training_jobs_for_hyper_parameter_tuning_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% instance_group_scaling_metadata() :: #{
+%%   <<"FailureMessage">> => [string()],
+%%   <<"InstanceCount">> => integer(),
+%%   <<"TargetCount">> => integer()
+%% }
+-type instance_group_scaling_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% provisioning_parameter() :: #{
@@ -8651,6 +8799,21 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_app_image_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_events_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"EventTimeAfter">> => non_neg_integer(),
+%%   <<"EventTimeBefore">> => non_neg_integer(),
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_cluster_events_request() :: #{binary() => any()}.
 
 %% Example:
 %% optimization_job_model_source_s3() :: #{
@@ -9888,6 +10051,13 @@
 -type create_workteam_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_cluster_event_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"EventId">> := string()
+%% }
+-type describe_cluster_event_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_lineage_groups_request() :: #{
 %%   <<"CreatedAfter">> => non_neg_integer(),
 %%   <<"CreatedBefore">> => non_neg_integer(),
@@ -10392,7 +10562,9 @@
 %% Example:
 %% batch_delete_cluster_nodes_response() :: #{
 %%   <<"Failed">> => list(batch_delete_cluster_nodes_error()),
-%%   <<"Successful">> => list(string())
+%%   <<"FailedNodeLogicalIds">> => list(batch_delete_cluster_node_logical_ids_error()),
+%%   <<"Successful">> => list(string()),
+%%   <<"SuccessfulNodeLogicalIds">> => list(string())
 %% }
 -type batch_delete_cluster_nodes_response() :: #{binary() => any()}.
 
@@ -10413,7 +10585,8 @@
 %% Example:
 %% batch_delete_cluster_nodes_request() :: #{
 %%   <<"ClusterName">> := string(),
-%%   <<"NodeIds">> => list(string())
+%%   <<"NodeIds">> => list(string()),
+%%   <<"NodeLogicalIds">> => list(string())
 %% }
 -type batch_delete_cluster_nodes_request() :: #{binary() => any()}.
 
@@ -10751,6 +10924,7 @@
 %% Example:
 %% cluster_instance_group_specification() :: #{
 %%   <<"ExecutionRole">> => string(),
+%%   <<"ImageId">> => string(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceStorageConfigs">> => list(list()),
@@ -10763,6 +10937,14 @@
 %%   <<"TrainingPlanArn">> => string()
 %% }
 -type cluster_instance_group_specification() :: #{binary() => any()}.
+
+%% Example:
+%% node_addition_result() :: #{
+%%   <<"InstanceGroupName">> => string(),
+%%   <<"NodeLogicalId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type node_addition_result() :: #{binary() => any()}.
 
 %% Example:
 %% edge_model_summary() :: #{
@@ -12369,6 +12551,8 @@
 %% Example:
 %% cluster_instance_group_details() :: #{
 %%   <<"CurrentCount">> => integer(),
+%%   <<"CurrentImageId">> => string(),
+%%   <<"DesiredImageId">> => string(),
 %%   <<"ExecutionRole">> => string(),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceStorageConfigs">> => list(list()),
@@ -12634,6 +12818,8 @@
 
 %% Example:
 %% cluster_node_details() :: #{
+%%   <<"CurrentImageId">> => string(),
+%%   <<"DesiredImageId">> => string(),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => [string()],
 %%   <<"InstanceStatus">> => cluster_instance_status_details(),
@@ -12642,6 +12828,7 @@
 %%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"LifeCycleConfig">> => cluster_life_cycle_config(),
+%%   <<"NodeLogicalId">> => string(),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"Placement">> => cluster_instance_placement(),
 %%   <<"PrivateDnsHostname">> => string(),
@@ -12912,6 +13099,10 @@
     resource_not_found().
 
 -type attach_cluster_node_volume_errors() ::
+    resource_not_found().
+
+-type batch_add_cluster_nodes_errors() ::
+    resource_limit_exceeded() | 
     resource_not_found().
 
 -type batch_delete_cluster_nodes_errors() ::
@@ -13315,6 +13506,9 @@
 -type describe_cluster_errors() ::
     resource_not_found().
 
+-type describe_cluster_event_errors() ::
+    resource_not_found().
+
 -type describe_cluster_node_errors() ::
     resource_not_found().
 
@@ -13484,6 +13678,9 @@
     resource_not_found().
 
 -type list_candidates_for_auto_ml_job_errors() ::
+    resource_not_found().
+
+-type list_cluster_events_errors() ::
     resource_not_found().
 
 -type list_cluster_nodes_errors() ::
@@ -13917,6 +14114,32 @@ attach_cluster_node_volume(Client, Input)
 attach_cluster_node_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachClusterNodeVolume">>, Input, Options).
+
+%% @doc Adds nodes to a HyperPod cluster by incrementing the target count for
+%% one or more instance groups.
+%%
+%% This operation returns a unique `NodeLogicalId' for each node being
+%% added, which can be used to track the provisioning status of the node.
+%% This API provides a safer alternative to `UpdateCluster' for scaling
+%% operations by avoiding unintended configuration changes.
+%%
+%% This API is only supported for clusters using `Continuous' as the
+%% `NodeProvisioningMode'.
+-spec batch_add_cluster_nodes(aws_client:aws_client(), batch_add_cluster_nodes_request()) ->
+    {ok, batch_add_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, batch_add_cluster_nodes_errors(), tuple()}.
+batch_add_cluster_nodes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_add_cluster_nodes(Client, Input, []).
+
+-spec batch_add_cluster_nodes(aws_client:aws_client(), batch_add_cluster_nodes_request(), proplists:proplist()) ->
+    {ok, batch_add_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, batch_add_cluster_nodes_errors(), tuple()}.
+batch_add_cluster_nodes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchAddClusterNodes">>, Input, Options).
 
 %% @doc Deletes specific nodes within a SageMaker HyperPod cluster.
 %%
@@ -17236,6 +17459,27 @@ describe_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCluster">>, Input, Options).
 
+%% @doc Retrieves detailed information about a specific event for a given
+%% HyperPod cluster.
+%%
+%% This functionality is only supported when the `NodeProvisioningMode'
+%% is set to `Continuous'.
+-spec describe_cluster_event(aws_client:aws_client(), describe_cluster_event_request()) ->
+    {ok, describe_cluster_event_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_event_errors(), tuple()}.
+describe_cluster_event(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cluster_event(Client, Input, []).
+
+-spec describe_cluster_event(aws_client:aws_client(), describe_cluster_event_request(), proplists:proplist()) ->
+    {ok, describe_cluster_event_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_event_errors(), tuple()}.
+describe_cluster_event(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeClusterEvent">>, Input, Options).
+
 %% @doc Retrieves information of a node (also called a instance
 %% interchangeably) of a SageMaker HyperPod cluster.
 -spec describe_cluster_node(aws_client:aws_client(), describe_cluster_node_request()) ->
@@ -18638,6 +18882,27 @@ list_candidates_for_auto_ml_job(Client, Input)
 list_candidates_for_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCandidatesForAutoMLJob">>, Input, Options).
+
+%% @doc Retrieves a list of event summaries for a specified HyperPod cluster.
+%%
+%% The operation supports filtering, sorting, and pagination of results. This
+%% functionality is only supported when the `NodeProvisioningMode' is set
+%% to `Continuous'.
+-spec list_cluster_events(aws_client:aws_client(), list_cluster_events_request()) ->
+    {ok, list_cluster_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_events_errors(), tuple()}.
+list_cluster_events(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cluster_events(Client, Input, []).
+
+-spec list_cluster_events(aws_client:aws_client(), list_cluster_events_request(), proplists:proplist()) ->
+    {ok, list_cluster_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_events_errors(), tuple()}.
+list_cluster_events(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListClusterEvents">>, Input, Options).
 
 %% @doc Retrieves the list of instances (also called nodes interchangeably)
 %% in a SageMaker HyperPod cluster.

@@ -7,6 +7,14 @@
 
 -export([batch_delete_evaluation_job/2,
          batch_delete_evaluation_job/3,
+         cancel_automated_reasoning_policy_build_workflow/4,
+         cancel_automated_reasoning_policy_build_workflow/5,
+         create_automated_reasoning_policy/2,
+         create_automated_reasoning_policy/3,
+         create_automated_reasoning_policy_test_case/3,
+         create_automated_reasoning_policy_test_case/4,
+         create_automated_reasoning_policy_version/3,
+         create_automated_reasoning_policy_version/4,
          create_custom_model/2,
          create_custom_model/3,
          create_custom_model_deployment/2,
@@ -35,6 +43,12 @@
          create_prompt_router/3,
          create_provisioned_model_throughput/2,
          create_provisioned_model_throughput/3,
+         delete_automated_reasoning_policy/3,
+         delete_automated_reasoning_policy/4,
+         delete_automated_reasoning_policy_build_workflow/4,
+         delete_automated_reasoning_policy_build_workflow/5,
+         delete_automated_reasoning_policy_test_case/4,
+         delete_automated_reasoning_policy_test_case/5,
          delete_custom_model/3,
          delete_custom_model/4,
          delete_custom_model_deployment/3,
@@ -57,6 +71,30 @@
          delete_provisioned_model_throughput/4,
          deregister_marketplace_model_endpoint/3,
          deregister_marketplace_model_endpoint/4,
+         export_automated_reasoning_policy_version/2,
+         export_automated_reasoning_policy_version/4,
+         export_automated_reasoning_policy_version/5,
+         get_automated_reasoning_policy/2,
+         get_automated_reasoning_policy/4,
+         get_automated_reasoning_policy/5,
+         get_automated_reasoning_policy_annotations/3,
+         get_automated_reasoning_policy_annotations/5,
+         get_automated_reasoning_policy_annotations/6,
+         get_automated_reasoning_policy_build_workflow/3,
+         get_automated_reasoning_policy_build_workflow/5,
+         get_automated_reasoning_policy_build_workflow/6,
+         get_automated_reasoning_policy_build_workflow_result_assets/4,
+         get_automated_reasoning_policy_build_workflow_result_assets/6,
+         get_automated_reasoning_policy_build_workflow_result_assets/7,
+         get_automated_reasoning_policy_next_scenario/3,
+         get_automated_reasoning_policy_next_scenario/5,
+         get_automated_reasoning_policy_next_scenario/6,
+         get_automated_reasoning_policy_test_case/3,
+         get_automated_reasoning_policy_test_case/5,
+         get_automated_reasoning_policy_test_case/6,
+         get_automated_reasoning_policy_test_result/4,
+         get_automated_reasoning_policy_test_result/6,
+         get_automated_reasoning_policy_test_result/7,
          get_custom_model/2,
          get_custom_model/4,
          get_custom_model/5,
@@ -108,6 +146,18 @@
          get_use_case_for_model_access/1,
          get_use_case_for_model_access/3,
          get_use_case_for_model_access/4,
+         list_automated_reasoning_policies/1,
+         list_automated_reasoning_policies/3,
+         list_automated_reasoning_policies/4,
+         list_automated_reasoning_policy_build_workflows/2,
+         list_automated_reasoning_policy_build_workflows/4,
+         list_automated_reasoning_policy_build_workflows/5,
+         list_automated_reasoning_policy_test_cases/2,
+         list_automated_reasoning_policy_test_cases/4,
+         list_automated_reasoning_policy_test_cases/5,
+         list_automated_reasoning_policy_test_results/3,
+         list_automated_reasoning_policy_test_results/5,
+         list_automated_reasoning_policy_test_results/6,
          list_custom_model_deployments/1,
          list_custom_model_deployments/3,
          list_custom_model_deployments/4,
@@ -161,6 +211,10 @@
          put_use_case_for_model_access/3,
          register_marketplace_model_endpoint/3,
          register_marketplace_model_endpoint/4,
+         start_automated_reasoning_policy_build_workflow/4,
+         start_automated_reasoning_policy_build_workflow/5,
+         start_automated_reasoning_policy_test_workflow/4,
+         start_automated_reasoning_policy_test_workflow/5,
          stop_evaluation_job/3,
          stop_evaluation_job/4,
          stop_model_customization_job/3,
@@ -171,6 +225,12 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_automated_reasoning_policy/3,
+         update_automated_reasoning_policy/4,
+         update_automated_reasoning_policy_annotations/4,
+         update_automated_reasoning_policy_annotations/5,
+         update_automated_reasoning_policy_test_case/4,
+         update_automated_reasoning_policy_test_case/5,
          update_guardrail/3,
          update_guardrail/4,
          update_marketplace_model_endpoint/3,
@@ -217,6 +277,22 @@
 
 
 %% Example:
+%% list_automated_reasoning_policies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyArn">> => string()
+%% }
+-type list_automated_reasoning_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_automated_reasoning_policy_version_response() :: #{
+%%   <<"policyDefinition">> => automated_reasoning_policy_definition()
+%% }
+-type export_automated_reasoning_policy_version_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% marketplace_model_endpoint_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"endpointArn">> => string(),
@@ -226,6 +302,18 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type marketplace_model_endpoint_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_automated_reasoning_policy_config() :: #{
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"policies">> => list(string())
+%% }
+-type guardrail_automated_reasoning_policy_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_automated_reasoning_policy_next_scenario_request() :: #{}
+-type get_automated_reasoning_policy_next_scenario_request() :: #{}.
 
 %% Example:
 %% delete_provisioned_model_throughput_response() :: #{}
@@ -237,6 +325,10 @@
 %%   <<"jobArn">> => string()
 %% }
 -type create_model_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_automated_reasoning_policy_test_result_request() :: #{}
+-type get_automated_reasoning_policy_test_result_request() :: #{}.
 
 
 %% Example:
@@ -317,6 +409,13 @@
 %% stop_model_invocation_job_request() :: #{}
 -type stop_model_invocation_job_request() :: #{}.
 
+
+%% Example:
+%% automated_reasoning_policy_delete_type_annotation() :: #{
+%%   <<"name">> => string()
+%% }
+-type automated_reasoning_policy_delete_type_annotation() :: #{binary() => any()}.
+
 %% Example:
 %% delete_custom_model_response() :: #{}
 -type delete_custom_model_response() :: #{}.
@@ -328,6 +427,14 @@
 %%   <<"ragConfigSummary">> => evaluation_rag_config_summary()
 %% }
 -type evaluation_inference_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policies_response() :: #{
+%%   <<"automatedReasoningPolicySummaries">> => list(automated_reasoning_policy_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policies_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -344,6 +451,15 @@
 %%   <<"typeEquals">> => list(any())
 %% }
 -type list_inference_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_build_workflow_result_assets_response() :: #{
+%%   <<"buildWorkflowAssets">> => list(),
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"policyArn">> => string()
+%% }
+-type get_automated_reasoning_policy_build_workflow_result_assets_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -381,6 +497,18 @@
 
 
 %% Example:
+%% automated_reasoning_policy_definition_type_value_pair() :: #{
+%%   <<"typeName">> => string(),
+%%   <<"valueName">> => string()
+%% }
+-type automated_reasoning_policy_definition_type_value_pair() :: #{binary() => any()}.
+
+%% Example:
+%% automated_reasoning_policy_planning() :: #{}
+-type automated_reasoning_policy_planning() :: #{}.
+
+
+%% Example:
 %% create_model_customization_job_response() :: #{
 %%   <<"jobArn">> => string()
 %% }
@@ -400,6 +528,7 @@
 
 %% Example:
 %% get_guardrail_response() :: #{
+%%   <<"automatedReasoningPolicy">> => guardrail_automated_reasoning_policy(),
 %%   <<"blockedInputMessaging">> => string(),
 %%   <<"blockedOutputsMessaging">> => string(),
 %%   <<"contentPolicy">> => guardrail_content_policy(),
@@ -462,7 +591,17 @@
 
 
 %% Example:
+%% automated_reasoning_policy_update_variable_annotation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"newName">> => string()
+%% }
+-type automated_reasoning_policy_update_variable_annotation() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_guardrail_request() :: #{
+%%   <<"automatedReasoningPolicyConfig">> => guardrail_automated_reasoning_policy_config(),
 %%   <<"blockedInputMessaging">> := string(),
 %%   <<"blockedOutputsMessaging">> := string(),
 %%   <<"clientRequestToken">> => string(),
@@ -478,6 +617,15 @@
 %%   <<"wordPolicyConfig">> => guardrail_word_policy_config()
 %% }
 -type create_guardrail_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_type_annotation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(automated_reasoning_policy_definition_type_value())
+%% }
+-type automated_reasoning_policy_add_type_annotation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -542,6 +690,14 @@
 
 
 %% Example:
+%% get_automated_reasoning_policy_test_case_response() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"testCase">> => automated_reasoning_policy_test_case()
+%% }
+-type get_automated_reasoning_policy_test_case_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_inference_profile_response() :: #{
 %%   <<"inferenceProfileArn">> => string(),
 %%   <<"status">> => list(any())
@@ -565,6 +721,13 @@
 %%   <<"evaluatorModelConfig">> => list()
 %% }
 -type automated_evaluation_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -604,6 +767,16 @@
 
 
 %% Example:
+%% automated_reasoning_policy_update_type_annotation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"newName">> => string(),
+%%   <<"values">> => list(list())
+%% }
+-type automated_reasoning_policy_update_type_annotation() :: #{binary() => any()}.
+
+
+%% Example:
 %% human_workflow_config() :: #{
 %%   <<"flowDefinitionArn">> => string(),
 %%   <<"instructions">> => string()
@@ -638,6 +811,23 @@
 
 
 %% Example:
+%% delete_automated_reasoning_policy_build_workflow_request() :: #{
+%%   <<"lastUpdatedAt">> := non_neg_integer()
+%% }
+-type delete_automated_reasoning_policy_build_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_satisfiable_finding() :: #{
+%%   <<"claimsFalseScenario">> => automated_reasoning_check_scenario(),
+%%   <<"claimsTrueScenario">> => automated_reasoning_check_scenario(),
+%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
+%%   <<"translation">> => automated_reasoning_check_translation()
+%% }
+-type automated_reasoning_check_satisfiable_finding() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_model_import_jobs_request() :: #{
 %%   <<"creationTimeAfter">> => non_neg_integer(),
 %%   <<"creationTimeBefore">> => non_neg_integer(),
@@ -659,6 +849,22 @@
 
 
 %% Example:
+%% automated_reasoning_policy_build_workflow_repair_content() :: #{
+%%   <<"annotations">> => list(list())
+%% }
+-type automated_reasoning_policy_build_workflow_repair_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_logic_warning() :: #{
+%%   <<"claims">> => list(automated_reasoning_logic_statement()),
+%%   <<"premises">> => list(automated_reasoning_logic_statement()),
+%%   <<"type">> => list(any())
+%% }
+-type automated_reasoning_check_logic_warning() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_contextual_grounding_filter_config() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"enabled">> => [boolean()],
@@ -677,6 +883,13 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type create_custom_model_deployment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_build_workflow_result_assets_request() :: #{
+%%   <<"assetType">> := list(any())
+%% }
+-type get_automated_reasoning_policy_build_workflow_result_assets_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -717,6 +930,35 @@
 
 
 %% Example:
+%% automated_reasoning_check_rule() :: #{
+%%   <<"id">> => string(),
+%%   <<"policyVersionArn">> => string()
+%% }
+-type automated_reasoning_check_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_annotations_response() :: #{
+%%   <<"annotationSetHash">> => string(),
+%%   <<"annotations">> => list(list()),
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_automated_reasoning_policy_annotations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_rule() :: #{
+%%   <<"alternateExpression">> => string(),
+%%   <<"expression">> => string(),
+%%   <<"id">> => string()
+%% }
+-type automated_reasoning_policy_definition_rule() :: #{binary() => any()}.
+
+
+%% Example:
 %% pricing_term() :: #{
 %%   <<"rateCard">> => list(dimensional_price_rate())
 %% }
@@ -725,6 +967,20 @@
 %% Example:
 %% delete_custom_model_deployment_request() :: #{}
 -type delete_custom_model_deployment_request() :: #{}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definitionHash">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type get_automated_reasoning_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -784,6 +1040,14 @@
 %% }
 -type invocation_logs_config() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_automated_reasoning_policy_build_workflows_response() :: #{
+%%   <<"automatedReasoningPolicyBuildWorkflowSummaries">> => list(automated_reasoning_policy_build_workflow_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policy_build_workflows_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_prompt_router_request() :: #{}
 -type get_prompt_router_request() :: #{}.
@@ -798,10 +1062,25 @@
 
 
 %% Example:
+%% automated_reasoning_policy_add_rule_annotation() :: #{
+%%   <<"expression">> => string()
+%% }
+-type automated_reasoning_policy_add_rule_annotation() :: #{binary() => any()}.
+
+
+%% Example:
 %% support_term() :: #{
 %%   <<"refundPolicyDescription">> => [string()]
 %% }
 -type support_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_test_results_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testResults">> => list(automated_reasoning_policy_test_result())
+%% }
+-type list_automated_reasoning_policy_test_results_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -810,6 +1089,13 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_inference_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_rule_annotation() :: #{
+%%   <<"ruleId">> => string()
+%% }
+-type automated_reasoning_policy_delete_rule_annotation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -837,6 +1123,16 @@
 
 
 %% Example:
+%% automated_reasoning_policy_scenario() :: #{
+%%   <<"alternateExpression">> => string(),
+%%   <<"expectedResult">> => list(any()),
+%%   <<"expression">> => string(),
+%%   <<"ruleIds">> => list(string())
+%% }
+-type automated_reasoning_policy_scenario() :: #{binary() => any()}.
+
+
+%% Example:
 %% logging_config() :: #{
 %%   <<"cloudWatchConfig">> => cloud_watch_config(),
 %%   <<"embeddingDataDeliveryEnabled">> => [boolean()],
@@ -861,6 +1157,13 @@
 %%   <<"modelIdentifier">> => string()
 %% }
 -type custom_metric_bedrock_evaluator_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_type_mutation() :: #{
+%%   <<"type">> => automated_reasoning_policy_definition_type()
+%% }
+-type automated_reasoning_policy_update_type_mutation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -919,6 +1222,23 @@
 
 
 %% Example:
+%% automated_reasoning_policy_update_variable_mutation() :: #{
+%%   <<"variable">> => automated_reasoning_policy_definition_variable()
+%% }
+-type automated_reasoning_policy_update_variable_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_workflow_document() :: #{
+%%   <<"document">> => [binary()],
+%%   <<"documentContentType">> => list(any()),
+%%   <<"documentDescription">> => string(),
+%%   <<"documentName">> => string()
+%% }
+-type automated_reasoning_policy_build_workflow_document() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_model_copy_job_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"modelKmsKeyId">> => string(),
@@ -943,6 +1263,19 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type prompt_router_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_test_case_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"expectedAggregatedFindingsResult">> := list(any()),
+%%   <<"guardContent">> := string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"lastUpdatedAt">> := non_neg_integer(),
+%%   <<"queryContent">> => string()
+%% }
+-type update_automated_reasoning_policy_test_case_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -997,10 +1330,47 @@
 
 
 %% Example:
+%% create_automated_reasoning_policy_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definitionHash">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type create_automated_reasoning_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_from_rule_feedback_annotation() :: #{
+%%   <<"feedback">> => string(),
+%%   <<"ruleIds">> => list(string())
+%% }
+-type automated_reasoning_policy_update_from_rule_feedback_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_translation_option() :: #{
+%%   <<"translations">> => list(automated_reasoning_check_translation())
+%% }
+-type automated_reasoning_check_translation_option() :: #{binary() => any()}.
+
+
+%% Example:
 %% inference_profile_model() :: #{
 %%   <<"modelArn">> => string()
 %% }
 -type inference_profile_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_type_value() :: #{
+%%   <<"description">> => string(),
+%%   <<"newValue">> => string(),
+%%   <<"value">> => string()
+%% }
+-type automated_reasoning_policy_update_type_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1034,6 +1404,13 @@
 
 
 %% Example:
+%% delete_automated_reasoning_policy_test_case_request() :: #{
+%%   <<"lastUpdatedAt">> := non_neg_integer()
+%% }
+-type delete_automated_reasoning_policy_test_case_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_provisioned_model_throughput_response() :: #{
 %%   <<"commitmentDuration">> => list(any()),
 %%   <<"commitmentExpirationTime">> => non_neg_integer(),
@@ -1062,10 +1439,39 @@
 
 
 %% Example:
+%% create_automated_reasoning_policy_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policyDefinition">> => automated_reasoning_policy_definition(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_automated_reasoning_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyDefinition">> := automated_reasoning_policy_definition()
+%% }
+-type update_automated_reasoning_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% bedrock_evaluator_model() :: #{
 %%   <<"modelIdentifier">> => string()
 %% }
 -type bedrock_evaluator_model() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_type() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"values">> => list(automated_reasoning_policy_definition_type_value())
+%% }
+-type automated_reasoning_policy_definition_type() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1088,6 +1494,13 @@
 %% Example:
 %% get_foundation_model_request() :: #{}
 -type get_foundation_model_request() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_variable_annotation() :: #{
+%%   <<"name">> => string()
+%% }
+-type automated_reasoning_policy_delete_variable_annotation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1115,6 +1528,22 @@
 %% Example:
 %% get_imported_model_request() :: #{}
 -type get_imported_model_request() :: #{}.
+
+%% Example:
+%% get_automated_reasoning_policy_build_workflow_request() :: #{}
+-type get_automated_reasoning_policy_build_workflow_request() :: #{}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_version_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"definitionHash">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"version">> => string()
+%% }
+-type create_automated_reasoning_policy_version_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_model_customization_job_response() :: #{}
@@ -1149,6 +1578,14 @@
 %% }
 -type retrieve_config() :: #{binary() => any()}.
 
+
+%% Example:
+%% automated_reasoning_policy_disjoint_rule_set() :: #{
+%%   <<"rules">> => list(string()),
+%%   <<"variables">> => list(string())
+%% }
+-type automated_reasoning_policy_disjoint_rule_set() :: #{binary() => any()}.
+
 %% Example:
 %% get_model_copy_job_request() :: #{}
 -type get_model_copy_job_request() :: #{}.
@@ -1170,12 +1607,46 @@
 
 
 %% Example:
+%% automated_reasoning_policy_build_log_entry() :: #{
+%%   <<"annotation">> => list(),
+%%   <<"buildSteps">> => list(automated_reasoning_policy_build_step()),
+%%   <<"status">> => list(any())
+%% }
+-type automated_reasoning_policy_build_log_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_valid_finding() :: #{
+%%   <<"claimsTrueScenario">> => automated_reasoning_check_scenario(),
+%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
+%%   <<"supportingRules">> => list(automated_reasoning_check_rule()),
+%%   <<"translation">> => automated_reasoning_check_translation()
+%% }
+-type automated_reasoning_check_valid_finding() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_processing_details() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"lastModifiedTime">> => non_neg_integer(),
 %%   <<"status">> => list(any())
 %% }
 -type data_processing_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_test_results_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policy_test_results_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_automated_reasoning_policy_test_workflow_response() :: #{
+%%   <<"policyArn">> => string()
+%% }
+-type start_automated_reasoning_policy_test_workflow_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1193,6 +1664,14 @@
 %%   <<"ratingScale">> => list(rating_scale_item())
 %% }
 -type custom_metric_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_build_workflows_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policy_build_workflows_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1245,6 +1724,10 @@
 %% }
 -type evaluation_dataset_metric_config() :: #{binary() => any()}.
 
+%% Example:
+%% get_automated_reasoning_policy_annotations_request() :: #{}
+-type get_automated_reasoning_policy_annotations_request() :: #{}.
+
 
 %% Example:
 %% guardrail_content_filter() :: #{
@@ -1262,10 +1745,29 @@
 
 
 %% Example:
+%% automated_reasoning_policy_update_from_scenario_feedback_annotation() :: #{
+%%   <<"feedback">> => string(),
+%%   <<"ruleIds">> => list(string()),
+%%   <<"scenarioExpression">> => string()
+%% }
+-type automated_reasoning_policy_update_from_scenario_feedback_annotation() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_content_filters_tier() :: #{
 %%   <<"tierName">> => list(any())
 %% }
 -type guardrail_content_filters_tier() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_response() :: #{
+%%   <<"definitionHash">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_automated_reasoning_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1335,6 +1837,13 @@
 
 
 %% Example:
+%% automated_reasoning_policy_delete_variable_mutation() :: #{
+%%   <<"name">> => string()
+%% }
+-type automated_reasoning_policy_delete_variable_mutation() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_copy_job_summary() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"failureMessage">> => string(),
@@ -1349,6 +1858,13 @@
 %%   <<"targetModelTags">> => list(tag())
 %% }
 -type model_copy_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_type_mutation() :: #{
+%%   <<"name">> => string()
+%% }
+-type automated_reasoning_policy_delete_type_mutation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1367,6 +1883,21 @@
 %%   <<"desiredProvisionedModelName">> => string()
 %% }
 -type update_provisioned_model_throughput_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_build_workflow_response() :: #{
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"buildWorkflowType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"documentContentType">> => list(any()),
+%%   <<"documentDescription">> => string(),
+%%   <<"documentName">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_automated_reasoning_policy_build_workflow_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1407,6 +1938,21 @@
 
 
 %% Example:
+%% automated_reasoning_policy_add_variable_mutation() :: #{
+%%   <<"variable">> => automated_reasoning_policy_definition_variable()
+%% }
+-type automated_reasoning_policy_add_variable_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_test_cases_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testCases">> => list(automated_reasoning_policy_test_case())
+%% }
+-type list_automated_reasoning_policy_test_cases_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% rating_scale_item() :: #{
 %%   <<"definition">> => string(),
 %%   <<"value">> => list()
@@ -1435,6 +1981,24 @@
 %%   <<"modelId">> := string()
 %% }
 -type delete_foundation_model_agreement_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_ingest_content_annotation() :: #{
+%%   <<"content">> => string()
+%% }
+-type automated_reasoning_policy_ingest_content_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_test_case_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"expectedAggregatedFindingsResult">> := list(any()),
+%%   <<"guardContent">> := string(),
+%%   <<"queryContent">> => string()
+%% }
+-type create_automated_reasoning_policy_test_case_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1570,6 +2134,7 @@
 
 %% Example:
 %% update_guardrail_request() :: #{
+%%   <<"automatedReasoningPolicyConfig">> => guardrail_automated_reasoning_policy_config(),
 %%   <<"blockedInputMessaging">> := string(),
 %%   <<"blockedOutputsMessaging">> := string(),
 %%   <<"contentPolicyConfig">> => guardrail_content_policy_config(),
@@ -1587,6 +2152,13 @@
 %% Example:
 %% get_model_import_job_request() :: #{}
 -type get_model_import_job_request() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_check_input_text_reference() :: #{
+%%   <<"text">> => string()
+%% }
+-type automated_reasoning_check_input_text_reference() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1619,6 +2191,15 @@
 %% Example:
 %% get_custom_model_request() :: #{}
 -type get_custom_model_request() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_variable_annotation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type automated_reasoning_policy_add_variable_annotation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1661,6 +2242,21 @@
 
 
 %% Example:
+%% automated_reasoning_policy_update_rule_mutation() :: #{
+%%   <<"rule">> => automated_reasoning_policy_definition_rule()
+%% }
+-type automated_reasoning_policy_update_rule_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_next_scenario_response() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"scenario">> => automated_reasoning_policy_scenario()
+%% }
+-type get_automated_reasoning_policy_next_scenario_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_sources_generation_configuration() :: #{
 %%   <<"additionalModelRequestFields">> => map(),
 %%   <<"guardrailConfiguration">> => guardrail_configuration(),
@@ -1695,6 +2291,10 @@
 %% }
 -type create_prompt_router_request() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_automated_reasoning_policy_build_workflow_response() :: #{}
+-type cancel_automated_reasoning_policy_build_workflow_response() :: #{}.
+
 
 %% Example:
 %% knowledge_base_vector_search_configuration() :: #{
@@ -1706,9 +2306,25 @@
 %% }
 -type knowledge_base_vector_search_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% guardrail_automated_reasoning_policy() :: #{
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"policies">> => list(string())
+%% }
+-type guardrail_automated_reasoning_policy() :: #{binary() => any()}.
+
+%% Example:
+%% get_automated_reasoning_policy_request() :: #{}
+-type get_automated_reasoning_policy_request() :: #{}.
+
 %% Example:
 %% get_model_invocation_logging_configuration_request() :: #{}
 -type get_model_invocation_logging_configuration_request() :: #{}.
+
+%% Example:
+%% delete_automated_reasoning_policy_request() :: #{}
+-type delete_automated_reasoning_policy_request() :: #{}.
 
 
 %% Example:
@@ -1721,6 +2337,13 @@
 %% Example:
 %% delete_marketplace_model_endpoint_response() :: #{}
 -type delete_marketplace_model_endpoint_response() :: #{}.
+
+
+%% Example:
+%% get_automated_reasoning_policy_test_result_response() :: #{
+%%   <<"testResult">> => automated_reasoning_policy_test_result()
+%% }
+-type get_automated_reasoning_policy_test_result_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_imported_model_response() :: #{}
@@ -1746,6 +2369,10 @@
 %%   <<"text">> => [string()]
 %% }
 -type guardrail_word_config() :: #{binary() => any()}.
+
+%% Example:
+%% get_automated_reasoning_policy_test_case_request() :: #{}
+-type get_automated_reasoning_policy_test_case_request() :: #{}.
 
 
 %% Example:
@@ -1821,10 +2448,26 @@
 
 
 %% Example:
+%% update_automated_reasoning_policy_annotations_request() :: #{
+%%   <<"annotations">> := list(list()),
+%%   <<"lastUpdatedAnnotationSetHash">> := string()
+%% }
+-type update_automated_reasoning_policy_annotations_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_foundation_model_agreement_offers_request() :: #{
 %%   <<"offerType">> => list(any())
 %% }
 -type list_foundation_model_agreement_offers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_step_message() :: #{
+%%   <<"message">> => [string()],
+%%   <<"messageType">> => list(any())
+%% }
+-type automated_reasoning_policy_build_step_message() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1840,6 +2483,24 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_model_copy_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_log() :: #{
+%%   <<"entries">> => list(automated_reasoning_policy_build_log_entry())
+%% }
+-type automated_reasoning_policy_build_log() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_type_mutation() :: #{
+%%   <<"type">> => automated_reasoning_policy_definition_type()
+%% }
+-type automated_reasoning_policy_add_type_mutation() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_automated_reasoning_policy_build_workflow_request() :: #{}
+-type cancel_automated_reasoning_policy_build_workflow_request() :: #{}.
 
 %% Example:
 %% delete_guardrail_response() :: #{}
@@ -1879,6 +2540,14 @@
 
 
 %% Example:
+%% start_automated_reasoning_policy_test_workflow_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"testCaseIds">> => list(string())
+%% }
+-type start_automated_reasoning_policy_test_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_regex_config() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"description">> => [string()],
@@ -1897,6 +2566,13 @@
 %%   <<"loggingConfig">> := logging_config()
 %% }
 -type put_model_invocation_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_scenario() :: #{
+%%   <<"statements">> => list(automated_reasoning_logic_statement())
+%% }
+-type automated_reasoning_check_scenario() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1994,6 +2670,14 @@
 %% get_model_invocation_job_request() :: #{}
 -type get_model_invocation_job_request() :: #{}.
 
+%% Example:
+%% delete_automated_reasoning_policy_response() :: #{}
+-type delete_automated_reasoning_policy_response() :: #{}.
+
+%% Example:
+%% delete_automated_reasoning_policy_build_workflow_response() :: #{}
+-type delete_automated_reasoning_policy_build_workflow_response() :: #{}.
+
 
 %% Example:
 %% create_model_customization_job_request() :: #{
@@ -2056,6 +2740,10 @@
 %% }
 -type create_evaluation_job_request() :: #{binary() => any()}.
 
+%% Example:
+%% automated_reasoning_check_no_translations_finding() :: #{}
+-type automated_reasoning_check_no_translations_finding() :: #{}.
+
 
 %% Example:
 %% get_marketplace_model_endpoint_response() :: #{
@@ -2077,6 +2765,29 @@
 
 
 %% Example:
+%% automated_reasoning_policy_definition_quality_report() :: #{
+%%   <<"conflictingRules">> => list(string()),
+%%   <<"disjointRuleSets">> => list(automated_reasoning_policy_disjoint_rule_set()),
+%%   <<"ruleCount">> => [integer()],
+%%   <<"typeCount">> => [integer()],
+%%   <<"unusedTypeValues">> => list(automated_reasoning_policy_definition_type_value_pair()),
+%%   <<"unusedTypes">> => list(string()),
+%%   <<"unusedVariables">> => list(string()),
+%%   <<"variableCount">> => [integer()]
+%% }
+-type automated_reasoning_policy_definition_quality_report() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_variable() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type automated_reasoning_policy_definition_variable() :: #{binary() => any()}.
+
+
+%% Example:
 %% training_details() :: #{
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"lastModifiedTime">> => non_neg_integer(),
@@ -2092,12 +2803,35 @@
 %% }
 -type guardrail_word_policy_config() :: #{binary() => any()}.
 
+%% Example:
+%% export_automated_reasoning_policy_version_request() :: #{}
+-type export_automated_reasoning_policy_version_request() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_check_translation() :: #{
+%%   <<"claims">> => list(automated_reasoning_logic_statement()),
+%%   <<"confidence">> => float(),
+%%   <<"premises">> => list(automated_reasoning_logic_statement()),
+%%   <<"untranslatedClaims">> => list(automated_reasoning_check_input_text_reference()),
+%%   <<"untranslatedPremises">> => list(automated_reasoning_check_input_text_reference())
+%% }
+-type automated_reasoning_check_translation() :: #{binary() => any()}.
+
 
 %% Example:
 %% validator_metric() :: #{
 %%   <<"validationLoss">> => float()
 %% }
 -type validator_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_test_case_response() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"testCaseId">> => string()
+%% }
+-type create_automated_reasoning_policy_test_case_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2174,11 +2908,70 @@
 
 
 %% Example:
+%% update_automated_reasoning_policy_annotations_response() :: #{
+%%   <<"annotationSetHash">> => string(),
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_automated_reasoning_policy_annotations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_check_impossible_finding() :: #{
+%%   <<"contradictingRules">> => list(automated_reasoning_check_rule()),
+%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
+%%   <<"translation">> => automated_reasoning_check_translation()
+%% }
+-type automated_reasoning_check_impossible_finding() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_dataset() :: #{
 %%   <<"datasetLocation">> => list(),
 %%   <<"name">> => string()
 %% }
 -type evaluation_dataset() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_automated_reasoning_policy_version_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"lastUpdatedDefinitionHash">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_automated_reasoning_policy_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_update_rule_annotation() :: #{
+%%   <<"expression">> => string(),
+%%   <<"ruleId">> => string()
+%% }
+-type automated_reasoning_policy_update_rule_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_workflow_source() :: #{
+%%   <<"policyDefinition">> => automated_reasoning_policy_definition(),
+%%   <<"workflowContent">> => list()
+%% }
+-type automated_reasoning_policy_build_workflow_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_add_rule_mutation() :: #{
+%%   <<"rule">> => automated_reasoning_policy_definition_rule()
+%% }
+-type automated_reasoning_policy_add_rule_mutation() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_automated_reasoning_policy_test_cases_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_automated_reasoning_policy_test_cases_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2194,6 +2987,14 @@
 %%   <<"customModelUnitsVersion">> => string()
 %% }
 -type custom_model_units() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_automated_reasoning_policy_build_workflow_response() :: #{
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"policyArn">> => string()
+%% }
+-type start_automated_reasoning_policy_build_workflow_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2243,6 +3044,19 @@
 
 
 %% Example:
+%% automated_reasoning_policy_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policyArn">> => string(),
+%%   <<"policyId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type automated_reasoning_policy_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_marketplace_model_endpoint_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"endpointConfig">> := list()
@@ -2259,6 +3073,23 @@
 
 
 %% Example:
+%% automated_reasoning_policy_test_case() :: #{
+%%   <<"confidenceThreshold">> => float(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"expectedAggregatedFindingsResult">> => list(any()),
+%%   <<"guardContent">> => string(),
+%%   <<"queryContent">> => string(),
+%%   <<"testCaseId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type automated_reasoning_policy_test_case() :: #{binary() => any()}.
+
+%% Example:
+%% automated_reasoning_check_too_complex_finding() :: #{}
+-type automated_reasoning_check_too_complex_finding() :: #{}.
+
+
+%% Example:
 %% list_prompt_routers_response() :: #{
 %%   <<"nextToken">> => string(),
 %%   <<"promptRouterSummaries">> => list(prompt_router_summary())
@@ -2267,11 +3098,27 @@
 
 
 %% Example:
+%% automated_reasoning_check_translation_ambiguous_finding() :: #{
+%%   <<"differenceScenarios">> => list(automated_reasoning_check_scenario()),
+%%   <<"options">> => list(automated_reasoning_check_translation_option())
+%% }
+-type automated_reasoning_check_translation_ambiguous_finding() :: #{binary() => any()}.
+
+
+%% Example:
 %% vector_search_bedrock_reranking_model_configuration() :: #{
 %%   <<"additionalModelRequestFields">> => map(),
 %%   <<"modelArn">> => string()
 %% }
 -type vector_search_bedrock_reranking_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_logic_statement() :: #{
+%%   <<"logic">> => string(),
+%%   <<"naturalLanguage">> => string()
+%% }
+-type automated_reasoning_logic_statement() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2294,6 +3141,30 @@
 %%   <<"loggingConfig">> => logging_config()
 %% }
 -type get_model_invocation_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_automated_reasoning_policy_test_case_response() :: #{
+%%   <<"policyArn">> => string(),
+%%   <<"testCaseId">> => string()
+%% }
+-type update_automated_reasoning_policy_test_case_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_type_value() :: #{
+%%   <<"value">> => string()
+%% }
+-type automated_reasoning_policy_delete_type_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_step() :: #{
+%%   <<"context">> => list(),
+%%   <<"messages">> => list(automated_reasoning_policy_build_step_message()),
+%%   <<"priorElement">> => list()
+%% }
+-type automated_reasoning_policy_build_step() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2398,6 +3269,20 @@
 
 
 %% Example:
+%% automated_reasoning_policy_add_rule_from_natural_language_annotation() :: #{
+%%   <<"naturalLanguage">> => string()
+%% }
+-type automated_reasoning_policy_add_rule_from_natural_language_annotation() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_delete_rule_mutation() :: #{
+%%   <<"id">> => string()
+%% }
+-type automated_reasoning_policy_delete_rule_mutation() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_foundation_model_agreement_response() :: #{
 %%   <<"modelId">> => string()
 %% }
@@ -2433,10 +3318,27 @@
 
 
 %% Example:
+%% automated_reasoning_policy_test_result() :: #{
+%%   <<"aggregatedTestFindingsResult">> => list(any()),
+%%   <<"policyArn">> => string(),
+%%   <<"testCase">> => automated_reasoning_policy_test_case(),
+%%   <<"testFindings">> => list(list()),
+%%   <<"testRunResult">> => list(any()),
+%%   <<"testRunStatus">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type automated_reasoning_policy_test_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_delete_evaluation_job_request() :: #{
 %%   <<"jobIdentifiers">> := list(string())
 %% }
 -type batch_delete_evaluation_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_automated_reasoning_policy_test_case_response() :: #{}
+-type delete_automated_reasoning_policy_test_case_response() :: #{}.
 
 
 %% Example:
@@ -2490,6 +3392,14 @@
 
 
 %% Example:
+%% automated_reasoning_policy_add_type_value() :: #{
+%%   <<"description">> => string(),
+%%   <<"value">> => string()
+%% }
+-type automated_reasoning_policy_add_type_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% register_marketplace_model_endpoint_response() :: #{
 %%   <<"marketplaceModelEndpoint">> => marketplace_model_endpoint()
 %% }
@@ -2522,6 +3432,14 @@
 
 
 %% Example:
+%% start_automated_reasoning_policy_build_workflow_request() :: #{
+%%   <<"clientRequestToken">> => string(),
+%%   <<"sourceContent">> := automated_reasoning_policy_build_workflow_source()
+%% }
+-type start_automated_reasoning_policy_build_workflow_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_custom_model_deployment_response() :: #{
 %%   <<"customModelDeploymentArn">> => string()
 %% }
@@ -2537,6 +3455,15 @@
 
 
 %% Example:
+%% automated_reasoning_check_invalid_finding() :: #{
+%%   <<"contradictingRules">> => list(automated_reasoning_check_rule()),
+%%   <<"logicWarning">> => automated_reasoning_check_logic_warning(),
+%%   <<"translation">> => automated_reasoning_check_translation()
+%% }
+-type automated_reasoning_check_invalid_finding() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_bedrock_model() :: #{
 %%   <<"inferenceParams">> => string(),
 %%   <<"modelIdentifier">> => string(),
@@ -2547,6 +3474,28 @@
 %% Example:
 %% delete_model_invocation_logging_configuration_request() :: #{}
 -type delete_model_invocation_logging_configuration_request() :: #{}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition() :: #{
+%%   <<"rules">> => list(automated_reasoning_policy_definition_rule()),
+%%   <<"types">> => list(automated_reasoning_policy_definition_type()),
+%%   <<"variables">> => list(automated_reasoning_policy_definition_variable()),
+%%   <<"version">> => string()
+%% }
+-type automated_reasoning_policy_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_build_workflow_summary() :: #{
+%%   <<"buildWorkflowId">> => string(),
+%%   <<"buildWorkflowType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"policyArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type automated_reasoning_policy_build_workflow_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2568,6 +3517,14 @@
 %%   <<"ownerAccountId">> => string()
 %% }
 -type custom_model_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% automated_reasoning_policy_definition_type_value() :: #{
+%%   <<"description">> => string(),
+%%   <<"value">> => string()
+%% }
+-type automated_reasoning_policy_definition_type_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2677,6 +3634,41 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type cancel_automated_reasoning_policy_build_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type create_automated_reasoning_policy_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_automated_reasoning_policy_test_case_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type create_automated_reasoning_policy_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -2808,6 +3800,30 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
+-type delete_automated_reasoning_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type delete_automated_reasoning_policy_build_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_automated_reasoning_policy_test_case_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception().
+
 -type delete_custom_model_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2889,6 +3905,62 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type export_automated_reasoning_policy_version_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_automated_reasoning_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_automated_reasoning_policy_annotations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_automated_reasoning_policy_build_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_automated_reasoning_policy_build_workflow_result_assets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_automated_reasoning_policy_next_scenario_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_automated_reasoning_policy_test_case_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_automated_reasoning_policy_test_result_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception().
 
 -type get_custom_model_errors() ::
@@ -3005,6 +4077,35 @@
     throttling_exception() | 
     validation_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_automated_reasoning_policies_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_automated_reasoning_policy_build_workflows_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_automated_reasoning_policy_test_cases_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_automated_reasoning_policy_test_results_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception().
 
 -type list_custom_model_deployments_errors() ::
@@ -3128,6 +4229,24 @@
     service_unavailable_exception() | 
     resource_not_found_exception().
 
+-type start_automated_reasoning_policy_build_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception().
+
+-type start_automated_reasoning_policy_test_workflow_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
 -type stop_evaluation_job_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3166,6 +4285,32 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_automated_reasoning_policy_errors() ::
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_automated_reasoning_policy_annotations_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_automated_reasoning_policy_test_case_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception().
 
 -type update_guardrail_errors() ::
     throttling_exception() | 
@@ -3216,6 +4361,161 @@ batch_delete_evaluation_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/evaluation-jobs/batch-delete"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels a running Automated Reasoning policy build workflow.
+%%
+%% This stops the policy generation process and prevents further processing
+%% of the source documents.
+-spec cancel_automated_reasoning_policy_build_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_automated_reasoning_policy_build_workflow_request()) ->
+    {ok, cancel_automated_reasoning_policy_build_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_automated_reasoning_policy_build_workflow_errors(), tuple()}.
+cancel_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, Input) ->
+    cancel_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, Input, []).
+
+-spec cancel_automated_reasoning_policy_build_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), cancel_automated_reasoning_policy_build_workflow_request(), proplists:proplist()) ->
+    {ok, cancel_automated_reasoning_policy_build_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_automated_reasoning_policy_build_workflow_errors(), tuple()}.
+cancel_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/cancel"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Automated Reasoning policy for Amazon Bedrock Guardrails.
+%%
+%% Automated Reasoning policies use mathematical techniques to detect
+%% hallucinations, suggest corrections, and highlight unstated assumptions in
+%% the responses of your GenAI application.
+%%
+%% To create a policy, you upload a source document that describes the rules
+%% that you're encoding. Automated Reasoning extracts important concepts
+%% from the source document that will become variables in the policy and
+%% infers policy rules.
+-spec create_automated_reasoning_policy(aws_client:aws_client(), create_automated_reasoning_policy_request()) ->
+    {ok, create_automated_reasoning_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_automated_reasoning_policy_errors(), tuple()}.
+create_automated_reasoning_policy(Client, Input) ->
+    create_automated_reasoning_policy(Client, Input, []).
+
+-spec create_automated_reasoning_policy(aws_client:aws_client(), create_automated_reasoning_policy_request(), proplists:proplist()) ->
+    {ok, create_automated_reasoning_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_automated_reasoning_policy_errors(), tuple()}.
+create_automated_reasoning_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/automated-reasoning-policies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a test for an Automated Reasoning policy.
+%%
+%% Tests validate that your policy works as expected by providing sample
+%% inputs and expected outcomes. Use tests to verify policy behavior before
+%% deploying to production.
+-spec create_automated_reasoning_policy_test_case(aws_client:aws_client(), binary() | list(), create_automated_reasoning_policy_test_case_request()) ->
+    {ok, create_automated_reasoning_policy_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, create_automated_reasoning_policy_test_case_errors(), tuple()}.
+create_automated_reasoning_policy_test_case(Client, PolicyArn, Input) ->
+    create_automated_reasoning_policy_test_case(Client, PolicyArn, Input, []).
+
+-spec create_automated_reasoning_policy_test_case(aws_client:aws_client(), binary() | list(), create_automated_reasoning_policy_test_case_request(), proplists:proplist()) ->
+    {ok, create_automated_reasoning_policy_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, create_automated_reasoning_policy_test_case_errors(), tuple()}.
+create_automated_reasoning_policy_test_case(Client, PolicyArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/test-cases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new version of an existing Automated Reasoning policy.
+%%
+%% This allows you to iterate on your policy rules while maintaining previous
+%% versions for rollback or comparison purposes.
+-spec create_automated_reasoning_policy_version(aws_client:aws_client(), binary() | list(), create_automated_reasoning_policy_version_request()) ->
+    {ok, create_automated_reasoning_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_automated_reasoning_policy_version_errors(), tuple()}.
+create_automated_reasoning_policy_version(Client, PolicyArn, Input) ->
+    create_automated_reasoning_policy_version(Client, PolicyArn, Input, []).
+
+-spec create_automated_reasoning_policy_version(aws_client:aws_client(), binary() | list(), create_automated_reasoning_policy_version_request(), proplists:proplist()) ->
+    {ok, create_automated_reasoning_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_automated_reasoning_policy_version_errors(), tuple()}.
+create_automated_reasoning_policy_version(Client, PolicyArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/versions"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -3850,6 +5150,120 @@ create_provisioned_model_throughput(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an Automated Reasoning policy or policy version.
+%%
+%% This operation is idempotent. If you delete a policy more than once, each
+%% call succeeds. Deleting a policy removes it permanently and cannot be
+%% undone.
+-spec delete_automated_reasoning_policy(aws_client:aws_client(), binary() | list(), delete_automated_reasoning_policy_request()) ->
+    {ok, delete_automated_reasoning_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_automated_reasoning_policy_errors(), tuple()}.
+delete_automated_reasoning_policy(Client, PolicyArn, Input) ->
+    delete_automated_reasoning_policy(Client, PolicyArn, Input, []).
+
+-spec delete_automated_reasoning_policy(aws_client:aws_client(), binary() | list(), delete_automated_reasoning_policy_request(), proplists:proplist()) ->
+    {ok, delete_automated_reasoning_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_automated_reasoning_policy_errors(), tuple()}.
+delete_automated_reasoning_policy(Client, PolicyArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Automated Reasoning policy build workflow and its
+%% associated artifacts.
+%%
+%% This permanently removes the workflow history and any generated assets.
+-spec delete_automated_reasoning_policy_build_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_automated_reasoning_policy_build_workflow_request()) ->
+    {ok, delete_automated_reasoning_policy_build_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, delete_automated_reasoning_policy_build_workflow_errors(), tuple()}.
+delete_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, Input) ->
+    delete_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, Input, []).
+
+-spec delete_automated_reasoning_policy_build_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), delete_automated_reasoning_policy_build_workflow_request(), proplists:proplist()) ->
+    {ok, delete_automated_reasoning_policy_build_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, delete_automated_reasoning_policy_build_workflow_errors(), tuple()}.
+delete_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"updatedAt">>, <<"lastUpdatedAt">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Automated Reasoning policy test.
+%%
+%% This operation is idempotent; if you delete a test more than once, each
+%% call succeeds.
+-spec delete_automated_reasoning_policy_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), delete_automated_reasoning_policy_test_case_request()) ->
+    {ok, delete_automated_reasoning_policy_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, delete_automated_reasoning_policy_test_case_errors(), tuple()}.
+delete_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, Input) ->
+    delete_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, Input, []).
+
+-spec delete_automated_reasoning_policy_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), delete_automated_reasoning_policy_test_case_request(), proplists:proplist()) ->
+    {ok, delete_automated_reasoning_policy_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, delete_automated_reasoning_policy_test_case_errors(), tuple()}.
+delete_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/test-cases/", aws_util:encode_uri(TestCaseId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"updatedAt">>, <<"lastUpdatedAt">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a custom model that you created earlier.
 %%
 %% For more information, see Custom models:
@@ -4274,6 +5688,328 @@ deregister_marketplace_model_endpoint(Client, EndpointArn, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Exports the policy definition for an Automated Reasoning policy
+%% version.
+%%
+%% Returns the complete policy definition including rules, variables, and
+%% custom variable types in a structured format.
+-spec export_automated_reasoning_policy_version(aws_client:aws_client(), binary() | list()) ->
+    {ok, export_automated_reasoning_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, export_automated_reasoning_policy_version_errors(), tuple()}.
+export_automated_reasoning_policy_version(Client, PolicyArn)
+  when is_map(Client) ->
+    export_automated_reasoning_policy_version(Client, PolicyArn, #{}, #{}).
+
+-spec export_automated_reasoning_policy_version(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, export_automated_reasoning_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, export_automated_reasoning_policy_version_errors(), tuple()}.
+export_automated_reasoning_policy_version(Client, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    export_automated_reasoning_policy_version(Client, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec export_automated_reasoning_policy_version(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, export_automated_reasoning_policy_version_response(), tuple()} |
+    {error, any()} |
+    {error, export_automated_reasoning_policy_version_errors(), tuple()}.
+export_automated_reasoning_policy_version(Client, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/export"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves details about an Automated Reasoning policy or policy
+%% version.
+%%
+%% Returns information including the policy definition, metadata, and
+%% timestamps.
+-spec get_automated_reasoning_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_automated_reasoning_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_errors(), tuple()}.
+get_automated_reasoning_policy(Client, PolicyArn)
+  when is_map(Client) ->
+    get_automated_reasoning_policy(Client, PolicyArn, #{}, #{}).
+
+-spec get_automated_reasoning_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_automated_reasoning_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_errors(), tuple()}.
+get_automated_reasoning_policy(Client, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_automated_reasoning_policy(Client, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec get_automated_reasoning_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_automated_reasoning_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_errors(), tuple()}.
+get_automated_reasoning_policy(Client, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the current annotations for an Automated Reasoning policy
+%% build workflow.
+%%
+%% Annotations contain corrections to the rules, variables and types to be
+%% applied to the policy.
+-spec get_automated_reasoning_policy_annotations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_automated_reasoning_policy_annotations_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_annotations_errors(), tuple()}.
+get_automated_reasoning_policy_annotations(Client, BuildWorkflowId, PolicyArn)
+  when is_map(Client) ->
+    get_automated_reasoning_policy_annotations(Client, BuildWorkflowId, PolicyArn, #{}, #{}).
+
+-spec get_automated_reasoning_policy_annotations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_automated_reasoning_policy_annotations_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_annotations_errors(), tuple()}.
+get_automated_reasoning_policy_annotations(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_automated_reasoning_policy_annotations(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec get_automated_reasoning_policy_annotations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_automated_reasoning_policy_annotations_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_annotations_errors(), tuple()}.
+get_automated_reasoning_policy_annotations(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/annotations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about an Automated Reasoning policy
+%% build workflow, including its status, configuration, and metadata.
+-spec get_automated_reasoning_policy_build_workflow(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_automated_reasoning_policy_build_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_build_workflow_errors(), tuple()}.
+get_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn)
+  when is_map(Client) ->
+    get_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, #{}, #{}).
+
+-spec get_automated_reasoning_policy_build_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_automated_reasoning_policy_build_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_build_workflow_errors(), tuple()}.
+get_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec get_automated_reasoning_policy_build_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_automated_reasoning_policy_build_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_build_workflow_errors(), tuple()}.
+get_automated_reasoning_policy_build_workflow(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the resulting assets from a completed Automated Reasoning
+%% policy build workflow, including build logs, quality reports, and
+%% generated policy artifacts.
+-spec get_automated_reasoning_policy_build_workflow_result_assets(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_automated_reasoning_policy_build_workflow_result_assets_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_build_workflow_result_assets_errors(), tuple()}.
+get_automated_reasoning_policy_build_workflow_result_assets(Client, BuildWorkflowId, PolicyArn, AssetType)
+  when is_map(Client) ->
+    get_automated_reasoning_policy_build_workflow_result_assets(Client, BuildWorkflowId, PolicyArn, AssetType, #{}, #{}).
+
+-spec get_automated_reasoning_policy_build_workflow_result_assets(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_automated_reasoning_policy_build_workflow_result_assets_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_build_workflow_result_assets_errors(), tuple()}.
+get_automated_reasoning_policy_build_workflow_result_assets(Client, BuildWorkflowId, PolicyArn, AssetType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_automated_reasoning_policy_build_workflow_result_assets(Client, BuildWorkflowId, PolicyArn, AssetType, QueryMap, HeadersMap, []).
+
+-spec get_automated_reasoning_policy_build_workflow_result_assets(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_automated_reasoning_policy_build_workflow_result_assets_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_build_workflow_result_assets_errors(), tuple()}.
+get_automated_reasoning_policy_build_workflow_result_assets(Client, BuildWorkflowId, PolicyArn, AssetType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/result-assets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"assetType">>, AssetType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the next test scenario for validating an Automated
+%% Reasoning policy.
+%%
+%% This is used during the interactive policy refinement process to test
+%% policy behavior.
+-spec get_automated_reasoning_policy_next_scenario(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_automated_reasoning_policy_next_scenario_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_next_scenario_errors(), tuple()}.
+get_automated_reasoning_policy_next_scenario(Client, BuildWorkflowId, PolicyArn)
+  when is_map(Client) ->
+    get_automated_reasoning_policy_next_scenario(Client, BuildWorkflowId, PolicyArn, #{}, #{}).
+
+-spec get_automated_reasoning_policy_next_scenario(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_automated_reasoning_policy_next_scenario_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_next_scenario_errors(), tuple()}.
+get_automated_reasoning_policy_next_scenario(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_automated_reasoning_policy_next_scenario(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec get_automated_reasoning_policy_next_scenario(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_automated_reasoning_policy_next_scenario_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_next_scenario_errors(), tuple()}.
+get_automated_reasoning_policy_next_scenario(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/scenarios"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves details about a specific Automated Reasoning policy test.
+-spec get_automated_reasoning_policy_test_case(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_automated_reasoning_policy_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_test_case_errors(), tuple()}.
+get_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId)
+  when is_map(Client) ->
+    get_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, #{}, #{}).
+
+-spec get_automated_reasoning_policy_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_automated_reasoning_policy_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_test_case_errors(), tuple()}.
+get_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, QueryMap, HeadersMap, []).
+
+-spec get_automated_reasoning_policy_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_automated_reasoning_policy_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_test_case_errors(), tuple()}.
+get_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/test-cases/", aws_util:encode_uri(TestCaseId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the test result for a specific Automated Reasoning policy
+%% test.
+%%
+%% Returns detailed validation findings and execution status.
+-spec get_automated_reasoning_policy_test_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_automated_reasoning_policy_test_result_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_test_result_errors(), tuple()}.
+get_automated_reasoning_policy_test_result(Client, BuildWorkflowId, PolicyArn, TestCaseId)
+  when is_map(Client) ->
+    get_automated_reasoning_policy_test_result(Client, BuildWorkflowId, PolicyArn, TestCaseId, #{}, #{}).
+
+-spec get_automated_reasoning_policy_test_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_automated_reasoning_policy_test_result_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_test_result_errors(), tuple()}.
+get_automated_reasoning_policy_test_result(Client, BuildWorkflowId, PolicyArn, TestCaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_automated_reasoning_policy_test_result(Client, BuildWorkflowId, PolicyArn, TestCaseId, QueryMap, HeadersMap, []).
+
+-spec get_automated_reasoning_policy_test_result(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_automated_reasoning_policy_test_result_response(), tuple()} |
+    {error, any()} |
+    {error, get_automated_reasoning_policy_test_result_errors(), tuple()}.
+get_automated_reasoning_policy_test_result(Client, BuildWorkflowId, PolicyArn, TestCaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/test-cases/", aws_util:encode_uri(TestCaseId), "/test-results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the properties associated with a Amazon Bedrock custom model that
 %% you have created.
@@ -4962,6 +6698,183 @@ get_use_case_for_model_access(Client, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all Automated Reasoning policies in your account, with optional
+%% filtering by policy ARN.
+%%
+%% This helps you manage and discover existing policies.
+-spec list_automated_reasoning_policies(aws_client:aws_client()) ->
+    {ok, list_automated_reasoning_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policies_errors(), tuple()}.
+list_automated_reasoning_policies(Client)
+  when is_map(Client) ->
+    list_automated_reasoning_policies(Client, #{}, #{}).
+
+-spec list_automated_reasoning_policies(aws_client:aws_client(), map(), map()) ->
+    {ok, list_automated_reasoning_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policies_errors(), tuple()}.
+list_automated_reasoning_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_automated_reasoning_policies(Client, QueryMap, HeadersMap, []).
+
+-spec list_automated_reasoning_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_automated_reasoning_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policies_errors(), tuple()}.
+list_automated_reasoning_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"policyArn">>, maps:get(<<"policyArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all build workflows for an Automated Reasoning policy, showing
+%% the history of policy creation and modification attempts.
+-spec list_automated_reasoning_policy_build_workflows(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_automated_reasoning_policy_build_workflows_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policy_build_workflows_errors(), tuple()}.
+list_automated_reasoning_policy_build_workflows(Client, PolicyArn)
+  when is_map(Client) ->
+    list_automated_reasoning_policy_build_workflows(Client, PolicyArn, #{}, #{}).
+
+-spec list_automated_reasoning_policy_build_workflows(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_automated_reasoning_policy_build_workflows_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policy_build_workflows_errors(), tuple()}.
+list_automated_reasoning_policy_build_workflows(Client, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_automated_reasoning_policy_build_workflows(Client, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec list_automated_reasoning_policy_build_workflows(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_automated_reasoning_policy_build_workflows_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policy_build_workflows_errors(), tuple()}.
+list_automated_reasoning_policy_build_workflows(Client, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists tests for an Automated Reasoning policy.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+-spec list_automated_reasoning_policy_test_cases(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_automated_reasoning_policy_test_cases_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policy_test_cases_errors(), tuple()}.
+list_automated_reasoning_policy_test_cases(Client, PolicyArn)
+  when is_map(Client) ->
+    list_automated_reasoning_policy_test_cases(Client, PolicyArn, #{}, #{}).
+
+-spec list_automated_reasoning_policy_test_cases(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_automated_reasoning_policy_test_cases_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policy_test_cases_errors(), tuple()}.
+list_automated_reasoning_policy_test_cases(Client, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_automated_reasoning_policy_test_cases(Client, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec list_automated_reasoning_policy_test_cases(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_automated_reasoning_policy_test_cases_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policy_test_cases_errors(), tuple()}.
+list_automated_reasoning_policy_test_cases(Client, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/test-cases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists test results for an Automated Reasoning policy, showing how the
+%% policy performed against various test scenarios and validation checks.
+-spec list_automated_reasoning_policy_test_results(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_automated_reasoning_policy_test_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policy_test_results_errors(), tuple()}.
+list_automated_reasoning_policy_test_results(Client, BuildWorkflowId, PolicyArn)
+  when is_map(Client) ->
+    list_automated_reasoning_policy_test_results(Client, BuildWorkflowId, PolicyArn, #{}, #{}).
+
+-spec list_automated_reasoning_policy_test_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_automated_reasoning_policy_test_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policy_test_results_errors(), tuple()}.
+list_automated_reasoning_policy_test_results(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_automated_reasoning_policy_test_results(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec list_automated_reasoning_policy_test_results(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_automated_reasoning_policy_test_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_automated_reasoning_policy_test_results_errors(), tuple()}.
+list_automated_reasoning_policy_test_results(Client, BuildWorkflowId, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/test-results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5882,6 +7795,83 @@ register_marketplace_model_endpoint(Client, EndpointIdentifier, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a new build workflow for an Automated Reasoning policy.
+%%
+%% This initiates the process of analyzing source documents and generating
+%% policy rules, variables, and types.
+-spec start_automated_reasoning_policy_build_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), start_automated_reasoning_policy_build_workflow_request()) ->
+    {ok, start_automated_reasoning_policy_build_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, start_automated_reasoning_policy_build_workflow_errors(), tuple()}.
+start_automated_reasoning_policy_build_workflow(Client, BuildWorkflowType, PolicyArn, Input) ->
+    start_automated_reasoning_policy_build_workflow(Client, BuildWorkflowType, PolicyArn, Input, []).
+
+-spec start_automated_reasoning_policy_build_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), start_automated_reasoning_policy_build_workflow_request(), proplists:proplist()) ->
+    {ok, start_automated_reasoning_policy_build_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, start_automated_reasoning_policy_build_workflow_errors(), tuple()}.
+start_automated_reasoning_policy_build_workflow(Client, BuildWorkflowType, PolicyArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowType), "/start"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"x-amz-client-token">>, <<"clientRequestToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates a test workflow to validate Automated Reasoning policy
+%% tests.
+%%
+%% The workflow executes the specified tests against the policy and generates
+%% validation results.
+-spec start_automated_reasoning_policy_test_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), start_automated_reasoning_policy_test_workflow_request()) ->
+    {ok, start_automated_reasoning_policy_test_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, start_automated_reasoning_policy_test_workflow_errors(), tuple()}.
+start_automated_reasoning_policy_test_workflow(Client, BuildWorkflowId, PolicyArn, Input) ->
+    start_automated_reasoning_policy_test_workflow(Client, BuildWorkflowId, PolicyArn, Input, []).
+
+-spec start_automated_reasoning_policy_test_workflow(aws_client:aws_client(), binary() | list(), binary() | list(), start_automated_reasoning_policy_test_workflow_request(), proplists:proplist()) ->
+    {ok, start_automated_reasoning_policy_test_workflow_response(), tuple()} |
+    {error, any()} |
+    {error, start_automated_reasoning_policy_test_workflow_errors(), tuple()}.
+start_automated_reasoning_policy_test_workflow(Client, BuildWorkflowId, PolicyArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/test-workflows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops an evaluation job that is current being created or running.
 -spec stop_evaluation_job(aws_client:aws_client(), binary() | list(), stop_evaluation_job_request()) ->
     {ok, stop_evaluation_job_response(), tuple()} |
@@ -6052,6 +8042,119 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing Automated Reasoning policy with new rules,
+%% variables, or configuration.
+%%
+%% This creates a new version of the policy while preserving the previous
+%% version.
+-spec update_automated_reasoning_policy(aws_client:aws_client(), binary() | list(), update_automated_reasoning_policy_request()) ->
+    {ok, update_automated_reasoning_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_automated_reasoning_policy_errors(), tuple()}.
+update_automated_reasoning_policy(Client, PolicyArn, Input) ->
+    update_automated_reasoning_policy(Client, PolicyArn, Input, []).
+
+-spec update_automated_reasoning_policy(aws_client:aws_client(), binary() | list(), update_automated_reasoning_policy_request(), proplists:proplist()) ->
+    {ok, update_automated_reasoning_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_automated_reasoning_policy_errors(), tuple()}.
+update_automated_reasoning_policy(Client, PolicyArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the annotations for an Automated Reasoning policy build
+%% workflow.
+%%
+%% This allows you to modify extracted rules, variables, and types before
+%% finalizing the policy.
+-spec update_automated_reasoning_policy_annotations(aws_client:aws_client(), binary() | list(), binary() | list(), update_automated_reasoning_policy_annotations_request()) ->
+    {ok, update_automated_reasoning_policy_annotations_response(), tuple()} |
+    {error, any()} |
+    {error, update_automated_reasoning_policy_annotations_errors(), tuple()}.
+update_automated_reasoning_policy_annotations(Client, BuildWorkflowId, PolicyArn, Input) ->
+    update_automated_reasoning_policy_annotations(Client, BuildWorkflowId, PolicyArn, Input, []).
+
+-spec update_automated_reasoning_policy_annotations(aws_client:aws_client(), binary() | list(), binary() | list(), update_automated_reasoning_policy_annotations_request(), proplists:proplist()) ->
+    {ok, update_automated_reasoning_policy_annotations_response(), tuple()} |
+    {error, any()} |
+    {error, update_automated_reasoning_policy_annotations_errors(), tuple()}.
+update_automated_reasoning_policy_annotations(Client, BuildWorkflowId, PolicyArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/annotations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing Automated Reasoning policy test.
+%%
+%% You can modify the content, query, expected result, and confidence
+%% threshold.
+-spec update_automated_reasoning_policy_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), update_automated_reasoning_policy_test_case_request()) ->
+    {ok, update_automated_reasoning_policy_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, update_automated_reasoning_policy_test_case_errors(), tuple()}.
+update_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, Input) ->
+    update_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, Input, []).
+
+-spec update_automated_reasoning_policy_test_case(aws_client:aws_client(), binary() | list(), binary() | list(), update_automated_reasoning_policy_test_case_request(), proplists:proplist()) ->
+    {ok, update_automated_reasoning_policy_test_case_response(), tuple()} |
+    {error, any()} |
+    {error, update_automated_reasoning_policy_test_case_errors(), tuple()}.
+update_automated_reasoning_policy_test_case(Client, PolicyArn, TestCaseId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/test-cases/", aws_util:encode_uri(TestCaseId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

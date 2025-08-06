@@ -827,6 +827,7 @@
 %%   <<"bootstrapSelfManagedAddons">> => boolean(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"computeConfig">> => compute_config_request(),
+%%   <<"deletionProtection">> => boolean(),
 %%   <<"encryptionConfig">> => list(encryption_config()),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
 %%   <<"logging">> => logging(),
@@ -1013,6 +1014,7 @@
 %%   <<"computeConfig">> => compute_config_response(),
 %%   <<"connectorConfig">> => connector_config_response(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deletionProtection">> => boolean(),
 %%   <<"encryptionConfig">> => list(encryption_config()),
 %%   <<"endpoint">> => string(),
 %%   <<"health">> => cluster_health(),
@@ -1860,6 +1862,7 @@
 %%   <<"accessConfig">> => update_access_config_request(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"computeConfig">> => compute_config_request(),
+%%   <<"deletionProtection">> => boolean(),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
 %%   <<"logging">> => logging(),
 %%   <<"remoteNetworkConfig">> => remote_network_config_request(),
@@ -2168,6 +2171,7 @@
 -type delete_cluster_errors() ::
     server_exception() | 
     service_unavailable_exception() | 
+    invalid_request_exception() | 
     resource_not_found_exception() | 
     client_exception() | 
     resource_in_use_exception().
