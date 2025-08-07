@@ -115,6 +115,9 @@
          get_data_source/4,
          get_data_source/6,
          get_data_source/7,
+         get_document_content/4,
+         get_document_content/6,
+         get_document_content/7,
          get_group/4,
          get_group/6,
          get_group/7,
@@ -240,6 +243,9 @@
 %% Example:
 %% source_attribution() :: #{
 %%   <<"citationNumber">> => integer(),
+%%   <<"datasourceId">> => string(),
+%%   <<"documentId">> => string(),
+%%   <<"indexId">> => string(),
 %%   <<"snippet">> => string(),
 %%   <<"textMessageSegments">> => list(text_segment()),
 %%   <<"title">> => string(),
@@ -1675,6 +1681,14 @@
 
 
 %% Example:
+%% get_document_content_request() :: #{
+%%   <<"dataSourceId">> => string(),
+%%   <<"outputFormat">> => list(any())
+%% }
+-type get_document_content_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% message_usefulness_feedback() :: #{
 %%   <<"comment">> => string(),
 %%   <<"reason">> => list(any()),
@@ -2564,6 +2578,14 @@
 %% }
 -type users_and_groups() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_document_content_response() :: #{
+%%   <<"mimeType">> => string(),
+%%   <<"presignedUrl">> => string()
+%% }
+-type get_document_content_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_retriever_request() :: #{}
 -type get_retriever_request() :: #{}.
@@ -3102,6 +3124,13 @@
     resource_not_found_exception().
 
 -type get_data_source_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_document_content_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -4070,6 +4099,11 @@ create_retriever(Client, ApplicationId, Input0, Options0) ->
 %% `Q_BUSINESS'. Subscription tier determines feature access for the
 %% user. For more information on subscriptions and pricing tiers, see Amazon
 %% Q Business pricing: https://aws.amazon.com/q/business/pricing/.
+%%
+%% For an example IAM role policy for assigning subscriptions, see Set up
+%% required permissions:
+%% https://docs.aws.amazon.com/amazonq/latest/qbusiness-ug/setting-up.html#permissions
+%% in the Amazon Q Business User Guide.
 -spec create_subscription(aws_client:aws_client(), binary() | list(), create_subscription_request()) ->
     {ok, create_subscription_response(), tuple()} |
     {error, any()} |
@@ -4875,6 +4909,53 @@ get_data_source(Client, ApplicationId, DataSourceId, IndexId, QueryMap, HeadersM
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the content of a document that was ingested into Amazon Q
+%% Business.
+%%
+%% This API validates user authorization against document ACLs before
+%% returning a pre-signed URL for secure document access. You can download or
+%% view source documents referenced in chat responses through the URL.
+-spec get_document_content(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_document_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_document_content_errors(), tuple()}.
+get_document_content(Client, ApplicationId, DocumentId, IndexId)
+  when is_map(Client) ->
+    get_document_content(Client, ApplicationId, DocumentId, IndexId, #{}, #{}).
+
+-spec get_document_content(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_document_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_document_content_errors(), tuple()}.
+get_document_content(Client, ApplicationId, DocumentId, IndexId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_document_content(Client, ApplicationId, DocumentId, IndexId, QueryMap, HeadersMap, []).
+
+-spec get_document_content(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_document_content_response(), tuple()} |
+    {error, any()} |
+    {error, get_document_content_errors(), tuple()}.
+get_document_content(Client, ApplicationId, DocumentId, IndexId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/index/", aws_util:encode_uri(IndexId), "/documents/", aws_util:encode_uri(DocumentId), "/content"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"dataSourceId">>, maps:get(<<"dataSourceId">>, QueryMap, undefined)},
+        {<<"outputFormat">>, maps:get(<<"outputFormat">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

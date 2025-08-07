@@ -32,6 +32,8 @@
          create_access_policy/3,
          create_collection/2,
          create_collection/3,
+         create_index/2,
+         create_index/3,
          create_lifecycle_policy/2,
          create_lifecycle_policy/3,
          create_security_config/2,
@@ -44,6 +46,8 @@
          delete_access_policy/3,
          delete_collection/2,
          delete_collection/3,
+         delete_index/2,
+         delete_index/3,
          delete_lifecycle_policy/2,
          delete_lifecycle_policy/3,
          delete_security_config/2,
@@ -56,6 +60,8 @@
          get_access_policy/3,
          get_account_settings/2,
          get_account_settings/3,
+         get_index/2,
+         get_index/3,
          get_policies_stats/2,
          get_policies_stats/3,
          get_security_config/2,
@@ -86,6 +92,8 @@
          update_account_settings/3,
          update_collection/2,
          update_collection/3,
+         update_index/2,
+         update_index/3,
          update_lifecycle_policy/2,
          update_lifecycle_policy/3,
          update_security_config/2,
@@ -237,6 +245,13 @@
 -type collection_summary() :: #{binary() => any()}.
 
 %% Example:
+%% delete_index_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"indexName">> := string()
+%% }
+-type delete_index_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_account_settings_response() :: #{
 %%   <<"accountSettingsDetail">> => account_settings_detail()
 %% }
@@ -383,6 +398,12 @@
 %%   <<"securityPolicyDetail">> => security_policy_detail()
 %% }
 -type get_security_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_index_response() :: #{
+
+%% }
+-type delete_index_response() :: #{binary() => any()}.
 
 %% Example:
 %% vpc_endpoint_error_detail() :: #{
@@ -739,6 +760,22 @@
 -type list_security_configs_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_index_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"indexName">> := string(),
+%%   <<"indexSchema">> => any()
+%% }
+-type create_index_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_index_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"indexName">> := string(),
+%%   <<"indexSchema">> => any()
+%% }
+-type update_index_request() :: #{binary() => any()}.
+
+%% Example:
 %% access_policy_detail() :: #{
 %%   <<"createdDate">> => [float()],
 %%   <<"description">> => string(),
@@ -904,6 +941,12 @@
 -type batch_get_vpc_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_index_response() :: #{
+
+%% }
+-type create_index_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_security_policy_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -956,6 +999,12 @@
 -type create_iam_identity_center_config_options() :: #{binary() => any()}.
 
 %% Example:
+%% update_index_response() :: #{
+
+%% }
+-type update_index_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_security_config_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -988,6 +1037,13 @@
 %%   <<"type">> := string()
 %% }
 -type create_access_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_index_request() :: #{
+%%   <<"id">> := string(),
+%%   <<"indexName">> := string()
+%% }
+-type get_index_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_security_policy_response() :: #{
@@ -1048,6 +1104,12 @@
 %% }
 -type create_security_policy_request() :: #{binary() => any()}.
 
+%% Example:
+%% get_index_response() :: #{
+%%   <<"indexSchema">> => any()
+%% }
+-type get_index_response() :: #{binary() => any()}.
+
 -type batch_get_collection_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -1075,6 +1137,12 @@
     validation_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    conflict_exception().
+
+-type create_index_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type create_lifecycle_policy_errors() ::
@@ -1113,6 +1181,11 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_index_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_lifecycle_policy_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -1145,6 +1218,11 @@
 -type get_account_settings_errors() ::
     validation_exception() | 
     internal_server_exception().
+
+-type get_index_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_policies_stats_errors() ::
     internal_server_exception().
@@ -1215,6 +1293,11 @@
     validation_exception() | 
     internal_server_exception() | 
     conflict_exception().
+
+-type update_index_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type update_lifecycle_policy_errors() ::
     validation_exception() | 
@@ -1379,6 +1462,32 @@ create_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCollection">>, Input, Options).
 
+%% @doc Creates an index within an OpenSearch Serverless collection.
+%%
+%% Unlike other OpenSearch indexes, indexes
+%% created by this API are automatically configured to conduct automatic
+%% semantic
+%% enrichment ingestion and search. For more information, see About automatic
+%% semantic enrichment:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment
+%% in the OpenSearch User
+%% Guide.
+-spec create_index(aws_client:aws_client(), create_index_request()) ->
+    {ok, create_index_response(), tuple()} |
+    {error, any()} |
+    {error, create_index_errors(), tuple()}.
+create_index(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_index(Client, Input, []).
+
+-spec create_index(aws_client:aws_client(), create_index_request(), proplists:proplist()) ->
+    {ok, create_index_response(), tuple()} |
+    {error, any()} |
+    {error, create_index_errors(), tuple()}.
+create_index(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIndex">>, Input, Options).
+
 %% @doc Creates a lifecyle policy to be applied to OpenSearch Serverless
 %% indexes.
 %%
@@ -1517,6 +1626,29 @@ delete_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCollection">>, Input, Options).
 
+%% @doc Deletes an index from an OpenSearch Serverless collection.
+%%
+%% Be aware that the index might be
+%% configured to conduct automatic semantic enrichment ingestion and search.
+%% For more
+%% information, see About automatic semantic enrichment:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment.
+-spec delete_index(aws_client:aws_client(), delete_index_request()) ->
+    {ok, delete_index_response(), tuple()} |
+    {error, any()} |
+    {error, delete_index_errors(), tuple()}.
+delete_index(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_index(Client, Input, []).
+
+-spec delete_index(aws_client:aws_client(), delete_index_request(), proplists:proplist()) ->
+    {ok, delete_index_response(), tuple()} |
+    {error, any()} |
+    {error, delete_index_errors(), tuple()}.
+delete_index(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIndex">>, Input, Options).
+
 %% @doc Deletes an OpenSearch Serverless lifecycle policy.
 %%
 %% For more information, see Deleting data lifecycle policies:
@@ -1633,6 +1765,30 @@ get_account_settings(Client, Input)
 get_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountSettings">>, Input, Options).
+
+%% @doc Retrieves information about an index in an OpenSearch Serverless
+%% collection, including its schema
+%% definition.
+%%
+%% The index might be configured to conduct automatic semantic enrichment
+%% ingestion and search. For more information, see About automatic semantic
+%% enrichment:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment.
+-spec get_index(aws_client:aws_client(), get_index_request()) ->
+    {ok, get_index_response(), tuple()} |
+    {error, any()} |
+    {error, get_index_errors(), tuple()}.
+get_index(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_index(Client, Input, []).
+
+-spec get_index(aws_client:aws_client(), get_index_request(), proplists:proplist()) ->
+    {ok, get_index_response(), tuple()} |
+    {error, any()} |
+    {error, get_index_errors(), tuple()}.
+get_index(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIndex">>, Input, Options).
 
 %% @doc Returns statistical information about your OpenSearch Serverless
 %% access policies, security
@@ -1952,6 +2108,31 @@ update_collection(Client, Input)
 update_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCollection">>, Input, Options).
+
+%% @doc Updates an existing index in an OpenSearch Serverless collection.
+%%
+%% This operation allows you to modify
+%% the index schema, including adding new fields or changing field mappings.
+%% You can also
+%% enable automatic semantic enrichment ingestion and search. For more
+%% information, see
+%% About automatic semantic enrichment:
+%% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment.
+-spec update_index(aws_client:aws_client(), update_index_request()) ->
+    {ok, update_index_response(), tuple()} |
+    {error, any()} |
+    {error, update_index_errors(), tuple()}.
+update_index(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_index(Client, Input, []).
+
+-spec update_index(aws_client:aws_client(), update_index_request(), proplists:proplist()) ->
+    {ok, update_index_response(), tuple()} |
+    {error, any()} |
+    {error, update_index_errors(), tuple()}.
+update_index(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateIndex">>, Input, Options).
 
 %% @doc Updates an OpenSearch Serverless access policy.
 %%

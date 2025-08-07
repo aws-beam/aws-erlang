@@ -463,6 +463,14 @@
 -type create_budget_action_request() :: #{binary() => any()}.
 
 %% Example:
+%% health_status() :: #{
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any())
+%% }
+-type health_status() :: #{binary() => any()}.
+
+%% Example:
 %% describe_notifications_for_budget_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"BudgetName">> := string(),
@@ -536,6 +544,7 @@
 %% Example:
 %% budget() :: #{
 %%   <<"AutoAdjustData">> => auto_adjust_data(),
+%%   <<"BillingViewArn">> => string(),
 %%   <<"BudgetLimit">> => spend(),
 %%   <<"BudgetName">> => string(),
 %%   <<"BudgetType">> => list(any()),
@@ -543,6 +552,7 @@
 %%   <<"CostFilters">> => map(),
 %%   <<"CostTypes">> => cost_types(),
 %%   <<"FilterExpression">> => expression(),
+%%   <<"HealthStatus">> => health_status(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Metrics">> => list(list(any())()),
 %%   <<"PlannedBudgetLimits">> => map(),
@@ -687,6 +697,7 @@
 
 %% Example:
 %% budget_performance_history() :: #{
+%%   <<"BillingViewArn">> => string(),
 %%   <<"BudgetName">> => string(),
 %%   <<"BudgetType">> => list(any()),
 %%   <<"BudgetedAndActualAmountsList">> => list(budgeted_and_actual_amounts()),
@@ -818,6 +829,7 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
+    not_found_exception() | 
     service_quota_exceeded_exception().
 
 -type create_budget_action_errors() ::
