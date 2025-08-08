@@ -1104,6 +1104,7 @@
 %%   <<"filterGroups">> => list(list(webhook_filter())()),
 %%   <<"manualCreation">> => boolean(),
 %%   <<"projectName">> := string(),
+%%   <<"pullRequestBuildPolicy">> => pull_request_build_policy(),
 %%   <<"scopeConfiguration">> => scope_configuration()
 %% }
 -type create_webhook_input() :: #{binary() => any()}.
@@ -1538,6 +1539,13 @@
 -type delete_project_input() :: #{binary() => any()}.
 
 %% Example:
+%% pull_request_build_policy() :: #{
+%%   <<"approverRoles">> => list(list(any())()),
+%%   <<"requiresCommentApproval">> => list(any())
+%% }
+-type pull_request_build_policy() :: #{binary() => any()}.
+
+%% Example:
 %% describe_test_cases_input() :: #{
 %%   <<"filter">> => test_case_filter(),
 %%   <<"maxResults">> => integer(),
@@ -1763,6 +1771,7 @@
 %%   <<"buildType">> => list(any()),
 %%   <<"filterGroups">> => list(list(webhook_filter())()),
 %%   <<"projectName">> := string(),
+%%   <<"pullRequestBuildPolicy">> => pull_request_build_policy(),
 %%   <<"rotateSecret">> => boolean()
 %% }
 -type update_webhook_input() :: #{binary() => any()}.

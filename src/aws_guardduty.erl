@@ -1398,7 +1398,8 @@
 %%   <<"Blocked">> => boolean(),
 %%   <<"Domain">> => string(),
 %%   <<"DomainWithSuffix">> => string(),
-%%   <<"Protocol">> => string()
+%%   <<"Protocol">> => string(),
+%%   <<"VpcOwnerAccountId">> => string()
 %% }
 -type dns_request_action() :: #{binary() => any()}.
 

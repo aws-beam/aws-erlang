@@ -1702,7 +1702,8 @@
 %% Example:
 %% iceberg_orphan_file_deletion_configuration() :: #{
 %%   <<"location">> => string(),
-%%   <<"orphanFileRetentionPeriodInDays">> => integer()
+%%   <<"orphanFileRetentionPeriodInDays">> => integer(),
+%%   <<"runRateInHours">> => integer()
 %% }
 -type iceberg_orphan_file_deletion_configuration() :: #{binary() => any()}.
 
@@ -4706,6 +4707,7 @@
 %% Example:
 %% table_optimizer() :: #{
 %%   <<"configuration">> => table_optimizer_configuration(),
+%%   <<"configurationSource">> => list(any()),
 %%   <<"lastRun">> => table_optimizer_run(),
 %%   <<"type">> => list(any())
 %% }
@@ -5257,6 +5259,8 @@
 
 %% Example:
 %% iceberg_compaction_configuration() :: #{
+%%   <<"deleteFileThreshold">> => integer(),
+%%   <<"minInputFiles">> => integer(),
 %%   <<"strategy">> => list(any())
 %% }
 -type iceberg_compaction_configuration() :: #{binary() => any()}.
@@ -6234,7 +6238,8 @@
 %% Example:
 %% catalog_properties() :: #{
 %%   <<"CustomProperties">> => map(),
-%%   <<"DataLakeAccessProperties">> => data_lake_access_properties()
+%%   <<"DataLakeAccessProperties">> => data_lake_access_properties(),
+%%   <<"IcebergOptimizationProperties">> => iceberg_optimization_properties()
 %% }
 -type catalog_properties() :: #{binary() => any()}.
 
@@ -7469,7 +7474,8 @@
 %% Example:
 %% catalog_properties_output() :: #{
 %%   <<"CustomProperties">> => map(),
-%%   <<"DataLakeAccessProperties">> => data_lake_access_properties_output()
+%%   <<"DataLakeAccessProperties">> => data_lake_access_properties_output(),
+%%   <<"IcebergOptimizationProperties">> => iceberg_optimization_properties_output()
 %% }
 -type catalog_properties_output() :: #{binary() => any()}.
 
@@ -8124,6 +8130,16 @@
 -type s3_excel_source() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_optimization_properties_output() :: #{
+%%   <<"Compaction">> => map(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"OrphanFileDeletion">> => map(),
+%%   <<"Retention">> => map(),
+%%   <<"RoleArn">> => string()
+%% }
+-type iceberg_optimization_properties_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_schema_by_definition_response() :: #{
 %%   <<"CreatedTime">> => string(),
 %%   <<"DataFormat">> => list(any()),
@@ -8763,6 +8779,15 @@
 -type spigot() :: #{binary() => any()}.
 
 %% Example:
+%% iceberg_optimization_properties() :: #{
+%%   <<"Compaction">> => map(),
+%%   <<"OrphanFileDeletion">> => map(),
+%%   <<"Retention">> => map(),
+%%   <<"RoleArn">> => string()
+%% }
+-type iceberg_optimization_properties() :: #{binary() => any()}.
+
+%% Example:
 %% j_db_c_connector_target() :: #{
 %%   <<"AdditionalOptions">> => map(),
 %%   <<"ConnectionName">> => string(),
@@ -8832,6 +8857,7 @@
 %% iceberg_retention_configuration() :: #{
 %%   <<"cleanExpiredFiles">> => boolean(),
 %%   <<"numberOfSnapshotsToRetain">> => integer(),
+%%   <<"runRateInHours">> => integer(),
 %%   <<"snapshotRetentionPeriodInDays">> => integer()
 %% }
 -type iceberg_retention_configuration() :: #{binary() => any()}.
