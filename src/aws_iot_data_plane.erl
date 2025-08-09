@@ -24,7 +24,9 @@
 %% to sign requests is: iotdevicegateway.
 -module(aws_iot_data_plane).
 
--export([delete_thing_shadow/3,
+-export([delete_connection/3,
+         delete_connection/4,
+         delete_thing_shadow/3,
          delete_thing_shadow/4,
          get_retained_message/2,
          get_retained_message/4,
@@ -55,6 +57,14 @@
 
 
 %% Example:
+%% delete_connection_request() :: #{
+%%   <<"cleanSession">> => boolean(),
+%%   <<"preventWillMessage">> => boolean()
+%% }
+-type delete_connection_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_thing_shadow_request() :: #{
 %%   <<"shadowName">> => string()
 %% }
@@ -66,6 +76,13 @@
 %%   <<"payload">> => binary()
 %% }
 -type delete_thing_shadow_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% forbidden_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type forbidden_exception() :: #{binary() => any()}.
 
 %% Example:
 %% get_retained_message_request() :: #{}
@@ -232,6 +249,13 @@
 %% }
 -type update_thing_shadow_response() :: #{binary() => any()}.
 
+-type delete_connection_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    forbidden_exception().
+
 -type delete_thing_shadow_errors() ::
     unsupported_document_encoding_exception() | 
     unauthorized_exception() | 
@@ -300,6 +324,46 @@
 %% API
 %%====================================================================
 
+%% @doc Disconnects a connected MQTT client from Amazon Web Services IoT
+%% Core.
+%%
+%% When you disconnect a client, Amazon Web Services IoT Core closes the
+%% client's network connection and optionally cleans the session state.
+-spec delete_connection(aws_client:aws_client(), binary() | list(), delete_connection_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_connection_errors(), tuple()}.
+delete_connection(Client, ClientId, Input) ->
+    delete_connection(Client, ClientId, Input, []).
+
+-spec delete_connection(aws_client:aws_client(), binary() | list(), delete_connection_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_connection_errors(), tuple()}.
+delete_connection(Client, ClientId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/connections/", aws_util:encode_uri(ClientId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"cleanSession">>, <<"cleanSession">>},
+                     {<<"preventWillMessage">>, <<"preventWillMessage">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the shadow for the specified thing.
 %%
 %% Requires permission to access the DeleteThingShadow:
@@ -353,7 +417,7 @@ delete_thing_shadow(Client, ThingName, Input0, Options0) ->
 %% https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_ListRetainedMessages.html.
 %%
 %% Requires permission to access the GetRetainedMessage:
-%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiotfleethubfordevicemanagement.html#awsiotfleethubfordevicemanagement-actions-as-permissions
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html
 %% action.
 %%
 %% For more information about messaging costs, see Amazon Web Services IoT
@@ -506,7 +570,7 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% with the topic name of the retained message.
 %%
 %% Requires permission to access the ListRetainedMessages:
-%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiotfleethubfordevicemanagement.html#awsiotfleethubfordevicemanagement-actions-as-permissions
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html
 %% action.
 %%
 %% For more information about messaging costs, see Amazon Web Services IoT

@@ -243,6 +243,14 @@
 
 
 %% Example:
+%% cvss4() :: #{
+%%   <<"baseScore">> => float(),
+%%   <<"scoringVector">> => string()
+%% }
+-type cvss4() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_delegated_admin_account_response() :: #{
 %%   <<"delegatedAdmin">> => delegated_admin()
 %% }
@@ -304,6 +312,7 @@
 %%   <<"cisaData">> => cisa_data(),
 %%   <<"cvss2">> => cvss2(),
 %%   <<"cvss3">> => cvss3(),
+%%   <<"cvss4">> => cvss4(),
 %%   <<"cwes">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"detectionPlatforms">> => list(string()),

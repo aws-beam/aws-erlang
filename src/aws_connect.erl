@@ -309,6 +309,8 @@
          get_contact_attributes/3,
          get_contact_attributes/5,
          get_contact_attributes/6,
+         get_contact_metrics/2,
+         get_contact_metrics/3,
          get_current_metric_data/3,
          get_current_metric_data/4,
          get_current_user_data/3,
@@ -1813,6 +1815,15 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_contact_flow_modules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_contact_metrics_request() :: #{
+%%   <<"ContactId">> := string(),
+%%   <<"InstanceId">> := string(),
+%%   <<"Metrics">> := list(contact_metric_info())
+%% }
+-type get_contact_metrics_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vocabulary_request() :: #{}
@@ -3463,6 +3474,15 @@
 
 
 %% Example:
+%% get_contact_metrics_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MetricResults">> => list(contact_metric_result())
+%% }
+-type get_contact_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_contact_recording_request() :: #{
 %%   <<"ContactId">> := string(),
 %%   <<"ContactRecordingType">> => list(any()),
@@ -4119,6 +4139,14 @@
 %%   <<"QuickConnects">> => list(quick_connect())
 %% }
 -type search_quick_connects_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_metric_result() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type contact_metric_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5244,6 +5272,7 @@
 %% Example:
 %% user_hierarchy_group_search_criteria() :: #{
 %%   <<"AndConditions">> => list(user_hierarchy_group_search_criteria()),
+%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
 %%   <<"OrConditions">> => list(user_hierarchy_group_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
@@ -5998,6 +6027,7 @@
 
 %% Example:
 %% common_attribute_and_condition() :: #{
+%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
 %%   <<"TagConditions">> => list(tag_condition())
 %% }
 -type common_attribute_and_condition() :: #{binary() => any()}.
@@ -6286,6 +6316,13 @@
 %% Example:
 %% delete_quick_connect_request() :: #{}
 -type delete_quick_connect_request() :: #{}.
+
+
+%% Example:
+%% contact_metric_info() :: #{
+%%   <<"Name">> => list(any())
+%% }
+-type contact_metric_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9045,6 +9082,14 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type get_contact_metrics_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type get_current_metric_data_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -10624,10 +10669,7 @@ associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Associates a set of quick connects with a queue.
+%% @doc Associates a set of quick connects with a queue.
 -spec associate_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list(), associate_queue_quick_connects_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -11119,10 +11161,7 @@ complete_attached_file_upload(Client, FileId, InstanceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Creates an agent status for the specified Amazon Connect instance.
+%% @doc Creates an agent status for the specified Amazon Connect instance.
 -spec create_agent_status(aws_client:aws_client(), binary() | list(), create_agent_status_request()) ->
     {ok, create_agent_status_response(), tuple()} |
     {error, any()} |
@@ -11408,10 +11447,7 @@ create_evaluation_form(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Creates hours of operation.
+%% @doc Creates hours of operation.
 -spec create_hours_of_operation(aws_client:aws_client(), binary() | list(), create_hours_of_operation_request()) ->
     {ok, create_hours_of_operation_response(), tuple()} |
     {error, any()} |
@@ -11447,7 +11483,7 @@ create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Creates an hours of operation override in an Amazon Connect hours of
 %% operation
-%% resource
+%% resource.
 -spec create_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), create_hours_of_operation_override_request()) ->
     {ok, create_hours_of_operation_override_response(), tuple()} |
     {error, any()} |
@@ -12110,11 +12146,11 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
 %% Certain UserIdentityInfo:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_UserIdentityInfo.html
 %% parameters
-%% are required in some situations. For example, `Email' is required if
-%% you are using
-%% SAML for identity management. `FirstName' and `LastName' are
-%% required if
-%% you are using Amazon Connect or SAML for identity management.
+%% are required in some situations. For example, `Email', `FirstName'
+%% and
+%% `LastName' are required if you are using Amazon Connect or SAML for
+%% identity
+%% management.
 %%
 %% For information about how to create users using the Amazon Connect admin
 %% website, see Add Users:
@@ -12606,10 +12642,7 @@ delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) -
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Deletes an hours of operation.
+%% @doc Deletes an hours of operation.
 -spec delete_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -12645,7 +12678,7 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
 
 %% @doc Deletes an hours of operation override in an Amazon Connect hours of
 %% operation
-%% resource
+%% resource.
 -spec delete_hours_of_operation_override(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_hours_of_operation_override_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -13372,10 +13405,7 @@ delete_vocabulary(Client, InstanceId, VocabularyId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Describes an agent status.
+%% @doc Describes an agent status.
 -spec describe_agent_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_agent_status_response(), tuple()} |
     {error, any()} |
@@ -13730,10 +13760,7 @@ describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Describes the hours of operation.
+%% @doc Describes the hours of operation.
 -spec describe_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_hours_of_operation_response(), tuple()} |
     {error, any()} |
@@ -14076,10 +14103,7 @@ describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Describes the specified queue.
+%% @doc Describes the specified queue.
 -spec describe_queue(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_queue_response(), tuple()} |
     {error, any()} |
@@ -14843,10 +14867,7 @@ disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) 
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Disassociates a set of quick connects from a queue.
+%% @doc Disassociates a set of quick connects from a queue.
 -spec disassociate_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_queue_quick_connects_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -15151,6 +15172,49 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the real-time metrics of the specified contact.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% You can use this API to retrieve the position of the contact in the queue.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+-spec get_contact_metrics(aws_client:aws_client(), get_contact_metrics_request()) ->
+    {ok, get_contact_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, get_contact_metrics_errors(), tuple()}.
+get_contact_metrics(Client, Input) ->
+    get_contact_metrics(Client, Input, []).
+
+-spec get_contact_metrics(aws_client:aws_client(), get_contact_metrics_request(), proplists:proplist()) ->
+    {ok, get_contact_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, get_contact_metrics_errors(), tuple()}.
+get_contact_metrics(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metrics/contact"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets the real-time metric data from the specified Amazon Connect
 %% instance.
 %%
@@ -15158,6 +15222,29 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
 %% in the
 %% Amazon Connect Administrator Guide.
+%%
+%% When you make a successful API request, you can expect the following
+%% metric values in the response:
+%%
+%% Metric value is null: The calculation cannot be performed due to divide by
+%% zero or insufficient data
+%%
+%% Metric value is a number (including 0) of defined type: The number
+%% provided is the calculation result
+%%
+%% MetricResult list is empty: The request cannot find any data in the system
+%%
+%% The following guidelines can help you work with the API:
+%%
+%% Each dimension in the metric response must contain a value
+%%
+%% Each item in MetricResult must include all requested metrics
+%%
+%% If the response is slow due to large result sets, try these approaches:
+%%
+%% Narrow the time range of your request
+%%
+%% Add filters to reduce the amount of data returned
 -spec get_current_metric_data(aws_client:aws_client(), binary() | list(), get_current_metric_data_request()) ->
     {ok, get_current_metric_data_response(), tuple()} |
     {error, any()} |
@@ -15434,6 +15521,29 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
 %% in the
 %% Amazon Connect Administrator Guide.
+%%
+%% When you make a successful API request, you can expect the following
+%% metric values in the response:
+%%
+%% Metric value is null: The calculation cannot be performed due to divide by
+%% zero or insufficient data
+%%
+%% Metric value is a number (including 0) of defined type: The number
+%% provided is the calculation result
+%%
+%% MetricResult list is empty: The request cannot find any data in the system
+%%
+%% The following guidelines can help you work with the API:
+%%
+%% Each dimension in the metric response must contain a value
+%%
+%% Each item in MetricResult must include all requested metrics
+%%
+%% If the response is slow due to large result sets, try these approaches:
+%%
+%% Narrow the time range of your request
+%%
+%% Add filters to reduce the amount of data returned
 -spec get_metric_data_v2(aws_client:aws_client(), get_metric_data_v2_request()) ->
     {ok, get_metric_data_v2_response(), tuple()} |
     {error, any()} |
@@ -15654,10 +15764,7 @@ import_phone_number(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Lists agent statuses.
+%% @doc Lists agent statuses.
 -spec list_agent_statuses(aws_client:aws_client(), binary() | list()) ->
     {ok, list_agent_status_response(), tuple()} |
     {error, any()} |
@@ -16971,10 +17078,7 @@ list_prompts(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Lists the quick connects associated with a queue.
+%% @doc Lists the quick connects associated with a queue.
 -spec list_queue_quick_connects(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_queue_quick_connects_response(), tuple()} |
     {error, any()} |
@@ -20086,10 +20190,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Updates agent status.
+%% @doc Updates agent status.
 -spec update_agent_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -20676,10 +20777,7 @@ update_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Updates the hours of operation.
+%% @doc Updates the hours of operation.
 -spec update_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), update_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -21090,10 +21188,7 @@ update_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Updates the hours of operation for the specified queue.
+%% @doc Updates the hours of operation for the specified queue.
 -spec update_queue_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -21127,11 +21222,8 @@ update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Updates the maximum number of contacts allowed in a queue before it is
-%% considered
+%% @doc Updates the maximum number of contacts allowed in a queue before it
+%% is considered
 %% full.
 -spec update_queue_max_contacts(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_max_contacts_request()) ->
     {ok, undefined, tuple()} |
@@ -21166,11 +21258,9 @@ update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
+%% @doc Updates the name and description of a queue.
 %%
-%% Updates the name and description of a queue. At least `Name' or
-%% `Description' must be provided.
+%% At least `Name' or `Description' must be provided.
 -spec update_queue_name(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_name_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -21204,11 +21294,8 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Updates the outbound caller ID name, number, and outbound whisper flow for
-%% a specified
+%% @doc Updates the outbound caller ID name, number, and outbound whisper
+%% flow for a specified
 %% queue.
 %%
 %% If the phone number is claimed to a traffic distribution group that was
@@ -21304,10 +21391,7 @@ update_queue_outbound_email_config(Client, InstanceId, QueueId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Updates the status of the queue.
+%% @doc Updates the status of the queue.
 -spec update_queue_status(aws_client:aws_client(), binary() | list(), binary() | list(), update_queue_status_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

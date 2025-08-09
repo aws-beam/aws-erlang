@@ -384,6 +384,8 @@
          describe_processing_job/3,
          describe_project/2,
          describe_project/3,
+         describe_reserved_capacity/2,
+         describe_reserved_capacity/3,
          describe_space/2,
          describe_space/3,
          describe_studio_lifecycle_config/2,
@@ -588,6 +590,8 @@
          list_trial_components/3,
          list_trials/2,
          list_trials/3,
+         list_ultra_servers_by_reserved_capacity/2,
+         list_ultra_servers_by_reserved_capacity/3,
          list_user_profiles/2,
          list_user_profiles/3,
          list_workforces/2,
@@ -1684,6 +1688,14 @@
 -type bias() :: #{binary() => any()}.
 
 %% Example:
+%% list_ultra_servers_by_reserved_capacity_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReservedCapacityArn">> := string()
+%% }
+-type list_ultra_servers_by_reserved_capacity_request() :: #{binary() => any()}.
+
+%% Example:
 %% drift_check_model_data_quality() :: #{
 %%   <<"Constraints">> => metrics_source(),
 %%   <<"Statistics">> => metrics_source()
@@ -1789,7 +1801,9 @@
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"StartTimeAfter">> => non_neg_integer(),
-%%   <<"TargetResources">> := list(list(any())())
+%%   <<"TargetResources">> := list(list(any())()),
+%%   <<"UltraServerCount">> => integer(),
+%%   <<"UltraServerType">> => string()
 %% }
 -type search_training_plan_offerings_request() :: #{binary() => any()}.
 
@@ -3393,6 +3407,7 @@
 %% Example:
 %% describe_training_plan_response() :: #{
 %%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"AvailableSpareInstanceCount">> => integer(),
 %%   <<"CurrencyCode">> => string(),
 %%   <<"DurationHours">> => float(),
 %%   <<"DurationMinutes">> => float(),
@@ -3404,8 +3419,10 @@
 %%   <<"StatusMessage">> => string(),
 %%   <<"TargetResources">> => list(list(any())()),
 %%   <<"TotalInstanceCount">> => integer(),
+%%   <<"TotalUltraServerCount">> => integer(),
 %%   <<"TrainingPlanArn">> => string(),
 %%   <<"TrainingPlanName">> => string(),
+%%   <<"UnhealthyInstanceCount">> => integer(),
 %%   <<"UpfrontFee">> => string()
 %% }
 -type describe_training_plan_response() :: #{binary() => any()}.
@@ -4374,6 +4391,12 @@
 %%   <<"EdgePackagingJobName">> := string()
 %% }
 -type describe_edge_packaging_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_reserved_capacity_request() :: #{
+%%   <<"ReservedCapacityArn">> := string()
+%% }
+-type describe_reserved_capacity_request() :: #{binary() => any()}.
 
 %% Example:
 %% scheduled_update_config() :: #{
@@ -6617,6 +6640,12 @@
 -type checkpoint_config() :: #{binary() => any()}.
 
 %% Example:
+%% ultra_server_info() :: #{
+%%   <<"Id">> => [string()]
+%% }
+-type ultra_server_info() :: #{binary() => any()}.
+
+%% Example:
 %% stopping_condition() :: #{
 %%   <<"MaxPendingTimeInSeconds">> => integer(),
 %%   <<"MaxRuntimeInSeconds">> => integer(),
@@ -7419,6 +7448,24 @@
 -type update_partner_app_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_reserved_capacity_response() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"DurationHours">> => float(),
+%%   <<"DurationMinutes">> => float(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InUseInstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"ReservedCapacityArn">> => string(),
+%%   <<"ReservedCapacityType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UltraServerSummary">> => ultra_server_summary()
+%% }
+-type describe_reserved_capacity_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_hub_content_versions_request() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
@@ -7470,7 +7517,8 @@
 %%   <<"InstanceType">> => list(any()),
 %%   <<"LastSoftwareUpdateTime">> => non_neg_integer(),
 %%   <<"LaunchTime">> => non_neg_integer(),
-%%   <<"NodeLogicalId">> => [string()]
+%%   <<"NodeLogicalId">> => [string()],
+%%   <<"UltraServerInfo">> => ultra_server_info()
 %% }
 -type cluster_node_summary() :: #{binary() => any()}.
 
@@ -8027,6 +8075,13 @@
 %%   <<"TargetCount">> => integer()
 %% }
 -type instance_group_scaling_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% instance_placement_config() :: #{
+%%   <<"EnableMultipleJobs">> => boolean(),
+%%   <<"PlacementSpecifications">> => list(placement_specification())
+%% }
+-type instance_placement_config() :: #{binary() => any()}.
 
 %% Example:
 %% provisioning_parameter() :: #{
@@ -9073,6 +9128,7 @@
 %% resource_config() :: #{
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceGroups">> => list(instance_group()),
+%%   <<"InstancePlacementConfig">> => instance_placement_config(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"KeepAlivePeriodInSeconds">> => integer(),
 %%   <<"TrainingPlanArn">> => string(),
@@ -9405,6 +9461,7 @@
 
 %% Example:
 %% create_training_plan_request() :: #{
+%%   <<"SpareInstanceCountPerUltraServer">> => integer(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TrainingPlanName">> := string(),
 %%   <<"TrainingPlanOfferingId">> := string()
@@ -10501,6 +10558,13 @@
 -type update_endpoint_weights_and_capacities_input() :: #{binary() => any()}.
 
 %% Example:
+%% list_ultra_servers_by_reserved_capacity_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UltraServers">> => list(ultra_server())
+%% }
+-type list_ultra_servers_by_reserved_capacity_response() :: #{binary() => any()}.
+
+%% Example:
 %% channel() :: #{
 %%   <<"ChannelName">> => string(),
 %%   <<"CompressionType">> => list(any()),
@@ -11157,6 +11221,22 @@
 -type describe_compute_quota_request() :: #{binary() => any()}.
 
 %% Example:
+%% ultra_server() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"AvailableSpareInstanceCount">> => integer(),
+%%   <<"ConfiguredSpareInstanceCount">> => integer(),
+%%   <<"HealthStatus">> => list(any()),
+%%   <<"InUseInstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UltraServerId">> => string(),
+%%   <<"UltraServerType">> => string(),
+%%   <<"UnhealthyInstanceCount">> => integer()
+%% }
+-type ultra_server() :: #{binary() => any()}.
+
+%% Example:
 %% tabular_resolved_attributes() :: #{
 %%   <<"ProblemType">> => list(any())
 %% }
@@ -11655,9 +11735,12 @@
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"ReservedCapacityArn">> => string(),
+%%   <<"ReservedCapacityType">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"TotalInstanceCount">> => integer()
+%%   <<"TotalInstanceCount">> => integer(),
+%%   <<"UltraServerCount">> => integer(),
+%%   <<"UltraServerType">> => string()
 %% }
 -type reserved_capacity_summary() :: #{binary() => any()}.
 
@@ -12700,7 +12783,10 @@
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => list(any()),
-%%   <<"StartTime">> => non_neg_integer()
+%%   <<"ReservedCapacityType">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"UltraServerCount">> => integer(),
+%%   <<"UltraServerType">> => string()
 %% }
 -type reserved_capacity_offering() :: #{binary() => any()}.
 
@@ -12709,6 +12795,16 @@
 %%   <<"EndpointConfigName">> := string()
 %% }
 -type delete_endpoint_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% ultra_server_summary() :: #{
+%%   <<"AvailableSpareInstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"UltraServerCount">> => integer(),
+%%   <<"UltraServerType">> => string(),
+%%   <<"UnhealthyInstanceCount">> => integer()
+%% }
+-type ultra_server_summary() :: #{binary() => any()}.
 
 %% Example:
 %% optimization_job_summary() :: #{
@@ -12738,6 +12834,7 @@
 %%   <<"StatusMessage">> => string(),
 %%   <<"TargetResources">> => list(list(any())()),
 %%   <<"TotalInstanceCount">> => integer(),
+%%   <<"TotalUltraServerCount">> => integer(),
 %%   <<"TrainingPlanArn">> => string(),
 %%   <<"TrainingPlanName">> => string(),
 %%   <<"UpfrontFee">> => string()
@@ -12762,6 +12859,13 @@
 %%   <<"MonitoringScheduleArn">> => string()
 %% }
 -type create_monitoring_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% placement_specification() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"UltraServerId">> => string()
+%% }
+-type placement_specification() :: #{binary() => any()}.
 
 %% Example:
 %% delete_optimization_job_request() :: #{
@@ -12834,7 +12938,8 @@
 %%   <<"PrivateDnsHostname">> => string(),
 %%   <<"PrivatePrimaryIp">> => string(),
 %%   <<"PrivatePrimaryIpv6">> => string(),
-%%   <<"ThreadsPerCore">> => integer()
+%%   <<"ThreadsPerCore">> => integer(),
+%%   <<"UltraServerInfo">> => ultra_server_info()
 %% }
 -type cluster_node_details() :: #{binary() => any()}.
 
@@ -13623,6 +13728,9 @@
 -type describe_processing_job_errors() ::
     resource_not_found().
 
+-type describe_reserved_capacity_errors() ::
+    resource_not_found().
+
 -type describe_space_errors() ::
     resource_not_found().
 
@@ -13735,6 +13843,9 @@
     resource_not_found().
 
 -type list_trials_errors() ::
+    resource_not_found().
+
+-type list_ultra_servers_by_reserved_capacity_errors() ::
     resource_not_found().
 
 -type put_model_package_group_policy_errors() ::
@@ -14094,7 +14205,7 @@ associate_trial_component(Client, Input, Options)
     request(Client, <<"AssociateTrialComponent">>, Input, Options).
 
 %% @doc Attaches your Amazon Elastic Block Store (Amazon EBS) volume to a
-%% node in your EKS-orchestrated HyperPod cluster.
+%% node in your EKS orchestrated HyperPod cluster.
 %%
 %% This API works with the Amazon Elastic Block Store (Amazon EBS) Container
 %% Storage Interface (CSI) driver to manage the lifecycle of persistent
@@ -18317,6 +18428,23 @@ describe_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProject">>, Input, Options).
 
+%% @doc Retrieves details about a reserved capacity.
+-spec describe_reserved_capacity(aws_client:aws_client(), describe_reserved_capacity_request()) ->
+    {ok, describe_reserved_capacity_response(), tuple()} |
+    {error, any()} |
+    {error, describe_reserved_capacity_errors(), tuple()}.
+describe_reserved_capacity(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_reserved_capacity(Client, Input, []).
+
+-spec describe_reserved_capacity(aws_client:aws_client(), describe_reserved_capacity_request(), proplists:proplist()) ->
+    {ok, describe_reserved_capacity_response(), tuple()} |
+    {error, any()} |
+    {error, describe_reserved_capacity_errors(), tuple()}.
+describe_reserved_capacity(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReservedCapacity">>, Input, Options).
+
 %% @doc Describes the space.
 -spec describe_space(aws_client:aws_client(), describe_space_request()) ->
     {ok, describe_space_response(), tuple()} |
@@ -18522,7 +18650,7 @@ describe_workteam(Client, Input, Options)
     request(Client, <<"DescribeWorkteam">>, Input, Options).
 
 %% @doc Detaches your Amazon Elastic Block Store (Amazon EBS) volume from a
-%% node in your EKS-orchestrated SageMaker HyperPod cluster.
+%% node in your EKS orchestrated SageMaker HyperPod cluster.
 %%
 %% This API works with the Amazon Elastic Block Store (Amazon EBS) Container
 %% Storage Interface (CSI) driver to manage the lifecycle of persistent
@@ -20072,6 +20200,24 @@ list_trials(Client, Input)
 list_trials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrials">>, Input, Options).
+
+%% @doc Lists all UltraServers that are part of a specified reserved
+%% capacity.
+-spec list_ultra_servers_by_reserved_capacity(aws_client:aws_client(), list_ultra_servers_by_reserved_capacity_request()) ->
+    {ok, list_ultra_servers_by_reserved_capacity_response(), tuple()} |
+    {error, any()} |
+    {error, list_ultra_servers_by_reserved_capacity_errors(), tuple()}.
+list_ultra_servers_by_reserved_capacity(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_ultra_servers_by_reserved_capacity(Client, Input, []).
+
+-spec list_ultra_servers_by_reserved_capacity(aws_client:aws_client(), list_ultra_servers_by_reserved_capacity_request(), proplists:proplist()) ->
+    {ok, list_ultra_servers_by_reserved_capacity_response(), tuple()} |
+    {error, any()} |
+    {error, list_ultra_servers_by_reserved_capacity_errors(), tuple()}.
+list_ultra_servers_by_reserved_capacity(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListUltraServersByReservedCapacity">>, Input, Options).
 
 %% @doc Lists user profiles.
 -spec list_user_profiles(aws_client:aws_client(), list_user_profiles_request()) ->
