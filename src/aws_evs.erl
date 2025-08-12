@@ -1,11 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% Amazon Elastic VMware Service (Amazon EVS) is a service that you can use
-%% to deploy a VMware Cloud Foundation (VCF) software environment directly on
-%% EC2 bare metal instances within an Amazon Virtual Private Cloud (VPC).
+%% @doc Amazon Elastic VMware Service (Amazon EVS) is a service that you can
+%% use to deploy a VMware Cloud Foundation (VCF) software environment
+%% directly on EC2 bare metal instances within an Amazon Virtual Private
+%% Cloud (VPC).
 %%
 %% Workloads running on Amazon EVS are fully compatible with workloads
 %% running on any standard VMware vSphere environment. This means that you
@@ -448,10 +447,8 @@
 %% API
 %%====================================================================
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% Creates an Amazon EVS environment that runs VCF software, such as SDDC
-%% Manager, NSX Manager, and vCenter Server.
+%% @doc Creates an Amazon EVS environment that runs VCF software, such as
+%% SDDC Manager, NSX Manager, and vCenter Server.
 %%
 %% During environment creation, Amazon EVS performs validations on DNS
 %% settings, provisions VLAN subnets and hosts, and deploys the supplied
@@ -480,15 +477,11 @@ create_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironment">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
+%% @doc Creates an ESXi host and adds it to an Amazon EVS environment.
 %%
-%% Creates an ESXi host and adds it to an Amazon EVS environment. Amazon EVS
-%% supports 4-16 hosts per environment.
+%% Amazon EVS supports 4-16 hosts per environment.
 %%
 %% This action can only be used after the Amazon EVS environment is deployed.
-%% All Amazon EVS hosts are created with the latest AMI release version for
-%% the respective VCF version of the environment. Amazon EVS hosts are
-%% commissioned in the SDDC Manager inventory as unassigned hosts.
 %%
 %% You can use the `dedicatedHostId' parameter to specify an Amazon EC2
 %% Dedicated Host for ESXi host creation.
@@ -515,16 +508,15 @@ create_environment_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentHost">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% Deletes an Amazon EVS environment.
+%% @doc Deletes an Amazon EVS environment.
 %%
 %% Amazon EVS environments will only be enabled for deletion once the hosts
 %% are deleted. You can delete hosts using the `DeleteEnvironmentHost'
 %% action.
 %%
-%% Environment deletion also deletes the associated Amazon EVS VLAN subnets.
-%% Other associated Amazon Web Services resources are not deleted. These
+%% Environment deletion also deletes the associated Amazon EVS VLAN subnets
+%% and Amazon Web Services Secrets Manager secrets that Amazon EVS created.
+%% Amazon Web Services resources that you create are not deleted. These
 %% resources may continue to incur costs.
 -spec delete_environment(aws_client:aws_client(), delete_environment_request()) ->
     {ok, delete_environment_response(), tuple()} |
@@ -542,9 +534,7 @@ delete_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironment">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% Deletes a host from an Amazon EVS environment.
+%% @doc Deletes a host from an Amazon EVS environment.
 %%
 %% Before deleting a host, you must unassign and decommission the host from
 %% within the SDDC Manager user interface. Not doing so could impact the
@@ -565,9 +555,7 @@ delete_environment_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironmentHost">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% Returns a description of the specified environment.
+%% @doc Returns a description of the specified environment.
 -spec get_environment(aws_client:aws_client(), get_environment_request()) ->
     {ok, get_environment_response(), tuple()} |
     {error, any()} |
@@ -584,9 +572,7 @@ get_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironment">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% List the hosts within an environment.
+%% @doc List the hosts within an environment.
 -spec list_environment_hosts(aws_client:aws_client(), list_environment_hosts_request()) ->
     {ok, list_environment_hosts_response(), tuple()} |
     {error, any()} |
@@ -603,9 +589,7 @@ list_environment_hosts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironmentHosts">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% Lists environment VLANs that are associated with the specified
+%% @doc Lists environment VLANs that are associated with the specified
 %% environment.
 -spec list_environment_vlans(aws_client:aws_client(), list_environment_vlans_request()) ->
     {ok, list_environment_vlans_response(), tuple()} |
@@ -623,10 +607,8 @@ list_environment_vlans(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironmentVlans">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% Lists the Amazon EVS environments in your Amazon Web Services account in
-%% the specified Amazon Web Services Region.
+%% @doc Lists the Amazon EVS environments in your Amazon Web Services account
+%% in the specified Amazon Web Services Region.
 -spec list_environments(aws_client:aws_client(), list_environments_request()) ->
     {ok, list_environments_response(), tuple()} |
     {error, any()} |
@@ -643,9 +625,7 @@ list_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironments">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% Lists the tags for an Amazon EVS resource.
+%% @doc Lists the tags for an Amazon EVS resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -662,16 +642,16 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
+%% @doc Associates the specified tags to an Amazon EVS resource with the
+%% specified `resourceArn'.
 %%
-%% Associates the specified tags to an Amazon EVS resource with the specified
-%% `resourceArn'. If existing tags on a resource are not specified in the
-%% request parameters, they aren't changed. When a resource is deleted,
-%% the tags associated with that resource are also deleted. Tags that you
-%% create for Amazon EVS resources don't propagate to any other resources
-%% associated with the environment. For example, if you tag an environment
-%% with this operation, that tag doesn't automatically propagate to the
-%% VLAN subnets and hosts associated with the environment.
+%% If existing tags on a resource are not specified in the request
+%% parameters, they aren't changed. When a resource is deleted, the tags
+%% associated with that resource are also deleted. Tags that you create for
+%% Amazon EVS resources don't propagate to any other resources associated
+%% with the environment. For example, if you tag an environment with this
+%% operation, that tag doesn't automatically propagate to the VLAN
+%% subnets and hosts associated with the environment.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -688,9 +668,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Amazon EVS is in public preview release and is subject to change.
-%%
-%% Deletes specified tags from an Amazon EVS resource.
+%% @doc Deletes specified tags from an Amazon EVS resource.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

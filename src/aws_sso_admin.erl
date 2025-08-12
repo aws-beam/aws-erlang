@@ -5,44 +5,36 @@
 %% connecting your workforce users to Amazon Web Services managed
 %% applications and other Amazon Web Services resources.
 %%
-%% You can connect your existing identity provider
-%% and synchronize users and groups from your directory, or create and manage
-%% your users
-%% directly in IAM Identity Center. You can then use IAM Identity Center for
-%% either or both of the following:
+%% You can connect your existing identity provider and synchronize users and
+%% groups from your directory, or create and manage your users directly in
+%% IAM Identity Center. You can then use IAM Identity Center for either or
+%% both of the following:
 %%
 %% User access to applications
 %%
 %% User access to Amazon Web Services accounts
 %%
 %% This guide provides information about single sign-on operations that you
-%% can use for access to applications and
-%% Amazon Web Services accounts. For information about IAM Identity Center
-%% features, see the
-%% IAM Identity Center
-%% User Guide:
+%% can use for access to applications and Amazon Web Services accounts. For
+%% information about IAM Identity Center features, see the IAM Identity
+%% Center User Guide:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html.
 %%
 %% IAM Identity Center uses the `sso' and `identitystore' API
 %% namespaces.
 %%
 %% Many API operations for IAM Identity Center rely on identifiers for users
-%% and groups, known as
-%% principals. For more information about how to work with principals and
-%% principal IDs in
-%% IAM Identity Center, see the Identity Store API
-%% Reference:
+%% and groups, known as principals. For more information about how to work
+%% with principals and principal IDs in IAM Identity Center, see the Identity
+%% Store API Reference:
 %% https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html.
 %%
 %% Amazon Web Services provides SDKs that consist of libraries and sample
-%% code for various
-%% programming languages and platforms (Java, Ruby, .Net, iOS, Android, and
-%% more). The
-%% SDKs provide a convenient way to create programmatic access to IAM
-%% Identity Center and other Amazon Web Services
+%% code for various programming languages and platforms (Java, Ruby, .Net,
+%% iOS, Android, and more). The SDKs provide a convenient way to create
+%% programmatic access to IAM Identity Center and other Amazon Web Services
 %% services. For more information about the Amazon Web Services SDKs,
-%% including how to download and
-%% install them, see Tools for Amazon Web
+%% including how to download and install them, see Tools for Amazon Web
 %% Services: http://aws.amazon.com/tools/.
 -module(aws_sso_admin).
 
@@ -120,6 +112,8 @@
          get_application_authentication_method/3,
          get_application_grant/2,
          get_application_grant/3,
+         get_application_session_configuration/2,
+         get_application_session_configuration/3,
          get_inline_policy_for_permission_set/2,
          get_inline_policy_for_permission_set/3,
          get_permissions_boundary_for_permission_set/2,
@@ -174,6 +168,8 @@
          put_application_authentication_method/3,
          put_application_grant/2,
          put_application_grant/3,
+         put_application_session_configuration/2,
+         put_application_session_configuration/3,
          put_inline_policy_to_permission_set/2,
          put_inline_policy_to_permission_set/3,
          put_permissions_boundary_to_permission_set/2,
@@ -281,6 +277,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_application_authentication_methods_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_application_session_configuration_request() :: #{
+%%   <<"ApplicationArn">> := string(),
+%%   <<"UserBackgroundSessionApplicationStatus">> => list(any())
+%% }
+-type put_application_session_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_accounts_for_provisioned_permission_set_response() :: #{
@@ -484,6 +487,12 @@
 %%   <<"Scopes">> => list(scope_details())
 %% }
 -type list_application_access_scopes_response() :: #{binary() => any()}.
+
+%% Example:
+%% put_application_session_configuration_response() :: #{
+
+%% }
+-type put_application_session_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_permission_set_provisioning_status_response() :: #{
@@ -712,6 +721,12 @@
 %%   <<"AccountAssignmentCreationStatus">> => account_assignment_operation_status()
 %% }
 -type create_account_assignment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_application_session_configuration_response() :: #{
+%%   <<"UserBackgroundSessionApplicationStatus">> => list(any())
+%% }
+-type get_application_session_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag() :: #{
@@ -1365,6 +1380,12 @@
 -type detach_customer_managed_policy_reference_from_permission_set_request() :: #{binary() => any()}.
 
 %% Example:
+%% get_application_session_configuration_request() :: #{
+%%   <<"ApplicationArn">> := string()
+%% }
+-type get_application_session_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_applications_response() :: #{
 %%   <<"Applications">> => list(application()),
 %%   <<"NextToken">> => string()
@@ -1867,6 +1888,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_application_session_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_inline_policy_for_permission_set_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2057,6 +2085,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type put_application_session_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type put_inline_policy_to_permission_set_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2156,11 +2192,8 @@ attach_customer_managed_policy_reference_to_permission_set(Client, Input, Option
 %% set.
 %%
 %% If the permission set is already referenced by one or more account
-%% assignments,
-%% you will need to call
-%% ```
-%% `ProvisionPermissionSet' ''' after
-%% this operation. Calling `ProvisionPermissionSet' applies the
+%% assignments, you will need to call ` `ProvisionPermissionSet' '
+%% after this operation. Calling `ProvisionPermissionSet' applies the
 %% corresponding IAM policy updates to all assigned accounts.
 -spec attach_managed_policy_to_permission_set(aws_client:aws_client(), attach_managed_policy_to_permission_set_request()) ->
     {ok, attach_managed_policy_to_permission_set_response(), tuple()} |
@@ -2179,29 +2212,22 @@ attach_managed_policy_to_permission_set(Client, Input, Options)
     request(Client, <<"AttachManagedPolicyToPermissionSet">>, Input, Options).
 
 %% @doc Assigns access to a principal for a specified Amazon Web Services
-%% account using a specified
-%% permission set.
+%% account using a specified permission set.
 %%
-%% The term principal here refers to a user or group that is
-%% defined in IAM Identity Center.
+%% The term principal here refers to a user or group that is defined in IAM
+%% Identity Center.
 %%
 %% As part of a successful `CreateAccountAssignment' call, the specified
 %% permission set will automatically be provisioned to the account in the
-%% form of an
-%% IAM policy. That policy is attached to the IAM role created in IAM
-%% Identity Center. If the
-%% permission set is subsequently updated, the corresponding IAM policies
-%% attached to
-%% roles in your accounts will not be updated automatically. In this case,
-%% you must
-%% call
-%% ```
-%% `ProvisionPermissionSet' ''' to make these
-%% updates.
+%% form of an IAM policy. That policy is attached to the IAM role created in
+%% IAM Identity Center. If the permission set is subsequently updated, the
+%% corresponding IAM policies attached to roles in your accounts will not be
+%% updated automatically. In this case, you must call `
+%% `ProvisionPermissionSet' ' to make these updates.
 %%
 %% After a successful response, call
-%% `DescribeAccountAssignmentCreationStatus' to describe the status of
-%% an assignment creation request.
+%% `DescribeAccountAssignmentCreationStatus' to describe the status of an
+%% assignment creation request.
 -spec create_account_assignment(aws_client:aws_client(), create_account_assignment_request()) ->
     {ok, create_account_assignment_response(), tuple()} |
     {error, any()} |
@@ -2219,21 +2245,17 @@ create_account_assignment(Client, Input, Options)
     request(Client, <<"CreateAccountAssignment">>, Input, Options).
 
 %% @doc Creates an OAuth 2.0 customer managed application in IAM Identity
-%% Center for the given
-%% application provider.
+%% Center for the given application provider.
 %%
 %% This API does not support creating SAML 2.0 customer managed applications
-%% or Amazon Web Services
-%% managed applications. To learn how to create an Amazon Web Services
-%% managed application, see the
-%% application user guide. You can create a SAML 2.0 customer managed
-%% application in
-%% the Amazon Web Services Management Console only. See Setting
-%% up customer managed SAML 2.0 applications:
-%% https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-setup.html.
-%% For more information on these
-%% application types, see Amazon Web Services managed
+%% or Amazon Web Services managed applications. To learn how to create an
+%% Amazon Web Services managed application, see the application user guide.
+%% You can create a SAML 2.0 customer managed application in the Amazon Web
+%% Services Management Console only. See Setting up customer managed SAML 2.0
 %% applications:
+%% https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-setup.html.
+%% For more information on these application types, see Amazon Web Services
+%% managed applications:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/awsapps.html.
 -spec create_application(aws_client:aws_client(), create_application_request()) ->
     {ok, create_application_response(), tuple()} |
@@ -2269,12 +2291,11 @@ create_application_assignment(Client, Input, Options)
     request(Client, <<"CreateApplicationAssignment">>, Input, Options).
 
 %% @doc Creates an instance of IAM Identity Center for a standalone Amazon
-%% Web Services account that is not
-%% managed by Organizations or a member Amazon Web Services account in an
-%% organization.
+%% Web Services account that is not managed by Organizations or a member
+%% Amazon Web Services account in an organization.
 %%
-%% You can create only
-%% one instance per account and across all Amazon Web Services Regions.
+%% You can create only one instance per account and across all Amazon Web
+%% Services Regions.
 %%
 %% The CreateInstance request is rejected if the following apply:
 %%
@@ -2298,18 +2319,16 @@ create_instance(Client, Input, Options)
     request(Client, <<"CreateInstance">>, Input, Options).
 
 %% @doc Enables the attributes-based access control (ABAC) feature for the
-%% specified IAM Identity Center
-%% instance.
+%% specified IAM Identity Center instance.
 %%
 %% You can also specify new attributes to add to your ABAC configuration
-%% during
-%% the enabling process. For more information about ABAC, see Attribute-Based
-%% Access Control: /singlesignon/latest/userguide/abac.html in the IAM
-%% Identity Center User Guide.
+%% during the enabling process. For more information about ABAC, see
+%% Attribute-Based Access Control: /singlesignon/latest/userguide/abac.html
+%% in the IAM Identity Center User Guide.
 %%
 %% After a successful response, call
-%% `DescribeInstanceAccessControlAttributeConfiguration' to validate
-%% that `InstanceAccessControlAttributeConfiguration' was created.
+%% `DescribeInstanceAccessControlAttributeConfiguration' to validate that
+%% `InstanceAccessControlAttributeConfiguration' was created.
 -spec create_instance_access_control_attribute_configuration(aws_client:aws_client(), create_instance_access_control_attribute_configuration_request()) ->
     {ok, create_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
@@ -2330,9 +2349,7 @@ create_instance_access_control_attribute_configuration(Client, Input, Options)
 %% instance.
 %%
 %% To grant users and groups access to Amazon Web Services account resources,
-%% use
-%% ```
-%% `CreateAccountAssignment' '''.
+%% use ` `CreateAccountAssignment' '.
 -spec create_permission_set(aws_client:aws_client(), create_permission_set_request()) ->
     {ok, create_permission_set_response(), tuple()} |
     {error, any()} |
@@ -2352,16 +2369,13 @@ create_permission_set(Client, Input, Options)
 %% @doc Creates a connection to a trusted token issuer in an instance of IAM
 %% Identity Center.
 %%
-%% A trusted token issuer enables trusted
-%% identity propagation to be used with applications that authenticate
-%% outside of
-%% Amazon Web Services.
+%% A trusted token issuer enables trusted identity propagation to be used
+%% with applications that authenticate outside of Amazon Web Services.
 %%
 %% This trusted token issuer describes an external identity provider (IdP)
-%% that can generate claims or
-%% assertions in the form of access tokens for a user. Applications enabled
-%% for IAM Identity Center
-%% can use these tokens for authentication.
+%% that can generate claims or assertions in the form of access tokens for a
+%% user. Applications enabled for IAM Identity Center can use these tokens
+%% for authentication.
 -spec create_trusted_token_issuer(aws_client:aws_client(), create_trusted_token_issuer_request()) ->
     {ok, create_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
@@ -2379,12 +2393,11 @@ create_trusted_token_issuer(Client, Input, Options)
     request(Client, <<"CreateTrustedTokenIssuer">>, Input, Options).
 
 %% @doc Deletes a principal's access from a specified Amazon Web Services
-%% account using a specified
-%% permission set.
+%% account using a specified permission set.
 %%
 %% After a successful response, call
-%% `DescribeAccountAssignmentDeletionStatus' to describe the status of
-%% an assignment deletion request.
+%% `DescribeAccountAssignmentDeletionStatus' to describe the status of an
+%% assignment deletion request.
 -spec delete_account_assignment(aws_client:aws_client(), delete_account_assignment_request()) ->
     {ok, delete_account_assignment_response(), tuple()} |
     {error, any()} |
@@ -2403,8 +2416,7 @@ delete_account_assignment(Client, Input, Options)
 
 %% @doc Deletes the association with the application.
 %%
-%% The connected service resource still
-%% exists.
+%% The connected service resource still exists.
 -spec delete_application(aws_client:aws_client(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
@@ -2439,8 +2451,7 @@ delete_application_access_scope(Client, Input, Options)
     request(Client, <<"DeleteApplicationAccessScope">>, Input, Options).
 
 %% @doc Revoke application access to an application by deleting application
-%% assignments for a
-%% user or group.
+%% assignments for a user or group.
 -spec delete_application_assignment(aws_client:aws_client(), delete_application_assignment_request()) ->
     {ok, delete_application_assignment_response(), tuple()} |
     {error, any()} |
@@ -2510,10 +2521,9 @@ delete_inline_policy_from_permission_set(Client, Input, Options)
 
 %% @doc Deletes the instance of IAM Identity Center.
 %%
-%% Only the account that owns the instance can
-%% call this API. Neither the delegated administrator nor member account can
-%% delete the
-%% organization instance, but those roles can delete their own instance.
+%% Only the account that owns the instance can call this API. Neither the
+%% delegated administrator nor member account can delete the organization
+%% instance, but those roles can delete their own instance.
 -spec delete_instance(aws_client:aws_client(), delete_instance_request()) ->
     {ok, delete_instance_response(), tuple()} |
     {error, any()} |
@@ -2531,15 +2541,12 @@ delete_instance(Client, Input, Options)
     request(Client, <<"DeleteInstance">>, Input, Options).
 
 %% @doc Disables the attributes-based access control (ABAC) feature for the
-%% specified IAM Identity Center
-%% instance and deletes all of the attribute mappings that have been
-%% configured.
+%% specified IAM Identity Center instance and deletes all of the attribute
+%% mappings that have been configured.
 %%
-%% Once
-%% deleted, any attributes that are received from an identity source and any
-%% custom
-%% attributes you have previously configured will not be passed. For more
-%% information about ABAC, see Attribute-Based Access Control:
+%% Once deleted, any attributes that are received from an identity source and
+%% any custom attributes you have previously configured will not be passed.
+%% For more information about ABAC, see Attribute-Based Access Control:
 %% /singlesignon/latest/userguide/abac.html in the IAM Identity Center User
 %% Guide.
 -spec delete_instance_access_control_attribute_configuration(aws_client:aws_client(), delete_instance_access_control_attribute_configuration_request()) ->
@@ -2597,8 +2604,8 @@ delete_permissions_boundary_from_permission_set(Client, Input, Options)
 %% Identity Center.
 %%
 %% Deleting this trusted token issuer configuration will cause users to lose
-%% access to any
-%% applications that are configured to use the trusted token issuer.
+%% access to any applications that are configured to use the trusted token
+%% issuer.
 -spec delete_trusted_token_issuer(aws_client:aws_client(), delete_trusted_token_issuer_request()) ->
     {ok, delete_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
@@ -2669,12 +2676,9 @@ describe_application(Client, Input, Options)
 
 %% @doc Retrieves a direct assignment of a user or group to an application.
 %%
-%% If the user
-%% doesn’t have a direct assignment to the application, the user may still
-%% have access to
-%% the application through a group. Therefore, don’t use this API to test
-%% access to an
-%% application for a user. Instead use
+%% If the user doesn’t have a direct assignment to the application, the user
+%% may still have access to the application through a group. Therefore, don’t
+%% use this API to test access to an application for a user. Instead use
 %% `ListApplicationAssignmentsForPrincipal'.
 -spec describe_application_assignment(aws_client:aws_client(), describe_application_assignment_request()) ->
     {ok, describe_application_assignment_response(), tuple()} |
@@ -2693,8 +2697,8 @@ describe_application_assignment(Client, Input, Options)
     request(Client, <<"DescribeApplicationAssignment">>, Input, Options).
 
 %% @doc Retrieves details about a provider that can be used to connect an
-%% Amazon Web Services managed
-%% application or customer managed application to IAM Identity Center.
+%% Amazon Web Services managed application or customer managed application to
+%% IAM Identity Center.
 -spec describe_application_provider(aws_client:aws_client(), describe_application_provider_request()) ->
     {ok, describe_application_provider_response(), tuple()} |
     {error, any()} |
@@ -2713,15 +2717,13 @@ describe_application_provider(Client, Input, Options)
 
 %% @doc Returns the details of an instance of IAM Identity Center.
 %%
-%% The status can be one of the
-%% following:
+%% The status can be one of the following:
 %%
 %% `CREATE_IN_PROGRESS' - The instance is in the process of being
 %% created. When the instance is ready for use, DescribeInstance returns the
-%% status
-%% of `ACTIVE'. While the instance is in the
-%% `CREATE_IN_PROGRESS' state, you can call only DescribeInstance
-%% and DeleteInstance operations.
+%% status of `ACTIVE'. While the instance is in the
+%% `CREATE_IN_PROGRESS' state, you can call only DescribeInstance and
+%% DeleteInstance operations.
 %%
 %% `DELETE_IN_PROGRESS' - The instance is being deleted. Returns
 %% `AccessDeniedException' after the delete operation completes.
@@ -2744,16 +2746,13 @@ describe_instance(Client, Input, Options)
     request(Client, <<"DescribeInstance">>, Input, Options).
 
 %% @doc Returns the list of IAM Identity Center identity store attributes
-%% that have been configured to work
-%% with attributes-based access control (ABAC) for the specified IAM Identity
-%% Center instance.
+%% that have been configured to work with attributes-based access control
+%% (ABAC) for the specified IAM Identity Center instance.
 %%
-%% This will
-%% not return attributes configured and sent by an external identity
-%% provider.
-%% For more information about ABAC, see Attribute-Based Access Control:
-%% /singlesignon/latest/userguide/abac.html in the IAM Identity Center User
-%% Guide.
+%% This will not return attributes configured and sent by an external
+%% identity provider. For more information about ABAC, see Attribute-Based
+%% Access Control: /singlesignon/latest/userguide/abac.html in the IAM
+%% Identity Center User Guide.
 -spec describe_instance_access_control_attribute_configuration(aws_client:aws_client(), describe_instance_access_control_attribute_configuration_request()) ->
     {ok, describe_instance_access_control_attribute_configuration_response(), tuple()} |
     {error, any()} |
@@ -2808,10 +2807,9 @@ describe_permission_set_provisioning_status(Client, Input, Options)
 %% @doc Retrieves details about a trusted token issuer configuration stored
 %% in an instance of IAM Identity Center.
 %%
-%% Details
-%% include the name of the trusted token issuer, the issuer URL, and the path
-%% of the source attribute and
-%% the destination attribute for a trusted token issuer configuration.
+%% Details include the name of the trusted token issuer, the issuer URL, and
+%% the path of the source attribute and the destination attribute for a
+%% trusted token issuer configuration.
 -spec describe_trusted_token_issuer(aws_client:aws_client(), describe_trusted_token_issuer_request()) ->
     {ok, describe_trusted_token_issuer_response(), tuple()} |
     {error, any()} |
@@ -2847,8 +2845,7 @@ detach_customer_managed_policy_reference_from_permission_set(Client, Input, Opti
     request(Client, <<"DetachCustomerManagedPolicyReferenceFromPermissionSet">>, Input, Options).
 
 %% @doc Detaches the attached Amazon Web Services managed policy ARN from the
-%% specified permission
-%% set.
+%% specified permission set.
 -spec detach_managed_policy_from_permission_set(aws_client:aws_client(), detach_managed_policy_from_permission_set_request()) ->
     {ok, detach_managed_policy_from_permission_set_response(), tuple()} |
     {error, any()} |
@@ -2936,6 +2933,30 @@ get_application_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetApplicationGrant">>, Input, Options).
 
+%% @doc Retrieves the session configuration for an application in IAM
+%% Identity Center.
+%%
+%% The session configuration determines how users can access an application.
+%% This includes whether user background sessions are enabled. User
+%% background sessions allow users to start a job on a supported Amazon Web
+%% Services managed application without having to remain signed in to an
+%% active session while the job runs.
+-spec get_application_session_configuration(aws_client:aws_client(), get_application_session_configuration_request()) ->
+    {ok, get_application_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_session_configuration_errors(), tuple()}.
+get_application_session_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_application_session_configuration(Client, Input, []).
+
+-spec get_application_session_configuration(aws_client:aws_client(), get_application_session_configuration_request(), proplists:proplist()) ->
+    {ok, get_application_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_application_session_configuration_errors(), tuple()}.
+get_application_session_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetApplicationSessionConfiguration">>, Input, Options).
+
 %% @doc Obtains the inline policy assigned to the permission set.
 -spec get_inline_policy_for_permission_set(aws_client:aws_client(), get_inline_policy_for_permission_set_request()) ->
     {ok, get_inline_policy_for_permission_set_response(), tuple()} |
@@ -2971,8 +2992,7 @@ get_permissions_boundary_for_permission_set(Client, Input, Options)
     request(Client, <<"GetPermissionsBoundaryForPermissionSet">>, Input, Options).
 
 %% @doc Lists the status of the Amazon Web Services account assignment
-%% creation requests for a specified
-%% IAM Identity Center instance.
+%% creation requests for a specified IAM Identity Center instance.
 -spec list_account_assignment_creation_status(aws_client:aws_client(), list_account_assignment_creation_status_request()) ->
     {ok, list_account_assignment_creation_status_response(), tuple()} |
     {error, any()} |
@@ -2990,8 +3010,7 @@ list_account_assignment_creation_status(Client, Input, Options)
     request(Client, <<"ListAccountAssignmentCreationStatus">>, Input, Options).
 
 %% @doc Lists the status of the Amazon Web Services account assignment
-%% deletion requests for a specified
-%% IAM Identity Center instance.
+%% deletion requests for a specified IAM Identity Center instance.
 -spec list_account_assignment_deletion_status(aws_client:aws_client(), list_account_assignment_deletion_status_request()) ->
     {ok, list_account_assignment_deletion_status_response(), tuple()} |
     {error, any()} |
@@ -3009,8 +3028,7 @@ list_account_assignment_deletion_status(Client, Input, Options)
     request(Client, <<"ListAccountAssignmentDeletionStatus">>, Input, Options).
 
 %% @doc Lists the assignee of the specified Amazon Web Services account with
-%% the specified permission
-%% set.
+%% the specified permission set.
 -spec list_account_assignments(aws_client:aws_client(), list_account_assignments_request()) ->
     {ok, list_account_assignments_response(), tuple()} |
     {error, any()} |
@@ -3028,13 +3046,11 @@ list_account_assignments(Client, Input, Options)
     request(Client, <<"ListAccountAssignments">>, Input, Options).
 
 %% @doc Retrieves a list of the IAM Identity Center associated Amazon Web
-%% Services accounts that the principal has access
-%% to.
+%% Services accounts that the principal has access to.
 %%
 %% This action must be called from the management account containing your
-%% organization
-%% instance of IAM Identity Center. This action is not valid for account
-%% instances of IAM Identity Center.
+%% organization instance of IAM Identity Center. This action is not valid for
+%% account instances of IAM Identity Center.
 -spec list_account_assignments_for_principal(aws_client:aws_client(), list_account_assignments_for_principal_request()) ->
     {ok, list_account_assignments_for_principal_response(), tuple()} |
     {error, any()} |
@@ -3107,14 +3123,11 @@ list_application_assignments(Client, Input, Options)
 
 %% @doc Lists the applications to which a specified principal is assigned.
 %%
-%% You must provide a
-%% filter when calling this action from a member account against your
-%% organization instance
-%% of IAM Identity Center. A filter is not required when called from the
-%% management account against an
-%% organization instance of IAM Identity Center, or from a member account
-%% against an account instance of
-%% IAM Identity Center in the same account.
+%% You must provide a filter when calling this action from a member account
+%% against your organization instance of IAM Identity Center. A filter is not
+%% required when called from the management account against an organization
+%% instance of IAM Identity Center, or from a member account against an
+%% account instance of IAM Identity Center in the same account.
 -spec list_application_assignments_for_principal(aws_client:aws_client(), list_application_assignments_for_principal_request()) ->
     {ok, list_application_assignments_for_principal_response(), tuple()} |
     {error, any()} |
@@ -3187,13 +3200,11 @@ list_application_providers(Client, Input, Options)
 %% @doc Lists all applications associated with the instance of IAM Identity
 %% Center.
 %%
-%% When listing
-%% applications for an organization instance in the management account,
-%% member accounts
-%% must use the `applicationAccount' parameter to filter the list to only
-%% applications created from that account. When listing applications for an
-%% account
-%% instance in the same member account, a filter is not required.
+%% When listing applications for an organization instance in the management
+%% account, member accounts must use the `applicationAccount' parameter
+%% to filter the list to only applications created from that account. When
+%% listing applications for an account instance in the same member account, a
+%% filter is not required.
 -spec list_applications(aws_client:aws_client(), list_applications_request()) ->
     {ok, list_applications_response(), tuple()} |
     {error, any()} |
@@ -3229,8 +3240,8 @@ list_customer_managed_policy_references_in_permission_set(Client, Input, Options
     request(Client, <<"ListCustomerManagedPolicyReferencesInPermissionSet">>, Input, Options).
 
 %% @doc Lists the details of the organization and account instances of IAM
-%% Identity Center that
-%% were created in or visible to the account calling this API.
+%% Identity Center that were created in or visible to the account calling
+%% this API.
 -spec list_instances(aws_client:aws_client(), list_instances_request()) ->
     {ok, list_instances_response(), tuple()} |
     {error, any()} |
@@ -3266,8 +3277,7 @@ list_managed_policies_in_permission_set(Client, Input, Options)
     request(Client, <<"ListManagedPoliciesInPermissionSet">>, Input, Options).
 
 %% @doc Lists the status of the permission set provisioning requests for a
-%% specified IAM Identity Center
-%% instance.
+%% specified IAM Identity Center instance.
 -spec list_permission_set_provisioning_status(aws_client:aws_client(), list_permission_set_provisioning_status_request()) ->
     {ok, list_permission_set_provisioning_status_response(), tuple()} |
     {error, any()} |
@@ -3302,8 +3312,7 @@ list_permission_sets(Client, Input, Options)
     request(Client, <<"ListPermissionSets">>, Input, Options).
 
 %% @doc Lists all the permission sets that are provisioned to a specified
-%% Amazon Web Services
-%% account.
+%% Amazon Web Services account.
 -spec list_permission_sets_provisioned_to_account(aws_client:aws_client(), list_permission_sets_provisioned_to_account_request()) ->
     {ok, list_permission_sets_provisioned_to_account_response(), tuple()} |
     {error, any()} |
@@ -3356,8 +3365,7 @@ list_trusted_token_issuers(Client, Input, Options)
     request(Client, <<"ListTrustedTokenIssuers">>, Input, Options).
 
 %% @doc The process by which a specified permission set is provisioned to the
-%% specified
-%% target.
+%% specified target.
 -spec provision_permission_set(aws_client:aws_client(), provision_permission_set_request()) ->
     {ok, provision_permission_set_response(), tuple()} |
     {error, any()} |
@@ -3375,8 +3383,7 @@ provision_permission_set(Client, Input, Options)
     request(Client, <<"ProvisionPermissionSet">>, Input, Options).
 
 %% @doc Adds or updates the list of authorized targets for an IAM Identity
-%% Center access scope for an
-%% application.
+%% Center access scope for an application.
 -spec put_application_access_scope(aws_client:aws_client(), put_application_access_scope_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3395,17 +3402,14 @@ put_application_access_scope(Client, Input, Options)
 
 %% @doc Configure how users gain access to an application.
 %%
-%% If `AssignmentsRequired'
-%% is `true' (default value), users don’t have access to the application
-%% unless
-%% an assignment is created using the CreateApplicationAssignment API:
+%% If `AssignmentsRequired' is `true' (default value), users don’t
+%% have access to the application unless an assignment is created using the
+%% CreateApplicationAssignment API:
 %% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html.
-%% If `false', all users have
-%% access to the application. If an assignment is created using
-%% CreateApplicationAssignment:
+%% If `false', all users have access to the application. If an assignment
+%% is created using CreateApplicationAssignment:
 %% https://docs.aws.amazon.com/singlesignon/latest/APIReference/API_CreateApplicationAssignment.html.,
-%% the user retains access if
-%% `AssignmentsRequired' is set to `true'.
+%% the user retains access if `AssignmentsRequired' is set to `true'.
 -spec put_application_assignment_configuration(aws_client:aws_client(), put_application_assignment_configuration_request()) ->
     {ok, put_application_assignment_configuration_response(), tuple()} |
     {error, any()} |
@@ -3441,73 +3445,58 @@ put_application_authentication_method(Client, Input, Options)
 
 %% @doc Creates a configuration for an application to use grants.
 %%
-%% Conceptually grants are
-%% authorization to request actions related to tokens. This configuration
-%% will be used when
-%% parties are requesting and receiving tokens during the trusted identity
-%% propagation
-%% process. For more information on the IAM Identity Center supported grant
-%% workflows, see SAML 2.0
-%% and OAuth 2.0:
+%% Conceptually grants are authorization to request actions related to
+%% tokens. This configuration will be used when parties are requesting and
+%% receiving tokens during the trusted identity propagation process. For more
+%% information on the IAM Identity Center supported grant workflows, see SAML
+%% 2.0 and OAuth 2.0:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/customermanagedapps-saml2-oauth2.html.
 %%
 %% A grant is created between your applications and Identity Center instance
-%% which
-%% enables an application to use specified mechanisms to obtain tokens. These
-%% tokens are
-%% used by your applications to gain access to Amazon Web Services resources
-%% on behalf of users. The
-%% following elements are within these exchanges:
+%% which enables an application to use specified mechanisms to obtain tokens.
+%% These tokens are used by your applications to gain access to Amazon Web
+%% Services resources on behalf of users. The following elements are within
+%% these exchanges:
 %%
-%% Requester - The application requesting access
-%% to Amazon Web Services resources.
+%% Requester - The application requesting access to Amazon Web Services
+%% resources.
 %%
-%% Subject - Typically the user that is
-%% requesting access to Amazon Web Services resources.
+%% Subject - Typically the user that is requesting access to Amazon Web
+%% Services resources.
 %%
-%% Grant - Conceptually, a grant is
-%% authorization to access Amazon Web Services resources. These grants
-%% authorize token generation
-%% for authenticating access to the requester and for the request to make
-%% requests
-%% on behalf of the subjects. There are four types of grants:
+%% Grant - Conceptually, a grant is authorization to access Amazon Web
+%% Services resources. These grants authorize token generation for
+%% authenticating access to the requester and for the request to make
+%% requests on behalf of the subjects. There are four types of grants:
 %%
-%% AuthorizationCode - Allows an
-%% application to request authorization through a series of user-agent
-%% redirects.
+%% AuthorizationCode - Allows an application to request authorization through
+%% a series of user-agent redirects.
 %%
-%% JWT bearer - Authorizes an
-%% application to exchange a JSON Web Token that came from an external
-%% identity provider. To learn more, see RFC
-%% 6479: https://datatracker.ietf.org/doc/html/rfc6749.
+%% JWT bearer - Authorizes an application to exchange a JSON Web Token that
+%% came from an external identity provider. To learn more, see RFC 6479:
+%% https://datatracker.ietf.org/doc/html/rfc6749.
 %%
-%% Refresh token - Enables application
-%% to request new access tokens to replace expiring or expired access
-%% tokens.
+%% Refresh token - Enables application to request new access tokens to
+%% replace expiring or expired access tokens.
 %%
-%% Exchange token - A grant that
-%% requests tokens from the authorization server by providing a ‘subject’
-%% token with access scope authorizing trusted identity propagation to this
-%% application. To learn more, see RFC
+%% Exchange token - A grant that requests tokens from the authorization
+%% server by providing a ‘subject’ token with access scope authorizing
+%% trusted identity propagation to this application. To learn more, see RFC
 %% 8693: https://datatracker.ietf.org/doc/html/rfc8693.
 %%
-%% Authorization server - IAM Identity Center requests
-%% tokens.
+%% Authorization server - IAM Identity Center requests tokens.
 %%
 %% User credentials are never shared directly within these exchanges.
-%% Instead,
-%% applications use grants to request access tokens from IAM Identity Center.
-%% For more
-%% information, see RFC
-%% 6479: https://datatracker.ietf.org/doc/html/rfc6749.
+%% Instead, applications use grants to request access tokens from IAM
+%% Identity Center. For more information, see RFC 6479:
+%% https://datatracker.ietf.org/doc/html/rfc6749.
 %%
 %% == Use cases ==
 %%
 %% Connecting to custom applications.
 %%
 %% Configuring an Amazon Web Services service to make calls to another Amazon
-%% Web Services services using JWT
-%% tokens.
+%% Web Services services using JWT tokens.
 -spec put_application_grant(aws_client:aws_client(), put_application_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3524,15 +3513,36 @@ put_application_grant(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutApplicationGrant">>, Input, Options).
 
+%% @doc Updates the session configuration for an application in IAM Identity
+%% Center.
+%%
+%% The session configuration determines how users can access an application.
+%% This includes whether user background sessions are enabled. User
+%% background sessions allow users to start a job on a supported Amazon Web
+%% Services managed application without having to remain signed in to an
+%% active session while the job runs.
+-spec put_application_session_configuration(aws_client:aws_client(), put_application_session_configuration_request()) ->
+    {ok, put_application_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_application_session_configuration_errors(), tuple()}.
+put_application_session_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_application_session_configuration(Client, Input, []).
+
+-spec put_application_session_configuration(aws_client:aws_client(), put_application_session_configuration_request(), proplists:proplist()) ->
+    {ok, put_application_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_application_session_configuration_errors(), tuple()}.
+put_application_session_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutApplicationSessionConfiguration">>, Input, Options).
+
 %% @doc Attaches an inline policy to a permission set.
 %%
 %% If the permission set is already referenced by one or more account
-%% assignments,
-%% you will need to call
-%% ```
-%% `ProvisionPermissionSet' ''' after
-%% this action to apply the corresponding IAM policy updates to all assigned
-%% accounts.
+%% assignments, you will need to call ` `ProvisionPermissionSet' '
+%% after this action to apply the corresponding IAM policy updates to all
+%% assigned accounts.
 -spec put_inline_policy_to_permission_set(aws_client:aws_client(), put_inline_policy_to_permission_set_request()) ->
     {ok, put_inline_policy_to_permission_set_response(), tuple()} |
     {error, any()} |
@@ -3619,8 +3629,7 @@ update_application(Client, Input, Options)
     request(Client, <<"UpdateApplication">>, Input, Options).
 
 %% @doc Update the details for the instance of IAM Identity Center that is
-%% owned by the
-%% Amazon Web Services account.
+%% owned by the Amazon Web Services account.
 -spec update_instance(aws_client:aws_client(), update_instance_request()) ->
     {ok, update_instance_response(), tuple()} |
     {error, any()} |
@@ -3638,16 +3647,14 @@ update_instance(Client, Input, Options)
     request(Client, <<"UpdateInstance">>, Input, Options).
 
 %% @doc Updates the IAM Identity Center identity store attributes that you
-%% can use with the IAM Identity Center instance
-%% for attributes-based access control (ABAC).
+%% can use with the IAM Identity Center instance for attributes-based access
+%% control (ABAC).
 %%
-%% When using an external identity provider as
-%% an identity source, you can pass attributes through the SAML assertion as
-%% an alternative
-%% to configuring attributes from the IAM Identity Center identity store. If
-%% a SAML assertion passes any
-%% of these attributes, IAM Identity Center replaces the attribute value with
-%% the value from the IAM Identity Center
+%% When using an external identity provider as an identity source, you can
+%% pass attributes through the SAML assertion as an alternative to
+%% configuring attributes from the IAM Identity Center identity store. If a
+%% SAML assertion passes any of these attributes, IAM Identity Center
+%% replaces the attribute value with the value from the IAM Identity Center
 %% identity store. For more information about ABAC, see Attribute-Based
 %% Access Control: /singlesignon/latest/userguide/abac.html in the IAM
 %% Identity Center User Guide.
@@ -3685,12 +3692,12 @@ update_permission_set(Client, Input, Options)
     request(Client, <<"UpdatePermissionSet">>, Input, Options).
 
 %% @doc Updates the name of the trusted token issuer, or the path of a source
-%% attribute or destination
-%% attribute for a trusted token issuer configuration.
+%% attribute or destination attribute for a trusted token issuer
+%% configuration.
 %%
 %% Updating this trusted token issuer configuration might cause users to lose
-%% access to any
-%% applications that are configured to use the trusted token issuer.
+%% access to any applications that are configured to use the trusted token
+%% issuer.
 -spec update_trusted_token_issuer(aws_client:aws_client(), update_trusted_token_issuer_request()) ->
     {ok, update_trusted_token_issuer_response(), tuple()} |
     {error, any()} |

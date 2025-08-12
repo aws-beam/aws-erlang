@@ -3664,6 +3664,7 @@
     conflict_exception().
 
 -type create_automated_reasoning_policy_version_errors() ::
+    too_many_tags_exception() | 
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 

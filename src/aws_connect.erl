@@ -5272,7 +5272,6 @@
 %% Example:
 %% user_hierarchy_group_search_criteria() :: #{
 %%   <<"AndConditions">> => list(user_hierarchy_group_search_criteria()),
-%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
 %%   <<"OrConditions">> => list(user_hierarchy_group_search_criteria()),
 %%   <<"StringCondition">> => string_condition()
 %% }
@@ -6027,7 +6026,6 @@
 
 %% Example:
 %% common_attribute_and_condition() :: #{
-%%   <<"HierarchyGroupCondition">> => hierarchy_group_condition(),
 %%   <<"TagConditions">> => list(tag_condition())
 %% }
 -type common_attribute_and_condition() :: #{binary() => any()}.
