@@ -750,6 +750,7 @@
 %%   <<"FailureReason">> => string(),
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"Media">> => media(),
+%%   <<"MedicalScribeContextProvided">> => boolean(),
 %%   <<"MedicalScribeJobName">> => string(),
 %%   <<"MedicalScribeJobStatus">> => list(any()),
 %%   <<"MedicalScribeOutput">> => medical_scribe_output(),
@@ -758,6 +759,12 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type medical_scribe_job() :: #{binary() => any()}.
+
+%% Example:
+%% medical_scribe_patient_context() :: #{
+%%   <<"Pronouns">> => list(any())
+%% }
+-type medical_scribe_patient_context() :: #{binary() => any()}.
 
 %% Example:
 %% language_id_settings() :: #{
@@ -976,6 +983,7 @@
 %%   <<"DataAccessRoleArn">> := string(),
 %%   <<"KMSEncryptionContext">> => map(),
 %%   <<"Media">> := media(),
+%%   <<"MedicalScribeContext">> => medical_scribe_context(),
 %%   <<"OutputBucketName">> := string(),
 %%   <<"OutputEncryptionKMSKeyId">> => string(),
 %%   <<"Settings">> := medical_scribe_settings(),
@@ -1048,6 +1056,12 @@
 
 %% }
 -type get_vocabulary_filter_request() :: #{binary() => any()}.
+
+%% Example:
+%% medical_scribe_context() :: #{
+%%   <<"PatientContext">> => medical_scribe_patient_context()
+%% }
+-type medical_scribe_context() :: #{binary() => any()}.
 
 %% Example:
 %% interruption_filter() :: #{
@@ -2417,7 +2431,7 @@ start_call_analytics_job(Client, Input, Options)
 %% `OutputBucketName': The Amazon S3 bucket where you want
 %% your output files stored.
 %%
-%% `Settings': A `MedicalScribeSettings' obect
+%% `Settings': A `MedicalScribeSettings' object
 %% that must set exactly one of `ShowSpeakerLabels' or
 %% `ChannelIdentification' to true.
 %% If `ShowSpeakerLabels' is true, `MaxSpeakerLabels' must also be

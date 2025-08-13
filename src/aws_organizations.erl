@@ -155,6 +155,8 @@
          list_accounts/3,
          list_accounts_for_parent/2,
          list_accounts_for_parent/3,
+         list_accounts_with_invalid_effective_policy/2,
+         list_accounts_with_invalid_effective_policy/3,
          list_aws_service_access_for_organization/2,
          list_aws_service_access_for_organization/3,
          list_children/2,
@@ -165,6 +167,8 @@
          list_delegated_administrators/3,
          list_delegated_services_for_account/2,
          list_delegated_services_for_account/3,
+         list_effective_policy_validation_errors/2,
+         list_effective_policy_validation_errors/3,
          list_handshakes_for_account/2,
          list_handshakes_for_account/3,
          list_handshakes_for_organization/2,
@@ -236,6 +240,14 @@
 %%   <<"CreateAccountStatus">> => create_account_status()
 %% }
 -type create_gov_cloud_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_with_invalid_effective_policy_response() :: #{
+%%   <<"Accounts">> => list(account()),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyType">> => list(any())
+%% }
+-type list_accounts_with_invalid_effective_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% remove_account_from_organization_request() :: #{
@@ -328,6 +340,26 @@
 %%   <<"HandshakeId">> := string()
 %% }
 -type decline_handshake_request() :: #{binary() => any()}.
+
+%% Example:
+%% effective_policy_validation_error() :: #{
+%%   <<"ContributingPolicies">> => list(string()),
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"PathToError">> => string()
+%% }
+-type effective_policy_validation_error() :: #{binary() => any()}.
+
+%% Example:
+%% list_effective_policy_validation_errors_response() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"EffectivePolicyValidationErrors">> => list(effective_policy_validation_error()),
+%%   <<"EvaluationTimestamp">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"PolicyType">> => list(any())
+%% }
+-type list_effective_policy_validation_errors_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_roots_response() :: #{
@@ -554,6 +586,15 @@
 %%   <<"Message">> => string()
 %% }
 -type policy_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_effective_policy_validation_errors_request() :: #{
+%%   <<"AccountId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyType">> := list(any())
+%% }
+-type list_effective_policy_validation_errors_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_handshakes_for_organization_request() :: #{
@@ -817,6 +858,14 @@
 %%   <<"Message">> => string()
 %% }
 -type unsupported_api_endpoint_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_accounts_with_invalid_effective_policy_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyType">> := list(any())
+%% }
+-type list_accounts_with_invalid_effective_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% master_cannot_leave_organization_exception() :: #{
@@ -1644,6 +1693,16 @@
     too_many_requests_exception() | 
     aws_organizations_not_in_use_exception().
 
+-type list_accounts_with_invalid_effective_policy_errors() ::
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    effective_policy_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
 -type list_aws_service_access_for_organization_errors() ::
     constraint_violation_exception() | 
     access_denied_exception() | 
@@ -1686,6 +1745,17 @@
     invalid_input_exception() | 
     service_exception() | 
     account_not_registered_exception() | 
+    too_many_requests_exception() | 
+    aws_organizations_not_in_use_exception().
+
+-type list_effective_policy_validation_errors_errors() ::
+    constraint_violation_exception() | 
+    access_denied_exception() | 
+    unsupported_api_endpoint_exception() | 
+    effective_policy_not_found_exception() | 
+    account_not_found_exception() | 
+    invalid_input_exception() | 
+    service_exception() | 
     too_many_requests_exception() | 
     aws_organizations_not_in_use_exception().
 
@@ -3354,6 +3424,33 @@ list_accounts_for_parent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountsForParent">>, Input, Options).
 
+%% @doc Lists all the accounts in an organization that have invalid effective
+%% policies.
+%%
+%% An invalid effective policy is an effective policy:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_effective.html
+%% that fails validation checks, resulting in the effective policy not being
+%% fully enforced on all the intended accounts within an organization.
+%%
+%% This operation can be called only from the organization's
+%% management account or by a member account that is a delegated
+%% administrator.
+-spec list_accounts_with_invalid_effective_policy(aws_client:aws_client(), list_accounts_with_invalid_effective_policy_request()) ->
+    {ok, list_accounts_with_invalid_effective_policy_response(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_with_invalid_effective_policy_errors(), tuple()}.
+list_accounts_with_invalid_effective_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_accounts_with_invalid_effective_policy(Client, Input, []).
+
+-spec list_accounts_with_invalid_effective_policy(aws_client:aws_client(), list_accounts_with_invalid_effective_policy_request(), proplists:proplist()) ->
+    {ok, list_accounts_with_invalid_effective_policy_response(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_with_invalid_effective_policy_errors(), tuple()}.
+list_accounts_with_invalid_effective_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAccountsWithInvalidEffectivePolicy">>, Input, Options).
+
 %% @doc Returns a list of the Amazon Web Services services that you enabled
 %% to integrate with your
 %% organization.
@@ -3501,6 +3598,29 @@ list_delegated_services_for_account(Client, Input)
 list_delegated_services_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDelegatedServicesForAccount">>, Input, Options).
+
+%% @doc Lists all the validation errors on an effective policy:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_effective.html
+%% for a specified account and policy type.
+%%
+%% This operation can be called only from the organization's
+%% management account or by a member account that is a delegated
+%% administrator.
+-spec list_effective_policy_validation_errors(aws_client:aws_client(), list_effective_policy_validation_errors_request()) ->
+    {ok, list_effective_policy_validation_errors_response(), tuple()} |
+    {error, any()} |
+    {error, list_effective_policy_validation_errors_errors(), tuple()}.
+list_effective_policy_validation_errors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_effective_policy_validation_errors(Client, Input, []).
+
+-spec list_effective_policy_validation_errors(aws_client:aws_client(), list_effective_policy_validation_errors_request(), proplists:proplist()) ->
+    {ok, list_effective_policy_validation_errors_response(), tuple()} |
+    {error, any()} |
+    {error, list_effective_policy_validation_errors_errors(), tuple()}.
+list_effective_policy_validation_errors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEffectivePolicyValidationErrors">>, Input, Options).
 
 %% @doc Lists the current handshakes that are associated with the account of
 %% the requesting

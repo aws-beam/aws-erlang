@@ -110,6 +110,7 @@
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"MediaEncoding">> => list(any()),
 %%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"MedicalScribeContextProvided">> => boolean(),
 %%   <<"PostStreamAnalyticsResult">> => medical_scribe_post_stream_analytics_result(),
 %%   <<"PostStreamAnalyticsSettings">> => medical_scribe_post_stream_analytics_settings(),
 %%   <<"ResourceAccessRoleArn">> => string(),
@@ -201,6 +202,7 @@
 %% medical_scribe_configuration_event() :: #{
 %%   <<"ChannelDefinitions">> => list(medical_scribe_channel_definition()),
 %%   <<"EncryptionSettings">> => medical_scribe_encryption_settings(),
+%%   <<"MedicalScribeContext">> => medical_scribe_context(),
 %%   <<"PostStreamAnalyticsSettings">> => medical_scribe_post_stream_analytics_settings(),
 %%   <<"ResourceAccessRoleArn">> => string(),
 %%   <<"VocabularyFilterMethod">> => list(any()),
@@ -420,6 +422,13 @@
 
 
 %% Example:
+%% medical_scribe_patient_context() :: #{
+%%   <<"Pronouns">> => list(any())
+%% }
+-type medical_scribe_patient_context() :: #{binary() => any()}.
+
+
+%% Example:
 %% medical_transcript_event() :: #{
 %%   <<"Transcript">> => medical_transcript()
 %% }
@@ -578,6 +587,13 @@
 %%   <<"SegmentId">> => string()
 %% }
 -type medical_scribe_transcript_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_scribe_context() :: #{
+%%   <<"PatientContext">> => medical_scribe_patient_context()
+%% }
+-type medical_scribe_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -809,9 +825,10 @@ start_call_analytics_stream_transcription(Client, Input0, Options0) ->
 %%
 %% When you start a stream, you first specify the stream configuration in a
 %% `MedicalScribeConfigurationEvent'.
-%% This event includes channel definitions, encryption settings, and
-%% post-stream analytics settings, such as the output configuration for
-%% aggregated transcript and clinical note generation. These are additional
+%% This event includes channel definitions, encryption settings, medical
+%% scribe context, and post-stream analytics settings, such as the output
+%% configuration for aggregated transcript and clinical note generation.
+%% These are additional
 %% streaming session configurations beyond those provided in your initial
 %% start request headers. Whether you are starting a new session or resuming
 %% an existing session,

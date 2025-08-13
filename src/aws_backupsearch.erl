@@ -10,8 +10,7 @@
 %% Backup API Reference:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/api-reference.html
 %%
-%% Backup
-%% Developer Guide:
+%% Backup Developer Guide:
 %% https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html
 -module(aws_backupsearch).
 
@@ -485,6 +484,7 @@
 
 -type start_search_job_errors() ::
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type start_search_result_export_job_errors() ::
@@ -506,8 +506,8 @@
 %% API
 %%====================================================================
 
-%% @doc This operation retrieves metadata of a search job,
-%% including its progress.
+%% @doc This operation retrieves metadata of a search job, including its
+%% progress.
 -spec get_search_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_search_job_output(), tuple()} |
     {error, any()} |
@@ -546,12 +546,11 @@ get_search_job(Client, SearchJobIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc This operation retrieves the metadata of an export job.
 %%
-%% An export job is an operation that transmits the results
-%% of a search job to a specified S3 bucket in a
-%% .csv file.
+%% An export job is an operation that transmits the results of a search job
+%% to a specified S3 bucket in a .csv file.
 %%
-%% An export job allows you to retain results of a search
-%% beyond the search job's scheduled retention of 7 days.
+%% An export job allows you to retain results of a search beyond the search
+%% job's scheduled retention of 7 days.
 -spec get_search_result_export_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_search_result_export_job_output(), tuple()} |
     {error, any()} |
@@ -588,21 +587,17 @@ get_search_result_export_job(Client, ExportJobIdentifier, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation returns a list of all backups (recovery
-%% points) in a paginated format that were included in
-%% the search job.
+%% @doc This operation returns a list of all backups (recovery points) in a
+%% paginated format that were included in the search job.
 %%
-%% If a search does not display an expected backup in
-%% the results, you can call this operation to display each
-%% backup included in the search. Any backups that were not
-%% included because they have a `FAILED' status
-%% from a permissions issue will be displayed, along with a
-%% status message.
+%% If a search does not display an expected backup in the results, you can
+%% call this operation to display each backup included in the search. Any
+%% backups that were not included because they have a `FAILED' status
+%% from a permissions issue will be displayed, along with a status message.
 %%
-%% Only recovery points with a backup index that has
-%% a status of `ACTIVE' will be included in search results.
-%% If the index has any other status, its status will be
-%% displayed along with a status message.
+%% Only recovery points with a backup index that has a status of `ACTIVE'
+%% will be included in search results. If the index has any other status, its
+%% status will be displayed along with a status message.
 -spec list_search_job_backups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_search_job_backups_output(), tuple()} |
     {error, any()} |
@@ -686,8 +681,7 @@ list_search_job_results(Client, SearchJobIdentifier, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation returns a list of search jobs belonging
-%% to an account.
+%% @doc This operation returns a list of search jobs belonging to an account.
 -spec list_search_jobs(aws_client:aws_client()) ->
     {ok, list_search_jobs_output(), tuple()} |
     {error, any()}.
@@ -727,8 +721,8 @@ list_search_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation exports search results of a search job
-%% to a specified destination S3 bucket.
+%% @doc This operation exports search results of a search job to a specified
+%% destination S3 bucket.
 -spec list_search_result_export_jobs(aws_client:aws_client()) ->
     {ok, list_search_result_export_jobs_output(), tuple()} |
     {error, any()} |
@@ -809,12 +803,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation creates a search job which returns
-%% recovery points filtered by SearchScope and items
-%% filtered by ItemFilters.
+%% @doc This operation creates a search job which returns recovery points
+%% filtered by SearchScope and items filtered by ItemFilters.
 %%
-%% You can optionally include ClientToken,
-%% EncryptionKeyArn, Name, and/or Tags.
+%% You can optionally include ClientToken, EncryptionKeyArn, Name, and/or
+%% Tags.
 -spec start_search_job(aws_client:aws_client(), start_search_job_input()) ->
     {ok, start_search_job_output(), tuple()} |
     {error, any()} |
@@ -848,8 +841,8 @@ start_search_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operations starts a job to export the results
-%% of search job to a designated S3 bucket.
+%% @doc This operations starts a job to export the results of search job to a
+%% designated S3 bucket.
 -spec start_search_result_export_job(aws_client:aws_client(), start_search_result_export_job_input()) ->
     {ok, start_search_result_export_job_output(), tuple()} |
     {error, any()} |
@@ -885,8 +878,7 @@ start_search_result_export_job(Client, Input0, Options0) ->
 
 %% @doc This operations ends a search job.
 %%
-%% Only a search job with a status of `RUNNING'
-%% can be stopped.
+%% Only a search job with a status of `RUNNING' can be stopped.
 -spec stop_search_job(aws_client:aws_client(), binary() | list(), stop_search_job_input()) ->
     {ok, stop_search_job_output(), tuple()} |
     {error, any()} |

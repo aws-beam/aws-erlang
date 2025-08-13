@@ -3164,6 +3164,12 @@
 -type custom_posix_user_config() :: #{binary() => any()}.
 
 %% Example:
+%% trusted_identity_propagation_settings() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type trusted_identity_propagation_settings() :: #{binary() => any()}.
+
+%% Example:
 %% training_specification() :: #{
 %%   <<"AdditionalS3DataSource">> => additional_s3_data_source(),
 %%   <<"MetricDefinitions">> => list(metric_definition()),
@@ -3752,6 +3758,7 @@
 %%   <<"BuiltInLifecycleConfigArn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DomainId">> => string(),
+%%   <<"EffectiveTrustedIdentityPropagationStatus">> => list(any()),
 %%   <<"FailureReason">> => string(),
 %%   <<"LastHealthCheckTimestamp">> => non_neg_integer(),
 %%   <<"LastUserActivityTimestamp">> => non_neg_integer(),
@@ -7042,6 +7049,7 @@
 %%   <<"ExecutionRoleIdentityConfig">> => list(any()),
 %%   <<"RStudioServerProDomainSettingsForUpdate">> => r_studio_server_pro_domain_settings_for_update(),
 %%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"TrustedIdentityPropagationSettings">> => trusted_identity_propagation_settings(),
 %%   <<"UnifiedStudioSettings">> => unified_studio_settings()
 %% }
 -type domain_settings_for_update() :: #{binary() => any()}.
@@ -8330,6 +8338,7 @@
 %%   <<"ExecutionRoleIdentityConfig">> => list(any()),
 %%   <<"RStudioServerProDomainSettings">> => r_studio_server_pro_domain_settings(),
 %%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"TrustedIdentityPropagationSettings">> => trusted_identity_propagation_settings(),
 %%   <<"UnifiedStudioSettings">> => unified_studio_settings()
 %% }
 -type domain_settings() :: #{binary() => any()}.

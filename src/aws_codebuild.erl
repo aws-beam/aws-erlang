@@ -1750,6 +1750,7 @@
 %%   <<"lastModifiedSecret">> => non_neg_integer(),
 %%   <<"manualCreation">> => boolean(),
 %%   <<"payloadUrl">> => string(),
+%%   <<"pullRequestBuildPolicy">> => pull_request_build_policy(),
 %%   <<"scopeConfiguration">> => scope_configuration(),
 %%   <<"secret">> => string(),
 %%   <<"status">> => list(any()),
