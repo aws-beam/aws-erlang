@@ -740,7 +740,7 @@
 
 %% Example:
 %% expected_customer_spend() :: #{
-%%   <<"Amount">> => [string()],
+%%   <<"Amount">> => string(),
 %%   <<"CurrencyCode">> => list(any()),
 %%   <<"EstimationUrl">> => string(),
 %%   <<"Frequency">> => list(any()),
@@ -857,7 +857,8 @@
 %%   <<"PartnerOpportunityIdentifier">> => [string()],
 %%   <<"PrimaryNeedsFromAws">> => list(list(any())()),
 %%   <<"Project">> => project(),
-%%   <<"SoftwareRevenue">> => software_revenue()
+%%   <<"SoftwareRevenue">> => software_revenue(),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_opportunity_request() :: #{binary() => any()}.
 
@@ -2161,10 +2162,10 @@ list_engagements(Client, Input, Options)
 %% https://partnercentral.awspartner.com/ using the `ListOpportunities'
 %% API action.
 %%
-%% To synchronize your system with Amazon Web Services, only list the
+%% To synchronize your system with Amazon Web Services, list only the
 %% opportunities that were newly created or updated. We recommend you rely on
 %% events emitted by the service into your Amazon Web Services account’s
-%% Amazon EventBridge default event bus, you can also use the
+%% Amazon EventBridge default event bus. You can also use the
 %% `ListOpportunities' action.
 %%
 %% We recommend the following approach:
@@ -2346,12 +2347,16 @@ start_engagement_by_accepting_invitation_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEngagementByAcceptingInvitationTask">>, Input, Options).
 
-%% @doc This action initiates the engagement process from an existing
-%% opportunity by accepting the engagement invitation and creating a
-%% corresponding opportunity in the partner’s system.
+%% @doc Similar to `StartEngagementByAcceptingInvitationTask', this
+%% action is asynchronous and performs multiple steps before completion.
 %%
-%% Similar to `StartEngagementByAcceptingInvitationTask', this action is
-%% asynchronous and performs multiple steps before completion.
+%% This action orchestrates a comprehensive workflow that combines multiple
+%% API operations into a single task to create and initiate an engagement
+%% from an existing opportunity. It automatically executes a sequence of
+%% operations including `GetOpportunity', `CreateEngagement' (if it
+%% doesn't exist), `CreateResourceSnapshot',
+%% `CreateResourceSnapshotJob', `CreateEngagementInvitation' (if not
+%% already invited/accepted), and `SubmitOpportunity'.
 -spec start_engagement_from_opportunity_task(aws_client:aws_client(), start_engagement_from_opportunity_task_request()) ->
     {ok, start_engagement_from_opportunity_task_response(), tuple()} |
     {error, any()} |

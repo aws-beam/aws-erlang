@@ -126,6 +126,7 @@
 %%   <<"Lifecycle">> => list(any()),
 %%   <<"LustreConfiguration">> => lustre_file_system_configuration(),
 %%   <<"NetworkInterfaceIds">> => list(string()),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"OntapConfiguration">> => ontap_file_system_configuration(),
 %%   <<"OpenZFSConfiguration">> => open_z_f_s_file_system_configuration(),
 %%   <<"OwnerId">> => string(),
@@ -348,6 +349,7 @@
 %%   <<"DeploymentType">> => list(any()),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
 %%   <<"EndpointIpAddressRange">> => string(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
 %%   <<"PreferredSubnetId">> => string(),
 %%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
 %%   <<"RootVolumeConfiguration">> => open_z_f_s_create_root_volume_configuration(),
@@ -939,6 +941,7 @@
 %%   <<"FileSystemId">> := string(),
 %%   <<"FileSystemTypeVersion">> => string(),
 %%   <<"LustreConfiguration">> => update_file_system_lustre_configuration(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"OntapConfiguration">> => update_file_system_ontap_configuration(),
 %%   <<"OpenZFSConfiguration">> => update_file_system_open_z_f_s_configuration(),
 %%   <<"StorageCapacity">> => integer(),
@@ -1067,6 +1070,7 @@
 %%   <<"FileSystemTypeVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LustreConfiguration">> => create_file_system_lustre_configuration(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"OntapConfiguration">> => create_file_system_ontap_configuration(),
 %%   <<"OpenZFSConfiguration">> => create_file_system_open_z_f_s_configuration(),
 %%   <<"SecurityGroupIds">> => list(string()),
@@ -1163,6 +1167,8 @@
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
 %%   <<"EndpointIpAddress">> => string(),
 %%   <<"EndpointIpAddressRange">> => string(),
+%%   <<"EndpointIpv6Address">> => string(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
 %%   <<"PreferredSubnetId">> => string(),
 %%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
 %%   <<"RootVolumeId">> => string(),
@@ -1652,6 +1658,7 @@
 %%   <<"CopyTagsToVolumes">> => boolean(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
 %%   <<"ReadCacheConfiguration">> => open_z_f_s_read_cache_configuration(),
 %%   <<"RemoveRouteTableIds">> => list(string()),
 %%   <<"ThroughputCapacity">> => integer(),
@@ -2263,6 +2270,7 @@
 %%   <<"FileSystemTypeVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LustreConfiguration">> => create_file_system_lustre_configuration(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"OpenZFSConfiguration">> => create_file_system_open_z_f_s_configuration(),
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"StorageCapacity">> => integer(),
@@ -2781,8 +2789,8 @@ copy_snapshot_and_update_volume(Client, Input, Options)
 %% For FSx for OpenZFS file systems, the
 %% volume must be hosted on a high-availability file system, either Single-AZ
 %% or Multi-AZ. For more information,
-%% see Accessing your data using access points:
-%% fsx/latest/OpenZFSGuide/s3accesspoints-for-FSx.html
+%% see Accessing your data using Amazon S3 access points:
+%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/s3accesspoints-for-FSx.html.
 %% in the Amazon FSx for OpenZFS User Guide.
 %%
 %% The requester requires the following permissions to perform these actions:
@@ -3368,10 +3376,10 @@ delete_file_cache(Client, Input, Options)
 %% on how to list S3
 %% access points that are attached to volumes, see
 %% Listing S3 access point attachments:
-%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/access-points-list.
+%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/access-points-list.html.
 %% For more information on how to delete S3 access points, see
 %% Deleting an S3 access point attachment:
-%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/delete-points-list.
+%% https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/delete-access-point.html.
 %%
 %% By default, when you delete an Amazon FSx for Windows File Server file
 %% system,
@@ -4216,6 +4224,8 @@ update_file_cache(Client, Input, Options)
 %% `DailyAutomaticBackupStartTime'
 %%
 %% `DiskIopsConfiguration'
+%%
+%% `EndpointIpv6AddressRange'
 %%
 %% `ReadCacheConfiguration'
 %%

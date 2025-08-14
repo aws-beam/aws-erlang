@@ -2,13 +2,56 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon Braket API Reference provides information about the
-%% operations and structures
-%% supported in Amazon Braket.
+%% operations and structures supported by Amazon Braket.
 %%
-%% Additional Resources:
-%%
-%% Amazon Braket Developer Guide:
+%% To learn about the permissions required to call an Amazon Braket API
+%% action, see Actions, resources, and condition keys for Amazon Braket:
+%% https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonbraket.html.
+%% Amazon Braket Python SDK:
+%% https://amazon-braket-sdk-python.readthedocs.io/en/latest/# and the AWS
+%% Command Line Interface:
+%% https://docs.aws.amazon.com/cli/latest/reference/braket/ can be used to
+%% make discovery and creation of API calls easier. For more information
+%% about Amazon Braket features, see What is Amazon Braket?:
 %% https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html
+%% and important terms and concepts:
+%% https://docs.aws.amazon.com/braket/latest/developerguide/braket-terms.html
+%% in the Amazon Braket Developer Guide.
+%%
+%% In this guide:
+%%
+%% `CommonParameters'
+%%
+%% `CommonErrors'
+%%
+%% Available languages for AWS SDK:
+%%
+%% .NET:
+%% https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/Braket/NBraket.html
+%%
+%% C++: https://sdk.amazonaws.com/cpp/api/LATEST/root/html/index.html
+%%
+%% Go API reference:
+%% https://docs.aws.amazon.com/sdk-for-go/api/service/braket/
+%%
+%% Java:
+%% https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/braket/package-summary.html
+%%
+%% JavaScript:
+%% https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Braket.html
+%%
+%% PHP:
+%% https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.Braket.BraketClient.html
+%%
+%% Python (Boto):
+%% https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/braket.html
+%%
+%% Ruby: https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/Braket.html
+%%
+%% Code examples from the Amazon Braket Tutorials GitHub repository:
+%%
+%% Amazon Braket Examples:
+%% https://github.com/amazon-braket/amazon-braket-examples
 -module(aws_braket).
 
 -export([cancel_job/3,
@@ -173,6 +216,7 @@
 
 %% Example:
 %% get_quantum_task_response() :: #{
+%%   <<"actionMetadata">> => action_metadata(),
 %%   <<"associations">> => list(association()),
 %%   <<"createdAt">> := [non_neg_integer()],
 %%   <<"deviceArn">> := string(),
@@ -180,6 +224,7 @@
 %%   <<"endedAt">> => [non_neg_integer()],
 %%   <<"failureReason">> => [string()],
 %%   <<"jobArn">> => string(),
+%%   <<"numSuccessfulShots">> => [float()],
 %%   <<"outputS3Bucket">> := [string()],
 %%   <<"outputS3Directory">> := [string()],
 %%   <<"quantumTaskArn">> := string(),
@@ -298,6 +343,15 @@
 
 
 %% Example:
+%% program_set_validation_failure() :: #{
+%%   <<"errors">> => list([string()]()),
+%%   <<"inputsIndex">> => [float()],
+%%   <<"programIndex">> => [float()]
+%% }
+-type program_set_validation_failure() :: #{binary() => any()}.
+
+
+%% Example:
 %% container_image() :: #{
 %%   <<"uri">> => string()
 %% }
@@ -383,6 +437,15 @@
 
 
 %% Example:
+%% action_metadata() :: #{
+%%   <<"actionType">> => [string()],
+%%   <<"executableCount">> => [float()],
+%%   <<"programCount">> => [float()]
+%% }
+-type action_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% device_summary() :: #{
 %%   <<"deviceArn">> => string(),
 %%   <<"deviceName">> => [string()],
@@ -459,7 +522,9 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"message">> => [string()]
+%%   <<"message">> => [string()],
+%%   <<"programSetValidationFailures">> => list(program_set_validation_failure()),
+%%   <<"reason">> => string()
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
@@ -636,7 +701,7 @@
 %% API
 %%====================================================================
 
-%% @doc Cancels an Amazon Braket job.
+%% @doc Cancels an Amazon Braket hybrid job.
 -spec cancel_job(aws_client:aws_client(), binary() | list(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
@@ -704,7 +769,7 @@ cancel_quantum_task(Client, QuantumTaskArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Braket job.
+%% @doc Creates an Amazon Braket hybrid job.
 -spec create_job(aws_client:aws_client(), create_job_request()) ->
     {ok, create_job_response(), tuple()} |
     {error, any()} |
@@ -776,15 +841,11 @@ create_quantum_task(Client, Input0, Options0) ->
 %%
 %% For backwards compatibility with older versions of BraketSchemas, OpenQASM
 %% information is omitted from GetDevice API calls. To get this information
-%% the user-agent
-%% needs to present a recent version of the BraketSchemas (1.8.0 or later).
-%% The Braket SDK
-%% automatically reports this for you. If you do not see OpenQASM results in
-%% the GetDevice
-%% response when using a Braket SDK, you may need to set AWS_EXECUTION_ENV
-%% environment
-%% variable to configure user-agent. See the code examples provided below for
-%% how to do
+%% the user-agent needs to present a recent version of the BraketSchemas
+%% (1.8.0 or later). The Braket SDK automatically reports this for you. If
+%% you do not see OpenQASM results in the GetDevice response when using a
+%% Braket SDK, you may need to set AWS_EXECUTION_ENV environment variable to
+%% configure user-agent. See the code examples provided below for how to do
 %% this for the AWS CLI, Boto3, and the Go, Java, and JavaScript/TypeScript
 %% SDKs.
 -spec get_device(aws_client:aws_client(), binary() | list()) ->
@@ -823,7 +884,7 @@ get_device(Client, DeviceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the specified Amazon Braket job.
+%% @doc Retrieves the specified Amazon Braket hybrid job.
 -spec get_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_job_response(), tuple()} |
     {error, any()} |
@@ -976,8 +1037,8 @@ search_devices(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches for Amazon Braket jobs that match the specified filter
-%% values.
+%% @doc Searches for Amazon Braket hybrid jobs that match the specified
+%% filter values.
 -spec search_jobs(aws_client:aws_client(), search_jobs_request()) ->
     {ok, search_jobs_response(), tuple()} |
     {error, any()} |

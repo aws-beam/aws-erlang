@@ -27,6 +27,8 @@
          cancel_metadata_generation_run/5,
          cancel_subscription/4,
          cancel_subscription/5,
+         create_account_pool/3,
+         create_account_pool/4,
          create_asset/3,
          create_asset/4,
          create_asset_filter/4,
@@ -79,6 +81,8 @@
          create_subscription_target/5,
          create_user_profile/3,
          create_user_profile/4,
+         delete_account_pool/4,
+         delete_account_pool/5,
          delete_asset/4,
          delete_asset/5,
          delete_asset_filter/5,
@@ -129,6 +133,9 @@
          delete_time_series_data_points/6,
          disassociate_environment_role/5,
          disassociate_environment_role/6,
+         get_account_pool/3,
+         get_account_pool/5,
+         get_account_pool/6,
          get_asset/3,
          get_asset/5,
          get_asset/6,
@@ -230,6 +237,12 @@
          get_user_profile/3,
          get_user_profile/5,
          get_user_profile/6,
+         list_account_pools/2,
+         list_account_pools/4,
+         list_account_pools/5,
+         list_accounts_in_account_pool/3,
+         list_accounts_in_account_pool/5,
+         list_accounts_in_account_pool/6,
          list_asset_filters/3,
          list_asset_filters/5,
          list_asset_filters/6,
@@ -357,6 +370,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_account_pool/4,
+         update_account_pool/5,
          update_asset_filter/5,
          update_asset_filter/6,
          update_connection/4,
@@ -507,6 +522,19 @@
 %%   <<"typeRevision">> => string()
 %% }
 -type asset_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_pool_summary() :: #{
+%%   <<"createdBy">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resolutionStrategy">> => list(any()),
+%%   <<"updatedBy">> => string()
+%% }
+-type account_pool_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -886,6 +914,23 @@
 
 
 %% Example:
+%% create_account_pool_output() :: #{
+%%   <<"accountSource">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"resolutionStrategy">> => list(any()),
+%%   <<"updatedBy">> => string()
+%% }
+-type create_account_pool_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% deployment() :: #{
 %%   <<"deploymentId">> => [string()],
 %%   <<"deploymentStatus">> => list(any()),
@@ -972,6 +1017,15 @@
 %% }
 -type project_summary() :: #{binary() => any()}.
 
+
+%% Example:
+%% environment_resolved_account() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"regionName">> => string(),
+%%   <<"sourceAccountPoolId">> => string()
+%% }
+-type environment_resolved_account() :: #{binary() => any()}.
+
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
@@ -1006,6 +1060,14 @@
 %%   <<"includeChildDomainUnits">> => [boolean()]
 %% }
 -type create_asset_type_policy_grant_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_accounts_in_account_pool_output() :: #{
+%%   <<"items">> => list(account_info()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_accounts_in_account_pool_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1254,6 +1316,17 @@
 
 
 %% Example:
+%% list_account_pools_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type list_account_pools_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_data_product_revision_output() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
@@ -1344,6 +1417,14 @@
 
 
 %% Example:
+%% list_accounts_in_account_pool_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_accounts_in_account_pool_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% notification_resource() :: #{
 %%   <<"id">> => [string()],
 %%   <<"name">> => [string()],
@@ -1386,6 +1467,23 @@
 %%   <<"sort">> => search_sort()
 %% }
 -type search_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_account_pool_output() :: #{
+%%   <<"accountSource">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"resolutionStrategy">> => list(any()),
+%%   <<"updatedBy">> => string()
+%% }
+-type get_account_pool_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1434,7 +1532,8 @@
 %% environment_configuration_user_parameter() :: #{
 %%   <<"environmentConfigurationName">> => string(),
 %%   <<"environmentId">> => string(),
-%%   <<"environmentParameters">> => list(environment_parameter())
+%%   <<"environmentParameters">> => list(environment_parameter()),
+%%   <<"environmentResolvedAccount">> => environment_resolved_account()
 %% }
 -type environment_configuration_user_parameter() :: #{binary() => any()}.
 
@@ -1592,6 +1691,15 @@
 %%   <<"typeRevision">> => string()
 %% }
 -type create_asset_revision_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_info() :: #{
+%%   <<"awsAccountId">> => string(),
+%%   <<"awsAccountName">> => string(),
+%%   <<"supportedRegions">> => list(string())
+%% }
+-type account_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1761,6 +1869,10 @@
 %%   <<"value">> => [string()]
 %% }
 -type greater_than_or_equal_to_expression() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_pool_output() :: #{}
+-type delete_account_pool_output() :: #{}.
 
 
 %% Example:
@@ -2333,6 +2445,23 @@
 
 
 %% Example:
+%% update_account_pool_output() :: #{
+%%   <<"accountSource">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"description">> => string(),
+%%   <<"domainId">> => string(),
+%%   <<"domainUnitId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"resolutionStrategy">> => list(any()),
+%%   <<"updatedBy">> => string()
+%% }
+-type update_account_pool_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% reject_rule() :: #{
 %%   <<"rule">> => list(any()),
 %%   <<"threshold">> => [float()]
@@ -2556,6 +2685,10 @@
 %%   <<"revision">> => string()
 %% }
 -type create_form_type_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_pool_input() :: #{}
+-type get_account_pool_input() :: #{}.
 
 
 %% Example:
@@ -3217,6 +3350,14 @@
 %%   <<"revision">> => string()
 %% }
 -type listing_revision_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_account_pool_handler() :: #{
+%%   <<"lambdaExecutionRoleArn">> => string(),
+%%   <<"lambdaFunctionArn">> => string()
+%% }
+-type custom_account_pool_handler() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4311,6 +4452,10 @@
 %% delete_environment_blueprint_configuration_output() :: #{}
 -type delete_environment_blueprint_configuration_output() :: #{}.
 
+%% Example:
+%% delete_account_pool_input() :: #{}
+-type delete_account_pool_input() :: #{}.
+
 
 %% Example:
 %% search_group_profiles_input() :: #{
@@ -4499,6 +4644,14 @@
 
 
 %% Example:
+%% list_account_pools_output() :: #{
+%%   <<"items">> => list(account_pool_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_account_pools_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% username_password() :: #{
 %%   <<"password">> => string(),
 %%   <<"username">> => string()
@@ -4664,6 +4817,16 @@
 
 
 %% Example:
+%% update_account_pool_input() :: #{
+%%   <<"accountSource">> => list(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"resolutionStrategy">> => list(any())
+%% }
+-type update_account_pool_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_listing_change_set_input() :: #{
 %%   <<"action">> := list(any()),
 %%   <<"clientToken">> => string(),
@@ -4801,6 +4964,16 @@
 %% Example:
 %% delete_asset_type_input() :: #{}
 -type delete_asset_type_input() :: #{}.
+
+
+%% Example:
+%% create_account_pool_input() :: #{
+%%   <<"accountSource">> := list(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"resolutionStrategy">> := list(any())
+%% }
+-type create_account_pool_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5093,6 +5266,7 @@
 
 %% Example:
 %% environment_configuration() :: #{
+%%   <<"accountPools">> => list(string()),
 %%   <<"awsAccount">> => list(),
 %%   <<"awsRegion">> => list(),
 %%   <<"configurationParameters">> => environment_configuration_parameters_details(),
@@ -6045,6 +6219,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_account_pool_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_asset_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -6259,6 +6442,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type delete_account_pool_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_asset_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -6450,6 +6640,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type get_account_pool_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type get_asset_errors() ::
     throttling_exception() | 
@@ -6687,6 +6884,19 @@
     resource_not_found_exception().
 
 -type get_user_profile_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_account_pools_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_accounts_in_account_pool_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -7021,6 +7231,15 @@
 -type untag_resource_errors() ::
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type update_account_pool_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_asset_filter_errors() ::
     throttling_exception() | 
@@ -7398,6 +7617,40 @@ cancel_subscription(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/subscriptions/", aws_util:encode_uri(Identifier), "/cancel"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an account pool.
+-spec create_account_pool(aws_client:aws_client(), binary() | list(), create_account_pool_input()) ->
+    {ok, create_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, create_account_pool_errors(), tuple()}.
+create_account_pool(Client, DomainIdentifier, Input) ->
+    create_account_pool(Client, DomainIdentifier, Input, []).
+
+-spec create_account_pool(aws_client:aws_client(), binary() | list(), create_account_pool_input(), proplists:proplist()) ->
+    {ok, create_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, create_account_pool_errors(), tuple()}.
+create_account_pool(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/account-pools"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -8321,6 +8574,40 @@ create_user_profile(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an account pool.
+-spec delete_account_pool(aws_client:aws_client(), binary() | list(), binary() | list(), delete_account_pool_input()) ->
+    {ok, delete_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, delete_account_pool_errors(), tuple()}.
+delete_account_pool(Client, DomainIdentifier, Identifier, Input) ->
+    delete_account_pool(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_account_pool(aws_client:aws_client(), binary() | list(), binary() | list(), delete_account_pool_input(), proplists:proplist()) ->
+    {ok, delete_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, delete_account_pool_errors(), tuple()}.
+delete_account_pool(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/account-pools/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an asset in Amazon DataZone.
 -spec delete_asset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_asset_input()) ->
     {ok, delete_asset_output(), tuple()} |
@@ -9196,6 +9483,43 @@ disassociate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, E
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the details of the account pool.
+-spec get_account_pool(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, get_account_pool_errors(), tuple()}.
+get_account_pool(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_account_pool(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_account_pool(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, get_account_pool_errors(), tuple()}.
+get_account_pool(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account_pool(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_account_pool(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, get_account_pool_errors(), tuple()}.
+get_account_pool(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/account-pools/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an Amazon DataZone asset.
 -spec get_asset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -10528,6 +10852,93 @@ get_user_profile(Client, DomainIdentifier, UserIdentifier, QueryMap, HeadersMap,
     Query0_ =
       [
         {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists existing account pools.
+-spec list_account_pools(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_account_pools_output(), tuple()} |
+    {error, any()} |
+    {error, list_account_pools_errors(), tuple()}.
+list_account_pools(Client, DomainIdentifier)
+  when is_map(Client) ->
+    list_account_pools(Client, DomainIdentifier, #{}, #{}).
+
+-spec list_account_pools(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_account_pools_output(), tuple()} |
+    {error, any()} |
+    {error, list_account_pools_errors(), tuple()}.
+list_account_pools(Client, DomainIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_account_pools(Client, DomainIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_account_pools(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_account_pools_output(), tuple()} |
+    {error, any()} |
+    {error, list_account_pools_errors(), tuple()}.
+list_account_pools(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/account-pools"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
+        {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the accounts in the specified account pool.
+-spec list_accounts_in_account_pool(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_accounts_in_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_in_account_pool_errors(), tuple()}.
+list_accounts_in_account_pool(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    list_accounts_in_account_pool(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec list_accounts_in_account_pool(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_accounts_in_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_in_account_pool_errors(), tuple()}.
+list_accounts_in_account_pool(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_accounts_in_account_pool(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec list_accounts_in_account_pool(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_accounts_in_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, list_accounts_in_account_pool_errors(), tuple()}.
+list_accounts_in_account_pool(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/account-pools/", aws_util:encode_uri(Identifier), "/accounts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -12521,6 +12932,40 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the account pool.
+-spec update_account_pool(aws_client:aws_client(), binary() | list(), binary() | list(), update_account_pool_input()) ->
+    {ok, update_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, update_account_pool_errors(), tuple()}.
+update_account_pool(Client, DomainIdentifier, Identifier, Input) ->
+    update_account_pool(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_account_pool(aws_client:aws_client(), binary() | list(), binary() | list(), update_account_pool_input(), proplists:proplist()) ->
+    {ok, update_account_pool_output(), tuple()} |
+    {error, any()} |
+    {error, update_account_pool_errors(), tuple()}.
+update_account_pool(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/account-pools/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an asset filter.

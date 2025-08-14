@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This guide provides documents the action and response elements for
-%% customer use of the service.
+%% @doc This guide documents the action and response elements for use of the
+%% service.
 -module(aws_security_ir).
 
 -export([batch_get_member_account_details/3,
@@ -74,6 +74,7 @@
 %%   <<"accountId">> => string(),
 %%   <<"customerType">> => list(any()),
 %%   <<"incidentResponseTeam">> => list(incident_responder()),
+%%   <<"membershipAccountsConfigurations">> => membership_accounts_configurations(),
 %%   <<"membershipActivationTimestamp">> => [non_neg_integer()],
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipDeactivationTimestamp">> => [non_neg_integer()],
@@ -180,6 +181,14 @@
 %%   <<"name">> => string()
 %% }
 -type incident_responder() :: #{binary() => any()}.
+
+
+%% Example:
+%% membership_accounts_configurations() :: #{
+%%   <<"coverEntireOrganization">> => [boolean()],
+%%   <<"organizationalUnits">> => list(string())
+%% }
+-type membership_accounts_configurations() :: #{binary() => any()}.
 
 
 %% Example:
@@ -307,6 +316,15 @@
 
 
 %% Example:
+%% membership_accounts_configurations_update() :: #{
+%%   <<"coverEntireOrganization">> => [boolean()],
+%%   <<"organizationalUnitsToAdd">> => list(string()),
+%%   <<"organizationalUnitsToRemove">> => list(string())
+%% }
+-type membership_accounts_configurations_update() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_case_attachment_upload_url_request() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"contentLength">> := float(),
@@ -409,8 +427,10 @@
 %% Example:
 %% update_membership_request() :: #{
 %%   <<"incidentResponseTeam">> => list(incident_responder()),
+%%   <<"membershipAccountsConfigurationsUpdate">> => membership_accounts_configurations_update(),
 %%   <<"membershipName">> => string(),
-%%   <<"optInFeatures">> => list(opt_in_feature())
+%%   <<"optInFeatures">> => list(opt_in_feature()),
+%%   <<"undoMembershipCancellation">> => [boolean()]
 %% }
 -type update_membership_request() :: #{binary() => any()}.
 
@@ -563,6 +583,7 @@
 %% Example:
 %% create_membership_request() :: #{
 %%   <<"clientToken">> => [string()],
+%%   <<"coverEntireOrganization">> => [boolean()],
 %%   <<"incidentResponseTeam">> := list(incident_responder()),
 %%   <<"membershipName">> := string(),
 %%   <<"optInFeatures">> => list(opt_in_feature()),
@@ -635,7 +656,13 @@
 %% API
 %%====================================================================
 
-%% @doc Grants permission to view an existing membership.
+%% @doc Provides information on whether the supplied account IDs are
+%% associated with a membership.
+%%
+%% AWS account ID's may appear less than 12 characters and need to be
+%% zero-prepended. An example would be `123123123' which is nine digits,
+%% and with zero-prepend would be `000123123123'. Not zero-prepending to
+%% 12 digits could result in errors.
 -spec batch_get_member_account_details(aws_client:aws_client(), binary() | list(), batch_get_member_account_details_request()) ->
     {ok, batch_get_member_account_details_response(), tuple()} |
     {error, any()}.
@@ -667,7 +694,7 @@ batch_get_member_account_details(Client, MembershipId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permissions to cancel an existing membership.
+%% @doc Cancels an existing membership.
 -spec cancel_membership(aws_client:aws_client(), binary() | list(), cancel_membership_request()) ->
     {ok, cancel_membership_response(), tuple()} |
     {error, any()}.
@@ -699,7 +726,7 @@ cancel_membership(Client, MembershipId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to close an existing case.
+%% @doc Closes an existing case.
 -spec close_case(aws_client:aws_client(), binary() | list(), close_case_request()) ->
     {ok, close_case_response(), tuple()} |
     {error, any()}.
@@ -731,7 +758,7 @@ close_case(Client, CaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to create a new case.
+%% @doc Creates a new case.
 -spec create_case(aws_client:aws_client(), create_case_request()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()}.
@@ -763,7 +790,7 @@ create_case(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to add a comment to an existing case.
+%% @doc Adds a comment to an existing case.
 -spec create_case_comment(aws_client:aws_client(), binary() | list(), create_case_comment_request()) ->
     {ok, create_case_comment_response(), tuple()} |
     {error, any()}.
@@ -795,7 +822,7 @@ create_case_comment(Client, CaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permissions to create a new membership.
+%% @doc Creates a new membership.
 -spec create_membership(aws_client:aws_client(), create_membership_request()) ->
     {ok, create_membership_response(), tuple()} |
     {error, any()}.
@@ -827,7 +854,7 @@ create_membership(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grant permission to view a designated case.
+%% @doc Returns the attributes of a case.
 -spec get_case(aws_client:aws_client(), binary() | list()) ->
     {ok, get_case_response(), tuple()} |
     {error, any()}.
@@ -861,8 +888,7 @@ get_case(Client, CaseId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Grants permission to obtain an Amazon S3 presigned URL to download an
-%% attachment.
+%% @doc Returns a Pre-Signed URL for uploading attachments into a case.
 -spec get_case_attachment_download_url(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_case_attachment_download_url_response(), tuple()} |
     {error, any()}.
@@ -896,7 +922,7 @@ get_case_attachment_download_url(Client, AttachmentId, CaseId, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Grants permission to upload an attachment to a case.
+%% @doc Uploads an attachment to a case.
 -spec get_case_attachment_upload_url(aws_client:aws_client(), binary() | list(), get_case_attachment_upload_url_request()) ->
     {ok, get_case_attachment_upload_url_response(), tuple()} |
     {error, any()}.
@@ -928,7 +954,7 @@ get_case_attachment_upload_url(Client, CaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to get details of a designated service membership.
+%% @doc Returns the attributes of a membership.
 -spec get_membership(aws_client:aws_client(), binary() | list()) ->
     {ok, get_membership_response(), tuple()} |
     {error, any()}.
@@ -962,8 +988,7 @@ get_membership(Client, MembershipId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Grants permissions to view the aidt log for edits made to a
-%% designated case.
+%% @doc Views the case history for edits made to a designated case.
 -spec list_case_edits(aws_client:aws_client(), binary() | list(), list_case_edits_request()) ->
     {ok, list_case_edits_response(), tuple()} |
     {error, any()}.
@@ -995,7 +1020,7 @@ list_case_edits(Client, CaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to list all cases the requester has access to.
+%% @doc Lists all cases the requester has access to.
 -spec list_cases(aws_client:aws_client(), list_cases_request()) ->
     {ok, list_cases_response(), tuple()} |
     {error, any()}.
@@ -1027,7 +1052,7 @@ list_cases(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permissions to list and view comments for a designated case.
+%% @doc Returns comments for a designated case.
 -spec list_comments(aws_client:aws_client(), binary() | list(), list_comments_request()) ->
     {ok, list_comments_response(), tuple()} |
     {error, any()}.
@@ -1059,7 +1084,7 @@ list_comments(Client, CaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to query the memberships a principal has access to.
+%% @doc Returns the memberships that the calling principal can access.
 -spec list_memberships(aws_client:aws_client(), list_memberships_request()) ->
     {ok, list_memberships_response(), tuple()} |
     {error, any()}.
@@ -1091,7 +1116,7 @@ list_memberships(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to view currently configured tags on a resource.
+%% @doc Returns currently configured tags on a resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
@@ -1128,7 +1153,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Grants permission to add a tag(s) to a designated resource.
+%% @doc Adds a tag(s) to a designated resource.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, tag_resource_output(), tuple()} |
     {error, any()} |
@@ -1162,7 +1187,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to remove a tag(s) from a designate resource.
+%% @doc Removes a tag(s) from a designate resource.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_input()) ->
     {ok, untag_resource_output(), tuple()} |
     {error, any()} |
@@ -1197,7 +1222,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to update an existing case.
+%% @doc Updates an existing case.
 -spec update_case(aws_client:aws_client(), binary() | list(), update_case_request()) ->
     {ok, update_case_response(), tuple()} |
     {error, any()}.
@@ -1229,7 +1254,7 @@ update_case(Client, CaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to update an existing case comment.
+%% @doc Updates an existing case comment.
 -spec update_case_comment(aws_client:aws_client(), binary() | list(), binary() | list(), update_case_comment_request()) ->
     {ok, update_case_comment_response(), tuple()} |
     {error, any()}.
@@ -1261,10 +1286,27 @@ update_case_comment(Client, CaseId, CommentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to update the status for a designated cases.
+%% @doc Updates the state transitions for a designated cases.
 %%
-%% Options include `Submitted | Detection and Analysis | Eradication,
-%% Containment and Recovery | Post-Incident Activities | Closed'.
+%% Self-managed: the following states are available for self-managed cases.
+%%
+%% Submitted → Detection and Analysis
+%%
+%% Detection and Analysis → Containment, Eradication, and Recovery
+%%
+%% Detection and Analysis → Post-incident Activities
+%%
+%% Containment, Eradication, and Recovery → Detection and Analysis
+%%
+%% Containment, Eradication, and Recovery → Post-incident Activities
+%%
+%% Post-incident Activities → Containment, Eradication, and Recovery
+%%
+%% Post-incident Activities → Detection and Analysis
+%%
+%% Any → Closed
+%%
+%% AWS supported: You must use the `CloseCase' API to close.
 -spec update_case_status(aws_client:aws_client(), binary() | list(), update_case_status_request()) ->
     {ok, update_case_status_response(), tuple()} |
     {error, any()}.
@@ -1296,7 +1338,7 @@ update_case_status(Client, CaseId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants access to UpdateMembership to change membership configuration.
+%% @doc Updates membership configuration.
 -spec update_membership(aws_client:aws_client(), binary() | list(), update_membership_request()) ->
     {ok, update_membership_response(), tuple()} |
     {error, any()}.
@@ -1328,11 +1370,9 @@ update_membership(Client, MembershipId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to update the resolver type for a case.
+%% @doc Updates the resolver type for a case.
 %%
 %% This is a one-way action and cannot be reversed.
-%%
-%% Options include self-supported &gt; AWS-supported.
 -spec update_resolver_type(aws_client:aws_client(), binary() | list(), update_resolver_type_request()) ->
     {ok, update_resolver_type_response(), tuple()} |
     {error, any()}.
