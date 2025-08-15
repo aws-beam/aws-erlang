@@ -231,7 +231,9 @@
 
 %% Example:
 %% describe_lags_request() :: #{
-%%   <<"lagId">> => string()
+%%   <<"lagId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
 -type describe_lags_request() :: #{binary() => any()}.
 
@@ -246,6 +248,7 @@
 %%   <<"addressFamily">> => list(any()),
 %%   <<"amazonAddress">> => string(),
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"directConnectGatewayId">> => string(),
@@ -287,6 +290,7 @@
 %%   <<"addressFamily">> => list(any()),
 %%   <<"amazonAddress">> => string(),
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"mtu">> => integer(),
@@ -373,7 +377,9 @@
 
 %% Example:
 %% describe_hosted_connections_request() :: #{
-%%   <<"connectionId">> := string()
+%%   <<"connectionId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
 -type describe_hosted_connections_request() :: #{binary() => any()}.
 
@@ -393,7 +399,9 @@
 
 %% Example:
 %% describe_connections_request() :: #{
-%%   <<"connectionId">> => string()
+%%   <<"connectionId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
 -type describe_connections_request() :: #{binary() => any()}.
 
@@ -402,6 +410,7 @@
 %%   <<"addressFamily">> => list(any()),
 %%   <<"amazonAddress">> => string(),
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"awsDeviceV2">> => string(),
 %%   <<"awsLogicalDeviceId">> => string(),
@@ -522,6 +531,7 @@
 
 %% Example:
 %% virtual_interfaces() :: #{
+%%   <<"nextToken">> => string(),
 %%   <<"virtualInterfaces">> => list(virtual_interface())
 %% }
 -type virtual_interfaces() :: #{binary() => any()}.
@@ -538,6 +548,7 @@
 %%   <<"addressFamily">> => list(any()),
 %%   <<"amazonAddress">> => string(),
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"mtu">> => integer(),
@@ -550,6 +561,7 @@
 %% Example:
 %% delete_bgp_peer_request() :: #{
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"bgpPeerId">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"virtualInterfaceId">> => string()
@@ -680,6 +692,7 @@
 %%   <<"addressFamily">> => list(any()),
 %%   <<"amazonAddress">> => string(),
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
@@ -782,13 +795,16 @@
 %% Example:
 %% describe_virtual_interfaces_request() :: #{
 %%   <<"connectionId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
 %%   <<"virtualInterfaceId">> => string()
 %% }
 -type describe_virtual_interfaces_request() :: #{binary() => any()}.
 
 %% Example:
 %% connections() :: #{
-%%   <<"connections">> => list(connection())
+%%   <<"connections">> => list(connection()),
+%%   <<"nextToken">> => string()
 %% }
 -type connections() :: #{binary() => any()}.
 
@@ -828,6 +844,7 @@
 %%   <<"addressFamily">> => list(any()),
 %%   <<"amazonAddress">> => string(),
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"directConnectGatewayId">> => string(),
@@ -858,6 +875,7 @@
 %%   <<"amazonAddress">> => string(),
 %%   <<"amazonSideAsn">> => float(),
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"awsDeviceV2">> => string(),
 %%   <<"awsLogicalDeviceId">> => string(),
@@ -963,7 +981,9 @@
 
 %% Example:
 %% describe_interconnects_request() :: #{
-%%   <<"interconnectId">> => string()
+%%   <<"interconnectId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
 %% }
 -type describe_interconnects_request() :: #{binary() => any()}.
 
@@ -997,7 +1017,8 @@
 
 %% Example:
 %% interconnects() :: #{
-%%   <<"interconnects">> => list(interconnect())
+%%   <<"interconnects">> => list(interconnect()),
+%%   <<"nextToken">> => string()
 %% }
 -type interconnects() :: #{binary() => any()}.
 
@@ -1174,7 +1195,8 @@
 
 %% Example:
 %% lags() :: #{
-%%   <<"lags">> => list(lag())
+%%   <<"lags">> => list(lag()),
+%%   <<"nextToken">> => string()
 %% }
 -type lags() :: #{binary() => any()}.
 
@@ -1254,6 +1276,7 @@
 %%   <<"addressFamily">> => list(any()),
 %%   <<"amazonAddress">> => string(),
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string(),
 %%   <<"routeFilterPrefixes">> => list(route_filter_prefix()),
@@ -1268,6 +1291,7 @@
 %%   <<"addressFamily">> => list(any()),
 %%   <<"amazonAddress">> => string(),
 %%   <<"asn">> => integer(),
+%%   <<"asnLong">> => float(),
 %%   <<"authKey">> => string(),
 %%   <<"customerAddress">> => string()
 %% }
@@ -2899,6 +2923,13 @@ describe_virtual_gateways(Client, Input, Options)
 %%
 %% A virtual interface (VLAN) transmits the traffic between the Direct
 %% Connect location and the customer network.
+%%
+%% If you're using an `asn', the response includes ASN value in both
+%% the `asn' and `asnLong' fields.
+%%
+%% If you're using `asnLong', the response returns a value of `0'
+%% (zero) for the `asn' attribute because it exceeds the highest ASN
+%% value of 2,147,483,647 that it can support
 -spec describe_virtual_interfaces(aws_client:aws_client(), describe_virtual_interfaces_request()) ->
     {ok, virtual_interfaces(), tuple()} |
     {error, any()} |

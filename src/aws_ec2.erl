@@ -1125,6 +1125,8 @@
          modify_instance_attribute/3,
          modify_instance_capacity_reservation_attributes/2,
          modify_instance_capacity_reservation_attributes/3,
+         modify_instance_connect_endpoint/2,
+         modify_instance_connect_endpoint/3,
          modify_instance_cpu_options/2,
          modify_instance_cpu_options/3,
          modify_instance_credit_specification/2,
@@ -11044,6 +11046,13 @@
 -type modify_vpc_attribute_request() :: #{binary() => any()}.
 
 %% Example:
+%% instance_connect_endpoint_dns_names() :: #{
+%%   <<"DnsName">> => string(),
+%%   <<"FipsDnsName">> => string()
+%% }
+-type instance_connect_endpoint_dns_names() :: #{binary() => any()}.
+
+%% Example:
 %% network_insights_path() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"Destination">> => string(),
@@ -17443,6 +17452,16 @@
 -type describe_prefix_lists_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_instance_connect_endpoint_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceConnectEndpointId">> := string(),
+%%   <<"IpAddressType">> => list(any()),
+%%   <<"PreserveClientIp">> => boolean(),
+%%   <<"SecurityGroupIds">> => list(string())
+%% }
+-type modify_instance_connect_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
 %% client_certificate_revocation_list_status() :: #{
 %%   <<"Code">> => list(any()),
 %%   <<"Message">> => string()
@@ -18227,6 +18246,12 @@
 -type transit_gateway_request_options() :: #{binary() => any()}.
 
 %% Example:
+%% modify_instance_connect_endpoint_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type modify_instance_connect_endpoint_result() :: #{binary() => any()}.
+
+%% Example:
 %% client_vpn_connection() :: #{
 %%   <<"ClientIp">> => string(),
 %%   <<"ClientVpnEndpointId">> => string(),
@@ -18583,6 +18608,13 @@
 %%   <<"UserTrustProviderType">> => list(any())
 %% }
 -type create_verified_access_trust_provider_request() :: #{binary() => any()}.
+
+%% Example:
+%% instance_connect_endpoint_public_dns_names() :: #{
+%%   <<"Dualstack">> => instance_connect_endpoint_dns_names(),
+%%   <<"Ipv4">> => instance_connect_endpoint_dns_names()
+%% }
+-type instance_connect_endpoint_public_dns_names() :: #{binary() => any()}.
 
 %% Example:
 %% address() :: #{
@@ -20127,6 +20159,7 @@
 %%   <<"NetworkInterfaceIds">> => list(string()),
 %%   <<"OwnerId">> => string(),
 %%   <<"PreserveClientIp">> => boolean(),
+%%   <<"PublicDnsNames">> => instance_connect_endpoint_public_dns_names(),
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"State">> => list(any()),
 %%   <<"StateMessage">> => string(),
@@ -34015,6 +34048,27 @@ modify_instance_capacity_reservation_attributes(Client, Input)
 modify_instance_capacity_reservation_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyInstanceCapacityReservationAttributes">>, Input, Options).
+
+%% @doc Modifies the specified EC2 Instance Connect Endpoint.
+%%
+%% For more information, see Modify an
+%% EC2 Instance Connect Endpoint:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/modify-ec2-instance-connect-endpoint.html
+%% in the
+%% Amazon EC2 User Guide.
+-spec modify_instance_connect_endpoint(aws_client:aws_client(), modify_instance_connect_endpoint_request()) ->
+    {ok, modify_instance_connect_endpoint_result(), tuple()} |
+    {error, any()}.
+modify_instance_connect_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_instance_connect_endpoint(Client, Input, []).
+
+-spec modify_instance_connect_endpoint(aws_client:aws_client(), modify_instance_connect_endpoint_request(), proplists:proplist()) ->
+    {ok, modify_instance_connect_endpoint_result(), tuple()} |
+    {error, any()}.
+modify_instance_connect_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyInstanceConnectEndpoint">>, Input, Options).
 
 %% @doc By default, all vCPUs for the instance type are active when you
 %% launch an instance.

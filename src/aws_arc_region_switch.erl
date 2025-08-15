@@ -13,6 +13,10 @@
 %% Region switch provides a structured approach to multi-Region failover,
 %% helping you to meet your recovery time objectives (RTOs) and maintain
 %% business continuity during regional disruptions.
+%%
+%% For more information, see Region switch in ARC:
+%% https://docs.aws.amazon.com/r53recovery/latest/dg/region-switch.html in
+%% the Amazon Application Recovery Controller User Guide.
 -module(aws_arc_region_switch).
 
 -export([approve_plan_execution_step/2,

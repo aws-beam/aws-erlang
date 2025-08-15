@@ -111,6 +111,8 @@
          describe_connection_alias_permissions/3,
          describe_connection_aliases/2,
          describe_connection_aliases/3,
+         describe_custom_workspace_image_import/2,
+         describe_custom_workspace_image_import/3,
          describe_image_associations/2,
          describe_image_associations/3,
          describe_ip_groups/2,
@@ -147,6 +149,8 @@
          get_account_link/3,
          import_client_branding/2,
          import_client_branding/3,
+         import_custom_workspace_image/2,
+         import_custom_workspace_image/3,
          import_workspace_image/2,
          import_workspace_image/3,
          list_account_links/2,
@@ -1013,6 +1017,13 @@
 -type import_workspace_image_result() :: #{binary() => any()}.
 
 %% Example:
+%% import_custom_workspace_image_result() :: #{
+%%   <<"ImageId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type import_custom_workspace_image_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_workspaces_pool_result() :: #{
 %%   <<"WorkspacesPool">> => workspaces_pool()
 %% }
@@ -1023,6 +1034,13 @@
 %%   <<"TerminateWorkspaceRequests">> := list(terminate_request())
 %% }
 -type terminate_workspaces_request() :: #{binary() => any()}.
+
+%% Example:
+%% custom_workspace_image_import_error_details() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string()
+%% }
+-type custom_workspace_image_import_error_details() :: #{binary() => any()}.
 
 %% Example:
 %% update_rules_of_ip_group_request() :: #{
@@ -1040,7 +1058,7 @@
 
 %% Example:
 %% modify_account_result() :: #{
-
+%%   <<"Message">> => string()
 %% }
 -type modify_account_result() :: #{binary() => any()}.
 
@@ -1080,6 +1098,12 @@
 %%   <<"ImageId">> => string()
 %% }
 -type update_workspace_bundle_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_workspace_image_import_request() :: #{
+%%   <<"ImageId">> := string()
+%% }
+-type describe_custom_workspace_image_import_request() :: #{binary() => any()}.
 
 %% Example:
 %% account_link() :: #{
@@ -1425,6 +1449,20 @@
 %%   <<"StateReason">> => association_state_reason()
 %% }
 -type application_resource_association() :: #{binary() => any()}.
+
+%% Example:
+%% import_custom_workspace_image_request() :: #{
+%%   <<"ComputeType">> := list(any()),
+%%   <<"ImageDescription">> := string(),
+%%   <<"ImageName">> := string(),
+%%   <<"ImageSource">> := list(),
+%%   <<"InfrastructureConfigurationArn">> := string(),
+%%   <<"OsVersion">> := list(any()),
+%%   <<"Platform">> := list(any()),
+%%   <<"Protocol">> := list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type import_custom_workspace_image_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_workspaces_pool_sessions_request() :: #{
@@ -1881,7 +1919,8 @@
 %% describe_account_result() :: #{
 %%   <<"DedicatedTenancyAccountType">> => list(any()),
 %%   <<"DedicatedTenancyManagementCidrRange">> => string(),
-%%   <<"DedicatedTenancySupport">> => list(any())
+%%   <<"DedicatedTenancySupport">> => list(any()),
+%%   <<"Message">> => string()
 %% }
 -type describe_account_result() :: #{binary() => any()}.
 
@@ -1965,6 +2004,19 @@
 
 %% }
 -type incompatible_applications_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_custom_workspace_image_import_result() :: #{
+%%   <<"Created">> => non_neg_integer(),
+%%   <<"ErrorDetails">> => list(custom_workspace_image_import_error_details()),
+%%   <<"ImageBuilderInstanceId">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"ImageSource">> => list(),
+%%   <<"InfrastructureConfigurationArn">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type describe_custom_workspace_image_import_result() :: #{binary() => any()}.
 
 %% Example:
 %% terminate_request() :: #{
@@ -2587,6 +2639,10 @@
     access_denied_exception() | 
     invalid_parameter_values_exception().
 
+-type describe_custom_workspace_image_import_errors() ::
+    access_denied_exception() | 
+    resource_not_found_exception().
+
 -type describe_image_associations_errors() ::
     operation_not_supported_exception() | 
     access_denied_exception() | 
@@ -2670,6 +2726,14 @@
     resource_not_found_exception().
 
 -type import_client_branding_errors() ::
+    access_denied_exception() | 
+    invalid_parameter_values_exception() | 
+    resource_limit_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type import_custom_workspace_image_errors() ::
+    operation_not_supported_exception() | 
+    resource_already_exists_exception() | 
     access_denied_exception() | 
     invalid_parameter_values_exception() | 
     resource_limit_exceeded_exception() | 
@@ -3740,6 +3804,24 @@ describe_connection_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnectionAliases">>, Input, Options).
 
+%% @doc Retrieves information about a WorkSpace BYOL image being imported via
+%% ImportCustomWorkspaceImage.
+-spec describe_custom_workspace_image_import(aws_client:aws_client(), describe_custom_workspace_image_import_request()) ->
+    {ok, describe_custom_workspace_image_import_result(), tuple()} |
+    {error, any()} |
+    {error, describe_custom_workspace_image_import_errors(), tuple()}.
+describe_custom_workspace_image_import(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_custom_workspace_image_import(Client, Input, []).
+
+-spec describe_custom_workspace_image_import(aws_client:aws_client(), describe_custom_workspace_image_import_request(), proplists:proplist()) ->
+    {ok, describe_custom_workspace_image_import_result(), tuple()} |
+    {error, any()} |
+    {error, describe_custom_workspace_image_import_errors(), tuple()}.
+describe_custom_workspace_image_import(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCustomWorkspaceImageImport">>, Input, Options).
+
 %% @doc Describes the associations between the applications and the specified
 %% image.
 -spec describe_image_associations(aws_client:aws_client(), describe_image_associations_request()) ->
@@ -4101,6 +4183,31 @@ import_client_branding(Client, Input)
 import_client_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportClientBranding">>, Input, Options).
+
+%% @doc Imports the specified Windows 10 or 11 Bring Your Own License (BYOL)
+%% image into Amazon WorkSpaces using EC2 Image Builder.
+%%
+%% The image must be an already licensed image that is
+%% in your Amazon Web Services account, and you must own the image. For more
+%% information about
+%% creating BYOL images, see Bring Your Own Windows
+%% Desktop Licenses:
+%% https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html.
+-spec import_custom_workspace_image(aws_client:aws_client(), import_custom_workspace_image_request()) ->
+    {ok, import_custom_workspace_image_result(), tuple()} |
+    {error, any()} |
+    {error, import_custom_workspace_image_errors(), tuple()}.
+import_custom_workspace_image(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_custom_workspace_image(Client, Input, []).
+
+-spec import_custom_workspace_image(aws_client:aws_client(), import_custom_workspace_image_request(), proplists:proplist()) ->
+    {ok, import_custom_workspace_image_result(), tuple()} |
+    {error, any()} |
+    {error, import_custom_workspace_image_errors(), tuple()}.
+import_custom_workspace_image(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportCustomWorkspaceImage">>, Input, Options).
 
 %% @doc Imports the specified Windows 10 or 11 Bring Your Own License (BYOL)
 %% image into Amazon WorkSpaces.

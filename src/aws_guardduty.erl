@@ -61,8 +61,12 @@
          create_publishing_destination/4,
          create_sample_findings/3,
          create_sample_findings/4,
+         create_threat_entity_set/3,
+         create_threat_entity_set/4,
          create_threat_intel_set/3,
          create_threat_intel_set/4,
+         create_trusted_entity_set/3,
+         create_trusted_entity_set/4,
          decline_invitations/2,
          decline_invitations/3,
          delete_detector/3,
@@ -79,8 +83,12 @@
          delete_members/4,
          delete_publishing_destination/4,
          delete_publishing_destination/5,
+         delete_threat_entity_set/4,
+         delete_threat_entity_set/5,
          delete_threat_intel_set/4,
          delete_threat_intel_set/5,
+         delete_trusted_entity_set/4,
+         delete_trusted_entity_set/5,
          describe_malware_scans/3,
          describe_malware_scans/4,
          describe_organization_configuration/2,
@@ -138,9 +146,15 @@
          get_organization_statistics/4,
          get_remaining_free_trial_days/3,
          get_remaining_free_trial_days/4,
+         get_threat_entity_set/3,
+         get_threat_entity_set/5,
+         get_threat_entity_set/6,
          get_threat_intel_set/3,
          get_threat_intel_set/5,
          get_threat_intel_set/6,
+         get_trusted_entity_set/3,
+         get_trusted_entity_set/5,
+         get_trusted_entity_set/6,
          get_usage_statistics/3,
          get_usage_statistics/4,
          invite_members/3,
@@ -176,9 +190,15 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_threat_entity_sets/2,
+         list_threat_entity_sets/4,
+         list_threat_entity_sets/5,
          list_threat_intel_sets/2,
          list_threat_intel_sets/4,
          list_threat_intel_sets/5,
+         list_trusted_entity_sets/2,
+         list_trusted_entity_sets/4,
+         list_trusted_entity_sets/5,
          start_malware_scan/2,
          start_malware_scan/3,
          start_monitoring_members/3,
@@ -209,8 +229,12 @@
          update_organization_configuration/4,
          update_publishing_destination/4,
          update_publishing_destination/5,
+         update_threat_entity_set/4,
+         update_threat_entity_set/5,
          update_threat_intel_set/4,
-         update_threat_intel_set/5]).
+         update_threat_intel_set/5,
+         update_trusted_entity_set/4,
+         update_trusted_entity_set/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -421,6 +445,16 @@
 
 
 %% Example:
+%% update_trusted_entity_set_request() :: #{
+%%   <<"Activate">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_trusted_entity_set_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_malware_protection_plan_response() :: #{
 %%   <<"Actions">> => malware_protection_plan_actions(),
 %%   <<"Arn">> => string(),
@@ -570,6 +604,21 @@
 %%   <<"Enable">> => boolean()
 %% }
 -type kubernetes_audit_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_threat_entity_set_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ErrorDetails">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_threat_entity_set_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -775,6 +824,10 @@
 %% }
 -type rds_db_user_details() :: #{binary() => any()}.
 
+%% Example:
+%% delete_threat_entity_set_request() :: #{}
+-type delete_threat_entity_set_request() :: #{}.
+
 
 %% Example:
 %% scan_ec2_instance_with_findings() :: #{
@@ -923,6 +976,10 @@
 -type remote_port_details() :: #{binary() => any()}.
 
 %% Example:
+%% delete_trusted_entity_set_request() :: #{}
+-type delete_trusted_entity_set_request() :: #{}.
+
+%% Example:
 %% update_ip_set_response() :: #{}
 -type update_ip_set_response() :: #{}.
 
@@ -1038,12 +1095,29 @@
 
 
 %% Example:
+%% create_trusted_entity_set_request() :: #{
+%%   <<"Activate">> := boolean(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> := list(any()),
+%%   <<"Location">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_trusted_entity_set_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_publishing_destination_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DestinationProperties">> := destination_properties(),
 %%   <<"DestinationType">> := list(any())
 %% }
 -type create_publishing_destination_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_trusted_entity_set_request() :: #{}
+-type get_trusted_entity_set_request() :: #{}.
 
 
 %% Example:
@@ -1160,6 +1234,19 @@
 
 
 %% Example:
+%% create_threat_entity_set_request() :: #{
+%%   <<"Activate">> := boolean(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> := list(any()),
+%%   <<"Location">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_threat_entity_set_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% invite_members_request() :: #{
 %%   <<"AccountIds">> := list(string()),
 %%   <<"DisableEmailNotification">> => boolean(),
@@ -1218,6 +1305,20 @@
 %% }
 -type kubernetes_audit_logs_configuration_result() :: #{binary() => any()}.
 
+%% Example:
+%% update_trusted_entity_set_response() :: #{}
+-type update_trusted_entity_set_response() :: #{}.
+
+
+%% Example:
+%% update_threat_entity_set_request() :: #{
+%%   <<"Activate">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_threat_entity_set_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% list_threat_intel_sets_response() :: #{
@@ -1232,6 +1333,14 @@
 %%   <<"Text">> => list(string())
 %% }
 -type observations() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trusted_entity_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrustedEntitySetIds">> => list(string())
+%% }
+-type list_trusted_entity_sets_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1530,6 +1639,10 @@
 %% }
 -type create_detector_request() :: #{binary() => any()}.
 
+%% Example:
+%% update_threat_entity_set_response() :: #{}
+-type update_threat_entity_set_response() :: #{}.
+
 
 %% Example:
 %% remote_account_details() :: #{
@@ -1544,6 +1657,13 @@
 %%   <<"AccountIds">> := list(string())
 %% }
 -type disassociate_members_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_trusted_entity_set_response() :: #{
+%%   <<"TrustedEntitySetId">> => string()
+%% }
+-type create_trusted_entity_set_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1563,6 +1683,14 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_threat_intel_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_threat_entity_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_threat_entity_sets_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1741,6 +1869,14 @@
 %% }
 -type create_publishing_destination_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_threat_entity_sets_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ThreatEntitySetIds">> => list(string())
+%% }
+-type list_threat_entity_sets_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_detector_response() :: #{}
 -type delete_detector_response() :: #{}.
@@ -1916,6 +2052,13 @@
 %% Example:
 %% delete_filter_response() :: #{}
 -type delete_filter_response() :: #{}.
+
+
+%% Example:
+%% create_threat_entity_set_response() :: #{
+%%   <<"ThreatEntitySetId">> => string()
+%% }
+-type create_threat_entity_set_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2171,6 +2314,21 @@
 
 
 %% Example:
+%% get_trusted_entity_set_response() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ErrorDetails">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"Format">> => list(any()),
+%%   <<"Location">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_trusted_entity_set_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% kubernetes_workload() :: #{
 %%   <<"ContainerUids">> => list(string()),
 %%   <<"KubernetesResourcesTypes">> => list(any()),
@@ -2371,6 +2529,10 @@
 %%   <<"User">> => string()
 %% }
 -type login_attribute() :: #{binary() => any()}.
+
+%% Example:
+%% delete_threat_entity_set_response() :: #{}
+-type delete_threat_entity_set_response() :: #{}.
 
 
 %% Example:
@@ -2979,6 +3141,14 @@
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_trusted_entity_sets_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_trusted_entity_sets_request() :: #{binary() => any()}.
+
 %% Example:
 %% get_malware_scan_settings_request() :: #{}
 -type get_malware_scan_settings_request() :: #{}.
@@ -3102,6 +3272,10 @@
 %%   <<"Name">> => list(any())
 %% }
 -type organization_feature_statistics_additional_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_trusted_entity_set_response() :: #{}
+-type delete_trusted_entity_set_response() :: #{}.
 
 
 %% Example:
@@ -3297,6 +3471,10 @@
 %% }
 -type s3_object_detail() :: #{binary() => any()}.
 
+%% Example:
+%% get_threat_entity_set_request() :: #{}
+-type get_threat_entity_set_request() :: #{}.
+
 
 %% Example:
 %% access_key_details() :: #{
@@ -3462,10 +3640,18 @@
     bad_request_exception() | 
     internal_server_error_exception().
 
+-type create_threat_entity_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
 -type create_threat_intel_set_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     access_denied_exception().
+
+-type create_trusted_entity_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
 
 -type decline_invitations_errors() ::
     bad_request_exception() | 
@@ -3501,7 +3687,15 @@
     bad_request_exception() | 
     internal_server_error_exception().
 
+-type delete_threat_entity_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
 -type delete_threat_intel_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type delete_trusted_entity_set_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
 
@@ -3599,7 +3793,15 @@
     bad_request_exception() | 
     internal_server_error_exception().
 
+-type get_threat_entity_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
 -type get_threat_intel_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type get_trusted_entity_set_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
 
@@ -3657,7 +3859,15 @@
     internal_server_error_exception() | 
     access_denied_exception().
 
+-type list_threat_entity_sets_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
 -type list_threat_intel_sets_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
+-type list_trusted_entity_sets_errors() ::
     bad_request_exception() | 
     internal_server_error_exception().
 
@@ -3727,10 +3937,18 @@
     bad_request_exception() | 
     internal_server_error_exception().
 
+-type update_threat_entity_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
+
 -type update_threat_intel_set_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     access_denied_exception().
+
+-type update_trusted_entity_set_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception().
 
 %%====================================================================
 %% API
@@ -4187,6 +4405,48 @@ create_sample_findings(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new threat entity set.
+%%
+%% In a threat entity set, you can provide known malicious
+%% IP addresses and domains for your Amazon Web Services environment.
+%% GuardDuty generates findings based on the entries in the threat entity
+%% sets.
+%% Only users of the administrator account can manage entity sets, which
+%% automatically apply
+%% to member accounts.
+-spec create_threat_entity_set(aws_client:aws_client(), binary() | list(), create_threat_entity_set_request()) ->
+    {ok, create_threat_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_threat_entity_set_errors(), tuple()}.
+create_threat_entity_set(Client, DetectorId, Input) ->
+    create_threat_entity_set(Client, DetectorId, Input, []).
+
+-spec create_threat_entity_set(aws_client:aws_client(), binary() | list(), create_threat_entity_set_request(), proplists:proplist()) ->
+    {ok, create_threat_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_threat_entity_set_errors(), tuple()}.
+create_threat_entity_set(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatentityset"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new ThreatIntelSet.
 %%
 %% ThreatIntelSets consist of known malicious IP addresses.
@@ -4207,6 +4467,51 @@ create_threat_intel_set(Client, DetectorId, Input) ->
 create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new trusted entity set.
+%%
+%% In the trusted entity set, you can provide IP addresses
+%% and domains that you believe are secure for communication in your Amazon
+%% Web Services environment. GuardDuty
+%% will not generate findings for the entries that are specified in a trusted
+%% entity set. At any
+%% given time, you can have only one trusted entity set.
+%%
+%% Only users of the administrator account can manage the entity sets, which
+%% automatically
+%% apply to member accounts.
+-spec create_trusted_entity_set(aws_client:aws_client(), binary() | list(), create_trusted_entity_set_request()) ->
+    {ok, create_trusted_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_trusted_entity_set_errors(), tuple()}.
+create_trusted_entity_set(Client, DetectorId, Input) ->
+    create_trusted_entity_set(Client, DetectorId, Input, []).
+
+-spec create_trusted_entity_set(aws_client:aws_client(), binary() | list(), create_trusted_entity_set_request(), proplists:proplist()) ->
+    {ok, create_trusted_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_trusted_entity_set_errors(), tuple()}.
+create_trusted_entity_set(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/trustedentityset"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4520,6 +4825,41 @@ delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the threat entity set that is associated with the specified
+%% `threatEntitySetId'.
+-spec delete_threat_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_threat_entity_set_request()) ->
+    {ok, delete_threat_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_threat_entity_set_errors(), tuple()}.
+delete_threat_entity_set(Client, DetectorId, ThreatEntitySetId, Input) ->
+    delete_threat_entity_set(Client, DetectorId, ThreatEntitySetId, Input, []).
+
+-spec delete_threat_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_threat_entity_set_request(), proplists:proplist()) ->
+    {ok, delete_threat_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_threat_entity_set_errors(), tuple()}.
+delete_threat_entity_set(Client, DetectorId, ThreatEntitySetId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatentityset/", aws_util:encode_uri(ThreatEntitySetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
 -spec delete_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_threat_intel_set_request()) ->
     {ok, delete_threat_intel_set_response(), tuple()} |
@@ -4535,6 +4875,41 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
 delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the trusted entity set that is associated with the specified
+%% `trustedEntitySetId'.
+-spec delete_trusted_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_trusted_entity_set_request()) ->
+    {ok, delete_trusted_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trusted_entity_set_errors(), tuple()}.
+delete_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, Input) ->
+    delete_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, Input, []).
+
+-spec delete_trusted_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), delete_trusted_entity_set_request(), proplists:proplist()) ->
+    {ok, delete_trusted_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_trusted_entity_set_errors(), tuple()}.
+delete_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/trustedentityset/", aws_util:encode_uri(TrustedEntitySetId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5553,6 +5928,44 @@ get_remaining_free_trial_days(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the threat entity set associated with the specified
+%% `threatEntitySetId'.
+-spec get_threat_entity_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_threat_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_threat_entity_set_errors(), tuple()}.
+get_threat_entity_set(Client, DetectorId, ThreatEntitySetId)
+  when is_map(Client) ->
+    get_threat_entity_set(Client, DetectorId, ThreatEntitySetId, #{}, #{}).
+
+-spec get_threat_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_threat_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_threat_entity_set_errors(), tuple()}.
+get_threat_entity_set(Client, DetectorId, ThreatEntitySetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_threat_entity_set(Client, DetectorId, ThreatEntitySetId, QueryMap, HeadersMap, []).
+
+-spec get_threat_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_threat_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_threat_entity_set_errors(), tuple()}.
+get_threat_entity_set(Client, DetectorId, ThreatEntitySetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatentityset/", aws_util:encode_uri(ThreatEntitySetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
 %% ID.
 -spec get_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -5578,6 +5991,44 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap)
 get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the trusted entity set associated with the specified
+%% `trustedEntitySetId'.
+-spec get_trusted_entity_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_trusted_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_entity_set_errors(), tuple()}.
+get_trusted_entity_set(Client, DetectorId, TrustedEntitySetId)
+  when is_map(Client) ->
+    get_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, #{}, #{}).
+
+-spec get_trusted_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_trusted_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_entity_set_errors(), tuple()}.
+get_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, QueryMap, HeadersMap, []).
+
+-spec get_trusted_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_trusted_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_entity_set_errors(), tuple()}.
+get_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/trustedentityset/", aws_util:encode_uri(TrustedEntitySetId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6203,6 +6654,54 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the threat entity sets associated with the specified GuardDuty
+%% detector ID.
+%%
+%% If you use this
+%% operation from a member account, the threat entity sets that are returned
+%% as a response, belong to the
+%% administrator account.
+-spec list_threat_entity_sets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_threat_entity_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_threat_entity_sets_errors(), tuple()}.
+list_threat_entity_sets(Client, DetectorId)
+  when is_map(Client) ->
+    list_threat_entity_sets(Client, DetectorId, #{}, #{}).
+
+-spec list_threat_entity_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_threat_entity_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_threat_entity_sets_errors(), tuple()}.
+list_threat_entity_sets(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_threat_entity_sets(Client, DetectorId, QueryMap, HeadersMap, []).
+
+-spec list_threat_entity_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_threat_entity_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_threat_entity_sets_errors(), tuple()}.
+list_threat_entity_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatentityset"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the ThreatIntelSets of the GuardDuty service specified by the
 %% detector ID.
 %%
@@ -6233,6 +6732,54 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap)
 list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the trusted entity sets associated with the specified GuardDuty
+%% detector ID.
+%%
+%% If you use this
+%% operation from a member account, the trusted entity sets that are returned
+%% as a response, belong to the
+%% administrator account.
+-spec list_trusted_entity_sets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_trusted_entity_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_trusted_entity_sets_errors(), tuple()}.
+list_trusted_entity_sets(Client, DetectorId)
+  when is_map(Client) ->
+    list_trusted_entity_sets(Client, DetectorId, #{}, #{}).
+
+-spec list_trusted_entity_sets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_trusted_entity_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_trusted_entity_sets_errors(), tuple()}.
+list_trusted_entity_sets(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_trusted_entity_sets(Client, DetectorId, QueryMap, HeadersMap, []).
+
+-spec list_trusted_entity_sets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_trusted_entity_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_trusted_entity_sets_errors(), tuple()}.
+list_trusted_entity_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/trustedentityset"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6842,6 +7389,41 @@ update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the threat entity set associated with the specified
+%% `threatEntitySetId'.
+-spec update_threat_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_threat_entity_set_request()) ->
+    {ok, update_threat_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_threat_entity_set_errors(), tuple()}.
+update_threat_entity_set(Client, DetectorId, ThreatEntitySetId, Input) ->
+    update_threat_entity_set(Client, DetectorId, ThreatEntitySetId, Input, []).
+
+-spec update_threat_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_threat_entity_set_request(), proplists:proplist()) ->
+    {ok, update_threat_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_threat_entity_set_errors(), tuple()}.
+update_threat_entity_set(Client, DetectorId, ThreatEntitySetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatentityset/", aws_util:encode_uri(ThreatEntitySetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
 -spec update_threat_intel_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_threat_intel_set_request()) ->
     {ok, update_threat_intel_set_response(), tuple()} |
@@ -6857,6 +7439,41 @@ update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
 update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the trusted entity set associated with the specified
+%% `trustedEntitySetId'.
+-spec update_trusted_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_trusted_entity_set_request()) ->
+    {ok, update_trusted_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_trusted_entity_set_errors(), tuple()}.
+update_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, Input) ->
+    update_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, Input, []).
+
+-spec update_trusted_entity_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_trusted_entity_set_request(), proplists:proplist()) ->
+    {ok, update_trusted_entity_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_trusted_entity_set_errors(), tuple()}.
+update_trusted_entity_set(Client, DetectorId, TrustedEntitySetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/trustedentityset/", aws_util:encode_uri(TrustedEntitySetId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

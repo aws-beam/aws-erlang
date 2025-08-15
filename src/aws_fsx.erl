@@ -577,6 +577,7 @@
 %% administrative_action() :: #{
 %%   <<"AdministrativeActionType">> => list(any()),
 %%   <<"FailureDetails">> => administrative_action_failure_details(),
+%%   <<"Message">> => string(),
 %%   <<"ProgressPercent">> => integer(),
 %%   <<"RemainingTransferBytes">> => float(),
 %%   <<"RequestTime">> => non_neg_integer(),

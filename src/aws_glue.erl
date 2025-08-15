@@ -72,6 +72,8 @@
          create_database/3,
          create_dev_endpoint/2,
          create_dev_endpoint/3,
+         create_glue_identity_center_configuration/2,
+         create_glue_identity_center_configuration/3,
          create_integration/2,
          create_integration/3,
          create_integration_resource_property/2,
@@ -132,6 +134,8 @@
          delete_database/3,
          delete_dev_endpoint/2,
          delete_dev_endpoint/3,
+         delete_glue_identity_center_configuration/2,
+         delete_glue_identity_center_configuration/3,
          delete_integration/2,
          delete_integration/3,
          delete_integration_table_properties/2,
@@ -242,6 +246,8 @@
          get_dev_endpoints/3,
          get_entity_records/2,
          get_entity_records/3,
+         get_glue_identity_center_configuration/2,
+         get_glue_identity_center_configuration/3,
          get_integration_resource_property/2,
          get_integration_resource_property/3,
          get_integration_table_properties/2,
@@ -482,6 +488,8 @@
          update_database/3,
          update_dev_endpoint/2,
          update_dev_endpoint/3,
+         update_glue_identity_center_configuration/2,
+         update_glue_identity_center_configuration/3,
          update_integration_resource_property/2,
          update_integration_resource_property/3,
          update_integration_table_properties/2,
@@ -2205,6 +2213,12 @@
 -type iceberg_sort_order() :: #{binary() => any()}.
 
 %% Example:
+%% delete_glue_identity_center_configuration_request() :: #{
+
+%% }
+-type delete_glue_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_x_ml_classifier_request() :: #{
 %%   <<"Classification">> => string(),
 %%   <<"Name">> => string(),
@@ -3226,6 +3240,14 @@
 
 %% }
 -type update_column_statistics_task_settings_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_glue_identity_center_configuration_response() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"InstanceArn">> => string(),
+%%   <<"Scopes">> => list(string())
+%% }
+-type get_glue_identity_center_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% resource_number_limit_exceeded_exception() :: #{
@@ -4309,6 +4331,12 @@
 %%   <<"VersionNumber">> => float()
 %% }
 -type schema_version_error_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_glue_identity_center_configuration_request() :: #{
+
+%% }
+-type get_glue_identity_center_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_crawler_schedule_response() :: #{
@@ -6359,6 +6387,12 @@
 -type update_integration_resource_property_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_glue_identity_center_configuration_request() :: #{
+%%   <<"Scopes">> => list(string())
+%% }
+-type update_glue_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_registries_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Registries">> => list(registry_list_item())
@@ -6521,6 +6555,12 @@
 %%   <<"Message">> => string()
 %% }
 -type crawler_stopping_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_glue_identity_center_configuration_response() :: #{
+
+%% }
+-type delete_glue_identity_center_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_crawler_schedule_response() :: #{
@@ -7829,6 +7869,12 @@
 -type o_auth2_properties_input() :: #{binary() => any()}.
 
 %% Example:
+%% create_glue_identity_center_configuration_response() :: #{
+%%   <<"ApplicationArn">> => string()
+%% }
+-type create_glue_identity_center_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% authentication_configuration() :: #{
 %%   <<"AuthenticationType">> => list(any()),
 %%   <<"OAuth2Properties">> => o_auth2_properties(),
@@ -8468,6 +8514,12 @@
 -type auto_data_quality() :: #{binary() => any()}.
 
 %% Example:
+%% update_glue_identity_center_configuration_response() :: #{
+
+%% }
+-type update_glue_identity_center_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% evaluation_metrics() :: #{
 %%   <<"FindMatchesMetrics">> => find_matches_metrics(),
 %%   <<"TransformType">> => list(any())
@@ -8822,6 +8874,13 @@
 -type task_run() :: #{binary() => any()}.
 
 %% Example:
+%% create_glue_identity_center_configuration_request() :: #{
+%%   <<"InstanceArn">> := string(),
+%%   <<"Scopes">> => list(string())
+%% }
+-type create_glue_identity_center_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% get_column_statistics_task_settings_response() :: #{
 %%   <<"ColumnStatisticsTaskSettings">> => column_statistics_task_settings()
 %% }
@@ -9131,6 +9190,14 @@
     already_exists_exception() | 
     operation_timeout_exception().
 
+-type create_glue_identity_center_configuration_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    already_exists_exception() | 
+    operation_timeout_exception().
+
 -type create_integration_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -9367,6 +9434,14 @@
     entity_not_found_exception().
 
 -type delete_dev_endpoint_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type delete_glue_identity_center_configuration_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
     operation_timeout_exception() | 
@@ -9726,6 +9801,14 @@
     access_denied_exception() | 
     federation_source_exception() | 
     invalid_input_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
+-type get_glue_identity_center_configuration_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
 
@@ -10536,6 +10619,14 @@
     operation_timeout_exception() | 
     entity_not_found_exception().
 
+-type update_glue_identity_center_configuration_errors() ::
+    concurrent_modification_exception() | 
+    access_denied_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    operation_timeout_exception() | 
+    entity_not_found_exception().
+
 -type update_integration_resource_property_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -11302,6 +11393,25 @@ create_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDevEndpoint">>, Input, Options).
 
+%% @doc Creates a new Glue Identity Center configuration to enable
+%% integration between Glue and Amazon Web Services IAM
+%% Identity Center for authentication and authorization.
+-spec create_glue_identity_center_configuration(aws_client:aws_client(), create_glue_identity_center_configuration_request()) ->
+    {ok, create_glue_identity_center_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_glue_identity_center_configuration_errors(), tuple()}.
+create_glue_identity_center_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_glue_identity_center_configuration(Client, Input, []).
+
+-spec create_glue_identity_center_configuration(aws_client:aws_client(), create_glue_identity_center_configuration_request(), proplists:proplist()) ->
+    {ok, create_glue_identity_center_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_glue_identity_center_configuration_errors(), tuple()}.
+create_glue_identity_center_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGlueIdentityCenterConfiguration">>, Input, Options).
+
 %% @doc Creates a Zero-ETL integration in the caller's account between
 %% two resources with Amazon Resource Names (ARNs): the `SourceArn' and
 %% `TargetArn'.
@@ -11909,6 +12019,25 @@ delete_dev_endpoint(Client, Input)
 delete_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDevEndpoint">>, Input, Options).
+
+%% @doc Deletes the existing Glue Identity Center configuration, removing the
+%% integration between Glue and
+%% Amazon Web Services IAM Identity Center.
+-spec delete_glue_identity_center_configuration(aws_client:aws_client(), delete_glue_identity_center_configuration_request()) ->
+    {ok, delete_glue_identity_center_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_glue_identity_center_configuration_errors(), tuple()}.
+delete_glue_identity_center_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_glue_identity_center_configuration(Client, Input, []).
+
+-spec delete_glue_identity_center_configuration(aws_client:aws_client(), delete_glue_identity_center_configuration_request(), proplists:proplist()) ->
+    {ok, delete_glue_identity_center_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_glue_identity_center_configuration_errors(), tuple()}.
+delete_glue_identity_center_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGlueIdentityCenterConfiguration">>, Input, Options).
 
 %% @doc Deletes the specified Zero-ETL integration.
 -spec delete_integration(aws_client:aws_client(), delete_integration_request()) ->
@@ -12951,6 +13080,25 @@ get_entity_records(Client, Input)
 get_entity_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEntityRecords">>, Input, Options).
+
+%% @doc Retrieves the current Glue Identity Center configuration details,
+%% including the associated Identity Center instance and
+%% application information.
+-spec get_glue_identity_center_configuration(aws_client:aws_client(), get_glue_identity_center_configuration_request()) ->
+    {ok, get_glue_identity_center_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_glue_identity_center_configuration_errors(), tuple()}.
+get_glue_identity_center_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_glue_identity_center_configuration(Client, Input, []).
+
+-spec get_glue_identity_center_configuration(aws_client:aws_client(), get_glue_identity_center_configuration_request(), proplists:proplist()) ->
+    {ok, get_glue_identity_center_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_glue_identity_center_configuration_errors(), tuple()}.
+get_glue_identity_center_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetGlueIdentityCenterConfiguration">>, Input, Options).
 
 %% @doc This API is used for fetching the `ResourceProperty' of the Glue
 %% connection (for the source) or Glue database ARN (for the target)
@@ -15379,6 +15527,24 @@ update_dev_endpoint(Client, Input)
 update_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDevEndpoint">>, Input, Options).
+
+%% @doc Updates the existing Glue Identity Center configuration, allowing
+%% modification of scopes and permissions for the integration.
+-spec update_glue_identity_center_configuration(aws_client:aws_client(), update_glue_identity_center_configuration_request()) ->
+    {ok, update_glue_identity_center_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_glue_identity_center_configuration_errors(), tuple()}.
+update_glue_identity_center_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_glue_identity_center_configuration(Client, Input, []).
+
+-spec update_glue_identity_center_configuration(aws_client:aws_client(), update_glue_identity_center_configuration_request(), proplists:proplist()) ->
+    {ok, update_glue_identity_center_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_glue_identity_center_configuration_errors(), tuple()}.
+update_glue_identity_center_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGlueIdentityCenterConfiguration">>, Input, Options).
 
 %% @doc This API can be used for updating the `ResourceProperty' of the
 %% Glue connection (for the source) or Glue database ARN (for the target).

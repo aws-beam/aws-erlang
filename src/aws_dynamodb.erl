@@ -638,6 +638,7 @@
 
 %% Example:
 %% update_contributor_insights_output() :: #{
+%%   <<"ContributorInsightsMode">> => list(any()),
 %%   <<"ContributorInsightsStatus">> => list(any()),
 %%   <<"IndexName">> => string(),
 %%   <<"TableName">> => string()
@@ -923,6 +924,7 @@
 
 %% Example:
 %% provisioned_throughput_exceeded_exception() :: #{
+%%   <<"ThrottlingReasons">> => list(throttling_reason()),
 %%   <<"message">> => string()
 %% }
 -type provisioned_throughput_exceeded_exception() :: #{binary() => any()}.
@@ -977,6 +979,7 @@
 
 %% Example:
 %% describe_contributor_insights_output() :: #{
+%%   <<"ContributorInsightsMode">> => list(any()),
 %%   <<"ContributorInsightsRuleList">> => list(string()),
 %%   <<"ContributorInsightsStatus">> => list(any()),
 %%   <<"FailureException">> => failure_exception(),
@@ -1773,6 +1776,7 @@
 
 %% Example:
 %% request_limit_exceeded() :: #{
+%%   <<"ThrottlingReasons">> => list(throttling_reason()),
 %%   <<"message">> => string()
 %% }
 -type request_limit_exceeded() :: #{binary() => any()}.
@@ -1866,6 +1870,13 @@
 -type delete_replication_group_member_action() :: #{binary() => any()}.
 
 %% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"throttlingReasons">> => list(throttling_reason())
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
 %% replication_group_update() :: #{
 %%   <<"Create">> => create_replication_group_member_action(),
 %%   <<"Delete">> => delete_replication_group_member_action(),
@@ -1929,6 +1940,7 @@
 
 %% Example:
 %% contributor_insights_summary() :: #{
+%%   <<"ContributorInsightsMode">> => list(any()),
 %%   <<"ContributorInsightsStatus">> => list(any()),
 %%   <<"IndexName">> => string(),
 %%   <<"TableName">> => string()
@@ -2081,6 +2093,13 @@
 -type index_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% throttling_reason() :: #{
+%%   <<"reason">> => string(),
+%%   <<"resource">> => string()
+%% }
+-type throttling_reason() :: #{binary() => any()}.
+
+%% Example:
 %% update_table_input() :: #{
 %%   <<"AttributeDefinitions">> => list(attribute_definition()),
 %%   <<"BillingMode">> => list(any()),
@@ -2168,6 +2187,7 @@
 %% Example:
 %% update_contributor_insights_input() :: #{
 %%   <<"ContributorInsightsAction">> := list(any()),
+%%   <<"ContributorInsightsMode">> => list(any()),
 %%   <<"IndexName">> => string(),
 %%   <<"TableName">> := string()
 %% }
@@ -2266,10 +2286,12 @@
 -type condition_check() :: #{binary() => any()}.
 
 -type batch_execute_statement_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error().
 
 -type batch_get_item_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     resource_not_found_exception() | 
@@ -2277,6 +2299,7 @@
     invalid_endpoint_exception().
 
 -type batch_write_item_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     resource_not_found_exception() | 
@@ -2315,6 +2338,7 @@
     invalid_endpoint_exception().
 
 -type delete_item_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     conditional_check_failed_exception() | 
@@ -2410,6 +2434,7 @@
     resource_in_use_exception().
 
 -type execute_statement_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     conditional_check_failed_exception() | 
@@ -2421,6 +2446,7 @@
 
 -type execute_transaction_errors() ::
     transaction_in_progress_exception() | 
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
@@ -2437,6 +2463,7 @@
     point_in_time_recovery_unavailable_exception().
 
 -type get_item_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     resource_not_found_exception() | 
@@ -2483,6 +2510,7 @@
     invalid_endpoint_exception().
 
 -type put_item_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     conditional_check_failed_exception() | 
@@ -2502,6 +2530,7 @@
     resource_in_use_exception().
 
 -type query_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     resource_not_found_exception() | 
@@ -2528,6 +2557,7 @@
     table_already_exists_exception().
 
 -type scan_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     resource_not_found_exception() | 
@@ -2542,6 +2572,7 @@
     resource_in_use_exception().
 
 -type transact_get_items_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     resource_not_found_exception() | 
@@ -2551,6 +2582,7 @@
 
 -type transact_write_items_errors() ::
     transaction_in_progress_exception() | 
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     idempotent_parameter_mismatch_exception() | 
@@ -2594,6 +2626,7 @@
     resource_in_use_exception().
 
 -type update_item_errors() ::
+    throttling_exception() | 
     request_limit_exceeded() | 
     internal_server_error() | 
     conditional_check_failed_exception() | 

@@ -4341,6 +4341,7 @@
 
 %% Example:
 %% cmaf_ingest_group_settings() :: #{
+%%   <<"AdditionalDestinations">> => list(additional_destinations()),
 %%   <<"CaptionLanguageMappings">> => list(cmaf_ingest_caption_language_mapping()),
 %%   <<"Destination">> => output_location_ref(),
 %%   <<"Id3Behavior">> => list(any()),
@@ -4936,6 +4937,13 @@
 %%   <<"SampleRate">> => float()
 %% }
 -type wav_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_destinations() :: #{
+%%   <<"Destination">> => output_location_ref()
+%% }
+-type additional_destinations() :: #{binary() => any()}.
 
 
 %% Example:
