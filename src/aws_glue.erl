@@ -617,6 +617,7 @@
 
 %% Example:
 %% integration_config() :: #{
+%%   <<"ContinuousSync">> => boolean(),
 %%   <<"RefreshInterval">> => string(),
 %%   <<"SourceProperties">> => map()
 %% }
@@ -1646,6 +1647,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Errors">> => list(integration_error()),
 %%   <<"IntegrationArn">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
 %%   <<"IntegrationName">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"SourceArn">> => string(),
@@ -3007,6 +3009,7 @@
 %% modify_integration_request() :: #{
 %%   <<"DataFilter">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"IntegrationConfig">> => integration_config(),
 %%   <<"IntegrationIdentifier">> := string(),
 %%   <<"IntegrationName">> => string()
 %% }

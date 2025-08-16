@@ -45,6 +45,8 @@
          delete_logging_configuration/4,
          delete_query_logging_configuration/3,
          delete_query_logging_configuration/4,
+         delete_resource_policy/3,
+         delete_resource_policy/4,
          delete_rule_groups_namespace/4,
          delete_rule_groups_namespace/5,
          delete_scraper/3,
@@ -60,6 +62,9 @@
          describe_query_logging_configuration/2,
          describe_query_logging_configuration/4,
          describe_query_logging_configuration/5,
+         describe_resource_policy/2,
+         describe_resource_policy/4,
+         describe_resource_policy/5,
          describe_rule_groups_namespace/3,
          describe_rule_groups_namespace/5,
          describe_rule_groups_namespace/6,
@@ -89,6 +94,8 @@
          list_workspaces/4,
          put_alert_manager_definition/3,
          put_alert_manager_definition/4,
+         put_resource_policy/3,
+         put_resource_policy/4,
          put_rule_groups_namespace/4,
          put_rule_groups_namespace/5,
          tag_resource/3,
@@ -609,6 +616,15 @@
 
 
 %% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"policyDocument">> := [string()],
+%%   <<"revisionId">> => [string()]
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% scraper_description() :: #{
 %%   <<"alias">> => string(),
 %%   <<"arn">> => string(),
@@ -726,6 +742,15 @@
 
 
 %% Example:
+%% describe_resource_policy_response() :: #{
+%%   <<"policyDocument">> => [string()],
+%%   <<"policyStatus">> => string(),
+%%   <<"revisionId">> => [string()]
+%% }
+-type describe_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% amp_configuration() :: #{
 %%   <<"workspaceArn">> => string()
 %% }
@@ -751,6 +776,14 @@
 %% }
 -type create_alert_manager_definition_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"policyStatus">> => string(),
+%%   <<"revisionId">> => [string()]
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_alert_manager_definition_request() :: #{}
 -type describe_alert_manager_definition_request() :: #{}.
@@ -772,6 +805,14 @@
 %% Example:
 %% describe_scraper_request() :: #{}
 -type describe_scraper_request() :: #{}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"revisionId">> => [string()]
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -835,6 +876,10 @@
 %%   <<"limits">> => limits_per_label_set_entry()
 %% }
 -type limits_per_label_set() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_policy_request() :: #{}
+-type describe_resource_policy_request() :: #{}.
 
 
 %% Example:
@@ -933,6 +978,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_rule_groups_namespace_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -971,6 +1024,13 @@
     resource_not_found_exception().
 
 -type describe_query_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_resource_policy_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -1041,6 +1101,14 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_resource_policy_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1475,6 +1543,43 @@ delete_query_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the resource-based policy attached to an Amazon Managed
+%% Service for Prometheus workspace.
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, WorkspaceId, Input) ->
+    delete_resource_policy(Client, WorkspaceId, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/policy"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>},
+                     {<<"revisionId">>, <<"revisionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes one rule groups namespace and its associated rule groups
 %% definition.
 -spec delete_rule_groups_namespace(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_groups_namespace_request()) ->
@@ -1688,6 +1793,44 @@ describe_query_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
 describe_query_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging/query"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about the resource-based policy attached to an
+%% Amazon Managed Service for Prometheus workspace.
+-spec describe_resource_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_policy_errors(), tuple()}.
+describe_resource_policy(Client, WorkspaceId)
+  when is_map(Client) ->
+    describe_resource_policy(Client, WorkspaceId, #{}, #{}).
+
+-spec describe_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_policy_errors(), tuple()}.
+describe_resource_policy(Client, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_resource_policy(Client, WorkspaceId, QueryMap, HeadersMap, []).
+
+-spec describe_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_policy_errors(), tuple()}.
+describe_resource_policy(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/policy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2092,6 +2235,64 @@ put_alert_manager_definition(Client, WorkspaceId, Input) ->
 put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates or updates a resource-based policy for an Amazon Managed
+%% Service for Prometheus workspace.
+%%
+%% Use resource-based policies to grant permissions to other AWS accounts or
+%% services to access your workspace.
+%%
+%% Only Prometheus-compatible APIs can be used for workspace sharing. You can
+%% add non-Prometheus-compatible APIs to the policy, but they will be
+%% ignored. For more information, see Prometheus-compatible APIs:
+%% https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-APIReference-Prometheus-Compatible-Apis.html
+%% in the Amazon Managed Service for Prometheus User Guide.
+%%
+%% If your workspace uses customer-managed KMS keys for encryption, you must
+%% grant the principals in your resource-based policy access to those KMS
+%% keys. You can do this by creating KMS grants. For more information, see
+%% CreateGrant:
+%% https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateGrant.html
+%% in the AWS Key Management Service API Reference and Encryption at rest:
+%% https://docs.aws.amazon.com/prometheus/latest/userguide/encryption-at-rest-Amazon-Service-Prometheus.html
+%% in the Amazon Managed Service for Prometheus User Guide.
+%%
+%% For more information about working with IAM, see Using Amazon Managed
+%% Service for Prometheus with IAM:
+%% https://docs.aws.amazon.com/prometheus/latest/userguide/security_iam_service-with-iam.html
+%% in the Amazon Managed Service for Prometheus User Guide.
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, WorkspaceId, Input) ->
+    put_resource_policy(Client, WorkspaceId, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, WorkspaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/policy"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
