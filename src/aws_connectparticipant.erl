@@ -58,6 +58,16 @@
 
 
 %% Example:
+%% meeting() :: #{
+%%   <<"MediaPlacement">> => media_placement(),
+%%   <<"MediaRegion">> => string(),
+%%   <<"MeetingFeatures">> => meeting_features_configuration(),
+%%   <<"MeetingId">> => string()
+%% }
+-type meeting() :: #{binary() => any()}.
+
+
+%% Example:
 %% cancel_participant_authentication_request() :: #{
 %%   <<"ConnectionToken">> := string(),
 %%   <<"SessionId">> := string()
@@ -208,6 +218,13 @@
 
 
 %% Example:
+%% audio_features() :: #{
+%%   <<"EchoReduction">> => list(any())
+%% }
+-type audio_features() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -288,6 +305,14 @@
 
 
 %% Example:
+%% connection_data() :: #{
+%%   <<"Attendee">> => attendee(),
+%%   <<"Meeting">> => meeting()
+%% }
+-type connection_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% connection_credentials() :: #{
 %%   <<"ConnectionToken">> => string(),
 %%   <<"Expiry">> => string()
@@ -325,6 +350,13 @@
 
 
 %% Example:
+%% meeting_features_configuration() :: #{
+%%   <<"Audio">> => audio_features()
+%% }
+-type meeting_features_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -356,6 +388,14 @@
 %% }
 -type send_message_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% attendee() :: #{
+%%   <<"AttendeeId">> => string(),
+%%   <<"JoinToken">> => string()
+%% }
+-type attendee() :: #{binary() => any()}.
+
 %% Example:
 %% cancel_participant_authentication_response() :: #{}
 -type cancel_participant_authentication_response() :: #{}.
@@ -379,8 +419,20 @@
 
 
 %% Example:
+%% media_placement() :: #{
+%%   <<"AudioFallbackUrl">> => string(),
+%%   <<"AudioHostUrl">> => string(),
+%%   <<"EventIngestionUrl">> => string(),
+%%   <<"SignalingUrl">> => string(),
+%%   <<"TurnControlUrl">> => string()
+%% }
+-type media_placement() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_participant_connection_response() :: #{
 %%   <<"ConnectionCredentials">> => connection_credentials(),
+%%   <<"WebRTCConnection">> => connection_data(),
 %%   <<"Websocket">> => websocket()
 %% }
 -type create_participant_connection_response() :: #{binary() => any()}.
@@ -467,6 +519,13 @@
 %%
 %% The current supported channel is chat. This API is not supported for Apple
 %% Messages for Business, WhatsApp, or SMS chats.
+%%
+%% `ConnectionToken' is used for invoking this API instead of
+%% `ParticipantToken'.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 -spec cancel_participant_authentication(aws_client:aws_client(), cancel_participant_authentication_request()) ->
     {ok, cancel_participant_authentication_response(), tuple()} |
     {error, any()} |
@@ -560,18 +619,27 @@ complete_attachment_upload(Client, Input0, Options0) ->
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
+%% For WebRTC security recommendations, see Amazon Connect WebRTC security
+%% best practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-webrtc-security.
+%%
 %% `ParticipantToken' is used for invoking this API instead of
 %% `ConnectionToken'.
 %%
 %% The participant token is valid for the lifetime of the participant – until
 %% they are
-%% part of a contact.
+%% part of a contact. For WebRTC participants, if they leave or are
+%% disconnected for 60
+%% seconds, a new participant needs to be created using the
+%% CreateParticipant:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateParticipant.html
+%% API.
 %%
-%% The response URL for `WEBSOCKET' Type has a connect expiry timeout of
-%% 100s.
-%% Clients must manually connect to the returned websocket URL and subscribe
-%% to the desired
-%% topic.
+%% For `WEBSOCKET' Type:
+%%
+%% The response URL for has a connect expiry timeout of 100s. Clients must
+%% manually
+%% connect to the returned websocket URL and subscribe to the desired topic.
 %%
 %% For chat, you need to publish the following on the established websocket
 %% connection:
@@ -583,6 +651,26 @@ complete_attachment_upload(Client, Input0, Options0) ->
 %% clients need to call this API again to obtain a new websocket URL and
 %% perform the same
 %% steps as before.
+%%
+%% The expiry time for the connection token is different than the
+%% `ChatDurationInMinutes'. Expiry time for the connection token is 1
+%% day.
+%%
+%% For `WEBRTC_CONNECTION' Type:
+%%
+%% The response includes connection data required for the client application
+%% to join the
+%% call using the Amazon Chime SDK client libraries. The WebRTCConnection
+%% response contains
+%% Meeting and Attendee information needed to establish the media connection.
+%%
+%% The attendee join token in WebRTCConnection response is valid for the
+%% lifetime of the
+%% participant in the call. If a participant leaves or is disconnected for 60
+%% seconds,
+%% their participant credentials will no longer be valid, and a new
+%% participant will need
+%% to be created to rejoin the call.
 %%
 %% Message streaming support: This API can also be used
 %% together with the StartContactStreaming:
@@ -596,10 +684,24 @@ complete_attachment_upload(Client, Input0, Options0) ->
 %% in the Amazon Connect Administrator
 %% Guide.
 %%
+%% Multi-user web, in-app, video calling support:
+%%
+%% For WebRTC calls, this API is used in conjunction with the
+%% CreateParticipant API to
+%% enable multi-party calling. The StartWebRTCContact API creates the initial
+%% contact and
+%% routes it to an agent, while CreateParticipant adds additional
+%% participants to the
+%% ongoing call. For more information about multi-party WebRTC calls, see
+%% Enable multi-user web, in-app, and video calling:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/enable-multiuser-inapp.html
+%% in the Amazon Connect
+%% Administrator Guide.
+%%
 %% Feature specifications: For information about feature
 %% specifications, such as the allowed number of open websocket connections
-%% per
-%% participant, see Feature specifications:
+%% per participant
+%% or maximum number of WebRTC participants, see Feature specifications:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#feature-limits
 %% in the Amazon Connect Administrator
 %% Guide.
@@ -743,6 +845,11 @@ disconnect_participant(Client, Input0, Options0) ->
 %% practices:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat.
 %%
+%% The participant role `CUSTOM_BOT' is not permitted to access
+%% attachments customers may upload. An `AccessDeniedException' can
+%% indicate that the participant may be a CUSTOM_BOT, and it doesn't have
+%% access to attachments.
+%%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
 %%
@@ -797,6 +904,13 @@ get_attachment(Client, Input0, Options0) ->
 %%
 %% The current supported channel is chat. This API is not supported for Apple
 %% Messages for Business, WhatsApp, or SMS chats.
+%%
+%% `ConnectionToken' is used for invoking this API instead of
+%% `ParticipantToken'.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html.
 -spec get_authentication_url(aws_client:aws_client(), get_authentication_url_request()) ->
     {ok, get_authentication_url_response(), tuple()} |
     {error, any()} |
@@ -851,9 +965,11 @@ get_authentication_url(Client, Input0, Options0) ->
 %% types if the event
 %% has occurred during the chat session:
 %%
-%% `application/vnd.amazonaws.connect.event.participant.left'
+%% `application/vnd.amazonaws.connect.event.participant.invited'
 %%
 %% `application/vnd.amazonaws.connect.event.participant.joined'
+%%
+%% `application/vnd.amazonaws.connect.event.participant.left'
 %%
 %% `application/vnd.amazonaws.connect.event.chat.ended'
 %%
@@ -904,10 +1020,10 @@ get_transcript(Client, Input0, Options0) ->
 
 %% @doc
 %% The `application/vnd.amazonaws.connect.event.connection.acknowledged'
-%% ContentType will no longer be supported starting December 31, 2024.
+%% ContentType is no longer maintained since December 31, 2024.
 %%
-%% This event has
-%% been migrated to the CreateParticipantConnection:
+%% This event has been
+%% migrated to the CreateParticipantConnection:
 %% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
 %% API using the
 %% `ConnectParticipant' field.

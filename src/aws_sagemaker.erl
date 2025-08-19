@@ -13011,6 +13011,8 @@
 
 %% Example:
 %% cluster_ebs_volume_config() :: #{
+%%   <<"RootVolume">> => boolean(),
+%%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VolumeSizeInGB">> => integer()
 %% }
 -type cluster_ebs_volume_config() :: #{binary() => any()}.

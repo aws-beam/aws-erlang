@@ -544,6 +544,7 @@
 %% job_report() :: #{
 %%   <<"Bucket">> => string(),
 %%   <<"Enabled">> => boolean(),
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"Format">> => list(any()),
 %%   <<"Prefix">> => string(),
 %%   <<"ReportScope">> => list(any())
@@ -945,6 +946,14 @@
 
 
 %% Example:
+%% s3_compute_object_checksum_operation() :: #{
+%%   <<"ChecksumAlgorithm">> => list(any()),
+%%   <<"ChecksumType">> => list(any())
+%% }
+-type s3_compute_object_checksum_operation() :: #{binary() => any()}.
+
+
+%% Example:
 %% proposed_multi_region_access_point_policy() :: #{
 %%   <<"Policy">> => string()
 %% }
@@ -1141,6 +1150,7 @@
 %% Example:
 %% job_operation() :: #{
 %%   <<"LambdaInvoke">> => lambda_invoke_operation(),
+%%   <<"S3ComputeObjectChecksum">> => s3_compute_object_checksum_operation(),
 %%   <<"S3DeleteObjectTagging">> => s3_delete_object_tagging_operation(),
 %%   <<"S3InitiateRestoreObject">> => s3_initiate_restore_object_operation(),
 %%   <<"S3PutObjectAcl">> => s3_set_object_acl_operation(),
@@ -2850,22 +2860,29 @@
 %% @doc Associate your S3 Access Grants instance with an Amazon Web Services
 %% IAM Identity Center instance.
 %%
-%% Use this action if you want to create access grants for users or groups
-%% from your corporate identity directory. First, you must add your corporate
-%% identity directory to Amazon Web Services IAM Identity Center. Then, you
-%% can associate this IAM Identity Center instance with your S3 Access Grants
+%% Use this
+%% action if you want to create access grants for users or groups from your
+%% corporate identity
+%% directory. First, you must add your corporate identity directory to Amazon
+%% Web Services IAM Identity
+%% Center. Then, you can associate this IAM Identity Center instance with
+%% your S3 Access Grants
 %% instance.
 %%
 %% Permissions
 %%
-%% You must have the `s3:AssociateAccessGrantsIdentityCenter' permission
-%% to use this operation.
+%% You must have the `s3:AssociateAccessGrantsIdentityCenter'
+%% permission to use this operation.
 %%
 %% Additional Permissions
 %%
-%% You must also have the following permissions: `sso:CreateApplication',
-%% `sso:PutApplicationGrant', and
+%% You must also have the following permissions:
+%% `sso:CreateApplication', `sso:PutApplicationGrant', and
 %% `sso:PutApplicationAuthenticationMethod'.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec associate_access_grants_identity_center(aws_client:aws_client(), associate_access_grants_identity_center_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -2901,13 +2918,16 @@ associate_access_grants_identity_center(Client, Input0, Options0) ->
 
 %% @doc Creates an access grant that gives a grantee access to your S3 data.
 %%
-%% The grantee can be an IAM user or role or a directory user, or group.
-%% Before you can create a grant, you must have an S3 Access Grants instance
-%% in the same Region as the S3 data. You can create an S3 Access Grants
+%% The grantee can be
+%% an IAM user or role or a directory user, or group. Before you can create a
+%% grant, you
+%% must have an S3 Access Grants instance in the same Region as the S3 data.
+%% You can create an S3 Access Grants
 %% instance using the CreateAccessGrantsInstance:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessGrantsInstance.html.
-%% You must also have registered at least one S3 data location in your S3
-%% Access Grants instance using CreateAccessGrantsLocation:
+%% You must also have registered at least one S3 data
+%% location in your S3 Access Grants instance using
+%% CreateAccessGrantsLocation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessGrantsLocation.html.
 %%
 %% Permissions
@@ -2923,6 +2943,10 @@ associate_access_grants_identity_center(Client, Input0, Options0) ->
 %% For directory users - `identitystore:DescribeUser'
 %%
 %% For directory groups - `identitystore:DescribeGroup'
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_access_grant(aws_client:aws_client(), create_access_grant_request()) ->
     {ok, create_access_grant_result(), tuple()} |
     {error, any()}.
@@ -2959,7 +2983,8 @@ create_access_grant(Client, Input0, Options0) ->
 %% @doc Creates an S3 Access Grants instance, which serves as a logical
 %% grouping for access grants.
 %%
-%% You can create one S3 Access Grants instance per Region per account.
+%% You
+%% can create one S3 Access Grants instance per Region per account.
 %%
 %% Permissions
 %%
@@ -2969,9 +2994,14 @@ create_access_grant(Client, Input0, Options0) ->
 %% Additional Permissions
 %%
 %% To associate an IAM Identity Center instance with your S3 Access Grants
-%% instance, you must also have the `sso:DescribeInstance',
+%% instance, you
+%% must also have the `sso:DescribeInstance',
 %% `sso:CreateApplication', `sso:PutApplicationGrant', and
 %% `sso:PutApplicationAuthenticationMethod' permissions.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_access_grants_instance(aws_client:aws_client(), create_access_grants_instance_request()) ->
     {ok, create_access_grants_instance_result(), tuple()} |
     {error, any()}.
@@ -3008,8 +3038,10 @@ create_access_grants_instance(Client, Input0, Options0) ->
 %% @doc The S3 data location that you would like to register in your S3
 %% Access Grants instance.
 %%
-%% Your S3 data must be in the same Region as your S3 Access Grants instance.
-%% The location can be one of the following:
+%% Your S3
+%% data must be in the same Region as your S3 Access Grants instance. The
+%% location can be one of the
+%% following:
 %%
 %% The default S3 location `s3://'
 %%
@@ -3018,11 +3050,13 @@ create_access_grants_instance(Client, Input0, Options0) ->
 %% A bucket and prefix - `S3:///'
 %%
 %% When you register a location, you must include the IAM role that has
-%% permission to manage the S3 location that you are registering. Give S3
-%% Access Grants permission to assume this role using a policy:
+%% permission to
+%% manage the S3 location that you are registering. Give S3 Access Grants
+%% permission to assume this role
+%% using a policy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-location.html.
-%% S3 Access Grants assumes this role to manage access to the location and to
-%% vend temporary credentials to grantees or client applications.
+%% S3 Access Grants assumes this role to manage access to the location and
+%% to vend temporary credentials to grantees or client applications.
 %%
 %% Permissions
 %%
@@ -3033,6 +3067,10 @@ create_access_grants_instance(Client, Input0, Options0) ->
 %%
 %% You must also have the following permission for the specified IAM role:
 %% `iam:PassRole'
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_access_grants_location(aws_client:aws_client(), create_access_grants_location_request()) ->
     {ok, create_access_grants_location_result(), tuple()} |
     {error, any()}.
@@ -3115,6 +3153,10 @@ create_access_grants_location(Client, Input0, Options0) ->
 %%
 %% ListAccessPointsForDirectoryBuckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForDirectoryBuckets.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_access_point(aws_client:aws_client(), binary() | list(), create_access_point_request()) ->
     {ok, create_access_point_result(), tuple()} |
     {error, any()}.
@@ -3168,6 +3210,10 @@ create_access_point(Client, Name, Input0, Options0) ->
 %%
 %% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), create_access_point_for_object_lambda_request()) ->
     {ok, create_access_point_for_object_lambda_result(), tuple()} |
     {error, any()}.
@@ -3331,10 +3377,11 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% Permissions
 %%
 %% For information about permissions required to use the Batch Operations,
-%% see Granting permissions for S3 Batch Operations:
+%% see Granting
+%% permissions for S3 Batch Operations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-iam-role-policies.html
-%% in the Amazon S3
-%% User Guide.
+%% in the Amazon S3 User
+%% Guide.
 %%
 %% Related actions include:
 %%
@@ -3352,6 +3399,10 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% JobOperation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_JobOperation.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_job(aws_client:aws_client(), create_job_request()) ->
     {ok, create_job_result(), tuple()} |
     {error, any()} |
@@ -3392,8 +3443,8 @@ create_job(Client, Input0, Options0) ->
 %%
 %% Creates a Multi-Region Access Point and associates it with the specified
 %% buckets. For more information
-%% about creating Multi-Region Access Points, see Creating Multi-Region
-%% Access Points:
+%% about creating Multi-Region Access Points, see Creating
+%% Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html
 %% in the Amazon S3 User Guide.
 %%
@@ -3425,6 +3476,10 @@ create_job(Client, Input0, Options0) ->
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_multi_region_access_point(aws_client:aws_client(), create_multi_region_access_point_request()) ->
     {ok, create_multi_region_access_point_result(), tuple()} |
     {error, any()}.
@@ -3487,6 +3542,10 @@ create_multi_region_access_point(Client, Input0, Options0) ->
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_storage_lens_group(aws_client:aws_client(), create_storage_lens_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -3522,13 +3581,17 @@ create_storage_lens_group(Client, Input0, Options0) ->
 
 %% @doc Deletes the access grant from the S3 Access Grants instance.
 %%
-%% You cannot undo an access grant deletion and the grantee will no longer
-%% have access to the S3 data.
+%% You cannot undo an access grant
+%% deletion and the grantee will no longer have access to the S3 data.
 %%
 %% Permissions
 %%
 %% You must have the `s3:DeleteAccessGrant' permission to use this
 %% operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_access_grant(aws_client:aws_client(), binary() | list(), delete_access_grant_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -3564,15 +3627,16 @@ delete_access_grant(Client, AccessGrantId, Input0, Options0) ->
 
 %% @doc Deletes your S3 Access Grants instance.
 %%
-%% You must first delete the access grants and locations before S3 Access
-%% Grants can delete the instance. See DeleteAccessGrant:
+%% You must first delete the access grants and locations
+%% before S3 Access Grants can delete the instance. See DeleteAccessGrant:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessGrant.html
 %% and DeleteAccessGrantsLocation:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessGrantsLocation.html.
-%% If you have associated an IAM Identity Center instance with your S3 Access
-%% Grants instance, you must first dissassociate the Identity Center instance
-%% from the S3 Access Grants instance before you can delete the S3 Access
-%% Grants instance. See AssociateAccessGrantsIdentityCenter:
+%% If you have associated an IAM Identity Center
+%% instance with your S3 Access Grants instance, you must first dissassociate
+%% the Identity Center
+%% instance from the S3 Access Grants instance before you can delete the S3
+%% Access Grants instance. See AssociateAccessGrantsIdentityCenter:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_AssociateAccessGrantsIdentityCenter.html
 %% and DissociateAccessGrantsIdentityCenter:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DissociateAccessGrantsIdentityCenter.html.
@@ -3581,6 +3645,10 @@ delete_access_grant(Client, AccessGrantId, Input0, Options0) ->
 %%
 %% You must have the `s3:DeleteAccessGrantsInstance' permission to use
 %% this operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_access_grants_instance(aws_client:aws_client(), delete_access_grants_instance_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -3616,14 +3684,19 @@ delete_access_grants_instance(Client, Input0, Options0) ->
 
 %% @doc Deletes the resource policy of the S3 Access Grants instance.
 %%
-%% The resource policy is used to manage cross-account access to your S3
-%% Access Grants instance. By deleting the resource policy, you delete any
-%% cross-account permissions to your S3 Access Grants instance.
+%% The resource policy is used to
+%% manage cross-account access to your S3 Access Grants instance. By deleting
+%% the resource policy, you
+%% delete any cross-account permissions to your S3 Access Grants instance.
 %%
 %% Permissions
 %%
 %% You must have the `s3:DeleteAccessGrantsInstanceResourcePolicy'
 %% permission to use this operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_access_grants_instance_resource_policy(aws_client:aws_client(), delete_access_grants_instance_resource_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -3659,18 +3732,24 @@ delete_access_grants_instance_resource_policy(Client, Input0, Options0) ->
 
 %% @doc Deregisters a location from your S3 Access Grants instance.
 %%
-%% You can only delete a location registration from an S3 Access Grants
-%% instance if there are no grants associated with this location. See Delete
-%% a grant:
+%% You can only delete a location
+%% registration from an S3 Access Grants instance if there are no grants
+%% associated with this location.
+%% See Delete a grant:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessGrant.html
-%% for information on how to delete grants. You need to have at least one
-%% registered location in your S3 Access Grants instance in order to create
-%% access grants.
+%% for
+%% information on how to delete grants. You need to have at least one
+%% registered location in
+%% your S3 Access Grants instance in order to create access grants.
 %%
 %% Permissions
 %%
 %% You must have the `s3:DeleteAccessGrantsLocation' permission to use
 %% this operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_access_grants_location(aws_client:aws_client(), binary() | list(), delete_access_grants_location_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -3726,6 +3805,10 @@ delete_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %%
 %% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_access_point(aws_client:aws_client(), binary() | list(), delete_access_point_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -3775,6 +3858,10 @@ delete_access_point(Client, Name, Input0, Options0) ->
 %%
 %% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_for_object_lambda_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -3827,6 +3914,10 @@ delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 %%
 %% GetAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicy.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_access_point_policy(aws_client:aws_client(), binary() | list(), delete_access_point_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -3873,6 +3964,10 @@ delete_access_point_policy(Client, Name, Input0, Options0) ->
 %%
 %% PutAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), delete_access_point_policy_for_object_lambda_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -3906,17 +4001,22 @@ delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes an existing access point scope for a directory bucket.
+%% @doc Deletes an existing access point scope for a directory bucket.
 %%
 %% When you delete the scope of an access point, all prefixes and permissions
-%% are deleted.
+%% are
+%% deleted.
 %%
 %% To use this operation, you must have the permission to perform the
-%% `s3express:DeleteAccessPointScope' action.
+%% `s3express:DeleteAccessPointScope'
+%% action.
 %%
 %% For information about REST API errors, see REST error responses:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_access_point_scope(aws_client:aws_client(), binary() | list(), delete_access_point_scope_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4066,6 +4166,10 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4160,6 +4264,10 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketPolicy.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4251,6 +4359,10 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketReplication.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4319,6 +4431,10 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutBucketTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4357,11 +4473,9 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% Permissions
 %%
-%% To use the
-%% `DeleteJobTagging' operation, you must have permission to
+%% To use the `DeleteJobTagging' operation, you must have permission to
 %% perform the `s3:DeleteJobTagging' action. For more information, see
-%% Controlling
-%% access and labeling jobs using tags:
+%% Controlling access and labeling jobs using tags:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags
 %% in the
 %% Amazon S3 User Guide.
@@ -4376,6 +4490,10 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% PutJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_job_tagging(aws_client:aws_client(), binary() | list(), delete_job_tagging_request()) ->
     {ok, delete_job_tagging_result(), tuple()} |
     {error, any()} |
@@ -4446,6 +4564,10 @@ delete_job_tagging(Client, JobId, Input0, Options0) ->
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_multi_region_access_point(aws_client:aws_client(), delete_multi_region_access_point_request()) ->
     {ok, delete_multi_region_access_point_result(), tuple()} |
     {error, any()}.
@@ -4495,6 +4617,10 @@ delete_multi_region_access_point(Client, Input0, Options0) ->
 %%
 %% PutPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_public_access_block(aws_client:aws_client(), delete_public_access_block_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4543,6 +4669,10 @@ delete_public_access_block(Client, Input0, Options0) ->
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_storage_lens_configuration(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4593,6 +4723,10 @@ delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), delete_storage_lens_configuration_tagging_request()) ->
     {ok, delete_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
@@ -4640,6 +4774,10 @@ delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_storage_lens_group(aws_client:aws_client(), binary() | list(), delete_storage_lens_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4699,6 +4837,10 @@ delete_storage_lens_group(Client, Name, Input0, Options0) ->
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec describe_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_job_result(), tuple()} |
     {error, any()} |
@@ -4747,7 +4889,8 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 %% about managing Multi-Region Access Points and how asynchronous requests
 %% work, see Using Multi-Region Access Points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/MrapOperations.html
-%% in the Amazon S3 User Guide.
+%% in the
+%% Amazon S3 User Guide.
 %%
 %% The following actions are related to `GetMultiRegionAccessPoint':
 %%
@@ -4762,6 +4905,10 @@ describe_job(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec describe_multi_region_access_point_operation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_multi_region_access_point_operation_result(), tuple()} |
     {error, any()}.
@@ -4804,13 +4951,17 @@ describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId,
 %%
 %% Permissions
 %%
-%% You must have the `s3:DissociateAccessGrantsIdentityCenter' permission
-%% to use this operation.
+%% You must have the `s3:DissociateAccessGrantsIdentityCenter'
+%% permission to use this operation.
 %%
 %% Additional Permissions
 %%
 %% You must have the `sso:DeleteApplication' permission to use this
 %% operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec dissociate_access_grants_identity_center(aws_client:aws_client(), dissociate_access_grants_identity_center_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4851,6 +5002,10 @@ dissociate_access_grants_identity_center(Client, Input0, Options0) ->
 %%
 %% You must have the `s3:GetAccessGrant' permission to use this
 %% operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_grant(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_grant_result(), tuple()} |
     {error, any()}.
@@ -4892,12 +5047,16 @@ get_access_grant(Client, AccessGrantId, AccountId, QueryMap, HeadersMap, Options
 %%
 %% Permissions
 %%
-%% You must have the `s3:GetAccessGrantsInstance' permission to use this
-%% operation.
+%% You must have the `s3:GetAccessGrantsInstance' permission to use
+%% this operation.
 %%
 %% `GetAccessGrantsInstance' is not supported for cross-account access.
 %% You can only call the API from the account that owns the S3 Access Grants
 %% instance.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_grants_instance(aws_client:aws_client(), binary() | list()) ->
     {ok, get_access_grants_instance_result(), tuple()} |
     {error, any()}.
@@ -4940,13 +5099,17 @@ get_access_grants_instance(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% Permissions
 %%
-%% You must have the `s3:GetAccessGrantsInstanceForPrefix' permission for
-%% the caller account to use this operation.
+%% You must have the `s3:GetAccessGrantsInstanceForPrefix' permission
+%% for the caller account to use this operation.
 %%
 %% Additional Permissions
 %%
 %% The prefix owner account must grant you the following permissions to their
 %% S3 Access Grants instance: `s3:GetAccessGrantsInstanceForPrefix'.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_grants_instance_for_prefix(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_grants_instance_for_prefix_result(), tuple()} |
     {error, any()}.
@@ -4994,6 +5157,10 @@ get_access_grants_instance_for_prefix(Client, S3Prefix, AccountId, QueryMap, Hea
 %%
 %% You must have the `s3:GetAccessGrantsInstanceResourcePolicy'
 %% permission to use this operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_grants_instance_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_access_grants_instance_resource_policy_result(), tuple()} |
     {error, any()}.
@@ -5036,8 +5203,12 @@ get_access_grants_instance_resource_policy(Client, AccountId, QueryMap, HeadersM
 %%
 %% Permissions
 %%
-%% You must have the `s3:GetAccessGrantsLocation' permission to use this
-%% operation.
+%% You must have the `s3:GetAccessGrantsLocation' permission to use
+%% this operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_grants_location(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_grants_location_result(), tuple()} |
     {error, any()}.
@@ -5097,6 +5268,10 @@ get_access_grants_location(Client, AccessGrantsLocationId, AccountId, QueryMap, 
 %%
 %% ListAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_point(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_result(), tuple()} |
     {error, any()}.
@@ -5144,6 +5319,10 @@ get_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% PutAccessPointConfigurationForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointConfigurationForObjectLambda.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_configuration_for_object_lambda_result(), tuple()} |
     {error, any()}.
@@ -5197,6 +5376,10 @@ get_access_point_configuration_for_object_lambda(Client, Name, AccountId, QueryM
 %%
 %% ListAccessPointsForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPointsForObjectLambda.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_point_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_for_object_lambda_result(), tuple()} |
     {error, any()}.
@@ -5244,6 +5427,10 @@ get_access_point_for_object_lambda(Client, Name, AccountId, QueryMap, HeadersMap
 %%
 %% DeleteAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_policy_result(), tuple()} |
     {error, any()}.
@@ -5294,6 +5481,10 @@ get_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% PutAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicyForObjectLambda.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_policy_for_object_lambda_result(), tuple()} |
     {error, any()}.
@@ -5341,6 +5532,10 @@ get_access_point_policy_for_object_lambda(Client, Name, AccountId, QueryMap, Hea
 %% access points:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html
 %% in the Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_policy_status_result(), tuple()} |
     {error, any()}.
@@ -5383,6 +5578,10 @@ get_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Op
 %%
 %% Returns the status of the resource policy associated with an Object Lambda
 %% Access Point.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_point_policy_status_for_object_lambda(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_policy_status_for_object_lambda_result(), tuple()} |
     {error, any()}.
@@ -5420,14 +5619,18 @@ get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Returns the access point scope for a directory bucket.
+%% @doc Returns the access point scope for a directory bucket.
 %%
 %% To use this operation, you must have the permission to perform the
-%% `s3express:GetAccessPointScope' action.
+%% `s3express:GetAccessPointScope'
+%% action.
 %%
 %% For information about REST API errors, see REST error responses:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_access_point_scope(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_access_point_scope_result(), tuple()} |
     {error, any()}.
@@ -5510,6 +5713,10 @@ get_access_point_scope(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucket.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_result(), tuple()} |
     {error, any()}.
@@ -5606,6 +5813,10 @@ get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketLifecycleConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_lifecycle_configuration_result(), tuple()} |
     {error, any()}.
@@ -5705,6 +5916,10 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersM
 %%
 %% DeleteBucketPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteBucketPolicy.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_policy_result(), tuple()} |
     {error, any()}.
@@ -6024,14 +6239,21 @@ get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% Permissions
 %%
-%% You must have the `s3:GetDataAccess' permission to use this operation.
+%% You must have the `s3:GetDataAccess' permission to use this
+%% operation.
 %%
 %% Additional Permissions
 %%
 %% The IAM role that S3 Access Grants assumes must have the following
-%% permissions specified in the trust policy when registering the location:
-%% `sts:AssumeRole', for directory users or groups `sts:SetContext',
-%% and for IAM users or roles `sts:SetSourceIdentity'.
+%% permissions
+%% specified in the trust policy when registering the location:
+%% `sts:AssumeRole', for directory users or groups
+%% `sts:SetContext', and for IAM users or roles
+%% `sts:SetSourceIdentity'.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_data_access(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_data_access_result(), tuple()} |
     {error, any()}.
@@ -6081,11 +6303,9 @@ get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% Permissions
 %%
-%% To use the
-%% `GetJobTagging' operation, you must have permission to
+%% To use the `GetJobTagging' operation, you must have permission to
 %% perform the `s3:GetJobTagging' action. For more information, see
-%% Controlling
-%% access and labeling jobs using tags:
+%% Controlling access and labeling jobs using tags:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags
 %% in the
 %% Amazon S3 User Guide.
@@ -6100,6 +6320,10 @@ get_data_access(Client, Permission, Target, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% DeleteJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_job_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_job_tagging_result(), tuple()} |
     {error, any()} |
@@ -6167,6 +6391,10 @@ get_job_tagging(Client, JobId, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% ListMultiRegionAccessPoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListMultiRegionAccessPoints.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_multi_region_access_point(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_multi_region_access_point_result(), tuple()} |
     {error, any()}.
@@ -6226,6 +6454,10 @@ get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% PutMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_multi_region_access_point_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_multi_region_access_point_policy_result(), tuple()} |
     {error, any()}.
@@ -6286,6 +6518,10 @@ get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersM
 %%
 %% PutMultiRegionAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutMultiRegionAccessPointPolicy.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_multi_region_access_point_policy_status(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_multi_region_access_point_policy_status_result(), tuple()} |
     {error, any()}.
@@ -6343,6 +6579,10 @@ get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, H
 %% `ap-northeast-1'
 %%
 %% `eu-west-1'
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_multi_region_access_point_routes_result(), tuple()} |
     {error, any()}.
@@ -6396,6 +6636,10 @@ get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersM
 %%
 %% PutPublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_public_access_block(aws_client:aws_client(), binary() | list()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()} |
@@ -6454,6 +6698,10 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the
 %% Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_storage_lens_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_storage_lens_configuration_result(), tuple()} |
     {error, any()}.
@@ -6508,6 +6756,10 @@ get_storage_lens_configuration(Client, ConfigId, AccountId, QueryMap, HeadersMap
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
@@ -6559,6 +6811,10 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, He
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_storage_lens_group(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_storage_lens_group_result(), tuple()} |
     {error, any()}.
@@ -6602,6 +6858,10 @@ get_storage_lens_group(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% You must have the `s3:ListAccessGrants' permission to use this
 %% operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_access_grants(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_grants_result(), tuple()} |
     {error, any()}.
@@ -6651,14 +6911,19 @@ list_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns a list of S3 Access Grants instances.
 %%
-%% An S3 Access Grants instance serves as a logical grouping for your
-%% individual access grants. You can only have one S3 Access Grants instance
-%% per Region per account.
+%% An S3 Access Grants instance serves as a logical grouping for
+%% your individual access grants. You can only have one S3 Access Grants
+%% instance per Region per
+%% account.
 %%
 %% Permissions
 %%
 %% You must have the `s3:ListAccessGrantsInstances' permission to use
 %% this operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_access_grants_instances(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_grants_instances_result(), tuple()} |
     {error, any()}.
@@ -6708,6 +6973,10 @@ list_access_grants_instances(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% You must have the `s3:ListAccessGrantsLocations' permission to use
 %% this operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_access_grants_locations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_grants_locations_result(), tuple()} |
     {error, any()}.
@@ -6786,6 +7055,10 @@ list_access_grants_locations(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_access_points(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_points_result(), tuple()} |
     {error, any()}.
@@ -6832,17 +7105,22 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the access points that are owned by the Amazon Web
-%% Services account and that are associated with the specified directory
-%% bucket.
+%% Services account and that are associated
+%% with the specified directory bucket.
 %%
 %% To list access points for general purpose buckets, see ListAccesspoints:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html.
 %%
 %% To use this operation, you must have the permission to perform the
-%% `s3express:ListAccessPointsForDirectoryBuckets' action.
+%% `s3express:ListAccessPointsForDirectoryBuckets'
+%% action.
 %%
 %% For information about REST API errors, see REST error responses:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_access_points_for_directory_buckets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_points_for_directory_buckets_result(), tuple()} |
     {error, any()}.
@@ -6906,6 +7184,10 @@ list_access_points_for_directory_buckets(Client, AccountId, QueryMap, HeadersMap
 %%
 %% GetAccessPointForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointForObjectLambda.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_access_points_for_object_lambda(aws_client:aws_client(), binary() | list()) ->
     {ok, list_access_points_for_object_lambda_result(), tuple()} |
     {error, any()}.
@@ -6949,19 +7231,25 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Op
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Use this API to list the access grants that grant the caller access
-%% to Amazon S3 data through S3 Access Grants.
+%% to Amazon S3 data through
+%% S3 Access Grants.
 %%
 %% The caller (grantee) can be an Identity and Access Management (IAM)
-%% identity or Amazon Web Services Identity Center corporate directory
-%% identity. You must pass the Amazon Web Services account of the S3 data
-%% owner (grantor) in the request. You can, optionally, narrow the results by
+%% identity or Amazon Web Services Identity Center
+%% corporate directory identity. You must pass the Amazon Web Services
+%% account of the S3 data owner
+%% (grantor) in the request. You can, optionally, narrow the results by
 %% `GrantScope', using a fragment of the data's S3 path, and S3
-%% Access Grants will return only the grants with a path that contains the
-%% path fragment. You can also pass the `AllowedByApplication' filter in
-%% the request, which returns only the grants authorized for applications,
-%% whether the application is the caller's Identity Center application or
-%% any other application (`ALL'). For more information, see List the
-%% caller's access grants:
+%% Access Grants will return
+%% only the grants with a path that contains the path fragment. You can also
+%% pass the
+%% `AllowedByApplication' filter in the request, which returns only the
+%% grants
+%% authorized for applications, whether the application is the caller's
+%% Identity Center
+%% application or any other application (`ALL'). For more information,
+%% see List
+%% the caller's access grants:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-list-grants.html
 %% in the Amazon S3 User Guide.
 %%
@@ -6969,6 +7257,10 @@ list_access_points_for_object_lambda(Client, AccountId, QueryMap, HeadersMap, Op
 %%
 %% You must have the `s3:ListCallerAccessGrants' permission to use this
 %% operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_caller_access_grants(aws_client:aws_client(), binary() | list()) ->
     {ok, list_caller_access_grants_result(), tuple()} |
     {error, any()}.
@@ -7023,9 +7315,8 @@ list_caller_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% Permissions
 %%
-%% To use the
-%% `ListJobs' operation, you must have permission to
-%% perform the `s3:ListJobs' action.
+%% To use the `ListJobs' operation, you must have permission to perform
+%% the `s3:ListJobs' action.
 %%
 %% Related actions include:
 %%
@@ -7040,6 +7331,10 @@ list_caller_access_grants(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_jobs_result(), tuple()} |
     {error, any()} |
@@ -7116,6 +7411,10 @@ list_jobs(Client, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% GetMultiRegionAccessPoint:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPoint.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_multi_region_access_points(aws_client:aws_client(), binary() | list()) ->
     {ok, list_multi_region_access_points_result(), tuple()} |
     {error, any()}.
@@ -7175,6 +7474,10 @@ list_multi_region_access_points(Client, AccountId, QueryMap, HeadersMap, Options
 %% the Examples:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListRegionalBuckets.html#API_control_ListRegionalBuckets_Examples
 %% section.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_regional_buckets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_regional_buckets_result(), tuple()} |
     {error, any()}.
@@ -7234,6 +7537,10 @@ list_regional_buckets(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_storage_lens_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_storage_lens_configurations_result(), tuple()} |
     {error, any()}.
@@ -7289,6 +7596,10 @@ list_storage_lens_configurations(Client, AccountId, QueryMap, HeadersMap, Option
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_storage_lens_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_storage_lens_groups_result(), tuple()} |
     {error, any()}.
@@ -7333,10 +7644,18 @@ list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% @doc This operation allows you to list all of the tags for a specified
 %% resource.
 %%
-%% Each tag is a label consisting of a key and value. Tags can help you
-%% organize, track costs for, and control access to resources.
+%% Each tag is
+%% a label consisting of a key and value. Tags can help you organize, track
+%% costs for, and
+%% control access to resources.
 %%
 %% This operation is only supported for the following Amazon S3 resources:
+%%
+%% Access Points for directory buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-db-tagging.html
+%%
+%% Access Points for general purpose buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-tagging.html
 %%
 %% Directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html
@@ -7353,15 +7672,17 @@ list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% `s3:ListTagsForResource' permission to use this operation.
 %%
 %% For more information about the required Storage Lens Groups permissions,
-%% see Setting account permissions to use S3 Storage Lens groups:
+%% see
+%% Setting account permissions to use S3 Storage Lens groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
 %% Directory bucket permissions
 %%
-%% For directory buckets, you must have the
-%% `s3express:ListTagsForResource' permission to use this operation. For
-%% more information about directory buckets policies and permissions, see
-%% Identity and Access Management (IAM) for S3 Express One Zone:
+%% For directory buckets and access points for directory buckets, you must
+%% have the `s3express:ListTagsForResource' permission to use this
+%% operation. For more information about directory buckets policies and
+%% permissions, see Identity and Access Management (IAM) for S3 Express One
+%% Zone:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-permissions.html
 %% in the Amazon S3 User Guide.
 %%
@@ -7370,9 +7691,13 @@ list_storage_lens_groups(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% Directory buckets - The HTTP Host header syntax is
 %% `s3express-control.region.amazonaws.com'.
 %%
-%% For information about S3 Tagging errors, see List of Amazon S3 Tagging
-%% error codes:
+%% For information about S3 Tagging errors, see List of Amazon S3
+%% Tagging error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()}.
@@ -7416,6 +7741,10 @@ list_tags_for_resource(Client, ResourceArn, AccountId, QueryMap, HeadersMap, Opt
 %%
 %% You must have the `s3:PutAccessGrantsInstanceResourcePolicy'
 %% permission to use this operation.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_access_grants_instance_resource_policy(aws_client:aws_client(), put_access_grants_instance_resource_policy_request()) ->
     {ok, put_access_grants_instance_resource_policy_result(), tuple()} |
     {error, any()}.
@@ -7459,6 +7788,10 @@ put_access_grants_instance_resource_policy(Client, Input0, Options0) ->
 %%
 %% GetAccessPointConfigurationForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointConfigurationForObjectLambda.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_access_point_configuration_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_configuration_for_object_lambda_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -7516,6 +7849,10 @@ put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0)
 %%
 %% DeleteAccessPointPolicy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_access_point_policy(aws_client:aws_client(), binary() | list(), put_access_point_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -7565,6 +7902,10 @@ put_access_point_policy(Client, Name, Input0, Options0) ->
 %%
 %% GetAccessPointPolicyForObjectLambda:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPointPolicyForObjectLambda.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_access_point_policy_for_object_lambda(aws_client:aws_client(), binary() | list(), put_access_point_policy_for_object_lambda_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -7600,17 +7941,25 @@ put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 
 %% @doc Creates or replaces the access point scope for a directory bucket.
 %%
-%% You can use the access point scope to restrict access to specific
-%% prefixes, API operations, or a combination of both.
+%% You can use the access point
+%% scope to restrict access to specific prefixes, API operations, or a
+%% combination of
+%% both.
 %%
 %% You can specify any amount of prefixes, but the total length of characters
-%% of all prefixes must be less than 256 bytes in size.
+%% of all
+%% prefixes must be less than 256 bytes in size.
 %%
 %% To use this operation, you must have the permission to perform the
-%% `s3express:PutAccessPointScope' action.
+%% `s3express:PutAccessPointScope'
+%% action.
 %%
 %% For information about REST API errors, see REST error responses:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#RESTErrorResponses.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_access_point_scope(aws_client:aws_client(), binary() | list(), put_access_point_scope_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -8162,6 +8511,10 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetBucketLifecycleConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -8207,8 +8560,8 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% within the existing tag set by retrieving the existing tag set using
 %% GetJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetJobTagging.html,
-%% modify that tag set, and use this operation to replace the tag set
-%% with the one you modified. For more information, see Controlling
+%% modify that tag set, and use this operation to replace the tag
+%% set with the one you modified. For more information, see Controlling
 %% access and labeling jobs using tags:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags
 %% in the Amazon S3 User Guide.
@@ -8245,8 +8598,7 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %%
 %% Permissions
 %%
-%% To use the
-%% `PutJobTagging' operation, you must have permission to
+%% To use the `PutJobTagging' operation, you must have permission to
 %% perform the `s3:PutJobTagging' action.
 %%
 %% Related actions include:
@@ -8259,6 +8611,10 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteJobTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_job_tagging(aws_client:aws_client(), binary() | list(), put_job_tagging_request()) ->
     {ok, put_job_tagging_result(), tuple()} |
     {error, any()} |
@@ -8319,6 +8675,10 @@ put_job_tagging(Client, JobId, Input0, Options0) ->
 %%
 %% GetMultiRegionAccessPointPolicyStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetMultiRegionAccessPointPolicyStatus.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_multi_region_access_point_policy(aws_client:aws_client(), put_multi_region_access_point_policy_request()) ->
     {ok, put_multi_region_access_point_policy_result(), tuple()} |
     {error, any()}.
@@ -8368,6 +8728,10 @@ put_multi_region_access_point_policy(Client, Input0, Options0) ->
 %%
 %% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeletePublicAccessBlock.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_public_access_block(aws_client:aws_client(), put_public_access_block_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -8419,6 +8783,10 @@ put_public_access_block(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the
 %% Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_storage_lens_configuration(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -8469,6 +8837,10 @@ put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
 %% use Amazon S3 Storage Lens:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens_iam_permissions.html
 %% in the Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_storage_lens_configuration_tagging(aws_client:aws_client(), binary() | list(), put_storage_lens_configuration_tagging_request()) ->
     {ok, put_storage_lens_configuration_tagging_result(), tuple()} |
     {error, any()}.
@@ -8542,6 +8914,10 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
 %% `ap-northeast-1'
 %%
 %% `eu-west-1'
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec submit_multi_region_access_point_routes(aws_client:aws_client(), binary() | list(), submit_multi_region_access_point_routes_request()) ->
     {ok, submit_multi_region_access_point_routes_result(), tuple()} |
     {error, any()}.
@@ -8584,6 +8960,12 @@ submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
 %%
 %% This operation is only supported for the following Amazon S3 resource:
 %%
+%% Access Points for directory buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-db-tagging.html
+%%
+%% Access Points for general purpose buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-tagging.html
+%%
 %% Directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html
 %%
@@ -8593,21 +8975,36 @@ submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
 %% S3 Access Grants instances, registered locations, or grants:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html.
 %%
+%% This operation is only supported for the following Amazon S3 resource:
+%%
+%% Directory
+%% buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html
+%%
+%% S3 Storage Lens
+%% groups:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-lens-groups.html
+%%
+%% S3 Access Grants instances,
+%% registered locations, or grants:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-grants-tagging.html.
+%%
 %% Permissions
 %%
 %% For Storage Lens groups and S3 Access Grants, you must have the
 %% `s3:TagResource' permission to use this operation.
 %%
 %% For more information about the required Storage Lens Groups permissions,
-%% see Setting account permissions to use S3 Storage Lens groups:
+%% see
+%% Setting account permissions to use S3 Storage Lens groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
 %% Directory bucket permissions
 %%
-%% For directory buckets, you must have the `s3express:TagResource'
-%% permission to use this operation. For more information about directory
-%% buckets policies and permissions, see Identity and Access Management (IAM)
-%% for S3 Express One Zone:
+%% For directory buckets and access points for directory buckets, you must
+%% have the `s3express:TagResource' permission to use this operation. For
+%% more information about directory buckets policies and permissions, see
+%% Identity and Access Management (IAM) for S3 Express One Zone:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-permissions.html
 %% in the Amazon S3 User Guide.
 %%
@@ -8619,6 +9016,10 @@ submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
 %% For information about S3 Tagging errors, see List of Amazon S3 Tagging
 %% error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()}.
@@ -8655,9 +9056,16 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc This operation removes the specified user-defined tags from an S3
 %% resource.
 %%
-%% You can pass one or more tag keys.
+%% You can pass
+%% one or more tag keys.
 %%
 %% This operation is only supported for the following Amazon S3 resources:
+%%
+%% Access Points for directory buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-db-tagging.html
+%%
+%% Access Points for general purpose buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points-tagging.html
 %%
 %% Directory buckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-buckets-tagging.html
@@ -8674,15 +9082,17 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% `s3:UntagResource' permission to use this operation.
 %%
 %% For more information about the required Storage Lens Groups permissions,
-%% see Setting account permissions to use S3 Storage Lens groups:
+%% see
+%% Setting account permissions to use S3 Storage Lens groups:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_iam_permissions.html#storage_lens_groups_permissions.
 %%
 %% Directory bucket permissions
 %%
-%% For directory buckets, you must have the `s3express:UntagResource'
-%% permission to use this operation. For more information about directory
-%% buckets policies and permissions, see Identity and Access Management (IAM)
-%% for S3 Express One Zone:
+%% For directory buckets and access points for directory buckets, you must
+%% have
+%% the `s3express:UntagResource' permission to use this operation.
+%% For more information about directory buckets policies and permissions, see
+%% Identity and Access Management (IAM) for S3 Express One Zone:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-permissions.html
 %% in the Amazon S3 User Guide.
 %%
@@ -8694,6 +9104,10 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% For information about S3 Tagging errors, see List of Amazon S3
 %% Tagging error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3TaggingErrorCodeList.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()}.
@@ -8739,6 +9153,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Additional Permissions
 %%
 %% You must also have the following permission: `iam:PassRole'
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec update_access_grants_location(aws_client:aws_client(), binary() | list(), update_access_grants_location_request()) ->
     {ok, update_access_grants_location_result(), tuple()} |
     {error, any()}.
@@ -8780,9 +9198,8 @@ update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %%
 %% Permissions
 %%
-%% To use the
-%% `UpdateJobPriority' operation, you must have permission to
-%% perform the `s3:UpdateJobPriority' action.
+%% To use the `UpdateJobPriority' operation, you must have permission
+%% to perform the `s3:UpdateJobPriority' action.
 %%
 %% Related actions include:
 %%
@@ -8797,6 +9214,10 @@ update_access_grants_location(Client, AccessGrantsLocationId, Input0, Options0) 
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec update_job_priority(aws_client:aws_client(), binary() | list(), update_job_priority_request()) ->
     {ok, update_job_priority_result(), tuple()} |
     {error, any()} |
@@ -8843,8 +9264,7 @@ update_job_priority(Client, JobId, Input0, Options0) ->
 %%
 %% Permissions
 %%
-%% To use the
-%% `UpdateJobStatus' operation, you must have permission to
+%% To use the `UpdateJobStatus' operation, you must have permission to
 %% perform the `s3:UpdateJobStatus' action.
 %%
 %% Related actions include:
@@ -8860,6 +9280,10 @@ update_job_priority(Client, JobId, Input0, Options0) ->
 %%
 %% UpdateJobStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec update_job_status(aws_client:aws_client(), binary() | list(), update_job_status_request()) ->
     {ok, update_job_status_result(), tuple()} |
     {error, any()} |
@@ -8911,6 +9335,10 @@ update_job_status(Client, JobId, Input0, Options0) ->
 %% Storage
 %% Lens error codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#S3LensErrorCodeList.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec update_storage_lens_group(aws_client:aws_client(), binary() | list(), update_storage_lens_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.

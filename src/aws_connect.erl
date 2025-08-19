@@ -2682,6 +2682,7 @@
 %% Example:
 %% participant_details_to_add() :: #{
 %%   <<"DisplayName">> => string(),
+%%   <<"ParticipantCapabilities">> => participant_capabilities(),
 %%   <<"ParticipantRole">> => list(any())
 %% }
 -type participant_details_to_add() :: #{binary() => any()}.
@@ -8418,6 +8419,7 @@
     service_quota_exceeded_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     internal_service_exception().
 
 -type create_persistent_contact_association_errors() ::
@@ -11606,11 +11608,13 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a new participant into an on-going chat contact.
+%% @doc Adds a new participant into an on-going chat contact or webRTC call.
 %%
 %% For more information, see Customize chat
 %% flow experiences by integrating custom participants:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html.
+%% https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html
+%% or Enable multi-user web, in-app, and video calling:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/enable-multiuser-inapp.html.
 -spec create_participant(aws_client:aws_client(), create_participant_request()) ->
     {ok, create_participant_response(), tuple()} |
     {error, any()} |
@@ -15239,8 +15243,6 @@ get_contact_metrics(Client, Input0, Options0) ->
 %% Each item in MetricResult must include all requested metrics
 %%
 %% If the response is slow due to large result sets, try these approaches:
-%%
-%% Narrow the time range of your request
 %%
 %% Add filters to reduce the amount of data returned
 -spec get_current_metric_data(aws_client:aws_client(), binary() | list(), get_current_metric_data_request()) ->
