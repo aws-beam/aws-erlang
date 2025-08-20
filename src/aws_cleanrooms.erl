@@ -446,6 +446,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"description">> => string(),
+%%   <<"errorMessageConfiguration">> => error_message_configuration(),
 %%   <<"format">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
@@ -971,6 +972,13 @@
 %%   <<"status">> => string()
 %% }
 -type list_memberships_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_message_configuration() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type error_message_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2078,6 +2086,7 @@
 %%   <<"collaborationId">> => string(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"errorMessageConfiguration">> => error_message_configuration(),
 %%   <<"format">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"membershipArn">> => string(),
@@ -2638,6 +2647,7 @@
 %% create_analysis_template_input() :: #{
 %%   <<"analysisParameters">> => list(analysis_parameter()),
 %%   <<"description">> => string(),
+%%   <<"errorMessageConfiguration">> => error_message_configuration(),
 %%   <<"format">> := list(any()),
 %%   <<"name">> := string(),
 %%   <<"schema">> => analysis_schema(),
