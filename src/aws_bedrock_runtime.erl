@@ -11,6 +11,8 @@
          converse/4,
          converse_stream/3,
          converse_stream/4,
+         count_tokens/3,
+         count_tokens/4,
          get_async_invoke/2,
          get_async_invoke/4,
          get_async_invoke/5,
@@ -28,6 +30,13 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% count_tokens_response() :: #{
+%%   <<"inputTokens">> => [integer()]
+%% }
+-type count_tokens_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -136,6 +145,14 @@
 %% get_async_invoke_request() :: #{}
 -type get_async_invoke_request() :: #{}.
 
+
+%% Example:
+%% converse_tokens_request() :: #{
+%%   <<"messages">> => list(message()),
+%%   <<"system">> => list(list())
+%% }
+-type converse_tokens_request() :: #{binary() => any()}.
+
 %% Example:
 %% any_tool_choice() :: #{}
 -type any_tool_choice() :: #{}.
@@ -208,6 +225,13 @@
 %%   <<"title">> => [string()]
 %% }
 -type citation() :: #{binary() => any()}.
+
+
+%% Example:
+%% count_tokens_request() :: #{
+%%   <<"input">> := list()
+%% }
+-type count_tokens_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -926,6 +950,13 @@
 
 
 %% Example:
+%% invoke_model_tokens_request() :: #{
+%%   <<"body">> => binary()
+%% }
+-type invoke_model_tokens_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_pii_entity_filter() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"detected">> => [boolean()],
@@ -1047,6 +1078,14 @@
     service_unavailable_exception() | 
     resource_not_found_exception() | 
     model_not_ready_exception().
+
+-type count_tokens_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
 
 -type get_async_invoke_errors() ::
     throttling_exception() | 
@@ -1311,6 +1350,71 @@ converse_stream(Client, ModelId, Input) ->
 converse_stream(Client, ModelId, Input0, Options0) ->
     Method = post,
     Path = ["/model/", aws_util:encode_uri(ModelId), "/converse-stream"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the token count for a given inference request.
+%%
+%% This operation helps you estimate token usage before sending requests to
+%% foundation models by returning the token count that would be used if the
+%% same input were sent to the model in an inference request.
+%%
+%% Token counting is model-specific because different models use different
+%% tokenization strategies. The token count returned by this operation will
+%% match the token count that would be charged if the same input were sent to
+%% the model in an `InvokeModel' or `Converse' request.
+%%
+%% You can use this operation to:
+%%
+%% Estimate costs before sending inference requests.
+%%
+%% Optimize prompts to fit within token limits.
+%%
+%% Plan for token usage in your applications.
+%%
+%% This operation accepts the same input formats as `InvokeModel' and
+%% `Converse', allowing you to count tokens for both raw text inputs and
+%% structured conversation formats.
+%%
+%% The following operations are related to `CountTokens':
+%%
+%% InvokeModel:
+%% https://docs.aws.amazon.com/bedrock/latest/API/API_runtime_InvokeModel.html
+%% - Sends inference requests to foundation models
+%%
+%% Converse:
+%% https://docs.aws.amazon.com/bedrock/latest/API/API_runtime_Converse.html -
+%% Sends conversation-based inference requests to foundation models
+-spec count_tokens(aws_client:aws_client(), binary() | list(), count_tokens_request()) ->
+    {ok, count_tokens_response(), tuple()} |
+    {error, any()} |
+    {error, count_tokens_errors(), tuple()}.
+count_tokens(Client, ModelId, Input) ->
+    count_tokens(Client, ModelId, Input, []).
+
+-spec count_tokens(aws_client:aws_client(), binary() | list(), count_tokens_request(), proplists:proplist()) ->
+    {ok, count_tokens_response(), tuple()} |
+    {error, any()} |
+    {error, count_tokens_errors(), tuple()}.
+count_tokens(Client, ModelId, Input0, Options0) ->
+    Method = post,
+    Path = ["/model/", aws_util:encode_uri(ModelId), "/count-tokens"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

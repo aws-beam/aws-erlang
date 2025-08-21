@@ -249,6 +249,13 @@
 
 
 %% Example:
+%% addon_namespace_config_request() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type addon_namespace_config_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% encryption_config() :: #{
 %%   <<"provider">> => provider(),
 %%   <<"resources">> => list(string())
@@ -742,6 +749,7 @@
 %%   <<"health">> => addon_health(),
 %%   <<"marketplaceInformation">> => marketplace_information(),
 %%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"namespaceConfig">> => addon_namespace_config_response(),
 %%   <<"owner">> => string(),
 %%   <<"podIdentityAssociations">> => list(string()),
 %%   <<"publisher">> => string(),
@@ -773,6 +781,13 @@
 %%   <<"username">> => string()
 %% }
 -type access_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% addon_namespace_config_response() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type addon_namespace_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fargate_profile_request() :: #{}
@@ -1127,6 +1142,7 @@
 %%   <<"addonVersion">> => string(),
 %%   <<"clientRequestToken">> => string(),
 %%   <<"configurationValues">> => string(),
+%%   <<"namespaceConfig">> => addon_namespace_config_request(),
 %%   <<"podIdentityAssociations">> => list(addon_pod_identity_associations()),
 %%   <<"resolveConflicts">> => list(any()),
 %%   <<"serviceAccountRoleArn">> => string(),
@@ -1739,6 +1755,7 @@
 %% addon_info() :: #{
 %%   <<"addonName">> => string(),
 %%   <<"addonVersions">> => list(addon_version_info()),
+%%   <<"defaultNamespace">> => string(),
 %%   <<"marketplaceInformation">> => marketplace_information(),
 %%   <<"owner">> => string(),
 %%   <<"publisher">> => string(),

@@ -297,6 +297,13 @@
 -type sql_application_configuration_update() :: #{binary() => any()}.
 
 %% Example:
+%% application_encryption_configuration_update() :: #{
+%%   <<"KeyIdUpdate">> => string(),
+%%   <<"KeyTypeUpdate">> => list(any())
+%% }
+-type application_encryption_configuration_update() :: #{binary() => any()}.
+
+%% Example:
 %% add_application_vpc_configuration_request() :: #{
 %%   <<"ApplicationName">> := string(),
 %%   <<"ConditionalToken">> => string(),
@@ -696,6 +703,7 @@
 %% Example:
 %% application_configuration() :: #{
 %%   <<"ApplicationCodeConfiguration">> => application_code_configuration(),
+%%   <<"ApplicationEncryptionConfiguration">> => application_encryption_configuration(),
 %%   <<"ApplicationSnapshotConfiguration">> => application_snapshot_configuration(),
 %%   <<"ApplicationSystemRollbackConfiguration">> => application_system_rollback_configuration(),
 %%   <<"EnvironmentProperties">> => environment_properties(),
@@ -858,6 +866,13 @@
 -type add_application_output_response() :: #{binary() => any()}.
 
 %% Example:
+%% application_encryption_configuration_description() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyType">> => list(any())
+%% }
+-type application_encryption_configuration_description() :: #{binary() => any()}.
+
+%% Example:
 %% kinesis_streams_input_description() :: #{
 %%   <<"ResourceARN">> => string(),
 %%   <<"RoleARN">> => string()
@@ -870,6 +885,13 @@
 %%   <<"SnapshotName">> := string()
 %% }
 -type describe_application_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% application_encryption_configuration() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyType">> => list(any())
+%% }
+-type application_encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% list_application_operations_request() :: #{
@@ -1316,6 +1338,7 @@
 %% Example:
 %% application_configuration_description() :: #{
 %%   <<"ApplicationCodeConfigurationDescription">> => application_code_configuration_description(),
+%%   <<"ApplicationEncryptionConfigurationDescription">> => application_encryption_configuration_description(),
 %%   <<"ApplicationSnapshotConfigurationDescription">> => application_snapshot_configuration_description(),
 %%   <<"ApplicationSystemRollbackConfigurationDescription">> => application_system_rollback_configuration_description(),
 %%   <<"EnvironmentPropertyDescriptions">> => environment_property_descriptions(),
@@ -1457,6 +1480,7 @@
 
 %% Example:
 %% snapshot_details() :: #{
+%%   <<"ApplicationEncryptionConfigurationDescription">> => application_encryption_configuration_description(),
 %%   <<"ApplicationVersionId">> => float(),
 %%   <<"RuntimeEnvironment">> => list(any()),
 %%   <<"SnapshotCreationTimestamp">> => non_neg_integer(),
@@ -1566,6 +1590,7 @@
 %% Example:
 %% application_configuration_update() :: #{
 %%   <<"ApplicationCodeConfigurationUpdate">> => application_code_configuration_update(),
+%%   <<"ApplicationEncryptionConfigurationUpdate">> => application_encryption_configuration_update(),
 %%   <<"ApplicationSnapshotConfigurationUpdate">> => application_snapshot_configuration_update(),
 %%   <<"ApplicationSystemRollbackConfigurationUpdate">> => application_system_rollback_configuration_update(),
 %%   <<"EnvironmentPropertyUpdates">> => environment_property_updates(),
@@ -2265,8 +2290,12 @@ describe_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplication">>, Input, Options).
 
-%% @doc Returns information about a specific operation performed on a Managed
-%% Service for Apache Flink application
+%% @doc Provides a detailed description of a specified application operation.
+%%
+%% To see a list of all the operations of an application, invoke the
+%% `ListApplicationOperations' operation.
+%%
+%% This operation is supported only for Managed Service for Apache Flink.
 -spec describe_application_operation(aws_client:aws_client(), describe_application_operation_request()) ->
     {ok, describe_application_operation_response(), tuple()} |
     {error, any()} |
@@ -2354,8 +2383,15 @@ discover_input_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverInputSchema">>, Input, Options).
 
-%% @doc Lists information about operations performed on a Managed Service for
-%% Apache Flink application
+%% @doc Lists all the operations performed for the specified application such
+%% as UpdateApplication, StartApplication etc.
+%%
+%% The response also includes a summary of the operation.
+%%
+%% To get the complete description of a specific operation, invoke the
+%% `DescribeApplicationOperation' operation.
+%%
+%% This operation is supported only for Managed Service for Apache Flink.
 -spec list_application_operations(aws_client:aws_client(), list_application_operations_request()) ->
     {ok, list_application_operations_response(), tuple()} |
     {error, any()} |

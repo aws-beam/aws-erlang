@@ -134,6 +134,8 @@
          create_managed_login_branding/3,
          create_resource_server/2,
          create_resource_server/3,
+         create_terms/2,
+         create_terms/3,
          create_user_import_job/2,
          create_user_import_job/3,
          create_user_pool/2,
@@ -150,6 +152,8 @@
          delete_managed_login_branding/3,
          delete_resource_server/2,
          delete_resource_server/3,
+         delete_terms/2,
+         delete_terms/3,
          delete_user/2,
          delete_user/3,
          delete_user_attributes/2,
@@ -172,6 +176,8 @@
          describe_resource_server/3,
          describe_risk_configuration/2,
          describe_risk_configuration/3,
+         describe_terms/2,
+         describe_terms/3,
          describe_user_import_job/2,
          describe_user_import_job/3,
          describe_user_pool/2,
@@ -222,6 +228,8 @@
          list_resource_servers/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_terms/2,
+         list_terms/3,
          list_user_import_jobs/2,
          list_user_import_jobs/3,
          list_user_pool_clients/2,
@@ -276,6 +284,8 @@
          update_managed_login_branding/3,
          update_resource_server/2,
          update_resource_server/3,
+         update_terms/2,
+         update_terms/3,
          update_user_attributes/2,
          update_user_attributes/3,
          update_user_pool/2,
@@ -327,6 +337,13 @@
 
 %% }
 -type admin_update_auth_event_feedback_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_terms_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Terms">> => list(terms_description_type())
+%% }
+-type list_terms_response() :: #{binary() => any()}.
 
 %% Example:
 %% analytics_metadata_type() :: #{
@@ -599,6 +616,17 @@
 -type admin_respond_to_auth_challenge_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_terms_request() :: #{
+%%   <<"Enforcement">> => list(any()),
+%%   <<"Links">> => map(),
+%%   <<"TermsId">> := string(),
+%%   <<"TermsName">> => string(),
+%%   <<"TermsSource">> => list(any()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type update_terms_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_user_pool_domain_response() :: #{
 %%   <<"CloudFrontDomain">> => string(),
 %%   <<"ManagedLoginVersion">> => integer()
@@ -714,6 +742,20 @@
 %%   <<"UserImportJob">> => user_import_job_type()
 %% }
 -type describe_user_import_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% terms_type() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Enforcement">> => list(any()),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Links">> => map(),
+%%   <<"TermsId">> => string(),
+%%   <<"TermsName">> => string(),
+%%   <<"TermsSource">> => list(any()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type terms_type() :: #{binary() => any()}.
 
 %% Example:
 %% associate_software_token_response() :: #{
@@ -1124,6 +1166,16 @@
 -type update_user_pool_domain_request() :: #{binary() => any()}.
 
 %% Example:
+%% terms_description_type() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"Enforcement">> => list(any()),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"TermsId">> => string(),
+%%   <<"TermsName">> => string()
+%% }
+-type terms_description_type() :: #{binary() => any()}.
+
+%% Example:
 %% update_group_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"GroupName">> := string(),
@@ -1228,6 +1280,17 @@
 
 %% }
 -type admin_set_user_mfa_preference_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_terms_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"Enforcement">> := list(any()),
+%%   <<"Links">> => map(),
+%%   <<"TermsName">> := string(),
+%%   <<"TermsSource">> := list(any()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_terms_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_user_pool_response() :: #{
@@ -1958,6 +2021,13 @@
 -type invalid_o_auth_flow_exception() :: #{binary() => any()}.
 
 %% Example:
+%% delete_terms_request() :: #{
+%%   <<"TermsId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_terms_request() :: #{binary() => any()}.
+
+%% Example:
 %% initiate_auth_response() :: #{
 %%   <<"AuthenticationResult">> => authentication_result_type(),
 %%   <<"AvailableChallenges">> => list(list(any())()),
@@ -2019,6 +2089,12 @@
 %%   <<"ManagedLoginBranding">> => managed_login_branding_type()
 %% }
 -type create_managed_login_branding_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_terms_response() :: #{
+%%   <<"Terms">> => terms_type()
+%% }
+-type create_terms_response() :: #{binary() => any()}.
 
 %% Example:
 %% sign_up_request() :: #{
@@ -2182,6 +2258,14 @@
 -type create_identity_provider_request() :: #{binary() => any()}.
 
 %% Example:
+%% list_terms_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_terms_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_managed_login_branding_response() :: #{
 %%   <<"ManagedLoginBranding">> => managed_login_branding_type()
 %% }
@@ -2242,6 +2326,13 @@
 %%   <<"reasonCode">> => string()
 %% }
 -type invalid_parameter_exception() :: #{binary() => any()}.
+
+%% Example:
+%% describe_terms_request() :: #{
+%%   <<"TermsId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_terms_request() :: #{binary() => any()}.
 
 %% Example:
 %% admin_confirm_sign_up_response() :: #{
@@ -2745,6 +2836,12 @@
 -type respond_to_auth_challenge_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_terms_response() :: #{
+%%   <<"Terms">> => terms_type()
+%% }
+-type describe_terms_response() :: #{binary() => any()}.
+
+%% Example:
 %% admin_forget_device_request() :: #{
 %%   <<"DeviceKey">> := string(),
 %%   <<"UserPoolId">> := string(),
@@ -2833,6 +2930,12 @@
 %%   <<"DeletionProtection">> => list(any())
 %% }
 -type user_pool_type() :: #{binary() => any()}.
+
+%% Example:
+%% terms_exists_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type terms_exists_exception() :: #{binary() => any()}.
 
 %% Example:
 %% precondition_not_met_exception() :: #{
@@ -2956,6 +3059,12 @@
 %%   <<"message">> => string()
 %% }
 -type internal_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_terms_response() :: #{
+%%   <<"Terms">> => terms_type()
+%% }
+-type update_terms_response() :: #{binary() => any()}.
 
 %% Example:
 %% sms_configuration_type() :: #{
@@ -3449,6 +3558,16 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type create_terms_errors() ::
+    internal_error_exception() | 
+    terms_exists_exception() | 
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type create_user_import_job_errors() ::
     internal_error_exception() | 
     precondition_not_met_exception() | 
@@ -3517,6 +3636,14 @@
 
 -type delete_resource_server_errors() ::
     internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type delete_terms_errors() ::
+    internal_error_exception() | 
+    concurrent_modification_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
@@ -3608,6 +3735,13 @@
     internal_error_exception() | 
     invalid_parameter_exception() | 
     user_pool_add_on_not_enabled_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type describe_terms_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
     too_many_requests_exception().
@@ -3845,6 +3979,13 @@
     too_many_requests_exception().
 
 -type list_tags_for_resource_errors() ::
+    internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_terms_errors() ::
     internal_error_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
@@ -4105,6 +4246,15 @@
 
 -type update_resource_server_errors() ::
     internal_error_exception() | 
+    invalid_parameter_exception() | 
+    not_authorized_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type update_terms_errors() ::
+    internal_error_exception() | 
+    terms_exists_exception() | 
+    concurrent_modification_exception() | 
     invalid_parameter_exception() | 
     not_authorized_exception() | 
     resource_not_found_exception() | 
@@ -4997,10 +5147,18 @@ admin_remove_user_from_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminRemoveUserFromGroup">>, Input, Options).
 
-%% @doc Resets the specified user's password in a user pool.
+%% @doc Begins the password reset process.
 %%
-%% This operation doesn't
-%% change the user's password, but sends a password-reset code.
+%% Sets the requested user’s account into a
+%% `RESET_REQUIRED' status, and sends them a password-reset code. Your
+%% user
+%% pool also sends the user a notification with a reset code and the
+%% information that their
+%% password has been reset. At sign-in, your application or the managed login
+%% session
+%% receives a challenge to complete the reset by confirming the code and
+%% setting a new
+%% password.
 %%
 %% To use this API operation, your user pool must have self-service account
 %% recovery
@@ -5811,7 +5969,7 @@ create_identity_provider(Client, Input, Options)
 %%
 %% This operation is the programmatic option for the creation of a new style
 %% in
-%% the branding designer.
+%% the branding editor.
 %%
 %% Provides values for UI customization in a `Settings' JSON object and
 %% image
@@ -5899,6 +6057,61 @@ create_resource_server(Client, Input)
 create_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResourceServer">>, Input, Options).
+
+%% @doc Creates terms documents for the requested app client.
+%%
+%% When Terms and conditions and
+%% Privacy policy documents are configured, the app client displays links to
+%% them in the
+%% sign-up page of managed login for the app client.
+%%
+%% You can provide URLs for terms documents in the languages that are
+%% supported by managed login localization:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html#managed-login-localization.
+%% Amazon Cognito directs users to the terms documents for
+%% their current language, with fallback to `default' if no document
+%% exists for
+%% the language.
+%%
+%% Each request accepts one type of terms document and a map of
+%% language-to-link for that
+%% document type. You must provide both types of terms documents in at least
+%% one language
+%% before Amazon Cognito displays your terms documents. Supply each type in
+%% separate
+%% requests.
+%%
+%% For more information, see Terms documents:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html#managed-login-terms-documents.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_terms(aws_client:aws_client(), create_terms_request()) ->
+    {ok, create_terms_response(), tuple()} |
+    {error, any()} |
+    {error, create_terms_errors(), tuple()}.
+create_terms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_terms(Client, Input, []).
+
+-spec create_terms(aws_client:aws_client(), create_terms_request(), proplists:proplist()) ->
+    {ok, create_terms_response(), tuple()} |
+    {error, any()} |
+    {error, create_terms_errors(), tuple()}.
+create_terms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTerms">>, Input, Options).
 
 %% @doc Creates a user import job.
 %%
@@ -6251,6 +6464,38 @@ delete_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceServer">>, Input, Options).
 
+%% @doc Deletes the terms documents with the requested ID from your app
+%% client.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec delete_terms(aws_client:aws_client(), delete_terms_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_terms_errors(), tuple()}.
+delete_terms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_terms(Client, Input, []).
+
+-spec delete_terms(aws_client:aws_client(), delete_terms_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_terms_errors(), tuple()}.
+delete_terms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTerms">>, Input, Options).
+
 %% @doc Deletes the profile of the currently signed-in user.
 %%
 %% A deleted user profile can no
@@ -6531,6 +6776,40 @@ describe_risk_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRiskConfiguration">>, Input, Options).
 
+%% @doc Returns details for the requested terms documents ID.
+%%
+%% For more information, see Terms documents:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html#managed-login-terms-documents.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec describe_terms(aws_client:aws_client(), describe_terms_request()) ->
+    {ok, describe_terms_response(), tuple()} |
+    {error, any()} |
+    {error, describe_terms_errors(), tuple()}.
+describe_terms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_terms(Client, Input, []).
+
+-spec describe_terms(aws_client:aws_client(), describe_terms_request(), proplists:proplist()) ->
+    {ok, describe_terms_response(), tuple()} |
+    {error, any()} |
+    {error, describe_terms_errors(), tuple()}.
+describe_terms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTerms">>, Input, Options).
+
 %% @doc Describes a user import job.
 %%
 %% For more information about user CSV import, see Importing users from a CSV
@@ -6694,11 +6973,18 @@ forget_device(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgetDevice">>, Input, Options).
 
-%% @doc Sends a password-reset confirmation code for the currently signed-in
-%% user.
+%% @doc Sends a password-reset confirmation code to the email address or
+%% phone number of the
+%% requested username.
 %%
-%% For the `Username' parameter, you can use the username or user
-%% alias.
+%% The message delivery method is determined by the user's
+%% available attributes and the `AccountRecoverySetting' configuration of
+%% the
+%% user pool.
+%%
+%% For the `Username' parameter, you can use the username or an email,
+%% phone,
+%% or preferred username alias.
 %%
 %% If neither a verified phone number nor a verified email exists, Amazon
 %% Cognito responds with an
@@ -7501,6 +7787,38 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Returns details about all terms documents for the requested user
+%% pool.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_terms(aws_client:aws_client(), list_terms_request()) ->
+    {ok, list_terms_response(), tuple()} |
+    {error, any()} |
+    {error, list_terms_errors(), tuple()}.
+list_terms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_terms(Client, Input, []).
+
+-spec list_terms(aws_client:aws_client(), list_terms_request(), proplists:proplist()) ->
+    {ok, list_terms_response(), tuple()} |
+    {error, any()} |
+    {error, list_terms_errors(), tuple()}.
+list_terms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTerms">>, Input, Options).
 
 %% @doc Given a user pool ID, returns user import jobs and their details.
 %%
@@ -8345,7 +8663,7 @@ untag_resource(Client, Input, Options)
 %% `{one-click-link-valid}' or `{one-click-link-invalid}' in your
 %% notification template. Because `FeedbackToken' is a required
 %% parameter, you
-%% can' make requests to `UpdateAuthEventFeedback' without the
+%% can't make requests to `UpdateAuthEventFeedback' without the
 %% contents of
 %% the notification email message.
 %%
@@ -8497,7 +8815,7 @@ update_identity_provider(Client, Input, Options)
 %%
 %% This operation is the
 %% programmatic option for the configuration of a style in the branding
-%% designer.
+%% editor.
 %%
 %% Provides values for UI customization in a `Settings' JSON object and
 %% image
@@ -8581,6 +8899,61 @@ update_resource_server(Client, Input)
 update_resource_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResourceServer">>, Input, Options).
+
+%% @doc Modifies existing terms documents for the requested app client.
+%%
+%% When Terms and
+%% conditions and Privacy policy documents are configured, the app client
+%% displays links to
+%% them in the sign-up page of managed login for the app client.
+%%
+%% You can provide URLs for terms documents in the languages that are
+%% supported by managed login localization:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html#managed-login-localization.
+%% Amazon Cognito directs users to the terms documents for
+%% their current language, with fallback to `default' if no document
+%% exists for
+%% the language.
+%%
+%% Each request accepts one type of terms document and a map of
+%% language-to-link for that
+%% document type. You must provide both types of terms documents in at least
+%% one language
+%% before Amazon Cognito displays your terms documents. Supply each type in
+%% separate
+%% requests.
+%%
+%% For more information, see Terms documents:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html#managed-login-terms-documents.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_terms(aws_client:aws_client(), update_terms_request()) ->
+    {ok, update_terms_response(), tuple()} |
+    {error, any()} |
+    {error, update_terms_errors(), tuple()}.
+update_terms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_terms(Client, Input, []).
+
+-spec update_terms(aws_client:aws_client(), update_terms_request(), proplists:proplist()) ->
+    {ok, update_terms_response(), tuple()} |
+    {error, any()} |
+    {error, update_terms_errors(), tuple()}.
+update_terms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTerms">>, Input, Options).
 
 %% @doc Updates the currently signed-in user's attributes.
 %%

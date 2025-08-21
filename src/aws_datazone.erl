@@ -2,15 +2,13 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon DataZone is a data management service that enables you to
-%% catalog, discover,
-%% govern, share, and analyze your data.
+%% catalog, discover, govern, share, and analyze your data.
 %%
-%% With Amazon DataZone, you can share and access your
-%% data across accounts and supported regions. Amazon DataZone simplifies
-%% your experience
-%% across Amazon Web Services services, including, but not limited to, Amazon
-%% Redshift, Amazon
-%% Athena, Amazon Web Services Glue, and Amazon Web Services Lake Formation.
+%% With Amazon DataZone, you can share and access your data across accounts
+%% and supported regions. Amazon DataZone simplifies your experience across
+%% Amazon Web Services services, including, but not limited to, Amazon
+%% Redshift, Amazon Athena, Amazon Web Services Glue, and Amazon Web Services
+%% Lake Formation.
 -module(aws_datazone).
 
 -export([accept_predictions/4,
@@ -418,6 +416,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"detail">> => list(),
+%%   <<"grantId">> => string(),
 %%   <<"principal">> => list()
 %% }
 -type policy_grant_member() :: #{binary() => any()}.
@@ -1391,9 +1390,12 @@
 %% }
 -type get_project_profile_output() :: #{binary() => any()}.
 
+
 %% Example:
-%% add_policy_grant_output() :: #{}
--type add_policy_grant_output() :: #{}.
+%% add_policy_grant_output() :: #{
+%%   <<"grantId">> => string()
+%% }
+-type add_policy_grant_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4803,6 +4805,7 @@
 %% Example:
 %% remove_policy_grant_input() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"grantIdentifier">> => string(),
 %%   <<"policyType">> := list(any()),
 %%   <<"principal">> := list()
 %% }
@@ -7393,8 +7396,7 @@
 %%====================================================================
 
 %% @doc Accepts automatically generated business-friendly metadata for your
-%% Amazon DataZone
-%% assets.
+%% Amazon DataZone assets.
 -spec accept_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), accept_predictions_input()) ->
     {ok, accept_predictions_output(), tuple()} |
     {error, any()} |
@@ -7498,8 +7500,8 @@ add_entity_owner(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a policy grant (an authorization policy) to a specified entity,
-%% including domain
-%% units, environment blueprint configurations, or environment profiles.
+%% including domain units, environment blueprint configurations, or
+%% environment profiles.
 -spec add_policy_grant(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), add_policy_grant_input()) ->
     {ok, add_policy_grant_output(), tuple()} |
     {error, any()} |
@@ -7807,9 +7809,8 @@ create_asset_type(Client, DomainIdentifier, Input0, Options0) ->
 
 %% @doc Creates a new connection.
 %%
-%% In Amazon DataZone, a connection enables you to connect your
-%% resources (domains, projects, and environments) to external resources and
-%% services.
+%% In Amazon DataZone, a connection enables you to connect your resources
+%% (domains, projects, and environments) to external resources and services.
 -spec create_connection(aws_client:aws_client(), binary() | list(), create_connection_input()) ->
     {ok, create_connection_output(), tuple()} |
     {error, any()} |
@@ -8048,8 +8049,7 @@ create_environment(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an action for the environment, for example, creates a console
-%% link for an
-%% analytics tool that is available in this environment.
+%% link for an analytics tool that is available in this environment.
 -spec create_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), create_environment_action_input()) ->
     {ok, create_environment_action_output(), tuple()} |
     {error, any()} |
@@ -8254,8 +8254,7 @@ create_group_profile(Client, DomainIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Publishes a listing (a record of an asset at a given time) or removes
-%% a listing from the
-%% catalog.
+%% a listing from the catalog.
 -spec create_listing_change_set(aws_client:aws_client(), binary() | list(), create_listing_change_set_input()) ->
     {ok, create_listing_change_set_output(), tuple()} |
     {error, any()} |
@@ -8393,18 +8392,14 @@ create_project_profile(Client, DomainIdentifier, Input0, Options0) ->
 
 %% @doc Creates a rule in Amazon DataZone.
 %%
-%% A rule is a formal agreement that enforces specific
-%% requirements across user workflows (e.g., publishing assets to the
-%% catalog, requesting
+%% A rule is a formal agreement that enforces specific requirements across
+%% user workflows (e.g., publishing assets to the catalog, requesting
 %% subscriptions, creating projects) within the Amazon DataZone data portal.
-%% These rules help
-%% maintain consistency, ensure compliance, and uphold governance standards
-%% in data management
-%% processes. For instance, a metadata enforcement rule can specify the
-%% required information
-%% for creating a subscription request or publishing a data asset to the
-%% catalog, ensuring
-%% alignment with organizational standards.
+%% These rules help maintain consistency, ensure compliance, and uphold
+%% governance standards in data management processes. For instance, a
+%% metadata enforcement rule can specify the required information for
+%% creating a subscription request or publishing a data asset to the catalog,
+%% ensuring alignment with organizational standards.
 -spec create_rule(aws_client:aws_client(), binary() | list(), create_rule_input()) ->
     {ok, create_rule_output(), tuple()} |
     {error, any()} |
@@ -8712,9 +8707,8 @@ delete_asset_type(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 
 %% @doc Deletes and connection.
 %%
-%% In Amazon DataZone, a connection enables you to connect your
-%% resources (domains, projects, and environments) to external resources and
-%% services.
+%% In Amazon DataZone, a connection enables you to connect your resources
+%% (domains, projects, and environments) to external resources and services.
 -spec delete_connection(aws_client:aws_client(), binary() | list(), binary() | list(), delete_connection_input()) ->
     {ok, delete_connection_output(), tuple()} |
     {error, any()} |
@@ -8923,8 +8917,7 @@ delete_environment(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an action for the environment, for example, deletes a console
-%% link for an
-%% analytics tool that is available in this environment.
+%% link for an analytics tool that is available in this environment.
 -spec delete_environment_action(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_environment_action_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -9267,18 +9260,14 @@ delete_project_profile(Client, DomainIdentifier, Identifier, Input0, Options0) -
 
 %% @doc Deletes a rule in Amazon DataZone.
 %%
-%% A rule is a formal agreement that enforces specific
-%% requirements across user workflows (e.g., publishing assets to the
-%% catalog, requesting
+%% A rule is a formal agreement that enforces specific requirements across
+%% user workflows (e.g., publishing assets to the catalog, requesting
 %% subscriptions, creating projects) within the Amazon DataZone data portal.
-%% These rules help
-%% maintain consistency, ensure compliance, and uphold governance standards
-%% in data management
-%% processes. For instance, a metadata enforcement rule can specify the
-%% required information
-%% for creating a subscription request or publishing a data asset to the
-%% catalog, ensuring
-%% alignment with organizational standards.
+%% These rules help maintain consistency, ensure compliance, and uphold
+%% governance standards in data management processes. For instance, a
+%% metadata enforcement rule can specify the required information for
+%% creating a subscription request or publishing a data asset to the catalog,
+%% ensuring alignment with organizational standards.
 -spec delete_rule(aws_client:aws_client(), binary() | list(), binary() | list(), delete_rule_input()) ->
     {ok, delete_rule_output(), tuple()} |
     {error, any()} |
@@ -9642,9 +9631,8 @@ get_asset_type(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Optio
 
 %% @doc Gets a connection.
 %%
-%% In Amazon DataZone, a connection enables you to connect your
-%% resources (domains, projects, and environments) to external resources and
-%% services.
+%% In Amazon DataZone, a connection enables you to connect your resources
+%% (domains, projects, and environments) to external resources and services.
 -spec get_connection(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_connection_output(), tuple()} |
     {error, any()} |
@@ -10420,8 +10408,8 @@ get_lineage_node(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Opt
 
 %% @doc Gets a listing (a record of an asset at a given time).
 %%
-%% If you specify a listing version,
-%% only details that are specific to that version are returned.
+%% If you specify a listing version, only details that are specific to that
+%% version are returned.
 -spec get_listing(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_listing_output(), tuple()} |
     {error, any()} |
@@ -10575,18 +10563,14 @@ get_project_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, 
 
 %% @doc Gets the details of a rule in Amazon DataZone.
 %%
-%% A rule is a formal agreement that
-%% enforces specific requirements across user workflows (e.g., publishing
-%% assets to the
-%% catalog, requesting subscriptions, creating projects) within the Amazon
-%% DataZone data
-%% portal. These rules help maintain consistency, ensure compliance, and
-%% uphold governance
-%% standards in data management processes. For instance, a metadata
-%% enforcement rule can
-%% specify the required information for creating a subscription request or
-%% publishing a data
-%% asset to the catalog, ensuring alignment with organizational standards.
+%% A rule is a formal agreement that enforces specific requirements across
+%% user workflows (e.g., publishing assets to the catalog, requesting
+%% subscriptions, creating projects) within the Amazon DataZone data portal.
+%% These rules help maintain consistency, ensure compliance, and uphold
+%% governance standards in data management processes. For instance, a
+%% metadata enforcement rule can specify the required information for
+%% creating a subscription request or publishing a data asset to the catalog,
+%% ensuring alignment with organizational standards.
 -spec get_rule(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_rule_output(), tuple()} |
     {error, any()} |
@@ -11031,9 +11015,8 @@ list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap,
 
 %% @doc Lists connections.
 %%
-%% In Amazon DataZone, a connection enables you to connect your
-%% resources (domains, projects, and environments) to external resources and
-%% services.
+%% In Amazon DataZone, a connection enables you to connect your resources
+%% (domains, projects, and environments) to external resources and services.
 -spec list_connections(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_connections_output(), tuple()} |
     {error, any()} |
@@ -12016,18 +11999,14 @@ list_projects(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists existing rules.
 %%
-%% In Amazon DataZone, a rule is a formal agreement that enforces
-%% specific requirements across user workflows (e.g., publishing assets to
-%% the catalog,
-%% requesting subscriptions, creating projects) within the Amazon DataZone
-%% data portal. These
-%% rules help maintain consistency, ensure compliance, and uphold governance
-%% standards in data
-%% management processes. For instance, a metadata enforcement rule can
-%% specify the required
+%% In Amazon DataZone, a rule is a formal agreement that enforces specific
+%% requirements across user workflows (e.g., publishing assets to the
+%% catalog, requesting subscriptions, creating projects) within the Amazon
+%% DataZone data portal. These rules help maintain consistency, ensure
+%% compliance, and uphold governance standards in data management processes.
+%% For instance, a metadata enforcement rule can specify the required
 %% information for creating a subscription request or publishing a data asset
-%% to the catalog,
-%% ensuring alignment with organizational standards.
+%% to the catalog, ensuring alignment with organizational standards.
 -spec list_rules(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_rules_output(), tuple()} |
     {error, any()} |
@@ -12454,8 +12433,7 @@ put_environment_blueprint_configuration(Client, DomainIdentifier, EnvironmentBlu
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Rejects automatically generated business-friendly metadata for your
-%% Amazon DataZone
-%% assets.
+%% Amazon DataZone assets.
 -spec reject_predictions(aws_client:aws_client(), binary() | list(), binary() | list(), reject_predictions_input()) ->
     {ok, reject_predictions_output(), tuple()} |
     {error, any()} |
@@ -13004,9 +12982,8 @@ update_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, Input
 
 %% @doc Updates a connection.
 %%
-%% In Amazon DataZone, a connection enables you to connect your
-%% resources (domains, projects, and environments) to external resources and
-%% services.
+%% In Amazon DataZone, a connection enables you to connect your resources
+%% (domains, projects, and environments) to external resources and services.
 -spec update_connection(aws_client:aws_client(), binary() | list(), binary() | list(), update_connection_input()) ->
     {ok, update_connection_output(), tuple()} |
     {error, any()} |
@@ -13419,16 +13396,12 @@ update_project_profile(Client, DomainIdentifier, Identifier, Input0, Options0) -
 %%
 %% In Amazon DataZone, a rule is a formal agreement that enforces specific
 %% requirements across user workflows (e.g., publishing assets to the
-%% catalog, requesting
-%% subscriptions, creating projects) within the Amazon DataZone data portal.
-%% These rules help
-%% maintain consistency, ensure compliance, and uphold governance standards
-%% in data management
-%% processes. For instance, a metadata enforcement rule can specify the
-%% required information
-%% for creating a subscription request or publishing a data asset to the
-%% catalog, ensuring
-%% alignment with organizational standards.
+%% catalog, requesting subscriptions, creating projects) within the Amazon
+%% DataZone data portal. These rules help maintain consistency, ensure
+%% compliance, and uphold governance standards in data management processes.
+%% For instance, a metadata enforcement rule can specify the required
+%% information for creating a subscription request or publishing a data asset
+%% to the catalog, ensuring alignment with organizational standards.
 -spec update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), update_rule_input()) ->
     {ok, update_rule_output(), tuple()} |
     {error, any()} |

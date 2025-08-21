@@ -1,8 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% You can use the Billing API to programatically list the billing views
+%% @doc You can use the Billing API to programatically list the billing views
 %% available to you for a given time period.
 %%
 %% A billing view represents a set of billing data.
@@ -371,8 +370,7 @@
 %% API
 %%====================================================================
 
-%% @doc
-%% Creates a billing view with the specified billing view attributes.
+%% @doc Creates a billing view with the specified billing view attributes.
 -spec create_billing_view(aws_client:aws_client(), create_billing_view_request()) ->
     {ok, create_billing_view_response(), tuple()} |
     {error, any()} |
@@ -498,8 +496,7 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc
-%% An API operation for adding one or more tags (key-value pairs) to a
+%% @doc An API operation for adding one or more tags (key-value pairs) to a
 %% resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
@@ -517,8 +514,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc
-%% Removes one or more tags from a resource.
+%% @doc Removes one or more tags from a resource.
 %%
 %% Specify only tag keys in your request. Don't specify the value.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
