@@ -1407,12 +1407,14 @@ deactivate_contact_channel(Client, Input, Options)
 %% @doc To remove a contact from Incident Manager, you can delete the
 %% contact.
 %%
-%% Deleting a contact
-%% removes them from all escalation plans and related response plans.
-%% Deleting an escalation
-%% plan removes it from all related response plans. You will have to recreate
-%% the contact and
-%% its contact channels before you can use it again.
+%% However, deleting a
+%% contact does not remove it from escalation plans and related response
+%% plans. Deleting an
+%% escalation plan also does not remove it from all related response plans.
+%% To modify an
+%% escalation plan, we recommend using the `UpdateContact' action to
+%% specify a
+%% different existing contact.
 -spec delete_contact(aws_client:aws_client(), delete_contact_request()) ->
     {ok, delete_contact_result(), tuple()} |
     {error, any()} |
@@ -1429,15 +1431,17 @@ delete_contact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContact">>, Input, Options).
 
-%% @doc To no longer receive engagements on a contact channel, you can delete
+%% @doc To stop receiving engagements on a contact channel, you can delete
 %% the channel from a
 %% contact.
 %%
-%% Deleting the contact channel removes it from the contact's engagement
-%% plan. If you
-%% delete the only contact channel for a contact, you won't be able to
-%% engage that contact
-%% during an incident.
+%% Deleting the contact channel does not remove it from the contact's
+%% engagement
+%% plan, but the stage that includes the channel will be ignored. If you
+%% delete the only
+%% contact channel for a contact, you'll no longer be able to engage that
+%% contact during an
+%% incident.
 -spec delete_contact_channel(aws_client:aws_client(), delete_contact_channel_request()) ->
     {ok, delete_contact_channel_result(), tuple()} |
     {error, any()} |
@@ -1818,7 +1822,8 @@ list_rotations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRotations">>, Input, Options).
 
-%% @doc Lists the tags of an escalation plan or contact.
+%% @doc Lists the tags of a contact, escalation plan, rotation, or on-call
+%% schedule.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_result(), tuple()} |
     {error, any()} |

@@ -3149,6 +3149,17 @@
 -type column_row_filter() :: #{binary() => any()}.
 
 %% Example:
+%% data_quality_glue_table() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"PreProcessingQuery">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type data_quality_glue_table() :: #{binary() => any()}.
+
+%% Example:
 %% list_custom_entity_types_response() :: #{
 %%   <<"CustomEntityTypes">> => list(custom_entity_type()),
 %%   <<"NextToken">> => string()
@@ -7974,6 +7985,7 @@
 
 %% Example:
 %% data_source() :: #{
+%%   <<"DataQualityGlueTable">> => data_quality_glue_table(),
 %%   <<"GlueTable">> => glue_table()
 %% }
 -type data_source() :: #{binary() => any()}.
@@ -11057,6 +11069,10 @@ batch_get_workflows(Client, Input, Options)
     request(Client, <<"BatchGetWorkflows">>, Input, Options).
 
 %% @doc Annotate datapoints over time for a specific data quality statistic.
+%%
+%% The API requires both profileID and statisticID as part of the
+%% InclusionAnnotation input.
+%% The API only works for a single statisticId across multiple profiles.
 -spec batch_put_data_quality_statistic_annotation(aws_client:aws_client(), batch_put_data_quality_statistic_annotation_request()) ->
     {ok, batch_put_data_quality_statistic_annotation_response(), tuple()} |
     {error, any()} |
