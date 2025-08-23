@@ -757,6 +757,7 @@
 %% Example:
 %% docker_settings() :: #{
 %%   <<"EnableDockerAccess">> => list(any()),
+%%   <<"RootlessDocker">> => list(any()),
 %%   <<"VpcOnlyTrustedAccounts">> => list(string())
 %% }
 -type docker_settings() :: #{binary() => any()}.

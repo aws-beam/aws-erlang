@@ -1209,6 +1209,7 @@
 
 %% Example:
 %% update_web_acl_request() :: #{
+%%   <<"ApplicationConfig">> => application_config(),
 %%   <<"AssociationConfig">> => association_config(),
 %%   <<"CaptchaConfig">> => captcha_config(),
 %%   <<"ChallengeConfig">> => challenge_config(),

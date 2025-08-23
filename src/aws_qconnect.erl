@@ -792,6 +792,7 @@
 %% update_a_iprompt_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"modelId">> => string(),
 %%   <<"templateConfiguration">> => list(),
 %%   <<"visibilityStatus">> := string()
 %% }
@@ -3861,6 +3862,10 @@ create_a_i_guardrail_version(Client, AiGuardrailId, AssistantId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q in Connect AI Prompt.
+%%
+%% For more information on supported models, see Supported models for system
+%% and custom prompts:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/create-ai-prompts.html#cli-create-aiprompt.
 -spec create_a_iprompt(aws_client:aws_client(), binary() | list(), create_a_iprompt_request()) ->
     {ok, create_a_iprompt_response(), tuple()} |
     {error, any()} |

@@ -7237,21 +7237,16 @@ create_db_instance(Client, Input, Options)
 %% instance or Multi-AZ DB cluster.
 %%
 %% You can create a read replica for a DB instance running
-%% MariaDB, MySQL, Oracle, PostgreSQL, or SQL Server. You can create a read
-%% replica for a
-%% Multi-AZ DB cluster running MySQL or PostgreSQL. For more information, see
-%% Working
+%% Db2, MariaDB, MySQL, Oracle, PostgreSQL, or SQL Server. You can create a
+%% read replica
+%% for a Multi-AZ DB cluster running MySQL or PostgreSQL. For more
+%% information, see Working
 %% with read replicas:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html
 %% and Migrating from a Multi-AZ DB cluster to a DB instance using a read
 %% replica:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html#multi-az-db-clusters-migrating-to-instance-with-read-replica
 %% in the Amazon RDS User Guide.
-%%
-%% Amazon RDS for Db2 supports this operation for standby replicas. To create
-%% a standby
-%% replica for a DB instance running Db2, you must set `ReplicaMode' to
-%% `mounted'.
 %%
 %% Amazon Aurora doesn't support this operation. To create a DB instance
 %% for an Aurora DB cluster, use the `CreateDBInstance'
@@ -9929,8 +9924,8 @@ modify_db_shard_group(Client, Input, Options)
 %% The snapshot can be encrypted
 %% or unencrypted, but not shared or public.
 %%
-%% Amazon RDS supports upgrading DB snapshots for MySQL, PostgreSQL, and
-%% Oracle. This operation
+%% Amazon RDS supports upgrading DB snapshots for MariaDB, MySQL, PostgreSQL,
+%% and Oracle. This operation
 %% doesn't apply to RDS Custom or RDS for Db2.
 -spec modify_db_snapshot(aws_client:aws_client(), modify_db_snapshot_message()) ->
     {ok, modify_db_snapshot_result(), tuple()} |
@@ -10697,8 +10692,8 @@ restore_db_instance_from_db_snapshot(Client, Input, Options)
 %% store it on Amazon Simple Storage Service (Amazon S3),
 %% and then restore the backup file onto a new Amazon RDS DB instance running
 %% MySQL.
-%% For more information, see Importing Data into an Amazon RDS MySQL DB
-%% Instance:
+%% For more information, see Restoring a backup into an Amazon RDS for MySQL
+%% DB instance:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html
 %% in the Amazon RDS User Guide.
 %%

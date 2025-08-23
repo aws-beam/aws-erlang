@@ -155,6 +155,7 @@
 %% create_canary_request() :: #{
 %%   <<"ArtifactConfig">> => artifact_config_input(),
 %%   <<"ArtifactS3Location">> := string(),
+%%   <<"BrowserConfigs">> => list(browser_config()),
 %%   <<"Code">> := canary_code_input(),
 %%   <<"ExecutionRoleArn">> := string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
@@ -174,7 +175,8 @@
 %% Example:
 %% visual_reference_output() :: #{
 %%   <<"BaseCanaryRunId">> => string(),
-%%   <<"BaseScreenshots">> => list(base_screenshot())
+%%   <<"BaseScreenshots">> => list(base_screenshot()),
+%%   <<"BrowserType">> => list(any())
 %% }
 -type visual_reference_output() :: #{binary() => any()}.
 
@@ -183,6 +185,7 @@
 %% start_canary_dry_run_request() :: #{
 %%   <<"ArtifactConfig">> => artifact_config_input(),
 %%   <<"ArtifactS3Location">> => string(),
+%%   <<"BrowserConfigs">> => list(browser_config()),
 %%   <<"Code">> => canary_code_input(),
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
@@ -191,6 +194,7 @@
 %%   <<"RuntimeVersion">> => string(),
 %%   <<"SuccessRetentionPeriodInDays">> => integer(),
 %%   <<"VisualReference">> => visual_reference_input(),
+%%   <<"VisualReferences">> => list(visual_reference_input()),
 %%   <<"VpcConfig">> => vpc_config_input()
 %% }
 -type start_canary_dry_run_request() :: #{binary() => any()}.
@@ -272,6 +276,7 @@
 %% Example:
 %% canary_run() :: #{
 %%   <<"ArtifactS3Location">> => string(),
+%%   <<"BrowserType">> => list(any()),
 %%   <<"DryRunConfig">> => canary_dry_run_config_output(),
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
@@ -325,6 +330,7 @@
 %% update_canary_request() :: #{
 %%   <<"ArtifactConfig">> => artifact_config_input(),
 %%   <<"ArtifactS3Location">> => string(),
+%%   <<"BrowserConfigs">> => list(browser_config()),
 %%   <<"Code">> => canary_code_input(),
 %%   <<"DryRunId">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
@@ -335,6 +341,7 @@
 %%   <<"Schedule">> => canary_schedule_input(),
 %%   <<"SuccessRetentionPeriodInDays">> => integer(),
 %%   <<"VisualReference">> => visual_reference_input(),
+%%   <<"VisualReferences">> => list(visual_reference_input()),
 %%   <<"VpcConfig">> => vpc_config_input()
 %% }
 -type update_canary_request() :: #{binary() => any()}.
@@ -472,6 +479,7 @@
 
 %% Example:
 %% describe_canaries_last_run_request() :: #{
+%%   <<"BrowserType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"Names">> => list(string()),
 %%   <<"NextToken">> => string()
@@ -505,7 +513,8 @@
 %% Example:
 %% visual_reference_input() :: #{
 %%   <<"BaseCanaryRunId">> => string(),
-%%   <<"BaseScreenshots">> => list(base_screenshot())
+%%   <<"BaseScreenshots">> => list(base_screenshot()),
+%%   <<"BrowserType">> => list(any())
 %% }
 -type visual_reference_input() :: #{binary() => any()}.
 
@@ -538,6 +547,14 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% engine_config() :: #{
+%%   <<"BrowserType">> => list(any()),
+%%   <<"EngineArn">> => string()
+%% }
+-type engine_config() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
@@ -557,9 +574,11 @@
 %% canary() :: #{
 %%   <<"ArtifactConfig">> => artifact_config_output(),
 %%   <<"ArtifactS3Location">> => string(),
+%%   <<"BrowserConfigs">> => list(browser_config()),
 %%   <<"Code">> => canary_code_output(),
 %%   <<"DryRunConfig">> => dry_run_config_output(),
 %%   <<"EngineArn">> => string(),
+%%   <<"EngineConfigs">> => list(engine_config()),
 %%   <<"ExecutionRoleArn">> => string(),
 %%   <<"FailureRetentionPeriodInDays">> => integer(),
 %%   <<"Id">> => string(),
@@ -573,6 +592,7 @@
 %%   <<"Tags">> => map(),
 %%   <<"Timeline">> => canary_timeline(),
 %%   <<"VisualReference">> => visual_reference_output(),
+%%   <<"VisualReferences">> => list(visual_reference_output()),
 %%   <<"VpcConfig">> => vpc_config_output()
 %% }
 -type canary() :: #{binary() => any()}.
@@ -680,6 +700,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_associated_groups_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% browser_config() :: #{
+%%   <<"BrowserType">> => list(any())
+%% }
+-type browser_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1818,12 +1845,18 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the configuration of a canary that has
-%% already been created.
+%% @doc Updates the configuration of a canary that has already been created.
+%%
+%% For multibrowser canaries, you can add or remove browsers by updating the
+%% browserConfig list in the update call. For example:
+%%
+%% To add Firefox to a canary that currently uses Chrome, specify
+%% browserConfigs as [CHROME, FIREFOX]
+%%
+%% To remove Firefox and keep only Chrome, specify browserConfigs as [CHROME]
 %%
 %% You can't use this operation to update the tags of an existing canary.
-%% To
-%% change the tags of an existing canary, use
+%% To change the tags of an existing canary, use
 %% TagResource:
 %% https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_TagResource.html.
 %%
