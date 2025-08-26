@@ -151,6 +151,13 @@
 -type create_partnership_request() :: #{binary() => any()}.
 
 %% Example:
+%% x12_element_requirement_validation_rule() :: #{
+%%   <<"elementPosition">> => string(),
+%%   <<"requirement">> => list(any())
+%% }
+-type x12_element_requirement_validation_rule() :: #{binary() => any()}.
+
+%% Example:
 %% get_transformer_request() :: #{
 
 %% }
@@ -371,10 +378,17 @@
 
 %% Example:
 %% output_conversion() :: #{
+%%   <<"advancedOptions">> => advanced_options(),
 %%   <<"formatOptions">> => list(),
 %%   <<"toFormat">> => list(any())
 %% }
 -type output_conversion() :: #{binary() => any()}.
+
+%% Example:
+%% x12_validation_options() :: #{
+%%   <<"validationRules">> => list(list())
+%% }
+-type x12_validation_options() :: #{binary() => any()}.
 
 %% Example:
 %% transformer_summary() :: #{
@@ -624,6 +638,14 @@
 -type update_transformer_response() :: #{binary() => any()}.
 
 %% Example:
+%% x12_code_list_validation_rule() :: #{
+%%   <<"codesToAdd">> => list([string()]()),
+%%   <<"codesToRemove">> => list([string()]()),
+%%   <<"elementId">> => string()
+%% }
+-type x12_code_list_validation_rule() :: #{binary() => any()}.
+
+%% Example:
 %% sample_document_keys() :: #{
 %%   <<"input">> => string(),
 %%   <<"output">> => string()
@@ -633,7 +655,8 @@
 %% Example:
 %% test_parsing_response() :: #{
 %%   <<"parsedFileContent">> => [string()],
-%%   <<"parsedSplitFileContents">> => list([string()]())
+%%   <<"parsedSplitFileContents">> => list([string()]()),
+%%   <<"validationMessages">> => list([string()]())
 %% }
 -type test_parsing_response() :: #{binary() => any()}.
 
@@ -740,6 +763,14 @@
 -type update_partnership_response() :: #{binary() => any()}.
 
 %% Example:
+%% x12_element_length_validation_rule() :: #{
+%%   <<"elementId">> => string(),
+%%   <<"maxLength">> => [integer()],
+%%   <<"minLength">> => [integer()]
+%% }
+-type x12_element_length_validation_rule() :: #{binary() => any()}.
+
+%% Example:
 %% x12_control_numbers() :: #{
 %%   <<"startingFunctionalGroupControlNumber">> => integer(),
 %%   <<"startingInterchangeControlNumber">> => integer(),
@@ -796,7 +827,8 @@
 
 %% Example:
 %% x12_advanced_options() :: #{
-%%   <<"splitOptions">> => x12_split_options()
+%%   <<"splitOptions">> => x12_split_options(),
+%%   <<"validationOptions">> => x12_validation_options()
 %% }
 -type x12_advanced_options() :: #{binary() => any()}.
 
@@ -839,6 +871,7 @@
 
 %% Example:
 %% conversion_target() :: #{
+%%   <<"advancedOptions">> => advanced_options(),
 %%   <<"fileFormat">> => list(any()),
 %%   <<"formatDetails">> => list(),
 %%   <<"outputSampleFile">> => list()

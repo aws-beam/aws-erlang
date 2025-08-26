@@ -16,6 +16,8 @@
          create_preset/3,
          create_queue/2,
          create_queue/3,
+         create_resource_share/2,
+         create_resource_share/3,
          delete_job_template/3,
          delete_job_template/4,
          delete_policy/2,
@@ -114,6 +116,10 @@
 %%   <<"XavcClass">> => list(any())
 %% }
 -type xavc4k_intra_vbr_profile_settings() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_share_response() :: #{}
+-type create_resource_share_response() :: #{}.
 
 
 %% Example:
@@ -336,7 +342,16 @@
 
 
 %% Example:
+%% create_resource_share_request() :: #{
+%%   <<"JobId">> := string(),
+%%   <<"SupportCaseId">> := string()
+%% }
+-type create_resource_share_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% mp2_settings() :: #{
+%%   <<"AudioDescriptionMix">> => list(any()),
 %%   <<"Bitrate">> => integer(),
 %%   <<"Channels">> => integer(),
 %%   <<"SampleRate">> => integer()
@@ -1724,7 +1739,9 @@
 %%   <<"Pid">> => integer(),
 %%   <<"ProgramNumber">> => integer(),
 %%   <<"Rotate">> => list(any()),
-%%   <<"SampleRange">> => list(any())
+%%   <<"SampleRange">> => list(any()),
+%%   <<"SelectorType">> => list(any()),
+%%   <<"Streams">> => list(integer())
 %% }
 -type video_selector() :: #{binary() => any()}.
 
@@ -2314,6 +2331,7 @@
 %%   <<"JobEngineVersionUsed">> => string(),
 %%   <<"JobPercentComplete">> => integer(),
 %%   <<"JobTemplate">> => string(),
+%%   <<"LastShareDetails">> => string(),
 %%   <<"Messages">> => job_messages(),
 %%   <<"OutputGroupDetails">> => list(output_group_detail()),
 %%   <<"Priority">> => integer(),
@@ -2322,6 +2340,7 @@
 %%   <<"RetryCount">> => integer(),
 %%   <<"Role">> => string(),
 %%   <<"Settings">> => job_settings(),
+%%   <<"ShareStatus">> => list(any()),
 %%   <<"SimulateReservedQueue">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusUpdateInterval">> => list(any()),
@@ -3137,6 +3156,14 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type create_resource_share_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type delete_job_template_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -3542,6 +3569,41 @@ create_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2017-08-29/queues"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a new resource share request for MediaConvert resources with
+%% AWS Support.
+-spec create_resource_share(aws_client:aws_client(), create_resource_share_request()) ->
+    {ok, create_resource_share_response(), tuple()} |
+    {error, any()} |
+    {error, create_resource_share_errors(), tuple()}.
+create_resource_share(Client, Input) ->
+    create_resource_share(Client, Input, []).
+
+-spec create_resource_share(aws_client:aws_client(), create_resource_share_request(), proplists:proplist()) ->
+    {ok, create_resource_share_response(), tuple()} |
+    {error, any()} |
+    {error, create_resource_share_errors(), tuple()}.
+create_resource_share(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2017-08-29/resourceShares"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

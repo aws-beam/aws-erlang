@@ -1,11 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This AWS CodeStar Notifications API Reference provides descriptions
-%% and usage examples of the
-%% operations and data types for the AWS CodeStar Notifications API.
+%% @doc This CodeStar Notifications API Reference provides descriptions and
+%% usage examples of the
+%% operations and data types for the CodeStar Notifications API.
 %%
-%% You can use the AWS CodeStar Notifications API
+%% You can use the CodeStar Notifications API
 %% to work with the following objects:
 %%
 %% Notification rules, by calling the following:
@@ -54,8 +54,8 @@
 %% `UntagResource', which removes a tag from a notification rule in
 %% your account.
 %%
-%% For information about how to use AWS CodeStar Notifications, see the
-%% Amazon Web Services Developer Tools Console User Guide:
+%% For information about how to use CodeStar Notifications, see the Amazon
+%% Web Services Developer Tools Console User Guide:
 %% https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html.
 -module(aws_codestar_notifications).
 
@@ -481,8 +481,9 @@
 %% @doc Creates a notification rule for a resource.
 %%
 %% The rule specifies the events you want
-%% notifications about and the targets (such as Chatbot topics or Chatbot
-%% clients configured for Slack) where you want to receive
+%% notifications about and the targets (such as Amazon Q Developer in chat
+%% applications topics or Amazon Q Developer in chat applications clients
+%% configured for Slack) where you want to receive
 %% them.
 -spec create_notification_rule(aws_client:aws_client(), create_notification_rule_request()) ->
     {ok, create_notification_rule_result(), tuple()} |
@@ -758,8 +759,9 @@ list_targets(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an association between a notification rule and an Chatbot
-%% topic or Chatbot client so that the
+%% @doc Creates an association between a notification rule and an Amazon Q
+%% Developer in chat applications topic or Amazon Q Developer in chat
+%% applications client so that the
 %% associated target can receive notifications when the events described in
 %% the rule are
 %% triggered.
@@ -830,8 +832,8 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes an association between a notification rule and an Chatbot
-%% topic so that
+%% @doc Removes an association between a notification rule and an Amazon Q
+%% Developer in chat applications topic so that
 %% subscribers to that topic stop receiving notifications when the events
 %% described in the
 %% rule are triggered.

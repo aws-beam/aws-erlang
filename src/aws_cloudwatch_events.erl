@@ -2785,7 +2785,7 @@ put_rule(Client, Input, Options)
 %% (Oregon)
 %% us-west-2, or Europe (Ireland) eu-west-1 Regions as a target for a rule.
 %%
-%% Firehose delivery stream (Kinesis Data Firehose)
+%% Firehose delivery stream (Firehose)
 %%
 %% Inspector assessment template (Amazon Inspector)
 %%

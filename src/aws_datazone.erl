@@ -21,6 +21,8 @@
          add_policy_grant/6,
          associate_environment_role/5,
          associate_environment_role/6,
+         associate_governed_terms/5,
+         associate_governed_terms/6,
          cancel_metadata_generation_run/4,
          cancel_metadata_generation_run/5,
          cancel_subscription/4,
@@ -131,6 +133,8 @@
          delete_time_series_data_points/6,
          disassociate_environment_role/5,
          disassociate_environment_role/6,
+         disassociate_governed_terms/5,
+         disassociate_governed_terms/6,
          get_account_pool/3,
          get_account_pool/5,
          get_account_pool/6,
@@ -514,6 +518,7 @@
 %%   <<"firstRevisionCreatedAt">> => non_neg_integer(),
 %%   <<"firstRevisionCreatedBy">> => string(),
 %%   <<"glossaryTerms">> => list(string()),
+%%   <<"governedGlossaryTerms">> => list(string()),
 %%   <<"identifier">> => string(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
@@ -621,7 +626,8 @@
 %%   <<"name">> => string(),
 %%   <<"shortDescription">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"termRelations">> => term_relations()
+%%   <<"termRelations">> => term_relations(),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type update_glossary_term_output() :: #{binary() => any()}.
 
@@ -1223,6 +1229,10 @@
 %% }
 -type create_data_product_input() :: #{binary() => any()}.
 
+%% Example:
+%% associate_governed_terms_output() :: #{}
+-type associate_governed_terms_output() :: #{}.
+
 
 %% Example:
 %% domain_summary() :: #{
@@ -1508,6 +1518,7 @@
 %%   <<"firstRevisionCreatedBy">> => string(),
 %%   <<"formsOutput">> => list(form_output()),
 %%   <<"glossaryTerms">> => list(string()),
+%%   <<"governedGlossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
 %%   <<"listing">> => asset_listing_details(),
@@ -2492,7 +2503,8 @@
 %%   <<"status">> => list(any()),
 %%   <<"termRelations">> => term_relations(),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"updatedBy">> => string(),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type glossary_term_item() :: #{binary() => any()}.
 
@@ -2778,6 +2790,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"forms">> => string(),
 %%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"governedGlossaryTerms">> => list(detailed_glossary_term()),
 %%   <<"latestTimeSeriesDataPointForms">> => list(time_series_data_point_summary_form_output()),
 %%   <<"owningProjectId">> => string()
 %% }
@@ -2914,7 +2927,8 @@
 %%   <<"status">> => list(any()),
 %%   <<"termRelations">> => term_relations(),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"updatedBy">> => string(),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type get_glossary_term_output() :: #{binary() => any()}.
 
@@ -3106,7 +3120,8 @@
 %%   <<"owningProjectId">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"updatedBy">> => string(),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type get_glossary_output() :: #{binary() => any()}.
 
@@ -3341,7 +3356,8 @@
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"owningProjectIdentifier">> := string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type create_glossary_input() :: #{binary() => any()}.
 
@@ -3724,7 +3740,8 @@
 %%   <<"name">> => string(),
 %%   <<"shortDescription">> => string(),
 %%   <<"status">> => list(any()),
-%%   <<"termRelations">> => term_relations()
+%%   <<"termRelations">> => term_relations(),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type create_glossary_term_output() :: #{binary() => any()}.
 
@@ -3825,7 +3842,8 @@
 %%   <<"owningProjectId">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
-%%   <<"updatedBy">> => string()
+%%   <<"updatedBy">> => string(),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type glossary_item() :: #{binary() => any()}.
 
@@ -3930,6 +3948,7 @@
 %%   <<"firstRevisionCreatedBy">> => string(),
 %%   <<"formsOutput">> => list(form_output()),
 %%   <<"glossaryTerms">> => list(string()),
+%%   <<"governedGlossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
 %%   <<"listing">> => asset_listing_details(),
@@ -4182,6 +4201,13 @@
 
 
 %% Example:
+%% disassociate_governed_terms_input() :: #{
+%%   <<"governedGlossaryTerms">> := list(string())
+%% }
+-type disassociate_governed_terms_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% row_filter_configuration() :: #{
 %%   <<"rowFilter">> => list(),
 %%   <<"sensitive">> => [boolean()]
@@ -4429,6 +4455,7 @@
 %%   <<"entityRevision">> => string(),
 %%   <<"entityType">> => string(),
 %%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"governedGlossaryTerms">> => list(detailed_glossary_term()),
 %%   <<"listingCreatedBy">> => string(),
 %%   <<"listingId">> => string(),
 %%   <<"listingRevision">> => string(),
@@ -4610,6 +4637,13 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_governed_terms_input() :: #{
+%%   <<"governedGlossaryTerms">> := list(string())
+%% }
+-type associate_governed_terms_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4895,6 +4929,10 @@
 %%   <<"updatedBy">> => string()
 %% }
 -type accept_subscription_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_governed_terms_output() :: #{}
+-type disassociate_governed_terms_output() :: #{}.
 
 
 %% Example:
@@ -5701,7 +5739,8 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type update_glossary_output() :: #{binary() => any()}.
 
@@ -5781,6 +5820,7 @@
 %%   <<"firstRevisionCreatedBy">> => string(),
 %%   <<"formsOutput">> => list(form_output()),
 %%   <<"glossaryTerms">> => list(string()),
+%%   <<"governedGlossaryTerms">> => list(string()),
 %%   <<"id">> => string(),
 %%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
 %%   <<"listing">> => asset_listing_details(),
@@ -6083,7 +6123,8 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type create_glossary_output() :: #{binary() => any()}.
 
@@ -6199,6 +6240,14 @@
     conflict_exception().
 
 -type associate_environment_role_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type associate_governed_terms_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -6637,6 +6686,14 @@
     resource_not_found_exception().
 
 -type disassociate_environment_role_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type disassociate_governed_terms_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -7550,6 +7607,40 @@ associate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, Envi
 associate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, EnvironmentRoleArn, Input0, Options0) ->
     Method = put,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/roles/", aws_util:encode_uri(EnvironmentRoleArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates governed terms with an asset.
+-spec associate_governed_terms(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), associate_governed_terms_input()) ->
+    {ok, associate_governed_terms_output(), tuple()} |
+    {error, any()} |
+    {error, associate_governed_terms_errors(), tuple()}.
+associate_governed_terms(Client, DomainIdentifier, EntityIdentifier, EntityType, Input) ->
+    associate_governed_terms(Client, DomainIdentifier, EntityIdentifier, EntityType, Input, []).
+
+-spec associate_governed_terms(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), associate_governed_terms_input(), proplists:proplist()) ->
+    {ok, associate_governed_terms_output(), tuple()} |
+    {error, any()} |
+    {error, associate_governed_terms_errors(), tuple()}.
+associate_governed_terms(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/associate-governed-terms"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -9454,6 +9545,40 @@ disassociate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, E
 disassociate_environment_role(Client, DomainIdentifier, EnvironmentIdentifier, EnvironmentRoleArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/roles/", aws_util:encode_uri(EnvironmentRoleArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates restricted terms from an asset.
+-spec disassociate_governed_terms(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_governed_terms_input()) ->
+    {ok, disassociate_governed_terms_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_governed_terms_errors(), tuple()}.
+disassociate_governed_terms(Client, DomainIdentifier, EntityIdentifier, EntityType, Input) ->
+    disassociate_governed_terms(Client, DomainIdentifier, EntityIdentifier, EntityType, Input, []).
+
+-spec disassociate_governed_terms(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_governed_terms_input(), proplists:proplist()) ->
+    {ok, disassociate_governed_terms_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_governed_terms_errors(), tuple()}.
+disassociate_governed_terms(Client, DomainIdentifier, EntityIdentifier, EntityType, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/entities/", aws_util:encode_uri(EntityType), "/", aws_util:encode_uri(EntityIdentifier), "/disassociate-governed-terms"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Amazon SageMaker runtime API.
+%% @doc The Amazon SageMaker AI runtime API.
 -module(aws_sagemaker_runtime).
 
 -export([invoke_endpoint/3,
@@ -182,17 +182,17 @@
 %% API
 %%====================================================================
 
-%% @doc After you deploy a model into production using Amazon SageMaker
+%% @doc After you deploy a model into production using Amazon SageMaker AI
 %% hosting services,
 %% your client applications use this API to get inferences from the model
 %% hosted at the
 %% specified endpoint.
 %%
-%% For an overview of Amazon SageMaker, see How It Works:
+%% For an overview of Amazon SageMaker AI, see How It Works:
 %% https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html.
 %%
-%% Amazon SageMaker strips all POST headers except those supported by the
-%% API. Amazon SageMaker might add
+%% Amazon SageMaker AI strips all POST headers except those supported by the
+%% API. Amazon SageMaker AI might add
 %% additional headers. You should not rely on the behavior of headers outside
 %% those
 %% enumerated in the request syntax.
@@ -214,8 +214,8 @@
 %%
 %% Endpoints are scoped to an individual account, and are not public. The URL
 %% does
-%% not contain the account ID, but Amazon SageMaker determines the account ID
-%% from
+%% not contain the account ID, but Amazon SageMaker AI determines the account
+%% ID from
 %% the authentication token that is supplied by the caller.
 -spec invoke_endpoint(aws_client:aws_client(), binary() | list(), invoke_endpoint_input()) ->
     {ok, invoke_endpoint_output(), tuple()} |
@@ -281,7 +281,7 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
         Result
     end.
 
-%% @doc After you deploy a model into production using Amazon SageMaker
+%% @doc After you deploy a model into production using Amazon SageMaker AI
 %% hosting services,
 %% your client applications use this API to get inferences from the model
 %% hosted at the
@@ -295,8 +295,8 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
 %% result of the
 %% inference request but contain information about where you can locate it.
 %%
-%% Amazon SageMaker strips all POST headers except those supported by the
-%% API. Amazon SageMaker might add
+%% Amazon SageMaker AI strips all POST headers except those supported by the
+%% API. Amazon SageMaker AI might add
 %% additional headers. You should not rely on the behavior of headers outside
 %% those
 %% enumerated in the request syntax.
@@ -372,13 +372,13 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
 %% series of
 %% parts. Before you can get an inference stream, you must have access to a
 %% model that's
-%% deployed using Amazon SageMaker hosting services, and the container for
+%% deployed using Amazon SageMaker AI hosting services, and the container for
 %% that model
 %% must support inference streaming.
 %%
 %% For more information that can help you use this API, see the following
 %% sections in the
-%% Amazon SageMaker Developer Guide:
+%% Amazon SageMaker AI Developer Guide:
 %%
 %% For information about how to add streaming support to a model, see How
 %% Containers Serve Requests:
@@ -390,14 +390,14 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
 %%
 %% Before you can use this operation, your IAM permissions must allow the
 %% `sagemaker:InvokeEndpoint' action. For more information about Amazon
-%% SageMaker actions for IAM policies, see Actions, resources, and condition
-%% keys for Amazon SageMaker:
+%% SageMaker AI actions for IAM policies, see Actions, resources, and
+%% condition keys for Amazon SageMaker AI:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazonsagemaker.html
 %% in the IAM Service Authorization
 %% Reference.
 %%
-%% Amazon SageMaker strips all POST headers except those supported by the
-%% API. Amazon SageMaker might add
+%% Amazon SageMaker AI strips all POST headers except those supported by the
+%% API. Amazon SageMaker AI might add
 %% additional headers. You should not rely on the behavior of headers outside
 %% those
 %% enumerated in the request syntax.

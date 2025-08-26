@@ -1,22 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% Amazon CodeGuru Security is in preview release and is subject to change.
+%% @doc On November 20, 2025, AWS will discontinue support for Amazon
+%% CodeGuru Security.
+%%
+%% After November 20, 2025, you will no longer be able to access the
+%% /codeguru/security console, service resources, or documentation. For more
+%% information, see
+%% [https://docs.aws.amazon.com/codeguru/latest/security-ug/end-of-support.html].
 %%
 %% This section provides documentation for the Amazon CodeGuru Security API
-%% operations.
-%% CodeGuru Security is a service that uses program analysis and machine
-%% learning to detect
-%% security policy violations and vulnerabilities, and recommends ways to
-%% address these security
-%% risks.
+%% operations. CodeGuru Security is a service that uses program analysis and
+%% machine learning to detect security policy violations and vulnerabilities,
+%% and recommends ways to address these security risks.
 %%
 %% By proactively detecting and providing recommendations for addressing
-%% security risks,
-%% CodeGuru Security improves the overall security of your application code.
-%% For more information
-%% about CodeGuru Security, see the
+%% security risks, CodeGuru Security improves the overall security of your
+%% application code. For more information about CodeGuru Security, see the
 %% Amazon CodeGuru Security User Guide:
 %% https://docs.aws.amazon.com/codeguru/latest/security-ug/what-is-codeguru-security.html.
 -module(aws_codeguru_security).
@@ -656,12 +656,10 @@ create_scan(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates a pre-signed URL, request headers used to upload a code
-%% resource, and code
-%% artifact identifier for the uploaded resource.
+%% resource, and code artifact identifier for the uploaded resource.
 %%
 %% You can upload your code resource to the URL with the request headers
-%% using any HTTP
-%% client.
+%% using any HTTP client.
 -spec create_upload_url(aws_client:aws_client(), create_upload_url_request()) ->
     {ok, create_upload_url_response(), tuple()} |
     {error, any()} |
@@ -776,10 +774,8 @@ get_findings(Client, ScanName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a summary of metrics for an account from a specified date,
-%% including number of open
-%% findings, the categories with most findings, the scans with most open
-%% findings, and scans with
-%% most open critical findings.
+%% including number of open findings, the categories with most findings, the
+%% scans with most open findings, and scans with most open critical findings.
 -spec get_metrics_summary(aws_client:aws_client(), binary() | list()) ->
     {ok, get_metrics_summary_response(), tuple()} |
     {error, any()} |
@@ -909,8 +905,7 @@ list_findings_metrics(Client, EndDate, StartDate, QueryMap, HeadersMap, Options0
 
 %% @doc Returns a list of all scans in an account.
 %%
-%% Does not return `EXPRESS'
-%% scans.
+%% Does not return `EXPRESS' scans.
 -spec list_scans(aws_client:aws_client()) ->
     {ok, list_scans_response(), tuple()} |
     {error, any()} |
