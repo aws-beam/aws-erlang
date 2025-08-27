@@ -2,16 +2,14 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc With the Amazon Location Routes API you can calculate routes and
-%% estimate travel time
-%% based on up-to-date road network and live traffic information.
+%% estimate travel time based on up-to-date road network and live traffic
+%% information.
 %%
 %% Calculate optimal travel routes and estimate travel times using up-to-date
-%% road network
-%% and traffic data. Key features include:
+%% road network and traffic data. Key features include:
 %%
 %% Point-to-point routing with estimated travel time, distance, and
-%% turn-by-turn
-%% directions
+%% turn-by-turn directions
 %%
 %% Multi-point route optimization to minimize travel time or distance
 %%
@@ -40,10 +38,10 @@
 
 %% Example:
 %% route_toll_pass() :: #{
-%%   <<"IncludesReturnTrip">> => [boolean()],
-%%   <<"SeniorPass">> => [boolean()],
-%%   <<"TransferCount">> => [integer()],
-%%   <<"TripCount">> => [integer()],
+%%   <<"IncludesReturnTrip">> => boolean(),
+%%   <<"SeniorPass">> => boolean(),
+%%   <<"TransferCount">> => integer(),
+%%   <<"TripCount">> => integer(),
 %%   <<"ValidityPeriod">> => route_toll_pass_validity_period()
 %% }
 -type route_toll_pass() :: #{binary() => any()}.
@@ -51,7 +49,7 @@
 
 %% Example:
 %% waypoint_optimization_trailer_options() :: #{
-%%   <<"TrailerCount">> => [integer()]
+%%   <<"TrailerCount">> => integer()
 %% }
 -type waypoint_optimization_trailer_options() :: #{binary() => any()}.
 
@@ -59,16 +57,16 @@
 %% Example:
 %% route_avoidance_options() :: #{
 %%   <<"Areas">> => list(route_avoidance_area()),
-%%   <<"CarShuttleTrains">> => [boolean()],
-%%   <<"ControlledAccessHighways">> => [boolean()],
-%%   <<"DirtRoads">> => [boolean()],
-%%   <<"Ferries">> => [boolean()],
-%%   <<"SeasonalClosure">> => [boolean()],
-%%   <<"TollRoads">> => [boolean()],
-%%   <<"TollTransponders">> => [boolean()],
+%%   <<"CarShuttleTrains">> => boolean(),
+%%   <<"ControlledAccessHighways">> => boolean(),
+%%   <<"DirtRoads">> => boolean(),
+%%   <<"Ferries">> => boolean(),
+%%   <<"SeasonalClosure">> => boolean(),
+%%   <<"TollRoads">> => boolean(),
+%%   <<"TollTransponders">> => boolean(),
 %%   <<"TruckRoadTypes">> => list(string()),
-%%   <<"Tunnels">> => [boolean()],
-%%   <<"UTurns">> => [boolean()],
+%%   <<"Tunnels">> => boolean(),
+%%   <<"UTurns">> => boolean(),
 %%   <<"ZoneCategories">> => list(route_avoidance_zone_category())
 %% }
 -type route_avoidance_options() :: #{binary() => any()}.
@@ -131,7 +129,7 @@
 %% Example:
 %% route_destination_options() :: #{
 %%   <<"AvoidActionsForDistance">> => float(),
-%%   <<"AvoidUTurns">> => [boolean()],
+%%   <<"AvoidUTurns">> => boolean(),
 %%   <<"Heading">> => float(),
 %%   <<"Matching">> => route_matching_options(),
 %%   <<"SideOfStreet">> => route_side_of_street_options(),
@@ -150,19 +148,19 @@
 
 %% Example:
 %% isoline_allow_options() :: #{
-%%   <<"Hot">> => [boolean()],
-%%   <<"Hov">> => [boolean()]
+%%   <<"Hot">> => boolean(),
+%%   <<"Hov">> => boolean()
 %% }
 -type isoline_allow_options() :: #{binary() => any()}.
 
 
 %% Example:
 %% route_toll_rate() :: #{
-%%   <<"ApplicableTimes">> => [string()],
+%%   <<"ApplicableTimes">> => string(),
 %%   <<"ConvertedPrice">> => route_toll_price(),
-%%   <<"Id">> => [string()],
+%%   <<"Id">> => string(),
 %%   <<"LocalPrice">> => route_toll_price(),
-%%   <<"Name">> => [string()],
+%%   <<"Name">> => string(),
 %%   <<"Pass">> => route_toll_pass(),
 %%   <<"PaymentMethods">> => list(string()),
 %%   <<"Transponders">> => list(route_transponder())
@@ -180,7 +178,7 @@
 %% Example:
 %% route_exit_step_details() :: #{
 %%   <<"Intersection">> => list(localized_string()),
-%%   <<"RelativeExit">> => [integer()],
+%%   <<"RelativeExit">> => integer(),
 %%   <<"SteeringDirection">> => string(),
 %%   <<"TurnAngle">> => float(),
 %%   <<"TurnIntensity">> => string()
@@ -198,11 +196,11 @@
 
 %% Example:
 %% route_vehicle_place() :: #{
-%%   <<"Name">> => [string()],
+%%   <<"Name">> => string(),
 %%   <<"OriginalPosition">> => list([float()]()),
 %%   <<"Position">> => list([float()]()),
 %%   <<"SideOfStreet">> => string(),
-%%   <<"WaypointIndex">> => [integer()]
+%%   <<"WaypointIndex">> => integer()
 %% }
 -type route_vehicle_place() :: #{binary() => any()}.
 
@@ -231,7 +229,7 @@
 
 %% Example:
 %% route_vehicle_license_plate() :: #{
-%%   <<"LastCharacter">> => [string()]
+%%   <<"LastCharacter">> => string()
 %% }
 -type route_vehicle_license_plate() :: #{binary() => any()}.
 
@@ -249,7 +247,7 @@
 %% route_matrix_car_options() :: #{
 %%   <<"LicensePlate">> => route_matrix_vehicle_license_plate(),
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Occupancy">> => [integer()]
+%%   <<"Occupancy">> => integer()
 %% }
 -type route_matrix_car_options() :: #{binary() => any()}.
 
@@ -304,7 +302,7 @@
 %%   <<"EngineType">> => string(),
 %%   <<"LicensePlate">> => isoline_vehicle_license_plate(),
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Occupancy">> => [integer()]
+%%   <<"Occupancy">> => integer()
 %% }
 -type isoline_car_options() :: #{binary() => any()}.
 
@@ -339,7 +337,7 @@
 %% Example:
 %% route_roundabout_exit_step_details() :: #{
 %%   <<"Intersection">> => list(localized_string()),
-%%   <<"RelativeExit">> => [integer()],
+%%   <<"RelativeExit">> => integer(),
 %%   <<"RoundaboutAngle">> => float(),
 %%   <<"SteeringDirection">> => string()
 %% }
@@ -358,7 +356,7 @@
 
 %% Example:
 %% route_toll_system() :: #{
-%%   <<"Name">> => [string()]
+%%   <<"Name">> => string()
 %% }
 -type route_toll_system() :: #{binary() => any()}.
 
@@ -381,7 +379,7 @@
 %% Example:
 %% road_snap_notice() :: #{
 %%   <<"Code">> => string(),
-%%   <<"Title">> => [string()],
+%%   <<"Title">> => string(),
 %%   <<"TracePointIndexes">> => list([integer()]())
 %% }
 -type road_snap_notice() :: #{binary() => any()}.
@@ -389,8 +387,8 @@
 
 %% Example:
 %% route_toll_price_value_range() :: #{
-%%   <<"Max">> => [float()],
-%%   <<"Min">> => [float()]
+%%   <<"Max">> => float(),
+%%   <<"Min">> => float()
 %% }
 -type route_toll_price_value_range() :: #{binary() => any()}.
 
@@ -476,11 +474,11 @@
 
 %% Example:
 %% route_pedestrian_place() :: #{
-%%   <<"Name">> => [string()],
+%%   <<"Name">> => string(),
 %%   <<"OriginalPosition">> => list([float()]()),
 %%   <<"Position">> => list([float()]()),
 %%   <<"SideOfStreet">> => string(),
-%%   <<"WaypointIndex">> => [integer()]
+%%   <<"WaypointIndex">> => integer()
 %% }
 -type route_pedestrian_place() :: #{binary() => any()}.
 
@@ -495,8 +493,8 @@
 
 %% Example:
 %% route_toll_options() :: #{
-%%   <<"AllTransponders">> => [boolean()],
-%%   <<"AllVignettes">> => [boolean()],
+%%   <<"AllTransponders">> => boolean(),
+%%   <<"AllVignettes">> => boolean(),
 %%   <<"Currency">> => string(),
 %%   <<"EmissionType">> => route_emission_type(),
 %%   <<"VehicleCategory">> => string()
@@ -527,7 +525,7 @@
 
 %% Example:
 %% waypoint_optimization_rest_profile() :: #{
-%%   <<"Profile">> => [string()]
+%%   <<"Profile">> => string()
 %% }
 -type waypoint_optimization_rest_profile() :: #{binary() => any()}.
 
@@ -561,7 +559,7 @@
 %%   <<"Allow">> => isoline_allow_options(),
 %%   <<"ArrivalTime">> => string(),
 %%   <<"Avoid">> => isoline_avoidance_options(),
-%%   <<"DepartNow">> => [boolean()],
+%%   <<"DepartNow">> => boolean(),
 %%   <<"DepartureTime">> => string(),
 %%   <<"Destination">> => list([float()]()),
 %%   <<"DestinationOptions">> => isoline_destination_options(),
@@ -647,14 +645,14 @@
 %%   <<"Distance">> => float(),
 %%   <<"Duration">> => float(),
 %%   <<"DynamicSpeed">> => route_span_dynamic_speed_details(),
-%%   <<"FunctionalClassification">> => [integer()],
+%%   <<"FunctionalClassification">> => integer(),
 %%   <<"Gate">> => string(),
 %%   <<"GeometryOffset">> => [integer()],
 %%   <<"Incidents">> => list([integer()]()),
 %%   <<"Names">> => list(localized_string()),
 %%   <<"Notices">> => list([integer()]()),
 %%   <<"RailwayCrossing">> => string(),
-%%   <<"Region">> => [string()],
+%%   <<"Region">> => string(),
 %%   <<"RoadAttributes">> => list(string()),
 %%   <<"RouteNumbers">> => list(route_number()),
 %%   <<"ScooterAccess">> => list(string()),
@@ -680,7 +678,7 @@
 
 %% Example:
 %% route_transponder() :: #{
-%%   <<"SystemName">> => [string()]
+%%   <<"SystemName">> => string()
 %% }
 -type route_transponder() :: #{binary() => any()}.
 
@@ -693,7 +691,7 @@
 %%   <<"Departure">> => route_ferry_departure(),
 %%   <<"Notices">> => list(route_ferry_notice()),
 %%   <<"PassThroughWaypoints">> => list(route_pass_through_waypoint()),
-%%   <<"RouteName">> => [string()],
+%%   <<"RouteName">> => string(),
 %%   <<"Spans">> => list(route_ferry_span()),
 %%   <<"Summary">> => route_ferry_summary(),
 %%   <<"TravelSteps">> => list(route_ferry_travel_step())
@@ -740,7 +738,7 @@
 %%   <<"EngineType">> => string(),
 %%   <<"LicensePlate">> => isoline_vehicle_license_plate(),
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Occupancy">> => [integer()]
+%%   <<"Occupancy">> => integer()
 %% }
 -type isoline_scooter_options() :: #{binary() => any()}.
 
@@ -748,10 +746,10 @@
 %% Example:
 %% route_toll_price_summary() :: #{
 %%   <<"Currency">> => string(),
-%%   <<"Estimate">> => [boolean()],
-%%   <<"Range">> => [boolean()],
+%%   <<"Estimate">> => boolean(),
+%%   <<"Range">> => boolean(),
 %%   <<"RangeValue">> => route_toll_price_value_range(),
-%%   <<"Value">> => [float()]
+%%   <<"Value">> => float()
 %% }
 -type route_toll_price_summary() :: #{binary() => any()}.
 
@@ -784,7 +782,7 @@
 %% Example:
 %% route_origin_options() :: #{
 %%   <<"AvoidActionsForDistance">> => float(),
-%%   <<"AvoidUTurns">> => [boolean()],
+%%   <<"AvoidUTurns">> => boolean(),
 %%   <<"Heading">> => float(),
 %%   <<"Matching">> => route_matching_options(),
 %%   <<"SideOfStreet">> => route_side_of_street_options()
@@ -795,7 +793,7 @@
 %% Example:
 %% route_ferry_after_travel_step() :: #{
 %%   <<"Duration">> => float(),
-%%   <<"Instruction">> => [string()],
+%%   <<"Instruction">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type route_ferry_after_travel_step() :: #{binary() => any()}.
@@ -827,7 +825,7 @@
 
 %% Example:
 %% route_matrix_trailer_options() :: #{
-%%   <<"TrailerCount">> => [integer()]
+%%   <<"TrailerCount">> => integer()
 %% }
 -type route_matrix_trailer_options() :: #{binary() => any()}.
 
@@ -856,7 +854,7 @@
 
 %% Example:
 %% route_vehicle_notice_detail() :: #{
-%%   <<"Title">> => [string()],
+%%   <<"Title">> => string(),
 %%   <<"ViolatedConstraints">> => route_violated_constraints()
 %% }
 -type route_vehicle_notice_detail() :: #{binary() => any()}.
@@ -864,7 +862,7 @@
 
 %% Example:
 %% route_truck_options() :: #{
-%%   <<"AxleCount">> => [integer()],
+%%   <<"AxleCount">> => integer(),
 %%   <<"EngineType">> => string(),
 %%   <<"GrossWeight">> => float(),
 %%   <<"HazardousCargos">> => list(string()),
@@ -874,9 +872,9 @@
 %%   <<"Length">> => float(),
 %%   <<"LicensePlate">> => route_vehicle_license_plate(),
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Occupancy">> => [integer()],
+%%   <<"Occupancy">> => integer(),
 %%   <<"PayloadCapacity">> => float(),
-%%   <<"TireCount">> => [integer()],
+%%   <<"TireCount">> => integer(),
 %%   <<"Trailer">> => route_trailer_options(),
 %%   <<"TruckType">> => string(),
 %%   <<"TunnelRestrictionCode">> => string(),
@@ -889,7 +887,7 @@
 
 %% Example:
 %% route_vehicle_incident() :: #{
-%%   <<"Description">> => [string()],
+%%   <<"Description">> => string(),
 %%   <<"EndTime">> => string(),
 %%   <<"Severity">> => string(),
 %%   <<"StartTime">> => string(),
@@ -921,7 +919,7 @@
 %%   <<"EngineType">> => string(),
 %%   <<"LicensePlate">> => route_vehicle_license_plate(),
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Occupancy">> => [integer()]
+%%   <<"Occupancy">> => integer()
 %% }
 -type route_car_options() :: #{binary() => any()}.
 
@@ -929,7 +927,7 @@
 %% Example:
 %% localized_string() :: #{
 %%   <<"Language">> => string(),
-%%   <<"Value">> => [string()]
+%%   <<"Value">> => string()
 %% }
 -type localized_string() :: #{binary() => any()}.
 
@@ -942,7 +940,7 @@
 %%   <<"Duration">> => float(),
 %%   <<"ExitNumber">> => list(localized_string()),
 %%   <<"GeometryOffset">> => [integer()],
-%%   <<"Instruction">> => [string()],
+%%   <<"Instruction">> => string(),
 %%   <<"KeepStepDetails">> => route_keep_step_details(),
 %%   <<"NextRoad">> => route_road(),
 %%   <<"RoundaboutEnterStepDetails">> => route_roundabout_enter_step_details(),
@@ -966,7 +964,7 @@
 %% Example:
 %% route_span_speed_limit_details() :: #{
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Unlimited">> => [boolean()]
+%%   <<"Unlimited">> => boolean()
 %% }
 -type route_span_speed_limit_details() :: #{binary() => any()}.
 
@@ -1002,8 +1000,8 @@
 
 %% Example:
 %% route_trailer_options() :: #{
-%%   <<"AxleCount">> => [integer()],
-%%   <<"TrailerCount">> => [integer()]
+%%   <<"AxleCount">> => integer(),
+%%   <<"TrailerCount">> => integer()
 %% }
 -type route_trailer_options() :: #{binary() => any()}.
 
@@ -1022,7 +1020,7 @@
 %% Example:
 %% circle() :: #{
 %%   <<"Center">> => list([float()]()),
-%%   <<"Radius">> => [float()]
+%%   <<"Radius">> => float()
 %% }
 -type circle() :: #{binary() => any()}.
 
@@ -1066,8 +1064,8 @@
 
 %% Example:
 %% isoline_trailer_options() :: #{
-%%   <<"AxleCount">> => [integer()],
-%%   <<"TrailerCount">> => [integer()]
+%%   <<"AxleCount">> => integer(),
+%%   <<"TrailerCount">> => integer()
 %% }
 -type isoline_trailer_options() :: #{binary() => any()}.
 
@@ -1098,16 +1096,16 @@
 %% Example:
 %% isoline_avoidance_options() :: #{
 %%   <<"Areas">> => list(isoline_avoidance_area()),
-%%   <<"CarShuttleTrains">> => [boolean()],
-%%   <<"ControlledAccessHighways">> => [boolean()],
-%%   <<"DirtRoads">> => [boolean()],
-%%   <<"Ferries">> => [boolean()],
-%%   <<"SeasonalClosure">> => [boolean()],
-%%   <<"TollRoads">> => [boolean()],
-%%   <<"TollTransponders">> => [boolean()],
+%%   <<"CarShuttleTrains">> => boolean(),
+%%   <<"ControlledAccessHighways">> => boolean(),
+%%   <<"DirtRoads">> => boolean(),
+%%   <<"Ferries">> => boolean(),
+%%   <<"SeasonalClosure">> => boolean(),
+%%   <<"TollRoads">> => boolean(),
+%%   <<"TollTransponders">> => boolean(),
 %%   <<"TruckRoadTypes">> => list(string()),
-%%   <<"Tunnels">> => [boolean()],
-%%   <<"UTurns">> => [boolean()],
+%%   <<"Tunnels">> => boolean(),
+%%   <<"UTurns">> => boolean(),
 %%   <<"ZoneCategories">> => list(isoline_avoidance_zone_category())
 %% }
 -type isoline_avoidance_options() :: #{binary() => any()}.
@@ -1124,7 +1122,7 @@
 %%   <<"ExitNumber">> => list(localized_string()),
 %%   <<"ExitStepDetails">> => route_exit_step_details(),
 %%   <<"GeometryOffset">> => [integer()],
-%%   <<"Instruction">> => [string()],
+%%   <<"Instruction">> => string(),
 %%   <<"KeepStepDetails">> => route_keep_step_details(),
 %%   <<"NextRoad">> => route_road(),
 %%   <<"RampStepDetails">> => route_ramp_step_details(),
@@ -1142,7 +1140,7 @@
 %% Example:
 %% route_toll_pass_validity_period() :: #{
 %%   <<"Period">> => string(),
-%%   <<"PeriodCount">> => [integer()]
+%%   <<"PeriodCount">> => integer()
 %% }
 -type route_toll_pass_validity_period() :: #{binary() => any()}.
 
@@ -1188,7 +1186,7 @@
 
 %% Example:
 %% route_matrix_truck_options() :: #{
-%%   <<"AxleCount">> => [integer()],
+%%   <<"AxleCount">> => integer(),
 %%   <<"GrossWeight">> => float(),
 %%   <<"HazardousCargos">> => list(string()),
 %%   <<"Height">> => float(),
@@ -1196,7 +1194,7 @@
 %%   <<"Length">> => float(),
 %%   <<"LicensePlate">> => route_matrix_vehicle_license_plate(),
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Occupancy">> => [integer()],
+%%   <<"Occupancy">> => integer(),
 %%   <<"PayloadCapacity">> => float(),
 %%   <<"Trailer">> => route_matrix_trailer_options(),
 %%   <<"TruckType">> => string(),
@@ -1257,7 +1255,7 @@
 %% Example:
 %% route_matrix_boundary() :: #{
 %%   <<"Geometry">> => route_matrix_boundary_geometry(),
-%%   <<"Unbounded">> => [boolean()]
+%%   <<"Unbounded">> => boolean()
 %% }
 -type route_matrix_boundary() :: #{binary() => any()}.
 
@@ -1281,7 +1279,7 @@
 %% Example:
 %% route_ferry_before_travel_step() :: #{
 %%   <<"Duration">> => float(),
-%%   <<"Instruction">> => [string()],
+%%   <<"Instruction">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type route_ferry_before_travel_step() :: #{binary() => any()}.
@@ -1299,7 +1297,7 @@
 %% Example:
 %% route_zone() :: #{
 %%   <<"Category">> => string(),
-%%   <<"Name">> => [string()]
+%%   <<"Name">> => string()
 %% }
 -type route_zone() :: #{binary() => any()}.
 
@@ -1317,7 +1315,7 @@
 %%   <<"Allow">> => route_allow_options(),
 %%   <<"ArrivalTime">> => string(),
 %%   <<"Avoid">> => route_avoidance_options(),
-%%   <<"DepartNow">> => [boolean()],
+%%   <<"DepartNow">> => boolean(),
 %%   <<"DepartureTime">> => string(),
 %%   <<"Destination">> := list([float()]()),
 %%   <<"DestinationOptions">> => route_destination_options(),
@@ -1347,7 +1345,7 @@
 %% route_number() :: #{
 %%   <<"Direction">> => string(),
 %%   <<"Language">> => string(),
-%%   <<"Value">> => [string()]
+%%   <<"Value">> => string()
 %% }
 -type route_number() :: #{binary() => any()}.
 
@@ -1374,7 +1372,7 @@
 %%   <<"EngineType">> => string(),
 %%   <<"LicensePlate">> => route_vehicle_license_plate(),
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Occupancy">> => [integer()]
+%%   <<"Occupancy">> => integer()
 %% }
 -type route_scooter_options() :: #{binary() => any()}.
 
@@ -1424,7 +1422,7 @@
 %%   <<"Distance">> => float(),
 %%   <<"Duration">> => float(),
 %%   <<"GeometryOffset">> => [integer()],
-%%   <<"Instruction">> => [string()],
+%%   <<"Instruction">> => string(),
 %%   <<"Type">> => string()
 %% }
 -type route_ferry_travel_step() :: #{binary() => any()}.
@@ -1454,12 +1452,12 @@
 %%   <<"Distance">> => float(),
 %%   <<"Duration">> => float(),
 %%   <<"DynamicSpeed">> => route_span_dynamic_speed_details(),
-%%   <<"FunctionalClassification">> => [integer()],
+%%   <<"FunctionalClassification">> => integer(),
 %%   <<"GeometryOffset">> => [integer()],
 %%   <<"Incidents">> => list([integer()]()),
 %%   <<"Names">> => list(localized_string()),
 %%   <<"PedestrianAccess">> => list(string()),
-%%   <<"Region">> => [string()],
+%%   <<"Region">> => string(),
 %%   <<"RoadAttributes">> => list(string()),
 %%   <<"RouteNumbers">> => list(route_number()),
 %%   <<"SpeedLimit">> => route_span_speed_limit_details(),
@@ -1482,15 +1480,15 @@
 %% Example:
 %% route_matrix_avoidance_options() :: #{
 %%   <<"Areas">> => list(route_matrix_avoidance_area()),
-%%   <<"CarShuttleTrains">> => [boolean()],
-%%   <<"ControlledAccessHighways">> => [boolean()],
-%%   <<"DirtRoads">> => [boolean()],
-%%   <<"Ferries">> => [boolean()],
-%%   <<"TollRoads">> => [boolean()],
-%%   <<"TollTransponders">> => [boolean()],
+%%   <<"CarShuttleTrains">> => boolean(),
+%%   <<"ControlledAccessHighways">> => boolean(),
+%%   <<"DirtRoads">> => boolean(),
+%%   <<"Ferries">> => boolean(),
+%%   <<"TollRoads">> => boolean(),
+%%   <<"TollTransponders">> => boolean(),
 %%   <<"TruckRoadTypes">> => list(string()),
-%%   <<"Tunnels">> => [boolean()],
-%%   <<"UTurns">> => [boolean()],
+%%   <<"Tunnels">> => boolean(),
+%%   <<"UTurns">> => boolean(),
 %%   <<"ZoneCategories">> => list(route_matrix_avoidance_zone_category())
 %% }
 -type route_matrix_avoidance_options() :: #{binary() => any()}.
@@ -1543,7 +1541,7 @@
 
 %% Example:
 %% road_snap_snapped_trace_point() :: #{
-%%   <<"Confidence">> => [float()],
+%%   <<"Confidence">> => float(),
 %%   <<"OriginalPosition">> => list([float()]()),
 %%   <<"SnappedPosition">> => list([float()]())
 %% }
@@ -1600,10 +1598,10 @@
 %% Example:
 %% route_waypoint() :: #{
 %%   <<"AvoidActionsForDistance">> => float(),
-%%   <<"AvoidUTurns">> => [boolean()],
+%%   <<"AvoidUTurns">> => boolean(),
 %%   <<"Heading">> => float(),
 %%   <<"Matching">> => route_matching_options(),
-%%   <<"PassThrough">> => [boolean()],
+%%   <<"PassThrough">> => boolean(),
 %%   <<"Position">> => list([float()]()),
 %%   <<"SideOfStreet">> => route_side_of_street_options(),
 %%   <<"StopDuration">> => float()
@@ -1634,10 +1632,10 @@
 
 %% Example:
 %% route_ferry_place() :: #{
-%%   <<"Name">> => [string()],
+%%   <<"Name">> => string(),
 %%   <<"OriginalPosition">> => list([float()]()),
 %%   <<"Position">> => list([float()]()),
-%%   <<"WaypointIndex">> => [integer()]
+%%   <<"WaypointIndex">> => integer()
 %% }
 -type route_ferry_place() :: #{binary() => any()}.
 
@@ -1662,7 +1660,7 @@
 %% route_pass_through_place() :: #{
 %%   <<"OriginalPosition">> => list([float()]()),
 %%   <<"Position">> => list([float()]()),
-%%   <<"WaypointIndex">> => [integer()]
+%%   <<"WaypointIndex">> => integer()
 %% }
 -type route_pass_through_place() :: #{binary() => any()}.
 
@@ -1698,13 +1696,13 @@
 %% Example:
 %% waypoint_optimization_avoidance_options() :: #{
 %%   <<"Areas">> => list(waypoint_optimization_avoidance_area()),
-%%   <<"CarShuttleTrains">> => [boolean()],
-%%   <<"ControlledAccessHighways">> => [boolean()],
-%%   <<"DirtRoads">> => [boolean()],
-%%   <<"Ferries">> => [boolean()],
-%%   <<"TollRoads">> => [boolean()],
-%%   <<"Tunnels">> => [boolean()],
-%%   <<"UTurns">> => [boolean()]
+%%   <<"CarShuttleTrains">> => boolean(),
+%%   <<"ControlledAccessHighways">> => boolean(),
+%%   <<"DirtRoads">> => boolean(),
+%%   <<"Ferries">> => boolean(),
+%%   <<"TollRoads">> => boolean(),
+%%   <<"Tunnels">> => boolean(),
+%%   <<"UTurns">> => boolean()
 %% }
 -type waypoint_optimization_avoidance_options() :: #{binary() => any()}.
 
@@ -1750,7 +1748,7 @@
 %% Example:
 %% waypoint_optimization_failed_constraint() :: #{
 %%   <<"Constraint">> => string(),
-%%   <<"Reason">> => [string()]
+%%   <<"Reason">> => string()
 %% }
 -type waypoint_optimization_failed_constraint() :: #{binary() => any()}.
 
@@ -1767,8 +1765,8 @@
 
 %% Example:
 %% route_matrix_allow_options() :: #{
-%%   <<"Hot">> => [boolean()],
-%%   <<"Hov">> => [boolean()]
+%%   <<"Hot">> => boolean(),
+%%   <<"Hov">> => boolean()
 %% }
 -type route_matrix_allow_options() :: #{binary() => any()}.
 
@@ -1807,8 +1805,8 @@
 
 %% Example:
 %% route_allow_options() :: #{
-%%   <<"Hot">> => [boolean()],
-%%   <<"Hov">> => [boolean()]
+%%   <<"Hot">> => boolean(),
+%%   <<"Hov">> => boolean()
 %% }
 -type route_allow_options() :: #{binary() => any()}.
 
@@ -1830,7 +1828,7 @@
 %%   <<"Duration">> => float(),
 %%   <<"GeometryOffset">> => [integer()],
 %%   <<"Names">> => list(localized_string()),
-%%   <<"Region">> => [string()]
+%%   <<"Region">> => string()
 %% }
 -type route_ferry_span() :: #{binary() => any()}.
 
@@ -1866,7 +1864,7 @@
 
 %% Example:
 %% route_violated_constraints() :: #{
-%%   <<"AllHazardsRestricted">> => [boolean()],
+%%   <<"AllHazardsRestricted">> => boolean(),
 %%   <<"AxleCount">> => route_notice_detail_range(),
 %%   <<"HazardousCargos">> => list(string()),
 %%   <<"MaxHeight">> => float(),
@@ -1879,9 +1877,9 @@
 %%   <<"MaxWidth">> => float(),
 %%   <<"Occupancy">> => route_notice_detail_range(),
 %%   <<"RestrictedTimes">> => [string()],
-%%   <<"TimeDependent">> => [boolean()],
+%%   <<"TimeDependent">> => boolean(),
 %%   <<"TrailerCount">> => route_notice_detail_range(),
-%%   <<"TravelMode">> => [boolean()],
+%%   <<"TravelMode">> => boolean(),
 %%   <<"TruckRoadType">> => [string()],
 %%   <<"TruckType">> => string(),
 %%   <<"TunnelRestrictionCode">> => string()
@@ -1908,7 +1906,7 @@
 
 %% Example:
 %% isoline_truck_options() :: #{
-%%   <<"AxleCount">> => [integer()],
+%%   <<"AxleCount">> => integer(),
 %%   <<"EngineType">> => string(),
 %%   <<"GrossWeight">> => float(),
 %%   <<"HazardousCargos">> => list(string()),
@@ -1918,9 +1916,9 @@
 %%   <<"Length">> => float(),
 %%   <<"LicensePlate">> => isoline_vehicle_license_plate(),
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Occupancy">> => [integer()],
+%%   <<"Occupancy">> => integer(),
 %%   <<"PayloadCapacity">> => float(),
-%%   <<"TireCount">> => [integer()],
+%%   <<"TireCount">> => integer(),
 %%   <<"Trailer">> => isoline_trailer_options(),
 %%   <<"TruckType">> => string(),
 %%   <<"TunnelRestrictionCode">> => string(),
@@ -1941,15 +1939,15 @@
 
 %% Example:
 %% road_snap_trailer_options() :: #{
-%%   <<"TrailerCount">> => [integer()]
+%%   <<"TrailerCount">> => integer()
 %% }
 -type road_snap_trailer_options() :: #{binary() => any()}.
 
 
 %% Example:
 %% route_emission_type() :: #{
-%%   <<"Co2EmissionClass">> => [string()],
-%%   <<"Type">> => [string()]
+%%   <<"Co2EmissionClass">> => string(),
+%%   <<"Type">> => string()
 %% }
 -type route_emission_type() :: #{binary() => any()}.
 
@@ -1966,7 +1964,7 @@
 %% calculate_route_matrix_request() :: #{
 %%   <<"Allow">> => route_matrix_allow_options(),
 %%   <<"Avoid">> => route_matrix_avoidance_options(),
-%%   <<"DepartNow">> => [boolean()],
+%%   <<"DepartNow">> => boolean(),
 %%   <<"DepartureTime">> => string(),
 %%   <<"Destinations">> := list(route_matrix_destination()),
 %%   <<"Exclude">> => route_matrix_exclusion_options(),
@@ -1985,7 +1983,7 @@
 %% route_matrix_scooter_options() :: #{
 %%   <<"LicensePlate">> => route_matrix_vehicle_license_plate(),
 %%   <<"MaxSpeed">> => float(),
-%%   <<"Occupancy">> => [integer()]
+%%   <<"Occupancy">> => integer()
 %% }
 -type route_matrix_scooter_options() :: #{binary() => any()}.
 
@@ -2001,11 +1999,11 @@
 %% Example:
 %% route_toll_price() :: #{
 %%   <<"Currency">> => string(),
-%%   <<"Estimate">> => [boolean()],
+%%   <<"Estimate">> => boolean(),
 %%   <<"PerDuration">> => float(),
-%%   <<"Range">> => [boolean()],
+%%   <<"Range">> => boolean(),
 %%   <<"RangeValue">> => route_toll_price_value_range(),
-%%   <<"Value">> => [float()]
+%%   <<"Value">> => float()
 %% }
 -type route_toll_price() :: #{binary() => any()}.
 
@@ -2044,8 +2042,7 @@
 %%====================================================================
 
 %% @doc Use the `CalculateIsolines' action to find service areas that can
-%% be reached
-%% in a given threshold of time, distance.
+%% be reached in a given threshold of time, distance.
 -spec calculate_isolines(aws_client:aws_client(), calculate_isolines_request()) ->
     {ok, calculate_isolines_response(), tuple()} |
     {error, any()} |
@@ -2097,13 +2094,11 @@ calculate_isolines(Client, Input0, Options0) ->
     end.
 
 %% @doc Use `CalculateRouteMatrix' to compute results for all pairs of
-%% Origins to
-%% Destinations.
+%% Origins to Destinations.
 %%
 %% Each row corresponds to one entry in Origins. Each entry in the row
 %% corresponds to the route from that entry in Origins to an entry in
-%% Destinations
-%% positions.
+%% Destinations positions.
 -spec calculate_route_matrix(aws_client:aws_client(), calculate_route_matrix_request()) ->
     {ok, calculate_route_matrix_response(), tuple()} |
     {error, any()} |
@@ -2154,10 +2149,8 @@ calculate_route_matrix(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc
-%% `CalculateRoutes' computes routes given the following required
-%% parameters:
-%% `Origin' and `Destination'.
+%% @doc `CalculateRoutes' computes routes given the following required
+%% parameters: `Origin' and `Destination'.
 -spec calculate_routes(aws_client:aws_client(), calculate_routes_request()) ->
     {ok, calculate_routes_response(), tuple()} |
     {error, any()} |
@@ -2208,12 +2201,10 @@ calculate_routes(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc
-%% `OptimizeWaypoints' calculates the optimal order to travel between a
-%% set of
-%% waypoints to minimize either the travel time or the distance travelled
-%% during the journey,
-%% based on road network restrictions and the traffic pattern data.
+%% @doc `OptimizeWaypoints' calculates the optimal order to travel
+%% between a set of waypoints to minimize either the travel time or the
+%% distance travelled during the journey, based on road network restrictions
+%% and the traffic pattern data.
 -spec optimize_waypoints(aws_client:aws_client(), optimize_waypoints_request()) ->
     {ok, optimize_waypoints_response(), tuple()} |
     {error, any()} |
@@ -2264,8 +2255,7 @@ optimize_waypoints(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc
-%% `SnapToRoads' matches GPS trace to roads most likely traveled on.
+%% @doc `SnapToRoads' matches GPS trace to roads most likely traveled on.
 -spec snap_to_roads(aws_client:aws_client(), snap_to_roads_request()) ->
     {ok, snap_to_roads_response(), tuple()} |
     {error, any()} |

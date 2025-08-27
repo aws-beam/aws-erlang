@@ -58,13 +58,12 @@
 
 
 %% Example:
-%% meeting() :: #{
-%%   <<"MediaPlacement">> => media_placement(),
-%%   <<"MediaRegion">> => string(),
+%% web_r_t_cmeeting() :: #{
+%%   <<"MediaPlacement">> => web_r_t_cmedia_placement(),
 %%   <<"MeetingFeatures">> => meeting_features_configuration(),
 %%   <<"MeetingId">> => string()
 %% }
--type meeting() :: #{binary() => any()}.
+-type web_r_t_cmeeting() :: #{binary() => any()}.
 
 
 %% Example:
@@ -104,6 +103,16 @@
 %%   <<"RecipientParticipantId">> => string()
 %% }
 -type receipt() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_r_t_cmedia_placement() :: #{
+%%   <<"AudioFallbackUrl">> => string(),
+%%   <<"AudioHostUrl">> => string(),
+%%   <<"EventIngestionUrl">> => string(),
+%%   <<"SignalingUrl">> => string()
+%% }
+-type web_r_t_cmedia_placement() :: #{binary() => any()}.
 
 
 %% Example:
@@ -267,6 +276,14 @@
 
 
 %% Example:
+%% web_r_t_c_connection() :: #{
+%%   <<"Attendee">> => attendee(),
+%%   <<"Meeting">> => web_r_t_cmeeting()
+%% }
+-type web_r_t_c_connection() :: #{binary() => any()}.
+
+
+%% Example:
 %% message_metadata() :: #{
 %%   <<"MessageId">> => string(),
 %%   <<"Receipts">> => list(receipt())
@@ -302,14 +319,6 @@
 %%   <<"UrlExpiryInSeconds">> => integer()
 %% }
 -type get_attachment_request() :: #{binary() => any()}.
-
-
-%% Example:
-%% connection_data() :: #{
-%%   <<"Attendee">> => attendee(),
-%%   <<"Meeting">> => meeting()
-%% }
--type connection_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -419,20 +428,9 @@
 
 
 %% Example:
-%% media_placement() :: #{
-%%   <<"AudioFallbackUrl">> => string(),
-%%   <<"AudioHostUrl">> => string(),
-%%   <<"EventIngestionUrl">> => string(),
-%%   <<"SignalingUrl">> => string(),
-%%   <<"TurnControlUrl">> => string()
-%% }
--type media_placement() :: #{binary() => any()}.
-
-
-%% Example:
 %% create_participant_connection_response() :: #{
 %%   <<"ConnectionCredentials">> => connection_credentials(),
-%%   <<"WebRTCConnection">> => connection_data(),
+%%   <<"WebRTCConnection">> => web_r_t_c_connection(),
 %%   <<"Websocket">> => websocket()
 %% }
 -type create_participant_connection_response() :: #{binary() => any()}.

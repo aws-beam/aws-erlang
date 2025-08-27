@@ -167,6 +167,8 @@
          create_fpga_image/3,
          create_image/2,
          create_image/3,
+         create_image_usage_report/2,
+         create_image_usage_report/3,
          create_instance_connect_endpoint/2,
          create_instance_connect_endpoint/3,
          create_instance_event_window/2,
@@ -337,6 +339,8 @@
          delete_flow_logs/3,
          delete_fpga_image/2,
          delete_fpga_image/3,
+         delete_image_usage_report/2,
+         delete_image_usage_report/3,
          delete_instance_connect_endpoint/2,
          delete_instance_connect_endpoint/3,
          delete_instance_event_window/2,
@@ -589,6 +593,12 @@
          describe_identity_id_format/3,
          describe_image_attribute/2,
          describe_image_attribute/3,
+         describe_image_references/2,
+         describe_image_references/3,
+         describe_image_usage_report_entries/2,
+         describe_image_usage_report_entries/3,
+         describe_image_usage_reports/2,
+         describe_image_usage_reports/3,
          describe_images/2,
          describe_images/3,
          describe_import_image_tasks/2,
@@ -1685,6 +1695,17 @@
 -type ena_srd_specification_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_image_references_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageIds">> := list(string()),
+%%   <<"IncludeAllResourceTypes">> => boolean(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceTypes">> => list(resource_type_request())
+%% }
+-type describe_image_references_request() :: #{binary() => any()}.
+
+%% Example:
 %% client_vpn_route() :: #{
 %%   <<"ClientVpnEndpointId">> => string(),
 %%   <<"Description">> => string(),
@@ -2514,6 +2535,17 @@
 %%   <<"DryRun">> => boolean()
 %% }
 -type reject_capacity_reservation_billing_ownership_request() :: #{binary() => any()}.
+
+%% Example:
+%% image_usage_report_entry() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"ReportCreationTime">> => non_neg_integer(),
+%%   <<"ReportId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"UsageCount">> => float()
+%% }
+-type image_usage_report_entry() :: #{binary() => any()}.
 
 %% Example:
 %% authorize_security_group_egress_result() :: #{
@@ -3603,6 +3635,13 @@
 -type volume_attachment() :: #{binary() => any()}.
 
 %% Example:
+%% resource_type_request() :: #{
+%%   <<"ResourceType">> => list(any()),
+%%   <<"ResourceTypeOptions">> => list(resource_type_option())
+%% }
+-type resource_type_request() :: #{binary() => any()}.
+
+%% Example:
 %% modify_transit_gateway_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -3692,6 +3731,13 @@
 %%   <<"State">> => list(any())
 %% }
 -type instance_count() :: #{binary() => any()}.
+
+%% Example:
+%% image_usage_resource_type_option() :: #{
+%%   <<"OptionName">> => string(),
+%%   <<"OptionValues">> => list(string())
+%% }
+-type image_usage_resource_type_option() :: #{binary() => any()}.
 
 %% Example:
 %% describe_scheduled_instances_request() :: #{
@@ -4399,6 +4445,13 @@
 %%   <<"VpcId">> => string()
 %% }
 -type route_server_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_references_result() :: #{
+%%   <<"ImageReferences">> => list(image_reference()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_image_references_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_local_gateway_route_table_result() :: #{
@@ -5307,6 +5360,12 @@
 -type describe_moving_addresses_request() :: #{binary() => any()}.
 
 %% Example:
+%% create_image_usage_report_result() :: #{
+%%   <<"ReportId">> => string()
+%% }
+-type create_image_usage_report_result() :: #{binary() => any()}.
+
+%% Example:
 %% subnet_ipv6_cidr_block_association() :: #{
 %%   <<"AssociationId">> => string(),
 %%   <<"IpSource">> => list(any()),
@@ -5646,6 +5705,13 @@
 %%   <<"VerifiedAccessEndpointId">> := string()
 %% }
 -type delete_verified_access_endpoint_request() :: #{binary() => any()}.
+
+%% Example:
+%% image_usage_resource_type_option_request() :: #{
+%%   <<"OptionName">> => string(),
+%%   <<"OptionValues">> => list(string())
+%% }
+-type image_usage_resource_type_option_request() :: #{binary() => any()}.
 
 %% Example:
 %% explanation() :: #{
@@ -9009,6 +9075,17 @@
 -type launch_template_instance_maintenance_options_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_image_usage_report_entries_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"ImageIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReportIds">> => list(string())
+%% }
+-type describe_image_usage_report_entries_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_security_groups_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -9647,6 +9724,17 @@
 %%   <<"InstanceFamily">> := list(any())
 %% }
 -type get_default_credit_specification_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_usage_reports_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"ImageIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReportIds">> => list(string())
+%% }
+-type describe_image_usage_reports_request() :: #{binary() => any()}.
 
 %% Example:
 %% verified_access_trust_provider() :: #{
@@ -10572,6 +10660,13 @@
 %%   <<"Tenancy">> => list(any())
 %% }
 -type launch_template_placement_request() :: #{binary() => any()}.
+
+%% Example:
+%% resource_type_option() :: #{
+%%   <<"OptionName">> => list(any()),
+%%   <<"OptionValues">> => list(string())
+%% }
+-type resource_type_option() :: #{binary() => any()}.
 
 %% Example:
 %% describe_network_insights_access_scopes_request() :: #{
@@ -12323,6 +12418,13 @@
 -type enable_address_transfer_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_image_usage_report_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ReportId">> := string()
+%% }
+-type delete_image_usage_report_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_network_insights_access_scope_analyses_request() :: #{
 %%   <<"AnalysisStartTimeBegin">> => non_neg_integer(),
 %%   <<"AnalysisStartTimeEnd">> => non_neg_integer(),
@@ -12902,6 +13004,13 @@
 %%   <<"Type">> := list(any())
 %% }
 -type create_customer_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_image_usage_report_entries_result() :: #{
+%%   <<"ImageUsageReportEntries">> => list(image_usage_report_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_image_usage_report_entries_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_mac_hosts_request() :: #{
@@ -14005,6 +14114,14 @@
 -type start_vpc_endpoint_service_private_dns_verification_request() :: #{binary() => any()}.
 
 %% Example:
+%% image_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type image_reference() :: #{binary() => any()}.
+
+%% Example:
 %% delete_route_server_peer_result() :: #{
 %%   <<"RouteServerPeer">> => route_server_peer()
 %% }
@@ -15106,6 +15223,12 @@
 -type create_verified_access_endpoint_cidr_options() :: #{binary() => any()}.
 
 %% Example:
+%% delete_image_usage_report_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type delete_image_usage_report_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_vpcs_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -15271,6 +15394,17 @@
 %%   <<"ImageId">> := string()
 %% }
 -type reset_image_attribute_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_image_usage_report_request() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageId">> := string(),
+%%   <<"ResourceTypes">> := list(image_usage_resource_type_request()),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_image_usage_report_request() :: #{binary() => any()}.
 
 %% Example:
 %% enable_transit_gateway_route_table_propagation_request() :: #{
@@ -15762,6 +15896,13 @@
 %%   <<"Return">> => boolean()
 %% }
 -type enable_image_result() :: #{binary() => any()}.
+
+%% Example:
+%% image_usage_resource_type_request() :: #{
+%%   <<"ResourceType">> => string(),
+%%   <<"ResourceTypeOptions">> => list(image_usage_resource_type_option_request())
+%% }
+-type image_usage_resource_type_request() :: #{binary() => any()}.
 
 %% Example:
 %% disable_vpc_classic_link_dns_support_result() :: #{
@@ -19485,6 +19626,13 @@
 -type create_vpn_connection_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_image_usage_reports_result() :: #{
+%%   <<"ImageUsageReports">> => list(image_usage_report()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_image_usage_reports_result() :: #{binary() => any()}.
+
+%% Example:
 %% instance_metadata_defaults_response() :: #{
 %%   <<"HttpEndpoint">> => list(any()),
 %%   <<"HttpPutResponseHopLimit">> => integer(),
@@ -19837,6 +19985,13 @@
 %%   <<"EbsEncryptionByDefault">> => boolean()
 %% }
 -type disable_ebs_encryption_by_default_result() :: #{binary() => any()}.
+
+%% Example:
+%% image_usage_resource_type() :: #{
+%%   <<"ResourceType">> => string(),
+%%   <<"ResourceTypeOptions">> => list(image_usage_resource_type_option())
+%% }
+-type image_usage_resource_type() :: #{binary() => any()}.
 
 %% Example:
 %% restore_snapshot_tier_request() :: #{
@@ -20488,6 +20643,20 @@
 %%   <<"CloudWatchLogOptions">> => cloud_watch_log_options()
 %% }
 -type vpn_tunnel_log_options() :: #{binary() => any()}.
+
+%% Example:
+%% image_usage_report() :: #{
+%%   <<"AccountIds">> => list(string()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"ImageId">> => string(),
+%%   <<"ReportId">> => string(),
+%%   <<"ResourceTypes">> => list(image_usage_resource_type()),
+%%   <<"State">> => string(),
+%%   <<"StateReason">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type image_usage_report() :: #{binary() => any()}.
 
 %% Example:
 %% route_table_association_state() :: #{
@@ -22761,6 +22930,32 @@ create_image(Client, Input)
 create_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImage">>, Input, Options).
+
+%% @doc Creates a report that shows how your image is used across other
+%% Amazon Web Services accounts.
+%%
+%% The report
+%% provides visibility into which accounts are using the specified image, and
+%% how many resources
+%% (EC2 instances or launch templates) are referencing it.
+%%
+%% For more information, see View your AMI usage:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-ami-usage.html in
+%% the
+%% Amazon EC2 User Guide.
+-spec create_image_usage_report(aws_client:aws_client(), create_image_usage_report_request()) ->
+    {ok, create_image_usage_report_result(), tuple()} |
+    {error, any()}.
+create_image_usage_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_image_usage_report(Client, Input, []).
+
+-spec create_image_usage_report(aws_client:aws_client(), create_image_usage_report_request(), proplists:proplist()) ->
+    {ok, create_image_usage_report_result(), tuple()} |
+    {error, any()}.
+create_image_usage_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateImageUsageReport">>, Input, Options).
 
 %% @doc Creates an EC2 Instance Connect Endpoint.
 %%
@@ -25086,6 +25281,26 @@ delete_fpga_image(Client, Input)
 delete_fpga_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFpgaImage">>, Input, Options).
+
+%% @doc Deletes the specified image usage report.
+%%
+%% For more information, see View your AMI usage:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-ami-usage.html in
+%% the
+%% Amazon EC2 User Guide.
+-spec delete_image_usage_report(aws_client:aws_client(), delete_image_usage_report_request()) ->
+    {ok, delete_image_usage_report_result(), tuple()} |
+    {error, any()}.
+delete_image_usage_report(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_image_usage_report(Client, Input, []).
+
+-spec delete_image_usage_report(aws_client:aws_client(), delete_image_usage_report_request(), proplists:proplist()) ->
+    {ok, delete_image_usage_report_result(), tuple()} |
+    {error, any()}.
+delete_image_usage_report(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteImageUsageReport">>, Input, Options).
 
 %% @doc Deletes the specified EC2 Instance Connect Endpoint.
 -spec delete_instance_connect_endpoint(aws_client:aws_client(), delete_instance_connect_endpoint_request()) ->
@@ -27658,6 +27873,71 @@ describe_image_attribute(Client, Input)
 describe_image_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageAttribute">>, Input, Options).
+
+%% @doc Describes your Amazon Web Services resources that are referencing the
+%% specified images.
+%%
+%% For more information, see Identiy your resources referencing
+%% selected AMIs:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-ami-references.html
+%% in the Amazon EC2 User Guide.
+-spec describe_image_references(aws_client:aws_client(), describe_image_references_request()) ->
+    {ok, describe_image_references_result(), tuple()} |
+    {error, any()}.
+describe_image_references(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_image_references(Client, Input, []).
+
+-spec describe_image_references(aws_client:aws_client(), describe_image_references_request(), proplists:proplist()) ->
+    {ok, describe_image_references_result(), tuple()} |
+    {error, any()}.
+describe_image_references(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImageReferences">>, Input, Options).
+
+%% @doc Describes the entries in image usage reports, showing how your images
+%% are used across
+%% other Amazon Web Services accounts.
+%%
+%% For more information, see View your AMI usage:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-ami-usage.html in
+%% the
+%% Amazon EC2 User Guide.
+-spec describe_image_usage_report_entries(aws_client:aws_client(), describe_image_usage_report_entries_request()) ->
+    {ok, describe_image_usage_report_entries_result(), tuple()} |
+    {error, any()}.
+describe_image_usage_report_entries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_image_usage_report_entries(Client, Input, []).
+
+-spec describe_image_usage_report_entries(aws_client:aws_client(), describe_image_usage_report_entries_request(), proplists:proplist()) ->
+    {ok, describe_image_usage_report_entries_result(), tuple()} |
+    {error, any()}.
+describe_image_usage_report_entries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImageUsageReportEntries">>, Input, Options).
+
+%% @doc Describes the configuration and status of image usage reports,
+%% filtered by report IDs or
+%% image IDs.
+%%
+%% For more information, see View your AMI usage:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-ami-usage.html in
+%% the
+%% Amazon EC2 User Guide.
+-spec describe_image_usage_reports(aws_client:aws_client(), describe_image_usage_reports_request()) ->
+    {ok, describe_image_usage_reports_result(), tuple()} |
+    {error, any()}.
+describe_image_usage_reports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_image_usage_reports(Client, Input, []).
+
+-spec describe_image_usage_reports(aws_client:aws_client(), describe_image_usage_reports_request(), proplists:proplist()) ->
+    {ok, describe_image_usage_reports_result(), tuple()} |
+    {error, any()}.
+describe_image_usage_reports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImageUsageReports">>, Input, Options).
 
 %% @doc Describes the specified images (AMIs, AKIs, and ARIs) available to
 %% you or all of the
