@@ -2,11 +2,9 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Neptune Analytics is a new analytics database engine for Amazon
-%% Neptune that helps customers get to
-%% insights faster by quickly processing large amounts of graph data,
-%% invoking popular graph analytic
-%% algorithms in low-latency queries, and getting analytics results in
-%% seconds.
+%% Neptune that helps customers get to insights faster by quickly processing
+%% large amounts of graph data, invoking popular graph analytic algorithms in
+%% low-latency queries, and getting analytics results in seconds.
 -module(aws_neptune_graph).
 
 -export([cancel_export_task/3,
@@ -79,8 +77,12 @@
          restore_graph_from_snapshot/4,
          start_export_task/2,
          start_export_task/3,
+         start_graph/3,
+         start_graph/4,
          start_import_task/3,
          start_import_task/4,
+         stop_graph/3,
+         stop_graph/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -544,6 +546,10 @@
 %% }
 -type restore_graph_from_snapshot_output() :: #{binary() => any()}.
 
+%% Example:
+%% start_graph_input() :: #{}
+-type start_graph_input() :: #{}.
+
 
 %% Example:
 %% start_export_task_output() :: #{
@@ -887,6 +893,10 @@
 %% }
 -type list_private_graph_endpoints_input() :: #{binary() => any()}.
 
+%% Example:
+%% stop_graph_input() :: #{}
+-type stop_graph_input() :: #{}.
+
 
 %% Example:
 %% list_private_graph_endpoints_output() :: #{
@@ -911,6 +921,27 @@
 %% Example:
 %% get_import_task_input() :: #{}
 -type get_import_task_input() :: #{}.
+
+
+%% Example:
+%% start_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type start_graph_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -980,6 +1011,27 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_import_tasks_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_graph_output() :: #{
+%%   <<"arn">> => [string()],
+%%   <<"buildNumber">> => [string()],
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"endpoint">> => [string()],
+%%   <<"id">> => string(),
+%%   <<"kmsKeyIdentifier">> => string(),
+%%   <<"name">> => string(),
+%%   <<"provisionedMemory">> => integer(),
+%%   <<"publicConnectivity">> => [boolean()],
+%%   <<"replicaCount">> => integer(),
+%%   <<"sourceSnapshotId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"vectorSearchConfiguration">> => vector_search_configuration()
+%% }
+-type stop_graph_output() :: #{binary() => any()}.
 
 -type cancel_export_task_errors() ::
     throttling_exception() | 
@@ -1168,7 +1220,21 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type start_graph_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type start_import_task_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type stop_graph_errors() ::
     throttling_exception() | 
     validation_exception() | 
     internal_server_exception() | 
@@ -1377,8 +1443,7 @@ create_graph_snapshot(Client, Input0, Options0) ->
 %% The data can be loaded from files in S3 that in either the Gremlin CSV
 %% format:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-format-gremlin.html
-%% or the openCypher
-%% load format:
+%% or the openCypher load format:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-format-opencypher.html.
 -spec create_graph_using_import_task(aws_client:aws_client(), create_graph_using_import_task_input()) ->
     {ok, create_graph_using_import_task_output(), tuple()} |
@@ -1414,8 +1479,7 @@ create_graph_using_import_task(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a private graph endpoint to allow private access from to the
-%% graph from within
-%% a VPC.
+%% graph from within a VPC.
 %%
 %% You can attach security groups to the private graph endpoint.
 %%
@@ -1561,9 +1625,8 @@ delete_private_graph_endpoint(Client, GraphIdentifier, VpcId, Input0, Options0) 
 %% @doc Execute an openCypher query.
 %%
 %% When invoking this operation in a Neptune Analytics cluster, the IAM user
-%% or role making the request must have a policy attached
-%% that allows one of the following IAM actions in that cluster, depending on
-%% the query:
+%% or role making the request must have a policy attached that allows one of
+%% the following IAM actions in that cluster, depending on the query:
 %%
 %% neptune-graph:ReadDataViaQuery
 %%
@@ -2279,6 +2342,40 @@ start_export_task(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts the specific graph.
+-spec start_graph(aws_client:aws_client(), binary() | list(), start_graph_input()) ->
+    {ok, start_graph_output(), tuple()} |
+    {error, any()} |
+    {error, start_graph_errors(), tuple()}.
+start_graph(Client, GraphIdentifier, Input) ->
+    start_graph(Client, GraphIdentifier, Input, []).
+
+-spec start_graph(aws_client:aws_client(), binary() | list(), start_graph_input(), proplists:proplist()) ->
+    {ok, start_graph_output(), tuple()} |
+    {error, any()} |
+    {error, start_graph_errors(), tuple()}.
+start_graph(Client, GraphIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/start"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Import data into existing Neptune Analytics graph from Amazon Simple
 %% Storage Service (S3).
 %%
@@ -2298,6 +2395,40 @@ start_import_task(Client, GraphIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/importtasks"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops the specific graph.
+-spec stop_graph(aws_client:aws_client(), binary() | list(), stop_graph_input()) ->
+    {ok, stop_graph_output(), tuple()} |
+    {error, any()} |
+    {error, stop_graph_errors(), tuple()}.
+stop_graph(Client, GraphIdentifier, Input) ->
+    stop_graph(Client, GraphIdentifier, Input, []).
+
+-spec stop_graph(aws_client:aws_client(), binary() | list(), stop_graph_input(), proplists:proplist()) ->
+    {ok, stop_graph_output(), tuple()} |
+    {error, any()} |
+    {error, stop_graph_errors(), tuple()}.
+stop_graph(Client, GraphIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/graphs/", aws_util:encode_uri(GraphIdentifier), "/stop"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

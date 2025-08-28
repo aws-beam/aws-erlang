@@ -89,6 +89,9 @@
          describe_insight/3,
          describe_insight/5,
          describe_insight/6,
+         describe_insights_refresh/2,
+         describe_insights_refresh/4,
+         describe_insights_refresh/5,
          describe_nodegroup/3,
          describe_nodegroup/5,
          describe_nodegroup/6,
@@ -142,6 +145,8 @@
          list_updates/5,
          register_cluster/2,
          register_cluster/3,
+         start_insights_refresh/3,
+         start_insights_refresh/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -670,6 +675,16 @@
 %%   <<"tags">> => map()
 %% }
 -type register_cluster_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_insights_refresh_response() :: #{
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"message">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_insights_refresh_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1419,6 +1434,10 @@
 %% }
 -type delete_eks_anywhere_subscription_response() :: #{binary() => any()}.
 
+%% Example:
+%% start_insights_refresh_request() :: #{}
+-type start_insights_refresh_request() :: #{}.
+
 
 %% Example:
 %% create_fargate_profile_request() :: #{
@@ -1601,6 +1620,10 @@
 %% }
 -type describe_update_request() :: #{binary() => any()}.
 
+%% Example:
+%% describe_insights_refresh_request() :: #{}
+-type describe_insights_refresh_request() :: #{}.
+
 
 %% Example:
 %% oidc_identity_provider_config() :: #{
@@ -1742,6 +1765,14 @@
 %%   <<"tags">> => map()
 %% }
 -type fargate_profile() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_insights_refresh_response() :: #{
+%%   <<"message">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_insights_refresh_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2285,6 +2316,12 @@
     invalid_request_exception() | 
     resource_not_found_exception().
 
+-type describe_insights_refresh_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
+
 -type describe_nodegroup_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
@@ -2402,6 +2439,12 @@
     resource_limit_exceeded_exception() | 
     client_exception() | 
     resource_in_use_exception().
+
+-type start_insights_refresh_errors() ::
+    server_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception().
 
 -type tag_resource_errors() ::
     bad_request_exception() | 
@@ -3814,6 +3857,44 @@ describe_insight(Client, ClusterName, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the status of the latest on-demand cluster insights refresh
+%% operation.
+-spec describe_insights_refresh(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_insights_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, describe_insights_refresh_errors(), tuple()}.
+describe_insights_refresh(Client, ClusterName)
+  when is_map(Client) ->
+    describe_insights_refresh(Client, ClusterName, #{}, #{}).
+
+-spec describe_insights_refresh(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_insights_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, describe_insights_refresh_errors(), tuple()}.
+describe_insights_refresh(Client, ClusterName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_insights_refresh(Client, ClusterName, QueryMap, HeadersMap, []).
+
+-spec describe_insights_refresh(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_insights_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, describe_insights_refresh_errors(), tuple()}.
+describe_insights_refresh(Client, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/insights-refresh"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes a managed node group.
 -spec describe_nodegroup(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_nodegroup_response(), tuple()} |
@@ -4628,6 +4709,41 @@ register_cluster(Client, Input) ->
 register_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/cluster-registrations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates an on-demand refresh operation for cluster insights,
+%% getting the latest analysis outside of the standard refresh schedule.
+-spec start_insights_refresh(aws_client:aws_client(), binary() | list(), start_insights_refresh_request()) ->
+    {ok, start_insights_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, start_insights_refresh_errors(), tuple()}.
+start_insights_refresh(Client, ClusterName, Input) ->
+    start_insights_refresh(Client, ClusterName, Input, []).
+
+-spec start_insights_refresh(aws_client:aws_client(), binary() | list(), start_insights_refresh_request(), proplists:proplist()) ->
+    {ok, start_insights_refresh_response(), tuple()} |
+    {error, any()} |
+    {error, start_insights_refresh_errors(), tuple()}.
+start_insights_refresh(Client, ClusterName, Input0, Options0) ->
+    Method = post,
+    Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/insights-refresh"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

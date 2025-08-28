@@ -1849,8 +1849,10 @@
 
 %% Example:
 %% describe_cluster_response() :: #{
+%%   <<"AutoScaling">> => cluster_auto_scaling_config_output(),
 %%   <<"ClusterArn">> => string(),
 %%   <<"ClusterName">> => string(),
+%%   <<"ClusterRole">> => string(),
 %%   <<"ClusterStatus">> => list(any()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"FailureMessage">> => string(),
@@ -4283,7 +4285,9 @@
 
 %% Example:
 %% update_cluster_request() :: #{
+%%   <<"AutoScaling">> => cluster_auto_scaling_config(),
 %%   <<"ClusterName">> := string(),
+%%   <<"ClusterRole">> => string(),
 %%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
 %%   <<"InstanceGroupsToDelete">> => list(string()),
 %%   <<"NodeRecovery">> => list(any()),
@@ -4452,6 +4456,13 @@
 %%   <<"CodeRepositoryArn">> => string()
 %% }
 -type update_code_repository_output() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_auto_scaling_config() :: #{
+%%   <<"AutoScalerType">> => list(any()),
+%%   <<"Mode">> => list(any())
+%% }
+-type cluster_auto_scaling_config() :: #{binary() => any()}.
 
 %% Example:
 %% inference_component_capacity_size() :: #{
@@ -5404,7 +5415,9 @@
 
 %% Example:
 %% create_cluster_request() :: #{
+%%   <<"AutoScaling">> => cluster_auto_scaling_config(),
 %%   <<"ClusterName">> := string(),
+%%   <<"ClusterRole">> => string(),
 %%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
 %%   <<"NodeProvisioningMode">> => list(any()),
 %%   <<"NodeRecovery">> => list(any()),
@@ -13045,6 +13058,15 @@
 %%   <<"HomeEfsFileSystem">> => list(any())
 %% }
 -type retention_policy() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_auto_scaling_config_output() :: #{
+%%   <<"AutoScalerType">> => list(any()),
+%%   <<"FailureMessage">> => [string()],
+%%   <<"Mode">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type cluster_auto_scaling_config_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_partner_app_request() :: #{

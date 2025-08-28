@@ -77,6 +77,8 @@
          deregister_event_topic/3,
          describe_ad_assessment/2,
          describe_ad_assessment/3,
+         describe_ca_enrollment_policy/2,
+         describe_ca_enrollment_policy/3,
          describe_certificate/2,
          describe_certificate/3,
          describe_client_authentication_settings/2,
@@ -107,6 +109,8 @@
          describe_trusts/3,
          describe_update_directory/2,
          describe_update_directory/3,
+         disable_ca_enrollment_policy/2,
+         disable_ca_enrollment_policy/3,
          disable_client_authentication/2,
          disable_client_authentication/3,
          disable_directory_data_access/2,
@@ -117,6 +121,8 @@
          disable_radius/3,
          disable_sso/2,
          disable_sso/3,
+         enable_ca_enrollment_policy/2,
+         enable_ca_enrollment_policy/3,
          enable_client_authentication/2,
          enable_client_authentication/3,
          enable_directory_data_access/2,
@@ -762,6 +768,13 @@
 -type list_certificates_request() :: #{binary() => any()}.
 
 %% Example:
+%% disable_already_in_progress_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type disable_already_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
 %% share_directory_result() :: #{
 %%   <<"SharedDirectoryId">> => string()
 %% }
@@ -1120,6 +1133,12 @@
 -type create_trust_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ca_enrollment_policy_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type describe_ca_enrollment_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% directory_description() :: #{
 %%   <<"AccessUrl">> => string(),
 %%   <<"Alias">> => string(),
@@ -1351,6 +1370,13 @@
 -type disable_radius_result() :: #{binary() => any()}.
 
 %% Example:
+%% enable_ca_enrollment_policy_request() :: #{
+%%   <<"DirectoryId">> := string(),
+%%   <<"PcaConnectorArn">> := string()
+%% }
+-type enable_ca_enrollment_policy_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_conditional_forwarders_request() :: #{
 %%   <<"DirectoryId">> := string(),
 %%   <<"RemoteDomainNames">> => list(string())
@@ -1537,6 +1563,12 @@
 -type invalid_parameter_exception() :: #{binary() => any()}.
 
 %% Example:
+%% disable_ca_enrollment_policy_result() :: #{
+
+%% }
+-type disable_ca_enrollment_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% entity_does_not_exist_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
@@ -1603,6 +1635,16 @@
 %%   <<"ResourceId">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_ca_enrollment_policy_result() :: #{
+%%   <<"CaEnrollmentPolicyStatus">> => list(any()),
+%%   <<"CaEnrollmentPolicyStatusReason">> => string(),
+%%   <<"DirectoryId">> => string(),
+%%   <<"LastUpdatedDateTime">> => non_neg_integer(),
+%%   <<"PcaConnectorArn">> => string()
+%% }
+-type describe_ca_enrollment_policy_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_settings_result() :: #{
@@ -1707,6 +1749,12 @@
 %%   <<"SchemaExtensionId">> => string()
 %% }
 -type start_schema_extension_result() :: #{binary() => any()}.
+
+%% Example:
+%% disable_ca_enrollment_policy_request() :: #{
+%%   <<"DirectoryId">> := string()
+%% }
+-type disable_ca_enrollment_policy_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_schema_extension_request() :: #{
@@ -1860,6 +1908,12 @@
 -type regions_info() :: #{binary() => any()}.
 
 %% Example:
+%% enable_ca_enrollment_policy_result() :: #{
+
+%% }
+-type enable_ca_enrollment_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% snapshot_limits() :: #{
 %%   <<"ManualSnapshotsCurrentCount">> => integer(),
 %%   <<"ManualSnapshotsLimit">> => integer(),
@@ -1927,6 +1981,13 @@
 %%   <<"RequestId">> => string()
 %% }
 -type invalid_password_exception() :: #{binary() => any()}.
+
+%% Example:
+%% enable_already_in_progress_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type enable_already_in_progress_exception() :: #{binary() => any()}.
 
 %% Example:
 %% disable_client_authentication_request() :: #{
@@ -2188,6 +2249,12 @@
     client_exception() | 
     unsupported_operation_exception().
 
+-type describe_ca_enrollment_policy_errors() ::
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    unsupported_operation_exception().
+
 -type describe_certificate_errors() ::
     certificate_does_not_exist_exception() | 
     invalid_parameter_exception() | 
@@ -2304,6 +2371,16 @@
     directory_does_not_exist_exception() | 
     client_exception().
 
+-type disable_ca_enrollment_policy_errors() ::
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    disable_already_in_progress_exception().
+
 -type disable_client_authentication_errors() ::
     invalid_client_auth_status_exception() | 
     access_denied_exception() | 
@@ -2341,6 +2418,17 @@
     service_exception() | 
     client_exception() | 
     insufficient_permissions_exception().
+
+-type enable_ca_enrollment_policy_errors() ::
+    enable_already_in_progress_exception() | 
+    directory_unavailable_exception() | 
+    entity_does_not_exist_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    directory_does_not_exist_exception() | 
+    client_exception() | 
+    entity_already_exists_exception().
 
 -type enable_client_authentication_errors() ::
     invalid_client_auth_status_exception() | 
@@ -3141,6 +3229,29 @@ describe_ad_assessment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeADAssessment">>, Input, Options).
 
+%% @doc Retrieves detailed information about the certificate authority (CA)
+%% enrollment policy for
+%% the specified directory.
+%%
+%% This policy determines how client certificates are automatically enrolled
+%% and
+%% managed through Amazon Web Services Private Certificate Authority.
+-spec describe_ca_enrollment_policy(aws_client:aws_client(), describe_ca_enrollment_policy_request()) ->
+    {ok, describe_ca_enrollment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, describe_ca_enrollment_policy_errors(), tuple()}.
+describe_ca_enrollment_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_ca_enrollment_policy(Client, Input, []).
+
+-spec describe_ca_enrollment_policy(aws_client:aws_client(), describe_ca_enrollment_policy_request(), proplists:proplist()) ->
+    {ok, describe_ca_enrollment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, describe_ca_enrollment_policy_errors(), tuple()}.
+describe_ca_enrollment_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCAEnrollmentPolicy">>, Input, Options).
+
 %% @doc Displays information about the certificate registered for secure LDAP
 %% or client
 %% certificate authentication.
@@ -3461,6 +3572,34 @@ describe_update_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUpdateDirectory">>, Input, Options).
 
+%% @doc Disables the certificate authority (CA) enrollment policy for the
+%% specified directory.
+%%
+%% This stops
+%% automatic certificate enrollment and management for domain-joined clients,
+%% but does not affect
+%% existing certificates.
+%%
+%% Disabling the CA enrollment policy prevents new certificates from being
+%% automatically
+%% enrolled, but existing certificates remain valid and functional until they
+%% expire.
+-spec disable_ca_enrollment_policy(aws_client:aws_client(), disable_ca_enrollment_policy_request()) ->
+    {ok, disable_ca_enrollment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, disable_ca_enrollment_policy_errors(), tuple()}.
+disable_ca_enrollment_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_ca_enrollment_policy(Client, Input, []).
+
+-spec disable_ca_enrollment_policy(aws_client:aws_client(), disable_ca_enrollment_policy_request(), proplists:proplist()) ->
+    {ok, disable_ca_enrollment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, disable_ca_enrollment_policy_errors(), tuple()}.
+disable_ca_enrollment_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableCAEnrollmentPolicy">>, Input, Options).
+
 %% @doc Disables alternative client authentication methods for the specified
 %% directory.
 -spec disable_client_authentication(aws_client:aws_client(), disable_client_authentication_request()) ->
@@ -3555,6 +3694,35 @@ disable_sso(Client, Input)
 disable_sso(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableSso">>, Input, Options).
+
+%% @doc Enables certificate authority (CA) enrollment policy for the
+%% specified directory.
+%%
+%% This allows
+%% domain-joined clients to automatically request and receive certificates
+%% from the specified
+%% Amazon Web Services Private Certificate Authority.
+%%
+%% Before enabling CA enrollment, ensure that the PCA connector is properly
+%% configured and
+%% accessible from the directory. The connector must be in an active state
+%% and have the
+%% necessary permissions.
+-spec enable_ca_enrollment_policy(aws_client:aws_client(), enable_ca_enrollment_policy_request()) ->
+    {ok, enable_ca_enrollment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, enable_ca_enrollment_policy_errors(), tuple()}.
+enable_ca_enrollment_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_ca_enrollment_policy(Client, Input, []).
+
+-spec enable_ca_enrollment_policy(aws_client:aws_client(), enable_ca_enrollment_policy_request(), proplists:proplist()) ->
+    {ok, enable_ca_enrollment_policy_result(), tuple()} |
+    {error, any()} |
+    {error, enable_ca_enrollment_policy_errors(), tuple()}.
+enable_ca_enrollment_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableCAEnrollmentPolicy">>, Input, Options).
 
 %% @doc Enables alternative client authentication methods for the specified
 %% directory.
