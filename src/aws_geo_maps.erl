@@ -7,16 +7,13 @@
 %% Capabilities include:
 %%
 %% Access to comprehensive base map data, allowing you to tailor the map
-%% display to
-%% your specific needs.
+%% display to your specific needs.
 %%
 %% Multiple pre-designed map styles suited for various application types,
-%% such as
-%% navigation, logistics, or data visualization.
+%% such as navigation, logistics, or data visualization.
 %%
 %% Generation of static map images for scenarios where interactive maps
-%% aren't
-%% suitable, such as:
+%% aren't suitable, such as:
 %%
 %% Embedding in emails or documents
 %%
@@ -91,18 +88,18 @@
 %%   <<"CompactOverlay">> => string(),
 %%   <<"CropLabels">> => [boolean()],
 %%   <<"GeoJsonOverlay">> => string(),
-%%   <<"Height">> := [integer()],
+%%   <<"Height">> := integer(),
 %%   <<"Key">> => string(),
 %%   <<"LabelSize">> => string(),
 %%   <<"Language">> => string(),
-%%   <<"Padding">> => [integer()],
+%%   <<"Padding">> => integer(),
 %%   <<"PointsOfInterests">> => string(),
 %%   <<"PoliticalView">> => string(),
 %%   <<"Radius">> => float(),
 %%   <<"ScaleBarUnit">> => string(),
 %%   <<"Style">> => string(),
-%%   <<"Width">> := [integer()],
-%%   <<"Zoom">> => [float()]
+%%   <<"Width">> := integer(),
+%%   <<"Zoom">> => float()
 %% }
 -type get_static_map_request() :: #{binary() => any()}.
 
@@ -163,6 +160,13 @@
 
 
 %% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -194,6 +198,7 @@
 -type get_tile_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -201,8 +206,7 @@
 %% API
 %%====================================================================
 
-%% @doc
-%% `GetGlyphs' returns the map's glyphs.
+%% @doc `GetGlyphs' returns the map's glyphs.
 -spec get_glyphs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_glyphs_response(), tuple()} |
     {error, any()}.
@@ -254,8 +258,7 @@ get_glyphs(Client, FontStack, FontUnicodeRange, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc
-%% `GetSprites' returns the map's sprites.
+%% @doc `GetSprites' returns the map's sprites.
 -spec get_sprites(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_sprites_response(), tuple()} |
     {error, any()}.
@@ -307,14 +310,12 @@ get_sprites(Client, ColorScheme, FileName, Style, Variant, QueryMap, HeadersMap,
         Result
     end.
 
-%% @doc
-%% `GetStaticMap' provides high-quality static map images with
-%% customizable
-%% options.
+%% @doc `GetStaticMap' provides high-quality static map images with
+%% customizable options.
 %%
 %% You can modify the map's appearance and overlay additional
-%% information. It's an
-%% ideal solution for applications requiring tailored static map snapshots.
+%% information. It's an ideal solution for applications requiring
+%% tailored static map snapshots.
 -spec get_static_map(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_static_map_response(), tuple()} |
     {error, any()} |
@@ -392,8 +393,7 @@ get_static_map(Client, FileName, Height, Width, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc
-%% `GetStyleDescriptor' returns information about the style.
+%% @doc `GetStyleDescriptor' returns information about the style.
 -spec get_style_descriptor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_style_descriptor_response(), tuple()} |
     {error, any()}.
@@ -451,13 +451,10 @@ get_style_descriptor(Client, Style, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc
-%% `GetTile' returns a tile.
+%% @doc `GetTile' returns a tile.
 %%
-%% Map tiles are used by clients to render a map.
-%% they're addressed using a grid arrangement with an X coordinate, Y
-%% coordinate, and Z (zoom)
-%% level.
+%% Map tiles are used by clients to render a map. they're addressed using
+%% a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
 -spec get_tile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_tile_response(), tuple()} |
     {error, any()} |

@@ -2522,6 +2522,7 @@
 %%   <<"SupportsClusters">> => boolean(),
 %%   <<"StorageType">> => string(),
 %%   <<"MaxIopsPerGib">> => float(),
+%%   <<"SupportsHttpEndpoint">> => boolean(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"MinIopsPerGib">> => float(),
 %%   <<"MinStorageThroughputPerDbInstance">> => integer(),

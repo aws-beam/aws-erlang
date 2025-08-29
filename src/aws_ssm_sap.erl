@@ -2,11 +2,9 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc This API reference provides descriptions, syntax, and other details
-%% about each of the
-%% actions and data types for AWS Systems Manager for SAP.
+%% about each of the actions and data types for AWS Systems Manager for SAP.
 %%
-%% The topic for each action shows
-%% the API request parameters and responses.
+%% The topic for each action shows the API request parameters and responses.
 -module(aws_ssm_sap).
 
 -export([delete_resource_permission/2,
@@ -17,6 +15,8 @@
          get_application/3,
          get_component/2,
          get_component/3,
+         get_configuration_check_operation/2,
+         get_configuration_check_operation/3,
          get_database/2,
          get_database/3,
          get_operation/2,
@@ -27,12 +27,20 @@
          list_applications/3,
          list_components/2,
          list_components/3,
+         list_configuration_check_definitions/2,
+         list_configuration_check_definitions/3,
+         list_configuration_check_operations/2,
+         list_configuration_check_operations/3,
          list_databases/2,
          list_databases/3,
          list_operation_events/2,
          list_operation_events/3,
          list_operations/2,
          list_operations/3,
+         list_sub_check_results/2,
+         list_sub_check_results/3,
+         list_sub_check_rule_results/2,
+         list_sub_check_rule_results/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -44,6 +52,8 @@
          start_application/3,
          start_application_refresh/2,
          start_application_refresh/3,
+         start_configuration_checks/2,
+         start_configuration_checks/3,
          stop_application/2,
          stop_application/3,
          tag_resource/3,
@@ -90,10 +100,37 @@
 
 
 %% Example:
+%% sub_check_result() :: #{
+%%   <<"Description">> => [string()],
+%%   <<"Id">> => string(),
+%%   <<"Name">> => [string()],
+%%   <<"References">> => list([string()]())
+%% }
+-type sub_check_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_configuration_checks_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"ConfigurationCheckIds">> => list(list(any())())
+%% }
+-type start_configuration_checks_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_application_output() :: #{
 %%   <<"OperationId">> => string()
 %% }
 -type start_application_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_check_rule_results_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SubCheckResultId">> := string()
+%% }
+-type list_sub_check_rule_results_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -133,6 +170,14 @@
 %%   <<"Message">> => [string()]
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_check_rule_results_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleResults">> => list(rule_result())
+%% }
+-type list_sub_check_rule_results_output() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{}
@@ -182,6 +227,13 @@
 
 
 %% Example:
+%% get_configuration_check_operation_output() :: #{
+%%   <<"ConfigurationCheckOperation">> => configuration_check_operation()
+%% }
+-type get_configuration_check_operation_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_resource_permission_output() :: #{
 %%   <<"Policy">> => [string()]
 %% }
@@ -193,6 +245,17 @@
 %%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_check_operations_input() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"ListMode">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_check_operations_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -240,6 +303,13 @@
 %%   <<"StopConnectedEntity">> => list(any())
 %% }
 -type stop_application_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_configuration_checks_output() :: #{
+%%   <<"ConfigurationCheckOperations">> => list(configuration_check_operation())
+%% }
+-type start_configuration_checks_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -339,6 +409,22 @@
 
 
 %% Example:
+%% configuration_check_operation() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"ConfigurationCheckDescription">> => [string()],
+%%   <<"ConfigurationCheckId">> => list(any()),
+%%   <<"ConfigurationCheckName">> => [string()],
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"Id">> => string(),
+%%   <<"RuleStatusCounts">> => rule_status_counts(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type configuration_check_operation() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_application_settings_output() :: #{
 %%   <<"Message">> => [string()],
 %%   <<"OperationIds">> => list(string())
@@ -406,6 +492,14 @@
 
 
 %% Example:
+%% list_configuration_check_operations_output() :: #{
+%%   <<"ConfigurationCheckOperations">> => list(configuration_check_operation()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_check_operations_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_resource_permission_input() :: #{
 %%   <<"ActionType">> => list(any()),
 %%   <<"ResourceArn">> := string(),
@@ -456,6 +550,14 @@
 
 
 %% Example:
+%% list_configuration_check_definitions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_check_definitions_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% host() :: #{
 %%   <<"EC2InstanceId">> => [string()],
 %%   <<"HostIp">> => [string()],
@@ -480,6 +582,14 @@
 %%   <<"Tags">> => map()
 %% }
 -type get_application_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_configuration_check_definitions_output() :: #{
+%%   <<"ConfigurationChecks">> => list(configuration_check_definition()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_configuration_check_definitions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -508,6 +618,23 @@
 
 
 %% Example:
+%% configuration_check_definition() :: #{
+%%   <<"ApplicableApplicationTypes">> => list(list(any())()),
+%%   <<"Description">> => [string()],
+%%   <<"Id">> => list(any()),
+%%   <<"Name">> => [string()]
+%% }
+-type configuration_check_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_configuration_check_operation_input() :: #{
+%%   <<"OperationId">> := string()
+%% }
+-type get_configuration_check_operation_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% component_info() :: #{
 %%   <<"ComponentType">> => list(any()),
 %%   <<"Ec2InstanceId">> => string(),
@@ -529,6 +656,17 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% rule_result() :: #{
+%%   <<"Description">> => [string()],
+%%   <<"Id">> => string(),
+%%   <<"Message">> => [string()],
+%%   <<"Metadata">> => map(),
+%%   <<"Status">> => list(any())
+%% }
+-type rule_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -570,6 +708,14 @@
 %%   <<"ResourceArn">> := string()
 %% }
 -type get_resource_permission_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_check_results_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SubCheckResults">> => list(sub_check_result())
+%% }
+-type list_sub_check_results_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -616,6 +762,17 @@
 
 
 %% Example:
+%% rule_status_counts() :: #{
+%%   <<"Failed">> => [integer()],
+%%   <<"Info">> => [integer()],
+%%   <<"Passed">> => [integer()],
+%%   <<"Unknown">> => [integer()],
+%%   <<"Warning">> => [integer()]
+%% }
+-type rule_status_counts() :: #{binary() => any()}.
+
+
+%% Example:
 %% register_application_input() :: #{
 %%   <<"ApplicationId">> := string(),
 %%   <<"ApplicationType">> := list(any()),
@@ -628,6 +785,15 @@
 %%   <<"Tags">> => map()
 %% }
 -type register_application_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sub_check_results_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"OperationId">> := string()
+%% }
+-type list_sub_check_results_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -656,6 +822,10 @@
     internal_server_exception() | 
     unauthorized_exception().
 
+-type get_configuration_check_operation_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
 -type get_database_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -680,6 +850,15 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type list_configuration_check_definitions_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_configuration_check_operations_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_databases_errors() ::
     validation_exception() | 
     internal_server_exception() | 
@@ -690,6 +869,14 @@
     internal_server_exception().
 
 -type list_operations_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_sub_check_results_errors() ::
+    validation_exception() | 
+    internal_server_exception().
+
+-type list_sub_check_rule_results_errors() ::
     validation_exception() | 
     internal_server_exception().
 
@@ -721,6 +908,12 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     unauthorized_exception().
+
+-type start_configuration_checks_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type stop_application_errors() ::
     validation_exception() | 
@@ -785,8 +978,8 @@ delete_resource_permission(Client, Input0, Options0) ->
 
 %% @doc Deregister an SAP application with AWS Systems Manager for SAP.
 %%
-%% This action does not
-%% aﬀect the existing setup of your SAP workloads on Amazon EC2.
+%% This action does not aﬀect the existing setup of your SAP workloads on
+%% Amazon EC2.
 -spec deregister_application(aws_client:aws_client(), deregister_application_input()) ->
     {ok, deregister_application_output(), tuple()} |
     {error, any()} |
@@ -822,8 +1015,7 @@ deregister_application(Client, Input0, Options0) ->
 
 %% @doc Gets an application registered with AWS Systems Manager for SAP.
 %%
-%% It also returns the
-%% components of the application.
+%% It also returns the components of the application.
 -spec get_application(aws_client:aws_client(), get_application_input()) ->
     {ok, get_application_output(), tuple()} |
     {error, any()} |
@@ -858,8 +1050,7 @@ get_application(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the component of an application registered with AWS Systems
-%% Manager for
-%% SAP.
+%% Manager for SAP.
 -spec get_component(aws_client:aws_client(), get_component_input()) ->
     {ok, get_component_output(), tuple()} |
     {error, any()} |
@@ -893,9 +1084,43 @@ get_component(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets the details of a configuration check operation by specifying the
+%% operation ID.
+-spec get_configuration_check_operation(aws_client:aws_client(), get_configuration_check_operation_input()) ->
+    {ok, get_configuration_check_operation_output(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_check_operation_errors(), tuple()}.
+get_configuration_check_operation(Client, Input) ->
+    get_configuration_check_operation(Client, Input, []).
+
+-spec get_configuration_check_operation(aws_client:aws_client(), get_configuration_check_operation_input(), proplists:proplist()) ->
+    {ok, get_configuration_check_operation_output(), tuple()} |
+    {error, any()} |
+    {error, get_configuration_check_operation_errors(), tuple()}.
+get_configuration_check_operation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-configuration-check-operation"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets the SAP HANA database of an application registered with AWS
-%% Systems Manager for
-%% SAP.
+%% Systems Manager for SAP.
 -spec get_database(aws_client:aws_client(), get_database_input()) ->
     {ok, get_database_output(), tuple()} |
     {error, any()} |
@@ -1066,9 +1291,78 @@ list_components(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all configuration check types supported by AWS Systems Manager
+%% for SAP.
+-spec list_configuration_check_definitions(aws_client:aws_client(), list_configuration_check_definitions_input()) ->
+    {ok, list_configuration_check_definitions_output(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_check_definitions_errors(), tuple()}.
+list_configuration_check_definitions(Client, Input) ->
+    list_configuration_check_definitions(Client, Input, []).
+
+-spec list_configuration_check_definitions(aws_client:aws_client(), list_configuration_check_definitions_input(), proplists:proplist()) ->
+    {ok, list_configuration_check_definitions_output(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_check_definitions_errors(), tuple()}.
+list_configuration_check_definitions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-configuration-check-definitions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the configuration check operations performed by AWS Systems
+%% Manager for SAP.
+-spec list_configuration_check_operations(aws_client:aws_client(), list_configuration_check_operations_input()) ->
+    {ok, list_configuration_check_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_check_operations_errors(), tuple()}.
+list_configuration_check_operations(Client, Input) ->
+    list_configuration_check_operations(Client, Input, []).
+
+-spec list_configuration_check_operations(aws_client:aws_client(), list_configuration_check_operations_input(), proplists:proplist()) ->
+    {ok, list_configuration_check_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_configuration_check_operations_errors(), tuple()}.
+list_configuration_check_operations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-configuration-check-operations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the SAP HANA databases of an application registered with AWS
-%% Systems Manager for
-%% SAP.
+%% Systems Manager for SAP.
 -spec list_databases(aws_client:aws_client(), list_databases_input()) ->
     {ok, list_databases_output(), tuple()} |
     {error, any()} |
@@ -1105,8 +1399,7 @@ list_databases(Client, Input0, Options0) ->
 %% @doc Returns a list of operations events.
 %%
 %% Available parameters include `OperationID', as well as optional
-%% parameters
-%% `MaxResults', `NextToken', and `Filters'.
+%% parameters `MaxResults', `NextToken', and `Filters'.
 -spec list_operation_events(aws_client:aws_client(), list_operation_events_input()) ->
     {ok, list_operation_events_output(), tuple()} |
     {error, any()} |
@@ -1174,9 +1467,78 @@ list_operations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists the sub-check results of a specified configuration check
+%% operation.
+-spec list_sub_check_results(aws_client:aws_client(), list_sub_check_results_input()) ->
+    {ok, list_sub_check_results_output(), tuple()} |
+    {error, any()} |
+    {error, list_sub_check_results_errors(), tuple()}.
+list_sub_check_results(Client, Input) ->
+    list_sub_check_results(Client, Input, []).
+
+-spec list_sub_check_results(aws_client:aws_client(), list_sub_check_results_input(), proplists:proplist()) ->
+    {ok, list_sub_check_results_output(), tuple()} |
+    {error, any()} |
+    {error, list_sub_check_results_errors(), tuple()}.
+list_sub_check_results(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-sub-check-results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the rules of a specified sub-check belonging to a configuration
+%% check operation.
+-spec list_sub_check_rule_results(aws_client:aws_client(), list_sub_check_rule_results_input()) ->
+    {ok, list_sub_check_rule_results_output(), tuple()} |
+    {error, any()} |
+    {error, list_sub_check_rule_results_errors(), tuple()}.
+list_sub_check_rule_results(Client, Input) ->
+    list_sub_check_rule_results(Client, Input, []).
+
+-spec list_sub_check_rule_results(aws_client:aws_client(), list_sub_check_rule_results_input(), proplists:proplist()) ->
+    {ok, list_sub_check_rule_results_output(), tuple()} |
+    {error, any()} |
+    {error, list_sub_check_rule_results_errors(), tuple()}.
+list_sub_check_rule_results(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-sub-check-rule-results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all tags on an SAP HANA application and/or database registered
-%% with AWS Systems
-%% Manager for SAP.
+%% with AWS Systems Manager for SAP.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1249,20 +1611,16 @@ put_resource_permission(Client, Input0, Options0) ->
 
 %% @doc Register an SAP application with AWS Systems Manager for SAP.
 %%
-%% You must meet the
-%% following requirements before registering.
+%% You must meet the following requirements before registering.
 %%
 %% The SAP application you want to register with AWS Systems Manager for SAP
-%% is running
-%% on Amazon EC2.
+%% is running on Amazon EC2.
 %%
 %% AWS Systems Manager Agent must be setup on an Amazon EC2 instance along
-%% with the required
-%% IAM permissions.
+%% with the required IAM permissions.
 %%
 %% Amazon EC2 instance(s) must have access to the secrets created in AWS
-%% Secrets Manager to
-%% manage SAP applications and components.
+%% Secrets Manager to manage SAP applications and components.
 -spec register_application(aws_client:aws_client(), register_application_input()) ->
     {ok, register_application_output(), tuple()} |
     {error, any()} |
@@ -1347,6 +1705,41 @@ start_application_refresh(Client, Input) ->
 start_application_refresh(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-application-refresh"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates configuration check operations against a specified
+%% application.
+-spec start_configuration_checks(aws_client:aws_client(), start_configuration_checks_input()) ->
+    {ok, start_configuration_checks_output(), tuple()} |
+    {error, any()} |
+    {error, start_configuration_checks_errors(), tuple()}.
+start_configuration_checks(Client, Input) ->
+    start_configuration_checks(Client, Input, []).
+
+-spec start_configuration_checks(aws_client:aws_client(), start_configuration_checks_input(), proplists:proplist()) ->
+    {ok, start_configuration_checks_output(), tuple()} |
+    {error, any()} |
+    {error, start_configuration_checks_errors(), tuple()}.
+start_configuration_checks(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/start-configuration-checks"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1474,8 +1867,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings of an application registered with AWS Systems
-%% Manager for
-%% SAP.
+%% Manager for SAP.
 -spec update_application_settings(aws_client:aws_client(), update_application_settings_input()) ->
     {ok, update_application_settings_output(), tuple()} |
     {error, any()} |

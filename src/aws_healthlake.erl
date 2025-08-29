@@ -1,10 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS HealthLake is a HIPAA eligibile service that allows customers to
-%% store,
-%% transform, query, and analyze their FHIR-formatted data in a consistent
-%% fashion in the cloud.
+%% @doc This is the AWS HealthLake API Reference.
+%%
+%% For an introduction to
+%% the service, see What is AWS HealthLake?:
+%% https://docs.aws.amazon.com/healthlake/latest/devguide/what-is.html in the
+%% AWS HealthLake Developer
+%% Guide.
 -module(aws_healthlake).
 
 -export([create_fhir_datastore/2,
@@ -89,7 +92,8 @@
 %%   <<"DatastoreId">> := string(),
 %%   <<"InputDataConfig">> := list(),
 %%   <<"JobName">> => string(),
-%%   <<"JobOutputDataConfig">> := list()
+%%   <<"JobOutputDataConfig">> := list(),
+%%   <<"ValidationLevel">> => list(any())
 %% }
 -type start_fhir_import_job_request() :: #{binary() => any()}.
 
@@ -126,7 +130,8 @@
 %%   <<"JobProgressReport">> => job_progress_report(),
 %%   <<"JobStatus">> => list(any()),
 %%   <<"Message">> => string(),
-%%   <<"SubmitTime">> => non_neg_integer()
+%%   <<"SubmitTime">> => non_neg_integer(),
+%%   <<"ValidationLevel">> => list(any())
 %% }
 -type import_job_properties() :: #{binary() => any()}.
 
@@ -473,7 +478,7 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a data store that can ingest and export FHIR formatted data.
+%% @doc Create a FHIR-enabled data store.
 -spec create_fhir_datastore(aws_client:aws_client(), create_fhir_datastore_request()) ->
     {ok, create_fhir_datastore_response(), tuple()} |
     {error, any()} |
@@ -490,7 +495,7 @@ create_fhir_datastore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFHIRDatastore">>, Input, Options).
 
-%% @doc Deletes a data store.
+%% @doc Delete a FHIR-enabled data store.
 -spec delete_fhir_datastore(aws_client:aws_client(), delete_fhir_datastore_request()) ->
     {ok, delete_fhir_datastore_response(), tuple()} |
     {error, any()} |
@@ -507,10 +512,7 @@ delete_fhir_datastore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFHIRDatastore">>, Input, Options).
 
-%% @doc Gets the properties associated with the FHIR data store, including
-%% the data store ID,
-%% data store ARN, data store name, data store status, when the data store
-%% was created, data store type version, and the data store's endpoint.
+%% @doc Get properties for a FHIR-enabled data store.
 -spec describe_fhir_datastore(aws_client:aws_client(), describe_fhir_datastore_request()) ->
     {ok, describe_fhir_datastore_response(), tuple()} |
     {error, any()} |
@@ -527,8 +529,7 @@ describe_fhir_datastore(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFHIRDatastore">>, Input, Options).
 
-%% @doc Displays the properties of a FHIR export job, including the ID, ARN,
-%% name, and the status of the job.
+%% @doc Get FHIR export job properties.
 -spec describe_fhir_export_job(aws_client:aws_client(), describe_fhir_export_job_request()) ->
     {ok, describe_fhir_export_job_response(), tuple()} |
     {error, any()} |
@@ -545,8 +546,8 @@ describe_fhir_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFHIRExportJob">>, Input, Options).
 
-%% @doc Displays the properties of a FHIR import job, including the ID, ARN,
-%% name, and the status of the job.
+%% @doc Get the import job properties to learn more about the job or job
+%% progress.
 -spec describe_fhir_import_job(aws_client:aws_client(), describe_fhir_import_job_request()) ->
     {ok, describe_fhir_import_job_response(), tuple()} |
     {error, any()} |
@@ -563,8 +564,9 @@ describe_fhir_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFHIRImportJob">>, Input, Options).
 
-%% @doc Lists all FHIR data stores that are in the user’s account, regardless
-%% of data store status.
+%% @doc List all FHIR-enabled data stores in a user’s account, regardless of
+%% data store
+%% status.
 -spec list_fhir_datastores(aws_client:aws_client(), list_fhir_datastores_request()) ->
     {ok, list_fhir_datastores_response(), tuple()} |
     {error, any()} |
@@ -581,8 +583,8 @@ list_fhir_datastores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFHIRDatastores">>, Input, Options).
 
-%% @doc
-%% Lists all FHIR export jobs associated with an account and their statuses.
+%% @doc Lists all FHIR export jobs associated with an account and their
+%% statuses.
 -spec list_fhir_export_jobs(aws_client:aws_client(), list_fhir_export_jobs_request()) ->
     {ok, list_fhir_export_jobs_response(), tuple()} |
     {error, any()} |
@@ -599,8 +601,8 @@ list_fhir_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFHIRExportJobs">>, Input, Options).
 
-%% @doc
-%% Lists all FHIR import jobs associated with an account and their statuses.
+%% @doc List all FHIR import jobs associated with an account and their
+%% statuses.
 -spec list_fhir_import_jobs(aws_client:aws_client(), list_fhir_import_jobs_request()) ->
     {ok, list_fhir_import_jobs_response(), tuple()} |
     {error, any()} |
@@ -617,8 +619,7 @@ list_fhir_import_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFHIRImportJobs">>, Input, Options).
 
-%% @doc
-%% Returns a list of all existing tags associated with a data store.
+%% @doc Returns a list of all existing tags associated with a data store.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -635,7 +636,7 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Begins a FHIR export job.
+%% @doc Start a FHIR export job.
 -spec start_fhir_export_job(aws_client:aws_client(), start_fhir_export_job_request()) ->
     {ok, start_fhir_export_job_response(), tuple()} |
     {error, any()} |
@@ -652,7 +653,12 @@ start_fhir_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFHIRExportJob">>, Input, Options).
 
-%% @doc Begins a FHIR Import job.
+%% @doc Start importing bulk FHIR data into an ACTIVE data store.
+%%
+%% The import job imports FHIR
+%% data found in the `InputDataConfig' object and stores processing
+%% results in the
+%% `JobOutputDataConfig' object.
 -spec start_fhir_import_job(aws_client:aws_client(), start_fhir_import_job_request()) ->
     {ok, start_fhir_import_job_response(), tuple()} |
     {error, any()} |
@@ -669,8 +675,7 @@ start_fhir_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFHIRImportJob">>, Input, Options).
 
-%% @doc
-%% Adds a user specified key and value tag to a data store.
+%% @doc Add a user-specifed key and value tag to a data store.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -687,8 +692,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc
-%% Removes tags from a data store.
+%% @doc Remove a user-specifed key and value tag from a data store.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

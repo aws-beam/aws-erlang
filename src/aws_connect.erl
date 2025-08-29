@@ -1315,6 +1315,7 @@
 
 %% Example:
 %% dimensions() :: #{
+%%   <<"AgentStatus">> => agent_status_identifier(),
 %%   <<"Channel">> => list(any()),
 %%   <<"Queue">> => queue_reference(),
 %%   <<"RoutingProfile">> => routing_profile_reference(),
@@ -4709,6 +4710,14 @@
 
 
 %% Example:
+%% agent_status_identifier() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type agent_status_identifier() :: #{binary() => any()}.
+
+
+%% Example:
 %% lex_bot() :: #{
 %%   <<"LexRegion">> => string(),
 %%   <<"Name">> => string()
@@ -6801,6 +6810,7 @@
 
 %% Example:
 %% filters() :: #{
+%%   <<"AgentStatuses">> => list(string()),
 %%   <<"Channels">> => list(list(any())()),
 %%   <<"Queues">> => list(string()),
 %%   <<"RoutingProfiles">> => list(string()),
@@ -11610,10 +11620,11 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Adds a new participant into an on-going chat contact or webRTC call.
 %%
-%% For more information, see Customize chat
-%% flow experiences by integrating custom participants:
+%% For more information,
+%% see Customize chat flow experiences by integrating custom participants:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html
-%% or Enable multi-user web, in-app, and video calling:
+%% or Enable
+%% multi-user web, in-app, and video calling:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/enable-multiuser-inapp.html.
 -spec create_participant(aws_client:aws_client(), create_participant_request()) ->
     {ok, create_participant_response(), tuple()} |
@@ -13448,7 +13459,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web ServicesSupport.
+%% request access to this API, contact Amazon Web Services Support.
 %%
 %% Describes the target authentication profile.
 -spec describe_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -15226,15 +15237,17 @@ get_contact_metrics(Client, Input0, Options0) ->
 %% Amazon Connect Administrator Guide.
 %%
 %% When you make a successful API request, you can expect the following
-%% metric values in the response:
+%% metric values in the
+%% response:
 %%
-%% Metric value is null: The calculation cannot be performed due to divide by
-%% zero or insufficient data
+%% Metric value is null: The calculation cannot be
+%% performed due to divide by zero or insufficient data
 %%
-%% Metric value is a number (including 0) of defined type: The number
-%% provided is the calculation result
+%% Metric value is a number (including 0) of defined type:
+%% The number provided is the calculation result
 %%
-%% MetricResult list is empty: The request cannot find any data in the system
+%% MetricResult list is empty: The request cannot find any
+%% data in the system
 %%
 %% The following guidelines can help you work with the API:
 %%
@@ -15523,15 +15536,17 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 %% Amazon Connect Administrator Guide.
 %%
 %% When you make a successful API request, you can expect the following
-%% metric values in the response:
+%% metric values in the
+%% response:
 %%
-%% Metric value is null: The calculation cannot be performed due to divide by
-%% zero or insufficient data
+%% Metric value is null: The calculation cannot be
+%% performed due to divide by zero or insufficient data
 %%
-%% Metric value is a number (including 0) of defined type: The number
-%% provided is the calculation result
+%% Metric value is a number (including 0) of defined type:
+%% The number provided is the calculation result
 %%
-%% MetricResult list is empty: The request cannot find any data in the system
+%% MetricResult list is empty: The request cannot find any
+%% data in the system
 %%
 %% The following guidelines can help you work with the API:
 %%
@@ -15730,7 +15745,7 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 %% then release 99, you
 %% will have exceeded the 200% limit. At that point you are blocked from
 %% claiming any more numbers
-%% until you open an Amazon Web ServicesSupport ticket.
+%% until you open an Amazon Web Services Support ticket.
 -spec import_phone_number(aws_client:aws_client(), import_phone_number_request()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
@@ -15991,7 +16006,7 @@ list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web ServicesSupport.
+%% request access to this API, contact Amazon Web Services Support.
 %%
 %% Provides summary information about the authentication profiles in a
 %% specified Amazon Connect instance.
@@ -18162,7 +18177,7 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% period for up to
 %% 180 days. It cannot be searched for or claimed again until the period has
 %% ended. If you
-%% accidentally release a phone number, contact Amazon Web ServicesSupport.
+%% accidentally release a phone number, contact Amazon Web Services Support.
 %%
 %% If you plan to claim and release numbers frequently,
 %% contact us for a service quota exception. Otherwise, it is possible you
@@ -19179,7 +19194,7 @@ start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
 %% error, your
 %% account may not support the ability to configure custom chat durations.
 %% For more information,
-%% contact Amazon Web ServicesSupport.
+%% contact Amazon Web Services Support.
 %%
 %% For more information about chat, see the following topics in the Amazon
 %% Connect
@@ -20228,7 +20243,7 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web ServicesSupport.
+%% request access to this API, contact Amazon Web Services Support.
 %%
 %% Updates the selected authentication profile.
 -spec update_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_authentication_profile_request()) ->
