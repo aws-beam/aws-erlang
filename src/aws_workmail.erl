@@ -297,7 +297,7 @@
 %% put_email_monitoring_configuration_request() :: #{
 %%   <<"LogGroupArn">> := string(),
 %%   <<"OrganizationId">> := string(),
-%%   <<"RoleArn">> := string()
+%%   <<"RoleArn">> => string()
 %% }
 -type put_email_monitoring_configuration_request() :: #{binary() => any()}.
 
@@ -2626,6 +2626,7 @@
     mail_domain_not_found_exception() | 
     organization_state_exception() | 
     entity_state_exception() | 
+    unsupported_operation_exception() | 
     entity_not_found_exception().
 
 -type reset_password_errors() ::

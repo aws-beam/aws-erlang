@@ -1,9 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Amazon Web Services User Notifications API Reference provides
-%% descriptions, API request parameters, and the JSON response for each of
-%% the User Notification API actions.
+%% @doc The User Notifications API Reference provides descriptions, API
+%% request parameters, and the JSON response for each of the User
+%% Notifications API actions.
 %%
 %% User Notification control plane APIs are currently available in US East
 %% (Virginia) - `us-east-1'.
@@ -12,17 +12,20 @@
 %% https://docs.aws.amazon.com/notifications/latest/APIReference/API_GetNotificationEvent.html
 %% and ListNotificationEvents:
 %% https://docs.aws.amazon.com/notifications/latest/APIReference/API_ListNotificationEvents.html
-%% APIs are currently available in
-%% commercial partition Regions:
+%% APIs are currently available in commercial partition Regions:
 %% https://docs.aws.amazon.com/notifications/latest/userguide/supported-regions.html
 %% and only return notifications stored in the same Region in which
 %% they're called.
 %%
 %% The User Notifications console can only be used in US East (Virginia).
-%% Your data however, is stored in each Region chosen as a
-%% notification hub:
+%% Your data however, is stored in each Region chosen as a notification hub:
 %% https://docs.aws.amazon.com/notifications/latest/userguide/notification-hubs.html
 %% in addition to US East (Virginia).
+%%
+%% For information about descriptions, API request parameters, and the JSON
+%% response for email contact related API actions, see the User Notifications
+%% Contacts API Reference Guide:
+%% https://docs.aws.amazon.com/notificationscontacts/latest/APIReference/Welcome.html.
 -module(aws_notifications).
 
 -export([associate_channel/3,
@@ -31,6 +34,8 @@
          associate_managed_notification_account_contact/4,
          associate_managed_notification_additional_channel/3,
          associate_managed_notification_additional_channel/4,
+         associate_organizational_unit/3,
+         associate_organizational_unit/4,
          create_event_rule/2,
          create_event_rule/3,
          create_notification_configuration/2,
@@ -49,6 +54,8 @@
          disassociate_managed_notification_account_contact/4,
          disassociate_managed_notification_additional_channel/3,
          disassociate_managed_notification_additional_channel/4,
+         disassociate_organizational_unit/3,
+         disassociate_organizational_unit/4,
          enable_notifications_access_for_organization/2,
          enable_notifications_access_for_organization/3,
          get_event_rule/2,
@@ -90,6 +97,9 @@
          list_managed_notification_events/1,
          list_managed_notification_events/3,
          list_managed_notification_events/4,
+         list_member_accounts/2,
+         list_member_accounts/4,
+         list_member_accounts/5,
          list_notification_configurations/1,
          list_notification_configurations/3,
          list_notification_configurations/4,
@@ -99,6 +109,9 @@
          list_notification_hubs/1,
          list_notification_hubs/3,
          list_notification_hubs/4,
+         list_organizational_units/2,
+         list_organizational_units/4,
+         list_organizational_units/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -115,6 +128,18 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% list_member_accounts_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"memberAccount">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"notificationConfigurationArn">> := string(),
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_member_accounts_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -177,7 +202,8 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"status">> => string()
+%%   <<"status">> => string(),
+%%   <<"subtype">> => string()
 %% }
 -type notification_configuration_structure() :: #{binary() => any()}.
 
@@ -248,6 +274,23 @@
 %% Example:
 %% disassociate_channel_response() :: #{}
 -type disassociate_channel_response() :: #{}.
+
+
+%% Example:
+%% list_organizational_units_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"notificationConfigurationArn">> := string()
+%% }
+-type list_organizational_units_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_member_accounts_response() :: #{
+%%   <<"memberAccounts">> => list(member_account()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_member_accounts_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -419,9 +462,14 @@
 %%   <<"eventRuleSource">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
-%%   <<"status">> => string()
+%%   <<"status">> => string(),
+%%   <<"subtype">> => string()
 %% }
 -type list_notification_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_organizational_unit_response() :: #{}
+-type associate_organizational_unit_response() :: #{}.
 
 
 %% Example:
@@ -431,7 +479,8 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
-%%   <<"status">> => string()
+%%   <<"status">> => string(),
+%%   <<"subtype">> => string()
 %% }
 -type get_notification_configuration_response() :: #{binary() => any()}.
 
@@ -454,6 +503,7 @@
 %%   <<"media">> => list(media_element()),
 %%   <<"messageComponents">> => message_components(),
 %%   <<"notificationType">> => string(),
+%%   <<"organizationalUnitId">> => string(),
 %%   <<"schemaVersion">> => string(),
 %%   <<"sourceEventDetailUrl">> => string(),
 %%   <<"sourceEventDetailUrlDisplayText">> => [string()],
@@ -472,6 +522,7 @@
 %%   <<"locale">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
+%%   <<"organizationalUnitId">> => string(),
 %%   <<"source">> => string(),
 %%   <<"startTime">> => [non_neg_integer()]
 %% }
@@ -515,9 +566,24 @@
 %% }
 -type aggregation_detail() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_organizational_units_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"organizationalUnits">> => list(string())
+%% }
+-type list_organizational_units_response() :: #{binary() => any()}.
+
 %% Example:
 %% enable_notifications_access_for_organization_response() :: #{}
 -type enable_notifications_access_for_organization_response() :: #{}.
+
+
+%% Example:
+%% associate_organizational_unit_request() :: #{
+%%   <<"notificationConfigurationArn">> := string()
+%% }
+-type associate_organizational_unit_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -590,6 +656,17 @@
 %%   <<"startTime">> => [non_neg_integer()]
 %% }
 -type list_managed_notification_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"notificationConfigurationArn">> => string(),
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type member_account() :: #{binary() => any()}.
 
 
 %% Example:
@@ -795,6 +872,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"notificationConfigurationArn">> => string(),
 %%   <<"notificationEvent">> => notification_event_summary(),
+%%   <<"organizationalUnitId">> => string(),
 %%   <<"relatedAccount">> => string()
 %% }
 -type notification_event_overview() :: #{binary() => any()}.
@@ -834,6 +912,10 @@
 %%   <<"paragraphSummary">> => string()
 %% }
 -type message_components() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_organizational_unit_response() :: #{}
+-type disassociate_organizational_unit_response() :: #{}.
 
 
 %% Example:
@@ -938,6 +1020,13 @@
 %%   <<"value">> => string()
 %% }
 -type dimension() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_organizational_unit_request() :: #{
+%%   <<"notificationConfigurationArn">> := string()
+%% }
+-type disassociate_organizational_unit_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1066,6 +1155,15 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type associate_organizational_unit_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_event_rule_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1132,6 +1230,13 @@
     conflict_exception().
 
 -type disassociate_managed_notification_additional_channel_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_organizational_unit_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1234,6 +1339,13 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_member_accounts_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_notification_configurations_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1251,6 +1363,13 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_organizational_units_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
@@ -1305,8 +1424,8 @@
 %% https://docs.aws.amazon.com/notifications/latest/userguide/managing-delivery-channels.html
 %% with a particular `NotificationConfiguration'.
 %%
-%% Supported Channels include Chatbot,
-%% the Console Mobile Application, and emails (notifications-contacts).
+%% Supported Channels include Amazon Q Developer in chat applications, the
+%% Console Mobile Application, and emails (notifications-contacts).
 -spec associate_channel(aws_client:aws_client(), binary() | list(), associate_channel_request()) ->
     {ok, associate_channel_response(), tuple()} |
     {error, any()} |
@@ -1378,8 +1497,8 @@ associate_managed_notification_account_contact(Client, ContactIdentifier, Input0
 %% @doc Associates an additional Channel with a particular
 %% `ManagedNotificationConfiguration'.
 %%
-%% Supported Channels include Chatbot, the Console Mobile Application, and
-%% emails (notifications-contacts).
+%% Supported Channels include Amazon Q Developer in chat applications, the
+%% Console Mobile Application, and emails (notifications-contacts).
 -spec associate_managed_notification_additional_channel(aws_client:aws_client(), binary() | list(), associate_managed_notification_additional_channel_request()) ->
     {ok, associate_managed_notification_additional_channel_response(), tuple()} |
     {error, any()} |
@@ -1413,11 +1532,43 @@ associate_managed_notification_additional_channel(Client, ChannelArn, Input0, Op
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an
-%% `EventRule'
-%% : https://docs.aws.amazon.com/notifications/latest/userguide/glossary.html
-%% that
-%% is associated with a specified `NotificationConfiguration'.
+%% @doc Associates an organizational unit with a notification configuration.
+-spec associate_organizational_unit(aws_client:aws_client(), binary() | list(), associate_organizational_unit_request()) ->
+    {ok, associate_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, associate_organizational_unit_errors(), tuple()}.
+associate_organizational_unit(Client, OrganizationalUnitId, Input) ->
+    associate_organizational_unit(Client, OrganizationalUnitId, Input, []).
+
+-spec associate_organizational_unit(aws_client:aws_client(), binary() | list(), associate_organizational_unit_request(), proplists:proplist()) ->
+    {ok, associate_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, associate_organizational_unit_errors(), tuple()}.
+associate_organizational_unit(Client, OrganizationalUnitId, Input0, Options0) ->
+    Method = post,
+    Path = ["/organizational-units/associate/", aws_util:encode_uri(OrganizationalUnitId), ""],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an `EventRule' :
+%% https://docs.aws.amazon.com/notifications/latest/userguide/glossary.html
+%% that is associated with a specified `NotificationConfiguration'.
 -spec create_event_rule(aws_client:aws_client(), create_event_rule_request()) ->
     {ok, create_event_rule_response(), tuple()} |
     {error, any()} |
@@ -1558,10 +1709,9 @@ delete_notification_configuration(Client, Arn, Input0, Options0) ->
 %%
 %% You can't deregister the last `NotificationHub' in the account.
 %% `NotificationEvents' stored in the deregistered
-%% `NotificationConfiguration' are no
-%% longer be visible. Recreating a new `NotificationConfiguration' in the
-%% same Region restores access
-%% to those `NotificationEvents'.
+%% `NotificationConfiguration' are no longer be visible. Recreating a new
+%% `NotificationConfiguration' in the same Region restores access to
+%% those `NotificationEvents'.
 -spec deregister_notification_hub(aws_client:aws_client(), binary() | list(), deregister_notification_hub_request()) ->
     {ok, deregister_notification_hub_response(), tuple()} |
     {error, any()} |
@@ -1633,8 +1783,8 @@ disable_notifications_access_for_organization(Client, Input0, Options0) ->
 %% @doc Disassociates a Channel from a specified
 %% `NotificationConfiguration'.
 %%
-%% Supported Channels include Chatbot, the Console Mobile Application, and
-%% emails (notifications-contacts).
+%% Supported Channels include Amazon Q Developer in chat applications, the
+%% Console Mobile Application, and emails (notifications-contacts).
 -spec disassociate_channel(aws_client:aws_client(), binary() | list(), disassociate_channel_request()) ->
     {ok, disassociate_channel_response(), tuple()} |
     {error, any()} |
@@ -1706,8 +1856,8 @@ disassociate_managed_notification_account_contact(Client, ContactIdentifier, Inp
 %% @doc Disassociates an additional Channel from a particular
 %% `ManagedNotificationConfiguration'.
 %%
-%% Supported Channels include Chatbot, the Console Mobile Application, and
-%% emails (notifications-contacts).
+%% Supported Channels include Amazon Q Developer in chat applications, the
+%% Console Mobile Application, and emails (notifications-contacts).
 -spec disassociate_managed_notification_additional_channel(aws_client:aws_client(), binary() | list(), disassociate_managed_notification_additional_channel_request()) ->
     {ok, disassociate_managed_notification_additional_channel_response(), tuple()} |
     {error, any()} |
@@ -1722,6 +1872,41 @@ disassociate_managed_notification_additional_channel(Client, ChannelArn, Input) 
 disassociate_managed_notification_additional_channel(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/disassociate-managed-notification/", aws_util:encode_uri(ChannelArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the association between an organizational unit and a
+%% notification configuration.
+-spec disassociate_organizational_unit(aws_client:aws_client(), binary() | list(), disassociate_organizational_unit_request()) ->
+    {ok, disassociate_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_organizational_unit_errors(), tuple()}.
+disassociate_organizational_unit(Client, OrganizationalUnitId, Input) ->
+    disassociate_organizational_unit(Client, OrganizationalUnitId, Input, []).
+
+-spec disassociate_organizational_unit(aws_client:aws_client(), binary() | list(), disassociate_organizational_unit_request(), proplists:proplist()) ->
+    {ok, disassociate_organizational_unit_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_organizational_unit_errors(), tuple()}.
+disassociate_organizational_unit(Client, OrganizationalUnitId, Input0, Options0) ->
+    Method = post,
+    Path = ["/organizational-units/disassociate/", aws_util:encode_uri(OrganizationalUnitId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1975,11 +2160,10 @@ get_notification_configuration(Client, Arn, QueryMap, HeadersMap, Options0)
 %% User Notifications stores notifications in the individual Regions you
 %% register as notification hubs and the Region of the source event rule.
 %% `GetNotificationEvent' only returns notifications stored in the same
-%% Region in which the action is called.
-%% User Notifications doesn't backfill notifications to new Regions
-%% selected as notification hubs. For this reason, we recommend that you make
-%% calls in your oldest registered notification hub.
-%% For more information, see Notification hubs:
+%% Region in which the action is called. User Notifications doesn't
+%% backfill notifications to new Regions selected as notification hubs. For
+%% this reason, we recommend that you make calls in your oldest registered
+%% notification hub. For more information, see Notification hubs:
 %% https://docs.aws.amazon.com/notifications/latest/userguide/notification-hubs.html
 %% in the Amazon Web Services User Notifications User Guide.
 -spec get_notification_event(aws_client:aws_client(), binary() | list()) ->
@@ -2335,9 +2519,56 @@ list_managed_notification_events(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of member accounts associated with a notification
+%% configuration.
+-spec list_member_accounts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_member_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_member_accounts_errors(), tuple()}.
+list_member_accounts(Client, NotificationConfigurationArn)
+  when is_map(Client) ->
+    list_member_accounts(Client, NotificationConfigurationArn, #{}, #{}).
+
+-spec list_member_accounts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_member_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_member_accounts_errors(), tuple()}.
+list_member_accounts(Client, NotificationConfigurationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_member_accounts(Client, NotificationConfigurationArn, QueryMap, HeadersMap, []).
+
+-spec list_member_accounts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_member_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, list_member_accounts_errors(), tuple()}.
+list_member_accounts(Client, NotificationConfigurationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/list-member-accounts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"memberAccount">>, maps:get(<<"memberAccount">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"notificationConfigurationArn">>, NotificationConfigurationArn},
+        {<<"organizationalUnitId">>, maps:get(<<"organizationalUnitId">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of abbreviated `NotificationConfigurations'
-%% according to
-%% specified filters, in reverse chronological order (newest first).
+%% according to specified filters, in reverse chronological order (newest
+%% first).
 -spec list_notification_configurations(aws_client:aws_client()) ->
     {ok, list_notification_configurations_response(), tuple()} |
     {error, any()} |
@@ -2376,7 +2607,8 @@ list_notification_configurations(Client, QueryMap, HeadersMap, Options0)
         {<<"eventRuleSource">>, maps:get(<<"eventRuleSource">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"subtype">>, maps:get(<<"subtype">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2388,11 +2620,10 @@ list_notification_configurations(Client, QueryMap, HeadersMap, Options0)
 %% User Notifications stores notifications in the individual Regions you
 %% register as notification hubs and the Region of the source event rule.
 %% ListNotificationEvents only returns notifications stored in the same
-%% Region in which the action is called.
-%% User Notifications doesn't backfill notifications to new Regions
-%% selected as notification hubs. For this reason, we recommend that you make
-%% calls in your oldest registered notification hub.
-%% For more information, see Notification hubs:
+%% Region in which the action is called. User Notifications doesn't
+%% backfill notifications to new Regions selected as notification hubs. For
+%% this reason, we recommend that you make calls in your oldest registered
+%% notification hub. For more information, see Notification hubs:
 %% https://docs.aws.amazon.com/notifications/latest/userguide/notification-hubs.html
 %% in the Amazon Web Services User Notifications User Guide.
 -spec list_notification_events(aws_client:aws_client()) ->
@@ -2435,6 +2666,7 @@ list_notification_events(Client, QueryMap, HeadersMap, Options0)
         {<<"locale">>, maps:get(<<"locale">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"organizationalUnitId">>, maps:get(<<"organizationalUnitId">>, QueryMap, undefined)},
         {<<"source">>, maps:get(<<"source">>, QueryMap, undefined)},
         {<<"startTime">>, maps:get(<<"startTime">>, QueryMap, undefined)}
       ],
@@ -2479,6 +2711,50 @@ list_notification_hubs(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of organizational units associated with a notification
+%% configuration.
+-spec list_organizational_units(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_organizational_units_response(), tuple()} |
+    {error, any()} |
+    {error, list_organizational_units_errors(), tuple()}.
+list_organizational_units(Client, NotificationConfigurationArn)
+  when is_map(Client) ->
+    list_organizational_units(Client, NotificationConfigurationArn, #{}, #{}).
+
+-spec list_organizational_units(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_organizational_units_response(), tuple()} |
+    {error, any()} |
+    {error, list_organizational_units_errors(), tuple()}.
+list_organizational_units(Client, NotificationConfigurationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_organizational_units(Client, NotificationConfigurationArn, QueryMap, HeadersMap, []).
+
+-spec list_organizational_units(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_organizational_units_response(), tuple()} |
+    {error, any()} |
+    {error, list_organizational_units_errors(), tuple()}.
+list_organizational_units(Client, NotificationConfigurationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/organizational-units"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"notificationConfigurationArn">>, NotificationConfigurationArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2530,8 +2806,7 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 %% @doc Registers a `NotificationConfiguration' in the specified Region.
 %%
 %% There is a maximum of one `NotificationConfiguration' per Region. You
-%% can have a
-%% maximum of 3 `NotificationHub' resources at a time.
+%% can have a maximum of 3 `NotificationHub' resources at a time.
 -spec register_notification_hub(aws_client:aws_client(), register_notification_hub_request()) ->
     {ok, register_notification_hub_response(), tuple()} |
     {error, any()} |

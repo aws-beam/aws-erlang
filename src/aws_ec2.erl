@@ -4058,9 +4058,11 @@
 
 %% Example:
 %% ebs_info() :: #{
+%%   <<"AttachmentLimitType">> => list(any()),
 %%   <<"EbsOptimizedInfo">> => ebs_optimized_info(),
 %%   <<"EbsOptimizedSupport">> => list(any()),
 %%   <<"EncryptionSupport">> => list(any()),
+%%   <<"MaximumEbsAttachments">> => integer(),
 %%   <<"NvmeSupport">> => list(any())
 %% }
 -type ebs_info() :: #{binary() => any()}.
