@@ -28,6 +28,8 @@
          create_analysis_template/4,
          create_collaboration/2,
          create_collaboration/3,
+         create_collaboration_change_request/3,
+         create_collaboration_change_request/4,
          create_configured_audience_model_association/3,
          create_configured_audience_model_association/4,
          create_configured_table/2,
@@ -79,6 +81,9 @@
          get_collaboration_analysis_template/3,
          get_collaboration_analysis_template/5,
          get_collaboration_analysis_template/6,
+         get_collaboration_change_request/3,
+         get_collaboration_change_request/5,
+         get_collaboration_change_request/6,
          get_collaboration_configured_audience_model_association/3,
          get_collaboration_configured_audience_model_association/5,
          get_collaboration_configured_audience_model_association/6,
@@ -133,6 +138,9 @@
          list_collaboration_analysis_templates/2,
          list_collaboration_analysis_templates/4,
          list_collaboration_analysis_templates/5,
+         list_collaboration_change_requests/2,
+         list_collaboration_change_requests/4,
+         list_collaboration_change_requests/5,
          list_collaboration_configured_audience_model_associations/2,
          list_collaboration_configured_audience_model_associations/4,
          list_collaboration_configured_audience_model_associations/5,
@@ -328,6 +336,15 @@
 
 
 %% Example:
+%% change() :: #{
+%%   <<"specification">> => list(),
+%%   <<"specificationType">> => list(any()),
+%%   <<"types">> => list(list(any())())
+%% }
+-type change() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_id_mapping_tables_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -341,6 +358,15 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_members_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_change_specification() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"memberAbilities">> => list(list(any())())
+%% }
+-type member_change_specification() :: #{binary() => any()}.
 
 
 %% Example:
@@ -717,6 +743,14 @@
 %% get_collaboration_privacy_budget_template_input() :: #{}
 -type get_collaboration_privacy_budget_template_input() :: #{}.
 
+
+%% Example:
+%% change_input() :: #{
+%%   <<"specification">> => list(),
+%%   <<"specificationType">> => list(any())
+%% }
+-type change_input() :: #{binary() => any()}.
+
 %% Example:
 %% delete_configured_audience_model_association_input() :: #{}
 -type delete_configured_audience_model_association_input() :: #{}.
@@ -771,6 +805,7 @@
 %% collaboration() :: #{
 %%   <<"analyticsEngine">> => list(any()),
 %%   <<"arn">> => string(),
+%%   <<"autoApprovedChangeTypes">> => list(list(any())()),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"creatorDisplayName">> => string(),
@@ -966,6 +1001,15 @@
 
 
 %% Example:
+%% list_collaboration_change_requests_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_collaboration_change_requests_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_memberships_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -1084,6 +1128,13 @@
 
 
 %% Example:
+%% get_collaboration_change_request_output() :: #{
+%%   <<"collaborationChangeRequest">> => collaboration_change_request()
+%% }
+-type get_collaboration_change_request_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% membership_model_inference_payment_config() :: #{
 %%   <<"isResponsible">> => [boolean()]
 %% }
@@ -1184,6 +1235,19 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_collaboration_privacy_budget_templates_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% collaboration_change_request_summary() :: #{
+%%   <<"changes">> => list(change()),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"isAutoApproved">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_change_request_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1633,6 +1697,13 @@
 
 
 %% Example:
+%% create_collaboration_change_request_output() :: #{
+%%   <<"collaborationChangeRequest">> => collaboration_change_request()
+%% }
+-type create_collaboration_change_request_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% membership_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"collaborationArn">> => string(),
@@ -1746,6 +1817,13 @@
 
 
 %% Example:
+%% create_collaboration_change_request_input() :: #{
+%%   <<"changes">> := list(change_input())
+%% }
+-type create_collaboration_change_request_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_input() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -1825,6 +1903,7 @@
 %% Example:
 %% create_collaboration_input() :: #{
 %%   <<"analyticsEngine">> => list(any()),
+%%   <<"autoApprovedChangeRequestTypes">> => list(list(any())()),
 %%   <<"creatorDisplayName">> := string(),
 %%   <<"creatorMLMemberAbilities">> => ml_member_abilities(),
 %%   <<"creatorMemberAbilities">> := list(list(any())()),
@@ -1949,6 +2028,19 @@
 
 
 %% Example:
+%% collaboration_change_request() :: #{
+%%   <<"changes">> => list(change()),
+%%   <<"collaborationId">> => string(),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"isAutoApproved">> => [boolean()],
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type collaboration_change_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_id_namespace_associations_output() :: #{
 %%   <<"idNamespaceAssociationSummaries">> => list(id_namespace_association_summary()),
 %%   <<"nextToken">> => string()
@@ -2048,6 +2140,14 @@
 %%   <<"receiverAccountIds">> => list(string())
 %% }
 -type direct_analysis_configuration_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_collaboration_change_requests_output() :: #{
+%%   <<"collaborationChangeRequestSummaries">> => list(collaboration_change_request_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_collaboration_change_requests_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2357,6 +2457,10 @@
 %% Example:
 %% get_id_mapping_table_input() :: #{}
 -type get_id_mapping_table_input() :: #{}.
+
+%% Example:
+%% get_collaboration_change_request_input() :: #{}
+-type get_collaboration_change_request_input() :: #{}.
 
 %% Example:
 %% delete_configured_table_association_analysis_rule_input() :: #{}
@@ -2954,6 +3058,15 @@
     internal_server_exception() | 
     service_quota_exceeded_exception().
 
+-type create_collaboration_change_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_configured_audience_model_association_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3142,6 +3255,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_collaboration_change_request_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_collaboration_configured_audience_model_association_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -3262,6 +3382,13 @@
     resource_not_found_exception().
 
 -type list_collaboration_analysis_templates_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_collaboration_change_requests_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -3683,6 +3810,43 @@ create_collaboration(Client, Input) ->
 create_collaboration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/collaborations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new change request to modify an existing collaboration.
+%%
+%% This enables post-creation modifications to collaborations through a
+%% structured API-driven approach.
+-spec create_collaboration_change_request(aws_client:aws_client(), binary() | list(), create_collaboration_change_request_input()) ->
+    {ok, create_collaboration_change_request_output(), tuple()} |
+    {error, any()} |
+    {error, create_collaboration_change_request_errors(), tuple()}.
+create_collaboration_change_request(Client, CollaborationIdentifier, Input) ->
+    create_collaboration_change_request(Client, CollaborationIdentifier, Input, []).
+
+-spec create_collaboration_change_request(aws_client:aws_client(), binary() | list(), create_collaboration_change_request_input(), proplists:proplist()) ->
+    {ok, create_collaboration_change_request_output(), tuple()} |
+    {error, any()} |
+    {error, create_collaboration_change_request_errors(), tuple()}.
+create_collaboration_change_request(Client, CollaborationIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/changeRequests"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4548,6 +4712,44 @@ get_collaboration_analysis_template(Client, AnalysisTemplateArn, CollaborationId
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves detailed information about a specific collaboration change
+%% request.
+-spec get_collaboration_change_request(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_collaboration_change_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_change_request_errors(), tuple()}.
+get_collaboration_change_request(Client, ChangeRequestIdentifier, CollaborationIdentifier)
+  when is_map(Client) ->
+    get_collaboration_change_request(Client, ChangeRequestIdentifier, CollaborationIdentifier, #{}, #{}).
+
+-spec get_collaboration_change_request(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_collaboration_change_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_change_request_errors(), tuple()}.
+get_collaboration_change_request(Client, ChangeRequestIdentifier, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_collaboration_change_request(Client, ChangeRequestIdentifier, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_collaboration_change_request(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_collaboration_change_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_collaboration_change_request_errors(), tuple()}.
+get_collaboration_change_request(Client, ChangeRequestIdentifier, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/changeRequests/", aws_util:encode_uri(ChangeRequestIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a configured audience model association within a
 %% collaboration.
 -spec get_collaboration_configured_audience_model_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -5220,6 +5422,52 @@ list_collaboration_analysis_templates(Client, CollaborationIdentifier, QueryMap,
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all change requests for a collaboration with pagination
+%% support.
+%%
+%% Returns change requests sorted by creation time.
+-spec list_collaboration_change_requests(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_collaboration_change_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_change_requests_errors(), tuple()}.
+list_collaboration_change_requests(Client, CollaborationIdentifier)
+  when is_map(Client) ->
+    list_collaboration_change_requests(Client, CollaborationIdentifier, #{}, #{}).
+
+-spec list_collaboration_change_requests(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_collaboration_change_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_change_requests_errors(), tuple()}.
+list_collaboration_change_requests(Client, CollaborationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_collaboration_change_requests(Client, CollaborationIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_collaboration_change_requests(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_collaboration_change_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_collaboration_change_requests_errors(), tuple()}.
+list_collaboration_change_requests(Client, CollaborationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/collaborations/", aws_util:encode_uri(CollaborationIdentifier), "/changeRequests"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

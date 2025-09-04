@@ -184,6 +184,14 @@
 
 
 %% Example:
+%% call_analytics_language_with_score() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Score">> => float()
+%% }
+-type call_analytics_language_with_score() :: #{binary() => any()}.
+
+
+%% Example:
 %% category_event() :: #{
 %%   <<"MatchedCategories">> => list(string()),
 %%   <<"MatchedDetails">> => map()
@@ -265,17 +273,22 @@
 %%   <<"ContentIdentificationType">> => list(any()),
 %%   <<"ContentRedactionType">> => list(any()),
 %%   <<"EnablePartialResultsStabilization">> => boolean(),
+%%   <<"IdentifyLanguage">> => boolean(),
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"LanguageModelName">> => string(),
+%%   <<"LanguageOptions">> => string(),
 %%   <<"MediaEncoding">> => list(any()),
 %%   <<"MediaSampleRateHertz">> => integer(),
 %%   <<"PartialResultsStability">> => list(any()),
 %%   <<"PiiEntityTypes">> => string(),
+%%   <<"PreferredLanguage">> => list(any()),
 %%   <<"RequestId">> => string(),
 %%   <<"SessionId">> => string(),
 %%   <<"VocabularyFilterMethod">> => list(any()),
 %%   <<"VocabularyFilterName">> => string(),
-%%   <<"VocabularyName">> => string()
+%%   <<"VocabularyFilterNames">> => string(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyNames">> => string()
 %% }
 -type start_call_analytics_stream_transcription_response() :: #{binary() => any()}.
 
@@ -482,16 +495,21 @@
 %%   <<"ContentIdentificationType">> => list(any()),
 %%   <<"ContentRedactionType">> => list(any()),
 %%   <<"EnablePartialResultsStabilization">> => boolean(),
-%%   <<"LanguageCode">> := list(any()),
+%%   <<"IdentifyLanguage">> => boolean(),
+%%   <<"LanguageCode">> => list(any()),
 %%   <<"LanguageModelName">> => string(),
+%%   <<"LanguageOptions">> => string(),
 %%   <<"MediaEncoding">> := list(any()),
 %%   <<"MediaSampleRateHertz">> := integer(),
 %%   <<"PartialResultsStability">> => list(any()),
 %%   <<"PiiEntityTypes">> => string(),
+%%   <<"PreferredLanguage">> => list(any()),
 %%   <<"SessionId">> => string(),
 %%   <<"VocabularyFilterMethod">> => list(any()),
 %%   <<"VocabularyFilterName">> => string(),
-%%   <<"VocabularyName">> => string()
+%%   <<"VocabularyFilterNames">> => string(),
+%%   <<"VocabularyName">> => string(),
+%%   <<"VocabularyNames">> => string()
 %% }
 -type start_call_analytics_stream_transcription_request() :: #{binary() => any()}.
 
@@ -535,6 +553,8 @@
 %%   <<"IsPartial">> => boolean(),
 %%   <<"IssuesDetected">> => list(issue_detected()),
 %%   <<"Items">> => list(call_analytics_item()),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageIdentification">> => list(call_analytics_language_with_score()),
 %%   <<"ParticipantRole">> => list(any()),
 %%   <<"Sentiment">> => list(any()),
 %%   <<"Transcript">> => string(),
@@ -734,7 +754,7 @@ get_medical_scribe_stream(Client, SessionId, QueryMap, HeadersMap, Options0)
 %%
 %% The following parameters are required:
 %%
-%% `language-code'
+%% `language-code' or `identify-language'
 %%
 %% `media-encoding'
 %%
@@ -769,16 +789,21 @@ start_call_analytics_stream_transcription(Client, Input0, Options0) ->
                        {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
                        {<<"x-amzn-transcribe-content-redaction-type">>, <<"ContentRedactionType">>},
                        {<<"x-amzn-transcribe-enable-partial-results-stabilization">>, <<"EnablePartialResultsStabilization">>},
+                       {<<"x-amzn-transcribe-identify-language">>, <<"IdentifyLanguage">>},
                        {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
                        {<<"x-amzn-transcribe-language-model-name">>, <<"LanguageModelName">>},
+                       {<<"x-amzn-transcribe-language-options">>, <<"LanguageOptions">>},
                        {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
                        {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
                        {<<"x-amzn-transcribe-partial-results-stability">>, <<"PartialResultsStability">>},
                        {<<"x-amzn-transcribe-pii-entity-types">>, <<"PiiEntityTypes">>},
+                       {<<"x-amzn-transcribe-preferred-language">>, <<"PreferredLanguage">>},
                        {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
-                       {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
+                       {<<"x-amzn-transcribe-vocabulary-filter-names">>, <<"VocabularyFilterNames">>},
+                       {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>},
+                       {<<"x-amzn-transcribe-vocabulary-names">>, <<"VocabularyNames">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -795,17 +820,22 @@ start_call_analytics_stream_transcription(Client, Input0, Options0) ->
             {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
             {<<"x-amzn-transcribe-content-redaction-type">>, <<"ContentRedactionType">>},
             {<<"x-amzn-transcribe-enable-partial-results-stabilization">>, <<"EnablePartialResultsStabilization">>},
+            {<<"x-amzn-transcribe-identify-language">>, <<"IdentifyLanguage">>},
             {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
             {<<"x-amzn-transcribe-language-model-name">>, <<"LanguageModelName">>},
+            {<<"x-amzn-transcribe-language-options">>, <<"LanguageOptions">>},
             {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
             {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
             {<<"x-amzn-transcribe-partial-results-stability">>, <<"PartialResultsStability">>},
             {<<"x-amzn-transcribe-pii-entity-types">>, <<"PiiEntityTypes">>},
+            {<<"x-amzn-transcribe-preferred-language">>, <<"PreferredLanguage">>},
             {<<"x-amzn-request-id">>, <<"RequestId">>},
             {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
             {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
             {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
-            {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
+            {<<"x-amzn-transcribe-vocabulary-filter-names">>, <<"VocabularyFilterNames">>},
+            {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>},
+            {<<"x-amzn-transcribe-vocabulary-names">>, <<"VocabularyNames">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of

@@ -326,6 +326,14 @@
 
 
 %% Example:
+%% log_redaction_configuration() :: #{
+%%   <<"customEntityConfig">> => custom_entity_config(),
+%%   <<"entitiesToRedact">> => list(list(any())())
+%% }
+-type log_redaction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_training_dataset_response() :: #{
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"description">> => string(),
@@ -749,6 +757,13 @@
 %%   <<"noiseLevel">> => list(any())
 %% }
 -type metrics_configuration_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_entity_config() :: #{
+%%   <<"customDataIdentifiers">> => list(string())
+%% }
+-type custom_entity_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1257,7 +1272,9 @@
 %% Example:
 %% logs_configuration_policy() :: #{
 %%   <<"allowedAccountIds">> => list([string()]()),
-%%   <<"filterPattern">> => [string()]
+%%   <<"filterPattern">> => [string()],
+%%   <<"logRedactionConfiguration">> => log_redaction_configuration(),
+%%   <<"logType">> => list(any())
 %% }
 -type logs_configuration_policy() :: #{binary() => any()}.
 

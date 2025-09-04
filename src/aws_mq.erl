@@ -190,7 +190,7 @@
 %%   <<"StorageType">> => list(any()),
 %%   <<"SubnetIds">> => list(string()),
 %%   <<"Tags">> => map(),
-%%   <<"Users">> := list(user())
+%%   <<"Users">> => list(user())
 %% }
 -type create_broker_request() :: #{binary() => any()}.
 
