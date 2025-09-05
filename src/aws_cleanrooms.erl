@@ -239,6 +239,14 @@
 
 
 %% Example:
+%% protected_job_worker_compute_configuration() :: #{
+%%   <<"number">> => [integer()],
+%%   <<"type">> => list(any())
+%% }
+-type protected_job_worker_compute_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% protected_query_distribute_output_configuration() :: #{
 %%   <<"locations">> => list(list())
 %% }
@@ -498,6 +506,7 @@
 
 %% Example:
 %% protected_job() :: #{
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"error">> => protected_job_error(),
 %%   <<"id">> => string(),
@@ -1475,6 +1484,7 @@
 
 %% Example:
 %% start_protected_job_input() :: #{
+%%   <<"computeConfiguration">> => list(),
 %%   <<"jobParameters">> := protected_job_parameters(),
 %%   <<"resultConfiguration">> => protected_job_result_configuration_input(),
 %%   <<"type">> := list(any())

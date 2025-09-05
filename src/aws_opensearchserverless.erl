@@ -2,21 +2,17 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Use the Amazon OpenSearch Serverless API to create, configure, and
-%% manage OpenSearch Serverless collections and
-%% security policies.
+%% manage OpenSearch Serverless collections and security policies.
 %%
 %% OpenSearch Serverless is an on-demand, pre-provisioned serverless
-%% configuration for
-%% Amazon OpenSearch Service. OpenSearch Serverless removes the operational
-%% complexities of provisioning,
-%% configuring, and tuning your OpenSearch clusters. It enables you to easily
-%% search and
-%% analyze petabytes of data without having to worry about the underlying
-%% infrastructure
-%% and data management.
+%% configuration for Amazon OpenSearch Service. OpenSearch Serverless removes
+%% the operational complexities of provisioning, configuring, and tuning your
+%% OpenSearch clusters. It enables you to easily search and analyze petabytes
+%% of data without having to worry about the underlying infrastructure and
+%% data management.
 %%
-%% To learn more about OpenSearch Serverless, see What is
-%% Amazon OpenSearch Serverless?:
+%% To learn more about OpenSearch Serverless, see What is Amazon OpenSearch
+%% Serverless?:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-overview.html
 -module(aws_opensearchserverless).
 
@@ -236,6 +232,13 @@
 -type delete_access_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% fips_endpoints() :: #{
+%%   <<"collectionEndpoint">> => [string()],
+%%   <<"dashboardEndpoint">> => [string()]
+%% }
+-type fips_endpoints() :: #{binary() => any()}.
+
+%% Example:
 %% collection_summary() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"id">> => string(),
@@ -302,6 +305,7 @@
 %%   <<"description">> => [string()],
 %%   <<"failureCode">> => [string()],
 %%   <<"failureMessage">> => [string()],
+%%   <<"fipsEndpoints">> => fips_endpoints(),
 %%   <<"id">> => string(),
 %%   <<"kmsKeyArn">> => [string()],
 %%   <<"lastModifiedDate">> => [float()],
@@ -1329,11 +1333,11 @@
 %%====================================================================
 
 %% @doc Returns attributes for one or more collections, including the
-%% collection endpoint and
-%% the OpenSearch Dashboards endpoint.
+%% collection endpoint, the OpenSearch Dashboards endpoint, and
+%% FIPS-compliant endpoints.
 %%
-%% For more information, see Creating and
-%% managing Amazon OpenSearch Serverless collections:
+%% For more information, see Creating and managing Amazon OpenSearch
+%% Serverless collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
 -spec batch_get_collection(aws_client:aws_client(), batch_get_collection_request()) ->
     {ok, batch_get_collection_response(), tuple()} |
@@ -1354,8 +1358,7 @@ batch_get_collection(Client, Input, Options)
 %% @doc Returns a list of successful and failed retrievals for the OpenSearch
 %% Serverless indexes.
 %%
-%% For more
-%% information, see Viewing data lifecycle policies:
+%% For more information, see Viewing data lifecycle policies:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-list.
 -spec batch_get_effective_lifecycle_policy(aws_client:aws_client(), batch_get_effective_lifecycle_policy_request()) ->
     {ok, batch_get_effective_lifecycle_policy_response(), tuple()} |
@@ -1376,8 +1379,7 @@ batch_get_effective_lifecycle_policy(Client, Input, Options)
 %% @doc Returns one or more configured OpenSearch Serverless lifecycle
 %% policies.
 %%
-%% For more information, see
-%% Viewing data lifecycle policies:
+%% For more information, see Viewing data lifecycle policies:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-list.
 -spec batch_get_lifecycle_policy(aws_client:aws_client(), batch_get_lifecycle_policy_request()) ->
     {ok, batch_get_lifecycle_policy_response(), tuple()} |
@@ -1398,8 +1400,8 @@ batch_get_lifecycle_policy(Client, Input, Options)
 %% @doc Returns attributes for one or more VPC endpoints associated with the
 %% current account.
 %%
-%% For more information, see Access
-%% Amazon OpenSearch Serverless using an interface endpoint:
+%% For more information, see Access Amazon OpenSearch Serverless using an
+%% interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
 -spec batch_get_vpc_endpoint(aws_client:aws_client(), batch_get_vpc_endpoint_request()) ->
     {ok, batch_get_vpc_endpoint_response(), tuple()} |
@@ -1419,11 +1421,10 @@ batch_get_vpc_endpoint(Client, Input, Options)
 
 %% @doc Creates a data access policy for OpenSearch Serverless.
 %%
-%% Access policies limit access to collections
-%% and the resources within them, and allow a user to access that data
-%% irrespective of the
-%% access mechanism or network source. For more information, see Data
-%% access control for Amazon OpenSearch Serverless:
+%% Access policies limit access to collections and the resources within them,
+%% and allow a user to access that data irrespective of the access mechanism
+%% or network source. For more information, see Data access control for
+%% Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html.
 -spec create_access_policy(aws_client:aws_client(), create_access_policy_request()) ->
     {ok, create_access_policy_response(), tuple()} |
@@ -1443,8 +1444,8 @@ create_access_policy(Client, Input, Options)
 
 %% @doc Creates a new OpenSearch Serverless collection.
 %%
-%% For more information, see Creating and
-%% managing Amazon OpenSearch Serverless collections:
+%% For more information, see Creating and managing Amazon OpenSearch
+%% Serverless collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
 -spec create_collection(aws_client:aws_client(), create_collection_request()) ->
     {ok, create_collection_response(), tuple()} |
@@ -1464,14 +1465,12 @@ create_collection(Client, Input, Options)
 
 %% @doc Creates an index within an OpenSearch Serverless collection.
 %%
-%% Unlike other OpenSearch indexes, indexes
-%% created by this API are automatically configured to conduct automatic
-%% semantic
-%% enrichment ingestion and search. For more information, see About automatic
-%% semantic enrichment:
+%% Unlike other OpenSearch indexes, indexes created by this API are
+%% automatically configured to conduct automatic semantic enrichment
+%% ingestion and search. For more information, see About automatic semantic
+%% enrichment:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment
-%% in the OpenSearch User
-%% Guide.
+%% in the OpenSearch User Guide.
 -spec create_index(aws_client:aws_client(), create_index_request()) ->
     {ok, create_index_response(), tuple()} |
     {error, any()} |
@@ -1491,10 +1490,9 @@ create_index(Client, Input, Options)
 %% @doc Creates a lifecyle policy to be applied to OpenSearch Serverless
 %% indexes.
 %%
-%% Lifecycle policies define
-%% the number of days or hours to retain the data on an OpenSearch Serverless
-%% index. For more information,
-%% see Creating data lifecycle policies:
+%% Lifecycle policies define the number of days or hours to retain the data
+%% on an OpenSearch Serverless index. For more information, see Creating data
+%% lifecycle policies:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-lifecycle.html#serverless-lifecycle-create.
 -spec create_lifecycle_policy(aws_client:aws_client(), create_lifecycle_policy_request()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
@@ -1514,8 +1512,8 @@ create_lifecycle_policy(Client, Input, Options)
 
 %% @doc Specifies a security configuration for OpenSearch Serverless.
 %%
-%% For more information, see SAML
-%% authentication for Amazon OpenSearch Serverless:
+%% For more information, see SAML authentication for Amazon OpenSearch
+%% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
 -spec create_security_config(aws_client:aws_client(), create_security_config_request()) ->
     {ok, create_security_config_response(), tuple()} |
@@ -1536,16 +1534,12 @@ create_security_config(Client, Input, Options)
 %% @doc Creates a security policy to be used by one or more OpenSearch
 %% Serverless collections.
 %%
-%% Security
-%% policies provide access to a collection and its OpenSearch Dashboards
-%% endpoint from
-%% public networks or specific VPC endpoints. They also allow you to secure a
-%% collection
-%% with a KMS encryption key. For more information, see Network
-%% access for Amazon OpenSearch Serverless:
+%% Security policies provide access to a collection and its OpenSearch
+%% Dashboards endpoint from public networks or specific VPC endpoints. They
+%% also allow you to secure a collection with a KMS encryption key. For more
+%% information, see Network access for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-network.html
-%% and Encryption
-%% at rest for Amazon OpenSearch Serverless:
+%% and Encryption at rest for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-encryption.html.
 -spec create_security_policy(aws_client:aws_client(), create_security_policy_request()) ->
     {ok, create_security_policy_response(), tuple()} |
@@ -1565,8 +1559,8 @@ create_security_policy(Client, Input, Options)
 
 %% @doc Creates an OpenSearch Serverless-managed interface VPC endpoint.
 %%
-%% For more information, see Access
-%% Amazon OpenSearch Serverless using an interface endpoint:
+%% For more information, see Access Amazon OpenSearch Serverless using an
+%% interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
 -spec create_vpc_endpoint(aws_client:aws_client(), create_vpc_endpoint_request()) ->
     {ok, create_vpc_endpoint_response(), tuple()} |
@@ -1586,8 +1580,8 @@ create_vpc_endpoint(Client, Input, Options)
 
 %% @doc Deletes an OpenSearch Serverless access policy.
 %%
-%% For more information, see Data
-%% access control for Amazon OpenSearch Serverless:
+%% For more information, see Data access control for Amazon OpenSearch
+%% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html.
 -spec delete_access_policy(aws_client:aws_client(), delete_access_policy_request()) ->
     {ok, delete_access_policy_response(), tuple()} |
@@ -1607,8 +1601,8 @@ delete_access_policy(Client, Input, Options)
 
 %% @doc Deletes an OpenSearch Serverless collection.
 %%
-%% For more information, see Creating and
-%% managing Amazon OpenSearch Serverless collections:
+%% For more information, see Creating and managing Amazon OpenSearch
+%% Serverless collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
 -spec delete_collection(aws_client:aws_client(), delete_collection_request()) ->
     {ok, delete_collection_response(), tuple()} |
@@ -1628,10 +1622,9 @@ delete_collection(Client, Input, Options)
 
 %% @doc Deletes an index from an OpenSearch Serverless collection.
 %%
-%% Be aware that the index might be
-%% configured to conduct automatic semantic enrichment ingestion and search.
-%% For more
-%% information, see About automatic semantic enrichment:
+%% Be aware that the index might be configured to conduct automatic semantic
+%% enrichment ingestion and search. For more information, see About automatic
+%% semantic enrichment:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment.
 -spec delete_index(aws_client:aws_client(), delete_index_request()) ->
     {ok, delete_index_response(), tuple()} |
@@ -1671,8 +1664,8 @@ delete_lifecycle_policy(Client, Input, Options)
 
 %% @doc Deletes a security configuration for OpenSearch Serverless.
 %%
-%% For more information, see SAML
-%% authentication for Amazon OpenSearch Serverless:
+%% For more information, see SAML authentication for Amazon OpenSearch
+%% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
 -spec delete_security_config(aws_client:aws_client(), delete_security_config_request()) ->
     {ok, delete_security_config_response(), tuple()} |
@@ -1709,8 +1702,8 @@ delete_security_policy(Client, Input, Options)
 
 %% @doc Deletes an OpenSearch Serverless-managed interface endpoint.
 %%
-%% For more information, see Access
-%% Amazon OpenSearch Serverless using an interface endpoint:
+%% For more information, see Access Amazon OpenSearch Serverless using an
+%% interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
 -spec delete_vpc_endpoint(aws_client:aws_client(), delete_vpc_endpoint_request()) ->
     {ok, delete_vpc_endpoint_response(), tuple()} |
@@ -1730,8 +1723,8 @@ delete_vpc_endpoint(Client, Input, Options)
 
 %% @doc Returns an OpenSearch Serverless access policy.
 %%
-%% For more information, see Data
-%% access control for Amazon OpenSearch Serverless:
+%% For more information, see Data access control for Amazon OpenSearch
+%% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html.
 -spec get_access_policy(aws_client:aws_client(), get_access_policy_request()) ->
     {ok, get_access_policy_response(), tuple()} |
@@ -1767,8 +1760,7 @@ get_account_settings(Client, Input, Options)
     request(Client, <<"GetAccountSettings">>, Input, Options).
 
 %% @doc Retrieves information about an index in an OpenSearch Serverless
-%% collection, including its schema
-%% definition.
+%% collection, including its schema definition.
 %%
 %% The index might be configured to conduct automatic semantic enrichment
 %% ingestion and search. For more information, see About automatic semantic
@@ -1791,8 +1783,7 @@ get_index(Client, Input, Options)
     request(Client, <<"GetIndex">>, Input, Options).
 
 %% @doc Returns statistical information about your OpenSearch Serverless
-%% access policies, security
-%% configurations, and security policies.
+%% access policies, security configurations, and security policies.
 -spec get_policies_stats(aws_client:aws_client(), get_policies_stats_request()) ->
     {ok, get_policies_stats_response(), tuple()} |
     {error, any()} |
@@ -1812,9 +1803,8 @@ get_policies_stats(Client, Input, Options)
 %% @doc Returns information about an OpenSearch Serverless security
 %% configuration.
 %%
-%% For more information, see
-%% SAML
-%% authentication for Amazon OpenSearch Serverless:
+%% For more information, see SAML authentication for Amazon OpenSearch
+%% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
 -spec get_security_config(aws_client:aws_client(), get_security_config_request()) ->
     {ok, get_security_config_response(), tuple()} |
@@ -1835,12 +1825,9 @@ get_security_config(Client, Input, Options)
 %% @doc Returns information about a configured OpenSearch Serverless security
 %% policy.
 %%
-%% For more information,
-%% see Network
-%% access for Amazon OpenSearch Serverless:
+%% For more information, see Network access for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-network.html
-%% and Encryption
-%% at rest for Amazon OpenSearch Serverless:
+%% and Encryption at rest for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-encryption.html.
 -spec get_security_policy(aws_client:aws_client(), get_security_policy_request()) ->
     {ok, get_security_policy_response(), tuple()} |
@@ -1878,13 +1865,12 @@ list_access_policies(Client, Input, Options)
 
 %% @doc Lists all OpenSearch Serverless collections.
 %%
-%% For more information, see Creating and
-%% managing Amazon OpenSearch Serverless collections:
+%% For more information, see Creating and managing Amazon OpenSearch
+%% Serverless collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html.
 %%
 %% Make sure to include an empty request body {} if you don't include any
-%% collection
-%% filters in the request.
+%% collection filters in the request.
 -spec list_collections(aws_client:aws_client(), list_collections_request()) ->
     {ok, list_collections_response(), tuple()} |
     {error, any()} |
@@ -1924,9 +1910,8 @@ list_lifecycle_policies(Client, Input, Options)
 %% @doc Returns information about configured OpenSearch Serverless security
 %% configurations.
 %%
-%% For more
-%% information, see SAML
-%% authentication for Amazon OpenSearch Serverless:
+%% For more information, see SAML authentication for Amazon OpenSearch
+%% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
 -spec list_security_configs(aws_client:aws_client(), list_security_configs_request()) ->
     {ok, list_security_configs_response(), tuple()} |
@@ -1964,8 +1949,8 @@ list_security_policies(Client, Input, Options)
 
 %% @doc Returns the tags for an OpenSearch Serverless resource.
 %%
-%% For more information, see Tagging
-%% Amazon OpenSearch Serverless collections:
+%% For more information, see Tagging Amazon OpenSearch Serverless
+%% collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-collection.html.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
@@ -1984,11 +1969,10 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Returns the OpenSearch Serverless-managed interface VPC endpoints
-%% associated with the current
-%% account.
+%% associated with the current account.
 %%
-%% For more information, see Access
-%% Amazon OpenSearch Serverless using an interface endpoint:
+%% For more information, see Access Amazon OpenSearch Serverless using an
+%% interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
 -spec list_vpc_endpoints(aws_client:aws_client(), list_vpc_endpoints_request()) ->
     {ok, list_vpc_endpoints_response(), tuple()} |
@@ -2008,8 +1992,8 @@ list_vpc_endpoints(Client, Input, Options)
 
 %% @doc Associates tags with an OpenSearch Serverless resource.
 %%
-%% For more information, see Tagging
-%% Amazon OpenSearch Serverless collections:
+%% For more information, see Tagging Amazon OpenSearch Serverless
+%% collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-collection.html.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
@@ -2029,8 +2013,8 @@ tag_resource(Client, Input, Options)
 
 %% @doc Removes a tag or set of tags from an OpenSearch Serverless resource.
 %%
-%% For more information, see Tagging
-%% Amazon OpenSearch Serverless collections:
+%% For more information, see Tagging Amazon OpenSearch Serverless
+%% collections:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-collection.html.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
@@ -2050,8 +2034,8 @@ untag_resource(Client, Input, Options)
 
 %% @doc Updates an OpenSearch Serverless access policy.
 %%
-%% For more information, see Data
-%% access control for Amazon OpenSearch Serverless:
+%% For more information, see Data access control for Amazon OpenSearch
+%% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-data-access.html.
 -spec update_access_policy(aws_client:aws_client(), update_access_policy_request()) ->
     {ok, update_access_policy_response(), tuple()} |
@@ -2072,9 +2056,8 @@ update_access_policy(Client, Input, Options)
 %% @doc Update the OpenSearch Serverless settings for the current Amazon Web
 %% Services account.
 %%
-%% For more
-%% information, see Managing
-%% capacity limits for Amazon OpenSearch Serverless:
+%% For more information, see Managing capacity limits for Amazon OpenSearch
+%% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-scaling.html.
 -spec update_account_settings(aws_client:aws_client(), update_account_settings_request()) ->
     {ok, update_account_settings_response(), tuple()} |
@@ -2111,12 +2094,10 @@ update_collection(Client, Input, Options)
 
 %% @doc Updates an existing index in an OpenSearch Serverless collection.
 %%
-%% This operation allows you to modify
-%% the index schema, including adding new fields or changing field mappings.
-%% You can also
-%% enable automatic semantic enrichment ingestion and search. For more
-%% information, see
-%% About automatic semantic enrichment:
+%% This operation allows you to modify the index schema, including adding new
+%% fields or changing field mappings. You can also enable automatic semantic
+%% enrichment ingestion and search. For more information, see About automatic
+%% semantic enrichment:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-manage.html#serverless-semantic-enrichment.
 -spec update_index(aws_client:aws_client(), update_index_request()) ->
     {ok, update_index_response(), tuple()} |
@@ -2156,8 +2137,8 @@ update_lifecycle_policy(Client, Input, Options)
 
 %% @doc Updates a security configuration for OpenSearch Serverless.
 %%
-%% For more information, see SAML
-%% authentication for Amazon OpenSearch Serverless:
+%% For more information, see SAML authentication for Amazon OpenSearch
+%% Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-saml.html.
 -spec update_security_config(aws_client:aws_client(), update_security_config_request()) ->
     {ok, update_security_config_response(), tuple()} |
@@ -2177,11 +2158,9 @@ update_security_config(Client, Input, Options)
 
 %% @doc Updates an OpenSearch Serverless security policy.
 %%
-%% For more information, see Network
-%% access for Amazon OpenSearch Serverless:
+%% For more information, see Network access for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-network.html
-%% and Encryption
-%% at rest for Amazon OpenSearch Serverless:
+%% and Encryption at rest for Amazon OpenSearch Serverless:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-encryption.html.
 -spec update_security_policy(aws_client:aws_client(), update_security_policy_request()) ->
     {ok, update_security_policy_response(), tuple()} |
@@ -2201,8 +2180,8 @@ update_security_policy(Client, Input, Options)
 
 %% @doc Updates an OpenSearch Serverless-managed interface endpoint.
 %%
-%% For more information, see Access
-%% Amazon OpenSearch Serverless using an interface endpoint:
+%% For more information, see Access Amazon OpenSearch Serverless using an
+%% interface endpoint:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vpc.html.
 -spec update_vpc_endpoint(aws_client:aws_client(), update_vpc_endpoint_request()) ->
     {ok, update_vpc_endpoint_response(), tuple()} |

@@ -500,6 +500,7 @@
 %%   <<"DetailedStatus">> => list(any()),
 %%   <<"EventId">> => string(),
 %%   <<"HookFailureMode">> => list(any()),
+%%   <<"HookInvocationId">> => string(),
 %%   <<"HookInvocationPoint">> => list(any()),
 %%   <<"HookStatus">> => list(any()),
 %%   <<"HookStatusReason">> => string(),
@@ -1195,8 +1196,10 @@
 %% Example:
 %% list_hook_results_input() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"TargetId">> := string(),
-%%   <<"TargetType">> := list(any())
+%%   <<"Status">> => list(any()),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => list(any()),
+%%   <<"TypeArn">> => string()
 %% }
 -type list_hook_results_input() :: #{binary() => any()}.
 
@@ -2054,9 +2057,15 @@
 %% Example:
 %% hook_result_summary() :: #{
 %%   <<"FailureMode">> => list(any()),
+%%   <<"HookExecutionTarget">> => string(),
+%%   <<"HookResultId">> => string(),
 %%   <<"HookStatusReason">> => string(),
 %%   <<"InvocationPoint">> => list(any()),
+%%   <<"InvokedAt">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => list(any()),
+%%   <<"TypeArn">> => string(),
 %%   <<"TypeConfigurationVersionId">> => string(),
 %%   <<"TypeName">> => string(),
 %%   <<"TypeVersionId">> => string()
@@ -2943,17 +2952,34 @@ activate_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ActivateOrganizationsAccess">>, Input, Options).
 
-%% @doc Activates a public third-party extension, making it available for use
-%% in stack templates.
+%% @doc Activates a public third-party extension, such as a resource or
+%% module, to make it
+%% available for use in stack templates in your current account and Region.
 %%
-%% Once you have activated a public third-party extension in your account and
-%% Region, use SetTypeConfiguration:
+%% It can also create
+%% CloudFormation Hooks, which allow you to evaluate resource configurations
+%% before CloudFormation
+%% provisions them. Hooks integrate with both CloudFormation and Cloud
+%% Control API operations.
+%%
+%% After you activate an extension, you can use SetTypeConfiguration:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html
-%% to specify configuration properties for the extension. For
-%% more information, see Using public
-%% extensions:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html
-%% in the CloudFormation User Guide.
+%% to set specific properties for the extension.
+%%
+%% To see which extensions have been activated, use ListTypes:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListTypes.html.
+%% To see
+%% configuration details for an extension, use DescribeType:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
+%%
+%% For more information, see Activate a
+%% third-party public extension in your account:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public-activate-extension.html
+%% in the
+%% CloudFormation User Guide. For information about creating Hooks, see the
+%% CloudFormation
+%% Hooks User Guide:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/what-is-cloudformation-hooks.html.
 -spec activate_type(aws_client:aws_client(), activate_type_input()) ->
     {ok, activate_type_output(), tuple()} |
     {error, any()} |
@@ -2972,7 +2998,7 @@ activate_type(Client, Input, Options)
 
 %% @doc Returns configuration data for the specified CloudFormation
 %% extensions, from the CloudFormation
-%% registry for the account and Region.
+%% registry in your current account and Region.
 %%
 %% For more information, see Edit configuration
 %% data for extensions in your account:
@@ -3017,28 +3043,32 @@ cancel_update_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelUpdateStack">>, Input, Options).
 
-%% @doc For a specified stack that's in the `UPDATE_ROLLBACK_FAILED'
-%% state, continues
-%% rolling it back to the `UPDATE_ROLLBACK_COMPLETE' state.
+%% @doc Continues rolling back a stack from `UPDATE_ROLLBACK_FAILED' to
+%% `UPDATE_ROLLBACK_COMPLETE' state.
 %%
-%% Depending on the cause of
-%% the failure, you can manually fix the error:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed
-%% and continue the rollback. By continuing the rollback, you can return
-%% your stack to a working state (the `UPDATE_ROLLBACK_COMPLETE' state),
+%% Depending on the cause of the failure, you can
+%% manually fix the error and continue the rollback. By continuing the
+%% rollback, you can return
+%% your stack to a working state (the `UPDATE_ROLLBACK_COMPLETE' state)
 %% and then try
 %% to update the stack again.
 %%
-%% A stack goes into the `UPDATE_ROLLBACK_FAILED' state when
-%% CloudFormation can't roll
-%% back all changes after a failed stack update. For example, you might have
-%% a stack that's
-%% rolling back to an old database instance that was deleted outside of
+%% A stack enters the `UPDATE_ROLLBACK_FAILED' state when CloudFormation
+%% can't roll
+%% back all changes after a failed stack update. For example, this might
+%% occur when a stack
+%% attempts to roll back to an old database that was deleted outside of
 %% CloudFormation. Because
-%% CloudFormation doesn't know the database was deleted, it assumes that
-%% the database instance still
-%% exists and attempts to roll back to it, causing the update rollback to
-%% fail.
+%% CloudFormation doesn't know the instance was deleted, it assumes the
+%% instance still exists and
+%% attempts to roll back to it, causing the update rollback to fail.
+%%
+%% For more information, see Continue rolling back an update:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html
+%% in the CloudFormation User Guide. For
+%% information for troubleshooting a failed update rollback, see Update
+%% rollback failed:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed.
 -spec continue_update_rollback(aws_client:aws_client(), continue_update_rollback_input()) ->
     {ok, continue_update_rollback_output(), tuple()} |
     {error, any()} |
@@ -3213,7 +3243,7 @@ create_stack_refactor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStackRefactor">>, Input, Options).
 
-%% @doc Creates a stack set.
+%% @doc Creates a StackSet.
 -spec create_stack_set(aws_client:aws_client(), create_stack_set_input()) ->
     {ok, create_stack_set_output(), tuple()} |
     {error, any()} |
@@ -3251,9 +3281,15 @@ deactivate_organizations_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeactivateOrganizationsAccess">>, Input, Options).
 
-%% @doc Deactivates a public extension that was previously activated in this
-%% account and
-%% Region.
+%% @doc Deactivates a public third-party extension, such as a resource or
+%% module, or a CloudFormation
+%% Hook when you no longer use it.
+%%
+%% Deactivating an extension deletes the configuration details that are
+%% associated with it.
+%% To temporary disable a CloudFormation Hook instead, you can use
+%% SetTypeConfiguration:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html.
 %%
 %% Once deactivated, an extension can't be used in any CloudFormation
 %% operation. This includes
@@ -3262,6 +3298,9 @@ deactivate_organizations_access(Client, Input, Options)
 %% are being made to the extension. In addition, deactivated extensions
 %% aren't automatically
 %% updated if a new version of the extension is released.
+%%
+%% To see which extensions are currently activated, use ListTypes:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListTypes.html.
 -spec deactivate_type(aws_client:aws_client(), deactivate_type_input()) ->
     {ok, deactivate_type_output(), tuple()} |
     {error, any()} |
@@ -3384,10 +3423,10 @@ delete_stack_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStackInstances">>, Input, Options).
 
-%% @doc Deletes a stack set.
+%% @doc Deletes a StackSet.
 %%
-%% Before you can delete a stack set, all its member stack instances
-%% must be deleted. For more information about how to complete this, see
+%% Before you can delete a StackSet, all its member stack instances must
+%% be deleted. For more information about how to complete this, see
 %% `DeleteStackInstances'.
 -spec delete_stack_set(aws_client:aws_client(), delete_stack_set_input()) ->
     {ok, delete_stack_set_output(), tuple()} |
@@ -3429,6 +3468,12 @@ delete_stack_set(Client, Input, Options)
 %% To view the deprecation status of an extension or extension version, use
 %% DescribeType:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
+%%
+%% For more information, see Remove
+%% third-party private extensions from your account:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-private-deregister-extension.html
+%% in the
+%% CloudFormation User Guide.
 -spec deregister_type(aws_client:aws_client(), deregister_type_input()) ->
     {ok, deregister_type_output(), tuple()} |
     {error, any()} |
@@ -3879,8 +3924,9 @@ describe_stacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStacks">>, Input, Options).
 
-%% @doc Returns detailed information about an extension that has been
-%% registered.
+%% @doc Returns detailed information about an extension from the
+%% CloudFormation registry in your
+%% current account and Region.
 %%
 %% If you specify a `VersionId', `DescribeType' returns information
 %% about that specific extension version. Otherwise, it returns information
@@ -4024,23 +4070,23 @@ detect_stack_resource_drift(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectStackResourceDrift">>, Input, Options).
 
-%% @doc Detect drift on a stack set.
+%% @doc Detect drift on a StackSet.
 %%
-%% When CloudFormation performs drift detection on a stack set, it
+%% When CloudFormation performs drift detection on a StackSet, it
 %% performs drift detection on the stack associated with each stack instance
-%% in the stack set.
-%% For more information, see Performing drift detection on
+%% in the StackSet. For
+%% more information, see Performing drift detection on
 %% CloudFormation StackSets:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html.
 %%
-%% `DetectStackSetDrift' returns the `OperationId' of the stack set
+%% `DetectStackSetDrift' returns the `OperationId' of the StackSet
 %% drift detection operation. Use this operation id with
 %% `DescribeStackSetOperation' to monitor the progress of the drift
 %% detection
 %% operation. The drift detection operation may take some time, depending on
 %% the number of stack
-%% instances included in the stack set, in addition to the number of
-%% resources included in each
+%% instances included in the StackSet, in addition to the number of resources
+%% included in each
 %% stack.
 %%
 %% Once the operation has completed, use the following actions to return
@@ -4049,24 +4095,24 @@ detect_stack_resource_drift(Client, Input, Options)
 %%
 %% Use `DescribeStackSet' to return detailed information about the stack
 %% set, including detailed information about the last completed drift
-%% operation performed on the stack set. (Information about drift operations
+%% operation performed on the StackSet. (Information about drift operations
 %% that are in
 %% progress isn't included.)
 %%
 %% Use `ListStackInstances' to return a list of stack instances belonging
-%% to the stack set, including the drift status and last drift time checked
-%% of each
+%% to the StackSet, including the drift status and last drift time checked of
+%% each
 %% instance.
 %%
 %% Use `DescribeStackInstance' to return detailed information about a
 %% specific stack instance, including its drift status and last drift time
 %% checked.
 %%
-%% You can only run a single drift detection operation on a given stack set
-%% at one
+%% You can only run a single drift detection operation on a given StackSet at
+%% one
 %% time.
 %%
-%% To stop a drift detection stack set operation, use
+%% To stop a drift detection StackSet operation, use
 %% `StopStackSetOperation'.
 -spec detect_stack_set_drift(aws_client:aws_client(), detect_stack_set_drift_input()) ->
     {ok, detect_stack_set_drift_output(), tuple()} |
@@ -4228,11 +4274,11 @@ get_template(Client, Input, Options)
 %% The `GetTemplateSummary'
 %% action is useful for viewing parameter information, such as default
 %% parameter values and
-%% parameter types, before you create or update a stack or stack set.
+%% parameter types, before you create or update a stack or StackSet.
 %%
 %% You can use the `GetTemplateSummary' action when you submit a
 %% template, or you
-%% can get template information for a stack set, or a running or deleted
+%% can get template information for a StackSet, or a running or deleted
 %% stack.
 %%
 %% For deleted stacks, `GetTemplateSummary' returns the template
@@ -4256,10 +4302,10 @@ get_template_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTemplateSummary">>, Input, Options).
 
-%% @doc Import existing stacks into a new stack sets.
+%% @doc Import existing stacks into a new StackSets.
 %%
 %% Use the stack import operation to import up
-%% to 10 stacks into a new stack set in the same account as the source stack
+%% to 10 stacks into a new StackSet in the same account as the source stack
 %% or in a different
 %% administrator account and Region, by specifying the stack ID of the stack
 %% you intend to
@@ -4304,9 +4350,8 @@ list_change_sets(Client, Input, Options)
 %%
 %% Use this action to see the exported output values that you can import into
 %% other stacks. To
-%% import values, use the
-%% Fn::ImportValue:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html
+%% import values, use the Fn::ImportValue:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/intrinsic-function-reference-importvalue.html
 %% function.
 %%
 %% For more information, see Get exported outputs
@@ -4341,9 +4386,24 @@ list_generated_templates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGeneratedTemplates">>, Input, Options).
 
-%% @doc Returns summaries of invoked Hooks when a change set or Cloud Control
-%% API operation target is
-%% provided.
+%% @doc Returns summaries of invoked Hooks.
+%%
+%% For more information, see View CloudFormation Hooks
+%% invocations:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/hooks-view-invocations.html
+%% in the CloudFormation Hooks User Guide.
+%%
+%% This operation supports the following parameter combinations:
+%%
+%% No parameters: Returns all Hook invocation summaries.
+%%
+%% `TypeArn' only: Returns summaries for a specific Hook.
+%%
+%% `TypeArn' and `Status': Returns summaries for a specific
+%% Hook filtered by status.
+%%
+%% `TargetId' and `TargetType': Returns summaries for a specific
+%% Hook invocation target.
 -spec list_hook_results(aws_client:aws_client(), list_hook_results_input()) ->
     {ok, list_hook_results_output(), tuple()} |
     {error, any()} |
@@ -4369,7 +4429,7 @@ list_hook_results(Client, Input, Options)
 %%
 %% For more information about importing an exported output value, see the
 %% Fn::ImportValue:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/intrinsic-function-reference-importvalue.html
 %% function.
 -spec list_imports(aws_client:aws_client(), list_imports_input()) ->
     {ok, list_imports_output(), tuple()} |
@@ -4474,11 +4534,11 @@ list_stack_instance_resource_drifts(Client, Input, Options)
 
 %% @doc Returns summary information about stack instances that are associated
 %% with the specified
-%% stack set.
+%% StackSet.
 %%
 %% You can filter for stack instances that are associated with a specific
-%% Amazon Web Services account name or Region, or that have a specific
-%% status.
+%% Amazon Web Services account
+%% name or Region, or that have a specific status.
 -spec list_stack_instances(aws_client:aws_client(), list_stack_instances_input()) ->
     {ok, list_stack_instances_output(), tuple()} |
     {error, any()} |
@@ -4545,7 +4605,7 @@ list_stack_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackResources">>, Input, Options).
 
-%% @doc Returns summary information about deployment targets for a stack set.
+%% @doc Returns summary information about deployment targets for a StackSet.
 -spec list_stack_set_auto_deployment_targets(aws_client:aws_client(), list_stack_set_auto_deployment_targets_input()) ->
     {ok, list_stack_set_auto_deployment_targets_output(), tuple()} |
     {error, any()} |
@@ -4562,7 +4622,7 @@ list_stack_set_auto_deployment_targets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackSetAutoDeploymentTargets">>, Input, Options).
 
-%% @doc Returns summary information about the results of a stack set
+%% @doc Returns summary information about the results of a StackSet
 %% operation.
 %%
 %% This API provides eventually consistent reads meaning it may take
@@ -4583,8 +4643,7 @@ list_stack_set_operation_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackSetOperationResults">>, Input, Options).
 
-%% @doc Returns summary information about operations performed on a stack
-%% set.
+%% @doc Returns summary information about operations performed on a StackSet.
 %%
 %% This API provides eventually consistent reads meaning it may take
 %% some time but will eventually return the most up-to-date data.
@@ -4604,7 +4663,7 @@ list_stack_set_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStackSetOperations">>, Input, Options).
 
-%% @doc Returns summary information about stack sets that are associated with
+%% @doc Returns summary information about StackSets that are associated with
 %% the user.
 %%
 %% This API provides strongly consistent reads meaning it will always
@@ -4613,17 +4672,17 @@ list_stack_set_operations(Client, Input, Options)
 %% [Self-managed permissions] If you set the `CallAs' parameter to
 %% `SELF' while signed in to your Amazon Web Services account,
 %% `ListStackSets'
-%% returns all self-managed stack sets in your Amazon Web Services account.
+%% returns all self-managed StackSets in your Amazon Web Services account.
 %%
 %% [Service-managed permissions] If you set the `CallAs' parameter to
 %% `SELF' while signed in to the organization's management account,
-%% `ListStackSets' returns all stack sets in the management account.
+%% `ListStackSets' returns all StackSets in the management account.
 %%
 %% [Service-managed permissions] If you set the `CallAs' parameter to
 %% `DELEGATED_ADMIN' while signed in to your member account,
-%% `ListStackSets' returns all stack sets with service-managed
-%% permissions in
-%% the management account.
+%% `ListStackSets' returns all StackSets with service-managed permissions
+%% in the
+%% management account.
 -spec list_stack_sets(aws_client:aws_client(), list_stack_sets_input()) ->
     {ok, list_stack_sets_output(), tuple()} |
     {error, any()}.
@@ -4696,9 +4755,11 @@ list_type_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTypeVersions">>, Input, Options).
 
-%% @doc Returns summary information about extension that have been registered
-%% with
-%% CloudFormation.
+%% @doc Returns summary information about all extensions, including your
+%% private resource types,
+%% modules, and Hooks as well as all public extensions from Amazon Web
+%% Services and third-party
+%% publishers.
 -spec list_types(aws_client:aws_client(), list_types_input()) ->
     {ok, list_types_output(), tuple()} |
     {error, any()} |
@@ -5017,8 +5078,8 @@ start_resource_scan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartResourceScan">>, Input, Options).
 
-%% @doc Stops an in-progress operation on a stack set and its associated
-%% stack instances.
+%% @doc Stops an in-progress operation on a StackSet and its associated stack
+%% instances.
 %%
 %% StackSets
 %% will cancel all the unstarted stack instance deployments and wait for
@@ -5164,23 +5225,23 @@ update_stack(Client, Input, Options)
 %% exist; to create additional stack instances, use CreateStackInstances:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html.
 %%
-%% During stack set updates, any parameters overridden for a stack instance
+%% During StackSet updates, any parameters overridden for a stack instance
 %% aren't updated,
 %% but retain their overridden value.
 %%
 %% You can only update the parameter values that are specified in the
-%% stack set; to add or delete a parameter itself, use UpdateStackSet:
+%% StackSet. To add or delete a parameter itself, use UpdateStackSet:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html
-%% to update the stack set template. If you add a parameter to a template,
-%% before you can
-%% override the parameter value specified in the stack set you must first use
+%% to update the StackSet template. If you add a parameter to a template,
+%% before you can override
+%% the parameter value specified in the StackSet you must first use
 %% UpdateStackSet:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html
-%% to update all stack instances with the updated template and
-%% parameter value specified in the stack set. Once a stack instance has been
-%% updated with the
-%% new parameter, you can then override the parameter value using
-%% `UpdateStackInstances'.
+%% to update all stack instances with the updated template and parameter
+%% value specified in the
+%% StackSet. Once a stack instance has been updated with the new parameter,
+%% you can then override
+%% the parameter value using `UpdateStackInstances'.
 %%
 %% The maximum number of organizational unit (OUs) supported by a
 %% `UpdateStackInstances' operation is 50.
@@ -5210,17 +5271,17 @@ update_stack_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStackInstances">>, Input, Options).
 
-%% @doc Updates the stack set and associated stack instances in the specified
+%% @doc Updates the StackSet and associated stack instances in the specified
 %% accounts and
 %% Amazon Web Services Regions.
 %%
-%% Even if the stack set operation created by updating the stack set fails
+%% Even if the StackSet operation created by updating the StackSet fails
 %% (completely or
-%% partially, below or above a specified failure tolerance), the stack set is
+%% partially, below or above a specified failure tolerance), the StackSet is
 %% updated with your
 %% changes. Subsequent `CreateStackInstances' calls on the specified
-%% stack set
-%% use the updated stack set.
+%% StackSet use
+%% the updated StackSet.
 %%
 %% The maximum number of organizational unit (OUs) supported by a
 %% `UpdateStackSet' operation is 50.
