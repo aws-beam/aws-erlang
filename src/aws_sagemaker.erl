@@ -1418,6 +1418,13 @@
 -type model_data_quality() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_tiered_storage_config() :: #{
+%%   <<"InstanceMemoryAllocationPercentage">> => integer(),
+%%   <<"Mode">> => list(any())
+%% }
+-type cluster_tiered_storage_config() :: #{binary() => any()}.
+
+%% Example:
 %% experiment_summary() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DisplayName">> => string(),
@@ -1861,6 +1868,7 @@
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_details()),
+%%   <<"TieredStorageConfig">> => cluster_tiered_storage_config(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type describe_cluster_response() :: #{binary() => any()}.
@@ -4291,7 +4299,8 @@
 %%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
 %%   <<"InstanceGroupsToDelete">> => list(string()),
 %%   <<"NodeRecovery">> => list(any()),
-%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification())
+%%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
+%%   <<"TieredStorageConfig">> => cluster_tiered_storage_config()
 %% }
 -type update_cluster_request() :: #{binary() => any()}.
 
@@ -5146,6 +5155,7 @@
 %%   <<"FailureReason">> => string(),
 %%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"NetworkInterfaceId">> => string(),
@@ -5424,6 +5434,7 @@
 %%   <<"Orchestrator">> => cluster_orchestrator(),
 %%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
 %%   <<"Tags">> => list(tag()),
+%%   <<"TieredStorageConfig">> => cluster_tiered_storage_config(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type create_cluster_request() :: #{binary() => any()}.
@@ -5656,6 +5667,7 @@
 %%   <<"DisassociateLifecycleConfig">> => boolean(),
 %%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"LifecycleConfigName">> => string(),
 %%   <<"NotebookInstanceName">> := string(),
 %%   <<"RoleArn">> => string(),
@@ -8611,6 +8623,7 @@
 %%   <<"DirectInternetAccess">> => list(any()),
 %%   <<"InstanceMetadataServiceConfiguration">> => instance_metadata_service_configuration(),
 %%   <<"InstanceType">> := list(any()),
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LifecycleConfigName">> => string(),
 %%   <<"NotebookInstanceName">> := string(),
