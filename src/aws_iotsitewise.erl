@@ -2320,9 +2320,12 @@
 %% }
 -type describe_computation_model_execution_summary_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% describe_computation_model_request() :: #{}
--type describe_computation_model_request() :: #{}.
+%% describe_computation_model_request() :: #{
+%%   <<"computationModelVersion">> => string()
+%% }
+-type describe_computation_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4657,6 +4660,9 @@ batch_put_asset_property_value(Client, Input0, Options0) ->
 %% Identity Center user, IAM Identity Center group, or
 %% IAM user) access to the specified IoT SiteWise Monitor portal or project
 %% resource.
+%%
+%% Support for access policies that use an SSO Group as the identity is not
+%% supported at this time.
 -spec create_access_policy(aws_client:aws_client(), create_access_policy_request()) ->
     {ok, create_access_policy_response(), tuple()} |
     {error, any()} |
@@ -6072,7 +6078,11 @@ describe_computation_model(Client, ComputationModelId, QueryMap, HeadersMap, Opt
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"computationModelVersion">>, maps:get(<<"computationModelVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
