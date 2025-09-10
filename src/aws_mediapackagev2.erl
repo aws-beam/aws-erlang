@@ -1,24 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% This guide is intended for creating AWS Elemental MediaPackage resources
-%% in MediaPackage Version 2 (v2) starting from May 2023.
+%% @doc This guide is intended for creating AWS Elemental MediaPackage
+%% resources in MediaPackage Version 2 (v2) starting from May 2023.
 %%
 %% To get started with MediaPackage v2, create your MediaPackage resources.
-%% There isn't an automated process to
-%% migrate your resources from MediaPackage v1 to MediaPackage v2.
+%% There isn't an automated process to migrate your resources from
+%% MediaPackage v1 to MediaPackage v2.
 %%
 %% The names of the entities that you use to access this API, like URLs and
-%% ARNs, all have the versioning information
-%% added, like &quot;v2&quot;, to distinguish from the prior version. If you
-%% used MediaPackage prior to this release, you can't use
-%% the MediaPackage v2 CLI or the MediaPackage v2 API to access any
-%% MediaPackage v1 resources.
+%% ARNs, all have the versioning information added, like &quot;v2&quot;, to
+%% distinguish from the prior version. If you used MediaPackage prior to this
+%% release, you can't use the MediaPackage v2 CLI or the MediaPackage v2
+%% API to access any MediaPackage v1 resources.
 %%
 %% If you created resources in MediaPackage v1, use video on demand (VOD)
-%% workflows, and aren't looking to migrate to MediaPackage v2 yet,
-%% see the MediaPackage v1 Live API Reference:
+%% workflows, and aren't looking to migrate to MediaPackage v2 yet, see
+%% the MediaPackage v1 Live API Reference:
 %% https://docs.aws.amazon.com/mediapackage/latest/apireference/what-is.html.
 %%
 %% This is the AWS Elemental MediaPackage v2 Live REST API Reference. It
@@ -2373,15 +2371,13 @@ reset_origin_endpoint_state(Client, ChannelGroupName, ChannelName, OriginEndpoin
 %% MediaPackage resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user
-%% permissions, by granting a user permission to access or change only
-%% resources with certain tag values.
-%% You can use the TagResource operation with a resource that already has
-%% tags. If you specify a new tag
+%% them to scope user permissions, by granting a user permission to access or
+%% change only resources with certain tag values. You can use the TagResource
+%% operation with a resource that already has tags. If you specify a new tag
 %% key for the resource, this tag is appended to the list of tags associated
-%% with the resource. If you
-%% specify a tag key that is already associated with the resource, the new
-%% tag value that you specify replaces the previous value for that tag.
+%% with the resource. If you specify a tag key that is already associated
+%% with the resource, the new tag value that you specify replaces the
+%% previous value for that tag.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

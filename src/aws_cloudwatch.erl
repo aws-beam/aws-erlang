@@ -40,6 +40,8 @@
          delete_insight_rules/3,
          delete_metric_stream/2,
          delete_metric_stream/3,
+         describe_alarm_contributors/2,
+         describe_alarm_contributors/3,
          describe_alarm_history/2,
          describe_alarm_history/3,
          describe_alarms/2,
@@ -218,6 +220,8 @@
 
 %% Example:
 %% alarm_history_item() :: #{
+%%   <<"AlarmContributorAttributes">> => map(),
+%%   <<"AlarmContributorId">> => string(),
 %%   <<"AlarmName">> => string(),
 %%   <<"AlarmType">> => list(any()),
 %%   <<"HistoryData">> => string(),
@@ -416,6 +420,7 @@
 
 %% Example:
 %% describe_alarm_history_input() :: #{
+%%   <<"AlarmContributorId">> => string(),
 %%   <<"AlarmName">> => string(),
 %%   <<"AlarmTypes">> => list(list(any())()),
 %%   <<"EndDate">> => non_neg_integer(),
@@ -465,6 +470,15 @@
 %%   <<"Value">> => string()
 %% }
 -type message_data() :: #{binary() => any()}.
+
+%% Example:
+%% alarm_contributor() :: #{
+%%   <<"ContributorAttributes">> => map(),
+%%   <<"ContributorId">> => string(),
+%%   <<"StateReason">> => string(),
+%%   <<"StateTransitionedTimestamp">> => non_neg_integer()
+%% }
+-type alarm_contributor() :: #{binary() => any()}.
 
 %% Example:
 %% stop_metric_streams_output() :: #{
@@ -810,6 +824,13 @@
 -type managed_rule_description() :: #{binary() => any()}.
 
 %% Example:
+%% describe_alarm_contributors_output() :: #{
+%%   <<"AlarmContributors">> => list(alarm_contributor()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_alarm_contributors_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_metric_statistics_output() :: #{
 %%   <<"Datapoints">> => list(datapoint()),
 %%   <<"Label">> => string()
@@ -929,6 +950,13 @@
 %%   <<"StateValue">> => list(any())
 %% }
 -type composite_alarm() :: #{binary() => any()}.
+
+%% Example:
+%% describe_alarm_contributors_input() :: #{
+%%   <<"AlarmName">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_alarm_contributors_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_dashboard_output() :: #{
@@ -1151,6 +1179,10 @@
     internal_service_fault() | 
     invalid_parameter_value_exception() | 
     missing_required_parameter_exception().
+
+-type describe_alarm_contributors_errors() ::
+    invalid_next_token() | 
+    resource_not_found_exception().
 
 -type describe_alarm_history_errors() ::
     invalid_next_token().
@@ -1431,6 +1463,27 @@ delete_metric_stream(Client, Input)
 delete_metric_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMetricStream">>, Input, Options).
+
+%% @doc Returns the information of the current alarm contributors that are in
+%% `ALARM' state.
+%%
+%% This operation returns details about the individual time series that
+%% contribute to the alarm's state.
+-spec describe_alarm_contributors(aws_client:aws_client(), describe_alarm_contributors_input()) ->
+    {ok, describe_alarm_contributors_output(), tuple()} |
+    {error, any()} |
+    {error, describe_alarm_contributors_errors(), tuple()}.
+describe_alarm_contributors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_alarm_contributors(Client, Input, []).
+
+-spec describe_alarm_contributors(aws_client:aws_client(), describe_alarm_contributors_input(), proplists:proplist()) ->
+    {ok, describe_alarm_contributors_output(), tuple()} |
+    {error, any()} |
+    {error, describe_alarm_contributors_errors(), tuple()}.
+describe_alarm_contributors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAlarmContributors">>, Input, Options).
 
 %% @doc Retrieves the history for the specified alarm.
 %%

@@ -738,6 +738,7 @@
 %%   <<"JoinedMethod">> => list(any()),
 %%   <<"JoinedTimestamp">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
 -type account() :: #{binary() => any()}.
@@ -2096,8 +2097,8 @@ cancel_handshake(Client, Input, Options)
 %% You can close only 10% of member accounts, between 10 and 1000, within a
 %% rolling 30 day period. This quota is not bound by a calendar month, but
 %% starts when you close an account. After you reach this limit, you
-%% can't close
-%% additional accounts. For more information, see Closing a member
+%% can't
+%% close additional accounts. For more information, see Closing a member
 %% account in your organization:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html
 %% and Quotas for
@@ -2192,11 +2193,11 @@ close_account(Client, Input, Options)
 %% When you create an account in an organization using the Organizations
 %% console,
 %% API, or CLI commands, the information required for the account to operate
-%% as a standalone account, such as a payment method is not automatically
-%% collected. If you must remove an account from your organization later, you
-%% can do so only after you provide the missing information. For more
-%% information, see Considerations before removing an account from an
-%% organization:
+%% as a standalone account, such as a payment method is
+%% not automatically collected. If you must remove an
+%% account from your organization later, you can do so only after you provide
+%% the missing information. For more information, see Considerations before
+%% removing an account from an organization:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html
 %% in the Organizations User Guide.
 %%
@@ -2210,10 +2211,9 @@ close_account(Client, Input, Options)
 %% https://console.aws.amazon.com/support/home#/.
 %%
 %% It isn't recommended to use `CreateAccount' to create multiple
-%% temporary accounts, and using
-%% the `CreateAccount' API to close accounts is subject to a 30-day usage
-%% quota. For information on the requirements
-%% and process for closing an account, see Closing a member
+%% temporary accounts, and using the `CreateAccount' API to close
+%% accounts is subject to a 30-day usage quota. For information on the
+%% requirements and process for closing an account, see Closing a member
 %% account in your organization:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html
 %% in the
@@ -2747,8 +2747,9 @@ describe_create_account_status(Client, Input, Options)
 %% account.
 %%
 %% This operation applies only to management policies. It does not apply to
-%% authorization policies: service
-%% control policies (SCPs) and resource control policies (RCPs).
+%% authorization
+%% policies: service control policies (SCPs) and resource control policies
+%% (RCPs).
 %%
 %% For more information about policy inheritance, see Understanding
 %% management policy inheritance:
@@ -3063,7 +3064,7 @@ disable_aws_service_access(Client, Input, Options)
 %% administrator.
 %%
 %% To view the status of available policy types in the organization, use
-%% `DescribeOrganization'.
+%% `ListRoots'.
 -spec disable_policy_type(aws_client:aws_client(), disable_policy_type_request()) ->
     {ok, disable_policy_type_response(), tuple()} |
     {error, any()} |
@@ -3148,16 +3149,16 @@ enable_all_features(Client, Input, Options)
 %% @doc Provides an Amazon Web Services service (the service that is
 %% specified by
 %% `ServicePrincipal') with permissions to view the structure of an
-%% organization,
-%% create a service-linked role:
+%% organization, create a service-linked role:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html
-%% in all the accounts in the organization,
-%% and allow the service to perform operations
-%% on behalf of the organization and its accounts.
+%% in
+%% all the accounts in the organization, and allow the service to perform
+%% operations on
+%% behalf of the organization and its accounts.
 %%
-%% Establishing these permissions can be a first step
-%% in enabling the integration of an Amazon Web Services service with
-%% Organizations.
+%% Establishing these permissions can be a
+%% first step in enabling the integration of an Amazon Web Services service
+%% with Organizations.
 %%
 %% We recommend that you enable integration between Organizations and the
 %% specified Amazon Web Services
@@ -3217,7 +3218,7 @@ enable_aws_service_access(Client, Input, Options)
 %% available in the
 %% organization. To view the status of available policy types in the
 %% organization, use
-%% `DescribeOrganization'.
+%% `ListRoots'.
 -spec enable_policy_type(aws_client:aws_client(), enable_policy_type_request()) ->
     {ok, enable_policy_type_response(), tuple()} |
     {error, any()} |
@@ -3244,11 +3245,13 @@ enable_policy_type(Client, Input, Options)
 %% whose details are in the response.
 %%
 %% If you receive an exception that indicates that you exceeded your account
-%% limits for the organization or that the operation failed because your
-%% organization is still initializing, wait one hour and then try again. If
-%% the
-%% error persists after an hour, contact Amazon Web Services Support:
-%% https://console.aws.amazon.com/support/home#/.
+%% limits
+%% for the organization or that the operation failed because your
+%% organization is still
+%% initializing, wait one hour and then try again. If the error persists
+%% after an hour,
+%% contact Amazon Web Services
+%% Support: https://console.aws.amazon.com/support/home#/.
 %%
 %% If the request includes tags, then the requester must have the
 %% `organizations:TagResource' permission.
@@ -3328,9 +3331,9 @@ invite_account_to_organization(Client, Input, Options)
 %% of an organization do not support tags.
 %%
 %% A newly created account has a waiting period before it can be removed from
-%% its organization.
-%% You must wait until at least seven days after the account was created.
-%% Invited accounts aren't subject to this waiting period.
+%% its organization. You must wait until at least seven days after the
+%% account
+%% was created. Invited accounts aren't subject to this waiting period.
 %%
 %% If you are using an organization principal to call
 %% `LeaveOrganization' across multiple accounts, you can only do
@@ -3427,10 +3430,12 @@ list_accounts_for_parent(Client, Input, Options)
 %% @doc Lists all the accounts in an organization that have invalid effective
 %% policies.
 %%
-%% An invalid effective policy is an effective policy:
+%% An
+%% invalid effective policy is an effective
+%% policy:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_effective.html
-%% that fails validation checks, resulting in the effective policy not being
-%% fully enforced on all the intended accounts within an organization.
+%% that fails validation checks, resulting in the effective policy not
+%% being fully enforced on all the intended accounts within an organization.
 %%
 %% This operation can be called only from the organization's
 %% management account or by a member account that is a delegated
@@ -3599,7 +3604,8 @@ list_delegated_services_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDelegatedServicesForAccount">>, Input, Options).
 
-%% @doc Lists all the validation errors on an effective policy:
+%% @doc Lists all the validation errors on an effective
+%% policy:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_effective.html
 %% for a specified account and policy type.
 %%

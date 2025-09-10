@@ -704,7 +704,8 @@
 
 %% Example:
 %% cancel_instance_refresh_type() :: #{
-%%   <<"AutoScalingGroupName">> := string()
+%%   <<"AutoScalingGroupName">> := string(),
+%%   <<"WaitForTransitioningInstances">> => boolean()
 %% }
 -type cancel_instance_refresh_type() :: #{binary() => any()}.
 

@@ -1364,6 +1364,14 @@
 
 
 %% Example:
+%% predefined_attribute_configuration() :: #{
+%%   <<"EnableValueValidationOnAssociation">> => boolean(),
+%%   <<"IsReadOnly">> => boolean()
+%% }
+-type predefined_attribute_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% property_validation_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"PropertyList">> => list(property_validation_exception_property())
@@ -2574,7 +2582,9 @@
 
 %% Example:
 %% segment_attribute_value() :: #{
+%%   <<"ValueArn">> => string(),
 %%   <<"ValueInteger">> => integer(),
+%%   <<"ValueList">> => list(segment_attribute_value()),
 %%   <<"ValueMap">> => map(),
 %%   <<"ValueString">> => string()
 %% }
@@ -3469,8 +3479,10 @@
 
 %% Example:
 %% create_predefined_attribute_request() :: #{
+%%   <<"AttributeConfiguration">> => input_predefined_attribute_configuration(),
 %%   <<"Name">> := string(),
-%%   <<"Values">> := list()
+%%   <<"Purposes">> => list(string()),
+%%   <<"Values">> => list()
 %% }
 -type create_predefined_attribute_request() :: #{binary() => any()}.
 
@@ -4630,6 +4642,8 @@
 
 %% Example:
 %% update_predefined_attribute_request() :: #{
+%%   <<"AttributeConfiguration">> => input_predefined_attribute_configuration(),
+%%   <<"Purposes">> => list(string()),
 %%   <<"Values">> => list()
 %% }
 -type update_predefined_attribute_request() :: #{binary() => any()}.
@@ -4927,6 +4941,13 @@
 %%   <<"MediaConcurrencies">> := list(media_concurrency())
 %% }
 -type update_routing_profile_concurrency_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% input_predefined_attribute_configuration() :: #{
+%%   <<"EnableValueValidationOnAssociation">> => boolean()
+%% }
+-type input_predefined_attribute_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7923,9 +7944,11 @@
 
 %% Example:
 %% predefined_attribute() :: #{
+%%   <<"AttributeConfiguration">> => predefined_attribute_configuration(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"Purposes">> => list(string()),
 %%   <<"Values">> => list()
 %% }
 -type predefined_attribute() :: #{binary() => any()}.
@@ -11702,13 +11725,35 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 %% @doc Creates a new predefined attribute for the specified Amazon Connect
 %% instance.
 %%
-%% Predefined
-%% attributes are attributes in an Amazon Connect instance that can be used
-%% to route
-%% contacts to an agent or pools of agents within a queue. For more
-%% information, see Create
+%% A predefined
+%% attribute is made up of a name and a value.
+%%
+%% For the predefined attributes per instance quota, see Amazon Connect
+%% quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% Create an attribute for routing proficiency (for example, agent
+%% certification) that has
+%% predefined values (for example, a list of possible certifications). For
+%% more information, see
+%% Create
 %% predefined attributes for routing contacts to agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
+%%
+%% Create an attribute for business unit name that has a list of predefined
+%% business unit
+%% names used in your organization. This is a use case where information for
+%% a contact varies between transfers or conferences. For more information,
+%% see
+%% Use contact segment attributes:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec create_predefined_attribute(aws_client:aws_client(), binary() | list(), create_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -14036,13 +14081,29 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 %% @doc Describes a predefined attribute for the specified Amazon Connect
 %% instance.
 %%
-%% Predefined
-%% attributes are attributes in an Amazon Connect instance that can be used
-%% to route
-%% contacts to an agent or pools of agents within a queue. For more
-%% information, see Create
+%% A predefined
+%% attribute is made up of a name and a value. You can use predefined
+%% attributes for:
+%%
+%% Routing proficiency (for example, agent certification) that has
+%% predefined values (for example, a list of possible certifications). For
+%% more information, see
+%% Create
 %% predefined attributes for routing contacts to agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
+%%
+%% Contact information that varies between transfers or conferences, such as
+%% the name of the business unit handling the contact. For more information,
+%% see
+%% Use contact segment attributes:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
+%%
+%% For the predefined attributes per instance quota, see Amazon Connect
+%% quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec describe_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_predefined_attribute_response(), tuple()} |
     {error, any()} |
@@ -17002,13 +17063,29 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 %% @doc Lists predefined attributes for the specified Amazon Connect
 %% instance.
 %%
-%% Predefined
-%% attributes are attributes in an Amazon Connect instance that can be used
-%% to route
-%% contacts to an agent or pools of agents within a queue. For more
-%% information, see Create
+%% A predefined
+%% attribute is made up of a name and a value. You can use predefined
+%% attributes for:
+%%
+%% Routing proficiency (for example, agent certification) that has
+%% predefined values (for example, a list of possible certifications). For
+%% more information, see
+%% Create
 %% predefined attributes for routing contacts to agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
+%%
+%% Contact information that varies between transfers or conferences, such as
+%% the name of the business unit handling the contact. For more information,
+%% see
+%% Use contact segment attributes:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
+%%
+%% For the predefined attributes per instance quota, see Amazon Connect
+%% quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec list_predefined_attributes(aws_client:aws_client(), binary() | list()) ->
     {ok, list_predefined_attributes_response(), tuple()} |
     {error, any()} |
@@ -18643,13 +18720,29 @@ search_hours_of_operations(Client, Input0, Options0) ->
 
 %% @doc Searches predefined attributes that meet certain criteria.
 %%
-%% Predefined
-%% attributes are attributes in an Amazon Connect instance that can be used
-%% to route
-%% contacts to an agent or pools of agents within a queue. For more
-%% information, see Create
+%% A predefined
+%% attribute is made up of a name and a value. You can use predefined
+%% attributes for:
+%%
+%% Routing proficiency (for example, agent certification) that has
+%% predefined values (for example, a list of possible certifications). For
+%% more information, see
+%% Create
 %% predefined attributes for routing contacts to agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
+%%
+%% Contact information that varies between transfers or conferences, such as
+%% the name of the business unit handling the contact. For more information,
+%% see
+%% Use contact segment attributes:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
+%%
+%% For the predefined attributes per instance quota, see Amazon Connect
+%% quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec search_predefined_attributes(aws_client:aws_client(), search_predefined_attributes_request()) ->
     {ok, search_predefined_attributes_response(), tuple()} |
     {error, any()} |
@@ -21129,13 +21222,34 @@ update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
 %% @doc Updates a predefined attribute for the specified Amazon Connect
 %% instance.
 %%
-%% Predefined
-%% attributes are attributes in an Amazon Connect instance that can be used
-%% to route
-%% contacts to an agent or pools of agents within a queue. For more
-%% information, see Create
+%% A predefined
+%% attribute is made up of a name and a value.
+%%
+%% For the predefined attributes per instance quota, see Amazon Connect
+%% quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#connect-quotas.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% Update routing proficiency (for example, agent certification) that has
+%% predefined values (for example, a list of possible certifications). For
+%% more information, see
+%% Create
 %% predefined attributes for routing contacts to agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
+%%
+%% Update an attribute for business unit name that has a list of predefined
+%% business unit
+%% names used in your organization. This is a use case where information for
+%% a contact varies between transfers or conferences. For more information,
+%% see
+%% Use contact segment attributes:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec update_predefined_attribute(aws_client:aws_client(), binary() | list(), binary() | list(), update_predefined_attribute_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
