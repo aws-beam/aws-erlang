@@ -33,7 +33,9 @@
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/.
 -module(aws_payment_cryptography).
 
--export([create_alias/2,
+-export([add_key_replication_regions/2,
+         add_key_replication_regions/3,
+         create_alias/2,
          create_alias/3,
          create_key/2,
          create_key/3,
@@ -41,10 +43,16 @@
          delete_alias/3,
          delete_key/2,
          delete_key/3,
+         disable_default_key_replication_regions/2,
+         disable_default_key_replication_regions/3,
+         enable_default_key_replication_regions/2,
+         enable_default_key_replication_regions/3,
          export_key/2,
          export_key/3,
          get_alias/2,
          get_alias/3,
+         get_default_key_replication_regions/2,
+         get_default_key_replication_regions/3,
          get_key/2,
          get_key/3,
          get_parameters_for_export/2,
@@ -61,6 +69,8 @@
          list_keys/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         remove_key_replication_regions/2,
+         remove_key_replication_regions/3,
          restore_key/2,
          restore_key/3,
          start_key_usage/2,
@@ -95,6 +105,12 @@
 %%   <<"AliasName">> := string()
 %% }
 -type get_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% disable_default_key_replication_regions_input() :: #{
+%%   <<"ReplicationRegions">> := list(string())
+%% }
+-type disable_default_key_replication_regions_input() :: #{binary() => any()}.
 
 %% Example:
 %% key_modes_of_use() :: #{
@@ -132,7 +148,9 @@
 %%   <<"KeyArn">> => string(),
 %%   <<"KeyAttributes">> => key_attributes(),
 %%   <<"KeyCheckValue">> => string(),
-%%   <<"KeyState">> => string()
+%%   <<"KeyState">> => string(),
+%%   <<"MultiRegionKeyType">> => string(),
+%%   <<"PrimaryRegion">> => string()
 %% }
 -type key_summary() :: #{binary() => any()}.
 
@@ -158,6 +176,7 @@
 %%   <<"Enabled">> => [boolean()],
 %%   <<"KeyCheckValueAlgorithm">> => string(),
 %%   <<"KeyMaterial">> := list(),
+%%   <<"ReplicationRegions">> => list(string()),
 %%   <<"Tags">> => list(tag())
 %% }
 -type import_key_input() :: #{binary() => any()}.
@@ -237,6 +256,12 @@
 -type start_key_usage_output() :: #{binary() => any()}.
 
 %% Example:
+%% enable_default_key_replication_regions_output() :: #{
+%%   <<"EnabledReplicationRegions">> => list(string())
+%% }
+-type enable_default_key_replication_regions_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_output() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Tags">> => list(tag())
@@ -306,9 +331,23 @@
 %%   <<"Exportable">> := [boolean()],
 %%   <<"KeyAttributes">> := key_attributes(),
 %%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"ReplicationRegions">> => list(string()),
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% add_key_replication_regions_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type add_key_replication_regions_output() :: #{binary() => any()}.
+
+%% Example:
+%% add_key_replication_regions_input() :: #{
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"ReplicationRegions">> := list(string())
+%% }
+-type add_key_replication_regions_input() :: #{binary() => any()}.
 
 %% Example:
 %% service_quota_exceeded_exception() :: #{
@@ -341,6 +380,12 @@
 %%   <<"KeyArn">> => string()
 %% }
 -type update_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_default_key_replication_regions_output() :: #{
+%%   <<"EnabledReplicationRegions">> => list(string())
+%% }
+-type get_default_key_replication_regions_output() :: #{binary() => any()}.
 
 %% Example:
 %% service_unavailable_exception() :: #{
@@ -385,6 +430,12 @@
 -type key_attributes() :: #{binary() => any()}.
 
 %% Example:
+%% get_default_key_replication_regions_input() :: #{
+
+%% }
+-type get_default_key_replication_regions_input() :: #{binary() => any()}.
+
+%% Example:
 %% delete_key_input() :: #{
 %%   <<"DeleteKeyInDays">> => [integer()],
 %%   <<"KeyIdentifier">> := string()
@@ -396,6 +447,13 @@
 %%   <<"Message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replication_status_type() :: #{
+%%   <<"Status">> => string(),
+%%   <<"StatusMessage">> => [string()]
+%% }
+-type replication_status_type() :: #{binary() => any()}.
 
 %% Example:
 %% export_key_input() :: #{
@@ -423,6 +481,12 @@
 %%   <<"KeyIdentifier">> := string()
 %% }
 -type get_public_key_certificate_input() :: #{binary() => any()}.
+
+%% Example:
+%% disable_default_key_replication_regions_output() :: #{
+%%   <<"EnabledReplicationRegions">> => list(string())
+%% }
+-type disable_default_key_replication_regions_output() :: #{binary() => any()}.
 
 %% Example:
 %% alias() :: #{
@@ -468,6 +532,12 @@
 %%   <<"PublicKeyCertificate">> => string()
 %% }
 -type trusted_certificate_public_key() :: #{binary() => any()}.
+
+%% Example:
+%% remove_key_replication_regions_output() :: #{
+%%   <<"Key">> => key()
+%% }
+-type remove_key_replication_regions_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_parameters_for_import_input() :: #{
@@ -516,8 +586,12 @@
 %%   <<"KeyCheckValueAlgorithm">> => string(),
 %%   <<"KeyOrigin">> => string(),
 %%   <<"KeyState">> => string(),
+%%   <<"MultiRegionKeyType">> => string(),
+%%   <<"PrimaryRegion">> => string(),
+%%   <<"ReplicationStatus">> => map(),
 %%   <<"UsageStartTimestamp">> => non_neg_integer(),
-%%   <<"UsageStopTimestamp">> => non_neg_integer()
+%%   <<"UsageStopTimestamp">> => non_neg_integer(),
+%%   <<"UsingDefaultReplicationRegions">> => [boolean()]
 %% }
 -type key() :: #{binary() => any()}.
 
@@ -534,6 +608,19 @@
 %%   <<"KeyArn">> => string()
 %% }
 -type create_alias_input() :: #{binary() => any()}.
+
+%% Example:
+%% remove_key_replication_regions_input() :: #{
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"ReplicationRegions">> := list(string())
+%% }
+-type remove_key_replication_regions_input() :: #{binary() => any()}.
+
+%% Example:
+%% enable_default_key_replication_regions_input() :: #{
+%%   <<"ReplicationRegions">> := list(string())
+%% }
+-type enable_default_key_replication_regions_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_alias_output() :: #{
@@ -594,6 +681,15 @@
 %% }
 -type key_block_headers() :: #{binary() => any()}.
 
+-type add_key_replication_regions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_alias_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -632,6 +728,24 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type disable_default_key_replication_regions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type enable_default_key_replication_regions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type export_key_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -648,6 +762,15 @@
     internal_server_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception().
+
+-type get_default_key_replication_regions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type get_key_errors() ::
     throttling_exception() | 
@@ -719,6 +842,15 @@
     service_unavailable_exception() | 
     resource_not_found_exception().
 
+-type remove_key_replication_regions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type restore_key_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -780,6 +912,49 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds replication Amazon Web Services Regions to an existing Amazon
+%% Web Services Payment Cryptography key, enabling the key to be used for
+%% cryptographic operations in additional Amazon Web Services Regions.
+%%
+%% Multi-region keys allow you to use the same key material across multiple
+%% Amazon Web Services Regions, providing lower latency for applications
+%% distributed across regions. When you add Replication Regions, Amazon Web
+%% Services Payment Cryptography securely replicates the key material to the
+%% specified Amazon Web Services Regions.
+%%
+%% The key must be in an active state to add Replication Regions. You can add
+%% multiple regions in a single operation, and the key will be available for
+%% use in those regions once replication is complete.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% RemoveKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_RemoveKeyReplicationRegions.html
+%%
+%% EnableDefaultKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_EnableDefaultKeyReplicationRegions.html
+%%
+%% GetDefaultKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetDefaultKeyReplicationRegions.html
+-spec add_key_replication_regions(aws_client:aws_client(), add_key_replication_regions_input()) ->
+    {ok, add_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, add_key_replication_regions_errors(), tuple()}.
+add_key_replication_regions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_key_replication_regions(Client, Input, []).
+
+-spec add_key_replication_regions(aws_client:aws_client(), add_key_replication_regions_input(), proplists:proplist()) ->
+    {ok, add_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, add_key_replication_regions_errors(), tuple()}.
+add_key_replication_regions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddKeyReplicationRegions">>, Input, Options).
 
 %% @doc Creates an alias, or a friendly name, for an Amazon Web Services
 %% Payment Cryptography key.
@@ -1004,6 +1179,82 @@ delete_key(Client, Input)
 delete_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteKey">>, Input, Options).
+
+%% @doc Disables multi-region key replication settings for the specified
+%% Amazon Web Services Regions in your account, preventing new keys from
+%% being automatically replicated to those regions.
+%%
+%% After disabling default replication for specific regions, new keys created
+%% in your account will not be automatically replicated to those regions. You
+%% can still manually add replication to those regions for individual keys
+%% using the AddKeyReplicationRegions operation.
+%%
+%% This operation does not affect existing keys or their current replication
+%% configuration.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% EnableDefaultKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_EnableDefaultKeyReplicationRegions.html
+%%
+%% GetDefaultKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetDefaultKeyReplicationRegions.html
+-spec disable_default_key_replication_regions(aws_client:aws_client(), disable_default_key_replication_regions_input()) ->
+    {ok, disable_default_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, disable_default_key_replication_regions_errors(), tuple()}.
+disable_default_key_replication_regions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_default_key_replication_regions(Client, Input, []).
+
+-spec disable_default_key_replication_regions(aws_client:aws_client(), disable_default_key_replication_regions_input(), proplists:proplist()) ->
+    {ok, disable_default_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, disable_default_key_replication_regions_errors(), tuple()}.
+disable_default_key_replication_regions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableDefaultKeyReplicationRegions">>, Input, Options).
+
+%% @doc Enables multi-region key replication settings for your account,
+%% causing new keys to be automatically replicated to the specified Amazon
+%% Web Services Regions when created.
+%%
+%% When default Replication Regions are enabled, any new keys created in your
+%% account will automatically be replicated to these regions unless you
+%% explicitly override this behavior during key creation. This simplifies key
+%% management for applications that operate across multiple regions.
+%%
+%% Existing keys are not affected by this operation - only keys created after
+%% enabling default replication will be automatically replicated.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% DisableDefaultKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DisableDefaultKeyReplicationRegions.html
+%%
+%% GetDefaultKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetDefaultKeyReplicationRegions.html
+-spec enable_default_key_replication_regions(aws_client:aws_client(), enable_default_key_replication_regions_input()) ->
+    {ok, enable_default_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, enable_default_key_replication_regions_errors(), tuple()}.
+enable_default_key_replication_regions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_default_key_replication_regions(Client, Input, []).
+
+-spec enable_default_key_replication_regions(aws_client:aws_client(), enable_default_key_replication_regions_input(), proplists:proplist()) ->
+    {ok, enable_default_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, enable_default_key_replication_regions_errors(), tuple()}.
+enable_default_key_replication_regions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableDefaultKeyReplicationRegions">>, Input, Options).
 
 %% @doc Exports a key from Amazon Web Services Payment Cryptography.
 %%
@@ -1262,9 +1513,45 @@ get_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAlias">>, Input, Options).
 
-%% @doc Gets the key material for an Amazon Web Services Payment Cryptography
-%% key, including the immutable and mutable data specified when the key was
-%% created.
+%% @doc Retrieves the list of regions where default key replication is
+%% currently enabled for your account.
+%%
+%% This operation returns the current configuration of default Replication
+%% Regions. New keys created in your account will be automatically replicated
+%% to these regions unless explicitly overridden during key creation.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% EnableDefaultKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_EnableDefaultKeyReplicationRegions.html
+%%
+%% DisableDefaultKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DisableDefaultKeyReplicationRegions.html
+-spec get_default_key_replication_regions(aws_client:aws_client(), get_default_key_replication_regions_input()) ->
+    {ok, get_default_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, get_default_key_replication_regions_errors(), tuple()}.
+get_default_key_replication_regions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_default_key_replication_regions(Client, Input, []).
+
+-spec get_default_key_replication_regions(aws_client:aws_client(), get_default_key_replication_regions_input(), proplists:proplist()) ->
+    {ok, get_default_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, get_default_key_replication_regions_errors(), tuple()}.
+get_default_key_replication_regions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDefaultKeyReplicationRegions">>, Input, Options).
+
+%% @doc Gets the key metadata for an Amazon Web Services Payment Cryptography
+%% key, including the immutable and mutable attributes specified when the key
+%% was created.
+%%
+%% Returns key metadata including attributes, state, and timestamps, but does
+%% not return the actual cryptographic key material.
 %%
 %% Cross-account use: This operation can't be used across different
 %% Amazon Web Services accounts.
@@ -1734,6 +2021,45 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Removes Replication Regions from an existing Amazon Web Services
+%% Payment Cryptography key, disabling the key's availability for
+%% cryptographic operations in the specified Amazon Web Services Regions.
+%%
+%% When you remove Replication Regions, the key material is securely deleted
+%% from those regions and can no longer be used for cryptographic operations
+%% there. This operation is irreversible for the specified Amazon Web
+%% Services Regions.
+%%
+%% Ensure that no active cryptographic operations or applications depend on
+%% the key in the regions you're removing before performing this
+%% operation.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% AddKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_AddKeyReplicationRegions.html
+%%
+%% DisableDefaultKeyReplicationRegions:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DisableDefaultKeyReplicationRegions.html
+-spec remove_key_replication_regions(aws_client:aws_client(), remove_key_replication_regions_input()) ->
+    {ok, remove_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, remove_key_replication_regions_errors(), tuple()}.
+remove_key_replication_regions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_key_replication_regions(Client, Input, []).
+
+-spec remove_key_replication_regions(aws_client:aws_client(), remove_key_replication_regions_input(), proplists:proplist()) ->
+    {ok, remove_key_replication_regions_output(), tuple()} |
+    {error, any()} |
+    {error, remove_key_replication_regions_errors(), tuple()}.
+remove_key_replication_regions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveKeyReplicationRegions">>, Input, Options).
 
 %% @doc Cancels a scheduled key deletion during the waiting period.
 %%
