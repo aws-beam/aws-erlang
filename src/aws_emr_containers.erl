@@ -201,6 +201,7 @@
 %% Example:
 %% create_security_configuration_request() :: #{
 %%   <<"clientToken">> := string(),
+%%   <<"containerProvider">> => container_provider(),
 %%   <<"name">> := string(),
 %%   <<"securityConfigurationData">> := security_configuration_data(),
 %%   <<"tags">> => map()
@@ -310,7 +311,8 @@
 
 %% Example:
 %% eks_info() :: #{
-%%   <<"namespace">> => string()
+%%   <<"namespace">> => string(),
+%%   <<"nodeLabel">> => string()
 %% }
 -type eks_info() :: #{binary() => any()}.
 

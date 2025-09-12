@@ -12,7 +12,9 @@
 %% modification.
 -module(aws_evs).
 
--export([create_environment/2,
+-export([associate_eip_to_vlan/2,
+         associate_eip_to_vlan/3,
+         create_environment/2,
          create_environment/3,
          create_environment_host/2,
          create_environment_host/3,
@@ -20,6 +22,8 @@
          delete_environment/3,
          delete_environment_host/2,
          delete_environment_host/3,
+         disassociate_eip_from_vlan/2,
+         disassociate_eip_from_vlan/3,
          get_environment/2,
          get_environment/3,
          list_environment_hosts/2,
@@ -52,6 +56,15 @@
 %%   <<"type">> => list(any())
 %% }
 -type check() :: #{binary() => any()}.
+
+%% Example:
+%% associate_eip_to_vlan_request() :: #{
+%%   <<"allocationId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"environmentId">> := string(),
+%%   <<"vlanName">> := [string()]
+%% }
+-type associate_eip_to_vlan_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_environment_hosts_response() :: #{
@@ -129,6 +142,8 @@
 %%   <<"expansionVlan1">> => initial_vlan_info(),
 %%   <<"expansionVlan2">> => initial_vlan_info(),
 %%   <<"hcx">> => initial_vlan_info(),
+%%   <<"hcxNetworkAclId">> => string(),
+%%   <<"isHcxPublic">> => [boolean()],
 %%   <<"nsxUplink">> => initial_vlan_info(),
 %%   <<"vMotion">> => initial_vlan_info(),
 %%   <<"vSan">> => initial_vlan_info(),
@@ -168,6 +183,18 @@
 %%   <<"securityGroups">> => list(string())
 %% }
 -type service_access_security_groups() :: #{binary() => any()}.
+
+%% Example:
+%% associate_eip_to_vlan_response() :: #{
+%%   <<"vlan">> => vlan()
+%% }
+-type associate_eip_to_vlan_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_eip_from_vlan_response() :: #{
+%%   <<"vlan">> => vlan()
+%% }
+-type disassociate_eip_from_vlan_response() :: #{binary() => any()}.
 
 %% Example:
 %% connectivity_info() :: #{
@@ -242,6 +269,14 @@
 -type list_environments_request() :: #{binary() => any()}.
 
 %% Example:
+%% eip_association() :: #{
+%%   <<"allocationId">> => string(),
+%%   <<"associationId">> => string(),
+%%   <<"ipAddress">> => string()
+%% }
+-type eip_association() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception_field() :: #{
 %%   <<"message">> => [string()],
 %%   <<"name">> => [string()]
@@ -304,6 +339,15 @@
 %%   <<"clientToken">> => string()
 %% }
 -type delete_environment_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_eip_from_vlan_request() :: #{
+%%   <<"associationId">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"environmentId">> := string(),
+%%   <<"vlanName">> := [string()]
+%% }
+-type disassociate_eip_from_vlan_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_environment_host_response() :: #{
@@ -371,8 +415,11 @@
 %%   <<"availabilityZone">> => [string()],
 %%   <<"cidr">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"eipAssociations">> => list(eip_association()),
 %%   <<"functionName">> => [string()],
+%%   <<"isPublic">> => [boolean()],
 %%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"networkAclId">> => string(),
 %%   <<"stateDetails">> => string(),
 %%   <<"subnetId">> => string(),
 %%   <<"vlanId">> => integer(),
@@ -400,6 +447,11 @@
 %% }
 -type delete_environment_host_request() :: #{binary() => any()}.
 
+-type associate_eip_to_vlan_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    resource_not_found_exception().
+
 -type create_environment_errors() ::
     validation_exception().
 
@@ -412,6 +464,11 @@
     resource_not_found_exception().
 
 -type delete_environment_host_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type disassociate_eip_from_vlan_errors() ::
+    throttling_exception() | 
     validation_exception() | 
     resource_not_found_exception().
 
@@ -446,6 +503,25 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates an Elastic IP address with a public HCX VLAN.
+%%
+%% This operation is only allowed for public HCX VLANs at this time.
+-spec associate_eip_to_vlan(aws_client:aws_client(), associate_eip_to_vlan_request()) ->
+    {ok, associate_eip_to_vlan_response(), tuple()} |
+    {error, any()} |
+    {error, associate_eip_to_vlan_errors(), tuple()}.
+associate_eip_to_vlan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_eip_to_vlan(Client, Input, []).
+
+-spec associate_eip_to_vlan(aws_client:aws_client(), associate_eip_to_vlan_request(), proplists:proplist()) ->
+    {ok, associate_eip_to_vlan_response(), tuple()} |
+    {error, any()} |
+    {error, associate_eip_to_vlan_errors(), tuple()}.
+associate_eip_to_vlan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateEipToVlan">>, Input, Options).
 
 %% @doc Creates an Amazon EVS environment that runs VCF software, such as
 %% SDDC Manager, NSX Manager, and vCenter Server.
@@ -554,6 +630,25 @@ delete_environment_host(Client, Input)
 delete_environment_host(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironmentHost">>, Input, Options).
+
+%% @doc Disassociates an Elastic IP address from a public HCX VLAN.
+%%
+%% This operation is only allowed for public HCX VLANs at this time.
+-spec disassociate_eip_from_vlan(aws_client:aws_client(), disassociate_eip_from_vlan_request()) ->
+    {ok, disassociate_eip_from_vlan_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_eip_from_vlan_errors(), tuple()}.
+disassociate_eip_from_vlan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_eip_from_vlan(Client, Input, []).
+
+-spec disassociate_eip_from_vlan(aws_client:aws_client(), disassociate_eip_from_vlan_request(), proplists:proplist()) ->
+    {ok, disassociate_eip_from_vlan_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_eip_from_vlan_errors(), tuple()}.
+disassociate_eip_from_vlan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateEipFromVlan">>, Input, Options).
 
 %% @doc Returns a description of the specified environment.
 -spec get_environment(aws_client:aws_client(), get_environment_request()) ->

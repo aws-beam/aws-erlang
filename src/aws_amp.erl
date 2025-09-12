@@ -51,6 +51,8 @@
          delete_rule_groups_namespace/5,
          delete_scraper/3,
          delete_scraper/4,
+         delete_scraper_logging_configuration/3,
+         delete_scraper_logging_configuration/4,
          delete_workspace/3,
          delete_workspace/4,
          describe_alert_manager_definition/2,
@@ -71,6 +73,9 @@
          describe_scraper/2,
          describe_scraper/4,
          describe_scraper/5,
+         describe_scraper_logging_configuration/2,
+         describe_scraper_logging_configuration/4,
+         describe_scraper_logging_configuration/5,
          describe_workspace/2,
          describe_workspace/4,
          describe_workspace/5,
@@ -108,6 +113,8 @@
          update_query_logging_configuration/4,
          update_scraper/3,
          update_scraper/4,
+         update_scraper_logging_configuration/3,
+         update_scraper_logging_configuration/4,
          update_workspace_alias/3,
          update_workspace_alias/4,
          update_workspace_configuration/3,
@@ -126,6 +133,13 @@
 %%   <<"workspace">> => string()
 %% }
 -type query_logging_configuration_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_scraper_logging_configuration_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_scraper_logging_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -231,6 +245,17 @@
 
 
 %% Example:
+%% describe_scraper_logging_configuration_response() :: #{
+%%   <<"loggingDestination">> => list(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"scraperComponents">> => list(scraper_component()),
+%%   <<"scraperId">> => string(),
+%%   <<"status">> => scraper_logging_configuration_status()
+%% }
+-type describe_scraper_logging_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% scraper_status() :: #{
 %%   <<"statusCode">> => string()
 %% }
@@ -281,6 +306,13 @@
 %%   <<"logGroupArn">> => string()
 %% }
 -type update_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scraper_logging_configuration_response() :: #{
+%%   <<"status">> => scraper_logging_configuration_status()
+%% }
+-type update_scraper_logging_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -474,6 +506,13 @@
 
 
 %% Example:
+%% component_config() :: #{
+%%   <<"options">> => map()
+%% }
+-type component_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_query_logging_configuration_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
@@ -649,6 +688,10 @@
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
+%% Example:
+%% describe_scraper_logging_configuration_request() :: #{}
+-type describe_scraper_logging_configuration_request() :: #{}.
+
 
 %% Example:
 %% workspace_configuration_status() :: #{
@@ -725,6 +768,14 @@
 
 
 %% Example:
+%% scraper_logging_configuration_status() :: #{
+%%   <<"statusCode">> => string(),
+%%   <<"statusReason">> => [string()]
+%% }
+-type scraper_logging_configuration_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"quotaCode">> => [string()],
@@ -732,6 +783,14 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_scraper_logging_configuration_request() :: #{
+%%   <<"loggingDestination">> := list(),
+%%   <<"scraperComponents">> => list(scraper_component())
+%% }
+-type update_scraper_logging_configuration_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -775,6 +834,14 @@
 %%   <<"status">> => alert_manager_definition_status()
 %% }
 -type create_alert_manager_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% scraper_component() :: #{
+%%   <<"config">> => component_config(),
+%%   <<"type">> => string()
+%% }
+-type scraper_component() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1002,6 +1069,13 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_scraper_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type delete_workspace_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1045,6 +1119,12 @@
 
 -type describe_scraper_errors() ::
     throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type describe_scraper_logging_configuration_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -1155,6 +1235,13 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_scraper_logging_configuration_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1652,6 +1739,42 @@ delete_scraper(Client, ScraperId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the logging configuration for a Amazon Managed Service for
+%% Prometheus scraper.
+-spec delete_scraper_logging_configuration(aws_client:aws_client(), binary() | list(), delete_scraper_logging_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_scraper_logging_configuration_errors(), tuple()}.
+delete_scraper_logging_configuration(Client, ScraperId, Input) ->
+    delete_scraper_logging_configuration(Client, ScraperId, Input, []).
+
+-spec delete_scraper_logging_configuration(aws_client:aws_client(), binary() | list(), delete_scraper_logging_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_scraper_logging_configuration_errors(), tuple()}.
+delete_scraper_logging_configuration(Client, ScraperId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/scrapers/", aws_util:encode_uri(ScraperId), "/logging-configuration"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an existing workspace.
 %%
 %% When you delete a workspace, the data that has been ingested into it is
@@ -1909,6 +2032,44 @@ describe_scraper(Client, ScraperId, QueryMap, HeadersMap)
 describe_scraper(Client, ScraperId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the logging configuration for a Amazon Managed Service for
+%% Prometheus scraper.
+-spec describe_scraper_logging_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_scraper_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scraper_logging_configuration_errors(), tuple()}.
+describe_scraper_logging_configuration(Client, ScraperId)
+  when is_map(Client) ->
+    describe_scraper_logging_configuration(Client, ScraperId, #{}, #{}).
+
+-spec describe_scraper_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_scraper_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scraper_logging_configuration_errors(), tuple()}.
+describe_scraper_logging_configuration(Client, ScraperId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_scraper_logging_configuration(Client, ScraperId, QueryMap, HeadersMap, []).
+
+-spec describe_scraper_logging_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_scraper_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, describe_scraper_logging_configuration_errors(), tuple()}.
+describe_scraper_logging_configuration(Client, ScraperId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/scrapers/", aws_util:encode_uri(ScraperId), "/logging-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2528,6 +2689,41 @@ update_scraper(Client, ScraperId, Input) ->
 update_scraper(Client, ScraperId, Input0, Options0) ->
     Method = put,
     Path = ["/scrapers/", aws_util:encode_uri(ScraperId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the logging configuration for a Amazon Managed Service for
+%% Prometheus scraper.
+-spec update_scraper_logging_configuration(aws_client:aws_client(), binary() | list(), update_scraper_logging_configuration_request()) ->
+    {ok, update_scraper_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_scraper_logging_configuration_errors(), tuple()}.
+update_scraper_logging_configuration(Client, ScraperId, Input) ->
+    update_scraper_logging_configuration(Client, ScraperId, Input, []).
+
+-spec update_scraper_logging_configuration(aws_client:aws_client(), binary() | list(), update_scraper_logging_configuration_request(), proplists:proplist()) ->
+    {ok, update_scraper_logging_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_scraper_logging_configuration_errors(), tuple()}.
+update_scraper_logging_configuration(Client, ScraperId, Input0, Options0) ->
+    Method = put,
+    Path = ["/scrapers/", aws_util:encode_uri(ScraperId), "/logging-configuration"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

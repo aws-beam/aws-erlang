@@ -713,9 +713,10 @@
 
 %% Example:
 %% create_db_proxy_request() :: #{
-%%   <<"Auth">> := list(user_auth_config()),
+%%   <<"Auth">> => list(user_auth_config()),
 %%   <<"DBProxyName">> := string(),
 %%   <<"DebugLogging">> => boolean(),
+%%   <<"DefaultAuthScheme">> => list(any()),
 %%   <<"EndpointNetworkType">> => list(any()),
 %%   <<"EngineFamily">> := list(any()),
 %%   <<"IdleClientTimeout">> => integer(),
@@ -928,6 +929,7 @@
 %%   <<"Auth">> => list(user_auth_config()),
 %%   <<"DBProxyName">> := string(),
 %%   <<"DebugLogging">> => boolean(),
+%%   <<"DefaultAuthScheme">> => list(any()),
 %%   <<"IdleClientTimeout">> => integer(),
 %%   <<"NewDBProxyName">> => string(),
 %%   <<"RequireTLS">> => boolean(),
@@ -5107,6 +5109,7 @@
 %%   <<"DBProxyArn">> => string(),
 %%   <<"DBProxyName">> => string(),
 %%   <<"DebugLogging">> => boolean(),
+%%   <<"DefaultAuthScheme">> => string(),
 %%   <<"Endpoint">> => string(),
 %%   <<"EndpointNetworkType">> => list(any()),
 %%   <<"EngineFamily">> => string(),

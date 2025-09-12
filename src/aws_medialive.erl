@@ -1959,9 +1959,12 @@
 %% }
 -type audio_track() :: #{binary() => any()}.
 
+
 %% Example:
-%% media_package_output_settings() :: #{}
--type media_package_output_settings() :: #{}.
+%% media_package_output_settings() :: #{
+%%   <<"MediaPackageV2DestinationSettings">> => media_package_v2_destination_settings()
+%% }
+-type media_package_output_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3770,6 +3773,13 @@
 
 
 %% Example:
+%% media_package_v2_group_settings() :: #{
+%%   <<"CaptionLanguageMappings">> => list(caption_language_mapping())
+%% }
+-type media_package_v2_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% cmaf_ingest_output_settings() :: #{
 %%   <<"NameModifier">> => string()
 %% }
@@ -3822,7 +3832,8 @@
 
 %% Example:
 %% media_package_group_settings() :: #{
-%%   <<"Destination">> => output_location_ref()
+%%   <<"Destination">> => output_location_ref(),
+%%   <<"MediapackageV2GroupSettings">> => media_package_v2_group_settings()
 %% }
 -type media_package_group_settings() :: #{binary() => any()}.
 
@@ -4454,6 +4465,16 @@
 %%   <<"VideoSettings">> => multiplex_video_settings()
 %% }
 -type multiplex_program_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_package_v2_destination_settings() :: #{
+%%   <<"AudioGroupId">> => string(),
+%%   <<"AudioRenditionSets">> => string(),
+%%   <<"HlsAutoSelect">> => list(any()),
+%%   <<"HlsDefault">> => list(any())
+%% }
+-type media_package_v2_destination_settings() :: #{binary() => any()}.
 
 
 %% Example:

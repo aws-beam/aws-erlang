@@ -2624,7 +2624,8 @@
 
 %% Example:
 %% iam_user_profile_details() :: #{
-%%   <<"arn">> => [string()]
+%%   <<"arn">> => [string()],
+%%   <<"principalId">> => [string()]
 %% }
 -type iam_user_profile_details() :: #{binary() => any()}.
 

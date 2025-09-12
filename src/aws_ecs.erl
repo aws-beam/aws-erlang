@@ -1135,6 +1135,7 @@
 
 %% Example:
 %% deployment_lifecycle_hook() :: #{
+%%   <<"hookDetails">> => any(),
 %%   <<"hookTargetArn">> => string(),
 %%   <<"lifecycleStages">> => list(list(any())()),
 %%   <<"roleArn">> => string()
