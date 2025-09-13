@@ -51,6 +51,8 @@
          export_key/3,
          get_alias/2,
          get_alias/3,
+         get_certificate_signing_request/2,
+         get_certificate_signing_request/3,
          get_default_key_replication_regions/2,
          get_default_key_replication_regions/3,
          get_key/2,
@@ -167,7 +169,9 @@
 %%   <<"KeyBlockFormat">> => string(),
 %%   <<"RandomNonce">> => string(),
 %%   <<"SigningKeyCertificate">> => string(),
-%%   <<"WrappedKeyBlock">> => string()
+%%   <<"WrappedKeyBlock">> => string(),
+%%   <<"WrappingKeyCertificate">> => string(),
+%%   <<"WrappingKeyIdentifier">> => string()
 %% }
 -type import_tr34_key_block() :: #{binary() => any()}.
 
@@ -277,6 +281,18 @@
 -type export_key_cryptogram() :: #{binary() => any()}.
 
 %% Example:
+%% certificate_subject_type() :: #{
+%%   <<"City">> => [string()],
+%%   <<"CommonName">> => [string()],
+%%   <<"Country">> => [string()],
+%%   <<"EmailAddress">> => [string()],
+%%   <<"Organization">> => [string()],
+%%   <<"OrganizationUnit">> => [string()],
+%%   <<"StateOrProvince">> => [string()]
+%% }
+-type certificate_subject_type() :: #{binary() => any()}.
+
+%% Example:
 %% wrapped_key() :: #{
 %%   <<"KeyCheckValue">> => string(),
 %%   <<"KeyCheckValueAlgorithm">> => string(),
@@ -375,6 +391,14 @@
 -type update_alias_output() :: #{binary() => any()}.
 
 %% Example:
+%% get_certificate_signing_request_input() :: #{
+%%   <<"CertificateSubject">> := certificate_subject_type(),
+%%   <<"KeyIdentifier">> := string(),
+%%   <<"SigningAlgorithm">> := string()
+%% }
+-type get_certificate_signing_request_input() :: #{binary() => any()}.
+
+%% Example:
 %% update_alias_input() :: #{
 %%   <<"AliasName">> := string(),
 %%   <<"KeyArn">> => string()
@@ -464,6 +488,12 @@
 -type export_key_input() :: #{binary() => any()}.
 
 %% Example:
+%% get_certificate_signing_request_output() :: #{
+%%   <<"CertificateSigningRequest">> => string()
+%% }
+-type get_certificate_signing_request_output() :: #{binary() => any()}.
+
+%% Example:
 %% import_diffie_hellman_tr31_key_block() :: #{
 %%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
 %%   <<"DerivationData">> => list(),
@@ -521,6 +551,8 @@
 %%   <<"KeyBlockFormat">> => string(),
 %%   <<"KeyBlockHeaders">> => key_block_headers(),
 %%   <<"RandomNonce">> => string(),
+%%   <<"SigningKeyCertificate">> => string(),
+%%   <<"SigningKeyIdentifier">> => string(),
 %%   <<"WrappingKeyCertificate">> => string()
 %% }
 -type export_tr34_key_block() :: #{binary() => any()}.
@@ -756,6 +788,14 @@
     conflict_exception().
 
 -type get_alias_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception().
+
+-type get_certificate_signing_request_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1512,6 +1552,23 @@ get_alias(Client, Input)
 get_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAlias">>, Input, Options).
+
+%% @doc Used to retrieve the public key for a keypair.
+-spec get_certificate_signing_request(aws_client:aws_client(), get_certificate_signing_request_input()) ->
+    {ok, get_certificate_signing_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_signing_request_errors(), tuple()}.
+get_certificate_signing_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_certificate_signing_request(Client, Input, []).
+
+-spec get_certificate_signing_request(aws_client:aws_client(), get_certificate_signing_request_input(), proplists:proplist()) ->
+    {ok, get_certificate_signing_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_certificate_signing_request_errors(), tuple()}.
+get_certificate_signing_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCertificateSigningRequest">>, Input, Options).
 
 %% @doc Retrieves the list of regions where default key replication is
 %% currently enabled for your account.
