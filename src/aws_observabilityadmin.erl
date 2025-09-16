@@ -22,14 +22,20 @@
 %% in the CloudWatch User Guide.
 -module(aws_observabilityadmin).
 
--export([create_telemetry_rule/2,
+-export([create_centralization_rule_for_organization/2,
+         create_centralization_rule_for_organization/3,
+         create_telemetry_rule/2,
          create_telemetry_rule/3,
          create_telemetry_rule_for_organization/2,
          create_telemetry_rule_for_organization/3,
+         delete_centralization_rule_for_organization/2,
+         delete_centralization_rule_for_organization/3,
          delete_telemetry_rule/2,
          delete_telemetry_rule/3,
          delete_telemetry_rule_for_organization/2,
          delete_telemetry_rule_for_organization/3,
+         get_centralization_rule_for_organization/2,
+         get_centralization_rule_for_organization/3,
          get_telemetry_evaluation_status/2,
          get_telemetry_evaluation_status/3,
          get_telemetry_evaluation_status_for_organization/2,
@@ -38,6 +44,8 @@
          get_telemetry_rule/3,
          get_telemetry_rule_for_organization/2,
          get_telemetry_rule_for_organization/3,
+         list_centralization_rules_for_organization/2,
+         list_centralization_rules_for_organization/3,
          list_resource_telemetry/2,
          list_resource_telemetry/3,
          list_resource_telemetry_for_organization/2,
@@ -60,6 +68,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_centralization_rule_for_organization/2,
+         update_centralization_rule_for_organization/3,
          update_telemetry_rule/2,
          update_telemetry_rule/3,
          update_telemetry_rule_for_organization/2,
@@ -110,6 +120,29 @@
 
 
 %% Example:
+%% update_centralization_rule_for_organization_output() :: #{
+%%   <<"RuleArn">> => string()
+%% }
+-type update_centralization_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_centralization_rule_for_organization_output() :: #{
+%%   <<"RuleArn">> => string()
+%% }
+-type create_centralization_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% logs_encryption_configuration() :: #{
+%%   <<"EncryptionConflictResolutionStrategy">> => list(any()),
+%%   <<"EncryptionStrategy">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type logs_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_telemetry_evaluation_status_output() :: #{
 %%   <<"FailureReason">> => string(),
 %%   <<"Status">> => list(any())
@@ -142,6 +175,29 @@
 
 
 %% Example:
+%% get_centralization_rule_for_organization_output() :: #{
+%%   <<"CentralizationRule">> => centralization_rule(),
+%%   <<"CreatedRegion">> => string(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"CreatorAccountId">> => [string()],
+%%   <<"FailureReason">> => list(any()),
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleHealth">> => list(any()),
+%%   <<"RuleName">> => string()
+%% }
+-type get_centralization_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_logs_configuration() :: #{
+%%   <<"EncryptedLogGroupStrategy">> => list(any()),
+%%   <<"LogGroupSelectionCriteria">> => string()
+%% }
+-type source_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -160,6 +216,22 @@
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_centralization_rule_for_organization_input() :: #{
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type delete_centralization_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% centralization_rule_source() :: #{
+%%   <<"Regions">> => list(string()),
+%%   <<"Scope">> => string(),
+%%   <<"SourceLogsConfiguration">> => source_logs_configuration()
+%% }
+-type centralization_rule_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -215,11 +287,27 @@
 
 
 %% Example:
+%% update_centralization_rule_for_organization_input() :: #{
+%%   <<"Rule">> := centralization_rule(),
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type update_centralization_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => [string()],
 %%   <<"amznErrorType">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_logs_configuration() :: #{
+%%   <<"BackupConfiguration">> => logs_backup_configuration(),
+%%   <<"LogsEncryptionConfiguration">> => logs_encryption_configuration()
+%% }
+-type destination_logs_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -236,6 +324,15 @@
 %%   <<"TelemetryConfigurations">> => list(telemetry_configuration())
 %% }
 -type list_resource_telemetry_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_centralization_rule_for_organization_input() :: #{
+%%   <<"Rule">> := centralization_rule(),
+%%   <<"RuleName">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_centralization_rule_for_organization_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -258,6 +355,14 @@
 
 
 %% Example:
+%% logs_backup_configuration() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type logs_backup_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_resource_telemetry_for_organization_input() :: #{
 %%   <<"AccountIdentifiers">> => list(string()),
 %%   <<"MaxResults">> => integer(),
@@ -271,11 +376,35 @@
 
 
 %% Example:
+%% list_centralization_rules_for_organization_output() :: #{
+%%   <<"CentralizationRuleSummaries">> => list(centralization_rule_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_centralization_rules_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"Tags">> := map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% centralization_rule_summary() :: #{
+%%   <<"CreatedRegion">> => string(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"CreatorAccountId">> => [string()],
+%%   <<"DestinationAccountId">> => [string()],
+%%   <<"DestinationRegion">> => string(),
+%%   <<"FailureReason">> => list(any()),
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"RuleArn">> => string(),
+%%   <<"RuleHealth">> => list(any()),
+%%   <<"RuleName">> => string()
+%% }
+-type centralization_rule_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -316,6 +445,13 @@
 %%   <<"TagKeys">> := list(string())
 %% }
 -type untag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_centralization_rule_for_organization_input() :: #{
+%%   <<"RuleIdentifier">> := string()
+%% }
+-type get_centralization_rule_for_organization_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -371,6 +507,15 @@
 
 
 %% Example:
+%% centralization_rule_destination() :: #{
+%%   <<"Account">> => string(),
+%%   <<"DestinationLogsConfiguration">> => destination_logs_configuration(),
+%%   <<"Region">> => string()
+%% }
+-type centralization_rule_destination() :: #{binary() => any()}.
+
+
+%% Example:
 %% telemetry_rule() :: #{
 %%   <<"DestinationConfiguration">> => telemetry_destination_configuration(),
 %%   <<"ResourceType">> => list(any()),
@@ -409,6 +554,32 @@
 %% }
 -type list_telemetry_rules_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% centralization_rule() :: #{
+%%   <<"Destination">> => centralization_rule_destination(),
+%%   <<"Source">> => centralization_rule_source()
+%% }
+-type centralization_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_centralization_rules_for_organization_input() :: #{
+%%   <<"AllRegions">> => [boolean()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RuleNamePrefix">> => [string()]
+%% }
+-type list_centralization_rules_for_organization_input() :: #{binary() => any()}.
+
+-type create_centralization_rule_for_organization_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
 -type create_telemetry_rule_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -425,6 +596,13 @@
     conflict_exception() | 
     too_many_requests_exception().
 
+-type delete_centralization_rule_for_organization_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type delete_telemetry_rule_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -433,6 +611,13 @@
     too_many_requests_exception().
 
 -type delete_telemetry_rule_for_organization_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type get_centralization_rule_for_organization_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
@@ -462,6 +647,12 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
+    too_many_requests_exception().
+
+-type list_centralization_rules_for_organization_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
     too_many_requests_exception().
 
 -type list_resource_telemetry_errors() ::
@@ -534,6 +725,14 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type update_centralization_rule_for_organization_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type update_telemetry_rule_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -553,6 +752,44 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a centralization rule that applies across an Amazon Web
+%% Services Organization.
+%%
+%% This operation can only be called by the organization's management
+%% account or a delegated administrator account.
+-spec create_centralization_rule_for_organization(aws_client:aws_client(), create_centralization_rule_for_organization_input()) ->
+    {ok, create_centralization_rule_for_organization_output(), tuple()} |
+    {error, any()} |
+    {error, create_centralization_rule_for_organization_errors(), tuple()}.
+create_centralization_rule_for_organization(Client, Input) ->
+    create_centralization_rule_for_organization(Client, Input, []).
+
+-spec create_centralization_rule_for_organization(aws_client:aws_client(), create_centralization_rule_for_organization_input(), proplists:proplist()) ->
+    {ok, create_centralization_rule_for_organization_output(), tuple()} |
+    {error, any()} |
+    {error, create_centralization_rule_for_organization_errors(), tuple()}.
+create_centralization_rule_for_organization(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateCentralizationRuleForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
 %% Creates a telemetry rule that defines how telemetry should be configured
@@ -633,6 +870,43 @@ create_telemetry_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an organization-wide centralization rule.
+%%
+%% This operation can only be called by the organization's management
+%% account or a delegated administrator account.
+-spec delete_centralization_rule_for_organization(aws_client:aws_client(), delete_centralization_rule_for_organization_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_centralization_rule_for_organization_errors(), tuple()}.
+delete_centralization_rule_for_organization(Client, Input) ->
+    delete_centralization_rule_for_organization(Client, Input, []).
+
+-spec delete_centralization_rule_for_organization(aws_client:aws_client(), delete_centralization_rule_for_organization_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_centralization_rule_for_organization_errors(), tuple()}.
+delete_centralization_rule_for_organization(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteCentralizationRuleForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc
 %% Deletes a telemetry rule from your account.
 %%
@@ -690,6 +964,43 @@ delete_telemetry_rule_for_organization(Client, Input) ->
 delete_telemetry_rule_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteTelemetryRuleForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a specific organization centralization rule.
+%%
+%% This operation can only be called by the organization's management
+%% account or a delegated administrator account.
+-spec get_centralization_rule_for_organization(aws_client:aws_client(), get_centralization_rule_for_organization_input()) ->
+    {ok, get_centralization_rule_for_organization_output(), tuple()} |
+    {error, any()} |
+    {error, get_centralization_rule_for_organization_errors(), tuple()}.
+get_centralization_rule_for_organization(Client, Input) ->
+    get_centralization_rule_for_organization(Client, Input, []).
+
+-spec get_centralization_rule_for_organization(aws_client:aws_client(), get_centralization_rule_for_organization_input(), proplists:proplist()) ->
+    {ok, get_centralization_rule_for_organization_output(), tuple()} |
+    {error, any()} |
+    {error, get_centralization_rule_for_organization_errors(), tuple()}.
+get_centralization_rule_for_organization(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetCentralizationRuleForOrganization"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -840,6 +1151,43 @@ get_telemetry_rule_for_organization(Client, Input) ->
 get_telemetry_rule_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetTelemetryRuleForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all centralization rules in your organization.
+%%
+%% This operation can only be called by the organization's management
+%% account or a delegated administrator account.
+-spec list_centralization_rules_for_organization(aws_client:aws_client(), list_centralization_rules_for_organization_input()) ->
+    {ok, list_centralization_rules_for_organization_output(), tuple()} |
+    {error, any()} |
+    {error, list_centralization_rules_for_organization_errors(), tuple()}.
+list_centralization_rules_for_organization(Client, Input) ->
+    list_centralization_rules_for_organization(Client, Input, []).
+
+-spec list_centralization_rules_for_organization(aws_client:aws_client(), list_centralization_rules_for_organization_input(), proplists:proplist()) ->
+    {ok, list_centralization_rules_for_organization_output(), tuple()} |
+    {error, any()} |
+    {error, list_centralization_rules_for_organization_errors(), tuple()}.
+list_centralization_rules_for_organization(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListCentralizationRulesForOrganization"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1239,6 +1587,44 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UntagResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing centralization rule that applies across an Amazon
+%% Web Services Organization.
+%%
+%% This operation can only be called by the organization's management
+%% account or a delegated administrator account.
+-spec update_centralization_rule_for_organization(aws_client:aws_client(), update_centralization_rule_for_organization_input()) ->
+    {ok, update_centralization_rule_for_organization_output(), tuple()} |
+    {error, any()} |
+    {error, update_centralization_rule_for_organization_errors(), tuple()}.
+update_centralization_rule_for_organization(Client, Input) ->
+    update_centralization_rule_for_organization(Client, Input, []).
+
+-spec update_centralization_rule_for_organization(aws_client:aws_client(), update_centralization_rule_for_organization_input(), proplists:proplist()) ->
+    {ok, update_centralization_rule_for_organization_output(), tuple()} |
+    {error, any()} |
+    {error, update_centralization_rule_for_organization_errors(), tuple()}.
+update_centralization_rule_for_organization(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateCentralizationRuleForOrganization"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

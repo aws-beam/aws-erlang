@@ -579,6 +579,13 @@
 
 
 %% Example:
+%% d_sse_kms_filter() :: #{
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type d_sse_kms_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_job_tagging_request() :: #{
 %%   <<"AccountId">> := string()
 %% }
@@ -1078,6 +1085,10 @@
 %% }
 -type get_storage_lens_configuration_result() :: #{binary() => any()}.
 
+%% Example:
+%% sse_s3_filter() :: #{}
+-type sse_s3_filter() :: #{}.
+
 
 %% Example:
 %% s3_job_manifest_generator() :: #{
@@ -1169,6 +1180,14 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_storage_lens_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% sse_kms_filter() :: #{
+%%   <<"BucketKeyEnabled">> => boolean(),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type sse_kms_filter() :: #{binary() => any()}.
 
 %% Example:
 %% bucket_already_owned_by_you() :: #{}
@@ -2004,6 +2023,10 @@
 %% }
 -type get_bucket_tagging_result() :: #{binary() => any()}.
 
+%% Example:
+%% not_sse_filter() :: #{}
+-type not_sse_filter() :: #{}.
+
 
 %% Example:
 %% delete_marker_replication() :: #{
@@ -2117,6 +2140,7 @@
 %%   <<"CreatedBefore">> => non_neg_integer(),
 %%   <<"EligibleForReplication">> => boolean(),
 %%   <<"KeyNameConstraint">> => key_name_constraint(),
+%%   <<"MatchAnyObjectEncryption">> => list(list()),
 %%   <<"MatchAnyStorageClass">> => list(list(any())()),
 %%   <<"ObjectReplicationStatuses">> => list(list(any())()),
 %%   <<"ObjectSizeGreaterThanBytes">> => float(),
@@ -2782,6 +2806,10 @@
 %%   <<"AccessPoint">> => multi_region_access_point_report()
 %% }
 -type get_multi_region_access_point_result() :: #{binary() => any()}.
+
+%% Example:
+%% sse_c_filter() :: #{}
+-type sse_c_filter() :: #{}.
 
 
 %% Example:

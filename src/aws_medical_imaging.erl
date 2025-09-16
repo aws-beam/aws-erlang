@@ -370,6 +370,7 @@
 %%   <<"datastoreName">> => string(),
 %%   <<"datastoreStatus">> => list(any()),
 %%   <<"kmsKeyArn">> => string(),
+%%   <<"lambdaAuthorizerArn">> => string(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type datastore_properties() :: #{binary() => any()}.
@@ -508,6 +509,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"datastoreName">> => string(),
 %%   <<"kmsKeyArn">> => string(),
+%%   <<"lambdaAuthorizerArn">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type create_datastore_request() :: #{binary() => any()}.
@@ -619,6 +621,7 @@
     access_denied_exception() | 
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_datastore_errors() ::
