@@ -13,8 +13,14 @@
 
 -export([create_pipeline/2,
          create_pipeline/3,
+         create_pipeline_endpoint/2,
+         create_pipeline_endpoint/3,
          delete_pipeline/3,
          delete_pipeline/4,
+         delete_pipeline_endpoint/3,
+         delete_pipeline_endpoint/4,
+         delete_resource_policy/3,
+         delete_resource_policy/4,
          get_pipeline/2,
          get_pipeline/4,
          get_pipeline/5,
@@ -24,14 +30,27 @@
          get_pipeline_change_progress/2,
          get_pipeline_change_progress/4,
          get_pipeline_change_progress/5,
+         get_resource_policy/2,
+         get_resource_policy/4,
+         get_resource_policy/5,
          list_pipeline_blueprints/2,
          list_pipeline_blueprints/3,
+         list_pipeline_endpoint_connections/1,
+         list_pipeline_endpoint_connections/3,
+         list_pipeline_endpoint_connections/4,
+         list_pipeline_endpoints/1,
+         list_pipeline_endpoints/3,
+         list_pipeline_endpoints/4,
          list_pipelines/1,
          list_pipelines/3,
          list_pipelines/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_resource_policy/3,
+         put_resource_policy/4,
+         revoke_pipeline_endpoint_connections/2,
+         revoke_pipeline_endpoint_connections/3,
          start_pipeline/3,
          start_pipeline/4,
          stop_pipeline/3,
@@ -71,6 +90,10 @@
 %% }
 -type get_pipeline_response() :: #{binary() => any()}.
 
+%% Example:
+%% delete_resource_policy_response() :: #{}
+-type delete_resource_policy_response() :: #{}.
+
 
 %% Example:
 %% list_pipelines_response() :: #{
@@ -97,6 +120,13 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% revoke_pipeline_endpoint_connections_response() :: #{
+%%   <<"PipelineArn">> => string()
+%% }
+-type revoke_pipeline_endpoint_connections_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -146,6 +176,32 @@
 
 
 %% Example:
+%% create_pipeline_endpoint_request() :: #{
+%%   <<"PipelineArn">> := string(),
+%%   <<"VpcOptions">> := pipeline_endpoint_vpc_options()
+%% }
+-type create_pipeline_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_endpoint_connection() :: #{
+%%   <<"EndpointId">> => string(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcEndpointOwner">> => string()
+%% }
+-type pipeline_endpoint_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% disabled_operation_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -160,6 +216,22 @@
 %%   <<"TotalNumberOfStages">> => integer()
 %% }
 -type change_progress_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_endpoint() :: #{
+%%   <<"EndpointId">> => string(),
+%%   <<"IngestEndpointUrl">> => string(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcId">> => string(),
+%%   <<"VpcOptions">> => pipeline_endpoint_vpc_options()
+%% }
+-type pipeline_endpoint() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_endpoint_request() :: #{}
+-type delete_pipeline_endpoint_request() :: #{}.
 
 
 %% Example:
@@ -200,6 +272,14 @@
 
 
 %% Example:
+%% list_pipeline_endpoint_connections_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineEndpointConnections">> => list(pipeline_endpoint_connection())
+%% }
+-type list_pipeline_endpoint_connections_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -211,6 +291,14 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipeline_endpoint_connections_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pipeline_endpoint_connections_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -304,6 +392,16 @@
 
 
 %% Example:
+%% create_pipeline_endpoint_response() :: #{
+%%   <<"EndpointId">> => string(),
+%%   <<"PipelineArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcId">> => string()
+%% }
+-type create_pipeline_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% vpc_endpoint() :: #{
 %%   <<"VpcEndpointId">> => string(),
 %%   <<"VpcId">> => string(),
@@ -322,6 +420,10 @@
 %%   <<"UseCase">> => string()
 %% }
 -type pipeline_blueprint() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
 
 
 %% Example:
@@ -358,6 +460,13 @@
 
 
 %% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_message() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -376,6 +485,30 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_endpoint_vpc_options() :: #{
+%%   <<"SecurityGroupIds">> => list(string()),
+%%   <<"SubnetIds">> => list(string())
+%% }
+-type pipeline_endpoint_vpc_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% revoke_pipeline_endpoint_connections_request() :: #{
+%%   <<"EndpointIds">> := list(string()),
+%%   <<"PipelineArn">> := string()
+%% }
+-type revoke_pipeline_endpoint_connections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_pipeline_endpoints_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"PipelineEndpoints">> => list(pipeline_endpoint())
+%% }
+-type list_pipeline_endpoints_response() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{}
@@ -441,10 +574,34 @@
 
 
 %% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% delete_pipeline_endpoint_response() :: #{}
+-type delete_pipeline_endpoint_response() :: #{}.
+
+%% Example:
+%% delete_resource_policy_request() :: #{}
+-type delete_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% list_pipeline_endpoints_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_pipeline_endpoints_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -488,12 +645,34 @@
     resource_not_found_exception() | 
     disabled_operation_exception().
 
+-type create_pipeline_endpoint_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type delete_pipeline_errors() ::
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    disabled_operation_exception().
+
+-type delete_pipeline_endpoint_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
+-type delete_resource_policy_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
     disabled_operation_exception().
 
 -type get_pipeline_errors() ::
@@ -517,8 +696,30 @@
     resource_not_found_exception() | 
     disabled_operation_exception().
 
+-type get_resource_policy_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
 -type list_pipeline_blueprints_errors() ::
     invalid_pagination_token_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
+-type list_pipeline_endpoint_connections_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
+-type list_pipeline_endpoints_errors() ::
+    limit_exceeded_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_exception() | 
@@ -536,6 +737,21 @@
     access_denied_exception() | 
     internal_exception() | 
     resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type put_resource_policy_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
+    resource_not_found_exception() | 
+    disabled_operation_exception().
+
+-type revoke_pipeline_endpoint_connections_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_exception() | 
     disabled_operation_exception().
 
 -type start_pipeline_errors() ::
@@ -589,7 +805,8 @@
 
 %% @doc Creates an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Creating Amazon OpenSearch Ingestion pipelines:
+%% For more information, see Creating Amazon OpenSearch
+%% Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html.
 -spec create_pipeline(aws_client:aws_client(), create_pipeline_request()) ->
     {ok, create_pipeline_response(), tuple()} |
@@ -624,9 +841,47 @@ create_pipeline(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a VPC endpoint for an OpenSearch Ingestion pipeline.
+%%
+%% Pipeline endpoints allow you to
+%% ingest data from your VPC into pipelines that you have access to.
+-spec create_pipeline_endpoint(aws_client:aws_client(), create_pipeline_endpoint_request()) ->
+    {ok, create_pipeline_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_endpoint_errors(), tuple()}.
+create_pipeline_endpoint(Client, Input) ->
+    create_pipeline_endpoint(Client, Input, []).
+
+-spec create_pipeline_endpoint(aws_client:aws_client(), create_pipeline_endpoint_request(), proplists:proplist()) ->
+    {ok, create_pipeline_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, create_pipeline_endpoint_errors(), tuple()}.
+create_pipeline_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2022-01-01/osis/createPipelineEndpoint"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Deleting Amazon OpenSearch Ingestion pipelines:
+%% For more information, see Deleting Amazon OpenSearch
+%% Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/delete-pipeline.html.
 -spec delete_pipeline(aws_client:aws_client(), binary() | list(), delete_pipeline_request()) ->
     {ok, delete_pipeline_response(), tuple()} |
@@ -642,6 +897,75 @@ delete_pipeline(Client, PipelineName, Input) ->
 delete_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = delete,
     Path = ["/2022-01-01/osis/deletePipeline/", aws_util:encode_uri(PipelineName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a VPC endpoint for an OpenSearch Ingestion pipeline.
+-spec delete_pipeline_endpoint(aws_client:aws_client(), binary() | list(), delete_pipeline_endpoint_request()) ->
+    {ok, delete_pipeline_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_endpoint_errors(), tuple()}.
+delete_pipeline_endpoint(Client, EndpointId, Input) ->
+    delete_pipeline_endpoint(Client, EndpointId, Input, []).
+
+-spec delete_pipeline_endpoint(aws_client:aws_client(), binary() | list(), delete_pipeline_endpoint_request(), proplists:proplist()) ->
+    {ok, delete_pipeline_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_pipeline_endpoint_errors(), tuple()}.
+delete_pipeline_endpoint(Client, EndpointId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2022-01-01/osis/deletePipelineEndpoint/", aws_util:encode_uri(EndpointId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a resource-based policy from an OpenSearch Ingestion
+%% resource.
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input) ->
+    delete_resource_policy(Client, ResourceArn, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, delete_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2022-01-01/osis/resourcePolicy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -793,10 +1117,49 @@ get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the resource-based policy attached to an OpenSearch
+%% Ingestion resource.
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn)
+  when is_map(Client) ->
+    get_resource_policy(Client, ResourceArn, #{}, #{}).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2022-01-01/osis/resourcePolicy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of all available blueprints for Data Prepper.
 %%
 %% For more information, see
-%% Using blueprints to create a pipeline:
+%% Using
+%% blueprints to create a pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/creating-pipeline.html#pipeline-blueprint.
 -spec list_pipeline_blueprints(aws_client:aws_client(), list_pipeline_blueprints_request()) ->
     {ok, list_pipeline_blueprints_response(), tuple()} |
@@ -831,11 +1194,95 @@ list_pipeline_blueprints(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists the pipeline endpoints connected to pipelines in your account.
+-spec list_pipeline_endpoint_connections(aws_client:aws_client()) ->
+    {ok, list_pipeline_endpoint_connections_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_endpoint_connections_errors(), tuple()}.
+list_pipeline_endpoint_connections(Client)
+  when is_map(Client) ->
+    list_pipeline_endpoint_connections(Client, #{}, #{}).
+
+-spec list_pipeline_endpoint_connections(aws_client:aws_client(), map(), map()) ->
+    {ok, list_pipeline_endpoint_connections_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_endpoint_connections_errors(), tuple()}.
+list_pipeline_endpoint_connections(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_pipeline_endpoint_connections(Client, QueryMap, HeadersMap, []).
+
+-spec list_pipeline_endpoint_connections(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_pipeline_endpoint_connections_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_endpoint_connections_errors(), tuple()}.
+list_pipeline_endpoint_connections(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2022-01-01/osis/listPipelineEndpointConnections"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all pipeline endpoints in your account.
+-spec list_pipeline_endpoints(aws_client:aws_client()) ->
+    {ok, list_pipeline_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_endpoints_errors(), tuple()}.
+list_pipeline_endpoints(Client)
+  when is_map(Client) ->
+    list_pipeline_endpoints(Client, #{}, #{}).
+
+-spec list_pipeline_endpoints(aws_client:aws_client(), map(), map()) ->
+    {ok, list_pipeline_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_endpoints_errors(), tuple()}.
+list_pipeline_endpoints(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_pipeline_endpoints(Client, QueryMap, HeadersMap, []).
+
+-spec list_pipeline_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_pipeline_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_pipeline_endpoints_errors(), tuple()}.
+list_pipeline_endpoints(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2022-01-01/osis/listPipelineEndpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all OpenSearch Ingestion pipelines in the current Amazon Web
 %% Services account and Region.
 %%
-%% For
-%% more information, see Viewing Amazon OpenSearch Ingestion pipelines:
+%% For more information, see Viewing Amazon OpenSearch
+%% Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/list-pipeline.html.
 -spec list_pipelines(aws_client:aws_client()) ->
     {ok, list_pipelines_response(), tuple()} |
@@ -924,6 +1371,78 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Attaches a resource-based policy to an OpenSearch Ingestion resource.
+%%
+%% Resource-based
+%% policies grant permissions to principals to perform actions on the
+%% resource.
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, ResourceArn, Input) ->
+    put_resource_policy(Client, ResourceArn, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/2022-01-01/osis/resourcePolicy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Revokes pipeline endpoints from specified endpoint IDs.
+-spec revoke_pipeline_endpoint_connections(aws_client:aws_client(), revoke_pipeline_endpoint_connections_request()) ->
+    {ok, revoke_pipeline_endpoint_connections_response(), tuple()} |
+    {error, any()} |
+    {error, revoke_pipeline_endpoint_connections_errors(), tuple()}.
+revoke_pipeline_endpoint_connections(Client, Input) ->
+    revoke_pipeline_endpoint_connections(Client, Input, []).
+
+-spec revoke_pipeline_endpoint_connections(aws_client:aws_client(), revoke_pipeline_endpoint_connections_request(), proplists:proplist()) ->
+    {ok, revoke_pipeline_endpoint_connections_response(), tuple()} |
+    {error, any()} |
+    {error, revoke_pipeline_endpoint_connections_errors(), tuple()}.
+revoke_pipeline_endpoint_connections(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2022-01-01/osis/revokePipelineEndpointConnections"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts an OpenSearch Ingestion pipeline.
 %%
 %% For more information, see Starting an OpenSearch Ingestion pipeline:
@@ -963,7 +1482,8 @@ start_pipeline(Client, PipelineName, Input0, Options0) ->
 
 %% @doc Stops an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Stopping an OpenSearch Ingestion pipeline:
+%% For more information, see Stopping
+%% an OpenSearch Ingestion pipeline:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/pipeline--stop-start.html#pipeline--stop.
 -spec stop_pipeline(aws_client:aws_client(), binary() | list(), stop_pipeline_request()) ->
     {ok, stop_pipeline_response(), tuple()} |
@@ -1000,7 +1520,8 @@ stop_pipeline(Client, PipelineName, Input0, Options0) ->
 
 %% @doc Tags an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines:
+%% For more information, see Tagging Amazon OpenSearch
+%% Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
@@ -1038,8 +1559,8 @@ tag_resource(Client, Input0, Options0) ->
 
 %% @doc Removes one or more tags from an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Tagging Amazon
-%% OpenSearch Ingestion pipelines:
+%% For more information, see Tagging
+%% Amazon OpenSearch Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/tag-pipeline.html.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
@@ -1077,7 +1598,8 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Updates an OpenSearch Ingestion pipeline.
 %%
-%% For more information, see Updating Amazon OpenSearch Ingestion pipelines:
+%% For more information, see Updating Amazon OpenSearch
+%% Ingestion pipelines:
 %% https://docs.aws.amazon.com/opensearch-service/latest/developerguide/update-pipeline.html.
 -spec update_pipeline(aws_client:aws_client(), binary() | list(), update_pipeline_request()) ->
     {ok, update_pipeline_response(), tuple()} |

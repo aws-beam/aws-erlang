@@ -359,6 +359,7 @@
 %%   <<"featuredParticipantAttribute">> => string(),
 %%   <<"gridGap">> => integer(),
 %%   <<"omitStoppedVideo">> => boolean(),
+%%   <<"participantOrderAttribute">> => string(),
 %%   <<"pipBehavior">> => list(any()),
 %%   <<"pipHeight">> => integer(),
 %%   <<"pipOffset">> => integer(),
@@ -1072,6 +1073,7 @@
 %%   <<"featuredParticipantAttribute">> => string(),
 %%   <<"gridGap">> => integer(),
 %%   <<"omitStoppedVideo">> => boolean(),
+%%   <<"participantOrderAttribute">> => string(),
 %%   <<"videoAspectRatio">> => list(any()),
 %%   <<"videoFillMode">> => list(any())
 %% }

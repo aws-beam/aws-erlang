@@ -640,6 +640,8 @@
 %%   <<"creationTime">> => float(),
 %%   <<"destinationArn">> => string(),
 %%   <<"distribution">> => list(any()),
+%%   <<"emitSystemFields">> => list(string()),
+%%   <<"fieldSelectionCriteria">> => string(),
 %%   <<"filterName">> => string(),
 %%   <<"filterPattern">> => string(),
 %%   <<"logGroupName">> => string(),
@@ -1348,6 +1350,8 @@
 %% Example:
 %% put_metric_filter_request() :: #{
 %%   <<"applyOnTransformedLogs">> => boolean(),
+%%   <<"emitSystemFieldDimensions">> => list(string()),
+%%   <<"fieldSelectionCriteria">> => string(),
 %%   <<"filterName">> := string(),
 %%   <<"filterPattern">> := string(),
 %%   <<"logGroupName">> := string(),
@@ -1462,6 +1466,8 @@
 %%   <<"applyOnTransformedLogs">> => boolean(),
 %%   <<"destinationArn">> := string(),
 %%   <<"distribution">> => list(any()),
+%%   <<"emitSystemFields">> => list(string()),
+%%   <<"fieldSelectionCriteria">> => string(),
 %%   <<"filterName">> := string(),
 %%   <<"filterPattern">> := string(),
 %%   <<"logGroupName">> := string(),
@@ -1841,6 +1847,8 @@
 %% metric_filter() :: #{
 %%   <<"applyOnTransformedLogs">> => boolean(),
 %%   <<"creationTime">> => float(),
+%%   <<"emitSystemFieldDimensions">> => list(string()),
+%%   <<"fieldSelectionCriteria">> => string(),
 %%   <<"filterName">> => string(),
 %%   <<"filterPattern">> => string(),
 %%   <<"logGroupName">> => string(),
@@ -3758,8 +3766,8 @@ describe_configuration_templates(Client, Input, Options)
 %% logs to an logs
 %% delivery destination. The destination can be CloudWatch Logs, Amazon S3,
 %% Firehose or X-Ray. Only some Amazon Web Services services support being
-%% configured as a delivery
-%% source. These services are listed in Enable logging from
+%% configured as a delivery source. These services are listed in Enable
+%% logging from
 %% Amazon Web Services services.:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AWS-logs-and-resource-policy.html
 -spec describe_deliveries(aws_client:aws_client(), describe_deliveries_request()) ->
@@ -3855,11 +3863,11 @@ describe_export_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExportTasks">>, Input, Options).
 
-%% @doc Returns a list of field indexes listed in the field index policies of
-%% one or more log
-%% groups.
+%% @doc Returns a list of custom and default field indexes which are
+%% discovered in log data.
 %%
-%% For more information about field index policies, see PutIndexPolicy:
+%% For
+%% more information about field index policies, see PutIndexPolicy:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutIndexPolicy.html.
 -spec describe_field_indexes(aws_client:aws_client(), describe_field_indexes_request()) ->
     {ok, describe_field_indexes_response(), tuple()} |
@@ -3877,7 +3885,7 @@ describe_field_indexes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFieldIndexes">>, Input, Options).
 
-%% @doc Returns the field index policies of one or more log groups.
+%% @doc Returns the field index policies of the specified log group.
 %%
 %% For more information about
 %% field index policies, see PutIndexPolicy:
@@ -4158,8 +4166,7 @@ disassociate_kms_key(Client, Input, Options)
 %%
 %% A time range
 %%
-%% The log stream name, or a log stream name prefix that matches mutltiple
-%% log
+%% The log stream name, or a log stream name prefix that matches multiple log
 %% streams
 %%
 %% You must have the `logs:FilterLogEvents' permission to perform this
@@ -4509,18 +4516,22 @@ get_log_group_fields(Client, Input, Options)
 
 %% @doc Retrieves a large logging object (LLO) and streams it back.
 %%
-%% This API is used to fetch the content of large portions of log events that
-%% have been ingested through the PutOpenTelemetryLogs API.
-%% When log events contain fields that would cause the total event size to
-%% exceed 1MB, CloudWatch Logs automatically processes up to 10 fields,
-%% starting with the largest fields. Each field is truncated as needed to
-%% keep
-%% the total event size as close to 1MB as possible. The excess portions are
-%% stored as Large Log Objects (LLOs) and these fields are processed
-%% separately and LLO reference system fields (in the format
-%% `@ptr.$[path.to.field]') are
-%% added. The path in the reference field reflects the original JSON
-%% structure where the large field was located. For example, this could be
+%% This API is used to fetch the
+%% content of large portions of log events that have been ingested through
+%% the
+%% PutOpenTelemetryLogs API. When log events contain fields that would cause
+%% the total event size
+%% to exceed 1MB, CloudWatch Logs automatically processes up to 10 fields,
+%% starting with the
+%% largest fields. Each field is truncated as needed to keep the total event
+%% size as close to 1MB
+%% as possible. The excess portions are stored as Large Log Objects (LLOs)
+%% and these fields are
+%% processed separately and LLO reference system fields (in the format
+%% `@ptr.$[path.to.field]') are added. The path in the reference field
+%% reflects the
+%% original JSON structure where the large field was located. For example,
+%% this could be
 %% `@ptr.$['input']['message']',
 %% `@ptr.$['AAA']['BBB']['CCC']['DDD']',
 %% `@ptr.$['AAA']', or any other path matching your log
@@ -4833,8 +4844,8 @@ list_tags_log_group(Client, Input, Options)
 %% `logs:PutAccountPolicy' permissions.
 %%
 %% To create a metric extraction policy, you must have the
-%% `logs:PutMetricExtractionPolicy' and
-%% `logs:PutAccountPolicy' permissions.
+%% `logs:PutMetricExtractionPolicy' and `logs:PutAccountPolicy'
+%% permissions.
 %%
 %% Data protection policy
 %%
@@ -4992,6 +5003,24 @@ list_tags_log_group(Client, Input, Options)
 %% another field index
 %% policy filtered to `my-logpprod' or `my-logging'.
 %%
+%% CloudWatch Logs provides default field indexes for all log groups in the
+%% Standard log
+%% class. Default field indexes are automatically available for the following
+%% fields:
+%%
+%% `@aws.region'
+%%
+%% `@aws.account'
+%%
+%% `@source.log'
+%%
+%% `traceId'
+%%
+%% Default field indexes are in addition to any custom field indexes you
+%% define within your
+%% policy. Default field indexes are not counted towards your field index
+%% quota.
+%%
 %% You can also set up a transformer at the log-group level. For more
 %% information, see PutTransformer:
 %% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutTransformer.html.
@@ -5088,8 +5117,8 @@ list_tags_log_group(Client, Input, Options)
 %% as CloudWatch Container Insights and CloudWatch Application Signals. To
 %% prevent turning off
 %% those features by accident, we recommend that you exclude the underlying
-%% log-groups through a
-%% selection-criteria such as
+%% log-groups through
+%% a selection-criteria such as
 %% ```
 %% LogGroupNamePrefix NOT IN [&quot;/aws/containerinsights&quot;,
 %% &quot;/aws/ecs/containerinsights&quot;,
@@ -5100,9 +5129,9 @@ list_tags_log_group(Client, Input, Options)
 %% all log groups, or up to 5 policies that are each scoped to a subset of
 %% log groups with the
 %% `selectionCriteria' parameter. The selection criteria supports
-%% filtering by `LogGroupName' and
-%% `LogGroupNamePrefix' using the operators `IN' and `NOT IN'.
-%% You can specify up to 50 values in each
+%% filtering by
+%% `LogGroupName' and `LogGroupNamePrefix' using the operators
+%% `IN' and `NOT IN'. You can specify up to 50 values in each
 %% `IN' or `NOT IN' list.
 %%
 %% The selection criteria can be specified in these formats:
@@ -5117,37 +5146,43 @@ list_tags_log_group(Client, Input, Options)
 %% two of them can have overlapping criteria. For example, if you have one
 %% policy with selection
 %% criteria `LogGroupNamePrefix IN [&quot;my-log&quot;]', you can't
-%% have another metric extraction policy
-%% with selection criteria `LogGroupNamePrefix IN
-%% [&quot;/my-log-prod&quot;]' or
-%% ```
-%% LogGroupNamePrefix IN [&quot;/my-logging&quot;]''', as the set
-%% of log groups matching these prefixes would be a subset of the log
-%% groups matching the first policy's prefix, creating an overlap.
+%% have another metric
+%% extraction policy with selection criteria `LogGroupNamePrefix IN
+%% [&quot;/my-log-prod&quot;]'
+%% or `LogGroupNamePrefix IN [&quot;/my-logging&quot;]', as the set of
+%% log groups matching these
+%% prefixes would be a subset of the log groups matching the first
+%% policy's prefix, creating an
+%% overlap.
 %%
 %% When using `NOT IN', only one policy with this operator is allowed per
 %% account.
 %%
 %% When combining policies with `IN' and `NOT IN' operators, the
-%% overlap check ensures that
-%% policies don't have conflicting effects. Two policies with `IN'
-%% and `NOT IN' operators do not
-%% overlap if and only if every value in the `IN 'policy is completely
-%% contained within some value
-%% in the `NOT IN' policy. For example:
+%% overlap check ensures that policies don't have conflicting effects.
+%% Two policies with
+%% `IN' and `NOT IN' operators do not overlap if and only if every
+%% value
+%% in the `IN 'policy is completely contained within some value in the
+%% ```
+%% NOT IN''' policy. For example:
 %%
 %% If you have a `NOT IN' policy for prefix
-%% `&quot;/aws/lambda&quot;', you can create an `IN' policy for
-%% the exact log group name `&quot;/aws/lambda/function1&quot;' because
-%% the set of log groups matching
+%% `&quot;/aws/lambda&quot;', you
+%% can create an `IN' policy for the exact log group name
+%% `&quot;/aws/lambda/function1&quot;' because the set of log groups
+%% matching
 %% `&quot;/aws/lambda/function1&quot;' is a subset of the log groups
-%% matching `&quot;/aws/lambda&quot;'.
+%% matching
+%% `&quot;/aws/lambda&quot;'.
 %%
 %% If you have a `NOT IN' policy for prefix
-%% `&quot;/aws/lambda&quot;', you cannot create an `IN' policy
-%% for prefix `&quot;/aws&quot;' because the set of log groups matching
-%% `&quot;/aws&quot;' is not a subset of the log
-%% groups matching `&quot;/aws/lambda&quot;'.
+%% `&quot;/aws/lambda&quot;', you
+%% cannot create an `IN' policy for prefix `&quot;/aws&quot;' because
+%% the set of
+%% log groups matching `&quot;/aws&quot;' is not a subset of the log
+%% groups matching
+%% `&quot;/aws/lambda&quot;'.
 -spec put_account_policy(aws_client:aws_client(), put_account_policy_request()) ->
     {ok, put_account_policy_response(), tuple()} |
     {error, any()} |
@@ -5516,6 +5551,24 @@ put_destination_policy(Client, Input, Options)
 %% requestId IN [value, value, ...]''' will process fewer log
 %% events to reduce costs, and
 %% have improved performance.
+%%
+%% CloudWatch Logs provides default field indexes for all log groups in the
+%% Standard log
+%% class. Default field indexes are automatically available for the following
+%% fields:
+%%
+%% `@aws.region'
+%%
+%% `@aws.account'
+%%
+%% `@source.log'
+%%
+%% `traceId'
+%%
+%% Default field indexes are in addition to any custom field indexes you
+%% define within your
+%% policy. Default field indexes are not counted towards your field index
+%% quota.
 %%
 %% Each index policy has the following quotas and restrictions:
 %%
@@ -6295,8 +6348,8 @@ test_transformer(Client, Input, Options)
 %% When using IAM policies to control tag management for CloudWatch Logs log
 %% groups, the
 %% condition keys `aws:Resource/key-name' and `aws:TagKeys' cannot be
-%% used to restrict which tags
-%% users can assign.
+%% used
+%% to restrict which tags users can assign.
 -spec untag_log_group(aws_client:aws_client(), untag_log_group_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
