@@ -652,6 +652,7 @@
 
 %% Example:
 %% firewall_policy() :: #{
+%%   <<"EnableTLSSessionHolding">> => boolean(),
 %%   <<"PolicyVariables">> => policy_variables(),
 %%   <<"StatefulDefaultActions">> => list(string()),
 %%   <<"StatefulEngineOptions">> => stateful_engine_options(),
@@ -2597,7 +2598,7 @@ delete_firewall_policy(Client, Input, Options)
 %% Either the firewall owner or the transit gateway owner can delete the
 %% attachment.
 %%
-%% After you delete a transit gateway attachment, raffic will no longer flow
+%% After you delete a transit gateway attachment, traffic will no longer flow
 %% through the firewall endpoints.
 %%
 %% After you initiate the delete operation, use `DescribeFirewall' to
@@ -3249,8 +3250,8 @@ put_resource_policy(Client, Input, Options)
 %% creation of routing components between the transit gateway and firewall
 %% endpoints.
 %%
-%% Only the firewall owner can reject the attachment. After rejection, no
-%% traffic will flow through the firewall endpoints for this attachment.
+%% Only the transit gateway owner can reject the attachment. After rejection,
+%% no traffic will flow through the firewall endpoints for this attachment.
 %%
 %% Use `DescribeFirewall' to monitor the rejection status. To accept the
 %% attachment instead of rejecting it, use
