@@ -6004,6 +6004,12 @@
 -type describe_vpc_endpoint_connections_request() :: #{binary() => any()}.
 
 %% Example:
+%% deprecation_time_condition() :: #{
+%%   <<"MaximumDaysSinceDeprecated">> => integer()
+%% }
+-type deprecation_time_condition() :: #{binary() => any()}.
+
+%% Example:
 %% reset_fpga_image_attribute_result() :: #{
 %%   <<"Return">> => boolean()
 %% }
@@ -6293,7 +6299,11 @@
 
 %% Example:
 %% image_criterion() :: #{
-%%   <<"ImageProviders">> => list(string())
+%%   <<"CreationDateCondition">> => creation_date_condition(),
+%%   <<"DeprecationTimeCondition">> => deprecation_time_condition(),
+%%   <<"ImageNames">> => list(string()),
+%%   <<"ImageProviders">> => list(string()),
+%%   <<"MarketplaceProductCodes">> => list(string())
 %% }
 -type image_criterion() :: #{binary() => any()}.
 
@@ -9530,6 +9540,12 @@
 -type describe_host_reservation_offerings_request() :: #{binary() => any()}.
 
 %% Example:
+%% creation_date_condition() :: #{
+%%   <<"MaximumDaysSinceCreated">> => integer()
+%% }
+-type creation_date_condition() :: #{binary() => any()}.
+
+%% Example:
 %% get_ipam_discovered_public_addresses_request() :: #{
 %%   <<"AddressRegion">> := string(),
 %%   <<"DryRun">> => boolean(),
@@ -10476,6 +10492,12 @@
 %%   <<"ServiceId">> := string()
 %% }
 -type modify_vpc_endpoint_service_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% creation_date_condition_request() :: #{
+%%   <<"MaximumDaysSinceCreated">> => integer()
+%% }
+-type creation_date_condition_request() :: #{binary() => any()}.
 
 %% Example:
 %% ipam_pool_source_resource() :: #{
@@ -12182,6 +12204,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_external_resource_verification_tokens_request() :: #{binary() => any()}.
+
+%% Example:
+%% deprecation_time_condition_request() :: #{
+%%   <<"MaximumDaysSinceDeprecated">> => integer()
+%% }
+-type deprecation_time_condition_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_peering_connections_request() :: #{
@@ -19088,7 +19116,11 @@
 
 %% Example:
 %% image_criterion_request() :: #{
-%%   <<"ImageProviders">> => list(string())
+%%   <<"CreationDateCondition">> => creation_date_condition_request(),
+%%   <<"DeprecationTimeCondition">> => deprecation_time_condition_request(),
+%%   <<"ImageNames">> => list(string()),
+%%   <<"ImageProviders">> => list(string()),
+%%   <<"MarketplaceProductCodes">> => list(string())
 %% }
 -type image_criterion_request() :: #{binary() => any()}.
 
@@ -22437,26 +22469,20 @@ copy_image(Client, Input, Options)
 %%
 %% If the source snapshot is on an Outpost, you can't copy it.
 %%
-%% When copying snapshots to a Region, copies of encrypted EBS snapshots
-%% remain encrypted.
-%% Copies of unencrypted snapshots remain unencrypted, unless you enable
-%% encryption for the
-%% snapshot copy operation. By default, encrypted snapshot copies use the
-%% default KMS key;
-%% however, you can specify a different KMS key. To copy an encrypted
-%% snapshot that has been shared from another account, you must have
-%% permissions for the KMS key
-%% used to encrypt the snapshot.
+%% When copying snapshots to a Region, the encryption outcome for the
+%% snapshot copy depends on the
+%% Amazon EBS encryption by default setting for the destination Region, the
+%% encryption status of the source
+%% snapshot, and the encryption parameters you specify in the request. For
+%% more information, see
+%% Encryption and snapshot copying:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-copy-snapshot.html#creating-encrypted-snapshots.
 %%
-%% Snapshots copied to an Outpost are encrypted by default using the default
-%% encryption key
-%% for the Region, or a different key that you specify in the request using
-%% KmsKeyId. Outposts do not support unencrypted snapshots. For more
-%% information,
-%% see Amazon EBS
-%% local snapshots on Outposts:
-%% https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#ami
-%% in the Amazon EBS User Guide.
+%% Snapshots copied to an Outpost must be encrypted. Unencrypted snapshots
+%% are not supported
+%% on Outposts. For more information,
+%% Amazon EBS local snapshots on Outposts:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#considerations.
 %%
 %% Snapshots copies have an arbitrary source volume ID. Do not use this
 %% volume ID for
@@ -22934,9 +22960,9 @@ create_flow_logs(Client, Input, Options)
 %% @doc Creates an Amazon FPGA Image (AFI) from the specified design
 %% checkpoint (DCP).
 %%
-%% The create operation is asynchronous. To verify that the AFI is ready for
-%% use,
-%% check the output logs.
+%% The create operation is asynchronous. To verify that the AFI was
+%% successfully
+%% created and is ready for use, check the output logs.
 %%
 %% An AFI contains the FPGA bitstream that is ready to download to an FPGA.
 %% You can securely deploy an AFI on multiple FPGA-accelerated instances.
@@ -31148,15 +31174,6 @@ disable_image(Client, Input, Options)
 %% from your account. With the restriction removed, you can publicly share
 %% your AMIs in the
 %% specified Amazon Web Services Region.
-%%
-%% The API can take up to 10 minutes to configure this setting. During this
-%% time, if you run
-%% GetImageBlockPublicAccessState:
-%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetImageBlockPublicAccessState.html,
-%% the response will be
-%% `block-new-sharing'. When the API has completed the configuration, the
-%% response
-%% will be `unblocked'.
 %%
 %% For more information, see Block
 %% public access to your AMIs:

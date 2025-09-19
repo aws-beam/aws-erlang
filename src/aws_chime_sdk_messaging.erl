@@ -9,7 +9,7 @@
 %% provided by the Amazon Chime SDK identity APIs. For more information about
 %% the messaging
 %% APIs, see Amazon Chime SDK messaging:
-%% https://docs.aws.amazon.com/chime/latest/APIReference/API_Operations_Amazon_Chime_SDK_Messaging.html.
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_Operations_Amazon_Chime_SDK_Messaging.html.
 -module(aws_chime_sdk_messaging).
 
 -export([associate_channel_flow/3,
@@ -736,9 +736,12 @@
 %% }
 -type create_channel_request() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_messaging_session_endpoint_request() :: #{}
--type get_messaging_session_endpoint_request() :: #{}.
+%% get_messaging_session_endpoint_request() :: #{
+%%   <<"NetworkType">> => list(any())
+%% }
+-type get_messaging_session_endpoint_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2001,7 +2004,7 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
 %% information about the message types provided by Chime SDK messaging, refer
 %% to
 %% Message types:
-%% https://docs.aws.amazon.com/chime/latest/dg/using-the-messaging-sdk.html#msg-types
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/using-the-messaging-sdk.html#msg-types
 %% in the Amazon Chime developer guide.
 -spec create_channel_flow(aws_client:aws_client(), create_channel_flow_request()) ->
     {ok, create_channel_flow_response(), tuple()} |
@@ -3044,7 +3047,11 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"network-type">>, maps:get(<<"network-type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3197,7 +3204,7 @@ list_channel_flows(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 %% If you want to list the channels to which a specific app instance user
 %% belongs, see the
 %% ListChannelMembershipsForAppInstanceUser:
-%% https://docs.aws.amazon.com/chime/latest/APIReference/API_messaging-chime_ListChannelMembershipsForAppInstanceUser.html
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_messaging-chime_ListChannelMembershipsForAppInstanceUser.html
 %% API.
 -spec list_channel_memberships(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_channel_memberships_response(), tuple()} |
@@ -3812,7 +3819,7 @@ put_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Redacts message content, but not metadata.
+%% @doc Redacts message content and metadata.
 %%
 %% The message exists in the back end, but the
 %% action returns null content, and the state shows as redacted.
@@ -3867,6 +3874,9 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 %% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
 %% API call as the value in
 %% the header.
+%%
+%% This operation isn't supported for `AppInstanceUsers' with a large
+%% number of memberships.
 -spec search_channels(aws_client:aws_client(), search_channels_request()) ->
     {ok, search_channels_response(), tuple()} |
     {error, any()} |

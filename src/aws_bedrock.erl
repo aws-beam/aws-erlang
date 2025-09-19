@@ -1230,7 +1230,7 @@
 
 %% Example:
 %% automated_reasoning_policy_build_workflow_document() :: #{
-%%   <<"document">> => [binary()],
+%%   <<"document">> => binary(),
 %%   <<"documentContentType">> => list(any()),
 %%   <<"documentDescription">> => string(),
 %%   <<"documentName">> => string()
@@ -1271,7 +1271,6 @@
 %%   <<"confidenceThreshold">> => float(),
 %%   <<"expectedAggregatedFindingsResult">> := list(any()),
 %%   <<"guardContent">> := string(),
-%%   <<"kmsKeyArn">> => string(),
 %%   <<"lastUpdatedAt">> := non_neg_integer(),
 %%   <<"queryContent">> => string()
 %% }
@@ -3814,7 +3813,8 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    resource_in_use_exception().
 
 -type delete_automated_reasoning_policy_test_case_errors() ::
     throttling_exception() | 

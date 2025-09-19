@@ -385,6 +385,12 @@
 -type invalid_next_token_exception() :: #{binary() => any()}.
 
 %% Example:
+%% billing_view_health_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type billing_view_health_status_exception() :: #{binary() => any()}.
+
+%% Example:
 %% describe_budget_action_histories_response() :: #{
 %%   <<"ActionHistories">> => list(action_history()),
 %%   <<"NextToken">> => string()
@@ -830,6 +836,7 @@
     invalid_parameter_exception() | 
     access_denied_exception() | 
     not_found_exception() | 
+    billing_view_health_status_exception() | 
     service_quota_exceeded_exception().
 
 -type create_budget_action_errors() ::
@@ -1006,7 +1013,8 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
-    not_found_exception().
+    not_found_exception() | 
+    billing_view_health_status_exception().
 
 -type update_budget_action_errors() ::
     internal_error_exception() | 
