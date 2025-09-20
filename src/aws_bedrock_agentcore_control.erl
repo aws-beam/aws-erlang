@@ -1,15 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Bedrock AgentCore is in preview release and is subject to
-%% change.
+%% @doc is in preview release and is subject to change.
 %%
-%% Amazon Bedrock Agent Core Control is a service that enables you to manage
-%% memory resources for your Amazon Bedrock agents.
-%%
-%% Use this API to create, retrieve, update, and delete memory resources and
-%% their associated memory strategies. Memory resources enable your agents to
-%% store and retrieve information from conversations and interactions.
+%% Welcome to the Amazon Bedrock AgentCore Control plane API reference.
+%% Control plane actions configure, create, modify, and monitor Amazon Web
+%% Services resources.
 -module(aws_bedrock_agentcore_control).
 
 -export([create_agent_runtime/2,
@@ -103,10 +99,17 @@
          list_memories/3,
          list_oauth2_credential_providers/2,
          list_oauth2_credential_providers/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_workload_identities/2,
          list_workload_identities/3,
          set_token_vault_cm_k/2,
          set_token_vault_cm_k/3,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_agent_runtime/3,
          update_agent_runtime/4,
          update_agent_runtime_endpoint/4,
@@ -164,7 +167,8 @@
 %%   <<"agentRuntimeVersion">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
-%%   <<"name">> := string()
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_agent_runtime_endpoint_request() :: #{binary() => any()}.
 
@@ -195,6 +199,13 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type memory_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -294,6 +305,10 @@
 %%   <<"type">> => list(any())
 %% }
 -type schema_definition() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -556,6 +571,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"executionRoleArn">> => string(),
+%%   <<"failureReason">> => [string()],
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"networkConfiguration">> => browser_network_configuration(),
@@ -570,6 +586,13 @@
 %%   <<"workloadIdentityArn">> => string()
 %% }
 -type workload_identity_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -671,7 +694,9 @@
 %%   <<"environmentVariables">> => map(),
 %%   <<"networkConfiguration">> := network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
-%%   <<"roleArn">> := string()
+%%   <<"requestHeaderConfiguration">> => list(),
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_agent_runtime_request() :: #{binary() => any()}.
 
@@ -723,6 +748,7 @@
 %%   <<"environmentVariables">> => map(),
 %%   <<"networkConfiguration">> := network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
+%%   <<"requestHeaderConfiguration">> => list(),
 %%   <<"roleArn">> := string()
 %% }
 -type update_agent_runtime_request() :: #{binary() => any()}.
@@ -762,7 +788,8 @@
 %%   <<"executionRoleArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"networkConfiguration">> := browser_network_configuration(),
-%%   <<"recording">> => recording_config()
+%%   <<"recording">> => recording_config(),
+%%   <<"tags">> => map()
 %% }
 -type create_browser_request() :: #{binary() => any()}.
 
@@ -961,6 +988,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"executionRoleArn">> => string(),
+%%   <<"failureReason">> => [string()],
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"networkConfiguration">> => code_interpreter_network_configuration(),
@@ -970,25 +998,20 @@
 
 
 %% Example:
+%% vpc_config() :: #{
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type vpc_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% modify_memory_strategies() :: #{
 %%   <<"addMemoryStrategies">> => list(list()),
 %%   <<"deleteMemoryStrategies">> => list(delete_memory_strategy_input()),
 %%   <<"modifyMemoryStrategies">> => list(modify_memory_strategy_input())
 %% }
 -type modify_memory_strategies() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent() :: #{
-%%   <<"agentRuntimeArn">> => string(),
-%%   <<"agentRuntimeId">> => string(),
-%%   <<"agentRuntimeName">> => string(),
-%%   <<"agentRuntimeVersion">> => string(),
-%%   <<"description">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"status">> => list(any())
-%% }
--type agent() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1016,10 +1039,17 @@
 
 %% Example:
 %% list_agent_runtimes_response() :: #{
-%%   <<"agentRuntimes">> => list(agent()),
+%%   <<"agentRuntimes">> => list(agent_runtime()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_runtimes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1173,7 +1203,7 @@
 
 %% Example:
 %% list_agent_runtime_versions_response() :: #{
-%%   <<"agentRuntimes">> => list(agent()),
+%%   <<"agentRuntimes">> => list(agent_runtime()),
 %%   <<"nextToken">> => string()
 %% }
 -type list_agent_runtime_versions_response() :: #{binary() => any()}.
@@ -1247,7 +1277,8 @@
 %%   <<"description">> => string(),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"name">> := string(),
-%%   <<"networkConfiguration">> := code_interpreter_network_configuration()
+%%   <<"networkConfiguration">> := code_interpreter_network_configuration(),
+%%   <<"tags">> => map()
 %% }
 -type create_code_interpreter_request() :: #{binary() => any()}.
 
@@ -1300,27 +1331,12 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
+%%   <<"requestHeaderConfiguration">> => list(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"workloadIdentityDetails">> => workload_identity_details()
 %% }
 -type get_agent_runtime_response() :: #{binary() => any()}.
-
-
-%% Example:
-%% agent_endpoint() :: #{
-%%   <<"agentRuntimeArn">> => string(),
-%%   <<"agentRuntimeEndpointArn">> => string(),
-%%   <<"createdAt">> => non_neg_integer(),
-%%   <<"description">> => string(),
-%%   <<"id">> => string(),
-%%   <<"lastUpdatedAt">> => non_neg_integer(),
-%%   <<"liveVersion">> => string(),
-%%   <<"name">> => string(),
-%%   <<"status">> => list(any()),
-%%   <<"targetVersion">> => string()
-%% }
--type agent_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1341,7 +1357,8 @@
 
 %% Example:
 %% network_configuration() :: #{
-%%   <<"networkMode">> => list(any())
+%%   <<"networkMode">> => list(any()),
+%%   <<"networkModeConfig">> => vpc_config()
 %% }
 -type network_configuration() :: #{binary() => any()}.
 
@@ -1424,6 +1441,10 @@
 %% }
 -type semantic_override_extraction_configuration_input() :: #{binary() => any()}.
 
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% custom_j_w_t_authorizer_configuration() :: #{
@@ -1436,7 +1457,8 @@
 
 %% Example:
 %% browser_network_configuration() :: #{
-%%   <<"networkMode">> => list(any())
+%%   <<"networkMode">> => list(any()),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
 -type browser_network_configuration() :: #{binary() => any()}.
 
@@ -1448,9 +1470,25 @@
 %% Example:
 %% list_agent_runtime_endpoints_response() :: #{
 %%   <<"nextToken">> => string(),
-%%   <<"runtimeEndpoints">> => list(agent_endpoint())
+%%   <<"runtimeEndpoints">> => list(agent_runtime_endpoint())
 %% }
 -type list_agent_runtime_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_runtime_endpoint() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeEndpointArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"liveVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetVersion">> => string()
+%% }
+-type agent_runtime_endpoint() :: #{binary() => any()}.
 
 %% Example:
 %% delete_gateway_request() :: #{}
@@ -1491,6 +1529,10 @@
 %%   <<"reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
@@ -1556,6 +1598,19 @@
 
 
 %% Example:
+%% agent_runtime() :: #{
+%%   <<"agentRuntimeArn">> => string(),
+%%   <<"agentRuntimeId">> => string(),
+%%   <<"agentRuntimeName">> => string(),
+%%   <<"agentRuntimeVersion">> => string(),
+%%   <<"description">> => string(),
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type agent_runtime() :: #{binary() => any()}.
+
+
+%% Example:
 %% protocol_configuration() :: #{
 %%   <<"serverProtocol">> => list(any())
 %% }
@@ -1587,7 +1642,8 @@
 
 %% Example:
 %% code_interpreter_network_configuration() :: #{
-%%   <<"networkMode">> => list(any())
+%%   <<"networkMode">> => list(any()),
+%%   <<"vpcConfig">> => vpc_config()
 %% }
 -type code_interpreter_network_configuration() :: #{binary() => any()}.
 
@@ -2114,6 +2170,13 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type list_tags_for_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_workload_identities_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2130,6 +2193,21 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     unauthorized_exception().
+
+-type tag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
+
+-type untag_resource_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type update_agent_runtime_errors() ::
     throttling_exception() | 
@@ -2212,7 +2290,7 @@
 %% API
 %%====================================================================
 
-%% @doc Creates an Amazon Secure Agent.
+%% @doc Creates an Amazon Bedrock AgentCore Runtime.
 -spec create_agent_runtime(aws_client:aws_client(), create_agent_runtime_request()) ->
     {ok, create_agent_runtime_response(), tuple()} |
     {error, any()} |
@@ -2246,7 +2324,7 @@ create_agent_runtime(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Secure AgentEndpoint.
+%% @doc Creates an AgentCore Runtime endpoint.
 -spec create_agent_runtime_endpoint(aws_client:aws_client(), binary() | list(), create_agent_runtime_endpoint_request()) ->
     {ok, create_agent_runtime_endpoint_response(), tuple()} |
     {error, any()} |
@@ -2426,9 +2504,6 @@ create_gateway(Client, Input0, Options0) ->
 %% @doc Creates a target for a gateway.
 %%
 %% A target defines an endpoint that the gateway can connect to.
-%%
-%% To create a target, you must specify the gateway identifier and target
-%% configuration.
 -spec create_gateway_target(aws_client:aws_client(), binary() | list(), create_gateway_target_request()) ->
     {ok, create_gateway_target_response(), tuple()} |
     {error, any()} |
@@ -2462,7 +2537,7 @@ create_gateway_target(Client, GatewayIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new memory.
+%% @doc Creates a new Amazon Bedrock AgentCore Memory resource.
 -spec create_memory(aws_client:aws_client(), create_memory_input()) ->
     {ok, create_memory_output(), tuple()} |
     {error, any()} |
@@ -2564,7 +2639,7 @@ create_workload_identity(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Secure Agent.
+%% @doc Deletes an Amazon Bedrock AgentCore Runtime.
 -spec delete_agent_runtime(aws_client:aws_client(), binary() | list(), delete_agent_runtime_request()) ->
     {ok, delete_agent_runtime_response(), tuple()} |
     {error, any()} |
@@ -2598,7 +2673,7 @@ delete_agent_runtime(Client, AgentRuntimeId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Secure AgentEndpoint.
+%% @doc Deletes an AAgentCore Runtime endpoint.
 -spec delete_agent_runtime_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_runtime_endpoint_request()) ->
     {ok, delete_agent_runtime_endpoint_response(), tuple()} |
     {error, any()} |
@@ -2737,7 +2812,7 @@ delete_code_interpreter(Client, CodeInterpreterId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Gateway.
+%% @doc Deletes a gateway.
 -spec delete_gateway(aws_client:aws_client(), binary() | list(), delete_gateway_request()) ->
     {ok, delete_gateway_response(), tuple()} |
     {error, any()} |
@@ -2771,7 +2846,7 @@ delete_gateway(Client, GatewayIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Gateway Target.
+%% @doc Deletes a gateway target.
 -spec delete_gateway_target(aws_client:aws_client(), binary() | list(), binary() | list(), delete_gateway_target_request()) ->
     {ok, delete_gateway_target_response(), tuple()} |
     {error, any()} |
@@ -2805,7 +2880,7 @@ delete_gateway_target(Client, GatewayIdentifier, TargetId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a memory.
+%% @doc Deletes an Amazon Bedrock AgentCore Memory resource.
 -spec delete_memory(aws_client:aws_client(), binary() | list(), delete_memory_input()) ->
     {ok, delete_memory_output(), tuple()} |
     {error, any()} |
@@ -2908,7 +2983,7 @@ delete_workload_identity(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets an Amazon Secure Agent.
+%% @doc Gets an Amazon Bedrock AgentCore Runtime.
 -spec get_agent_runtime(aws_client:aws_client(), binary() | list()) ->
     {ok, get_agent_runtime_response(), tuple()} |
     {error, any()} |
@@ -3131,7 +3206,7 @@ get_gateway(Client, GatewayIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a specific Gateway Target.
+%% @doc Retrieves information about a specific gateway target.
 -spec get_gateway_target(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_gateway_target_response(), tuple()} |
     {error, any()} |
@@ -3168,7 +3243,7 @@ get_gateway_target(Client, GatewayIdentifier, TargetId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve an existing memory.
+%% @doc Retrieve an existing Amazon Bedrock AgentCore Memory resource.
 -spec get_memory(aws_client:aws_client(), binary() | list()) ->
     {ok, get_memory_output(), tuple()} |
     {error, any()} |
@@ -3523,7 +3598,7 @@ list_code_interpreters(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all targets for a specific Gateway.
+%% @doc Lists all targets for a specific gateway.
 -spec list_gateway_targets(aws_client:aws_client(), binary() | list()) ->
     {ok, list_gateway_targets_response(), tuple()} |
     {error, any()} |
@@ -3565,7 +3640,7 @@ list_gateway_targets(Client, GatewayIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all Gateways in the account.
+%% @doc Lists all gateways in the account.
 -spec list_gateways(aws_client:aws_client()) ->
     {ok, list_gateways_response(), tuple()} |
     {error, any()} |
@@ -3607,7 +3682,8 @@ list_gateways(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the memory present.
+%% @doc Lists the available Amazon Bedrock AgentCore Memory resources in the
+%% current Amazon Web Services Region.
 -spec list_memories(aws_client:aws_client(), list_memories_input()) ->
     {ok, list_memories_output(), tuple()} |
     {error, any()} |
@@ -3674,6 +3750,43 @@ list_oauth2_credential_providers(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the tags associated with the specified resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all workload identities in your account.
 -spec list_workload_identities(aws_client:aws_client(), list_workload_identities_request()) ->
@@ -3743,6 +3856,80 @@ set_token_vault_cm_k(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Associates the specified tags to a resource with the specified
+%% resourceArn.
+%%
+%% If existing tags on a resource are not specified in the request
+%% parameters, they are not changed. When a resource is deleted, the tags
+%% associated with that resource are also deleted.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the specified tags from the specified resource.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing Amazon Secure Agent.
 -spec update_agent_runtime(aws_client:aws_client(), binary() | list(), update_agent_runtime_request()) ->
     {ok, update_agent_runtime_response(), tuple()} |
@@ -3777,7 +3964,7 @@ update_agent_runtime(Client, AgentRuntimeId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Amazon Secure AgentEndpoint.
+%% @doc Updates an existing Amazon Bedrock AgentCore Runtime endpoint.
 -spec update_agent_runtime_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_runtime_endpoint_request()) ->
     {ok, update_agent_runtime_endpoint_response(), tuple()} |
     {error, any()} |
@@ -3845,7 +4032,7 @@ update_api_key_credential_provider(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Gateway.
+%% @doc Updates an existing gateway.
 -spec update_gateway(aws_client:aws_client(), binary() | list(), update_gateway_request()) ->
     {ok, update_gateway_response(), tuple()} |
     {error, any()} |
@@ -3879,7 +4066,7 @@ update_gateway(Client, GatewayIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Gateway Target.
+%% @doc Updates an existing gateway target.
 -spec update_gateway_target(aws_client:aws_client(), binary() | list(), binary() | list(), update_gateway_target_request()) ->
     {ok, update_gateway_target_response(), tuple()} |
     {error, any()} |
@@ -3913,7 +4100,7 @@ update_gateway_target(Client, GatewayIdentifier, TargetId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update memory.
+%% @doc Update an Amazon Bedrock AgentCore Memory resource memory.
 -spec update_memory(aws_client:aws_client(), binary() | list(), update_memory_input()) ->
     {ok, update_memory_output(), tuple()} |
     {error, any()} |

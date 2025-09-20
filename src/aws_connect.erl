@@ -3834,6 +3834,7 @@
 %%   <<"AfterContactWorkTimeLimit">> => integer(),
 %%   <<"AutoAccept">> => boolean(),
 %%   <<"DeskPhoneNumber">> => string(),
+%%   <<"PersistentConnection">> => boolean(),
 %%   <<"PhoneType">> => list(any())
 %% }
 -type user_phone_config() :: #{binary() => any()}.
@@ -11747,9 +11748,10 @@ create_persistent_contact_association(Client, InitialContactId, InstanceId, Inpu
 %% Create an attribute for business unit name that has a list of predefined
 %% business unit
 %% names used in your organization. This is a use case where information for
-%% a contact varies between transfers or conferences. For more information,
-%% see
-%% Use contact segment attributes:
+%% a contact varies
+%% between transfers or conferences. For more information, see Use contact
+%% segment
+%% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
 %% Endpoints: See Amazon Connect endpoints and
@@ -14083,19 +14085,21 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 %%
 %% A predefined
 %% attribute is made up of a name and a value. You can use predefined
-%% attributes for:
+%% attributes
+%% for:
 %%
-%% Routing proficiency (for example, agent certification) that has
-%% predefined values (for example, a list of possible certifications). For
-%% more information, see
+%% Routing proficiency (for example, agent certification) that has predefined
+%% values (for
+%% example, a list of possible certifications). For more information, see
 %% Create
 %% predefined attributes for routing contacts to agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 %%
 %% Contact information that varies between transfers or conferences, such as
-%% the name of the business unit handling the contact. For more information,
-%% see
-%% Use contact segment attributes:
+%% the name of the
+%% business unit handling the contact. For more information, see Use contact
+%% segment
+%% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
 %% For the predefined attributes per instance quota, see Amazon Connect
@@ -14976,6 +14980,11 @@ disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a set of queues from a routing profile.
+%%
+%% Up to 10 queue references can be disassociated in a single API call. More
+%% than 10 queue
+%% references results in a single call results in an
+%% InvalidParameterException.
 -spec disassociate_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_routing_profile_queues_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -15246,13 +15255,33 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the real-time metrics of the specified contact.
+%% @doc Retrieves the position of the contact in the queue.
 %%
 %% Use cases
 %%
-%% Following are common uses cases for this API:
+%% Following are common uses cases for position in queue:
 %%
-%% You can use this API to retrieve the position of the contact in the queue.
+%% Understand the expected wait experience of a contact.
+%%
+%% Inform customers of their position in queue and potentially offer a
+%% callback.
+%%
+%% Make data-driven routing decisions between primary and alternative queues.
+%%
+%% Enhance queue visibility and leverage agent proficiencies to streamline
+%% contact
+%% routing.
+%%
+%% Important things to know
+%%
+%% The only way to retrieve the position of the contact in queue is by using
+%% this API. You
+%% can't retrieve the position by using flows and attributes.
+%%
+%% For more information, see the Position in queue:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
+%% metric in the
+%% Amazon Connect Administrator Guide.
 %%
 %% Endpoints: See Amazon Connect endpoints and
 %% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
@@ -17065,19 +17094,21 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
 %%
 %% A predefined
 %% attribute is made up of a name and a value. You can use predefined
-%% attributes for:
+%% attributes
+%% for:
 %%
-%% Routing proficiency (for example, agent certification) that has
-%% predefined values (for example, a list of possible certifications). For
-%% more information, see
+%% Routing proficiency (for example, agent certification) that has predefined
+%% values (for
+%% example, a list of possible certifications). For more information, see
 %% Create
 %% predefined attributes for routing contacts to agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 %%
 %% Contact information that varies between transfers or conferences, such as
-%% the name of the business unit handling the contact. For more information,
-%% see
-%% Use contact segment attributes:
+%% the name of the
+%% business unit handling the contact. For more information, see Use contact
+%% segment
+%% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
 %% For the predefined attributes per instance quota, see Amazon Connect
@@ -18722,19 +18753,21 @@ search_hours_of_operations(Client, Input0, Options0) ->
 %%
 %% A predefined
 %% attribute is made up of a name and a value. You can use predefined
-%% attributes for:
+%% attributes
+%% for:
 %%
-%% Routing proficiency (for example, agent certification) that has
-%% predefined values (for example, a list of possible certifications). For
-%% more information, see
+%% Routing proficiency (for example, agent certification) that has predefined
+%% values (for
+%% example, a list of possible certifications). For more information, see
 %% Create
 %% predefined attributes for routing contacts to agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 %%
 %% Contact information that varies between transfers or conferences, such as
-%% the name of the business unit handling the contact. For more information,
-%% see
-%% Use contact segment attributes:
+%% the name of the
+%% business unit handling the contact. For more information, see Use contact
+%% segment
+%% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
 %% For the predefined attributes per instance quota, see Amazon Connect
@@ -21234,18 +21267,19 @@ update_phone_number_metadata(Client, PhoneNumberId, Input0, Options0) ->
 %% Following are common uses cases for this API:
 %%
 %% Update routing proficiency (for example, agent certification) that has
-%% predefined values (for example, a list of possible certifications). For
-%% more information, see
-%% Create
+%% predefined values
+%% (for example, a list of possible certifications). For more information,
+%% see Create
 %% predefined attributes for routing contacts to agents:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/predefined-attributes.html.
 %%
 %% Update an attribute for business unit name that has a list of predefined
 %% business unit
 %% names used in your organization. This is a use case where information for
-%% a contact varies between transfers or conferences. For more information,
-%% see
-%% Use contact segment attributes:
+%% a contact varies
+%% between transfers or conferences. For more information, see Use contact
+%% segment
+%% attributes:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/use-contact-segment-attributes.html.
 %%
 %% Endpoints: See Amazon Connect endpoints and

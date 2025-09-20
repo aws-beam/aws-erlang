@@ -1617,10 +1617,10 @@ remove_permission(Client, Input, Options)
 %% `#x9' | `#xA' | `#xD' | `#x20' to `#xD7FF' |
 %% `#xE000' to `#xFFFD' | `#x10000' to `#x10FFFF'
 %%
-%% Amazon SQS does not throw an exception or completely reject the message if
-%% it contains invalid characters. Instead, it replaces those invalid
-%% characters with U+FFFD before storing the message in the queue, as long as
-%% the message body contains at least one valid character.
+%% If a message contains characters outside the allowed set, Amazon SQS
+%% rejects the message and returns an InvalidMessageContents error. Ensure
+%% that your message body includes only valid characters to avoid this
+%% exception.
 -spec send_message(aws_client:aws_client(), send_message_request()) ->
     {ok, send_message_result(), tuple()} |
     {error, any()} |
@@ -1668,10 +1668,10 @@ send_message(Client, Input, Options)
 %% `#x9' | `#xA' | `#xD' | `#x20' to `#xD7FF' |
 %% `#xE000' to `#xFFFD' | `#x10000' to `#x10FFFF'
 %%
-%% Amazon SQS does not throw an exception or completely reject the message if
-%% it contains invalid characters. Instead, it replaces those invalid
-%% characters with U+FFFD before storing the message in the queue, as long as
-%% the message body contains at least one valid character.
+%% If a message contains characters outside the allowed set, Amazon SQS
+%% rejects the message and returns an InvalidMessageContents error. Ensure
+%% that your message body includes only valid characters to avoid this
+%% exception.
 %%
 %% If you don't specify the `DelaySeconds' parameter for an entry,
 %% Amazon SQS uses

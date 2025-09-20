@@ -2,8 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc With License Manager, you can create user-based subscriptions to
-%% utilize licensed software with
-%% a per user subscription fee on Amazon EC2 instances.
+%% utilize licensed software with a per user subscription fee on Amazon EC2
+%% instances.
 -module(aws_license_manager_user_subscriptions).
 
 -export([associate_user/2,
@@ -295,6 +295,7 @@
 %%   <<"FailureMessage">> => [string()],
 %%   <<"IdentityProvider">> => list(),
 %%   <<"IdentityProviderArn">> => string(),
+%%   <<"OwnerAccountId">> => [string()],
 %%   <<"Product">> => [string()],
 %%   <<"Settings">> => settings(),
 %%   <<"Status">> => [string()]
@@ -440,8 +441,10 @@
 
 %% Example:
 %% instance_summary() :: #{
+%%   <<"IdentityProvider">> => list(),
 %%   <<"InstanceId">> => [string()],
 %%   <<"LastStatusCheckDate">> => [string()],
+%%   <<"OwnerAccountId">> => [string()],
 %%   <<"Products">> => list([string()]()),
 %%   <<"Status">> => [string()],
 %%   <<"StatusMessage">> => [string()]
@@ -517,7 +520,8 @@
 %% active_directory_identity_provider() :: #{
 %%   <<"ActiveDirectorySettings">> => active_directory_settings(),
 %%   <<"ActiveDirectoryType">> => string(),
-%%   <<"DirectoryId">> => string()
+%%   <<"DirectoryId">> => string(),
+%%   <<"IsSharedActiveDirectory">> => [boolean()]
 %% }
 -type active_directory_identity_provider() :: #{binary() => any()}.
 
@@ -672,11 +676,9 @@
 %% subscriptions.
 %%
 %% Your estimated bill for charges on the number of users and related costs
-%% will take 48
-%% hours to appear for billing periods that haven't closed (marked as
-%% Pending billing status) in Amazon Web Services Billing. For more
-%% information, see Viewing your
-%% monthly charges:
+%% will take 48 hours to appear for billing periods that haven't closed
+%% (marked as Pending billing status) in Amazon Web Services Billing. For
+%% more information, see Viewing your monthly charges:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
 %% in the Amazon Web Services Billing User Guide.
 -spec associate_user(aws_client:aws_client(), associate_user_request()) ->
@@ -1098,11 +1100,9 @@ register_identity_provider(Client, Input0, Options0) ->
 %% provider.
 %%
 %% Your estimated bill for charges on the number of users and related costs
-%% will take 48
-%% hours to appear for billing periods that haven't closed (marked as
-%% Pending billing status) in Amazon Web Services Billing. For more
-%% information, see Viewing your
-%% monthly charges:
+%% will take 48 hours to appear for billing periods that haven't closed
+%% (marked as Pending billing status) in Amazon Web Services Billing. For
+%% more information, see Viewing your monthly charges:
 %% https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html
 %% in the Amazon Web Services Billing User Guide.
 -spec start_product_subscription(aws_client:aws_client(), start_product_subscription_request()) ->
@@ -1243,8 +1243,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates additional product configuration settings for the registered
-%% identity
-%% provider.
+%% identity provider.
 -spec update_identity_provider_settings(aws_client:aws_client(), update_identity_provider_settings_request()) ->
     {ok, update_identity_provider_settings_response(), tuple()} |
     {error, any()} |
