@@ -835,7 +835,7 @@
 
 %% Example:
 %% list_component_build_versions_request() :: #{
-%%   <<"componentVersionArn">> := string(),
+%%   <<"componentVersionArn">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1854,7 +1854,7 @@
 %% Example:
 %% list_image_build_versions_request() :: #{
 %%   <<"filters">> => list(filter()),
-%%   <<"imageVersionArn">> := string(),
+%%   <<"imageVersionArn">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -2208,7 +2208,7 @@
 %% list_workflow_build_versions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"workflowVersionArn">> := string()
+%%   <<"workflowVersionArn">> => string()
 %% }
 -type list_workflow_build_versions_request() :: #{binary() => any()}.
 

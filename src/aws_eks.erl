@@ -1145,6 +1145,16 @@
 
 
 %% Example:
+%% node_repair_config_overrides() :: #{
+%%   <<"minRepairWaitTimeMins">> => integer(),
+%%   <<"nodeMonitoringCondition">> => string(),
+%%   <<"nodeUnhealthyReason">> => string(),
+%%   <<"repairAction">> => list(any())
+%% }
+-type node_repair_config_overrides() :: #{binary() => any()}.
+
+
+%% Example:
 %% fargate_profile_health() :: #{
 %%   <<"issues">> => list(fargate_profile_issue())
 %% }
@@ -1305,7 +1315,12 @@
 
 %% Example:
 %% node_repair_config() :: #{
-%%   <<"enabled">> => boolean()
+%%   <<"enabled">> => boolean(),
+%%   <<"maxParallelNodesRepairedCount">> => integer(),
+%%   <<"maxParallelNodesRepairedPercentage">> => integer(),
+%%   <<"maxUnhealthyNodeThresholdCount">> => integer(),
+%%   <<"maxUnhealthyNodeThresholdPercentage">> => integer(),
+%%   <<"nodeRepairConfigOverrides">> => list(node_repair_config_overrides())
 %% }
 -type node_repair_config() :: #{binary() => any()}.
 
