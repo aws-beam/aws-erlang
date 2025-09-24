@@ -2955,9 +2955,12 @@
 %% }
 -type id_mapping_table_summary() :: #{binary() => any()}.
 
+
 %% Example:
-%% populate_id_mapping_table_input() :: #{}
--type populate_id_mapping_table_input() :: #{}.
+%% populate_id_mapping_table_input() :: #{
+%%   <<"jobType">> => list(any())
+%% }
+-type populate_id_mapping_table_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3153,6 +3156,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 

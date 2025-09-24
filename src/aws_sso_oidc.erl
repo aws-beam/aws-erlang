@@ -13,7 +13,7 @@
 %%
 %% IAM Identity Center uses the `sso' and `identitystore' API
 %% namespaces. IAM Identity Center
-%% OpenID Connect uses the `sso-oidc' namespace.
+%% OpenID Connect uses the `sso-oauth' namespace.
 %%
 %% Considerations for using this guide
 %%
@@ -77,7 +77,8 @@
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"error">> => string(),
-%%   <<"error_description">> => string()
+%%   <<"error_description">> => string(),
+%%   <<"reason">> => list(any())
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
@@ -205,7 +206,8 @@
 %% Example:
 %% invalid_request_exception() :: #{
 %%   <<"error">> => string(),
-%%   <<"error_description">> => string()
+%%   <<"error_description">> => string(),
+%%   <<"reason">> => list(any())
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
 
@@ -326,6 +328,7 @@
 
 -type register_client_errors() ::
     unsupported_grant_type_exception() | 
+    slow_down_exception() | 
     invalid_scope_exception() | 
     invalid_request_exception() | 
     invalid_redirect_uri_exception() | 
@@ -384,14 +387,24 @@ create_token(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates and returns access and refresh tokens for clients and
+%% @doc Creates and returns access and refresh tokens for authorized client
 %% applications that are
-%% authenticated using IAM entities.
+%% authenticated using any IAM entity, such as a service
+%% role or user.
 %%
-%% The access token can be used to fetch short-lived
-%% credentials for the assigned Amazon Web Services accounts or to access
-%% application APIs using
+%% These tokens might contain defined scopes that specify permissions such as
+%% `read:profile' or `write:data'. Through downscoping, you can use
+%% the scopes parameter to request tokens with reduced permissions compared
+%% to the original client application's permissions or, if applicable,
+%% the refresh token's scopes. The access token can be used to fetch
+%% short-lived credentials for the assigned
+%% Amazon Web Services accounts or to access application APIs using
 %% `bearer' authentication.
+%%
+%% This API is used with Signature Version 4. For more information, see
+%% Amazon Web Services Signature
+%% Version 4 for API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html.
 -spec create_token_with_iam(aws_client:aws_client(), create_token_with_iam_request()) ->
     {ok, create_token_with_iam_response(), tuple()} |
     {error, any()} |

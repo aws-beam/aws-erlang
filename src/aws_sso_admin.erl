@@ -220,6 +220,13 @@
 -type scope_details() :: #{binary() => any()}.
 
 %% Example:
+%% encryption_configuration() :: #{
+%%   <<"KeyType">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"InstanceArn">> => string(),
 %%   <<"ResourceArn">> := string(),
@@ -234,7 +241,8 @@
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OwnerAccountId">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
 %% }
 -type instance_metadata() :: #{binary() => any()}.
 
@@ -700,9 +708,19 @@
 
 %% Example:
 %% resource_not_found_exception() :: #{
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% encryption_configuration_details() :: #{
+%%   <<"EncryptionStatus">> => list(any()),
+%%   <<"EncryptionStatusReason">> => string(),
+%%   <<"KeyType">> => list(any()),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type encryption_configuration_details() :: #{binary() => any()}.
 
 %% Example:
 %% provision_permission_set_response() :: #{
@@ -825,8 +843,9 @@
 
 %% Example:
 %% update_instance_request() :: #{
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"InstanceArn">> := string(),
-%%   <<"Name">> := string()
+%%   <<"Name">> => string()
 %% }
 -type update_instance_request() :: #{binary() => any()}.
 
@@ -1201,11 +1220,13 @@
 %% Example:
 %% describe_instance_response() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"EncryptionConfigurationDetails">> => encryption_configuration_details(),
 %%   <<"IdentityStoreId">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OwnerAccountId">> => string(),
-%%   <<"Status">> => list(any())
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
 %% }
 -type describe_instance_response() :: #{binary() => any()}.
 
@@ -1228,7 +1249,8 @@
 
 %% Example:
 %% access_denied_exception() :: #{
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
 
@@ -1296,7 +1318,8 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
@@ -1339,7 +1362,8 @@
 
 %% Example:
 %% throttling_exception() :: #{
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
 -type throttling_exception() :: #{binary() => any()}.
 
@@ -2140,6 +2164,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type update_instance_access_control_attribute_configuration_errors() ::

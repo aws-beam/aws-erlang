@@ -5257,7 +5257,8 @@
 %% get_deployable_patch_snapshot_for_instance_request() :: #{
 %%   <<"BaselineOverride">> => baseline_override(),
 %%   <<"InstanceId">> := string(),
-%%   <<"SnapshotId">> := string()
+%%   <<"SnapshotId">> := string(),
+%%   <<"UseS3DualStackEndpoint">> => boolean()
 %% }
 -type get_deployable_patch_snapshot_for_instance_request() :: #{binary() => any()}.
 

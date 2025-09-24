@@ -145,7 +145,7 @@
 
 %% Example:
 %% record() :: #{
-%%   <<"inputSourceARN">> => [string()],
+%%   <<"inputSourceARN">> => string(),
 %%   <<"recordAttributeMap">> => map(),
 %%   <<"uniqueId">> => string()
 %% }
@@ -155,7 +155,7 @@
 %% Example:
 %% input_source() :: #{
 %%   <<"applyNormalization">> => [boolean()],
-%%   <<"inputSourceARN">> => [string()],
+%%   <<"inputSourceARN">> => string(),
 %%   <<"schemaName">> => string()
 %% }
 -type input_source() :: #{binary() => any()}.
@@ -367,6 +367,7 @@
 
 %% Example:
 %% job_metrics() :: #{
+%%   <<"deleteRecordsProcessed">> => [integer()],
 %%   <<"inputRecords">> => [integer()],
 %%   <<"matchIDs">> => [integer()],
 %%   <<"recordsNotProcessed">> => [integer()],
@@ -380,6 +381,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> => id_mapping_techniques(),
+%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
 %%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
 %%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string(),
@@ -401,7 +403,7 @@
 %% Example:
 %% failed_record() :: #{
 %%   <<"errorMessage">> => string(),
-%%   <<"inputSourceARN">> => [string()],
+%%   <<"inputSourceARN">> => string(),
 %%   <<"uniqueId">> => [string()]
 %% }
 -type failed_record() :: #{binary() => any()}.
@@ -577,7 +579,15 @@
 
 %% Example:
 %% id_mapping_job_metrics() :: #{
+%%   <<"deleteRecordsProcessed">> => [integer()],
 %%   <<"inputRecords">> => [integer()],
+%%   <<"mappedRecordsRemoved">> => [integer()],
+%%   <<"mappedSourceRecordsRemoved">> => [integer()],
+%%   <<"mappedTargetRecordsRemoved">> => [integer()],
+%%   <<"newMappedRecords">> => [integer()],
+%%   <<"newMappedSourceRecords">> => [integer()],
+%%   <<"newMappedTargetRecords">> => [integer()],
+%%   <<"newUniqueRecordsLoaded">> => [integer()],
 %%   <<"recordsNotProcessed">> => [integer()],
 %%   <<"totalMappedRecords">> => [integer()],
 %%   <<"totalMappedSourceRecords">> => [integer()],
@@ -592,6 +602,7 @@
 %% create_id_mapping_workflow_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> := id_mapping_techniques(),
+%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
 %%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()),
 %%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string(),
@@ -646,6 +657,7 @@
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"errorDetails">> => error_details(),
 %%   <<"jobId">> => string(),
+%%   <<"jobType">> => list(any()),
 %%   <<"metrics">> => id_mapping_job_metrics(),
 %%   <<"outputSourceConfig">> => list(id_mapping_job_output_source()),
 %%   <<"startTime">> => [non_neg_integer()],
@@ -666,6 +678,7 @@
 
 %% Example:
 %% start_id_mapping_job_input() :: #{
+%%   <<"jobType">> => list(any()),
 %%   <<"outputSourceConfig">> => list(id_mapping_job_output_source())
 %% }
 -type start_id_mapping_job_input() :: #{binary() => any()}.
@@ -675,6 +688,7 @@
 %% update_id_mapping_workflow_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> => id_mapping_techniques(),
+%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
 %%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
 %%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string(),
@@ -749,6 +763,13 @@
 %% }
 -type delete_matching_workflow_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% id_mapping_incremental_run_config() :: #{
+%%   <<"incrementalRunType">> => list(any())
+%% }
+-type id_mapping_incremental_run_config() :: #{binary() => any()}.
+
 %% Example:
 %% tag_resource_output() :: #{}
 -type tag_resource_output() :: #{}.
@@ -782,6 +803,7 @@
 %% create_id_mapping_workflow_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> => id_mapping_techniques(),
+%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
 %%   <<"inputSourceConfig">> => list(id_mapping_workflow_input_source()),
 %%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string(),
@@ -795,6 +817,7 @@
 %% update_id_mapping_workflow_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"idMappingTechniques">> := id_mapping_techniques(),
+%%   <<"incrementalRunConfig">> => id_mapping_incremental_run_config(),
 %%   <<"inputSourceConfig">> := list(id_mapping_workflow_input_source()),
 %%   <<"outputSourceConfig">> => list(id_mapping_workflow_output_source()),
 %%   <<"roleArn">> => string()
@@ -914,7 +937,7 @@
 
 %% Example:
 %% matched_record() :: #{
-%%   <<"inputSourceARN">> => [string()],
+%%   <<"inputSourceARN">> => string(),
 %%   <<"recordId">> => [string()]
 %% }
 -type matched_record() :: #{binary() => any()}.
@@ -1050,6 +1073,7 @@
 %% Example:
 %% start_id_mapping_job_output() :: #{
 %%   <<"jobId">> => string(),
+%%   <<"jobType">> => list(any()),
 %%   <<"outputSourceConfig">> => list(id_mapping_job_output_source())
 %% }
 -type start_id_mapping_job_output() :: #{binary() => any()}.
@@ -1086,7 +1110,7 @@
 
 %% Example:
 %% id_namespace_input_source() :: #{
-%%   <<"inputSourceARN">> => [string()],
+%%   <<"inputSourceARN">> => string(),
 %%   <<"schemaName">> => string()
 %% }
 -type id_namespace_input_source() :: #{binary() => any()}.
@@ -1167,7 +1191,7 @@
 
 %% Example:
 %% id_mapping_workflow_input_source() :: #{
-%%   <<"inputSourceARN">> => [string()],
+%%   <<"inputSourceARN">> => string(),
 %%   <<"schemaName">> => string(),
 %%   <<"type">> => list(any())
 %% }
@@ -1563,6 +1587,8 @@ batch_delete_unique_id(Client, WorkflowName, Input0, Options0) ->
 %%
 %% Each `IdMappingWorkflow' must have a unique workflow name. To modify
 %% an existing workflow, use the UpdateIdMappingWorkflow API.
+%%
+%% Incremental processing is not supported for ID mapping workflows.
 -spec create_id_mapping_workflow(aws_client:aws_client(), create_id_mapping_workflow_input()) ->
     {ok, create_id_mapping_workflow_output(), tuple()} |
     {error, any()} |
@@ -1640,8 +1666,8 @@ create_id_namespace(Client, Input0, Options0) ->
 %% The workflow name must be unique. To modify an existing workflow, use
 %% `UpdateMatchingWorkflow'.
 %%
-%% For workflows where `resolutionType' is ML_MATCHING, incremental
-%% processing is not supported.
+%% For workflows where `resolutionType' is `ML_MATCHING' or
+%% `PROVIDER', incremental processing is not supported.
 -spec create_matching_workflow(aws_client:aws_client(), create_matching_workflow_input()) ->
     {ok, create_matching_workflow_output(), tuple()} |
     {error, any()} |
@@ -2055,8 +2081,7 @@ get_id_namespace(Client, IdNamespaceName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the corresponding Match ID of a customer record if the record
-%% has been processed in a rule-based matching workflow or ML matching
-%% workflow.
+%% has been processed in a rule-based matching workflow.
 %%
 %% You can call this API as a dry run of an incremental load on the
 %% rule-based matching workflow.
@@ -2817,6 +2842,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% This method is identical to CreateIdMappingWorkflow, except it uses an
 %% HTTP `PUT' request instead of a `POST' request, and the
 %% `IdMappingWorkflow' must already exist for the method to succeed.
+%%
+%% Incremental processing is not supported for ID mapping workflows.
 -spec update_id_mapping_workflow(aws_client:aws_client(), binary() | list(), update_id_mapping_workflow_input()) ->
     {ok, update_id_mapping_workflow_output(), tuple()} |
     {error, any()} |
@@ -2888,8 +2915,8 @@ update_id_namespace(Client, IdNamespaceName, Input0, Options0) ->
 %%
 %% The workflow must already exist for this operation to succeed.
 %%
-%% For workflows where `resolutionType' is ML_MATCHING, incremental
-%% processing is not supported.
+%% For workflows where `resolutionType' is `ML_MATCHING' or
+%% `PROVIDER', incremental processing is not supported.
 -spec update_matching_workflow(aws_client:aws_client(), binary() | list(), update_matching_workflow_input()) ->
     {ok, update_matching_workflow_output(), tuple()} |
     {error, any()} |
