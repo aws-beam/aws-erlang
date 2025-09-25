@@ -2795,21 +2795,22 @@ create_key(Client, Input, Options)
 %% in the Key Management Service Developer Guide.
 %%
 %% `Decrypt' also supports Amazon Web Services Nitro Enclaves:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitro-enclave.html,
-%% which provide an
-%% isolated compute environment in Amazon EC2. To call `Decrypt' for a
-%% Nitro enclave, use
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitro-enclave.html and
+%% NitroTPM, which provide
+%% attested environments in Amazon EC2. To call `Decrypt' for a Nitro
+%% enclave or NitroTPM, use
 %% the Amazon Web Services Nitro Enclaves SDK:
 %% https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk
 %% or any Amazon Web Services SDK. Use the `Recipient' parameter to
 %% provide the
-%% attestation document for the enclave. Instead of the plaintext data, the
-%% response includes the
-%% plaintext data encrypted with the public key from the attestation document
+%% attestation document for the attested environment. Instead of the
+%% plaintext data, the response
+%% includes the plaintext data encrypted with the public key from the
+%% attestation document
 %% (`CiphertextForRecipient'). For information about the interaction
-%% between KMS and Amazon Web Services Nitro Enclaves, see How Amazon Web
-%% Services Nitro Enclaves uses KMS:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html
+%% between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services
+%% NitroTPM, see Cryptographic attestation support in KMS:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html
 %% in the Key Management Service Developer Guide.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
@@ -3074,9 +3075,8 @@ delete_imported_key_material(Client, Input, Options)
 %%
 %% You must use an asymmetric NIST-recommended elliptic curve (ECC) or SM2
 %% (China Regions
-%% only) KMS key pair with a `KeyUsage' value of `KEY_AGREEMENT' to
-%% call
-%% DeriveSharedSecret.
+%% only) KMS key pair with a `KeyUsage'
+%% value of `KEY_AGREEMENT' to call DeriveSharedSecret.
 %%
 %% DeriveSharedSecret uses the Elliptic Curve Cryptography Cofactor
 %% Diffie-Hellman Primitive:
@@ -3281,8 +3281,8 @@ describe_custom_key_stores(Client, Input, Options)
 %% @doc Provides detailed information about a KMS key.
 %%
 %% You can run `DescribeKey' on a
-%% customer managed
-%% key:
+%% customer
+%% managed key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key
 %% or an Amazon Web Services managed key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key.
@@ -3897,11 +3897,11 @@ encrypt(Client, Input, Options)
 %% which provide an
 %% isolated compute environment in Amazon EC2. To call `GenerateDataKey'
 %% for an Amazon Web Services Nitro
-%% enclave, use the Amazon Web Services Nitro Enclaves SDK:
+%% enclave or NitroTPM, use the Amazon Web Services Nitro Enclaves SDK:
 %% https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk
 %% or any Amazon Web Services SDK. Use the `Recipient' parameter
-%% to provide the attestation document for the enclave. `GenerateDataKey'
-%% returns a
+%% to provide the attestation document for the attested environment.
+%% `GenerateDataKey' returns a
 %% copy of the data key encrypted under the specified KMS key, as usual. But
 %% instead of a
 %% plaintext copy of the data key, the response includes a copy of the data
@@ -3909,9 +3909,10 @@ encrypt(Client, Input, Options)
 %% the public key from the attestation document
 %% (`CiphertextForRecipient').
 %% For information about the interaction between KMS and Amazon Web Services
-%% Nitro Enclaves, see How Amazon Web Services Nitro Enclaves uses KMS:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html
-%% in the Key Management Service Developer Guide..
+%% Nitro Enclaves or Amazon Web Services NitroTPM, see Cryptographic
+%% attestation support in KMS:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html
+%% in the Key Management Service Developer Guide.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For
@@ -4061,10 +4062,11 @@ generate_data_key(Client, Input, Options)
 %% which provide an
 %% isolated compute environment in Amazon EC2. To call
 %% `GenerateDataKeyPair' for an Amazon Web Services
-%% Nitro enclave, use the Amazon Web Services Nitro Enclaves SDK:
+%% Nitro enclave or NitroTPM, use the Amazon Web Services Nitro Enclaves SDK:
 %% https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk
 %% or any Amazon Web Services SDK. Use the `Recipient'
-%% parameter to provide the attestation document for the enclave.
+%% parameter to provide the attestation document for the attested
+%% environment.
 %% `GenerateDataKeyPair' returns the public data key and a copy of the
 %% private data
 %% key encrypted under the specified KMS key, as usual. But instead of a
@@ -4074,10 +4076,10 @@ generate_data_key(Client, Input, Options)
 %% private data key encrypted under the public key from the attestation
 %% document
 %% (`CiphertextForRecipient'). For information about the interaction
-%% between KMS and Amazon Web Services Nitro Enclaves, see How Amazon Web
-%% Services Nitro Enclaves uses KMS:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html
-%% in the Key Management Service Developer Guide..
+%% between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services
+%% NitroTPM, see Cryptographic attestation support in KMS:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html
+%% in the Key Management Service Developer Guide.
 %%
 %% You can use an optional encryption context to add additional security to
 %% the encryption
@@ -4443,17 +4445,17 @@ generate_mac(Client, Input, Options)
 %% which provide an
 %% isolated compute environment in Amazon EC2. To call `GenerateRandom'
 %% for a Nitro
-%% enclave, use the Amazon Web Services Nitro Enclaves SDK:
+%% enclave or NitroTPM, use the Amazon Web Services Nitro Enclaves SDK:
 %% https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk
 %% or any Amazon Web Services SDK. Use the `Recipient' parameter
-%% to provide the attestation document for the enclave. Instead of plaintext
-%% bytes, the response
+%% to provide the attestation document for the attested environment. Instead
+%% of plaintext bytes, the response
 %% includes the plaintext bytes encrypted under the public key from the
 %% attestation document
-%% (`CiphertextForRecipient').For information about the interaction
-%% between KMS and Amazon Web Services Nitro Enclaves, see How Amazon Web
-%% Services Nitro Enclaves uses KMS:
-%% https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html
+%% (`CiphertextForRecipient'). For information about the interaction
+%% between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services
+%% NitroTPM, see Cryptographic attestation support in KMS:
+%% https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html
 %% in the Key Management Service Developer Guide.
 %%
 %% For more information about entropy and random number generation, see
@@ -6179,9 +6181,8 @@ sign(Client, Input, Options)
 %%
 %% You can use this operation to tag a customer managed key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key,
-%% but you cannot
-%% tag an Amazon Web Services
-%% managed key:
+%% but you
+%% cannot tag an Amazon Web Services managed key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-key,
 %% an Amazon Web Services owned key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-key,
@@ -6246,8 +6247,8 @@ tag_resource(Client, Input, Options)
 %% @doc Deletes tags from a customer managed key:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-mgn-key.
 %%
-%% To delete a tag,
-%% specify the tag key and the KMS key.
+%% To delete a
+%% tag, specify the tag key and the KMS key.
 %%
 %% Tagging or untagging a KMS key can allow or deny permission to the KMS
 %% key. For details, see ABAC for KMS:
