@@ -7891,6 +7891,7 @@
 %% Example:
 %% authentication_configuration() :: #{
 %%   <<"AuthenticationType">> => list(any()),
+%%   <<"KmsKeyArn">> => string(),
 %%   <<"OAuth2Properties">> => o_auth2_properties(),
 %%   <<"SecretArn">> => string()
 %% }

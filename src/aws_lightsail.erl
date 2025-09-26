@@ -504,7 +504,6 @@
 
 %% Example:
 %% test_alarm_request() :: #{
-%%   <<"alarmName">> := string(),
 %%   <<"state">> := list(any())
 %% }
 -type test_alarm_request() :: #{binary() => any()}.
@@ -899,7 +898,7 @@
 
 %% Example:
 %% delete_alarm_request() :: #{
-%%   <<"alarmName">> := string()
+
 %% }
 -type delete_alarm_request() :: #{binary() => any()}.
 
