@@ -2049,7 +2049,9 @@
 %%   <<"IdentityNamespace">> => string(),
 %%   <<"RedshiftIdcApplicationArn">> => string(),
 %%   <<"RedshiftIdcApplicationName">> => string(),
-%%   <<"ServiceIntegrations">> => list(list())
+%%   <<"ServiceIntegrations">> => list(list()),
+%%   <<"SsoTagKeys">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type redshift_idc_application() :: #{binary() => any()}.
 
@@ -2556,7 +2558,9 @@
 %%   <<"IdcInstanceArn">> := string(),
 %%   <<"IdentityNamespace">> => string(),
 %%   <<"RedshiftIdcApplicationName">> := string(),
-%%   <<"ServiceIntegrations">> => list(list())
+%%   <<"ServiceIntegrations">> => list(list()),
+%%   <<"SsoTagKeys">> => list(string()),
+%%   <<"Tags">> => list(tag())
 %% }
 -type create_redshift_idc_application_message() :: #{binary() => any()}.
 
@@ -4197,8 +4201,10 @@
 
 -type create_redshift_idc_application_errors() ::
     dependent_service_unavailable_fault() | 
+    tag_limit_exceeded_fault() | 
     redshift_idc_application_quota_exceeded_fault() | 
     dependent_service_access_denied_fault() | 
+    invalid_tag_fault() | 
     unsupported_operation_fault() | 
     redshift_idc_application_already_exists_fault().
 

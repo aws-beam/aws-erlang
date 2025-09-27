@@ -11,10 +11,14 @@
 %% `https://billing.us-east-1.api.aws'
 -module(aws_billing).
 
--export([create_billing_view/2,
+-export([associate_source_views/2,
+         associate_source_views/3,
+         create_billing_view/2,
          create_billing_view/3,
          delete_billing_view/2,
          delete_billing_view/3,
+         disassociate_source_views/2,
+         disassociate_source_views/3,
          get_billing_view/2,
          get_billing_view/3,
          get_resource_policy/2,
@@ -49,7 +53,8 @@
 %%   <<"billingViewTypes">> => list(list(any())()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"ownerAccountId">> => string()
+%%   <<"ownerAccountId">> => string(),
+%%   <<"sourceAccountId">> => string()
 %% }
 -type list_billing_views_request() :: #{binary() => any()}.
 
@@ -67,6 +72,12 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type update_billing_view_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_source_views_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type associate_source_views_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_source_views_for_billing_view_response() :: #{
@@ -106,6 +117,13 @@
 %%   <<"arn">> := string()
 %% }
 -type get_billing_view_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_source_views_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"sourceViews">> := list(string())
+%% }
+-type disassociate_source_views_request() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -150,7 +168,8 @@
 
 %% Example:
 %% delete_billing_view_request() :: #{
-%%   <<"arn">> := string()
+%%   <<"arn">> := string(),
+%%   <<"force">> => [boolean()]
 %% }
 -type delete_billing_view_request() :: #{binary() => any()}.
 
@@ -164,6 +183,12 @@
 -type update_billing_view_request() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_source_views_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type disassociate_source_views_response() :: #{binary() => any()}.
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"quotaCode">> => string(),
@@ -172,6 +197,12 @@
 %%   <<"serviceCode">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% billing_view_health_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type billing_view_health_status_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_response() :: #{
@@ -205,10 +236,15 @@
 %%   <<"billingViewType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"dataFilterExpression">> => expression(),
+%%   <<"derivedViewCount">> => [integer()],
 %%   <<"description">> => string(),
+%%   <<"healthStatus">> => billing_view_health_status(),
 %%   <<"name">> => string(),
 %%   <<"ownerAccountId">> => string(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"sourceAccountId">> => string(),
+%%   <<"sourceViewCount">> => [integer()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"viewDefinitionLastUpdatedAt">> => [non_neg_integer()]
 %% }
 -type billing_view_element() :: #{binary() => any()}.
 
@@ -224,6 +260,13 @@
 %%   <<"value">> => string()
 %% }
 -type resource_tag() :: #{binary() => any()}.
+
+%% Example:
+%% time_range() :: #{
+%%   <<"beginDateInclusive">> => [non_neg_integer()],
+%%   <<"endDateInclusive">> => [non_neg_integer()]
+%% }
+-type time_range() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -242,8 +285,10 @@
 %%   <<"arn">> => string(),
 %%   <<"billingViewType">> => list(any()),
 %%   <<"description">> => string(),
+%%   <<"healthStatus">> => billing_view_health_status(),
 %%   <<"name">> => string(),
-%%   <<"ownerAccountId">> => string()
+%%   <<"ownerAccountId">> => string(),
+%%   <<"sourceAccountId">> => string()
 %% }
 -type billing_view_list_element() :: #{binary() => any()}.
 
@@ -262,6 +307,13 @@
 -type list_tags_for_resource_request() :: #{binary() => any()}.
 
 %% Example:
+%% billing_view_health_status() :: #{
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusReasons">> => list(list(any())())
+%% }
+-type billing_view_health_status() :: #{binary() => any()}.
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -270,7 +322,8 @@
 %% Example:
 %% expression() :: #{
 %%   <<"dimensions">> => dimension_values(),
-%%   <<"tags">> => tag_values()
+%%   <<"tags">> => tag_values(),
+%%   <<"timeRange">> => time_range()
 %% }
 -type expression() :: #{binary() => any()}.
 
@@ -279,6 +332,13 @@
 %%   <<"billingView">> => billing_view_element()
 %% }
 -type get_billing_view_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_source_views_request() :: #{
+%%   <<"arn">> := string(),
+%%   <<"sourceViews">> := list(string())
+%% }
+-type associate_source_views_request() :: #{binary() => any()}.
 
 %% Example:
 %% list_billing_views_response() :: #{
@@ -294,12 +354,24 @@
 %% }
 -type create_billing_view_response() :: #{binary() => any()}.
 
+-type associate_source_views_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    billing_view_health_status_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type create_billing_view_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    billing_view_health_status_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_billing_view_errors() ::
@@ -307,6 +379,15 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    conflict_exception().
+
+-type disassociate_source_views_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    billing_view_health_status_exception() | 
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type get_billing_view_errors() ::
@@ -362,6 +443,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    billing_view_health_status_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
@@ -369,6 +451,27 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates one or more source billing views with an existing billing
+%% view.
+%%
+%% This allows creating aggregate billing views that combine data from
+%% multiple sources.
+-spec associate_source_views(aws_client:aws_client(), associate_source_views_request()) ->
+    {ok, associate_source_views_response(), tuple()} |
+    {error, any()} |
+    {error, associate_source_views_errors(), tuple()}.
+associate_source_views(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_source_views(Client, Input, []).
+
+-spec associate_source_views(aws_client:aws_client(), associate_source_views_request(), proplists:proplist()) ->
+    {ok, associate_source_views_response(), tuple()} |
+    {error, any()} |
+    {error, associate_source_views_errors(), tuple()}.
+associate_source_views(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateSourceViews">>, Input, Options).
 
 %% @doc Creates a billing view with the specified billing view attributes.
 -spec create_billing_view(aws_client:aws_client(), create_billing_view_request()) ->
@@ -403,6 +506,26 @@ delete_billing_view(Client, Input)
 delete_billing_view(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBillingView">>, Input, Options).
+
+%% @doc Removes the association between one or more source billing views and
+%% an existing billing view.
+%%
+%% This allows modifying the composition of aggregate billing views.
+-spec disassociate_source_views(aws_client:aws_client(), disassociate_source_views_request()) ->
+    {ok, disassociate_source_views_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_source_views_errors(), tuple()}.
+disassociate_source_views(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_source_views(Client, Input, []).
+
+-spec disassociate_source_views(aws_client:aws_client(), disassociate_source_views_request(), proplists:proplist()) ->
+    {ok, disassociate_source_views_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_source_views_errors(), tuple()}.
+disassociate_source_views(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateSourceViews">>, Input, Options).
 
 %% @doc Returns the metadata associated to the specified billing view ARN.
 -spec get_billing_view(aws_client:aws_client(), get_billing_view_request()) ->

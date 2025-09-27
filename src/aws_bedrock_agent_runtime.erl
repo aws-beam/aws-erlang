@@ -260,7 +260,9 @@
 %% Example:
 %% node_output_field() :: #{
 %%   <<"content">> => list(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"next">> => list(node_output_next()),
+%%   <<"type">> => list(any())
 %% }
 -type node_output_field() :: #{binary() => any()}.
 
@@ -658,6 +660,8 @@
 %% flow_trace_node_action_event() :: #{
 %%   <<"nodeName">> => string(),
 %%   <<"operationName">> => [string()],
+%%   <<"operationRequest">> => [any()],
+%%   <<"operationResponse">> => [any()],
 %%   <<"requestId">> => [string()],
 %%   <<"serviceName">> => [string()],
 %%   <<"timestamp">> => non_neg_integer()
@@ -738,8 +742,12 @@
 
 %% Example:
 %% flow_trace_node_input_field() :: #{
+%%   <<"category">> => list(any()),
 %%   <<"content">> => list(),
-%%   <<"nodeInputName">> => string()
+%%   <<"executionChain">> => list(flow_trace_node_input_execution_chain_item()),
+%%   <<"nodeInputName">> => string(),
+%%   <<"source">> => flow_trace_node_input_source(),
+%%   <<"type">> => list(any())
 %% }
 -type flow_trace_node_input_field() :: #{binary() => any()}.
 
@@ -838,6 +846,15 @@
 %%   <<"managedWordLists">> => list(guardrail_managed_word())
 %% }
 -type guardrail_word_policy_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_input_source() :: #{
+%%   <<"expression">> => string(),
+%%   <<"nodeName">> => string(),
+%%   <<"outputFieldName">> => string()
+%% }
+-type node_input_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1000,6 +1017,15 @@
 
 
 %% Example:
+%% flow_trace_node_input_execution_chain_item() :: #{
+%%   <<"index">> => [integer()],
+%%   <<"nodeName">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type flow_trace_node_input_execution_chain_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_retrieval_configuration() :: #{
 %%   <<"vectorSearchConfiguration">> => knowledge_base_vector_search_configuration()
 %% }
@@ -1057,6 +1083,14 @@
 
 
 %% Example:
+%% flow_trace_node_output_next() :: #{
+%%   <<"inputFieldName">> => string(),
+%%   <<"nodeName">> => string()
+%% }
+-type flow_trace_node_output_next() :: #{binary() => any()}.
+
+
+%% Example:
 %% text_response_part() :: #{
 %%   <<"span">> => span(),
 %%   <<"text">> => [string()]
@@ -1101,6 +1135,15 @@
 %%   <<"sessionId">> => string()
 %% }
 -type invoke_inline_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_trace_node_input_source() :: #{
+%%   <<"expression">> => string(),
+%%   <<"nodeName">> => string(),
+%%   <<"outputFieldName">> => string()
+%% }
+-type flow_trace_node_input_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1332,8 +1375,12 @@
 
 %% Example:
 %% node_input_field() :: #{
+%%   <<"category">> => list(any()),
 %%   <<"content">> => list(),
-%%   <<"name">> => string()
+%%   <<"executionChain">> => list(node_input_execution_chain_item()),
+%%   <<"name">> => string(),
+%%   <<"source">> => node_input_source(),
+%%   <<"type">> => list(any())
 %% }
 -type node_input_field() :: #{binary() => any()}.
 
@@ -1375,7 +1422,9 @@
 %% Example:
 %% flow_trace_node_output_field() :: #{
 %%   <<"content">> => list(),
-%%   <<"nodeOutputName">> => string()
+%%   <<"next">> => list(flow_trace_node_output_next()),
+%%   <<"nodeOutputName">> => string(),
+%%   <<"type">> => list(any())
 %% }
 -type flow_trace_node_output_field() :: #{binary() => any()}.
 
@@ -1396,6 +1445,14 @@
 %%   <<"requireConfirmation">> => list(any())
 %% }
 -type function_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_output_next() :: #{
+%%   <<"inputFieldName">> => string(),
+%%   <<"nodeName">> => string()
+%% }
+-type node_output_next() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1538,6 +1595,19 @@
 %%   <<"citations">> => list(citation())
 %% }
 -type attribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_action_event() :: #{
+%%   <<"nodeName">> => string(),
+%%   <<"operationName">> => [string()],
+%%   <<"operationRequest">> => [any()],
+%%   <<"operationResponse">> => [any()],
+%%   <<"requestId">> => [string()],
+%%   <<"serviceName">> => [string()],
+%%   <<"timestamp">> => non_neg_integer()
+%% }
+-type node_action_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1728,6 +1798,15 @@
 %%   <<"type">> => list(any())
 %% }
 -type generated_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_trace_dependency_event() :: #{
+%%   <<"nodeName">> => string(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"traceElements">> => list()
+%% }
+-type flow_trace_dependency_event() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2237,6 +2316,15 @@
 
 
 %% Example:
+%% node_dependency_event() :: #{
+%%   <<"nodeName">> => string(),
+%%   <<"timestamp">> => non_neg_integer(),
+%%   <<"traceElements">> => list()
+%% }
+-type node_dependency_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_topic() :: #{
 %%   <<"action">> => list(any()),
 %%   <<"name">> => [string()],
@@ -2310,6 +2398,15 @@
 %%   <<"role">> => list(any())
 %% }
 -type message() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_input_execution_chain_item() :: #{
+%%   <<"index">> => [integer()],
+%%   <<"nodeName">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type node_input_execution_chain_item() :: #{binary() => any()}.
 
 
 %% Example:

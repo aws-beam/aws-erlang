@@ -976,6 +976,12 @@
 -type memory_db_instance_details() :: #{binary() => any()}.
 
 %% Example:
+%% billing_view_health_status_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type billing_view_health_status_exception() :: #{binary() => any()}.
+
+%% Example:
 %% delete_cost_category_definition_response() :: #{
 %%   <<"CostCategoryArn">> => string(),
 %%   <<"EffectiveEnd">> => string()
@@ -2011,6 +2017,7 @@
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
     data_unavailable_exception() | 
+    billing_view_health_status_exception() | 
     invalid_next_token_exception() | 
     request_changed_exception() | 
     resource_not_found_exception().
@@ -2018,6 +2025,7 @@
 -type get_cost_and_usage_comparisons_errors() ::
     limit_exceeded_exception() | 
     data_unavailable_exception() | 
+    billing_view_health_status_exception() | 
     invalid_next_token_exception() | 
     resource_not_found_exception().
 
@@ -2025,6 +2033,7 @@
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
     data_unavailable_exception() | 
+    billing_view_health_status_exception() | 
     invalid_next_token_exception() | 
     request_changed_exception() | 
     resource_not_found_exception().
@@ -2033,6 +2042,7 @@
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
     data_unavailable_exception() | 
+    billing_view_health_status_exception() | 
     invalid_next_token_exception() | 
     request_changed_exception() | 
     resource_not_found_exception().
@@ -2040,18 +2050,21 @@
 -type get_cost_comparison_drivers_errors() ::
     limit_exceeded_exception() | 
     data_unavailable_exception() | 
+    billing_view_health_status_exception() | 
     invalid_next_token_exception() | 
     resource_not_found_exception().
 
 -type get_cost_forecast_errors() ::
     limit_exceeded_exception() | 
     data_unavailable_exception() | 
+    billing_view_health_status_exception() | 
     resource_not_found_exception().
 
 -type get_dimension_values_errors() ::
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
     data_unavailable_exception() | 
+    billing_view_health_status_exception() | 
     invalid_next_token_exception() | 
     request_changed_exception() | 
     resource_not_found_exception().
@@ -2101,6 +2114,7 @@
     limit_exceeded_exception() | 
     bill_expiration_exception() | 
     data_unavailable_exception() | 
+    billing_view_health_status_exception() | 
     invalid_next_token_exception() | 
     request_changed_exception() | 
     resource_not_found_exception().
@@ -2109,6 +2123,7 @@
     limit_exceeded_exception() | 
     unresolvable_usage_unit_exception() | 
     data_unavailable_exception() | 
+    billing_view_health_status_exception() | 
     resource_not_found_exception().
 
 -type list_commitment_purchase_analyses_errors() ::

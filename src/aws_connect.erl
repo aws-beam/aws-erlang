@@ -44,6 +44,8 @@
          associate_approved_origin/4,
          associate_bot/3,
          associate_bot/4,
+         associate_contact_with_user/4,
+         associate_contact_with_user/5,
          associate_default_vocabulary/4,
          associate_default_vocabulary/5,
          associate_flow/3,
@@ -432,6 +434,9 @@
          list_quick_connects/5,
          list_realtime_contact_analysis_segments_v2/4,
          list_realtime_contact_analysis_segments_v2/5,
+         list_routing_profile_manual_assignment_queues/3,
+         list_routing_profile_manual_assignment_queues/5,
+         list_routing_profile_manual_assignment_queues/6,
          list_routing_profile_queues/3,
          list_routing_profile_queues/5,
          list_routing_profile_queues/6,
@@ -1241,6 +1246,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_hours_of_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% associate_contact_with_user_response() :: #{}
+-type associate_contact_with_user_response() :: #{}.
 
 
 %% Example:
@@ -2389,6 +2398,13 @@
 
 
 %% Example:
+%% searchable_routing_criteria_step() :: #{
+%%   <<"AgentCriteria">> => searchable_agent_criteria_step()
+%% }
+-type searchable_routing_criteria_step() :: #{binary() => any()}.
+
+
+%% Example:
 %% task_template_default_field_value() :: #{
 %%   <<"DefaultValue">> => string(),
 %%   <<"Id">> => task_template_field_identifier()
@@ -2581,6 +2597,13 @@
 
 
 %% Example:
+%% searchable_routing_criteria() :: #{
+%%   <<"Steps">> => list(searchable_routing_criteria_step())
+%% }
+-type searchable_routing_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% segment_attribute_value() :: #{
 %%   <<"ValueArn">> => string(),
 %%   <<"ValueInteger">> => integer(),
@@ -2700,6 +2723,14 @@
 
 
 %% Example:
+%% search_contacts_additional_time_range_criteria() :: #{
+%%   <<"TimeRange">> => search_contacts_time_range(),
+%%   <<"TimestampCondition">> => search_contacts_timestamp_condition()
+%% }
+-type search_contacts_additional_time_range_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_contact_streaming_request() :: #{
 %%   <<"ChatStreamingConfiguration">> := chat_streaming_configuration(),
 %%   <<"ClientToken">> := string(),
@@ -2761,6 +2792,16 @@
 %%   <<"Id">> => string()
 %% }
 -type queue_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_profile_manual_assignment_queue_config_summary() :: #{
+%%   <<"Channel">> => list(any()),
+%%   <<"QueueArn">> => string(),
+%%   <<"QueueId">> => string(),
+%%   <<"QueueName">> => string()
+%% }
+-type routing_profile_manual_assignment_queue_config_summary() :: #{binary() => any()}.
 
 %% Example:
 %% delete_push_notification_registration_response() :: #{}
@@ -2903,6 +2944,7 @@
 
 %% Example:
 %% contact_search_summary_segment_attribute_value() :: #{
+%%   <<"ValueMap">> => map(),
 %%   <<"ValueString">> => string()
 %% }
 -type contact_search_summary_segment_attribute_value() :: #{binary() => any()}.
@@ -3228,6 +3270,14 @@
 
 
 %% Example:
+%% search_contacts_timestamp_condition() :: #{
+%%   <<"ConditionType">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type search_contacts_timestamp_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_traffic_distribution_group_user_request() :: #{
 %%   <<"InstanceId">> := string(),
 %%   <<"UserId">> := string()
@@ -3394,7 +3444,8 @@
 
 %% Example:
 %% associate_routing_profile_queues_request() :: #{
-%%   <<"QueueConfigs">> := list(routing_profile_queue_config())
+%%   <<"ManualAssignmentQueueConfigs">> => list(routing_profile_manual_assignment_queue_config()),
+%%   <<"QueueConfigs">> => list(routing_profile_queue_config())
 %% }
 -type associate_routing_profile_queues_request() :: #{binary() => any()}.
 
@@ -3975,7 +4026,8 @@
 
 %% Example:
 %% disassociate_routing_profile_queues_request() :: #{
-%%   <<"QueueReferences">> := list(routing_profile_queue_reference())
+%%   <<"ManualAssignmentQueueReferences">> => list(routing_profile_queue_reference()),
+%%   <<"QueueReferences">> => list(routing_profile_queue_reference())
 %% }
 -type disassociate_routing_profile_queues_request() :: #{binary() => any()}.
 
@@ -4691,6 +4743,14 @@
 %%   <<"TagConditions">> => list(tag_condition())
 %% }
 -type attribute_and_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% searchable_agent_criteria_step() :: #{
+%%   <<"AgentIds">> => list(string()),
+%%   <<"MatchType">> => list(any())
+%% }
+-type searchable_agent_criteria_step() :: #{binary() => any()}.
 
 %% Example:
 %% delete_contact_flow_module_response() :: #{}
@@ -6527,8 +6587,10 @@
 %%   <<"InitialContactId">> => string(),
 %%   <<"InitiationMethod">> => list(any()),
 %%   <<"InitiationTimestamp">> => non_neg_integer(),
+%%   <<"Name">> => string(),
 %%   <<"PreviousContactId">> => string(),
 %%   <<"QueueInfo">> => contact_search_summary_queue_info(),
+%%   <<"RoutingCriteria">> => routing_criteria(),
 %%   <<"ScheduledTimestamp">> => non_neg_integer(),
 %%   <<"SegmentAttributes">> => map()
 %% }
@@ -7008,6 +7070,14 @@
 
 
 %% Example:
+%% name_criteria() :: #{
+%%   <<"MatchType">> => list(any()),
+%%   <<"SearchText">> => list(string())
+%% }
+-type name_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_vocabulary_response() :: #{
 %%   <<"Vocabulary">> => vocabulary()
 %% }
@@ -7082,6 +7152,14 @@
 %%   <<"Id">> => string()
 %% }
 -type contact_search_summary_queue_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contacts_additional_time_range() :: #{
+%%   <<"Criteria">> => list(search_contacts_additional_time_range_criteria()),
+%%   <<"MatchType">> => list(any())
+%% }
+-type search_contacts_additional_time_range() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7170,6 +7248,16 @@
 %%   <<"Score">> => evaluation_score()
 %% }
 -type evaluation_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_routing_profile_manual_assignment_queues_response() :: #{
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RoutingProfileManualAssignmentQueueConfigSummaryList">> => list(routing_profile_manual_assignment_queue_config_summary())
+%% }
+-type list_routing_profile_manual_assignment_queues_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7401,6 +7489,7 @@
 %% Example:
 %% routing_profile() :: #{
 %%   <<"AgentAvailabilityTimer">> => list(any()),
+%%   <<"AssociatedManualAssignmentQueueIds">> => list(string()),
 %%   <<"AssociatedQueueIds">> => list(string()),
 %%   <<"DefaultOutboundQueueId">> => string(),
 %%   <<"Description">> => string(),
@@ -7410,6 +7499,7 @@
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"MediaConcurrencies">> => list(media_concurrency()),
 %%   <<"Name">> => string(),
+%%   <<"NumberOfAssociatedManualAssignmentQueues">> => float(),
 %%   <<"NumberOfAssociatedQueues">> => float(),
 %%   <<"NumberOfAssociatedUsers">> => float(),
 %%   <<"RoutingProfileArn">> => string(),
@@ -7439,6 +7529,7 @@
 %%   <<"AgentAvailabilityTimer">> => list(any()),
 %%   <<"DefaultOutboundQueueId">> := string(),
 %%   <<"Description">> := string(),
+%%   <<"ManualAssignmentQueueConfigs">> => list(routing_profile_manual_assignment_queue_config()),
 %%   <<"MediaConcurrencies">> := list(media_concurrency()),
 %%   <<"Name">> := string(),
 %%   <<"QueueConfigs">> => list(routing_profile_queue_config()),
@@ -7516,12 +7607,15 @@
 
 %% Example:
 %% search_criteria() :: #{
+%%   <<"AdditionalTimeRange">> => search_contacts_additional_time_range(),
 %%   <<"AgentHierarchyGroups">> => agent_hierarchy_groups(),
 %%   <<"AgentIds">> => list(string()),
 %%   <<"Channels">> => list(list(any())()),
 %%   <<"ContactAnalysis">> => contact_analysis(),
 %%   <<"InitiationMethods">> => list(list(any())()),
+%%   <<"Name">> => name_criteria(),
 %%   <<"QueueIds">> => list(string()),
+%%   <<"RoutingCriteria">> => searchable_routing_criteria(),
 %%   <<"SearchableContactAttributes">> => searchable_contact_attributes(),
 %%   <<"SearchableSegmentAttributes">> => searchable_segment_attributes()
 %% }
@@ -7597,6 +7691,13 @@
 %%   <<"Id">> => string()
 %% }
 -type create_task_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_contact_with_user_request() :: #{
+%%   <<"UserId">> := string()
+%% }
+-type associate_contact_with_user_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7861,6 +7962,13 @@
 
 
 %% Example:
+%% routing_profile_manual_assignment_queue_config() :: #{
+%%   <<"QueueReference">> => routing_profile_queue_reference()
+%% }
+-type routing_profile_manual_assignment_queue_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_realtime_contact_analysis_segments_v2_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -8118,6 +8226,14 @@
 
 
 %% Example:
+%% list_routing_profile_manual_assignment_queues_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_routing_profile_manual_assignment_queues_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% instance_storage_config() :: #{
 %%   <<"AssociationId">> => string(),
 %%   <<"KinesisFirehoseConfig">> => kinesis_firehose_config(),
@@ -8202,6 +8318,14 @@
     limit_exceeded_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type associate_contact_with_user_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -9423,6 +9547,13 @@
     internal_service_exception() | 
     output_type_not_found_exception().
 
+-type list_routing_profile_manual_assignment_queues_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type list_routing_profile_queues_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -10438,6 +10569,85 @@ associate_bot(Client, InstanceId, Input) ->
 associate_bot(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bot"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a queued contact with an agent.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% Custom contact routing. You can build custom contact routing mechanisms
+%% beyond the default
+%% system routing in Amazon Connect. You can create tailored contact
+%% distribution logic that
+%% offers queued contacts directly to specific agents.
+%%
+%% Manual contact assignment. You can programmatically assign queued contacts
+%% to available users. This
+%% provides flexibility to contact centers that require manual oversight or
+%% specialized routing
+%% workflows outside of standard queue management.
+%%
+%% For information about how manual contact assignment works in the agent
+%% workspace, see the Access the Worklist app in the Amazon Connect agent
+%% workspace:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/worklist-app.html in
+%% the Amazon Connect Administrator
+%% Guide.
+%%
+%% Important things to know
+%%
+%% Use this API chat/SMS, email, and task contacts. It does not support voice
+%% contacts.
+%%
+%% Use it to associate contacts with users regardless of their current state,
+%% including
+%% custom states. Ensure your application logic accounts for user
+%% availability before making
+%% associations.
+%%
+%% It honors the IAM context key `connect:PreferredUserArn' to prevent
+%% unauthorized contact associations.
+%%
+%% It respects the IAM context key `connect:PreferredUserArn' to enforce
+%% authorization controls and prevent unauthorized contact associations.
+%% Verify that your IAM
+%% policies are properly configured to support your intended use cases.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+-spec associate_contact_with_user(aws_client:aws_client(), binary() | list(), binary() | list(), associate_contact_with_user_request()) ->
+    {ok, associate_contact_with_user_response(), tuple()} |
+    {error, any()} |
+    {error, associate_contact_with_user_errors(), tuple()}.
+associate_contact_with_user(Client, ContactId, InstanceId, Input) ->
+    associate_contact_with_user(Client, ContactId, InstanceId, Input, []).
+
+-spec associate_contact_with_user(aws_client:aws_client(), binary() | list(), binary() | list(), associate_contact_with_user_request(), proplists:proplist()) ->
+    {ok, associate_contact_with_user_response(), tuple()} |
+    {error, any()} |
+    {error, associate_contact_with_user_errors(), tuple()}.
+associate_contact_with_user(Client, ContactId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), "/associate-user"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -15280,8 +15490,8 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 %%
 %% For more information, see the Position in queue:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/metrics-definitions.html
-%% metric in the
-%% Amazon Connect Administrator Guide.
+%% metric in
+%% the Amazon Connect Administrator Guide.
 %%
 %% Endpoints: See Amazon Connect endpoints and
 %% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
@@ -17383,6 +17593,76 @@ list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the manual assignment queues associated with a routing profile.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% This API returns list of queues where contacts can be manually assigned or
+%% picked. The
+%% user can additionally filter on queues, if they have access to those
+%% queues (otherwise a
+%% invalid request exception will be thrown).
+%%
+%% For information about how manual contact assignment works in the agent
+%% workspace, see the Access the Worklist app in the Amazon Connect agent
+%% workspace:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/worklist-app.html in
+%% the Amazon Connect Administrator
+%% Guide.
+%%
+%% Important things to know
+%%
+%% This API only returns the manual assignment queues associated with a
+%% routing profile. Use
+%% the ListRoutingProfileQueues API to list the auto assignment queues for
+%% the routing
+%% profile.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+-spec list_routing_profile_manual_assignment_queues(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_routing_profile_manual_assignment_queues_response(), tuple()} |
+    {error, any()} |
+    {error, list_routing_profile_manual_assignment_queues_errors(), tuple()}.
+list_routing_profile_manual_assignment_queues(Client, InstanceId, RoutingProfileId)
+  when is_map(Client) ->
+    list_routing_profile_manual_assignment_queues(Client, InstanceId, RoutingProfileId, #{}, #{}).
+
+-spec list_routing_profile_manual_assignment_queues(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_routing_profile_manual_assignment_queues_response(), tuple()} |
+    {error, any()} |
+    {error, list_routing_profile_manual_assignment_queues_errors(), tuple()}.
+list_routing_profile_manual_assignment_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_routing_profile_manual_assignment_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, []).
+
+-spec list_routing_profile_manual_assignment_queues(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_routing_profile_manual_assignment_queues_response(), tuple()} |
+    {error, any()} |
+    {error, list_routing_profile_manual_assignment_queues_errors(), tuple()}.
+list_routing_profile_manual_assignment_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/manual-assignment-queues"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the queues associated with a routing profile.
 -spec list_routing_profile_queues(aws_client:aws_client(), binary() | list(), binary() | list()) ->

@@ -45,6 +45,13 @@
 
 
 %% Example:
+%% speaker_labeling_configuration() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type speaker_labeling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_data_automation_project_response() :: #{
 %%   <<"projectArn">> => string(),
 %%   <<"status">> => list(any())
@@ -151,6 +158,13 @@
 %%   <<"video">> => video_override_configuration()
 %% }
 -type override_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_extraction_category_type_configuration() :: #{
+%%   <<"transcript">> => transcript_configuration()
+%% }
+-type audio_extraction_category_type_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -315,6 +329,13 @@
 
 
 %% Example:
+%% channel_labeling_configuration() :: #{
+%%   <<"state">> => list(any())
+%% }
+-type channel_labeling_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -375,6 +396,7 @@
 %% Example:
 %% audio_extraction_category() :: #{
 %%   <<"state">> => list(any()),
+%%   <<"typeConfiguration">> => audio_extraction_category_type_configuration(),
 %%   <<"types">> => list(list(any())())
 %% }
 -type audio_extraction_category() :: #{binary() => any()}.
@@ -484,6 +506,14 @@
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% transcript_configuration() :: #{
+%%   <<"channelLabeling">> => channel_labeling_configuration(),
+%%   <<"speakerLabeling">> => speaker_labeling_configuration()
+%% }
+-type transcript_configuration() :: #{binary() => any()}.
 
 
 %% Example:
