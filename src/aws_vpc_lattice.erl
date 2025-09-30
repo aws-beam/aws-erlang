@@ -2,14 +2,12 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon VPC Lattice is a fully managed application networking service
-%% that you use to connect, secure,
-%% and monitor all of your services across multiple accounts and virtual
-%% private clouds (VPCs).
+%% that you use to connect, secure, and monitor all of your services across
+%% multiple accounts and virtual private clouds (VPCs).
 %%
 %% Amazon VPC Lattice interconnects your microservices and legacy services
-%% within a logical boundary, so that
-%% you can discover and manage them more efficiently. For more information,
-%% see the Amazon VPC Lattice User Guide:
+%% within a logical boundary, so that you can discover and manage them more
+%% efficiently. For more information, see the Amazon VPC Lattice User Guide:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/
 -module(aws_vpc_lattice).
 
@@ -379,6 +377,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => string(),
+%%   <<"ipv4AddressesPerEni">> => integer(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"securityGroupIds">> => list(string()),
@@ -580,11 +579,12 @@
 %% create_resource_gateway_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"ipAddressType">> => string(),
+%%   <<"ipv4AddressesPerEni">> => integer(),
 %%   <<"name">> := string(),
 %%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> := list(string()),
+%%   <<"subnetIds">> => list(string()),
 %%   <<"tags">> => map(),
-%%   <<"vpcIdentifier">> := string()
+%%   <<"vpcIdentifier">> => string()
 %% }
 -type create_resource_gateway_request() :: #{binary() => any()}.
 
@@ -745,6 +745,7 @@
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => string(),
+%%   <<"ipv4AddressesPerEni">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
@@ -907,6 +908,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => string(),
+%%   <<"ipv4AddressesPerEni">> => integer(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"securityGroupIds">> => list(string()),
@@ -1600,6 +1602,7 @@
 
 %% Example:
 %% list_service_network_resource_associations_request() :: #{
+%%   <<"includeChildren">> => [boolean()],
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"resourceConfigurationIdentifier">> => string(),
@@ -2314,7 +2317,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_rule_errors() ::
     throttling_exception() | 
@@ -2365,15 +2369,12 @@
 
 %% @doc Updates the listener rules in a batch.
 %%
-%% You can use this operation to change the priority of
-%% listener rules. This can be useful when bulk updating or swapping rule
-%% priority.
+%% You can use this operation to change the priority of listener rules. This
+%% can be useful when bulk updating or swapping rule priority.
 %%
-%% Required permissions:
-%% `vpc-lattice:UpdateRule'
+%% Required permissions: `vpc-lattice:UpdateRule'
 %%
-%% For more information, see How Amazon VPC Lattice works with
-%% IAM:
+%% For more information, see How Amazon VPC Lattice works with IAM:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/security_iam_service-with-iam.html
 %% in the Amazon VPC Lattice User Guide.
 -spec batch_update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), batch_update_rule_request()) ->
@@ -2412,17 +2413,13 @@ batch_update_rule(Client, ListenerIdentifier, ServiceIdentifier, Input0, Options
 %% @doc Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and
 %% Amazon Kinesis Data Firehose.
 %%
-%% The service network owner
-%% can use the access logs to audit the services in the network. The service
-%% network owner can only
-%% see access logs from clients and services that are associated with their
-%% service network. Access
-%% log entries represent traffic originated from VPCs associated with that
-%% network. For more
-%% information, see Access logs:
+%% The service network owner can use the access logs to audit the services in
+%% the network. The service network owner can only see access logs from
+%% clients and services that are associated with their service network.
+%% Access log entries represent traffic originated from VPCs associated with
+%% that network. For more information, see Access logs:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/monitoring-access-logs.html
-%% in the
-%% Amazon VPC Lattice User Guide.
+%% in the Amazon VPC Lattice User Guide.
 -spec create_access_log_subscription(aws_client:aws_client(), create_access_log_subscription_request()) ->
     {ok, create_access_log_subscription_response(), tuple()} |
     {error, any()} |
@@ -2458,10 +2455,9 @@ create_access_log_subscription(Client, Input0, Options0) ->
 
 %% @doc Creates a listener for a service.
 %%
-%% Before you start using your Amazon VPC Lattice service, you must
-%% add one or more listeners. A listener is a process that checks for
-%% connection requests to your
-%% services. For more information, see Listeners:
+%% Before you start using your Amazon VPC Lattice service, you must add one
+%% or more listeners. A listener is a process that checks for connection
+%% requests to your services. For more information, see Listeners:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html in the
 %% Amazon VPC Lattice User Guide.
 -spec create_listener(aws_client:aws_client(), binary() | list(), create_listener_request()) ->
@@ -2499,9 +2495,8 @@ create_listener(Client, ServiceIdentifier, Input0, Options0) ->
 
 %% @doc Creates a resource configuration.
 %%
-%% A resource configuration defines a specific resource. You
-%% can associate a resource configuration with a service network or a VPC
-%% endpoint.
+%% A resource configuration defines a specific resource. You can associate a
+%% resource configuration with a service network or a VPC endpoint.
 -spec create_resource_configuration(aws_client:aws_client(), create_resource_configuration_request()) ->
     {ok, create_resource_configuration_response(), tuple()} |
     {error, any()} |
@@ -2535,7 +2530,13 @@ create_resource_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a resource gateway.
+%% @doc A resource gateway is a point of ingress into the VPC where a
+%% resource resides.
+%%
+%% It spans multiple Availability Zones. For your resource to be accessible
+%% from all Availability Zones, you should create your resource gateways to
+%% span as many Availability Zones as possible. A VPC can have multiple
+%% resource gateways.
 -spec create_resource_gateway(aws_client:aws_client(), create_resource_gateway_request()) ->
     {ok, create_resource_gateway_response(), tuple()} |
     {error, any()} |
@@ -2571,13 +2572,12 @@ create_resource_gateway(Client, Input0, Options0) ->
 
 %% @doc Creates a listener rule.
 %%
-%% Each listener has a default rule for checking connection requests,
-%% but you can define additional rules. Each rule consists of a priority, one
-%% or more actions, and
-%% one or more conditions. For more information, see Listener rules:
+%% Each listener has a default rule for checking connection requests, but you
+%% can define additional rules. Each rule consists of a priority, one or more
+%% actions, and one or more conditions. For more information, see Listener
+%% rules:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
-%% in the
-%% Amazon VPC Lattice User Guide.
+%% in the Amazon VPC Lattice User Guide.
 -spec create_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_rule_request()) ->
     {ok, create_rule_response(), tuple()} |
     {error, any()} |
@@ -2655,13 +2655,12 @@ create_service(Client, Input0, Options0) ->
 
 %% @doc Creates a service network.
 %%
-%% A service network is a logical boundary for a collection of
-%% services. You can associate services and VPCs with a service network.
+%% A service network is a logical boundary for a collection of services. You
+%% can associate services and VPCs with a service network.
 %%
 %% For more information, see Service networks:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html in
-%% the
-%% Amazon VPC Lattice User Guide.
+%% the Amazon VPC Lattice User Guide.
 -spec create_service_network(aws_client:aws_client(), create_service_network_request()) ->
     {ok, create_service_network_response(), tuple()} |
     {error, any()} |
@@ -2699,8 +2698,7 @@ create_service_network(Client, Input0, Options0) ->
 %% configuration.
 %%
 %% This allows the resource configuration to receive connections through the
-%% service network,
-%% including through a service network VPC endpoint.
+%% service network, including through a service network VPC endpoint.
 -spec create_service_network_resource_association(aws_client:aws_client(), create_service_network_resource_association_request()) ->
     {ok, create_service_network_resource_association_response(), tuple()} |
     {error, any()} |
@@ -2736,24 +2734,20 @@ create_service_network_resource_association(Client, Input0, Options0) ->
 
 %% @doc Associates the specified service with the specified service network.
 %%
-%% For more information, see
-%% Manage service associations:
+%% For more information, see Manage service associations:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-service-associations
 %% in the Amazon VPC Lattice User Guide.
 %%
 %% You can't use this operation if the service and service network are
-%% already associated or if
-%% there is a disassociation or deletion in progress. If the association
-%% fails, you can retry the
-%% operation by deleting the association and recreating it.
+%% already associated or if there is a disassociation or deletion in
+%% progress. If the association fails, you can retry the operation by
+%% deleting the association and recreating it.
 %%
 %% You cannot associate a service and service network that are shared with a
-%% caller. The caller
-%% must own either the service or the service network.
+%% caller. The caller must own either the service or the service network.
 %%
 %% As a result of this operation, the association is created in the service
-%% network account and
-%% the association owner account.
+%% network account and the association owner account.
 -spec create_service_network_service_association(aws_client:aws_client(), create_service_network_service_association_request()) ->
     {ok, create_service_network_service_association_response(), tuple()} |
     {error, any()} |
@@ -2789,28 +2783,25 @@ create_service_network_service_association(Client, Input0, Options0) ->
 
 %% @doc Associates a VPC with a service network.
 %%
-%% When you associate a VPC with the service network,
-%% it enables all the resources within that VPC to be clients and communicate
-%% with other services in
-%% the service network. For more information, see Manage VPC associations:
+%% When you associate a VPC with the service network, it enables all the
+%% resources within that VPC to be clients and communicate with other
+%% services in the service network. For more information, see Manage VPC
+%% associations:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-network-associations.html#service-network-vpc-associations
 %% in the Amazon VPC Lattice User Guide.
 %%
 %% You can't use this operation if there is a disassociation in progress.
-%% If the association
-%% fails, retry by deleting the association and recreating it.
+%% If the association fails, retry by deleting the association and recreating
+%% it.
 %%
 %% As a result of this operation, the association gets created in the service
-%% network account
-%% and the VPC owner account.
+%% network account and the VPC owner account.
 %%
 %% If you add a security group to the service network and VPC association,
-%% the association must
-%% continue to always have at least one security group. You can add or edit
-%% security groups at any
-%% time. However, to remove all security groups, you must first delete the
-%% association and recreate
-%% it without security groups.
+%% the association must continue to always have at least one security group.
+%% You can add or edit security groups at any time. However, to remove all
+%% security groups, you must first delete the association and recreate it
+%% without security groups.
 -spec create_service_network_vpc_association(aws_client:aws_client(), create_service_network_vpc_association_request()) ->
     {ok, create_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
@@ -2846,14 +2837,13 @@ create_service_network_vpc_association(Client, Input0, Options0) ->
 
 %% @doc Creates a target group.
 %%
-%% A target group is a collection of targets, or compute resources,
-%% that run your application or service. A target group can only be used by a
-%% single service.
+%% A target group is a collection of targets, or compute resources, that run
+%% your application or service. A target group can only be used by a single
+%% service.
 %%
 %% For more information, see Target groups:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/target-groups.html in
-%% the
-%% Amazon VPC Lattice User Guide.
+%% the Amazon VPC Lattice User Guide.
 -spec create_target_group(aws_client:aws_client(), create_target_group_request()) ->
     {ok, create_target_group_response(), tuple()} |
     {error, any()} |
@@ -2923,12 +2913,10 @@ delete_access_log_subscription(Client, AccessLogSubscriptionIdentifier, Input0, 
 
 %% @doc Deletes the specified auth policy.
 %%
-%% If an auth is set to `AWS_IAM' and the auth
-%% policy is deleted, all requests are denied. If you are trying to remove
-%% the auth policy
+%% If an auth is set to `AWS_IAM' and the auth policy is deleted, all
+%% requests are denied. If you are trying to remove the auth policy
 %% completely, you must set the auth type to `NONE'. If auth is enabled
-%% on the resource,
-%% but no auth policy is set, all requests are denied.
+%% on the resource, but no auth policy is set, all requests are denied.
 -spec delete_auth_policy(aws_client:aws_client(), binary() | list(), delete_auth_policy_request()) ->
     {ok, delete_auth_policy_response(), tuple()} |
     {error, any()} |
@@ -3135,17 +3123,14 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Deletes a listener rule.
 %%
-%% Each listener has a default rule for checking connection requests,
-%% but you can define additional rules. Each rule consists of a priority, one
-%% or more actions, and
-%% one or more conditions. You can delete additional listener rules, but you
-%% cannot delete the
-%% default rule.
+%% Each listener has a default rule for checking connection requests, but you
+%% can define additional rules. Each rule consists of a priority, one or more
+%% actions, and one or more conditions. You can delete additional listener
+%% rules, but you cannot delete the default rule.
 %%
 %% For more information, see Listener rules:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
-%% in the
-%% Amazon VPC Lattice User Guide.
+%% in the Amazon VPC Lattice User Guide.
 -spec delete_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_rule_request()) ->
     {ok, delete_rule_response(), tuple()} |
     {error, any()} |
@@ -3182,15 +3167,12 @@ delete_rule(Client, ListenerIdentifier, RuleIdentifier, ServiceIdentifier, Input
 %% @doc Deletes a service.
 %%
 %% A service can't be deleted if it's associated with a service
-%% network. If
-%% you delete a service, all resources related to the service, such as the
-%% resource policy, auth
-%% policy, listeners, listener rules, and access log subscriptions, are also
-%% deleted. For more
-%% information, see Delete a service:
+%% network. If you delete a service, all resources related to the service,
+%% such as the resource policy, auth policy, listeners, listener rules, and
+%% access log subscriptions, are also deleted. For more information, see
+%% Delete a service:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/services.html#delete-service
-%% in the
-%% Amazon VPC Lattice User Guide.
+%% in the Amazon VPC Lattice User Guide.
 -spec delete_service(aws_client:aws_client(), binary() | list(), delete_service_request()) ->
     {ok, delete_service_response(), tuple()} |
     {error, any()} |
@@ -3226,13 +3208,11 @@ delete_service(Client, ServiceIdentifier, Input0, Options0) ->
 
 %% @doc Deletes a service network.
 %%
-%% You can only delete the service network if there is no service or
-%% VPC associated with it. If you delete a service network, all resources
-%% related to the service
-%% network, such as the resource policy, auth policy, and access log
-%% subscriptions, are also
-%% deleted. For more information, see Delete a service
-%% network:
+%% You can only delete the service network if there is no service or VPC
+%% associated with it. If you delete a service network, all resources related
+%% to the service network, such as the resource policy, auth policy, and
+%% access log subscriptions, are also deleted. For more information, see
+%% Delete a service network:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html#delete-service-network
 %% in the Amazon VPC Lattice User Guide.
 -spec delete_service_network(aws_client:aws_client(), binary() | list(), delete_service_network_request()) ->
@@ -3305,8 +3285,7 @@ delete_service_network_resource_association(Client, ServiceNetworkResourceAssoci
 
 %% @doc Deletes the association between a service and a service network.
 %%
-%% This
-%% operation fails if an association is still in progress.
+%% This operation fails if an association is still in progress.
 -spec delete_service_network_service_association(aws_client:aws_client(), binary() | list(), delete_service_network_service_association_request()) ->
     {ok, delete_service_network_service_association_response(), tuple()} |
     {error, any()} |
@@ -3342,8 +3321,8 @@ delete_service_network_service_association(Client, ServiceNetworkServiceAssociat
 
 %% @doc Disassociates the VPC from the service network.
 %%
-%% You can't disassociate the VPC if there is a
-%% create or update association in progress.
+%% You can't disassociate the VPC if there is a create or update
+%% association in progress.
 -spec delete_service_network_vpc_association(aws_client:aws_client(), binary() | list(), delete_service_network_vpc_association_request()) ->
     {ok, delete_service_network_vpc_association_response(), tuple()} |
     {error, any()} |
@@ -3379,8 +3358,8 @@ delete_service_network_vpc_association(Client, ServiceNetworkVpcAssociationIdent
 
 %% @doc Deletes a target group.
 %%
-%% You can't delete a target group if it is used in a listener rule or
-%% if the target group creation is in progress.
+%% You can't delete a target group if it is used in a listener rule or if
+%% the target group creation is in progress.
 -spec delete_target_group(aws_client:aws_client(), binary() | list(), delete_target_group_request()) ->
     {ok, delete_target_group_response(), tuple()} |
     {error, any()} |
@@ -3486,8 +3465,7 @@ get_access_log_subscription(Client, AccessLogSubscriptionIdentifier, QueryMap, H
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the auth policy for the specified service
-%% or service
-%% network.
+%% or service network.
 -spec get_auth_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_auth_policy_response(), tuple()} |
     {error, any()} |
@@ -3638,8 +3616,8 @@ get_resource_gateway(Client, ResourceGatewayIdentifier, QueryMap, HeadersMap, Op
 
 %% @doc Retrieves information about the specified resource policy.
 %%
-%% The resource policy is an IAM policy
-%% created on behalf of the resource owner when they share a resource.
+%% The resource policy is an IAM policy created on behalf of the resource
+%% owner when they share a resource.
 -spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -3678,11 +3656,10 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves information about the specified listener rules.
 %%
-%% You can also retrieve information about the
-%% default listener rule. For more information, see Listener rules:
+%% You can also retrieve information about the default listener rule. For
+%% more information, see Listener rules:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/listeners.html#listener-rules
-%% in the
-%% Amazon VPC Lattice User Guide.
+%% in the Amazon VPC Lattice User Guide.
 -spec get_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_rule_response(), tuple()} |
     {error, any()} |
@@ -4242,6 +4219,7 @@ list_service_network_resource_associations(Client, QueryMap, HeadersMap, Options
 
     Query0_ =
       [
+        {<<"includeChildren">>, maps:get(<<"includeChildren">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"resourceConfigurationIdentifier">>, maps:get(<<"resourceConfigurationIdentifier">>, QueryMap, undefined)},
@@ -4253,18 +4231,14 @@ list_service_network_resource_associations(Client, QueryMap, HeadersMap, Options
 
 %% @doc Lists the associations between a service network and a service.
 %%
-%% You can filter the list
-%% either by service or service network. You must provide either the service
-%% network identifier or
-%% the service identifier.
+%% You can filter the list either by service or service network. You must
+%% provide either the service network identifier or the service identifier.
 %%
 %% Every association in Amazon VPC Lattice has a unique Amazon Resource Name
-%% (ARN), such as when a
-%% service network is associated with a VPC or when a service is associated
-%% with a service network.
-%% If the association is for a resource is shared with another account, the
-%% association
-%% includes the local account ID as the prefix in the ARN.
+%% (ARN), such as when a service network is associated with a VPC or when a
+%% service is associated with a service network. If the association is for a
+%% resource is shared with another account, the association includes the
+%% local account ID as the prefix in the ARN.
 -spec list_service_network_service_associations(aws_client:aws_client()) ->
     {ok, list_service_network_service_associations_response(), tuple()} |
     {error, any()} |
@@ -4310,9 +4284,8 @@ list_service_network_service_associations(Client, QueryMap, HeadersMap, Options0
 
 %% @doc Lists the associations between a service network and a VPC.
 %%
-%% You can filter the list either by VPC or
-%% service network. You must provide either the ID of the service network
-%% identifier or the ID of the VPC.
+%% You can filter the list either by VPC or service network. You must provide
+%% either the ID of the service network identifier or the ID of the VPC.
 -spec list_service_network_vpc_associations(aws_client:aws_client()) ->
     {ok, list_service_network_vpc_associations_response(), tuple()} |
     {error, any()} |
@@ -4401,8 +4374,7 @@ list_service_network_vpc_endpoint_associations(Client, ServiceNetworkIdentifier,
 
 %% @doc Lists the service networks owned by or shared with this account.
 %%
-%% The account ID in the ARN
-%% shows which account owns the service network.
+%% The account ID in the ARN shows which account owns the service network.
 -spec list_service_networks(aws_client:aws_client()) ->
     {ok, list_service_networks_response(), tuple()} |
     {error, any()} |
@@ -4526,8 +4498,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists your target groups.
 %%
-%% You can narrow your search by using the filters below in your
-%% request.
+%% You can narrow your search by using the filters below in your request.
 -spec list_target_groups(aws_client:aws_client()) ->
     {ok, list_target_groups_response(), tuple()} |
     {error, any()} |
@@ -4573,9 +4544,8 @@ list_target_groups(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the targets for the target group.
 %%
-%% By default, all targets are included. You can use
-%% this API to check the health status of targets. You can also ﬁlter the
-%% results by target.
+%% By default, all targets are included. You can use this API to check the
+%% health status of targets. You can also ﬁlter the results by target.
 -spec list_targets(aws_client:aws_client(), binary() | list(), list_targets_request()) ->
     {ok, list_targets_response(), tuple()} |
     {error, any()} |
@@ -4613,13 +4583,11 @@ list_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
 
 %% @doc Creates or updates the auth policy.
 %%
-%% The policy string in JSON must not contain newlines or
-%% blank lines.
+%% The policy string in JSON must not contain newlines or blank lines.
 %%
 %% For more information, see Auth policies:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/auth-policies.html in
-%% the Amazon VPC
-%% Lattice User Guide.
+%% the Amazon VPC Lattice User Guide.
 -spec put_auth_policy(aws_client:aws_client(), binary() | list(), put_auth_policy_request()) ->
     {ok, put_auth_policy_response(), tuple()} |
     {error, any()} |
@@ -4656,10 +4624,9 @@ put_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
 %% @doc Attaches a resource-based permission policy to a service or service
 %% network.
 %%
-%% The policy must
-%% contain the same actions and condition statements as the Amazon Web
-%% Services Resource Access
-%% Manager permission for sharing services and service networks.
+%% The policy must contain the same actions and condition statements as the
+%% Amazon Web Services Resource Access Manager permission for sharing
+%% services and service networks.
 -spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -4695,8 +4662,8 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Registers the targets with the target group.
 %%
-%% If it's a Lambda target, you can only have one
-%% target in a target group.
+%% If it's a Lambda target, you can only have one target in a target
+%% group.
 -spec register_targets(aws_client:aws_client(), binary() | list(), register_targets_request()) ->
     {ok, register_targets_response(), tuple()} |
     {error, any()} |
@@ -4937,8 +4904,8 @@ update_resource_gateway(Client, ResourceGatewayIdentifier, Input0, Options0) ->
 
 %% @doc Updates a specified rule for the listener.
 %%
-%% You can't modify a default listener rule. To modify a
-%% default listener rule, use `UpdateListener'.
+%% You can't modify a default listener rule. To modify a default listener
+%% rule, use `UpdateListener'.
 -spec update_rule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_rule_request()) ->
     {ok, update_rule_response(), tuple()} |
     {error, any()} |
@@ -5042,12 +5009,10 @@ update_service_network(Client, ServiceNetworkIdentifier, Input0, Options0) ->
 
 %% @doc Updates the service network and VPC association.
 %%
-%% If you add a security group to the service
-%% network and VPC association, the association must continue to have at
-%% least one security
-%% group. You can add or edit security groups at any time. However, to remove
-%% all security groups,
-%% you must first delete the association and then recreate it without
+%% If you add a security group to the service network and VPC association,
+%% the association must continue to have at least one security group. You can
+%% add or edit security groups at any time. However, to remove all security
+%% groups, you must first delete the association and then recreate it without
 %% security groups.
 -spec update_service_network_vpc_association(aws_client:aws_client(), binary() | list(), update_service_network_vpc_association_request()) ->
     {ok, update_service_network_vpc_association_response(), tuple()} |

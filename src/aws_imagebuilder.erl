@@ -282,6 +282,7 @@
 %% import_vm_image_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"description">> => string(),
+%%   <<"loggingConfiguration">> => image_logging_configuration(),
 %%   <<"name">> := string(),
 %%   <<"osVersion">> => string(),
 %%   <<"platform">> := list(any()),
@@ -546,6 +547,7 @@
 %% Example:
 %% image_pipeline() :: #{
 %%   <<"arn">> => string(),
+%%   <<"consecutiveFailures">> => integer(),
 %%   <<"containerRecipeArn">> => string(),
 %%   <<"dateCreated">> => string(),
 %%   <<"dateLastRun">> => string(),
@@ -559,6 +561,8 @@
 %%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
 %%   <<"imageTestsConfiguration">> => image_tests_configuration(),
 %%   <<"infrastructureConfigurationArn">> => string(),
+%%   <<"lastRunStatus">> => list(any()),
+%%   <<"loggingConfiguration">> => pipeline_logging_configuration(),
 %%   <<"name">> => string(),
 %%   <<"platform">> => list(any()),
 %%   <<"schedule">> => schedule(),
@@ -608,6 +612,13 @@
 %%   <<"lifecyclePolicyArn">> => string()
 %% }
 -type update_lifecycle_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_disable_policy() :: #{
+%%   <<"failureCount">> => integer()
+%% }
+-type auto_disable_policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -680,6 +691,14 @@
 %%   <<"requestId">> => string()
 %% }
 -type get_image_recipe_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pipeline_logging_configuration() :: #{
+%%   <<"imageLogGroupName">> => string(),
+%%   <<"pipelineLogGroupName">> => string()
+%% }
+-type pipeline_logging_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -781,6 +800,7 @@
 %% Example:
 %% create_image_recipe_request() :: #{
 %%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
+%%   <<"amiTags">> => map(),
 %%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"clientToken">> := string(),
 %%   <<"components">> := list(component_configuration()),
@@ -1237,6 +1257,13 @@
 
 
 %% Example:
+%% image_logging_configuration() :: #{
+%%   <<"logGroupName">> => string()
+%% }
+-type image_logging_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_container_recipe_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"components">> := list(component_configuration()),
@@ -1292,6 +1319,7 @@
 %%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
 %%   <<"imageTestsConfiguration">> => image_tests_configuration(),
 %%   <<"infrastructureConfigurationArn">> := string(),
+%%   <<"loggingConfiguration">> => image_logging_configuration(),
 %%   <<"tags">> => map(),
 %%   <<"workflows">> => list(workflow_configuration())
 %% }
@@ -1635,6 +1663,7 @@
 %%   <<"arn">> => string(),
 %%   <<"containerType">> => list(any()),
 %%   <<"dateCreated">> => string(),
+%%   <<"instanceImage">> => string(),
 %%   <<"name">> => string(),
 %%   <<"owner">> => string(),
 %%   <<"parentImage">> => string(),
@@ -1728,6 +1757,7 @@
 %%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
 %%   <<"imageTestsConfiguration">> => image_tests_configuration(),
 %%   <<"infrastructureConfigurationArn">> := string(),
+%%   <<"loggingConfiguration">> => pipeline_logging_configuration(),
 %%   <<"name">> := string(),
 %%   <<"schedule">> => schedule(),
 %%   <<"status">> => list(any()),
@@ -1901,6 +1931,7 @@
 %% Example:
 %% image_recipe() :: #{
 %%   <<"additionalInstanceConfiguration">> => additional_instance_configuration(),
+%%   <<"amiTags">> => map(),
 %%   <<"arn">> => string(),
 %%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"components">> => list(component_configuration()),
@@ -1973,6 +2004,7 @@
 
 %% Example:
 %% schedule() :: #{
+%%   <<"autoDisablePolicy">> => auto_disable_policy(),
 %%   <<"pipelineExecutionStartCondition">> => list(any()),
 %%   <<"scheduleExpression">> => string(),
 %%   <<"timezone">> => string()
@@ -2090,6 +2122,7 @@
 %%   <<"imageTestsConfiguration">> => image_tests_configuration(),
 %%   <<"infrastructureConfiguration">> => infrastructure_configuration(),
 %%   <<"lifecycleExecutionId">> => string(),
+%%   <<"loggingConfiguration">> => image_logging_configuration(),
 %%   <<"name">> => string(),
 %%   <<"osVersion">> => string(),
 %%   <<"outputResources">> => output_resources(),
@@ -2495,6 +2528,7 @@
 %%   <<"imageScanningConfiguration">> => image_scanning_configuration(),
 %%   <<"imageTestsConfiguration">> => image_tests_configuration(),
 %%   <<"infrastructureConfigurationArn">> := string(),
+%%   <<"loggingConfiguration">> => pipeline_logging_configuration(),
 %%   <<"schedule">> => schedule(),
 %%   <<"status">> => list(any()),
 %%   <<"workflows">> => list(workflow_configuration())
@@ -2544,6 +2578,7 @@
 %%   <<"description">> => string(),
 %%   <<"executionRole">> => string(),
 %%   <<"infrastructureConfigurationArn">> := string(),
+%%   <<"loggingConfiguration">> => image_logging_configuration(),
 %%   <<"name">> := string(),
 %%   <<"osVersion">> := string(),
 %%   <<"platform">> := string(),
@@ -2579,6 +2614,7 @@
 %%   <<"deprecationTime">> => non_neg_integer(),
 %%   <<"imageSource">> => list(any()),
 %%   <<"lifecycleExecutionId">> => string(),
+%%   <<"loggingConfiguration">> => image_logging_configuration(),
 %%   <<"name">> => string(),
 %%   <<"osVersion">> => string(),
 %%   <<"outputResources">> => output_resources(),
@@ -2685,7 +2721,8 @@
 %% Example:
 %% start_image_pipeline_execution_request() :: #{
 %%   <<"clientToken">> := string(),
-%%   <<"imagePipelineArn">> := string()
+%%   <<"imagePipelineArn">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type start_image_pipeline_execution_request() :: #{binary() => any()}.
 
