@@ -1218,6 +1218,7 @@
 %%   <<"AwsRegion">> => list(any()),
 %%   <<"IntegrationType">> => list(any()),
 %%   <<"Name">> := string(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"RequireEncryption">> := boolean(),
 %%   <<"Tags">> => list(tag())
 %% }
@@ -1319,6 +1320,7 @@
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
 %%   <<"IntegrationType">> => list(any()),
 %%   <<"Name">> => string(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"OutboundHostName">> => string(),
 %%   <<"RequireEncryption">> => boolean(),
 %%   <<"UpdatedTimestamp">> => non_neg_integer(),

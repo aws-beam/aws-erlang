@@ -211,6 +211,7 @@
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"DirectoryId">> => string(),
 %%   <<"DnsIpAddr">> => string(),
+%%   <<"DnsIpv6Addr">> => string(),
 %%   <<"DomainControllerId">> => string(),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
@@ -265,6 +266,7 @@
 %% create_directory_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"Password">> := string(),
 %%   <<"ShortName">> => string(),
 %%   <<"Size">> := list(any()),
@@ -311,7 +313,8 @@
 %% Example:
 %% update_conditional_forwarder_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"DnsIpAddrs">> := list(string()),
+%%   <<"DnsIpAddrs">> => list(string()),
+%%   <<"DnsIpv6Addrs">> => list(string()),
 %%   <<"RemoteDomainName">> := string()
 %% }
 -type update_conditional_forwarder_request() :: #{binary() => any()}.
@@ -326,6 +329,7 @@
 %% Example:
 %% ip_route() :: #{
 %%   <<"CidrIp">> => string(),
+%%   <<"CidrIpv6">> => string(),
 %%   <<"Description">> => string()
 %% }
 -type ip_route() :: #{binary() => any()}.
@@ -388,6 +392,7 @@
 %% Example:
 %% create_trust_request() :: #{
 %%   <<"ConditionalForwarderIpAddrs">> => list(string()),
+%%   <<"ConditionalForwarderIpv6Addrs">> => list(string()),
 %%   <<"DirectoryId">> := string(),
 %%   <<"RemoteDomainName">> := string(),
 %%   <<"SelectiveAuth">> => list(any()),
@@ -493,9 +498,17 @@
 -type setting_entry() :: #{binary() => any()}.
 
 %% Example:
+%% network_update_settings() :: #{
+%%   <<"CustomerDnsIpsV6">> => list(string()),
+%%   <<"NetworkType">> => list(any())
+%% }
+-type network_update_settings() :: #{binary() => any()}.
+
+%% Example:
 %% create_conditional_forwarder_request() :: #{
 %%   <<"DirectoryId">> := string(),
-%%   <<"DnsIpAddrs">> := list(string()),
+%%   <<"DnsIpAddrs">> => list(string()),
+%%   <<"DnsIpv6Addrs">> => list(string()),
 %%   <<"RemoteDomainName">> := string()
 %% }
 -type create_conditional_forwarder_request() :: #{binary() => any()}.
@@ -805,6 +818,8 @@
 %%   <<"AccountId">> => string(),
 %%   <<"DirectoryId">> => string(),
 %%   <<"DnsIpAddrs">> => list(string()),
+%%   <<"DnsIpv6Addrs">> => list(string()),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"RadiusSettings">> => radius_settings(),
 %%   <<"RadiusStatus">> => list(any()),
 %%   <<"VpcSettings">> => directory_vpc_settings_description()
@@ -913,6 +928,7 @@
 %%   <<"RadiusPort">> => integer(),
 %%   <<"RadiusRetries">> => integer(),
 %%   <<"RadiusServers">> => list(string()),
+%%   <<"RadiusServersIpv6">> => list(string()),
 %%   <<"RadiusTimeout">> => integer(),
 %%   <<"SharedSecret">> => string(),
 %%   <<"UseSameUsername">> => boolean()
@@ -1077,6 +1093,7 @@
 %%   <<"ConnectSettings">> := directory_connect_settings(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"Password">> := string(),
 %%   <<"ShortName">> => string(),
 %%   <<"Size">> := list(any()),
@@ -1147,10 +1164,12 @@
 %%   <<"DesiredNumberOfDomainControllers">> => integer(),
 %%   <<"DirectoryId">> => string(),
 %%   <<"DnsIpAddrs">> => list(string()),
+%%   <<"DnsIpv6Addrs">> => list(string()),
 %%   <<"Edition">> => list(any()),
 %%   <<"HybridSettings">> => hybrid_settings_description(),
 %%   <<"LaunchTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"OsVersion">> => list(any()),
 %%   <<"OwnerDirectoryDescription">> => owner_directory_description(),
 %%   <<"RadiusSettings">> => radius_settings(),
@@ -1207,6 +1226,7 @@
 %% Example:
 %% conditional_forwarder() :: #{
 %%   <<"DnsIpAddrs">> => list(string()),
+%%   <<"DnsIpv6Addrs">> => list(string()),
 %%   <<"RemoteDomainName">> => string(),
 %%   <<"ReplicationScope">> => list(any())
 %% }
@@ -1676,7 +1696,8 @@
 
 %% Example:
 %% remove_ip_routes_request() :: #{
-%%   <<"CidrIps">> := list(string()),
+%%   <<"CidrIps">> => list(string()),
+%%   <<"CidrIpv6s">> => list(string()),
 %%   <<"DirectoryId">> := string()
 %% }
 -type remove_ip_routes_request() :: #{binary() => any()}.
@@ -1790,6 +1811,7 @@
 %% directory_connect_settings_description() :: #{
 %%   <<"AvailabilityZones">> => list(string()),
 %%   <<"ConnectIps">> => list(string()),
+%%   <<"ConnectIpsV6">> => list(string()),
 %%   <<"CustomerUserName">> => string(),
 %%   <<"SecurityGroupId">> => string(),
 %%   <<"SubnetIds">> => list(string()),
@@ -1844,6 +1866,7 @@
 %%   <<"Description">> => string(),
 %%   <<"Edition">> => list(any()),
 %%   <<"Name">> := string(),
+%%   <<"NetworkType">> => list(any()),
 %%   <<"Password">> := string(),
 %%   <<"ShortName">> => string(),
 %%   <<"Tags">> => list(tag()),
@@ -1890,9 +1913,16 @@
 -type disable_directory_data_access_result() :: #{binary() => any()}.
 
 %% Example:
+%% directory_size_update_settings() :: #{
+%%   <<"DirectorySize">> => list(any())
+%% }
+-type directory_size_update_settings() :: #{binary() => any()}.
+
+%% Example:
 %% ip_route_info() :: #{
 %%   <<"AddedDateTime">> => non_neg_integer(),
 %%   <<"CidrIp">> => string(),
+%%   <<"CidrIpv6">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DirectoryId">> => string(),
 %%   <<"IpRouteStatusMsg">> => list(any()),
@@ -1969,6 +1999,7 @@
 %% Example:
 %% directory_connect_settings() :: #{
 %%   <<"CustomerDnsIps">> => list(string()),
+%%   <<"CustomerDnsIpsV6">> => list(string()),
 %%   <<"CustomerUserName">> => string(),
 %%   <<"SubnetIds">> => list(string()),
 %%   <<"VpcId">> => string()
@@ -2009,6 +2040,8 @@
 %% update_directory_setup_request() :: #{
 %%   <<"CreateSnapshotBeforeUpdate">> => boolean(),
 %%   <<"DirectoryId">> := string(),
+%%   <<"DirectorySizeUpdateSettings">> => directory_size_update_settings(),
+%%   <<"NetworkUpdateSettings">> => network_update_settings(),
 %%   <<"OSUpdateSettings">> => o_s_update_settings(),
 %%   <<"UpdateType">> := list(any())
 %% }
@@ -3619,8 +3652,7 @@ disable_client_authentication(Client, Input, Options)
     request(Client, <<"DisableClientAuthentication">>, Input, Options).
 
 %% @doc Deactivates access to directory data via the Directory Service Data
-%% API for the specified
-%% directory.
+%% API for the specified directory.
 %%
 %% For
 %% more information, see Directory Service Data API Reference:
@@ -3659,9 +3691,8 @@ disable_ldaps(Client, Input, Options)
     request(Client, <<"DisableLDAPS">>, Input, Options).
 
 %% @doc Disables multi-factor authentication (MFA) with the Remote
-%% Authentication Dial In
-%% User Service (RADIUS) server for an AD Connector or Microsoft AD
-%% directory.
+%% Authentication Dial In User
+%% Service (RADIUS) server for an AD Connector or Microsoft AD directory.
 -spec disable_radius(aws_client:aws_client(), disable_radius_request()) ->
     {ok, disable_radius_result(), tuple()} |
     {error, any()} |
@@ -4299,7 +4330,7 @@ update_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConditionalForwarder">>, Input, Options).
 
-%% @doc Updates the directory for a particular update type.
+%% @doc Updates directory configuration for the specified update type.
 -spec update_directory_setup(aws_client:aws_client(), update_directory_setup_request()) ->
     {ok, update_directory_setup_result(), tuple()} |
     {error, any()} |
@@ -4381,8 +4412,8 @@ update_number_of_domain_controllers(Client, Input, Options)
     request(Client, <<"UpdateNumberOfDomainControllers">>, Input, Options).
 
 %% @doc Updates the Remote Authentication Dial In User Service (RADIUS)
-%% server information
-%% for an AD Connector or Microsoft AD directory.
+%% server information for
+%% an AD Connector or Microsoft AD directory.
 -spec update_radius(aws_client:aws_client(), update_radius_request()) ->
     {ok, update_radius_result(), tuple()} |
     {error, any()} |

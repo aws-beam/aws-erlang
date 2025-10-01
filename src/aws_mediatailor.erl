@@ -395,6 +395,7 @@
 %%   <<"DelayAfterAvailEndSeconds">> => integer(),
 %%   <<"DynamicVariables">> => map(),
 %%   <<"TrafficShapingRetrievalWindow">> => traffic_shaping_retrieval_window(),
+%%   <<"TrafficShapingTpsConfiguration">> => traffic_shaping_tps_configuration(),
 %%   <<"TrafficShapingType">> => list(any())
 %% }
 -type recurring_retrieval() :: #{binary() => any()}.
@@ -498,6 +499,14 @@
 %%   <<"StartOffsetMillis">> => float()
 %% }
 -type clip_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_shaping_tps_configuration() :: #{
+%%   <<"PeakConcurrentUsers">> => integer(),
+%%   <<"PeakTps">> => integer()
+%% }
+-type traffic_shaping_tps_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -746,6 +755,7 @@
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"TrafficShapingRetrievalWindow">> => traffic_shaping_retrieval_window(),
+%%   <<"TrafficShapingTpsConfiguration">> => traffic_shaping_tps_configuration(),
 %%   <<"TrafficShapingType">> => list(any())
 %% }
 -type prefetch_retrieval() :: #{binary() => any()}.

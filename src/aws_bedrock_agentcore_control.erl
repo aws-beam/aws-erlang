@@ -1312,7 +1312,8 @@
 %%   <<"name">> := string(),
 %%   <<"protocolConfiguration">> => list(),
 %%   <<"protocolType">> := list(any()),
-%%   <<"roleArn">> := string()
+%%   <<"roleArn">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_gateway_request() :: #{binary() => any()}.
 
@@ -3752,6 +3753,9 @@ list_oauth2_credential_providers(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the tags associated with the specified resource.
+%%
+%% This feature is currently available only for AgentCore Runtime, Browser,
+%% Code Interpreter tool, and Gateway.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -3862,6 +3866,9 @@ set_token_vault_cm_k(Client, Input0, Options0) ->
 %% If existing tags on a resource are not specified in the request
 %% parameters, they are not changed. When a resource is deleted, the tags
 %% associated with that resource are also deleted.
+%%
+%% This feature is currently available only for AgentCore Runtime, Browser,
+%% Code Interpreter tool, and Gateway.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -3896,6 +3903,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified resource.
+%%
+%% This feature is currently available only for AgentCore Runtime, Browser,
+%% Code Interpreter tool, and Gateway.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

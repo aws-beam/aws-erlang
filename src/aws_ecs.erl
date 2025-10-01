@@ -156,6 +156,35 @@
 
 
 %% Example:
+%% instance_requirements_request() :: #{
+%%   <<"acceleratorCount">> => accelerator_count_request(),
+%%   <<"acceleratorManufacturers">> => list(list(any())()),
+%%   <<"acceleratorNames">> => list(list(any())()),
+%%   <<"acceleratorTotalMemoryMiB">> => accelerator_total_memory_mi_b_request(),
+%%   <<"acceleratorTypes">> => list(list(any())()),
+%%   <<"allowedInstanceTypes">> => list(string()),
+%%   <<"bareMetal">> => list(any()),
+%%   <<"baselineEbsBandwidthMbps">> => baseline_ebs_bandwidth_mbps_request(),
+%%   <<"burstablePerformance">> => list(any()),
+%%   <<"cpuManufacturers">> => list(list(any())()),
+%%   <<"excludedInstanceTypes">> => list(string()),
+%%   <<"instanceGenerations">> => list(list(any())()),
+%%   <<"localStorage">> => list(any()),
+%%   <<"localStorageTypes">> => list(list(any())()),
+%%   <<"maxSpotPriceAsPercentageOfOptimalOnDemandPrice">> => integer(),
+%%   <<"memoryGiBPerVCpu">> => memory_gi_b_per_v_cpu_request(),
+%%   <<"memoryMiB">> => memory_mi_b_request(),
+%%   <<"networkBandwidthGbps">> => network_bandwidth_gbps_request(),
+%%   <<"networkInterfaceCount">> => network_interface_count_request(),
+%%   <<"onDemandMaxPricePercentageOverLowestPrice">> => integer(),
+%%   <<"requireHibernateSupport">> => boolean(),
+%%   <<"spotMaxPricePercentageOverLowestPrice">> => integer(),
+%%   <<"totalLocalStorageGB">> => total_local_storage_g_b_request(),
+%%   <<"vCpuCount">> => v_cpu_count_range_request()
+%% }
+-type instance_requirements_request() :: #{binary() => any()}.
+
+%% Example:
 %% service_registry() :: #{
 %%   <<"containerName">> => string(),
 %%   <<"containerPort">> => integer(),
@@ -282,7 +311,8 @@
 
 %% Example:
 %% delete_capacity_provider_request() :: #{
-%%   <<"capacityProvider">> := string()
+%%   <<"capacityProvider">> := string(),
+%%   <<"cluster">> => string()
 %% }
 -type delete_capacity_provider_request() :: #{binary() => any()}.
 
@@ -464,6 +494,14 @@
 -type describe_service_deployments_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_managed_instances_provider_configuration() :: #{
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"instanceLaunchTemplate">> => instance_launch_template(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type create_managed_instances_provider_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% create_cluster_response() :: #{
 %%   <<"cluster">> => cluster()
 %% }
@@ -487,6 +525,13 @@
 %%   <<"containerInstance">> => container_instance()
 %% }
 -type register_container_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% managed_instances_network_configuration() :: #{
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type managed_instances_network_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% create_task_set_request() :: #{
@@ -532,7 +577,9 @@
 
 %% Example:
 %% update_capacity_provider_request() :: #{
-%%   <<"autoScalingGroupProvider">> := auto_scaling_group_provider_update(),
+%%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider_update(),
+%%   <<"cluster">> => string(),
+%%   <<"managedInstancesProvider">> => update_managed_instances_provider_configuration(),
 %%   <<"name">> := string()
 %% }
 -type update_capacity_provider_request() :: #{binary() => any()}.
@@ -599,6 +646,13 @@
 %%   <<"message">> => string()
 %% }
 -type service_deployment_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% memory_gi_b_per_v_cpu_request() :: #{
+%%   <<"max">> => float(),
+%%   <<"min">> => float()
+%% }
+-type memory_gi_b_per_v_cpu_request() :: #{binary() => any()}.
 
 %% Example:
 %% execute_command_configuration() :: #{
@@ -833,6 +887,14 @@
 -type put_account_setting_request() :: #{binary() => any()}.
 
 %% Example:
+%% managed_instances_provider() :: #{
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"instanceLaunchTemplate">> => instance_launch_template(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type managed_instances_provider() :: #{binary() => any()}.
+
+%% Example:
 %% list_services_request() :: #{
 %%   <<"cluster">> => string(),
 %%   <<"launchType">> => list(any()),
@@ -973,6 +1035,7 @@
 %% Example:
 %% describe_capacity_providers_request() :: #{
 %%   <<"capacityProviders">> => list(string()),
+%%   <<"cluster">> => string(),
 %%   <<"include">> => list(list(any())()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1183,6 +1246,13 @@
 %%   <<"value">> => string()
 %% }
 -type cluster_setting() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_count_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type accelerator_count_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_task_definitions_request() :: #{
@@ -1422,6 +1492,14 @@
 -type submit_task_state_change_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_managed_instances_provider_configuration() :: #{
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"instanceLaunchTemplate">> => instance_launch_template_update(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type update_managed_instances_provider_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% health_check() :: #{
 %%   <<"command">> => list(string()),
 %%   <<"interval">> => integer(),
@@ -1533,6 +1611,13 @@
 -type list_container_instances_response() :: #{binary() => any()}.
 
 %% Example:
+%% network_bandwidth_gbps_request() :: #{
+%%   <<"max">> => float(),
+%%   <<"min">> => float()
+%% }
+-type network_bandwidth_gbps_request() :: #{binary() => any()}.
+
+%% Example:
 %% update_cluster_settings_request() :: #{
 %%   <<"cluster">> := string(),
 %%   <<"settings">> := list(cluster_setting())
@@ -1593,6 +1678,16 @@
 %%   <<"telemetryEndpoint">> => string()
 %% }
 -type discover_poll_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% instance_launch_template_update() :: #{
+%%   <<"ec2InstanceProfileArn">> => string(),
+%%   <<"instanceRequirements">> => instance_requirements_request(),
+%%   <<"monitoring">> => list(any()),
+%%   <<"networkConfiguration">> => managed_instances_network_configuration(),
+%%   <<"storageConfiguration">> => managed_instances_storage_configuration()
+%% }
+-type instance_launch_template_update() :: #{binary() => any()}.
 
 %% Example:
 %% list_clusters_request() :: #{
@@ -1656,6 +1751,13 @@
 %%   <<"taskSet">> := string()
 %% }
 -type delete_task_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% accelerator_total_memory_mi_b_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type accelerator_total_memory_mi_b_request() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_contains_container_instances_exception() :: #{
@@ -1786,6 +1888,12 @@
 %%   <<"message">> => string()
 %% }
 -type missing_version_exception() :: #{binary() => any()}.
+
+%% Example:
+%% managed_instances_storage_configuration() :: #{
+%%   <<"storageSizeGiB">> => integer()
+%% }
+-type managed_instances_storage_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_response() :: #{
@@ -2127,9 +2235,12 @@
 %% capacity_provider() :: #{
 %%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider(),
 %%   <<"capacityProviderArn">> => string(),
+%%   <<"cluster">> => string(),
+%%   <<"managedInstancesProvider">> => managed_instances_provider(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => list(tag()),
+%%   <<"type">> => list(any()),
 %%   <<"updateStatus">> => list(any()),
 %%   <<"updateStatusReason">> => string()
 %% }
@@ -2137,7 +2248,9 @@
 
 %% Example:
 %% create_capacity_provider_request() :: #{
-%%   <<"autoScalingGroupProvider">> := auto_scaling_group_provider(),
+%%   <<"autoScalingGroupProvider">> => auto_scaling_group_provider(),
+%%   <<"cluster">> => string(),
+%%   <<"managedInstancesProvider">> => create_managed_instances_provider_configuration(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => list(tag())
 %% }
@@ -2197,6 +2310,20 @@
 -type service_revision() :: #{binary() => any()}.
 
 %% Example:
+%% memory_mi_b_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type memory_mi_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% network_interface_count_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type network_interface_count_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_attributes_request() :: #{
 %%   <<"attributeName">> => string(),
 %%   <<"attributeValue">> => string(),
@@ -2235,6 +2362,13 @@
 -type device() :: #{binary() => any()}.
 
 %% Example:
+%% total_local_storage_g_b_request() :: #{
+%%   <<"max">> => float(),
+%%   <<"min">> => float()
+%% }
+-type total_local_storage_g_b_request() :: #{binary() => any()}.
+
+%% Example:
 %% submit_attachment_state_changes_request() :: #{
 %%   <<"attachments">> := list(attachment_state_change()),
 %%   <<"cluster">> => string()
@@ -2253,6 +2387,16 @@
 %%   <<"taskSet">> => task_set()
 %% }
 -type create_task_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% instance_launch_template() :: #{
+%%   <<"ec2InstanceProfileArn">> => string(),
+%%   <<"instanceRequirements">> => instance_requirements_request(),
+%%   <<"monitoring">> => list(any()),
+%%   <<"networkConfiguration">> => managed_instances_network_configuration(),
+%%   <<"storageConfiguration">> => managed_instances_storage_configuration()
+%% }
+-type instance_launch_template() :: #{binary() => any()}.
 
 %% Example:
 %% service_volume_configuration() :: #{
@@ -2341,6 +2485,13 @@
 -type service_connect_tls_certificate_authority() :: #{binary() => any()}.
 
 %% Example:
+%% v_cpu_count_range_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type v_cpu_count_range_request() :: #{binary() => any()}.
+
+%% Example:
 %% deregister_task_definition_request() :: #{
 %%   <<"taskDefinition">> := string()
 %% }
@@ -2396,6 +2547,19 @@
 %%   <<"taskDefinition">> => task_definition()
 %% }
 -type register_task_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_contains_capacity_provider_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cluster_contains_capacity_provider_exception() :: #{binary() => any()}.
+
+%% Example:
+%% baseline_ebs_bandwidth_mbps_request() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type baseline_ebs_bandwidth_mbps_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_clusters_request() :: #{
@@ -2518,6 +2682,8 @@
     server_exception() | 
     invalid_parameter_exception() | 
     client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception() | 
     update_in_progress_exception().
 
 -type create_cluster_errors() ::
@@ -2563,9 +2729,12 @@
 -type delete_capacity_provider_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    client_exception().
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
 
 -type delete_cluster_errors() ::
+    cluster_contains_capacity_provider_exception() | 
     cluster_contains_services_exception() | 
     server_exception() | 
     invalid_parameter_exception() | 
@@ -2613,7 +2782,9 @@
 -type describe_capacity_providers_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    client_exception().
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
 
 -type describe_clusters_errors() ::
     server_exception() | 
@@ -2857,7 +3028,9 @@
 -type update_capacity_provider_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
-    client_exception().
+    client_exception() | 
+    unsupported_feature_exception() | 
+    cluster_not_found_exception().
 
 -type update_cluster_errors() ::
     server_exception() | 
@@ -2935,19 +3108,13 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a new capacity provider.
+%% @doc Creates a capacity provider.
 %%
-%% Capacity providers are associated with an Amazon ECS
-%% cluster and are used in capacity provider strategies to facilitate cluster
-%% auto
-%% scaling.
-%%
-%% Only capacity providers that use an Auto Scaling group can be created.
-%% Amazon ECS tasks on
-%% Fargate use the `FARGATE' and `FARGATE_SPOT' capacity providers.
-%% These providers are available to all accounts in the Amazon Web Services
-%% Regions that Fargate
-%% supports.
+%% Capacity providers are associated with a cluster and are used in capacity
+%% provider strategies to facilitate cluster auto scaling. You can create
+%% capacity providers for Amazon ECS Managed Instances and EC2 instances.
+%% Fargate has the predefined `FARGATE' and `FARGATE_SPOT' capacity
+%% providers.
 -spec create_capacity_provider(aws_client:aws_client(), create_capacity_provider_request()) ->
     {ok, create_capacity_provider_response(), tuple()} |
     {error, any()} |
@@ -4212,6 +4379,10 @@ put_attributes(Client, Input, Options)
 %% However, you must specify an empty array (`[]') to bypass defining a
 %% default
 %% strategy.
+%%
+%% Amazon ECS Managed Instances doesn't support this, because when you
+%% create a capacity provider with Amazon ECS Managed Instances, it becomes
+%% available only within the specified cluster.
 -spec put_cluster_capacity_providers(aws_client:aws_client(), put_cluster_capacity_providers_request()) ->
     {ok, put_cluster_capacity_providers_response(), tuple()} |
     {error, any()} |
@@ -4614,6 +4785,9 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Modifies the parameters for a capacity provider.
+%%
+%% These changes only apply to new Amazon ECS Managed Instances, or EC2
+%% instances, not existing ones.
 -spec update_capacity_provider(aws_client:aws_client(), update_capacity_provider_request()) ->
     {ok, update_capacity_provider_response(), tuple()} |
     {error, any()} |

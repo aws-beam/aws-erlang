@@ -2835,8 +2835,8 @@
 
 %% Example:
 %% remove_from_global_cluster_message() :: #{
-%%   <<"DbClusterIdentifier">> => string(),
-%%   <<"GlobalClusterIdentifier">> => string()
+%%   <<"DbClusterIdentifier">> := string(),
+%%   <<"GlobalClusterIdentifier">> := string()
 %% }
 -type remove_from_global_cluster_message() :: #{binary() => any()}.
 
@@ -2934,7 +2934,7 @@
 %%   <<"AllowMajorVersionUpgrade">> => boolean(),
 %%   <<"DeletionProtection">> => boolean(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"GlobalClusterIdentifier">> := string(),
 %%   <<"NewGlobalClusterIdentifier">> => string()
 %% }
 -type modify_global_cluster_message() :: #{binary() => any()}.
@@ -3590,7 +3590,7 @@
 %%   <<"Engine">> => string(),
 %%   <<"EngineLifecycleSupport">> => string(),
 %%   <<"EngineVersion">> => string(),
-%%   <<"GlobalClusterIdentifier">> => string(),
+%%   <<"GlobalClusterIdentifier">> := string(),
 %%   <<"SourceDBClusterIdentifier">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
 %%   <<"Tags">> => list(tag())
@@ -5671,14 +5671,19 @@
     source_not_found_fault().
 
 -type add_tags_to_resource_errors() ::
+    invalid_db_instance_state_fault() | 
     tenant_database_not_found_fault() | 
     db_snapshot_tenant_database_not_found_fault() | 
     blue_green_deployment_not_found_fault() | 
     db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
     db_snapshot_not_found_fault() | 
     integration_not_found_fault() | 
+    db_proxy_endpoint_not_found_fault() | 
     db_proxy_not_found_fault() | 
     db_instance_not_found_fault() | 
+    db_shard_group_not_found_fault() | 
+    invalid_db_cluster_endpoint_state_fault() | 
     db_proxy_target_group_not_found_fault().
 
 -type apply_pending_maintenance_action_errors() ::
@@ -5738,6 +5743,7 @@
     db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault() | 
     db_cluster_parameter_group_not_found_fault() | 
+    storage_quota_exceeded_fault() | 
     instance_quota_exceeded_fault() | 
     source_database_not_supported_fault() | 
     db_instance_not_found_fault() | 
@@ -5748,8 +5754,10 @@
     create_custom_db_engine_version_fault() | 
     custom_db_engine_version_already_exists_fault() | 
     kms_key_not_accessible_fault() | 
+    invalid_custom_db_engine_version_state_fault() | 
     ec2_image_properties_not_supported_fault() | 
-    custom_db_engine_version_quota_exceeded_fault().
+    custom_db_engine_version_quota_exceeded_fault() | 
+    custom_db_engine_version_not_found_fault().
 
 -type create_db_cluster_errors() ::
     insufficient_storage_cluster_capacity_fault() | 
@@ -5764,10 +5772,12 @@
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
     db_instance_not_found_fault() | 
+    network_type_not_supported() | 
     db_subnet_group_does_not_cover_enough_a_zs() | 
     invalid_vpc_network_state_fault() | 
     domain_not_found_fault() | 
     invalid_global_cluster_state_fault() | 
+    storage_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_db_subnet_group_state_fault() | 
     invalid_db_subnet_group_fault() | 
@@ -5899,7 +5909,9 @@
     global_cluster_already_exists_fault() | 
     global_cluster_quota_exceeded_fault() | 
     db_cluster_not_found_fault() | 
-    invalid_db_cluster_state_fault().
+    invalid_db_cluster_state_fault() | 
+    invalid_db_shard_group_state_fault() | 
+    resource_not_found_fault().
 
 -type create_integration_errors() ::
     db_cluster_not_found_fault() | 
@@ -5932,8 +5944,10 @@
     db_cluster_automated_backup_quota_exceeded_fault() | 
     db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault() | 
+    kms_key_not_accessible_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
     db_cluster_snapshot_already_exists_fault() | 
+    invalid_global_cluster_state_fault() | 
     snapshot_quota_exceeded_fault().
 
 -type delete_db_cluster_automated_backup_errors() ::
@@ -5956,6 +5970,7 @@
 -type delete_db_instance_errors() ::
     invalid_db_instance_state_fault() | 
     invalid_db_cluster_state_fault() | 
+    kms_key_not_accessible_fault() | 
     db_instance_not_found_fault() | 
     db_snapshot_already_exists_fault() | 
     db_instance_automated_backup_quota_exceeded_fault() | 
@@ -6015,7 +6030,8 @@
 -type delete_tenant_database_errors() ::
     invalid_db_instance_state_fault() | 
     tenant_database_not_found_fault() | 
-    db_instance_not_found_fault().
+    db_instance_not_found_fault() | 
+    db_snapshot_already_exists_fault().
 
 -type deregister_db_proxy_targets_errors() ::
     invalid_db_proxy_state_fault() | 
@@ -6169,8 +6185,10 @@
     db_cluster_not_found_fault() | 
     db_snapshot_not_found_fault() | 
     integration_not_found_fault() | 
+    db_proxy_endpoint_not_found_fault() | 
     db_proxy_not_found_fault() | 
     db_instance_not_found_fault() | 
+    db_shard_group_not_found_fault() | 
     db_proxy_target_group_not_found_fault().
 
 -type modify_activity_stream_errors() ::
@@ -6198,14 +6216,19 @@
     db_cluster_already_exists_fault() | 
     invalid_db_security_group_state_fault() | 
     invalid_db_cluster_state_fault() | 
+    kms_key_not_accessible_fault() | 
     db_cluster_parameter_group_not_found_fault() | 
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
+    network_type_not_supported() | 
     invalid_vpc_network_state_fault() | 
     domain_not_found_fault() | 
+    invalid_global_cluster_state_fault() | 
+    storage_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_db_subnet_group_state_fault() | 
-    db_instance_already_exists_fault().
+    db_instance_already_exists_fault() | 
+    db_parameter_group_not_found_fault().
 
 -type modify_db_cluster_endpoint_errors() ::
     invalid_db_instance_state_fault() | 
@@ -6272,7 +6295,9 @@
     db_shard_group_already_exists_fault().
 
 -type modify_db_snapshot_errors() ::
-    db_snapshot_not_found_fault().
+    kms_key_not_accessible_fault() | 
+    db_snapshot_not_found_fault() | 
+    invalid_db_snapshot_state_fault().
 
 -type modify_db_snapshot_attribute_errors() ::
     db_snapshot_not_found_fault() | 
@@ -6284,6 +6309,7 @@
     db_subnet_group_does_not_cover_enough_a_zs() | 
     db_subnet_quota_exceeded_fault() | 
     invalid_subnet() | 
+    invalid_db_subnet_group_state_fault() | 
     subnet_already_in_use().
 
 -type modify_event_subscription_errors() ::
@@ -6337,6 +6363,7 @@
 
 -type reboot_db_instance_errors() ::
     invalid_db_instance_state_fault() | 
+    kms_key_not_accessible_fault() | 
     db_instance_not_found_fault().
 
 -type reboot_db_shard_group_errors() ::
@@ -6357,6 +6384,7 @@
 -type remove_from_global_cluster_errors() ::
     global_cluster_not_found_fault() | 
     db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
     invalid_global_cluster_state_fault().
 
 -type remove_role_from_db_cluster_errors() ::
@@ -6374,14 +6402,19 @@
     source_not_found_fault().
 
 -type remove_tags_from_resource_errors() ::
+    invalid_db_instance_state_fault() | 
     tenant_database_not_found_fault() | 
     db_snapshot_tenant_database_not_found_fault() | 
     blue_green_deployment_not_found_fault() | 
     db_cluster_not_found_fault() | 
+    invalid_db_cluster_state_fault() | 
     db_snapshot_not_found_fault() | 
     integration_not_found_fault() | 
+    db_proxy_endpoint_not_found_fault() | 
     db_proxy_not_found_fault() | 
     db_instance_not_found_fault() | 
+    db_shard_group_not_found_fault() | 
+    invalid_db_cluster_endpoint_state_fault() | 
     db_proxy_target_group_not_found_fault().
 
 -type reset_db_cluster_parameter_group_errors() ::
@@ -6402,6 +6435,7 @@
     db_cluster_parameter_group_not_found_fault() | 
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
+    network_type_not_supported() | 
     invalid_vpc_network_state_fault() | 
     domain_not_found_fault() | 
     storage_type_not_supported_fault() | 
@@ -6423,9 +6457,11 @@
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
+    network_type_not_supported() | 
     db_subnet_group_does_not_cover_enough_a_zs() | 
     invalid_vpc_network_state_fault() | 
     domain_not_found_fault() | 
+    storage_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
     insufficient_db_instance_capacity_fault() | 
@@ -6445,9 +6481,11 @@
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
+    network_type_not_supported() | 
     invalid_vpc_network_state_fault() | 
     domain_not_found_fault() | 
     db_cluster_automated_backup_not_found_fault() | 
+    storage_type_not_supported_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
     insufficient_db_instance_capacity_fault() | 
@@ -6544,6 +6582,7 @@
     invalid_db_instance_state_fault() | 
     db_cluster_not_found_fault() | 
     invalid_db_cluster_state_fault() | 
+    kms_key_not_accessible_fault() | 
     invalid_db_shard_group_state_fault().
 
 -type start_db_instance_errors() ::
@@ -6563,6 +6602,7 @@
     invalid_db_instance_state_fault() | 
     kms_key_not_accessible_fault() | 
     db_instance_not_found_fault() | 
+    invalid_db_instance_automated_backup_state_fault() | 
     storage_type_not_supported_fault() | 
     db_instance_automated_backup_quota_exceeded_fault().
 

@@ -131,6 +131,13 @@
 
 
 %% Example:
+%% connect_case_filter() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type connect_case_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -498,6 +505,13 @@
 
 
 %% Example:
+%% connect_case_content() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type connect_case_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% audit_event_field() :: #{
 %%   <<"eventFieldId">> => string(),
 %%   <<"newValue">> => list(),
@@ -834,6 +848,13 @@
 
 
 %% Example:
+%% custom_input_content() :: #{
+%%   <<"fields">> => list(field_value())
+%% }
+-type custom_input_content() :: #{binary() => any()}.
+
+
+%% Example:
 %% field_value() :: #{
 %%   <<"id">> => string(),
 %%   <<"value">> => list()
@@ -865,6 +886,13 @@
 %%   <<"name">> => string()
 %% }
 -type layout_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_case_input_content() :: #{
+%%   <<"caseId">> => string()
+%% }
+-type connect_case_input_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -918,6 +946,13 @@
 %%   <<"domainStatus">> := string()
 %% }
 -type create_domain_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_filter() :: #{
+%%   <<"fields">> => list()
+%% }
+-type custom_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1068,6 +1103,13 @@
 %%   <<"templateId">> => string()
 %% }
 -type case_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_content() :: #{
+%%   <<"fields">> => list(field_value())
+%% }
+-type custom_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1885,7 +1927,7 @@ create_template(Client, DomainId, Input0, Options0) ->
 %%
 %% Perform any operations that require the CaseID
 %%
-%% This action is irreversible. Once you delete a case, you cannot recover
+%% This action is irreversible. After you delete a case, you cannot recover
 %% its data.
 -spec delete_case(aws_client:aws_client(), binary() | list(), binary() | list(), delete_case_request()) ->
     {ok, delete_case_response(), tuple()} |

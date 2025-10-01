@@ -387,6 +387,7 @@
 %%   <<"DeploymentType">> => list(any()),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
 %%   <<"EndpointIpAddressRange">> => string(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
 %%   <<"FsxAdminPassword">> => string(),
 %%   <<"HAPairs">> => integer(),
 %%   <<"PreferredSubnetId">> => string(),
@@ -699,6 +700,7 @@
 %%   <<"AutomaticBackupRetentionDays">> => integer(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
 %%   <<"FsxAdminPassword">> => string(),
 %%   <<"HAPairs">> => integer(),
 %%   <<"RemoveRouteTableIds">> => list(string()),
@@ -782,7 +784,8 @@
 %% Example:
 %% file_system_endpoint() :: #{
 %%   <<"DNSName">> => string(),
-%%   <<"IpAddresses">> => list(string())
+%%   <<"IpAddresses">> => list(string()),
+%%   <<"Ipv6Addresses">> => list(string())
 %% }
 -type file_system_endpoint() :: #{binary() => any()}.
 
@@ -1140,7 +1143,8 @@
 %% Example:
 %% svm_endpoint() :: #{
 %%   <<"DNSName">> => string(),
-%%   <<"IpAddresses">> => list(string())
+%%   <<"IpAddresses">> => list(string()),
+%%   <<"Ipv6Addresses">> => list(string())
 %% }
 -type svm_endpoint() :: #{binary() => any()}.
 
@@ -1674,6 +1678,7 @@
 %%   <<"DeploymentType">> => list(any()),
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
 %%   <<"EndpointIpAddressRange">> => string(),
+%%   <<"EndpointIpv6AddressRange">> => string(),
 %%   <<"Endpoints">> => file_system_endpoints(),
 %%   <<"FsxAdminPassword">> => string(),
 %%   <<"HAPairs">> => integer(),
@@ -1869,6 +1874,7 @@
 %%   <<"DiskIopsConfiguration">> => disk_iops_configuration(),
 %%   <<"MaintenanceOperationsInProgress">> => list(list(any())()),
 %%   <<"PreferredFileServerIp">> => string(),
+%%   <<"PreferredFileServerIpv6">> => string(),
 %%   <<"PreferredSubnetId">> => string(),
 %%   <<"RemoteAdministrationEndpoint">> => string(),
 %%   <<"SelfManagedActiveDirectoryConfiguration">> => self_managed_active_directory_attributes(),
@@ -4196,6 +4202,8 @@ update_file_cache(Client, Input, Options)
 %% `DailyAutomaticBackupStartTime'
 %%
 %% `DiskIopsConfiguration'
+%%
+%% `EndpointIpv6AddressRange'
 %%
 %% `FsxAdminPassword'
 %%

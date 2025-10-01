@@ -5,12 +5,11 @@
 %% your cloud-based applications.
 %%
 %% It enables real-time service health dashboards and helps you track
-%% long-term performance trends against your business goals.
-%% The application-centric view provides you with unified visibility across
-%% your applications, services, and
-%% dependencies, so you can proactively monitor and efficiently triage any
-%% issues that may arise,
-%% ensuring optimal customer experience.
+%% long-term performance trends against your business goals. The
+%% application-centric view provides you with unified visibility across your
+%% applications, services, and dependencies, so you can proactively monitor
+%% and efficiently triage any issues that may arise, ensuring optimal
+%% customer experience.
 %%
 %% Application Signals provides the following benefits:
 %%
@@ -26,8 +25,8 @@
 %%
 %% Application Signals works with CloudWatch RUM, CloudWatch Synthetics
 %% canaries, and Amazon Web Services Service Catalog AppRegistry, to display
-%% your client pages, Synthetics canaries,
-%% and application names within dashboards and maps.
+%% your client pages, Synthetics canaries, and application names within
+%% dashboards and maps.
 -module(aws_application_signals).
 
 -export([batch_get_service_level_objective_budget_report/2,
@@ -36,6 +35,8 @@
          batch_update_exclusion_windows/3,
          create_service_level_objective/2,
          create_service_level_objective/3,
+         delete_grouping_configuration/2,
+         delete_grouping_configuration/3,
          delete_service_level_objective/3,
          delete_service_level_objective/4,
          get_service/2,
@@ -43,6 +44,10 @@
          get_service_level_objective/2,
          get_service_level_objective/4,
          get_service_level_objective/5,
+         list_audit_findings/2,
+         list_audit_findings/3,
+         list_grouping_attribute_definitions/2,
+         list_grouping_attribute_definitions/3,
          list_service_dependencies/2,
          list_service_dependencies/3,
          list_service_dependents/2,
@@ -54,12 +59,16 @@
          list_service_level_objectives/3,
          list_service_operations/2,
          list_service_operations/3,
+         list_service_states/2,
+         list_service_states/3,
          list_services/3,
          list_services/5,
          list_services/6,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_grouping_configuration/2,
+         put_grouping_configuration/3,
          start_discovery/2,
          start_discovery/3,
          tag_resource/2,
@@ -94,6 +103,15 @@
 
 
 %% Example:
+%% auditor_result() :: #{
+%%   <<"Auditor">> => [string()],
+%%   <<"Description">> => [string()],
+%%   <<"Severity">> => list(any())
+%% }
+-type auditor_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"ResourceArn">> := string(),
 %%   <<"Tags">> := list(tag())
@@ -123,6 +141,18 @@
 
 
 %% Example:
+%% audit_finding() :: #{
+%%   <<"AuditorResults">> => list(auditor_result()),
+%%   <<"DependencyGraph">> => dependency_graph(),
+%%   <<"KeyAttributes">> => map(),
+%%   <<"MetricGraph">> => metric_graph(),
+%%   <<"Operation">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type audit_finding() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_service_dependencies_output() :: #{
 %%   <<"EndTime">> => [non_neg_integer()],
 %%   <<"NextToken">> => string(),
@@ -141,6 +171,15 @@
 
 
 %% Example:
+%% grouping_attribute_definition() :: #{
+%%   <<"DefaultGroupingValue">> => string(),
+%%   <<"GroupingName">> => string(),
+%%   <<"GroupingSourceKeys">> => list(string())
+%% }
+-type grouping_attribute_definition() :: #{binary() => any()}.
+
+
+%% Example:
 %% calendar_interval() :: #{
 %%   <<"Duration">> => integer(),
 %%   <<"DurationUnit">> => list(any()),
@@ -151,6 +190,18 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% list_audit_findings_input() :: #{
+%%   <<"AuditTargets">> := list(audit_target()),
+%%   <<"Auditors">> => list([string()]()),
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_audit_findings_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -182,6 +233,16 @@
 
 
 %% Example:
+%% service_entity() :: #{
+%%   <<"AwsAccountId">> => [string()],
+%%   <<"Environment">> => [string()],
+%%   <<"Name">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type service_entity() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_level_objective_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => [non_neg_integer()],
@@ -204,12 +265,23 @@
 %%   <<"DependencyConfig">> => dependency_config(),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"MetricDataQueries">> => list(metric_data_query()),
+%%   <<"MetricName">> => string(),
 %%   <<"MetricType">> => list(any()),
 %%   <<"OperationName">> => string(),
 %%   <<"PeriodSeconds">> => integer(),
 %%   <<"Statistic">> => string()
 %% }
 -type service_level_indicator_metric_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_group() :: #{
+%%   <<"GroupIdentifier">> => string(),
+%%   <<"GroupName">> => string(),
+%%   <<"GroupSource">> => string(),
+%%   <<"GroupValue">> => string()
+%% }
+-type service_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -238,11 +310,19 @@
 
 
 %% Example:
+%% list_grouping_attribute_definitions_input() :: #{
+%%   <<"NextToken">> => string()
+%% }
+-type list_grouping_attribute_definitions_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% service() :: #{
 %%   <<"AttributeMaps">> => list(map()),
 %%   <<"KeyAttributes">> => map(),
 %%   <<"LogGroupReferences">> => list(map()),
-%%   <<"MetricReferences">> => list(metric_reference())
+%%   <<"MetricReferences">> => list(metric_reference()),
+%%   <<"ServiceGroups">> => list(service_group())
 %% }
 -type service() :: #{binary() => any()}.
 
@@ -258,6 +338,27 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_service_level_objective_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_graph() :: #{
+%%   <<"Edges">> => list(edge()),
+%%   <<"Nodes">> => list(node())
+%% }
+-type dependency_graph() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_states_input() :: #{
+%%   <<"AttributeFilters">> => list(attribute_filter()),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"EndTime">> := [non_neg_integer()],
+%%   <<"IncludeLinkedAccounts">> => [boolean()],
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := [non_neg_integer()]
+%% }
+-type list_service_states_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -347,10 +448,29 @@
 
 
 %% Example:
+%% list_service_states_output() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"ServiceStates">> => list(service_state()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type list_service_states_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_graph() :: #{
+%%   <<"EndTime">> => [non_neg_integer()],
+%%   <<"MetricDataQueries">> => list(metric_data_query()),
+%%   <<"StartTime">> => [non_neg_integer()]
+%% }
+-type metric_graph() :: #{binary() => any()}.
 
 
 %% Example:
@@ -399,7 +519,8 @@
 %% service_summary() :: #{
 %%   <<"AttributeMaps">> => list(map()),
 %%   <<"KeyAttributes">> => map(),
-%%   <<"MetricReferences">> => list(metric_reference())
+%%   <<"MetricReferences">> => list(metric_reference()),
+%%   <<"ServiceGroups">> => list(service_group())
 %% }
 -type service_summary() :: #{binary() => any()}.
 
@@ -415,6 +536,14 @@
 %%   <<"ReturnData">> => boolean()
 %% }
 -type metric_data_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_level_objective_entity() :: #{
+%%   <<"SloArn">> => [string()],
+%%   <<"SloName">> => [string()]
+%% }
+-type service_level_objective_entity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -445,6 +574,15 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_grouping_attribute_definitions_output() :: #{
+%%   <<"GroupingAttributeDefinitions">> => list(grouping_attribute_definition()),
+%%   <<"NextToken">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type list_grouping_attribute_definitions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -516,6 +654,10 @@
 %% }
 -type list_service_level_objectives_output() :: #{binary() => any()}.
 
+%% Example:
+%% delete_grouping_configuration_output() :: #{}
+-type delete_grouping_configuration_output() :: #{}.
+
 
 %% Example:
 %% request_based_service_level_indicator() :: #{
@@ -524,6 +666,15 @@
 %%   <<"RequestBasedSliMetric">> => request_based_service_level_indicator_metric()
 %% }
 -type request_based_service_level_indicator() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_operation_entity() :: #{
+%%   <<"MetricType">> => [string()],
+%%   <<"Operation">> => [string()],
+%%   <<"Service">> => service_entity()
+%% }
+-type service_operation_entity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -601,6 +752,13 @@
 
 
 %% Example:
+%% put_grouping_configuration_output() :: #{
+%%   <<"GroupingConfiguration">> => grouping_configuration()
+%% }
+-type put_grouping_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_service_level_objective_exclusion_windows_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -631,10 +789,26 @@
 
 
 %% Example:
+%% list_audit_findings_output() :: #{
+%%   <<"AuditFindings">> => list(audit_finding()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_audit_findings_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% attribute_filter() :: #{
+%%   <<"AttributeFilterName">> => string(),
+%%   <<"AttributeFilterValues">> => list(string())
+%% }
+-type attribute_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -655,10 +829,63 @@
 
 
 %% Example:
+%% audit_target() :: #{
+%%   <<"Data">> => list(),
+%%   <<"Type">> => [string()]
+%% }
+-type audit_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_event() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ChangeEventType">> => list(any()),
+%%   <<"Entity">> => map(),
+%%   <<"EventId">> => [string()],
+%%   <<"EventName">> => [string()],
+%%   <<"Region">> => [string()],
+%%   <<"Timestamp">> => [non_neg_integer()],
+%%   <<"UserName">> => [string()]
+%% }
+-type change_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% edge() :: #{
+%%   <<"ConnectionType">> => list(any()),
+%%   <<"DestinationNodeId">> => [string()],
+%%   <<"Duration">> => [float()],
+%%   <<"SourceNodeId">> => [string()]
+%% }
+-type edge() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_service_level_objective_output() :: #{
 %%   <<"Slo">> => service_level_objective()
 %% }
 -type create_service_level_objective_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% grouping_configuration() :: #{
+%%   <<"GroupingAttributeDefinitions">> => list(grouping_attribute_definition()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type grouping_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% application_signals_node() :: #{
+%%   <<"Duration">> => [float()],
+%%   <<"KeyAttributes">> => map(),
+%%   <<"Name">> => [string()],
+%%   <<"NodeId">> => [string()],
+%%   <<"Operation">> => [string()],
+%%   <<"Status">> => [string()],
+%%   <<"Type">> => [string()]
+%% }
+-type application_signals_node() :: #{binary() => any()}.
 
 %% Example:
 %% delete_service_level_objective_output() :: #{}
@@ -712,12 +939,28 @@
 
 
 %% Example:
+%% put_grouping_configuration_input() :: #{
+%%   <<"GroupingAttributeDefinitions">> := list(grouping_attribute_definition())
+%% }
+-type put_grouping_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% request_based_service_level_indicator_config() :: #{
 %%   <<"ComparisonOperator">> => list(any()),
 %%   <<"MetricThreshold">> => float(),
 %%   <<"RequestBasedSliMetricConfig">> => request_based_service_level_indicator_metric_config()
 %% }
 -type request_based_service_level_indicator_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_state() :: #{
+%%   <<"AttributeFilters">> => list(attribute_filter()),
+%%   <<"LatestChangeEvents">> => list(change_event()),
+%%   <<"Service">> => map()
+%% }
+-type service_state() :: #{binary() => any()}.
 
 -type batch_get_service_level_objective_budget_report_errors() ::
     throttling_exception() | 
@@ -735,6 +978,11 @@
     service_quota_exceeded_exception() | 
     conflict_exception().
 
+-type delete_grouping_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
+
 -type delete_service_level_objective_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -748,6 +996,15 @@
     throttling_exception() | 
     validation_exception() | 
     resource_not_found_exception().
+
+-type list_audit_findings_errors() ::
+    throttling_exception() | 
+    validation_exception().
+
+-type list_grouping_attribute_definitions_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
 
 -type list_service_dependencies_errors() ::
     throttling_exception() | 
@@ -770,6 +1027,10 @@
     throttling_exception() | 
     validation_exception().
 
+-type list_service_states_errors() ::
+    throttling_exception() | 
+    validation_exception().
+
 -type list_services_errors() ::
     throttling_exception() | 
     validation_exception().
@@ -777,6 +1038,11 @@
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
     resource_not_found_exception().
+
+-type put_grouping_configuration_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception().
 
 -type start_discovery_errors() ::
     throttling_exception() | 
@@ -805,20 +1071,16 @@
 %% (SLO) budget reports.
 %%
 %% An error budget is the amount of time or requests in an unhealthy state
-%% that your service can
-%% accumulate during an interval before your overall SLO budget health is
-%% breached and the SLO is considered to be
-%% unmet. For example, an SLO with a threshold of 99.95% and a monthly
-%% interval
-%% translates to an error budget of 21.9 minutes of
-%% downtime in a 30-day month.
+%% that your service can accumulate during an interval before your overall
+%% SLO budget health is breached and the SLO is considered to be unmet. For
+%% example, an SLO with a threshold of 99.95% and a monthly interval
+%% translates to an error budget of 21.9 minutes of downtime in a 30-day
+%% month.
 %%
 %% Budget reports include a health indicator, the attainment value, and
 %% remaining budget.
 %%
-%% For more information about SLO error budgets, see
-%%
-%% SLO concepts:
+%% For more information about SLO error budgets, see SLO concepts:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-ServiceLevelObjectives.html#CloudWatch-ServiceLevelObjectives-concepts.
 -spec batch_get_service_level_objective_budget_report(aws_client:aws_client(), batch_get_service_level_objective_budget_report_input()) ->
     {ok, batch_get_service_level_objective_budget_report_output(), tuple()} |
@@ -889,82 +1151,75 @@ batch_update_exclusion_windows(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a service level objective (SLO), which can help you ensure
-%% that your critical business operations are
-%% meeting customer expectations.
+%% that your critical business operations are meeting customer expectations.
 %%
-%% Use SLOs to set and track specific target levels for the
-%% reliability and availability of your applications and services. SLOs use
-%% service level indicators (SLIs) to
-%% calculate whether the application is performing at the level that you
-%% want.
+%% Use SLOs to set and track specific target levels for the reliability and
+%% availability of your applications and services. SLOs use service level
+%% indicators (SLIs) to calculate whether the application is performing at
+%% the level that you want.
 %%
 %% Create an SLO to set a target for a service or operation’s availability or
-%% latency. CloudWatch
-%% measures this target frequently you can find whether it has been breached.
+%% latency. CloudWatch measures this target frequently you can find whether
+%% it has been breached.
 %%
 %% The target performance quality that is defined for an SLO is the
 %% attainment goal.
 %%
 %% You can set SLO targets for your applications that are discovered by
 %% Application Signals, using critical metrics such as latency and
-%% availability.
-%% You can also set SLOs against any CloudWatch metric or math expression
-%% that produces a time series.
+%% availability. You can also set SLOs against any CloudWatch metric or math
+%% expression that produces a time series.
 %%
 %% You can't create an SLO for a service operation that was discovered by
 %% Application Signals until after that operation has reported standard
 %% metrics to Application Signals.
 %%
-%% When you create an SLO, you specify whether it is a period-based SLO
-%% or a request-based SLO. Each type of SLO has a different way of evaluating
-%% your application's performance against its attainment goal.
+%% When you create an SLO, you specify whether it is a period-based SLO or a
+%% request-based SLO. Each type of SLO has a different way of evaluating your
+%% application's performance against its attainment goal.
 %%
-%% A period-based SLO uses defined periods of time within
-%% a specified total time interval. For each period of time, Application
-%% Signals determines whether the
-%% application met its goal. The attainment rate is calculated as the `number
-%% of good periods/number of total periods'.
+%% A period-based SLO uses defined periods of time within a specified total
+%% time interval. For each period of time, Application Signals determines
+%% whether the application met its goal. The attainment rate is calculated as
+%% the `number of good periods/number of total periods'.
 %%
 %% For example, for a period-based SLO, meeting an attainment goal of 99.9%
 %% means that within your interval, your application must meet its
-%% performance goal during at least 99.9% of the
-%% time periods.
+%% performance goal during at least 99.9% of the time periods.
 %%
 %% A request-based SLO doesn't use pre-defined periods of time. Instead,
 %% the SLO measures `number of good requests/number of total requests'
-%% during the interval. At any time, you can find the ratio of
-%% good requests to total requests for the interval up to the time stamp that
-%% you specify, and measure that ratio against the goal set in your SLO.
+%% during the interval. At any time, you can find the ratio of good requests
+%% to total requests for the interval up to the time stamp that you specify,
+%% and measure that ratio against the goal set in your SLO.
 %%
 %% After you have created an SLO, you can retrieve error budget reports for
-%% it.
-%% An error budget is the amount of time or amount of requests that your
-%% application can be non-compliant
-%% with the SLO's goal, and still have your application meet the goal.
+%% it. An error budget is the amount of time or amount of requests that your
+%% application can be non-compliant with the SLO's goal, and still have
+%% your application meet the goal.
 %%
 %% For a period-based SLO, the error budget starts at a number defined by the
-%% highest number of periods that can fail to meet the threshold,
-%% while still meeting the overall goal. The remaining error budget decreases
-%% with every failed period
-%% that is recorded. The error budget within one interval can never increase.
+%% highest number of periods that can fail to meet the threshold, while still
+%% meeting the overall goal. The remaining error budget decreases with every
+%% failed period that is recorded. The error budget within one interval can
+%% never increase.
 %%
 %% For example, an SLO with a threshold that 99.95% of requests must be
-%% completed under 2000ms every month
-%% translates to an error budget of 21.9 minutes of downtime per month.
+%% completed under 2000ms every month translates to an error budget of 21.9
+%% minutes of downtime per month.
 %%
 %% For a request-based SLO, the remaining error budget is dynamic and can
-%% increase or decrease, depending on
-%% the ratio of good requests to total requests.
+%% increase or decrease, depending on the ratio of good requests to total
+%% requests.
 %%
-%% For more information about SLOs, see
-%% Service level objectives (SLOs):
+%% For more information about SLOs, see Service level objectives (SLOs):
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-ServiceLevelObjectives.html.
 %%
 %% When you perform a `CreateServiceLevelObjective' operation,
 %% Application Signals creates the
-%% AWSServiceRoleForCloudWatchApplicationSignals service-linked role,
-%% if it doesn't already exist in your account. This service-
-%% linked role has the following permissions:
+%% AWSServiceRoleForCloudWatchApplicationSignals service-linked role, if it
+%% doesn't already exist in your account. This service- linked role has
+%% the following permissions:
 %%
 %% `xray:GetServiceGraph'
 %%
@@ -993,6 +1248,43 @@ create_service_level_objective(Client, Input) ->
 create_service_level_objective(Client, Input0, Options0) ->
     Method = post,
     Path = ["/slo"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the grouping configuration for this account.
+%%
+%% This removes all custom grouping attribute definitions that were
+%% previously configured.
+-spec delete_grouping_configuration(aws_client:aws_client(), #{}) ->
+    {ok, delete_grouping_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_grouping_configuration_errors(), tuple()}.
+delete_grouping_configuration(Client, Input) ->
+    delete_grouping_configuration(Client, Input, []).
+
+-spec delete_grouping_configuration(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, delete_grouping_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_grouping_configuration_errors(), tuple()}.
+delete_grouping_configuration(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/grouping-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1120,12 +1412,93 @@ get_service_level_objective(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of audit findings that provide automated analysis of
+%% service behavior and root cause analysis.
+%%
+%% These findings help identify the most significant observations about your
+%% services, including performance issues, anomalies, and potential problems.
+%% The findings are generated using heuristic algorithms based on established
+%% troubleshooting patterns.
+-spec list_audit_findings(aws_client:aws_client(), list_audit_findings_input()) ->
+    {ok, list_audit_findings_output(), tuple()} |
+    {error, any()} |
+    {error, list_audit_findings_errors(), tuple()}.
+list_audit_findings(Client, Input) ->
+    list_audit_findings(Client, Input, []).
+
+-spec list_audit_findings(aws_client:aws_client(), list_audit_findings_input(), proplists:proplist()) ->
+    {ok, list_audit_findings_output(), tuple()} |
+    {error, any()} |
+    {error, list_audit_findings_errors(), tuple()}.
+list_audit_findings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/auditFindings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"EndTime">>, <<"EndTime">>},
+                     {<<"StartTime">>, <<"StartTime">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the current grouping configuration for this account,
+%% including all custom grouping attribute definitions that have been
+%% configured.
+%%
+%% These definitions determine how services are logically grouped based on
+%% telemetry attributes, Amazon Web Services tags, or predefined mappings.
+-spec list_grouping_attribute_definitions(aws_client:aws_client(), list_grouping_attribute_definitions_input()) ->
+    {ok, list_grouping_attribute_definitions_output(), tuple()} |
+    {error, any()} |
+    {error, list_grouping_attribute_definitions_errors(), tuple()}.
+list_grouping_attribute_definitions(Client, Input) ->
+    list_grouping_attribute_definitions(Client, Input, []).
+
+-spec list_grouping_attribute_definitions(aws_client:aws_client(), list_grouping_attribute_definitions_input(), proplists:proplist()) ->
+    {ok, list_grouping_attribute_definitions_output(), tuple()} |
+    {error, any()} |
+    {error, list_grouping_attribute_definitions_errors(), tuple()}.
+list_grouping_attribute_definitions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/grouping-attribute-definitions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"NextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of service dependencies of the service that you
 %% specify.
 %%
-%% A dependency is an infrastructure
-%% component that an operation of this service connects with. Dependencies
-%% can include Amazon Web Services
+%% A dependency is an infrastructure component that an operation of this
+%% service connects with. Dependencies can include Amazon Web Services
 %% services, Amazon Web Services resources, and third-party services.
 -spec list_service_dependencies(aws_client:aws_client(), list_service_dependencies_input()) ->
     {ok, list_service_dependencies_output(), tuple()} |
@@ -1167,9 +1540,8 @@ list_service_dependencies(Client, Input0, Options0) ->
 %% @doc Returns the list of dependents that invoked the specified service
 %% during the provided time range.
 %%
-%% Dependents include
-%% other services, CloudWatch Synthetics canaries, and clients that are
-%% instrumented with CloudWatch RUM app monitors.
+%% Dependents include other services, CloudWatch Synthetics canaries, and
+%% clients that are instrumented with CloudWatch RUM app monitors.
 -spec list_service_dependents(aws_client:aws_client(), list_service_dependents_input()) ->
     {ok, list_service_dependents_output(), tuple()} |
     {error, any()} |
@@ -1330,12 +1702,50 @@ list_service_operations(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns information about the last deployment and other change states
+%% of services.
+%%
+%% This API provides visibility into recent changes that may have affected
+%% service performance, helping with troubleshooting and change correlation.
+-spec list_service_states(aws_client:aws_client(), list_service_states_input()) ->
+    {ok, list_service_states_output(), tuple()} |
+    {error, any()} |
+    {error, list_service_states_errors(), tuple()}.
+list_service_states(Client, Input) ->
+    list_service_states(Client, Input, []).
+
+-spec list_service_states(aws_client:aws_client(), list_service_states_input(), proplists:proplist()) ->
+    {ok, list_service_states_output(), tuple()} |
+    {error, any()} |
+    {error, list_service_states_errors(), tuple()}.
+list_service_states(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/service/states"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of services that have been discovered by Application
 %% Signals.
 %%
 %% A service represents a minimum logical and transactional unit that
-%% completes a business function. Services
-%% are discovered through Application Signals instrumentation.
+%% completes a business function. Services are discovered through Application
+%% Signals instrumentation.
 -spec list_services(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_services_output(), tuple()} |
     {error, any()} |
@@ -1424,13 +1834,51 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Enables this Amazon Web Services account to be able to use CloudWatch
-%% Application Signals
-%% by creating the AWSServiceRoleForCloudWatchApplicationSignals
-%% service-linked role.
+%% @doc Creates or updates the grouping configuration for this account.
 %%
-%% This service-
-%% linked role has the following permissions:
+%% This operation allows you to define custom grouping attributes that
+%% determine how services are logically grouped based on telemetry
+%% attributes, Amazon Web Services tags, or predefined mappings. These
+%% grouping attributes can then be used to organize and filter services in
+%% the Application Signals console and APIs.
+-spec put_grouping_configuration(aws_client:aws_client(), put_grouping_configuration_input()) ->
+    {ok, put_grouping_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_grouping_configuration_errors(), tuple()}.
+put_grouping_configuration(Client, Input) ->
+    put_grouping_configuration(Client, Input, []).
+
+-spec put_grouping_configuration(aws_client:aws_client(), put_grouping_configuration_input(), proplists:proplist()) ->
+    {ok, put_grouping_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, put_grouping_configuration_errors(), tuple()}.
+put_grouping_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/grouping-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enables this Amazon Web Services account to be able to use CloudWatch
+%% Application Signals by creating the
+%% AWSServiceRoleForCloudWatchApplicationSignals service-linked role.
+%%
+%% This service- linked role has the following permissions:
 %%
 %% `xray:GetServiceGraph'
 %%
@@ -1447,10 +1895,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% `autoscaling:DescribeAutoScalingGroups'
 %%
 %% After completing this step, you still need to instrument your Java and
-%% Python applications to send data
-%% to Application Signals. For more information, see
-%%
-%% Enabling Application Signals:
+%% Python applications to send data to Application Signals. For more
+%% information, see Enabling Application Signals:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Application-Signals-Enable.html.
 -spec start_discovery(aws_client:aws_client(), start_discovery_input()) ->
     {ok, start_discovery_output(), tuple()} |
@@ -1489,19 +1935,17 @@ start_discovery(Client, Input0, Options0) ->
 %% CloudWatch resource, such as a service level objective.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
-%% them to scope user
-%% permissions by granting a user
-%% permission to access or change only resources with certain tag values.
+%% them to scope user permissions by granting a user permission to access or
+%% change only resources with certain tag values.
 %%
 %% Tags don't have any semantic meaning to Amazon Web Services and are
 %% interpreted strictly as strings of characters.
 %%
 %% You can use the `TagResource' action with an alarm that already has
-%% tags. If you specify a new tag key for the alarm,
-%% this tag is appended to the list of tags associated
-%% with the alarm. If you specify a tag key that is already associated with
-%% the alarm, the new tag value that you specify replaces
-%% the previous value for that tag.
+%% tags. If you specify a new tag key for the alarm, this tag is appended to
+%% the list of tags associated with the alarm. If you specify a tag key that
+%% is already associated with the alarm, the new tag value that you specify
+%% replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a CloudWatch resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
@@ -1573,11 +2017,11 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Updates an existing service level objective (SLO).
 %%
-%% If you omit parameters, the previous values
-%% of those parameters are retained.
+%% If you omit parameters, the previous values of those parameters are
+%% retained.
 %%
-%% You cannot change from a period-based SLO to a request-based SLO,
-%% or change from a request-based SLO to a period-based SLO.
+%% You cannot change from a period-based SLO to a request-based SLO, or
+%% change from a request-based SLO to a period-based SLO.
 -spec update_service_level_objective(aws_client:aws_client(), binary() | list(), update_service_level_objective_input()) ->
     {ok, update_service_level_objective_output(), tuple()} |
     {error, any()} |

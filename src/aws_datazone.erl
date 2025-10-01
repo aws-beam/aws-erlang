@@ -842,6 +842,14 @@
 
 
 %% Example:
+%% managed_endpoint_credentials() :: #{
+%%   <<"id">> => [string()],
+%%   <<"token">> => [string()]
+%% }
+-type managed_endpoint_credentials() :: #{binary() => any()}.
+
+
+%% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -4560,6 +4568,7 @@
 
 %% Example:
 %% spark_emr_properties_output() :: #{
+%%   <<"certificateData">> => [string()],
 %%   <<"computeArn">> => [string()],
 %%   <<"credentials">> => username_password(),
 %%   <<"credentialsExpiration">> => [non_neg_integer()],
@@ -4568,6 +4577,8 @@
 %%   <<"javaVirtualEnv">> => [string()],
 %%   <<"livyEndpoint">> => [string()],
 %%   <<"logUri">> => [string()],
+%%   <<"managedEndpointArn">> => [string()],
+%%   <<"managedEndpointCredentials">> => managed_endpoint_credentials(),
 %%   <<"pythonVirtualEnv">> => [string()],
 %%   <<"runtimeRole">> => [string()],
 %%   <<"trustedCertificatesS3Uri">> => [string()]
@@ -5233,6 +5244,7 @@
 %%   <<"instanceProfileArn">> => [string()],
 %%   <<"javaVirtualEnv">> => [string()],
 %%   <<"logUri">> => [string()],
+%%   <<"managedEndpointArn">> => [string()],
 %%   <<"pythonVirtualEnv">> => [string()],
 %%   <<"runtimeRole">> => [string()],
 %%   <<"trustedCertificatesS3Uri">> => [string()]
@@ -5538,6 +5550,7 @@
 %%   <<"instanceProfileArn">> => [string()],
 %%   <<"javaVirtualEnv">> => [string()],
 %%   <<"logUri">> => [string()],
+%%   <<"managedEndpointArn">> => [string()],
 %%   <<"pythonVirtualEnv">> => [string()],
 %%   <<"runtimeRole">> => [string()],
 %%   <<"trustedCertificatesS3Uri">> => [string()]
@@ -7878,9 +7891,8 @@ create_account_pool(Client, DomainIdentifier, Input0, Options0) ->
 %% `--type-revision' (if used) must match a valid revision of the asset
 %% type.
 %%
-%% Form type must exist and be associated with the asset type. Use
-%% `create-form-type' to define. For more information, see
-%% create-form-type:
+%% `formsInput' is required when it is associated as required in the
+%% `asset-type'. For more information, see create-form-type:
 %% https://docs.aws.amazon.com/cli/latest/reference/datazone/create-form-type.html.
 %%
 %% Form content must include all required fields as per the form schema
@@ -7996,7 +8008,8 @@ create_asset_filter(Client, AssetIdentifier, DomainIdentifier, Input0, Options0)
 %%
 %% Asset must already exist in the domain with identifier.
 %%
-%% The form type with correct revision must be registered in the same domain.
+%% `formsInput' is required when asset has the form type.
+%% `typeRevision' should be the latest version of form type.
 %%
 %% The form content must include all required fields (e.g., `bucketArn'
 %% for `S3ObjectCollectionForm').
@@ -8041,8 +8054,8 @@ create_asset_revision(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 %%
 %% Prerequisites:
 %%
-%% The form type with `typeIdentifier' and `typeRevision' must exist
-%% and be published.
+%% The `formsInput' field is required, however, can be passed as empty
+%% (e.g. `-forms-input {})'.
 %%
 %% You must have `CreateAssetType' permissions.
 %%
@@ -8144,8 +8157,6 @@ create_connection(Client, DomainIdentifier, Input0, Options0) ->
 %% the same name).
 %%
 %% User must have create permissions for data products in the project.
-%%
-%% The domain must have Amazon DataZone publishing enabled.
 -spec create_data_product(aws_client:aws_client(), binary() | list(), create_data_product_input()) ->
     {ok, create_data_product_output(), tuple()} |
     {error, any()} |
@@ -8471,6 +8482,26 @@ create_environment_profile(Client, DomainIdentifier, Input0, Options0) ->
 %% The owning project must exist and be accessible.
 %%
 %% The name must be unique within the domain.
+%%
+%% For custom form types, to indicate that a field should be searchable,
+%% annotate it with `@amazon.datazone#searchable'. By default, searchable
+%% fields are indexed for semantic search, where related query terms will
+%% match the attribute value even if they are not stemmed or keyword matches.
+%% To indicate that a field should be indexed for lexical search (which
+%% disables semantic search but supports stemmed and partial matches),
+%% annotate it with
+%% `@amazon.datazone#searchable(modes:[&quot;LEXICAL&quot;])'. To
+%% indicate that a field should be indexed for technical identifier search
+%% (for more information on technical identifier search, see:
+%% [https://aws.amazon.com/blogs/big-data/streamline-data-discovery-with-precise-technical-identifier-search-in-amazon-sagemaker-unified-studio/]),
+%% annotate it with
+%% `@amazon.datazone#searchable(modes:[&quot;TECHNICAL&quot;])'.
+%%
+%% To denote that a field will store glossary term ids (which are filterable
+%% via the Search/SearchListings APIs), annotate it with
+%% `@amazon.datazone#glossaryterm(&quot;${GLOSSARY_ID}&quot;)', where
+%% `${GLOSSARY_ID}' is the id of the glossary that the glossary terms
+%% stored in the field belong to.
 -spec create_form_type(aws_client:aws_client(), binary() | list(), create_form_type_input()) ->
     {ok, create_form_type_output(), tuple()} |
     {error, any()} |
@@ -8574,7 +8605,7 @@ create_glossary(Client, DomainIdentifier, Input0, Options0) ->
 %%
 %% Domain must exist.
 %%
-%% Glossary must exist and be in an ENABLED state.
+%% Glossary must exist.
 %%
 %% The term name must be unique within the glossary.
 %%
@@ -9173,9 +9204,6 @@ delete_connection(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 %%
 %% The user must have delete permissions for the data product.
 %%
-%% Ensure there are no active dependencies (e.g., published links, assets
-%% using the product).
-%%
 %% Domain and project must be active.
 -spec delete_data_product(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_product_input()) ->
     {ok, delete_data_product_output(), tuple()} |
@@ -9546,7 +9574,7 @@ delete_form_type(Client, DomainIdentifier, FormTypeIdentifier, Input0, Options0)
 %% The caller must have the `datazone:DeleteGlossary' permission in the
 %% domain and glossary.
 %%
-%% There should be no active assets or metadata linked to the glossary.
+%% Glossary should not be linked to any active metadata forms.
 -spec delete_glossary(aws_client:aws_client(), binary() | list(), binary() | list(), delete_glossary_input()) ->
     {ok, delete_glossary_output(), tuple()} |
     {error, any()} |
@@ -10693,6 +10721,22 @@ get_environment_profile(Client, DomainIdentifier, Identifier, QueryMap, HeadersM
 %% User must have permission on the form type.
 %%
 %% The form type should not be deleted or in an invalid state.
+%%
+%% One use case for this API is to determine whether a form field is indexed
+%% for search.
+%%
+%% A searchable field will be annotated with
+%% `@amazon.datazone#searchable'. By default, searchable fields are
+%% indexed for semantic search, where related query terms will match the
+%% attribute value even if they are not stemmed or keyword matches. If a
+%% field is indexed technical identifier search, it will be annotated with
+%% `@amazon.datazone#searchable(modes:[&quot;TECHNICAL&quot;])'. If a
+%% field is indexed for lexical search (supports stemmed and prefix matches
+%% but not semantic matches), it will be annotated with
+%% `@amazon.datazone#searchable(modes:[&quot;LEXICAL&quot;])'.
+%%
+%% A field storing glossary term IDs (which is filterable) will be annotated
+%% with `@amazon.datazone#glossaryterm(&quot;${glossaryId}&quot;)'.
 -spec get_form_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_form_type_output(), tuple()} |
     {error, any()} |
@@ -13374,8 +13418,44 @@ search_group_profiles(Client, DomainIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches listings (records of an asset at a given time) in Amazon
-%% DataZone.
+%% @doc Searches listings in Amazon DataZone.
+%%
+%% SearchListings is a powerful capability that enables users to discover and
+%% explore published assets and data products across their organization. It
+%% provides both basic and advanced search functionality, allowing users to
+%% find resources based on names, descriptions, metadata, and other
+%% attributes. SearchListings also supports filtering using various criteria
+%% such as creation date, owner, or status. This API is essential for making
+%% the wealth of data resources in an organization discoverable and usable,
+%% helping users find the right data for their needs quickly and efficiently.
+%%
+%% SearchListings returns results in a paginated format. When the result set
+%% is large, the response will include a nextToken, which can be used to
+%% retrieve the next page of results.
+%%
+%% The SearchListings API gives users flexibility in specifying what kind of
+%% search is run.
+%%
+%% To run a free-text search, the `searchText' parameter must be
+%% supplied. By default, all searchable fields are indexed for semantic
+%% search and will return semantic matches for SearchListings queries. To
+%% prevent semantic search indexing for a custom form attribute, see the
+%% CreateFormType API documentation:
+%% https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateFormType.html.
+%% To run a lexical search query, enclose the query with double quotes
+%% (&quot;&quot;). This will disable semantic search even for fields that
+%% have semantic search enabled and will only return results that contain the
+%% keywords wrapped by double quotes (order of tokens in the query is not
+%% enforced). Free-text search is supported for all attributes annotated with
+%% @amazon.datazone#searchable.
+%%
+%% To run a filtered search, provide filter clause using the filters
+%% parameter. To filter on glossary terms, use the special attribute
+%% `__DataZoneGlossaryTerms'.
+%%
+%% To find out whether an attribute has been annotated and indexed for a
+%% given search type, use the GetFormType API to retrieve the form containing
+%% the attribute.
 -spec search_listings(aws_client:aws_client(), binary() | list(), search_listings_input()) ->
     {ok, search_listings_output(), tuple()} |
     {error, any()} |

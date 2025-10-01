@@ -107,6 +107,9 @@
          get_matches/2,
          get_matches/4,
          get_matches/5,
+         get_profile_history_record/4,
+         get_profile_history_record/6,
+         get_profile_history_record/7,
          get_profile_object_type/3,
          get_profile_object_type/5,
          get_profile_object_type/6,
@@ -170,6 +173,8 @@
          list_profile_attribute_values/3,
          list_profile_attribute_values/5,
          list_profile_attribute_values/6,
+         list_profile_history_records/3,
+         list_profile_history_records/4,
          list_profile_object_type_templates/1,
          list_profile_object_type_templates/3,
          list_profile_object_type_templates/4,
@@ -576,6 +581,19 @@
 %%   <<"SourceName">> => string()
 %% }
 -type conflict_resolution() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_history_record() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"PerformedBy">> => string(),
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type profile_history_record() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1011,6 +1029,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_event_triggers_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_history_record_request() :: #{}
+-type get_profile_history_record_request() :: #{}.
 
 
 %% Example:
@@ -1875,6 +1897,18 @@
 
 
 %% Example:
+%% list_profile_history_records_request() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"PerformedBy">> => string(),
+%%   <<"ProfileId">> := string()
+%% }
+-type list_profile_history_records_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% segment_group() :: #{
 %%   <<"Groups">> => list(group()),
 %%   <<"Include">> => list(any())
@@ -2327,6 +2361,20 @@
 
 
 %% Example:
+%% get_profile_history_record_response() :: #{
+%%   <<"ActionType">> => list(any()),
+%%   <<"Content">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"ObjectTypeName">> => string(),
+%%   <<"PerformedBy">> => string(),
+%%   <<"ProfileObjectUniqueKey">> => string()
+%% }
+-type get_profile_history_record_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% detected_profile_object_type() :: #{
 %%   <<"Fields">> => map(),
 %%   <<"Keys">> => map(),
@@ -2414,6 +2462,14 @@
 %%   <<"ObjectTypeName">> := string()
 %% }
 -type put_profile_object_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_profile_history_records_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProfileHistoryRecords">> => list(profile_history_record())
+%% }
+-type list_profile_history_records_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_event_stream_request() :: #{}
@@ -3039,6 +3095,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_profile_history_record_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_profile_object_type_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
@@ -3187,6 +3250,13 @@
     resource_not_found_exception().
 
 -type list_profile_attribute_values_errors() ::
+    bad_request_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type list_profile_history_records_errors() ::
     bad_request_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
@@ -4817,6 +4887,44 @@ get_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a history record for a specific profile, for a specific
+%% domain.
+-spec get_profile_history_record(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_profile_history_record_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_history_record_errors(), tuple()}.
+get_profile_history_record(Client, DomainName, Id, ProfileId)
+  when is_map(Client) ->
+    get_profile_history_record(Client, DomainName, Id, ProfileId, #{}, #{}).
+
+-spec get_profile_history_record(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_profile_history_record_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_history_record_errors(), tuple()}.
+get_profile_history_record(Client, DomainName, Id, ProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_profile_history_record(Client, DomainName, Id, ProfileId, QueryMap, HeadersMap, []).
+
+-spec get_profile_history_record(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_profile_history_record_response(), tuple()} |
+    {error, any()} |
+    {error, get_profile_history_record_errors(), tuple()}.
+get_profile_history_record(Client, DomainName, Id, ProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/", aws_util:encode_uri(ProfileId), "/history-records/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the object types for a specific domain.
 -spec get_profile_object_type(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_profile_object_type_response(), tuple()} |
@@ -5702,6 +5810,43 @@ list_profile_attribute_values(Client, AttributeName, DomainName, QueryMap, Heade
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of history records for a specific profile, for a
+%% specific domain.
+-spec list_profile_history_records(aws_client:aws_client(), binary() | list(), list_profile_history_records_request()) ->
+    {ok, list_profile_history_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_history_records_errors(), tuple()}.
+list_profile_history_records(Client, DomainName, Input) ->
+    list_profile_history_records(Client, DomainName, Input, []).
+
+-spec list_profile_history_records(aws_client:aws_client(), binary() | list(), list_profile_history_records_request(), proplists:proplist()) ->
+    {ok, list_profile_history_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_profile_history_records_errors(), tuple()}.
+list_profile_history_records(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/history-records"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all of the template information for object types.
 -spec list_profile_object_type_templates(aws_client:aws_client()) ->
