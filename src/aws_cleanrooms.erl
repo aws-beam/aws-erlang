@@ -522,6 +522,15 @@
 
 
 %% Example:
+%% access_budget() :: #{
+%%   <<"aggregateRemainingBudget">> => integer(),
+%%   <<"details">> => list(access_budget_details()),
+%%   <<"resourceArn">> => string()
+%% }
+-type access_budget() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_analysis_templates_output() :: #{
 %%   <<"analysisTemplateSummaries">> := list(analysis_template_summary()),
 %%   <<"nextToken">> => string()
@@ -531,6 +540,15 @@
 %% Example:
 %% delete_id_namespace_association_output() :: #{}
 -type delete_id_namespace_association_output() :: #{}.
+
+
+%% Example:
+%% budget_parameter() :: #{
+%%   <<"autoRefresh">> => list(any()),
+%%   <<"budget">> => integer(),
+%%   <<"type">> => list(any())
+%% }
+-type budget_parameter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -917,6 +935,7 @@
 
 %% Example:
 %% list_collaboration_privacy_budgets_input() :: #{
+%%   <<"accessBudgetResourceArn">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"privacyBudgetType">> := list(any())
@@ -1453,6 +1472,14 @@
 
 
 %% Example:
+%% access_budgets_privacy_template_parameters_output() :: #{
+%%   <<"budgetParameters">> => list(budget_parameter()),
+%%   <<"resourceArn">> => string()
+%% }
+-type access_budgets_privacy_template_parameters_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% membership_query_compute_payment_config() :: #{
 %%   <<"isResponsible">> => [boolean()]
 %% }
@@ -1475,6 +1502,7 @@
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"creatorAccountId">> => string(),
 %%   <<"name">> => string(),
+%%   <<"resourceArn">> => string(),
 %%   <<"selectedAnalysisMethods">> => list(list(any())()),
 %%   <<"type">> => list(any()),
 %%   <<"updateTime">> => [non_neg_integer()]
@@ -1610,6 +1638,7 @@
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"partitionKeys">> => list(column()),
+%%   <<"resourceArn">> => string(),
 %%   <<"schemaStatusDetails">> => list(schema_status_detail()),
 %%   <<"schemaTypeProperties">> => list(),
 %%   <<"selectedAnalysisMethods">> => list(list(any())()),
@@ -1655,6 +1684,7 @@
 
 %% Example:
 %% list_privacy_budgets_input() :: #{
+%%   <<"accessBudgetResourceArn">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"privacyBudgetType">> := list(any())
@@ -1842,7 +1872,7 @@
 
 %% Example:
 %% create_privacy_budget_template_input() :: #{
-%%   <<"autoRefresh">> := list(any()),
+%%   <<"autoRefresh">> => list(any()),
 %%   <<"parameters">> := list(),
 %%   <<"privacyBudgetType">> := list(any()),
 %%   <<"tags">> => map()
@@ -2459,6 +2489,14 @@
 
 
 %% Example:
+%% access_budgets_privacy_template_parameters_input() :: #{
+%%   <<"budgetParameters">> => list(budget_parameter()),
+%%   <<"resourceArn">> => string()
+%% }
+-type access_budgets_privacy_template_parameters_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_collaboration_output() :: #{
 %%   <<"collaboration">> := collaboration()
 %% }
@@ -2746,6 +2784,18 @@
 
 
 %% Example:
+%% access_budget_details() :: #{
+%%   <<"autoRefresh">> => list(any()),
+%%   <<"budget">> => integer(),
+%%   <<"budgetType">> => list(any()),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"remainingBudget">> => integer(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type access_budget_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% aggregate_column() :: #{
 %%   <<"columnNames">> => list(string()),
 %%   <<"function">> => string()
@@ -2844,6 +2894,13 @@
 %%   <<"preserveNulls">> => [boolean()]
 %% }
 -type data_encryption_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_budgets_privacy_template_update_parameters() :: #{
+%%   <<"budgetParameters">> => list(budget_parameter())
+%% }
+-type access_budgets_privacy_template_update_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5653,6 +5710,7 @@ list_collaboration_privacy_budgets(Client, CollaborationIdentifier, PrivacyBudge
 
     Query0_ =
       [
+        {<<"accessBudgetResourceArn">>, maps:get(<<"accessBudgetResourceArn">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"privacyBudgetType">>, PrivacyBudgetType}
@@ -6080,6 +6138,7 @@ list_privacy_budgets(Client, MembershipIdentifier, PrivacyBudgetType, QueryMap, 
 
     Query0_ =
       [
+        {<<"accessBudgetResourceArn">>, maps:get(<<"accessBudgetResourceArn">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"privacyBudgetType">>, PrivacyBudgetType}

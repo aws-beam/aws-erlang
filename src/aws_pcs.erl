@@ -63,6 +63,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_cluster/2,
+         update_cluster/3,
          update_compute_node_group/2,
          update_compute_node_group/3,
          update_queue/2,
@@ -121,6 +123,14 @@
 -type create_cluster_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_cluster_slurm_configuration_request() :: #{
+%%   <<"accounting">> => update_accounting_request(),
+%%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%% }
+-type update_cluster_slurm_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% compute_node_group_configuration() :: #{
 %%   <<"computeNodeGroupId">> => [string()]
 %% }
@@ -133,6 +143,13 @@
 %%   <<"subnetIds">> => list(string())
 %% }
 -type networking() :: #{binary() => any()}.
+
+%% Example:
+%% update_accounting_request() :: #{
+%%   <<"defaultPurgeTimeInDays">> => [integer()],
+%%   <<"mode">> => list(any())
+%% }
+-type update_accounting_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_cluster_response() :: #{
@@ -150,6 +167,7 @@
 %%   <<"id">> => [string()],
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
+%%   <<"slurmConfiguration">> => queue_slurm_configuration(),
 %%   <<"status">> => list(any())
 %% }
 -type queue() :: #{binary() => any()}.
@@ -172,7 +190,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"clusterIdentifier">> := string(),
 %%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
-%%   <<"queueIdentifier">> := string()
+%%   <<"queueIdentifier">> := string(),
+%%   <<"slurmConfiguration">> => update_queue_slurm_configuration_request()
 %% }
 -type update_queue_request() :: #{binary() => any()}.
 
@@ -184,6 +203,20 @@
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type cluster_slurm_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% queue_slurm_configuration() :: #{
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%% }
+-type queue_slurm_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusterIdentifier">> := string(),
+%%   <<"slurmConfiguration">> => update_cluster_slurm_configuration_request()
+%% }
+-type update_cluster_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_compute_node_group_response() :: #{
@@ -394,6 +427,7 @@
 %%   <<"clusterIdentifier">> := string(),
 %%   <<"computeNodeGroupConfigurations">> => list(compute_node_group_configuration()),
 %%   <<"queueName">> := string(),
+%%   <<"slurmConfiguration">> => queue_slurm_configuration_request(),
 %%   <<"tags">> => map()
 %% }
 -type create_queue_request() :: #{binary() => any()}.
@@ -489,6 +523,12 @@
 -type scheduler() :: #{binary() => any()}.
 
 %% Example:
+%% update_queue_slurm_configuration_request() :: #{
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%% }
+-type update_queue_slurm_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_compute_node_group_response() :: #{
 %%   <<"computeNodeGroup">> => compute_node_group()
 %% }
@@ -520,6 +560,12 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% queue_slurm_configuration_request() :: #{
+%%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
+%% }
+-type queue_slurm_configuration_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_compute_node_group_response() :: #{
@@ -625,6 +671,12 @@
 %%   <<"queue">> => queue()
 %% }
 -type create_queue_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_response() :: #{
+%%   <<"cluster">> => cluster()
+%% }
+-type update_cluster_response() :: #{binary() => any()}.
 
 -type create_cluster_errors() ::
     throttling_exception() | 
@@ -737,6 +789,14 @@
 
 -type untag_resource_errors() ::
     resource_not_found_exception().
+
+-type update_cluster_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_compute_node_group_errors() ::
     throttling_exception() | 
@@ -1087,6 +1147,31 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates a cluster configuration.
+%%
+%% You can modify Slurm scheduler settings, accounting configuration, and
+%% security groups for an existing cluster.
+%%
+%% You can only update clusters that are in `ACTIVE',
+%% `UPDATE_FAILED', or `SUSPENDED' state. All associated resources
+%% (queues and compute node groups) must be in `ACTIVE' state before you
+%% can update the cluster.
+-spec update_cluster(aws_client:aws_client(), update_cluster_request()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_errors(), tuple()}.
+update_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cluster(Client, Input, []).
+
+-spec update_cluster(aws_client:aws_client(), update_cluster_request(), proplists:proplist()) ->
+    {ok, update_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_errors(), tuple()}.
+update_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCluster">>, Input, Options).
 
 %% @doc Updates a compute node group.
 %%

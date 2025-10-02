@@ -8,7 +8,7 @@
 %%
 %% For more information about the meeting APIs, see
 %% Amazon Chime SDK meetings:
-%% https://docs.aws.amazon.com/chime/latest/APIReference/API_Operations_Amazon_Chime_SDK_Meetings.html.
+%% https://docs.aws.amazon.com/chime-sdk/latest/APIReference/API_Operations_Amazon_Chime_SDK_Meetings.html.
 -module(aws_chime_sdk_meetings).
 
 -export([batch_create_attendee/3,
@@ -101,6 +101,7 @@
 %%   <<"Attendees">> := list(create_attendee_request_item()),
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"ExternalMeetingId">> := string(),
+%%   <<"MediaPlacementNetworkType">> => list(any()),
 %%   <<"MediaRegion">> := string(),
 %%   <<"MeetingFeatures">> => meeting_features_configuration(),
 %%   <<"MeetingHostId">> => string(),
@@ -279,6 +280,7 @@
 %% create_meeting_request() :: #{
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"ExternalMeetingId">> := string(),
+%%   <<"MediaPlacementNetworkType">> => list(any()),
 %%   <<"MediaRegion">> := string(),
 %%   <<"MeetingFeatures">> => meeting_features_configuration(),
 %%   <<"MeetingHostId">> => string(),
@@ -692,7 +694,7 @@
 %%
 %% For more information about the Amazon Chime SDK, see
 %% Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
 %% Amazon Chime Developer Guide.
 -spec batch_create_attendee(aws_client:aws_client(), binary() | list(), batch_create_attendee_request()) ->
     {ok, batch_create_attendee_response(), tuple()} |
@@ -757,6 +759,14 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 %% However, you can set your `video' capability
 %% to receive and you set your `content' capability to not receive.
 %%
+%% If meeting features is defined as `Video:MaxResolution:None' but
+%% `Content:MaxResolution' is defined as something other than
+%% `None' and attendee capabilities are not defined in the API
+%% request, then the default attendee video capability is set to
+%% `Receive' and attendee content capability is set to
+%% `SendReceive'. This is because content `SendReceive'
+%% requires video to be at least `Receive'.
+%%
 %% When you change an `audio' capability from `None' or `Receive'
 %% to `Send' or `SendReceive' ,
 %% and if the attendee left their microphone unmuted, audio will flow from
@@ -805,7 +815,7 @@ batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) -
 %%
 %% For more information about the Amazon Chime SDK, see
 %% Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the
 %% Amazon Chime Developer Guide.
 -spec create_attendee(aws_client:aws_client(), binary() | list(), create_attendee_request()) ->
@@ -845,14 +855,27 @@ create_attendee(Client, MeetingId, Input0, Options0) ->
 %% with no initial attendees.
 %%
 %% For more information about specifying media Regions, see
-%% Amazon Chime SDK Media Regions:
-%% https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html
-%% in the Amazon Chime Developer Guide. For more information about the Amazon
-%% Chime SDK, see
+%% Available Regions:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/sdk-available-regions and
+%% Using meeting Regions:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/chime-sdk-meetings-regions.html,
+%% both
+%% in the Amazon Chime SDK Developer Guide. For more information about the
+%% Amazon Chime SDK, see
 %% Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the
-%% Amazon Chime Developer Guide.
+%% Amazon Chime SDK Developer Guide.
+%%
+%% If you use this API in conjuction with the and APIs, and you don't
+%% specify the
+%% `MeetingFeatures.Content.MaxResolution' or
+%% `MeetingFeatures.Video.MaxResolution' parameters, the following
+%% defaults are used:
+%%
+%% Content.MaxResolution: FHD
+%%
+%% Video.MaxResolution: HD
 -spec create_meeting(aws_client:aws_client(), create_meeting_request()) ->
     {ok, create_meeting_response(), tuple()} |
     {error, any()} |
@@ -891,13 +914,27 @@ create_meeting(Client, Input0, Options0) ->
 %% attendees.
 %%
 %% For more information about specifying media Regions, see
-%% Amazon Chime SDK Media Regions:
-%% https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html
-%% in the Amazon Chime Developer Guide. For more information about the Amazon
-%% Chime SDK, see
+%% Available Regions:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/sdk-available-regions and
+%% Using meeting Regions:
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/chime-sdk-meetings-regions.html,
+%% both
+%% in the Amazon Chime SDK Developer Guide. For more information about the
+%% Amazon Chime SDK, see
 %% Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
-%% in the Amazon Chime Developer Guide.
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
+%% in the
+%% Amazon Chime SDK Developer Guide.
+%%
+%% If you use this API in conjuction with the and APIs, and you don't
+%% specify the
+%% `MeetingFeatures.Content.MaxResolution' or
+%% `MeetingFeatures.Video.MaxResolution' parameters, the following
+%% defaults are used:
+%%
+%% Content.MaxResolution: FHD
+%%
+%% Video.MaxResolution: HD
 -spec create_meeting_with_attendees(aws_client:aws_client(), create_meeting_with_attendees_request()) ->
     {ok, create_meeting_with_attendees_response(), tuple()} |
     {error, any()} |
@@ -938,7 +975,7 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
 %% Attendees are automatically deleted when a Amazon Chime SDK meeting is
 %% deleted. For more information about the Amazon Chime SDK, see
 %% Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
 -spec delete_attendee(aws_client:aws_client(), binary() | list(), binary() | list(), delete_attendee_request()) ->
     {ok, undefined, tuple()} |
@@ -979,7 +1016,7 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
 %% new clients from
 %% joining the meeting. For more information about the Amazon Chime SDK, see
 %% Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html in the
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html in the
 %% Amazon Chime Developer Guide.
 -spec delete_meeting(aws_client:aws_client(), binary() | list(), delete_meeting_request()) ->
     {ok, undefined, tuple()} |
@@ -1020,7 +1057,7 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 %%
 %% For more information about the Amazon Chime SDK, see
 %% Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
 -spec get_attendee(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_attendee_response(), tuple()} |
@@ -1063,7 +1100,7 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
 %%
 %% For more information about the Amazon Chime SDK, see
 %% Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
 -spec get_meeting(aws_client:aws_client(), binary() | list()) ->
     {ok, get_meeting_response(), tuple()} |
@@ -1106,7 +1143,7 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %%
 %% For more information about the Amazon Chime SDK, see
 %% Using the Amazon Chime SDK:
-%% https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html
+%% https://docs.aws.amazon.com/chime-sdk/latest/dg/meetings-sdk.html
 %% in the Amazon Chime Developer Guide.
 -spec list_attendees(aws_client:aws_client(), binary() | list()) ->
     {ok, list_attendees_response(), tuple()} |
@@ -1434,6 +1471,14 @@ untag_resource(Client, Input0, Options0) ->
 %% receive, the response will contain an HTTP 400 Bad Request status code.
 %% However, you can set your `video' capability
 %% to receive and you set your `content' capability to not receive.
+%%
+%% If meeting features is defined as `Video:MaxResolution:None' but
+%% `Content:MaxResolution' is defined as something other than
+%% `None' and attendee capabilities are not defined in the API
+%% request, then the default attendee video capability is set to
+%% `Receive' and attendee content capability is set to
+%% `SendReceive'. This is because content `SendReceive'
+%% requires video to be at least `Receive'.
 %%
 %% When you change an `audio' capability from `None' or `Receive'
 %% to `Send' or `SendReceive' ,

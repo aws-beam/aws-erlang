@@ -326,6 +326,15 @@
 
 
 %% Example:
+%% access_budget() :: #{
+%%   <<"aggregateRemainingBudget">> => integer(),
+%%   <<"details">> => list(access_budget_details()),
+%%   <<"resourceArn">> => string()
+%% }
+-type access_budget() :: #{binary() => any()}.
+
+
+%% Example:
 %% log_redaction_configuration() :: #{
 %%   <<"customEntityConfig">> => custom_entity_config(),
 %%   <<"entitiesToRedact">> => list(list(any())())
@@ -469,6 +478,7 @@
 %%   <<"name">> => string(),
 %%   <<"numberOfFiles">> => [float()],
 %%   <<"numberOfRecords">> => [float()],
+%%   <<"privacyBudgets">> => list(),
 %%   <<"protectedQueryIdentifier">> => string(),
 %%   <<"retentionInDays">> => [integer()],
 %%   <<"sizeInGb">> => [float()],
@@ -1482,6 +1492,7 @@
 %%   <<"mlInputChannelArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"numberOfRecords">> => [float()],
+%%   <<"privacyBudgets">> => list(),
 %%   <<"retentionInDays">> => [integer()],
 %%   <<"status">> => list(any()),
 %%   <<"statusDetails">> => status_details(),
@@ -1610,6 +1621,18 @@
 %%   <<"s3Destination">> => s3_config_map()
 %% }
 -type audience_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_budget_details() :: #{
+%%   <<"autoRefresh">> => list(any()),
+%%   <<"budget">> => integer(),
+%%   <<"budgetType">> => list(any()),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"remainingBudget">> => integer(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type access_budget_details() :: #{binary() => any()}.
 
 
 %% Example:
