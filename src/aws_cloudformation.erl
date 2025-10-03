@@ -3287,7 +3287,7 @@ deactivate_organizations_access(Client, Input, Options)
 %%
 %% Deactivating an extension deletes the configuration details that are
 %% associated with it.
-%% To temporary disable a CloudFormation Hook instead, you can use
+%% To temporarily disable a CloudFormation Hook instead, you can use
 %% SetTypeConfiguration:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html.
 %%
@@ -3932,6 +3932,12 @@ describe_stacks(Client, Input, Options)
 %% about that specific extension version. Otherwise, it returns information
 %% about the default
 %% extension version.
+%%
+%% For more information, see Edit configuration
+%% data for extensions in your account:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-set-configuration.html
+%% in the
+%% CloudFormation User Guide.
 -spec describe_type(aws_client:aws_client(), describe_type_input()) ->
     {ok, describe_type_output(), tuple()} |
     {error, any()} |
@@ -4388,8 +4394,8 @@ list_generated_templates(Client, Input, Options)
 
 %% @doc Returns summaries of invoked Hooks.
 %%
-%% For more information, see View CloudFormation Hooks
-%% invocations:
+%% For more information, see View invocation
+%% summaries for CloudFormation Hooks:
 %% https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/hooks-view-invocations.html
 %% in the CloudFormation Hooks User Guide.
 %%
@@ -4972,29 +4978,38 @@ set_stack_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetStackPolicy">>, Input, Options).
 
-%% @doc Specifies the configuration data for a registered CloudFormation
-%% extension, in the given
-%% account and Region.
+%% @doc Specifies the configuration data for a CloudFormation extension, such
+%% as a resource or Hook,
+%% in the given account and Region.
 %%
-%% To view the current configuration data for an extension, refer to the
-%% `ConfigurationSchema' element of DescribeType:
-%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
-%% For
-%% more information, see Edit configuration
+%% For more information, see Edit configuration
 %% data for extensions in your account:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-set-configuration.html
 %% in the
 %% CloudFormation User Guide.
 %%
+%% To view the current configuration data for an extension, refer to the
+%% `ConfigurationSchema' element of DescribeType:
+%% https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html.
+%%
 %% It's strongly recommended that you use dynamic references to restrict
 %% sensitive
 %% configuration definitions, such as third-party credentials. For more
-%% details on dynamic
-%% references, see Specify values stored in
-%% other services using dynamic references:
+%% information, see Specify values stored in other services using dynamic
+%% references:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/dynamic-references.html
 %% in the
 %% CloudFormation User Guide.
+%%
+%% For more information about setting the configuration data for resource
+%% types, see Defining the account-level configuration of an extension:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html#resource-type-howto-configuration
+%% in the
+%% CloudFormation Command Line Interface (CLI) User Guide. For more
+%% information about setting the configuration
+%% data for Hooks, see the CloudFormation
+%% Hooks User Guide:
+%% https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/what-is-cloudformation-hooks.html.
 -spec set_type_configuration(aws_client:aws_client(), set_type_configuration_input()) ->
     {ok, set_type_configuration_output(), tuple()} |
     {error, any()} |

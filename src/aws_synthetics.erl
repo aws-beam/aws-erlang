@@ -470,6 +470,7 @@
 
 %% Example:
 %% canary_code_output() :: #{
+%%   <<"BlueprintTypes">> => list(string()),
 %%   <<"Dependencies">> => list(dependency()),
 %%   <<"Handler">> => string(),
 %%   <<"SourceLocationArn">> => string()
@@ -754,6 +755,7 @@
 
 %% Example:
 %% canary_code_input() :: #{
+%%   <<"BlueprintTypes">> => list(string()),
 %%   <<"Dependencies">> => list(dependency()),
 %%   <<"Handler">> => string(),
 %%   <<"S3Bucket">> => string(),

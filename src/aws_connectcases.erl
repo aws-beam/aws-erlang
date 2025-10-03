@@ -83,6 +83,8 @@
          list_templates/4,
          put_case_event_configuration/3,
          put_case_event_configuration/4,
+         search_all_related_items/3,
+         search_all_related_items/4,
          search_cases/3,
          search_cases/4,
          search_related_items/4,
@@ -465,6 +467,24 @@
 %% Example:
 %% get_case_event_configuration_request() :: #{}
 -type get_case_event_configuration_request() :: #{}.
+
+
+%% Example:
+%% search_all_related_items_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"relatedItems">> => list(search_all_related_items_response_item())
+%% }
+-type search_all_related_items_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_all_related_items_request() :: #{
+%%   <<"filters">> => list(list()),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"sorts">> => list(search_all_related_items_sort())
+%% }
+-type search_all_related_items_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -863,6 +883,19 @@
 
 
 %% Example:
+%% search_all_related_items_response_item() :: #{
+%%   <<"associationTime">> => non_neg_integer(),
+%%   <<"caseId">> => string(),
+%%   <<"content">> => list(),
+%%   <<"performedBy">> => list(),
+%%   <<"relatedItemId">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"type">> => string()
+%% }
+-type search_all_related_items_response_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_field_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string()
@@ -975,6 +1008,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type search_cases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_all_related_items_sort() :: #{
+%%   <<"sortOrder">> => string(),
+%%   <<"sortProperty">> => string()
+%% }
+-type search_all_related_items_sort() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1416,6 +1457,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type search_all_related_items_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type search_cases_errors() ::
     throttling_exception() | 
@@ -2797,6 +2845,75 @@ put_case_event_configuration(Client, DomainId, Input) ->
 put_case_event_configuration(Client, DomainId, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-event-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for related items across all cases within a domain.
+%%
+%% This is a global search operation that returns related items from multiple
+%% cases, unlike the case-specific SearchRelatedItems:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchRelatedItems.html
+%% API.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% Find cases with similar issues across the domain. For example, search for
+%% all cases containing comments about &quot;product defect&quot; to identify
+%% patterns and existing solutions.
+%%
+%% Locate all cases associated with specific contacts or orders. For example,
+%% find all cases linked to a contactArn to understand the complete customer
+%% journey.
+%%
+%% Monitor SLA compliance across cases. For example, search for all cases
+%% with &quot;Active&quot; SLA status to prioritize remediation efforts.
+%%
+%% Important things to know
+%%
+%% This API returns case IDs, not complete case objects. To retrieve full
+%% case details, you must make additional calls to the GetCase:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetCase.html
+%% API for each returned case ID.
+%%
+%% This API searches across related items content, not case fields. Use the
+%% SearchCases:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchCases.html
+%% API to search within case field values.
+%%
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+-spec search_all_related_items(aws_client:aws_client(), binary() | list(), search_all_related_items_request()) ->
+    {ok, search_all_related_items_response(), tuple()} |
+    {error, any()} |
+    {error, search_all_related_items_errors(), tuple()}.
+search_all_related_items(Client, DomainId, Input) ->
+    search_all_related_items(Client, DomainId, Input, []).
+
+-spec search_all_related_items(aws_client:aws_client(), binary() | list(), search_all_related_items_request(), proplists:proplist()) ->
+    {ok, search_all_related_items_response(), tuple()} |
+    {error, any()} |
+    {error, search_all_related_items_errors(), tuple()}.
+search_all_related_items(Client, DomainId, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/related-items-search"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
