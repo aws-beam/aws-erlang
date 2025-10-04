@@ -830,6 +830,7 @@
 
 %% Example:
 %% collaboration() :: #{
+%%   <<"allowedResultRegions">> => list(list(any())()),
 %%   <<"analyticsEngine">> => list(any()),
 %%   <<"arn">> => string(),
 %%   <<"autoApprovedChangeTypes">> => list(list(any())()),
@@ -1134,6 +1135,7 @@
 %% athena_table_reference() :: #{
 %%   <<"databaseName">> => string(),
 %%   <<"outputLocation">> => string(),
+%%   <<"region">> => list(any()),
 %%   <<"tableName">> => string(),
 %%   <<"workGroup">> => string()
 %% }
@@ -1942,6 +1944,7 @@
 
 %% Example:
 %% create_collaboration_input() :: #{
+%%   <<"allowedResultRegions">> => list(list(any())()),
 %%   <<"analyticsEngine">> => list(any()),
 %%   <<"autoApprovedChangeRequestTypes">> => list(list(any())()),
 %%   <<"creatorDisplayName">> := string(),
@@ -2597,6 +2600,7 @@
 %% Example:
 %% glue_table_reference() :: #{
 %%   <<"databaseName">> => string(),
+%%   <<"region">> => list(any()),
 %%   <<"tableName">> => string()
 %% }
 -type glue_table_reference() :: #{binary() => any()}.

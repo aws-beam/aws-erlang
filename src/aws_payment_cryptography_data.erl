@@ -32,6 +32,8 @@
          generate_pin_data/3,
          re_encrypt_data/3,
          re_encrypt_data/4,
+         translate_key_material/2,
+         translate_key_material/3,
          translate_pin_data/2,
          translate_pin_data/3,
          verify_auth_request_cryptogram/2,
@@ -199,6 +201,13 @@
 
 
 %% Example:
+%% outgoing_tr31_key_block() :: #{
+%%   <<"WrappingKeyIdentifier">> => string()
+%% }
+-type outgoing_tr31_key_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% ecdh_derivation_attributes() :: #{
 %%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
 %%   <<"KeyAlgorithm">> => list(any()),
@@ -313,7 +322,7 @@
 %%   <<"GenerationKeyIdentifier">> := string(),
 %%   <<"PinBlockFormat">> := list(any()),
 %%   <<"PinDataLength">> => integer(),
-%%   <<"PrimaryAccountNumber">> := string()
+%%   <<"PrimaryAccountNumber">> => string()
 %% }
 -type generate_pin_data_input() :: #{binary() => any()}.
 
@@ -488,6 +497,24 @@
 
 
 %% Example:
+%% wrapped_working_key() :: #{
+%%   <<"KeyCheckValue">> => string(),
+%%   <<"WrappedKeyMaterial">> => string(),
+%%   <<"WrappedKeyMaterialFormat">> => string()
+%% }
+-type wrapped_working_key() :: #{binary() => any()}.
+
+
+%% Example:
+%% translate_key_material_input() :: #{
+%%   <<"IncomingKeyMaterial">> := list(),
+%%   <<"KeyCheckValueAlgorithm">> => string(),
+%%   <<"OutgoingKeyMaterial">> := list()
+%% }
+-type translate_key_material_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% emv_common_attributes() :: #{
 %%   <<"ApplicationCryptogram">> => string(),
 %%   <<"MajorKeyDerivationMode">> => list(any()),
@@ -523,7 +550,7 @@
 %%   <<"EncryptionWrappedKey">> => wrapped_key(),
 %%   <<"PinBlockFormat">> := list(any()),
 %%   <<"PinDataLength">> => integer(),
-%%   <<"PrimaryAccountNumber">> := string(),
+%%   <<"PrimaryAccountNumber">> => string(),
 %%   <<"VerificationAttributes">> := list(),
 %%   <<"VerificationKeyIdentifier">> := string()
 %% }
@@ -606,6 +633,13 @@
 %%   <<"WrappedKey">> => wrapped_key()
 %% }
 -type decrypt_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% translate_key_material_output() :: #{
+%%   <<"WrappedKey">> => wrapped_working_key()
+%% }
+-type translate_key_material_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -706,6 +740,20 @@
 
 
 %% Example:
+%% incoming_diffie_hellman_tr31_key_block() :: #{
+%%   <<"CertificateAuthorityPublicKeyIdentifier">> => string(),
+%%   <<"DerivationData">> => list(),
+%%   <<"DeriveKeyAlgorithm">> => list(any()),
+%%   <<"KeyDerivationFunction">> => list(any()),
+%%   <<"KeyDerivationHashAlgorithm">> => list(any()),
+%%   <<"PrivateKeyIdentifier">> => string(),
+%%   <<"PublicKeyCertificate">> => string(),
+%%   <<"WrappedKeyBlock">> => string()
+%% }
+-type incoming_diffie_hellman_tr31_key_block() :: #{binary() => any()}.
+
+
+%% Example:
 %% generate_mac_output() :: #{
 %%   <<"KeyArn">> => string(),
 %%   <<"KeyCheckValue">> => string(),
@@ -776,6 +824,13 @@
     resource_not_found_exception().
 
 -type re_encrypt_data_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type translate_key_material_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1104,7 +1159,7 @@ generate_card_validation_data(Client, Input0, Options0) ->
 %% You can use this operation to generate a DUPKT, CMAC, HMAC or EMV MAC by
 %% setting generation attributes and algorithm to the associated values. The
 %% MAC generation encryption key must have valid values for `KeyUsage'
-%% such as `TR31_M7_HMAC_KEY' for HMAC generation, and they key must have
+%% such as `TR31_M7_HMAC_KEY' for HMAC generation, and the key must have
 %% `KeyModesOfUse' set to `Generate' and `Verify'.
 %%
 %% For information about valid keys for this operation, see Understanding key
@@ -1379,6 +1434,82 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Translates an encryption key between different wrapping keys without
+%% importing the key into Amazon Web Services Payment Cryptography.
+%%
+%% This operation can be used when key material is frequently rotated, such
+%% as during every card transaction, and there is a need to avoid importing
+%% short-lived keys into Amazon Web Services Payment Cryptography. It
+%% translates short-lived transaction keys such as Pin Encryption Key (PEK)
+%% generated for each transaction and wrapped with an ECDH (Elliptic Curve
+%% Diffie-Hellman) derived wrapping key to another KEK (Key Encryption Key)
+%% wrapping key.
+%%
+%% Before using this operation, you must first request the public key
+%% certificate of the ECC key pair generated within Amazon Web Services
+%% Payment Cryptography to establish an ECDH key agreement. In
+%% `TranslateKeyData', the service uses its own ECC key pair, public
+%% certificate of receiving ECC key pair, and the key derivation parameters
+%% to generate a derived key. The service uses this derived key to unwrap the
+%% incoming transaction key received as a TR31WrappedKeyBlock and re-wrap
+%% using a user provided KEK to generate an outgoing Tr31WrappedKeyBlock. For
+%% more information on establishing ECDH derived keys, see the Creating keys:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/create-keys.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
+%%
+%% For information about valid keys for this operation, see Understanding key
+%% attributes:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/keys-validattributes.html
+%% and Key types for specific data operations:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/crypto-ops-validkeys-ops.html
+%% in the Amazon Web Services Payment Cryptography User Guide.
+%%
+%% Cross-account use: This operation can't be used across different
+%% Amazon Web Services accounts.
+%%
+%% Related operations:
+%%
+%% CreateKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html
+%%
+%% GetPublicCertificate:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html
+%%
+%% ImportKey:
+%% https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html
+-spec translate_key_material(aws_client:aws_client(), translate_key_material_input()) ->
+    {ok, translate_key_material_output(), tuple()} |
+    {error, any()} |
+    {error, translate_key_material_errors(), tuple()}.
+translate_key_material(Client, Input) ->
+    translate_key_material(Client, Input, []).
+
+-spec translate_key_material(aws_client:aws_client(), translate_key_material_input(), proplists:proplist()) ->
+    {ok, translate_key_material_output(), tuple()} |
+    {error, any()} |
+    {error, translate_key_material_errors(), tuple()}.
+translate_key_material(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/keymaterial/translate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Translates encrypted PIN block from and to ISO 9564 formats 0,1,3,4.
 %%
 %% For more information, see Translate PIN data:
@@ -1413,7 +1544,7 @@ re_encrypt_data(Client, IncomingKeyIdentifier, Input0, Options0) ->
 %% for use within the service. You can also use ECDH for reveal PIN, wherein
 %% the service translates the PIN block from PEK to a ECDH derived encryption
 %% key. For more information on establishing ECDH derived keys, see the
-%% Generating keys:
+%% Creating keys:
 %% https://docs.aws.amazon.com/payment-cryptography/latest/userguide/create-keys.html
 %% in the Amazon Web Services Payment Cryptography User Guide.
 %%

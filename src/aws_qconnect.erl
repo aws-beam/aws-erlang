@@ -256,6 +256,15 @@
 
 
 %% Example:
+%% email_generative_answer_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string(),
+%%   <<"references">> => list(data_summary())
+%% }
+-type email_generative_answer_chunk_data_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_content_upload_response() :: #{
 %%   <<"headersToInclude">> := map(),
 %%   <<"uploadId">> := string(),
@@ -571,6 +580,13 @@
 
 
 %% Example:
+%% dependency_failed_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type dependency_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_next_message_response() :: #{
 %%   <<"conversationSessionData">> => list(runtime_session_data()),
 %%   <<"conversationState">> => conversation_state(),
@@ -669,6 +685,16 @@
 %% Example:
 %% delete_a_i_agent_version_request() :: #{}
 -type delete_a_i_agent_version_request() :: #{}.
+
+
+%% Example:
+%% email_generative_answer_a_i_agent_configuration() :: #{
+%%   <<"associationConfigurations">> => list(association_configuration()),
+%%   <<"emailGenerativeAnswerAIPromptId">> => string(),
+%%   <<"emailQueryReformulationAIPromptId">> => string(),
+%%   <<"locale">> => string()
+%% }
+-type email_generative_answer_a_i_agent_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_assistant_association_request() :: #{}
@@ -1103,6 +1129,7 @@
 %% create_session_request() :: #{
 %%   <<"aiAgentConfiguration">> => map(),
 %%   <<"clientToken">> => string(),
+%%   <<"contactArn">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"tagFilter">> => list(),
@@ -1586,6 +1613,14 @@
 
 
 %% Example:
+%% email_response_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string()
+%% }
+-type email_response_chunk_data_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -1837,6 +1872,16 @@
 
 
 %% Example:
+%% email_response_a_i_agent_configuration() :: #{
+%%   <<"associationConfigurations">> => list(association_configuration()),
+%%   <<"emailQueryReformulationAIPromptId">> => string(),
+%%   <<"emailResponseAIPromptId">> => string(),
+%%   <<"locale">> => string()
+%% }
+-type email_response_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_assistant_associations_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1916,6 +1961,14 @@
 %%   <<"value">> => string()
 %% }
 -type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% email_overview_chunk_data_details() :: #{
+%%   <<"completion">> => string(),
+%%   <<"nextChunkToken">> => string()
+%% }
+-type email_overview_chunk_data_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2926,6 +2979,14 @@
 
 
 %% Example:
+%% email_overview_a_i_agent_configuration() :: #{
+%%   <<"emailOverviewAIPromptId">> => string(),
+%%   <<"locale">> => string()
+%% }
+-type email_overview_a_i_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% answer_recommendation_a_i_agent_configuration() :: #{
 %%   <<"answerGenerationAIGuardrailId">> => string(),
 %%   <<"answerGenerationAIPromptId">> => string(),
@@ -3217,6 +3278,7 @@
     access_denied_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    dependency_failed_exception() | 
     unauthorized_exception().
 
 -type deactivate_message_template_errors() ::
@@ -3862,10 +3924,6 @@ create_a_i_guardrail_version(Client, AiGuardrailId, AssistantId, Input0, Options
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon Q in Connect AI Prompt.
-%%
-%% For more information on supported models, see Supported models for system
-%% and custom prompts:
-%% https://docs.aws.amazon.com/connect/latest/adminguide/create-ai-prompts.html#cli-create-aiprompt.
 -spec create_a_iprompt(aws_client:aws_client(), binary() | list(), create_a_iprompt_request()) ->
     {ok, create_a_iprompt_response(), tuple()} |
     {error, any()} |
