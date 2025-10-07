@@ -274,7 +274,8 @@
 %%   <<"eventExpiryDuration">> := [integer()],
 %%   <<"memoryExecutionRoleArn">> => string(),
 %%   <<"memoryStrategies">> => list(list()),
-%%   <<"name">> := string()
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_memory_input() :: #{binary() => any()}.
 
@@ -380,6 +381,14 @@
 %%   <<"targetId">> => string()
 %% }
 -type delete_gateway_target_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_configuration() :: #{
+%%   <<"idleRuntimeSessionTimeout">> => [integer()],
+%%   <<"maxLifetime">> => [integer()]
+%% }
+-type lifecycle_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -692,6 +701,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
+%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"networkConfiguration">> := network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),
@@ -746,6 +756,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
+%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"networkConfiguration">> := network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),
@@ -1330,6 +1341,7 @@
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),

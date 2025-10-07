@@ -4070,6 +4070,7 @@
 %%   <<"EvaluatedMetrics">> => map(),
 %%   <<"EvaluatedRule">> => string(),
 %%   <<"EvaluationMessage">> => string(),
+%%   <<"Labels">> => map(),
 %%   <<"Name">> => string(),
 %%   <<"Result">> => list(any()),
 %%   <<"RuleMetrics">> => map()

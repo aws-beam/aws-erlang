@@ -9,12 +9,21 @@
 %% Services services.
 -module(aws_bedrock_agentcore).
 
--export([create_event/3,
+-export([batch_create_memory_records/3,
+         batch_create_memory_records/4,
+         batch_delete_memory_records/3,
+         batch_delete_memory_records/4,
+         batch_update_memory_records/3,
+         batch_update_memory_records/4,
+         create_event/3,
          create_event/4,
          delete_event/6,
          delete_event/7,
          delete_memory_record/4,
          delete_memory_record/5,
+         get_agent_card/2,
+         get_agent_card/4,
+         get_agent_card/5,
          get_browser_session/3,
          get_browser_session/5,
          get_browser_session/6,
@@ -63,6 +72,8 @@
          stop_browser_session/4,
          stop_code_interpreter_session/3,
          stop_code_interpreter_session/4,
+         stop_runtime_session/3,
+         stop_runtime_session/4,
          update_browser_stream/3,
          update_browser_stream/4]).
 
@@ -94,6 +105,13 @@
 
 
 %% Example:
+%% batch_update_memory_records_input() :: #{
+%%   <<"records">> := list(memory_record_update_input())
+%% }
+-type batch_update_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_memory_records_output() :: #{
 %%   <<"memoryRecordSummaries">> => list(memory_record_summary()),
 %%   <<"nextToken">> => string()
@@ -110,6 +128,14 @@
 
 
 %% Example:
+%% batch_create_memory_records_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"records">> := list(memory_record_create_input())
+%% }
+-type batch_create_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% session_summary() :: #{
 %%   <<"actorId">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -123,6 +149,17 @@
 %%   <<"message">> => string()
 %% }
 -type unauthorized_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% memory_record_output() :: #{
+%%   <<"errorCode">> => [integer()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"memoryRecordId">> => string(),
+%%   <<"requestIdentifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type memory_record_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -152,6 +189,24 @@
 
 
 %% Example:
+%% memory_record_create_input() :: #{
+%%   <<"content">> => list(),
+%%   <<"memoryStrategyId">> => string(),
+%%   <<"namespaces">> => list(string()),
+%%   <<"requestIdentifier">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type memory_record_create_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_memory_records_input() :: #{
+%%   <<"records">> := list(memory_record_delete_input())
+%% }
+-type batch_delete_memory_records_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_workload_access_token_for_j_w_t_response() :: #{
 %%   <<"workloadAccessToken">> => string()
 %% }
@@ -163,6 +218,15 @@
 %%   <<"workloadName">> := string()
 %% }
 -type get_workload_access_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_metadata_filter_expression() :: #{
+%%   <<"left">> => list(),
+%%   <<"operator">> => list(any()),
+%%   <<"right">> => list()
+%% }
+-type event_metadata_filter_expression() :: #{binary() => any()}.
 
 
 %% Example:
@@ -186,6 +250,17 @@
 
 
 %% Example:
+%% memory_record_update_input() :: #{
+%%   <<"content">> => list(),
+%%   <<"memoryRecordId">> => string(),
+%%   <<"memoryStrategyId">> => string(),
+%%   <<"namespaces">> => list(string()),
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type memory_record_update_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_browser_session_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"sessionId">> := string()
@@ -195,6 +270,14 @@
 %% Example:
 %% delete_memory_record_input() :: #{}
 -type delete_memory_record_input() :: #{}.
+
+
+%% Example:
+%% stop_runtime_session_response() :: #{
+%%   <<"runtimeSessionId">> => string(),
+%%   <<"statusCode">> => integer()
+%% }
+-type stop_runtime_session_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -256,6 +339,14 @@
 %%   <<"text">> => string()
 %% }
 -type input_content_block() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_memory_records_output() :: #{
+%%   <<"failedRecords">> => list(memory_record_output()),
+%%   <<"successfulRecords">> => list(memory_record_output())
+%% }
+-type batch_update_memory_records_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -352,7 +443,8 @@
 
 %% Example:
 %% filter_input() :: #{
-%%   <<"branch">> => branch_filter()
+%%   <<"branch">> => branch_filter(),
+%%   <<"eventMetadata">> => list(event_metadata_filter_expression())
 %% }
 -type filter_input() :: #{binary() => any()}.
 
@@ -401,6 +493,14 @@
 
 
 %% Example:
+%% get_agent_card_request() :: #{
+%%   <<"qualifier">> => [string()],
+%%   <<"runtimeSessionId">> => string()
+%% }
+-type get_agent_card_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory_record_summary() :: #{
 %%   <<"content">> => list(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -425,6 +525,14 @@
 %%   <<"message">> => [string()]
 %% }
 -type service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_memory_records_output() :: #{
+%%   <<"failedRecords">> => list(memory_record_output()),
+%%   <<"successfulRecords">> => list(memory_record_output())
+%% }
+-type batch_create_memory_records_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -526,12 +634,22 @@
 
 
 %% Example:
+%% stop_runtime_session_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"qualifier">> => [string()],
+%%   <<"runtimeSessionId">> := string()
+%% }
+-type stop_runtime_session_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% event() :: #{
 %%   <<"actorId">> => string(),
 %%   <<"branch">> => branch(),
 %%   <<"eventId">> => string(),
 %%   <<"eventTimestamp">> => [non_neg_integer()],
 %%   <<"memoryId">> => string(),
+%%   <<"metadata">> => map(),
 %%   <<"payload">> => list(list()),
 %%   <<"sessionId">> => string()
 %% }
@@ -565,6 +683,7 @@
 %%   <<"branch">> => branch(),
 %%   <<"clientToken">> => [string()],
 %%   <<"eventTimestamp">> := [non_neg_integer()],
+%%   <<"metadata">> => map(),
 %%   <<"payload">> := list(list()),
 %%   <<"sessionId">> => string()
 %% }
@@ -638,6 +757,13 @@
 
 
 %% Example:
+%% memory_record_delete_input() :: #{
+%%   <<"memoryRecordId">> => string()
+%% }
+-type memory_record_delete_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_content() :: #{
 %%   <<"blob">> => [binary()],
 %%   <<"mimeType">> => [string()],
@@ -677,6 +803,15 @@
 %%   <<"event">> => event()
 %% }
 -type get_event_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_card_response() :: #{
+%%   <<"agentCard">> => any(),
+%%   <<"runtimeSessionId">> => string(),
+%%   <<"statusCode">> => integer()
+%% }
+-type get_agent_card_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -816,9 +951,17 @@
 
 %% Example:
 %% delete_memory_record_output() :: #{
-%%   <<"memoryRecordId">> => [string()]
+%%   <<"memoryRecordId">> => string()
 %% }
 -type delete_memory_record_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_memory_records_output() :: #{
+%%   <<"failedRecords">> => list(memory_record_output()),
+%%   <<"successfulRecords">> => list(memory_record_output())
+%% }
+-type batch_delete_memory_records_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -834,6 +977,30 @@
 %%   <<"message">> => string()
 %% }
 -type runtime_client_error() :: #{binary() => any()}.
+
+-type batch_create_memory_records_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
+-type batch_delete_memory_records_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
+
+-type batch_update_memory_records_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    service_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    throttled_exception().
 
 -type create_event_errors() ::
     validation_exception() | 
@@ -861,6 +1028,15 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     throttled_exception().
+
+-type get_agent_card_errors() ::
+    runtime_client_error() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception().
 
 -type get_browser_session_errors() ::
     throttling_exception() | 
@@ -1047,6 +1223,17 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type stop_runtime_session_errors() ::
+    runtime_client_error() | 
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
+
 -type update_browser_stream_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1059,6 +1246,111 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates multiple memory records in a single batch operation for the
+%% specified memory with custom content.
+-spec batch_create_memory_records(aws_client:aws_client(), binary() | list(), batch_create_memory_records_input()) ->
+    {ok, batch_create_memory_records_output(), tuple()} |
+    {error, any()} |
+    {error, batch_create_memory_records_errors(), tuple()}.
+batch_create_memory_records(Client, MemoryId, Input) ->
+    batch_create_memory_records(Client, MemoryId, Input, []).
+
+-spec batch_create_memory_records(aws_client:aws_client(), binary() | list(), batch_create_memory_records_input(), proplists:proplist()) ->
+    {ok, batch_create_memory_records_output(), tuple()} |
+    {error, any()} |
+    {error, batch_create_memory_records_errors(), tuple()}.
+batch_create_memory_records(Client, MemoryId, Input0, Options0) ->
+    Method = post,
+    Path = ["/memories/", aws_util:encode_uri(MemoryId), "/memoryRecords/batchCreate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes multiple memory records in a single batch operation from the
+%% specified memory.
+-spec batch_delete_memory_records(aws_client:aws_client(), binary() | list(), batch_delete_memory_records_input()) ->
+    {ok, batch_delete_memory_records_output(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_memory_records_errors(), tuple()}.
+batch_delete_memory_records(Client, MemoryId, Input) ->
+    batch_delete_memory_records(Client, MemoryId, Input, []).
+
+-spec batch_delete_memory_records(aws_client:aws_client(), binary() | list(), batch_delete_memory_records_input(), proplists:proplist()) ->
+    {ok, batch_delete_memory_records_output(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_memory_records_errors(), tuple()}.
+batch_delete_memory_records(Client, MemoryId, Input0, Options0) ->
+    Method = post,
+    Path = ["/memories/", aws_util:encode_uri(MemoryId), "/memoryRecords/batchDelete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates multiple memory records with custom content in a single batch
+%% operation within the specified memory.
+-spec batch_update_memory_records(aws_client:aws_client(), binary() | list(), batch_update_memory_records_input()) ->
+    {ok, batch_update_memory_records_output(), tuple()} |
+    {error, any()} |
+    {error, batch_update_memory_records_errors(), tuple()}.
+batch_update_memory_records(Client, MemoryId, Input) ->
+    batch_update_memory_records(Client, MemoryId, Input, []).
+
+-spec batch_update_memory_records(aws_client:aws_client(), binary() | list(), batch_update_memory_records_input(), proplists:proplist()) ->
+    {ok, batch_update_memory_records_output(), tuple()} |
+    {error, any()} |
+    {error, batch_update_memory_records_errors(), tuple()}.
+batch_update_memory_records(Client, MemoryId, Input0, Options0) ->
+    Method = post,
+    Path = ["/memories/", aws_util:encode_uri(MemoryId), "/memoryRecords/batchUpdate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an event in an AgentCore Memory resource.
 %%
@@ -1179,6 +1471,68 @@ delete_memory_record(Client, MemoryId, MemoryRecordId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the A2A agent card associated with an AgentCore Runtime
+%% agent.
+-spec get_agent_card(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_agent_card_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_card_errors(), tuple()}.
+get_agent_card(Client, AgentRuntimeArn)
+  when is_map(Client) ->
+    get_agent_card(Client, AgentRuntimeArn, #{}, #{}).
+
+-spec get_agent_card(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_agent_card_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_card_errors(), tuple()}.
+get_agent_card(Client, AgentRuntimeArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_card(Client, AgentRuntimeArn, QueryMap, HeadersMap, []).
+
+-spec get_agent_card(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_card_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_card_errors(), tuple()}.
+get_agent_card(Client, AgentRuntimeArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/runtimes/", aws_util:encode_uri(AgentRuntimeArn), "/invocations/.well-known/agent-card.json"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers0 =
+      [
+        {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, maps:get(<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, HeadersMap, undefined)}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"qualifier">>, maps:get(<<"qualifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Retrieves detailed information about a specific browser session in
 %% Amazon Bedrock.
@@ -1381,7 +1735,7 @@ get_memory_record(Client, MemoryId, MemoryRecordId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves an API Key associated with an API Key Credential Provider
+%% @doc Retrieves the API key associated with an API key credential provider.
 -spec get_resource_api_key(aws_client:aws_client(), get_resource_api_key_request()) ->
     {ok, get_resource_api_key_response(), tuple()} |
     {error, any()} |
@@ -1415,7 +1769,7 @@ get_resource_api_key(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the OAuth 2.0 token of the provided resource
+%% @doc Returns the OAuth 2.0 token of the provided resource.
 -spec get_resource_oauth2_token(aws_client:aws_client(), get_resource_oauth2_token_request()) ->
     {ok, get_resource_oauth2_token_response(), tuple()} |
     {error, any()} |
@@ -1449,8 +1803,8 @@ get_resource_oauth2_token(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Obtains an Workload access token for agentic workloads not acting on
-%% behalf of user.
+%% @doc Obtains a workload access token for agentic workloads not acting on
+%% behalf of a user.
 -spec get_workload_access_token(aws_client:aws_client(), get_workload_access_token_request()) ->
     {ok, get_workload_access_token_response(), tuple()} |
     {error, any()} |
@@ -1484,8 +1838,8 @@ get_workload_access_token(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Obtains an Workload access token for agentic workloads acting on
-%% behalf of user with JWT token
+%% @doc Obtains a workload access token for agentic workloads acting on
+%% behalf of a user, using a JWT token.
 -spec get_workload_access_token_for_j_w_t(aws_client:aws_client(), get_workload_access_token_for_j_w_t_request()) ->
     {ok, get_workload_access_token_for_j_w_t_response(), tuple()} |
     {error, any()} |
@@ -1519,8 +1873,8 @@ get_workload_access_token_for_j_w_t(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Obtains an Workload access token for agentic workloads acting on
-%% behalf of user with User Id.
+%% @doc Obtains a workload access token for agentic workloads acting on
+%% behalf of a user, using the user's ID.
 -spec get_workload_access_token_for_user_id(aws_client:aws_client(), get_workload_access_token_for_user_id_request()) ->
     {ok, get_workload_access_token_for_user_id_response(), tuple()} |
     {error, any()} |
@@ -2231,6 +2585,60 @@ stop_code_interpreter_session(Client, CodeInterpreterIdentifier, Input0, Options
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a session that is running in an running AgentCore Runtime
+%% agent.
+-spec stop_runtime_session(aws_client:aws_client(), binary() | list(), stop_runtime_session_request()) ->
+    {ok, stop_runtime_session_response(), tuple()} |
+    {error, any()} |
+    {error, stop_runtime_session_errors(), tuple()}.
+stop_runtime_session(Client, AgentRuntimeArn, Input) ->
+    stop_runtime_session(Client, AgentRuntimeArn, Input, []).
+
+-spec stop_runtime_session(aws_client:aws_client(), binary() | list(), stop_runtime_session_request(), proplists:proplist()) ->
+    {ok, stop_runtime_session_response(), tuple()} |
+    {error, any()} |
+    {error, stop_runtime_session_errors(), tuple()}.
+stop_runtime_session(Client, AgentRuntimeArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/runtimes/", aws_util:encode_uri(AgentRuntimeArn), "/stopruntimesession"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"qualifier">>, <<"qualifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Updates a browser stream.
 %%

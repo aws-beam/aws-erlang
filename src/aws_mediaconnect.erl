@@ -163,6 +163,7 @@
 
 %% Example:
 %% update_flow_request() :: #{
+%%   <<"FlowSize">> => list(any()),
 %%   <<"Maintenance">> => update_maintenance(),
 %%   <<"NdiConfig">> => ndi_config(),
 %%   <<"SourceFailoverConfig">> => update_failover_config(),
@@ -275,6 +276,7 @@
 %%   <<"AvailabilityZone">> => [string()],
 %%   <<"Entitlements">> => list(grant_entitlement_request()),
 %%   <<"FlowSize">> => list(any()),
+%%   <<"FlowTags">> => map(),
 %%   <<"Maintenance">> => add_maintenance(),
 %%   <<"MediaStreams">> => list(add_media_stream_request()),
 %%   <<"Name">> := [string()],
@@ -636,6 +638,7 @@
 %%   <<"Description">> => [string()],
 %%   <<"MediaStreamId">> => [integer()],
 %%   <<"MediaStreamName">> => [string()],
+%%   <<"MediaStreamTags">> => map(),
 %%   <<"MediaStreamType">> => list(any()),
 %%   <<"VideoFormat">> => [string()]
 %% }
@@ -1383,7 +1386,8 @@
 %%   <<"NetworkInterfaceType">> => list(any()),
 %%   <<"RoleArn">> => [string()],
 %%   <<"SecurityGroupIds">> => list([string()]()),
-%%   <<"SubnetId">> => [string()]
+%%   <<"SubnetId">> => [string()],
+%%   <<"VpcInterfaceTags">> => map()
 %% }
 -type vpc_interface_request() :: #{binary() => any()}.
 
@@ -1525,6 +1529,7 @@
 %%   <<"Description">> => [string()],
 %%   <<"Encryption">> => encryption(),
 %%   <<"EntitlementStatus">> => list(any()),
+%%   <<"EntitlementTags">> => map(),
 %%   <<"Name">> => [string()],
 %%   <<"Subscribers">> => list([string()]())
 %% }
@@ -1727,6 +1732,7 @@
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SourceListenerAddress">> => [string()],
 %%   <<"SourceListenerPort">> => [integer()],
+%%   <<"SourceTags">> => map(),
 %%   <<"StreamId">> => [string()],
 %%   <<"VpcInterfaceName">> => [string()],
 %%   <<"WhitelistCidr">> => [string()]
@@ -1934,6 +1940,7 @@
 %%   <<"NdiProgramName">> => [string()],
 %%   <<"NdiSpeedHqQuality">> => [integer()],
 %%   <<"OutputStatus">> => list(any()),
+%%   <<"OutputTags">> => map(),
 %%   <<"Port">> => [integer()],
 %%   <<"Protocol">> => list(any()),
 %%   <<"RemoteId">> => [string()],

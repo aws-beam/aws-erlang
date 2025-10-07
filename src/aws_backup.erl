@@ -561,6 +561,7 @@
 
 %% Example:
 %% get_backup_plan_input() :: #{
+%%   <<"MaxScheduledRunsPreview">> => integer(),
 %%   <<"VersionId">> => string()
 %% }
 -type get_backup_plan_input() :: #{binary() => any()}.
@@ -698,6 +699,7 @@
 %%   <<"CreatorRequestId">> => string(),
 %%   <<"DeletionDate">> => non_neg_integer(),
 %%   <<"LastExecutionDate">> => non_neg_integer(),
+%%   <<"ScheduledRunsPreview">> => list(scheduled_plan_execution_member()),
 %%   <<"VersionId">> => string()
 %% }
 -type get_backup_plan_output() :: #{binary() => any()}.
@@ -1431,6 +1433,15 @@
 %%   <<"Type">> => string()
 %% }
 -type dependency_failure_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduled_plan_execution_member() :: #{
+%%   <<"ExecutionTime">> => non_neg_integer(),
+%%   <<"RuleExecutionType">> => list(any()),
+%%   <<"RuleId">> => string()
+%% }
+-type scheduled_plan_execution_member() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4714,6 +4725,7 @@ get_backup_plan(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"MaxScheduledRunsPreview">>, maps:get(<<"MaxScheduledRunsPreview">>, QueryMap, undefined)},
         {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -6726,6 +6738,12 @@ start_backup_job(Client, Input0, Options0) ->
 %% @doc Starts a job to create a one-time copy of the specified resource.
 %%
 %% Does not support continuous backups.
+%%
+%% See Copy
+%% job retry:
+%% https://docs.aws.amazon.com/aws-backup/latest/devguide/recov-point-create-a-copy.html#backup-copy-retry
+%% for information on how Backup retries copy job
+%% operations.
 -spec start_copy_job(aws_client:aws_client(), start_copy_job_input()) ->
     {ok, start_copy_job_output(), tuple()} |
     {error, any()} |

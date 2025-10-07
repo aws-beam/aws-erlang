@@ -4,48 +4,37 @@
 %% @doc Amazon Web Services Resource Explorer is a resource search and
 %% discovery service.
 %%
-%% By using Resource Explorer, you can
-%% explore your resources using an internet search engine-like experience.
-%% Examples of
-%% resources include Amazon Relational Database Service (Amazon RDS)
-%% instances, Amazon Simple Storage Service (Amazon S3) buckets, or Amazon
-%% DynamoDB
-%% tables. You can search for your resources using resource metadata like
-%% names, tags, and
+%% By using Resource Explorer, you can explore your resources using an
+%% internet search engine-like experience. Examples of resources include
+%% Amazon Relational Database Service (Amazon RDS) instances, Amazon Simple
+%% Storage Service (Amazon S3) buckets, or Amazon DynamoDB tables. You can
+%% search for your resources using resource metadata like names, tags, and
 %% IDs. Resource Explorer can search across all of the Amazon Web Services
-%% Regions in your account in which you turn
-%% the service on, to simplify your cross-Region workloads.
+%% Regions in your account in which you turn the service on, to simplify your
+%% cross-Region workloads.
 %%
 %% Resource Explorer scans the resources in each of the Amazon Web Services
-%% Regions in your Amazon Web Services account in which
-%% you turn on Resource Explorer. Resource Explorer creates
-%% and maintains an index:
+%% Regions in your Amazon Web Services account in which you turn on Resource
+%% Explorer. Resource Explorer creates and maintains an index:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started-terms-and-concepts.html#term-index
-%% in each Region, with the details of that Region's
-%% resources.
+%% in each Region, with the details of that Region's resources.
 %%
-%% You can search across all of the
-%% indexed Regions in your account:
+%% You can search across all of the indexed Regions in your account:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html
-%% by designating one of your Amazon Web Services Regions to
-%% contain the aggregator index for the account. When you promote a local
-%% index
-%% in a Region to become the aggregator index for the account:
+%% by designating one of your Amazon Web Services Regions to contain the
+%% aggregator index for the account. When you promote a local index in a
+%% Region to become the aggregator index for the account:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region-turn-on.html,
-%% Resource Explorer automatically
-%% replicates the index information from all local indexes in the other
-%% Regions to the
-%% aggregator index. Therefore, the Region with the aggregator index has a
-%% copy of all resource
-%% information for all Regions in the account where you turned on Resource
-%% Explorer. As a result,
-%% views in the aggregator index Region include resources from all of the
-%% indexed Regions in your
-%% account.
+%% Resource Explorer automatically replicates the index information from all
+%% local indexes in the other Regions to the aggregator index. Therefore, the
+%% Region with the aggregator index has a copy of all resource information
+%% for all Regions in the account where you turned on Resource Explorer. As a
+%% result, views in the aggregator index Region include resources from all of
+%% the indexed Regions in your account.
 %%
 %% For more information about Amazon Web Services Resource Explorer,
-%% including how to enable and configure the
-%% service, see the Amazon Web Services Resource Explorer User Guide:
+%% including how to enable and configure the service, see the Amazon Web
+%% Services Resource Explorer User Guide:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/.
 -module(aws_resource_explorer_2).
 
@@ -55,10 +44,14 @@
          batch_get_view/3,
          create_index/2,
          create_index/3,
+         create_resource_explorer_setup/2,
+         create_resource_explorer_setup/3,
          create_view/2,
          create_view/3,
          delete_index/2,
          delete_index/3,
+         delete_resource_explorer_setup/2,
+         delete_resource_explorer_setup/3,
          delete_view/2,
          delete_view/3,
          disassociate_default_view/2,
@@ -71,6 +64,12 @@
          get_index/3,
          get_managed_view/2,
          get_managed_view/3,
+         get_resource_explorer_setup/2,
+         get_resource_explorer_setup/3,
+         get_service_index/2,
+         get_service_index/3,
+         get_service_view/2,
+         get_service_view/3,
          get_view/2,
          get_view/3,
          list_indexes/2,
@@ -81,6 +80,12 @@
          list_managed_views/3,
          list_resources/2,
          list_resources/3,
+         list_service_indexes/2,
+         list_service_indexes/3,
+         list_service_views/2,
+         list_service_views/3,
+         list_streaming_access_for_services/2,
+         list_streaming_access_for_services/3,
          list_supported_resource_types/2,
          list_supported_resource_types/3,
          list_tags_for_resource/2,
@@ -153,6 +158,15 @@
 
 
 %% Example:
+%% create_resource_explorer_setup_input() :: #{
+%%   <<"AggregatorRegions">> => list([string()]()),
+%%   <<"RegionList">> := list([string()]()),
+%%   <<"ViewName">> := [string()]
+%% }
+-type create_resource_explorer_setup_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% included_property() :: #{
 %%   <<"Name">> => [string()]
 %% }
@@ -193,6 +207,25 @@
 %%   <<"ViewArn">> := [string()]
 %% }
 -type delete_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streaming_access_for_services_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"StreamingAccessForServices">> => list(streaming_access_details())
+%% }
+-type list_streaming_access_for_services_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_view() :: #{
+%%   <<"Filters">> => search_filter(),
+%%   <<"IncludedProperties">> => list(included_property()),
+%%   <<"ScopeType">> => [string()],
+%%   <<"ServiceViewArn">> => [string()],
+%%   <<"StreamingAccessForService">> => [string()]
+%% }
+-type service_view() :: #{binary() => any()}.
 
 
 %% Example:
@@ -273,6 +306,13 @@
 
 
 %% Example:
+%% delete_resource_explorer_setup_output() :: #{
+%%   <<"TaskId">> => [string()]
+%% }
+-type delete_resource_explorer_setup_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_filter() :: #{
 %%   <<"FilterString">> => [string()]
 %% }
@@ -310,6 +350,13 @@
 %%   <<"Message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_resource_explorer_setup_output() :: #{
+%%   <<"TaskId">> => [string()]
+%% }
+-type create_resource_explorer_setup_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -356,6 +403,15 @@
 
 
 %% Example:
+%% get_resource_explorer_setup_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"TaskId">> := [string()]
+%% }
+-type get_resource_explorer_setup_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_indexes_input() :: #{
 %%   <<"MaxResults">> => [integer()],
 %%   <<"NextToken">> => [string()],
@@ -363,6 +419,21 @@
 %%   <<"Type">> => string()
 %% }
 -type list_indexes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% error_details() :: #{
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type error_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_view_output() :: #{
+%%   <<"View">> => service_view()
+%% }
+-type get_service_view_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -390,10 +461,28 @@
 
 
 %% Example:
+%% region_status() :: #{
+%%   <<"Index">> => index_status(),
+%%   <<"Region">> => [string()],
+%%   <<"View">> => view_status()
+%% }
+-type region_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_input() :: #{
 %%   <<"Tags">> => map()
 %% }
 -type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_indexes_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()],
+%%   <<"Regions">> => list([string()]())
+%% }
+-type list_service_indexes_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -431,6 +520,31 @@
 
 
 %% Example:
+%% streaming_access_details() :: #{
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"ServicePrincipal">> => [string()]
+%% }
+-type streaming_access_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% view_status() :: #{
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"Status">> => string(),
+%%   <<"View">> => view()
+%% }
+-type view_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_service_index_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"Type">> => string()
+%% }
+-type get_service_index_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -443,6 +557,14 @@
 %%   <<"Type">> := string()
 %% }
 -type update_index_type_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_explorer_setup_input() :: #{
+%%   <<"DeleteInAllRegions">> => [boolean()],
+%%   <<"RegionList">> => list([string()]())
+%% }
+-type delete_resource_explorer_setup_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -465,10 +587,25 @@
 
 
 %% Example:
+%% get_service_view_input() :: #{
+%%   <<"ServiceViewArn">> := [string()]
+%% }
+-type get_service_view_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_view_input() :: #{
 %%   <<"ViewArn">> := [string()]
 %% }
 -type get_view_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_explorer_setup_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Regions">> => list(region_status())
+%% }
+-type get_resource_explorer_setup_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -517,10 +654,26 @@
 
 
 %% Example:
+%% list_service_views_output() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"ServiceViews">> => list([string()]())
+%% }
+-type list_service_views_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_account_level_service_configuration_output() :: #{
 %%   <<"OrgConfiguration">> => org_configuration()
 %% }
 -type get_account_level_service_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_views_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_service_views_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -529,6 +682,14 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_indexes_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_streaming_access_for_services_input() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_streaming_access_for_services_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -563,6 +724,23 @@
 %%   <<"Type">> => string()
 %% }
 -type update_index_type_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% index_status() :: #{
+%%   <<"ErrorDetails">> => error_details(),
+%%   <<"Index">> => index(),
+%%   <<"Status">> => string()
+%% }
+-type index_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_service_indexes_output() :: #{
+%%   <<"Indexes">> => list(index()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_service_indexes_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -647,6 +825,13 @@
     internal_server_exception() | 
     conflict_exception().
 
+-type create_resource_explorer_setup_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
 -type create_view_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -662,6 +847,13 @@
     access_denied_exception() | 
     internal_server_exception() | 
     resource_not_found_exception().
+
+-type delete_resource_explorer_setup_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
 
 -type delete_view_errors() ::
     throttling_exception() | 
@@ -706,6 +898,27 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type get_resource_explorer_setup_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_index_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
+-type get_service_view_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_view_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -740,6 +953,23 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     unauthorized_exception().
+
+-type list_service_indexes_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_service_views_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
+
+-type list_streaming_access_for_services_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception().
 
 -type list_supported_resource_types_errors() ::
     throttling_exception() | 
@@ -807,18 +1037,16 @@
 %%====================================================================
 
 %% @doc Sets the specified view as the default for the Amazon Web Services
-%% Region in which you call this
-%% operation.
+%% Region in which you call this operation.
 %%
-%% When a user performs a `Search' that doesn't explicitly
-%% specify which view to use, then Amazon Web Services Resource Explorer
-%% automatically chooses this default view for
-%% searches performed in this Amazon Web Services Region.
+%% When a user performs a `Search' that doesn't explicitly specify
+%% which view to use, then Amazon Web Services Resource Explorer
+%% automatically chooses this default view for searches performed in this
+%% Amazon Web Services Region.
 %%
 %% If an Amazon Web Services Region doesn't have a default view
 %% configured, then users must explicitly specify a view with every
-%% `Search'
-%% operation performed in that Region.
+%% `Search' operation performed in that Region.
 -spec associate_default_view(aws_client:aws_client(), associate_default_view_input()) ->
     {ok, associate_default_view_output(), tuple()} |
     {error, any()} |
@@ -887,76 +1115,61 @@ batch_get_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Turns on Amazon Web Services Resource Explorer in the Amazon Web
-%% Services Region in which you called this operation by creating
-%% an index.
+%% Services Region in which you called this operation by creating an index.
 %%
 %% Resource Explorer begins discovering the resources in this Region and
-%% stores the details
-%% about the resources in the index so that they can be queried by using the
-%% `Search' operation. You can create only one index in a Region.
+%% stores the details about the resources in the index so that they can be
+%% queried by using the `Search' operation. You can create only one index
+%% in a Region.
 %%
-%% This operation creates only a local index. To promote the
-%% local index in one Amazon Web Services Region into the aggregator index
-%% for the Amazon Web Services account, use the
-%% `UpdateIndexType' operation. For more information, see Turning on
-%% cross-Region search by creating an aggregator index:
+%% This operation creates only a local index. To promote the local index in
+%% one Amazon Web Services Region into the aggregator index for the Amazon
+%% Web Services account, use the `UpdateIndexType' operation. For more
+%% information, see Turning on cross-Region search by creating an aggregator
+%% index:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html
-%% in the
-%% Amazon Web Services Resource Explorer User Guide.
+%% in the Amazon Web Services Resource Explorer User Guide.
 %%
 %% For more details about what happens when you turn on Resource Explorer in
-%% an Amazon Web Services Region, see
-%% Turn
-%% on Resource Explorer to index your resources in an Amazon Web Services
-%% Region:
+%% an Amazon Web Services Region, see Turn on Resource Explorer to index your
+%% resources in an Amazon Web Services Region:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-service-activate.html
-%% in the
-%% Amazon Web Services Resource Explorer User Guide.
+%% in the Amazon Web Services Resource Explorer User Guide.
 %%
 %% If this is the first Amazon Web Services Region in which you've
-%% created an index for Resource Explorer, then
-%% this operation also creates a
+%% created an index for Resource Explorer, then this operation also creates a
 %% service-linked role:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/security_iam_service-linked-roles.html
 %% in your Amazon Web Services account that allows Resource Explorer to
-%% enumerate
-%% your resources to populate the index.
+%% enumerate your resources to populate the index.
 %%
-%% Action:
-%% `resource-explorer-2:CreateIndex'
+%% Action: `resource-explorer-2:CreateIndex'
 %%
-%% Resource: The ARN of the index (as it will
-%% exist after the operation completes) in the Amazon Web Services Region and
-%% account in which
+%% Resource: The ARN of the index (as it will exist after the operation
+%% completes) in the Amazon Web Services Region and account in which
 %% you're trying to create the index. Use the wildcard character
-%% (`*')
-%% at the end of the string to match the eventual UUID. For example, the
-%% following
-%% `Resource' element restricts the role or user to creating an
-%% index in only the `us-east-2' Region of the specified account.
+%% (`*') at the end of the string to match the eventual UUID. For
+%% example, the following `Resource' element restricts the role or user
+%% to creating an index in only the `us-east-2' Region of the specified
+%% account.
 %%
-%% ```
-%% &quot;Resource&quot;:
-%% &quot;arn:aws:resource-explorer-2:us-west-2:&lt;account-id&gt;:index/*&quot;'''
+%% `&quot;Resource&quot;:
+%% &quot;arn:aws:resource-explorer-2:us-west-2:&lt;account-id&gt;:index/*&quot;'
 %%
 %% Alternatively, you can use `&quot;Resource&quot;: &quot;*&quot;' to
-%% allow the role or
-%% user to create an index in any Region.
+%% allow the role or user to create an index in any Region.
 %%
-%% Action:
-%% `iam:CreateServiceLinkedRole'
+%% Action: `iam:CreateServiceLinkedRole'
 %%
 %% Resource: No specific resource (*).
 %%
 %% This permission is required only the first time you create an index to
-%% turn on
-%% Resource Explorer in the account. Resource Explorer uses this to create
-%% the service-linked
-%% role needed to index the resources in your account:
+%% turn on Resource Explorer in the account. Resource Explorer uses this to
+%% create the service-linked role needed to index the resources in your
+%% account:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/security_iam_service-linked-roles.html.
-%% Resource Explorer uses the
-%% same service-linked role for all additional indexes you create
-%% afterwards.
+%% Resource Explorer uses the same service-linked role for all additional
+%% indexes you create afterwards.
 -spec create_index(aws_client:aws_client(), create_index_input()) ->
     {ok, create_index_output(), tuple()} |
     {error, any()} |
@@ -990,24 +1203,59 @@ create_index(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a Resource Explorer setup configuration across multiple
+%% Amazon Web Services Regions.
+%%
+%% This operation sets up indexes and views in the specified Regions. This
+%% operation can also be used to set an aggregator Region for cross-Region
+%% resource search.
+-spec create_resource_explorer_setup(aws_client:aws_client(), create_resource_explorer_setup_input()) ->
+    {ok, create_resource_explorer_setup_output(), tuple()} |
+    {error, any()} |
+    {error, create_resource_explorer_setup_errors(), tuple()}.
+create_resource_explorer_setup(Client, Input) ->
+    create_resource_explorer_setup(Client, Input, []).
+
+-spec create_resource_explorer_setup(aws_client:aws_client(), create_resource_explorer_setup_input(), proplists:proplist()) ->
+    {ok, create_resource_explorer_setup_output(), tuple()} |
+    {error, any()} |
+    {error, create_resource_explorer_setup_errors(), tuple()}.
+create_resource_explorer_setup(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateResourceExplorerSetup"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a view that users can query by using the `Search'
 %% operation.
 %%
 %% Results from queries that you make using this view include only resources
-%% that match the
-%% view's `Filters'. For more information about Amazon Web Services
-%% Resource Explorer views, see Managing views:
+%% that match the view's `Filters'. For more information about Amazon
+%% Web Services Resource Explorer views, see Managing views:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views.html
 %% in the Amazon Web Services Resource Explorer User Guide.
 %%
 %% Only the principals with an IAM identity-based policy that grants
-%% `Allow'
-%% to the `Search' action on a `Resource' with the Amazon resource
-%% name (ARN):
+%% `Allow' to the `Search' action on a `Resource' with the Amazon
+%% resource name (ARN):
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
-%% of
-%% this view can `Search' using views you create with this
-%% operation.
+%% of this view can `Search' using views you create with this operation.
 -spec create_view(aws_client:aws_client(), create_view_input()) ->
     {ok, create_view_output(), tuple()} |
     {error, any()} |
@@ -1045,20 +1293,16 @@ create_view(Client, Input0, Options0) ->
 %% Resource Explorer in the specified Amazon Web Services Region.
 %%
 %% When you delete an index, Resource Explorer stops discovering and indexing
-%% resources in that
-%% Region. Resource Explorer also deletes all views in that Region. These
-%% actions occur as
-%% asynchronous background tasks. You can check to see when the actions are
-%% complete by
-%% using the `GetIndex' operation and checking the `Status'
-%% response value.
+%% resources in that Region. Resource Explorer also deletes all views in that
+%% Region. These actions occur as asynchronous background tasks. You can
+%% check to see when the actions are complete by using the `GetIndex'
+%% operation and checking the `Status' response value.
 %%
 %% If the index you delete is the aggregator index for the Amazon Web
-%% Services account, you must
-%% wait 24 hours before you can promote another local index to be the
-%% aggregator index for the account. Users can't perform account-wide
-%% searches using
-%% Resource Explorer until another aggregator index is configured.
+%% Services account, you must wait 24 hours before you can promote another
+%% local index to be the aggregator index for the account. Users can't
+%% perform account-wide searches using Resource Explorer until another
+%% aggregator index is configured.
 -spec delete_index(aws_client:aws_client(), delete_index_input()) ->
     {ok, delete_index_output(), tuple()} |
     {error, any()} |
@@ -1092,14 +1336,49 @@ delete_index(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a Resource Explorer setup configuration.
+%%
+%% This operation removes indexes and views from the specified Regions or all
+%% Regions where Resource Explorer is configured.
+-spec delete_resource_explorer_setup(aws_client:aws_client(), delete_resource_explorer_setup_input()) ->
+    {ok, delete_resource_explorer_setup_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_explorer_setup_errors(), tuple()}.
+delete_resource_explorer_setup(Client, Input) ->
+    delete_resource_explorer_setup(Client, Input, []).
+
+-spec delete_resource_explorer_setup(aws_client:aws_client(), delete_resource_explorer_setup_input(), proplists:proplist()) ->
+    {ok, delete_resource_explorer_setup_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_explorer_setup_errors(), tuple()}.
+delete_resource_explorer_setup(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteResourceExplorerSetup"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified view.
 %%
 %% If the specified view is the default view for its Amazon Web Services
 %% Region, then all `Search' operations in that Region must explicitly
-%% specify the view to use
-%% until you configure a new default by calling the
-%% `AssociateDefaultView'
-%% operation.
+%% specify the view to use until you configure a new default by calling the
+%% `AssociateDefaultView' operation.
 -spec delete_view(aws_client:aws_client(), delete_view_input()) ->
     {ok, delete_view_output(), tuple()} |
     {error, any()} |
@@ -1137,14 +1416,12 @@ delete_view(Client, Input0, Options0) ->
 %% Region no longer has a default view.
 %%
 %% All `Search' operations in that Region must explicitly specify a view
-%% or
-%% the operation fails. You can configure a new default by calling the
+%% or the operation fails. You can configure a new default by calling the
 %% `AssociateDefaultView' operation.
 %%
 %% If an Amazon Web Services Region doesn't have a default view
 %% configured, then users must explicitly specify a view with every
-%% `Search'
-%% operation performed in that Region.
+%% `Search' operation performed in that Region.
 -spec disassociate_default_view(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1179,11 +1456,10 @@ disassociate_default_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the status of your account's Amazon Web Services
-%% service access, and validates the service
-%% linked role required to access the multi-account search feature.
+%% service access, and validates the service linked role required to access
+%% the multi-account search feature.
 %%
-%% Only the management
-%% account can invoke this API call.
+%% Only the management account can invoke this API call.
 -spec get_account_level_service_configuration(aws_client:aws_client(), #{}) ->
     {ok, get_account_level_service_configuration_output(), tuple()} |
     {error, any()} |
@@ -1218,8 +1494,8 @@ get_account_level_service_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the Amazon Resource Name (ARN) of the view that is the
-%% default for the
-%% Amazon Web Services Region in which you call this operation.
+%% default for the Amazon Web Services Region in which you call this
+%% operation.
 %%
 %% You can then call `GetView' to retrieve the details of that view.
 -spec get_default_view(aws_client:aws_client(), #{}) ->
@@ -1256,8 +1532,8 @@ get_default_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves details about the Amazon Web Services Resource Explorer
-%% index in the Amazon Web Services Region in which you invoked
-%% the operation.
+%% index in the Amazon Web Services Region in which you invoked the
+%% operation.
 -spec get_index(aws_client:aws_client(), #{}) ->
     {ok, get_index_output(), tuple()} |
     {error, any()} |
@@ -1326,6 +1602,118 @@ get_managed_view(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the status and details of a Resource Explorer setup
+%% operation.
+%%
+%% This operation returns information about the progress of creating or
+%% deleting Resource Explorer configurations across Regions.
+-spec get_resource_explorer_setup(aws_client:aws_client(), get_resource_explorer_setup_input()) ->
+    {ok, get_resource_explorer_setup_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_explorer_setup_errors(), tuple()}.
+get_resource_explorer_setup(Client, Input) ->
+    get_resource_explorer_setup(Client, Input, []).
+
+-spec get_resource_explorer_setup(aws_client:aws_client(), get_resource_explorer_setup_input(), proplists:proplist()) ->
+    {ok, get_resource_explorer_setup_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_explorer_setup_errors(), tuple()}.
+get_resource_explorer_setup(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetResourceExplorerSetup"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the Resource Explorer index in the
+%% current Amazon Web Services Region.
+%%
+%% This operation returns the ARN and type of the index if one exists.
+-spec get_service_index(aws_client:aws_client(), #{}) ->
+    {ok, get_service_index_output(), tuple()} |
+    {error, any()} |
+    {error, get_service_index_errors(), tuple()}.
+get_service_index(Client, Input) ->
+    get_service_index(Client, Input, []).
+
+-spec get_service_index(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, get_service_index_output(), tuple()} |
+    {error, any()} |
+    {error, get_service_index_errors(), tuple()}.
+get_service_index(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetServiceIndex"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves details about a specific Resource Explorer service view.
+%%
+%% This operation returns the configuration and properties of the specified
+%% view.
+-spec get_service_view(aws_client:aws_client(), get_service_view_input()) ->
+    {ok, get_service_view_output(), tuple()} |
+    {error, any()} |
+    {error, get_service_view_errors(), tuple()}.
+get_service_view(Client, Input) ->
+    get_service_view(Client, Input, []).
+
+-spec get_service_view(aws_client:aws_client(), get_service_view_input(), proplists:proplist()) ->
+    {ok, get_service_view_output(), tuple()} |
+    {error, any()} |
+    {error, get_service_view_errors(), tuple()}.
+get_service_view(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetServiceView"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves details of the specified view.
 -spec get_view(aws_client:aws_client(), get_view_input()) ->
     {ok, get_view_output(), tuple()} |
@@ -1361,8 +1749,8 @@ get_view(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of all of the indexes in Amazon Web Services Regions
-%% that are currently collecting
-%% resource information for Amazon Web Services Resource Explorer.
+%% that are currently collecting resource information for Amazon Web Services
+%% Resource Explorer.
 -spec list_indexes(aws_client:aws_client(), list_indexes_input()) ->
     {ok, list_indexes_output(), tuple()} |
     {error, any()} |
@@ -1397,12 +1785,11 @@ list_indexes(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of a member's indexes in all Amazon Web Services
-%% Regions that are currently
-%% collecting resource information for Amazon Web Services Resource Explorer.
+%% Regions that are currently collecting resource information for Amazon Web
+%% Services Resource Explorer.
 %%
-%% Only the management account or a
-%% delegated administrator with service access enabled can invoke this API
-%% call.
+%% Only the management account or a delegated administrator with service
+%% access enabled can invoke this API call.
 -spec list_indexes_for_members(aws_client:aws_client(), list_indexes_for_members_input()) ->
     {ok, list_indexes_for_members_output(), tuple()} |
     {error, any()} |
@@ -1436,11 +1823,11 @@ list_indexes_for_members(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the Amazon resource names (ARNs) of the
-%% Amazon Web Services-managed views:
+%% @doc Lists the Amazon resource names (ARNs) of the Amazon Web
+%% Services-managed views:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/aws-managed-views.html
-%% available
-%% in the Amazon Web Services Region in which you call this operation.
+%% available in the Amazon Web Services Region in which you call this
+%% operation.
 -spec list_managed_views(aws_client:aws_client(), list_managed_views_input()) ->
     {ok, list_managed_views_output(), tuple()} |
     {error, any()} |
@@ -1477,9 +1864,8 @@ list_managed_views(Client, Input0, Options0) ->
 %% @doc Returns a list of resources and their details that match the
 %% specified criteria.
 %%
-%% This query must
-%% use a view. If you don’t explicitly specify a view, then Resource Explorer
-%% uses the default view for the Amazon Web Services Region
+%% This query must use a view. If you don’t explicitly specify a view, then
+%% Resource Explorer uses the default view for the Amazon Web Services Region
 %% in which you call this operation.
 -spec list_resources(aws_client:aws_client(), list_resources_input()) ->
     {ok, list_resources_output(), tuple()} |
@@ -1495,6 +1881,119 @@ list_resources(Client, Input) ->
 list_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListResources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all Resource Explorer indexes across the specified Amazon Web
+%% Services Regions.
+%%
+%% This operation returns information about indexes including their ARNs,
+%% types, and Regions.
+-spec list_service_indexes(aws_client:aws_client(), list_service_indexes_input()) ->
+    {ok, list_service_indexes_output(), tuple()} |
+    {error, any()} |
+    {error, list_service_indexes_errors(), tuple()}.
+list_service_indexes(Client, Input) ->
+    list_service_indexes(Client, Input, []).
+
+-spec list_service_indexes(aws_client:aws_client(), list_service_indexes_input(), proplists:proplist()) ->
+    {ok, list_service_indexes_output(), tuple()} |
+    {error, any()} |
+    {error, list_service_indexes_errors(), tuple()}.
+list_service_indexes(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListServiceIndexes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all Resource Explorer service views available in the current
+%% Amazon Web Services account.
+%%
+%% This operation returns the ARNs of available service views.
+-spec list_service_views(aws_client:aws_client(), list_service_views_input()) ->
+    {ok, list_service_views_output(), tuple()} |
+    {error, any()} |
+    {error, list_service_views_errors(), tuple()}.
+list_service_views(Client, Input) ->
+    list_service_views(Client, Input, []).
+
+-spec list_service_views(aws_client:aws_client(), list_service_views_input(), proplists:proplist()) ->
+    {ok, list_service_views_output(), tuple()} |
+    {error, any()} |
+    {error, list_service_views_errors(), tuple()}.
+list_service_views(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListServiceViews"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of Amazon Web Services services that have been granted
+%% streaming access to your Resource Explorer data.
+%%
+%% Streaming access allows Amazon Web Services services to receive real-time
+%% updates about your resources as they are indexed by Resource Explorer.
+-spec list_streaming_access_for_services(aws_client:aws_client(), list_streaming_access_for_services_input()) ->
+    {ok, list_streaming_access_for_services_output(), tuple()} |
+    {error, any()} |
+    {error, list_streaming_access_for_services_errors(), tuple()}.
+list_streaming_access_for_services(Client, Input) ->
+    list_streaming_access_for_services(Client, Input, []).
+
+-spec list_streaming_access_for_services(aws_client:aws_client(), list_streaming_access_for_services_input(), proplists:proplist()) ->
+    {ok, list_streaming_access_for_services_output(), tuple()} |
+    {error, any()} |
+    {error, list_streaming_access_for_services_errors(), tuple()}.
+list_streaming_access_for_services(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListStreamingAccessForServices"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1588,17 +2087,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Amazon resource names (ARNs):
 %% https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
-%% of the views available in the Amazon Web Services Region in which you
-%% call this operation.
+%% of the views available in the Amazon Web Services Region in which you call
+%% this operation.
 %%
-%% Always check the `NextToken' response parameter
-%% for a `null' value when calling a paginated operation. These
-%% operations can
-%% occasionally return an empty set of results even when there are more
-%% results available. The
-%% `NextToken' response parameter value is `null'
-%% only
-%% when there are no more results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 -spec list_views(aws_client:aws_client(), list_views_input()) ->
     {ok, list_views_output(), tuple()} |
     {error, any()} |
@@ -1633,29 +2129,23 @@ list_views(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for resources and displays details about all resources that
-%% match the
-%% specified criteria.
+%% match the specified criteria.
 %%
 %% You must specify a query string.
 %%
 %% All search queries must use a view. If you don't explicitly specify a
-%% view, then
-%% Amazon Web Services Resource Explorer uses the default view for the Amazon
-%% Web Services Region in which you call this operation.
-%% The results are the logical intersection of the results that match both
-%% the
+%% view, then Amazon Web Services Resource Explorer uses the default view for
+%% the Amazon Web Services Region in which you call this operation. The
+%% results are the logical intersection of the results that match both the
 %% `QueryString' parameter supplied to this operation and the
 %% `SearchFilter' parameter attached to the view.
 %%
 %% For the complete syntax supported by the `QueryString' parameter, see
-%% Search
-%% query syntax reference for Resource Explorer:
+%% Search query syntax reference for Resource Explorer:
 %% https://docs.aws.amazon.com/resource-explorer/latest/APIReference/about-query-syntax.html.
 %%
 %% If your search results are empty, or are missing results that you think
-%% should be
-%% there, see Troubleshooting Resource Explorer
-%% search:
+%% should be there, see Troubleshooting Resource Explorer search:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/troubleshooting_search.html.
 -spec search(aws_client:aws_client(), search_input()) ->
     {ok, search_output(), tuple()} |
@@ -1764,77 +2254,60 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Changes the type of the index from one of the following types to the
 %% other.
 %%
-%% For more
-%% information about indexes and the role they perform in Amazon Web Services
-%% Resource Explorer, see Turning on
-%% cross-Region search by creating an aggregator index:
+%% For more information about indexes and the role they perform in Amazon Web
+%% Services Resource Explorer, see Turning on cross-Region search by creating
+%% an aggregator index:
 %% https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html
-%% in the
-%% Amazon Web Services Resource Explorer User Guide.
+%% in the Amazon Web Services Resource Explorer User Guide.
 %%
 %% `AGGREGATOR' index type
 %%
 %% The index contains information about resources from all Amazon Web
-%% Services Regions in the
-%% Amazon Web Services account in which you've created a Resource
-%% Explorer index. Resource information from
-%% all other Regions is replicated to this Region's index.
+%% Services Regions in the Amazon Web Services account in which you've
+%% created a Resource Explorer index. Resource information from all other
+%% Regions is replicated to this Region's index.
 %%
 %% When you change the index type to `AGGREGATOR', Resource Explorer
-%% turns on
-%% replication of all discovered resource information from the other Amazon
-%% Web Services Regions
-%% in your account to this index. You can then, from this Region only,
-%% perform
-%% resource search queries that span all Amazon Web Services Regions in the
-%% Amazon Web Services account.
-%% Turning on replication from all other Regions is performed by asynchronous
-%% background tasks. You can check the status of the asynchronous tasks by
-%% using
-%% the `GetIndex' operation. When the asynchronous tasks complete,
-%% the `Status' response of that operation changes from
-%% `UPDATING' to `ACTIVE'. After that, you can start to
-%% see results from other Amazon Web Services Regions in query results.
-%% However, it can take
-%% several hours for replication from all other Regions to complete.
+%% turns on replication of all discovered resource information from the other
+%% Amazon Web Services Regions in your account to this index. You can then,
+%% from this Region only, perform resource search queries that span all
+%% Amazon Web Services Regions in the Amazon Web Services account. Turning on
+%% replication from all other Regions is performed by asynchronous background
+%% tasks. You can check the status of the asynchronous tasks by using the
+%% `GetIndex' operation. When the asynchronous tasks complete, the
+%% `Status' response of that operation changes from `UPDATING' to
+%% `ACTIVE'. After that, you can start to see results from other Amazon
+%% Web Services Regions in query results. However, it can take several hours
+%% for replication from all other Regions to complete.
 %%
 %% You can have only one aggregator index per Amazon Web Services account.
-%% Before you can
-%% promote a different index to be the aggregator index for the account, you
-%% must
-%% first demote the existing aggregator index to type `LOCAL'.
+%% Before you can promote a different index to be the aggregator index for
+%% the account, you must first demote the existing aggregator index to type
+%% `LOCAL'.
 %%
 %% `LOCAL' index type
 %%
 %% The index contains information about resources in only the Amazon Web
-%% Services Region in
-%% which the index exists. If an aggregator index in another Region exists,
-%% then
-%% information in this local index is replicated to the aggregator index.
+%% Services Region in which the index exists. If an aggregator index in
+%% another Region exists, then information in this local index is replicated
+%% to the aggregator index.
 %%
 %% When you change the index type to `LOCAL', Resource Explorer turns off
-%% the
-%% replication of resource information from all other Amazon Web Services
-%% Regions in the
-%% Amazon Web Services account to this Region. The aggregator index remains
-%% in the
-%% `UPDATING' state until all replication with other Regions
-%% successfully stops. You can check the status of the asynchronous task by
-%% using
-%% the `GetIndex' operation. When Resource Explorer successfully stops
-%% all
-%% replication with other Regions, the `Status' response of that
-%% operation changes from `UPDATING' to `ACTIVE'. Separately,
-%% the resource information from other Regions that was previously stored in
-%% the
-%% index is deleted within 30 days by another background task. Until that
-%% asynchronous task completes, some results from other Regions can continue
-%% to
-%% appear in search results.
+%% the replication of resource information from all other Amazon Web Services
+%% Regions in the Amazon Web Services account to this Region. The aggregator
+%% index remains in the `UPDATING' state until all replication with other
+%% Regions successfully stops. You can check the status of the asynchronous
+%% task by using the `GetIndex' operation. When Resource Explorer
+%% successfully stops all replication with other Regions, the `Status'
+%% response of that operation changes from `UPDATING' to `ACTIVE'.
+%% Separately, the resource information from other Regions that was
+%% previously stored in the index is deleted within 30 days by another
+%% background task. Until that asynchronous task completes, some results from
+%% other Regions can continue to appear in search results.
 %%
-%% After you demote an aggregator index to a local index, you must wait
-%% 24 hours before you can promote another index to be the new
-%% aggregator index for the account.
+%% After you demote an aggregator index to a local index, you must wait 24
+%% hours before you can promote another index to be the new aggregator index
+%% for the account.
 -spec update_index_type(aws_client:aws_client(), update_index_type_input()) ->
     {ok, update_index_type_output(), tuple()} |
     {error, any()} |
@@ -1870,8 +2343,8 @@ update_index_type(Client, Input0, Options0) ->
 
 %% @doc Modifies some of the details of a view.
 %%
-%% You can change the filter string and the list
-%% of included properties. You can't change the name of the view.
+%% You can change the filter string and the list of included properties. You
+%% can't change the name of the view.
 -spec update_view(aws_client:aws_client(), update_view_input()) ->
     {ok, update_view_output(), tuple()} |
     {error, any()} |

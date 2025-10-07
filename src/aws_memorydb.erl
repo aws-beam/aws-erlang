@@ -53,6 +53,10 @@
          describe_events/3,
          describe_multi_region_clusters/2,
          describe_multi_region_clusters/3,
+         describe_multi_region_parameter_groups/2,
+         describe_multi_region_parameter_groups/3,
+         describe_multi_region_parameters/2,
+         describe_multi_region_parameters/3,
          describe_parameter_groups/2,
          describe_parameter_groups/3,
          describe_parameters/2,
@@ -129,6 +133,13 @@
 -type node_quota_for_customer_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
+%% describe_multi_region_parameters_response() :: #{
+%%   <<"MultiRegionParameters">> => list(multi_region_parameter()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_multi_region_parameters_response() :: #{binary() => any()}.
+
+%% Example:
 %% snapshot_quota_exceeded_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -164,6 +175,13 @@
 %%   <<"message">> => string()
 %% }
 -type multi_region_cluster_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_multi_region_parameter_groups_response() :: #{
+%%   <<"MultiRegionParameterGroups">> => list(multi_region_parameter_group()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_multi_region_parameter_groups_response() :: #{binary() => any()}.
 
 %% Example:
 %% failover_shard_response() :: #{
@@ -347,6 +365,15 @@
 %%   <<"RecurringChargeFrequency">> => string()
 %% }
 -type recurring_charge() :: #{binary() => any()}.
+
+%% Example:
+%% multi_region_parameter_group() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Family">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type multi_region_parameter_group() :: #{binary() => any()}.
 
 %% Example:
 %% reset_parameter_group_request() :: #{
@@ -570,6 +597,18 @@
 %%   <<"SnsTopicStatus">> => string()
 %% }
 -type update_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% multi_region_parameter() :: #{
+%%   <<"AllowedValues">> => string(),
+%%   <<"DataType">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"MinimumEngineVersion">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Source">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type multi_region_parameter() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_parameter_combination_exception() :: #{
@@ -1111,6 +1150,14 @@
 -type subnet_in_use() :: #{binary() => any()}.
 
 %% Example:
+%% describe_multi_region_parameter_groups_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MultiRegionParameterGroupName">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_multi_region_parameter_groups_request() :: #{binary() => any()}.
+
+%% Example:
 %% service_linked_role_not_found_fault() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1208,6 +1255,15 @@
 %%   <<"message">> => string()
 %% }
 -type reserved_nodes_offering_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% describe_multi_region_parameters_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"MultiRegionParameterGroupName">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type describe_multi_region_parameters_request() :: #{binary() => any()}.
 
 %% Example:
 %% user() :: #{
@@ -1647,6 +1703,18 @@
     invalid_parameter_combination_exception() | 
     cluster_not_found_fault() | 
     multi_region_cluster_not_found_fault().
+
+-type describe_multi_region_parameter_groups_errors() ::
+    multi_region_parameter_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
+
+-type describe_multi_region_parameters_errors() ::
+    multi_region_parameter_group_not_found_fault() | 
+    service_linked_role_not_found_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception().
 
 -type describe_parameter_groups_errors() ::
     parameter_group_not_found_fault() | 
@@ -2248,6 +2316,41 @@ describe_multi_region_clusters(Client, Input)
 describe_multi_region_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMultiRegionClusters">>, Input, Options).
+
+%% @doc Returns a list of multi-region parameter groups.
+-spec describe_multi_region_parameter_groups(aws_client:aws_client(), describe_multi_region_parameter_groups_request()) ->
+    {ok, describe_multi_region_parameter_groups_response(), tuple()} |
+    {error, any()} |
+    {error, describe_multi_region_parameter_groups_errors(), tuple()}.
+describe_multi_region_parameter_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_multi_region_parameter_groups(Client, Input, []).
+
+-spec describe_multi_region_parameter_groups(aws_client:aws_client(), describe_multi_region_parameter_groups_request(), proplists:proplist()) ->
+    {ok, describe_multi_region_parameter_groups_response(), tuple()} |
+    {error, any()} |
+    {error, describe_multi_region_parameter_groups_errors(), tuple()}.
+describe_multi_region_parameter_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMultiRegionParameterGroups">>, Input, Options).
+
+%% @doc Returns the detailed parameter list for a particular multi-region
+%% parameter group.
+-spec describe_multi_region_parameters(aws_client:aws_client(), describe_multi_region_parameters_request()) ->
+    {ok, describe_multi_region_parameters_response(), tuple()} |
+    {error, any()} |
+    {error, describe_multi_region_parameters_errors(), tuple()}.
+describe_multi_region_parameters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_multi_region_parameters(Client, Input, []).
+
+-spec describe_multi_region_parameters(aws_client:aws_client(), describe_multi_region_parameters_request(), proplists:proplist()) ->
+    {ok, describe_multi_region_parameters_response(), tuple()} |
+    {error, any()} |
+    {error, describe_multi_region_parameters_errors(), tuple()}.
+describe_multi_region_parameters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMultiRegionParameters">>, Input, Options).
 
 %% @doc Returns a list of parameter group descriptions.
 %%
