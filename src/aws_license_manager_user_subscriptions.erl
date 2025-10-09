@@ -167,6 +167,7 @@
 %% active_directory_settings() :: #{
 %%   <<"DomainCredentialsProvider">> => list(),
 %%   <<"DomainIpv4List">> => list(string()),
+%%   <<"DomainIpv6List">> => list(string()),
 %%   <<"DomainName">> => [string()],
 %%   <<"DomainNetworkSettings">> => domain_network_settings()
 %% }
@@ -500,6 +501,7 @@
 %% license_server() :: #{
 %%   <<"HealthStatus">> => string(),
 %%   <<"Ipv4Address">> => [string()],
+%%   <<"Ipv6Address">> => [string()],
 %%   <<"ProvisioningStatus">> => string()
 %% }
 -type license_server() :: #{binary() => any()}.

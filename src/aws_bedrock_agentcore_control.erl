@@ -133,7 +133,7 @@
 
 %% Example:
 %% update_gateway_request() :: #{
-%%   <<"authorizerConfiguration">> := list(),
+%%   <<"authorizerConfiguration">> => list(),
 %%   <<"authorizerType">> := list(any()),
 %%   <<"description">> => string(),
 %%   <<"exceptionLevel">> => list(any()),
@@ -1314,7 +1314,7 @@
 
 %% Example:
 %% create_gateway_request() :: #{
-%%   <<"authorizerConfiguration">> := list(),
+%%   <<"authorizerConfiguration">> => list(),
 %%   <<"authorizerType">> := list(any()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),

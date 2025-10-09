@@ -26,6 +26,8 @@
          disassociate_service_quota_template/3,
          get_association_for_service_quota_template/2,
          get_association_for_service_quota_template/3,
+         get_auto_management_configuration/2,
+         get_auto_management_configuration/3,
          get_aws_default_service_quota/2,
          get_aws_default_service_quota/3,
          get_requested_service_quota_change/2,
@@ -52,10 +54,16 @@
          put_service_quota_increase_request_into_template/3,
          request_service_quota_increase/2,
          request_service_quota_increase/3,
+         start_auto_management/2,
+         start_auto_management/3,
+         stop_auto_management/2,
+         stop_auto_management/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_auto_management/2,
+         update_auto_management/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -101,12 +109,24 @@
 -type service_quota_increase_request_in_template() :: #{binary() => any()}.
 
 %% Example:
+%% stop_auto_management_request() :: #{
+
+%% }
+-type stop_auto_management_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_aws_default_service_quotas_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ServiceCode">> := string()
 %% }
 -type list_aws_default_service_quotas_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_auto_management_response() :: #{
+
+%% }
+-type start_auto_management_response() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{
@@ -202,6 +222,15 @@
 -type delete_service_quota_increase_request_from_template_response() :: #{binary() => any()}.
 
 %% Example:
+%% start_auto_management_request() :: #{
+%%   <<"ExclusionList">> => map(),
+%%   <<"NotificationArn">> => string(),
+%%   <<"OptInLevel">> := list(any()),
+%%   <<"OptInType">> := list(any())
+%% }
+-type start_auto_management_request() :: #{binary() => any()}.
+
+%% Example:
 %% list_requested_service_quota_change_history_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"RequestedQuotas">> => list(requested_service_quota_change())
@@ -229,6 +258,12 @@
 %%   <<"MetricStatisticRecommendation">> => string()
 %% }
 -type metric_info() :: #{binary() => any()}.
+
+%% Example:
+%% stop_auto_management_response() :: #{
+
+%% }
+-type stop_auto_management_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_association_for_service_quota_template_request() :: #{
@@ -346,6 +381,12 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_auto_management_response() :: #{
+
+%% }
+-type update_auto_management_response() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_service_quota_template_request() :: #{
 
 %% }
@@ -364,10 +405,23 @@
 -type invalid_resource_state_exception() :: #{binary() => any()}.
 
 %% Example:
+%% get_auto_management_configuration_request() :: #{
+
+%% }
+-type get_auto_management_configuration_request() :: #{binary() => any()}.
+
+%% Example:
 %% no_such_resource_exception() :: #{
 %%   <<"Message">> => string()
 %% }
 -type no_such_resource_exception() :: #{binary() => any()}.
+
+%% Example:
+%% quota_info() :: #{
+%%   <<"QuotaCode">> => string(),
+%%   <<"QuotaName">> => string()
+%% }
+-type quota_info() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -447,6 +501,14 @@
 -type error_reason() :: #{binary() => any()}.
 
 %% Example:
+%% update_auto_management_request() :: #{
+%%   <<"ExclusionList">> => map(),
+%%   <<"NotificationArn">> => string(),
+%%   <<"OptInType">> => list(any())
+%% }
+-type update_auto_management_request() :: #{binary() => any()}.
+
+%% Example:
 %% service_quota_template_not_in_use_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -479,6 +541,16 @@
 %%   <<"ServiceCode">> := string()
 %% }
 -type get_service_quota_increase_request_from_template_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_auto_management_configuration_response() :: #{
+%%   <<"ExclusionList">> => map(),
+%%   <<"NotificationArn">> => string(),
+%%   <<"OptInLevel">> => list(any()),
+%%   <<"OptInStatus">> => list(any()),
+%%   <<"OptInType">> => list(any())
+%% }
+-type get_auto_management_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% resource_already_exists_exception() :: #{
@@ -593,6 +665,13 @@
     too_many_requests_exception() | 
     dependency_access_denied_exception().
 
+-type get_auto_management_configuration_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
 -type get_aws_default_service_quota_errors() ::
     access_denied_exception() | 
     no_such_resource_exception() | 
@@ -704,6 +783,20 @@
     quota_exceeded_exception() | 
     dependency_access_denied_exception().
 
+-type start_auto_management_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type stop_auto_management_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
 -type tag_resource_errors() ::
     tag_policy_violation_exception() | 
     too_many_tags_exception() | 
@@ -714,6 +807,13 @@
     illegal_argument_exception().
 
 -type untag_resource_errors() ::
+    access_denied_exception() | 
+    no_such_resource_exception() | 
+    service_exception() | 
+    too_many_requests_exception() | 
+    illegal_argument_exception().
+
+-type update_auto_management_errors() ::
     access_denied_exception() | 
     no_such_resource_exception() | 
     service_exception() | 
@@ -828,6 +928,29 @@ get_association_for_service_quota_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAssociationForServiceQuotaTemplate">>, Input, Options).
 
+%% @doc Retrieves information about your Service Quotas Automatic Management:
+%% https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html
+%% configuration.
+%%
+%% Automatic Management monitors your Service Quotas utilization and notifies
+%% you before you
+%% run out of your allocated quotas.
+-spec get_auto_management_configuration(aws_client:aws_client(), get_auto_management_configuration_request()) ->
+    {ok, get_auto_management_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_auto_management_configuration_errors(), tuple()}.
+get_auto_management_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_auto_management_configuration(Client, Input, []).
+
+-spec get_auto_management_configuration(aws_client:aws_client(), get_auto_management_configuration_request(), proplists:proplist()) ->
+    {ok, get_auto_management_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_auto_management_configuration_errors(), tuple()}.
+get_auto_management_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAutoManagementConfiguration">>, Input, Options).
+
 %% @doc Retrieves the default value for the specified quota.
 %%
 %% The default value does not
@@ -866,12 +989,12 @@ get_requested_service_quota_change(Client, Input, Options)
     request(Client, <<"GetRequestedServiceQuotaChange">>, Input, Options).
 
 %% @doc Retrieves the applied quota value for the specified account-level or
-%% resource-level quota.
+%% resource-level
+%% quota.
 %%
-%% For some quotas, only the
-%% default values are available. If the applied quota value is not available
-%% for a quota,
-%% the quota is not retrieved.
+%% For some quotas, only the default values are available. If the applied
+%% quota
+%% value is not available for a quota, the quota is not retrieved.
 -spec get_service_quota(aws_client:aws_client(), get_service_quota_request()) ->
     {ok, get_service_quota_response(), tuple()} |
     {error, any()} |
@@ -931,9 +1054,10 @@ list_aws_default_service_quotas(Client, Input, Options)
 %% @doc Retrieves the quota increase requests for the specified Amazon Web
 %% Services service.
 %%
-%% Filter responses to return quota requests at
-%% either the account level, resource level, or all levels. Responses include
-%% any open or closed requests within 90 days.
+%% Filter
+%% responses to return quota requests at either the account level, resource
+%% level, or all
+%% levels. Responses include any open or closed requests within 90 days.
 -spec list_requested_service_quota_change_history(aws_client:aws_client(), list_requested_service_quota_change_history_request()) ->
     {ok, list_requested_service_quota_change_history_response(), tuple()} |
     {error, any()} |
@@ -952,8 +1076,9 @@ list_requested_service_quota_change_history(Client, Input, Options)
 
 %% @doc Retrieves the quota increase requests for the specified quota.
 %%
-%% Filter responses to return quota requests at either the
-%% account level, resource level, or all levels.
+%% Filter responses to
+%% return quota requests at either the account level, resource level, or all
+%% levels.
 -spec list_requested_service_quota_change_history_by_quota(aws_client:aws_client(), list_requested_service_quota_change_history_by_quota_request()) ->
     {ok, list_requested_service_quota_change_history_by_quota_response(), tuple()} |
     {error, any()} |
@@ -995,8 +1120,8 @@ list_service_quota_increase_requests_in_template(Client, Input, Options)
 %% the default values are available. If the applied quota value is not
 %% available for a
 %% quota, the quota is not retrieved. Filter responses to return applied
-%% quota values at either the account level,
-%% resource level, or all levels.
+%% quota values at
+%% either the account level, resource level, or all levels.
 -spec list_service_quotas(aws_client:aws_client(), list_service_quotas_request()) ->
     {ok, list_service_quotas_response(), tuple()} |
     {error, any()} |
@@ -1066,7 +1191,8 @@ put_service_quota_increase_request_into_template(Client, Input, Options)
     request(Client, <<"PutServiceQuotaIncreaseRequestIntoTemplate">>, Input, Options).
 
 %% @doc Submits a quota increase request for the specified quota at the
-%% account or resource level.
+%% account or resource
+%% level.
 -spec request_service_quota_increase(aws_client:aws_client(), request_service_quota_increase_request()) ->
     {ok, request_service_quota_increase_response(), tuple()} |
     {error, any()} |
@@ -1082,6 +1208,54 @@ request_service_quota_increase(Client, Input)
 request_service_quota_increase(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RequestServiceQuotaIncrease">>, Input, Options).
+
+%% @doc Starts Service Quotas Automatic Management:
+%% https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html
+%% for an Amazon Web Services account, including notification preferences
+%% and excluded quotas configurations.
+%%
+%% Automatic Management monitors your Service Quotas utilization and notifies
+%% you before you
+%% run out of your allocated quotas.
+-spec start_auto_management(aws_client:aws_client(), start_auto_management_request()) ->
+    {ok, start_auto_management_response(), tuple()} |
+    {error, any()} |
+    {error, start_auto_management_errors(), tuple()}.
+start_auto_management(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_auto_management(Client, Input, []).
+
+-spec start_auto_management(aws_client:aws_client(), start_auto_management_request(), proplists:proplist()) ->
+    {ok, start_auto_management_response(), tuple()} |
+    {error, any()} |
+    {error, start_auto_management_errors(), tuple()}.
+start_auto_management(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartAutoManagement">>, Input, Options).
+
+%% @doc Stops Service Quotas Automatic Management:
+%% https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html
+%% for an Amazon Web Services account and removes all associated
+%% configurations.
+%%
+%% Automatic Management monitors your Service Quotas utilization and notifies
+%% you before you
+%% run out of your allocated quotas.
+-spec stop_auto_management(aws_client:aws_client(), stop_auto_management_request()) ->
+    {ok, stop_auto_management_response(), tuple()} |
+    {error, any()} |
+    {error, stop_auto_management_errors(), tuple()}.
+stop_auto_management(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_auto_management(Client, Input, []).
+
+-spec stop_auto_management(aws_client:aws_client(), stop_auto_management_request(), proplists:proplist()) ->
+    {ok, stop_auto_management_response(), tuple()} |
+    {error, any()} |
+    {error, stop_auto_management_errors(), tuple()}.
+stop_auto_management(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopAutoManagement">>, Input, Options).
 
 %% @doc Adds tags to the specified applied quota.
 %%
@@ -1122,6 +1296,30 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates your Service Quotas Automatic Management:
+%% https://docs.aws.amazon.com/servicequotas/latest/userguide/automatic-management.html
+%% configuration, including notification preferences and
+%% excluded quotas.
+%%
+%% Automatic Management monitors your Service Quotas utilization and notifies
+%% you before you
+%% run out of your allocated quotas.
+-spec update_auto_management(aws_client:aws_client(), update_auto_management_request()) ->
+    {ok, update_auto_management_response(), tuple()} |
+    {error, any()} |
+    {error, update_auto_management_errors(), tuple()}.
+update_auto_management(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_auto_management(Client, Input, []).
+
+-spec update_auto_management(aws_client:aws_client(), update_auto_management_request(), proplists:proplist()) ->
+    {ok, update_auto_management_response(), tuple()} |
+    {error, any()} |
+    {error, update_auto_management_errors(), tuple()}.
+update_auto_management(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAutoManagement">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

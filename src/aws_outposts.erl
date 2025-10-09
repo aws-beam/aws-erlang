@@ -89,6 +89,8 @@
          start_capacity_task/4,
          start_connection/2,
          start_connection/3,
+         start_outpost_decommission/3,
+         start_outpost_decommission/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -407,6 +409,13 @@
 
 
 %% Example:
+%% start_outpost_decommission_input() :: #{
+%%   <<"ValidateOnly">> => boolean()
+%% }
+-type start_outpost_decommission_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_instance_type_capacity() :: #{
 %%   <<"Count">> => integer(),
 %%   <<"InstanceType">> => string()
@@ -509,6 +518,14 @@
 
 
 %% Example:
+%% start_outpost_decommission_output() :: #{
+%%   <<"BlockingResourceTypes">> => list(list(any())()),
+%%   <<"Status">> => list(any())
+%% }
+-type start_outpost_decommission_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_order_output() :: #{
 %%   <<"Order">> => order()
 %% }
@@ -517,7 +534,7 @@
 
 %% Example:
 %% create_order_input() :: #{
-%%   <<"LineItems">> := list(line_item_request()),
+%%   <<"LineItems">> => list(line_item_request()),
 %%   <<"OutpostIdentifier">> := string(),
 %%   <<"PaymentOption">> := list(any()),
 %%   <<"PaymentTerm">> => list(any())
@@ -1141,6 +1158,13 @@
     access_denied_exception() | 
     internal_server_exception() | 
     not_found_exception().
+
+-type start_outpost_decommission_errors() ::
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    not_found_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
@@ -2335,6 +2359,41 @@ start_connection(Client, Input) ->
 start_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/connections"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts the decommission process to return the Outposts racks or
+%% servers.
+-spec start_outpost_decommission(aws_client:aws_client(), binary() | list(), start_outpost_decommission_input()) ->
+    {ok, start_outpost_decommission_output(), tuple()} |
+    {error, any()} |
+    {error, start_outpost_decommission_errors(), tuple()}.
+start_outpost_decommission(Client, OutpostIdentifier, Input) ->
+    start_outpost_decommission(Client, OutpostIdentifier, Input, []).
+
+-spec start_outpost_decommission(aws_client:aws_client(), binary() | list(), start_outpost_decommission_input(), proplists:proplist()) ->
+    {ok, start_outpost_decommission_output(), tuple()} |
+    {error, any()} |
+    {error, start_outpost_decommission_errors(), tuple()}.
+start_outpost_decommission(Client, OutpostIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/decommission"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
