@@ -2232,6 +2232,7 @@
 -type client_side_action_config() :: #{binary() => any()}.
 
 -type associate_web_acl_errors() ::
+    w_a_f_limits_exceeded_exception() | 
     w_a_f_invalid_operation_exception() | 
     w_a_f_invalid_parameter_exception() | 
     w_a_f_internal_error_exception() | 

@@ -3,14 +3,14 @@
 
 %% @doc Amazon QuickSight API Reference
 %%
-%% Amazon QuickSight is a fully managed, serverless business intelligence
+%% Amazon Quick Sight is a fully managed, serverless business intelligence
 %% service for the
 %% Amazon Web Services Cloud that makes it easy to extend data and insights
 %% to every user in your
 %% organization.
 %%
 %% This API reference contains documentation for a programming interface that
-%% you can use to manage Amazon QuickSight.
+%% you can use to manage Amazon Quick Sight.
 -module(aws_quicksight).
 
 -export([batch_create_topic_reviewed_answer/4,
@@ -23,6 +23,8 @@
          create_account_customization/4,
          create_account_subscription/3,
          create_account_subscription/4,
+         create_action_connector/3,
+         create_action_connector/4,
          create_analysis/4,
          create_analysis/5,
          create_brand/4,
@@ -73,6 +75,8 @@
          delete_account_customization/4,
          delete_account_subscription/3,
          delete_account_subscription/4,
+         delete_action_connector/4,
+         delete_action_connector/5,
          delete_analysis/4,
          delete_analysis/5,
          delete_brand/4,
@@ -143,6 +147,12 @@
          describe_account_subscription/2,
          describe_account_subscription/4,
          describe_account_subscription/5,
+         describe_action_connector/3,
+         describe_action_connector/5,
+         describe_action_connector/6,
+         describe_action_connector_permissions/3,
+         describe_action_connector_permissions/5,
+         describe_action_connector_permissions/6,
          describe_analysis/3,
          describe_analysis/5,
          describe_analysis/6,
@@ -296,9 +306,18 @@
          get_dashboard_embed_url/4,
          get_dashboard_embed_url/6,
          get_dashboard_embed_url/7,
+         get_flow_metadata/3,
+         get_flow_metadata/5,
+         get_flow_metadata/6,
+         get_flow_permissions/3,
+         get_flow_permissions/5,
+         get_flow_permissions/6,
          get_session_embed_url/2,
          get_session_embed_url/4,
          get_session_embed_url/5,
+         list_action_connectors/2,
+         list_action_connectors/4,
+         list_action_connectors/5,
          list_analyses/2,
          list_analyses/4,
          list_analyses/5,
@@ -326,6 +345,9 @@
          list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
+         list_flows/2,
+         list_flows/4,
+         list_flows/5,
          list_folder_members/3,
          list_folder_members/5,
          list_folder_members/6,
@@ -409,6 +431,8 @@
          register_user/5,
          restore_analysis/4,
          restore_analysis/5,
+         search_action_connectors/3,
+         search_action_connectors/4,
          search_analyses/3,
          search_analyses/4,
          search_dashboards/3,
@@ -417,6 +441,8 @@
          search_data_sets/4,
          search_data_sources/3,
          search_data_sources/4,
+         search_flows/3,
+         search_flows/4,
          search_folders/3,
          search_folders/4,
          search_groups/4,
@@ -441,6 +467,10 @@
          update_account_customization/4,
          update_account_settings/3,
          update_account_settings/4,
+         update_action_connector/4,
+         update_action_connector/5,
+         update_action_connector_permissions/4,
+         update_action_connector_permissions/5,
          update_analysis/4,
          update_analysis/5,
          update_analysis_permissions/4,
@@ -475,6 +505,8 @@
          update_data_source_permissions/5,
          update_default_q_business_application/3,
          update_default_q_business_application/4,
+         update_flow_permissions/4,
+         update_flow_permissions/5,
          update_folder/4,
          update_folder/5,
          update_folder_permissions/4,
@@ -704,6 +736,16 @@
 %%   <<"PolygonLayer">> => geospatial_polygon_layer()
 %% }
 -type geospatial_layer_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% contextual_accent_palette() :: #{
+%%   <<"Automation">> => palette(),
+%%   <<"Connection">> => palette(),
+%%   <<"Insight">> => palette(),
+%%   <<"Visualization">> => palette()
+%% }
+-type contextual_accent_palette() :: #{binary() => any()}.
 
 
 %% Example:
@@ -965,6 +1007,14 @@
 
 
 %% Example:
+%% update_action_connector_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission())
+%% }
+-type update_action_connector_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_stories_configurations() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
@@ -990,12 +1040,25 @@
 
 
 %% Example:
+%% search_flows_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [string()]
+%% }
+-type search_flows_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_dashboard_snapshot_job_request() :: #{
 %%   <<"SnapshotConfiguration">> := snapshot_configuration(),
 %%   <<"SnapshotJobId">> := string(),
 %%   <<"UserConfiguration">> := snapshot_user_configuration()
 %% }
 -type start_dashboard_snapshot_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_action_connector_permissions_request() :: #{}
+-type describe_action_connector_permissions_request() :: #{}.
 
 
 %% Example:
@@ -1136,6 +1199,16 @@
 
 
 %% Example:
+%% list_action_connectors_response() :: #{
+%%   <<"ActionConnectorSummaries">> => list(action_connector_summary()),
+%%   <<"NextToken">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type list_action_connectors_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% snapshot_file_sheet_selection() :: #{
 %%   <<"SelectionScope">> => list(any()),
 %%   <<"SheetId">> => string(),
@@ -1202,6 +1275,14 @@
 %%   <<"TotalBarLabel">> => string()
 %% }
 -type waterfall_chart_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_action_connectors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_action_connectors_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1715,6 +1796,17 @@
 
 
 %% Example:
+%% create_action_connector_response() :: #{
+%%   <<"ActionConnectorId">> => [string()],
+%%   <<"Arn">> => string(),
+%%   <<"CreationStatus">> => list(any()),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type create_action_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% analysis_source_template() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"DataSetReferences">> => list(data_set_reference())
@@ -1830,6 +1922,13 @@
 
 
 %% Example:
+%% none_connection_metadata() :: #{
+%%   <<"BaseEndpoint">> => string()
+%% }
+-type none_connection_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_folders_response() :: #{
 %%   <<"FolderSummaryList">> => list(folder_summary()),
 %%   <<"NextToken">> => string(),
@@ -1911,6 +2010,14 @@
 %%   <<"SheetTextBoxId">> => string()
 %% }
 -type sheet_text_box() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_auth_config() :: #{
+%%   <<"AuthenticationMetadata">> => list(),
+%%   <<"AuthenticationType">> => list(any())
+%% }
+-type read_auth_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2070,6 +2177,14 @@
 
 
 %% Example:
+%% read_iam_connection_metadata() :: #{
+%%   <<"RoleArn">> => string(),
+%%   <<"SourceArn">> => string()
+%% }
+-type read_iam_connection_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_import_job_theme_override_parameters() :: #{
 %%   <<"Name">> => string(),
 %%   <<"ThemeId">> => string()
@@ -2144,6 +2259,14 @@
 
 
 %% Example:
+%% list_flows_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_flows_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% k_p_i_conditional_formatting_option() :: #{
 %%   <<"ActualValue">> => k_p_i_actual_value_conditional_formatting(),
 %%   <<"ComparisonValue">> => k_p_i_comparison_value_conditional_formatting(),
@@ -2190,6 +2313,15 @@
 %%   <<"ThemeAlias">> => theme_alias()
 %% }
 -type create_theme_alias_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_client_credentials_grant_metadata() :: #{
+%%   <<"BaseEndpoint">> => string(),
+%%   <<"ClientCredentialsSource">> => list(any()),
+%%   <<"ReadClientCredentialsDetails">> => list()
+%% }
+-type read_client_credentials_grant_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2338,6 +2470,15 @@
 
 
 %% Example:
+%% search_action_connectors_request() :: #{
+%%   <<"Filters">> := list(action_connector_search_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type search_action_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% forecast_computation() :: #{
 %%   <<"ComputationId">> => string(),
 %%   <<"CustomSeasonalityValue">> => integer(),
@@ -2352,6 +2493,15 @@
 %%   <<"Value">> => measure_field()
 %% }
 -type forecast_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_connector_search_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [string()]
+%% }
+-type action_connector_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3110,6 +3260,17 @@
 
 
 %% Example:
+%% describe_action_connector_permissions_response() :: #{
+%%   <<"ActionConnectorId">> => string(),
+%%   <<"Arn">> => [string()],
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type describe_action_connector_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% histogram_field_wells() :: #{
 %%   <<"HistogramAggregatedFieldWells">> => histogram_aggregated_field_wells()
 %% }
@@ -3524,8 +3685,23 @@
 -type error_info() :: #{binary() => any()}.
 
 %% Example:
+%% describe_action_connector_request() :: #{}
+-type describe_action_connector_request() :: #{}.
+
+%% Example:
 %% delete_user_custom_permission_request() :: #{}
 -type delete_user_custom_permission_request() :: #{}.
+
+
+%% Example:
+%% update_flow_permissions_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"FlowId">> => string(),
+%%   <<"Permissions">> => list(permission()),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type update_flow_permissions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3600,6 +3776,10 @@
 %%   <<"VPCConnectionId">> := string()
 %% }
 -type create_vpc_connection_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_flow_permissions_input() :: #{}
+-type get_flow_permissions_input() :: #{}.
 
 
 %% Example:
@@ -3682,6 +3862,14 @@
 %%   <<"StringParameters">> => list(string_parameter())
 %% }
 -type parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_client_credentials_grant_details() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"TokenEndpoint">> => string()
+%% }
+-type read_client_credentials_grant_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3932,6 +4120,15 @@
 
 
 %% Example:
+%% client_credentials_grant_metadata() :: #{
+%%   <<"BaseEndpoint">> => string(),
+%%   <<"ClientCredentialsDetails">> => list(),
+%%   <<"ClientCredentialsSource">> => list(any())
+%% }
+-type client_credentials_grant_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% word_cloud_chart_configuration() :: #{
 %%   <<"CategoryLabelOptions">> => chart_axis_label_options(),
 %%   <<"FieldWells">> => word_cloud_field_wells(),
@@ -3968,6 +4165,15 @@
 
 
 %% Example:
+%% client_credentials_grant_details() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"TokenEndpoint">> => string()
+%% }
+-type client_credentials_grant_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_analysis_request() :: #{
 %%   <<"ForceDeleteWithoutRecovery">> => boolean(),
 %%   <<"RecoveryWindowInDays">> => float()
@@ -3983,6 +4189,13 @@
 
 
 %% Example:
+%% iam_connection_metadata() :: #{
+%%   <<"RoleArn">> => string()
+%% }
+-type iam_connection_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_sql() :: #{
 %%   <<"Columns">> => list(input_column()),
 %%   <<"DataSourceArn">> => string(),
@@ -3990,6 +4203,17 @@
 %%   <<"SqlQuery">> => string()
 %% }
 -type custom_sql() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_flow_permissions_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FlowId">> => string(),
+%%   <<"Permissions">> => list(permission()),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type get_flow_permissions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4076,6 +4300,15 @@
 %%   <<"ImageMenuOption">> => image_menu_option()
 %% }
 -type image_interaction_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_flows_input() :: #{
+%%   <<"Filters">> := list(search_flows_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type search_flows_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4913,6 +5146,27 @@
 
 
 %% Example:
+%% update_action_connector_response() :: #{
+%%   <<"ActionConnectorId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer(),
+%%   <<"UpdateStatus">> => list(any())
+%% }
+-type update_action_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% authorization_code_grant_details() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"TokenEndpoint">> => string()
+%% }
+-type authorization_code_grant_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% nested_filter() :: #{
 %%   <<"Column">> => column_identifier(),
 %%   <<"FilterId">> => string(),
@@ -5022,6 +5276,20 @@
 %%   <<"After">> => section_after_page_break()
 %% }
 -type body_section_repeat_page_break_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_crawler_parameters() :: #{
+%%   <<"LoginPageUrl">> => string(),
+%%   <<"PasswordButtonXpath">> => string(),
+%%   <<"PasswordFieldXpath">> => string(),
+%%   <<"UsernameButtonXpath">> => string(),
+%%   <<"UsernameFieldXpath">> => string(),
+%%   <<"WebCrawlerAuthType">> => list(any()),
+%%   <<"WebProxyHostName">> => string(),
+%%   <<"WebProxyPortNumber">> => integer()
+%% }
+-type web_crawler_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5153,6 +5421,15 @@
 %%   <<"ClusterMarker">> => cluster_marker()
 %% }
 -type cluster_marker_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% basic_auth_connection_metadata() :: #{
+%%   <<"BaseEndpoint">> => string(),
+%%   <<"Password">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type basic_auth_connection_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5392,6 +5669,15 @@
 %%   <<"FieldId">> => string()
 %% }
 -type pivot_table_field_collapse_state_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_key_connection_metadata() :: #{
+%%   <<"ApiKey">> => string(),
+%%   <<"BaseEndpoint">> => string(),
+%%   <<"Email">> => string()
+%% }
+-type api_key_connection_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5922,6 +6208,16 @@
 
 
 %% Example:
+%% authorization_code_grant_metadata() :: #{
+%%   <<"AuthorizationCodeGrantCredentialsDetails">> => list(),
+%%   <<"AuthorizationCodeGrantCredentialsSource">> => list(any()),
+%%   <<"BaseEndpoint">> => string(),
+%%   <<"RedirectUrl">> => string()
+%% }
+-type authorization_code_grant_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_path_label_type() :: #{
 %%   <<"FieldId">> => string(),
 %%   <<"FieldValue">> => string(),
@@ -6056,10 +6352,26 @@
 
 
 %% Example:
+%% q_business_parameters() :: #{
+%%   <<"ApplicationArn">> => string()
+%% }
+-type q_business_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% executive_summary_configurations() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
 -type executive_summary_configurations() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_knowledge_base_parameters() :: #{
+%%   <<"BucketUrl">> => string(),
+%%   <<"MetadataFilesLocation">> => string(),
+%%   <<"RoleArn">> => string()
+%% }
+-type s3_knowledge_base_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6093,6 +6405,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_groups_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_action_connectors_response() :: #{
+%%   <<"ActionConnectorSummaries">> => list(action_connector_summary()),
+%%   <<"NextToken">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type search_action_connectors_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6423,6 +6745,13 @@
 %% Example:
 %% describe_template_permissions_request() :: #{}
 -type describe_template_permissions_request() :: #{}.
+
+
+%% Example:
+%% quick_suite_actions_option() :: #{
+%%   <<"AvailabilityStatus">> => list(any())
+%% }
+-type quick_suite_actions_option() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7077,6 +7406,13 @@
 
 
 %% Example:
+%% confluence_parameters() :: #{
+%%   <<"ConfluenceUrl">> => string()
+%% }
+-type confluence_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% visual_interaction_options() :: #{
 %%   <<"ContextMenuOption">> => context_menu_option(),
 %%   <<"VisualMenuOption">> => visual_menu_option()
@@ -7151,6 +7487,20 @@
 
 
 %% Example:
+%% action_connector_summary() :: #{
+%%   <<"ActionConnectorId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"Error">> => action_connector_error(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type action_connector_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_key_registration_response() :: #{
 %%   <<"FailedKeyRegistration">> => list(failed_key_registration_entry()),
 %%   <<"RequestId">> => string(),
@@ -7184,6 +7534,16 @@
 %%   <<"OverrideValidationStrategy">> => asset_bundle_import_job_override_validation_strategy()
 %% }
 -type start_asset_bundle_import_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_flows_output() :: #{
+%%   <<"FlowSummaryList">> => list(flow_summary()),
+%%   <<"NextToken">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type search_flows_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7244,7 +7604,8 @@
 %% data_source_credentials() :: #{
 %%   <<"CopySourceArn">> => string(),
 %%   <<"CredentialPair">> => credential_pair(),
-%%   <<"SecretArn">> => string()
+%%   <<"SecretArn">> => string(),
+%%   <<"WebProxyCredentials">> => web_proxy_credentials()
 %% }
 -type data_source_credentials() :: #{binary() => any()}.
 
@@ -8268,6 +8629,25 @@
 
 
 %% Example:
+%% flow_summary() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"CreatedBy">> => [string()],
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FlowId">> => string(),
+%%   <<"LastPublishedAt">> => non_neg_integer(),
+%%   <<"LastPublishedBy">> => [string()],
+%%   <<"LastUpdatedBy">> => [string()],
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublishState">> => list(any()),
+%%   <<"RunCount">> => integer(),
+%%   <<"UserCount">> => integer()
+%% }
+-type flow_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_dashboards_q_a_configuration_request() :: #{
 %%   <<"DashboardsQAStatus">> := list(any())
 %% }
@@ -8455,6 +8835,24 @@
 
 
 %% Example:
+%% action_connector() :: #{
+%%   <<"ActionConnectorId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"AuthenticationConfig">> => read_auth_config(),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"EnabledActions">> => list(string()),
+%%   <<"Error">> => action_connector_error(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"VpcConnectionArn">> => string()
+%% }
+-type action_connector() :: #{binary() => any()}.
+
+
+%% Example:
 %% anonymous_user_snapshot_job_result() :: #{
 %%   <<"FileGroups">> => list(snapshot_job_result_file_group())
 %% }
@@ -8471,6 +8869,23 @@
 %% Example:
 %% delete_identity_propagation_config_request() :: #{}
 -type delete_identity_propagation_config_request() :: #{}.
+
+
+%% Example:
+%% get_flow_metadata_output() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"FlowId">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"PublishState">> => list(any()),
+%%   <<"RequestId">> => [string()],
+%%   <<"RunCount">> => integer(),
+%%   <<"Status">> => integer(),
+%%   <<"UserCount">> => integer()
+%% }
+-type get_flow_metadata_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8818,6 +9233,7 @@
 %%   <<"ExecutiveSummaryOption">> => executive_summary_option(),
 %%   <<"ExportToCSVOption">> => export_to_csv_option(),
 %%   <<"ExportWithHiddenFieldsOption">> => export_with_hidden_fields_option(),
+%%   <<"QuickSuiteActionsOption">> => quick_suite_actions_option(),
 %%   <<"SheetControlsOption">> => sheet_controls_option(),
 %%   <<"SheetLayoutElementMaximizationOption">> => sheet_layout_element_maximization_option(),
 %%   <<"VisualAxisSortOption">> => visual_axis_sort_option(),
@@ -8848,6 +9264,15 @@
 %% Example:
 %% delete_role_membership_request() :: #{}
 -type delete_role_membership_request() :: #{}.
+
+
+%% Example:
+%% describe_action_connector_response() :: #{
+%%   <<"ActionConnector">> => action_connector(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type describe_action_connector_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9027,6 +9452,17 @@
 
 
 %% Example:
+%% update_action_connector_permissions_response() :: #{
+%%   <<"ActionConnectorId">> => string(),
+%%   <<"Arn">> => [string()],
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type update_action_connector_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% table_conditional_formatting_option() :: #{
 %%   <<"Cell">> => table_cell_conditional_formatting(),
 %%   <<"Row">> => table_row_conditional_formatting()
@@ -9186,6 +9622,16 @@
 
 
 %% Example:
+%% update_action_connector_request() :: #{
+%%   <<"AuthenticationConfig">> := auth_config(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"VpcConnectionArn">> => string()
+%% }
+-type update_action_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_response() :: #{
 %%   <<"RequestId">> => string(),
 %%   <<"Status">> => integer()
@@ -9313,6 +9759,13 @@
 %%   <<"Type">> => list(any())
 %% }
 -type default_slider_control_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_none_connection_metadata() :: #{
+%%   <<"BaseEndpoint">> => string()
+%% }
+-type read_none_connection_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9569,6 +10022,16 @@
 
 
 %% Example:
+%% list_flows_output() :: #{
+%%   <<"FlowSummaryList">> => list(flow_summary()),
+%%   <<"NextToken">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type list_flows_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_user_request() :: #{
 %%   <<"CustomFederationProviderUrl">> => string(),
 %%   <<"CustomPermissionsName">> => string(),
@@ -9627,6 +10090,14 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_data_source_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% auth_config() :: #{
+%%   <<"AuthenticationMetadata">> => list(),
+%%   <<"AuthenticationType">> => list(any())
+%% }
+-type auth_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9726,6 +10197,10 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_folders_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_action_connector_request() :: #{}
+-type delete_action_connector_request() :: #{}.
 
 
 %% Example:
@@ -10191,6 +10666,14 @@
 %% Example:
 %% describe_group_request() :: #{}
 -type describe_group_request() :: #{}.
+
+
+%% Example:
+%% web_proxy_credentials() :: #{
+%%   <<"WebProxyPassword">> => string(),
+%%   <<"WebProxyUsername">> => string()
+%% }
+-type web_proxy_credentials() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10891,7 +11374,8 @@
 %% Example:
 %% application_theme() :: #{
 %%   <<"BrandColorPalette">> => brand_color_palette(),
-%%   <<"BrandElementStyle">> => brand_element_style()
+%%   <<"BrandElementStyle">> => brand_element_style(),
+%%   <<"ContextualAccentPalette">> => contextual_accent_palette()
 %% }
 -type application_theme() :: #{binary() => any()}.
 
@@ -10968,6 +11452,14 @@
 
 
 %% Example:
+%% update_flow_permissions_input() :: #{
+%%   <<"GrantPermissions">> => list(permission()),
+%%   <<"RevokePermissions">> => list(permission())
+%% }
+-type update_flow_permissions_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_data_set_permissions_request() :: #{
 %%   <<"GrantPermissions">> => list(resource_permission()),
 %%   <<"RevokePermissions">> => list(resource_permission())
@@ -10982,6 +11474,10 @@
 %%   <<"SpecialValue">> => list(any())
 %% }
 -type custom_color() :: #{binary() => any()}.
+
+%% Example:
+%% get_flow_metadata_input() :: #{}
+-type get_flow_metadata_input() :: #{}.
 
 
 %% Example:
@@ -11159,6 +11655,16 @@
 %%   <<"RoleArn">> => string()
 %% }
 -type redshift_iam_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_action_connector_response() :: #{
+%%   <<"ActionConnectorId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type delete_action_connector_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11489,6 +11995,20 @@
 
 
 %% Example:
+%% create_action_connector_request() :: #{
+%%   <<"ActionConnectorId">> := string(),
+%%   <<"AuthenticationConfig">> := auth_config(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any()),
+%%   <<"VpcConnectionArn">> => string()
+%% }
+-type create_action_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% sql_server_parameters() :: #{
 %%   <<"Database">> => string(),
 %%   <<"Host">> => string(),
@@ -11515,6 +12035,14 @@
 %%   <<"Status">> => integer()
 %% }
 -type start_asset_bundle_export_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% action_connector_error() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"Type">> => list(any())
+%% }
+-type action_connector_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11640,6 +12168,14 @@
 %%   <<"SheetSelections">> => list(snapshot_file_sheet_selection())
 %% }
 -type snapshot_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_api_key_connection_metadata() :: #{
+%%   <<"BaseEndpoint">> => string(),
+%%   <<"Email">> => string()
+%% }
+-type read_api_key_connection_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11925,6 +12461,16 @@
 
 
 %% Example:
+%% read_authorization_code_grant_metadata() :: #{
+%%   <<"AuthorizationCodeGrantCredentialsSource">> => list(any()),
+%%   <<"BaseEndpoint">> => string(),
+%%   <<"ReadAuthorizationCodeGrantCredentialsDetails">> => list(),
+%%   <<"RedirectUrl">> => string()
+%% }
+-type read_authorization_code_grant_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% sankey_diagram_chart_configuration() :: #{
 %%   <<"DataLabels">> => data_label_options(),
 %%   <<"FieldWells">> => sankey_diagram_field_wells(),
@@ -12184,6 +12730,14 @@
 %%   <<"Value">> => measure_field()
 %% }
 -type top_bottom_ranked_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% read_basic_auth_connection_metadata() :: #{
+%%   <<"BaseEndpoint">> => string(),
+%%   <<"Username">> => string()
+%% }
+-type read_basic_auth_connection_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12452,6 +13006,14 @@
 
 
 %% Example:
+%% permission() :: #{
+%%   <<"Actions">> => list(string()),
+%%   <<"Principal">> => string()
+%% }
+-type permission() :: #{binary() => any()}.
+
+
+%% Example:
 %% decimal_places_configuration() :: #{
 %%   <<"DecimalPlaces">> => float()
 %% }
@@ -12586,31 +13148,43 @@
 
 %% Example:
 %% capabilities() :: #{
-%%   <<"AddOrRunAnomalyDetectionForAnalyses">> => list(any()),
-%%   <<"Analysis">> => list(any()),
-%%   <<"CreateAndUpdateDashboardEmailReports">> => list(any()),
-%%   <<"CreateAndUpdateDataSources">> => list(any()),
-%%   <<"CreateAndUpdateDatasets">> => list(any()),
-%%   <<"CreateAndUpdateThemes">> => list(any()),
-%%   <<"CreateAndUpdateThresholdAlerts">> => list(any()),
-%%   <<"CreateSPICEDataset">> => list(any()),
-%%   <<"CreateSharedFolders">> => list(any()),
-%%   <<"Dashboard">> => list(any()),
-%%   <<"ExportToCsv">> => list(any()),
-%%   <<"ExportToCsvInScheduledReports">> => list(any()),
-%%   <<"ExportToExcel">> => list(any()),
-%%   <<"ExportToExcelInScheduledReports">> => list(any()),
-%%   <<"ExportToPdf">> => list(any()),
 %%   <<"ExportToPdfInScheduledReports">> => list(any()),
-%%   <<"IncludeContentInScheduledReportsEmail">> => list(any()),
-%%   <<"PrintReports">> => list(any()),
-%%   <<"RenameSharedFolders">> => list(any()),
-%%   <<"ShareAnalyses">> => list(any()),
-%%   <<"ShareDashboards">> => list(any()),
-%%   <<"ShareDataSources">> => list(any()),
+%%   <<"Flow">> => list(any()),
 %%   <<"ShareDatasets">> => list(any()),
+%%   <<"ShareDashboards">> => list(any()),
+%%   <<"IncludeContentInScheduledReportsEmail">> => list(any()),
+%%   <<"CreateAndUpdateThemes">> => list(any()),
+%%   <<"RenameSharedFolders">> => list(any()),
+%%   <<"AddOrRunAnomalyDetectionForAnalyses">> => list(any()),
 %%   <<"SubscribeDashboardEmailReports">> => list(any()),
-%%   <<"ViewAccountSPICECapacity">> => list(any())
+%%   <<"CreateAndUpdateDataSources">> => list(any()),
+%%   <<"PrintReports">> => list(any()),
+%%   <<"KnowledgeBase">> => list(any()),
+%%   <<"ExportToExcel">> => list(any()),
+%%   <<"Space">> => list(any()),
+%%   <<"PublishWithoutApproval">> => list(any()),
+%%   <<"CreateChatAgents">> => list(any()),
+%%   <<"PerformFlowUiTask">> => list(any()),
+%%   <<"CreateSharedFolders">> => list(any()),
+%%   <<"Analysis">> => list(any()),
+%%   <<"ExportToExcelInScheduledReports">> => list(any()),
+%%   <<"Research">> => list(any()),
+%%   <<"Dashboard">> => list(any()),
+%%   <<"Action">> => list(any()),
+%%   <<"ChatAgent">> => list(any()),
+%%   <<"CreateSPICEDataset">> => list(any()),
+%%   <<"ShareAnalyses">> => list(any()),
+%%   <<"UseBedrockModels">> => list(any()),
+%%   <<"ExportToPdf">> => list(any()),
+%%   <<"CreateAndUpdateDashboardEmailReports">> => list(any()),
+%%   <<"ShareDataSources">> => list(any()),
+%%   <<"ViewAccountSPICECapacity">> => list(any()),
+%%   <<"CreateAndUpdateThresholdAlerts">> => list(any()),
+%%   <<"ExportToCsvInScheduledReports">> => list(any()),
+%%   <<"Automate">> => list(any()),
+%%   <<"ExportToCsv">> => list(any()),
+%%   <<"UseAgentWebSearch">> => list(any()),
+%%   <<"CreateAndUpdateDatasets">> => list(any())
 %% }
 -type capabilities() :: #{binary() => any()}.
 
@@ -12886,6 +13460,15 @@
 
 
 %% Example:
+%% read_authorization_code_grant_details() :: #{
+%%   <<"AuthorizationEndpoint">> => string(),
+%%   <<"ClientId">> => string(),
+%%   <<"TokenEndpoint">> => string()
+%% }
+-type read_authorization_code_grant_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_brand_published_version_request() :: #{
 %%   <<"VersionId">> := string()
 %% }
@@ -12967,6 +13550,14 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type create_action_connector_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    conflict_exception() | 
     internal_failure_exception().
 
 -type create_analysis_errors() ::
@@ -13216,6 +13807,13 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type delete_action_connector_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type delete_analysis_errors() ::
@@ -13495,6 +14093,20 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type describe_action_connector_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type describe_action_connector_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception().
 
 -type describe_analysis_errors() ::
@@ -13925,6 +14537,18 @@
     quick_sight_user_not_found_exception() | 
     internal_failure_exception().
 
+-type get_flow_metadata_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception().
+
+-type get_flow_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception().
+
 -type get_session_embed_url_errors() ::
     throttling_exception() | 
     access_denied_exception() | 
@@ -13934,6 +14558,13 @@
     resource_not_found_exception() | 
     unsupported_user_edition_exception() | 
     quick_sight_user_not_found_exception() | 
+    internal_failure_exception().
+
+-type list_action_connectors_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
     internal_failure_exception().
 
 -type list_analyses_errors() ::
@@ -13997,6 +14628,12 @@
     access_denied_exception() | 
     invalid_parameter_value_exception() | 
     invalid_next_token_exception() | 
+    internal_failure_exception().
+
+-type list_flows_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
     internal_failure_exception().
 
 -type list_folder_members_errors() ::
@@ -14253,6 +14890,12 @@
     unsupported_user_edition_exception() | 
     internal_failure_exception().
 
+-type search_action_connectors_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception().
+
 -type search_analyses_errors() ::
     throttling_exception() | 
     invalid_parameter_value_exception() | 
@@ -14283,6 +14926,12 @@
     invalid_parameter_value_exception() | 
     invalid_next_token_exception() | 
     resource_not_found_exception() | 
+    internal_failure_exception().
+
+-type search_flows_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
     internal_failure_exception().
 
 -type search_folders_errors() ::
@@ -14388,6 +15037,24 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     resource_unavailable_exception() | 
+    internal_failure_exception().
+
+-type update_action_connector_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    internal_failure_exception().
+
+-type update_action_connector_permissions_errors() ::
+    limit_exceeded_exception() | 
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unsupported_user_edition_exception() | 
     internal_failure_exception().
 
 -type update_analysis_errors() ::
@@ -14535,6 +15202,12 @@
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
+    internal_failure_exception().
+
+-type update_flow_permissions_errors() ::
+    throttling_exception() | 
+    access_denied_exception() | 
+    invalid_parameter_value_exception() | 
     internal_failure_exception().
 
 -type update_folder_errors() ::
@@ -14864,18 +15537,19 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates Amazon QuickSight customizations.
+%% @doc Creates Amazon Quick Sight customizations.
 %%
 %% Currently, you can add a custom default theme by using the
 %% `CreateAccountCustomization' or `UpdateAccountCustomization'
-%% API operation. To further customize QuickSight by removing QuickSight
-%% sample assets and videos for all new users, see Customizing QuickSight:
+%% API operation. To further customize Amazon Quick Sight by removing Amazon
+%% Quick Sight
+%% sample assets and videos for all new users, see Customizing Quick Sight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html
-%% in the Amazon QuickSight User Guide.
+%% in the Amazon Quick Sight User Guide.
 %%
 %% You can create customizations for your Amazon Web Services account or, if
 %% you specify a namespace, for
-%% a QuickSight namespace instead. Customizations that apply to a namespace
+%% a Quick Sight namespace instead. Customizations that apply to a namespace
 %% always override
 %% customizations that apply to an Amazon Web Services account. To find out
 %% which customizations apply, use
@@ -14936,7 +15610,8 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an QuickSight account, or subscribes to QuickSight Q.
+%% @doc Creates an Amazon Quick Sight account, or subscribes to Amazon Quick
+%% Sight Q.
 %%
 %% The Amazon Web Services Region for the account is derived from what is
 %% configured in the
@@ -14947,14 +15622,14 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% Services account, see Sign
 %% up for Amazon Web Services:
 %% https://docs.aws.amazon.com/quicksight/latest/user/setting-up-aws-sign-up.html
-%% in the Amazon QuickSight User
-%% Guide. The person who signs up for QuickSight needs to have the
+%% in the Amazon Quick Sight User
+%% Guide. The person who signs up for Amazon Quick Sight needs to have the
 %% correct Identity and Access Management (IAM) permissions. For more
 %% information,
-%% see IAM Policy Examples for QuickSight:
+%% see IAM Policy Examples for Amazon Quick Sight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/iam-policy-examples.html
 %% in the
-%% QuickSight User Guide.
+%% Amazon Quick Sight User Guide.
 %%
 %% If your IAM policy includes both the `Subscribe' and
 %% `CreateAccountSubscription' actions, make sure that both actions are
@@ -14965,21 +15640,21 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% You can't pass an existing IAM role to access other Amazon Web
 %% Services services using this API operation. To pass your existing IAM role
 %% to
-%% QuickSight, see Passing IAM roles to QuickSight:
+%% Amazon Quick Sight, see Passing IAM roles to Amazon Quick Sight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html#security-create-iam-role
 %% in the
-%% QuickSight User Guide.
+%% Amazon Quick Sight User Guide.
 %%
 %% You can't set default resource access on the new account from the
-%% QuickSight
-%% API. Instead, add default resource access from the QuickSight console. For
-%% more
+%% Amazon Quick Sight
+%% API. Instead, add default resource access from the Amazon Quick Sight
+%% console. For more
 %% information about setting default resource access to Amazon Web Services
 %% services, see
 %% Setting default resource
 %% access to Amazon Web Services services:
 %% https://docs.aws.amazon.com/quicksight/latest/user/scoping-policies-defaults.html
-%% in the QuickSight
+%% in the Amazon Quick Sight
 %% User Guide.
 -spec create_account_subscription(aws_client:aws_client(), binary() | list(), create_account_subscription_request()) ->
     {ok, create_account_subscription_response(), tuple()} |
@@ -15014,7 +15689,46 @@ create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an analysis in Amazon QuickSight.
+%% @doc Creates an action connector that enables Amazon Quick Sight to
+%% connect to external services and perform actions.
+%%
+%% Action connectors support various authentication methods and can be
+%% configured with specific actions from supported connector types
+%% like Amazon S3, Salesforce, JIRA.
+-spec create_action_connector(aws_client:aws_client(), binary() | list(), create_action_connector_request()) ->
+    {ok, create_action_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_action_connector_errors(), tuple()}.
+create_action_connector(Client, AwsAccountId, Input) ->
+    create_action_connector(Client, AwsAccountId, Input, []).
+
+-spec create_action_connector(aws_client:aws_client(), binary() | list(), create_action_connector_request(), proplists:proplist()) ->
+    {ok, create_action_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_action_connector_errors(), tuple()}.
+create_action_connector(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/action-connectors"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an analysis in Amazon Quick Sight.
 %%
 %% Analyses can be created either from a template or from an
 %% `AnalysisDefinition'.
@@ -15051,7 +15765,7 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an QuickSight brand.
+%% @doc Creates an Quick Sight brand.
 -spec create_brand(aws_client:aws_client(), binary() | list(), binary() | list(), create_brand_request()) ->
     {ok, create_brand_response(), tuple()} |
     {error, any()} |
@@ -15123,21 +15837,20 @@ create_custom_permissions(Client, AwsAccountId, Input0, Options0) ->
 %% `DashboardDefinition'.
 %%
 %% To first create a template, see the
-%%
 %% ```
 %% CreateTemplate:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateTemplate.html
-%% '''
-%% API operation.
+%% ''' API operation.
 %%
-%% A dashboard is an entity in QuickSight that identifies QuickSight reports,
-%% created
-%% from analyses. You can share QuickSight dashboards. With the right
-%% permissions, you can
-%% create scheduled email reports from them. If you have the correct
-%% permissions, you can
-%% create a dashboard from a template that exists in a different Amazon Web
-%% Services account.
+%% A dashboard is an entity in Amazon Quick Sight that identifies Amazon
+%% Quick Sight
+%% reports, created from analyses. You can share Amazon Quick Sight
+%% dashboards. With the
+%% right permissions, you can create scheduled email reports from them. If
+%% you have the
+%% correct permissions, you can create a dashboard from a template that
+%% exists in a
+%% different Amazon Web Services account.
 -spec create_dashboard(aws_client:aws_client(), binary() | list(), binary() | list(), create_dashboard_request()) ->
     {ok, create_dashboard_response(), tuple()} |
     {error, any()} |
@@ -15173,8 +15886,8 @@ create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
 
 %% @doc Creates a dataset.
 %%
-%% This operation doesn't support datasets that include uploaded files as
-%% a source.
+%% This operation doesn't support datasets that include uploaded files
+%% as a source.
 -spec create_data_set(aws_client:aws_client(), binary() | list(), create_data_set_request()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
@@ -15311,7 +16024,7 @@ create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use the `CreateGroup' operation to create a group in QuickSight.
+%% @doc Use the `CreateGroup' operation to create a group in Quick Sight.
 %%
 %% You can create up to 10,000 groups in a namespace. If you want to create
 %% more than 10,000 groups in a namespace, contact Amazon Web Services
@@ -15356,7 +16069,7 @@ create_group(Client, AwsAccountId, Namespace, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds an Amazon QuickSight user to an Amazon QuickSight group.
+%% @doc Adds an Amazon Quick Sight user to an Amazon Quick Sight group.
 -spec create_group_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_group_membership_request()) ->
     {ok, create_group_membership_response(), tuple()} |
     {error, any()} |
@@ -15395,7 +16108,7 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 %% Amazon Resource Name (ARN).
 %%
 %% This policy assignment is attached to the specified groups
-%% or users of Amazon QuickSight. Assignment names are unique per Amazon Web
+%% or users of Amazon Quick Sight. Assignment names are unique per Amazon Web
 %% Services
 %% account. To avoid overwriting rules in other namespaces, use assignment
 %% names that are
@@ -15484,17 +16197,17 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc (Enterprise edition only) Creates a new namespace for you to use with
-%% Amazon QuickSight.
+%% Amazon Quick Sight.
 %%
-%% A namespace allows you to isolate the QuickSight users and groups that are
-%% registered
+%% A namespace allows you to isolate the Quick Sight users and groups that
+%% are registered
 %% for that namespace. Users that access the namespace can share assets only
 %% with other
 %% users or groups in the same namespace. They can't see users and groups
 %% in other
 %% namespaces. You can create a namespace after your Amazon Web Services
 %% account is subscribed to
-%% QuickSight. The namespace must be unique within the Amazon Web Services
+%% Quick Sight. The namespace must be unique within the Amazon Web Services
 %% account. By default, there is a
 %% limit of 100 namespaces per Amazon Web Services account. To increase your
 %% limit, create a ticket with
@@ -15568,8 +16281,8 @@ create_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use `CreateRoleMembership' to add an existing QuickSight group to
-%% an existing role.
+%% @doc Use `CreateRoleMembership' to add an existing Quick Sight group
+%% to an existing role.
 -spec create_role_membership(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), create_role_membership_request()) ->
     {ok, create_role_membership_response(), tuple()} |
     {error, any()} |
@@ -15604,12 +16317,12 @@ create_role_membership(Client, AwsAccountId, MemberName, Namespace, Role, Input0
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a template either from a `TemplateDefinition' or from an
-%% existing QuickSight analysis or template.
+%% existing Quick Sight analysis or template.
 %%
 %% You can use the resulting
 %% template to create additional dashboards, templates, or analyses.
 %%
-%% A template is an entity in QuickSight that encapsulates the metadata
+%% A template is an entity in Quick Sight that encapsulates the metadata
 %% required to create an analysis and that you can use to create s dashboard.
 %% A template adds
 %% a layer of abstraction by using placeholders to replace the dataset
@@ -15690,9 +16403,9 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 %%
 %% A theme is set of configuration options for color and layout.
 %% Themes apply to analyses and dashboards. For more information, see Using
-%% Themes in Amazon QuickSight:
+%% Themes in Amazon Quick Sight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html
-%% in the Amazon QuickSight User Guide.
+%% in the Amazon Quick Sight User Guide.
 -spec create_theme(aws_client:aws_client(), binary() | list(), binary() | list(), create_theme_request()) ->
     {ok, create_theme_response(), tuple()} |
     {error, any()} |
@@ -15897,7 +16610,7 @@ delete_account_custom_permission(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% This API permanently deletes all QuickSight customizations for the
+%% This API permanently deletes all Quick Sight customizations for the
 %% specified Amazon Web Services account and namespace.
 %%
 %% When you delete account customizations:
@@ -15907,13 +16620,14 @@ delete_account_custom_permission(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% This action cannot be undone through the API
 %%
-%% Users will see default QuickSight styling after customizations are deleted
+%% Users will see default Quick Sight styling after customizations are
+%% deleted
 %%
 %% Before proceeding: Ensure you have backups of any custom themes or
 %% branding elements you may want to recreate.
 %%
-%% Deletes all Amazon QuickSight customizations for the specified Amazon Web
-%% Services account and QuickSight namespace.
+%% Deletes all Amazon Quick Sight customizations for the specified Amazon Web
+%% Services account and Quick Sight namespace.
 -spec delete_account_customization(aws_client:aws_client(), binary() | list(), delete_account_customization_request()) ->
     {ok, delete_account_customization_response(), tuple()} |
     {error, any()} |
@@ -15949,12 +16663,12 @@ delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% Deleting your QuickSight account subscription has permanent, irreversible
+%% Deleting your Quick Sight account subscription has permanent, irreversible
 %% consequences across all Amazon Web Services regions:
 %%
 %% Global deletion – Running this operation from any single region will
-%% delete your QuickSight account and all data in every Amazon Web Services
-%% region where you have QuickSight resources.
+%% delete your Quick Sight account and all data in every Amazon Web Services
+%% region where you have Quick Sight resources.
 %%
 %% Complete data loss – All dashboards, analyses, datasets, data sources, and
 %% custom visuals will be permanently deleted across all regions.
@@ -15966,16 +16680,16 @@ delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% Shared resources removed – All shared dashboards, folders, and resources
 %% will become inaccessible to other users and external recipients.
 %%
-%% User access terminated – All QuickSight users in your account will lose
+%% User access terminated – All Quick Sight users in your account will lose
 %% access immediately, including authors, readers, and administrators.
 %%
-%% No recovery possible – Once deleted, your QuickSight account and all
+%% No recovery possible – Once deleted, your Quick Sight account and all
 %% associated data cannot be restored.
 %%
 %% Consider exporting critical dashboards and data before proceeding with
 %% account deletion.
 %%
-%% Use the `DeleteAccountSubscription' operation to delete an QuickSight
+%% Use the `DeleteAccountSubscription' operation to delete an Quick Sight
 %% account. This operation will result in an error message if you have
 %% configured your account termination protection settings to `True'. To
 %% change this setting and delete your account, call the
@@ -16015,16 +16729,54 @@ delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an analysis from Amazon QuickSight.
+%% @doc Hard deletes an action connector, making it unrecoverable.
+%%
+%% This operation removes the connector and all its associated
+%% configurations. Any resources currently using this action connector will
+%% no longer be able to perform actions through it.
+-spec delete_action_connector(aws_client:aws_client(), binary() | list(), binary() | list(), delete_action_connector_request()) ->
+    {ok, delete_action_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_action_connector_errors(), tuple()}.
+delete_action_connector(Client, ActionConnectorId, AwsAccountId, Input) ->
+    delete_action_connector(Client, ActionConnectorId, AwsAccountId, Input, []).
+
+-spec delete_action_connector(aws_client:aws_client(), binary() | list(), binary() | list(), delete_action_connector_request(), proplists:proplist()) ->
+    {ok, delete_action_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_action_connector_errors(), tuple()}.
+delete_action_connector(Client, ActionConnectorId, AwsAccountId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/action-connectors/", aws_util:encode_uri(ActionConnectorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an analysis from Amazon Quick Sight.
 %%
 %% You can optionally include a recovery window during
 %% which you can restore the analysis. If you don't specify a recovery
 %% window value, the
-%% operation defaults to 30 days. QuickSight attaches a `DeletionTime'
-%% stamp to
+%% operation defaults to 30 days. Amazon Quick Sight attaches a
+%% `DeletionTime' stamp to
 %% the response that specifies the end of the recovery window. At the end of
 %% the recovery
-%% window, QuickSight deletes the analysis permanently.
+%% window, Amazon Quick Sight deletes the analysis permanently.
 %%
 %% At any time before recovery window ends, you can use the
 %% `RestoreAnalysis'
@@ -16035,7 +16787,7 @@ delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 %% describe it but you can't make a template from it.
 %%
 %% An analysis that's scheduled for deletion isn't accessible in the
-%% QuickSight console.
+%% Amazon Quick Sight console.
 %% To access it in the console, restore it. Deleting an analysis doesn't
 %% delete the
 %% dashboards that you publish from it.
@@ -16075,7 +16827,7 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% This API permanently deletes the specified QuickSight brand.
+%% This API permanently deletes the specified Quick Sight brand.
 %%
 %% When you delete a brand:
 %%
@@ -16089,7 +16841,7 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 %% Before proceeding: Verify that the brand is no longer needed and consider
 %% the impact on any applications currently using this brand.
 %%
-%% Deletes an QuickSight brand.
+%% Deletes an Quick Sight brand.
 -spec delete_brand(aws_client:aws_client(), binary() | list(), binary() | list(), delete_brand_request()) ->
     {ok, delete_brand_response(), tuple()} |
     {error, any()} |
@@ -16296,8 +17048,8 @@ delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Opti
 
 %% @doc Deletes the data source permanently.
 %%
-%% This operation breaks
-%% all the datasets that reference the deleted data source.
+%% This operation breaks all the datasets that
+%% reference the deleted data source.
 -spec delete_data_source(aws_client:aws_client(), binary() | list(), binary() | list(), delete_data_source_request()) ->
     {ok, delete_data_source_response(), tuple()} |
     {error, any()} |
@@ -16331,7 +17083,7 @@ delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a linked Amazon Q Business application from an QuickSight
+%% @doc Deletes a linked Amazon Q Business application from an Quick Sight
 %% account
 -spec delete_default_q_business_application(aws_client:aws_client(), binary() | list(), delete_default_q_business_application_request()) ->
     {ok, delete_default_q_business_application_response(), tuple()} |
@@ -16436,7 +17188,7 @@ delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a user group from Amazon QuickSight.
+%% @doc Removes a user group from Amazon Quick Sight.
 -spec delete_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_group_request()) ->
     {ok, delete_group_response(), tuple()} |
     {error, any()} |
@@ -16540,9 +17292,9 @@ delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes all access scopes and authorized targets that are associated
-%% with a service from the QuickSight IAM Identity Center application.
+%% with a service from the Quick Sight IAM Identity Center application.
 %%
-%% This operation is only supported for QuickSight accounts that use IAM
+%% This operation is only supported for Quick Sight accounts that use IAM
 %% Identity Center.
 -spec delete_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), delete_identity_propagation_config_request()) ->
     {ok, delete_identity_propagation_config_response(), tuple()} |
@@ -16932,7 +17684,7 @@ delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the Amazon QuickSight user that is associated with the
+%% @doc Deletes the Amazon Quick Sight user that is associated with the
 %% identity of the
 %% IAM user or role that's making the call.
 %%
@@ -17113,9 +17865,9 @@ describe_account_custom_permission(Client, AwsAccountId, QueryMap, HeadersMap, O
 
 %% @doc Describes the customizations associated with the provided Amazon Web
 %% Services account and Amazon
-%% QuickSight namespace.
+%% Quick Sight namespace.
 %%
-%% The QuickSight console evaluates which
+%% The Quick Sight console evaluates which
 %% customizations to apply by running this API operation with the
 %% `Resolved' flag
 %% included.
@@ -17128,16 +17880,16 @@ describe_account_custom_permission(Client, AwsAccountId, QueryMap, HeadersMap, O
 %% at the top of the hierarchy.
 %% It has the potential to use all of the Amazon Web Services Regions and
 %% Amazon Web Services Services. When you
-%% subscribe to QuickSight, you choose one Amazon Web Services Region to use
+%% subscribe to Quick Sight, you choose one Amazon Web Services Region to use
 %% as your home Region.
-%% That's where your free SPICE capacity is located. You can use
-%% QuickSight in any
+%% That's where your free SPICE capacity is located. You can use Quick
+%% Sight in any
 %% supported Amazon Web Services Region.
 %%
-%% `Amazon Web Services Region' - You can sign in to QuickSight in any
+%% `Amazon Web Services Region' - You can sign in to Quick Sight in any
 %% Amazon Web Services Region. If
 %% you have a user directory, it resides in us-east-1, which is US East (N.
-%% Virginia). Generally speaking, these users have access to QuickSight in
+%% Virginia). Generally speaking, these users have access to Quick Sight in
 %% any
 %% Amazon Web Services Region, unless they are constrained to a namespace.
 %%
@@ -17157,7 +17909,7 @@ describe_account_custom_permission(Client, AwsAccountId, QueryMap, HeadersMap, O
 %% Configuring the CLI:
 %% https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html.
 %%
-%% `Namespace' - A QuickSight namespace is a partition that contains
+%% `Namespace' - A Quick Sight namespace is a partition that contains
 %% users and assets (data sources, datasets, dashboards, and so on). To
 %% access
 %% assets that are in a specific namespace, users and groups must also be
@@ -17168,7 +17920,7 @@ describe_account_custom_permission(Client, AwsAccountId, QueryMap, HeadersMap, O
 %% Web Services account
 %% and Amazon Web Services Region.
 %%
-%% `Applied customizations' - QuickSight customizations can apply to an
+%% `Applied customizations' - Quick Sight customizations can apply to an
 %% Amazon Web Services account or to a namespace.
 %% Settings that you apply to a namespace override settings that you apply to
 %% an
@@ -17214,7 +17966,7 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the settings that were used when your QuickSight
+%% @doc Describes the settings that were used when your Quick Sight
 %% subscription was first
 %% created in this Amazon Web Services account.
 -spec describe_account_settings(aws_client:aws_client(), binary() | list()) ->
@@ -17254,7 +18006,7 @@ describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Use the DescribeAccountSubscription operation to receive a
-%% description of an QuickSight account's subscription.
+%% description of an Quick Sight account's subscription.
 %%
 %% A successful API call returns an `AccountInfo' object that includes an
 %% account's name, subscription status, authentication type, edition, and
@@ -17282,6 +18034,84 @@ describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap)
 describe_account_subscription(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about an action connector, including
+%% its configuration, authentication settings, enabled actions, and current
+%% status.
+-spec describe_action_connector(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_action_connector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_connector_errors(), tuple()}.
+describe_action_connector(Client, ActionConnectorId, AwsAccountId)
+  when is_map(Client) ->
+    describe_action_connector(Client, ActionConnectorId, AwsAccountId, #{}, #{}).
+
+-spec describe_action_connector(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_action_connector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_connector_errors(), tuple()}.
+describe_action_connector(Client, ActionConnectorId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_action_connector(Client, ActionConnectorId, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_action_connector(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_action_connector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_connector_errors(), tuple()}.
+describe_action_connector(Client, ActionConnectorId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/action-connectors/", aws_util:encode_uri(ActionConnectorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the permissions configuration for an action connector,
+%% showing which users, groups, and namespaces have access and what
+%% operations they can perform.
+-spec describe_action_connector_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_action_connector_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_connector_permissions_errors(), tuple()}.
+describe_action_connector_permissions(Client, ActionConnectorId, AwsAccountId)
+  when is_map(Client) ->
+    describe_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, #{}, #{}).
+
+-spec describe_action_connector_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_action_connector_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_connector_permissions_errors(), tuple()}.
+describe_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_action_connector_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_action_connector_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_action_connector_permissions_errors(), tuple()}.
+describe_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/action-connectors/", aws_util:encode_uri(ActionConnectorId), "/permissions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -17419,10 +18249,11 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
 %% @doc Describes an existing export job.
 %%
 %% Poll job descriptions after a job starts to know the status of the job.
-%% When a job succeeds, a URL is provided to download the exported
-%% assets' data from. Download URLs are valid for five minutes after they
-%% are generated. You can call the `DescribeAssetBundleExportJob' API for
-%% a new download URL as needed.
+%% When a job
+%% succeeds, a URL is provided to download the exported assets' data
+%% from. Download URLs
+%% are valid for five minutes after they are generated. You can call the
+%% `DescribeAssetBundleExportJob' API for a new download URL as needed.
 %%
 %% Job descriptions are available for 14 days after the job starts.
 -spec describe_asset_bundle_export_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -17464,7 +18295,8 @@ describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, Q
 %% @doc Describes an existing import job.
 %%
 %% Poll job descriptions after starting a job to know when it has succeeded
-%% or failed. Job descriptions are available for 14 days after job starts.
+%% or failed. Job
+%% descriptions are available for 14 days after job starts.
 -spec describe_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
@@ -17698,10 +18530,10 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Opti
 %% @doc Provides a detailed description of the definition of a dashboard.
 %%
 %% If you do not need to know details about the content of a dashboard, for
-%% instance if you
-%% are trying to check the status of a recently created or updated dashboard,
+%% instance
+%% if you are trying to check the status of a recently created or updated
+%% dashboard,
 %% use the
-%%
 %% `DescribeDashboard'
 %% :
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_DescribeDashboard.html
@@ -17909,8 +18741,8 @@ describe_dashboards_q_a_configuration(Client, AwsAccountId, QueryMap, HeadersMap
 
 %% @doc Describes a dataset.
 %%
-%% This operation doesn't support datasets that include uploaded files as
-%% a source.
+%% This operation doesn't support datasets that include uploaded
+%% files as a source.
 -spec describe_data_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_data_set_response(), tuple()} |
     {error, any()} |
@@ -18098,8 +18930,8 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes a Amazon Q Business application that is linked to an
-%% QuickSight account.
+%% @doc Describes a Amazon Q Business application that is linked to an Quick
+%% Sight account.
 -spec describe_default_q_business_application(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_default_q_business_application_response(), tuple()} |
     {error, any()} |
@@ -18266,7 +19098,7 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns an Amazon QuickSight group's description and Amazon
+%% @doc Returns an Amazon Quick Sight group's description and Amazon
 %% Resource Name (ARN).
 -spec describe_group(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_group_response(), tuple()} |
@@ -18458,7 +19290,7 @@ describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes all customer managed key registrations in a QuickSight
+%% @doc Describes all customer managed key registrations in a Quick Sight
 %% account.
 -spec describe_key_registration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_key_registration_response(), tuple()} |
@@ -18574,7 +19406,7 @@ describe_q_personalization_configuration(Client, AwsAccountId, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the state of a QuickSight Q Search configuration.
+%% @doc Describes the state of a Quick Sight Q Search configuration.
 -spec describe_quick_sight_q_search_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_quick_sight_q_search_configuration_response(), tuple()} |
     {error, any()} |
@@ -19192,38 +20024,40 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates an embed URL that you can use to embed an Amazon QuickSight
-%% dashboard or visual in your website, without having to register any reader
-%% users.
+%% dashboard or
+%% visual in your website, without having to register any reader users.
 %%
-%% Before you use this action, make sure that you have configured the
-%% dashboards and permissions.
+%% Before you use this
+%% action, make sure that you have configured the dashboards and permissions.
 %%
 %% The following rules apply to the generated URL:
 %%
 %% It contains a temporary bearer token. It is valid for 5 minutes after it
-%% is generated. Once redeemed within this period, it cannot be re-used
-%% again.
+%% is
+%% generated. Once redeemed within this period, it cannot be re-used again.
 %%
 %% The URL validity period should not be confused with the actual session
 %% lifetime that can be customized using the
 %% ```
 %% SessionLifetimeInMinutes:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerateEmbedUrlForAnonymousUser.html#QS-GenerateEmbedUrlForAnonymousUser-request-SessionLifetimeInMinutes
-%% ''' parameter. The resulting user session is valid for 15
-%% minutes (minimum) to 10 hours (maximum). The default session duration is
-%% 10 hours.
+%% ''' parameter. The resulting user
+%% session is valid for 15 minutes (minimum) to 10 hours (maximum). The
+%% default
+%% session duration is 10 hours.
 %%
 %% You are charged only when the URL is used or there is interaction with
 %% Amazon QuickSight.
 %%
 %% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
-%% in the Amazon QuickSight User
-%% Guide.
+%% in
+%% the Amazon QuickSight User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
-%% interactive demo of the ways you can customize embedding, visit the Amazon
-%% QuickSight Developer Portal:
+%% interactive
+%% demo of the ways you can customize embedding, visit the Amazon QuickSight
+%% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec generate_embed_url_for_anonymous_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_anonymous_user_request()) ->
     {ok, generate_embed_url_for_anonymous_user_response(), tuple()} |
@@ -19259,22 +20093,21 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates an embed URL that you can use to embed an Amazon QuickSight
-%% experience in your website.
+%% experience
+%% in your website.
 %%
 %% This action can be used for any type of user registered in an Amazon
-%% QuickSight account.
-%% Before you use this action, make sure that you have configured the
-%% relevant Amazon QuickSight resource and permissions.
+%% QuickSight account. Before you use this action, make sure that you have
+%% configured the relevant Amazon QuickSight resource and permissions.
 %%
 %% The following rules apply to the generated URL:
 %%
 %% It contains a temporary bearer token. It is valid for 5 minutes after it
-%% is generated. Once redeemed within this period, it cannot be re-used
-%% again.
+%% is
+%% generated. Once redeemed within this period, it cannot be re-used again.
 %%
 %% The URL validity period should not be confused with the actual session
-%% lifetime
-%% that can be customized using the
+%% lifetime that can be customized using the
 %% ```
 %% SessionLifetimeInMinutes:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_GenerateEmbedUrlForRegisteredUser.html#QS-GenerateEmbedUrlForRegisteredUser-request-SessionLifetimeInMinutes
@@ -19288,12 +20121,13 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
-%% in the Amazon QuickSight User
-%% Guide.
+%% in
+%% the Amazon QuickSight User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
-%% interactive demo of the ways you can customize embedding, visit the Amazon
-%% QuickSight Developer Portal:
+%% interactive
+%% demo of the ways you can customize embedding, visit the Amazon QuickSight
+%% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec generate_embed_url_for_registered_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_request()) ->
     {ok, generate_embed_url_for_registered_user_response(), tuple()} |
@@ -19328,25 +20162,32 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Generates an embed URL that you can use to embed an QuickSight
-%% experience in your website.
+%% @doc Generates an embed URL that you can use to embed an Amazon Quick
+%% Sight experience in
+%% your website.
 %%
 %% This action can be used for any type of user that is registered in an
-%% QuickSight account that uses IAM Identity Center for authentication. This
-%% API requires identity-enhanced IAM Role sessions:
+%% Amazon Quick Sight account that uses IAM Identity Center for
+%% authentication. This API
+%% requires identity-enhanced IAM Role sessions:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-overview.html#types-identity-enhanced-iam-role-sessions
-%% for the authenticated user that the API call is being made for.
+%% for the authenticated
+%% user that the API call is being made for.
 %%
-%% This API uses trusted identity propagation:
+%% This API uses trusted identity
+%% propagation:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation.html
-%% to ensure that an end user is authenticated and receives the embed URL
-%% that is specific to that user. The IAM Identity Center application that
-%% the user has logged into needs to have trusted Identity Propagation
-%% enabled for QuickSight:
+%% to ensure that an end user is authenticated and receives the
+%% embed URL that is specific to that user. The IAM Identity Center
+%% application that the
+%% user has logged into needs to have trusted Identity Propagation enabled
+%% for Amazon Quick Sight:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-using-customermanagedapps-specify-trusted-apps.html
-%% with the scope value set to `quicksight:read'. Before you use this
-%% action, make sure that you have configured the relevant QuickSight
-%% resource and permissions.
+%% with the scope
+%% value set to `quicksight:read'. Before you use this action, make sure
+%% that
+%% you have configured the relevant Amazon Quick Sight resource and
+%% permissions.
 -spec generate_embed_url_for_registered_user_with_identity(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_with_identity_request()) ->
     {ok, generate_embed_url_for_registered_user_with_identity_response(), tuple()} |
     {error, any()} |
@@ -19381,15 +20222,18 @@ generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates a temporary session URL and authorization code(bearer
-%% token) that you can use to embed an QuickSight read-only dashboard in your
-%% website or application.
+%% token) that you can
+%% use to embed an Amazon Quick Sight read-only dashboard in your website or
+%% application.
 %%
 %% Before you use this command, make sure that you have configured the
-%% dashboards and permissions.
+%% dashboards and
+%% permissions.
 %%
 %% Currently, you can use `GetDashboardEmbedURL' only from the server,
-%% not from the user's browser. The following rules apply to the
-%% generated URL:
+%% not
+%% from the user's browser. The following rules apply to the generated
+%% URL:
 %%
 %% They must be used together.
 %%
@@ -19401,17 +20245,20 @@ generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input
 %% QuickSight.
 %%
 %% The resulting user session is valid for 15 minutes (default) up to 10
-%% hours (maximum). You can use the optional `SessionLifetimeInMinutes'
+%% hours
+%% (maximum). You can use the optional `SessionLifetimeInMinutes'
 %% parameter to customize session duration.
 %%
-%% For more information, see Embedding Analytics Using GetDashboardEmbedUrl:
+%% For more information, see Embedding Analytics
+%% Using GetDashboardEmbedUrl:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics-deprecated.html
 %% in the Amazon QuickSight User
 %% Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
-%% interactive demo of the ways you can customize embedding, visit the Amazon
-%% QuickSight Developer Portal:
+%% interactive
+%% demo of the ways you can customize embedding, visit the Amazon QuickSight
+%% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_dashboard_embed_url_response(), tuple()} |
@@ -19460,20 +20307,95 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the metadata of a flow, not including its definition
+%% specifying the steps.
+-spec get_flow_metadata(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_flow_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_flow_metadata_errors(), tuple()}.
+get_flow_metadata(Client, AwsAccountId, FlowId)
+  when is_map(Client) ->
+    get_flow_metadata(Client, AwsAccountId, FlowId, #{}, #{}).
+
+-spec get_flow_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_flow_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_flow_metadata_errors(), tuple()}.
+get_flow_metadata(Client, AwsAccountId, FlowId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_flow_metadata(Client, AwsAccountId, FlowId, QueryMap, HeadersMap, []).
+
+-spec get_flow_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_flow_metadata_output(), tuple()} |
+    {error, any()} |
+    {error, get_flow_metadata_errors(), tuple()}.
+get_flow_metadata(Client, AwsAccountId, FlowId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/flows/", aws_util:encode_uri(FlowId), "/metadata"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get permissions for a flow.
+-spec get_flow_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_flow_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, get_flow_permissions_errors(), tuple()}.
+get_flow_permissions(Client, AwsAccountId, FlowId)
+  when is_map(Client) ->
+    get_flow_permissions(Client, AwsAccountId, FlowId, #{}, #{}).
+
+-spec get_flow_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_flow_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, get_flow_permissions_errors(), tuple()}.
+get_flow_permissions(Client, AwsAccountId, FlowId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_flow_permissions(Client, AwsAccountId, FlowId, QueryMap, HeadersMap, []).
+
+-spec get_flow_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_flow_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, get_flow_permissions_errors(), tuple()}.
+get_flow_permissions(Client, AwsAccountId, FlowId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/flows/", aws_util:encode_uri(FlowId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Generates a session URL and authorization code that you can use to
 %% embed the Amazon
-%% QuickSight console in your web server code.
+%% Amazon Quick Sight console in your web server code.
 %%
-%% Use `GetSessionEmbedUrl' where
-%% you want to provide an authoring portal that allows users to create data
-%% sources,
-%% datasets, analyses, and dashboards. The users who access an embedded
-%% QuickSight console
-%% need belong to the author or admin security cohort. If you want to
-%% restrict permissions
-%% to some of these features, add a custom permissions profile to the user
-%% with the
-%%
+%% Use
+%% `GetSessionEmbedUrl' where you want to provide an authoring portal
+%% that
+%% allows users to create data sources, datasets, analyses, and dashboards.
+%% The users who
+%% access an embedded Amazon Quick Sight console need belong to the author or
+%% admin security
+%% cohort. If you want to restrict permissions to some of these features, add
+%% a custom
+%% permissions profile to the user with the
 %% ```
 %% UpdateUser:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_UpdateUser.html
@@ -19481,13 +20403,13 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 %% ```
 %% RegisterUser:
 %% https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RegisterUser.html
-%% '''
-%% API operation to add a new user with a custom permission profile attached.
-%% For more
-%% information, see the following sections in the Amazon QuickSight User
-%% Guide:
+%% ''' API operation to add a new user with a custom
+%% permission profile attached. For more information, see the following
+%% sections in the
+%% Amazon QuickSight User Guide:
 %%
-%% Embedding Analytics:
+%% Embedding
+%% Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %%
 %% Customizing Access to the Amazon QuickSight Console:
@@ -19534,7 +20456,53 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists Amazon QuickSight analyses that exist in the specified Amazon
+%% @doc Lists all action connectors in the specified Amazon Web Services
+%% account.
+%%
+%% Returns summary information for each connector including its name, type,
+%% creation time, and status.
+-spec list_action_connectors(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_action_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_action_connectors_errors(), tuple()}.
+list_action_connectors(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_action_connectors(Client, AwsAccountId, #{}, #{}).
+
+-spec list_action_connectors(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_action_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_action_connectors_errors(), tuple()}.
+list_action_connectors(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_action_connectors(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_action_connectors(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_action_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_action_connectors_errors(), tuple()}.
+list_action_connectors(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/action-connectors"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists Amazon Quick Sight analyses that exist in the specified Amazon
 %% Web Services account.
 -spec list_analyses(aws_client:aws_client(), binary() | list()) ->
     {ok, list_analyses_response(), tuple()} |
@@ -19580,10 +20548,12 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %% @doc Lists all asset bundle export jobs that have been taken place in the
 %% last 14 days.
 %%
-%% Jobs created more than 14 days ago are deleted forever and are not
-%% returned. If you are using the same job ID for multiple jobs,
-%% `ListAssetBundleExportJobs' only returns the most recent job that uses
-%% the repeated job ID.
+%% Jobs
+%% created more than 14 days ago are deleted forever and are not returned. If
+%% you are using
+%% the same job ID for multiple jobs, `ListAssetBundleExportJobs' only
+%% returns the
+%% most recent job that uses the repeated job ID.
 -spec list_asset_bundle_export_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_asset_bundle_export_jobs_response(), tuple()} |
     {error, any()} |
@@ -19628,10 +20598,12 @@ list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Option
 %% @doc Lists all asset bundle import jobs that have taken place in the last
 %% 14 days.
 %%
-%% Jobs created more than 14 days ago are deleted forever and are not
-%% returned. If you are using the same job ID for multiple jobs,
-%% `ListAssetBundleImportJobs' only returns the most recent job that uses
-%% the repeated job ID.
+%% Jobs
+%% created more than 14 days ago are deleted forever and are not returned. If
+%% you are using
+%% the same job ID for multiple jobs, `ListAssetBundleImportJobs' only
+%% returns the
+%% most recent job that uses the repeated job ID.
 -spec list_asset_bundle_import_jobs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_asset_bundle_import_jobs_response(), tuple()} |
     {error, any()} |
@@ -19673,7 +20645,7 @@ list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all brands in an QuickSight account.
+%% @doc Lists all brands in an Quick Sight account.
 -spec list_brands(aws_client:aws_client(), binary() | list()) ->
     {ok, list_brands_response(), tuple()} |
     {error, any()} |
@@ -19757,7 +20729,7 @@ list_custom_permissions(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the versions of the dashboards in the QuickSight
+%% @doc Lists all the versions of the dashboards in the Amazon Quick Sight
 %% subscription.
 -spec list_dashboard_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_dashboard_versions_response(), tuple()} |
@@ -19843,7 +20815,8 @@ list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of the datasets belonging to the current Amazon Web
-%% Services account in an Amazon Web Services Region.
+%% Services account in an
+%% Amazon Web Services Region.
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:region:aws-account-id:dataset/*'.
@@ -19913,6 +20886,48 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
 list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists flows in an Amazon Web Services account.
+-spec list_flows(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_flows_output(), tuple()} |
+    {error, any()} |
+    {error, list_flows_errors(), tuple()}.
+list_flows(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_flows(Client, AwsAccountId, #{}, #{}).
+
+-spec list_flows(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_flows_output(), tuple()} |
+    {error, any()} |
+    {error, list_flows_errors(), tuple()}.
+list_flows(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_flows(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_flows(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_flows_output(), tuple()} |
+    {error, any()} |
+    {error, list_flows_errors(), tuple()}.
+list_flows(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/flows"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -20100,7 +21115,7 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, Hea
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all user groups in Amazon QuickSight.
+%% @doc Lists all user groups in Amazon Quick Sight.
 -spec list_groups(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_groups_response(), tuple()} |
     {error, any()} |
@@ -20143,7 +21158,7 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the
-%% IAM policy assignments in the current Amazon QuickSight
+%% IAM policy assignments in the current Amazon Quick Sight
 %% account.
 -spec list_iam_policy_assignments(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_iam_policy_assignments_response(), tuple()} |
@@ -20235,10 +21250,10 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all services and authorized targets that the QuickSight IAM
+%% @doc Lists all services and authorized targets that the Quick Sight IAM
 %% Identity Center application can access.
 %%
-%% This operation is only supported for QuickSight accounts that use IAM
+%% This operation is only supported for Quick Sight accounts that use IAM
 %% Identity Center.
 -spec list_identity_propagation_configs(aws_client:aws_client(), binary() | list()) ->
     {ok, list_identity_propagation_configs_response(), tuple()} |
@@ -20529,8 +21544,8 @@ list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the versions of the templates in the current Amazon
-%% QuickSight account.
+%% @doc Lists all the versions of the templates in the current Amazon Quick
+%% Sight account.
 -spec list_template_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_template_versions_response(), tuple()} |
     {error, any()} |
@@ -20572,7 +21587,7 @@ list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the templates in the current Amazon QuickSight account.
+%% @doc Lists all the templates in the current Amazon Quick Sight account.
 -spec list_templates(aws_client:aws_client(), binary() | list()) ->
     {ok, list_templates_response(), tuple()} |
     {error, any()} |
@@ -20858,8 +21873,8 @@ list_topics(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Amazon QuickSight groups that an Amazon QuickSight user is
-%% a member of.
+%% @doc Lists the Amazon Quick Sight groups that an Amazon Quick Sight user
+%% is a member of.
 -spec list_user_groups(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_user_groups_response(), tuple()} |
     {error, any()} |
@@ -20901,7 +21916,7 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all of the Amazon QuickSight users belonging to
+%% @doc Returns a list of all of the Amazon Quick Sight users belonging to
 %% this account.
 -spec list_users(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_users_response(), tuple()} |
@@ -21076,17 +22091,17 @@ put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon QuickSight user whose identity is associated with
+%% @doc Creates an Amazon Quick Sight user whose identity is associated with
 %% the Identity and Access Management (IAM) identity or role specified in the
 %% request.
 %%
-%% When you register a new user from the QuickSight API, QuickSight generates
-%% a registration URL. The user accesses this registration URL to create
-%% their account. QuickSight doesn't send a registration email to users
-%% who are registered from the QuickSight API. If you want new users to
-%% receive a registration email, then add those users in the QuickSight
-%% console. For more information on registering a new user in the QuickSight
-%% console, see Inviting users to access QuickSight:
+%% When you register a new user from the Quick Sight API, Quick Sight
+%% generates a registration URL. The user accesses this registration URL to
+%% create their account. Quick Sight doesn't send a registration email to
+%% users who are registered from the Quick Sight API. If you want new users
+%% to receive a registration email, then add those users in the Quick Sight
+%% console. For more information on registering a new user in the Quick Sight
+%% console, see Inviting users to access Quick Sight:
 %% https://docs.aws.amazon.com/quicksight/latest/user/managing-users.html#inviting-users.
 -spec register_user(aws_client:aws_client(), binary() | list(), binary() | list(), register_user_request()) ->
     {ok, register_user_response(), tuple()} |
@@ -21156,6 +22171,45 @@ restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for action connectors in the specified Amazon Web Services
+%% account using filters.
+%%
+%% You can search by connector name, type, or user permissions.
+-spec search_action_connectors(aws_client:aws_client(), binary() | list(), search_action_connectors_request()) ->
+    {ok, search_action_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, search_action_connectors_errors(), tuple()}.
+search_action_connectors(Client, AwsAccountId, Input) ->
+    search_action_connectors(Client, AwsAccountId, Input, []).
+
+-spec search_action_connectors(aws_client:aws_client(), binary() | list(), search_action_connectors_request(), proplists:proplist()) ->
+    {ok, search_action_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, search_action_connectors_errors(), tuple()}.
+search_action_connectors(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/action-connectors"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches for analyses that belong to the user specified in the
 %% filter.
 %%
@@ -21197,7 +22251,8 @@ search_analyses(Client, AwsAccountId, Input0, Options0) ->
 %% @doc Searches for dashboards that belong to a user.
 %%
 %% This operation is eventually consistent. The results are best effort and
-%% may not reflect very recent updates and changes.
+%% may not
+%% reflect very recent updates and changes.
 -spec search_dashboards(aws_client:aws_client(), binary() | list(), search_dashboards_request()) ->
     {ok, search_dashboards_response(), tuple()} |
     {error, any()} |
@@ -21232,7 +22287,8 @@ search_dashboards(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use the `SearchDataSets' operation to search for datasets that
-%% belong to an account.
+%% belong to an
+%% account.
 -spec search_data_sets(aws_client:aws_client(), binary() | list(), search_data_sets_request()) ->
     {ok, search_data_sets_response(), tuple()} |
     {error, any()} |
@@ -21267,7 +22323,8 @@ search_data_sets(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use the `SearchDataSources' operation to search for data sources
-%% that belong to an account.
+%% that
+%% belong to an account.
 -spec search_data_sources(aws_client:aws_client(), binary() | list(), search_data_sources_request()) ->
     {ok, search_data_sources_response(), tuple()} |
     {error, any()} |
@@ -21282,6 +22339,40 @@ search_data_sources(Client, AwsAccountId, Input) ->
 search_data_sources(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/data-sources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Search for the flows in an Amazon Web Services account.
+-spec search_flows(aws_client:aws_client(), binary() | list(), search_flows_input()) ->
+    {ok, search_flows_output(), tuple()} |
+    {error, any()} |
+    {error, search_flows_errors(), tuple()}.
+search_flows(Client, AwsAccountId, Input) ->
+    search_flows(Client, AwsAccountId, Input, []).
+
+-spec search_flows(aws_client:aws_client(), binary() | list(), search_flows_input(), proplists:proplist()) ->
+    {ok, search_flows_output(), tuple()} |
+    {error, any()} |
+    {error, search_flows_errors(), tuple()}.
+search_flows(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/flows/searchFlows"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -21336,7 +22427,7 @@ search_folders(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use the `SearchGroups' operation to search groups in a specified
-%% QuickSight namespace using the supplied filters.
+%% Quick Sight namespace using the supplied filters.
 -spec search_groups(aws_client:aws_client(), binary() | list(), binary() | list(), search_groups_request()) ->
     {ok, search_groups_response(), tuple()} |
     {error, any()} |
@@ -21408,13 +22499,16 @@ search_topics(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Starts an Asset Bundle export job.
 %%
-%% An Asset Bundle export job exports specified QuickSight assets. You can
-%% also choose to export any asset dependencies in the same job. Export jobs
-%% run asynchronously and can be polled with a
-%% `DescribeAssetBundleExportJob' API call. When a job is successfully
-%% completed, a download URL that contains the exported assets is returned.
-%% The URL is valid for 5 minutes and can be refreshed with a
-%% `DescribeAssetBundleExportJob' API call. Each QuickSight account can
+%% An Asset Bundle export job exports specified Amazon Quick Sight assets.
+%% You can also choose to
+%% export any asset dependencies in the same job. Export jobs run
+%% asynchronously and can be
+%% polled with a `DescribeAssetBundleExportJob' API call. When a job is
+%% successfully completed, a download URL that contains the exported assets
+%% is returned. The
+%% URL is valid for 5 minutes and can be refreshed with a
+%% `DescribeAssetBundleExportJob' API call. Each Amazon Quick Sight
+%% account can
 %% run up to 5 export jobs concurrently.
 %%
 %% The API caller must have the necessary permissions in their IAM role to
@@ -21454,17 +22548,22 @@ start_asset_bundle_export_job(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Starts an Asset Bundle import job.
 %%
-%% An Asset Bundle import job imports specified QuickSight assets into an
-%% QuickSight account. You can also choose to import a naming prefix and
-%% specified configuration overrides. The assets that are contained in the
-%% bundle file that you provide are used to create or update a new or
-%% existing asset in your QuickSight account. Each QuickSight account can run
-%% up to 5 import jobs concurrently.
+%% An Asset Bundle import job imports specified Amazon Quick Sight assets
+%% into an Amazon Quick
+%% Sight account. You can also choose to import a naming prefix and specified
+%% configuration
+%% overrides. The assets that are contained in the bundle file that you
+%% provide are used to
+%% create or update a new or existing asset in your Amazon Quick Sight
+%% account. Each Amazon
+%% Quick Sight account can run up to 5 import jobs concurrently.
 %%
 %% The API caller must have the necessary `&quot;create&quot;',
-%% `&quot;describe&quot;', and `&quot;update&quot;' permissions in
-%% their IAM role to access each resource type that is contained in the
-%% bundle file before the resources can be imported.
+%% `&quot;describe&quot;',
+%% and `&quot;update&quot;' permissions in their IAM role to access each
+%% resource type that is contained in the bundle file before the resources
+%% can be
+%% imported.
 -spec start_asset_bundle_import_job(aws_client:aws_client(), binary() | list(), start_asset_bundle_import_job_request()) ->
     {ok, start_asset_bundle_import_job_response(), tuple()} |
     {error, any()} |
@@ -21521,14 +22620,14 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% StartDashboardSnapshotJob API throttling
 %%
-%% QuickSight utilizes API throttling to create a more consistent user
+%% Quick Sight utilizes API throttling to create a more consistent user
 %% experience within a time span for customers when they call the
 %% `StartDashboardSnapshotJob'. By default, 12 jobs can run
 %% simlutaneously in one Amazon Web Services account and users can submit up
 %% 10 API requests per second before an account is throttled. If an
 %% overwhelming number of API requests are made by the same user in a short
-%% period of time, QuickSight throttles the API calls to maintin an optimal
-%% experience and reliability for all QuickSight users.
+%% period of time, Quick Sight throttles the API calls to maintin an optimal
+%% experience and reliability for all Quick Sight users.
 %%
 %% Common throttling scenarios
 %%
@@ -21543,8 +22642,8 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 %% before you resubmit the new job.
 %%
 %% A large number of API requests are submitted on an Amazon Web Services
-%% account. When a user makes more than 10 API calls to the QuickSight API in
-%% one second, a `ThrottlingException' is returned.
+%% account. When a user makes more than 10 API calls to the Quick Sight API
+%% in one second, a `ThrottlingException' is returned.
 %%
 %% If your use case requires a higher throttling limit, contact your account
 %% admin or Amazon Web ServicesSupport: http://aws.amazon.com/contact-us/ to
@@ -21556,7 +22655,7 @@ start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
 %% degree of frequency and parallelism of API calls as much as you can to
 %% avoid throttling. You can also perform a timing test to calculate an
 %% estimate for the total processing time of your projected load that stays
-%% within the throttling limits of the QuickSight APIs. For example, if your
+%% within the throttling limits of the Quick Sight APIs. For example, if your
 %% projected traffic is 100 snapshot jobs before 12:00 PM per day, start 12
 %% jobs in parallel and measure the amount of time it takes to proccess all
 %% 12 jobs. Once you obtain the result, multiply the duration by 9, for
@@ -21620,12 +22719,12 @@ start_dashboard_snapshot_job(Client, AwsAccountId, DashboardId, Input0, Options0
 %% Only one job can run simultaneously in a given schedule. Repeated requests
 %% are skipped with a `202' HTTP status code.
 %%
-%% For more information, see Scheduling and sending QuickSight reports by
-%% email:
+%% For more information, see Scheduling and sending Amazon Quick Sight
+%% reports by email:
 %% https://docs.aws.amazon.com/quicksight/latest/user/sending-reports.html
-%% and Configuring email report settings for a QuickSight dashboard:
+%% and Configuring email report settings for a Amazon Quick Sight dashboard:
 %% https://docs.aws.amazon.com/quicksight/latest/user/email-reports-from-dashboard.html
-%% in the Amazon QuickSight User Guide.
+%% in the Amazon Quick Sight User Guide.
 -spec start_dashboard_snapshot_job_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_dashboard_snapshot_job_schedule_request()) ->
     {ok, start_dashboard_snapshot_job_schedule_response(), tuple()} |
     {error, any()} |
@@ -21659,8 +22758,9 @@ start_dashboard_snapshot_job_schedule(Client, AwsAccountId, DashboardId, Schedul
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Assigns one or more tags (key-value pairs) to the specified
-%% QuickSight resource.
+%% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
+%% Quick Sight
+%% resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
 %% them to
@@ -21676,20 +22776,21 @@ start_dashboard_snapshot_job_schedule(Client, AwsAccountId, DashboardId, Schedul
 %% specify
 %% replaces the previous value for that tag.
 %%
-%% You can associate as many as 50 tags with a resource. QuickSight supports
-%% tagging on data
-%% set, data source, dashboard, template, topic, and user.
+%% You can associate as many as 50 tags with a resource. Amazon Quick Sight
+%% supports
+%% tagging on data set, data source, dashboard, template, topic, and user.
 %%
-%% Tagging for QuickSight works in a similar way to tagging for other Amazon
-%% Web Services services, except for
-%% the following:
+%% Tagging for Amazon Quick Sight works in a similar way to tagging for other
+%% Amazon Web Services services, except for the following:
 %%
-%% Tags are used to track costs for users in QuickSight. You can't tag
-%% other resources that QuickSight costs are based on, such as storage
+%% Tags are used to track costs for users in Amazon Quick Sight. You
+%% can't
+%% tag other resources that Amazon Quick Sight costs are based on, such as
+%% storage
 %% capacoty (SPICE), session usage, alert consumption, or reporting units.
 %%
-%% QuickSight doesn't currently support the tag editor for Resource
-%% Groups.
+%% Amazon Quick Sight doesn't currently support the tag editor for
+%% Resource Groups.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -21792,13 +22893,13 @@ update_account_custom_permission(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates Amazon QuickSight customizations.
+%% @doc Updates Amazon Quick Sight customizations.
 %%
 %% Currently, the only customization that you can use is a theme.
 %%
 %% You can use customizations for your Amazon Web Services account or, if you
 %% specify a namespace, for a
-%% QuickSight namespace instead. Customizations that apply to a namespace
+%% Quick Sight namespace instead. Customizations that apply to a namespace
 %% override
 %% customizations that apply to an Amazon Web Services account. To find out
 %% which customizations apply, use
@@ -21837,7 +22938,7 @@ update_account_customization(Client, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the Amazon QuickSight settings in your Amazon Web Services
+%% @doc Updates the Amazon Quick Sight settings in your Amazon Web Services
 %% account.
 -spec update_account_settings(aws_client:aws_client(), binary() | list(), update_account_settings_request()) ->
     {ok, update_account_settings_response(), tuple()} |
@@ -21872,7 +22973,83 @@ update_account_settings(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an analysis in Amazon QuickSight
+%% @doc Updates an existing action connector with new configuration details,
+%% authentication settings, or enabled actions.
+%%
+%% You can modify the connector's name, description, authentication
+%% configuration, and which actions are enabled. For more information,
+%% [https://docs.aws.amazon.com/quicksuite/latest/userguide/quick-action-auth.html].
+-spec update_action_connector(aws_client:aws_client(), binary() | list(), binary() | list(), update_action_connector_request()) ->
+    {ok, update_action_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_action_connector_errors(), tuple()}.
+update_action_connector(Client, ActionConnectorId, AwsAccountId, Input) ->
+    update_action_connector(Client, ActionConnectorId, AwsAccountId, Input, []).
+
+-spec update_action_connector(aws_client:aws_client(), binary() | list(), binary() | list(), update_action_connector_request(), proplists:proplist()) ->
+    {ok, update_action_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_action_connector_errors(), tuple()}.
+update_action_connector(Client, ActionConnectorId, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/action-connectors/", aws_util:encode_uri(ActionConnectorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the permissions for an action connector by granting or
+%% revoking access for specific users and groups.
+%%
+%% You can control who can view, use, or manage the action connector.
+-spec update_action_connector_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_action_connector_permissions_request()) ->
+    {ok, update_action_connector_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_action_connector_permissions_errors(), tuple()}.
+update_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, Input) ->
+    update_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, Input, []).
+
+-spec update_action_connector_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_action_connector_permissions_request(), proplists:proplist()) ->
+    {ok, update_action_connector_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_action_connector_permissions_errors(), tuple()}.
+update_action_connector_permissions(Client, ActionConnectorId, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/action-connectors/", aws_util:encode_uri(ActionConnectorId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an analysis in Amazon Quick Sight
 -spec update_analysis(aws_client:aws_client(), binary() | list(), binary() | list(), update_analysis_request()) ->
     {ok, update_analysis_response(), tuple()} |
     {error, any()} |
@@ -22117,8 +23294,9 @@ update_custom_permissions(Client, AwsAccountId, CustomPermissionsName, Input0, O
 %% @doc Updates a dashboard in an Amazon Web Services account.
 %%
 %% Updating a Dashboard creates a new dashboard version but does not
-%% immediately publish
-%% the new version. You can update the published version of a dashboard by
+%% immediately
+%% publish the new version. You can update the published version of a
+%% dashboard by
 %% using the
 %% ```
 %% UpdateDashboardPublishedVersion:
@@ -22295,8 +23473,8 @@ update_dashboards_q_a_configuration(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Updates a dataset.
 %%
-%% This operation doesn't support datasets that include uploaded files as
-%% a source. Partial updates are not supported by this operation.
+%% This operation doesn't support datasets that include uploaded files
+%% as a source. Partial updates are not supported by this operation.
 -spec update_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_request()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |
@@ -22435,8 +23613,8 @@ update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Optio
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a Amazon Q Business application that is linked to a
-%% QuickSight account.
+%% @doc Updates a Amazon Q Business application that is linked to a Quick
+%% Sight account.
 -spec update_default_q_business_application(aws_client:aws_client(), binary() | list(), update_default_q_business_application_request()) ->
     {ok, update_default_q_business_application_response(), tuple()} |
     {error, any()} |
@@ -22469,6 +23647,40 @@ update_default_q_business_application(Client, AwsAccountId, Input0, Options0) ->
                      {<<"namespace">>, <<"Namespace">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates permissions against principals on a flow.
+-spec update_flow_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_permissions_input()) ->
+    {ok, update_flow_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, update_flow_permissions_errors(), tuple()}.
+update_flow_permissions(Client, AwsAccountId, FlowId, Input) ->
+    update_flow_permissions(Client, AwsAccountId, FlowId, Input, []).
+
+-spec update_flow_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_flow_permissions_input(), proplists:proplist()) ->
+    {ok, update_flow_permissions_output(), tuple()} |
+    {error, any()} |
+    {error, update_flow_permissions_errors(), tuple()}.
+update_flow_permissions(Client, AwsAccountId, FlowId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/flows/", aws_util:encode_uri(FlowId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the name of a folder.
@@ -22613,9 +23825,9 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates services and authorized targets to configure what the
-%% QuickSight IAM Identity Center application can access.
+%% Quick Sight IAM Identity Center application can access.
 %%
-%% This operation is only supported for QuickSight accounts using IAM
+%% This operation is only supported for Quick Sight accounts using IAM
 %% Identity Center
 -spec update_identity_propagation_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_identity_propagation_config_request()) ->
     {ok, update_identity_propagation_config_response(), tuple()} |
@@ -22690,7 +23902,7 @@ update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a customer managed key in a QuickSight account.
+%% @doc Updates a customer managed key in a Quick Sight account.
 -spec update_key_registration(aws_client:aws_client(), binary() | list(), update_key_registration_request()) ->
     {ok, update_key_registration_response(), tuple()} |
     {error, any()} |
@@ -22725,35 +23937,37 @@ update_key_registration(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
-%% This API controls public sharing settings for your entire QuickSight
-%% account, affecting data security and access.
+%% This API controls public sharing settings for your entire Quick Sight
+%% account, affecting
+%% data security and access.
 %%
 %% When you enable public sharing:
 %%
 %% Dashboards can be shared publicly
 %%
-%% This setting affects your entire Amazon Web Services account and all
-%% QuickSight users
+%% This setting affects your entire Amazon Web Services account and all Quick
+%% Sight
+%% users
 %%
-%% Before proceeding: Ensure you understand the security implications and
-%% have proper IAM permissions configured.
+%% Before proceeding: Ensure you understand the
+%% security implications and have proper IAM permissions
+%% configured.
 %%
 %% Use the `UpdatePublicSharingSettings' operation to turn on or turn off
 %% the
-%% public sharing settings of an QuickSight dashboard.
+%% public sharing settings of an Amazon Quick Sight dashboard.
 %%
-%% To use this operation, turn on session capacity pricing for your
-%% QuickSight
+%% To use this operation, turn on session capacity pricing for your Amazon
+%% Quick Sight
 %% account.
 %%
 %% Before you can turn on public sharing on your account, make sure to give
-%% public sharing
-%% permissions to an administrative user in the Identity and Access
-%% Management (IAM)
-%% console. For more information on using IAM with QuickSight, see
-%% Using QuickSight with IAM:
+%% public
+%% sharing permissions to an administrative user in the Identity and Access
+%% Management (IAM) console. For more information on using IAM with Amazon
+%% Quick Sight, see Using QuickSight with IAM:
 %% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html
-%% in the QuickSight
+%% in the Amazon Quick Sight
 %% User Guide.
 -spec update_public_sharing_settings(aws_client:aws_client(), binary() | list(), update_public_sharing_settings_request()) ->
     {ok, update_public_sharing_settings_response(), tuple()} |
@@ -22822,7 +24036,7 @@ update_q_personalization_configuration(Client, AwsAccountId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the state of a QuickSight Q Search configuration.
+%% @doc Updates the state of a Quick Sight Q Search configuration.
 -spec update_quick_sight_q_search_configuration(aws_client:aws_client(), binary() | list(), update_quick_sight_q_search_configuration_request()) ->
     {ok, update_quick_sight_q_search_configuration_response(), tuple()} |
     {error, any()} |
@@ -22924,7 +24138,7 @@ update_role_custom_permission(Client, AwsAccountId, Namespace, Role, Input0, Opt
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the SPICE capacity configuration for a QuickSight account.
+%% @doc Updates the SPICE capacity configuration for a Quick Sight account.
 -spec update_s_p_i_c_e_capacity_configuration(aws_client:aws_client(), binary() | list(), update_s_p_i_c_e_capacity_configuration_request()) ->
     {ok, update_s_p_i_c_e_capacity_configuration_response(), tuple()} |
     {error, any()} |
@@ -22958,7 +24172,7 @@ update_s_p_i_c_e_capacity_configuration(Client, AwsAccountId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a template from an existing Amazon QuickSight analysis or
+%% @doc Updates a template from an existing Amazon Quick Sight analysis or
 %% another template.
 -spec update_template(aws_client:aws_client(), binary() | list(), binary() | list(), update_template_request()) ->
     {ok, update_template_response(), tuple()} |
@@ -23309,7 +24523,7 @@ update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an Amazon QuickSight user.
+%% @doc Updates an Amazon Quick Sight user.
 -spec update_user(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_user_request()) ->
     {ok, update_user_response(), tuple()} |
     {error, any()} |
