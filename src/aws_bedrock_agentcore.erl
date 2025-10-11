@@ -174,7 +174,9 @@
 %% invoke_code_interpreter_request() :: #{
 %%   <<"arguments">> => tool_arguments(),
 %%   <<"name">> := list(any()),
-%%   <<"sessionId">> => string()
+%%   <<"sessionId">> => string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
 %% }
 -type invoke_code_interpreter_request() :: #{binary() => any()}.
 
@@ -263,7 +265,9 @@
 %% Example:
 %% stop_browser_session_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"sessionId">> := string()
+%%   <<"sessionId">> := string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
 %% }
 -type stop_browser_session_request() :: #{binary() => any()}.
 
@@ -352,7 +356,9 @@
 %% Example:
 %% stop_code_interpreter_session_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"sessionId">> := string()
+%%   <<"sessionId">> := string(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
 %% }
 -type stop_code_interpreter_session_request() :: #{binary() => any()}.
 
@@ -379,6 +385,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"name">> => string(),
 %%   <<"sessionTimeoutSeconds">> => integer(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()],
 %%   <<"viewPort">> => view_port()
 %% }
 -type start_browser_session_request() :: #{binary() => any()}.
@@ -480,7 +488,9 @@
 %% start_code_interpreter_session_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"name">> => string(),
-%%   <<"sessionTimeoutSeconds">> => integer()
+%%   <<"sessionTimeoutSeconds">> => integer(),
+%%   <<"traceId">> => [string()],
+%%   <<"traceParent">> => [string()]
 %% }
 -type start_code_interpreter_session_request() :: #{binary() => any()}.
 
@@ -1263,7 +1273,7 @@ batch_create_memory_records(Client, MemoryId, Input) ->
 batch_create_memory_records(Client, MemoryId, Input0, Options0) ->
     Method = post,
     Path = ["/memories/", aws_util:encode_uri(MemoryId), "/memoryRecords/batchCreate"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1375,7 +1385,7 @@ create_event(Client, MemoryId, Input) ->
 create_event(Client, MemoryId, Input0, Options0) ->
     Method = post,
     Path = ["/memories/", aws_util:encode_uri(MemoryId), "/events"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1930,7 +1940,11 @@ get_workload_access_token_for_user_id(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-oauth.html.
 %%
 %% To use this operation, you must have the
-%% `bedrock-agentcore:InvokeAgentRuntime' permission.
+%% `bedrock-agentcore:InvokeAgentRuntime' permission. If you are making a
+%% call to `InvokeAgentRuntime' on behalf of a user ID with the
+%% `X-Amzn-Bedrock-AgentCore-Runtime-User-Id' header, You require
+%% permissions to both actions (`bedrock-agentcore:InvokeAgentRuntime'
+%% and `bedrock-agentcore:InvokeAgentRuntimeForUser').
 -spec invoke_agent_runtime(aws_client:aws_client(), binary() | list(), invoke_agent_runtime_request()) ->
     {ok, invoke_agent_runtime_response(), tuple()} |
     {error, any()} |
@@ -2044,7 +2058,9 @@ invoke_code_interpreter(Client, CodeInterpreterIdentifier, Input0, Options0) ->
                | Options2],
 
     HeadersMapping = [
-                       {<<"x-amzn-code-interpreter-session-id">>, <<"sessionId">>}
+                       {<<"x-amzn-code-interpreter-session-id">>, <<"sessionId">>},
+                       {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
+                       {<<"traceparent">>, <<"traceParent">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -2422,8 +2438,11 @@ start_browser_session(Client, BrowserIdentifier, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
+                       {<<"traceparent">>, <<"traceParent">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -2475,8 +2494,11 @@ start_code_interpreter_session(Client, CodeInterpreterIdentifier, Input0, Option
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
+                       {<<"traceparent">>, <<"traceParent">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -2523,8 +2545,11 @@ stop_browser_session(Client, BrowserIdentifier, Input0, Options0) ->
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
+                       {<<"traceparent">>, <<"traceParent">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -2574,8 +2599,11 @@ stop_code_interpreter_session(Client, CodeInterpreterIdentifier, Input0, Options
                {append_sha256_content_hash, false}
                | Options2],
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
+                       {<<"traceparent">>, <<"traceParent">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

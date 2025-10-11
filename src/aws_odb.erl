@@ -8,7 +8,7 @@
 %% You can migrate your Oracle Exadata workloads, establish low-latency
 %% connectivity with applications running on Amazon Web Services, and
 %% integrate with Amazon Web Services services. For example, you can run
-%% application servers in a virtual private cloud (VPC) and access an Oracle
+%% application servers in a Virtual Private Cloud (VPC) and access an Oracle
 %% Exadata system running in Oracle Database@Amazon Web Services. You can get
 %% started with Oracle Database@Amazon Web Services by using the familiar
 %% Amazon Web Services Management Console, APIs, or CLI.
@@ -20,18 +20,19 @@
 %% techniques such as polling or callback functions to determine when a
 %% command has been applied. The reference structure is as follows.
 %%
-%% In this preview release documentation, the links in the &quot;See
-%% Also&quot; sections do not work.
-%%
 %% Oracle Database@Amazon Web Services API Reference
 %%
-%% For the alphabetical list of API actions, see .
+%% For the alphabetical list of API actions, see API Actions:
+%% https://docs.aws.amazon.com/odb/latest/APIReference/API_Operations.html.
 %%
-%% For the alphabetical list of data types, see .
+%% For the alphabetical list of data types, see Data Types:
+%% https://docs.aws.amazon.com/odb/latest/APIReference/API_Types.html.
 %%
-%% For a list of common parameters, see `CommonParameters'.
+%% For a list of common query parameters, see Common Parameters:
+%% https://docs.aws.amazon.com/odb/latest/APIReference/CommonParameters.html.
 %%
-%% For descriptions of the error codes, see `CommonErrors'.
+%% For descriptions of the error codes, see Common Errors:
+%% https://docs.aws.amazon.com/odb/latest/APIReference/CommonErrors.html.
 -module(aws_odb).
 
 -export([accept_marketplace_registration/2,
@@ -113,7 +114,9 @@
          update_cloud_exadata_infrastructure/2,
          update_cloud_exadata_infrastructure/3,
          update_odb_network/2,
-         update_odb_network/3]).
+         update_odb_network/3,
+         update_odb_peering_connection/2,
+         update_odb_peering_connection/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -443,6 +446,14 @@
 -type zero_etl_access() :: #{binary() => any()}.
 
 %% Example:
+%% update_odb_peering_connection_input() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"peerNetworkCidrsToBeAdded">> => list(string()),
+%%   <<"peerNetworkCidrsToBeRemoved">> => list(string())
+%% }
+-type update_odb_peering_connection_input() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"tagKeys">> := list(string())
 %% }
@@ -516,6 +527,7 @@
 %%   <<"odbPeeringConnectionId">> => string(),
 %%   <<"odbPeeringConnectionType">> => [string()],
 %%   <<"peerNetworkArn">> => [string()],
+%%   <<"peerNetworkCidrs">> => list(string()),
 %%   <<"percentProgress">> => [float()],
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()]
@@ -670,6 +682,7 @@
 %%   <<"odbPeeringConnectionId">> => string(),
 %%   <<"odbPeeringConnectionType">> => [string()],
 %%   <<"peerNetworkArn">> => [string()],
+%%   <<"peerNetworkCidrs">> => list(string()),
 %%   <<"percentProgress">> => [float()],
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()]
@@ -1356,6 +1369,15 @@
 -type maintenance_window() :: #{binary() => any()}.
 
 %% Example:
+%% update_odb_peering_connection_output() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"odbPeeringConnectionId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type update_odb_peering_connection_output() :: #{binary() => any()}.
+
+%% Example:
 %% cloud_exadata_infrastructure_unallocated_resources() :: #{
 %%   <<"cloudAutonomousVmClusters">> => list(cloud_autonomous_vm_cluster_resource_details()),
 %%   <<"cloudExadataInfrastructureDisplayName">> => [string()],
@@ -1444,6 +1466,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"odbNetworkId">> := string(),
+%%   <<"peerNetworkCidrsToBeAdded">> => list(string()),
 %%   <<"peerNetworkId">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -1734,6 +1757,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_odb_peering_connection_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -1826,8 +1857,7 @@ create_odb_network(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOdbNetwork">>, Input, Options).
 
-%% @doc Creates a peering connection between an ODB network and either
-%% another ODB network or a customer-owned VPC.
+%% @doc Creates a peering connection between an ODB network and a VPC.
 %%
 %% A peering connection enables private connectivity between the networks for
 %% application-tier communication.
@@ -2441,6 +2471,27 @@ update_odb_network(Client, Input)
 update_odb_network(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOdbNetwork">>, Input, Options).
+
+%% @doc Modifies the settings of an Oracle Database@Amazon Web Services
+%% peering connection.
+%%
+%% You can update the display name and add or remove CIDR blocks from the
+%% peering connection.
+-spec update_odb_peering_connection(aws_client:aws_client(), update_odb_peering_connection_input()) ->
+    {ok, update_odb_peering_connection_output(), tuple()} |
+    {error, any()} |
+    {error, update_odb_peering_connection_errors(), tuple()}.
+update_odb_peering_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_odb_peering_connection(Client, Input, []).
+
+-spec update_odb_peering_connection(aws_client:aws_client(), update_odb_peering_connection_input(), proplists:proplist()) ->
+    {ok, update_odb_peering_connection_output(), tuple()} |
+    {error, any()} |
+    {error, update_odb_peering_connection_errors(), tuple()}.
+update_odb_peering_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateOdbPeeringConnection">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

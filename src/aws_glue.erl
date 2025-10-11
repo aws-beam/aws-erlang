@@ -2179,6 +2179,7 @@
 
 %% Example:
 %% get_table_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"IncludeStatusDetails">> => boolean(),
@@ -3031,6 +3032,7 @@
 %% Example:
 %% get_tables_request() :: #{
 %%   <<"AttributesToGet">> => list(list(any())()),
+%%   <<"AuditContext">> => audit_context(),
 %%   <<"CatalogId">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"Expression">> => string(),

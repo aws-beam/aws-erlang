@@ -106,6 +106,8 @@
          list_workload_identities/3,
          set_token_vault_cm_k/2,
          set_token_vault_cm_k/3,
+         synchronize_gateway_targets/3,
+         synchronize_gateway_targets/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -149,7 +151,8 @@
 %% Example:
 %% modify_strategy_configuration() :: #{
 %%   <<"consolidation">> => list(),
-%%   <<"extraction">> => list()
+%%   <<"extraction">> => list(),
+%%   <<"selfManagedConfiguration">> => modify_self_managed_configuration()
 %% }
 -type modify_strategy_configuration() :: #{binary() => any()}.
 
@@ -175,6 +178,13 @@
 %% Example:
 %% delete_gateway_target_request() :: #{}
 -type delete_gateway_target_request() :: #{}.
+
+
+%% Example:
+%% time_based_trigger_input() :: #{
+%%   <<"idleSessionTimeout">> => [integer()]
+%% }
+-type time_based_trigger_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -374,6 +384,13 @@
 
 
 %% Example:
+%% message_based_trigger_input() :: #{
+%%   <<"messageCount">> => [integer()]
+%% }
+-type message_based_trigger_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_gateway_target_response() :: #{
 %%   <<"gatewayArn">> => string(),
 %%   <<"status">> => list(any()),
@@ -429,6 +446,15 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_browser_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% modify_self_managed_configuration() :: #{
+%%   <<"historicalContextWindowSize">> => [integer()],
+%%   <<"invocationConfiguration">> => modify_invocation_configuration_input(),
+%%   <<"triggerConditions">> => list(list())
+%% }
+-type modify_self_managed_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -524,6 +550,7 @@
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
 %%   <<"gatewayArn">> => string(),
+%%   <<"lastSynchronizedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
@@ -566,6 +593,15 @@
 
 
 %% Example:
+%% self_managed_configuration_input() :: #{
+%%   <<"historicalContextWindowSize">> => [integer()],
+%%   <<"invocationConfiguration">> => invocation_configuration_input(),
+%%   <<"triggerConditions">> => list(list())
+%% }
+-type self_managed_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_api_key_credential_provider_request() :: #{
 %%   <<"apiKey">> := string(),
 %%   <<"name">> := string()
@@ -605,9 +641,16 @@
 
 
 %% Example:
+%% synchronize_gateway_targets_request() :: #{
+%%   <<"targetIdList">> := list(string())
+%% }
+-type synchronize_gateway_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_gateway_target_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"credentialProviderConfigurations">> := list(credential_provider_configuration()),
+%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"targetConfiguration">> := list()
@@ -647,6 +690,7 @@
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
 %%   <<"gatewayArn">> => string(),
+%%   <<"lastSynchronizedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
@@ -819,6 +863,7 @@
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
 %%   <<"gatewayArn">> => string(),
+%%   <<"lastSynchronizedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReasons">> => list(string()),
@@ -1033,6 +1078,23 @@
 
 
 %% Example:
+%% self_managed_configuration() :: #{
+%%   <<"historicalContextWindowSize">> => [integer()],
+%%   <<"invocationConfiguration">> => invocation_configuration(),
+%%   <<"triggerConditions">> => list(list())
+%% }
+-type self_managed_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% invocation_configuration_input() :: #{
+%%   <<"payloadDeliveryBucketName">> => [string()],
+%%   <<"topicArn">> => string()
+%% }
+-type invocation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% secret() :: #{
 %%   <<"secretArn">> => string()
 %% }
@@ -1081,6 +1143,13 @@
 %%   <<"modelId">> => [string()]
 %% }
 -type user_preference_extraction_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% token_based_trigger() :: #{
+%%   <<"tokenCount">> => [integer()]
+%% }
+-type token_based_trigger() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1330,6 +1399,23 @@
 
 
 %% Example:
+%% gateway_target() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
+%%   <<"description">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"lastSynchronizedAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReasons">> => list(string()),
+%%   <<"targetConfiguration">> => list(),
+%%   <<"targetId">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type gateway_target() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_agent_runtime_response() :: #{
 %%   <<"agentRuntimeArn">> => string(),
 %%   <<"agentRuntimeArtifact">> => list(),
@@ -1374,6 +1460,13 @@
 %%   <<"networkModeConfig">> => vpc_config()
 %% }
 -type network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_based_trigger() :: #{
+%%   <<"messageCount">> => [integer()]
+%% }
+-type message_based_trigger() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1435,6 +1528,7 @@
 %% strategy_configuration() :: #{
 %%   <<"consolidation">> => list(),
 %%   <<"extraction">> => list(),
+%%   <<"selfManagedConfiguration">> => self_managed_configuration(),
 %%   <<"type">> => list(any())
 %% }
 -type strategy_configuration() :: #{binary() => any()}.
@@ -1530,6 +1624,13 @@
 %% }
 -type delete_agent_runtime_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% time_based_trigger() :: #{
+%%   <<"idleSessionTimeout">> => [integer()]
+%% }
+-type time_based_trigger() :: #{binary() => any()}.
+
 %% Example:
 %% delete_oauth2_credential_provider_response() :: #{}
 -type delete_oauth2_credential_provider_response() :: #{}.
@@ -1624,10 +1725,25 @@
 
 
 %% Example:
+%% invocation_configuration() :: #{
+%%   <<"payloadDeliveryBucketName">> => [string()],
+%%   <<"topicArn">> => string()
+%% }
+-type invocation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% protocol_configuration() :: #{
 %%   <<"serverProtocol">> => list(any())
 %% }
 -type protocol_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% mcp_server_target_configuration() :: #{
+%%   <<"endpoint">> => [string()]
+%% }
+-type mcp_server_target_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1651,6 +1767,13 @@
 %%   <<"modelId">> => [string()]
 %% }
 -type user_preference_consolidation_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% synchronize_gateway_targets_response() :: #{
+%%   <<"targets">> => list(gateway_target())
+%% }
+-type synchronize_gateway_targets_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1758,7 +1881,7 @@
 
 %% Example:
 %% update_gateway_target_request() :: #{
-%%   <<"credentialProviderConfigurations">> := list(credential_provider_configuration()),
+%%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"targetConfiguration">> := list()
@@ -1827,6 +1950,13 @@
 
 
 %% Example:
+%% token_based_trigger_input() :: #{
+%%   <<"tokenCount">> => [integer()]
+%% }
+-type token_based_trigger_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% google_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string()
@@ -1840,6 +1970,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_gateway_targets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% modify_invocation_configuration_input() :: #{
+%%   <<"payloadDeliveryBucketName">> => [string()],
+%%   <<"topicArn">> => string()
+%% }
+-type modify_invocation_configuration_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_gateway_request() :: #{}
@@ -2207,6 +2345,15 @@
     resource_not_found_exception() | 
     unauthorized_exception().
 
+-type synchronize_gateway_targets_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type tag_resource_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2478,9 +2625,8 @@ create_code_interpreter(Client, Input0, Options0) ->
 %% A gateway serves as an integration point between your agent and external
 %% services.
 %%
-%% To create a gateway, you must specify a name, protocol type, and IAM role.
-%% The role grants the gateway permission to access Amazon Web Services
-%% services and resources.
+%% If you specify `CUSTOM_JWT' as the `authorizerType', you must
+%% provide an `authorizerConfiguration'.
 -spec create_gateway(aws_client:aws_client(), create_gateway_request()) ->
     {ok, create_gateway_response(), tuple()} |
     {error, any()} |
@@ -2565,7 +2711,7 @@ create_memory(Client, Input) ->
 create_memory(Client, Input0, Options0) ->
     Method = post,
     Path = ["/memories/create"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2908,7 +3054,7 @@ delete_memory(Client, MemoryId, Input) ->
 delete_memory(Client, MemoryId, Input0, Options0) ->
     Method = delete,
     Path = ["/memories/", aws_util:encode_uri(MemoryId), "/delete"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -3872,6 +4018,40 @@ set_token_vault_cm_k(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc The gateway targets.
+-spec synchronize_gateway_targets(aws_client:aws_client(), binary() | list(), synchronize_gateway_targets_request()) ->
+    {ok, synchronize_gateway_targets_response(), tuple()} |
+    {error, any()} |
+    {error, synchronize_gateway_targets_errors(), tuple()}.
+synchronize_gateway_targets(Client, GatewayIdentifier, Input) ->
+    synchronize_gateway_targets(Client, GatewayIdentifier, Input, []).
+
+-spec synchronize_gateway_targets(aws_client:aws_client(), binary() | list(), synchronize_gateway_targets_request(), proplists:proplist()) ->
+    {ok, synchronize_gateway_targets_response(), tuple()} |
+    {error, any()} |
+    {error, synchronize_gateway_targets_errors(), tuple()}.
+synchronize_gateway_targets(Client, GatewayIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/gateways/", aws_util:encode_uri(GatewayIdentifier), "/synchronizeTargets"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Associates the specified tags to a resource with the specified
 %% resourceArn.
 %%
@@ -4137,7 +4317,7 @@ update_memory(Client, MemoryId, Input) ->
 update_memory(Client, MemoryId, Input0, Options0) ->
     Method = put,
     Path = ["/memories/", aws_util:encode_uri(MemoryId), "/update"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

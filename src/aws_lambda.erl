@@ -2014,6 +2014,7 @@
 %%   <<"Action">> := string(),
 %%   <<"EventSourceToken">> => string(),
 %%   <<"FunctionUrlAuthType">> => list(any()),
+%%   <<"InvokedViaFunctionUrl">> => boolean(),
 %%   <<"Principal">> := string(),
 %%   <<"PrincipalOrgID">> => string(),
 %%   <<"Qualifier">> => string(),
