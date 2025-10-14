@@ -1,8 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% You can use Amazon CloudWatch Observability Admin to discover and
+%% @doc You can use Amazon CloudWatch Observability Admin to discover and
 %% understand the state of telemetry configuration in CloudWatch for your
 %% Amazon Web Services Organization or account.
 %%
@@ -11,8 +10,8 @@
 %% Services Organization or account. By providing a consolidated view, it
 %% allows you to easily review and manage telemetry settings, helping you
 %% ensure proper monitoring and data collection across your Amazon Web
-%% Services environment.
-%% For more information, see Auditing CloudWatch telemetry conﬁgurations:
+%% Services environment. For more information, see Auditing CloudWatch
+%% telemetry conﬁgurations:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/telemetry-config-cloudwatch.html
 %% in the CloudWatch User Guide.
 %%
@@ -36,6 +35,8 @@
          delete_telemetry_rule_for_organization/3,
          get_centralization_rule_for_organization/2,
          get_centralization_rule_for_organization/3,
+         get_telemetry_enrichment_status/2,
+         get_telemetry_enrichment_status/3,
          get_telemetry_evaluation_status/2,
          get_telemetry_evaluation_status/3,
          get_telemetry_evaluation_status_for_organization/2,
@@ -56,10 +57,14 @@
          list_telemetry_rules/3,
          list_telemetry_rules_for_organization/2,
          list_telemetry_rules_for_organization/3,
+         start_telemetry_enrichment/2,
+         start_telemetry_enrichment/3,
          start_telemetry_evaluation/2,
          start_telemetry_evaluation/3,
          start_telemetry_evaluation_for_organization/2,
          start_telemetry_evaluation_for_organization/3,
+         stop_telemetry_enrichment/2,
+         stop_telemetry_enrichment/3,
          stop_telemetry_evaluation/2,
          stop_telemetry_evaluation/3,
          stop_telemetry_evaluation_for_organization/2,
@@ -246,6 +251,14 @@
 
 
 %% Example:
+%% get_telemetry_enrichment_status_output() :: #{
+%%   <<"AwsResourceExplorerManagedViewArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_telemetry_enrichment_status_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% telemetry_configuration() :: #{
 %%   <<"AccountIdentifier">> => string(),
 %%   <<"LastUpdateTimeStamp">> => [float()],
@@ -415,6 +428,13 @@
 
 
 %% Example:
+%% stop_telemetry_enrichment_output() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type stop_telemetry_enrichment_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => [string()],
 %%   <<"amznErrorType">> => [string()]
@@ -469,6 +489,14 @@
 %%   <<"RuleNamePrefix">> => [string()]
 %% }
 -type list_telemetry_rules_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_telemetry_enrichment_output() :: #{
+%%   <<"AwsResourceExplorerManagedViewArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type start_telemetry_enrichment_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -624,6 +652,12 @@
     resource_not_found_exception() | 
     too_many_requests_exception().
 
+-type get_telemetry_enrichment_status_errors() ::
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    too_many_requests_exception().
+
 -type get_telemetry_evaluation_status_errors() ::
     access_denied_exception() | 
     internal_server_exception() | 
@@ -686,6 +720,12 @@
     internal_server_exception() | 
     too_many_requests_exception().
 
+-type start_telemetry_enrichment_errors() ::
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception().
+
 -type start_telemetry_evaluation_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -696,6 +736,12 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    too_many_requests_exception().
+
+-type stop_telemetry_enrichment_errors() ::
+    access_denied_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     too_many_requests_exception().
 
 -type stop_telemetry_evaluation_errors() ::
@@ -791,9 +837,8 @@ create_centralization_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Creates a telemetry rule that defines how telemetry should be configured
-%% for Amazon Web Services resources in your account.
+%% @doc Creates a telemetry rule that defines how telemetry should be
+%% configured for Amazon Web Services resources in your account.
 %%
 %% The rule specifies which resources should have telemetry enabled and how
 %% that telemetry data should be collected based on resource type, telemetry
@@ -831,8 +876,7 @@ create_telemetry_rule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Creates a telemetry rule that applies across an Amazon Web Services
+%% @doc Creates a telemetry rule that applies across an Amazon Web Services
 %% Organization.
 %%
 %% This operation can only be called by the organization's management
@@ -907,8 +951,7 @@ delete_centralization_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes a telemetry rule from your account.
+%% @doc Deletes a telemetry rule from your account.
 %%
 %% Any telemetry configurations previously created by the rule will remain
 %% but no new resources will be configured by this rule.
@@ -945,8 +988,7 @@ delete_telemetry_rule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes an organization-wide telemetry rule.
+%% @doc Deletes an organization-wide telemetry rule.
 %%
 %% This operation can only be called by the organization's management
 %% account or a delegated administrator account.
@@ -1020,10 +1062,45 @@ get_centralization_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Returns the current onboarding status of the telemetry config feature,
-%% including the status of the feature and reason the feature failed to start
-%% or stop.
+%% @doc Returns the current status of the resource tags for telemetry
+%% feature, which enhances telemetry data with additional resource metadata
+%% from Amazon Web Services Resource Explorer.
+-spec get_telemetry_enrichment_status(aws_client:aws_client(), #{}) ->
+    {ok, get_telemetry_enrichment_status_output(), tuple()} |
+    {error, any()} |
+    {error, get_telemetry_enrichment_status_errors(), tuple()}.
+get_telemetry_enrichment_status(Client, Input) ->
+    get_telemetry_enrichment_status(Client, Input, []).
+
+-spec get_telemetry_enrichment_status(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, get_telemetry_enrichment_status_output(), tuple()} |
+    {error, any()} |
+    {error, get_telemetry_enrichment_status_errors(), tuple()}.
+get_telemetry_enrichment_status(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetTelemetryEnrichmentStatus"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the current onboarding status of the telemetry config
+%% feature, including the status of the feature and reason the feature failed
+%% to start or stop.
 -spec get_telemetry_evaluation_status(aws_client:aws_client(), #{}) ->
     {ok, get_telemetry_evaluation_status_output(), tuple()} |
     {error, any()} |
@@ -1057,9 +1134,8 @@ get_telemetry_evaluation_status(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This returns the onboarding status of the telemetry configuration feature
-%% for the organization.
+%% @doc This returns the onboarding status of the telemetry configuration
+%% feature for the organization.
 %%
 %% It can only be called by a Management Account of an Amazon Web Services
 %% Organization or an assigned Delegated Admin Account of Amazon CloudWatch
@@ -1097,8 +1173,7 @@ get_telemetry_evaluation_status_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Retrieves the details of a specific telemetry rule in your account.
+%% @doc Retrieves the details of a specific telemetry rule in your account.
 -spec get_telemetry_rule(aws_client:aws_client(), get_telemetry_rule_input()) ->
     {ok, get_telemetry_rule_output(), tuple()} |
     {error, any()} |
@@ -1132,8 +1207,7 @@ get_telemetry_rule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Retrieves the details of a specific organization telemetry rule.
+%% @doc Retrieves the details of a specific organization telemetry rule.
 %%
 %% This operation can only be called by the organization's management
 %% account or a delegated administrator account.
@@ -1207,8 +1281,7 @@ list_centralization_rules_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Returns a list of telemetry configurations for Amazon Web Services
+%% @doc Returns a list of telemetry configurations for Amazon Web Services
 %% resources supported by telemetry config.
 %%
 %% For more information, see Auditing CloudWatch telemetry configurations:
@@ -1246,8 +1319,7 @@ list_resource_telemetry(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Returns a list of telemetry configurations for Amazon Web Services
+%% @doc Returns a list of telemetry configurations for Amazon Web Services
 %% resources supported by telemetry config in the organization.
 -spec list_resource_telemetry_for_organization(aws_client:aws_client(), list_resource_telemetry_for_organization_input()) ->
     {ok, list_resource_telemetry_for_organization_output(), tuple()} |
@@ -1282,8 +1354,7 @@ list_resource_telemetry_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists all tags attached to the specified telemetry rule resource.
+%% @doc Lists all tags attached to the specified telemetry rule resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
@@ -1317,8 +1388,7 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists all telemetry rules in your account.
+%% @doc Lists all telemetry rules in your account.
 %%
 %% You can filter the results by specifying a rule name prefix.
 -spec list_telemetry_rules(aws_client:aws_client(), list_telemetry_rules_input()) ->
@@ -1354,8 +1424,7 @@ list_telemetry_rules(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists all telemetry rules in your organization.
+%% @doc Lists all telemetry rules in your organization.
 %%
 %% This operation can only be called by the organization's management
 %% account or a delegated administrator account.
@@ -1392,9 +1461,45 @@ list_telemetry_rules_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This action begins onboarding the caller Amazon Web Services account to
-%% the telemetry config feature.
+%% @doc Enables the resource tags for telemetry feature for your account,
+%% which enhances telemetry data with additional resource metadata from
+%% Amazon Web Services Resource Explorer to provide richer context for
+%% monitoring and observability.
+-spec start_telemetry_enrichment(aws_client:aws_client(), #{}) ->
+    {ok, start_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, start_telemetry_enrichment_errors(), tuple()}.
+start_telemetry_enrichment(Client, Input) ->
+    start_telemetry_enrichment(Client, Input, []).
+
+-spec start_telemetry_enrichment(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, start_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, start_telemetry_enrichment_errors(), tuple()}.
+start_telemetry_enrichment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartTelemetryEnrichment"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This action begins onboarding the caller Amazon Web Services account
+%% to the telemetry config feature.
 -spec start_telemetry_evaluation(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1428,9 +1533,8 @@ start_telemetry_evaluation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This actions begins onboarding the organization and all member accounts to
-%% the telemetry config feature.
+%% @doc This actions begins onboarding the organization and all member
+%% accounts to the telemetry config feature.
 -spec start_telemetry_evaluation_for_organization(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1464,9 +1568,44 @@ start_telemetry_evaluation_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This action begins offboarding the caller Amazon Web Services account from
-%% the telemetry config feature.
+%% @doc Disables the resource tags for telemetry feature for your account,
+%% stopping the enhancement of telemetry data with additional resource
+%% metadata.
+-spec stop_telemetry_enrichment(aws_client:aws_client(), #{}) ->
+    {ok, stop_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, stop_telemetry_enrichment_errors(), tuple()}.
+stop_telemetry_enrichment(Client, Input) ->
+    stop_telemetry_enrichment(Client, Input, []).
+
+-spec stop_telemetry_enrichment(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, stop_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, stop_telemetry_enrichment_errors(), tuple()}.
+stop_telemetry_enrichment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StopTelemetryEnrichment"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This action begins offboarding the caller Amazon Web Services account
+%% from the telemetry config feature.
 -spec stop_telemetry_evaluation(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1500,9 +1639,8 @@ stop_telemetry_evaluation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% This action offboards the Organization of the caller Amazon Web Services
-%% account from the telemetry config feature.
+%% @doc This action offboards the Organization of the caller Amazon Web
+%% Services account from the telemetry config feature.
 -spec stop_telemetry_evaluation_for_organization(aws_client:aws_client(), #{}) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1536,8 +1674,7 @@ stop_telemetry_evaluation_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Adds or updates tags for a telemetry rule resource.
+%% @doc Adds or updates tags for a telemetry rule resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1571,8 +1708,7 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Removes tags from a telemetry rule resource.
+%% @doc Removes tags from a telemetry rule resource.
 -spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1644,8 +1780,7 @@ update_centralization_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Updates an existing telemetry rule in your account.
+%% @doc Updates an existing telemetry rule in your account.
 -spec update_telemetry_rule(aws_client:aws_client(), update_telemetry_rule_input()) ->
     {ok, update_telemetry_rule_output(), tuple()} |
     {error, any()} |
@@ -1679,8 +1814,7 @@ update_telemetry_rule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Updates an existing telemetry rule that applies across an Amazon Web
+%% @doc Updates an existing telemetry rule that applies across an Amazon Web
 %% Services Organization.
 %%
 %% This operation can only be called by the organization's management

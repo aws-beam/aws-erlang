@@ -189,9 +189,11 @@
 
 %% Example:
 %% create_oauth2_credential_provider_response() :: #{
+%%   <<"callbackUrl">> => [string()],
 %%   <<"clientSecretArn">> => secret(),
 %%   <<"credentialProviderArn">> => string(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"oauth2ProviderConfigOutput">> => list()
 %% }
 -type create_oauth2_credential_provider_response() :: #{binary() => any()}.
 
@@ -227,6 +229,17 @@
 %%   <<"name">> => string()
 %% }
 -type get_api_key_credential_provider_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% included_oauth2_provider_config_input() :: #{
+%%   <<"authorizationEndpoint">> => string(),
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"issuer">> => string(),
+%%   <<"tokenEndpoint">> => string()
+%% }
+-type included_oauth2_provider_config_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -574,6 +587,14 @@
 
 
 %% Example:
+%% linkedin_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
+%% }
+-type linkedin_oauth2_provider_config_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% semantic_override_consolidation_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
@@ -585,7 +606,9 @@
 %% create_agent_runtime_endpoint_response() :: #{
 %%   <<"agentRuntimeArn">> => string(),
 %%   <<"agentRuntimeEndpointArn">> => string(),
+%%   <<"agentRuntimeId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"endpointName">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"targetVersion">> => string()
 %% }
@@ -604,7 +627,8 @@
 %% Example:
 %% create_api_key_credential_provider_request() :: #{
 %%   <<"apiKey">> := string(),
-%%   <<"name">> := string()
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_api_key_credential_provider_request() :: #{binary() => any()}.
 
@@ -714,7 +738,8 @@
 %%   <<"authorizationEndpoint">> => string(),
 %%   <<"issuer">> => string(),
 %%   <<"responseTypes">> => list(string()),
-%%   <<"tokenEndpoint">> => string()
+%%   <<"tokenEndpoint">> => string(),
+%%   <<"tokenEndpointAuthMethods">> => list(string())
 %% }
 -type oauth2_authorization_server_metadata() :: #{binary() => any()}.
 
@@ -725,6 +750,7 @@
 
 %% Example:
 %% github_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
 %% }
 -type github_oauth2_provider_config_output() :: #{binary() => any()}.
@@ -891,7 +917,8 @@
 %% Example:
 %% create_workload_identity_request() :: #{
 %%   <<"allowedResourceOauth2ReturnUrls">> => list(string()),
-%%   <<"name">> := string()
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_workload_identity_request() :: #{binary() => any()}.
 
@@ -917,6 +944,14 @@
 %%   <<"workloadIdentityDetails">> => workload_identity_details()
 %% }
 -type get_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% included_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
+%% }
+-type included_oauth2_provider_config_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1000,7 +1035,8 @@
 %% create_oauth2_credential_provider_request() :: #{
 %%   <<"credentialProviderVendor">> := list(any()),
 %%   <<"name">> := string(),
-%%   <<"oauth2ProviderConfigInput">> := list()
+%%   <<"oauth2ProviderConfigInput">> := list(),
+%%   <<"tags">> => map()
 %% }
 -type create_oauth2_credential_provider_request() :: #{binary() => any()}.
 
@@ -1032,6 +1068,7 @@
 
 %% Example:
 %% custom_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
 %% }
 -type custom_oauth2_provider_config_output() :: #{binary() => any()}.
@@ -1214,6 +1251,7 @@
 
 %% Example:
 %% salesforce_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
 %% }
 -type salesforce_oauth2_provider_config_output() :: #{binary() => any()}.
@@ -1221,6 +1259,7 @@
 
 %% Example:
 %% update_oauth2_credential_provider_response() :: #{
+%%   <<"callbackUrl">> => [string()],
 %%   <<"clientSecretArn">> => secret(),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
@@ -1242,6 +1281,7 @@
 
 %% Example:
 %% microsoft_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
 %% }
 -type microsoft_oauth2_provider_config_output() :: #{binary() => any()}.
@@ -1331,7 +1371,8 @@
 %% Example:
 %% microsoft_oauth2_provider_config_input() :: #{
 %%   <<"clientId">> => string(),
-%%   <<"clientSecret">> => string()
+%%   <<"clientSecret">> => string(),
+%%   <<"tenantId">> => string()
 %% }
 -type microsoft_oauth2_provider_config_input() :: #{binary() => any()}.
 
@@ -1396,6 +1437,14 @@
 %%   <<"tags">> => map()
 %% }
 -type create_gateway_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% atlassian_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"oauthDiscovery">> => list()
+%% }
+-type atlassian_oauth2_provider_config_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1471,6 +1520,7 @@
 
 %% Example:
 %% slack_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
 %% }
 -type slack_oauth2_provider_config_output() :: #{binary() => any()}.
@@ -1486,6 +1536,8 @@
 
 %% Example:
 %% delete_agent_runtime_endpoint_response() :: #{
+%%   <<"agentRuntimeId">> => string(),
+%%   <<"endpointName">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type delete_agent_runtime_endpoint_response() :: #{binary() => any()}.
@@ -1493,6 +1545,7 @@
 
 %% Example:
 %% get_oauth2_credential_provider_response() :: #{
+%%   <<"callbackUrl">> => [string()],
 %%   <<"clientSecretArn">> => secret(),
 %%   <<"createdTime">> => [non_neg_integer()],
 %%   <<"credentialProviderArn">> => string(),
@@ -1620,6 +1673,7 @@
 
 %% Example:
 %% delete_agent_runtime_response() :: #{
+%%   <<"agentRuntimeId">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type delete_agent_runtime_response() :: #{binary() => any()}.
@@ -1654,6 +1708,14 @@
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% atlassian_oauth2_provider_config_input() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string()
+%% }
+-type atlassian_oauth2_provider_config_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1748,6 +1810,7 @@
 
 %% Example:
 %% google_oauth2_provider_config_output() :: #{
+%%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list()
 %% }
 -type google_oauth2_provider_config_output() :: #{binary() => any()}.
@@ -1978,6 +2041,14 @@
 %%   <<"topicArn">> => string()
 %% }
 -type modify_invocation_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% linkedin_oauth2_provider_config_input() :: #{
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string()
+%% }
+-type linkedin_oauth2_provider_config_input() :: #{binary() => any()}.
 
 %% Example:
 %% get_gateway_request() :: #{}
@@ -2465,7 +2536,7 @@ create_agent_runtime(Client, Input) ->
 create_agent_runtime(Client, Input0, Options0) ->
     Method = put,
     Path = ["/runtimes/"],
-    SuccessStatusCode = 201,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2499,7 +2570,7 @@ create_agent_runtime_endpoint(Client, AgentRuntimeId, Input) ->
 create_agent_runtime_endpoint(Client, AgentRuntimeId, Input0, Options0) ->
     Method = put,
     Path = ["/runtimes/", aws_util:encode_uri(AgentRuntimeId), "/runtime-endpoints/"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2533,7 +2604,7 @@ create_api_key_credential_provider(Client, Input) ->
 create_api_key_credential_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/CreateApiKeyCredentialProvider"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2567,7 +2638,7 @@ create_browser(Client, Input) ->
 create_browser(Client, Input0, Options0) ->
     Method = put,
     Path = ["/browsers"],
-    SuccessStatusCode = 201,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2601,7 +2672,7 @@ create_code_interpreter(Client, Input) ->
 create_code_interpreter(Client, Input0, Options0) ->
     Method = put,
     Path = ["/code-interpreters"],
-    SuccessStatusCode = 201,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2745,7 +2816,7 @@ create_oauth2_credential_provider(Client, Input) ->
 create_oauth2_credential_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/CreateOauth2CredentialProvider"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2779,7 +2850,7 @@ create_workload_identity(Client, Input) ->
 create_workload_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/CreateWorkloadIdentity"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2813,7 +2884,7 @@ delete_agent_runtime(Client, AgentRuntimeId, Input) ->
 delete_agent_runtime(Client, AgentRuntimeId, Input0, Options0) ->
     Method = delete,
     Path = ["/runtimes/", aws_util:encode_uri(AgentRuntimeId), "/"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2847,7 +2918,7 @@ delete_agent_runtime_endpoint(Client, AgentRuntimeId, EndpointName, Input) ->
 delete_agent_runtime_endpoint(Client, AgentRuntimeId, EndpointName, Input0, Options0) ->
     Method = delete,
     Path = ["/runtimes/", aws_util:encode_uri(AgentRuntimeId), "/runtime-endpoints/", aws_util:encode_uri(EndpointName), "/"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2882,7 +2953,7 @@ delete_api_key_credential_provider(Client, Input) ->
 delete_api_key_credential_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/DeleteApiKeyCredentialProvider"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2916,7 +2987,7 @@ delete_browser(Client, BrowserId, Input) ->
 delete_browser(Client, BrowserId, Input0, Options0) ->
     Method = delete,
     Path = ["/browsers/", aws_util:encode_uri(BrowserId), ""],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2951,7 +3022,7 @@ delete_code_interpreter(Client, CodeInterpreterId, Input) ->
 delete_code_interpreter(Client, CodeInterpreterId, Input0, Options0) ->
     Method = delete,
     Path = ["/code-interpreters/", aws_util:encode_uri(CodeInterpreterId), ""],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -3089,7 +3160,7 @@ delete_oauth2_credential_provider(Client, Input) ->
 delete_oauth2_credential_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/DeleteOauth2CredentialProvider"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -3123,7 +3194,7 @@ delete_workload_identity(Client, Input) ->
 delete_workload_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/DeleteWorkloadIdentity"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4147,7 +4218,7 @@ update_agent_runtime(Client, AgentRuntimeId, Input) ->
 update_agent_runtime(Client, AgentRuntimeId, Input0, Options0) ->
     Method = put,
     Path = ["/runtimes/", aws_util:encode_uri(AgentRuntimeId), "/"],
-    SuccessStatusCode = 201,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4181,7 +4252,7 @@ update_agent_runtime_endpoint(Client, AgentRuntimeId, EndpointName, Input) ->
 update_agent_runtime_endpoint(Client, AgentRuntimeId, EndpointName, Input0, Options0) ->
     Method = put,
     Path = ["/runtimes/", aws_util:encode_uri(AgentRuntimeId), "/runtime-endpoints/", aws_util:encode_uri(EndpointName), "/"],
-    SuccessStatusCode = 200,
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

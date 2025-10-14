@@ -15,6 +15,8 @@
          batch_delete_memory_records/4,
          batch_update_memory_records/3,
          batch_update_memory_records/4,
+         complete_resource_token_auth/2,
+         complete_resource_token_auth/3,
          create_event/3,
          create_event/4,
          delete_event/6,
@@ -252,6 +254,14 @@
 
 
 %% Example:
+%% complete_resource_token_auth_request() :: #{
+%%   <<"sessionUri">> := string(),
+%%   <<"userIdentifier">> := list()
+%% }
+-type complete_resource_token_auth_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory_record_update_input() :: #{
 %%   <<"content">> => list(),
 %%   <<"memoryRecordId">> => string(),
@@ -403,11 +413,13 @@
 %% Example:
 %% get_resource_oauth2_token_request() :: #{
 %%   <<"customParameters">> => map(),
+%%   <<"customState">> => string(),
 %%   <<"forceAuthentication">> => [boolean()],
 %%   <<"oauth2Flow">> := list(any()),
 %%   <<"resourceCredentialProviderName">> := string(),
 %%   <<"resourceOauth2ReturnUrl">> => string(),
 %%   <<"scopes">> := list(string()),
+%%   <<"sessionUri">> => string(),
 %%   <<"workloadIdentityToken">> := string()
 %% }
 -type get_resource_oauth2_token_request() :: #{binary() => any()}.
@@ -469,7 +481,9 @@
 %% Example:
 %% get_resource_oauth2_token_response() :: #{
 %%   <<"accessToken">> => string(),
-%%   <<"authorizationUrl">> => [string()]
+%%   <<"authorizationUrl">> => string(),
+%%   <<"sessionStatus">> => list(any()),
+%%   <<"sessionUri">> => string()
 %% }
 -type get_resource_oauth2_token_response() :: #{binary() => any()}.
 
@@ -726,6 +740,7 @@
 %% Example:
 %% invoke_agent_runtime_request() :: #{
 %%   <<"accept">> => string(),
+%%   <<"accountId">> => [string()],
 %%   <<"baggage">> => [string()],
 %%   <<"contentType">> => string(),
 %%   <<"mcpProtocolVersion">> => string(),
@@ -764,6 +779,10 @@
 %%   <<"viewPort">> => view_port()
 %% }
 -type get_browser_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% complete_resource_token_auth_response() :: #{}
+-type complete_resource_token_auth_response() :: #{}.
 
 
 %% Example:
@@ -1011,6 +1030,14 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     throttled_exception().
+
+-type complete_resource_token_auth_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type create_event_errors() ::
     validation_exception() | 
@@ -1343,6 +1370,41 @@ batch_update_memory_records(Client, MemoryId, Input) ->
 batch_update_memory_records(Client, MemoryId, Input0, Options0) ->
     Method = post,
     Path = ["/memories/", aws_util:encode_uri(MemoryId), "/memoryRecords/batchUpdate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Confirms the user authentication session for obtaining OAuth2.0
+%% tokens for a resource.
+-spec complete_resource_token_auth(aws_client:aws_client(), complete_resource_token_auth_request()) ->
+    {ok, complete_resource_token_auth_response(), tuple()} |
+    {error, any()} |
+    {error, complete_resource_token_auth_errors(), tuple()}.
+complete_resource_token_auth(Client, Input) ->
+    complete_resource_token_auth(Client, Input, []).
+
+-spec complete_resource_token_auth(aws_client:aws_client(), complete_resource_token_auth_request(), proplists:proplist()) ->
+    {ok, complete_resource_token_auth_response(), tuple()} |
+    {error, any()} |
+    {error, complete_resource_token_auth_errors(), tuple()}.
+complete_resource_token_auth(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/CompleteResourceTokenAuth"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1985,6 +2047,7 @@ invoke_agent_runtime(Client, AgentRuntimeArn, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"accountId">>, <<"accountId">>},
                      {<<"qualifier">>, <<"qualifier">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
