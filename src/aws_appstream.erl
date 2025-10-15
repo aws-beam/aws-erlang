@@ -35,6 +35,8 @@
          associate_application_to_entitlement/3,
          associate_fleet/2,
          associate_fleet/3,
+         associate_software_to_image_builder/2,
+         associate_software_to_image_builder/3,
          batch_associate_user_stack/2,
          batch_associate_user_stack/3,
          batch_disassociate_user_stack/2,
@@ -103,6 +105,8 @@
          describe_app_block_builders/3,
          describe_app_blocks/2,
          describe_app_blocks/3,
+         describe_app_license_usage/2,
+         describe_app_license_usage/3,
          describe_application_fleet_associations/2,
          describe_application_fleet_associations/3,
          describe_applications/2,
@@ -121,6 +125,8 @@
          describe_images/3,
          describe_sessions/2,
          describe_sessions/3,
+         describe_software_associations/2,
+         describe_software_associations/3,
          describe_stacks/2,
          describe_stacks/3,
          describe_theme_for_stack/2,
@@ -141,6 +147,8 @@
          disassociate_application_from_entitlement/3,
          disassociate_fleet/2,
          disassociate_fleet/3,
+         disassociate_software_from_image_builder/2,
+         disassociate_software_from_image_builder/3,
          enable_user/2,
          enable_user/3,
          expire_session/2,
@@ -159,6 +167,8 @@
          start_fleet/3,
          start_image_builder/2,
          start_image_builder/3,
+         start_software_deployment_to_image_builder/2,
+         start_software_deployment_to_image_builder/3,
          stop_app_block_builder/2,
          stop_app_block_builder/3,
          stop_fleet/2,
@@ -239,6 +249,14 @@
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type image_builder() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_license_usage_request() :: #{
+%%   <<"BillingPeriod">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_license_usage_request() :: #{binary() => any()}.
 
 %% Example:
 %% start_image_builder_result() :: #{
@@ -325,6 +343,12 @@
 -type describe_app_blocks_result() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_software_from_image_builder_result() :: #{
+
+%% }
+-type disassociate_software_from_image_builder_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_app_block_builder_request() :: #{
 %%   <<"AccessEndpoints">> => list(access_endpoint()),
 %%   <<"Description">> => string(),
@@ -344,6 +368,13 @@
 
 %% }
 -type stop_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_license_usage_result() :: #{
+%%   <<"AppLicenseUsages">> => list(admin_app_license_usage_record()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_app_license_usage_result() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_response() :: #{
@@ -830,6 +861,14 @@
 -type create_usage_report_subscription_request() :: #{binary() => any()}.
 
 %% Example:
+%% software_associations() :: #{
+%%   <<"DeploymentError">> => list(error_details()),
+%%   <<"SoftwareName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type software_associations() :: #{binary() => any()}.
+
+%% Example:
 %% stop_image_builder_request() :: #{
 %%   <<"Name">> := string()
 %% }
@@ -869,6 +908,20 @@
 %%   <<"FleetName">> := string()
 %% }
 -type associate_application_fleet_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_software_to_image_builder_request() :: #{
+%%   <<"ImageBuilderName">> := string(),
+%%   <<"SoftwareNames">> := list(string())
+%% }
+-type associate_software_to_image_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_software_from_image_builder_request() :: #{
+%%   <<"ImageBuilderName">> := string(),
+%%   <<"SoftwareNames">> := list(string())
+%% }
+-type disassociate_software_from_image_builder_request() :: #{binary() => any()}.
 
 %% Example:
 %% certificate_based_auth_properties() :: #{
@@ -1014,6 +1067,8 @@
 %%   <<"ImageName">> => string(),
 %%   <<"InstanceType">> := string(),
 %%   <<"Name">> := string(),
+%%   <<"SoftwaresToInstall">> => list(string()),
+%%   <<"SoftwaresToUninstall">> => list(string()),
 %%   <<"Tags">> => map(),
 %%   <<"VpcConfig">> => vpc_config()
 %% }
@@ -1278,6 +1333,14 @@
 -type delete_user_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_software_associations_request() :: #{
+%%   <<"AssociatedResource">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_software_associations_request() :: #{binary() => any()}.
+
+%% Example:
 %% entitlement_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1446,6 +1509,7 @@
 %%   <<"ImagePermissions">> => image_permissions(),
 %%   <<"ImageSharedWithOthers">> => list(any()),
 %%   <<"LatestAppstreamAgentVersion">> => list(any()),
+%%   <<"ManagedSoftwareIncluded">> => boolean(),
 %%   <<"Name">> => string(),
 %%   <<"Platform">> => list(any()),
 %%   <<"PublicBaseImageReleasedDate">> => non_neg_integer(),
@@ -1455,6 +1519,12 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type image() :: #{binary() => any()}.
+
+%% Example:
+%% associate_software_to_image_builder_result() :: #{
+
+%% }
+-type associate_software_to_image_builder_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_entitlements_result() :: #{
@@ -1495,6 +1565,14 @@
 %%   <<"Fleet">> => fleet()
 %% }
 -type create_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_software_associations_result() :: #{
+%%   <<"AssociatedResource">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"SoftwareAssociations">> => list(software_associations())
+%% }
+-type describe_software_associations_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_app_block_builder_app_block_associations_result() :: #{
@@ -1652,6 +1730,12 @@
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% start_software_deployment_to_image_builder_result() :: #{
+
+%% }
+-type start_software_deployment_to_image_builder_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_directory_config_result() :: #{
 %%   <<"DirectoryConfig">> => directory_config()
 %% }
@@ -1783,6 +1867,18 @@
 -type describe_application_fleet_associations_result() :: #{binary() => any()}.
 
 %% Example:
+%% admin_app_license_usage_record() :: #{
+%%   <<"BillingPeriod">> => string(),
+%%   <<"LicenseType">> => string(),
+%%   <<"OwnerAWSAccountId">> => string(),
+%%   <<"SubscriptionFirstUsedDate">> => non_neg_integer(),
+%%   <<"SubscriptionLastUsedDate">> => non_neg_integer(),
+%%   <<"UserArn">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type admin_app_license_usage_record() :: #{binary() => any()}.
+
+%% Example:
 %% update_image_permissions_result() :: #{
 
 %% }
@@ -1902,6 +1998,13 @@
 -type user_stack_association_error() :: #{binary() => any()}.
 
 %% Example:
+%% start_software_deployment_to_image_builder_request() :: #{
+%%   <<"ImageBuilderName">> := string(),
+%%   <<"RetryFailedDeployments">> => boolean()
+%% }
+-type start_software_deployment_to_image_builder_request() :: #{binary() => any()}.
+
+%% Example:
 %% delete_application_request() :: #{
 %%   <<"Name">> := string()
 %% }
@@ -1969,6 +2072,13 @@
     invalid_account_status_exception() | 
     operation_not_permitted_exception() | 
     resource_not_found_exception().
+
+-type associate_software_to_image_builder_errors() ::
+    concurrent_modification_exception() | 
+    incompatible_image_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_combination_exception().
 
 -type batch_associate_user_stack_errors() ::
     operation_not_permitted_exception() | 
@@ -2181,6 +2291,11 @@
     operation_not_permitted_exception() | 
     resource_not_found_exception().
 
+-type describe_app_license_usage_errors() ::
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_combination_exception().
+
 -type describe_application_fleet_associations_errors() ::
     operation_not_permitted_exception() | 
     invalid_parameter_combination_exception().
@@ -2212,6 +2327,10 @@
 
 -type describe_sessions_errors() ::
     invalid_parameter_combination_exception().
+
+-type describe_software_associations_errors() ::
+    operation_not_permitted_exception() | 
+    resource_not_found_exception().
 
 -type describe_stacks_errors() ::
     resource_not_found_exception().
@@ -2258,6 +2377,12 @@
     resource_not_found_exception() | 
     resource_in_use_exception().
 
+-type disassociate_software_from_image_builder_errors() ::
+    concurrent_modification_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_combination_exception().
+
 -type enable_user_errors() ::
     invalid_account_status_exception() | 
     resource_not_found_exception().
@@ -2295,6 +2420,11 @@
     invalid_account_status_exception() | 
     resource_not_found_exception() | 
     resource_not_available_exception().
+
+-type start_software_deployment_to_image_builder_errors() ::
+    concurrent_modification_exception() | 
+    operation_not_permitted_exception() | 
+    resource_not_found_exception().
 
 -type stop_app_block_builder_errors() ::
     concurrent_modification_exception() | 
@@ -2460,6 +2590,24 @@ associate_fleet(Client, Input)
 associate_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateFleet">>, Input, Options).
+
+%% @doc Associates license included application(s) with an existing image
+%% builder instance.
+-spec associate_software_to_image_builder(aws_client:aws_client(), associate_software_to_image_builder_request()) ->
+    {ok, associate_software_to_image_builder_result(), tuple()} |
+    {error, any()} |
+    {error, associate_software_to_image_builder_errors(), tuple()}.
+associate_software_to_image_builder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_software_to_image_builder(Client, Input, []).
+
+-spec associate_software_to_image_builder(aws_client:aws_client(), associate_software_to_image_builder_request(), proplists:proplist()) ->
+    {ok, associate_software_to_image_builder_result(), tuple()} |
+    {error, any()} |
+    {error, associate_software_to_image_builder_errors(), tuple()}.
+associate_software_to_image_builder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateSoftwareToImageBuilder">>, Input, Options).
 
 %% @doc Associates the specified users with the specified stacks.
 %%
@@ -3128,6 +3276,23 @@ describe_app_blocks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAppBlocks">>, Input, Options).
 
+%% @doc Retrieves license included application usage information.
+-spec describe_app_license_usage(aws_client:aws_client(), describe_app_license_usage_request()) ->
+    {ok, describe_app_license_usage_result(), tuple()} |
+    {error, any()} |
+    {error, describe_app_license_usage_errors(), tuple()}.
+describe_app_license_usage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_app_license_usage(Client, Input, []).
+
+-spec describe_app_license_usage(aws_client:aws_client(), describe_app_license_usage_request(), proplists:proplist()) ->
+    {ok, describe_app_license_usage_result(), tuple()} |
+    {error, any()} |
+    {error, describe_app_license_usage_errors(), tuple()}.
+describe_app_license_usage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAppLicenseUsage">>, Input, Options).
+
 %% @doc Retrieves a list that describes one or more application fleet
 %% associations.
 %%
@@ -3308,6 +3473,24 @@ describe_sessions(Client, Input)
 describe_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSessions">>, Input, Options).
+
+%% @doc Retrieves license included application associations for a specified
+%% resource.
+-spec describe_software_associations(aws_client:aws_client(), describe_software_associations_request()) ->
+    {ok, describe_software_associations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_software_associations_errors(), tuple()}.
+describe_software_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_software_associations(Client, Input, []).
+
+-spec describe_software_associations(aws_client:aws_client(), describe_software_associations_request(), proplists:proplist()) ->
+    {ok, describe_software_associations_result(), tuple()} |
+    {error, any()} |
+    {error, describe_software_associations_errors(), tuple()}.
+describe_software_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSoftwareAssociations">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more specified stacks, if the
 %% stack names are provided.
@@ -3498,6 +3681,24 @@ disassociate_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFleet">>, Input, Options).
 
+%% @doc Removes license included application(s) association(s) from an image
+%% builder instance.
+-spec disassociate_software_from_image_builder(aws_client:aws_client(), disassociate_software_from_image_builder_request()) ->
+    {ok, disassociate_software_from_image_builder_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_software_from_image_builder_errors(), tuple()}.
+disassociate_software_from_image_builder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_software_from_image_builder(Client, Input, []).
+
+-spec disassociate_software_from_image_builder(aws_client:aws_client(), disassociate_software_from_image_builder_request(), proplists:proplist()) ->
+    {ok, disassociate_software_from_image_builder_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_software_from_image_builder_errors(), tuple()}.
+disassociate_software_from_image_builder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateSoftwareFromImageBuilder">>, Input, Options).
+
 %% @doc Enables a user in the user pool.
 %%
 %% After being enabled, users can sign in to AppStream 2.0 and open
@@ -3664,6 +3865,24 @@ start_image_builder(Client, Input)
 start_image_builder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartImageBuilder">>, Input, Options).
+
+%% @doc Initiates license included applications deployment to an image
+%% builder instance.
+-spec start_software_deployment_to_image_builder(aws_client:aws_client(), start_software_deployment_to_image_builder_request()) ->
+    {ok, start_software_deployment_to_image_builder_result(), tuple()} |
+    {error, any()} |
+    {error, start_software_deployment_to_image_builder_errors(), tuple()}.
+start_software_deployment_to_image_builder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_software_deployment_to_image_builder(Client, Input, []).
+
+-spec start_software_deployment_to_image_builder(aws_client:aws_client(), start_software_deployment_to_image_builder_request(), proplists:proplist()) ->
+    {ok, start_software_deployment_to_image_builder_result(), tuple()} |
+    {error, any()} |
+    {error, start_software_deployment_to_image_builder_errors(), tuple()}.
+start_software_deployment_to_image_builder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartSoftwareDeploymentToImageBuilder">>, Input, Options).
 
 %% @doc Stops an app block builder.
 %%

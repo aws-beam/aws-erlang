@@ -255,9 +255,9 @@
          list_asset_revisions/3,
          list_asset_revisions/5,
          list_asset_revisions/6,
-         list_connections/3,
+         list_connections/2,
+         list_connections/4,
          list_connections/5,
-         list_connections/6,
          list_data_product_revisions/3,
          list_data_product_revisions/5,
          list_data_product_revisions/6,
@@ -1355,6 +1355,15 @@
 
 
 %% Example:
+%% amazon_q_properties_input() :: #{
+%%   <<"authMode">> => [string()],
+%%   <<"isEnabled">> => [boolean()],
+%%   <<"profileArn">> => [string()]
+%% }
+-type amazon_q_properties_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_account_pools_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"name">> => string(),
@@ -1890,6 +1899,7 @@
 %%   <<"physicalEndpoints">> => list(physical_endpoint()),
 %%   <<"projectId">> => string(),
 %%   <<"props">> => list(),
+%%   <<"scope">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
 -type create_connection_output() :: #{binary() => any()}.
@@ -3156,6 +3166,7 @@
 %%   <<"physicalEndpoints">> => list(physical_endpoint()),
 %%   <<"projectId">> => string(),
 %%   <<"props">> => list(),
+%%   <<"scope">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
 -type get_connection_output() :: #{binary() => any()}.
@@ -4886,6 +4897,7 @@
 %%   <<"physicalEndpoints">> => list(physical_endpoint()),
 %%   <<"projectId">> => string(),
 %%   <<"props">> => list(),
+%%   <<"scope">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
 -type connection_summary() :: #{binary() => any()}.
@@ -5388,6 +5400,15 @@
 
 
 %% Example:
+%% amazon_q_properties_patch() :: #{
+%%   <<"authMode">> => [string()],
+%%   <<"isEnabled">> => [boolean()],
+%%   <<"profileArn">> => [string()]
+%% }
+-type amazon_q_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
 %% time_series_data_point_summary_form_output() :: #{
 %%   <<"contentSummary">> => [string()],
 %%   <<"formName">> => string(),
@@ -5468,6 +5489,7 @@
 %% Example:
 %% physical_endpoint() :: #{
 %%   <<"awsLocation">> => aws_location(),
+%%   <<"enableTrustedIdentityPropagation">> => [boolean()],
 %%   <<"glueConnection">> => glue_connection(),
 %%   <<"glueConnectionName">> => [string()],
 %%   <<"host">> => [string()],
@@ -5585,7 +5607,8 @@
 %%   <<"maxResults">> => integer(),
 %%   <<"name">> => string(),
 %%   <<"nextToken">> => string(),
-%%   <<"projectIdentifier">> := string(),
+%%   <<"projectIdentifier">> => string(),
+%%   <<"scope">> => list(any()),
 %%   <<"sortBy">> => list(any()),
 %%   <<"sortOrder">> => list(any()),
 %%   <<"type">> => list(any())
@@ -5711,9 +5734,11 @@
 %%   <<"awsLocation">> => aws_location(),
 %%   <<"clientToken">> => [string()],
 %%   <<"description">> => string(),
-%%   <<"environmentIdentifier">> := string(),
+%%   <<"enableTrustedIdentityPropagation">> => [boolean()],
+%%   <<"environmentIdentifier">> => string(),
 %%   <<"name">> := string(),
-%%   <<"props">> => list()
+%%   <<"props">> => list(),
+%%   <<"scope">> => list(any())
 %% }
 -type create_connection_input() :: #{binary() => any()}.
 
@@ -6092,6 +6117,7 @@
 %%   <<"physicalEndpoints">> => list(physical_endpoint()),
 %%   <<"projectId">> => string(),
 %%   <<"props">> => list(),
+%%   <<"scope">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
 -type update_connection_output() :: #{binary() => any()}.
@@ -6228,6 +6254,15 @@
 %%   <<"value">> => [string()]
 %% }
 -type configurable_action_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_q_properties_output() :: #{
+%%   <<"authMode">> => [string()],
+%%   <<"isEnabled">> => [boolean()],
+%%   <<"profileArn">> => [string()]
+%% }
+-type amazon_q_properties_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11710,27 +11745,27 @@ list_asset_revisions(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap,
 %%
 %% In Amazon DataZone, a connection enables you to connect your resources
 %% (domains, projects, and environments) to external resources and services.
--spec list_connections(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+-spec list_connections(aws_client:aws_client(), binary() | list()) ->
     {ok, list_connections_output(), tuple()} |
     {error, any()} |
     {error, list_connections_errors(), tuple()}.
-list_connections(Client, DomainIdentifier, ProjectIdentifier)
+list_connections(Client, DomainIdentifier)
   when is_map(Client) ->
-    list_connections(Client, DomainIdentifier, ProjectIdentifier, #{}, #{}).
+    list_connections(Client, DomainIdentifier, #{}, #{}).
 
--spec list_connections(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+-spec list_connections(aws_client:aws_client(), binary() | list(), map(), map()) ->
     {ok, list_connections_output(), tuple()} |
     {error, any()} |
     {error, list_connections_errors(), tuple()}.
-list_connections(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap)
+list_connections(Client, DomainIdentifier, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_connections(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, []).
+    list_connections(Client, DomainIdentifier, QueryMap, HeadersMap, []).
 
--spec list_connections(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+-spec list_connections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
     {ok, list_connections_output(), tuple()} |
     {error, any()} |
     {error, list_connections_errors(), tuple()}.
-list_connections(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersMap, Options0)
+list_connections(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/connections"],
     SuccessStatusCode = 200,
@@ -11748,7 +11783,8 @@ list_connections(Client, DomainIdentifier, ProjectIdentifier, QueryMap, HeadersM
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"projectIdentifier">>, ProjectIdentifier},
+        {<<"projectIdentifier">>, maps:get(<<"projectIdentifier">>, QueryMap, undefined)},
+        {<<"scope">>, maps:get(<<"scope">>, QueryMap, undefined)},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
         {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
         {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}

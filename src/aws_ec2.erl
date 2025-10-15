@@ -131,6 +131,8 @@
          copy_image/3,
          copy_snapshot/2,
          copy_snapshot/3,
+         copy_volumes/2,
+         copy_volumes/3,
          create_capacity_reservation/2,
          create_capacity_reservation/3,
          create_capacity_reservation_by_splitting/2,
@@ -2586,6 +2588,12 @@
 %%   <<"IpamResourceCidr">> => ipam_resource_cidr()
 %% }
 -type modify_ipam_resource_cidr_result() :: #{binary() => any()}.
+
+%% Example:
+%% copy_volumes_result() :: #{
+%%   <<"Volumes">> => list(volume())
+%% }
+-type copy_volumes_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_spot_datafeed_subscription_request() :: #{
@@ -7971,6 +7979,20 @@
 %%   <<"SupportedStrategies">> => list(list(any())())
 %% }
 -type placement_group_info() :: #{binary() => any()}.
+
+%% Example:
+%% copy_volumes_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Iops">> => integer(),
+%%   <<"MultiAttachEnabled">> => boolean(),
+%%   <<"Size">> => integer(),
+%%   <<"SourceVolumeId">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeType">> => list(any())
+%% }
+-type copy_volumes_request() :: #{binary() => any()}.
 
 %% Example:
 %% modify_capacity_reservation_fleet_result() :: #{
@@ -14767,6 +14789,7 @@
 %%   <<"OutpostArn">> => string(),
 %%   <<"Size">> => integer(),
 %%   <<"SnapshotId">> => string(),
+%%   <<"SourceVolumeId">> => string(),
 %%   <<"SseType">> => list(any()),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => list(tag()),
@@ -22505,6 +22528,29 @@ copy_snapshot(Client, Input)
 copy_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopySnapshot">>, Input, Options).
+
+%% @doc Creates a crash-consistent, point-in-time copy of an existing Amazon
+%% EBS volume within the same
+%% Availability Zone.
+%%
+%% The volume copy can be attached to an Amazon EC2 instance once it reaches
+%% the
+%% `available' state. For more information, see Copy an Amazon EBS
+%% volume:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/ebs-copying-volume.html.
+-spec copy_volumes(aws_client:aws_client(), copy_volumes_request()) ->
+    {ok, copy_volumes_result(), tuple()} |
+    {error, any()}.
+copy_volumes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    copy_volumes(Client, Input, []).
+
+-spec copy_volumes(aws_client:aws_client(), copy_volumes_request(), proplists:proplist()) ->
+    {ok, copy_volumes_result(), tuple()} |
+    {error, any()}.
+copy_volumes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CopyVolumes">>, Input, Options).
 
 %% @doc Creates a new Capacity Reservation with the specified attributes.
 %%

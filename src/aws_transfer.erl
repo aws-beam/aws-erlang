@@ -227,6 +227,13 @@
 -type described_access() :: #{binary() => any()}.
 
 %% Example:
+%% described_connector_vpc_lattice_egress_config() :: #{
+%%   <<"PortNumber">> => integer(),
+%%   <<"ResourceConfigurationArn">> => string()
+%% }
+-type described_connector_vpc_lattice_egress_config() :: #{binary() => any()}.
+
+%% Example:
 %% describe_access_response() :: #{
 %%   <<"Access">> => described_access(),
 %%   <<"ServerId">> => string()
@@ -469,6 +476,7 @@
 %%   <<"AccessRole">> => string(),
 %%   <<"As2Config">> => as2_connector_config(),
 %%   <<"ConnectorId">> := string(),
+%%   <<"EgressConfig">> => list(),
 %%   <<"LoggingRole">> => string(),
 %%   <<"SecurityPolicyName">> => string(),
 %%   <<"SftpConfig">> => sftp_connector_config(),
@@ -884,6 +892,13 @@
 %%   <<"Message">> => string()
 %% }
 -type invalid_request_exception() :: #{binary() => any()}.
+
+%% Example:
+%% connector_vpc_lattice_egress_config() :: #{
+%%   <<"PortNumber">> => integer(),
+%%   <<"ResourceConfigurationArn">> => string()
+%% }
+-type connector_vpc_lattice_egress_config() :: #{binary() => any()}.
 
 %% Example:
 %% start_remote_delete_request() :: #{
@@ -1348,11 +1363,12 @@
 %% create_connector_request() :: #{
 %%   <<"AccessRole">> := string(),
 %%   <<"As2Config">> => as2_connector_config(),
+%%   <<"EgressConfig">> => list(),
 %%   <<"LoggingRole">> => string(),
 %%   <<"SecurityPolicyName">> => string(),
 %%   <<"SftpConfig">> => sftp_connector_config(),
 %%   <<"Tags">> => list(tag()),
-%%   <<"Url">> := string()
+%%   <<"Url">> => string()
 %% }
 -type create_connector_request() :: #{binary() => any()}.
 
@@ -1585,6 +1601,13 @@
 -type home_directory_map_entry() :: #{binary() => any()}.
 
 %% Example:
+%% update_connector_vpc_lattice_egress_config() :: #{
+%%   <<"PortNumber">> => integer(),
+%%   <<"ResourceConfigurationArn">> => string()
+%% }
+-type update_connector_vpc_lattice_egress_config() :: #{binary() => any()}.
+
+%% Example:
 %% update_host_key_request() :: #{
 %%   <<"Description">> := string(),
 %%   <<"HostKeyId">> := string(),
@@ -1730,10 +1753,14 @@
 %%   <<"Arn">> => string(),
 %%   <<"As2Config">> => as2_connector_config(),
 %%   <<"ConnectorId">> => string(),
+%%   <<"EgressConfig">> => list(),
+%%   <<"EgressType">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
 %%   <<"LoggingRole">> => string(),
 %%   <<"SecurityPolicyName">> => string(),
 %%   <<"ServiceManagedEgressIpAddresses">> => list(string()),
 %%   <<"SftpConfig">> => sftp_connector_config(),
+%%   <<"Status">> => list(any()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"Url">> => string()
 %% }
