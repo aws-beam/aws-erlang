@@ -133,6 +133,8 @@
          copy_snapshot/3,
          copy_volumes/2,
          copy_volumes/3,
+         create_capacity_manager_data_export/2,
+         create_capacity_manager_data_export/3,
          create_capacity_reservation/2,
          create_capacity_reservation/3,
          create_capacity_reservation_by_splitting/2,
@@ -319,6 +321,8 @@
          create_vpn_connection_route/3,
          create_vpn_gateway/2,
          create_vpn_gateway/3,
+         delete_capacity_manager_data_export/2,
+         delete_capacity_manager_data_export/3,
          delete_carrier_gateway/2,
          delete_carrier_gateway/3,
          delete_client_vpn_endpoint/2,
@@ -527,6 +531,8 @@
          describe_capacity_block_status/3,
          describe_capacity_blocks/2,
          describe_capacity_blocks/3,
+         describe_capacity_manager_data_exports/2,
+         describe_capacity_manager_data_exports/3,
          describe_capacity_reservation_billing_requests/2,
          describe_capacity_reservation_billing_requests/3,
          describe_capacity_reservation_fleets/2,
@@ -861,6 +867,8 @@
          disable_allowed_images_settings/3,
          disable_aws_network_performance_metric_subscription/2,
          disable_aws_network_performance_metric_subscription/3,
+         disable_capacity_manager/2,
+         disable_capacity_manager/3,
          disable_ebs_encryption_by_default/2,
          disable_ebs_encryption_by_default/3,
          disable_fast_launch/2,
@@ -933,6 +941,8 @@
          enable_allowed_images_settings/3,
          enable_aws_network_performance_metric_subscription/2,
          enable_aws_network_performance_metric_subscription/3,
+         enable_capacity_manager/2,
+         enable_capacity_manager/3,
          enable_ebs_encryption_by_default/2,
          enable_ebs_encryption_by_default/3,
          enable_fast_launch/2,
@@ -987,6 +997,12 @@
          get_associated_ipv6_pool_cidrs/3,
          get_aws_network_performance_data/2,
          get_aws_network_performance_data/3,
+         get_capacity_manager_attributes/2,
+         get_capacity_manager_attributes/3,
+         get_capacity_manager_metric_data/2,
+         get_capacity_manager_metric_data/3,
+         get_capacity_manager_metric_dimensions/2,
+         get_capacity_manager_metric_dimensions/3,
          get_capacity_reservation_usage/2,
          get_capacity_reservation_usage/3,
          get_coip_pool_usage/2,
@@ -1395,6 +1411,8 @@
          unlock_snapshot/3,
          unmonitor_instances/2,
          unmonitor_instances/3,
+         update_capacity_manager_organizations_access/2,
+         update_capacity_manager_organizations_access/3,
          update_security_group_rule_descriptions_egress/2,
          update_security_group_rule_descriptions_egress/3,
          update_security_group_rule_descriptions_ingress/2,
@@ -1670,6 +1688,13 @@
 %%   <<"VpnGatewayId">> => string()
 %% }
 -type vpn_gateway() :: #{binary() => any()}.
+
+%% Example:
+%% disable_capacity_manager_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean()
+%% }
+-type disable_capacity_manager_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_flow_logs_integration_template_request() :: #{
@@ -4831,6 +4856,18 @@
 -type describe_store_image_tasks_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_capacity_manager_attributes_result() :: #{
+%%   <<"CapacityManagerStatus">> => list(any()),
+%%   <<"DataExportCount">> => integer(),
+%%   <<"EarliestDatapointTimestamp">> => non_neg_integer(),
+%%   <<"IngestionStatus">> => list(any()),
+%%   <<"IngestionStatusMessage">> => string(),
+%%   <<"LatestDatapointTimestamp">> => non_neg_integer(),
+%%   <<"OrganizationsAccess">> => boolean()
+%% }
+-type get_capacity_manager_attributes_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_transit_gateway_vpc_attachment_request_options() :: #{
 %%   <<"ApplianceModeSupport">> => list(any()),
 %%   <<"DnsSupport">> => list(any()),
@@ -5653,6 +5690,13 @@
 -type delete_ipam_external_resource_verification_token_request() :: #{binary() => any()}.
 
 %% Example:
+%% enable_capacity_manager_result() :: #{
+%%   <<"CapacityManagerStatus">> => list(any()),
+%%   <<"OrganizationsAccess">> => boolean()
+%% }
+-type enable_capacity_manager_result() :: #{binary() => any()}.
+
+%% Example:
 %% delete_spot_datafeed_subscription_request() :: #{
 %%   <<"DryRun">> => boolean()
 %% }
@@ -5922,6 +5966,12 @@
 %%   <<"GroupNames">> => list(string())
 %% }
 -type describe_placement_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_capacity_manager_data_export_result() :: #{
+%%   <<"CapacityManagerDataExportId">> => string()
+%% }
+-type delete_capacity_manager_data_export_result() :: #{binary() => any()}.
 
 %% Example:
 %% host_offering() :: #{
@@ -8274,6 +8324,14 @@
 -type credit_specification_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_capacity_manager_organizations_access_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"OrganizationsAccess">> := boolean()
+%% }
+-type update_capacity_manager_organizations_access_request() :: #{binary() => any()}.
+
+%% Example:
 %% spot_fleet_launch_specification() :: #{
 %%   <<"AddressingType">> => string(),
 %%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
@@ -8819,6 +8877,13 @@
 -type create_transit_gateway_route_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_capacity_manager_data_exports_result() :: #{
+%%   <<"CapacityManagerDataExports">> => list(capacity_manager_data_export_response()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_manager_data_exports_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_vpn_connections_result() :: #{
 %%   <<"VpnConnections">> => list(vpn_connection())
 %% }
@@ -9249,6 +9314,14 @@
 -type detach_classic_link_vpc_request() :: #{binary() => any()}.
 
 %% Example:
+%% dimension_condition() :: #{
+%%   <<"Comparison">> => list(any()),
+%%   <<"Dimension">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type dimension_condition() :: #{binary() => any()}.
+
+%% Example:
 %% describe_export_tasks_result() :: #{
 %%   <<"ExportTasks">> => list(export_task())
 %% }
@@ -9560,6 +9633,12 @@
 %%   <<"OfferingId">> => string()
 %% }
 -type describe_host_reservation_offerings_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_manager_data_export_result() :: #{
+%%   <<"CapacityManagerDataExportId">> => string()
+%% }
+-type create_capacity_manager_data_export_result() :: #{binary() => any()}.
 
 %% Example:
 %% creation_date_condition() :: #{
@@ -10016,6 +10095,22 @@
 %%   <<"VirtualizationTypes">> => list(list(any())())
 %% }
 -type instance_requirements_with_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_manager_data_export_response() :: #{
+%%   <<"CapacityManagerDataExportId">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"LatestDeliveryS3LocationUri">> => string(),
+%%   <<"LatestDeliveryStatus">> => list(any()),
+%%   <<"LatestDeliveryStatusMessage">> => string(),
+%%   <<"LatestDeliveryTime">> => non_neg_integer(),
+%%   <<"OutputFormat">> => list(any()),
+%%   <<"S3BucketName">> => string(),
+%%   <<"S3BucketPrefix">> => string(),
+%%   <<"Schedule">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type capacity_manager_data_export_response() :: #{binary() => any()}.
 
 %% Example:
 %% fleet_spot_capacity_rebalance_request() :: #{
@@ -12177,6 +12272,13 @@
 -type launch_template_overrides() :: #{binary() => any()}.
 
 %% Example:
+%% delete_capacity_manager_data_export_request() :: #{
+%%   <<"CapacityManagerDataExportId">> := string(),
+%%   <<"DryRun">> => boolean()
+%% }
+-type delete_capacity_manager_data_export_request() :: #{binary() => any()}.
+
+%% Example:
 %% ipam_discovered_public_address() :: #{
 %%   <<"Address">> => string(),
 %%   <<"AddressAllocationId">> => string(),
@@ -12399,6 +12501,18 @@
 %%   <<"TransitGatewayAddress">> => string()
 %% }
 -type transit_gateway_connect_peer_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_manager_data_export_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"OutputFormat">> := list(any()),
+%%   <<"S3BucketName">> := string(),
+%%   <<"S3BucketPrefix">> => string(),
+%%   <<"Schedule">> := list(any()),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_capacity_manager_data_export_request() :: #{binary() => any()}.
 
 %% Example:
 %% remove_ipam_organizational_unit_exclusion() :: #{
@@ -14057,6 +14171,14 @@
 -type get_vpn_connection_device_sample_configuration_result() :: #{binary() => any()}.
 
 %% Example:
+%% enable_capacity_manager_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"OrganizationsAccess">> => boolean()
+%% }
+-type enable_capacity_manager_request() :: #{binary() => any()}.
+
+%% Example:
 %% iam_instance_profile_specification() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Name">> => string()
@@ -14174,6 +14296,19 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type image_reference() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_manager_metric_dimensions_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"FilterBy">> => list(capacity_manager_condition()),
+%%   <<"GroupBy">> := list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetricNames">> := list(list(any())()),
+%%   <<"NextToken">> => string(),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_capacity_manager_metric_dimensions_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_route_server_peer_result() :: #{
@@ -15885,6 +16020,13 @@
 -type register_transit_gateway_multicast_group_sources_request() :: #{binary() => any()}.
 
 %% Example:
+%% metric_value() :: #{
+%%   <<"Metric">> => list(any()),
+%%   <<"Value">> => float()
+%% }
+-type metric_value() :: #{binary() => any()}.
+
+%% Example:
 %% reset_ebs_default_kms_key_id_request() :: #{
 %%   <<"DryRun">> => boolean()
 %% }
@@ -16230,6 +16372,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_ipam_scopes_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_manager_attributes_request() :: #{
+%%   <<"DryRun">> => boolean()
+%% }
+-type get_capacity_manager_attributes_request() :: #{binary() => any()}.
 
 %% Example:
 %% spot_fleet_monitoring() :: #{
@@ -17974,6 +18122,13 @@
 -type prefix_list_association() :: #{binary() => any()}.
 
 %% Example:
+%% update_capacity_manager_organizations_access_result() :: #{
+%%   <<"CapacityManagerStatus">> => list(any()),
+%%   <<"OrganizationsAccess">> => boolean()
+%% }
+-type update_capacity_manager_organizations_access_result() :: #{binary() => any()}.
+
+%% Example:
 %% release_hosts_request() :: #{
 %%   <<"HostIds">> := list(string())
 %% }
@@ -17999,6 +18154,13 @@
 %%   <<"PerHourPartition">> => boolean()
 %% }
 -type destination_options_request() :: #{binary() => any()}.
+
+%% Example:
+%% disable_capacity_manager_result() :: #{
+%%   <<"CapacityManagerStatus">> => list(any()),
+%%   <<"OrganizationsAccess">> => boolean()
+%% }
+-type disable_capacity_manager_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_volumes_result() :: #{
@@ -18276,6 +18438,20 @@
 -type revoke_security_group_ingress_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_capacity_manager_metric_data_result() :: #{
+%%   <<"MetricDataResults">> => list(metric_data_result()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_capacity_manager_metric_data_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_manager_metric_dimensions_result() :: #{
+%%   <<"MetricDimensionResults">> => list(capacity_manager_dimension()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_capacity_manager_metric_dimensions_result() :: #{binary() => any()}.
+
+%% Example:
 %% fleet_launch_template_overrides_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"BlockDeviceMappings">> => list(fleet_block_device_mapping_request()),
@@ -18491,6 +18667,28 @@
 %%   <<"ServiceIds">> => list(string())
 %% }
 -type describe_vpc_endpoint_service_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_manager_dimension() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"InstanceFamily">> => string(),
+%%   <<"InstancePlatform">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"ReservationArn">> => string(),
+%%   <<"ReservationCreateTimestamp">> => non_neg_integer(),
+%%   <<"ReservationEndDateType">> => list(any()),
+%%   <<"ReservationEndTimestamp">> => non_neg_integer(),
+%%   <<"ReservationId">> => string(),
+%%   <<"ReservationInstanceMatchCriteria">> => string(),
+%%   <<"ReservationStartTimestamp">> => non_neg_integer(),
+%%   <<"ReservationState">> => list(any()),
+%%   <<"ReservationType">> => list(any()),
+%%   <<"ReservationUnusedFinancialOwner">> => string(),
+%%   <<"ResourceRegion">> => string(),
+%%   <<"Tenancy">> => list(any())
+%% }
+-type capacity_manager_dimension() :: #{binary() => any()}.
 
 %% Example:
 %% deregister_transit_gateway_multicast_group_sources_result() :: #{
@@ -18863,6 +19061,16 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_capacity_reservation_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_manager_data_exports_request() :: #{
+%%   <<"CapacityManagerDataExportIds">> => list(string()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_manager_data_exports_request() :: #{binary() => any()}.
 
 %% Example:
 %% create_traffic_mirror_filter_request() :: #{
@@ -20063,6 +20271,14 @@
 -type restore_snapshot_tier_request() :: #{binary() => any()}.
 
 %% Example:
+%% metric_data_result() :: #{
+%%   <<"Dimension">> => capacity_manager_dimension(),
+%%   <<"MetricValues">> => list(metric_value()),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type metric_data_result() :: #{binary() => any()}.
+
+%% Example:
 %% connection_log_options() :: #{
 %%   <<"CloudwatchLogGroup">> => string(),
 %%   <<"CloudwatchLogStream">> => string(),
@@ -20278,6 +20494,20 @@
 %%   <<"VpcEndpoints">> => list(vpc_endpoint())
 %% }
 -type describe_vpc_endpoints_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_manager_metric_data_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"EndTime">> := non_neg_integer(),
+%%   <<"FilterBy">> => list(capacity_manager_condition()),
+%%   <<"GroupBy">> => list(list(any())()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetricNames">> := list(list(any())()),
+%%   <<"NextToken">> => string(),
+%%   <<"Period">> := integer(),
+%%   <<"StartTime">> := non_neg_integer()
+%% }
+-type get_capacity_manager_metric_data_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_network_insights_analysis_result() :: #{
@@ -20699,6 +20929,12 @@
 -type describe_capacity_blocks_request() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_manager_condition() :: #{
+%%   <<"DimensionCondition">> => dimension_condition()
+%% }
+-type capacity_manager_condition() :: #{binary() => any()}.
+
+%% Example:
 %% vpn_tunnel_log_options() :: #{
 %%   <<"CloudWatchLogOptions">> => cloud_watch_log_options()
 %% }
@@ -21071,15 +21307,29 @@ advertise_byoip_cidr(Client, Input, Options)
 %% address, it is released to the IP address
 %% pool and can be allocated to a different Amazon Web Services account.
 %%
-%% You can allocate an Elastic IP address from an address pool owned by
-%% Amazon Web Services or from an address pool created
-%% from a public IPv4 address range that you have brought to Amazon Web
-%% Services for use with your Amazon Web Services resources using bring your
-%% own
-%% IP addresses (BYOIP). For more information, see Bring Your Own IP
-%% Addresses (BYOIP):
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html in the
-%% Amazon EC2 User Guide.
+%% You can allocate an Elastic IP address from one of the following address
+%% pools:
+%%
+%% Amazon's pool of IPv4 addresses
+%%
+%% Public IPv4 address range that you own and bring to your Amazon Web
+%% Services account using
+%% Bring Your Own IP Addresses (BYOIP):
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html
+%%
+%% An IPv4 IPAM pool with an Amazon-provided or BYOIP public IPv4 address
+%% range
+%%
+%% IPv4 addresses from your on-premises network made available for use with
+%% an Outpost
+%% using a customer-owned IP address
+%% pool:
+%% https://docs.aws.amazon.com/outposts/latest/userguide/routing.html#ip-addressing
+%% (CoIP pool)
+%%
+%% For more information, see Elastic IP Addresses:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
+%% in the Amazon EC2 User Guide.
 %%
 %% If you release an Elastic IP address, you might be able to recover it. You
 %% cannot recover
@@ -21087,10 +21337,6 @@ advertise_byoip_cidr(Client, Input, Options)
 %% Amazon Web Services account. To attempt to recover an Elastic IP address
 %% that you released, specify
 %% it in this operation.
-%%
-%% For more information, see Elastic IP Addresses:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html
-%% in the Amazon EC2 User Guide.
 %%
 %% You can allocate a carrier IP address which is a public IP address from a
 %% telecommunication carrier,
@@ -22551,6 +22797,27 @@ copy_volumes(Client, Input)
 copy_volumes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyVolumes">>, Input, Options).
+
+%% @doc
+%% Creates a new data export configuration for EC2 Capacity Manager.
+%%
+%% This allows you to automatically export capacity usage data to an S3
+%% bucket on a scheduled basis.
+%% The exported data includes metrics for On-Demand, Spot, and Capacity
+%% Reservations usage across your organization.
+-spec create_capacity_manager_data_export(aws_client:aws_client(), create_capacity_manager_data_export_request()) ->
+    {ok, create_capacity_manager_data_export_result(), tuple()} |
+    {error, any()}.
+create_capacity_manager_data_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_capacity_manager_data_export(Client, Input, []).
+
+-spec create_capacity_manager_data_export(aws_client:aws_client(), create_capacity_manager_data_export_request(), proplists:proplist()) ->
+    {ok, create_capacity_manager_data_export_result(), tuple()} |
+    {error, any()}.
+create_capacity_manager_data_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCapacityManagerDataExport">>, Input, Options).
 
 %% @doc Creates a new Capacity Reservation with the specified attributes.
 %%
@@ -25192,6 +25459,25 @@ create_vpn_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpnGateway">>, Input, Options).
 
+%% @doc
+%% Deletes an existing Capacity Manager data export configuration.
+%%
+%% This stops future scheduled exports but does not delete previously
+%% exported files from S3.
+-spec delete_capacity_manager_data_export(aws_client:aws_client(), delete_capacity_manager_data_export_request()) ->
+    {ok, delete_capacity_manager_data_export_result(), tuple()} |
+    {error, any()}.
+delete_capacity_manager_data_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_capacity_manager_data_export(Client, Input, []).
+
+-spec delete_capacity_manager_data_export(aws_client:aws_client(), delete_capacity_manager_data_export_request(), proplists:proplist()) ->
+    {ok, delete_capacity_manager_data_export_result(), tuple()} |
+    {error, any()}.
+delete_capacity_manager_data_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCapacityManagerDataExport">>, Input, Options).
+
 %% @doc Deletes a carrier gateway.
 %%
 %% If you do not delete the route that contains the carrier gateway as the
@@ -27295,6 +27581,25 @@ describe_capacity_blocks(Client, Input)
 describe_capacity_blocks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCapacityBlocks">>, Input, Options).
+
+%% @doc
+%% Describes one or more Capacity Manager data export configurations.
+%%
+%% Returns information about export settings, delivery status, and recent
+%% export activity.
+-spec describe_capacity_manager_data_exports(aws_client:aws_client(), describe_capacity_manager_data_exports_request()) ->
+    {ok, describe_capacity_manager_data_exports_result(), tuple()} |
+    {error, any()}.
+describe_capacity_manager_data_exports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_manager_data_exports(Client, Input, []).
+
+-spec describe_capacity_manager_data_exports(aws_client:aws_client(), describe_capacity_manager_data_exports_request(), proplists:proplist()) ->
+    {ok, describe_capacity_manager_data_exports_result(), tuple()} |
+    {error, any()}.
+describe_capacity_manager_data_exports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityManagerDataExports">>, Input, Options).
 
 %% @doc Describes a request to assign the billing of the unused capacity of a
 %% Capacity
@@ -31101,6 +31406,26 @@ disable_aws_network_performance_metric_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAwsNetworkPerformanceMetricSubscription">>, Input, Options).
 
+%% @doc
+%% Disables EC2 Capacity Manager for your account.
+%%
+%% This stops data ingestion and removes access to capacity analytics and
+%% optimization recommendations.
+%% Previously collected data is retained but no new data will be processed.
+-spec disable_capacity_manager(aws_client:aws_client(), disable_capacity_manager_request()) ->
+    {ok, disable_capacity_manager_result(), tuple()} |
+    {error, any()}.
+disable_capacity_manager(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_capacity_manager(Client, Input, []).
+
+-spec disable_capacity_manager(aws_client:aws_client(), disable_capacity_manager_request(), proplists:proplist()) ->
+    {ok, disable_capacity_manager_result(), tuple()} |
+    {error, any()}.
+disable_capacity_manager(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableCapacityManager">>, Input, Options).
+
 %% @doc Disables EBS encryption by default for your account in the current
 %% Region.
 %%
@@ -31972,6 +32297,26 @@ enable_aws_network_performance_metric_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableAwsNetworkPerformanceMetricSubscription">>, Input, Options).
 
+%% @doc
+%% Enables EC2 Capacity Manager for your account.
+%%
+%% This starts data ingestion for your EC2 capacity usage across On-Demand,
+%% Spot, and Capacity Reservations.
+%% Initial data processing may take several hours to complete.
+-spec enable_capacity_manager(aws_client:aws_client(), enable_capacity_manager_request()) ->
+    {ok, enable_capacity_manager_result(), tuple()} |
+    {error, any()}.
+enable_capacity_manager(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_capacity_manager(Client, Input, []).
+
+-spec enable_capacity_manager(aws_client:aws_client(), enable_capacity_manager_request(), proplists:proplist()) ->
+    {ok, enable_capacity_manager_result(), tuple()} |
+    {error, any()}.
+enable_capacity_manager(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableCapacityManager">>, Input, Options).
+
 %% @doc Enables EBS encryption by default for your account in the current
 %% Region.
 %%
@@ -32605,6 +32950,67 @@ get_aws_network_performance_data(Client, Input)
 get_aws_network_performance_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAwsNetworkPerformanceData">>, Input, Options).
+
+%% @doc
+%% Retrieves the current configuration and status of EC2 Capacity Manager for
+%% your account, including enablement status, Organizations access settings,
+%% and data ingestion status.
+-spec get_capacity_manager_attributes(aws_client:aws_client(), get_capacity_manager_attributes_request()) ->
+    {ok, get_capacity_manager_attributes_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_attributes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_capacity_manager_attributes(Client, Input, []).
+
+-spec get_capacity_manager_attributes(aws_client:aws_client(), get_capacity_manager_attributes_request(), proplists:proplist()) ->
+    {ok, get_capacity_manager_attributes_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_attributes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCapacityManagerAttributes">>, Input, Options).
+
+%% @doc
+%% Retrieves capacity usage metrics for your EC2 resources.
+%%
+%% Returns time-series data for metrics like unused capacity, utilization
+%% rates, and costs
+%% across On-Demand, Spot, and Capacity Reservations. Data can be grouped and
+%% filtered by various dimensions such as region, account, and instance
+%% family.
+-spec get_capacity_manager_metric_data(aws_client:aws_client(), get_capacity_manager_metric_data_request()) ->
+    {ok, get_capacity_manager_metric_data_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_metric_data(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_capacity_manager_metric_data(Client, Input, []).
+
+-spec get_capacity_manager_metric_data(aws_client:aws_client(), get_capacity_manager_metric_data_request(), proplists:proplist()) ->
+    {ok, get_capacity_manager_metric_data_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_metric_data(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCapacityManagerMetricData">>, Input, Options).
+
+%% @doc
+%% Retrieves the available dimension values for capacity metrics within a
+%% specified time range.
+%%
+%% This is useful for discovering what accounts,
+%% regions, instance families, and other dimensions have data available for
+%% filtering and grouping.
+-spec get_capacity_manager_metric_dimensions(aws_client:aws_client(), get_capacity_manager_metric_dimensions_request()) ->
+    {ok, get_capacity_manager_metric_dimensions_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_metric_dimensions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_capacity_manager_metric_dimensions(Client, Input, []).
+
+-spec get_capacity_manager_metric_dimensions(aws_client:aws_client(), get_capacity_manager_metric_dimensions_request(), proplists:proplist()) ->
+    {ok, get_capacity_manager_metric_dimensions_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_metric_dimensions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCapacityManagerMetricDimensions">>, Input, Options).
 
 %% @doc Gets usage information about a Capacity Reservation.
 %%
@@ -37919,6 +38325,26 @@ unmonitor_instances(Client, Input)
 unmonitor_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnmonitorInstances">>, Input, Options).
+
+%% @doc
+%% Updates the Organizations access setting for EC2 Capacity Manager.
+%%
+%% This controls whether Capacity Manager can aggregate
+%% data from all accounts in your Amazon Web Services Organization or only
+%% from the current account.
+-spec update_capacity_manager_organizations_access(aws_client:aws_client(), update_capacity_manager_organizations_access_request()) ->
+    {ok, update_capacity_manager_organizations_access_result(), tuple()} |
+    {error, any()}.
+update_capacity_manager_organizations_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_capacity_manager_organizations_access(Client, Input, []).
+
+-spec update_capacity_manager_organizations_access(aws_client:aws_client(), update_capacity_manager_organizations_access_request(), proplists:proplist()) ->
+    {ok, update_capacity_manager_organizations_access_result(), tuple()} |
+    {error, any()}.
+update_capacity_manager_organizations_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCapacityManagerOrganizationsAccess">>, Input, Options).
 
 %% @doc Updates the description of an egress (outbound) security group rule.
 %%

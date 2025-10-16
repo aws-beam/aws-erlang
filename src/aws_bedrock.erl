@@ -974,6 +974,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"definitionHash">> => string(),
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"policyArn">> => string(),
 %%   <<"policyId">> => string(),
@@ -1441,6 +1442,7 @@
 %% create_automated_reasoning_policy_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"kmsKeyId">> => string(),
 %%   <<"name">> := string(),
 %%   <<"policyDefinition">> => automated_reasoning_policy_definition(),
 %%   <<"tags">> => list(tag())
@@ -2321,9 +2323,12 @@
 %% get_model_invocation_logging_configuration_request() :: #{}
 -type get_model_invocation_logging_configuration_request() :: #{}.
 
+
 %% Example:
-%% delete_automated_reasoning_policy_request() :: #{}
--type delete_automated_reasoning_policy_request() :: #{}.
+%% delete_automated_reasoning_policy_request() :: #{
+%%   <<"force">> => [boolean()]
+%% }
+-type delete_automated_reasoning_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3805,7 +3810,9 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    resource_in_use_exception().
 
 -type delete_automated_reasoning_policy_build_workflow_errors() ::
     throttling_exception() | 
@@ -5184,9 +5191,10 @@ delete_automated_reasoning_policy(Client, PolicyArn, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"force">>, <<"force">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Automated Reasoning policy build workflow and its

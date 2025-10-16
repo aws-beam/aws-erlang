@@ -157,6 +157,14 @@
 -type describe_listener_attributes_input() :: #{binary() => any()}.
 
 %% Example:
+%% rule_transform() :: #{
+%%   <<"HostHeaderRewriteConfig">> => host_header_rewrite_config(),
+%%   <<"Type">> => list(any()),
+%%   <<"UrlRewriteConfig">> => url_rewrite_config()
+%% }
+-type rule_transform() :: #{binary() => any()}.
+
+%% Example:
 %% target_health() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Reason">> => list(any()),
@@ -193,6 +201,13 @@
 %%   <<"MinimumLoadBalancerCapacity">> => minimum_load_balancer_capacity()
 %% }
 -type describe_capacity_reservation_output() :: #{binary() => any()}.
+
+%% Example:
+%% rewrite_config() :: #{
+%%   <<"Regex">> => string(),
+%%   <<"Replace">> => string()
+%% }
+-type rewrite_config() :: #{binary() => any()}.
 
 %% Example:
 %% trust_store_revocation() :: #{
@@ -581,6 +596,7 @@
 
 %% Example:
 %% host_header_condition_config() :: #{
+%%   <<"RegexValues">> => list(string()),
 %%   <<"Values">> => list(string())
 %% }
 -type host_header_condition_config() :: #{binary() => any()}.
@@ -628,6 +644,12 @@
 %%   <<"StatusCode">> => list(any())
 %% }
 -type redirect_action_config() :: #{binary() => any()}.
+
+%% Example:
+%% url_rewrite_config() :: #{
+%%   <<"Rewrites">> => list(rewrite_config())
+%% }
+-type url_rewrite_config() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -924,7 +946,8 @@
 %%   <<"Conditions">> => list(rule_condition()),
 %%   <<"IsDefault">> => boolean(),
 %%   <<"Priority">> => string(),
-%%   <<"RuleArn">> => string()
+%%   <<"RuleArn">> => string(),
+%%   <<"Transforms">> => list(rule_transform())
 %% }
 -type rule() :: #{binary() => any()}.
 
@@ -934,7 +957,8 @@
 %%   <<"Conditions">> := list(rule_condition()),
 %%   <<"ListenerArn">> := string(),
 %%   <<"Priority">> := integer(),
-%%   <<"Tags">> => list(tag())
+%%   <<"Tags">> => list(tag()),
+%%   <<"Transforms">> => list(rule_transform())
 %% }
 -type create_rule_input() :: #{binary() => any()}.
 
@@ -1042,6 +1066,12 @@
 %%   <<"TrustStoreArn">> := string()
 %% }
 -type remove_trust_store_revocations_input() :: #{binary() => any()}.
+
+%% Example:
+%% host_header_rewrite_config() :: #{
+%%   <<"Rewrites">> => list(rewrite_config())
+%% }
+-type host_header_rewrite_config() :: #{binary() => any()}.
 
 %% Example:
 %% too_many_certificates_exception() :: #{
@@ -1173,6 +1203,7 @@
 %%   <<"HttpRequestMethodConfig">> => http_request_method_condition_config(),
 %%   <<"PathPatternConfig">> => path_pattern_condition_config(),
 %%   <<"QueryStringConfig">> => query_string_condition_config(),
+%%   <<"RegexValues">> => list(string()),
 %%   <<"SourceIpConfig">> => source_ip_condition_config(),
 %%   <<"Values">> => list(string())
 %% }
@@ -1420,7 +1451,9 @@
 %% modify_rule_input() :: #{
 %%   <<"Actions">> => list(action()),
 %%   <<"Conditions">> => list(rule_condition()),
-%%   <<"RuleArn">> := string()
+%%   <<"ResetTransforms">> => boolean(),
+%%   <<"RuleArn">> := string(),
+%%   <<"Transforms">> => list(rule_transform())
 %% }
 -type modify_rule_input() :: #{binary() => any()}.
 
@@ -1514,6 +1547,7 @@
 %% Example:
 %% http_header_condition_config() :: #{
 %%   <<"HttpHeaderName">> => string(),
+%%   <<"RegexValues">> => list(string()),
 %%   <<"Values">> => list(string())
 %% }
 -type http_header_condition_config() :: #{binary() => any()}.
@@ -1526,6 +1560,7 @@
 
 %% Example:
 %% path_pattern_condition_config() :: #{
+%%   <<"RegexValues">> => list(string()),
 %%   <<"Values">> => list(string())
 %% }
 -type path_pattern_condition_config() :: #{binary() => any()}.
@@ -2134,14 +2169,15 @@ create_load_balancer(Client, Input, Options)
 %% The listener must be associated with an
 %% Application Load Balancer.
 %%
-%% Each rule consists of a priority, one or more actions, and one or more
-%% conditions. Rules
-%% are evaluated in priority order, from the lowest value to the highest
-%% value. When the
-%% conditions for a rule are met, its actions are performed. If the
-%% conditions for no rules are
-%% met, the actions for the default rule are performed. For more information,
-%% see Listener rules:
+%% Each rule consists of a priority, one or more actions, one or more
+%% conditions, and
+%% up to two optional transforms. Rules are evaluated in priority order, from
+%% the lowest value
+%% to the highest value. When the conditions for a rule are met, its actions
+%% are performed.
+%% If the conditions for no rules are met, the actions for the default rule
+%% are performed.
+%% For more information, see Listener rules:
 %% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules
 %% in the Application Load Balancers Guide.
 -spec create_rule(aws_client:aws_client(), create_rule_input()) ->
@@ -3182,14 +3218,8 @@ set_security_groups(Client, Input, Options)
 %% the specified
 %% Application Load Balancer, Network Load Balancer or Gateway Load Balancer.
 %%
-%% The specified subnets replace the
-%% previously enabled subnets.
-%%
-%% When you specify subnets for a Network Load Balancer, or Gateway Load
-%% Balancer you must include all subnets that
-%% were enabled previously, with their existing configurations, plus any
-%% additional
-%% subnets.
+%% The specified subnets
+%% replace the previously enabled subnets.
 -spec set_subnets(aws_client:aws_client(), set_subnets_input()) ->
     {ok, set_subnets_output(), tuple()} |
     {error, any()} |

@@ -1208,6 +1208,7 @@
 %% get_buckets_request() :: #{
 %%   <<"bucketName">> => string(),
 %%   <<"includeConnectedResources">> => boolean(),
+%%   <<"includeCors">> => boolean(),
 %%   <<"pageToken">> => string()
 %% }
 -type get_buckets_request() :: #{binary() => any()}.
@@ -1755,6 +1756,12 @@
 -type get_instance_snapshot_request() :: #{binary() => any()}.
 
 %% Example:
+%% bucket_cors_config() :: #{
+%%   <<"rules">> => list(bucket_cors_rule())
+%% }
+-type bucket_cors_config() :: #{binary() => any()}.
+
+%% Example:
 %% container_service_deployment() :: #{
 %%   <<"containers">> => map(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -1957,6 +1964,17 @@
 -type allocate_static_ip_request() :: #{binary() => any()}.
 
 %% Example:
+%% bucket_cors_rule() :: #{
+%%   <<"allowedHeaders">> => list(string()),
+%%   <<"allowedMethods">> => list(string()),
+%%   <<"allowedOrigins">> => list(string()),
+%%   <<"exposeHeaders">> => list(string()),
+%%   <<"id">> => string(),
+%%   <<"maxAgeSeconds">> => integer()
+%% }
+-type bucket_cors_rule() :: #{binary() => any()}.
+
+%% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
@@ -2070,6 +2088,7 @@
 %%   <<"accessLogConfig">> => bucket_access_log_config(),
 %%   <<"accessRules">> => access_rules(),
 %%   <<"bucketName">> := string(),
+%%   <<"cors">> => bucket_cors_config(),
 %%   <<"readonlyAccessAccounts">> => list(string()),
 %%   <<"versioning">> => string()
 %% }
@@ -2736,6 +2755,7 @@
 %%   <<"accessRules">> => access_rules(),
 %%   <<"arn">> => string(),
 %%   <<"bundleId">> => string(),
+%%   <<"cors">> => bucket_cors_config(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"location">> => resource_location(),
 %%   <<"name">> => string(),
@@ -6291,7 +6311,7 @@ create_key_pair(Client, Input, Options)
 %% your application, see Configure your Lightsail instances for load
 %% balancing:
 %% https://docs.aws.amazon.com/lightsail/latest/userguide/configure-lightsail-instances-for-load-balancing.
-%% You can create up to 5
+%% You can create up to 10
 %% load balancers per AWS Region in your account.
 %%
 %% When you create a load balancer, you can specify a unique name and port

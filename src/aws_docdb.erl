@@ -135,6 +135,7 @@
 %%   <<"Engine">> := string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
+%%   <<"NetworkType">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration(),
 %%   <<"SnapshotIdentifier">> := string(),
@@ -501,6 +502,7 @@
 %%   <<"DeletionProtection">> => boolean(),
 %%   <<"EnableCloudwatchLogsExports">> => list(string()),
 %%   <<"KmsKeyId">> => string(),
+%%   <<"NetworkType">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"RestoreToTime">> => non_neg_integer(),
 %%   <<"RestoreType">> => string(),
@@ -844,6 +846,12 @@
 -type pending_modified_values() :: #{binary() => any()}.
 
 %% Example:
+%% network_type_not_supported() :: #{
+%%   <<"message">> => string()
+%% }
+-type network_type_not_supported() :: #{binary() => any()}.
+
+%% Example:
 %% orderable_db_instance_option() :: #{
 %%   <<"AvailabilityZones">> => list(availability_zone()),
 %%   <<"DBInstanceClass">> => string(),
@@ -1105,6 +1113,7 @@
 %%   <<"MasterUserPassword">> => string(),
 %%   <<"MasterUserSecretKmsKeyId">> => string(),
 %%   <<"MasterUsername">> => string(),
+%%   <<"NetworkType">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"PreSignedUrl">> => string(),
 %%   <<"PreferredBackupWindow">> => string(),
@@ -1297,6 +1306,7 @@
 %% db_cluster() :: #{
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"Port">> => integer(),
+%%   <<"IOOptimizedNextAllowedModificationTime">> => non_neg_integer(),
 %%   <<"Engine">> => string(),
 %%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration_info(),
 %%   <<"DBClusterMembers">> => list(db_cluster_member()),
@@ -1325,6 +1335,7 @@
 %%   <<"PercentProgress">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
 %%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership()),
+%%   <<"NetworkType">> => string(),
 %%   <<"Status">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
 %%   <<"ReadReplicaIdentifiers">> => list(string()),
@@ -1536,6 +1547,7 @@
 %%   <<"DBSubnetGroupName">> => string(),
 %%   <<"SubnetGroupStatus">> => string(),
 %%   <<"Subnets">> => list(subnet()),
+%%   <<"SupportedNetworkTypes">> => list(string()),
 %%   <<"VpcId">> => string()
 %% }
 -type db_subnet_group() :: #{binary() => any()}.
@@ -1600,6 +1612,7 @@
 %%   <<"ManageMasterUserPassword">> => boolean(),
 %%   <<"MasterUserPassword">> => string(),
 %%   <<"MasterUserSecretKmsKeyId">> => string(),
+%%   <<"NetworkType">> => string(),
 %%   <<"NewDBClusterIdentifier">> => string(),
 %%   <<"Port">> => integer(),
 %%   <<"PreferredBackupWindow">> => string(),
@@ -1774,6 +1787,7 @@
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
     db_instance_not_found_fault() | 
+    network_type_not_supported() | 
     db_subnet_group_does_not_cover_enough_a_zs() | 
     invalid_vpc_network_state_fault() | 
     invalid_global_cluster_state_fault() | 
@@ -1924,6 +1938,7 @@
     db_cluster_parameter_group_not_found_fault() | 
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
+    network_type_not_supported() | 
     invalid_vpc_network_state_fault() | 
     invalid_subnet() | 
     invalid_db_subnet_group_state_fault().
@@ -2004,6 +2019,7 @@
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
+    network_type_not_supported() | 
     invalid_vpc_network_state_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
@@ -2021,6 +2037,7 @@
     storage_quota_exceeded_fault() | 
     db_subnet_group_not_found_fault() | 
     invalid_db_cluster_snapshot_state_fault() | 
+    network_type_not_supported() | 
     invalid_vpc_network_state_fault() | 
     invalid_subnet() | 
     invalid_restore_fault() | 
@@ -2305,15 +2322,15 @@ create_event_subscription(Client, Input, Options)
 %% multiple Amazon Web Services Regions.
 %%
 %% The global cluster contains one primary cluster with read-write
-%% capability, and up-to give read-only secondary clusters. Global clusters
+%% capability, and up-to 10 read-only secondary clusters. Global clusters
 %% uses storage-based fast replication across regions with latencies less
 %% than one second, using dedicated infrastructure with no impact to your
 %% workload’s performance.
 %%
 %% You can create a global cluster that is initially empty, and then add a
-%% primary and a secondary to it. Or you can specify an existing cluster
-%% during the create operation, and this cluster becomes the primary of the
-%% global cluster.
+%% primary and a secondary to it.
+%% Or you can specify an existing cluster during the create operation, and
+%% this cluster becomes the primary of the global cluster.
 %%
 %% This action only applies to Amazon DocumentDB clusters.
 -spec create_global_cluster(aws_client:aws_client(), create_global_cluster_message()) ->
