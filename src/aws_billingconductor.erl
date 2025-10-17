@@ -1,34 +1,27 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Web Services Billing Conductor is a fully managed service that
-%% you can use to
-%% customize a proforma:
+%% @doc Billing Conductor is a fully managed service that you can use to
+%% customize a pro forma:
 %% https://docs.aws.amazon.com/billingconductor/latest/userguide/understanding-eb.html#eb-other-definitions
 %% version of your billing data each month, to accurately show or chargeback
 %% your end customers.
 %%
-%% Amazon Web Services Billing Conductor doesn't change the way
-%% you're billed
-%% by Amazon Web Services each month by design. Instead, it provides you with
-%% a mechanism to
-%% configure, generate, and display rates to certain customers over a given
-%% billing period. You
-%% can also analyze the difference between the rates you apply to your
-%% accounting groupings
-%% relative to your actual rates from Amazon Web Services. As a result of
-%% your Amazon Web Services
-%% Billing Conductor configuration, the payer account can also see the custom
-%% rate applied on the
-%% billing details page of the Amazon Web Services Billing
-%% console: https://console.aws.amazon.com/billing, or configure a cost and
-%% usage report per billing group.
+%% Billing Conductor doesn't change the way you're billed by Amazon
+%% Web Services each month by design. Instead, it provides you with a
+%% mechanism to configure, generate, and display rates to certain customers
+%% over a given billing period. You can also analyze the difference between
+%% the rates you apply to your accounting groupings relative to your actual
+%% rates from Amazon Web Services. As a result of your Billing Conductor
+%% configuration, the payer account can also see the custom rate applied on
+%% the billing details page of the Billing console:
+%% https://console.aws.amazon.com/billing, or configure a cost and usage
+%% report per billing group.
 %%
-%% This documentation shows how you can configure Amazon Web Services Billing
-%% Conductor using its
-%% API. For more information about using the Amazon Web Services
-%% Billing Conductor: https://console.aws.amazon.com/billingconductor/ user
-%% interface, see the Amazon Web Services Billing Conductor User Guide:
+%% This documentation shows how you can configure Billing Conductor by using
+%% its API. For more information about using the Billing Conductor:
+%% https://console.aws.amazon.com/billingconductor/ user interface, see the
+%% Billing Conductor User Guide:
 %% https://docs.aws.amazon.com/billingconductor/latest/userguide/what-is-billingconductor.html.
 -module(aws_billingconductor).
 
@@ -177,7 +170,7 @@
 %%   <<"ComputationPreference">> => computation_preference(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"Status">> => string()
+%%   <<"Status">> => list(any())
 %% }
 -type update_billing_group_input() :: #{binary() => any()}.
 
@@ -243,7 +236,7 @@
 %% get_billing_group_cost_report_input() :: #{
 %%   <<"Arn">> := string(),
 %%   <<"BillingPeriodRange">> => billing_period_range(),
-%%   <<"GroupBy">> => list(string()),
+%%   <<"GroupBy">> => list(list(any())()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -255,7 +248,7 @@
 %%   <<"Flat">> => list_custom_line_item_flat_charge_details(),
 %%   <<"LineItemFilters">> => list(line_item_filter()),
 %%   <<"Percentage">> => list_custom_line_item_percentage_charge_details(),
-%%   <<"Type">> => string()
+%%   <<"Type">> => list(any())
 %% }
 -type list_custom_line_item_charge_details() :: #{binary() => any()}.
 
@@ -278,11 +271,11 @@
 %%   <<"ModifierPercentage">> => float(),
 %%   <<"Name">> := string(),
 %%   <<"Operation">> => string(),
-%%   <<"Scope">> := string(),
+%%   <<"Scope">> := list(any()),
 %%   <<"Service">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"Tiering">> => create_tiering_input(),
-%%   <<"Type">> := string(),
+%%   <<"Type">> := list(any()),
 %%   <<"UsageType">> => string()
 %% }
 -type create_pricing_rule_input() :: #{binary() => any()}.
@@ -329,7 +322,7 @@
 %% Example:
 %% associate_resource_error() :: #{
 %%   <<"Message">> => string(),
-%%   <<"Reason">> => string()
+%%   <<"Reason">> => list(any())
 %% }
 -type associate_resource_error() :: #{binary() => any()}.
 
@@ -346,7 +339,7 @@
 %%   <<"Flat">> => custom_line_item_flat_charge_details(),
 %%   <<"LineItemFilters">> => list(line_item_filter()),
 %%   <<"Percentage">> => custom_line_item_percentage_charge_details(),
-%%   <<"Type">> => string()
+%%   <<"Type">> => list(any())
 %% }
 -type custom_line_item_charge_details() :: #{binary() => any()}.
 
@@ -410,6 +403,13 @@
 
 
 %% Example:
+%% presentation_object() :: #{
+%%   <<"Service">> => string()
+%% }
+-type presentation_object() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_pricing_plan_output() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Description">> => string(),
@@ -430,7 +430,7 @@
 %%   <<"PricingPlanArn">> => string(),
 %%   <<"PrimaryAccountId">> => string(),
 %%   <<"Size">> => float(),
-%%   <<"Status">> => string(),
+%%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
 %% }
 -type update_billing_group_output() :: #{binary() => any()}.
@@ -467,7 +467,7 @@
 %% list_resources_associated_to_custom_line_item_response_element() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"EndBillingPeriod">> => string(),
-%%   <<"Relationship">> => string()
+%%   <<"Relationship">> => list(any())
 %% }
 -type list_resources_associated_to_custom_line_item_response_element() :: #{binary() => any()}.
 
@@ -489,7 +489,7 @@
 %% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string(),
-%%   <<"Reason">> => string(),
+%%   <<"Reason">> => list(any()),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceType">> => string()
 %% }
@@ -733,10 +733,10 @@
 %%   <<"ModifierPercentage">> => float(),
 %%   <<"Name">> => string(),
 %%   <<"Operation">> => string(),
-%%   <<"Scope">> => string(),
+%%   <<"Scope">> => list(any()),
 %%   <<"Service">> => string(),
 %%   <<"Tiering">> => update_tiering_input(),
-%%   <<"Type">> => string(),
+%%   <<"Type">> => list(any()),
 %%   <<"UsageType">> => string()
 %% }
 -type update_pricing_rule_output() :: #{binary() => any()}.
@@ -752,9 +752,9 @@
 
 %% Example:
 %% line_item_filter() :: #{
-%%   <<"Attribute">> => string(),
-%%   <<"MatchOption">> => string(),
-%%   <<"Values">> => list(string())
+%%   <<"Attribute">> => list(any()),
+%%   <<"MatchOption">> => list(any()),
+%%   <<"Values">> => list(list(any())())
 %% }
 -type line_item_filter() :: #{binary() => any()}.
 
@@ -780,7 +780,7 @@
 %%   <<"Arns">> => list(string()),
 %%   <<"AutoAssociate">> => [boolean()],
 %%   <<"PricingPlan">> => string(),
-%%   <<"Statuses">> => list(string())
+%%   <<"Statuses">> => list(list(any())())
 %% }
 -type list_billing_groups_filter() :: #{binary() => any()}.
 
@@ -855,7 +855,7 @@
 %% validation_exception() :: #{
 %%   <<"Fields">> => list(validation_exception_field()),
 %%   <<"Message">> => string(),
-%%   <<"Reason">> => string()
+%%   <<"Reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
@@ -899,11 +899,13 @@
 %%   <<"AssociationSize">> => float(),
 %%   <<"BillingGroupArn">> => string(),
 %%   <<"ChargeDetails">> => list_custom_line_item_charge_details(),
+%%   <<"ComputationRule">> => list(any()),
 %%   <<"CreationTime">> => float(),
-%%   <<"CurrencyCode">> => string(),
+%%   <<"CurrencyCode">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"LastModifiedTime">> => float(),
 %%   <<"Name">> => string(),
+%%   <<"PresentationDetails">> => presentation_object(),
 %%   <<"ProductCode">> => string()
 %% }
 -type custom_line_item_list_element() :: #{binary() => any()}.
@@ -916,12 +918,14 @@
 %%   <<"AssociationSize">> => float(),
 %%   <<"BillingGroupArn">> => string(),
 %%   <<"ChargeDetails">> => list_custom_line_item_charge_details(),
+%%   <<"ComputationRule">> => list(any()),
 %%   <<"CreationTime">> => float(),
-%%   <<"CurrencyCode">> => string(),
+%%   <<"CurrencyCode">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"EndBillingPeriod">> => string(),
 %%   <<"LastModifiedTime">> => float(),
 %%   <<"Name">> => string(),
+%%   <<"PresentationDetails">> => presentation_object(),
 %%   <<"ProductCode">> => string(),
 %%   <<"StartBillingPeriod">> => string(),
 %%   <<"StartTime">> => float()
@@ -967,7 +971,7 @@
 %%   <<"Name">> => string(),
 %%   <<"PrimaryAccountId">> => string(),
 %%   <<"Size">> => float(),
-%%   <<"Status">> => string(),
+%%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
 %% }
 -type billing_group_list_element() :: #{binary() => any()}.
@@ -980,7 +984,7 @@
 %%   <<"ModifierPercentage">> => float(),
 %%   <<"Name">> => string(),
 %%   <<"Tiering">> => update_tiering_input(),
-%%   <<"Type">> => string()
+%%   <<"Type">> => list(any())
 %% }
 -type update_pricing_rule_input() :: #{binary() => any()}.
 
@@ -1016,7 +1020,7 @@
 
 %% Example:
 %% list_resources_associated_to_custom_line_item_filter() :: #{
-%%   <<"Relationship">> => string()
+%%   <<"Relationship">> => list(any())
 %% }
 -type list_resources_associated_to_custom_line_item_filter() :: #{binary() => any()}.
 
@@ -1039,10 +1043,10 @@
 %%   <<"ModifierPercentage">> => float(),
 %%   <<"Name">> => string(),
 %%   <<"Operation">> => string(),
-%%   <<"Scope">> => string(),
+%%   <<"Scope">> => list(any()),
 %%   <<"Service">> => string(),
 %%   <<"Tiering">> => tiering(),
-%%   <<"Type">> => string(),
+%%   <<"Type">> => list(any()),
 %%   <<"UsageType">> => string()
 %% }
 -type pricing_rule_list_element() :: #{binary() => any()}.
@@ -1119,8 +1123,10 @@
 %%   <<"BillingPeriodRange">> => custom_line_item_billing_period_range(),
 %%   <<"ChargeDetails">> => custom_line_item_charge_details(),
 %%   <<"ClientToken">> => string(),
+%%   <<"ComputationRule">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"PresentationDetails">> => presentation_object(),
 %%   <<"Tags">> => map()
 %% }
 -type create_custom_line_item_input() :: #{binary() => any()}.
@@ -1392,14 +1398,11 @@
 %%====================================================================
 
 %% @doc Connects an array of account IDs in a consolidated billing family to
-%% a predefined
-%% billing group.
+%% a predefined billing group.
 %%
 %% The account IDs must be a part of the consolidated billing family during
-%% the
-%% current month, and not already associated with another billing group. The
-%% maximum number of
-%% accounts that can be associated in one call is 30.
+%% the current month, and not already associated with another billing group.
+%% The maximum number of accounts that can be associated in one call is 30.
 -spec associate_accounts(aws_client:aws_client(), associate_accounts_input()) ->
     {ok, associate_accounts_output(), tuple()} |
     {error, any()} |
@@ -1471,8 +1474,7 @@ associate_pricing_rules(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Associates a batch of resources to a percentage custom line item.
+%% @doc Associates a batch of resources to a percentage custom line item.
 -spec batch_associate_resources_to_custom_line_item(aws_client:aws_client(), batch_associate_resources_to_custom_line_item_input()) ->
     {ok, batch_associate_resources_to_custom_line_item_output(), tuple()} |
     {error, any()} |
@@ -1506,8 +1508,8 @@ batch_associate_resources_to_custom_line_item(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Disassociates a batch of resources from a percentage custom line item.
+%% @doc Disassociates a batch of resources from a percentage custom line
+%% item.
 -spec batch_disassociate_resources_from_custom_line_item(aws_client:aws_client(), batch_disassociate_resources_from_custom_line_item_input()) ->
     {ok, batch_disassociate_resources_from_custom_line_item_output(), tuple()} |
     {error, any()} |
@@ -1541,9 +1543,8 @@ batch_disassociate_resources_from_custom_line_item(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Creates a billing group that resembles a consolidated billing family that
-%% Amazon Web Services charges, based off of the predefined pricing plan
+%% @doc Creates a billing group that resembles a consolidated billing family
+%% that Amazon Web Services charges, based off of the predefined pricing plan
 %% computation.
 -spec create_billing_group(aws_client:aws_client(), create_billing_group_input()) ->
     {ok, create_billing_group_output(), tuple()} |
@@ -1581,12 +1582,10 @@ create_billing_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a custom line item that can be used to create a one-time
-%% fixed charge that can be
-%% applied to a single billing group for the current or previous billing
-%% period.
+%% fixed charge that can be applied to a single billing group for the current
+%% or previous billing period.
 %%
-%% The one-time
-%% fixed charge is either a fee or discount.
+%% The one-time fixed charge is either a fee or discount.
 -spec create_custom_line_item(aws_client:aws_client(), create_custom_line_item_input()) ->
     {ok, create_custom_line_item_output(), tuple()} |
     {error, any()} |
@@ -1659,9 +1658,8 @@ create_pricing_plan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Creates a pricing rule can be associated to a pricing plan, or a set of
-%% pricing plans.
+%% @doc Creates a pricing rule can be associated to a pricing plan, or a set
+%% of pricing plans.
 -spec create_pricing_rule(aws_client:aws_client(), create_pricing_rule_input()) ->
     {ok, create_pricing_rule_output(), tuple()} |
     {error, any()} |
@@ -1697,8 +1695,7 @@ create_pricing_rule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes a billing group.
+%% @doc Deletes a billing group.
 -spec delete_billing_group(aws_client:aws_client(), delete_billing_group_input()) ->
     {ok, delete_billing_group_output(), tuple()} |
     {error, any()} |
@@ -1732,9 +1729,8 @@ delete_billing_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes the custom line item identified by the given ARN in the current,
-%% or previous billing period.
+%% @doc Deletes the custom line item identified by the given ARN in the
+%% current, or previous billing period.
 -spec delete_custom_line_item(aws_client:aws_client(), delete_custom_line_item_input()) ->
     {ok, delete_custom_line_item_output(), tuple()} |
     {error, any()} |
@@ -1770,8 +1766,8 @@ delete_custom_line_item(Client, Input0, Options0) ->
 
 %% @doc Deletes a pricing plan.
 %%
-%% The pricing plan must not be associated with any billing groups to
-%% delete successfully.
+%% The pricing plan must not be associated with any billing groups to delete
+%% successfully.
 -spec delete_pricing_plan(aws_client:aws_client(), delete_pricing_plan_input()) ->
     {ok, delete_pricing_plan_output(), tuple()} |
     {error, any()} |
@@ -1875,8 +1871,7 @@ disassociate_accounts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Disassociates a list of pricing rules from a pricing plan.
+%% @doc Disassociates a list of pricing rules from a pricing plan.
 -spec disassociate_pricing_rules(aws_client:aws_client(), disassociate_pricing_rules_input()) ->
     {ok, disassociate_pricing_rules_output(), tuple()} |
     {error, any()} |
@@ -1911,9 +1906,8 @@ disassociate_pricing_rules(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the margin summary report, which includes the Amazon Web
-%% Services cost and charged
-%% amount (pro forma cost) by Amazon Web Service for a specific billing
-%% group.
+%% Services cost and charged amount (pro forma cost) by Amazon Web Services
+%% service for a specific billing group.
 -spec get_billing_group_cost_report(aws_client:aws_client(), get_billing_group_cost_report_input()) ->
     {ok, get_billing_group_cost_report_output(), tuple()} |
     {error, any()} |
@@ -1948,13 +1942,11 @@ get_billing_group_cost_report(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This is a paginated call to list linked accounts that are linked to
-%% the payer account for
-%% the specified time period.
+%% the payer account for the specified time period.
 %%
-%% If no information is provided, the current billing period is used.
-%% The response will optionally include the billing group that's
-%% associated with the linked
-%% account.
+%% If no information is provided, the current billing period is used. The
+%% response will optionally include the billing group that's associated
+%% with the linked account.
 -spec list_account_associations(aws_client:aws_client(), list_account_associations_input()) ->
     {ok, list_account_associations_output(), tuple()} |
     {error, any()} |
@@ -1989,9 +1981,8 @@ list_account_associations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc A paginated call to retrieve a summary report of actual Amazon Web
-%% Services charges and the calculated
-%% Amazon Web Services charges based on the associated pricing plan of a
-%% billing group.
+%% Services charges and the calculated Amazon Web Services charges based on
+%% the associated pricing plan of a billing group.
 -spec list_billing_group_cost_reports(aws_client:aws_client(), list_billing_group_cost_reports_input()) ->
     {ok, list_billing_group_cost_reports_output(), tuple()} |
     {error, any()} |
@@ -2097,9 +2088,8 @@ list_custom_line_item_versions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% A paginated call to get a list of all custom line items (FFLIs) for the
-%% given billing period.
+%% @doc A paginated call to get a list of all custom line items (FFLIs) for
+%% the given billing period.
 %%
 %% If you don't provide a billing period, the current billing period is
 %% used.
@@ -2173,8 +2163,7 @@ list_pricing_plans(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% A list of the pricing plans that are associated with a pricing rule.
+%% @doc A list of the pricing plans that are associated with a pricing rule.
 -spec list_pricing_plans_associated_with_pricing_rule(aws_client:aws_client(), list_pricing_plans_associated_with_pricing_rule_input()) ->
     {ok, list_pricing_plans_associated_with_pricing_rule_output(), tuple()} |
     {error, any()} |
@@ -2208,9 +2197,8 @@ list_pricing_plans_associated_with_pricing_rule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Describes a pricing rule that can be associated to a pricing plan, or set
-%% of pricing plans.
+%% @doc Describes a pricing rule that can be associated to a pricing plan, or
+%% set of pricing plans.
 -spec list_pricing_rules(aws_client:aws_client(), list_pricing_rules_input()) ->
     {ok, list_pricing_rules_output(), tuple()} |
     {error, any()} |
@@ -2244,8 +2232,7 @@ list_pricing_rules(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists the pricing rules that are associated with a pricing plan.
+%% @doc Lists the pricing rules that are associated with a pricing plan.
 -spec list_pricing_rules_associated_to_pricing_plan(aws_client:aws_client(), list_pricing_rules_associated_to_pricing_plan_input()) ->
     {ok, list_pricing_rules_associated_to_pricing_plan_output(), tuple()} |
     {error, any()} |
@@ -2279,8 +2266,7 @@ list_pricing_rules_associated_to_pricing_plan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% List the resources that are associated to a custom line item.
+%% @doc List the resources that are associated to a custom line item.
 -spec list_resources_associated_to_custom_line_item(aws_client:aws_client(), list_resources_associated_to_custom_line_item_input()) ->
     {ok, list_resources_associated_to_custom_line_item_output(), tuple()} |
     {error, any()} |
@@ -2314,8 +2300,7 @@ list_resources_associated_to_custom_line_item(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% A list the tags for a resource.
+%% @doc A list the tags for a resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -2356,8 +2341,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% `resourceArn'.
 %%
 %% If existing tags on a resource are not specified in the request
-%% parameters, they are not
-%% changed.
+%% parameters, they are not changed.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -2391,8 +2375,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes specified tags from a resource.
+%% @doc Deletes specified tags from a resource.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -2461,9 +2444,8 @@ update_billing_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Update an existing custom line item in the current or previous billing
-%% period.
+%% @doc Update an existing custom line item in the current or previous
+%% billing period.
 -spec update_custom_line_item(aws_client:aws_client(), update_custom_line_item_input()) ->
     {ok, update_custom_line_item_output(), tuple()} |
     {error, any()} |
@@ -2531,8 +2513,7 @@ update_pricing_plan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Updates an existing pricing rule.
+%% @doc Updates an existing pricing rule.
 -spec update_pricing_rule(aws_client:aws_client(), update_pricing_rule_input()) ->
     {ok, update_pricing_rule_output(), tuple()} |
     {error, any()} |
