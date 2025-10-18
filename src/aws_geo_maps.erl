@@ -118,8 +118,12 @@
 %% Example:
 %% get_style_descriptor_request() :: #{
 %%   <<"ColorScheme">> => string(),
+%%   <<"ContourDensity">> => string(),
 %%   <<"Key">> => string(),
-%%   <<"PoliticalView">> => string()
+%%   <<"PoliticalView">> => string(),
+%%   <<"Terrain">> => string(),
+%%   <<"Traffic">> => string(),
+%%   <<"TravelModes">> => list(string())
 %% }
 -type get_style_descriptor_request() :: #{binary() => any()}.
 
@@ -207,6 +211,10 @@
 %%====================================================================
 
 %% @doc `GetGlyphs' returns the map's glyphs.
+%%
+%% For more information, see Style labels with glyphs:
+%% https://docs.aws.amazon.com/location/latest/developerguide/styling-labels-with-glyphs.html
+%% in the Amazon Location Service Developer Guide.
 -spec get_glyphs(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_glyphs_response(), tuple()} |
     {error, any()}.
@@ -259,6 +267,10 @@ get_glyphs(Client, FontStack, FontUnicodeRange, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc `GetSprites' returns the map's sprites.
+%%
+%% For more information, see Style iconography with sprites:
+%% https://docs.aws.amazon.com/location/latest/developerguide/styling-iconography-with-sprites.html
+%% in the Amazon Location Service Developer Guide.
 -spec get_sprites(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_sprites_response(), tuple()} |
     {error, any()}.
@@ -316,6 +328,18 @@ get_sprites(Client, ColorScheme, FileName, Style, Variant, QueryMap, HeadersMap,
 %% You can modify the map's appearance and overlay additional
 %% information. It's an ideal solution for applications requiring
 %% tailored static map snapshots.
+%%
+%% For more information, see the following topics in the Amazon Location
+%% Service Developer Guide:
+%%
+%% Static maps:
+%% https://docs.aws.amazon.com/location/latest/developerguide/static-maps.html
+%%
+%% Customize static maps:
+%% https://docs.aws.amazon.com/location/latest/developerguide/customizing-static-maps.html
+%%
+%% Overlay on the static map:
+%% https://docs.aws.amazon.com/location/latest/developerguide/overlaying-static-map.html
 -spec get_static_map(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_static_map_response(), tuple()} |
     {error, any()} |
@@ -394,6 +418,10 @@ get_static_map(Client, FileName, Height, Width, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc `GetStyleDescriptor' returns information about the style.
+%%
+%% For more information, see Style dynamic maps:
+%% https://docs.aws.amazon.com/location/latest/developerguide/styling-dynamic-maps.html
+%% in the Amazon Location Service Developer Guide.
 -spec get_style_descriptor(aws_client:aws_client(), binary() | list()) ->
     {ok, get_style_descriptor_response(), tuple()} |
     {error, any()}.
@@ -426,8 +454,12 @@ get_style_descriptor(Client, Style, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"color-scheme">>, maps:get(<<"color-scheme">>, QueryMap, undefined)},
+        {<<"contour-density">>, maps:get(<<"contour-density">>, QueryMap, undefined)},
         {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)},
-        {<<"political-view">>, maps:get(<<"political-view">>, QueryMap, undefined)}
+        {<<"political-view">>, maps:get(<<"political-view">>, QueryMap, undefined)},
+        {<<"terrain">>, maps:get(<<"terrain">>, QueryMap, undefined)},
+        {<<"traffic">>, maps:get(<<"traffic">>, QueryMap, undefined)},
+        {<<"travel-modes">>, maps:get(<<"travel-modes">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -455,6 +487,10 @@ get_style_descriptor(Client, Style, QueryMap, HeadersMap, Options0)
 %%
 %% Map tiles are used by clients to render a map. they're addressed using
 %% a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
+%%
+%% For more information, see Tiles:
+%% https://docs.aws.amazon.com/location/latest/developerguide/tiles.html in
+%% the Amazon Location Service Developer Guide.
 -spec get_tile(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_tile_response(), tuple()} |
     {error, any()} |
