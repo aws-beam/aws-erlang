@@ -37,7 +37,7 @@ jobs:
           generateReleaseNotes: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish to hex.pm
+      - name: Publish to Hex.pm
+        uses: erlangpack/github-action@v4
         env:
           HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
-        run: rebar3 hex publish -r hexpm --yes
