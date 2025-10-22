@@ -36,6 +36,9 @@
          get_job_template/2,
          get_job_template/4,
          get_job_template/5,
+         get_jobs_query_results/2,
+         get_jobs_query_results/4,
+         get_jobs_query_results/5,
          get_policy/1,
          get_policy/3,
          get_policy/4,
@@ -70,6 +73,8 @@
          search_jobs/1,
          search_jobs/3,
          search_jobs/4,
+         start_jobs_query/2,
+         start_jobs_query/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/3,
@@ -350,6 +355,16 @@
 
 
 %% Example:
+%% start_jobs_query_request() :: #{
+%%   <<"FilterList">> => list(jobs_query_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Order">> => list(any())
+%% }
+-type start_jobs_query_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% mp2_settings() :: #{
 %%   <<"AudioDescriptionMix">> => list(any()),
 %%   <<"Bitrate">> => integer(),
@@ -357,6 +372,14 @@
 %%   <<"SampleRate">> => integer()
 %% }
 -type mp2_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% jobs_query_filter() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type jobs_query_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -425,6 +448,15 @@
 %%   <<"Status">> => list(any())
 %% }
 -type list_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_jobs_query_results_response() :: #{
+%%   <<"Jobs">> => list(job()),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_jobs_query_results_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_policy_request() :: #{}
@@ -603,7 +635,9 @@
 %%   <<"Duration">> => integer(),
 %%   <<"FramerateDenominator">> => integer(),
 %%   <<"FramerateNumerator">> => integer(),
-%%   <<"SampleRate">> => integer()
+%%   <<"Height">> => integer(),
+%%   <<"SampleRate">> => integer(),
+%%   <<"Width">> => integer()
 %% }
 -type input_video_generator() :: #{binary() => any()}.
 
@@ -1315,6 +1349,13 @@
 
 
 %% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% motion_image_insertion_offset() :: #{
 %%   <<"ImageX">> => integer(),
 %%   <<"ImageY">> => integer()
@@ -1991,6 +2032,7 @@
 %% video_properties() :: #{
 %%   <<"BitDepth">> => integer(),
 %%   <<"BitRate">> => float(),
+%%   <<"CodecMetadata">> => codec_metadata(),
 %%   <<"ColorPrimaries">> => list(any()),
 %%   <<"FrameRate">> => frame_rate(),
 %%   <<"Height">> => integer(),
@@ -2019,6 +2061,23 @@
 %%   <<"Timestamp">> => non_neg_integer()
 %% }
 -type queue_transition() :: #{binary() => any()}.
+
+
+%% Example:
+%% codec_metadata() :: #{
+%%   <<"BitDepth">> => integer(),
+%%   <<"ChromaSubsampling">> => string(),
+%%   <<"CodedFrameRate">> => frame_rate(),
+%%   <<"ColorPrimaries">> => list(any()),
+%%   <<"Height">> => integer(),
+%%   <<"Level">> => string(),
+%%   <<"MatrixCoefficients">> => list(any()),
+%%   <<"Profile">> => string(),
+%%   <<"ScanType">> => string(),
+%%   <<"TransferCharacteristics">> => list(any()),
+%%   <<"Width">> => integer()
+%% }
+-type codec_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2433,6 +2492,13 @@
 %%   <<"Preset">> => preset()
 %% }
 -type get_preset_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_jobs_query_response() :: #{
+%%   <<"Id">> => string()
+%% }
+-type start_jobs_query_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2986,6 +3052,10 @@
 %% }
 -type cmfc_settings() :: #{binary() => any()}.
 
+%% Example:
+%% get_jobs_query_results_request() :: #{}
+-type get_jobs_query_results_request() :: #{}.
+
 
 %% Example:
 %% create_queue_response() :: #{
@@ -3112,6 +3182,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3120,6 +3191,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3128,6 +3200,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3136,6 +3209,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3144,6 +3218,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3152,6 +3227,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3160,6 +3236,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3168,6 +3245,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3176,6 +3254,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3184,6 +3263,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3192,6 +3272,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3200,6 +3281,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3208,6 +3290,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3216,6 +3299,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3224,6 +3308,16 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_jobs_query_results_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3232,6 +3326,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3240,6 +3335,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3248,6 +3344,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3256,6 +3353,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3264,6 +3362,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3272,6 +3371,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3280,6 +3380,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3288,6 +3389,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3296,6 +3398,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3304,6 +3407,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3312,6 +3416,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3320,6 +3425,16 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type start_jobs_query_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3328,6 +3443,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3336,6 +3452,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3344,6 +3461,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3352,6 +3470,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3360,6 +3479,7 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
@@ -3906,6 +4026,44 @@ get_job_template(Client, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieve a JSON array of up to twenty of your most recent jobs
+%% matched by a jobs query.
+-spec get_jobs_query_results(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_jobs_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_jobs_query_results_errors(), tuple()}.
+get_jobs_query_results(Client, Id)
+  when is_map(Client) ->
+    get_jobs_query_results(Client, Id, #{}, #{}).
+
+-spec get_jobs_query_results(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_jobs_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_jobs_query_results_errors(), tuple()}.
+get_jobs_query_results(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_jobs_query_results(Client, Id, QueryMap, HeadersMap, []).
+
+-spec get_jobs_query_results(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_jobs_query_results_response(), tuple()} |
+    {error, any()} |
+    {error, get_jobs_query_results_errors(), tuple()}.
+get_jobs_query_results(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2017-08-29/jobsQueries/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieve the JSON for your policy.
 -spec get_policy(aws_client:aws_client()) ->
     {ok, get_policy_response(), tuple()} |
@@ -4421,6 +4579,43 @@ search_jobs(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Start an asynchronous jobs query using the provided filters.
+%%
+%% To receive the list of jobs that match your query, call the
+%% GetJobsQueryResults API using the query ID returned by this API.
+-spec start_jobs_query(aws_client:aws_client(), start_jobs_query_request()) ->
+    {ok, start_jobs_query_response(), tuple()} |
+    {error, any()} |
+    {error, start_jobs_query_errors(), tuple()}.
+start_jobs_query(Client, Input) ->
+    start_jobs_query(Client, Input, []).
+
+-spec start_jobs_query(aws_client:aws_client(), start_jobs_query_request(), proplists:proplist()) ->
+    {ok, start_jobs_query_response(), tuple()} |
+    {error, any()} |
+    {error, start_jobs_query_errors(), tuple()}.
+start_jobs_query(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2017-08-29/jobsQueries"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Add tags to a MediaConvert queue, preset, or job template.
 %%

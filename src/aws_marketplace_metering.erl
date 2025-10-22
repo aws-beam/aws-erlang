@@ -175,6 +175,12 @@
 -type expired_token_exception() :: #{binary() => any()}.
 
 %% Example:
+%% idempotency_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type idempotency_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% internal_service_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -236,6 +242,7 @@
 
 %% Example:
 %% meter_usage_request() :: #{
+%%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"ProductCode">> := string(),
 %%   <<"Timestamp">> := non_neg_integer(),
@@ -351,6 +358,7 @@
     invalid_product_code_exception() | 
     invalid_endpoint_region_exception() | 
     internal_service_error_exception() | 
+    idempotency_conflict_exception() | 
     duplicate_request_exception() | 
     customer_not_entitled_exception().
 
@@ -377,7 +385,8 @@
 
 %% @doc
 %%
-%% The `CustomerIdentifier' parameter is scheduled for deprecation.
+%% The `CustomerIdentifier' parameter is scheduled for deprecation on
+%% March 31, 2026.
 %%
 %% Use `CustomerAWSAccountID' instead.
 %%
@@ -450,9 +459,19 @@ batch_meter_usage(Client, Input, Options)
 %% allow the
 %% customer to define).
 %%
-%% Usage records are expected to be submitted as quickly as possible after
-%% the event that
-%% is being recorded, and are not accepted more than 6 hours after the event.
+%% Submit usage records to report events from the previous hour. If you
+%% submit records that
+%% are greater than six hours after events occur, the records won’t be
+%% accepted. The timestamp
+%% in your request determines when an event is recorded. You can only report
+%% usage once per hour
+%% for each dimension. For AMI-based products, this is per dimension and per
+%% EC2 instance. For
+%% container products, this is per dimension and per ECS task or EKS pod. You
+%% can’t modify values
+%% after they’re recorded. If you report usage before the current hour ends,
+%% you will be unable to
+%% report additional usage until the next hour begins.
 %%
 %% For Amazon Web Services Regions that support `MeterUsage', see
 %% MeterUsage Region support for Amazon EC2:
