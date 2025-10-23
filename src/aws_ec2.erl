@@ -5130,6 +5130,7 @@
 %%   <<"Association">> => network_interface_association(),
 %%   <<"Attachment">> => network_interface_attachment(),
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"ConnectionTrackingConfiguration">> => connection_tracking_configuration(),
 %%   <<"DenyAllIgwTraffic">> => boolean(),
 %%   <<"Description">> => string(),
@@ -22550,22 +22551,6 @@ cancel_reserved_instances_listing(Client, Input, Options)
 %% they
 %% are interrupted or you terminate them manually.
 %%
-%% Terminating an instance is permanent and irreversible.
-%%
-%% After you terminate an instance, you can no longer connect to it, and it
-%% can't be recovered.
-%% All attached Amazon EBS volumes that are configured to be deleted on
-%% termination are also permanently
-%% deleted and can't be recovered. All data stored on instance store
-%% volumes is permanently lost.
-%% For more information, see
-%% How instance termination works:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-ec2-instance-termination-works.html.
-%%
-%% Before you terminate an instance, ensure that you have backed up all data
-%% that you need to
-%% retain after the termination to persistent storage.
-%%
 %% == Restrictions ==
 %%
 %% You can delete up to 100 fleets in a single request. If you exceed the
@@ -25188,18 +25173,19 @@ create_volume(Client, Input, Options)
 
 %% @doc Creates a VPC with the specified CIDR blocks.
 %%
-%% A VPC must have an associated IPv4 CIDR block. You can choose an IPv4 CIDR
-%% block or an
-%% IPAM-allocated IPv4 CIDR block. You can optionally associate an IPv6 CIDR
-%% block with a
-%% VPC. You can choose an IPv6 CIDR block, an Amazon-provided IPv6 CIDR
-%% block, an
-%% IPAM-allocated IPv6 CIDR block, or an IPv6 CIDR block that you brought to
-%% Amazon Web Services. For
-%% more information, see IP addressing for your VPCs and
-%% subnets:
+%% For more information, see IP addressing for your VPCs and subnets:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html in
-%% the Amazon VPC User Guide.
+%% the
+%% Amazon VPC User Guide.
+%%
+%% You can optionally request an IPv6 CIDR block for the VPC. You can request
+%% an
+%% Amazon-provided IPv6 CIDR block from Amazon's pool of IPv6 addresses
+%% or an IPv6 CIDR
+%% block from an IPv6 address pool that you provisioned through bring your
+%% own IP addresses
+%% (BYOIP:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html).
 %%
 %% By default, each instance that you launch in the VPC has the default DHCP
 %% options, which
@@ -25209,13 +25195,13 @@ create_volume(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
 %% the Amazon VPC User Guide.
 %%
-%% You can specify DNS options and tenancy for a VPC when you create it. You
-%% can't change
-%% the tenancy of a VPC after you create it. For more information, see VPC
-%% configuration options:
-%% https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc-options.html
+%% You can specify the instance tenancy value for the VPC when you create it.
+%% You can't change
+%% this value for the VPC after you create it. For more information, see
+%% Dedicated Instances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html
 %% in the
-%% Amazon VPC User Guide.
+%% Amazon EC2 User Guide.
 -spec create_vpc(aws_client:aws_client(), create_vpc_request()) ->
     {ok, create_vpc_result(), tuple()} |
     {error, any()}.
@@ -25658,22 +25644,6 @@ delete_egress_only_internet_gateway(Client, Input, Options)
 %% leaving 1000 or
 %% fewer. Then delete the fleet, and the remaining instances will be
 %% terminated automatically.
-%%
-%% Terminating an instance is permanent and irreversible.
-%%
-%% After you terminate an instance, you can no longer connect to it, and it
-%% can't be recovered.
-%% All attached Amazon EBS volumes that are configured to be deleted on
-%% termination are also permanently
-%% deleted and can't be recovered. All data stored on instance store
-%% volumes is permanently lost.
-%% For more information, see
-%% How instance termination works:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-ec2-instance-termination-works.html.
-%%
-%% Before you terminate an instance, ensure that you have backed up all data
-%% that you need to
-%% retain after the termination to persistent storage.
 %%
 %% == Restrictions ==
 %%
@@ -38147,28 +38117,12 @@ terminate_client_vpn_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateClientVpnConnections">>, Input, Options).
 
-%% @doc Terminates (deletes) the specified instances.
+%% @doc Shuts down the specified instances.
 %%
 %% This operation is idempotent:
 %% https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html;
 %% if you
 %% terminate an instance more than once, each call succeeds.
-%%
-%% Terminating an instance is permanent and irreversible.
-%%
-%% After you terminate an instance, you can no longer connect to it, and it
-%% can't be recovered.
-%% All attached Amazon EBS volumes that are configured to be deleted on
-%% termination are also permanently
-%% deleted and can't be recovered. All data stored on instance store
-%% volumes is permanently lost.
-%% For more information, see
-%% How instance termination works:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-ec2-instance-termination-works.html.
-%%
-%% Before you terminate an instance, ensure that you have backed up all data
-%% that you need to
-%% retain after the termination to persistent storage.
 %%
 %% If you specify multiple instances and the request fails (for example,
 %% because of a

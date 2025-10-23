@@ -156,6 +156,9 @@
          get_signal_map/2,
          get_signal_map/4,
          get_signal_map/5,
+         list_alerts/2,
+         list_alerts/4,
+         list_alerts/5,
          list_channel_placement_groups/2,
          list_channel_placement_groups/4,
          list_channel_placement_groups/5,
@@ -168,6 +171,9 @@
          list_cloud_watch_alarm_templates/1,
          list_cloud_watch_alarm_templates/3,
          list_cloud_watch_alarm_templates/4,
+         list_cluster_alerts/2,
+         list_cluster_alerts/4,
+         list_cluster_alerts/5,
          list_clusters/1,
          list_clusters/3,
          list_clusters/4,
@@ -189,6 +195,9 @@
          list_inputs/1,
          list_inputs/3,
          list_inputs/4,
+         list_multiplex_alerts/2,
+         list_multiplex_alerts/4,
+         list_multiplex_alerts/5,
          list_multiplex_programs/2,
          list_multiplex_programs/4,
          list_multiplex_programs/5,
@@ -303,6 +312,19 @@
 %% Example:
 %% scte27_destination_settings() :: #{}
 -type scte27_destination_settings() :: #{}.
+
+
+%% Example:
+%% multiplex_alert() :: #{
+%%   <<"AlertType">> => string(),
+%%   <<"ClearedTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PipelineId">> => string(),
+%%   <<"SetTimestamp">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type multiplex_alert() :: #{binary() => any()}.
 
 %% Example:
 %% delete_cloud_watch_alarm_template_group_request() :: #{}
@@ -1186,6 +1208,15 @@
 
 
 %% Example:
+%% list_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StateFilter">> => string()
+%% }
+-type list_alerts_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% event_bridge_rule_template_group_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
@@ -1826,6 +1857,19 @@
 %%   <<"NetworkSettings">> => cluster_network_settings_update_request()
 %% }
 -type update_cluster_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% channel_alert() :: #{
+%%   <<"AlertType">> => string(),
+%%   <<"ClearedTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"PipelineId">> => string(),
+%%   <<"SetTimestamp">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type channel_alert() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3951,6 +3995,14 @@
 %% }
 -type input_whitelist_rule() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_cluster_alerts_response() :: #{
+%%   <<"Alerts">> => list(cluster_alert()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_alerts_response() :: #{binary() => any()}.
+
 %% Example:
 %% describe_input_security_group_request() :: #{}
 -type describe_input_security_group_request() :: #{}.
@@ -4024,6 +4076,20 @@
 %%   <<"Name">> => string()
 %% }
 -type update_event_bridge_rule_template_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cluster_alert() :: #{
+%%   <<"AlertType">> => string(),
+%%   <<"ChannelId">> => string(),
+%%   <<"ClearedTimestamp">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"NodeId">> => string(),
+%%   <<"SetTimestamp">> => non_neg_integer(),
+%%   <<"State">> => list(any())
+%% }
+-type cluster_alert() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4879,6 +4945,14 @@
 
 
 %% Example:
+%% list_alerts_response() :: #{
+%%   <<"Alerts">> => list(channel_alert()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_alerts_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% schedule_action_start_settings() :: #{
 %%   <<"FixedModeScheduleActionStartSettings">> => fixed_mode_schedule_action_start_settings(),
 %%   <<"FollowModeScheduleActionStartSettings">> => follow_mode_schedule_action_start_settings(),
@@ -4924,6 +4998,15 @@
 %% Example:
 %% delete_schedule_request() :: #{}
 -type delete_schedule_request() :: #{}.
+
+
+%% Example:
+%% list_multiplex_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StateFilter">> => string()
+%% }
+-type list_multiplex_alerts_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5276,6 +5359,23 @@
 %%   <<"SubSegmentsExpected">> => integer()
 %% }
 -type scte35_segmentation_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_multiplex_alerts_response() :: #{
+%%   <<"Alerts">> => list(multiplex_alert()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_multiplex_alerts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_cluster_alerts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StateFilter">> => string()
+%% }
+-type list_cluster_alerts_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6477,6 +6577,15 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type list_alerts_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
 -type list_channel_placement_groups_errors() ::
     bad_request_exception() | 
     gateway_timeout_exception() | 
@@ -6506,6 +6615,15 @@
     not_found_exception() | 
     too_many_requests_exception() | 
     forbidden_exception().
+
+-type list_cluster_alerts_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
 
 -type list_clusters_errors() ::
     bad_request_exception() | 
@@ -6558,6 +6676,15 @@
     bad_request_exception() | 
     gateway_timeout_exception() | 
     internal_server_error_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception() | 
+    bad_gateway_exception().
+
+-type list_multiplex_alerts_errors() ::
+    bad_request_exception() | 
+    gateway_timeout_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
     too_many_requests_exception() | 
     forbidden_exception() | 
     bad_gateway_exception().
@@ -9337,6 +9464,50 @@ get_signal_map(Client, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List the alerts for a channel with optional filtering based on alert
+%% state.
+-spec list_alerts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_alerts_errors(), tuple()}.
+list_alerts(Client, ChannelId)
+  when is_map(Client) ->
+    list_alerts(Client, ChannelId, #{}, #{}).
+
+-spec list_alerts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_alerts_errors(), tuple()}.
+list_alerts(Client, ChannelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_alerts(Client, ChannelId, QueryMap, HeadersMap, []).
+
+-spec list_alerts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_alerts_errors(), tuple()}.
+list_alerts(Client, ChannelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/alerts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"stateFilter">>, maps:get(<<"stateFilter">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieve the list of ChannelPlacementGroups in the specified Cluster.
 -spec list_channel_placement_groups(aws_client:aws_client(), binary() | list()) ->
     {ok, list_channel_placement_groups_response(), tuple()} |
@@ -9505,6 +9676,50 @@ list_cloud_watch_alarm_templates(Client, QueryMap, HeadersMap, Options0)
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"scope">>, maps:get(<<"scope">>, QueryMap, undefined)},
         {<<"signalMapIdentifier">>, maps:get(<<"signalMapIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the alerts for a cluster with optional filtering based on alert
+%% state.
+-spec list_cluster_alerts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_cluster_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_alerts_errors(), tuple()}.
+list_cluster_alerts(Client, ClusterId)
+  when is_map(Client) ->
+    list_cluster_alerts(Client, ClusterId, #{}, #{}).
+
+-spec list_cluster_alerts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_cluster_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_alerts_errors(), tuple()}.
+list_cluster_alerts(Client, ClusterId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cluster_alerts(Client, ClusterId, QueryMap, HeadersMap, []).
+
+-spec list_cluster_alerts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_cluster_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_alerts_errors(), tuple()}.
+list_cluster_alerts(Client, ClusterId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/clusters/", aws_util:encode_uri(ClusterId), "/alerts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"stateFilter">>, maps:get(<<"stateFilter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -9806,6 +10021,50 @@ list_inputs(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the alerts for a multiplex with optional filtering based on
+%% alert state.
+-spec list_multiplex_alerts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_multiplex_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_multiplex_alerts_errors(), tuple()}.
+list_multiplex_alerts(Client, MultiplexId)
+  when is_map(Client) ->
+    list_multiplex_alerts(Client, MultiplexId, #{}, #{}).
+
+-spec list_multiplex_alerts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_multiplex_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_multiplex_alerts_errors(), tuple()}.
+list_multiplex_alerts(Client, MultiplexId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_multiplex_alerts(Client, MultiplexId, QueryMap, HeadersMap, []).
+
+-spec list_multiplex_alerts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_multiplex_alerts_response(), tuple()} |
+    {error, any()} |
+    {error, list_multiplex_alerts_errors(), tuple()}.
+list_multiplex_alerts(Client, MultiplexId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/alerts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"stateFilter">>, maps:get(<<"stateFilter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

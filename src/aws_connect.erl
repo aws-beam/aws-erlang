@@ -48,6 +48,8 @@
          associate_contact_with_user/5,
          associate_default_vocabulary/4,
          associate_default_vocabulary/5,
+         associate_email_address_alias/4,
+         associate_email_address_alias/5,
          associate_flow/3,
          associate_flow/4,
          associate_instance_storage_config/3,
@@ -283,6 +285,8 @@
          disassociate_approved_origin/4,
          disassociate_bot/3,
          disassociate_bot/4,
+         disassociate_email_address_alias/4,
+         disassociate_email_address_alias/5,
          disassociate_flow/5,
          disassociate_flow/6,
          disassociate_instance_storage_config/4,
@@ -1506,6 +1510,13 @@
 %% Example:
 %% describe_predefined_attribute_request() :: #{}
 -type describe_predefined_attribute_request() :: #{}.
+
+
+%% Example:
+%% post_accept_timeout_config() :: #{
+%%   <<"DurationInSeconds">> => integer()
+%% }
+-type post_accept_timeout_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3638,6 +3649,7 @@
 
 %% Example:
 %% agent_info() :: #{
+%%   <<"AcceptedByAgentTimestamp">> => non_neg_integer(),
 %%   <<"AfterContactWorkDuration">> => integer(),
 %%   <<"AfterContactWorkEndTimestamp">> => non_neg_integer(),
 %%   <<"AfterContactWorkStartTimestamp">> => non_neg_integer(),
@@ -3648,6 +3660,7 @@
 %%   <<"DeviceInfo">> => device_info(),
 %%   <<"HierarchyGroups">> => hierarchy_groups(),
 %%   <<"Id">> => string(),
+%%   <<"PreviewEndTimestamp">> => non_neg_integer(),
 %%   <<"StateTransitions">> => list(state_transition())
 %% }
 -type agent_info() :: #{binary() => any()}.
@@ -3882,10 +3895,25 @@
 
 
 %% Example:
+%% alias_configuration() :: #{
+%%   <<"EmailAddressId">> => string()
+%% }
+-type alias_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_contact_flow_content_request() :: #{
 %%   <<"Content">> := string()
 %% }
 -type update_contact_flow_content_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_email_address_alias_request() :: #{
+%%   <<"AliasConfiguration">> := alias_configuration(),
+%%   <<"ClientToken">> => string()
+%% }
+-type associate_email_address_alias_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4405,6 +4433,7 @@
 
 %% Example:
 %% describe_email_address_response() :: #{
+%%   <<"AliasConfigurations">> => list(alias_configuration()),
 %%   <<"CreateTimestamp">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
@@ -4453,6 +4482,14 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_email_address_alias_request() :: #{
+%%   <<"AliasConfiguration">> := alias_configuration(),
+%%   <<"ClientToken">> => string()
+%% }
+-type disassociate_email_address_alias_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4544,6 +4581,7 @@
 %%   <<"Attributes">> => map(),
 %%   <<"Campaign">> => campaign(),
 %%   <<"CustomerEndpoint">> => endpoint(),
+%%   <<"OutboundStrategy">> => outbound_strategy(),
 %%   <<"QueueId">> => string(),
 %%   <<"RequestIdentifier">> => string(),
 %%   <<"SystemEndpoint">> => endpoint()
@@ -4767,6 +4805,7 @@
 
 %% Example:
 %% email_address_metadata() :: #{
+%%   <<"AliasConfigurations">> => list(alias_configuration()),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"EmailAddress">> => string(),
@@ -4906,6 +4945,10 @@
 %% }
 -type contact_flow_module_summary() :: #{binary() => any()}.
 
+%% Example:
+%% associate_email_address_alias_response() :: #{}
+-type associate_email_address_alias_response() :: #{}.
+
 
 %% Example:
 %% flow_association_summary() :: #{
@@ -4957,6 +5000,7 @@
 %%   <<"InitiationMethod">> => list(any()),
 %%   <<"Id">> => string(),
 %%   <<"DisconnectReason">> => string(),
+%%   <<"OutboundStrategy">> => outbound_strategy(),
 %%   <<"LastResumedTimestamp">> => non_neg_integer(),
 %%   <<"AnsweringMachineDetectionStatus">> => list(any()),
 %%   <<"LastUpdateTimestamp">> => non_neg_integer(),
@@ -5268,6 +5312,14 @@
 %% Example:
 %% resume_contact_response() :: #{}
 -type resume_contact_response() :: #{}.
+
+
+%% Example:
+%% preview() :: #{
+%%   <<"AllowedUserActions">> => list(list(any())()),
+%%   <<"PostAcceptTimeoutConfig">> => post_accept_timeout_config()
+%% }
+-type preview() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6118,6 +6170,13 @@
 
 
 %% Example:
+%% agent_first() :: #{
+%%   <<"Preview">> => preview()
+%% }
+-type agent_first() :: #{binary() => any()}.
+
+
+%% Example:
 %% submit_contact_evaluation_request() :: #{
 %%   <<"Answers">> => map(),
 %%   <<"Notes">> => map()
@@ -6415,6 +6474,14 @@
 %% Example:
 %% delete_quick_connect_request() :: #{}
 -type delete_quick_connect_request() :: #{}.
+
+
+%% Example:
+%% outbound_strategy() :: #{
+%%   <<"Config">> => outbound_strategy_config(),
+%%   <<"Type">> => list(any())
+%% }
+-type outbound_strategy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6842,6 +6909,7 @@
 %%   <<"DestinationPhoneNumber">> := string(),
 %%   <<"InstanceId">> := string(),
 %%   <<"Name">> => string(),
+%%   <<"OutboundStrategy">> => outbound_strategy(),
 %%   <<"QueueId">> => string(),
 %%   <<"References">> => map(),
 %%   <<"RelatedContactId">> => string(),
@@ -7354,6 +7422,13 @@
 
 
 %% Example:
+%% outbound_strategy_config() :: #{
+%%   <<"AgentFirst">> => agent_first()
+%% }
+-type outbound_strategy_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_attached_file_upload_request() :: #{
 %%   <<"AssociatedResourceArn">> := string(),
 %%   <<"ClientToken">> => string(),
@@ -7459,6 +7534,10 @@
 %%   <<"Status">> => list(any())
 %% }
 -type task_template_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_email_address_alias_response() :: #{}
+-type disassociate_email_address_alias_response() :: #{}.
 
 
 %% Example:
@@ -8346,6 +8425,16 @@
     resource_not_found_exception() | 
     internal_service_exception().
 
+-type associate_email_address_alias_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    idempotency_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type associate_flow_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -9153,6 +9242,15 @@
 
 -type disassociate_bot_errors() ::
     throttling_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type disassociate_email_address_alias_errors() ::
+    resource_conflict_exception() | 
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    access_denied_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -10689,6 +10787,125 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input) ->
 associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0) ->
     Method = put,
     Path = ["/default-vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(LanguageCode), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates an email address alias with an existing email address in
+%% an Amazon Connect
+%% instance.
+%%
+%% This creates a forwarding relationship where emails sent to the alias
+%% email address are
+%% automatically forwarded to the primary email address.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% Unified customer support: Create multiple entry points (for example,
+%% support@example.com,
+%% help@example.com, customercare@example.com) that all forward to a single
+%% agent queue for
+%% streamlined management.
+%%
+%% Department consolidation: Forward emails from legacy department addresses
+%% (for example,
+%% sales@example.com, info@example.com) to a centralized customer service
+%% email during
+%% organizational restructuring.
+%%
+%% Brand management: Enable you to use familiar brand-specific email
+%% addresses that forward
+%% to the appropriate Amazon Connect instance email address.
+%%
+%% Important things to know
+%%
+%% Each email address can have a maximum of one alias. You cannot create
+%% multiple aliases for
+%% the same email address.
+%%
+%% If the alias email address already receives direct emails, it continues to
+%% receive direct
+%% emails plus forwarded emails.
+%%
+%% You cannot chain email aliases together (that is, create an alias of an
+%% alias).
+%%
+%% `AssociateEmailAddressAlias' does not return the following
+%% information:
+%%
+%% A confirmation of the alias relationship details (you must call
+%% DescribeEmailAddress:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeEmailAddress.html
+%% to verify).
+%%
+%% The timestamp of when the association occurred.
+%%
+%% The status of the forwarding configuration.
+%%
+%% Endpoints: See
+%% Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%%
+%% Related operations
+%%
+%% DisassociateEmailAddressAlias:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateEmailAddressAlias.html:
+%% Removes the alias association between two email
+%% addresses in an Amazon Connect instance.
+%%
+%% DescribeEmailAddress:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeEmailAddress.html:
+%% View current alias configurations for an email address.
+%%
+%% SearchEmailAddresses:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchEmailAddresses.html:
+%% Find email addresses and their alias relationships across an instance.
+%%
+%% CreateEmailAddress:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateEmailAddress.html:
+%% Create new email addresses that can participate in alias
+%% relationships.
+%%
+%% DeleteEmailAddress:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteEmailAddress.html:
+%% Remove email addresses (automatically removes any alias
+%% relationships).
+%%
+%% UpdateEmailAddressMetadata:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateEmailAddressMetadata.html:
+%% Modify email address properties (does not affect alias
+%% relationships).
+-spec associate_email_address_alias(aws_client:aws_client(), binary() | list(), binary() | list(), associate_email_address_alias_request()) ->
+    {ok, associate_email_address_alias_response(), tuple()} |
+    {error, any()} |
+    {error, associate_email_address_alias_errors(), tuple()}.
+associate_email_address_alias(Client, EmailAddressId, InstanceId, Input) ->
+    associate_email_address_alias(Client, EmailAddressId, InstanceId, Input, []).
+
+-spec associate_email_address_alias(aws_client:aws_client(), binary() | list(), binary() | list(), associate_email_address_alias_request(), proplists:proplist()) ->
+    {ok, associate_email_address_alias_response(), tuple()} |
+    {error, any()} |
+    {error, associate_email_address_alias_errors(), tuple()}.
+associate_email_address_alias(Client, EmailAddressId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/email-addresses/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EmailAddressId), "/associate-alias"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -13720,7 +13937,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web Services Support.
+%% request access to this API, contact Amazon Web ServicesSupport.
 %%
 %% Describes the target authentication profile.
 -spec describe_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -13777,7 +13994,8 @@ describe_authentication_profile(Client, AuthenticationProfileId, InstanceId, Que
 %% the agent's end.
 %% Use the DisconnectReason field in the ContactTraceRecord:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/ctr-data-model.html#ctr-ContactTraceRecord
-%% to detect this event and then re-queue the chat for followup.
+%% to detect this event and then re-queue the chat for
+%% followup.
 %%
 %% Identify after contact work (ACW) duration and call recordings information
 %% when a
@@ -14976,6 +15194,125 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes the alias association between two email addresses in an
+%% Amazon Connect instance.
+%%
+%% After disassociation, emails sent to the former alias email address are no
+%% longer forwarded to
+%% the primary email address. Both email addresses continue to exist
+%% independently and can receive
+%% emails directly.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% Department separation: Remove alias relationships when splitting a
+%% consolidated support
+%% queue back into separate department-specific queues.
+%%
+%% Email address retirement: Cleanly remove forwarding relationships before
+%% decommissioning
+%% old email addresses.
+%%
+%% Organizational restructuring: Reconfigure email routing when business
+%% processes change and
+%% aliases are no longer needed.
+%%
+%% Important things to know
+%%
+%% Concurrent operations: This API uses distributed locking, so concurrent
+%% operations on the
+%% same email addresses may be temporarily blocked.
+%%
+%% Emails sent to the former alias address are still delivered directly to
+%% that address if it
+%% exists.
+%%
+%% You do not need to delete the email addresses after disassociation. Both
+%% addresses remain
+%% active independently.
+%%
+%% After a successful disassociation, you can immediately create a new alias
+%% relationship
+%% with the same addresses.
+%%
+%% 200 status means alias was successfully disassociated.
+%%
+%% `DisassociateEmailAddressAlias' does not return the following
+%% information:
+%%
+%% Details in the response about the email that was disassociated. The
+%% response returns an empty body.
+%%
+%% The timestamp of when the disassociation occurred.
+%%
+%% Endpoints: See
+%% Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+%%
+%% Related operations
+%%
+%% AssociateEmailAddressAlias:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateEmailAddressAlias.html:
+%% Associates an email address alias with an existing email
+%% address in an Amazon Connect instance.
+%%
+%% DescribeEmailAddress:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeEmailAddress.html:
+%% View current alias configurations for an email address.
+%%
+%% SearchEmailAddresses:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchEmailAddresses.html:
+%% Find email addresses and their alias relationships across an instance.
+%%
+%% CreateEmailAddress:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateEmailAddress.html:
+%% Create new email addresses that can participate in alias
+%% relationships.
+%%
+%% DeleteEmailAddress:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteEmailAddress.html:
+%% Remove email addresses (automatically removes any alias
+%% relationships).
+%%
+%% UpdateEmailAddressMetadata:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateEmailAddressMetadata.html:
+%% Modify email address properties (does not affect alias
+%% relationships).
+-spec disassociate_email_address_alias(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_email_address_alias_request()) ->
+    {ok, disassociate_email_address_alias_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_email_address_alias_errors(), tuple()}.
+disassociate_email_address_alias(Client, EmailAddressId, InstanceId, Input) ->
+    disassociate_email_address_alias(Client, EmailAddressId, InstanceId, Input, []).
+
+-spec disassociate_email_address_alias(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_email_address_alias_request(), proplists:proplist()) ->
+    {ok, disassociate_email_address_alias_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_email_address_alias_errors(), tuple()}.
+disassociate_email_address_alias(Client, EmailAddressId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/email-addresses/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EmailAddressId), "/disassociate-alias"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates a connect resource from a flow.
 -spec disassociate_flow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), disassociate_flow_request()) ->
     {ok, disassociate_flow_response(), tuple()} |
@@ -16074,7 +16411,7 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 %% then release 99, you
 %% will have exceeded the 200% limit. At that point you are blocked from
 %% claiming any more numbers
-%% until you open an Amazon Web Services Support ticket.
+%% until you open an Amazon Web ServicesSupport ticket.
 -spec import_phone_number(aws_client:aws_client(), import_phone_number_request()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
@@ -16335,7 +16672,7 @@ list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web Services Support.
+%% request access to this API, contact Amazon Web ServicesSupport.
 %%
 %% Provides summary information about the authentication profiles in a
 %% specified Amazon Connect instance.
@@ -18595,7 +18932,7 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% period for up to
 %% 180 days. It cannot be searched for or claimed again until the period has
 %% ended. If you
-%% accidentally release a phone number, contact Amazon Web Services Support.
+%% accidentally release a phone number, contact Amazon Web ServicesSupport.
 %%
 %% If you plan to claim and release numbers frequently,
 %% contact us for a service quota exception. Otherwise, it is possible you
@@ -19630,7 +19967,7 @@ start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
 %% error, your
 %% account may not support the ability to configure custom chat durations.
 %% For more information,
-%% contact Amazon Web Services Support.
+%% contact Amazon Web ServicesSupport.
 %%
 %% For more information about chat, see the following topics in the Amazon
 %% Connect
@@ -20679,7 +21016,7 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web Services Support.
+%% request access to this API, contact Amazon Web ServicesSupport.
 %%
 %% Updates the selected authentication profile.
 -spec update_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_authentication_profile_request()) ->

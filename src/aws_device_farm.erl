@@ -210,6 +210,7 @@
 
 %% Example:
 %% create_remote_access_session_configuration() :: #{
+%%   <<"auxiliaryApps">> => list(string()),
 %%   <<"billingMethod">> => list(any()),
 %%   <<"deviceProxy">> => device_proxy(),
 %%   <<"vpceConfigurationArns">> => list(string())
@@ -286,6 +287,7 @@
 
 %% Example:
 %% create_remote_access_session_request() :: #{
+%%   <<"appArn">> => string(),
 %%   <<"clientId">> => string(),
 %%   <<"configuration">> => create_remote_access_session_configuration(),
 %%   <<"deviceArn">> := string(),
@@ -1348,6 +1350,7 @@
 
 %% Example:
 %% remote_access_session() :: #{
+%%   <<"appUpload">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"billingMethod">> => list(any()),
 %%   <<"clientId">> => string(),

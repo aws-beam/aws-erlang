@@ -614,6 +614,13 @@
 
 
 %% Example:
+%% timeout_config() :: #{
+%%   <<"durationInSeconds">> => integer()
+%% }
+-type timeout_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% time_range() :: #{
 %%   <<"endTime">> => string(),
 %%   <<"startTime">> => string()
@@ -806,6 +813,15 @@
 %%   <<"state">> => string()
 %% }
 -type successful_campaign_state_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% preview_config() :: #{
+%%   <<"agentActions">> => list(string()),
+%%   <<"bandwidthAllocation">> => float(),
+%%   <<"timeoutConfig">> => timeout_config()
+%% }
+-type preview_config() :: #{binary() => any()}.
 
 
 %% Example:

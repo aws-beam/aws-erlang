@@ -2919,6 +2919,7 @@
 
 -type add_client_id_to_open_id_connect_provider_errors() ::
     limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
     invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
@@ -3534,6 +3535,7 @@
     no_such_entity_exception().
 
 -type remove_client_id_from_open_id_connect_provider_errors() ::
+    concurrent_modification_exception() | 
     invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
@@ -3712,6 +3714,7 @@
     no_such_entity_exception().
 
 -type update_open_id_connect_provider_thumbprint_errors() ::
+    concurrent_modification_exception() | 
     invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
@@ -3728,6 +3731,7 @@
 
 -type update_saml_provider_errors() ::
     limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
     invalid_input_exception() | 
     service_failure_exception() | 
     no_such_entity_exception().
