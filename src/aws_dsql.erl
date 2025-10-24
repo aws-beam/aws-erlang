@@ -21,9 +21,14 @@
          create_cluster/3,
          delete_cluster/3,
          delete_cluster/4,
+         delete_cluster_policy/3,
+         delete_cluster_policy/4,
          get_cluster/2,
          get_cluster/4,
          get_cluster/5,
+         get_cluster_policy/2,
+         get_cluster_policy/4,
+         get_cluster_policy/5,
          get_vpc_endpoint_service_name/2,
          get_vpc_endpoint_service_name/4,
          get_vpc_endpoint_service_name/5,
@@ -33,6 +38,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_cluster_policy/3,
+         put_cluster_policy/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -45,10 +52,60 @@
 
 
 %% Example:
-%% access_denied_exception() :: #{
-%%   <<"message">> => [string()]
+%% update_cluster_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"kmsEncryptionKey">> => string(),
+%%   <<"multiRegionProperties">> => multi_region_properties()
 %% }
--type access_denied_exception() :: #{binary() => any()}.
+-type update_cluster_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cluster_policy_output() :: #{
+%%   <<"policy">> => string(),
+%%   <<"policyVersion">> => string()
+%% }
+-type get_cluster_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_cluster_input() :: #{
+%%   <<"bypassPolicyLockoutSafetyCheck">> => boolean(),
+%%   <<"clientToken">> => string(),
+%%   <<"deletionProtectionEnabled">> => boolean(),
+%%   <<"kmsEncryptionKey">> => string(),
+%%   <<"multiRegionProperties">> => multi_region_properties(),
+%%   <<"policy">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_cluster_input() :: #{}
+-type get_cluster_input() :: #{}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_output() :: #{
+%%   <<"clusters">> => list(cluster_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_vpc_endpoint_service_name_output() :: #{
+%%   <<"serviceName">> => string()
+%% }
+-type get_vpc_endpoint_service_name_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -69,14 +126,102 @@
 
 
 %% Example:
-%% create_cluster_input() :: #{
-%%   <<"clientToken">> => string(),
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cluster_policy_output() :: #{
+%%   <<"policyVersion">> => string()
+%% }
+-type delete_cluster_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cluster_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"identifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_cluster_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"quotaCode">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()],
+%%   <<"serviceCode">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_cluster_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
-%%   <<"kmsEncryptionKey">> => string(),
+%%   <<"encryptionDetails">> => encryption_details(),
+%%   <<"identifier">> => string(),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
+%%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
 %% }
--type create_cluster_input() :: #{binary() => any()}.
+-type get_cluster_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_clusters_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_clusters_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"message">> => [string()],
+%%   <<"name">> => [string()]
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_resource_input() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_cluster_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"creationTime">> => non_neg_integer(),
+%%   <<"identifier">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_cluster_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_cluster_input() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_cluster_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% internal_server_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type internal_server_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -93,128 +238,48 @@
 
 
 %% Example:
-%% delete_cluster_input() :: #{
-%%   <<"clientToken">> => string()
+%% delete_cluster_policy_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"expectedPolicyVersion">> => string()
 %% }
--type delete_cluster_input() :: #{binary() => any()}.
+-type delete_cluster_policy_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% delete_cluster_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"identifier">> => string(),
-%%   <<"status">> => list(any())
+%% access_denied_exception() :: #{
+%%   <<"message">> => [string()]
 %% }
--type delete_cluster_output() :: #{binary() => any()}.
+-type access_denied_exception() :: #{binary() => any()}.
 
 
 %% Example:
-%% encryption_details() :: #{
-%%   <<"encryptionStatus">> => list(any()),
-%%   <<"encryptionType">> => list(any()),
-%%   <<"kmsKeyArn">> => string()
+%% untag_resource_input() :: #{
+%%   <<"tagKeys">> := list(string())
 %% }
--type encryption_details() :: #{binary() => any()}.
-
-%% Example:
-%% get_cluster_input() :: #{}
--type get_cluster_input() :: #{}.
+-type untag_resource_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_cluster_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"deletionProtectionEnabled">> => boolean(),
-%%   <<"encryptionDetails">> => encryption_details(),
-%%   <<"identifier">> => string(),
-%%   <<"multiRegionProperties">> => multi_region_properties(),
-%%   <<"status">> => list(any()),
-%%   <<"tags">> => map()
+%% put_cluster_policy_input() :: #{
+%%   <<"bypassPolicyLockoutSafetyCheck">> => boolean(),
+%%   <<"clientToken">> => string(),
+%%   <<"expectedPolicyVersion">> => string(),
+%%   <<"policy">> := string()
 %% }
--type get_cluster_output() :: #{binary() => any()}.
-
-%% Example:
-%% get_vpc_endpoint_service_name_input() :: #{}
--type get_vpc_endpoint_service_name_input() :: #{}.
+-type put_cluster_policy_input() :: #{binary() => any()}.
 
 
 %% Example:
-%% get_vpc_endpoint_service_name_output() :: #{
-%%   <<"serviceName">> => string()
-%% }
--type get_vpc_endpoint_service_name_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% internal_server_exception() :: #{
+%% validation_exception() :: #{
+%%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
-%%   <<"retryAfterSeconds">> => [integer()]
+%%   <<"reason">> => list(any())
 %% }
--type internal_server_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_input() :: #{
-%%   <<"maxResults">> => integer(),
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_input() :: #{binary() => any()}.
-
-
-%% Example:
-%% list_clusters_output() :: #{
-%%   <<"clusters">> => list(cluster_summary()),
-%%   <<"nextToken">> => string()
-%% }
--type list_clusters_output() :: #{binary() => any()}.
+-type validation_exception() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_input() :: #{}
 -type list_tags_for_resource_input() :: #{}.
-
-
-%% Example:
-%% list_tags_for_resource_output() :: #{
-%%   <<"tags">> => map()
-%% }
--type list_tags_for_resource_output() :: #{binary() => any()}.
-
-
-%% Example:
-%% multi_region_properties() :: #{
-%%   <<"clusters">> => list(string()),
-%%   <<"witnessRegion">> => string()
-%% }
--type multi_region_properties() :: #{binary() => any()}.
-
-
-%% Example:
-%% resource_not_found_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()]
-%% }
--type resource_not_found_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% service_quota_exceeded_exception() :: #{
-%%   <<"message">> => [string()],
-%%   <<"quotaCode">> => [string()],
-%%   <<"resourceId">> => [string()],
-%%   <<"resourceType">> => [string()],
-%%   <<"serviceCode">> => [string()]
-%% }
--type service_quota_exceeded_exception() :: #{binary() => any()}.
-
-
-%% Example:
-%% tag_resource_input() :: #{
-%%   <<"tags">> := map()
-%% }
--type tag_resource_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -228,47 +293,35 @@
 
 
 %% Example:
-%% untag_resource_input() :: #{
-%%   <<"tagKeys">> := list(string())
+%% encryption_details() :: #{
+%%   <<"encryptionStatus">> => list(any()),
+%%   <<"encryptionType">> => list(any()),
+%%   <<"kmsKeyArn">> => string()
 %% }
--type untag_resource_input() :: #{binary() => any()}.
+-type encryption_details() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_cluster_input() :: #{
-%%   <<"clientToken">> => string(),
-%%   <<"deletionProtectionEnabled">> => boolean(),
-%%   <<"kmsEncryptionKey">> => string(),
-%%   <<"multiRegionProperties">> => multi_region_properties()
+%% multi_region_properties() :: #{
+%%   <<"clusters">> => list(string()),
+%%   <<"witnessRegion">> => string()
 %% }
--type update_cluster_input() :: #{binary() => any()}.
+-type multi_region_properties() :: #{binary() => any()}.
 
 
 %% Example:
-%% update_cluster_output() :: #{
-%%   <<"arn">> => string(),
-%%   <<"creationTime">> => non_neg_integer(),
-%%   <<"identifier">> => string(),
-%%   <<"status">> => list(any())
+%% put_cluster_policy_output() :: #{
+%%   <<"policyVersion">> => string()
 %% }
--type update_cluster_output() :: #{binary() => any()}.
-
+-type put_cluster_policy_output() :: #{binary() => any()}.
 
 %% Example:
-%% validation_exception() :: #{
-%%   <<"fieldList">> => list(validation_exception_field()),
-%%   <<"message">> => [string()],
-%%   <<"reason">> => list(any())
-%% }
--type validation_exception() :: #{binary() => any()}.
-
+%% get_vpc_endpoint_service_name_input() :: #{}
+-type get_vpc_endpoint_service_name_input() :: #{}.
 
 %% Example:
-%% validation_exception_field() :: #{
-%%   <<"message">> => [string()],
-%%   <<"name">> => [string()]
-%% }
--type validation_exception_field() :: #{binary() => any()}.
+%% get_cluster_policy_input() :: #{}
+-type get_cluster_policy_input() :: #{}.
 
 -type create_cluster_errors() ::
     validation_exception() | 
@@ -279,20 +332,34 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type delete_cluster_policy_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type get_cluster_errors() ::
     resource_not_found_exception().
 
--type get_vpc_endpoint_service_name_errors() ::
+-type get_cluster_policy_errors() ::
     validation_exception() | 
+    resource_not_found_exception().
+
+-type get_vpc_endpoint_service_name_errors() ::
     throttling_exception() | 
-    resource_not_found_exception() | 
-    internal_server_exception().
+    validation_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_clusters_errors() ::
     resource_not_found_exception().
 
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception().
+
+-type put_cluster_policy_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
     service_quota_exceeded_exception() | 
@@ -310,7 +377,7 @@
 %% API
 %%====================================================================
 
-%% @doc The CreateCluster API allows you to create both single-region
+%% @doc The CreateCluster API allows you to create both single-Region
 %% clusters and multi-Region
 %% clusters.
 %%
@@ -341,7 +408,7 @@
 %%
 %% dsql:PutMultiRegionProperties
 %%
-%% Permission to configure multi-region properties for a cluster.
+%% Permission to configure multi-Region properties for a cluster.
 %%
 %% Resources: `arn:aws:dsql:region:account-id:cluster/*'
 %%
@@ -439,6 +506,45 @@ delete_cluster(Client, Identifier, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the resource-based policy attached to a cluster.
+%%
+%% This removes all access permissions defined by the policy, reverting to
+%% default access controls.
+-spec delete_cluster_policy(aws_client:aws_client(), binary() | list(), delete_cluster_policy_input()) ->
+    {ok, delete_cluster_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_policy_errors(), tuple()}.
+delete_cluster_policy(Client, Identifier, Input) ->
+    delete_cluster_policy(Client, Identifier, Input, []).
+
+-spec delete_cluster_policy(aws_client:aws_client(), binary() | list(), delete_cluster_policy_input(), proplists:proplist()) ->
+    {ok, delete_cluster_policy_output(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_policy_errors(), tuple()}.
+delete_cluster_policy(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/cluster/", aws_util:encode_uri(Identifier), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"client-token">>, <<"clientToken">>},
+                     {<<"expected-policy-version">>, <<"expectedPolicyVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a cluster.
 -spec get_cluster(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cluster_output(), tuple()} |
@@ -463,6 +569,45 @@ get_cluster(Client, Identifier, QueryMap, HeadersMap)
 get_cluster(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/cluster/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the resource-based policy document attached to a cluster.
+%%
+%% This policy defines the access permissions and conditions for the cluster.
+-spec get_cluster_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_cluster_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_cluster_policy_errors(), tuple()}.
+get_cluster_policy(Client, Identifier)
+  when is_map(Client) ->
+    get_cluster_policy(Client, Identifier, #{}, #{}).
+
+-spec get_cluster_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_cluster_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_cluster_policy_errors(), tuple()}.
+get_cluster_policy(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cluster_policy(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_cluster_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cluster_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_cluster_policy_errors(), tuple()}.
+get_cluster_policy(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/cluster/", aws_util:encode_uri(Identifier), "/policy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -592,6 +737,44 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Attaches a resource-based policy to a cluster.
+%%
+%% This policy defines access permissions and conditions for the cluster,
+%% allowing you to control which principals can perform actions on the
+%% cluster.
+-spec put_cluster_policy(aws_client:aws_client(), binary() | list(), put_cluster_policy_input()) ->
+    {ok, put_cluster_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_cluster_policy_errors(), tuple()}.
+put_cluster_policy(Client, Identifier, Input) ->
+    put_cluster_policy(Client, Identifier, Input, []).
+
+-spec put_cluster_policy(aws_client:aws_client(), binary() | list(), put_cluster_policy_input(), proplists:proplist()) ->
+    {ok, put_cluster_policy_output(), tuple()} |
+    {error, any()} |
+    {error, put_cluster_policy_errors(), tuple()}.
+put_cluster_policy(Client, Identifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/cluster/", aws_util:encode_uri(Identifier), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Tags a resource with a map of key and value pairs.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
@@ -668,9 +851,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Region support and manage peer relationships with clusters in other
 %% Regions.
 %%
-%% Note that updating multi-region clusters requires additional IAM
-%% permissions beyond those needed for standard cluster updates, as detailed
-%% in the Permissions section.
+%% Note that updating multi-Region clusters requires additional IAM
+%% permissions
+%% beyond those needed for standard cluster updates, as detailed in the
+%% Permissions
+%% section.
 %%
 %% Required permissions
 %%
