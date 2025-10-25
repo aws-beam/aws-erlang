@@ -1174,6 +1174,12 @@
 -type update_user_profile_request() :: #{binary() => any()}.
 
 %% Example:
+%% inference_component_data_cache_config_summary() :: #{
+%%   <<"EnableCaching">> => boolean()
+%% }
+-type inference_component_data_cache_config_summary() :: #{binary() => any()}.
+
+%% Example:
 %% metric_data() :: #{
 %%   <<"MetricName">> => string(),
 %%   <<"Timestamp">> => non_neg_integer(),
@@ -3995,6 +4001,12 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type import_hub_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% inference_component_data_cache_config() :: #{
+%%   <<"EnableCaching">> => boolean()
+%% }
+-type inference_component_data_cache_config() :: #{binary() => any()}.
 
 %% Example:
 %% attach_cluster_node_volume_response() :: #{
@@ -8169,6 +8181,7 @@
 %%   <<"BaseInferenceComponentName">> => string(),
 %%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
 %%   <<"Container">> => inference_component_container_specification_summary(),
+%%   <<"DataCacheConfig">> => inference_component_data_cache_config_summary(),
 %%   <<"ModelName">> => string(),
 %%   <<"StartupParameters">> => inference_component_startup_parameters()
 %% }
@@ -12132,6 +12145,7 @@
 %%   <<"BaseInferenceComponentName">> => string(),
 %%   <<"ComputeResourceRequirements">> => inference_component_compute_resource_requirements(),
 %%   <<"Container">> => inference_component_container_specification(),
+%%   <<"DataCacheConfig">> => inference_component_data_cache_config(),
 %%   <<"ModelName">> => string(),
 %%   <<"StartupParameters">> => inference_component_startup_parameters()
 %% }

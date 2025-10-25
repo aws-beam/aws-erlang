@@ -1737,6 +1737,14 @@
 
 
 %% Example:
+%% ocsf_ip_filter() :: #{
+%%   <<"FieldName">> => list(any()),
+%%   <<"Filter">> => ip_filter()
+%% }
+-type ocsf_ip_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% organization_configuration() :: #{
 %%   <<"ConfigurationType">> => list(any()),
 %%   <<"Status">> => list(any()),
@@ -3997,6 +4005,7 @@
 %% resources_composite_filter() :: #{
 %%   <<"DateFilters">> => list(resources_date_filter()),
 %%   <<"MapFilters">> => list(resources_map_filter()),
+%%   <<"NestedCompositeFilters">> => list(resources_composite_filter()),
 %%   <<"NumberFilters">> => list(resources_number_filter()),
 %%   <<"Operator">> => list(any()),
 %%   <<"StringFilters">> => list(resources_string_filter())
@@ -6428,7 +6437,9 @@
 %% composite_filter() :: #{
 %%   <<"BooleanFilters">> => list(ocsf_boolean_filter()),
 %%   <<"DateFilters">> => list(ocsf_date_filter()),
+%%   <<"IpFilters">> => list(ocsf_ip_filter()),
 %%   <<"MapFilters">> => list(ocsf_map_filter()),
+%%   <<"NestedCompositeFilters">> => list(composite_filter()),
 %%   <<"NumberFilters">> => list(ocsf_number_filter()),
 %%   <<"Operator">> => list(any()),
 %%   <<"StringFilters">> => list(ocsf_string_filter())
@@ -8098,11 +8109,11 @@
 %%   <<"AccountId">> => string(),
 %%   <<"FindingsSummary">> => list(resource_findings_summary()),
 %%   <<"Region">> => string(),
-%%   <<"ResourceArn">> => string(),
 %%   <<"ResourceCategory">> => list(any()),
 %%   <<"ResourceConfig">> => any(),
 %%   <<"ResourceCreationTimeDt">> => string(),
 %%   <<"ResourceDetailCaptureTimeDt">> => string(),
+%%   <<"ResourceGuid">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceName">> => string(),
 %%   <<"ResourceTags">> => list(resource_tag()),
@@ -11001,8 +11012,8 @@ batch_update_findings(Client, Input0, Options0) ->
 %% `securityhub:BatchUpdateFindings' action.
 %% Updates from `BatchUpdateFindingsV2' don't affect the value of
 %% f`inding_info.modified_time', `finding_info.modified_time_dt',
-%% `time', `time_dt for a finding'. This API is in private preview
-%% and subject to change.
+%% `time', `time_dt for a finding'. This API is in public preview and
+%% subject to change.
 -spec batch_update_findings_v2(aws_client:aws_client(), batch_update_findings_v2_request()) ->
     {ok, batch_update_findings_v2_response(), tuple()} |
     {error, any()} |
@@ -11149,7 +11160,7 @@ create_action_target(Client, Input0, Options0) ->
 
 %% @doc Enables aggregation across Amazon Web Services Regions.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec create_aggregator_v2(aws_client:aws_client(), create_aggregator_v2_request()) ->
     {ok, create_aggregator_v2_response(), tuple()} |
     {error, any()} |
@@ -11220,7 +11231,7 @@ create_automation_rule(Client, Input0, Options0) ->
 
 %% @doc Creates a V2 automation rule.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec create_automation_rule_v2(aws_client:aws_client(), create_automation_rule_v2_request()) ->
     {ok, create_automation_rule_v2_response(), tuple()} |
     {error, any()} |
@@ -11625,7 +11636,7 @@ delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
 
 %% @doc Deletes the Aggregator V2.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec delete_aggregator_v2(aws_client:aws_client(), binary() | list(), delete_aggregator_v2_request()) ->
     {ok, delete_aggregator_v2_response(), tuple()} |
     {error, any()} |
@@ -11661,7 +11672,7 @@ delete_aggregator_v2(Client, AggregatorV2Arn, Input0, Options0) ->
 
 %% @doc Deletes a V2 automation rule.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec delete_automation_rule_v2(aws_client:aws_client(), binary() | list(), delete_automation_rule_v2_request()) ->
     {ok, delete_automation_rule_v2_response(), tuple()} |
     {error, any()} |
@@ -12110,7 +12121,7 @@ describe_products(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets information about the product integration.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec describe_products_v2(aws_client:aws_client()) ->
     {ok, describe_products_v2_response(), tuple()} |
     {error, any()} |
@@ -12154,7 +12165,7 @@ describe_products_v2(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns details about the service resource in your account.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec describe_security_hub_v2(aws_client:aws_client()) ->
     {ok, describe_security_hub_v2_response(), tuple()} |
     {error, any()} |
@@ -12415,7 +12426,7 @@ disable_security_hub(Client, Input0, Options0) ->
 %% @doc Disable the service for the current Amazon Web Services Region or
 %% specified Amazon Web Services Region.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec disable_security_hub_v2(aws_client:aws_client(), disable_security_hub_v2_request()) ->
     {ok, disable_security_hub_v2_response(), tuple()} |
     {error, any()} |
@@ -12727,7 +12738,7 @@ enable_security_hub(Client, Input0, Options0) ->
 %% @doc Enables the service in account for the current Amazon Web Services
 %% Region or specified Amazon Web Services Region.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec enable_security_hub_v2(aws_client:aws_client(), enable_security_hub_v2_request()) ->
     {ok, enable_security_hub_v2_response(), tuple()} |
     {error, any()} |
@@ -12805,7 +12816,7 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the configuration of the specified Aggregator V2.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec get_aggregator_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, get_aggregator_v2_response(), tuple()} |
     {error, any()} |
@@ -12844,7 +12855,7 @@ get_aggregator_v2(Client, AggregatorV2Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns an automation rule for the V2 service.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec get_automation_rule_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, get_automation_rule_v2_response(), tuple()} |
     {error, any()} |
@@ -13134,7 +13145,7 @@ get_finding_history(Client, Input0, Options0) ->
 %% `GetFindingStatisticsV2' use `securityhub:GetAdhocInsightResults'
 %% in the `Action' element of an IAM policy statement.
 %% You must have permission to perform the `s' action. This API is in
-%% private preview and subject to change.
+%% public preview and subject to change.
 -spec get_finding_statistics_v2(aws_client:aws_client(), get_finding_statistics_v2_request()) ->
     {ok, get_finding_statistics_v2_response(), tuple()} |
     {error, any()} |
@@ -13212,7 +13223,7 @@ get_findings(Client, Input0, Options0) ->
 %% `securityhub:GetFindings' in the `Action' element of an IAM policy
 %% statement.
 %% You must have permission to perform the `securityhub:GetFindings'
-%% action. This API is in private preview and subject to change.
+%% action. This API is in public preview and subject to change.
 -spec get_findings_v2(aws_client:aws_client(), get_findings_v2_request()) ->
     {ok, get_findings_v2_response(), tuple()} |
     {error, any()} |
@@ -13466,7 +13477,7 @@ get_members(Client, Input0, Options0) ->
 %% @doc Retrieves statistical information about Amazon Web Services resources
 %% and their associated security findings.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec get_resources_statistics_v2(aws_client:aws_client(), get_resources_statistics_v2_request()) ->
     {ok, get_resources_statistics_v2_response(), tuple()} |
     {error, any()} |
@@ -13502,7 +13513,7 @@ get_resources_statistics_v2(Client, Input0, Options0) ->
 
 %% @doc Returns a list of resources.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec get_resources_v2(aws_client:aws_client(), get_resources_v2_request()) ->
     {ok, get_resources_v2_response(), tuple()} |
     {error, any()} |
@@ -13640,7 +13651,7 @@ invite_members(Client, Input0, Options0) ->
 
 %% @doc Retrieves a list of V2 aggregators.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec list_aggregators_v2(aws_client:aws_client()) ->
     {ok, list_aggregators_v2_response(), tuple()} |
     {error, any()} |
@@ -13728,7 +13739,7 @@ list_automation_rules(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of automation rules and metadata for the calling
 %% account.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec list_automation_rules_v2(aws_client:aws_client()) ->
     {ok, list_automation_rules_v2_response(), tuple()} |
     {error, any()} |
@@ -14468,7 +14479,7 @@ update_action_target(Client, ActionTargetArn, Input0, Options0) ->
 
 %% @doc Udpates the configuration for the Aggregator V2.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec update_aggregator_v2(aws_client:aws_client(), binary() | list(), update_aggregator_v2_request()) ->
     {ok, update_aggregator_v2_response(), tuple()} |
     {error, any()} |
@@ -14504,7 +14515,7 @@ update_aggregator_v2(Client, AggregatorV2Arn, Input0, Options0) ->
 
 %% @doc Updates a V2 automation rule.
 %%
-%% This API is in private preview and subject to change.
+%% This API is in public preview and subject to change.
 -spec update_automation_rule_v2(aws_client:aws_client(), binary() | list(), update_automation_rule_v2_request()) ->
     {ok, update_automation_rule_v2_response(), tuple()} |
     {error, any()} |

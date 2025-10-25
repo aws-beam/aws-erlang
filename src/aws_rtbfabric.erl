@@ -672,6 +672,13 @@
 
 
 %% Example:
+%% rate_limiter_module_parameters() :: #{
+%%   <<"tps">> => [float()]
+%% }
+-type rate_limiter_module_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_outbound_external_link_response() :: #{
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),

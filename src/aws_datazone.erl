@@ -1960,6 +1960,14 @@
 
 
 %% Example:
+%% mlflow_properties_patch() :: #{
+%%   <<"trackingServerArn">> => [string()],
+%%   <<"trackingServerName">> => [string()]
+%% }
+-type mlflow_properties_patch() :: #{binary() => any()}.
+
+
+%% Example:
 %% post_time_series_data_points_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"forms">> := list(time_series_data_point_form_input())
@@ -3637,6 +3645,14 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% mlflow_properties_input() :: #{
+%%   <<"trackingServerArn">> => [string()],
+%%   <<"trackingServerName">> => [string()]
+%% }
+-type mlflow_properties_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6229,6 +6245,14 @@
 %%   <<"usageRestrictions">> => list(list(any())())
 %% }
 -type create_glossary_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% mlflow_properties_output() :: #{
+%%   <<"trackingServerArn">> => [string()],
+%%   <<"trackingServerName">> => [string()]
+%% }
+-type mlflow_properties_output() :: #{binary() => any()}.
 
 
 %% Example:

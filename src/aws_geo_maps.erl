@@ -140,6 +140,7 @@
 
 %% Example:
 %% get_tile_request() :: #{
+%%   <<"AdditionalFeatures">> => list(string()),
 %%   <<"Key">> => string()
 %% }
 -type get_tile_request() :: #{binary() => any()}.
@@ -525,6 +526,7 @@ get_tile(Client, Tileset, X, Y, Z, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"additional-features">>, maps:get(<<"additional-features">>, QueryMap, undefined)},
         {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
