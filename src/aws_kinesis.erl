@@ -74,6 +74,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_max_record_size/2,
+         update_max_record_size/3,
          update_shard_count/2,
          update_shard_count/3,
          update_stream_mode/2,
@@ -237,6 +239,7 @@
 %%   <<"EncryptionType">> => list(any()),
 %%   <<"EnhancedMonitoring">> => list(enhanced_metrics()),
 %%   <<"KeyId">> => string(),
+%%   <<"MaxRecordSizeInKiB">> => integer(),
 %%   <<"OpenShardCount">> => integer(),
 %%   <<"RetentionPeriodHours">> => integer(),
 %%   <<"StreamARN">> => string(),
@@ -616,6 +619,13 @@
 -type child_shard() :: #{binary() => any()}.
 
 %% Example:
+%% update_max_record_size_input() :: #{
+%%   <<"MaxRecordSizeInKiB">> := integer(),
+%%   <<"StreamARN">> => string()
+%% }
+-type update_max_record_size_input() :: #{binary() => any()}.
+
+%% Example:
 %% stream_summary() :: #{
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamCreationTimestamp">> => non_neg_integer(),
@@ -644,6 +654,7 @@
 
 %% Example:
 %% create_stream_input() :: #{
+%%   <<"MaxRecordSizeInKiB">> => integer(),
 %%   <<"ShardCount">> => integer(),
 %%   <<"StreamModeDetails">> => stream_mode_details(),
 %%   <<"StreamName">> := string(),
@@ -996,6 +1007,14 @@
 
 -type untag_resource_errors() ::
     limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_max_record_size_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
     invalid_argument_exception() | 
     access_denied_exception() | 
     resource_not_found_exception() | 
@@ -1945,7 +1964,7 @@ merge_shards(Client, Input, Options)
 %% `PutRecord' to send data into the stream for real-time ingestion and
 %% subsequent processing, one record at a time. Each shard can support writes
 %% up to 1,000
-%% records per second, up to a maximum data write total of 1 MiB per second.
+%% records per second, up to a maximum data write total of 10 MiB per second.
 %%
 %% When invoking this API, you must use either the `StreamARN' or the
 %% `StreamName' parameter, or both. It is recommended that you use the
@@ -2039,11 +2058,11 @@ put_record(Client, Input, Options)
 %%
 %% Each `PutRecords' request can support up to 500 records. Each record
 %% in the
-%% request can be as large as 1 MiB, up to a limit of 5 MiB for the entire
+%% request can be as large as 10 MiB, up to a limit of 10 MiB for the entire
 %% request,
 %% including partition keys. Each shard can support writes up to 1,000
 %% records per second,
-%% up to a maximum data write total of 1 MiB per second.
+%% up to a maximum data write total of 1 MB per second.
 %%
 %% You must specify the name of the stream that captures, stores, and
 %% transports the
@@ -2550,6 +2569,26 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc This allows you to update the `MaxRecordSize' of a single record
+%% that you can write to, and read from a stream.
+%%
+%% You can ingest and digest single records up to 10240 KiB.
+-spec update_max_record_size(aws_client:aws_client(), update_max_record_size_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_max_record_size_errors(), tuple()}.
+update_max_record_size(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_max_record_size(Client, Input, []).
+
+-spec update_max_record_size(aws_client:aws_client(), update_max_record_size_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_max_record_size_errors(), tuple()}.
+update_max_record_size(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateMaxRecordSize">>, Input, Options).
 
 %% @doc Updates the shard count of the specified stream to the specified
 %% number of shards.
