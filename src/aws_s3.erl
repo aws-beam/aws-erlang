@@ -2479,6 +2479,7 @@
 %%   <<"GrantWriteACP">> => string(),
 %%   <<"Expires">> => string(),
 %%   <<"ContentLanguage">> => string(),
+%%   <<"IfMatch">> => string(),
 %%   <<"CopySourceSSECustomerAlgorithm">> => string(),
 %%   <<"ContentEncoding">> => string(),
 %%   <<"ContentDisposition">> => string(),
@@ -2489,6 +2490,7 @@
 %%   <<"GrantReadACP">> => string(),
 %%   <<"ServerSideEncryption">> => list(any()),
 %%   <<"RequestPayer">> => list(any()),
+%%   <<"IfNoneMatch">> => string(),
 %%   <<"SSECustomerAlgorithm">> => string(),
 %%   <<"CopySourceIfNoneMatch">> => string()
 %% }
@@ -3680,6 +3682,10 @@
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec abort_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), abort_multipart_upload_request()) ->
     {ok, abort_multipart_upload_output(), tuple()} |
     {error, any()} |
@@ -3909,6 +3915,10 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec complete_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), complete_multipart_upload_request()) ->
     {ok, complete_multipart_upload_output(), tuple()} |
     {error, any()}.
@@ -3978,24 +3988,17 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
         Result
     end.
 
-%% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will
-%% discontinue support for creating new Email Grantee Access Control Lists
-%% (ACL).
+%% @doc Creates a copy of an object that is already stored in Amazon S3.
 %%
-%% Email Grantee ACLs created prior to this date will continue to work and
-%% remain accessible through the Amazon Web Services Management Console,
-%% Command Line Interface (CLI), SDKs,
-%% and REST API. However, you will no longer be able to create new Email
-%% Grantee ACLs.
+%% End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+%% support for Email Grantee Access Control Lists (ACLs). If you attempt to
+%% use an Email Grantee ACL in a request after October 1, 2025,
+%% the request will receive an `HTTP 405' (Method Not Allowed) error.
 %%
 %% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
-%% Creates a copy of an object that is already stored in Amazon S3.
+%% Virginia), US West (N. California), US West (Oregon), Asia Pacific
+%% (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+%% (Ireland), and South America (São Paulo).
 %%
 %% You can store individual objects of up to 5 TB in Amazon S3. You create a
 %% copy of your object up to 5
@@ -4221,6 +4224,10 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec copy_object(aws_client:aws_client(), binary() | list(), binary() | list(), copy_object_request()) ->
     {ok, copy_object_output(), tuple()} |
     {error, any()} |
@@ -4265,9 +4272,11 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
                        {<<"x-amz-copy-source-server-side-encryption-customer-key-MD5">>, <<"CopySourceSSECustomerKeyMD5">>},
+                       {<<"If-Match">>, <<"IfMatch">>},
                        {<<"x-amz-copy-source-if-match">>, <<"CopySourceIfMatch">>},
                        {<<"x-amz-copy-source-if-unmodified-since">>, <<"CopySourceIfUnmodifiedSince">>},
                        {<<"Expires">>, <<"Expires">>},
+                       {<<"If-None-Match">>, <<"IfNoneMatch">>},
                        {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
                        {<<"x-amz-server-side-encryption-context">>, <<"SSEKMSEncryptionContext">>},
                        {<<"Cache-Control">>, <<"CacheControl">>},
@@ -4322,34 +4331,17 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
     end.
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will
-%% discontinue support for creating new Email Grantee Access Control Lists
-%% (ACL).
+%% End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+%% support for Email Grantee Access Control Lists (ACLs).
 %%
-%% Email Grantee ACLs created prior to this date will continue to work and
-%% remain accessible through the Amazon Web Services Management Console,
-%% Command Line Interface (CLI), SDKs,
-%% and REST API. However, you will no longer be able to create new Email
-%% Grantee ACLs.
+%% If you attempt to use an Email Grantee ACL in a request after October 1,
+%% 2025,
+%% the request will receive an `HTTP 405' (Method Not Allowed) error.
 %%
 %% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
-%%
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
-%% returning `DisplayName'. Update your applications to use canonical IDs
-%% (unique identifier for
-%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
-%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
-%% `DisplayName'.
-%%
-%% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
+%% Virginia), US West (N. California), US West (Oregon), Asia Pacific
+%% (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+%% (Ireland), and South America (São Paulo).
 %%
 %% This action creates an Amazon S3 bucket. To create an Amazon S3 on
 %% Outposts bucket, see
@@ -4515,6 +4507,10 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_bucket(aws_client:aws_client(), binary() | list(), create_bucket_request()) ->
     {ok, create_bucket_output(), tuple()} |
     {error, any()} |
@@ -4651,6 +4647,10 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% UpdateBucketMetadataJournalTableConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UpdateBucketMetadataJournalTableConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_bucket_metadata_configuration(aws_client:aws_client(), binary() | list(), create_bucket_metadata_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4758,6 +4758,10 @@ create_bucket_metadata_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketMetadataTableConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetadataTableConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list(), create_bucket_metadata_table_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -4795,21 +4799,17 @@ create_bucket_metadata_table_configuration(Client, Bucket, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will
-%% discontinue support for creating new Email Grantee Access Control Lists
-%% (ACL).
+%% End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+%% support for Email Grantee Access Control Lists (ACLs).
 %%
-%% Email Grantee ACLs created prior to this date will continue to work and
-%% remain accessible through the Amazon Web Services Management Console,
-%% Command Line Interface (CLI), SDKs,
-%% and REST API. However, you will no longer be able to create new Email
-%% Grantee ACLs.
+%% If you attempt to use an Email Grantee ACL in a request after October 1,
+%% 2025,
+%% the request will receive an `HTTP 405' (Method Not Allowed) error.
 %%
 %% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
+%% Virginia), US West (N. California), US West (Oregon), Asia Pacific
+%% (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+%% (Ireland), and South America (São Paulo).
 %%
 %% This action initiates a multipart upload and returns an upload ID. This
 %% upload ID is used to
@@ -5115,6 +5115,10 @@ create_bucket_metadata_table_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_multipart_upload(aws_client:aws_client(), binary() | list(), binary() | list(), create_multipart_upload_request()) ->
     {ok, create_multipart_upload_output(), tuple()} |
     {error, any()}.
@@ -5399,6 +5403,10 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Directory buckets - The HTTP Host header syntax is
 %% ```
 %% Bucket-name.s3express-zone-id.region-code.amazonaws.com'''.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec create_session(aws_client:aws_client(), binary() | list()) ->
     {ok, create_session_output(), tuple()} |
     {error, any()} |
@@ -5518,6 +5526,10 @@ create_session(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket(aws_client:aws_client(), binary() | list(), delete_bucket_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -5586,6 +5598,10 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketAnalyticsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_analytics_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -5642,6 +5658,10 @@ delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% RESTOPTIONSobject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_cors(aws_client:aws_client(), binary() | list(), delete_bucket_cors_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -5733,6 +5753,10 @@ delete_bucket_cors(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketEncryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_encryption(aws_client:aws_client(), binary() | list(), delete_bucket_encryption_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -5803,6 +5827,10 @@ delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %%
 %% ListBucketIntelligentTieringConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_intelligent_tiering_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -5869,6 +5897,10 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0
 %%
 %% ListBucketInventoryConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_inventory_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -5979,6 +6011,10 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_lifecycle(aws_client:aws_client(), binary() | list(), delete_bucket_lifecycle_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -6054,6 +6090,10 @@ delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %%
 %% UpdateBucketMetadataJournalTableConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UpdateBucketMetadataJournalTableConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_metadata_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_metadata_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -6144,6 +6184,10 @@ delete_bucket_metadata_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketMetadataTableConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetadataTableConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_metadata_table_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -6216,6 +6260,10 @@ delete_bucket_metadata_table_configuration(Client, Bucket, Input0, Options0) ->
 %% Monitoring
 %% Metrics with Amazon CloudWatch:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), delete_bucket_metrics_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -6272,6 +6320,10 @@ delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 %% `GetBucketOwnershipControls'
 %%
 %% `PutBucketOwnershipControls'
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), delete_bucket_ownership_controls_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -6387,6 +6439,10 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_policy(aws_client:aws_client(), binary() | list(), delete_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -6450,6 +6506,10 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_replication(aws_client:aws_client(), binary() | list(), delete_bucket_replication_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -6501,6 +6561,10 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_tagging(aws_client:aws_client(), binary() | list(), delete_bucket_tagging_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -6567,6 +6631,10 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketWebsite:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_bucket_website(aws_client:aws_client(), binary() | list(), delete_bucket_website_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -6733,6 +6801,14 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% PutObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
+%%
+%% The `If-Match' header is supported for both general purpose and
+%% directory buckets. `IfMatchLastModifiedTime' and `IfMatchSize' is
+%% only supported for directory buckets.
 -spec delete_object(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_request()) ->
     {ok, delete_object_output(), tuple()} |
     {error, any()}.
@@ -6817,6 +6893,10 @@ delete_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetObjectTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), delete_object_tagging_request()) ->
     {ok, delete_object_tagging_output(), tuple()} |
     {error, any()}.
@@ -6999,6 +7079,10 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% AbortMultipartUpload:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_objects(aws_client:aws_client(), binary() | list(), delete_objects_request()) ->
     {ok, delete_objects_output(), tuple()} |
     {error, any()}.
@@ -7080,6 +7164,10 @@ delete_objects(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketPolicyStatus:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec delete_public_access_block(aws_client:aws_client(), binary() | list(), delete_public_access_block_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -7160,6 +7248,10 @@ delete_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% PutBucketAccelerateConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAccelerateConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_accelerate_configuration_output(), tuple()} |
     {error, any()}.
@@ -7216,7 +7308,7 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
     end.
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
 %% returning `DisplayName'.
 %%
 %% Update your applications to use canonical IDs (unique identifier for
@@ -7263,6 +7355,10 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
 %% disabling ACLs:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html
 %% in the Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 %%
 %% The following operations are related to `GetBucketAcl':
 %%
@@ -7341,6 +7437,10 @@ get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% PutBucketAnalyticsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_analytics_configuration_output(), tuple()} |
     {error, any()}.
@@ -7417,6 +7517,10 @@ get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %%
 %% DeleteBucketCors:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_cors(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_cors_output(), tuple()} |
     {error, any()}.
@@ -7514,6 +7618,10 @@ get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketEncryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_encryption(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_encryption_output(), tuple()} |
     {error, any()}.
@@ -7587,6 +7695,10 @@ get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListBucketIntelligentTieringConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketIntelligentTieringConfigurations.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_intelligent_tiering_configuration_output(), tuple()} |
     {error, any()}.
@@ -7661,6 +7773,10 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
 %%
 %% PutBucketInventoryConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_inventory_configuration_output(), tuple()} |
     {error, any()}.
@@ -7803,6 +7919,10 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %%
 %% DeleteBucketLifecycle:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_lifecycle_configuration_output(), tuple()} |
     {error, any()}.
@@ -7858,7 +7978,15 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
     end.
 
 %% @doc
-%% This operation is not supported for directory buckets.
+%% Using the `GetBucketLocation' operation is no longer a best practice.
+%%
+%% To return the
+%% Region that a bucket resides in, we recommend that you use the
+%% HeadBucket:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html
+%% operation instead. For backward compatibility, Amazon S3 continues to
+%% support the
+%% `GetBucketLocation' operation.
 %%
 %% Returns the Region the bucket resides in. You set the bucket's Region
 %% using the
@@ -7866,6 +7994,19 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 %% request. For more
 %% information, see CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html.
+%%
+%% In a bucket's home Region, calls to the `GetBucketLocation'
+%% operation are governed
+%% by the bucket's policy. In other Regions, the bucket policy
+%% doesn't apply, which means that
+%% cross-account access won't be authorized. However, calls to the
+%% `HeadBucket' operation
+%% always return the bucket’s location through an HTTP response header,
+%% whether access to the bucket
+%% is authorized or not. Therefore, we recommend using the `HeadBucket'
+%% operation for
+%% bucket Region discovery and to avoid using the `GetBucketLocation'
+%% operation.
 %%
 %% When you use this API operation with an access point, provide the alias of
 %% the access point in place of the bucket name.
@@ -7879,11 +8020,7 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 %% Error Codes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ErrorCodeList.
 %%
-%% We recommend that you use HeadBucket:
-%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html to
-%% return the Region that a bucket
-%% resides in. For backward compatibility, Amazon S3 continues to support
-%% GetBucketLocation.
+%% This operation is not supported for directory buckets.
 %%
 %% The following operations are related to `GetBucketLocation':
 %%
@@ -7892,6 +8029,10 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 %%
 %% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_location(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_location_output(), tuple()} |
     {error, any()}.
@@ -7931,7 +8072,7 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
 %% returning `DisplayName'.
 %%
 %% Update your applications to use canonical IDs (unique identifier for
@@ -7958,6 +8099,10 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% PutBucketLogging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLogging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_logging(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_logging_output(), tuple()} |
     {error, any()}.
@@ -8036,6 +8181,10 @@ get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% UpdateBucketMetadataJournalTableConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UpdateBucketMetadataJournalTableConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_metadata_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_metadata_configuration_output(), tuple()} |
     {error, any()}.
@@ -8129,6 +8278,10 @@ get_bucket_metadata_configuration(Client, Bucket, QueryMap, HeadersMap, Options0
 %%
 %% DeleteBucketMetadataTableConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetadataTableConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_metadata_table_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_metadata_table_configuration_output(), tuple()} |
     {error, any()}.
@@ -8205,6 +8358,10 @@ get_bucket_metadata_table_configuration(Client, Bucket, QueryMap, HeadersMap, Op
 %% Monitoring
 %% Metrics with Amazon CloudWatch:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_bucket_metrics_configuration_output(), tuple()} |
     {error, any()}.
@@ -8286,6 +8443,10 @@ get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Optio
 %%
 %% PutBucketNotification:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotification.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_notification_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, notification_configuration(), tuple()} |
     {error, any()}.
@@ -8357,6 +8518,10 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Opti
 %% `PutBucketOwnershipControls'
 %%
 %% `DeleteBucketOwnershipControls'
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_ownership_controls(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_ownership_controls_output(), tuple()} |
     {error, any()}.
@@ -8485,6 +8650,10 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_policy_output(), tuple()} |
     {error, any()}.
@@ -8551,6 +8720,10 @@ get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_policy_status(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_policy_status_output(), tuple()} |
     {error, any()}.
@@ -8627,6 +8800,10 @@ get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_replication(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_replication_output(), tuple()} |
     {error, any()}.
@@ -8678,6 +8855,10 @@ get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListObjects:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_request_payment(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_request_payment_output(), tuple()} |
     {error, any()}.
@@ -8739,6 +8920,10 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_tagging(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_tagging_output(), tuple()} |
     {error, any()}.
@@ -8801,6 +8986,10 @@ get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_versioning(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_versioning_output(), tuple()} |
     {error, any()}.
@@ -8863,6 +9052,10 @@ get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% PutBucketWebsite:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_bucket_website(aws_client:aws_client(), binary() | list()) ->
     {ok, get_bucket_website_output(), tuple()} |
     {error, any()}.
@@ -9107,6 +9300,10 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% GetObjectAcl:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_object(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_output(), tuple()} |
     {error, any()} |
@@ -9221,6 +9418,20 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc
+%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
+%% returning `DisplayName'.
+%%
+%% Update your applications to use canonical IDs (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
 %% This operation is not supported for directory buckets.
 %%
 %% Returns the access control list (ACL) of an object. To use this operation,
@@ -9261,6 +9472,10 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% PutObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_object_acl(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_acl_output(), tuple()} |
     {error, any()} |
@@ -9535,6 +9750,10 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% ListParts:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_object_attributes(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_object_attributes_output(), tuple()} |
     {error, any()} |
@@ -9619,6 +9838,10 @@ get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMa
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_legal_hold_output(), tuple()} |
     {error, any()}.
@@ -9676,6 +9899,10 @@ get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_object_lock_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_object_lock_configuration_output(), tuple()} |
     {error, any()}.
@@ -9727,6 +9954,10 @@ get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_object_retention(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_retention_output(), tuple()} |
     {error, any()}.
@@ -9804,6 +10035,10 @@ get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% PutObjectTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_tagging_output(), tuple()} |
     {error, any()}.
@@ -9882,6 +10117,10 @@ get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_object_torrent(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_object_torrent_output(), tuple()} |
     {error, any()}.
@@ -9975,6 +10214,10 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% DeletePublicAccessBlock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec get_public_access_block(aws_client:aws_client(), binary() | list()) ->
     {ok, get_public_access_block_output(), tuple()} |
     {error, any()}.
@@ -10016,17 +10259,22 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% @doc You can use this operation to determine if a bucket exists and if you
 %% have permission to access it.
 %%
-%% The action returns a `200 OK' if the bucket exists and you have
-%% permission to access
-%% it.
+%% The action returns a `200 OK' HTTP status code if the bucket exists
+%% and you have
+%% permission to access it. You can make a `HeadBucket' call on any
+%% bucket name to any
+%% Region in the partition, and regardless of the permissions on the bucket,
+%% you will receive a
+%% response header with the correct bucket location so that you can then make
+%% a proper, signed request
+%% to the appropriate Regional endpoint.
 %%
-%% If the bucket does not exist or you do not have permission to access it,
-%% the `HEAD'
-%% request returns a generic `400 Bad Request', `403 Forbidden' or
-%% ```
-%% 404 Not Found''' code. A message body is not included, so you
-%% cannot determine the exception beyond
-%% these HTTP response codes.
+%% If the bucket doesn't exist or you don't have permission to access
+%% it, the `HEAD'
+%% request returns a generic `400 Bad Request', `403 Forbidden', or
+%% `404 Not Found' HTTP status code. A message body isn't included,
+%% so you can't determine
+%% the exception beyond these HTTP response codes.
 %%
 %% Authentication and authorization
 %%
@@ -10103,6 +10351,10 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-lzs-for-directory-buckets.html
 %% in the
 %% Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec head_bucket(aws_client:aws_client(), binary() | list(), head_bucket_request()) ->
     {ok, head_bucket_output(), tuple()} |
     {error, any()} |
@@ -10334,6 +10586,10 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% GetObjectAttributes:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec head_object(aws_client:aws_client(), binary() | list(), binary() | list(), head_object_request()) ->
     {ok, head_object_output(), tuple()} |
     {error, any()} |
@@ -10488,6 +10744,10 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% PutBucketAnalyticsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_bucket_analytics_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bucket_analytics_configurations_output(), tuple()} |
     {error, any()}.
@@ -10565,6 +10825,10 @@ list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %%
 %% GetBucketIntelligentTieringConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketIntelligentTieringConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_bucket_intelligent_tiering_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bucket_intelligent_tiering_configurations_output(), tuple()} |
     {error, any()}.
@@ -10611,7 +10875,7 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 %% This operation is not supported for directory buckets.
 %%
 %% Returns a list of S3 Inventory configurations for the bucket. You can have
-%% up to 1,000 analytics
+%% up to 1,000 inventory
 %% configurations per bucket.
 %%
 %% This action supports list pagination and does not return more than 100
@@ -10652,6 +10916,10 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 %%
 %% PutBucketInventoryConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_bucket_inventory_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bucket_inventory_configurations_output(), tuple()} |
     {error, any()}.
@@ -10743,6 +11011,10 @@ list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %%
 %% DeleteBucketMetricsConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_bucket_metrics_configurations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_bucket_metrics_configurations_output(), tuple()} |
     {error, any()}.
@@ -10786,7 +11058,7 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
 %% returning `DisplayName'.
 %%
 %% Update your applications to use canonical IDs (unique identifier for
@@ -10823,6 +11095,10 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
 %% `ListBuckets' requests will be rejected for Amazon Web Services
 %% accounts with a general purpose bucket
 %% quota greater than 10,000.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_buckets(aws_client:aws_client()) ->
     {ok, list_buckets_output(), tuple()} |
     {error, any()}.
@@ -10908,6 +11184,10 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 %%
 %% The `BucketRegion' response element is not part of the
 %% `ListDirectoryBuckets' Response Syntax.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_directory_buckets(aws_client:aws_client()) ->
     {ok, list_directory_buckets_output(), tuple()} |
     {error, any()}.
@@ -10948,7 +11228,7 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
 %% returning `DisplayName'.
 %%
 %% Update your applications to use canonical IDs (unique identifier for
@@ -11098,6 +11378,10 @@ list_directory_buckets(Client, QueryMap, HeadersMap, Options0)
 %%
 %% AbortMultipartUpload:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_multipart_uploads(aws_client:aws_client(), binary() | list()) ->
     {ok, list_multipart_uploads_output(), tuple()} |
     {error, any()}.
@@ -11163,7 +11447,7 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
 %% returning `DisplayName'.
 %%
 %% Update your applications to use canonical IDs (unique identifier for
@@ -11208,6 +11492,10 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_object_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_object_versions_output(), tuple()} |
     {error, any()}.
@@ -11274,7 +11562,7 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
 %% returning `DisplayName'.
 %%
 %% Update your applications to use canonical IDs (unique identifier for
@@ -11322,6 +11610,10 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListBuckets:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_objects(aws_client:aws_client(), binary() | list()) ->
     {ok, list_objects_output(), tuple()} |
     {error, any()} |
@@ -11389,10 +11681,23 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Returns some or all (up to 1,000) of the objects in a bucket with
-%% each request.
+%% @doc
+%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
+%% returning `DisplayName'.
 %%
-%% You can use the
+%% Update your applications to use canonical IDs (unique identifier for
+%% Amazon Web Services accounts), Amazon Web Services account ID (12 digit
+%% identifier) or IAM ARNs (full resource naming) as a direct replacement of
+%% `DisplayName'.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
+%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
+%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
+%% (São Paulo) Region.
+%%
+%% Returns some or all (up to 1,000) of the objects in a bucket with each
+%% request. You can use the
 %% request parameters as selection criteria to return a subset of the objects
 %% in a bucket. A
 %% ```
@@ -11499,6 +11804,10 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_objects_v2(aws_client:aws_client(), binary() | list()) ->
     {ok, list_objects_v2_output(), tuple()} |
     {error, any()} |
@@ -11569,7 +11878,7 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
     end.
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will stop
+%% End of support notice: Beginning November 21, 2025, Amazon S3 will stop
 %% returning `DisplayName'.
 %%
 %% Update your applications to use canonical IDs (unique identifier for
@@ -11686,6 +11995,10 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec list_parts(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, list_parts_output(), tuple()} |
     {error, any()}.
@@ -11803,6 +12116,10 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
 %%
 %% CreateBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_accelerate_configuration(aws_client:aws_client(), binary() | list(), put_bucket_accelerate_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -11839,21 +12156,17 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will
-%% discontinue support for creating new Email Grantee Access Control Lists
-%% (ACL).
+%% End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+%% support for Email Grantee Access Control Lists (ACLs).
 %%
-%% Email Grantee ACLs created prior to this date will continue to work and
-%% remain accessible through the Amazon Web Services Management Console,
-%% Command Line Interface (CLI), SDKs,
-%% and REST API. However, you will no longer be able to create new Email
-%% Grantee ACLs.
+%% If you attempt to use an Email Grantee ACL in a request after October 1,
+%% 2025,
+%% the request will receive an `HTTP 405' (Method Not Allowed) error.
 %%
 %% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
+%% Virginia), US West (N. California), US West (Oregon), Asia Pacific
+%% (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+%% (Ireland), and South America (São Paulo).
 %%
 %% This operation is not supported for directory buckets.
 %%
@@ -12035,6 +12348,10 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetObjectAcl:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_acl(aws_client:aws_client(), binary() | list(), put_bucket_acl_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -12155,6 +12472,10 @@ put_bucket_acl(Client, Bucket, Input0, Options0) ->
 %%
 %% ListBucketAnalyticsConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_analytics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_analytics_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -12251,6 +12572,10 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% RESTOPTIONSobject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_cors(aws_client:aws_client(), binary() | list(), put_bucket_cors_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -12443,6 +12768,10 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketEncryption:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_encryption(aws_client:aws_client(), binary() | list(), put_bucket_encryption_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -12545,6 +12874,10 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %% the `s3:PutIntelligentTieringConfiguration' bucket permission to set
 %% the configuration
 %% on the bucket.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_intelligent_tiering_configuration(aws_client:aws_client(), binary() | list(), put_bucket_intelligent_tiering_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -12681,6 +13014,10 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %%
 %% ListBucketInventoryConfigurations:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_inventory_configuration(aws_client:aws_client(), binary() | list(), put_bucket_inventory_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -12862,6 +13199,10 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketLifecycle:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_lifecycle_configuration(aws_client:aws_client(), binary() | list(), put_bucket_lifecycle_configuration_request()) ->
     {ok, put_bucket_lifecycle_configuration_output(), tuple()} |
     {error, any()}.
@@ -12915,21 +13256,17 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     end.
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will
-%% discontinue support for creating new Email Grantee Access Control Lists
-%% (ACL).
+%% End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+%% support for Email Grantee Access Control Lists (ACLs).
 %%
-%% Email Grantee ACLs created prior to this date will continue to work and
-%% remain accessible through the Amazon Web Services Management Console,
-%% Command Line Interface (CLI), SDKs,
-%% and REST API. However, you will no longer be able to create new Email
-%% Grantee ACLs.
+%% If you attempt to use an Email Grantee ACL in a request after October 1,
+%% 2025,
+%% the request will receive an `HTTP 405' (Method Not Allowed) error.
 %%
 %% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
+%% Virginia), US West (N. California), US West (Oregon), Asia Pacific
+%% (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+%% (Ireland), and South America (São Paulo).
 %%
 %% This operation is not supported for directory buckets.
 %%
@@ -13016,6 +13353,10 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketLogging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLogging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_logging(aws_client:aws_client(), binary() | list(), put_bucket_logging_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13100,6 +13441,10 @@ put_bucket_logging(Client, Bucket, Input0, Options0) ->
 %% 1,000-configuration limit.
 %%
 %% HTTP Status Code: HTTP 400 Bad Request
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), put_bucket_metrics_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13212,6 +13557,10 @@ put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketNotificationConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_notification_configuration(aws_client:aws_client(), binary() | list(), put_bucket_notification_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13266,6 +13615,10 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
 %% `GetBucketOwnershipControls'
 %%
 %% `DeleteBucketOwnershipControls'
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_ownership_controls(aws_client:aws_client(), binary() | list(), put_bucket_ownership_controls_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13395,6 +13748,10 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucket:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_policy(aws_client:aws_client(), binary() | list(), put_bucket_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13524,6 +13881,10 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketReplication:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_replication(aws_client:aws_client(), binary() | list(), put_bucket_replication_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13580,6 +13941,10 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketRequestPayment:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketRequestPayment.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_request_payment(aws_client:aws_client(), binary() | list(), put_bucket_request_payment_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13680,6 +14045,10 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteBucketTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_tagging(aws_client:aws_client(), binary() | list(), put_bucket_tagging_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13777,6 +14146,10 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% GetBucketVersioning:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_versioning(aws_client:aws_client(), binary() | list(), put_bucket_versioning_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13898,6 +14271,10 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% Amazon S3 User Guide.
 %%
 %% The maximum request length is limited to 128 KB.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_bucket_website(aws_client:aws_client(), binary() | list(), put_bucket_website_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -13935,21 +14312,17 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc
-%% End of support notice: Beginning October 1, 2025, Amazon S3 will
-%% discontinue support for creating new Email Grantee Access Control Lists
-%% (ACL).
+%% End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+%% support for Email Grantee Access Control Lists (ACLs).
 %%
-%% Email Grantee ACLs created prior to this date will continue to work and
-%% remain accessible through the Amazon Web Services Management Console,
-%% Command Line Interface (CLI), SDKs,
-%% and REST API. However, you will no longer be able to create new Email
-%% Grantee ACLs.
+%% If you attempt to use an Email Grantee ACL in a request after October 1,
+%% 2025,
+%% the request will receive an `HTTP 405' (Method Not Allowed) error.
 %%
 %% This change affects the following Amazon Web Services Regions: US East (N.
-%% Virginia) Region, US West (N. California) Region, US West (Oregon) Region,
-%% Asia Pacific (Singapore) Region, Asia Pacific (Sydney) Region,
-%% Asia Pacific (Tokyo) Region, Europe (Ireland) Region, and South America
-%% (São Paulo) Region.
+%% Virginia), US West (N. California), US West (Oregon), Asia Pacific
+%% (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+%% (Ireland), and South America (São Paulo).
 %%
 %% Adds an object to a bucket.
 %%
@@ -14102,6 +14475,10 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% DeleteObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_object(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_request()) ->
     {ok, put_object_output(), tuple()} |
     {error, any()} |
@@ -14209,6 +14586,18 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
     end.
 
 %% @doc
+%% End of support notice: As of October 1, 2025, Amazon S3 has discontinued
+%% support for Email Grantee Access Control Lists (ACLs).
+%%
+%% If you attempt to use an Email Grantee ACL in a request after October 1,
+%% 2025,
+%% the request will receive an `HTTP 405' (Method Not Allowed) error.
+%%
+%% This change affects the following Amazon Web Services Regions: US East (N.
+%% Virginia), US West (N. California), US West (Oregon), Asia Pacific
+%% (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Europe
+%% (Ireland), and South America (São Paulo).
+%%
 %% This operation is not supported for directory buckets.
 %%
 %% Uses the `acl' subresource to set the access control list (ACL)
@@ -14392,6 +14781,10 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetObject:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_object_acl(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_acl_request()) ->
     {ok, put_object_acl_output(), tuple()} |
     {error, any()} |
@@ -14462,6 +14855,10 @@ put_object_acl(Client, Bucket, Key, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_object_legal_hold(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_legal_hold_request()) ->
     {ok, put_object_legal_hold_output(), tuple()} |
     {error, any()}.
@@ -14537,6 +14934,10 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
 %% information, see Configuring
 %% Object Lock:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-configure.html.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_object_lock_configuration(aws_client:aws_client(), binary() | list(), put_object_lock_configuration_request()) ->
     {ok, put_object_lock_configuration_output(), tuple()} |
     {error, any()}.
@@ -14604,6 +15005,10 @@ put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
 %% `s3:BypassGovernanceRetention' permission.
 %%
 %% This functionality is not supported for Amazon S3 on Outposts.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_object_retention(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_retention_request()) ->
     {ok, put_object_retention_output(), tuple()} |
     {error, any()}.
@@ -14717,6 +15122,10 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% DeleteObjectTagging:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_object_tagging(aws_client:aws_client(), binary() | list(), binary() | list(), put_object_tagging_request()) ->
     {ok, put_object_tagging_output(), tuple()} |
     {error, any()}.
@@ -14809,6 +15218,10 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% Using Amazon S3 Block Public Access:
 %% https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec put_public_access_block(aws_client:aws_client(), binary() | list(), put_public_access_block_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -14912,6 +15325,10 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% Directory buckets - The HTTP Host header syntax is
 %% ```
 %% Bucket-name.s3express-zone-id.region-code.amazonaws.com'''.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec rename_object(aws_client:aws_client(), binary() | list(), binary() | list(), rename_object_request()) ->
     {ok, rename_object_output(), tuple()} |
     {error, any()} |
@@ -15162,6 +15579,10 @@ rename_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% GetBucketNotificationConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec restore_object(aws_client:aws_client(), binary() | list(), binary() | list(), restore_object_request()) ->
     {ok, restore_object_output(), tuple()} |
     {error, any()} |
@@ -15346,6 +15767,10 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% PutBucketLifecycleConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec select_object_content(aws_client:aws_client(), binary() | list(), binary() | list(), select_object_content_request()) ->
     {ok, select_object_content_output(), tuple()} |
     {error, any()}.
@@ -15442,6 +15867,10 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% UpdateBucketMetadataJournalTableConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UpdateBucketMetadataJournalTableConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec update_bucket_metadata_inventory_table_configuration(aws_client:aws_client(), binary() | list(), update_bucket_metadata_inventory_table_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -15511,6 +15940,10 @@ update_bucket_metadata_inventory_table_configuration(Client, Bucket, Input0, Opt
 %%
 %% UpdateBucketMetadataInventoryTableConfiguration:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_UpdateBucketMetadataInventoryTableConfiguration.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec update_bucket_metadata_journal_table_configuration(aws_client:aws_client(), binary() | list(), update_bucket_metadata_journal_table_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -15765,6 +16198,10 @@ update_bucket_metadata_journal_table_configuration(Client, Bucket, Input0, Optio
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec upload_part(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_request()) ->
     {ok, upload_part_output(), tuple()} |
     {error, any()}.
@@ -16076,6 +16513,10 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% ListMultipartUploads:
 %% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec upload_part_copy(aws_client:aws_client(), binary() | list(), binary() | list(), upload_part_copy_request()) ->
     {ok, upload_part_copy_output(), tuple()} |
     {error, any()}.
@@ -16217,6 +16658,10 @@ upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-examples.html
 %% in the
 %% Amazon S3 User Guide.
+%%
+%% You must URL encode any signed header values that contain spaces. For
+%% example, if your header value is `my file.txt', containing two spaces
+%% after `my', you must URL encode this value to `my%20%20file.txt'.
 -spec write_get_object_response(aws_client:aws_client(), write_get_object_response_request()) ->
     {ok, undefined, tuple()} |
     {error, any()}.

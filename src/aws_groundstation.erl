@@ -3,11 +3,9 @@
 
 %% @doc Welcome to the AWS Ground Station API Reference.
 %%
-%% AWS Ground Station is a fully managed service that
-%% enables you to control satellite communications, downlink and process
-%% satellite data, and
-%% scale your satellite operations efficiently and cost-effectively without
-%% having
+%% AWS Ground Station is a fully managed service that enables you to control
+%% satellite communications, downlink and process satellite data, and scale
+%% your satellite operations efficiently and cost-effectively without having
 %% to build or manage your own ground station infrastructure.
 -module(aws_groundstation).
 
@@ -134,8 +132,8 @@
 
 %% Example:
 %% create_config_request() :: #{
-%%   <<"configData">> => list(),
-%%   <<"name">> => string(),
+%%   <<"configData">> := list(),
+%%   <<"name">> := string(),
 %%   <<"tags">> => map()
 %% }
 -type create_config_request() :: #{binary() => any()}.
@@ -143,8 +141,8 @@
 
 %% Example:
 %% get_minute_usage_request() :: #{
-%%   <<"month">> => integer(),
-%%   <<"year">> => integer()
+%%   <<"month">> := integer(),
+%%   <<"year">> := integer()
 %% }
 -type get_minute_usage_request() :: #{binary() => any()}.
 
@@ -167,9 +165,17 @@
 
 %% Example:
 %% tag_resource_request() :: #{
-%%   <<"tags">> => map()
+%%   <<"tags">> := map()
 %% }
 -type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% i_s_o8601_time_range() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type i_s_o8601_time_range() :: #{binary() => any()}.
 
 
 %% Example:
@@ -178,6 +184,13 @@
 %%   <<"dataflowEndpointRegion">> => [string()]
 %% }
 -type dataflow_endpoint_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% tracking_overrides() :: #{
+%%   <<"programTrackSettings">> => list()
+%% }
+-type tracking_overrides() :: #{binary() => any()}.
 
 %% Example:
 %% get_satellite_request() :: #{}
@@ -219,6 +232,7 @@
 %%   <<"contactStatus">> => list(any()),
 %%   <<"dataflowList">> => list(dataflow_detail()),
 %%   <<"endTime">> => [non_neg_integer()],
+%%   <<"ephemeris">> => ephemeris_response_data(),
 %%   <<"errorMessage">> => [string()],
 %%   <<"groundStation">> => [string()],
 %%   <<"maximumElevation">> => elevation(),
@@ -229,6 +243,7 @@
 %%   <<"satelliteArn">> => string(),
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"tags">> => map(),
+%%   <<"trackingOverrides">> => tracking_overrides(),
 %%   <<"visibilityEndTime">> => [non_neg_integer()],
 %%   <<"visibilityStartTime">> => [non_neg_integer()]
 %% }
@@ -237,8 +252,8 @@
 
 %% Example:
 %% update_config_request() :: #{
-%%   <<"configData">> => list(),
-%%   <<"name">> => string()
+%%   <<"configData">> := list(),
+%%   <<"name">> := string()
 %% }
 -type update_config_request() :: #{binary() => any()}.
 
@@ -257,6 +272,20 @@
 %%   <<"autotrack">> => list(any())
 %% }
 -type tracking_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_in_use_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type resource_in_use_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% az_el_program_track_settings() :: #{
+%%   <<"ephemerisId">> => string()
+%% }
+-type az_el_program_track_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -312,6 +341,7 @@
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"ephemerisId">> => string(),
+%%   <<"ephemerisType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"priority">> => integer(),
 %%   <<"sourceS3Object">> => s3_object(),
@@ -407,19 +437,20 @@
 
 %% Example:
 %% reserve_contact_request() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
-%%   <<"groundStation">> => string(),
-%%   <<"missionProfileArn">> => string(),
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"groundStation">> := string(),
+%%   <<"missionProfileArn">> := string(),
 %%   <<"satelliteArn">> => string(),
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"tags">> => map()
+%%   <<"startTime">> := [non_neg_integer()],
+%%   <<"tags">> => map(),
+%%   <<"trackingOverrides">> => tracking_overrides()
 %% }
 -type reserve_contact_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% untag_resource_request() :: #{
-%%   <<"tagKeys">> => list(string())
+%%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
 
@@ -459,6 +490,15 @@
 
 
 %% Example:
+%% time_az_el() :: #{
+%%   <<"az">> => [float()],
+%%   <<"dt">> => [float()],
+%%   <<"el">> => [float()]
+%% }
+-type time_az_el() :: #{binary() => any()}.
+
+
+%% Example:
 %% config_id_response() :: #{
 %%   <<"configArn">> => string(),
 %%   <<"configId">> => [string()],
@@ -481,6 +521,14 @@
 %%   <<"value">> => [float()]
 %% }
 -type frequency() :: #{binary() => any()}.
+
+
+%% Example:
+%% az_el_segments() :: #{
+%%   <<"angleUnit">> => list(any()),
+%%   <<"azElSegmentList">> => list(az_el_segment())
+%% }
+-type az_el_segments() :: #{binary() => any()}.
 
 
 %% Example:
@@ -523,7 +571,7 @@
 
 %% Example:
 %% update_agent_status_response() :: #{
-%%   <<"agentId">> := string()
+%%   <<"agentId">> => string()
 %% }
 -type update_agent_status_response() :: #{binary() => any()}.
 
@@ -533,6 +581,7 @@
 %%   <<"contactId">> => string(),
 %%   <<"contactStatus">> => list(any()),
 %%   <<"endTime">> => [non_neg_integer()],
+%%   <<"ephemeris">> => ephemeris_response_data(),
 %%   <<"errorMessage">> => [string()],
 %%   <<"groundStation">> => [string()],
 %%   <<"maximumElevation">> => elevation(),
@@ -630,6 +679,14 @@
 
 
 %% Example:
+%% ephemeris_error_reason() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => string()
+%% }
+-type ephemeris_error_reason() :: #{binary() => any()}.
+
+
+%% Example:
 %% dataflow_endpoint() :: #{
 %%   <<"address">> => socket_address(),
 %%   <<"mtu">> => [integer()],
@@ -665,7 +722,7 @@
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"priority">> => integer(),
-%%   <<"satelliteId">> := string(),
+%%   <<"satelliteId">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type create_ephemeris_request() :: #{binary() => any()}.
@@ -715,14 +772,15 @@
 
 %% Example:
 %% list_contacts_request() :: #{
-%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"ephemeris">> => list(),
 %%   <<"groundStation">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"missionProfileArn">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"satelliteArn">> => string(),
-%%   <<"startTime">> => [non_neg_integer()],
-%%   <<"statusList">> => list(list(any())())
+%%   <<"startTime">> := [non_neg_integer()],
+%%   <<"statusList">> := list(list(any())())
 %% }
 -type list_contacts_request() :: #{binary() => any()}.
 
@@ -815,6 +873,14 @@
 %% describe_ephemeris_request() :: #{}
 -type describe_ephemeris_request() :: #{}.
 
+
+%% Example:
+%% ephemeris_response_data() :: #{
+%%   <<"ephemerisId">> => string(),
+%%   <<"ephemerisType">> => list(any())
+%% }
+-type ephemeris_response_data() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
@@ -859,9 +925,10 @@
 %% Example:
 %% list_ephemerides_request() :: #{
 %%   <<"endTime">> := [non_neg_integer()],
+%%   <<"ephemerisType">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"satelliteId">> := string(),
+%%   <<"satelliteId">> => string(),
 %%   <<"startTime">> := [non_neg_integer()],
 %%   <<"statusList">> => list(list(any())())
 %% }
@@ -908,6 +975,14 @@
 
 
 %% Example:
+%% az_el_ephemeris() :: #{
+%%   <<"data">> => list(),
+%%   <<"groundStation">> => string()
+%% }
+-type az_el_ephemeris() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_dataflow_endpoint_groups_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -921,6 +996,15 @@
 %%   <<"value">> => [float()]
 %% }
 -type eirp() :: #{binary() => any()}.
+
+
+%% Example:
+%% az_el_segment() :: #{
+%%   <<"azElList">> => list(time_az_el()),
+%%   <<"referenceEpoch">> => [non_neg_integer()],
+%%   <<"validTimeRange">> => i_s_o8601_time_range()
+%% }
+-type az_el_segment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -971,6 +1055,7 @@
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"ephemerisId">> => string(),
+%%   <<"errorReasons">> => list(ephemeris_error_reason()),
 %%   <<"invalidReason">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"priority">> => integer(),
@@ -994,10 +1079,17 @@
 %% create_dataflow_endpoint_group_request() :: #{
 %%   <<"contactPostPassDurationSeconds">> => integer(),
 %%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"endpointDetails">> => list(endpoint_details()),
+%%   <<"endpointDetails">> := list(endpoint_details()),
 %%   <<"tags">> => map()
 %% }
 -type create_dataflow_endpoint_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% az_el_ephemeris_filter() :: #{
+%%   <<"id">> => string()
+%% }
+-type az_el_ephemeris_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1020,13 +1112,13 @@
 %% create_mission_profile_request() :: #{
 %%   <<"contactPostPassDurationSeconds">> => integer(),
 %%   <<"contactPrePassDurationSeconds">> => integer(),
-%%   <<"dataflowEdges">> => list(list(string())()),
-%%   <<"minimumViableContactDurationSeconds">> => integer(),
-%%   <<"name">> => string(),
+%%   <<"dataflowEdges">> := list(list(string())()),
+%%   <<"minimumViableContactDurationSeconds">> := integer(),
+%%   <<"name">> := string(),
 %%   <<"streamsKmsKey">> => list(),
 %%   <<"streamsKmsRole">> => string(),
 %%   <<"tags">> => map(),
-%%   <<"trackingConfigArn">> => string()
+%%   <<"trackingConfigArn">> := string()
 %% }
 -type create_mission_profile_request() :: #{binary() => any()}.
 
@@ -1083,6 +1175,7 @@
 -type delete_ephemeris_errors() ::
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
+    resource_in_use_exception() | 
     dependency_exception().
 
 -type delete_mission_profile_errors() ::
@@ -1177,6 +1270,7 @@
 
 -type reserve_contact_errors() ::
     invalid_parameter_exception() | 
+    resource_limit_exceeded_exception() | 
     resource_not_found_exception() | 
     dependency_exception().
 
@@ -1289,12 +1383,11 @@ create_config(Client, Input0, Options0) ->
 %% of `DataflowEndpoint' objects.
 %%
 %% The `name' field in each endpoint is used in your mission profile
-%% `DataflowEndpointConfig'
-%% to specify which endpoints to use during a contact.
+%% `DataflowEndpointConfig' to specify which endpoints to use during a
+%% contact.
 %%
 %% When a contact uses multiple `DataflowEndpointConfig' objects, each
-%% `Config'
-%% must match a `DataflowEndpoint' in the same group.
+%% `Config' must match a `DataflowEndpoint' in the same group.
 -spec create_dataflow_endpoint_group(aws_client:aws_client(), create_dataflow_endpoint_group_request()) ->
     {ok, dataflow_endpoint_group_id_response(), tuple()} |
     {error, any()} |
@@ -1328,7 +1421,7 @@ create_dataflow_endpoint_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Ephemeris with the specified `EphemerisData'.
+%% @doc Create an ephemeris with your specified `EphemerisData'.
 -spec create_ephemeris(aws_client:aws_client(), create_ephemeris_request()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
@@ -1365,8 +1458,7 @@ create_ephemeris(Client, Input0, Options0) ->
 %% @doc Creates a mission profile.
 %%
 %% `dataflowEdges' is a list of lists of strings. Each lower level list
-%% of strings
-%% has two elements: a from ARN and a to ARN.
+%% of strings has two elements: a from ARN and a to ARN.
 -spec create_mission_profile(aws_client:aws_client(), create_mission_profile_request()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |
@@ -1468,7 +1560,7 @@ delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an ephemeris
+%% @doc Delete an ephemeris.
 -spec delete_ephemeris(aws_client:aws_client(), binary() | list(), delete_ephemeris_request()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
@@ -1573,7 +1665,7 @@ describe_contact(Client, ContactId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes an existing ephemeris.
+%% @doc Retrieve information about an existing ephemeris.
 -spec describe_ephemeris(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_ephemeris_response(), tuple()} |
     {error, any()} |
@@ -1610,8 +1702,8 @@ describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% For use by AWS Ground Station Agent and shouldn't be called directly.
+%% @doc For use by AWS Ground Station Agent and shouldn't be called
+%% directly.
 %%
 %% Gets the latest configuration information for a registered agent.
 -spec get_agent_configuration(aws_client:aws_client(), binary() | list()) ->
@@ -1955,7 +2047,7 @@ list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List existing ephemerides.
+%% @doc List your existing ephemerides.
 -spec list_ephemerides(aws_client:aws_client(), list_ephemerides_request()) ->
     {ok, list_ephemerides_response(), tuple()} |
     {error, any()} |
@@ -2155,8 +2247,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% For use by AWS Ground Station Agent and shouldn't be called directly.
+%% @doc For use by AWS Ground Station Agent and shouldn't be called
+%% directly.
 %%
 %% Registers a new agent with AWS Ground Station.
 -spec register_agent(aws_client:aws_client(), register_agent_request()) ->
@@ -2295,8 +2387,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% For use by AWS Ground Station Agent and shouldn't be called directly.
+%% @doc For use by AWS Ground Station Agent and shouldn't be called
+%% directly.
 %%
 %% Update the status of the agent.
 -spec update_agent_status(aws_client:aws_client(), binary() | list(), update_agent_status_request()) ->
@@ -2334,8 +2426,8 @@ update_agent_status(Client, AgentId, Input0, Options0) ->
 
 %% @doc Updates the `Config' used when scheduling contacts.
 %%
-%% Updating a `Config' will not update the execution parameters
-%% for existing future contacts scheduled with this `Config'.
+%% Updating a `Config' will not update the execution parameters for
+%% existing future contacts scheduled with this `Config'.
 -spec update_config(aws_client:aws_client(), binary() | list(), binary() | list(), update_config_request()) ->
     {ok, config_id_response(), tuple()} |
     {error, any()} |
@@ -2369,7 +2461,7 @@ update_config(Client, ConfigId, ConfigType, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing ephemeris
+%% @doc Update an existing ephemeris.
 -spec update_ephemeris(aws_client:aws_client(), binary() | list(), update_ephemeris_request()) ->
     {ok, ephemeris_id_response(), tuple()} |
     {error, any()} |
@@ -2405,8 +2497,8 @@ update_ephemeris(Client, EphemerisId, Input0, Options0) ->
 
 %% @doc Updates a mission profile.
 %%
-%% Updating a mission profile will not update the execution parameters
-%% for existing future contacts.
+%% Updating a mission profile will not update the execution parameters for
+%% existing future contacts.
 -spec update_mission_profile(aws_client:aws_client(), binary() | list(), update_mission_profile_request()) ->
     {ok, mission_profile_id_response(), tuple()} |
     {error, any()} |

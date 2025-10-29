@@ -798,6 +798,14 @@
 %% }
 -type put_provisioned_concurrency_config_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% serialized_request_entity_too_large_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type serialized_request_entity_too_large_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_layer_version_request() :: #{}
 -type delete_layer_version_request() :: #{}.
@@ -2318,6 +2326,7 @@
     invalid_request_content_exception() | 
     invalid_runtime_exception() | 
     recursive_invocation_exception() | 
+    serialized_request_entity_too_large_exception() | 
     snap_start_timeout_exception() | 
     too_many_requests_exception() | 
     snap_start_not_ready_exception() | 
@@ -2357,6 +2366,7 @@
     invalid_request_content_exception() | 
     invalid_runtime_exception() | 
     recursive_invocation_exception() | 
+    serialized_request_entity_too_large_exception() | 
     snap_start_timeout_exception() | 
     too_many_requests_exception() | 
     snap_start_not_ready_exception() | 
@@ -3133,6 +3143,9 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% To delete a specific function version, use the `Qualifier' parameter.
 %% Otherwise, all versions and aliases are deleted. This doesn't require
 %% the user to have explicit permissions for `DeleteAlias'.
+%%
+%% A deleted Lambda function cannot be recovered. Ensure that you specify the
+%% correct function name and version before deleting.
 %%
 %% To delete Lambda event source mappings that invoke a function, use
 %% `DeleteEventSourceMapping'. For Amazon Web Services services and
@@ -4105,6 +4118,9 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 %% passes the `ClientContext' object to your function for synchronous
 %% invocations only.
 %%
+%% For synchronous invocations, the maximum payload size is 6 MB. For
+%% asynchronous invocations, the maximum payload size is 1 MB.
+%%
 %% For synchronous invocation:
 %% https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html, details
 %% about the function response, including errors, are included in the
@@ -4208,6 +4224,9 @@ invoke(Client, FunctionName, Input0, Options0) ->
 %% @doc For asynchronous function invocation, use `Invoke'.
 %%
 %% Invokes a function asynchronously.
+%%
+%% The payload limit is 256KB. For larger payloads, for up to 1MB, use
+%% `Invoke'.
 %%
 %% If you do use the InvokeAsync action, note that it doesn't support the
 %% use of X-Ray active tracing. Trace ID is not propagated to the function,

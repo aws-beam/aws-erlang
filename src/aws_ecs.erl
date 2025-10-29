@@ -675,7 +675,9 @@
 %% service_revision_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"pendingTaskCount">> => integer(),
+%%   <<"requestedProductionTrafficWeight">> => float(),
 %%   <<"requestedTaskCount">> => integer(),
+%%   <<"requestedTestTrafficWeight">> => float(),
 %%   <<"runningTaskCount">> => integer()
 %% }
 -type service_revision_summary() :: #{binary() => any()}.
@@ -685,6 +687,13 @@
 %%   <<"message">> => string()
 %% }
 -type target_not_connected_exception() :: #{binary() => any()}.
+
+%% Example:
+%% linear_configuration() :: #{
+%%   <<"stepBakeTimeInMinutes">> => integer(),
+%%   <<"stepPercent">> => float()
+%% }
+-type linear_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% service_not_found_exception() :: #{
@@ -950,8 +959,10 @@
 %% deployment_configuration() :: #{
 %%   <<"alarms">> => deployment_alarms(),
 %%   <<"bakeTimeInMinutes">> => integer(),
+%%   <<"canaryConfiguration">> => canary_configuration(),
 %%   <<"deploymentCircuitBreaker">> => deployment_circuit_breaker(),
 %%   <<"lifecycleHooks">> => list(deployment_lifecycle_hook()),
+%%   <<"linearConfiguration">> => linear_configuration(),
 %%   <<"maximumPercent">> => integer(),
 %%   <<"minimumHealthyPercent">> => integer(),
 %%   <<"strategy">> => list(any())
@@ -1764,6 +1775,13 @@
 %%   <<"message">> => string()
 %% }
 -type cluster_contains_container_instances_exception() :: #{binary() => any()}.
+
+%% Example:
+%% canary_configuration() :: #{
+%%   <<"canaryBakeTimeInMinutes">> => integer(),
+%%   <<"canaryPercent">> => float()
+%% }
+-type canary_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% submit_container_state_change_response() :: #{
@@ -3334,6 +3352,46 @@ create_cluster(Client, Input, Options)
 %% Load balancer requirement: When your
 %% service uses Application Load Balancer, Network Load Balancer, or Service
 %% Connect
+%%
+%% `LINEAR': A linear deployment strategy (`LINEAR') gradually shifts
+%% traffic from the current production environment to a new environment in
+%% equal percentage increments over a specified time period. With Amazon ECS
+%% linear deployments, you can control the pace of traffic shifting and
+%% validate new service revisions with increasing amounts of production
+%% traffic.
+%%
+%% Linear deployments are best suited for the following scenarios:
+%%
+%% Gradual validation: When you want to gradually validate your new service
+%% version with increasing traffic
+%%
+%% Performance monitoring: When you need time to monitor metrics and
+%% performance during the deployment
+%%
+%% Risk minimization: When you want to minimize risk by exposing the new
+%% version to production traffic incrementally
+%%
+%% Load balancer requirement: When your service uses Application Load
+%% Balancer, Network Load Balancer, or Service Connect
+%%
+%% `CANARY': A canary deployment strategy (`CANARY') shifts a small
+%% percentage of traffic to the new service revision first, then shifts the
+%% remaining traffic all at once after a specified time period. This allows
+%% you to test the new version with a subset of users before full deployment.
+%%
+%% Canary deployments are best suited for the following scenarios:
+%%
+%% Feature testing: When you want to test new features with a small subset of
+%% users before full rollout
+%%
+%% Production validation: When you need to validate performance and
+%% functionality with real production traffic
+%%
+%% Blast radius control: When you want to minimize blast radius if issues are
+%% discovered in the new version
+%%
+%% Load balancer requirement: When your service uses Application Load
+%% Balancer, Network Load Balancer, or Service Connect
 %%
 %% External
 %%

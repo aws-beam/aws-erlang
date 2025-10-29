@@ -250,6 +250,8 @@
          delete_partner_app/3,
          delete_pipeline/2,
          delete_pipeline/3,
+         delete_processing_job/2,
+         delete_processing_job/3,
          delete_project/2,
          delete_project/3,
          delete_space/2,
@@ -258,6 +260,8 @@
          delete_studio_lifecycle_config/3,
          delete_tags/2,
          delete_tags/3,
+         delete_training_job/2,
+         delete_training_job/3,
          delete_trial/2,
          delete_trial/3,
          delete_trial_component/2,
@@ -2078,6 +2082,12 @@
 %%   <<"Summaries">> => list(partner_app_summary())
 %% }
 -type list_partner_apps_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_processing_job_request() :: #{
+%%   <<"ProcessingJobName">> := string()
+%% }
+-type delete_processing_job_request() :: #{binary() => any()}.
 
 %% Example:
 %% oidc_member_definition() :: #{
@@ -10736,6 +10746,12 @@
 -type get_model_package_group_policy_output() :: #{binary() => any()}.
 
 %% Example:
+%% delete_training_job_request() :: #{
+%%   <<"TrainingJobName">> := string()
+%% }
+-type delete_training_job_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_mlflow_tracking_server_request() :: #{
 %%   <<"TrackingServerName">> := string()
 %% }
@@ -13632,6 +13648,10 @@
     conflict_exception() | 
     resource_not_found().
 
+-type delete_processing_job_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
 -type delete_project_errors() ::
     conflict_exception().
 
@@ -13640,6 +13660,10 @@
     resource_not_found().
 
 -type delete_studio_lifecycle_config_errors() ::
+    resource_in_use() | 
+    resource_not_found().
+
+-type delete_training_job_errors() ::
     resource_in_use() | 
     resource_not_found().
 
@@ -17282,6 +17306,30 @@ delete_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePipeline">>, Input, Options).
 
+%% @doc Deletes a processing job.
+%%
+%% After Amazon SageMaker deletes a processing job, all of the metadata for
+%% the processing job is lost. You can delete only processing jobs that are
+%% in a terminal state (`Stopped', `Failed', or `Completed'). You
+%% cannot delete a job that is in the `InProgress' or `Stopping'
+%% state. After deleting the job, you can reuse its name to create another
+%% processing job.
+-spec delete_processing_job(aws_client:aws_client(), delete_processing_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_processing_job_errors(), tuple()}.
+delete_processing_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_processing_job(Client, Input, []).
+
+-spec delete_processing_job(aws_client:aws_client(), delete_processing_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_processing_job_errors(), tuple()}.
+delete_processing_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProcessingJob">>, Input, Options).
+
 %% @doc Delete the specified project.
 -spec delete_project(aws_client:aws_client(), delete_project_input()) ->
     {ok, undefined, tuple()} |
@@ -17361,6 +17409,32 @@ delete_tags(Client, Input)
 delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
+
+%% @doc Deletes a training job.
+%%
+%% After SageMaker deletes a training job, all of the metadata for the
+%% training job is lost. You can delete only training jobs that are in a
+%% terminal state (`Stopped', `Failed', or `Completed') and
+%% don't retain an `Available' managed warm pool:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/train-warm-pools.html. You
+%% cannot delete a job that is in the `InProgress' or `Stopping'
+%% state. After deleting the job, you can reuse its name to create another
+%% training job.
+-spec delete_training_job(aws_client:aws_client(), delete_training_job_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_training_job_errors(), tuple()}.
+delete_training_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_training_job(Client, Input, []).
+
+-spec delete_training_job(aws_client:aws_client(), delete_training_job_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_training_job_errors(), tuple()}.
+delete_training_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTrainingJob">>, Input, Options).
 
 %% @doc Deletes the specified trial.
 %%
