@@ -367,6 +367,14 @@
 
 
 %% Example:
+%% web_location() :: #{
+%%   <<"domain">> => [string()],
+%%   <<"url">> => [string()]
+%% }
+-type web_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% bidirectional_input_payload_part() :: #{
 %%   <<"bytes">> => binary()
 %% }
@@ -412,6 +420,15 @@
 %%   <<"options">> => list(guardrail_automated_reasoning_translation_option())
 %% }
 -type guardrail_automated_reasoning_translation_ambiguous_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% tool_result_block_start() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => [string()]
+%% }
+-type tool_result_block_start() :: #{binary() => any()}.
 
 
 %% Example:
@@ -509,7 +526,8 @@
 %% Example:
 %% tool_use_block_start() :: #{
 %%   <<"name">> => string(),
-%%   <<"toolUseId">> => string()
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
 %% }
 -type tool_use_block_start() :: #{binary() => any()}.
 
@@ -737,6 +755,13 @@
 
 
 %% Example:
+%% system_tool() :: #{
+%%   <<"name">> => string()
+%% }
+-type system_tool() :: #{binary() => any()}.
+
+
+%% Example:
 %% guardrail_invocation_metrics() :: #{
 %%   <<"guardrailCoverage">> => guardrail_coverage(),
 %%   <<"guardrailProcessingLatency">> => float(),
@@ -773,7 +798,8 @@
 %% tool_result_block() :: #{
 %%   <<"content">> => list(list()),
 %%   <<"status">> => list(any()),
-%%   <<"toolUseId">> => string()
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => [string()]
 %% }
 -type tool_result_block() :: #{binary() => any()}.
 
@@ -789,7 +815,8 @@
 %% tool_use_block() :: #{
 %%   <<"input">> => [any()],
 %%   <<"name">> => string(),
-%%   <<"toolUseId">> => string()
+%%   <<"toolUseId">> => string(),
+%%   <<"type">> => list(any())
 %% }
 -type tool_use_block() :: #{binary() => any()}.
 
