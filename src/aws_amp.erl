@@ -29,6 +29,8 @@
 
 -export([create_alert_manager_definition/3,
          create_alert_manager_definition/4,
+         create_anomaly_detector/3,
+         create_anomaly_detector/4,
          create_logging_configuration/3,
          create_logging_configuration/4,
          create_query_logging_configuration/3,
@@ -41,6 +43,8 @@
          create_workspace/3,
          delete_alert_manager_definition/3,
          delete_alert_manager_definition/4,
+         delete_anomaly_detector/4,
+         delete_anomaly_detector/5,
          delete_logging_configuration/3,
          delete_logging_configuration/4,
          delete_query_logging_configuration/3,
@@ -58,6 +62,9 @@
          describe_alert_manager_definition/2,
          describe_alert_manager_definition/4,
          describe_alert_manager_definition/5,
+         describe_anomaly_detector/3,
+         describe_anomaly_detector/5,
+         describe_anomaly_detector/6,
          describe_logging_configuration/2,
          describe_logging_configuration/4,
          describe_logging_configuration/5,
@@ -85,6 +92,9 @@
          get_default_scraper_configuration/1,
          get_default_scraper_configuration/3,
          get_default_scraper_configuration/4,
+         list_anomaly_detectors/2,
+         list_anomaly_detectors/4,
+         list_anomaly_detectors/5,
          list_rule_groups_namespaces/2,
          list_rule_groups_namespaces/4,
          list_rule_groups_namespaces/5,
@@ -99,6 +109,8 @@
          list_workspaces/4,
          put_alert_manager_definition/3,
          put_alert_manager_definition/4,
+         put_anomaly_detector/4,
+         put_anomaly_detector/5,
          put_resource_policy/3,
          put_resource_policy/4,
          put_rule_groups_namespace/4,
@@ -316,6 +328,23 @@
 
 
 %% Example:
+%% anomaly_detector_description() :: #{
+%%   <<"alias">> => string(),
+%%   <<"anomalyDetectorId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"evaluationIntervalInSeconds">> => integer(),
+%%   <<"labels">> => map(),
+%%   <<"missingDataAction">> => list(),
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"status">> => anomaly_detector_status(),
+%%   <<"tags">> => map()
+%% }
+-type anomaly_detector_description() :: #{binary() => any()}.
+
+
+%% Example:
 %% query_logging_configuration_status() :: #{
 %%   <<"statusCode">> => string(),
 %%   <<"statusReason">> => [string()]
@@ -331,6 +360,14 @@
 %%   <<"tags">> => map()
 %% }
 -type create_rule_groups_namespace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly_detector_status() :: #{
+%%   <<"statusCode">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type anomaly_detector_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -394,6 +431,17 @@
 %%   <<"status">> => workspace_configuration_status()
 %% }
 -type update_workspace_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_anomaly_detector_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"evaluationIntervalInSeconds">> => integer(),
+%%   <<"labels">> => map(),
+%%   <<"missingDataAction">> => list()
+%% }
+-type put_anomaly_detector_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -465,6 +513,13 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_anomaly_detector_response() :: #{
+%%   <<"anomalyDetector">> => anomaly_detector_description()
+%% }
+-type describe_anomaly_detector_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_logging_configuration_request() :: #{}
@@ -563,6 +618,16 @@
 
 
 %% Example:
+%% create_anomaly_detector_response() :: #{
+%%   <<"anomalyDetectorId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"status">> => anomaly_detector_status(),
+%%   <<"tags">> => map()
+%% }
+-type create_anomaly_detector_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_workspace_request() :: #{
 %%   <<"clientToken">> => string()
 %% }
@@ -630,6 +695,19 @@
 %%   <<"workspaceId">> => string()
 %% }
 -type create_workspace_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% anomaly_detector_summary() :: #{
+%%   <<"alias">> => string(),
+%%   <<"anomalyDetectorId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"modifiedAt">> => [non_neg_integer()],
+%%   <<"status">> => anomaly_detector_status(),
+%%   <<"tags">> => map()
+%% }
+-type anomaly_detector_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -768,11 +846,27 @@
 
 
 %% Example:
+%% list_anomaly_detectors_request() :: #{
+%%   <<"alias">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_anomaly_detectors_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% scraper_logging_configuration_status() :: #{
 %%   <<"statusCode">> => string(),
 %%   <<"statusReason">> => [string()]
 %% }
 -type scraper_logging_configuration_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_anomaly_detector_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_anomaly_detector_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -890,6 +984,24 @@
 
 
 %% Example:
+%% put_anomaly_detector_response() :: #{
+%%   <<"anomalyDetectorId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"status">> => anomaly_detector_status(),
+%%   <<"tags">> => map()
+%% }
+-type put_anomaly_detector_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_anomaly_detectors_response() :: #{
+%%   <<"anomalyDetectors">> => list(anomaly_detector_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_anomaly_detectors_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_rule_groups_namespace_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"data">> => binary()
@@ -903,6 +1015,17 @@
 %%   <<"destinations">> := list(logging_destination())
 %% }
 -type create_query_logging_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% random_cut_forest_configuration() :: #{
+%%   <<"ignoreNearExpectedFromAbove">> => list(),
+%%   <<"ignoreNearExpectedFromBelow">> => list(),
+%%   <<"query">> => string(),
+%%   <<"sampleSize">> => [integer()],
+%%   <<"shingleSize">> => [integer()]
+%% }
+-type random_cut_forest_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -921,6 +1044,19 @@
 
 
 %% Example:
+%% create_anomaly_detector_request() :: #{
+%%   <<"alias">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"evaluationIntervalInSeconds">> => integer(),
+%%   <<"labels">> => map(),
+%%   <<"missingDataAction">> => list(),
+%%   <<"tags">> => map()
+%% }
+-type create_anomaly_detector_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_rule_groups_namespaces_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"name">> => string(),
@@ -935,6 +1071,10 @@
 %%   <<"statusReason">> => [string()]
 %% }
 -type alert_manager_definition_status() :: #{binary() => any()}.
+
+%% Example:
+%% describe_anomaly_detector_request() :: #{}
+-type describe_anomaly_detector_request() :: #{}.
 
 
 %% Example:
@@ -985,6 +1125,14 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type create_anomaly_detector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_logging_configuration_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1024,6 +1172,14 @@
     conflict_exception().
 
 -type delete_alert_manager_definition_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type delete_anomaly_detector_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -1091,6 +1247,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type describe_anomaly_detector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type describe_logging_configuration_errors() ::
     validation_exception() | 
     access_denied_exception() | 
@@ -1149,6 +1312,13 @@
     access_denied_exception() | 
     internal_server_exception().
 
+-type list_anomaly_detectors_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type list_rule_groups_namespaces_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -1182,6 +1352,14 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception().
+
+-type put_anomaly_detector_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type put_resource_policy_errors() ::
@@ -1286,6 +1464,44 @@ create_alert_manager_definition(Client, WorkspaceId, Input) ->
 create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an anomaly detector within a workspace using the Random Cut
+%% Forest algorithm for time-series analysis.
+%%
+%% The anomaly detector analyzes Amazon Managed Service for Prometheus
+%% metrics to identify unusual patterns and behaviors.
+-spec create_anomaly_detector(aws_client:aws_client(), binary() | list(), create_anomaly_detector_request()) ->
+    {ok, create_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, create_anomaly_detector_errors(), tuple()}.
+create_anomaly_detector(Client, WorkspaceId, Input) ->
+    create_anomaly_detector(Client, WorkspaceId, Input, []).
+
+-spec create_anomaly_detector(aws_client:aws_client(), binary() | list(), create_anomaly_detector_request(), proplists:proplist()) ->
+    {ok, create_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, create_anomaly_detector_errors(), tuple()}.
+create_anomaly_detector(Client, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/anomalydetectors"],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1538,6 +1754,43 @@ delete_alert_manager_definition(Client, WorkspaceId, Input) ->
 delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes an anomaly detector from a workspace.
+%%
+%% This operation is idempotent.
+-spec delete_anomaly_detector(aws_client:aws_client(), binary() | list(), binary() | list(), delete_anomaly_detector_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_anomaly_detector_errors(), tuple()}.
+delete_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, Input) ->
+    delete_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, Input, []).
+
+-spec delete_anomaly_detector(aws_client:aws_client(), binary() | list(), binary() | list(), delete_anomaly_detector_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_anomaly_detector_errors(), tuple()}.
+delete_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/anomalydetectors/", aws_util:encode_uri(AnomalyDetectorId), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1838,6 +2091,44 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap)
 describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific anomaly detector,
+%% including its status and configuration.
+-spec describe_anomaly_detector(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_anomaly_detector_errors(), tuple()}.
+describe_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId)
+  when is_map(Client) ->
+    describe_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, #{}, #{}).
+
+-spec describe_anomaly_detector(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_anomaly_detector_errors(), tuple()}.
+describe_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, QueryMap, HeadersMap, []).
+
+-spec describe_anomaly_detector(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_anomaly_detector_errors(), tuple()}.
+describe_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/anomalydetectors/", aws_util:encode_uri(AnomalyDetectorId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2200,6 +2491,50 @@ get_default_scraper_configuration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a paginated list of anomaly detectors for a workspace with
+%% optional filtering by alias.
+-spec list_anomaly_detectors(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_anomaly_detectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_anomaly_detectors_errors(), tuple()}.
+list_anomaly_detectors(Client, WorkspaceId)
+  when is_map(Client) ->
+    list_anomaly_detectors(Client, WorkspaceId, #{}, #{}).
+
+-spec list_anomaly_detectors(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_anomaly_detectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_anomaly_detectors_errors(), tuple()}.
+list_anomaly_detectors(Client, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_anomaly_detectors(Client, WorkspaceId, QueryMap, HeadersMap, []).
+
+-spec list_anomaly_detectors(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_anomaly_detectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_anomaly_detectors_errors(), tuple()}.
+list_anomaly_detectors(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/anomalydetectors"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"alias">>, maps:get(<<"alias">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of rule groups namespaces in a workspace.
 -spec list_rule_groups_namespaces(aws_client:aws_client(), binary() | list()) ->
     {ok, list_rule_groups_namespaces_response(), tuple()} |
@@ -2396,6 +2731,49 @@ put_alert_manager_definition(Client, WorkspaceId, Input) ->
 put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc When you call `PutAnomalyDetector', the operation creates a new
+%% anomaly detector if one doesn't exist, or updates an existing one.
+%%
+%% Each call to this operation triggers a complete retraining of the
+%% detector, which includes querying the minimum required samples and
+%% backfilling the detector with historical data. This process occurs
+%% regardless of whether you're making a minor change like updating the
+%% evaluation interval or making more substantial modifications. The
+%% operation serves as the single method for creating, updating, and
+%% retraining anomaly detectors.
+-spec put_anomaly_detector(aws_client:aws_client(), binary() | list(), binary() | list(), put_anomaly_detector_request()) ->
+    {ok, put_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, put_anomaly_detector_errors(), tuple()}.
+put_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, Input) ->
+    put_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, Input, []).
+
+-spec put_anomaly_detector(aws_client:aws_client(), binary() | list(), binary() | list(), put_anomaly_detector_request(), proplists:proplist()) ->
+    {ok, put_anomaly_detector_response(), tuple()} |
+    {error, any()} |
+    {error, put_anomaly_detector_errors(), tuple()}.
+put_anomaly_detector(Client, AnomalyDetectorId, WorkspaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/anomalydetectors/", aws_util:encode_uri(AnomalyDetectorId), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

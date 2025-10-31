@@ -634,7 +634,8 @@
 %%   <<"XksProxyConnectivity">> => list(any()),
 %%   <<"XksProxyUriEndpoint">> => string(),
 %%   <<"XksProxyUriPath">> => string(),
-%%   <<"XksProxyVpcEndpointServiceName">> => string()
+%%   <<"XksProxyVpcEndpointServiceName">> => string(),
+%%   <<"XksProxyVpcEndpointServiceOwner">> => string()
 %% }
 -type create_custom_key_store_request() :: #{binary() => any()}.
 
@@ -842,7 +843,8 @@
 %%   <<"XksProxyConnectivity">> => list(any()),
 %%   <<"XksProxyUriEndpoint">> => string(),
 %%   <<"XksProxyUriPath">> => string(),
-%%   <<"XksProxyVpcEndpointServiceName">> => string()
+%%   <<"XksProxyVpcEndpointServiceName">> => string(),
+%%   <<"XksProxyVpcEndpointServiceOwner">> => string()
 %% }
 -type update_custom_key_store_request() :: #{binary() => any()}.
 
@@ -1447,7 +1449,8 @@
 %%   <<"Connectivity">> => list(any()),
 %%   <<"UriEndpoint">> => string(),
 %%   <<"UriPath">> => string(),
-%%   <<"VpcEndpointServiceName">> => string()
+%%   <<"VpcEndpointServiceName">> => string(),
+%%   <<"VpcEndpointServiceOwner">> => string()
 %% }
 -type xks_proxy_configuration_type() :: #{binary() => any()}.
 
@@ -3075,8 +3078,9 @@ delete_imported_key_material(Client, Input, Options)
 %%
 %% You must use an asymmetric NIST-recommended elliptic curve (ECC) or SM2
 %% (China Regions
-%% only) KMS key pair with a `KeyUsage'
-%% value of `KEY_AGREEMENT' to call DeriveSharedSecret.
+%% only) KMS key pair with a `KeyUsage' value of `KEY_AGREEMENT' to
+%% call
+%% DeriveSharedSecret.
 %%
 %% DeriveSharedSecret uses the Elliptic Curve Cryptography Cofactor
 %% Diffie-Hellman Primitive:

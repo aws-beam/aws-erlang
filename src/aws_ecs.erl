@@ -4,30 +4,32 @@
 %% @doc Amazon Elastic Container Service
 %%
 %% Amazon Elastic Container Service (Amazon ECS) is a highly scalable, fast,
-%% container management service.
+%% container
+%% management service.
 %%
-%% It makes
-%% it easy to run, stop, and manage Docker containers. You can host your
-%% cluster on a
-%% serverless infrastructure that's managed by Amazon ECS by launching
-%% your services or tasks on
-%% Fargate. For more control, you can host your tasks on a cluster of Amazon
-%% Elastic Compute Cloud (Amazon EC2)
-%% or External (on-premises) instances that you manage.
+%% It makes it easy to run, stop, and manage Docker containers. You can
+%% host your cluster on a serverless infrastructure that's managed by
+%% Amazon ECS by
+%% launching your services or tasks on Fargate. For more control, you can
+%% host your
+%% tasks on a cluster of Amazon Elastic Compute Cloud (Amazon EC2) or
+%% External
+%% (on-premises) instances that you manage.
 %%
 %% Amazon ECS makes it easy to launch and stop container-based applications
-%% with simple API
-%% calls. This makes it easy to get the state of your cluster from a
-%% centralized service,
-%% and gives you access to many familiar Amazon EC2 features.
+%% with simple
+%% API calls. This makes it easy to get the state of your cluster from a
+%% centralized
+%% service, and gives you access to many familiar Amazon EC2 features.
 %%
 %% You can use Amazon ECS to schedule the placement of containers across your
-%% cluster based on
-%% your resource needs, isolation policies, and availability requirements.
-%% With Amazon ECS, you
-%% don't need to operate your own cluster management and configuration
-%% management systems.
-%% You also don't need to worry about scaling your management
+%% cluster
+%% based on your resource needs, isolation policies, and availability
+%% requirements. With
+%% Amazon ECS, you don't need to operate your own cluster management and
+%% configuration
+%% management systems. You also don't need to worry about scaling your
+%% management
 %% infrastructure.
 -module(aws_ecs).
 
@@ -1002,6 +1004,13 @@
 -type service_connect_test_traffic_header_match_rules() :: #{binary() => any()}.
 
 %% Example:
+%% service_connect_access_log_configuration() :: #{
+%%   <<"format">> => list(any()),
+%%   <<"includeQueryParameters">> => list(any())
+%% }
+-type service_connect_access_log_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% create_cluster_request() :: #{
 %%   <<"capacityProviders">> => list(string()),
 %%   <<"clusterName">> => string(),
@@ -1030,6 +1039,7 @@
 
 %% Example:
 %% service_connect_configuration() :: #{
+%%   <<"accessLogConfiguration">> => service_connect_access_log_configuration(),
 %%   <<"enabled">> => boolean(),
 %%   <<"logConfiguration">> => log_configuration(),
 %%   <<"namespace">> => string(),
@@ -3128,11 +3138,12 @@
 
 %% @doc Creates a capacity provider.
 %%
-%% Capacity providers are associated with a cluster and are used in capacity
-%% provider strategies to facilitate cluster auto scaling. You can create
+%% Capacity providers are associated with a cluster and are
+%% used in capacity provider strategies to facilitate cluster auto scaling.
+%% You can create
 %% capacity providers for Amazon ECS Managed Instances and EC2 instances.
-%% Fargate has the predefined `FARGATE' and `FARGATE_SPOT' capacity
-%% providers.
+%% Fargate has the
+%% predefined `FARGATE' and `FARGATE_SPOT' capacity providers.
 -spec create_capacity_provider(aws_client:aws_client(), create_capacity_provider_request()) ->
     {ok, create_capacity_provider_response(), tuple()} |
     {error, any()} |
@@ -3151,24 +3162,25 @@ create_capacity_provider(Client, Input, Options)
 
 %% @doc Creates a new Amazon ECS cluster.
 %%
-%% By default, your account receives a `default'
-%% cluster when you launch your first container instance. However, you can
-%% create your own
-%% cluster with a unique name.
+%% By default, your account receives a
+%% `default' cluster when you launch your first container instance.
+%% However,
+%% you can create your own cluster with a unique name.
 %%
 %% When you call the CreateCluster:
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html
 %% API operation, Amazon ECS attempts to create the Amazon ECS service-linked
-%% role for your
-%% account. This is so that it can manage required resources in other Amazon
-%% Web Services services on
-%% your behalf. However, if the user that makes the call doesn't have
-%% permissions to
-%% create the service-linked role, it isn't created. For more
-%% information, see Using
+%% role for
+%% your account. This is so that it can manage required resources in other
+%% Amazon Web
+%% Services services on your behalf. However, if the user that makes the
+%% call doesn't have permissions to create the service-linked role, it
+%% isn't created.
+%% For more information, see Using
 %% service-linked roles for Amazon ECS:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 -spec create_cluster(aws_client:aws_client(), create_cluster_request()) ->
     {ok, create_cluster_response(), tuple()} |
     {error, any()} |
@@ -3197,9 +3209,9 @@ create_cluster(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateService.html.
 %%
 %% On March 21, 2024, a change was made to resolve the task definition
-%% revision before authorization. When a task definition revision is not
-%% specified, authorization will occur using the latest revision of a task
-%% definition.
+%% revision
+%% before authorization. When a task definition revision is not specified,
+%% authorization will occur using the latest revision of a task definition.
 %%
 %% Amazon Elastic Inference (EI) is no longer available to customers.
 %%
@@ -3211,16 +3223,18 @@ create_cluster(Client, Input, Options)
 %% For more
 %% information, see Service load balancing:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 %%
 %% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
-%% volume when creating or
-%% updating a service. `volumeConfigurations' is only supported for
-%% REPLICA
-%% service and not DAEMON service. For more information, see Amazon EBS
-%% volumes:
+%% volume when
+%% creating or updating a service. `volumeConfigurations' is only
+%% supported for
+%% REPLICA service and not DAEMON service. For more information, see Amazon
+%% EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 %%
 %% Tasks for services that don't use a load balancer are considered
 %% healthy if they're in
@@ -3231,20 +3245,19 @@ create_cluster(Client, Input, Options)
 %%
 %% There are two service scheduler strategies available:
 %%
-%% `REPLICA' - The replica scheduling strategy places and
-%% maintains your desired number of tasks across your cluster. By default,
-%% the
-%% service scheduler spreads tasks across Availability Zones. You can use
-%% task
-%% placement strategies and constraints to customize task placement
-%% decisions. For
-%% more information, see Service scheduler concepts:
-%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html
-%% in the Amazon Elastic Container Service Developer Guide.
-%%
-%% `DAEMON' - The daemon scheduling strategy deploys exactly one
-%% task on each active container instance that meets all of the task
+%% `REPLICA' - The replica scheduling strategy places and maintains
+%% your desired number of tasks across your cluster. By default, the service
+%% scheduler spreads tasks across Availability Zones. You can use task
 %% placement
+%% strategies and constraints to customize task placement decisions. For more
+%% information, see Service scheduler concepts:
+%% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html
+%% in the
+%% Amazon Elastic Container Service Developer
+%% Guide.
+%%
+%% `DAEMON' - The daemon scheduling strategy deploys exactly one task
+%% on each active container instance that meets all of the task placement
 %% constraints that you specify in your cluster. The service scheduler also
 %% evaluates the task placement constraints for running tasks. It also stops
 %% tasks
@@ -3255,7 +3268,8 @@ create_cluster(Client, Input, Options)
 %% Service Auto Scaling policies. For more information, see Amazon ECS
 %% services:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container
+%% Service Developer Guide.
 %%
 %% The deployment controller is the mechanism that determines how tasks are
 %% deployed for
@@ -3263,135 +3277,130 @@ create_cluster(Client, Input, Options)
 %%
 %% ECS
 %%
-%% When you create a service which uses the `ECS' deployment controller,
-%% you can
-%% choose between the following deployment strategies (which you can set in
-%% the
-%% “`strategy'” field in “`deploymentConfiguration'”):
-%% :
+%% When you create a service which uses the `ECS' deployment
+%% controller, you can choose between the following deployment strategies
+%% (which
+%% you can set in the “`strategy'” field in
+%% “`deploymentConfiguration'”): :
 %%
-%% `ROLLING': When you create a service which uses the rolling update
-%% (`ROLLING') deployment strategy, the Amazon ECS service scheduler
-%% replaces the
+%% `ROLLING': When you create a service which uses the
+%% rolling update (`ROLLING')
+%% deployment strategy, the Amazon ECS service scheduler replaces the
 %% currently running tasks with new tasks. The number of tasks that Amazon
-%% ECS adds or
-%% removes from the service during a rolling update is controlled by the
-%% service
-%% deployment configuration. For more information, see Deploy Amazon ECS
-%% services by replacing tasks:
+%% ECS adds or removes from the service during a rolling update is
+%% controlled by the service deployment configuration. For more
+%% information, see Deploy Amazon ECS services by replacing
+%% tasks:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-ecs.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service
+%% Developer Guide.
 %%
-%% Rolling update deployments are best suited for the following scenarios:
+%% Rolling update deployments are best suited for the following
+%% scenarios:
 %%
-%% Gradual service updates: You need to
-%% update your service incrementally without taking the entire service
-%% offline at once.
+%% Gradual service updates: You need to update your service
+%% incrementally without taking the entire service offline at
+%% once.
 %%
-%% Limited resource requirements: You
-%% want to avoid the additional resource costs of running two complete
-%% environments simultaneously (as required by blue/green
+%% Limited resource requirements: You want to avoid the
+%% additional resource costs of running two complete environments
+%% simultaneously (as required by blue/green deployments).
+%%
+%% Acceptable deployment time: Your application can tolerate a
+%% longer deployment process, as rolling updates replace tasks one
+%% by one.
+%%
+%% No need for instant roll back: Your service can tolerate a
+%% rollback process that takes minutes rather than seconds.
+%%
+%% Simple deployment process: You prefer a straightforward
+%% deployment approach without the complexity of managing multiple
+%% environments, target groups, and listeners.
+%%
+%% No load balancer requirement: Your service doesn't use or
+%% require a load balancer, Application Load Balancer, Network Load
+%% Balancer, or Service Connect (which are required for blue/green
 %% deployments).
 %%
-%% Acceptable deployment time: Your
-%% application can tolerate a longer deployment process, as rolling updates
-%% replace tasks one by one.
+%% Stateful applications: Your application maintains state that
+%% makes it difficult to run two parallel environments.
 %%
-%% No need for instant roll back: Your
-%% service can tolerate a rollback process that takes minutes rather than
-%% seconds.
-%%
-%% Simple deployment process: You prefer
-%% a straightforward deployment approach without the complexity of managing
-%% multiple environments, target groups, and listeners.
-%%
-%% No load balancer requirement: Your
-%% service doesn't use or require a load balancer, Application Load
-%% Balancer, Network Load Balancer, or Service Connect (which are required
-%% for blue/green deployments).
-%%
-%% Stateful applications: Your
-%% application maintains state that makes it difficult to run two parallel
-%% environments.
-%%
-%% Cost sensitivity: You want to
-%% minimize deployment costs by not running duplicate environments during
-%% deployment.
+%% Cost sensitivity: You want to minimize deployment costs by not
+%% running duplicate environments during deployment.
 %%
 %% Rolling updates are the default deployment strategy for services and
-%% provide a
-%% balance between deployment safety and resource efficiency for many common
-%% application scenarios.
+%% provide a balance between deployment safety and resource efficiency for
+%% many common application scenarios.
 %%
-%% `BLUE_GREEN': A blue/green deployment strategy (`BLUE_GREEN') is a
-%% release methodology that reduces downtime and
-%% risk by running two identical production environments called blue and
-%% green.
-%% With Amazon ECS blue/green deployments, you can validate new service
-%% revisions before
-%% directing production traffic to them. This approach provides a safer way
-%% to
-%% deploy changes with the ability to quickly roll back if needed. For more
-%% information, see Amazon ECS blue/green deployments:
+%% `BLUE_GREEN': A blue/green deployment
+%% strategy (`BLUE_GREEN') is a release methodology that reduces
+%% downtime and risk by running two identical production environments
+%% called blue and green. With Amazon ECS blue/green deployments, you can
+%% validate new service revisions before directing production traffic to
+%% them. This approach provides a safer way to deploy changes with the
+%% ability to quickly roll back if needed. For more information, see Amazon
+%% ECS blue/green deployments:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-type-blue-green.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in
+%% the Amazon Elastic Container Service Developer
+%% Guide.
 %%
 %% Amazon ECS blue/green deployments are best suited for the following
 %% scenarios:
 %%
-%% Service validation: When you need to
-%% validate new service revisions before directing production traffic to
-%% them
+%% Service validation: When you need to validate new service
+%% revisions before directing production traffic to them
 %%
-%% Zero downtime: When your service
-%% requires zero-downtime deployments
+%% Zero downtime: When your service requires zero-downtime
+%% deployments
 %%
-%% Instant roll back: When you
-%% need the ability to quickly roll back if issues are detected
+%% Instant roll back: When you need the ability to quickly roll
+%% back if issues are detected
 %%
-%% Load balancer requirement: When your
-%% service uses Application Load Balancer, Network Load Balancer, or Service
-%% Connect
+%% Load balancer requirement: When your service uses Application
+%% Load Balancer, Network Load Balancer, or Service Connect
 %%
-%% `LINEAR': A linear deployment strategy (`LINEAR') gradually shifts
-%% traffic from the current production environment to a new environment in
-%% equal percentage increments over a specified time period. With Amazon ECS
-%% linear deployments, you can control the pace of traffic shifting and
-%% validate new service revisions with increasing amounts of production
+%% `LINEAR': A linear deployment strategy
+%% (`LINEAR') gradually shifts traffic from the current
+%% production environment to a new environment in equal percentage
+%% increments over a specified time period. With Amazon ECS linear
+%% deployments, you can control the pace of traffic shifting and validate
+%% new service revisions with increasing amounts of production
 %% traffic.
 %%
 %% Linear deployments are best suited for the following scenarios:
 %%
-%% Gradual validation: When you want to gradually validate your new service
-%% version with increasing traffic
+%% Gradual validation: When you want to gradually validate your
+%% new service version with increasing traffic
 %%
-%% Performance monitoring: When you need time to monitor metrics and
-%% performance during the deployment
+%% Performance monitoring: When you need time to monitor metrics
+%% and performance during the deployment
 %%
-%% Risk minimization: When you want to minimize risk by exposing the new
-%% version to production traffic incrementally
+%% Risk minimization: When you want to minimize risk by exposing
+%% the new version to production traffic incrementally
 %%
-%% Load balancer requirement: When your service uses Application Load
-%% Balancer, Network Load Balancer, or Service Connect
+%% Load balancer requirement: When your service uses Application
+%% Load Balancer, Network Load Balancer, or Service Connect
 %%
-%% `CANARY': A canary deployment strategy (`CANARY') shifts a small
-%% percentage of traffic to the new service revision first, then shifts the
-%% remaining traffic all at once after a specified time period. This allows
-%% you to test the new version with a subset of users before full deployment.
+%% `CANARY': A canary deployment strategy
+%% (`CANARY') shifts a small percentage of traffic to the
+%% new service revision first, then shifts the remaining traffic all at
+%% once after a specified time period. This allows you to test the new
+%% version with a subset of users before full deployment.
 %%
 %% Canary deployments are best suited for the following scenarios:
 %%
-%% Feature testing: When you want to test new features with a small subset of
-%% users before full rollout
+%% Feature testing: When you want to test new features with a
+%% small subset of users before full rollout
 %%
-%% Production validation: When you need to validate performance and
-%% functionality with real production traffic
+%% Production validation: When you need to validate performance
+%% and functionality with real production traffic
 %%
-%% Blast radius control: When you want to minimize blast radius if issues are
-%% discovered in the new version
+%% Blast radius control: When you want to minimize blast radius
+%% if issues are discovered in the new version
 %%
-%% Load balancer requirement: When your service uses Application Load
-%% Balancer, Network Load Balancer, or Service Connect
+%% Load balancer requirement: When your service uses Application
+%% Load Balancer, Network Load Balancer, or Service Connect
 %%
 %% External
 %%
@@ -3400,14 +3409,12 @@ create_cluster(Client, Input, Options)
 %% Blue/green deployment (powered by CodeDeploy)
 %%
 %% CodeDeploy installs an updated version of the application as a new
-%% replacement task
-%% set and reroutes production traffic from the original application task set
+%% replacement task set and reroutes production traffic from the original
+%% application task set to the replacement task set. The original task set is
+%% terminated after a successful deployment. Use this deployment controller
 %% to
-%% the replacement task set. The original task set is terminated after a
-%% successful
-%% deployment. Use this deployment controller to verify a new deployment of a
-%% service
-%% before sending production traffic to it.
+%% verify a new deployment of a service before sending production traffic to
+%% it.
 %%
 %% When creating a service that uses the `EXTERNAL' deployment
 %% controller, you
@@ -3418,15 +3425,16 @@ create_cluster(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateTaskSet.html.
 %% For more information, see Amazon ECS deployment types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container
+%% Service Developer Guide.
 %%
 %% When the service scheduler launches new tasks, it determines task
 %% placement. For
 %% information about task placement and task placement strategies, see Amazon
-%% ECS
-%% task placement:
+%% ECS task placement:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement.html
-%% in the Amazon Elastic Container Service Developer Guide
+%% in the Amazon Elastic Container Service
+%% Developer Guide
 -spec create_service(aws_client:aws_client(), create_service_request()) ->
     {ok, create_service_response(), tuple()} |
     {error, any()} |
@@ -3451,18 +3459,19 @@ create_service(Client, Input, Options)
 %% Amazon ECS deployment
 %% types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service Developer
+%% Guide.
 %%
 %% On March 21, 2024, a change was made to resolve the task definition
-%% revision before authorization. When a task definition revision is not
-%% specified, authorization will occur using the latest revision of a task
-%% definition.
+%% revision
+%% before authorization. When a task definition revision is not specified,
+%% authorization will occur using the latest revision of a task definition.
 %%
 %% For information about the maximum number of task sets and other quotas,
-%% see Amazon ECS
-%% service quotas:
+%% see Amazon ECS service quotas:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service
+%% Developer Guide.
 -spec create_task_set(aws_client:aws_client(), create_task_set_request()) ->
     {ok, create_task_set_response(), tuple()} |
     {error, any()} |
@@ -3615,8 +3624,7 @@ delete_cluster(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServices.html
 %% API operation. However, in the future,
 %% `INACTIVE' services may be cleaned up and purged from Amazon ECS
-%% record
-%% keeping, and DescribeServices:
+%% record keeping, and DescribeServices:
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServices.html
 %% calls on those services return a
 %% `ServiceNotFoundException' error.
@@ -3675,8 +3683,8 @@ delete_service(Client, Input, Options)
 %% definition name is displayed in the console and returned in the API. The
 %% task definition
 %% name is retained by Amazon ECS and the revision is incremented the next
-%% time you create a
-%% task definition with that name.
+%% time you create
+%% a task definition with that name.
 -spec delete_task_definitions(aws_client:aws_client(), delete_task_definitions_request()) ->
     {ok, delete_task_definitions_response(), tuple()} |
     {error, any()} |
@@ -3699,7 +3707,8 @@ delete_task_definitions(Client, Input, Options)
 %% `EXTERNAL' deployment controller type. For more information, see
 %% Amazon ECS deployment types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container
+%% Service Developer Guide.
 -spec delete_task_set(aws_client:aws_client(), delete_task_set_request()) ->
     {ok, delete_task_set_response(), tuple()} |
     {error, any()} |
@@ -3719,8 +3728,8 @@ delete_task_set(Client, Input, Options)
 %% @doc Deregisters an Amazon ECS container instance from the specified
 %% cluster.
 %%
-%% This instance is
-%% no longer available to run tasks.
+%% This instance
+%% is no longer available to run tasks.
 %%
 %% If you intend to use the container instance for some other purpose after
 %% deregistration, we recommend that you stop all of the tasks running on the
@@ -3736,9 +3745,9 @@ delete_task_set(Client, Input, Options)
 %% it in the Amazon EC2 console to stop billing.
 %%
 %% If you terminate a running container instance, Amazon ECS automatically
-%% deregisters the
-%% instance from your cluster (stopped container instances or instances with
-%% disconnected agents aren't automatically deregistered when
+%% deregisters the instance from your cluster (stopped container instances or
+%% instances
+%% with disconnected agents aren't automatically deregistered when
 %% terminated).
 -spec deregister_container_instance(aws_client:aws_client(), deregister_container_instance_request()) ->
     {ok, deregister_container_instance_response(), tuple()} |
@@ -3824,7 +3833,8 @@ describe_capacity_providers(Client, Input, Options)
 
 %% @doc Describes one or more of your clusters.
 %%
-%% For CLI examples, see describe-clusters.rst:
+%% For CLI
+%% examples, see describe-clusters.rst:
 %% https://github.com/aws/aws-cli/blob/develop/awscli/examples/ecs/describe-clusters.rst
 %% on GitHub.
 -spec describe_clusters(aws_client:aws_client(), describe_clusters_request()) ->
@@ -3867,8 +3877,8 @@ describe_container_instances(Client, Input, Options)
 %%
 %% A service deployment happens when you release a software update for the
 %% service. For
-%% more information, see View service history using Amazon ECS service
-%% deployments:
+%% more information, see View service history
+%% using Amazon ECS service deployments:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-deployment.html.
 -spec describe_service_deployments(aws_client:aws_client(), describe_service_deployments_request()) ->
     {ok, describe_service_deployments_response(), tuple()} |
@@ -3966,7 +3976,8 @@ describe_task_definition(Client, Input, Options)
 %% see Amazon ECS Deployment
 %% Types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service Developer
+%% Guide.
 -spec describe_task_sets(aws_client:aws_client(), describe_task_sets_request()) ->
     {ok, describe_task_sets_response(), tuple()} |
     {error, any()} |
@@ -4011,7 +4022,8 @@ describe_tasks(Client, Input, Options)
 
 %% @doc
 %% This action is only used by the Amazon ECS agent, and it is not intended
-%% for use outside of the agent.
+%% for use
+%% outside of the agent.
 %%
 %% Returns an endpoint for the Amazon ECS agent to poll for updates.
 -spec discover_poll_endpoint(aws_client:aws_client(), discover_poll_endpoint_request()) ->
@@ -4033,17 +4045,17 @@ discover_poll_endpoint(Client, Input, Options)
 %% @doc Runs a command remotely on a container within a task.
 %%
 %% If you use a condition key in your IAM policy to refine the conditions for
-%% the
-%% policy statement, for example limit the actions to a specific cluster, you
+%% the policy
+%% statement, for example limit the actions to a specific cluster, you
 %% receive an
 %% `AccessDeniedException' when there is a mismatch between the condition
 %% key value and the corresponding parameter value.
 %%
 %% For information about required permissions and considerations, see Using
-%% Amazon ECS
-%% Exec for debugging:
+%% Amazon ECS Exec for debugging:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html
-%% in the Amazon ECS Developer Guide.
+%% in the Amazon ECS Developer
+%% Guide.
 -spec execute_command(aws_client:aws_client(), execute_command_request()) ->
     {ok, execute_command_response(), tuple()} |
     {error, any()} |
@@ -4095,17 +4107,18 @@ list_account_settings(Client, Input, Options)
     request(Client, <<"ListAccountSettings">>, Input, Options).
 
 %% @doc Lists the attributes for Amazon ECS resources within a specified
-%% target type and cluster.
+%% target type and
+%% cluster.
 %%
-%% When you specify a target type and cluster, `ListAttributes' returns a
-%% list
-%% of attribute objects, one for each attribute on each resource. You can
-%% filter the list
-%% of results to a single attribute name to only return results that have
-%% that name. You
-%% can also filter the results by attribute name and value. You can do this,
-%% for example,
-%% to see which container instances in a cluster are running a Linux AMI
+%% When you specify a target type and cluster, `ListAttributes' returns
+%% a list of attribute objects, one for each attribute on each resource. You
+%% can filter the
+%% list of results to a single attribute name to only return results that
+%% have that name.
+%% You can also filter the results by attribute name and value. You can do
+%% this, for
+%% example, to see which container instances in a cluster are running a Linux
+%% AMI
 %% (`ecs.os-type=linux').
 -spec list_attributes(aws_client:aws_client(), list_attributes_request()) ->
     {ok, list_attributes_response(), tuple()} |
@@ -4148,7 +4161,8 @@ list_clusters(Client, Input, Options)
 %% statements inside the `filter' parameter. For more information, see
 %% Cluster Query Language:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 -spec list_container_instances(aws_client:aws_client(), list_container_instances_request()) ->
     {ok, list_container_instances_response(), tuple()} |
     {error, any()} |
@@ -4215,8 +4229,7 @@ list_services(Client, Input, Options)
     request(Client, <<"ListServices">>, Input, Options).
 
 %% @doc This operation lists all of the services that are associated with a
-%% Cloud Map
-%% namespace.
+%% Cloud Map namespace.
 %%
 %% This list might include services in different clusters. In contrast,
 %% `ListServices' can only list services in one cluster at a time. If you
@@ -4314,8 +4327,8 @@ list_task_definitions(Client, Input, Options)
 %%
 %% You can filter the results by cluster, task definition
 %% family, container instance, launch type, what IAM principal started the
-%% task, or by
-%% the desired status of the task.
+%% task, or by the
+%% desired status of the task.
 %%
 %% Recently stopped tasks might appear in the returned results.
 -spec list_tasks(aws_client:aws_client(), list_tasks_request()) ->
@@ -4339,13 +4352,14 @@ list_tasks(Client, Input, Options)
 %% Account settings are set on a per-Region basis.
 %%
 %% If you change the root user account setting, the default settings are
-%% reset for users and
-%% roles that do not have specified individual account settings. For more
-%% information, see
-%% Account
+%% reset for users
+%% and roles that do not have specified individual account settings. For more
+%% information,
+%% see Account
 %% Settings:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service Developer
+%% Guide.
 -spec put_account_setting(aws_client:aws_client(), put_account_setting_request()) ->
     {ok, put_account_setting_response(), tuple()} |
     {error, any()} |
@@ -4385,14 +4399,15 @@ put_account_setting_default(Client, Input, Options)
 
 %% @doc Create or update an attribute on an Amazon ECS resource.
 %%
-%% If the attribute doesn't exist,
-%% it's created. If the attribute exists, its value is replaced with the
-%% specified value.
-%% To delete an attribute, use DeleteAttributes:
+%% If the attribute doesn't
+%% exist, it's created. If the attribute exists, its value is replaced
+%% with the specified
+%% value. To delete an attribute, use DeleteAttributes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteAttributes.html.
 %% For more information, see Attributes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container
+%% Service Developer Guide.
 -spec put_attributes(aws_client:aws_client(), put_attributes_request()) ->
     {ok, put_attributes_response(), tuple()} |
     {error, any()} |
@@ -4439,8 +4454,10 @@ put_attributes(Client, Input, Options)
 %% strategy.
 %%
 %% Amazon ECS Managed Instances doesn't support this, because when you
-%% create a capacity provider with Amazon ECS Managed Instances, it becomes
-%% available only within the specified cluster.
+%% create a capacity
+%% provider with Amazon ECS Managed Instances, it becomes available only
+%% within the
+%% specified cluster.
 -spec put_cluster_capacity_providers(aws_client:aws_client(), put_cluster_capacity_providers_request()) ->
     {ok, put_cluster_capacity_providers_response(), tuple()} |
     {error, any()} |
@@ -4459,7 +4476,8 @@ put_cluster_capacity_providers(Client, Input, Options)
 
 %% @doc
 %% This action is only used by the Amazon ECS agent, and it is not intended
-%% for use outside of the agent.
+%% for use
+%% outside of the agent.
 %%
 %% Registers an EC2 instance into the specified cluster. This instance
 %% becomes available
@@ -4489,18 +4507,22 @@ register_container_instance(Client, Input, Options)
 %% definition parameters and defaults, see Amazon ECS Task
 %% Definitions:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service Developer
+%% Guide.
 %%
 %% You can specify a role for your task with the `taskRoleArn' parameter.
 %% When
 %% you specify a role for a task, its containers can then use the latest
 %% versions of the
-%% CLI or SDKs to make API requests to the Amazon Web Services services that
-%% are specified in the
-%% policy that's associated with the role. For more information, see IAM
-%% Roles for Tasks:
+%% CLI or SDKs
+%% to make API requests to the Amazon Web Services services that are
+%% specified in the policy
+%% that's associated with the role. For more information, see IAM Roles
+%% for
+%% Tasks:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service Developer
+%% Guide.
 %%
 %% You can specify a Docker networking mode for the containers in your task
 %% definition
@@ -4532,39 +4554,42 @@ register_task_definition(Client, Input, Options)
 %% @doc Starts a new task using the specified task definition.
 %%
 %% On March 21, 2024, a change was made to resolve the task definition
-%% revision before authorization. When a task definition revision is not
-%% specified, authorization will occur using the latest revision of a task
-%% definition.
+%% revision
+%% before authorization. When a task definition revision is not specified,
+%% authorization will occur using the latest revision of a task definition.
 %%
 %% Amazon Elastic Inference (EI) is no longer available to customers.
 %%
 %% You can allow Amazon ECS to place tasks for you, or you can customize how
-%% Amazon ECS places
-%% tasks using placement constraints and placement strategies. For more
-%% information, see
-%% Scheduling Tasks:
+%% Amazon ECS
+%% places tasks using placement constraints and placement strategies. For
+%% more information,
+%% see Scheduling Tasks:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 %%
 %% Alternatively, you can use `StartTask' to use your own scheduler or
 %% place
 %% tasks manually on specific container instances.
 %%
 %% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
-%% volume when creating or
-%% updating a service. For more information, see Amazon EBS volumes:
+%% volume when
+%% creating or updating a service. For more information, see Amazon EBS
+%% volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 %%
 %% The Amazon ECS API follows an eventual consistency model. This is because
 %% of the
 %% distributed nature of the system supporting the API. This means that the
 %% result of an
 %% API command you run that affects your Amazon ECS resources might not be
-%% immediately visible
-%% to all subsequent commands you run. Keep this in mind when you carry out
-%% an API command
-%% that immediately follows a previous API command.
+%% immediately
+%% visible to all subsequent commands you run. Keep this in mind when you
+%% carry out an API
+%% command that immediately follows a previous API command.
 %%
 %% To manage eventual consistency, you can do the following:
 %%
@@ -4588,12 +4613,10 @@ register_task_definition(Client, Input, Options)
 %% minutes of wait time.
 %%
 %% If you get a `ConflictException' error, the `RunTask' request
-%% could
-%% not be processed due to conflicts. The provided `clientToken' is
-%% already in
-%% use with a different `RunTask' request. The `resourceIds' are the
-%% existing task ARNs which are already associated with the
-%% `clientToken'.
+%% could not be processed due to conflicts. The provided `clientToken' is
+%% already in use with a different `RunTask' request. The
+%% `resourceIds' are the existing task ARNs which are already associated
+%% with the `clientToken'.
 %%
 %% To fix this issue:
 %%
@@ -4603,11 +4626,11 @@ register_task_definition(Client, Input, Options)
 %% set of parameters
 %%
 %% If you get a `ClientException'error, the `RunTask' could not be
-%% processed because you use managed
-%% scaling and there is a capacity error because the quota of tasks in the
-%% `PROVISIONING' per cluster has been reached. For information
-%% about the service quotas, see Amazon ECS
-%% service quotas:
+%% processed because you use managed scaling and there is a capacity error
+%% because the
+%% quota of tasks in the `PROVISIONING' per cluster has been reached. For
+%% information about the service quotas, see Amazon ECS service
+%% quotas:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-quotas.html.
 -spec run_task(aws_client:aws_client(), run_task_request()) ->
     {ok, run_task_response(), tuple()} |
@@ -4630,22 +4653,25 @@ run_task(Client, Input, Options)
 %% instance or instances.
 %%
 %% On March 21, 2024, a change was made to resolve the task definition
-%% revision before authorization. When a task definition revision is not
-%% specified, authorization will occur using the latest revision of a task
-%% definition.
+%% revision
+%% before authorization. When a task definition revision is not specified,
+%% authorization will occur using the latest revision of a task definition.
 %%
 %% Amazon Elastic Inference (EI) is no longer available to customers.
 %%
 %% Alternatively, you can use`RunTask' to place tasks for you. For more
 %% information, see Scheduling Tasks:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 %%
 %% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
-%% volume when creating or
-%% updating a service. For more information, see Amazon EBS volumes:
+%% volume when
+%% creating or updating a service. For more information, see Amazon EBS
+%% volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 -spec start_task(aws_client:aws_client(), start_task_request()) ->
     {ok, start_task_response(), tuple()} |
     {error, any()} |
@@ -4673,11 +4699,11 @@ start_task(Client, Input, Options)
 %% deployment
 %% for the rollback option.
 %%
-%% For more information, see Stopping Amazon ECS
-%% service deployments:
+%% For more information, see Stopping Amazon
+%% ECS service deployments:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/stop-service-deployment.html
-%% in the Amazon Elastic Container Service Developer
-%% Guide.
+%% in the Amazon Elastic Container Service
+%% Developer Guide.
 -spec stop_service_deployment(aws_client:aws_client(), stop_service_deployment_request()) ->
     {ok, stop_service_deployment_response(), tuple()} |
     {error, any()} |
@@ -4717,8 +4743,9 @@ stop_service_deployment(Client, Input, Options)
 %% on GitHub.
 %%
 %% The default 30-second timeout can be configured on the Amazon ECS
-%% container agent with
-%% the `ECS_CONTAINER_STOP_TIMEOUT' variable. For more information, see
+%% container agent
+%% with the `ECS_CONTAINER_STOP_TIMEOUT' variable. For more information,
+%% see
 %% Amazon ECS Container Agent Configuration:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html
 %% in the
@@ -4741,7 +4768,8 @@ stop_task(Client, Input, Options)
 
 %% @doc
 %% This action is only used by the Amazon ECS agent, and it is not intended
-%% for use outside of the agent.
+%% for use
+%% outside of the agent.
 %%
 %% Sent to acknowledge that an attachment changed states.
 -spec submit_attachment_state_changes(aws_client:aws_client(), submit_attachment_state_changes_request()) ->
@@ -4762,7 +4790,8 @@ submit_attachment_state_changes(Client, Input, Options)
 
 %% @doc
 %% This action is only used by the Amazon ECS agent, and it is not intended
-%% for use outside of the agent.
+%% for use
+%% outside of the agent.
 %%
 %% Sent to acknowledge that a container changed states.
 -spec submit_container_state_change(aws_client:aws_client(), submit_container_state_change_request()) ->
@@ -4783,7 +4812,8 @@ submit_container_state_change(Client, Input, Options)
 
 %% @doc
 %% This action is only used by the Amazon ECS agent, and it is not intended
-%% for use outside of the agent.
+%% for use
+%% outside of the agent.
 %%
 %% Sent to acknowledge that a task changed states.
 -spec submit_task_state_change(aws_client:aws_client(), submit_task_state_change_request()) ->
@@ -4845,7 +4875,8 @@ untag_resource(Client, Input, Options)
 %% @doc Modifies the parameters for a capacity provider.
 %%
 %% These changes only apply to new Amazon ECS Managed Instances, or EC2
-%% instances, not existing ones.
+%% instances, not
+%% existing ones.
 -spec update_capacity_provider(aws_client:aws_client(), update_capacity_provider_request()) ->
     {ok, update_capacity_provider_response(), tuple()} |
     {error, any()} |
@@ -4905,18 +4936,20 @@ update_cluster_settings(Client, Input, Options)
 %% instance. The process for updating the agent differs depending on whether
 %% your container
 %% instance was launched with the Amazon ECS-optimized AMI or another
-%% operating system.
+%% operating
+%% system.
 %%
 %% The `UpdateContainerAgent' API isn't supported for container
 %% instances
 %% using the Amazon ECS-optimized Amazon Linux 2 (arm64) AMI. To update the
-%% container agent,
-%% you can update the `ecs-init' package. This updates the agent. For
-%% more
-%% information, see Updating the
+%% container
+%% agent, you can update the `ecs-init' package. This updates the agent.
+%% For
+%% more information, see Updating the
 %% Amazon ECS container agent:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/agent-update-ecs-ami.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container
+%% Service Developer Guide.
 %%
 %% Agent updates with the `UpdateContainerAgent' API operation do not
 %% apply to Windows container instances. We recommend that you launch new
@@ -4924,12 +4957,13 @@ update_cluster_settings(Client, Input, Options)
 %% instances to update the agent version in your Windows clusters.
 %%
 %% The `UpdateContainerAgent' API requires an Amazon ECS-optimized AMI or
-%% Amazon
-%% Linux AMI with the `ecs-init' service installed and running. For help
+%% Amazon Linux AMI with the `ecs-init' service installed and running.
+%% For help
 %% updating the Amazon ECS container agent on other operating systems, see
 %% Manually updating the Amazon ECS container agent:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon
+%% Elastic Container Service Developer Guide.
 -spec update_container_agent(aws_client:aws_client(), update_container_agent_request()) ->
     {ok, update_container_agent_response(), tuple()} |
     {error, any()} |
@@ -4961,14 +4995,13 @@ update_container_agent(Client, Input, Options)
 %% error will be received.
 %%
 %% When you set a container instance to `DRAINING', Amazon ECS prevents
-%% new tasks
-%% from being scheduled for placement on the container instance and
-%% replacement service
-%% tasks are started on other container instances in the cluster if the
-%% resources are
-%% available. Service tasks on the container instance that are in the
-%% `PENDING'
-%% state are stopped immediately.
+%% new
+%% tasks from being scheduled for placement on the container instance and
+%% replacement
+%% service tasks are started on other container instances in the cluster if
+%% the resources
+%% are available. Service tasks on the container instance that are in the
+%% `PENDING' state are stopped immediately.
 %%
 %% Service tasks on the container instance that are in the `RUNNING'
 %% state are
@@ -5016,8 +5049,7 @@ update_container_agent(Client, Input, Options)
 %% When a container instance has been drained, you can set a container
 %% instance to
 %% `ACTIVE' status and once it has reached that status the Amazon ECS
-%% scheduler
-%% can begin scheduling tasks on the instance again.
+%% scheduler can begin scheduling tasks on the instance again.
 -spec update_container_instances_state(aws_client:aws_client(), update_container_instances_state_request()) ->
     {ok, update_container_instances_state_response(), tuple()} |
     {error, any()} |
@@ -5037,9 +5069,9 @@ update_container_instances_state(Client, Input, Options)
 %% @doc Modifies the parameters of a service.
 %%
 %% On March 21, 2024, a change was made to resolve the task definition
-%% revision before authorization. When a task definition revision is not
-%% specified, authorization will occur using the latest revision of a task
-%% definition.
+%% revision
+%% before authorization. When a task definition revision is not specified,
+%% authorization will occur using the latest revision of a task definition.
 %%
 %% For services using the rolling update (`ECS') you can update the
 %% desired
@@ -5052,19 +5084,23 @@ update_container_instances_state(Client, Input, Options)
 %% parameters, Amazon ECS starts new tasks with the new configuration.
 %%
 %% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
-%% volume when starting or
-%% running a task, or when creating or updating a service. For more
+%% volume when
+%% starting or running a task, or when creating or updating a service. For
+%% more
 %% information, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
-%% in the Amazon Elastic Container Service Developer Guide. You can update
-%% your volume configurations and trigger a new deployment.
-%% `volumeConfigurations' is only supported for REPLICA service and not
-%% DAEMON service. If you leave `volumeConfigurations'
+%% in the Amazon Elastic
+%% Container Service Developer Guide. You can update your volume
+%% configurations and trigger a new deployment. `volumeConfigurations' is
+%% only
+%% supported for REPLICA service and not DAEMON service. If you leave
+%% `volumeConfigurations'
 %% `null', it doesn't trigger a new deployment. For more information
 %% on volumes,
 %% see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 %%
 %% For services using the blue/green (`CODE_DEPLOY') deployment
 %% controller,
@@ -5075,10 +5111,11 @@ update_container_instances_state(Client, Input, Options)
 %% can be updated using this API. If the network configuration, platform
 %% version, task
 %% definition, or load balancer need to be updated, create a new CodeDeploy
-%% deployment. For more
-%% information, see CreateDeployment:
+%% deployment. For
+%% more information, see CreateDeployment:
 %% https://docs.aws.amazon.com/codedeploy/latest/APIReference/API_CreateDeployment.html
-%% in the CodeDeploy API Reference.
+%% in the CodeDeploy API
+%% Reference.
 %%
 %% For services using an external deployment controller, you can update only
 %% the desired
@@ -5097,11 +5134,13 @@ update_container_instances_state(Client, Input, Options)
 %% `desiredCount' parameter.
 %%
 %% You can attach Amazon EBS volumes to Amazon ECS tasks by configuring the
-%% volume when starting or
-%% running a task, or when creating or updating a service. For more
+%% volume when
+%% starting or running a task, or when creating or updating a service. For
+%% more
 %% information, see Amazon EBS volumes:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ebs-volumes.html#ebs-volume-types
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic
+%% Container Service Developer Guide.
 %%
 %% If you have updated the container image of your application, you can
 %% create a new task
@@ -5227,7 +5266,8 @@ update_service(Client, Input, Options)
 %% information, see Amazon ECS Deployment
 %% Types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service Developer
+%% Guide.
 -spec update_service_primary_task_set(aws_client:aws_client(), update_service_primary_task_set_request()) ->
     {ok, update_service_primary_task_set_response(), tuple()} |
     {error, any()} |
@@ -5256,9 +5296,9 @@ update_service_primary_task_set(Client, Input, Options)
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html.
 %%
 %% Task-protection, by default, expires after 2 hours at which point Amazon
-%% ECS clears the
-%% `protectionEnabled' property making the task eligible for termination
-%% by
+%% ECS clears
+%% the `protectionEnabled' property making the task eligible for
+%% termination by
 %% a subsequent scale-in event.
 %%
 %% You can specify a custom expiration period for task protection from 1
@@ -5274,14 +5314,14 @@ update_service_primary_task_set(Client, Input, Options)
 %% protection:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-scale-in-protection.html
 %% in the
-%% Amazon Elastic Container Service Developer Guide
+%% Amazon Elastic Container Service
+%% Developer Guide
 %% .
 %%
 %% This operation is only supported for tasks belonging to an Amazon ECS
-%% service. Invoking
-%% this operation for a standalone task will result in an
-%% `TASK_NOT_VALID'
-%% failure. For more information, see API failure
+%% service.
+%% Invoking this operation for a standalone task will result in an
+%% `TASK_NOT_VALID' failure. For more information, see API failure
 %% reasons:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/api_failures_messages.html.
 %%
@@ -5312,7 +5352,8 @@ update_task_protection(Client, Input, Options)
 %% Deployment
 %% Types:
 %% https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
-%% in the Amazon Elastic Container Service Developer Guide.
+%% in the Amazon Elastic Container Service Developer
+%% Guide.
 -spec update_task_set(aws_client:aws_client(), update_task_set_request()) ->
     {ok, update_task_set_response(), tuple()} |
     {error, any()} |

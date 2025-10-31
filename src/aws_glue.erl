@@ -3261,7 +3261,8 @@
 %% get_glue_identity_center_configuration_response() :: #{
 %%   <<"ApplicationArn">> => string(),
 %%   <<"InstanceArn">> => string(),
-%%   <<"Scopes">> => list(string())
+%%   <<"Scopes">> => list(string()),
+%%   <<"UserBackgroundSessionsEnabled">> => boolean()
 %% }
 -type get_glue_identity_center_configuration_response() :: #{binary() => any()}.
 
@@ -6405,7 +6406,8 @@
 
 %% Example:
 %% update_glue_identity_center_configuration_request() :: #{
-%%   <<"Scopes">> => list(string())
+%%   <<"Scopes">> => list(string()),
+%%   <<"UserBackgroundSessionsEnabled">> => boolean()
 %% }
 -type update_glue_identity_center_configuration_request() :: #{binary() => any()}.
 
@@ -8895,7 +8897,8 @@
 %% Example:
 %% create_glue_identity_center_configuration_request() :: #{
 %%   <<"InstanceArn">> := string(),
-%%   <<"Scopes">> => list(string())
+%%   <<"Scopes">> => list(string()),
+%%   <<"UserBackgroundSessionsEnabled">> => boolean()
 %% }
 -type create_glue_identity_center_configuration_request() :: #{binary() => any()}.
 

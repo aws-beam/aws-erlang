@@ -92,6 +92,9 @@
          get_managed_thing_capabilities/2,
          get_managed_thing_capabilities/4,
          get_managed_thing_capabilities/5,
+         get_managed_thing_certificate/2,
+         get_managed_thing_certificate/4,
+         get_managed_thing_certificate/5,
          get_managed_thing_connectivity_data/3,
          get_managed_thing_connectivity_data/4,
          get_managed_thing_meta_data/2,
@@ -1164,6 +1167,14 @@
 
 
 %% Example:
+%% get_managed_thing_certificate_response() :: #{
+%%   <<"CertificatePem">> => string(),
+%%   <<"ManagedThingId">> => string()
+%% }
+-type get_managed_thing_certificate_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_unavailable_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1996,6 +2007,10 @@
 %% delete_connector_destination_request() :: #{}
 -type delete_connector_destination_request() :: #{}.
 
+%% Example:
+%% get_managed_thing_certificate_request() :: #{}
+-type get_managed_thing_certificate_request() :: #{}.
+
 
 %% Example:
 %% managed_thing_schema_list_item() :: #{
@@ -2055,7 +2070,8 @@
     internal_server_exception() | 
     service_unavailable_exception() | 
     resource_not_found_exception() | 
-    conflict_exception().
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_cloud_connector_errors() ::
     throttling_exception() | 
@@ -2069,7 +2085,9 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    conflict_exception().
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    unauthorized_exception().
 
 -type create_credential_locker_errors() ::
     throttling_exception() | 
@@ -2151,7 +2169,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type delete_connector_destination_errors() ::
     throttling_exception() | 
@@ -2319,6 +2338,15 @@
     unauthorized_exception().
 
 -type get_managed_thing_capabilities_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    unauthorized_exception().
+
+-type get_managed_thing_certificate_errors() ::
     throttling_exception() | 
     validation_exception() | 
     access_denied_exception() | 
@@ -2637,7 +2665,8 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    unauthorized_exception().
 
 -type update_connector_destination_errors() ::
     throttling_exception() | 
@@ -2791,10 +2820,10 @@ create_connector_destination(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a product credential locker.
+%% @doc Create a credential locker.
 %%
-%% This operation will trigger the creation of all the manufacturing
-%% resources including the Wi-Fi setup key pair and device certificate.
+%% This operation will not trigger the creation of all the manufacturing
+%% resources.
 -spec create_credential_locker(aws_client:aws_client(), create_credential_locker_request()) ->
     {ok, create_credential_locker_response(), tuple()} |
     {error, any()} |
@@ -2828,10 +2857,11 @@ create_credential_locker(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a destination.
+%% @doc Create a notification destination such as Kinesis Data Streams that
+%% receive events and notifications from Managed integrations.
 %%
-%% IoT managed integrations uses the destination to determine where to
-%% deliver notifications for a device.
+%% Managed integrations uses the destination to determine where to deliver
+%% notifications.
 -spec create_destination(aws_client:aws_client(), create_destination_request()) ->
     {ok, create_destination_response(), tuple()} |
     {error, any()} |
@@ -2903,7 +2933,8 @@ create_event_log_configuration(Client, Input0, Options0) ->
 %% @doc Creates a managed thing.
 %%
 %% A managed thing contains the device identifier, protocol supported, and
-%% capabilities of the device in a protocol-specific format.
+%% capabilities of the device in a data model format defined by Managed
+%% integrations.
 -spec create_managed_thing(aws_client:aws_client(), create_managed_thing_request()) ->
     {ok, create_managed_thing_response(), tuple()} |
     {error, any()} |
@@ -2974,7 +3005,7 @@ create_notification_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create an over-the-air (OTA) task to update a device.
+%% @doc Create an over-the-air (OTA) task to target a device.
 -spec create_ota_task(aws_client:aws_client(), create_ota_task_request()) ->
     {ok, create_ota_task_response(), tuple()} |
     {error, any()} |
@@ -3080,7 +3111,11 @@ create_provisioning_profile(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Remove a third party account and related devices from an end user.
+%% @doc Remove a third-party account association for an end user.
+%%
+%% You must first call the `DeregisterAccountAssociation' to remove the
+%% connection between the managed thing and the third-party account before
+%% calling the `DeleteAccountAssociation' API.
 -spec delete_account_association(aws_client:aws_client(), binary() | list(), delete_account_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3148,8 +3183,11 @@ delete_cloud_connector(Client, Identifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a connector destination for connecting a cloud-to-cloud (C2C)
-%% connector to the customer's Amazon Web Services account.
+%% @doc Delete a connector destination linked to a cloud-to-cloud (C2C)
+%% connector.
+%%
+%% Deletion can't be done if the account association has used this
+%% connector destination.
 -spec delete_connector_destination(aws_client:aws_client(), binary() | list(), delete_connector_destination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3220,7 +3258,7 @@ delete_credential_locker(Client, Identifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a customer-managed destination specified by id.
+%% @doc Deletes a notification destination specified by name.
 -spec delete_destination(aws_client:aws_client(), binary() | list(), delete_destination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3290,9 +3328,10 @@ delete_event_log_configuration(Client, Id, Input0, Options0) ->
 
 %% @doc Delete a managed thing.
 %%
-%% If a controller is deleted, all of the devices connected to it will have
-%% their status changed to `PENDING'. It is not possible to remove a
-%% cloud device.
+%% For direct-connected and hub-connected devices connecting with Managed
+%% integrations via a controller, all of the devices connected to it will
+%% have their status changed to `PENDING'. It is not possible to remove a
+%% cloud-to-cloud device.
 -spec delete_managed_thing(aws_client:aws_client(), binary() | list(), delete_managed_thing_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3463,8 +3502,7 @@ delete_provisioning_profile(Client, Identifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deregisters an account association, removing the connection between a
-%% managed thing and a third-party account.
+%% @doc Deregister an account association from a managed thing.
 -spec deregister_account_association(aws_client:aws_client(), deregister_account_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3536,7 +3574,7 @@ get_account_association(Client, AccountAssociationId, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets all the information about a connector for a connector developer.
+%% @doc Get configuration details for a cloud connector.
 -spec get_cloud_connector(aws_client:aws_client(), binary() | list()) ->
     {ok, get_cloud_connector_response(), tuple()} |
     {error, any()} |
@@ -3573,8 +3611,8 @@ get_cloud_connector(Client, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a connector destination of a cloud-to-cloud (C2C) connector
-%% connecting to a customer's Amazon Web Services account.
+%% @doc Get connector destination details linked to a cloud-to-cloud (C2C)
+%% connector.
 -spec get_connector_destination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_connector_destination_response(), tuple()} |
     {error, any()} |
@@ -3727,7 +3765,7 @@ get_default_encryption_configuration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a destination by ID.
+%% @doc Gets a destination by name.
 -spec get_destination(aws_client:aws_client(), binary() | list()) ->
     {ok, get_destination_response(), tuple()} |
     {error, any()} |
@@ -3875,7 +3913,8 @@ get_hub_configuration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the attributes and capabilities associated with a managed thing.
+%% @doc Get details of a managed thing including its attributes and
+%% capabilities.
 -spec get_managed_thing(aws_client:aws_client(), binary() | list()) ->
     {ok, get_managed_thing_response(), tuple()} |
     {error, any()} |
@@ -3936,6 +3975,43 @@ get_managed_thing_capabilities(Client, Identifier, QueryMap, HeadersMap)
 get_managed_thing_capabilities(Client, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/managed-things-capabilities/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the certificate PEM for a managed IoT thing.
+-spec get_managed_thing_certificate(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_managed_thing_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, get_managed_thing_certificate_errors(), tuple()}.
+get_managed_thing_certificate(Client, Identifier)
+  when is_map(Client) ->
+    get_managed_thing_certificate(Client, Identifier, #{}, #{}).
+
+-spec get_managed_thing_certificate(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_managed_thing_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, get_managed_thing_certificate_errors(), tuple()}.
+get_managed_thing_certificate(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_managed_thing_certificate(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_managed_thing_certificate(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_managed_thing_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, get_managed_thing_certificate_errors(), tuple()}.
+get_managed_thing_certificate(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/managed-things-certificate/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4063,7 +4139,7 @@ get_managed_thing_state(Client, ManagedThingId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a notification configuration.
+%% @doc Get a notification configuration for a specified event type.
 -spec get_notification_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_notification_configuration_response(), tuple()} |
     {error, any()} |
@@ -4100,7 +4176,7 @@ get_notification_configuration(Client, EventType, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the over-the-air (OTA) task.
+%% @doc Get details of the over-the-air (OTA) task by its task id.
 -spec get_ota_task(aws_client:aws_client(), binary() | list()) ->
     {ok, get_ota_task_response(), tuple()} |
     {error, any()} |
@@ -4211,8 +4287,7 @@ get_provisioning_profile(Client, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the runtime log configuration for a specific managed thing or for
-%% all managed things as a group.
+%% @doc Get the runtime log configuration for a specific managed thing.
 -spec get_runtime_log_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_runtime_log_configuration_response(), tuple()} |
     {error, any()} |
@@ -4334,7 +4409,8 @@ list_account_associations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of connectors based on permissions.
+%% @doc Returns a list of connectors filtered by its Lambda Amazon Resource
+%% Name (ARN) and `type'.
 -spec list_cloud_connectors(aws_client:aws_client()) ->
     {ok, list_cloud_connectors_response(), tuple()} |
     {error, any()} |
@@ -4464,7 +4540,7 @@ list_credential_lockers(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all destination names under one Amazon Web Services account.
+%% @doc List all notification destinations.
 -spec list_destinations(aws_client:aws_client()) ->
     {ok, list_destinations_response(), tuple()} |
     {error, any()} |
@@ -5249,8 +5325,7 @@ register_custom_endpoint(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Reset a runtime log configuration for a specific managed thing or for
-%% all managed things as a group.
+%% @doc Reset a runtime log configuration for a specific managed thing.
 -spec reset_runtime_log_configuration(aws_client:aws_client(), binary() | list(), reset_runtime_log_configuration_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5391,8 +5466,8 @@ start_account_association_refresh(Client, AccountAssociationId, Input0, Options0
 %% @doc This API is used to start device discovery for hub-connected and
 %% third-party-connected devices.
 %%
-%% The authentication material (install code) is passed as a message to the
-%% controller telling it to start the discovery.
+%% The authentication material (install code) is delivered as a message to
+%% the controller instructing it to start the discovery.
 -spec start_device_discovery(aws_client:aws_client(), start_device_discovery_request()) ->
     {ok, start_device_discovery_response(), tuple()} |
     {error, any()} |
@@ -5597,7 +5672,7 @@ update_connector_destination(Client, Identifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update a destination specified by id.
+%% @doc Update a destination specified by name.
 -spec update_destination(aws_client:aws_client(), binary() | list(), update_destination_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

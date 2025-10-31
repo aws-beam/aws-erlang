@@ -1,9 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc is in preview release and is subject to change.
+%% @doc Welcome to the Amazon Bedrock AgentCore Control plane API reference.
 %%
-%% Welcome to the Amazon Bedrock AgentCore Control plane API reference.
 %% Control plane actions configure, create, modify, and monitor Amazon Web
 %% Services resources.
 -module(aws_bedrock_agentcore_control).
@@ -637,6 +636,7 @@
 %% get_browser_response() :: #{
 %%   <<"browserArn">> => string(),
 %%   <<"browserId">> => string(),
+%%   <<"browserSigning">> => browser_signing_config_output(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"executionRoleArn">> => string(),
@@ -864,6 +864,7 @@
 
 %% Example:
 %% create_browser_request() :: #{
+%%   <<"browserSigning">> => browser_signing_config_input(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"executionRoleArn">> => string(),
@@ -1595,6 +1596,13 @@
 
 
 %% Example:
+%% browser_signing_config_output() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type browser_signing_config_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% semantic_override_extraction_configuration_input() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
@@ -1849,6 +1857,13 @@
 %% Example:
 %% get_browser_request() :: #{}
 -type get_browser_request() :: #{}.
+
+
+%% Example:
+%% browser_signing_config_input() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type browser_signing_config_input() :: #{binary() => any()}.
 
 
 %% Example:

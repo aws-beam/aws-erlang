@@ -1656,7 +1656,7 @@
 
 %% Example:
 %% differential_privacy_column() :: #{
-%%   <<"name">> => [string()]
+%%   <<"name">> => string()
 %% }
 -type differential_privacy_column() :: #{binary() => any()}.
 
@@ -2247,6 +2247,7 @@
 %% Example:
 %% worker_compute_configuration() :: #{
 %%   <<"number">> => [integer()],
+%%   <<"properties">> => list(),
 %%   <<"type">> => list(any())
 %% }
 -type worker_compute_configuration() :: #{binary() => any()}.

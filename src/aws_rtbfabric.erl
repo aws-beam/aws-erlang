@@ -962,11 +962,11 @@
 %% API
 %%====================================================================
 
-%% @doc Accepts a link request between RTB applications.
+%% @doc Accepts a link request between gateways.
 %%
-%% When a requester RTB application requests to link with a responder RTB
-%% application, the responder can use this operation to accept the link
-%% request and establish the connection.
+%% When a requester gateway requests to link with a responder gateway, the
+%% responder can use this operation to accept the link request and establish
+%% the connection.
 -spec accept_link(aws_client:aws_client(), binary() | list(), binary() | list(), accept_link_request()) ->
     {ok, accept_link_response(), tuple()} |
     {error, any()} |
@@ -1034,10 +1034,10 @@ create_inbound_external_link(Client, GatewayId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new link between RTB applications.
+%% @doc Creates a new link between gateways.
 %%
-%% Establishes a connection that allows RTB applications to communicate and
-%% exchange bid requests and responses.
+%% Establishes a connection that allows gateways to communicate and exchange
+%% bid requests and responses.
 -spec create_link(aws_client:aws_client(), binary() | list(), create_link_request()) ->
     {ok, create_link_response(), tuple()} |
     {error, any()} |
@@ -1140,6 +1140,8 @@ create_requester_gateway(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a responder gateway.
+%%
+%% A domain name or managed endpoint is required.
 -spec create_responder_gateway(aws_client:aws_client(), create_responder_gateway_request()) ->
     {ok, create_responder_gateway_response(), tuple()} |
     {error, any()} |
@@ -1207,10 +1209,10 @@ delete_inbound_external_link(Client, GatewayId, LinkId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a link between RTB applications.
+%% @doc Deletes a link between gateways.
 %%
-%% Permanently removes the connection between RTB applications. This action
-%% cannot be undone.
+%% Permanently removes the connection between gateways. This action cannot be
+%% undone.
 -spec delete_link(aws_client:aws_client(), binary() | list(), binary() | list(), delete_link_request()) ->
     {ok, delete_link_response(), tuple()} |
     {error, any()} |
@@ -1383,10 +1385,10 @@ get_inbound_external_link(Client, GatewayId, LinkId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a link between RTB applications.
+%% @doc Retrieves information about a link between gateways.
 %%
 %% Returns detailed information about the link configuration, status, and
-%% associated RTB applications.
+%% associated gateways.
 -spec get_link(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_link_response(), tuple()} |
     {error, any()} |
@@ -1534,10 +1536,10 @@ get_responder_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists links associated with an RTB application.
+%% @doc Lists links associated with gateways.
 %%
-%% Returns a list of all links for the specified RTB application, including
-%% their status and configuration details.
+%% Returns a list of all links for the specified gateways, including their
+%% status and configuration details.
 -spec list_links(aws_client:aws_client(), binary() | list()) ->
     {ok, list_links_response(), tuple()} |
     {error, any()} |
@@ -1700,11 +1702,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Rejects a link request between RTB applications.
+%% @doc Rejects a link request between gateways.
 %%
-%% When a requester RTB application requests to link with a responder RTB
-%% application, the responder can use this operation to decline the link
-%% request.
+%% When a requester gateway requests to link with a responder gateway, the
+%% responder can use this operation to decline the link request.
 -spec reject_link(aws_client:aws_client(), binary() | list(), binary() | list(), reject_link_request()) ->
     {ok, reject_link_response(), tuple()} |
     {error, any()} |
@@ -1807,7 +1808,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the configuration of a link between RTB applications.
+%% @doc Updates the configuration of a link between gateways.
 %%
 %% Allows you to modify settings and parameters for an existing link.
 -spec update_link(aws_client:aws_client(), binary() | list(), binary() | list(), update_link_request()) ->

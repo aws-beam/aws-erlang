@@ -460,7 +460,8 @@
 %% global_cluster_member() :: #{
 %%   <<"DBClusterArn">> => string(),
 %%   <<"IsWriter">> => boolean(),
-%%   <<"Readers">> => list(string())
+%%   <<"Readers">> => list(string()),
+%%   <<"SynchronizationStatus">> => list(any())
 %% }
 -type global_cluster_member() :: #{binary() => any()}.
 
@@ -914,12 +915,14 @@
 %%   <<"DeletionProtection">> => boolean(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
+%%   <<"FailoverState">> => failover_state(),
 %%   <<"GlobalClusterArn">> => string(),
 %%   <<"GlobalClusterIdentifier">> => string(),
 %%   <<"GlobalClusterMembers">> => list(global_cluster_member()),
 %%   <<"GlobalClusterResourceId">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"StorageEncrypted">> => boolean()
+%%   <<"StorageEncrypted">> => boolean(),
+%%   <<"TagList">> => list(tag())
 %% }
 -type global_cluster() :: #{binary() => any()}.
 
@@ -981,6 +984,15 @@
 %%   <<"GlobalClusterIdentifier">> := string()
 %% }
 -type remove_from_global_cluster_message() :: #{binary() => any()}.
+
+%% Example:
+%% failover_state() :: #{
+%%   <<"FromDbClusterArn">> => string(),
+%%   <<"IsDataLossAllowed">> => boolean(),
+%%   <<"Status">> => list(any()),
+%%   <<"ToDbClusterArn">> => string()
+%% }
+-type failover_state() :: #{binary() => any()}.
 
 %% Example:
 %% reboot_db_instance_message() :: #{

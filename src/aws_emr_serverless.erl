@@ -278,7 +278,8 @@
 
 %% Example:
 %% identity_center_configuration_input() :: #{
-%%   <<"identityCenterInstanceArn">> => string()
+%%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"userBackgroundSessionsEnabled">> => [boolean()]
 %% }
 -type identity_center_configuration_input() :: #{binary() => any()}.
 
@@ -604,7 +605,8 @@
 %% Example:
 %% identity_center_configuration() :: #{
 %%   <<"identityCenterApplicationArn">> => string(),
-%%   <<"identityCenterInstanceArn">> => string()
+%%   <<"identityCenterInstanceArn">> => string(),
+%%   <<"userBackgroundSessionsEnabled">> => [boolean()]
 %% }
 -type identity_center_configuration() :: #{binary() => any()}.
 
