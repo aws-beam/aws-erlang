@@ -653,6 +653,7 @@
 %% Example:
 %% video_overlay_position() :: #{
 %%   <<"Height">> => integer(),
+%%   <<"Opacity">> => integer(),
 %%   <<"Unit">> => list(any()),
 %%   <<"Width">> => integer(),
 %%   <<"XPosition">> => integer(),
@@ -762,6 +763,13 @@
 %%   <<"SpekeKeyProvider">> => speke_key_provider()
 %% }
 -type ms_smooth_encryption_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% audio_pitch_correction_settings() :: #{
+%%   <<"SlowPalPitchCorrection">> => list(any())
+%% }
+-type audio_pitch_correction_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1275,6 +1283,7 @@
 %% audio_description() :: #{
 %%   <<"AudioChannelTaggingSettings">> => audio_channel_tagging_settings(),
 %%   <<"AudioNormalizationSettings">> => audio_normalization_settings(),
+%%   <<"AudioPitchCorrectionSettings">> => audio_pitch_correction_settings(),
 %%   <<"AudioSourceName">> => string(),
 %%   <<"AudioType">> => integer(),
 %%   <<"AudioTypeControl">> => list(any()),
@@ -1338,6 +1347,7 @@
 %%   <<"H264Settings">> => h264_settings(),
 %%   <<"H265Settings">> => h265_settings(),
 %%   <<"Mpeg2Settings">> => mpeg2_settings(),
+%%   <<"PassthroughSettings">> => passthrough_settings(),
 %%   <<"ProresSettings">> => prores_settings(),
 %%   <<"UncompressedSettings">> => uncompressed_settings(),
 %%   <<"Vc3Settings">> => vc3_settings(),
@@ -1866,6 +1876,7 @@
 %%   <<"ProgramSelection">> => integer(),
 %%   <<"RemixSettings">> => remix_settings(),
 %%   <<"SelectorType">> => list(any()),
+%%   <<"Streams">> => list(integer()),
 %%   <<"Tracks">> => list(integer())
 %% }
 -type audio_selector() :: #{binary() => any()}.
@@ -2415,6 +2426,13 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% passthrough_settings() :: #{
+%%   <<"VideoSelectorMode">> => list(any())
+%% }
+-type passthrough_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3028,6 +3046,7 @@
 
 %% Example:
 %% track_source_settings() :: #{
+%%   <<"StreamNumber">> => integer(),
 %%   <<"TrackNumber">> => integer()
 %% }
 -type track_source_settings() :: #{binary() => any()}.

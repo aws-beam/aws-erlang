@@ -187,6 +187,10 @@
          create_ipam_external_resource_verification_token/3,
          create_ipam_pool/2,
          create_ipam_pool/3,
+         create_ipam_prefix_list_resolver/2,
+         create_ipam_prefix_list_resolver/3,
+         create_ipam_prefix_list_resolver_target/2,
+         create_ipam_prefix_list_resolver_target/3,
          create_ipam_resource_discovery/2,
          create_ipam_resource_discovery/3,
          create_ipam_scope/2,
@@ -359,6 +363,10 @@
          delete_ipam_external_resource_verification_token/3,
          delete_ipam_pool/2,
          delete_ipam_pool/3,
+         delete_ipam_prefix_list_resolver/2,
+         delete_ipam_prefix_list_resolver/3,
+         delete_ipam_prefix_list_resolver_target/2,
+         delete_ipam_prefix_list_resolver_target/3,
          delete_ipam_resource_discovery/2,
          delete_ipam_resource_discovery/3,
          delete_ipam_scope/2,
@@ -645,6 +653,10 @@
          describe_ipam_external_resource_verification_tokens/3,
          describe_ipam_pools/2,
          describe_ipam_pools/3,
+         describe_ipam_prefix_list_resolver_targets/2,
+         describe_ipam_prefix_list_resolver_targets/3,
+         describe_ipam_prefix_list_resolvers/2,
+         describe_ipam_prefix_list_resolvers/3,
          describe_ipam_resource_discoveries/2,
          describe_ipam_resource_discoveries/3,
          describe_ipam_resource_discovery_associations/2,
@@ -1049,6 +1061,12 @@
          get_ipam_pool_allocations/3,
          get_ipam_pool_cidrs/2,
          get_ipam_pool_cidrs/3,
+         get_ipam_prefix_list_resolver_rules/2,
+         get_ipam_prefix_list_resolver_rules/3,
+         get_ipam_prefix_list_resolver_version_entries/2,
+         get_ipam_prefix_list_resolver_version_entries/3,
+         get_ipam_prefix_list_resolver_versions/2,
+         get_ipam_prefix_list_resolver_versions/3,
          get_ipam_resource_cidrs/2,
          get_ipam_resource_cidrs/3,
          get_launch_template_data/2,
@@ -1179,6 +1197,10 @@
          modify_ipam/3,
          modify_ipam_pool/2,
          modify_ipam_pool/3,
+         modify_ipam_prefix_list_resolver/2,
+         modify_ipam_prefix_list_resolver/3,
+         modify_ipam_prefix_list_resolver_target/2,
+         modify_ipam_prefix_list_resolver_target/3,
          modify_ipam_resource_cidr/2,
          modify_ipam_resource_cidr/3,
          modify_ipam_resource_discovery/2,
@@ -1866,6 +1888,12 @@
 -type launch_templates_monitoring() :: #{binary() => any()}.
 
 %% Example:
+%% create_ipam_prefix_list_resolver_result() :: #{
+%%   <<"IpamPrefixListResolver">> => ipam_prefix_list_resolver()
+%% }
+-type create_ipam_prefix_list_resolver_result() :: #{binary() => any()}.
+
+%% Example:
 %% peering_attachment_status() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
@@ -2334,6 +2362,13 @@
 -type replace_route_table_association_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ipam_prefix_list_resolver_targets_result() :: #{
+%%   <<"IpamPrefixListResolverTargets">> => list(ipam_prefix_list_resolver_target()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_prefix_list_resolver_targets_result() :: #{binary() => any()}.
+
+%% Example:
 %% launch_template_instance_maintenance_options() :: #{
 %%   <<"AutoRecovery">> => list(any())
 %% }
@@ -2511,6 +2546,13 @@
 %%   <<"RouteServerId">> := string()
 %% }
 -type get_route_server_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_prefix_list_resolver_rules_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Rules">> => list(ipam_prefix_list_resolver_rule())
+%% }
+-type get_ipam_prefix_list_resolver_rules_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_transit_gateway_connect_peer_request() :: #{
@@ -4977,6 +5019,18 @@
 -type modify_ipam_pool_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_ipam_prefix_list_resolver_request() :: #{
+%%   <<"AddressFamily">> := list(any()),
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamId">> := string(),
+%%   <<"Rules">> => list(ipam_prefix_list_resolver_rule_request()),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_ipam_prefix_list_resolver_request() :: #{binary() => any()}.
+
+%% Example:
 %% verified_access_endpoint_target() :: #{
 %%   <<"VerifiedAccessEndpointId">> => string(),
 %%   <<"VerifiedAccessEndpointTargetDns">> => string(),
@@ -4987,6 +5041,8 @@
 %% Example:
 %% managed_prefix_list() :: #{
 %%   <<"AddressFamily">> => string(),
+%%   <<"IpamPrefixListResolverSyncEnabled">> => boolean(),
+%%   <<"IpamPrefixListResolverTargetId">> => string(),
 %%   <<"MaxEntries">> => integer(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PrefixListArn">> => string(),
@@ -6714,6 +6770,13 @@
 -type modify_ebs_default_kms_key_id_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ipam_prefix_list_resolver_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPrefixListResolverId">> := string()
+%% }
+-type delete_ipam_prefix_list_resolver_request() :: #{binary() => any()}.
+
+%% Example:
 %% modify_traffic_mirror_filter_network_services_request() :: #{
 %%   <<"AddNetworkServices">> => list(list(any())()),
 %%   <<"DryRun">> => boolean(),
@@ -7462,6 +7525,12 @@
 -type directory_service_authentication_request() :: #{binary() => any()}.
 
 %% Example:
+%% ipam_prefix_list_resolver_version() :: #{
+%%   <<"Version">> => float()
+%% }
+-type ipam_prefix_list_resolver_version() :: #{binary() => any()}.
+
+%% Example:
 %% delete_key_pair_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"KeyName">> => string(),
@@ -7599,6 +7668,7 @@
 %%   <<"AddEntries">> => list(add_prefix_list_entry()),
 %%   <<"CurrentVersion">> => float(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"IpamPrefixListResolverSyncEnabled">> => boolean(),
 %%   <<"MaxEntries">> => integer(),
 %%   <<"PrefixListId">> := string(),
 %%   <<"PrefixListName">> => string(),
@@ -8602,6 +8672,13 @@
 -type region() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ipam_prefix_list_resolver_target_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPrefixListResolverTargetId">> := string()
+%% }
+-type delete_ipam_prefix_list_resolver_target_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_transit_gateway_policy_tables_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -9375,6 +9452,16 @@
 -type delete_carrier_gateway_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_ipam_prefix_list_resolver_target_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DesiredVersion">> => float(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPrefixListResolverTargetId">> := string(),
+%%   <<"TrackLatestVersion">> => boolean()
+%% }
+-type modify_ipam_prefix_list_resolver_target_request() :: #{binary() => any()}.
+
+%% Example:
 %% describe_dhcp_options_result() :: #{
 %%   <<"DhcpOptions">> => list(dhcp_options()),
 %%   <<"NextToken">> => string()
@@ -9477,6 +9564,12 @@
 %%   <<"SubnetCidrReservationId">> := string()
 %% }
 -type delete_subnet_cidr_reservation_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_ipam_prefix_list_resolver_result() :: #{
+%%   <<"IpamPrefixListResolver">> => ipam_prefix_list_resolver()
+%% }
+-type modify_ipam_prefix_list_resolver_result() :: #{binary() => any()}.
 
 %% Example:
 %% access_scope_path() :: #{
@@ -10167,6 +10260,17 @@
 -type create_verified_access_endpoint_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ipam_prefix_list_resolver_targets_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamPrefixListResolverId">> => string(),
+%%   <<"IpamPrefixListResolverTargetIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_prefix_list_resolver_targets_request() :: #{binary() => any()}.
+
+%% Example:
 %% capacity_reservation_target_response() :: #{
 %%   <<"CapacityReservationId">> => string(),
 %%   <<"CapacityReservationResourceGroupArn">> => string()
@@ -10539,6 +10643,12 @@
 %%   <<"AssociationId">> => string()
 %% }
 -type associate_address_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_ipam_prefix_list_resolver_target_result() :: #{
+%%   <<"IpamPrefixListResolverTarget">> => ipam_prefix_list_resolver_target()
+%% }
+-type create_ipam_prefix_list_resolver_target_result() :: #{binary() => any()}.
 
 %% Example:
 %% copy_fpga_image_request() :: #{
@@ -11199,6 +11309,23 @@
 -type describe_vpn_gateways_result() :: #{binary() => any()}.
 
 %% Example:
+%% ipam_prefix_list_resolver_target() :: #{
+%%   <<"DesiredVersion">> => float(),
+%%   <<"IpamPrefixListResolverId">> => string(),
+%%   <<"IpamPrefixListResolverTargetArn">> => string(),
+%%   <<"IpamPrefixListResolverTargetId">> => string(),
+%%   <<"LastSyncedVersion">> => float(),
+%%   <<"OwnerId">> => string(),
+%%   <<"PrefixListId">> => string(),
+%%   <<"PrefixListRegion">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateMessage">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrackLatestVersion">> => boolean()
+%% }
+-type ipam_prefix_list_resolver_target() :: #{binary() => any()}.
+
+%% Example:
 %% traffic_mirror_port_range_request() :: #{
 %%   <<"FromPort">> => integer(),
 %%   <<"ToPort">> => integer()
@@ -11411,6 +11538,12 @@
 -type describe_transit_gateway_multicast_domains_request() :: #{binary() => any()}.
 
 %% Example:
+%% ipam_prefix_list_resolver_version_entry() :: #{
+%%   <<"Cidr">> => string()
+%% }
+-type ipam_prefix_list_resolver_version_entry() :: #{binary() => any()}.
+
+%% Example:
 %% export_client_vpn_client_configuration_result() :: #{
 %%   <<"ClientConfiguration">> => string()
 %% }
@@ -11422,6 +11555,22 @@
 %%   <<"TransitGatewayRouteTableId">> := string()
 %% }
 -type delete_transit_gateway_route_table_request() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_prefix_list_resolver() :: #{
+%%   <<"AddressFamily">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"IpamArn">> => string(),
+%%   <<"IpamPrefixListResolverArn">> => string(),
+%%   <<"IpamPrefixListResolverId">> => string(),
+%%   <<"IpamRegion">> => string(),
+%%   <<"LastVersionCreationStatus">> => list(any()),
+%%   <<"LastVersionCreationStatusMessage">> => string(),
+%%   <<"OwnerId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type ipam_prefix_list_resolver() :: #{binary() => any()}.
 
 %% Example:
 %% connection_tracking_specification() :: #{
@@ -11536,6 +11685,18 @@
 %%   <<"SingleInstanceType">> => boolean()
 %% }
 -type spot_options() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_prefix_list_resolver_rule_condition_request() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"IpamPoolId">> => string(),
+%%   <<"Operation">> => list(any()),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"ResourceRegion">> => string(),
+%%   <<"ResourceTag">> => request_ipam_resource_tag()
+%% }
+-type ipam_prefix_list_resolver_rule_condition_request() :: #{binary() => any()}.
 
 %% Example:
 %% instance_event_window_time_range() :: #{
@@ -12024,6 +12185,13 @@
 -type list_snapshots_in_recycle_bin_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ipam_prefix_list_resolvers_result() :: #{
+%%   <<"IpamPrefixListResolvers">> => list(ipam_prefix_list_resolver()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_prefix_list_resolvers_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_volume_status_result() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"VolumeStatuses">> => list(volume_status_item())
@@ -12158,6 +12326,18 @@
 -type modify_ipam_scope_result() :: #{binary() => any()}.
 
 %% Example:
+%% ipam_prefix_list_resolver_rule_condition() :: #{
+%%   <<"Cidr">> => string(),
+%%   <<"IpamPoolId">> => string(),
+%%   <<"Operation">> => list(any()),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceOwner">> => string(),
+%%   <<"ResourceRegion">> => string(),
+%%   <<"ResourceTag">> => ipam_resource_tag()
+%% }
+-type ipam_prefix_list_resolver_rule_condition() :: #{binary() => any()}.
+
+%% Example:
 %% snapshot_disk_container() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Format">> => string(),
@@ -12272,6 +12452,12 @@
 %%   <<"VpcId">> => string()
 %% }
 -type carrier_gateway() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ipam_prefix_list_resolver_target_result() :: #{
+%%   <<"IpamPrefixListResolverTarget">> => ipam_prefix_list_resolver_target()
+%% }
+-type delete_ipam_prefix_list_resolver_target_result() :: #{binary() => any()}.
 
 %% Example:
 %% authorize_client_vpn_ingress_result() :: #{
@@ -12435,6 +12621,13 @@
 %%   <<"Values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_prefix_list_resolver_version_entries_result() :: #{
+%%   <<"Entries">> => list(ipam_prefix_list_resolver_version_entry()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_prefix_list_resolver_version_entries_result() :: #{binary() => any()}.
 
 %% Example:
 %% local_gateway_route_table_virtual_interface_group_association() :: #{
@@ -12617,6 +12810,16 @@
 %%   <<"AddressTransfer">> => address_transfer()
 %% }
 -type enable_address_transfer_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_prefix_list_resolver_version_entries_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPrefixListResolverId">> := string(),
+%%   <<"IpamPrefixListResolverVersion">> := float(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_prefix_list_resolver_version_entries_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_image_usage_report_request() :: #{
@@ -13733,6 +13936,12 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type export_image_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_ipam_prefix_list_resolver_target_result() :: #{
+%%   <<"IpamPrefixListResolverTarget">> => ipam_prefix_list_resolver_target()
+%% }
+-type modify_ipam_prefix_list_resolver_target_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_vpc_endpoint_associations_result() :: #{
@@ -15238,6 +15447,16 @@
 -type delete_launch_template_versions_request() :: #{binary() => any()}.
 
 %% Example:
+%% describe_ipam_prefix_list_resolvers_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamPrefixListResolverIds">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_ipam_prefix_list_resolvers_request() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_enclave_certificate_iam_role_request() :: #{
 %%   <<"CertificateArn">> := string(),
 %%   <<"DryRun">> => boolean(),
@@ -15899,6 +16118,16 @@
 -type instance_monitoring() :: #{binary() => any()}.
 
 %% Example:
+%% get_ipam_prefix_list_resolver_rules_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamPrefixListResolverId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_prefix_list_resolver_rules_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_transit_gateway_multicast_domain_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Options">> => create_transit_gateway_multicast_domain_request_options(),
@@ -15966,9 +16195,12 @@
 %% Example:
 %% vpc_encryption_control_exclusions() :: #{
 %%   <<"EgressOnlyInternetGateway">> => vpc_encryption_control_exclusion(),
+%%   <<"ElasticFileSystem">> => vpc_encryption_control_exclusion(),
 %%   <<"InternetGateway">> => vpc_encryption_control_exclusion(),
+%%   <<"Lambda">> => vpc_encryption_control_exclusion(),
 %%   <<"NatGateway">> => vpc_encryption_control_exclusion(),
 %%   <<"VirtualPrivateGateway">> => vpc_encryption_control_exclusion(),
+%%   <<"VpcLattice">> => vpc_encryption_control_exclusion(),
 %%   <<"VpcPeering">> => vpc_encryption_control_exclusion()
 %% }
 -type vpc_encryption_control_exclusions() :: #{binary() => any()}.
@@ -16511,6 +16743,17 @@
 %%   <<"RouteServer">> => route_server()
 %% }
 -type delete_route_server_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_prefix_list_resolver_versions_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IpamPrefixListResolverId">> := string(),
+%%   <<"IpamPrefixListResolverVersions">> => list(float()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_prefix_list_resolver_versions_request() :: #{binary() => any()}.
 
 %% Example:
 %% ipv4_prefix_specification() :: #{
@@ -17598,6 +17841,12 @@
 -type describe_capacity_reservation_fleets_result() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ipam_prefix_list_resolver_result() :: #{
+%%   <<"IpamPrefixListResolver">> => ipam_prefix_list_resolver()
+%% }
+-type delete_ipam_prefix_list_resolver_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_vpc_endpoint_service_permissions_result() :: #{
 %%   <<"AllowedPrincipals">> => list(allowed_principal()),
 %%   <<"NextToken">> => string()
@@ -18016,6 +18265,19 @@
 -type describe_aws_network_performance_metric_subscriptions_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_ipam_prefix_list_resolver_target_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DesiredVersion">> => float(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPrefixListResolverId">> := string(),
+%%   <<"PrefixListId">> := string(),
+%%   <<"PrefixListRegion">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"TrackLatestVersion">> := boolean()
+%% }
+-type create_ipam_prefix_list_resolver_target_request() :: #{binary() => any()}.
+
+%% Example:
 %% vpn_connection_options() :: #{
 %%   <<"EnableAcceleration">> => boolean(),
 %%   <<"LocalIpv4NetworkCidr">> => string(),
@@ -18029,6 +18291,13 @@
 %%   <<"TunnelOptions">> => list(tunnel_option())
 %% }
 -type vpn_connection_options() :: #{binary() => any()}.
+
+%% Example:
+%% get_ipam_prefix_list_resolver_versions_result() :: #{
+%%   <<"IpamPrefixListResolverVersions">> => list(ipam_prefix_list_resolver_version()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_ipam_prefix_list_resolver_versions_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fleets_result() :: #{
@@ -19715,6 +19984,15 @@
 -type create_launch_template_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_ipam_prefix_list_resolver_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"IpamPrefixListResolverId">> := string(),
+%%   <<"Rules">> => list(ipam_prefix_list_resolver_rule_request())
+%% }
+-type modify_ipam_prefix_list_resolver_request() :: #{binary() => any()}.
+
+%% Example:
 %% vpn_connection_options_specification() :: #{
 %%   <<"EnableAcceleration">> => boolean(),
 %%   <<"LocalIpv4NetworkCidr">> => string(),
@@ -19843,6 +20121,16 @@
 %%   <<"TransitGatewayConnect">> => transit_gateway_connect()
 %% }
 -type delete_transit_gateway_connect_result() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_prefix_list_resolver_rule_request() :: #{
+%%   <<"Conditions">> => list(ipam_prefix_list_resolver_rule_condition_request()),
+%%   <<"IpamScopeId">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"RuleType">> => list(any()),
+%%   <<"StaticCidr">> => string()
+%% }
+-type ipam_prefix_list_resolver_rule_request() :: #{binary() => any()}.
 
 %% Example:
 %% get_ipam_pool_cidrs_result() :: #{
@@ -20889,6 +21177,16 @@
 %%   <<"ImportManifestUrl">> => string()
 %% }
 -type disk_image_detail() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_prefix_list_resolver_rule() :: #{
+%%   <<"Conditions">> => list(ipam_prefix_list_resolver_rule_condition()),
+%%   <<"IpamScopeId">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"RuleType">> => list(any()),
+%%   <<"StaticCidr">> => string()
+%% }
+-type ipam_prefix_list_resolver_rule() :: #{binary() => any()}.
 
 %% Example:
 %% describe_id_format_result() :: #{
@@ -22583,6 +22881,22 @@ cancel_reserved_instances_listing(Client, Input, Options)
 %% they
 %% are interrupted or you terminate them manually.
 %%
+%% Terminating an instance is permanent and irreversible.
+%%
+%% After you terminate an instance, you can no longer connect to it, and it
+%% can't be recovered.
+%% All attached Amazon EBS volumes that are configured to be deleted on
+%% termination are also permanently
+%% deleted and can't be recovered. All data stored on instance store
+%% volumes is permanently lost.
+%% For more information, see
+%% How instance termination works:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-ec2-instance-termination-works.html.
+%%
+%% Before you terminate an instance, ensure that you have backed up all data
+%% that you need to
+%% retain after the termination to persistent storage.
+%%
 %% == Restrictions ==
 %%
 %% You can delete up to 100 fleets in a single request. If you exceed the
@@ -23583,6 +23897,59 @@ create_ipam_pool(Client, Input)
 create_ipam_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIpamPool">>, Input, Options).
+
+%% @doc Creates an IPAM prefix list resolver.
+%%
+%% An IPAM prefix list resolver is a component that manages the
+%% synchronization between IPAM's CIDR selection rules and
+%% customer-managed prefix lists. It automates connectivity configurations by
+%% selecting CIDRs from IPAM's database based on your business logic and
+%% synchronizing them with prefix lists used in resources such as VPC route
+%% tables and security groups.
+%%
+%% For more information about IPAM prefix list resolver, see Automate prefix
+%% list updates with IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/automate-prefix-list-updates.html
+%% in the Amazon VPC IPAM User Guide.
+-spec create_ipam_prefix_list_resolver(aws_client:aws_client(), create_ipam_prefix_list_resolver_request()) ->
+    {ok, create_ipam_prefix_list_resolver_result(), tuple()} |
+    {error, any()}.
+create_ipam_prefix_list_resolver(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ipam_prefix_list_resolver(Client, Input, []).
+
+-spec create_ipam_prefix_list_resolver(aws_client:aws_client(), create_ipam_prefix_list_resolver_request(), proplists:proplist()) ->
+    {ok, create_ipam_prefix_list_resolver_result(), tuple()} |
+    {error, any()}.
+create_ipam_prefix_list_resolver(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIpamPrefixListResolver">>, Input, Options).
+
+%% @doc Creates an IPAM prefix list resolver target.
+%%
+%% An IPAM prefix list resolver target is an association between a specific
+%% customer-managed prefix list and an IPAM prefix list resolver. The target
+%% enables the resolver to synchronize CIDRs selected by its rules into the
+%% specified prefix list, which can then be referenced in Amazon Web Services
+%% resources.
+%%
+%% For more information about IPAM prefix list resolver, see Automate prefix
+%% list updates with IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/automate-prefix-list-updates.html
+%% in the Amazon VPC IPAM User Guide.
+-spec create_ipam_prefix_list_resolver_target(aws_client:aws_client(), create_ipam_prefix_list_resolver_target_request()) ->
+    {ok, create_ipam_prefix_list_resolver_target_result(), tuple()} |
+    {error, any()}.
+create_ipam_prefix_list_resolver_target(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ipam_prefix_list_resolver_target(Client, Input, []).
+
+-spec create_ipam_prefix_list_resolver_target(aws_client:aws_client(), create_ipam_prefix_list_resolver_target_request(), proplists:proplist()) ->
+    {ok, create_ipam_prefix_list_resolver_target_result(), tuple()} |
+    {error, any()}.
+create_ipam_prefix_list_resolver_target(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIpamPrefixListResolverTarget">>, Input, Options).
 
 %% @doc Creates an IPAM resource discovery.
 %%
@@ -25205,19 +25572,18 @@ create_volume(Client, Input, Options)
 
 %% @doc Creates a VPC with the specified CIDR blocks.
 %%
-%% For more information, see IP addressing for your VPCs and subnets:
+%% A VPC must have an associated IPv4 CIDR block. You can choose an IPv4 CIDR
+%% block or an
+%% IPAM-allocated IPv4 CIDR block. You can optionally associate an IPv6 CIDR
+%% block with a
+%% VPC. You can choose an IPv6 CIDR block, an Amazon-provided IPv6 CIDR
+%% block, an
+%% IPAM-allocated IPv6 CIDR block, or an IPv6 CIDR block that you brought to
+%% Amazon Web Services. For
+%% more information, see IP addressing for your VPCs and
+%% subnets:
 %% https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html in
-%% the
-%% Amazon VPC User Guide.
-%%
-%% You can optionally request an IPv6 CIDR block for the VPC. You can request
-%% an
-%% Amazon-provided IPv6 CIDR block from Amazon's pool of IPv6 addresses
-%% or an IPv6 CIDR
-%% block from an IPv6 address pool that you provisioned through bring your
-%% own IP addresses
-%% (BYOIP:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html).
+%% the Amazon VPC User Guide.
 %%
 %% By default, each instance that you launch in the VPC has the default DHCP
 %% options, which
@@ -25227,13 +25593,13 @@ create_volume(Client, Input, Options)
 %% https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html in
 %% the Amazon VPC User Guide.
 %%
-%% You can specify the instance tenancy value for the VPC when you create it.
-%% You can't change
-%% this value for the VPC after you create it. For more information, see
-%% Dedicated Instances:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html
+%% You can specify DNS options and tenancy for a VPC when you create it. You
+%% can't change
+%% the tenancy of a VPC after you create it. For more information, see VPC
+%% configuration options:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/create-vpc-options.html
 %% in the
-%% Amazon EC2 User Guide.
+%% Amazon VPC User Guide.
 -spec create_vpc(aws_client:aws_client(), create_vpc_request()) ->
     {ok, create_vpc_result(), tuple()} |
     {error, any()}.
@@ -25677,6 +26043,22 @@ delete_egress_only_internet_gateway(Client, Input, Options)
 %% fewer. Then delete the fleet, and the remaining instances will be
 %% terminated automatically.
 %%
+%% Terminating an instance is permanent and irreversible.
+%%
+%% After you terminate an instance, you can no longer connect to it, and it
+%% can't be recovered.
+%% All attached Amazon EBS volumes that are configured to be deleted on
+%% termination are also permanently
+%% deleted and can't be recovered. All data stored on instance store
+%% volumes is permanently lost.
+%% For more information, see
+%% How instance termination works:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-ec2-instance-termination-works.html.
+%%
+%% Before you terminate an instance, ensure that you have backed up all data
+%% that you need to
+%% retain after the termination to persistent storage.
+%%
 %% == Restrictions ==
 %%
 %% You can delete up to 25 fleets of type `instant' in a single
@@ -25882,6 +26264,47 @@ delete_ipam_pool(Client, Input)
 delete_ipam_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIpamPool">>, Input, Options).
+
+%% @doc Deletes an IPAM prefix list resolver.
+%%
+%% Before deleting a resolver, you must first delete all resolver targets
+%% associated with it.
+-spec delete_ipam_prefix_list_resolver(aws_client:aws_client(), delete_ipam_prefix_list_resolver_request()) ->
+    {ok, delete_ipam_prefix_list_resolver_result(), tuple()} |
+    {error, any()}.
+delete_ipam_prefix_list_resolver(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ipam_prefix_list_resolver(Client, Input, []).
+
+-spec delete_ipam_prefix_list_resolver(aws_client:aws_client(), delete_ipam_prefix_list_resolver_request(), proplists:proplist()) ->
+    {ok, delete_ipam_prefix_list_resolver_result(), tuple()} |
+    {error, any()}.
+delete_ipam_prefix_list_resolver(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIpamPrefixListResolver">>, Input, Options).
+
+%% @doc Deletes an IPAM prefix list resolver target.
+%%
+%% This removes the association between the resolver and the managed prefix
+%% list, stopping automatic CIDR synchronization.
+%%
+%% For more information about IPAM prefix list resolver, see Automate prefix
+%% list updates with IPAM:
+%% https://docs.aws.amazon.com/vpc/latest/ipam/automate-prefix-list-updates.html
+%% in the Amazon VPC IPAM User Guide.
+-spec delete_ipam_prefix_list_resolver_target(aws_client:aws_client(), delete_ipam_prefix_list_resolver_target_request()) ->
+    {ok, delete_ipam_prefix_list_resolver_target_result(), tuple()} |
+    {error, any()}.
+delete_ipam_prefix_list_resolver_target(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ipam_prefix_list_resolver_target(Client, Input, []).
+
+-spec delete_ipam_prefix_list_resolver_target(aws_client:aws_client(), delete_ipam_prefix_list_resolver_target_request(), proplists:proplist()) ->
+    {ok, delete_ipam_prefix_list_resolver_target_result(), tuple()} |
+    {error, any()}.
+delete_ipam_prefix_list_resolver_target(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIpamPrefixListResolverTarget">>, Input, Options).
 
 %% @doc Deletes an IPAM resource discovery.
 %%
@@ -29041,6 +29464,42 @@ describe_ipam_pools(Client, Input)
 describe_ipam_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIpamPools">>, Input, Options).
+
+%% @doc Describes one or more IPAM prefix list resolver Targets.
+%%
+%% Use this operation to view the configuration and status of resolver
+%% targets.
+-spec describe_ipam_prefix_list_resolver_targets(aws_client:aws_client(), describe_ipam_prefix_list_resolver_targets_request()) ->
+    {ok, describe_ipam_prefix_list_resolver_targets_result(), tuple()} |
+    {error, any()}.
+describe_ipam_prefix_list_resolver_targets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_ipam_prefix_list_resolver_targets(Client, Input, []).
+
+-spec describe_ipam_prefix_list_resolver_targets(aws_client:aws_client(), describe_ipam_prefix_list_resolver_targets_request(), proplists:proplist()) ->
+    {ok, describe_ipam_prefix_list_resolver_targets_result(), tuple()} |
+    {error, any()}.
+describe_ipam_prefix_list_resolver_targets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIpamPrefixListResolverTargets">>, Input, Options).
+
+%% @doc Describes one or more IPAM prefix list resolvers.
+%%
+%% Use this operation to view the configuration, status, and properties of
+%% your resolvers.
+-spec describe_ipam_prefix_list_resolvers(aws_client:aws_client(), describe_ipam_prefix_list_resolvers_request()) ->
+    {ok, describe_ipam_prefix_list_resolvers_result(), tuple()} |
+    {error, any()}.
+describe_ipam_prefix_list_resolvers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_ipam_prefix_list_resolvers(Client, Input, []).
+
+-spec describe_ipam_prefix_list_resolvers(aws_client:aws_client(), describe_ipam_prefix_list_resolvers_request(), proplists:proplist()) ->
+    {ok, describe_ipam_prefix_list_resolvers_result(), tuple()} |
+    {error, any()}.
+describe_ipam_prefix_list_resolvers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIpamPrefixListResolvers">>, Input, Options).
 
 %% @doc Describes IPAM resource discoveries.
 %%
@@ -33613,6 +34072,86 @@ get_ipam_pool_cidrs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIpamPoolCidrs">>, Input, Options).
 
+%% @doc Retrieves the CIDR selection rules for an IPAM prefix list resolver.
+%%
+%% Use this operation to view the business logic that determines which CIDRs
+%% are selected for synchronization with prefix lists.
+-spec get_ipam_prefix_list_resolver_rules(aws_client:aws_client(), get_ipam_prefix_list_resolver_rules_request()) ->
+    {ok, get_ipam_prefix_list_resolver_rules_result(), tuple()} |
+    {error, any()}.
+get_ipam_prefix_list_resolver_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_prefix_list_resolver_rules(Client, Input, []).
+
+-spec get_ipam_prefix_list_resolver_rules(aws_client:aws_client(), get_ipam_prefix_list_resolver_rules_request(), proplists:proplist()) ->
+    {ok, get_ipam_prefix_list_resolver_rules_result(), tuple()} |
+    {error, any()}.
+get_ipam_prefix_list_resolver_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamPrefixListResolverRules">>, Input, Options).
+
+%% @doc Retrieves the CIDR entries for a specific version of an IPAM prefix
+%% list resolver.
+%%
+%% This shows the actual CIDRs that were selected and synchronized at a
+%% particular point in time.
+-spec get_ipam_prefix_list_resolver_version_entries(aws_client:aws_client(), get_ipam_prefix_list_resolver_version_entries_request()) ->
+    {ok, get_ipam_prefix_list_resolver_version_entries_result(), tuple()} |
+    {error, any()}.
+get_ipam_prefix_list_resolver_version_entries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_prefix_list_resolver_version_entries(Client, Input, []).
+
+-spec get_ipam_prefix_list_resolver_version_entries(aws_client:aws_client(), get_ipam_prefix_list_resolver_version_entries_request(), proplists:proplist()) ->
+    {ok, get_ipam_prefix_list_resolver_version_entries_result(), tuple()} |
+    {error, any()}.
+get_ipam_prefix_list_resolver_version_entries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamPrefixListResolverVersionEntries">>, Input, Options).
+
+%% @doc Retrieves version information for an IPAM prefix list resolver.
+%%
+%% Each version is a snapshot of what CIDRs matched your rules at that moment
+%% in time. The version number increments every time the CIDR list
+%% changes due to infrastructure changes.
+%%
+%% Version example:
+%%
+%% Initial State (Version 1)
+%%
+%% Production environment:
+%%
+%% vpc-prod-web (10.1.0.0/16) - tagged env=prod
+%%
+%% vpc-prod-db (10.2.0.0/16) - tagged env=prod
+%%
+%% Resolver rule: Include all VPCs tagged env=prod
+%%
+%% Version 1 CIDRs: 10.1.0.0/16, 10.2.0.0/16
+%%
+%% Infrastructure Change (Version 2)
+%%
+%% New VPC added:
+%%
+%% vpc-prod-api (10.3.0.0/16) - tagged env=prod
+%%
+%% IPAM automatically detects the change and creates a new version.
+%%
+%% Version 2 CIDRs: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16
+-spec get_ipam_prefix_list_resolver_versions(aws_client:aws_client(), get_ipam_prefix_list_resolver_versions_request()) ->
+    {ok, get_ipam_prefix_list_resolver_versions_result(), tuple()} |
+    {error, any()}.
+get_ipam_prefix_list_resolver_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ipam_prefix_list_resolver_versions(Client, Input, []).
+
+-spec get_ipam_prefix_list_resolver_versions(aws_client:aws_client(), get_ipam_prefix_list_resolver_versions_request(), proplists:proplist()) ->
+    {ok, get_ipam_prefix_list_resolver_versions_result(), tuple()} |
+    {error, any()}.
+get_ipam_prefix_list_resolver_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIpamPrefixListResolverVersions">>, Input, Options).
+
 %% @doc Returns resource CIDRs managed by IPAM in a given scope.
 %%
 %% If an IPAM is associated with more than one resource discovery, the
@@ -35263,6 +35802,43 @@ modify_ipam_pool(Client, Input)
 modify_ipam_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyIpamPool">>, Input, Options).
+
+%% @doc Modifies an IPAM prefix list resolver.
+%%
+%% You can update the description and CIDR selection rules. Changes to rules
+%% will trigger re-evaluation and potential updates to associated prefix
+%% lists.
+-spec modify_ipam_prefix_list_resolver(aws_client:aws_client(), modify_ipam_prefix_list_resolver_request()) ->
+    {ok, modify_ipam_prefix_list_resolver_result(), tuple()} |
+    {error, any()}.
+modify_ipam_prefix_list_resolver(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_ipam_prefix_list_resolver(Client, Input, []).
+
+-spec modify_ipam_prefix_list_resolver(aws_client:aws_client(), modify_ipam_prefix_list_resolver_request(), proplists:proplist()) ->
+    {ok, modify_ipam_prefix_list_resolver_result(), tuple()} |
+    {error, any()}.
+modify_ipam_prefix_list_resolver(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyIpamPrefixListResolver">>, Input, Options).
+
+%% @doc Modifies an IPAM prefix list resolver target.
+%%
+%% You can update version tracking settings and the desired version of the
+%% target prefix list.
+-spec modify_ipam_prefix_list_resolver_target(aws_client:aws_client(), modify_ipam_prefix_list_resolver_target_request()) ->
+    {ok, modify_ipam_prefix_list_resolver_target_result(), tuple()} |
+    {error, any()}.
+modify_ipam_prefix_list_resolver_target(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_ipam_prefix_list_resolver_target(Client, Input, []).
+
+-spec modify_ipam_prefix_list_resolver_target(aws_client:aws_client(), modify_ipam_prefix_list_resolver_target_request(), proplists:proplist()) ->
+    {ok, modify_ipam_prefix_list_resolver_target_result(), tuple()} |
+    {error, any()}.
+modify_ipam_prefix_list_resolver_target(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyIpamPrefixListResolverTarget">>, Input, Options).
 
 %% @doc Modify a resource CIDR.
 %%
@@ -38202,12 +38778,28 @@ terminate_client_vpn_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateClientVpnConnections">>, Input, Options).
 
-%% @doc Shuts down the specified instances.
+%% @doc Terminates (deletes) the specified instances.
 %%
 %% This operation is idempotent:
 %% https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html;
 %% if you
 %% terminate an instance more than once, each call succeeds.
+%%
+%% Terminating an instance is permanent and irreversible.
+%%
+%% After you terminate an instance, you can no longer connect to it, and it
+%% can't be recovered.
+%% All attached Amazon EBS volumes that are configured to be deleted on
+%% termination are also permanently
+%% deleted and can't be recovered. All data stored on instance store
+%% volumes is permanently lost.
+%% For more information, see
+%% How instance termination works:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-ec2-instance-termination-works.html.
+%%
+%% Before you terminate an instance, ensure that you have backed up all data
+%% that you need to
+%% retain after the termination to persistent storage.
 %%
 %% If you specify multiple instances and the request fails (for example,
 %% because of a

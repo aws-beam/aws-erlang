@@ -5692,6 +5692,7 @@
 %%   <<"IpAddressType">> => list(any()),
 %%   <<"LifecycleConfigName">> => string(),
 %%   <<"NotebookInstanceName">> := string(),
+%%   <<"PlatformIdentifier">> => string(),
 %%   <<"RoleArn">> => string(),
 %%   <<"RootAccess">> => list(any()),
 %%   <<"VolumeSizeInGB">> => integer()

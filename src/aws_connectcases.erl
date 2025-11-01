@@ -267,6 +267,15 @@
 
 
 %% Example:
+%% field_options_case_rule() :: #{
+%%   <<"childFieldId">> => string(),
+%%   <<"parentChildFieldOptionsMappings">> => list(parent_child_field_options_mapping()),
+%%   <<"parentFieldId">> => string()
+%% }
+-type field_options_case_rule() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_template_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"layoutConfiguration">> => layout_configuration(),
@@ -372,6 +381,14 @@
 %%   <<"tagKeys">> := list(string())
 %% }
 -type untag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% hidden_case_rule() :: #{
+%%   <<"conditions">> => list(list()),
+%%   <<"defaultValue">> => [boolean()]
+%% }
+-type hidden_case_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -660,6 +677,14 @@
 %% }
 -type create_layout_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% parent_child_field_options_mapping() :: #{
+%%   <<"childFieldOptionValues">> => list(string()),
+%%   <<"parentFieldOptionValue">> => string()
+%% }
+-type parent_child_field_options_mapping() :: #{binary() => any()}.
+
 %% Example:
 %% empty_operand_value() :: #{}
 -type empty_operand_value() :: #{}.
@@ -862,7 +887,8 @@
 %% Example:
 %% batch_get_case_rule_response() :: #{
 %%   <<"caseRules">> => list(get_case_rule_response()),
-%%   <<"errors">> => list(case_rule_error())
+%%   <<"errors">> => list(case_rule_error()),
+%%   <<"unprocessedCaseRules">> => list(string())
 %% }
 -type batch_get_case_rule_response() :: #{binary() => any()}.
 
@@ -1505,6 +1531,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1530,6 +1557,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -1863,6 +1891,36 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %% @doc Creates a related item (comments, tasks, and contacts) and associates
 %% it with a case.
 %%
+%% There's a quota for the number of fields allowed in a Custom type
+%% related item. See Amazon Connect Cases quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#cases-quotas.
+%%
+%% Use cases
+%%
+%% Following are examples of related items that you may want to associate
+%% with a case:
+%%
+%% Related contacts, such as calls, chats, emails tasks
+%%
+%% Comments, for agent notes
+%%
+%% SLAs, to capture target resolution goals
+%%
+%% Cases, to capture related Amazon Connect Cases
+%%
+%% Files, such as policy documentation or customer-provided attachments
+%%
+%% Custom related items, which provide flexibility for you to define related
+%% items that such as bookings, orders, products, notices, and more
+%%
+%% Important things to know
+%%
+%% If you are associating a contact to a case by passing in `Contact' for
+%% a `type', you must have DescribeContact:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeContact.html
+%% permission on the ARN of the contact that you provide in
+%% `content.contact.contactArn'.
+%%
 %% A Related Item is a resource that is associated with a case. It may or may
 %% not have an external identifier linking it to an external resource (for
 %% example, a `contactArn'). All Related Items have their own internal
@@ -1875,6 +1933,9 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %% permission on the ARN of the user that you provide.
 %%
 %% The `type' field is reserved for internal use only.
+%%
+%% Endpoints: See Amazon Connect endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec create_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), create_related_item_request()) ->
     {ok, create_related_item_response(), tuple()} |
     {error, any()} |
@@ -2103,10 +2164,10 @@ delete_domain(Client, DomainId, Input0, Options0) ->
 %% Deleted fields are not included in the `ListFields' response.
 %%
 %% Calling `CreateCase' with a deleted field throws a
-%% `ValidationException' denoting which field IDs in the request have
-%% been deleted.
+%% `ValidationException' denoting which field identifiers in the request
+%% have been deleted.
 %%
-%% Calling `GetCase' with a deleted field ID returns the deleted
+%% Calling `GetCase' with a deleted field identifier returns the deleted
 %% field's value if one exists.
 %%
 %% Calling `UpdateCase' with a deleted field ID throws a
@@ -2888,8 +2949,8 @@ put_case_event_configuration(Client, DomainId, Input0, Options0) ->
 %%
 %% Important things to know
 %%
-%% This API returns case IDs, not complete case objects. To retrieve full
-%% case details, you must make additional calls to the GetCase:
+%% This API returns case identifiers, not complete case objects. To retrieve
+%% full case details, you must make additional calls to the GetCase:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetCase.html
 %% API for each returned case ID.
 %%
