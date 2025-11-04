@@ -3363,10 +3363,9 @@ create_cluster(Client, Input, Options)
 %% `LINEAR': A linear deployment strategy
 %% (`LINEAR') gradually shifts traffic from the current
 %% production environment to a new environment in equal percentage
-%% increments over a specified time period. With Amazon ECS linear
-%% deployments, you can control the pace of traffic shifting and validate
-%% new service revisions with increasing amounts of production
-%% traffic.
+%% increments. With Amazon ECS linear deployments, you can control the pace
+%% of traffic shifting and validate new service revisions with increasing
+%% amounts of production traffic.
 %%
 %% Linear deployments are best suited for the following scenarios:
 %%
@@ -3380,7 +3379,7 @@ create_cluster(Client, Input, Options)
 %% the new version to production traffic incrementally
 %%
 %% Load balancer requirement: When your service uses Application
-%% Load Balancer, Network Load Balancer, or Service Connect
+%% Load Balancer or Service Connect
 %%
 %% `CANARY': A canary deployment strategy
 %% (`CANARY') shifts a small percentage of traffic to the
@@ -3400,7 +3399,7 @@ create_cluster(Client, Input, Options)
 %% if issues are discovered in the new version
 %%
 %% Load balancer requirement: When your service uses Application
-%% Load Balancer, Network Load Balancer, or Service Connect
+%% Load Balancer or Service Connect
 %%
 %% External
 %%

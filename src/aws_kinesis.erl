@@ -20,6 +20,8 @@
          delete_stream/3,
          deregister_stream_consumer/2,
          deregister_stream_consumer/3,
+         describe_account_settings/2,
+         describe_account_settings/3,
          describe_limits/2,
          describe_limits/3,
          describe_stream/2,
@@ -74,12 +76,16 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_account_settings/2,
+         update_account_settings/3,
          update_max_record_size/2,
          update_max_record_size/3,
          update_shard_count/2,
          update_shard_count/3,
          update_stream_mode/2,
-         update_stream_mode/3]).
+         update_stream_mode/3,
+         update_stream_warm_throughput/2,
+         update_stream_warm_throughput/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -182,6 +188,14 @@
 -type starting_position() :: #{binary() => any()}.
 
 %% Example:
+%% update_stream_warm_throughput_input() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"WarmThroughputMiBps">> := integer()
+%% }
+-type update_stream_warm_throughput_input() :: #{binary() => any()}.
+
+%% Example:
 %% kms_throttling_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -192,6 +206,14 @@
 %%   <<"message">> => string()
 %% }
 -type resource_in_use_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_stream_warm_throughput_output() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamName">> => string(),
+%%   <<"WarmThroughput">> => warm_throughput_object()
+%% }
+-type update_stream_warm_throughput_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_shard_count_input() :: #{
@@ -246,7 +268,8 @@
 %%   <<"StreamCreationTimestamp">> => non_neg_integer(),
 %%   <<"StreamModeDetails">> => stream_mode_details(),
 %%   <<"StreamName">> => string(),
-%%   <<"StreamStatus">> => list(any())
+%%   <<"StreamStatus">> => list(any()),
+%%   <<"WarmThroughput">> => warm_throughput_object()
 %% }
 -type stream_description_summary() :: #{binary() => any()}.
 
@@ -257,6 +280,12 @@
 %%   <<"StreamARN">> => string()
 %% }
 -type deregister_stream_consumer_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_settings_input() :: #{
+
+%% }
+-type describe_account_settings_input() :: #{binary() => any()}.
 
 %% Example:
 %% increase_stream_retention_period_input() :: #{
@@ -321,6 +350,13 @@
 -type list_streams_output() :: #{binary() => any()}.
 
 %% Example:
+%% warm_throughput_object() :: #{
+%%   <<"CurrentMiBps">> => integer(),
+%%   <<"TargetMiBps">> => integer()
+%% }
+-type warm_throughput_object() :: #{binary() => any()}.
+
+%% Example:
 %% expired_next_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -373,6 +409,15 @@
 %%   <<"ResourceARN">> := string()
 %% }
 -type put_resource_policy_input() :: #{binary() => any()}.
+
+%% Example:
+%% minimum_throughput_billing_commitment_output() :: #{
+%%   <<"EarliestAllowedEndAt">> => non_neg_integer(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type minimum_throughput_billing_commitment_output() :: #{binary() => any()}.
 
 %% Example:
 %% register_stream_consumer_input() :: #{
@@ -498,6 +543,12 @@
 -type subscribe_to_shard_input() :: #{binary() => any()}.
 
 %% Example:
+%% update_account_settings_input() :: #{
+%%   <<"MinimumThroughputBillingCommitment">> := minimum_throughput_billing_commitment_input()
+%% }
+-type update_account_settings_input() :: #{binary() => any()}.
+
+%% Example:
 %% describe_stream_output() :: #{
 %%   <<"StreamDescription">> => stream_description()
 %% }
@@ -525,6 +576,12 @@
 %%   <<"message">> => string()
 %% }
 -type kms_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% update_account_settings_output() :: #{
+%%   <<"MinimumThroughputBillingCommitment">> => minimum_throughput_billing_commitment_output()
+%% }
+-type update_account_settings_output() :: #{binary() => any()}.
 
 %% Example:
 %% access_denied_exception() :: #{
@@ -578,7 +635,8 @@
 %% Example:
 %% update_stream_mode_input() :: #{
 %%   <<"StreamARN">> := string(),
-%%   <<"StreamModeDetails">> := stream_mode_details()
+%%   <<"StreamModeDetails">> := stream_mode_details(),
+%%   <<"WarmThroughputMiBps">> => integer()
 %% }
 -type update_stream_mode_input() :: #{binary() => any()}.
 
@@ -658,7 +716,8 @@
 %%   <<"ShardCount">> => integer(),
 %%   <<"StreamModeDetails">> => stream_mode_details(),
 %%   <<"StreamName">> := string(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"WarmThroughputMiBps">> => integer()
 %% }
 -type create_stream_input() :: #{binary() => any()}.
 
@@ -715,6 +774,12 @@
 -type enhanced_metrics() :: #{binary() => any()}.
 
 %% Example:
+%% minimum_throughput_billing_commitment_input() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type minimum_throughput_billing_commitment_input() :: #{binary() => any()}.
+
+%% Example:
 %% split_shard_input() :: #{
 %%   <<"NewStartingHashKey">> := string(),
 %%   <<"ShardToSplit">> := string(),
@@ -769,6 +834,12 @@
 %% }
 -type describe_stream_summary_output() :: #{binary() => any()}.
 
+%% Example:
+%% describe_account_settings_output() :: #{
+%%   <<"MinimumThroughputBillingCommitment">> => minimum_throughput_billing_commitment_output()
+%% }
+-type describe_account_settings_output() :: #{binary() => any()}.
+
 -type add_tags_to_stream_errors() ::
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
@@ -778,6 +849,7 @@
 
 -type create_stream_errors() ::
     limit_exceeded_exception() | 
+    validation_exception() | 
     invalid_argument_exception() | 
     resource_in_use_exception().
 
@@ -806,6 +878,9 @@
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
     resource_not_found_exception().
+
+-type describe_account_settings_errors() ::
+    limit_exceeded_exception().
 
 -type describe_limits_errors() ::
     limit_exceeded_exception().
@@ -1012,6 +1087,11 @@
     resource_not_found_exception() | 
     resource_in_use_exception().
 
+-type update_account_settings_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    invalid_argument_exception().
+
 -type update_max_record_size_errors() ::
     limit_exceeded_exception() | 
     validation_exception() | 
@@ -1030,7 +1110,16 @@
 
 -type update_stream_mode_errors() ::
     limit_exceeded_exception() | 
+    validation_exception() | 
     invalid_argument_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception().
+
+-type update_stream_warm_throughput_errors() ::
+    limit_exceeded_exception() | 
+    validation_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception().
 
@@ -1077,24 +1166,25 @@ add_tags_to_stream(Client, Input, Options)
 %% identified groups of data records in a stream.
 %%
 %% You can create your data stream using either on-demand or provisioned
-%% capacity mode.
-%% Data streams with an on-demand mode require no capacity planning and
-%% automatically scale
-%% to handle gigabytes of write and read throughput per minute. With the
-%% on-demand mode,
-%% Kinesis Data Streams automatically manages the shards in order to provide
-%% the necessary
-%% throughput. For the data streams with a provisioned mode, you must specify
-%% the number of
-%% shards for the data stream. Each shard can support reads up to five
-%% transactions per
-%% second, up to a maximum data read total of 2 MiB per second. Each shard
-%% can support
-%% writes up to 1,000 records per second, up to a maximum data write total of
-%% 1 MiB per
-%% second. If the amount of data input increases or decreases, you can add or
-%% remove
-%% shards.
+%% capacity mode. Data streams with an on-demand mode require no capacity
+%% planning and automatically scale to handle gigabytes of write and read
+%% throughput per minute. With the on-demand mode, Kinesis Data Streams
+%% automatically manages the shards in order to provide the necessary
+%% throughput.
+%%
+%% If you'd still like to proactively scale your on-demand data stream’s
+%% capacity, you can unlock the warm throughput feature for on-demand data
+%% streams by enabling `MinimumThroughputBillingCommitment' for your
+%% account. Once your account has `MinimumThroughputBillingCommitment'
+%% enabled, you can specify the warm throughput in MiB per second that your
+%% stream can support in writes.
+%%
+%% For the data streams with a provisioned mode, you must specify the number
+%% of shards for the data stream. Each shard can support reads up to five
+%% transactions per second, up to a maximum data read total of 2 MiB per
+%% second. Each shard can support writes up to 1,000 records per second, up
+%% to a maximum data write total of 1 MiB per second. If the amount of data
+%% input increases or decreases, you can add or remove shards.
 %%
 %% The stream name identifies the stream. The name is scoped to the Amazon
 %% Web Services
@@ -1121,12 +1211,11 @@ add_tags_to_stream(Client, Input, Options)
 %%
 %% Create more shards than are authorized for your account.
 %%
-%% For the default shard limit for an Amazon Web Services account, see Amazon
-%% Kinesis Data Streams Limits:
+%% For the default shard or on-demand throughput limits for an Amazon Web
+%% Services account, see Amazon Kinesis Data Streams Limits:
 %% https://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html
-%% in the Amazon Kinesis Data Streams
-%% Developer Guide. To increase this limit, contact Amazon Web Services
-%% Support:
+%% in the Amazon Kinesis Data Streams Developer Guide. To increase this
+%% limit, contact Amazon Web Services Support:
 %% https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html.
 %%
 %% You can use `DescribeStreamSummary' to check the stream status, which
@@ -1293,6 +1382,30 @@ deregister_stream_consumer(Client, Input)
 deregister_stream_consumer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterStreamConsumer">>, Input, Options).
+
+%% @doc Describes the account-level settings for Amazon Kinesis Data Streams.
+%%
+%% This operation returns information about the minimum throughput billing
+%% commitments and other account-level configurations.
+%%
+%% This API has a call limit of 5 transactions per second (TPS) for each
+%% Amazon Web Services account. TPS over 5 will initiate the
+%% `LimitExceededException'.
+-spec describe_account_settings(aws_client:aws_client(), describe_account_settings_input()) ->
+    {ok, describe_account_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_account_settings_errors(), tuple()}.
+describe_account_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_account_settings(Client, Input, []).
+
+-spec describe_account_settings(aws_client:aws_client(), describe_account_settings_input(), proplists:proplist()) ->
+    {ok, describe_account_settings_output(), tuple()} |
+    {error, any()} |
+    {error, describe_account_settings_errors(), tuple()}.
+describe_account_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAccountSettings">>, Input, Options).
 
 %% @doc Describes the shard limits and usage for the account.
 %%
@@ -2570,6 +2683,37 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Updates the account-level settings for Amazon Kinesis Data Streams.
+%%
+%% Updating account settings is a synchronous operation. Upon receiving the
+%% request, Kinesis Data Streams will return immediately with your account’s
+%% updated settings.
+%%
+%% API limits
+%%
+%% Certain account configurations have minimum commitment windows. Attempting
+%% to update your settings prior to the end of the minimum commitment window
+%% might have certain restrictions.
+%%
+%% This API has a call limit of 5 transactions per second (TPS) for each
+%% Amazon Web Services account. TPS over 5 will initiate the
+%% `LimitExceededException'.
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_input()) ->
+    {ok, update_account_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
+update_account_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_account_settings(Client, Input, []).
+
+-spec update_account_settings(aws_client:aws_client(), update_account_settings_input(), proplists:proplist()) ->
+    {ok, update_account_settings_output(), tuple()} |
+    {error, any()} |
+    {error, update_account_settings_errors(), tuple()}.
+update_account_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAccountSettings">>, Input, Options).
+
 %% @doc This allows you to update the `MaxRecordSize' of a single record
 %% that you can write to, and read from a stream.
 %%
@@ -2677,6 +2821,13 @@ update_shard_count(Client, Input, Options)
 %% Currently, in Kinesis Data Streams, you
 %% can choose between an on-demand capacity mode and a
 %% provisioned capacity mode for your data stream.
+%%
+%% If you'd still like to proactively scale your on-demand data stream’s
+%% capacity, you can unlock the warm throughput feature for on-demand data
+%% streams by enabling `MinimumThroughputBillingCommitment' for your
+%% account. Once your account has `MinimumThroughputBillingCommitment'
+%% enabled, you can specify the warm throughput in MiB per second that your
+%% stream can support in writes.
 -spec update_stream_mode(aws_client:aws_client(), update_stream_mode_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2692,6 +2843,62 @@ update_stream_mode(Client, Input)
 update_stream_mode(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStreamMode">>, Input, Options).
+
+%% @doc Updates the warm throughput configuration for the specified Amazon
+%% Kinesis Data Streams on-demand data stream.
+%%
+%% This operation allows you to proactively scale your on-demand data stream
+%% to a specified throughput level, enabling better performance for sudden
+%% traffic spikes.
+%%
+%% When invoking this API, you must use either the `StreamARN' or the
+%% `StreamName' parameter, or both. It is recommended that you use the
+%% `StreamARN' input parameter when you invoke this API.
+%%
+%% Updating the warm throughput is an asynchronous operation. Upon receiving
+%% the request, Kinesis Data Streams returns immediately and sets the status
+%% of the stream to `UPDATING'. After the update is complete, Kinesis
+%% Data Streams sets the status of the stream back to `ACTIVE'. Depending
+%% on the size of the stream, the scaling action could take a few minutes to
+%% complete. You can continue to read and write data to your stream while its
+%% status is `UPDATING'.
+%%
+%% This operation is only supported for data streams with the on-demand
+%% capacity mode in accounts that have
+%% `MinimumThroughputBillingCommitment' enabled. Provisioned capacity
+%% mode streams do not support warm throughput configuration.
+%%
+%% This operation has the following default limits. By default, you cannot do
+%% the following:
+%%
+%% Scale to more than 10 GiBps for an on-demand stream.
+%%
+%% This API has a call limit of 5 transactions per second (TPS) for each
+%% Amazon Web Services account. TPS over 5 will initiate the
+%% `LimitExceededException'.
+%%
+%% For the default limits for an Amazon Web Services account, see Streams
+%% Limits:
+%% https://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html
+%% in the Amazon Kinesis Data Streams Developer
+%% Guide. To request an increase in the call rate limit, the shard limit for
+%% this API, or your overall shard limit, use the limits form:
+%% https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase&amp;limitType=service-code-kinesis.
+-spec update_stream_warm_throughput(aws_client:aws_client(), update_stream_warm_throughput_input()) ->
+    {ok, update_stream_warm_throughput_output(), tuple()} |
+    {error, any()} |
+    {error, update_stream_warm_throughput_errors(), tuple()}.
+update_stream_warm_throughput(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_stream_warm_throughput(Client, Input, []).
+
+-spec update_stream_warm_throughput(aws_client:aws_client(), update_stream_warm_throughput_input(), proplists:proplist()) ->
+    {ok, update_stream_warm_throughput_output(), tuple()} |
+    {error, any()} |
+    {error, update_stream_warm_throughput_errors(), tuple()}.
+update_stream_warm_throughput(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStreamWarmThroughput">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

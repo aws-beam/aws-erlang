@@ -274,6 +274,15 @@
 
 
 %% Example:
+%% code_configuration() :: #{
+%%   <<"code">> => list(),
+%%   <<"entryPoint">> => list(string()),
+%%   <<"runtime">> => list(any())
+%% }
+-type code_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1201,7 +1210,8 @@
 %% Example:
 %% s3_location() :: #{
 %%   <<"bucket">> => [string()],
-%%   <<"prefix">> => [string()]
+%%   <<"prefix">> => [string()],
+%%   <<"versionId">> => [string()]
 %% }
 -type s3_location() :: #{binary() => any()}.
 
@@ -1573,9 +1583,12 @@
 %% }
 -type summary_override_configuration_input() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_agent_runtime_request() :: #{}
--type delete_agent_runtime_request() :: #{}.
+%% delete_agent_runtime_request() :: #{
+%%   <<"clientToken">> => string()
+%% }
+-type delete_agent_runtime_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2913,9 +2926,10 @@ delete_agent_runtime(Client, AgentRuntimeId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an AAgentCore Runtime endpoint.
