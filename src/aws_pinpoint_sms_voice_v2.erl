@@ -1,39 +1,35 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the AWS End User Messaging SMS and Voice, version 2 API
-%% Reference.
+%% @doc Welcome to the End User MessagingSMS, version 2 API Reference.
 %%
-%% This guide provides information about AWS End User Messaging SMS and
-%% Voice, version 2 API resources, including supported HTTP methods,
-%% parameters, and schemas.
+%% This guide provides information about End User MessagingSMS, version 2 API
+%% resources, including supported HTTP methods, parameters, and schemas.
 %%
 %% Amazon Pinpoint is an Amazon Web Services service that you can use to
-%% engage with your recipients across multiple messaging channels. The AWS
-%% End User Messaging SMS and Voice, version 2 API provides programmatic
-%% access to options that are unique to the SMS and voice channels. AWS End
-%% User Messaging SMS and Voice, version 2 resources such as phone numbers,
-%% sender IDs, and opt-out lists can be used by the Amazon Pinpoint API.
+%% engage with your recipients across multiple messaging channels. The End
+%% User MessagingSMS, version 2 API provides programmatic access to options
+%% that are unique to the SMS and voice channels. End User MessagingSMS,
+%% version 2 resources such as phone numbers, sender IDs, and opt-out lists
+%% can be used by the Amazon Pinpoint API.
 %%
-%% If you're new to AWS End User Messaging SMS and Voice, it's also
-%% helpful to review the AWS End User Messaging SMS User Guide:
-%% https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-service.html.
-%% The AWS End User Messaging SMS User Guide provides tutorials, code
-%% samples, and procedures that demonstrate how to use AWS End User Messaging
-%% SMS and Voice features programmatically and how to integrate functionality
-%% into mobile apps and other types of applications. The guide also provides
-%% key information, such as AWS End User Messaging SMS and Voice integration
-%% with other Amazon Web Services services, and the quotas that apply to use
-%% of the service.
+%% If you're new to End User MessagingSMS, it's also helpful to
+%% review the End User MessagingSMS User Guide:
+%% https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-service.html,
+%% where you'll find tutorials, code samples, and procedures that
+%% demonstrate how to use End User MessagingSMS features programmatically and
+%% how to integrate functionality into mobile apps and other types of
+%% applications. The guide also provides key information, such as End User
+%% MessagingSMS integration with other Amazon Web Services services, and the
+%% quotas that apply to use of the service.
 %%
 %% Regional availability
 %%
-%% The AWS End User Messaging SMS and Voice version 2 API Reference is
-%% available in several Amazon Web Services Regions and it provides an
-%% endpoint for each of these Regions. For a list of all the Regions and
-%% endpoints where the API is currently available, see Amazon Web Services
-%% Service Endpoints:
-%% https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region
+%% The End User MessagingSMS version 2 API Reference is available in several
+%% Amazon Web Services Regions and it provides an endpoint for each of these
+%% Regions. For a list of all the Regions and endpoints where the API is
+%% currently available, see Amazon Web Services Service Endpoints:
+%% https://docs.aws.amazon.com/hgeneral/latest/gr/rande.html#pinpoint_region
 %% and Amazon Pinpoint endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/pinpoint.html in the Amazon
 %% Web Services General Reference. To learn more about Amazon Web Services
@@ -48,13 +44,15 @@
 %% high levels of availability and redundancy, while also minimizing latency.
 %% To learn more about the number of Availability Zones that are available in
 %% each Region, see Amazon Web Services Global Infrastructure.:
-%% https://aws.amazon.com/about-aws/global-infrastructure/
+%% http://aws.amazon.com/about-aws/global-infrastructure/
 -module(aws_pinpoint_sms_voice_v2).
 
 -export([associate_origination_identity/2,
          associate_origination_identity/3,
          associate_protect_configuration/2,
          associate_protect_configuration/3,
+         carrier_lookup/2,
+         carrier_lookup/3,
          create_configuration_set/2,
          create_configuration_set/3,
          create_event_destination/2,
@@ -1336,6 +1334,19 @@
 -type account_limit() :: #{binary() => any()}.
 
 %% Example:
+%% carrier_lookup_result() :: #{
+%%   <<"Carrier">> => [string()],
+%%   <<"Country">> => [string()],
+%%   <<"DialingCountryCode">> => string(),
+%%   <<"E164PhoneNumber">> => string(),
+%%   <<"IsoCountryCode">> => string(),
+%%   <<"MCC">> => string(),
+%%   <<"MNC">> => string(),
+%%   <<"PhoneNumberType">> => string()
+%% }
+-type carrier_lookup_result() :: #{binary() => any()}.
+
+%% Example:
 %% request_phone_number_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
@@ -1959,6 +1970,12 @@
 -type describe_protect_configurations_result() :: #{binary() => any()}.
 
 %% Example:
+%% carrier_lookup_request() :: #{
+%%   <<"PhoneNumber">> := string()
+%% }
+-type carrier_lookup_request() :: #{binary() => any()}.
+
+%% Example:
 %% set_account_default_protect_configuration_request() :: #{
 %%   <<"ProtectConfigurationId">> := string()
 %% }
@@ -2391,6 +2408,13 @@
     internal_server_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
+
+-type carrier_lookup_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception().
 
 -type create_configuration_set_errors() ::
     throttling_exception() | 
@@ -3095,6 +3119,24 @@ associate_protect_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateProtectConfiguration">>, Input, Options).
 
+%% @doc Returns information about a destination phone number, including
+%% whether the number type and whether it is valid, the carrier, and more.
+-spec carrier_lookup(aws_client:aws_client(), carrier_lookup_request()) ->
+    {ok, carrier_lookup_result(), tuple()} |
+    {error, any()} |
+    {error, carrier_lookup_errors(), tuple()}.
+carrier_lookup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    carrier_lookup(Client, Input, []).
+
+-spec carrier_lookup(aws_client:aws_client(), carrier_lookup_request(), proplists:proplist()) ->
+    {ok, carrier_lookup_result(), tuple()} |
+    {error, any()} |
+    {error, carrier_lookup_errors(), tuple()}.
+carrier_lookup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CarrierLookup">>, Input, Options).
+
 %% @doc Creates a new configuration set.
 %%
 %% After you create the configuration set, you can add one or more event
@@ -3165,7 +3207,7 @@ create_event_destination(Client, Input, Options)
 %% opt-out keyword, such as CANCEL or OPTOUT. For a list of supported opt-out
 %% keywords, see SMS opt out :
 %% https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-manage.html#channels-sms-manage-optout
-%% in the AWS End User Messaging SMS User Guide.
+%% in the End User MessagingSMS User Guide.
 -spec create_opt_out_list(aws_client:aws_client(), create_opt_out_list_request()) ->
     {ok, create_opt_out_list_result(), tuple()} |
     {error, any()} |
@@ -3447,8 +3489,7 @@ delete_event_destination(Client, Input, Options)
 %% or pool. It is also a specific word or phrase that an end user can send to
 %% your number to elicit a response, such as an informational message or a
 %% special offer. When your number receives a message that begins with a
-%% keyword, AWS End User Messaging SMS and Voice responds with a customizable
-%% message.
+%% keyword, End User MessagingSMS responds with a customizable message.
 %%
 %% Keywords &quot;HELP&quot; and &quot;STOP&quot; can't be deleted or
 %% modified.
@@ -3654,8 +3695,8 @@ delete_registration_field_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRegistrationFieldValue">>, Input, Options).
 
-%% @doc Deletes the resource-based policy document attached to the AWS End
-%% User Messaging SMS and Voice resource.
+%% @doc Deletes the resource-based policy document attached to the End User
+%% MessagingSMS resource.
 %%
 %% A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
 -spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
@@ -3681,7 +3722,7 @@ delete_resource_policy(Client, Input, Options)
 %% the `MaxLimit', which is controlled by Amazon Web Services. For more
 %% information on spend limits (quotas) see Quotas :
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html in the
-%% AWS End User Messaging SMS User Guide.
+%% End User MessagingSMS User Guide.
 -spec delete_text_message_spend_limit_override(aws_client:aws_client(), delete_text_message_spend_limit_override_request()) ->
     {ok, delete_text_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -3722,7 +3763,7 @@ delete_verified_destination_number(Client, Input, Options)
 %% `MaxLimit', which is controlled by Amazon Web Services. For more
 %% information on spending limits (quotas) see Quotas :
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html in the
-%% AWS End User Messaging SMS User Guide.
+%% End User MessagingSMS User Guide.
 -spec delete_voice_message_spend_limit_override(aws_client:aws_client(), delete_voice_message_spend_limit_override_request()) ->
     {ok, delete_voice_message_spend_limit_override_result(), tuple()} |
     {error, any()} |
@@ -3765,8 +3806,8 @@ describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
-%% @doc Describes the current AWS End User Messaging SMS and Voice SMS Voice
-%% V2 resource quotas for your account.
+%% @doc Describes the current End User MessagingSMS SMS Voice V2 resource
+%% quotas for your account.
 %%
 %% The description for a quota includes the quota name, current usage toward
 %% that quota, and the quota's maximum value.
@@ -3776,7 +3817,7 @@ describe_account_attributes(Client, Input, Options)
 %% numbers, and pools that you can create in a given Region. For more
 %% information see Quotas :
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/quotas.html in the
-%% AWS End User Messaging SMS User Guide.
+%% End User MessagingSMS User Guide.
 -spec describe_account_limits(aws_client:aws_client(), describe_account_limits_request()) ->
     {ok, describe_account_limits_result(), tuple()} |
     {error, any()} |
@@ -3826,8 +3867,7 @@ describe_configuration_sets(Client, Input, Options)
 %% or pool. It is also a specific word or phrase that an end user can send to
 %% your number to elicit a response, such as an informational message or a
 %% special offer. When your number receives a message that begins with a
-%% keyword, AWS End User Messaging SMS and Voice responds with a customizable
-%% message.
+%% keyword, End User MessagingSMS responds with a customizable message.
 %%
 %% If you specify a keyword that isn't valid, an error is returned.
 -spec describe_keywords(aws_client:aws_client(), describe_keywords_request()) ->
@@ -4140,7 +4180,7 @@ describe_sender_ids(Client, Input, Options)
 %% your monthly spend limit, see Requesting increases to your monthly SMS,
 %% MMS, or Voice spending quota :
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/awssupport-spend-threshold.html
-%% in the AWS End User Messaging SMS User Guide.
+%% in the End User MessagingSMS User Guide.
 -spec describe_spend_limits(aws_client:aws_client(), describe_spend_limits_request()) ->
     {ok, describe_spend_limits_result(), tuple()} |
     {error, any()} |
@@ -4247,7 +4287,7 @@ get_protect_configuration_country_rule_set(Client, Input, Options)
     request(Client, <<"GetProtectConfigurationCountryRuleSet">>, Input, Options).
 
 %% @doc Retrieves the JSON text of the resource-based policy document
-%% attached to the AWS End User Messaging SMS and Voice resource.
+%% attached to the End User MessagingSMS resource.
 %%
 %% A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
 -spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
@@ -4346,8 +4386,7 @@ list_tags_for_resource(Client, Input, Options)
 %% or pool. It is also a specific word or phrase that an end user can send to
 %% your number to elicit a response, such as an informational message or a
 %% special offer. When your number receives a message that begins with a
-%% keyword, AWS End User Messaging SMS and Voice responds with a customizable
-%% message.
+%% keyword, End User MessagingSMS responds with a customizable message.
 %%
 %% If you specify a keyword that isn't valid, an error is returned.
 -spec put_keyword(aws_client:aws_client(), put_keyword_request()) ->
@@ -4445,15 +4484,15 @@ put_registration_field_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRegistrationFieldValue">>, Input, Options).
 
-%% @doc Attaches a resource-based policy to a AWS End User Messaging SMS and
-%% Voice resource(phone number, sender Id, phone poll, or opt-out list) that
-%% is used for sharing the resource.
+%% @doc Attaches a resource-based policy to a End User MessagingSMS
+%% resource(phone number, sender Id, phone poll, or opt-out list) that is
+%% used for sharing the resource.
 %%
 %% A shared resource can be a Pool, Opt-out list, Sender Id, or Phone number.
 %% For more information about resource-based policies, see Working with
 %% shared resources:
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/shared-resources.html
-%% in the AWS End User Messaging SMS User Guide.
+%% in the End User MessagingSMS User Guide.
 -spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_result(), tuple()} |
     {error, any()} |
@@ -4513,7 +4552,7 @@ release_sender_id(Client, Input, Options)
 %%
 %% For more information on phone number request see Request a phone number:
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-request.html
-%% in the AWS End User Messaging SMS User Guide.
+%% in the End User MessagingSMS User Guide.
 -spec request_phone_number(aws_client:aws_client(), request_phone_number_request()) ->
     {ok, request_phone_number_result(), tuple()} |
     {error, any()} |
@@ -4600,7 +4639,7 @@ send_media_message(Client, Input, Options)
 %% message. For more information about MPS, see Message Parts per Second
 %% (MPS) limits:
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/sms-limitations-mps.html
-%% in the AWS End User Messaging SMS User Guide.
+%% in the End User MessagingSMS User Guide.
 -spec send_text_message(aws_client:aws_client(), send_text_message_request()) ->
     {ok, send_text_message_result(), tuple()} |
     {error, any()} |
@@ -4808,7 +4847,7 @@ submit_registration_version(Client, Input, Options)
 %% new value. Each tag consists of a key and an optional value. Tag keys must
 %% be unique per resource. For more information about tags, see Tags :
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html
-%% in the AWS End User Messaging SMS User Guide.
+%% in the End User MessagingSMS User Guide.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
     {ok, tag_resource_result(), tuple()} |
     {error, any()} |
@@ -4829,7 +4868,7 @@ tag_resource(Client, Input, Options)
 %%
 %% For more information on tags see Tags :
 %% https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-tags.html
-%% in the AWS End User Messaging SMS User Guide.
+%% in the End User MessagingSMS User Guide.
 -spec untag_resource(aws_client:aws_client(), untag_resource_request()) ->
     {ok, untag_resource_result(), tuple()} |
     {error, any()} |
