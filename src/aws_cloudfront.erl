@@ -101,6 +101,8 @@
          delete_public_key/4,
          delete_realtime_log_config/2,
          delete_realtime_log_config/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          delete_response_headers_policy/3,
          delete_response_headers_policy/4,
          delete_streaming_distribution/3,
@@ -209,6 +211,8 @@
          get_public_key_config/5,
          get_realtime_log_config/2,
          get_realtime_log_config/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
          get_response_headers_policy/2,
          get_response_headers_policy/4,
          get_response_headers_policy/5,
@@ -263,6 +267,9 @@
          list_distributions_by_origin_request_policy_id/2,
          list_distributions_by_origin_request_policy_id/4,
          list_distributions_by_origin_request_policy_id/5,
+         list_distributions_by_owned_resource/2,
+         list_distributions_by_owned_resource/4,
+         list_distributions_by_owned_resource/5,
          list_distributions_by_realtime_log_config/2,
          list_distributions_by_realtime_log_config/3,
          list_distributions_by_response_headers_policy_id/2,
@@ -323,12 +330,16 @@
          list_vpc_origins/4,
          publish_function/3,
          publish_function/4,
+         put_resource_policy/2,
+         put_resource_policy/3,
          tag_resource/2,
          tag_resource/3,
          test_function/3,
          test_function/4,
          untag_resource/2,
          untag_resource/3,
+         update_anycast_ip_list/3,
+         update_anycast_ip_list/4,
          update_cache_policy/3,
          update_cache_policy/4,
          update_cloud_front_origin_access_identity/3,
@@ -840,6 +851,7 @@
 %%   <<"AnycastIps">> => list(string()),
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"IpCount">> => integer(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -994,6 +1006,13 @@
 %% }
 -type field_level_encryption_list() :: #{binary() => any()}.
 
+
+%% Example:
+%% put_resource_policy_result() :: #{
+%%   <<"ResourceArn">> => string()
+%% }
+-type put_resource_policy_result() :: #{binary() => any()}.
+
 %% Example:
 %% get_response_headers_policy_request() :: #{}
 -type get_response_headers_policy_request() :: #{}.
@@ -1078,6 +1097,13 @@
 %%   <<"Domain">> => string()
 %% }
 -type domain_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_owned_resource_result() :: #{
+%%   <<"DistributionList">> => distribution_id_owner_list()
+%% }
+-type list_distributions_by_owned_resource_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1222,6 +1248,14 @@
 %% Example:
 %% get_origin_request_policy_config_request() :: #{}
 -type get_origin_request_policy_config_request() :: #{}.
+
+
+%% Example:
+%% update_anycast_ip_list_result() :: #{
+%%   <<"AnycastIpList">> => anycast_ip_list(),
+%%   <<"ETag">> => string()
+%% }
+-type update_anycast_ip_list_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1786,7 +1820,9 @@
 %% Example:
 %% anycast_ip_list_summary() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"ETag">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"IpCount">> => integer(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -1809,6 +1845,18 @@
 %%   <<"Quantity">> => integer()
 %% }
 -type response_headers_policy_access_control_allow_origins() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_id_owner_list() :: #{
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Items">> => list(distribution_id_owner()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Quantity">> => integer()
+%% }
+-type distribution_id_owner_list() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2275,6 +2323,14 @@
 
 
 %% Example:
+%% distribution_id_owner() :: #{
+%%   <<"DistributionId">> => string(),
+%%   <<"OwnerAccountId">> => string()
+%% }
+-type distribution_id_owner() :: #{binary() => any()}.
+
+
+%% Example:
 %% origin_access_control_in_use() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -2558,6 +2614,7 @@
 %% vpc_origin_config() :: #{
 %%   <<"OriginKeepaliveTimeout">> => integer(),
 %%   <<"OriginReadTimeout">> => integer(),
+%%   <<"OwnerAccountId">> => string(),
 %%   <<"VpcOriginId">> => string()
 %% }
 -type vpc_origin_config() :: #{binary() => any()}.
@@ -2737,6 +2794,22 @@
 %%   <<"Items">> => list(tag())
 %% }
 -type tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_anycast_ip_list_request() :: #{
+%%   <<"IfMatch">> := string(),
+%%   <<"IpAddressType">> => list(any())
+%% }
+-type update_anycast_ip_list_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_resource_policy_result() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type get_resource_policy_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3066,6 +3139,13 @@
 
 
 %% Example:
+%% get_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% field_level_encryption_profile_summary() :: #{
 %%   <<"Comment">> => string(),
 %%   <<"EncryptionEntities">> => encryption_entities(),
@@ -3386,6 +3466,7 @@
 
 %% Example:
 %% create_anycast_ip_list_request() :: #{
+%%   <<"IpAddressType">> => list(any()),
 %%   <<"IpCount">> := integer(),
 %%   <<"Name">> := string(),
 %%   <<"Tags">> => tags()
@@ -3563,6 +3644,14 @@
 
 
 %% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"PolicyDocument">> := string(),
+%%   <<"ResourceArn">> := string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_realtime_log_configs() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -3627,6 +3716,14 @@
 %%   <<"ResponsePagePath">> => string()
 %% }
 -type custom_error_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_distributions_by_owned_resource_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer()
+%% }
+-type list_distributions_by_owned_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4292,6 +4389,7 @@
 
 %% Example:
 %% vpc_origin() :: #{
+%%   <<"AccountId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Id">> => string(),
@@ -4489,6 +4587,13 @@
 %%   <<"OriginAccessControl">> => origin_access_control()
 %% }
 -type update_origin_access_control_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4747,6 +4852,7 @@
 
 %% Example:
 %% vpc_origin_summary() :: #{
+%%   <<"AccountId">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Id">> => string(),
@@ -5889,6 +5995,14 @@
     invalid_argument() | 
     access_denied().
 
+-type delete_resource_policy_errors() ::
+    illegal_delete() | 
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
 -type delete_response_headers_policy_errors() ::
     no_such_response_headers_policy() | 
     illegal_delete() | 
@@ -6067,6 +6181,12 @@
     invalid_argument() | 
     access_denied().
 
+-type get_resource_policy_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
+
 -type get_response_headers_policy_errors() ::
     no_such_response_headers_policy() | 
     access_denied().
@@ -6153,6 +6273,12 @@
     no_such_origin_request_policy() | 
     invalid_argument() | 
     access_denied().
+
+-type list_distributions_by_owned_resource_errors() ::
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found().
 
 -type list_distributions_by_realtime_log_config_errors() ::
     invalid_argument().
@@ -6248,6 +6374,14 @@
     invalid_argument() | 
     invalid_if_match_version().
 
+-type put_resource_policy_errors() ::
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    illegal_update() | 
+    entity_not_found().
+
 -type tag_resource_errors() ::
     no_such_resource() | 
     invalid_argument() | 
@@ -6266,6 +6400,14 @@
     invalid_argument() | 
     access_denied() | 
     invalid_tagging().
+
+-type update_anycast_ip_list_errors() ::
+    precondition_failed() | 
+    unsupported_operation() | 
+    invalid_argument() | 
+    access_denied() | 
+    entity_not_found() | 
+    invalid_if_match_version().
 
 -type update_cache_policy_errors() ::
     cache_policy_already_exists() | 
@@ -8395,6 +8537,10 @@ delete_continuous_deployment_policy(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete a distribution.
+%%
+%% Before you can delete a distribution, you must disable it, which requires
+%% permission to update the distribution. Once deleted, a distribution cannot
+%% be recovered.
 -spec delete_distribution(aws_client:aws_client(), binary() | list(), delete_distribution_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -8850,6 +8996,40 @@ delete_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/delete-realtime-log-config"],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the resource policy attached to the CloudFront resource.
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Input) ->
+    delete_resource_policy(Client, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/delete-resource-policy"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -10903,6 +11083,41 @@ get_realtime_log_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the resource policy for the specified CloudFront resource
+%% that you own and have shared.
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request()) ->
+    {ok, get_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input) ->
+    get_resource_policy(Client, Input, []).
+
+-spec get_resource_policy(aws_client:aws_client(), get_resource_policy_request(), proplists:proplist()) ->
+    {ok, get_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/get-resource-policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets a response headers policy, including metadata (the policy's
 %% identifier and the date and time when the policy was last modified).
 %%
@@ -11822,6 +12037,49 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByOriginRequestPolicyId/", aws_util:encode_uri(OriginRequestPolicyId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the CloudFront distributions that are associated with the
+%% specified resource that you own.
+-spec list_distributions_by_owned_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_distributions_by_owned_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_owned_resource_errors(), tuple()}.
+list_distributions_by_owned_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_distributions_by_owned_resource(Client, ResourceArn, #{}, #{}).
+
+-spec list_distributions_by_owned_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_distributions_by_owned_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_owned_resource_errors(), tuple()}.
+list_distributions_by_owned_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_owned_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_distributions_by_owned_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_distributions_by_owned_resource_result(), tuple()} |
+    {error, any()} |
+    {error, list_distributions_by_owned_resource_errors(), tuple()}.
+list_distributions_by_owned_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distributionsByOwnedResource/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -12844,6 +13102,40 @@ publish_function(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a resource control policy for a given CloudFront resource.
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input) ->
+    put_resource_policy(Client, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_result(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/put-resource-policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Add tags to a CloudFront resource.
 %%
 %% For more information, see Tagging a distribution:
@@ -12972,6 +13264,58 @@ untag_resource(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an Anycast static IP list.
+-spec update_anycast_ip_list(aws_client:aws_client(), binary() | list(), update_anycast_ip_list_request()) ->
+    {ok, update_anycast_ip_list_result(), tuple()} |
+    {error, any()} |
+    {error, update_anycast_ip_list_errors(), tuple()}.
+update_anycast_ip_list(Client, Id, Input) ->
+    update_anycast_ip_list(Client, Id, Input, []).
+
+-spec update_anycast_ip_list(aws_client:aws_client(), binary() | list(), update_anycast_ip_list_request(), proplists:proplist()) ->
+    {ok, update_anycast_ip_list_result(), tuple()} |
+    {error, any()} |
+    {error, update_anycast_ip_list_errors(), tuple()}.
+update_anycast_ip_list(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/anycast-ip-list/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Updates a cache policy configuration.
 %%

@@ -2564,6 +2564,7 @@
 %% Example:
 %% disable_fast_snapshot_restore_state_error_item() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"Error">> => disable_fast_snapshot_restore_state_error()
 %% }
 -type disable_fast_snapshot_restore_state_error_item() :: #{binary() => any()}.
@@ -3498,6 +3499,7 @@
 %% Example:
 %% enable_fast_snapshot_restore_state_error_item() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"Error">> => enable_fast_snapshot_restore_state_error()
 %% }
 -type enable_fast_snapshot_restore_state_error_item() :: #{binary() => any()}.
@@ -5006,7 +5008,8 @@
 
 %% Example:
 %% disable_fast_snapshot_restores_request() :: #{
-%%   <<"AvailabilityZones">> := list(string()),
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"SourceSnapshotIds">> := list(string())
 %% }
@@ -8054,7 +8057,8 @@
 
 %% Example:
 %% enable_fast_snapshot_restores_request() :: #{
-%%   <<"AvailabilityZones">> := list(string()),
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"SourceSnapshotIds">> := list(string())
 %% }
@@ -10091,6 +10095,7 @@
 %% Example:
 %% enable_fast_snapshot_restore_success_item() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"DisabledTime">> => non_neg_integer(),
 %%   <<"DisablingTime">> => non_neg_integer(),
 %%   <<"EnabledTime">> => non_neg_integer(),
@@ -10984,6 +10989,7 @@
 %% Example:
 %% describe_fast_snapshot_restore_success_item() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"DisabledTime">> => non_neg_integer(),
 %%   <<"DisablingTime">> => non_neg_integer(),
 %%   <<"EnabledTime">> => non_neg_integer(),
@@ -20247,6 +20253,7 @@
 %% Example:
 %% disable_fast_snapshot_restore_success_item() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"DisabledTime">> => non_neg_integer(),
 %%   <<"DisablingTime">> => non_neg_integer(),
 %%   <<"EnabledTime">> => non_neg_integer(),

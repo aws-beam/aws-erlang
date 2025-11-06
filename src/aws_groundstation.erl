@@ -15,6 +15,8 @@
          create_config/3,
          create_dataflow_endpoint_group/2,
          create_dataflow_endpoint_group/3,
+         create_dataflow_endpoint_group_v2/2,
+         create_dataflow_endpoint_group_v2/3,
          create_ephemeris/2,
          create_ephemeris/3,
          create_mission_profile/2,
@@ -36,6 +38,9 @@
          get_agent_configuration/2,
          get_agent_configuration/4,
          get_agent_configuration/5,
+         get_agent_task_response_url/3,
+         get_agent_task_response_url/5,
+         get_agent_task_response_url/6,
          get_config/3,
          get_config/5,
          get_config/6,
@@ -106,6 +111,14 @@
 %%   <<"agentId">> => string()
 %% }
 -type register_agent_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% downlink_connection_details() :: #{
+%%   <<"agentIpAndPortAddress">> => ranged_connection_details(),
+%%   <<"egressAddressAndPort">> => connection_details()
+%% }
+-type downlink_connection_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -259,6 +272,15 @@
 
 
 %% Example:
+%% get_agent_task_response_url_response() :: #{
+%%   <<"agentId">> => string(),
+%%   <<"presignedLogUrl">> => [string()],
+%%   <<"taskId">> => string()
+%% }
+-type get_agent_task_response_url_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% register_agent_request() :: #{
 %%   <<"agentDetails">> := agent_details(),
 %%   <<"discoveryData">> := discovery_data(),
@@ -316,10 +338,12 @@
 %% Example:
 %% endpoint_details() :: #{
 %%   <<"awsGroundStationAgentEndpoint">> => aws_ground_station_agent_endpoint(),
+%%   <<"downlinkAwsGroundStationAgentEndpoint">> => downlink_aws_ground_station_agent_endpoint_details(),
 %%   <<"endpoint">> => dataflow_endpoint(),
 %%   <<"healthReasons">> => list(list(any())()),
 %%   <<"healthStatus">> => list(any()),
-%%   <<"securityDetails">> => security_details()
+%%   <<"securityDetails">> => security_details(),
+%%   <<"uplinkAwsGroundStationAgentEndpoint">> => uplink_aws_ground_station_agent_endpoint_details()
 %% }
 -type endpoint_details() :: #{binary() => any()}.
 
@@ -383,6 +407,14 @@
 %%   <<"enabled">> => [boolean()]
 %% }
 -type uplink_echo_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% uplink_connection_details() :: #{
+%%   <<"agentIpAndPortAddress">> => ranged_connection_details(),
+%%   <<"ingressAddressAndPort">> => connection_details()
+%% }
+-type uplink_connection_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -488,6 +520,20 @@
 %% }
 -type satellite_list_item() :: #{binary() => any()}.
 
+%% Example:
+%% get_agent_task_response_url_request() :: #{}
+-type get_agent_task_response_url_request() :: #{}.
+
+
+%% Example:
+%% create_dataflow_endpoint_group_v2_request() :: #{
+%%   <<"contactPostPassDurationSeconds">> => integer(),
+%%   <<"contactPrePassDurationSeconds">> => integer(),
+%%   <<"endpoints">> := list(list()),
+%%   <<"tags">> => map()
+%% }
+-type create_dataflow_endpoint_group_v2_request() :: #{binary() => any()}.
+
 
 %% Example:
 %% time_az_el() :: #{
@@ -505,6 +551,16 @@
 %%   <<"configType">> => list(any())
 %% }
 -type config_id_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% downlink_aws_ground_station_agent_endpoint_details() :: #{
+%%   <<"agentStatus">> => list(any()),
+%%   <<"auditResults">> => list(any()),
+%%   <<"dataflowDetails">> => list(),
+%%   <<"name">> => string()
+%% }
+-type downlink_aws_ground_station_agent_endpoint_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -599,6 +655,14 @@
 
 
 %% Example:
+%% service_quota_exceeded_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"parameterName">> => [string()]
+%% }
+-type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% ground_station_data() :: #{
 %%   <<"groundStationId">> => string(),
 %%   <<"groundStationName">> => string(),
@@ -660,6 +724,13 @@
 %%   <<"status">> => list(any())
 %% }
 -type aggregate_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataflow_endpoint_group_v2_response() :: #{
+%%   <<"dataflowEndpointGroupId">> => string()
+%% }
+-type create_dataflow_endpoint_group_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -837,6 +908,14 @@
 %%   <<"startTime">> => [non_neg_integer()]
 %% }
 -type time_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% downlink_aws_ground_station_agent_endpoint() :: #{
+%%   <<"dataflowDetails">> => list(),
+%%   <<"name">> => string()
+%% }
+-type downlink_aws_ground_station_agent_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1051,6 +1130,16 @@
 
 
 %% Example:
+%% uplink_aws_ground_station_agent_endpoint_details() :: #{
+%%   <<"agentStatus">> => list(any()),
+%%   <<"auditResults">> => list(any()),
+%%   <<"dataflowDetails">> => list(),
+%%   <<"name">> => string()
+%% }
+-type uplink_aws_ground_station_agent_endpoint_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_ephemeris_response() :: #{
 %%   <<"creationTime">> => [non_neg_integer()],
 %%   <<"enabled">> => [boolean()],
@@ -1083,6 +1172,14 @@
 %%   <<"tags">> => map()
 %% }
 -type create_dataflow_endpoint_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% uplink_aws_ground_station_agent_endpoint() :: #{
+%%   <<"dataflowDetails">> => list(),
+%%   <<"name">> => string()
+%% }
+-type uplink_aws_ground_station_agent_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1152,6 +1249,12 @@
     resource_not_found_exception() | 
     dependency_exception().
 
+-type create_dataflow_endpoint_group_v2_errors() ::
+    invalid_parameter_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
 -type create_ephemeris_errors() ::
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
@@ -1194,6 +1297,11 @@
     dependency_exception().
 
 -type get_agent_configuration_errors() ::
+    invalid_parameter_exception() | 
+    resource_not_found_exception() | 
+    dependency_exception().
+
+-type get_agent_task_response_url_errors() ::
     invalid_parameter_exception() | 
     resource_not_found_exception() | 
     dependency_exception().
@@ -1402,6 +1510,48 @@ create_dataflow_endpoint_group(Client, Input) ->
 create_dataflow_endpoint_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dataflowEndpointGroup"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a `DataflowEndpointGroupV2' containing the specified list
+%% of `DataflowEndpoint' objects.
+%%
+%% The `name' field in each endpoint is used in your mission profile
+%% `DataflowEndpointConfig' to specify which endpoints to use during a
+%% contact.
+%%
+%% When a contact uses multiple `DataflowEndpointConfig' objects, each
+%% `Config' must match a `DataflowEndpoint' in the same group.
+-spec create_dataflow_endpoint_group_v2(aws_client:aws_client(), create_dataflow_endpoint_group_v2_request()) ->
+    {ok, create_dataflow_endpoint_group_v2_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataflow_endpoint_group_v2_errors(), tuple()}.
+create_dataflow_endpoint_group_v2(Client, Input) ->
+    create_dataflow_endpoint_group_v2(Client, Input, []).
+
+-spec create_dataflow_endpoint_group_v2(aws_client:aws_client(), create_dataflow_endpoint_group_v2_request(), proplists:proplist()) ->
+    {ok, create_dataflow_endpoint_group_v2_response(), tuple()} |
+    {error, any()} |
+    {error, create_dataflow_endpoint_group_v2_errors(), tuple()}.
+create_dataflow_endpoint_group_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/dataflowEndpointGroupV2"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1729,6 +1879,46 @@ get_agent_configuration(Client, AgentId, QueryMap, HeadersMap)
 get_agent_configuration(Client, AgentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agent/", aws_util:encode_uri(AgentId), "/configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc For use by AWS Ground Station Agent and shouldn't be called
+%% directly.
+%%
+%% Gets a presigned URL for uploading agent task response logs.
+-spec get_agent_task_response_url(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_agent_task_response_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_task_response_url_errors(), tuple()}.
+get_agent_task_response_url(Client, AgentId, TaskId)
+  when is_map(Client) ->
+    get_agent_task_response_url(Client, AgentId, TaskId, #{}, #{}).
+
+-spec get_agent_task_response_url(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_agent_task_response_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_task_response_url_errors(), tuple()}.
+get_agent_task_response_url(Client, AgentId, TaskId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_task_response_url(Client, AgentId, TaskId, QueryMap, HeadersMap, []).
+
+-spec get_agent_task_response_url(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_task_response_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_task_response_url_errors(), tuple()}.
+get_agent_task_response_url(Client, AgentId, TaskId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/agentResponseUrl/", aws_util:encode_uri(AgentId), "/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

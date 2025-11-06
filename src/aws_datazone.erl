@@ -997,6 +997,7 @@
 %%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"projectProfileVersion">> => [string()],
+%%   <<"resourceTags">> => map(),
 %%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type update_project_input() :: #{binary() => any()}.
@@ -1123,6 +1124,7 @@
 
 %% Example:
 %% update_project_profile_output() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
@@ -1132,6 +1134,8 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type update_project_profile_output() :: #{binary() => any()}.
@@ -1426,6 +1430,7 @@
 
 %% Example:
 %% get_project_profile_output() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
@@ -1435,6 +1440,8 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type get_project_profile_output() :: #{binary() => any()}.
@@ -1762,6 +1769,15 @@
 
 
 %% Example:
+%% resource_tag_parameter() :: #{
+%%   <<"isValueEditable">> => [boolean()],
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type resource_tag_parameter() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_subscription_request_input() :: #{
 %%   <<"requestReason">> := string()
 %% }
@@ -1817,6 +1833,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectProfileId">> => string(),
 %%   <<"projectStatus">> => list(any()),
+%%   <<"resourceTags">> => list(resource_tag()),
 %%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type create_project_output() :: #{binary() => any()}.
@@ -2017,10 +2034,13 @@
 
 %% Example:
 %% update_project_profile_input() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
 %%   <<"description">> => string(),
 %%   <<"domainUnitIdentifier">> => string(),
 %%   <<"environmentConfigurations">> => list(environment_configuration()),
 %%   <<"name">> => string(),
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type update_project_profile_input() :: #{binary() => any()}.
@@ -4184,6 +4204,7 @@
 %%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> := string(),
 %%   <<"projectProfileId">> => string(),
+%%   <<"resourceTags">> => map(),
 %%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type create_project_input() :: #{binary() => any()}.
@@ -4484,6 +4505,15 @@
 
 
 %% Example:
+%% resource_tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"source">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type resource_tag() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_subscription_targets_output() :: #{
 %%   <<"items">> => list(subscription_target_summary()),
 %%   <<"nextToken">> => string()
@@ -4665,6 +4695,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectProfileId">> => string(),
 %%   <<"projectStatus">> => list(any()),
+%%   <<"resourceTags">> => list(resource_tag()),
 %%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type update_project_output() :: #{binary() => any()}.
@@ -5156,6 +5187,7 @@
 %%   <<"name">> => string(),
 %%   <<"projectProfileId">> => string(),
 %%   <<"projectStatus">> => list(any()),
+%%   <<"resourceTags">> => list(resource_tag()),
 %%   <<"userParameters">> => list(environment_configuration_user_parameter())
 %% }
 -type get_project_output() :: #{binary() => any()}.
@@ -5380,10 +5412,13 @@
 
 %% Example:
 %% create_project_profile_input() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
 %%   <<"description">> => string(),
 %%   <<"domainUnitIdentifier">> => string(),
 %%   <<"environmentConfigurations">> => list(environment_configuration()),
 %%   <<"name">> := string(),
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type create_project_profile_input() :: #{binary() => any()}.
@@ -5797,6 +5832,7 @@
 
 %% Example:
 %% create_project_profile_output() :: #{
+%%   <<"allowCustomProjectResourceTags">> => [boolean()],
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => string(),
 %%   <<"description">> => string(),
@@ -5806,6 +5842,8 @@
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
+%%   <<"projectResourceTags">> => list(resource_tag_parameter()),
+%%   <<"projectResourceTagsDescription">> => string(),
 %%   <<"status">> => list(any())
 %% }
 -type create_project_profile_output() :: #{binary() => any()}.

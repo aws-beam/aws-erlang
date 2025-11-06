@@ -7471,7 +7471,7 @@
 
 %% Example:
 %% create_training_job_request() :: #{
-%%   <<"AlgorithmSpecification">> := algorithm_specification(),
+%%   <<"AlgorithmSpecification">> => algorithm_specification(),
 %%   <<"CheckpointConfig">> => checkpoint_config(),
 %%   <<"DebugHookConfig">> => debug_hook_config(),
 %%   <<"DebugRuleConfigurations">> => list(debug_rule_configuration()),
@@ -7487,7 +7487,7 @@
 %%   <<"ProfilerConfig">> => profiler_config(),
 %%   <<"ProfilerRuleConfigurations">> => list(profiler_rule_configuration()),
 %%   <<"RemoteDebugConfig">> => remote_debug_config(),
-%%   <<"ResourceConfig">> := resource_config(),
+%%   <<"ResourceConfig">> => resource_config(),
 %%   <<"RetryStrategy">> => retry_strategy(),
 %%   <<"RoleArn">> := string(),
 %%   <<"SessionChainingConfig">> => session_chaining_config(),
@@ -12705,6 +12705,7 @@
 
 %% Example:
 %% cluster_instance_group_details() :: #{
+%%   <<"ActiveSoftwareUpdateConfig">> => deployment_configuration(),
 %%   <<"CurrentCount">> => integer(),
 %%   <<"CurrentImageId">> => string(),
 %%   <<"DesiredImageId">> => string(),
@@ -12716,8 +12717,10 @@
 %%   <<"OnStartDeepHealthChecks">> => list(list(any())()),
 %%   <<"OverrideVpcConfig">> => vpc_config(),
 %%   <<"ScheduledUpdateConfig">> => scheduled_update_config(),
+%%   <<"SoftwareUpdateStatus">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"TargetCount">> => integer(),
+%%   <<"TargetStateCount">> => integer(),
 %%   <<"ThreadsPerCore">> => integer(),
 %%   <<"TrainingPlanArn">> => string(),
 %%   <<"TrainingPlanStatus">> => string()

@@ -741,6 +741,7 @@
 %% Example:
 %% self_managed_active_directory_attributes() :: #{
 %%   <<"DnsIps">> => list(string()),
+%%   <<"DomainJoinServiceAccountSecret">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"FileSystemAdministratorsGroup">> => string(),
 %%   <<"OrganizationalUnitDistinguishedName">> => string(),
@@ -808,6 +809,7 @@
 %% Example:
 %% self_managed_active_directory_configuration_updates() :: #{
 %%   <<"DnsIps">> => list(string()),
+%%   <<"DomainJoinServiceAccountSecret">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"FileSystemAdministratorsGroup">> => string(),
 %%   <<"OrganizationalUnitDistinguishedName">> => string(),
@@ -1794,6 +1796,7 @@
 %% Example:
 %% self_managed_active_directory_configuration() :: #{
 %%   <<"DnsIps">> => list(string()),
+%%   <<"DomainJoinServiceAccountSecret">> => string(),
 %%   <<"DomainName">> => string(),
 %%   <<"FileSystemAdministratorsGroup">> => string(),
 %%   <<"OrganizationalUnitDistinguishedName">> => string(),
