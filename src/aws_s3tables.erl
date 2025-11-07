@@ -81,6 +81,9 @@
          list_tables/2,
          list_tables/4,
          list_tables/5,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_table_bucket_encryption/3,
          put_table_bucket_encryption/4,
          put_table_bucket_maintenance_configuration/4,
@@ -93,6 +96,10 @@
          put_table_policy/6,
          rename_table/5,
          rename_table/6,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_table_metadata_location/5,
          update_table_metadata_location/6]).
 
@@ -130,6 +137,13 @@
 
 
 %% Example:
+%% tag_resource_request() :: #{
+%%   <<"tags">> := map()
+%% }
+-type tag_resource_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% iceberg_snapshot_management_settings() :: #{
 %%   <<"maxSnapshotAgeHours">> => integer(),
 %%   <<"minSnapshotsToKeep">> => integer()
@@ -161,6 +175,10 @@
 %%   <<"resourcePolicy">> => string()
 %% }
 -type get_table_bucket_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_response() :: #{}
+-type untag_resource_response() :: #{}.
 
 
 %% Example:
@@ -260,7 +278,8 @@
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"format">> := list(any()),
 %%   <<"metadata">> => list(),
-%%   <<"name">> := string()
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_table_request() :: #{binary() => any()}.
 
@@ -301,6 +320,13 @@
 %% Example:
 %% get_table_bucket_encryption_request() :: #{}
 -type get_table_bucket_encryption_request() :: #{}.
+
+
+%% Example:
+%% untag_resource_request() :: #{
+%%   <<"tagKeys">> := list(string())
+%% }
+-type untag_resource_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -407,6 +433,13 @@
 %% }
 -type create_table_bucket_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_tags_for_resource_response() :: #{
+%%   <<"tags">> => map()
+%% }
+-type list_tags_for_resource_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_table_bucket_request() :: #{}
 -type get_table_bucket_request() :: #{}.
@@ -419,7 +452,8 @@
 %% Example:
 %% create_table_bucket_request() :: #{
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
-%%   <<"name">> := string()
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
 %% }
 -type create_table_bucket_request() :: #{binary() => any()}.
 
@@ -475,6 +509,10 @@
 %% }
 -type schema_field() :: #{binary() => any()}.
 
+%% Example:
+%% tag_resource_response() :: #{}
+-type tag_resource_response() :: #{}.
+
 
 %% Example:
 %% create_namespace_response() :: #{
@@ -498,6 +536,10 @@
 %%   <<"targetFileSizeMB">> => integer()
 %% }
 -type iceberg_compaction_settings() :: #{binary() => any()}.
+
+%% Example:
+%% list_tags_for_resource_request() :: #{}
+-type list_tags_for_resource_request() :: #{}.
 
 
 %% Example:
@@ -803,6 +845,14 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type list_tags_for_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type put_table_bucket_encryption_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -844,6 +894,22 @@
     forbidden_exception().
 
 -type rename_table_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type tag_resource_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type untag_resource_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
@@ -923,6 +989,9 @@ create_namespace(Client, TableBucketARN, Input0, Options0) ->
 %% request parameter you must have the `s3tables:PutTableEncryption'
 %% permission.
 %%
+%% You must have the `s3tables:TagResource' permission in addition to
+%% `s3tables:CreateTable' permission to create a table with tags.
+%%
 %% Additionally, If you choose SSE-KMS encryption you must grant the S3
 %% Tables maintenance principal access to your KMS key. For more information,
 %% see Permissions requirements for S3 Tables SSE-KMS encryption:
@@ -972,6 +1041,10 @@ create_table(Client, Namespace, TableBucketARN, Input0, Options0) ->
 %% If you use this operation with the optional `encryptionConfiguration'
 %% parameter you must have the `s3tables:PutTableBucketEncryption'
 %% permission.
+%%
+%% You must have the `s3tables:TagResource' permission in addition to
+%% `s3tables:CreateTableBucket' permission to create a table bucket with
+%% tags.
 -spec create_table_bucket(aws_client:aws_client(), create_table_bucket_request()) ->
     {ok, create_table_bucket_response(), tuple()} |
     {error, any()} |
@@ -1885,6 +1958,54 @@ list_tables(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all of the tags applied to a specified Amazon S3 Tables
+%% resource.
+%%
+%% Each tag is a label consisting of a key and value pair. Tags can help you
+%% organize, track costs for, and control access to resources.
+%%
+%% For a list of S3 resources that support tagging, see Managing tags for
+%% Amazon S3 resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#manage-tags.
+%%
+%% Permissions For tables and table buckets, you must have the
+%% `s3tables:ListTagsForResource' permission to use this operation.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_response(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tag/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Sets the encryption configuration for a table bucket.
 %%
 %% Permissions You must have the `s3tables:PutTableBucketEncryption'
@@ -1971,7 +2092,7 @@ put_table_bucket_maintenance_configuration(Client, TableBucketARN, Type, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new maintenance configuration or replaces an existing table
+%% @doc Creates a new table bucket policy or replaces an existing table
 %% bucket policy for a table bucket.
 %%
 %% For more information, see Adding a table bucket policy:
@@ -2056,8 +2177,8 @@ put_table_maintenance_configuration(Client, Name, Namespace, TableBucketARN, Typ
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new maintenance configuration or replaces an existing table
-%% policy for a table.
+%% @doc Creates a new table policy or replaces an existing table policy for a
+%% table.
 %%
 %% For more information, see Adding a table policy:
 %% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-table-policy.html#table-policy-add
@@ -2137,6 +2258,97 @@ rename_table(Client, Name, Namespace, TableBucketARN, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Applies one or more user-defined tags to an Amazon S3 Tables resource
+%% or updates existing tags.
+%%
+%% Each tag is a label consisting of a key and value pair. Tags can help you
+%% organize, track costs for, and control access to your resources. You can
+%% add up to 50 tags for each S3 resource.
+%%
+%% For a list of S3 resources that support tagging, see Managing tags for
+%% Amazon S3 resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#manage-tags.
+%%
+%% Permissions For tables and table buckets, you must have the
+%% `s3tables:TagResource' permission to use this operation.
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request(), proplists:proplist()) ->
+    {ok, tag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tag/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the specified user-defined tags from an Amazon S3 Tables
+%% resource.
+%%
+%% You can pass one or more tag keys.
+%%
+%% For a list of S3 resources that support tagging, see Managing tags for
+%% Amazon S3 resources:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/tagging.html#manage-tags.
+%%
+%% Permissions For tables and table buckets, you must have the
+%% `s3tables:UntagResource' permission to use this operation.
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request(), proplists:proplist()) ->
+    {ok, untag_resource_response(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tag/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the metadata location for a table.

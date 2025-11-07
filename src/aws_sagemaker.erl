@@ -1227,7 +1227,8 @@
 %%   <<"DomainId">> := string(),
 %%   <<"DomainSettingsForUpdate">> => domain_settings_for_update(),
 %%   <<"SubnetIds">> => list(string()),
-%%   <<"TagPropagation">> => list(any())
+%%   <<"TagPropagation">> => list(any()),
+%%   <<"VpcId">> => string()
 %% }
 -type update_domain_request() :: #{binary() => any()}.
 
@@ -4320,6 +4321,7 @@
 %%   <<"ClusterRole">> => string(),
 %%   <<"InstanceGroups">> => list(cluster_instance_group_specification()),
 %%   <<"InstanceGroupsToDelete">> => list(string()),
+%%   <<"NodeProvisioningMode">> => list(any()),
 %%   <<"NodeRecovery">> => list(any()),
 %%   <<"RestrictedInstanceGroups">> => list(cluster_restricted_instance_group_specification()),
 %%   <<"TieredStorageConfig">> => cluster_tiered_storage_config()

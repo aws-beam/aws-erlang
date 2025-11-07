@@ -50,9 +50,12 @@
 -include_lib("hackney/include/hackney_lib.hrl").
 
 
+
 %% Example:
-%% create_index_output() :: #{}
--type create_index_output() :: #{}.
+%% create_index_output() :: #{
+%%   <<"indexArn">> => string()
+%% }
+-type create_index_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -99,6 +102,13 @@
 %%   <<"vectors">> => list(get_output_vector())
 %% }
 -type get_vectors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% request_timeout_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type request_timeout_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -189,6 +199,7 @@
 
 %% Example:
 %% query_vectors_output() :: #{
+%%   <<"distanceMetric">> => list(any()),
 %%   <<"vectors">> => list(query_output_vector())
 %% }
 -type query_vectors_output() :: #{binary() => any()}.
@@ -269,9 +280,12 @@
 %% put_vector_bucket_policy_output() :: #{}
 -type put_vector_bucket_policy_output() :: #{}.
 
+
 %% Example:
-%% create_vector_bucket_output() :: #{}
--type create_vector_bucket_output() :: #{}.
+%% create_vector_bucket_output() :: #{
+%%   <<"vectorBucketArn">> => string()
+%% }
+-type create_vector_bucket_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -493,10 +507,12 @@
 -type create_index_errors() ::
     service_unavailable_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type create_vector_bucket_errors() ::
     service_unavailable_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type delete_index_errors() ::
@@ -562,6 +578,7 @@
     kms_not_found_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
+    service_quota_exceeded_exception() | 
     kms_disabled_exception().
 
 -type query_vectors_errors() ::

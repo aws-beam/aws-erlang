@@ -4972,6 +4972,12 @@
 -type describe_document_permission_request() :: #{binary() => any()}.
 
 %% Example:
+%% no_longer_supported_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type no_longer_supported_exception() :: #{binary() => any()}.
+
+%% Example:
 %% patch_baseline_identity() :: #{
 %%   <<"BaselineDescription">> => string(),
 %%   <<"BaselineId">> => string(),
@@ -5581,6 +5587,7 @@
     invalid_target().
 
 -type create_document_errors() ::
+    no_longer_supported_exception() | 
     document_limit_exceeded() | 
     too_many_updates() | 
     internal_server_error() | 
@@ -6249,6 +6256,7 @@
     invalid_target().
 
 -type start_change_request_execution_errors() ::
+    no_longer_supported_exception() | 
     automation_definition_not_approved_exception() | 
     automation_definition_not_found_exception() | 
     automation_execution_limit_exceeded_exception() | 
@@ -8787,8 +8795,19 @@ list_compliance_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComplianceSummaries">>, Input, Options).
 
-%% @doc Information about approval reviews for a version of a change template
-%% in Change Manager.
+%% @doc
+%% Amazon Web Services Systems Manager Change Manager will no longer be open
+%% to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use Change Manager, sign up prior to that date.
+%% Existing customers can
+%% continue to use the service as normal. For more information, see
+%% Amazon Web Services Systems Manager Change Manager availability change:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html.
+%%
+%% Information about approval reviews for a version of a change template in
+%% Change Manager.
 -spec list_document_metadata_history(aws_client:aws_client(), list_document_metadata_history_request()) ->
     {ok, list_document_metadata_history_response(), tuple()} |
     {error, any()} |
@@ -9500,9 +9519,19 @@ start_automation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAutomationExecution">>, Input, Options).
 
-%% @doc Creates a change request for Change Manager.
+%% @doc
+%% Amazon Web Services Systems Manager Change Manager will no longer be open
+%% to new
+%% customers starting November 7, 2025.
 %%
-%% The Automation runbooks specified in the
+%% If you would like to use Change Manager, sign up prior to that date.
+%% Existing customers can
+%% continue to use the service as normal. For more information, see
+%% Amazon Web Services Systems Manager Change Manager availability change:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html.
+%%
+%% Creates a change request for Change Manager. The Automation runbooks
+%% specified in the
 %% change request run only after all required approvals for the change
 %% request have been
 %% received.
@@ -9750,8 +9779,19 @@ update_document_default_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDocumentDefaultVersion">>, Input, Options).
 
-%% @doc Updates information related to approval reviews for a specific
-%% version of a change template
+%% @doc
+%% Amazon Web Services Systems Manager Change Manager will no longer be open
+%% to new
+%% customers starting November 7, 2025.
+%%
+%% If you would like to use Change Manager, sign up prior to that date.
+%% Existing customers can
+%% continue to use the service as normal. For more information, see
+%% Amazon Web Services Systems Manager Change Manager availability change:
+%% https://docs.aws.amazon.com/systems-manager/latest/userguide/change-manager-availability-change.html.
+%%
+%% Updates information related to approval reviews for a specific version of
+%% a change template
 %% in Change Manager.
 -spec update_document_metadata(aws_client:aws_client(), update_document_metadata_request()) ->
     {ok, update_document_metadata_response(), tuple()} |

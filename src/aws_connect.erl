@@ -510,6 +510,8 @@
          search_agent_statuses/3,
          search_available_phone_numbers/2,
          search_available_phone_numbers/3,
+         search_contact_evaluations/2,
+         search_contact_evaluations/3,
          search_contact_flow_modules/2,
          search_contact_flow_modules/3,
          search_contact_flows/2,
@@ -518,6 +520,8 @@
          search_contacts/3,
          search_email_addresses/2,
          search_email_addresses/3,
+         search_evaluation_forms/2,
+         search_evaluation_forms/3,
          search_hours_of_operation_overrides/2,
          search_hours_of_operation_overrides/3,
          search_hours_of_operations/2,
@@ -774,6 +778,15 @@
 
 
 %% Example:
+%% evaluation_form_item_enablement_expression() :: #{
+%%   <<"Comparator">> => list(any()),
+%%   <<"Source">> => evaluation_form_item_enablement_source(),
+%%   <<"Values">> => list(evaluation_form_item_enablement_source_value())
+%% }
+-type evaluation_form_item_enablement_expression() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_default_vocabulary_request() :: #{
 %%   <<"VocabularyId">> => string()
 %% }
@@ -877,6 +890,7 @@
 
 %% Example:
 %% update_evaluation_form_request() :: #{
+%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"ClientToken">> => string(),
 %%   <<"CreateNewVersion">> => boolean(),
 %%   <<"Description">> => string(),
@@ -893,6 +907,22 @@
 %%   <<"ContactId">> => string()
 %% }
 -type start_outbound_email_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contact_evaluations_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"EvaluationSearchSummaryList">> => list(evaluation_search_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_contact_evaluations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_question_automation_answer_source() :: #{
+%%   <<"SourceType">> => list(any())
+%% }
+-type evaluation_form_question_automation_answer_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1377,6 +1407,13 @@
 
 
 %% Example:
+%% evaluation_suggested_answer_transcript_millisecond_offsets() :: #{
+%%   <<"BeginOffsetMillis">> => integer()
+%% }
+-type evaluation_suggested_answer_transcript_millisecond_offsets() :: #{binary() => any()}.
+
+
+%% Example:
 %% predefined_attribute_configuration() :: #{
 %%   <<"EnableValueValidationOnAssociation">> => boolean(),
 %%   <<"IsReadOnly">> => boolean()
@@ -1540,12 +1577,26 @@
 
 
 %% Example:
+%% evaluation_form_auto_evaluation_configuration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type evaluation_form_auto_evaluation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_flow_association_response() :: #{
 %%   <<"FlowId">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceType">> => list(any())
 %% }
 -type get_flow_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_text_question_automation() :: #{
+%%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source()
+%% }
+-type evaluation_form_text_question_automation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2554,6 +2605,14 @@
 %% }
 -type queue() :: #{binary() => any()}.
 
+
+%% Example:
+%% evaluation_form_item_enablement_source_value() :: #{
+%%   <<"RefId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type evaluation_form_item_enablement_source_value() :: #{binary() => any()}.
+
 %% Example:
 %% delete_email_address_request() :: #{}
 -type delete_email_address_request() :: #{}.
@@ -2734,11 +2793,28 @@
 
 
 %% Example:
+%% evaluation_automation_rule_category() :: #{
+%%   <<"Category">> => string(),
+%%   <<"Condition">> => list(any()),
+%%   <<"PointsOfInterest">> => list(evaluation_transcript_point_of_interest())
+%% }
+-type evaluation_automation_rule_category() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_contacts_additional_time_range_criteria() :: #{
 %%   <<"TimeRange">> => search_contacts_time_range(),
 %%   <<"TimestampCondition">> => search_contacts_timestamp_condition()
 %% }
 -type search_contacts_additional_time_range_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% boolean_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string()
+%% }
+-type boolean_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2821,6 +2897,7 @@
 
 %% Example:
 %% evaluation_answer_output() :: #{
+%%   <<"SuggestedAnswers">> => list(evaluation_suggested_answer()),
 %%   <<"SystemSuggestedValue">> => list(),
 %%   <<"Value">> => list()
 %% }
@@ -2915,6 +2992,14 @@
 
 
 %% Example:
+%% auto_evaluation_details() :: #{
+%%   <<"AutoEvaluationEnabled">> => boolean(),
+%%   <<"AutoEvaluationStatus">> => list(any())
+%% }
+-type auto_evaluation_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% email_address_search_criteria() :: #{
 %%   <<"AndConditions">> => list(email_address_search_criteria()),
 %%   <<"OrConditions">> => list(email_address_search_criteria()),
@@ -2995,6 +3080,13 @@
 %%   <<"Name">> => string()
 %% }
 -type email_message_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_text_question_properties() :: #{
+%%   <<"Automation">> => evaluation_form_text_question_automation()
+%% }
+-type evaluation_form_text_question_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3111,7 +3203,8 @@
 %% Example:
 %% update_contact_evaluation_request() :: #{
 %%   <<"Answers">> => map(),
-%%   <<"Notes">> => map()
+%%   <<"Notes">> => map(),
+%%   <<"UpdatedBy">> => list()
 %% }
 -type update_contact_evaluation_request() :: #{binary() => any()}.
 
@@ -3187,6 +3280,22 @@
 %%   <<"OutboundEmailAddressId">> => string()
 %% }
 -type outbound_email_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_evaluation_forms_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"EvaluationFormSearchSummaryList">> => list(evaluation_form_search_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_evaluation_forms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type evaluation_form_search_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3526,6 +3635,13 @@
 
 
 %% Example:
+%% auto_evaluation_configuration() :: #{
+%%   <<"Enabled">> => boolean()
+%% }
+-type auto_evaluation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_view_version_request() :: #{
 %%   <<"VersionDescription">> => string(),
 %%   <<"ViewContentSha256">> => string()
@@ -3687,6 +3803,14 @@
 %%   <<"PromptId">> => string()
 %% }
 -type create_prompt_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_item_enablement_source() :: #{
+%%   <<"RefId">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type evaluation_form_item_enablement_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3941,6 +4065,7 @@
 
 %% Example:
 %% evaluation_form() :: #{
+%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"CreatedBy">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -3965,6 +4090,16 @@
 %%   <<"Id">> => string()
 %% }
 -type real_time_contact_analysis_transcript_item_with_character_offsets() :: #{binary() => any()}.
+
+
+%% Example:
+%% date_time_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"MaxValue">> => string(),
+%%   <<"MinValue">> => string()
+%% }
+-type date_time_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4132,6 +4267,17 @@
 %% }
 -type hierarchy_level() :: #{binary() => any()}.
 
+
+%% Example:
+%% search_evaluation_forms_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => evaluation_form_search_criteria(),
+%%   <<"SearchFilter">> => evaluation_form_search_filter()
+%% }
+-type search_evaluation_forms_request() :: #{binary() => any()}.
+
 %% Example:
 %% describe_view_request() :: #{}
 -type describe_view_request() :: #{}.
@@ -4180,10 +4326,12 @@
 
 %% Example:
 %% create_evaluation_form_request() :: #{
+%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Items">> := list(list()),
 %%   <<"ScoringStrategy">> => evaluation_form_scoring_strategy(),
+%%   <<"Tags">> => map(),
 %%   <<"Title">> := string()
 %% }
 -type create_evaluation_form_request() :: #{binary() => any()}.
@@ -4274,6 +4422,14 @@
 %%   <<"SourceType">> => list(any())
 %% }
 -type integration_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_gen_a_i_answer_analysis_details() :: #{
+%%   <<"Justification">> => string(),
+%%   <<"PointsOfInterest">> => list(evaluation_transcript_point_of_interest())
+%% }
+-type evaluation_gen_a_i_answer_analysis_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4405,6 +4561,7 @@
 
 %% Example:
 %% evaluation_form_question() :: #{
+%%   <<"Enablement">> => evaluation_form_item_enablement_configuration(),
 %%   <<"Instructions">> => string(),
 %%   <<"NotApplicableEnabled">> => boolean(),
 %%   <<"QuestionType">> => list(any()),
@@ -4577,6 +4734,16 @@
 
 
 %% Example:
+%% decimal_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"FieldName">> => string(),
+%%   <<"MaxValue">> => float(),
+%%   <<"MinValue">> => float()
+%% }
+-type decimal_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_data_request() :: #{
 %%   <<"Attributes">> => map(),
 %%   <<"Campaign">> => campaign(),
@@ -4673,6 +4840,7 @@
 %% Example:
 %% evaluation_form_numeric_question_option() :: #{
 %%   <<"AutomaticFail">> => boolean(),
+%%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
 %%   <<"MaxValue">> => integer(),
 %%   <<"MinValue">> => integer(),
 %%   <<"Score">> => integer()
@@ -4944,6 +5112,24 @@
 %%   <<"State">> => list(any())
 %% }
 -type contact_flow_module_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_search_metadata() :: #{
+%%   <<"AcknowledgedBy">> => string(),
+%%   <<"AcknowledgedTime">> => non_neg_integer(),
+%%   <<"AcknowledgerComment">> => string(),
+%%   <<"AutoEvaluationEnabled">> => boolean(),
+%%   <<"AutoEvaluationStatus">> => list(any()),
+%%   <<"CalibrationSessionId">> => string(),
+%%   <<"ContactAgentId">> => string(),
+%%   <<"ContactId">> => string(),
+%%   <<"EvaluatorArn">> => string(),
+%%   <<"ScoreAutomaticFail">> => boolean(),
+%%   <<"ScoreNotApplicable">> => boolean(),
+%%   <<"ScorePercentage">> => float()
+%% }
+-type evaluation_search_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% associate_email_address_alias_response() :: #{}
@@ -5446,6 +5632,22 @@
 
 
 %% Example:
+%% evaluation_search_summary() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"EvaluationArn">> => string(),
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"EvaluationFormVersion">> => integer(),
+%%   <<"EvaluationId">> => string(),
+%%   <<"EvaluationType">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Metadata">> => evaluation_search_metadata(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type evaluation_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_analytics_data_lake_data_sets_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"Results">> => list(analytics_data_sets_result())
@@ -5778,6 +5980,7 @@
 %% Example:
 %% evaluation_form_single_select_question_option() :: #{
 %%   <<"AutomaticFail">> => boolean(),
+%%   <<"AutomaticFailConfiguration">> => automatic_fail_configuration(),
 %%   <<"RefId">> => string(),
 %%   <<"Score">> => integer(),
 %%   <<"Text">> => string()
@@ -5889,6 +6092,13 @@
 %%   <<"Attributes">> => map()
 %% }
 -type get_contact_attributes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_contact_lens_answer_analysis_details() :: #{
+%%   <<"MatchedRuleCategories">> => list(evaluation_automation_rule_category())
+%% }
+-type evaluation_contact_lens_answer_analysis_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6179,7 +6389,8 @@
 %% Example:
 %% submit_contact_evaluation_request() :: #{
 %%   <<"Answers">> => map(),
-%%   <<"Notes">> => map()
+%%   <<"Notes">> => map(),
+%%   <<"SubmittedBy">> => list()
 %% }
 -type submit_contact_evaluation_request() :: #{binary() => any()}.
 
@@ -6499,6 +6710,19 @@
 
 
 %% Example:
+%% evaluation_search_criteria() :: #{
+%%   <<"AndConditions">> => list(evaluation_search_criteria()),
+%%   <<"BooleanCondition">> => boolean_condition(),
+%%   <<"DateTimeCondition">> => date_time_condition(),
+%%   <<"DecimalCondition">> => decimal_condition(),
+%%   <<"NumberCondition">> => number_condition(),
+%%   <<"OrConditions">> => list(evaluation_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type evaluation_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_integration_associations_response() :: #{
 %%   <<"IntegrationAssociationSummaryList">> => list(integration_association_summary()),
 %%   <<"NextToken">> => string()
@@ -6545,10 +6769,28 @@
 
 
 %% Example:
+%% automatic_fail_configuration() :: #{
+%%   <<"TargetSection">> => string()
+%% }
+-type automatic_fail_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% disassociate_security_key_request() :: #{
 %%   <<"ClientToken">> => string()
 %% }
 -type disassociate_security_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_suggested_answer() :: #{
+%%   <<"AnalysisDetails">> => list(),
+%%   <<"AnalysisType">> => list(any()),
+%%   <<"Input">> => evaluation_question_input_details(),
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type evaluation_suggested_answer() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6568,6 +6810,13 @@
 
 
 %% Example:
+%% evaluation_search_filter() :: #{
+%%   <<"AttributeFilter">> => control_plane_attribute_filter()
+%% }
+-type evaluation_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% describe_instance_storage_config_request() :: #{
 %%   <<"ResourceType">> := list(any())
 %% }
@@ -6582,10 +6831,27 @@
 
 
 %% Example:
+%% evaluation_acknowledgement() :: #{
+%%   <<"AcknowledgedBy">> => string(),
+%%   <<"AcknowledgedTime">> => non_neg_integer(),
+%%   <<"AcknowledgerComment">> => string()
+%% }
+-type evaluation_acknowledgement() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_participant_role_config_request() :: #{
 %%   <<"ChannelConfiguration">> := list()
 %% }
 -type update_participant_role_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_transcript_point_of_interest() :: #{
+%%   <<"MillisecondOffsets">> => evaluation_suggested_answer_transcript_millisecond_offsets(),
+%%   <<"TranscriptSegment">> => string()
+%% }
+-type evaluation_transcript_point_of_interest() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7260,6 +7526,7 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"EvaluationArn">> => string(),
 %%   <<"EvaluationId">> => string(),
+%%   <<"EvaluationType">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Metadata">> => evaluation_metadata(),
 %%   <<"Notes">> => map(),
@@ -7319,6 +7586,9 @@
 
 %% Example:
 %% evaluation_metadata() :: #{
+%%   <<"Acknowledgement">> => evaluation_acknowledgement(),
+%%   <<"AutoEvaluation">> => auto_evaluation_details(),
+%%   <<"CalibrationSessionId">> => string(),
 %%   <<"ContactAgentId">> => string(),
 %%   <<"ContactId">> => string(),
 %%   <<"EvaluatorArn">> => string(),
@@ -7498,6 +7768,15 @@
 
 
 %% Example:
+%% evaluation_acknowledgement_summary() :: #{
+%%   <<"AcknowledgedBy">> => string(),
+%%   <<"AcknowledgedTime">> => non_neg_integer(),
+%%   <<"AcknowledgerComment">> => string()
+%% }
+-type evaluation_acknowledgement_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% step() :: #{
 %%   <<"Expiry">> => expiry(),
 %%   <<"Expression">> => expression(),
@@ -7627,6 +7906,15 @@
 
 
 %% Example:
+%% evaluation_form_item_enablement_configuration() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Condition">> => evaluation_form_item_enablement_condition(),
+%%   <<"DefaultAction">> => list(any())
+%% }
+-type evaluation_form_item_enablement_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_chat_contact_request() :: #{
 %%   <<"Attributes">> => map(),
 %%   <<"ChatDurationInMinutes">> => integer(),
@@ -7741,9 +8029,11 @@
 
 %% Example:
 %% start_contact_evaluation_request() :: #{
+%%   <<"AutoEvaluationConfiguration">> => auto_evaluation_configuration(),
 %%   <<"ClientToken">> => string(),
 %%   <<"ContactId">> := string(),
-%%   <<"EvaluationFormId">> := string()
+%%   <<"EvaluationFormId">> := string(),
+%%   <<"Tags">> => map()
 %% }
 -type start_contact_evaluation_request() :: #{binary() => any()}.
 
@@ -7763,6 +8053,14 @@
 %%   <<"TargetArn">> => string()
 %% }
 -type claimed_phone_number_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_item_enablement_condition() :: #{
+%%   <<"Operands">> => list(list()),
+%%   <<"Operator">> => list(any())
+%% }
+-type evaluation_form_item_enablement_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7801,11 +8099,16 @@
 
 %% Example:
 %% evaluation_summary() :: #{
+%%   <<"Acknowledgement">> => evaluation_acknowledgement_summary(),
+%%   <<"AutoEvaluationEnabled">> => boolean(),
+%%   <<"AutoEvaluationStatus">> => list(any()),
+%%   <<"CalibrationSessionId">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"EvaluationArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
 %%   <<"EvaluationFormTitle">> => string(),
 %%   <<"EvaluationId">> => string(),
+%%   <<"EvaluationType">> => list(any()),
 %%   <<"EvaluatorArn">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Score">> => evaluation_score(),
@@ -7847,6 +8150,7 @@
 
 %% Example:
 %% evaluation_form_single_select_question_automation() :: #{
+%%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source(),
 %%   <<"DefaultOptionRefId">> => string(),
 %%   <<"Options">> => list(list())
 %% }
@@ -7922,6 +8226,27 @@
 
 
 %% Example:
+%% evaluation_form_search_summary() :: #{
+%%   <<"ActiveVersion">> => integer(),
+%%   <<"AutoEvaluationEnabled">> => boolean(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"EvaluationFormArn">> => string(),
+%%   <<"EvaluationFormId">> => string(),
+%%   <<"LastActivatedBy">> => string(),
+%%   <<"LastActivatedTime">> => non_neg_integer(),
+%%   <<"LastModifiedBy">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LatestVersion">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Title">> => string()
+%% }
+-type evaluation_form_search_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_views_response() :: #{
 %%   <<"NextToken">> => string(),
 %%   <<"ViewsSummaryList">> => list(view_summary())
@@ -7934,6 +8259,13 @@
 %%   <<"Message">> => string()
 %% }
 -type duplicate_resource_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_question_input_details() :: #{
+%%   <<"TranscriptType">> => list(any())
+%% }
+-type evaluation_question_input_details() :: #{binary() => any()}.
 
 %% Example:
 %% delete_hours_of_operation_request() :: #{}
@@ -7973,6 +8305,18 @@
 %%   <<"Message">> => string()
 %% }
 -type resource_conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_search_criteria() :: #{
+%%   <<"AndConditions">> => list(evaluation_form_search_criteria()),
+%%   <<"BooleanCondition">> => boolean_condition(),
+%%   <<"DateTimeCondition">> => date_time_condition(),
+%%   <<"NumberCondition">> => number_condition(),
+%%   <<"OrConditions">> => list(evaluation_form_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type evaluation_form_search_criteria() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8121,6 +8465,17 @@
 %%   <<"Value">> => string()
 %% }
 -type date_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_contact_evaluations_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => evaluation_search_criteria(),
+%%   <<"SearchFilter">> => evaluation_search_filter()
+%% }
+-type search_contact_evaluations_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8291,6 +8646,7 @@
 
 %% Example:
 %% evaluation_form_content() :: #{
+%%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"EvaluationFormArn">> => string(),
 %%   <<"EvaluationFormId">> => string(),
@@ -9853,6 +10209,13 @@
     access_denied_exception() | 
     internal_service_exception().
 
+-type search_contact_evaluations_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
 -type search_contact_flow_modules_errors() ::
     throttling_exception() | 
     invalid_parameter_exception() | 
@@ -9878,6 +10241,13 @@
     throttling_exception() | 
     invalid_parameter_exception() | 
     access_denied_exception() | 
+    invalid_request_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception().
+
+-type search_evaluation_forms_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
     invalid_request_exception() | 
     resource_not_found_exception() | 
     internal_service_exception().
@@ -13937,7 +14307,7 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web ServicesSupport.
+%% request access to this API, contact Amazon Web Services Support.
 %%
 %% Describes the target authentication profile.
 -spec describe_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -16411,7 +16781,7 @@ get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
 %% then release 99, you
 %% will have exceeded the 200% limit. At that point you are blocked from
 %% claiming any more numbers
-%% until you open an Amazon Web ServicesSupport ticket.
+%% until you open an Amazon Web Services Support ticket.
 -spec import_phone_number(aws_client:aws_client(), import_phone_number_request()) ->
     {ok, import_phone_number_response(), tuple()} |
     {error, any()} |
@@ -16672,7 +17042,7 @@ list_associated_contacts(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web ServicesSupport.
+%% request access to this API, contact Amazon Web Services Support.
 %%
 %% Provides summary information about the authentication profiles in a
 %% specified Amazon Connect instance.
@@ -18932,7 +19302,7 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
 %% period for up to
 %% 180 days. It cannot be searched for or claimed again until the period has
 %% ended. If you
-%% accidentally release a phone number, contact Amazon Web ServicesSupport.
+%% accidentally release a phone number, contact Amazon Web Services Support.
 %%
 %% If you plan to claim and release numbers frequently,
 %% contact us for a service quota exception. Otherwise, it is possible you
@@ -19188,6 +19558,64 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches contact evaluations in an Amazon Connect instance, with
+%% optional filtering.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% Find contact evaluations by using specific search criteria.
+%%
+%% Find contact evaluations that are tagged with a specific set of tags.
+%%
+%% Important things to know
+%%
+%% A Search operation, unlike a List operation, takes time to index changes
+%% to resource
+%% (create, update or delete). If you don't see updated information for
+%% recently changed
+%% contact evaluations, try calling the API again in a few seconds. Contact
+%% Evaluations
+%% may not be fully backfilled with historical data in all regions yet,
+%% however all recently
+%% created Contact Evaluations should be available for search.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+-spec search_contact_evaluations(aws_client:aws_client(), search_contact_evaluations_request()) ->
+    {ok, search_contact_evaluations_response(), tuple()} |
+    {error, any()} |
+    {error, search_contact_evaluations_errors(), tuple()}.
+search_contact_evaluations(Client, Input) ->
+    search_contact_evaluations(Client, Input, []).
+
+-spec search_contact_evaluations(aws_client:aws_client(), search_contact_evaluations_request(), proplists:proplist()) ->
+    {ok, search_contact_evaluations_response(), tuple()} |
+    {error, any()} |
+    {error, search_contact_evaluations_errors(), tuple()}.
+search_contact_evaluations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-contact-evaluations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches the flow modules in an Amazon Connect instance, with
 %% optional filtering.
 -spec search_contact_flow_modules(aws_client:aws_client(), search_contact_flow_modules_request()) ->
@@ -19307,6 +19735,63 @@ search_email_addresses(Client, Input) ->
 search_email_addresses(Client, Input0, Options0) ->
     Method = post,
     Path = ["/search-email-addresses"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches evaluation forms in an Amazon Connect instance, with
+%% optional filtering.
+%%
+%% Use cases
+%%
+%% Following are common uses cases for this API:
+%%
+%% List all evaluation forms in an instance.
+%%
+%% Find all evaluation forms that meet specific criteria, such as Title,
+%% Description, Status, and more.
+%%
+%% Find all evaluation forms that are tagged with a specific set of tags.
+%%
+%% Important things to know
+%%
+%% A Search operation, unlike a List operation, takes time to index changes
+%% to resource
+%% (create, update or delete). If you don't see updated information for
+%% recently changed
+%% contact evaluations, try calling the API again in a few seconds.
+%%
+%% Endpoints: See Amazon Connect endpoints and
+%% quotas: https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+-spec search_evaluation_forms(aws_client:aws_client(), search_evaluation_forms_request()) ->
+    {ok, search_evaluation_forms_response(), tuple()} |
+    {error, any()} |
+    {error, search_evaluation_forms_errors(), tuple()}.
+search_evaluation_forms(Client, Input) ->
+    search_evaluation_forms(Client, Input, []).
+
+-spec search_evaluation_forms(aws_client:aws_client(), search_evaluation_forms_request(), proplists:proplist()) ->
+    {ok, search_evaluation_forms_response(), tuple()} |
+    {error, any()} |
+    {error, search_evaluation_forms_errors(), tuple()}.
+search_evaluation_forms(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-evaluation-forms"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -19967,7 +20452,7 @@ start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
 %% error, your
 %% account may not support the ability to configure custom chat durations.
 %% For more information,
-%% contact Amazon Web ServicesSupport.
+%% contact Amazon Web Services Support.
 %%
 %% For more information about chat, see the following topics in the Amazon
 %% Connect
@@ -21016,7 +21501,7 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% To
-%% request access to this API, contact Amazon Web ServicesSupport.
+%% request access to this API, contact Amazon Web Services Support.
 %%
 %% Updates the selected authentication profile.
 -spec update_authentication_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_authentication_profile_request()) ->

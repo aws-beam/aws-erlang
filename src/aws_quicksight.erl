@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon QuickSight API Reference
+%% @doc Amazon Quick Suite API Reference
 %%
 %% Amazon Quick Sight is a fully managed, serverless business intelligence
 %% service for the
@@ -589,6 +589,14 @@
 
 
 %% Example:
+%% source_table() :: #{
+%%   <<"DataSet">> => parent_data_set(),
+%%   <<"PhysicalTableId">> => string()
+%% }
+-type source_table() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_point_drill_up_down_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
@@ -863,6 +871,19 @@
 
 
 %% Example:
+%% unpivot_operation() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"ColumnsToUnpivot">> => list(column_to_unpivot()),
+%%   <<"Source">> => transform_operation_source(),
+%%   <<"UnpivotedLabelColumnId">> => string(),
+%%   <<"UnpivotedLabelColumnName">> => string(),
+%%   <<"UnpivotedValueColumnId">> => string(),
+%%   <<"UnpivotedValueColumnName">> => string()
+%% }
+-type unpivot_operation() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_dashboard_response() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"CreationStatus">> => list(any()),
@@ -983,6 +1004,14 @@
 
 
 %% Example:
+%% table_path_element() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type table_path_element() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_point_menu_label_option() :: #{
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
@@ -1073,6 +1102,19 @@
 %%   <<"VersionDescription">> => string()
 %% }
 -type update_dashboard_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% join_operation() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"LeftOperand">> => transform_operation_source(),
+%%   <<"LeftOperandProperties">> => join_operand_properties(),
+%%   <<"OnClause">> => string(),
+%%   <<"RightOperand">> => transform_operation_source(),
+%%   <<"RightOperandProperties">> => join_operand_properties(),
+%%   <<"Type">> => list(any())
+%% }
+-type join_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1216,6 +1258,15 @@
 %% }
 -type snapshot_file_sheet_selection() :: #{binary() => any()}.
 
+
+%% Example:
+%% cast_column_types_operation() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"CastColumnTypeOperations">> => list(cast_column_type_operation()),
+%%   <<"Source">> => transform_operation_source()
+%% }
+-type cast_column_types_operation() :: #{binary() => any()}.
+
 %% Example:
 %% delete_account_subscription_request() :: #{}
 -type delete_account_subscription_request() :: #{}.
@@ -1241,7 +1292,9 @@
 
 %% Example:
 %% create_columns_operation() :: #{
-%%   <<"Columns">> => list(calculated_column())
+%%   <<"Alias">> => string(),
+%%   <<"Columns">> => list(calculated_column()),
+%%   <<"Source">> => transform_operation_source()
 %% }
 -type create_columns_operation() :: #{binary() => any()}.
 
@@ -1370,6 +1423,7 @@
 %% Example:
 %% upload_settings() :: #{
 %%   <<"ContainsHeader">> => boolean(),
+%%   <<"CustomCellAddressRange">> => string(),
 %%   <<"Delimiter">> => string(),
 %%   <<"Format">> => list(any()),
 %%   <<"StartFromRow">> => integer(),
@@ -1473,6 +1527,16 @@
 %% Example:
 %% describe_folder_request() :: #{}
 -type describe_folder_request() :: #{}.
+
+
+%% Example:
+%% data_set_numeric_range_filter_condition() :: #{
+%%   <<"IncludeMaximum">> => boolean(),
+%%   <<"IncludeMinimum">> => boolean(),
+%%   <<"RangeMaximum">> => data_set_numeric_filter_value(),
+%%   <<"RangeMinimum">> => data_set_numeric_filter_value()
+%% }
+-type data_set_numeric_range_filter_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1845,6 +1909,14 @@
 
 
 %% Example:
+%% pivot_configuration() :: #{
+%%   <<"LabelColumnName">> => string(),
+%%   <<"PivotedLabels">> => list(pivoted_label())
+%% }
+-type pivot_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% dashboard_version_definition() :: #{
 %%   <<"AnalysisDefaults">> => analysis_defaults(),
 %%   <<"CalculatedFields">> => list(calculated_field()),
@@ -2185,6 +2257,14 @@
 
 
 %% Example:
+%% row_level_permission_configuration() :: #{
+%%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
+%%   <<"TagConfiguration">> => row_level_permission_tag_configuration()
+%% }
+-type row_level_permission_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_import_job_theme_override_parameters() :: #{
 %%   <<"Name">> => string(),
 %%   <<"ThemeId">> => string()
@@ -2331,6 +2411,7 @@
 %%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()),
 %%   <<"ConsumedSpiceCapacityInBytes">> => float(),
 %%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"DataPrepConfiguration">> => data_prep_configuration(),
 %%   <<"DataSetId">> => string(),
 %%   <<"DataSetUsageConfiguration">> => data_set_usage_configuration(),
 %%   <<"DatasetParameters">> => list(dataset_parameter()),
@@ -2344,6 +2425,7 @@
 %%   <<"PhysicalTableMap">> => map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
 %%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
+%%   <<"SemanticModelConfiguration">> => semantic_model_configuration(),
 %%   <<"UseAs">> => list(any())
 %% }
 -type data_set() :: #{binary() => any()}.
@@ -2993,6 +3075,7 @@
 
 %% Example:
 %% input_column() :: #{
+%%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"SubType">> => list(any()),
 %%   <<"Type">> => list(any())
@@ -3036,6 +3119,14 @@
 %%   <<"MinMax">> => axis_display_min_max_range()
 %% }
 -type axis_display_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% import_table_operation() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"Source">> => import_table_operation_source()
+%% }
+-type import_table_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3238,6 +3329,14 @@
 
 
 %% Example:
+%% destination_table() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"Source">> => destination_table_source()
+%% }
+-type destination_table() :: #{binary() => any()}.
+
+
+%% Example:
 %% global_table_border_options() :: #{
 %%   <<"SideSpecificBorder">> => table_side_border_options(),
 %%   <<"UniformBorder">> => table_border_options()
@@ -3271,10 +3370,25 @@
 
 
 %% Example:
+%% data_set_string_list_filter_condition() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Values">> => data_set_string_list_filter_value()
+%% }
+-type data_set_string_list_filter_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% histogram_field_wells() :: #{
 %%   <<"HistogramAggregatedFieldWells">> => histogram_aggregated_field_wells()
 %% }
 -type histogram_field_wells() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_date_filter_value() :: #{
+%%   <<"StaticValue">> => non_neg_integer()
+%% }
+-type data_set_date_filter_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3413,6 +3527,22 @@
 
 
 %% Example:
+%% data_prep_simple_aggregation_function() :: #{
+%%   <<"FunctionType">> => list(any()),
+%%   <<"InputColumnName">> => string()
+%% }
+-type data_prep_simple_aggregation_function() :: #{binary() => any()}.
+
+
+%% Example:
+%% appended_column() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"NewColumnId">> => string()
+%% }
+-type appended_column() :: #{binary() => any()}.
+
+
+%% Example:
 %% scroll_bar_options() :: #{
 %%   <<"Visibility">> => list(any()),
 %%   <<"VisibleRange">> => visible_range_options()
@@ -3542,6 +3672,15 @@
 %%   <<"Namespace">> := string()
 %% }
 -type update_application_with_token_exchange_grant_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% pivoted_label() :: #{
+%%   <<"LabelName">> => string(),
+%%   <<"NewColumnId">> => string(),
+%%   <<"NewColumnName">> => string()
+%% }
+-type pivoted_label() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3789,6 +3928,14 @@
 %%   <<"ShapeKeyField">> => string()
 %% }
 -type geospatial_layer_join_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_prep_aggregation_function() :: #{
+%%   <<"ListAggregation">> => data_prep_list_aggregation_function(),
+%%   <<"SimpleAggregation">> => data_prep_simple_aggregation_function()
+%% }
+-type data_prep_aggregation_function() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4373,6 +4520,15 @@
 %%   <<"ArcThickness">> => list(any())
 %% }
 -type arc_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% saa_s_table() :: #{
+%%   <<"DataSourceArn">> => string(),
+%%   <<"InputColumns">> => list(input_column()),
+%%   <<"TablePath">> => list(table_path_element())
+%% }
+-type saa_s_table() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5190,6 +5346,15 @@
 %% }
 -type filled_map_conditional_formatting_option() :: #{binary() => any()}.
 
+
+%% Example:
+%% filters_operation() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"FilterOperations">> => list(filter_operation()),
+%%   <<"Source">> => transform_operation_source()
+%% }
+-type filters_operation() :: #{binary() => any()}.
+
 %% Example:
 %% describe_data_set_request() :: #{}
 -type describe_data_set_request() :: #{}.
@@ -5517,6 +5682,13 @@
 
 
 %% Example:
+%% semantic_model_configuration() :: #{
+%%   <<"TableMap">> => map()
+%% }
+-type semantic_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% analysis_search_filter() :: #{
 %%   <<"Name">> => list(any()),
 %%   <<"Operator">> => list(any()),
@@ -5543,6 +5715,14 @@
 %%   <<"StaticFileId">> => string()
 %% }
 -type sheet_image_static_file_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_column_id_mapping() :: #{
+%%   <<"SourceColumnId">> => string(),
+%%   <<"TargetColumnId">> => string()
+%% }
+-type data_set_column_id_mapping() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5599,6 +5779,15 @@
 %%   <<"TemplateId">> => string()
 %% }
 -type describe_template_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_numeric_filter_condition() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"ComparisonFilterCondition">> => data_set_numeric_comparison_filter_condition(),
+%%   <<"RangeFilterCondition">> => data_set_numeric_range_filter_condition()
+%% }
+-type data_set_numeric_filter_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5692,6 +5881,7 @@
 %% create_data_set_request() :: #{
 %%   <<"ColumnGroups">> => list(column_group()),
 %%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()),
+%%   <<"DataPrepConfiguration">> => data_prep_configuration(),
 %%   <<"DataSetId">> := string(),
 %%   <<"DataSetUsageConfiguration">> => data_set_usage_configuration(),
 %%   <<"DatasetParameters">> => list(dataset_parameter()),
@@ -5705,6 +5895,7 @@
 %%   <<"PhysicalTableMap">> := map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
 %%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
+%%   <<"SemanticModelConfiguration">> => semantic_model_configuration(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"UseAs">> => list(any())
 %% }
@@ -5726,7 +5917,10 @@
 
 %% Example:
 %% filter_operation() :: #{
-%%   <<"ConditionExpression">> => string()
+%%   <<"ConditionExpression">> => string(),
+%%   <<"DateFilterCondition">> => data_set_date_filter_condition(),
+%%   <<"NumericFilterCondition">> => data_set_numeric_filter_condition(),
+%%   <<"StringFilterCondition">> => data_set_string_filter_condition()
 %% }
 -type filter_operation() :: #{binary() => any()}.
 
@@ -5853,6 +6047,14 @@
 
 
 %% Example:
+%% column_to_unpivot() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"NewValue">> => string()
+%% }
+-type column_to_unpivot() :: #{binary() => any()}.
+
+
+%% Example:
 %% filled_map_sort_configuration() :: #{
 %%   <<"CategorySort">> => list(field_sort_options())
 %% }
@@ -5902,6 +6104,13 @@
 %%   <<"MapZoomMode">> => list(any())
 %% }
 -type geospatial_window_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_table_source() :: #{
+%%   <<"TransformOperationId">> => string()
+%% }
+-type destination_table_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6072,6 +6281,15 @@
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type visual_menu_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_prep_configuration() :: #{
+%%   <<"DestinationTableMap">> => map(),
+%%   <<"SourceTableMap">> => map(),
+%%   <<"TransformStepMap">> => map()
+%% }
+-type data_prep_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6317,7 +6535,9 @@
 
 %% Example:
 %% project_operation() :: #{
-%%   <<"ProjectedColumns">> => list(string())
+%%   <<"Alias">> => string(),
+%%   <<"ProjectedColumns">> => list(string()),
+%%   <<"Source">> => transform_operation_source()
 %% }
 -type project_operation() :: #{binary() => any()}.
 
@@ -6396,6 +6616,14 @@
 %%   <<"PageBreakConfiguration">> => body_section_repeat_page_break_configuration()
 %% }
 -type body_section_repeat_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_numeric_comparison_filter_condition() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => data_set_numeric_filter_value()
+%% }
+-type data_set_numeric_comparison_filter_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6771,6 +6999,7 @@
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
+%%   <<"RowLevelPermissionDataSetMap">> => map(),
 %%   <<"RowLevelPermissionTagConfigurationApplied">> => boolean(),
 %%   <<"UseAs">> => list(any())
 %% }
@@ -7195,6 +7424,15 @@
 %%   <<"BrandArn">> := string()
 %% }
 -type update_brand_assignment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_date_filter_condition() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"ComparisonFilterCondition">> => data_set_date_comparison_filter_condition(),
+%%   <<"RangeFilterCondition">> => data_set_date_range_filter_condition()
+%% }
+-type data_set_date_filter_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7925,6 +8163,13 @@
 %% }
 -type data_point_tooltip_option() :: #{binary() => any()}.
 
+
+%% Example:
+%% data_set_string_filter_value() :: #{
+%%   <<"StaticValue">> => string()
+%% }
+-type data_set_string_filter_value() :: #{binary() => any()}.
+
 %% Example:
 %% describe_dashboard_snapshot_job_result_request() :: #{}
 -type describe_dashboard_snapshot_job_result_request() :: #{}.
@@ -7994,6 +8239,14 @@
 
 
 %% Example:
+%% data_set_string_comparison_filter_condition() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => data_set_string_filter_value()
+%% }
+-type data_set_string_comparison_filter_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% table_side_border_options() :: #{
 %%   <<"Bottom">> => table_border_options(),
 %%   <<"InnerHorizontal">> => table_border_options(),
@@ -8032,6 +8285,15 @@
 %%   <<"UserExperienceVersion">> => list(any())
 %% }
 -type topic_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_prep_list_aggregation_function() :: #{
+%%   <<"Distinct">> => boolean(),
+%%   <<"InputColumnName">> => string(),
+%%   <<"Separator">> => string()
+%% }
+-type data_prep_list_aggregation_function() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8648,6 +8910,14 @@
 
 
 %% Example:
+%% data_set_date_comparison_filter_condition() :: #{
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => data_set_date_filter_value()
+%% }
+-type data_set_date_comparison_filter_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_dashboards_q_a_configuration_request() :: #{
 %%   <<"DashboardsQAStatus">> := list(any())
 %% }
@@ -8889,6 +9159,13 @@
 
 
 %% Example:
+%% value_column_configuration() :: #{
+%%   <<"AggregationFunction">> => data_prep_aggregation_function()
+%% }
+-type value_column_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% cast_column_type_operation() :: #{
 %%   <<"ColumnName">> => string(),
 %%   <<"Format">> => string(),
@@ -8918,6 +9195,16 @@
 %%   <<"SymbolStyle">> => geospatial_null_symbol_style()
 %% }
 -type geospatial_null_data_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% append_operation() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"AppendedColumns">> => list(appended_column()),
+%%   <<"FirstSource">> => transform_operation_source(),
+%%   <<"SecondSource">> => transform_operation_source()
+%% }
+-type append_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9257,6 +9544,14 @@
 %% }
 -type bar_chart_field_wells() :: #{binary() => any()}.
 
+
+%% Example:
+%% invalid_data_set_parameter_value_exception() :: #{
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type invalid_data_set_parameter_value_exception() :: #{binary() => any()}.
+
 %% Example:
 %% delete_folder_membership_request() :: #{}
 -type delete_folder_membership_request() :: #{}.
@@ -9573,6 +9868,16 @@
 
 
 %% Example:
+%% data_set_date_range_filter_condition() :: #{
+%%   <<"IncludeMaximum">> => boolean(),
+%%   <<"IncludeMinimum">> => boolean(),
+%%   <<"RangeMaximum">> => data_set_date_filter_value(),
+%%   <<"RangeMinimum">> => data_set_date_filter_value()
+%% }
+-type data_set_date_range_filter_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% date_time_value_when_unset_configuration() :: #{
 %%   <<"CustomValue">> => non_neg_integer(),
 %%   <<"ValueWhenUnsetOption">> => list(any())
@@ -9868,6 +10173,15 @@
 
 
 %% Example:
+%% aggregation() :: #{
+%%   <<"AggregationFunction">> => data_prep_aggregation_function(),
+%%   <<"NewColumnId">> => string(),
+%%   <<"NewColumnName">> => string()
+%% }
+-type aggregation() :: #{binary() => any()}.
+
+
+%% Example:
 %% chart_axis_label_options() :: #{
 %%   <<"AxisLabelOptions">> => list(axis_label_options()),
 %%   <<"SortIconVisibility">> => list(any()),
@@ -9927,6 +10241,16 @@
 %%   <<"Value">> => string()
 %% }
 -type plugin_visual_property() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregate_operation() :: #{
+%%   <<"Aggregations">> => list(aggregation()),
+%%   <<"Alias">> => string(),
+%%   <<"GroupByColumnNames">> => list(string()),
+%%   <<"Source">> => transform_operation_source()
+%% }
+-type aggregate_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10151,6 +10475,15 @@
 %%   <<"SheetId">> => string()
 %% }
 -type sheet() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_string_filter_condition() :: #{
+%%   <<"ColumnName">> => string(),
+%%   <<"ComparisonFilterCondition">> => data_set_string_comparison_filter_condition(),
+%%   <<"ListFilterCondition">> => data_set_string_list_filter_condition()
+%% }
+-type data_set_string_filter_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10625,6 +10958,14 @@
 
 
 %% Example:
+%% import_table_operation_source() :: #{
+%%   <<"ColumnIdMappings">> => list(data_set_column_id_mapping()),
+%%   <<"SourceTableId">> => string()
+%% }
+-type import_table_operation_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% user() :: #{
 %%   <<"Active">> => boolean(),
 %%   <<"Arn">> => string(),
@@ -10639,6 +10980,14 @@
 %%   <<"UserName">> => string()
 %% }
 -type user() :: #{binary() => any()}.
+
+
+%% Example:
+%% parent_data_set() :: #{
+%%   <<"DataSetArn">> => string(),
+%%   <<"InputColumns">> => list(input_column())
+%% }
+-type parent_data_set() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10867,6 +11216,20 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_refresh_schedules_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% join_operand_properties() :: #{
+%%   <<"OutputColumnNameOverrides">> => list(output_column_name_override())
+%% }
+-type join_operand_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% data_set_string_list_filter_value() :: #{
+%%   <<"StaticValues">> => list(string())
+%% }
+-type data_set_string_list_filter_value() :: #{binary() => any()}.
 
 %% Example:
 %% delete_group_request() :: #{}
@@ -11099,6 +11462,14 @@
 
 
 %% Example:
+%% transform_operation_source() :: #{
+%%   <<"ColumnIdMappings">> => list(data_set_column_id_mapping()),
+%%   <<"TransformOperationId">> => string()
+%% }
+-type transform_operation_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_bundle_import_job_data_set_override_permissions() :: #{
 %%   <<"DataSetIds">> => list(string()),
 %%   <<"Permissions">> => asset_bundle_resource_permissions()
@@ -11288,6 +11659,15 @@
 %% Example:
 %% describe_topic_refresh_schedule_request() :: #{}
 -type describe_topic_refresh_schedule_request() :: #{}.
+
+
+%% Example:
+%% rename_columns_operation() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"RenameColumnOperations">> => list(rename_column_operation()),
+%%   <<"Source">> => transform_operation_source()
+%% }
+-type rename_columns_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11499,6 +11879,17 @@
 
 
 %% Example:
+%% pivot_operation() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"GroupByColumnNames">> => list(string()),
+%%   <<"PivotConfiguration">> => pivot_configuration(),
+%%   <<"Source">> => transform_operation_source(),
+%%   <<"ValueColumnConfiguration">> => value_column_configuration()
+%% }
+-type pivot_operation() :: #{binary() => any()}.
+
+
+%% Example:
 %% total_options() :: #{
 %%   <<"CustomLabel">> => string(),
 %%   <<"Placement">> => list(any()),
@@ -11612,6 +12003,14 @@
 
 
 %% Example:
+%% output_column_name_override() :: #{
+%%   <<"OutputColumnName">> => string(),
+%%   <<"SourceColumnName">> => string()
+%% }
+-type output_column_name_override() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_permission() :: #{
 %%   <<"Actions">> => list(string()),
 %%   <<"Principal">> => string()
@@ -11681,6 +12080,23 @@
 %%   <<"RevokePermissions">> => list(resource_permission())
 %% }
 -type update_folder_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% transform_step() :: #{
+%%   <<"AggregateStep">> => aggregate_operation(),
+%%   <<"AppendStep">> => append_operation(),
+%%   <<"CastColumnTypesStep">> => cast_column_types_operation(),
+%%   <<"CreateColumnsStep">> => create_columns_operation(),
+%%   <<"FiltersStep">> => filters_operation(),
+%%   <<"ImportTableStep">> => import_table_operation(),
+%%   <<"JoinStep">> => join_operation(),
+%%   <<"PivotStep">> => pivot_operation(),
+%%   <<"ProjectStep">> => project_operation(),
+%%   <<"RenameColumnsStep">> => rename_columns_operation(),
+%%   <<"UnpivotStep">> => unpivot_operation()
+%% }
+-type transform_step() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12296,6 +12712,13 @@
 
 
 %% Example:
+%% data_set_numeric_filter_value() :: #{
+%%   <<"StaticValue">> => float()
+%% }
+-type data_set_numeric_filter_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% date_time_hierarchy() :: #{
 %%   <<"DrillDownFilters">> => list(drill_down_filter()),
 %%   <<"HierarchyId">> => string()
@@ -12520,6 +12943,7 @@
 %% Example:
 %% output_column() :: #{
 %%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"SubType">> => list(any()),
 %%   <<"Type">> => list(any())
@@ -13024,6 +13448,7 @@
 %% update_data_set_request() :: #{
 %%   <<"ColumnGroups">> => list(column_group()),
 %%   <<"ColumnLevelPermissionRules">> => list(column_level_permission_rule()),
+%%   <<"DataPrepConfiguration">> => data_prep_configuration(),
 %%   <<"DataSetUsageConfiguration">> => data_set_usage_configuration(),
 %%   <<"DatasetParameters">> => list(dataset_parameter()),
 %%   <<"FieldFolders">> => map(),
@@ -13033,7 +13458,8 @@
 %%   <<"PerformanceConfiguration">> => performance_configuration(),
 %%   <<"PhysicalTableMap">> := map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
-%%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration()
+%%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
+%%   <<"SemanticModelConfiguration">> => semantic_model_configuration()
 %% }
 -type update_data_set_request() :: #{binary() => any()}.
 
@@ -13086,6 +13512,15 @@
 %%   <<"State">> => list(any())
 %% }
 -type geospatial_solid_color() :: #{binary() => any()}.
+
+
+%% Example:
+%% semantic_table() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"DestinationTableId">> => string(),
+%%   <<"RowLevelPermissionConfiguration">> => row_level_permission_configuration()
+%% }
+-type semantic_table() :: #{binary() => any()}.
 
 %% Example:
 %% describe_theme_alias_request() :: #{}
@@ -13604,6 +14039,7 @@
     limit_exceeded_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
+    invalid_data_set_parameter_value_exception() | 
     resource_exists_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
@@ -15165,6 +15601,7 @@
     limit_exceeded_exception() | 
     throttling_exception() | 
     access_denied_exception() | 
+    invalid_data_set_parameter_value_exception() | 
     invalid_parameter_value_exception() | 
     resource_not_found_exception() | 
     conflict_exception() | 
@@ -20023,8 +20460,8 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Generates an embed URL that you can use to embed an Amazon QuickSight
-%% dashboard or
+%% @doc Generates an embed URL that you can use to embed an Amazon Quick
+%% Suite dashboard or
 %% visual in your website, without having to register any reader users.
 %%
 %% Before you use this
@@ -20047,16 +20484,16 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 %% session duration is 10 hours.
 %%
 %% You are charged only when the URL is used or there is interaction with
-%% Amazon QuickSight.
+%% Amazon Quick Suite.
 %%
 %% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %% in
-%% the Amazon QuickSight User Guide.
+%% the Amazon Quick Suite User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive
-%% demo of the ways you can customize embedding, visit the Amazon QuickSight
+%% demo of the ways you can customize embedding, visit the Amazon Quick Suite
 %% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec generate_embed_url_for_anonymous_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_anonymous_user_request()) ->
@@ -20092,13 +20529,13 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Generates an embed URL that you can use to embed an Amazon QuickSight
-%% experience
+%% @doc Generates an embed URL that you can use to embed an Amazon Quick
+%% Suite experience
 %% in your website.
 %%
-%% This action can be used for any type of user registered in an Amazon
-%% QuickSight account. Before you use this action, make sure that you have
-%% configured the relevant Amazon QuickSight resource and permissions.
+%% This action can be used for any type of user registered in an Amazon Quick
+%% Suite account. Before you use this action, make sure that you have
+%% configured the relevant Amazon Quick Suite resource and permissions.
 %%
 %% The following rules apply to the generated URL:
 %%
@@ -20117,16 +20554,16 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %% (maximum). The default session duration is 10 hours.
 %%
 %% You are charged only when the URL is used or there is interaction with
-%% Amazon QuickSight.
+%% Amazon Quick Suite.
 %%
 %% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %% in
-%% the Amazon QuickSight User Guide.
+%% the Amazon Quick Suite User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive
-%% demo of the ways you can customize embedding, visit the Amazon QuickSight
+%% demo of the ways you can customize embedding, visit the Amazon Quick Suite
 %% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec generate_embed_url_for_registered_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_request()) ->
@@ -20242,7 +20679,7 @@ generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input
 %% They are valid for 5 minutes after you run this command.
 %%
 %% You are charged only when the URL is used or there is interaction with
-%% QuickSight.
+%% Quick Suite.
 %%
 %% The resulting user session is valid for 15 minutes (default) up to 10
 %% hours
@@ -20252,12 +20689,12 @@ generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input
 %% For more information, see Embedding Analytics
 %% Using GetDashboardEmbedUrl:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics-deprecated.html
-%% in the Amazon QuickSight User
+%% in the Amazon Quick Suite User
 %% Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive
-%% demo of the ways you can customize embedding, visit the Amazon QuickSight
+%% demo of the ways you can customize embedding, visit the Amazon Quick Suite
 %% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
@@ -20406,13 +20843,13 @@ get_flow_permissions(Client, AwsAccountId, FlowId, QueryMap, HeadersMap, Options
 %% ''' API operation to add a new user with a custom
 %% permission profile attached. For more information, see the following
 %% sections in the
-%% Amazon QuickSight User Guide:
+%% Amazon Quick Suite User Guide:
 %%
 %% Embedding
 %% Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %%
-%% Customizing Access to the Amazon QuickSight Console:
+%% Customizing Access to the Amazon Quick Suite Console:
 %% https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html
 -spec get_session_embed_url(aws_client:aws_client(), binary() | list()) ->
     {ok, get_session_embed_url_response(), tuple()} |
@@ -22011,10 +22448,10 @@ list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 %% to ensure that an end user is authenticated and receives the embed URL
 %% that is specific to that user. The IAM Identity Center application that
 %% the user has logged into needs to have trusted Identity Propagation
-%% enabled for QuickSight:
+%% enabled for Quick Suite:
 %% https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-using-customermanagedapps-specify-trusted-apps.html
 %% with the scope value set to `quicksight:read'. Before you use this
-%% action, make sure that you have configured the relevant QuickSight
+%% action, make sure that you have configured the relevant Quick Suite
 %% resource and permissions.
 %%
 %% We recommend enabling the `QSearchStatus' API to unlock the full
@@ -22463,7 +22900,7 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches for any Q topic that exists in an QuickSight account.
+%% @doc Searches for any Q topic that exists in an Quick Suite account.
 -spec search_topics(aws_client:aws_client(), binary() | list(), search_topics_request()) ->
     {ok, search_topics_response(), tuple()} |
     {error, any()} |
@@ -23117,9 +23554,9 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an QuickSight application with a token exchange grant.
+%% @doc Updates an Quick Suite application with a token exchange grant.
 %%
-%% This operation only supports QuickSight applications that are registered
+%% This operation only supports Quick Suite applications that are registered
 %% with IAM Identity Center.
 -spec update_application_with_token_exchange_grant(aws_client:aws_client(), binary() | list(), update_application_with_token_exchange_grant_request()) ->
     {ok, update_application_with_token_exchange_grant_response(), tuple()} |
@@ -23965,7 +24402,7 @@ update_key_registration(Client, AwsAccountId, Input0, Options0) ->
 %% public
 %% sharing permissions to an administrative user in the Identity and Access
 %% Management (IAM) console. For more information on using IAM with Amazon
-%% Quick Sight, see Using QuickSight with IAM:
+%% Quick Sight, see Using Quick Suite with IAM:
 %% https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html
 %% in the Amazon Quick Sight
 %% User Guide.
