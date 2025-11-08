@@ -39,6 +39,8 @@
          delete_access_log_subscription/4,
          delete_auth_policy/3,
          delete_auth_policy/4,
+         delete_domain_verification/3,
+         delete_domain_verification/4,
          delete_listener/4,
          delete_listener/5,
          delete_resource_configuration/3,
@@ -71,6 +73,9 @@
          get_auth_policy/2,
          get_auth_policy/4,
          get_auth_policy/5,
+         get_domain_verification/2,
+         get_domain_verification/4,
+         get_domain_verification/5,
          get_listener/3,
          get_listener/5,
          get_listener/6,
@@ -107,6 +112,9 @@
          list_access_log_subscriptions/2,
          list_access_log_subscriptions/4,
          list_access_log_subscriptions/5,
+         list_domain_verifications/1,
+         list_domain_verifications/3,
+         list_domain_verifications/4,
          list_listeners/2,
          list_listeners/4,
          list_listeners/5,
@@ -154,6 +162,8 @@
          put_resource_policy/4,
          register_targets/3,
          register_targets/4,
+         start_domain_verification/2,
+         start_domain_verification/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -230,10 +240,21 @@
 
 
 %% Example:
+%% start_domain_verification_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"domainName">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type start_domain_verification_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_service_network_vpc_association_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdBy">> => string(),
+%%   <<"dnsOptions">> => dns_options(),
 %%   <<"id">> => string(),
+%%   <<"privateDnsEnabled">> => boolean(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string()
 %% }
@@ -251,7 +272,11 @@
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"customDomainName">> => string(),
+%%   <<"domainVerificationArn">> => string(),
+%%   <<"domainVerificationId">> => string(),
+%%   <<"domainVerificationStatus">> => string(),
 %%   <<"failureReason">> => [string()],
+%%   <<"groupDomain">> => string(),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
@@ -329,6 +354,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createdBy">> => string(),
 %%   <<"id">> => string(),
+%%   <<"privateDnsEnabled">> => boolean(),
 %%   <<"status">> => string()
 %% }
 -type create_service_network_resource_association_response() :: #{binary() => any()}.
@@ -614,10 +640,12 @@
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
+%%   <<"dnsOptions">> => dns_options(),
 %%   <<"failureCode">> => [string()],
 %%   <<"failureMessage">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"privateDnsEnabled">> => boolean(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"serviceNetworkArn">> => string(),
 %%   <<"serviceNetworkId">> => string(),
@@ -638,6 +666,14 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_access_log_subscriptions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_domain_verifications_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domain_verifications_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -795,6 +831,9 @@
 %%   <<"amazonManaged">> => boolean(),
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customDomainName">> => string(),
+%%   <<"domainVerificationId">> => string(),
+%%   <<"groupDomain">> => string(),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
@@ -811,8 +850,10 @@
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
+%%   <<"dnsOptions">> => dns_options(),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"privateDnsEnabled">> => boolean(),
 %%   <<"serviceNetworkArn">> => string(),
 %%   <<"serviceNetworkId">> => string(),
 %%   <<"serviceNetworkName">> => string(),
@@ -1021,6 +1062,14 @@
 %% }
 -type create_service_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_domain_verifications_response() :: #{
+%%   <<"items">> => list(domain_verification_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_domain_verifications_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_resource_configuration_request() :: #{}
 -type delete_resource_configuration_request() :: #{}.
@@ -1213,6 +1262,7 @@
 
 %% Example:
 %% list_resource_configurations_request() :: #{
+%%   <<"domainVerificationIdentifier">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"resourceConfigurationGroupIdentifier">> => string(),
@@ -1229,8 +1279,23 @@
 
 
 %% Example:
+%% domain_verification_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"domainName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastVerifiedTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"txtMethodConfig">> => txt_method_config()
+%% }
+-type domain_verification_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_service_network_resource_association_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"privateDnsEnabled">> => boolean(),
 %%   <<"resourceConfigurationIdentifier">> := string(),
 %%   <<"serviceNetworkIdentifier">> := string(),
 %%   <<"tags">> => map()
@@ -1269,6 +1334,20 @@
 
 
 %% Example:
+%% get_domain_verification_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"domainName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastVerifiedTime">> => non_neg_integer(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"txtMethodConfig">> => txt_method_config()
+%% }
+-type get_domain_verification_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_service_network_service_association_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -1295,12 +1374,20 @@
 %% }
 -type put_resource_policy_request() :: #{binary() => any()}.
 
+%% Example:
+%% delete_domain_verification_request() :: #{}
+-type delete_domain_verification_request() :: #{}.
+
 
 %% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_verification_request() :: #{}
+-type get_domain_verification_request() :: #{}.
 
 
 %% Example:
@@ -1365,6 +1452,10 @@
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
 
+%% Example:
+%% delete_domain_verification_response() :: #{}
+-type delete_domain_verification_response() :: #{}.
+
 
 %% Example:
 %% list_resource_endpoint_associations_response() :: #{
@@ -1385,6 +1476,17 @@
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
+
+
+%% Example:
+%% start_domain_verification_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"domainName">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => string(),
+%%   <<"txtMethodConfig">> => txt_method_config()
+%% }
+-type start_domain_verification_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_service_request() :: #{}
@@ -1441,6 +1543,9 @@
 %% create_resource_configuration_request() :: #{
 %%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
 %%   <<"clientToken">> => string(),
+%%   <<"customDomainName">> => string(),
+%%   <<"domainVerificationIdentifier">> => string(),
+%%   <<"groupDomain">> => string(),
 %%   <<"name">> := string(),
 %%   <<"portRanges">> => list(string()),
 %%   <<"protocol">> => string(),
@@ -1521,6 +1626,14 @@
 %% }
 -type target_failure() :: #{binary() => any()}.
 
+
+%% Example:
+%% txt_method_config() :: #{
+%%   <<"name">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type txt_method_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_auth_policy_request() :: #{}
 -type get_auth_policy_request() :: #{}.
@@ -1536,11 +1649,13 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"dnsEntry">> => dns_entry(),
+%%   <<"domainVerificationStatus">> => string(),
 %%   <<"failureCode">> => [string()],
 %%   <<"failureReason">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"isManagedAssociation">> => boolean(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"privateDnsEnabled">> => boolean(),
 %%   <<"privateDnsEntry">> => dns_entry(),
 %%   <<"resourceConfigurationArn">> => string(),
 %%   <<"resourceConfigurationId">> => string(),
@@ -1570,6 +1685,7 @@
 %%   <<"failureCode">> => [string()],
 %%   <<"id">> => string(),
 %%   <<"isManagedAssociation">> => boolean(),
+%%   <<"privateDnsEnabled">> => boolean(),
 %%   <<"privateDnsEntry">> => dns_entry(),
 %%   <<"resourceConfigurationArn">> => string(),
 %%   <<"resourceConfigurationId">> => string(),
@@ -1745,6 +1861,8 @@
 %% Example:
 %% create_service_network_vpc_association_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"dnsOptions">> => dns_options(),
+%%   <<"privateDnsEnabled">> => boolean(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"serviceNetworkIdentifier">> := string(),
 %%   <<"tags">> => map(),
@@ -1797,6 +1915,14 @@
 %% }
 -type list_service_network_service_associations_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% dns_options() :: #{
+%%   <<"privateDnsPreference">> => string(),
+%%   <<"privateDnsSpecifiedDomains">> => list(string())
+%% }
+-type dns_options() :: #{binary() => any()}.
+
 %% Example:
 %% get_service_network_service_association_request() :: #{}
 -type get_service_network_service_association_request() :: #{}.
@@ -1833,7 +1959,11 @@
 %%   <<"allowAssociationToShareableServiceNetwork">> => boolean(),
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customDomainName">> => string(),
+%%   <<"domainVerificationArn">> => string(),
+%%   <<"domainVerificationId">> => string(),
 %%   <<"failureReason">> => [string()],
+%%   <<"groupDomain">> => string(),
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"portRanges">> => list(string()),
@@ -1966,6 +2096,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type delete_domain_verification_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type delete_listener_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2081,6 +2218,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_domain_verification_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_listener_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -2163,6 +2307,13 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception().
+
+-type list_domain_verifications_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
 
 -type list_listeners_errors() ::
     throttling_exception() | 
@@ -2272,6 +2423,14 @@
     internal_server_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    conflict_exception().
+
+-type start_domain_verification_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     conflict_exception().
 
 -type tag_resource_errors() ::
@@ -2950,6 +3109,40 @@ delete_auth_policy(Client, ResourceIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified domain verification.
+-spec delete_domain_verification(aws_client:aws_client(), binary() | list(), delete_domain_verification_request()) ->
+    {ok, delete_domain_verification_response(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_verification_errors(), tuple()}.
+delete_domain_verification(Client, DomainVerificationIdentifier, Input) ->
+    delete_domain_verification(Client, DomainVerificationIdentifier, Input, []).
+
+-spec delete_domain_verification(aws_client:aws_client(), binary() | list(), delete_domain_verification_request(), proplists:proplist()) ->
+    {ok, delete_domain_verification_response(), tuple()} |
+    {error, any()} |
+    {error, delete_domain_verification_errors(), tuple()}.
+delete_domain_verification(Client, DomainVerificationIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domainverifications/", aws_util:encode_uri(DomainVerificationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified listener.
 -spec delete_listener(aws_client:aws_client(), binary() | list(), binary() | list(), delete_listener_request()) ->
     {ok, delete_listener_response(), tuple()} |
@@ -3502,6 +3695,43 @@ get_auth_policy(Client, ResourceIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a domain verification.ß
+-spec get_domain_verification(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_domain_verification_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_verification_errors(), tuple()}.
+get_domain_verification(Client, DomainVerificationIdentifier)
+  when is_map(Client) ->
+    get_domain_verification(Client, DomainVerificationIdentifier, #{}, #{}).
+
+-spec get_domain_verification(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_domain_verification_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_verification_errors(), tuple()}.
+get_domain_verification(Client, DomainVerificationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_verification(Client, DomainVerificationIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_domain_verification(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_domain_verification_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_verification_errors(), tuple()}.
+get_domain_verification(Client, DomainVerificationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domainverifications/", aws_util:encode_uri(DomainVerificationIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about the specified listener for the specified
 %% service.
 -spec get_listener(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -3965,6 +4195,48 @@ list_access_log_subscriptions(Client, ResourceIdentifier, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the domain verifications.
+-spec list_domain_verifications(aws_client:aws_client()) ->
+    {ok, list_domain_verifications_response(), tuple()} |
+    {error, any()} |
+    {error, list_domain_verifications_errors(), tuple()}.
+list_domain_verifications(Client)
+  when is_map(Client) ->
+    list_domain_verifications(Client, #{}, #{}).
+
+-spec list_domain_verifications(aws_client:aws_client(), map(), map()) ->
+    {ok, list_domain_verifications_response(), tuple()} |
+    {error, any()} |
+    {error, list_domain_verifications_errors(), tuple()}.
+list_domain_verifications(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_verifications(Client, QueryMap, HeadersMap, []).
+
+-spec list_domain_verifications(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_domain_verifications_response(), tuple()} |
+    {error, any()} |
+    {error, list_domain_verifications_errors(), tuple()}.
+list_domain_verifications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domainverifications"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the listeners for the specified service.
 -spec list_listeners(aws_client:aws_client(), binary() | list()) ->
     {ok, list_listeners_response(), tuple()} |
@@ -4043,6 +4315,7 @@ list_resource_configurations(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"domainVerificationIdentifier">>, maps:get(<<"domainVerificationIdentifier">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"resourceConfigurationGroupIdentifier">>, maps:get(<<"resourceConfigurationGroupIdentifier">>, QueryMap, undefined)},
@@ -4679,6 +4952,40 @@ register_targets(Client, TargetGroupIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/targetgroups/", aws_util:encode_uri(TargetGroupIdentifier), "/registertargets"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts the domain verification process for a custom domain name.
+-spec start_domain_verification(aws_client:aws_client(), start_domain_verification_request()) ->
+    {ok, start_domain_verification_response(), tuple()} |
+    {error, any()} |
+    {error, start_domain_verification_errors(), tuple()}.
+start_domain_verification(Client, Input) ->
+    start_domain_verification(Client, Input, []).
+
+-spec start_domain_verification(aws_client:aws_client(), start_domain_verification_request(), proplists:proplist()) ->
+    {ok, start_domain_verification_response(), tuple()} |
+    {error, any()} |
+    {error, start_domain_verification_errors(), tuple()}.
+start_domain_verification(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/domainverifications"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

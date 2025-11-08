@@ -2524,7 +2524,7 @@ create_grant(Client, Input, Options)
 %% RSA key pairs
 %% can be used to encrypt and decrypt data or sign and verify messages (but
 %% not both). KMS
-%% keys with NIST-recommended ECC key pairs can be used to sign and verify
+%% keys with NIST-standard ECC key pairs can be used to sign and verify
 %% messages or
 %% derive shared secrets (but not both). KMS keys with `ECC_SECG_P256K1'
 %% can be
@@ -2799,20 +2799,20 @@ create_key(Client, Input, Options)
 %%
 %% `Decrypt' also supports Amazon Web Services Nitro Enclaves:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitro-enclave.html and
-%% NitroTPM, which provide
-%% attested environments in Amazon EC2. To call `Decrypt' for a Nitro
-%% enclave or NitroTPM, use
-%% the Amazon Web Services Nitro Enclaves SDK:
+%% NitroTPM, which
+%% provide attested environments in Amazon EC2. To call `Decrypt' for a
+%% Nitro enclave or
+%% NitroTPM, use the Amazon Web Services Nitro Enclaves SDK:
 %% https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk
-%% or any Amazon Web Services SDK. Use the `Recipient' parameter to
-%% provide the
-%% attestation document for the attested environment. Instead of the
-%% plaintext data, the response
-%% includes the plaintext data encrypted with the public key from the
-%% attestation document
-%% (`CiphertextForRecipient'). For information about the interaction
-%% between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services
-%% NitroTPM, see Cryptographic attestation support in KMS:
+%% or any Amazon Web Services SDK. Use the `Recipient'
+%% parameter to provide the attestation document for the attested
+%% environment. Instead of the
+%% plaintext data, the response includes the plaintext data encrypted with
+%% the public key from
+%% the attestation document (`CiphertextForRecipient'). For information
+%% about the interaction between KMS and Amazon Web Services Nitro Enclaves
+%% or Amazon Web Services NitroTPM, see Cryptographic attestation support in
+%% KMS:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html
 %% in the Key Management Service Developer Guide.
 %%
@@ -3076,7 +3076,7 @@ delete_imported_key_material(Client, Input, Options)
 
 %% @doc Derives a shared secret using a key agreement algorithm.
 %%
-%% You must use an asymmetric NIST-recommended elliptic curve (ECC) or SM2
+%% You must use an asymmetric NIST-standard elliptic curve (ECC) or SM2
 %% (China Regions
 %% only) KMS key pair with a `KeyUsage' value of `KEY_AGREEMENT' to
 %% call
@@ -3106,7 +3106,7 @@ delete_imported_key_material(Client, Input, Options)
 %% asymmetric KMS key pair with a `KeyUsage' value of
 %% `KEY_AGREEMENT'.
 %%
-%% The asymmetric KMS key must use a NIST-recommended elliptic curve (ECC) or
+%% The asymmetric KMS key must use a NIST-standard elliptic curve (ECC) or
 %% SM2 (China
 %% Regions only) key spec.
 %%
@@ -3114,7 +3114,7 @@ delete_imported_key_material(Client, Input, Options)
 %%
 %% Bob can call `CreateKey' to create an asymmetric KMS key pair or
 %% generate a key pair outside of KMS. Bob's key pair must use the same
-%% NIST-recommended
+%% NIST-standard
 %% elliptic curve (ECC) or SM2 (China Regions ony) curve as Alice.
 %%
 %% Alice and Bob exchange their public keys through an
@@ -3143,10 +3143,10 @@ delete_imported_key_material(Client, Input, Options)
 %%
 %% To derive a shared secret you must provide a key agreement algorithm, the
 %% private key of
-%% the caller's asymmetric NIST-recommended elliptic curve or SM2 (China
+%% the caller's asymmetric NIST-standard elliptic curve or SM2 (China
 %% Regions only) KMS key
-%% pair, and the public key from your peer's NIST-recommended elliptic
-%% curve or SM2 (China
+%% pair, and the public key from your peer's NIST-standard elliptic curve
+%% or SM2 (China
 %% Regions only) key pair. The public key can be from another asymmetric KMS
 %% key pair or from a
 %% key pair generated outside of KMS, but both key pairs must be on the same
@@ -3903,18 +3903,18 @@ encrypt(Client, Input, Options)
 %% for an Amazon Web Services Nitro
 %% enclave or NitroTPM, use the Amazon Web Services Nitro Enclaves SDK:
 %% https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk
-%% or any Amazon Web Services SDK. Use the `Recipient' parameter
-%% to provide the attestation document for the attested environment.
-%% `GenerateDataKey' returns a
-%% copy of the data key encrypted under the specified KMS key, as usual. But
-%% instead of a
-%% plaintext copy of the data key, the response includes a copy of the data
-%% key encrypted under
-%% the public key from the attestation document
-%% (`CiphertextForRecipient').
-%% For information about the interaction between KMS and Amazon Web Services
-%% Nitro Enclaves or Amazon Web Services NitroTPM, see Cryptographic
-%% attestation support in KMS:
+%% or any Amazon Web Services SDK. Use the
+%% `Recipient' parameter to provide the attestation document for the
+%% attested
+%% environment. `GenerateDataKey' returns a copy of the data key
+%% encrypted under the
+%% specified KMS key, as usual. But instead of a plaintext copy of the data
+%% key, the response
+%% includes a copy of the data key encrypted under the public key from the
+%% attestation document
+%% (`CiphertextForRecipient'). For information about the interaction
+%% between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services
+%% NitroTPM, see Cryptographic attestation support in KMS:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html
 %% in the Key Management Service Developer Guide.
 %%
@@ -4068,17 +4068,17 @@ generate_data_key(Client, Input, Options)
 %% `GenerateDataKeyPair' for an Amazon Web Services
 %% Nitro enclave or NitroTPM, use the Amazon Web Services Nitro Enclaves SDK:
 %% https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk
-%% or any Amazon Web Services SDK. Use the `Recipient'
-%% parameter to provide the attestation document for the attested
-%% environment.
-%% `GenerateDataKeyPair' returns the public data key and a copy of the
-%% private data
-%% key encrypted under the specified KMS key, as usual. But instead of a
-%% plaintext copy of the
-%% private data key (`PrivateKeyPlaintext'), the response includes a copy
-%% of the
-%% private data key encrypted under the public key from the attestation
-%% document
+%% or any Amazon Web Services SDK. Use the
+%% `Recipient' parameter to provide the attestation document for the
+%% attested
+%% environment. `GenerateDataKeyPair' returns the public data key and a
+%% copy of the
+%% private data key encrypted under the specified KMS key, as usual. But
+%% instead of a plaintext
+%% copy of the private data key (`PrivateKeyPlaintext'), the response
+%% includes a copy
+%% of the private data key encrypted under the public key from the
+%% attestation document
 %% (`CiphertextForRecipient'). For information about the interaction
 %% between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services
 %% NitroTPM, see Cryptographic attestation support in KMS:
@@ -4448,17 +4448,18 @@ generate_mac(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitro-enclave.html,
 %% which provide an
 %% isolated compute environment in Amazon EC2. To call `GenerateRandom'
-%% for a Nitro
-%% enclave or NitroTPM, use the Amazon Web Services Nitro Enclaves SDK:
+%% for a Nitro enclave
+%% or NitroTPM, use the Amazon Web Services Nitro Enclaves SDK:
 %% https://docs.aws.amazon.com/enclaves/latest/user/developing-applications.html#sdk
-%% or any Amazon Web Services SDK. Use the `Recipient' parameter
-%% to provide the attestation document for the attested environment. Instead
-%% of plaintext bytes, the response
-%% includes the plaintext bytes encrypted under the public key from the
-%% attestation document
-%% (`CiphertextForRecipient'). For information about the interaction
-%% between KMS and Amazon Web Services Nitro Enclaves or Amazon Web Services
-%% NitroTPM, see Cryptographic attestation support in KMS:
+%% or any Amazon Web Services SDK. Use the `Recipient'
+%% parameter to provide the attestation document for the attested
+%% environment. Instead of
+%% plaintext bytes, the response includes the plaintext bytes encrypted under
+%% the public key from
+%% the attestation document (`CiphertextForRecipient'). For information
+%% about the interaction between KMS and Amazon Web Services Nitro Enclaves
+%% or Amazon Web Services NitroTPM, see Cryptographic attestation support in
+%% KMS:
 %% https://docs.aws.amazon.com/kms/latest/developerguide/cryptographic-attestation.html
 %% in the Key Management Service Developer Guide.
 %%

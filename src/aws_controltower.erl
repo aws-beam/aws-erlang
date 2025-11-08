@@ -359,8 +359,9 @@
 
 %% Example:
 %% disable_control_input() :: #{
-%%   <<"controlIdentifier">> := string(),
-%%   <<"targetIdentifier">> := string()
+%%   <<"controlIdentifier">> => string(),
+%%   <<"enabledControlIdentifier">> => string(),
+%%   <<"targetIdentifier">> => string()
 %% }
 -type disable_control_input() :: #{binary() => any()}.
 
@@ -402,9 +403,19 @@
 %% enabled_control_filter() :: #{
 %%   <<"controlIdentifiers">> => list(string()),
 %%   <<"driftStatuses">> => list(list(any())()),
+%%   <<"inheritanceDriftStatuses">> => list(list(any())()),
+%%   <<"parentIdentifiers">> => list(string()),
+%%   <<"resourceDriftStatuses">> => list(list(any())()),
 %%   <<"statuses">> => list(list(any())())
 %% }
 -type enabled_control_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_control_inheritance_drift() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type enabled_control_inheritance_drift() :: #{binary() => any()}.
 
 
 %% Example:
@@ -450,6 +461,7 @@
 %% Example:
 %% list_enabled_controls_input() :: #{
 %%   <<"filter">> => enabled_control_filter(),
+%%   <<"includeChildren">> => [boolean()],
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => [string()],
 %%   <<"targetIdentifier">> => string()
@@ -543,6 +555,7 @@
 %%   <<"arn">> => string(),
 %%   <<"controlIdentifier">> => string(),
 %%   <<"driftStatusSummary">> => drift_status_summary(),
+%%   <<"parentIdentifier">> => string(),
 %%   <<"statusSummary">> => enablement_status_summary(),
 %%   <<"targetIdentifier">> => string()
 %% }
@@ -595,6 +608,7 @@
 %% Example:
 %% create_landing_zone_input() :: #{
 %%   <<"manifest">> := any(),
+%%   <<"remediationTypes">> => list(list(any())()),
 %%   <<"tags">> => map(),
 %%   <<"version">> := string()
 %% }
@@ -609,11 +623,20 @@
 
 
 %% Example:
+%% enabled_control_drift_types() :: #{
+%%   <<"inheritance">> => enabled_control_inheritance_drift(),
+%%   <<"resource">> => enabled_control_resource_drift()
+%% }
+-type enabled_control_drift_types() :: #{binary() => any()}.
+
+
+%% Example:
 %% landing_zone_detail() :: #{
 %%   <<"arn">> => string(),
 %%   <<"driftStatus">> => landing_zone_drift_status_summary(),
 %%   <<"latestAvailableVersion">> => string(),
 %%   <<"manifest">> => any(),
+%%   <<"remediationTypes">> => list(list(any())()),
 %%   <<"status">> => list(any()),
 %%   <<"version">> => string()
 %% }
@@ -631,6 +654,7 @@
 %% update_landing_zone_input() :: #{
 %%   <<"landingZoneIdentifier">> := [string()],
 %%   <<"manifest">> := any(),
+%%   <<"remediationTypes">> => list(list(any())()),
 %%   <<"version">> := string()
 %% }
 -type update_landing_zone_input() :: #{binary() => any()}.
@@ -642,6 +666,13 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_landing_zones_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_control_resource_drift() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type enabled_control_resource_drift() :: #{binary() => any()}.
 
 
 %% Example:
@@ -933,6 +964,7 @@
 %%   <<"controlIdentifier">> => string(),
 %%   <<"driftStatusSummary">> => drift_status_summary(),
 %%   <<"parameters">> => list(enabled_control_parameter_summary()),
+%%   <<"parentIdentifier">> => string(),
 %%   <<"statusSummary">> => enablement_status_summary(),
 %%   <<"targetIdentifier">> => string(),
 %%   <<"targetRegions">> => list(region())
@@ -1025,7 +1057,8 @@
 
 %% Example:
 %% drift_status_summary() :: #{
-%%   <<"driftStatus">> => list(any())
+%%   <<"driftStatus">> => list(any()),
+%%   <<"types">> => enabled_control_drift_types()
 %% }
 -type drift_status_summary() :: #{binary() => any()}.
 
@@ -1335,6 +1368,11 @@ create_landing_zone(Client, Input0, Options0) ->
 %% This API call starts an asynchronous operation that deletes Amazon Web
 %% Services Control Tower resources deployed in accounts managed by Amazon
 %% Web Services Control Tower.
+%%
+%% Decommissioning a landing zone is a process with significant consequences,
+%% and it cannot be undone. We strongly recommend that you perform this
+%% decommissioning process only if you intend to stop using your landing
+%% zone.
 -spec delete_landing_zone(aws_client:aws_client(), delete_landing_zone_input()) ->
     {ok, delete_landing_zone_output(), tuple()} |
     {error, any()} |
@@ -2098,6 +2136,8 @@ reset_enabled_baseline(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Resets an enabled control.
+%%
+%% Does not work for controls implemented with SCPs.
 -spec reset_enabled_control(aws_client:aws_client(), reset_enabled_control_input()) ->
     {ok, reset_enabled_control_output(), tuple()} |
     {error, any()} |

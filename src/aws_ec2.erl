@@ -4344,6 +4344,7 @@
 %% Example:
 %% ipam_scope() :: #{
 %%   <<"Description">> => string(),
+%%   <<"ExternalAuthorityConfiguration">> => ipam_scope_external_authority_configuration(),
 %%   <<"IpamArn">> => string(),
 %%   <<"IpamRegion">> => string(),
 %%   <<"IpamScopeArn">> => string(),
@@ -4456,6 +4457,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
+%%   <<"ExternalAuthorityConfiguration">> => external_authority_configuration(),
 %%   <<"IpamId">> := string(),
 %%   <<"TagSpecifications">> => list(tag_specification())
 %% }
@@ -7438,6 +7440,13 @@
 %%   <<"TimeRanges">> => list(instance_event_window_time_range_request())
 %% }
 -type modify_instance_event_window_request() :: #{binary() => any()}.
+
+%% Example:
+%% ipam_scope_external_authority_configuration() :: #{
+%%   <<"ExternalResourceIdentifier">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type ipam_scope_external_authority_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% certificate_authentication_request() :: #{
@@ -14881,7 +14890,9 @@
 %% modify_ipam_scope_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"IpamScopeId">> := string()
+%%   <<"ExternalAuthorityConfiguration">> => external_authority_configuration(),
+%%   <<"IpamScopeId">> := string(),
+%%   <<"RemoveExternalAuthorityConfiguration">> => boolean()
 %% }
 -type modify_ipam_scope_request() :: #{binary() => any()}.
 
@@ -16740,7 +16751,9 @@
 %% Example:
 %% dns_options_specification() :: #{
 %%   <<"DnsRecordIpType">> => list(any()),
-%%   <<"PrivateDnsOnlyForInboundResolverEndpoint">> => boolean()
+%%   <<"PrivateDnsOnlyForInboundResolverEndpoint">> => boolean(),
+%%   <<"PrivateDnsPreference">> => string(),
+%%   <<"PrivateDnsSpecifiedDomains">> => list(string())
 %% }
 -type dns_options_specification() :: #{binary() => any()}.
 
@@ -18562,6 +18575,13 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_ipam_resource_cidrs_result() :: #{binary() => any()}.
+
+%% Example:
+%% external_authority_configuration() :: #{
+%%   <<"ExternalResourceIdentifier">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type external_authority_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% enable_fast_launch_request() :: #{
@@ -20757,7 +20777,9 @@
 %% Example:
 %% dns_options() :: #{
 %%   <<"DnsRecordIpType">> => list(any()),
-%%   <<"PrivateDnsOnlyForInboundResolverEndpoint">> => boolean()
+%%   <<"PrivateDnsOnlyForInboundResolverEndpoint">> => boolean(),
+%%   <<"PrivateDnsPreference">> => string(),
+%%   <<"PrivateDnsSpecifiedDomains">> => list(string())
 %% }
 -type dns_options() :: #{binary() => any()}.
 
