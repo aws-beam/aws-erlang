@@ -891,7 +891,8 @@
 %%   <<"DestinationProperties">> => destination_properties(),
 %%   <<"DestinationType">> => list(any()),
 %%   <<"PublishingFailureStartTimestamp">> => float(),
-%%   <<"Status">> => list(any())
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
 %% }
 -type describe_publishing_destination_response() :: #{binary() => any()}.
 
@@ -1111,7 +1112,8 @@
 %% create_publishing_destination_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DestinationProperties">> := destination_properties(),
-%%   <<"DestinationType">> := list(any())
+%%   <<"DestinationType">> := list(any()),
+%%   <<"Tags">> => map()
 %% }
 -type create_publishing_destination_request() :: #{binary() => any()}.
 

@@ -126,6 +126,8 @@
          update_connectivity/4,
          update_monitoring/3,
          update_monitoring/4,
+         update_rebalancing/3,
+         update_rebalancing/4,
          update_replication_info/3,
          update_replication_info/4,
          update_security/3,
@@ -193,6 +195,7 @@
 %%   <<"LoggingInfo">> => logging_info(),
 %%   <<"NumberOfBrokerNodes">> => integer(),
 %%   <<"OpenMonitoring">> => open_monitoring_info(),
+%%   <<"Rebalancing">> => rebalancing(),
 %%   <<"StorageMode">> => list(any())
 %% }
 -type provisioned_request() :: #{binary() => any()}.
@@ -333,6 +336,7 @@
 %%   <<"LoggingInfo">> => logging_info(),
 %%   <<"NumberOfBrokerNodes">> => integer(),
 %%   <<"OpenMonitoring">> => open_monitoring(),
+%%   <<"Rebalancing">> => rebalancing(),
 %%   <<"State">> => list(any()),
 %%   <<"StateInfo">> => state_info(),
 %%   <<"StorageMode">> => list(any()),
@@ -576,6 +580,14 @@
 %%   <<"ErrorString">> => string()
 %% }
 -type error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_rebalancing_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ClusterOperationArn">> => string()
+%% }
+-type update_rebalancing_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_cluster_policy_response() :: #{}
@@ -877,6 +889,7 @@
 %%   <<"LoggingInfo">> => logging_info(),
 %%   <<"NumberOfBrokerNodes">> := integer(),
 %%   <<"OpenMonitoring">> => open_monitoring_info(),
+%%   <<"Rebalancing">> => rebalancing(),
 %%   <<"StorageMode">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
@@ -1352,6 +1365,14 @@
 
 
 %% Example:
+%% update_rebalancing_request() :: #{
+%%   <<"CurrentVersion">> := string(),
+%%   <<"Rebalancing">> := rebalancing()
+%% }
+-type update_rebalancing_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% ebs_storage_info() :: #{
 %%   <<"ProvisionedThroughput">> => provisioned_throughput(),
 %%   <<"VolumeSize">> => integer()
@@ -1430,6 +1451,7 @@
 %%   <<"LoggingInfo">> => logging_info(),
 %%   <<"NumberOfBrokerNodes">> => integer(),
 %%   <<"OpenMonitoring">> => open_monitoring_info(),
+%%   <<"Rebalancing">> => rebalancing(),
 %%   <<"StorageMode">> => list(any()),
 %%   <<"ZookeeperConnectString">> => string(),
 %%   <<"ZookeeperConnectStringTls">> => string()
@@ -1633,6 +1655,7 @@
 %%   <<"LoggingInfo">> => logging_info(),
 %%   <<"NumberOfBrokerNodes">> => integer(),
 %%   <<"OpenMonitoring">> => open_monitoring(),
+%%   <<"Rebalancing">> => rebalancing(),
 %%   <<"StorageMode">> => list(any())
 %% }
 -type mutable_cluster_info() :: #{binary() => any()}.
@@ -1645,6 +1668,13 @@
 %%   <<"VolumeSizeGB">> => integer()
 %% }
 -type broker_ebs_volume_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% rebalancing() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type rebalancing() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2199,6 +2229,15 @@
     bad_request_exception() | 
     internal_server_error_exception() | 
     service_unavailable_exception() | 
+    forbidden_exception() | 
+    unauthorized_exception().
+
+-type update_rebalancing_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    too_many_requests_exception() | 
     forbidden_exception() | 
     unauthorized_exception().
 
@@ -4045,6 +4084,41 @@ update_monitoring(Client, ClusterArn, Input) ->
 update_monitoring(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/monitoring"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use this resource to update the intelligent rebalancing status of an
+%% Amazon MSK Provisioned cluster with Express brokers.
+-spec update_rebalancing(aws_client:aws_client(), binary() | list(), update_rebalancing_request()) ->
+    {ok, update_rebalancing_response(), tuple()} |
+    {error, any()} |
+    {error, update_rebalancing_errors(), tuple()}.
+update_rebalancing(Client, ClusterArn, Input) ->
+    update_rebalancing(Client, ClusterArn, Input, []).
+
+-spec update_rebalancing(aws_client:aws_client(), binary() | list(), update_rebalancing_request(), proplists:proplist()) ->
+    {ok, update_rebalancing_response(), tuple()} |
+    {error, any()} |
+    {error, update_rebalancing_errors(), tuple()}.
+update_rebalancing(Client, ClusterArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/rebalancing"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

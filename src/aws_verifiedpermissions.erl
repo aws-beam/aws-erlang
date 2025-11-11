@@ -1052,7 +1052,8 @@
 %% entity_item() :: #{
 %%   <<"attributes">> => map(),
 %%   <<"identifier">> => entity_identifier(),
-%%   <<"parents">> => list(entity_identifier())
+%%   <<"parents">> => list(entity_identifier()),
+%%   <<"tags">> => map()
 %% }
 -type entity_item() :: #{binary() => any()}.
 

@@ -27,6 +27,8 @@
          get_access_key_info/3,
          get_caller_identity/2,
          get_caller_identity/3,
+         get_delegated_access_token/2,
+         get_delegated_access_token/3,
          get_federation_token/2,
          get_federation_token/3,
          get_session_token/2,
@@ -34,6 +36,226 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% get_delegated_access_token_request() :: #{
+%%   <<"TradeInToken">> := string()
+%% }
+-type get_delegated_access_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_federation_token_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Name">> := string(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type get_federation_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_info_request() :: #{
+%%   <<"AccessKeyId">> := string()
+%% }
+-type get_access_key_info_request() :: #{binary() => any()}.
+
+%% Example:
+%% region_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type region_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_token_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"SerialNumber">> => string(),
+%%   <<"TokenCode">> => string()
+%% }
+-type get_session_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% assumed_role_user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssumedRoleId">> => string()
+%% }
+-type assumed_role_user() :: #{binary() => any()}.
+
+%% Example:
+%% packed_policy_too_large_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type packed_policy_too_large_exception() :: #{binary() => any()}.
+
+%% Example:
+%% credentials() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type credentials() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_saml_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
+%%   <<"PrincipalArn">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"SAMLAssertion">> := string()
+%% }
+-type assume_role_with_saml_request() :: #{binary() => any()}.
+
+%% Example:
+%% expired_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type expired_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_web_identity_response() :: #{
+%%   <<"AssumedRoleUser">> => assumed_role_user(),
+%%   <<"Audience">> => string(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"Provider">> => string(),
+%%   <<"SourceIdentity">> => string(),
+%%   <<"SubjectFromWebIdentityToken">> => string()
+%% }
+-type assume_role_with_web_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_saml_response() :: #{
+%%   <<"AssumedRoleUser">> => assumed_role_user(),
+%%   <<"Audience">> => string(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"Issuer">> => string(),
+%%   <<"NameQualifier">> => string(),
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"SourceIdentity">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"SubjectType">> => string()
+%% }
+-type assume_role_with_saml_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_federation_token_response() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"FederatedUser">> => federated_user(),
+%%   <<"PackedPolicySize">> => integer()
+%% }
+-type get_federation_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% decode_authorization_message_response() :: #{
+%%   <<"DecodedMessage">> => string()
+%% }
+-type decode_authorization_message_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_access_key_info_response() :: #{
+%%   <<"Account">> => string()
+%% }
+-type get_access_key_info_response() :: #{binary() => any()}.
+
+%% Example:
+%% tag() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag() :: #{binary() => any()}.
+
+%% Example:
+%% federated_user() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"FederatedUserId">> => string()
+%% }
+-type federated_user() :: #{binary() => any()}.
+
+%% Example:
+%% provided_context() :: #{
+%%   <<"ContextAssertion">> => string(),
+%%   <<"ProviderArn">> => string()
+%% }
+-type provided_context() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_identity_token_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_identity_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_session_token_response() :: #{
+%%   <<"Credentials">> => credentials()
+%% }
+-type get_session_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_delegated_access_token_response() :: #{
+%%   <<"AssumedPrincipal">> => string(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"PackedPolicySize">> => integer()
+%% }
+-type get_delegated_access_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% decode_authorization_message_request() :: #{
+%%   <<"EncodedMessage">> := string()
+%% }
+-type decode_authorization_message_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_with_web_identity_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"Policy">> => string(),
+%%   <<"PolicyArns">> => list(policy_descriptor_type()),
+%%   <<"ProviderId">> => string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"RoleSessionName">> := string(),
+%%   <<"WebIdentityToken">> := string()
+%% }
+-type assume_role_with_web_identity_request() :: #{binary() => any()}.
+
+%% Example:
+%% assume_root_response() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"SourceIdentity">> => string()
+%% }
+-type assume_root_response() :: #{binary() => any()}.
+
+%% Example:
+%% assume_role_response() :: #{
+%%   <<"AssumedRoleUser">> => assumed_role_user(),
+%%   <<"Credentials">> => credentials(),
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"SourceIdentity">> => string()
+%% }
+-type assume_role_response() :: #{binary() => any()}.
+
+%% Example:
+%% id_p_communication_error_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type id_p_communication_error_exception() :: #{binary() => any()}.
+
+%% Example:
+%% policy_descriptor_type() :: #{
+%%   <<"arn">> => string()
+%% }
+-type policy_descriptor_type() :: #{binary() => any()}.
+
+%% Example:
+%% malformed_policy_document_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_caller_identity_request() :: #{
+
+%% }
+-type get_caller_identity_request() :: #{binary() => any()}.
 
 %% Example:
 %% assume_role_request() :: #{
@@ -53,184 +275,6 @@
 -type assume_role_request() :: #{binary() => any()}.
 
 %% Example:
-%% assume_role_response() :: #{
-%%   <<"AssumedRoleUser">> => assumed_role_user(),
-%%   <<"Credentials">> => credentials(),
-%%   <<"PackedPolicySize">> => integer(),
-%%   <<"SourceIdentity">> => string()
-%% }
--type assume_role_response() :: #{binary() => any()}.
-
-%% Example:
-%% assume_role_with_saml_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()),
-%%   <<"PrincipalArn">> := string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"SAMLAssertion">> := string()
-%% }
--type assume_role_with_saml_request() :: #{binary() => any()}.
-
-%% Example:
-%% assume_role_with_saml_response() :: #{
-%%   <<"AssumedRoleUser">> => assumed_role_user(),
-%%   <<"Audience">> => string(),
-%%   <<"Credentials">> => credentials(),
-%%   <<"Issuer">> => string(),
-%%   <<"NameQualifier">> => string(),
-%%   <<"PackedPolicySize">> => integer(),
-%%   <<"SourceIdentity">> => string(),
-%%   <<"Subject">> => string(),
-%%   <<"SubjectType">> => string()
-%% }
--type assume_role_with_saml_response() :: #{binary() => any()}.
-
-%% Example:
-%% assume_role_with_web_identity_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()),
-%%   <<"ProviderId">> => string(),
-%%   <<"RoleArn">> := string(),
-%%   <<"RoleSessionName">> := string(),
-%%   <<"WebIdentityToken">> := string()
-%% }
--type assume_role_with_web_identity_request() :: #{binary() => any()}.
-
-%% Example:
-%% assume_role_with_web_identity_response() :: #{
-%%   <<"AssumedRoleUser">> => assumed_role_user(),
-%%   <<"Audience">> => string(),
-%%   <<"Credentials">> => credentials(),
-%%   <<"PackedPolicySize">> => integer(),
-%%   <<"Provider">> => string(),
-%%   <<"SourceIdentity">> => string(),
-%%   <<"SubjectFromWebIdentityToken">> => string()
-%% }
--type assume_role_with_web_identity_response() :: #{binary() => any()}.
-
-%% Example:
-%% assume_root_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"TargetPrincipal">> := string(),
-%%   <<"TaskPolicyArn">> := policy_descriptor_type()
-%% }
--type assume_root_request() :: #{binary() => any()}.
-
-%% Example:
-%% assume_root_response() :: #{
-%%   <<"Credentials">> => credentials(),
-%%   <<"SourceIdentity">> => string()
-%% }
--type assume_root_response() :: #{binary() => any()}.
-
-%% Example:
-%% assumed_role_user() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"AssumedRoleId">> => string()
-%% }
--type assumed_role_user() :: #{binary() => any()}.
-
-%% Example:
-%% credentials() :: #{
-%%   <<"AccessKeyId">> => string(),
-%%   <<"Expiration">> => non_neg_integer(),
-%%   <<"SecretAccessKey">> => string(),
-%%   <<"SessionToken">> => string()
-%% }
--type credentials() :: #{binary() => any()}.
-
-%% Example:
-%% decode_authorization_message_request() :: #{
-%%   <<"EncodedMessage">> := string()
-%% }
--type decode_authorization_message_request() :: #{binary() => any()}.
-
-%% Example:
-%% decode_authorization_message_response() :: #{
-%%   <<"DecodedMessage">> => string()
-%% }
--type decode_authorization_message_response() :: #{binary() => any()}.
-
-%% Example:
-%% expired_token_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type expired_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% federated_user() :: #{
-%%   <<"Arn">> => string(),
-%%   <<"FederatedUserId">> => string()
-%% }
--type federated_user() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_key_info_request() :: #{
-%%   <<"AccessKeyId">> := string()
-%% }
--type get_access_key_info_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_access_key_info_response() :: #{
-%%   <<"Account">> => string()
-%% }
--type get_access_key_info_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_caller_identity_request() :: #{
-
-%% }
--type get_caller_identity_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_caller_identity_response() :: #{
-%%   <<"Account">> => string(),
-%%   <<"Arn">> => string(),
-%%   <<"UserId">> => string()
-%% }
--type get_caller_identity_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_federation_token_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"Name">> := string(),
-%%   <<"Policy">> => string(),
-%%   <<"PolicyArns">> => list(policy_descriptor_type()),
-%%   <<"Tags">> => list(tag())
-%% }
--type get_federation_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_federation_token_response() :: #{
-%%   <<"Credentials">> => credentials(),
-%%   <<"FederatedUser">> => federated_user(),
-%%   <<"PackedPolicySize">> => integer()
-%% }
--type get_federation_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_token_request() :: #{
-%%   <<"DurationSeconds">> => integer(),
-%%   <<"SerialNumber">> => string(),
-%%   <<"TokenCode">> => string()
-%% }
--type get_session_token_request() :: #{binary() => any()}.
-
-%% Example:
-%% get_session_token_response() :: #{
-%%   <<"Credentials">> => credentials()
-%% }
--type get_session_token_response() :: #{binary() => any()}.
-
-%% Example:
-%% id_p_communication_error_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type id_p_communication_error_exception() :: #{binary() => any()}.
-
-%% Example:
 %% id_p_rejected_claim_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -243,83 +287,65 @@
 -type invalid_authorization_message_exception() :: #{binary() => any()}.
 
 %% Example:
-%% invalid_identity_token_exception() :: #{
+%% assume_root_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"TargetPrincipal">> := string(),
+%%   <<"TaskPolicyArn">> := policy_descriptor_type()
+%% }
+-type assume_root_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_caller_identity_response() :: #{
+%%   <<"Account">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"UserId">> => string()
+%% }
+-type get_caller_identity_response() :: #{binary() => any()}.
+
+%% Example:
+%% expired_trade_in_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
--type invalid_identity_token_exception() :: #{binary() => any()}.
-
-%% Example:
-%% malformed_policy_document_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type malformed_policy_document_exception() :: #{binary() => any()}.
-
-%% Example:
-%% packed_policy_too_large_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type packed_policy_too_large_exception() :: #{binary() => any()}.
-
-%% Example:
-%% policy_descriptor_type() :: #{
-%%   <<"arn">> => string()
-%% }
--type policy_descriptor_type() :: #{binary() => any()}.
-
-%% Example:
-%% provided_context() :: #{
-%%   <<"ContextAssertion">> => string(),
-%%   <<"ProviderArn">> => string()
-%% }
--type provided_context() :: #{binary() => any()}.
-
-%% Example:
-%% region_disabled_exception() :: #{
-%%   <<"message">> => string()
-%% }
--type region_disabled_exception() :: #{binary() => any()}.
-
-%% Example:
-%% tag() :: #{
-%%   <<"Key">> => string(),
-%%   <<"Value">> => string()
-%% }
--type tag() :: #{binary() => any()}.
+-type expired_trade_in_token_exception() :: #{binary() => any()}.
 
 -type assume_role_errors() ::
-    region_disabled_exception() | 
-    packed_policy_too_large_exception() | 
     malformed_policy_document_exception() | 
-    expired_token_exception().
+    expired_token_exception() | 
+    packed_policy_too_large_exception() | 
+    region_disabled_exception().
 
 -type assume_role_with_saml_errors() ::
-    region_disabled_exception() | 
-    packed_policy_too_large_exception() | 
+    id_p_rejected_claim_exception() | 
     malformed_policy_document_exception() | 
     invalid_identity_token_exception() | 
-    id_p_rejected_claim_exception() | 
-    expired_token_exception().
+    expired_token_exception() | 
+    packed_policy_too_large_exception() | 
+    region_disabled_exception().
 
 -type assume_role_with_web_identity_errors() ::
-    region_disabled_exception() | 
-    packed_policy_too_large_exception() | 
-    malformed_policy_document_exception() | 
-    invalid_identity_token_exception() | 
     id_p_rejected_claim_exception() | 
+    malformed_policy_document_exception() | 
     id_p_communication_error_exception() | 
-    expired_token_exception().
+    invalid_identity_token_exception() | 
+    expired_token_exception() | 
+    packed_policy_too_large_exception() | 
+    region_disabled_exception().
 
 -type assume_root_errors() ::
-    region_disabled_exception() | 
-    expired_token_exception().
+    expired_token_exception() | 
+    region_disabled_exception().
 
 -type decode_authorization_message_errors() ::
     invalid_authorization_message_exception().
 
+-type get_delegated_access_token_errors() ::
+    expired_trade_in_token_exception() | 
+    region_disabled_exception().
+
 -type get_federation_token_errors() ::
-    region_disabled_exception() | 
+    malformed_policy_document_exception() | 
     packed_policy_too_large_exception() | 
-    malformed_policy_document_exception().
+    region_disabled_exception().
 
 -type get_session_token_errors() ::
     region_disabled_exception().
@@ -518,6 +544,10 @@ assume_role(Client, Input, Options)
 %% ID, a secret access key, and a security token. Applications can use these
 %% temporary
 %% security credentials to sign calls to Amazon Web Services services.
+%%
+%% AssumeRoleWithSAML will not work on IAM Identity Center managed roles.
+%% These roles' names start
+%% with `AWSReservedSSO_'.
 %%
 %% Session Duration
 %%
@@ -828,9 +858,10 @@ assume_role_with_saml(Client, Input, Options)
 %% identity token as
 %% session tags. Each session tag consists of a key name and an associated
 %% value. For more
-%% information about session tags, see Passing Session Tags in STS:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html in
-%% the
+%% information about session tags, see Passing
+%% session tags using AssumeRoleWithWebIdentity:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html#id_session-tags_adding-assume-role-idp
+%% in the
 %% IAM User Guide.
 %%
 %% You can pass up to 50 session tags. The plaintext session tag keys can’t
@@ -932,6 +963,11 @@ assume_role_with_web_identity(Client, Input, Options)
 %% privileged tasks on a
 %% member account in your organization.
 %%
+%% You must use credentials from an Organizations management
+%% account or a delegated administrator account for IAM to call
+%% `AssumeRoot'. You
+%% cannot use root user credentials to make this call.
+%%
 %% Before you can launch a privileged session, you must have centralized root
 %% access in
 %% your organization. For steps to enable this feature, see Centralize root
@@ -951,6 +987,20 @@ assume_role_with_web_identity(Client, Input, Options)
 %% in CloudTrail:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-track-privileged-tasks.html
 %% in the IAM User Guide.
+%%
+%% When granting access to privileged tasks you should only grant the
+%% necessary permissions
+%% required to perform that task. For more information, see Security best
+%% practices in
+%% IAM: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html.
+%% In addition, you can use service control
+%% policies:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html
+%% (SCPs) to manage and limit permissions in your organization. See General
+%% examples:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_examples_general.html
+%% in the Organizations User
+%% Guide for more information on SCPs.
 -spec assume_root(aws_client:aws_client(), assume_root_request()) ->
     {ok, assume_root_response(), tuple()} |
     {error, any()} |
@@ -1107,6 +1157,23 @@ get_caller_identity(Client, Input)
 get_caller_identity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCallerIdentity">>, Input, Options).
+
+%% @doc This API is currently unavailable for general use.
+-spec get_delegated_access_token(aws_client:aws_client(), get_delegated_access_token_request()) ->
+    {ok, get_delegated_access_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_delegated_access_token_errors(), tuple()}.
+get_delegated_access_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_delegated_access_token(Client, Input, []).
+
+-spec get_delegated_access_token(aws_client:aws_client(), get_delegated_access_token_request(), proplists:proplist()) ->
+    {ok, get_delegated_access_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_delegated_access_token_errors(), tuple()}.
+get_delegated_access_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDelegatedAccessToken">>, Input, Options).
 
 %% @doc Returns a set of temporary security credentials (consisting of an
 %% access key ID, a

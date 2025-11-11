@@ -34,6 +34,8 @@
          create_access_key/3,
          create_account_alias/2,
          create_account_alias/3,
+         create_delegation_request/2,
+         create_delegation_request/3,
          create_group/2,
          create_group/3,
          create_instance_profile/2,
@@ -1247,6 +1249,20 @@
 -type access_key_metadata() :: #{binary() => any()}.
 
 %% Example:
+%% create_delegation_request_request() :: #{
+%%   <<"Description">> := string(),
+%%   <<"NotificationChannel">> := string(),
+%%   <<"OnlySendByOwner">> => boolean(),
+%%   <<"OwnerAccountId">> => string(),
+%%   <<"Permissions">> := delegation_permission(),
+%%   <<"RedirectUrl">> => string(),
+%%   <<"RequestMessage">> => string(),
+%%   <<"RequestorWorkflowId">> := string(),
+%%   <<"SessionDuration">> := integer()
+%% }
+-type create_delegation_request_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_account_alias_request() :: #{
 %%   <<"AccountAlias">> := string()
 %% }
@@ -1761,6 +1777,13 @@
 -type generate_service_last_accessed_details_response() :: #{binary() => any()}.
 
 %% Example:
+%% delegation_permission() :: #{
+%%   <<"Parameters">> => list(policy_parameter()),
+%%   <<"PolicyTemplateArn">> => string()
+%% }
+-type delegation_permission() :: #{binary() => any()}.
+
+%% Example:
 %% get_service_linked_role_deletion_status_request() :: #{
 %%   <<"DeletionTaskId">> := string()
 %% }
@@ -1869,6 +1892,13 @@
 %%   <<"UserName">> => string()
 %% }
 -type mfa_device() :: #{binary() => any()}.
+
+%% Example:
+%% create_delegation_request_response() :: #{
+%%   <<"ConsoleDeepLink">> => string(),
+%%   <<"DelegationRequestId">> => string()
+%% }
+-type create_delegation_request_response() :: #{binary() => any()}.
 
 %% Example:
 %% entity_details() :: #{
@@ -2102,6 +2132,14 @@
 %%   <<"RoleName">> => string()
 %% }
 -type get_role_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% policy_parameter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type policy_parameter() :: #{binary() => any()}.
 
 %% Example:
 %% update_open_id_connect_provider_thumbprint_request() :: #{
@@ -2974,6 +3012,13 @@
 -type create_account_alias_errors() ::
     limit_exceeded_exception() | 
     concurrent_modification_exception() | 
+    service_failure_exception() | 
+    entity_already_exists_exception().
+
+-type create_delegation_request_errors() ::
+    limit_exceeded_exception() | 
+    concurrent_modification_exception() | 
+    invalid_input_exception() | 
     service_failure_exception() | 
     entity_already_exists_exception().
 
@@ -4105,6 +4150,23 @@ create_account_alias(Client, Input)
 create_account_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccountAlias">>, Input, Options).
+
+%% @doc This API is currently unavailable for general use.
+-spec create_delegation_request(aws_client:aws_client(), create_delegation_request_request()) ->
+    {ok, create_delegation_request_response(), tuple()} |
+    {error, any()} |
+    {error, create_delegation_request_errors(), tuple()}.
+create_delegation_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_delegation_request(Client, Input, []).
+
+-spec create_delegation_request(aws_client:aws_client(), create_delegation_request_request(), proplists:proplist()) ->
+    {ok, create_delegation_request_response(), tuple()} |
+    {error, any()} |
+    {error, create_delegation_request_errors(), tuple()}.
+create_delegation_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDelegationRequest">>, Input, Options).
 
 %% @doc Creates a new group.
 %%

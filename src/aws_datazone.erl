@@ -1978,8 +1978,7 @@
 
 %% Example:
 %% mlflow_properties_patch() :: #{
-%%   <<"trackingServerArn">> => [string()],
-%%   <<"trackingServerName">> => [string()]
+%%   <<"trackingServerArn">> => [string()]
 %% }
 -type mlflow_properties_patch() :: #{binary() => any()}.
 
@@ -3669,8 +3668,7 @@
 
 %% Example:
 %% mlflow_properties_input() :: #{
-%%   <<"trackingServerArn">> => [string()],
-%%   <<"trackingServerName">> => [string()]
+%%   <<"trackingServerArn">> => [string()]
 %% }
 -type mlflow_properties_input() :: #{binary() => any()}.
 
@@ -6287,8 +6285,7 @@
 
 %% Example:
 %% mlflow_properties_output() :: #{
-%%   <<"trackingServerArn">> => [string()],
-%%   <<"trackingServerName">> => [string()]
+%%   <<"trackingServerArn">> => [string()]
 %% }
 -type mlflow_properties_output() :: #{binary() => any()}.
 

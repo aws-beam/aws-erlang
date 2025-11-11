@@ -35,6 +35,8 @@
          create_invoice_unit/3,
          delete_invoice_unit/2,
          delete_invoice_unit/3,
+         get_invoice_p_d_f/2,
+         get_invoice_p_d_f/3,
          get_invoice_unit/2,
          get_invoice_unit/3,
          list_invoice_summaries/2,
@@ -114,6 +116,15 @@
 -type invoice_summaries_filter() :: #{binary() => any()}.
 
 %% Example:
+%% invoice_p_d_f() :: #{
+%%   <<"DocumentUrl">> => string(),
+%%   <<"DocumentUrlExpirationDate">> => [non_neg_integer()],
+%%   <<"InvoiceId">> => string(),
+%%   <<"SupplementalDocuments">> => list(supplemental_document())
+%% }
+-type invoice_p_d_f() :: #{binary() => any()}.
+
+%% Example:
 %% invoice_profile() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"Issuer">> => string(),
@@ -176,6 +187,12 @@
 %%   <<"InvoiceUnitArn">> := string()
 %% }
 -type delete_invoice_unit_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_invoice_p_d_f_request() :: #{
+%%   <<"InvoiceId">> := string()
+%% }
+-type get_invoice_p_d_f_request() :: #{binary() => any()}.
 
 %% Example:
 %% taxes_breakdown_amount() :: #{
@@ -285,6 +302,12 @@
 -type resource_tag() :: #{binary() => any()}.
 
 %% Example:
+%% get_invoice_p_d_f_response() :: #{
+%%   <<"InvoicePDF">> => invoice_p_d_f()
+%% }
+-type get_invoice_p_d_f_response() :: #{binary() => any()}.
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"resourceName">> => string()
@@ -330,6 +353,13 @@
 %%   <<"ResourceArn">> := string()
 %% }
 -type list_tags_for_resource_request() :: #{binary() => any()}.
+
+%% Example:
+%% supplemental_document() :: #{
+%%   <<"DocumentUrl">> => string(),
+%%   <<"DocumentUrlExpirationDate">> => [non_neg_integer()]
+%% }
+-type supplemental_document() :: #{binary() => any()}.
 
 %% Example:
 %% create_invoice_unit_request() :: #{
@@ -449,6 +479,13 @@
     internal_server_exception() | 
     resource_not_found_exception().
 
+-type get_invoice_p_d_f_errors() ::
+    throttling_exception() | 
+    validation_exception() | 
+    access_denied_exception() | 
+    internal_server_exception() | 
+    resource_not_found_exception().
+
 -type get_invoice_unit_errors() ::
     throttling_exception() | 
     validation_exception() | 
@@ -555,6 +592,31 @@ delete_invoice_unit(Client, Input)
 delete_invoice_unit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInvoiceUnit">>, Input, Options).
+
+%% @doc Returns a URL to download the invoice document and supplemental
+%% documents associated with an invoice.
+%%
+%% The URLs are pre-signed and have expiration time. For special cases like
+%% Brazil, where Amazon Web Services generated invoice identifiers and
+%% government provided identifiers do not match, use the Amazon Web Services
+%% generated invoice identifier when making API requests. To grant IAM
+%% permission to use this operation, the caller needs the
+%% `invoicing:GetInvoicePDF' policy action.
+-spec get_invoice_p_d_f(aws_client:aws_client(), get_invoice_p_d_f_request()) ->
+    {ok, get_invoice_p_d_f_response(), tuple()} |
+    {error, any()} |
+    {error, get_invoice_p_d_f_errors(), tuple()}.
+get_invoice_p_d_f(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_invoice_p_d_f(Client, Input, []).
+
+-spec get_invoice_p_d_f(aws_client:aws_client(), get_invoice_p_d_f_request(), proplists:proplist()) ->
+    {ok, get_invoice_p_d_f_response(), tuple()} |
+    {error, any()} |
+    {error, get_invoice_p_d_f_errors(), tuple()}.
+get_invoice_p_d_f(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetInvoicePDF">>, Input, Options).
 
 %% @doc This retrieves the invoice unit definition.
 -spec get_invoice_unit(aws_client:aws_client(), get_invoice_unit_request()) ->

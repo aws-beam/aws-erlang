@@ -552,6 +552,7 @@
 %% Example:
 %% network_access_configuration() :: #{
 %%   <<"EniId">> => string(),
+%%   <<"EniIpv6Addresses">> => list(string()),
 %%   <<"EniPrivateIpAddress">> => string()
 %% }
 -type network_access_configuration() :: #{binary() => any()}.

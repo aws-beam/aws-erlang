@@ -3,18 +3,15 @@
 
 %% @doc This is an interface reference for Amazon Aurora DSQL.
 %%
-%% It contains documentation for one of the
-%% programming or command line interfaces you can use to manage Amazon Aurora
-%% DSQL.
+%% It contains documentation for one of the programming or command line
+%% interfaces you can use to manage Amazon Aurora DSQL.
 %%
 %% Amazon Aurora DSQL is a serverless, distributed SQL database suitable for
-%% workloads of any size.
-%% is available in both single-Region and multi-Region configurations, so
-%% your
-%% clusters and databases are always available even if an Availability Zone
-%% or an Amazon Web Services Region are unavailable. lets you focus on using
-%% your data to
-%% acquire new insights for your business and customers.
+%% workloads of any size. is available in both single-Region and multi-Region
+%% configurations, so your clusters and databases are always available even
+%% if an Availability Zone or an Amazon Web Services Region are unavailable.
+%% lets you focus on using your data to acquire new insights for your
+%% business and customers.
 -module(aws_dsql).
 
 -export([create_cluster/2,
@@ -168,6 +165,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"encryptionDetails">> => encryption_details(),
+%%   <<"endpoint">> => string(),
 %%   <<"identifier">> => string(),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"status">> => list(any()),
@@ -230,6 +228,7 @@
 %%   <<"creationTime">> => non_neg_integer(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"encryptionDetails">> => encryption_details(),
+%%   <<"endpoint">> => string(),
 %%   <<"identifier">> => string(),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"status">> => list(any())
@@ -378,44 +377,33 @@
 %%====================================================================
 
 %% @doc The CreateCluster API allows you to create both single-Region
-%% clusters and multi-Region
-%% clusters.
+%% clusters and multi-Region clusters.
 %%
-%% With the addition of the multiRegionProperties parameter,
-%% you can create a cluster with witness Region support and establish peer
-%% relationships with
+%% With the addition of the multiRegionProperties parameter, you can create a
+%% cluster with witness Region support and establish peer relationships with
 %% clusters in other Regions during creation.
 %%
 %% Creating multi-Region clusters requires additional IAM permissions beyond
-%% those
-%% needed for single-Region clusters, as detailed in the Required permissions
-%% section
-%% below.
+%% those needed for single-Region clusters, as detailed in the Required
+%% permissions section below.
 %%
 %% Required permissions
 %%
-%% dsql:CreateCluster
-%%
-%% Required to create a cluster.
+%% dsql:CreateCluster Required to create a cluster.
 %%
 %% Resources: `arn:aws:dsql:region:account-id:cluster/*'
 %%
-%% dsql:TagResource
-%%
-%% Permission to add tags to a resource.
+%% dsql:TagResource Permission to add tags to a resource.
 %%
 %% Resources: `arn:aws:dsql:region:account-id:cluster/*'
 %%
-%% dsql:PutMultiRegionProperties
-%%
-%% Permission to configure multi-Region properties for a cluster.
+%% dsql:PutMultiRegionProperties Permission to configure multi-Region
+%% properties for a cluster.
 %%
 %% Resources: `arn:aws:dsql:region:account-id:cluster/*'
 %%
-%% dsql:AddPeerCluster
-%%
-%% When specifying `multiRegionProperties.clusters', permission to
-%% add peer clusters.
+%% dsql:AddPeerCluster When specifying `multiRegionProperties.clusters',
+%% permission to add peer clusters.
 %%
 %% Resources:
 %%
@@ -423,21 +411,18 @@
 %%
 %% Each peer cluster: exact ARN of each specified peer cluster
 %%
-%% dsql:PutWitnessRegion
-%%
-%% When specifying `multiRegionProperties.witnessRegion', permission
-%% to set a witness Region. This permission is checked both in the cluster
-%% Region and
-%% in the witness Region.
+%% dsql:PutWitnessRegion When specifying
+%% `multiRegionProperties.witnessRegion', permission to set a witness
+%% Region. This permission is checked both in the cluster Region and in the
+%% witness Region.
 %%
 %% Resources: `arn:aws:dsql:region:account-id:cluster/*'
 %%
 %% Condition Keys: `dsql:WitnessRegion' (matching the specified witness
 %% region)
 %%
-%% The witness Region specified in
-%% `multiRegionProperties.witnessRegion' cannot be the same as the
-%% cluster's Region.
+%% The witness Region specified in `multiRegionProperties.witnessRegion'
+%% cannot be the same as the cluster's Region.
 -spec create_cluster(aws_client:aws_client(), create_cluster_input()) ->
     {ok, create_cluster_output(), tuple()} |
     {error, any()} |
@@ -852,75 +837,49 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Regions.
 %%
 %% Note that updating multi-Region clusters requires additional IAM
-%% permissions
-%% beyond those needed for standard cluster updates, as detailed in the
-%% Permissions
-%% section.
+%% permissions beyond those needed for standard cluster updates, as detailed
+%% in the Permissions section.
 %%
 %% Required permissions
 %%
-%% dsql:UpdateCluster
+%% dsql:UpdateCluster Permission to update a DSQL cluster.
 %%
-%% Permission to update a DSQL cluster.
+%% Resources: `arn:aws:dsql:region:account-id:cluster/cluster-id '
 %%
-%% Resources:
-%% ```
-%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
+%% dsql:PutMultiRegionProperties Permission to configure multi-Region
+%% properties for a cluster.
 %%
-%% dsql:PutMultiRegionProperties
+%% Resources: `arn:aws:dsql:region:account-id:cluster/cluster-id '
 %%
-%% Permission to configure multi-Region properties for a cluster.
+%% dsql:GetCluster Permission to retrieve cluster information.
 %%
-%% Resources:
-%% ```
-%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
+%% Resources: `arn:aws:dsql:region:account-id:cluster/cluster-id '
 %%
-%% dsql:GetCluster
-%%
-%% Permission to retrieve cluster information.
-%%
-%% Resources:
-%% ```
-%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
-%%
-%% dsql:AddPeerCluster
-%%
-%% Permission to add peer clusters.
+%% dsql:AddPeerCluster Permission to add peer clusters.
 %%
 %% Resources:
 %%
-%% Local cluster:
-%% ```
-%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
+%% Local cluster: `arn:aws:dsql:region:account-id:cluster/cluster-id '
 %%
 %% Each peer cluster: exact ARN of each specified peer cluster
 %%
-%% dsql:RemovePeerCluster
+%% dsql:RemovePeerCluster Permission to remove peer clusters. The
+%% dsql:RemovePeerCluster permission uses a wildcard ARN pattern to simplify
+%% permission management during updates.
 %%
-%% Permission to remove peer clusters. The dsql:RemovePeerCluster permission
-%% uses a wildcard ARN pattern to simplify permission management during
-%% updates.
+%% Resources: `arn:aws:dsql:*:account-id:cluster/*'
 %%
-%% Resources:
-%% `arn:aws:dsql:*:account-id:cluster/*'
+%% dsql:PutWitnessRegion Permission to set a witness Region.
 %%
-%% dsql:PutWitnessRegion
+%% Resources: `arn:aws:dsql:region:account-id:cluster/cluster-id '
 %%
-%% Permission to set a witness Region.
-%%
-%% Resources:
-%% ```
-%% arn:aws:dsql:region:account-id:cluster/cluster-id '''
-%%
-%% Condition Keys: dsql:WitnessRegion (matching the specified witness
-%% Region)
+%% Condition Keys: dsql:WitnessRegion (matching the specified witness Region)
 %%
 %% This permission is checked both in the cluster Region and in the witness
 %% Region.
 %%
-%% The witness region specified in
-%% `multiRegionProperties.witnessRegion' cannot be the same as the
-%% cluster's Region.
+%% The witness region specified in `multiRegionProperties.witnessRegion'
+%% cannot be the same as the cluster's Region.
 %%
 %% When updating clusters with peer relationships, permissions are checked
 %% for both adding and removing peers.
