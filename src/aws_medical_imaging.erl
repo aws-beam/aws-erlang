@@ -109,6 +109,8 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"imageSetId">> => string(),
 %%   <<"isPrimary">> => [boolean()],
+%%   <<"lastAccessedAt">> => non_neg_integer(),
+%%   <<"storageTier">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"version">> => [integer()]
 %% }
@@ -227,8 +229,10 @@
 %%   <<"imageSetState">> => list(any()),
 %%   <<"imageSetWorkflowStatus">> => list(any()),
 %%   <<"isPrimary">> => [boolean()],
+%%   <<"lastAccessedAt">> => non_neg_integer(),
 %%   <<"message">> => string(),
 %%   <<"overrides">> => overrides(),
+%%   <<"storageTier">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"versionId">> => string()
 %% }
@@ -371,6 +375,7 @@
 %%   <<"datastoreStatus">> => list(any()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"lambdaAuthorizerArn">> => string(),
+%%   <<"losslessStorageFormat">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type datastore_properties() :: #{binary() => any()}.
@@ -510,6 +515,7 @@
 %%   <<"datastoreName">> => string(),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"lambdaAuthorizerArn">> => string(),
+%%   <<"losslessStorageFormat">> => list(any()),
 %%   <<"tags">> => map()
 %% }
 -type create_datastore_request() :: #{binary() => any()}.

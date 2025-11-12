@@ -517,6 +517,15 @@
 
 
 %% Example:
+%% audio_language_configuration() :: #{
+%%   <<"generativeOutputLanguage">> => list(any()),
+%%   <<"identifyMultipleLanguages">> => [boolean()],
+%%   <<"inputLanguages">> => list(list(any())())
+%% }
+-type audio_language_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -605,6 +614,7 @@
 
 %% Example:
 %% audio_override_configuration() :: #{
+%%   <<"languageConfiguration">> => audio_language_configuration(),
 %%   <<"modalityProcessing">> => modality_processing_configuration()
 %% }
 -type audio_override_configuration() :: #{binary() => any()}.

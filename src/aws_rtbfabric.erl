@@ -131,6 +131,7 @@
 %% create_inbound_external_link_request() :: #{
 %%   <<"attributes">> => link_attributes(),
 %%   <<"clientToken">> := [string()],
+%%   <<"logSettings">> := link_log_settings(),
 %%   <<"tags">> => map()
 %% }
 -type create_inbound_external_link_request() :: #{binary() => any()}.
@@ -232,6 +233,7 @@
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
+%%   <<"logSettings">> => link_log_settings(),
 %%   <<"pendingFlowModules">> => list(module_configuration()),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),
@@ -344,7 +346,9 @@
 
 %% Example:
 %% create_outbound_external_link_request() :: #{
+%%   <<"attributes">> => link_attributes(),
 %%   <<"clientToken">> := [string()],
+%%   <<"logSettings">> := link_log_settings(),
 %%   <<"publicEndpoint">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -447,6 +451,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
+%%   <<"logSettings">> => link_log_settings(),
 %%   <<"publicEndpoint">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map(),

@@ -176,6 +176,7 @@
 
 %% Example:
 %% incident_responder() :: #{
+%%   <<"communicationPreferences">> => list(list(any())()),
 %%   <<"email">> => string(),
 %%   <<"jobTitle">> => string(),
 %%   <<"name">> => string()

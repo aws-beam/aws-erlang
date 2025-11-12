@@ -18308,6 +18308,7 @@
 %%   <<"RemoteIpv6NetworkCidr">> => string(),
 %%   <<"StaticRoutesOnly">> => boolean(),
 %%   <<"TransportTransitGatewayAttachmentId">> => string(),
+%%   <<"TunnelBandwidth">> => list(any()),
 %%   <<"TunnelInsideIpVersion">> => list(any()),
 %%   <<"TunnelOptions">> => list(tunnel_option())
 %% }
@@ -20030,6 +20031,7 @@
 %%   <<"RemoteIpv6NetworkCidr">> => string(),
 %%   <<"StaticRoutesOnly">> => boolean(),
 %%   <<"TransportTransitGatewayAttachmentId">> => string(),
+%%   <<"TunnelBandwidth">> => list(any()),
 %%   <<"TunnelInsideIpVersion">> => list(any()),
 %%   <<"TunnelOptions">> => list(vpn_tunnel_options_specification())
 %% }
