@@ -1039,6 +1039,8 @@
          get_groups_for_capacity_reservation/3,
          get_host_reservation_purchase_preview/2,
          get_host_reservation_purchase_preview/3,
+         get_image_ancestry/2,
+         get_image_ancestry/3,
          get_image_block_public_access_state/2,
          get_image_block_public_access_state/3,
          get_instance_metadata_defaults/2,
@@ -4895,6 +4897,13 @@
 %%   <<"TransitGatewayAttachments">> => list(transit_gateway_attachment())
 %% }
 -type describe_transit_gateway_attachments_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_image_ancestry_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageId">> := string()
+%% }
+-type get_image_ancestry_request() :: #{binary() => any()}.
 
 %% Example:
 %% spot_fleet_request_config() :: #{
@@ -15402,6 +15411,16 @@
 -type scheduled_instances_ebs() :: #{binary() => any()}.
 
 %% Example:
+%% image_ancestry_entry() :: #{
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"ImageId">> => string(),
+%%   <<"ImageOwnerAlias">> => string(),
+%%   <<"SourceImageId">> => string(),
+%%   <<"SourceImageRegion">> => string()
+%% }
+-type image_ancestry_entry() :: #{binary() => any()}.
+
+%% Example:
 %% get_password_data_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceId">> := string()
@@ -16334,6 +16353,12 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_block_extension_offerings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_image_ancestry_result() :: #{
+%%   <<"ImageAncestryEntries">> => list(image_ancestry_entry())
+%% }
+-type get_image_ancestry_result() :: #{binary() => any()}.
 
 %% Example:
 %% peering_tgw_info() :: #{
@@ -33847,6 +33872,27 @@ get_host_reservation_purchase_preview(Client, Input)
 get_host_reservation_purchase_preview(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetHostReservationPurchasePreview">>, Input, Options).
+
+%% @doc Retrieves the ancestry chain of the specified AMI, tracing its
+%% lineage back to the root
+%% AMI.
+%%
+%% For more information, see AMI ancestry:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-ancestry.html in
+%% Amazon EC2 User Guide.
+-spec get_image_ancestry(aws_client:aws_client(), get_image_ancestry_request()) ->
+    {ok, get_image_ancestry_result(), tuple()} |
+    {error, any()}.
+get_image_ancestry(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_image_ancestry(Client, Input, []).
+
+-spec get_image_ancestry(aws_client:aws_client(), get_image_ancestry_request(), proplists:proplist()) ->
+    {ok, get_image_ancestry_result(), tuple()} |
+    {error, any()}.
+get_image_ancestry(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetImageAncestry">>, Input, Options).
 
 %% @doc Gets the current state of block public access for AMIs at the account
 %% level in the specified Amazon Web Services Region.

@@ -2487,7 +2487,9 @@
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"MaxSessionDuration">> => integer(),
 %%   <<"Name">> => string(),
-%%   <<"PeriodicSessionDuration">> => integer()
+%%   <<"PeriodicSessionDuration">> => integer(),
+%%   <<"SessionInactivityDuration">> => integer(),
+%%   <<"SessionInactivityHandlingEnabled">> => boolean()
 %% }
 -type authentication_profile() :: #{binary() => any()}.
 
@@ -8187,7 +8189,9 @@
 %%   <<"BlockedIps">> => list(string()),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"PeriodicSessionDuration">> => integer()
+%%   <<"PeriodicSessionDuration">> => integer(),
+%%   <<"SessionInactivityDuration">> => integer(),
+%%   <<"SessionInactivityHandlingEnabled">> => boolean()
 %% }
 -type update_authentication_profile_request() :: #{binary() => any()}.
 

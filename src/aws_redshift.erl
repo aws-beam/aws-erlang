@@ -243,6 +243,8 @@
          get_cluster_credentials/3,
          get_cluster_credentials_with_iam/2,
          get_cluster_credentials_with_iam/3,
+         get_identity_center_auth_token/2,
+         get_identity_center_auth_token/3,
          get_reserved_node_exchange_configuration_options/2,
          get_reserved_node_exchange_configuration_options/3,
          get_reserved_node_exchange_offerings/2,
@@ -457,11 +459,23 @@
 -type modify_cluster_db_revision_message() :: #{binary() => any()}.
 
 %% Example:
+%% get_identity_center_auth_token_request() :: #{
+%%   <<"ClusterIds">> := list(string())
+%% }
+-type get_identity_center_auth_token_request() :: #{binary() => any()}.
+
+%% Example:
 %% cluster_associated_to_schedule() :: #{
 %%   <<"ClusterIdentifier">> => string(),
 %%   <<"ScheduleAssociationState">> => list(any())
 %% }
 -type cluster_associated_to_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% redshift_invalid_parameter_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type redshift_invalid_parameter_fault() :: #{binary() => any()}.
 
 %% Example:
 %% reserved_node_configuration_option() :: #{
@@ -1792,6 +1806,13 @@
 %%   <<"Parameters">> := list(parameter())
 %% }
 -type modify_cluster_parameter_group_message() :: #{binary() => any()}.
+
+%% Example:
+%% get_identity_center_auth_token_response() :: #{
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"Token">> => string()
+%% }
+-type get_identity_center_auth_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_cluster_result() :: #{
@@ -4545,6 +4566,12 @@
     unsupported_operation_fault() | 
     cluster_not_found_fault().
 
+-type get_identity_center_auth_token_errors() ::
+    invalid_cluster_state_fault() | 
+    unsupported_operation_fault() | 
+    cluster_not_found_fault() | 
+    redshift_invalid_parameter_fault().
+
 -type get_reserved_node_exchange_configuration_options_errors() ::
     dependent_service_unavailable_fault() | 
     reserved_node_offering_not_found_fault() | 
@@ -7241,6 +7268,43 @@ get_cluster_credentials_with_iam(Client, Input)
 get_cluster_credentials_with_iam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetClusterCredentialsWithIAM">>, Input, Options).
+
+%% @doc Generates an encrypted authentication token that propagates the
+%% caller's
+%% Amazon Web Services IAM Identity Center identity to Amazon Redshift
+%% clusters.
+%%
+%% This API extracts the
+%% Amazon Web Services IAM Identity Center identity from enhanced credentials
+%% and creates a secure token
+%% that Amazon Redshift drivers can use for authentication.
+%%
+%% The token is encrypted using Key Management Service (KMS) and can only be
+%% decrypted by the specified Amazon Redshift clusters. The token contains
+%% the caller's
+%% Amazon Web Services IAM Identity Center identity information and is valid
+%% for a limited time period.
+%%
+%% This API is exclusively for use with Amazon Web Services IAM Identity
+%% Center enhanced credentials. If the
+%% caller is not using enhanced credentials with embedded Amazon Web Services
+%% IAM Identity Center identity, the API will
+%% return an error.
+-spec get_identity_center_auth_token(aws_client:aws_client(), get_identity_center_auth_token_request()) ->
+    {ok, get_identity_center_auth_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_center_auth_token_errors(), tuple()}.
+get_identity_center_auth_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_identity_center_auth_token(Client, Input, []).
+
+-spec get_identity_center_auth_token(aws_client:aws_client(), get_identity_center_auth_token_request(), proplists:proplist()) ->
+    {ok, get_identity_center_auth_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_identity_center_auth_token_errors(), tuple()}.
+get_identity_center_auth_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIdentityCenterAuthToken">>, Input, Options).
 
 %% @doc Gets the configuration options for the reserved-node exchange.
 %%

@@ -28,6 +28,10 @@
          apply_pending_maintenance_action/3,
          batch_start_recommendations/2,
          batch_start_recommendations/3,
+         cancel_metadata_model_conversion/2,
+         cancel_metadata_model_conversion/3,
+         cancel_metadata_model_creation/2,
+         cancel_metadata_model_creation/3,
          cancel_replication_task_assessment_run/2,
          cancel_replication_task_assessment_run/3,
          create_data_migration/2,
@@ -124,10 +128,16 @@
          describe_fleet_advisor_schemas/3,
          describe_instance_profiles/2,
          describe_instance_profiles/3,
+         describe_metadata_model/2,
+         describe_metadata_model/3,
          describe_metadata_model_assessments/2,
          describe_metadata_model_assessments/3,
+         describe_metadata_model_children/2,
+         describe_metadata_model_children/3,
          describe_metadata_model_conversions/2,
          describe_metadata_model_conversions/3,
+         describe_metadata_model_creations/2,
+         describe_metadata_model_creations/3,
          describe_metadata_model_exports_as_script/2,
          describe_metadata_model_exports_as_script/3,
          describe_metadata_model_exports_to_target/2,
@@ -172,6 +182,8 @@
          describe_table_statistics/3,
          export_metadata_model_assessment/2,
          export_metadata_model_assessment/3,
+         get_target_selection_rules/2,
+         get_target_selection_rules/3,
          import_certificate/2,
          import_certificate/3,
          list_tags_for_resource/2,
@@ -220,6 +232,8 @@
          start_metadata_model_assessment/3,
          start_metadata_model_conversion/2,
          start_metadata_model_conversion/3,
+         start_metadata_model_creation/2,
+         start_metadata_model_creation/3,
          start_metadata_model_export_as_script/2,
          start_metadata_model_export_as_script/3,
          start_metadata_model_export_to_target/2,
@@ -602,6 +616,13 @@
 -type availability_zone() :: #{binary() => any()}.
 
 %% Example:
+%% metadata_model_reference() :: #{
+%%   <<"MetadataModelName">> => string(),
+%%   <<"SelectionRules">> => string()
+%% }
+-type metadata_model_reference() :: #{binary() => any()}.
+
+%% Example:
 %% replication_stats() :: #{
 %%   <<"ElapsedTimeMillis">> => float(),
 %%   <<"FreshStartDate">> => non_neg_integer(),
@@ -629,6 +650,14 @@
 %%   <<"ReplicationTaskAssessmentRunArn">> := string()
 %% }
 -type delete_replication_task_assessment_run_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"Origin">> := list(any()),
+%%   <<"SelectionRules">> := string()
+%% }
+-type describe_metadata_model_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_recommendation_limitations_response() :: #{
@@ -852,11 +881,25 @@
 -type modify_replication_subnet_group_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_metadata_model_children_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MetadataModelChildren">> => list(metadata_model_reference())
+%% }
+-type describe_metadata_model_children_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_fleet_advisor_lsa_analysis_response() :: #{
 %%   <<"Analysis">> => list(fleet_advisor_lsa_analysis_response()),
 %%   <<"NextToken">> => string()
 %% }
 -type describe_fleet_advisor_lsa_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_metadata_model_conversion_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"RequestIdentifier">> := string()
+%% }
+-type cancel_metadata_model_conversion_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_fleet_advisor_schema_object_summary_request() :: #{
@@ -1412,6 +1455,12 @@
 -type s3_settings() :: #{binary() => any()}.
 
 %% Example:
+%% cancel_metadata_model_conversion_response() :: #{
+%%   <<"Request">> => schema_conversion_request()
+%% }
+-type cancel_metadata_model_conversion_response() :: #{binary() => any()}.
+
+%% Example:
 %% modify_replication_subnet_group_message() :: #{
 %%   <<"ReplicationSubnetGroupDescription">> => string(),
 %%   <<"ReplicationSubnetGroupIdentifier">> := string(),
@@ -1550,6 +1599,12 @@
 %%   <<"InstanceProfileIdentifier">> := string()
 %% }
 -type delete_instance_profile_message() :: #{binary() => any()}.
+
+%% Example:
+%% start_metadata_model_creation_response() :: #{
+%%   <<"RequestIdentifier">> => string()
+%% }
+-type start_metadata_model_creation_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_replication_configs_response() :: #{
@@ -1869,6 +1924,13 @@
 -type neptune_settings() :: #{binary() => any()}.
 
 %% Example:
+%% describe_metadata_model_creations_response() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"Requests">> => list(schema_conversion_request())
+%% }
+-type describe_metadata_model_creations_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_applicable_individual_assessments_message() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"MaxRecords">> => integer(),
@@ -1979,6 +2041,15 @@
 -type source_data_setting() :: #{binary() => any()}.
 
 %% Example:
+%% describe_metadata_model_creations_message() :: #{
+%%   <<"Filters">> => list(filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string()
+%% }
+-type describe_metadata_model_creations_message() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_response() :: #{
 %%   <<"TagList">> => list(tag())
 %% }
@@ -1995,6 +2066,13 @@
 %%   <<"SslSecurityProtocol">> => list(any())
 %% }
 -type redis_settings() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_metadata_model_creation_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"RequestIdentifier">> := string()
+%% }
+-type cancel_metadata_model_creation_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_replication_instances_message() :: #{
@@ -2332,6 +2410,16 @@
 -type delete_event_subscription_message() :: #{binary() => any()}.
 
 %% Example:
+%% describe_metadata_model_children_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"Origin">> := list(any()),
+%%   <<"SelectionRules">> := string()
+%% }
+-type describe_metadata_model_children_message() :: #{binary() => any()}.
+
+%% Example:
 %% replication_task_assessment_result() :: #{
 %%   <<"AssessmentResults">> => string(),
 %%   <<"AssessmentResultsFile">> => string(),
@@ -2460,6 +2548,13 @@
 -type describe_event_subscriptions_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_target_selection_rules_message() :: #{
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"SelectionRules">> := string()
+%% }
+-type get_target_selection_rules_message() :: #{binary() => any()}.
+
+%% Example:
 %% describe_replications_response() :: #{
 %%   <<"Marker">> => string(),
 %%   <<"Replications">> => list(replication())
@@ -2517,6 +2612,12 @@
 -type describe_recommendation_limitations_request() :: #{binary() => any()}.
 
 %% Example:
+%% cancel_metadata_model_creation_response() :: #{
+%%   <<"Request">> => schema_conversion_request()
+%% }
+-type cancel_metadata_model_creation_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_data_migrations_message() :: #{
 %%   <<"Filters">> => list(filter()),
 %%   <<"Marker">> => string(),
@@ -2525,6 +2626,12 @@
 %%   <<"WithoutStatistics">> => boolean()
 %% }
 -type describe_data_migrations_message() :: #{binary() => any()}.
+
+%% Example:
+%% statement_properties() :: #{
+%%   <<"Definition">> => string()
+%% }
+-type statement_properties() :: #{binary() => any()}.
 
 %% Example:
 %% data_migration_settings() :: #{
@@ -2877,6 +2984,12 @@
 %%   <<"ReasonForNewProvisioningData">> => string()
 %% }
 -type provision_data() :: #{binary() => any()}.
+
+%% Example:
+%% get_target_selection_rules_response() :: #{
+%%   <<"TargetSelectionRules">> => string()
+%% }
+-type get_target_selection_rules_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_replication_task_assessment_run_message() :: #{
@@ -3273,6 +3386,15 @@
 -type describe_metadata_model_exports_to_target_response() :: #{binary() => any()}.
 
 %% Example:
+%% start_metadata_model_creation_message() :: #{
+%%   <<"MetadataModelName">> := string(),
+%%   <<"MigrationProjectIdentifier">> := string(),
+%%   <<"Properties">> := list(),
+%%   <<"SelectionRules">> := string()
+%% }
+-type start_metadata_model_creation_message() :: #{binary() => any()}.
+
+%% Example:
 %% refresh_schemas_status() :: #{
 %%   <<"EndpointArn">> => string(),
 %%   <<"LastFailureMessage">> => string(),
@@ -3376,6 +3498,15 @@
 %%   <<"TargetEndpointArn">> => string()
 %% }
 -type replication_config() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metadata_model_response() :: #{
+%%   <<"Definition">> => string(),
+%%   <<"MetadataModelName">> => string(),
+%%   <<"MetadataModelType">> => string(),
+%%   <<"TargetMetadataModels">> => list(metadata_model_reference())
+%% }
+-type describe_metadata_model_response() :: #{binary() => any()}.
 
 %% Example:
 %% migration_project() :: #{
@@ -3559,6 +3690,16 @@
     resource_not_found_fault().
 
 -type batch_start_recommendations_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type cancel_metadata_model_conversion_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type cancel_metadata_model_creation_errors() ::
     access_denied_fault() | 
     invalid_resource_state_fault() | 
     resource_not_found_fault().
@@ -3791,10 +3932,22 @@
     access_denied_fault() | 
     resource_not_found_fault().
 
+-type describe_metadata_model_errors() ::
+    access_denied_fault() | 
+    resource_not_found_fault().
+
 -type describe_metadata_model_assessments_errors() ::
     resource_not_found_fault().
 
+-type describe_metadata_model_children_errors() ::
+    access_denied_fault() | 
+    resource_not_found_fault().
+
 -type describe_metadata_model_conversions_errors() ::
+    resource_not_found_fault().
+
+-type describe_metadata_model_creations_errors() ::
+    access_denied_fault() | 
     resource_not_found_fault().
 
 -type describe_metadata_model_exports_as_script_errors() ::
@@ -3868,6 +4021,11 @@
     resource_not_found_fault().
 
 -type export_metadata_model_assessment_errors() ::
+    resource_not_found_fault().
+
+-type get_target_selection_rules_errors() ::
+    access_denied_fault() | 
+    invalid_resource_state_fault() | 
     resource_not_found_fault().
 
 -type import_certificate_errors() ::
@@ -4029,6 +4187,12 @@
     s3_access_denied_fault() | 
     access_denied_fault() | 
     invalid_resource_state_fault() | 
+    resource_not_found_fault().
+
+-type start_metadata_model_creation_errors() ::
+    resource_quota_exceeded_fault() | 
+    resource_already_exists_fault() | 
+    access_denied_fault() | 
     resource_not_found_fault().
 
 -type start_metadata_model_export_as_script_errors() ::
@@ -4208,6 +4372,42 @@ batch_start_recommendations(Client, Input)
 batch_start_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchStartRecommendations">>, Input, Options).
+
+%% @doc Cancels a single metadata model conversion operation that was started
+%% with `StartMetadataModelConversion'.
+-spec cancel_metadata_model_conversion(aws_client:aws_client(), cancel_metadata_model_conversion_message()) ->
+    {ok, cancel_metadata_model_conversion_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_metadata_model_conversion_errors(), tuple()}.
+cancel_metadata_model_conversion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_metadata_model_conversion(Client, Input, []).
+
+-spec cancel_metadata_model_conversion(aws_client:aws_client(), cancel_metadata_model_conversion_message(), proplists:proplist()) ->
+    {ok, cancel_metadata_model_conversion_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_metadata_model_conversion_errors(), tuple()}.
+cancel_metadata_model_conversion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelMetadataModelConversion">>, Input, Options).
+
+%% @doc Cancels a single metadata model creation operation that was started
+%% with `StartMetadataModelCreation'.
+-spec cancel_metadata_model_creation(aws_client:aws_client(), cancel_metadata_model_creation_message()) ->
+    {ok, cancel_metadata_model_creation_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_metadata_model_creation_errors(), tuple()}.
+cancel_metadata_model_creation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_metadata_model_creation(Client, Input, []).
+
+-spec cancel_metadata_model_creation(aws_client:aws_client(), cancel_metadata_model_creation_message(), proplists:proplist()) ->
+    {ok, cancel_metadata_model_creation_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_metadata_model_creation_errors(), tuple()}.
+cancel_metadata_model_creation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelMetadataModelCreation">>, Input, Options).
 
 %% @doc Cancels a single premigration assessment run.
 %%
@@ -5314,6 +5514,25 @@ describe_instance_profiles(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceProfiles">>, Input, Options).
 
+%% @doc Gets detailed information about the specified metadata model,
+%% including its definition and corresponding converted objects in the target
+%% database if applicable.
+-spec describe_metadata_model(aws_client:aws_client(), describe_metadata_model_message()) ->
+    {ok, describe_metadata_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metadata_model_errors(), tuple()}.
+describe_metadata_model(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metadata_model(Client, Input, []).
+
+-spec describe_metadata_model(aws_client:aws_client(), describe_metadata_model_message(), proplists:proplist()) ->
+    {ok, describe_metadata_model_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metadata_model_errors(), tuple()}.
+describe_metadata_model(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetadataModel">>, Input, Options).
+
 %% @doc Returns a paginated list of metadata model assessments for your
 %% account in the current
 %% region.
@@ -5333,6 +5552,24 @@ describe_metadata_model_assessments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelAssessments">>, Input, Options).
 
+%% @doc Gets a list of child metadata models for the specified metadata model
+%% in the database hierarchy.
+-spec describe_metadata_model_children(aws_client:aws_client(), describe_metadata_model_children_message()) ->
+    {ok, describe_metadata_model_children_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metadata_model_children_errors(), tuple()}.
+describe_metadata_model_children(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metadata_model_children(Client, Input, []).
+
+-spec describe_metadata_model_children(aws_client:aws_client(), describe_metadata_model_children_message(), proplists:proplist()) ->
+    {ok, describe_metadata_model_children_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metadata_model_children_errors(), tuple()}.
+describe_metadata_model_children(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetadataModelChildren">>, Input, Options).
+
 %% @doc Returns a paginated list of metadata model conversions for a
 %% migration project.
 -spec describe_metadata_model_conversions(aws_client:aws_client(), describe_metadata_model_conversions_message()) ->
@@ -5350,6 +5587,24 @@ describe_metadata_model_conversions(Client, Input)
 describe_metadata_model_conversions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetadataModelConversions">>, Input, Options).
+
+%% @doc Returns a paginated list of metadata model creation requests for a
+%% migration project.
+-spec describe_metadata_model_creations(aws_client:aws_client(), describe_metadata_model_creations_message()) ->
+    {ok, describe_metadata_model_creations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metadata_model_creations_errors(), tuple()}.
+describe_metadata_model_creations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metadata_model_creations(Client, Input, []).
+
+-spec describe_metadata_model_creations(aws_client:aws_client(), describe_metadata_model_creations_message(), proplists:proplist()) ->
+    {ok, describe_metadata_model_creations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metadata_model_creations_errors(), tuple()}.
+describe_metadata_model_creations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetadataModelCreations">>, Input, Options).
 
 %% @doc Returns a paginated list of metadata model exports.
 -spec describe_metadata_model_exports_as_script(aws_client:aws_client(), describe_metadata_model_exports_as_script_message()) ->
@@ -5802,6 +6057,24 @@ export_metadata_model_assessment(Client, Input)
 export_metadata_model_assessment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportMetadataModelAssessment">>, Input, Options).
+
+%% @doc Converts source selection rules into their target counterparts for
+%% schema conversion operations.
+-spec get_target_selection_rules(aws_client:aws_client(), get_target_selection_rules_message()) ->
+    {ok, get_target_selection_rules_response(), tuple()} |
+    {error, any()} |
+    {error, get_target_selection_rules_errors(), tuple()}.
+get_target_selection_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_target_selection_rules(Client, Input, []).
+
+-spec get_target_selection_rules(aws_client:aws_client(), get_target_selection_rules_message(), proplists:proplist()) ->
+    {ok, get_target_selection_rules_response(), tuple()} |
+    {error, any()} |
+    {error, get_target_selection_rules_errors(), tuple()}.
+get_target_selection_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTargetSelectionRules">>, Input, Options).
 
 %% @doc Uploads the specified certificate.
 -spec import_certificate(aws_client:aws_client(), import_certificate_message()) ->
@@ -6327,6 +6600,27 @@ start_metadata_model_conversion(Client, Input)
 start_metadata_model_conversion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMetadataModelConversion">>, Input, Options).
+
+%% @doc Creates source metadata model of the given type with the specified
+%% properties for schema conversion operations.
+%%
+%% This action supports only these directions: from SQL Server to Aurora
+%% PostgreSQL, or from SQL Server to RDS for PostgreSQL.
+-spec start_metadata_model_creation(aws_client:aws_client(), start_metadata_model_creation_message()) ->
+    {ok, start_metadata_model_creation_response(), tuple()} |
+    {error, any()} |
+    {error, start_metadata_model_creation_errors(), tuple()}.
+start_metadata_model_creation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_metadata_model_creation(Client, Input, []).
+
+-spec start_metadata_model_creation(aws_client:aws_client(), start_metadata_model_creation_message(), proplists:proplist()) ->
+    {ok, start_metadata_model_creation_response(), tuple()} |
+    {error, any()} |
+    {error, start_metadata_model_creation_errors(), tuple()}.
+start_metadata_model_creation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMetadataModelCreation">>, Input, Options).
 
 %% @doc Saves your converted code to a file as a SQL script, and stores this
 %% file on your Amazon S3

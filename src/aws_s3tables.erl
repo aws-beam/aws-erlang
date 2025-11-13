@@ -35,6 +35,8 @@
          delete_table_bucket/4,
          delete_table_bucket_encryption/3,
          delete_table_bucket_encryption/4,
+         delete_table_bucket_metrics_configuration/3,
+         delete_table_bucket_metrics_configuration/4,
          delete_table_bucket_policy/3,
          delete_table_bucket_policy/4,
          delete_table_policy/5,
@@ -54,6 +56,9 @@
          get_table_bucket_maintenance_configuration/2,
          get_table_bucket_maintenance_configuration/4,
          get_table_bucket_maintenance_configuration/5,
+         get_table_bucket_metrics_configuration/2,
+         get_table_bucket_metrics_configuration/4,
+         get_table_bucket_metrics_configuration/5,
          get_table_bucket_policy/2,
          get_table_bucket_policy/4,
          get_table_bucket_policy/5,
@@ -88,6 +93,8 @@
          put_table_bucket_encryption/4,
          put_table_bucket_maintenance_configuration/4,
          put_table_bucket_maintenance_configuration/5,
+         put_table_bucket_metrics_configuration/3,
+         put_table_bucket_metrics_configuration/4,
          put_table_bucket_policy/3,
          put_table_bucket_policy/4,
          put_table_maintenance_configuration/6,
@@ -318,6 +325,10 @@
 -type get_table_maintenance_job_status_response() :: #{binary() => any()}.
 
 %% Example:
+%% put_table_bucket_metrics_configuration_request() :: #{}
+-type put_table_bucket_metrics_configuration_request() :: #{}.
+
+%% Example:
 %% get_table_bucket_encryption_request() :: #{}
 -type get_table_bucket_encryption_request() :: #{}.
 
@@ -461,6 +472,10 @@
 %% get_table_maintenance_job_status_request() :: #{}
 -type get_table_maintenance_job_status_request() :: #{}.
 
+%% Example:
+%% delete_table_bucket_metrics_configuration_request() :: #{}
+-type delete_table_bucket_metrics_configuration_request() :: #{}.
+
 
 %% Example:
 %% iceberg_unreferenced_file_removal_settings() :: #{
@@ -492,6 +507,10 @@
 %%   <<"tableBuckets">> => list(table_bucket_summary())
 %% }
 -type list_table_buckets_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_bucket_metrics_configuration_request() :: #{}
+-type get_table_bucket_metrics_configuration_request() :: #{}.
 
 
 %% Example:
@@ -568,6 +587,14 @@
 %% Example:
 %% delete_namespace_request() :: #{}
 -type delete_namespace_request() :: #{}.
+
+
+%% Example:
+%% get_table_bucket_metrics_configuration_response() :: #{
+%%   <<"id">> => [string()],
+%%   <<"tableBucketARN">> => string()
+%% }
+-type get_table_bucket_metrics_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -712,6 +739,14 @@
     too_many_requests_exception() | 
     forbidden_exception().
 
+-type delete_table_bucket_metrics_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
 -type delete_table_bucket_policy_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
@@ -764,6 +799,14 @@
     forbidden_exception().
 
 -type get_table_bucket_maintenance_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type get_table_bucket_metrics_configuration_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
@@ -862,6 +905,14 @@
     forbidden_exception().
 
 -type put_table_bucket_maintenance_configuration_errors() ::
+    bad_request_exception() | 
+    internal_server_error_exception() | 
+    not_found_exception() | 
+    conflict_exception() | 
+    too_many_requests_exception() | 
+    forbidden_exception().
+
+-type put_table_bucket_metrics_configuration_errors() ::
     bad_request_exception() | 
     internal_server_error_exception() | 
     not_found_exception() | 
@@ -1239,6 +1290,44 @@ delete_table_bucket_encryption(Client, TableBucketARN, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the metrics configuration for a table bucket.
+%%
+%% Permissions You must have the
+%% `s3tables:DeleteTableBucketMetricsConfiguration' permission to use
+%% this operation.
+-spec delete_table_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), delete_table_bucket_metrics_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_table_bucket_metrics_configuration_errors(), tuple()}.
+delete_table_bucket_metrics_configuration(Client, TableBucketARN, Input) ->
+    delete_table_bucket_metrics_configuration(Client, TableBucketARN, Input, []).
+
+-spec delete_table_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), delete_table_bucket_metrics_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_table_bucket_metrics_configuration_errors(), tuple()}.
+delete_table_bucket_metrics_configuration(Client, TableBucketARN, Input0, Options0) ->
+    Method = delete,
+    Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/metrics"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a table bucket policy.
 %%
 %% For more information, see Deleting a table bucket policy:
@@ -1533,6 +1622,47 @@ get_table_bucket_maintenance_configuration(Client, TableBucketARN, QueryMap, Hea
 get_table_bucket_maintenance_configuration(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/maintenance"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the metrics configuration for a table bucket.
+%%
+%% Permissions You must have the
+%% `s3tables:GetTableBucketMetricsConfiguration' permission to use this
+%% operation.
+-spec get_table_bucket_metrics_configuration(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_table_bucket_metrics_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_bucket_metrics_configuration_errors(), tuple()}.
+get_table_bucket_metrics_configuration(Client, TableBucketARN)
+  when is_map(Client) ->
+    get_table_bucket_metrics_configuration(Client, TableBucketARN, #{}, #{}).
+
+-spec get_table_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_table_bucket_metrics_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_bucket_metrics_configuration_errors(), tuple()}.
+get_table_bucket_metrics_configuration(Client, TableBucketARN, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_table_bucket_metrics_configuration(Client, TableBucketARN, QueryMap, HeadersMap, []).
+
+-spec get_table_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_table_bucket_metrics_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_bucket_metrics_configuration_errors(), tuple()}.
+get_table_bucket_metrics_configuration(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/metrics"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2073,6 +2203,44 @@ put_table_bucket_maintenance_configuration(Client, TableBucketARN, Type, Input) 
 put_table_bucket_maintenance_configuration(Client, TableBucketARN, Type, Input0, Options0) ->
     Method = put,
     Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/maintenance/", aws_util:encode_uri(Type), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the metrics configuration for a table bucket.
+%%
+%% Permissions You must have the
+%% `s3tables:PutTableBucketMetricsConfiguration' permission to use this
+%% operation.
+-spec put_table_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), put_table_bucket_metrics_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_table_bucket_metrics_configuration_errors(), tuple()}.
+put_table_bucket_metrics_configuration(Client, TableBucketARN, Input) ->
+    put_table_bucket_metrics_configuration(Client, TableBucketARN, Input, []).
+
+-spec put_table_bucket_metrics_configuration(aws_client:aws_client(), binary() | list(), put_table_bucket_metrics_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_table_bucket_metrics_configuration_errors(), tuple()}.
+put_table_bucket_metrics_configuration(Client, TableBucketARN, Input0, Options0) ->
+    Method = put,
+    Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/metrics"],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

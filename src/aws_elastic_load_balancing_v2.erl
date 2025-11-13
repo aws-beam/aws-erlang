@@ -1103,6 +1103,7 @@
 %%   <<"AuthenticateOidcConfig">> => authenticate_oidc_action_config(),
 %%   <<"FixedResponseConfig">> => fixed_response_action_config(),
 %%   <<"ForwardConfig">> => forward_action_config(),
+%%   <<"JwtValidationConfig">> => jwt_validation_action_config(),
 %%   <<"Order">> => integer(),
 %%   <<"RedirectConfig">> => redirect_action_config(),
 %%   <<"TargetGroupArn">> => string(),
@@ -1160,6 +1161,14 @@
 %%   <<"Message">> => string()
 %% }
 -type capacity_units_limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% jwt_validation_action_additional_claim() :: #{
+%%   <<"Format">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type jwt_validation_action_additional_claim() :: #{binary() => any()}.
 
 %% Example:
 %% target_group_stickiness_config() :: #{
@@ -1359,6 +1368,14 @@
 %%   <<"PageSize">> => integer()
 %% }
 -type describe_listeners_input() :: #{binary() => any()}.
+
+%% Example:
+%% jwt_validation_action_config() :: #{
+%%   <<"AdditionalClaims">> => list(jwt_validation_action_additional_claim()),
+%%   <<"Issuer">> => string(),
+%%   <<"JwksEndpoint">> => string()
+%% }
+-type jwt_validation_action_config() :: #{binary() => any()}.
 
 %% Example:
 %% register_targets_input() :: #{
@@ -2604,7 +2621,7 @@ describe_load_balancers(Client, Input, Options)
 %% listener.
 %%
 %% You must specify
-%% either a listener or one or more rules.
+%% either a listener or rules.
 -spec describe_rules(aws_client:aws_client(), describe_rules_input()) ->
     {ok, describe_rules_output(), tuple()} |
     {error, any()} |
