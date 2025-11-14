@@ -365,6 +365,7 @@
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"DestinationName">> := string(),
 %%   <<"DeviceName">> => string(),
+%%   <<"Positioning">> => list(any()),
 %%   <<"Sidewalk">> := sidewalk_single_start_import_info(),
 %%   <<"Tags">> => list(tag())
 %% }
@@ -991,6 +992,13 @@
 %% update_fuota_task_response() :: #{}
 -type update_fuota_task_response() :: #{}.
 
+
+%% Example:
+%% sidewalk_list_devices_for_import_info() :: #{
+%%   <<"Positioning">> => sidewalk_positioning()
+%% }
+-type sidewalk_list_devices_for_import_info() :: #{binary() => any()}.
+
 %% Example:
 %% put_position_configuration_response() :: #{}
 -type put_position_configuration_response() :: #{}.
@@ -1137,7 +1145,8 @@
 %%   <<"DestinationName">> => string(),
 %%   <<"LoRaWAN">> => lo_ra_w_a_n_update_device(),
 %%   <<"Name">> => string(),
-%%   <<"Positioning">> => list(any())
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> => sidewalk_update_wireless_device()
 %% }
 -type update_wireless_device_request() :: #{binary() => any()}.
 
@@ -1696,7 +1705,9 @@
 
 %% Example:
 %% sidewalk_create_wireless_device() :: #{
-%%   <<"DeviceProfileId">> => string()
+%%   <<"DeviceProfileId">> => string(),
+%%   <<"Positioning">> => sidewalk_positioning(),
+%%   <<"SidewalkManufacturingSn">> => string()
 %% }
 -type sidewalk_create_wireless_device() :: #{binary() => any()}.
 
@@ -1885,6 +1896,7 @@
 %%   <<"McGroupId">> => integer(),
 %%   <<"MulticastDeviceStatus">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"Positioning">> => list(any()),
 %%   <<"Sidewalk">> => sidewalk_list_device(),
 %%   <<"Type">> => list(any())
 %% }
@@ -1895,7 +1907,9 @@
 %% list_devices_for_wireless_device_import_task_response() :: #{
 %%   <<"DestinationName">> => string(),
 %%   <<"ImportedWirelessDeviceList">> => list(imported_wireless_device()),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"Positioning">> => list(any()),
+%%   <<"Sidewalk">> => sidewalk_list_devices_for_import_info()
 %% }
 -type list_devices_for_wireless_device_import_task_response() :: #{binary() => any()}.
 
@@ -2131,6 +2145,13 @@
 %% }
 -type update_log_levels_by_resource_types_request() :: #{binary() => any()}.
 
+
+%% Example:
+%% sidewalk_positioning() :: #{
+%%   <<"DestinationName">> => string()
+%% }
+-type sidewalk_positioning() :: #{binary() => any()}.
+
 %% Example:
 %% reset_all_resource_log_levels_request() :: #{}
 -type reset_all_resource_log_levels_request() :: #{}.
@@ -2332,6 +2353,7 @@
 %%   <<"InitializedImportedDeviceCount">> => float(),
 %%   <<"OnboardedImportedDeviceCount">> => float(),
 %%   <<"PendingImportedDeviceCount">> => float(),
+%%   <<"Positioning">> => list(any()),
 %%   <<"Sidewalk">> => sidewalk_get_start_import_info(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
@@ -2391,6 +2413,7 @@
 %%   <<"InitializedImportedDeviceCount">> => float(),
 %%   <<"OnboardedImportedDeviceCount">> => float(),
 %%   <<"PendingImportedDeviceCount">> => float(),
+%%   <<"Positioning">> => list(any()),
 %%   <<"Sidewalk">> => sidewalk_get_start_import_info(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
@@ -2579,6 +2602,7 @@
 %% Example:
 %% sidewalk_start_import_info() :: #{
 %%   <<"DeviceCreationFile">> => string(),
+%%   <<"Positioning">> => sidewalk_positioning(),
 %%   <<"Role">> => string()
 %% }
 -type sidewalk_start_import_info() :: #{binary() => any()}.
@@ -2601,6 +2625,7 @@
 %%   <<"CertificateId">> => string(),
 %%   <<"DeviceCertificates">> => list(certificate_list()),
 %%   <<"DeviceProfileId">> => string(),
+%%   <<"Positioning">> => sidewalk_positioning(),
 %%   <<"PrivateKeys">> => list(certificate_list()),
 %%   <<"SidewalkId">> => string(),
 %%   <<"SidewalkManufacturingSn">> => string(),
@@ -2809,6 +2834,7 @@
 %% start_wireless_device_import_task_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"DestinationName">> := string(),
+%%   <<"Positioning">> => list(any()),
 %%   <<"Sidewalk">> := sidewalk_start_import_info(),
 %%   <<"Tags">> => list(tag())
 %% }
@@ -2898,6 +2924,13 @@
 %% }
 -type metric_query_value() :: #{binary() => any()}.
 
+
+%% Example:
+%% sidewalk_update_wireless_device() :: #{
+%%   <<"Positioning">> => sidewalk_positioning()
+%% }
+-type sidewalk_update_wireless_device() :: #{binary() => any()}.
+
 %% Example:
 %% delete_network_analyzer_configuration_request() :: #{}
 -type delete_network_analyzer_configuration_request() :: #{}.
@@ -2936,6 +2969,7 @@
 
 %% Example:
 %% sidewalk_single_start_import_info() :: #{
+%%   <<"Positioning">> => sidewalk_positioning(),
 %%   <<"SidewalkManufacturingSn">> => string()
 %% }
 -type sidewalk_single_start_import_info() :: #{binary() => any()}.
@@ -3046,6 +3080,7 @@
 %%   <<"AmazonId">> => string(),
 %%   <<"DeviceCertificates">> => list(certificate_list()),
 %%   <<"DeviceProfileId">> => string(),
+%%   <<"Positioning">> => sidewalk_positioning(),
 %%   <<"SidewalkId">> => string(),
 %%   <<"SidewalkManufacturingSn">> => string(),
 %%   <<"Status">> => list(any())
@@ -3148,6 +3183,7 @@
 %% Example:
 %% sidewalk_get_start_import_info() :: #{
 %%   <<"DeviceCreationFileList">> => list(string()),
+%%   <<"Positioning">> => sidewalk_positioning(),
 %%   <<"Role">> => string()
 %% }
 -type sidewalk_get_start_import_info() :: #{binary() => any()}.
@@ -5730,7 +5766,7 @@ get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap,
 %% This action is no longer supported. Calls to retrieve the position
 %% information
 %% should use the GetResourcePosition:
-%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_GetResourcePosition.html
+%% https://docs.aws.amazon.com/iot-wireless/latest/apireference/API_GetResourcePosition.html
 %% API operation instead.
 -spec get_position(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_position_response(), tuple()} |
@@ -5777,7 +5813,7 @@ get_position(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, Opt
 %% This action is no longer supported. Calls to retrieve the position
 %% configuration
 %% should use the GetResourcePosition:
-%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_GetResourcePosition.html
+%% https://docs.aws.amazon.com/iot-wireless/latest/apireference/API_GetResourcePosition.html
 %% API operation instead.
 -spec get_position_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_position_configuration_response(), tuple()} |
@@ -6805,7 +6841,7 @@ list_partner_accounts(Client, QueryMap, HeadersMap, Options0)
 %% This action is no longer supported. Calls to retrieve position information
 %% should
 %% use the GetResourcePosition:
-%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_GetResourcePosition.html
+%% https://docs.aws.amazon.com/iot-wireless/latest/apireference/API_GetResourcePosition.html
 %% API operation instead.
 -spec list_position_configurations(aws_client:aws_client()) ->
     {ok, list_position_configurations_response(), tuple()} |
@@ -6975,7 +7011,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List wireless devices that have been added to an import task.
+%% @doc List of import tasks and summary information of onboarding status of
+%% devices in each
+%% import task.
 -spec list_wireless_device_import_tasks(aws_client:aws_client()) ->
     {ok, list_wireless_device_import_tasks_response(), tuple()} |
     {error, any()} |
@@ -7156,7 +7194,7 @@ list_wireless_gateways(Client, QueryMap, HeadersMap, Options0)
 %% This action is no longer supported. Calls to update the position
 %% configuration
 %% should use the UpdateResourcePosition:
-%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_UpdateResourcePosition.html
+%% https://docs.aws.amazon.com/iot-wireless/latest/apireference/API_UpdateResourcePosition.html
 %% API operation instead.
 -spec put_position_configuration(aws_client:aws_client(), binary() | list(), put_position_configuration_request()) ->
     {ok, put_position_configuration_response(), tuple()} |
@@ -7971,7 +8009,7 @@ update_partner_account(Client, PartnerAccountId, Input0, Options0) ->
 %% This action is no longer supported. Calls to update the position
 %% information
 %% should use the UpdateResourcePosition:
-%% https://docs.aws.amazon.com/iot-wireless/2020-11-22/apireference/API_UpdateResourcePosition.html
+%% https://docs.aws.amazon.com/iot-wireless/latest/apireference/API_UpdateResourcePosition.html
 %% API operation instead.
 -spec update_position(aws_client:aws_client(), binary() | list(), update_position_request()) ->
     {ok, update_position_response(), tuple()} |

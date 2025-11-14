@@ -491,7 +491,8 @@
 %% target_description() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"Id">> => string(),
-%%   <<"Port">> => integer()
+%%   <<"Port">> => integer(),
+%%   <<"QuicServerId">> => string()
 %% }
 -type target_description() :: #{binary() => any()}.
 

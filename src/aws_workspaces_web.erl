@@ -373,7 +373,8 @@
 %% Example:
 %% update_browser_settings_request() :: #{
 %%   <<"browserPolicy">> => string(),
-%%   <<"clientToken">> => string()
+%%   <<"clientToken">> => string(),
+%%   <<"webContentFilteringPolicy">> => web_content_filtering_policy()
 %% }
 -type update_browser_settings_request() :: #{binary() => any()}.
 
@@ -850,10 +851,11 @@
 %% Example:
 %% create_browser_settings_request() :: #{
 %%   <<"additionalEncryptionContext">> => map(),
-%%   <<"browserPolicy">> := string(),
+%%   <<"browserPolicy">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"customerManagedKey">> => string(),
-%%   <<"tags">> => list(tag())
+%%   <<"tags">> => list(tag()),
+%%   <<"webContentFilteringPolicy">> => web_content_filtering_policy()
 %% }
 -type create_browser_settings_request() :: #{binary() => any()}.
 
@@ -943,6 +945,15 @@
 %%   <<"inlineRedactionConfiguration">> => inline_redaction_configuration()
 %% }
 -type data_protection_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_content_filtering_policy() :: #{
+%%   <<"allowedUrls">> => list(string()),
+%%   <<"blockedCategories">> => list(list(any())()),
+%%   <<"blockedUrls">> => list(string())
+%% }
+-type web_content_filtering_policy() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_user_settings_response() :: #{}
@@ -1588,7 +1599,8 @@
 %%   <<"associatedPortalArns">> => list(string()),
 %%   <<"browserPolicy">> => string(),
 %%   <<"browserSettingsArn">> => string(),
-%%   <<"customerManagedKey">> => string()
+%%   <<"customerManagedKey">> => string(),
+%%   <<"webContentFilteringPolicy">> => web_content_filtering_policy()
 %% }
 -type browser_settings() :: #{binary() => any()}.
 

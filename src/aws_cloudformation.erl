@@ -19,8 +19,8 @@
 %% template defines a collection of resources as a single unit called a
 %% stack. CloudFormation creates
 %% and deletes all member resources of the stack together and manages all
-%% dependencies between the
-%% resources for you.
+%% dependencies between
+%% the resources for you.
 %%
 %% For more information about CloudFormation, see the CloudFormation product
 %% page: http://aws.amazon.com/cloudformation/.
@@ -122,6 +122,8 @@
          execute_stack_refactor/3,
          get_generated_template/2,
          get_generated_template/3,
+         get_hook_result/2,
+         get_hook_result/3,
          get_stack_policy/2,
          get_stack_policy/3,
          get_template/2,
@@ -290,6 +292,12 @@
 %%   <<"StatusReason">> => string()
 %% }
 -type stack_refactor_summary() :: #{binary() => any()}.
+
+%% Example:
+%% get_hook_result_input() :: #{
+%%   <<"HookResultId">> => string()
+%% }
+-type get_hook_result_input() :: #{binary() => any()}.
 
 %% Example:
 %% stack_resource_summary() :: #{
@@ -1080,6 +1088,17 @@
 -type set_type_default_version_input() :: #{binary() => any()}.
 
 %% Example:
+%% annotation() :: #{
+%%   <<"AnnotationName">> => string(),
+%%   <<"RemediationLink">> => string(),
+%%   <<"RemediationMessage">> => string(),
+%%   <<"SeverityLevel">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type annotation() :: #{binary() => any()}.
+
+%% Example:
 %% describe_generated_template_output() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"GeneratedTemplateId">> => string(),
@@ -1176,6 +1195,15 @@
 %%   <<"RegistrationTokenList">> => list(string())
 %% }
 -type list_type_registrations_output() :: #{binary() => any()}.
+
+%% Example:
+%% hook_target() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"TargetId">> => string(),
+%%   <<"TargetType">> => list(any()),
+%%   <<"TargetTypeName">> => string()
+%% }
+-type hook_target() :: #{binary() => any()}.
 
 %% Example:
 %% stack_summary() :: #{
@@ -1771,7 +1799,7 @@
 %% Example:
 %% describe_stack_events_input() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"StackName">> => string()
+%%   <<"StackName">> := string()
 %% }
 -type describe_stack_events_input() :: #{binary() => any()}.
 
@@ -2455,6 +2483,24 @@
 -type operation_result_filter() :: #{binary() => any()}.
 
 %% Example:
+%% get_hook_result_output() :: #{
+%%   <<"Annotations">> => list(annotation()),
+%%   <<"FailureMode">> => list(any()),
+%%   <<"HookResultId">> => string(),
+%%   <<"HookStatusReason">> => string(),
+%%   <<"InvocationPoint">> => list(any()),
+%%   <<"InvokedAt">> => non_neg_integer(),
+%%   <<"OriginalTypeName">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Target">> => hook_target(),
+%%   <<"TypeArn">> => string(),
+%%   <<"TypeConfigurationVersionId">> => string(),
+%%   <<"TypeName">> => string(),
+%%   <<"TypeVersionId">> => string()
+%% }
+-type get_hook_result_output() :: #{binary() => any()}.
+
+%% Example:
 %% execute_stack_refactor_input() :: #{
 %%   <<"StackRefactorId">> := string()
 %% }
@@ -2810,6 +2856,9 @@
 -type get_generated_template_errors() ::
     generated_template_not_found_exception().
 
+-type get_hook_result_errors() ::
+    hook_result_not_found_exception().
+
 -type get_template_errors() ::
     change_set_not_found_exception().
 
@@ -2977,8 +3026,7 @@ activate_organizations_access(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public-activate-extension.html
 %% in the
 %% CloudFormation User Guide. For information about creating Hooks, see the
-%% CloudFormation
-%% Hooks User Guide:
+%% CloudFormation Hooks User Guide:
 %% https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/what-is-cloudformation-hooks.html.
 -spec activate_type(aws_client:aws_client(), activate_type_input()) ->
     {ok, activate_type_output(), tuple()} |
@@ -3537,9 +3585,9 @@ describe_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChangeSet">>, Input, Options).
 
-%% @doc Returns hook-related information for the change set and a list of
-%% changes that CloudFormation
-%% makes when you run the change set.
+%% @doc Returns Hook-related information for the change set and a list of
+%% changes that
+%% CloudFormation makes when you run the change set.
 -spec describe_change_set_hooks(aws_client:aws_client(), describe_change_set_hooks_input()) ->
     {ok, describe_change_set_hooks_output(), tuple()} |
     {error, any()} |
@@ -4231,6 +4279,25 @@ get_generated_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGeneratedTemplate">>, Input, Options).
 
+%% @doc Retrieves detailed information and remediation guidance for a Hook
+%% invocation
+%% result.
+-spec get_hook_result(aws_client:aws_client(), get_hook_result_input()) ->
+    {ok, get_hook_result_output(), tuple()} |
+    {error, any()} |
+    {error, get_hook_result_errors(), tuple()}.
+get_hook_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_hook_result(Client, Input, []).
+
+-spec get_hook_result(aws_client:aws_client(), get_hook_result_input(), proplists:proplist()) ->
+    {ok, get_hook_result_output(), tuple()} |
+    {error, any()} |
+    {error, get_hook_result_errors(), tuple()}.
+get_hook_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetHookResult">>, Input, Options).
+
 %% @doc Returns the stack policy for a specified stack.
 %%
 %% If a stack doesn't have a policy, a null
@@ -4405,8 +4472,8 @@ list_generated_templates(Client, Input, Options)
 %%
 %% `TypeArn' only: Returns summaries for a specific Hook.
 %%
-%% `TypeArn' and `Status': Returns summaries for a specific
-%% Hook filtered by status.
+%% `TypeArn' and `Status': Returns summaries for a specific Hook
+%% filtered by status.
 %%
 %% `TargetId' and `TargetType': Returns summaries for a specific
 %% Hook invocation target.
@@ -5007,8 +5074,7 @@ set_stack_policy(Client, Input, Options)
 %% in the
 %% CloudFormation Command Line Interface (CLI) User Guide. For more
 %% information about setting the configuration
-%% data for Hooks, see the CloudFormation
-%% Hooks User Guide:
+%% data for Hooks, see the CloudFormation Hooks User Guide:
 %% https://docs.aws.amazon.com/cloudformation-cli/latest/hooks-userguide/what-is-cloudformation-hooks.html.
 -spec set_type_configuration(aws_client:aws_client(), set_type_configuration_input()) ->
     {ok, set_type_configuration_output(), tuple()} |

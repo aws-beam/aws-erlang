@@ -125,6 +125,14 @@
 
 
 %% Example:
+%% related_control_mapping_details() :: #{
+%%   <<"ControlArn">> => string(),
+%%   <<"RelationType">> => list(any())
+%% }
+-type related_control_mapping_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }

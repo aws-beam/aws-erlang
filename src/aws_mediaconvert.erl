@@ -2430,6 +2430,7 @@
 
 %% Example:
 %% passthrough_settings() :: #{
+%%   <<"FrameControl">> => list(any()),
 %%   <<"VideoSelectorMode">> => list(any())
 %% }
 -type passthrough_settings() :: #{binary() => any()}.
@@ -2830,11 +2831,14 @@
 %% mpd_settings() :: #{
 %%   <<"AccessibilityCaptionHints">> => list(any()),
 %%   <<"AudioDuration">> => list(any()),
+%%   <<"C2paManifest">> => list(any()),
 %%   <<"CaptionContainerType">> => list(any()),
+%%   <<"CertificateSecret">> => string(),
 %%   <<"KlvMetadata">> => list(any()),
 %%   <<"ManifestMetadataSignaling">> => list(any()),
 %%   <<"Scte35Esam">> => list(any()),
 %%   <<"Scte35Source">> => list(any()),
+%%   <<"SigningKmsKey">> => string(),
 %%   <<"TimedMetadata">> => list(any()),
 %%   <<"TimedMetadataBoxVersion">> => list(any()),
 %%   <<"TimedMetadataSchemeIdUri">> => string(),
@@ -3058,12 +3062,15 @@
 %%   <<"AudioGroupId">> => string(),
 %%   <<"AudioRenditionSets">> => string(),
 %%   <<"AudioTrackType">> => list(any()),
+%%   <<"C2paManifest">> => list(any()),
+%%   <<"CertificateSecret">> => string(),
 %%   <<"DescriptiveVideoServiceFlag">> => list(any()),
 %%   <<"IFrameOnlyManifest">> => list(any()),
 %%   <<"KlvMetadata">> => list(any()),
 %%   <<"ManifestMetadataSignaling">> => list(any()),
 %%   <<"Scte35Esam">> => list(any()),
 %%   <<"Scte35Source">> => list(any()),
+%%   <<"SigningKmsKey">> => string(),
 %%   <<"TimedMetadata">> => list(any()),
 %%   <<"TimedMetadataBoxVersion">> => list(any()),
 %%   <<"TimedMetadataSchemeIdUri">> => string(),

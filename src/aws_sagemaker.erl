@@ -767,6 +767,13 @@
 -type docker_settings() :: #{binary() => any()}.
 
 %% Example:
+%% available_upgrade() :: #{
+%%   <<"ReleaseNotes">> => list(string()),
+%%   <<"Version">> => string()
+%% }
+-type available_upgrade() :: #{binary() => any()}.
+
+%% Example:
 %% visibility_conditions() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -2490,6 +2497,13 @@
 %%   <<"Weight">> => integer()
 %% }
 -type priority_class() :: #{binary() => any()}.
+
+%% Example:
+%% role_group_assignment() :: #{
+%%   <<"GroupPatterns">> => list(string()),
+%%   <<"RoleName">> => string()
+%% }
+-type role_group_assignment() :: #{binary() => any()}.
 
 %% Example:
 %% list_stage_devices_request() :: #{
@@ -7620,7 +7634,9 @@
 %% Example:
 %% partner_app_config() :: #{
 %%   <<"AdminUsers">> => list(string()),
-%%   <<"Arguments">> => map()
+%%   <<"Arguments">> => map(),
+%%   <<"AssignedGroupPatterns">> => list(string()),
+%%   <<"RoleGroupAssignments">> => list(role_group_assignment())
 %% }
 -type partner_app_config() :: #{binary() => any()}.
 
@@ -9015,7 +9031,8 @@
 
 %% Example:
 %% describe_partner_app_request() :: #{
-%%   <<"Arn">> := string()
+%%   <<"Arn">> := string(),
+%%   <<"IncludeAvailableUpgrade">> => boolean()
 %% }
 -type describe_partner_app_request() :: #{binary() => any()}.
 
@@ -9424,6 +9441,7 @@
 %%   <<"ApplicationConfig">> => partner_app_config(),
 %%   <<"AuthType">> := list(any()),
 %%   <<"ClientToken">> => string(),
+%%   <<"EnableAutoMinorVersionUpgrade">> => boolean(),
 %%   <<"EnableIamSessionBasedIdentity">> => boolean(),
 %%   <<"ExecutionRoleArn">> := string(),
 %%   <<"KmsKeyId">> => string(),
@@ -12676,8 +12694,11 @@
 %%   <<"ApplicationConfig">> => partner_app_config(),
 %%   <<"Arn">> => string(),
 %%   <<"AuthType">> => list(any()),
+%%   <<"AvailableUpgrade">> => available_upgrade(),
 %%   <<"BaseUrl">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CurrentVersionEolDate">> => non_neg_integer(),
+%%   <<"EnableAutoMinorVersionUpgrade">> => boolean(),
 %%   <<"EnableIamSessionBasedIdentity">> => boolean(),
 %%   <<"Error">> => error_info(),
 %%   <<"ExecutionRoleArn">> => string(),
@@ -12835,9 +12856,11 @@
 
 %% Example:
 %% update_partner_app_request() :: #{
+%%   <<"AppVersion">> => string(),
 %%   <<"ApplicationConfig">> => partner_app_config(),
 %%   <<"Arn">> := string(),
 %%   <<"ClientToken">> => string(),
+%%   <<"EnableAutoMinorVersionUpgrade">> => boolean(),
 %%   <<"EnableIamSessionBasedIdentity">> => boolean(),
 %%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
 %%   <<"Tags">> => list(tag()),
