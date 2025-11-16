@@ -1342,6 +1342,8 @@
 
 %% Example:
 %% create_subscription_request_input() :: #{
+%%   <<"assetPermissions">> => list(asset_permission()),
+%%   <<"assetScopes">> => list(accepted_asset_scope()),
 %%   <<"clientToken">> => [string()],
 %%   <<"metadataForms">> => list(form_input()),
 %%   <<"requestReason">> := string(),
@@ -2013,6 +2015,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
 %%   <<"grantedEntity">> => list(),
 %%   <<"id">> => string(),
 %%   <<"status">> => list(any()),
@@ -2111,7 +2114,9 @@
 %%   <<"approverProjectId">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"owningGroupId">> => string(),
 %%   <<"owningProjectId">> => string(),
+%%   <<"owningUserId">> => string(),
 %%   <<"sortBy">> => list(any()),
 %%   <<"sortOrder">> => list(any()),
 %%   <<"status">> => list(any()),
@@ -2365,6 +2370,14 @@
 %%   <<"domainId">> => string()
 %% }
 -type reject_predictions_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_user() :: #{
+%%   <<"details">> => list(),
+%%   <<"id">> => string()
+%% }
+-type subscribed_user() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2849,6 +2862,13 @@
 
 
 %% Example:
+%% subscribed_group_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_group_input() :: #{binary() => any()}.
+
+
+%% Example:
 %% asset_in_data_product_listing_item() :: #{
 %%   <<"entityId">> => [string()],
 %%   <<"entityRevision">> => [string()],
@@ -3143,6 +3163,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type metadata_generation_run_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% subscribed_group() :: #{
+%%   <<"id">> => string(),
+%%   <<"name">> => string()
+%% }
+-type subscribed_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3500,6 +3528,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
 %%   <<"grantedEntity">> => list(),
 %%   <<"id">> => string(),
 %%   <<"status">> => list(any()),
@@ -3732,6 +3761,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
 %%   <<"grantedEntity">> => list(),
 %%   <<"id">> => string(),
 %%   <<"status">> => list(any()),
@@ -3766,7 +3796,9 @@
 %%   <<"approverProjectId">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"owningGroupId">> => string(),
 %%   <<"owningProjectId">> => string(),
+%%   <<"owningUserId">> => string(),
 %%   <<"sortBy">> => list(any()),
 %%   <<"sortOrder">> => list(any()),
 %%   <<"status">> => list(any()),
@@ -3791,6 +3823,14 @@
 %%   <<"status">> => list(any())
 %% }
 -type form_type_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_permission() :: #{
+%%   <<"assetId">> => string(),
+%%   <<"permissions">> => list()
+%% }
+-type asset_permission() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3950,7 +3990,9 @@
 %%   <<"environmentId">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"owningGroupId">> => string(),
 %%   <<"owningProjectId">> => string(),
+%%   <<"owningUserId">> => string(),
 %%   <<"sortBy">> => list(any()),
 %%   <<"sortOrder">> => list(any()),
 %%   <<"subscribedListingId">> => string(),
@@ -4927,7 +4969,8 @@
 %%   <<"entityRevision">> => string(),
 %%   <<"entityType">> => string(),
 %%   <<"forms">> => string(),
-%%   <<"glossaryTerms">> => list(detailed_glossary_term())
+%%   <<"glossaryTerms">> => list(detailed_glossary_term()),
+%%   <<"permissions">> => list()
 %% }
 -type subscribed_asset_listing() :: #{binary() => any()}.
 
@@ -5161,6 +5204,13 @@
 %% Example:
 %% get_glossary_input() :: #{}
 -type get_glossary_input() :: #{}.
+
+
+%% Example:
+%% subscribed_user_input() :: #{
+%%   <<"identifier">> => string()
+%% }
+-type subscribed_user_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5402,6 +5452,7 @@
 %%   <<"failureCause">> => failure_cause(),
 %%   <<"failureTimestamp">> => [non_neg_integer()],
 %%   <<"grantedTimestamp">> => [non_neg_integer()],
+%%   <<"permissions">> => list(),
 %%   <<"status">> => list(any()),
 %%   <<"targetName">> => [string()]
 %% }
@@ -5485,6 +5536,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
 %%   <<"grantedEntity">> => list(),
 %%   <<"id">> => string(),
 %%   <<"status">> => list(any()),
@@ -6079,6 +6131,7 @@
 
 %% Example:
 %% accept_subscription_request_input() :: #{
+%%   <<"assetPermissions">> => list(asset_permission()),
 %%   <<"assetScopes">> => list(accepted_asset_scope()),
 %%   <<"decisionComment">> => string()
 %% }
@@ -6229,6 +6282,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"domainId">> => string(),
+%%   <<"environmentId">> => string(),
 %%   <<"grantedEntity">> => list(),
 %%   <<"id">> => string(),
 %%   <<"status">> => list(any()),
@@ -6390,6 +6444,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -6657,6 +6712,7 @@
     validation_exception() | 
     access_denied_exception() | 
     internal_server_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -12902,7 +12958,9 @@ list_subscription_grants(Client, DomainIdentifier, QueryMap, HeadersMap, Options
         {<<"environmentId">>, maps:get(<<"environmentId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"owningGroupId">>, maps:get(<<"owningGroupId">>, QueryMap, undefined)},
         {<<"owningProjectId">>, maps:get(<<"owningProjectId">>, QueryMap, undefined)},
+        {<<"owningUserId">>, maps:get(<<"owningUserId">>, QueryMap, undefined)},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
         {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
         {<<"subscribedListingId">>, maps:get(<<"subscribedListingId">>, QueryMap, undefined)},
@@ -12951,7 +13009,9 @@ list_subscription_requests(Client, DomainIdentifier, QueryMap, HeadersMap, Optio
         {<<"approverProjectId">>, maps:get(<<"approverProjectId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"owningGroupId">>, maps:get(<<"owningGroupId">>, QueryMap, undefined)},
         {<<"owningProjectId">>, maps:get(<<"owningProjectId">>, QueryMap, undefined)},
+        {<<"owningUserId">>, maps:get(<<"owningUserId">>, QueryMap, undefined)},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
         {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
@@ -13043,7 +13103,9 @@ list_subscriptions(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
         {<<"approverProjectId">>, maps:get(<<"approverProjectId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"owningGroupId">>, maps:get(<<"owningGroupId">>, QueryMap, undefined)},
         {<<"owningProjectId">>, maps:get(<<"owningProjectId">>, QueryMap, undefined)},
+        {<<"owningUserId">>, maps:get(<<"owningUserId">>, QueryMap, undefined)},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
         {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},

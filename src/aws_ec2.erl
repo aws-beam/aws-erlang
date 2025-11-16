@@ -20979,6 +20979,7 @@
 %% Example:
 %% ec2_instance_connect_endpoint() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DnsName">> => string(),
 %%   <<"FipsDnsName">> => string(),

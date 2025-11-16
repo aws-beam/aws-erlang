@@ -803,7 +803,7 @@
 %%   <<"amiTags">> => map(),
 %%   <<"blockDeviceMappings">> => list(instance_block_device_mapping()),
 %%   <<"clientToken">> := string(),
-%%   <<"components">> := list(component_configuration()),
+%%   <<"components">> => list(component_configuration()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"parentImage">> := string(),
@@ -1266,7 +1266,7 @@
 %% Example:
 %% create_container_recipe_request() :: #{
 %%   <<"clientToken">> := string(),
-%%   <<"components">> := list(component_configuration()),
+%%   <<"components">> => list(component_configuration()),
 %%   <<"containerType">> := list(any()),
 %%   <<"description">> => string(),
 %%   <<"dockerfileTemplateData">> => string(),
