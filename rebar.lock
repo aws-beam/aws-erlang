@@ -1,6 +1,6 @@
 {"1.2.0",
-[{<<"aws_beam_core">>,{pkg,<<"aws_beam_core">>,<<"1.1.0">>},0},
- {<<"aws_credentials">>,{pkg,<<"aws_credentials">>,<<"1.0.1">>},1},
+[{<<"aws_beam_core">>,{pkg,<<"aws_beam_core">>,<<"1.1.1">>},0},
+ {<<"aws_credentials">>,{pkg,<<"aws_credentials">>,<<"1.0.3">>},1},
  {<<"aws_signature">>,{pkg,<<"aws_signature">>,<<"0.4.2">>},1},
  {<<"certifi">>,{pkg,<<"certifi">>,<<"2.8.0">>},1},
  {<<"eini">>,{pkg,<<"eini_beam">>,<<"2.2.5">>},2},
@@ -15,8 +15,8 @@
  {<<"unicode_util_compat">>,{pkg,<<"unicode_util_compat">>,<<"0.7.1">>},1}]}.
 [
 {pkg_hash,[
- {<<"aws_beam_core">>, <<"FA93594FEE54B945B51C118196D3057035ACF33292BB759109DAE87880ABE276">>},
- {<<"aws_credentials">>, <<"B5737E6FAD4F4600FFEA11AC1B55080C4E388D1223AA03E2039682E268C7F2C9">>},
+ {<<"aws_beam_core">>, <<"3D70444AE1F1A31E3F7FAC2BE5826258CA9BB1C05D054D58251B6C0B3B429775">>},
+ {<<"aws_credentials">>, <<"7CDAA99D0ED11C3B93A5F80E5673969F1E4379EDBB4907EB13D161CF2DE0826E">>},
  {<<"aws_signature">>, <<"1B35482C89FF5B91F5EAD647A2BBC0D9620877479B44800915DE92BACF9F1476">>},
  {<<"certifi">>, <<"D4FB0A6BB20B7C9C3643E22507E42F356AC090A1DCEA9AB99E27E0376D695EBA">>},
  {<<"eini">>, <<"28FA0A4EB7FF885CC388877B73FBD56FCCA3B2EAE4D81E47C47F317B900DA1DA">>},
@@ -30,8 +30,8 @@
  {<<"ssl_verify_fun">>, <<"354C321CF377240C7B8716899E182CE4890C5938111A1296ADD3EC74CF1715DF">>},
  {<<"unicode_util_compat">>, <<"A48703A25C170EEDADCA83B11E88985AF08D35F37C6F664D6DCFB106A97782FC">>}]},
 {pkg_hash_ext,[
- {<<"aws_beam_core">>, <<"9B3DB5C7634B2B173BAB18EA55DCF30616EC646F7D8C1AEFE062E0C62A7F8A36">>},
- {<<"aws_credentials">>, <<"A1CBAA788EF1942ECC14A04258A74617DCA5DD22542765060B0AD501AA2D1EC8">>},
+ {<<"aws_beam_core">>, <<"3B73C54B0831F82915EF47E230FF18E86A47045DBDCD3BC5B33A4DFC355DF5D6">>},
+ {<<"aws_credentials">>, <<"D3ACC14D953C7F00BF544FE81A3A8D9C30C073A7526EA3CC2D6220D9468FF6D3">>},
  {<<"aws_signature">>, <<"1DF4A2D1DFF200C7BDFA8F9F935EFC71A51273ADFC6DD39A9F2CC937E01BAA01">>},
  {<<"certifi">>, <<"6AC7EFC1C6F8600B08D625292D4BBF584E14847CE1B6B5C44D983D273E1097EA">>},
  {<<"eini">>, <<"511E9207649F3BECB5D945F1813615987899CF78FA130F92BE07193A6A74ECB8">>},
